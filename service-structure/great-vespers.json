@@ -1,0 +1,536 @@
+{
+  "_meta": {
+    "service": "great-vespers",
+    "description": "Great Vespers — served every Saturday evening and on any evening when the Menaion or Pentecostarion appoints OT/NT lessons",
+    "source": "OCA Office of Vespers, 2021-11-19",
+    "version": "0.1.0"
+  },
+
+  "sections": [
+
+    {
+      "id": "opening",
+      "label": "Opening",
+      "note": "If Ninth Hour was said immediately prior, begin at 'Come, let us worship…' skipping to psalm103-intro",
+      "blocks": [
+        {
+          "id": "opening-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "opening.exclamation"
+        },
+        {
+          "id": "opening-amen",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "opening.amen"
+        },
+        {
+          "id": "heavenly-king",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.heavenlyKing"
+        },
+        {
+          "id": "trisagion",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.trisagion"
+        },
+        {
+          "id": "glory-now-short",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "most-holy-trinity",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.mostHolyTrinity"
+        },
+        {
+          "id": "lord-have-mercy-3",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.lordHaveMercyThrice"
+        },
+        {
+          "id": "glory-now-short-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "our-father",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.ourFather"
+        },
+        {
+          "id": "kingdom-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.ourFather.doxology"
+        },
+        {
+          "id": "lord-have-mercy-12",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.lordHaveMercyTwelve"
+        },
+        {
+          "id": "glory-now-short-3",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        }
+      ]
+    },
+
+    {
+      "id": "psalm103",
+      "label": "Psalm 103 (104)",
+      "blocks": [
+        {
+          "id": "psalm103-intro",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm103.intro"
+        },
+        {
+          "id": "psalm103-body",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm103.body"
+        },
+        {
+          "id": "psalm103-refrain",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm103.refrain",
+          "note": "Repeated verses sung after the full psalm"
+        },
+        {
+          "id": "psalm103-close",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm103.close"
+        },
+        {
+          "id": "alleluia-3",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.alleluiaThrice"
+        }
+      ]
+    },
+
+    {
+      "id": "great-litany",
+      "label": "The Peace Litany",
+      "note": "Deacon leads; priest if no deacon",
+      "blocks": [
+        {
+          "id": "great-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.great"
+        },
+        {
+          "id": "great-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.great.exclamation"
+        }
+      ]
+    },
+
+    {
+      "id": "kathisma",
+      "label": "Kathisma",
+      "note": "At Great Vespers, the first section of Kathisma 1 (Blessed is the Man) is sung, with exceptions",
+      "blocks": [
+        {
+          "id": "kathisma-text",
+          "type": "variable",
+          "slot": "kathisma",
+          "resolvedBy": "kathismaResolver",
+          "conditions": [
+            {
+              "when": "greatVespers.saturday",
+              "except": [
+                "eveOfGreatFeastOfLord",
+                "kathismaIsAbsent"
+              ],
+              "use": "kathisma1.section1"
+            },
+            {
+              "when": "greatVespers.otherEvenings",
+              "use": "kathisma1.section1",
+              "note": "Omitted on eves of great feasts of the Lord, except Sat/Sun evening"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "little-litany-1",
+      "label": "Little Litany",
+      "note": "Said at conclusion of kathisma",
+      "blocks": [
+        {
+          "id": "little-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "little-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.little.exclamation1"
+        }
+      ]
+    },
+
+    {
+      "id": "lord-i-call",
+      "label": "Lord, I Have Cried",
+      "note": "Choir begins in the tone of the first sticheron. Reader reads psalm verses between stichera.",
+      "blocks": [
+        {
+          "id": "lord-i-call-refrain",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "lordICall.refrain"
+        },
+        {
+          "id": "lord-i-call-psalms",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "lordICall.psalmVerses",
+          "note": "Verses from Psalms 140, 141, 129, 116 read until stichera begin"
+        },
+        {
+          "id": "stichera-lord-i-call",
+          "type": "variable",
+          "slot": "stichera-lord-i-call",
+          "resolvedBy": "sticheraAssembler",
+          "params": {
+            "defaultCount": 10,
+            "insertionPoint": "betweenPsalmVerses"
+          },
+          "sources": ["octoechos", "menaion", "triodion", "pentecostarion"]
+        }
+      ]
+    },
+
+    {
+      "id": "entrance",
+      "label": "The Entrance",
+      "note": "At Great Vespers only. Deacon stands before the open Holy Doors.",
+      "blocks": [
+        {
+          "id": "entrance-wisdom",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "entrance.wisdom"
+        }
+      ]
+    },
+
+    {
+      "id": "gladsome-light",
+      "label": "Gladsome Light",
+      "blocks": [
+        {
+          "id": "gladsome-light-hymn",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "gladsome-light"
+        }
+      ]
+    },
+
+    {
+      "id": "prokeimenon",
+      "label": "Evening Prokeimenon",
+      "note": "Priest at high place (Great Vespers). Deacon exclaims 'Let us attend', priest 'Peace be unto all', deacon announces tone.",
+      "blocks": [
+        {
+          "id": "prokeimenon-intro",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prokeimenon.intro"
+        },
+        {
+          "id": "prokeimenon-text",
+          "type": "variable",
+          "slot": "prokeimenon",
+          "resolvedBy": "prokeimenonResolver",
+          "params": {
+            "sources": ["weekday", "greatFeast", "soulSaturday"]
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "old-testament-lessons",
+      "label": "Old Testament Lessons",
+      "note": "Great Vespers only, when appointed by Menaion or Pentecostarion. Three lessons typical.",
+      "blocks": [
+        {
+          "id": "ot-lessons",
+          "type": "variable",
+          "slot": "ot-lessons",
+          "resolvedBy": "lessonsResolver",
+          "optional": true,
+          "params": {
+            "source": "menaion-or-pentecostarion"
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "augmented-litany",
+      "label": "Litany of Fervent Supplication",
+      "note": "Begins during or after third lesson at Great Vespers",
+      "blocks": [
+        {
+          "id": "augmented-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.augmented"
+        },
+        {
+          "id": "augmented-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.augmented.exclamation"
+        }
+      ]
+    },
+
+    {
+      "id": "vouchsafe",
+      "label": "Vouchsafe, O Lord",
+      "blocks": [
+        {
+          "id": "vouchsafe-prayer",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.vouchsafe"
+        }
+      ]
+    },
+
+    {
+      "id": "evening-litany",
+      "label": "Litany of Completion",
+      "blocks": [
+        {
+          "id": "evening-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.evening"
+        },
+        {
+          "id": "evening-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.evening.exclamation"
+        },
+        {
+          "id": "peace-to-all",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "responses.peaceToAll"
+        },
+        {
+          "id": "bow-heads",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "responses.bowHeads"
+        },
+        {
+          "id": "bow-heads-prayer",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.bowHeads"
+        }
+      ]
+    },
+
+    {
+      "id": "aposticha",
+      "label": "Aposticha",
+      "note": "Choir sings appointed Aposticha. On Saturdays at Great Vespers, specific psalm verses are used.",
+      "blocks": [
+        {
+          "id": "aposticha-verses",
+          "type": "variable",
+          "slot": "aposticha",
+          "resolvedBy": "apostichaAssembler",
+          "params": {
+            "verseSource": {
+              "saturday": "aposticha.saturdayVerses",
+              "other": "aposticha.defaultVerses"
+            }
+          },
+          "sources": ["octoechos", "menaion", "triodion", "pentecostarion"]
+        },
+        {
+          "id": "aposticha-glory-now",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "doxology.gloryNow"
+        }
+      ]
+    },
+
+    {
+      "id": "nunc-dimittis",
+      "label": "Nunc Dimittis",
+      "note": "Read after final sticheron of Aposticha; sung at some churches",
+      "blocks": [
+        {
+          "id": "nunc-dimittis-text",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.nuncDimittis"
+        },
+        {
+          "id": "trisagion-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.trisagion"
+        },
+        {
+          "id": "glory-now-short-4",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "most-holy-trinity-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.mostHolyTrinity"
+        },
+        {
+          "id": "lord-have-mercy-3-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.lordHaveMercyThrice"
+        },
+        {
+          "id": "glory-now-short-5",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "our-father-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.ourFather"
+        },
+        {
+          "id": "kingdom-exclamation-2",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.ourFather.doxology"
+        }
+      ]
+    },
+
+    {
+      "id": "troparia",
+      "label": "Troparia",
+      "note": "Choir sings appointed Troparia for the day/feast",
+      "blocks": [
+        {
+          "id": "troparion-of-day",
+          "type": "variable",
+          "slot": "troparia",
+          "resolvedBy": "tropariaAssembler",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "structure": [
+            { "slot": "troparion-1", "label": null },
+            { "slot": "glory", "textKey": "doxology.gloryOnly", "optional": true },
+            { "slot": "troparion-2-or-kontakion", "optional": true },
+            { "slot": "now", "textKey": "doxology.nowOnly", "optional": true },
+            { "slot": "theotokion", "optional": true }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "dismissal",
+      "label": "Dismissal",
+      "blocks": [
+        {
+          "id": "dismissal-wisdom",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "dismissal.wisdom"
+        },
+        {
+          "id": "dismissal-father-bless",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.fatherBless"
+        },
+        {
+          "id": "dismissal-blessed-he-who-is",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.blessedHeWhoIs"
+        },
+        {
+          "id": "dismissal-confirm",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.confirm"
+        },
+        {
+          "id": "dismissal-theotokos",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.mostHolyTheotokos"
+        },
+        {
+          "id": "dismissal-magnification",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.magnification"
+        },
+        {
+          "id": "dismissal-glory-christ",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.gloryChrist"
+        },
+        {
+          "id": "dismissal-final-response",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.finalResponse"
+        },
+        {
+          "id": "dismissal-proper",
+          "type": "variable",
+          "slot": "dismissal-text",
+          "resolvedBy": "dismissalResolver",
+          "note": "Priest pronounces appropriate dismissal for the day/feast"
+        }
+      ]
+    }
+
+  ]
+}

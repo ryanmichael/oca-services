@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "description": "Calendar entry for a specific date — drives the service assembler",
+    "note": "This is the 'conductor' object. The assembler reads this to know which texts to pull from which books in which order."
+  },
+
+  "date": "2026-03-07",
+  "dayOfWeek": "saturday",
+  "julianDate": null,
+
+  "liturgicalContext": {
+    "season": "greatLent",
+    "weekOfLent": 2,
+    "specialDay": "soulSaturday",
+    "specialDayIndex": 2,
+    "tone": 5,
+    "toneSource": "weeklyLenten",
+    "note": "During Great Lent the weekly tone governs martyria stichera; resurrectional Octoechos is suspended"
+  },
+
+  "commemorations": [
+    {
+      "rank": 1,
+      "type": "moveable",
+      "source": "triodion",
+      "key": "lent.soulSaturday2",
+      "title": "Second Saturday of Great Lent — Memorial Saturday",
+      "category": "soulSaturday"
+    },
+    {
+      "rank": 2,
+      "type": "fixed",
+      "source": "menaion",
+      "key": "march-07",
+      "title": "The Holy Hieromartyrs of Cherson: Basil, Ephraim, Capito, Eugene, Aetherius, Elpidius, and Agathodorus",
+      "category": "hieromartyr"
+    }
+  ],
+
+  "vespers": {
+    "serviceType": "greatVespers",
+    "rubricNote": "Vespers alone (sung on Friday evening)",
+
+    "lordICall": {
+      "tone": 5,
+      "toneSource": "weeklyLenten",
+      "totalStichera": 6,
+      "slots": [
+        {
+          "verses": [6, 5, 4],
+          "count": 3,
+          "source": "triodion",
+          "key": "lent.soulSaturday2.lordICall.martyrs",
+          "tone": 5,
+          "label": "For the Martyrs (in the Tone of the week)"
+        },
+        {
+          "verses": [3, 2, 1],
+          "count": 3,
+          "source": "menaion",
+          "key": "march-07.lordICall",
+          "tone": 4,
+          "label": "For the Hieromartyrs of Cherson"
+        }
+      ],
+      "glory": {
+        "source": "triodion",
+        "key": "lent.soulSaturday2.lordICall.glory",
+        "tone": 5,
+        "label": "For the Departed (St. John of Damascus)"
+      },
+      "now": {
+        "source": "octoechos",
+        "key": "tone5.saturday.dogmatikon",
+        "tone": 5,
+        "label": "Theotokion — Dogmatikon",
+        "note": "Dogmatikon always taken from Octoechos on Saturday Great Vespers"
+      }
+    },
+
+    "prokeimenon": {
+      "pattern": "lentenWithReadings",
+      "note": "During Great Lent, two prokeimena each paired with an OT reading replace the single weekday prokeimenon",
+      "entries": [
+        {
+          "order": 1,
+          "tone": 4,
+          "source": "triodion",
+          "key": "lent.soulSaturday2.prokeimenon1",
+          "reading": {
+            "book": "Genesis",
+            "pericope": "5:32-6:8"
+          }
+        },
+        {
+          "order": 2,
+          "tone": 6,
+          "source": "triodion",
+          "key": "lent.soulSaturday2.prokeimenon2",
+          "reading": {
+            "book": "Proverbs",
+            "pericope": "6:20-7:1"
+          }
+        }
+      ]
+    },
+
+    "aposticha": {
+      "slots": [
+        {
+          "position": 1,
+          "source": "triodion",
+          "key": "lent.soulSaturday2.aposticha.idiomelon",
+          "tone": 4,
+          "label": "Idiomelon (from the Lenten Triodion)",
+          "repeatOnVerse": 1
+        },
+        {
+          "position": 2,
+          "verse": "psalm122.1-2",
+          "repeatPrevious": true
+        },
+        {
+          "position": 3,
+          "verse": "psalm122.3-4",
+          "source": "triodion",
+          "key": "lent.soulSaturday2.aposticha.martyrs",
+          "tone": 4,
+          "label": "For the Martyrs"
+        }
+      ],
+      "glory": {
+        "source": "triodion",
+        "key": "lent.soulSaturday2.aposticha.theotokion",
+        "tone": 4,
+        "label": "Theotokion",
+        "combinesGloryNow": true,
+        "note": "Glory...Now...Amen combined into one theotokion for aposticha"
+      }
+    },
+
+    "troparia": {
+      "source": "triodion",
+      "key": "lent.soulSaturday2.troparia",
+      "slots": [
+        {
+          "position": 1,
+          "tone": 2,
+          "key": "lent.soulSaturday2.troparia.allSaints"
+        },
+        {
+          "position": "glory",
+          "tone": 2,
+          "key": "lent.soulSaturday2.troparia.departed"
+        },
+        {
+          "position": "now",
+          "tone": 2,
+          "key": "lent.soulSaturday2.troparia.theotokion"
+        }
+      ]
+    }
+  }
+}

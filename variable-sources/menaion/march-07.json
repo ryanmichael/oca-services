@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "description": "Menaion texts for March 7 — Holy Hieromartyrs of Cherson",
+    "source": "OCA Department of Liturgical Music and Translations",
+    "fixedDate": "03-07"
+  },
+
+  "key": "march-07",
+  "date": "03-07",
+  "title": "The Holy Hieromartyrs of Cherson",
+  "fullTitle": "The Holy Hieromartyrs of Cherson: Basil, Ephraim, Capito, Eugene, Aetherius, Elpidius, and Agathodorus",
+  "category": "hieromartyr",
+  "feastRank": "minor",
+
+  "saints": [
+    "Basil", "Ephraim", "Capito", "Eugene", "Aetherius", "Elpidius", "Agathodorus"
+  ],
+
+  "vespers": {
+
+    "lordICall": {
+      "tone": 4,
+      "melodyNote": "Thou hast given a sign",
+      "hymns": [
+        {
+          "verse": 3,
+          "text": "O heavenly-minded fathers,\nyou were invincible martyrs,\nall-praised hierarchs and beacons of the universe,\nimmovable pillars of the Church of God,\nand a foundation of sound doctrines,\ninstructors of the pious and destroyers of error,\nlight-bearing guides for our souls,\nfellow citizens with the Angels,\nand champions of the Trinity."
+        },
+        {
+          "verse": 2,
+          "text": "Let the glorious Ephraim be blessed with divine speeches,\ntogether with the divinely wise Basil,\nthe mighty Cápito, the godly Agathadórus,\nElpídius, Aethérius and the glorious Eugene;\nfor they lived righteously and suffered in a holy way.\nThey were revealed to be inhabitants of the Kingdom of heaven."
+        },
+        {
+          "verse": 1,
+          "text": "Having mortified the carnal mind with ascetic labors,\nby invoking the name of God,\nthe glorious Basil raised up a man from the dead.\nThe most holy shepherd Capito\nwas seen unconsumed while he stood and rejoiced in the midst of the fire.\nBy their supplications, O Lover of man,\ngrant us the means of atonement and Thy great mercy!"
+        }
+      ]
+    }
+  }
+}

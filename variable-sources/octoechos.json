@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "description": "Octoechos — variable hymns organized by tone and day. The 8-tone cycle governs which tone's content is used on a given week.",
+    "note": "This file will grow to include all 8 tones. Populated from real service examples.",
+    "version": "0.1.0 — Tone 5 Saturday Vespers added from 2026-03-07 example"
+  },
+
+  "tone5": {
+    "saturday": {
+      "vespers": {
+
+        "dogmatikon": {
+          "tone": 5,
+          "label": "Theotokion — Dogmatikon",
+          "note": "Always used as the 'Now and ever' at Lord I Call on Saturday Great Vespers when Tone 5 is the weekly tone",
+          "text": "In the Red Sea of old,\na type of the Virgin Bride was prefigured.\nThere Moses divided the waters;\nhere Gabriel assisted in the miracle.\nThere Israel crossed the sea without getting wet,\nhere the Virgin gave birth to Christ without seed.\nAfter Israel's passage, the sea remained impassable;\nafter Emmanuel's birth, the Virgin remained a Virgin.\nO ever-existing God Who didst appear as Man,\nO Lord, have mercy on us!"
+        },
+
+        "lordICall": {
+          "note": "On Soul Saturdays during Lent, the resurrectional stichera are replaced by Triodion martyria and departed texts. Dogmatikon remains from Octoechos.",
+          "resurrectional": {
+            "note": "TODO — to be populated from a non-Lenten Saturday example in Tone 5"
+          }
+        },
+
+        "aposticha": {
+          "note": "TODO — resurrectional aposticha for Tone 5 Saturday to be populated"
+        },
+
+        "troparion": {
+          "note": "TODO — resurrectional troparion for Tone 5 to be populated"
+        },
+
+        "theotokionAfterTroparion": {
+          "note": "TODO — resurrectional theotokion (after troparion) for Tone 5 to be populated"
+        }
+      }
+    }
+  },
+
+  "tone1": { "note": "TODO" },
+  "tone2": { "note": "TODO" },
+  "tone3": { "note": "TODO" },
+  "tone4": { "note": "TODO" },
+  "tone6": { "note": "TODO" },
+  "tone7": { "note": "TODO" },
+  "tone8": { "note": "TODO" }
+}

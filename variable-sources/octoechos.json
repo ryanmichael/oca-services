@@ -1,8 +1,133 @@
 {
   "_meta": {
     "description": "Octoechos — variable hymns organized by tone and day. The 8-tone cycle governs which tone's content is used on a given week.",
-    "note": "This file will grow to include all 8 tones. Populated from real service examples.",
-    "version": "0.1.0 — Tone 5 Saturday Vespers added from 2026-03-07 example"
+    "note": "Populated incrementally from real OCA service examples. Missing hymns are silently skipped by the assembler.",
+    "version": "0.2.0 — Tone 3 dogmatikon; Tone 4 full Saturday Vespers; Tone 8 partial Saturday Vespers",
+    "sources": {
+      "tone3.saturday.vespers.dogmatikon": "OCA service texts 2025-11-01 (Holy Unmercenaries Cosmas & Damian, Polyeleos)",
+      "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO)",
+      "tone8.saturday.vespers.*": "OCA service texts 2026-04-18 (Bright Saturday — note: Paschal season context)"
+    }
+  },
+
+  "tone1": { "note": "TODO" },
+  "tone2": { "note": "TODO" },
+
+  "tone3": {
+    "note": "Only the Dogmatikon has been populated from a real service (Nov 1, 2025). All other Saturday Vespers content is TODO.",
+    "saturday": {
+      "vespers": {
+
+        "dogmatikon": {
+          "tone": 3,
+          "label": "Theotokion — Dogmatikon",
+          "text": "How can we not wonder\nat thy mystical childbearing, O exalted Mother?\nFor without receiving the touch of man,\nthou gavest birth to a Son in the flesh, O immaculate Virgin.\nThe Son born of the Father before eternity\nwas born of thee at the fullness of time, O honored Lady.\nHe underwent no mingling, no change, no division,\nbut preserved the fullness of each nature.\nEntreat Him, O Lady and Virgin and Mother,\nto save the souls of those who, in the Orthodox manner, confess thee\nto be the Theotokos."
+        },
+
+        "lordICall": {
+          "resurrectional": {
+            "note": "TODO — to be populated from a non-Lenten Saturday in Tone 3",
+            "hymns": []
+          }
+        },
+
+        "aposticha": {
+          "note": "TODO — resurrectional aposticha for Tone 3 Saturday to be populated"
+        },
+
+        "troparion": {
+          "note": "TODO — resurrectional troparion for Tone 3 to be populated"
+        },
+
+        "dismissalTheotokion": {
+          "note": "TODO — resurrectional dismissal theotokion for Tone 3 to be populated"
+        }
+      }
+    }
+  },
+
+  "tone4": {
+    "saturday": {
+      "vespers": {
+
+        "dogmatikon": {
+          "tone": 4,
+          "label": "Theotokion — Dogmatikon",
+          "text": "The Prophet David was a father of the Lord through thee, O Virgin.\nHe foretold in songs the One Who worked wonder in thee:\n\"At Thy right hand stood the Queen,\"\nThy Mother, the mediatrix of life,\nsince God was freely born of her without a father.\nHe wanted to renew His fallen image, made corrupt in passion,\nso He took the lost sheep upon His shoulder\nand brought it to His Father,\njoining it to the heavenly pow'rs.\nChrist, Who has great and rich mercy, has saved the world, O Theotokos."
+        },
+
+        "lordICall": {
+          "note": "Hymns 1–4 extracted from the Sunday Vigil (Forgiveness Sunday, Feb 22, 2026). Hymns 5–6 (verses 6 and 5 on a regular Saturday) were displaced by Triodion stichera on that occasion and remain TODO.",
+          "resurrectional": {
+            "hymns": [
+              {
+                "order": 1,
+                "note": "verse 10 on a Sunday Vigil; would be verse 6 on a regular Saturday with 6 resurrectional stichera",
+                "text": "We glorify Thy Resurrection on the third day, O Christ God,\nby always honoring Thy life-creating Cross;\nby it, Thou hast renewed the corrupted nature of man, O almighty One.\nBy it, Thou hast renewed our entrance to heaven,\nfor Thou art good and the Lover of man."
+              },
+              {
+                "order": 2,
+                "text": "Thou didst loose the Tree's verdict of disobedience, O Savior,\nby being voluntarily nailed to the tree of the Cross.\nBy descending to hell, O almighty God,\nThou didst break the bonds of death.\nTherefore, we adore Thy Resurrection from the dead, singing in joy:\n\"Glory to Thee, O all-powerful Lord!\""
+              },
+              {
+                "order": 3,
+                "text": "Thou didst smash the gates of hell, O Lord,\nand by Thy death Thou didst demolish the kingdom of death.\nThou didst deliver the race of men from corruption,\ngranting the world life, incorruption and great mercy."
+              },
+              {
+                "order": 4,
+                "attribution": "by Anatolius",
+                "text": "Come, O people,\nlet us sing of the Savior's Resurrection on the third day!\nBy it, we have been freed from the unbreakable bonds of hell.\nBy it, we have received life and incorruption.\nSave us by Thy Resurrection!\nO Life-creating and almighty Savior, glory to Thee!"
+              },
+              {
+                "order": 5,
+                "note": "TODO — verse 6 of regular Saturday Lord I Call"
+              },
+              {
+                "order": 6,
+                "note": "TODO — verse 5 of regular Saturday Lord I Call"
+              }
+            ]
+          }
+        },
+
+        "aposticha": {
+          "note": "These are Sunday Vigil aposticha (Ps. 92 verses). Saturday aposticha use different psalm verses (from fixedTexts.aposticha.saturdayVerses) and the stichera themselves may also differ. Treat these as approximate until a plain Saturday in Tone 4 is found.",
+          "hymns": [
+            {
+              "order": 1,
+              "text": "By ascending the Cross, O Lord,\nThou hast annulled our ancestral curse.\nBy descending to hell, Thou hast freed the eternal prisoners,\ngranting incorruption to the human race.\nTherefore in songs we glorify\nThy life-creating and saving Resurrection."
+            },
+            {
+              "order": 2,
+              "text": "By hanging upon the tree, O only powerful Lord,\nThou didst shake all of creation.\nBy being laid in the tomb\nThou hast raised those who dwelt in the tombs,\ngranting life and incorruption to the human race.\nTherefore in songs we glorify Thy rising on the third day."
+            },
+            {
+              "order": 3,
+              "text": "The lawless people, O Christ,\nhanded Thee over to Pilate, condemned to be crucified,\nthus proving themselves ungrateful before their Benefactor.\nBut voluntarily Thou didst endure burial,\nrising by Thine own power on the third day as God,\ngranting us life everlasting and great mercy."
+            },
+            {
+              "order": 4,
+              "text": "With tears the women reached Thy tomb,\nsearching for Thee, but not finding Thee.\nThey wept with wailing and lamented:\n\"Woe to us! Our Savior, King of all,\nhow wast Thou stolen?\nWhat place can hold Thy life-bearing body?\"\nAn Angel replied to them:\n\"Do not weep, but go and proclaim\nthat the Lord is risen,\ngranting us joy as the only compassionate One!\""
+            }
+          ],
+          "theotokion": {
+            "note": "TODO — Saturday aposticha theotokion for Tone 4 to be populated"
+          }
+        },
+
+        "troparion": {
+          "tone": 4,
+          "label": "Resurrectional Troparion",
+          "text": "When the women disciples of the Lord\nlearned from the angel the joyous message of Thy Resurrection,\nthey cast away the ancestral curse\nand elatedly told the apostles:\n\"Death is overthrown!\nChrist God is risen,\ngranting the world great mercy!\""
+        },
+
+        "dismissalTheotokion": {
+          "tone": 4,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "The mystery of all eternity, unknown even by Angels,\nthrough thee, O Theotokos, is revealed to those on earth:\nGod incarnate by union without confusion.\nHe voluntarily accepted the Cross for us,\nby which He resurrected the first-created man,\nsaving our souls from death."
+        }
+      }
+    }
   },
 
   "tone5": {
@@ -19,7 +144,8 @@
         "lordICall": {
           "note": "On Soul Saturdays during Lent, the resurrectional stichera are replaced by Triodion martyria and departed texts. Dogmatikon remains from Octoechos.",
           "resurrectional": {
-            "note": "TODO — to be populated from a non-Lenten Saturday example in Tone 5"
+            "note": "TODO — to be populated from a non-Lenten Saturday example in Tone 5",
+            "hymns": []
           }
         },
 
@@ -31,18 +157,100 @@
           "note": "TODO — resurrectional troparion for Tone 5 to be populated"
         },
 
-        "theotokionAfterTroparion": {
-          "note": "TODO — resurrectional theotokion (after troparion) for Tone 5 to be populated"
+        "dismissalTheotokion": {
+          "note": "TODO — resurrectional dismissal theotokion for Tone 5 to be populated"
         }
       }
     }
   },
 
-  "tone1": { "note": "TODO" },
-  "tone2": { "note": "TODO" },
-  "tone3": { "note": "TODO" },
-  "tone4": { "note": "TODO" },
   "tone6": { "note": "TODO" },
   "tone7": { "note": "TODO" },
-  "tone8": { "note": "TODO" }
+
+  "tone8": {
+    "note": "Extracted from OCA Bright Saturday Vespers (Apr 18, 2026). All 6 Lord I Call stichera and Dogmatikon are present. Aposticha are partial (Paschal stichera replaced positions 2–4 on that occasion).",
+    "saturday": {
+      "vespers": {
+
+        "dogmatikon": {
+          "tone": 8,
+          "label": "Theotokion — Dogmatikon",
+          "text": "The King of heaven, because of His love for man,\nappeared on earth and dwelt with men.\nHe took flesh from the pure Virgin\nand after assuming it, He came forth from her.\nThe Son is one: in two natures, yet one Person.\nProclaiming Him as perfect God and perfect Man,\nwe confess Christ our God!\nEntreat Him, O unwedded Mother, to have mercy on our souls."
+        },
+
+        "lordICall": {
+          "resurrectional": {
+            "note": "All 6 stichera extracted from Bright Saturday Vespers (Apr 18, 2026). On a regular Saturday with 6 resurrectional stichera these fill verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "note": "verse 6",
+                "text": "We offer to Thee, O Christ,\nour evening song and reasonable service,\nfor Thou didst will to have mercy on us\nby Thy Resurrection."
+              },
+              {
+                "order": 2,
+                "note": "verse 5",
+                "text": "Lord, Lord, do not cast us away from Thy face!\nFor Thou didst will to have mercy on us\nby Thy Resurrection."
+              },
+              {
+                "order": 3,
+                "note": "verse 4",
+                "text": "Rejoice, O holy Zion:\nMother of the churches, the abode of God,\nfor thou wast the first to receive remission of sins\nby the Resurrection."
+              },
+              {
+                "order": 4,
+                "attribution": "by Anatolius",
+                "note": "verse 3",
+                "text": "The Word of God the Father,\nbegotten before the ages,\nin the latter times willed to be incarnate of the Virgin\nand endured crucifixion unto death.\nHe has saved mortal man\nby His Resurrection."
+              },
+              {
+                "order": 5,
+                "note": "verse 2",
+                "text": "We glorify Thee, O Lord,\nfor Thou didst voluntarily endure the Cross for our sake.\nWe fall down in worship before Thee, O almighty Savior.\nDo not cast us away from Thy face\nbut hear us and save us, O Lover of man,\nby Thy Resurrection!"
+              },
+              {
+                "order": 6,
+                "note": "verse 1",
+                "text": "Glory to Thee, O Savior Christ,\nOnly-begotten Son of God,\nwho wast nailed to the Cross\nand resurrected from the tomb on the third day!"
+              }
+            ]
+          },
+          "glory": {
+            "tone": 8,
+            "text": "We glorify Thy Resurrection from the dead, O Christ,\nby which Thou hast freed Adam's race from the tortures of hell,\nand as God hast granted to the world eternal life and great mercy."
+          }
+        },
+
+        "aposticha": {
+          "note": "Only the first sticheron (idiomelon) is from a clean Tone 8 source. Positions 2–3 need a plain Saturday in Tone 8.",
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "text": "Descending from heaven to ascend the Cross,\nthe eternal Life has come for death\nto raise those who are fallen;\nto enlighten those in darkness.\nO Jesus, our Savior and illuminator, glory to Thee!"
+            },
+            {
+              "order": 2,
+              "note": "TODO"
+            },
+            {
+              "order": 3,
+              "note": "TODO"
+            }
+          ],
+          "theotokion": {
+            "note": "TODO — Saturday aposticha theotokion for Tone 8 to be populated"
+          }
+        },
+
+        "troparion": {
+          "note": "TODO — resurrectional troparion for Tone 8 to be populated"
+        },
+
+        "dismissalTheotokion": {
+          "note": "TODO — resurrectional dismissal theotokion for Tone 8 to be populated"
+        }
+      }
+    }
+  }
 }

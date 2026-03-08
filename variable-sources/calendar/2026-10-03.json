@@ -1,0 +1,131 @@
+{
+  "_meta": {
+    "description": "Calendar entry for October 3, 2026 — a regular Saturday in ordinary time (post-Pentecost).",
+    "note": "Menaion texts for St. Dionysius are placeholder TODO. Octoechos Tone 8 content is from Bright Saturday (Apr 18, 2026)."
+  },
+
+  "date": "2026-10-03",
+  "dayOfWeek": "saturday",
+  "julianDate": null,
+
+  "liturgicalContext": {
+    "season": "ordinaryTime",
+    "weekAfterPentecost": 17,
+    "tone": 8,
+    "toneSource": "octoechosCycle",
+    "note": "Tone 8 — week of Sunday Sep 27, 2026. Saturday Vespers belongs to this week's tone."
+  },
+
+  "commemorations": [
+    {
+      "rank": 1,
+      "type": "fixed",
+      "source": "menaion",
+      "key": "october-03",
+      "title": "Hieromartyr Dionysius the Areopagite, Bishop of Athens, and Martyrs Rusticus the Presbyter and Eleutherius the Deacon",
+      "category": "hieromartyr",
+      "feastRank": "doxology"
+    }
+  ],
+
+  "vespers": {
+    "serviceType": "greatVespers",
+    "rubricNote": "Great Vespers with Entrance (sung on Friday evening, October 2)",
+
+    "lordICall": {
+      "tone": 8,
+      "totalStichera": 6,
+      "note": "3 resurrectional from Octoechos + 3 from Menaion for the saint. Standard arrangement for a Doxology feast on Saturday.",
+      "slots": [
+        {
+          "verses": [6, 5, 4],
+          "count": 3,
+          "source": "octoechos",
+          "key": "tone8.saturday.vespers.lordICall.resurrectional",
+          "tone": 8,
+          "label": "Resurrectional"
+        },
+        {
+          "verses": [3, 2, 1],
+          "count": 3,
+          "source": "menaion",
+          "key": "october-03.lordICall",
+          "tone": 4,
+          "label": "For the Hieromartyr Dionysius"
+        }
+      ],
+      "glory": {
+        "source": "menaion",
+        "key": "october-03.lordICall.glory",
+        "tone": 4,
+        "label": "For the Hieromartyr Dionysius"
+      },
+      "now": {
+        "source": "octoechos",
+        "key": "tone8.saturday.vespers.dogmatikon",
+        "tone": 8,
+        "label": "Theotokion — Dogmatikon",
+        "note": "Dogmatikon always taken from Octoechos on Saturday Great Vespers"
+      }
+    },
+
+    "prokeimenon": {
+      "pattern": "weekday",
+      "weekday": "saturdayGreatVespers",
+      "note": "Great Prokeimenon (Tone 8): 'Thou hast given an inheritance…' — always sung at Saturday Great Vespers in ordinary time"
+    },
+
+    "aposticha": {
+      "note": "Octoechos resurrectional idiomelon repeated on the psalm verses; Glory and Now from Menaion.",
+      "slots": [
+        {
+          "position": 1,
+          "source": "octoechos",
+          "key": "tone8.saturday.vespers.aposticha.hymns.0",
+          "tone": 8,
+          "label": "Resurrectional (Idiomelon)"
+        },
+        {
+          "position": 2,
+          "repeatPrevious": true
+        },
+        {
+          "position": 3,
+          "repeatPrevious": true
+        }
+      ],
+      "glory": {
+        "source": "menaion",
+        "key": "october-03.aposticha.glory",
+        "tone": 4,
+        "label": "For the Hieromartyr Dionysius"
+      },
+      "now": {
+        "source": "menaion",
+        "key": "october-03.aposticha.now",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparia": {
+      "source": "menaion",
+      "key": "october-03.troparia",
+      "slots": [
+        {
+          "order": 1,
+          "tone": 4,
+          "key": "october-03.troparion",
+          "label": "For the Hieromartyr Dionysius"
+        },
+        {
+          "position": "now",
+          "tone": 8,
+          "source": "octoechos",
+          "key": "tone8.saturday.vespers.dismissalTheotokion",
+          "label": "Dismissal Theotokion"
+        }
+      ]
+    }
+  }
+}

@@ -455,6 +455,16 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
   }
 
+  if (apostichaSpec.now) {
+    const nowSource = resolveSource(apostichaSpec.now.source, apostichaSpec.now.key, sources);
+    blocks.push(makeBlock('apost-now-label', section, 'doxology', null,
+      fixedTexts.doxology.nowOnly));
+    if (nowSource) {
+      blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
+        nowSource.text, { tone: apostichaSpec.now.tone, label: apostichaSpec.now.label }));
+    }
+  }
+
   return blocks;
 }
 
@@ -478,7 +488,7 @@ function assembleTroparia(tropariaSpec, sources) {
   const blocks = [];
   for (const slot of tropariaSpec.slots) {
     const key = slot.key.split('.').slice(-1)[0]; // last segment as display key
-    const sourceObj = resolveSource(tropariaSpec.source, slot.key, sources);
+    const sourceObj = resolveSource(slot.source || tropariaSpec.source, slot.key, sources);
     if (!sourceObj) continue;
 
     if (slot.position === 'glory') {

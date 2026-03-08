@@ -6,6 +6,18 @@
   },
 
   "weekday": {
+    "saturdayGreatVespers": {
+      "tone": 8,
+      "label": "Great Prokeimenon",
+      "note": "Sung at Saturday Great Vespers in place of the weekday prokeimenon. Always Tone 8.",
+      "refrain": "Thou hast given an inheritance to them that fear Thee, O Lord.",
+      "psalmRef": "Ps. 60:5b",
+      "verses": [
+        { "text": "From the ends of the earth I call to Thee.", "psalmRef": "Ps. 60:2a" },
+        { "text": "I will take shelter under the shadow of Thy wings.", "psalmRef": "Ps. 60:4b" },
+        { "text": "So I will ever sing praises to Thy Name.", "psalmRef": "Ps. 60:8a" }
+      ]
+    },
     "saturday": {
       "tone": 6,
       "label": "The Lord is King",

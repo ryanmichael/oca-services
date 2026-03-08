@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "description": "Menaion — October 3. Hieromartyr Dionysius the Areopagite, Bishop of Athens, and Martyrs Rusticus the Presbyter and Eleutherius the Deacon.",
+    "feastRank": "doxology",
+    "tone": 4,
+    "note": "Hymn texts are placeholders. Replace with actual OCA Menaion texts when available.",
+    "source": "TODO — obtain from OCA Menaion, October volume"
+  },
+
+  "vespers": {
+
+    "lordICall": {
+      "note": "3 stichera for the Hieromartyr. Tone 4.",
+      "hymns": [
+        {
+          "order": 1,
+          "text": "[Menaion sticheron 1 for Hieromartyr Dionysius — TODO]"
+        },
+        {
+          "order": 2,
+          "text": "[Menaion sticheron 2 for Hieromartyr Dionysius — TODO]"
+        },
+        {
+          "order": 3,
+          "text": "[Menaion sticheron 3 for Hieromartyr Dionysius — TODO]"
+        }
+      ],
+      "glory": {
+        "tone": 4,
+        "text": "[Menaion glory sticheron for Hieromartyr Dionysius — TODO]"
+      }
+    },
+
+    "aposticha": {
+      "glory": {
+        "tone": 4,
+        "label": "For the Hieromartyr Dionysius",
+        "text": "[Menaion aposticha glory for Hieromartyr Dionysius — TODO]"
+      },
+      "now": {
+        "tone": 4,
+        "label": "Theotokion",
+        "text": "[Menaion aposticha theotokion — TODO]"
+      }
+    },
+
+    "troparion": {
+      "tone": 4,
+      "label": "Troparion of the Hieromartyr",
+      "text": "[Troparion of Hieromartyr Dionysius the Areopagite — TODO]"
+    }
+  }
+}

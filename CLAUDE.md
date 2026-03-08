@@ -6,16 +6,20 @@ Build a web application that generates daily service texts for Orthodox Christia
 worship services (Matins, Daily Vespers, Great Vespers, Divine Liturgy) for any
 date, and eventually serves this data via an API.
 
-**Current scope:** Great Vespers service assembly, working toward a rendered
-HTML service sheet for any given date.
+**Current scope:** Great Vespers service assembly, rendering to HTML, working
+toward a rendered HTML service sheet for any given date.
 
 ---
 
 ## What Has Been Built
 
-The core data architecture and assembler are in place and working. Running
-`node test-assembly.js` successfully assembles a complete Great Vespers service
-(154 blocks, 16 sections) for March 7, 2026 using real liturgical texts.
+The core data architecture, assembler, and HTML renderer are in place and working.
+
+- `node test-assembly.js` assembles a complete Great Vespers (155 blocks, 16 sections)
+  for March 7, 2026 (Soul Saturday II, Lenten).
+- `node render.js` generates `vespers-2026-03-07.html` and `vespers-2026-10-03.html`.
+- A second calendar entry (Oct 3, 2026 — regular Saturday, Tone 8) assembles and
+  renders correctly, with Menaion texts marked TODO.
 
 ### File Map
 
@@ -23,7 +27,9 @@ The core data architecture and assembler are in place and working. Running
 CLAUDE.md                              ← you are here
 README.md                              ← architecture overview
 assembler.js                           ← core assembly engine
-test-assembly.js                       ← test harness (run to verify)
+renderer.js                            ← renders ServiceBlock[] → self-contained HTML
+render.js                              ← convenience script: assemble + write HTML
+test-assembly.js                       ← test harness (run to verify Mar 7)
 
 service-structure/
   great-vespers.json                   ← ordered skeleton of the full service
@@ -32,14 +38,27 @@ fixed-texts/
   vespers-fixed.json                   ← all invariable texts (psalms, litanies, prayers)
 
 variable-sources/
-  prokeimena.json                      ← evening prokeimena, all 7 weekdays + special
-  octoechos.json                       ← 8-tone cycle hymns (PARTIAL — Tone 5 only)
+  prokeimena.json                      ← evening prokeimena (all 7 weekdays, Saturday
+                                          Great Prokeimenon, and special)
+  octoechos.json                       ← 8-tone cycle hymns:
+                                          Tone 3: dogmatikon only
+                                          Tone 4: full Saturday Vespers (4 of 6
+                                            resurrectional stichera; aposticha; troparion;
+                                            dismissal theotokion) — from Forgiveness Sunday
+                                          Tone 5: dogmatikon only
+                                          Tone 8: dogmatikon + 6 Lord I Call stichera +
+                                            aposticha idiomelon — from Bright Saturday
+                                          Tones 1, 2, 6, 7: TODO
   calendar/
-    2026-03-07.json                    ← example calendar day entry (March 7, 2026)
+    2026-03-07.json                    ← Soul Saturday II / Hieromartyrs of Cherson
+                                          (Lenten, Tone 5)
+    2026-10-03.json                    ← Hieromartyr Dionysius the Areopagite
+                                          (ordinary time, Tone 8) — Menaion texts TODO
   triodion/
     lent-soul-saturday-2.json          ← Soul Saturday 2 texts (full Vespers + Liturgy)
   menaion/
     march-07.json                      ← Hieromartyrs of Cherson (March 7)
+    october-03.json                    ← Hieromartyr Dionysius the Areopagite (TODO)
 ```
 
 ---
@@ -91,45 +110,55 @@ returns an ordered array of `ServiceBlock` objects ready for rendering.
 
 ## Immediate Next Tasks (Priority Order)
 
-### 1. Render the assembled service as HTML
+### 1. ✅ Render the assembled service as HTML — DONE
 
-Build `renderer.js` (or a React/HTML frontend) that takes the `ServiceBlock[]`
-output of `assembleVespers()` and renders a service sheet matching the style
-of the attached `vespers-service-sheet.html` reference.
+`renderer.js` renders `ServiceBlock[]` to a self-contained HTML file.
+`render.js` is the convenience script. CSS classes match the service sheet
+reference. Run `node render.js` to regenerate both HTML files.
 
-The HTML reference uses these CSS classes that map to block types:
-```
-type: "rubric"   → <p class="rubric">
-type: "prayer"   → <p class="prayer">
-type: "hymn"     → <p class="hymn"> with <div class="source-tag"> for source/tone
-type: "verse"    → <p class="verse">
-type: "response" → <p class="response">
-type: "doxology" → <div class="glory-line">
-speaker shown via → <div class="speaker">
-sections via     → <div class="section-head">
-```
+### 2. Populate the Octoechos (in progress)
 
-The rendered output should be a self-contained HTML file.
+`variable-sources/octoechos.json` has partial data. Still needed:
 
-### 2. Populate the Octoechos
+**Dogmatika** (the single most important piece per tone — always used at
+Saturday Great Vespers):
+- Tone 1: TODO
+- Tone 2: TODO
+- Tone 6: TODO
+- Tone 7: TODO
 
-`variable-sources/octoechos.json` currently only has the Tone 5 Dogmatikon.
-It needs all 8 tones populated for Saturday Vespers at minimum:
-- Resurrectional stichera at Lord I Call (typically 6–8 hymns)
-- Aposticha stichera (3 hymns + theotokion)
-- Resurrectional troparion
-- Resurrectional theotokion (after troparion)
-- Dogmatikon (already done for Tone 5)
+**Full Saturday Vespers content** (per tone):
+- Resurrectional stichera at Lord I Call — 6 hymns
+  - Tone 4: hymns 5–6 (vv. 6 and 5) TODO
+  - Tones 1, 2, 5, 6, 7: all TODO
+- Aposticha stichera — 3 hymns + theotokion
+  - Tone 4: Saturday-specific versions TODO (current data is from Sunday Vigil)
+  - Tones 1, 2, 5, 6, 7: all TODO
+  - Tone 8: hymns 2–3 + theotokion TODO
+- Resurrectional troparion — Tones 1, 2, 5, 6, 7, 8: TODO
+- Dismissal theotokion — Tones 1, 2, 5, 6, 7, 8: TODO
 
-Source: https://www.oca.org/liturgical-texts or the OCA Reader's Service Book.
+**How to source these texts:**
+The OCA publishes weekly service texts at `https://www.oca.org/liturgics/service-texts`.
+Files follow the pattern `https://files.oca.org/service-texts/YYYY-MMDD-texts-tt.docx`
+(tt = Thou/Thy, yy = You/Your). Download and unzip to extract `word/document.xml`,
+then strip XML tags. The best sources are Sunday Vigil files (show full 10-stichera
+Lord I Call with all resurrectional hymns) or Saturday Vespers files when available.
+The Tone for a given Sunday can be computed — see `calendar-rules.js` task below.
 
-### 3. Add more calendar entries
+**Known limitation:** The OCA does not publish service texts for plain Saturdays
+with no notable feast — those days use straight Octoechos from the Reader's Service
+Book. To collect plain Saturday data, use Sunday files (which include the same
+resurrectional stichera) or source directly from the OCA Reader's Service Book.
 
-Each date needs a `variable-sources/calendar/YYYY-MM-DD.json`. The pattern
-is established by `2026-03-07.json`. Add:
-- A regular (non-Lenten) Saturday Great Vespers in each tone
-- A Sunday Vespers example
-- A weekday Vespers with a single prokeimenon (no OT readings)
+### 3. Fill in Menaion entries
+
+`variable-sources/menaion/october-03.json` has placeholder texts for
+Hieromartyr Dionysius the Areopagite. Once real texts are obtained from the
+OCA October Menaion, replace the `[... — TODO]` strings with actual hymn text.
+The calendar entry `2026-10-03.json` is already wired up and ready.
+
+Add more Menaion entries following the same pattern for other dates.
 
 ### 4. Build `calendar-rules.js`
 
@@ -137,11 +166,15 @@ A module that can *generate* calendar entries programmatically rather than
 requiring one hand-authored file per day. Key rules to encode:
 
 ```js
-// Tone cycle: 8-week repeating cycle, anchored to All Saints Sunday
+// Tone cycle: 8-week repeating cycle
+// Tone 1 starts on the Sunday after All Saints Sunday
+// All Saints Sunday = first Sunday after Pentecost
+// Pentecost = 50 days after Pascha
 function getToneForDate(date) { ... }
 
 // Day of week → weekday prokeimenon key
-function getWeekdayProkeimenon(dayOfWeek) { ... }
+// Saturday Great Vespers → "saturdayGreatVespers"
+function getWeekdayProkeimenon(dayOfWeek, serviceType) { ... }
 
 // Is this day a Soul Saturday?
 function isSoulSaturday(date) { ... }  // 2nd, 3rd, 4th Sat of Great Lent
@@ -150,7 +183,18 @@ function isSoulSaturday(date) { ... }  // 2nd, 3rd, 4th Sat of Great Lent
 function sungBlessedIsTheMan(date, serviceType) { ... }
 ```
 
-### 5. Daily Vespers structure
+**Tone calculation note:** Saturday Great Vespers uses the tone of the week
+that is ending (the preceding Sunday's tone), NOT the upcoming Sunday's tone.
+The new tone begins at Sunday Matins. Verified: Oct 3, 2026 = Tone 8 (week
+of Sep 27 Sunday).
+
+### 5. Add more calendar entries
+
+- Sunday Vespers example (to test the Sunday prokeimenon path)
+- A weekday Daily Vespers with a single prokeimenon (no OT readings)
+- Regular Saturdays in additional tones as Octoechos data is filled in
+
+### 6. Daily Vespers structure
 
 `service-structure/` only has `great-vespers.json`. Daily Vespers differs in:
 - No entrance

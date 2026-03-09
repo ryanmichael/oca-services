@@ -359,6 +359,94 @@ function getCollectedDates() {
   finally { db?.close(); }
 }
 
+// ─── DB source resolver (Step 2) ─────────────────────────────────────────────
+
+/**
+ * Transforms a flat array of DB block rows for one section into the nested
+ * object shape the assembler expects via deepGet():
+ *
+ *   { text, tone, label, hymns: [{text,tone,label}, …], glory: {…}, now: {…} }
+ *
+ * Rules:
+ *   - Hymns with position='glory' or position='now' go into glory/now slots.
+ *   - For lordICall only: the very first hymn (before any verse block) is the
+ *     sung refrain already provided by fixed texts — skip it.
+ *   - All other hymns are collected into hymns[] in document order.
+ *   - text/tone/label are convenience aliases for hymns[0] (idiomelon pattern).
+ */
+function transformSectionBlocks(section, blocks) {
+  const hymns = [];
+  let glory      = null;
+  let now        = null;
+  let seenVerse  = false;
+
+  for (const b of blocks) {
+    if (b.type === 'verse')        { seenVerse = true; continue; }
+    if (b.type === 'glory_marker') { continue; }
+    if (b.type === 'now_marker')   { continue; }
+    if (b.type !== 'hymn')         { continue; }
+
+    if (b.position === 'glory') { glory = { text: b.text, tone: b.tone, label: b.label }; continue; }
+    if (b.position === 'now')   { now   = { text: b.text, tone: b.tone, label: b.label }; continue; }
+
+    // lordICall only: skip the opening refrain (appears before any psalm verse)
+    if (section === 'lordICall' && !seenVerse) continue;
+
+    hymns.push({ text: b.text, tone: b.tone, label: b.label });
+  }
+
+  return {
+    text:  hymns[0]?.text  ?? null,
+    tone:  hymns[0]?.tone  ?? null,
+    label: hymns[0]?.label ?? null,
+    hymns,
+    ...(glory ? { glory } : {}),
+    ...(now   ? { now }   : {}),
+  };
+}
+
+/**
+ * Queries vespers blocks from the DB for a given date/pronoun and returns a
+ * source object compatible with the assembler's resolveSource/deepGet system.
+ *
+ * Shape: { 'YYYY-MM-DD': { vespers: { lordICall: {…}, aposticha: {…}, … } } }
+ *
+ * Falls back gracefully to an empty object if the DB is unavailable or the
+ * date has no collected texts.
+ */
+function buildDbSource(date, pronoun) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return {};
+
+    const rows = db.prepare(`
+      SELECT section, block_order, type, tone, label, verse_number, position, text
+      FROM blocks WHERE date = ? AND pronoun = ? AND service = 'vespers'
+      ORDER BY section, block_order
+    `).all(date, pronoun);
+
+    if (rows.length === 0) return {};
+
+    const bySection = {};
+    for (const row of rows) {
+      (bySection[row.section] ??= []).push(row);
+    }
+
+    const vespers = {};
+    for (const [section, blocks] of Object.entries(bySection)) {
+      vespers[section] = transformSectionBlocks(section, blocks);
+    }
+
+    return { [date]: { vespers } };
+  } catch (err) {
+    console.error('buildDbSource error:', err.message);
+    return {};
+  } finally {
+    db?.close();
+  }
+}
+
 function getDbBlocks(date, pronoun, service = 'vespers') {
   let db;
   try {
@@ -473,10 +561,15 @@ function handleRequest(req, res) {
         return;
       }
 
-      // Assemble the full service
+      // Assemble the full service.
+      // Merge per-request DB source so variable slots referencing source:'db'
+      // resolve against collected texts for this specific date.
+      const dbSource    = buildDbSource(date, pronoun);
+      const reqSources  = Object.assign({}, sources, { db: dbSource });
+
       let blocks;
       try {
-        blocks = assembleVespers(calendarEntry, fixedTexts, sources);
+        blocks = assembleVespers(calendarEntry, fixedTexts, reqSources);
       } catch (err) {
         console.error('Assembly error:', err);
         res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });

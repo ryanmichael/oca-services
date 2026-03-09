@@ -3,8 +3,7 @@
     "description": "Menaion — October 3. Hieromartyr Dionysius the Areopagite, Bishop of Athens, and Martyrs Rusticus the Presbyter and Eleutherius the Deacon.",
     "feastRank": "doxology",
     "tone": 4,
-    "note": "Hymn texts are placeholders. Replace with actual OCA Menaion texts when available.",
-    "source": "TODO — obtain from OCA Menaion, October volume"
+    "source": "OCA website — oca.org/saints/troparia/2026/10/03/ (scraped 2026-03)"
   },
 
   "vespers": {
@@ -47,7 +46,13 @@
     "troparion": {
       "tone": 4,
       "label": "Troparion of the Hieromartyr",
-      "text": "[Troparion of Hieromartyr Dionysius the Areopagite — TODO]"
+      "text": "Having learned goodness and maintaining continence in all things,\nyou were arrayed with a good conscience as befits a priest.\nFrom the chosen Vessel you drew ineffable mysteries;\nyou kept the faith, and finished a course equal to His.\nBishop martyr Dionysius, entreat Christ God that our souls may be saved."
+    },
+
+    "kontakion": {
+      "tone": 8,
+      "label": "Kontakion of the Hieromartyr",
+      "text": "As a disciple of the apostle caught up to the third heaven,\nyou spiritually entered the gate of heaven, Dionysius.\nYou were enriched with understanding of ineffable mysteries\nand enlightened those who sat in the darkness of ignorance.\nTherefore we cry to you: Rejoice, universal Father!"
     }
   }
 }

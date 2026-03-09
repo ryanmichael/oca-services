@@ -334,6 +334,41 @@ function renderErrorPage(message, detail = '') {
 </html>`;
 }
 
+// ─── Menaion DB helpers ───────────────────────────────────────────────────────
+
+/**
+ * Returns all commemorations + troparia for a given month/day from oca.db.
+ * Shape: [{ id, title, rank, tone, troparia: [{ type, tone, text }] }, …]
+ */
+function getMenaionDay(month, day) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+    const comms = db.prepare(`
+      SELECT id, title, rank, tone FROM commemorations
+      WHERE month = ? AND day = ? ORDER BY id
+    `).all(month, day);
+    if (comms.length === 0) return null;
+    const getTroparia = db.prepare(`
+      SELECT type, tone, text, pronoun FROM troparia
+      WHERE commemoration_id = ? ORDER BY type
+    `);
+    return comms.map(c => ({
+      id:       c.id,
+      title:    c.title,
+      rank:     c.rank,
+      tone:     c.tone,
+      troparia: getTroparia.all(c.id),
+    }));
+  } catch (err) {
+    console.error('getMenaionDay error:', err.message);
+    return null;
+  } finally {
+    db?.close();
+  }
+}
+
 // ─── DB helpers (for home page date list) ────────────────────────────────────
 
 // ─── DB helpers ───────────────────────────────────────────────────────────────
@@ -651,6 +686,19 @@ function handleRequest(req, res) {
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(injected);
+
+    } else if (/^\/api\/menaion\/(\d{1,2})\/(\d{1,2})$/.test(pathname)) {
+      const [, m, d] = pathname.match(/^\/api\/menaion\/(\d{1,2})\/(\d{1,2})$/);
+      const month = parseInt(m, 10);
+      const day   = parseInt(d, 10);
+      const data  = getMenaionDay(month, day);
+      if (!data) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'No commemorations found', month, day }));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ month, day, commemorations: data }, null, 2));
 
     } else {
       res.writeHead(404, { 'Content-Type': 'text/plain' });

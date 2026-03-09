@@ -676,7 +676,7 @@ function handleRequest(req, res) {
       // Inject back-link + optional generated notice
       const notice = isGenerated
         ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#fffbe6;border-bottom:1px solid #e6d87a;color:#7a6000;">
-             ⚠ Auto-generated service — Menaion commemorations and missing Octoechos tones not yet populated.
+             ⚠ Auto-generated service — Menaion commemorations for this date are not yet included.
            </div>`
         : '';
       const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">

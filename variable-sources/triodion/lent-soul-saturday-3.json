@@ -1,0 +1,136 @@
+{
+  "_meta": {
+    "description": "Triodion texts for the 3rd Saturday of Great Lent (Memorial/Soul Saturday)",
+    "source": "OCA Department of Liturgical Music and Translations",
+    "note": "This is a moveable feast — always the 3rd Saturday of Great Lent. Texts are identical to Soul Saturday 2; only the weekly tone differs (sung in the tone of week 3)."
+  },
+
+  "key": "lent.soulSaturday3",
+  "title": "Third Saturday of Great Lent — Memorial Saturday",
+  "category": "soulSaturday",
+
+  "vespers": {
+
+    "lordICall": {
+
+      "martyrs": {
+        "tone": 7,
+        "label": "For the Martyrs (in the Tone of the week)",
+        "hymns": [
+          {
+            "verse": 6,
+            "text": "The passion-bearers quenched the fire of terrible wickedness\nwith the streams of their blood,\nhaving kindled the brightness of true piety in all the world;\nbut the martyrs utterly burned up the falsely-named gods\nand their odors and temples,\nand shone the most pure light to those on earth.\nEnlightened by them, we flee from the darkness of godlessness\nand shun the deception of idolatry,\nworshipping Christ, Who grants the world great mercy."
+          },
+          {
+            "verse": 5,
+            "text": "Putting on the shield of faith\nand strengthening themselves with the sign of the Cross,\nThy saints, O Lord, bravely went of their own accord to torture,\nlaying low the pride and error of the devil.\nBy their supplications, O all-powerful God,\nsend the world peace, and our souls great mercy!"
+          },
+          {
+            "verse": 4,
+            "text": "Not rejoicing in earthly things,\nbut bravely going forth to tortures,\nO all-laudable martyrs, you did not fail in your blessed hopes,\nbut were heirs of the heavenly Kingdom.\nSince now you have boldness before God, the Lover of man,\nentreat peace for the world, and for our souls, great mercy!"
+          }
+        ]
+      },
+
+      "glory": {
+        "tone": 7,
+        "attribution": "St. John of Damascus",
+        "label": "For the Departed",
+        "text": "I called to mind the Prophet who cried:\n\"I am earth and ashes\";\nand again, I looked into the tombs and saw the naked bones.\nAnd I said: \"Who then is the king or the soldier,\nthe rich man or the poor,\nthe righteous or the sinner?\nBut give rest, O Lord, to Thy servants with the righteous,\nsince Thou art the Lover of man!\""
+      }
+    },
+
+    "prokeimenon1": {
+      "tone": 4,
+      "refrain": "Let Thy mercy and Thy truth preserve me forever!",
+      "psalmRef": "Ps. 39:15b",
+      "verses": [
+        {
+          "text": "I waited patiently for the Lord; He inclined to me and heard my cry.",
+          "psalmRef": "Ps. 39:1"
+        }
+      ]
+    },
+
+    "prokeimenon2": {
+      "tone": 6,
+      "refrain": "I said: \"Lord, have mercy on me. Heal my soul!\"",
+      "psalmRef": "Ps. 40:4",
+      "verses": [
+        {
+          "text": "Blessed is he who considers the poor.",
+          "psalmRef": "Ps. 40:1a"
+        }
+      ]
+    },
+
+    "readings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "5:32-6:8",
+        "pairedWithProkeimenon": 1
+      },
+      {
+        "order": 2,
+        "book": "Proverbs",
+        "pericope": "6:20-7:1",
+        "pairedWithProkeimenon": 2
+      }
+    ],
+
+    "aposticha": {
+      "idiomelon": {
+        "tone": 4,
+        "source": "Lenten Triodion",
+        "label": "Idiomelon",
+        "text": "Now is the acceptable time,\nnow is the day of salvation!\nIn the abundance of Thy mercy visit my soul,\nand take away the burden of my sins,\nO only Lover of man!"
+      },
+      "verseStichera": {
+        "psalm122Verses": {
+          "verse1": {
+            "psalmRef": "Ps. 122:1-2",
+            "text": "To Thee I lift up mine eyes, O Thou Who art enthroned in the heavens! Behold, as the eyes of servants look to the hand of their master, as the eyes of a maid to the hand of her mistress, so our eyes look to the Lord our God, till He have mercy upon us.",
+            "afterVerse": "repeatIdiomelon"
+          },
+          "verse2": {
+            "psalmRef": "Ps. 122:3-4",
+            "text": "Have mercy upon us, O Lord, have mercy upon us, for we have had more than enough of contempt. Too long our soul has been sated with the scorn of those who are at ease, the contempt of the proud.",
+            "afterVerse": "martyrsSticheron"
+          }
+        },
+        "martyrs": {
+          "tone": 4,
+          "label": "For the Martyrs",
+          "text": "Thou art glorified\nin the memory of Thy saints, O Christ God.\nAt their supplications, send down on us Thy great mercy!"
+        }
+      },
+      "theotokion": {
+        "tone": 4,
+        "label": "Theotokion",
+        "combinesGloryNow": true,
+        "text": "O inextinguishable candle,\nO righteous throne, O most pure Lady,\npray for the salvation of our souls!"
+      }
+    },
+
+    "troparia": {
+      "allSaints": {
+        "tone": 2,
+        "label": "Troparion",
+        "text": "O Apostles, Martyrs, and Prophets,\nHierarchs, Holy Monks, and Righteous Ones,\nwho completed well the fight and kept the faith,\nyou have boldness before the Savior.\nWe pray: \"Intercede for us with Him, as He is good,\nthat He may save our souls!\""
+      },
+      "departed": {
+        "tone": 2,
+        "label": "Troparion for the Departed",
+        "position": "glory",
+        "text": "Remember Thy servants, O Lord, since Thou art good,\nand forgive the sins they have committed in life!\nFor none is sinless but Thee,\nWho givest rest to the departed."
+      },
+      "theotokion": {
+        "tone": 2,
+        "label": "Theotokion",
+        "position": "now",
+        "text": "O holy Mother of the ineffable Light,\nwe honor and magnify thee with angelic hymns."
+      }
+    }
+  }
+}

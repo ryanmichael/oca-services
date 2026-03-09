@@ -1,0 +1,13 @@
+{
+  "name": "oca-services",
+  "version": "1.0.0",
+  "description": "Orthodox Christian daily service text assembler",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "license": "MIT"
+}

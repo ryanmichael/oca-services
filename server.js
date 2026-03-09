@@ -51,15 +51,24 @@ function loadSources() {
     }
   }
 
-  // Load all available triodion files
+  // Load all available triodion files, keyed by each file's "key" field.
+  // e.g. lent-soul-saturday-2.json has key "lent.soulSaturday2"
+  //   → triodion.lent.soulSaturday2 = raw.vespers
   const triodion = {};
   const triodionDir = path.join(__dirname, 'variable-sources', 'triodion');
   if (fs.existsSync(triodionDir)) {
     for (const file of fs.readdirSync(triodionDir).filter(f => f.endsWith('.json'))) {
-      const raw  = loadJSON(`variable-sources/triodion/${file}`);
-      // lent-soul-saturday-2.json → triodion.lent.soulSaturday2
-      triodion.lent = triodion.lent || {};
-      triodion.lent.soulSaturday2 = raw.vespers || raw;
+      const raw = loadJSON(`variable-sources/triodion/${file}`);
+      const key = raw.key;
+      if (!key) { console.warn(`triodion/${file}: missing "key" field, skipping`); continue; }
+      // Navigate/create the nested path: "lent.soulSaturday2" → triodion.lent.soulSaturday2
+      const parts = key.split('.');
+      let cur = triodion;
+      for (let i = 0; i < parts.length - 1; i++) {
+        cur[parts[i]] ??= {};
+        cur = cur[parts[i]];
+      }
+      cur[parts[parts.length - 1]] = raw.vespers || raw;
     }
   }
 

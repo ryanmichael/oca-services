@@ -2,19 +2,29 @@
  * Calendar Rules
  *
  * Programmatically generates calendar entries for any date, driving the
- * assembler without requiring a hand-authored JSON file per day.
+ * service assembler without requiring a hand-authored JSON file per day.
  *
- * Currently supports:
+ * Supported:
  *   - Saturday Great Vespers in ordinary time (post-Pentecost)
+ *   - Great Lent: all Saturdays (including Soul Saturdays), Sundays, weekdays
  *
- * Returns null for seasons not yet implemented (Lent, Holy Week, etc.),
- * so callers can fall back gracefully.
+ * Returns null for seasons not yet implemented (Holy Week, Bright Week,
+ * Pentecostarion feasts, pre-Lenten period).
+ *
+ * Variable text slots that cannot yet be resolved (triodion data not
+ * populated, or requiring the DB source from Step 2) use source:'db'
+ * and will silently produce no output until the DB resolver is wired.
  *
  * Exports:
- *   calculatePascha(year)          → Date (UTC)
- *   getLiturgicalSeason(date)      → string
- *   getTone(date)                  → 1–8
- *   generateCalendarEntry(dateStr) → Object | null
+ *   calculatePascha(year)            → Date (UTC midnight)
+ *   getAllSaints(year)               → Date (UTC midnight)
+ *   getLiturgicalSeason(date)        → string
+ *   getTone(date)                    → 1–8
+ *   getDayOfWeek(date)              → string
+ *   getWeekOfLent(date)             → 1–6 | null
+ *   getLentenSaturdayNumber(date)   → 1–6 | 0
+ *   isSoulSaturday(date)            → boolean
+ *   generateCalendarEntry(dateStr)  → Object | null
  */
 
 'use strict';
@@ -29,9 +39,6 @@ const DAY_MS = 24 * 60 * 60 * 1000;
  * (valid for 1900–2099).
  *
  * Verified: 2024 → May 5, 2025 → April 20, 2026 → April 12
- *
- * @param {number} year
- * @returns {Date} UTC midnight
  */
 function calculatePascha(year) {
   const a = year % 4;
@@ -43,18 +50,17 @@ function calculatePascha(year) {
 
   let month, day;
   if (f < 10) {
-    month = 3; day = 22 + f; // March
+    month = 3; day = 22 + f;
   } else {
-    month = 4; day = f - 9;  // April
+    month = 4; day = f - 9;
   }
 
-  // Julian → Gregorian: +13 days
   return new Date(Date.UTC(year, month - 1, day + 13));
 }
 
 /**
  * Returns the date of All Saints Sunday = Pascha + 56 days.
- * This is Tone 1 week of the Octoechos cycle.
+ * Tone 1 of the Octoechos cycle begins on this day.
  */
 function getAllSaints(year) {
   return new Date(calculatePascha(year).getTime() + 56 * DAY_MS);
@@ -66,11 +72,8 @@ function getAllSaints(year) {
  * Returns the Octoechos tone (1–8) active for a given date.
  *
  * The cycle anchors to All Saints Sunday each year (Tone 1).
- * Saturday Vespers uses the tone of the week that is *ending* —
- * i.e., the tone of the preceding Sunday.
- *
- * @param {Date} date  UTC midnight
- * @returns {1|2|3|4|5|6|7|8}
+ * The tone for a Saturday belongs to the week that is ending —
+ * i.e., the Sunday that started that week sets the tone.
  */
 function getTone(date) {
   const year = date.getUTCFullYear();
@@ -86,17 +89,16 @@ function getTone(date) {
 /**
  * Returns the broad liturgical season for a given date.
  *
- * @param {Date} date  UTC midnight
  * @returns {'ordinaryTime'|'preLenten'|'greatLent'|'holyWeek'|'brightWeek'|'pentecostarion'}
  */
 function getLiturgicalSeason(date) {
-  const year = date.getUTCFullYear();
+  const year   = date.getUTCFullYear();
   const pascha = calculatePascha(year);
-  const diff = Math.floor((date - pascha) / DAY_MS);
 
-  const cleanMonday  = new Date(pascha.getTime() - 48 * DAY_MS);
-  const palmSunday   = new Date(pascha.getTime() -  7 * DAY_MS);
-  const meatfareSun  = new Date(pascha.getTime() - 56 * DAY_MS);
+  const cleanMonday = new Date(pascha.getTime() - 48 * DAY_MS);
+  const palmSunday  = new Date(pascha.getTime() -  7 * DAY_MS);
+  const meatfareSun = new Date(pascha.getTime() - 56 * DAY_MS);
+  const diff        = Math.floor((date - pascha) / DAY_MS);
 
   if (date >= pascha) {
     if (diff <= 6)  return 'brightWeek';
@@ -110,7 +112,7 @@ function getLiturgicalSeason(date) {
   return 'ordinaryTime';
 }
 
-// ─── Day of week ──────────────────────────────────────────────────────────────
+// ─── Day helpers ──────────────────────────────────────────────────────────────
 
 const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
@@ -118,34 +120,85 @@ function getDayOfWeek(date) {
   return DAYS[date.getUTCDay()];
 }
 
-// ─── Calendar entry generation ────────────────────────────────────────────────
+// ─── Lenten calculations ──────────────────────────────────────────────────────
 
 /**
- * Generates a calendar entry object for a given date.
- *
- * Currently handles:
- *   - Saturday in ordinary time → Saturday Great Vespers
- *     (6 resurrectional stichera from Octoechos, dogmatikon, aposticha)
- *
- * Returns null for unsupported dates/seasons.
- *
- * @param {string} dateStr  ISO date string "YYYY-MM-DD"
- * @returns {Object|null}
+ * Returns Clean Monday (first day of Great Lent) for a given year.
+ * = Pascha − 48 days.
  */
-function generateCalendarEntry(dateStr) {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  const date = new Date(Date.UTC(year, month - 1, day));
+function getCleanMonday(year) {
+  return new Date(calculatePascha(year).getTime() - 48 * DAY_MS);
+}
 
-  const dayOfWeek = getDayOfWeek(date);
-  const season    = getLiturgicalSeason(date);
-  const tone      = getTone(date);
+/**
+ * Returns which week of Great Lent a date falls in (1–6),
+ * or null if the date is not during Great Lent.
+ *
+ * Week 1 begins on Clean Monday (Monday–Sunday).
+ * Week 6 ends on Palm Sunday (the last day before Holy Week).
+ *
+ * Examples (Pascha 2026 = Apr 12, Clean Monday = Feb 23):
+ *   Feb 23 (Mon) → week 1
+ *   Mar  7 (Sat) → week 2
+ *   Apr  4 (Sat, Lazarus) → week 6
+ *   Apr  5 (Sun, Palm Sunday) → week 6
+ */
+function getWeekOfLent(date) {
+  if (getLiturgicalSeason(date) !== 'greatLent') return null;
+  const year        = date.getUTCFullYear();
+  const cleanMonday = getCleanMonday(year);
+  const daysSince   = Math.floor((date - cleanMonday) / DAY_MS);
+  return Math.floor(daysSince / 7) + 1;
+}
 
-  // Only generate entries for Saturday ordinary-time Great Vespers for now
-  if (dayOfWeek !== 'saturday') return null;
-  if (season !== 'ordinaryTime') return null;
+/**
+ * Returns which Lenten Saturday number (1–6) a given date is, or 0.
+ *
+ *   1 = Saturday of the Great Canon / St. Theodore the Tyrant
+ *   2 = Soul Saturday 2 (Memorial Saturday)
+ *   3 = Soul Saturday 3 (Memorial Saturday)
+ *   4 = Soul Saturday 4 (Memorial Saturday)
+ *   5 = 5th Saturday of Lent
+ *   6 = Lazarus Saturday (Saturday before Palm Sunday)
+ *
+ * Examples (Pascha 2026 = Apr 12, Clean Monday = Feb 23):
+ *   Feb 28 → 1  (St. Theodore)
+ *   Mar  7 → 2  (Soul Saturday 2)
+ *   Mar 14 → 3  (Soul Saturday 3)
+ *   Mar 21 → 4  (Soul Saturday 4)
+ *   Mar 28 → 5
+ *   Apr  4 → 6  (Lazarus Saturday)
+ */
+function getLentenSaturdayNumber(date) {
+  if (getDayOfWeek(date) !== 'saturday') return 0;
+  if (getLiturgicalSeason(date) !== 'greatLent') return 0;
 
-  const toneKey = `tone${tone}`;
+  const year        = date.getUTCFullYear();
+  const cleanMonday = getCleanMonday(year);
+  const daysSince   = Math.floor((date - cleanMonday) / DAY_MS);
 
+  // First Lenten Saturday is always 5 days after Clean Monday (Mon+5 = Sat)
+  const satNum = Math.floor((daysSince - 5) / 7) + 1;
+  return (satNum >= 1 && satNum <= 6) ? satNum : 0;
+}
+
+/**
+ * Returns true if the date is one of the three Memorial Saturdays of
+ * Great Lent (Soul Saturdays 2, 3, and 4).
+ */
+function isSoulSaturday(date) {
+  const n = getLentenSaturdayNumber(date);
+  return n === 2 || n === 3 || n === 4;
+}
+
+// ─── Calendar entry generators ────────────────────────────────────────────────
+
+/**
+ * Generates a Saturday Great Vespers entry for ordinary time.
+ * Uses 6 resurrectional stichera from the Octoechos + dogmatikon.
+ */
+function generateOrdinaryTimeSaturday(dateStr, tone) {
+  const tk = `tone${tone}`;
   return {
     _meta: {
       generated:   true,
@@ -153,104 +206,364 @@ function generateCalendarEntry(dateStr) {
       note:        `Auto-generated Saturday Great Vespers. Tone ${tone}. ` +
                    `Menaion commemorations not included.`,
     },
-
     date:      dateStr,
     dayOfWeek: 'saturday',
-
-    liturgicalContext: {
-      season:            'ordinaryTime',
-      tone,
-      toneSource:        'octoechosCycle',
-    },
-
+    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle' },
     commemorations: [],
-
     vespers: {
       serviceType: 'greatVespers',
-      rubricNote:  `Great Vespers with Entrance (sung on Friday evening)`,
-
+      rubricNote:  'Great Vespers with Entrance (sung on Friday evening)',
       lordICall: {
         tone,
         totalStichera: 6,
-        note: `6 resurrectional stichera from Octoechos Tone ${tone}`,
-        slots: [
-          {
-            verses: [6, 5, 4, 3, 2, 1],
-            count:  6,
-            source: 'octoechos',
-            key:    `${toneKey}.saturday.vespers.lordICall.resurrectional`,
-            tone,
-            label:  'Resurrectional',
-          },
-        ],
-        glory: {
+        slots: [{
+          verses: [6, 5, 4, 3, 2, 1],
+          count:  6,
           source: 'octoechos',
-          key:    `${toneKey}.saturday.vespers.lordICall.glory`,
+          key:    `${tk}.saturday.vespers.lordICall.resurrectional`,
           tone,
-          label:  'Theotokion',
-        },
-        now: {
-          source: 'octoechos',
-          key:    `${toneKey}.saturday.vespers.dogmatikon`,
-          tone,
-          label:  'Theotokion — Dogmatikon',
-          note:   'Dogmatikon always from Octoechos on Saturday Great Vespers',
-        },
+          label:  'Resurrectional',
+        }],
+        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`, tone, label: 'Theotokion' },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,      tone, label: 'Theotokion — Dogmatikon' },
       },
-
-      prokeimenon: {
-        pattern: 'weekday',
-        weekday: 'saturdayGreatVespers',
-        note:    `Great Prokeimenon (Tone 8) — always at Saturday Great Vespers`,
-      },
-
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
       aposticha: {
-        note: 'Octoechos resurrectional idiomelon with repeated psalm verses',
         slots: [
-          {
-            position: 1,
-            source:   'octoechos',
-            key:      `${toneKey}.saturday.vespers.aposticha.hymns.0`,
-            tone,
-            label:    'Resurrectional (Idiomelon)',
-          },
+          { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional (Idiomelon)' },
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: {
-          source: 'octoechos',
-          key:    `${toneKey}.saturday.vespers.aposticha.glory`,
-          tone,
-        },
-        now: {
-          source: 'octoechos',
-          key:    `${toneKey}.saturday.vespers.aposticha.theotokion`,
-          tone,
-          label:  'Theotokion',
-        },
+        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.glory`,     tone },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
       },
-
       troparia: {
         source: 'octoechos',
         slots: [
-          {
-            order:  1,
-            tone,
-            source: 'octoechos',
-            key:    `${toneKey}.saturday.vespers.troparion`,
-            label:  'Resurrectional Troparion',
-          },
-          {
-            position: 'now',
-            tone,
-            source:   'octoechos',
-            key:      `${toneKey}.saturday.vespers.dismissalTheotokion`,
-            label:    'Dismissal Theotokion',
-          },
+          { order: 1,        tone, source: 'octoechos', key: `${tk}.saturday.vespers.troparion`,           label: 'Resurrectional Troparion' },
+          { position: 'now', tone, source: 'octoechos', key: `${tk}.saturday.vespers.dismissalTheotokion`, label: 'Dismissal Theotokion' },
         ],
       },
     },
   };
+}
+
+/**
+ * Generates a Soul Saturday Great Vespers entry.
+ * Soul Saturdays 2, 3, 4 are Memorial Saturdays for the departed.
+ *
+ * Variable texts reference the triodion (data exists for Saturday 2;
+ * Saturdays 3 & 4 will resolve once their triodion files are added).
+ */
+function generateSoulSaturday(dateStr, satNum, tone) {
+  const triKey = `lent.soulSaturday${satNum}`;
+  const tk     = `tone${tone}`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated Soul Saturday ${satNum}. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'saturday',
+    liturgicalContext: {
+      season:          'greatLent',
+      weekOfLent:      satNum,        // Soul Sat N falls in week N
+      specialDay:      'soulSaturday',
+      specialDayIndex: satNum,
+      tone,
+      toneSource:      'weeklyLenten',
+    },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `Soul Saturday ${satNum} — Memorial Saturday for the Departed (sung on Friday evening)`,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          {
+            verses: [6, 5, 4],
+            count:  3,
+            source: 'triodion',
+            key:    `${triKey}.lordICall.martyrs`,
+            tone,
+            label:  'For the Martyrs (in the Tone of the week)',
+          },
+          {
+            // Menaion stichera would go here; use db fallback
+            verses: [3, 2, 1],
+            count:  3,
+            source: 'db',
+            key:    `${dateStr}.vespers.lordICall`,
+            tone,
+            label:  'For the Saints',
+          },
+        ],
+        glory: { source: 'triodion', key: `${triKey}.lordICall.glory`, tone, label: 'For the Departed' },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [
+          { order: 1, tone: 4, source: 'triodion', key: `${triKey}.prokeimenon1`, reading: null },
+          { order: 2, tone: 6, source: 'triodion', key: `${triKey}.prokeimenon2`, reading: null },
+        ],
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'triodion', key: `${triKey}.aposticha.idiomelon`, tone, label: 'Idiomelon' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: {
+          source:           'triodion',
+          key:              `${triKey}.aposticha.theotokion`,
+          tone,
+          label:            'Theotokion',
+          combinesGloryNow: true,
+        },
+      },
+      troparia: {
+        source: 'triodion',
+        slots: [
+          { order:    1,       tone: 2, source: 'triodion', key: `${triKey}.troparia.allSaints`, label: 'Troparion' },
+          { position: 'glory', tone: 2, source: 'triodion', key: `${triKey}.troparia.departed`,  label: 'For the Departed' },
+          { position: 'now',   tone: 2, source: 'triodion', key: `${triKey}.troparia.theotokion`, label: 'Theotokion' },
+        ],
+      },
+    },
+  };
+}
+
+/**
+ * Generates a generic Lenten Saturday Great Vespers entry
+ * (St. Theodore Saturday, 5th Saturday, Lazarus Saturday).
+ * Variable texts reference the db source (populated in Step 2).
+ */
+function generateLentenSaturday(dateStr, satNum, weekOfLent, tone) {
+  const tk       = `tone${tone}`;
+  const satLabels = {
+    1: "Saturday of St. Theodore the Tyrant",
+    5: "5th Saturday of Great Lent",
+    6: "Lazarus Saturday",
+  };
+  const label = satLabels[satNum] || `Saturday of Great Lent (week ${weekOfLent})`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${label}. Tone ${tone}. Variable texts (source:'db') require Step 2.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'saturday',
+    liturgicalContext: {
+      season:    'greatLent',
+      weekOfLent,
+      tone,
+      toneSource: 'weeklyLenten',
+    },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${label} — Great Vespers (sung on Friday evening)`,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${dateStr}.vespers.lordICall`, tone, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.lordICall.glory`, tone },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [],   // populated in Step 3
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${dateStr}.vespers.aposticha`, tone, label: 'Idiomelon' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.aposticha.glory`, tone, combinesGloryNow: true },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, tone, source: 'db', key: `${dateStr}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
+/**
+ * Generates a Lenten Sunday Great Vespers entry.
+ * Sundays of Lent use both the Octoechos (resurrectional hymns) and Triodion.
+ * Variable texts reference the db source (populated in Step 2).
+ */
+function generateLentenSunday(dateStr, weekOfLent, tone) {
+  const tk = `tone${tone}`;
+  const sundayNames = {
+    1: 'Sunday of Orthodoxy',
+    2: 'Sunday of St. Gregory Palamas',
+    3: 'Sunday of the Veneration of the Holy Cross',
+    4: 'Sunday of St. John of the Ladder',
+    5: 'Sunday of St. Mary of Egypt',
+    6: 'Palm Sunday',
+  };
+  const name = sundayNames[weekOfLent] || `Sunday of Great Lent (week ${weekOfLent})`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') require Step 2.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'sunday',
+    liturgicalContext: {
+      season:    'greatLent',
+      weekOfLent,
+      tone,
+      toneSource: 'octoechosCycle',
+    },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${name} — Great Vespers (sung on Saturday evening)`,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${dateStr}.vespers.lordICall`, tone, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.lordICall.glory`, tone },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+      },
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${dateStr}.vespers.aposticha`, tone, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.aposticha.glory`, tone },
+        now:   { source: 'db', key: `${dateStr}.vespers.aposticha.now`,   tone, label: 'Theotokion' },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, tone, source: 'db', key: `${dateStr}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
+/**
+ * Generates a Lenten weekday Daily Vespers entry (Monday–Friday).
+ * Lenten weekday vespers includes OT readings; variable hymns from the db.
+ */
+function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone) {
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated Lenten weekday Daily Vespers (${dayOfWeek}, week ${weekOfLent}). ` +
+                   `Tone ${tone}. Variable texts (source:'db') require Step 2. ` +
+                   `OT reading entries require Step 3.`,
+    },
+    date:      dateStr,
+    dayOfWeek,
+    liturgicalContext: {
+      season:    'greatLent',
+      weekOfLent,
+      tone,
+      toneSource: 'weeklyLenten',
+    },
+    commemorations: [],
+    vespers: {
+      serviceType: 'dailyVespers',
+      rubricNote:  `Lenten Daily Vespers with OT Readings (week ${weekOfLent}, ${dayOfWeek})`,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${dateStr}.vespers.lordICall`, tone, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.lordICall.glory`, tone },
+        now:   { source: 'db', key: `${dateStr}.vespers.lordICall.now`,   tone, label: 'Theotokion' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [],   // populated in Step 3 (day-specific Genesis/Proverbs/Isaiah pairs)
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${dateStr}.vespers.aposticha`, tone, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${dateStr}.vespers.aposticha.glory`, tone, combinesGloryNow: true },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, tone, source: 'db', key: `${dateStr}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
+// ─── Main entry point ─────────────────────────────────────────────────────────
+
+/**
+ * Generates a calendar entry object for a given date, or returns null
+ * if the date/season is not yet supported.
+ *
+ * @param {string} dateStr  "YYYY-MM-DD"
+ * @returns {Object|null}
+ */
+function generateCalendarEntry(dateStr) {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const date   = new Date(Date.UTC(year, month - 1, day));
+  const dow    = getDayOfWeek(date);
+  const season = getLiturgicalSeason(date);
+  const tone   = getTone(date);
+
+  // ── Ordinary time Saturday ─────────────────────────────────────────────────
+  if (season === 'ordinaryTime' && dow === 'saturday') {
+    return generateOrdinaryTimeSaturday(dateStr, tone);
+  }
+
+  // ── Great Lent ─────────────────────────────────────────────────────────────
+  if (season === 'greatLent') {
+    const weekOfLent = getWeekOfLent(date);
+
+    if (dow === 'saturday') {
+      const satNum = getLentenSaturdayNumber(date);
+      if (isSoulSaturday(date)) {
+        return generateSoulSaturday(dateStr, satNum, tone);
+      }
+      return generateLentenSaturday(dateStr, satNum, weekOfLent, tone);
+    }
+
+    if (dow === 'sunday') {
+      return generateLentenSunday(dateStr, weekOfLent, tone);
+    }
+
+    // Monday–Friday: Lenten Daily Vespers
+    return generateLentenWeekday(dateStr, dow, weekOfLent, tone);
+  }
+
+  // ── Not yet supported ──────────────────────────────────────────────────────
+  // holyWeek, brightWeek, pentecostarion, preLenten → return null
+  return null;
 }
 
 // ─── Exports ──────────────────────────────────────────────────────────────────
@@ -261,5 +574,8 @@ module.exports = {
   getLiturgicalSeason,
   getTone,
   getDayOfWeek,
+  getWeekOfLent,
+  getLentenSaturdayNumber,
+  isSoulSaturday,
   generateCalendarEntry,
 };

@@ -63,7 +63,9 @@ function loadSources() {
     }
   }
 
-  return { octoechos, prokeimena, menaion, triodion };
+  // 'db' source is populated in Step 2; include empty object now so the
+  // assembler doesn't warn on unresolved db: references in generated entries.
+  return { octoechos, prokeimena, menaion, triodion, db: {} };
 }
 
 /**

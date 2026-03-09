@@ -715,22 +715,28 @@ function handleRequest(req, res) {
           const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
 
           // ── Stichera (Lord I Call) ──────────────────────────────────────────
+          // Cap at 6 — max stichera at Lord I Call (psalm verses 6–1).
+          // The split follows the feast prominence: more Menaion = greater feast.
           const licStichera = sticheraData?.[0]?.stichera.filter(
             s => s.section === 'lordICall' && s.order >= 1
-          ).slice(0, 3) ?? [];
+          ).slice(0, 6) ?? [];
           const licGlory = sticheraData?.[0]?.stichera.find(
             s => s.section === 'lordICall' && s.order === 0
           ) ?? null;
 
           if (licStichera.length > 0) {
-            const menaionCount       = licStichera.length;
+            const menaionCount        = licStichera.length;
             const resurrectionalCount = 6 - menaionCount;
             const allVerses           = [6, 5, 4, 3, 2, 1];
 
-            // Trim the resurrectional slot and add a Menaion slot
             const lic = calendarEntry.vespers.lordICall;
-            lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
-            lic.slots[0].count  = resurrectionalCount;
+            if (resurrectionalCount === 0) {
+              // All-Menaion: drop the resurrectional slot entirely
+              lic.slots = [];
+            } else {
+              lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
+              lic.slots[0].count  = resurrectionalCount;
+            }
             lic.slots.push({
               verses: allVerses.slice(resurrectionalCount),
               count:  menaionCount,

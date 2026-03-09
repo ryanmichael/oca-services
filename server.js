@@ -325,25 +325,65 @@ function renderErrorPage(message, detail = '') {
 
 // ─── DB helpers (for home page date list) ────────────────────────────────────
 
-let dbModule;
+// ─── DB helpers ───────────────────────────────────────────────────────────────
+
+const SECTION_LABELS = {
+  lordICall : 'Lord, I Have Cried',
+  aposticha : 'Aposticha',
+  troparia  : 'Troparia',
+  litya     : 'Litya',
+  epistle   : 'Epistle',
+  gospel    : 'Gospel',
+};
+const SECTION_ORDER = ['lordICall', 'aposticha', 'troparia', 'litya', 'epistle', 'gospel'];
+
+function openDb() {
+  const { DatabaseSync } = require('node:sqlite');
+  const dbPath = path.join(__dirname, 'storage', 'oca.db');
+  if (!fs.existsSync(dbPath)) return null;
+  return new DatabaseSync(dbPath, { readonly: true });
+}
+
 function getCollectedDates() {
+  let db;
   try {
-    if (!dbModule) {
-      const { DatabaseSync } = require('node:sqlite');
-      const dbPath = path.join(__dirname, 'storage', 'oca.db');
-      if (!fs.existsSync(dbPath)) return [];
-      const db = new DatabaseSync(dbPath, { readonly: true });
-      const rows = db.prepare(`
-        SELECT DISTINCT date, pronoun FROM source_files
-        WHERE date IS NOT NULL ORDER BY date, pronoun
-      `).all();
-      db.close();
-      return rows;
-    }
-  } catch {
-    return [];
-  }
-  return [];
+    db = openDb();
+    if (!db) return [];
+    return db.prepare(`
+      SELECT DISTINCT date, pronoun FROM source_files
+      WHERE date IS NOT NULL ORDER BY date, pronoun
+    `).all();
+  } catch { return []; }
+  finally { db?.close(); }
+}
+
+function getDbBlocks(date, pronoun, service = 'vespers') {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return [];
+    return db.prepare(`
+      SELECT section, block_order, type, tone, label, verse_number, position, attribution, text
+      FROM blocks WHERE date = ? AND pronoun = ? AND service = ?
+      ORDER BY section, block_order
+    `).all(date, pronoun, service);
+  } catch { return []; }
+  finally { db?.close(); }
+}
+
+function mapDbBlocks(dbBlocks) {
+  const sectionRank = k => { const i = SECTION_ORDER.indexOf(k); return i === -1 ? 99 : i; };
+  const sorted = [...dbBlocks].sort((a, b) =>
+    sectionRank(a.section) - sectionRank(b.section) || a.block_order - b.block_order
+  );
+  return sorted.map((b, i) => {
+    const section = SECTION_LABELS[b.section] || b.section;
+    let type = b.type, text = b.text || '', speaker = null;
+    if (b.type === 'glory_marker') { type = 'doxology'; text = 'Glory to the Father, and to the Son, and to the Holy Spirit:'; }
+    else if (b.type === 'now_marker') { type = 'doxology'; text = 'Now and ever, and unto ages of ages. Amen.'; }
+    else if (b.type === 'hymn') speaker = 'choir';
+    return { id: `db-${i}`, section, type, speaker, text, tone: b.tone || null, label: b.label || null };
+  });
 }
 
 // ─── Request handler ──────────────────────────────────────────────────────────
@@ -398,6 +438,25 @@ function handleRequest(req, res) {
       const calendarEntry = getCalendarEntry(date);
 
       if (!calendarEntry) {
+        // Fall back to DB-collected texts (variable sections only)
+        const dbBlocks = getDbBlocks(date, pronoun);
+        if (dbBlocks.length > 0) {
+          const blocks = mapDbBlocks(dbBlocks);
+          const html = renderVespers(blocks, {
+            title: 'Vespers (Collected Texts)',
+            date:  formatDate(date),
+          });
+          const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">
+  <a href="/" style="color:#8b1a1a;text-decoration:none;">← Back</a>
+</div>`;
+          const notice = `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#e8f4fb;border-bottom:1px solid #a0c8e0;color:#1a4a6a;">
+  ℹ Showing collected variable texts only — fixed liturgy (litanies, psalms, prayers) not yet available for this season.
+</div>`;
+          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          res.end(html.replace('<body>', '<body>' + backBar + notice));
+          return;
+        }
+
         const [year, month, day] = date.split('-').map(Number);
         const dateObj = new Date(Date.UTC(year, month - 1, day));
         const season  = getLiturgicalSeason(dateObj);

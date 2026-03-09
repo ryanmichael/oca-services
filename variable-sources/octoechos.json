@@ -2,253 +2,580 @@
   "_meta": {
     "description": "Octoechos — variable hymns organized by tone and day. The 8-tone cycle governs which tone's content is used on a given week.",
     "note": "Populated incrementally from real OCA service examples. Missing hymns are silently skipped by the assembler.",
-    "version": "0.2.0 — Tone 3 dogmatikon; Tone 4 full Saturday Vespers; Tone 8 partial Saturday Vespers",
+    "version": "0.3.0 — all 8 tones populated from OCA Obikhod (TT) PDFs via scrape-octoechos.js",
     "sources": {
-      "tone3.saturday.vespers.dogmatikon": "OCA service texts 2025-11-01 (Holy Unmercenaries Cosmas & Damian, Polyeleos)",
-      "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO)",
-      "tone8.saturday.vespers.*": "OCA service texts 2026-04-18 (Bright Saturday — note: Paschal season context)"
+      "all.saturday.vespers.*": "OCA Obikhod (TT) PDFs scraped from oca.org/liturgics/music-downloads (2026-03)",
+      "tone8.saturday.vespers.dogmatikon": "OCA service texts 2026-04-18 (Bright Saturday — note: Paschal season context)",
+      "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated)"
     }
   },
-
-  "tone1": { "note": "TODO" },
-  "tone2": { "note": "TODO" },
-
-  "tone3": {
-    "note": "Only the Dogmatikon has been populated from a real service (Nov 1, 2025). All other Saturday Vespers content is TODO.",
+  "tone1": {
     "saturday": {
       "vespers": {
-
         "dogmatikon": {
-          "tone": 3,
+          "tone": 1,
           "label": "Theotokion — Dogmatikon",
-          "text": "How can we not wonder\nat thy mystical childbearing, O exalted Mother?\nFor without receiving the touch of man,\nthou gavest birth to a Son in the flesh, O immaculate Virgin.\nThe Son born of the Father before eternity\nwas born of thee at the fullness of time, O honored Lady.\nHe underwent no mingling, no change, no division,\nbut preserved the fullness of each nature.\nEntreat Him, O Lady and Virgin and Mother,\nto save the souls of those who, in the Orthodox manner, confess thee\nto be the Theotokos."
+          "text": "Let us praise the Virgin Mary! The gate of heaven, the glory of the world! The song of the angels, the beauty of the faithful! She was born of man, yet gave birth to God! She was revealed as the heaven, as the temple of the Godhead! She destroyed the wall of enmity! She commenced the peace; she opened the Kingdom! Since she is our foundation of faith, our defender is the Lord Whom she bore! Courage! Courage! O People of God! For Christ will destroy our enemies\nsince He is all powerful."
         },
-
         "lordICall": {
           "resurrectional": {
-            "note": "TODO — to be populated from a non-Lenten Saturday in Tone 3",
-            "hymns": []
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Accept our evening prayers, O holy Lord! Grant us remission of sins,\nfor Thou alone hast manifested the Resurrection to the world."
+              },
+              {
+                "order": 2,
+                "text": "Encircle Zion and surround her, O people! Give glory in her to the One Who rose from the dead! For He is our God,\nWho has delivered us from our transgressions!"
+              },
+              {
+                "order": 3,
+                "text": "Come, O people, let us hymn and fall down before Christ, glorifying His Resurrection from the dead! For He is our God,\nWho has delivered the world from the Enemy's deceit!"
+              },
+              {
+                "order": 4,
+                "text": "Be glad, O heavens! Sound trumpets, O foundations of the earth! Sing in gladness, O mountains! Behold Emmanuel has nailed our sins to the Cross! Granting life, He has slain death.\nHe has resurrected Adam as the Lover of man."
+              },
+              {
+                "order": 5,
+                "text": "Let us praise Him Who voluntarily was crucified in the flesh for our sake. He suffered, was buried, but rose from the dead. By Orthodoxy confirm Thy Church, O Christ.\nGrant peace for our life as the gracious Lover of man."
+              },
+              {
+                "order": 6,
+                "text": "We stand before Thy lifebearing tomb unworthily, O Christ God, offering glory to Thine ineffable compassion. Thou hast accepted the Cross and death, O sinless One\nto grant Resurrection to the world as the Lover of man."
+              }
+            ]
+          },
+          "glory": {
+            "tone": 1,
+            "label": "Resurrectional Doxastichon",
+            "text": "Let us praise the Word, coeternal with the Father. He ineffably came forth from the virginal womb. He freely accepted the Cross and death for our sake. He was raised in glory.\nGlory to Thee, O Lifegiving Lord, the Savior of our souls!"
           }
         },
-
         "aposticha": {
-          "note": "TODO — resurrectional aposticha for Tone 3 Saturday to be populated"
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 1,
+              "text": "We have been freed from sufferings by Thy suffering, O Christ. We have been delivered from corruption by Thy Resurrection.\nO Lord, glory to Thee!"
+            }
+          ],
+          "theotokion": {
+            "tone": 1,
+            "label": "Aposticha Theotokion",
+            "text": "Behold, Isaiah's prophecy is fulfilled, for the Virgin gave birth, yet remained a Virgin! God was born, and so nature was restored anew. Do not despise the entreaties of thy servants, O Mother of God! We offer them to thee in thy temple. Since thou hast carried in thine arms the compassionate One, have compassion on thy servants,\nand pray that our souls may be saved!"
+          }
         },
-
         "troparion": {
-          "note": "TODO — resurrectional troparion for Tone 3 to be populated"
+          "tone": 1,
+          "label": "Resurrectional Troparion",
+          "text": "When the stone had been sealed by the Jews, while the soldiers were guarding Thy most pure body, Thou didst rise on the third day, O Savior, granting life to the world. The powers of heaven therefore cried to Thee, O Giver of Life: Glory to Thy Resurrection, O Christ! Glory to Thy Kingdom! Glory to Thy dispensation, O Thou Who lovest mankind!"
         },
-
         "dismissalTheotokion": {
-          "note": "TODO — resurrectional dismissal theotokion for Tone 3 to be populated"
+          "tone": 1,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "When Gabriel announced to thee, O Virgin, saying “Rejoice,” with that word the Master of all was incarnate in thee, the holy Ark, spoken of by the righteous David! Thy womb became more spacious than the heavens, for thou didst carry thy Creator. Glory to Him Who took abode in thee! Glory to Him Who came forth from thee!\nGlory to Him Who freed us by being born of thee!"
         }
       }
     }
   },
-
-  "tone4": {
+  "tone2": {
     "saturday": {
       "vespers": {
-
         "dogmatikon": {
-          "tone": 4,
+          "tone": 2,
           "label": "Theotokion — Dogmatikon",
-          "text": "The Prophet David was a father of the Lord through thee, O Virgin.\nHe foretold in songs the One Who worked wonder in thee:\n\"At Thy right hand stood the Queen,\"\nThy Mother, the mediatrix of life,\nsince God was freely born of her without a father.\nHe wanted to renew His fallen image, made corrupt in passion,\nso He took the lost sheep upon His shoulder\nand brought it to His Father,\njoining it to the heavenly pow'rs.\nChrist, Who has great and rich mercy, has saved the world, O Theotokos."
+          "text": "The shadow of the Law passed when grace came; as the Bush burned, yet was not consumed, so the Virgin gave birth, yet remained a Virgin. The Righteous Sun has risen instead of a pillar of flame.\nInstead of Moses, Christ, the Salvation of our souls."
         },
-
         "lordICall": {
-          "note": "Hymns 1–4 extracted from the Sunday Vigil (Forgiveness Sunday, Feb 22, 2026). Hymns 5–6 (verses 6 and 5 on a regular Saturday) were displaced by Triodion stichera on that occasion and remain TODO.",
           "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
             "hymns": [
               {
                 "order": 1,
-                "note": "verse 10 on a Sunday Vigil; would be verse 6 on a regular Saturday with 6 resurrectional stichera",
-                "text": "We glorify Thy Resurrection on the third day, O Christ God,\nby always honoring Thy life-creating Cross;\nby it, Thou hast renewed the corrupted nature of man, O almighty One.\nBy it, Thou hast renewed our entrance to heaven,\nfor Thou art good and the Lover of man."
+                "text": "Come, let us worship the Word of God begotten of the Father before all ages, and incarnate of the Virgin Mary! Having endured the Cross, He was buried as He Himself desired.\nAnd having risen from the dead, He saved me, an erring man."
               },
               {
                 "order": 2,
-                "text": "Thou didst loose the Tree's verdict of disobedience, O Savior,\nby being voluntarily nailed to the tree of the Cross.\nBy descending to hell, O almighty God,\nThou didst break the bonds of death.\nTherefore, we adore Thy Resurrection from the dead, singing in joy:\n\"Glory to Thee, O all-powerful Lord!\""
+                "text": "Christ our Savior nailed to the Cross the bond against us, He voided it and destroyed the dominion of death.\nWe fall down before His Resurrection on the third day."
               },
               {
                 "order": 3,
-                "text": "Thou didst smash the gates of hell, O Lord,\nand by Thy death Thou didst demolish the kingdom of death.\nThou didst deliver the race of men from corruption,\ngranting the world life, incorruption and great mercy."
+                "text": "With the Archangels let us praise the Resurrection of Christ! He is our Savior, our Redeemer. He is coming with awesome glory and mighty power\nto judge the world which He made."
               },
               {
                 "order": 4,
-                "attribution": "by Anatolius",
-                "text": "Come, O people,\nlet us sing of the Savior's Resurrection on the third day!\nBy it, we have been freed from the unbreakable bonds of hell.\nBy it, we have received life and incorruption.\nSave us by Thy Resurrection!\nO Life-creating and almighty Savior, glory to Thee!"
+                "text": "The Angel proclaimed Thee, the crucified and buried Master. He told the women: \"Come, see the place where He lay! He is risen as He said, for He is almighty.\" We worship Thee, O only immortal One.\nHave mercy on us, O Christ, the Giver of life!"
               },
               {
                 "order": 5,
-                "note": "TODO — verse 6 of regular Saturday Lord I Call"
+                "text": "By Thy Cross, Thou didst destroy the curse of the tree. By Thy burial, Thou didst slay the dominion of death. By Thy rising, Thou didst enlighten the race of man.\nO Benefactor, Christ our God, glory to Thee!"
               },
               {
                 "order": 6,
-                "note": "TODO — verse 5 of regular Saturday Lord I Call"
+                "text": "The gates of death opened to Thee from fear, O Lord. When the guards of hell saw Thee they were afraid, for Thou didst demolish the gates of brass and smash the iron chains.\nThou hast led us from the darkness and shadows of death, and hast broken our bonds."
+              }
+            ]
+          },
+          "glory": {
+            "tone": 2,
+            "label": "Resurrectional Doxastichon",
+            "text": "Let us come and worship in the house of the Lord, singing the hymn of salvation: Cleanse our sins, for Thou wast crucified and raised from the dead,\nand art in the bosom of the Fa - - ther!"
+          }
+        },
+        "aposticha": {
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 2,
+              "text": "Thy Resurrection, O Christ our Savior, has enlightened the whole universe, recalling Thy creation.\nGlory to Thee, O almighty Lord!"
+            }
+          ],
+          "theotokion": {
+            "tone": 2,
+            "label": "Aposticha Theotokion",
+            "text": "A new miracle surpasses all ancient miracles! Who knows of a Mother who gave birth without a man, who carried in her arms her Creator This birth is the will of God! Since thou didst carry Him as an infant in thine arms, O most pure one, and since thou dost possess motherly boldness before Him, do not cease praying for us who honor thee,\nthat He may be bountiful and save our souls!"
+          }
+        },
+        "troparion": {
+          "tone": 2,
+          "label": "Resurrectional Troparion",
+          "text": "When Thou didst descend to death, O Life Immortal, Thou didst slay hell with the splendor of Thy Godhead. And when from the depths Thou didst raise the dead, all the powers of heaven cried out:\n\"O Giver of life, Christ our God, glory to Thee!"
+        },
+        "dismissalTheotokion": {
+          "tone": 2,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "All beyond thought, all most glorious, are thy mysteries, O Theotokos. Sealed in purity, preserved in virginity, thou wast revealed to be the true Mother who gavest birth to the True God.\nEntreat Him to save our souls."
+        }
+      }
+    }
+  },
+  "tone3": {
+    "saturday": {
+      "vespers": {
+        "dogmatikon": {
+          "tone": 3,
+          "label": "Theotokion — Dogmatikon",
+          "text": "How can we not wonder at thy mystical childbearing, O exalted Mother For without receiving the touch of man, thou gavest birth to a Son in the flesh, O immaculate Virgin. The Son born of the Father before eternity was born of thee at the fullness of time, O honored Lady. He underwent no mingling, no change, no division, but preserved the fullness of each nature. Entreat Him, O Lady and Virgin and Mother, to save the souls of those who, in the Orthodox manner, confess thee\nto be the Theotokos."
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "By Thy Cross, O Christ our Savior, death's dominion has been shattered; the devil's delusion destroyed. The race of man, being saved by faith,\nalways offers Thee a song."
+              },
+              {
+                "order": 2,
+                "text": "All has been enlightened by Thy Resurrection, O Lord. Paradise has been opened again. All creation praising Thee,\nalways offers Thee a song."
+              },
+              {
+                "order": 3,
+                "text": "I glorify the power of the Father and the Son. I praise the authority of the Holy Spirit: the undivided, uncrea -ted Godhead,\nthe consubstantial Trinity which reigns forever."
+              },
+              {
+                "order": 4,
+                "text": "We bow down in worship before Thy precious Cross, O Christ, and we glorify and praise Thy Resurrection,\nfor by Thy wounds we have all been healed."
+              },
+              {
+                "order": 5,
+                "text": "We praise the Savior incarnate of the Virgin, for He was crucified for our sake and resurrected on the third day,\ngranting us great mercy."
+              },
+              {
+                "order": 6,
+                "text": "Christ descended to hell proclaiming the glad tidings: \"Behold! Now I have triumphed! I am the Resurrection, I will lead you out,\nfor I have shattered the gates of death!"
+              }
+            ]
+          },
+          "glory": {
+            "tone": 3,
+            "label": "Resurrectional Doxastichon",
+            "text": "Standing unworthily in Thy most pure house, O Christ God, we offer our evening song, crying from the depths: Thou Who didst enlighten the world, by Thy Resurrection on the third day, O Lover of man, deliver Thy people\nfrom the hand of Thine enemies!"
+          }
+        },
+        "aposticha": {
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 3,
+              "text": "The sun was darkened by Thy Passion, O Christ, but all creation was enlightened by the light of Thy Resurrection.\nAccept our evening song, O Lover of man!"
+            }
+          ],
+          "theotokion": {
+            "tone": 3,
+            "label": "Aposticha Theotokion",
+            "text": "By the will of the Father, without seed, of the Holy Spirit thou didst conceive the Son of God. He was born of the Father before eternity without a mother, but now for our sake He didst come from thee without a father!\nDo not cease entreating Him to deliver our souls from harm!"
+          }
+        },
+        "troparion": {
+          "tone": 3,
+          "label": "Resurrectional Troparion",
+          "text": "Let the heavens rejoice! Let the earth be glad! For the Lord has shown strength with His arm. He has trampled down death by death. He has become the firstborn of the dead. He has delivered us from the depths of hell, and has granted to the world\ngreat mer - - - - - - cy."
+        },
+        "dismissalTheotokion": {
+          "tone": 3,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "We praise thee as the mediatrix of our salvation, O Virgin Theotokos. For thy Son, our God, who took flesh from thee, accepted the Passion on the Cross,\ndelivering us from corruption as the Lover of Man."
+        }
+      }
+    }
+  },
+  "tone4": {
+    "saturday": {
+      "vespers": {
+        "dogmatikon": {
+          "tone": 4,
+          "label": "Theotokion — Dogmatikon",
+          "text": "The Prophet David was a father of the Lord through thee, O Virgin. He foretold in songs the One Who worked wonder in thee: \"At Thy right hand stood the Queen,\" Thy Mother, the media - - trix of life, since God was freely born of her without a father. He wanted to renew His fallen image made corrupt in passion, so He took the lost sheep upon His shoulder and brought it to His Father, joining it to the heavenly pow'rs.\nChrist, Who has great and rich mercy, has saved the world, O Theotokos."
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "We glorify Thy Resurrection on the third day, O Christ God, by always honoring Thy lifecreating Cross; by it Thou hast renewed the corrupted nature of man, O almighty One. By it Thou hast renewed our entrance to heaven,\nfor Thou art good and the Lover of man."
+              },
+              {
+                "order": 2,
+                "text": "Thou didst loose the Tree's verdict of disobedience, O Savior, by being voluntarily nailed to the tree of the Cross. By descending to hell, O almighty God, Thou didst break the bonds of death. Therefore, we adore Thy Resurrection from the dead, singing in joy:\n\"Glory to Thee, O allpowerful Lord!"
+              },
+              {
+                "order": 3,
+                "text": "Thou didst smash the gates of hell, O Lord, and by Thy death Thou didst demolish the kingdom of death. Thou didst deliver the race of men from corruption,\ngranting the world life, incorruption and great mer - - cy."
+              },
+              {
+                "order": 4,
+                "text": "Come, O people, let us sing of the Savior's Resurrection on the third day! By it, we have been freed from the unbreakable bonds of hell. By it, we have received life and incorruption. Save us by Thy Resurrection!\nO Lifecreating and almighty Savior, glory to Thee!"
+              },
+              {
+                "order": 5,
+                "text": "Angels and men sing of Thy Resurrection on the third day, O Savior. By it the ends of the earth have been illumined. By it, we have been delivered from bondage to the Enemy. Save us by Thy Resurrection!\nO Lifecreating and almighty Savior, glory to Thee!"
+              },
+              {
+                "order": 6,
+                "text": "Thou hast shattered the gates of brass and destroyed the chains of death, O Christ God. Thou hast raised the fallen human race.\nO Lord, risen from the dead, glory to Thee!"
+              }
+            ]
+          },
+          "glory": {
+            "tone": 4,
+            "label": "Resurrectional Doxastichon",
+            "text": "O Lord, Thy begetting from the Father is timeless and everlasting. Thine incarnation from the Virgin is beyond words and understanding. Thy descent into hell is terrible for the devil and his angels. Thou hast trampled on death, rising on the third day,\nand granting men incorruption and great mercy."
+          }
+        },
+        "aposticha": {
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 4,
+              "text": "By ascending the Cross, O Lord, Thou hast annulled our ancestral curse. By descending to hell, Thou hast freed the eternal prisoners, granting incorruption to the human race.\nTherefore in songs we glorify Thy lifecreating and saving Resurrection. R. The Lord is King; He is robed in majesty!"
+            }
+          ],
+          "theotokion": {
+            "tone": 4,
+            "label": "Aposticha Theotokion",
+            "text": "Look on the entreaties of thy servants, O Blameless One! Stop all the terrible attacks against us, freeing us from every affliction, for we have only thee as our sure and firm anchor! Do not let us be put to shame, O Lady, for we call on thee for our intercession! Hasten to pray for those who call in faith: \"Rejoice, O Lady, Help of all:\nthe Joy and Shelter and Salvation of our souls!"
+          }
+        },
+        "troparion": {
+          "tone": 4,
+          "label": "Resurrectional Troparion",
+          "text": "When the women disciples of the Lord learned from the angel the joyous message of Thy Resurrection, they cast away the ancestral curse and elatedly told the apostles: \"Death is overthrown! Christ God is risen,\ngranting the world great mer - - - cy!"
+        },
+        "dismissalTheotokion": {
+          "tone": 4,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "The mystery of all eternity, unknown even by angels, through thee, O Theotokos, is revealed to those on earth: God incarnate by union without confusion. He voluntarily accepted the Cross for us, by which He resurrected the firstcreated man,\nsaving our souls from death."
+        }
+      }
+    }
+  },
+  "tone5": {
+    "saturday": {
+      "vespers": {
+        "dogmatikon": {
+          "tone": 5,
+          "label": "Theotokion — Dogmatikon",
+          "text": "In the Red Sea of old, a type of the Virgin Bride was prefigured. There Moses divided the waters; here Gabriel assisted in the miracle. There Israel crossed the sea without getting wet, here the Virgin gave birth to Christ without seed. After Israel's passage, the sea remained impassable; after Emmanuel's birth, the Virgin remained a Virgin. O everexisting God Who didst appear as Man,\nO Lord, have mercy on us!"
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "By Thy precious Cross, O Christ, Thou hast put the devil to shame. By Thy Resurrection, Thou hast blunted the sting of sin and saved us from the gates of death.\nWe glorify Thee, O onlybegotten One."
+              },
+              {
+                "order": 2,
+                "text": "Christ was led as a sheep to the slaughter in order to grant Resurrection to the human race. The princes of hell were frightened by this, for the gates of sorrow were lifted. Christ the King of glory had entered, saying to those in chains: \"Go forth!\"\nAnd to those in darkness: \"Come to the light!"
+              },
+              {
+                "order": 3,
+                "text": "O great wonder! The Creator of the invisible suffered in the flesh in His love for man and rose again immortal. Come, O sons of nations, let us worship Him, for delivered from error by His compassion,\nwe have learned to sing of one God in three Per - - - sons!"
+              },
+              {
+                "order": 4,
+                "text": "We offer Thee our evening worship, O neversetting Light, Who didst come in these last days to the world in the flesh; Who even didst descend to hell to dispel its darkness. Who hast revealed the light of Resurrection to the nations.\nGlory to Thee, O Lord and Giver of light!"
+              },
+              {
+                "order": 5,
+                "text": "We glorify the Leader of our salvation; by His Resurrection from the dead, the world was saved from deceit. The assembly of Angels rejoices as the deceit of demons is overthrown.\nFallen Adam rises as the devil falls."
+              },
+              {
+                "order": 6,
+                "text": "The guards were instructed by the lawless ones: \"Hide the rising of Christ, take money and say: 'The body was stolen from the tomb while we were asleep.'\" But who has heard of a body being stolen, a body embalmed and naked, with its grave clothes left behind in the tomb Do not be deceived, O Jews, study the words of the Prophets and understand:\nChrist is the Redeemer of the world and all powerful! O Lord, Who hast captured hell and trampled on death, Thou hast enlightened the world by Thy precious Cross.\nO Savior, have mercy on us!"
               }
             ]
           }
         },
-
         "aposticha": {
-          "note": "These are Sunday Vigil aposticha (Ps. 92 verses). Saturday aposticha use different psalm verses (from fixedTexts.aposticha.saturdayVerses) and the stichera themselves may also differ. Treat these as approximate until a plain Saturday in Tone 4 is found.",
           "hymns": [
             {
               "order": 1,
-              "text": "By ascending the Cross, O Lord,\nThou hast annulled our ancestral curse.\nBy descending to hell, Thou hast freed the eternal prisoners,\ngranting incorruption to the human race.\nTherefore in songs we glorify\nThy life-creating and saving Resurrection."
-            },
-            {
-              "order": 2,
-              "text": "By hanging upon the tree, O only powerful Lord,\nThou didst shake all of creation.\nBy being laid in the tomb\nThou hast raised those who dwelt in the tombs,\ngranting life and incorruption to the human race.\nTherefore in songs we glorify Thy rising on the third day."
-            },
-            {
-              "order": 3,
-              "text": "The lawless people, O Christ,\nhanded Thee over to Pilate, condemned to be crucified,\nthus proving themselves ungrateful before their Benefactor.\nBut voluntarily Thou didst endure burial,\nrising by Thine own power on the third day as God,\ngranting us life everlasting and great mercy."
-            },
-            {
-              "order": 4,
-              "text": "With tears the women reached Thy tomb,\nsearching for Thee, but not finding Thee.\nThey wept with wailing and lamented:\n\"Woe to us! Our Savior, King of all,\nhow wast Thou stolen?\nWhat place can hold Thy life-bearing body?\"\nAn Angel replied to them:\n\"Do not weep, but go and proclaim\nthat the Lord is risen,\ngranting us joy as the only compassionate One!\""
+              "label": "Idiomelon",
+              "tone": 5,
+              "text": "We magnify Thee in songs of praise, O incarnate Christ and Savior. By accepting the Cross and death for our sake, as the Lord and Lover of man, Thou didst overthrow the gates of hell,\nand didst arise on the third day, saving our souls."
             }
           ],
           "theotokion": {
-            "note": "TODO — Saturday aposticha theotokion for Tone 4 to be populated"
+            "tone": 5,
+            "label": "Aposticha Theotokion",
+            "text": "O most precious Virgin, thou art the gate, the temple, the palace, the throne of the King. From thee, my Redeemer, Christ the Lord, appeared to those asleep in darkness. He is the Sun of Righteousness, Who desired to enlighten His image, whom He had created. Since thou dost possess motherly boldness before Him, O allpraised Lady,\npray unceasingly that our souls may be saved!"
           }
         },
-
         "troparion": {
-          "tone": 4,
-          "label": "Resurrectional Troparion",
-          "text": "When the women disciples of the Lord\nlearned from the angel the joyous message of Thy Resurrection,\nthey cast away the ancestral curse\nand elatedly told the apostles:\n\"Death is overthrown!\nChrist God is risen,\ngranting the world great mercy!\""
-        },
-
-        "dismissalTheotokion": {
-          "tone": 4,
-          "label": "Resurrectional Dismissal Theotokion",
-          "text": "The mystery of all eternity, unknown even by Angels,\nthrough thee, O Theotokos, is revealed to those on earth:\nGod incarnate by union without confusion.\nHe voluntarily accepted the Cross for us,\nby which He resurrected the first-created man,\nsaving our souls from death."
-        }
-      }
-    }
-  },
-
-  "tone5": {
-    "saturday": {
-      "vespers": {
-
-        "dogmatikon": {
           "tone": 5,
-          "label": "Theotokion — Dogmatikon",
-          "note": "Always used as the 'Now and ever' at Lord I Call on Saturday Great Vespers when Tone 5 is the weekly tone",
-          "text": "In the Red Sea of old,\na type of the Virgin Bride was prefigured.\nThere Moses divided the waters;\nhere Gabriel assisted in the miracle.\nThere Israel crossed the sea without getting wet,\nhere the Virgin gave birth to Christ without seed.\nAfter Israel's passage, the sea remained impassable;\nafter Emmanuel's birth, the Virgin remained a Virgin.\nO ever-existing God Who didst appear as Man,\nO Lord, have mercy on us!"
+          "label": "Resurrectional Troparion",
+          "text": "Let us, the faithful praise and worship the Word, coeternal with the Father and the Spirit, born for our salvation from the Virgin; for He willed to be lifted up on the Cross in the flesh, to endure death, and to raise the dead\nby His glorious Resurrection."
         },
-
-        "lordICall": {
-          "note": "On Soul Saturdays during Lent, the resurrectional stichera are replaced by Triodion martyria and departed texts. Dogmatikon remains from Octoechos.",
-          "resurrectional": {
-            "note": "TODO — to be populated from a non-Lenten Saturday example in Tone 5",
-            "hymns": []
-          }
-        },
-
-        "aposticha": {
-          "note": "TODO — resurrectional aposticha for Tone 5 Saturday to be populated"
-        },
-
-        "troparion": {
-          "note": "TODO — resurrectional troparion for Tone 5 to be populated"
-        },
-
         "dismissalTheotokion": {
-          "note": "TODO — resurrectional dismissal theotokion for Tone 5 to be populated"
+          "tone": 5,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "Rejoice, Impassable Gate of the Lord! Rejoice, Wall and Protection of those who run to thee! Rejoice, Unshakable Refuge! Rejoice, thou who knewest not wedlock, who gavest birth in the flesh to thy Creator and God:\nDo not cease praying for those who praise and worship thy Son."
         }
       }
     }
   },
-
-  "tone6": { "note": "TODO" },
-  "tone7": { "note": "TODO" },
-
-  "tone8": {
-    "note": "Extracted from OCA Bright Saturday Vespers (Apr 18, 2026). All 6 Lord I Call stichera and Dogmatikon are present. Aposticha are partial (Paschal stichera replaced positions 2–4 on that occasion).",
+  "tone6": {
     "saturday": {
       "vespers": {
-
+        "dogmatikon": {
+          "tone": 6,
+          "label": "Theotokion — Dogmatikon",
+          "text": "Who will not bless thee, O most holy Virgin Who will not sing of thy most pure childbearing The onlybegotten Son shone timelessly from the Father, but from thee He was ineffably incarnate. God by nature, yet Man for our sake, not two persons, but one known in two natures. Entreat Him, O pure and allblessed Lady,\nto have mercy on our souls!"
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Possessing victory over hell, O Christ, since Thou art free among the dead, Thou didst ascend the Cross, raising with Thyself those who sat in the shades of death.\nDrawing life from Thy light, O almighty Savior, have mercy on us!"
+              },
+              {
+                "order": 2,
+                "text": "Today Christ tramples on death, for He is risen as He said! Let us all sing this song, for He has granted joy to the world: O Light unapproachable, O Fountain of life!\nO Savior almighty, have mercy on us!"
+              },
+              {
+                "order": 3,
+                "text": "Where shall we sinners flee from Thee, Who art in all creationIn heaven Thou dwellest! In hell Thou didst trample on death! In the depths of the sea Even there is Thy hand, O Master! To Thee we flee, and falling before Thee, we pray:\nO Thou Who didst rise from the dead, have mercy on us!"
+              },
+              {
+                "order": 4,
+                "text": "In Thy Cross, we glory, O Christ. We sing and glorify Thy Resurrection. For Thou art our God,\nand we know no other than Thee."
+              },
+              {
+                "order": 5,
+                "text": "We will always bless the Lord by singing of His Resurrection! For He endured the Cross,\ntrampling down death by death."
+              },
+              {
+                "order": 6,
+                "text": "Glory to Thy might, O Lord, for Thou didst overthrow the prince of death, by Thy Cross renewing us,\ngranting us life and incorruption."
+              }
+            ]
+          },
+          "glory": {
+            "tone": 6,
+            "label": "Resurrectional Doxastichon",
+            "text": "Thy burial destroyed the bonds of hell, O Lord. Thy Resurrection from the dead enlightened the world.\nO Lord, glory to Thee!"
+          }
+        },
+        "aposticha": {
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 6,
+              "text": "Thy Resurrection, O Christ our Savior, the Angels in heaven sing! Enable us on earth\nto glorify Thee in purity of heart!"
+            }
+          ],
+          "theotokion": {
+            "tone": 6,
+            "label": "Aposticha Theotokion",
+            "text": "My Maker and Redeemer, Christ the Lord, was born of thee, O most pure Virgin. By accepting my nature, He freed Adam from His ancient curse. Unceasingly we magnify thee as the Mother of God! Rejoice, O celestial Joy! Rejoice, O Lady:\nthe Protection, Intercession, and Salvation of our souls!"
+          }
+        },
+        "troparion": {
+          "tone": 6,
+          "label": "Resurrectional Troparion",
+          "text": "The Angelic Powers were at Thy tomb; the guards became as dead men. Mary stood by Thy grave, seeking Thy most pure body. Thou didst capture hell not being tempted by it. Thou didst come to the Virgin, granting life. O Lord, Who didst rise from the dead,\nglo - - - ry to Thee."
+        },
+        "dismissalTheotokion": {
+          "tone": 6,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "Thou who didst call Thy Mother blessed, camest of Thine own will to the Passion. Shining on the Cross, desiring to recall Adam, Thou didst say to the angels: “Rejoice with me for the lost coin has been found.” Thou who hast ordered all things in wisdom,\nour God, glory to Thee."
+        }
+      }
+    }
+  },
+  "tone7": {
+    "saturday": {
+      "vespers": {
+        "dogmatikon": {
+          "tone": 7,
+          "label": "Theotokion — Dogmatikon",
+          "text": "No tongue can speak of thy wonderful childbearing, for the order of nature was overruled by God. Thou wast revealed to be a Mother above nature, for thou didst remain a Virgin beyond reason and understanding. Thy conception was most glorious, O Theotokos! The manner of thy giving birth was ineffable, O Virgin! Knowing thee to be the Mother of God, devoutly we pray to thee:\n\"Beseech Him to save our souls!"
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Come, let us rejoice in the Lord, Who destroyed the dominion of death! Let us sing to Him with the bodiless hosts, for He enlightened the race of man!\nO our Maker and Savior, glory to Thee!"
+              },
+              {
+                "order": 2,
+                "text": "Thou didst endure the Cross and burial for our sake. By Thy death, Thou didst destroy death as God. We fall down before Thy Resurrection on the third day,\nO Savior, glory to Thee!"
+              },
+              {
+                "order": 3,
+                "text": "When the Apostles beheld the Resurrection of the Maker, they were amazed and sang the angelic praise. This is the glory of the Church. This is the richness of the Kingdom.\nO Lord, crucified for our sake, glory to Thee!"
+              },
+              {
+                "order": 4,
+                "text": "Thou wast held by lawless men, O Christ, but to me, Thou art God, and I am not ashamed. Thou wast smitten on the cheek, but I do not deny Thee. Thou wast nailed to the Cross and I do not conceal it, for I glory in Thy Resurrection: Thy death is my life.\nO almighty Lord and Lover of man, glory to Thee!"
+              },
+              {
+                "order": 5,
+                "text": "Fulfilling the prophecy of David, Christ manifested His greatness in Zion to the disciples. He is praised and always glorified, together with the Father and the Holy Spirit. At first as the Word, He was bodiless, but then He took flesh and was slain for our sake.\nHe rose in power as the Lover of man!"
+              },
+              {
+                "order": 6,
+                "text": "Thou didst descend into hell as Thou didst will, O Christ, overthrowing death as God and rising on the third day as Master! With Thyself Thou didst raise Adam from the bonds of hell and from corruption!\nGlory to Thy Resurrection, O only Lover of man!"
+              }
+            ]
+          },
+          "glory": {
+            "tone": 7,
+            "label": "Resurrectional Doxastichon",
+            "text": "Thou wast placed in the tomb, O Lord, as one asleep! On the third day Thou didst rise in power, raising Adam with Thyself from the corruption of death\nas the Almighty One."
+          }
+        },
+        "aposticha": {
+          "hymns": [
+            {
+              "order": 1,
+              "label": "Idiomelon",
+              "tone": 7,
+              "text": "As the Savior of the world Thou didst arise from the tomb. As God Thou didst resurrect the race of man with Thy flesh.\nO Lord, glory to Thee!"
+            }
+          ],
+          "theotokion": {
+            "tone": 7,
+            "label": "Aposticha Theotokion",
+            "text": "All the earthborn run to thy protection, O Lady! Thou art our hope, O Theotokos! Deliver us from our countless sins\nand pray that our souls may be saved."
+          }
+        },
+        "troparion": {
+          "tone": 7,
+          "label": "Resurrectional Troparion",
+          "text": "By Thy Cross Thou didst destroy death. To the thief Thou didst open Paradise. For the Myrrhbearers Thou didst change weeping into joy, and Thou didst command Thy disciples, O Christ God, to proclaim that Thou art risen,\ngranting the world great mercy."
+        },
+        "dismissalTheotokion": {
+          "tone": 7,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "Since thou art the treasure of our Resurrection, we put our hope in thee, O Allpraised One. Lead us out of the pit and the abyss of transgressions, for thou hast saved us, who are subject to sin, by giving birth to our Salvation. Before giving birth thou wast a virgin and a virgin while giving birth,\nand after giving birth thou still remainest a virgin."
+        }
+      }
+    }
+  },
+  "tone8": {
+    "saturday": {
+      "vespers": {
         "dogmatikon": {
           "tone": 8,
           "label": "Theotokion — Dogmatikon",
           "text": "The King of heaven, because of His love for man,\nappeared on earth and dwelt with men.\nHe took flesh from the pure Virgin\nand after assuming it, He came forth from her.\nThe Son is one: in two natures, yet one Person.\nProclaiming Him as perfect God and perfect Man,\nwe confess Christ our God!\nEntreat Him, O unwedded Mother, to have mercy on our souls."
         },
-
         "lordICall": {
           "resurrectional": {
-            "note": "All 6 stichera extracted from Bright Saturday Vespers (Apr 18, 2026). On a regular Saturday with 6 resurrectional stichera these fill verses 6–1.",
+            "note": "Resurrectional stichera from OCA Obikhod (TT). Used at Saturday Great Vespers, Lord I Have Cried, verses 6–1.",
             "hymns": [
               {
                 "order": 1,
-                "note": "verse 6",
-                "text": "We offer to Thee, O Christ,\nour evening song and reasonable service,\nfor Thou didst will to have mercy on us\nby Thy Resurrection."
+                "text": "We offer to Thee, O Christ, our evening song and reasonable service, for Thou didst will to have mercy on us\nby Thy Resurrection."
               },
               {
                 "order": 2,
-                "note": "verse 5",
-                "text": "Lord, Lord, do not cast us away from Thy face!\nFor Thou didst will to have mercy on us\nby Thy Resurrection."
+                "text": "Lord, Lord, do not cast us away from Thy face! For Thou didst will to have mercy on us\nby Thy Resurrection."
               },
               {
                 "order": 3,
-                "note": "verse 4",
-                "text": "Rejoice, O holy Zion:\nMother of the churches, the abode of God,\nfor thou wast the first to receive remission of sins\nby the Resurrection."
+                "text": "Rejoice, O holy Zion: Mother of the churches, the abode of God, for thou wast the first to receive remission of sins\nby the Resurrection."
               },
               {
                 "order": 4,
-                "attribution": "by Anatolius",
-                "note": "verse 3",
-                "text": "The Word of God the Father,\nbegotten before the ages,\nin the latter times willed to be incarnate of the Virgin\nand endured crucifixion unto death.\nHe has saved mortal man\nby His Resurrection."
+                "text": "The Word of God the Father, begotten before the ages, in the latter times willed to be incarnate of the Virgin and endured crucifixion unto death. He has saved mortal man\nby His Resurrection."
               },
               {
                 "order": 5,
-                "note": "verse 2",
-                "text": "We glorify Thee, O Lord,\nfor Thou didst voluntarily endure the Cross for our sake.\nWe fall down in worship before Thee, O almighty Savior.\nDo not cast us away from Thy face\nbut hear us and save us, O Lover of man,\nby Thy Resurrection!"
+                "text": "We glorify Thee, O Lord, for Thou didst voluntarily endure the Cross for our sake. We fall down in worship before Thee, O almighty Savior. Do not cast us away from Thy face but hear us and save us, O Lover of man,\nby Thy Resurrection!"
               },
               {
                 "order": 6,
-                "note": "verse 1",
-                "text": "Glory to Thee, O Savior Christ,\nOnly-begotten Son of God,\nwho wast nailed to the Cross\nand resurrected from the tomb on the third day!"
+                "text": "Glory to Thee, O Savior Christ, Onlybegotten Son of God, who wast nailed to the Cross\nand resurrected from the tomb on the third day!"
               }
             ]
           },
           "glory": {
             "tone": 8,
-            "text": "We glorify Thy Resurrection from the dead, O Christ,\nby which Thou hast freed Adam's race from the tortures of hell,\nand as God hast granted to the world eternal life and great mercy."
+            "label": "Resurrectional Doxastichon",
+            "text": "We glorify Thy Resurrection from the dead, O Christ, by which Thou hast freed Adam's race from the tortures of hell,\nand as God hast granted to the world eternal life and great mercy."
           }
         },
-
         "aposticha": {
-          "note": "Only the first sticheron (idiomelon) is from a clean Tone 8 source. Positions 2–3 need a plain Saturday in Tone 8.",
           "hymns": [
             {
               "order": 1,
               "label": "Idiomelon",
-              "text": "Descending from heaven to ascend the Cross,\nthe eternal Life has come for death\nto raise those who are fallen;\nto enlighten those in darkness.\nO Jesus, our Savior and illuminator, glory to Thee!"
-            },
-            {
-              "order": 2,
-              "note": "TODO"
-            },
-            {
-              "order": 3,
-              "note": "TODO"
+              "tone": 8,
+              "text": "Descending from heaven to ascend the Cross, the eternal Life has come for death to raise those who are fallen; to enlighten those in darkness.\nO Jesus, our Savior and Illuminator, glory to Thee!"
             }
           ],
           "theotokion": {
-            "note": "TODO — Saturday aposticha theotokion for Tone 8 to be populated"
+            "tone": 8,
+            "label": "Aposticha Theotokion",
+            "text": "O unwedded Virgin, who ineffably didst conceive God in the flesh, O Mother of God most high, accept the cries of thy servants, O blameless one! Grant cleansing of transgressions to all!\nReceive our prayers and pray to save our souls!"
           }
         },
-
         "troparion": {
-          "note": "TODO — resurrectional troparion for Tone 8 to be populated"
+          "tone": 8,
+          "label": "Resurrectional Troparion",
+          "text": "Thou didst descend from on high, O Merciful One! Thou didst accept the threeday burial to free us from our sufferings!\nO Lord, our Life and Resurrection, glory to Thee!"
         },
-
         "dismissalTheotokion": {
-          "note": "TODO — resurrectional dismissal theotokion for Tone 8 to be populated"
+          "tone": 8,
+          "label": "Resurrectional Dismissal Theotokion",
+          "text": "For our sake Thou wast born of the Virgin and didst endure crucifixion, O Good One, destroying death by death. Revealing the Resurrection as God, do not despise the work of Thy hand. Reveal Thy love for man, O Merciful One, and accept the Theotokos praying for us, and save the despairing people, O our Savior."
         }
       }
     }

@@ -348,6 +348,46 @@ function getMenaionPrimary(month, day) {
 }
 
 /**
+ * Returns all Lord I Call stichera for a given month/day from oca.db.
+ * Shape: [{ commemoration, stichera: [{ order, tone, label, text }] }]
+ */
+function getSticheraDay(month, day) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+    const rows = db.prepare(`
+      SELECT c.id, c.title, c.rank,
+             s."order", s.section, s.tone, s.label, s.text
+      FROM stichera s
+      JOIN commemorations c ON c.id = s.commemoration_id
+      WHERE c.month = ? AND c.day = ?
+      ORDER BY c.id, s.section, s."order"
+    `).all(month, day);
+    if (rows.length === 0) return null;
+    const byComm = {};
+    for (const row of rows) {
+      if (!byComm[row.id]) {
+        byComm[row.id] = { id: row.id, title: row.title, rank: row.rank, stichera: [] };
+      }
+      byComm[row.id].stichera.push({
+        section: row.section,
+        order:   row.order,
+        tone:    row.tone,
+        label:   row.label,
+        text:    row.text,
+      });
+    }
+    return Object.values(byComm);
+  } catch (err) {
+    console.error('getSticheraDay error:', err.message);
+    return null;
+  } finally {
+    db?.close();
+  }
+}
+
+/**
  * Returns all commemorations + troparia for a given month/day from oca.db.
  * Shape: [{ id, title, rank, tone, troparia: [{ type, tone, text }] }, …]
  */
@@ -729,6 +769,19 @@ function handleRequest(req, res) {
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(injected);
+
+    } else if (/^\/api\/stichera\/(\d{1,2})\/(\d{1,2})$/.test(pathname)) {
+      const [, m, d] = pathname.match(/^\/api\/stichera\/(\d{1,2})\/(\d{1,2})$/);
+      const month = parseInt(m, 10);
+      const day   = parseInt(d, 10);
+      const data  = getSticheraDay(month, day);
+      if (!data) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'No stichera found', month, day }));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ month, day, commemorations: data }, null, 2));
 
     } else if (/^\/api\/menaion\/(\d{1,2})\/(\d{1,2})$/.test(pathname)) {
       const [, m, d] = pathname.match(/^\/api\/menaion\/(\d{1,2})\/(\d{1,2})$/);

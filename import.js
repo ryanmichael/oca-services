@@ -19,6 +19,7 @@
 const { DatabaseSync } = require('node:sqlite');
 const fs   = require('fs');
 const path = require('path');
+const { getLiturgicalKey } = require('./calendar-rules');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS blocks (
   source_file_id INTEGER NOT NULL REFERENCES source_files(id),
   date           TEXT,
   pronoun        TEXT,
+  liturgical_key TEXT,
   service        TEXT    NOT NULL,
   section        TEXT    NOT NULL,
   block_order    INTEGER NOT NULL,
@@ -56,10 +58,11 @@ CREATE TABLE IF NOT EXISTS blocks (
   UNIQUE (source_file_id, service, section, block_order)
 );
 
-CREATE INDEX IF NOT EXISTS idx_blocks_date    ON blocks (date);
-CREATE INDEX IF NOT EXISTS idx_blocks_svc_sec ON blocks (service, section);
-CREATE INDEX IF NOT EXISTS idx_blocks_tone    ON blocks (tone, service, section);
-CREATE INDEX IF NOT EXISTS idx_blocks_type    ON blocks (type);
+CREATE INDEX IF NOT EXISTS idx_blocks_date          ON blocks (date);
+CREATE INDEX IF NOT EXISTS idx_blocks_liturgical_key ON blocks (liturgical_key, pronoun, service, section);
+CREATE INDEX IF NOT EXISTS idx_blocks_svc_sec       ON blocks (service, section);
+CREATE INDEX IF NOT EXISTS idx_blocks_tone          ON blocks (tone, service, section);
+CREATE INDEX IF NOT EXISTS idx_blocks_type          ON blocks (type);
 `;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -81,6 +84,47 @@ function createSchema(db) {
   db.exec(DDL);
 }
 
+/**
+ * Returns the stable liturgical key for a date string, or null.
+ * Used to populate blocks.liturgical_key during import.
+ */
+function computeLiturgicalKey(dateStr) {
+  if (!dateStr) return null;
+  const [year, month, day] = dateStr.split('-').map(Number);
+  if (!year || !month || !day) return null;
+  try {
+    return getLiturgicalKey(new Date(Date.UTC(year, month - 1, day)));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Adds the liturgical_key column to an existing DB and backfills existing rows.
+ * Safe to call even if the column already exists.
+ */
+function migrateSchema(db) {
+  const cols = db.prepare('PRAGMA table_info(blocks)').all().map(r => r.name);
+  if (cols.includes('liturgical_key')) return;
+
+  db.exec('ALTER TABLE blocks ADD COLUMN liturgical_key TEXT;');
+  db.exec('CREATE INDEX IF NOT EXISTS idx_blocks_liturgical_key ON blocks (liturgical_key, pronoun, service, section);');
+  console.log('Schema migrated: added liturgical_key column.');
+
+  // Backfill liturgical_key for all existing rows that have a date
+  const dates = db.prepare('SELECT DISTINCT date FROM blocks WHERE date IS NOT NULL').all().map(r => r.date);
+  const update = db.prepare('UPDATE blocks SET liturgical_key = ? WHERE date = ? AND liturgical_key IS NULL');
+  let backfilled = 0;
+  for (const dateStr of dates) {
+    const litKey = computeLiturgicalKey(dateStr);
+    if (litKey) {
+      const result = update.run(litKey, dateStr);
+      backfilled += result.changes;
+    }
+  }
+  if (backfilled > 0) console.log(`  Backfilled ${backfilled} rows.`);
+}
+
 // ─── Import ───────────────────────────────────────────────────────────────────
 
 function importFile(db, jsonPath, stmts) {
@@ -94,10 +138,11 @@ function importFile(db, jsonPath, stmts) {
   }
 
   const meta = parsed._meta || {};
-  const date     = meta.date     || null;
-  const pronoun  = meta.pronoun  || null;
-  const fileType = meta.type     || null;
-  const parsedAt = meta.parsedAt || null;
+  const date       = meta.date     || null;
+  const pronoun    = meta.pronoun  || null;
+  const fileType   = meta.type     || null;
+  const parsedAt   = meta.parsedAt || null;
+  const litKey     = computeLiturgicalKey(date);
 
   // Upsert source_files row
   stmts.upsertFile.run(filename, date, pronoun, fileType, parsedAt);
@@ -118,6 +163,7 @@ function importFile(db, jsonPath, stmts) {
             fileId,
             date,
             pronoun,
+            litKey,
             service,
             section,
             i,
@@ -198,6 +244,7 @@ function main() {
 
   if (reset) resetDb(db);
   createSchema(db);
+  migrateSchema(db);
 
   if (stats) {
     printStats(db);
@@ -236,9 +283,9 @@ function main() {
     `),
     insertBlock: db.prepare(`
       INSERT OR IGNORE INTO blocks
-        (source_file_id, date, pronoun, service, section, block_order,
+        (source_file_id, date, pronoun, liturgical_key, service, section, block_order,
          type, tone, label, verse_number, verse_text, position, attribution, text)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `),
   };
 

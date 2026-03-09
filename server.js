@@ -21,7 +21,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const { assembleVespers }                        = require('./assembler');
-const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek } = require('./calendar-rules');
+const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -359,7 +359,25 @@ function getCollectedDates() {
   finally { db?.close(); }
 }
 
-// ─── DB source resolver (Step 2) ─────────────────────────────────────────────
+// ─── DB source resolver ───────────────────────────────────────────────────────
+
+/**
+ * Builds a nested object from a dot-notation path so that deepGet() in the
+ * assembler can navigate it.  e.g.:
+ *   buildNestedPath('lent.week.2.thursday', { vespers: {...} })
+ *   → { lent: { week: { '2': { thursday: { vespers: {...} } } } } }
+ */
+function buildNestedPath(dotPath, value) {
+  const parts = dotPath.split('.');
+  const root  = {};
+  let cur = root;
+  for (let i = 0; i < parts.length - 1; i++) {
+    cur[parts[i]] = {};
+    cur = cur[parts[i]];
+  }
+  cur[parts[parts.length - 1]] = value;
+  return root;
+}
 
 /**
  * Transforms a flat array of DB block rows for one section into the nested
@@ -409,10 +427,13 @@ function transformSectionBlocks(section, blocks) {
  * Queries vespers blocks from the DB for a given date/pronoun and returns a
  * source object compatible with the assembler's resolveSource/deepGet system.
  *
- * Shape: { 'YYYY-MM-DD': { vespers: { lordICall: {…}, aposticha: {…}, … } } }
+ * When the date has a liturgical key (Lenten dates), queries by liturgical_key
+ * so texts collected in any year can be used for the same liturgical position
+ * in future years. Otherwise falls back to querying by calendar date.
  *
- * Falls back gracefully to an empty object if the DB is unavailable or the
- * date has no collected texts.
+ * The returned object is nested to match the key path used in calendar entries:
+ *   liturgical key  → { lent: { week: { '2': { thursday: { vespers: {…} } } } } }
+ *   calendar date   → { '2026-10-03': { vespers: {…} } }
  */
 function buildDbSource(date, pronoun) {
   let db;
@@ -420,11 +441,21 @@ function buildDbSource(date, pronoun) {
     db = openDb();
     if (!db) return {};
 
-    const rows = db.prepare(`
-      SELECT section, block_order, type, tone, label, verse_number, position, text
-      FROM blocks WHERE date = ? AND pronoun = ? AND service = 'vespers'
-      ORDER BY section, block_order
-    `).all(date, pronoun);
+    const [year, month, day] = date.split('-').map(Number);
+    const dateObj = new Date(Date.UTC(year, month - 1, day));
+    const litKey  = getLiturgicalKey(dateObj);
+
+    const rows = litKey
+      ? db.prepare(`
+          SELECT section, block_order, type, tone, label, verse_number, position, text
+          FROM blocks WHERE liturgical_key = ? AND pronoun = ? AND service = 'vespers'
+          ORDER BY section, block_order
+        `).all(litKey, pronoun)
+      : db.prepare(`
+          SELECT section, block_order, type, tone, label, verse_number, position, text
+          FROM blocks WHERE date = ? AND pronoun = ? AND service = 'vespers'
+          ORDER BY section, block_order
+        `).all(date, pronoun);
 
     if (rows.length === 0) return {};
 
@@ -438,7 +469,8 @@ function buildDbSource(date, pronoun) {
       vespers[section] = transformSectionBlocks(section, blocks);
     }
 
-    return { [date]: { vespers } };
+    const topKey = litKey || date;
+    return buildNestedPath(topKey, { vespers });
   } catch (err) {
     console.error('buildDbSource error:', err.message);
     return {};
@@ -452,6 +484,16 @@ function getDbBlocks(date, pronoun, service = 'vespers') {
   try {
     db = openDb();
     if (!db) return [];
+    const [year, month, day] = date.split('-').map(Number);
+    const dateObj = new Date(Date.UTC(year, month - 1, day));
+    const litKey  = getLiturgicalKey(dateObj);
+    if (litKey) {
+      return db.prepare(`
+        SELECT section, block_order, type, tone, label, verse_number, position, attribution, text
+        FROM blocks WHERE liturgical_key = ? AND pronoun = ? AND service = ?
+        ORDER BY section, block_order
+      `).all(litKey, pronoun, service);
+    }
     return db.prepare(`
       SELECT section, block_order, type, tone, label, verse_number, position, attribution, text
       FROM blocks WHERE date = ? AND pronoun = ? AND service = ?

@@ -703,22 +703,57 @@ function handleRequest(req, res) {
       // resolve against collected texts for this specific date.
       const dbSource = buildDbSource(date, pronoun);
 
-      // For auto-generated ordinary-time Saturdays, inject the primary Menaion
-      // saint's troparion (Glory slot) from the scraped troparia DB.
+      // For auto-generated ordinary-time Saturdays, inject Menaion data from DB.
       let menaionOverride = sources.menaion;
       if (calendarEntry._meta?.generated && calendarEntry.liturgicalContext?.season === 'ordinaryTime') {
         const [, mm, dd] = date.split('-').map(Number);
-        const primary = getMenaionPrimary(mm, dd);
+        const primary      = getMenaionPrimary(mm, dd);
+        const sticheraData = getSticheraDay(mm, dd);
+
         if (primary) {
           const troparion = primary.troparia.find(t => t.type === 'troparion');
-          // Add to a per-request menaion.auto[date] slot
-          menaionOverride = {
-            ...sources.menaion,
-            auto: { [date]: { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } } },
-          };
-          // Insert Glory slot before the 'now' slot in the troparia list
-          const slots   = calendarEntry.vespers.troparia.slots;
-          const nowIdx  = slots.findIndex(s => s.position === 'now');
+          const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
+
+          // ── Stichera (Lord I Call) ──────────────────────────────────────────
+          const licStichera = sticheraData?.[0]?.stichera.filter(
+            s => s.section === 'lordICall' && s.order >= 1
+          ).slice(0, 3) ?? [];
+          const licGlory = sticheraData?.[0]?.stichera.find(
+            s => s.section === 'lordICall' && s.order === 0
+          ) ?? null;
+
+          if (licStichera.length > 0) {
+            const menaionCount       = licStichera.length;
+            const resurrectionalCount = 6 - menaionCount;
+            const allVerses           = [6, 5, 4, 3, 2, 1];
+
+            // Trim the resurrectional slot and add a Menaion slot
+            const lic = calendarEntry.vespers.lordICall;
+            lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
+            lic.slots[0].count  = resurrectionalCount;
+            lic.slots.push({
+              verses: allVerses.slice(resurrectionalCount),
+              count:  menaionCount,
+              source: 'menaion',
+              key:    `auto.${date}.lordICall`,
+              tone:   licStichera[0].tone,
+              label:  primary.title,
+            });
+
+            autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
+
+            // Replace the Glory with the Menaion doxastichon if we have one
+            if (licGlory) {
+              lic.glory = { source: 'menaion', key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
+              autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
+            }
+          }
+
+          menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
+
+          // ── Troparion (Glory slot) ──────────────────────────────────────────
+          const slots    = calendarEntry.vespers.troparia.slots;
+          const nowIdx   = slots.findIndex(s => s.position === 'now');
           const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
           slots.splice(insertAt, 0, {
             position: 'glory',
@@ -727,7 +762,7 @@ function handleRequest(req, res) {
             tone:     troparion.tone,
             label:    primary.title,
           });
-          // Record the commemoration on the entry
+
           calendarEntry.commemorations = [{ title: primary.title, tone: troparion.tone }];
         }
       }
@@ -755,11 +790,12 @@ function handleRequest(req, res) {
       });
 
       // Inject back-link + optional generated notice
-      const hasMenaion = calendarEntry.commemorations?.length > 0;
+      const hasMenaion   = calendarEntry.commemorations?.length > 0;
+      const hasStichera  = calendarEntry.vespers.lordICall.slots.some(s => s.source === 'menaion');
       const notice = isGenerated
         ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#fffbe6;border-bottom:1px solid #e6d87a;color:#7a6000;">
              ⚠ Auto-generated service${hasMenaion ? '' : ' — Menaion commemorations for this date are not yet included'}.
-             ${hasMenaion ? 'Menaion stichera (Lord I Call) are not yet included.' : ''}
+             ${hasMenaion && !hasStichera ? 'Menaion stichera (Lord I Call) are not yet included.' : ''}
            </div>`
         : '';
       const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">

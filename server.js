@@ -337,6 +337,17 @@ function renderErrorPage(message, detail = '') {
 // ─── Menaion DB helpers ───────────────────────────────────────────────────────
 
 /**
+ * Returns the primary commemoration for a day — the first one that has a
+ * troparion, which corresponds to the highest-ranking saint on the OCA page
+ * (they are listed in descending rank order).
+ */
+function getMenaionPrimary(month, day) {
+  const comms = getMenaionDay(month, day);
+  if (!comms) return null;
+  return comms.find(c => c.troparia.some(t => t.type === 'troparion')) ?? null;
+}
+
+/**
  * Returns all commemorations + troparia for a given month/day from oca.db.
  * Shape: [{ id, title, rank, tone, troparia: [{ type, tone, text }] }, …]
  */
@@ -650,8 +661,38 @@ function handleRequest(req, res) {
       // Assemble the full service.
       // Merge per-request DB source so variable slots referencing source:'db'
       // resolve against collected texts for this specific date.
-      const dbSource    = buildDbSource(date, pronoun);
-      const reqSources  = Object.assign({}, sources, { db: dbSource });
+      const dbSource = buildDbSource(date, pronoun);
+
+      // For auto-generated ordinary-time Saturdays, inject the primary Menaion
+      // saint's troparion (Glory slot) from the scraped troparia DB.
+      let menaionOverride = sources.menaion;
+      if (calendarEntry._meta?.generated && calendarEntry.liturgicalContext?.season === 'ordinaryTime') {
+        const [, mm, dd] = date.split('-').map(Number);
+        const primary = getMenaionPrimary(mm, dd);
+        if (primary) {
+          const troparion = primary.troparia.find(t => t.type === 'troparion');
+          // Add to a per-request menaion.auto[date] slot
+          menaionOverride = {
+            ...sources.menaion,
+            auto: { [date]: { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } } },
+          };
+          // Insert Glory slot before the 'now' slot in the troparia list
+          const slots   = calendarEntry.vespers.troparia.slots;
+          const nowIdx  = slots.findIndex(s => s.position === 'now');
+          const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
+          slots.splice(insertAt, 0, {
+            position: 'glory',
+            source:   'menaion',
+            key:      `auto.${date}.troparion`,
+            tone:     troparion.tone,
+            label:    primary.title,
+          });
+          // Record the commemoration on the entry
+          calendarEntry.commemorations = [{ title: primary.title, tone: troparion.tone }];
+        }
+      }
+
+      const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
 
       let blocks;
       try {
@@ -674,9 +715,11 @@ function handleRequest(req, res) {
       });
 
       // Inject back-link + optional generated notice
+      const hasMenaion = calendarEntry.commemorations?.length > 0;
       const notice = isGenerated
         ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#fffbe6;border-bottom:1px solid #e6d87a;color:#7a6000;">
-             ⚠ Auto-generated service — Menaion commemorations for this date are not yet included.
+             ⚠ Auto-generated service${hasMenaion ? '' : ' — Menaion commemorations for this date are not yet included'}.
+             ${hasMenaion ? 'Menaion stichera (Lord I Call) are not yet included.' : ''}
            </div>`
         : '';
       const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">

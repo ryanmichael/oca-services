@@ -525,7 +525,7 @@ header {
   body.panel-open .center { pointer-events: none; }
 }
 
-/* Mobile: tighter spacing */
+/* Mobile: tighter spacing + scaled reading text */
 @media (max-width: 767px) {
   header { padding: 0 16px; }
   .center-bar { padding: 0 16px; }
@@ -535,6 +535,13 @@ header {
   .btn-print { display: none; }
   .svc-row { padding: 11px 12px; }
   .svc-row .arrow { opacity: 1; }
+
+  /* Scale up panel reading text for comfortable phone reading */
+  .prayer      { font-size: 18px; }
+  .rubric      { font-size: 16px; }
+  .verse       { font-size: 15px; }
+  .stich-label { font-size: 14px; }
+  .panel-comms { font-size: 15px; }
 }
 
 /* Search mobile breakpoint: 640px */

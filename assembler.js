@@ -290,20 +290,22 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
     for (const entry of prokeimenonSpec.entries) {
       const prokText = resolveSource(entry.source, entry.key, sources);
       if (prokText) {
+        const tone = entry.tone ?? prokText.tone;
         blocks.push(makeBlock(
           `prok-announce-${entry.order}`, section, 'rubric', 'deacon',
-          `The prokeimenon in Tone ${entry.tone}.`
+          `The prokeimenon in Tone ${tone}.`
         ));
         blocks.push(makeBlock(
           `prok-refrain-${entry.order}`, section, 'hymn', 'choir', prokText.refrain,
-          { tone: entry.tone }
+          { tone }
         ));
         prokText.verses.forEach((verse, i) => {
           blocks.push(makeBlock(`prok-${entry.order}-v${i}`, section, 'verse', 'deacon', verse.text));
           blocks.push(makeBlock(`prok-${entry.order}-refrain-rep-${i}`, section, 'hymn', 'choir',
-            prokText.refrain, { tone: entry.tone }));
+            prokText.refrain, { tone }));
         });
         if (entry.reading) {
+          const pericope = prokText.pericope || entry.reading.pericope;
           blocks.push(makeBlock(
             `lesson-announce-${entry.order}`, section, 'rubric', 'deacon', 'Wisdom.'
           ));
@@ -316,7 +318,7 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
           ));
           blocks.push(makeBlock(
             `lesson-text-${entry.order}`, section, 'prayer', 'reader',
-            `[${entry.reading.book} ${entry.reading.pericope}]`
+            `[${entry.reading.book} ${pericope}]`
           ));
         }
       }

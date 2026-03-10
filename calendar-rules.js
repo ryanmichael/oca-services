@@ -518,6 +518,37 @@ function generateLentenSunday(dateStr, weekOfLent, tone, litKey) {
 }
 
 /**
+ * Builds the prokeimenon spec for Lenten weekday Vespers.
+ * Returns a lentenWithReadings spec with entries populated when data is available
+ * in prokeimena.json `lenten` section; otherwise entries remain empty.
+ */
+function buildLentenProkeimenon(litKey) {
+  // litKey = 'lent.week.N.dow'; convert to nested path 'lenten.week.N.dow'
+  // prokeimena.json structure: lenten.week.N.dow.{genesis,proverbs}
+  const parts = litKey.split('.');         // ['lent', 'week', 'N', 'dow']
+  const nestedPath = `lenten.${parts.slice(1).join('.')}`;  // 'lenten.week.N.dow'
+  return {
+    pattern: 'lentenWithReadings',
+    entries: [
+      {
+        order:  1,
+        source: 'prokeimena',
+        key:    `${nestedPath}.genesis`,
+        tone:   null,   // resolved at runtime from source
+        reading: { book: 'Genesis' },
+      },
+      {
+        order:  2,
+        source: 'prokeimena',
+        key:    `${nestedPath}.proverbs`,
+        tone:   null,
+        reading: { book: 'Proverbs' },
+      },
+    ],
+  };
+}
+
+/**
  * Generates a Lenten weekday Daily Vespers entry (Monday–Friday).
  * Lenten weekday vespers includes OT readings; variable hymns from the db.
  */
@@ -551,10 +582,7 @@ function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
         now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`,   tone, label: 'Theotokion' },
       },
-      prokeimenon: {
-        pattern: 'lentenWithReadings',
-        entries: [],   // populated in Step 3 (day-specific Genesis/Proverbs/Isaiah pairs)
-      },
+      prokeimenon: buildLentenProkeimenon(litKey, tone),
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },

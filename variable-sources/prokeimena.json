@@ -123,5 +123,47 @@
       { "text": "Blessed are they whom Thou hast chosen and taken to Thyself, O Lord.", "psalmRef": "Ps. 64:4a" },
       { "text": "Their memory is from generation to generation.", "psalmRef": "Ps. 101:12b" }
     ]
+  },
+
+  "lenten": {
+    "_note": "Prokeimenon pairs before Genesis and Proverbs readings at Lenten weekday Vespers. Nested as week.N.dow.{genesis,proverbs}. Source: OCA service texts (TT).",
+    "week": {
+      "1": {
+        "thursday": {
+          "genesis":  { "tone": 5, "refrain": "Thou, O Lord, shalt protect us / and preserve us from this generation forever.", "verses": [{ "text": "Save me, O Lord, for there is no longer any that is godly! (Ps. 12:1a)" }], "pericope": "1:24–2:3" },
+          "proverbs": { "tone": 6, "refrain": "Consider and answer me, / O Lord my God!", "verses": [{ "text": "How long, O Lord, wilt Thou forget me forever? How long wilt Thou hide Thy face from me? (Ps. 12:1)" }], "pericope": "2:1–22" }
+        }
+      },
+      "2": {
+        "thursday": {
+          "genesis":  { "tone": 6, "refrain": "Be glad in the Lord, / and rejoice, O you righteous!", "verses": [{ "text": "Blessed is he whose transgression is forgiven. (Ps. 31:1a)" }], "pericope": "4:16–26" },
+          "proverbs": { "tone": 1, "refrain": "Let Thy mercy, O Lord, be upon us / as we have set our hope on Thee!", "verses": [{ "text": "Rejoice in the Lord, O you righteous! Praise befits the just! (Ps. 32:1)" }], "pericope": "5:15–6:3" }
+        }
+      },
+      "3": {
+        "thursday": {
+          "genesis":  { "tone": 4, "refrain": "I will trust in the mercy of God / for ever and ever.", "verses": [{ "text": "Why dost thou boast, O mighty man, of mischief done against the godly? (Ps. 51:1)" }], "pericope": "7:6–9" },
+          "proverbs": { "tone": 4, "refrain": "When the Lord turns back / the captivity of His people.", "verses": [{ "text": "The fool says in his heart, \u201cThere is no God.\u201d (Ps. 13:1)" }], "pericope": "9:12–18" }
+        }
+      },
+      "4": {
+        "thursday": {
+          "genesis":  { "tone": 4, "refrain": "Blessed be the Lord, the God of Israel, / Who alone does wondrous things!", "verses": [{ "text": "Give the king Thy justice, O God, and Thy righteousness to the royal son! (Ps. 71:1)" }], "pericope": "9:18–10:1" },
+          "proverbs": { "tone": 4, "refrain": "It is good for me / to be near my God.", "verses": [{ "text": "Truly God is good to Israel, to those who are pure in heart. (Ps. 72:1)" }], "pericope": "12:23–13:9" }
+        }
+      },
+      "5": {
+        "tuesday": {
+          "genesis":  { "tone": 4, "refrain": "Guide me in Thy way, O Lord, / that I may walk in Thy truth!", "verses": [{ "text": "Incline Thine ear, O Lord, and hear me! (Ps. 85:1a)" }], "pericope": "13:12–18" },
+          "proverbs": { "tone": 4, "refrain": "The Lord loves the gates of Zion / more than all the dwellings of Jacob.", "verses": [{ "text": "His foundations are on the holy mountains. (Ps. 86:1a)" }], "pericope": "14:27–15:4" }
+        }
+      },
+      "6": {
+        "thursday": {
+          "genesis":  { "tone": 4, "refrain": "I will walk before the Lord / in the land of the living.", "verses": [{ "text": "I love the Lord because He has heard my voice and my supplication. (Ps. 114:1)" }], "pericope": "43:26–31; 45:1–16" },
+          "proverbs": { "tone": 4, "refrain": "I will offer my prayers to the Lord / in the presence of all His people.", "verses": [{ "text": "I kept my faith, even when I said: \u201cI am greatly afflicted.\u201d (Ps. 115:1)" }], "pericope": "21:23–22:4" }
+        }
+      }
+    }
   }
 }

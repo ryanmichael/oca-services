@@ -675,6 +675,42 @@ function assembleForDate(date, pronoun) {
         }
       }
 
+      // Inject Menaion aposticha stichera when available
+      const apostStichera = sticheraData?.[0]?.stichera.filter(
+        s => s.section === 'aposticha' && s.order >= 1
+      ).slice(0, 3) ?? [];
+      const apostGlory = sticheraData?.[0]?.stichera.find(
+        s => s.section === 'aposticha' && s.order === 0
+      ) ?? null;
+
+      if (apostStichera.length > 0 || apostGlory) {
+        autoSlot.aposticha = {
+          hymns: apostStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })),
+        };
+
+        const apost = calendarEntry.vespers.aposticha;
+        // Replace the Octoechos idiomelon slots with Menaion stichera
+        apost.slots = apostStichera.map((s, i) => ({
+          position: i + 1,
+          source:   'menaion',
+          key:      `auto.${date}.aposticha`,
+          tone:     s.tone,
+          label:    primary.title,
+          ...(i > 0 ? {} : {}),  // position 1 is the idiomelon; 2+ include verses
+        }));
+        // Add repeatPrevious placeholders only when fewer than 3 stichera are available
+        while (apost.slots.length < 3) {
+          apost.slots.push({ position: apost.slots.length + 1, repeatPrevious: true });
+        }
+
+        if (apostGlory) {
+          apost.glory = { source: 'menaion', key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: false };
+          apost.now   = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+          autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
+        }
+        // If no doxastichon, keep the existing combinesGloryNow theotokion from calendar entry
+      }
+
       menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
 
       const slots    = calendarEntry.vespers.troparia.slots;

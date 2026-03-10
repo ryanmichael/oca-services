@@ -295,6 +295,119 @@ function parseLordICall(paras) {
   return { stichera, glory };
 }
 
+/**
+ * Parses Aposticha stichera from paragraphs.
+ * Returns { stichera: [{order, tone, label, text}], glory: {tone,label,text}|null }
+ * Only Menaion (non-resurrectional) stichera are returned.
+ *
+ * Key difference from parseLordICall: the idiomelon appears BEFORE the first
+ * verse marker (V. without ordinal number). We collect it immediately after the
+ * label paragraph, then skip all repeats once the first V. is seen.
+ */
+function parseAposticha(paras) {
+  const apostIdx = paras.findIndex(
+    p => p.centered && p.anyBold && /aposticha/i.test(p.text)
+  );
+  if (apostIdx === -1) return { stichera: [], glory: null };
+
+  // Stop at the next centered+bold section header
+  let endIdx = paras.findIndex(
+    (p, i) => i > apostIdx && p.centered && p.anyBold
+  );
+  if (endIdx === -1) endIdx = paras.length;
+
+  const section = paras.slice(apostIdx + 1, endIdx);
+
+  const allMenaion  = [];
+  const seenKeys    = new Set();  // (tone:label) pairs already flushed — prevents collecting repeats
+  let tone      = null;
+  let label     = '';
+  let inMenaion = false;
+  let hymnLines = [];
+  let atGlory   = false;
+  let collected = false;  // true = skip text until next new label or Glory
+  let hasLabel  = false;
+
+  function flush() {
+    if (hymnLines.length === 0) return;
+    const text = cleanText(hymnLines);
+    if (text && inMenaion) {
+      allMenaion.push({ isGlory: atGlory, tone, label, text });
+      if (!atGlory) seenKeys.add(`${tone}:${label}`);
+    }
+    hymnLines = [];
+  }
+
+  for (const p of section) {
+    // Aposticha verse marker: "V." (no ordinal) — flush first occurrence, mark done
+    if (/^V\./i.test(p.text) && p.anyRed) {
+      if (!collected) flush();
+      collected = true;
+      atGlory   = false;
+      continue;
+    }
+
+    // Doxology markers
+    if (DOXOLOGY_RE.test(p.text)) {
+      if (!collected) flush();
+      collected = false;
+      atGlory   = /^Glory/i.test(p.text);
+      if (!atGlory) inMenaion = false;  // "Now and ever" → Octoechos theotokion, stop
+      continue;
+    }
+
+    // Label paragraph: bold run (tone) + italic+red run (source label)
+    if (p.hasItalicRed && p.runs.some(r => r.bold && !r.italic && !r.red)) {
+      if (!collected) flush();
+      const boldRun    = p.runs.find(r => r.bold && !r.italic && !r.red);
+      const boldRunIdx = p.runs.indexOf(boldRun);
+      const labelStr   = p.runs.slice(boldRunIdx + 1).filter(r => r.red).map(r => r.text).join('').trim();
+      let newTone = tone;
+      if (boldRun) {
+        const tm = boldRun.text.match(/\d+/);
+        if (tm) newTone = parseInt(tm[0], 10);
+      }
+      // If we've already flushed a sticheron with this tone+label, it's a repeat — skip it
+      const isRepeat = !atGlory && seenKeys.has(`${newTone}:${labelStr}`);
+      tone      = newTone;
+      label     = labelStr;
+      inMenaion = isRepeat ? false : !isResurrectional(label);
+      hasLabel  = true;
+      collected = isRepeat;
+      continue;
+    }
+
+    // Hymn text — collect immediately after label (before first V.)
+    if (!p.anyRed && !p.centered && hasLabel && !collected && p.text) {
+      hymnLines.push(p.text);
+    }
+  }
+  if (!collected) flush();
+
+  // Deduplicate by text fingerprint (handles cases where label key matching fails
+  // due to whitespace variations between first occurrence and repeats)
+  const seen    = new Set();
+  const unique  = [];
+  for (const entry of allMenaion) {
+    const fp = entry.text.slice(0, 60);
+    if (!seen.has(fp)) { seen.add(fp); unique.push(entry); }
+  }
+
+  // Split into regular stichera (ordered 1…) and the Glory doxastichon (order 0)
+  let order = 1;
+  const stichera = [];
+  let glory = null;
+  for (const entry of unique) {
+    if (entry.isGlory) {
+      glory = { tone: entry.tone, label: entry.label, text: entry.text };
+    } else {
+      stichera.push({ order: order++, tone: entry.tone, label: entry.label, text: entry.text });
+    }
+  }
+
+  return { stichera, glory };
+}
+
 // ─── Per-date scraper ─────────────────────────────────────────────────────────
 
 async function scrapeDate(db, dateStr) {
@@ -306,27 +419,57 @@ async function scrapeDate(db, dateStr) {
   const xml = await docxToXml(url);
   if (!xml) return { stored: 0, found: false };
 
-  const paras = extractParagraphs(xml);
-  const { stichera, glory } = parseLordICall(paras);
+  const paras      = extractParagraphs(xml);
+  const lic        = parseLordICall(paras);
+  const apost      = parseAposticha(paras);
 
-  if (stichera.length === 0 && !glory) return { stored: 0, found: true };
+  const hasLic   = lic.stichera.length > 0 || lic.glory;
+  const hasApost = apost.stichera.length > 0 || apost.glory;
+  if (!hasLic && !hasApost) return { stored: 0, found: true };
 
   const primary = getPrimaryCommemoration(db, month, day);
   if (!primary) return { stored: 0, found: true };
 
   let stored = 0;
-  for (const s of stichera) {
+
+  // Delete existing rows for this commemoration so stale higher-order rows
+  // from previous (pre-dedup) runs don't persist alongside new ones.
+  if (hasLic) {
+    db.prepare(`DELETE FROM stichera WHERE commemoration_id=? AND section='lordICall'`)
+      .run(primary.id);
+  }
+  if (hasApost) {
+    db.prepare(`DELETE FROM stichera WHERE commemoration_id=? AND section='aposticha'`)
+      .run(primary.id);
+  }
+
+  // Lord I Call
+  for (const s of lic.stichera) {
     upsertSticheron(db, { commemoration_id: primary.id, section: 'lordICall',
       order: s.order, tone: s.tone, label: s.label, text: s.text, source_date: dateStr });
     stored++;
   }
-  if (glory) {
+  if (lic.glory) {
     upsertSticheron(db, { commemoration_id: primary.id, section: 'lordICall',
-      order: 0, tone: glory.tone, label: glory.label, text: glory.text, source_date: dateStr });
+      order: 0, tone: lic.glory.tone, label: lic.glory.label, text: lic.glory.text, source_date: dateStr });
     stored++;
   }
 
-  return { stored, found: true, saint: primary.title };
+  // Aposticha
+  for (const s of apost.stichera) {
+    upsertSticheron(db, { commemoration_id: primary.id, section: 'aposticha',
+      order: s.order, tone: s.tone, label: s.label, text: s.text, source_date: dateStr });
+    stored++;
+  }
+  if (apost.glory) {
+    upsertSticheron(db, { commemoration_id: primary.id, section: 'aposticha',
+      order: 0, tone: apost.glory.tone, label: apost.glory.label, text: apost.glory.text, source_date: dateStr });
+    stored++;
+  }
+
+  return { stored, found: true, saint: primary.title,
+           licCount: lic.stichera.length + (lic.glory ? 1 : 0),
+           apostCount: apost.stichera.length + (apost.glory ? 1 : 0) };
 }
 
 // ─── Date range helpers ───────────────────────────────────────────────────────
@@ -375,15 +518,18 @@ async function main() {
     process.stdout.write(`  ${dateStr} … `);
 
     try {
-      const { stored, found, saint } = await scrapeDate(db, dateStr);
+      const { stored, found, saint, licCount = 0, apostCount = 0 } = await scrapeDate(db, dateStr);
       if (!found) {
         process.stdout.write('—\n');
         totalMissed++;
       } else if (stored > 0) {
         totalFeast++;
         totalStored += stored;
-        const saintShort = saint ? saint.slice(0, 55) : '';
-        console.log(`✓  ${stored} sticheron(s) — ${saintShort}`);
+        const saintShort = saint ? saint.slice(0, 45) : '';
+        const parts = [];
+        if (licCount > 0)   parts.push(`${licCount} LIC`);
+        if (apostCount > 0) parts.push(`${apostCount} apost`);
+        console.log(`✓  ${parts.join(' + ')} — ${saintShort}`);
       } else {
         console.log('~ (file exists, no Menaion stichera found)');
       }

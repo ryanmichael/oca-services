@@ -1,0 +1,1619 @@
+{
+  "_meta": {
+    "description": "Menaion stichera coverage — which fixed-calendar dates have published OCA service texts",
+    "generated": "2026-03-10T18:19:20.701Z",
+    "note": "Keyed by calendar (month/day), not year. Gap = OCA returned 404 or parsing yielded nothing. Covered = at least one sticheron in DB from files.oca.org."
+  },
+  "summary": {
+    "totalCalendarDays": 365,
+    "covered": 159,
+    "gaps": 206,
+    "licAndApost": 143,
+    "licOnly": 14,
+    "apostOnly": 2,
+    "coveragePct": "43.6%"
+  },
+  "byMonth": {
+    "January": {
+      "covered": 17,
+      "gaps": 14,
+      "gapDates": [
+        "01-06",
+        "01-08",
+        "01-09",
+        "01-13",
+        "01-14",
+        "01-15",
+        "01-16",
+        "01-20",
+        "01-22",
+        "01-23",
+        "01-24",
+        "01-28",
+        "01-29",
+        "01-31"
+      ]
+    },
+    "February": {
+      "covered": 18,
+      "gaps": 10,
+      "gapDates": [
+        "02-04",
+        "02-05",
+        "02-06",
+        "02-07",
+        "02-10",
+        "02-11",
+        "02-12",
+        "02-13",
+        "02-17",
+        "02-25"
+      ]
+    },
+    "March": {
+      "covered": 21,
+      "gaps": 10,
+      "gapDates": [
+        "03-04",
+        "03-07",
+        "03-11",
+        "03-14",
+        "03-18",
+        "03-21",
+        "03-25",
+        "03-26",
+        "03-28",
+        "03-31"
+      ]
+    },
+    "April": {
+      "covered": 16,
+      "gaps": 14,
+      "gapDates": [
+        "04-01",
+        "04-05",
+        "04-07",
+        "04-08",
+        "04-09",
+        "04-12",
+        "04-13",
+        "04-15",
+        "04-16",
+        "04-20",
+        "04-22",
+        "04-24",
+        "04-26",
+        "04-28"
+      ]
+    },
+    "May": {
+      "covered": 12,
+      "gaps": 19,
+      "gapDates": [
+        "05-01",
+        "05-02",
+        "05-05",
+        "05-06",
+        "05-09",
+        "05-10",
+        "05-13",
+        "05-15",
+        "05-16",
+        "05-17",
+        "05-19",
+        "05-20",
+        "05-22",
+        "05-23",
+        "05-24",
+        "05-26",
+        "05-27",
+        "05-30",
+        "05-31"
+      ]
+    },
+    "June": {
+      "covered": 9,
+      "gaps": 21,
+      "gapDates": [
+        "06-02",
+        "06-03",
+        "06-04",
+        "06-05",
+        "06-06",
+        "06-10",
+        "06-12",
+        "06-13",
+        "06-14",
+        "06-16",
+        "06-17",
+        "06-18",
+        "06-19",
+        "06-20",
+        "06-21",
+        "06-23",
+        "06-25",
+        "06-26",
+        "06-27",
+        "06-28",
+        "06-30"
+      ]
+    },
+    "July": {
+      "covered": 7,
+      "gaps": 24,
+      "gapDates": [
+        "07-01",
+        "07-02",
+        "07-03",
+        "07-04",
+        "07-07",
+        "07-08",
+        "07-09",
+        "07-10",
+        "07-11",
+        "07-12",
+        "07-14",
+        "07-16",
+        "07-17",
+        "07-18",
+        "07-21",
+        "07-22",
+        "07-23",
+        "07-24",
+        "07-25",
+        "07-26",
+        "07-27",
+        "07-28",
+        "07-29",
+        "07-30"
+      ]
+    },
+    "August": {
+      "covered": 12,
+      "gaps": 19,
+      "gapDates": [
+        "08-02",
+        "08-04",
+        "08-05",
+        "08-07",
+        "08-08",
+        "08-11",
+        "08-12",
+        "08-14",
+        "08-18",
+        "08-19",
+        "08-20",
+        "08-21",
+        "08-22",
+        "08-23",
+        "08-25",
+        "08-26",
+        "08-27",
+        "08-28",
+        "08-30"
+      ]
+    },
+    "September": {
+      "covered": 11,
+      "gaps": 19,
+      "gapDates": [
+        "09-02",
+        "09-03",
+        "09-04",
+        "09-05",
+        "09-06",
+        "09-10",
+        "09-11",
+        "09-12",
+        "09-15",
+        "09-16",
+        "09-17",
+        "09-18",
+        "09-19",
+        "09-20",
+        "09-22",
+        "09-24",
+        "09-27",
+        "09-29",
+        "09-30"
+      ]
+    },
+    "October": {
+      "covered": 11,
+      "gaps": 20,
+      "gapDates": [
+        "10-02",
+        "10-03",
+        "10-04",
+        "10-07",
+        "10-08",
+        "10-10",
+        "10-11",
+        "10-13",
+        "10-14",
+        "10-15",
+        "10-16",
+        "10-17",
+        "10-20",
+        "10-21",
+        "10-22",
+        "10-24",
+        "10-27",
+        "10-28",
+        "10-29",
+        "10-30"
+      ]
+    },
+    "November": {
+      "covered": 11,
+      "gaps": 19,
+      "gapDates": [
+        "11-03",
+        "11-04",
+        "11-05",
+        "11-06",
+        "11-07",
+        "11-10",
+        "11-11",
+        "11-12",
+        "11-15",
+        "11-17",
+        "11-18",
+        "11-19",
+        "11-20",
+        "11-22",
+        "11-24",
+        "11-26",
+        "11-27",
+        "11-28",
+        "11-29"
+      ]
+    },
+    "December": {
+      "covered": 14,
+      "gaps": 17,
+      "gapDates": [
+        "12-01",
+        "12-02",
+        "12-03",
+        "12-08",
+        "12-10",
+        "12-11",
+        "12-12",
+        "12-15",
+        "12-16",
+        "12-17",
+        "12-18",
+        "12-19",
+        "12-24",
+        "12-25",
+        "12-29",
+        "12-30",
+        "12-31"
+      ]
+    }
+  },
+  "covered": [
+    {
+      "mmdd": "01-01",
+      "label": "January 1",
+      "saint": "The Circumcision of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-02",
+      "label": "January 2",
+      "saint": "Forefeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-03",
+      "label": "January 3",
+      "saint": "Forefeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-04",
+      "label": "January 4",
+      "saint": "Forefeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-05",
+      "label": "January 5",
+      "saint": "Eve of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-07",
+      "label": "January 7",
+      "saint": "Afterfeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-10",
+      "label": "January 10",
+      "saint": "Afterfeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-11",
+      "label": "January 11",
+      "saint": "Afterfeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-12",
+      "label": "January 12",
+      "saint": "Afterfeast of the Theophany of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-17",
+      "label": "January 17",
+      "saint": "Venerable and God-bearing Father Anthony the Great",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-18",
+      "label": "January 18",
+      "saint": "Saint Athanasius the Great, Archbishop of Alexandria",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-19",
+      "label": "January 19",
+      "saint": "Venerable Macarius the Great of Egypt",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-21",
+      "label": "January 21",
+      "saint": "Venerable Maximus the Confessor",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-25",
+      "label": "January 25",
+      "saint": "New Martyrs and Confessors of Russia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-26",
+      "label": "January 26",
+      "saint": "Venerable Xenophon, his wife, Mary, and their two sons, Arcadius and John, of Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-27",
+      "label": "January 27",
+      "saint": "Translation of the relics of Saint John Chrysostom, Archbishop of Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "01-30",
+      "label": "January 30",
+      "saint": "Synaxis of the Ecumenical Teachers and Hierarchs: Basil the Great, Gregory the Theologian, and John Chrysostom",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-01",
+      "label": "February 1",
+      "saint": "Forefeast of the Meeting of our Lord in the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-02",
+      "label": "February 2",
+      "saint": "The Meeting of our Lord and Savior Jesus Christ in the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-03",
+      "label": "February 3",
+      "saint": "Afterfeast of the Meeting of our Lord in the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-08",
+      "label": "February 8",
+      "saint": "Afterfeast of the Meeting of our Lord in the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-09",
+      "label": "February 9",
+      "saint": "Leavetaking of the Meeting of our Lord in the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-14",
+      "label": "February 14",
+      "saint": "Memorial Saturday of Meatfare",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-15",
+      "label": "February 15",
+      "saint": "Apostle Onesimus of the Seventy",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-16",
+      "label": "February 16",
+      "saint": "Martyrs Pamphilius the Presbyter, Valens the Deacon, and those with them, at Caesarea in Palestine",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-18",
+      "label": "February 18",
+      "saint": "Saint Leo the Great, Pope of Rome",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-19",
+      "label": "February 19",
+      "saint": "Apostles of the Seventy Archippus  and Philemon, and Martyr Apphia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-20",
+      "label": "February 20",
+      "saint": "Saint Leo, Bishop of Catania in Sicily",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-21",
+      "label": "February 21",
+      "saint": "Saturday of Cheesefare Commemoration of all our God-bearing Fathers and Mothers who shone forth in asceticism",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-22",
+      "label": "February 22",
+      "saint": "Uncovering of the relics of the Holy Martyrs at the Gate of Eugenius at Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-23",
+      "label": "February 23",
+      "saint": "Hieromartyr Polycarp, Bishop of Smyrna",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-24",
+      "label": "February 24",
+      "saint": "First and second finding of the Honorable Head of the Holy Glorious Prophet, Forerunner, and Baptist of the Lord, John",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-26",
+      "label": "February 26",
+      "saint": "Saint Porphyrius, Bishop of Gaza",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-27",
+      "label": "February 27",
+      "saint": "Repose of Saint Raphael, Bishop of Brooklyn",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "02-28",
+      "label": "February 28",
+      "saint": "1st Saturday of Great Lent: The Miracle of the Boiled Wheat",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-01",
+      "label": "March 1",
+      "saint": "1st Sunday of Great Lent: Sunday of Orthodoxy",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-02",
+      "label": "March 2",
+      "saint": "Hieromartyr Theodotus, Bishop of Cyrenia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-03",
+      "label": "March 3",
+      "saint": "Martyrs Eutropius, Cleonicus, and Basiliscus of Amasea",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-05",
+      "label": "March 5",
+      "saint": "Martyr Conon of Isauria",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-06",
+      "label": "March 6",
+      "saint": "42 Martyrs of Ammoria in Phrygia",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-08",
+      "label": "March 8",
+      "saint": "2nd Sunday of Great Lent: St Gregory Palamas",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-09",
+      "label": "March 9",
+      "saint": "40 Holy Martyrs of Sebaste",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-10",
+      "label": "March 10",
+      "saint": "Martyr Quadratus and those with him at Corinth",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-12",
+      "label": "March 12",
+      "saint": "Venerable Theophanes the Confessor of Sigriane",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-13",
+      "label": "March 13",
+      "saint": "Translation of the relics of Saint Nikephoros, Patriarch of Constantinople",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-15",
+      "label": "March 15",
+      "saint": "3rd Sunday of Great Lent: Veneration of the Cross",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-16",
+      "label": "March 16",
+      "saint": "Martyr Sabinus of Egypt",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-17",
+      "label": "March 17",
+      "saint": "Venerable Alexis the Man of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-19",
+      "label": "March 19",
+      "saint": "Martyrs Chrysanthus and Daria, and those with them at Rome",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-20",
+      "label": "March 20",
+      "saint": "Martyred Holy Fathers who were slain at the Monastery of Saint Savva",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-22",
+      "label": "March 22",
+      "saint": "4th Sunday of Great Lent: St John Climacus (of the Ladder)",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-23",
+      "label": "March 23",
+      "saint": "Martyr Nikon and 199 disciples with him in Sicily",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-24",
+      "label": "March 24",
+      "saint": "Forefeast of the Annunciation",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-27",
+      "label": "March 27",
+      "saint": "Martyr Matrona of Thessalonica",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "03-29",
+      "label": "March 29",
+      "saint": "5th Sunday of Great Lent: St Mary of Egypt",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "03-30",
+      "label": "March 30",
+      "saint": "Venerable John Climacus of Sinai, Author of &ldquo;the Ladder&rdquo;",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-02",
+      "label": "April 2",
+      "saint": "Venerable Titus the Wonderworker",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "04-03",
+      "label": "April 3",
+      "saint": "Venerable Niketas the Confessor, Abbot of Medikion",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "04-04",
+      "label": "April 4",
+      "saint": "The Raising of Lazarus (Lazarus Saturday)",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "04-06",
+      "label": "April 6",
+      "saint": "Great and Holy Monday",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-10",
+      "label": "April 10",
+      "saint": "Great and Holy Friday",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-11",
+      "label": "April 11",
+      "saint": "Great and Holy Saturday",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "04-14",
+      "label": "April 14",
+      "saint": "Bright Tuesday",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-17",
+      "label": "April 17",
+      "saint": "Appearance of the Icon of the Mother of God &ldquo;The Footprint&rdquo; at Pochaev",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-18",
+      "label": "April 18",
+      "saint": "Bright Saturday",
+      "hasLIC": false,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-19",
+      "label": "April 19",
+      "saint": "Antipascha: Saint Thomas Sunday",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-21",
+      "label": "April 21",
+      "saint": "Hieromartyr Januarius, Bishop of Benevento, and his companions, at Pozzuoli",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-23",
+      "label": "April 23",
+      "saint": "Greatmartyr, Victory-bearer, and Wonderworker George",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-25",
+      "label": "April 25",
+      "saint": "Saint Basil of Poiana Marului",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-27",
+      "label": "April 27",
+      "saint": "Hieromartyr Simeon, kinsman of the Lord, second Bishop of Jerusalem",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-29",
+      "label": "April 29",
+      "saint": "Nine Martyrs at Cyzicus: Theognes, Rufus, Antipater, Theostichus, Artemas, Magnus, Theodotus, Thaumasius, and Philemon",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "04-30",
+      "label": "April 30",
+      "saint": "Apostle James the Brother of Saint John the Theologian",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-03",
+      "label": "May 3",
+      "saint": "Sunday of the Paralytic",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-04",
+      "label": "May 4",
+      "saint": "Virgin Martyr Pelagia of Tarsus, in Asia Minor",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-07",
+      "label": "May 7",
+      "saint": "Commemoration of the Apparition of the Sign of the Precious Cross Over Jerusalem, in 351 AD",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-08",
+      "label": "May 8",
+      "saint": "Apostle and Evangelist John the Theologian",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-11",
+      "label": "May 11",
+      "saint": "Commemoration of the Founding of Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-12",
+      "label": "May 12",
+      "saint": "Saint Epiphanius, Bishop of Cyprus",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-14",
+      "label": "May 14",
+      "saint": "Martyrs Isidore and Myrope of Chios",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-18",
+      "label": "May 18",
+      "saint": "Martyr Theodotus of Ancyra, and with him the seven Virgin Martyrs: Alexandra, Tecusa, Claudia, Phaine, Euphraisa, Matrona, and Julia, who suffered under Decius",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-21",
+      "label": "May 21",
+      "saint": "The Ascension of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-25",
+      "label": "May 25",
+      "saint": "Third Finding of the Honorable Head of the Holy Glorious Prophet, Forerunner and Baptist John",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-28",
+      "label": "May 28",
+      "saint": "Saint Niketas, Bishop of Chalcedon",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "05-29",
+      "label": "May 29",
+      "saint": "Holy Virgin Martyr Theodosίa of Tyre",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-01",
+      "label": "June 1",
+      "saint": "Postfeast of Pentecost &mdash; Day of the Holy Spirit",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-07",
+      "label": "June 7",
+      "saint": "Synaxis of All Saints",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-08",
+      "label": "June 8",
+      "saint": "Translation of the relics of the Greatmartyr Theodore Stratelates",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-09",
+      "label": "June 9",
+      "saint": "Saint Cyril, Archbishop of Alexandria",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-11",
+      "label": "June 11",
+      "saint": "Apostle Bartholomew of the Twelve",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-15",
+      "label": "June 15",
+      "saint": "Prophet Amos",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-22",
+      "label": "June 22",
+      "saint": "Hieromartyr Eusebius, Bishop of Samosata",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-24",
+      "label": "June 24",
+      "saint": "Nativity of the Holy Glorious Prophet, Forerunner and Baptist, John",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "06-29",
+      "label": "June 29",
+      "saint": "The Holy Glorious and All-Praised Leaders of the Apostles, Peter and Paul",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-05",
+      "label": "July 5",
+      "saint": "Venerable Athanasius, founder of the Great Lavra and Coenobitic Monasticism on Mount Athos, and his six disciples",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-06",
+      "label": "July 6",
+      "saint": "Venerable Sisoes the Great",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-13",
+      "label": "July 13",
+      "saint": "Synaxis of the Archangel Gabriel",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-15",
+      "label": "July 15",
+      "saint": "Holy Great Prince Vladimir (Basil in Baptism), Equal of the Apostles, and Enlightener of Rus'",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-19",
+      "label": "July 19",
+      "saint": "Fathers of the First Six Councils",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-20",
+      "label": "July 20",
+      "saint": "Holy, Glorious Prophet Elijah",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "07-31",
+      "label": "July 31",
+      "saint": "Forefeast of the Procession of the Honorable and Lifegiving Cross of the Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-01",
+      "label": "August 1",
+      "saint": "Procession of the Honorable Wood of the Life-Giving Cross of the Lord (First of the three &ldquo;Feasts of the Savior&rdquo; in August)",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-03",
+      "label": "August 3",
+      "saint": "Venerable Isaac the Ascetic of the Dalmatian Monastery at Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-06",
+      "label": "August 6",
+      "saint": "The Holy Transfiguration of our Lord God and Savior Jesus Christ (the Second &ldquo;Feast of the Savior&rdquo; in August)",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-09",
+      "label": "August 9",
+      "saint": "Afterfeast of the Transfiguration of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-10",
+      "label": "August 10",
+      "saint": "Afterfeast of the Transfiguration of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-13",
+      "label": "August 13",
+      "saint": "Leavetaking of the Transfiguration of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-15",
+      "label": "August 15",
+      "saint": "The Dormition of our Most Holy Lady the Mother of God and Ever-Virgin Mary",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "08-16",
+      "label": "August 16",
+      "saint": "Afterfeast of the Dormition of the Mother of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-17",
+      "label": "August 17",
+      "saint": "Afterfeast of the Dormition of the Mother of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-24",
+      "label": "August 24",
+      "saint": "Hieromartyr Eutyches, disciple of Saint John the Theologian",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-29",
+      "label": "August 29",
+      "saint": "The Beheading of the Holy Glorious Prophet, Forerunner, and Baptist John",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "08-31",
+      "label": "August 31",
+      "saint": "The Placing of the Cincture (Sash) of the Mother of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-01",
+      "label": "September 1",
+      "saint": "Church New Year",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-07",
+      "label": "September 7",
+      "saint": "Forefeast of the Nativity of the Mother of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-08",
+      "label": "September 8",
+      "saint": "The Nativity of our Most Holy Lady the Mother of God and Ever-Virgin Mary",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-09",
+      "label": "September 9",
+      "saint": "Afterfeast of the Nativity of the Mother of God",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-13",
+      "label": "September 13",
+      "saint": "Forefeast of the Elevation of the Cross",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-14",
+      "label": "September 14",
+      "saint": "The Universal Exaltation of the Precious and Life-Giving Cross",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-21",
+      "label": "September 21",
+      "saint": "Leavetaking of the Elevation of the Cross",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-23",
+      "label": "September 23",
+      "saint": "Conception of the Honorable Glorious Prophet, Forerunner and Baptist John",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-25",
+      "label": "September 25",
+      "saint": "Repose of Venerable Sergius the Wonderworker, Abbot of Radonezh",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-26",
+      "label": "September 26",
+      "saint": "Repose of the Holy Apostle and Evangelist John the Theologian",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "09-28",
+      "label": "September 28",
+      "saint": "Venerable Chariton the Confessor, Abbot of Palestine",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-01",
+      "label": "October 1",
+      "saint": "The Protection of our Most Holy Lady the Mother of God and Ever-Virgin Mary",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-05",
+      "label": "October 5",
+      "saint": "Martyr Charitina of Amisos",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-06",
+      "label": "October 6",
+      "saint": "Glorification of Saint Innocent, Metropolitan of Moscow, Enlightener of the Aleuts, Apostle to the Americas",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "10-09",
+      "label": "October 9",
+      "saint": "Glorification of Saint Tikhon, Patriarch of Moscow and All Russia, Enlightener of North America",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-12",
+      "label": "October 12",
+      "saint": "Martyrs Probus, Tarachus, and Andronicus, at Tarsus in Cilicia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-18",
+      "label": "October 18",
+      "saint": "Apostle and Evangelist Luke",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-19",
+      "label": "October 19",
+      "saint": "Prophet Joel",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-23",
+      "label": "October 23",
+      "saint": "Saint Macarius the Roman of Mesopotamia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-25",
+      "label": "October 25",
+      "saint": "Martyrs Marcian and Martyrius, the Notaries of Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-26",
+      "label": "October 26",
+      "saint": "Holy, Glorious Demetrios the Myrrh-gusher of Thessaloniki",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "10-31",
+      "label": "October 31",
+      "saint": "Priestmartyr John Kochurov",
+      "hasLIC": false,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-01",
+      "label": "November 1",
+      "saint": "Holy Wonderworkers and Unmercenaries Cosmas and Damian of Mesopotamia",
+      "hasLIC": true,
+      "hasApost": false
+    },
+    {
+      "mmdd": "11-02",
+      "label": "November 2",
+      "saint": "Martyrs Acindynus, Pegasius, Aphthonius, Elpidephorus, Anempodistus, and 7,000 with them, of Persia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-08",
+      "label": "November 8",
+      "saint": "Synaxis of the Archangel Michael and the Other Bodiless Powers",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-09",
+      "label": "November 9",
+      "saint": "Martyrs Onesiphorus and Porphyrius of Ephesus",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-13",
+      "label": "November 13",
+      "saint": "Saint John Chrysostom, Archbishop of Constantinople",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-14",
+      "label": "November 14",
+      "saint": "Holy, All-Praised Apostle Philip",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-16",
+      "label": "November 16",
+      "saint": "Apostle and Evangelist Matthew",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-21",
+      "label": "November 21",
+      "saint": "The Entry of the Most Holy Mother of God into the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-23",
+      "label": "November 23",
+      "saint": "Afterfeast of the Entry of the Most Holy Mother of God into the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-25",
+      "label": "November 25",
+      "saint": "Leavetaking of the Entry of the Most Holy Theotokos Into the Temple",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "11-30",
+      "label": "November 30",
+      "saint": "Venerable Sebastian Dabovich",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-04",
+      "label": "December 4",
+      "saint": "Glorification of the Priestmartyr Alexander Hotovitzky",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-05",
+      "label": "December 5",
+      "saint": "Venerable Savva the Sanctified",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-06",
+      "label": "December 6",
+      "saint": "Saint Nicholas the Wonderworker, Archbishop of Myra in Lycia",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-07",
+      "label": "December 7",
+      "saint": "Saint Ambrose, Bishop of Milan",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-09",
+      "label": "December 9",
+      "saint": "Conception of the Most Holy Theotokos by Saint Anna",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-13",
+      "label": "December 13",
+      "saint": "Sunday of the Forefathers",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-14",
+      "label": "December 14",
+      "saint": "Martyrs Thyrsos, Leukios, and Kallinikos",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-20",
+      "label": "December 20",
+      "saint": "Sunday before the Nativity",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-21",
+      "label": "December 21",
+      "saint": "Forefeast of the Nativity of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-22",
+      "label": "December 22",
+      "saint": "Forefeast of the Nativity of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-23",
+      "label": "December 23",
+      "saint": "Forefeast of the Nativity of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-26",
+      "label": "December 26",
+      "saint": "Second Day of the Nativity of our Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-27",
+      "label": "December 27",
+      "saint": "Commemoration of the Holy Righteous David the King, Joseph the Betrothed, and James the Brother of the Lord",
+      "hasLIC": true,
+      "hasApost": true
+    },
+    {
+      "mmdd": "12-28",
+      "label": "December 28",
+      "saint": "Afterfeast of the Nativity of our Lord and Savior Jesus Christ",
+      "hasLIC": true,
+      "hasApost": true
+    }
+  ],
+  "gapDates": [
+    "01-06",
+    "01-08",
+    "01-09",
+    "01-13",
+    "01-14",
+    "01-15",
+    "01-16",
+    "01-20",
+    "01-22",
+    "01-23",
+    "01-24",
+    "01-28",
+    "01-29",
+    "01-31",
+    "02-04",
+    "02-05",
+    "02-06",
+    "02-07",
+    "02-10",
+    "02-11",
+    "02-12",
+    "02-13",
+    "02-17",
+    "02-25",
+    "03-04",
+    "03-07",
+    "03-11",
+    "03-14",
+    "03-18",
+    "03-21",
+    "03-25",
+    "03-26",
+    "03-28",
+    "03-31",
+    "04-01",
+    "04-05",
+    "04-07",
+    "04-08",
+    "04-09",
+    "04-12",
+    "04-13",
+    "04-15",
+    "04-16",
+    "04-20",
+    "04-22",
+    "04-24",
+    "04-26",
+    "04-28",
+    "05-01",
+    "05-02",
+    "05-05",
+    "05-06",
+    "05-09",
+    "05-10",
+    "05-13",
+    "05-15",
+    "05-16",
+    "05-17",
+    "05-19",
+    "05-20",
+    "05-22",
+    "05-23",
+    "05-24",
+    "05-26",
+    "05-27",
+    "05-30",
+    "05-31",
+    "06-02",
+    "06-03",
+    "06-04",
+    "06-05",
+    "06-06",
+    "06-10",
+    "06-12",
+    "06-13",
+    "06-14",
+    "06-16",
+    "06-17",
+    "06-18",
+    "06-19",
+    "06-20",
+    "06-21",
+    "06-23",
+    "06-25",
+    "06-26",
+    "06-27",
+    "06-28",
+    "06-30",
+    "07-01",
+    "07-02",
+    "07-03",
+    "07-04",
+    "07-07",
+    "07-08",
+    "07-09",
+    "07-10",
+    "07-11",
+    "07-12",
+    "07-14",
+    "07-16",
+    "07-17",
+    "07-18",
+    "07-21",
+    "07-22",
+    "07-23",
+    "07-24",
+    "07-25",
+    "07-26",
+    "07-27",
+    "07-28",
+    "07-29",
+    "07-30",
+    "08-02",
+    "08-04",
+    "08-05",
+    "08-07",
+    "08-08",
+    "08-11",
+    "08-12",
+    "08-14",
+    "08-18",
+    "08-19",
+    "08-20",
+    "08-21",
+    "08-22",
+    "08-23",
+    "08-25",
+    "08-26",
+    "08-27",
+    "08-28",
+    "08-30",
+    "09-02",
+    "09-03",
+    "09-04",
+    "09-05",
+    "09-06",
+    "09-10",
+    "09-11",
+    "09-12",
+    "09-15",
+    "09-16",
+    "09-17",
+    "09-18",
+    "09-19",
+    "09-20",
+    "09-22",
+    "09-24",
+    "09-27",
+    "09-29",
+    "09-30",
+    "10-02",
+    "10-03",
+    "10-04",
+    "10-07",
+    "10-08",
+    "10-10",
+    "10-11",
+    "10-13",
+    "10-14",
+    "10-15",
+    "10-16",
+    "10-17",
+    "10-20",
+    "10-21",
+    "10-22",
+    "10-24",
+    "10-27",
+    "10-28",
+    "10-29",
+    "10-30",
+    "11-03",
+    "11-04",
+    "11-05",
+    "11-06",
+    "11-07",
+    "11-10",
+    "11-11",
+    "11-12",
+    "11-15",
+    "11-17",
+    "11-18",
+    "11-19",
+    "11-20",
+    "11-22",
+    "11-24",
+    "11-26",
+    "11-27",
+    "11-28",
+    "11-29",
+    "12-01",
+    "12-02",
+    "12-03",
+    "12-08",
+    "12-10",
+    "12-11",
+    "12-12",
+    "12-15",
+    "12-16",
+    "12-17",
+    "12-18",
+    "12-19",
+    "12-24",
+    "12-25",
+    "12-29",
+    "12-30",
+    "12-31"
+  ]
+}

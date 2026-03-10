@@ -185,25 +185,40 @@ function renderServiceList(daysList) {
   initScrollTracker();
 }
 
+// ─── URL / History helpers ────────────────────────────────────────────────────
+
+function getUrlParams() {
+  const p = new URLSearchParams(location.search);
+  return { date: p.get('date') || null, svc: p.get('svc') || null };
+}
+
+function setUrlState(date, svcType, replace = false) {
+  const url = svcType ? `?date=${date}&svc=${svcType}` : (date ? `?date=${date}` : location.pathname);
+  const state = { date, svcType: svcType || null };
+  if (replace) history.replaceState(state, '', url);
+  else         history.pushState(state, '', url);
+}
+
 // ─── Panel ────────────────────────────────────────────────────────────────────
 
-async function openPanel(rowEl, date, svcType) {
-  // Update active row styling
+/** Internal: show panel content without touching history. */
+async function _showPanel(rowEl, date, svcType) {
   if (activeRow) activeRow.classList.remove('active');
   activeRow = rowEl;
-  rowEl.classList.add('active');
-
-  activeDate = date;
+  if (rowEl) rowEl.classList.add('active');
+  activeDate    = date;
   activeSvcType = svcType;
-
-  // Update panel header immediately
   document.getElementById('p-svc').textContent =
     svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
   document.getElementById('panel').classList.add('open');
   document.body.classList.add('panel-open');
-
   await loadPanelContent(date, svcType);
+}
+
+async function openPanel(rowEl, date, svcType) {
+  setUrlState(date, svcType);
+  await _showPanel(rowEl, date, svcType);
 }
 
 async function loadPanelContent(date, svcType) {
@@ -252,11 +267,12 @@ async function loadPanelContent(date, svcType) {
   }
 }
 
-function closePanel() {
+function closePanel(skipHistory = false) {
   document.getElementById('panel').classList.remove('open');
   document.body.classList.remove('panel-open');
+  if (!skipHistory) setUrlState(activeDate, null);
   if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
-  activeDate = null;
+  activeDate    = null;
   activeSvcType = null;
 }
 
@@ -429,22 +445,41 @@ async function init() {
     fetchCalDots();
   });
 
-  // Determine date range: today - 7 days through today + 28 days
-  const today = new Date();
-  const from  = toIso(addDays(today, -7));
-  const to    = toIso(addDays(today, 28));
+  // Read permalink params (date + optional svc) from URL
+  const { date: urlDate, svc: urlSvc } = getUrlParams();
 
-  // Init calendar state to current month
-  calMonth = { year: today.getFullYear(), month: today.getMonth() };
+  // Center the loaded date range on the URL date if present, otherwise today
+  const today  = new Date();
+  const anchor = (urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate))
+    ? new Date(urlDate + 'T12:00:00')
+    : today;
+  const from = toIso(addDays(anchor, -7));
+  const to   = toIso(addDays(anchor, 28));
+
+  // Init calendar state
+  calMonth = { year: anchor.getFullYear(), month: anchor.getMonth() };
 
   try {
     days = await fetchDays(from, to);
     renderServiceList(days);
 
-    // Pre-populate calDots for current range
     for (const day of days) {
       if (day.services.greatVespers || day.services.dailyVespers) {
         calDots[day.date] = true;
+      }
+    }
+
+    if (urlDate) {
+      jumpToDate(urlDate);
+      if (urlSvc) {
+        // Open the permalinked service; replace state so back button exits cleanly
+        const btn = document.querySelector(`.svc-row[data-date="${urlDate}"][data-svc="${urlSvc}"]`);
+        if (btn) {
+          setUrlState(urlDate, urlSvc, /*replace=*/true);
+          await _showPanel(btn, urlDate, urlSvc);
+        }
+      } else {
+        setUrlState(urlDate, null, /*replace=*/true);
       }
     }
   } catch (err) {
@@ -454,6 +489,23 @@ async function init() {
         Failed to load services: ${err.message}
       </p>`;
   }
+
+  // Restore panel state on browser back/forward
+  window.addEventListener('popstate', async (e) => {
+    const state = e.state || {};
+    if (state.date && state.svcType) {
+      const btn = document.querySelector(`.svc-row[data-date="${state.date}"][data-svc="${state.svcType}"]`);
+      if (btn) {
+        await _showPanel(btn, state.date, state.svcType);
+      } else {
+        // Date not in current view — reload the page with the URL
+        location.reload();
+      }
+    } else {
+      closePanel(/*skipHistory=*/true);
+      if (state.date) jumpToDate(state.date);
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

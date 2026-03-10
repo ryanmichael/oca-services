@@ -71,6 +71,13 @@ function buildTone(n, existingTone) {
             tone:  n,
             text:  s.aposticha,
           }] : [],
+          ...(s.apostichaGlory ? {
+            glory: {
+              tone:  n,
+              label: 'Resurrectional Doxastichon',
+              text:  s.apostichaGlory,
+            },
+          } : {}),
           ...(s.apostichaTheotokion ? {
             theotokion: {
               tone:  n,
@@ -134,5 +141,6 @@ for (let n = 1; n <= 8; n++) {
   const v = merged[`tone${n}`].saturday.vespers;
   const stichCount = v.lordICall?.resurrectional?.hymns?.length ?? 0;
   const gloryNote  = v.lordICall?.glory ? '+ Glory' : '';
-  console.log(`  Tone ${n}: ${stichCount} stichera ${gloryNote}, dogmatikon=${!!v.dogmatikon}, aposticha=${!!v.aposticha?.hymns?.[0]}, troparion=${!!v.troparion}, dismissal=${!!v.dismissalTheotokion}`);
+  const apostichaGloryNote = v.aposticha?.glory ? '+glory' : '';
+  console.log(`  Tone ${n}: ${stichCount} stichera ${gloryNote}, dogmatikon=${!!v.dogmatikon}, aposticha=${!!v.aposticha?.hymns?.[0]} ${apostichaGloryNote}, troparion=${!!v.troparion}, dismissal=${!!v.dismissalTheotokion}`);
 }

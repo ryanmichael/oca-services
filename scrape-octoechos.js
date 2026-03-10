@@ -255,17 +255,19 @@ function parseSingleHymn(raw) {
 }
 
 /**
- * Parses an aposticha PDF. Returns just the idiomelon (first sticheron),
- * which is the text repeated throughout the aposticha at Saturday Vespers.
+ * Parses an aposticha PDF. Returns { idiomelon, glory } where idiomelon is the
+ * first sticheron (repeated throughout the aposticha) and glory is the Glory
+ * doxastichon that follows the psalm-verse stichera, if present.
  */
 function parseAposticha(raw) {
   const lines = cleanLines(raw);
 
-  // The idiomelon runs from the first non-header line until the first
-  // psalm-verse marker (V.) or "Sticheron 2" label
   const HEADERS = /^(Tone\s+\d|Resurrectional|Theotokion|Dogmatikon|Aposticha|Obikhod|Kievan|Serbian|Sticheron\s+1\b)/i;
   const STOP    = /^(V\.|Sticheron\s+[2-9]|Then\b|If there is|Gloria)/i;
+  const GLORY   = /^Glory\b/i;
+  const NOW     = /^Now and ever\b/i;
 
+  // ── Idiomelon (first sticheron) ─────────────────────────────────────────────
   let start = 0;
   for (let i = 0; i < Math.min(lines.length, 5); i++) {
     if (HEADERS.test(lines[i])) { start = i + 1; }
@@ -276,10 +278,21 @@ function parseAposticha(raw) {
     if (STOP.test(lines[i])) { end = i; break; }
   }
 
-  let result = joinFragments(lines.slice(start, end));
+  let idiomelon = joinFragments(lines.slice(start, end));
   // Strip any trailing psalm-verse marker that ended up inline (from SATB column merge)
-  result = result.replace(/\s*\bV\.\s.*$/m, '').trim();
-  return result;
+  idiomelon = idiomelon.replace(/\s*\bV\.\s.*$/m, '').trim();
+
+  // ── Glory doxastichon (NEW) ──────────────────────────────────────────────────
+  let glory = null;
+  const gloryStart = lines.findIndex(l => GLORY.test(l));
+  if (gloryStart !== -1) {
+    const gloryEnd = lines.findIndex((l, i) => i > gloryStart && NOW.test(l));
+    const gloryLines = lines.slice(gloryStart + 1, gloryEnd !== -1 ? gloryEnd : undefined);
+    const gloryText = joinFragments(gloryLines).trim();
+    if (gloryText) glory = gloryText;
+  }
+
+  return { idiomelon, glory };
 }
 
 // ─── Per-tone scraper ────────────────────────────────────────────────────────
@@ -292,13 +305,20 @@ async function scrapeTone(n) {
     process.stdout.write(`    ${key} … `);
     try {
       const raw  = await pdfToText(urlPath);
-      const text = key === 'stichera'   ? parseStichera(raw)
-                 : key === 'aposticha'  ? parseAposticha(raw)
-                 : parseSingleHymn(raw);
-      result[key] = text;
-      const preview = Array.isArray(text)
-        ? `[${text.length} stichera]`
-        : text.slice(0, 50).replace(/\n/g, ' ') + '…';
+      let preview;
+      if (key === 'aposticha') {
+        const parsed = parseAposticha(raw);
+        result.aposticha      = parsed.idiomelon;
+        result.apostichaGlory = parsed.glory;
+        preview = parsed.idiomelon.slice(0, 50).replace(/\n/g, ' ') + '…'
+                + (parsed.glory ? ' [+glory]' : ' [no glory]');
+      } else {
+        const text = key === 'stichera' ? parseStichera(raw) : parseSingleHymn(raw);
+        result[key] = text;
+        preview = Array.isArray(text)
+          ? `[${text.length} stichera]`
+          : text.slice(0, 50).replace(/\n/g, ' ') + '…';
+      }
       console.log(`✓  ${preview}`);
     } catch (err) {
       console.log(`✗  ${err.message}`);

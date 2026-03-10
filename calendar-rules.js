@@ -272,8 +272,9 @@ function generateOrdinaryTimeSaturday(dateStr, tone) {
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.glory`,     tone },
-        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
+        // No resurrectional glory doxastichon in plain Saturday Octoechos;
+        // go straight to "Glory...now and ever..." + Theotokion.
+        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion', combinesGloryNow: true },
       },
       troparia: {
         source: 'octoechos',

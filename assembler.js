@@ -222,26 +222,29 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
   }
 
   // Glory
-  if (lordICallSpec.glory) {
-    const glorySource = resolveSource(
-      lordICallSpec.glory.source, lordICallSpec.glory.key, sources
-    );
+  const glorySource = lordICallSpec.glory
+    ? resolveSource(lordICallSpec.glory.source, lordICallSpec.glory.key, sources)
+    : null;
+
+  if (lordICallSpec.glory && glorySource) {
     blocks.push(makeBlock('lic-glory-label', section, 'doxology', null,
       fixedTexts.doxology.gloryOnly));
-    if (glorySource) {
-      blocks.push(makeBlock('lic-glory-hymn', section, 'hymn', 'choir', glorySource.text,
-        { tone: lordICallSpec.glory.tone, source: lordICallSpec.glory.source, label: lordICallSpec.glory.label }
-      ));
-    }
+    blocks.push(makeBlock('lic-glory-hymn', section, 'hymn', 'choir', glorySource.text,
+      { tone: lordICallSpec.glory.tone, source: lordICallSpec.glory.source, label: lordICallSpec.glory.label }
+    ));
   }
 
   // Now and ever — Dogmatikon or Theotokion
+  // If a glory slot was configured but resolved to nothing, combine Glory+Now into one label
   if (lordICallSpec.now) {
     const nowSource = resolveSource(
       lordICallSpec.now.source, lordICallSpec.now.key, sources
     );
-    blocks.push(makeBlock('lic-now-label', section, 'doxology', null,
-      fixedTexts.doxology.nowOnly));
+    const noGloryHymn = lordICallSpec.glory && !glorySource;
+    const nowLabel = noGloryHymn
+      ? fixedTexts.doxology.gloryNow
+      : fixedTexts.doxology.nowOnly;
+    blocks.push(makeBlock('lic-now-label', section, 'doxology', null, nowLabel));
     if (nowSource) {
       blocks.push(makeBlock('lic-now-hymn', section, 'hymn', 'choir', nowSource.text,
         { tone: lordICallSpec.now.tone, source: lordICallSpec.now.source, label: lordICallSpec.now.label }

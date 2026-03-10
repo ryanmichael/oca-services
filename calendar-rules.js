@@ -604,32 +604,87 @@ function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone, litKey) {
 /**
  * Generates a Holy Week day entry.
  * All variable slots are DB-sourced via the stable holyWeek.{dow} key.
+ *
+ * Service types:
+ *   Sun–Thu  → dailyVespers  (Palm Sunday evening; Mon–Wed Bridegroom Vespers;
+ *                              Thu note: primary service is Liturgy of St. Basil)
+ *   Friday   → greatVespers  (Burial Vespers — full Great Vespers with Epitaphion)
+ *   Saturday → greatVespers  (combined with Liturgy of St. Basil)
+ *
+ * Prokeimena:
+ *   Sunday    → Sunday prokeimenon (Tone 8, "Behold now, bless the Lord")
+ *   Mon–Wed   → appointed weekday prokeimenon by day of week
+ *   Thursday  → Thursday weekday prokeimenon
+ *   Friday    → specific Holy Friday prokeimenon (Tone 4, "They parted my garments")
+ *   Saturday  → Saturday Great Prokeimenon (Tone 8, "Thou hast given an inheritance")
  */
 function generateHolyWeekDay(dateStr, dow, litKey) {
-  const names = {
-    sunday:    'Palm Sunday',
-    monday:    'Holy Monday',
-    tuesday:   'Holy Tuesday',
-    wednesday: 'Holy Wednesday',
-    thursday:  'Great and Holy Thursday',
-    friday:    'Great and Holy Friday',
-    saturday:  'Great and Holy Saturday',
+  // Per-day service configuration
+  const DAY_CONFIG = {
+    sunday: {
+      name:        'Palm Sunday',
+      serviceType: 'dailyVespers',
+      rubricNote:  'Palm Sunday — evening service (eve of Holy Monday)',
+      prokeimenon: { pattern: 'weekday', weekday: 'sunday' },
+    },
+    monday: {
+      name:        'Holy Monday',
+      serviceType: 'dailyVespers',
+      rubricNote:  'Holy Monday — Daily Vespers',
+      prokeimenon: { pattern: 'weekday', weekday: 'monday' },
+    },
+    tuesday: {
+      name:        'Holy Tuesday',
+      serviceType: 'dailyVespers',
+      rubricNote:  'Holy Tuesday — Daily Vespers',
+      prokeimenon: { pattern: 'weekday', weekday: 'tuesday' },
+    },
+    wednesday: {
+      name:        'Holy Wednesday',
+      serviceType: 'dailyVespers',
+      rubricNote:  'Holy Wednesday — Daily Vespers',
+      prokeimenon: { pattern: 'weekday', weekday: 'wednesday' },
+    },
+    thursday: {
+      name:        'Great and Holy Thursday',
+      serviceType: 'dailyVespers',
+      rubricNote:  'Great and Holy Thursday — Vespers (primary morning service: Liturgy of St. Basil)',
+      prokeimenon: { pattern: 'weekday', weekday: 'thursday' },
+    },
+    friday: {
+      name:        'Great and Holy Friday',
+      serviceType: 'greatVespers',
+      rubricNote:  'Great and Holy Friday — Burial Vespers with the Epitaphion',
+      prokeimenon: { pattern: 'weekday', weekday: 'holyFriday' },
+    },
+    saturday: {
+      name:        'Great and Holy Saturday',
+      serviceType: 'greatVespers',
+      rubricNote:  'Great and Holy Saturday — Great Vespers with the Liturgy of St. Basil',
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+    },
   };
-  const name = names[dow] || `Holy Week ${dow}`;
+
+  const cfg = DAY_CONFIG[dow] ?? {
+    name:        `Holy Week ${dow}`,
+    serviceType: 'dailyVespers',
+    rubricNote:  `Holy Week ${dow}`,
+    prokeimenon: { pattern: 'weekday', weekday: dow },
+  };
 
   return {
     _meta: {
       generated:   true,
       generatedAt: new Date().toISOString(),
-      note:        `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.`,
+      note:        `Auto-generated ${cfg.name}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,
     dayOfWeek: dow,
     liturgicalContext: { season: 'holyWeek' },
     commemorations: [],
     vespers: {
-      serviceType: dow === 'saturday' ? 'greatVespers' : 'dailyVespers',
-      rubricNote:  name,
+      serviceType: cfg.serviceType,
+      rubricNote:  cfg.rubricNote,
       lordICall: {
         totalStichera: 6,
         slots: [
@@ -638,7 +693,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
         now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : 'saturday' },
+      prokeimenon: cfg.prokeimenon,
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },

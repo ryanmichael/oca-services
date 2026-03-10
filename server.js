@@ -390,6 +390,111 @@ function getSticheraDay(month, day) {
 }
 
 /**
+ * Returns ranked Menaion data for service assembly.
+ * Single DB call combining commemorations + troparia + stichera.
+ *
+ * Returns:
+ *   {
+ *     principal:    { id, title, tone, rank, troparia, stichera, hasTroparion, hasStichera }
+ *     sticheraComm: same shape | null   — the commemoration that owns stichera
+ *     notable:      [...same shape]     — all comms with troparia, sorted by id (= OCA priority)
+ *     all:          [...same shape]     — all comms for the day
+ *   }
+ *
+ * principal = stichera-saint (if any, and it has a troparion), else first notable by id.
+ * This ensures the saint OCA published stichera for is treated as the primary, even
+ * when a moveable feast (Triodion/Pentecostarion) sits at a lower id.
+ */
+function getMenaionRanked(month, day) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+
+    const comms = db.prepare(`
+      SELECT id, title, rank, tone FROM commemorations
+      WHERE month = ? AND day = ? ORDER BY id
+    `).all(month, day);
+    if (comms.length === 0) return null;
+
+    const ids          = comms.map(c => c.id);
+    const placeholders = ids.map(() => '?').join(',');
+
+    const tropRows = db.prepare(
+      `SELECT commemoration_id, type, tone, text, pronoun
+       FROM troparia WHERE commemoration_id IN (${placeholders})`
+    ).all(...ids);
+
+    const stRows = db.prepare(
+      `SELECT commemoration_id, "order", section, tone, label, text
+       FROM stichera WHERE commemoration_id IN (${placeholders})
+       ORDER BY commemoration_id, section, "order"`
+    ).all(...ids);
+
+    const tropariaMap  = {};
+    const sticheraMap  = {};
+    for (const t of tropRows) {
+      (tropariaMap[t.commemoration_id] ??= []).push(t);
+    }
+    for (const s of stRows) {
+      (sticheraMap[s.commemoration_id] ??= []).push({
+        order: s.order, section: s.section, tone: s.tone, label: s.label, text: s.text,
+      });
+    }
+
+    const enriched = comms.map(c => ({
+      id:           c.id,
+      title:        c.title,
+      rank:         c.rank,
+      tone:         c.tone,
+      troparia:     tropariaMap[c.id] ?? [],
+      stichera:     sticheraMap[c.id] ?? [],
+      hasTroparion: (tropariaMap[c.id] ?? []).some(t => t.type === 'troparion'),
+      hasStichera:  !!(sticheraMap[c.id]?.length),
+    }));
+
+    const sticheraSaint = enriched.find(c => c.hasStichera && c.hasTroparion)
+                       ?? enriched.find(c => c.hasStichera);
+    const firstNotable  = enriched.find(c => c.hasTroparion);
+    const principal     = sticheraSaint ?? firstNotable ?? enriched[0] ?? null;
+    const sticheraComm  = enriched.find(c => c.hasStichera) ?? null;
+    const notable       = enriched.filter(c => c.hasTroparion);
+
+    return { principal, sticheraComm, notable, all: enriched };
+  } catch (err) {
+    console.error('getMenaionRanked error:', err.message);
+    return null;
+  } finally {
+    db?.close();
+  }
+}
+
+/**
+ * Lightweight version for the /api/days list — returns only titles.
+ * Avoids loading full troparia/stichera text for every day in the view.
+ *
+ * Returns: { principal: string, commemorations: string[] } | null
+ */
+function getMenaionDayList(month, day) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+    const rows = db.prepare(`
+      SELECT c.title
+      FROM commemorations c
+      JOIN troparia t ON t.commemoration_id = c.id
+      WHERE c.month = ? AND c.day = ? AND t.type = 'troparion'
+      GROUP BY c.id
+      ORDER BY c.id
+    `).all(month, day);
+    if (rows.length === 0) return null;
+    return { principal: rows[0].title, commemorations: rows.map(r => r.title) };
+  } catch { return null; }
+  finally { db?.close(); }
+}
+
+/**
  * Returns all commemorations + troparia for a given month/day from oca.db.
  * Shape: [{ id, title, rank, tone, troparia: [{ type, tone, text }] }, …]
  */
@@ -632,8 +737,12 @@ function assembleForDate(date, pronoun) {
   const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
   if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
     const [, mm, dd] = date.split('-').map(Number);
-    const primary      = getMenaionPrimary(mm, dd);
-    const sticheraData = getSticheraDay(mm, dd);
+    const ranked = getMenaionRanked(mm, dd);
+    const primary = ranked?.principal ?? null;
+    const sticheraData = ranked?.sticheraComm
+      ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
+           rank: ranked.sticheraComm.rank, stichera: ranked.sticheraComm.stichera }]
+      : null;
 
     if (primary) {
       const troparion = primary.troparia.find(t => t.type === 'troparion');
@@ -724,7 +833,13 @@ function assembleForDate(date, pronoun) {
         label:    primary.title,
       });
 
-      calendarEntry.commemorations = [{ title: primary.title, tone: troparion.tone }];
+      // Populate all notable saints (those with troparia, in OCA priority order)
+      calendarEntry.commemorations = (ranked?.notable ?? [{ ...primary }]).map(c => ({
+        title:        c.title,
+        tone:         c.troparia.find(t => t.type === 'troparion')?.tone ?? c.tone,
+        isPrincipal:  c.id === primary.id,
+        hasStichera:  c.hasStichera,
+      }));
     }
   }
 
@@ -938,11 +1053,15 @@ function handleRequest(req, res) {
         const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
         const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
 
-        // Feast from Menaion DB
+        // Feast + commemorations list from Menaion DB
         let feast = null;
+        let commemorations = [];
         try {
-          const primary = getMenaionPrimary(mm, dd);
-          if (primary) feast = primary.title;
+          const dayList = getMenaionDayList(mm, dd);
+          if (dayList) {
+            feast          = dayList.principal;
+            commemorations = dayList.commemorations;
+          }
         } catch (_) {}
 
         const services = {
@@ -961,6 +1080,7 @@ function handleRequest(req, res) {
           season,
           tone,
           feast,
+          commemorations,
           liturgicalLabel,
           services,
         });

@@ -228,6 +228,13 @@ header {
 .panel-date-str {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
 }
+.panel-comms {
+  font-family: 'EB Garamond', serif; font-size: 13px; color: var(--text);
+  margin-top: 6px; line-height: 1.6;
+}
+.panel-comms:empty { display: none; }
+.panel-comms .comm-principal { font-weight: 600; }
+.panel-comms .comm-others { color: var(--muted); }
 
 
 .panel-body {

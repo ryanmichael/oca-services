@@ -222,6 +222,23 @@ async function loadPanelContent(date, svcType) {
     document.getElementById('p-date').textContent =
       `${formatLong(date)}${toneStr}${labelStr}`;
 
+    // Render commemorations list
+    const commsEl = document.getElementById('p-comms');
+    const comms = data.commemorations || [];
+    if (comms.length > 0) {
+      const principal = comms.find(c => c.isPrincipal) || comms[0];
+      const others    = comms.filter(c => !c.isPrincipal);
+      let html = `<span class="comm-principal">${principal.title}</span>`;
+      if (others.length > 0) {
+        html += `<span class="comm-others">`;
+        others.forEach(c => { html += `<br>${c.title}`; });
+        html += `</span>`;
+      }
+      commsEl.innerHTML = html;
+    } else {
+      commsEl.textContent = '';
+    }
+
     // Render blocks
     const html = window.renderBlocks(data.blocks);
     const bodyEl = document.getElementById('p-body');

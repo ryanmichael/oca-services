@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "service": "daily-vespers",
+    "description": "Daily Vespers — served on weekday evenings; shorter than Great Vespers (no Entrance, no OT lessons). During Great Lent, includes two OT readings (Genesis + Proverbs) with prokeimena.",
+    "source": "OCA Office of Vespers, 2021-11-19",
+    "version": "0.1.0"
+  },
+
+  "differences_from_great_vespers": [
+    "No Entrance (deacon does not lead Entrance with censer)",
+    "Kathisma is read (not sung); a different kathisma is appointed each weekday",
+    "No Old Testament lessons (except Lenten weekdays: Genesis + Proverbs)",
+    "Augmented Litany comes AFTER the Troparia, not before Vouchsafe",
+    "Prokeimenon is the simple weekday prokeimenon (single, not Great)"
+  ],
+
+  "sections": [
+
+    {
+      "id": "opening",
+      "label": "Opening",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "opening-exclamation",  "type": "fixed", "speaker": "priest",  "textKey": "opening.exclamation" },
+        { "id": "opening-amen",         "type": "fixed", "speaker": "reader",  "textKey": "opening.amen" },
+        { "id": "heavenly-king",        "type": "fixed", "speaker": "reader",  "textKey": "prayers.heavenlyKing" },
+        { "id": "trisagion",            "type": "fixed", "speaker": "reader",  "textKey": "prayers.trisagion" },
+        { "id": "glory-now-1",          "type": "fixed", "speaker": "reader",  "textKey": "doxology.gloryNow" },
+        { "id": "most-holy-trinity",    "type": "fixed", "speaker": "reader",  "textKey": "prayers.mostHolyTrinity" },
+        { "id": "lord-have-mercy-3",    "type": "fixed", "speaker": "reader",  "textKey": "responses.lordHaveMercyThrice" },
+        { "id": "glory-now-2",          "type": "fixed", "speaker": "reader",  "textKey": "doxology.gloryNow" },
+        { "id": "our-father",           "type": "fixed", "speaker": "reader",  "textKey": "prayers.ourFather" },
+        { "id": "kingdom-exclamation",  "type": "fixed", "speaker": "priest",  "textKey": "prayers.ourFather.doxology" },
+        { "id": "lord-have-mercy-12",   "type": "fixed", "speaker": "reader",  "textKey": "responses.lordHaveMercyTwelve" },
+        { "id": "glory-now-3",          "type": "fixed", "speaker": "reader",  "textKey": "doxology.gloryNow" }
+      ]
+    },
+
+    {
+      "id": "psalm103",
+      "label": "Psalm 103 (104)",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "psalm103-intro",  "type": "fixed", "speaker": "reader", "textKey": "psalm103.intro" },
+        { "id": "psalm103-body",   "type": "fixed", "speaker": "reader", "textKey": "psalm103.body" },
+        { "id": "psalm103-refrain","type": "fixed", "speaker": "reader", "textKey": "psalm103.refrain" },
+        { "id": "psalm103-close",  "type": "fixed", "speaker": "reader", "textKey": "psalm103.close" },
+        { "id": "alleluia-3",      "type": "fixed", "speaker": "reader", "textKey": "responses.alleluiaThrice" }
+      ]
+    },
+
+    {
+      "id": "great-litany",
+      "label": "The Peace Litany",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "great-litany-body",       "type": "fixed", "speaker": "deacon", "textKey": "litanies.great" },
+        { "id": "great-litany-exclamation","type": "fixed", "speaker": "priest", "textKey": "litanies.great.exclamation" }
+      ]
+    },
+
+    {
+      "id": "kathisma",
+      "label": "Kathisma",
+      "note": "A section of the Psalter appointed for this weekday evening. Read (not sung). Kathisma number varies by day and season. Little Litany follows.",
+      "blocks": [
+        {
+          "id": "kathisma-reading",
+          "type": "variable",
+          "slot": "kathisma",
+          "resolvedBy": "kathismaResolver",
+          "conditions": [
+            { "when": "dailyVespers.weekday", "use": "appointedKathismaByDay" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "little-litany",
+      "label": "Little Litany",
+      "note": "Said after the kathisma. Omitted on days when kathisma is itself omitted.",
+      "blocks": [
+        { "id": "little-litany-body",       "type": "fixed", "speaker": "deacon", "textKey": "litanies.little" },
+        { "id": "little-litany-exclamation","type": "fixed", "speaker": "priest", "textKey": "litanies.little.exclamation1" }
+      ]
+    },
+
+    {
+      "id": "lord-i-call",
+      "label": "Lord, I Have Cried",
+      "note": "Fewer stichera than Great Vespers — typically 6 on weekdays, drawn from the Octoechos and/or Menaion.",
+      "blocks": [
+        { "id": "lord-i-call-refrain", "type": "fixed",    "speaker": "choir",  "textKey": "lordICall.refrain" },
+        { "id": "lord-i-call-psalms",  "type": "fixed",    "speaker": "reader", "textKey": "lordICall.psalmVerses" },
+        {
+          "id": "stichera-lord-i-call",
+          "type": "variable",
+          "slot": "stichera-lord-i-call",
+          "resolvedBy": "sticheraAssembler",
+          "params": { "defaultCount": 6, "insertionPoint": "betweenPsalmVerses" },
+          "sources": ["octoechos", "menaion", "triodion"]
+        }
+      ]
+    },
+
+    {
+      "id": "gladsome-light",
+      "label": "Gladsome Light",
+      "note": "Same as Great Vespers. No Entrance precedes it at Daily Vespers.",
+      "blocks": [
+        { "id": "gladsome-light-hymn", "type": "fixed", "speaker": "choir", "textKey": "gladsome-light" }
+      ]
+    },
+
+    {
+      "id": "prokeimenon",
+      "label": "Evening Prokeimenon",
+      "note": "Single weekday prokeimenon at ordinary Daily Vespers. During Lenten weekdays: two prokeimena with Genesis and Proverbs readings (lentenWithReadings pattern).",
+      "blocks": [
+        { "id": "prokeimenon-intro", "type": "fixed", "speaker": "priest", "textKey": "prokeimenon.intro" },
+        {
+          "id": "prokeimenon-text",
+          "type": "variable",
+          "slot": "prokeimenon",
+          "resolvedBy": "prokeimenonResolver",
+          "params": { "sources": ["weekday", "lentenWithReadings"] }
+        }
+      ]
+    },
+
+    {
+      "id": "vouchsafe",
+      "label": "Vouchsafe, O Lord",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "vouchsafe-prayer", "type": "fixed", "speaker": "reader", "textKey": "prayers.vouchsafe" }
+      ]
+    },
+
+    {
+      "id": "evening-litany",
+      "label": "Litany of Completion",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "evening-litany-body",       "type": "fixed", "speaker": "deacon", "textKey": "litanies.evening" },
+        { "id": "evening-litany-exclamation","type": "fixed", "speaker": "priest", "textKey": "litanies.evening.exclamation" }
+      ]
+    },
+
+    {
+      "id": "aposticha",
+      "label": "Aposticha",
+      "note": "Same structure as Great Vespers. Weekday aposticha psalm verses differ from Saturday.",
+      "blocks": [
+        {
+          "id": "aposticha-verses",
+          "type": "variable",
+          "slot": "aposticha",
+          "resolvedBy": "apostichaAssembler",
+          "params": {
+            "verseSource": { "saturday": "aposticha.saturdayVerses", "other": "aposticha.defaultVerses" }
+          },
+          "sources": ["octoechos", "menaion", "triodion"]
+        }
+      ]
+    },
+
+    {
+      "id": "nunc-dimittis",
+      "label": "Nunc Dimittis",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "nunc-dimittis-text", "type": "fixed", "speaker": "reader", "textKey": "prayers.nuncDimittis" }
+      ]
+    },
+
+    {
+      "id": "troparia",
+      "label": "Troparia",
+      "note": "Troparia for the day/saint. Structure: troparion-1 / Glory / troparion-2 or kontakion / Now / theotokion.",
+      "blocks": [
+        {
+          "id": "troparion-of-day",
+          "type": "variable",
+          "slot": "troparia",
+          "resolvedBy": "tropariaAssembler",
+          "sources": ["octoechos", "menaion", "triodion"]
+        }
+      ]
+    },
+
+    {
+      "id": "augmented-litany",
+      "label": "Litany of Fervent Supplication",
+      "note": "At Daily Vespers the Augmented Litany comes HERE — after the Troparia. (At Great Vespers it comes earlier, after the OT lessons.)",
+      "blocks": [
+        { "id": "augmented-litany-body",       "type": "fixed", "speaker": "deacon", "textKey": "litanies.augmented" },
+        { "id": "augmented-litany-exclamation","type": "fixed", "speaker": "priest", "textKey": "litanies.augmented.exclamation" }
+      ]
+    },
+
+    {
+      "id": "dismissal",
+      "label": "Dismissal",
+      "note": "Same as Great Vespers",
+      "blocks": [
+        { "id": "dismissal-wisdom",        "type": "fixed",    "speaker": "deacon", "textKey": "dismissal.wisdom" },
+        { "id": "dismissal-father-bless",  "type": "fixed",    "speaker": "choir",  "textKey": "dismissal.fatherBless" },
+        { "id": "dismissal-blessed-he",    "type": "fixed",    "speaker": "priest", "textKey": "dismissal.blessedHeWhoIs" },
+        { "id": "dismissal-confirm",       "type": "fixed",    "speaker": "choir",  "textKey": "dismissal.confirm" },
+        { "id": "dismissal-theotokos",     "type": "fixed",    "speaker": "priest", "textKey": "dismissal.mostHolyTheotokos" },
+        { "id": "dismissal-magnification", "type": "fixed",    "speaker": "choir",  "textKey": "dismissal.magnification" },
+        { "id": "dismissal-glory-christ",  "type": "fixed",    "speaker": "priest", "textKey": "dismissal.gloryChrist" },
+        { "id": "dismissal-final",         "type": "fixed",    "speaker": "choir",  "textKey": "dismissal.finalResponse" },
+        { "id": "dismissal-proper",        "type": "variable", "slot": "dismissal-text", "resolvedBy": "dismissalResolver" }
+      ]
+    }
+
+  ]
+}

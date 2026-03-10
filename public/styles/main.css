@@ -229,12 +229,6 @@ header {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
 }
 
-.pronoun-row {
-  display: flex; align-items: center; gap: 12px; margin-top: 9px;
-  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em; color: var(--muted);
-}
-.pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; font-family: 'Cinzel', serif; }
-.pronoun-row input { accent-color: var(--rubric); }
 
 .panel-body {
   flex: 1; overflow-y: auto;
@@ -272,8 +266,9 @@ header {
   color: var(--muted); margin-bottom: 10px; line-height: 1.6;
 }
 .spk {
+  display: block;
   font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
-  font-style: normal; color: var(--muted);
+  font-style: normal; color: var(--rubric);
 }
 
 /* Overlay to close popover on outside click */

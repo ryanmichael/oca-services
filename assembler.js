@@ -46,11 +46,11 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 3. Great Litany ─────────────────────────────────────────────────────────
   blocks.push(...assembleGreatLitany(fixedTexts));
 
-  // ── 4. Kathisma (Great Vespers only) ────────────────────────────────────────
-  if (isGreatVespers) {
-    const kathismaBlocks = assembleKathisma(calendarDay, sources);
-    blocks.push(...kathismaBlocks);
-    // Little Litany follows kathisma
+  // ── 4. Kathisma ─────────────────────────────────────────────────────────────
+  const kathismaBlocks = assembleKathisma(calendarDay, fixedTexts);
+  blocks.push(...kathismaBlocks);
+  // Little Litany follows kathisma (omitted only when kathisma itself is omitted)
+  if (kathismaBlocks.length > 0) {
     blocks.push(...assembleLittleLitany(fixedTexts));
   }
 
@@ -167,13 +167,48 @@ function assembleLittleLitany(fixedTexts) {
   ];
 }
 
-function assembleKathisma(calendarDay, sources) {
-  // TODO: implement kathisma resolution based on liturgical context
-  // For now, placeholder
+function assembleKathisma(calendarDay, fixedTexts) {
+  const { getVespersKathisma } = require('./kathisma');
+  const { dayOfWeek, liturgicalContext, vespers } = calendarDay;
+  const season      = liturgicalContext?.season ?? 'ordinaryTime';
+  const kathNum     = getVespersKathisma(dayOfWeek, season);
+  const section     = 'Kathisma';
+
+  // Kathisma omitted for this occasion (Holy Week, Bright Week, etc.)
+  if (kathNum === null) return [];
+
+  // Saturday Great Vespers: sing Kathisma 1, Section 1 — "Blessed Is The Man"
+  if (vespers.serviceType === 'greatVespers' && dayOfWeek === 'saturday') {
+    return assembleBlessedIsTheMan(fixedTexts);
+  }
+
+  // All other cases: kathisma is read (not sung); texts not yet stored.
   return [
-    makeBlock('kathisma-placeholder', 'Kathisma', 'rubric', null,
-      '[Kathisma reading — appointed section of the Psalter]'),
+    makeBlock('kathisma-rubric', section, 'rubric', null,
+      `KATHISMA ${kathNum}`),
+    makeBlock('kathisma-reading', section, 'prayer', 'reader',
+      `[Kathisma ${kathNum} — the appointed section of the Psalter for ${dayOfWeek} evening]`),
   ];
+}
+
+function assembleBlessedIsTheMan(fixedTexts) {
+  const section = 'Kathisma';
+  const blocks  = [];
+  const k       = fixedTexts.kathisma.blessedIsTheMan;
+
+  blocks.push(makeBlock('kathisma-heading', section, 'rubric', null,
+    'KATHISMA I'));
+
+  k.verses.forEach((verse, i) => {
+    blocks.push(makeBlock(`kathisma-v${i}`, section, 'prayer', 'choir', verse));
+    blocks.push(makeBlock(`kathisma-r${i}`, section, 'response', 'choir', k.refrain));
+  });
+
+  blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
+    'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+  blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir', k.refrain));
+
+  return blocks;
 }
 
 /**

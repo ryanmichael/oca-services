@@ -12,7 +12,6 @@ let days = [];
 let activeRow = null;
 let activeDate = null;
 let activeSvcType = null;
-let activePronoun = 'tt';
 let calMonth = null;   // { year, month } (month = 0-based)
 let calDots = {};      // { 'YYYY-MM-DD': true }
 
@@ -77,8 +76,8 @@ async function fetchDays(from, to) {
   return res.json();
 }
 
-async function fetchService(date, svcType, pronoun) {
-  const res = await fetch(`/api/service?date=${date}&pronoun=${pronoun}`);
+async function fetchService(date, svcType) {
+  const res = await fetch(`/api/service?date=${date}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`/api/service failed: ${res.status}`);
@@ -203,12 +202,12 @@ async function openPanel(rowEl, date, svcType) {
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
   document.getElementById('panel').classList.add('open');
 
-  await loadPanelContent(date, svcType, activePronoun);
+  await loadPanelContent(date, svcType);
 }
 
-async function loadPanelContent(date, svcType, pronoun) {
+async function loadPanelContent(date, svcType) {
   try {
-    const data = await fetchService(date, svcType, pronoun);
+    const data = await fetchService(date, svcType);
 
     if (!data) {
       document.getElementById('p-body').innerHTML =
@@ -242,14 +241,6 @@ function closePanel() {
   activeSvcType = null;
 }
 
-// ─── Pronoun toggle ───────────────────────────────────────────────────────────
-
-function onPronounChange(val) {
-  activePronoun = val;
-  if (activeDate && activeSvcType) {
-    loadPanelContent(activeDate, activeSvcType, activePronoun);
-  }
-}
 
 // ─── Scroll tracker ───────────────────────────────────────────────────────────
 
@@ -393,10 +384,6 @@ function jumpToDate(dateStr) {
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 async function init() {
-  // Set up pronoun toggle
-  document.getElementById('pron-tt').addEventListener('change', () => onPronounChange('tt'));
-  document.getElementById('pron-yy').addEventListener('change', () => onPronounChange('yy'));
-
   // Close button and print
   document.getElementById('btn-close').addEventListener('click', closePanel);
   document.getElementById('btn-print').addEventListener('click', () => window.print());

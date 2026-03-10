@@ -705,7 +705,7 @@ function handleRequest(req, res) {
 
       // For auto-generated Saturdays (ordinary time or Pentecostarion), inject Menaion data from DB.
       let menaionOverride = sources.menaion;
-      const injectSeasons = ['ordinaryTime', 'pentecostarion'];
+      const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
       if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
         const [, mm, dd] = date.split('-').map(Number);
         const primary      = getMenaionPrimary(mm, dd);

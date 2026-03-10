@@ -796,6 +796,20 @@ function generateCalendarEntry(dateStr) {
     return generateLentenWeekday(dateStr, dow, weekOfLent, tone, litKey);
   }
 
+  // ── Pre-Lenten (Meatfare week + Cheesefare week) ──────────────────────────
+  if (season === 'preLenten') {
+    // Saturday Great Vespers: same Octoechos structure as ordinary time.
+    // Cheesefare Saturday is the eve of Forgiveness Sunday.
+    if (dow === 'saturday') {
+      const entry = generateOrdinaryTimeSaturday(dateStr, tone);
+      entry.liturgicalContext.season = 'preLenten';
+      entry._meta.note = `Auto-generated pre-Lenten Saturday Great Vespers. Tone ${tone}. Cheesefare week (eve of Forgiveness Sunday).`;
+      return entry;
+    }
+    // Weekdays and Sundays: not yet implemented (no Daily Vespers assembler).
+    return null;
+  }
+
   // ── Holy Week ──────────────────────────────────────────────────────────────
   if (season === 'holyWeek') {
     return generateHolyWeekDay(dateStr, dow, litKey);

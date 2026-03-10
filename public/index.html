@@ -5,78 +5,143 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orthodox Daily Services</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/main.css" />
 </head>
 <body>
 
-<header>
-  <span class="header-cross">☩</span>
-  <span class="header-title">ORTHODOX DAILY SERVICES</span>
-  <a href="#" class="header-about">About</a>
-</header>
+<!-- ═══════════════════════════════════════════ VIEW: MAIN ═══════════════════ -->
+<div class="view-main" id="view-main">
 
-<div class="overlay" id="overlay"></div>
+  <header>
+    <span class="header-cross">☩</span>
+    <span class="header-title">ORTHODOX DAILY SERVICES</span>
+    <a href="#" class="header-about">About</a>
+  </header>
 
-<div class="layout">
+  <div class="layout">
 
-  <!-- CENTER COLUMN -->
-  <main class="center" id="center">
-    <div class="center-bar">
-      <span class="week-label" id="week-label">LOADING…</span>
-      <div style="position:relative">
-        <button class="date-btn" id="date-btn">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;display:block">
-            <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/>
-            <line x1="4" y1="1" x2="4" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="8" y1="1" x2="8" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          CHANGE
-        </button>
-        <div class="cal-popover" id="cal-popover">
-          <div class="cal-head">
-            <button class="cal-nav" id="cal-prev">◀</button>
-            <span id="cal-month-label">MARCH 2026</span>
-            <button class="cal-nav" id="cal-next">▶</button>
-          </div>
-          <div class="cal-grid" id="cal-grid">
-            <div class="cal-dow">S</div>
-            <div class="cal-dow">M</div>
-            <div class="cal-dow">T</div>
-            <div class="cal-dow">W</div>
-            <div class="cal-dow">T</div>
-            <div class="cal-dow">F</div>
-            <div class="cal-dow">S</div>
+    <!-- CENTER COLUMN -->
+    <main class="center" id="center">
+      <div class="center-bar">
+        <span class="week-label" id="week-label">LOADING…</span>
+        <div class="bar-btns">
+          <button class="bar-btn" id="search-btn">SEARCH</button>
+          <div style="position:relative">
+            <button class="bar-btn" id="date-btn">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;display:block">
+                <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="4" y1="1" x2="4" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="8" y1="1" x2="8" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              CHANGE
+            </button>
+            <div class="cal-popover" id="cal-popover">
+              <div class="cal-head">
+                <button class="cal-nav" id="cal-prev">◀</button>
+                <span id="cal-month-label">MARCH 2026</span>
+                <button class="cal-nav" id="cal-next">▶</button>
+              </div>
+              <div class="cal-grid" id="cal-grid">
+                <div class="cal-dow">S</div>
+                <div class="cal-dow">M</div>
+                <div class="cal-dow">T</div>
+                <div class="cal-dow">W</div>
+                <div class="cal-dow">T</div>
+                <div class="cal-dow">F</div>
+                <div class="cal-dow">S</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="service-list-body">
-      <div id="service-list"></div>
-    </div>
-  </main>
+      <div class="service-list-body">
+        <div id="service-list"></div>
+      </div>
+    </main>
 
-  <!-- RIGHT PANEL -->
-  <aside class="panel" id="panel">
-    <div class="panel-inner">
-      <div class="panel-head">
-        <div class="panel-top-row">
-          <button class="btn-close" id="btn-close">✕</button>
-          <button class="btn-print" id="btn-print">PRINT</button>
+    <!-- RIGHT PANEL -->
+    <aside class="panel" id="panel">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="panel-top-row">
+            <button class="btn-close" id="btn-close">✕</button>
+            <button class="btn-print" id="btn-print">PRINT</button>
+          </div>
+          <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
+          <div class="panel-date-str" id="p-date"></div>
+          <div class="panel-comms" id="p-comms"></div>
+          <div class="pronoun-toggle" id="pronoun-toggle">
+            <button class="pronoun-btn active" id="btn-thee" data-pronoun="tt">Thee / Thy</button>
+            <span class="pronoun-sep">/</span>
+            <button class="pronoun-btn" id="btn-you" data-pronoun="yy">You / Your</button>
+          </div>
         </div>
-        <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
-        <div class="panel-date-str" id="p-date"></div>
-        <div class="panel-comms" id="p-comms"></div>
+        <div class="panel-body" id="p-body">
+          <div class="panel-loading">Loading…</div>
+        </div>
       </div>
-      <div class="panel-body" id="p-body">
-        <div class="panel-loading">Loading…</div>
+    </aside>
+
+  </div>
+
+  <!-- Calendar overlay — closes popover on outside click -->
+  <div class="cal-overlay" id="cal-overlay"></div>
+
+</div><!-- end .view-main -->
+
+<!-- ══════════════════════════════════════════ VIEW: SEARCH ══════════════════ -->
+<div class="view-search" id="view-search">
+
+  <!-- Desktop back button header -->
+  <div class="search-hdr">
+    <button class="search-back" id="search-back">← BACK</button>
+  </div>
+
+  <!-- Scrollable content area -->
+  <div class="search-content">
+
+    <!-- Input -->
+    <div class="search-input-wrap" id="search-input-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.4"/>
+        <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <input type="search" id="search-input" placeholder="Saint, feast, or season…" autocomplete="off" />
+      <button class="search-clear" id="search-clear" aria-label="Clear">✕</button>
+    </div>
+
+    <!-- Hint tags (idle state) -->
+    <div class="search-hint-area" id="search-hint">
+      <div class="hint-label">SUGGESTIONS</div>
+      <div class="hint-tags">
+        <button class="hint-tag" data-query="Anthony">Anthony</button>
+        <button class="hint-tag" data-query="Nicholas">Nicholas</button>
+        <button class="hint-tag" data-query="Theotokos">Theotokos</button>
+        <button class="hint-tag" data-query="George">George</button>
+        <button class="hint-tag" data-query="John">John</button>
+        <button class="hint-tag" data-query="Nativity">Nativity</button>
       </div>
     </div>
-  </aside>
 
-</div>
+    <!-- Spinner -->
+    <div class="search-spinner-wrap" id="search-spinner">
+      <div class="search-spinner"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="search-results-area" id="search-results"></div>
+
+  </div><!-- end .search-content -->
+
+  <!-- Mobile close button -->
+  <div class="search-close-bottom">
+    <button class="search-close-btn" id="search-close-mobile">CLOSE</button>
+  </div>
+
+</div><!-- end .view-search -->
 
 <script src="/scripts/renderer.js"></script>
 <script src="/scripts/app.js"></script>

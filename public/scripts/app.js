@@ -12,6 +12,7 @@ let days = [];
 let activeRow = null;
 let activeDate = null;
 let activeSvcType = null;
+let activePronoun = 'tt';  // 'tt' or 'yy'
 let calMonth = null;   // { year, month } (month = 0-based)
 let calDots = {};      // { 'YYYY-MM-DD': true }
 
@@ -76,12 +77,18 @@ async function fetchDays(from, to) {
   return res.json();
 }
 
-async function fetchService(date, svcType) {
-  const res = await fetch(`/api/service?date=${date}`);
+async function fetchService(date, svcType, pronoun = 'tt') {
+  const res = await fetch(`/api/service?date=${date}&pronoun=${pronoun}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`/api/service failed: ${res.status}`);
   }
+  return res.json();
+}
+
+async function fetchSearch(query) {
+  const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+  if (!res.ok) throw new Error(`/api/search failed: ${res.status}`);
   return res.json();
 }
 
@@ -122,9 +129,7 @@ function getServiceRows(day) {
 /** Determine whether a day block should be shown in the list */
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
-  // Always show Saturdays and Sundays
   if (dow === 'saturday' || dow === 'sunday') return true;
-  // Show weekdays only if they have a service
   return services.dailyVespers || services.greatVespers;
 }
 
@@ -140,7 +145,6 @@ function renderServiceList(daysList) {
     const dowLabel = isToday ? `TODAY \u2014 ${day.displayDay}` : day.displayDay;
     const dowStyle = isToday ? 'style="color:var(--text)"' : '';
 
-    // Build feast/label string
     const feastLabel = day.liturgicalLabel || day.feast || '';
 
     const headingHtml = `
@@ -174,14 +178,12 @@ function renderServiceList(daysList) {
     listEl.appendChild(block);
   }
 
-  // Attach click handlers to available service rows
   listEl.querySelectorAll('.svc-row:not(.dimmed)').forEach(btn => {
     btn.addEventListener('click', () => {
       openPanel(btn, btn.dataset.date, btn.dataset.svc);
     });
   });
 
-  // Initialize IntersectionObserver for week-label
   initScrollTracker();
 }
 
@@ -223,7 +225,7 @@ async function openPanel(rowEl, date, svcType) {
 
 async function loadPanelContent(date, svcType) {
   try {
-    const data = await fetchService(date, svcType);
+    const data = await fetchService(date, svcType, activePronoun);
 
     if (!data) {
       document.getElementById('p-body').innerHTML =
@@ -232,13 +234,11 @@ async function loadPanelContent(date, svcType) {
       return;
     }
 
-    // Build date string for panel header
-    const toneStr = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
+    const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
     document.getElementById('p-date').textContent =
       `${formatLong(date)}${toneStr}${labelStr}`;
 
-    // Render commemorations list
     const commsEl = document.getElementById('p-comms');
     const comms = data.commemorations || [];
     if (comms.length > 0) {
@@ -276,6 +276,23 @@ function closePanel(skipHistory = false) {
   activeSvcType = null;
 }
 
+// ─── Pronoun toggle ───────────────────────────────────────────────────────────
+
+function initPronounToggle() {
+  document.getElementById('btn-thee').addEventListener('click', () => setPronoun('tt'));
+  document.getElementById('btn-you').addEventListener('click',  () => setPronoun('yy'));
+}
+
+function setPronoun(pronoun) {
+  if (pronoun === activePronoun) return;
+  activePronoun = pronoun;
+  document.getElementById('btn-thee').classList.toggle('active', pronoun === 'tt');
+  document.getElementById('btn-you').classList.toggle('active',  pronoun === 'yy');
+  // Re-render panel if open
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
+}
 
 // ─── Scroll tracker ───────────────────────────────────────────────────────────
 
@@ -301,7 +318,6 @@ function initScrollTracker() {
 
   blocks.forEach(b => observer.observe(b));
 
-  // Set initial week label from first visible block
   const firstDate = blocks[0]?.dataset.date;
   if (firstDate) {
     const end = toIso(addDays(new Date(firstDate.replace(/-/g, '/')), 6));
@@ -322,7 +338,7 @@ function updateWeekLabel() {
 function toggleCal() {
   const pop = document.getElementById('cal-popover');
   const btn = document.getElementById('date-btn');
-  const ov  = document.getElementById('overlay');
+  const ov  = document.getElementById('cal-overlay');
   const isOpen = pop.classList.contains('open');
   if (!isOpen) {
     pop.classList.add('open');
@@ -338,28 +354,25 @@ function toggleCal() {
 function closeCal() {
   document.getElementById('cal-popover').classList.remove('open');
   document.getElementById('date-btn').classList.remove('active');
-  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('cal-overlay').classList.remove('active');
 }
 
 function renderCalendar() {
   if (!calMonth) return;
-  const { year, month } = calMonth;  // month = 0-based
+  const { year, month } = calMonth;
 
   const monthLabel = document.getElementById('cal-month-label');
   monthLabel.textContent = `${MONTH_NAMES[month]} ${year}`;
 
-  // Rebuild grid (preserve day-of-week header rows)
   const grid = document.getElementById('cal-grid');
-  // Remove all day cells (keep the 7 DOW header divs)
   const headers = Array.from(grid.querySelectorAll('.cal-dow'));
   grid.innerHTML = '';
   headers.forEach(h => grid.appendChild(h));
 
-  const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+  const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const today = todayStr();
 
-  // Empty cells before the 1st
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
     empty.className = 'cal-day empty';
@@ -416,16 +429,184 @@ function jumpToDate(dateStr) {
   }
 }
 
+// ─── Search ───────────────────────────────────────────────────────────────────
+
+let searchTimeout = null;
+let spinnerTimeout = null;
+
+function openSearch() {
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-search').classList.add('visible');
+  // Animate input and hint in
+  requestAnimationFrame(() => {
+    document.getElementById('search-input-wrap').classList.add('ready');
+    document.getElementById('search-hint').classList.add('ready');
+  });
+  setTimeout(() => document.getElementById('search-input').focus(), 80);
+}
+
+function closeSearch() {
+  document.getElementById('view-search').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+  // Reset after transition
+  setTimeout(resetSearch, 400);
+}
+
+function resetSearch() {
+  const input = document.getElementById('search-input');
+  input.value = '';
+  document.getElementById('search-clear').classList.remove('visible');
+  showHint();
+  document.getElementById('search-spinner').classList.remove('visible');
+  document.getElementById('search-results').classList.remove('visible');
+  document.getElementById('search-results').innerHTML = '';
+  document.getElementById('search-input-wrap').classList.remove('ready');
+  document.getElementById('search-hint').classList.remove('ready', 'hiding');
+  if (searchTimeout) clearTimeout(searchTimeout);
+  if (spinnerTimeout) clearTimeout(spinnerTimeout);
+}
+
+function showHint() {
+  const hint = document.getElementById('search-hint');
+  hint.classList.remove('hiding');
+  // Force reflow then re-show
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      hint.style.display = '';
+      hint.classList.add('ready');
+    });
+  });
+}
+
+function hideHint() {
+  const hint = document.getElementById('search-hint');
+  hint.classList.add('hiding');
+  setTimeout(() => {
+    hint.style.display = 'none';
+  }, 280);
+}
+
+function onSearchInput() {
+  const raw = document.getElementById('search-input').value;
+  const q = raw.trim();
+
+  // Show/hide clear button
+  document.getElementById('search-clear').classList.toggle('visible', raw.length > 0);
+
+  if (searchTimeout) clearTimeout(searchTimeout);
+  if (spinnerTimeout) clearTimeout(spinnerTimeout);
+
+  if (q.length < 2) {
+    // Back to idle state
+    document.getElementById('search-spinner').classList.remove('visible');
+    document.getElementById('search-results').classList.remove('visible');
+    document.getElementById('search-results').innerHTML = '';
+    showHint();
+    return;
+  }
+
+  // Hide hints, show spinner after short delay
+  hideHint();
+  document.getElementById('search-results').classList.remove('visible');
+  document.getElementById('search-results').innerHTML = '';
+
+  spinnerTimeout = setTimeout(() => {
+    document.getElementById('search-spinner').classList.add('visible');
+  }, 80);
+
+  // Debounce search
+  searchTimeout = setTimeout(() => doSearch(q), 300);
+}
+
+async function doSearch(q) {
+  try {
+    const results = await fetchSearch(q);
+
+    if (spinnerTimeout) clearTimeout(spinnerTimeout);
+    document.getElementById('search-spinner').classList.remove('visible');
+
+    // Small delay for intentional feel
+    setTimeout(() => renderResults(results, q), 80);
+  } catch (err) {
+    console.error('Search error:', err);
+    document.getElementById('search-spinner').classList.remove('visible');
+  }
+}
+
+function highlightMatch(text, query) {
+  // Escape regex special chars
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(`(${escaped})`, 'gi'), '<em>$1</em>');
+}
+
+function renderResults(results, query) {
+  const area = document.getElementById('search-results');
+  area.innerHTML = '';
+
+  if (results.length === 0) {
+    area.innerHTML = `<div class="results-empty">No saints or feasts matching \u201C${query}\u201D.</div>`;
+    area.classList.add('visible');
+    return;
+  }
+
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'results-eyebrow';
+  eyebrow.textContent = `SAINTS & FEASTS MATCHING \u201C${query.toUpperCase()}\u201D`;
+  area.appendChild(eyebrow);
+
+  results.forEach((r, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'result-row' + (r.available ? '' : ' unavailable');
+    btn.innerHTML = `
+      <span class="result-date">${r.displayDate}</span>
+      <span class="result-name">${highlightMatch(r.title, query)}</span>
+      <span class="result-tag">${r.available ? 'VIEW \u2192' : 'NO SERVICE'}</span>
+    `;
+    if (r.available) {
+      btn.addEventListener('click', () => pickResult(r.dateStr));
+    }
+    area.appendChild(btn);
+
+    // Staggered entrance animation
+    setTimeout(() => btn.classList.add('shown'), i * 30);
+  });
+
+  area.classList.add('visible');
+}
+
+function fillSearch(query) {
+  const input = document.getElementById('search-input');
+  input.value = query;
+  document.getElementById('search-clear').classList.add('visible');
+  onSearchInput();
+}
+
+function clearSearch() {
+  const input = document.getElementById('search-input');
+  input.value = '';
+  document.getElementById('search-clear').classList.remove('visible');
+  input.focus();
+  onSearchInput();
+}
+
+function pickResult(dateStr) {
+  closeSearch();
+  setTimeout(() => jumpToDate(dateStr), 280);
+}
+
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 async function init() {
-  // Close button and print
+  // Panel close + print
   document.getElementById('btn-close').addEventListener('click', closePanel);
   document.getElementById('btn-print').addEventListener('click', () => window.print());
 
+  // Pronoun toggle
+  initPronounToggle();
+
   // Calendar button
   document.getElementById('date-btn').addEventListener('click', toggleCal);
-  document.getElementById('overlay').addEventListener('click', closeCal);
+  document.getElementById('cal-overlay').addEventListener('click', closeCal);
   document.getElementById('cal-prev').addEventListener('click', () => {
     if (!calMonth) return;
     let { year, month } = calMonth;
@@ -445,10 +626,30 @@ async function init() {
     fetchCalDots();
   });
 
-  // Read permalink params (date + optional svc) from URL
+  // Search button
+  document.getElementById('search-btn').addEventListener('click', openSearch);
+  document.getElementById('search-back').addEventListener('click', closeSearch);
+  document.getElementById('search-close-mobile').addEventListener('click', closeSearch);
+  document.getElementById('search-input').addEventListener('input', onSearchInput);
+  document.getElementById('search-clear').addEventListener('click', clearSearch);
+
+  // Hint tags
+  document.querySelectorAll('.hint-tag').forEach(tag => {
+    tag.addEventListener('click', () => fillSearch(tag.dataset.query));
+  });
+
+  // Escape key closes search
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('view-search').classList.contains('visible')) {
+        closeSearch();
+      }
+    }
+  });
+
+  // Read permalink params
   const { date: urlDate, svc: urlSvc } = getUrlParams();
 
-  // Center the loaded date range on the URL date if present, otherwise today
   const today  = new Date();
   const anchor = (urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate))
     ? new Date(urlDate + 'T12:00:00')
@@ -456,7 +657,6 @@ async function init() {
   const from = toIso(addDays(anchor, -7));
   const to   = toIso(addDays(anchor, 28));
 
-  // Init calendar state
   calMonth = { year: anchor.getFullYear(), month: anchor.getMonth() };
 
   try {
@@ -472,7 +672,6 @@ async function init() {
     if (urlDate) {
       jumpToDate(urlDate);
       if (urlSvc) {
-        // Open the permalinked service; replace state so back button exits cleanly
         const btn = document.querySelector(`.svc-row[data-date="${urlDate}"][data-svc="${urlSvc}"]`);
         if (btn) {
           setUrlState(urlDate, urlSvc, /*replace=*/true);
@@ -498,7 +697,6 @@ async function init() {
       if (btn) {
         await _showPanel(btn, state.date, state.svcType);
       } else {
-        // Date not in current view — reload the page with the URL
         location.reload();
       }
     } else {

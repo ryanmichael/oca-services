@@ -28,7 +28,9 @@ const { renderVespers }                          = require('./renderer');
 
 const args    = process.argv.slice(2);
 const portIdx = args.indexOf('--port');
-const PORT    = portIdx !== -1 ? parseInt(args[portIdx + 1], 10) : 3000;
+const PORT    = portIdx !== -1 ? parseInt(args[portIdx + 1], 10)
+              : process.env.PORT ? parseInt(process.env.PORT, 10)
+              : 3000;
 
 // ─── Data loading ─────────────────────────────────────────────────────────────
 

@@ -226,6 +226,20 @@ function getLiturgicalKey(date) {
     return `holyWeek.${dow}`;
   }
 
+  if (season === 'brightWeek') {
+    return `brightWeek.${dow}`;
+  }
+
+  if (season === 'pentecostarion') {
+    const pascha = calculatePascha(date.getUTCFullYear());
+    const diff   = Math.floor((date - pascha) / DAY_MS);
+    if (diff === 39) return 'pentecostarion.ascension';
+    if (diff === 49) return 'pentecostarion.pentecost';
+    // week 2 = Thomas week, week 3 = Myrrhbearers, …, week 7 = Holy Fathers
+    const week = Math.floor(diff / 7) + 1;
+    return `pentecostarion.week.${week}.${dow}`;
+  }
+
   return null;
 }
 
@@ -559,6 +573,187 @@ function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone, litKey) {
   };
 }
 
+/**
+ * Generates a Holy Week day entry.
+ * All variable slots are DB-sourced via the stable holyWeek.{dow} key.
+ */
+function generateHolyWeekDay(dateStr, dow, litKey) {
+  const names = {
+    sunday:    'Palm Sunday',
+    monday:    'Holy Monday',
+    tuesday:   'Holy Tuesday',
+    wednesday: 'Holy Wednesday',
+    thursday:  'Great and Holy Thursday',
+    friday:    'Great and Holy Friday',
+    saturday:  'Great and Holy Saturday',
+  };
+  const name = names[dow] || `Holy Week ${dow}`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'holyWeek' },
+    commemorations: [],
+    vespers: {
+      serviceType: dow === 'saturday' ? 'greatVespers' : 'dailyVespers',
+      rubricNote:  name,
+      lordICall: {
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
+        now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
+      },
+      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : 'saturday' },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, combinesGloryNow: true },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
+/**
+ * Generates a Bright Week day entry.
+ * All services during Bright Week use Paschal texts sourced from the DB.
+ */
+function generateBrightWeekDay(dateStr, dow, litKey) {
+  const names = {
+    sunday:    'Holy Pascha',
+    monday:    'Bright Monday',
+    tuesday:   'Bright Tuesday',
+    wednesday: 'Bright Wednesday',
+    thursday:  'Bright Thursday',
+    friday:    'Bright Friday',
+    saturday:  'Bright Saturday',
+  };
+  const name = names[dow] || `Bright Week ${dow}`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'brightWeek' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${name} — Paschal Vespers`,
+      lordICall: {
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
+        now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
+      },
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, combinesGloryNow: true },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
+/**
+ * Generates a Pentecostarion day entry.
+ * Saturdays reuse the ordinary-time structure (Octoechos resurrectionals).
+ * Sundays and weekdays use DB-sourced Pentecostarion texts.
+ */
+function generatePentecostarionDay(dateStr, dow, tone, litKey) {
+  // Pentecostarion Saturdays: same structure as ordinary time
+  if (dow === 'saturday') {
+    const entry = generateOrdinaryTimeSaturday(dateStr, tone);
+    entry.liturgicalContext.season = 'pentecostarion';
+    entry._meta.note = entry._meta.note.replace('ordinaryTime', 'pentecostarion');
+    return entry;
+  }
+
+  const SUNDAY_NAMES = {
+    'pentecostarion.week.2.sunday': 'Thomas Sunday (Antipascha)',
+    'pentecostarion.week.3.sunday': 'Sunday of the Myrrhbearers',
+    'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
+    'pentecostarion.week.5.sunday': 'Sunday of the Samaritan Woman',
+    'pentecostarion.week.6.sunday': 'Sunday of the Blind Man',
+    'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers',
+    'pentecostarion.ascension':     'The Ascension of our Lord',
+    'pentecostarion.pentecost':     'Holy Pentecost',
+  };
+  const name = SUNDAY_NAMES[litKey] || `Pentecostarion (${dow})`;
+  const tk   = `tone${tone}`;
+
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'pentecostarion', tone, toneSource: 'octoechosCycle' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  name,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+      },
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone },
+        now:   { source: 'db', key: `${litKey}.vespers.aposticha.now`,   tone, label: 'Theotokion' },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1, tone, source: 'db', key: `${litKey}.vespers.troparia` },
+        ],
+      },
+    },
+  };
+}
+
 // ─── Main entry point ─────────────────────────────────────────────────────────
 
 /**
@@ -601,8 +796,23 @@ function generateCalendarEntry(dateStr) {
     return generateLentenWeekday(dateStr, dow, weekOfLent, tone, litKey);
   }
 
+  // ── Holy Week ──────────────────────────────────────────────────────────────
+  if (season === 'holyWeek') {
+    return generateHolyWeekDay(dateStr, dow, litKey);
+  }
+
+  // ── Bright Week (Pascha through the following Saturday) ───────────────────
+  if (season === 'brightWeek') {
+    return generateBrightWeekDay(dateStr, dow, litKey);
+  }
+
+  // ── Pentecostarion (Thomas Sunday through eve of All Saints) ──────────────
+  if (season === 'pentecostarion') {
+    return generatePentecostarionDay(dateStr, dow, tone, litKey);
+  }
+
   // ── Not yet supported ──────────────────────────────────────────────────────
-  // holyWeek, brightWeek, pentecostarion, preLenten → return null
+  // preLenten → return null
   return null;
 }
 

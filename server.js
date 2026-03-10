@@ -703,9 +703,10 @@ function handleRequest(req, res) {
       // resolve against collected texts for this specific date.
       const dbSource = buildDbSource(date, pronoun);
 
-      // For auto-generated ordinary-time Saturdays, inject Menaion data from DB.
+      // For auto-generated Saturdays (ordinary time or Pentecostarion), inject Menaion data from DB.
       let menaionOverride = sources.menaion;
-      if (calendarEntry._meta?.generated && calendarEntry.liturgicalContext?.season === 'ordinaryTime') {
+      const injectSeasons = ['ordinaryTime', 'pentecostarion'];
+      if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
         const [, mm, dd] = date.split('-').map(Number);
         const primary      = getMenaionPrimary(mm, dd);
         const sticheraData = getSticheraDay(mm, dd);

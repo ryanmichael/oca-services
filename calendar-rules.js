@@ -826,12 +826,49 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     prokeimenon = { pattern: 'weekday', weekday: dow };
   }
 
-  // ── Lord I Call "Now" slot ─────────────────────────────────────────────────
-  // Named feasts use a DB theotokion; regular Pentecostarion Sundays fall back
-  // to the Octoechos dogmatikon (correct when Pentecostarion + Octoechos combine).
-  const nowSlot = isNamedFeast
-    ? { source: 'db', key: `${litKey}.vespers.lordICall.now`, tone, label: 'Theotokion' }
-    : { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
+  // ── Lord I Call stichera slots ────────────────────────────────────────────
+  // Weeks 4-7 Sundays have feast-specific stichera in the DB (scraped from
+  // L'vov-Bakhmetev PDFs). The remaining verses use resurrectional stichera
+  // from the Octoechos. Other named feasts (Thomas, Myrrhbearers, Ascension,
+  // Pentecost) use all 6 resurrectional stichera from the Octoechos.
+  const FEAST_STICHERA_COUNT = {
+    'pentecostarion.week.4.sunday': 2,  // Paralytic
+    'pentecostarion.week.5.sunday': 3,  // Samaritan Woman
+    'pentecostarion.week.6.sunday': 2,  // Blind Man
+    'pentecostarion.week.7.sunday': 4,  // Holy Fathers
+  };
+  const feastCount  = FEAST_STICHERA_COUNT[litKey] || 0;
+  const resCount    = 6 - feastCount;
+  const allVerses   = [6, 5, 4, 3, 2, 1];
+  const licSlots    = [];
+  if (resCount > 0) {
+    licSlots.push({
+      verses: allVerses.slice(0, resCount), count: resCount,
+      source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.resurrectional`,
+      tone, label: 'Resurrectional',
+    });
+  }
+  if (feastCount > 0) {
+    licSlots.push({
+      verses: allVerses.slice(resCount), count: feastCount,
+      source: 'db', key: `${litKey}.vespers.lordICall`,
+      tone, label: 'Stichera',
+    });
+  }
+
+  // Glory: feast doxastichon from DB (weeks 4-7) or Octoechos glory
+  const licGlory = feastCount > 0
+    ? { source: 'db',       key: `${litKey}.vespers.lordICall.glory`,             tone }
+    : { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`,        tone };
+
+  // Dogmatikon always sung at "Now and ever" in Great Vespers
+  const nowSlot = { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
+
+  // Aposticha: idiomelon from Octoechos, feast glory from DB (if available),
+  // theotokion from Octoechos
+  const apostichaGlory = feastCount > 0
+    ? { source: 'db',        key: `${litKey}.vespers.aposticha.glory`, tone }
+    : null;
 
   return {
     _meta: {
@@ -849,27 +886,46 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
       lordICall: {
         tone,
         totalStichera: 6,
-        slots: [
-          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
-        ],
-        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
-        now:   nowSlot,
+        slots:  licSlots,
+        glory:  licGlory,
+        now:    nowSlot,
       },
       prokeimenon,
       aposticha: {
         slots: [
-          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+          { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone },
-        now:   { source: 'db', key: `${litKey}.vespers.aposticha.now`,   tone, label: 'Theotokion' },
+        ...(apostichaGlory ? { glory: apostichaGlory } : {}),
+        now: { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
       },
       troparia: {
-        source: 'db',
-        slots: [
-          { order: 1, tone, source: 'db', key: `${litKey}.vespers.troparia` },
-        ],
+        slots: (() => {
+          // Hard-coded: which feasts have a feast troparion in the DB
+          const DB_ONLY_TROPARION  = new Set(['pentecostarion.week.2.sunday', 'pentecostarion.week.3.sunday', 'pentecostarion.ascension', 'pentecostarion.pentecost']);
+          const DB_GLORY_TROPARION = new Set(['pentecostarion.week.7.sunday']); // resurrectional + DB at Glory
+          const dbKey    = `${litKey}.vespers.troparia`;
+          const dismissal = { position: 'now', tone, source: 'octoechos', key: `${tk}.saturday.vespers.dismissalTheotokion`, label: 'Dismissal Theotokion' };
+          if (DB_ONLY_TROPARION.has(litKey)) {
+            return [
+              { order: 1,          tone, source: 'db',       key: dbKey,                                     label: 'Troparion' },
+              dismissal,
+            ];
+          }
+          if (DB_GLORY_TROPARION.has(litKey)) {
+            return [
+              { order: 1,          tone, source: 'octoechos', key: `${tk}.saturday.vespers.troparion`, label: 'Resurrectional Troparion' },
+              { position: 'glory', tone, source: 'db',        key: dbKey,                              label: 'Feast Troparion' },
+              dismissal,
+            ];
+          }
+          // Weeks 4-6: resurrectional troparion from Octoechos only
+          return [
+            { order: 1, tone, source: 'octoechos', key: `${tk}.saturday.vespers.troparion`, label: 'Resurrectional Troparion' },
+            dismissal,
+          ];
+        })(),
       },
     },
   };

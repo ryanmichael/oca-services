@@ -201,6 +201,7 @@ async function openPanel(rowEl, date, svcType) {
     svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
   document.getElementById('panel').classList.add('open');
+  document.body.classList.add('panel-open');
 
   await loadPanelContent(date, svcType);
 }
@@ -253,6 +254,7 @@ async function loadPanelContent(date, svcType) {
 
 function closePanel() {
   document.getElementById('panel').classList.remove('open');
+  document.body.classList.remove('panel-open');
   if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
   activeDate = null;
   activeSvcType = null;

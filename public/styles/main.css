@@ -286,6 +286,39 @@ header {
 }
 .overlay.active { display: block; }
 
+/* ── RESPONSIVE ── */
+
+/* Tablet + mobile: panel becomes full-screen overlay instead of side panel */
+@media (max-width: 1023px) {
+  :root { --panel-w: 100vw; }
+
+  .panel {
+    position: fixed;
+    top: 52px; left: 0; right: 0; bottom: 0;
+    width: 0;
+    border-left: none;
+    z-index: 100;
+  }
+  .panel.open { width: 100%; }
+  .panel-inner { width: 100%; }
+
+  /* Prevent center from scrolling behind the open panel */
+  body.panel-open { overflow: hidden; }
+  body.panel-open .center { pointer-events: none; }
+}
+
+/* Mobile: tighter spacing, always-visible arrows, hide print */
+@media (max-width: 767px) {
+  header { padding: 0 16px; }
+  .center-bar { padding: 10px 16px; }
+  .service-list-body { padding: 20px 16px 80px; }
+  .panel-head { padding: 12px 16px 10px; }
+  .panel-body { padding: 16px 14px 48px; }
+  .btn-print { display: none; }
+  .svc-row { padding: 11px 12px; }
+  .svc-row .arrow { opacity: 1; }
+}
+
 /* ── PRINT STYLES ── */
 @media print {
   @page { size: letter; margin: 1in; }

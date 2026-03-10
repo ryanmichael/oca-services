@@ -441,7 +441,7 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone, combinesGloryNow: true },
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, combinesGloryNow: true, label: 'Theotokion' },
       },
       troparia: {
         source: 'db',
@@ -561,7 +561,7 @@ function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone, litKey) {
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone, combinesGloryNow: true },
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, combinesGloryNow: true, label: 'Theotokion' },
       },
       troparia: {
         source: 'db',
@@ -617,7 +617,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, combinesGloryNow: true },
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
       },
       troparia: {
         source: 'db',
@@ -673,7 +673,7 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
           { position: 2, repeatPrevious: true },
           { position: 3, repeatPrevious: true },
         ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, combinesGloryNow: true },
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
       },
       troparia: {
         source: 'db',

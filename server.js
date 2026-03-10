@@ -793,8 +793,11 @@ function handleRequest(req, res) {
       const tone         = calendarEntry.vespers?.lordICall?.tone;
       const toneLabel    = tone ? ` · Tone ${tone}` : '';
 
+      const serviceTitle = calendarEntry.vespers?.serviceType === 'dailyVespers'
+        ? 'Daily Vespers'
+        : 'Great Vespers';
       const html = renderVespers(blocks, {
-        title: 'Great Vespers',
+        title: serviceTitle,
         date:  `${formatDate(date)}${toneLabel}${pronounLabel}`,
       });
 

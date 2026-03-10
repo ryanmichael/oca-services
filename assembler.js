@@ -321,7 +321,25 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
     makeBlock('prok-response', section, 'response', 'choir', 'And to thy spirit.'),
   ];
 
-  if (prokeimenonSpec.pattern === 'lentenWithReadings') {
+  if (prokeimenonSpec.pattern === 'great') {
+    // Great prokeimenon — used on Thomas Sunday, Ascension, Pentecost, and major feasts.
+    // Source: prokeimena.json `great` section, keyed by prokeimenonSpec.key.
+    const prokText = sources.prokeimena?.great?.[prokeimenonSpec.key];
+    if (prokText) {
+      blocks.push(makeBlock('prok-announce', section, 'rubric', 'deacon',
+        `The great prokeimenon in Tone ${prokText.tone}.`));
+      blocks.push(makeBlock('prok-refrain', section, 'hymn', 'choir',
+        prokText.refrain, { tone: prokText.tone }));
+      prokText.verses.forEach((verse, i) => {
+        blocks.push(makeBlock(`prok-v${i}`, section, 'verse', 'deacon', verse.text));
+        blocks.push(makeBlock(`prok-refrain-rep-${i}`, section, 'hymn', 'choir',
+          prokText.refrain, { tone: prokText.tone }));
+      });
+      // Great prokeimenon ends with a final full repetition of the refrain
+      blocks.push(makeBlock('prok-refrain-final', section, 'hymn', 'choir',
+        prokText.refrain, { tone: prokText.tone }));
+    }
+  } else if (prokeimenonSpec.pattern === 'lentenWithReadings') {
     for (const entry of prokeimenonSpec.entries) {
       const prokText = resolveSource(entry.source, entry.key, sources);
       if (prokText) {

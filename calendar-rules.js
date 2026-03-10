@@ -715,11 +715,19 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
 
 /**
  * Generates a Pentecostarion day entry.
- * Saturdays reuse the ordinary-time structure (Octoechos resurrectionals).
- * Sundays and weekdays use DB-sourced Pentecostarion texts.
+ *
+ * Saturdays:  reuse ordinary-time Great Vespers (Octoechos resurrectionals).
+ * Sundays + Ascension + Pentecost: Great Vespers with Pentecostarion texts.
+ * Regular weekdays (Mon–Fri): Daily Vespers with weekday prokeimenon.
+ *
+ * Special prokeimena:
+ *   - Thomas Sunday, Pentecost: "Who is so great a God" (Tone 7) — great.whoIsSoGreat
+ *   - Ascension: "Our God is in heaven" (Tone 7)              — great.ourGodIsInHeaven
+ *   - Other named-feast Sundays: Saturday Great Prokeimenon
+ *   - Regular weekdays: weekday prokeimenon by day of week
  */
 function generatePentecostarionDay(dateStr, dow, tone, litKey) {
-  // Pentecostarion Saturdays: same structure as ordinary time
+  // ── Saturday: ordinary-time Great Vespers ──────────────────────────────────
   if (dow === 'saturday') {
     const entry = generateOrdinaryTimeSaturday(dateStr, tone);
     entry.liturgicalContext.season = 'pentecostarion';
@@ -727,7 +735,8 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     return entry;
   }
 
-  const SUNDAY_NAMES = {
+  // ── Named feast labels ──────────────────────────────────────────────────────
+  const FEAST_NAMES = {
     'pentecostarion.week.2.sunday': 'Thomas Sunday (Antipascha)',
     'pentecostarion.week.3.sunday': 'Sunday of the Myrrhbearers',
     'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
@@ -737,8 +746,37 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     'pentecostarion.ascension':     'The Ascension of our Lord',
     'pentecostarion.pentecost':     'Holy Pentecost',
   };
-  const name = SUNDAY_NAMES[litKey] || `Pentecostarion (${dow})`;
-  const tk   = `tone${tone}`;
+
+  const name = FEAST_NAMES[litKey] || `Pentecostarion (${dow})`;
+
+  // ── Service type: Great Vespers for Sundays and named feasts ───────────────
+  const isNamedFeast = litKey in FEAST_NAMES;
+  const isGreat      = dow === 'sunday' || isNamedFeast;
+  const serviceType  = isGreat ? 'greatVespers' : 'dailyVespers';
+  const tk           = `tone${tone}`;
+
+  // ── Prokeimenon ────────────────────────────────────────────────────────────
+  // Thomas Sunday and Pentecost use "Who is so great a God" (great prokeimenon)
+  // Ascension uses "Our God is in heaven" (great prokeimenon)
+  // Other Sundays / named feasts: Saturday Great Prokeimenon (from Octoechos)
+  // Regular weekdays: appointed weekday prokeimenon
+  let prokeimenon;
+  if (litKey === 'pentecostarion.week.2.sunday' || litKey === 'pentecostarion.pentecost') {
+    prokeimenon = { pattern: 'great', key: 'whoIsSoGreat' };
+  } else if (litKey === 'pentecostarion.ascension') {
+    prokeimenon = { pattern: 'great', key: 'ourGodIsInHeaven' };
+  } else if (isGreat) {
+    prokeimenon = { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
+  } else {
+    prokeimenon = { pattern: 'weekday', weekday: dow };
+  }
+
+  // ── Lord I Call "Now" slot ─────────────────────────────────────────────────
+  // Named feasts use a DB theotokion; regular Pentecostarion Sundays fall back
+  // to the Octoechos dogmatikon (correct when Pentecostarion + Octoechos combine).
+  const nowSlot = isNamedFeast
+    ? { source: 'db', key: `${litKey}.vespers.lordICall.now`, tone, label: 'Theotokion' }
+    : { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
 
   return {
     _meta: {
@@ -751,8 +789,8 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     liturgicalContext: { season: 'pentecostarion', tone, toneSource: 'octoechosCycle' },
     commemorations: [],
     vespers: {
-      serviceType: 'greatVespers',
-      rubricNote:  name,
+      serviceType,
+      rubricNote: name,
       lordICall: {
         tone,
         totalStichera: 6,
@@ -760,9 +798,9 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
           { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
         ],
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
-        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+        now:   nowSlot,
       },
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon,
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },

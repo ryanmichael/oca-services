@@ -1210,13 +1210,14 @@ function handleRequest(req, res) {
             }
 
             const entry = getCalendarEntry(serviceDate);
-            const hasService = !!(entry && (entry.vespers?.serviceType === 'greatVespers' ||
-                                            entry.vespers?.serviceType === 'dailyVespers'));
+            const svcType = entry?.vespers?.serviceType || null;
+            const hasService = !!(svcType);
 
             results.push({
               id:          serviceDate,
               title:       row.title,
               dateStr:     serviceDate,
+              svcType:     svcType || 'greatVespers',
               displayDate: date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
               available:   hasService,
             });

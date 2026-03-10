@@ -563,7 +563,7 @@ function renderResults(results, query) {
       <span class="result-tag">${r.available ? 'VIEW \u2192' : 'NO SERVICE'}</span>
     `;
     if (r.available) {
-      btn.addEventListener('click', () => pickResult(r.dateStr));
+      btn.addEventListener('click', () => pickResult(r.dateStr, r.svcType));
     }
     area.appendChild(btn);
 
@@ -589,9 +589,34 @@ function clearSearch() {
   onSearchInput();
 }
 
-function pickResult(dateStr) {
+async function pickResult(dateStr, svcType) {
   closeSearch();
-  setTimeout(() => jumpToDate(dateStr), 280);
+
+  // Wait for close animation before manipulating the main view
+  await new Promise(r => setTimeout(r, 300));
+
+  // If the date isn't in the current view, load a range around it first
+  let btn = document.querySelector(`.svc-row[data-date="${dateStr}"][data-svc="${svcType}"]`);
+  if (!btn) {
+    const anchor = new Date(dateStr + 'T12:00:00');
+    const from = toIso(addDays(anchor, -7));
+    const to   = toIso(addDays(anchor, 28));
+    try {
+      days = await fetchDays(from, to);
+      renderServiceList(days);
+      for (const day of days) {
+        if (day.services.greatVespers || day.services.dailyVespers) calDots[day.date] = true;
+      }
+      calMonth = { year: anchor.getFullYear(), month: anchor.getMonth() };
+    } catch (err) {
+      console.error('pickResult: failed to load date range:', err);
+      return;
+    }
+    btn = document.querySelector(`.svc-row[data-date="${dateStr}"][data-svc="${svcType}"]`);
+  }
+
+  jumpToDate(dateStr);
+  if (btn) openPanel(btn, dateStr, svcType);
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────

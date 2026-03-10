@@ -1,0 +1,296 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F5F0E8;
+  --surface: #FAF7F2;
+  --text: #1A1209;
+  --rubric: #8B1A1A;
+  --gold: #C9A84C;
+  --muted: #6B6358;
+  --border: #DDD5C4;
+  --panel-w: 70vw;
+}
+
+html, body { height: 100%; background: var(--bg); color: var(--text); }
+
+/* ── HEADER ── */
+header {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  gap: 12px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+}
+.header-cross { color: var(--rubric); font-size: 18px; }
+.header-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+.header-about {
+  margin-left: auto;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+  color: var(--muted); text-decoration: none;
+}
+.header-about:hover { color: var(--rubric); }
+
+/* ── LAYOUT ── */
+.layout {
+  display: flex;
+  height: calc(100vh - 52px);
+  margin-top: 52px;
+  overflow: hidden;
+}
+
+/* ── CENTER COLUMN ── */
+.center {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+  padding: 0;
+}
+
+/* Sticky sub-bar */
+.center-bar {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.week-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: .18em; color: var(--muted);
+}
+
+/* Date jump button */
+.date-btn {
+  display: flex; align-items: center; gap: 7px;
+  background: none; border: 1px solid var(--border);
+  padding: 6px 12px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+  color: var(--muted);
+  transition: border-color .15s, color .15s;
+  position: relative;
+}
+.date-btn:hover, .date-btn.active { border-color: var(--rubric); color: var(--rubric); }
+
+/* ── CALENDAR POPOVER ── */
+.cal-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(26,18,9,.12);
+  padding: 18px;
+  width: 240px;
+  z-index: 300;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .18s, transform .18s;
+}
+.cal-popover.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.cal-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.cal-head span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .1em; }
+.cal-nav {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: 12px; padding: 2px 6px;
+}
+.cal-nav:hover { color: var(--rubric); }
+
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+.cal-dow {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .05em;
+  color: var(--muted); text-align: center; padding: 3px 0 6px;
+}
+.cal-day {
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  text-align: center; padding: 5px 2px;
+  cursor: pointer; color: var(--muted);
+  border-radius: 2px;
+  position: relative;
+}
+.cal-day:hover { color: var(--text); background: var(--border); }
+.cal-day.has-service { color: var(--text); font-weight: 500; }
+.cal-day.has-service::after {
+  content: '';
+  display: block; width: 3px; height: 3px;
+  background: var(--rubric); border-radius: 50%;
+  margin: 1px auto 0;
+}
+.cal-day.today { color: var(--rubric); font-weight: 600; }
+.cal-day.today::before {
+  content: '';
+  position: absolute; inset: 1px;
+  border: 1px solid var(--rubric);
+  border-radius: 2px;
+}
+.cal-day.empty { cursor: default; pointer-events: none; }
+
+/* ── SERVICE LIST ── */
+.service-list-body { padding: 28px 32px 60px; }
+
+.date-block { margin-bottom: 32px; }
+
+.date-heading {
+  display: flex; align-items: baseline;
+  gap: 10px; flex-wrap: wrap;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gold);
+  margin-bottom: 10px;
+}
+.dow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .12em; color: var(--rubric); }
+.date-d { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .08em; color: var(--text); }
+.feast { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--muted); }
+
+.svc-rows { display: flex; flex-direction: column; }
+
+.svc-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 12px;
+  background: none; border: none; border-left: 2px solid transparent;
+  cursor: pointer; text-align: left; width: 100%;
+  transition: border-color .12s, background .12s;
+}
+.svc-row:hover { border-left-color: var(--gold); background: rgba(201,168,76,.07); }
+.svc-row.active { border-left-color: var(--rubric); background: rgba(139,26,26,.06); }
+.svc-row .name { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--text); }
+.svc-row .arrow {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em;
+  color: var(--rubric); opacity: 0; transition: opacity .12s;
+}
+.svc-row:hover .arrow, .svc-row.active .arrow { opacity: 1; }
+.svc-row.dimmed { opacity: .35; cursor: default; pointer-events: none; }
+.svc-row .soon { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); }
+
+/* ── RIGHT PANEL ── */
+.panel {
+  width: 0; flex-shrink: 0;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+  transition: width .28s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+}
+.panel.open { width: var(--panel-w); }
+
+.panel-inner {
+  width: var(--panel-w);
+  display: flex; flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panel-head {
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.panel-top-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px;
+}
+.btn-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; color: var(--muted); padding: 2px 6px;
+  font-family: 'EB Garamond', serif;
+  transition: color .12s;
+}
+.btn-close:hover { color: var(--rubric); }
+.btn-print {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+  background: none; border: 1.5px solid var(--rubric);
+  color: var(--rubric); padding: 5px 14px; cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.btn-print:hover { background: var(--rubric); color: var(--surface); }
+
+.panel-svc {
+  font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: .1em; color: var(--rubric);
+  margin-bottom: 2px;
+}
+.panel-date-str {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
+}
+
+.pronoun-row {
+  display: flex; align-items: center; gap: 12px; margin-top: 9px;
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em; color: var(--muted);
+}
+.pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; font-family: 'Cinzel', serif; }
+.pronoun-row input { accent-color: var(--rubric); }
+
+.panel-body {
+  flex: 1; overflow-y: auto;
+  padding: 24px 22px 48px;
+}
+
+.panel-loading {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; color: var(--muted);
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* ── SERVICE TEXT ── */
+.svc-sec { margin-bottom: 28px; }
+.svc-head {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em;
+  text-align: center; color: var(--text); margin-bottom: 12px;
+}
+.svc-rule { height: 1px; background: var(--gold); margin: 20px 0; }
+.rubric {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+  color: var(--rubric); margin-bottom: 8px; line-height: 1.6;
+}
+.prayer {
+  font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88;
+  color: var(--text); margin-bottom: 14px;
+}
+.stich-label {
+  font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+  color: var(--muted); margin-bottom: 6px;
+}
+.verse {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+  color: var(--muted); margin-bottom: 10px; line-height: 1.6;
+}
+.spk {
+  font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
+  font-style: normal; color: var(--muted);
+}
+
+/* Overlay to close popover on outside click */
+.overlay {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 150;
+}
+.overlay.active { display: block; }
+
+/* ── PRINT STYLES ── */
+@media print {
+  @page { size: letter; margin: 1in; }
+  header, .center, .panel-head { display: none; }
+  .panel { width: 100% !important; border: none; }
+  .panel-body { padding: 0; }
+  body { font-size: 12pt; background: none; }
+  .prayer, .rubric, .verse { page-break-inside: avoid; }
+  .svc-rule { background: none; border-top: 1px solid #8B1A1A; }
+}

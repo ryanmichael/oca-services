@@ -615,6 +615,162 @@ function mapDbBlocks(dbBlocks) {
   });
 }
 
+// ─── assembleForDate helper ───────────────────────────────────────────────────
+
+/**
+ * Core assembly function. Returns { blocks, calendarEntry, serviceTitle, tone }
+ * or null if no calendar entry exists for the date.
+ * Throws on assembly error.
+ */
+function assembleForDate(date, pronoun) {
+  const calendarEntry = getCalendarEntry(date);
+  if (!calendarEntry) return null;
+
+  const dbSource = buildDbSource(date, pronoun);
+
+  let menaionOverride = sources.menaion;
+  const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
+  if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
+    const [, mm, dd] = date.split('-').map(Number);
+    const primary      = getMenaionPrimary(mm, dd);
+    const sticheraData = getSticheraDay(mm, dd);
+
+    if (primary) {
+      const troparion = primary.troparia.find(t => t.type === 'troparion');
+      const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
+
+      const licStichera = sticheraData?.[0]?.stichera.filter(
+        s => s.section === 'lordICall' && s.order >= 1
+      ).slice(0, 6) ?? [];
+      const licGlory = sticheraData?.[0]?.stichera.find(
+        s => s.section === 'lordICall' && s.order === 0
+      ) ?? null;
+
+      if (licStichera.length > 0) {
+        const menaionCount        = licStichera.length;
+        const resurrectionalCount = 6 - menaionCount;
+        const allVerses           = [6, 5, 4, 3, 2, 1];
+
+        const lic = calendarEntry.vespers.lordICall;
+        if (resurrectionalCount === 0) {
+          lic.slots = [];
+        } else {
+          lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
+          lic.slots[0].count  = resurrectionalCount;
+        }
+        lic.slots.push({
+          verses: allVerses.slice(resurrectionalCount),
+          count:  menaionCount,
+          source: 'menaion',
+          key:    `auto.${date}.lordICall`,
+          tone:   licStichera[0].tone,
+          label:  primary.title,
+        });
+
+        autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
+
+        if (licGlory) {
+          lic.glory = { source: 'menaion', key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
+          autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
+        }
+      }
+
+      menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
+
+      const slots    = calendarEntry.vespers.troparia.slots;
+      const nowIdx   = slots.findIndex(s => s.position === 'now');
+      const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
+      slots.splice(insertAt, 0, {
+        position: 'glory',
+        source:   'menaion',
+        key:      `auto.${date}.troparion`,
+        tone:     troparion.tone,
+        label:    primary.title,
+      });
+
+      calendarEntry.commemorations = [{ title: primary.title, tone: troparion.tone }];
+    }
+  }
+
+  const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
+  const blocks = assembleVespers(calendarEntry, fixedTexts, reqSources);
+
+  const serviceTitle = calendarEntry.vespers?.serviceType === 'dailyVespers'
+    ? 'Daily Vespers'
+    : 'Great Vespers';
+  const tone = calendarEntry.vespers?.lordICall?.tone ?? calendarEntry.liturgicalContext?.tone ?? null;
+
+  return { blocks, calendarEntry, serviceTitle, tone };
+}
+
+// ─── getDayLabel helper ───────────────────────────────────────────────────────
+
+const ORDINALS = ['', '1st', '2nd', '3rd', '4th', '5th', '6th'];
+
+function getDayLabel(entry, dow, season) {
+  if (season === 'greatLent') {
+    if (dow === 'saturday') {
+      const note = entry._meta?.note || '';
+      // Soul Saturdays
+      const soulMatch = note.match(/Soul Saturday (\d)/);
+      if (soulMatch) return `Soul Saturday ${soulMatch[1]}`;
+      // Lazarus Saturday
+      if (/Lazarus/.test(note)) return 'Lazarus Saturday';
+      // Numbered Saturdays
+      const satNum = entry.liturgicalContext?.weekOfLent || entry.liturgicalContext?.specialDayIndex;
+      if (satNum) return `${ORDINALS[satNum] || satNum + 'th'} Saturday of Great Lent`;
+      return null;
+    }
+    if (dow === 'sunday') {
+      const wk = entry.liturgicalContext?.weekOfLent;
+      const names = {
+        1: 'Sunday of Orthodoxy',
+        2: 'Sunday of St. Gregory Palamas',
+        3: 'Sunday of the Holy Cross',
+        4: 'Sunday of St. John of the Ladder',
+        5: 'Sunday of St. Mary of Egypt',
+        6: 'Palm Sunday',
+      };
+      return names[wk] || null;
+    }
+    // Weekday
+    const wk  = entry.liturgicalContext?.weekOfLent;
+    const cap = dow.charAt(0).toUpperCase() + dow.slice(1);
+    if (wk) return `${cap}, ${ORDINALS[wk] || wk + 'th'} Week of Great Lent`;
+    return null;
+  }
+
+  if (season === 'holyWeek') {
+    const names = {
+      sunday: 'Palm Sunday', monday: 'Holy Monday', tuesday: 'Holy Tuesday',
+      wednesday: 'Holy Wednesday', thursday: 'Great and Holy Thursday',
+      friday: 'Great and Holy Friday', saturday: 'Great and Holy Saturday',
+    };
+    return names[dow] || null;
+  }
+
+  if (season === 'brightWeek') {
+    const names = {
+      sunday: 'Holy Pascha', monday: 'Bright Monday', tuesday: 'Bright Tuesday',
+      wednesday: 'Bright Wednesday', thursday: 'Bright Thursday',
+      friday: 'Bright Friday', saturday: 'Bright Saturday',
+    };
+    return names[dow] || null;
+  }
+
+  return null;
+}
+
+// ─── Static file serving ──────────────────────────────────────────────────────
+
+function serveStatic(res, filePath, contentType) {
+  if (!fs.existsSync(filePath)) {
+    res.writeHead(404); res.end('Not found'); return;
+  }
+  res.writeHead(200, { 'Content-Type': contentType + '; charset=utf-8' });
+  res.end(fs.readFileSync(filePath));
+}
+
 // ─── Request handler ──────────────────────────────────────────────────────────
 
 function parseQuery(url) {
@@ -648,9 +804,136 @@ function handleRequest(req, res) {
 
   try {
     if (pathname === '/') {
-      const dates = getCollectedDates();
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end(renderHomePage(dates));
+      serveStatic(res, path.join(__dirname, 'public', 'index.html'), 'text/html');
+
+    } else if (pathname.startsWith('/styles/') || pathname.startsWith('/scripts/')) {
+      const filePath = path.join(__dirname, 'public', pathname);
+      const ext = path.extname(filePath);
+      const ct = ext === '.css' ? 'text/css' : ext === '.js' ? 'text/javascript' : 'text/plain';
+      serveStatic(res, filePath, ct);
+
+    } else if (pathname === '/api/service') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      let result;
+      try {
+        result = assembleForDate(date, pronoun);
+      } catch (err) {
+        console.error('assembleForDate error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (!result) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'No service available for this date.', date }));
+        return;
+      }
+
+      const { blocks, calendarEntry, serviceTitle, tone } = result;
+      const season = calendarEntry.liturgicalContext?.season || null;
+      const dow    = calendarEntry.dayOfWeek || null;
+      const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:      calendarEntry.vespers?.serviceType || 'greatVespers',
+        serviceName:      serviceTitle,
+        tone,
+        season,
+        liturgicalLabel,
+        commemorations:   calendarEntry.commemorations || [],
+        blocks,
+      }));
+
+    } else if (pathname === '/api/days') {
+      const q    = parseQuery(url);
+      const from = (q.from || '').trim();
+      const to   = (q.to   || '').trim();
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!from || !to || !/^\d{4}-\d{2}-\d{2}$/.test(from) || !/^\d{4}-\d{2}-\d{2}$/.test(to)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid from/to parameters.' }));
+        return;
+      }
+
+      const [fy, fm, fd] = from.split('-').map(Number);
+      const [ty, tm, td] = to.split('-').map(Number);
+      const startDate = new Date(Date.UTC(fy, fm - 1, fd));
+      const endDate   = new Date(Date.UTC(ty, tm - 1, td));
+
+      if (endDate < startDate) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: '"to" must be on or after "from".' }));
+        return;
+      }
+
+      const today = new Date().toISOString().slice(0, 10);
+      const MONTH_NAMES_FULL = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+                                'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+      const DOW_NAMES_UPPER  = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+      const DAY_MS_LOCAL     = 24 * 60 * 60 * 1000;
+
+      const result = [];
+      let cur = new Date(startDate);
+      while (cur <= endDate) {
+        const dateStr = cur.toISOString().slice(0, 10);
+        const [, mm, dd] = dateStr.split('-').map(Number);
+        const dowIdx  = cur.getUTCDay();
+        const dowStr  = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
+
+        // Get calendar entry (cheap — no assembly)
+        const entry  = getCalendarEntry(dateStr);
+        const season = entry ? (entry.liturgicalContext?.season || null) : null;
+        const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
+        const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
+
+        // Feast from Menaion DB
+        let feast = null;
+        try {
+          const primary = getMenaionPrimary(mm, dd);
+          if (primary) feast = primary.title;
+        } catch (_) {}
+
+        const services = {
+          greatVespers: entry?.vespers?.serviceType === 'greatVespers',
+          dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
+          matins:  false,
+          liturgy: false,
+        };
+
+        result.push({
+          date:           dateStr,
+          dayOfWeek:      dowStr,
+          displayDay:     DOW_NAMES_UPPER[dowIdx],
+          displayDate:    `${MONTH_NAMES_FULL[mm - 1]} ${dd}`,
+          isToday:        dateStr === today,
+          season,
+          tone,
+          feast,
+          liturgicalLabel,
+          services,
+        });
+
+        cur = new Date(cur.getTime() + DAY_MS_LOCAL);
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(result));
 
     } else if (pathname === '/service') {
       const q       = parseQuery(url);
@@ -663,10 +946,18 @@ function handleRequest(req, res) {
         return;
       }
 
-      // Get a calendar entry
-      const calendarEntry = getCalendarEntry(date);
+      // Try assembleForDate first
+      let assembleResult;
+      try {
+        assembleResult = assembleForDate(date, pronoun);
+      } catch (err) {
+        console.error('Assembly error:', err);
+        res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(renderErrorPage(`Assembly error: ${err.message}`));
+        return;
+      }
 
-      if (!calendarEntry) {
+      if (!assembleResult) {
         // Fall back to DB-collected texts (variable sections only)
         const dbBlocks = getDbBlocks(date, pronoun);
         if (dbBlocks.length > 0) {
@@ -700,110 +991,18 @@ function handleRequest(req, res) {
         return;
       }
 
-      // Assemble the full service.
-      // Merge per-request DB source so variable slots referencing source:'db'
-      // resolve against collected texts for this specific date.
-      const dbSource = buildDbSource(date, pronoun);
-
-      // For auto-generated Saturdays (ordinary time or Pentecostarion), inject Menaion data from DB.
-      let menaionOverride = sources.menaion;
-      const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
-      if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
-        const [, mm, dd] = date.split('-').map(Number);
-        const primary      = getMenaionPrimary(mm, dd);
-        const sticheraData = getSticheraDay(mm, dd);
-
-        if (primary) {
-          const troparion = primary.troparia.find(t => t.type === 'troparion');
-          const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
-
-          // ── Stichera (Lord I Call) ──────────────────────────────────────────
-          // Cap at 6 — max stichera at Lord I Call (psalm verses 6–1).
-          // The split follows the feast prominence: more Menaion = greater feast.
-          const licStichera = sticheraData?.[0]?.stichera.filter(
-            s => s.section === 'lordICall' && s.order >= 1
-          ).slice(0, 6) ?? [];
-          const licGlory = sticheraData?.[0]?.stichera.find(
-            s => s.section === 'lordICall' && s.order === 0
-          ) ?? null;
-
-          if (licStichera.length > 0) {
-            const menaionCount        = licStichera.length;
-            const resurrectionalCount = 6 - menaionCount;
-            const allVerses           = [6, 5, 4, 3, 2, 1];
-
-            const lic = calendarEntry.vespers.lordICall;
-            if (resurrectionalCount === 0) {
-              // All-Menaion: drop the resurrectional slot entirely
-              lic.slots = [];
-            } else {
-              lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
-              lic.slots[0].count  = resurrectionalCount;
-            }
-            lic.slots.push({
-              verses: allVerses.slice(resurrectionalCount),
-              count:  menaionCount,
-              source: 'menaion',
-              key:    `auto.${date}.lordICall`,
-              tone:   licStichera[0].tone,
-              label:  primary.title,
-            });
-
-            autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
-
-            // Replace the Glory with the Menaion doxastichon if we have one
-            if (licGlory) {
-              lic.glory = { source: 'menaion', key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
-              autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
-            }
-          }
-
-          menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
-
-          // ── Troparion (Glory slot) ──────────────────────────────────────────
-          const slots    = calendarEntry.vespers.troparia.slots;
-          const nowIdx   = slots.findIndex(s => s.position === 'now');
-          const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
-          slots.splice(insertAt, 0, {
-            position: 'glory',
-            source:   'menaion',
-            key:      `auto.${date}.troparion`,
-            tone:     troparion.tone,
-            label:    primary.title,
-          });
-
-          calendarEntry.commemorations = [{ title: primary.title, tone: troparion.tone }];
-        }
-      }
-
-      const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
-
-      let blocks;
-      try {
-        blocks = assembleVespers(calendarEntry, fixedTexts, reqSources);
-      } catch (err) {
-        console.error('Assembly error:', err);
-        res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
-        res.end(renderErrorPage(`Assembly error: ${err.message}`));
-        return;
-      }
-
+      const { blocks, calendarEntry, serviceTitle, tone } = assembleResult;
       const pronounLabel = pronoun === 'yy' ? ' (You/Your)' : ' (Thee/Thy)';
       const isGenerated  = calendarEntry._meta?.generated;
-      const tone         = calendarEntry.vespers?.lordICall?.tone;
       const toneLabel    = tone ? ` · Tone ${tone}` : '';
 
-      const serviceTitle = calendarEntry.vespers?.serviceType === 'dailyVespers'
-        ? 'Daily Vespers'
-        : 'Great Vespers';
       const html = renderVespers(blocks, {
         title: serviceTitle,
         date:  `${formatDate(date)}${toneLabel}${pronounLabel}`,
       });
 
-      // Inject back-link + optional generated notice
-      const hasMenaion   = calendarEntry.commemorations?.length > 0;
-      const hasStichera  = calendarEntry.vespers.lordICall.slots.some(s => s.source === 'menaion');
+      const hasMenaion  = calendarEntry.commemorations?.length > 0;
+      const hasStichera = calendarEntry.vespers.lordICall.slots.some(s => s.source === 'menaion');
       const notice = isGenerated
         ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#fffbe6;border-bottom:1px solid #e6d87a;color:#7a6000;">
              ⚠ Auto-generated service${hasMenaion ? '' : ' — Menaion commemorations for this date are not yet included'}.

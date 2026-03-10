@@ -537,11 +537,11 @@ header {
   .svc-row .arrow { opacity: 1; }
 
   /* Scale up panel reading text for comfortable phone reading */
-  .prayer      { font-size: 18px; }
-  .rubric      { font-size: 16px; }
-  .verse       { font-size: 15px; }
-  .stich-label { font-size: 14px; }
-  .panel-comms { font-size: 15px; }
+  .prayer      { font-size: 20px; }
+  .rubric      { font-size: 17px; }
+  .verse       { font-size: 16px; }
+  .stich-label { font-size: 15px; }
+  .panel-comms { font-size: 16px; }
 }
 
 /* Search mobile breakpoint: 640px */

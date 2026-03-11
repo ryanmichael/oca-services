@@ -177,8 +177,9 @@ async function _showPanel(rowEl, date, svcType) {
   activeDate    = date;
   activeSvcType = svcType;
   if (rowEl) rowEl.classList.add('active');
-  document.getElementById('p-svc').textContent =
-    svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
+  const svcLabel = svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
+  document.getElementById('p-svc').textContent = svcLabel;
+  document.getElementById('print-header-svc').textContent = svcLabel;
 
   // Collapse detail section on each new panel open
   document.getElementById('p-detail-body').classList.remove('open');
@@ -201,13 +202,17 @@ async function loadPanelContent(date, svcType) {
     if (!data) {
       document.getElementById('p-body').innerHTML =
         '<div class="panel-loading">Service not available for this date.</div>';
-      document.getElementById('p-date').textContent = formatLong(date);
+      const fallbackDate = formatLong(date);
+      document.getElementById('p-date').textContent = fallbackDate;
+      document.getElementById('print-header-date').textContent = fallbackDate;
       return;
     }
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
-    document.getElementById('p-date').textContent = `${formatLong(date)}${toneStr}${labelStr}`;
+    const dateStr = `${formatLong(date)}${toneStr}${labelStr}`;
+    document.getElementById('p-date').textContent = dateStr;
+    document.getElementById('print-header-date').textContent = dateStr;
 
     // Populate saints list; auto-expand detail section when there are commemorations
     const comms    = data.commemorations || [];

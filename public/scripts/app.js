@@ -700,6 +700,8 @@ async function init() {
       } else {
         setUrlState(urlDate, null, true);
       }
+    } else {
+      jumpToDate(todayStr());
     }
   } catch (err) {
     console.error('Failed to load days:', err);

@@ -91,6 +91,9 @@ function getServiceRows(day) {
     rows.push({ key: 'matins',  name: 'Matins',        available: false });
     rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: false });
   } else if (dow === 'sunday') {
+    if (day.services.greatVespers) {
+      rows.push({ key: 'greatVespers', name: 'Great Vespers', available: true });
+    }
     rows.push({ key: 'matins',       name: 'Matins',        available: false });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: false });
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers',  available: day.services.dailyVespers });

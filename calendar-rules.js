@@ -839,24 +839,28 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Monday — Daily Vespers',
       prokeimenon: { pattern: 'weekday', weekday: 'monday' },
+      apostichaGloryOnly: true,
     },
     tuesday: {
       name:        'Holy Tuesday',
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Tuesday — Daily Vespers',
       prokeimenon: { pattern: 'weekday', weekday: 'tuesday' },
+      apostichaGloryOnly: true,
     },
     wednesday: {
       name:        'Holy Wednesday',
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Wednesday — Daily Vespers',
       prokeimenon: { pattern: 'weekday', weekday: 'wednesday' },
+      apostichaGloryOnly: true,
     },
     thursday: {
       name:        'Great and Holy Thursday',
       serviceType: 'dailyVespers',
       rubricNote:  'Great and Holy Thursday — Vespers (primary morning service: Liturgy of St. Basil)',
       prokeimenon: { pattern: 'weekday', weekday: 'thursday' },
+      apostichaGloryOnly: true,
     },
     friday: {
       name:        'Great and Holy Friday',
@@ -901,7 +905,9 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
         now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
       },
       prokeimenon: cfg.prokeimenon,
-      aposticha: {
+      // Holy Mon–Thu Presanctified: no separate Aposticha section (the LIC doxastichon serves both).
+      // Holy Fri/Sat (Great Vespers): keep the full aposticha structure.
+      aposticha: cfg.apostichaGloryOnly ? { slots: [] } : {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
           { position: 2, repeatPrevious: true },

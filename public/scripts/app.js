@@ -13,9 +13,8 @@ let activeRow = null;
 let activeDate = null;
 let activeSvcType = null;
 let activePronoun = 'tt';  // 'tt' or 'yy'
-let calYear  = new Date().getFullYear();
-let calMonth = new Date().getMonth() + 1;  // 1-indexed
-let calDaysCache = {};  // { 'YYYY-MM': [...dayObjects] }
+let weekStart   = null;   // Date object: Sunday of the displayed week
+let calDayCache = {};     // { 'YYYY-MM-DD': dayObject | null }
 
 // ─── Date utilities ───────────────────────────────────────────────────────────
 
@@ -313,15 +312,45 @@ function updateWeekLabel() {
 
 // ─── Calendar view ────────────────────────────────────────────────────────────
 
+function sundayOf(date) {
+  const d = new Date(date);
+  d.setDate(d.getDate() - d.getDay());
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+async function fetchCalWeek(sunday) {
+  const dates = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(sunday);
+    d.setDate(d.getDate() + i);
+    dates.push(toIso(d));
+  }
+  // Only fetch dates not already cached
+  const missing = dates.filter(ds => !(ds in calDayCache));
+  if (missing.length) {
+    try {
+      const data = await fetchDays(missing[0], missing[missing.length - 1]);
+      // Index by date
+      const byDate = {};
+      for (const d of data) byDate[d.date] = d;
+      for (const ds of missing) calDayCache[ds] = byDate[ds] || null;
+    } catch (err) {
+      console.error('fetchCalWeek error:', err);
+      for (const ds of missing) calDayCache[ds] = null;
+    }
+  }
+}
+
 function openCal() {
   closeSearch(/*silent=*/true);
   document.getElementById('view-main').classList.add('hidden');
   document.getElementById('date-btn').classList.add('active');
   document.getElementById('view-cal').classList.add('visible');
-  fetchCalMonth(calYear, calMonth).then(() => renderCalMonth(calYear, calMonth));
+  if (!weekStart) weekStart = sundayOf(new Date());
+  fetchCalWeek(weekStart).then(() => renderWeek(weekStart));
   setTimeout(() => {
-    document.getElementById('cal-month-nav').classList.add('in');
-    document.getElementById('cal-grid-wrap').classList.add('in');
+    document.getElementById('cal-week-wrap').classList.add('in');
     document.getElementById('cal-saint-strip').classList.add('in');
   }, 100);
 }
@@ -331,124 +360,109 @@ function closeCal() {
   document.getElementById('view-main').classList.remove('hidden');
   document.getElementById('date-btn').classList.remove('active');
   setTimeout(() => {
-    document.getElementById('cal-month-nav').classList.remove('in');
-    document.getElementById('cal-grid-wrap').classList.remove('in');
+    document.getElementById('cal-week-wrap').classList.remove('in');
     document.getElementById('cal-saint-strip').classList.remove('in');
   }, 400);
 }
 
 function calShift(dir) {
-  calMonth += dir;
-  if (calMonth > 12) { calMonth = 1; calYear++; }
-  if (calMonth < 1)  { calMonth = 12; calYear--; }
+  const next = new Date(weekStart);
+  next.setDate(next.getDate() + dir * 7);
+  weekStart = next;
 
-  // Fade grid + strip out, re-render, fade back in
-  const grid  = document.getElementById('cal-grid-wrap');
-  const strip = document.getElementById('cal-saint-strip');
-  grid.classList.remove('in');
-  strip.classList.remove('in');
+  const strip = document.getElementById('cal-week-strip');
+  const feast = document.getElementById('cal-saint-strip');
+  strip.classList.add('shifting');
+  feast.classList.remove('in');
 
-  fetchCalMonth(calYear, calMonth).then(() => {
+  fetchCalWeek(next).then(() => {
     setTimeout(() => {
-      renderCalMonth(calYear, calMonth);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        grid.classList.add('in');
-        strip.classList.add('in');
-      }));
-    }, 200);
+      renderWeek(next);
+      strip.classList.remove('shifting');
+      requestAnimationFrame(() => requestAnimationFrame(() => feast.classList.add('in')));
+    }, 180);
   });
 }
 
-async function fetchCalMonth(year, month) {
-  const key = `${year}-${String(month).padStart(2, '0')}`;
-  if (calDaysCache[key]) return;
-  const mm = String(month).padStart(2, '0');
-  const daysInMonth = new Date(year, month, 0).getDate();
-  const from = `${year}-${mm}-01`;
-  const to   = `${year}-${mm}-${daysInMonth}`;
-  try {
-    const data = calDaysCache[key] = await fetchDays(from, to);
-    // Also populate calDots for main list
-    for (const day of data) {
-      if (day.services.greatVespers || day.services.dailyVespers) {
-        // stored for potential future use
-      }
-    }
-  } catch (err) {
-    console.error('fetchCalMonth error:', err);
-    calDaysCache[key] = [];
-  }
-}
+function renderWeek(sunday) {
+  const today    = todayStr();
+  const monthSet = new Set();
 
-function renderCalMonth(year, month) {
-  document.getElementById('cal-month-title').textContent =
-    `${MONTH_NAMES[month - 1]} ${year}`;
+  let stripHtml  = '';
+  const weekFeasts = [];
 
-  const key  = `${year}-${String(month).padStart(2, '0')}`;
-  const data = calDaysCache[key] || [];
-  const today = todayStr();
-  const firstDow    = new Date(year, month - 1, 1).getDay();
-  const daysInMonth = new Date(year, month, 0).getDate();
+  for (let i = 0; i < 7; i++) {
+    const d    = new Date(sunday);
+    d.setDate(d.getDate() + i);
+    const ds   = toIso(d);
+    const mo   = d.getMonth();
+    const day  = d.getDate();
+    monthSet.add(MONTH_NAMES[mo]);
 
-  // Build day lookup: day number → day object
-  const byDay = {};
-  for (const d of data) {
-    const num = parseInt(d.date.slice(8), 10);
-    byDay[num] = d;
-  }
-
-  // Render grid
-  const grid = document.getElementById('cal-grid');
-  let html = DOW_ABBR.map(d => `<div class="cg-dow">${d}</div>`).join('');
-
-  for (let i = 0; i < firstDow; i++) html += `<div class="cg-day empty"></div>`;
-
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const dayObj  = byDay[d];
-    const isToday = dateStr === today;
+    const dayObj  = calDayCache[ds] || null;
+    const isToday = ds === today;
     const hasSvc  = dayObj && (dayObj.services.greatVespers || dayObj.services.dailyVespers);
 
-    let cls = 'cg-day';
-    if (!dayObj) cls += ' empty';
-    else if (hasSvc) cls += ' has-svc';
-    if (isToday) cls = cls.replace(' empty', '') + ' today';
+    let cls = 'cal-week-day';
+    if (hasSvc)  cls += ' has-svc';
+    if (isToday) cls += ' today';
 
-    const onclick = hasSvc ? `data-date="${dateStr}"` : '';
-    html += `<div class="${cls}" ${onclick}>${d}</div>`;
+    stripHtml += `<div class="${cls}" data-date="${ds}" data-has="${hasSvc ? '1' : ''}">
+      <span class="cwd-dow">${DOW_ABBR[d.getDay()]}</span>
+      <span class="cwd-num">${day}</span>
+      <span class="cwd-month">${MONTH_ABBR[mo].toUpperCase()}</span>
+      <span class="cwd-dot"></span>
+    </div>`;
+
+    if (dayObj) weekFeasts.push({ ds, day, mo, dayObj, hasSvc });
   }
 
-  grid.innerHTML = html;
+  document.getElementById('cal-week-strip').innerHTML = stripHtml;
 
-  grid.querySelectorAll('.cg-day.has-svc').forEach(cell => {
+  // Week label
+  const monthNames = [...monthSet];
+  const label = monthNames.length > 1
+    ? `${MONTH_ABBR[new Date(sunday).getMonth()].toUpperCase()} / ${MONTH_ABBR[new Date(sunday.getTime() + 6*86400000).getMonth()].toUpperCase()} ${sunday.getFullYear()}`
+    : `${monthNames[0]} ${sunday.getFullYear()}`;
+  document.getElementById('cal-week-label').textContent = label;
+
+  // Wire up day clicks
+  document.querySelectorAll('.cal-week-day.has-svc').forEach(cell => {
     cell.addEventListener('click', () => {
+      const date = cell.dataset.date;
       closeCal();
-      setTimeout(() => jumpToDate(cell.dataset.date), 280);
+      setTimeout(() => {
+        jumpToDate(date);
+        const dayObj = calDayCache[date];
+        if (dayObj) {
+          const svc = dayObj.services.greatVespers ? 'greatVespers' : 'dailyVespers';
+          const btn = document.querySelector(`.svc-row[data-date="${date}"][data-svc="${svc}"]`);
+          if (btn) openPanel(btn, date, svc);
+        }
+      }, 280);
     });
   });
 
-  // Render saint strip
+  // Feast list
   const rows = document.getElementById('css-rows');
-  const available = data.filter(d => d.services.greatVespers || d.services.dailyVespers);
-
-  if (!available.length) {
-    rows.innerHTML = `<div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);padding:12px 0;">No services available this month.</div>`;
+  if (!weekFeasts.length) {
+    rows.innerHTML = `<div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);padding:16px 0;">No feasts or services this week.</div>`;
     return;
   }
 
-  rows.innerHTML = available.map(day => {
-    const num   = parseInt(day.date.slice(8), 10);
-    const label = day.liturgicalLabel || day.feast || day.displayDay;
-    const abbr  = `${MONTH_ABBR[month - 1]} ${num}`;
-    const svc   = day.services.greatVespers ? 'greatVespers' : 'dailyVespers';
-    return `<button class="css-row" data-date="${day.date}" data-svc="${svc}">
+  rows.innerHTML = weekFeasts.map(({ ds, day, mo, dayObj, hasSvc }) => {
+    const label = dayObj.liturgicalLabel || dayObj.feast || dayObj.displayDay;
+    const abbr  = `${MONTH_ABBR[mo]} ${day}`;
+    const svc   = dayObj.services.greatVespers ? 'greatVespers' : 'dailyVespers';
+    const cls   = hasSvc ? 'css-row' : 'css-row unavail';
+    return `<button class="${cls}" data-date="${ds}" data-svc="${svc}">
       <span class="css-date">${abbr}</span>
       <span class="css-name">${label}</span>
-      <span class="css-tag">VIEW \u2192</span>
+      <span class="css-tag">${hasSvc ? 'VIEW \u2192' : 'NO SERVICE'}</span>
     </button>`;
   }).join('');
 
-  rows.querySelectorAll('.css-row').forEach(row => {
+  rows.querySelectorAll('.css-row:not(.unavail)').forEach(row => {
     row.addEventListener('click', () => {
       const date = row.dataset.date;
       const svc  = row.dataset.svc;
@@ -616,13 +630,9 @@ async function pickResult(dateStr, svcType) {
       days = await fetchDays(from, to);
       renderServiceList(days);
       for (const day of days) {
-        if (day.services.greatVespers || day.services.dailyVespers) {
-          const key = `${new Date(day.date + 'T12:00:00').getFullYear()}-${String(new Date(day.date + 'T12:00:00').getMonth() + 1).padStart(2,'0')}`;
-          if (!calDaysCache[key]) calDaysCache[key] = null; // invalidate cache
-        }
+        calDayCache[day.date] = day;
       }
-      calYear  = anchor.getFullYear();
-      calMonth = anchor.getMonth() + 1;
+      weekStart = sundayOf(anchor);
     } catch (err) {
       console.error('pickResult: failed to load date range:', err);
       return;
@@ -675,18 +685,15 @@ async function init() {
   const from = toIso(addDays(anchor, -7));
   const to   = toIso(addDays(anchor, 28));
 
-  calYear  = anchor.getFullYear();
-  calMonth = anchor.getMonth() + 1;
+  weekStart = sundayOf(anchor);
 
   try {
     days = await fetchDays(from, to);
     renderServiceList(days);
 
-    // Pre-populate calendar cache for current month
-    const key = `${calYear}-${String(calMonth).padStart(2,'0')}`;
-    if (!calDaysCache[key]) {
-      const monthDays = days.filter(d => d.date.startsWith(key));
-      if (monthDays.length > 0) calDaysCache[key] = monthDays;
+    // Pre-populate calendar day cache from loaded days
+    for (const day of days) {
+      calDayCache[day.date] = day;
     }
 
     if (urlDate) {

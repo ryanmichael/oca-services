@@ -142,7 +142,13 @@
 
   <!-- Mobile close button -->
   <div class="search-close-bottom">
-    <button class="search-close-btn" id="search-close-mobile">CLOSE</button>
+    <button id="search-close-mobile">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      CLOSE
+    </button>
   </div>
 
 </div><!-- end .view-search -->
@@ -162,33 +168,29 @@
 
   <div class="cal-view-body">
 
-    <div>
-      <!-- Month navigator -->
-      <div class="cal-month-nav" id="cal-month-nav">
-        <div class="cal-month-title" id="cal-month-title">MARCH 2026</div>
-        <div class="cal-month-arrows">
-          <button class="cal-arrow" id="cal-prev" title="Previous month">
-            <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
-              <path d="M6 1L1 5.5 6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <button class="cal-arrow" id="cal-next" title="Next month">
-            <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
-              <path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+    <!-- Week strip -->
+    <div class="cal-week-wrap" id="cal-week-wrap">
+      <div class="cal-week-label" id="cal-week-label">MARCH 2026</div>
+      <div class="cal-week-nav">
+        <button class="cal-arrow" id="cal-prev">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
+            <path d="M6 1L1 5.5 6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="cal-week-strip" id="cal-week-strip">
+          <!-- rendered by JS -->
         </div>
-      </div>
-
-      <!-- Full calendar grid -->
-      <div class="cal-full-grid-wrap" id="cal-grid-wrap">
-        <div class="cal-full-grid" id="cal-grid"></div>
+        <button class="cal-arrow" id="cal-next">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
+            <path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </div>
 
     <!-- Service list strip -->
     <div class="cal-saint-strip" id="cal-saint-strip">
-      <div class="css-eyebrow">AVAILABLE SERVICES</div>
+      <div class="css-eyebrow">AVAILABLE SERVICES THIS WEEK</div>
       <div class="css-rows" id="css-rows"></div>
     </div>
 

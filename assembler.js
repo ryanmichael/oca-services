@@ -383,6 +383,16 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
         }
       }
     }
+  } else if (prokeimenonSpec.pattern === 'soulSaturday') {
+    // Soul Saturday: Alleluia with two verses in place of the prokeimenon
+    const alleluia = sources.prokeimena?.soulSaturday;
+    if (alleluia) {
+      blocks.push(makeBlock('prok-alleluia', section, 'hymn', 'choir', alleluia.refrain, { tone: alleluia.tone }));
+      alleluia.verses.forEach((verse, i) => {
+        blocks.push(makeBlock(`prok-v${i}`, section, 'verse', 'deacon', verse.text));
+        blocks.push(makeBlock(`prok-alleluia-rep-${i}`, section, 'hymn', 'choir', alleluia.refrain, { tone: alleluia.tone }));
+      });
+    }
   } else {
     // Standard single prokeimenon — resolved from prokeimena.json by weekday
     const weekday = prokeimenonSpec.weekday;

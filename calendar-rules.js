@@ -957,7 +957,7 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
           glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
           now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Dogmatikon' },
         },
-        prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+        prokeimenon: { pattern: 'soulSaturday' },
         aposticha: {
           slots: [
             { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
@@ -971,7 +971,7 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
           source: 'db',
           slots: [
             { order: 1,          tone, source: 'db', key: `${litKey}.vespers.troparia` },
-            { position: 'glory', tone, source: 'db', key: `${litKey}.vespers.troparia.glory` },
+            { position: 'glory', tone, source: 'db', key: `${litKey}.vespers.troparia` },
             { position: 'now',   tone, source: 'db', key: `${litKey}.vespers.troparia.now`   },
           ],
         },

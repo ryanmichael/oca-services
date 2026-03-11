@@ -735,7 +735,9 @@ function assembleForDate(date, pronoun) {
 
   let menaionOverride = sources.menaion;
   const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
-  if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && calendarEntry.dayOfWeek === 'saturday') {
+  const isSaturdayInjection = calendarEntry.dayOfWeek === 'saturday';
+  const isWeekdayInjection  = !isSaturdayInjection;
+  if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season)) {
     const [, mm, dd] = date.split('-').map(Number);
     const ranked = getMenaionRanked(mm, dd);
     const primary = ranked?.principal ?? null;
@@ -750,31 +752,45 @@ function assembleForDate(date, pronoun) {
 
       const licStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'lordICall' && s.order >= 1
-      ).slice(0, 6) ?? [];
+      ).slice(0, isSaturdayInjection ? 6 : 3) ?? [];
       const licGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'lordICall' && s.order === 0
       ) ?? null;
 
       if (licStichera.length > 0) {
-        const menaionCount        = licStichera.length;
-        const resurrectionalCount = 6 - menaionCount;
-        const allVerses           = [6, 5, 4, 3, 2, 1];
-
         const lic = calendarEntry.vespers.lordICall;
-        if (resurrectionalCount === 0) {
-          lic.slots = [];
+
+        if (isSaturdayInjection) {
+          // Saturday: split verses between resurrectional (Octoechos) and Menaion
+          const menaionCount        = licStichera.length;
+          const resurrectionalCount = 6 - menaionCount;
+          const allVerses           = [6, 5, 4, 3, 2, 1];
+          if (resurrectionalCount === 0) {
+            lic.slots = [];
+          } else {
+            lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
+            lic.slots[0].count  = resurrectionalCount;
+          }
+          lic.slots.push({
+            verses: allVerses.slice(resurrectionalCount),
+            count:  menaionCount,
+            source: 'menaion',
+            key:    `auto.${date}.lordICall`,
+            tone:   licStichera[0].tone,
+            label:  primary.title,
+          });
         } else {
-          lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
-          lic.slots[0].count  = resurrectionalCount;
+          // Weekday: all stichera from Menaion at verses [4, 3, 2] (no resurrectional)
+          const weekdayVerses = [4, 3, 2].slice(0, licStichera.length);
+          lic.slots = [{
+            verses: weekdayVerses,
+            count:  licStichera.length,
+            source: 'menaion',
+            key:    `auto.${date}.lordICall`,
+            tone:   licStichera[0].tone,
+            label:  primary.title,
+          }];
         }
-        lic.slots.push({
-          verses: allVerses.slice(resurrectionalCount),
-          count:  menaionCount,
-          source: 'menaion',
-          key:    `auto.${date}.lordICall`,
-          tone:   licStichera[0].tone,
-          label:  primary.title,
-        });
 
         autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
 
@@ -814,7 +830,9 @@ function assembleForDate(date, pronoun) {
 
         if (apostGlory) {
           apost.glory = { source: 'menaion', key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: false };
-          apost.now   = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+          if (isSaturdayInjection) {
+            apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+          }
           autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
         }
         // If no doxastichon, keep the existing combinesGloryNow theotokion from calendar entry

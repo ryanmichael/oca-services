@@ -258,6 +258,52 @@ function getLiturgicalKey(date) {
 // ─── Calendar entry generators ────────────────────────────────────────────────
 
 /**
+ * Generates a weekday (Mon–Fri) or Sunday evening Daily Vespers for ordinary time.
+ *
+ * Structure:
+ *   - Lord I Call: up to 3 stichera from the Menaion (server injects at runtime);
+ *     if no Menaion stichera are available the psalm verses are read plain.
+ *   - Kathisma:    appointed kathisma for the day (assembler renders rubric).
+ *   - Prokeimenon: weekday prokeimenon by day of week.
+ *   - Aposticha:   Menaion if available (server injects); otherwise omitted.
+ *   - Troparia:    saint's troparion (server injects from Menaion DB).
+ *
+ * No resurrectional stichera; those belong to Saturday Great Vespers only.
+ */
+function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ordinary-time ${dow} Daily Vespers. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'dailyVespers',
+      rubricNote:  `Daily Vespers`,
+      lordICall: {
+        tone,
+        totalStichera: 3,
+        slots: [],   // server injects Menaion stichera at runtime
+        glory: null, // server injects Menaion glory doxastichon
+        now:   null, // server injects dismissal theotokion
+      },
+      prokeimenon: { pattern: 'weekday', weekday: dow },
+      aposticha: {
+        slots: [],   // server injects Menaion aposticha if available
+        glory: null,
+      },
+      troparia: {
+        slots: [],   // server injects Menaion troparion
+      },
+    },
+  };
+}
+
+/**
  * Generates a Saturday Great Vespers entry for ordinary time.
  * Uses 6 resurrectional stichera from the Octoechos + dogmatikon.
  */
@@ -1221,9 +1267,10 @@ function generateCalendarEntry(dateStr) {
   const tone   = getTone(date);
   const litKey = getLiturgicalKey(date);
 
-  // ── Ordinary time Saturday ─────────────────────────────────────────────────
-  if (season === 'ordinaryTime' && dow === 'saturday') {
-    return generateOrdinaryTimeSaturday(dateStr, tone);
+  // ── Ordinary time ──────────────────────────────────────────────────────────
+  if (season === 'ordinaryTime') {
+    if (dow === 'saturday') return generateOrdinaryTimeSaturday(dateStr, tone);
+    return generateOrdinaryTimeWeekday(dateStr, dow, tone);
   }
 
   // ── Great Lent ─────────────────────────────────────────────────────────────

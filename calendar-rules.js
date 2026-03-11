@@ -95,10 +95,10 @@ function getLiturgicalSeason(date) {
   const year   = date.getUTCFullYear();
   const pascha = calculatePascha(year);
 
-  const cleanMonday = new Date(pascha.getTime() - 48 * DAY_MS);
-  const palmSunday  = new Date(pascha.getTime() -  7 * DAY_MS);
-  const meatfareSun = new Date(pascha.getTime() - 56 * DAY_MS);
-  const diff        = Math.floor((date - pascha) / DAY_MS);
+  const cleanMonday    = new Date(pascha.getTime() - 48 * DAY_MS);
+  const palmSunday     = new Date(pascha.getTime() -  7 * DAY_MS);
+  const triodiOnStart  = new Date(pascha.getTime() - 70 * DAY_MS); // Sunday of Publican & Pharisee
+  const diff           = Math.floor((date - pascha) / DAY_MS);
 
   if (date >= pascha) {
     if (diff <= 6)  return 'brightWeek';
@@ -106,9 +106,9 @@ function getLiturgicalSeason(date) {
     return 'ordinaryTime';
   }
 
-  if (date >= palmSunday)  return 'holyWeek';
-  if (date >= cleanMonday) return 'greatLent';
-  if (date >= meatfareSun) return 'preLenten';
+  if (date >= palmSunday)   return 'holyWeek';
+  if (date >= cleanMonday)  return 'greatLent';
+  if (date >= triodiOnStart) return 'preLenten';
   return 'ordinaryTime';
 }
 
@@ -220,6 +220,18 @@ function getLiturgicalKey(date) {
     }
     if (dow === 'sunday') return `lent.sunday.${weekOfLent}`;
     return `lent.week.${weekOfLent}.${dow}`;
+  }
+
+  if (season === 'preLenten') {
+    const pascha = calculatePascha(date.getUTCFullYear());
+    const diff   = Math.floor((date - pascha) / DAY_MS);
+    if (diff === -70) return 'triodion.publicanPharisee';
+    if (diff === -63) return 'triodion.prodigalSon';
+    if (diff === -57) return 'triodion.meatfareSaturday';
+    if (diff === -56) return 'triodion.meatfareSunday';
+    if (diff === -49) return 'triodion.forgivenessSunday';
+    // Other pre-Lenten days (ordinary Saturdays, weekdays) → no stable key
+    return null;
   }
 
   if (season === 'holyWeek') {
@@ -862,6 +874,107 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
 }
 
 /**
+ * Generates a pre-Lenten (Triodion) Sunday Great Vespers entry.
+ *
+ * Sundays:  Publican & Pharisee, Prodigal Son, Meatfare, Forgiveness
+ *           All use the Octoechos resurrectional stichera + Triodion
+ *           aposticha/troparia from the DB.
+ *
+ * Meatfare Saturday: Soul Saturday — same structure as Lenten Soul Saturdays.
+ */
+function generatePreLentenDay(dateStr, dow, tone, litKey) {
+  const NAMES = {
+    'triodion.publicanPharisee':  'Sunday of the Publican and Pharisee',
+    'triodion.prodigalSon':       'Sunday of the Prodigal Son',
+    'triodion.meatfareSaturday':  'Meatfare Saturday — Memorial for All the Departed',
+    'triodion.meatfareSunday':    'Meatfare Sunday — Judgment Sunday',
+    'triodion.forgivenessSunday': 'Forgiveness Sunday (Cheesefare Sunday)',
+  };
+  const name = NAMES[litKey] || `Pre-Lenten ${dow}`;
+  const tk = `tone${tone}`;
+
+  // ── Meatfare Saturday — Soul Saturday structure ─────────────────────────
+  if (litKey === 'triodion.meatfareSaturday') {
+    return {
+      _meta: { generated: true, generatedAt: new Date().toISOString(),
+               note: `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.` },
+      date: dateStr, dayOfWeek: 'saturday',
+      liturgicalContext: { season: 'preLenten', tone, toneSource: 'octoechosCycle' },
+      commemorations: [],
+      vespers: {
+        serviceType: 'greatVespers',
+        rubricNote: `${name} — Great Vespers (sung on Friday evening)`,
+        lordICall: {
+          tone,
+          totalStichera: 6,
+          slots: [{ verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' }],
+          glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
+          now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Dogmatikon' },
+        },
+        prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+        aposticha: {
+          slots: [
+            { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+            { position: 2, repeatPrevious: true },
+            { position: 3, repeatPrevious: true },
+          ],
+          glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone },
+          now:   { source: 'db', key: `${litKey}.vespers.aposticha.now`,   tone, label: 'Theotokion' },
+        },
+        troparia: {
+          source: 'db',
+          slots: [
+            { order: 1,          tone, source: 'db', key: `${litKey}.vespers.troparia` },
+            { position: 'glory', tone, source: 'db', key: `${litKey}.vespers.troparia.glory` },
+            { position: 'now',   tone, source: 'db', key: `${litKey}.vespers.troparia.now`   },
+          ],
+        },
+      },
+    };
+  }
+
+  // ── Triodion Sundays — Great Vespers ────────────────────────────────────
+  return {
+    _meta: { generated: true, generatedAt: new Date().toISOString(),
+             note: `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.` },
+    date: dateStr, dayOfWeek: 'sunday',
+    liturgicalContext: { season: 'preLenten', tone, toneSource: 'octoechosCycle' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote: `${name} — Great Vespers (sung on Saturday evening)`,
+      lordICall: {
+        tone,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Dogmatikon' },
+      },
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, repeatPrevious: true },
+        ],
+        glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone },
+        now:   { source: 'db', key: `${litKey}.vespers.aposticha.now`,   tone, label: 'Theotokion' },
+      },
+      troparia: {
+        source: 'db',
+        slots: [
+          { order: 1,          tone, source: 'db', key: `${litKey}.vespers.troparia` },
+          { position: 'glory', tone, source: 'db', key: `${litKey}.vespers.troparia.glory` },
+          { position: 'now',   tone, source: 'octoechos', key: `${tk}.saturday.vespers.dismissalTheotokion`, label: 'Dismissal Theotokion' },
+        ],
+      },
+    },
+  };
+}
+
+/**
  * Generates a Bright Week day entry.
  * All services during Bright Week use Paschal texts sourced from the DB.
  */
@@ -1122,17 +1235,19 @@ function generateCalendarEntry(dateStr) {
     return generateLentenWeekday(dateStr, dow, weekOfLent, tone, litKey);
   }
 
-  // ── Pre-Lenten (Meatfare week + Cheesefare week) ──────────────────────────
+  // ── Pre-Lenten (Triodion: Publican & Pharisee through Forgiveness Sunday) ─
   if (season === 'preLenten') {
-    // Saturday Great Vespers: same Octoechos structure as ordinary time.
-    // Cheesefare Saturday is the eve of Forgiveness Sunday.
+    // Named Triodion days have liturgical keys and full DB texts
+    if (litKey) return generatePreLentenDay(dateStr, dow, tone, litKey);
+
+    // Ordinary Saturdays in the Triodion use the same Octoechos structure
     if (dow === 'saturday') {
       const entry = generateOrdinaryTimeSaturday(dateStr, tone);
       entry.liturgicalContext.season = 'preLenten';
-      entry._meta.note = `Auto-generated pre-Lenten Saturday Great Vespers. Tone ${tone}. Cheesefare week (eve of Forgiveness Sunday).`;
       return entry;
     }
-    // Weekdays and Sundays: not yet implemented (no Daily Vespers assembler).
+
+    // Weekdays: not yet implemented
     return null;
   }
 

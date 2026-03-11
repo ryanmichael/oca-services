@@ -960,6 +960,21 @@ function getDayLabel(entry, dow, season) {
     return null;
   }
 
+  if (season === 'preLenten') {
+    const litKey = entry.liturgicalContext?.litKey || null;
+    const TRIODION_NAMES = {
+      'triodion.publicanPharisee':  'Sunday of the Publican and Pharisee',
+      'triodion.prodigalSon':       'Sunday of the Prodigal Son',
+      'triodion.meatfareSaturday':  'Meatfare Saturday',
+      'triodion.meatfareSunday':    'Meatfare Sunday',
+      'triodion.forgivenessSunday': 'Forgiveness Sunday',
+    };
+    // Try to extract the litKey from the meta note
+    const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
+    const key = noteMatch ? noteMatch[1] : null;
+    return TRIODION_NAMES[key] || null;
+  }
+
   if (season === 'holyWeek') {
     const names = {
       sunday: 'Palm Sunday', monday: 'Holy Monday', tuesday: 'Holy Tuesday',

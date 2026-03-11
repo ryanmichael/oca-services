@@ -210,7 +210,7 @@ async function loadPanelContent(date, svcType) {
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
     document.getElementById('p-date').textContent = `${formatLong(date)}${toneStr}${labelStr}`;
 
-    // Populate saints list
+    // Populate saints list; auto-expand detail section when there are commemorations
     const comms    = data.commemorations || [];
     const saintsEl = document.getElementById('p-saints');
     if (comms.length > 0) {
@@ -218,6 +218,8 @@ async function loadPanelContent(date, svcType) {
         `<div class="p-saint${c.isPrincipal ? ' major' : ''}">${c.title}</div>`
       ).join('');
       saintsEl.style.display = '';
+      document.getElementById('p-detail-body').classList.add('open');
+      document.getElementById('p-detail-toggle').classList.add('open');
     } else {
       saintsEl.innerHTML = '';
       saintsEl.style.display = 'none';

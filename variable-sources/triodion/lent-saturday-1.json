@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "description": "Triodion texts for the 1st Saturday of Great Lent — Commemoration of St. Theodore the Recruit and the Miracle of the Boiled Wheat",
+    "source": "OCA Department of Liturgical Music and Translations",
+    "note": "This is a moveable feast — always the 1st Saturday of Great Lent. Service is the Liturgy of the Presanctified Gifts (sung on Friday evening). Stichera at Lord I Call: V6-V4 are for the Menaion saint of the day; V3-V1 are for St. Theodore from the Lenten Triodion."
+  },
+
+  "key": "lent.saturday1",
+  "title": "1st Saturday of Great Lent — St. Theodore the Recruit",
+  "category": "lentenSaturday",
+
+  "vespers": {
+
+    "lordICall": {
+
+      "theodore": {
+        "tone": 2,
+        "label": "For St. Theodore the Recruit",
+        "hymns": [
+          {
+            "text": "Come, all lovers of the martyrs,\nlet us celebrate and rejoice in spirit!\nToday the Martyr Theodore offers a mystical banquet,\nmaking us glad in the feast, that we might sing to him:\n\"Rejoice, unconquerable bearer of suffering, victor over torturers!\nRejoice, for thou didst give thy body over to torture for Christ God!\nRejoice, for by many trials\nthou wast revealed to be a true soldier of the heavenly army!\nO adornment of martyrs, pray for our souls!\""
+          },
+          {
+            "text": "Thou dost extend the divinely-granted grace of thy miracles\nto all who run to thee in faith, O Martyr Theodore.\nTherefore we praise thee in song:\n\"Thou dost release the captives,\nheal the sick, reward the poor,\nand save those who are drowning.\nThou dost intercede for all who honor thy sacred memory.\"\nEntreat Christ to grant great mercy, O holy martyr,\nto us who praise thy suffering!"
+          },
+          {
+            "text": "Thou wast revealed as the highest gift of God, O Martyr Theodore.\nEven after thine end, thou dost grant help to those who run to thee.\nWhen the widow came to thy temple in tears,\nthou didst appear in mercy and didst return her son,\nwho had been taken captive by foreign soldiers.\nThou dost not cease to work wonders.\nEntreat Christ God that our souls may be saved!"
+          }
+        ]
+      },
+
+      "glory": {
+        "tone": 6,
+        "attribution": "from the Lenten Triodion",
+        "label": "For St. Theodore",
+        "text": "The Devil used the Apostate Emperor as a vessel of evil,\nfilling him with foul thoughts of polluting the food of the fasting people.\nBut thou didst overcome his craftiness with wiser reasoning:\nthou didst appear to the Archbishop in a dream\nand didst reveal the wicked plot to him.\nFor this we give thanks to thee, O Martyr Theodore,\nand honor thee as a helper and deliverer.\nEvery year we remember this miracle at this season.\nBy thine intercessions to God,\nmay we be delivered from the reasonings of the Evil One!"
+      }
+
+    },
+
+    "prokeimenon1": {
+      "tone": 5,
+      "refrain": "The Lord answer thee / in the day of trouble.",
+      "psalmRef": "Ps. 19:1a",
+      "verses": [
+        {
+          "text": "The name of the God of Jacob protect thee.",
+          "psalmRef": "Ps. 19:1b"
+        }
+      ]
+    },
+
+    "prokeimenon2": {
+      "tone": 6,
+      "refrain": "Be Thou exalted in Thy strength, O Lord, / and we will praise and sing of Thy power!",
+      "psalmRef": "Ps. 20:13",
+      "verses": [
+        {
+          "text": "In Thy strength the king rejoices, O Lord.",
+          "psalmRef": "Ps. 20:1a"
+        }
+      ]
+    },
+
+    "readings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "2:20–3:20",
+        "pairedWithProkeimenon": 1
+      },
+      {
+        "order": 2,
+        "book": "Proverbs",
+        "pericope": "3:19–34",
+        "pairedWithProkeimenon": 2
+      }
+    ],
+
+    "aposticha": {
+
+      "idiomelon": {
+        "tone": 5,
+        "source": "Lenten Triodion",
+        "label": "Idiomelon",
+        "text": "Come, O faithful,\nlet us perform the works of God in the light!\nLet us behave with decency, as befits the day!\nLet us not make unjust accusations against our neighbors\nor place a cause of stumbling in their path!\nLet us lay aside all fleshly pleasures and increase the spiritual gifts of our souls!\nLet us give food to those in need,\ndrawing near to Christ and crying in repentance:\n\"O our God, have mercy on us!\""
+      },
+
+      "martyrs": {
+        "tone": 5,
+        "label": "For the Martyrs",
+        "text": "Blessed is the army of the heavenly King.\nAlthough on earth they endured great suffering,\nthey achieved the rank of Angels.\nThey did not care for the flesh and became equals to the bodiless hosts.\nBy their prayers, O Lord, save our souls!"
+      },
+
+      "theodore": {
+        "tone": 2,
+        "label": "For St. Theodore",
+        "text": "I honor thee as the true \"gift of God,\" thrice-blessed Theodore.\nThou wast revealed as an unfailing candle of the Divine Light.\nThy sufferings didst illumine creation.\nMore powerful than fire, thou didst quench the flames.\nThou didst crush the head of the evil serpent.\nWhen thou didst go to thy suffering, Christ placed the crown on thy divine head.\nSince thou hast boldness before God, O great martyr,\nfervently pray for our souls!"
+      },
+
+      "theotokion": {
+        "tone": 4,
+        "label": "Theotokion",
+        "combinesGloryNow": true,
+        "text": "Having thee, O Theotokos, as our hope and protection,\nwe are not dismayed by the schemes of the Enemy,\nfor thou dost ever intercede for our souls."
+      }
+
+    },
+
+    "troparia": {
+
+      "theodore": {
+        "tone": 2,
+        "label": "Troparion",
+        "text": "Great are the accomplishments of faith.\nThe holy martyr Theodore rejoiced in the flames as though in the still waters of rest.\nConsumed in the fire, he was offered up as a sacrifice to the Trinity.\nSo by his prayers, O Christ God, save our souls!"
+      },
+
+      "theotokion": {
+        "tone": 2,
+        "label": "Resurrectional Dismissal Theotokion",
+        "text": "All beyond thought, all most glorious,\nare thy mysteries, O Theotokos.\nSealed in purity, preserved in virginity,\nthou wast revealed to be the true Mother who gavest birth to the True God.\nEntreat Him to save our souls."
+      }
+
+    }
+
+  }
+}

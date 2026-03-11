@@ -256,26 +256,33 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     }
   }
 
-  // Glory
-  const glorySource = lordICallSpec.glory
-    ? resolveSource(lordICallSpec.glory.source, lordICallSpec.glory.key, sources)
+  // Glory (and Now, when combinesGloryNow is set)
+  const glorySpec = lordICallSpec.glory ?? null;
+  const glorySource = glorySpec
+    ? resolveSource(glorySpec.source, glorySpec.key, sources)
     : null;
 
-  if (lordICallSpec.glory && glorySource) {
-    blocks.push(makeBlock('lic-glory-label', section, 'doxology', null,
-      fixedTexts.doxology.gloryOnly));
+  if (glorySpec && glorySource) {
+    if (glorySpec.combinesGloryNow) {
+      blocks.push(makeBlock('lic-glory-now-label', section, 'doxology', null,
+        fixedTexts.doxology.gloryNow));
+    } else {
+      blocks.push(makeBlock('lic-glory-label', section, 'doxology', null,
+        fixedTexts.doxology.gloryOnly));
+    }
     blocks.push(makeBlock('lic-glory-hymn', section, 'hymn', 'choir', glorySource.text,
-      { tone: lordICallSpec.glory.tone, source: lordICallSpec.glory.source, label: lordICallSpec.glory.label }
+      { tone: glorySpec.tone, source: glorySpec.source, label: glorySpec.label }
     ));
   }
 
   // Now and ever — Dogmatikon or Theotokion
-  // If a glory slot was configured but resolved to nothing, combine Glory+Now into one label
-  if (lordICallSpec.now) {
+  // Skipped when glory already combined Glory+Now.
+  // If a glory slot was configured but resolved to nothing, combine Glory+Now into one label.
+  if (lordICallSpec.now && !glorySpec?.combinesGloryNow) {
     const nowSource = resolveSource(
       lordICallSpec.now.source, lordICallSpec.now.key, sources
     );
-    const noGloryHymn = lordICallSpec.glory && !glorySource;
+    const noGloryHymn = glorySpec && !glorySource;
     const nowLabel = noGloryHymn
       ? fixedTexts.doxology.gloryNow
       : fixedTexts.doxology.nowOnly;
@@ -451,11 +458,14 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
   const section = 'Aposticha';
   const blocks = [];
 
-  // Determine which aposticha psalm verses to use
+  // Determine which aposticha psalm verses to use.
+  // Lenten Saturdays use Ps. 122 (defaultVerses), not the ordinary Ps. 92 saturdayVerses.
   const isGreatVespersSaturday =
     calendarDay.vespers.serviceType === 'greatVespers' &&
     calendarDay.dayOfWeek === 'saturday';
-  const verseTexts = isGreatVespersSaturday
+  const isLentenSaturday = isGreatVespersSaturday &&
+    calendarDay.liturgicalContext?.season === 'greatLent';
+  const verseTexts = (isGreatVespersSaturday && !isLentenSaturday)
     ? fixedTexts.aposticha.saturdayVerses
     : fixedTexts.aposticha.defaultVerses;
 

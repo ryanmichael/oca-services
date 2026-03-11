@@ -368,7 +368,7 @@ function generateSoulSaturday(dateStr, satNum, tone, litKey) {
         slots: [
           { position: 1, source: 'triodion', key: `${triKey}.aposticha.idiomelon`, tone, label: 'Idiomelon' },
           { position: 2, repeatPrevious: true },
-          { position: 3, repeatPrevious: true },
+          { position: 3, source: 'triodion', key: `${triKey}.aposticha.martyrs`, tone, label: 'For the Martyrs' },
         ],
         glory: {
           source:           'triodion',
@@ -404,6 +404,11 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
   };
   const label = satLabels[satNum] || `Saturday of Great Lent (week ${weekOfLent})`;
 
+  if (satNum === 1) return generateTheodoreSaturday(dateStr, weekOfLent, tone, label);
+  if (satNum === 5) return generateAkathist_Saturday(dateStr, weekOfLent, tone, label);
+  if (satNum === 6) return generateLazarusSaturday(dateStr, weekOfLent, tone, label);
+
+  // Fallback for any future unimplemented Saturday (should not occur in practice)
   return {
     _meta: {
       generated:   true,
@@ -412,12 +417,7 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
     },
     date:      dateStr,
     dayOfWeek: 'saturday',
-    liturgicalContext: {
-      season:    'greatLent',
-      weekOfLent,
-      tone,
-      toneSource: 'weeklyLenten',
-    },
+    liturgicalContext: { season: 'greatLent', weekOfLent, tone, toneSource: 'weeklyLenten' },
     commemorations: [],
     vespers: {
       serviceType: 'greatVespers',
@@ -431,10 +431,7 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
         now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
       },
-      prokeimenon: {
-        pattern: 'lentenWithReadings',
-        entries: [],   // populated in Step 3
-      },
+      prokeimenon: { pattern: 'lentenWithReadings', entries: [] },
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Idiomelon' },
@@ -445,8 +442,160 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
       },
       troparia: {
         source: 'db',
+        slots: [{ order: 1, tone, source: 'db', key: `${litKey}.vespers.troparia` }],
+      },
+    },
+  };
+}
+
+function generateTheodoreSaturday(dateStr, weekOfLent, tone, label) {
+  const tk  = `tone${tone}`;
+  const tri = 'lent.saturday1';
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${label}. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'saturday',
+    liturgicalContext: { season: 'greatLent', weekOfLent, tone, toneSource: 'weeklyLenten' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${label} — Great Vespers (sung on Friday evening)`,
+      lordICall: {
+        tone: 2,
+        totalStichera: 3,
         slots: [
-          { order: 1, tone, source: 'db', key: `${litKey}.vespers.troparia` },
+          { verses: [3, 2, 1], count: 3, source: 'triodion', key: `${tri}.lordICall.theodore`, tone: 2, label: 'For St. Theodore' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.lordICall.glory`, tone: 6, label: 'For St. Theodore' },
+        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [
+          { order: 1, tone: 5, source: 'triodion', key: `${tri}.prokeimenon1`, reading: null },
+          { order: 2, tone: 6, source: 'triodion', key: `${tri}.prokeimenon2`, reading: null },
+        ],
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'triodion', key: `${tri}.aposticha.idiomelon`, tone: 5, label: 'Idiomelon' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, source: 'triodion', key: `${tri}.aposticha.martyrs`,  tone: 5, label: 'For the Martyrs' },
+          { position: 4, source: 'triodion', key: `${tri}.aposticha.theodore`, tone: 2, label: 'For St. Theodore' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.aposticha.theotokion`, tone: 4, combinesGloryNow: true, label: 'Theotokion' },
+      },
+      troparia: {
+        source: 'triodion',
+        slots: [
+          { position: 'glory', tone: 2, source: 'triodion', key: `${tri}.troparia.theodore`,  label: 'For St. Theodore' },
+          { position: 'now',   tone: 2, source: 'triodion', key: `${tri}.troparia.theotokion`, label: 'Theotokion' },
+        ],
+      },
+    },
+  };
+}
+
+function generateAkathist_Saturday(dateStr, weekOfLent, tone, label) {
+  const tri = 'lent.saturday5';
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${label}. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'saturday',
+    liturgicalContext: { season: 'greatLent', weekOfLent, tone, toneSource: 'weeklyLenten' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${label} — Great Vespers (sung on Friday evening)`,
+      lordICall: {
+        tone: 6,
+        totalStichera: 8,
+        slots: [
+          { verses: [8, 7, 6, 5, 4, 3, 2, 1], count: 8, source: 'triodion', key: `${tri}.lordICall.theotokos`, tone: 6, label: 'For the Theotokos' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.lordICall.glory`, tone: 2, combinesGloryNow: true, label: 'Theotokion' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [
+          { order: 1, tone: 4, source: 'triodion', key: `${tri}.prokeimenon1`, reading: null },
+          { order: 2, tone: 4, source: 'triodion', key: `${tri}.prokeimenon2`, reading: null },
+        ],
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'triodion', key: `${tri}.aposticha.idiomelon`, tone: 6, label: 'Idiomelon' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, source: 'triodion', key: `${tri}.aposticha.martyrs`,  tone: 6, label: 'For the Martyrs' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.aposticha.theotokion`, tone: 4, combinesGloryNow: true, label: 'Theotokion' },
+      },
+      troparia: {
+        source: 'triodion',
+        slots: [
+          { order: 1, tone: 8, source: 'triodion', key: `${tri}.troparia.theotokos`, label: 'Troparion' },
+        ],
+      },
+    },
+  };
+}
+
+function generateLazarusSaturday(dateStr, weekOfLent, tone, label) {
+  const tri = 'lent.lazarusSaturday';
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated ${label}. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: 'saturday',
+    liturgicalContext: {
+      season:     'greatLent',
+      weekOfLent,
+      specialDay: 'lazarusSaturday',
+      tone,
+      toneSource: 'weeklyLenten',
+    },
+    commemorations: [],
+    vespers: {
+      serviceType: 'greatVespers',
+      rubricNote:  `${label} — Great Vespers (sung on Friday evening)`,
+      lordICall: {
+        tone: 6,
+        totalStichera: 6,
+        slots: [
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'triodion', key: `${tri}.lordICall.lazarus`, tone: 6, label: 'The Raising of Lazarus' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.lordICall.glory`, tone: 8, combinesGloryNow: true, label: 'Glory and Now' },
+      },
+      prokeimenon: {
+        pattern: 'lentenWithReadings',
+        entries: [
+          { order: 1, tone: 6, source: 'triodion', key: `${tri}.prokeimenon1`, reading: null },
+          { order: 2, tone: 6, source: 'triodion', key: `${tri}.prokeimenon2`, reading: null },
+        ],
+      },
+      aposticha: {
+        slots: [
+          { position: 1, source: 'triodion', key: `${tri}.aposticha.idiomelon`, tone: 8, label: 'Idiomelon' },
+          { position: 2, repeatPrevious: true },
+          { position: 3, source: 'triodion', key: `${tri}.aposticha.martyrs`,  tone: 8, label: 'For the Martyrs' },
+        ],
+        glory: { source: 'triodion', key: `${tri}.aposticha.lazarus`, tone: 8, combinesGloryNow: true, label: 'Glory and Now' },
+      },
+      troparia: {
+        source: 'triodion',
+        slots: [
+          { order: 1, tone: 1, source: 'triodion', key: `${tri}.troparia.lazarus`, label: 'Troparion' },
         ],
       },
     },

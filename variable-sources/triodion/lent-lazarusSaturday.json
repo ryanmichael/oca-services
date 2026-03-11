@@ -1,0 +1,126 @@
+{
+  "_meta": {
+    "description": "Triodion texts for Lazarus Saturday — The Raising of Lazarus",
+    "source": "OCA Department of Liturgical Music and Translations",
+    "note": "This is a moveable feast — always the Saturday before Palm Sunday. Service is Vespers alone (sung on Friday evening). All stichera at Lord I Call are from the Triodion for the Raising of Lazarus."
+  },
+
+  "key": "lent.lazarusSaturday",
+  "title": "Lazarus Saturday — The Raising of Lazarus",
+  "category": "lentenSaturday",
+
+  "vespers": {
+
+    "lordICall": {
+
+      "lazarus": {
+        "tone": 6,
+        "attribution": "from the Lenten Triodion, by Emperor Leo",
+        "label": "The Raising of Lazarus",
+        "hymns": [
+          {
+            "text": "Wishing to see the tomb of Lazarus, O Lord,\nsince of Thine own will, Thou wast soon to dwell in a tomb,\nThou didst ask: \"Where have you laid him?\"\nLearning that which was already known to Thee,\nThou didst cry to Thy beloved friend: \"Lazarus, come forth!\"\nand he who had no breath obeyed the Lord Who gave him breath,\nfor Thou art the Savior of our souls."
+          },
+          {
+            "text": "Wishing to see the tomb of Lazarus, O Lord,\nsince of Thine own will, Thou wast soon to dwell in a tomb,\nThou didst ask: \"Where have you laid him?\"\nLearning that which was already known to Thee,\nThou didst cry to Thy beloved friend: \"Lazarus, come forth!\"\nand he who had no breath obeyed the Lord Who gave him breath,\nfor Thou art the Savior of our souls."
+          },
+          {
+            "text": "Thou hast come to the place of the burial of Lazarus, O Lord,\nthe tomb of a man four days dead.\nWeeping for Thy friend, O Bread of Life, Thou didst raise him up.\nTherefore death was bound by Thy voice,\nand grave clothes were loosened by Thy hand.\nThe band of disciples was filled with joy.\nOne song of adoration was sung by all:\n\"Blessed art Thou, O Savior! Have mercy on us!\""
+          },
+          {
+            "text": "Thy voice destroyed the kingdom of hell, O Lord.\nThy powerful word raised from the tomb the one who was four days dead.\nLazarus became the saving first-fruits of the world's regeneration.\nAll things are possible for Thee, O Lord and King of all.\nGrant Thy servants cleansing and great mercy!"
+          },
+          {
+            "text": "Thou didst come to the tomb of Lazarus, O Lord,\nand didst call him by name,\nwishing to assure Thy disciples of Thine own Resurrection.\nHell was vanquished!\nIt released Lazarus who was four days dead.\nHe cried out to Thee:\n\"Glory to Thee, O blessed Lord!\""
+          },
+          {
+            "text": "Thou didst come to Bethany to wake Lazarus, O Lord,\naccompanied by Thy disciples.\nThou didst weep for him,\nbut he was raised by Thine almighty power.\nA man four days dead cried to Thee, O our Savior:\n\"Glory to Thee, O blessed Lord!\""
+          }
+        ]
+      },
+
+      "glory": {
+        "tone": 8,
+        "attribution": "from the Lenten Triodion, by Andrew the Blind",
+        "combinesGloryNow": true,
+        "label": "Glory and Now",
+        "text": "We have completed the forty days that profit our souls.\nLet us sing: \"Rejoice, city of Bethany, home of Lazarus!\nRejoice, Mary and Martha, his sisters!\nTomorrow Christ will come and raise your dead brother to life.\nBitter and unsatisfied, hell will hear His voice.\nShaking and groaning, it will release bound Lazarus.\nThe assembly of Hebrews will be amazed.\nThey will greet Him with palms and branches.\nThough their priests and elders look on Him with envy and malice,\nthe children shall praise Him in song:\n'Blessed is He Who comes in the Name of the Lord,\nthe King of Israel!'\""
+      }
+
+    },
+
+    "prokeimenon1": {
+      "tone": 6,
+      "refrain": "Our help is in the Name of the Lord, / Who made heaven and earth.",
+      "psalmRef": "Ps. 123:8",
+      "verses": [
+        {
+          "text": "\"If it had not been the Lord Who was on our side,\" let Israel now say.",
+          "psalmRef": "Ps. 123:1a"
+        }
+      ]
+    },
+
+    "prokeimenon2": {
+      "tone": 6,
+      "refrain": "Those who trust in the Lord are like Mount Zion, / which cannot be moved, but abides forever.",
+      "psalmRef": "Ps. 124:1",
+      "verses": [
+        {
+          "text": "For the scepter of wickedness shall not rest upon the land allotted to the righteous.",
+          "psalmRef": "Ps. 124:3a"
+        }
+      ]
+    },
+
+    "readings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "49:33–50:26",
+        "pairedWithProkeimenon": 1
+      },
+      {
+        "order": 2,
+        "book": "Proverbs",
+        "pericope": "31:8–31",
+        "pairedWithProkeimenon": 2
+      }
+    ],
+
+    "aposticha": {
+
+      "idiomelon": {
+        "tone": 8,
+        "source": "Lenten Triodion",
+        "label": "Idiomelon",
+        "text": "We have completed the forty days that profit our souls.\nNow let us beg the Lover of man:\nenable us to see the Holy Week of Thy Passion,\nthat we may glorify Thy mighty work,\nThy wonderful plan for our salvation,\nas we sing with one heart and voice:\n\"O Lord, glory to Thee!\""
+      },
+
+      "martyrs": {
+        "tone": 8,
+        "label": "For the Martyrs",
+        "text": "O martyrs of the Lord,\nwe beseech you to intercede with our God,\nthat He may forgive our many sins,\nand grant our souls abundant mercy."
+      },
+
+      "lazarus": {
+        "tone": 8,
+        "combinesGloryNow": true,
+        "label": "Glory and Now",
+        "text": "Standing by the tomb of Lazarus, O Savior,\nThou didst call to Thy friend, who was dead.\nHe heard Thy voice, and awoke as from sleep.\nMortality was shaken by immortality.\nBy Thy word the bound was unbound.\nAll is possible! All things serve and submit to Thee, O loving Lord.\nO our Savior, glory to Thee!"
+      }
+
+    },
+
+    "troparia": {
+
+      "lazarus": {
+        "tone": 1,
+        "label": "Troparion",
+        "text": "By raising Lazarus from the dead before Thy Passion,\nThou didst confirm the universal resurrection, O Christ God.\nLike the children with the palms of victory,\nwe cry out to Thee, O Vanquisher of Death:\n\"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord.\""
+      }
+
+    }
+
+  }
+}

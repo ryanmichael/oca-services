@@ -818,10 +818,9 @@ function assembleForDate(date, pronoun) {
         apost.slots = apostStichera.map((s, i) => ({
           position: i + 1,
           source:   'menaion',
-          key:      `auto.${date}.aposticha`,
+          key:      `auto.${date}.aposticha.hymns.${i}`,
           tone:     s.tone,
           label:    primary.title,
-          ...(i > 0 ? {} : {}),  // position 1 is the idiomelon; 2+ include verses
         }));
         // Add repeatPrevious placeholders only when fewer than 3 stichera are available
         while (apost.slots.length < 3) {

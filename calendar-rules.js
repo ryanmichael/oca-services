@@ -867,12 +867,15 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       serviceType: 'greatVespers',
       rubricNote:  'Great and Holy Friday — Burial Vespers with the Epitaphion',
       prokeimenon: { pattern: 'weekday', weekday: 'holyFriday' },
+      tropariaGloryNow: true,  // troparion at Glory (repeat), theotokion at Now
     },
     saturday: {
       name:        'Great and Holy Saturday',
       serviceType: 'greatVespers',
       rubricNote:  'Great and Holy Saturday — Great Vespers with the Liturgy of St. Basil',
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      apostichaGloryOnly: true,  // no aposticha (service flows directly into Liturgy of St. Basil)
+      tropariaEmpty: true,       // no troparia (same reason)
     },
   };
 
@@ -915,12 +918,20 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
         ],
         glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
       },
-      troparia: {
-        source: 'db',
-        slots: [
-          { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
-        ],
-      },
+      troparia: cfg.tropariaEmpty ? { source: 'db', slots: [] }
+        : cfg.tropariaGloryNow ? {
+          source: 'db',
+          slots: [
+            { order: 1,          source: 'db', key: `${litKey}.vespers.troparia` },
+            { position: 'glory', source: 'db', key: `${litKey}.vespers.troparia` },
+            { position: 'now',   source: 'db', key: `${litKey}.vespers.troparia.now` },
+          ],
+        } : {
+          source: 'db',
+          slots: [
+            { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
+          ],
+        },
     },
   };
 }

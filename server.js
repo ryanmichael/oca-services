@@ -1066,6 +1066,21 @@ function handleRequest(req, res) {
       const dow    = calendarEntry.dayOfWeek || null;
       const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
 
+      // Use calendar entry commemorations if present; otherwise fall back to Menaion DB
+      let commemorations = calendarEntry.commemorations || [];
+      if (commemorations.length === 0) {
+        const [, mm, dd] = date.split('-').map(Number);
+        const dayList = getMenaionDayList(mm, dd);
+        if (dayList) {
+          commemorations = dayList.commemorations.map((title, i) => ({
+            title,
+            isPrincipal: i === 0,
+            tone: null,
+            hasStichera: false,
+          }));
+        }
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -1074,7 +1089,7 @@ function handleRequest(req, res) {
         tone,
         season,
         liturgicalLabel,
-        commemorations:   calendarEntry.commemorations || [],
+        commemorations,
         blocks,
       }));
 

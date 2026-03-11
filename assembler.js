@@ -475,9 +475,13 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     calendarDay.dayOfWeek === 'saturday';
   const isLentenSaturday = isGreatVespersSaturday &&
     calendarDay.liturgicalContext?.season === 'greatLent';
-  const verseTexts = (isGreatVespersSaturday && !isLentenSaturday)
-    ? fixedTexts.aposticha.saturdayVerses
-    : fixedTexts.aposticha.defaultVerses;
+  const isPaschalVespers = calendarDay.liturgicalContext?.season === 'brightWeek' &&
+    calendarDay.dayOfWeek === 'sunday';
+  const verseTexts = isPaschalVespers
+    ? fixedTexts.aposticha.paschalVerses
+    : (isGreatVespersSaturday && !isLentenSaturday)
+      ? fixedTexts.aposticha.saturdayVerses
+      : fixedTexts.aposticha.defaultVerses;
 
   let idiomelon = null;
 

@@ -1069,7 +1069,8 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
       lordICall: {
         totalStichera: 6,
         slots: [
-          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, label: 'Stichera' },
+          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', tone: 2,
+            key: `${litKey}.vespers.lordICall`, label: 'Stichera' },
         ],
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
         now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
@@ -1086,7 +1087,17 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
         };
         return BRIGHT_PROK[dow] ?? { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
       })(),
-      aposticha: {
+      // Bright Sunday aposticha: 5 unique Paschal stichera with Ps. 67/117 verses, then Glory+Now
+      aposticha: dow === 'sunday' ? {
+        slots: [
+          { position: 1, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.0', tone: 2, label: 'for the Resurrection' },
+          { position: 2, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.1', tone: 5, label: 'Paschal Sticheron' },
+          { position: 3, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.2', tone: 5, label: 'Paschal Sticheron' },
+          { position: 4, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.3', tone: 5, label: 'Paschal Sticheron' },
+          { position: 5, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.4', tone: 5, label: 'Paschal Sticheron' },
+        ],
+        glory: { source: 'db', key: 'brightWeek.sunday.vespers.aposticha.now', combinesGloryNow: true },
+      } : {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
           { position: 2, repeatPrevious: true },

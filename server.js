@@ -650,12 +650,12 @@ function buildDbSource(date, pronoun) {
     const rows = litKey
       ? db.prepare(`
           SELECT section, block_order, type, tone, label, verse_number, position, text
-          FROM blocks WHERE liturgical_key = ? AND pronoun = ? AND service IN ('vespers', 'other')
+          FROM blocks WHERE liturgical_key = ? AND pronoun = ? AND service IN ('vespers', 'other', 'liturgy')
           ORDER BY section, block_order
         `).all(litKey, pronoun)
       : db.prepare(`
           SELECT section, block_order, type, tone, label, verse_number, position, text
-          FROM blocks WHERE date = ? AND pronoun = ? AND service IN ('vespers', 'other')
+          FROM blocks WHERE date = ? AND pronoun = ? AND service IN ('vespers', 'other', 'liturgy')
           ORDER BY section, block_order
         `).all(date, pronoun);
 

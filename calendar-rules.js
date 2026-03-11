@@ -1086,7 +1086,9 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
       troparia: {
         source: 'db',
         slots: [
-          { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
+          { order: 1,          source: 'db', key: `${litKey}.vespers.troparia` },
+          { position: 'glory', source: 'db', key: `${litKey}.vespers.troparia` },
+          { position: 'now',   source: 'db', key: `${litKey}.vespers.troparia.now` },
         ],
       },
     },

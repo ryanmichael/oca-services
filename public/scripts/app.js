@@ -180,6 +180,11 @@ async function _showPanel(rowEl, date, svcType) {
   if (rowEl) rowEl.classList.add('active');
   document.getElementById('p-svc').textContent =
     svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
+
+  // Collapse detail section on each new panel open
+  document.getElementById('p-detail-body').classList.remove('open');
+  document.getElementById('p-detail-toggle').classList.remove('open');
+
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
   document.getElementById('panel').classList.add('open');
   document.body.classList.add('panel-open');
@@ -205,21 +210,19 @@ async function loadPanelContent(date, svcType) {
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
     document.getElementById('p-date').textContent = `${formatLong(date)}${toneStr}${labelStr}`;
 
-    const commsEl = document.getElementById('p-comms');
-    const comms   = data.commemorations || [];
+    // Populate saints list
+    const comms    = data.commemorations || [];
+    const saintsEl = document.getElementById('p-saints');
     if (comms.length > 0) {
-      const principal = comms.find(c => c.isPrincipal) || comms[0];
-      const others    = comms.filter(c => !c.isPrincipal);
-      let html = `<span class="comm-principal">${principal.title}</span>`;
-      if (others.length > 0) {
-        html += `<span class="comm-others">`;
-        others.forEach(c => { html += `<br>${c.title}`; });
-        html += `</span>`;
-      }
-      commsEl.innerHTML = html;
+      saintsEl.innerHTML = comms.map(c =>
+        `<div class="p-saint${c.isPrincipal ? ' major' : ''}">${c.title}</div>`
+      ).join('');
+      saintsEl.style.display = '';
     } else {
-      commsEl.textContent = '';
+      saintsEl.innerHTML = '';
+      saintsEl.style.display = 'none';
     }
+    updateDetailLabel();
 
     const html   = window.renderBlocks(data.blocks);
     const bodyEl = document.getElementById('p-body');
@@ -241,19 +244,35 @@ function closePanel(skipHistory = false) {
   activeSvcType = null;
 }
 
-// ─── Pronoun toggle ───────────────────────────────────────────────────────────
+// ─── Panel detail toggle ──────────────────────────────────────────────────────
 
-function initPronounToggle() {
-  document.getElementById('btn-thee').addEventListener('click', () => setPronoun('tt'));
-  document.getElementById('btn-you').addEventListener('click',  () => setPronoun('yy'));
+function togglePanelDetail() {
+  const body   = document.getElementById('p-detail-body');
+  const toggle = document.getElementById('p-detail-toggle');
+  const open   = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  toggle.classList.toggle('open', !open);
 }
 
-function setPronoun(pronoun) {
-  if (pronoun === activePronoun) return;
-  activePronoun = pronoun;
-  document.getElementById('btn-thee').classList.toggle('active', pronoun === 'tt');
-  document.getElementById('btn-you').classList.toggle('active',  pronoun === 'yy');
-  if (activeDate && activeSvcType) loadPanelContent(activeDate, activeSvcType);
+function updateDetailLabel(comms) {
+  const pronoun   = document.querySelector('input[name="pron"]:checked')?.value || 'tt';
+  const pronLabel = pronoun === 'tt' ? 'THEE / THY' : 'YOU / YOUR';
+  const saints    = document.querySelectorAll('#p-saints .p-saint');
+  const count     = saints.length;
+  document.getElementById('p-detail-label').textContent =
+    count ? `${count} COMMEMORATION${count > 1 ? 'S' : ''} \u00B7 ${pronLabel}` : pronLabel;
+}
+
+// ─── Pronoun toggle ───────────────────────────────────────────────────────────
+
+function initPronounRadio() {
+  document.querySelectorAll('input[name="pron"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      activePronoun = radio.value;
+      updateDetailLabel();
+      if (activeDate && activeSvcType) loadPanelContent(activeDate, activeSvcType);
+    });
+  });
 }
 
 // ─── Scroll tracker ───────────────────────────────────────────────────────────
@@ -619,7 +638,8 @@ async function init() {
   // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
   document.getElementById('btn-print').addEventListener('click', () => window.print());
-  initPronounToggle();
+  document.getElementById('p-detail-toggle').addEventListener('click', togglePanelDetail);
+  initPronounRadio();
 
   // Calendar
   document.getElementById('date-btn').addEventListener('click', openCal);

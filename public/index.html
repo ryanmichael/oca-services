@@ -54,11 +54,29 @@
           </div>
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
           <div class="panel-date-str" id="p-date"></div>
-          <div class="panel-comms" id="p-comms"></div>
-          <div class="pronoun-toggle" id="pronoun-toggle">
-            <button class="pronoun-btn active" id="btn-thee" data-pronoun="tt">Thee / Thy</button>
-            <span class="pronoun-sep">/</span>
-            <button class="pronoun-btn" id="btn-you" data-pronoun="yy">You / Your</button>
+
+          <button class="panel-detail-toggle" id="p-detail-toggle">
+            <span class="pdt-label" id="p-detail-label">DETAILS</span>
+            <span class="pdt-icon">
+              <svg class="pdt-plus" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <line x1="4" y1="0" x2="4" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <svg class="pdt-minus" width="8" height="2" viewBox="0 0 8 2" fill="none">
+                <line x1="0" y1="1" x2="8" y2="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="panel-detail-body" id="p-detail-body">
+            <div class="panel-detail-body-inner">
+              <div class="p-saints" id="p-saints"></div>
+              <div class="pronoun-row">
+                PRONOUNS:
+                <label><input type="radio" name="pron" value="tt" checked> Thee / Thy</label>
+                <label><input type="radio" name="pron" value="yy"> You / Your</label>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-body" id="p-body">
@@ -89,12 +107,14 @@
 
     <!-- Input -->
     <div class="search-input-wrap" id="search-input-wrap">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.4"/>
-        <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
-      <input type="search" id="search-input" placeholder="Saint, feast, or season…" autocomplete="off" />
-      <button class="search-clear" id="search-clear" aria-label="Clear">✕</button>
+      <div class="search-input-row">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Saint, feast, or season…" autocomplete="off" spellcheck="false" />
+        <button class="search-clear" id="search-clear" aria-label="Clear">✕</button>
+      </div>
     </div>
 
     <!-- Hint tags (idle state) -->

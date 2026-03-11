@@ -11,7 +11,7 @@
 <body>
 
 <!-- ═══════════════════════════════════════════ VIEW: MAIN ═══════════════════ -->
-<div class="view-main" id="view-main">
+<div class="view view-main" id="view-main">
 
   <header>
     <span class="header-cross">☩</span>
@@ -27,33 +27,15 @@
         <span class="week-label" id="week-label">LOADING…</span>
         <div class="bar-btns">
           <button class="bar-btn" id="search-btn">SEARCH</button>
-          <div style="position:relative">
-            <button class="bar-btn" id="date-btn">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;display:block">
-                <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
-                <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/>
-                <line x1="4" y1="1" x2="4" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="8" y1="1" x2="8" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-              CHANGE
-            </button>
-            <div class="cal-popover" id="cal-popover">
-              <div class="cal-head">
-                <button class="cal-nav" id="cal-prev">◀</button>
-                <span id="cal-month-label">MARCH 2026</span>
-                <button class="cal-nav" id="cal-next">▶</button>
-              </div>
-              <div class="cal-grid" id="cal-grid">
-                <div class="cal-dow">S</div>
-                <div class="cal-dow">M</div>
-                <div class="cal-dow">T</div>
-                <div class="cal-dow">W</div>
-                <div class="cal-dow">T</div>
-                <div class="cal-dow">F</div>
-                <div class="cal-dow">S</div>
-              </div>
-            </div>
-          </div>
+          <button class="bar-btn" id="date-btn">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;display:block">
+              <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+              <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="4" y1="1" x2="4" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="8" y1="1" x2="8" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            CHANGE
+          </button>
         </div>
       </div>
 
@@ -87,17 +69,19 @@
 
   </div>
 
-  <!-- Calendar overlay — closes popover on outside click -->
-  <div class="cal-overlay" id="cal-overlay"></div>
-
 </div><!-- end .view-main -->
 
 <!-- ══════════════════════════════════════════ VIEW: SEARCH ══════════════════ -->
-<div class="view-search" id="view-search">
+<div class="view view-search" id="view-search">
 
   <!-- Desktop back button header -->
   <div class="search-hdr">
-    <button class="search-back" id="search-back">← BACK</button>
+    <button class="search-back" id="search-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
   </div>
 
   <!-- Scrollable content area -->
@@ -142,6 +126,65 @@
   </div>
 
 </div><!-- end .view-search -->
+
+<!-- ═══════════════════════════════════════ VIEW: CALENDAR ═══════════════════ -->
+<div class="view view-cal" id="view-cal">
+
+  <!-- Desktop back button header -->
+  <div class="cal-hdr">
+    <button class="cal-back" id="cal-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="cal-view-body">
+
+    <div>
+      <!-- Month navigator -->
+      <div class="cal-month-nav" id="cal-month-nav">
+        <div class="cal-month-title" id="cal-month-title">MARCH 2026</div>
+        <div class="cal-month-arrows">
+          <button class="cal-arrow" id="cal-prev" title="Previous month">
+            <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
+              <path d="M6 1L1 5.5 6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="cal-arrow" id="cal-next" title="Next month">
+            <svg width="7" height="11" viewBox="0 0 7 11" fill="none">
+              <path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Full calendar grid -->
+      <div class="cal-full-grid-wrap" id="cal-grid-wrap">
+        <div class="cal-full-grid" id="cal-grid"></div>
+      </div>
+    </div>
+
+    <!-- Service list strip -->
+    <div class="cal-saint-strip" id="cal-saint-strip">
+      <div class="css-eyebrow">AVAILABLE SERVICES</div>
+      <div class="css-rows" id="css-rows"></div>
+    </div>
+
+    <!-- Mobile close button -->
+    <div class="cal-close-bottom">
+      <button id="cal-close-mobile">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        CLOSE
+      </button>
+    </div>
+
+  </div>
+</div><!-- end .view-cal -->
 
 <script src="/scripts/renderer.js"></script>
 <script src="/scripts/app.js"></script>

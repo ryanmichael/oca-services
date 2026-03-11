@@ -13,14 +13,18 @@ let activeRow = null;
 let activeDate = null;
 let activeSvcType = null;
 let activePronoun = 'tt';  // 'tt' or 'yy'
-let calMonth = null;   // { year, month } (month = 0-based)
-let calDots = {};      // { 'YYYY-MM-DD': true }
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth() + 1;  // 1-indexed
+let calDaysCache = {};  // { 'YYYY-MM': [...dayObjects] }
 
 // ─── Date utilities ───────────────────────────────────────────────────────────
 
 const MONTH_NAMES = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
                      'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+const MONTH_ABBR  = ['Jan','Feb','Mar','Apr','May','Jun',
+                     'Jul','Aug','Sep','Oct','Nov','Dec'];
 const DOW_NAMES   = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+const DOW_ABBR    = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
 
 function toIso(date) {
   const y = date.getFullYear();
@@ -35,37 +39,21 @@ function addDays(date, n) {
   return d;
 }
 
-function todayStr() {
-  return toIso(new Date());
-}
+function todayStr() { return toIso(new Date()); }
 
 /** Format YYYY-MM-DD as "Saturday, March 14, 2026" */
 function formatLong(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
-  const date = new Date(y, m - 1, d);
-  return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-}
-
-/** Format YYYY-MM-DD as "MARCH 14" */
-function formatDisplayDate(dateStr) {
-  const [, m, d] = dateStr.split('-').map(Number);
-  return `${MONTH_NAMES[m - 1]} ${d}`;
-}
-
-/** Format YYYY-MM-DD as "SATURDAY" */
-function formatDow(dateStr) {
-  const [y, m, d] = dateStr.split('-').map(Number);
-  const date = new Date(y, m - 1, d);
-  return DOW_NAMES[date.getDay()];
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  });
 }
 
 /** Given two ISO date strings, format as "MARCH 7 – 14, 2026" */
 function formatWeekRange(startStr, endStr) {
   const [sy, sm, sd] = startStr.split('-').map(Number);
-  const [, em, ed] = endStr.split('-').map(Number);
-  if (sm === em) {
-    return `${MONTH_NAMES[sm - 1]} ${sd} \u2013 ${ed}, ${sy}`;
-  }
+  const [, em, ed]   = endStr.split('-').map(Number);
+  if (sm === em) return `${MONTH_NAMES[sm - 1]} ${sd} \u2013 ${ed}, ${sy}`;
   return `${MONTH_NAMES[sm - 1]} ${sd} \u2013 ${MONTH_NAMES[em - 1]} ${ed}, ${sy}`;
 }
 
@@ -94,39 +82,26 @@ async function fetchSearch(query) {
 
 // ─── Service list rendering ───────────────────────────────────────────────────
 
-/** Determine which service rows to show for a given day entry */
 function getServiceRows(day) {
   const dow = day.dayOfWeek;
   const rows = [];
 
   if (dow === 'saturday') {
-    rows.push({
-      key: 'greatVespers',
-      name: 'Great Vespers',
-      available: day.services.greatVespers,
-    });
-    if (day.services.dailyVespers) {
-      rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
-    }
-    rows.push({ key: 'matins',   name: 'Matins',        available: false });
-    rows.push({ key: 'liturgy',  name: 'Divine Liturgy', available: false });
+    rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
+    if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
+    rows.push({ key: 'matins',  name: 'Matins',        available: false });
+    rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: false });
   } else if (dow === 'sunday') {
-    rows.push({ key: 'greatVespers', name: 'Great Vespers', available: false });
+    rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: false });
     rows.push({ key: 'matins',       name: 'Matins',        available: false });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: false });
   } else {
-    // Weekday (Mon–Fri)
-    rows.push({
-      key: 'dailyVespers',
-      name: 'Daily Vespers',
-      available: day.services.dailyVespers,
-    });
+    rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: day.services.dailyVespers });
   }
 
   return rows;
 }
 
-/** Determine whether a day block should be shown in the list */
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
   if (dow === 'saturday' || dow === 'sunday') return true;
@@ -134,17 +109,16 @@ function shouldShowDay(day) {
 }
 
 function renderServiceList(daysList) {
-  const today = todayStr();
+  const today  = todayStr();
   const listEl = document.getElementById('service-list');
   listEl.innerHTML = '';
 
   for (const day of daysList) {
     if (!shouldShowDay(day)) continue;
 
-    const isToday = day.date === today;
+    const isToday  = day.date === today;
     const dowLabel = isToday ? `TODAY \u2014 ${day.displayDay}` : day.displayDay;
     const dowStyle = isToday ? 'style="color:var(--text)"' : '';
-
     const feastLabel = day.liturgicalLabel || day.feast || '';
 
     const headingHtml = `
@@ -154,19 +128,17 @@ function renderServiceList(daysList) {
         ${feastLabel ? `<span class="feast">\u00B7 ${feastLabel}</span>` : ''}
       </div>`;
 
-    const serviceRows = getServiceRows(day);
-    const rowsHtml = serviceRows.map(row => {
+    const rowsHtml = getServiceRows(day).map(row => {
       if (row.available) {
         return `<button class="svc-row" data-date="${day.date}" data-svc="${row.key}">
           <span class="name">${row.name}</span>
           <span class="arrow">VIEW \u2192</span>
         </button>`;
-      } else {
-        return `<button class="svc-row dimmed" disabled>
-          <span class="name">${row.name}</span>
-          <span class="soon">COMING SOON</span>
-        </button>`;
       }
+      return `<button class="svc-row dimmed" disabled>
+        <span class="name">${row.name}</span>
+        <span class="soon">COMING SOON</span>
+      </button>`;
     }).join('');
 
     const block = document.createElement('div');
@@ -174,14 +146,11 @@ function renderServiceList(daysList) {
     block.id = `date-${day.date}`;
     block.dataset.date = day.date;
     block.innerHTML = headingHtml + `<div class="svc-rows">${rowsHtml}</div>`;
-
     listEl.appendChild(block);
   }
 
   listEl.querySelectorAll('.svc-row:not(.dimmed)').forEach(btn => {
-    btn.addEventListener('click', () => {
-      openPanel(btn, btn.dataset.date, btn.dataset.svc);
-    });
+    btn.addEventListener('click', () => openPanel(btn, btn.dataset.date, btn.dataset.svc));
   });
 
   initScrollTracker();
@@ -195,7 +164,7 @@ function getUrlParams() {
 }
 
 function setUrlState(date, svcType, replace = false) {
-  const url = svcType ? `?date=${date}&svc=${svcType}` : (date ? `?date=${date}` : location.pathname);
+  const url   = svcType ? `?date=${date}&svc=${svcType}` : (date ? `?date=${date}` : location.pathname);
   const state = { date, svcType: svcType || null };
   if (replace) history.replaceState(state, '', url);
   else         history.pushState(state, '', url);
@@ -203,13 +172,12 @@ function setUrlState(date, svcType, replace = false) {
 
 // ─── Panel ────────────────────────────────────────────────────────────────────
 
-/** Internal: show panel content without touching history. */
 async function _showPanel(rowEl, date, svcType) {
   if (activeRow) activeRow.classList.remove('active');
-  activeRow = rowEl;
-  if (rowEl) rowEl.classList.add('active');
+  activeRow     = rowEl;
   activeDate    = date;
   activeSvcType = svcType;
+  if (rowEl) rowEl.classList.add('active');
   document.getElementById('p-svc').textContent =
     svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
@@ -226,7 +194,6 @@ async function openPanel(rowEl, date, svcType) {
 async function loadPanelContent(date, svcType) {
   try {
     const data = await fetchService(date, svcType, activePronoun);
-
     if (!data) {
       document.getElementById('p-body').innerHTML =
         '<div class="panel-loading">Service not available for this date.</div>';
@@ -236,11 +203,10 @@ async function loadPanelContent(date, svcType) {
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
-    document.getElementById('p-date').textContent =
-      `${formatLong(date)}${toneStr}${labelStr}`;
+    document.getElementById('p-date').textContent = `${formatLong(date)}${toneStr}${labelStr}`;
 
     const commsEl = document.getElementById('p-comms');
-    const comms = data.commemorations || [];
+    const comms   = data.commemorations || [];
     if (comms.length > 0) {
       const principal = comms.find(c => c.isPrincipal) || comms[0];
       const others    = comms.filter(c => !c.isPrincipal);
@@ -255,8 +221,7 @@ async function loadPanelContent(date, svcType) {
       commsEl.textContent = '';
     }
 
-    // Render blocks
-    const html = window.renderBlocks(data.blocks);
+    const html   = window.renderBlocks(data.blocks);
     const bodyEl = document.getElementById('p-body');
     bodyEl.innerHTML = html;
     bodyEl.scrollTop = 0;
@@ -288,10 +253,7 @@ function setPronoun(pronoun) {
   activePronoun = pronoun;
   document.getElementById('btn-thee').classList.toggle('active', pronoun === 'tt');
   document.getElementById('btn-you').classList.toggle('active',  pronoun === 'yy');
-  // Re-render panel if open
-  if (activeDate && activeSvcType) {
-    loadPanelContent(activeDate, activeSvcType);
-  }
+  if (activeDate && activeSvcType) loadPanelContent(activeDate, activeSvcType);
 }
 
 // ─── Scroll tracker ───────────────────────────────────────────────────────────
@@ -301,17 +263,13 @@ let visibleDates = new Set();
 function initScrollTracker() {
   const blocks = document.querySelectorAll('.date-block');
   if (!blocks.length) return;
-
   visibleDates.clear();
 
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
       const date = entry.target.dataset.date;
-      if (entry.isIntersecting) {
-        visibleDates.add(date);
-      } else {
-        visibleDates.delete(date);
-      }
+      if (entry.isIntersecting) visibleDates.add(date);
+      else                      visibleDates.delete(date);
     }
     updateWeekLabel();
   }, { threshold: 0 });
@@ -326,129 +284,191 @@ function initScrollTracker() {
 }
 
 function updateWeekLabel() {
-  if (visibleDates.size === 0) return;
+  if (!visibleDates.size) return;
   const sorted = [...visibleDates].sort();
-  const first = sorted[0];
-  const last  = sorted[sorted.length - 1];
-  document.getElementById('week-label').textContent = formatWeekRange(first, last);
+  document.getElementById('week-label').textContent =
+    formatWeekRange(sorted[0], sorted[sorted.length - 1]);
 }
 
-// ─── Calendar popover ─────────────────────────────────────────────────────────
+// ─── Calendar view ────────────────────────────────────────────────────────────
 
-function toggleCal() {
-  const pop = document.getElementById('cal-popover');
-  const btn = document.getElementById('date-btn');
-  const ov  = document.getElementById('cal-overlay');
-  const isOpen = pop.classList.contains('open');
-  if (!isOpen) {
-    pop.classList.add('open');
-    btn.classList.add('active');
-    ov.classList.add('active');
-    renderCalendar();
-    fetchCalDots();
-  } else {
-    closeCal();
-  }
+function openCal() {
+  closeSearch(/*silent=*/true);
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('date-btn').classList.add('active');
+  document.getElementById('view-cal').classList.add('visible');
+  fetchCalMonth(calYear, calMonth).then(() => renderCalMonth(calYear, calMonth));
+  setTimeout(() => {
+    document.getElementById('cal-month-nav').classList.add('in');
+    document.getElementById('cal-grid-wrap').classList.add('in');
+    document.getElementById('cal-saint-strip').classList.add('in');
+  }, 100);
 }
 
 function closeCal() {
-  document.getElementById('cal-popover').classList.remove('open');
+  document.getElementById('view-cal').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
   document.getElementById('date-btn').classList.remove('active');
-  document.getElementById('cal-overlay').classList.remove('active');
+  setTimeout(() => {
+    document.getElementById('cal-month-nav').classList.remove('in');
+    document.getElementById('cal-grid-wrap').classList.remove('in');
+    document.getElementById('cal-saint-strip').classList.remove('in');
+  }, 400);
 }
 
-function renderCalendar() {
-  if (!calMonth) return;
-  const { year, month } = calMonth;
+function calShift(dir) {
+  calMonth += dir;
+  if (calMonth > 12) { calMonth = 1; calYear++; }
+  if (calMonth < 1)  { calMonth = 12; calYear--; }
 
-  const monthLabel = document.getElementById('cal-month-label');
-  monthLabel.textContent = `${MONTH_NAMES[month]} ${year}`;
+  // Fade grid + strip out, re-render, fade back in
+  const grid  = document.getElementById('cal-grid-wrap');
+  const strip = document.getElementById('cal-saint-strip');
+  grid.classList.remove('in');
+  strip.classList.remove('in');
 
-  const grid = document.getElementById('cal-grid');
-  const headers = Array.from(grid.querySelectorAll('.cal-dow'));
-  grid.innerHTML = '';
-  headers.forEach(h => grid.appendChild(h));
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const today = todayStr();
-
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement('div');
-    empty.className = 'cal-day empty';
-    grid.appendChild(empty);
-  }
-
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${year}-${String(month + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const cell = document.createElement('div');
-    cell.className = 'cal-day';
-    cell.textContent = d;
-
-    if (dateStr === today) cell.classList.add('today');
-    if (calDots[dateStr]) {
-      cell.classList.add('has-service');
-      cell.addEventListener('click', () => {
-        jumpToDate(dateStr);
-        closeCal();
-      });
-    }
-
-    grid.appendChild(cell);
-  }
+  fetchCalMonth(calYear, calMonth).then(() => {
+    setTimeout(() => {
+      renderCalMonth(calYear, calMonth);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        grid.classList.add('in');
+        strip.classList.add('in');
+      }));
+    }, 200);
+  });
 }
 
-async function fetchCalDots() {
-  if (!calMonth) return;
-  const { year, month } = calMonth;
-  const from = `${year}-${String(month + 1).padStart(2,'0')}-01`;
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const to = `${year}-${String(month + 1).padStart(2,'0')}-${daysInMonth}`;
-
+async function fetchCalMonth(year, month) {
+  const key = `${year}-${String(month).padStart(2, '0')}`;
+  if (calDaysCache[key]) return;
+  const mm = String(month).padStart(2, '0');
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const from = `${year}-${mm}-01`;
+  const to   = `${year}-${mm}-${daysInMonth}`;
   try {
-    const data = await fetchDays(from, to);
-    const newDots = {};
+    const data = calDaysCache[key] = await fetchDays(from, to);
+    // Also populate calDots for main list
     for (const day of data) {
       if (day.services.greatVespers || day.services.dailyVespers) {
-        newDots[day.date] = true;
+        // stored for potential future use
       }
     }
-    calDots = { ...calDots, ...newDots };
-    renderCalendar();
   } catch (err) {
-    console.error('fetchCalDots error:', err);
+    console.error('fetchCalMonth error:', err);
+    calDaysCache[key] = [];
   }
+}
+
+function renderCalMonth(year, month) {
+  document.getElementById('cal-month-title').textContent =
+    `${MONTH_NAMES[month - 1]} ${year}`;
+
+  const key  = `${year}-${String(month).padStart(2, '0')}`;
+  const data = calDaysCache[key] || [];
+  const today = todayStr();
+  const firstDow    = new Date(year, month - 1, 1).getDay();
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  // Build day lookup: day number → day object
+  const byDay = {};
+  for (const d of data) {
+    const num = parseInt(d.date.slice(8), 10);
+    byDay[num] = d;
+  }
+
+  // Render grid
+  const grid = document.getElementById('cal-grid');
+  let html = DOW_ABBR.map(d => `<div class="cg-dow">${d}</div>`).join('');
+
+  for (let i = 0; i < firstDow; i++) html += `<div class="cg-day empty"></div>`;
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const dayObj  = byDay[d];
+    const isToday = dateStr === today;
+    const hasSvc  = dayObj && (dayObj.services.greatVespers || dayObj.services.dailyVespers);
+
+    let cls = 'cg-day';
+    if (!dayObj) cls += ' empty';
+    else if (hasSvc) cls += ' has-svc';
+    if (isToday) cls = cls.replace(' empty', '') + ' today';
+
+    const onclick = hasSvc ? `data-date="${dateStr}"` : '';
+    html += `<div class="${cls}" ${onclick}>${d}</div>`;
+  }
+
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('.cg-day.has-svc').forEach(cell => {
+    cell.addEventListener('click', () => {
+      closeCal();
+      setTimeout(() => jumpToDate(cell.dataset.date), 280);
+    });
+  });
+
+  // Render saint strip
+  const rows = document.getElementById('css-rows');
+  const available = data.filter(d => d.services.greatVespers || d.services.dailyVespers);
+
+  if (!available.length) {
+    rows.innerHTML = `<div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);padding:12px 0;">No services available this month.</div>`;
+    return;
+  }
+
+  rows.innerHTML = available.map(day => {
+    const num   = parseInt(day.date.slice(8), 10);
+    const label = day.liturgicalLabel || day.feast || day.displayDay;
+    const abbr  = `${MONTH_ABBR[month - 1]} ${num}`;
+    const svc   = day.services.greatVespers ? 'greatVespers' : 'dailyVespers';
+    return `<button class="css-row" data-date="${day.date}" data-svc="${svc}">
+      <span class="css-date">${abbr}</span>
+      <span class="css-name">${label}</span>
+      <span class="css-tag">VIEW \u2192</span>
+    </button>`;
+  }).join('');
+
+  rows.querySelectorAll('.css-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const date = row.dataset.date;
+      const svc  = row.dataset.svc;
+      closeCal();
+      setTimeout(() => {
+        jumpToDate(date);
+        const btn = document.querySelector(`.svc-row[data-date="${date}"][data-svc="${svc}"]`);
+        if (btn) openPanel(btn, date, svc);
+      }, 280);
+    });
+  });
 }
 
 function jumpToDate(dateStr) {
-  const el = document.getElementById(`date-${dateStr}`);
+  const el     = document.getElementById(`date-${dateStr}`);
   const center = document.getElementById('center');
-  if (el && center) {
-    const top = el.offsetTop - 56;
-    center.scrollTo({ top, behavior: 'smooth' });
-  }
+  if (el && center) center.scrollTo({ top: el.offsetTop - 56, behavior: 'smooth' });
 }
 
 // ─── Search ───────────────────────────────────────────────────────────────────
 
-let searchTimeout = null;
-let spinnerTimeout = null;
+let searchTimer  = null;
+let spinnerTimer = null;
 
 function openSearch() {
+  closeCal();
   document.getElementById('view-main').classList.add('hidden');
   document.getElementById('view-search').classList.add('visible');
-  // Animate input and hint in
-  requestAnimationFrame(() => {
-    document.getElementById('search-input-wrap').classList.add('ready');
-    document.getElementById('search-hint').classList.add('ready');
-  });
-  setTimeout(() => document.getElementById('search-input').focus(), 80);
+  setTimeout(() => {
+    document.getElementById('search-input-wrap').classList.add('in');
+    document.getElementById('search-hint').classList.add('in');
+    document.getElementById('search-input').focus();
+  }, 100);
 }
 
-function closeSearch() {
+function closeSearch(silent = false) {
+  if (!document.getElementById('view-search').classList.contains('visible') && silent) return;
+  clearTimeout(searchTimer);
+  clearTimeout(spinnerTimer);
   document.getElementById('view-search').classList.remove('visible');
-  document.getElementById('view-main').classList.remove('hidden');
-  // Reset after transition
+  if (!silent) document.getElementById('view-main').classList.remove('hidden');
   setTimeout(resetSearch, 400);
 }
 
@@ -456,85 +476,63 @@ function resetSearch() {
   const input = document.getElementById('search-input');
   input.value = '';
   document.getElementById('search-clear').classList.remove('visible');
-  showHint();
-  document.getElementById('search-spinner').classList.remove('visible');
-  document.getElementById('search-results').classList.remove('visible');
+  document.getElementById('search-spinner').classList.remove('active');
+  document.getElementById('search-results').classList.remove('in');
   document.getElementById('search-results').innerHTML = '';
-  document.getElementById('search-input-wrap').classList.remove('ready');
-  document.getElementById('search-hint').classList.remove('ready', 'hiding');
-  if (searchTimeout) clearTimeout(searchTimeout);
-  if (spinnerTimeout) clearTimeout(spinnerTimeout);
-}
-
-function showHint() {
+  // Reset hint: remove .in, show it, then re-add .in on next frame
   const hint = document.getElementById('search-hint');
-  hint.classList.remove('hiding');
-  // Force reflow then re-show
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      hint.style.display = '';
-      hint.classList.add('ready');
-    });
-  });
-}
-
-function hideHint() {
-  const hint = document.getElementById('search-hint');
-  hint.classList.add('hiding');
-  setTimeout(() => {
-    hint.style.display = 'none';
-  }, 280);
+  hint.classList.remove('in');
+  hint.style.display = '';
+  document.getElementById('search-input-wrap').classList.remove('in');
 }
 
 function onSearchInput() {
   const raw = document.getElementById('search-input').value;
-  const q = raw.trim();
+  const q   = raw.trim();
 
-  // Show/hide clear button
   document.getElementById('search-clear').classList.toggle('visible', raw.length > 0);
 
-  if (searchTimeout) clearTimeout(searchTimeout);
-  if (spinnerTimeout) clearTimeout(spinnerTimeout);
+  clearTimeout(searchTimer);
+  clearTimeout(spinnerTimer);
 
   if (q.length < 2) {
-    // Back to idle state
-    document.getElementById('search-spinner').classList.remove('visible');
-    document.getElementById('search-results').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
+    document.getElementById('search-results').classList.remove('in');
     document.getElementById('search-results').innerHTML = '';
-    showHint();
+
+    // Re-show hint with transition
+    const hint = document.getElementById('search-hint');
+    hint.classList.remove('in');
+    hint.style.display = '';
+    requestAnimationFrame(() => requestAnimationFrame(() => hint.classList.add('in')));
     return;
   }
 
-  // Hide hints, show spinner after short delay
-  hideHint();
-  document.getElementById('search-results').classList.remove('visible');
+  // Hide hint
+  const hint = document.getElementById('search-hint');
+  hint.classList.remove('in');
+  setTimeout(() => { hint.style.display = 'none'; }, 280);
+
+  document.getElementById('search-results').classList.remove('in');
   document.getElementById('search-results').innerHTML = '';
+  document.getElementById('search-spinner').classList.add('active');
 
-  spinnerTimeout = setTimeout(() => {
-    document.getElementById('search-spinner').classList.add('visible');
-  }, 80);
-
-  // Debounce search
-  searchTimeout = setTimeout(() => doSearch(q), 300);
+  searchTimer = setTimeout(() => doSearch(q), 380);
 }
 
 async function doSearch(q) {
   try {
     const results = await fetchSearch(q);
-
-    if (spinnerTimeout) clearTimeout(spinnerTimeout);
-    document.getElementById('search-spinner').classList.remove('visible');
-
-    // Small delay for intentional feel
+    clearTimeout(spinnerTimer);
+    document.getElementById('search-spinner').classList.remove('active');
     setTimeout(() => renderResults(results, q), 80);
   } catch (err) {
     console.error('Search error:', err);
-    document.getElementById('search-spinner').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
   }
 }
 
 function highlightMatch(text, query) {
-  // Escape regex special chars
   const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return text.replace(new RegExp(`(${escaped})`, 'gi'), '<em>$1</em>');
 }
@@ -543,9 +541,9 @@ function renderResults(results, query) {
   const area = document.getElementById('search-results');
   area.innerHTML = '';
 
-  if (results.length === 0) {
+  if (!results.length) {
     area.innerHTML = `<div class="results-empty">No saints or feasts matching \u201C${query}\u201D.</div>`;
-    area.classList.add('visible');
+    area.classList.add('in');
     return;
   }
 
@@ -562,16 +560,12 @@ function renderResults(results, query) {
       <span class="result-name">${highlightMatch(r.title, query)}</span>
       <span class="result-tag">${r.available ? 'VIEW \u2192' : 'NO SERVICE'}</span>
     `;
-    if (r.available) {
-      btn.addEventListener('click', () => pickResult(r.dateStr, r.svcType));
-    }
+    if (r.available) btn.addEventListener('click', () => pickResult(r.dateStr, r.svcType));
     area.appendChild(btn);
-
-    // Staggered entrance animation
-    setTimeout(() => btn.classList.add('shown'), i * 30);
+    setTimeout(() => btn.classList.add('in'), i * 30);
   });
 
-  area.classList.add('visible');
+  area.classList.add('in');
 }
 
 function fillSearch(query) {
@@ -582,20 +576,16 @@ function fillSearch(query) {
 }
 
 function clearSearch() {
-  const input = document.getElementById('search-input');
-  input.value = '';
+  document.getElementById('search-input').value = '';
   document.getElementById('search-clear').classList.remove('visible');
-  input.focus();
+  document.getElementById('search-input').focus();
   onSearchInput();
 }
 
 async function pickResult(dateStr, svcType) {
   closeSearch();
-
-  // Wait for close animation before manipulating the main view
   await new Promise(r => setTimeout(r, 300));
 
-  // If the date isn't in the current view, load a range around it first
   let btn = document.querySelector(`.svc-row[data-date="${dateStr}"][data-svc="${svcType}"]`);
   if (!btn) {
     const anchor = new Date(dateStr + 'T12:00:00');
@@ -605,9 +595,13 @@ async function pickResult(dateStr, svcType) {
       days = await fetchDays(from, to);
       renderServiceList(days);
       for (const day of days) {
-        if (day.services.greatVespers || day.services.dailyVespers) calDots[day.date] = true;
+        if (day.services.greatVespers || day.services.dailyVespers) {
+          const key = `${new Date(day.date + 'T12:00:00').getFullYear()}-${String(new Date(day.date + 'T12:00:00').getMonth() + 1).padStart(2,'0')}`;
+          if (!calDaysCache[key]) calDaysCache[key] = null; // invalidate cache
+        }
       }
-      calMonth = { year: anchor.getFullYear(), month: anchor.getMonth() };
+      calYear  = anchor.getFullYear();
+      calMonth = anchor.getMonth() + 1;
     } catch (err) {
       console.error('pickResult: failed to load date range:', err);
       return;
@@ -622,76 +616,55 @@ async function pickResult(dateStr, svcType) {
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 async function init() {
-  // Panel close + print
+  // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
   document.getElementById('btn-print').addEventListener('click', () => window.print());
-
-  // Pronoun toggle
   initPronounToggle();
 
-  // Calendar button
-  document.getElementById('date-btn').addEventListener('click', toggleCal);
-  document.getElementById('cal-overlay').addEventListener('click', closeCal);
-  document.getElementById('cal-prev').addEventListener('click', () => {
-    if (!calMonth) return;
-    let { year, month } = calMonth;
-    month--;
-    if (month < 0) { month = 11; year--; }
-    calMonth = { year, month };
-    renderCalendar();
-    fetchCalDots();
-  });
-  document.getElementById('cal-next').addEventListener('click', () => {
-    if (!calMonth) return;
-    let { year, month } = calMonth;
-    month++;
-    if (month > 11) { month = 0; year++; }
-    calMonth = { year, month };
-    renderCalendar();
-    fetchCalDots();
-  });
+  // Calendar
+  document.getElementById('date-btn').addEventListener('click', openCal);
+  document.getElementById('cal-back').addEventListener('click', closeCal);
+  document.getElementById('cal-close-mobile').addEventListener('click', closeCal);
+  document.getElementById('cal-prev').addEventListener('click', () => calShift(-1));
+  document.getElementById('cal-next').addEventListener('click', () => calShift(1));
 
-  // Search button
+  // Search
   document.getElementById('search-btn').addEventListener('click', openSearch);
-  document.getElementById('search-back').addEventListener('click', closeSearch);
-  document.getElementById('search-close-mobile').addEventListener('click', closeSearch);
+  document.getElementById('search-back').addEventListener('click', () => closeSearch());
+  document.getElementById('search-close-mobile').addEventListener('click', () => closeSearch());
   document.getElementById('search-input').addEventListener('input', onSearchInput);
   document.getElementById('search-clear').addEventListener('click', clearSearch);
-
-  // Hint tags
   document.querySelectorAll('.hint-tag').forEach(tag => {
     tag.addEventListener('click', () => fillSearch(tag.dataset.query));
   });
 
-  // Escape key closes search
+  // Keyboard
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      if (document.getElementById('view-search').classList.contains('visible')) {
-        closeSearch();
-      }
-    }
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('view-search').classList.contains('visible')) closeSearch();
+    if (document.getElementById('view-cal').classList.contains('visible'))    closeCal();
   });
 
-  // Read permalink params
+  // URL params
   const { date: urlDate, svc: urlSvc } = getUrlParams();
-
   const today  = new Date();
   const anchor = (urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate))
-    ? new Date(urlDate + 'T12:00:00')
-    : today;
+    ? new Date(urlDate + 'T12:00:00') : today;
   const from = toIso(addDays(anchor, -7));
   const to   = toIso(addDays(anchor, 28));
 
-  calMonth = { year: anchor.getFullYear(), month: anchor.getMonth() };
+  calYear  = anchor.getFullYear();
+  calMonth = anchor.getMonth() + 1;
 
   try {
     days = await fetchDays(from, to);
     renderServiceList(days);
 
-    for (const day of days) {
-      if (day.services.greatVespers || day.services.dailyVespers) {
-        calDots[day.date] = true;
-      }
+    // Pre-populate calendar cache for current month
+    const key = `${calYear}-${String(calMonth).padStart(2,'0')}`;
+    if (!calDaysCache[key]) {
+      const monthDays = days.filter(d => d.date.startsWith(key));
+      if (monthDays.length > 0) calDaysCache[key] = monthDays;
     }
 
     if (urlDate) {
@@ -699,11 +672,11 @@ async function init() {
       if (urlSvc) {
         const btn = document.querySelector(`.svc-row[data-date="${urlDate}"][data-svc="${urlSvc}"]`);
         if (btn) {
-          setUrlState(urlDate, urlSvc, /*replace=*/true);
+          setUrlState(urlDate, urlSvc, true);
           await _showPanel(btn, urlDate, urlSvc);
         }
       } else {
-        setUrlState(urlDate, null, /*replace=*/true);
+        setUrlState(urlDate, null, true);
       }
     }
   } catch (err) {
@@ -714,18 +687,14 @@ async function init() {
       </p>`;
   }
 
-  // Restore panel state on browser back/forward
-  window.addEventListener('popstate', async (e) => {
+  window.addEventListener('popstate', async e => {
     const state = e.state || {};
     if (state.date && state.svcType) {
       const btn = document.querySelector(`.svc-row[data-date="${state.date}"][data-svc="${state.svcType}"]`);
-      if (btn) {
-        await _showPanel(btn, state.date, state.svcType);
-      } else {
-        location.reload();
-      }
+      if (btn) await _showPanel(btn, state.date, state.svcType);
+      else location.reload();
     } else {
-      closePanel(/*skipHistory=*/true);
+      closePanel(true);
       if (state.date) jumpToDate(state.date);
     }
   });

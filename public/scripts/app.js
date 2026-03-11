@@ -222,8 +222,6 @@ async function loadPanelContent(date, svcType) {
         `<div class="p-saint${c.isPrincipal ? ' major' : ''}">${c.title}</div>`
       ).join('');
       saintsEl.style.display = '';
-      document.getElementById('p-detail-body').classList.add('open');
-      document.getElementById('p-detail-toggle').classList.add('open');
     } else {
       saintsEl.innerHTML = '';
       saintsEl.style.display = 'none';

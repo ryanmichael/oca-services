@@ -993,6 +993,22 @@ function getDayLabel(entry, dow, season) {
     return names[dow] || null;
   }
 
+  if (season === 'pentecostarion') {
+    const FEAST_NAMES = {
+      'pentecostarion.week.2.sunday': 'Thomas Sunday (Antipascha)',
+      'pentecostarion.week.3.sunday': 'Sunday of the Myrrhbearers',
+      'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
+      'pentecostarion.week.5.sunday': 'Sunday of the Samaritan Woman',
+      'pentecostarion.week.6.sunday': 'Sunday of the Blind Man',
+      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers',
+      'pentecostarion.ascension':     'The Ascension of our Lord',
+      'pentecostarion.pentecost':     'Holy Pentecost',
+    };
+    const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
+    const key = noteMatch ? noteMatch[1] : null;
+    return FEAST_NAMES[key] || null;
+  }
+
   return null;
 }
 

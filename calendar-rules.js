@@ -1011,7 +1011,18 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
         now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
       },
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: (() => {
+        const BRIGHT_PROK = {
+          sunday:    { pattern: 'great',   key: 'whoIsSoGreat' },
+          monday:    { pattern: 'great',   key: 'whoIsSoGreat' },
+          tuesday:   { pattern: 'great',   key: 'ourGodIsInHeaven' },
+          wednesday: { pattern: 'great',   key: 'iCriedAloud' },
+          thursday:  { pattern: 'great',   key: 'hearkenUntoMyPrayer' },
+          friday:    { pattern: 'great',   key: 'iLoveThee' },
+          saturday:  { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+        };
+        return BRIGHT_PROK[dow] ?? { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
+      })(),
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },

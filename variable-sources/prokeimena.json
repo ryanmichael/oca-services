@@ -110,7 +110,7 @@
       "usedOn": ["dec25-eve", "thomas-sunday-eve", "pentecost-kneeling"]
     },
     "ourGodIsInHeaven": {
-      "_note": "Sung on the evenings of 14 September, 6 January, Holy Ascension, and 6 August. Exception: if these fall on Saturday, the usual Saturday prokeimenon is used and this is sung the previous evening.",
+      "_note": "Sung on the evenings of 14 September, 6 January, Holy Ascension, and 6 August, and Bright Tuesday. Exception: if these fall on Saturday, the usual Saturday prokeimenon is used and this is sung the previous evening.",
       "tone": 7,
       "label": "Our God is in heaven",
       "refrain": "Our God is in heaven and on earth: He hath done whatsoever He hath pleased.",
@@ -120,7 +120,46 @@
         { "text": "The sea saw it and fled: Jordan was driven back.", "psalmRef": "Ps. 113:3" },
         { "text": "What aileth thee, O thou sea, that thou fleddest? thou Jordan, that thou wast driven back?", "psalmRef": "Ps. 113:5" }
       ],
-      "usedOn": ["sep14-eve", "jan6-eve", "ascension-eve", "aug6-eve"]
+      "usedOn": ["sep14-eve", "jan6-eve", "ascension-eve", "aug6-eve", "brightTuesday-eve"]
+    },
+    "iCriedAloud": {
+      "_note": "Sung on the evening of Bright Wednesday.",
+      "tone": 7,
+      "label": "I cried aloud with my voice",
+      "refrain": "I cried aloud with my voice to the Lord; with my voice to God, and He heard me.",
+      "psalmRef": "Ps. 76:1",
+      "verses": [
+        { "text": "In the day of my affliction I sought God, with my hands uplifted in the night before Him, and I was not deceived.", "psalmRef": "Ps. 76:2" },
+        { "text": "My soul refused to be comforted, but I remembered God and was made glad.", "psalmRef": "Ps. 76:3a" },
+        { "text": "Thy way, O God, is in the sanctuary.", "psalmRef": "Ps. 76:13a" }
+      ],
+      "usedOn": ["brightWednesday-eve"]
+    },
+    "hearkenUntoMyPrayer": {
+      "_note": "Sung on the evening of Bright Thursday.",
+      "tone": 7,
+      "label": "Hearken unto my prayer, O God",
+      "refrain": "Hearken unto my prayer, O God, and hide not Thyself from my supplication!",
+      "psalmRef": "Ps. 54:1a",
+      "verses": [
+        { "text": "Attend to me, and hear me!", "psalmRef": "Ps. 54:1b" },
+        { "text": "For they bring iniquity upon me.", "psalmRef": "Ps. 54:3a" },
+        { "text": "I cried out to God, and the Lord heard me in the evening and the morning and at noon.", "psalmRef": "Ps. 54:18-19a" }
+      ],
+      "usedOn": ["brightThursday-eve"]
+    },
+    "iLoveThee": {
+      "_note": "Sung on the evening of Bright Friday.",
+      "tone": 7,
+      "label": "I love Thee, O Lord my strength",
+      "refrain": "I love Thee, O Lord my strength; the Lord is my rock and my fortress and my deliverer.",
+      "psalmRef": "Ps. 17:1",
+      "verses": [
+        { "text": "God is my Helper in Whom I take refuge.", "psalmRef": "Ps. 17:2a" },
+        { "text": "I call upon the Lord, Who is worthy to be praised, and I am saved from my enemies.", "psalmRef": "Ps. 17:3" },
+        { "text": "From His holy temple He heard my voice.", "psalmRef": "Ps. 17:6b" }
+      ],
+      "usedOn": ["brightFriday-eve"]
     }
   },
 

@@ -1305,8 +1305,10 @@ function generateCalendarEntry(dateStr) {
       return entry;
     }
 
-    // Weekdays: not yet implemented
-    return null;
+    // Weekdays: same structure as ordinary-time Daily Vespers
+    const entry = generateOrdinaryTimeWeekday(dateStr, dow, tone);
+    entry.liturgicalContext.season = 'preLenten';
+    return entry;
   }
 
   // ── Holy Week ──────────────────────────────────────────────────────────────

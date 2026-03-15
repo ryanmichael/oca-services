@@ -1,11 +1,23 @@
 /**
  * Orthodox Vespers Service Assembler
- * 
+ *
  * Takes a calendar day entry and assembles an ordered array of rendered blocks
  * suitable for display or API delivery.
- * 
+ *
  * assembleVespers(calendarDay, fixedTexts, sources) → ServiceBlock[]
  */
+
+// ─── Psalter data (loaded once) ───────────────────────────────────────────────
+let _psalter    = null;
+let _kathismata = null;
+function getPsalter() {
+  if (!_psalter) _psalter = require('./fixed-texts/psalter.json');
+  return _psalter;
+}
+function getKathismata() {
+  if (!_kathismata) _kathismata = require('./fixed-texts/kathismata.json');
+  return _kathismata;
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -32,7 +44,11 @@
  * @param {Object} sources      - { triodion, menaion, octoechos, prokeimena }
  * @returns {ServiceBlock[]}
  */
+// Module-level warnings collector — reset at the start of each assembly
+let _warnings = [];
+
 function assembleVespers(calendarDay, fixedTexts, sources) {
+  _warnings = [];
   const blocks = [];
   const vespers = calendarDay.vespers;
   const isGreatVespers = vespers.serviceType === 'greatVespers';
@@ -99,6 +115,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
   blocks.push(...assembleDismissal(fixedTexts));
 
+  blocks._warnings = _warnings.slice();
   return blocks;
 }
 
@@ -182,13 +199,8 @@ function assembleKathisma(calendarDay, fixedTexts) {
     return assembleBlessedIsTheMan(fixedTexts);
   }
 
-  // All other cases: kathisma is read (not sung); texts not yet stored.
-  return [
-    makeBlock('kathisma-rubric', section, 'rubric', null,
-      `KATHISMA ${kathNum}`),
-    makeBlock('kathisma-reading', section, 'prayer', 'reader',
-      `[Kathisma ${kathNum} — the appointed section of the Psalter for ${dayOfWeek} evening]`),
-  ];
+  // All other cases: kathisma is read (not sung).
+  return assembleKathismaReading(kathNum, section);
 }
 
 function assembleBlessedIsTheMan(fixedTexts) {
@@ -207,6 +219,67 @@ function assembleBlessedIsTheMan(fixedTexts) {
   blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
     'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
   blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir', k.refrain));
+
+  return blocks;
+}
+
+/**
+ * Renders a full kathisma reading (used at Daily Vespers on weekdays).
+ * Outputs each psalm as a labelled prayer block, with a Glory/Alleluia
+ * doxology after the first and second stases. No doxology after the third
+ * stasis — the Little Litany follows immediately in the assembler.
+ */
+function assembleKathismaReading(kathNum, section) {
+  const kathismata = getKathismata();
+  const psalter    = getPsalter();
+  const kathisma   = kathismata[String(kathNum)];
+  if (!kathisma) {
+    return [makeBlock('kathisma-rubric', section, 'rubric', null, `KATHISMA ${kathNum}`)];
+  }
+
+  const blocks = [];
+  blocks.push(makeBlock('kathisma-rubric', section, 'rubric', null,
+    kathisma.label.toUpperCase()));
+
+  const GLORY_ALLELUIA = [
+    makeBlock('k-glory', section, 'doxology', 'reader',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'),
+    makeBlock('k-alleluia', section, 'response', 'reader',
+      'Alleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'),
+  ];
+
+  kathisma.stases.forEach((stasis, stasisIdx) => {
+    // Each stasis is either an array of psalm numbers, or an object with
+    // { psalm, fromVerse, toVerse } for the special case of Psalm 118.
+    if (Array.isArray(stasis)) {
+      stasis.forEach(psalmNum => {
+        const psalm = psalter[psalmNum];
+        if (!psalm) return;
+        blocks.push(makeBlock(`k-ps${psalmNum}-hd`, section, 'rubric', null,
+          `PSALM ${psalmNum}`));
+        const text = psalm.verses.join('\n\n');
+        blocks.push(makeBlock(`k-ps${psalmNum}`, section, 'prayer', 'reader', text));
+      });
+    } else {
+      // Psalm 118 verse-range stasis
+      const { psalm: psalmNum, fromVerse, toVerse } = stasis;
+      const psalm = psalter[psalmNum];
+      if (psalm) {
+        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}hd`, section, 'rubric', null,
+          `PSALM ${psalmNum}:${fromVerse}–${toVerse}`));
+        const verses = psalm.verses.slice(fromVerse - 1, toVerse);
+        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}`, section, 'prayer', 'reader',
+          verses.join('\n\n')));
+      }
+    }
+
+    // Glory + Alleluia after stases 1 and 2 (not after the last stasis)
+    if (stasisIdx < kathisma.stases.length - 1) {
+      GLORY_ALLELUIA.forEach((b, i) => {
+        blocks.push({ ...b, id: `k-s${stasisIdx}-sep${i}` });
+      });
+    }
+  });
 
   return blocks;
 }
@@ -305,13 +378,15 @@ function resolveSource(sourceName, keyPath, sources) {
   const source = sources[sourceName];
   if (!source) {
     console.warn(`Source not found: ${sourceName}`);
+    _warnings.push({ source: sourceName, key: keyPath });
     return null;
   }
-  // Navigate dot-notation path through the source object
-  // e.g. "lent.soulSaturday2.lordICall.glory" → source.lent.soulSaturday2.lordICall.glory
-  // But our files are keyed by their own key property and stored differently.
-  // For now, treat the source as the already-resolved document for the day.
-  return deepGet(source, keyPath);
+  const result = deepGet(source, keyPath);
+  if (result == null) {
+    console.warn(`Key not found: ${sourceName}.${keyPath}`);
+    _warnings.push({ source: sourceName, key: keyPath });
+  }
+  return result;
 }
 
 function deepGet(obj, path) {

@@ -77,8 +77,9 @@ function getAllSaints(year) {
  */
 function getTone(date) {
   const year = date.getUTCFullYear();
-  let anchor = getAllSaints(year);
-  if (date < anchor) anchor = getAllSaints(year - 1);
+  // Tone 1 begins the Sunday AFTER All Saints, not All Saints itself
+  let anchor = new Date(getAllSaints(year).getTime() + 7 * DAY_MS);
+  if (date < anchor) anchor = new Date(getAllSaints(year - 1).getTime() + 7 * DAY_MS);
 
   const weeksSince = Math.floor((date - anchor) / (7 * DAY_MS));
   return (weeksSince % 8) + 1;
@@ -334,15 +335,21 @@ function generateOrdinaryTimeSaturday(dateStr, tone) {
           tone,
           label:  'Resurrectional',
         }],
-        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`, tone, label: 'Theotokion' },
-        now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,      tone, label: 'Theotokion — Dogmatikon' },
+        // Tone 5 has no resurrectional doxastichon — combine Glory+Now into the dogmatikon directly.
+        // All other tones have a glory doxastichon followed by a separate Now+dogmatikon.
+        ...(tone === 5 ? {
+          glory: { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon', combinesGloryNow: true },
+        } : {
+          glory: { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`, tone, label: 'Resurrectional Doxastichon' },
+          now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,      tone, label: 'Theotokion — Dogmatikon' },
+        }),
       },
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
       aposticha: {
         slots: [
-          { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional (Idiomelon)' },
-          { position: 2, repeatPrevious: true },
-          { position: 3, repeatPrevious: true },
+          { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional Sticheron 1' },
+          { position: 2, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.1`, tone, label: 'Resurrectional Sticheron 2' },
+          { position: 3, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.2`, tone, label: 'Resurrectional Sticheron 3' },
         ],
         // No resurrectional glory doxastichon in plain Saturday Octoechos;
         // go straight to "Glory...now and ever..." + Theotokion.
@@ -395,24 +402,26 @@ function generateSoulSaturday(dateStr, satNum, tone, litKey) {
         totalStichera: 6,
         slots: [
           {
+            // Martyrs stichera are tonal — live in the Octoechos per weekly tone
             verses: [6, 5, 4],
             count:  3,
-            source: 'triodion',
-            key:    `${triKey}.lordICall.martyrs`,
+            source: 'octoechos',
+            key:    `${tk}.saturday.vespers.lordICall.martyrs`,
             tone,
             label:  'For the Martyrs (in the Tone of the week)',
           },
           {
-            // Menaion stichera would go here; use db fallback keyed by liturgical position
+            // Menaion stichera for the saint of the day, injected by server.js
             verses: [3, 2, 1],
             count:  3,
-            source: 'db',
-            key:    `${litKey}.vespers.lordICall`,
+            source: 'menaion',
+            key:    `auto.${dateStr}.lordICall`,
             tone,
-            label:  'For the Saints',
+            label:  'For the Saint',
           },
         ],
-        glory: { source: 'triodion', key: `${triKey}.lordICall.glory`, tone, label: 'For the Departed' },
+        // Departed doxastichon is tonal — live in the Octoechos per weekly tone
+        glory: { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.departedGlory`, tone, label: 'For the Departed' },
         now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
       },
       prokeimenon: {
@@ -875,7 +884,14 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       rubricNote:  'Great and Holy Saturday — Great Vespers with the Liturgy of St. Basil',
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
       apostichaGloryOnly: true,  // no aposticha (service flows directly into Liturgy of St. Basil)
-      tropariaEmpty: true,       // no troparia (same reason)
+      troparia: {
+        source: 'triodion',
+        slots: [
+          { order: 1,          source: 'triodion', key: 'holyWeek.saturday.troparia.nobleJoseph',  tone: 2, label: 'Troparion of Holy Saturday' },
+          { position: 'glory', source: 'triodion', key: 'holyWeek.saturday.troparia.whenThouDidst', tone: 2, label: 'Troparion of Holy Saturday' },
+          { position: 'now',   source: 'triodion', key: 'holyWeek.saturday.troparia.theotokion',    tone: 2, label: 'Theotokion' },
+        ],
+      },
     },
   };
 
@@ -918,7 +934,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
         ],
         glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
       },
-      troparia: cfg.tropariaEmpty ? { source: 'db', slots: [] }
+      troparia: cfg.troparia ? cfg.troparia
         : cfg.tropariaGloryNow ? {
           source: 'db',
           slots: [
@@ -1205,10 +1221,13 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     });
   }
 
-  // Glory: feast doxastichon from DB (weeks 4-7) or Octoechos glory
+  // Glory: feast doxastichon from DB (weeks 4-7), or Octoechos glory.
+  // Tone 5 has no resurrectional doxastichon — combine Glory+Now into the dogmatikon.
   const licGlory = feastCount > 0
-    ? { source: 'db',       key: `${litKey}.vespers.lordICall.glory`,             tone }
-    : { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`,        tone };
+    ? { source: 'db',        key: `${litKey}.vespers.lordICall.glory`,          tone }
+    : tone === 5
+      ? { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,        tone, label: 'Theotokion — Dogmatikon', combinesGloryNow: true }
+      : { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`,   tone };
 
   // Dogmatikon always sung at "Now and ever" in Great Vespers
   const nowSlot = { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };

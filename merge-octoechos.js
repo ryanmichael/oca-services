@@ -62,15 +62,25 @@ function buildTone(n, existingTone) {
               text:  gloryText,
             },
           } : {}),
+          // Preserve hand-curated Soul Saturday fields (not scraped from tone PDFs)
+          ...(existingTone?.saturday?.vespers?.lordICall?.martyrs ? {
+            martyrs: existingTone.saturday.vespers.lordICall.martyrs,
+          } : {}),
+          ...(existingTone?.saturday?.vespers?.lordICall?.departedGlory ? {
+            departedGlory: existingTone.saturday.vespers.lordICall.departedGlory,
+          } : {}),
         },
 
         aposticha: {
-          hymns: s.aposticha ? [{
-            order: 1,
-            label: 'Idiomelon',
+          hymns: (s.apostichaHymns && s.apostichaHymns.length > 0
+            ? s.apostichaHymns
+            : s.aposticha ? [s.aposticha] : []
+          ).map((text, i) => ({
+            order: i + 1,
+            label: i === 0 ? 'Idiomelon' : `Sticheron ${i + 1}`,
             tone:  n,
-            text:  s.aposticha,
-          }] : [],
+            text,
+          })),
           ...(s.apostichaGlory ? {
             glory: {
               tone:  n,

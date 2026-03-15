@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "service": "Great and Holy Saturday — Great Vespers with the Liturgy of St. Basil the Great",
+    "source": "OCA Lenten Triodion / Holy Week service texts",
+    "version": "1.0.0"
+  },
+
+  "key": "holyWeek.saturday",
+  "title": "Great and Holy Saturday",
+  "category": "holyWeek",
+
+  "vespers": {
+    "troparia": {
+      "nobleJoseph": {
+        "tone": 2,
+        "label": "Troparion of Holy Saturday",
+        "text": "The noble Joseph, when he had taken down Thy most pure Body from the Tree, wrapped It in fine linen and anointed It with spices, and placed It in a new tomb."
+      },
+      "whenThouDidst": {
+        "tone": 2,
+        "label": "Troparion of Holy Saturday",
+        "position": "glory",
+        "text": "When Thou didst descend to death, O Life Immortal, Thou didst slay hell with the splendor of Thy Godhead. And when from the depths Thou didst raise the dead, all the Powers of heaven cried out: O Giver of Life, Christ our God, glory to Thee!"
+      },
+      "theotokion": {
+        "tone": 2,
+        "label": "Theotokion",
+        "position": "now",
+        "text": "Thou art the most blessed among all women, O pure Virgin Theotokos, for through Him Who was incarnate of thee, Hades was led captive, Adam recalled, the curse destroyed, Eve freed, death slain, and we were given life. Wherefore, we cry out in praise: Blessed art thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@
     "version": "0.3.0 — all 8 tones populated from OCA Obikhod (TT) PDFs via scrape-octoechos.js",
     "sources": {
       "all.saturday.vespers.*": "OCA Obikhod (TT) PDFs scraped from oca.org/liturgics/music-downloads (2026-03)",
-      "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated)"
+      "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated)"
     }
   },
   "tone1": {
@@ -59,6 +59,30 @@
               "label": "Idiomelon",
               "tone": 1,
               "text": "We have been freed from sufferings by Thy suffering, O Christ. We have been delivered from corruption by Thy Resurrection.\nO Lord, glory to Thee!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 1,
+              "text": "Let creation rejoice! Let the heavens be glad! Let the nations clap their hands with gladness, for Christ our Savior has nailed our sins to the Cross. Slaying death, He has given life.\nHe has resurrected fallen Adam as the Lover of man."
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 1,
+              "text": "As King of heaven and earth, Thou wast voluntarily crucified in Thy love for man. Hell was angered when it met Thee below. Adam rose seeing Thee, the Creator, under the earth. O wonder! How has the life of all tasted deathThou didst enlighten the world which cries:\nO Lord, Who didst rise from the dead, glory to Thee!"
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 1,
+              "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrhh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles\n\"The Lord is risen, granting the world great mercy."
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 1,
+              "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrhh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles\n\"The Lord is risen, granting the world great mercy."
             }
           ],
           "theotokion": {
@@ -130,7 +154,25 @@
               "order": 1,
               "label": "Idiomelon",
               "tone": 2,
-              "text": "Thy Resurrection, O Christ our Savior, has enlightened the whole universe, recalling Thy creation.\nGlory to Thee, O almighty Lord!"
+              "text": "By the Tree Thou didst destroy the curse of the Tree, O Savior. By Thy burial Thou didst mortify the majesty of death. Thou hast enlightened our race by Thy Resurrection.\nO Giver of life, Christ our God, glory to Thee!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 2,
+              "text": "When Thou wast seen nailed to the Cross, O Christ, Thou didst restore the beauty of Thy creatures. The soldiers showed their inhumanity when they pierced Thy side with a spear. The Hebrews, not knowing Thy power, asked that Thy tomb might be sealed, but through the mercy of Thy compassion, Thou didst accept the tomb and didst rise on the third day!\nO Lord, glory to Thee!"
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 2,
+              "text": "O Christ, the Giver of life, for the sake of the dead Thou didst voluntarily endure death, descending into hell as the Mighty One to save those who awaited Thy coming, granting them the life of paradise instead of hell. Grant also to us who glorify Thy Resurrection on the third day\ncleansing of our sins and great mer - - - - cy!"
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 2,
+              "text": "O Christ, the Giver of life, for the sake of the dead Thou didst voluntarily endure death, descending into hell as the Mighty One to save those who awaited Thy coming, granting them the life of paradise instead of hell. Grant also to us who glorify Thy Resurrection on the third day\ncleansing of our sins and great mer - - - - cy!"
             }
           ],
           "theotokion": {
@@ -203,6 +245,30 @@
               "label": "Idiomelon",
               "tone": 3,
               "text": "The sun was darkened by Thy Passion, O Christ, but all creation was enlightened by the light of Thy Resurrection.\nAccept our evening song, O Lover of man!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 3,
+              "text": "Thy lifebearing Resurrection, O Lord, enlightened the whole universe, recalling Thy creation. Delivered from Adam's curse, we sing:\nO Almighty Lord, glory to Thee!"
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 3,
+              "text": "Thou art the changeless God, Who, suffering in the flesh was changed. Creation could not endure seeing Thee on the Cross. It was filled with fear while praising Thy patience. By descending to hell and rising on the third day,\nThou hast granted to the world life and great mer - - - cy."
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 3,
+              "text": "Thou didst endure death, O Christ, to deliver the race of men from death. Thou didst rise from the dead on the third day, raising with Thyself those who knew Thee as God\nand enlightening the world. Glory to Thee!"
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 3,
+              "text": "Thou didst endure death, O Christ, to deliver the race of men from death. Thou didst rise from the dead on the third day, raising with Thyself those who knew Thee as God\nand enlightening the world. Glory to Thee!"
             }
           ],
           "theotokion": {
@@ -275,6 +341,30 @@
               "label": "Idiomelon",
               "tone": 4,
               "text": "By ascending the Cross, O Lord, Thou hast annulled our ancestral curse. By descending to hell, Thou hast freed the eternal prisoners, granting incorruption to the human race.\nTherefore in songs we glorify Thy lifecreating and saving Resurrection. R. The Lord is King; He is robed in majesty!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 4,
+              "text": "By hanging upon the tree, O only powerful Lord, Thou didst shake all of creation. By being laid in the tomb Thou hast raised those who dwelt in the tombs, granting life and incorruption to the human race.\nTherefore in songs we glorify Thy rising on the third day. R. For He has established the world, so that it shall never be moved."
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 4,
+              "text": "The lawless people, O Christ, handed Thee over to Pilate condemned to be crucified, thus proving themselves ungrateful before their Benefactor. But voluntarily Thou didst endure burial, rising by Thine own power on the third day as God,\ngranting us life everlasting and great mercy. R. Holiness befits Thy house, O Lord, forevermore!"
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 4,
+              "text": "With tears the women reached Thy tomb, searching for Thee, but not finding Thee. They wept with wailing and lamented: \"Woe to us! Our Savior, King of all, how wast Thou stolenWhat place can hold Thy lifebearing body?\" An Angel replied to them: \"Do not weep, but go and proclaim that the Lord is Risen,\ngranting us joy as the only compassionate One!"
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 4,
+              "text": "With tears the women reached Thy tomb, searching for Thee, but not finding Thee. They wept with wailing and lamented: \"Woe to us! Our Savior, King of all, how wast Thou stolenWhat place can hold Thy lifebearing body?\" An Angel replied to them: \"Do not weep, but go and proclaim that the Lord is Risen,\ngranting us joy as the only compassionate One!"
             }
           ],
           "theotokion": {
@@ -333,6 +423,30 @@
                 "text": "The guards were instructed by the lawless ones: \"Hide the rising of Christ, take money and say: 'The body was stolen from the tomb while we were asleep.'\" But who has heard of a body being stolen, a body embalmed and naked, with its grave clothes left behind in the tomb Do not be deceived, O Jews, study the words of the Prophets and understand:\nChrist is the Redeemer of the world and all powerful! O Lord, Who hast captured hell and trampled on death, Thou hast enlightened the world by Thy precious Cross.\nO Savior, have mercy on us!"
               }
             ]
+          },
+          "martyrs": {
+            "tone": 5,
+            "label": "For the Martyrs (in the Tone of the week)",
+            "hymns": [
+              {
+                "verse": 6,
+                "text": "The passion-bearers quenched the fire of terrible wickedness\nwith the streams of their blood,\nhaving kindled the brightness of true piety in all the world;\nbut the martyrs utterly burned up the falsely-named gods\nand their odors and temples,\nand shone the most pure light to those on earth.\nEnlightened by them, we flee from the darkness of godlessness\nand shun the deception of idolatry,\nworshipping Christ, Who grants the world great mercy."
+              },
+              {
+                "verse": 5,
+                "text": "Putting on the shield of faith\nand strengthening themselves with the sign of the Cross,\nThy saints, O Lord, bravely went of their own accord to torture,\nlaying low the pride and error of the devil.\nBy their supplications, O all-powerful God,\nsend the world peace, and our souls great mercy!"
+              },
+              {
+                "verse": 4,
+                "text": "Not rejoicing in earthly things,\nbut bravely going forth to tortures,\nO all-laudable martyrs, you did not fail in your blessed hopes,\nbut were heirs of the heavenly Kingdom.\nSince now you have boldness before God, the Lover of man,\nentreat peace for the world, and for our souls, great mercy!"
+              }
+            ]
+          },
+          "departedGlory": {
+            "tone": 5,
+            "attribution": "St. John of Damascus",
+            "label": "For the Departed",
+            "text": "I called to mind the Prophet who cried:\n\"I am earth and ashes\";\nand again, I looked into the tombs and saw the naked bones.\nAnd I said: \"Who then is the king or the soldier,\nthe rich man or the poor,\nthe righteous or the sinner?\nBut give rest, O Lord, to Thy servants with the righteous,\nsince Thou art the Lover of man!\""
           }
         },
         "aposticha": {
@@ -342,6 +456,30 @@
               "label": "Idiomelon",
               "tone": 5,
               "text": "We magnify Thee in songs of praise, O incarnate Christ and Savior. By accepting the Cross and death for our sake, as the Lord and Lover of man, Thou didst overthrow the gates of hell,\nand didst arise on the third day, saving our souls."
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 5,
+              "text": "By being pierced in the side, O Lover of man, Thou hast poured out drops of life and salvation for all. By accepting death in the flesh, Thou hast granted us immortality. Thou hast freed us by being placed in the tomb, and hast resurrected us with Thyself in glory, as God.\nGlory to Thee, O Lord and Lover of man!"
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 5,
+              "text": "Thy crucifixion and descent into hell are awesome, O Lover of man. Thou hast captured it, releasing the ancient prisoners. Thou hast opened Paradise and given it to us. Grant us purification of sins, who glorify Thy Resurrection on the third day! Make us worthy of Paradise\nand save us, O Lover of man!"
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 5,
+              "text": "For our sake, Thou didst accept death in the flesh, to rise from the dead on the third day. Heal us from our earthly passions, and restore us from our evil transgressions;\nand save us,"
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 5,
+              "text": "For our sake, Thou didst accept death in the flesh, to rise from the dead on the third day. Heal us from our earthly passions, and restore us from our evil transgressions;\nand save us,"
             }
           ],
           "theotokion": {
@@ -405,6 +543,30 @@
             "tone": 6,
             "label": "Resurrectional Doxastichon",
             "text": "Thy burial destroyed the bonds of hell, O Lord. Thy Resurrection from the dead enlightened the world.\nO Lord, glory to Thee!"
+          },
+          "martyrs": {
+            "tone": 6,
+            "label": "For the Martyrs (in the Tone of the week)",
+            "hymns": [
+              {
+                "verse": 6,
+                "text": "Walking in the steps of Christ's sufferings,\nthe whole company of martyrs resolutely approached their many struggles,\nand proclaimed Him as God before the ungodly torturers and lawless kings;\nand they endured many torments\nin the hope of obtaining the glories of heaven.\nSeeing them now, they rejoice,\nand with all the choirs of the bodiless hosts,\nthey stand in the presence of the Lord."
+              },
+              {
+                "verse": 5,
+                "text": "Thy martyrs, O Lord,\ndid not deny Thee,\nnor did they forsake Thy commandments.\nBy their intercessions, have mercy on us!"
+              },
+              {
+                "verse": 4,
+                "text": "Thy martyrs, O Lord,\ndid not deny Thee,\nnor did they forsake Thy commandments.\nBy their intercessions, have mercy on us!"
+              }
+            ]
+          },
+          "departedGlory": {
+            "tone": 6,
+            "attribution": "St. John of Damascus",
+            "label": "For the Departed",
+            "text": "Thy creating command was my origin and my foundation.\nFor Thou didst will to fashion me as a living creature\nfrom natures visible and invisible:\nThou madest my body from the earth\nand gavest me a soul by Thy divine and life-creating breath.\nTherefore, O Savior, grant rest to Thy servants in the land of the living,\nin the mansions of the righteous!"
           }
         },
         "aposticha": {
@@ -414,6 +576,24 @@
               "label": "Idiomelon",
               "tone": 6,
               "text": "Thy Resurrection, O Christ our Savior, the Angels in heaven sing! Enable us on earth\nto glorify Thee in purity of heart!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 6,
+              "text": "Destroying the gates of hell, breaking the chains of death, Thou didst resurrect the fallen human race as almighty God!\nO Lord,"
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 6,
+              "text": "Desiring to return us to Paradise, Christ was nailed to the Cross and placed in a tomb. The Myrrhbearing Women sought Him with tears crying, \"Woe to us, O Savior! How didst Thou deign to descend to deathWhat place can hold Thy lifebearing bodyCome to us as Thou didst promise! Take away our wailing and tears!"
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 6,
+              "text": "Desiring to return us to Paradise, Christ was nailed to the Cross and placed in a tomb. The Myrrhbearing Women sought Him with tears crying, \"Woe to us, O Savior! How didst Thou deign to descend to deathWhat place can hold Thy lifebearing bodyCome to us as Thou didst promise! Take away our wailing and tears!"
             }
           ],
           "theotokion": {
@@ -477,6 +657,30 @@
             "tone": 7,
             "label": "Resurrectional Doxastichon",
             "text": "Thou wast placed in the tomb, O Lord, as one asleep! On the third day Thou didst rise in power, raising Adam with Thyself from the corruption of death\nas the Almighty One."
+          },
+          "martyrs": {
+            "tone": 7,
+            "label": "For the Martyrs (in the Tone of the week)",
+            "hymns": [
+              {
+                "verse": 6,
+                "text": "The martyrs drove out the darkness of godlessness,\nby revealing to all people the light of the knowledge of God."
+              },
+              {
+                "verse": 5,
+                "text": "O Savior, when Thou dost come to judge all the world,\nput me not to shame,\nthough I have done shameful deeds!"
+              },
+              {
+                "verse": 4,
+                "text": "Glory to Thee, O Christ God,\nthe Apostles' boast, the martyrs' joy,\nWhose preaching was the consubstantial Trinity!"
+              }
+            ]
+          },
+          "departedGlory": {
+            "tone": 7,
+            "attribution": "St. John of Damascus",
+            "label": "For the Departed",
+            "text": "In the beginning, Thou didst create man in Thine image and likeness,\nsetting him in Paradise to rule over Thy creation.\nBut he, deceived through the envy of the Devil,\ntasted of the fruit, transgressing Thy commandments.\nFor this, O Lord, Thou didst condemn him\nto return again unto the earth from which he was taken,\nand to entreat repose."
           }
         },
         "aposticha": {
@@ -486,6 +690,30 @@
               "label": "Idiomelon",
               "tone": 7,
               "text": "As the Savior of the world Thou didst arise from the tomb. As God Thou didst resurrect the race of man with Thy flesh.\nO Lord, glory to Thee!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 7,
+              "text": "Come, let us worship the One Who rose from the dead, and enlightened all creation! By His death, He saved us from the torments of hell.\nBy His Resurrection He has granted"
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 7,
+              "text": "Thou didst descend into hell, capturing death, O Christ. In three days Thou didst rise again, resurrecting us who glorify Thy Resurrection,\nO Lord, and Lover of man."
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 7,
+              "text": "When Thou wast placed in the tomb as one asleep, the sight was great and awesome. But when Thou didst rise on the third day as almighty God, Thou didst resurrect Adam with Thyself.\nGlory to Thy Resurrection, only Lover of man!"
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 7,
+              "text": "When Thou wast placed in the tomb as one asleep, the sight was great and awesome. But when Thou didst rise on the third day as almighty God, Thou didst resurrect Adam with Thyself.\nGlory to Thy Resurrection, only Lover of man!"
             }
           ],
           "theotokion": {
@@ -558,6 +786,30 @@
               "label": "Idiomelon",
               "tone": 8,
               "text": "Descending from heaven to ascend the Cross, the eternal Life has come for death to raise those who are fallen; to enlighten those in darkness.\nO Jesus, our Savior and Illuminator, glory to Thee!"
+            },
+            {
+              "order": 2,
+              "label": "Sticheron 2",
+              "tone": 8,
+              "text": "We glorify Christ, Who rose from the dead. He accepted the human body and soul, and freed both from suffering. His most pure soul descended to hell, which He spoiled. His holy body did not see corruption in the tomb.\nHe is the Redeemer of our souls."
+            },
+            {
+              "order": 3,
+              "label": "Sticheron 3",
+              "tone": 8,
+              "text": "In psalms and songs we glorify Thy Resurrection from the dead, O Christ. By it, Thou hast freed us from the tortures of hell\nand as God hast granted eternal life and great mercy."
+            },
+            {
+              "order": 4,
+              "label": "Sticheron 4",
+              "tone": 8,
+              "text": "O Master of all, incomprehensible Creator of heaven and earth, by Thy suffering on the Cross Thou hast gained passionlessness for me. Accepting burial and arising in glory, Thou didst resurrect Adam with Thyself by Thine almighty hand. Glory to Thy rising on the third day! By it Thou hast granted us eternal life and cleansing of sins\nas the only compassionate One."
+            },
+            {
+              "order": 5,
+              "label": "Sticheron 5",
+              "tone": 8,
+              "text": "O Master of all, incomprehensible Creator of heaven and earth, by Thy suffering on the Cross Thou hast gained passionlessness for me. Accepting burial and arising in glory, Thou didst resurrect Adam with Thyself by Thine almighty hand. Glory to Thy rising on the third day! By it Thou hast granted us eternal life and cleansing of sins\nas the only compassionate One."
             }
           ],
           "theotokion": {

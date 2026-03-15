@@ -313,6 +313,66 @@ function renderHomePage(collectedDates) {
 
 // ─── Error / info pages ───────────────────────────────────────────────────────
 
+/**
+ * Converts a raw {source, key} warning from assembler.js into a human-readable message.
+ * Returns null if the warning is minor/expected and shouldn't be shown.
+ */
+function formatAssemblyWarning(source, key) {
+  const k = key || '';
+
+  if (source === 'octoechos') {
+    // Extract tone number
+    const toneMatch = k.match(/^tone(\d)/);
+    const toneNum = toneMatch ? toneMatch[1] : '?';
+
+    if (k.includes('lordICall.martyrs')) {
+      return `Martyrs stichera at Lord, I Have Cried (Tone ${toneNum}) are not yet in the Octoechos data.`;
+    }
+    if (k.includes('lordICall.departedGlory')) {
+      return `Doxastichon "For the Departed" at Lord, I Have Cried (Tone ${toneNum}) is not yet in the Octoechos data.`;
+    }
+    if (k.includes('lordICall.resurrectional')) {
+      return `Resurrectional stichera at Lord, I Have Cried (Tone ${toneNum}) are not yet in the Octoechos data.`;
+    }
+    if (k.includes('dogmatikon')) {
+      return `Dogmatikon (Tone ${toneNum}) is not yet in the Octoechos data.`;
+    }
+    if (k.includes('aposticha')) {
+      return `Aposticha stichera (Tone ${toneNum}) are not yet in the Octoechos data.`;
+    }
+    if (k.includes('troparion')) {
+      return `Resurrectional troparion (Tone ${toneNum}) is not yet in the Octoechos data.`;
+    }
+    if (k.includes('dismissalTheotokion')) {
+      return `Dismissal theotokion (Tone ${toneNum}) is not yet in the Octoechos data.`;
+    }
+    return `Octoechos Tone ${toneNum} data is incomplete (${k}).`;
+  }
+
+  if (source === 'triodion') {
+    if (k.includes('lordICall')) return `Lord, I Have Cried stichera from the Triodion are missing (${k}).`;
+    if (k.includes('aposticha')) return `Aposticha stichera from the Triodion are missing (${k}).`;
+    if (k.includes('troparia')) return `Troparia from the Triodion are missing (${k}).`;
+    return `Triodion texts are missing (${k}).`;
+  }
+
+  if (source === 'menaion') {
+    if (k.includes('lordICall')) return `Menaion Lord, I Have Cried stichera are not available for this date.`;
+    if (k.includes('troparion')) return `Menaion troparion is not available for this date.`;
+    return `Menaion texts are not available for this date (${k}).`;
+  }
+
+  if (source === 'prokeimena') {
+    return `Evening prokeimenon text is missing (${k}).`;
+  }
+
+  // 'db' source is the SQLite Lenten/Pentecostarion DB — suppress from user-facing banners
+  // (the server handles these separately via its own coverage checks)
+  if (source === 'db') return null;
+
+  return `Missing liturgical text: ${source} → ${k}`;
+}
+
 function renderErrorPage(message, detail = '') {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1362,18 +1422,23 @@ function handleRequest(req, res) {
         date:  `${formatDate(date)}${toneLabel}${pronounLabel}`,
       });
 
-      const hasMenaion  = calendarEntry.commemorations?.length > 0;
-      const hasStichera = calendarEntry.vespers.lordICall.slots.some(s => s.source === 'menaion');
-      const notice = isGenerated
-        ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:8px 40px;background:#fffbe6;border-bottom:1px solid #e6d87a;color:#7a6000;">
-             ⚠ Auto-generated service${hasMenaion ? '' : ' — Menaion commemorations for this date are not yet included'}.
-             ${hasMenaion && !hasStichera ? 'Menaion stichera (Lord I Call) are not yet included.' : ''}
-           </div>`
-        : '';
       const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">
   <a href="/" style="color:#8b1a1a;text-decoration:none;">← Back</a>
 </div>`;
-      const injected = html.replace('<body>', '<body>' + backBar + notice);
+
+      // Format assembly warnings into human-readable messages
+      const rawWarnings = blocks._warnings || [];
+      const warningMessages = rawWarnings.map(w => formatAssemblyWarning(w.source, w.key)).filter(Boolean);
+      const uniqueWarnings = [...new Set(warningMessages)];
+
+      const warningBanner = uniqueWarnings.length > 0
+        ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:10px 40px;background:#fff3cd;border-bottom:2px solid #e6ac00;color:#6b4800;">
+             <strong>⚠ Some portions of this service are incomplete:</strong>
+             <ul style="margin:4px 0 0 16px;padding:0;">${uniqueWarnings.map(m => `<li>${m}</li>`).join('')}</ul>
+           </div>`
+        : '';
+
+      const injected = html.replace('<body>', '<body>' + backBar + warningBanner);
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(injected);

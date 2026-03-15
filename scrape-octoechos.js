@@ -255,34 +255,48 @@ function parseSingleHymn(raw) {
 }
 
 /**
- * Parses an aposticha PDF. Returns { idiomelon, glory } where idiomelon is the
- * first sticheron (repeated throughout the aposticha) and glory is the Glory
- * doxastichon that follows the psalm-verse stichera, if present.
+ * Parses an aposticha PDF. Returns { idiomelon, hymns, glory } where:
+ * - hymns: all unique stichera (typically 3-4 for a tone's aposticha)
+ * - idiomelon: first sticheron (same as hymns[0], kept for backward compat)
+ * - glory: the Glory doxastichon if present (rare in Octoechos aposticha PDFs)
+ *
+ * Psalm verse rubrics ("V. The Lord is King...") are stripped from each
+ * sticheron — they appear inline after the text in these SATB PDFs.
  */
 function parseAposticha(raw) {
   const lines = cleanLines(raw);
 
-  const HEADERS = /^(Tone\s+\d|Resurrectional|Theotokion|Dogmatikon|Aposticha|Obikhod|Kievan|Serbian|Sticheron\s+1\b)/i;
-  const STOP    = /^(V\.|Sticheron\s+[2-9]|Then\b|If there is|Gloria)/i;
-  const GLORY   = /^Glory\b/i;
-  const NOW     = /^Now and ever\b/i;
+  const STOP  = /^(Then\b|If there is|The tone of)/i;
+  const GLORY = /^Glory\b/i;
+  const NOW   = /^Now and ever\b/i;
 
-  // ── Idiomelon (first sticheron) ─────────────────────────────────────────────
-  let start = 0;
-  for (let i = 0; i < Math.min(lines.length, 5); i++) {
-    if (HEADERS.test(lines[i])) { start = i + 1; }
+  // ── Split on "Sticheron N" markers ──────────────────────────────────────────
+  const hymns = [];
+  let current = [];
+  let inHymn  = false;
+
+  for (const line of lines) {
+    if (/^Sticheron\s+\d+/.test(line)) {
+      if (inHymn && current.length > 0) hymns.push(joinFragments(current));
+      current = [];
+      inHymn  = true;
+    } else if (STOP.test(line)) {
+      if (inHymn && current.length > 0) hymns.push(joinFragments(current));
+      break;
+    } else if (inHymn) {
+      if (/^(Tone\s+\d|arr\.)/.test(line)) continue;
+      current.push(line);
+    }
   }
+  if (inHymn && current.length > 0) hymns.push(joinFragments(current));
 
-  let end = lines.length;
-  for (let i = start; i < lines.length; i++) {
-    if (STOP.test(lines[i])) { end = i; break; }
-  }
+  // Strip psalm verse rubrics appended after the sticheron text.
+  // Pattern: "V. [Capitalized verse text]" appearing inline at the end.
+  const cleanedHymns = hymns.map(h =>
+    h.replace(/\s+V\.\s+[A-Z][\s\S]*$/, '').trim()
+  );
 
-  let idiomelon = joinFragments(lines.slice(start, end));
-  // Strip any trailing psalm-verse marker that ended up inline (from SATB column merge)
-  idiomelon = idiomelon.replace(/\s*\bV\.\s.*$/m, '').trim();
-
-  // ── Glory doxastichon (NEW) ──────────────────────────────────────────────────
+  // ── Glory doxastichon (uncommon in Octoechos aposticha PDFs) ────────────────
   let glory = null;
   const gloryStart = lines.findIndex(l => GLORY.test(l));
   if (gloryStart !== -1) {
@@ -292,7 +306,7 @@ function parseAposticha(raw) {
     if (gloryText) glory = gloryText;
   }
 
-  return { idiomelon, glory };
+  return { idiomelon: cleanedHymns[0] || null, hymns: cleanedHymns, glory };
 }
 
 // ─── Per-tone scraper ────────────────────────────────────────────────────────
@@ -308,10 +322,12 @@ async function scrapeTone(n) {
       let preview;
       if (key === 'aposticha') {
         const parsed = parseAposticha(raw);
-        result.aposticha      = parsed.idiomelon;
+        result.aposticha      = parsed.idiomelon;   // kept for backward compat
+        result.apostichaHymns = parsed.hymns;       // all stichera
         result.apostichaGlory = parsed.glory;
-        preview = parsed.idiomelon.slice(0, 50).replace(/\n/g, ' ') + '…'
-                + (parsed.glory ? ' [+glory]' : ' [no glory]');
+        preview = `[${parsed.hymns.length} stichera] `
+                + (parsed.hymns[0] || '').slice(0, 40).replace(/\n/g, ' ') + '…'
+                + (parsed.glory ? ' [+glory]' : '');
       } else {
         const text = key === 'stichera' ? parseStichera(raw) : parseSingleHymn(raw);
         result[key] = text;

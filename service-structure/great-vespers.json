@@ -366,6 +366,35 @@
     },
 
     {
+      "id": "litya",
+      "label": "The Litya",
+      "note": "All-Night Vigil only. Procession to the narthex. Litya stichera (from Menaion/Pentecostarion), then Litany of Supplication.",
+      "condition": "serviceType === 'all-night-vigil'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "litya-stichera",
+          "type": "variable",
+          "slot": "litya-stichera",
+          "resolvedBy": "sticheraAssembler",
+          "sources": ["menaion", "triodion", "pentecostarion"]
+        },
+        {
+          "id": "litya-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.litya"
+        },
+        {
+          "id": "litya-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.litya.exclamation"
+        }
+      ]
+    },
+
+    {
       "id": "aposticha",
       "label": "Aposticha",
       "note": "Choir sings appointed Aposticha. On Saturdays at Great Vespers, specific psalm verses are used.",
@@ -466,6 +495,47 @@
             { "slot": "now", "textKey": "doxology.nowOnly", "optional": true },
             { "slot": "theotokion", "optional": true }
           ]
+        }
+      ]
+    },
+
+    {
+      "id": "blessing-of-bread",
+      "label": "Blessing of Bread, Wheat, Wine, and Oil",
+      "note": "All-Night Vigil only. Follows Dismissal Troparia.",
+      "condition": "serviceType === 'all-night-vigil'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "blessing-of-bread-prayer",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.blessingOfBread"
+        },
+        {
+          "id": "vigil-augmented-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.augmented"
+        },
+        {
+          "id": "vigil-augmented-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.augmented.exclamation"
+        },
+        {
+          "id": "blessed-be-the-name",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "responses.blessedBeTheName",
+          "note": "Psalm 112:2 — sung thrice"
+        },
+        {
+          "id": "psalm33",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm33"
         }
       ]
     },

@@ -1,0 +1,383 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Divine Liturgy (Chrysostom and Basil) — invariable content",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0"
+  },
+
+  "opening-doxology": {
+    "exclamation": "Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "response": "Amen."
+  },
+
+  "great-litany": {
+    "opening": "In peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "For the peace from above, and for the salvation of our souls, let us pray to the Lord.",
+      "For the peace of the whole world, the welfare of the holy churches of God, and the union of all, let us pray to the Lord.",
+      "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.",
+      "For our Archbishop N., for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+      "For this country, its President [or: the civil authorities], for all civil authorities, and for the armed forces, let us pray to the Lord.",
+      "For this city [or: village, or: holy monastery], every city and countryside, and the faithful who dwell therein, let us pray to the Lord.",
+      "For seasonable weather, an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord.",
+      "For travelers by sea, by land, and by air; for the sick and the suffering; for captives and for their salvation, let us pray to the Lord.",
+      "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.",
+      "Help us, save us, have mercy on us, and keep us, O God, by Thy grace."
+    ],
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "For unto Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "typical-antiphon-1": {
+    "_note": "Psalm 102 — typical First Antiphon, sung when no feast antiphon is appointed.",
+    "refrain": "Through the intercessions of the Theotokos, O Savior, save us.",
+    "verses": [
+      "Bless the Lord, O my soul; and all that is within me, bless His holy name.",
+      "Bless the Lord, O my soul, and forget not all His benefits.",
+      "Who forgiveth all thine iniquities, Who healeth all thy diseases.",
+      "Who redeemeth thy life from destruction; Who crowneth thee with lovingkindness and tender mercies.",
+      "The Lord executeth righteousness and judgment for all that are oppressed.",
+      "The Lord is merciful and gracious, slow to anger, and plenteous in mercy.",
+      "For as the heaven is high above the earth, so great is His mercy toward them that fear Him.",
+      "As far as the east is from the west, so far hath He removed our transgressions from us.",
+      "Bless the Lord, all ye His angels, that excel in strength, that do His commandments."
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "gloryRefrain": "Through the intercessions of the Theotokos, O Savior, save us."
+  },
+
+  "little-litany": {
+    "opening": "Again and again in peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation1": "For Thine is the might, and Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "exclamation2": "For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "typical-antiphon-2": {
+    "_note": "Psalm 145 — typical Second Antiphon, sung when no feast antiphon is appointed.",
+    "refrain": "Save us, O Son of God, who art risen from the dead, who sing to Thee: Alleluia.",
+    "refrainWeekday": "Save us, O Son of God, who art wondrous in Thy saints, who sing to Thee: Alleluia.",
+    "verses": [
+      "Praise the Lord, O my soul. I will praise the Lord while I live; I will sing praises unto my God while I have my being.",
+      "Put not your trust in princes, nor in the son of man, in whom there is no help.",
+      "His breath goeth forth, he returneth to his earth; in that very day his thoughts perish.",
+      "Happy is he that hath the God of Jacob for his help, whose hope is in the Lord his God.",
+      "Who made heaven and earth, the sea, and all that therein is; Who keepeth truth forever.",
+      "Who executeth judgment for the oppressed; Who giveth food to the hungry. The Lord looseth the prisoners.",
+      "The Lord preserveth the strangers; He relieveth the fatherless and widow.",
+      "The Lord shall reign forever, even thy God, O Zion, unto all generations."
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+  },
+
+  "only-begotten-son": "Only-begotten Son and immortal Word of God, Who for our salvation didst will to be incarnate of the holy Theotokos and Ever-Virgin Mary, Who without change didst become man and wast crucified, O Christ our God, trampling down death by death, Who art one of the Holy Trinity, glorified with the Father and the Holy Spirit: save us.",
+
+  "beatitudes": {
+    "_note": "Matthew 5:3–12. Troparia are interspersed between verses starting at the slot indicated by the calendar. Direction: top-down (verse 1 is first, last verse is 'Theotokion').",
+    "verses": [
+      "In Thy Kingdom, remember us, O Lord, when Thou comest in Thy Kingdom.",
+      "Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.",
+      "Blessed are they that mourn, for they shall be comforted.",
+      "Blessed are the meek, for they shall inherit the earth.",
+      "Blessed are they who hunger and thirst after righteousness, for they shall be filled.",
+      "Blessed are the merciful, for they shall obtain mercy.",
+      "Blessed are the pure in heart, for they shall see God.",
+      "Blessed are the peacemakers, for they shall be called the sons of God.",
+      "Blessed are those who are persecuted for righteousness' sake, for theirs is the Kingdom of Heaven.",
+      "Blessed are ye when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for My sake.",
+      "Rejoice, and be exceeding glad, for great is your reward in heaven.",
+      "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "Now and ever, and unto ages of ages. Amen."
+    ]
+  },
+
+  "small-entrance": {
+    "silentPrayer": "O Master and Lord our God, Who hast appointed in the heavens orders and armies of angels and archangels for the service of Thy glory: grant that with our entrance there may be an entrance of holy angels serving with us and glorifying Thy goodness. For to Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "deacon": "Wisdom! Attend!"
+  },
+
+  "augmented-litany": {
+    "_note": "Also called the Litany of Fervent Supplication. Responses alternate between Lord, have mercy (single) and Lord, have mercy (×3).",
+    "opening": "Let us say with all our soul and with all our mind, let us say:",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "O Lord Almighty, the God of our fathers, we pray Thee, hearken and have mercy.",
+      "Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy."
+    ],
+    "tripleResponse": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "triplePetitions": [
+      "Again we pray for our Archbishop N., and for our Bishop [or Archbishop] N.",
+      "Again we pray for this country, its President [or: the civil authorities], and for the armed forces.",
+      "Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.",
+      "Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.",
+      "Again we pray for those who bring offerings and do good works in this holy and all-venerable temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy."
+    ],
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "litany-catechumens": {
+    "opening": "Pray to the Lord, ye catechumens.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "Let us, the faithful, pray for the catechumens.",
+      "That the Lord will have mercy on them.",
+      "That He will teach them the word of truth.",
+      "That He will reveal to them the Gospel of righteousness.",
+      "That He will unite them to His holy, catholic, and apostolic Church."
+    ],
+    "petition2": "Save them, have mercy on them, help them, and keep them, O God, by Thy grace.",
+    "bowHeads": "Bow your heads before the Lord, ye catechumens.",
+    "bowHeadsResponse": "To Thee, O Lord.",
+    "exclamation": "That they also, with us, may glorify Thy most honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen.",
+    "dismissal": "As many as are catechumens, depart! Depart, catechumens! As many as are catechumens, depart! Let none of the catechumens remain!"
+  },
+
+  "litany-faithful-1": {
+    "opening": "We, the faithful, again and again in peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "litany-faithful-2": {
+    "opening": "Again and again in peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "cherubic-hymn": "Let us who mystically represent the Cherubim, and who sing the thrice-holy hymn to the life-giving Trinity, now lay aside all earthly cares,\n\nthat we may receive the King of all, Who comes invisibly upborne by the angelic hosts. Alleluia! Alleluia! Alleluia!",
+
+  "cherubic-great-thursday": "Of Thy mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of Thy mystery to Thine enemies; neither will I give Thee a kiss as did Judas; but like the thief will I confess Thee: Remember me, O Lord, in Thy Kingdom.\n\nRemember me, O Lord, in Thy Kingdom. Remember me, O Lord, in Thy Kingdom.",
+
+  "cherubic-great-saturday": "Let all mortal flesh keep silence, and stand with fear and trembling, and meditate nothing earthly within itself. For the King of kings and Lord of lords, Christ our God, comes forward to be slain, to give Himself as food to the faithful; and the bands of angels go before Him with every power and dominion, the many-eyed Cherubim and the six-winged Seraphim, covering their faces and crying aloud: Alleluia! Alleluia! Alleluia!",
+
+  "great-entrance": {
+    "_note": "The deacon and priest carry the Holy Gifts through the nave. The commemorations are variable.",
+    "rubric": "The Holy Doors are opened. The priest and deacon carry the Holy Gifts from the Table of Oblation through the nave to the Holy Table.",
+    "commonCommemoration": "All of you Orthodox Christians, may the Lord God remember in His Kingdom, always, now and ever, and unto ages of ages.",
+    "response": "Amen."
+  },
+
+  "litany-supplication": {
+    "_note": "Sung after the Great Entrance and the closing of the Holy Doors.",
+    "opening": "Let us complete our prayer unto the Lord.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "For the precious Gifts here offered, let us pray to the Lord.",
+      "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.",
+      "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.",
+      "Help us, save us, have mercy on us, and keep us, O God, by Thy grace."
+    ],
+    "petitions2": [
+      "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+      "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+      "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+      "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+      "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+      "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+    ],
+    "petitions2Response": "Grant this, O Lord.",
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "Through the mercies of Thine Only-begotten Son, with Whom Thou art blessed, together with Thine all-holy, good, and life-creating Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by Whom all things were made; Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and was made man; and was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again, according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and He shall come again with glory to judge the living and the dead, Whose Kingdom shall have no end.\n\nAnd I believe in the Holy Spirit, the Lord, the Giver of Life, Who proceedeth from the Father; Who with the Father and the Son together is worshiped and glorified; Who spake by the Prophets.\n\nIn one holy, catholic, and apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead, and the life of the age to come. Amen.",
+
+  "anaphora-chrysostom": {
+    "_note": "The Anaphora of St. John Chrysostom. Silent prayers are indicated in rubrics. Only the audible/sung portions are stored here.",
+    "sursum-corda": [
+      { "speaker": "priest", "text": "The grace of our Lord Jesus Christ, and the love of God the Father, and the communion of the Holy Spirit be with you all." },
+      { "speaker": "people", "text": "And with thy spirit." },
+      { "speaker": "priest", "text": "Let us lift up our hearts." },
+      { "speaker": "people", "text": "We lift them up unto the Lord." },
+      { "speaker": "priest", "text": "Let us give thanks unto the Lord." },
+      { "speaker": "people", "text": "It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided." }
+    ],
+    "preface-incipit": "It is meet and right to hymn Thee, to bless Thee, to praise Thee, to give thanks to Thee, and to worship Thee in every place of Thy dominion…",
+    "sanctus-introduction": "…singing the triumphal hymn, shouting, crying aloud, and saying:",
+    "sanctus": "Holy, holy, holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that cometh in the name of the Lord! Hosanna in the highest!",
+    "institution-body": "Take, eat, this is My Body, which is broken for you, for the forgiveness of sins.",
+    "institution-cup": "Drink of it, all of you; this is My Blood of the New Testament, which is shed for you and for many, for the forgiveness of sins.",
+    "institution-response": "Amen.",
+    "anamnesis": "Thine own of Thine own, we offer unto Thee, on behalf of all and for all.",
+    "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks to Thee, O Lord, and we pray unto Thee, O our God.",
+    "megalynarion-cue": "Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.",
+    "intercessions-exclamation": "And grant that with one mouth and one heart we may glorify and hymn Thine all-honorable and majestic Name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "intercessions-response": "Amen.",
+    "final-blessing": "And the mercies of our great God and Savior Jesus Christ be with you all.",
+    "final-response": "And with thy spirit."
+  },
+
+  "anaphora-basil": {
+    "_note": "The Anaphora of St. Basil the Great. Shares the same sursum corda as Chrysostom. The preface and intercessions are significantly expanded.",
+    "sursum-corda": [
+      { "speaker": "priest", "text": "The grace of our Lord Jesus Christ, and the love of God the Father, and the communion of the Holy Spirit be with you all." },
+      { "speaker": "people", "text": "And with thy spirit." },
+      { "speaker": "priest", "text": "Let us lift up our hearts." },
+      { "speaker": "people", "text": "We lift them up unto the Lord." },
+      { "speaker": "priest", "text": "Let us give thanks unto the Lord." },
+      { "speaker": "people", "text": "It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided." }
+    ],
+    "preface-incipit": "O Thou Who art, Master, Lord, God, Father Almighty, and adorable; it is truly meet and right and befitting the magnificence of Thy holiness to praise Thee, to hymn Thee, to bless Thee, to worship Thee, to give thanks to Thee, to glorify Thee Who alone art truly God…",
+    "sanctus-introduction": "…and with thousands of Archangels and ten thousands of Angels, with the Cherubim and Seraphim, Who are six-winged and many-eyed, soaring aloft, borne on their wings, singing the triumphal hymn, shouting, crying aloud, and saying:",
+    "sanctus": "Holy, holy, holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that cometh in the name of the Lord! Hosanna in the highest!",
+    "institution-body": "Take, eat, this is My Body, which is broken for you, for the forgiveness of sins.",
+    "institution-cup": "Drink of it, all of you; this is My Blood of the New Testament, which is shed for you and for many, for the forgiveness of sins.",
+    "institution-response": "Amen.",
+    "anamnesis": "Thine own of Thine own, we offer unto Thee, on behalf of all and for all.",
+    "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks to Thee, O Lord, and we pray unto Thee, O our God.",
+    "megalynarion-cue": "Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.",
+    "intercessions-exclamation": "And grant that with one mouth and one heart we may glorify and hymn Thine all-honorable and majestic Name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "intercessions-response": "Amen.",
+    "final-blessing": "And the mercies of our great God and Savior Jesus Christ be with you all.",
+    "final-response": "And with thy spirit."
+  },
+
+  "it-is-truly-meet": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim; without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.",
+
+  "megalynarion-basil": "All of creation rejoices in thee, O Full of Grace: the assembly of angels and the race of men. O sanctified temple and spiritual paradise, the glory of virgins, from whom God was incarnate and became a Child: our God before the ages. He made thy body into a throne, and thy womb He made more spacious than the heavens. All of creation rejoices in thee, O Full of Grace. Glory to thee!",
+
+  "litany-lords-prayer": {
+    "opening": "Having remembered all the saints, again and again in peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "For the precious Gifts offered and sanctified, let us pray to the Lord.",
+      "That our God, Who loveth mankind, receiving them upon His holy, heavenly, and ideal altar as a sweet spiritual fragrance, will send down upon us in return His divine grace and the gift of the Holy Spirit, let us pray to the Lord.",
+      "For our deliverance from all affliction, wrath, danger, and necessity, let us pray to the Lord.",
+      "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+      "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+      "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+      "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+      "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+      "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+      "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+    ],
+    "petitionResponse": "Grant this, O Lord.",
+    "commemoration": "Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation-chrysostom": "And make us worthy, O Master, that with boldness and without condemnation, we may dare to call on Thee, the heavenly God, as Father, and to say:",
+    "exclamation-basil": "And make us worthy, O Master, that with boldness and without condemnation we may dare to call on Thee, the heavenly God, as Father, and to say:"
+  },
+
+  "lords-prayer": {
+    "text": "Our Father, Who art in heaven, hallowed be Thy name; Thy Kingdom come; Thy will be done on earth, as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+    "doxology": "For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "response": "Amen."
+  },
+
+  "pre-communion": {
+    "_note": "The pre-communion prayer said/sung by all before receiving Holy Communion. Two OCA-approved translations are provided.",
+    "bowHeads": {
+      "rubric": "Priest:",
+      "text": "Peace be unto all.",
+      "response": "And to thy spirit.",
+      "deacon": "Bow your heads unto the Lord.",
+      "peopleResponse": "To Thee, O Lord."
+    },
+    "bow-prayer-chrysostom": "We give thanks unto Thee, O King invisible, Who by Thy measureless power didst make all things, and in the greatness of Thy mercy didst bring all things from non-existence into being. Do Thou Thyself, O Master, look down from heaven upon those who have bowed their heads before Thee; for they have bowed not before flesh and blood, but before Thee, the awesome God. Do Thou, O Master, distribute these Gifts here offered unto all of us for good, according to the individual need of each; sail with those who sail, travel with those who travel by land and by air; heal the sick, O Thou Who art the Physician of our souls and bodies.",
+    "bow-prayer-basil": "O Master, Lord, Father of compassions and God of every consolation: Bless, sanctify, guard, strengthen, and confirm those who have bowed their heads before Thee. Withdraw them from every evil deed; apply them to every good work and make them worthy to partake without condemnation of these, Thy most pure and life-creating Mysteries, for remission of sins and for the communion of the Holy Spirit.",
+    "elevation": {
+      "deacon": "Let us attend.",
+      "priest": "The holy Things are for the holy!",
+      "people": "One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen."
+    },
+    "prayer-chrysostom": "I believe, O Lord, and I confess, that Thou art truly the Christ, the Son of the living God, Who camest into the world to save sinners, of whom I am first. I believe also that this is truly Thine own most pure Body, and that this is truly Thine own precious Blood. Wherefore, I pray Thee: have mercy upon me, and forgive my transgressions, both voluntary and involuntary, of word and of deed, committed in knowledge or in ignorance. And make me worthy to partake without condemnation of Thy most pure Mysteries, for the remission of my sins, and unto life everlasting.\n\nOf Thy mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of Thy mystery to Thine enemies; neither will I give Thee a kiss as did Judas; but like the thief will I confess Thee: Remember me, O Lord, in Thy Kingdom.\n\nMay the communion of Thy holy Mysteries be neither to my judgment nor to my condemnation, O Lord, but to the healing of soul and body.",
+    "prayer-basil": "O God, the God of salvation, do Thou teach us to thank Thee worthily for the benefits which Thou hast performed for us and still performest with us. Having accepted these Gifts, O our God, do Thou purify us from every defilement of flesh and spirit, and teach us how to perfect our sanctification in Thy fear, so that receiving a portion of Thy Holy Things with a pure conscience we may be united with the Holy Body and Blood of Thy Christ. Having received them worthily, may we have Christ dwelling in our hearts, and may we become the temple of Thy Holy Spirit. Yea, O our God, let none of us be guilty of these Thine awesome and heavenly Mysteries, nor be infirm in soul and body by partaking of them unworthily. But, enable us, even to our last breath, to receive a portion of Thy Holy Things worthily, as a support on the road to eternal life and an acceptable defense at the dread judgment seat of Thy Christ."
+  },
+
+  "post-communion-blessing": {
+    "priest": "Save, O God, Thy people, and bless Thine inheritance.",
+    "people": "We have seen the true Light! We have received the heavenly Spirit! We have found the true Faith! Worshiping the undivided Trinity, Who hath saved us.",
+    "_note": "The priest says the exclamation while carrying the Holy Gifts to the Table of Oblation."
+  },
+
+  "we-have-seen": "We have seen the true Light. We have received the heavenly Spirit. We have found the true Faith, worshiping the undivided Trinity, Who has saved us.",
+
+  "christ-is-risen": "Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
+
+  "let-our-mouths": "Let our mouths be filled with Thy praise, O Lord, that we may sing of Thy glory; for Thou hast made us worthy to partake of Thy holy, divine, immortal, and life-creating Mysteries. Keep us in Thy holiness, that all the day we may meditate upon Thy righteousness. Alleluia! Alleluia! Alleluia!",
+
+  "litany-thanksgiving": {
+    "deacon": "Let us attend. Having partaken of the divine, holy, most-pure, immortal, heavenly, and life-creating, awesome Mysteries of Christ, let us worthily give thanks unto the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "petitions": [
+      "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+      "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+      "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+      "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+      "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+      "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+    ],
+    "petitionResponse": "Grant this, O Lord.",
+    "commemoration": "Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "For Thou art our sanctification, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen.",
+    "prayer-chrysostom": "We thank Thee, O Master Who lovest mankind, Benefactor of our souls, that Thou hast made us worthy this day of Thy heavenly and immortal Mysteries. Make straight our path; strengthen us all in Thy fear; guard our life; make firm our steps; through the prayers and intercessions of the glorious Theotokos and Ever-Virgin Mary, and of all Thy saints.",
+    "prayer-basil": "We thank Thee, O Lord our God, for the participation in Thy holy, most-pure, immortal and heavenly Mysteries, which Thou hast granted us for the good and sanctification and healing of our souls and bodies. Do Thou, O Master of all, grant that the communion of the Holy Body and Blood of Thy Christ may be to us for a faith unashamed, a love unfeigned, an increase of wisdom, the healing of soul and body, the repelling of every adversary, the observance of Thy commandments, and an acceptable defense at the dread judgment seat of Thy Christ."
+  },
+
+  "prayer-ambon-chrysostom": "O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house; glorify them in return by Thy divine power, and forsake us not who set our hope on Thee. Give peace to Thy world, to Thy churches, to the clergy, to those who govern us, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, coming down from Thee, the Father of lights. And to Thee do we send up glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+
+  "prayer-ambon-basil": "O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house. Do Thou glorify them in return by Thy divine power, and forsake us not who set our hope in Thee. Give peace to Thy world, to Thy churches, to the priests, to those in authority, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, and cometh down from Thee, the Father of lights; and unto Thee do we ascribe glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+
+  "blessed-be-the-name": {
+    "text": "Blessed be the name of the Lord, henceforth and forevermore.",
+    "repetitions": 3,
+    "response": "Amen.",
+    "finalBlessing": "The blessing of the Lord be upon you, through His grace and love for mankind, always, now and ever, and unto ages of ages.",
+    "finalResponse": "Amen."
+  },
+
+  "psalm-33": {
+    "_note": "Read by the reader while the priest reads the Prayer of Thanksgiving behind the altar. Verses from Psalm 33 (LXX)/Psalm 34 (Hebrew).",
+    "rubric": "The Reader:",
+    "text": "I will bless the Lord at all times; His praise shall continually be in my mouth. In the Lord shall my soul make her boast; the humble shall hear thereof, and be glad. O magnify the Lord with me, and let us exalt His name together.\n\nI sought the Lord, and He heard me, and delivered me from all my fears. They looked unto Him, and were enlightened; and their faces were not ashamed. This poor man cried, and the Lord heard him, and saved him out of all his troubles. The angel of the Lord encampeth round about them that fear Him, and delivereth them. O taste and see that the Lord is good; blessed is the man that trusteth in Him.\n\nO fear the Lord, ye His saints; for there is no want to them that fear Him. The rich have become poor, and hunger; but they that seek the Lord shall not want any good thing.\n\nCome, ye children, hearken unto me; I will teach you the fear of the Lord. What man is he that desireth life, and loveth many days, that he may see good? Keep thy tongue from evil, and thy lips from speaking guile. Depart from evil, and do good; seek peace, and pursue it.\n\nThe eyes of the Lord are upon the righteous, and His ears are open unto their cry. The face of the Lord is against them that do evil, to cut off the remembrance of them from the earth. The righteous cried, and the Lord heard, and delivered them out of all their distresses. The Lord is nigh unto them that are of a broken heart, and saveth such as be of a contrite spirit.\n\nMany are the afflictions of the righteous; but the Lord delivereth him out of them all. He keepeth all his bones; not one of them is broken. Evil shall slay the wicked; and they that hate the righteous shall be desolate. The Lord redeemeth the souls of His servants; and none of them that trust in Him shall be desolate.",
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+  },
+
+  "troparion-chrysostom": {
+    "troparion": "Grace shining forth from thy lips like a beacon hath illumined the universe, and disclosed to the world the treasures of non-covetousness, and shown us the heights of humility; but whilst thine own words teach us, O Father John Chrysostom, intercede with the Word, Christ our God, to save our souls.",
+    "tone": 8
+  },
+
+  "troparion-basil": {
+    "troparion": "Thy proclamation has gone out into all the earth, which has received thy word. Thereby thou hast divinely taught the Faith; thou hast made manifest the nature of created things; thou hast made the moral life of men a royal priesthood. O Basil, our righteous father, intercede with Christ God that our souls may be saved.",
+    "tone": 1
+  },
+
+  "dismissal-theotokion": "O protection of Christians that cannot be put to shame, O mediation unto the Creator most constant: despise not the suppliant voices of those who have sinned; but be thou quick, O good one, to come unto our aid, who in faith cry unto thee: Hasten to intercession, and speed thou to make supplication, thou who dost ever protect, O Theotokos, them that honor thee.",
+
+  "trisagion": {
+    "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "repetitions": 3,
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "final": "Holy Immortal, have mercy on us."
+  },
+
+  "trisagion-cross": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify.",
+
+  "trisagion-baptismal": "As many as have been baptized into Christ, have put on Christ. Alleluia."
+}

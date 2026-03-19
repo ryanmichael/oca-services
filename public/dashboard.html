@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Coverage Dashboard</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #F5F0E8;
+  --surface: #FAF7F2;
+  --text:    #1A1209;
+  --rubric:  #8B1A1A;
+  --gold:    #C9A84C;
+  --muted:   #6B6358;
+  --border:  #DDD5C4;
+}
+
+html, body {
+  min-height: 100vh;
+  background: var(--bg); color: var(--text);
+  font-family: 'EB Garamond', serif;
+}
+
+/* ── HEADER ── */
+header {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 32px;
+}
+.header-cross { color: var(--rubric); font-size: 18px; }
+.header-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+.header-back {
+  margin-left: auto;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+  color: var(--muted); text-decoration: none;
+}
+.header-back:hover { color: var(--rubric); }
+
+/* ── LAYOUT ── */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 32px 60px;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex; gap: 16px; margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  flex: 1; min-width: 140px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+}
+.stat-value {
+  font-family: 'Cinzel', serif; font-size: 28px;
+  color: var(--rubric); line-height: 1;
+}
+.stat-label {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .16em;
+  color: var(--muted); margin-top: 6px; text-transform: uppercase;
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex; align-items: center; gap: 24px;
+  margin-bottom: 24px; flex-wrap: wrap;
+}
+.filter-group {
+  display: flex; align-items: center; gap: 8px;
+}
+.filter-label {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .14em;
+  color: var(--muted); text-transform: uppercase;
+}
+.filter-bar select {
+  font-family: 'EB Garamond', serif; font-size: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); padding: 5px 10px; cursor: pointer;
+}
+.filter-btn {
+  background: none; border: 1px solid var(--border);
+  padding: 5px 12px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em;
+  color: var(--muted);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.filter-btn:hover { border-color: var(--gold); color: var(--text); }
+.filter-btn.active { border-color: var(--rubric); color: var(--rubric); background: rgba(139,26,26,.06); }
+
+/* ── FILTER STATUS ── */
+.filter-status {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+  color: var(--rubric); margin-bottom: 16px;
+  text-transform: uppercase;
+  min-height: 16px;
+}
+
+/* ── HEATMAP ── */
+.heatmap-section {
+  margin-bottom: 32px;
+}
+.heatmap-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.heatmap-title {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em;
+  color: var(--muted); text-transform: uppercase;
+}
+.heatmap-color-filter {
+  gap: 6px;
+}
+
+.heatmap-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.heatmap-month-labels {
+  display: flex;
+  margin-left: 32px;
+  margin-bottom: 4px;
+}
+.heatmap-month-label {
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .08em;
+  color: var(--muted); text-transform: uppercase;
+}
+
+.heatmap-grid-wrap {
+  display: flex; gap: 4px;
+}
+.heatmap-day-labels {
+  display: flex; flex-direction: column; gap: 2px;
+  padding-top: 0;
+}
+.heatmap-day-label {
+  width: 28px; height: 14px;
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .04em;
+  color: var(--muted);
+  display: flex; align-items: center;
+  line-height: 1;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 14px);
+  grid-auto-columns: 14px;
+  grid-auto-flow: column;
+  gap: 2px;
+}
+.heatmap-cell {
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: outline .12s;
+  position: relative;
+}
+.heatmap-cell:hover {
+  outline: 2px solid var(--rubric);
+  outline-offset: 1px;
+  z-index: 10;
+}
+.heatmap-cell.selected {
+  outline: 2px solid var(--text);
+  outline-offset: 1px;
+  z-index: 11;
+}
+
+/* Completeness color scale (gold-based) */
+.level-0 { background: #EDE8DD; }
+.level-1 { background: #E8D9A8; }
+.level-2 { background: #D4BC6A; }
+.level-3 { background: #C9A84C; }
+.level-4 { background: #8B7328; }
+
+/* Source color scale */
+.src-none    { background: #EDE8DD; }
+.src-oca     { background: #C9A84C; }
+.src-mixed   { background: #B8884A; }
+.src-other   { background: #8B6538; }
+.src-generic { background: #9B8B78; }
+
+/* Empty / no-service cells */
+.heatmap-cell.empty { background: transparent; cursor: default; }
+.heatmap-cell.empty:hover { outline: none; }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 12px;
+}
+.legend-label {
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .08em;
+  color: var(--muted);
+}
+.legend-swatch {
+  width: 14px; height: 14px; border-radius: 2px;
+}
+
+/* ── TOOLTIP ── */
+.tooltip {
+  display: none;
+  position: fixed;
+  background: var(--text);
+  color: var(--surface);
+  padding: 8px 12px;
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  line-height: 1.4;
+  border-radius: 4px;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: 300px;
+}
+.tooltip.visible { display: block; }
+.tooltip-date {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em;
+  opacity: .7; margin-bottom: 2px;
+}
+.tooltip-score { color: var(--gold); }
+
+/* ── SEASON BREAKDOWN ── */
+.season-bar-section {
+  margin-bottom: 32px;
+}
+.season-bars {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.season-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.season-name {
+  width: 140px; flex-shrink: 0;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .08em;
+  color: var(--muted); text-align: right; text-transform: uppercase;
+}
+.season-bar-wrap {
+  flex: 1; height: 18px;
+  background: #EDE8DD; border-radius: 2px;
+  overflow: hidden;
+}
+.season-bar-fill {
+  height: 100%; border-radius: 2px;
+  background: var(--gold);
+  transition: width .4s ease;
+}
+.season-pct {
+  width: 36px; flex-shrink: 0;
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── DETAIL PANEL (collapsible inside heatmap) ── */
+.detail-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  border-top: 0 solid var(--border);
+  margin-top: 0;
+  transition: max-height .32s cubic-bezier(.4,0,.2,1),
+              opacity .24s ease,
+              margin-top .32s ease,
+              padding .32s ease,
+              border-top-width .32s ease;
+  padding: 0;
+}
+.detail-panel.visible {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+  padding: 16px 0 0;
+}
+
+.detail-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 10px;
+}
+.detail-date {
+  font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .1em;
+  color: var(--rubric);
+}
+.detail-close {
+  background: none; border: none; cursor: pointer;
+  font-family: 'EB Garamond', serif; font-size: 17px;
+  color: var(--muted); padding: 0 4px;
+  transition: color .12s;
+}
+.detail-close:hover { color: var(--rubric); }
+
+.detail-meta {
+  display: flex; gap: 24px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.detail-meta-item {
+  font-family: 'EB Garamond', serif; font-size: 14px;
+  color: var(--muted);
+}
+.detail-meta-value { color: var(--text); font-weight: 500; }
+
+.detail-layers {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.detail-layer {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'EB Garamond', serif; font-size: 14px;
+}
+.detail-layer-dot {
+  width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+}
+.detail-layer-dot.present { background: var(--gold); }
+.detail-layer-dot.missing { background: #EDE8DD; border: 1px solid var(--border); }
+.detail-layer-name { color: var(--text); }
+.detail-layer-source {
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .08em;
+  color: var(--muted); text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* ── SOURCE TABLE ── */
+.source-section { margin-bottom: 32px; }
+.source-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.source-table th {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.source-table td {
+  font-family: 'EB Garamond', serif; font-size: 14px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.source-table tr:last-child td { border-bottom: none; }
+.source-pct { font-weight: 500; }
+
+/* ── LOADING ── */
+.loading {
+  text-align: center; padding: 80px 0;
+  font-family: 'EB Garamond', serif; font-size: 18px;
+  color: var(--muted); font-style: italic;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 767px) {
+  header { padding: 0 16px; }
+  .dashboard { padding: 20px 16px 60px; }
+  .stats-bar { gap: 10px; }
+  .stat-card { min-width: 100px; padding: 12px 14px; }
+  .stat-value { font-size: 22px; }
+  .filter-bar { gap: 12px; }
+  .heatmap-header { flex-wrap: wrap; gap: 8px; }
+  .heatmap-wrap { padding: 14px; }
+  .season-name { width: 80px; font-size: 7px; }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="header-cross">☩</span>
+  <span class="header-title">CONTENT COVERAGE</span>
+  <a href="/" class="header-back">Back to Services</a>
+</header>
+
+<div class="dashboard">
+
+  <!-- Service Filter (top-level) -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <span class="filter-label">Year</span>
+      <select id="filter-year">
+        <option value="2026" selected>2026</option>
+        <option value="2025">2025</option>
+        <option value="2027">2027</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Service</span>
+      <button class="filter-btn active" data-filter="service" data-value="all">All</button>
+      <button class="filter-btn" data-filter="service" data-value="greatVespers">Great Vespers</button>
+      <button class="filter-btn" data-filter="service" data-value="dailyVespers">Daily Vespers</button>
+      <button class="filter-btn" data-filter="service" data-value="liturgy">Liturgy</button>
+    </div>
+  </div>
+
+  <!-- Filter status -->
+  <div class="filter-status" id="filter-status"></div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-card">
+      <div class="stat-value" id="stat-total">—</div>
+      <div class="stat-label">Days with Services</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-complete">—</div>
+      <div class="stat-label">Full Content</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-partial">—</div>
+      <div class="stat-label">Partial Content</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-oca-pct">—</div>
+      <div class="stat-label">OCA-Sourced</div>
+    </div>
+  </div>
+
+  <!-- Heatmap -->
+  <div class="heatmap-section">
+    <div class="heatmap-header">
+      <div class="heatmap-title">Calendar Heatmap</div>
+      <div class="filter-group heatmap-color-filter">
+        <span class="filter-label">Color by</span>
+        <button class="filter-btn active" data-filter="colorMode" data-value="completeness">Coverage</button>
+        <button class="filter-btn" data-filter="colorMode" data-value="source">Source</button>
+      </div>
+    </div>
+    <div class="heatmap-wrap">
+      <div class="heatmap-month-labels" id="heatmap-months"></div>
+      <div class="heatmap-grid-wrap">
+        <div class="heatmap-day-labels">
+          <div class="heatmap-day-label">Mon</div>
+          <div class="heatmap-day-label">Tue</div>
+          <div class="heatmap-day-label">Wed</div>
+          <div class="heatmap-day-label">Thu</div>
+          <div class="heatmap-day-label">Fri</div>
+          <div class="heatmap-day-label">Sat</div>
+          <div class="heatmap-day-label">Sun</div>
+        </div>
+        <div class="heatmap-grid" id="heatmap-grid"></div>
+      </div>
+      <div class="legend" id="heatmap-legend"></div>
+
+      <!-- Detail panel (collapsible, inside heatmap) -->
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-header">
+          <div class="detail-date" id="detail-date"></div>
+          <button class="detail-close" id="detail-close">&#10005;</button>
+        </div>
+        <div class="detail-body-wrap">
+          <div class="detail-meta" id="detail-meta"></div>
+          <div class="detail-layers" id="detail-layers"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Season Breakdown -->
+  <div class="season-bar-section">
+    <div class="heatmap-title">Coverage by Season</div>
+    <div class="season-bars" id="season-bars"></div>
+  </div>
+
+  <!-- Source Attribution Table -->
+  <div class="source-section">
+    <div class="heatmap-title">Source Attribution</div>
+    <table class="source-table" id="source-table">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Days Using</th>
+          <th>% of Services</th>
+          <th>Content Type</th>
+        </tr>
+      </thead>
+      <tbody id="source-tbody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="tooltip" id="tooltip">
+  <div class="tooltip-date" id="tooltip-date"></div>
+  <div id="tooltip-body"></div>
+</div>
+
+<div class="loading" id="loading">Loading coverage data&hellip;</div>
+
+<script>
+(function() {
+'use strict';
+
+// ── State ──
+let allData = [];
+let filters = { year: 2026, service: 'all', colorMode: 'completeness' };
+let selectedDate = null;
+
+// ── DOM refs ──
+const $ = id => document.getElementById(id);
+const grid      = $('heatmap-grid');
+const monthRow  = $('heatmap-months');
+const legend    = $('heatmap-legend');
+const tooltip   = $('tooltip');
+const detailPanel = $('detail-panel');
+const loading   = $('loading');
+
+// ── Month names ──
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_FULL = ['January','February','March','April','May','June',
+                     'July','August','September','October','November','December'];
+const DAYS_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+const SEASON_LABELS = {
+  ordinaryTime:    'Ordinary Time',
+  greatLent:       'Great Lent',
+  preLenten:       'Pre-Lenten',
+  holyWeek:        'Holy Week',
+  brightWeek:      'Bright Week',
+  pentecostarion:  'Pentecostarion',
+};
+
+// ── Fetch data ──
+async function fetchData(year) {
+  loading.style.display = 'block';
+  try {
+    const res = await fetch(`/api/dashboard?year=${year}`);
+    allData = await res.json();
+  } catch (err) {
+    console.error('Dashboard fetch error:', err);
+    allData = [];
+  }
+  loading.style.display = 'none';
+}
+
+// ── Filter logic ──
+function filteredData() {
+  return allData.filter(d => {
+    if (filters.service === 'all') return true;
+    if (filters.service === 'greatVespers') return d.services?.greatVespers;
+    if (filters.service === 'dailyVespers') return d.services?.dailyVespers;
+    if (filters.service === 'liturgy') return d.services?.liturgy;
+    return true;
+  });
+}
+
+// Returns the appropriate score for the current service filter
+function getScore(d) {
+  if (filters.service === 'liturgy') return d.liturgyScore ?? 0;
+  return d.score;
+}
+
+// ── Render stats ──
+function renderStats() {
+  const data = filteredData();
+  const withService = data.filter(d => d.hasService);
+  const complete = withService.filter(d => getScore(d) >= 1.0);
+  const partial = withService.filter(d => getScore(d) > 0 && getScore(d) < 1.0);
+  const ocaDays = withService.filter(d => d.primarySource === 'oca');
+
+  $('stat-total').textContent = withService.length;
+  $('stat-complete').textContent = withService.length > 0
+    ? Math.round(complete.length / withService.length * 100) + '%'
+    : '—';
+  $('stat-partial').textContent = partial.length;
+  $('stat-oca-pct').textContent = withService.length > 0
+    ? Math.round(ocaDays.length / withService.length * 100) + '%'
+    : '—';
+
+  // Filter status line
+  const svcLabels = { all: '', greatVespers: 'Great Vespers', dailyVespers: 'Daily Vespers', liturgy: 'Divine Liturgy' };
+  const label = svcLabels[filters.service] || '';
+  $('filter-status').textContent = label
+    ? 'Showing ' + withService.length + ' days with ' + label
+    : '';
+}
+
+// ── Render heatmap ──
+function renderHeatmap() {
+  grid.innerHTML = '';
+  monthRow.innerHTML = '';
+
+  const year = filters.year;
+  // Build a map from date string → data, respecting the service filter
+  const filtered = new Set(filteredData().map(d => d.date));
+  const dataMap = {};
+  for (const d of allData) dataMap[d.date] = d;
+
+  // Start from Jan 1, but align to Monday-based week grid
+  const jan1 = new Date(Date.UTC(year, 0, 1));
+  // JS: 0=Sun, we want Mon=0; adjust: (day+6)%7
+  const jan1DowMon = (jan1.getUTCDay() + 6) % 7; // 0=Mon
+
+  // End on Dec 31
+  const dec31 = new Date(Date.UTC(year, 11, 31));
+
+  // Track month label positions
+  let currentMonth = -1;
+  let colIdx = 0;
+  const monthPositions = [];
+
+  // Iterate day by day
+  let cursor = new Date(jan1);
+  // Back up to the Monday of the week containing Jan 1
+  cursor.setUTCDate(cursor.getUTCDate() - jan1DowMon);
+
+  while (cursor <= dec31 || (cursor.getUTCDay() + 6) % 7 !== 0) {
+    const dowMon = (cursor.getUTCDay() + 6) % 7; // 0=Mon
+    if (dowMon === 0) colIdx++;
+
+    const dateStr = cursor.toISOString().slice(0, 10);
+    const inYear = cursor.getUTCFullYear() === year;
+    const m = cursor.getUTCMonth();
+
+    // Track month labels
+    if (inYear && m !== currentMonth) {
+      monthPositions.push({ month: m, col: colIdx });
+      currentMonth = m;
+    }
+
+    const cell = document.createElement('div');
+    cell.className = 'heatmap-cell';
+
+    if (!inYear) {
+      cell.classList.add('empty');
+    } else {
+      const dayData = dataMap[dateStr];
+      const matchesFilter = filtered.has(dateStr);
+      if (!dayData || !dayData.hasService || !matchesFilter) {
+        cell.classList.add('level-0');
+      } else {
+        if (filters.colorMode === 'completeness') {
+          const level = scoreToLevel(getScore(dayData));
+          cell.classList.add(`level-${level}`);
+        } else {
+          const srcClass = sourceToClass(dayData.primarySource);
+          cell.classList.add(srcClass);
+        }
+      }
+      cell.dataset.date = dateStr;
+
+      // Tooltip events
+      cell.addEventListener('mouseenter', e => showTooltip(e, dayData, dateStr));
+      cell.addEventListener('mouseleave', hideTooltip);
+      cell.addEventListener('click', () => showDetail(dateStr, dayData));
+    }
+
+    // Place in grid: column = colIdx, row = dowMon+1
+    cell.style.gridRow = (dowMon + 1).toString();
+    cell.style.gridColumn = colIdx.toString();
+
+    grid.appendChild(cell);
+
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+    if (cursor > dec31 && (cursor.getUTCDay() + 6) % 7 === 0) break;
+  }
+
+  // Month labels
+  for (let i = 0; i < monthPositions.length; i++) {
+    const mp = monthPositions[i];
+    const nextCol = i + 1 < monthPositions.length ? monthPositions[i+1].col : colIdx + 1;
+    const span = document.createElement('span');
+    span.className = 'heatmap-month-label';
+    span.textContent = MONTHS[mp.month];
+    // Position via left offset: each col is 16px (14+2 gap)
+    span.style.width = ((nextCol - mp.col) * 16) + 'px';
+    monthRow.appendChild(span);
+  }
+
+  // Legend
+  renderLegend();
+}
+
+function scoreToLevel(score) {
+  if (score >= 0.95) return 4;
+  if (score >= 0.75) return 3;
+  if (score >= 0.5)  return 2;
+  if (score > 0)     return 1;
+  return 0;
+}
+
+function sourceToClass(src) {
+  if (src === 'oca')       return 'src-oca';
+  if (src === 'mixed')     return 'src-mixed';
+  if (src === 'stSergius') return 'src-other';
+  if (src === 'generic')   return 'src-generic';
+  return 'src-none';
+}
+
+function renderLegend() {
+  legend.innerHTML = '';
+  if (filters.colorMode === 'completeness') {
+    const items = [
+      { cls: 'level-0', label: 'No data' },
+      { cls: 'level-1', label: '< 50%' },
+      { cls: 'level-2', label: '50–75%' },
+      { cls: 'level-3', label: '75–95%' },
+      { cls: 'level-4', label: '95–100%' },
+    ];
+    addLegendLabel('Less');
+    items.forEach(it => {
+      const sw = document.createElement('div');
+      sw.className = 'legend-swatch ' + it.cls;
+      sw.title = it.label;
+      legend.appendChild(sw);
+    });
+    addLegendLabel('More');
+  } else {
+    const items = [
+      { cls: 'src-none',    label: 'No data' },
+      { cls: 'src-oca',     label: 'OCA' },
+      { cls: 'src-other',   label: 'St. Sergius' },
+      { cls: 'src-generic', label: 'General Menaion' },
+      { cls: 'src-mixed',   label: 'Mixed' },
+    ];
+    items.forEach(it => {
+      const sw = document.createElement('div');
+      sw.className = 'legend-swatch ' + it.cls;
+      legend.appendChild(sw);
+      addLegendLabel(it.label);
+    });
+  }
+}
+
+function addLegendLabel(text) {
+  const el = document.createElement('span');
+  el.className = 'legend-label';
+  el.textContent = text;
+  legend.appendChild(el);
+}
+
+// ── Tooltip ──
+function showTooltip(e, dayData, dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const dayName = DAYS_FULL[d.getDay()];
+  $('tooltip-date').textContent = `${dayName}, ${MONTHS_FULL[d.getMonth()]} ${d.getDate()}`;
+
+  let body = '';
+  if (!dayData || !dayData.hasService) {
+    body = 'No service data';
+  } else {
+    body = `<span class="tooltip-score">${Math.round(getScore(dayData) * 100)}%</span> coverage`;
+    if (dayData.feast) body += `<br>${dayData.feast}`;
+    if (dayData.season) body += `<br><em>${SEASON_LABELS[dayData.season] || dayData.season}</em>`;
+    if (dayData.primarySource) body += `<br>Source: ${formatSource(dayData.primarySource)}`;
+  }
+  $('tooltip-body').innerHTML = body;
+
+  tooltip.classList.add('visible');
+  const rect = e.target.getBoundingClientRect();
+  tooltip.style.left = (rect.right + 8) + 'px';
+  tooltip.style.top = (rect.top - 4) + 'px';
+
+  // Keep tooltip in viewport
+  requestAnimationFrame(() => {
+    const tr = tooltip.getBoundingClientRect();
+    if (tr.right > window.innerWidth - 8) {
+      tooltip.style.left = (rect.left - tr.width - 8) + 'px';
+    }
+    if (tr.bottom > window.innerHeight - 8) {
+      tooltip.style.top = (window.innerHeight - tr.height - 8) + 'px';
+    }
+  });
+}
+
+function hideTooltip() {
+  tooltip.classList.remove('visible');
+}
+
+function formatSource(src) {
+  if (src === 'oca') return 'OCA';
+  if (src === 'stSergius') return 'St. Sergius';
+  if (src === 'generic') return 'General Menaion';
+  if (src === 'mixed') return 'Mixed sources';
+  return src || 'None';
+}
+
+// ── Detail panel ──
+function showDetail(dateStr, dayData) {
+  // Deselect previous
+  document.querySelectorAll('.heatmap-cell.selected').forEach(c => c.classList.remove('selected'));
+  // Select new
+  const cell = document.querySelector(`.heatmap-cell[data-date="${dateStr}"]`);
+  if (cell) cell.classList.add('selected');
+
+  selectedDate = dateStr;
+  const d = new Date(dateStr + 'T12:00:00');
+  $('detail-date').textContent = `${DAYS_FULL[d.getDay()]}, ${MONTHS_FULL[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+
+  const meta = $('detail-meta');
+  meta.innerHTML = '';
+
+  if (!dayData || !dayData.hasService) {
+    meta.innerHTML = '<div class="detail-meta-item">No service available for this date.</div>';
+    $('detail-layers').innerHTML = '';
+    detailPanel.classList.add('visible');
+    return;
+  }
+
+  // Meta items
+  const metaItems = [
+    { label: 'Score', value: Math.round(getScore(dayData) * 100) + '%' },
+    { label: 'Season', value: SEASON_LABELS[dayData.season] || dayData.season || '—' },
+    { label: 'Tone', value: dayData.tone || '—' },
+    { label: 'Source', value: formatSource(dayData.primarySource) },
+  ];
+  if (dayData.feast) {
+    metaItems.unshift({ label: 'Feast', value: dayData.feast });
+  }
+  for (const item of metaItems) {
+    const el = document.createElement('div');
+    el.className = 'detail-meta-item';
+    el.innerHTML = `${item.label}: <span class="detail-meta-value">${item.value}</span>`;
+    meta.appendChild(el);
+  }
+
+  // Layers
+  const layers = $('detail-layers');
+  layers.innerHTML = '';
+  const layerDefs = dayData.layers || {};
+  const layerNames = {
+    calendarEntry: 'Calendar Entry',
+    octoechos:     'Octoechos',
+    prokeimena:    'Prokeimena',
+    troparia:      'Troparia',
+    stichera:      'Stichera (LIC)',
+    aposticha:     'Aposticha',
+    triodion:      'Triodion / Seasonal',
+  };
+
+  for (const [key, label] of Object.entries(layerNames)) {
+    const layer = layerDefs[key];
+    if (!layer) continue;
+    const row = document.createElement('div');
+    row.className = 'detail-layer';
+    row.innerHTML = `
+      <div class="detail-layer-dot ${layer.present ? 'present' : 'missing'}"></div>
+      <span class="detail-layer-name">${label}</span>
+      <span class="detail-layer-source">${layer.source || ''}</span>
+    `;
+    layers.appendChild(row);
+  }
+
+  detailPanel.classList.add('visible');
+}
+
+$('detail-close').addEventListener('click', () => {
+  detailPanel.classList.remove('visible');
+  document.querySelectorAll('.heatmap-cell.selected').forEach(c => c.classList.remove('selected'));
+  selectedDate = null;
+});
+
+// ── Season breakdown ──
+function renderSeasonBars() {
+  const data = filteredData();
+  const seasonData = {};
+
+  for (const d of data) {
+    if (!d.season) continue;
+    if (!seasonData[d.season]) seasonData[d.season] = { total: 0, withService: 0, score: 0 };
+    seasonData[d.season].total++;
+    if (d.hasService) {
+      seasonData[d.season].withService++;
+      seasonData[d.season].score += getScore(d);
+    }
+  }
+
+  const container = $('season-bars');
+  container.innerHTML = '';
+
+  const order = ['ordinaryTime', 'greatLent', 'preLenten', 'holyWeek', 'brightWeek', 'pentecostarion'];
+  for (const key of order) {
+    const sd = seasonData[key];
+    if (!sd) continue;
+    const avgScore = sd.withService > 0 ? sd.score / sd.withService : 0;
+    const pct = Math.round(avgScore * 100);
+
+    const row = document.createElement('div');
+    row.className = 'season-row';
+    row.innerHTML = `
+      <div class="season-name">${SEASON_LABELS[key] || key}</div>
+      <div class="season-bar-wrap">
+        <div class="season-bar-fill" style="width: ${pct}%"></div>
+      </div>
+      <div class="season-pct">${pct}%</div>
+    `;
+    container.appendChild(row);
+  }
+}
+
+// ── Source table ──
+function renderSourceTable() {
+  const data = filteredData().filter(d => d.hasService);
+  const total = data.length;
+  const counts = {};
+
+  for (const d of data) {
+    const src = d.primarySource || 'none';
+    counts[src] = (counts[src] || 0) + 1;
+  }
+
+  const sourceLabels = {
+    oca:       { name: 'OCA Service Texts', desc: 'Official OCA-published liturgical texts' },
+    stSergius: { name: 'St. Sergius Menaion', desc: 'Dogmatika, octoechos hymns' },
+    generic:   { name: 'General Menaion',     desc: 'Generic saint-category fallback texts' },
+    mixed:     { name: 'Mixed Sources',       desc: 'Combination of OCA + other sources' },
+    none:      { name: 'No Variable Texts',   desc: 'Fixed texts only (psalms, prayers)' },
+  };
+
+  const tbody = $('source-tbody');
+  tbody.innerHTML = '';
+
+  // Sort by count descending
+  const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  for (const [src, count] of entries) {
+    const info = sourceLabels[src] || { name: src, desc: '' };
+    const pct = total > 0 ? Math.round(count / total * 100) : 0;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${info.name}</td>
+      <td>${count}</td>
+      <td class="source-pct">${pct}%</td>
+      <td style="color:var(--muted);font-style:italic">${info.desc}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+// ── Filter handlers ──
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var group = this.dataset.filter;
+    var value = this.dataset.value;
+    // Deactivate siblings in same group
+    var siblings = document.querySelectorAll('.filter-btn[data-filter="' + group + '"]');
+    for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('active');
+    this.classList.add('active');
+    filters[group] = value;
+    render();
+  });
+});
+
+$('filter-year').addEventListener('change', async (e) => {
+  filters.year = parseInt(e.target.value, 10);
+  await fetchData(filters.year);
+  render();
+});
+
+// ── Full render ──
+function render() {
+  try { renderStats(); } catch (e) { console.error('renderStats:', e); }
+  try { renderHeatmap(); } catch (e) { console.error('renderHeatmap:', e); }
+  try { renderSeasonBars(); } catch (e) { console.error('renderSeasonBars:', e); }
+  try { renderSourceTable(); } catch (e) { console.error('renderSourceTable:', e); }
+}
+
+// ── Init ──
+(async () => {
+  await fetchData(filters.year);
+  render();
+})();
+
+})();
+</script>
+
+</body>
+</html>

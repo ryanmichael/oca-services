@@ -87,9 +87,16 @@
         html += '<div class="svc-rule"></div>';
       }
 
+      // Collect unique sources in this section for the dev-mode tag
+      // Prefer provenance (e.g. "menaion (stSergius)") over plain source
+      const sources = [...new Set(sblocks.map(b => b.provenance || b.source).filter(Boolean))];
+      const srcTag = sources.length
+        ? `<span class="src-tag">${sources.map(esc).join(' · ')}</span>`
+        : '';
+
       html += '<div class="svc-sec">';
       if (name) {
-        html += `<div class="svc-head">${esc(name.toUpperCase())}</div>`;
+        html += `<div class="svc-head">${esc(name.toUpperCase())}${srcTag}</div>`;
       }
       for (const block of sblocks) {
         html += renderBlock(block);

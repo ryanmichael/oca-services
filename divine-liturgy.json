@@ -1,0 +1,515 @@
+{
+  "service": "Divine Liturgy",
+  "type": "eucharistic",
+  "variants": {
+    "chrysostom": {
+      "label": "Liturgy of St. John Chrysostom",
+      "default": true
+    },
+    "basil": {
+      "label": "Liturgy of St. Basil the Great",
+      "occasions": [
+        "Jan 1 (St. Basil)",
+        "Sundays of Great Lent (except Palm Sunday)",
+        "Great Thursday",
+        "Great Saturday",
+        "Eves of Nativity and Theophany (or their days if on Sunday/Monday)"
+      ]
+    }
+  },
+  "sections": [
+    {
+      "id": "liturgy-of-the-catechumens",
+      "label": "Liturgy of the Catechumens",
+      "blocks": [
+        {
+          "id": "opening-doxology",
+          "type": "fixed",
+          "label": "Opening Doxology",
+          "rubric": "Priest",
+          "source": "liturgy-fixed.json#opening-doxology",
+          "text_incipit": "Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit…"
+        },
+        {
+          "id": "great-litany",
+          "type": "fixed",
+          "label": "Great Litany",
+          "source": "liturgy-fixed.json#great-litany"
+        },
+        {
+          "id": "first-antiphon",
+          "type": "variable",
+          "label": "First Antiphon",
+          "variable_rule": "antiphon-selection",
+          "defaults": {
+            "typical": {
+              "source": "liturgy-fixed.json#typical-antiphon-1",
+              "text_incipit": "Bless the Lord, O my soul… (Ps. 102)"
+            },
+            "feasts": {
+              "note": "Certain Great Feasts prescribe unique antiphons from the Menaion or Triodion"
+            }
+          }
+        },
+        {
+          "id": "little-litany-1",
+          "type": "fixed",
+          "label": "Little Litany",
+          "source": "liturgy-fixed.json#little-litany"
+        },
+        {
+          "id": "second-antiphon",
+          "type": "variable",
+          "label": "Second Antiphon",
+          "variable_rule": "antiphon-selection",
+          "defaults": {
+            "typical": {
+              "source": "liturgy-fixed.json#typical-antiphon-2",
+              "text_incipit": "Praise the Lord, O my soul… (Ps. 145)"
+            },
+            "feasts": {
+              "note": "Certain Great Feasts prescribe unique antiphons from the Menaion or Triodion"
+            }
+          }
+        },
+        {
+          "id": "only-begotten-son",
+          "type": "fixed",
+          "label": "Only-Begotten Son",
+          "source": "liturgy-fixed.json#only-begotten-son",
+          "text_incipit": "Only-begotten Son and immortal Word of God…"
+        },
+        {
+          "id": "little-litany-2",
+          "type": "fixed",
+          "label": "Little Litany",
+          "source": "liturgy-fixed.json#little-litany"
+        },
+        {
+          "id": "beatitudes",
+          "type": "variable",
+          "label": "Third Antiphon",
+          "rubric": "The Beatitudes (Matt 5:3-12) serve as the Third Antiphon on Sundays and most days when the Liturgy is served.",
+          "variable_rule": "beatitudes-troparia",
+          "assembly": {
+            "description": "Beatitudes verses are interspersed with troparia from appointed sources. The calendar entry specifies sources and counts.",
+            "format": [
+              {
+                "element": "beatitudes-verses",
+                "source": "liturgy-fixed.json#beatitudes",
+                "note": "The fixed Beatitudes text (Matt 5:3-12) provides the verse framework"
+              },
+              {
+                "element": "troparia",
+                "assignment": "from-calendar",
+                "note": "Calendar entry specifies: source (Octoechos, Triodion, Menaion, Canon ode), count, and tone"
+              }
+            ]
+          }
+        },
+        {
+          "id": "small-entrance",
+          "type": "fixed",
+          "label": "Little Entrance",
+          "source": "liturgy-fixed.json#small-entrance"
+        },
+        {
+          "id": "entrance-hymn",
+          "type": "variable",
+          "label": "Entrance Hymn",
+          "variable_rule": "entrance-hymn-selection",
+          "defaults": {
+            "sunday": {
+              "text_incipit": "Come, let us worship and fall down before Christ… O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!"
+            },
+            "weekday": {
+              "text_incipit": "Come, let us worship and fall down before Christ… O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!"
+            },
+            "feasts": {
+              "note": "Great Feasts have unique entrance hymns"
+            }
+          }
+        },
+        {
+          "id": "troparia",
+          "type": "variable",
+          "label": "Troparia",
+          "variable_rule": "troparia-kontakia-sequence",
+          "assembly": {
+            "description": "Ordered sequence of troparia as specified by the calendar entry. On Sundays, the Resurrectional Troparion of the tone is always first.",
+            "format": "ordered-list",
+            "separator": null,
+            "sources": ["octoechos", "menaion", "triodion", "pentecostarion"]
+          }
+        },
+        {
+          "id": "kontakia",
+          "type": "variable",
+          "label": "Kontakia",
+          "variable_rule": "troparia-kontakia-sequence",
+          "assembly": {
+            "description": "Ordered sequence of kontakia. The final kontakion uses 'Glory… now and ever…' as its prefatory connector.",
+            "format": "ordered-list",
+            "connector_final": "Glory… now and ever…",
+            "sources": ["octoechos", "menaion", "triodion", "pentecostarion"]
+          }
+        },
+        {
+          "id": "trisagion",
+          "type": "variable",
+          "label": "Trisagion",
+          "variable_rule": "trisagion-substitution",
+          "defaults": {
+            "typical": {
+              "source": "liturgy-fixed.json#trisagion",
+              "text_incipit": "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
+            },
+            "substitutions": [
+              {
+                "trigger": "cross-feasts",
+                "text": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection, we glorify.",
+                "source": "liturgy-fixed.json#trisagion-cross"
+              },
+              {
+                "trigger": "baptismal-feasts",
+                "text_incipit": "As many as have been baptized into Christ, have put on Christ. Alleluia.",
+                "occasions": ["Nativity", "Theophany", "Lazarus Saturday", "Great Saturday"],
+                "source": "liturgy-fixed.json#trisagion-baptismal"
+              }
+            ]
+          }
+        },
+        {
+          "id": "prokeimenon",
+          "type": "variable",
+          "label": "Prokeimenon",
+          "variable_rule": "appointed-prokeimenon",
+          "assembly": {
+            "source": "from-calendar",
+            "fields": ["tone", "text", "verse", "liturgical_source"]
+          }
+        },
+        {
+          "id": "epistle",
+          "type": "variable",
+          "label": "Epistle Reading",
+          "variable_rule": "appointed-reading",
+          "assembly": {
+            "source": "from-calendar",
+            "fields": ["reading_number", "book", "pericope", "reference"]
+          }
+        },
+        {
+          "id": "alleluia",
+          "type": "variable",
+          "label": "Alleluia",
+          "variable_rule": "appointed-alleluia",
+          "assembly": {
+            "source": "from-calendar",
+            "fields": ["tone", "verse", "liturgical_source"]
+          }
+        },
+        {
+          "id": "gospel",
+          "type": "variable",
+          "label": "Gospel Reading",
+          "variable_rule": "appointed-reading",
+          "assembly": {
+            "source": "from-calendar",
+            "fields": ["reading_number", "book", "pericope", "reference"]
+          }
+        },
+        {
+          "id": "homily",
+          "type": "fixed",
+          "label": "Homily",
+          "rubric": "The sermon is typically delivered after the Gospel reading.",
+          "source": null,
+          "note": "No text — local/pastoral"
+        },
+        {
+          "id": "augmented-litany",
+          "type": "fixed",
+          "label": "Augmented Litany",
+          "source": "liturgy-fixed.json#augmented-litany"
+        },
+        {
+          "id": "litany-departed",
+          "type": "fixed",
+          "label": "Litany for the Departed",
+          "condition": "Outside Sundays of Paschaltide; also omitted on certain feasts. On Sundays and weekday commemorations of the departed.",
+          "optional": true,
+          "source": "liturgy-fixed.json#litany-departed"
+        },
+        {
+          "id": "litany-catechumens",
+          "type": "fixed",
+          "label": "Litany for the Catechumens",
+          "rubric": "Commonly omitted in parish practice.",
+          "optional": true,
+          "source": "liturgy-fixed.json#litany-catechumens"
+        },
+        {
+          "id": "litanies-faithful",
+          "type": "conditional",
+          "label": "Litanies of the Faithful",
+          "condition": "liturgy-variant",
+          "variants": {
+            "chrysostom": {
+              "source": "liturgy-fixed.json#litanies-faithful-chrysostom"
+            },
+            "basil": {
+              "source": "liturgy-fixed.json#litanies-faithful-basil"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "liturgy-of-the-faithful",
+      "label": "Liturgy of the Faithful",
+      "blocks": [
+        {
+          "id": "cherubic-hymn",
+          "type": "fixed",
+          "label": "Cherubic Hymn",
+          "source": "liturgy-fixed.json#cherubic-hymn",
+          "text_incipit": "Let us who mystically represent the Cherubim…",
+          "variant_overrides": {
+            "great-thursday": {
+              "label": "Mystical Supper Hymn",
+              "text_incipit": "Of Thy Mystical Supper, O Son of God…",
+              "source": "liturgy-fixed.json#cherubic-great-thursday"
+            },
+            "great-saturday": {
+              "label": "Great Saturday Cherubic",
+              "text_incipit": "Let all mortal flesh keep silence…",
+              "source": "liturgy-fixed.json#cherubic-great-saturday"
+            }
+          }
+        },
+        {
+          "id": "great-entrance",
+          "type": "fixed",
+          "label": "Great Entrance",
+          "source": "liturgy-fixed.json#great-entrance"
+        },
+        {
+          "id": "litany-supplication",
+          "type": "fixed",
+          "label": "Litany of Supplication",
+          "source": "liturgy-fixed.json#litany-supplication"
+        },
+        {
+          "id": "creed",
+          "type": "fixed",
+          "label": "The Creed",
+          "source": "liturgy-fixed.json#creed",
+          "text_incipit": "I believe in one God, the Father Almighty…"
+        },
+        {
+          "id": "anaphora",
+          "type": "conditional",
+          "label": "Anaphora",
+          "condition": "liturgy-variant",
+          "variants": {
+            "chrysostom": {
+              "source": "liturgy-fixed.json#anaphora-chrysostom",
+              "label": "Anaphora of St. John Chrysostom"
+            },
+            "basil": {
+              "source": "liturgy-fixed.json#anaphora-basil",
+              "label": "Anaphora of St. Basil the Great"
+            }
+          },
+          "sub_sections": [
+            { "id": "sursum-corda", "label": "Dialogue (Sursum Corda)", "note": "Priest–people exchange opening the Anaphora: 'The grace of our Lord…', 'Let us lift up our hearts…', 'Let us give thanks…'" },
+            { "id": "preface", "label": "Preface", "note": "Thanksgiving prayer; diverges between Chrysostom and Basil" },
+            { "id": "sanctus", "label": "Sanctus", "note": "People: 'Holy, holy, holy, Lord of Sabaoth…'" },
+            { "id": "words-of-institution", "label": "Words of Institution", "note": "Narrative of the Last Supper; people respond 'Amen' twice" },
+            { "id": "anamnesis", "label": "Anamnesis & Oblation", "note": "'Offering Thee Thine own, of Thine own…' / People: 'We praise Thee, we bless Thee…'" },
+            { "id": "epiklesis", "label": "Epiklesis", "note": "Invocation of the Holy Spirit upon the Gifts; climax of the Anaphora. Diverges between Chrysostom and Basil." },
+            { "id": "diptychs", "label": "Commemorations (Diptychs)", "note": "Theotokos, saints, bishop, living and departed" }
+          ]
+        },
+        {
+          "id": "megalynarion",
+          "type": "variable",
+          "label": "Hymn to the Theotokos",
+          "variable_rule": "megalynarion-substitution",
+          "defaults": {
+            "typical": {
+              "text_incipit": "It is truly meet to bless thee, O Theotokos…",
+              "source": "liturgy-fixed.json#it-is-truly-meet"
+            },
+            "substitutions": [
+              {
+                "trigger": "basil-liturgy",
+                "text_incipit": "All of creation rejoices in thee, O Full of Grace…",
+                "source": "liturgy-fixed.json#megalynarion-basil"
+              },
+              {
+                "trigger": "great-feasts",
+                "note": "Each Great Feast has its own appointed irmos from the 9th ode of the canon",
+                "source": "from-calendar"
+              }
+            ]
+          }
+        },
+        {
+          "id": "litany-lords-prayer",
+          "type": "fixed",
+          "label": "Litany before the Lord's Prayer",
+          "source": "liturgy-fixed.json#litany-lords-prayer"
+        },
+        {
+          "id": "lords-prayer",
+          "type": "fixed",
+          "label": "The Lord's Prayer",
+          "source": "liturgy-fixed.json#lords-prayer"
+        },
+        {
+          "id": "elevation",
+          "type": "fixed",
+          "label": "Elevation",
+          "rubric": "The priest elevates the Holy Gifts.",
+          "source": "liturgy-fixed.json#elevation",
+          "text_incipit": "Holy Things for the holy! / One is Holy, One is Lord, Jesus Christ, to the glory of God the Father. Amen."
+        },
+        {
+          "id": "communion-hymn",
+          "type": "variable",
+          "label": "Communion Hymn",
+          "variable_rule": "appointed-communion-hymn",
+          "assembly": {
+            "source": "from-calendar",
+            "fields": ["text", "liturgical_source"],
+            "defaults": {
+              "sunday": {
+                "text_incipit": "Praise the Lord from the heavens, praise Him in the highest. Alleluia."
+              }
+            }
+          }
+        },
+        {
+          "id": "communion-prayers",
+          "type": "fixed",
+          "label": "Pre-Communion Prayer",
+          "rubric": "Said quietly by the faithful during the Communion Hymn, before approaching to receive.",
+          "source": "liturgy-fixed.json#pre-communion"
+        },
+        {
+          "id": "post-communion-blessing",
+          "type": "fixed",
+          "label": "Post-Communion Blessing",
+          "rubric": "Priest",
+          "source": "liturgy-fixed.json#post-communion-blessing",
+          "text_incipit": "Save, O God, Thy people, and bless Thine inheritance."
+        },
+        {
+          "id": "we-have-seen",
+          "type": "variable",
+          "label": "We Have Seen the True Light",
+          "variable_rule": "paschal-substitution",
+          "defaults": {
+            "typical": {
+              "source": "liturgy-fixed.json#we-have-seen",
+              "text_incipit": "We have seen the true Light. We have received the heavenly Spirit…"
+            },
+            "substitutions": [
+              {
+                "trigger": "paschal-season",
+                "occasions": "Pascha through Ascension eve",
+                "text_incipit": "Christ is risen from the dead, trampling down death by death…",
+                "source": "liturgy-fixed.json#christ-is-risen"
+              }
+            ]
+          }
+        },
+        {
+          "id": "hymn-thanksgiving",
+          "type": "fixed",
+          "label": "Hymn of Thanksgiving",
+          "source": "liturgy-fixed.json#let-our-mouths",
+          "text_incipit": "Let our mouths be filled with Thy praise, O Lord…"
+        },
+        {
+          "id": "litany-thanksgiving",
+          "type": "fixed",
+          "label": "Litany of Thanksgiving",
+          "source": "liturgy-fixed.json#litany-thanksgiving"
+        },
+        {
+          "id": "prayer-ambon",
+          "type": "conditional",
+          "label": "Prayer behind the Ambon",
+          "condition": "liturgy-variant",
+          "variants": {
+            "chrysostom": {
+              "source": "liturgy-fixed.json#prayer-ambon-chrysostom"
+            },
+            "basil": {
+              "source": "liturgy-fixed.json#prayer-ambon-basil"
+            }
+          }
+        },
+        {
+          "id": "blessed-be-the-name",
+          "type": "fixed",
+          "label": "Blessed Be the Name of the Lord",
+          "source": "liturgy-fixed.json#blessed-be-the-name",
+          "text_incipit": "Blessed be the name of the Lord, henceforth and forevermore. (3x)"
+        },
+        {
+          "id": "psalm-33",
+          "type": "fixed",
+          "label": "Psalm 33",
+          "rubric": "Read by the reader while the priest reads the Prayer of Thanksgiving behind the altar.",
+          "source": "liturgy-fixed.json#psalm-33",
+          "text_incipit": "I will bless the Lord at all times; His praise shall continually be in my mouth…"
+        },
+        {
+          "id": "dismissal-troparia",
+          "type": "conditional",
+          "label": "Dismissal Troparia",
+          "condition": "liturgy-variant",
+          "variants": {
+            "chrysostom": {
+              "text_incipit": "Grace shining forth from thy lips like a beacon has enlightened the universe…",
+              "source": "liturgy-fixed.json#troparion-chrysostom"
+            },
+            "basil": {
+              "text_incipit": "Thy proclamation has gone out into all the earth…",
+              "source": "liturgy-fixed.json#troparion-basil"
+            }
+          },
+          "note": "Followed by Glory… now and ever… then Theotokion ('O protection of Christians…') or festal kontakion override from calendar."
+        },
+        {
+          "id": "dismissal",
+          "type": "variable",
+          "label": "Dismissal",
+          "variable_rule": "dismissal-assembly",
+          "assembly": {
+            "description": "The dismissal is built from multiple variable clauses.",
+            "parts": [
+              {
+                "id": "opening",
+                "rule": "Sunday: 'May He Who rose from the dead…'; weekday: 'May Christ our true God…'; feasts have unique openings"
+              },
+              {
+                "id": "intercessions",
+                "rule": "Names the Theotokos, Apostles, liturgy saint (Chrysostom or Basil), day-of-week patron, and saints from calendar"
+              },
+              {
+                "id": "closing",
+                "rule": "Always ends: '…have mercy on us and save us, forasmuch as He is good and loveth mankind.'"
+              }
+            ],
+            "source": "from-calendar + liturgy-variant"
+          }
+        }
+      ]
+    }
+  ]
+}

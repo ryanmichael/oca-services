@@ -1,0 +1,91 @@
+{
+  "date": "2026-03-15",
+  "day_of_week": "sunday",
+  "liturgical_day": "Third Sunday of Great Lent — Veneration of the Cross",
+  "tone": 7,
+  "liturgy_variant": "basil",
+  "services": {
+    "divine-liturgy": {
+      "variable_assignments": {
+        "beatitudes": {
+          "troparia": [
+            {
+              "source": "octoechos",
+              "type": "resurrection",
+              "tone": 7,
+              "count": 6
+            },
+            {
+              "source": "triodion",
+              "type": "canon-ode-6",
+              "tone": 1,
+              "count": 4
+            }
+          ]
+        },
+        "entrance-hymn": {
+          "type": "sunday",
+          "text": "Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!"
+        },
+        "troparia": [
+          {
+            "source": "octoechos",
+            "type": "resurrectional",
+            "tone": 7,
+            "text": "By Thy Cross Thou didst destroy death, to the thief Thou didst open Paradise, for the Myrrhbearers Thou didst change weeping into joy, and Thou didst command Thine apostles, O Christ God, to proclaim that Thou art risen, granting the world great mercy."
+          },
+          {
+            "source": "triodion",
+            "type": "cross",
+            "tone": 1,
+            "text": "O Lord, save Thy people, and bless Thine inheritance. Grant victories to the Orthodox Christians over their adversaries, and by virtue of Thy Cross, preserve Thy habitation."
+          }
+        ],
+        "kontakia": [
+          {
+            "connector": "Glory… now and ever…",
+            "source": "triodion",
+            "type": "cross",
+            "tone": 7,
+            "text": "No longer does the flaming sword guard the gate of Eden, for a wondrous quenching has come to it: the wood of the Cross. The sting of death and the victory of hell are driven away; for Thou art come, O my Savior, crying unto those in hell: Enter again into Paradise!"
+          }
+        ],
+        "trisagion": {
+          "substitution": "cross",
+          "text": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection, we glorify."
+        },
+        "prokeimenon": {
+          "source": "triodion",
+          "tone": 6,
+          "text": "O Lord, save Thy people, and bless Thine inheritance.",
+          "verse": "To Thee, O Lord, will I call. O my God, be not silent to me."
+        },
+        "epistle": {
+          "reading_number": 311,
+          "book": "Hebrews",
+          "pericope": "4:14-5:6",
+          "display": "(311) Hebrews 4:14-5:6"
+        },
+        "alleluia": {
+          "source": "triodion",
+          "tone": 8,
+          "verse": "Remember Thy congregation, which Thou hast purchased of old."
+        },
+        "gospel": {
+          "reading_number": 37,
+          "book": "Mark",
+          "pericope": "8:34-9:1",
+          "display": "(37) Mark 8:34-9:1"
+        },
+        "megalynarion": {
+          "substitution": "basil-liturgy",
+          "text": "All of creation rejoices in thee, O Full of Grace: the assembly of angels and the race of men. O sanctified temple and spiritual paradise, the glory of virgins, from whom God was incarnate and became a child — our God before the ages. He made thy body into a throne, and thy womb He made more spacious than the heavens. All of creation rejoices in thee, O Full of Grace. Glory to thee!"
+        },
+        "communion-hymn": {
+          "source": "triodion",
+          "text": "The light of Thy countenance has been signed upon us, O Lord. Alleluia."
+        }
+      }
+    }
+  }
+}

@@ -20,8 +20,9 @@ const http = require('node:http');
 const fs   = require('fs');
 const path = require('path');
 
-const { assembleVespers }                        = require('./assembler');
-const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey } = require('./calendar-rules');
+const { assembleVespers, assembleLiturgy, resolveSource } = require('./assembler');
+const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey,
+        getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -84,19 +85,24 @@ function loadSources() {
  * Priority:
  *   1. calendar-rules.js auto-generation (for supported seasons)
  *   2. Hand-authored calendar JSON (for Lenten/special dates)
+ *
+ * When both exist, the auto-generated entry is used as the base (vespers),
+ * and any `liturgy` field from the hand-authored file is merged in.
  */
 function getCalendarEntry(dateStr) {
-  // Try auto-generation first (most accurate for regular Saturdays)
-  const generated = generateCalendarEntry(dateStr);
-  if (generated) return generated;
+  const calPath     = path.join(__dirname, 'variable-sources', 'calendar', `${dateStr}.json`);
+  const handAuthored = fs.existsSync(calPath) ? loadJSON(`variable-sources/calendar/${dateStr}.json`) : null;
 
-  // Fall back to hand-authored file if it exists
-  const calPath = path.join(__dirname, 'variable-sources', 'calendar', `${dateStr}.json`);
-  if (fs.existsSync(calPath)) {
-    return loadJSON(`variable-sources/calendar/${dateStr}.json`);
+  const generated = generateCalendarEntry(dateStr);
+
+  if (generated && handAuthored) {
+    // Merge: auto-generated base + hand-authored liturgy (and commemorations if present)
+    if (handAuthored.liturgy)         generated.liturgy         = handAuthored.liturgy;
+    if (handAuthored.commemorations)  generated.commemorations  = handAuthored.commemorations;
+    return generated;
   }
 
-  return null;
+  return generated ?? handAuthored;
 }
 
 // ─── HTML helpers ─────────────────────────────────────────────────────────────
@@ -472,7 +478,7 @@ function getMenaionRanked(month, day) {
     if (!db) return null;
 
     const comms = db.prepare(`
-      SELECT id, title, rank, tone FROM commemorations
+      SELECT id, title, rank, tone, saint_type FROM commemorations
       WHERE month = ? AND day = ? ORDER BY id
     `).all(month, day);
     if (comms.length === 0) return null;
@@ -486,7 +492,7 @@ function getMenaionRanked(month, day) {
     ).all(...ids);
 
     const stRows = db.prepare(
-      `SELECT commemoration_id, "order", section, tone, label, text
+      `SELECT commemoration_id, "order", section, tone, label, text, source AS dbSource
        FROM stichera WHERE commemoration_id IN (${placeholders})
        ORDER BY commemoration_id, section, "order"`
     ).all(...ids);
@@ -499,6 +505,7 @@ function getMenaionRanked(month, day) {
     for (const s of stRows) {
       (sticheraMap[s.commemoration_id] ??= []).push({
         order: s.order, section: s.section, tone: s.tone, label: s.label, text: s.text,
+        dbSource: s.dbSource,
       });
     }
 
@@ -507,6 +514,7 @@ function getMenaionRanked(month, day) {
       title:        c.title,
       rank:         c.rank,
       tone:         c.tone,
+      saint_type:   c.saint_type,
       troparia:     tropariaMap[c.id] ?? [],
       stichera:     sticheraMap[c.id] ?? [],
       hasTroparion: (tropariaMap[c.id] ?? []).some(t => t.type === 'troparion'),
@@ -523,6 +531,87 @@ function getMenaionRanked(month, day) {
     return { principal, sticheraComm, notable, all: enriched };
   } catch (err) {
     console.error('getMenaionRanked error:', err.message);
+    return null;
+  } finally {
+    db?.close();
+  }
+}
+
+// ─── General Menaion fallback ────────────────────────────────────────────────
+
+/**
+ * Extracts a short name from a commemoration title for (name) substitution.
+ * "Hieromartyr Silvanus of Gaza" → "Silvanus"
+ * "Venerable Seraphim, Wonderworker of Sarov" → "Seraphim"
+ */
+function extractShortName(title) {
+  let name = title
+    // Strip rank prefixes
+    .replace(/^(Holy,?\s*Glorious\s+)?/i, '')
+    .replace(/^(Saint|Venerable|Hieromartyr|Hieromartyrs?|Martyr|Martyrs|Great[- ]Martyr|New Martyr|Virgin Martyr|Maiden Martyr|Monastic Martyr|Nun Martyr|Prophet|Apostle|Apostles|Blessed|Righteous)\s+/i, '')
+    .replace(/^(Holy|Glorious|Great|New)\s+/i, '');
+  // Strip "of Location", "at Location", "in Location", "near Location" suffixes
+  name = name.replace(/\s+(?:of|at|in|near)\s+.*$/i, '');
+  // Strip parenthetical and comma suffixes
+  name = name.replace(/\s*\(.*$/, '');
+  name = name.replace(/,\s+.*$/, '');
+  return name.trim() || title;
+}
+
+/**
+ * Fallback mapping for saint types that don't have their own General Menaion PDF
+ * to a type that does.
+ */
+const GENERAL_MENAION_FALLBACK = {
+  'hieromartyrs': 'hieromartyr',   // plural → singular as fallback
+  'hierarchs':    'hierarch',
+  'monastics':    'monastic',
+  'monasticMartyrs': 'monasticMartyr',
+  'maidenMartyrs':   'maidenMartyr',
+  'nuns':            'nun',
+  'apostles':        'apostle',
+};
+
+/**
+ * Fetches General Menaion texts for a given saint type, substituting
+ * the (name) placeholder with the actual saint's name.
+ *
+ * Returns stichera-compatible rows or null if none found.
+ */
+function getGeneralMenaionTexts(saintType, title) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+
+    // Try exact type, then fallback
+    const types = [saintType];
+    if (GENERAL_MENAION_FALLBACK[saintType]) types.push(GENERAL_MENAION_FALLBACK[saintType]);
+
+    for (const type of types) {
+      const rows = db.prepare(`
+        SELECT saint_type, section, "order", tone, label, verse, text
+        FROM general_menaion WHERE saint_type = ?
+        ORDER BY section, "order"
+      `).all(type);
+
+      if (rows.length > 0) {
+        const shortName = extractShortName(title);
+        const sub = t => t.replace(/\(name(?:\s+of\s+the\s+event\/Icon)?\)/gi, shortName);
+        return rows.map(r => ({
+          order:    r.order,
+          section:  r.section,
+          tone:     r.tone,
+          label:    r.label,
+          text:     sub(r.text),
+          verse:    r.verse ? sub(r.verse) : null,
+          dbSource: 'stSergius-general',
+        }));
+      }
+    }
+    return null;
+  } catch (err) {
+    console.error('getGeneralMenaionTexts error:', err.message);
     return null;
   } finally {
     db?.close();
@@ -606,6 +695,121 @@ function openDb() {
   const dbPath = path.join(__dirname, 'storage', 'oca.db');
   if (!fs.existsSync(dbPath)) return null;
   return new DatabaseSync(dbPath, { readonly: true });
+}
+
+function openDbWrite() {
+  const { DatabaseSync } = require('node:sqlite');
+  const dbPath = path.join(__dirname, 'storage', 'oca.db');
+  if (!fs.existsSync(dbPath)) return null;
+  return new DatabaseSync(dbPath);
+}
+
+// ─── Orthocal API cache ───────────────────────────────────────────────────────
+
+function ensureOrthocalCacheTable() {
+  try {
+    const db = openDbWrite();
+    if (!db) return;
+    db.exec(`CREATE TABLE IF NOT EXISTS orthocal_cache (
+      date       TEXT PRIMARY KEY,
+      data       TEXT NOT NULL,
+      fetched_at TEXT NOT NULL
+    )`);
+  } catch (err) {
+    console.error('Failed to create orthocal_cache table:', err.message);
+  }
+}
+
+function getOrthocalCache(dateStr) {
+  try {
+    const db = openDb();
+    if (!db) return null;
+    const row = db.prepare('SELECT data FROM orthocal_cache WHERE date = ?').get(dateStr);
+    return row ? JSON.parse(row.data) : null;
+  } catch { return null; }
+}
+
+function setOrthocalCache(dateStr, data) {
+  try {
+    const db = openDbWrite();
+    if (!db) return;
+    db.prepare(
+      'INSERT OR REPLACE INTO orthocal_cache (date, data, fetched_at) VALUES (?, ?, ?)'
+    ).run(dateStr, JSON.stringify(data), new Date().toISOString());
+  } catch (err) {
+    console.error('Orthocal cache write error:', err.message);
+  }
+}
+
+async function fetchOrthocalDay(dateStr) {
+  const cached = getOrthocalCache(dateStr);
+  if (cached) return cached;
+
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const url = `https://orthocal.info/api/gregorian/${year}/${month}/${day}/`;
+  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+  if (!res.ok) throw new Error(`Orthocal API ${res.status} for ${dateStr}`);
+  const data = await res.json();
+
+  setOrthocalCache(dateStr, data);
+  return data;
+}
+
+/**
+ * Builds a liturgy spec object from orthocal.info API data.
+ * Used when no hand-authored liturgy key exists for the date.
+ *
+ * Provides: variant, entrance hymn, epistle, gospel, megalynarion,
+ *           communion hymn, dismissal, resurrectional troparion (if in Octoechos).
+ * Deferred:  prokeimenon, alleluia, beatitudes troparia, kontakia.
+ */
+function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
+  const [yr, mo, dy] = dateStr.split('-').map(Number);
+  const date    = new Date(Date.UTC(yr, mo - 1, dy));
+  const dow     = getDayOfWeek(date);
+  const tone    = getTone(date);
+  const variant = getLiturgyVariant(date);
+  const isBasil  = variant === 'basil';
+  const isSunday = dow === 'sunday';
+  const tk       = `tone${tone}`;
+
+  // Epistle and Gospel from the API readings array
+  const readings   = orthocalData.readings || [];
+  const epistleR   = readings.find(r => r.source === 'Epistle');
+  const gospelR    = readings.find(r => r.source === 'Gospel');
+
+  // Resurrectional troparion from Octoechos (same text used at both Vespers and Liturgy).
+  // Octoechos stores troparion as an object { tone, label, text }.
+  const troparionRaw  = srcs.octoechos?.[tk]?.saturday?.vespers?.troparion;
+  const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
+  const troparia = (isSunday && troparionText)
+    ? [{ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText }]
+    : [];
+
+  return {
+    variant,
+    beatitudes: { troparia: [] },
+    entranceHymn: {
+      text: isSunday
+        ? 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!'
+        : 'Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!',
+    },
+    troparia,
+    kontakia: [],
+    trisagion: { substitution: getTrisagionSubstitution(date) },
+    prokeimenon: null,
+    epistle:  epistleR ? { book: epistleR.book, display: epistleR.display } : null,
+    alleluia: null,
+    gospel:   gospelR ? { book: gospelR.book, display: gospelR.display } : null,
+    megalynarion: isBasil ? 'basil-liturgy' : null,
+    communionHymn: isSunday
+      ? { text: 'Praise the Lord from the heavens, praise Him in the highest. Alleluia.' }
+      : null,
+    dismissal: {
+      opening: isSunday ? 'sunday' : 'weekday',
+      saints:  (orthocalData.saints || []).slice(0, 3),
+    },
+  };
 }
 
 function getCollectedDates() {
@@ -787,8 +991,8 @@ function mapDbBlocks(dbBlocks) {
  * or null if no calendar entry exists for the date.
  * Throws on assembly error.
  */
-function assembleForDate(date, pronoun) {
-  const calendarEntry = getCalendarEntry(date);
+function assembleForDate(date, pronoun, entryOverride) {
+  const calendarEntry = entryOverride || getCalendarEntry(date);
   if (!calendarEntry) return null;
 
   const dbSource = buildDbSource(date, pronoun);
@@ -804,14 +1008,30 @@ function assembleForDate(date, pronoun) {
     const [, mm, dd] = date.split('-').map(Number);
     const ranked = getMenaionRanked(mm, dd);
     const primary = ranked?.principal ?? null;
-    const sticheraData = ranked?.sticheraComm
+    let sticheraData = ranked?.sticheraComm
       ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
            rank: ranked.sticheraComm.rank, stichera: ranked.sticheraComm.stichera }]
       : null;
 
+    // General Menaion fallback: when no day-specific stichera exist,
+    // use generic texts for this saint's category
+    if (!sticheraData && primary?.saint_type) {
+      const gmTexts = getGeneralMenaionTexts(primary.saint_type, primary.title);
+      if (gmTexts) {
+        sticheraData = [{ id: primary.id, title: primary.title,
+          rank: primary.rank, stichera: gmTexts }];
+      }
+    }
+
     if (primary) {
       const troparion = primary.troparia.find(t => t.type === 'troparion');
       const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
+
+      // Determine provenance label for dev-mode display
+      const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
+      const menaionProvenance = firstDbSrc && firstDbSrc !== 'oca-menaion'
+        ? `menaion (${firstDbSrc})`
+        : 'menaion';
 
       const licStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'lordICall' && s.order >= 1
@@ -837,7 +1057,7 @@ function assembleForDate(date, pronoun) {
           lic.slots.push({
             verses: allVerses.slice(resurrectionalCount),
             count:  menaionCount,
-            source: 'menaion',
+            source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
             label:  primary.title,
@@ -848,7 +1068,7 @@ function assembleForDate(date, pronoun) {
           lic.slots = [{
             verses: weekdayVerses,
             count:  licStichera.length,
-            source: 'menaion',
+            source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
             label:  primary.title,
@@ -858,7 +1078,7 @@ function assembleForDate(date, pronoun) {
         autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
 
         if (licGlory) {
-          lic.glory = { source: 'menaion', key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
+          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
       }
@@ -880,7 +1100,7 @@ function assembleForDate(date, pronoun) {
         // Replace the Octoechos idiomelon slots with Menaion stichera
         apost.slots = apostStichera.map((s, i) => ({
           position: i + 1,
-          source:   'menaion',
+          source:   'menaion', provenance: menaionProvenance,
           key:      `auto.${date}.aposticha.hymns.${i}`,
           tone:     s.tone,
           label:    primary.title,
@@ -891,7 +1111,7 @@ function assembleForDate(date, pronoun) {
         }
 
         if (apostGlory) {
-          apost.glory = { source: 'menaion', key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: false };
+          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: false };
           if (isSaturdayInjection) {
             apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
           }
@@ -907,7 +1127,7 @@ function assembleForDate(date, pronoun) {
       const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
       slots.splice(insertAt, 0, {
         position: 'glory',
-        source:   'menaion',
+        source:   'menaion', provenance: menaionProvenance,
         key:      `auto.${date}.troparion`,
         tone:     troparion.tone,
         label:    primary.title,
@@ -1092,6 +1312,219 @@ function getDayLabel(entry, dow, season) {
   return null;
 }
 
+// ─── Dashboard data builder ──────────────────────────────────────────────────
+
+/**
+ * Builds coverage data for every day in the given year.
+ * Returns an array of { date, season, tone, feast, hasService, score, primarySource, layers, services }.
+ *
+ * score: 0–1 composite coverage (calendar entry, octoechos, prokeimena, troparia, stichera)
+ * primarySource: 'oca' | 'stSergius' | 'generic' | 'mixed' | null
+ * layers: { calendarEntry, octoechos, prokeimena, troparia, stichera, aposticha, triodion }
+ *         each: { present: bool, source: string|null }
+ */
+function buildDashboardData(year) {
+  const DAY_MS_LOCAL = 24 * 60 * 60 * 1000;
+  const jan1  = new Date(Date.UTC(year, 0, 1));
+  const dec31 = new Date(Date.UTC(year, 11, 31));
+
+  // Batch-load Menaion DB data for the whole year
+  let tropariaCounts = {};  // "MM-DD" → count
+  let sticheraCounts = {};  // "MM-DD" → { count, sources }
+  let generalMenaionTypes = {};  // "MM-DD" → saint_type if any
+  try {
+    const db = openDb();
+    if (db) {
+      // Count troparia per day
+      const tropRows = db.prepare(`
+        SELECT c.month, c.day, COUNT(DISTINCT t.commemoration_id) AS cnt
+        FROM troparia t JOIN commemorations c ON c.id = t.commemoration_id
+        WHERE t.type = 'troparion'
+        GROUP BY c.month, c.day
+      `).all();
+      for (const r of tropRows) {
+        const key = `${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}`;
+        tropariaCounts[key] = r.cnt;
+      }
+
+      // Count stichera per day with source info and section breakdown
+      const stichRows = db.prepare(`
+        SELECT c.month, c.day, COUNT(*) AS cnt,
+               GROUP_CONCAT(DISTINCT s.source) AS sources,
+               GROUP_CONCAT(DISTINCT s.section) AS sections
+        FROM stichera s JOIN commemorations c ON c.id = s.commemoration_id
+        GROUP BY c.month, c.day
+      `).all();
+      for (const r of stichRows) {
+        const key = `${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}`;
+        sticheraCounts[key] = { count: r.cnt, sources: r.sources || '', sections: r.sections || '' };
+      }
+
+      // Get saint_type for primary commemoration per day (for general menaion fallback detection)
+      const gmRows = db.prepare(`
+        SELECT month, day, saint_type FROM commemorations
+        WHERE saint_type IS NOT NULL
+        ORDER BY id
+      `).all();
+      for (const r of gmRows) {
+        const key = `${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}`;
+        if (!generalMenaionTypes[key]) generalMenaionTypes[key] = r.saint_type;
+      }
+
+      db.close();
+    }
+  } catch (err) {
+    console.error('Dashboard DB query error:', err.message);
+  }
+
+  // Check which saint types have general menaion entries
+  let gmAvailableTypes = new Set();
+  try {
+    const db = openDb();
+    if (db) {
+      const gmTypes = db.prepare(`SELECT DISTINCT saint_type FROM general_menaion`).all();
+      for (const r of gmTypes) gmAvailableTypes.add(r.saint_type);
+      // Add fallback mappings
+      for (const [plural, singular] of Object.entries(GENERAL_MENAION_FALLBACK)) {
+        if (gmAvailableTypes.has(singular)) gmAvailableTypes.add(plural);
+      }
+      db.close();
+    }
+  } catch (_) {}
+
+  const result = [];
+  let cur = new Date(jan1);
+
+  while (cur <= dec31) {
+    const dateStr = cur.toISOString().slice(0, 10);
+    const [, mm, dd] = dateStr.split('-');
+    const dayKey = `${mm}-${dd}`;
+    const dowIdx = cur.getUTCDay();
+    const dowStr = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
+
+    // Get calendar entry (cheap)
+    const entry = getCalendarEntry(dateStr);
+    const season = entry ? (entry.liturgicalContext?.season || null) : getLiturgicalSeason(cur);
+    const tone = entry ? (entry.liturgicalContext?.tone ?? null) : null;
+
+    const hasService = !!entry;
+    const services = {
+      greatVespers: entry?.vespers?.serviceType === 'greatVespers',
+      dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
+      liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
+    };
+
+    // Feast name from Menaion DB
+    let feast = null;
+    try {
+      const dayList = getMenaionDayList(parseInt(mm), parseInt(dd));
+      if (dayList) feast = dayList.principal;
+    } catch (_) {}
+
+    // Coverage layers
+    const hasTroparia  = !!tropariaCounts[dayKey];
+    const stichInfo    = sticheraCounts[dayKey];
+    const hasStichera  = !!stichInfo;
+    const saintType    = generalMenaionTypes[dayKey];
+    const hasGmFallback = saintType && gmAvailableTypes.has(saintType) && !hasStichera;
+
+    // Determine sources used
+    const sourcesUsed = new Set();
+    if (hasStichera && stichInfo.sources) {
+      for (const s of stichInfo.sources.split(',')) {
+        if (s === 'oca-menaion') sourcesUsed.add('oca');
+        else if (s.startsWith('stSergius')) sourcesUsed.add('stSergius');
+        else if (s) sourcesUsed.add(s);
+      }
+    }
+    if (hasGmFallback) sourcesUsed.add('generic');
+
+    // Determine Octoechos presence (relevant for Saturday Great Vespers / Friday)
+    const needsOctoechos = dowStr === 'saturday' || dowStr === 'friday';
+    const hasOctoechos = hasService && needsOctoechos;
+    // Prokeimena always available from JSON
+    const hasProkeimena = hasService;
+    // Triodion check — relevant for Lenten season
+    const lentenSeasons = ['greatLent', 'preLenten', 'holyWeek', 'brightWeek', 'pentecostarion'];
+    const needsTriodion = lentenSeasons.includes(season);
+    const hasTriodion = needsTriodion ? (entry?.vespers?.lordICall?.slots?.some(s => s.source === 'db' || s.source === 'triodion') || false) : true;
+
+    // Composite score — contextual weights based on what the service actually needs
+    let score = 0;
+    if (hasService) {
+      // Saturdays: full 6-layer scoring; weekdays: skip octoechos weight and redistribute
+      const isSat = needsOctoechos;
+      const weights = isSat
+        ? { calendar: 0.15, octoechos: 0.2, prokeimena: 0.1, troparia: 0.2, stichera: 0.25, triodion: 0.1 }
+        : { calendar: 0.15, prokeimena: 0.1, troparia: 0.3, stichera: 0.35, triodion: 0.1 };
+      score += weights.calendar; // always have calendar entry if hasService
+      if (isSat && hasOctoechos) score += weights.octoechos;
+      if (hasProkeimena) score += weights.prokeimena;
+      if (hasTroparia)   score += weights.troparia;
+      if (hasStichera || hasGmFallback) score += weights.stichera;
+      if (hasTriodion)   score += weights.triodion;
+    }
+
+    // Liturgy content score — 1.0 if hand-authored liturgy data exists, 0 otherwise
+    const hasLiturgyContent = !!entry?.liturgy;
+    const liturgyScore = hasLiturgyContent ? 1.0 : 0;
+
+    // Primary source
+    let primarySource = null;
+    if (sourcesUsed.size > 1) primarySource = 'mixed';
+    else if (sourcesUsed.has('oca')) primarySource = 'oca';
+    else if (sourcesUsed.has('stSergius')) primarySource = 'stSergius';
+    else if (sourcesUsed.has('generic')) primarySource = 'generic';
+    else if (hasService && hasTroparia) primarySource = 'oca'; // troparia from OCA scraper
+
+    const layers = {};
+    if (hasService) {
+      layers.calendarEntry = { present: true, source: entry?._meta?.generated ? 'auto-generated' : 'hand-authored' };
+      layers.octoechos     = { present: hasOctoechos, source: hasOctoechos ? 'OCA Obikhod' : null };
+      layers.prokeimena    = { present: hasProkeimena, source: 'prokeimena.json' };
+      layers.troparia      = { present: hasTroparia, source: hasTroparia ? 'OCA Menaion' : null };
+      layers.stichera      = { present: hasStichera, source: hasStichera ? formatSticheraSource(stichInfo.sources) : (hasGmFallback ? 'General Menaion' : null) };
+      if (hasGmFallback && !hasStichera) {
+        layers.stichera.present = true;
+        layers.stichera.source = 'General Menaion (fallback)';
+      }
+      layers.aposticha     = { present: hasStichera && stichInfo.sections?.includes('aposticha'), source: hasStichera && stichInfo.sections?.includes('aposticha') ? formatSticheraSource(stichInfo.sources) : null };
+      if (needsTriodion) {
+        layers.triodion = { present: hasTriodion, source: hasTriodion ? 'triodion JSON' : null };
+      }
+    }
+
+    result.push({
+      date: dateStr,
+      dayOfWeek: dowStr,
+      season,
+      tone,
+      feast,
+      hasService,
+      score: Math.round(score * 100) / 100,
+      liturgyScore,
+      primarySource,
+      layers,
+      services,
+    });
+
+    cur = new Date(cur.getTime() + DAY_MS_LOCAL);
+  }
+
+  return result;
+}
+
+function formatSticheraSource(sourcesStr) {
+  if (!sourcesStr) return null;
+  const parts = sourcesStr.split(',');
+  const labels = parts.map(s => {
+    if (s === 'oca-menaion') return 'OCA';
+    if (s.startsWith('stSergius')) return 'St. Sergius';
+    return s;
+  });
+  return [...new Set(labels)].join(' + ');
+}
+
 // ─── Static file serving ──────────────────────────────────────────────────────
 
 function serveStatic(res, filePath, contentType) {
@@ -1129,6 +1562,17 @@ try {
   process.exit(1);
 }
 
+let liturgyFixed;
+try {
+  liturgyFixed = loadJSON('fixed-texts/liturgy-fixed.json');
+  console.log('Liturgy fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load liturgy fixed texts:', err.message);
+  process.exit(1);
+}
+
+ensureOrthocalCacheTable();
+
 function handleRequest(req, res) {
   const url      = req.url || '/';
   const pathname = url.split('?')[0];
@@ -1136,6 +1580,9 @@ function handleRequest(req, res) {
   try {
     if (pathname === '/') {
       serveStatic(res, path.join(__dirname, 'public', 'index.html'), 'text/html');
+
+    } else if (pathname === '/favicon.svg') {
+      serveStatic(res, path.join(__dirname, 'public', 'favicon.svg'), 'image/svg+xml');
 
     } else if (pathname.startsWith('/styles/') || pathname.startsWith('/scripts/')) {
       const filePath = path.join(__dirname, 'public', pathname);
@@ -1156,9 +1603,49 @@ function handleRequest(req, res) {
         return;
       }
 
+      (async () => {
+      // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API
+      let entryOverride = null;
+      try {
+        const baseEntry = getCalendarEntry(date);
+        if (baseEntry?.liturgicalContext?.season === 'greatLent' &&
+            baseEntry?.vespers?.serviceType === 'dailyVespers') {
+          const orthocalData = await fetchOrthocalDay(date);
+          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
+          if (vesperReadings.length > 0) {
+            // Deep-clone just the prokeimenon entries so we don't mutate the shared calendar entry
+            const entries = (baseEntry.vespers?.prokeimenon?.entries || []).map(e => {
+              // API returns book:"OT" for all Vespers readings; match by book name in display field
+              const match = vesperReadings.find(r =>
+                r.display && e.reading?.book &&
+                r.display.toLowerCase().startsWith(e.reading.book.toLowerCase())
+              );
+              if (match && match.display) {
+                // Extract pericope from display (e.g. "Genesis 10.32-11.9" → "10:32–11:9")
+                const raw = match.display.replace(/^[A-Za-z ]+/, '').trim();
+                // Normalize: first dot between digits becomes colon, subsequent dot becomes em-dash start
+                const pericope = raw.replace(/(\d+)\.(\d+)-(\d+)\.(\d+)/, '$1:$2–$3:$4')
+                                    .replace(/(\d+)\.(\d+)/, '$1:$2');
+                return { ...e, reading: { ...e.reading, pericope } };
+              }
+              return e;
+            });
+            entryOverride = {
+              ...baseEntry,
+              vespers: {
+                ...baseEntry.vespers,
+                prokeimenon: { ...baseEntry.vespers.prokeimenon, entries },
+              },
+            };
+          }
+        }
+      } catch (err) {
+        console.warn('Orthocal pericope fetch failed (non-fatal):', err.message);
+      }
+
       let result;
       try {
-        result = assembleForDate(date, pronoun);
+        result = assembleForDate(date, pronoun, entryOverride);
       } catch (err) {
         console.error('assembleForDate error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -1203,6 +1690,93 @@ function handleRequest(req, res) {
         commemorations,
         blocks,
       }));
+      })().catch(err => {
+        console.error('/api/service async error:', err);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Internal server error.' }));
+        }
+      });
+
+    } else if (pathname === '/api/liturgy') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      (async () => {
+        let calendarEntry = getCalendarEntry(date);
+        if (!calendarEntry) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'No liturgy available for this date.', date }));
+          return;
+        }
+
+        if (!calendarEntry.liturgy) {
+          try {
+            const orthocalData = await fetchOrthocalDay(date);
+            calendarEntry = { ...calendarEntry,
+              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
+          } catch (err) {
+            console.error(`Orthocal API error for ${date}:`, err.message);
+            res.writeHead(503, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Liturgy data unavailable for this date.', date }));
+            return;
+          }
+        }
+
+        let blocks;
+        try {
+          blocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+        } catch (err) {
+          console.error('assembleLiturgy error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+          return;
+        }
+
+        if (pronoun === 'yy') {
+          for (const block of blocks) {
+            if (block.text)  block.text  = applyYouYour(block.text);
+            if (block.label) block.label = applyYouYour(block.label);
+          }
+        }
+
+        const season = calendarEntry.liturgicalContext?.season || null;
+        const tone   = calendarEntry.liturgicalContext?.tone ?? null;
+        const dow    = calendarEntry.dayOfWeek || null;
+        const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+        const commemorations  = calendarEntry.commemorations || [];
+
+        const variantName = calendarEntry.liturgy.variant === 'basil'
+          ? 'Liturgy of St. Basil the Great'
+          : 'Liturgy of St. John Chrysostom';
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          date,
+          serviceType:    'liturgy',
+          serviceName:    `Divine Liturgy — ${variantName}`,
+          tone,
+          season,
+          liturgicalLabel,
+          commemorations,
+          blocks,
+        }));
+      })().catch(err => {
+        console.error('Liturgy route error:', err);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Internal server error.' }));
+        }
+      });
 
     } else if (pathname === '/api/days') {
       const q    = parseQuery(url);
@@ -1263,7 +1837,7 @@ function handleRequest(req, res) {
           greatVespers: entry?.vespers?.serviceType === 'greatVespers',
           dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
           matins:  false,
-          liturgy: false,
+          liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
         };
 
         result.push({
@@ -1468,6 +2042,19 @@ function handleRequest(req, res) {
       }
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ month, day, commemorations: data }, null, 2));
+
+    } else if (pathname === '/api/dashboard') {
+      const q    = parseQuery(url);
+      const year = parseInt(q.year, 10) || 2026;
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      const result = buildDashboardData(year);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(result));
+
+    } else if (pathname === '/dashboard') {
+      serveStatic(res, path.join(__dirname, 'public', 'dashboard.html'), 'text/html');
 
     } else {
       res.writeHead(404, { 'Content-Type': 'text/plain' });

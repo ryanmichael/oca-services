@@ -1380,6 +1380,121 @@ function generateCalendarEntry(dateStr) {
   return null;
 }
 
+// ─── Liturgy variant ──────────────────────────────────────────────────────────
+
+/**
+ * Returns the liturgy variant ('basil' or 'chrysostom') for a given date.
+ *
+ * Basil occasions (OCA Typikon):
+ *   - January 1 (Feast of St. Basil the Great)
+ *   - Five Sundays of Great Lent (weeks 1–5; Palm Sunday = week 6 → Chrysostom)
+ *   - Great Thursday and Great Saturday (Holy Week)
+ *   - Eve of Nativity (Dec 24) and Eve of Theophany (Jan 5)
+ *
+ * Note: when the eves of Nativity or Theophany fall on Sunday or Monday,
+ * the Liturgy of Basil transfers to the feast day itself. That edge case
+ * is not yet handled here.
+ */
+function getLiturgyVariant(date) {
+  const month  = date.getUTCMonth() + 1;
+  const day    = date.getUTCDate();
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+
+  if (month === 1  && day === 1)  return 'basil';   // St. Basil's Day
+  if (month === 12 && day === 24) return 'basil';   // Eve of Nativity
+  if (month === 1  && day === 5)  return 'basil';   // Eve of Theophany
+
+  if (season === 'greatLent' && dow === 'sunday') {
+    const week = getWeekOfLent(date);
+    if (week >= 1 && week <= 5) return 'basil';
+  }
+
+  if (season === 'holyWeek' && (dow === 'thursday' || dow === 'saturday')) {
+    return 'basil';
+  }
+
+  return 'chrysostom';
+}
+
+// ─── Trisagion substitution ───────────────────────────────────────────────────
+
+/**
+ * Returns the Trisagion substitution type for a given date at the Divine Liturgy.
+ *
+ *   'cross'      → "Before Thy Cross, we bow down in worship…"
+ *                   (Sunday of the Holy Cross; Elevation of the Cross, Sep 14)
+ *   'baptismal'  → "As many as have been baptized into Christ, have put on Christ."
+ *                   (Nativity Dec 25; Theophany Jan 6; Lazarus Saturday; Great Saturday)
+ *   'typical'    → "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
+ */
+function getTrisagionSubstitution(date) {
+  const month  = date.getUTCMonth() + 1;
+  const day    = date.getUTCDate();
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+
+  // Sunday of the Holy Cross — 3rd Sunday of Great Lent
+  if (season === 'greatLent' && dow === 'sunday' && getWeekOfLent(date) === 3) return 'cross';
+
+  // Elevation of the Holy Cross — Sep 14
+  if (month === 9 && day === 14) return 'cross';
+
+  // Nativity of Christ — Dec 25
+  if (month === 12 && day === 25) return 'baptismal';
+
+  // Theophany — Jan 6
+  if (month === 1 && day === 6) return 'baptismal';
+
+  // Lazarus Saturday — 6th Lenten Saturday
+  if (season === 'greatLent' && dow === 'saturday' && getLentenSaturdayNumber(date) === 6) {
+    return 'baptismal';
+  }
+
+  // Great Saturday
+  if (season === 'holyWeek' && dow === 'saturday') return 'baptismal';
+
+  return 'typical';
+}
+
+// ─── Liturgy availability ─────────────────────────────────────────────────────
+
+/**
+ * Returns true for dates where the Divine Liturgy is typically served.
+ *
+ * Covers:
+ *   - All Sundays
+ *   - Bright Week (all days)
+ *   - Great Lent: all Saturdays (Soul Saturdays, St. Theodore, Akathist, Lazarus)
+ *   - Holy Week: Great Thursday and Great Saturday
+ *   - Ascension Thursday (Pascha + 39 days)
+ *   - The 12 Great Feasts on fixed calendar dates
+ */
+function isLiturgyServed(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  const month  = date.getUTCMonth() + 1;
+  const day    = date.getUTCDate();
+
+  if (dow === 'sunday')  return true;
+  if (season === 'brightWeek') return true;
+  if (season === 'greatLent' && dow === 'saturday') return true;
+  if (season === 'holyWeek'  && (dow === 'thursday' || dow === 'saturday')) return true;
+
+  // Ascension — always a Thursday, Pascha + 39 days
+  const pascha = calculatePascha(date.getUTCFullYear());
+  if (Math.floor((date - pascha) / DAY_MS) === 39) return true;
+
+  // Fixed-calendar Great Feasts
+  const GREAT_FEASTS = new Set([
+    '1-6',   '2-2',   '3-25',  '6-24',  '6-29',
+    '8-6',   '8-15',  '9-8',   '9-14',  '11-21',  '12-25',
+  ]);
+  if (GREAT_FEASTS.has(`${month}-${day}`)) return true;
+
+  return false;
+}
+
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 module.exports = {
@@ -1392,5 +1507,8 @@ module.exports = {
   getLentenSaturdayNumber,
   isSoulSaturday,
   getLiturgicalKey,
+  getLiturgyVariant,
+  getTrisagionSubstitution,
+  isLiturgyServed,
   generateCalendarEntry,
 };

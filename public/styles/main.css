@@ -198,6 +198,68 @@ header,
 }
 .btn-print:hover { background: var(--rubric); color: var(--surface); }
 
+/* ── VIEW: PRINT ───────────────────────────────────────────────────────────── */
+
+.view-print {
+  transform: translateY(32px); opacity: 0; pointer-events: none;
+  transition: transform .38s cubic-bezier(.4,0,.2,1), opacity .28s ease;
+  z-index: 2;
+  background: var(--bg);
+}
+.view-print.visible {
+  transform: translateY(0); opacity: 1; pointer-events: auto;
+}
+
+.print-hdr {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.print-back {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+  color: var(--muted); padding: 4px 0;
+  transition: color .15s;
+}
+.print-back:hover { color: var(--rubric); }
+
+.print-view-body {
+  flex: 1; overflow-y: auto;
+  display: flex; justify-content: center;
+  padding: 48px 32px 60px;
+}
+
+.print-view-inner {
+  width: 100%; max-width: 520px;
+}
+
+.pd-title {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .22em;
+  color: var(--rubric); margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.pd-options { display: flex; gap: 14px; }
+.pd-option {
+  flex: 1; padding: 22px 18px; border: 1.5px solid var(--border);
+  cursor: pointer; background: none; text-align: left;
+  transition: border-color .12s, background .12s;
+}
+.pd-option:hover { border-color: var(--gold); background: rgba(201,168,76,.06); }
+.pd-option-name {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .16em;
+  color: var(--rubric); display: block; margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.pd-option-desc {
+  font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic;
+  color: var(--muted); line-height: 1.5;
+}
+
 .panel-svc {
   font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: .1em; color: var(--rubric);
   margin-bottom: 2px;
@@ -261,6 +323,25 @@ header,
 }
 .pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .pronoun-row input { accent-color: var(--rubric); }
+
+/* Dev-mode toggle */
+.devmode-row {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em;
+  color: var(--muted); margin-top: 6px;
+}
+.devmode-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.devmode-row input { accent-color: var(--rubric); }
+
+/* Source labels on section headings — shown only in dev mode */
+.src-tag {
+  display: none;
+  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: .08em;
+  color: var(--muted); opacity: .7;
+  text-transform: uppercase; margin-left: 8px; font-weight: 400;
+}
+body.dev-mode .src-tag { display: inline; }
+@media print { .src-tag { display: none !important; } }
 
 .panel-body { flex: 1; overflow-y: auto; padding: 24px 22px 48px; }
 
@@ -656,6 +737,10 @@ header,
   .panel-inner { width: 100%; }
   .panel-body { overflow: visible; padding: 0; }
   body { background: white; font-size: 12pt; overflow: visible; }
-  .prayer, .rubric { page-break-inside: avoid; }
+  /* Widow/orphan protection: keep headings with their content */
+  .svc-head { break-after: avoid; }
+  /* Keep short content units together; allow long blocks (psalm, litany) to split */
+  .prayer, .rubric { break-inside: avoid; }
+  .stich-label { break-after: avoid; }
   .svc-rule { background: none; border-top: 1px solid #8B1A1A; }
 }

@@ -65,10 +65,11 @@ async function fetchDays(from, to) {
 }
 
 async function fetchService(date, svcType, pronoun = 'tt') {
-  const res = await fetch(`/api/service?date=${date}&pronoun=${pronoun}`);
+  const endpoint = svcType === 'liturgy' ? '/api/liturgy' : '/api/service';
+  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}`);
   if (!res.ok) {
     if (res.status === 404) return null;
-    throw new Error(`/api/service failed: ${res.status}`);
+    throw new Error(`${endpoint} failed: ${res.status}`);
   }
   return res.json();
 }
@@ -89,13 +90,13 @@ function getServiceRows(day) {
     rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
     if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
     rows.push({ key: 'matins',  name: 'Matins',        available: false });
-    rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: false });
+    rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
   } else if (dow === 'sunday') {
     if (day.services.greatVespers) {
       rows.push({ key: 'greatVespers', name: 'Great Vespers', available: true });
     }
     rows.push({ key: 'matins',       name: 'Matins',        available: false });
-    rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: false });
+    rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers',  available: day.services.dailyVespers });
   } else {
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: day.services.dailyVespers });
@@ -180,7 +181,9 @@ async function _showPanel(rowEl, date, svcType) {
   activeDate    = date;
   activeSvcType = svcType;
   if (rowEl) rowEl.classList.add('active');
-  const svcLabel = svcType === 'dailyVespers' ? 'DAILY VESPERS' : 'GREAT VESPERS';
+  const svcLabel = svcType === 'dailyVespers' ? 'DAILY VESPERS'
+                 : svcType === 'liturgy'      ? 'DIVINE LITURGY'
+                 : 'GREAT VESPERS';
   document.getElementById('p-svc').textContent = svcLabel;
   document.getElementById('print-header-svc').textContent = svcLabel;
 
@@ -209,6 +212,14 @@ async function loadPanelContent(date, svcType) {
       document.getElementById('p-date').textContent = fallbackDate;
       document.getElementById('print-header-date').textContent = fallbackDate;
       return;
+    }
+
+    // Update panel service label from API response (shows variant name for liturgy)
+    if (data.serviceName) {
+      const labelEl = document.getElementById('p-svc');
+      const printLabelEl = document.getElementById('print-header-svc');
+      if (labelEl) labelEl.textContent = data.serviceName.toUpperCase();
+      if (printLabelEl) printLabelEl.textContent = data.serviceName.toUpperCase();
     }
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
@@ -279,6 +290,16 @@ function initPronounRadio() {
       updateDetailLabel();
       if (activeDate && activeSvcType) loadPanelContent(activeDate, activeSvcType);
     });
+  });
+}
+
+// ─── Dev-mode toggle ─────────────────────────────────────────────────────────
+
+function initDevMode() {
+  const cb = document.getElementById('devmode-toggle');
+  if (!cb) return;
+  cb.addEventListener('change', () => {
+    document.body.classList.toggle('dev-mode', cb.checked);
   });
 }
 
@@ -436,16 +457,10 @@ function renderWeek(sunday) {
   document.querySelectorAll('.cal-week-day.has-svc').forEach(cell => {
     cell.addEventListener('click', () => {
       const date = cell.dataset.date;
+      const dayObj = calDayCache[date];
+      const svc = dayObj?.services?.greatVespers ? 'greatVespers' : 'dailyVespers';
       closeCal();
-      setTimeout(() => {
-        jumpToDate(date);
-        const dayObj = calDayCache[date];
-        if (dayObj) {
-          const svc = dayObj.services.greatVespers ? 'greatVespers' : 'dailyVespers';
-          const btn = document.querySelector(`.svc-row[data-date="${date}"][data-svc="${svc}"]`);
-          if (btn) openPanel(btn, date, svc);
-        }
-      }, 280);
+      setTimeout(() => pickResult(date, svc), 280);
     });
   });
 
@@ -473,11 +488,7 @@ function renderWeek(sunday) {
       const date = row.dataset.date;
       const svc  = row.dataset.svc;
       closeCal();
-      setTimeout(() => {
-        jumpToDate(date);
-        const btn = document.querySelector(`.svc-row[data-date="${date}"][data-svc="${svc}"]`);
-        if (btn) openPanel(btn, date, svc);
-      }, 280);
+      setTimeout(() => pickResult(date, svc), 280);
     });
   });
 }
@@ -655,9 +666,13 @@ async function pickResult(dateStr, svcType) {
 async function init() {
   // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
-  document.getElementById('btn-print').addEventListener('click', () => window.print());
+  document.getElementById('btn-print').addEventListener('click', openPrintView);
+  document.getElementById('print-back').addEventListener('click', closePrintView);
+  document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
+  document.getElementById('pd-booklet').addEventListener('click', () => { closePrintView(); printBooklet(); });
   document.getElementById('p-detail-toggle').addEventListener('click', togglePanelDetail);
   initPronounRadio();
+  initDevMode();
 
   // Calendar
   document.getElementById('date-btn').addEventListener('click', openCal);
@@ -681,6 +696,7 @@ async function init() {
     if (e.key !== 'Escape') return;
     if (document.getElementById('view-search').classList.contains('visible')) closeSearch();
     if (document.getElementById('view-cal').classList.contains('visible'))    closeCal();
+    if (document.getElementById('view-print').classList.contains('visible'))  closePrintView();
   });
 
   // URL params
@@ -735,6 +751,299 @@ async function init() {
       if (state.date) jumpToDate(state.date);
     }
   });
+}
+
+// ─── Print dialog ─────────────────────────────────────────────────────────────
+
+function openPrintView() {
+  closeSearch(/*silent=*/true);
+  closeCal();
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-print').classList.add('visible');
+}
+
+function closePrintView() {
+  document.getElementById('view-print').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+}
+
+function printBooklet() {
+  const body = document.getElementById('p-body');
+  const svc  = document.getElementById('p-svc').textContent;
+  const date = document.getElementById('p-date').textContent;
+
+  if (!body || !body.innerHTML.trim()) {
+    alert('No service loaded.'); return;
+  }
+
+  const win = window.open('', '_blank');
+  if (!win) { alert('Please allow popups to use booklet printing.'); return; }
+
+  // Dimensions: page = 5.5" × 8.5", padding = 0.4in all sides
+  // Content height = (8.5 - 0.4 - 0.4) × 96 = 730 px
+  const PAGE_CONTENT_H = (8.5 - 0.4 - 0.4) * 96; // 730 px
+  const MEASURE_W      = (5.5 - 0.4 * 2) + 'in';  // 4.7in
+
+  // ── Imposition function (mirrors booklet-impose.js) ──────────────────────
+  function impose(pages) {
+    const p = pages.slice();
+    while (p.length % 4 !== 0) p.push(null);
+    const n = p.length, out = [];
+    for (let k = 0; k < n / 4; k++) {
+      out.push(p[n - 1 - 2 * k]);
+      out.push(p[2 * k]);
+      out.push(p[2 * k + 1]);
+      out.push(p[n - 2 - 2 * k]);
+    }
+    return out;
+  }
+
+  // ── Build booklet JS that runs in the new window ──────────────────────────
+  const bookletScript = `
+(function () {
+  var PAGE_H  = ${PAGE_CONTENT_H};
+  var TITLE   = ${JSON.stringify(svc + ' \u2014 ' + date)};
+
+  // Build spreads: each spread = one landscape-letter print page (two half-pages side by side).
+  // Front spreads print normally; back spreads are pre-rotated 180° to counteract the
+  // printer's long-edge duplex flip (landscape long-edge flips top-to-bottom = 180°).
+  // NOTE: if back-side content appears upside-down after printing, toggle the rotate flags below.
+  function buildSpreads(pages) {
+    var p = pages.slice();
+    while (p.length % 4 !== 0) p.push(null);
+    var n = p.length, spreads = [];
+    for (var k = 0; k < n / 4; k++) {
+      spreads.push({ left: p[n-1-2*k], right: p[2*k],   rotate: false }); // sheet k front
+      spreads.push({ left: p[n-2-2*k], right: p[2*k+1], rotate: true  }); // sheet k back
+    }
+    return spreads;
+  }
+
+  document.fonts.ready.then(function () {
+    var measure  = document.getElementById('measure');
+    var allItems = [];
+
+    // Flatten content: individual blocks + svc-rules
+    Array.from(measure.children).forEach(function (el) {
+      if (el.classList.contains('svc-rule')) {
+        allItems.push({ html: el.outerHTML, isHead: false });
+      } else if (el.classList.contains('svc-sec')) {
+        Array.from(el.children).forEach(function (child) {
+          allItems.push({ html: child.outerHTML, isHead: child.classList.contains('svc-head') });
+        });
+        allItems.push({ html: '<div class="sec-gap"></div>', isHead: false });
+      }
+    });
+
+    // Measure heights in the measure container (correct width already set)
+    // getBoundingClientRect().height excludes the last child's margin-bottom
+    // (it collapses with the parent's margin-bottom = 0), so we add it back.
+    var tmp = document.createElement('div');
+    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};';
+    document.body.appendChild(tmp);
+    var itemHeights = allItems.map(function (item) {
+      tmp.innerHTML = item.html;
+      var h = tmp.getBoundingClientRect().height;
+      var last = tmp.lastElementChild;
+      if (last) {
+        h += parseFloat(window.getComputedStyle(last).marginBottom) || 0;
+      }
+      return h;
+    });
+    document.body.removeChild(tmp);
+
+    // Bin into pages; keep section heading with its first block
+    var pages = [[]], heights = [0];
+    allItems.forEach(function (item, i) {
+      var h = itemHeights[i];
+      var idx = pages.length - 1;
+      // If adding this item (+ next item for widows) overflows, start new page
+      var lookahead = item.isHead ? (itemHeights[i + 1] || 0) : 0;
+      if (heights[idx] + h + lookahead > PAGE_H && pages[idx].length > 0) {
+        pages.push([]); heights.push(0);
+      }
+      var last = pages.length - 1;
+      pages[last].push(item.html);
+      heights[last] += h;
+    });
+
+    // Build spreads (each spread = one landscape print page with two half-pages)
+    var spreads = buildSpreads(pages);
+    var totalSheets = spreads.length / 2;
+
+    // Render spreads
+    var booklet = document.getElementById('booklet');
+    spreads.forEach(function (spread) {
+      var div = document.createElement('div');
+      div.className = spread.rotate ? 'bk-spread rotated' : 'bk-spread';
+      ['left', 'right'].forEach(function (side) {
+        var half = document.createElement('div');
+        half.className = 'bk-half';
+        if (spread[side] && spread[side].length > 0) {
+          half.innerHTML = spread[side].join('');
+        }
+        div.appendChild(half);
+      });
+      booklet.appendChild(div);
+    });
+
+    // Update instructions with sheet count
+    var contentPages = pages.filter(function(p){ return p && p.length > 0; }).length;
+    document.getElementById('sheet-count').textContent =
+      totalSheets + ' sheet' + (totalSheets !== 1 ? 's' : '') +
+      ' (' + contentPages + ' pages)';
+
+    measure.style.display = 'none';
+    booklet.style.visibility = 'visible';
+    document.getElementById('instructions').style.display = 'flex';
+  });
+
+  window.startPrint = function () {
+    document.getElementById('instructions').style.display = 'none';
+    window.print();
+  };
+})();
+`;
+
+  const CSS = `
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --rubric: #8B1A1A; --gold: #C9A84C; --text: #1A1209; --muted: #6B6358; }
+
+/* ── Measure container (off-screen, matches page content width) ── */
+#measure { position: absolute; top: -9999px; left: 0; width: ${MEASURE_W}; }
+
+/* ── Booklet spreads (one per print page = landscape letter sheet) ── */
+#booklet { visibility: hidden; }
+
+.bk-spread {
+  width: 11in; height: 8.5in;
+  display: flex;
+  break-after: page;
+}
+.bk-spread:last-child { break-after: auto; }
+.bk-spread.rotated {
+  transform: rotate(180deg);
+  transform-origin: center center;
+}
+
+.bk-half {
+  width: 5.5in; height: 8.5in;
+  padding: 0.4in;
+  overflow: hidden; position: relative;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 15pt; line-height: 1.75; color: var(--text);
+  flex-shrink: 0;
+}
+
+/* ── Service content ── */
+.svc-head {
+  font-family: 'Cinzel', serif; font-size: 10pt; letter-spacing: .18em;
+  text-align: center; color: var(--text); margin-bottom: 10px; margin-top: 4px;
+  break-after: avoid;
+}
+.svc-rule { height: 0.5pt; background: var(--gold); margin: 8px 0; }
+.sec-gap  { height: 10px; }
+.rubric {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
+  font-style: italic; color: var(--rubric);
+  margin-bottom: 5px; line-height: 1.5;
+  break-inside: avoid;
+}
+.prayer {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt;
+  line-height: 1.75; color: var(--text); margin-bottom: 8px;
+  break-inside: avoid;
+}
+.stich-label {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
+  font-style: italic; color: var(--muted); margin-bottom: 4px;
+  break-after: avoid;
+}
+.verse {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
+  font-style: italic; color: var(--muted); margin-bottom: 6px; line-height: 1.5;
+}
+.spk { display: inline; font-weight: 600; font-style: normal; color: var(--rubric); }
+
+/* ── Instructions overlay ── */
+#instructions {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.72); z-index: 9999;
+  align-items: center; justify-content: center;
+}
+.instr-box {
+  background: #fff; width: min(480px, 92vw);
+  border-top: 3px solid var(--rubric); padding: 40px 36px 32px;
+  font-family: 'EB Garamond', Georgia, serif;
+}
+.instr-title {
+  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .2em;
+  color: var(--rubric); text-align: center; margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.instr-sub {
+  font-size: 11pt; color: var(--muted); text-align: center;
+  margin-bottom: 24px;
+}
+.instr-steps { list-style: none; margin-bottom: 28px; }
+.instr-steps li {
+  font-size: 13pt; padding: 9px 0; border-bottom: 1px solid #e8e2d8;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.instr-steps li:last-child { border-bottom: none; }
+.instr-steps .setting { font-weight: 600; color: var(--text); }
+.instr-btn {
+  display: block; width: 100%; padding: 13px;
+  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .16em;
+  text-transform: uppercase; background: var(--rubric); color: #fff;
+  border: none; cursor: pointer;
+}
+.instr-btn:hover { background: #6e1414; }
+
+/* ── Print ── */
+@page { size: 11in 8.5in; margin: 0; }
+@media screen {
+  body { background: #e8e4dc; padding: 24px; }
+  .bk-spread {
+    margin: 0 auto 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.18);
+    break-after: auto;
+  }
+  .bk-half { background: #fff; }
+  .bk-half:first-child { border-right: 1px dashed #ccc; }
+}
+@media print { #instructions { display: none !important; } }
+`;
+
+  win.document.write(`<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<title>Booklet \u2014 ${svc} \u2014 ${date}</title>
+<style>${CSS}</style>
+</head><body>
+
+<div id="instructions">
+  <div class="instr-box">
+    <div class="instr-title">Booklet Print Settings</div>
+    <div class="instr-sub" id="sheet-count">Preparing\u2026</div>
+    <ol class="instr-steps">
+      <li><span>Paper</span>         <span class="setting">US Letter (8.5\u2033 \u00d7 11\u2033)</span></li>
+      <li><span>Orientation</span>   <span class="setting">Landscape</span></li>
+      <li><span>Pages per sheet</span><span class="setting">1</span></li>
+      <li><span>Two-sided</span>     <span class="setting">On \u2014 Long-edge binding</span></li>
+    </ol>
+    <button class="instr-btn" onclick="startPrint()">Print Booklet</button>
+  </div>
+</div>
+
+<div id="measure">${body.innerHTML}</div>
+<div id="booklet"></div>
+
+<script>${bookletScript}<\/script>
+</body></html>`);
+  win.document.close();
 }
 
 document.addEventListener('DOMContentLoaded', init);

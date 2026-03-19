@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "note": "Third Sunday of Great Lent — Veneration of the Holy Cross (Liturgy of St. Basil the Great, Tone 7)",
+    "generated": false
+  },
+  "date": "2026-03-15",
+  "dayOfWeek": "sunday",
+  "liturgicalContext": {
+    "season": "greatLent",
+    "weekOfLent": 3,
+    "tone": 7,
+    "variant": "basil"
+  },
+  "commemorations": [
+    {
+      "title": "Third Sunday of Great Lent — Veneration of the Holy Cross",
+      "isPrincipal": true,
+      "tone": 7,
+      "hasStichera": false
+    }
+  ],
+  "liturgy": {
+    "variant": "basil",
+    "beatitudes": {
+      "_note": "6 Resurrectional (Octoechos Tone 7) + 4 from Triodion Canon Ode 6. Texts to be sourced.",
+      "troparia": [
+        { "tone": 7, "source": "octoechos", "label": "Resurrectional, Tone 7", "count": 6 },
+        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1", "count": 4 }
+      ]
+    },
+    "entranceHymn": {
+      "type": "sunday",
+      "text": "Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!"
+    },
+    "troparia": [
+      {
+        "rubric": "Troparion of the Resurrection, Tone 7:",
+        "text": "By Thy Cross Thou didst destroy death. To the thief Thou didst open Paradise. For the Myrrhbearers Thou didst change weeping into joy, and Thou didst command Thy disciples, O Christ God, to proclaim that Thou art risen, granting the world great mercy.",
+        "tone": 7
+      },
+      {
+        "rubric": "Troparion of the Cross, Tone 1:",
+        "text": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries; and by virtue of Thy Cross, preserve Thy habitation!",
+        "tone": 1
+      }
+    ],
+    "kontakia": [
+      {
+        "connector": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+        "rubric": "Kontakion of the Cross, Tone 7:",
+        "text": "Now the flaming sword no longer guards the gates of Eden; it has been mysteriously quenched by the wood of the Cross. The sting of death and the victory of hell have been vanquished; for Thou, O my Savior, hast come and cried to those in hell: \"Enter again into Paradise!\"",
+        "tone": 7
+      }
+    ],
+    "trisagion": {
+      "substitution": "cross",
+      "text": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify."
+    },
+    "prokeimenon": {
+      "tone": 6,
+      "label": "Triodion, Tone 6:",
+      "refrain": "O Lord, save Thy people, and bless Thine inheritance.",
+      "verse": "To Thee, O Lord, will I call. O my God, be not silent to me."
+    },
+    "epistle": {
+      "display": "(311) Hebrews 4:14–5:6",
+      "book": "Hebrews",
+      "pericope": "4:14–5:6"
+    },
+    "alleluia": {
+      "tone": 8,
+      "label": "Triodion, Tone 8:",
+      "verses": [
+        "Remember Thy congregation which Thou hast purchased of old.",
+        "God is our King before the ages; He has worked salvation in the midst of the earth."
+      ]
+    },
+    "gospel": {
+      "display": "(37) Mark 8:34–9:1",
+      "book": "Mark",
+      "pericope": "8:34–9:1"
+    },
+    "megalynarion": "basil-liturgy",
+    "communionHymn": {
+      "label": "Triodion:",
+      "text": "The light of Thy countenance has shone on us, O Lord. Alleluia, Alleluia, Alleluia!"
+    },
+    "weHaveSeen": "typical",
+    "dismissal": {
+      "opening": "sunday",
+      "liturgySaint": "basil",
+      "dayPatron": null,
+      "saints": ["the Veneration of the Precious and Life-Giving Cross"]
+    }
+  }
+}

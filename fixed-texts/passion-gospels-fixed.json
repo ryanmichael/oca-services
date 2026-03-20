@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for Matins of Great Friday — The Service of the Twelve Passion Gospels",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0",
+    "note": "Served on the evening of Great and Holy Thursday. All content is fixed — identical every year. The 15 Antiphons and 12 Gospel readings are the heart of the service."
+  },
+
+  "opening": {
+    "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "troparion": {
+    "tone": 8,
+    "text": "When the glorious disciples were enlightened at the washing of their feet before the Supper,\nthen the impious Judas was darkened, ailing with avarice,\nand to the lawless judges he betrayed Thee, the Righteous Judge.\nBehold, O lover of money, him who because of money hanged himself.\nFlee from the greedy soul that dared such things against the Master!\nO Lord, Who art good towards all men,// glory to Thee!",
+    "label": "Troparion of Great Friday"
+  },
+
+  "troparion2": {
+    "tone": 8,
+    "text": "When the glorious disciples were enlightened at the washing of their feet before the Supper,\nthen the impious Judas was darkened, ailing with avarice,\nand to the lawless judges he betrayed Thee, the Righteous Judge.\nBehold, O lover of money, him who because of money hanged himself.\nFlee from the greedy soul that dared such things against the Master!\nO Lord, Who art good towards all men,// glory to Thee!",
+    "_note": "Repeated after Gospel 1"
+  },
+
+  "gospels": [
+    {
+      "number": 1,
+      "book": "John",
+      "pericope": "13:31–18:1",
+      "label": "The Farewell Discourse and the High Priestly Prayer",
+      "_note": "The longest Gospel reading. Jesus washes the disciples' feet, gives the new commandment, promises the Comforter, the True Vine discourse, and the prayer for unity."
+    },
+    {
+      "number": 2,
+      "book": "John",
+      "pericope": "18:1–28",
+      "label": "The Betrayal and Arrest; Peter's Denial; Jesus before Annas"
+    },
+    {
+      "number": 3,
+      "book": "Matthew",
+      "pericope": "26:57–75",
+      "label": "Jesus before Caiaphas; Peter's Denial"
+    },
+    {
+      "number": 4,
+      "book": "John",
+      "pericope": "18:28–19:16",
+      "label": "Jesus before Pilate; 'Behold the Man'; the Sentence of Death"
+    },
+    {
+      "number": 5,
+      "book": "Matthew",
+      "pericope": "27:3–32",
+      "label": "The Death of Judas; Jesus before Pilate; the Scourging; Simon of Cyrene"
+    },
+    {
+      "number": 6,
+      "book": "Mark",
+      "pericope": "15:16–32",
+      "label": "The Soldiers Mock Jesus; the Crucifixion; the Inscription"
+    },
+    {
+      "number": 7,
+      "book": "Matthew",
+      "pericope": "27:33–54",
+      "label": "The Crucifixion; Darkness over the Land; the Death of Jesus"
+    },
+    {
+      "number": 8,
+      "book": "Luke",
+      "pericope": "23:32–49",
+      "label": "The Two Thieves; 'Father, forgive them'; the Death of Jesus"
+    },
+    {
+      "number": 9,
+      "book": "John",
+      "pericope": "19:25–37",
+      "label": "Jesus and His Mother; 'It is finished'; the Piercing of His Side"
+    },
+    {
+      "number": 10,
+      "book": "Mark",
+      "pericope": "15:43–47",
+      "label": "Joseph of Arimathea; the Burial"
+    },
+    {
+      "number": 11,
+      "book": "John",
+      "pericope": "19:38–42",
+      "label": "Joseph and Nicodemus; the Burial in the New Tomb"
+    },
+    {
+      "number": 12,
+      "book": "Matthew",
+      "pericope": "27:62–66",
+      "label": "The Sealing of the Tomb; the Setting of the Guard"
+    }
+  ],
+
+  "antiphons": [
+    {
+      "number": 1,
+      "tone": 8,
+      "text": "The rulers of the peoples gathered together\nagainst the Lord and against His Christ.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 2,
+      "tone": 6,
+      "text": "Why do the heathen rage, and the people imagine vain things?",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 3,
+      "tone": 1,
+      "text": "The assembly of the wicked has surrounded me;\nO Lord, my God, I cry out to Thee: hear me!",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 4,
+      "tone": 5,
+      "text": "They rewarded me evil for good, and hatred for my love.",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 5,
+      "tone": 6,
+      "text": "Had mine enemies known Thy mysteries, O Lord,\nthey would not have crucified the Lord of glory.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 6,
+      "tone": 7,
+      "text": "Judas the transgressor, O Lord, who dipped his hand in the dish with Thee at supper,\nnow stretches out his hands to receive the price of silver.\nHe who counted out the price of the myrrh now dares to kiss Thee.\nHe who was sold to slaves handed himself over to the lawless.\nThe Lover of mankind is glorified,// for He is good and the Lover of man.",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 7,
+      "tone": 8,
+      "text": "They placed me in the lowest pit, in darkness and in the shadow of death.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 8,
+      "tone": 2,
+      "text": "Today Judas forsakes the Master and receives the devil.\nHe is blinded by the passion of avarice.\nHe falls from the light, for how can he see who sold the Light for thirty pieces of silver?\nBut He Who suffered for the world has dawned upon us.\nLet us cry aloud to Him:\n\"O Thou Who didst suffer and yet wast compassionate towards men,// glory to Thee!\"",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 9,
+      "tone": 3,
+      "text": "They paid me thirty pieces of silver, the price at which I was valued by the sons of Israel.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 10,
+      "tone": 6,
+      "text": "He who clothed himself with light as with a garment\nstood naked at the judgment.\nOn His cheek He received blows from the hands which He had made.\nThe lawless people nailed to the Cross\nthe Lord of glory.\nThen the curtain of the Temple was torn in two.\nThe sun was darkened,\nunable to bear the sight of God outraged,\nbefore Whom all things tremble.// Let us worship Him!",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 11,
+      "tone": 6,
+      "text": "For my peace-offering they repaid me with hatred;\nthey returned to me evil for good.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 12,
+      "tone": 8,
+      "text": "Thus saith the Lord to the Jews:\n\"My people, what have I done to thee?\nOr in what have I wearied thee?\nI gave sight to thy blind and cleansed thy lepers\nand raised up the man who lay upon his bed.\nMy people, what have I done to thee,\nand how hast thou repaid Me?\nInstead of manna, gall;\ninstead of water, vinegar;\ninstead of loving Me, thou hast nailed Me to the Cross.\nI can bear no more.\nI shall call My Gentiles;\nthey shall glorify Me with the Father and the Spirit,// and I shall give them life eternal.\"",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 13,
+      "tone": 6,
+      "text": "They gave me gall for food,\nand in my thirst they gave me vinegar to drink.",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us."
+    },
+    {
+      "number": 14,
+      "tone": 8,
+      "text": "O Lord, when the thief saw the Author of life hanging on the Cross, he said:\n\"If it were not God in the flesh Who is crucified with us,\nthe sun would not have hidden its rays,\nnor would the earth have quaked and trembled.\nBut Thou Who dost suffer all things,// remember me, O Lord, in Thy Kingdom!\"",
+      "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!"
+    },
+    {
+      "number": 15,
+      "tone": 6,
+      "text": "Today He who hung the earth upon the waters is hung upon the Cross.\nHe who is King of the Angels is arrayed in a crown of thorns.\nHe who wraps the heavens in clouds is wrapped in the purple of mockery.\nHe who in Jordan set Adam free receives blows upon His face.\nThe Bridegroom of the Church is transfixed with nails.\nThe Son of the Virgin is pierced with a spear.\nWe venerate Thy Passion, O Christ.\nWe venerate Thy Passion, O Christ.\nWe venerate Thy Passion, O Christ.// Show us also Thy glorious Resurrection!",
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
+      "_note": "The most famous antiphon of Holy Week. The faithful venerate the Cross during this singing."
+    }
+  ],
+
+  "beatitudes": {
+    "_note": "Troparia sung at the Beatitudes, inserted between the Beatitude verses. These are specific to Great Friday Matins.",
+    "troparia": [
+      {
+        "text": "Through the Tree Adam was exiled from Paradise;\nbut through the Tree of the Cross the thief entered Paradise.\nThe first tasted of the forbidden fruit and disobeyed the Commandment;\nbut the second, crucified with Thee, confessed Thee as God.\n\"Remember me, O Lord, in Thy Kingdom!\""
+      },
+      {
+        "text": "O Lord, Who wast crucified with two thieves,\none blasphemed Thee and received the lot of hell,\nbut the other confessed Thee and received the lot of Paradise.\n\"Remember me, O Lord, in Thy Kingdom!\""
+      },
+      {
+        "text": "Thou wast crucified for us, O sinless Christ.\nThy flesh was pierced and Thy blood poured forth;\nThy side was wounded, and myrrh flowed for the salvation of the world.\n\"Remember me, O Lord, in Thy Kingdom!\""
+      },
+      {
+        "text": "He who ruleth all creation and before Whom the heavenly powers stand with fear\nwas nailed to the Cross for our sake and the soldiers divided His garments.\nThe Son of God, Who giveth life to all, is condemned to the Cross.\n\"Remember me, O Lord, in Thy Kingdom!\""
+      }
+    ]
+  },
+
+  "kontakion": {
+    "tone": 8,
+    "text": "Come, let us all sing the praises of Him Who was crucified for us,\nfor Mary said when she beheld Him on the Tree:\n\"Though Thou dost endure the Cross, Thou art my Son and my God!\""
+  },
+
+  "ikos": {
+    "text": "Beholding her own Lamb led to the slaughter,\nMary followed Him with the other women, lamenting:\n\"Where dost Thou go, my Child? Why dost Thou hasten?\nIs there another wedding in Cana, and art Thou going there\nto turn the water into wine?\nShall I go with Thee, my Child, or shall I wait for Thee?\nSpeak to me, O Word! Pass me not by in silence.\nThou Who didst preserve my virginity, Thou art my Son and my God!\""
+  },
+
+  "exaposteilarion": {
+    "tone": 3,
+    "text": "The wise thief didst Thou make worthy of Paradise in a single moment, O Lord.\nBy the wood of the Cross illumine me as well,\nand save me!",
+    "label": "Exaposteilarion of Great Friday",
+    "_note": "Sung three times"
+  },
+
+  "lauds": {
+    "_note": "Stichera at the Lauds (Praises), Tone 1. Sung after Gospel 12 and the Exaposteilarion.",
+    "stichera": [
+      {
+        "tone": 1,
+        "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
+        "text": "All creation was changed by fear\nwhen it saw Thee hanging upon the Cross, O Christ.\nThe sun was darkened,\nand the foundations of the earth were shaken.\nAll things suffered with the Creator of all.\nO Lord, Who didst willingly endure this for us, glory to Thee!"
+      },
+      {
+        "tone": 1,
+        "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
+        "text": "Thy Cross, O Lord, is life and resurrection to Thy people,\nand putting our trust in it, we praise Thee, our crucified God:\nhave mercy on us!"
+      }
+    ],
+    "glory": {
+      "tone": 6,
+      "text": "The Lord of creation stood before Pilate;\nthe Maker of all was condemned to the Cross,\na Lamb led to the slaughter.\nHe Who gave manna to His people in the wilderness was given gall;\nthe Healer of all was struck upon the cheek.\nThe Redeemer of the world was mocked by His own servants.\nO Lord, Who dost love mankind,// glory to Thee!"
+    },
+    "now": {
+      "text": "Thou hast redeemed us from the curse of the Law by Thy precious Blood.\nNailed to the Cross and pierced by the spear, Thou hast poured forth immortality upon mankind.\nO our Savior, glory to Thee!"
+    }
+  },
+
+  "greatDoxology": {
+    "_note": "The Great Doxology is read (not sung) at Great Friday Matins.",
+    "text": "Glory to God in the highest, and on earth peace, good will among men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord God, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ; and O Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; Thou that takest away the sins of the world, receive our prayer; Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou only art holy, Thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen.\n\nEvery day will I bless Thee, and I will praise Thy Name forever and ever.\n\nVouchsafe, O Lord, to keep us this day without sin.\n\nBlessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy Name forever. Amen.\n\nLet Thy mercy, O Lord, be upon us, as we have set our hope on Thee.\n\nBlessed art Thou, O Lord; teach me Thy statutes.\nBlessed art Thou, O Master; make me to understand Thy statutes.\nBlessed art Thou, O Holy One; enlighten me with Thy statutes.\n\nThy mercy, O Lord, endureth forever. O despise not the works of Thy hands.\n\nTo Thee belongeth worship, to Thee belongeth praise, to Thee belongeth glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "closingTroparion": {
+    "_note": "Sung at the conclusion after the Great Doxology — the same troparion as the opening",
+    "tone": 8,
+    "text": "When the glorious disciples were enlightened at the washing of their feet before the Supper,\nthen the impious Judas was darkened, ailing with avarice,\nand to the lawless judges he betrayed Thee, the Righteous Judge.\nBehold, O lover of money, him who because of money hanged himself.\nFlee from the greedy soul that dared such things against the Master!\nO Lord, Who art good towards all men,// glory to Thee!"
+  },
+
+  "dismissal": {
+    "text": "May He Who for our salvation endured spitting, and scourging, and buffeting, and the Cross, and death, Christ our true God, through the prayers of His all-pure Mother, of the holy, glorious, and all-laudable Apostles, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen."
+  }
+}

@@ -959,9 +959,37 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     friday: {
       name:        'Great and Holy Friday',
       serviceType: 'greatVespers',
+      serviceKey:  'burialVespers',
       rubricNote:  'Great and Holy Friday — Burial Vespers with the Epitaphion',
-      prokeimenon: { pattern: 'weekday', weekday: 'holyFriday' },
-      tropariaGloryNow: true,  // troparion at Glory (repeat), theotokion at Now
+      prokeimenon: {
+        pattern: 'burialVespers',
+        readings: [
+          { order: 1, book: 'Exodus',  pericope: '33:11–23', label: 'First Reading' },
+          { order: 2, book: 'Job',     pericope: '42:12–17',  label: 'Second Reading' },
+          { order: 3, book: 'Isaiah',  pericope: '52:13–54:1', label: 'Third Reading' },
+        ],
+        epistle: {
+          book: 'I Corinthians', pericope: '1:18–2:2',
+          prokeimenon: {
+            tone: 4,
+            refrain: 'They parted my garments among them, and upon my vesture did they cast lots.',
+            verses: [{ text: 'My God, my God, look upon me; why hast Thou forsaken me?' }],
+          },
+          alleluia: {
+            tone: 1,
+            verses: [
+              { text: 'Save me, O God; for the waters have come up to my soul.' },
+              { text: 'They gave me gall for food, and in my thirst they gave me vinegar to drink.' },
+            ],
+          },
+        },
+        gospel: {
+          book: 'Matthew/Luke/John',
+          pericope: 'Matt. 27:1–38; Lk. 23:39–43; Matt. 27:39–54; Jn. 19:31–37; Matt. 27:55–61',
+          label: 'The Composite Gospel of the Burial',
+        },
+      },
+      customCalendarEntry: true,
     },
     saturday: {
       name:        'Great and Holy Saturday',
@@ -987,6 +1015,57 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     prokeimenon: { pattern: 'weekday', weekday: dow },
   };
 
+  // ── Holy Friday: fully wired from triodion JSON ─────────────────────────
+  if (cfg.customCalendarEntry) {
+    const triKey = 'holyWeek.friday';
+    return {
+      _meta: {
+        generated:   true,
+        generatedAt: new Date().toISOString(),
+        note:        `Auto-generated ${cfg.name}. All texts from triodion/${triKey}.`,
+      },
+      date:      dateStr,
+      dayOfWeek: dow,
+      liturgicalContext: { season: 'holyWeek' },
+      commemorations: [],
+      vespers: {
+        serviceType: cfg.serviceType,
+        serviceKey:  cfg.serviceKey,
+        rubricNote:  cfg.rubricNote,
+        lordICall: {
+          totalStichera: 6,
+          slots: [
+            { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'triodion', key: `${triKey}.lordICall.stichera`, label: 'Stichera of the Cross' },
+          ],
+          glory: { source: 'triodion', key: `${triKey}.lordICall.glory`, tone: 6 },
+          now:   { source: 'triodion', key: `${triKey}.lordICall.now`, tone: 6, label: 'Theotokion' },
+        },
+        prokeimenon: cfg.prokeimenon,
+        aposticha: {
+          slots: [
+            { position: 1, source: 'triodion', key: `${triKey}.aposticha.stichera.0`, tone: 2, label: 'Automelon' },
+            { position: 2, source: 'triodion', key: `${triKey}.aposticha.stichera.1`, tone: 2, label: 'Automelon',
+              verse: 'The Lord is King; He is robed in majesty!' },
+            { position: 3, source: 'triodion', key: `${triKey}.aposticha.stichera.2`, tone: 2, label: 'Automelon',
+              verse: 'For He has established the world, so that it shall never be moved.' },
+            { position: 4, source: 'triodion', key: `${triKey}.aposticha.stichera.3`, tone: 2, label: 'Automelon',
+              verse: 'Holiness befits Thy house, O Lord, forevermore!' },
+          ],
+          glory: { source: 'triodion', key: `${triKey}.aposticha.gloryNow`, tone: 5, combinesGloryNow: true, label: 'Doxastichon' },
+        },
+        troparia: {
+          source: 'triodion',
+          slots: [
+            { order: 1,          source: 'triodion', key: `${triKey}.troparia.nobleJoseph`,  tone: 2, label: 'Troparion of Holy Saturday' },
+            { position: 'glory', source: 'triodion', key: `${triKey}.troparia.nobleJoseph`,  tone: 2, label: 'Troparion of Holy Saturday' },
+            { position: 'now',   source: 'triodion', key: `${triKey}.troparia.angelCame`,    tone: 2, label: 'Troparion' },
+          ],
+        },
+      },
+    };
+  }
+
+  // ── Generic Holy Week day (Mon–Thu, Sat) ─────────────────────────────────
   return {
     _meta: {
       generated:   true,
@@ -1010,7 +1089,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       },
       prokeimenon: cfg.prokeimenon,
       // Holy Mon–Thu Presanctified: no separate Aposticha section (the LIC doxastichon serves both).
-      // Holy Fri/Sat (Great Vespers): keep the full aposticha structure.
+      // Holy Sat (Great Vespers): aposticha omitted (flows into Liturgy of St. Basil).
       aposticha: cfg.apostichaGloryOnly ? { slots: [] } : {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
@@ -1020,14 +1099,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
       },
       troparia: cfg.troparia ? cfg.troparia
-        : cfg.tropariaGloryNow ? {
-          source: 'db',
-          slots: [
-            { order: 1,          source: 'db', key: `${litKey}.vespers.troparia` },
-            { position: 'glory', source: 'db', key: `${litKey}.vespers.troparia` },
-            { position: 'now',   source: 'db', key: `${litKey}.vespers.troparia.now` },
-          ],
-        } : {
+        : {
           source: 'db',
           slots: [
             { order: 1, source: 'db', key: `${litKey}.vespers.troparia` },
@@ -1753,6 +1825,68 @@ function isPresanctifiedDay(date) {
   return false;
 }
 
+/**
+ * Returns true if Bridegroom Matins is served on this date.
+ * Served on the evenings of Holy Monday, Tuesday, and Wednesday.
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isBridegroomMatins(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && ['monday', 'tuesday', 'wednesday'].includes(dow);
+}
+
+/**
+ * Returns true if the Service of the Twelve Passion Gospels is served on this date.
+ * Served on the evening of Great Thursday (Matins of Great Friday).
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isPassionGospelsDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && dow === 'thursday';
+}
+
+/**
+ * Returns true if the Lamentations service is served on this date.
+ * Served on the evening of Great Friday (Matins of Great Saturday).
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isLamentationsDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && dow === 'friday';
+}
+
+/**
+ * Returns true if the Vesperal Liturgy of St. Basil is served on this date.
+ * Served on Great Saturday morning.
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isVesperalLiturgyDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && dow === 'saturday';
+}
+
+/**
+ * Returns true if the Royal Hours are served on this date.
+ * Served on the morning of Great Friday.
+ */
+function isRoyalHoursDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && dow === 'friday';
+}
+
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 module.exports = {
@@ -1772,5 +1906,10 @@ module.exports = {
   getFeastRank,
   isVigilServed,
   isPresanctifiedDay,
+  isBridegroomMatins,
+  isPassionGospelsDay,
+  isLamentationsDay,
+  isVesperalLiturgyDay,
+  isRoyalHoursDay,
   generateCalendarEntry,
 };

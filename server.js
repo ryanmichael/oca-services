@@ -20,10 +20,10 @@ const http = require('node:http');
 const fs   = require('fs');
 const path = require('path');
 
-const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, resolveSource } = require('./assembler');
+const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, assembleBridegroomMatins, assemblePassionGospels, assembleLamentations, assembleVesperalLiturgy, assembleRoyalHours, resolveSource } = require('./assembler');
 const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey,
         getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed,
-        isPresanctifiedDay,
+        isPresanctifiedDay, isBridegroomMatins, isPassionGospelsDay, isLamentationsDay, isVesperalLiturgyDay, isRoyalHoursDay,
         getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
 
@@ -1818,11 +1818,14 @@ function assembleForDate(date, pronoun, entryOverride) {
   }
 
   const svcType = calendarEntry.vespers?.serviceType;
-  const serviceTitle = svcType === 'dailyVespers'
-    ? 'Daily Vespers'
-    : svcType === 'all-night-vigil'
-      ? 'All-Night Vigil \u2014 Great Vespers'
-      : 'Great Vespers';
+  const svcKey  = calendarEntry.vespers?.serviceKey;
+  const serviceTitle = svcKey === 'burialVespers'
+    ? 'Burial Vespers'
+    : svcType === 'dailyVespers'
+      ? 'Daily Vespers'
+      : svcType === 'all-night-vigil'
+        ? 'All-Night Vigil \u2014 Great Vespers'
+        : 'Great Vespers';
   const tone = calendarEntry.vespers?.lordICall?.tone ?? calendarEntry.liturgicalContext?.tone ?? null;
 
   return { blocks, calendarEntry, serviceTitle, tone };
@@ -2076,10 +2079,16 @@ function buildDashboardData(year) {
 
     const hasService = !!entry;
     const services = {
-      greatVespers: entry?.vespers?.serviceType === 'greatVespers',
+      greatVespers: entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
       dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
       allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
+      burialVespers: entry?.vespers?.serviceKey === 'burialVespers',
+      bridegroomMatins: isBridegroomMatins(cur),
+      lamentations: isLamentationsDay(cur),
+      vesperalLiturgy: isVesperalLiturgyDay(cur),
+      royalHours: isRoyalHoursDay(cur),
       liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
+      passionGospels: isPassionGospelsDay(cur),
       presanctified: isPresanctifiedDay(cur),
       paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
       paschaCollection: (() => {
@@ -2286,6 +2295,51 @@ try {
   console.log('Paschal Matins fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load Paschal Matins fixed texts:', err.message);
+  process.exit(1);
+}
+
+let passionGospelsFixed;
+try {
+  passionGospelsFixed = loadJSON('fixed-texts/passion-gospels-fixed.json');
+  console.log('Passion Gospels fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Passion Gospels fixed texts:', err.message);
+  process.exit(1);
+}
+
+let bridegroomMatinsFixed;
+try {
+  bridegroomMatinsFixed = loadJSON('fixed-texts/bridegroom-matins-fixed.json');
+  console.log('Bridegroom Matins fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Bridegroom Matins fixed texts:', err.message);
+  process.exit(1);
+}
+
+let lamentationsFixed;
+try {
+  lamentationsFixed = loadJSON('fixed-texts/lamentations-fixed.json');
+  console.log('Lamentations fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Lamentations fixed texts:', err.message);
+  process.exit(1);
+}
+
+let vesperalLiturgyFixed;
+try {
+  vesperalLiturgyFixed = loadJSON('fixed-texts/vesperal-liturgy-fixed.json');
+  console.log('Vesperal Liturgy fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Vesperal Liturgy fixed texts:', err.message);
+  process.exit(1);
+}
+
+let royalHoursFixed;
+try {
+  royalHoursFixed = loadJSON('fixed-texts/royal-hours-fixed.json');
+  console.log('Royal Hours fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Royal Hours fixed texts:', err.message);
   process.exit(1);
 }
 
@@ -2630,6 +2684,263 @@ function handleRequest(req, res) {
         }
       });
 
+    } else if (pathname === '/api/bridegroom-matins') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      if (!isBridegroomMatins(d)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'Bridegroom Matins is only served on the evenings of Holy Monday, Tuesday, and Wednesday.',
+          date,
+        }));
+        return;
+      }
+
+      const night = getDayOfWeek(d);  // monday, tuesday, or wednesday
+      const NIGHT_NAMES = {
+        monday:    'Holy Monday',
+        tuesday:   'Holy Tuesday',
+        wednesday: 'Holy Wednesday',
+      };
+
+      let blocks;
+      try {
+        blocks = assembleBridegroomMatins(bridegroomMatinsFixed, night);
+      } catch (err) {
+        console.error('assembleBridegroomMatins error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'bridegroom-matins',
+        serviceName:    'Bridegroom Matins',
+        season:         'holyWeek',
+        liturgicalLabel: NIGHT_NAMES[night] || 'Holy Week',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/passion-gospels') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      if (!isPassionGospelsDay(d)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Service of the Twelve Passion Gospels is only served on Great Thursday evening.',
+          date,
+        }));
+        return;
+      }
+
+      let blocks;
+      try {
+        blocks = assemblePassionGospels(passionGospelsFixed);
+      } catch (err) {
+        console.error('assemblePassionGospels error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'passion-gospels',
+        serviceName:    'The Twelve Passion Gospels',
+        season:         'holyWeek',
+        liturgicalLabel: 'Great and Holy Thursday',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/royal-hours') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      if (!isRoyalHoursDay(d)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Royal Hours are only served on the morning of Great Friday.',
+          date,
+        }));
+        return;
+      }
+
+      let blocks;
+      try {
+        blocks = assembleRoyalHours(royalHoursFixed);
+      } catch (err) {
+        console.error('assembleRoyalHours error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'royalHours',
+        serviceName:    'Royal Hours of Great Friday',
+        season:         'holyWeek',
+        liturgicalLabel: 'Great and Holy Friday',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/lamentations') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      if (!isLamentationsDay(d)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Lamentations service is only served on the evening of Great Friday.',
+          date,
+        }));
+        return;
+      }
+
+      let blocks;
+      try {
+        blocks = assembleLamentations(lamentationsFixed);
+      } catch (err) {
+        console.error('assembleLamentations error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'lamentations',
+        serviceName:    'The Lamentations',
+        season:         'holyWeek',
+        liturgicalLabel: 'Great and Holy Friday',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/vesperal-liturgy') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      if (!isVesperalLiturgyDay(d)) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Vesperal Liturgy of St. Basil is only served on Great Saturday morning.',
+          date,
+        }));
+        return;
+      }
+
+      let blocks;
+      try {
+        blocks = assembleVesperalLiturgy(vesperalLiturgyFixed, fixedTexts, liturgyFixed);
+      } catch (err) {
+        console.error('assembleVesperalLiturgy error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'vesperal-liturgy',
+        serviceName:    'Vesperal Liturgy of St. Basil',
+        season:         'holyWeek',
+        liturgicalLabel: 'Great and Holy Saturday',
+        blocks,
+      }));
+
     } else if (pathname === '/api/paschal-hours') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -2836,9 +3147,15 @@ function handleRequest(req, res) {
         } catch (_) {}
 
         const services = {
-          greatVespers: entry?.vespers?.serviceType === 'greatVespers',
+          greatVespers: entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
           dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
           allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
+          burialVespers: entry?.vespers?.serviceKey === 'burialVespers',
+      bridegroomMatins: isBridegroomMatins(cur),
+          lamentations: isLamentationsDay(cur),
+          vesperalLiturgy: isVesperalLiturgyDay(cur),
+          royalHours: isRoyalHoursDay(cur),
+          passionGospels: isPassionGospelsDay(cur),
           matins:  false,
           liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
           presanctified: isPresanctifiedDay(cur),

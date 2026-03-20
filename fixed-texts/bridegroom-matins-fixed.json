@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for Bridegroom Matins — served Mon/Tue/Wed evenings of Holy Week",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0",
+    "note": "The Bridegroom services are Matins anticipated on the preceding evening. Monday evening = Matins of Tuesday, etc. The Bridegroom Troparion and Exaposteilarion are the same all three nights; the kontakion, ikos, and stichera vary."
+  },
+
+  "opening": {
+    "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "sixPsalms": {
+    "_note": "Psalms 3, 37, 62, 87, 102, 142. Read from psalter.json at assembly time.",
+    "intro": "Glory to God in the highest, and on earth peace, good will among men. (×3)\n\nO Lord, Thou shalt open my lips, and my mouth shall declare Thy praise. (×2)",
+    "midGlory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia! Glory to Thee, O God! (×3)\n\nLord, have mercy. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "alleluia": {
+    "_note": "During Holy Week, Alleluia replaces 'God is the Lord' at Matins.",
+    "tone": 8,
+    "verses": [
+      "Out of the night my spirit seeks Thee early, O God, for Thy commandments are a light upon the earth.",
+      "Learn righteousness, ye that dwell upon the earth.",
+      "Jealousy shall seize upon an uninstructed people."
+    ]
+  },
+
+  "troparion": {
+    "tone": 8,
+    "label": "Troparion of the Bridegroom",
+    "text": "Behold the Bridegroom cometh at midnight,\nand blessed is the servant whom He shall find watching;\nand again, unworthy is the servant whom He shall find heedless.\nBeware, therefore, O my soul, do not be weighed down with sleep,\nlest you be given up to death and lest you be shut out of the Kingdom.\nBut rouse yourself, crying:\nHoly, holy, holy art Thou, O our God!\nThrough the Theotokos, have mercy on us!"
+  },
+
+  "kathismata": {
+    "_note": "Sessional hymns sung after the kathisma readings. These vary by night.",
+    "monday": {
+      "tone": 1,
+      "text": "Behold, the Bridegroom comes in the middle of the night,\nand blessed is the servant whom He shall find awake.\nBut unworthy is he whom He shall find careless.\nBeware then, O my soul, lest thou fall into deep slumber,\nand the door of the Kingdom be shut against thee,\nand thou be delivered to death.\nBut be wakeful, crying:\nHoly, holy, holy art Thou, O God:\nthrough the Theotokos, have mercy on us."
+    },
+    "tuesday": {
+      "tone": 3,
+      "text": "The harlot came to Thee, O Lover of mankind,\npouring myrrh mixed with tears upon Thy feet.\nAt Thy command she was delivered from the stench of her evil deeds.\nBut the ungrateful disciple, though breathing Thy grace,\nrejected it and wallowed in filth,\nselling Thee for the sake of greed.\nGlory to Thy compassion, O Christ!"
+    },
+    "wednesday": {
+      "tone": 4,
+      "text": "Judas the betrayer, deceitful and crafty,\nwith a treacherous kiss delivered the Savior, the Lord of all.\nHe sold as a slave the Master of all creation,\nand like a lamb to the slaughter, the Son and God of all was led.\nHe alone is most compassionate!"
+    }
+  },
+
+  "monday": {
+    "kontakion": {
+      "tone": 2,
+      "text": "Consider, O my soul, the end which is to come,\nand tremble before the cutting of the fig tree,\nand labor diligently with the talent given to thee, O wretched one:\nwatch and pray,\nthat we may not remain outside the bridal chamber of Christ."
+    },
+    "ikos": {
+      "text": "Why art thou idle, O my wretched soul?\nWhy dost thou dream endlessly of things that do not profit?\nWhy dost thou busy thyself with things that pass away?\nThe last hour is at hand, and we shall be parted from all things here below.\nWhile thou hast time, come to thy senses and cry:\nI have sinned against Thee, O my Savior. Do not cut me down\nlike the barren fig tree,\nbut in Thy compassion, O Christ, have mercy on me,\nwho cry in fear:\nLet us not remain outside the bridal chamber of Christ."
+    },
+    "stichera": {
+      "_note": "Lauds stichera for Monday evening (Matins of Tuesday). Theme: the barren fig tree.",
+      "hymns": [
+        {
+          "tone": 1,
+          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
+          "text": "O Lord, coming to Thy voluntary Passion,\nThou didst say to Thy disciples:\n\"If you could not watch one hour with Me,\nhow did you promise to die for Me?\nSee how Judas does not sleep,\nbut hastens to betray Me to the lawless.\nArise and pray, lest any of you deny Me\nwhen you see Me on the Cross.\"\nO long-suffering Lord, glory to Thee!"
+        },
+        {
+          "tone": 1,
+          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
+          "text": "Judas, the slave and deceiver,\nthe disciple and betrayer,\nthe friend and devil, was revealed by his deeds.\nFor following the Master, he plotted betrayal within himself.\nHe said: \"I will deliver Him up and gain the money promised.\"\nHe desired the myrrh to be sold,\nand Jesus to be taken by deceit.\nHe gave a kiss and delivered Christ.\nAnd the Lamb of God, the Son of the Father,\nalone most compassionate,\nwas led as a sheep to the slaughter."
+        }
+      ],
+      "glory": {
+        "tone": 2,
+        "text": "The Lamb whom Isaiah proclaimed\ncomes voluntarily to the slaughter.\nHe gives His back to scourging,\nHis cheeks to blows.\nHe does not turn His face from the shame of spitting,\nand is condemned to a shameful death.\nHe Who is sinless accepts all things willingly,\nthat He may grant to all the Resurrection from the dead."
+      },
+      "now": {
+        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+      }
+    }
+  },
+
+  "tuesday": {
+    "kontakion": {
+      "tone": 4,
+      "text": "I have transgressed more than the harlot, O Good One,\nyet never have I offered Thee my flowing tears.\nBut in silence I fall down before Thee and with love I kiss Thy most pure feet,\nbeseeching Thee as Master to grant me remission of sins;\nand I cry to Thee, O Savior:\nDeliver me from the filth of my evil deeds."
+    },
+    "ikos": {
+      "text": "The woman who was formerly prodigal\nnow appeared chaste, hating the deeds of shameful sin\nand the pleasures of the body.\nShe pondered the great shame and the judgment of torment\nthat harlots and profligates shall endure.\nOf their number I am first, and I am afraid.\nBut foolishly I continue in my evil habit.\nThe sinful woman, in fear, hastened to her Deliverer and cried to Him:\nO merciful Lover of mankind, deliver me from the filth of my evil deeds."
+    },
+    "stichera": {
+      "_note": "Lauds stichera for Tuesday evening (Matins of Wednesday). Theme: the sinful woman and Judas's betrayal.",
+      "hymns": [
+        {
+          "tone": 1,
+          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
+          "text": "The sinful woman ran to buy precious myrrh\nto anoint the Benefactor.\nShe cried to the perfume dealer:\n\"Give me myrrh, that I may anoint\nHim Who has wiped away all my sins.\""
+        },
+        {
+          "tone": 1,
+          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
+          "text": "The sinful woman brought myrrh and tears together\nand poured them at the feet of the Master.\nShe kissed them and was made clean at once.\nGod granted her remission of her sins,\nfor He endured the Cross for the sake of us all."
+        }
+      ],
+      "glory": {
+        "tone": 7,
+        "text": "The sinful woman approached Thee, the Lover of mankind.\nBathing Thy feet with tears, she cried:\n\"Have mercy on me, O Master!\nI beseech Thee, destroy the great burden of my sins!\nAs Thou didst accept the tears of Peter,\naccept mine as well, O Savior,\nfor Thou art the One Who callest all men to salvation.\""
+      },
+      "now": {
+        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+      }
+    }
+  },
+
+  "wednesday": {
+    "kontakion": {
+      "tone": 4,
+      "text": "I have transgressed more than the harlot, O Good One,\nyet never have I offered Thee my flowing tears.\nBut in silence I fall down before Thee and with love I kiss Thy most pure feet,\nbeseeching Thee as Master to grant me remission of sins;\nand I cry to Thee, O Savior:\nDeliver me from the filth of my evil deeds."
+    },
+    "ikos": {
+      "text": "The woman who was formerly prodigal\nnow appeared chaste, hating the deeds of shameful sin\nand the pleasures of the body.\nShe pondered the great shame and the judgment of torment\nthat harlots and profligates shall endure.\nOf their number I am first, and I am afraid.\nBut foolishly I continue in my evil habit.\nThe sinful woman, in fear, hastened to her Deliverer and cried to Him:\nO merciful Lover of mankind, deliver me from the filth of my evil deeds."
+    },
+    "stichera": {
+      "_note": "Lauds stichera for Wednesday evening (Matins of Thursday). Theme: the anointing at Bethany and Judas's bargain.",
+      "hymns": [
+        {
+          "tone": 1,
+          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
+          "text": "While the sinful woman was bringing the myrrh,\nthe disciple was making an agreement with the lawless.\nShe rejoiced to pour out what was very precious;\nhe hastened to sell the One Who is above all price.\nShe acknowledged Christ as Lord;\nhe severed himself from the Master.\nShe was set free, but Judas became a slave of the enemy.\nGrievous was his lack of love!\nGreat was her repentance!\nGrant me such repentance, O Savior,\nWho didst suffer for our sake,// and save us!"
+        },
+        {
+          "tone": 1,
+          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
+          "text": "What wickedness, Judas!\nThe harlot brought myrrh to anoint the Master;\nand thou didst come to an agreement with the lawless.\nShe poured out her precious possession,\nand thou didst sell the Precious One.\nShe recognized the Master;\nthou didst separate thyself from Him.\nShe was set free; thou didst become the slave of the devil.\nFearful is thy carelessness, O Judas!\nGrant such repentance to us, O God,// and save us!"
+        }
+      ],
+      "glory": {
+        "tone": 6,
+        "label": "Hymn of Kassiane",
+        "_note": "The famous Hymn of Kassiane — the most beloved sticheron of Holy Week. Sung on Wednesday evening.",
+        "text": "O Lord, the woman who had fallen into many sins,\nperceiving Thy divinity,\ntook upon herself the duty of a myrrh-bearer.\nWith lamentation she brought sweet-smelling myrrh to Thee before Thy burial.\n\"Woe is me,\" she said,\n\"for night surrounds me, dark and moonless,\nand stings my lustful passion with the love of sin.\nAccept the fountain of my tears,\nO Thou Who drawest the water of the sea through the clouds.\nBow down Thine ear to the sighing of my heart,\nO Thou Who didst bow the heavens by Thine ineffable condescension.\nI will kiss Thy most pure feet\nand wipe them with the tresses of my head,\nthose feet at whose sound Eve hid herself in fear\nwhen she heard Thee walking in Paradise in the cool of the day.\nWho can search out the multitude of my sins,\nor the depths of Thy judgments, O my Savior?\nDo not despise me, Thy servant,\nfor Thy mercy is boundless.\""
+      },
+      "now": {
+        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+      }
+    }
+  },
+
+  "exaposteilarion": {
+    "tone": 3,
+    "label": "Exaposteilarion of the Bridegroom",
+    "_note": "Sung three times — same all three nights.",
+    "text": "I see Thy bridal chamber adorned, O my Savior,\nand I have no wedding garment that I may enter.\nO Giver of Light, enlighten the vesture of my soul,\nand save me!"
+  },
+
+  "greatDoxology": {
+    "_note": "The Great Doxology is read (not sung) at Holy Week Matins.",
+    "text": "Glory to God in the highest, and on earth peace, good will among men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord God, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ; and O Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; Thou that takest away the sins of the world, receive our prayer; Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou only art holy, Thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen.\n\nEvery day will I bless Thee, and I will praise Thy Name forever and ever.\n\nVouchsafe, O Lord, to keep us this day without sin.\n\nBlessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy Name forever. Amen.\n\nLet Thy mercy, O Lord, be upon us, as we have set our hope on Thee.\n\nBlessed art Thou, O Lord; teach me Thy statutes.\nBlessed art Thou, O Master; make me to understand Thy statutes.\nBlessed art Thou, O Holy One; enlighten me with Thy statutes.\n\nThy mercy, O Lord, endureth forever. O despise not the works of Thy hands.\n\nTo Thee belongeth worship, to Thee belongeth praise, to Thee belongeth glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "dismissal": {
+    "monday": "May He Who goes to His voluntary Passion for our salvation, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "tuesday": "May He Who goes to His voluntary Passion for our salvation, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "wednesday": "May He Who for our salvation endured spitting, and scourging, and buffeting, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen."
+  }
+}

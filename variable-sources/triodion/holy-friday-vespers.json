@@ -1,0 +1,162 @@
+{
+  "_meta": {
+    "service": "Great and Holy Friday — Burial Vespers (The Unnailing)",
+    "source": "OCA Department of Liturgical Music and Translations, 2026 Holy Week service texts (TT)",
+    "note": "Sung on Friday afternoon. The Epitaphion (burial shroud) is brought out during the service."
+  },
+
+  "key": "holyWeek.friday",
+  "title": "Great and Holy Friday — Burial Vespers",
+  "category": "holyWeek",
+
+  "vespers": {
+
+    "lordICall": {
+      "stichera": {
+        "tone": null,
+        "label": "Stichera of the Cross",
+        "hymns": [
+          {
+            "verse": 6,
+            "tone": 1,
+            "text": "All creation was changed by fear\nwhen it saw Thee hanging upon the Cross, O Christ.\nThe sun was darkened,\nand the foundations of the earth were shaken.\nAll things suffered with the Creator of all.\nO Lord, Who didst willingly endure this for us, glory to Thee!"
+          },
+          {
+            "verse": 5,
+            "tone": 1,
+            "_note": "Repeat of first sticheron",
+            "text": "All creation was changed by fear\nwhen it saw Thee hanging upon the Cross, O Christ.\nThe sun was darkened,\nand the foundations of the earth were shaken.\nAll things suffered with the Creator of all.\nO Lord, Who didst willingly endure this for us, glory to Thee!"
+          },
+          {
+            "verse": 4,
+            "tone": 2,
+            "text": "An impious and transgressing people –\nwhy do they imagine vain things?\nWhy do they condemn to death the Life of all?\nOh, great wonder!\nThe Creator of the world is betrayed into the hands of lawless men.\nHe Who loves mankind is lifted up upon the Wood,\nthat He might free those bound in Hell, who cry:\n\"O long-suffering Lord, glory to Thee!\""
+          },
+          {
+            "verse": 3,
+            "tone": 2,
+            "text": "Today the blameless Virgin\nsaw Thee suspended upon the Cross, O Word.\nShe mourned within herself and was sorely pierced in her heart.\nShe groaned in agony from the depth of her soul.\nExhausted from tearing her hair and cheeks and beating her breast,\nShe cried out, lamenting:\n\"Woe is me, O my divine Child!\nWoe is me, O Light of the world!\nWhy hast Thou departed from mine eyes, O Lamb of God?\"\nThen the bodiless hosts were seized with trembling and cried:\n\"O incomprehensible Lord, glory to Thee!\""
+          },
+          {
+            "verse": 2,
+            "tone": 2,
+            "text": "When she who bore Thee without seed\nsaw Thee suspended upon the Tree,\nO Christ, the Creator and God of all,\nshe cried bitterly: \"Where is the beauty of Thy form, O my Son?\nI cannot bear to see Thee unjustly crucified!\nHasten and arise,\nthat I too may see Thy Resurrection from the dead on the third day!\""
+          },
+          {
+            "verse": 1,
+            "tone": 6,
+            "text": "Today the Master of creation stands before Pilate.\nToday the Creator of all is condemned to die on the Cross.\nOf His own will, He is led as a Lamb to the slaughter.\nHe Who fed His people with manna in the desert is transfixed with nails.\nHis side is pierced, and a sponge of vinegar touches His lips.\nThe Redeemer of the world is slapped on the face.\nThe Maker of all is mocked by His own servants.\nHow great is the Master's love for mankind!\nFor those who crucified Him, He prayed to His Father, saying:\n\"Forgive them this sin, for they know not what they do!\""
+          }
+        ]
+      },
+      "glory": {
+        "tone": 6,
+        "text": "See how the lawless assembly condemns the King of creation to death!\nThey are not ashamed, even when He reminds them of His mighty works:\n\"My people, what have I done to you?\nHave I not filled Judea with miracles?\nHave I not raised the dead by My word alone?\nHave I not healed every sickness and disease?\nHow have you repaid Me?\nWhy have you abandoned Me?\nIn return for healing, you give Me blows;\nIn return for life, you put Me to death.\nYou hang your Benefactor on the Cross as an evildoer;\nyour Lawgiver, as a transgressor;\nthe King of all, as One condemned.\"\nO long-suffering Lord, glory to Thee!"
+      },
+      "now": {
+        "tone": 6,
+        "label": "Theotokion",
+        "text": "We see a strange and fearful mystery accomplished today:\nHe Whom none may touch is seized.\nHe Who looses Adam from the curse is bound.\nHe Who tries the hearts of men is unjustly brought to trial.\nHe Who closed the abyss is shut in prison.\nHe before Whom the Hosts of Heaven stand with trembling stands before Pilate.\nThe Creator is struck by the hand of His creature.\nHe Who comes to judge the living and the dead is condemned to the Cross.\nThe Conqueror of Hell is enclosed in a tomb.\nThou Who hast endured all these things in Thy tender love,\nhast saved all mankind from the curse.\nO long-suffering Lord, glory to Thee!"
+      }
+    },
+
+    "readings": [
+      {
+        "order": 1,
+        "book": "Exodus",
+        "pericope": "33:11–23",
+        "label": "First Reading"
+      },
+      {
+        "order": 2,
+        "book": "Job",
+        "pericope": "42:12–17",
+        "label": "Second Reading"
+      },
+      {
+        "order": 3,
+        "book": "Isaiah",
+        "pericope": "52:13–54:1",
+        "label": "Third Reading"
+      }
+    ],
+
+    "epistle": {
+      "book": "I Corinthians",
+      "pericope": "1:18–2:2",
+      "prokeimenon": {
+        "tone": 4,
+        "refrain": "They parted my garments among them, and upon my vesture did they cast lots.",
+        "psalmRef": "Ps. 21:19",
+        "verses": [
+          { "text": "My God, my God, look upon me; why hast Thou forsaken me?", "psalmRef": "Ps. 21:1" }
+        ]
+      },
+      "alleluia": {
+        "tone": 1,
+        "verses": [
+          { "text": "Save me, O God; for the waters have come up to my soul.", "psalmRef": "Ps. 68:1" },
+          { "text": "They gave me gall for food, and in my thirst they gave me vinegar to drink.", "psalmRef": "Ps. 68:22" }
+        ]
+      }
+    },
+
+    "gospel": {
+      "book": "Matthew",
+      "pericope": "27:1–38; Luke 23:39–43; Matthew 27:39–54; John 19:31–37; Matthew 27:55–61",
+      "label": "The Composite Gospel of the Burial"
+    },
+
+    "aposticha": {
+      "stichera": [
+        {
+          "tone": 2,
+          "label": "Automelon",
+          "verse": null,
+          "text": "Joseph of Arimathea took Thee down from the tree,\nthe Life of all, cold in death.\nBathing Thee with sweet and costly myrrh,\nhe gently covered Thee with finest linen,\nand, with sorrow and tender love in his heart,\nhe embraced Thy most pure body.\nTrembling at this awesome sight,\nhe cried out to Thee, O Christ:\n\"Glory to Thy condescension, O Lover of man!\""
+        },
+        {
+          "tone": 2,
+          "label": "Automelon",
+          "verse": "The Lord is King; He is robed in majesty!",
+          "psalmRef": "Ps. 92:1a",
+          "text": "When Thou, the Redeemer of all, wast placed in a tomb\nall Hell's powers quaked in fear.\nIts bars were broken, its gates were smashed.\nIts mighty reign was brought to an end,\nfor the dead came forth alive from their tombs,\ncasting off the bonds of their captivity.\nAdam was filled with joy!\nHe gratefully cried out to Thee, O Christ:\n\"Glory to Thy condescension, O Lover of man!\""
+        },
+        {
+          "tone": 2,
+          "label": "Automelon",
+          "verse": "For He has established the world, so that it shall never be moved.",
+          "psalmRef": "Ps. 92:2",
+          "text": "In the flesh Thou wast willingly enclosed in the tomb,\nWho art boundless and infinite in Thy divinity.\nThou didst close the chambers of death, O Christ.\nThou hast emptied all the palaces of Hell.\nThou hast honored this Sabbath with Thy blessing, glory, and splendor."
+        },
+        {
+          "tone": 2,
+          "label": "Automelon",
+          "verse": "Holiness befits Thy house, O Lord, forevermore!",
+          "psalmRef": "Ps. 92:7b",
+          "text": "The Powers of Heaven shook with fear,\nwhen they saw Thine ineffable forbearance.\nThey beheld Thee slandered by lawless men,\nmocked as a deceiver by transgressors.\nThey beheld the stone that closed Thy tomb,\nsealed by the same hands that pierced Thy side,\nbut they knew that Thy death would be our life,\nand joyfully they cried out to Thee, O Christ:\n\"Glory to Thy condescension, O Lover of man!\""
+        }
+      ],
+      "gloryNow": {
+        "tone": 5,
+        "label": "Doxastichon",
+        "combinesGloryNow": true,
+        "text": "Joseph, together with Nicodemus,\ntook Thee down from the Tree,\nWho clothest Thyself with light as with a garment.\nHe gazed on Thy body – dead, naked, and unburied,\nand in grief and tender compassion he lamented:\n\"Woe is me, my sweetest Jesus!\nA short while ago, the sun beheld Thee hanging on the Cross,\nand it hid itself in darkness.\nThe earth quaked in fear at the sight.\nThe veil of the Temple was torn in two.\nLo, now I see Thee willingly submit to death for our sake.\nHow shall I bury Thee, O my God?\nHow can I wrap Thee in a shroud?\nHow can I touch Thy most pure Body with my hands?\nWhat songs can I sing for Thine Exodus, O compassionate One?\nI magnify Thy Passion.\nI glorify Thy burial,\nand Thy holy Resurrection,\ncrying, 'O Lord, glory to Thee!'\""
+      }
+    },
+
+    "troparia": {
+      "nobleJoseph": {
+        "tone": 2,
+        "label": "Troparion of Holy Saturday",
+        "text": "The noble Joseph, when he had taken down Thy most pure Body from the Tree, wrapped it in fine linen and anointed it with spices, and placed it in a new tomb."
+      },
+      "angelCame": {
+        "tone": 2,
+        "label": "Troparion",
+        "position": "now",
+        "text": "The Angel came to the myrrhbearing women at the tomb and said:\n\"Myrrh is fitting for the dead;\nbut Christ has shown Himself a stranger to corruption.\""
+      }
+    }
+  }
+}

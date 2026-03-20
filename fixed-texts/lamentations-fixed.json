@@ -1,0 +1,437 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Lamentations — Matins of Great and Holy Saturday, served Friday evening",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0",
+    "note": "The Lamentations (Epitaphios service) center on three stases of verses sung around the burial shroud of Christ. Psalm 118 (119) verses are interspersed with composed troparia. The service concludes with a procession with the Epitaphios."
+  },
+
+  "opening": {
+    "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "sixPsalms": {
+    "_note": "Psalms 3, 37, 62, 87, 102, 142. Read from psalter.json at assembly time.",
+    "intro": "Glory to God in the highest, and on earth peace, good will among men. (×3)\n\nO Lord, Thou shalt open my lips, and my mouth shall declare Thy praise. (×2)",
+    "midGlory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia! Glory to Thee, O God! (×3)\n\nLord, have mercy. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "godIsTheLord": {
+    "tone": 2,
+    "verses": [
+      "God is the Lord, and hath appeared unto us; blessed is He that cometh in the Name of the Lord.",
+      "O give thanks unto the Lord, for He is good, for His mercy endureth forever.",
+      "All nations compassed me about, but in the Name of the Lord I cut them off.",
+      "This is the Lord's doing, and it is marvelous in our eyes."
+    ]
+  },
+
+  "troparia": {
+    "nobleJoseph": {
+      "tone": 2,
+      "label": "Troparion",
+      "text": "The noble Joseph, when he had taken down Thy most pure Body from the Tree,\nwrapped It in fine linen and anointed It with spices,\nand placed It in a new tomb."
+    },
+    "glory": {
+      "tone": 2,
+      "label": "Troparion",
+      "text": "When Thou didst descend to death, O Life Immortal,\nThou didst slay hell with the splendor of Thy Godhead.\nAnd when from the depths Thou didst raise the dead,\nall the powers of heaven cried out:\n\"O Giver of Life, Christ our God, glory to Thee!\""
+    },
+    "now": {
+      "tone": 2,
+      "label": "Theotokion",
+      "text": "The angel stood by the tomb and cried to the myrrh-bearing women:\n\"Myrrh is fitting for the dead,\nbut Christ has shown Himself a stranger to corruption.\""
+    }
+  },
+
+  "stasis1": {
+    "_note": "Stasis 1 — 'In the grave they laid Thee.' Tone 5. Psalm 118 verses paired with troparia about the burial of Christ.",
+    "tone": 5,
+    "refrain": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love.",
+    "verses": [
+      {
+        "psalm": "Blessed are the blameless in the way, who walk in the law of the Lord.",
+        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+      },
+      {
+        "psalm": "Blessed are they that search out His testimonies; with their whole heart shall they seek after Him.",
+        "troparion": "O Life, how canst Thou die? How canst Thou dwell in a tomb? Yet Thou dost destroy the kingdom of death and raise the dead from below."
+      },
+      {
+        "psalm": "For they that work iniquity have not walked in His ways.",
+        "troparion": "We magnify Thee, O Jesus our King, and we honor Thy burial and Thy sufferings, whereby Thou hast saved us from corruption."
+      },
+      {
+        "psalm": "Thou hast commanded us to keep Thy precepts diligently.",
+        "troparion": "O Jesus, Thou Who dost establish the measure of the earth, Thou dost dwell today in a little tomb; and Thou dost raise the dead from their graves."
+      },
+      {
+        "psalm": "O that my ways were directed to keep Thy statutes!",
+        "troparion": "O Jesus, my Christ and my King, why hast Thou come to those in hell? Was it not to free mankind from its bondage?"
+      },
+      {
+        "psalm": "Then shall I not be ashamed, when I have respect unto all Thy commandments.",
+        "troparion": "The Master of all is seen lying dead, and in a new tomb He is laid, He Who empties the tombs of the dead."
+      },
+      {
+        "psalm": "I will praise Thee with uprightness of heart, when I shall have learned the judgments of Thy righteousness.",
+        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+      },
+      {
+        "psalm": "I will keep Thy statutes; O forsake me not utterly.",
+        "troparion": "O Life, Thou wast laid in a tomb; and trembling, death by Thy death was destroyed, and with Thee Adam was raised up."
+      },
+      {
+        "psalm": "Wherewithal shall a young man correct his way? By keeping Thy words.",
+        "troparion": "The Cherubim tremble before Thee, and the company of angels is amazed; yet Thou art laid in the earth, O Savior, Who hast saved all."
+      },
+      {
+        "psalm": "With my whole heart have I sought Thee; let me not wander from Thy commandments.",
+        "troparion": "O Jesus, sweet Light, the Church cries to Thee with tears: I was bereft of Thee, O my Bridegroom."
+      },
+      {
+        "psalm": "Thy words have I hid in my heart, that I might not sin against Thee.",
+        "troparion": "O Christ, the Giver of Life, the faithful cry to Thee: Come and raise us, for we have fallen asleep in the shadow of death."
+      },
+      {
+        "psalm": "Blessed art Thou, O Lord; teach me Thy statutes.",
+        "troparion": "The company of Thy disciples rejoiced with the Theotokos, for with Thee they shall also celebrate Thy resurrection."
+      },
+      {
+        "psalm": "With my lips have I declared all the judgments of Thy mouth.",
+        "troparion": "Joseph and Nicodemus have glorified Thee with funeral hymns, O Christ Who art laid in a tomb."
+      },
+      {
+        "psalm": "I have rejoiced in the way of Thy testimonies, as much as in all riches.",
+        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+      },
+      {
+        "psalm": "I will meditate on Thy precepts, and have respect unto Thy ways.",
+        "troparion": "O Savior, Thou shone forth as a beautiful Sun, and all the earth was filled with Thy light."
+      },
+      {
+        "psalm": "I will delight myself in Thy statutes; I will not forget Thy word.",
+        "troparion": "O Thou Who holdest all things together, when Thou wast lifted upon the Cross, all the creation trembled."
+      },
+      {
+        "psalm": "Deal bountifully with Thy servant, that I may live and keep Thy word.",
+        "troparion": "Tears the Virgin Mother shed over Thee, O Jesus: O my Son, where has Thy beauty gone?"
+      },
+      {
+        "psalm": "Open Thou mine eyes, that I may behold wondrous things out of Thy law.",
+        "troparion": "O my sweet springtime, O my sweetest Child, where has Thy beauty gone? the all-pure one lamented."
+      },
+      {
+        "psalm": "I am a stranger in the earth; hide not Thy commandments from me.",
+        "troparion": "O wondrous wonder! He Who is the Giver of Life to all is handed over to a tomb! He seeks to raise all mankind."
+      },
+      {
+        "psalm": "My soul breaketh for the longing that it hath unto Thy judgments at all times.",
+        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+      },
+      {
+        "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
+      },
+      {
+        "psalm": "Now and ever and unto ages of ages. Amen.",
+        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
+      }
+    ]
+  },
+
+  "stasis2": {
+    "_note": "Stasis 2 — 'Worthy is it to magnify Thee, O Giver of Life.' Tone 5. Continues Psalm 118 with troparia.",
+    "tone": 5,
+    "refrain": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy.",
+    "verses": [
+      {
+        "psalm": "Thy hands have made me and fashioned me; give me understanding, that I may learn Thy commandments.",
+        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
+      },
+      {
+        "psalm": "They that fear Thee will be glad when they see me, because I have hoped in Thy word.",
+        "troparion": "Worthy is it to magnify Thee, the Creator of all, for through Thy sufferings we have been freed from suffering and delivered from corruption."
+      },
+      {
+        "psalm": "I know, O Lord, that Thy judgments are right, and that Thou in faithfulness hast afflicted me.",
+        "troparion": "O how the earth trembles! How the sun hides its face! For the never-setting Sun has set in the tomb in the flesh."
+      },
+      {
+        "psalm": "Let, I pray Thee, Thy merciful kindness be for my comfort, according to Thy word unto Thy servant.",
+        "troparion": "Christ is fallen asleep, but His watchful plan brings death to death, and from their graves He raises the dead."
+      },
+      {
+        "psalm": "Let Thy tender mercies come unto me, that I may live; for Thy law is my delight.",
+        "troparion": "O God, Who art above all, who would dare take thought to wash Thy Body? For it trembles, and the earth quakes with fear!"
+      },
+      {
+        "psalm": "Let the proud be ashamed, for they dealt perversely with me without a cause; but I will meditate in Thy precepts.",
+        "troparion": "O strange wonder! He Who sustains creation suffers willingly, and is laid in the tomb as one dead, that He may give life to the dead."
+      },
+      {
+        "psalm": "Let those that fear Thee turn unto me, and those that have known Thy testimonies.",
+        "troparion": "In a borrowed tomb Thou art laid, O Christ, Thou Who by nature canst not be contained, that Thou mayest open the gates of paradise."
+      },
+      {
+        "psalm": "Let my heart be sound in Thy statutes, that I be not ashamed.",
+        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
+      },
+      {
+        "psalm": "My soul hath longed for Thy salvation; I have hoped in Thy word.",
+        "troparion": "Both higher and lower creation mourn Thee, O Jesus: the sun is darkened and the earth trembles."
+      },
+      {
+        "psalm": "Mine eyes fail for Thy word, saying: When wilt Thou comfort me?",
+        "troparion": "The rocks are split and the veil of the temple is torn in two, for the Master endures the Cross for us sinners."
+      },
+      {
+        "psalm": "For I am become like a bottle in the smoke; yet do I not forget Thy statutes.",
+        "troparion": "Thou hast set in the west like the sun, O Jesus, and beneath the earth art Thou hidden, to bring light to all who are in the night of death."
+      },
+      {
+        "psalm": "How many are the days of Thy servant? When wilt Thou execute judgment on them that persecute me?",
+        "troparion": "The Master of all is dead, and the earth has received Him in its womb; a soldier stands at the sealed tomb."
+      },
+      {
+        "psalm": "The proud have digged pits for me, which is not after Thy law.",
+        "troparion": "Thou dost free Adam from corruption, O Savior, and raise the dead from hell by Thy death."
+      },
+      {
+        "psalm": "All Thy commandments are truth; they persecute me wrongfully; help Thou me.",
+        "troparion": "Weeping, the Virgin cried: The light of the world has been buried in a tomb; but arise, O Savior, and save me!"
+      },
+      {
+        "psalm": "They had almost consumed me upon earth; but I forsook not Thy precepts.",
+        "troparion": "How can I lament Thee, O my God? cried the Virgin. If I lament Thee not, the very stones will cry out!"
+      },
+      {
+        "psalm": "Quicken me after Thy lovingkindness; so shall I keep the testimony of Thy mouth.",
+        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
+      },
+      {
+        "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
+      },
+      {
+        "psalm": "Now and ever and unto ages of ages. Amen.",
+        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
+      }
+    ]
+  },
+
+  "stasis3": {
+    "_note": "Stasis 3 — 'All generations offer the hymn of burial praise to Thee, O my Christ.' Tone 3.",
+    "tone": 3,
+    "refrain": "All generations offer the hymn of burial praise to Thee, O my Christ.",
+    "verses": [
+      {
+        "psalm": "The proud have forged a lie against me, but I will keep Thy precepts with my whole heart.",
+        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
+      },
+      {
+        "psalm": "Their heart is as gross as fat, but I have delighted in Thy law.",
+        "troparion": "The myrrh-bearing women came with myrrh to anoint Thee, O Christ."
+      },
+      {
+        "psalm": "It is good for me that I have been in trouble, that I might learn Thy statutes.",
+        "troparion": "Come, let us all sing hymns to Christ as He is put to death, as the faithful myrrh-bearing women did."
+      },
+      {
+        "psalm": "The law of Thy mouth is better unto me than thousands of gold and silver.",
+        "troparion": "Death is truly the death of death, for Christ, being dead, has raised the dead."
+      },
+      {
+        "psalm": "Thy hands have made me and fashioned me; give me understanding, that I may learn Thy commandments.",
+        "troparion": "O great and most sacred wonder! The Creator of all lies hidden in the earth."
+      },
+      {
+        "psalm": "They that fear Thee will be glad when they see me, because I have hoped in Thy word.",
+        "troparion": "Though Thou art placed in a tomb, O Word, yet Thou art not separated from the Father's bosom."
+      },
+      {
+        "psalm": "I know, O Lord, that Thy judgments are right, and that Thou in faithfulness hast afflicted me.",
+        "troparion": "Thou hast come, O Christ, as a Bridegroom adorned from the chamber, to seek Thy lost creation."
+      },
+      {
+        "psalm": "O let Thy merciful kindness be for my comfort, according to Thy word unto Thy servant.",
+        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
+      },
+      {
+        "psalm": "Let Thy tender mercies come unto me, that I may live; for Thy law is my delight.",
+        "troparion": "The earth covers Thee, O Savior, but the heavenly hosts tremble at Thy sight."
+      },
+      {
+        "psalm": "Let the proud be ashamed, for they dealt perversely with me without a cause; but I will meditate in Thy precepts.",
+        "troparion": "O sweetest Jesus, the Church cries out to Thee: I am bereft of Thee, but Thou art my Life."
+      },
+      {
+        "psalm": "Let those that fear Thee turn unto me, and those that have known Thy testimonies.",
+        "troparion": "O Jesus, Thou King and Lord of all, why hast Thou come to raise those in hell?"
+      },
+      {
+        "psalm": "Let my heart be sound in Thy statutes, that I be not ashamed.",
+        "troparion": "Thou art called the never-setting Sun, O Jesus, and Thou settest beneath the earth; arise and shine forth!"
+      },
+      {
+        "psalm": "My soul hath longed for Thy salvation; I have hoped in Thy word.",
+        "troparion": "O Thou Who art the Life, Thou art laid in a tomb; and trembling, hell was destroyed by Thy might."
+      },
+      {
+        "psalm": "Mine eyes fail for Thy word, saying: When wilt Thou comfort me?",
+        "troparion": "The women have brought myrrh to Thee, and the earth offers Thee a tomb, O Master."
+      },
+      {
+        "psalm": "For I am become like a bottle in the smoke; yet do I not forget Thy statutes.",
+        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
+      },
+      {
+        "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
+      },
+      {
+        "psalm": "Now and ever and unto ages of ages. Amen.",
+        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
+      }
+    ]
+  },
+
+  "evlogetaria": {
+    "_note": "Evlogetaria of the Dead, adapted for Holy Saturday. Tone 5. Sung after the three stases.",
+    "tone": 5,
+    "refrain": "Blessed art Thou, O Lord; teach me Thy statutes.",
+    "troparia": [
+      {
+        "verse": "Blessed art Thou, O Lord; teach me Thy statutes.",
+        "text": "The company of the angels was amazed when they beheld Thee numbered among the dead,\nyet Thyself, O Savior, destroying the power of death,\nand with Thee raising up Adam,\nand releasing all from hell."
+      },
+      {
+        "verse": "Blessed art Thou, O Lord; teach me Thy statutes.",
+        "text": "\"Why do you mingle myrrh with your tears of compassion, O women disciples?\"\nthe radiant angel in the tomb cried to the myrrh-bearing women;\n\"Behold the tomb and understand, for the Savior is risen from the tomb!\""
+      },
+      {
+        "verse": "Blessed art Thou, O Lord; teach me Thy statutes.",
+        "text": "Very early in the morning the myrrh-bearing women hastened to Thy tomb, lamenting.\nBut the angel stood before them and said:\n\"The time for lamentation is past; weep not, but tell the apostles of the Resurrection!\""
+      },
+      {
+        "verse": "Blessed art Thou, O Lord; teach me Thy statutes.",
+        "text": "The myrrh-bearing women came with spices to Thy tomb, O Savior.\nThey heard the angel say:\n\"Why do you number the Living among the dead?\nAs God, He is risen from the tomb!\""
+      },
+      {
+        "verse": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "text": "Let us worship the Father, and His Son, and the Holy Spirit:\nthe Holy Trinity, one in essence,\ncrying with the Seraphim: Holy, holy, holy art Thou, O Lord!"
+      },
+      {
+        "verse": "Now and ever and unto ages of ages. Amen.",
+        "text": "In that Thou didst bear the Giver of Life, O Virgin,\nThou didst redeem Adam from sin\nand didst give to Eve joy in place of sadness;\nand He Who was incarnate of Thee, both God and man,\nhath restored to life those who had fallen from it."
+      }
+    ],
+    "alleluia": "Alleluia, alleluia, alleluia! Glory to Thee, O God! (×3)"
+  },
+
+  "canon": {
+    "_note": "The Great Canon of Holy Saturday. Abbreviated — full odes would be very lengthy.",
+    "rubric": "The Canon of Holy Saturday is chanted here. It is the work of Mark, Bishop of Hydrous, and of the Nun Kassiane. The irmoi serve as the katavasia.",
+    "kontakion": {
+      "tone": 6,
+      "text": "He who closed the abyss is seen dead,\nand wrapped in myrrh and fine linen, the Immortal One is laid in a tomb as one who is mortal.\nThe women have come to anoint Him with myrrh,\nweeping bitterly and crying:\n\"This is the most blessed Sabbath,\non which Christ has fallen asleep,\nto rise on the third day!\""
+    },
+    "ikos": {
+      "text": "He who holds all things together was lifted on the Cross,\nand all creation wept seeing Him hanging naked on the Tree.\nThe sun hid its rays; the stars withdrew their light.\nThe earth trembled with great fear;\nthe sea fled, and the rocks were split.\nMany tombs were opened, and the bodies of holy men arose.\nHell groaned below, and the Jews sought to slander the Resurrection of Christ;\nbut the women cried:\n\"This is the most blessed Sabbath,\non which Christ has fallen asleep,\nto rise on the third day!\""
+    }
+  },
+
+  "exaposteilarion": {
+    "tone": 2,
+    "label": "Exaposteilarion",
+    "text": "Holy is the Lord our God!",
+    "_note": "Sung three times, with the verse 'For He is holy' and 'Exalt the Lord our God.'"
+  },
+
+  "lauds": {
+    "_note": "Lauds stichera. Tone 2. Sung with 'Let every breath praise the Lord.'",
+    "hymns": [
+      {
+        "tone": 2,
+        "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
+        "text": "Every creature was altered by Thy Passion, O Lord;\nall things suffered with Thee, knowing that Thou holdest all things together."
+      },
+      {
+        "tone": 2,
+        "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
+        "text": "The Giver of the Law lies dead; a lawless people has condemned the Lawgiver.\nO new wonders! The Judge is judged, yet He wills to suffer and to die for the salvation of the world."
+      },
+      {
+        "tone": 2,
+        "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp!",
+        "text": "O Lord, when the myrrh-bearing women stood at Thy tomb,\nand the soldiers guarded Thy most pure Body,\nThou didst plunder hell and condemn the demons,\nrising as Victor on the third day."
+      },
+      {
+        "tone": 2,
+        "verse": "Praise Him with timbrel and dance; praise Him with strings and instruments!",
+        "text": "O Lord, the hell that had swallowed the Cornerstone\nhas released its dead;\nand the tomb has given up for judgment those whom it held of old.\nThe Giver of Life has shut up death, and the Lord has poured His light on all."
+      }
+    ],
+    "glory": {
+      "tone": 6,
+      "text": "Today a tomb holds Him Who holds all creation in the hollow of His hand.\nA stone covers Him Who covers the heavens with virtue.\nLife sleeps, and hell trembles, and Adam is set free from his bonds.\nGlory to Thy dispensation, whereby, having accomplished all things,\nThou hast granted us an eternal Sabbath,\nThy most holy Resurrection from the dead!"
+    },
+    "now": {
+      "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+    }
+  },
+
+  "greatDoxology": {
+    "_note": "The Great Doxology is SUNG (not read) at the Lamentations service.",
+    "text": "Glory to God in the highest, and on earth peace, good will among men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord God, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ; and O Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; Thou that takest away the sins of the world, receive our prayer; Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou only art holy, Thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen.\n\nEvery day will I bless Thee, and I will praise Thy Name forever and ever.\n\nVouchsafe, O Lord, to keep us this day without sin.\n\nBlessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy Name forever. Amen.\n\nLet Thy mercy, O Lord, be upon us, as we have set our hope on Thee.\n\nBlessed art Thou, O Lord; teach me Thy statutes.\nBlessed art Thou, O Master; make me to understand Thy statutes.\nBlessed art Thou, O Holy One; enlighten me with Thy statutes.\n\nThy mercy, O Lord, endureth forever. O despise not the works of Thy hands.\n\nTo Thee belongeth worship, to Thee belongeth praise, to Thee belongeth glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "trisagion": {
+    "_note": "Sung during the procession with the Epitaphios, after the Great Doxology.",
+    "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nHoly Immortal, have mercy on us.\n\nHoly God, Holy Mighty, Holy Immortal, have mercy on us."
+  },
+
+  "procession": {
+    "_note": "The Epitaphios procession takes place after the Great Doxology. The Trisagion is sung during the procession.",
+    "rubric": "The Great Doxology is sung. At its conclusion the priest takes up the Epitaphios (burial shroud of Christ) and carries it in procession around the church, while the Trisagion is chanted."
+  },
+
+  "prophecy": {
+    "_note": "After the procession, the prophecy from Ezekiel is read.",
+    "label": "Prophecy of Ezekiel",
+    "pericope": "Ezekiel 37:1–14",
+    "text": "The hand of the Lord was upon me, and carried me out in the Spirit of the Lord, and set me down in the midst of the valley which was full of bones, and caused me to pass by them round about: and, behold, there were very many in the open valley; and, lo, they were very dry. And He said unto me: Son of man, can these bones live? And I answered: O Lord God, Thou knowest. Again He said unto me: Prophesy upon these bones, and say unto them: O ye dry bones, hear the word of the Lord. Thus saith the Lord God unto these bones: Behold, I will cause breath to enter into you, and ye shall live: and I will lay sinews upon you, and will bring up flesh upon you, and cover you with skin, and put breath in you, and ye shall live; and ye shall know that I am the Lord. So I prophesied as I was commanded: and as I prophesied, there was a noise, and behold a shaking, and the bones came together, bone to his bone. And when I beheld, lo, the sinews and the flesh came up upon them, and the skin covered them above: but there was no breath in them. Then said He unto me: Prophesy unto the wind, prophesy, son of man, and say to the wind: Thus saith the Lord God: Come from the four winds, O breath, and breathe upon these slain, that they may live. So I prophesied as He commanded me, and the breath came into them, and they lived, and stood up upon their feet, an exceeding great army. Then He said unto me: Son of man, these bones are the whole house of Israel: behold, they say: Our bones are dried, and our hope is lost; we are cut off for our parts. Therefore prophesy and say unto them: Thus saith the Lord God: Behold, O My people, I will open your graves, and cause you to come up out of your graves, and bring you into the land of Israel. And ye shall know that I am the Lord, when I have opened your graves, O My people, and brought you up out of your graves, and shall put My Spirit in you, and ye shall live, and I shall place you in your own land: then shall ye know that I the Lord have spoken it, and performed it, saith the Lord."
+  },
+
+  "epistle": {
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "Arise, O Lord, help us, and redeem us for Thy mercy's sake.",
+      "verse": "O God, we have heard with our ears, and our fathers have told us."
+    },
+    "book": "I Corinthians",
+    "pericope": "5:6–8; Galatians 3:13–14",
+    "text": "Brethren: Know ye not that a little leaven leaveneth the whole lump? Purge out therefore the old leaven, that ye may be a new lump, as ye are unleavened. For even Christ our Passover is sacrificed for us. Therefore let us keep the feast, not with old leaven, neither with the leaven of malice and wickedness, but with the unleavened bread of sincerity and truth.\n\nChrist hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree: that the blessing of Abraham might come on the Gentiles through Jesus Christ; that we might receive the promise of the Spirit through faith.",
+    "alleluia": {
+      "tone": 5,
+      "verses": [
+        "Arise, O Lord my God; let Thy hand be lifted high; forget not Thy poor forever.",
+        "I will give thanks unto Thee, O Lord, with my whole heart; I will tell of all Thy wondrous works."
+      ]
+    }
+  },
+
+  "gospel": {
+    "book": "Matthew",
+    "pericope": "27:62–66",
+    "label": "The Sealing of the Tomb",
+    "text": "Now the next day, that followed the day of the preparation, the chief priests and Pharisees came together unto Pilate, saying: Sir, we remember that that deceiver said, while He was yet alive: After three days I will rise again. Command therefore that the sepulchre be made sure until the third day, lest His disciples come by night, and steal Him away, and say unto the people: He is risen from the dead; so the last error shall be worse than the first. Pilate said unto them: Ye have a watch; go your way, make it as sure as ye can. So they went, and made the sepulchre sure, sealing the stone, and setting a watch."
+  },
+
+  "dismissal": {
+    "text": "May He Who for our salvation endured the spitting, and the scourging, and the buffeting, and the Cross, and death, and was laid in the tomb, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen."
+  }
+}

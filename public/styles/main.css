@@ -644,10 +644,22 @@ body.dev-mode .src-tag { display: inline; }
 
 /* ── RESPONSIVE ────────────────────────────────────────────────────────────── */
 
+/* Stacked date bar at narrower widths */
+@media (max-width: 1090px) {
+  .center-bar {
+    padding: 10px 32px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .week-label { width: 100%; margin-bottom: 8px; }
+  .bar-btns { width: 100%; }
+  .bar-btn { flex: 1; justify-content: center; }
+}
+
 /* Mobile: tighter spacing + scaled reading text */
 @media (max-width: 767px) {
   header, .search-hdr, .cal-hdr { padding: 0 16px; }
-  .center-bar { padding: 0 16px; }
+  .center-bar { padding: 10px 16px; }
   .service-list-body { padding: 20px 16px 80px; }
   .panel-head { padding: 12px 16px 10px; }
   .btn-print { display: none; }

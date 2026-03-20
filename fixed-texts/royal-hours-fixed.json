@@ -1,0 +1,240 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Royal Hours of Great Friday — served Friday morning before Burial Vespers",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0",
+    "note": "The Royal Hours consist of the 1st, 3rd, 6th, and 9th Hours, each with three psalms, a troparion, an OT prophecy, an epistle, a gospel, and three idiomela (special stichera). 100% fixed — same every year."
+  },
+
+  "opening": {
+    "blessing": "Blessed is our God always, now and ever and unto ages of ages.",
+    "amen": "Amen.",
+    "comeLet": "Come, let us worship God our King.\nCome, let us worship and fall down before Christ, our King and our God.\nCome, let us worship and fall down before Christ Himself, our King and our God.",
+    "trisagion": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+    "allHolyTrinity": "O most-holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for Thy Name's sake.",
+    "lordHaveMercy3": "Lord, have mercy. (×3)",
+    "ourFather": "Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from the evil one.",
+    "exclamation": "For Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever and unto ages of ages.",
+    "lordHaveMercy12": "Lord, have mercy. (×12)"
+  },
+
+  "hours": {
+    "first": {
+      "psalms": [5, 2, 21],
+      "troparion": {
+        "tone": 1,
+        "text": "Today the veil of the temple is rent in twain\nas a reproach against the transgressors,\nand the sun hides its own rays,\nseeing the Master crucified."
+      },
+      "glory": {
+        "tone": 1,
+        "text": "Before Thy Cross, O Lord,\na company of angels stood in awe,\nseeing Thee, the King of heaven,\nnailed to the wood by lawless men;\nand they cried aloud:\n\"O Lord, glory to Thee!\""
+      },
+      "theotokion": {
+        "text": "What shall we call thee, O Full of Grace?\nHeaven? For thou hast made the Sun of Righteousness to dawn.\nParadise? For thou hast budded forth the Flower of immortality.\nVirgin? For thou hast remained incorrupt.\nPure Mother? For thou hast held in thy holy embrace\nthe Son Who is God of all.\nEntreat Him to save our souls!"
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "refrain": "Thou hast heard me, O God, when I cried unto Thee; in my tribulation Thou hast enlarged me.",
+        "verse": "When I called, the God of my righteousness heard me."
+      },
+      "prophecy": {
+        "book": "Zechariah",
+        "pericope": "11:10–13",
+        "text": "Thus saith the Lord: I took my staff, even Beauty, and cut it asunder, that I might break my covenant which I had made with all the people. And it was broken in that day; and so the poor of the flock that waited upon me knew that it was the word of the Lord. And I said unto them: If ye think good, give me my price; and if not, forbear. So they weighed for my price thirty pieces of silver. And the Lord said unto me: Cast it unto the potter; a goodly price that I was prised at of them. And I took the thirty pieces of silver, and cast them to the potter in the house of the Lord."
+      },
+      "epistle": {
+        "book": "Galatians",
+        "pericope": "6:14–18",
+        "text": "Brethren: God forbid that I should glory, save in the Cross of our Lord Jesus Christ, by Whom the world is crucified unto me, and I unto the world. For in Christ Jesus neither circumcision availeth any thing, nor uncircumcision, but a new creature. And as many as walk according to this rule, peace be on them, and mercy, and upon the Israel of God. From henceforth let no man trouble me; for I bear in my body the marks of the Lord Jesus. Brethren, the grace of our Lord Jesus Christ be with your spirit. Amen."
+      },
+      "gospel": {
+        "book": "Matthew",
+        "pericope": "27:1–56",
+        "text": "When the morning was come, all the chief priests and elders of the people took counsel against Jesus to put Him to death. And when they had bound Him, they led Him away, and delivered Him to Pontius Pilate the governor.\n\nThen Judas, which had betrayed Him, when he saw that He was condemned, repented himself, and brought again the thirty pieces of silver to the chief priests and elders, saying: I have sinned in that I have betrayed the innocent blood. And they said: What is that to us? See thou to that. And he cast down the pieces of silver in the temple, and departed, and went and hanged himself. And the chief priests took the silver pieces, and said: It is not lawful for to put them into the treasury, because it is the price of blood. And they took counsel, and bought with them the potter's field, to bury strangers in. Wherefore that field was called The field of blood, unto this day. Then was fulfilled that which was spoken by Jeremiah the prophet, saying: And they took the thirty pieces of silver, the price of Him that was valued, Whom they of the children of Israel did value, and gave them for the potter's field, as the Lord appointed me.\n\nAnd Jesus stood before the governor; and the governor asked Him, saying: Art Thou the King of the Jews? And Jesus said unto him: Thou sayest. And when He was accused of the chief priests and elders, He answered nothing. Then said Pilate unto Him: Hearest Thou not how many things they witness against Thee? And He answered him to never a word; insomuch that the governor marvelled greatly.\n\nNow at that feast the governor was wont to release unto the people a prisoner, whom they would. And they had then a notable prisoner, called Barabbas. Therefore when they were gathered together, Pilate said unto them: Whom will ye that I release unto you? Barabbas, or Jesus which is called Christ? For he knew that for envy they had delivered Him. When he was set down on the judgment seat, his wife sent unto him, saying: Have thou nothing to do with that just Man; for I have suffered many things this day in a dream because of Him. But the chief priests and elders persuaded the multitude that they should ask Barabbas, and destroy Jesus. The governor answered and said unto them: Whether of the twain will ye that I release unto you? They said: Barabbas. Pilate saith unto them: What shall I do then with Jesus which is called Christ? They all say unto him: Let Him be crucified. And the governor said: Why, what evil hath He done? But they cried out the more, saying: Let Him be crucified.\n\nWhen Pilate saw that he could prevail nothing, but that rather a tumult was made, he took water, and washed his hands before the multitude, saying: I am innocent of the blood of this just Person; see ye to it. Then answered all the people, and said: His blood be on us, and on our children.\n\nThen released he Barabbas unto them; and when he had scourged Jesus, he delivered Him to be crucified. Then the soldiers of the governor took Jesus into the common hall, and gathered unto Him the whole band of soldiers. And they stripped Him, and put on Him a scarlet robe. And when they had platted a crown of thorns, they put it upon His head, and a reed in His right hand; and they bowed the knee before Him, and mocked Him, saying: Hail, King of the Jews! And they spit upon Him, and took the reed, and smote Him on the head. And after that they had mocked Him, they took the robe off from Him, and put His own raiment on Him, and led Him away to crucify Him.\n\nAnd as they came out, they found a man of Cyrene, Simon by name; him they compelled to bear His Cross. And when they were come unto a place called Golgotha, that is to say, a place of a skull, they gave Him vinegar to drink mingled with gall; and when He had tasted thereof, He would not drink.\n\nAnd they crucified Him, and parted His garments, casting lots, that it might be fulfilled which was spoken by the prophet: They parted My garments among them, and upon My vesture did they cast lots. And sitting down they watched Him there. And set up over His head His accusation written: THIS IS JESUS THE KING OF THE JEWS.\n\nThen were there two thieves crucified with Him, one on the right hand, and another on the left. And they that passed by reviled Him, wagging their heads, and saying: Thou that destroyest the temple, and buildest it in three days, save Thyself. If Thou be the Son of God, come down from the Cross. Likewise also the chief priests mocking Him, with the scribes and elders, said: He saved others; Himself He cannot save. If He be the King of Israel, let Him now come down from the Cross, and we will believe Him. He trusted in God; let Him deliver Him now, if He will have Him; for He said: I am the Son of God. The thieves also, which were crucified with Him, cast the same in His teeth.\n\nNow from the sixth hour there was darkness over all the land unto the ninth hour. And about the ninth hour Jesus cried with a loud voice, saying: Eli, Eli, lama sabachthani? that is to say: My God, My God, why hast Thou forsaken Me? Some of them that stood there, when they heard that, said: This Man calleth for Elias. And straightway one of them ran, and took a sponge, and filled it with vinegar, and put it on a reed, and gave Him to drink. The rest said: Let be, let us see whether Elias will come to save Him.\n\nJesus, when He had cried again with a loud voice, yielded up the ghost. And, behold, the veil of the temple was rent in twain from the top to the bottom; and the earth did quake, and the rocks rent; and the graves were opened; and many bodies of the saints which slept arose, and came out of the graves after His resurrection, and went into the holy city, and appeared unto many.\n\nNow when the centurion, and they that were with him, watching Jesus, saw the earthquake, and those things that were done, they feared greatly, saying: Truly this was the Son of God. And many women were there beholding afar off, which followed Jesus from Galilee, ministering unto Him; among which was Mary Magdalene, and Mary the mother of James and Joses, and the mother of Zebedee's children."
+      },
+      "stichera": [
+        {
+          "tone": 6,
+          "text": "Thus saith the Lord to the Jews:\n\"O My people, what have I done unto thee?\nOr wherein have I wearied thee?\nI gave sight to thy blind;\nI cleansed thy lepers;\nI raised up the man on his bed.\nO My people, what have I done unto thee,\nand how hast thou repaid Me?\nInstead of manna — gall;\ninstead of water — vinegar;\ninstead of loving Me — thou hast nailed Me to a Cross.\nI can bear no more.\nI will call My Gentiles, and they shall glorify Me\nwith the Father and the Spirit,\nand I will give them eternal life.\""
+        },
+        {
+          "tone": 6,
+          "text": "Today the veil of the temple is rent in twain\nas a reproach against the transgressors,\nand the sun hides its own rays,\nseeing the Master crucified."
+        },
+        {
+          "tone": 6,
+          "text": "O Lord, Who by Thine own sheep\nhast been led as a lamb to the slaughter,\nwhen Thou wast stretched upon the Cross\nThou didst cry:\n\"Father, forgive them, for they know not what they do.\"\nGlory to Thy long-suffering, O Lord!"
+        }
+      ],
+      "kontakion": {
+        "tone": 8,
+        "text": "Come, let us all sing the praises of Him Who was crucified for us,\nfor Mary said when she beheld Him upon the Tree:\n\"Though Thou dost endure the Cross,\nThou art my Son and my God.\""
+      }
+    },
+
+    "third": {
+      "psalms": [34, 108, 50],
+      "troparion": {
+        "tone": 6,
+        "text": "O Lord, the Jews condemned Thee to death,\nthe Life of all.\nThey who crossed the Red Sea on foot\nnailed Thee to the Cross.\nThey who were fed with honey from a rock\noffered Thee gall.\nBut Thou didst suffer willingly\nto free us from the bondage of the enemy.\nO Christ our God, glory to Thee!"
+      },
+      "glory": {
+        "tone": 6,
+        "text": "In the midst of two thieves\nThy Cross was found to be a balance of righteousness:\nthe one was lowered to hell by the weight of his blasphemy,\nwhile the other was lightened from his sins\nunto the knowledge of things divine.\nO Christ God, glory to Thee!"
+      },
+      "theotokion": {
+        "text": "O Lamb of God and Mother of the immaculate Lamb,\nO most pure Virgin Theotokos Mary:\nwhen thou didst see thy Son lifted on the Cross,\nthou didst cry as a mother:\n\"What is this strange sight, my sweet Child?\nHow can the ungrateful people nail Thee to the Cross,\nO Thou Who gavest life to all?\""
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "refrain": "For dogs have compassed me; the assembly of the wicked hath enclosed me; they pierced my hands and my feet.",
+        "verse": "My God, my God, look upon me; why hast Thou forsaken me?"
+      },
+      "prophecy": {
+        "book": "Isaiah",
+        "pericope": "50:4–11",
+        "text": "The Lord God hath given me the tongue of the learned, that I should know how to speak a word in season to him that is weary. He wakeneth morning by morning, He wakeneth mine ear to hear as the learned. The Lord God hath opened mine ear, and I was not rebellious, neither turned away back. I gave my back to the smiters, and my cheeks to them that plucked off the hair; I hid not my face from shame and spitting.\n\nFor the Lord God will help me; therefore shall I not be confounded; therefore have I set my face like a flint, and I know that I shall not be ashamed. He is near that justifieth me; who will contend with me? Let us stand together; who is mine adversary? Let him come near to me. Behold, the Lord God will help me; who is he that shall condemn me? Lo, they all shall wax old as a garment; the moth shall eat them up.\n\nWho is among you that feareth the Lord, that obeyeth the voice of His servant, that walketh in darkness, and hath no light? Let him trust in the Name of the Lord, and stay upon his God. Behold, all ye that kindle a fire, that compass yourselves about with sparks: walk in the light of your fire, and in the sparks that ye have kindled. This shall ye have of Mine hand: ye shall lie down in sorrow."
+      },
+      "epistle": {
+        "book": "Romans",
+        "pericope": "5:6–10",
+        "text": "Brethren: When we were yet without strength, in due time Christ died for the ungodly. For scarcely for a righteous man will one die; yet peradventure for a good man some would even dare to die. But God commendeth His love toward us, in that, while we were yet sinners, Christ died for us. Much more then, being now justified by His blood, we shall be saved from wrath through Him. For if, when we were enemies, we were reconciled to God by the death of His Son, much more, being reconciled, we shall be saved by His life."
+      },
+      "gospel": {
+        "book": "Mark",
+        "pericope": "15:16–41",
+        "text": "At that time, the soldiers led Jesus away into the hall, called Praetorium; and they called together the whole band. And they clothed Him with purple, and platted a crown of thorns, and put it about His head, and began to salute Him: Hail, King of the Jews! And they smote Him on the head with a reed, and did spit upon Him, and bowing their knees worshipped Him. And when they had mocked Him, they took off the purple from Him, and put His own clothes on Him, and led Him out to crucify Him.\n\nAnd they compel one Simon a Cyrenian, who passed by, coming out of the country, the father of Alexander and Rufus, to bear His Cross. And they bring Him unto the place Golgotha, which is, being interpreted, The place of a skull. And they gave Him to drink wine mingled with myrrh; but He received it not.\n\nAnd when they had crucified Him, they parted His garments, casting lots upon them, what every man should take. And it was the third hour, and they crucified Him. And the superscription of His accusation was written over: THE KING OF THE JEWS. And with Him they crucify two thieves, the one on His right hand, and the other on His left. And the scripture was fulfilled, which saith: And He was numbered with the transgressors.\n\nAnd they that passed by railed on Him, wagging their heads, and saying: Ah, Thou that destroyest the temple, and buildest it in three days, save Thyself, and come down from the Cross. Likewise also the chief priests mocking said among themselves with the scribes: He saved others; Himself He cannot save. Let Christ the King of Israel descend now from the Cross, that we may see and believe. And they that were crucified with Him reviled Him.\n\nAnd when the sixth hour was come, there was darkness over the whole land until the ninth hour. And at the ninth hour Jesus cried with a loud voice, saying: Eloi, Eloi, lama sabachthani? which is, being interpreted: My God, My God, why hast Thou forsaken Me? And some of them that stood by, when they heard it, said: Behold, He calleth Elias. And one ran and filled a sponge full of vinegar, and put it on a reed, and gave Him to drink, saying: Let alone; let us see whether Elias will come to take Him down.\n\nAnd Jesus cried with a loud voice, and gave up the ghost. And the veil of the temple was rent in twain from the top to the bottom. And when the centurion, which stood over against Him, saw that He so cried out, and gave up the ghost, he said: Truly this Man was the Son of God.\n\nThere were also women looking on afar off, among whom was Mary Magdalene, and Mary the mother of James the less and of Joses, and Salome, who also, when He was in Galilee, followed Him, and ministered unto Him; and many other women which came up with Him unto Jerusalem."
+      },
+      "stichera": [
+        {
+          "tone": 5,
+          "text": "Come, O ye faithful, let us behold at what place Judas\nshook hands with the lawless priests against our Savior.\n\"What will you give me if I deliver Him unto you?\"\nAnd while the agreement was being made,\nthe Lord Who was to be sold stood by, unknowing of the price.\nFor what king comes in such a way?\nBut the Only-begotten Son of God came to be sold.\nLet us fall down before Him!"
+        },
+        {
+          "tone": 5,
+          "text": "He who was sold for thirty pieces of silver,\nO ye lawless ones, was not a mortal man;\nbut the Master and God of Israel,\nWho through the Law and the Prophets\nsaid to the people:\n\"O My people, what have I done unto thee,\nor wherein have I wearied thee?\nI led thee out of Egypt; I fed thee in the wilderness.\nWhat have I done unto thee?\"\nBut they repaid Him with gall and vinegar."
+        },
+        {
+          "tone": 5,
+          "text": "The Lawgiver became obedient to the Law,\nfulfilling the Law and the Prophets.\nPilate said: \"I find no fault in this Man.\"\nAnd the Thief on the Cross cried out:\n\"Remember me, O Lord, in Thy Kingdom!\"\nDeliver us, O Lord, from the snares of the enemy,\nand grant us the Great Mercy!"
+        }
+      ],
+      "kontakion": {
+        "tone": 8,
+        "text": "Come, let us all sing the praises of Him Who was crucified for us,\nfor Mary said when she beheld Him upon the Tree:\n\"Though Thou dost endure the Cross,\nThou art my Son and my God.\""
+      }
+    },
+
+    "sixth": {
+      "psalms": [53, 139, 90],
+      "troparion": {
+        "tone": 2,
+        "text": "Thou hast wrought salvation in the midst of the earth, O Christ our God:\nThou didst stretch out Thy most pure hands upon the Cross,\ngathering together all the nations\nwho cry to Thee:\nO Lord, glory to Thee!"
+      },
+      "glory": {
+        "tone": 2,
+        "text": "We worship Thy sufferings, O Christ.\nShow us also Thy glorious Resurrection!"
+      },
+      "theotokion": {
+        "text": "Since we have no boldness because of the multitude of our sins,\ndo thou entreat Him Who was born of thee,\nO Virgin Theotokos,\nfor the prayer of a mother availeth much\nto obtain the Master's favor.\nDespise not the supplications of sinners, O most pure one,\nfor He Who deigned also to suffer for us\nis merciful and mighty to save."
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "refrain": "O Lord, Thou hast been our dwelling place in all generations.",
+        "verse": "Before the mountains were brought forth, or ever Thou hadst formed the earth and the world."
+      },
+      "prophecy": {
+        "book": "Isaiah",
+        "pericope": "52:13–54:1",
+        "text": "Behold, My Servant shall deal prudently, He shall be exalted and extolled, and be very high. As many were astonied at thee — His visage was so marred more than any man, and His form more than the sons of men — so shall He sprinkle many nations; the kings shall shut their mouths at Him; for that which had not been told them shall they see, and that which they had not heard shall they consider.\n\nWho hath believed our report? And to whom is the arm of the Lord revealed? For He shall grow up before Him as a tender plant, and as a root out of a dry ground; He hath no form nor comeliness; and when we shall see Him, there is no beauty that we should desire Him. He is despised and rejected of men; a Man of sorrows, and acquainted with grief; and we hid as it were our faces from Him; He was despised, and we esteemed Him not.\n\nSurely He hath borne our griefs, and carried our sorrows; yet we did esteem Him stricken, smitten of God, and afflicted. But He was wounded for our transgressions, He was bruised for our iniquities; the chastisement of our peace was upon Him; and with His stripes we are healed. All we like sheep have gone astray; we have turned every one to his own way; and the Lord hath laid on Him the iniquity of us all.\n\nHe was oppressed, and He was afflicted, yet He opened not His mouth; He is brought as a lamb to the slaughter, and as a sheep before her shearers is dumb, so He openeth not His mouth. He was taken from prison and from judgment; and who shall declare His generation? For He was cut off out of the land of the living; for the transgression of My people was He stricken. And He made His grave with the wicked, and with the rich in His death; because He had done no violence, neither was any deceit in His mouth.\n\nYet it pleased the Lord to bruise Him; He hath put Him to grief. When Thou shalt make His soul an offering for sin, He shall see His seed, He shall prolong His days, and the pleasure of the Lord shall prosper in His hand. He shall see of the travail of His soul, and shall be satisfied; by His knowledge shall My righteous Servant justify many, for He shall bear their iniquities. Therefore will I divide Him a portion with the great, and He shall divide the spoil with the strong; because He hath poured out His soul unto death, and He was numbered with the transgressors; and He bare the sin of many, and made intercession for the transgressors.\n\nSing, O barren, thou that didst not bear; break forth into singing, and cry aloud, thou that didst not travail with child; for more are the children of the desolate than the children of the married wife, saith the Lord."
+      },
+      "epistle": {
+        "book": "Hebrews",
+        "pericope": "2:11–18",
+        "text": "Brethren: Both He that sanctifieth and they who are sanctified are all of one; for which cause He is not ashamed to call them brethren, saying: I will declare Thy Name unto My brethren, in the midst of the church will I sing praise unto Thee. And again: I will put My trust in Him. And again: Behold I and the children which God hath given Me.\n\nForasmuch then as the children are partakers of flesh and blood, He also Himself likewise took part of the same; that through death He might destroy him that had the power of death, that is, the devil; and deliver them who through fear of death were all their lifetime subject to bondage. For verily He took not on Him the nature of angels; but He took on Him the seed of Abraham. Wherefore in all things it behooved Him to be made like unto His brethren, that He might be a merciful and faithful High Priest in things pertaining to God, to make reconciliation for the sins of the people. For in that He Himself hath suffered being tempted, He is able to succor them that are tempted."
+      },
+      "gospel": {
+        "book": "Luke",
+        "pericope": "23:32–49",
+        "text": "At that time, there were also two other, malefactors, led with Jesus to be put to death. And when they were come to the place, which is called Calvary, there they crucified Him, and the malefactors, one on the right hand, and the other on the left.\n\nThen said Jesus: Father, forgive them; for they know not what they do. And they parted His raiment, and cast lots. And the people stood beholding. And the rulers also with them derided Him, saying: He saved others; let Him save Himself, if He be Christ, the chosen of God. And the soldiers also mocked Him, coming to Him, and offering Him vinegar, and saying: If Thou be the King of the Jews, save Thyself.\n\nAnd a superscription also was written over Him in letters of Greek, and Latin, and Hebrew: THIS IS THE KING OF THE JEWS.\n\nAnd one of the malefactors which were hanged railed on Him, saying: If Thou be Christ, save Thyself and us. But the other answering rebuked him, saying: Dost not thou fear God, seeing thou art in the same condemnation? And we indeed justly; for we receive the due reward of our deeds; but this Man hath done nothing amiss. And he said unto Jesus: Lord, remember me when Thou comest into Thy Kingdom. And Jesus said unto him: Verily I say unto thee, today shalt thou be with Me in paradise.\n\nAnd it was about the sixth hour, and there was a darkness over all the earth until the ninth hour. And the sun was darkened, and the veil of the temple was rent in the midst.\n\nAnd when Jesus had cried with a loud voice, He said: Father, into Thy hands I commend My spirit; and having said thus, He gave up the ghost.\n\nNow when the centurion saw what was done, he glorified God, saying: Certainly this was a righteous Man. And all the people that came together to that sight, beholding the things which were done, smote their breasts, and returned. And all His acquaintance, and the women that followed Him from Galilee, stood afar off, beholding these things."
+      },
+      "stichera": [
+        {
+          "tone": 8,
+          "text": "Today the Master of creation stands before Pilate.\nToday the Creator of all is condemned to the Cross.\nOf His own will the Lamb of God is brought forward.\nHe Who rained down manna upon His people in the wilderness\nis nailed to the Cross.\nHis side is pierced with a lance.\nA sponge of vinegar touches the lips\nof Him Who rained down the waters of the Jordan.\nThe Bridegroom of the Church is struck upon the face.\nThe Son of the Virgin is crowned with thorns.\nWe worship Thy sufferings, O Christ!\nShow us also Thy glorious Resurrection!"
+        },
+        {
+          "tone": 8,
+          "text": "We do not celebrate, O Lord,\nthe nailing of Thy hands and feet,\nwhich Thou didst endure for our sake,\nbut rather do we cry to Thee:\nO Thou Who by Thy sufferings hast granted us life,\nwho with the condemned Thief hast made us worthy of paradise,\nO Lord, glory to Thee!"
+        },
+        {
+          "tone": 8,
+          "text": "Seeing Thee crucified, O Christ,\nall creation trembled.\nThe foundations of the earth were shaken for fear of Thy power.\nThe lights of heaven hid themselves.\nThe veil of the temple was rent in twain.\nThe mountains trembled and the rocks were split.\nAnd the faithful Thief cried out to Thee with us:\n\"Remember us in Thy Kingdom!\""
+        }
+      ],
+      "kontakion": {
+        "tone": 8,
+        "text": "Come, let us all sing the praises of Him Who was crucified for us,\nfor Mary said when she beheld Him upon the Tree:\n\"Though Thou dost endure the Cross,\nThou art my Son and my God.\""
+      }
+    },
+
+    "ninth": {
+      "psalms": [68, 69, 85],
+      "troparion": {
+        "tone": 8,
+        "text": "When the Thief beheld the Author of Life hanging on the Cross,\nhe said: \"If He Who is crucified with us were not God Incarnate,\nthe sun would not have hidden its rays\nnor would the earth have trembled with quaking.\nBut Thou Who dost endure all things,\nremember me, O Lord, in Thy Kingdom!\""
+      },
+      "glory": {
+        "tone": 8,
+        "text": "In the midst of two thieves\nThy Cross was found to be a balance of righteousness:\nthe one was lowered to hell by the weight of his blasphemy,\nwhile the other was lightened of his sins\nunto the knowledge of things divine.\nO Christ God, glory to Thee!"
+      },
+      "theotokion": {
+        "text": "Seeing the Lamb and Shepherd and Savior of the world upon the Cross,\nthe Ewe who bore Him said through her tears:\n\"The world rejoices receiving deliverance,\nbut my heart burns seeing Thy Crucifixion,\nwhich Thou dost endure for the sake of all, my Son and my God.\""
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "refrain": "O Lord my God, in Thee have I put my trust; save me from all them that persecute me, and deliver me.",
+        "verse": "Lest at any time he seize my soul like a lion, while there is none to redeem me nor to save me."
+      },
+      "prophecy": {
+        "book": "Jeremiah",
+        "pericope": "11:18–23; 12:1–5, 9–11, 14–15",
+        "text": "O Lord, make it known to me, and I shall know; then I saw their doings. But I was like an innocent lamb that is brought to the slaughter; and I knew not that they had devised devices against me, saying: Let us destroy the tree with the fruit thereof, and let us cut him off from the land of the living, that his name may be no more remembered.\n\nBut, O Lord of hosts, that judgest righteously, that triest the reins and the heart, let me see Thy vengeance on them; for unto Thee have I revealed my cause. Therefore thus saith the Lord concerning the men of Anathoth, that seek thy life, saying: Prophesy not in the Name of the Lord, that thou die not by our hands. Therefore thus saith the Lord of hosts: Behold, I will punish them; the young men shall die by the sword; their sons and their daughters shall die by famine; and there shall be no remnant of them, for I will bring evil upon the men of Anathoth, even the year of their visitation.\n\nRighteous art Thou, O Lord, when I plead with Thee; yet let me talk with Thee of Thy judgments: Wherefore doth the way of the wicked prosper? Wherefore are all they happy that deal very treacherously? Thou hast planted them, yea, they have taken root; they grow, yea, they bring forth fruit; Thou art near in their mouth, and far from their reins. But Thou, O Lord, knowest me; Thou hast seen me, and tried mine heart toward Thee; pull them out like sheep for the slaughter, and prepare them for the day of slaughter. How long shall the land mourn, and the herbs of every field wither, for the wickedness of them that dwell therein? The beasts are consumed, and the birds; because they said: He shall not see our last end.\n\nIf thou hast run with the footmen, and they have wearied thee, then how canst thou contend with horses? And if in the land of peace, wherein thou trustedst, they wearied thee, then how wilt thou do in the swelling of Jordan?\n\nMine heritage is unto Me as a speckled bird; the birds round about are against her. Come ye, assemble all the beasts of the field; come to devour. Many pastors have destroyed My vineyard; they have trodden My portion under foot; they have made My pleasant portion a desolate wilderness. They have made it desolate, and being desolate it mourneth unto Me.\n\nThus saith the Lord against all Mine evil neighbors, that touch the inheritance which I have caused My people Israel to inherit: Behold, I will pluck them out of their land, and pluck out the house of Judah from among them. And it shall come to pass, after that I have plucked them out I will return, and have compassion on them, and will bring them again, every man to his heritage, and every man to his land."
+      },
+      "epistle": {
+        "book": "Hebrews",
+        "pericope": "10:19–31",
+        "text": "Brethren: Having therefore boldness to enter into the holiest by the blood of Jesus, by a new and living way, which He hath consecrated for us, through the veil, that is to say, His flesh; and having an High Priest over the house of God; let us draw near with a true heart in full assurance of faith, having our hearts sprinkled from an evil conscience, and our bodies washed with pure water.\n\nLet us hold fast the profession of our faith without wavering, for He is faithful that promised; and let us consider one another to provoke unto love and to good works; not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another, and so much the more, as ye see the day approaching.\n\nFor if we sin willfully after that we have received the knowledge of the truth, there remaineth no more sacrifice for sins, but a certain fearful looking for of judgment and fiery indignation, which shall devour the adversaries. He that despised Moses' law died without mercy under two or three witnesses; of how much sorer punishment, suppose ye, shall he be thought worthy, who hath trodden under foot the Son of God, and hath counted the blood of the covenant, wherewith he was sanctified, an unholy thing, and hath done despite unto the Spirit of grace?\n\nFor we know Him that hath said: Vengeance belongeth unto Me, I will recompense, saith the Lord. And again: The Lord shall judge His people. It is a fearful thing to fall into the hands of the living God."
+      },
+      "gospel": {
+        "book": "John",
+        "pericope": "18:28–19:37",
+        "text": "At that time, they led Jesus from Caiaphas unto the hall of judgment; and it was early; and they themselves went not into the judgment hall, lest they should be defiled, but that they might eat the passover. Pilate then went out unto them, and said: What accusation bring ye against this Man? They answered and said unto him: If He were not a malefactor, we would not have delivered Him up unto thee. Then said Pilate unto them: Take ye Him, and judge Him according to your law. The Jews therefore said unto him: It is not lawful for us to put any man to death; that the saying of Jesus might be fulfilled, which He spake, signifying what death He should die.\n\nThen Pilate entered into the judgment hall again, and called Jesus, and said unto Him: Art Thou the King of the Jews? Jesus answered him: Sayest thou this thing of thyself, or did others tell it thee of Me? Pilate answered: Am I a Jew? Thine own nation and the chief priests have delivered Thee unto me; what hast Thou done? Jesus answered: My Kingdom is not of this world; if My Kingdom were of this world, then would My servants fight, that I should not be delivered to the Jews; but now is My Kingdom not from hence. Pilate therefore said unto Him: Art Thou a king then? Jesus answered: Thou sayest that I am a king. To this end was I born, and for this cause came I into the world, that I should bear witness unto the truth. Every one that is of the truth heareth My voice. Pilate saith unto Him: What is truth?\n\nAnd when he had said this, he went out again unto the Jews, and saith unto them: I find in Him no fault at all. But ye have a custom, that I should release unto you one at the passover; will ye therefore that I release unto you the King of the Jews? Then cried they all again, saying: Not this Man, but Barabbas. Now Barabbas was a robber.\n\nThen Pilate therefore took Jesus, and scourged Him. And the soldiers platted a crown of thorns, and put it on His head, and they put on Him a purple robe, and said: Hail, King of the Jews! And they smote Him with their hands.\n\nPilate therefore went forth again, and saith unto them: Behold, I bring Him forth to you, that ye may know that I find no fault in Him. Then came Jesus forth, wearing the crown of thorns, and the purple robe. And Pilate saith unto them: Behold the Man!\n\nWhen the chief priests therefore and officers saw Him, they cried out, saying: Crucify Him, crucify Him! Pilate saith unto them: Take ye Him, and crucify Him, for I find no fault in Him. The Jews answered him: We have a law, and by our law He ought to die, because He made Himself the Son of God.\n\nWhen Pilate therefore heard that saying, he was the more afraid; and went again into the judgment hall, and saith unto Jesus: Whence art Thou? But Jesus gave him no answer. Then saith Pilate unto Him: Speakest Thou not unto me? Knowest Thou not that I have power to crucify Thee, and have power to release Thee? Jesus answered: Thou couldest have no power at all against Me, except it were given thee from above; therefore he that delivered Me unto thee hath the greater sin.\n\nAnd from thenceforth Pilate sought to release Him; but the Jews cried out, saying: If thou let this Man go, thou art not Caesar's friend; whosoever maketh himself a king speaketh against Caesar. When Pilate therefore heard that saying, he brought Jesus forth, and sat down in the judgment seat in a place that is called the Pavement, but in the Hebrew, Gabbatha. And it was the preparation of the passover, and about the sixth hour; and he saith unto the Jews: Behold your King! But they cried out: Away with Him, away with Him, crucify Him! Pilate saith unto them: Shall I crucify your King? The chief priests answered: We have no king but Caesar.\n\nThen delivered he Him therefore unto them to be crucified. And they took Jesus, and led Him away. And He bearing His Cross went forth into a place called the place of a skull, which is called in the Hebrew Golgotha, where they crucified Him, and two other with Him, on either side one, and Jesus in the midst.\n\nAnd Pilate wrote a title, and put it on the Cross. And the writing was: JESUS OF NAZARETH THE KING OF THE JEWS. This title then read many of the Jews, for the place where Jesus was crucified was nigh to the city; and it was written in Hebrew, and Greek, and Latin. Then said the chief priests of the Jews to Pilate: Write not, The King of the Jews; but that He said, I am King of the Jews. Pilate answered: What I have written I have written.\n\nThen the soldiers, when they had crucified Jesus, took His garments, and made four parts, to every soldier a part; and also His coat. Now the coat was without seam, woven from the top throughout. They said therefore among themselves: Let us not rend it, but cast lots for it, whose it shall be; that the scripture might be fulfilled, which saith: They parted My raiment among them, and for My vesture they did cast lots.\n\nNow there stood by the Cross of Jesus His Mother, and His Mother's sister, Mary the wife of Cleophas, and Mary Magdalene. When Jesus therefore saw His Mother, and the disciple standing by, whom He loved, He saith unto His Mother: Woman, behold thy son! Then saith He to the disciple: Behold thy mother! And from that hour that disciple took her unto his own home.\n\nAfter this, Jesus knowing that all things were now accomplished, that the scripture might be fulfilled, saith: I thirst. Now there was set a vessel full of vinegar; and they filled a sponge with vinegar, and put it upon hyssop, and put it to His mouth. When Jesus therefore had received the vinegar, He said: It is finished; and He bowed His head, and gave up the ghost.\n\nThe Jews therefore, because it was the preparation, that the bodies should not remain upon the cross on the sabbath day (for that sabbath day was an high day), besought Pilate that their legs might be broken, and that they might be taken away. Then came the soldiers, and brake the legs of the first, and of the other which was crucified with him. But when they came to Jesus, and saw that He was dead already, they brake not His legs. But one of the soldiers with a spear pierced His side, and forthwith came there out blood and water. And he that saw it bare record, and his record is true; and he knoweth that he saith true, that ye might believe. For these things were done, that the scripture should be fulfilled: A bone of Him shall not be broken. And again another scripture saith: They shall look on Him Whom they pierced."
+      },
+      "stichera": [
+        {
+          "tone": 6,
+          "text": "They stripped Me of My garments\nand put on Me a scarlet robe.\nThey set upon My head a crown of thorns\nand put a reed in My right hand,\nthat I might shatter them like a potter's vessel."
+        },
+        {
+          "tone": 6,
+          "text": "I gave My back to scourging\nand My face I turned not from the shame of spitting.\nI stood before the judgment seat of Pilate\nand endured the Cross for the salvation of the world."
+        },
+        {
+          "tone": 6,
+          "text": "Today He Who hung the earth upon the waters\nis hung upon the Cross.\nHe Who is the King of the angels\nis arrayed in a crown of thorns.\nHe Who wraps the heavens in clouds\nis wrapped in the purple of mockery.\nHe Who in the Jordan set Adam free\nreceives blows upon His face.\nThe Bridegroom of the Church is transfixed with nails.\nThe Son of the Virgin is pierced with a lance.\nWe venerate Thy Passion, O Christ!\nShow us also Thy glorious Resurrection!"
+        }
+      ],
+      "kontakion": {
+        "tone": 8,
+        "text": "Come, let us all sing the praises of Him Who was crucified for us,\nfor Mary said when she beheld Him upon the Tree:\n\"Though Thou dost endure the Cross,\nThou art my Son and my God.\""
+      }
+    }
+  },
+
+  "dismissal": {
+    "text": "May He Who for our salvation endured spitting, and scourging, and buffeting, and the Cross, and death, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen."
+  }
+}

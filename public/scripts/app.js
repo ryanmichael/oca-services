@@ -67,8 +67,14 @@ async function fetchDays(from, to) {
 async function fetchService(date, svcType, pronoun = 'tt') {
   const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
                  : svcType === 'presanctified'     ? '/api/presanctified'
+                 : svcType === 'passionGospels'    ? '/api/passion-gospels'
+                 : svcType === 'bridegroomMatins'  ? '/api/bridegroom-matins'
+                 : svcType === 'lamentations'      ? '/api/lamentations'
+                 : svcType === 'royalHours'       ? '/api/royal-hours'
+                 : svcType === 'vesperalLiturgy'  ? '/api/vesperal-liturgy'
                  : svcType === 'paschalHours'      ? '/api/paschal-hours'
                  : svcType === 'paschaCollection'  ? '/api/pascha-collection'
+                 : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
   const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}`);
   if (!res.ok) {
@@ -100,10 +106,14 @@ function getServiceRows(day) {
   }
 
   if (dow === 'saturday') {
-    rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
-    if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
-    rows.push({ key: 'matins',  name: 'Matins',        available: false });
-    rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
+    if (day.services.vesperalLiturgy) {
+      rows.push({ key: 'vesperalLiturgy', name: 'Vesperal Liturgy of St. Basil', available: true });
+    } else {
+      rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
+      if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
+      rows.push({ key: 'matins',  name: 'Matins',        available: false });
+      rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
+    }
   } else if (dow === 'sunday') {
     if (day.services.greatVespers) {
       rows.push({ key: 'greatVespers', name: 'Great Vespers', available: true });
@@ -113,13 +123,33 @@ function getServiceRows(day) {
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers',  available: day.services.dailyVespers });
   } else {
     // Weekday services
+    if (day.services.burialVespers) {
+      rows.push({ key: 'burialVespers', name: 'Burial Vespers', available: true });
+    }
+    if (day.services.royalHours) {
+      rows.push({ key: 'royalHours', name: 'Royal Hours', available: true });
+    }
+    if (day.services.lamentations) {
+      rows.push({ key: 'lamentations', name: 'The Lamentations', available: true });
+    }
+    if (day.services.vesperalLiturgy) {
+      rows.push({ key: 'vesperalLiturgy', name: 'Vesperal Liturgy of St. Basil', available: true });
+    }
+    if (day.services.bridegroomMatins) {
+      rows.push({ key: 'bridegroomMatins', name: 'Bridegroom Matins', available: true });
+    }
+    if (day.services.passionGospels) {
+      rows.push({ key: 'passionGospels', name: 'Twelve Passion Gospels', available: true });
+    }
     if (day.services.presanctified) {
       rows.push({ key: 'presanctified', name: 'Presanctified Liturgy', available: true });
     }
     if (day.services.paschalHours) {
       rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
     }
-    rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: day.services.dailyVespers });
+    if (day.services.dailyVespers) {
+      rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
+    }
     if (day.services.liturgy) {
       rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: true });
     }
@@ -131,7 +161,7 @@ function getServiceRows(day) {
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
   if (dow === 'saturday' || dow === 'sunday') return true;
-  return services.dailyVespers || services.greatVespers || services.presanctified || services.paschalHours || services.liturgy;
+  return services.dailyVespers || services.greatVespers || services.burialVespers || services.bridegroomMatins || services.royalHours || services.lamentations || services.vesperalLiturgy || services.passionGospels || services.presanctified || services.paschalHours || services.liturgy;
 }
 
 function renderServiceList(daysList) {
@@ -205,6 +235,12 @@ async function _showPanel(rowEl, date, svcType) {
   activeSvcType = svcType;
   if (rowEl) rowEl.classList.add('active');
   const svcLabel = svcType === 'dailyVespers'     ? 'DAILY VESPERS'
+                 : svcType === 'burialVespers'   ? 'BURIAL VESPERS'
+                 : svcType === 'bridegroomMatins' ? 'BRIDEGROOM MATINS'
+                 : svcType === 'lamentations'    ? 'THE LAMENTATIONS'
+                 : svcType === 'royalHours'      ? 'ROYAL HOURS OF GREAT FRIDAY'
+                 : svcType === 'vesperalLiturgy' ? 'VESPERAL LITURGY OF ST. BASIL'
+                 : svcType === 'passionGospels'  ? 'TWELVE PASSION GOSPELS'
                  : svcType === 'liturgy'          ? 'DIVINE LITURGY'
                  : svcType === 'presanctified'    ? 'PRESANCTIFIED LITURGY'
                  : svcType === 'paschalHours'     ? 'PASCHAL HOURS'

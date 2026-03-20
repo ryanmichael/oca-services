@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Paschal Hours — replaces the regular Hours (1st, 3rd, 6th, 9th) from Pascha through the Saturday of Bright Week",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0",
+    "note": "All four Paschal Hours are structurally identical. The only variable is the dismissal (which names the day's saints)."
+  },
+
+  "opening": {
+    "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "paschal-troparion": "Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
+
+  "having-beheld": "Having beheld the Resurrection of Christ, let us worship the holy Lord Jesus, the only sinless One. We venerate Thy Cross, O Christ, and Thy holy Resurrection we hymn and glorify. For Thou art our God, and we know no other than Thee; we call upon Thy name. O come, all ye faithful, let us venerate Christ's holy Resurrection, for behold, through the Cross joy has come to all the world. Ever blessing the Lord, we sing His Resurrection; for by enduring the Cross for us, He destroyed death by death.",
+
+  "hypakoe": {
+    "_note": "Hypakoe of Pascha, Tone 8. Sung at the Paschal Hours and at Paschal Matins.",
+    "tone": 8,
+    "text": "Before the dawn, Mary and the women came and found the stone rolled away from the tomb. They heard the angelic voice: \"Why do you seek among the dead as a man the One Who is everlasting Light? Behold the clothes in the grave! Go and proclaim to the world: The Lord is risen! He has slain death, as He is the Son of God, saving the race of men!\""
+  },
+
+  "kontakion": {
+    "_note": "Kontakion of Pascha, Tone 8.",
+    "tone": 8,
+    "text": "Though Thou didst descend into the grave, O Immortal One, yet didst Thou destroy the power of hades, and didst arise as victor, O Christ God, calling to the myrrh-bearing women: Rejoice! and giving peace to Thine Apostles, O Thou Who dost grant resurrection to the fallen."
+  },
+
+  "ikos": {
+    "_note": "Ikos of Pascha — follows the kontakion.",
+    "text": "The Sun that was before the sun and had once set in the tomb was approached before the dawn by the myrrh-bearing maidens, who sought Him as the day. And one angel cried to another: \"O friends, come, let us honor the myrrh-bearing women's ointment and their wisdom; let us celebrate with them; for Christ is risen, as He is God almighty, granting resurrection to the fallen.\""
+  },
+
+  "troparion-in-the-grave": {
+    "_note": "Also known as the 'Paschal Exaposteilarion'. Tone 8.",
+    "tone": 8,
+    "text": "In the grave bodily, but in hades with Thy soul as God; in Paradise with the thief, and on the throne with the Father and the Spirit, wast Thou Who fillest all things, O Christ the Inexpressible."
+  },
+
+  "troparion-glory": {
+    "_note": "Sung at 'Glory' after 'In the grave bodily'.",
+    "text": "Thou, the Life-giver, O Christ, Who art more beautiful than Paradise and truly more resplendent than any royal chamber, Thy tomb, the source of our resurrection, is shown to be."
+  },
+
+  "troparion-now": {
+    "_note": "Sung at 'Now and ever' after Glory.",
+    "text": "Rejoice, O sanctified, divine abode of the Most High, for through thee, O Theotokos, joy is given to those who cry: Blessed art thou among women, O all-pure Lady."
+  },
+
+  "dismissal": {
+    "_note": "The Paschal dismissal, used throughout Bright Week.",
+    "text": "May He Who rose from the dead, Christ our true God, through the prayers of His most pure Mother; of the holy, glorious, and all-laudable Apostles; and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen.",
+    "finalTroparion": "Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
+    "finalBlessing": "And may the holy Pascha, Christ our God, have mercy on us and save us, for He is good and loveth mankind."
+  }
+}

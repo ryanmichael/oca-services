@@ -20,9 +20,11 @@ const http = require('node:http');
 const fs   = require('fs');
 const path = require('path');
 
-const { assembleVespers, assembleLiturgy, resolveSource } = require('./assembler');
+const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, resolveSource } = require('./assembler');
 const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey,
-        getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed } = require('./calendar-rules');
+        getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed,
+        isPresanctifiedDay,
+        getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -37,6 +39,17 @@ const PORT    = portIdx !== -1 ? parseInt(args[portIdx + 1], 10)
 
 function loadJSON(relPath) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, relPath), 'utf8'));
+}
+
+/** Recursively tag all hymn-like objects in a source tree with a provenance label. */
+function tagProvenance(obj, label) {
+  if (!obj || typeof obj !== 'object') return;
+  if (Array.isArray(obj)) { obj.forEach(item => tagProvenance(item, label)); return; }
+  // Tag objects that look like hymns (have a 'text' property)
+  if (obj.text && typeof obj.text === 'string' && !obj.provenance) obj.provenance = label;
+  // Also tag hymns arrays
+  if (obj.hymns) obj.hymns.forEach(h => { if (h && !h.provenance) h.provenance = label; });
+  for (const v of Object.values(obj)) tagProvenance(v, label);
 }
 
 function loadSources() {
@@ -71,7 +84,10 @@ function loadSources() {
         cur[parts[i]] ??= {};
         cur = cur[parts[i]];
       }
-      cur[parts[parts.length - 1]] = raw.vespers || raw;
+      const sourceData = raw.vespers || raw;
+      // Tag all hymn objects with provenance so dev-mode shows the publisher
+      tagProvenance(sourceData, 'OCA');
+      cur[parts[parts.length - 1]] = sourceData;
     }
   }
 
@@ -756,12 +772,403 @@ async function fetchOrthocalDay(dateStr) {
 }
 
 /**
+ * Build Beatitudes troparia array for the Liturgy Third Antiphon.
+ * On Sundays: 8 troparia from Octoechos Canon of the Resurrection (Odes 3+6).
+ * Each item has { tone, label, source, text }.
+ */
+function buildBeatitudesTroparia(isSunday, tone, srcs) {
+  if (!isSunday) return []; // weekday beatitudes not yet implemented
+
+  const tk = `tone${tone}`;
+  const oct = srcs?.octoechos;
+  const beatData = oct?.[tk]?.sunday?.liturgy?.beatitudes;
+  if (!beatData) return [];
+
+  const troparia = [];
+  const src = 'octoechos';
+
+  // Ode 3: irmos, troparion1, troparion2, theotokion
+  if (beatData.ode3) {
+    const o = beatData.ode3;
+    if (o.irmos)      troparia.push({ tone, label: 'Irmos of Ode 3', source: src, text: o.irmos });
+    if (o.troparia?.[0]) troparia.push({ tone, label: 'Troparion of Ode 3', source: src, text: o.troparia[0] });
+    if (o.troparia?.[1]) troparia.push({ tone, label: 'Troparion of Ode 3', source: src, text: o.troparia[1] });
+    if (o.theotokion) troparia.push({ tone, label: 'Theotokion of Ode 3', source: src, text: o.theotokion });
+  }
+
+  // Ode 6: irmos, troparion1, troparion2, theotokion
+  if (beatData.ode6) {
+    const o = beatData.ode6;
+    if (o.irmos)      troparia.push({ tone, label: 'Irmos of Ode 6', source: src, text: o.irmos });
+    if (o.troparia?.[0]) troparia.push({ tone, label: 'Troparion of Ode 6', source: src, text: o.troparia[0] });
+    if (o.troparia?.[1]) troparia.push({ tone, label: 'Troparion of Ode 6', source: src, text: o.troparia[1] });
+    if (o.theotokion) troparia.push({ tone, label: 'Theotokion of Ode 6', source: src, text: o.theotokion });
+  }
+
+  return troparia;
+}
+
+// ─── Great Feast Variants ─────────────────────────────────────────────────────
+// Each feast of the Lord replaces the typical antiphons, entrance hymn, and
+// megalynarion. Theotokos feasts keep typical antiphons but replace megalynarion.
+// All great feasts have their own communion hymn.
+//
+// Source: Assembly of Canonical Orthodox Bishops, OCA service texts, Festal Menaion.
+
+const GREAT_FEAST_VARIANTS = {
+  // ── Feasts of the Lord (special antiphons) ──────────────────────────────────
+
+  nativity: {
+    type: 'lord',
+    label: 'The Nativity of Christ',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'I will give thanks unto the Lord with my whole heart, in the council of the upright and in the congregation.',
+          'Great are the works of the Lord, sought out according to all His desires.',
+          'His work is praise and majesty, and His righteousness endureth forever.',
+          'He hath made His wonderful works to be remembered; the Lord is gracious and full of compassion.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, born of the Virgin, save us who sing to Thee: Alleluia!',
+        verses: [
+          'Blessed is the man that feareth the Lord; in His commandments shall he greatly delight.',
+          'His seed shall be mighty upon the earth; the generation of the upright shall be blessed.',
+          'Glory and riches shall be in his house, and his righteousness endureth forever.',
+          'Unto the upright there hath risen a light in the darkness; He is gracious, and compassionate, and righteous.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'Thy Nativity, O Christ our God, has shone to the world the light of wisdom! For by it, those who worshipped the stars were taught by a Star to adore Thee, the Sun of Righteousness, and to know Thee, the Orient from on high. O Lord, glory to Thee!',
+        verses: [
+          'The Lord said unto my Lord: Sit Thou at My right hand, until I make Thine enemies Thy footstool.',
+          'The Lord shall send the rod of Thy strength out of Zion: rule Thou in the midst of Thine enemies.',
+          'With Thee is dominion in the day of Thy power, in the splendors of Thy saints.',
+        ],
+      },
+    },
+    entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, born of the Virgin, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable and more glorious than the heavenly hosts! I behold a strange and most glorious mystery: the cave a heaven, the Virgin a cherubic throne, and the manger a noble place in which Christ, the uncontained God, was laid. Let us sing and magnify Him!',
+    communionHymn: 'The Lord has sent redemption to His people. Alleluia.',
+  },
+
+  theophany: {
+    type: 'lord',
+    label: 'The Baptism of Christ (Theophany)',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'When Israel went out of Egypt, the house of Jacob from a people of strange language,',
+          'Judah was His sanctuary, Israel His dominion.',
+          'The sea saw it and fled; Jordan was driven back.',
+          'What ailed thee, O sea, that thou fleddest? O Jordan, that thou wast driven back?',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, baptized in the Jordan, save us who sing to Thee: Alleluia!',
+        verses: [
+          'I love the Lord because He has heard the voice of my supplication.',
+          'Because He inclined His ear to me, therefore I will call on Him as long as I live.',
+          'The snares of death encompassed me; the pangs of Sheol laid hold on me; I suffered distress and anguish, then I called on the Name of the Lord.',
+          'Gracious and righteous is the Lord; and our God is merciful.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'When Thou, O Lord, wast baptized in the Jordan, the worship of the Trinity was made manifest. For the voice of the Father bare witness to Thee, and called Thee His beloved Son; and the Spirit, in the form of a dove, confirmed the truthfulness of His word. O Christ our God, who hast revealed Thyself and hast enlightened the world, glory to Thee!',
+        verses: [
+          'O give thanks unto the Lord, for He is good; for His mercy endureth forever.',
+          'Let the house of Israel now say that He is good, for His mercy endureth forever.',
+          'Let the house of Aaron now say that He is good, for His mercy endureth forever.',
+          'Let all that fear the Lord now say that He is good, for His mercy endureth forever.',
+        ],
+      },
+    },
+    entranceHymn: 'Blessed is He that cometh in the Name of the Lord. God is the Lord and hath revealed Himself to us. O Son of God, baptized in the Jordan, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable than the heavenly hosts! No tongue knows how to praise thee worthily, O Theotokos; even Angels are overcome with awe praising thee. But since thou art good, accept our faith; for thou knowest our love inspired by God! Thou art the defender of Christians, and we magnify thee.',
+    communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia.',
+  },
+
+  // Meeting of the Lord: OCA practice does NOT use festal antiphons for this feast.
+  // Source: OCA service text downloads confirm typical antiphons are used.
+  meeting: {
+    type: 'theotokos',
+    label: 'The Meeting of the Lord (Presentation)',
+    megalynarion: 'O Virgin Theotokos, hope of all Christians, protect, preserve, and save those who hope in thee! In the shadow and letter of the Law, let us the faithful discern a figure: every male child that opens the womb is holy to God. Therefore we magnify the firstborn Word of the Father Who has no beginning, the Son firstborn of a Mother who had not known man.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+  },
+
+  transfiguration: {
+    type: 'lord',
+    label: 'The Transfiguration of Christ',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'Great is the Lord, and greatly to be praised, in the city of our God, in His holy mountain.',
+          'Beautiful in elevation, the joy of the whole earth, is Mount Zion.',
+          'God is known in her palaces as a refuge.',
+          'As we have heard, so have we seen, in the city of the Lord of Hosts.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!',
+        verses: [
+          'His foundation is in the holy mountains. The Lord loveth the gates of Zion more than all the dwellings of Jacob.',
+          'Glorious things are spoken of thee, O City of God.',
+          'The Most High Himself shall establish her.',
+          'I will make mention of Rahab and Babylon among those that know Me.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'Thou wast transfigured on the mount, O Christ God, revealing Thy glory to Thy disciples as far as they could bear it. Let Thine everlasting light also shine upon us sinners, through the prayers of the Theotokos! O Giver of Light, glory to Thee!',
+        verses: [
+          'The heavens are Thine, the earth also is Thine; the world and the fulness thereof, Thou hast founded them.',
+          'Tabor and Hermon shall rejoice in Thy name.',
+          'Blessed are the people who know the joyful sound.',
+        ],
+      },
+    },
+    entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Magnify, O my soul, the Lord Who was transfigured on Mount Tabor! Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos!',
+    communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia.',
+  },
+
+  elevation: {
+    type: 'lord',
+    label: 'The Elevation of the Cross',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'My God, my God, why hast Thou forsaken me? Why art Thou so far from helping me?',
+          'O my God, I cry in the daytime, but Thou hearest not; and in the night season.',
+          'But Thou art holy, O Thou that inhabitest the praises of Israel.',
+          'Our fathers trusted in Thee; they trusted, and Thou didst deliver them.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!',
+        verses: [
+          'O God, why hast Thou cast us off forever? Why doth Thine anger smoke against the sheep of Thy pasture?',
+          'Remember Thy congregation, which Thou hast purchased of old.',
+          'Remember Mount Zion, wherein Thou hast dwelt.',
+          'God is our King of old, working salvation in the midst of the earth.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries, and by virtue of Thy Cross, preserve Thy habitation!',
+        verses: [
+          'O make a joyful noise unto the Lord, all ye lands; serve the Lord with gladness.',
+          'Come before His presence with singing; know ye that the Lord, He is God.',
+          'It is He that hath made us, and not we ourselves; we are His people and the sheep of His pasture.',
+        ],
+      },
+    },
+    entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Magnify, O my soul, the most precious Cross of the Lord! Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee!',
+    communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia.',
+  },
+
+  palmSunday: {
+    type: 'lord',
+    label: 'The Entry of the Lord into Jerusalem',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'I love the Lord, because He hath heard my voice and my supplications.',
+          'Because He hath inclined His ear unto me, therefore will I call upon Him as long as I live.',
+          'The sorrows of death compassed me, and the pains of hell gat hold upon me.',
+          'Gracious is the Lord, and righteous; yea, our God is merciful.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, who sat upon the foal, save us who sing to Thee: Alleluia!',
+        verses: [
+          'I believed, and therefore have I spoken; I was greatly afflicted.',
+          'What shall I render unto the Lord for all His benefits toward me?',
+          'I will receive the cup of salvation and call upon the name of the Lord.',
+          'I will pay my vows unto the Lord in the presence of all His people.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'By raising Lazarus from the dead before Thy Passion, Thou didst confirm the universal resurrection, O Christ God! Like the children with the palms of victory, we cry out to Thee, O Vanquisher of death: Hosanna in the highest! Blessed is He that comes in the name of the Lord!',
+        verses: [
+          'O give thanks unto the Lord, for He is good; for His mercy endureth forever.',
+          'Let the house of Israel now say that He is good, for His mercy endureth forever.',
+          'Let the house of Aaron now say that He is good, for His mercy endureth forever.',
+        ],
+      },
+    },
+    entranceHymn: 'Blessed is He that comes in the name of the Lord! God is the Lord and has revealed Himself to us!',
+    megalynarion: 'God is the Lord and has revealed Himself to us! Celebrate the feast and come with gladness! Let us magnify Christ with palms and branches, singing: Blessed is He that comes in the name of the Lord!',
+    communionHymn: 'Blessed is He that comes in the name of the Lord! God is the Lord and has revealed Himself to us! Alleluia.',
+  },
+
+  ascension: {
+    type: 'lord',
+    label: 'The Ascension of the Lord',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us!',
+        verses: [
+          'Clap your hands, all peoples; shout to God with loud songs of joy!',
+          'For the Lord, the Most High is terrible; a great God over all the earth.',
+          'He subdued peoples under us, and nations under our feet.',
+          'God has gone up with a shout, the Lord with the sound of a trumpet!',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
+        verses: [
+          'Great is the Lord and greatly to be praised in the city of our God.',
+          'Mount Zion in the far north is the city of the great King.',
+          'Within her citadels God is known when He defends her.',
+          'For lo, the kings assembled; they came on together.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'Thou didst ascend in glory, O Christ our God, granting joy to Thy disciples by the promise of the Holy Spirit. Through the blessing they were assured that Thou art the Son of God, the Redeemer of the world.',
+        verses: [
+          'Hear this, all peoples; give ear, all inhabitants of the world.',
+          'Earth-born and the sons of men, rich and poor together.',
+          'My mouth shall speak wisdom, and the meditation of my heart shall be understanding.',
+        ],
+      },
+    },
+    entranceHymn: 'God has gone up with a shout, the Lord with the sound of a trumpet. O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Magnify, O my soul, Christ the Giver of Life, who has ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
+    communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia.',
+  },
+
+  pentecost: {
+    type: 'lord',
+    label: 'The Descent of the Holy Spirit (Pentecost)',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us!',
+        verses: [
+          'The heavens are telling the glory of God, and the firmament proclaims His handiwork.',
+          'Day to day pours forth speech, and night to night declares knowledge.',
+          'Their proclamation has gone out into all the earth, and their words to the ends of the universe.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Gracious Comforter, save us who sing to Thee: Alleluia!',
+        verses: [
+          'The Lord answer thee in the day of trouble! The Name of the God of Jacob protect thee!',
+          'May He send thee help from the sanctuary, and give thee support from Zion.',
+          'May He remember all thine offerings, and fulfill all thy plans.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'Blessed art Thou, O Christ our God, who hast revealed the fishermen as most wise by sending down upon them the Holy Spirit; through them Thou didst draw the world into Thy net. O Lover of Man, glory to Thee!',
+        verses: [
+          'In Thy strength the king rejoices, O Lord, and exults greatly in Thy salvation.',
+          'Thou hast given him his heart\'s desire, and hast not withheld the request of his lips.',
+          'For Thou dost meet him with goodly blessings; Thou dost set a crown of fine gold upon his head.',
+        ],
+      },
+    },
+    entranceHymn: 'Be exalted, O Lord, in Thy strength! We will sing and praise Thy power. O Gracious Comforter, save us who sing to Thee: Alleluia!',
+    megalynarion: 'Rejoice, O Queen, glory of mothers and virgins! For no tongue, be it ever so gifted, hath power to praise thee worthily. Every mind is dizzied in attempting to comprehend thy childbearing. Wherefore, with one accord, we glorify thee!',
+    communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia.',
+  },
+
+  // ── Feasts of the Theotokos (typical antiphons, special megalynarion) ───────
+
+  nativityTheotokos: {
+    type: 'theotokos',
+    label: 'The Nativity of the Theotokos',
+    megalynarion: 'Magnify, O my soul, the most glorious birth of the Mother of God! Virginity is foreign to mothers; childbearing is strange for virgins. But in thee, O Theotokos, both were accomplished. For this all the earthly nations unceasingly magnify thee.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+  },
+
+  entryTheotokos: {
+    type: 'theotokos',
+    label: 'The Entry of the Theotokos into the Temple',
+    megalynarion: 'The angels beheld the entrance of the Pure One and were amazed. How has the Virgin entered into the Holy of Holies? Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Truly, thou art more exalted than all, O pure Virgin!',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+  },
+
+  annunciation: {
+    type: 'theotokos',
+    label: 'The Annunciation',
+    megalynarion: 'O earth, announce good tidings of great joy: O heavens, praise the glory of God! Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Rejoice, O Lady, full of grace, the Lord is with thee!',
+    communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia.',
+  },
+
+  dormition: {
+    type: 'theotokos',
+    label: 'The Dormition of the Theotokos',
+    megalynarion: 'The Angels, as they looked upon the Dormition of the Virgin, were struck with wonder, seeing how the Virgin went up from earth to heaven. The limits of nature are overcome in thee, O Pure Virgin: for birthgiving remains virginal, and life is united to death; a virgin after childbearing and alive after death, thou dost ever save thine inheritance, O Theotokos.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+  },
+
+  // ── Pascha (Feast of Feasts) ────────────────────────────────────────────────
+
+  pascha: {
+    type: 'lord',
+    label: 'The Holy Pascha — Resurrection of Christ',
+    antiphons: {
+      first: {
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        verses: [
+          'Make a joyful noise to God, all the earth! Sing the glory of His name; make His praise glorious!',
+          'Say to God: How awesome are Thy deeds! So great is Thy power that Thine enemies cringe before Thee.',
+          'Let all the earth worship Thee and praise Thee; let it praise Thy name, O Most High!',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      second: {
+        refrain: 'O Son of God, risen from the dead, save us who sing to Thee: Alleluia!',
+        verses: [
+          'God be merciful unto us, and bless us; and cause His face to shine upon us.',
+          'That Thy way may be known upon earth, Thy saving health among all nations.',
+          'Let the people praise Thee, O God; let all the people praise Thee.',
+        ],
+        glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+      },
+      third: {
+        refrain: 'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!',
+        verses: [
+          'Let God arise, let His enemies be scattered; let them also that hate Him flee before Him.',
+          'As smoke is driven away, so drive them away; as wax melteth before the fire.',
+          'So let the wicked perish at the presence of God. But let the righteous be glad.',
+        ],
+      },
+    },
+    entranceHymn: 'In the gathering places bless ye God the Lord, from the wellsprings of Israel! O Son of God, risen from the dead, save us who sing to Thee: Alleluia!',
+    megalynarion: 'The Angel cried to the Lady full of grace: Rejoice, O pure Virgin! Again I say: Rejoice! Thy Son is risen from His three days in the tomb! With Himself He has raised all the dead! Rejoice, all ye people! Shine! Shine! O new Jerusalem! The glory of the Lord has shone on thee! Exult now and be glad, O Zion! Be radiant, O pure Theotokos, in the Resurrection of thy Son!',
+    communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia.',
+  },
+};
+
+/**
  * Builds a liturgy spec object from orthocal.info API data.
  * Used when no hand-authored liturgy key exists for the date.
  *
- * Provides: variant, entrance hymn, epistle, gospel, megalynarion,
- *           communion hymn, dismissal, resurrectional troparion (if in Octoechos).
- * Deferred:  prokeimenon, alleluia, beatitudes troparia, kontakia.
+ * Provides: variant, entrance hymn, epistle (with full text), gospel (with full text),
+ *           megalynarion, communion hymn, dismissal (with day-of-week patron),
+ *           troparia/kontakia from Octoechos + Menaion DB.
+ * Deferred:  (none — all major sections now populated for ordinary Sundays).
  */
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
@@ -773,40 +1180,286 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const isSunday = dow === 'sunday';
   const tk       = `tone${tone}`;
 
-  // Epistle and Gospel from the API readings array
+  // ── Scripture readings from the API ──────────────────────────────────────────
   const readings   = orthocalData.readings || [];
   const epistleR   = readings.find(r => r.source === 'Epistle');
   const gospelR    = readings.find(r => r.source === 'Gospel');
 
-  // Resurrectional troparion from Octoechos (same text used at both Vespers and Liturgy).
-  // Octoechos stores troparion as an object { tone, label, text }.
+  // Extract full passage text from orthocal's passage[] array
+  function extractPassageText(reading) {
+    if (!reading?.passage?.length) return null;
+    return reading.passage.map(v => v.content).join(' ');
+  }
+
+  // ── Troparia & Kontakia ──────────────────────────────────────────────────────
+  // Start with resurrectional troparion (Sundays)
   const troparionRaw  = srcs.octoechos?.[tk]?.saturday?.vespers?.troparion;
   const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
   const troparia = (isSunday && troparionText)
     ? [{ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText }]
     : [];
 
+  // Start with resurrectional kontakion (Sundays)
+  const kontakionRaw = srcs.octoechos?.[tk]?.saturday?.vespers?.kontakion;
+  const kontakia = [];
+  if (isSunday && kontakionRaw) {
+    const kText = typeof kontakionRaw === 'object' ? kontakionRaw.text : kontakionRaw;
+    const kTone = typeof kontakionRaw === 'object' ? (kontakionRaw.tone ?? tone) : tone;
+    if (kText) kontakia.push({ tone: kTone, rubric: `Kontakion of the Resurrection, Tone ${kTone}:`, text: kText });
+  }
+
+  // Inject Menaion troparia/kontakia from DB
+  const ranked = getMenaionRanked(mo, dy);
+  if (ranked?.notable) {
+    for (const comm of ranked.notable) {
+      const trop = comm.troparia.find(t => t.type === 'troparion');
+      if (trop) {
+        troparia.push({ tone: trop.tone, rubric: `Troparion of ${comm.title}, Tone ${trop.tone}:`, text: trop.text });
+      }
+      const kont = comm.troparia.find(t => t.type === 'kontakion');
+      if (kont) {
+        kontakia.push({ tone: kont.tone, rubric: `Kontakion of ${comm.title}, Tone ${kont.tone}:`, text: kont.text });
+      }
+    }
+  }
+
+  // If no kontakia at all, add the default Theotokos kontakion as the final kontakion
+  // (OCA rubric: when no other kontakion is appointed, "O protection of Christians..." is sung)
+  // This is already handled by the dismissal troparia section, so leave kontakia empty if none found.
+
+  // ── Communion Hymn ───────────────────────────────────────────────────────────
+  const COMMUNION_HYMNS = {
+    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia.',
+    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia.',
+    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia.',
+    wednesday: 'O taste and see that the Lord is good. Alleluia.',
+    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia.',
+    friday:    'Salvation is created in the midst of the earth, O God. Alleluia.',
+    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia.',
+  };
+
+  // ── Day-of-week patron for dismissal ─────────────────────────────────────────
+  const DAY_PATRONS = {
+    sunday:    'the holy, glorious, and all-laudable Apostles',
+    monday:    'the honorable, bodiless Powers of Heaven',
+    tuesday:   'the honorable, glorious Prophet, Forerunner, and Baptist John',
+    wednesday: 'the power of the precious and life-giving Cross',
+    thursday:  'the holy, glorious, and all-laudable Apostles; our father among the saints Nicholas the Wonderworker, Archbishop of Myra in Lycia',
+    friday:    'the power of the precious and life-giving Cross',
+    saturday:  'the holy, glorious, and right-victorious Martyrs',
+  };
+
+  // ── Sunday Prokeimena (by Octoechos tone — correct for ordinary-time Sundays) ─
+  // Source: OCA Department of Liturgical Music & Translations service texts
+  const SUNDAY_PROKEIMENA = {
+    1: { refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!',
+         verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
+    2: { refrain: 'The Lord is my strength and my song; He has become my salvation.',
+         verse: 'The Lord has chastened me sorely, but He has not given me over to death.' },
+    3: { refrain: 'Sing praises to our God, sing praises; sing praises to our King, sing praises.',
+         verse: 'Clap your hands, all ye nations; shout unto God with the voice of rejoicing.' },
+    4: { refrain: 'O how magnified are Thy works, O Lord; in wisdom hast Thou made them all.',
+         verse: 'Bless the Lord, O my soul; O Lord my God, Thou art very great.' },
+    5: { refrain: 'Thou, O Lord, shalt protect us and preserve us from this generation forever.',
+         verse: 'Save me, O Lord, for there is no longer any that is godly!' },
+    6: { refrain: 'O Lord, save Thy people, and bless Thine inheritance!',
+         verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
+    7: { refrain: 'The Lord shall give strength to His people. The Lord shall bless His people with peace.',
+         verse: 'Offer to the Lord, O you sons of God! Offer young rams to the Lord!' },
+    8: { refrain: 'Pray and make your vows before the Lord our God.',
+         verse: 'In Judah is God known; His name is great in Israel.' },
+  };
+
+  // ── Sunday Alleluia verses (by Octoechos tone) ────────────────────────────────
+  const SUNDAY_ALLELUIA = {
+    1: ['God gives vengeance unto me, and subdues people under me.',
+        'He magnifies the salvation of the King and deals mercifully with David, His anointed, and his seed forever.'],
+    2: ['May the Lord hear thee in the day of trouble! May the name of the God of Jacob protect thee!',
+        'Save the King, O Lord, and hear us on the day we call!'],
+    3: ['In Thee, O Lord, have I hoped; let me never be put to shame.',
+        'Be Thou a God of protection for me, a house of refuge in order to save me.'],
+    4: ['Go forth, and prosper, and reign, because of truth and meekness and righteousness.',
+        'Thou lovest righteousness and hatest iniquity.'],
+    5: ['I will sing of Thy mercies, O Lord, forever; with my mouth I will proclaim Thy truth from generation to generation.',
+        'For Thou hast said: Mercy will be established forever; Thy truth will be prepared in the heavens.'],
+    6: ['He who dwelleth in the shelter of the Most High will abide in the shadow of the heavenly God.',
+        'He will say to the Lord: My Protector and my Refuge; my God, in Whom I trust.'],
+    7: ['It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High.',
+        'To declare Thy mercy in the morning, and Thy truth by night.'],
+    8: ['Come, let us rejoice in the Lord; let us make a joyful noise to God our Savior.',
+        'Let us come before His face with thanksgiving; let us make a joyful noise unto Him with psalms.'],
+  };
+
+  // ── Weekday Prokeimena (fixed by day-of-week, not tone) ─────────────────────
+  // Source: Ponomar / OCA tradition — daily commemorations
+  const WEEKDAY_PROKEIMENA = {
+    monday:    { tone: 4, refrain: 'Who maketh His angels spirits, His servers a flaming fire.',
+                          verse: 'Bless the Lord, O my soul; O Lord my God, Thou art become very great.' },
+    tuesday:   { tone: 7, refrain: 'The righteous shall rejoice in the Lord, and he shall hope in Him.',
+                          verse: 'Hear my prayer, O God, when I pray unto Thee.' },
+    wednesday: { tone: 3, refrain: 'My soul doth magnify the Lord, and my spirit hath rejoiced in God my Savior.',
+                          verse: 'For He hath looked upon the humility of His servant; for behold from henceforth all generations shall bless me.' },
+    thursday:  { tone: 8, refrain: 'Their sound is gone forth into all the earth; their sayings to the ends.',
+                          verse: 'The heavens declare the glory of God; and the firmament proclaimeth His handiwork.' },
+    friday:    { tone: 7, refrain: 'Exalt ye the Lord our God, and worship at His footstool, for He is holy.',
+                          verse: 'The Lord hath reigned, let the people rage.' },
+    saturday:  { tone: 8, refrain: 'Be glad in the Lord, and rejoice, ye righteous.',
+                          verse: 'Blessed are they whose transgressions are forgiven, and whose sins are covered.' },
+  };
+
+  // ── Weekday Alleluia (fixed by day-of-week) ────────────────────────────────
+  const WEEKDAY_ALLELUIA = {
+    monday:    { tone: 5, verses: ['Praise ye the Lord, all His angels; praise ye Him all His powers.',
+                                   'For He spoke, and they came into being; He commanded and they were created.'] },
+    tuesday:   { tone: 4, verses: ['The righteous shall flourish like the palm tree; like the cedars of Lebanon.',
+                                   'They that are planted in the house of the Lord shall flourish in the courts.'] },
+    wednesday: { tone: 8, verses: ['Hearken, O Daughter, and see, and incline thine ear.',
+                                   'The rich among the people of the earth shall entreat thy countenance.'] },
+    thursday:  { tone: 1, verses: ['The heavens confess Thy wonders, O Lord, Thy truth in the church of the saints.',
+                                   'God, who is glorified in the council of the saints.'] },
+    friday:    { tone: 1, verses: ['Remember Thy congregation, which Thou hast possessed from the beginning.',
+                                   'God is our King before the ages; He hath wrought salvation in the midst.'] },
+    saturday:  { tone: 4, verses: ['The righteous cried, and the Lord heard them, and delivered them out of all tribulations.',
+                                   'Many are the tribulations of the righteous, but out of them all will the Lord deliver them.',
+                                   'Blessed are they whom Thou hast chosen and taken, O Lord; their memory is from generation to generation.'] },
+  };
+
+  // ── Lenten/Special Sunday Prokeimena & Alleluia ─────────────────────────────
+  // During Great Lent the prokeimenon follows the Apostolos (Epistle lectionary),
+  // NOT the weekly Octoechos tone. Each Lenten Sunday has a fixed prokeimenon.
+  // Source: OCA 2026 service texts, verified against Ponomar/Apostolos.
+  const LENTEN_SUNDAY_PROKEIMENA = {
+    meatfare:   { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.',
+                           verse: 'Praise the Lord! For it is good to sing praises to our God!' },
+    cheesefare: { tone: 8, refrain: 'Pray and make your vows before the Lord, our God!',
+                           verse: 'In Judah God is known; His name is great in Israel.' },
+    1: { tone: 4, refrain: 'Blessed art Thou, O Lord God of our fathers, and praised and glorified is Thy Name forever!',
+                  verse: 'For Thou art just in all that Thou hast done for us!' },
+    2: { tone: 5, refrain: 'Thou, O Lord, shalt protect us and preserve us from this generation forever.',
+                  verse: 'Save me, O Lord, for there is no longer any that is godly!' },
+    3: { tone: 6, refrain: 'O Lord, save Thy people, and bless Thine inheritance!',
+                  verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
+    4: { tone: 8, refrain: 'Pray and make your vows before the Lord, our God!',
+                  verse: 'In Judah God is known; His Name is great in Israel.' },
+    5: { tone: 1, refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!',
+                  verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
+  };
+  const LENTEN_SUNDAY_ALLELUIA = {
+    meatfare:   { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!',
+                                    'Let us come before His presence with thanksgiving; let us make a joyful noise to Him with songs of praise.'] },
+    cheesefare: { tone: 6, verses: ['It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High.',
+                                    'To declare Thy mercy in the morning, and Thy truth by night.'] },
+    1: { tone: 4, verses: ['Moses and Aaron were among His priests; Samuel also was among those who called on His Name.',
+                            'They called to the Lord and He answered them.'] },
+    2: { tone: 6, verses: ['He who dwelleth in the shelter of the Most High will abide in the shadow of the heavenly God.',
+                            'He will say to the Lord: "My Protector and my Refuge; my God, in Whom I trust."'] },
+    3: { tone: 8, verses: ['Remember Thy congregation, which Thou hast purchased of old!',
+                            'God is our King before the ages; He has worked salvation in the midst of the earth!'] },
+    4: { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!',
+                            'Let us come before His face with thanksgiving; let us make a joyful noise to Him with songs of praise!'] },
+    5: { tone: 1, verses: ['God gives vengeance unto me, and subdues people under me.',
+                            'He magnifies the salvation of the King and deals mercifully with David, His anointed, and his seed forever.'] },
+  };
+
+  // ── Cherubic Hymn override ───────────────────────────────────────────────────
+  const season = getLiturgicalSeason(date);
+  let cherubicOverride = null;
+  if (season === 'holyWeek' && dow === 'thursday') cherubicOverride = 'great-thursday';
+  if (season === 'holyWeek' && dow === 'saturday') cherubicOverride = 'great-saturday';
+
+  // ── Great Feast detection ──────────────────────────────────────────────────
+  const feastKey = getGreatFeastKey(date);
+  const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
+
+  // ── Build prokeimenon & alleluia ────────────────────────────────────────────
+  let prokeimenon = null;
+  let alleluia = null;
+
+  // Determine Lenten Sunday key (if applicable)
+  let lentenKey = null;
+  if (isSunday && season === 'greatLent') {
+    lentenKey = getWeekOfLent(date);
+  } else if (isSunday && season === 'preLenten') {
+    const pascha = calculatePascha(date.getUTCFullYear());
+    const DAY = 86400000;
+    const cheesefareDate = new Date(pascha.getTime() - 49 * DAY);
+    const meatfareDate   = new Date(pascha.getTime() - 56 * DAY);
+    if (date.getTime() === cheesefareDate.getTime()) lentenKey = 'cheesefare';
+    if (date.getTime() === meatfareDate.getTime())   lentenKey = 'meatfare';
+  }
+
+  if (lentenKey !== null && LENTEN_SUNDAY_PROKEIMENA[lentenKey]) {
+    const lp = LENTEN_SUNDAY_PROKEIMENA[lentenKey];
+    prokeimenon = { tone: lp.tone, refrain: lp.refrain, verse: lp.verse };
+  } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
+    const sp = SUNDAY_PROKEIMENA[tone];
+    prokeimenon = { tone, refrain: sp.refrain, verse: sp.verse };
+  } else if (!isSunday && WEEKDAY_PROKEIMENA[dow]) {
+    const wp = WEEKDAY_PROKEIMENA[dow];
+    prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
+  }
+
+  if (lentenKey !== null && LENTEN_SUNDAY_ALLELUIA[lentenKey]) {
+    const la = LENTEN_SUNDAY_ALLELUIA[lentenKey];
+    alleluia = { tone: la.tone, verses: la.verses };
+  } else if (isSunday && SUNDAY_ALLELUIA[tone]) {
+    alleluia = { tone, verses: SUNDAY_ALLELUIA[tone] };
+  } else if (!isSunday && WEEKDAY_ALLELUIA[dow]) {
+    const wa = WEEKDAY_ALLELUIA[dow];
+    alleluia = { tone: wa.tone, verses: wa.verses };
+  }
+
+  // ── Entrance hymn: feast override → Sunday → weekday ──────────────────────
+  let entranceHymn;
+  if (feast?.entranceHymn) {
+    entranceHymn = { text: feast.entranceHymn };
+  } else if (isSunday) {
+    entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!' };
+  } else {
+    entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!' };
+  }
+
+  // ── Megalynarion: feast → Basil → typical ─────────────────────────────────
+  let megalynarion;
+  if (feast?.megalynarion) {
+    megalynarion = { text: feast.megalynarion };
+  } else if (isBasil) {
+    megalynarion = 'basil-liturgy';
+  } else {
+    megalynarion = null;
+  }
+
+  // ── Communion hymn: feast override → day-of-week ──────────────────────────
+  const communionHymn = feast?.communionHymn
+    ? { text: feast.communionHymn }
+    : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+
+  // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
+  const feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
+
+  // ── Litany for the Departed (Soul Saturdays) ─────────────────────────────
+  const includeDepartedLitany = isSoulSaturday(date);
+
   return {
     variant,
-    beatitudes: { troparia: [] },
-    entranceHymn: {
-      text: isSunday
-        ? 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!'
-        : 'Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!',
-    },
+    feastAntiphons,
+    beatitudes: feastAntiphons ? null : { troparia: buildBeatitudesTroparia(isSunday, tone, srcs) },
+    includeDepartedLitany,
+    entranceHymn,
     troparia,
-    kontakia: [],
+    kontakia,
     trisagion: { substitution: getTrisagionSubstitution(date) },
-    prokeimenon: null,
-    epistle:  epistleR ? { book: epistleR.book, display: epistleR.display } : null,
-    alleluia: null,
-    gospel:   gospelR ? { book: gospelR.book, display: gospelR.display } : null,
-    megalynarion: isBasil ? 'basil-liturgy' : null,
-    communionHymn: isSunday
-      ? { text: 'Praise the Lord from the heavens, praise Him in the highest. Alleluia.' }
-      : null,
+    prokeimenon,
+    epistle:  epistleR ? { book: epistleR.book, display: epistleR.display, text: extractPassageText(epistleR) } : null,
+    alleluia,
+    gospel:   gospelR ? { book: gospelR.book, display: gospelR.display, text: extractPassageText(gospelR) } : null,
+    megalynarion,
+    cherubicOverride,
+    communionHymn,
+    weHaveSeen: season === 'brightWeek' ? 'paschal' : null,
     dismissal: {
       opening: isSunday ? 'sunday' : 'weekday',
+      dayPatron: DAY_PATRONS[dow] || null,
       saints:  (orthocalData.saints || []).slice(0, 3),
     },
   };
@@ -870,19 +1523,20 @@ function transformSectionBlocks(section, blocks) {
     if (b.type === 'now_marker')   { continue; }
     if (b.type !== 'hymn')         { continue; }
 
-    if (b.position === 'glory') { glory = { text: b.text, tone: b.tone, label: b.label }; continue; }
-    if (b.position === 'now')   { now   = { text: b.text, tone: b.tone, label: b.label }; continue; }
+    if (b.position === 'glory') { glory = { text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) }; continue; }
+    if (b.position === 'now')   { now   = { text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) }; continue; }
 
     // lordICall only: skip the opening refrain (appears before any psalm verse)
     if (section === 'lordICall' && !seenVerse) continue;
 
-    hymns.push({ text: b.text, tone: b.tone, label: b.label });
+    hymns.push({ text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) });
   }
 
   return {
     text:  hymns[0]?.text  ?? null,
     tone:  hymns[0]?.tone  ?? null,
     label: hymns[0]?.label ?? null,
+    ...(hymns[0]?.provenance && { provenance: hymns[0].provenance }),
     hymns,
     ...(glory ? { glory } : {}),
     ...(now   ? { now }   : {}),
@@ -913,14 +1567,18 @@ function buildDbSource(date, pronoun) {
 
     const rows = litKey
       ? db.prepare(`
-          SELECT section, block_order, type, tone, label, verse_number, position, text
-          FROM blocks WHERE liturgical_key = ? AND pronoun = ? AND service IN ('vespers', 'other', 'liturgy')
-          ORDER BY section, block_order
+          SELECT b.section, b.block_order, b.type, b.tone, b.label, b.verse_number, b.position, b.text,
+                 sf.filename AS source_filename
+          FROM blocks b LEFT JOIN source_files sf ON b.source_file_id = sf.id
+          WHERE b.liturgical_key = ? AND b.pronoun = ? AND b.service IN ('vespers', 'other', 'liturgy')
+          ORDER BY b.section, b.block_order
         `).all(litKey, pronoun)
       : db.prepare(`
-          SELECT section, block_order, type, tone, label, verse_number, position, text
-          FROM blocks WHERE date = ? AND pronoun = ? AND service IN ('vespers', 'other', 'liturgy')
-          ORDER BY section, block_order
+          SELECT b.section, b.block_order, b.type, b.tone, b.label, b.verse_number, b.position, b.text,
+                 sf.filename AS source_filename
+          FROM blocks b LEFT JOIN source_files sf ON b.source_file_id = sf.id
+          WHERE b.date = ? AND b.pronoun = ? AND b.service IN ('vespers', 'other', 'liturgy')
+          ORDER BY b.section, b.block_order
         `).all(date, pronoun);
 
     if (rows.length === 0) return {};
@@ -1000,6 +1658,8 @@ function assembleForDate(date, pronoun, entryOverride) {
   let menaionOverride = sources.menaion;
   const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
   const isSaturdayInjection = calendarEntry.dayOfWeek === 'saturday';
+  const isGreatVespers      = calendarEntry.vespers?.serviceType === 'greatVespers' ||
+                              calendarEntry.vespers?.serviceType === 'all-night-vigil';
   const isWeekdayInjection  = !isSaturdayInjection;
   // Skip Menaion injection when the service already has complete Triodion content
   // (lordICall slots are DB-sourced, meaning a special observance like Meatfare Saturday)
@@ -1029,13 +1689,15 @@ function assembleForDate(date, pronoun, entryOverride) {
 
       // Determine provenance label for dev-mode display
       const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
-      const menaionProvenance = firstDbSrc && firstDbSrc !== 'oca-menaion'
-        ? `menaion (${firstDbSrc})`
-        : 'menaion';
+      const menaionProvenance = firstDbSrc && firstDbSrc.startsWith('stSergius')
+        ? 'St. Sergius'
+        : 'OCA';
 
+      // Great Feast weekday vespers get 6 stichera (same as Saturday); Daily Vespers gets 3
+      const maxLicStichera = isGreatVespers ? 6 : (isSaturdayInjection ? 6 : 3);
       const licStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'lordICall' && s.order >= 1
-      ).slice(0, isSaturdayInjection ? 6 : 3) ?? [];
+      ).slice(0, maxLicStichera) ?? [];
       const licGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'lordICall' && s.order === 0
       ) ?? null;
@@ -1043,7 +1705,7 @@ function assembleForDate(date, pronoun, entryOverride) {
       if (licStichera.length > 0) {
         const lic = calendarEntry.vespers.lordICall;
 
-        if (isSaturdayInjection) {
+        if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast) {
           // Saturday: split verses between resurrectional (Octoechos) and Menaion
           const menaionCount        = licStichera.length;
           const resurrectionalCount = 6 - menaionCount;
@@ -1063,10 +1725,12 @@ function assembleForDate(date, pronoun, entryOverride) {
             label:  primary.title,
           });
         } else {
-          // Weekday: all stichera from Menaion at verses [4, 3, 2] (no resurrectional)
-          const weekdayVerses = [4, 3, 2].slice(0, licStichera.length);
+          // Weekday or Great Feast: all stichera from Menaion/feast
+          const allVerses = isGreatVespers
+            ? [6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
+            : [4, 3, 2].slice(0, licStichera.length);
           lic.slots = [{
-            verses: weekdayVerses,
+            verses: allVerses,
             count:  licStichera.length,
             source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
@@ -1153,9 +1817,12 @@ function assembleForDate(date, pronoun, entryOverride) {
     }
   }
 
-  const serviceTitle = calendarEntry.vespers?.serviceType === 'dailyVespers'
+  const svcType = calendarEntry.vespers?.serviceType;
+  const serviceTitle = svcType === 'dailyVespers'
     ? 'Daily Vespers'
-    : 'Great Vespers';
+    : svcType === 'all-night-vigil'
+      ? 'All-Night Vigil \u2014 Great Vespers'
+      : 'Great Vespers';
   const tone = calendarEntry.vespers?.lordICall?.tone ?? calendarEntry.liturgicalContext?.tone ?? null;
 
   return { blocks, calendarEntry, serviceTitle, tone };
@@ -1411,7 +2078,14 @@ function buildDashboardData(year) {
     const services = {
       greatVespers: entry?.vespers?.serviceType === 'greatVespers',
       dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
+      allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
       liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
+      presanctified: isPresanctifiedDay(cur),
+      paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
+      paschaCollection: (() => {
+        const p = calculatePascha(cur.getUTCFullYear());
+        return cur.getUTCMonth() === p.getUTCMonth() && cur.getUTCDate() === p.getUTCDate();
+      })(),
     };
 
     // Feast name from Menaion DB
@@ -1465,9 +2139,17 @@ function buildDashboardData(year) {
       if (hasTriodion)   score += weights.triodion;
     }
 
-    // Liturgy content score — 1.0 if hand-authored liturgy data exists, 0 otherwise
-    const hasLiturgyContent = !!entry?.liturgy;
-    const liturgyScore = hasLiturgyContent ? 1.0 : 0;
+    // Liturgy content score — the liturgy is dynamically built from orthocal + Menaion DB,
+    // so any day with liturgy served gets a base score; troparia/kontakia add more.
+    const liturgyServed = services.liturgy;
+    let liturgyScore = 0;
+    if (liturgyServed) {
+      liturgyScore = 0.5;                        // base: fixed texts + orthocal readings
+      if (hasTroparia) liturgyScore += 0.25;     // saint troparia/kontakia from Menaion DB
+      if (dowStr === 'sunday') liturgyScore += 0.25; // resurrectional content from Octoechos
+      else if (hasTroparia) liturgyScore += 0.25; // weekday: troparia are the main variable
+      liturgyScore = Math.min(liturgyScore, 1.0);
+    }
 
     // Primary source
     let primarySource = null;
@@ -1568,6 +2250,42 @@ try {
   console.log('Liturgy fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load liturgy fixed texts:', err.message);
+  process.exit(1);
+}
+
+let presanctifiedFixed;
+try {
+  presanctifiedFixed = loadJSON('fixed-texts/presanctified-fixed.json');
+  console.log('Presanctified fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load presanctified fixed texts:', err.message);
+  process.exit(1);
+}
+
+let paschalHoursFixed;
+try {
+  paschalHoursFixed = loadJSON('fixed-texts/paschal-hours-fixed.json');
+  console.log('Paschal Hours fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Paschal Hours fixed texts:', err.message);
+  process.exit(1);
+}
+
+let midnightOfficeFixed;
+try {
+  midnightOfficeFixed = loadJSON('fixed-texts/midnight-office-fixed.json');
+  console.log('Midnight Office fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Midnight Office fixed texts:', err.message);
+  process.exit(1);
+}
+
+let paschalMatinsFixed;
+try {
+  paschalMatinsFixed = loadJSON('fixed-texts/paschal-matins-fixed.json');
+  console.log('Paschal Matins fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Paschal Matins fixed texts:', err.message);
   process.exit(1);
 }
 
@@ -1679,6 +2397,16 @@ function handleRequest(req, res) {
         }
       }
 
+      // Relabel 'db' source to the actual liturgical book for dev-mode display
+      const dbSourceLabel = season === 'pentecostarion' ? 'pentecostarion'
+        : season === 'brightWeek' ? 'pentecostarion'
+        : (season === 'greatLent' || season === 'holyWeek' || season === 'preLenten') ? 'triodion'
+        : 'db';
+      for (const b of blocks) {
+        if (b.source === 'db') b.source = dbSourceLabel;
+        if (!b.provenance) b.provenance = 'OCA';
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -1709,6 +2437,15 @@ function handleRequest(req, res) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
         return;
+      }
+
+      {
+        const d = new Date(date + 'T12:00:00Z');
+        if (!isLiturgyServed(d)) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'No Divine Liturgy is served on this date.', date }));
+          return;
+        }
       }
 
       (async () => {
@@ -1778,6 +2515,271 @@ function handleRequest(req, res) {
         }
       });
 
+    } else if (pathname === '/api/presanctified') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      {
+        const d = new Date(date + 'T12:00:00Z');
+        if (!isPresanctifiedDay(d)) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({
+            error: 'The Liturgy of the Presanctified Gifts is not served on this date.',
+            date,
+          }));
+          return;
+        }
+      }
+
+      (async () => {
+        let calendarEntry = getCalendarEntry(date);
+        if (!calendarEntry) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'No calendar entry for this date.', date }));
+          return;
+        }
+
+        // Enrich prokeimenon entries with pericopes from orthocal API
+        try {
+          const orthocalData = await fetchOrthocalDay(date);
+          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
+          if (vesperReadings.length > 0 && calendarEntry.vespers?.prokeimenon?.entries) {
+            const entries = calendarEntry.vespers.prokeimenon.entries.map(e => {
+              const match = vesperReadings.find(r =>
+                r.display && e.reading?.book &&
+                r.display.toLowerCase().startsWith(e.reading.book.toLowerCase())
+              );
+              if (match && match.display) {
+                const raw = match.display.replace(/^[A-Za-z ]+/, '').trim();
+                const pericope = raw.replace(/(\d+)\.(\d+)-(\d+)\.(\d+)/, '$1:$2–$3:$4')
+                                    .replace(/(\d+)\.(\d+)/, '$1:$2');
+                return { ...e, reading: { ...e.reading, pericope } };
+              }
+              return e;
+            });
+            calendarEntry = {
+              ...calendarEntry,
+              vespers: {
+                ...calendarEntry.vespers,
+                prokeimenon: { ...calendarEntry.vespers.prokeimenon, entries },
+              },
+            };
+          }
+        } catch (err) {
+          console.warn('Presanctified: orthocal pericope fetch failed (non-fatal):', err.message);
+        }
+
+        // Inject DB-sourced variable texts
+        const dbSource = buildDbSource(date, pronoun);
+        const assemblerSources = { ...sources, db: dbSource };
+
+        let blocks;
+        try {
+          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixed, presanctifiedFixed, assemblerSources);
+        } catch (err) {
+          console.error('assemblePresanctified error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+          return;
+        }
+
+        if (pronoun === 'yy') {
+          for (const block of blocks) {
+            if (block.text)  block.text  = applyYouYour(block.text);
+            if (block.label) block.label = applyYouYour(block.label);
+          }
+        }
+
+        const season = calendarEntry.liturgicalContext?.season || null;
+        const tone   = calendarEntry.liturgicalContext?.tone ?? null;
+        const dow    = calendarEntry.dayOfWeek || null;
+        const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+        const commemorations  = calendarEntry.commemorations || [];
+
+        // Relabel 'db' source
+        for (const b of blocks) {
+          if (b.source === 'db') b.source = 'triodion';
+          if (!b.provenance) b.provenance = 'OCA';
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          date,
+          serviceType:    'presanctified',
+          serviceName:    'Liturgy of the Presanctified Gifts',
+          tone,
+          season,
+          liturgicalLabel,
+          commemorations,
+          blocks,
+        }));
+      })().catch(err => {
+        console.error('Presanctified route error:', err);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Internal server error.' }));
+        }
+      });
+
+    } else if (pathname === '/api/paschal-hours') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      const season = getLiturgicalSeason(d);
+      if (season !== 'brightWeek') {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Paschal Hours are only served during Bright Week (Pascha through Bright Saturday).',
+          date,
+        }));
+        return;
+      }
+
+      let blocks;
+      try {
+        blocks = assemblePaschalHours(paschalHoursFixed);
+      } catch (err) {
+        console.error('assemblePaschalHours error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      const dow = getDayOfWeek(d);
+      const NAMES = {
+        sunday: 'Holy Pascha', monday: 'Bright Monday', tuesday: 'Bright Tuesday',
+        wednesday: 'Bright Wednesday', thursday: 'Bright Thursday',
+        friday: 'Bright Friday', saturday: 'Bright Saturday',
+      };
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'paschal-hours',
+        serviceName:    'The Paschal Hours',
+        season:         'brightWeek',
+        liturgicalLabel: NAMES[dow] || 'Bright Week',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/pascha-collection') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d = new Date(date + 'T12:00:00Z');
+      const pascha = calculatePascha(d.getUTCFullYear());
+      const isPaschaDay = d.getUTCFullYear() === pascha.getUTCFullYear()
+        && d.getUTCMonth() === pascha.getUTCMonth()
+        && d.getUTCDate() === pascha.getUTCDate();
+
+      if (!isPaschaDay) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'The Holy Pascha Collection is only available on Pascha Sunday.',
+          date,
+        }));
+        return;
+      }
+
+      (async () => {
+        try {
+          const allBlocks = [];
+          const serviceTitle = (n, title) => ({
+            id: `pascha-title-${n}`,
+            section: title,
+            type: 'rubric',
+            speaker: null,
+            text: title,
+            label: 'service-title',
+          });
+
+          // ── Part 1: Midnight Office ──
+          allBlocks.push(serviceTitle(1, 'The Midnight Office'));
+          const moBlocks = assembleMidnightOffice(midnightOfficeFixed);
+          allBlocks.push(...moBlocks);
+
+          // ── Part 2: Paschal Matins ──
+          allBlocks.push(serviceTitle(2, 'Paschal Matins'));
+          const matinsBlocks = assemblePaschalMatins(paschalMatinsFixed);
+          allBlocks.push(...matinsBlocks);
+
+          // ── Part 3: Paschal Hours ──
+          allBlocks.push(serviceTitle(3, 'The Paschal Hours'));
+          const hoursBlocks = assemblePaschalHours(paschalHoursFixed);
+          allBlocks.push(...hoursBlocks);
+
+          // ── Part 4: Paschal Liturgy ──
+          allBlocks.push(serviceTitle(4, 'The Paschal Divine Liturgy'));
+          let calendarEntry = getCalendarEntry(date);
+          if (calendarEntry && !calendarEntry.liturgy) {
+            const orthocalData = await fetchOrthocalDay(date);
+            calendarEntry = { ...calendarEntry,
+              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
+          }
+          if (calendarEntry?.liturgy) {
+            const litBlocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+            allBlocks.push(...litBlocks);
+          }
+
+          // Pronoun switching
+          if (pronoun === 'yy') {
+            for (const block of allBlocks) {
+              if (block.text)  block.text  = applyYouYour(block.text);
+              if (block.label) block.label = applyYouYour(block.label);
+            }
+          }
+
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({
+            date,
+            serviceType:     'pascha-collection',
+            serviceName:     'Holy Pascha Collection',
+            season:          'brightWeek',
+            liturgicalLabel: 'The Holy Pascha — Resurrection of Christ',
+            blocks:          allBlocks,
+          }));
+        } catch (err) {
+          console.error('pascha-collection error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+        }
+      })();
+
     } else if (pathname === '/api/days') {
       const q    = parseQuery(url);
       const from = (q.from || '').trim();
@@ -1836,8 +2838,15 @@ function handleRequest(req, res) {
         const services = {
           greatVespers: entry?.vespers?.serviceType === 'greatVespers',
           dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
+          allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
           matins:  false,
           liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
+          presanctified: isPresanctifiedDay(cur),
+          paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
+          paschaCollection: (() => {
+            const p = calculatePascha(cur.getUTCFullYear());
+            return cur.getUTCMonth() === p.getUTCMonth() && cur.getUTCDate() === p.getUTCDate();
+          })(),
         };
 
         result.push({

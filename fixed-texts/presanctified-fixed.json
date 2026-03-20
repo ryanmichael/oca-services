@@ -1,0 +1,107 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts unique to the Liturgy of the Presanctified Gifts",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.1.0"
+  },
+
+  "let-my-prayer-arise": {
+    "_note": "Psalm 140 (141), sung with full prostrations between verses. The signature moment of the Presanctified Liturgy. The refrain is intoned first, then repeated after each verse. Prostrations accompany the refrain.",
+    "refrain": "Let my prayer arise in Thy sight as incense, and let the lifting up of my hands be an evening sacrifice.",
+    "verses": [
+      "O Lord, I call upon Thee, hear me! Hear me, O Lord! O Lord, I call upon Thee, hear me! Receive the voice of my prayer, when I call upon Thee. Hear me, O Lord!",
+      "Set a watch, O Lord, before my mouth, and a protecting door round about my lips.",
+      "Incline not my heart to evil words, to make excuses in sins.",
+      "With men who work iniquity; and I will not communicate with the choicest of them.",
+      "The just man shall correct me in mercy, and shall reprove me; but let not the oil of the sinner anoint my head."
+    ],
+    "halfRefrain": "Let my prayer arise in Thy sight as incense."
+  },
+
+  "now-the-powers": {
+    "_note": "Sung in place of the Cherubic Hymn at the Great Entrance of the Presanctified Gifts. The first half is sung before the entrance, the second half after.",
+    "firstHalf": "Now the powers of heaven do serve invisibly with us; for behold, the King of Glory enters.",
+    "secondHalf": "Behold, the mystical sacrifice, all accomplished, is ushered in.",
+    "conclusion": "Let us with faith and love draw near, that we may be partakers of everlasting life. Alleluia, alleluia, alleluia."
+  },
+
+  "prayer-of-st-ephrem": {
+    "_note": "The Prayer of St. Ephrem the Syrian — said with prostrations during Great Lent. At the Presanctified it is said after 'Let my prayer arise.'",
+    "text": "O Lord and Master of my life, give me not the spirit of sloth, despair, lust of power, and idle talk.\n\nBut give rather the spirit of chastity, humility, patience, and love to Thy servant.\n\nYea, O Lord and King, grant me to see my own transgressions, and not to judge my brother, for blessed art Thou unto ages of ages. Amen.",
+    "rubric": "Prostration after each of the three petitions."
+  },
+
+  "communion-hymn": {
+    "text": "O taste and see that the Lord is good. Alleluia, alleluia, alleluia."
+  },
+
+  "pre-communion-prayer": {
+    "_note": "The prayer said by all before receiving Holy Communion at the Presanctified Liturgy. Same as at the full Liturgy.",
+    "text": "I believe, O Lord, and I confess, that Thou art truly the Christ, the Son of the living God, Who camest into the world to save sinners, of whom I am first. I believe also that this is truly Thine own most pure Body, and that this is truly Thine own precious Blood. Wherefore, I pray Thee: have mercy upon me, and forgive my transgressions, both voluntary and involuntary, of word and of deed, committed in knowledge or in ignorance. And make me worthy to partake without condemnation of Thy most pure Mysteries, for the remission of my sins, and unto life everlasting.\n\nOf Thy mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of Thy mystery to Thine enemies; neither will I give Thee a kiss as did Judas; but like the thief will I confess Thee: Remember me, O Lord, in Thy Kingdom.\n\nMay the communion of Thy holy Mysteries be neither to my judgment nor to my condemnation, O Lord, but to the healing of soul and body."
+  },
+
+  "post-communion": {
+    "priest": "Save, O God, Thy people, and bless Thine inheritance.",
+    "people": "We have seen the true Light! We have received the heavenly Spirit! We have found the true Faith! Worshiping the undivided Trinity, Who hath saved us."
+  },
+
+  "prayer-ambon": "O Master Almighty, Who hast created all things in wisdom: Who through Thine inexpressible providence and great goodness hast brought us to these most holy days for the cleansing of soul and body, for the control of the passions, and in the hope of the resurrection: Who during forty days didst place in the hands of Thy servant Moses the tablets of the law in characters divinely written: enable us also, O Good One, to fight the good fight, to finish the course of the fast, to keep the faith inviolate, to crush underfoot the heads of unseen serpents, to be accounted victors over sin and to arrive without condemnation at the holy Resurrection. For blessed and glorified is Thine all-honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+
+  "litany-presanctified": {
+    "_note": "The litany of supplication specific to the Presanctified, sung after the Great Entrance.",
+    "opening": "Let us complete our evening prayer unto the Lord.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "For the precious, presanctified, holy and most-pure Gifts here set forth, let us pray to the Lord.",
+      "That our God, Who loveth mankind, receiving them upon His holy, heavenly, and ideal altar as a sweet spiritual fragrance, will send down upon us in return His divine grace and the gift of the Holy Spirit, let us pray to the Lord.",
+      "For our deliverance from all affliction, wrath, danger, and necessity, let us pray to the Lord.",
+      "Help us, save us, have mercy on us, and keep us, O God, by Thy grace."
+    ],
+    "petitions2": [
+      "That the whole evening may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+      "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+      "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+      "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+      "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+      "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+    ],
+    "petitions2Response": "Grant this, O Lord.",
+    "commemoration": "Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "And make us worthy, O Master, that with boldness and without condemnation, we may dare to call on Thee, the heavenly God, as Father, and to say:"
+  },
+
+  "elevation": {
+    "deacon": "Let us attend.",
+    "priest": "The presanctified Holy Things for the holy!",
+    "people": "One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen."
+  },
+
+  "litany-thanksgiving": {
+    "deacon": "Arise! Having partaken of the divine, holy, most-pure, immortal, heavenly, and life-creating, awesome Mysteries of Christ, let us worthily give thanks unto the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "petitions": [
+      "That the whole evening may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+      "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+      "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+      "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+      "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+      "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+    ],
+    "petitionResponse": "Grant this, O Lord.",
+    "commemoration": "Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamation": "For Thou art our sanctification, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "prayer": "O God of unspeakable and invisible mysteries, with Whom are hidden the treasures of wisdom and knowledge: Who hast revealed to us the service of this liturgy and through Thy great love for mankind hast appointed us, sinners and Thine unworthy servants, to offer unto Thee gifts and sacrifices for our own sins and for the ignorances of the people: Do Thou Thyself, O invisible King, Who doest great and inscrutable things, glorious and wonderful, which are without number, look upon us, Thy unworthy servants, who stand before this holy table, as before the cherubic throne, upon which resteth Thine Only-begotten Son and our God through the fearful Mysteries here set forth; and having freed us all and Thy faithful people from uncleanness, sanctify all our souls and bodies with a sanctification which cannot be taken away; that with a pure conscience, with faces unashamed, with hearts illumined, partaking of these divine sanctified things and being made alive by them, we may be united to Thy Christ Himself, our true God, Who hath said: He that eateth My Flesh and drinketh My Blood dwelleth in Me and I in him; so that through Thy Word, O Lord, dwelling in us and sojourning among us, we may become the temple of Thy most holy and adorable Spirit, redeemed from every wile of the devil, wrought by deed, word, or thought; and may obtain the good things promised to us, with all Thy saints who have been well-pleasing unto Thee since the world began."
+  },
+
+  "dismissal": {
+    "exclamation": "May Christ, our true God, through the prayers of His most pure Mother; by the power of the precious and life-giving Cross; by the protection of the honorable Bodiless Powers of Heaven; at the supplication of the honorable, glorious Prophet, Forerunner, and Baptist John; of the holy, glorious, and all-laudable Apostles; of our fathers among the saints, great hierarchs and teachers of the world: Basil the Great, Gregory the Theologian, and John Chrysostom; of our father among the saints, Gregory the Dialogist, Bishop of Rome; and of all the saints: have mercy on us, and save us, for He is good and loveth mankind.",
+    "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+    "response": "Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.",
+    "finalBlessing": "The blessing of the Lord be upon you, through His grace and love for mankind, always, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  }
+}

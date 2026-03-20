@@ -34,6 +34,12 @@ header {
   display: flex; align-items: center; gap: 12px;
   padding: 0 32px;
 }
+.header-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--text);
+  transition: opacity .15s;
+}
+.header-logo:hover { opacity: .7; }
 .header-cross { color: var(--rubric); font-size: 18px; }
 .header-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
 .header-back {
@@ -351,6 +357,115 @@ header {
 .source-table tr:last-child td { border-bottom: none; }
 .source-pct { font-weight: 500; }
 
+/* ── PREVIEW LINK ── */
+.detail-preview-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--rubric); cursor: pointer;
+  border: 1px solid var(--rubric);
+  padding: 5px 14px;
+  background: none;
+  transition: background .15s, color .15s;
+}
+.detail-preview-link:hover {
+  background: var(--rubric); color: var(--surface);
+}
+
+/* ── PREVIEW OVERLAY ── */
+.preview-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 2000;
+  background: rgba(26, 18, 9, .45);
+}
+.preview-overlay.visible { display: flex; }
+
+.preview-panel {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: min(800px, 90vw);
+  background: var(--surface);
+  box-shadow: -4px 0 24px rgba(0,0,0,.25);
+  display: flex; flex-direction: column;
+  animation: slideIn .25s ease-out;
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.preview-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.preview-title {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+  color: var(--rubric); text-transform: uppercase;
+}
+.preview-devmode {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em;
+  color: var(--muted); cursor: pointer; margin-left: auto;
+}
+.preview-devmode input { accent-color: var(--rubric); }
+.preview-close {
+  background: none; border: none; cursor: pointer;
+  font-family: 'EB Garamond', serif; font-size: 20px;
+  color: var(--muted); padding: 0 4px;
+  transition: color .12s;
+}
+.preview-close:hover { color: var(--rubric); }
+
+.preview-body {
+  flex: 1; overflow-y: auto; padding: 24px 22px 48px;
+}
+.preview-loading {
+  font-family: 'EB Garamond', serif; font-size: 15px;
+  color: var(--muted); text-align: center; padding-top: 40px;
+}
+
+/* Service text styles (same as homepage) */
+.preview-body .svc-sec { margin-bottom: 28px; }
+.preview-body .svc-head {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em;
+  text-align: center; color: var(--text); margin-bottom: 12px;
+}
+.preview-body .svc-rule { height: 1px; background: var(--gold); margin: 20px 0; }
+.preview-body .rubric {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+  color: var(--rubric); margin-bottom: 8px; line-height: 1.6;
+}
+.preview-body .prayer {
+  font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88;
+  color: var(--text); margin-bottom: 14px;
+}
+.preview-body .stich-label {
+  font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+  color: var(--muted); margin-bottom: 6px;
+}
+.preview-body .verse {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+  color: var(--muted); margin-bottom: 10px; line-height: 1.6;
+}
+.preview-body .spk {
+  display: block;
+  font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
+  font-style: normal; color: var(--rubric);
+}
+
+/* Dev-mode source tags — same as homepage */
+.preview-body .src-tag {
+  display: none;
+  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: .08em;
+  color: var(--muted); opacity: .7;
+  text-transform: uppercase; margin-left: 8px; font-weight: 400;
+}
+.preview-panel.dev-mode .src-tag { display: inline; }
+
 /* ── LOADING ── */
 .loading {
   text-align: center; padding: 80px 0;
@@ -375,8 +490,10 @@ header {
 <body>
 
 <header>
-  <span class="header-cross">☩</span>
-  <span class="header-title">CONTENT COVERAGE</span>
+  <a href="/" class="header-logo">
+    <span class="header-cross">☩</span>
+    <span class="header-title">ORTHODOX DAILY SERVICES</span>
+  </a>
   <a href="/" class="header-back">Back to Services</a>
 </header>
 
@@ -459,6 +576,7 @@ header {
         <div class="detail-body-wrap">
           <div class="detail-meta" id="detail-meta"></div>
           <div class="detail-layers" id="detail-layers"></div>
+          <button class="detail-preview-link" id="detail-preview-btn" style="display:none">Preview Service</button>
         </div>
       </div>
     </div>
@@ -494,6 +612,22 @@ header {
 </div>
 
 <div class="loading" id="loading">Loading coverage data&hellip;</div>
+
+<!-- Preview overlay panel -->
+<div class="preview-overlay" id="preview-overlay">
+  <div class="preview-panel dev-mode" id="preview-panel">
+    <div class="preview-header">
+      <div class="preview-title" id="preview-title">Service Preview</div>
+      <label class="preview-devmode">
+        <input type="checkbox" id="preview-devmode-cb" checked> Dev Mode
+      </label>
+      <button class="preview-close" id="preview-close">&#10005;</button>
+    </div>
+    <div class="preview-body" id="preview-body">
+      <div class="preview-loading">Select a date to preview.</div>
+    </div>
+  </div>
+</div>
 
 <script>
 (function() {
@@ -801,6 +935,7 @@ function showDetail(dateStr, dayData) {
   if (!dayData || !dayData.hasService) {
     meta.innerHTML = '<div class="detail-meta-item">No service available for this date.</div>';
     $('detail-layers').innerHTML = '';
+    $('detail-preview-btn').style.display = 'none';
     detailPanel.classList.add('visible');
     return;
   }
@@ -849,6 +984,7 @@ function showDetail(dateStr, dayData) {
     layers.appendChild(row);
   }
 
+  $('detail-preview-btn').style.display = '';
   detailPanel.classList.add('visible');
 }
 
@@ -857,6 +993,130 @@ $('detail-close').addEventListener('click', () => {
   document.querySelectorAll('.heatmap-cell.selected').forEach(c => c.classList.remove('selected'));
   selectedDate = null;
 });
+
+// ── Preview panel ──
+const previewOverlay = $('preview-overlay');
+const previewPanel   = $('preview-panel');
+const previewBody    = $('preview-body');
+const previewBtn     = $('detail-preview-btn');
+const previewDevCb   = $('preview-devmode-cb');
+
+previewBtn.addEventListener('click', () => {
+  if (!selectedDate) return;
+  openPreview(selectedDate);
+});
+
+async function openPreview(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  $('preview-title').textContent =
+    `${DAYS_FULL[d.getDay()]}, ${MONTHS_FULL[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  previewBody.innerHTML = '<div class="preview-loading">Loading service\u2026</div>';
+  previewOverlay.classList.add('visible');
+
+  try {
+    const res = await fetch(`/api/service?date=${dateStr}&pronoun=tt`);
+    if (!res.ok) {
+      previewBody.innerHTML = `<div class="preview-loading">No service available (${res.status}).</div>`;
+      return;
+    }
+    const data = await res.json();
+    const blocks = data.blocks || data;
+    previewBody.innerHTML = renderServiceBlocks(blocks);
+  } catch (err) {
+    previewBody.innerHTML = `<div class="preview-loading">Error: ${err.message}</div>`;
+  }
+}
+
+// Dev-mode toggle
+previewDevCb.addEventListener('change', () => {
+  previewPanel.classList.toggle('dev-mode', previewDevCb.checked);
+});
+
+$('preview-close').addEventListener('click', closePreview);
+previewOverlay.addEventListener('click', (e) => {
+  if (e.target === previewOverlay) closePreview();
+});
+
+function closePreview() {
+  previewOverlay.classList.remove('visible');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && previewOverlay.classList.contains('visible')) {
+    closePreview();
+  }
+});
+
+// ── Inline service renderer (matches homepage renderBlocks) ──
+function escHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    .replace(/\n/g, '<br>');
+}
+
+function renderServiceBlocks(blocks) {
+  if (!blocks || blocks.length === 0) {
+    return '<div class="preview-loading">No content available.</div>';
+  }
+
+  const sections = [];
+  let curSection = null;
+  for (const b of blocks) {
+    if (b.section !== curSection) {
+      sections.push({ name: b.section, blocks: [] });
+      curSection = b.section;
+    }
+    sections[sections.length - 1].blocks.push(b);
+  }
+
+  let html = '';
+  for (let i = 0; i < sections.length; i++) {
+    const { name, blocks: sblocks } = sections[i];
+    if (i > 0) html += '<div class="svc-rule"></div>';
+
+    const sources = [...new Set(sblocks.map(b => {
+      if (b.source && b.provenance) return `${b.source} (${b.provenance})`;
+      return b.provenance || b.source;
+    }).filter(Boolean))];
+    const srcTag = sources.length
+      ? `<span class="src-tag">${sources.map(escHtml).join(' \u00b7 ')}</span>`
+      : '';
+
+    html += '<div class="svc-sec">';
+    if (name) html += `<div class="svc-head">${escHtml(name.toUpperCase())}${srcTag}</div>`;
+
+    for (const b of sblocks) {
+      const spk = b.speaker
+        ? `<b class="spk">${escHtml(b.speaker.charAt(0).toUpperCase() + b.speaker.slice(1))}</b> `
+        : '';
+
+      switch (b.type) {
+        case 'rubric':
+          html += `<div class="rubric">${spk}${escHtml(b.text)}</div>`;
+          break;
+        case 'verse':
+          html += `<div class="verse">${escHtml(b.text)}</div>`;
+          break;
+        case 'doxology':
+          html += `<div class="prayer" style="font-style:italic;color:var(--muted)">${escHtml(b.text)}</div>`;
+          break;
+        case 'hymn': {
+          if (b.label) {
+            const tone = b.tone ? ` \u2014 Tone ${b.tone}` : '';
+            html += `<div class="stich-label">${escHtml(b.label)}${tone}</div>`;
+          }
+          html += `<div class="prayer">${spk}${escHtml(b.text)}</div>`;
+          break;
+        }
+        default:
+          html += `<div class="prayer">${spk}${escHtml(b.text)}</div>`;
+      }
+    }
+    html += '</div>';
+  }
+  return html;
+}
 
 // ── Season breakdown ──
 function renderSeasonBars() {

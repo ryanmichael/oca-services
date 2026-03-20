@@ -51,7 +51,8 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   _warnings = [];
   const blocks = [];
   const vespers = calendarDay.vespers;
-  const isGreatVespers = vespers.serviceType === 'greatVespers';
+  const isVigil = vespers.serviceType === 'all-night-vigil';
+  const isGreatVespers = isVigil || vespers.serviceType === 'greatVespers';
 
   // ── 1. Opening ──────────────────────────────────────────────────────────────
   blocks.push(...assembleOpening(fixedTexts, isGreatVespers));
@@ -98,6 +99,11 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 11. Evening Litany ──────────────────────────────────────────────────────
   blocks.push(...assembleEveningLitany(fixedTexts));
 
+  // ── 11b. Litya (All-Night Vigil only) ────────────────────────────────────
+  if (isVigil) {
+    blocks.push(...assembleLitya(vespers.litya, fixedTexts, sources));
+  }
+
   // ── 12. Aposticha ───────────────────────────────────────────────────────────
   blocks.push(...assembleAposticha(vespers.aposticha, calendarDay, fixedTexts, sources));
 
@@ -110,6 +116,11 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 15. Augmented Litany (Daily Vespers — after troparia) ───────────────────
   if (!isGreatVespers) {
     blocks.push(...assembleAugmentedLitany(fixedTexts));
+  }
+
+  // ── 15b. Blessing of Bread (All-Night Vigil only) ────────────────────────
+  if (isVigil) {
+    blocks.push(...assembleBlessingOfBread(fixedTexts));
   }
 
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
@@ -324,7 +335,7 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
       const { hymn, slot } = verseMap[verse.number];
       blocks.push(makeBlock(
         `lic-hymn-v${verse.number}`, section, 'hymn', 'choir', hymn.text,
-        { tone: slot.tone, source: slot.source, label: slot.label, ...(slot.provenance && { provenance: slot.provenance }) }
+        { tone: slot.tone, source: slot.source, label: slot.label, provenance: slot.provenance || hymn.provenance }
       ));
     }
   }
@@ -344,7 +355,7 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
         fixedTexts.doxology.gloryOnly));
     }
     blocks.push(makeBlock('lic-glory-hymn', section, 'hymn', 'choir', glorySource.text,
-      { tone: glorySpec.tone, source: glorySpec.source, label: glorySpec.label, ...(glorySpec.provenance && { provenance: glorySpec.provenance }) }
+      { tone: glorySpec.tone, source: glorySpec.source, label: glorySpec.label, provenance: glorySpec.provenance || glorySource.provenance }
     ));
   }
 
@@ -362,7 +373,7 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     blocks.push(makeBlock('lic-now-label', section, 'doxology', null, nowLabel));
     if (nowSource) {
       blocks.push(makeBlock('lic-now-hymn', section, 'hymn', 'choir', nowSource.text,
-        { tone: lordICallSpec.now.tone, source: lordICallSpec.now.source, label: lordICallSpec.now.label, ...(lordICallSpec.now.provenance && { provenance: lordICallSpec.now.provenance }) }
+        { tone: lordICallSpec.now.tone, source: lordICallSpec.now.source, label: lordICallSpec.now.label, provenance: lordICallSpec.now.provenance || nowSource.provenance }
       ));
     }
   }
@@ -588,7 +599,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       }
       if (idiomelon) {
         blocks.push(makeBlock(`apost-repeat-${i}`, section, 'hymn', 'choir',
-          idiomelon.text, { tone: idiomelon.tone, source: idiomelon.source, ...(idiomelon.provenance && { provenance: idiomelon.provenance }) }));
+          idiomelon.text, { tone: idiomelon.tone, source: idiomelon.source, provenance: idiomelon.provenance }));
       }
       continue;
     }
@@ -596,11 +607,12 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     const sourceObj = resolveSource(slot.source, slot.key, sources);
     if (!sourceObj) continue;
 
+    const prov = slot.provenance || sourceObj.provenance;
     if (slot.position === 1) {
       // First sticheron — no preceding verse, just the hymn
       blocks.push(makeBlock(`apost-idiomelon`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, ...(slot.provenance && { provenance: slot.provenance }) }));
-      idiomelon = { text: sourceObj.text, tone: slot.tone, source: slot.source, provenance: slot.provenance };
+        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, provenance: prov }));
+      idiomelon = { text: sourceObj.text, tone: slot.tone, source: slot.source, provenance: prov };
     } else {
       // Subsequent stichera — verse then hymn
       const verseIndex = slot.position - 2;
@@ -609,7 +621,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
           `V. ${verseTexts[verseIndex]}`));
       }
       blocks.push(makeBlock(`apost-hymn-${i}`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, ...(slot.provenance && { provenance: slot.provenance }) }));
+        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, provenance: prov }));
     }
   }
 
@@ -625,7 +637,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
     if (glorySource) {
       blocks.push(makeBlock('apost-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: apostichaSpec.glory.tone, source: apostichaSpec.glory.source, label: apostichaSpec.glory.label, ...(apostichaSpec.glory.provenance && { provenance: apostichaSpec.glory.provenance }) }));
+        glorySource.text, { tone: apostichaSpec.glory.tone, source: apostichaSpec.glory.source, label: apostichaSpec.glory.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
     }
   }
 
@@ -635,7 +647,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       fixedTexts.doxology.nowOnly));
     if (nowSource) {
       blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: apostichaSpec.now.tone, source: apostichaSpec.now.source, label: apostichaSpec.now.label, ...(apostichaSpec.now.provenance && { provenance: apostichaSpec.now.provenance }) }));
+        nowSource.text, { tone: apostichaSpec.now.tone, source: apostichaSpec.now.source, label: apostichaSpec.now.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
     }
   }
 
@@ -674,9 +686,109 @@ function assembleTroparia(tropariaSpec, sources) {
     blocks.push(makeBlock(
       `troparion-${slot.position || slot.order || 1}`,
       section, 'hymn', 'choir', sourceObj.text,
-      { tone: slot.tone, source: slot.source || tropariaSpec.source, label: sourceObj.label, ...(slot.provenance && { provenance: slot.provenance }) }
+      { tone: slot.tone, source: slot.source || tropariaSpec.source, label: sourceObj.label, provenance: slot.provenance || sourceObj.provenance }
     ));
   }
+  return blocks;
+}
+
+function assembleLitya(lityaSpec, fixedTexts, sources) {
+  const section = 'The Litya';
+  const blocks = [];
+
+  // Variable stichera (from Menaion/Triodion/Pentecostarion when available)
+  if (lityaSpec && lityaSpec.slots && lityaSpec.slots.length > 0) {
+    for (const slot of lityaSpec.slots) {
+      const sourceTexts = resolveSource(slot.source, slot.key, sources);
+      if (!sourceTexts) continue;
+      const hymns = sourceTexts.hymns || (sourceTexts.text ? [sourceTexts] : []);
+      hymns.forEach((hymn, i) => {
+        blocks.push(makeBlock(
+          `litya-hymn-${i}`, section, 'hymn', 'choir', hymn.text,
+          { tone: slot.tone, source: slot.source, label: slot.label }
+        ));
+      });
+    }
+  }
+
+  // Glory doxastichon
+  if (lityaSpec && lityaSpec.glory) {
+    const glorySource = resolveSource(lityaSpec.glory.source, lityaSpec.glory.key, sources);
+    if (glorySource) {
+      blocks.push(makeBlock('litya-glory-label', section, 'doxology', null,
+        fixedTexts.doxology.gloryOnly));
+      blocks.push(makeBlock('litya-glory-hymn', section, 'hymn', 'choir',
+        glorySource.text, { tone: lityaSpec.glory.tone, source: lityaSpec.glory.source }));
+    }
+  }
+
+  // Now theotokion
+  if (lityaSpec && lityaSpec.now) {
+    const nowSource = resolveSource(lityaSpec.now.source, lityaSpec.now.key, sources);
+    if (nowSource) {
+      blocks.push(makeBlock('litya-now-label', section, 'doxology', null,
+        fixedTexts.doxology.nowOnly));
+      blocks.push(makeBlock('litya-now-hymn', section, 'hymn', 'choir',
+        nowSource.text, { tone: lityaSpec.now.tone, source: lityaSpec.now.source }));
+    }
+  }
+
+  // Litya litany (fixed text)
+  const lit = fixedTexts.litanies.litya;
+  if (lit) {
+    blocks.push(makeBlock('litya-lit-opening', section, 'prayer', 'deacon', lit.opening));
+    lit.petitions.forEach((p, i) => {
+      blocks.push(makeBlock(`litya-lit-petition-${i}`, section, 'prayer', 'deacon', p));
+      blocks.push(makeBlock(`litya-lit-response-${i}`, section, 'response', 'choir', lit.tripleResponse));
+    });
+    blocks.push(makeBlock('litya-lit-forty', section, 'response', 'choir', lit.fortyResponse));
+    blocks.push(makeBlock('litya-lit-final', section, 'prayer', 'deacon', lit.finalPetition));
+    blocks.push(makeBlock('litya-lit-exclamation', section, 'prayer', 'priest', lit.exclamation));
+    blocks.push(makeBlock('litya-lit-amen', section, 'response', 'choir', 'Amen.'));
+    blocks.push(makeBlock('litya-lit-peace', section, 'prayer', 'priest', lit.peace));
+    blocks.push(makeBlock('litya-lit-peace-r', section, 'response', 'choir',
+      fixedTexts.responses.andToThySpirit));
+    blocks.push(makeBlock('litya-lit-bow', section, 'prayer', 'deacon', lit.bowHeadsIntro));
+    blocks.push(makeBlock('litya-lit-bow-r', section, 'response', 'choir',
+      fixedTexts.responses.bowHeads));
+    blocks.push(makeBlock('litya-lit-bow-prayer', section, 'prayer', 'priest', lit.bowHeadsPrayer));
+    blocks.push(makeBlock('litya-lit-bow-amen', section, 'response', 'choir', 'Amen.'));
+  }
+
+  return blocks;
+}
+
+function assembleBlessingOfBread(fixedTexts) {
+  const section = 'Blessing of Bread';
+  const blocks = [];
+
+  // Troparion "Rejoice, O Virgin Theotokos" — sung thrice
+  const troparion = fixedTexts.prayers.blessingTroparion;
+  if (troparion) {
+    blocks.push(makeBlock('bob-troparion-rubric', section, 'rubric', null,
+      'The Troparion is sung thrice:'));
+    blocks.push(makeBlock('bob-troparion', section, 'hymn', 'choir', troparion));
+  }
+
+  // Priest's blessing prayer over the five loaves
+  const prayer = fixedTexts.prayers.blessingOfBread;
+  if (prayer) {
+    blocks.push(makeBlock('bob-prayer', section, 'prayer', 'priest', prayer));
+    blocks.push(makeBlock('bob-amen', section, 'response', 'choir', 'Amen.'));
+  }
+
+  // "Blessed be the Name of the Lord" (Psalm 112:2, thrice)
+  const blessedName = fixedTexts.responses.blessedBeTheName;
+  if (blessedName) {
+    blocks.push(makeBlock('bob-blessed-name', section, 'hymn', 'choir', blessedName));
+  }
+
+  // Psalm 33 (34) — verses 1-10
+  const psalm33 = fixedTexts.psalm33;
+  if (psalm33) {
+    blocks.push(makeBlock('bob-psalm33', section, 'prayer', 'reader', psalm33.body));
+  }
+
   return blocks;
 }
 
@@ -722,18 +834,25 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 2. Great Litany
   blocks.push(..._litGreatLitany(liturgyFixed));
 
-  // 3. First Antiphon + Little Litany
-  blocks.push(..._litTypicalAntiphon1(liturgyFixed));
-  blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
-
-  // 4. Second Antiphon + Only-Begotten Son + Little Litany
-  blocks.push(..._litTypicalAntiphon2(liturgyFixed));
-  blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
-    liturgyFixed['only-begotten-son']));
-  blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
-
-  // 5. Beatitudes (Third Antiphon)
-  blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed));
+  // 3–5. Antiphons (feast-specific or typical)
+  if (spec.feastAntiphons) {
+    // Great Feasts of the Lord: special antiphons replace typical psalms + beatitudes
+    blocks.push(..._litFeastAntiphon(spec.feastAntiphons.first, 'First Antiphon', 'a1'));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
+    blocks.push(..._litFeastAntiphon(spec.feastAntiphons.second, 'Second Antiphon', 'a2'));
+    blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
+      liturgyFixed['only-begotten-son']));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
+    blocks.push(..._litFeastAntiphon(spec.feastAntiphons.third, 'Third Antiphon', 'a3'));
+  } else {
+    blocks.push(..._litTypicalAntiphon1(liturgyFixed));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
+    blocks.push(..._litTypicalAntiphon2(liturgyFixed));
+    blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
+      liturgyFixed['only-begotten-son']));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
+    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed));
+  }
 
   // 6. Small Entrance
   blocks.push(..._litSmallEntrance(liturgyFixed));
@@ -769,6 +888,11 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 16. Augmented Litany
   blocks.push(..._litAugmentedLitany(liturgyFixed));
 
+  // 16b. Litany for the Departed (optional — Soul Saturdays, memorial services)
+  if (spec.includeDepartedLitany) {
+    blocks.push(..._litDeparted(liturgyFixed));
+  }
+
   // 17. Litany for the Catechumens
   blocks.push(..._litCatechumens(liturgyFixed));
 
@@ -777,9 +901,15 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
 
   // ── LITURGY OF THE FAITHFUL ────────────────────────────────────────────────
 
-  // 19. Cherubic Hymn
-  blocks.push(makeBlock('cherubic-hymn', 'Cherubic Hymn', 'hymn', 'choir',
-    liturgyFixed['cherubic-hymn']));
+  // 19. Cherubic Hymn (Great Thursday / Great Saturday have substitutions)
+  const cherubicKey = spec.cherubicOverride
+    ? `cherubic-${spec.cherubicOverride}`
+    : 'cherubic-hymn';
+  const cherubicLabel = spec.cherubicOverride === 'great-thursday' ? 'Mystical Supper Hymn'
+    : spec.cherubicOverride === 'great-saturday' ? 'Let All Mortal Flesh Keep Silence'
+    : 'Cherubic Hymn';
+  blocks.push(makeBlock('cherubic-hymn', cherubicLabel, 'hymn', 'choir',
+    liturgyFixed[cherubicKey] || liturgyFixed['cherubic-hymn']));
 
   // 20. Great Entrance
   blocks.push(..._litGreatEntrance(liturgyFixed));
@@ -866,6 +996,23 @@ function _litGreatLitany(f) {
   return blocks;
 }
 
+function _litFeastAntiphon(antiphon, sectionName, prefix) {
+  const blocks = [];
+  if (!antiphon) return blocks;
+  if (antiphon.verses) {
+    antiphon.verses.forEach((v, i) => {
+      blocks.push(makeBlock(`${prefix}-v${i}`, sectionName, 'verse', 'choir', v));
+      blocks.push(makeBlock(`${prefix}-r${i}`, sectionName, 'response', 'choir', antiphon.refrain));
+    });
+  }
+  if (antiphon.glory) {
+    blocks.push(makeBlock(`${prefix}-glory`, sectionName, 'doxology', 'choir', antiphon.glory));
+    blocks.push(makeBlock(`${prefix}-grefrain`, sectionName, 'response', 'choir',
+      antiphon.gloryRefrain || antiphon.refrain));
+  }
+  return blocks;
+}
+
 function _litTypicalAntiphon1(f) {
   const section = 'First Antiphon';
   const a = f['typical-antiphon-1'];
@@ -922,46 +1069,63 @@ function _litBeatitudes(beatitudesSpec, f) {
     return blocks;
   }
 
-  // Paired verses (indices 1–10) with troparia
-  // "Glory..." (index 11) and "Now and ever..." (index 12) are the doxology pair
-  // We map the 10 "beatitude proper" verses to the assigned troparia, filling top-down
-  const tropariaPlaceholders = [];
+  // Flatten troparia groups into individual items.
+  // Items with `text` are used directly; items with only `count` get placeholder text.
+  const tropList = [];
   for (const group of beatitudesSpec.troparia) {
-    for (let n = 0; n < (group.count || 1); n++) {
-      tropariaPlaceholders.push({
+    if (group.text) {
+      // Individual troparion with actual text
+      tropList.push({
         tone:   group.tone,
-        label:  group.label,
-        source: group.source,
-        text:   `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
+        label:  group.label || '',
+        source: group.source || '',
+        text:   group.text,
       });
+    } else {
+      // Legacy group-count format: generate placeholders
+      for (let n = 0; n < (group.count || 1); n++) {
+        tropList.push({
+          tone:   group.tone,
+          label:  group.label || '',
+          source: group.source || '',
+          text:   `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
+        });
+      }
     }
   }
+
+  // 12 total slots: 10 paired beatitude verses + Glory + Now and ever.
+  // "On N" means N troparia, right-aligned into these 12 slots.
+  // E.g. "On 8" → first 4 verses sung alone, then 6 verse-paired + Glory + Now.
+  const totalSlots = 12;
+  const startSlot = totalSlots - tropList.length; // first slot that gets a troparion
 
   // Verses 1–10 (indices 1–10 in the array) are the paired beatitude verses
   const pairedVerses = verses.slice(1, 11); // "Blessed are the poor..." through "Rejoice and be glad..."
   pairedVerses.forEach((verse, i) => {
     blocks.push(makeBlock(`beat-v${i + 1}`, section, 'verse', 'choir', verse));
-    const troparion = tropariaPlaceholders[i];
-    if (troparion) {
-      blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', 'choir', troparion.text,
-        { tone: troparion.tone, label: troparion.label }));
+    const tropIdx = i - startSlot;
+    if (tropIdx >= 0 && tropIdx < tropList.length) {
+      const t = tropList[tropIdx];
+      blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', 'choir', t.text,
+        { tone: t.tone, label: t.label }));
     }
   });
 
-  // Glory doxology
+  // Glory doxology (slot 10)
   blocks.push(makeBlock('beat-glory', section, 'doxology', null, verses[11]));
-  // Glory troparion (last troparion if more than 10, or use tropariaPlaceholders[10])
-  if (tropariaPlaceholders.length > 10) {
-    const g = tropariaPlaceholders[10];
+  const gloryIdx = 10 - startSlot;
+  if (gloryIdx >= 0 && gloryIdx < tropList.length) {
+    const g = tropList[gloryIdx];
     blocks.push(makeBlock('beat-glory-t', section, 'hymn', 'choir', g.text,
       { tone: g.tone, label: g.label }));
   }
 
-  // Now and ever
+  // Now and ever (slot 11)
   blocks.push(makeBlock('beat-now', section, 'doxology', null, verses[12]));
-  // Theotokion (last troparion if more than 11, or use tropariaPlaceholders[11])
-  if (tropariaPlaceholders.length > 11) {
-    const t = tropariaPlaceholders[11];
+  const nowIdx = 11 - startSlot;
+  if (nowIdx >= 0 && nowIdx < tropList.length) {
+    const t = tropList[nowIdx];
     blocks.push(makeBlock('beat-theos', section, 'hymn', 'choir', t.text,
       { tone: t.tone, label: t.label }));
   }
@@ -1067,16 +1231,24 @@ function _litProkeimenon(prok) {
 function _litEpistle(epistle) {
   const section = 'Epistle Reading';
   if (!epistle) return [];
-  return [
+  const blocks = [
     makeBlock('ep-wisdom',  section, 'prayer',  'deacon', 'Wisdom!'),
     makeBlock('ep-reader',  section, 'prayer',  'reader',
       `The reading from the ${epistle.book || 'Epistle'}.`),
     makeBlock('ep-attend',  section, 'prayer',  'deacon', 'Let us attend.'),
-    makeBlock('ep-text',    section, 'prayer',  'reader',
-      `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`),
+  ];
+  if (epistle.text) {
+    blocks.push(makeBlock('ep-ref', section, 'rubric', null, epistle.display || `${epistle.book} ${epistle.pericope}`));
+    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader', epistle.text));
+  } else {
+    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader',
+      `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`));
+  }
+  blocks.push(
     makeBlock('ep-peace',   section, 'prayer',  'priest', 'Peace be unto thee.'),
     makeBlock('ep-peace-r', section, 'response', 'choir',  'And to thy spirit.'),
-  ];
+  );
+  return blocks;
 }
 
 function _litAlleluia(alleluia) {
@@ -1098,17 +1270,23 @@ function _litAlleluia(alleluia) {
 function _litGospel(gospel) {
   const section = 'Gospel Reading';
   if (!gospel) return [];
-  return [
+  const blocks = [
     makeBlock('gos-deacon',  section, 'prayer',  'deacon', 'Wisdom! Arise! Let us hear the Holy Gospel.'),
     makeBlock('gos-peace',   section, 'prayer',  'priest', 'Peace be unto all.'),
     makeBlock('gos-peace-r', section, 'response', 'choir', 'And to thy spirit.'),
     makeBlock('gos-rubric',  section, 'prayer',  'priest',
       `The reading of the Holy Gospel according to ${gospel.book}.`),
     makeBlock('gos-attend',  section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'),
-    makeBlock('gos-text',    section, 'prayer',  'reader',
-      `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`),
-    makeBlock('gos-end',     section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'),
   ];
+  if (gospel.text) {
+    blocks.push(makeBlock('gos-ref', section, 'rubric', null, gospel.display || `${gospel.book} ${gospel.pericope}`));
+    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader', gospel.text));
+  } else {
+    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
+      `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`));
+  }
+  blocks.push(makeBlock('gos-end', section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'));
+  return blocks;
 }
 
 function _litAugmentedLitany(f) {
@@ -1129,6 +1307,29 @@ function _litAugmentedLitany(f) {
     makeBlock('al-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
     makeBlock('al-excl',      section, 'prayer',   'priest', lit.exclamation),
     makeBlock('al-amen',      section, 'response', 'choir',  lit.amen),
+  );
+  return blocks;
+}
+
+function _litDeparted(f) {
+  const section = 'Litany for the Departed';
+  const lit = f['litany-departed'];
+  if (!lit) return [];
+  const blocks = [
+    makeBlock('dep-opening',  section, 'prayer',   'deacon', lit.opening),
+    makeBlock('dep-response', section, 'response', 'choir',  lit.tripleResponse),
+  ];
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`dep-p${i}`, section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`dep-r${i}`, section, 'response', 'choir',  lit.tripleResponse));
+  });
+  blocks.push(
+    makeBlock('dep-ask',      section, 'prayer',   'deacon', lit.askPetition),
+    makeBlock('dep-ask-resp', section, 'response', 'choir',  lit.askResponse),
+    makeBlock('dep-call',     section, 'prayer',   'deacon', lit.deaconCall),
+    makeBlock('dep-secret',   section, 'prayer',   'priest', lit.secretPrayer),
+    makeBlock('dep-excl',     section, 'prayer',   'priest', lit.exclamation),
+    makeBlock('dep-amen',     section, 'response', 'choir',  lit.amen),
   );
   return blocks;
 }
@@ -1256,7 +1457,10 @@ function _litAnaphora(isBasil, f) {
 function _litMegalynarion(megalynarionSpec, isBasil, f) {
   const section = 'Hymn to the Theotokos';
   let text;
-  if (megalynarionSpec === 'basil-liturgy' || isBasil) {
+  if (typeof megalynarionSpec === 'object' && megalynarionSpec?.text) {
+    // Feast-specific megalynarion (irmos of the 9th ode)
+    text = megalynarionSpec.text;
+  } else if (megalynarionSpec === 'basil-liturgy' || isBasil) {
     text = f['megalynarion-basil'];
   } else {
     text = f['it-is-truly-meet'];
@@ -1396,12 +1600,18 @@ function _litDismissal(dismissalSpec, isBasil) {
 
   const liturgySaintName = isBasil ? 'our holy father Basil the Great, Archbishop of Caesarea in Cappadocia' : 'our father among the saints John Chrysostom, Archbishop of Constantinople';
   const saintsStr = (dismissalSpec.saints || []).join('; ');
+  const dayPatron = dismissalSpec.dayPatron || null;
 
   const opening = dismissalSpec.opening === 'sunday'
     ? 'May He Who rose from the dead, Christ our true God,'
     : 'May Christ our true God,';
 
-  const closing = `through the prayers of His most pure Mother; of ${liturgySaintName};${saintsStr ? ` of ${saintsStr};` : ''} and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
+  // Order: Theotokos → day-of-week patron → liturgy saint → day's saints → all saints
+  const parts = ['through the prayers of His most pure Mother'];
+  if (dayPatron) parts.push(`of ${dayPatron}`);
+  parts.push(`of ${liturgySaintName}`);
+  if (saintsStr) parts.push(`of ${saintsStr}`);
+  const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
   return [
     makeBlock('dis-wisdom',  section, 'prayer',  'deacon', 'Wisdom!'),
@@ -1423,7 +1633,664 @@ function _litDismissal(dismissalSpec, isBasil) {
  * Creates a ServiceBlock object.
  */
 function makeBlock(id, section, type, speaker, text, extras = {}) {
-  return { id, section, type, speaker, text, ...extras };
+  const block = { id, section, type, speaker, text };
+  for (const [k, v] of Object.entries(extras)) {
+    if (v !== undefined && v !== null) block[k] = v;
+  }
+  return block;
+}
+
+// ─── Presanctified Liturgy Assembler ──────────────────────────────────────────
+
+/**
+ * Assembles the Liturgy of the Presanctified Gifts for a given calendar day.
+ *
+ * The Presanctified begins as Lenten Vespers (Psalm 103 → Great Litany →
+ * Kathisma 18 → Lord I Call → Entrance → Gladsome Light → Prokeimena with
+ * OT readings), then transitions to the communion portion unique to this
+ * service (Let My Prayer Arise → Great Entrance → Lord's Prayer → Communion).
+ *
+ * @param {Object} calendarDay        - Calendar entry (must have .vespers spec)
+ * @param {Object} vespersFixed       - Parsed fixed-texts/vespers-fixed.json
+ * @param {Object} liturgyFixed       - Parsed fixed-texts/liturgy-fixed.json
+ * @param {Object} presanctifiedFixed - Parsed fixed-texts/presanctified-fixed.json
+ * @param {Object} sources            - { triodion, menaion, octoechos, prokeimena, db }
+ * @returns {ServiceBlock[]}
+ */
+function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanctifiedFixed, sources) {
+  _warnings = [];
+  const blocks = [];
+  const vespers = calendarDay.vespers;
+
+  // ── VESPERS PORTION ──────────────────────────────────────────────────────────
+
+  // 1. Opening (same as Vespers)
+  blocks.push(...assembleOpening(vespersFixed, false));
+
+  // 2. Psalm 103
+  blocks.push(...assemblePsalm103(vespersFixed));
+
+  // 3. Great Litany
+  blocks.push(...assembleGreatLitany(vespersFixed));
+
+  // 4. Kathisma 18 (always Kathisma 18 at the Presanctified)
+  blocks.push(...assembleKathismaReading(18, 'Kathisma'));
+  blocks.push(...assembleLittleLitany(vespersFixed));
+
+  // 5. Lord, I Call (with Lenten stichera)
+  blocks.push(...assembleLordICall(vespers.lordICall, vespersFixed, sources));
+
+  // 6. Entrance
+  blocks.push(makeBlock('entrance-wisdom', 'The Entrance', 'prayer', 'deacon',
+    vespersFixed.entrance.wisdom));
+
+  // 7. Gladsome Light
+  blocks.push(makeBlock('gladsome-light', 'Gladsome Light', 'hymn', 'choir',
+    vespersFixed['gladsome-light']));
+
+  // 8. Prokeimena + OT Readings (Genesis, Proverbs — Lenten double pattern)
+  blocks.push(...assembleProkeimenon(vespers.prokeimenon, vespersFixed, sources));
+
+  // ── PRESANCTIFIED PORTION ────────────────────────────────────────────────────
+
+  // 9. "Let My Prayer Arise" (Psalm 140 with prostrations)
+  blocks.push(..._psLetMyPrayerArise(presanctifiedFixed));
+
+  // 10. Prayer of St. Ephrem
+  blocks.push(..._psPrayerOfEphrem(presanctifiedFixed));
+
+  // 11. Aposticha (Lenten)
+  blocks.push(...assembleAposticha(vespers.aposticha, calendarDay, vespersFixed, sources));
+
+  // 12. Nunc Dimittis
+  blocks.push(...assembleNuncDimittis(vespersFixed));
+
+  // 13. Troparia
+  blocks.push(...assembleTroparia(vespers.troparia, sources));
+
+  // 14. Litany for the Catechumens (uses liturgy fixed text)
+  blocks.push(..._litCatechumens(liturgyFixed));
+
+  // 15. Litanies of the Faithful
+  blocks.push(..._litLitaniesFaithful(liturgyFixed));
+
+  // 16. "Now the Powers of Heaven" (replaces Cherubic Hymn)
+  blocks.push(..._psNowThePowers(presanctifiedFixed));
+
+  // 17. Litany of Supplication (Presanctified variant)
+  blocks.push(..._psSupplication(presanctifiedFixed));
+
+  // 18. Lord's Prayer
+  {
+    const section = 'The Lord\'s Prayer';
+    const lp = liturgyFixed['lords-prayer'];
+    blocks.push(
+      makeBlock('lords-prayer', section, 'prayer', 'all', lp.text),
+      makeBlock('lp-doxology',  section, 'prayer', 'priest', lp.doxology),
+      makeBlock('lp-dox-resp',  section, 'response', 'choir', lp.response),
+    );
+  }
+
+  // 19. Elevation + Pre-Communion
+  blocks.push(..._psPreCommunion(presanctifiedFixed));
+
+  // 20. Communion Hymn
+  blocks.push(makeBlock('ch-text', 'Communion Hymn', 'hymn', 'choir',
+    presanctifiedFixed['communion-hymn'].text));
+
+  // 21. Post-Communion
+  {
+    const section = 'Post-Communion';
+    const pc = presanctifiedFixed['post-communion'];
+    blocks.push(
+      makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
+      makeBlock('pcb-response', section, 'response', 'choir',  pc.people),
+    );
+  }
+
+  // 22. Litany of Thanksgiving
+  blocks.push(..._psThanksgiving(presanctifiedFixed));
+
+  // 23. Prayer behind the Ambon
+  blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
+    presanctifiedFixed['prayer-ambon']));
+
+  // 24. Blessed be the Name
+  blocks.push(..._litBlessedBeTheName(liturgyFixed));
+
+  // 25. Psalm 33
+  blocks.push(..._litPsalm33(liturgyFixed));
+
+  // 26. Dismissal
+  blocks.push(..._psDismissal(presanctifiedFixed));
+
+  blocks._warnings = _warnings.slice();
+  return blocks;
+}
+
+// ─── Presanctified Section Assemblers ────────────────────────────────────────
+
+function _psLetMyPrayerArise(f) {
+  const section = 'Let My Prayer Arise';
+  const lmp = f['let-my-prayer-arise'];
+  const blocks = [];
+
+  // Full refrain first
+  blocks.push(makeBlock('lmp-refrain-0', section, 'hymn', 'choir', lmp.refrain));
+
+  // Verses alternating with refrain and prostrations
+  lmp.verses.forEach((verse, i) => {
+    blocks.push(makeBlock(`lmp-v${i}`, section, 'verse', 'choir', verse));
+    blocks.push(makeBlock(`lmp-prostration-${i}`, section, 'rubric', null, 'Prostration.'));
+    // After the last verse, sing just the half-refrain
+    const refrain = (i === lmp.verses.length - 1) ? lmp.halfRefrain : lmp.refrain;
+    blocks.push(makeBlock(`lmp-refrain-${i + 1}`, section, 'hymn', 'choir', refrain));
+  });
+
+  return blocks;
+}
+
+function _psPrayerOfEphrem(f) {
+  const section = 'Prayer of St. Ephrem';
+  const pe = f['prayer-of-st-ephrem'];
+  return [
+    makeBlock('ephrem-rubric', section, 'rubric', null, pe.rubric),
+    makeBlock('ephrem-text',   section, 'prayer', 'all', pe.text),
+  ];
+}
+
+function _psNowThePowers(f) {
+  const section = 'Now the Powers of Heaven';
+  const np = f['now-the-powers'];
+  return [
+    makeBlock('np-first',  section, 'hymn', 'choir', np.firstHalf),
+    makeBlock('np-rubric', section, 'rubric', null,
+      'The presanctified Gifts are carried from the Table of Oblation through the nave to the Holy Table.'),
+    makeBlock('np-second', section, 'hymn', 'choir', np.secondHalf),
+    makeBlock('np-concl',  section, 'hymn', 'choir', np.conclusion),
+    makeBlock('np-prostration', section, 'rubric', null, 'Prostration.'),
+  ];
+}
+
+function _psSupplication(f) {
+  const section = 'Litany of Supplication';
+  const lit = f['litany-presanctified'];
+  const blocks = [
+    makeBlock('ps-supp-opening',  section, 'prayer',   'deacon', lit.opening),
+    makeBlock('ps-supp-response', section, 'response', 'choir',  lit.response),
+  ];
+  lit.petitions.forEach((p, i) =>
+    blocks.push(makeBlock(`ps-supp-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions2.forEach((p, i) => {
+    blocks.push(makeBlock(`ps-supp-q${i}`, section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`ps-supp-qr${i}`, section, 'response', 'choir',  lit.petitions2Response));
+  });
+  blocks.push(
+    makeBlock('ps-supp-comm',      section, 'prayer',   'deacon', lit.commemoration),
+    makeBlock('ps-supp-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
+    makeBlock('ps-supp-excl',      section, 'prayer',   'priest', lit.exclamation),
+  );
+  return blocks;
+}
+
+function _psPreCommunion(f) {
+  const section = 'Pre-Communion';
+  const el = f['elevation'];
+  const pr = f['pre-communion-prayer'];
+  return [
+    makeBlock('pc-peace',       section, 'prayer',   'priest', 'Peace be unto all.'),
+    makeBlock('pc-peace-r',     section, 'response', 'choir',  'And to thy spirit.'),
+    makeBlock('pc-bow',         section, 'prayer',   'deacon', 'Bow your heads unto the Lord.'),
+    makeBlock('pc-bow-r',       section, 'response', 'choir',  'To Thee, O Lord.'),
+    makeBlock('pc-elevation-d', section, 'prayer',   'deacon', el.deacon),
+    makeBlock('pc-elevation-p', section, 'prayer',   'priest', el.priest),
+    makeBlock('pc-elevation-r', section, 'response', 'choir',  el.people),
+    makeBlock('pc-prayer',      section, 'prayer',   'all',    pr.text),
+  ];
+}
+
+function _psThanksgiving(f) {
+  const section = 'Litany of Thanksgiving';
+  const lit = f['litany-thanksgiving'];
+  const blocks = [
+    makeBlock('lt-deacon',   section, 'prayer',   'deacon', lit.deacon),
+    makeBlock('lt-response', section, 'response', 'choir',  lit.response),
+    makeBlock('lt-petition', section, 'prayer',   'deacon', lit.petition),
+  ];
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`lt-p${i}`, section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
+  });
+  blocks.push(
+    makeBlock('lt-prayer',    section, 'prayer',   'priest', lit.prayer),
+    makeBlock('lt-comm',      section, 'prayer',   'deacon', lit.commemoration),
+    makeBlock('lt-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
+    makeBlock('lt-excl',      section, 'prayer',   'priest', lit.exclamation),
+    makeBlock('lt-amen',      section, 'response', 'choir',  'Amen.'),
+  );
+  return blocks;
+}
+
+function _psDismissal(f) {
+  const section = 'Dismissal';
+  const d = f['dismissal'];
+  return [
+    makeBlock('dis-prayer',  section, 'prayer',   'priest', d.exclamation),
+    makeBlock('dis-glory',   section, 'doxology', null,     d.glorySuffix),
+    makeBlock('dis-response',section, 'response', 'choir',  d.response),
+    makeBlock('dis-blessing',section, 'prayer',   'priest', d.finalBlessing),
+    makeBlock('dis-amen',    section, 'response', 'choir',  d.amen),
+  ];
+}
+
+// ─── Paschal Hours Assembler ──────────────────────────────────────────────────
+
+/**
+ * Assembles the Paschal Hours — the short fixed service that replaces the
+ * regular Hours (1st, 3rd, 6th, 9th) from Pascha through Bright Saturday.
+ * All four hours are structurally identical. No variable content.
+ *
+ * @param {Object} f - Parsed fixed-texts/paschal-hours-fixed.json
+ * @returns {ServiceBlock[]}
+ */
+function assemblePaschalHours(f) {
+  _warnings = [];
+  const blocks = [];
+
+  // 1. Opening
+  blocks.push(
+    makeBlock('opening-exclamation', 'Opening', 'prayer', 'priest', f.opening.exclamation),
+    makeBlock('opening-amen', 'Opening', 'response', 'reader', f.opening.amen),
+  );
+
+  // 2. Paschal Troparion ×3
+  const section2 = 'Paschal Troparion';
+  for (let i = 0; i < 3; i++) {
+    blocks.push(makeBlock(`pt-${i}`, section2, 'hymn', 'choir', f['paschal-troparion'], { tone: 5 }));
+  }
+
+  // 3. "Having beheld the Resurrection of Christ"
+  blocks.push(makeBlock('having-beheld', 'Having Beheld the Resurrection', 'hymn', 'choir',
+    f['having-beheld']));
+
+  // 4. Hypakoe
+  blocks.push(makeBlock('hypakoe', 'Hypakoe', 'hymn', 'choir',
+    f.hypakoe.text, { tone: f.hypakoe.tone }));
+
+  // 5. Kontakion
+  blocks.push(makeBlock('kontakion', 'Kontakion', 'hymn', 'choir',
+    f.kontakion.text, { tone: f.kontakion.tone }));
+
+  // 6. Ikos
+  blocks.push(makeBlock('ikos', 'Kontakion', 'hymn', 'reader',
+    f.ikos.text));
+
+  // 7. Paschal Troparion ×3 (again)
+  for (let i = 0; i < 3; i++) {
+    blocks.push(makeBlock(`pt2-${i}`, 'Paschal Troparion', 'hymn', 'choir',
+      f['paschal-troparion'], { tone: 5 }));
+  }
+
+  // 8. "In the grave bodily" troparion
+  const section8 = 'Exaposteilarion';
+  blocks.push(makeBlock('in-the-grave', section8, 'hymn', 'choir',
+    f['troparion-in-the-grave'].text, { tone: f['troparion-in-the-grave'].tone }));
+
+  // 9. Glory
+  blocks.push(makeBlock('ex-glory-label', section8, 'doxology', null,
+    'Glory to the Father, and to the Son, and to the Holy Spirit.'));
+  blocks.push(makeBlock('ex-glory', section8, 'hymn', 'choir',
+    f['troparion-glory'].text));
+
+  // 10. Now and ever
+  blocks.push(makeBlock('ex-now-label', section8, 'doxology', null,
+    'Now and ever and unto ages of ages. Amen.'));
+  blocks.push(makeBlock('ex-now', section8, 'hymn', 'choir',
+    f['troparion-now'].text));
+
+  // 11. Lord, have mercy ×40
+  blocks.push(makeBlock('lhm-40', 'Petitions', 'response', 'reader',
+    'Lord, have mercy. (×40)'));
+
+  // 12. Glory, Now
+  blocks.push(makeBlock('glory-now', 'Petitions', 'doxology', 'reader',
+    'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+
+  // 13. More honorable than the Cherubim
+  blocks.push(makeBlock('magnification', 'Petitions', 'hymn', 'reader',
+    'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee.'));
+
+  // 14. Dismissal
+  const sectionD = 'Dismissal';
+  blocks.push(
+    makeBlock('dis-text', sectionD, 'prayer', 'priest', f.dismissal.text),
+    makeBlock('dis-amen', sectionD, 'response', 'choir', f.dismissal.response),
+    makeBlock('dis-troparion', sectionD, 'hymn', 'choir', f.dismissal.finalTroparion, { tone: 5 }),
+    makeBlock('dis-blessing', sectionD, 'prayer', 'priest', f.dismissal.finalBlessing),
+    makeBlock('dis-final-amen', sectionD, 'response', 'choir', 'Amen.'),
+  );
+
+  blocks._warnings = _warnings.slice();
+  return blocks;
+}
+
+// ─── Paschal Midnight Office ─────────────────────────────────────────────────
+
+function assembleMidnightOffice(f) {
+  _warnings = [];
+  const blocks = [];
+  const S = (id, section, type, speaker, text, extras) =>
+    blocks.push(makeBlock(id, section, type, speaker, text, extras));
+
+  // 1. Opening
+  S('mo-excl', 'Opening', 'prayer', 'priest', f.opening.exclamation);
+  S('mo-amen', 'Opening', 'response', 'reader', f.opening.amen);
+  S('mo-glory', 'Opening', 'prayer', 'reader', f.gloryToThee);
+  S('mo-hk', 'Opening', 'prayer', 'reader', f.heavenlyKing);
+
+  // 2. Trisagion prayers
+  S('mo-tris', 'Trisagion', 'prayer', 'reader', f.trisagion.holyGod + ' (Thrice)');
+  S('mo-tris-gn', 'Trisagion', 'prayer', 'reader', f.trisagion.gloryNow);
+  S('mo-tris-ht', 'Trisagion', 'prayer', 'reader', f.trisagion.holyTrinity);
+  S('mo-tris-lhm', 'Trisagion', 'response', 'reader', f.trisagion.lordHaveMercy + ' (Thrice)');
+  S('mo-tris-gn2', 'Trisagion', 'prayer', 'reader', f.trisagion.gloryNow2);
+
+  // 3. Our Father
+  S('mo-of', 'Our Father', 'prayer', 'reader', f.ourFather.text);
+  S('mo-of-excl', 'Our Father', 'prayer', 'priest', f.ourFather.exclamation);
+  S('mo-of-amen', 'Our Father', 'response', 'reader', f.ourFather.amen);
+
+  // 4. Lord, have mercy ×12 + O come let us worship
+  S('mo-lhm12', 'Opening', 'response', 'reader', f.lordHaveMercy12);
+  S('mo-gn', 'Opening', 'prayer', 'reader', f.gloryNow);
+  for (let i = 0; i < f.oComeLetUsWorship.length; i++) {
+    S(`mo-ocluw-${i}`, 'Opening', 'prayer', 'reader', f.oComeLetUsWorship[i]);
+  }
+
+  // 5. Psalm 50
+  S('mo-ps50', 'Psalm 50', 'verse', 'reader', f.psalm50);
+
+  // 6. Canon of Holy Saturday (Tone 6)
+  const odes = ['ode1', 'ode3', 'ode4', 'ode5', 'ode6', 'ode7', 'ode8', 'ode9'];
+  const odeNames = { ode1:'Ode I', ode3:'Ode III', ode4:'Ode IV', ode5:'Ode V',
+                     ode6:'Ode VI', ode7:'Ode VII', ode8:'Ode VIII', ode9:'Ode IX' };
+
+  for (const ode of odes) {
+    const o = f.canon[ode];
+    const sec = `Canon — ${odeNames[ode]}`;
+
+    S(`mo-${ode}-irm`, sec, 'hymn', 'choir', o.irmos, { tone: 6, label: 'Irmos' });
+
+    for (let i = 0; i < o.troparia.length; i++) {
+      const t = o.troparia[i];
+      S(`mo-${ode}-ref-${i}`, sec, 'verse', 'reader', t.refrain);
+      S(`mo-${ode}-trop-${i}`, sec, 'hymn', 'choir', t.text);
+    }
+
+    S(`mo-${ode}-kat`, sec, 'hymn', 'choir', o.katavasia, { tone: 6, label: 'Katavasia' });
+
+    // Sessional hymn after Ode III
+    if (ode === 'ode3' && f.canon.sessionalHymn) {
+      S('mo-sess', 'Sessional Hymn', 'hymn', 'choir', f.canon.sessionalHymn.text,
+        { tone: f.canon.sessionalHymn.tone });
+    }
+
+    // Kontakion & Ikos after Ode VI
+    if (ode === 'ode6') {
+      S('mo-kont', 'Kontakion', 'hymn', 'choir', f.canon.kontakion.text,
+        { tone: f.canon.kontakion.tone, label: 'Kontakion' });
+      S('mo-ikos', 'Kontakion', 'hymn', 'reader', f.canon.ikos, { label: 'Ikos' });
+    }
+  }
+
+  // 7. Closing Trisagion + Our Father
+  const c = f.closing;
+  S('mo-cl-tris', 'Closing Prayers', 'prayer', 'reader', c.trisagion + ' (Thrice)');
+  S('mo-cl-gn', 'Closing Prayers', 'prayer', 'reader', c.gloryNow);
+  S('mo-cl-ht', 'Closing Prayers', 'prayer', 'reader', c.holyTrinity);
+  S('mo-cl-lhm', 'Closing Prayers', 'response', 'reader', c.lordHaveMercy + ' (Thrice)');
+  S('mo-cl-gn2', 'Closing Prayers', 'prayer', 'reader', c.gloryNow2);
+  S('mo-cl-of', 'Closing Prayers', 'prayer', 'reader', c.ourFather);
+  S('mo-cl-excl', 'Closing Prayers', 'prayer', 'priest', c.exclamation);
+  S('mo-cl-amen', 'Closing Prayers', 'response', 'reader', c.amen);
+
+  // 8. Troparion
+  S('mo-trop', 'Troparion', 'hymn', 'choir', f.troparion.text, { tone: f.troparion.tone });
+
+  // 9. Litany
+  for (let i = 0; i < f.litany.petitions.length; i++) {
+    const p = f.litany.petitions[i];
+    S(`mo-lit-${i}`, 'Litany', p.speaker === 'priest' ? 'prayer' : 'response',
+      p.speaker, p.text);
+  }
+  S('mo-lit-excl', 'Litany', 'prayer', 'priest', f.litany.exclamation);
+  S('mo-lit-amen', 'Litany', 'response', 'choir', f.litany.amen);
+
+  // 10. Pre-Dismissal
+  const pd = f.preDissmissal;
+  S('mo-pd-gl', 'Dismissal', 'prayer', 'priest', pd.gloryToThee);
+  S('mo-pd-gn', 'Dismissal', 'doxology', 'choir', pd.gloryNow);
+  S('mo-pd-lhm', 'Dismissal', 'response', 'choir', pd.lordHaveMercy);
+  S('mo-pd-fb', 'Dismissal', 'response', 'choir', pd.fatherBless);
+
+  // 11. Dismissal
+  S('mo-dis', 'Dismissal', 'prayer', 'priest', f.dismissal.text);
+  S('mo-dis-amen', 'Dismissal', 'response', 'choir', f.dismissal.response);
+
+  blocks._warnings = _warnings.slice();
+  return blocks;
+}
+
+// ─── Paschal Matins ──────────────────────────────────────────────────────────
+
+function assemblePaschalMatins(f) {
+  _warnings = [];
+  const blocks = [];
+  const S = (id, section, type, speaker, text, extras) =>
+    blocks.push(makeBlock(id, section, type, speaker, text, extras));
+
+  // 1. Procession hymn
+  S('pm-proc', 'Procession', 'hymn', 'choir', f.procession.text, { label: 'Thrice, then repeatedly during procession' });
+
+  // 2. Opening doxology
+  S('pm-dox', 'Opening', 'prayer', 'priest', f.openingDoxology);
+  S('pm-dox-amen', 'Opening', 'response', 'choir', 'Amen.');
+
+  // 3. Paschal Troparion ×3 (clergy) + ×3 (choir)
+  for (let i = 0; i < 3; i++) {
+    S(`pm-pt-cl-${i}`, 'Paschal Troparion', 'hymn', 'priest', f.paschalTroparion, { tone: 5 });
+  }
+  for (let i = 0; i < 3; i++) {
+    S(`pm-pt-ch-${i}`, 'Paschal Troparion', 'hymn', 'choir', f.paschalTroparion, { tone: 5 });
+  }
+
+  // 4. Stichoi with troparion
+  for (let i = 0; i < f.stichoi.length; i++) {
+    S(`pm-stichos-${i}`, 'Paschal Troparion', 'verse', 'priest', f.stichoi[i]);
+    S(`pm-stichos-resp-${i}`, 'Paschal Troparion', 'hymn', 'choir', f.paschalTroparion);
+  }
+
+  // Glory, Now + Troparion
+  S('pm-glory', 'Paschal Troparion', 'doxology', 'priest',
+    'Glory to the Father and to the Son and to the Holy Spirit.');
+  S('pm-glory-resp', 'Paschal Troparion', 'hymn', 'choir', f.paschalTroparion);
+  S('pm-now', 'Paschal Troparion', 'doxology', 'priest',
+    'Both now and ever, and unto the ages of ages. Amen.');
+  S('pm-now-resp', 'Paschal Troparion', 'hymn', 'choir', f.paschalTroparion);
+
+  // Split troparion
+  S('pm-split-pr', 'Paschal Troparion', 'hymn', 'priest', f.paschalTroparionSplit.priest);
+  S('pm-split-ch', 'Paschal Troparion', 'hymn', 'choir', f.paschalTroparionSplit.choir);
+
+  // 5. Great Litany
+  const gl = f.greatLitany;
+  for (let i = 0; i < gl.petitions.length; i++) {
+    const p = gl.petitions[i];
+    S(`pm-gl-${i}`, 'Great Litany', 'prayer', 'deacon', p.deacon);
+    S(`pm-gl-r-${i}`, 'Great Litany', 'response', 'choir', p.response);
+  }
+  S('pm-gl-excl', 'Great Litany', 'prayer', 'priest', gl.exclamation);
+  S('pm-gl-amen', 'Great Litany', 'response', 'choir', gl.amen);
+
+  // 6. Canon of Pascha (Tone 1)
+  const odes = ['ode1', 'ode3', 'ode4', 'ode5', 'ode6', 'ode7', 'ode8', 'ode9'];
+  const odeNames = { ode1:'Ode I', ode3:'Ode III', ode4:'Ode IV', ode5:'Ode V',
+                     ode6:'Ode VI', ode7:'Ode VII', ode8:'Ode VIII', ode9:'Ode IX' };
+
+  for (const ode of odes) {
+    const o = f.canon[ode];
+    const sec = `Canon — ${odeNames[ode]}`;
+
+    // Irmos (Ode 9 has special structure with its own refrain)
+    if (ode === 'ode9' && o.irmos.refrain) {
+      S(`pm-${ode}-irm-ref`, sec, 'verse', 'reader', o.irmos.refrain);
+      S(`pm-${ode}-irm`, sec, 'hymn', 'choir', o.irmos.text, { tone: 1, label: 'Irmos' });
+    } else {
+      S(`pm-${ode}-irm`, sec, 'hymn', 'choir', typeof o.irmos === 'string' ? o.irmos : o.irmos.text,
+        { tone: 1, label: 'Irmos' });
+    }
+
+    // Troparia
+    for (let i = 0; i < o.troparia.length; i++) {
+      const t = o.troparia[i];
+      S(`pm-${ode}-ref-${i}`, sec, 'verse', 'reader', t.refrain);
+      S(`pm-${ode}-trop-${i}`, sec, 'hymn', 'choir', t.text);
+    }
+
+    // Katavasia (= irmos repeated) — Paschal canon uses troparion ×3 instead
+    S(`pm-${ode}-kat`, sec, 'hymn', 'choir', f.paschalTroparion + ' (Thrice)',
+      { tone: 5, label: 'Katavasia' });
+
+    // Small Litany after each ode
+    const sl = f.smallLitany;
+    for (let j = 0; j < sl.petitions.length; j++) {
+      const p = sl.petitions[j];
+      S(`pm-${ode}-sl-${j}`, 'Small Litany', 'prayer', 'deacon', p.deacon);
+      S(`pm-${ode}-sl-r-${j}`, 'Small Litany', 'response', 'choir', p.response);
+    }
+    S(`pm-${ode}-sl-excl`, 'Small Litany', 'prayer', 'priest', o.litanyExclamation);
+    S(`pm-${ode}-sl-amen`, 'Small Litany', 'response', 'choir', sl.amen);
+
+    // Hypakoe after Ode III
+    if (ode === 'ode3') {
+      S('pm-hypakoe', 'Hypakoe', 'hymn', 'choir', f.hypakoe.text, { tone: f.hypakoe.tone });
+    }
+
+    // Kontakion, Ikos, "Having Beheld" after Ode VI
+    if (ode === 'ode6') {
+      S('pm-kont', 'Kontakion', 'hymn', 'choir', f.kontakion.text,
+        { tone: f.kontakion.tone, label: 'Kontakion' });
+      S('pm-ikos', 'Kontakion', 'hymn', 'reader', f.ikos.text, { label: 'Ikos' });
+      for (let i = 0; i < 3; i++) {
+        S(`pm-hb-${i}`, 'Hymn of the Resurrection', 'hymn', 'choir', f.havingBeheld.text);
+      }
+    }
+  }
+
+  // 7. Exapostilarion (×3)
+  for (let i = 0; i < 3; i++) {
+    S(`pm-exap-${i}`, 'Exapostilarion', 'hymn', 'choir', f.exapostilarion.text,
+      { tone: f.exapostilarion.tone });
+  }
+
+  // 8. The Lauds (Praises)
+  const la = f.lauds;
+  S('pm-lauds-open', 'The Praises', 'verse', 'choir', la.opening);
+  S('pm-lauds-v2', 'The Praises', 'verse', 'choir', la.secondVerse);
+
+  // Psalm verses (read)
+  for (let i = 0; i < la.psalmVerses.length; i++) {
+    S(`pm-lauds-pv-${i}`, 'The Praises', 'verse', 'reader', la.psalmVerses[i]);
+  }
+
+  // Resurrectional stichera (Tone 1)
+  const rs = la.resurrectionalStichera;
+  for (let i = 0; i < rs.stichera.length; i++) {
+    S(`pm-lauds-rs-st-${i}`, 'The Praises', 'verse', 'reader', rs.stichera[i].stichos);
+    S(`pm-lauds-rs-${i}`, 'The Praises', 'hymn', 'choir', rs.stichera[i].text,
+      { tone: rs.tone });
+  }
+
+  // Paschal stichera (Tone 5)
+  const ps = la.paschalStichera;
+  for (let i = 0; i < ps.stichera.length; i++) {
+    S(`pm-lauds-ps-st-${i}`, 'The Praises', 'verse', 'reader', ps.stichera[i].stichos);
+    S(`pm-lauds-ps-${i}`, 'The Praises', 'hymn', 'choir', ps.stichera[i].text,
+      { tone: ps.tone });
+  }
+
+  // Glory/Now + final sticheron
+  S('pm-lauds-gn', 'The Praises', 'doxology', null,
+    'Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.');
+  S('pm-lauds-final', 'The Praises', 'hymn', 'choir', la.gloryNow);
+
+  // Paschal Troparion ×3
+  for (let i = 0; i < 3; i++) {
+    S(`pm-lauds-pt-${i}`, 'The Praises', 'hymn', 'choir', f.paschalTroparion, { tone: 5 });
+  }
+
+  // 9. Chrysostom Homily
+  S('pm-chr-rubric', 'Catechetical Homily', 'rubric', null, f.chrysostomHomily.rubric);
+  if (f.chrysostomHomily.text) {
+    const paragraphs = f.chrysostomHomily.text;
+    for (let i = 0; i < paragraphs.length; i++) {
+      S(`pm-chr-${i}`, 'Catechetical Homily', 'prayer', 'priest', paragraphs[i]);
+    }
+  }
+  S('pm-chr-trop', 'Catechetical Homily', 'hymn', 'choir', f.chrysostomHomily.troparion.text,
+    { tone: f.chrysostomHomily.troparion.tone, label: 'Troparion to St. John Chrysostom' });
+
+  // 10. Augmented Litany
+  const al = f.augmentedLitany;
+  for (let i = 0; i < al.petitions.length; i++) {
+    const p = al.petitions[i];
+    S(`pm-al-${i}`, 'Augmented Litany', 'prayer', 'deacon', p.deacon);
+    const rc = p.responseCount || 1;
+    S(`pm-al-r-${i}`, 'Augmented Litany', 'response', 'choir',
+      rc > 1 ? `${p.response} (×${rc})` : p.response);
+  }
+  S('pm-al-excl', 'Augmented Litany', 'prayer', 'priest', al.exclamation);
+  S('pm-al-amen', 'Augmented Litany', 'response', 'choir', al.amen);
+
+  // 11. Supplication Litany
+  const sup = f.supplicationLitany;
+  for (let i = 0; i < sup.petitions.length; i++) {
+    const p = sup.petitions[i];
+    S(`pm-sup-${i}`, 'Litany of Supplication', 'prayer', 'deacon', p.deacon);
+    S(`pm-sup-r-${i}`, 'Litany of Supplication', 'response', 'choir', p.response);
+  }
+  S('pm-sup-excl', 'Litany of Supplication', 'prayer', 'priest', sup.exclamation);
+  S('pm-sup-amen', 'Litany of Supplication', 'response', 'choir', sup.amen);
+
+  // 12. Closing
+  const cl = f.closing;
+  S('pm-cl-peace', 'Closing', 'prayer', 'priest', cl.peace.priest);
+  S('pm-cl-peace-r', 'Closing', 'response', 'choir', cl.peace.response);
+  S('pm-cl-bow', 'Closing', 'prayer', 'deacon', cl.bowHeads.deacon);
+  S('pm-cl-bow-r', 'Closing', 'response', 'choir', cl.bowHeads.response);
+  S('pm-cl-excl', 'Closing', 'prayer', 'priest', cl.headBowingExclamation);
+  S('pm-cl-amen', 'Closing', 'response', 'choir', cl.amen);
+  S('pm-cl-wisdom', 'Closing', 'prayer', 'deacon', cl.wisdom);
+  S('pm-cl-fb', 'Closing', 'response', 'choir', cl.blessing.choir);
+  S('pm-cl-blessed', 'Closing', 'prayer', 'priest', cl.blessing.priest);
+  S('pm-cl-confirm', 'Closing', 'response', 'choir', cl.confirmFaith);
+  S('pm-cl-split-cl', 'Closing', 'hymn', 'priest', cl.finalTroparionSplit.clergy);
+  S('pm-cl-split-ch', 'Closing', 'hymn', 'choir', cl.finalTroparionSplit.choir);
+
+  // 13. Dismissal
+  S('pm-dis', 'Dismissal', 'prayer', 'priest', f.dismissal.text);
+  S('pm-dis-amen', 'Dismissal', 'response', 'choir', f.dismissal.response);
+  for (let i = 0; i < 3; i++) {
+    S(`pm-dis-cr-pr-${i}`, 'Dismissal', 'prayer', 'priest', f.dismissal.christIsRisenExchange.priest);
+    S(`pm-dis-cr-pe-${i}`, 'Dismissal', 'response', 'all', f.dismissal.christIsRisenExchange.people);
+  }
+  for (let i = 0; i < 3; i++) {
+    S(`pm-dis-ft-${i}`, 'Dismissal', 'hymn', 'choir', f.dismissal.finalTroparion, { tone: 5 });
+  }
+  S('pm-dis-dox', 'Dismissal', 'hymn', 'choir', f.dismissal.finalDoxastikon);
+
+  blocks._warnings = _warnings.slice();
+  return blocks;
 }
 
 // ─── Exports ──────────────────────────────────────────────────────────────────
@@ -1431,5 +2298,9 @@ function makeBlock(id, section, type, speaker, text, extras = {}) {
 module.exports = {
   assembleVespers,
   assembleLiturgy,
+  assemblePresanctified,
+  assemblePaschalHours,
+  assembleMidnightOffice,
+  assemblePaschalMatins,
   resolveSource,
 };

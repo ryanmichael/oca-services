@@ -305,6 +305,91 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
 }
 
 /**
+ * Generates a Great Vespers entry for a fixed-calendar Great Feast falling on a weekday.
+ * All stichera come from the feast (injected from DB by server.js at runtime).
+ * The feast key is used to identify the feast for the Liturgy assembler.
+ */
+function generateGreatFeastVespers(dateStr, dow, tone, feastKey) {
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated All-Night Vigil — Great Vespers (${feastKey}). Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle', greatFeast: feastKey },
+    commemorations: [],
+    vespers: {
+      serviceType: 'all-night-vigil',
+      rubricNote:  `All-Night Vigil — Great Vespers with Entrance — ${feastKey}`,
+      lordICall: {
+        tone,
+        totalStichera: 8,
+        slots: [],   // server injects feast stichera at runtime
+        glory: null, // server injects feast glory doxastichon
+        now:   null,
+      },
+      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : dow },
+      litya: {
+        slots: [],   // server injects litya stichera when available
+        glory: null,
+        now:   null,
+      },
+      aposticha: {
+        slots: [],   // server injects feast aposticha
+        glory: null,
+      },
+      troparia: {
+        slots: [],   // server injects feast troparion
+      },
+    },
+  };
+}
+
+/**
+ * Generates an All-Night Vigil entry for a vigil-rank saint (non-great-feast).
+ * Uses 8 stichera at Lord I Call (vs 6 for ordinary days).
+ */
+function generateVigilFeastVespers(dateStr, dow, tone) {
+  return {
+    _meta: {
+      generated:   true,
+      generatedAt: new Date().toISOString(),
+      note:        `Auto-generated All-Night Vigil — Vigil-rank feast. Tone ${tone}.`,
+    },
+    date:      dateStr,
+    dayOfWeek: dow,
+    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle' },
+    commemorations: [],
+    vespers: {
+      serviceType: 'all-night-vigil',
+      rubricNote:  `All-Night Vigil — Great Vespers with Entrance`,
+      lordICall: {
+        tone,
+        totalStichera: 8,
+        slots: [],   // server injects stichera at runtime
+        glory: null,
+        now:   null,
+      },
+      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : dow },
+      litya: {
+        slots: [],   // server injects litya stichera when available
+        glory: null,
+        now:   null,
+      },
+      aposticha: {
+        slots: [],
+        glory: null,
+      },
+      troparia: {
+        slots: [],
+      },
+    },
+  };
+}
+
+/**
  * Generates a Saturday Great Vespers entry for ordinary time.
  * Uses 6 resurrectional stichera from the Octoechos + dogmatikon.
  */
@@ -838,10 +923,10 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
   // Per-day service configuration
   const DAY_CONFIG = {
     sunday: {
-      name:        'Palm Sunday',
-      serviceType: 'dailyVespers',
-      rubricNote:  'Palm Sunday — evening service (eve of Holy Monday)',
-      prokeimenon: { pattern: 'weekday', weekday: 'sunday' },
+      name:        'Palm Sunday — The Entry of our Lord into Jerusalem',
+      serviceType: 'greatVespers',
+      rubricNote:  'Great Vespers of Palm Sunday (celebrated Saturday evening)',
+      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
     },
     monday: {
       name:        'Holy Monday',
@@ -1197,10 +1282,14 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   // from the Octoechos. Other named feasts (Thomas, Myrrhbearers, Ascension,
   // Pentecost) use all 6 resurrectional stichera from the Octoechos.
   const FEAST_STICHERA_COUNT = {
+    'pentecostarion.week.2.sunday': 6,  // Thomas Sunday — all feast stichera, no resurrectional
+    'pentecostarion.week.3.sunday': 4,  // Myrrhbearers — 4 feast + 2 resurrectional
     'pentecostarion.week.4.sunday': 2,  // Paralytic
     'pentecostarion.week.5.sunday': 3,  // Samaritan Woman
     'pentecostarion.week.6.sunday': 2,  // Blind Man
     'pentecostarion.week.7.sunday': 4,  // Holy Fathers
+    'pentecostarion.ascension':     6,  // Ascension — all feast stichera
+    'pentecostarion.pentecost':     6,  // Pentecost — all feast stichera
   };
   const feastCount  = FEAST_STICHERA_COUNT[litKey] || 0;
   const resCount    = 6 - feastCount;
@@ -1229,14 +1318,41 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
       ? { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,        tone, label: 'Theotokion — Dogmatikon', combinesGloryNow: true }
       : { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`,   tone };
 
-  // Dogmatikon always sung at "Now and ever" in Great Vespers
-  const nowSlot = { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
+  // "Now and ever": major feasts use the DB theotokion; mixed Sundays use dogmatikon
+  const DB_FULL_LIC = new Set([
+    'pentecostarion.week.2.sunday', 'pentecostarion.ascension', 'pentecostarion.pentecost',
+  ]);
+  const nowSlot = DB_FULL_LIC.has(litKey)
+    ? { source: 'db', key: `${litKey}.vespers.lordICall.now`, tone, label: 'Theotokion' }
+    : { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
 
-  // Aposticha: idiomelon from Octoechos, feast glory from DB (if available),
-  // theotokion from Octoechos
+  // Aposticha: for major feasts (feastCount === 6) all aposticha come from DB;
+  // for mixed services, use Octoechos idiomelon with feast glory from DB.
+  const DB_FULL_APOSTICHA = new Set([
+    'pentecostarion.week.2.sunday',   // Thomas Sunday
+    'pentecostarion.ascension',        // Ascension
+    'pentecostarion.pentecost',        // Pentecost
+  ]);
+  const useDbAposticha = DB_FULL_APOSTICHA.has(litKey);
   const apostichaGlory = feastCount > 0
     ? { source: 'db',        key: `${litKey}.vespers.aposticha.glory`, tone }
     : null;
+
+  // Build aposticha slots
+  const apostichaSlots = useDbAposticha
+    ? [
+        { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+        { position: 2, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+        { position: 3, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+      ]
+    : [
+        { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
+        { position: 2, repeatPrevious: true },
+        { position: 3, repeatPrevious: true },
+      ];
+  const apostichaNow = useDbAposticha
+    ? { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, label: 'Theotokion' }
+    : { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' };
 
   return {
     _meta: {
@@ -1260,13 +1376,9 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
       },
       prokeimenon,
       aposticha: {
-        slots: [
-          { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
-          { position: 2, repeatPrevious: true },
-          { position: 3, repeatPrevious: true },
-        ],
+        slots: apostichaSlots,
         ...(apostichaGlory ? { glory: apostichaGlory } : {}),
-        now: { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
+        now: apostichaNow,
       },
       troparia: {
         slots: (() => {
@@ -1315,6 +1427,22 @@ function generateCalendarEntry(dateStr) {
   const season = getLiturgicalSeason(date);
   const tone   = getTone(date);
   const litKey = getLiturgicalKey(date);
+
+  // ── Fixed-calendar Great Feasts override season logic ────────────────────
+  // These feasts always get an All-Night Vigil regardless of what day they fall on.
+  // Moveable feasts (Palm Sunday, Ascension, Pentecost) are handled by their
+  // own season generators below.
+  const feastKey = getGreatFeastKey(date);
+  if (feastKey && !['palmSunday', 'ascension', 'pentecost', 'pascha'].includes(feastKey)) {
+    return generateGreatFeastVespers(dateStr, dow, tone, feastKey);
+  }
+
+  // ── Vigil-rank saints override ordinary day logic ──────────────────────────
+  // These feasts get an All-Night Vigil with Litya and Blessing of Bread.
+  const feastRank = getFeastRank(date);
+  if (feastRank === 'vigil') {
+    return generateVigilFeastVespers(dateStr, dow, tone);
+  }
 
   // ── Ordinary time ──────────────────────────────────────────────────────────
   if (season === 'ordinaryTime') {
@@ -1476,21 +1604,151 @@ function isLiturgyServed(date) {
   const month  = date.getUTCMonth() + 1;
   const day    = date.getUTCDate();
 
-  if (dow === 'sunday')  return true;
-  if (season === 'brightWeek') return true;
-  if (season === 'greatLent' && dow === 'saturday') return true;
-  if (season === 'holyWeek'  && (dow === 'thursday' || dow === 'saturday')) return true;
-
-  // Ascension — always a Thursday, Pascha + 39 days
-  const pascha = calculatePascha(date.getUTCFullYear());
-  if (Math.floor((date - pascha) / DAY_MS) === 39) return true;
-
-  // Fixed-calendar Great Feasts
+  // Great Feasts always have liturgy, even during Lent (e.g. Annunciation Mar 25)
   const GREAT_FEASTS = new Set([
     '1-6',   '2-2',   '3-25',  '6-24',  '6-29',
     '8-6',   '8-15',  '9-8',   '9-14',  '11-21',  '12-25',
   ]);
   if (GREAT_FEASTS.has(`${month}-${day}`)) return true;
+
+  // Great Lent weekdays: no full liturgy (Mon/Tue/Thu = nothing; Wed/Fri = Presanctified)
+  if (season === 'greatLent' && dow !== 'saturday' && dow !== 'sunday') return false;
+
+  // Holy Week: Mon-Wed = no full liturgy; Friday = no liturgy
+  if (season === 'holyWeek') {
+    if (['monday', 'tuesday', 'wednesday', 'friday'].includes(dow)) return false;
+  }
+
+  // Everything else: liturgy is served
+  return true;
+}
+
+// ─── Great Feast identification ───────────────────────────────────────────────
+
+/**
+ * Returns a feast key string if the date is a Great Feast, or null otherwise.
+ *
+ * Feasts of the Lord (have special antiphons, entrance hymn):
+ *   nativity, theophany, meeting, transfiguration, elevation,
+ *   palmSunday, ascension, pentecost
+ *
+ * Feasts of the Theotokos (typical antiphons, but unique megalynarion):
+ *   nativityTheotokos, entryTheotokos, annunciation, dormition
+ *
+ * Not classified as Great Feasts for antiphon purposes:
+ *   6/24 (Nativity of Forerunner), 6/29 (Sts. Peter & Paul) — these are
+ *   "great feasts" in the broad sense but use typical antiphons.
+ */
+function getGreatFeastKey(date) {
+  const month = date.getUTCMonth() + 1;
+  const day   = date.getUTCDate();
+
+  // Fixed-calendar feasts
+  const FIXED = {
+    '12-25': 'nativity',
+    '1-6':   'theophany',
+    '2-2':   'meeting',
+    '3-25':  'annunciation',
+    '8-6':   'transfiguration',
+    '8-15':  'dormition',
+    '9-8':   'nativityTheotokos',
+    '9-14':  'elevation',
+    '11-21': 'entryTheotokos',
+  };
+  const fixedKey = FIXED[`${month}-${day}`];
+  if (fixedKey) return fixedKey;
+
+  // Moveable feasts
+  const pascha = calculatePascha(date.getUTCFullYear());
+  const diff = Math.round((date - pascha) / DAY_MS);
+
+  if (diff === 0)  return 'pascha';
+  if (diff === -7) return 'palmSunday';
+  if (diff === 39) return 'ascension';
+  if (diff === 49) return 'pentecost';
+
+  return null;
+}
+
+// ─── Feast Rank Classification ───────────────────────────────────────────────
+
+/**
+ * Fixed-calendar saints/feasts that always receive an All-Night Vigil.
+ * Key: "M-D" (month-day), Value: descriptive label (for debugging).
+ *
+ * This is the OCA's list of Vigil-rank feasts beyond the 12 Great Feasts.
+ * Great Feasts are detected by getGreatFeastKey() and ranked separately.
+ */
+const VIGIL_SAINTS = new Map([
+  ['1-1',   'Circumcision of the Lord / St. Basil the Great'],
+  ['1-30',  'Three Holy Hierarchs'],
+  ['5-21',  'Sts. Constantine and Helen'],
+  ['6-24',  'Nativity of St. John the Forerunner'],
+  ['6-29',  'Sts. Peter and Paul'],
+  ['7-15',  'St. Vladimir, Equal-to-the-Apostles'],
+  ['8-29',  'Beheading of St. John the Forerunner'],
+  ['9-25',  'St. Sergius of Radonezh'],
+  ['10-1',  'Protection (Pokrov) of the Theotokos'],
+  ['10-9',  'St. Tikhon, Patriarch of Moscow'],
+  ['11-8',  'Synaxis of the Archangel Michael'],
+  ['12-6',  'St. Nicholas the Wonderworker'],
+]);
+
+/**
+ * Returns the feast rank for a given date.
+ *
+ * Ranks (highest to lowest):
+ *   'greatFeast'   — 12 Great Feasts, Pascha, and moveable feasts
+ *   'vigil'        — Saints with All-Night Vigil (VIGIL_SAINTS)
+ *   'polyeleos'    — Polyeleos-rank saints (future: from DB)
+ *   'doxology'     — Great Doxology saints (future: from DB)
+ *   'sixStichera'  — Ordinary commemorations (default)
+ *
+ * @param {Date} date — UTC date
+ * @returns {string}
+ */
+function getFeastRank(date) {
+  if (getGreatFeastKey(date) !== null) return 'greatFeast';
+
+  const month = date.getUTCMonth() + 1;
+  const day   = date.getUTCDate();
+  if (VIGIL_SAINTS.has(`${month}-${day}`)) return 'vigil';
+
+  // Future: query DB commemorations.rank column for polyeleos/doxology
+  return 'sixStichera';
+}
+
+/**
+ * Returns true if an All-Night Vigil should be served on this date.
+ * Does NOT include ordinary Sundays (Saturday Great Vespers uses the
+ * existing greatVespers serviceType for those).
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isVigilServed(date) {
+  const rank = getFeastRank(date);
+  return rank === 'greatFeast' || rank === 'vigil';
+}
+
+// ─── Presanctified Liturgy ─────────────────────────────────────────────────────
+
+/**
+ * Returns true if the Liturgy of the Presanctified Gifts is served on this date.
+ *
+ * Served on:
+ *   - Wednesdays and Fridays of Great Lent (weeks 1–6)
+ *   - Monday, Tuesday, Wednesday of Holy Week
+ *
+ * @param {Date} date — UTC date
+ * @returns {boolean}
+ */
+function isPresanctifiedDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+
+  if (season === 'greatLent' && (dow === 'wednesday' || dow === 'friday')) return true;
+  if (season === 'holyWeek' && ['monday', 'tuesday', 'wednesday'].includes(dow)) return true;
 
   return false;
 }
@@ -1510,5 +1768,9 @@ module.exports = {
   getLiturgyVariant,
   getTrisagionSubstitution,
   isLiturgyServed,
+  getGreatFeastKey,
+  getFeastRank,
+  isVigilServed,
+  isPresanctifiedDay,
   generateCalendarEntry,
 };

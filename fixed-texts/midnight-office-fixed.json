@@ -1,0 +1,271 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Paschal Midnight Office — Canon of Holy Saturday (Tone 6)",
+    "tradition": "OCA (Orthodox Church in America)",
+    "version": "0.1.0",
+    "note": "Served late on the evening of Great Saturday, before the Paschal Procession. The canon is the Canon of Holy Saturday in Tone 6."
+  },
+
+  "opening": {
+    "exclamation": "Blessed is our God, always, now and ever, and unto the ages of ages.",
+    "amen": "Amen."
+  },
+
+  "gloryToThee": "Glory to Thee, our God, glory to Thee.",
+
+  "heavenlyKing": "O Heavenly King, Comforter, Spirit of Truth, Who art everywhere present and fillest all things, Treasury of good things and Giver of life: come and dwell in us, and cleanse us of all impurity, and save our souls, O Good One.",
+
+  "trisagion": {
+    "holyGod": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "rubric": "Thrice.",
+    "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "holyTrinity": "O Most Holy Trinity, have mercy on us. O Lord, blot out our sins. O Master, pardon our iniquities. O Holy One, visit and heal our infirmities for Thy name's sake.",
+    "lordHaveMercy": "Lord, have mercy.",
+    "lordHaveMercyRubric": "Thrice.",
+    "gloryNow2": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen."
+  },
+
+  "ourFather": {
+    "text": "Our Father, Who art in the heavens, hallowed be Thy name. Thy kingdom come, Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one.",
+    "exclamation": "For Thine is the kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages.",
+    "amen": "Amen."
+  },
+
+  "lordHaveMercy12": "Lord, have mercy. (x12)",
+
+  "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+
+  "oComeLetUsWorship": [
+    "O come, let us worship God our King.",
+    "O come, let us worship and fall down before Christ our King and God.",
+    "O come, let us worship and fall down before Christ Himself, our King and God."
+  ],
+
+  "psalm50": "Have mercy on me, O God, according to Thy great mercy; and according to the multitude of Thy compassions blot out my transgression. Wash me thoroughly from mine iniquity, and cleanse me from my sin. For I know mine iniquity, and my sin is ever before me. Against Thee only have I sinned and done this evil before Thee, that Thou mightest be justified in Thy words, and prevail when Thou art judged. For behold, I was conceived in iniquities, and in sins did my mother bear me. For behold, Thou hast loved truth; the hidden and secret things of Thy wisdom hast Thou made manifest unto me. Thou shalt sprinkle me with hyssop, and I shall be made clean; Thou shalt wash me, and I shall be made whiter than snow. Thou shalt make me to hear joy and gladness; the bones that be humbled, they shall rejoice. Turn Thy face away from my sins, and blot out all mine iniquities. Create in me a clean heart, O God, and renew a right spirit within me. Cast me not away from Thy presence, and take not Thy Holy Spirit from me. Restore unto me the joy of Thy salvation, and with Thy governing Spirit establish me. I shall teach transgressors Thy ways, and the ungodly shall turn back unto Thee. Deliver me from blood-guiltiness, O God, Thou God of my salvation; my tongue shall rejoice in Thy righteousness. O Lord, Thou shalt open my lips, and my mouth shall declare Thy praise. For if Thou hadst desired sacrifice, I had given it; with whole-burnt offerings Thou shalt not be pleased. A sacrifice unto God is a broken spirit; a heart that is broken and humbled God will not despise. Do good, O Lord, in Thy good pleasure unto Zion, and let the walls of Jerusalem be builded. Then shalt Thou be pleased with a sacrifice of righteousness, with oblation and whole-burnt offerings. Then shall they offer bullocks upon Thine altar.",
+
+  "canon": {
+    "_note": "Canon of Holy Saturday, Tone 6. Sung at the Paschal Midnight Office.",
+    "tone": 6,
+    "ode1": {
+      "irmos": "He Who in ancient times hid the pursuing tyrant beneath the waves of the sea, is hidden beneath the earth by the children of those whom once He saved. But let us, like the maidens, sing unto the Lord, for gloriously is He glorified.",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "O Lord my God, I will sing to Thee a funeral hymn, a song at Thy burial: for by Thy burial Thou hast opened for me the gates of life, and by Thy death Thou hast slain death and hades."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "All things above and all beneath the earth quaked with fear at Thy death, as they beheld Thee, O my Saviour, upon Thy throne on high and in the tomb below. For seeing Thou wert mortal is beyond understanding, O Author of life."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "To fill all things with Thy glory, Thou hast gone down into the nethermost parts of the earth: for my substance that is in Adam is not hidden from Thee, but when buried, Thou dost restore me from corruption, O Lover of mankind."
+        }
+      ],
+      "katavasia": "He Who in ancient times hid the pursuing tyrant beneath the waves of the sea, is hidden beneath the earth by the children of those whom once He saved. But let us, like the maidens, sing unto the Lord, for gloriously is He glorified."
+    },
+    "ode3": {
+      "irmos": "When the creation beheld Thee, Who hast hung the whole earth freely upon the waters, hanging on Golgotha, it was seized with horror and cried aloud: \"There is none holy beside Thee, O Lord.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Images of Thy burial hast Thou disclosed in a multitude of visions; and now, as the God-Man, Thou hast revealed Thy secrets unto those in hades, O Master, who cry aloud: \"There is none holy beside Thee, O Lord.\""
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Thou hast stretched out Thine arms and united all that of old was separated; clothed in a winding sheet, O Saviour, and buried in a tomb, Thou hast loosed the captives, who cry aloud: \"There is none holy beside Thee, O Lord.\""
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "By a tomb and seals, O Uncontainable One, wast Thou held of Thine own will; but through Thine energies Thou hast showed Thy power by Divine action to those who sing: \"There is none holy beside Thee, O Lord, Lover of mankind.\""
+        }
+      ],
+      "katavasia": "When the creation beheld Thee, Who hast hung the whole earth freely upon the waters, hanging on Golgotha, it was seized with horror and cried aloud: \"There is none holy beside Thee, O Lord.\""
+    },
+    "sessionalHymn": {
+      "tone": 1,
+      "text": "The soldiers keeping watch over Thy tomb, O Saviour, became as dead men from the shining brightness at the appearing of the angel, who proclaimed to the women the Resurrection. We glorify Thee as the Destroyer of corruption; we fall down before Thee, risen from the tomb, our only God."
+    },
+    "ode4": {
+      "irmos": "Foreseeing Thy divine self-emptying upon the Cross, Habakkuk, amazed, cried out: \"Thou hast cut asunder the strength of the mighty, O Good One, and preached to those in hades, as the Almighty One.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Today Thou hast sanctified the seventh day, which anciently Thou didst bless by resting from Thy works. Thou bringest all things into being and renewest all things, observing the sabbath, O my Saviour, and restoring all."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "By Thy greater power, Thou hast conquered; from the flesh Thy soul was parted, yet Thou hast burst asunder both bonds, death and hades, O Word, by Thy might."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "Hades was embittered when it met Thee, O Word, for it saw a mortal deified, striped with wounds, yet all-powerful; and it shrank back in terror at this sight."
+        }
+      ],
+      "katavasia": "Foreseeing Thy divine self-emptying upon the Cross, Habakkuk, amazed, cried out: \"Thou hast cut asunder the strength of the mighty, O Good One, and preached to those in hades, as the Almighty One.\""
+    },
+    "ode5": {
+      "irmos": "Thy Theophany, O Christ, the Unwaning Light, that mercifully came to pass for us, Isaiah, keeping watch, beheld out of the night, and he cried aloud: \"The dead shall arise, and those in the tombs shall be raised up, and all that are born of earth shall rejoice.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Thou makest new those of earth, O Creator, becoming a thing of dust, and the winding-sheet and tomb reveal, O Word, the mystery that is within Thee; for the noble counselor typifies the counsel of Him that begat Thee, Who hath majestically refashioned me in Thee."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "By Thy death dost Thou transform mortality and by Thy burial, corruption, for Thou makest incorruptible, by divine majesty, the nature Thou hast taken, rendering it immortal; for Thy flesh saw not corruption, O Master, nor was Thy soul left in hades as that of a stranger."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "Coming forth from an unwedded Mother, and wounded in Thy side with a spear, O my Maker, Thou hast brought to pass the re-creation of Eve. Becoming Adam, Thou hast in ways surpassing nature slept a nature-restoring sleep, raising life from sleep and from corruption, for Thou art the Almighty."
+        }
+      ],
+      "katavasia": "Thy Theophany, O Christ, the Unwaning Light, that mercifully came to pass for us, Isaiah, keeping watch, beheld out of the night, and he cried aloud: \"The dead shall arise, and those in the tombs shall be raised up, and all that are born of earth shall rejoice.\""
+    },
+    "ode6": {
+      "irmos": "Caught but not held in the belly of the whale was Jonah; for, bearing the image of Thee, Who hast suffered and wast given to burial, he came forth from the monster as from a bridal chamber, and he called out to the watch: \"O ye who keep guard falsely and in vain, ye have forsaken your own mercy.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Torn wast Thou, but not separated, O Word, from the flesh of which Thou hadst partaken; for though Thy temple was destroyed at the time of Thy Passion, yet the Substance of Thy Godhead and of Thy flesh is but one. For in both Thou art one Son, the Word of God, both God and man."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Fatal to man, but not to God, was the sin of Adam; for though the earthly substance of Thy flesh suffered, yet the Godhead remained impassable; that which in Thy nature was corruptible Thou hast transformed to incorruption, and a fountain of life incorruptible hast Thou revealed by Thy Resurrection."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "Hades reigneth, but not for ever over the race of man; for Thou, laid in a tomb, O Sovereign Lord, hast burst asunder the bars of death with Thy life-giving hand, and Thou hast proclaimed to those who slept from the ages the true redemption, O Saviour, Who art become the Firstborn from the dead."
+        }
+      ],
+      "katavasia": "Caught but not held in the belly of the whale was Jonah; for, bearing the image of Thee, Who hast suffered and wast given to burial, he came forth from the monster as from a bridal chamber, and he called out to the watch: \"O ye who keep guard falsely and in vain, ye have forsaken your own mercy.\""
+    },
+    "kontakion": {
+      "tone": 6,
+      "text": "He Who closed the abyss is beheld dead, and as a corpse the Immortal is wrapped in linen with sweet spices and laid in a tomb. The women come to anoint Him with myrrh, weeping bitterly and crying: \"This is the most blessed sabbath on which Christ sleepeth but on the third day He shall rise again.\""
+    },
+    "ikos": "He Who sustaineth all things was lifted upon the Cross, and all creation wept, seeing Him hanging naked on the Tree. The sun hid its rays, and the stars cast aside their light; the earth shook in much fear, and the sea fled, and the rocks were rent, and many graves were opened and the bodies of the saints arose. Hades groaned below, and the Jews conspired to spread slander against Christ's Resurrection. But the women cried aloud: \"This is the most blessed sabbath on which Christ sleepeth, but on the third day He shall rise again.\"",
+    "ode7": {
+      "irmos": "O ineffable wonder! He Who delivered the holy Children from the fiery furnace is laid a corpse without breath in the tomb, for the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "Wounded in the heart was hades when it received Him Who was wounded in the side by a spear, and consumed by divine fire it groaned aloud at the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\""
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "O wealthy tomb! For it received within itself the Creator, as one asleep, and it was shown to be a divine treasury of life, for the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\""
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+          "text": "In accordance with the law of the dead, the Life of all submitteth to be laid in the tomb, and He showeth it to be a source of awakening, for the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\""
+        },
+        {
+          "refrain": "Both now and ever, and unto the ages of ages. Amen.",
+          "text": "Whether in hades or in the tomb or in Eden, the Godhead of Christ was indivisibly one with the Father and the Spirit, for the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\""
+        }
+      ],
+      "katavasia": "O ineffable wonder! He Who delivered the holy Children from the fiery furnace is laid a corpse without breath in the tomb, for the salvation of us who sing: \"O God our Redeemer, blessed art Thou.\""
+    },
+    "ode8": {
+      "irmos": "Be ye astonished and afraid, O heaven, and let the foundations of the earth be shaken; for lo, He Who dwelleth on high is numbered with the dead and lodgeth as a stranger in a narrow tomb. Him do ye children bless, ye priests praise, and ye people supremely exalt unto all ages.",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "The most pure Temple is destroyed, but raiseth up the fallen tabernacle. For the second Adam, He Who dwelleth on high, hath come down to the first Adam, even into the chambers of hades. Him do ye children bless, ye priests praise, and ye people supremely exalt unto all ages."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "The disciples' courage failed, but Joseph of Arimathea was bolder; for, seeing the God of all a corpse and naked, he asked for the body and buried Him, crying: Him do ye children bless, ye priests praise, and ye people supremely exalt unto all ages."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "O new wonders! O what goodness! O ineffable forbearance! For of His own will He Who dwelleth on high is sealed beneath the earth, and God is falsely accused as a deceiver. Him do ye children bless, ye priests praise, and ye people supremely exalt unto all ages."
+        }
+      ],
+      "katavasia": "Be ye astonished and afraid, O heaven, and let the foundations of the earth be shaken; for lo, He Who dwelleth on high is numbered with the dead and lodgeth as a stranger in a narrow tomb. Him do ye children bless, ye priests praise, and ye people supremely exalt unto all ages."
+    },
+    "ode9": {
+      "irmos": "Weep not for Me, O Mother, beholding in the tomb the Son Whom thou hast conceived without seed in the womb; for I shall arise and shall be glorified, and as God I shall exalt with glory unceasing those that with faith and love magnify thee.",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "At Thy strange birth, O Son without beginning, I was blessed in ways surpassing nature, for I was spared all travail. But now, beholding Thee, my God, a lifeless corpse, I am pierced with the sword of bitter grief. But arise, that I may be magnified."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee.",
+          "text": "The earth covereth Me as I desire, O Mother, but the gatekeepers of hades tremble as they see Me, clothed in the bloodstained garment of vengeance; for on the Cross as God have I struck down Mine enemies, and I shall rise again and magnify thee."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+          "text": "Let creation rejoice, let all that are born of earth be glad, for the enemy, hades, hath been despoiled; let the women come with myrrh to meet Me, for I am delivering Adam and Eve with all their offspring, and on the third day I shall rise again."
+        }
+      ],
+      "katavasia": "Weep not for Me, O Mother, beholding in the tomb the Son Whom thou hast conceived without seed in the womb; for I shall arise and shall be glorified, and as God I shall exalt with glory unceasing those that with faith and love magnify thee."
+    }
+  },
+
+  "closing": {
+    "trisagion": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "trisagionRubric": "Thrice.",
+    "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "holyTrinity": "O Most Holy Trinity, have mercy on us. O Lord, blot out our sins. O Master, pardon our iniquities. O Holy One, visit and heal our infirmities for Thy name's sake.",
+    "lordHaveMercy": "Lord, have mercy.",
+    "lordHaveMercyRubric": "Thrice.",
+    "gloryNow2": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "ourFather": "Our Father, Who art in the heavens, hallowed be Thy name. Thy kingdom come, Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one.",
+    "exclamation": "For Thine is the kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages.",
+    "amen": "Amen."
+  },
+
+  "troparion": {
+    "_note": "Troparion of Holy Saturday, Tone 2.",
+    "tone": 2,
+    "text": "When Thou didst descend unto death, O Life Immortal, then didst Thou slay hades with the lightning of Thy Divinity. And when Thou didst also raise the dead out of the nether-most depths, all the hosts of the heavens cried out: O Life-giver, Christ our God, glory be to Thee."
+  },
+
+  "litany": {
+    "_note": "Abbreviated litany of mercy, adapted for OCA usage.",
+    "petitions": [
+      {
+        "speaker": "priest",
+        "text": "Have mercy on us, O God, according to Thy great mercy, we pray Thee, hearken and have mercy."
+      },
+      {
+        "speaker": "choir",
+        "text": "Lord, have mercy. (Thrice)"
+      },
+      {
+        "speaker": "priest",
+        "text": "Again we pray for our Metropolitan N., for our Archbishop (or Bishop) N., and for all our brethren in Christ."
+      },
+      {
+        "speaker": "choir",
+        "text": "Lord, have mercy. (Thrice)"
+      },
+      {
+        "speaker": "priest",
+        "text": "Again we pray for all the brethren and for all Christians."
+      },
+      {
+        "speaker": "choir",
+        "text": "Lord, have mercy. (Thrice)"
+      }
+    ],
+    "exclamation": "For a merciful God art Thou, and the Lover of mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages.",
+    "amen": "Amen."
+  },
+
+  "preDissmissal": {
+    "gloryToThee": "Glory to Thee, O Christ God, our hope, glory to Thee.",
+    "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "lordHaveMercy": "Lord, have mercy. (Thrice)",
+    "fatherBless": "Father, bless."
+  },
+
+  "dismissal": {
+    "_note": "Adapted for OCA usage: 'loveth mankind' instead of 'the Lover of mankind'.",
+    "text": "May Christ our true God, Who rose from the dead, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
+    "response": "Amen."
+  }
+}

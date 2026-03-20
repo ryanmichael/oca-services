@@ -32,6 +32,9 @@
 
     switch (type) {
       case 'rubric':
+        if (label === 'service-title') {
+          return `<div class="service-title">${esc(text)}</div>`;
+        }
         return `<div class="rubric">${speakerPrefix(speaker)}${esc(text)}</div>`;
 
       case 'prayer':
@@ -87,9 +90,12 @@
         html += '<div class="svc-rule"></div>';
       }
 
-      // Collect unique sources in this section for the dev-mode tag
-      // Prefer provenance (e.g. "menaion (stSergius)") over plain source
-      const sources = [...new Set(sblocks.map(b => b.provenance || b.source).filter(Boolean))];
+      // Collect unique source labels for the dev-mode tag
+      // Combine source (book) + provenance (publisher) when both exist
+      const sources = [...new Set(sblocks.map(b => {
+        if (b.source && b.provenance) return `${b.source} (${b.provenance})`;
+        return b.provenance || b.source;
+      }).filter(Boolean))];
       const srcTag = sources.length
         ? `<span class="src-tag">${sources.map(esc).join(' · ')}</span>`
         : '';

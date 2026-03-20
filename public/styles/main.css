@@ -324,15 +324,6 @@ header,
 .pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .pronoun-row input { accent-color: var(--rubric); }
 
-/* Dev-mode toggle */
-.devmode-row {
-  display: flex; align-items: center; gap: 8px;
-  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em;
-  color: var(--muted); margin-top: 6px;
-}
-.devmode-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-.devmode-row input { accent-color: var(--rubric); }
-
 /* Source labels on section headings — shown only in dev mode */
 .src-tag {
   display: none;
@@ -361,6 +352,12 @@ body.dev-mode .src-tag { display: inline; }
 .rubric {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
   color: var(--rubric); margin-bottom: 8px; line-height: 1.6;
+}
+.service-title {
+  font-family: 'EB Garamond', serif; font-size: 22px; font-variant: small-caps;
+  letter-spacing: 0.08em; text-align: center; color: var(--text);
+  margin: 40px 0 20px; padding: 16px 0;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--accent);
 }
 .prayer {
   font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88;

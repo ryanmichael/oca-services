@@ -65,7 +65,11 @@ async function fetchDays(from, to) {
 }
 
 async function fetchService(date, svcType, pronoun = 'tt') {
-  const endpoint = svcType === 'liturgy' ? '/api/liturgy' : '/api/service';
+  const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
+                 : svcType === 'presanctified'     ? '/api/presanctified'
+                 : svcType === 'paschalHours'      ? '/api/paschal-hours'
+                 : svcType === 'paschaCollection'  ? '/api/pascha-collection'
+                 : '/api/service';
   const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}`);
   if (!res.ok) {
     if (res.status === 404) return null;
@@ -86,6 +90,15 @@ function getServiceRows(day) {
   const dow = day.dayOfWeek;
   const rows = [];
 
+  // Pascha Sunday: single combined service
+  if (day.services.paschaCollection) {
+    rows.push({ key: 'paschaCollection', name: 'Holy Pascha Collection', available: true });
+    if (day.services.greatVespers) {
+      rows.push({ key: 'greatVespers', name: 'Agape Vespers', available: true });
+    }
+    return rows;
+  }
+
   if (dow === 'saturday') {
     rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
     if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
@@ -99,7 +112,17 @@ function getServiceRows(day) {
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers',  available: day.services.dailyVespers });
   } else {
+    // Weekday services
+    if (day.services.presanctified) {
+      rows.push({ key: 'presanctified', name: 'Presanctified Liturgy', available: true });
+    }
+    if (day.services.paschalHours) {
+      rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
+    }
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: day.services.dailyVespers });
+    if (day.services.liturgy) {
+      rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: true });
+    }
   }
 
   return rows;
@@ -108,7 +131,7 @@ function getServiceRows(day) {
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
   if (dow === 'saturday' || dow === 'sunday') return true;
-  return services.dailyVespers || services.greatVespers;
+  return services.dailyVespers || services.greatVespers || services.presanctified || services.paschalHours || services.liturgy;
 }
 
 function renderServiceList(daysList) {
@@ -181,8 +204,11 @@ async function _showPanel(rowEl, date, svcType) {
   activeDate    = date;
   activeSvcType = svcType;
   if (rowEl) rowEl.classList.add('active');
-  const svcLabel = svcType === 'dailyVespers' ? 'DAILY VESPERS'
-                 : svcType === 'liturgy'      ? 'DIVINE LITURGY'
+  const svcLabel = svcType === 'dailyVespers'     ? 'DAILY VESPERS'
+                 : svcType === 'liturgy'          ? 'DIVINE LITURGY'
+                 : svcType === 'presanctified'    ? 'PRESANCTIFIED LITURGY'
+                 : svcType === 'paschalHours'     ? 'PASCHAL HOURS'
+                 : svcType === 'paschaCollection' ? 'HOLY PASCHA COLLECTION'
                  : 'GREAT VESPERS';
   document.getElementById('p-svc').textContent = svcLabel;
   document.getElementById('print-header-svc').textContent = svcLabel;

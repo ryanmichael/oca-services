@@ -1,0 +1,404 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for Matins (Orthros) — invariable content",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA / St. Tikhon's Monastery Press",
+    "version": "0.2.0",
+    "primarySource": "OCA Office of Daily Matins, 2021-11-19",
+    "notes": [
+      "Opening prayers, litanies, doxologies, and dismissal are shared with Vespers (loaded from vespers-fixed.json at assembly time).",
+      "Psalm texts for the Six Psalms come from this file (OCA 2021 translation), NOT from psalter.json (which uses the Brenton/LXX translation).",
+      "Sections not present in the OCA Daily Matins PDF (e.g. evlogitaria, polyeleios, post-Gospel) are marked with their own _source."
+    ]
+  },
+
+  "royalOffice": {
+    "_note": "The Royal Office (Psalms 19 & 20 with troparia) precedes the Six Psalms. Often abbreviated or omitted entirely in parish life. Psalm texts loaded from psalter.json.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 1-4",
+    "psalmNumbers": [19, 20],
+    "troparia": [
+      {
+        "label": null,
+        "text": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries; and by virtue of Thy Cross, preserve Thy habitation!"
+      },
+      {
+        "label": "Glory…",
+        "text": "As Thou wast voluntarily raised upon the Cross for our sake, grant mercy to those who are called by Thy Name, O Christ God; make all Orthodox Christians glad by Thy power, granting them victories over their adversaries by bestowing on them the invincible trophy, Thy weapon of peace!"
+      },
+      {
+        "label": "Now and ever…",
+        "text": "O dread Champion who cannot be put to confusion, despise not our petitions, O good and all-praised Theotokos. Strengthen the life of Orthodox Christians; save those who have been called upon to govern us, leading us all to that victory which is from heaven, for thou art she who gavest birth to God and alone art blessed."
+      }
+    ],
+    "litanyExclamation": "For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.",
+    "transition": "In the Name of the Lord, Father, bless.",
+    "trinityGlory": "Glory to the holy, consubstantial, life-giving, and undivided Trinity, always, now and ever and unto ages of ages."
+  },
+
+  "sixPsalms": {
+    "_note": "Psalms 3, 37(38), 62(63), 87(88), 102(103), 142(143). The intro and midGlory are fixed; psalm texts come from this file (OCA 2021 translation). The six psalms are divided into two groups of three, with the midGlory between them.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 4-7",
+    "intro": "Glory to God in the highest and on earth peace, good will towards men. (×3)\n\nO Lord, open my lips, and my mouth shall show forth Thy praise. (×2)",
+    "firstThree": {
+      "_note": "Psalms 3, 37(38), 62(63) — read from psalter.json at assembly time.",
+      "psalmNumbers": [3, 37, 62]
+    },
+    "midGlory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia, glory to Thee, O God. (×3)\n\nLord, have mercy. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+    "lastThree": {
+      "_note": "Psalms 87(88), 102(103), 142(143) — read from psalter.json at assembly time. The priest reads the twelve Morning Prayers silently during these psalms.",
+      "psalmNumbers": [87, 102, 142]
+    },
+    "andAgain": {
+      "_note": "Each of the Six Psalms ends with 'And again:' repeating selected verses. From the OCA Office of Daily Matins (2021).",
+      "3": "I lie down and sleep; I wake again, for the Lord sustains me.",
+      "37": "Do not forsake me, O Lord. O my God, be not far from me. Make haste to help me, O Lord, my salvation.",
+      "62": "I meditate on Thee in the watches of the night; for Thou hast been my help, and in the shadow of Thy wings I sing for joy. My soul clings to Thee; Thy right hand upholds me.",
+      "87": "O Lord, my God, I call for help by day; I cry out in the night before Thee. Let my prayer come before Thee, incline Thine ear to my cry.",
+      "102": "In all places of His dominion, bless the Lord, O my soul.",
+      "142": "In Thy faithfulness answer me, in Thy righteousness. Enter not into judgment with Thy servant. (×2)\nLet Thy good spirit lead me on a level path."
+    }
+  },
+
+  "godIsTheLord": {
+    "_note": "Sung after the Great Litany on non-Alleluia days. The refrain is sung in the tone of the first troparion. The four verses are from Psalm 117 (118).",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 8",
+    "refrain": "God is the Lord and has revealed Himself to us. Blessed is He that comes in the Name of the Lord.",
+    "verses": [
+      "O give thanks unto the Lord, for He is good; for His mercy endures forever.",
+      "All nations compassed me round about, but in the Name of the Lord have I driven them back.",
+      "I shall not die, but live, and declare the works of the Lord.",
+      "The stone which the builders refused is become the head stone of the corner: this is the Lord's doing, and it is marvelous in our eyes."
+    ]
+  },
+
+  "alleluia": {
+    "_note": "Replaces 'God is the Lord' on Lenten weekdays and other Alleluia days. Tone 8.",
+    "_source": "Not in OCA Daily Matins PDF (Lenten weekday); source unverified",
+    "tone": 8,
+    "refrain": "Alleluia, alleluia, alleluia.",
+    "verses": [
+      "Out of the night my spirit seeks Thee early, O God, for Thy commandments are a light upon the earth.",
+      "Learn righteousness, ye that dwell upon the earth.",
+      "Jealousy shall seize upon an uninstructed people."
+    ]
+  },
+
+  "littleLitany": {
+    "_note": "The Little Litany is used between kathismata and their sessional hymns, and after Canticle odes. Different exclamations are used at different points.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 9-10",
+    "opening": "Again and again in peace, let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-virgin Mary with all the saints, let us commend ourselves and each other, and all our life unto Christ our God.",
+    "commemorationResponse": "To Thee, O Lord.",
+    "exclamations": {
+      "afterKathisma1": "For Thine is the might, and Thine is the Kingdom and the power and the glory, of the Father and of the Son and of the Holy Spirit, now and ever and unto ages of ages.",
+      "afterKathisma2": "For Thou art a good God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.",
+      "afterOde3": "For Thou art our God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.",
+      "afterOde6": "For Thou art the King of peace and the Savior of our souls, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.",
+      "afterOde9": "For all the powers of heaven praise Thee, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages."
+    }
+  },
+
+  "polyeleios": {
+    "_note": "Psalms 134(135) and 135(136), known as the Polyeleios ('of many mercies'). Sung on Sundays and polyeleos-rank feasts. Selected verses given here; the full psalms are in psalter.json.",
+    "_source": "Not in OCA Daily Matins PDF (Sunday/festal); source unverified",
+    "psalm134": {
+      "label": "Psalm 134 (135)",
+      "refrain": "Alleluia.",
+      "verses": [
+        "Praise ye the Name of the Lord; O ye servants, praise the Lord.",
+        "Blessed is the Lord out of Zion, Who dwelleth in Jerusalem."
+      ]
+    },
+    "psalm135": {
+      "label": "Psalm 135 (136)",
+      "refrain": "For His mercy endureth forever.",
+      "verses": [
+        "O give thanks unto the Lord, for He is good, for His mercy endureth forever.",
+        "O give thanks unto the God of gods, for His mercy endureth forever.",
+        "O give thanks unto the Lord of lords, for His mercy endureth forever.",
+        "Who alone hath wrought great wonders, for His mercy endureth forever.",
+        "Who by understanding made the heavens, for His mercy endureth forever.",
+        "Who spread out the earth upon the waters, for His mercy endureth forever.",
+        "Who made the great lights, for His mercy endureth forever.",
+        "The sun to rule over the day, for His mercy endureth forever.",
+        "The moon and stars to rule over the night, for His mercy endureth forever.",
+        "Who remembered us when we were brought low, for His mercy endureth forever.",
+        "And hath delivered us from our enemies, for His mercy endureth forever.",
+        "Who giveth food to all flesh, for His mercy endureth forever.",
+        "O give thanks unto the God of heaven, for His mercy endureth forever."
+      ]
+    }
+  },
+
+  "evlogitaria": {
+    "_note": "The Resurrectional Evlogitaria — 'Blessed art Thou, O Lord, teach me Thy statutes.' Troparia sung with the refrain between them. Sundays only (omitted when a great feast of the Lord falls on Sunday). Tone 5.",
+    "_source": "Not in OCA Daily Matins PDF (Sunday only); source unverified",
+    "tone": 5,
+    "refrain": "Blessed art Thou, O Lord, teach me Thy statutes.",
+    "troparia": [
+      "The company of the Angels was amazed when they beheld Thee numbered among the dead. Yet, O Savior, destroying the stronghold of death, Thou didst raise Adam with Thee, and didst free all from hades.",
+      "Why, O ye women disciples, do ye mingle myrrh with your tears of compassion? The radiant Angel within the sepulchre cried unto the myrrh-bearing women: Behold the grave, and understand, for the Savior is risen from the tomb.",
+      "Very early the myrrh-bearing women ran lamenting unto Thy tomb. But an Angel came toward them, saying: The time for lamentation is past; weep not, but announce unto the Apostles the Resurrection.",
+      "The myrrh-bearing women mourned, as bearing spices they drew near Thy tomb, O Savior. But the Angel spake unto them, saying: Why number ye the living among the dead? For as God He is risen from the tomb.",
+      {
+        "_note": "Glory…",
+        "prefix": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "text": "We worship the Father, as also His Son and the Holy Spirit, the Holy Trinity in one Essence, crying with the Seraphim: Holy, holy, holy art Thou, O Lord."
+      },
+      {
+        "_note": "Now…",
+        "prefix": "Now and ever and unto ages of ages. Amen.",
+        "text": "As thou didst bear the Giver of life, O Virgin, thou didst redeem Adam from sin, and didst give to Eve joy in place of sadness; and He Who was incarnate of thee, both God and man, hath restored to life those who had fallen therefrom."
+      }
+    ],
+    "finalRefrain": "Alleluia, alleluia, alleluia, glory to Thee, O God. (×3)"
+  },
+
+  "letEverythingThatBreathes": {
+    "_note": "Short response sung before the Gospel reading at Matins. Uses Psalm 150:1.",
+    "_source": "Not in OCA Daily Matins PDF (festal/Sunday); source unverified",
+    "text": "Let everything that breathes praise the Lord.\nLet everything that breathes praise the Lord.\nPraise God in His sanctuary; praise Him in His mighty firmament.\nLet everything that breathes praise the Lord."
+  },
+
+  "gospel": {
+    "_note": "Introductory dialogue before the Gospel reading.",
+    "_source": "Not in OCA Daily Matins PDF (festal/Sunday); source unverified",
+    "intro": "Let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "exclamation": "For holy art Thou, O our God, Who restest in the saints, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages.",
+    "amen": "Amen."
+  },
+
+  "havingBeheld": {
+    "_note": "Sung after the Gospel on Sundays. Same text as in paschal-matins-fixed.json.",
+    "_source": "Not in OCA Daily Matins PDF (Sunday only); source unverified",
+    "text": "Having beheld the Resurrection of Christ, let us worship the holy Lord Jesus, the only sinless One. We worship Thy Cross, O Christ, and Thy holy Resurrection we hymn and glorify. For Thou art our God, and we know none other beside Thee; we call upon Thy name. O come, all ye faithful, let us worship Christ's holy Resurrection, for, behold, through the Cross joy hath come to all the world. Ever blessing the Lord, we hymn His Resurrection; for, having endured crucifixion, He hath destroyed death by death."
+  },
+
+  "psalm50": {
+    "_note": "Psalm 50 (51) — the great penitential psalm, read at every Matins. Full text in psalter.json at key '50'. Reference only here.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 10-11",
+    "psalmNumber": 50
+  },
+
+  "ode8Transition": {
+    "_note": "Sung after the Eighth Ode of the Canon, before the katavasia.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 11",
+    "text": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages."
+  },
+
+  "ode9Exclamation": {
+    "_note": "The priest's exclamation before the Magnificat, announcing Ode 9.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 11",
+    "text": "The Theotokos and the Mother of the Light let us magnify in song."
+  },
+
+  "postGospel": {
+    "_note": "Responses surrounding the post-Gospel stichera.",
+    "_source": "Not in OCA Daily Matins PDF (Sunday/festal); source unverified",
+    "gloryVerse": "Through the prayers of the Apostles, O Merciful One, blot out the multitude of our transgressions.",
+    "theotokion": "Through the prayers of the Theotokos, O Merciful One, blot out the multitude of our transgressions.",
+    "verse10": "Have mercy on me, O God, according to Thy great mercy; according to the multitude of Thy tender mercies blot out my transgressions.",
+    "petition": "Save, O God, Thy people and bless Thine inheritance. Visit Thy world with mercy and compassions. Exalt the horn of Orthodox Christians, and send down upon us Thine abundant mercies: through the intercessions of our most pure Lady the Theotokos and ever-virgin Mary, by the might of the precious and life-giving Cross, by the protection of the honorable bodiless Powers of heaven, at the supplication of the honorable, glorious Prophet, Forerunner, and Baptist John, of the holy, glorious, and all-laudable Apostles, and of all the saints: we beseech Thee, O most merciful Lord, hearken unto the prayers of us sinners who make our supplications unto Thee, and have mercy on us.",
+    "petitionExclamation": "Through the grace and compassions and love for mankind of Thine Only-begotten Son, with Whom Thou art blessed, together with Thine all-holy and good and life-giving Spirit, now and ever and unto ages of ages.",
+    "sticheronType": {
+      "_note": "On Sundays, one of the 11 eothinon stichera is sung here, corresponding to the Gospel number. These are variable — stored in Octoechos data (NOT YET IN DATA)."
+    }
+  },
+
+  "itIsTrulyMeet": {
+    "_note": "Sung after Ode 9 of the Canon on most days. On great feasts, replaced by the feast's Ode 9 irmos (the 'zadostoinik').",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 12",
+    "text": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee."
+  },
+
+  "magnificat": {
+    "_note": "The Song of the Theotokos (Magnificat), Luke 1:46-55, sung before Ode 9 of the Canon. Each verse is followed by the refrain 'More honorable than the Cherubim…'. Omitted on certain great feasts which appoint their own Ode 9 refrains.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 12",
+    "refrain": "More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee.",
+    "verses": [
+      "My soul magnifies the Lord, and my spirit rejoices in God my Savior.",
+      "For He has regarded the low estate of His handmaiden; for behold, henceforth all generations shall call me blessed.",
+      "For He Who is mighty has done great things for me, and Holy is His Name; and His mercy is on those who fear Him, from generation to generation.",
+      "He has shown strength with His arm. He has scattered the proud in the imagination of their hearts.",
+      "He has put down the mighty from their thrones and exalted those of low degree.",
+      "He has filled the hungry with good things and the rich He has sent empty away.",
+      "He has helped His servant Israel, in remembrance of His mercy, as He spoke to our fathers, to Abraham and to his posterity forever."
+    ]
+  },
+
+  "lauds": {
+    "_note": "The Lauds — Psalms 148, 149, 150 with stichera interspersed. On Sundays, typically 8 stichera (4 resurrectional + 4 from Menaion). The 'sungOpening' is the choir's intonation when the Great Doxology is appointed; the 'psalmVerses' are the reader's continuation.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 12-13 (read) and pp. 19-20 (sung/Great Doxology)",
+    "sungOpening": {
+      "_note": "Choir intonation for the Great Doxology ending (Appendix). Different refrain from the read version.",
+      "verses": [
+        "Let everything that breathes praise the Lord! Praise the Lord from the heavens! Praise Him in the highest! To Thee, O God, is due a song!",
+        "Praise Him, all you angels of His! Praise Him, all His hosts! To Thee, O God, is due a song!"
+      ]
+    },
+    "psalmVerses": [
+      "Praise the Lord from the heavens, praise Him in the heights. To Thee praise is due, O God.",
+      "Praise Him, all His angels, praise Him, all His host. To Thee praise is due, O God.",
+      "Praise Him, sun and moon, praise Him, all you shining stars.",
+      "Praise Him, you highest heavens, and you waters above the heavens.",
+      "Let them praise the Name of the Lord. For He commanded and they were created.",
+      "And He established them for ever and ever; He fixed their bounds which cannot be passed.",
+      "Praise the Lord from the earth, you sea monsters and all deeps, fire and hail, snow and frost, stormy wind fulfilling His command.",
+      "Mountains and all hills, fruit trees and all cedars.",
+      "Beasts and all cattle, creeping things and flying birds.",
+      "Kings of the earth and all peoples, princes and all rulers of the earth.",
+      "Young men and maidens together, old men and children. Let them praise the Name of the Lord, for His Name alone is exalted;",
+      "His glory is above earth and heaven. He has raised up a horn for His people, praise for all His saints, for the people of Israel who are near to Him.",
+      "Sing to the Lord a new song, His praise in the assembly of the faithful.",
+      "Let Israel be glad in his Maker, let the sons of Zion rejoice in their King.",
+      "Let them praise His Name with dancing, making melody to Him with timbrel and lyre.",
+      "For the Lord takes pleasure in His people; He adorns the humble with victory.",
+      "Let the faithful exult in glory; let them sing for joy on their couches.",
+      "Let the high praises of God be in their throats and two-edged swords in their hands,",
+      "to wreak vengeance on the nations and chastisement on the peoples,",
+      "to bind their kings with chains and their nobles with fetters of iron,",
+      "to execute on them the judgment written. This is glory for all His faithful ones.",
+      "Praise God in His sanctuary; praise Him in His mighty firmament."
+    ],
+    "sticheraVerses": {
+      "_note": "The last N psalm verses serve as stichoi for the lauds stichera. The Psalm 150 verses used as stichoi when 4 or 8 stichera are appointed.",
+      "on4": [
+        "Praise Him for His mighty deeds; praise Him according to His exceeding greatness.",
+        "Praise Him with trumpet sound; praise Him with lute and harp.",
+        "Praise Him with timbrel and dance; praise Him with strings and pipe.",
+        "Praise Him with sounding cymbals; praise Him with loud clashing cymbals. Let everything that breathes praise the Lord."
+      ],
+      "on6": [
+        "To execute on them the judgment written. This is glory for all His faithful ones.",
+        "Praise God in His sanctuary; praise Him in His mighty firmament.",
+        "Praise Him for His mighty deeds; praise Him according to His exceeding greatness.",
+        "Praise Him with trumpet sound; praise Him with lute and harp.",
+        "Praise Him with timbrel and dance; praise Him with strings and pipe.",
+        "Praise Him with sounding cymbals; praise Him with loud clashing cymbals. Let everything that breathes praise the Lord."
+      ],
+      "on8": [
+        "Let them praise the Name of the Lord, for His Name alone is exalted;",
+        "His glory is above earth and heaven. He has raised up a horn for His people, praise for all His saints.",
+        "Sing to the Lord a new song, His praise in the assembly of the faithful.",
+        "Let Israel be glad in his Maker, let the sons of Zion rejoice in their King.",
+        "Praise Him for His mighty deeds; praise Him according to His exceeding greatness.",
+        "Praise Him with trumpet sound; praise Him with lute and harp.",
+        "Praise Him with timbrel and dance; praise Him with strings and pipe.",
+        "Praise Him with sounding cymbals; praise Him with loud clashing cymbals. Let everything that breathes praise the Lord."
+      ]
+    },
+    "doxologyTransition": {
+      "_note": "After the final sticheron or the 'Now and ever…' theotokion, the priest exclaims:",
+      "text": "Glory to Thee Who hast shown us the light!"
+    },
+    "mostBlessed": {
+      "_note": "Theotokion sung after the Lauds stichera on Sundays, at 'Now and ever…'",
+      "_source": "Not in OCA Daily Matins PDF (Sunday only); source unverified",
+      "text": "Most blessed art thou, O Virgin Theotokos, for through Him Who was incarnate of thee, hades is led captive, Adam recalled, the curse destroyed, Eve freed, death slain, and we are given life. Wherefore, we cry out in praise: Blessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+    }
+  },
+
+  "greatDoxology": {
+    "_note": "The Great Doxology — sung on Sundays and feasts of doxology rank or higher. Ends with the Trisagion. The 'Lord, Thou hast been our refuge…' section comes AFTER the threefold 'Blessed art Thou' and BEFORE the Trisagion.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 20-21 (Appendix)",
+    "text": "Glory to God in the highest, and on earth peace, good will towards men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord, heavenly King, God the Father Almighty. O Lord, the Only-Begotten Son, Jesus Christ, and the Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, Who takest away the sin of the world, have mercy on us. Thou that takest away the sins of the world, receive our prayer. Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou alone art holy, Thou alone art Lord, Jesus Christ, in the glory of God the Father. Amen.\n\nEvery day will I give thanks to Thee and praise Thy Name for ever and ever.\n\nVouchsafe, O Lord, to keep us this day without sin. Blessed art Thou, O Lord, God of our fathers, and praised and glorified is Thy Name forever. Amen. Let Thy mercy be upon us, O Lord, as we have set our hope on Thee.\n\nBlessed art Thou, O Lord, teach me Thy statutes. (×3)\n\nLord, Thou hast been our refuge from generation to generation. I said: Lord, have mercy on me, heal my soul, for I have sinned against Thee. Lord, I have fled unto Thee. Teach me to do Thy will, for Thou art my God. For with Thee is the fountain of life, and in Thy light shall we see light. O continue Thy mercy unto those who know Thee.",
+    "trisagion": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nHoly Immortal, have mercy on us.\n\nHoly God, Holy Mighty, Holy Immortal, have mercy on us."
+  },
+
+  "troparionAfterDoxology": {
+    "_note": "On Sundays, one of two troparia is sung after the Great Doxology, alternating by tone: odd tones (1,3,5,7) = 'Today salvation'; even tones (2,4,6,8) = 'Having risen from the tomb'. These are FIXED texts — the tone only determines which one is used.",
+    "_source": "Not in OCA Daily Matins PDF (Sunday only); source unverified",
+    "todaySalvation": {
+      "tones": [1, 3, 5, 7],
+      "tone": 4,
+      "text": "Today salvation has come to the world. Let us sing to Him Who rose from the tomb, the Author of our life. Having destroyed death by death, He has given us the victory and great mercy."
+    },
+    "havingRisen": {
+      "tones": [2, 4, 6, 8],
+      "tone": 2,
+      "text": "Having risen from the tomb, and having burst the bonds of hades, Thou hast destroyed the sentence of death, O Lord, delivering all from the snares of the enemy. Manifesting Thyself to Thine Apostles, Thou didst send them forth to preach; and through them hast granted Thy peace to the world, O Thou Who alone art plenteous in mercy."
+    }
+  },
+
+  "aposticha": {
+    "_note": "Matins aposticha — sung at the end of Daily Matins (Small Doxology ending). The verses are from Psalm 89 (90) and are used when the aposticha is from the Octoechos.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 15",
+    "verses": [
+      "Satisfy us in the morning with Thy steadfast love, that we may rejoice and be glad all our days. Make us glad as many days as Thou hast afflicted us, and as many years as we have seen evil. Let Thy work be manifest to Thy servants, and Thy glorious power to their children.",
+      "Let the favor of the Lord our God be upon us, and establish Thou the work of our hands upon us; yea, the work of our hands, establish Thou it."
+    ],
+    "versePsalm": "89:16-19"
+  },
+
+  "itIsGood": {
+    "_note": "Read after the final aposticha sticheron, before the Trisagion prayers, in the Small Doxology ending of Matins.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, p. 15",
+    "text": "It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High; to declare Thy steadfast love in the morning, and Thy truth by night."
+  },
+
+  "smallDoxology": {
+    "_note": "The Small (read) Doxology — used on weekdays when the Great Doxology is not appointed. Read, not sung. Differs from the Great Doxology in order and ending: the 'Lord, Thou hast been our refuge…' comes earlier, three different 'Blessed art Thou' lines are used, and it concludes with 'Thy mercy… To Thee belongeth worship…' instead of the Trisagion.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 13-14",
+    "text": "Glory to God in the highest, and on earth peace, good will towards men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord, heavenly King, God the Father Almighty. O Lord, the Only-Begotten Son, Jesus Christ, and the Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, Who takest away the sin of the world, have mercy on us. Thou that takest away the sins of the world, receive our prayer. Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou alone art holy, Thou alone art Lord, Jesus Christ, in the glory of God the Father. Amen.\n\nEvery day will I give thanks to Thee and praise Thy Name for ever and ever. Lord, Thou hast been our refuge from generation to generation. I said: Lord, have mercy on me, heal my soul, for I have sinned against Thee. Lord, I have fled unto Thee. Teach me to do Thy will, for Thou art my God. For with Thee is the fountain of life, and in Thy light shall we see light. O continue Thy mercy unto those who know Thee.\n\nVouchsafe, O Lord, to keep us this day without sin. Blessed art Thou, O Lord, God of our fathers, and praised and glorified is Thy Name forever. Amen. Let Thy mercy be upon us, O Lord, as we have set our hope on Thee. Blessed art Thou, O Lord, teach me Thy statutes. Blessed art Thou, O Master, make me to understand Thy commandments. Blessed art Thou, O Holy One, enlighten me with Thy precepts.\n\nThy mercy, O Lord, endureth forever: despise not the works of Thy hands. To Thee belongeth worship, to Thee belongeth praise, to Thee belongeth glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
+  },
+
+  "litanies": {
+    "_note": "The morning litany of completion parallels the evening litany from vespers-fixed.json, but says 'morning' instead of 'evening' and 'day' instead of 'evening/night'.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 14-15 and pp. 21-22",
+    "morning": {
+      "opening": "Let us complete our morning prayer unto the Lord.",
+      "response": "Lord, have mercy.",
+      "petition1": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+      "petitions": [
+        "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+        "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+        "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+        "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+        "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+        "A Christian ending to our life, painless, blameless, and peaceful, and a good defense before the dread Judgment Seat of Christ, let us ask."
+      ],
+      "petitionResponse": "Grant this, O Lord.",
+      "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-virgin Mary with all the saints, let us commend ourselves and each other, and all our life unto Christ our God.",
+      "commemorationResponse": "To Thee, O Lord.",
+      "exclamation": "For Thou art a good God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages."
+    }
+  },
+
+  "prayers": {
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 15-16 and pp. 22-23",
+    "bowHeadsMorning": {
+      "_note": "The head-bowing prayer at Matins, including the full prayer text and the exclamation.",
+      "dialogue": {
+        "peace": "Peace be unto all.",
+        "response": "And to thy spirit.",
+        "invitation": "Let us bow our heads unto the Lord.",
+        "invitationResponse": "To Thee, O Lord."
+      },
+      "prayer": "O holy Lord Who dwellest on high and regardest the humble of heart, and with Thine all-seeing eye dost behold all creation: unto Thee have we bowed the neck of our soul and body, and we entreat Thee, O Holy of holies: stretch forth Thine invisible hand from Thy holy dwelling-place, and bless us all. And if in any way we have sinned, whether voluntarily or involuntarily, forgive, inasmuch as Thou art a good God, and lovest mankind, granting us Thine earthy and heavenly good things.",
+      "exclamation": "For Thine it is to show mercy and to save us, O our God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages."
+    }
+  },
+
+  "dismissal": {
+    "_note": "The dismissal dialogue at the end of Matins.",
+    "_source": "OCA Office of Daily Matins, 2021-11-19, pp. 17-18 and pp. 22-23",
+    "wisdom": "Wisdom.",
+    "bless": "Father, bless.",
+    "blessed": "Blessed be He Who Is, Christ our God, always, now and ever and unto ages of ages.",
+    "confirm": "Confirm, O God, the holy Orthodox faith of Orthodox Christians, unto ages of ages.",
+    "theotokos": "Most holy Theotokos, save us.",
+    "theotokosResponse": "More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee.",
+    "glory": "Glory to Thee, O Christ our God and our hope, glory to Thee.",
+    "finalGlory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen. Lord, have mercy. (×3) Father, bless."
+  },
+
+  "prokeimenon": {
+    "_note": "Introductory dialogue before the matins prokeimenon (same as vespers).",
+    "_source": "Not in OCA Daily Matins PDF; source unverified",
+    "intro": "Let us attend. Peace be unto all.",
+    "announcement": "Wisdom. The prokeimenon in the ___ tone."
+  }
+}

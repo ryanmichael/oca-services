@@ -1,0 +1,167 @@
+{
+  "_meta": {
+    "description": "Menaion — March 25. The Annunciation of our Most Holy Lady Theotokos and Ever-Virgin Mary.",
+    "feastRank": "greatFeast",
+    "feastType": "theotokos",
+    "tone": 4,
+    "source": "OCA Department of Liturgical Music and Translations — 2026-0325-texts-matins-yy.docx",
+    "notes": [
+      "One of the 12 Great Feasts (Theotokos feast).",
+      "When Annunciation falls on a Lenten weekday: God is the Lord (not Alleluia), but Small Doxology (read, not sung), and Triodion aposticha are included.",
+      "Canon heirmoi only — full troparia not included in OCA service text."
+    ]
+  },
+
+  "troparion": {
+    "tone": 4,
+    "label": "Troparion of the Annunciation",
+    "text": "Today is the beginning of our salvation,\nthe revelation of the eternal mystery!\nThe Son of God becomes the Son of the Virgin\nas Gabriel announces the coming of Grace.\nTogether with him let us cry to the Theotokos:\n\"Rejoice, O Full of Grace,\nthe Lord is with you!\""
+  },
+
+  "kontakion": {
+    "tone": 8,
+    "label": "Kontakion of the Annunciation",
+    "text": "O victorious leader of triumphant hosts!\nWe, your servants delivered from evil\nsing our grateful thanks to you, O Theotokos.\nAs you possess invincible might set us free from every calamity\nso that we may sing: \"Rejoice, O unwedded Bride!\""
+  },
+
+  "matins": {
+
+    "magnification": {
+      "_note": "Sung at the Polyeleios with selected psalm verses. The magnification refrain alternates with the verses.",
+      "refrain": "With the Archangel's voice\nwe cry aloud to you, O Pure Virgin:\n\"Rejoice, O Full of Grace,\nfor the Lord is with you!\"",
+      "psalmVerses": [
+        { "text": "Give the King Your judgments, O God, and Your righteousness unto the King's son.", "ref": "Ps 71:1" },
+        { "text": "He shall come down as rain upon a fleece.", "ref": "Ps 71:6a" }
+      ]
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "From day to day proclaim the salvation of our God!",
+      "refrainRef": "Ps 95:2a",
+      "verse": "Sing to the Lord a new song; sing to the Lord, all the earth!",
+      "verseRef": "Ps 95:1"
+    },
+
+    "gospel": {
+      "reading": "Luke 1:39-49, 56",
+      "number": 4,
+      "_note": "The Visitation — Mary visits Elizabeth. 'My soul magnifies the Lord…'"
+    },
+
+    "postGospelSticheron": {
+      "tone": 2,
+      "author": "Cosmas the Monk",
+      "text": "Today Gabriel announces the good tidings to her who is full of grace:\n\"Rejoice, unwedded Maiden!\nBe not amazed at my strange appearance, nor be afraid.\nI am an Archangel.\nThe serpent once beguiled Eve,\nbut now I announce to you the good tidings of joy, O most pure one.\nYou shall remain inviolate and shall give birth to the Lord.\""
+    },
+
+    "canon": {
+      "tone": 4,
+      "author": "John the Monk",
+      "_note": "Heirmoi only from the OCA text. Full troparia not provided. During Lent, the Triodion canon odes are also sung alongside the feast canon.",
+
+      "ode1": {
+        "irmos": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her conceiving."
+      },
+      "ode3": {
+        "irmos": "As you are a living and abundant spring,\nestablish, O Theotokos, those who sing your praise,\nforming a spiritual chorus;\nand in your divine glory\ncount them worthy of crowns of glory.",
+        "_note": "On Ode 3, the Biblical Canticle is NOT SUNG; Triodion verses are sung with refrain 'Glory to You, our God, glory to You!'"
+      },
+      "ode4": {
+        "irmos": "He Who sits in glory on the throne of the Godhead,\nJesus, the transcendent God, has come in a light cloud,\nand by His immaculate hand has saved those who cry:\n\"Glory to Your Power, O Christ!\""
+      },
+      "ode5": {
+        "irmos": "All things were amazed at your divine glory,\nfor you, O Virgin, who have not known wedlock,\nhave held in your womb God Who is above all,\nand you gave birth to a timeless Son,\nWho bestows salvation upon all who sing your praises."
+      },
+      "ode6": {
+        "irmos": "Prefiguring the three days' burial,\nthe Prophet Jonah in the whale cried out in prayer:\n\"Deliver me from corruption, O Jesus, King of Hosts!\""
+      },
+      "ode7": {
+        "irmos": "The Godly-minded Children\nwould not worship the creation rather than the Creator,\nbut bravely trampling on the threat of fire, they rejoiced and sang:\n\"Blessed are You and praised above all, O Lord God of our Fathers!\""
+      },
+      "ode8": {
+        "irmos": "Hear, O Maiden, pure Virgin:\nlet Gabriel tell you the counsel of the Most High which is ancient and true!\nMake ready to receive God,\nfor through you, He Who cannot be contained will dwell among mortals.\nTherefore, rejoicing I cry aloud:\n\"Bless the Lord, all you works of the Lord!\"",
+        "_note": "After the festal Ode 8, the Triodion Ode 8 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 8."
+      },
+      "ode9": {
+        "megalynarion": "O earth, announce good tidings of great joy:\nO heavens, praise the glory of God!",
+        "irmos": "Since she is a living Ark of God\nlet no profane hand touch the Theotokos.\nBut let the lips of believers\nunceasingly sing to her,\npraising her in joy with the angel's song:\n\"Rejoice, O Lady, full of grace, the Lord is with you!\"",
+        "_note": "After the festal Ode 9, the Triodion Ode 9 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 9."
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "order": 1,
+        "melody": "While the disciples",
+        "text": "The Captain of the Angelic Hosts\nwas sent by God the Almighty\nto the pure Virgin\nto announce the good tidings of a strange and secret wonder:\nthat as a man, God would be born\nof her without seed,\nfashioning again the whole race of man.\nO people, announce the good tidings of the renewal of the world!"
+      },
+      {
+        "order": 2,
+        "melody": "Hearken, ye women",
+        "text": "The mystery of God from all eternity\nis made manifest today:\nthe Word of God in His mercy becomes the Son of the Virgin,\nand Gabriel proclaims the joy of the Annunciation.\nLet us with him exclaim to her:\n\"Rejoice, O Mother of the Lord!\""
+      }
+    ],
+
+    "lauds": {
+      "_note": "The Praises are read, not sung (Lenten weekday). 4 stichera of the feast are sung at the appointed psalm verses.",
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness!",
+          "verseRef": "Ps 150:2",
+          "tone": 1,
+          "melody": "Joy of the Heavenly Hosts",
+          "text": "From the vault of heaven Gabriel flew down\nand came to Nazareth;\nand standing before the Virgin Mary, he cried to her: \"Rejoice!\nYou shall conceive a Son, more ancient than Adam,\nthe Maker of all things and the Deliverer of those who cry to you:\n'Rejoice, O pure Virgin!'\""
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp!",
+          "verseRef": "Ps 150:3",
+          "repeat": true,
+          "_note": "Repeat: 'From the vault of heaven…'"
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe!",
+          "verseRef": "Ps 150:4",
+          "tone": 1,
+          "text": "Gabriel brought the Good News from heaven to the Virgin,\nand he cried out the greeting, \"Rejoice!\nYou shall conceive Him Who can be contained in you,\nyet Whom the world cannot contain;\nand you shall be seen to bear within your womb\nHim Who shone forth from the Father before the morning star.\""
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord!",
+          "verseRef": "Ps 150:5",
+          "tone": 1,
+          "text": "The coeternal Word of the Father Who is from all eternity,\nwithout being parted from things on high,\nnow has come among those below,\nin His infinite compassion taking pity upon our fall;\nHe has assumed the poverty of Adam\nand taken a form that is alien to Him."
+        }
+      ],
+      "doxastikon": {
+        "tone": 2,
+        "author": "Theophanes",
+        "text": "The mystery from all eternity is revealed today,\nand the Son of God becomes the Son of man,\nthat, by sharing in what is worse, He may make me share in what is better.\nAdam was cheated of old;\nhe did not become God, as he desired.\nNow God becomes man, that He may make Adam God.\nLet creation rejoice, let our nature exult;\nfor the Archangel stands in awe before the Virgin\nand brings the greeting \"Rejoice!\" to take the place of Eve's sorrow.\nIn You merciful compassion, O our God, You became man,\nglory to You!"
+      }
+    },
+
+    "aposticha": {
+      "_note": "On Lenten weekdays, the aposticha come from the Triodion (for the day) with the feast Glory/Now. These Triodion stichera belong in a triodion file; the feast's contribution is only the Glory/Now.",
+      "glory": {
+        "tone": 8,
+        "author": "John the Monk",
+        "text": "Let the heavens be glad and let the earth rejoice:\nFor the Son Who is co-eternal with the Father,\nsharing His throne, and equally without beginning, has submitted Himself to emptying in His compassion and merciful love for mankind,\naccording to the good pleasure and the counsel of the Father;\nand He has gone to dwell in a Virgin's womb, sanctified by the Spirit.\nOh, wonder! God is come among men!\nHe Who cannot be contained is contained in a womb;\nthe Timeless enters time, and oh, great mystery:\nHis conception is without seed, His emptying past telling!\nSo great is this mystery!\nFor God empties Himself, takes flesh, and is fashioned as a Creature,\nwhen the angel tells the pure Virgin of her conception:\n\"Rejoice, O Full of grace! The Lord Who has great mercy is with thee!\""
+      }
+    }
+  },
+
+  "vespers": {
+    "_note": "Vespers texts for the Annunciation are not included in this source document. To be populated from the Vespers service text when available.",
+
+    "troparion": {
+      "tone": 4,
+      "label": "Troparion of the Annunciation",
+      "text": "Today is the beginning of our salvation,\nthe revelation of the eternal mystery!\nThe Son of God becomes the Son of the Virgin\nas Gabriel announces the coming of Grace.\nTogether with him let us cry to the Theotokos:\n\"Rejoice, O Full of Grace,\nthe Lord is with you!\""
+    },
+
+    "kontakion": {
+      "tone": 8,
+      "label": "Kontakion of the Annunciation",
+      "text": "O victorious leader of triumphant hosts!\nWe, your servants delivered from evil\nsing our grateful thanks to you, O Theotokos.\nAs you possess invincible might set us free from every calamity\nso that we may sing: \"Rejoice, O unwedded Bride!\""
+    }
+  }
+}

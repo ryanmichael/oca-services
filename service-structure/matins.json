@@ -1,0 +1,866 @@
+{
+  "_meta": {
+    "service": "matins",
+    "description": "Matins (Orthros) — the major morning service. Served daily; most elaborate on Sundays and great feasts. This skeleton covers the full Sunday/festal form; weekday variations noted in conditions.",
+    "source": "OCA Typikon / Russian Typikon practice",
+    "version": "0.1.0",
+    "notes": [
+      "At All-Night Vigil, Matins follows Vespers directly (no opening prayers).",
+      "Weekday Matins omits Polyeleios, Evlogitaria, Gospel, Lauds stichera, and uses read (small) Doxology instead of sung (great) Doxology.",
+      "Lenten weekday Matins replaces 'God is the Lord' with 'Alleluia' and adds Lenten troparia.",
+      "The Canon (Ode 1–9) is the most complex variable section — initially represented as a single placeholder block."
+    ]
+  },
+
+  "sections": [
+
+    {
+      "id": "opening",
+      "label": "Opening",
+      "note": "Omitted when Matins follows Midnight Office or at All-Night Vigil (Matins begins directly with Six Psalms).",
+      "condition": "serviceType !== 'all-night-vigil' && !afterMidnightOffice",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "opening-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "opening.exclamation"
+        },
+        {
+          "id": "opening-amen",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "opening.amen"
+        },
+        {
+          "id": "heavenly-king",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.heavenlyKing"
+        },
+        {
+          "id": "trisagion",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.trisagion"
+        },
+        {
+          "id": "glory-now-short",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "most-holy-trinity",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.mostHolyTrinity"
+        },
+        {
+          "id": "lord-have-mercy-3",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.lordHaveMercyThrice"
+        },
+        {
+          "id": "glory-now-short-2",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        },
+        {
+          "id": "our-father",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "prayers.ourFather"
+        },
+        {
+          "id": "kingdom-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.ourFather.doxology"
+        },
+        {
+          "id": "lord-have-mercy-12",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "responses.lordHaveMercyTwelve"
+        },
+        {
+          "id": "glory-now-short-3",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryNow"
+        }
+      ]
+    },
+
+    {
+      "id": "six-psalms",
+      "label": "The Six Psalms",
+      "note": "Psalms 3, 37(38), 62(63), 87(88), 102(103), 142(143). Read in a darkened church. Absolute silence required — no movement, no censing until the midpoint. The reader begins with the doxology 'Glory to God in the highest' thrice.",
+      "blocks": [
+        {
+          "id": "six-psalms-intro",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "sixPsalms.intro"
+        },
+        {
+          "id": "six-psalms-first-three",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "sixPsalms.firstThree",
+          "note": "Psalms 3, 37(38), 62(63). Read from psalter.json."
+        },
+        {
+          "id": "six-psalms-mid-glory",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "sixPsalms.midGlory"
+        },
+        {
+          "id": "six-psalms-last-three",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "sixPsalms.lastThree",
+          "note": "Psalms 87(88), 102(103), 142(143). Priest reads the Morning Prayers silently during these."
+        }
+      ]
+    },
+
+    {
+      "id": "great-litany",
+      "label": "The Peace Litany",
+      "note": "Immediately after Six Psalms.",
+      "blocks": [
+        {
+          "id": "great-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.great"
+        },
+        {
+          "id": "great-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.great.exclamation"
+        }
+      ]
+    },
+
+    {
+      "id": "god-is-the-lord",
+      "label": "God is the Lord",
+      "note": "Sung on most days. Replaced by 'Alleluia' on Lenten weekdays, days with no feast at the Alleluia rank.",
+      "condition": "!isAlleluiaDay",
+      "blocks": [
+        {
+          "id": "god-is-the-lord-refrain",
+          "type": "variable",
+          "slot": "god-is-the-lord",
+          "resolvedBy": "godIsTheLordResolver",
+          "note": "Refrain sung in the tone of the first troparion. Four psalm verses from Ps 117(118)."
+        }
+      ]
+    },
+
+    {
+      "id": "alleluia-matins",
+      "label": "Alleluia",
+      "note": "Replaces 'God is the Lord' on Lenten weekdays (and certain other penitential days). Sung in Tone 8 with three verses.",
+      "condition": "isAlleluiaDay",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "alleluia-matins-refrain",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "alleluia"
+        }
+      ]
+    },
+
+    {
+      "id": "troparia-after-god-is-the-lord",
+      "label": "Troparia",
+      "note": "Resurrectional troparion (Sunday) or saint's troparion (weekday), with Glory/Now theotokion. Same tropariaAssembler pattern as Vespers.",
+      "blocks": [
+        {
+          "id": "troparia-matins",
+          "type": "variable",
+          "slot": "troparia",
+          "resolvedBy": "tropariaAssembler",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "structure": [
+            { "slot": "troparion-1", "label": null },
+            { "slot": "glory", "textKey": "doxology.gloryOnly", "optional": true },
+            { "slot": "troparion-2", "optional": true },
+            { "slot": "now", "textKey": "doxology.nowOnly", "optional": true },
+            { "slot": "theotokion", "optional": true }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "kathisma-reading-1",
+      "label": "Kathisma Reading",
+      "note": "Which kathisma is read depends on the day of the week and the liturgical season (kathisma schedule). Followed by a Little Litany and sessional hymn (sedalen).",
+      "blocks": [
+        {
+          "id": "kathisma-1-text",
+          "type": "variable",
+          "slot": "kathisma-1",
+          "resolvedBy": "kathismaResolver",
+          "note": "Kathisma number determined by the weekly Psalter schedule"
+        },
+        {
+          "id": "kathisma-1-little-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "kathisma-1-little-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.little.exclamation1"
+        },
+        {
+          "id": "kathisma-1-sedalen",
+          "type": "variable",
+          "slot": "sedalen-1",
+          "resolvedBy": "sedalenResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Sessional hymn — tone-specific from Octoechos (Sunday) or Menaion/Triodion"
+        }
+      ]
+    },
+
+    {
+      "id": "kathisma-reading-2",
+      "label": "Second Kathisma Reading",
+      "note": "Second kathisma with its own Little Litany and sessional hymn.",
+      "blocks": [
+        {
+          "id": "kathisma-2-text",
+          "type": "variable",
+          "slot": "kathisma-2",
+          "resolvedBy": "kathismaResolver"
+        },
+        {
+          "id": "kathisma-2-little-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "kathisma-2-little-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.little.exclamation2"
+        },
+        {
+          "id": "kathisma-2-sedalen",
+          "type": "variable",
+          "slot": "sedalen-2",
+          "resolvedBy": "sedalenResolver",
+          "sources": ["octoechos", "menaion", "triodion"]
+        }
+      ]
+    },
+
+    {
+      "id": "kathisma-reading-3",
+      "label": "Third Kathisma Reading",
+      "note": "Only on Sundays. Third kathisma with Little Litany and sessional hymn.",
+      "condition": "isSunday",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "kathisma-3-text",
+          "type": "variable",
+          "slot": "kathisma-3",
+          "resolvedBy": "kathismaResolver"
+        },
+        {
+          "id": "kathisma-3-little-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "kathisma-3-little-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.little.exclamation1"
+        },
+        {
+          "id": "kathisma-3-sedalen",
+          "type": "variable",
+          "slot": "sedalen-3",
+          "resolvedBy": "sedalenResolver",
+          "sources": ["octoechos", "menaion", "triodion"]
+        }
+      ]
+    },
+
+    {
+      "id": "polyeleios",
+      "label": "Polyeleios",
+      "note": "Psalms 134(135) and 135(136) — 'Praise the Name of the Lord' and 'O give thanks unto the Lord.' Sung on Sundays and polyeleos-rank feasts. Followed by a Little Litany.",
+      "condition": "isSunday || feastRank >= 'polyeleos'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "polyeleios-psalms",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "polyeleios"
+        },
+        {
+          "id": "polyeleios-magnification",
+          "type": "variable",
+          "slot": "magnification",
+          "resolvedBy": "magnificationResolver",
+          "optional": true,
+          "note": "Feast magnification (megalynarion) with selected psalm verses — for great feasts and polyeleos saints"
+        },
+        {
+          "id": "polyeleios-little-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "polyeleios-little-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.little.exclamation2"
+        }
+      ]
+    },
+
+    {
+      "id": "evlogitaria",
+      "label": "Resurrectional Evlogitaria",
+      "note": "Blessed art Thou, O Lord, teach me Thy statutes — the resurrectional evlogitaria (troparia of the 'Blessed are the blameless'). Sundays only (except when a great feast of the Lord falls on Sunday).",
+      "condition": "isSunday && !isGreatFeastOfLord",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "evlogitaria-text",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "evlogitaria"
+        }
+      ]
+    },
+
+    {
+      "id": "hypakoë",
+      "label": "Hypakoë",
+      "note": "Tone-specific Sunday hymn from the Octoechos, sung after the Evlogitaria and Little Litany. Sundays only.",
+      "condition": "isSunday",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "hypakoë-hymn",
+          "type": "variable",
+          "slot": "hypakoë",
+          "resolvedBy": "octoechosResolver",
+          "sources": ["octoechos"],
+          "note": "Key: toneN.sunday.matins.hypakoë — NOT YET IN DATA"
+        }
+      ]
+    },
+
+    {
+      "id": "antiphons-of-degrees",
+      "label": "Antiphons of Degrees",
+      "note": "Tone-specific antiphons from the Octoechos. Sundays only. Usually the first antiphon of the tone.",
+      "condition": "isSunday",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "antiphons-text",
+          "type": "variable",
+          "slot": "antiphons",
+          "resolvedBy": "octoechosResolver",
+          "sources": ["octoechos"],
+          "note": "Key: toneN.sunday.matins.antiphons — NOT YET IN DATA"
+        }
+      ]
+    },
+
+    {
+      "id": "prokeimenon-matins",
+      "label": "Matins Prokeimenon",
+      "note": "Tone-specific prokeimenon before the Gospel. Sundays and feasts with a Gospel reading.",
+      "condition": "hasGospel",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "prokeimenon-matins-intro",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "prokeimenon.intro"
+        },
+        {
+          "id": "prokeimenon-matins-text",
+          "type": "variable",
+          "slot": "matins-prokeimenon",
+          "resolvedBy": "prokeimenonResolver",
+          "note": "Sunday: tone-specific from Octoechos. Feasts: from Menaion/Triodion."
+        }
+      ]
+    },
+
+    {
+      "id": "let-everything-that-breathes",
+      "label": "Let Everything That Breathes",
+      "note": "Short response before the Gospel reading.",
+      "condition": "hasGospel",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "let-everything-that-breathes-text",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "letEverythingThatBreathes"
+        }
+      ]
+    },
+
+    {
+      "id": "gospel",
+      "label": "Matins Gospel",
+      "note": "On Sundays: one of the 11 Resurrectional Matins Gospels (rotating weekly). On feasts: the appointed feast Gospel. Preceded by 'Let us pray to the Lord' and 'For holy art Thou, O our God.'",
+      "condition": "hasGospel",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "gospel-intro",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "gospel.intro"
+        },
+        {
+          "id": "gospel-reading",
+          "type": "variable",
+          "slot": "matins-gospel",
+          "resolvedBy": "gospelResolver",
+          "note": "11 Sunday Gospels rotate; feast Gospels from Menaion"
+        }
+      ]
+    },
+
+    {
+      "id": "having-beheld",
+      "label": "Having Beheld the Resurrection",
+      "note": "Sung after the Gospel on Sundays only. On feasts, Psalm 50 follows the Gospel directly.",
+      "condition": "isSunday",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "having-beheld-text",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "havingBeheld"
+        }
+      ]
+    },
+
+    {
+      "id": "psalm-50",
+      "label": "Psalm 50 (51)",
+      "note": "The great penitential psalm — read at every Matins.",
+      "blocks": [
+        {
+          "id": "psalm-50-text",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "psalm50",
+          "note": "Full text in psalter.json at key '50'"
+        }
+      ]
+    },
+
+    {
+      "id": "post-gospel-stichera",
+      "label": "Post-Gospel Stichera",
+      "note": "On Sundays: one of the 11 stichera matching the Gospel number, preceded by 'Glory… Through the prayers of the Apostles…' and 'Now… Through the prayers of the Theotokos…'. On feasts: appointed stichera.",
+      "condition": "hasGospel",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "post-gospel-glory",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryOnly"
+        },
+        {
+          "id": "post-gospel-sticheron",
+          "type": "variable",
+          "slot": "post-gospel-sticheron",
+          "resolvedBy": "postGospelSticheronResolver",
+          "sources": ["octoechos", "menaion"],
+          "note": "Sunday: 11 rotating eothinon stichera. Feasts: appointed from Menaion."
+        },
+        {
+          "id": "post-gospel-now",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.nowOnly"
+        },
+        {
+          "id": "post-gospel-theotokion",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "postGospel.theotokion",
+          "note": "'Through the prayers of the Theotokos, O Merciful One, blot out the multitude of our transgressions.'"
+        }
+      ]
+    },
+
+    {
+      "id": "canon",
+      "label": "The Canon",
+      "note": "The most complex variable section — 8 biblical odes (Ode 2 usually omitted = 8 odes in practice). Each ode has an irmos + troparia from Octoechos, Menaion, and/or Triodion. Katavasia after each ode. Little Litany after Odes 3, 6, and 9. Kontakion and ikos after Ode 6.",
+      "blocks": [
+        {
+          "id": "canon-ode-1",
+          "type": "variable",
+          "slot": "canon-ode-1",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Ode 1: irmos + troparia + katavasia"
+        },
+        {
+          "id": "canon-ode-3",
+          "type": "variable",
+          "slot": "canon-ode-3",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Ode 3: irmos + troparia + katavasia. Followed by Little Litany, kontakion, sedalen."
+        },
+        {
+          "id": "canon-ode-3-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "canon-ode-3-sedalen",
+          "type": "variable",
+          "slot": "canon-sedalen-3",
+          "resolvedBy": "sedalenResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Sessional hymn after Ode 3"
+        },
+        {
+          "id": "canon-ode-4",
+          "type": "variable",
+          "slot": "canon-ode-4",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"]
+        },
+        {
+          "id": "canon-ode-5",
+          "type": "variable",
+          "slot": "canon-ode-5",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"]
+        },
+        {
+          "id": "canon-ode-6",
+          "type": "variable",
+          "slot": "canon-ode-6",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Ode 6: followed by Little Litany, then kontakion and ikos."
+        },
+        {
+          "id": "canon-ode-6-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        },
+        {
+          "id": "canon-kontakion",
+          "type": "variable",
+          "slot": "kontakion",
+          "resolvedBy": "kontakionResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Kontakion and ikos of the day/feast — after Ode 6 litany"
+        },
+        {
+          "id": "canon-ode-7",
+          "type": "variable",
+          "slot": "canon-ode-7",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"]
+        },
+        {
+          "id": "canon-ode-8",
+          "type": "variable",
+          "slot": "canon-ode-8",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Ode 8: ends with 'We praise, we bless, we worship the Lord…' before katavasia"
+        },
+        {
+          "id": "canon-magnificat",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "magnificat",
+          "note": "The Magnificat ('My soul doth magnify the Lord') with 'More honorable than the Cherubim' refrain — sung before Ode 9. Omitted on certain great feasts which have their own Ode 9 refrains."
+        },
+        {
+          "id": "canon-ode-9",
+          "type": "variable",
+          "slot": "canon-ode-9",
+          "resolvedBy": "canonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Ode 9: followed by Little Litany"
+        },
+        {
+          "id": "canon-ode-9-litany",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.little"
+        }
+      ]
+    },
+
+    {
+      "id": "exapostilarion",
+      "label": "Exapostilarion (Svetilen)",
+      "note": "On Sundays: one of the 11 exapostilaria matching the Gospel number, followed by its theotokion. On weekdays/feasts: from Menaion or Triodion.",
+      "blocks": [
+        {
+          "id": "exapostilarion-hymn",
+          "type": "variable",
+          "slot": "exapostilarion",
+          "resolvedBy": "exapostilarionResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Sunday: 11 rotating. Weekday: from Menaion. NOT YET IN DATA for regular Sundays."
+        }
+      ]
+    },
+
+    {
+      "id": "lauds",
+      "label": "Lauds (The Praises)",
+      "note": "Psalms 148, 149, 150 with stichera. Sung on Sundays and feasts of doxology rank or higher. On weekdays without stichera, the psalms are simply read.",
+      "condition": "isSunday || feastRank >= 'doxology'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "lauds-psalm-verses",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "lauds.psalmVerses",
+          "note": "Selected verses from Psalms 148-150"
+        },
+        {
+          "id": "lauds-stichera",
+          "type": "variable",
+          "slot": "lauds-stichera",
+          "resolvedBy": "sticheraAssembler",
+          "params": {
+            "defaultCount": 8,
+            "note": "Sunday: typically 4 resurrectional from Octoechos + 4 from Menaion. Feasts vary."
+          },
+          "sources": ["octoechos", "menaion", "triodion", "pentecostarion"]
+        },
+        {
+          "id": "lauds-glory",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "doxology.gloryOnly"
+        },
+        {
+          "id": "lauds-doxastikon",
+          "type": "variable",
+          "slot": "lauds-doxastikon",
+          "resolvedBy": "doxastikonResolver",
+          "sources": ["octoechos", "menaion", "triodion"],
+          "note": "Sunday: eothinon sticheron (same 11-Gospel rotation). Feast: feast doxastikon."
+        },
+        {
+          "id": "lauds-now-theotokion",
+          "type": "variable",
+          "slot": "lauds-theotokion",
+          "resolvedBy": "theotokionResolver",
+          "sources": ["octoechos"],
+          "note": "Sunday: 'Most blessed art thou, O Virgin Theotokos…'"
+        }
+      ]
+    },
+
+    {
+      "id": "great-doxology",
+      "label": "Great Doxology",
+      "note": "Sung on Sundays and feasts of doxology rank or higher. On weekdays, the Small (read) Doxology is used instead, and the service order differs after it.",
+      "condition": "isSunday || feastRank >= 'doxology'",
+      "blocks": [
+        {
+          "id": "great-doxology-text",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "greatDoxology"
+        }
+      ]
+    },
+
+    {
+      "id": "troparion-after-doxology",
+      "label": "Troparion after the Great Doxology",
+      "note": "On Sundays: one of two resurrectional troparia alternating by tone (Tones 1/3/5/7 = 'Today salvation…'; Tones 2/4/6/8 = 'Having risen from the tomb…'). On feasts: the feast troparion.",
+      "condition": "isSunday || feastRank >= 'doxology'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "troparion-after-doxology-text",
+          "type": "variable",
+          "slot": "troparion-after-doxology",
+          "resolvedBy": "doxologyTroparionResolver",
+          "sources": ["octoechos", "menaion"],
+          "note": "Odd tones: 'Today salvation has come to the world…'; Even tones: 'Having risen from the tomb…'"
+        }
+      ]
+    },
+
+    {
+      "id": "small-doxology",
+      "label": "Small Doxology",
+      "note": "Read (not sung) on weekdays when the Great Doxology is not appointed. After the small doxology, the litanies and troparia follow in a different order.",
+      "condition": "!isSunday && feastRank < 'doxology'",
+      "optional": true,
+      "blocks": [
+        {
+          "id": "small-doxology-text",
+          "type": "fixed",
+          "speaker": "reader",
+          "textKey": "smallDoxology"
+        }
+      ]
+    },
+
+    {
+      "id": "morning-litany",
+      "label": "Litany of Completion",
+      "note": "After the Great Doxology and troparion (on Sundays/feasts). On weekdays (after small doxology), the augmented and supplication litanies are used instead.",
+      "blocks": [
+        {
+          "id": "augmented-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.augmented"
+        },
+        {
+          "id": "augmented-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.augmented.exclamation"
+        },
+        {
+          "id": "morning-litany-body",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "litanies.morning"
+        },
+        {
+          "id": "morning-litany-exclamation",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "litanies.morning.exclamation"
+        },
+        {
+          "id": "peace-to-all",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "responses.peaceToAll"
+        },
+        {
+          "id": "bow-heads",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "responses.bowHeads"
+        },
+        {
+          "id": "bow-heads-prayer",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "prayers.bowHeadsMorning"
+        }
+      ]
+    },
+
+    {
+      "id": "dismissal",
+      "label": "Dismissal",
+      "blocks": [
+        {
+          "id": "dismissal-wisdom",
+          "type": "fixed",
+          "speaker": "deacon",
+          "textKey": "dismissal.wisdom"
+        },
+        {
+          "id": "dismissal-father-bless",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.fatherBless"
+        },
+        {
+          "id": "dismissal-blessed-he-who-is",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.blessedHeWhoIs"
+        },
+        {
+          "id": "dismissal-confirm",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.confirm"
+        },
+        {
+          "id": "dismissal-theotokos",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.mostHolyTheotokos"
+        },
+        {
+          "id": "dismissal-magnification",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.magnification"
+        },
+        {
+          "id": "dismissal-glory-christ",
+          "type": "fixed",
+          "speaker": "priest",
+          "textKey": "dismissal.gloryChrist"
+        },
+        {
+          "id": "dismissal-final-response",
+          "type": "fixed",
+          "speaker": "choir",
+          "textKey": "dismissal.finalResponse"
+        },
+        {
+          "id": "dismissal-proper",
+          "type": "variable",
+          "slot": "dismissal-text",
+          "resolvedBy": "dismissalResolver",
+          "note": "Priest pronounces appropriate dismissal for the day/feast"
+        }
+      ]
+    }
+
+  ]
+}

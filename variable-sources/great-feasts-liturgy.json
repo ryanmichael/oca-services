@@ -1,0 +1,263 @@
+{
+  "_meta": {
+    "description": "Great Feast liturgy variable texts: antiphons, entrance hymns, megalynaria, communion hymns",
+    "tradition": "OCA (Orthodox Church in America)",
+    "translation": "OCA Department of Liturgical Music and Translations (Thee/Thy)",
+    "sources": [
+      "OCA service texts (files.oca.org) — downloaded and verified 2026-03-19",
+      "Transfiguration: 2025-0806-texts-tt.docx",
+      "Elevation of the Cross: 2025-0914-texts-tt.docx",
+      "Meeting of the Lord: 2026-0202-texts-tt.docx",
+      "Dormition: 2025-0815-texts-tt.docx",
+      "Annunciation: 2026-0325-texts-vesplit-tt.docx",
+      "Nativity of the Theotokos: 2025-0908-texts-tt.docx",
+      "Entry of the Theotokos: 2025-1121-texts-tt.docx"
+    ],
+    "notes": [
+      "Feasts of the Lord have special festal antiphons replacing the Typical Psalms.",
+      "Feasts of the Theotokos use Typical Antiphons (Psalms 102/145) but have unique megalynaria and communion hymns.",
+      "All feasts replace 'It Is Truly Meet' with the megalynarion (refrain + irmos of 9th ode).",
+      "The Trisagion is replaced on the Elevation of the Cross with 'Before Thy Cross...'",
+      "Psalm numbering follows the Septuagint (LXX) system used in Orthodox worship.",
+      "The Meeting of the Lord OCA text does NOT include festal antiphons — the OCA practice uses Typical Psalms with Beatitudes for this feast. Antiphon verses from the Festal Menaion are provided for parishes using that practice."
+    ],
+    "version": "1.0.0",
+    "status": "VERIFIED against OCA official service text downloads"
+  },
+
+  "transfiguration": {
+    "date": "august-06",
+    "feastType": "lord",
+    "name": "The Holy Transfiguration of our Lord, God, and Savior Jesus Christ",
+
+    "antiphon1": {
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us!",
+      "verses": [
+        "Make a joyful noise to God, all the earth! Sing of His Name, give glory to His praise! (Ps. 65:1)",
+        "The voice of Thy thunder was in the whirlwind; Thy lightning lighted up the world; the earth trembled and shook. (Ps. 76:17b-18)",
+        "Thou art clothed with honor and majesty, Who coverest Thyself with light as with a garment. (Ps. 103:2)"
+      ],
+      "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+      "gloryRefrain": "Through the prayers of the Theotokos, O Savior, save us!"
+    },
+
+    "antiphon2": {
+      "refrain": "O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!",
+      "verses": [
+        "Mount Zion in the far north is the city of the great King. (Ps. 47:2)",
+        "And He brought them to the mountain of His sanctuary, this mountain which His right hand had won. (Ps. 77:58)",
+        "The Mount Zion which He loved, He built as His sanctuary with mighty strength. (Ps. 77:73b-74a)"
+      ],
+      "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+      "onlyBegottenSon": true
+    },
+
+    "antiphon3": {
+      "_note": "The Third Antiphon uses the troparion as the refrain between psalm verses.",
+      "troparion": "Thou wast transfigured on the mountain, O Christ God, revealing Thy glory to Thy Disciples as far as they could bear it. Let Thine everlasting Light also shine upon us sinners, through the prayers of the Theotokos! O Giver of Light, glory to Thee!",
+      "troparionTone": 7,
+      "verses": [
+        "Those who trust in the Lord are like Mount Zion, which cannot be moved, but abides forever. (Ps. 124:1)",
+        "As the mountains are round about it, so the Lord is round about His people, from this time and forevermore. (Ps. 124:2)",
+        "O Lord, who shall sojourn in Thy tabernacle? Who shall dwell on Thy holy mountain? (Ps. 14:1)",
+        "Who shall ascend the mountain of the Lord? And who shall stand in His holy place? (Ps. 23:3)"
+      ]
+    },
+
+    "entranceVerse": "Send out Thy light and Thy truth; they have led me and brought me to Thy holy mountain. (Ps. 42:3)",
+
+    "kontakion": "On the mountain Thou wast transfigured, O Christ God, and Thy Disciples beheld Thy glory as far as they could see it; so that when they would behold Thee crucified, they would understand that Thy suffering was voluntary, and would proclaim to the world that Thou art truly the Radiance of the Father.",
+    "kontakionTone": 7,
+
+    "megalynarion": {
+      "_note": "Instead of 'It Is Truly Meet' — refrain + irmos of 9th ode of the canon of the feast.",
+      "tone": 4,
+      "refrain": "Magnify, O my soul, the Lord Who was transfigured on Mount Tabor!",
+      "irmos": "Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos."
+    },
+
+    "communionHymn": "O Lord, we will walk in the light of Thy countenance, and will exult in Thy Name forever. (Ps. 88:15) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "elevationOfTheCross": {
+    "date": "september-14",
+    "feastType": "lord",
+    "name": "The Universal Exaltation of the Precious and Life-giving Cross",
+
+    "antiphon1": {
+      "refrain": "Through the prayers of the Theotokos, O Savior, save us!",
+      "verses": [
+        "God, my God, attend to me! Why hast Thou forsaken me? (Ps. 21:1a)",
+        "Why art Thou so far from helping me, from the words of my groaning? (Ps. 21:1b)",
+        "O my God, I cry by day, but Thou dost not answer; and by night, but find no rest. (Ps. 21:2)",
+        "Thou dwellest in the sanctuary, the praise of Israel. (Ps. 21:3)"
+      ],
+      "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+      "gloryRefrain": "Through the prayers of the Theotokos, O Savior, save us!"
+    },
+
+    "antiphon2": {
+      "refrain": "O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!",
+      "verses": [
+        "O God, why dost Thou cast us off forever? (Ps. 73:1a)",
+        "Remember Thy congregation, which Thou hast gotten of old! (Ps. 73:2)",
+        "Remember Mount Zion, where Thou hast dwelt! (Ps. 73:3b)",
+        "God is our King before the ages; He has worked salvation in the midst of the earth. (Ps. 73:13)"
+      ],
+      "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+      "onlyBegottenSon": true
+    },
+
+    "antiphon3": {
+      "troparion": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries; and by virtue of Thy Cross, preserve Thy habitation!",
+      "troparionTone": 1,
+      "verses": [
+        "The Lord reigns, let the people tremble! He sits enthroned upon the cherubim; let the earth quake! (Ps. 98:1)",
+        "The Lord is great in Zion; He is exalted over all the people. (Ps. 98:2)",
+        "Bow down in worship to the Lord in His holy court! (Ps. 98:10)"
+      ]
+    },
+
+    "entranceVerse": "Extol the Lord our God: worship at His footstool for He is holy! (Ps. 98:5)",
+
+    "kontakion": "As Thou wast voluntarily raised upon the Cross for our sake, grant mercy to those who are called by Thy Name, O Christ God; make all Orthodox Christians glad by Thy power, granting them victories over their adversaries by bestowing on them the invincible trophy, Thy weapon of peace!",
+    "kontakionTone": 4,
+
+    "trisagionReplacement": {
+      "_note": "The Trisagion ('Holy God, Holy Mighty...') is replaced on this feast.",
+      "text": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify."
+    },
+
+    "megalynarion": {
+      "tone": 8,
+      "refrain": "Magnify, O my soul, the most precious Cross of the Lord!",
+      "irmos": "Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee."
+    },
+
+    "communionHymn": "The light of Thy countenance has been signed upon us, O Lord. (Ps. 4:7) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "meetingOfTheLord": {
+    "date": "february-02",
+    "feastType": "lord",
+    "name": "The Meeting of our Lord and Savior Jesus Christ in the Temple",
+
+    "antiphons": "typical",
+    "_antiphonNote": "The OCA service text does NOT include festal antiphons for this feast. The OCA practice uses Typical Psalms (102/145) or Beatitudes. Some parishes following Byzantine/Festal Menaion practice may use festal antiphons with Psalms 44/45/47.",
+
+    "troparion": "Rejoice, O Virgin Theotokos, Full of Grace! From thee shone the Sun of Righteousness, Christ our God, enlightening those who sat in darkness. Rejoice and be glad, O righteous Elder, thou didst accept in thine arms the Redeemer of our souls, Who grants us the Resurrection!",
+    "troparionTone": 1,
+
+    "kontakion": "By Thy Nativity Thou didst sanctify the Virgin's womb and didst bless Simeon's hands, O Christ God. Now Thou hast come and saved us through love. Grant peace to all Orthodox Christians, O only Lover of Man!",
+    "kontakionTone": 1,
+
+    "megalynarion": {
+      "tone": 3,
+      "refrain": "O Virgin Theotokos, hope of all Christians, protect, preserve, and save those who hope in thee!",
+      "irmos": "In the shadow and letter of the Law, let us the faithful discern a figure: every male child that opens the womb is holy to God. Therefore we magnify the firstborn Word of the Father Who has no beginning, the Son firstborn of a Mother who had not known man."
+    },
+
+    "communionHymn": "I will receive the cup of salvation and call on the Name of the Lord. (Ps. 115:4) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "nativityOfTheTheotokos": {
+    "date": "september-08",
+    "feastType": "theotokos",
+    "name": "The Nativity of our Most Holy Lady the Theotokos and Ever-Virgin Mary",
+
+    "antiphons": "typical",
+    "_antiphonNote": "Typical antiphons (Psalms 102 and 145) are used. Some parishes following Byzantine practice may use festal antiphons from the Festal Menaion (p. 127ff).",
+
+    "troparion": "Thy nativity, O Virgin, has proclaimed joy to the whole universe! The Sun of righteousness, Christ our God, has shone from thee, O Theotokos. By annulling the curse, He bestowed a blessing. By destroying death, He has granted us eternal life.",
+    "troparionTone": 4,
+
+    "kontakion": "By thy nativity, O most pure Virgin, Joachim and Anna are freed from barrenness, Adam and Eve from the corruption of death. And we, thy people, freed from the guilt of sin, celebrate and sing to thee: the barren woman gives birth to the Theotokos, the nourisher of our Life.",
+    "kontakionTone": 4,
+
+    "megalynarion": {
+      "tone": 8,
+      "refrain": "Magnify, O my soul, the most glorious birth of the Mother of God!",
+      "irmos": "Virginity is foreign to mothers; childbearing is strange for virgins. But in thee, O Theotokos, both were accomplished. For this all the earthly nations unceasingly magnify thee."
+    },
+
+    "communionHymn": "I will receive the cup of salvation and call on the Name of the Lord. (Ps. 115:4) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "entryOfTheTheotokos": {
+    "date": "november-21",
+    "feastType": "theotokos",
+    "name": "The Entry of our Most Holy Lady the Theotokos into the Temple",
+
+    "antiphons": "typical",
+    "_antiphonNote": "Typical antiphons (Psalms 102 and 145) are used.",
+
+    "troparion": "Today is the prelude of the good will of God, of the preaching of the salvation of mankind. The Virgin appears in the Temple of God, in anticipation proclaiming Christ to all. Let us rejoice and sing to her: Rejoice, O Fulfillment of the Creator's dispensation!",
+    "troparionTone": 4,
+
+    "kontakion": "The most pure Temple of the Savior; the precious Chamber and Virgin; the sacred Treasure of the glory of God, is presented today to the house of the Lord. She brings with her the grace of the Spirit, therefore, the angels of God praise her: Truly this woman is the abode of Heaven!",
+    "kontakionTone": 4,
+
+    "megalynarion": {
+      "tone": 4,
+      "refrain": "The angels beheld the entrance of the Pure One and were amazed. How has the Virgin entered into the Holy of Holies?",
+      "irmos": "Since she is a living Ark of God let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel's song: Truly, thou art more exalted than all, O pure Virgin!"
+    },
+
+    "communionHymn": "I will receive the cup of salvation and call on the Name of the Lord. (Ps. 115:4) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "annunciation": {
+    "date": "march-25",
+    "feastType": "theotokos",
+    "name": "The Annunciation of our Most Holy Lady Theotokos and Ever-Virgin Mary",
+
+    "antiphons": "typical",
+    "_antiphonNote": "Typical antiphons are used. When Annunciation falls on a weekday of Lent, a Vesperal Liturgy of St. John Chrysostom is served.",
+
+    "troparion": "Today is the beginning of our salvation, the revelation of the eternal mystery! The Son of God becomes the Son of the Virgin as Gabriel announces the coming of Grace. Together with him let us cry to the Theotokos: Rejoice, O Full of Grace, the Lord is with thee!",
+    "troparionTone": 4,
+
+    "megalynarion": {
+      "tone": 4,
+      "refrain": "O earth, announce good tidings of great joy: O heavens, praise the glory of God!",
+      "irmos": "Since she is a living Ark of God let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel's song: Rejoice, O Lady, full of grace, the Lord is with thee!"
+    },
+
+    "communionHymn": "The Lord has chosen Zion; He has desired it for His habitation. (Ps. 131:14) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "dormition": {
+    "date": "august-15",
+    "feastType": "theotokos",
+    "name": "The Dormition of our Most Holy Lady the Theotokos and Ever-Virgin Mary",
+
+    "antiphons": "typical",
+    "_antiphonNote": "Typical antiphons (Psalms 102 and 145) are used. Some parishes following Byzantine practice may use festal antiphons from the Festal Menaion (p. 526ff).",
+
+    "troparion": "In giving birth thou didst preserve thy virginity. In falling asleep thou didst not forsake the world, O Theotokos. Thou wast translated to life, O Mother of Life, and by thy prayers thou dost deliver our souls from death.",
+    "troparionTone": 1,
+
+    "kontakion": "Neither the tomb, nor death, could hold the Theotokos, who is constant in prayer and our firm hope in her intercessions. For being the Mother of Life, she was translated to life by the One Who dwelt in her virginal womb.",
+    "kontakionTone": 2,
+
+    "megalynarion": {
+      "tone": 1,
+      "refrain": "The Angels, as they looked upon the Dormition of the Virgin, were struck with wonder, seeing how the Virgin went up from earth to heaven.",
+      "irmos": "The limits of nature are overcome in thee, O Pure Virgin: for birthgiving remains virginal, and life is united to death; a virgin after childbearing and alive after death, thou dost ever save thine inheritance, O Theotokos."
+    },
+
+    "communionHymn": "I will receive the cup of salvation and call on the Name of the Lord. (Ps. 115:4) Alleluia, Alleluia, Alleluia!"
+  },
+
+  "_communionHymnNotes": {
+    "theotokosFeasts": "Feasts of the Theotokos use 'I will receive the cup of salvation' (Ps. 115:4). This same hymn is also used on Wednesdays, the 5th Saturday of Lent, and other Marian commemorations.",
+    "feastOfTheLord": "Each Feast of the Lord has its own unique communion hymn drawn from the Psalms.",
+    "sundayCombination": "When a feast falls on Sunday, both the Sunday communion hymn ('Praise the Lord from the heavens') and the festal communion hymn are sung."
+  },
+
+  "_entranceHymnNotes": {
+    "feastOfTheLord": "Feasts of the Lord each have a unique entrance verse (psalm verse). The deacon says 'Wisdom! Let us attend!' and the verse is sung. The troparion follows.",
+    "feastOfTheTheotokos": "Feasts of the Theotokos use the standard entrance hymn: 'Come, let us worship and fall down before Christ. O Son of God, Who art wondrous in Thy saints, save us who sing to Thee: Alleluia.'",
+    "onSunday": "When a Lord's feast falls on Sunday, the festal entrance verse is used (not the Sunday one)."
+  }
+}

@@ -74,6 +74,7 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'vesperalLiturgy'  ? '/api/vesperal-liturgy'
                  : svcType === 'paschalHours'      ? '/api/paschal-hours'
                  : svcType === 'paschaCollection'  ? '/api/pascha-collection'
+                 : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
   const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}`);
@@ -111,7 +112,7 @@ function getServiceRows(day) {
     } else {
       rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
       if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
-      rows.push({ key: 'matins',  name: 'Matins',        available: false });
+      rows.push({ key: 'matins',  name: 'Matins',        available: day.services.matins });
       rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
     }
   } else if (dow === 'sunday') {
@@ -140,6 +141,9 @@ function getServiceRows(day) {
     }
     if (day.services.passionGospels) {
       rows.push({ key: 'passionGospels', name: 'Twelve Passion Gospels', available: true });
+    }
+    if (day.services.matins) {
+      rows.push({ key: 'matins', name: 'Matins', available: true });
     }
     if (day.services.presanctified) {
       rows.push({ key: 'presanctified', name: 'Presanctified Liturgy', available: true });
@@ -245,6 +249,7 @@ async function _showPanel(rowEl, date, svcType) {
                  : svcType === 'presanctified'    ? 'PRESANCTIFIED LITURGY'
                  : svcType === 'paschalHours'     ? 'PASCHAL HOURS'
                  : svcType === 'paschaCollection' ? 'HOLY PASCHA COLLECTION'
+                 : svcType === 'matins'          ? 'MATINS'
                  : 'GREAT VESPERS';
   document.getElementById('p-svc').textContent = svcLabel;
   document.getElementById('print-header-svc').textContent = svcLabel;

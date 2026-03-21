@@ -37,6 +37,9 @@
         }
         return `<div class="rubric">${speakerPrefix(speaker)}${esc(text)}</div>`;
 
+      case 'instruction':
+        return `<div class="instruction">${esc(text)}</div>`;
+
       case 'prayer':
       case 'response':
         return `<div class="prayer">${speakerPrefix(speaker)}${esc(text)}</div>`;

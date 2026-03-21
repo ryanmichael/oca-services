@@ -20,11 +20,12 @@ const http = require('node:http');
 const fs   = require('fs');
 const path = require('path');
 
-const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, assembleBridegroomMatins, assemblePassionGospels, assembleLamentations, assembleVesperalLiturgy, assembleRoyalHours, resolveSource } = require('./assembler');
+const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, assembleBridegroomMatins, assemblePassionGospels, assembleLamentations, assembleVesperalLiturgy, assembleRoyalHours, assembleMatins, resolveSource } = require('./assembler');
 const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey,
         getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed,
         isPresanctifiedDay, isBridegroomMatins, isPassionGospelsDay, isLamentationsDay, isVesperalLiturgyDay, isRoyalHoursDay,
-        getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday } = require('./calendar-rules');
+        getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday,
+        getEothinon } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -93,7 +94,11 @@ function loadSources() {
 
   // 'db' source is populated in Step 2; include empty object now so the
   // assembler doesn't warn on unresolved db: references in generated entries.
-  return { octoechos, prokeimena, menaion, triodion, db: {} };
+  // Load eothinon cycle data
+  const eothinonPath = path.join(__dirname, 'variable-sources', 'eothinon.json');
+  const eothinon = fs.existsSync(eothinonPath) ? loadJSON('variable-sources/eothinon.json') : {};
+
+  return { octoechos, prokeimena, menaion, triodion, eothinon, db: {} };
 }
 
 /**
@@ -1170,6 +1175,320 @@ const GREAT_FEAST_VARIANTS = {
  *           troparia/kontakia from Octoechos + Menaion DB.
  * Deferred:  (none — all major sections now populated for ordinary Sundays).
  */
+// ─── Matins Spec Builder ──────────────────────────────────────────────────────
+
+/**
+ * Builds the matins spec for a given date from available menaion data.
+ * Currently supports:
+ *   - Fixed-calendar Great Feasts with menaion matins data (e.g. Annunciation)
+ *
+ * Returns null if no matins data is available for the date.
+ */
+
+/**
+ * Build Sunday Matins spec from Octoechos data.
+ * Sundays always use the Great Doxology path and have a Gospel.
+ */
+function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
+  const tk = `tone${tone}`;
+  const oct = sources.octoechos[tk];
+  if (!oct?.sunday?.matins) return null;
+
+  const matins = oct.sunday.matins;
+  const vespers = oct.saturday?.vespers;
+
+  // ── Resurrectional troparion (from Saturday Vespers data) ──────────────
+  const troparionRaw = vespers?.troparion;
+  const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
+
+  // ── Sessional hymns → sedalion array ──────────────────────────────────
+  // The assembler expects spec.sedalion[0] = after K2, spec.sedalion[1] = after K3
+  const sedalion = [];
+  if (matins.sessionalHymns?.afterKathisma2?.[0]) {
+    const h = matins.sessionalHymns.afterKathisma2[0];
+    sedalion[0] = { text: h.text, tone, source: 'octoechos', label: 'Sessional Hymn' };
+  }
+  if (matins.sessionalHymns?.afterKathisma3?.[0]) {
+    const h = matins.sessionalHymns.afterKathisma3[0];
+    sedalion[1] = { text: h.text, tone, source: 'octoechos', label: 'Sessional Hymn' };
+  }
+
+  // ── Antiphons of Degrees ──────────────────────────────────────────────
+  // Combine all antiphon troparia into one text block
+  let antiphonsText = '';
+  if (matins.antiphonsOfDegrees) {
+    const parts = [];
+    matins.antiphonsOfDegrees.forEach((ant, i) => {
+      parts.push(`Antiphon ${i + 1}`);
+      ant.troparia.forEach(t => parts.push(t));
+    });
+    antiphonsText = parts.join('\n\n');
+  }
+
+  // ── Prokeimenon ───────────────────────────────────────────────────────
+  const prokeimenon = matins.prokeimenon ? {
+    refrain: matins.prokeimenon.refrain,
+    verse: matins.prokeimenon.verse,
+    tone,
+  } : null;
+
+  // ── Canon irmoi → canon spec ──────────────────────────────────────────
+  const canonSpec = { tone };
+  if (matins.canonIrmoi) {
+    for (const [odeStr, irmosText] of Object.entries(matins.canonIrmoi)) {
+      canonSpec[`ode${odeStr}`] = { irmos: irmosText };
+    }
+  }
+  // Kontakion from Octoechos (resurrectional)
+  const kontakionRaw = vespers?.kontakion || oct.sunday?.liturgy?.kontakion;
+  if (kontakionRaw) {
+    canonSpec.kontakion = typeof kontakionRaw === 'object'
+      ? kontakionRaw : { text: kontakionRaw, tone };
+  }
+
+  const matinsSource = matins._source || 'stSergius-octoechos';
+
+  // ── Post-Gospel sticheron ─────────────────────────────────────────────
+  const postGospelSticheron = matins.postGospelSticheron ? {
+    text: matins.postGospelSticheron,
+    tone: 6, // always Tone 6
+    source: 'octoechos',
+    _source: matinsSource,
+  } : null;
+
+  // ── Lauds stichera ───────────────────────────────────────────────────
+  const lauds = matins.laudsStichera ? {
+    read: false,
+    tone,
+    stichera: matins.laudsStichera.map(s => ({
+      text: s.text,
+      verse: s.verse,
+      tone,
+    })),
+  } : null;
+
+  // ── Build spec ────────────────────────────────────────────────────────
+  const spec = {
+    isSunday: true,
+    feastRank: null,
+    tone,
+    useSmallDoxology: false,
+    kathismaCount: 2, // Sundays: Kathisma 2 and 3 (17th read separately at Vigil)
+    kathismaNumbers: [],
+    sedalion,
+  };
+
+  if (troparionText) {
+    spec.troparion = { text: troparionText, tone };
+  }
+
+  if (antiphonsText) {
+    spec.antiphons = { text: antiphonsText, tone, _source: matinsSource };
+  }
+
+  if (prokeimenon) {
+    prokeimenon._source = matinsSource;
+    spec.prokeimenon = prokeimenon;
+  }
+
+  // ── Eothinon cycle (Gospel, Exapostilarion, Doxastikon) ────────────────
+  const eothinonNum = date ? getEothinon(date) : null;
+  const eothinonData = eothinonNum ? sources.eothinon?.[String(eothinonNum)] : null;
+
+  if (eothinonData) {
+    spec.gospel = {
+      reading: eothinonData.gospel.reading,
+      text: null, // Scripture text not yet sourced
+      source: 'eothinon',
+      _eothinon: eothinonNum,
+      _source: eothinonData._source,
+    };
+
+    // Exapostilarion + theotokion
+    spec.exapostilaria = [
+      {
+        text: eothinonData.exapostilarion,
+        tone: eothinonData.tone,
+        label: `Eothinon ${eothinonNum}`,
+        source: 'eothinon',
+        _source: eothinonData._source,
+      },
+      ...(eothinonData.theotokion ? [{
+        text: eothinonData.theotokion,
+        tone: eothinonData.tone,
+        label: 'Theotokion',
+        source: 'eothinon',
+        _source: eothinonData._source,
+      }] : []),
+    ];
+
+    // Post-Gospel sticheron is tone-6 fixed (from Octoechos), not eothinon-specific
+    if (postGospelSticheron) {
+      spec.postGospelSticheron = postGospelSticheron;
+    }
+
+    // Lauds doxastikon (the eothinon sticheron sung after "Glory..." at Lauds)
+    if (lauds && eothinonData.doxastikon) {
+      lauds.doxastikon = {
+        text: eothinonData.doxastikon,
+        tone: eothinonData.tone,
+        author: `Eothinon ${eothinonNum}`,
+        _source: eothinonData._source,
+      };
+    }
+  } else {
+    // No eothinon data (Triodion period or missing data)
+    spec.gospel = {
+      reading: eothinonNum
+        ? `[Eothinon ${eothinonNum} — data not loaded]`
+        : '[Sunday Matins Gospel — Eothinon suspended during Triodion]',
+      text: null,
+      source: 'eothinon',
+    };
+
+    if (postGospelSticheron) {
+      spec.postGospelSticheron = postGospelSticheron;
+    }
+  }
+
+  spec.canon = canonSpec;
+
+  if (lauds) {
+    spec.lauds = lauds;
+  }
+
+  return spec;
+}
+
+function buildMatinsSpec(dateStr, date, dow, season, tone) {
+  const [yr, mo, dy] = dateStr.split('-').map(Number);
+  const mm = String(mo).padStart(2, '0');
+  const dd = String(dy).padStart(2, '0');
+
+  // ── Check for great feast menaion data ──────────────────────────────────
+  const feastKey = getGreatFeastKey(date);
+  const monthNames = ['', 'january', 'february', 'march', 'april', 'may', 'june',
+    'july', 'august', 'september', 'october', 'november', 'december'];
+  const menaionKey = `${monthNames[mo]}-${dd}`;
+  const menaionPath = path.join(__dirname, 'variable-sources', 'menaion', `${menaionKey}.json`);
+
+  let menaionData = null;
+  if (fs.existsSync(menaionPath)) {
+    menaionData = loadJSON(`variable-sources/menaion/${menaionKey}.json`);
+  }
+
+  const isSunday = dow === 'sunday';
+  const isLent = season === 'greatLent';
+  const isLentenWeekday = isLent && !isSunday && dow !== 'saturday';
+
+  // ── Sunday Matins from Octoechos ──────────────────────────────────────────
+  if (isSunday && (!menaionData || !menaionData.matins)) {
+    return _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
+  }
+
+  // Only proceed if we have matins data in the menaion file
+  if (!menaionData || !menaionData.matins) return null;
+
+  const mat = menaionData.matins;
+
+  // ── Determine doxology type ─────────────────────────────────────────────
+  // During Lent on weekdays, even great feasts use the Small (read) Doxology
+  const useSmallDoxology = isLentenWeekday;
+
+  // ── Build the spec ──────────────────────────────────────────────────────
+  const spec = {
+    isSunday,
+    feastRank: menaionData._meta?.feastRank || (feastKey ? 'greatFeast' : null),
+    feastType: menaionData._meta?.feastType || null,
+    tone: menaionData._meta?.tone || tone,
+    alleluia: false, // great feasts override Lenten Alleluia
+    useSmallDoxology,
+  };
+
+  // Troparion
+  if (menaionData.troparion) {
+    spec.troparion = menaionData.troparion;
+  }
+
+  // Kathismata (stubbed — schedule TBD)
+  spec.kathismaCount = isSunday ? 3 : 2;
+  spec.kathismaNumbers = [];
+
+  // Magnification (at Polyeleios)
+  if (mat.magnification) {
+    spec.magnification = mat.magnification;
+  }
+
+  // Prokeimenon
+  if (mat.prokeimenon) {
+    spec.prokeimenon = mat.prokeimenon;
+  }
+
+  // Gospel
+  if (mat.gospel) {
+    spec.gospel = mat.gospel;
+  }
+
+  // Post-Gospel sticheron
+  if (mat.postGospelSticheron) {
+    spec.postGospelSticheron = mat.postGospelSticheron;
+  }
+
+  // Canon
+  if (mat.canon) {
+    const canonSpec = {
+      tone: mat.canon.tone || spec.tone,
+      author: mat.canon.author,
+    };
+    // Copy ode data
+    for (const [k, v] of Object.entries(mat.canon)) {
+      if (k.startsWith('ode')) canonSpec[k] = v;
+    }
+    // Sessional hymns after Ode 3
+    if (mat.sessionalHymns) {
+      canonSpec.sedalenAfterOde3 = mat.sessionalHymns;
+    } else if (mat.sedalen) {
+      canonSpec.sedalenAfterOde3 = mat.sedalen;
+    }
+    // Kontakion/ikos (placed inside canon spec so they appear after Ode 6)
+    if (menaionData.kontakion) {
+      canonSpec.kontakion = menaionData.kontakion;
+    }
+    // Skip Magnificat on great feasts that have their own Ode 9 megalynarion
+    if (mat.canon.ode9?.megalynarion) {
+      canonSpec.skipMagnificat = true;
+    }
+    spec.canon = canonSpec;
+  }
+
+  // Exapostilaria
+  if (mat.exapostilaria) {
+    spec.exapostilaria = mat.exapostilaria;
+  }
+
+  // Lauds
+  if (mat.lauds) {
+    spec.lauds = {
+      read: isLentenWeekday, // read on Lenten weekdays, sung otherwise
+      tone: mat.lauds.stichera?.[0]?.tone || spec.tone,
+      stichera: mat.lauds.stichera,
+      doxastikon: mat.lauds.doxastikon,
+    };
+  }
+
+  // Aposticha (Lenten weekday only)
+  if (isLentenWeekday && mat.aposticha) {
+    spec.aposticha = mat.aposticha;
+  }
+
+  // Final troparion (for aposticha path)
+  if (useSmallDoxology && menaionData.troparion) {
+    spec.finalTroparion = menaionData.troparion;
+  }
+
+  return spec;
+}
+
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
@@ -2348,6 +2667,15 @@ try {
   process.exit(1);
 }
 
+let matinsFixed;
+try {
+  matinsFixed = loadJSON('fixed-texts/matins-fixed.json');
+  console.log('Matins fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Matins fixed texts:', err.message);
+  process.exit(1);
+}
+
 ensureOrthocalCacheTable();
 
 function handleRequest(req, res) {
@@ -2743,6 +3071,70 @@ function handleRequest(req, res) {
         serviceName:    'Bridegroom Matins',
         season:         'holyWeek',
         liturgicalLabel: NIGHT_NAMES[night] || 'Holy Week',
+        blocks,
+      }));
+
+    } else if (pathname === '/api/matins') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      const d      = new Date(date + 'T12:00:00Z');
+      const dow    = getDayOfWeek(d);
+      const season = getLiturgicalSeason(d);
+      const tone   = getTone(d);
+
+      // Build the matins spec from available data
+      const matinsSpec = buildMatinsSpec(date, d, dow, season, tone);
+
+      if (!matinsSpec) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'No Matins data available for this date. Currently supported: Sundays (all tones) and great feasts with menaion data.',
+          date,
+        }));
+        return;
+      }
+
+      const calendarDay = {
+        date,
+        dayOfWeek: dow,
+        liturgicalContext: { season, tone },
+        matins: matinsSpec,
+      };
+
+      let blocks;
+      try {
+        blocks = assembleMatins(calendarDay, matinsFixed, fixedTexts, sources);
+      } catch (err) {
+        console.error('assembleMatins error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+
+      if (pronoun === 'yy') {
+        for (const block of blocks) {
+          if (block.text)  block.text  = applyYouYour(block.text);
+          if (block.label) block.label = applyYouYour(block.label);
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:    'matins',
+        serviceName:    'Matins (Orthros)',
+        tone,
+        season,
         blocks,
       }));
 
@@ -3161,7 +3553,7 @@ function handleRequest(req, res) {
           vesperalLiturgy: isVesperalLiturgyDay(cur),
           royalHours: isRoyalHoursDay(cur),
           passionGospels: isPassionGospelsDay(cur),
-          matins:  false,
+          matins:  !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur)),
           liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
           presanctified: isPresanctifiedDay(cur),
           paschalHours: getLiturgicalSeason(cur) === 'brightWeek',

@@ -136,6 +136,7 @@ header,
 .dow   { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .12em; color: var(--rubric); }
 .date-d { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .08em; color: var(--text); }
 .feast  { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--muted); }
+.layout:has(.panel.open) .feast { display: none; }
 
 .svc-rows { display: flex; flex-direction: column; }
 
@@ -352,6 +353,10 @@ body.dev-mode .src-tag { display: inline; }
 .rubric {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
   color: var(--rubric); margin-bottom: 8px; line-height: 1.6;
+}
+.instruction {
+  font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+  color: var(--muted); margin-bottom: 8px; line-height: 1.6;
 }
 .service-title {
   font-family: 'EB Garamond', serif; font-size: 22px; font-variant: small-caps;
@@ -669,6 +674,7 @@ body.dev-mode .src-tag { display: inline; }
   /* Scale up panel reading text for comfortable phone reading */
   .prayer      { font-size: 20px; }
   .rubric      { font-size: 17px; }
+  .instruction { font-size: 17px; }
   .verse       { font-size: 16px; }
   .stich-label { font-size: 15px; }
   .panel-comms { font-size: 16px; }
@@ -749,7 +755,7 @@ body.dev-mode .src-tag { display: inline; }
   /* Widow/orphan protection: keep headings with their content */
   .svc-head { break-after: avoid; }
   /* Keep short content units together; allow long blocks (psalm, litany) to split */
-  .prayer, .rubric { break-inside: avoid; }
+  .prayer, .rubric, .instruction { break-inside: avoid; }
   .stich-label { break-after: avoid; }
   .svc-rule { background: none; border-top: 1px solid #8B1A1A; }
 }

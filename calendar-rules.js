@@ -1935,6 +1935,38 @@ function isRoyalHoursDay(date) {
   return season === 'holyWeek' && dow === 'friday';
 }
 
+// ─── Eothinon Cycle ──────────────────────────────────────────────────────────
+
+/**
+ * Get the Eothinon number (1-11) for a given Sunday.
+ * The 11-week Eothinon cycle starts at Eothinon 1 on All Saints Sunday
+ * (first Sunday after Pentecost = Pascha + 56 days).
+ *
+ * Returns null during Triodion/Pentecostarion when the eothinon cycle
+ * is suspended or follows special rules.
+ */
+function getEothinon(date) {
+  const yr = date.getUTCFullYear();
+  const pascha = calculatePascha(yr);
+  const allSaints = getAllSaints(yr);
+
+  const diffMs = date.getTime() - allSaints.getTime();
+  const diffWeeks = Math.floor(diffMs / (7 * 86400000));
+
+  if (diffWeeks >= 0) {
+    return (diffWeeks % 11) + 1;
+  }
+
+  // Before this year's All Saints — use previous year's cycle
+  const prevAllSaints = getAllSaints(yr - 1);
+  const prevDiff = Math.floor((date.getTime() - prevAllSaints.getTime()) / (7 * 86400000));
+  if (prevDiff >= 0) {
+    return (prevDiff % 11) + 1;
+  }
+
+  return null; // Deep Triodion
+}
+
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 module.exports = {
@@ -1959,5 +1991,6 @@ module.exports = {
   isLamentationsDay,
   isVesperalLiturgyDay,
   isRoyalHoursDay,
+  getEothinon,
   generateCalendarEntry,
 };

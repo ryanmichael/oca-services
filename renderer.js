@@ -392,6 +392,10 @@ function renderBlock(block) {
       lines.push(`    <p class="rubric">${text}</p>`);
       break;
 
+    case 'instruction':
+      lines.push(`    <p class="instruction">${text}</p>`);
+      break;
+
     case 'prayer':
     case 'response':
       lines.push(`    <p class="${escHtml(block.type)}">${text}</p>`);

@@ -27,6 +27,7 @@ const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalK
         getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday,
         getEothinon } = require('./calendar-rules');
 const { renderVespers }                          = require('./renderer');
+const { getMatinsKathismata }                    = require('./kathisma');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -1274,7 +1275,7 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
     tone,
     useSmallDoxology: false,
     kathismaCount: 2, // Sundays: Kathisma 2 and 3 (17th read separately at Vigil)
-    kathismaNumbers: [],
+    kathismaNumbers: getMatinsKathismata('sunday', season),
     sedalion,
   };
 
@@ -1410,9 +1411,10 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.troparion = menaionData.troparion;
   }
 
-  // Kathismata (stubbed — schedule TBD)
-  spec.kathismaCount = isSunday ? 3 : 2;
-  spec.kathismaNumbers = [];
+  // Kathismata
+  const kathNums = getMatinsKathismata(dow, season);
+  spec.kathismaCount = kathNums.length || (isSunday ? 3 : 2);
+  spec.kathismaNumbers = kathNums;
 
   // Magnification (at Polyeleios)
   if (mat.magnification) {

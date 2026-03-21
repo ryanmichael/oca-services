@@ -3,18 +3,12 @@
 /**
  * Kathisma Lookup
  *
- * Returns the kathisma number appointed for Vespers on a given day.
+ * Returns kathisma numbers appointed for Vespers and Matins on a given day.
  * The 150 Psalms are divided into 20 kathismata, read through weekly.
- *
- * At Great Vespers (Saturday), Kathisma 1, Section 1 ("Blessed Is The Man")
- * is always sung — the assembler handles the actual rendering.
- *
- * At Daily Vespers (Mon–Fri), the appropriate kathisma number is returned
- * so the assembler can display the correct rubric. Full psalm texts are
- * not yet stored; a placeholder is rendered instead.
  *
  * Exports:
  *   getVespersKathisma(dayOfWeek, season) → number | null
+ *   getMatinsKathismata(dayOfWeek, season) → number[]
  */
 
 // Ordinary time — evening kathisma by day of week.
@@ -70,4 +64,56 @@ function getVespersKathisma(dayOfWeek, season) {
   return ORDINARY_TIME[dayOfWeek] ?? null;
 }
 
-module.exports = { getVespersKathisma };
+// ── Matins kathisma schedule ──────────────────────────────────────────────
+// Source: Slavonic Typikon / OCA Reader's Service Book Psalter schedule.
+//
+// Ordinary time — the entire Psalter is read once per week.
+// Sunday Matins: Kathismata 2 and 3.
+// Weekdays: two kathismata each morning, rotating through the cycle.
+// Saturday: Kathismata 16 and 17.
+//
+// Great Lent — the entire Psalter is read TWICE per week.
+// Each day reads 3 kathismata at Matins (except Sunday which keeps 2).
+// The cycle restarts on Monday and again on Thursday.
+
+const MATINS_ORDINARY = {
+  sunday:    [2, 3],
+  monday:    [4, 5],
+  tuesday:   [7, 8],
+  wednesday: [10, 11],
+  thursday:  [13, 14],
+  friday:    [19, 20],
+  saturday:  [16, 17],
+};
+
+const MATINS_LENT = {
+  sunday:    [2, 3],       // Same as ordinary time
+  monday:    [4, 5, 6],    // 3 kathismata per day during Lent
+  tuesday:   [10, 11, 12],
+  wednesday: [16, 17, 18],
+  thursday:  [4, 5, 6],    // Second cycle starts Thursday
+  friday:    [10, 11, 12],
+  saturday:  [16, 17],     // Saturday keeps 2
+};
+
+/**
+ * Returns the kathisma numbers appointed at Matins for a given day.
+ *
+ * @param {string} dayOfWeek  — 'sunday' … 'saturday'
+ * @param {string} season     — 'ordinaryTime' | 'greatLent' | 'holyWeek' | etc.
+ * @returns {number[]}  Array of kathisma numbers (1–20), or empty if omitted.
+ */
+function getMatinsKathismata(dayOfWeek, season) {
+  if (season === 'holyWeek' || season === 'brightWeek') {
+    return [];
+  }
+
+  if (season === 'greatLent') {
+    return MATINS_LENT[dayOfWeek] ?? [];
+  }
+
+  // ordinaryTime, preLenten, pentecostarion
+  return MATINS_ORDINARY[dayOfWeek] ?? [];
+}
+
+module.exports = { getVespersKathisma, getMatinsKathismata };

@@ -927,6 +927,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       serviceType: 'greatVespers',
       rubricNote:  'Great Vespers of Palm Sunday (celebrated Saturday evening)',
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      customPalmSunday: true,
     },
     monday: {
       name:        'Holy Monday',
@@ -1059,6 +1060,53 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
             { order: 1,          source: 'triodion', key: `${triKey}.troparia.nobleJoseph`,  tone: 2, label: 'Troparion of Holy Saturday' },
             { position: 'glory', source: 'triodion', key: `${triKey}.troparia.nobleJoseph`,  tone: 2, label: 'Troparion of Holy Saturday' },
             { position: 'now',   source: 'triodion', key: `${triKey}.troparia.angelCame`,    tone: 2, label: 'Troparion' },
+          ],
+        },
+      },
+    };
+  }
+
+  // ── Palm Sunday: fully wired from triodion JSON ────────────────────────
+  if (cfg.customPalmSunday) {
+    const triKey = 'holyWeek.palmSunday';
+    return {
+      _meta: {
+        generated:   true,
+        generatedAt: new Date().toISOString(),
+        note:        `Auto-generated ${cfg.name}. All texts from triodion/${triKey}.`,
+      },
+      date:      dateStr,
+      dayOfWeek: dow,
+      liturgicalContext: { season: 'holyWeek', specialDay: 'palmSunday' },
+      commemorations: [],
+      vespers: {
+        serviceType: cfg.serviceType,
+        rubricNote:  cfg.rubricNote,
+        lordICall: {
+          tone: 6,
+          totalStichera: 10,
+          slots: [
+            { verses: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], count: 10, source: 'triodion', key: `${triKey}.lordICall.stichera`, tone: 6, label: 'Stichera for Palm Sunday' },
+          ],
+          glory: { source: 'triodion', key: `${triKey}.lordICall.glory`, tone: 6, combinesGloryNow: true, label: 'Glory and Now' },
+        },
+        prokeimenon: cfg.prokeimenon,
+        aposticha: {
+          slots: [
+            { position: 1, source: 'triodion', key: `${triKey}.aposticha.stichera.0`, tone: 8 },
+            { position: 2, source: 'triodion', key: `${triKey}.aposticha.stichera.1`, tone: 8,
+              verse: 'Out of the mouths of babes and infants Thou hast fashioned perfect praise!' },
+            { position: 3, source: 'triodion', key: `${triKey}.aposticha.stichera.2`, tone: 8,
+              verse: 'O Lord, our Lord, how glorious is Thy Name in all the earth!' },
+          ],
+          glory: { source: 'triodion', key: `${triKey}.aposticha.gloryNow`, tone: 6, combinesGloryNow: true, label: 'Glory and Now' },
+        },
+        troparia: {
+          source: 'triodion',
+          slots: [
+            { order: 1,          source: 'triodion', key: `${triKey}.troparia.lazarus`,  tone: 1, label: 'Troparion' },
+            { position: 'glory', source: 'triodion', key: `${triKey}.troparia.lazarus`,  tone: 1, label: 'Troparion' },
+            { position: 'now',   source: 'triodion', key: `${triKey}.troparia.baptism`,  tone: 4, label: 'Troparion' },
           ],
         },
       },

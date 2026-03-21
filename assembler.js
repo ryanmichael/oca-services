@@ -324,8 +324,14 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     });
   }
 
-  // Add Psalm 129 and 116 verses with stichera interleaved
-  const allVerses = [...psalmVerses.psalm129.verses, ...psalmVerses.psalm116.verses];
+  // Add psalm verses with stichera interleaved
+  // "On 10": include Psalm 141 verses 10–9 before Psalm 129 (8–3) and Psalm 116 (2–1)
+  const totalStichera = lordICallSpec.totalStichera || 8;
+  const allVerses = [
+    ...(totalStichera > 8 ? (psalmVerses.psalm141.verses || []) : []),
+    ...psalmVerses.psalm129.verses,
+    ...psalmVerses.psalm116.verses,
+  ];
   for (const verse of allVerses) {
     blocks.push(makeBlock(
       `lic-verse-${verse.number}`, section, 'verse', 'reader',

@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "service": "Palm Sunday — The Entry of our Lord into Jerusalem — Great Vespers (Saturday evening)",
+    "source": "OCA Department of Liturgical Music and Translations, 2026 Holy Week service texts (TT)",
+    "note": "Great Vespers with Entrance, served on Lazarus Saturday evening. Lord I Call on 10 (5 unique stichera, each sung twice). Litya stichera included for All-Night Vigil."
+  },
+
+  "key": "holyWeek.palmSunday",
+  "title": "Palm Sunday — The Entry of our Lord into Jerusalem",
+  "category": "holyWeek",
+
+  "vespers": {
+
+    "lordICall": {
+      "stichera": {
+        "tone": 6,
+        "label": "Stichera for Palm Sunday",
+        "hymns": [
+          {
+            "verse": 10,
+            "tone": 6,
+            "text": "The grace of the Holy Spirit\ntoday has assembled us.\nTaking up Thy Cross we sing:\n\"Blessed is He that comes in the Name of the Lord!\nHosanna in the highest!\""
+          },
+          {
+            "verse": 9,
+            "tone": 6,
+            "_note": "Repeat of first sticheron",
+            "text": "The grace of the Holy Spirit\ntoday has assembled us.\nTaking up Thy Cross we sing:\n\"Blessed is He that comes in the Name of the Lord!\nHosanna in the highest!\""
+          },
+          {
+            "verse": 8,
+            "tone": 6,
+            "text": "Today the Word of God the Father,\nthe co-eternal Son,\nWhose throne is heaven and Whose footstool is earth,\nhumbles Himself and comes from Bethany,\nriding on a dumb beast, the foal of an ass.\nThe children of the Hebrews hold branches in their hands.\nThey praise Him crying out:\n\"Hosanna in the highest!\nBlessed is He that comes, the King of Israel!\""
+          },
+          {
+            "verse": 7,
+            "tone": 6,
+            "_note": "Repeat of third sticheron",
+            "text": "Today the Word of God the Father,\nthe co-eternal Son,\nWhose throne is heaven and Whose footstool is earth,\nhumbles Himself and comes from Bethany,\nriding on a dumb beast, the foal of an ass.\nThe children of the Hebrews hold branches in their hands.\nThey praise Him crying out:\n\"Hosanna in the highest!\nBlessed is He that comes, the King of Israel!\""
+          },
+          {
+            "verse": 6,
+            "tone": 6,
+            "text": "O new Israel, church of the Gentiles,\nassemble today and sing with the Prophet Zechariah:\n\"Rejoice greatly, O daughter of Zion!\nShout for joy, O daughter of Jerusalem!\nBehold, thy King is coming to thee!\nHe is meek, bearing salvation,\nriding on the colt of an ass.\"\nCelebrate with the children, holding palms in thy hands:\n\"Hosanna in the highest!\nBlessed is He that comes, the King of Israel!\""
+          },
+          {
+            "verse": 5,
+            "tone": 6,
+            "_note": "Repeat of fifth sticheron",
+            "text": "O new Israel, church of the Gentiles,\nassemble today and sing with the Prophet Zechariah:\n\"Rejoice greatly, O daughter of Zion!\nShout for joy, O daughter of Jerusalem!\nBehold, thy King is coming to thee!\nHe is meek, bearing salvation,\nriding on the colt of an ass.\"\nCelebrate with the children, holding palms in thy hands:\n\"Hosanna in the highest!\nBlessed is He that comes, the King of Israel!\""
+          },
+          {
+            "verse": 4,
+            "tone": 6,
+            "text": "By Thy command, O loving Lord,\nThou didst raise Lazarus, Thy friend, from death.\nHis flesh had been given over to corruption,\nand he was in the power of death four days.\nBy this, Thou didst foretell Thy holy Resurrection for us.\nToday, Thou dost mount an untamed colt as Thy chariot,\nforetelling the conversion of the Gentiles.\nThy beloved Israel offers Thee a hymn of praise\nfrom the mouths of innocent children,\nas they see Thee enter the Holy City, O Christ,\nsix days before the Feast of Passover."
+          },
+          {
+            "verse": 3,
+            "tone": 6,
+            "_note": "Repeat of seventh sticheron",
+            "text": "By Thy command, O loving Lord,\nThou didst raise Lazarus, Thy friend, from death.\nHis flesh had been given over to corruption,\nand he was in the power of death four days.\nBy this, Thou didst foretell Thy holy Resurrection for us.\nToday, Thou dost mount an untamed colt as Thy chariot,\nforetelling the conversion of the Gentiles.\nThy beloved Israel offers Thee a hymn of praise\nfrom the mouths of innocent children,\nas they see Thee enter the Holy City, O Christ,\nsix days before the Feast of Passover."
+          },
+          {
+            "verse": 2,
+            "tone": 6,
+            "text": "Six days before the Feast of Passover\nJesus entered Bethany.\nHis disciples asked Him:\n\"Where should we prepare for Thee to eat the Passover?\"\nHe answered: \"When you have entered the city,\na man carrying a jar of water will meet you.\nFollow him into the house which he enters,\nand tell the master of the house:\n'The Teacher says to thee:\nHere I shall eat the Passover with My disciples.'\""
+          },
+          {
+            "verse": 1,
+            "tone": 6,
+            "_note": "Repeat of ninth sticheron",
+            "text": "Six days before the Feast of Passover\nJesus entered Bethany.\nHis disciples asked Him:\n\"Where should we prepare for Thee to eat the Passover?\"\nHe answered: \"When you have entered the city,\na man carrying a jar of water will meet you.\nFollow him into the house which he enters,\nand tell the master of the house:\n'The Teacher says to thee:\nHere I shall eat the Passover with My disciples.'\""
+          }
+        ]
+      },
+      "glory": {
+        "tone": 6,
+        "combinesGloryNow": true,
+        "label": "Glory and Now",
+        "text": "The grace of the Holy Spirit\ntoday has assembled us.\nTaking up Thy Cross we sing:\n\"Blessed is He that comes in the Name of the Lord!\nHosanna in the highest!\""
+      }
+    },
+
+    "readings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "49:1–2, 8–12",
+        "label": "First Reading"
+      },
+      {
+        "order": 2,
+        "book": "Zephaniah",
+        "pericope": "3:14–19",
+        "label": "Second Reading"
+      },
+      {
+        "order": 3,
+        "book": "Zechariah",
+        "pericope": "9:9–15",
+        "label": "Third Reading"
+      }
+    ],
+
+    "litya": {
+      "stichera": [
+        {
+          "tone": 1,
+          "text": "The Holy Spirit taught the Apostles to speak in many strange languages.\nHe also inspired the innocent Hebrew children to sing:\n\"Hosanna in the highest!\nBlessed is He that comes, the King of Israel!\""
+        },
+        {
+          "tone": 1,
+          "text": "The Word of God Who has no beginning:\nthe Father's co-eternal Son,\ntoday comes to the city of Jerusalem,\nenthroned on a dumb beast, the foal of an ass.\nThe Cherubim are afraid to gaze upon Him,\nyet the children honor Him with palms and branches.\nThe Spirit inspires their song of praise:\n\"Hosanna in the highest! Hosanna to David's Son,\nWho has come to save mankind from error!\""
+        },
+        {
+          "tone": 1,
+          "text": "Six days before the feast of Passover,\nThy voice resounded in the depths of hell, O Lord,\nraising Lazarus who had been dead four days.\nThen the children of the Hebrews danced and sang:\n\"Hosanna to our God! Glory to Thee!\""
+        },
+        {
+          "tone": 2,
+          "text": "Thou hast entered the Holy City, O Lord,\nriding on the colt of an ass,\nhastening to Thy Passion,\nthat the Law and the Prophets might be fulfilled.\nThe Hebrew children greeted Thee with palms and branches,\nheralding Thy victorious Resurrection.\nBlessed art Thou, O Savior! Have mercy on us!"
+        },
+        {
+          "tone": 2,
+          "text": "Glory to Thee, O Christ,\nenthroned on high!\nToday we lift up Thy precious Cross,\nas we await Thy coming in glory.\nThe daughter of Zion is glad;\nall nations on earth rejoice;\nthe children wave branches; the disciples make a carpet of clothes,\nand all the ends of the earth learn to cry to Thee:\n\"Blessed art Thou, O Savior! Have mercy on us!\""
+        }
+      ],
+      "gloryNow": {
+        "tone": 3,
+        "combinesGloryNow": true,
+        "label": "Glory and Now",
+        "text": "Six days before the feast of Passover\nJesus came to Bethany.\nHe restored Lazarus to life,\nannouncing the coming resurrection.\nMartha and Mary met Him, crying:\n\"Lord, if Thou hadst been here, our brother would not have died!\"\nBut Jesus answered them,\n\"Have I not already told you:\nIf anyone believes in Me,\neven if he dies, he shall live?\nShow Me the place where you buried him.\"\nThen the Creator of all cried out to him: \"Lazarus, come forth!\""
+      }
+    },
+
+    "aposticha": {
+      "stichera": [
+        {
+          "tone": 8,
+          "verse": null,
+          "text": "Rejoice and be glad, O City of Zion!\nExult and be joyful, O Church of God!\nThy King is coming in righteousness.\nHe rides on a colt, the foal of an ass.\nThe children sing His praises:\n\"Hosanna in the highest!\nBlessed art Thou, O greatly merciful One! Have mercy on us!\""
+        },
+        {
+          "tone": 8,
+          "verse": "Out of the mouths of babes and infants Thou hast fashioned perfect praise!",
+          "psalmRef": "Ps. 8:2a",
+          "text": "Today the Savior comes to Jerusalem,\nfulfilling the Scriptures.\nHe is greeted with palms and a carpet of clothes.\nAll know it is He:\nthe Lord, Whom the Cherubim praise.\nHosanna in the highest!\nBlessed art Thou, O greatly merciful One! Have mercy on us!"
+        },
+        {
+          "tone": 8,
+          "verse": "O Lord, our Lord, how glorious is Thy Name in all the earth!",
+          "psalmRef": "Ps. 8:1a",
+          "text": "O gracious Lord, Who ridest upon the Cherubim,\nand art praised by the Seraphim,\nnow Thou ridest like David on the foal of an ass.\nThe children sing hymns worthy of God,\nwhile the priests and scribes blaspheme against Thee.\nBy riding an untamed colt, Thou hast prefigured the salvation of the Gentiles,\nthose wild beasts, who will be brought from unbelief to faith.\nGlory to Thee, O merciful Christ,\nour King and the Lover of man!"
+        }
+      ],
+      "gloryNow": {
+        "tone": 6,
+        "combinesGloryNow": true,
+        "label": "Glory and Now",
+        "text": "The grace of the Holy Spirit\ntoday has assembled us.\nTaking up Thy Cross we sing:\n\"Blessed is He that comes in the Name of the Lord!\nHosanna in the highest!\""
+      }
+    },
+
+    "troparia": {
+      "lazarus": {
+        "tone": 1,
+        "label": "Troparion",
+        "text": "By raising Lazarus from the dead before Thy Passion,\nThou didst confirm the universal resurrection, O Christ God.\nLike the children with the palms of victory,\nwe cry out to Thee, O Vanquisher of Death:\n\"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord.\""
+      },
+      "baptism": {
+        "tone": 4,
+        "label": "Troparion",
+        "position": "now",
+        "text": "When we were buried with Thee in baptism, O Christ God,\nwe were made worthy of eternal life by Thy Resurrection.\nNow we praise Thee and sing:\n\"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord!\""
+      }
+    }
+  }
+}

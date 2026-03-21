@@ -1517,6 +1517,10 @@ function transformSectionBlocks(section, blocks) {
   let now        = null;
   let seenVerse  = false;
 
+  // When the data has no verse-type blocks (sparse scraped data), don't apply
+  // the seenVerse guard — all hymns are real stichera, not a refrain.
+  const hasVerseBlocks = blocks.some(b => b.type === 'verse');
+
   for (const b of blocks) {
     if (b.type === 'verse')        { seenVerse = true; continue; }
     if (b.type === 'glory_marker') { continue; }
@@ -1527,7 +1531,8 @@ function transformSectionBlocks(section, blocks) {
     if (b.position === 'now')   { now   = { text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) }; continue; }
 
     // lordICall only: skip the opening refrain (appears before any psalm verse)
-    if (section === 'lordICall' && !seenVerse) continue;
+    // Only applies when verse blocks exist — sparse data has no refrain block.
+    if (section === 'lordICall' && !seenVerse && hasVerseBlocks) continue;
 
     hymns.push({ text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) });
   }

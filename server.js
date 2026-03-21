@@ -2017,8 +2017,10 @@ function assembleForDate(date, pronoun, entryOverride) {
         ? 'St. Sergius'
         : 'OCA';
 
-      // Great Feast weekday vespers get 6 stichera (same as Saturday); Daily Vespers gets 3
-      const maxLicStichera = isGreatVespers ? 6 : (isSaturdayInjection ? 6 : 3);
+      // Great Feast all-night-vigil: up to 8 stichera (unique hymns repeat to fill slots)
+      // Great Vespers: up to 6; Daily Vespers: up to 3
+      const isVigilFeast  = calendarEntry.vespers?.serviceType === 'all-night-vigil';
+      const maxLicStichera = isVigilFeast ? 8 : (isGreatVespers ? 6 : (isSaturdayInjection ? 6 : 3));
       const licStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'lordICall' && s.order >= 1
       ).slice(0, maxLicStichera) ?? [];
@@ -2048,11 +2050,33 @@ function assembleForDate(date, pronoun, entryOverride) {
             tone:   licStichera[0].tone,
             label:  primary.title,
           });
+        } else if (isVigilFeast && licStichera.length < 8) {
+          // All-Night Vigil: unique hymns repeat to fill 8 slots (e.g. 4 unique × 2)
+          const totalSlots = lic.totalStichera || 8;
+          const allVerses  = Array.from({ length: totalSlots }, (_, i) => totalSlots - i);
+          lic.slots = [{
+            verses: allVerses,
+            count:  totalSlots,
+            source: 'menaion', provenance: menaionProvenance,
+            key:    `auto.${date}.lordICall`,
+            tone:   licStichera[0].tone,
+            label:  primary.title,
+          }];
+          // Build hymns array with repeats to fill totalSlots
+          const hymns = [];
+          for (let i = 0; i < totalSlots; i++) {
+            hymns.push({ text: licStichera[i % licStichera.length].text,
+                         tone: licStichera[i % licStichera.length].tone,
+                         label: licStichera[i % licStichera.length].label });
+          }
+          autoSlot.lordICall = { hymns };
         } else {
-          // Weekday or Great Feast: all stichera from Menaion/feast
-          const allVerses = isGreatVespers
-            ? [6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
-            : [4, 3, 2].slice(0, licStichera.length);
+          // Weekday, Great Vespers, or Vigil with ≥8 unique stichera
+          const allVerses = isVigilFeast
+            ? [8, 7, 6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
+            : isGreatVespers
+              ? [6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
+              : [4, 3, 2].slice(0, licStichera.length);
           lic.slots = [{
             verses: allVerses,
             count:  licStichera.length,
@@ -2063,10 +2087,12 @@ function assembleForDate(date, pronoun, entryOverride) {
           }];
         }
 
-        autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
+        if (!autoSlot.lordICall) {
+          autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
+        }
 
         if (licGlory) {
-          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title };
+          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: true };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
       }
@@ -2099,13 +2125,52 @@ function assembleForDate(date, pronoun, entryOverride) {
         }
 
         if (apostGlory) {
-          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: false };
-          if (isSaturdayInjection) {
+          // Great feast aposticha Glory is always combined Glory/Now
+          const isGreatFeast = !!calendarEntry.liturgicalContext?.greatFeast;
+          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
+          if (isSaturdayInjection && !isGreatFeast) {
             apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
           }
           autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
         }
         // If no doxastichon, keep the existing combinesGloryNow theotokion from calendar entry
+      }
+
+      // ── Inject Litya stichera from DB (great feast and vigil services) ────
+      if (calendarEntry.vespers?.litya) {
+        const lityaStichera = sticheraData?.[0]?.stichera.filter(
+          s => s.section === 'litya' && s.order >= 1
+        ) ?? [];
+        const lityaGlory = sticheraData?.[0]?.stichera.find(
+          s => s.section === 'litya' && s.order === 0
+        ) ?? null;
+        const lityaNow = sticheraData?.[0]?.stichera.find(
+          s => s.section === 'litya' && s.order === -1
+        ) ?? null;
+
+        if (lityaStichera.length > 0) {
+          const litya = calendarEntry.vespers.litya;
+          litya.slots = lityaStichera.map((s, i) => ({
+            position: i + 1,
+            source:   'menaion', provenance: menaionProvenance,
+            key:      `auto.${date}.litya.hymns.${i}`,
+            tone:     s.tone,
+            label:    primary.title,
+          }));
+
+          autoSlot.litya = {
+            hymns: lityaStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })),
+          };
+
+          if (lityaGlory) {
+            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: primary.title };
+            autoSlot.litya.glory = { text: lityaGlory.text, tone: lityaGlory.tone, label: lityaGlory.label };
+          }
+          if (lityaNow) {
+            litya.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.now`, tone: lityaNow.tone, label: primary.title };
+            autoSlot.litya.now = { text: lityaNow.text, tone: lityaNow.tone, label: lityaNow.label };
+          }
+        }
       }
 
       menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };

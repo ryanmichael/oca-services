@@ -15,7 +15,8 @@ let activeSvcType = null;
 let activePronoun = localStorage.getItem('pronoun') || 'tt';  // 'tt' or 'yy'
 let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'choir'
 let activeEducation = localStorage.getItem('education') || 'off'; // 'on' or 'off'
-let educationModules = null; // cached education modules data
+let educationModules = null; // cached education modules data (liturgy)
+let educationModulesVespers = null; // cached education modules data (vespers)
 let choirData     = null;  // cached choir-prep response for current date
 let choirEnabled  = {};    // { svcType: true/false } — which services are toggled on
 let weekStart   = null;   // Date object: Sunday of the displayed week
@@ -319,11 +320,14 @@ async function loadPanelContent(date, svcType) {
     }
     updateDetailLabel();
 
-    // Education modules — only for liturgy in laity mode
+    // Education modules — liturgy and vespers in laity mode
     let eduModules = null;
-    if (activeEducation === 'on' && activeMode === 'laity' &&
-        (svcType === 'liturgy')) {
-      eduModules = await getEducationModules();
+    if (activeEducation === 'on' && activeMode === 'laity') {
+      if (svcType === 'liturgy') {
+        eduModules = await getEducationModules();
+      } else if (svcType === 'greatVespers' || svcType === 'dailyVespers') {
+        eduModules = await getEducationModulesVespers();
+      }
     }
     const html   = window.renderBlocks(data.blocks, { educationModules: eduModules });
     const bodyEl = document.getElementById('p-body');
@@ -980,6 +984,20 @@ async function getEducationModules() {
     return educationModules;
   } catch (e) {
     console.error('Failed to load education modules:', e);
+    return null;
+  }
+}
+
+async function getEducationModulesVespers() {
+  if (educationModulesVespers) return educationModulesVespers;
+  try {
+    const res = await fetch('/api/education-modules-vespers');
+    if (!res.ok) return null;
+    const data = await res.json();
+    educationModulesVespers = data.modules || null;
+    return educationModulesVespers;
+  } catch (e) {
+    console.error('Failed to load vespers education modules:', e);
     return null;
   }
 }

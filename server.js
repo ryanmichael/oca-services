@@ -2890,6 +2890,16 @@ function handleRequest(req, res) {
         res.end(JSON.stringify({ error: 'Failed to load education modules.' }));
       }
 
+    } else if (pathname === '/api/education-modules-vespers') {
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'variable-sources', 'education-modules-vespers.json'), 'utf8'));
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(data));
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Failed to load vespers education modules.' }));
+      }
+
     } else if (pathname === '/api/liturgy') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();

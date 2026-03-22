@@ -2880,6 +2880,16 @@ function handleRequest(req, res) {
         }
       });
 
+    } else if (pathname === '/api/education-modules') {
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'variable-sources', 'education-modules.json'), 'utf8'));
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(data));
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Failed to load education modules.' }));
+      }
+
     } else if (pathname === '/api/liturgy') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -2944,7 +2954,19 @@ function handleRequest(req, res) {
         const tone   = calendarEntry.liturgicalContext?.tone ?? null;
         const dow    = calendarEntry.dayOfWeek || null;
         const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
-        const commemorations  = calendarEntry.commemorations || [];
+        let commemorations  = calendarEntry.commemorations || [];
+        if (commemorations.length === 0) {
+          const [, mm, dd] = date.split('-').map(Number);
+          const dayList = getMenaionDayList(mm, dd);
+          if (dayList) {
+            commemorations = dayList.commemorations.map((title, i) => ({
+              title,
+              isPrincipal: i === 0,
+              tone: null,
+              hasStichera: false,
+            }));
+          }
+        }
 
         const variantName = calendarEntry.liturgy.variant === 'basil'
           ? 'Liturgy of St. Basil the Great'

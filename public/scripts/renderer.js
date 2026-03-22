@@ -178,6 +178,56 @@
     }
   }
 
+  // ─── Education module rendering ────────────────────────────────────────
+
+  function renderEducationModule(mod) {
+    let html = '<div class="edu-module">';
+    html += `<div class="edu-module-title">${esc(mod.title)}</div>`;
+    html += `<div class="edu-module-subtitle">${esc(mod.subtitle)}</div>`;
+    html += '<div class="edu-module-body">';
+    for (const para of (mod.content || [])) {
+      html += `<p>${esc(para)}</p>`;
+    }
+    html += '</div>';
+
+    // Historical timeline
+    if (mod.historicalSnapshot && mod.historicalSnapshot.length) {
+      html += '<div class="edu-timeline">';
+      html += '<div class="edu-timeline-label">Historical Timeline</div>';
+      for (const item of mod.historicalSnapshot) {
+        html += '<div class="edu-tl-item">';
+        html += `<div class="edu-tl-date">${esc(item.date)}</div>`;
+        html += `<div class="edu-tl-detail">${esc(item.detail)}</div>`;
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+
+    // Scripture references
+    if (mod.scripture && mod.scripture.length) {
+      html += '<div class="edu-scripture">';
+      html += '<div class="edu-scripture-label">Scripture</div>';
+      for (const ref of mod.scripture) {
+        html += `<div class="edu-ref"><span class="edu-ref-verse">${esc(ref.ref)}</span>${esc(ref.label || '')}</div>`;
+      }
+      html += '</div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function buildEducationMap(modules) {
+    if (!modules || !modules.length) return null;
+    const map = {};
+    for (const mod of modules) {
+      if (mod.placementBefore) {
+        map[mod.placementBefore] = mod;
+      }
+    }
+    return map;
+  }
+
   // ─── Section grouping + full render ──────────────────────────────────────
 
   function renderBlocks(blocks, opts) {
@@ -203,6 +253,12 @@
       sections[sections.length - 1].blocks.push(block);
     }
 
+    // Build education module map if modules were provided
+    const eduMap = (opts && opts.educationModules)
+      ? buildEducationMap(opts.educationModules)
+      : null;
+    const eduRendered = {};  // track which modules we've already rendered
+
     let html = '';
 
     for (let i = 0; i < sections.length; i++) {
@@ -217,6 +273,15 @@
       // Gold rule between sections (not before the first)
       if (i > 0 && !sections[i - 1].isDivider) {
         html += '<div class="svc-rule"></div>';
+      }
+
+      // Education module injection — render before matching section
+      if (eduMap && name && !eduRendered[name]) {
+        const mod = eduMap[name];
+        if (mod) {
+          html += renderEducationModule(mod);
+          eduRendered[name] = true;
+        }
       }
 
       // Collect unique source labels for the dev-mode tag

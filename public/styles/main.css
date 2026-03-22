@@ -838,6 +838,91 @@ body.dev-mode .src-tag { display: inline; }
   background: var(--rubric); color: var(--surface);
 }
 
+/* ── Settings: disabled group ─────────────────────────────────────────────── */
+.settings-group.disabled {
+  opacity: .35; pointer-events: none;
+}
+.settings-group.disabled .settings-desc::after {
+  content: ' (available in Laity mode only)';
+  font-style: normal; color: var(--muted);
+}
+
+/* ── EDUCATION MODULE ────────────────────────────────────────────────────── */
+.edu-module {
+  margin: 0 0 8px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--rubric);
+  background: color-mix(in srgb, var(--surface) 96%, var(--rubric));
+  padding: 20px 24px 18px;
+}
+.edu-module-title {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; letter-spacing: .04em;
+  color: var(--rubric); margin-bottom: 2px;
+}
+.edu-module-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; font-style: italic;
+  color: var(--muted); margin-bottom: 14px;
+}
+.edu-module-body p {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px; line-height: 1.6;
+  color: var(--text); margin: 0 0 10px;
+}
+.edu-module-body p:last-child { margin-bottom: 0; }
+
+/* timeline */
+.edu-timeline {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.edu-timeline-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: .14em;
+  color: var(--muted); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.edu-tl-item {
+  display: flex; gap: 12px;
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; line-height: 1.5;
+  color: var(--text); margin-bottom: 8px;
+}
+.edu-tl-item:last-child { margin-bottom: 0; }
+.edu-tl-date {
+  flex-shrink: 0; width: 90px;
+  font-weight: 600; color: var(--rubric);
+  text-align: right;
+}
+.edu-tl-detail { flex: 1; }
+
+/* scripture refs */
+.edu-scripture {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.edu-scripture-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: .14em;
+  color: var(--muted); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.edu-ref {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; line-height: 1.5;
+  color: var(--text); margin-bottom: 4px;
+}
+.edu-ref-verse {
+  font-weight: 600; color: var(--rubric);
+  margin-right: 6px;
+}
+
+/* print: hide education modules */
+@media print {
+  .edu-module { display: none; }
+}
+
 /* ── CHOIR MODE ───────────────────────────────────────────────────────────── */
 
 .choir-toggles {

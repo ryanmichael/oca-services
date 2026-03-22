@@ -1,0 +1,431 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Education mode modules for the Divine Liturgy — designed for inquirers from American protestant/evangelical backgrounds",
+    "targetService": "divine-liturgy",
+    "moduleCount": 10,
+    "status": "research-draft",
+    "layers": [
+      "title — display heading for the module",
+      "subtitle — one-line hook",
+      "overview — 2-3 sentence accessible summary",
+      "scripture — key Bible references with text snippets",
+      "jewishRoots — Second Temple synagogue/Temple parallels",
+      "earlyChurch — patristic attestation with dates",
+      "protestantQuestions — common visitor questions this section triggers",
+      "bridgeLanguage — framing that connects to evangelical vocabulary",
+      "misconceptions — specific objections addressed with responses",
+      "revelationParallel — mapping to Revelation 4-5 heavenly worship",
+      "sources — scholarly and popular references"
+    ]
+  },
+
+  "modules": [
+    {
+      "id": "opening-doxology",
+      "placementBefore": "Opening Doxology",
+      "title": "\"Blessed Is the Kingdom\"",
+      "subtitle": "Entering the throne room",
+      "content": [
+        "The Divine Liturgy does not begin with a welcome or a warm-up. It begins with a declaration: \"Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit.\" The congregation responds \"Amen\" — so be it. In that exchange, the Church announces that it is stepping across a threshold, out of ordinary time and into the Kingdom that Jesus proclaimed at the very start of his ministry.",
+        "This pattern is ancient. In the Jewish synagogue, worship opened with the Barchu — \"Bless the Lord who is blessed\" — and the people responded with their own blessing. It was a call-and-response that set apart everything that followed as sacred. The earliest Christian communities inherited this pattern directly. By the fourth century, the Apostolic Constitutions record a nearly identical opening: the bishop greets the church with a Trinitarian blessing, and the people respond \"And with thy spirit.\" The structure has not changed.",
+        "The opening is Trinitarian because the Church confesses from its first breath that it gathers in the presence of the Father, Son, and Holy Spirit — the same formula Jesus gave at his ascension. And the people's \"Amen\" is not passive agreement. Throughout the book of Revelation, the heavenly assembly punctuates its worship with \"Amen\" — it is the congregation's active ratification that yes, we are here, and this is real.",
+        "Every Christian who has ever prayed \"Thy Kingdom come\" in the Lord's Prayer has made the same declaration. The Liturgy simply starts there."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "The Barchu — \"Bless the Lord who is blessed\" — opens synagogue worship. The congregation responds with a blessing. This call-and-response doxology frames everything that follows as set apart for God." },
+        { "era": "Apostolic period", "date": "~50-90 AD", "detail": "Paul closes 2 Corinthians with a Trinitarian blessing — \"The grace of the Lord Jesus Christ, the love of God, and the fellowship of the Holy Spirit be with you all\" (13:14) — likely already a liturgical formula used in gathered worship." },
+        { "era": "Early Church — Rome", "date": "~96 AD", "detail": "Clement of Rome's letter to the Corinthians (1 Clement 59-61) preserves a long liturgical prayer that opens with doxological praise — the earliest surviving example of a Christian community's corporate prayer language." },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr describes Sunday worship in his First Apology: after readings and instruction, the president offers prayers and thanksgivings, and the people assent, saying 'Amen.' The congregational 'Amen' is already established practice." },
+        { "era": "Early Church — Syria", "date": "~380 AD", "detail": "The Apostolic Constitutions record the bishop opening the Liturgy with a Trinitarian greeting nearly identical to today's: \"The grace of Almighty God... be with you all.\" The people respond: \"And with thy spirit.\"" }
+      ],
+      "scripture": [
+        { "ref": "Mark 1:15", "label": "Jesus opens his ministry by announcing the Kingdom" },
+        { "ref": "Mark 11:10", "label": "\"Blessed is the coming kingdom of our father David\"" },
+        { "ref": "Matthew 28:19", "label": "The Trinitarian formula that structures the blessing" },
+        { "ref": "Revelation 4:2", "label": "The throne room — worship begins in the King's presence" },
+        { "ref": "Revelation 5:14", "label": "The heavenly congregation's \"Amen\"" },
+        { "ref": "Revelation 7:12", "label": "\"Blessing and glory... to our God forever. Amen.\"" }
+      ],
+      "sources": {
+        "scholarly": ["Alexander Schmemann, 'The Eucharist: Sacrament of the Kingdom' (1988)"],
+        "popular": ["OCA: oca.org/orthodoxy/the-orthodox-faith/worship/the-divine-liturgy/blessed-is-the-kingdom"],
+        "earlyChurch": ["Apostolic Constitutions VIII (~380 AD)", "1 Clement 59-61 (~96 AD)"]
+      }
+    },
+
+    {
+      "id": "great-litany",
+      "placementBefore": "Great Litany",
+      "title": "Praying for the Whole World",
+      "subtitle": "The oldest prayer list in Christianity",
+      "content": [
+        "A deacon steps forward and begins calling out prayers: for peace, for the Church, for the leaders of the nation, for the city, for travelers, for the sick, for good weather, for deliverance from danger. After each petition, the congregation responds with three words that have been on the lips of God's people for three thousand years: \"Lord, have mercy.\"",
+        "This is corporate intercession — and it is exactly what the apostle Paul commanded. In his letter to Timothy, he urged that 'supplications, prayers, intercessions, and thanksgivings be made for all people, for kings and all who are in high positions.' The litany fulfills that instruction line by line. It is not a new invention; it is the formalized version of what every church does when it prays for its community. The Orthodox simply kept the ancient structure intact.",
+        "The response 'Lord, have mercy' — Kyrie eleison in Greek — is the most common prayer in the entire Bible. It echoes through the Psalms, and it was on the lips of every person who came to Jesus for healing: the Canaanite woman, the blind men by the road, the tax collector in the temple. Psalm 136 repeats 'His mercy endures forever' twenty-six times in a row — a reminder that repetition in prayer is not mindless babbling but the Bible's own pattern. Jesus warned against empty words spoken to manipulate God, not the heartfelt cry that keeps returning to the same truth.",
+        "The litany structure — a leader praying, the people responding — goes back even further than Christianity. In the synagogue, the Amidah (the 'Eighteen Blessings') followed this same pattern: a fixed series of petitions recited standing, with the congregation responding after each. The scope was nearly identical — repentance, healing, justice, the welfare of the city, the hope of redemption. The Christian litany inherited this form and filled it with the peace of Christ."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "The Amidah (Shemoneh Esrei) — eighteen blessings recited standing in synagogue worship. A leader recited petitions for healing, justice, repentance, and the welfare of the nation; the congregation responded 'Amen' after each." },
+        { "era": "Early Church — Rome", "date": "~96 AD", "detail": "Clement of Rome's letter (1 Clement 59-61) preserves a litany-like prayer: 'Save those among us who are in tribulation; have mercy on the lowly; lift up the fallen; heal the ungodly; feed the hungry; release our prisoners; raise up the weak; comfort the fainthearted.'" },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr describes the congregation offering 'common prayers' for themselves and for all people everywhere after the readings and homily, before the kiss of peace." },
+        { "era": "Early Church — Syria", "date": "~380 AD", "detail": "The Apostolic Constitutions record a fully developed litany with a deacon calling petitions and the people responding 'Lord, have mercy' (Kyrie eleison) — virtually identical to the Orthodox Great Litany today." }
+      ],
+      "scripture": [
+        { "ref": "1 Timothy 2:1-2", "label": "Paul commands intercession for all people, including rulers" },
+        { "ref": "Psalm 51:1", "label": "\"Have mercy on me, O God\" — the Psalter's constant refrain" },
+        { "ref": "Matthew 15:22", "label": "The Canaanite woman: \"Have mercy on me, O Lord\"" },
+        { "ref": "Luke 18:13", "label": "The tax collector: \"God, have mercy on me, a sinner\"" },
+        { "ref": "Psalm 136", "label": "\"His mercy endures forever\" — repeated 26 times in one psalm" },
+        { "ref": "Matthew 26:39-44", "label": "Jesus repeats the same prayer three times in Gethsemane" },
+        { "ref": "Revelation 4:8", "label": "The living creatures repeat \"Holy, holy, holy\" ceaselessly" }
+      ],
+      "sources": {
+        "scholarly": ["Stefan Reif, 'Judaism and Hebrew Prayer' (Cambridge, 1993)", "Robert Taft, 'Beyond East and West' (1997)"],
+        "popular": ["GOARCH: goarch.org/-/kyrie-eleison-lord-have-mercy"],
+        "earlyChurch": ["1 Clement 59-61 (~96 AD)", "Justin Martyr, First Apology 67 (~155 AD)", "Apostolic Constitutions VIII.6-10 (~380 AD)"]
+      }
+    },
+
+    {
+      "id": "antiphons",
+      "placementBefore": "First Antiphon",
+      "title": "Singing the Psalms Together",
+      "subtitle": "Three thousand years of the same song",
+      "content": [
+        "The congregation now sings three antiphons — psalms and hymns passed back and forth between two groups. The first is Psalm 103: 'Bless the Lord, O my soul.' The second is Psalm 146: 'Praise the Lord, O my soul.' The third is the Beatitudes from the Sermon on the Mount — Jesus' own words, with the prayer of the Good Thief woven between each line: 'Remember me, O Lord, when Thou comest in Thy Kingdom.'",
+        "This responsive, back-and-forth singing is called antiphonal worship, and it is one of the oldest forms of prayer on earth. When Solomon's Temple was dedicated, two choirs sang antiphonally, and 'the house of the Lord was filled with a cloud.' The Levitical singers in the Temple had specific psalms assigned to each day of the week. They sang them in alternating groups, one side answering the other. The Orthodox antiphons continue that practice without interruption.",
+        "Paul commanded the early Christians to address 'one another in psalms and hymns and spiritual songs.' The antiphons do exactly that: two Old Testament psalms, one New Testament hymn (the Beatitudes), and spiritual refrains woven throughout. The singing is not a warm-up act before the real worship begins — it is the worship itself, continuous with the Temple psalmody that Jesus and the apostles knew.",
+        "When a Roman governor named Pliny wrote to Emperor Trajan around 112 AD, asking what to do about the Christians in his province, he reported that they gathered 'on a fixed day before dawn and sang responsively a hymn to Christ as to a god.' That is the earliest non-Christian description of Christian worship — and what it describes is antiphonal singing."
+      ],
+      "historicalSnapshot": [
+        { "era": "Temple worship", "date": "~950 BC", "detail": "At the dedication of Solomon's Temple, two choirs sang antiphonally: 'when the trumpeters and singers were as one, to make one sound to be heard in praising and thanking the Lord' (2 Chronicles 5:13)." },
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "Levitical choirs sang specific psalms daily in the Temple (Mishnah Tamid 7:4). Psalm singing was antiphonal — two groups alternating. The Hallel psalms (113-118) were sung at Passover, Shavuot, and Sukkot." },
+        { "era": "Roman Empire", "date": "~112 AD", "detail": "Pliny the Younger reports to Emperor Trajan that Christians 'sing responsively (secum invicem) a hymn to Christ as to a god' — the earliest pagan witness to Christian antiphonal worship." },
+        { "era": "Early Church — North Africa", "date": "~197 AD", "detail": "Tertullian describes each worshiper being 'urged to stand forth and sing, as he can, a hymn to God, either from the holy scriptures or of his own composing.'" }
+      ],
+      "scripture": [
+        { "ref": "Ephesians 5:19", "label": "\"Addressing one another in psalms and hymns and spiritual songs\"" },
+        { "ref": "Colossians 3:16", "label": "\"Singing psalms and hymns and spiritual songs\"" },
+        { "ref": "Psalm 103:1", "label": "First Antiphon: \"Bless the Lord, O my soul\"" },
+        { "ref": "Psalm 146:1-2", "label": "Second Antiphon: \"Praise the Lord, O my soul\"" },
+        { "ref": "Matthew 5:3-12", "label": "Third Antiphon: the Beatitudes — Jesus' own words" },
+        { "ref": "Luke 23:42", "label": "The Good Thief's prayer — the refrain between each Beatitude" },
+        { "ref": "2 Chronicles 5:13", "label": "Antiphonal singing at the dedication of Solomon's Temple" }
+      ],
+      "sources": {
+        "scholarly": ["James McKinnon, 'The Temple, the Church Fathers, and Early Western Chant' (1998)", "John Arthur Smith, 'Music in Ancient Judaism and Early Christianity' (2011)"],
+        "popular": [],
+        "earlyChurch": ["Pliny the Younger to Trajan (~112 AD)", "Tertullian, Apologeticum 39 (~197 AD)"]
+      }
+    },
+
+    {
+      "id": "small-entrance",
+      "placementBefore": "Little Entrance",
+      "title": "The Gospel Procession",
+      "subtitle": "When the Word of God arrives",
+      "content": [
+        "The doors of the altar open and the Gospel book is carried out in procession through the church. The deacon lifts it high and cries 'Wisdom! Attend!' — and the people sing, 'Come, let us worship and fall down before Christ.' This is one of the most ancient moments in Christian worship, and its roots go back even further.",
+        "Every Sabbath in the synagogue that Jesus attended, the Torah scroll was removed from the ark, carried through the congregation, and elevated for all to see before being read aloud. The scroll was dressed in a mantle, crowned with ornaments, and treated with a reverence that might surprise modern readers — it was not just a book but the living Word of God entering the midst of His people. When Ezra read the Law before all Israel after the exile, the people stood as the scroll was opened. When Jesus stood up to read in the synagogue at Nazareth, He was participating in this same ritual.",
+        "The Gospel procession continues that pattern directly. The Gospel book — often bound in gold or silver covers, placed on the altar as the most honored object in the church — is carried out so that Christ the Word enters His people physically, visibly. The procession is not decoration added to a reading; it is the reading's original form. John wrote that 'the Word became flesh and dwelt among us.' The Little Entrance makes that visible: the Word comes to dwell among His people, Sunday after Sunday.",
+        "The Bible itself is full of processions with the Word of God. The Ark of the Covenant processed around Jericho. David danced before the Ark as it entered Jerusalem. Ezra's reading was a public event of national significance, not a casual recitation. The Gospel procession stands in this line — each Sunday, the Word arrives."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "The Torah was removed from the aron ha-kodesh (ark), processed through the congregation, elevated (hagbahah), and read from the bema (raised platform). Blessings were recited before and after. The congregation stood for the reading." },
+        { "era": "Jesus in the synagogue", "date": "~28 AD", "detail": "Jesus 'stood up to read' in the synagogue at Nazareth (Luke 4:16-21), participating in the Torah reading ritual — the same pattern the Little Entrance preserves." },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr: 'The memoirs of the apostles or the writings of the prophets are read, as long as time permits; then the president verbally instructs.' The reading-then-homily sequence is already fixed." },
+        { "era": "Early Church — Syria", "date": "~380 AD", "detail": "The Apostolic Constitutions describe the Gospel book carried in procession, the deacon calling for silence, and the congregation standing for the Gospel reading." },
+        { "era": "Early Church — Constantinople", "date": "4th-5th century", "detail": "Church architecture was designed around the processional reading of the Gospel, with the ambo (raised reading platform) corresponding to the synagogue bema." }
+      ],
+      "scripture": [
+        { "ref": "Psalm 95:6", "label": "\"O come, let us worship and fall down before him\" — the entrance hymn" },
+        { "ref": "John 1:14", "label": "\"The Word became flesh and dwelt among us\"" },
+        { "ref": "Luke 4:16-21", "label": "Jesus reads in the synagogue — the pattern for the Gospel procession" },
+        { "ref": "Nehemiah 8:1-6", "label": "Ezra brings the Book of the Law — the people stand when it is opened" },
+        { "ref": "Joshua 6", "label": "The Ark of the Covenant processed around Jericho" },
+        { "ref": "2 Samuel 6:14", "label": "David dances before the Ark entering Jerusalem" },
+        { "ref": "Revelation 5:1-5", "label": "A scroll opened in the heavenly assembly" }
+      ],
+      "sources": {
+        "scholarly": ["Robert Taft, 'The Great Entrance' (1978)", "Lee Levine, 'The Ancient Synagogue: The First Thousand Years' (2005)"],
+        "popular": ["OCA: oca.org/orthodoxy/the-orthodox-faith/worship/the-divine-liturgy/small-entrance"],
+        "earlyChurch": ["Justin Martyr, First Apology 67 (~155 AD)", "Apostolic Constitutions VIII.5 (~380 AD)"]
+      }
+    },
+
+    {
+      "id": "troparia-kontakia",
+      "placementBefore": "Troparia",
+      "title": "Hymns of the Day",
+      "subtitle": "Surrounded by a great cloud of witnesses",
+      "content": [
+        "After the entrance, short hymns are sung — troparia and kontakia — honoring Christ, the Virgin Mary (called the Theotokos, or 'God-bearer'), and the saints commemorated on this particular day. Each hymn is a compact summary of a life lived in faithfulness: what happened, what it teaches, and why it matters.",
+        "This is not a foreign practice. The author of Hebrews did exactly the same thing when he wrote chapter 11 — naming Abel, Enoch, Noah, Abraham, Sarah, Moses, Rahab, David, Samuel, and the prophets, celebrating 'by faith' what God accomplished through each of them. Then he drew the conclusion: 'Since we are surrounded by so great a cloud of witnesses, let us lay aside every weight.' The troparia simply continue that practice, extending the list through two thousand years of faithful witnesses — from the apostles through the martyrs, monastics, teachers, and ordinary believers who bore witness to Christ in their time.",
+        "The question of praying to saints often comes up here. It helps to understand what is actually happening: the Church is not replacing Christ as mediator. Paul asked the living Christians around him to pray for him constantly — in Romans, Ephesians, Colossians, and Thessalonians. If those believers are now 'at home with the Lord' and 'alive to God' — as Paul himself teaches — there is no reason to think they stopped praying. Asking a saint to pray for you works the same way as asking any Christian brother or sister to pray for you, except they happen to be in the nearer presence of God.",
+        "The title 'Theotokos' — Mother of God — can sound startling, but it is actually a statement about Jesus, not Mary. It affirms that the child she bore was not merely a human prophet but God incarnate. Elizabeth expressed it first: 'Why is this granted to me that the mother of my Lord should come to me?' The Council of Ephesus in 431 AD defined the title precisely to protect Christ's divinity. To deny it would be to deny that the baby in the manger was fully God."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~200 BC onward", "detail": "The patriarchs and matriarchs are named in the Amidah. Martyrdom theology in 2 Maccabees and 4 Maccabees specifically honors those who died for the faith. The Passover Seder recounts the faithful by name." },
+        { "era": "Apostolic period", "date": "~49-64 AD", "detail": "Paul names the faithful and asks for their prayers: Romans 15:30, Ephesians 6:19, Colossians 4:3, 1 Thessalonians 5:25. He honors Timothy's grandmother Lois and mother Eunice by name (2 Timothy 1:5)." },
+        { "era": "Early Church — Smyrna", "date": "~155 AD", "detail": "The Martyrdom of Polycarp is the earliest account of Christians gathering on the anniversary of a martyr's death to honor his memory — the origin of the feast-day calendar and the practice of the troparia." },
+        { "era": "Ecumenical Council", "date": "431 AD", "detail": "The Council of Ephesus defines Mary as 'Theotokos' (God-bearer) — not to elevate Mary, but to affirm that the child she bore was God incarnate. The title protects the full divinity of Christ." }
+      ],
+      "scripture": [
+        { "ref": "Hebrews 11", "label": "The Hall of Faith — naming the faithful and recounting their witness" },
+        { "ref": "Hebrews 12:1", "label": "\"Surrounded by so great a cloud of witnesses\"" },
+        { "ref": "Revelation 5:8", "label": "The elders hold bowls of incense, which ARE the prayers of the saints" },
+        { "ref": "Luke 20:38", "label": "\"He is not the God of the dead, but of the living\"" },
+        { "ref": "2 Corinthians 5:8", "label": "The departed are \"at home with the Lord\"" },
+        { "ref": "Luke 1:43", "label": "Elizabeth: \"the mother of my Lord\" — the earliest Theotokos declaration" },
+        { "ref": "Philippians 3:17", "label": "\"Keep your eyes on those who walk according to the example you have in us\"" }
+      ],
+      "sources": {
+        "scholarly": [],
+        "popular": ["OCA: oca.org/reflections/fr.-lawrence-farley/praying-to-the-saints"],
+        "earlyChurch": ["Martyrdom of Polycarp (~155 AD)", "Council of Ephesus (431 AD)", "Apostolic Constitutions (~380 AD)"]
+      }
+    },
+
+    {
+      "id": "scripture-readings",
+      "placementBefore": "Prokeimenon",
+      "title": "The Word of God, Read Aloud",
+      "subtitle": "More Scripture than you might expect",
+      "content": [
+        "Every Liturgy includes at least four distinct encounters with Scripture: a prokeimenon (a psalm verse sung as a refrain), an Epistle reading, Alleluia verses (more psalm refrains), and a Gospel reading — followed by a homily. Add to this the psalms already sung in the antiphons, the biblical quotations in the litanies, the Creed, the Lord's Prayer, and the hymns, and a remarkable picture emerges: of the 237 liturgical verses in the Divine Liturgy, 124 come from the Old Testament and 113 from the New. The service is saturated with the Bible from beginning to end.",
+        "The structure of readings-then-homily is not a Christian invention. It is the direct continuation of the synagogue service that Jesus and the apostles attended every Sabbath. In the synagogue, the Torah scroll was read (the primary reading), followed by a selection from the Prophets (the Haftarah), followed by a sermon expounding the texts. When Jesus stood up in the synagogue at Nazareth and read from Isaiah, and then sat down to teach, He was following this exact order. When Paul entered a synagogue in Pisidian Antioch and was invited to speak 'after the reading from the Law and the Prophets,' he was participating in the same pattern.",
+        "The Liturgy preserves this. The Epistle corresponds to the Haftarah — a secondary reading, delivered by a reader from a lower position. The Gospel corresponds to the Torah reading — the primary, most solemn reading, delivered from a higher position while the congregation stands. Psalm verses are sung between the readings, just as they were in the synagogue and Temple. The homily follows, just as it always has.",
+        "The Orthodox lectionary cycles through the entire New Testament (except Revelation) over the course of the year. On any given Sunday, the congregation hears the Psalms, the Epistles, and the Gospels proclaimed aloud — the public reading of Scripture that Paul urged Timothy to devote himself to. Take the Bible out of the Liturgy and there is almost nothing left."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "The synagogue reading service: Torah reading from a scroll in procession, Haftarah reading from the Prophets, psalm verses between readings, and a homily expounding the texts. This was the worship Jesus and Paul attended." },
+        { "era": "Jesus in the synagogue", "date": "~28 AD", "detail": "Jesus reads from Isaiah in the synagogue at Nazareth (Luke 4:16-21) — Torah reading followed by teaching, the exact pattern the Liturgy preserves." },
+        { "era": "Apostolic period", "date": "~50-64 AD", "detail": "Paul instructs Timothy to devote himself to 'the public reading of Scripture, to exhortation, to teaching' (1 Timothy 4:13). He tells the Colossians to share his letters between churches (Colossians 4:16) — the origin of the Epistle lectionary." },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr: 'The memoirs of the apostles or the writings of the prophets are read, as long as time permits; then the president verbally instructs and exhorts to the imitation of these good things.'" },
+        { "era": "Early Church — Syria", "date": "~380 AD", "detail": "The Apostolic Constitutions describe readings proceeding in order: Law, Prophets, Epistles, Acts, Gospels — with the congregation standing for the Gospel." }
+      ],
+      "scripture": [
+        { "ref": "1 Timothy 4:13", "label": "\"Devote yourself to the public reading of Scripture, to exhortation, to teaching\"" },
+        { "ref": "Luke 4:16-21", "label": "Jesus reads in the synagogue and then teaches — the Liturgy's pattern" },
+        { "ref": "Acts 13:15", "label": "Paul invited to speak after the synagogue readings — the same order" },
+        { "ref": "Colossians 4:16", "label": "Paul's letters circulated for public reading — the origin of the Epistle lectionary" },
+        { "ref": "Revelation 1:3", "label": "\"Blessed is the one who reads aloud the words of this prophecy\"" },
+        { "ref": "Nehemiah 8:8", "label": "\"They read from the Book of the Law, clearly, and gave the sense\" — reading + explanation" }
+      ],
+      "sources": {
+        "scholarly": ["Paul Bradshaw, 'The Search for the Origins of Christian Worship' (2002)"],
+        "popular": ["Journey to Orthodoxy: journeytoorthodoxy.com/scripture-divine-liturgy/", "V. Rev. John Matusiak: orthodoxbend.org/scripture-in-the-divine-liturgy/"],
+        "earlyChurch": ["Justin Martyr, First Apology 67 (~155 AD)", "Apostolic Constitutions VIII.5 (~380 AD)"]
+      }
+    },
+
+    {
+      "id": "cherubic-hymn",
+      "placementBefore": "Cherubic Hymn",
+      "title": "The Offering Procession",
+      "subtitle": "Bread, wine, and our lives — carried to God's altar",
+      "content": [
+        "The congregation begins to sing one of the most striking hymns in the service: 'Let us who mystically represent the Cherubim, and sing the thrice-holy hymn to the life-giving Trinity, now lay aside all earthly care, that we may receive the King of all.' As the hymn is sung, the bread and wine are carried in a solemn procession from the preparation table through the church and to the altar. This is the Great Entrance.",
+        "The meaning of this moment has deep roots. In the Jerusalem Temple, worshipers brought their offerings — grain, animals, bread, wine — and the priests carried them to the altar. One particular offering matters here: the Todah, the thanksgiving sacrifice described in Leviticus. It included bread (both leavened and unleavened), wine, and a communal meal. An ancient rabbinic tradition held that in the Messianic age, all sacrifices would cease except the Todah — the thanksgiving offering would endure forever. The word 'Eucharist' is simply the Greek word for thanksgiving. Christians believe the rabbis were right: the Todah did endure, as the Eucharist.",
+        "In the early church, the pattern was concrete and practical. Justin Martyr reports around 155 AD that bread and a cup of wine mixed with water were brought to the one presiding. By 215 AD, Hippolytus describes the deacons carrying the people's gifts to the bishop. The Great Entrance preserves this moment: the offerings of the people — representing their very lives — are carried to the altar where they will be offered to God.",
+        "The Cherubic Hymn frames this offering in the language of heavenly worship. Isaiah saw seraphim singing 'Holy, holy, holy' before God's throne. John in Revelation saw living creatures who never cease that same hymn. The congregation is not pretending to be angels — it is joining an act of worship that Scripture says is already happening, always, around the throne of God. Every surviving description of early Christian worship, from the Didache to Justin to Hippolytus, describes structured, liturgical worship with fixed prayers, readings, and a thanksgiving meal. The Great Entrance is not an elaborate addition to a once-simple practice; it is the practice, rendered visible."
+      ],
+      "historicalSnapshot": [
+        { "era": "Temple worship", "date": "~1400 BC onward", "detail": "The Todah (thanksgiving offering, Leviticus 7:12-15) included bread, wine, and a communal meal. Rabbinic tradition held that in the Messianic age all sacrifices would cease except the Todah." },
+        { "era": "Dead Sea Scrolls", "date": "~200 BC – 70 AD", "detail": "The Songs of the Sabbath Sacrifice (4Q400-407) describe the heavenly temple worship in elaborate detail — earthly worship was understood as joining the angelic liturgy. This is exactly what the Cherubic Hymn expresses." },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr: 'Then there is brought to the president of the brethren bread and a cup of wine mixed with water.' Also: 'They who are well-to-do give what each thinks fit, and what is collected is deposited with the president, who succours the orphans and widows.'" },
+        { "era": "Early Church — Rome", "date": "~215 AD", "detail": "Hippolytus, Apostolic Tradition: the deacons bring the offering to the bishop for the eucharistic prayer." },
+        { "era": "Byzantine Empire", "date": "574 AD", "detail": "The Cherubic Hymn is introduced into the Liturgy by Emperor Justin II — not as a new practice, but as a hymn to accompany the ancient offertory procession that had been part of the Liturgy since the beginning." }
+      ],
+      "scripture": [
+        { "ref": "Isaiah 6:1-5", "label": "Seraphim singing before God's throne — the Cherubic Hymn's source" },
+        { "ref": "Revelation 4:8", "label": "\"Holy, holy, holy\" — the ceaseless heavenly hymn" },
+        { "ref": "Psalm 24:7-10", "label": "\"Lift up your heads, O gates, that the King of glory may come in\"" },
+        { "ref": "Romans 12:1", "label": "\"Present your bodies as a living sacrifice\" — the offering of our lives" },
+        { "ref": "Hebrews 9:24", "label": "Christ entering heaven itself to appear before God on our behalf" },
+        { "ref": "Leviticus 7:12-15", "label": "The Todah — the thanksgiving offering of bread and wine" },
+        { "ref": "1 Corinthians 14:40", "label": "\"All things should be done decently and in order\"" }
+      ],
+      "sources": {
+        "scholarly": ["Louis Bouyer, 'Eucharist' (1968)", "Brant Pitre, 'Jesus and the Jewish Roots of the Eucharist' (2011)", "Hartmut Gese, 'The Origin of the Lord's Supper' (1981)"],
+        "popular": ["OCA: oca.org/orthodoxy/the-orthodox-faith/worship/the-divine-liturgy/offertory-great-entrance"],
+        "earlyChurch": ["Justin Martyr, First Apology 65, 67 (~155 AD)", "Hippolytus, Apostolic Tradition 4 (~215 AD)"]
+      }
+    },
+
+    {
+      "id": "creed",
+      "placementBefore": "The Creed",
+      "title": "\"We Believe\"",
+      "subtitle": "The confession that shaped the Bible itself",
+      "content": [
+        "The entire congregation rises and together recites the Nicene Creed — a summary of the Christian faith composed at the Councils of Nicaea (325 AD) and Constantinople (381 AD). Every phrase traces to specific Scripture: 'Maker of heaven and earth' (Genesis 1:1), 'born of the Virgin Mary' (Luke 1:35), 'suffered under Pontius Pilate' (Luke 23:1), 'rose again the third day' (1 Corinthians 15:4), 'ascended into heaven' (Acts 1:9), 'shall come again to judge' (Matthew 25:31).",
+        "But creeds did not begin at Nicaea. Paul himself quotes creedal formulas that predate his own letters — oral summaries of the faith that were already circulating in the earliest Christian communities. 'Christ died for our sins according to the Scriptures, was buried, was raised on the third day' (1 Corinthians 15:3-4) is one. The Christological hymn in Philippians 2 is another. These were recited in worship before they were written down. The Nicene Creed simply made explicit and comprehensive what those early summaries contained.",
+        "The Creed also has a Jewish ancestor. Every morning and evening, faithful Jews recited the Shema: 'Hear, O Israel, the Lord our God, the Lord is one.' It was both a prayer and a declaration of identity — who God is and who His people are. The Nicene Creed functions as the Christian Shema: a corporate confession that unites the whole Church in one voice, one faith.",
+        "Here is a striking historical fact: the same church councils that wrote this Creed also determined which books belong in the New Testament. The conciliar process that produced the Creed is the same conciliar process that produced the biblical canon. If you trust the Church's judgment about which books are Scripture, you are already trusting the process that gave you the Creed.",
+        "Visitors sometimes notice that the Orthodox Creed says the Holy Spirit proceeds 'from the Father' — without the phrase 'and the Son' (the Filioque) found in Western churches. The original Creed of 325/381 does not include that phrase. It was added by the Western church centuries later, without the approval of an ecumenical council. The Orthodox simply kept the original text unchanged."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~1400 BC onward", "detail": "The Shema — 'Hear, O Israel, the Lord our God, the Lord is one' (Deuteronomy 6:4) — recited morning and evening as the central confession of Jewish faith. A corporate declaration of identity." },
+        { "era": "Apostolic period", "date": "~35-64 AD", "detail": "Paul quotes pre-existing creedal formulas: 1 Corinthians 15:3-4 ('Christ died... was buried... was raised'), Philippians 2:5-11 (the Christological hymn), 1 Timothy 3:16. These were liturgical statements already in circulation before his letters." },
+        { "era": "Council of Nicaea", "date": "325 AD", "detail": "318 bishops gather to address the Arian controversy. They compose the Creed based on earlier baptismal confessions, affirming that the Son is 'of one essence' (homoousios) with the Father. The same conciliar process later determines the New Testament canon." },
+        { "era": "Council of Constantinople", "date": "381 AD", "detail": "150 bishops expand the Creed to its final form, adding the section on the Holy Spirit: 'the Lord, the Giver of life, who proceeds from the Father.' This is the Creed recited in Orthodox churches today — unchanged." }
+      ],
+      "scripture": [
+        { "ref": "1 Corinthians 15:3-4", "label": "The earliest creedal formula — Paul says he 'received' it (pre-dates his letters)" },
+        { "ref": "Philippians 2:5-11", "label": "The Christological hymn — a creedal statement already used in worship" },
+        { "ref": "1 Timothy 3:16", "label": "\"He was manifested in the flesh\" — another liturgical creed Paul quotes" },
+        { "ref": "Romans 10:9-10", "label": "\"If you confess with your mouth that Jesus is Lord...\"" },
+        { "ref": "Deuteronomy 6:4", "label": "The Shema — the Jewish ancestor of the Christian Creed" },
+        { "ref": "Acts 15:6-29", "label": "The apostolic council — the model for the conciliar process" }
+      ],
+      "sources": {
+        "scholarly": [],
+        "popular": [],
+        "earlyChurch": ["Council of Nicaea (325 AD)", "Council of Constantinople (381 AD)", "Pre-Pauline creedal formulas (~35-50 AD)"]
+      }
+    },
+
+    {
+      "id": "anaphora",
+      "placementBefore": "Anaphora",
+      "title": "\"Do This in Remembrance of Me\"",
+      "subtitle": "The oldest Christian prayer — and the heart of the Liturgy",
+      "content": [
+        "Everything in the Liturgy has been building toward this moment. The priest begins a prayer of thanksgiving that recounts the entire story of salvation — from creation to the cross to the resurrection — then speaks Christ's own words over the bread and wine: 'Take, eat; this is my body. Drink of it, all of you; this is my blood of the new covenant.' Then the Holy Spirit is invoked upon the gifts. This prayer is called the Anaphora, and it is the oldest continuously prayed Christian prayer in existence.",
+        "Its structure comes directly from Jewish worship. After a meal, faithful Jews prayed the Birkat Hamazon — a grace that followed a three-part pattern: thanksgiving to God who feeds all creation, remembrance of the covenant and the exodus, and petition for the restoration of Jerusalem. The meal began with a dialogue: 'Let us bless the Lord our God' — 'Blessed is He whose food we have eaten.' The Anaphora follows exactly the same structure: thanksgiving ('It is meet and right to praise Thee...'), remembrance of salvation history (creation, incarnation, cross, resurrection), and petition (the invocation of the Holy Spirit, prayers for the Church). The opening dialogue — 'Let us give thanks to the Lord' / 'It is meet and right' — preserves the Birkat Hamazon's call-and-response.",
+        "At the center of the prayer, the congregation sings 'Holy, holy, holy, Lord of Sabaoth' — the Sanctus. This hymn comes from Isaiah's vision of the seraphim around God's throne and from the ceaseless song of the living creatures in Revelation. In the synagogue, this same hymn appears in the Kedushah, the third blessing of the Amidah, at exactly the same structural position. The congregation was understood to be joining the worship of the angels — earthly liturgy mirroring heavenly liturgy. The Dead Sea Scrolls confirm that this concept was fully developed in pre-Christian Judaism.",
+        "The earliest Christian document that may contain a Eucharistic prayer — the Didache, dated as early as 50 AD — already shows a thanksgiving prayer over bread and wine with this berakah structure. By 155 AD, Justin Martyr writes that the bread and wine, blessed by the prayer, are 'the flesh and blood of that Jesus who was made flesh' — not common food, but transformed by thanksgiving. By 215 AD, Hippolytus records a complete Anaphora with the opening dialogue, thanksgiving, institution narrative, remembrance, and invocation of the Holy Spirit — essentially the skeleton of the prayer prayed in every Orthodox church today.",
+        "The word 'remembrance' (anamnesis in Greek) is often misunderstood. In biblical usage, it does not mean merely to recall a past event mentally. When Israel celebrates Passover 'in remembrance,' each participant says 'This is what the Lord did for me when I came out of Egypt' — present tense, personal. The remembrance makes the event present to those who participate. The Eucharist does the same: Christ's one sacrifice, offered once for all, is made present to the Church through the Holy Spirit. It is not repeated — Hebrews is clear about that. But neither is it merely thought about. It is participated in."
+      ],
+      "historicalSnapshot": [
+        { "era": "Second Temple Judaism", "date": "~500 BC onward", "detail": "The Birkat Hamazon (grace after meals): thanksgiving, remembrance of the covenant, petition. The Kedushah ('Holy, holy, holy') in the Amidah — the congregation joins the angelic praise of Isaiah 6:3." },
+        { "era": "Dead Sea Scrolls", "date": "~200 BC – 70 AD", "detail": "The Songs of the Sabbath Sacrifice (4Q400-407) describe earthly worship joining the heavenly liturgy — the theological framework behind the Sanctus in the Anaphora." },
+        { "era": "The Last Supper", "date": "~33 AD", "detail": "Jesus takes bread, gives thanks (the berakah), breaks it, and says 'This is my body... Do this in remembrance of me' (1 Corinthians 11:23-25). The Anaphora enacts this command." },
+        { "era": "Earliest Christian communities", "date": "~50-120 AD", "detail": "The Didache preserves a thanksgiving prayer over bread and wine: 'We thank Thee, our Father, for the holy vine of David Thy servant, which Thou madest known to us through Jesus Thy Servant.'" },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr: 'The food blessed by the prayer of His word is the flesh and blood of that Jesus who was made flesh.' Not as common bread and common drink do we receive these." },
+        { "era": "Early Church — Rome", "date": "~215 AD", "detail": "Hippolytus records the oldest complete Anaphora: 'Lift up your hearts' / 'We lift them up to the Lord' / thanksgiving / institution narrative / epiclesis — essentially identical to the prayer prayed today." }
+      ],
+      "scripture": [
+        { "ref": "1 Corinthians 11:23-26", "label": "\"Do this in remembrance of me\" — the command the Anaphora fulfills" },
+        { "ref": "Matthew 26:26-28", "label": "\"Take, eat; this is my body... this is my blood of the covenant\"" },
+        { "ref": "Isaiah 6:3", "label": "\"Holy, holy, holy\" — the Sanctus, sung at the heart of the prayer" },
+        { "ref": "Revelation 4:8", "label": "The ceaseless heavenly hymn the congregation joins" },
+        { "ref": "John 6:53-56", "label": "\"Unless you eat the flesh of the Son of Man... you have no life in you\"" },
+        { "ref": "Hebrews 10:10", "label": "\"Once for all\" — the sacrifice is not repeated but participated in" },
+        { "ref": "Hebrews 9:24", "label": "Christ appears in God's presence on our behalf — present tense, ongoing" },
+        { "ref": "Exodus 12:14", "label": "Passover \"in remembrance\" — making the event present, not just recalling it" }
+      ],
+      "sources": {
+        "scholarly": ["Louis Bouyer, 'Eucharist' (1968)", "Enrico Mazza, 'The Origins of the Eucharistic Prayer' (1995)", "Brant Pitre, 'Jesus and the Last Supper' (2015)", "Margaret Barker, 'The Great High Priest' (2003)"],
+        "popular": ["OCA: oca.org/orthodoxy/the-orthodox-faith/worship/the-divine-liturgy/eucharistic-canon-anaphora", "Brant Pitre, 'Jesus and the Jewish Roots of the Eucharist' (2011)"],
+        "earlyChurch": ["Didache 9-10 (~50-120 AD)", "Justin Martyr, First Apology 66 (~155 AD)", "Hippolytus, Apostolic Tradition 4 (~215 AD)"]
+      }
+    },
+
+    {
+      "id": "communion-dismissal",
+      "placementBefore": "Pre-Communion",
+      "title": "The Table and the Sending",
+      "subtitle": "Receiving Christ — and being sent out as Christ",
+      "content": [
+        "The congregation prays the Lord's Prayer together — the prayer Jesus taught, placed here because He also said 'Be reconciled with your brother before you approach the altar.' Then the priest elevates the gifts and declares: 'Holy things are for the holy.' The people respond: 'One is holy, one is Lord: Jesus Christ.' And then they come forward to receive.",
+        "This is the moment the entire service has been building toward. The earliest description we have of a church gathering — Acts 2:42 — names four elements: the apostles' teaching, fellowship, the breaking of bread, and the prayers. The Liturgy contains all four, and the breaking of bread is the reason the church assembles. Paul says so explicitly: 'On the first day of the week, when we were gathered together to break bread.' It was not an occasional observance added to a preaching service. It was the center.",
+        "The practice of receiving communion was understood from the very beginning as something more than a memorial. Paul calls it 'participation' (Greek koinonia) in the body and blood of Christ — the same word translated 'fellowship' or 'communion.' Justin Martyr wrote around 155 AD that this food 'is the flesh and blood of that Jesus who was made flesh — not common bread and common drink.' The Didache, possibly the oldest Christian document outside the New Testament, already restricts communion to the baptized: 'Let no one eat or drink of your Eucharist unless they have been baptized.' This is not gatekeeping; it is the original practice, unchanged.",
+        "In the Temple, the Todah (thanksgiving sacrifice) culminated in a communal meal — the bread and meat of the offering consumed together, with Psalm 116 sung: 'What shall I render to the Lord for all His benefits? I will take the cup of salvation and call upon the name of the Lord.' The communion hymn in the Liturgy echoes this directly: 'O taste and see that the Lord is good.' Thanksgiving made physical. The cup of salvation, taken literally.",
+        "After communion, the deacon calls out: 'Let us depart in peace.' The word 'liturgy' — leitourgia in Greek — means 'the work of the people.' The dismissal marks the moment that work extends beyond the church walls. You have received Christ; now go and be Christ to others. The Liturgy does not end — it goes out the door with you."
+      ],
+      "historicalSnapshot": [
+        { "era": "Temple worship", "date": "~1400 BC onward", "detail": "The Todah (thanksgiving sacrifice) culminated in a communal meal of bread and wine. Psalm 116 was sung: 'I will take the cup of salvation and call upon the name of the Lord.'" },
+        { "era": "The Last Supper", "date": "~33 AD", "detail": "Jesus institutes the Eucharist at a Passover meal — 'Take, eat; this is my body. Drink of it, all of you.' The disciples receive communion for the first time." },
+        { "era": "Earliest Christian communities", "date": "~50-120 AD", "detail": "The Didache restricts communion to the baptized: 'Let no one eat or drink of your Eucharist unless they have been baptized into the name of the Lord.' The practice of closed communion is attested from the very beginning." },
+        { "era": "Early Church — Rome", "date": "~155 AD", "detail": "Justin Martyr: 'There is a distribution to each, and a participation of that over which thanks have been given, and to those who are absent a portion is sent by the deacons.' He also confirms that only the baptized who believe may partake." },
+        { "era": "Early Church — Rome", "date": "~215 AD", "detail": "Hippolytus describes the bishop dismissing the congregation after communion. The newly baptized receive not only bread and wine but milk and honey — symbolizing entry into the promised land." }
+      ],
+      "scripture": [
+        { "ref": "Acts 2:42", "label": "The four elements of the earliest church: teaching, fellowship, breaking of bread, prayers" },
+        { "ref": "Acts 20:7", "label": "\"Gathered together to break bread\" — the reason the church assembles" },
+        { "ref": "1 Corinthians 10:16-17", "label": "\"Participation (koinonia) in the body and blood of Christ\"" },
+        { "ref": "1 Corinthians 11:27-29", "label": "Paul warns: examine yourself before receiving" },
+        { "ref": "Luke 24:30-31, 35", "label": "The Emmaus disciples: \"He was known to them in the breaking of the bread\"" },
+        { "ref": "John 6:51", "label": "\"I am the living bread that came down from heaven\"" },
+        { "ref": "Psalm 34:8", "label": "\"O taste and see that the Lord is good\" — the communion hymn" },
+        { "ref": "Revelation 19:9", "label": "\"Blessed are those invited to the marriage supper of the Lamb\"" }
+      ],
+      "sources": {
+        "scholarly": ["Alexander Schmemann, 'The Eucharist: Sacrament of the Kingdom' (1988)", "Alexander Schmemann, 'For the Life of the World' (1963)"],
+        "popular": ["OCA: oca.org/orthodoxy/the-orthodox-faith/worship/the-sacraments/holy-eucharist", "Frederica Mathewes-Green, 'Welcome to the Orthodox Church'"],
+        "earlyChurch": ["Didache 9 (~50-120 AD)", "Justin Martyr, First Apology 65-66 (~155 AD)", "Hippolytus, Apostolic Tradition (~215 AD)"]
+      }
+    }
+  ],
+
+  "crossCuttingThemes": {
+    "liturgyIsBible": {
+      "title": "The Liturgy IS the Bible",
+      "stat": "Of the 237 liturgical verses in the service, 124 are from the Old Testament and 113 from the New Testament.",
+      "quote": "If the Scriptures are a fountain of water, Liturgy is like putting your mouth to a firehose. — Fr. Thomas Frisby",
+      "framing": "The liturgy does not merely contain Scripture — it is Scripture. The psalms are prayed, the Gospels are proclaimed, the prayers are composed from biblical language, the hymns paraphrase biblical narratives. An evangelical who memorizes Bible verses will recognize them everywhere."
+    },
+    "heavenlyWorship": {
+      "title": "Worship in Revelation Looks Like This",
+      "parallels": [
+        { "revelation": "Incense rising as prayers of the saints (5:8, 8:3-4)", "liturgy": "Censing throughout the service" },
+        { "revelation": "Holy, holy, holy sung ceaselessly (4:8)", "liturgy": "The Trisagion and the Sanctus" },
+        { "revelation": "A Lamb as though slain (5:6)", "liturgy": "The Eucharistic Lamb on the altar" },
+        { "revelation": "Elders falling down in prostration (5:14)", "liturgy": "Bowing and prostrations" },
+        { "revelation": "A scroll/book opened (5:1-5)", "liturgy": "The Gospel book processed and read" },
+        { "revelation": "White-robed figures (4:4, 7:9)", "liturgy": "Clergy vestments; baptismal garments" },
+        { "revelation": "Open door in heaven (4:1)", "liturgy": "The Royal Doors opening and closing" },
+        { "revelation": "Angels singing hymns (5:11-12)", "liturgy": "The Cherubic Hymn" }
+      ],
+      "framing": "If heaven's worship looks like Revelation 4-5, why wouldn't earthly worship reflect it?"
+    },
+    "earlyChurchContinuity": {
+      "title": "The Early Church Worshiped This Way",
+      "timeline": [
+        { "date": "~50-120 AD", "source": "The Didache", "element": "Eucharistic prayers, confession before communion, restriction to baptized" },
+        { "date": "~96 AD", "source": "1 Clement", "element": "Litany-style petitions for rulers, sick, poor, travelers" },
+        { "date": "~112 AD", "source": "Pliny to Trajan", "element": "Antiphonal hymn singing on a fixed day before dawn" },
+        { "date": "~155 AD", "source": "Justin Martyr", "element": "Scripture readings, homily, prayers, kiss of peace, Eucharist — the complete Liturgy structure" },
+        { "date": "~215 AD", "source": "Hippolytus", "element": "Complete anaphora with sursum corda, institution narrative, epiclesis" },
+        { "date": "~380 AD", "source": "Apostolic Constitutions", "element": "Full litany with 'Lord, have mercy' response; dismissal of catechumens; detailed rubrics" }
+      ],
+      "framing": "Every major element of the Orthodox Liturgy is attested in sources from the first two centuries. The overall shape — readings, homily, dismissal of catechumens, prayers, kiss, offering, anaphora, communion, dismissal — has not changed since at least 155 AD."
+    },
+    "vocabularyMap": {
+      "title": "You Already Know More Than You Think",
+      "mappings": [
+        { "evangelical": "Personal relationship with Jesus", "orthodox": "Theosis (union with God)", "bridge": "We agree — and we'd say that relationship deepens throughout your whole life through prayer, sacraments, and community." },
+        { "evangelical": "Born again", "orthodox": "Baptism and chrismation", "bridge": "We celebrate being born again too — it happens in the waters of baptism, just as Jesus told Nicodemus (John 3:5)." },
+        { "evangelical": "Altar call", "orthodox": "Holy Communion", "bridge": "The altar call happens every Sunday — it's called Communion. You come forward to receive Christ himself." },
+        { "evangelical": "Praise and worship", "orthodox": "The entire liturgy", "bridge": "The whole service IS praise and worship. It never stops." },
+        { "evangelical": "Bible study", "orthodox": "The readings + hymns", "bridge": "The hymns are Bible study set to music — theological commentaries on Scripture." },
+        { "evangelical": "Getting saved", "orthodox": "Ongoing salvation", "bridge": "Paul says we 'have been saved' (Ephesians 2:8), 'are being saved' (1 Corinthians 1:18), and 'will be saved' (Romans 5:9). Orthodoxy holds all three together." },
+        { "evangelical": "Fellowship", "orthodox": "The liturgical community", "bridge": "The deepest fellowship is eating together at the Lord's table." },
+        { "evangelical": "Worship leader", "orthodox": "The whole congregation", "bridge": "In Orthodoxy, there's no worship leader — the whole church worships together, led by the priest at the altar." }
+      ]
+    }
+  },
+
+  "recommendedResources": {
+    "books": [
+      { "title": "Welcome to the Orthodox Church", "author": "Frederica Mathewes-Green", "note": "The most accessible entry point — walks through visits to a fictional parish." },
+      { "title": "Becoming Orthodox", "author": "Peter Gillquist", "note": "The story of ~2,000 Campus Crusade evangelicals who discovered the early church and entered Orthodoxy in 1987." },
+      { "title": "The Religion of the Apostles", "author": "Fr. Stephen De Young", "note": "Demonstrates that first-century Christian worship was liturgical from the start, continuous with Second Temple Judaism." },
+      { "title": "Jesus and the Jewish Roots of the Eucharist", "author": "Brant Pitre", "note": "Connects the Passover, the Todah, the bread of the Presence, and the Last Supper." },
+      { "title": "Orthodoxy and Heterodoxy", "author": "Fr. Andrew Stephen Damick", "note": "Specifically addresses evangelical perspectives; written by a former evangelical missionary's son." },
+      { "title": "For the Life of the World", "author": "Alexander Schmemann", "note": "The sacramental worldview — deeper theological work." },
+      { "title": "The Orthodox Study Bible", "author": "Various", "note": "Study notes showing how the Orthodox Church reads Scripture — uses a familiar Bible-study format." }
+    ],
+    "podcasts": [
+      { "title": "The Lord of Spirits", "host": "Fr. Stephen De Young + Fr. Andrew Stephen Damick", "url": "ancientfaith.com/podcasts/lordofspirits/", "note": "Biblical worldview of heavenly worship and how Scripture and Liturgy intersect." },
+      { "title": "The Whole Counsel of God", "host": "Fr. Stephen De Young", "url": "blogs.ancientfaith.com/wholecounsel/", "note": "Bible study podcast from an Orthodox perspective." }
+    ],
+    "websites": [
+      { "title": "Orthodox-Reformed Bridge", "url": "orthodoxbridge.com", "note": "Designed as 'a meeting place for evangelicals, Reformed, and Orthodox Christians.'" },
+      { "title": "Journey to Orthodoxy", "url": "journeytoorthodoxy.com", "note": "Conversion narratives from diverse backgrounds." }
+    ]
+  }
+}

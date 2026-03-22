@@ -14,6 +14,8 @@ let activeDate = null;
 let activeSvcType = null;
 let activePronoun = localStorage.getItem('pronoun') || 'tt';  // 'tt' or 'yy'
 let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'choir'
+let activeEducation = localStorage.getItem('education') || 'off'; // 'on' or 'off'
+let educationModules = null; // cached education modules data
 let choirData     = null;  // cached choir-prep response for current date
 let choirEnabled  = {};    // { svcType: true/false } — which services are toggled on
 let weekStart   = null;   // Date object: Sunday of the displayed week
@@ -317,7 +319,13 @@ async function loadPanelContent(date, svcType) {
     }
     updateDetailLabel();
 
-    const html   = window.renderBlocks(data.blocks);
+    // Education modules — only for liturgy in laity mode
+    let eduModules = null;
+    if (activeEducation === 'on' && activeMode === 'laity' &&
+        (svcType === 'liturgy')) {
+      eduModules = await getEducationModules();
+    }
+    const html   = window.renderBlocks(data.blocks, { educationModules: eduModules });
     const bodyEl = document.getElementById('p-body');
     bodyEl.innerHTML = html;
     bodyEl.scrollTop = 0;
@@ -928,15 +936,51 @@ function syncSettingsUI() {
   document.querySelectorAll('#pronoun-toggle .seg-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.pron === activePronoun);
   });
+  // Education toggle — disabled when choir mode is active
+  const eduGroup = document.getElementById('education-group');
+  if (eduGroup) {
+    eduGroup.classList.toggle('disabled', activeMode === 'choir');
+  }
+  document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.edu === activeEducation);
+  });
 }
 
 function setMode(mode) {
   activeMode = mode;
   localStorage.setItem('mode', mode);
   document.body.classList.toggle('mode-choir', mode === 'choir');
+  // Education mode only available in laity mode
+  if (mode === 'choir' && activeEducation === 'on') {
+    activeEducation = 'off';
+    localStorage.setItem('education', 'off');
+  }
   syncSettingsUI();
   if (activeDate && activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
+  }
+}
+
+function setEducation(val) {
+  activeEducation = val;
+  localStorage.setItem('education', val);
+  syncSettingsUI();
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
+}
+
+async function getEducationModules() {
+  if (educationModules) return educationModules;
+  try {
+    const res = await fetch('/api/education-modules');
+    if (!res.ok) return null;
+    const data = await res.json();
+    educationModules = data.modules || null;
+    return educationModules;
+  } catch (e) {
+    console.error('Failed to load education modules:', e);
+    return null;
   }
 }
 
@@ -956,6 +1000,9 @@ function initSettingsToggles() {
   });
   document.querySelectorAll('#pronoun-toggle .seg-btn').forEach(btn => {
     btn.addEventListener('click', () => setPronoun(btn.dataset.pron));
+  });
+  document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => setEducation(btn.dataset.edu));
   });
 }
 

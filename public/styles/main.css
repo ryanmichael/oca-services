@@ -918,10 +918,6 @@ body.dev-mode .src-tag { display: inline; }
   margin-right: 6px;
 }
 
-/* print: hide education modules */
-@media print {
-  .edu-module { display: none; }
-}
 
 /* ── CHOIR MODE ───────────────────────────────────────────────────────────── */
 

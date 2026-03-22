@@ -3154,6 +3154,7 @@ function handleRequest(req, res) {
         return;
       }
 
+      (async () => {
       const d      = new Date(date + 'T12:00:00Z');
       const dow    = getDayOfWeek(d);
       const season = getLiturgicalSeason(d);
@@ -3161,6 +3162,22 @@ function handleRequest(req, res) {
 
       // Build the matins spec from available data
       const matinsSpec = buildMatinsSpec(date, d, dow, season, tone);
+
+      // Enrich Matins Gospel with full scripture text from orthocal API
+      if (matinsSpec?.gospel && !matinsSpec.gospel.text) {
+        try {
+          const orthocalData = await fetchOrthocalDay(date);
+          const matinsReading = (orthocalData.readings || []).find(
+            r => r.source && r.source.includes('Matins Gospel')
+          );
+          if (matinsReading?.passage?.length) {
+            matinsSpec.gospel.text = matinsReading.passage.map(v => v.content).join('\n\n');
+            matinsSpec.gospel._source = 'orthocal';
+          }
+        } catch (err) {
+          console.warn('Matins gospel enrichment failed (non-fatal):', err.message);
+        }
+      }
 
       if (!matinsSpec) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -3204,6 +3221,7 @@ function handleRequest(req, res) {
         season,
         blocks,
       }));
+      })();
 
     } else if (pathname === '/api/passion-gospels') {
       const q       = parseQuery(url);
@@ -3550,6 +3568,123 @@ function handleRequest(req, res) {
           }));
         } catch (err) {
           console.error('pascha-collection error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+        }
+      })();
+
+    } else if (pathname === '/api/choir-prep') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      // Determine available services (same logic as /api/days, single date)
+      const d = new Date(date + 'T12:00:00Z');
+      const [, mm, dd] = date.split('-').map(Number);
+      const dowIdx = d.getUTCDay();
+      const dowStr = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
+      const entry  = getCalendarEntry(date);
+      const season = entry ? (entry.liturgicalContext?.season || null) : null;
+      const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
+      const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
+
+      // Feast + commemorations
+      let commemorations = [];
+      try {
+        const dayList = getMenaionDayList(mm, dd);
+        if (dayList) commemorations = dayList.commemorations;
+      } catch (_) {}
+
+      const svcMap = {
+        greatVespers:    { key: 'greatVespers',    name: 'Great Vespers',                  endpoint: '/api/service' },
+        dailyVespers:    { key: 'dailyVespers',    name: 'Daily Vespers',                  endpoint: '/api/service' },
+        matins:          { key: 'matins',           name: 'Matins',                         endpoint: '/api/matins' },
+        liturgy:         { key: 'liturgy',          name: 'Divine Liturgy',                 endpoint: '/api/liturgy' },
+        presanctified:   { key: 'presanctified',    name: 'Presanctified Liturgy',          endpoint: '/api/presanctified' },
+        bridegroomMatins:{ key: 'bridegroomMatins', name: 'Bridegroom Matins',              endpoint: '/api/bridegroom-matins' },
+        passionGospels:  { key: 'passionGospels',   name: 'Twelve Passion Gospels',         endpoint: '/api/passion-gospels' },
+        royalHours:      { key: 'royalHours',       name: 'Royal Hours',                    endpoint: '/api/royal-hours' },
+        lamentations:    { key: 'lamentations',     name: 'The Lamentations',               endpoint: '/api/lamentations' },
+        vesperalLiturgy: { key: 'vesperalLiturgy',  name: 'Vesperal Liturgy of St. Basil',  endpoint: '/api/vesperal-liturgy' },
+        paschalHours:    { key: 'paschalHours',      name: 'Paschal Hours',                  endpoint: '/api/paschal-hours' },
+        paschaCollection:{ key: 'paschaCollection',  name: 'Holy Pascha Collection',         endpoint: '/api/pascha-collection' },
+      };
+
+      // Build available services list
+      const available = {
+        greatVespers:    entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
+        dailyVespers:    entry?.vespers?.serviceType === 'dailyVespers',
+        bridegroomMatins: isBridegroomMatins(d),
+        lamentations:    isLamentationsDay(d),
+        vesperalLiturgy: isVesperalLiturgyDay(d),
+        royalHours:      isRoyalHoursDay(d),
+        passionGospels:  isPassionGospelsDay(d),
+        matins:          !!buildMatinsSpec(date, d, dowStr, season, getTone(d)),
+        liturgy:         !!(entry?.liturgy) || isLiturgyServed(d),
+        presanctified:   isPresanctifiedDay(d),
+        paschalHours:    getLiturgicalSeason(d) === 'brightWeek',
+        paschaCollection: (() => {
+          const p = calculatePascha(d.getUTCFullYear());
+          return d.getUTCMonth() === p.getUTCMonth() && d.getUTCDate() === p.getUTCDate();
+        })(),
+      };
+
+      const toFetch = Object.entries(available)
+        .filter(([, avail]) => avail)
+        .map(([key]) => svcMap[key])
+        .filter(Boolean);
+
+      // Fetch each service via internal HTTP requests
+      const fetchInternal = (endpoint, dateStr, pron) => new Promise((resolve, reject) => {
+        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}`;
+        http.get(url, (resp) => {
+          let body = '';
+          resp.on('data', chunk => body += chunk);
+          resp.on('end', () => {
+            try {
+              if (resp.statusCode === 200) resolve(JSON.parse(body));
+              else resolve(null);
+            } catch (e) { resolve(null); }
+          });
+        }).on('error', () => resolve(null));
+      });
+
+      (async () => {
+        try {
+          const results = await Promise.all(
+            toFetch.map(svc => fetchInternal(svc.endpoint, date, pronoun))
+          );
+
+          const services = [];
+          for (let i = 0; i < toFetch.length; i++) {
+            const data = results[i];
+            if (!data || !data.blocks) continue;
+            services.push({
+              type: toFetch[i].key,
+              name: data.serviceName || toFetch[i].name,
+              blocks: data.blocks,
+            });
+          }
+
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({
+            date,
+            tone,
+            season,
+            liturgicalLabel,
+            commemorations,
+            services,
+          }));
+        } catch (err) {
+          console.error('/api/choir-prep error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: err.message }));
         }

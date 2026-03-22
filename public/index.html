@@ -17,7 +17,15 @@
   <header>
     <span class="header-cross">☩</span>
     <span class="header-title">ORTHODOX DAILY SERVICES</span>
-    <a href="/dashboard" class="header-about">Dashboard</a>
+    <a href="/dashboard" class="header-about">Overview</a>
+    <button class="header-settings" id="settings-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <line x1="1" y1="4" x2="13" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="4.5" cy="4" r="1.5" fill="var(--bg)" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9.5" cy="10" r="1.5" fill="var(--bg)" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </button>
   </header>
 
   <div class="layout">
@@ -72,10 +80,8 @@
           <div class="panel-detail-body" id="p-detail-body">
             <div class="panel-detail-body-inner">
               <div class="p-saints" id="p-saints"></div>
-              <div class="pronoun-row">
-                PRONOUNS:
-                <label><input type="radio" name="pron" value="tt" checked> Thee / Thy</label>
-                <label><input type="radio" name="pron" value="yy"> You / Your</label>
+              <div class="choir-toggles" id="choir-toggles">
+                <!-- Rendered by JS when in choir mode: service toggle chips -->
               </div>
             </div>
           </div>
@@ -242,6 +248,46 @@
   </div>
 
 </div><!-- end .view-print -->
+
+<!-- ═══════════════════════════════════════ VIEW: SETTINGS ═════════════════════ -->
+<div class="view view-settings" id="view-settings">
+
+  <div class="settings-hdr">
+    <button class="settings-back" id="settings-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="settings-body">
+    <div class="settings-inner">
+      <div class="settings-title">SETTINGS</div>
+
+      <div class="settings-group">
+        <div class="settings-label">VIEW MODE</div>
+        <div class="settings-desc">Choir mode shows only hymns and sung responses, grouped across all services for the day.</div>
+        <div class="settings-segmented" id="mode-toggle">
+          <button class="seg-btn active" data-mode="laity">Laity</button>
+          <button class="seg-btn" data-mode="choir">Choir</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-label">PRONOUNS</div>
+        <div class="settings-segmented" id="pronoun-toggle">
+          <button class="seg-btn active" data-pron="tt">Thee / Thy</button>
+          <button class="seg-btn" data-pron="yy">You / Your</button>
+        </div>
+      </div>
+
+      <button class="settings-done" id="settings-done">Done</button>
+
+    </div>
+  </div>
+
+</div><!-- end .view-settings -->
 
 <script src="/scripts/renderer.js"></script>
 <script src="/scripts/booklet-impose.js"></script>

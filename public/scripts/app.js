@@ -12,7 +12,10 @@ let days = [];
 let activeRow = null;
 let activeDate = null;
 let activeSvcType = null;
-let activePronoun = 'tt';  // 'tt' or 'yy'
+let activePronoun = localStorage.getItem('pronoun') || 'tt';  // 'tt' or 'yy'
+let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'choir'
+let choirData     = null;  // cached choir-prep response for current date
+let choirEnabled  = {};    // { svcType: true/false } — which services are toggled on
 let weekStart   = null;   // Date object: Sunday of the displayed week
 let calDayCache = {};     // { 'YYYY-MM-DD': dayObject | null }
 
@@ -271,6 +274,11 @@ async function openPanel(rowEl, date, svcType) {
 
 async function loadPanelContent(date, svcType) {
   try {
+    // Choir mode: fetch all services for the date
+    if (activeMode === 'choir') {
+      return await loadChoirContent(date);
+    }
+
     const data = await fetchService(date, svcType, activePronoun);
     if (!data) {
       document.getElementById('p-body').innerHTML =
@@ -320,6 +328,56 @@ async function loadPanelContent(date, svcType) {
   }
 }
 
+async function loadChoirContent(date) {
+  try {
+    choirData = await fetchChoirPrep(date, activePronoun);
+    if (!choirData || !choirData.services || choirData.services.length === 0) {
+      document.getElementById('p-body').innerHTML =
+        '<div class="panel-loading">No services available for this date.</div>';
+      return;
+    }
+
+    // Panel header
+    document.getElementById('p-svc').textContent = 'CHOIR PREP';
+    document.getElementById('print-header-svc').textContent = 'CHOIR REHEARSAL SHEET';
+
+    const toneStr  = choirData.tone ? ` \u00B7 Tone ${choirData.tone}` : '';
+    const labelStr = choirData.liturgicalLabel ? ` \u00B7 ${choirData.liturgicalLabel}` : '';
+    const dateStr = `${formatLong(date)}${toneStr}${labelStr}`;
+    document.getElementById('p-date').textContent = dateStr;
+    document.getElementById('print-header-date').textContent = dateStr;
+
+    // Commemorations — choir-prep returns strings, not objects
+    const comms = choirData.commemorations || [];
+    const saintsEl = document.getElementById('p-saints');
+    if (comms.length > 0) {
+      saintsEl.innerHTML = comms.map((c, i) => {
+        const title = typeof c === 'string' ? c : (c.title || '');
+        const major = (typeof c === 'object' && c.isPrincipal) || i === 0;
+        return `<div class="p-saint${major ? ' major' : ''}">${title}</div>`;
+      }).join('');
+      saintsEl.style.display = '';
+    } else {
+      saintsEl.innerHTML = '';
+      saintsEl.style.display = 'none';
+    }
+    updateDetailLabel();
+
+    // Initialize all services as enabled
+    choirEnabled = {};
+    for (const svc of choirData.services) {
+      choirEnabled[svc.type] = true;
+    }
+
+    renderChoirToggleChips(choirData.services);
+    renderChoirPanel();
+  } catch (err) {
+    console.error('Choir prep load error:', err);
+    document.getElementById('p-body').innerHTML =
+      `<div class="panel-loading">Error loading choir prep: ${err.message}</div>`;
+  }
+}
+
 function closePanel(skipHistory = false) {
   document.getElementById('panel').classList.remove('open');
   document.body.classList.remove('panel-open');
@@ -339,13 +397,16 @@ function togglePanelDetail() {
   toggle.classList.toggle('open', !open);
 }
 
-function updateDetailLabel(comms) {
-  const pronoun   = document.querySelector('input[name="pron"]:checked')?.value || 'tt';
-  const pronLabel = pronoun === 'tt' ? 'THEE / THY' : 'YOU / YOUR';
-  const saints    = document.querySelectorAll('#p-saints .p-saint');
-  const count     = saints.length;
-  document.getElementById('p-detail-label').textContent =
-    count ? `${count} COMMEMORATION${count > 1 ? 'S' : ''} \u00B7 ${pronLabel}` : pronLabel;
+function updateDetailLabel() {
+  const saints = document.querySelectorAll('#p-saints .p-saint');
+  const count  = saints.length;
+  const parts  = [];
+  if (count) parts.push(`${count} COMMEMORATION${count > 1 ? 'S' : ''}`);
+  if (activeMode === 'choir' && choirData && choirData.services) {
+    const svcCount = choirData.services.length;
+    parts.push(`${svcCount} SERVICE${svcCount > 1 ? 'S' : ''}`);
+  }
+  document.getElementById('p-detail-label').textContent = parts.length ? parts.join(' \u00B7 ') : 'DETAILS';
 }
 
 // ─── Pronoun toggle ───────────────────────────────────────────────────────────
@@ -741,6 +802,14 @@ async function init() {
   initPronounRadio();
   initDevMode();
 
+  // Settings
+  document.getElementById('settings-btn').addEventListener('click', openSettings);
+  document.getElementById('settings-back').addEventListener('click', closeSettings);
+  document.getElementById('settings-done').addEventListener('click', closeSettings);
+  initSettingsToggles();
+  // Apply persisted mode on load
+  if (activeMode === 'choir') document.body.classList.add('mode-choir');
+
   // Calendar
   document.getElementById('date-btn').addEventListener('click', openCal);
   document.getElementById('cal-back').addEventListener('click', closeCal);
@@ -761,9 +830,10 @@ async function init() {
   // Keyboard
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
-    if (document.getElementById('view-search').classList.contains('visible')) closeSearch();
-    if (document.getElementById('view-cal').classList.contains('visible'))    closeCal();
-    if (document.getElementById('view-print').classList.contains('visible'))  closePrintView();
+    if (document.getElementById('view-settings').classList.contains('visible')) closeSettings();
+    if (document.getElementById('view-search').classList.contains('visible'))  closeSearch();
+    if (document.getElementById('view-cal').classList.contains('visible'))     closeCal();
+    if (document.getElementById('view-print').classList.contains('visible'))   closePrintView();
   });
 
   // URL params
@@ -832,6 +902,112 @@ function openPrintView() {
 function closePrintView() {
   document.getElementById('view-print').classList.remove('visible');
   document.getElementById('view-main').classList.remove('hidden');
+}
+
+// ─── Settings view ───────────────────────────────────────────────────────────
+
+function openSettings() {
+  closeSearch(/*silent=*/true);
+  closeCal();
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-settings').classList.add('visible');
+  syncSettingsUI();
+}
+
+function closeSettings() {
+  document.getElementById('view-settings').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+}
+
+function syncSettingsUI() {
+  // Mode toggle
+  document.querySelectorAll('#mode-toggle .seg-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === activeMode);
+  });
+  // Pronoun toggle
+  document.querySelectorAll('#pronoun-toggle .seg-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.pron === activePronoun);
+  });
+}
+
+function setMode(mode) {
+  activeMode = mode;
+  localStorage.setItem('mode', mode);
+  document.body.classList.toggle('mode-choir', mode === 'choir');
+  syncSettingsUI();
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
+}
+
+function setPronoun(pron) {
+  activePronoun = pron;
+  localStorage.setItem('pronoun', pron);
+  syncSettingsUI();
+  updateDetailLabel();
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
+}
+
+function initSettingsToggles() {
+  document.querySelectorAll('#mode-toggle .seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+  document.querySelectorAll('#pronoun-toggle .seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => setPronoun(btn.dataset.pron));
+  });
+}
+
+// ─── Choir mode helpers ──────────────────────────────────────────────────────
+
+async function fetchChoirPrep(date, pronoun = 'tt') {
+  const res = await fetch(`/api/choir-prep?date=${date}&pronoun=${pronoun}`);
+  if (!res.ok) {
+    if (res.status === 404) return null;
+    throw new Error(`/api/choir-prep failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+function renderChoirToggleChips(services) {
+  const el = document.getElementById('choir-toggles');
+  if (!services || services.length === 0) { el.innerHTML = ''; return; }
+  el.innerHTML = services.map(svc =>
+    `<button class="choir-chip${choirEnabled[svc.type] !== false ? ' active' : ''}" data-svc-type="${svc.type}">${svc.name}</button>`
+  ).join('');
+  el.querySelectorAll('.choir-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const t = chip.dataset.svcType;
+      choirEnabled[t] = !choirEnabled[t] && choirEnabled[t] !== undefined ? true : choirEnabled[t] === false;
+      // Simple toggle: if currently active, deactivate; if inactive, activate
+      if (chip.classList.contains('active')) {
+        choirEnabled[t] = false;
+        chip.classList.remove('active');
+      } else {
+        choirEnabled[t] = true;
+        chip.classList.add('active');
+      }
+      renderChoirPanel();
+    });
+  });
+}
+
+function renderChoirPanel() {
+  if (!choirData || !choirData.services) return;
+  const filtered = choirData.services.filter(svc => choirEnabled[svc.type] !== false);
+  const allBlocks = [];
+  for (const svc of filtered) {
+    // Add service divider
+    allBlocks.push({ type: 'choir-divider', text: svc.name });
+    // Filter blocks for choir relevance, then add
+    const choirBlocks = window.filterForChoir(svc.blocks);
+    allBlocks.push(...choirBlocks);
+  }
+  const html = window.renderBlocks(allBlocks, { choirMode: true });
+  const bodyEl = document.getElementById('p-body');
+  bodyEl.innerHTML = html;
+  bodyEl.scrollTop = 0;
 }
 
 function printBooklet() {

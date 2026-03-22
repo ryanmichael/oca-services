@@ -305,7 +305,7 @@ header,
   overflow: hidden; max-height: 0; opacity: 0;
   transition: max-height .28s cubic-bezier(.4,0,.2,1), opacity .22s ease;
 }
-.panel-detail-body.open { max-height: 320px; opacity: 1; }
+.panel-detail-body.open { max-height: 480px; opacity: 1; }
 .panel-detail-body-inner { padding: 0 0 14px; }
 
 /* Saints list */
@@ -740,9 +740,165 @@ body.dev-mode .src-tag { display: inline; }
 /* ── PRINT STYLES ──────────────────────────────────────────────────────────── */
 .print-header { display: none; }
 
+/* ── HEADER SETTINGS BUTTON ────────────────────────────────────────────────── */
+
+.header-settings {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); padding: 4px;
+  display: flex; align-items: center;
+  transition: color .15s;
+}
+.header-settings:hover { color: var(--rubric); }
+
+/* ── VIEW: SETTINGS ───────────────────────────────────────────────────────── */
+
+.view-settings {
+  transform: translateY(32px); opacity: 0; pointer-events: none;
+  transition: transform .38s cubic-bezier(.4,0,.2,1), opacity .28s ease;
+  z-index: 2;
+  background: var(--bg);
+}
+.view-settings.visible {
+  transform: translateY(0); opacity: 1; pointer-events: auto;
+}
+
+.settings-hdr {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.settings-back {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+  color: var(--muted); padding: 4px 0;
+  transition: color .15s;
+}
+.settings-back:hover { color: var(--rubric); }
+
+.settings-body {
+  flex: 1; overflow-y: auto;
+  display: flex; justify-content: center;
+  padding: 48px 32px 60px;
+}
+
+.settings-inner {
+  width: 100%; max-width: 420px;
+}
+
+.settings-title {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .22em;
+  color: var(--rubric); margin-bottom: 36px;
+  text-transform: uppercase;
+}
+
+.settings-group {
+  margin-bottom: 32px;
+}
+
+.settings-label {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .16em;
+  color: var(--muted); margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.settings-desc {
+  font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic;
+  color: var(--muted); line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.settings-done {
+  display: block; margin-top: 36px;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+  color: var(--surface); background: var(--rubric);
+  border: 1.5px solid var(--rubric);
+  padding: 11px 36px; cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.settings-done:hover { background: transparent; color: var(--rubric); }
+
+.settings-segmented {
+  display: inline-flex; border: 1.5px solid var(--border);
+}
+
+.seg-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+  color: var(--muted); padding: 10px 24px;
+  transition: background .12s, color .12s;
+}
+.seg-btn:not(:last-child) { border-right: 1.5px solid var(--border); }
+.seg-btn:hover { color: var(--text); }
+.seg-btn.active {
+  background: var(--rubric); color: var(--surface);
+}
+
+/* ── CHOIR MODE ───────────────────────────────────────────────────────────── */
+
+.choir-toggles {
+  display: none;
+  padding: 10px 0 2px;
+  flex-wrap: wrap; gap: 6px;
+}
+body.mode-choir .choir-toggles { display: flex; }
+
+.choir-chip {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em;
+  color: var(--muted); padding: 5px 12px;
+  border: 1px solid var(--border); background: none;
+  cursor: pointer; transition: all .12s;
+  text-transform: uppercase;
+}
+.choir-chip:hover { border-color: var(--gold); }
+.choir-chip.active {
+  background: var(--rubric); color: var(--surface);
+  border-color: var(--rubric);
+}
+
+/* Tone badge for choir mode */
+.tone-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .08em;
+  color: var(--rubric); border: 1px solid var(--rubric);
+  padding: 1px 7px; margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Source tag for choir mode */
+.choir-source {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .06em;
+  color: var(--muted); font-style: italic;
+  margin-left: 8px;
+}
+
+/* Choir mode: compact litany indicator */
+.choir-litany {
+  font-family: 'EB Garamond', serif; font-size: 14px;
+  color: var(--muted); font-style: italic;
+  padding: 4px 0;
+}
+
+/* Choir mode: service divider */
+.choir-svc-divider {
+  font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: .12em;
+  color: var(--rubric); text-align: center;
+  padding: 28px 0 12px;
+  border-bottom: 2px solid var(--gold);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
 @media print {
   @page { size: letter; margin: 1in; }
-  .view-search, .view-cal, header, .center-bar, .service-list-body, .panel-head { display: none !important; }
+  .view-search, .view-cal, .view-settings, header, .center-bar, .service-list-body, .panel-head { display: none !important; }
+  .choir-toggles { display: none !important; }
+  .tone-badge { border-color: #333; color: #333; }
+  .choir-svc-divider { border-color: #8B1A1A; color: #8B1A1A; }
   .print-header { display: block; margin-bottom: 1.5em; }
   .print-header-svc { font-family: var(--font-sans, sans-serif); font-size: 10pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8B1A1A; }
   .print-header-date { font-family: var(--font-sans, sans-serif); font-size: 9pt; color: #555; margin-top: 2px; }

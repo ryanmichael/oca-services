@@ -1087,24 +1087,10 @@ function printBooklet() {
   const win = window.open('', '_blank');
   if (!win) { alert('Please allow popups to use booklet printing.'); return; }
 
-  // Dimensions: page = 5.5" × 8.5", padding = 0.4in all sides
-  // Content height = (8.5 - 0.4 - 0.4) × 96 = 730 px
-  const PAGE_CONTENT_H = (8.5 - 0.4 - 0.4) * 96; // 730 px
-  const MEASURE_W      = (5.5 - 0.4 * 2) + 'in';  // 4.7in
-
-  // ── Imposition function (mirrors booklet-impose.js) ──────────────────────
-  function impose(pages) {
-    const p = pages.slice();
-    while (p.length % 4 !== 0) p.push(null);
-    const n = p.length, out = [];
-    for (let k = 0; k < n / 4; k++) {
-      out.push(p[n - 1 - 2 * k]);
-      out.push(p[2 * k]);
-      out.push(p[2 * k + 1]);
-      out.push(p[n - 2 - 2 * k]);
-    }
-    return out;
-  }
+  // Dimensions: half-page = 5.5" × 8.5", padding = 0.25in all sides
+  // Content height = (8.5 - 0.25 - 0.25) × 96 = 768 px
+  const PAGE_CONTENT_H = (8.5 - 0.25 - 0.25) * 96; // 768 px
+  const MEASURE_W      = (5.5 - 0.25 * 2) + 'in';   // 5.0in
 
   // ── Build booklet JS that runs in the new window ──────────────────────────
   const bookletScript = `
@@ -1112,17 +1098,21 @@ function printBooklet() {
   var PAGE_H  = ${PAGE_CONTENT_H};
   var TITLE   = ${JSON.stringify(svc + ' \u2014 ' + date)};
 
-  // Build spreads: each spread = one landscape-letter print page (two half-pages side by side).
-  // Front spreads print normally; back spreads are pre-rotated 180° to counteract the
-  // printer's long-edge duplex flip (landscape long-edge flips top-to-bottom = 180°).
-  // NOTE: if back-side content appears upside-down after printing, toggle the rotate flags below.
+  // Saddle-stitch imposition for manual 2-up (pages per sheet: 1).
+  // Each spread = one landscape print page with left + right half-pages.
+  // Front: left = last page, right = first page (outer sides of sheet).
+  // Back: left = second page, right = second-to-last (inner sides, swapped
+  //        so they land in correct position after duplex flip).
+  // No CSS rotation — the printer's duplex handles back-side orientation.
+  // If back-side content prints upside-down, toggle ROTATE_BACK to true.
+  var ROTATE_BACK = false;
   function buildSpreads(pages) {
     var p = pages.slice();
     while (p.length % 4 !== 0) p.push(null);
     var n = p.length, spreads = [];
     for (var k = 0; k < n / 4; k++) {
-      spreads.push({ left: p[n-1-2*k], right: p[2*k],   rotate: false }); // sheet k front
-      spreads.push({ left: p[n-2-2*k], right: p[2*k+1], rotate: true  }); // sheet k back
+      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false });       // sheet k front
+      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: ROTATE_BACK }); // sheet k back
     }
     return spreads;
   }
@@ -1160,13 +1150,15 @@ function printBooklet() {
     });
     document.body.removeChild(tmp);
 
-    // Bin into pages; keep section heading with its first block
+    // Bin into pages; keep section heading with its first block.
+    // Lookahead ensures headings aren't orphaned at page bottom, but is capped
+    // at ~3 lines (100px) so a large following block doesn't waste a half-page.
+    var MIN_KEEP_WITH = 100;
     var pages = [[]], heights = [0];
     allItems.forEach(function (item, i) {
       var h = itemHeights[i];
       var idx = pages.length - 1;
-      // If adding this item (+ next item for widows) overflows, start new page
-      var lookahead = item.isHead ? (itemHeights[i + 1] || 0) : 0;
+      var lookahead = item.isHead ? Math.min(itemHeights[i + 1] || 0, MIN_KEEP_WITH) : 0;
       if (heights[idx] + h + lookahead > PAGE_H && pages[idx].length > 0) {
         pages.push([]); heights.push(0);
       }
@@ -1175,11 +1167,15 @@ function printBooklet() {
       heights[last] += h;
     });
 
-    // Build spreads (each spread = one landscape print page with two half-pages)
+    // Prepend title to first page
+    if (pages.length > 0 && pages[0].length > 0) {
+      pages[0].unshift('<div class="bk-title">' + TITLE + '</div>');
+    }
+
+    // Build spreads and render
     var spreads = buildSpreads(pages);
     var totalSheets = spreads.length / 2;
 
-    // Render spreads
     var booklet = document.getElementById('booklet');
     spreads.forEach(function (spread) {
       var div = document.createElement('div');
@@ -1199,7 +1195,7 @@ function printBooklet() {
     var contentPages = pages.filter(function(p){ return p && p.length > 0; }).length;
     document.getElementById('sheet-count').textContent =
       totalSheets + ' sheet' + (totalSheets !== 1 ? 's' : '') +
-      ' (' + contentPages + ' pages)';
+      ' (' + contentPages + ' half-pages of content)';
 
     measure.style.display = 'none';
     booklet.style.visibility = 'visible';
@@ -1236,11 +1232,21 @@ function printBooklet() {
 
 .bk-half {
   width: 5.5in; height: 8.5in;
-  padding: 0.4in;
+  padding: 0.25in;
   overflow: hidden; position: relative;
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 15pt; line-height: 1.75; color: var(--text);
   flex-shrink: 0;
+}
+
+/* ── Hide dev-mode elements ── */
+.src-tag, .tone-badge, .choir-source, .edu-module { display: none !important; }
+
+/* ── Booklet title ── */
+.bk-title {
+  font-family: 'Cinzel', serif; font-size: 12pt; letter-spacing: .2em;
+  text-align: center; color: var(--text); text-transform: uppercase;
+  margin-bottom: 20px; padding-top: 0.15in;
 }
 
 /* ── Service content ── */

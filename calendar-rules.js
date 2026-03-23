@@ -791,9 +791,9 @@ function generateLentenSunday(dateStr, weekOfLent, tone, litKey) {
       rubricNote:  `${name} — Great Vespers (sung on Saturday evening)`,
       lordICall: {
         tone,
-        totalStichera: 6,
+        totalStichera: 10,
         slots: [
-          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
+          { verses: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], count: 10, source: 'db', key: `${litKey}.vespers.lordICall`, tone, label: 'Stichera' },
         ],
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
         now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
@@ -801,9 +801,10 @@ function generateLentenSunday(dateStr, weekOfLent, tone, litKey) {
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
       aposticha: {
         slots: [
-          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-          { position: 2, repeatPrevious: true },
-          { position: 3, repeatPrevious: true },
+          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha.hymns.0`, tone, label: 'Sticheron' },
+          { position: 2, source: 'db', key: `${litKey}.vespers.aposticha.hymns.1`, tone, label: 'Sticheron' },
+          { position: 3, source: 'db', key: `${litKey}.vespers.aposticha.hymns.2`, tone, label: 'Sticheron' },
+          { position: 4, source: 'db', key: `${litKey}.vespers.aposticha.hymns.3`, tone, label: 'Sticheron' },
         ],
         glory: { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone },
         now:   { source: 'db', key: `${litKey}.vespers.aposticha.now`,   tone, label: 'Theotokion' },

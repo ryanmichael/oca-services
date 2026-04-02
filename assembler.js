@@ -3831,9 +3831,28 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
 
       // Troparia (if provided)
       if (odeData.troparia) {
+        let prevCanon = null;
         odeData.troparia.forEach((t, i) => {
+          // Insert canon-type heading when switching between canons
+          if (t.canon && t.canon !== prevCanon) {
+            if (t.canon === 'crossResurrection') {
+              blocks.push(S(`canon-ode${odeNum}-cross-hdr`, section, 'rubric', null,
+                'Canon of the Cross and Resurrection'));
+            } else if (t.canon === 'theotokos') {
+              blocks.push(S(`canon-ode${odeNum}-theotokos-hdr`, section, 'rubric', null,
+                'Canon of the Theotokos'));
+            }
+            prevCanon = t.canon;
+          }
+          // Refrain before the troparion
+          if (t.refrain) {
+            blocks.push(S(`canon-ode${odeNum}-ref-${i}`, section, 'verse', 'reader',
+              t.refrain));
+          }
+          // Label for theotokia
+          const label = t.type === 'theotokion' ? 'Theotokion' : undefined;
           blocks.push(S(`canon-ode${odeNum}-trop-${i}`, section, 'hymn', 'choir',
-            t.text || t, { tone: t.tone || tone, source: t.source }));
+            t.text || t, { tone: t.tone || tone, source: t.source, label }));
         });
       } else {
         blocks.push(S(`canon-ode${odeNum}-troparia`, section, 'rubric', null,

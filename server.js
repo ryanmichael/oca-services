@@ -1233,11 +1233,18 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
     tone,
   } : null;
 
-  // ── Canon irmoi → canon spec ──────────────────────────────────────────
+  // ── Canon irmoi + troparia → canon spec ──────────────────────────────
   const canonSpec = { tone };
   if (matins.canonIrmoi) {
     for (const [odeStr, irmosText] of Object.entries(matins.canonIrmoi)) {
       canonSpec[`ode${odeStr}`] = { irmos: irmosText };
+    }
+  }
+  if (matins.canonTroparia) {
+    for (const [odeStr, troparia] of Object.entries(matins.canonTroparia)) {
+      const odeKey = `ode${odeStr}`;
+      if (!canonSpec[odeKey]) canonSpec[odeKey] = {};
+      canonSpec[odeKey].troparia = troparia;
     }
   }
   // Kontakion from Octoechos (resurrectional)

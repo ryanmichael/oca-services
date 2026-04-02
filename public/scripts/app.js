@@ -1092,36 +1092,63 @@ function printBooklet() {
   const PAGE_CONTENT_H = (8.5 - 0.25 - 0.25) * 96; // 768 px
   const MEASURE_W      = (5.5 - 0.25 * 2) + 'in';   // 5.0in
 
+  // Read saved print settings from parent window's localStorage
+  const savedDuplex     = localStorage.getItem('booklet-duplex');
+  const savedRotateBack = localStorage.getItem('booklet-rotateBack');
+  const initDuplex     = savedDuplex !== null ? savedDuplex === 'true' : true;
+  const initRotateBack = savedRotateBack === 'true';
+
   // ── Build booklet JS that runs in the new window ──────────────────────────
   const bookletScript = `
 (function () {
   var PAGE_H  = ${PAGE_CONTENT_H};
   var TITLE   = ${JSON.stringify(svc + ' \u2014 ' + date)};
 
-  // Saddle-stitch imposition for manual 2-up (pages per sheet: 1).
-  // Each spread = one landscape print page with left + right half-pages.
-  // Front: left = last page, right = first page (outer sides of sheet).
-  // Back: left = second page, right = second-to-last (inner sides, swapped
-  //        so they land in correct position after duplex flip).
-  // No CSS rotation — the printer's duplex handles back-side orientation.
-  // If back-side content prints upside-down, toggle ROTATE_BACK to true.
-  var ROTATE_BACK = false;
-  function buildSpreads(pages) {
+  // ── Print settings (persisted to opener's localStorage) ──
+  var duplex     = ${initDuplex};
+  var rotateBack = ${initRotateBack};
+
+  function saveSetting(key, val) {
+    try { window.opener.localStorage.setItem('booklet-' + key, val); } catch(e) {}
+  }
+
+  // ── Imposition ──
+  // Duplex: saddle-stitch, manual 2-up. Each spread = landscape page with
+  // left + right half-pages. Back spreads have left/right swapped so they
+  // land correctly after the duplex flip.
+  // Single-sided: spreads in reading order (front then back for each sheet).
+  // User prints one-sided and manually collates.
+  function buildSpreadsDuplex(pages) {
     var p = pages.slice();
     while (p.length % 4 !== 0) p.push(null);
     var n = p.length, spreads = [];
     for (var k = 0; k < n / 4; k++) {
-      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false });       // sheet k front
-      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: ROTATE_BACK }); // sheet k back
+      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false });      // sheet k front
+      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: rotateBack }); // sheet k back
     }
     return spreads;
   }
 
-  document.fonts.ready.then(function () {
+  function buildSpreadsSingle(pages) {
+    var p = pages.slice();
+    while (p.length % 4 !== 0) p.push(null);
+    var n = p.length, spreads = [];
+    for (var k = 0; k < n / 4; k++) {
+      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false }); // sheet k front
+    }
+    for (var k = 0; k < n / 4; k++) {
+      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: false }); // sheet k back
+    }
+    return spreads;
+  }
+
+  // ── Pagination + rendering ──
+  var cachedPages = null;
+
+  function paginate() {
     var measure  = document.getElementById('measure');
     var allItems = [];
 
-    // Flatten content: individual blocks + svc-rules
     Array.from(measure.children).forEach(function (el) {
       if (el.classList.contains('svc-rule')) {
         allItems.push({ html: el.outerHTML, isHead: false });
@@ -1133,9 +1160,6 @@ function printBooklet() {
       }
     });
 
-    // Measure heights in the measure container (correct width already set)
-    // getBoundingClientRect().height excludes the last child's margin-bottom
-    // (it collapses with the parent's margin-bottom = 0), so we add it back.
     var tmp = document.createElement('div');
     tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};';
     document.body.appendChild(tmp);
@@ -1150,9 +1174,6 @@ function printBooklet() {
     });
     document.body.removeChild(tmp);
 
-    // Bin into pages; keep section heading with its first block.
-    // Lookahead ensures headings aren't orphaned at page bottom, but is capped
-    // at ~3 lines (100px) so a large following block doesn't waste a half-page.
     var MIN_KEEP_WITH = 100;
     var pages = [[]], heights = [0];
     allItems.forEach(function (item, i) {
@@ -1167,16 +1188,20 @@ function printBooklet() {
       heights[last] += h;
     });
 
-    // Prepend title to first page
     if (pages.length > 0 && pages[0].length > 0) {
       pages[0].unshift('<div class="bk-title">' + TITLE + '</div>');
     }
 
-    // Build spreads and render
-    var spreads = buildSpreads(pages);
-    var totalSheets = spreads.length / 2;
+    measure.style.display = 'none';
+    return pages;
+  }
+
+  function renderBooklet(pages) {
+    var spreads = duplex ? buildSpreadsDuplex(pages) : buildSpreadsSingle(pages);
+    var totalSheets = duplex ? spreads.length / 2 : spreads.length / 2;
 
     var booklet = document.getElementById('booklet');
+    booklet.innerHTML = '';
     spreads.forEach(function (spread) {
       var div = document.createElement('div');
       div.className = spread.rotate ? 'bk-spread rotated' : 'bk-spread';
@@ -1191,18 +1216,63 @@ function printBooklet() {
       booklet.appendChild(div);
     });
 
-    // Update instructions with sheet count
     var contentPages = pages.filter(function(p){ return p && p.length > 0; }).length;
     document.getElementById('sheet-count').textContent =
-      totalSheets + ' sheet' + (totalSheets !== 1 ? 's' : '') +
+      Math.ceil(spreads.length / 2) + ' sheet' + (Math.ceil(spreads.length / 2) !== 1 ? 's' : '') +
       ' (' + contentPages + ' half-pages of content)';
 
-    measure.style.display = 'none';
     booklet.style.visibility = 'visible';
+
+    // Update dynamic instruction text
+    var twoSidedEl = document.getElementById('instr-twosided');
+    if (twoSidedEl) {
+      twoSidedEl.textContent = duplex ? 'On \\u2014 Long-edge binding' : 'Off';
+    }
+  }
+
+  // ── Init ──
+  document.fonts.ready.then(function () {
+    cachedPages = paginate();
+    renderBooklet(cachedPages);
     document.getElementById('instructions').style.display = 'flex';
+
+    // Wire up toggles
+    var duplexCb = document.getElementById('cb-duplex');
+    var rotateCb = document.getElementById('cb-rotate');
+    var rotateRow = document.getElementById('row-rotate');
+
+    if (duplexCb) {
+      duplexCb.checked = duplex;
+      duplexCb.addEventListener('change', function () {
+        duplex = this.checked;
+        saveSetting('duplex', duplex);
+        rotateRow.style.display = duplex ? 'flex' : 'none';
+        renderBooklet(cachedPages);
+      });
+    }
+    if (rotateCb) {
+      rotateCb.checked = rotateBack;
+      rotateRow.style.display = duplex ? 'flex' : 'none';
+      rotateCb.addEventListener('change', function () {
+        rotateBack = this.checked;
+        saveSetting('rotateBack', rotateBack);
+        renderBooklet(cachedPages);
+      });
+    }
   });
 
   window.startPrint = function () {
+    document.getElementById('instructions').style.display = 'none';
+    window.print();
+  };
+
+  window.startTestPrint = function () {
+    // Generate a simple 8-page numbered test booklet
+    var testPages = [];
+    for (var i = 1; i <= 8; i++) {
+      testPages.push(['<div class="test-page"><span>' + i + '</span></div>']);
+    }
+    renderBooklet(testPages);
     document.getElementById('instructions').style.display = 'none';
     window.print();
   };
@@ -1313,6 +1383,32 @@ function printBooklet() {
   border: none; cursor: pointer;
 }
 .instr-btn:hover { background: #6e1414; }
+.instr-btn-secondary {
+  display: block; width: 100%; padding: 10px;
+  font-family: 'EB Garamond', Georgia, serif; font-size: 12pt;
+  background: none; color: var(--muted); border: 1px solid #ccc;
+  cursor: pointer; margin-top: 10px; text-align: center;
+}
+.instr-btn-secondary:hover { border-color: var(--rubric); color: var(--rubric); }
+
+/* ── Toggle rows ── */
+.instr-toggle {
+  font-size: 13pt; padding: 9px 0; border-bottom: 1px solid #e8e2d8;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.instr-toggle label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.instr-toggle input[type="checkbox"] {
+  width: 16px; height: 16px; accent-color: var(--rubric); cursor: pointer;
+}
+
+/* ── Test page ── */
+.test-page {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif; font-size: 48pt; color: var(--muted);
+  border: 2px dashed #ccc;
+}
+.test-page span { display: block; }
 
 /* ── Print ── */
 @page { size: 11in 8.5in; margin: 0; }
@@ -1342,13 +1438,20 @@ function printBooklet() {
   <div class="instr-box">
     <div class="instr-title">Booklet Print Settings</div>
     <div class="instr-sub" id="sheet-count">Preparing\u2026</div>
+    <div class="instr-toggle">
+      <label><input type="checkbox" id="cb-duplex" checked> Two-sided (duplex) printing</label>
+    </div>
+    <div class="instr-toggle" id="row-rotate">
+      <label><input type="checkbox" id="cb-rotate"> Rotate back side</label>
+    </div>
     <ol class="instr-steps">
       <li><span>Paper</span>         <span class="setting">US Letter (8.5\u2033 \u00d7 11\u2033)</span></li>
       <li><span>Orientation</span>   <span class="setting">Landscape</span></li>
       <li><span>Pages per sheet</span><span class="setting">1</span></li>
-      <li><span>Two-sided</span>     <span class="setting">On \u2014 Long-edge binding</span></li>
+      <li><span>Two-sided</span>     <span class="setting" id="instr-twosided">On \u2014 Long-edge binding</span></li>
     </ol>
     <button class="instr-btn" onclick="startPrint()">Print Booklet</button>
+    <button class="instr-btn-secondary" onclick="startTestPrint()">Test Print (8 numbered pages)</button>
   </div>
 </div>
 

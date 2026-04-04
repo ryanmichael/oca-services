@@ -333,6 +333,7 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     ...psalmVerses.psalm116.verses,
   ];
   for (const verse of allVerses) {
+    if (verse.number > totalStichera) continue;
     blocks.push(makeBlock(
       `lic-verse-${verse.number}`, section, 'verse', 'reader',
       `V. (${verse.number}) ${verse.text}`
@@ -2994,8 +2995,10 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
       sticheraMap[verseNums[i]] = stichera[i];
     }
 
+    const maxVerse = Math.max(...Object.keys(sticheraMap).map(Number));
     const allVerses = [...psalmVerses.psalm129.verses, ...psalmVerses.psalm116.verses];
     for (const verse of allVerses) {
+      if (verse.number > maxVerse) continue; // skip verses above stichera count
       blocks.push(S(`lic-verse-${verse.number}`, section, 'verse', 'reader',
         `V. (${verse.number}) ${verse.text}`));
       if (sticheraMap[verse.number]) {

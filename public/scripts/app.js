@@ -1079,6 +1079,9 @@ function printBooklet() {
   const body = document.getElementById('p-body');
   const svc  = document.getElementById('p-svc').textContent;
   const date = document.getElementById('p-date').textContent;
+  const saintsEl = document.getElementById('p-saints');
+  const principalSaint = saintsEl ? (saintsEl.querySelector('.p-saint.major') || saintsEl.querySelector('.p-saint')) : null;
+  const saintName = principalSaint ? principalSaint.textContent.trim() : '';
 
   if (!body || !body.innerHTML.trim()) {
     alert('No service loaded.'); return;
@@ -1087,22 +1090,23 @@ function printBooklet() {
   const win = window.open('', '_blank');
   if (!win) { alert('Please allow popups to use booklet printing.'); return; }
 
-  // Dimensions: half-page = 5.5" × 8.5", padding = 0.25in all sides
-  // Content height = (8.5 - 0.25 - 0.25) × 96 = 768 px
-  const PAGE_CONTENT_H = (8.5 - 0.25 - 0.25) * 96; // 768 px
-  const MEASURE_W      = (5.5 - 0.25 * 2) + 'in';   // 5.0in
+  // Dimensions: half-page = 5.5" × 8.5", padding = 0.45in top/bottom, 0.5in left/right
+  // Content height = (8.5 - 0.45 - 0.45) × 96 = 729.6 px
+  const PAGE_CONTENT_H = (8.5 - 0.45 - 0.45) * 96; // 729.6 px
+  const MEASURE_W      = (5.5 - 0.5 * 2) + 'in';    // 4.5in
 
   // Read saved print settings from parent window's localStorage
   const savedDuplex     = localStorage.getItem('booklet-duplex');
   const savedRotateBack = localStorage.getItem('booklet-rotateBack');
   const initDuplex     = savedDuplex !== null ? savedDuplex === 'true' : true;
-  const initRotateBack = savedRotateBack === 'true';
+  const initRotateBack = savedRotateBack !== null ? savedRotateBack === 'true' : true;
 
   // ── Build booklet JS that runs in the new window ──────────────────────────
   const bookletScript = `
 (function () {
   var PAGE_H  = ${PAGE_CONTENT_H};
-  var TITLE   = ${JSON.stringify(svc + ' \u2014 ' + date)};
+  var TITLE_SVC  = ${JSON.stringify(svc)};
+  var TITLE_SUB  = ${JSON.stringify(date + (saintName ? ' | ' + saintName : ''))};
 
   // ── Print settings (persisted to opener's localStorage) ──
   var duplex     = ${initDuplex};
@@ -1151,12 +1155,13 @@ function printBooklet() {
 
     Array.from(measure.children).forEach(function (el) {
       if (el.classList.contains('svc-rule')) {
-        allItems.push({ html: el.outerHTML, isHead: false });
+        allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
       } else if (el.classList.contains('svc-sec')) {
         Array.from(el.children).forEach(function (child) {
-          allItems.push({ html: child.outerHTML, isHead: child.classList.contains('svc-head') });
+          var isHead = child.classList.contains('svc-head');
+          var isLabel = child.classList.contains('stich-label');
+          allItems.push({ html: child.outerHTML, isHead: isHead, keepWithNext: isHead || isLabel });
         });
-        allItems.push({ html: '<div class="sec-gap"></div>', isHead: false });
       }
     });
 
@@ -1174,22 +1179,77 @@ function printBooklet() {
     });
     document.body.removeChild(tmp);
 
-    var MIN_KEEP_WITH = 100;
+    var MIN_SPLIT = 80; // don't leave a sliver shorter than this on a page
     var pages = [[]], heights = [0];
     allItems.forEach(function (item, i) {
       var h = itemHeights[i];
       var idx = pages.length - 1;
-      var lookahead = item.isHead ? Math.min(itemHeights[i + 1] || 0, MIN_KEEP_WITH) : 0;
-      if (heights[idx] + h + lookahead > PAGE_H && pages[idx].length > 0) {
-        pages.push([]); heights.push(0);
+      var remaining = PAGE_H - heights[idx];
+      // Keep headers, stich-labels, and verses with the following content.
+      // Walk the full keepWithNext chain so verse→label→hymn stay together.
+      var lookahead = 0;
+      if (item.keepWithNext) {
+        for (var k = i + 1; k < allItems.length; k++) {
+          lookahead += itemHeights[k] || 0;
+          if (!allItems[k].keepWithNext) break;
+        }
       }
-      var last = pages.length - 1;
-      pages[last].push(item.html);
-      heights[last] += h;
+      if (heights[idx] + h + lookahead <= PAGE_H) {
+        // Fits on current page (including any keepWithNext chain)
+        pages[idx].push(item.html);
+        heights[idx] += h;
+      } else if (pages[idx].length === 0 || (remaining >= MIN_SPLIT && !item.keepWithNext)) {
+        // Either first item on page, or there's usable space and this isn't a
+        // keepWithNext header — place and split if needed
+        splitItem(item.html, h, remaining);
+      } else if (item.keepWithNext && remaining >= MIN_SPLIT && h <= remaining) {
+        // keepWithNext header/label fits on current page but its chain overflows.
+        // Place the header here; the chain's tail (the actual content) will be
+        // split on the next iteration.
+        pages[idx].push(item.html);
+        heights[idx] += h;
+      } else {
+        // Start a new page
+        pages.push([]);
+        heights.push(0);
+        var last = pages.length - 1;
+        splitItem(item.html, h, PAGE_H);
+      }
     });
 
+    function splitItem(html, h, space) {
+      var idx = pages.length - 1;
+      if (h <= space) {
+        // Fits without splitting
+        pages[idx].push(html);
+        heights[idx] += h;
+      } else {
+        // Clip to available space, continue remainder on next page(s)
+        var offset = 0;
+        while (offset < h) {
+          var avail = offset === 0 ? space : PAGE_H;
+          var sliceH = Math.min(avail, h - offset);
+          var clip;
+          if (offset === 0) {
+            clip = '<div style="height:' + sliceH + 'px;overflow:hidden">' + html + '</div>';
+          } else {
+            clip = '<div style="height:' + sliceH + 'px;overflow:hidden">'
+                 + '<div style="margin-top:-' + offset + 'px">' + html + '</div></div>';
+          }
+          if (offset === 0) {
+            pages[idx].push(clip);
+            heights[idx] += sliceH;
+          } else {
+            pages.push([clip]);
+            heights.push(sliceH);
+          }
+          offset += sliceH;
+        }
+      }
+    }
+
     if (pages.length > 0 && pages[0].length > 0) {
-      pages[0].unshift('<div class="bk-title">' + TITLE + '</div>');
+      pages[0].unshift('<div class="bk-title">' + TITLE_SVC + '</div><div class="bk-subtitle">' + TITLE_SUB + '</div>');
     }
 
     measure.style.display = 'none';
@@ -1302,7 +1362,7 @@ function printBooklet() {
 
 .bk-half {
   width: 5.5in; height: 8.5in;
-  padding: 0.25in 0.5in;
+  padding: 0.45in 0.5in;
   overflow: hidden; position: relative;
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 15pt; line-height: 1.75; color: var(--text);
@@ -1316,7 +1376,12 @@ function printBooklet() {
 .bk-title {
   font-family: 'Cinzel', serif; font-size: 12pt; letter-spacing: .2em;
   text-align: center; color: var(--text); text-transform: uppercase;
-  margin-bottom: 20px; padding-top: 0.15in;
+  margin-bottom: 4px; padding-top: 0.15in;
+}
+.bk-subtitle {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 9pt;
+  text-align: center; color: var(--muted);
+  margin-bottom: 20px;
 }
 
 /* ── Service content ── */
@@ -1325,8 +1390,7 @@ function printBooklet() {
   text-align: center; color: var(--text); margin-bottom: 10px; margin-top: 4px;
   break-after: avoid;
 }
-.svc-rule { height: 0.5pt; background: var(--gold); margin: 8px 0; }
-.sec-gap  { height: 10px; }
+.svc-rule { height: 0.5pt; background: var(--gold); margin: 6px 0; }
 .rubric {
   font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
   font-style: italic; color: var(--rubric);

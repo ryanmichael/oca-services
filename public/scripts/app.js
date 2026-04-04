@@ -1302,7 +1302,7 @@ function printBooklet() {
 
 .bk-half {
   width: 5.5in; height: 8.5in;
-  padding: 0.25in;
+  padding: 0.25in 0.5in;
   overflow: hidden; position: relative;
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 15pt; line-height: 1.75; color: var(--text);

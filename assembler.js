@@ -3140,6 +3140,13 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(S('baptismal-hymn', 'Baptismal Hymn', 'hymn', 'choir',
     vf.baptismalHymn.text, { label: vf.baptismalHymn.label }));
 
+  // ── Little Litany (after Baptismal Hymn) ───────────────────────────────────
+  blocks.push(..._litLittleLitany(lf, 'exclamation2', 'vl-post-bapt'));
+
+  // ── Peace → Prokeimenon transition ─────────────────────────────────────────
+  blocks.push(S('vl-peace', 'Epistle', 'prayer', 'priest', 'Peace be unto all.'));
+  blocks.push(S('vl-peace-resp', 'Epistle', 'response', 'choir', 'And to thy spirit.'));
+
   // ── Epistle ────────────────────────────────────────────────────────────────
   {
     const section = 'Epistle';

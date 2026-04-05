@@ -1303,19 +1303,11 @@ function _litTrisagion(trisagionSpec, f) {
     blocks.push(makeBlock('tris-bapt', section, 'hymn', 'choir', text));
   }
 
-  // Bishop blessing (always precedes the Epistle)
-  blocks.push(makeBlock('tris-bishop', section, 'prayer', 'priest',
+  // Priestly blessing after the Trisagion, before the Prokeimenon
+  blocks.push(makeBlock('tris-peace', section, 'prayer', 'priest',
     'Peace be unto all.'));
-  blocks.push(makeBlock('tris-bishop-resp', section, 'response', 'choir',
+  blocks.push(makeBlock('tris-peace-resp', section, 'response', 'choir',
     'And to thy spirit.'));
-  blocks.push(makeBlock('tris-reader-rubric', section, 'prayer', 'reader',
-    'Bless, master.'));
-  blocks.push(makeBlock('tris-bless', section, 'prayer', 'priest',
-    'Blessed is He that cometh in the name of the Lord.'));
-  blocks.push(makeBlock('tris-bless-resp', section, 'response', 'choir',
-    'Blessed is He that cometh in the name of the Lord.'));
-  blocks.push(makeBlock('tris-bless2', section, 'prayer', 'priest',
-    'God is the Lord and hath appeared unto us.'));
 
   return blocks;
 }

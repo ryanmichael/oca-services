@@ -1002,37 +1002,48 @@ const GREAT_FEAST_VARIANTS = {
     label: 'The Entry of the Lord into Jerusalem',
     antiphons: {
       first: {
-        refrain: 'Through the prayers of the Theotokos, O Savior, save us.',
+        refrain: 'Through the prayers of the Theotokos, O Savior, save us!',
         verses: [
-          'I love the Lord, because He hath heard my voice and my supplications.',
-          'Because He hath inclined His ear unto me, therefore will I call upon Him as long as I live.',
-          'The sorrows of death compassed me, and the pains of hell gat hold upon me.',
-          'Gracious is the Lord, and righteous; yea, our God is merciful.',
+          'I love the Lord because He has heard the voice of my supplication.',
+          'Because He inclined His ear to me, therefore I will call on Him as long as I live.',
+          'The snares of death encompassed me; the pangs of hell laid hold on me.',
+          'I suffered distress and anguish, then I called on the Name of the Lord.',
+          'I will walk in the presence of the Lord in the land of the living.',
         ],
         glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
       },
       second: {
-        refrain: 'O Son of God, who sat upon the foal, save us who sing to Thee: Alleluia!',
+        refrain: 'O Son of God, seated on the colt of an ass, save us who sing to You: Alleluia!',
         verses: [
-          'I believed, and therefore have I spoken; I was greatly afflicted.',
-          'What shall I render unto the Lord for all His benefits toward me?',
-          'I will receive the cup of salvation and call upon the name of the Lord.',
-          'I will pay my vows unto the Lord in the presence of all His people.',
+          'I kept my faith, even when I said, "I am greatly afflicted."',
+          'What shall I render to the Lord for all the things He has given me?',
+          'I will receive the cup of salvation, and call upon the Name of the Lord.',
+          'I will pay my vows to the Lord in the presence of all His people.',
         ],
         glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
       },
       third: {
-        refrain: 'By raising Lazarus from the dead before Thy Passion, Thou didst confirm the universal resurrection, O Christ God! Like the children with the palms of victory, we cry out to Thee, O Vanquisher of death: Hosanna in the highest! Blessed is He that comes in the name of the Lord!',
+        refrain: 'By raising Lazarus from the dead before Your Passion, You confirmed the universal resurrection, O Christ God. Like the children with the palms of victory, we cry out to You, O Vanquisher of Death: "Hosanna in the highest! Blessed is He that comes in the Name of the Lord."',
         verses: [
-          'O give thanks unto the Lord, for He is good; for His mercy endureth forever.',
-          'Let the house of Israel now say that He is good, for His mercy endureth forever.',
-          'Let the house of Aaron now say that He is good, for His mercy endureth forever.',
+          'O give thanks to the Lord, for He is good; for His mercy endures forever.',
+          'Let the house of Israel say that He is good; for His mercy endures forever.',
+          'Let the house of Aaron say that He is good; for His mercy endures forever.',
+          'Let those who fear the Lord say that He is good; for His mercy endures forever.',
         ],
       },
     },
-    entranceHymn: 'Blessed is He that comes in the name of the Lord! God is the Lord and has revealed Himself to us!',
-    megalynarion: 'God is the Lord and has revealed Himself to us! Celebrate the feast and come with gladness! Let us magnify Christ with palms and branches, singing: Blessed is He that comes in the name of the Lord!',
-    communionHymn: 'Blessed is He that comes in the name of the Lord! God is the Lord and has revealed Himself to us! Alleluia.',
+    troparia: [
+      { tone: 1, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 1:', text: 'By raising Lazarus from the dead before Your Passion,\nYou confirmed the universal resurrection, O Christ God.\nLike the children with the palms of victory,\nwe cry out to You, O Vanquisher of Death:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord."' },
+      { tone: 4, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 4:', text: 'When we were buried with You in baptism, O Christ God,\nwe were made worthy of eternal life by Your Resurrection.\nNow we praise You and sing:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord!"' },
+    ],
+    kontakia: [
+      { tone: 6, rubric: 'Kontakion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 6:', text: 'Sitting on Your throne in Heaven,\ncarried on a foal on earth, O Christ God,\naccept the praise of angels and the songs of children, who sing:\n"Blessed is He Who comes to recall Adam!"' },
+    ],
+    prokeimenon: { tone: 4, refrain: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us.', verse: 'O give thanks to the Lord, for He is good; for His mercy endures forever.' },
+    alleluia: { tone: 1, verses: ['O sing to the Lord a new song, for He has done marvelous things!', 'All the ends of the earth have seen the salvation of our God.'] },
+    entranceHymn: 'Blessed is He that comes in the Name of the Lord. We bless you from the house of the Lord. God is the Lord and He has revealed Himself to us.',
+    megalynarion: 'God is the Lord and has revealed Himself to us! Celebrate the feast and come with gladness! Let us magnify Christ with palms and branches, singing: "Blessed is He that comes in the Name of the Lord, our Savior!"',
+    communionHymn: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us. Alleluia.',
   },
 
   ascension: {
@@ -1530,34 +1541,57 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     return reading.passage.map(v => v.content).join(' ');
   }
 
-  // ── Troparia & Kontakia ──────────────────────────────────────────────────────
-  // Start with resurrectional troparion (Sundays)
-  const troparionRaw  = srcs.octoechos?.[tk]?.saturday?.vespers?.troparion;
-  const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
-  const troparia = (isSunday && troparionText)
-    ? [{ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText }]
-    : [];
+  // ── Great Feast + season detection (needed by troparia, prokeimenon, etc.) ──
+  const season = getLiturgicalSeason(date);
+  const feastKey = getGreatFeastKey(date);
+  const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
 
-  // Start with resurrectional kontakion (Sundays)
-  const kontakionRaw = srcs.octoechos?.[tk]?.saturday?.vespers?.kontakion;
+  // ── Troparia & Kontakia ──────────────────────────────────────────────────────
+  // Great Feasts: use only the feast's own troparia/kontakia (no resurrectional, no Menaion)
+  const troparia = [];
   const kontakia = [];
-  if (isSunday && kontakionRaw) {
-    const kText = typeof kontakionRaw === 'object' ? kontakionRaw.text : kontakionRaw;
-    const kTone = typeof kontakionRaw === 'object' ? (kontakionRaw.tone ?? tone) : tone;
-    if (kText) kontakia.push({ tone: kTone, rubric: `Kontakion of the Resurrection, Tone ${kTone}:`, text: kText });
+
+  if (feast?.troparia) {
+    troparia.push(...feast.troparia);
+  } else {
+    // Start with resurrectional troparion (Sundays)
+    const troparionRaw  = srcs.octoechos?.[tk]?.saturday?.vespers?.troparion;
+    const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
+    if (isSunday && troparionText) {
+      troparia.push({ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText });
+    }
+
+    // Inject Menaion troparia from DB
+    const ranked = getMenaionRanked(mo, dy);
+    if (ranked?.notable) {
+      for (const comm of ranked.notable) {
+        const trop = comm.troparia.find(t => t.type === 'troparion');
+        if (trop) {
+          troparia.push({ tone: trop.tone, rubric: `Troparion of ${comm.title}, Tone ${trop.tone}:`, text: trop.text });
+        }
+      }
+    }
   }
 
-  // Inject Menaion troparia/kontakia from DB
-  const ranked = getMenaionRanked(mo, dy);
-  if (ranked?.notable) {
-    for (const comm of ranked.notable) {
-      const trop = comm.troparia.find(t => t.type === 'troparion');
-      if (trop) {
-        troparia.push({ tone: trop.tone, rubric: `Troparion of ${comm.title}, Tone ${trop.tone}:`, text: trop.text });
-      }
-      const kont = comm.troparia.find(t => t.type === 'kontakion');
-      if (kont) {
-        kontakia.push({ tone: kont.tone, rubric: `Kontakion of ${comm.title}, Tone ${kont.tone}:`, text: kont.text });
+  if (feast?.kontakia) {
+    kontakia.push(...feast.kontakia);
+  } else {
+    // Start with resurrectional kontakion (Sundays)
+    const kontakionRaw = srcs.octoechos?.[tk]?.saturday?.vespers?.kontakion;
+    if (isSunday && kontakionRaw) {
+      const kText = typeof kontakionRaw === 'object' ? kontakionRaw.text : kontakionRaw;
+      const kTone = typeof kontakionRaw === 'object' ? (kontakionRaw.tone ?? tone) : tone;
+      if (kText) kontakia.push({ tone: kTone, rubric: `Kontakion of the Resurrection, Tone ${kTone}:`, text: kText });
+    }
+
+    // Inject Menaion kontakia from DB
+    const ranked = getMenaionRanked(mo, dy);
+    if (ranked?.notable) {
+      for (const comm of ranked.notable) {
+        const kont = comm.troparia.find(t => t.type === 'kontakion');
+        if (kont) {
+          kontakia.push({ tone: kont.tone, rubric: `Kontakion of ${comm.title}, Tone ${kont.tone}:`, text: kont.text });
+        }
       }
     }
   }
@@ -1701,14 +1735,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   };
 
   // ── Cherubic Hymn override ───────────────────────────────────────────────────
-  const season = getLiturgicalSeason(date);
   let cherubicOverride = null;
   if (season === 'holyWeek' && dow === 'thursday') cherubicOverride = 'great-thursday';
   if (season === 'holyWeek' && dow === 'saturday') cherubicOverride = 'great-saturday';
-
-  // ── Great Feast detection ──────────────────────────────────────────────────
-  const feastKey = getGreatFeastKey(date);
-  const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
 
   // ── Build prokeimenon & alleluia ────────────────────────────────────────────
   let prokeimenon = null;
@@ -1727,7 +1756,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     if (date.getTime() === meatfareDate.getTime())   lentenKey = 'meatfare';
   }
 
-  if (lentenKey !== null && LENTEN_SUNDAY_PROKEIMENA[lentenKey]) {
+  // Great Feast prokeimenon/alleluia override (highest priority)
+  if (feast?.prokeimenon) {
+    const fp = feast.prokeimenon;
+    prokeimenon = { tone: fp.tone, refrain: fp.refrain, verse: fp.verse };
+  } else if (lentenKey !== null && LENTEN_SUNDAY_PROKEIMENA[lentenKey]) {
     const lp = LENTEN_SUNDAY_PROKEIMENA[lentenKey];
     prokeimenon = { tone: lp.tone, refrain: lp.refrain, verse: lp.verse };
   } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
@@ -1738,7 +1771,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
   }
 
-  if (lentenKey !== null && LENTEN_SUNDAY_ALLELUIA[lentenKey]) {
+  if (feast?.alleluia) {
+    const fa = feast.alleluia;
+    alleluia = { tone: fa.tone, verses: fa.verses };
+  } else if (lentenKey !== null && LENTEN_SUNDAY_ALLELUIA[lentenKey]) {
     const la = LENTEN_SUNDAY_ALLELUIA[lentenKey];
     alleluia = { tone: la.tone, verses: la.verses };
   } else if (isSunday && SUNDAY_ALLELUIA[tone]) {

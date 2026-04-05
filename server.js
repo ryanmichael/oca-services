@@ -1707,16 +1707,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia.',
   };
 
-  // ── Day-of-week patron for dismissal ─────────────────────────────────────────
-  const DAY_PATRONS = {
-    sunday:    'the holy, glorious, and all-laudable Apostles',
-    monday:    'the honorable, bodiless Powers of Heaven',
-    tuesday:   'the honorable, glorious Prophet, Forerunner, and Baptist John',
-    wednesday: 'the power of the precious and life-giving Cross',
-    thursday:  'the holy, glorious, and all-laudable Apostles; our father among the saints Nicholas the Wonderworker, Archbishop of Myra in Lycia',
-    friday:    'the power of the precious and life-giving Cross',
-    saturday:  'the holy, glorious, and right-victorious Martyrs',
-  };
+  // DAY_PATRONS moved to module scope
 
   // ── Sunday Prokeimena (by Octoechos tone — correct for ordinary-time Sundays) ─
   // Source: OCA Department of Liturgical Music & Translations service texts
@@ -2374,6 +2365,21 @@ function assembleForDate(date, pronoun, entryOverride) {
     }
   }
 
+  // Build Vespers dismissal spec if not already present
+  if (!calendarEntry.vespers.dismissal) {
+    const dow = calendarEntry.dayOfWeek;
+    const feastKey = calendarEntry.liturgicalContext?.greatFeast;
+    // Saturday Great Vespers begins the Sunday celebration → resurrectional dismissal
+    const isSundayVespers = dow === 'sunday' ||
+      (dow === 'saturday' && isGreatVespers && !feastKey);
+    calendarEntry.vespers.dismissal = {
+      opening: feastKey ? 'feast' : (isSundayVespers ? 'sunday' : 'weekday'),
+      feastLabel: feastKey || null,
+      dayPatron: DAY_PATRONS[dow] || null,
+      saints: (calendarEntry.commemorations || []).slice(0, 3).map(c => c.title),
+    };
+  }
+
   const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
   const blocks = assembleVespers(calendarEntry, fixedTexts, reqSources);
 
@@ -2802,6 +2808,17 @@ function parseQuery(url) {
 }
 
 // Pre-load sources once at startup
+// Day-of-week patron saints for dismissal (shared by Liturgy and Vespers)
+const DAY_PATRONS = {
+  sunday:    'the holy, glorious, and all-laudable Apostles',
+  monday:    'the honorable, bodiless Powers of Heaven',
+  tuesday:   'the honorable, glorious Prophet, Forerunner, and Baptist John',
+  wednesday: 'the power of the precious and life-giving Cross',
+  thursday:  'the holy, glorious, and all-laudable Apostles; our father among the saints Nicholas the Wonderworker, Archbishop of Myra in Lycia',
+  friday:    'the power of the precious and life-giving Cross',
+  saturday:  'the holy, glorious, and right-victorious Martyrs',
+};
+
 let sources;
 try {
   sources = loadSources();

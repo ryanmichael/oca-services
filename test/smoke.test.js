@@ -310,6 +310,21 @@ describe('API routes', () => {
     const apostHymns = res.json.blocks.filter(b => b.section === 'Aposticha' && b.type === 'hymn');
     const apostOct = apostHymns.filter(b => b.source === 'octoechos');
     assert.ok(apostOct.length >= 1, 'Should have Octoechos aposticha hymns');
+    // Dismissal should have proper text, not placeholder
+    const disProper = res.json.blocks.find(b => b.id === 'dis-proper');
+    assert.ok(disProper, 'Should have dismissal proper block');
+    assert.ok(!disProper.text.includes('[Proper Dismissal'),
+      'Dismissal should not be a placeholder');
+    assert.ok(disProper.text.includes('His most pure Mother'),
+      'Dismissal should mention the Theotokos');
+  });
+
+  it('Vespers — Saturday Great Vespers uses resurrectional dismissal', async () => {
+    const res = await get('/api/service?date=2026-06-12');
+    assert.equal(res.status, 200);
+    const disProper = res.json.blocks.find(b => b.id === 'dis-proper');
+    assert.ok(disProper.text.startsWith('May He Who rose from the dead'),
+      'Saturday Great Vespers should use resurrectional dismissal formula');
   });
 
   // ── Data routes ────────────────────────────────────────────────────────

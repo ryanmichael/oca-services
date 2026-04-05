@@ -124,7 +124,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   }
 
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
-  blocks.push(...assembleDismissal(fixedTexts));
+  blocks.push(...assembleDismissal(fixedTexts, vespers.dismissal));
 
   blocks._warnings = _warnings.slice();
   return blocks;
@@ -858,9 +858,30 @@ function assembleBlessingOfBread(fixedTexts) {
   return blocks;
 }
 
-function assembleDismissal(fixedTexts) {
+function assembleDismissal(fixedTexts, dismissalSpec) {
   const section = 'Dismissal';
   const d = fixedTexts.dismissal;
+
+  // Build proper dismissal text
+  let properText = '[Proper Dismissal for the day]';
+  if (dismissalSpec) {
+    let opening;
+    if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
+      opening = 'May Christ our true God,';
+    } else if (dismissalSpec.opening === 'sunday') {
+      opening = 'May He Who rose from the dead, Christ our true God,';
+    } else {
+      opening = 'May Christ our true God,';
+    }
+
+    const parts = ['through the prayers of His most pure Mother'];
+    if (dismissalSpec.dayPatron) parts.push(`of ${dismissalSpec.dayPatron}`);
+    const saints = dismissalSpec.saints || [];
+    if (saints.length > 0) parts.push(`of ${saints.join('; ')}`);
+    const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
+    properText = `${opening} ${closing}`;
+  }
+
   return [
     makeBlock('dis-wisdom', section, 'prayer', 'deacon', d.wisdom),
     makeBlock('dis-father-bless', section, 'response', 'choir', d.fatherBless),
@@ -870,7 +891,7 @@ function assembleDismissal(fixedTexts) {
     makeBlock('dis-magnification', section, 'response', 'choir', d.magnification),
     makeBlock('dis-glory-christ', section, 'prayer', 'priest', d.gloryChrist),
     makeBlock('dis-final', section, 'response', 'choir', d.finalResponse),
-    makeBlock('dis-proper', section, 'prayer', 'priest', '[Proper Dismissal for the day]'),
+    makeBlock('dis-proper', section, 'prayer', 'priest', properText),
     makeBlock('dis-amen', section, 'response', 'choir', 'Amen.'),
   ];
 }

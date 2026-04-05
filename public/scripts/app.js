@@ -1106,7 +1106,8 @@ function printBooklet() {
   // ── Build booklet JS that runs in the new window ──────────────────────────
   const bookletScript = `
 (function () {
-  var PAGE_H  = ${PAGE_CONTENT_H};
+  var PAGE_H  = ${PAGE_CONTENT_H} - 4;  // small buffer to prevent clipping at page edges
+  var LINE_H  = Math.round(15 * 1.75 * 96 / 72);  // ~35px — snap splits to line boundaries
   var TITLE_SVC  = ${JSON.stringify(svc)};
   var TITLE_SUB  = ${JSON.stringify(date + (saintName ? ' | ' + saintName : ''))};
 
@@ -1226,11 +1227,18 @@ function printBooklet() {
         pages[idx].push(html);
         heights[idx] += h;
       } else {
-        // Clip to available space, continue remainder on next page(s)
+        // Clip to available space, continue remainder on next page(s).
+        // Snap clip heights DOWN to line-height multiples so we never
+        // cut through the middle of a text line.
         var offset = 0;
         while (offset < h) {
           var avail = offset === 0 ? space : PAGE_H;
           var sliceH = Math.min(avail, h - offset);
+          // Snap down to line boundary unless this is the last slice
+          if (h - offset > sliceH) {
+            sliceH = Math.floor(sliceH / LINE_H) * LINE_H;
+            if (sliceH < LINE_H) sliceH = LINE_H; // at least one line
+          }
           var clip;
           if (offset === 0) {
             clip = '<div style="height:' + sliceH + 'px;overflow:hidden">' + html + '</div>';

@@ -973,17 +973,35 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // ── LITURGY OF THE FAITHFUL ────────────────────────────────────────────────
 
   // 19. Cherubic Hymn (Great Thursday / Great Saturday have substitutions)
-  const cherubicKey = spec.cherubicOverride
-    ? `cherubic-${spec.cherubicOverride}`
-    : 'cherubic-hymn';
-  const cherubicLabel = spec.cherubicOverride === 'great-thursday' ? 'Mystical Supper Hymn'
-    : spec.cherubicOverride === 'great-saturday' ? 'Let All Mortal Flesh Keep Silence'
-    : 'Cherubic Hymn';
-  blocks.push(makeBlock('cherubic-hymn', cherubicLabel, 'hymn', 'choir',
-    liturgyFixed[cherubicKey] || liturgyFixed['cherubic-hymn']));
+  if (spec.cherubicOverride) {
+    // Special hymns (Great Thursday / Great Saturday) are sung as a single block
+    const cherubicKey = `cherubic-${spec.cherubicOverride}`;
+    const cherubicLabel = spec.cherubicOverride === 'great-thursday' ? 'Mystical Supper Hymn'
+      : 'Let All Mortal Flesh Keep Silence';
+    blocks.push(makeBlock('cherubic-hymn', cherubicLabel, 'hymn', 'choir',
+      liturgyFixed[cherubicKey]));
+  } else {
+    // Standard Cherubic Hymn — Part 1 before the Great Entrance, Part 2 after
+    const ch = liturgyFixed['cherubic-hymn'];
+    const section = 'Cherubic Hymn';
+    blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null,
+      'Sung slowly and softly:'));
+    blocks.push(makeBlock('cherubic-part1', section, 'hymn', 'choir', ch.part1));
+    blocks.push(makeBlock('cherubic-amen', section, 'response', 'choir', ch.amen));
+  }
 
   // 20. Great Entrance
   blocks.push(..._litGreatEntrance(liturgyFixed));
+
+  // 19b. Cherubic Hymn — Part 2 (after the Great Entrance)
+  if (!spec.cherubicOverride) {
+    const ch = liturgyFixed['cherubic-hymn'];
+    const section = 'Cherubic Hymn';
+    blocks.push(makeBlock('cherubic-rubric2', section, 'rubric', null,
+      'The choir completes the hymn:'));
+    blocks.push(makeBlock('cherubic-part2', section, 'hymn', 'choir', ch.part2));
+    blocks.push(makeBlock('cherubic-alleluia', section, 'hymn', 'choir', ch.alleluia));
+  }
 
   // 21. Litany of Supplication
   blocks.push(..._litSupplication(liturgyFixed));
@@ -3135,7 +3153,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
 
   // ── Cherubic Hymn: "Let All Mortal Flesh Keep Silence" ─────────────────────
   blocks.push(S('cherubic-hymn', 'Let All Mortal Flesh Keep Silence', 'hymn', 'choir',
-    lf['cherubic-great-saturday'] || lf['cherubic-hymn']));
+    lf['cherubic-great-saturday']));
 
   // ── Great Entrance ─────────────────────────────────────────────────────────
   blocks.push(..._litGreatEntrance(lf));

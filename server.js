@@ -127,6 +127,17 @@ function getCalendarEntry(dateStr) {
   return generated ?? handAuthored;
 }
 
+/**
+ * Returns the next calendar date as a YYYY-MM-DD string.
+ * Used for the Vespers date-shift: Vespers served on date X is liturgically
+ * the first service of date X+1, so we look up the next day's calendar entry.
+ */
+function getNextDateStr(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const next = new Date(Date.UTC(y, m - 1, d + 1));
+  return next.toISOString().slice(0, 10);
+}
+
 // ─── HTML helpers ─────────────────────────────────────────────────────────────
 
 function escHtml(str) {
@@ -2783,13 +2794,19 @@ function handleRequest(req, res) {
       }
 
       (async () => {
+      // ── Vespers date-shift ─────────────────────────────────────────────────
+      // Vespers is the first service of the next liturgical day.  The API date
+      // represents the civil evening the service is served; the liturgical
+      // content comes from the *next* calendar date.
+      const vespersDate = getNextDateStr(date);
+
       // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API
       let entryOverride = null;
       try {
-        const baseEntry = getCalendarEntry(date);
+        const baseEntry = getCalendarEntry(vespersDate);
         if (baseEntry?.liturgicalContext?.season === 'greatLent' &&
             baseEntry?.vespers?.serviceType === 'dailyVespers') {
-          const orthocalData = await fetchOrthocalDay(date);
+          const orthocalData = await fetchOrthocalDay(vespersDate);
           const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
           if (vesperReadings.length > 0) {
             // Deep-clone just the prokeimenon entries so we don't mutate the shared calendar entry
@@ -2824,7 +2841,7 @@ function handleRequest(req, res) {
 
       let result;
       try {
-        result = assembleForDate(date, pronoun, entryOverride);
+        result = assembleForDate(vespersDate, pronoun, entryOverride);
       } catch (err) {
         console.error('assembleForDate error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -2846,7 +2863,7 @@ function handleRequest(req, res) {
       // Use calendar entry commemorations if present; otherwise fall back to Menaion DB
       let commemorations = calendarEntry.commemorations || [];
       if (commemorations.length === 0) {
-        const [, mm, dd] = date.split('-').map(Number);
+        const [, mm, dd] = vespersDate.split('-').map(Number);
         const dayList = getMenaionDayList(mm, dd);
         if (dayList) {
           commemorations = dayList.commemorations.map((title, i) => ({
@@ -2871,6 +2888,7 @@ function handleRequest(req, res) {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
+        vespersDate,
         serviceType:      calendarEntry.vespers?.serviceType || 'greatVespers',
         serviceName:      serviceTitle,
         tone,
@@ -3658,9 +3676,11 @@ function handleRequest(req, res) {
       };
 
       // Build available services list
+      // Vespers date-shift: vespers served this evening belongs to tomorrow
+      const vespersEntry = getCalendarEntry(getNextDateStr(date));
       const available = {
-        greatVespers:    entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
-        dailyVespers:    entry?.vespers?.serviceType === 'dailyVespers',
+        greatVespers:    vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
+        dailyVespers:    vespersEntry?.vespers?.serviceType === 'dailyVespers',
         bridegroomMatins: isBridegroomMatins(d),
         lamentations:    isLamentationsDay(d),
         vesperalLiturgy: isVesperalLiturgyDay(d),
@@ -3773,6 +3793,11 @@ function handleRequest(req, res) {
         const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
         const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
 
+        // Vespers date-shift: vespers served on this evening belongs to
+        // the *next* liturgical day, so look up tomorrow's calendar entry.
+        const vespersDateStr = getNextDateStr(dateStr);
+        const vespersEntry   = getCalendarEntry(vespersDateStr);
+
         // Feast + commemorations list from Menaion DB
         let feast = null;
         let commemorations = [];
@@ -3785,10 +3810,10 @@ function handleRequest(req, res) {
         } catch (_) {}
 
         const services = {
-          greatVespers: entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
-          dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
-          allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
-          burialVespers: entry?.vespers?.serviceKey === 'burialVespers',
+          greatVespers: vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
+          dailyVespers: vespersEntry?.vespers?.serviceType === 'dailyVespers',
+          allNightVigil: vespersEntry?.vespers?.serviceType === 'all-night-vigil',
+          burialVespers: vespersEntry?.vespers?.serviceKey === 'burialVespers',
       bridegroomMatins: isBridegroomMatins(cur),
           lamentations: isLamentationsDay(cur),
           vesperalLiturgy: isVesperalLiturgyDay(cur),
@@ -3905,10 +3930,13 @@ function handleRequest(req, res) {
         return;
       }
 
+      // Vespers date-shift: content belongs to the next liturgical day
+      const vespersDate = getNextDateStr(date);
+
       // Try assembleForDate first
       let assembleResult;
       try {
-        assembleResult = assembleForDate(date, pronoun);
+        assembleResult = assembleForDate(vespersDate, pronoun);
       } catch (err) {
         console.error('Assembly error:', err);
         res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });

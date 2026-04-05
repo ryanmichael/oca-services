@@ -302,7 +302,9 @@ async function loadPanelContent(date, svcType) {
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
-    const dateStr = `${formatLong(date)}${toneStr}${labelStr}`;
+    // Vespers content belongs to the next liturgical day; show that date
+    const displayDate = data.vespersDate || date;
+    const dateStr = `${formatLong(displayDate)}${toneStr}${labelStr}`;
     document.getElementById('p-date').textContent = dateStr;
     document.getElementById('print-header-date').textContent = dateStr;
 

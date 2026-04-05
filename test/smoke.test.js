@@ -178,7 +178,8 @@ describe('API routes', () => {
   // ── Service assembly routes ────────────────────────────────────────────
 
   it('GET /api/service — returns blocks for an ordinary Saturday', async () => {
-    const res = await get('/api/service?date=2026-10-03');
+    // Date=2026-10-02 (Friday evening) → vespers for Saturday Oct 3
+    const res = await get('/api/service?date=2026-10-02');
     assert.equal(res.status, 200);
     assert.ok(res.json, 'Should return JSON');
     assert.ok(Array.isArray(res.json.blocks), 'Should have blocks array');
@@ -186,14 +187,16 @@ describe('API routes', () => {
   });
 
   it('GET /api/service — Lenten Saturday Great Vespers', async () => {
-    const res = await get('/api/service?date=2026-03-07');
+    // Date=2026-03-06 (Friday evening) → vespers for Soul Saturday Mar 7
+    const res = await get('/api/service?date=2026-03-06');
     assert.equal(res.status, 200);
     assert.ok(res.json.blocks.length > 100, `Expected >100 blocks, got ${res.json.blocks.length}`);
   });
 
   it('GET /api/service — Lenten Sunday Great Vespers has 10 Lord I Call stichera', async () => {
     // Regression test: was previously returning only 6
-    const res = await get('/api/service?date=2026-03-22');
+    // Date=2026-03-21 (Saturday evening) → vespers for Sunday March 22
+    const res = await get('/api/service?date=2026-03-21');
     assert.equal(res.status, 200);
     const licHymns = res.json.blocks.filter(
       b => b.section === 'Lord, I Have Cried' && b.type === 'hymn'
@@ -204,7 +207,8 @@ describe('API routes', () => {
 
   it('GET /api/service — Lenten Sunday aposticha has distinct hymns', async () => {
     // Regression test: aposticha was repeating the same hymn 3x
-    const res = await get('/api/service?date=2026-03-22');
+    // Date=2026-03-21 (Saturday evening) → vespers for Sunday March 22
+    const res = await get('/api/service?date=2026-03-21');
     assert.equal(res.status, 200);
     const apostichaHymns = res.json.blocks.filter(
       b => b.section === 'Aposticha' && b.type === 'hymn'
@@ -269,7 +273,8 @@ describe('API routes', () => {
   // ── No empty text blocks in any service ────────────────────────────────
 
   it('No blocks with empty text in Vespers assembly', async () => {
-    const res = await get('/api/service?date=2026-10-03');
+    // Date=2026-10-02 (Friday evening) → vespers for Saturday Oct 3
+    const res = await get('/api/service?date=2026-10-02');
     const empties = res.json.blocks.filter(
       b => typeof b.text === 'string' && b.text.trim() === '' && b.type !== 'doxology'
     );

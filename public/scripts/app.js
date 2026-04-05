@@ -1159,6 +1159,8 @@ function printBooklet() {
     Array.from(measure.children).forEach(function (el) {
       if (el.classList.contains('svc-rule')) {
         allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
+      } else if (el.classList.contains('edu-module')) {
+        allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
       } else if (el.classList.contains('svc-sec')) {
         Array.from(el.children).forEach(function (child) {
           var isHead = child.classList.contains('svc-head');
@@ -1380,7 +1382,8 @@ function printBooklet() {
 }
 
 /* ── Hide dev-mode elements ── */
-.src-tag, .tone-badge, .choir-source, .edu-module { display: none !important; }
+.src-tag, .tone-badge, .choir-source { display: none !important; }
+${activeEducation !== 'on' ? '.edu-module { display: none !important; }' : ''}
 
 /* ── Booklet title ── */
 .bk-title {
@@ -1422,6 +1425,49 @@ function printBooklet() {
   font-style: italic; color: var(--muted); margin-bottom: 6px; line-height: 1.5;
 }
 .spk { display: inline; font-weight: 600; font-style: normal; color: var(--rubric); }
+
+/* ── Education modules (booklet) ── */
+.edu-module {
+  margin: 8px 0; padding: 12px 14px 10px;
+  border: 0.5pt solid var(--gold); border-left: 2pt solid var(--rubric);
+  background: #faf8f4;
+}
+.edu-module-title {
+  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .06em;
+  color: var(--rubric); margin-bottom: 1px;
+}
+.edu-module-subtitle {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 10pt;
+  font-style: italic; color: var(--muted); margin-bottom: 8px;
+}
+.edu-module-body p {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 11pt;
+  line-height: 1.5; color: var(--text); margin: 0 0 6px;
+}
+.edu-module-body p:last-child { margin-bottom: 0; }
+.edu-timeline {
+  margin-top: 8px; padding-top: 8px;
+  border-top: 0.5pt solid var(--gold);
+}
+.edu-timeline-label, .edu-scripture-label {
+  font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: .12em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 5px;
+}
+.edu-tl-item {
+  display: flex; gap: 8px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 10pt; line-height: 1.4;
+  color: var(--text); margin-bottom: 4px;
+}
+.edu-tl-item:last-child { margin-bottom: 0; }
+.edu-tl-date { flex-shrink: 0; width: 70px; font-weight: 600; color: var(--rubric); text-align: right; }
+.edu-tl-detail { flex: 1; }
+.edu-scripture { margin-top: 8px; padding-top: 6px; border-top: 0.5pt solid var(--gold); }
+.edu-ref {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 10pt; line-height: 1.4; color: var(--text); margin-bottom: 2px;
+}
+.edu-ref-verse { font-weight: 600; color: var(--rubric); margin-right: 4px; }
 
 /* ── Instructions overlay ── */
 #instructions {

@@ -2227,13 +2227,26 @@ function assembleForDate(date, pronoun, entryOverride) {
                          label: licStichera[i % licStichera.length].label });
           }
           autoSlot.lordICall = { hymns };
+        } else if (isWeekdayInjection && !isGreatVespers && lic.slots?.length > 0 && lic.slots[0].source === 'octoechos') {
+          // Weekday Daily Vespers: split 6 stichera between Octoechos and Menaion
+          const menaionCount    = Math.min(licStichera.length, 3);
+          const octoechosCount  = 6 - menaionCount;
+          const allVerses       = [6, 5, 4, 3, 2, 1];
+          lic.slots[0].verses   = allVerses.slice(0, octoechosCount);
+          lic.slots[0].count    = octoechosCount;
+          lic.slots.push({
+            verses: allVerses.slice(octoechosCount),
+            count:  menaionCount,
+            source: 'menaion', provenance: menaionProvenance,
+            key:    `auto.${date}.lordICall`,
+            tone:   licStichera[0].tone,
+            label:  primary.title,
+          });
         } else {
-          // Weekday, Great Vespers, or Vigil with ≥8 unique stichera
+          // Great Vespers or Vigil with ≥8 unique stichera — all Menaion
           const allVerses = isVigilFeast
             ? [8, 7, 6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
-            : isGreatVespers
-              ? [6, 5, 4, 3, 2, 1].slice(0, licStichera.length)
-              : [4, 3, 2].slice(0, licStichera.length);
+            : [6, 5, 4, 3, 2, 1].slice(0, licStichera.length);
           lic.slots = [{
             verses: allVerses,
             count:  licStichera.length,
@@ -2268,23 +2281,31 @@ function assembleForDate(date, pronoun, entryOverride) {
         };
 
         const apost = calendarEntry.vespers.aposticha;
-        // Replace the Octoechos idiomelon slots with Menaion stichera
-        apost.slots = apostStichera.map((s, i) => ({
-          position: i + 1,
-          source:   'menaion', provenance: menaionProvenance,
-          key:      `auto.${date}.aposticha.hymns.${i}`,
-          tone:     s.tone,
-          label:    primary.title,
-        }));
-        // Add repeatPrevious placeholders only when fewer than 3 stichera are available
-        while (apost.slots.length < 3) {
-          apost.slots.push({ position: apost.slots.length + 1, repeatPrevious: true });
+        const isGreatFeast = !!calendarEntry.liturgicalContext?.greatFeast;
+        const hasOctoechosAposticha = apost.slots?.some(s => s.source === 'octoechos');
+
+        if (hasOctoechosAposticha && !isGreatFeast) {
+          // Weekday/Saturday: keep Octoechos aposticha, only overlay Menaion glory
+          // (Octoechos provides the 3 base hymns; Menaion provides the Glory sticheron)
+        } else {
+          // Great feast or no Octoechos base: replace slots with Menaion stichera
+          apost.slots = apostStichera.map((s, i) => ({
+            position: i + 1,
+            source:   'menaion', provenance: menaionProvenance,
+            key:      `auto.${date}.aposticha.hymns.${i}`,
+            tone:     s.tone,
+            label:    primary.title,
+          }));
+          // Add repeatPrevious placeholders only when fewer than 3 stichera are available
+          while (apost.slots.length < 3) {
+            apost.slots.push({ position: apost.slots.length + 1, repeatPrevious: true });
+          }
         }
 
         if (apostGlory) {
-          // Great feast aposticha Glory is always combined Glory/Now
-          const isGreatFeast = !!calendarEntry.liturgicalContext?.greatFeast;
           apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
+          // Weekday: Octoechos theotokion already set as `now` in calendar entry
+          // Saturday: set Octoechos theotokion explicitly
           if (isSaturdayInjection && !isGreatFeast) {
             apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
           }

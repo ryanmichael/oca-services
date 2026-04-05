@@ -272,6 +272,7 @@ function getLiturgicalKey(date) {
  * No resurrectional stichera; those belong to Saturday Great Vespers only.
  */
 function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
+  const tk = `tone${tone}`;
   return {
     _meta: {
       generated:   true,
@@ -287,15 +288,24 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
       rubricNote:  `Daily Vespers`,
       lordICall: {
         tone,
-        totalStichera: 3,
-        slots: [],   // server injects Menaion stichera at runtime
+        totalStichera: 6,
+        slots: [
+          // 3 Octoechos stichera (tone of the week, day of the week)
+          // Server may reduce count when Menaion stichera are available
+          { verses: [6, 5, 4], count: 3, source: 'octoechos', key: `${tk}.${dow}.vespers.lordICall`, tone, label: 'Octoechos' },
+        ],
         glory: null, // server injects Menaion glory doxastichon
-        now:   null, // server injects dismissal theotokion
+        now:   null, // server injects theotokion
       },
       prokeimenon: { pattern: 'weekday', weekday: dow },
       aposticha: {
-        slots: [],   // server injects Menaion aposticha if available
-        glory: null,
+        slots: [
+          { position: 1, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
+          { position: 2, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.1`, tone, label: 'Aposticha' },
+          { position: 3, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.2`, tone, label: 'Aposticha' },
+        ],
+        glory: null, // server injects Menaion glory if available
+        now:   { source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
       },
       troparia: {
         slots: [],   // server injects Menaion troparion

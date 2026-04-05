@@ -285,6 +285,33 @@ describe('API routes', () => {
       'Palm Sunday dismissal should not use "rose from the dead" Sunday formula');
   });
 
+  // ── Daily Vespers ───────────────────────────────────────────────────────
+
+  it('Daily Vespers — weekday has correct structure (no entrance, augmented litany after troparia)', async () => {
+    const res = await get('/api/service?date=2026-06-10');
+    assert.equal(res.status, 200);
+    const sections = [...new Set(res.json.blocks.map(b => b.section))];
+    // No entrance on Daily Vespers
+    assert.ok(!sections.includes('The Entrance'),
+      'Daily Vespers should not have an entrance');
+    // Augmented Litany must come after Troparia
+    const tropIdx = res.json.blocks.findIndex(b => b.section === 'Troparia');
+    const augIdx = res.json.blocks.findIndex(b => b.section === 'Litany of Fervent Supplication');
+    assert.ok(tropIdx > 0, 'Should have Troparia section');
+    assert.ok(augIdx > tropIdx,
+      'Augmented Litany should come after Troparia in Daily Vespers');
+    // Lord I Call should have both Octoechos and Menaion stichera
+    const licHymns = res.json.blocks.filter(b => b.section === 'Lord, I Have Cried' && b.type === 'hymn');
+    const octHymns = licHymns.filter(b => b.source === 'octoechos');
+    const menHymns = licHymns.filter(b => b.source === 'menaion');
+    assert.ok(octHymns.length >= 1, 'Should have Octoechos stichera at Lord I Call');
+    assert.ok(menHymns.length >= 1, 'Should have Menaion stichera at Lord I Call');
+    // Aposticha should have Octoechos base hymns
+    const apostHymns = res.json.blocks.filter(b => b.section === 'Aposticha' && b.type === 'hymn');
+    const apostOct = apostHymns.filter(b => b.source === 'octoechos');
+    assert.ok(apostOct.length >= 1, 'Should have Octoechos aposticha hymns');
+  });
+
   // ── Data routes ────────────────────────────────────────────────────────
 
   it('GET /api/days — returns calendar data for a date range', async () => {

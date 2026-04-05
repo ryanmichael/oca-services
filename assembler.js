@@ -171,6 +171,7 @@ function assembleGreatLitany(fixedTexts) {
   ];
   lit.petitions.forEach((petition, i) => {
     blocks.push(makeBlock(`gl-petition-${i + 1}`, section, 'prayer', 'deacon', petition));
+    blocks.push(makeBlock(`gl-petition-${i + 1}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
     makeBlock('gl-commemoration', section, 'prayer', 'deacon', lit.commemoration),
@@ -586,6 +587,7 @@ function assembleAugmentedLitany(fixedTexts) {
   ];
   lit.petitions.forEach((p, i) => {
     blocks.push(makeBlock(`al-petition-${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`al-petition-${i}-resp`, section, 'response', 'choir', lit.response));
   });
   lit.triplePetitions.forEach((p, i) => {
     blocks.push(makeBlock(`al-triple-${i}`, section, 'prayer', 'deacon', p));
@@ -930,6 +932,11 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 9. Kontakia
   blocks.push(..._litKontakia(spec.kontakia));
 
+  // 9b. Pre-Trisagion exclamation
+  blocks.push(makeBlock('pre-tris-excl', 'Kontakia', 'prayer', 'priest',
+    'For Holy art Thou, O our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.'));
+  blocks.push(makeBlock('pre-tris-amen', 'Kontakia', 'response', 'choir', 'Amen.'));
+
   // 10. Trisagion
   blocks.push(..._litTrisagion(spec.trisagion, liturgyFixed));
 
@@ -1049,8 +1056,10 @@ function _litGreatLitany(f) {
     makeBlock('gl-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('gl-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) =>
-    blocks.push(makeBlock(`gl-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`gl-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`gl-p${i}-resp`, section, 'response', 'choir', lit.response));
+  });
   blocks.push(
     makeBlock('gl-commemoration', section, 'prayer',   'deacon', lit.commemoration),
     makeBlock('gl-comm-resp',     section, 'response', 'choir',  lit.commemorationResponse),
@@ -1219,6 +1228,11 @@ function _litTroparia(tropariaSpec) {
   const blocks  = [];
   if (!tropariaSpec || !tropariaSpec.length) return blocks;
   tropariaSpec.forEach((t, i) => {
+    // "Glory..." before the last troparion (when there are multiple)
+    if (i === tropariaSpec.length - 1 && tropariaSpec.length > 1) {
+      blocks.push(makeBlock('trop-glory', section, 'doxology', null,
+        'Glory to the Father, and to the Son, and to the Holy Spirit.'));
+    }
     if (t.rubric) blocks.push(makeBlock(`trop-rubric-${i}`, section, 'rubric', null, t.rubric));
     blocks.push(makeBlock(`trop-${i}`, section, 'hymn', 'choir', t.text,
       { tone: t.tone }));
@@ -1231,7 +1245,13 @@ function _litKontakia(kontakiaSpec) {
   const blocks  = [];
   if (!kontakiaSpec || !kontakiaSpec.length) return blocks;
   kontakiaSpec.forEach((k, i) => {
-    if (k.connector) blocks.push(makeBlock(`kont-conn-${i}`, section, 'doxology', null, k.connector));
+    // "Now and ever..." before the first kontakion (follows the troparia "Glory...")
+    if (i === 0 && !k.connector) {
+      blocks.push(makeBlock('kont-now-and-ever', section, 'doxology', null,
+        'Now and ever, and unto ages of ages. Amen.'));
+    } else if (k.connector) {
+      blocks.push(makeBlock(`kont-conn-${i}`, section, 'doxology', null, k.connector));
+    }
     if (k.rubric)    blocks.push(makeBlock(`kont-rubric-${i}`, section, 'rubric', null, k.rubric));
     blocks.push(makeBlock(`kont-${i}`, section, 'hymn', 'choir', k.text,
       { tone: k.tone }));
@@ -1360,8 +1380,10 @@ function _litAugmentedLitany(f) {
     makeBlock('al-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('al-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) =>
-    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`al-p${i}-resp`, section, 'response', 'choir', lit.response));
+  });
   lit.triplePetitions.forEach((p, i) => {
     blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse));
@@ -1405,8 +1427,10 @@ function _litCatechumens(f) {
     makeBlock('cat-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('cat-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) =>
-    blocks.push(makeBlock(`cat-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`cat-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response));
+  });
   blocks.push(
     makeBlock('cat-p2',        section, 'prayer',   'deacon', lit.petition2),
     makeBlock('cat-bow',       section, 'prayer',   'deacon', lit.bowHeads),
@@ -1457,8 +1481,10 @@ function _litSupplication(f) {
     makeBlock('sup-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('sup-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) =>
-    blocks.push(makeBlock(`sup-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`sup-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`sup-p${i}-resp`, section, 'response', 'choir', lit.response));
+  });
   lit.petitions2.forEach((p, i) => {
     blocks.push(makeBlock(`sup-p2-${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`sup-gr-${i}`, section, 'response', 'choir',  lit.petitions2Response));
@@ -1883,8 +1909,10 @@ function _psSupplication(f) {
     makeBlock('ps-supp-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('ps-supp-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) =>
-    blocks.push(makeBlock(`ps-supp-p${i}`, section, 'prayer', 'deacon', p)));
+  lit.petitions.forEach((p, i) => {
+    blocks.push(makeBlock(`ps-supp-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`ps-supp-p${i}-resp`, section, 'response', 'choir', lit.response));
+  });
   lit.petitions2.forEach((p, i) => {
     blocks.push(makeBlock(`ps-supp-q${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`ps-supp-qr${i}`, section, 'response', 'choir',  lit.petitions2Response));

@@ -1013,7 +1013,7 @@ const GREAT_FEAST_VARIANTS = {
         glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
       },
       second: {
-        refrain: 'O Son of God, seated on the colt of an ass, save us who sing to You: Alleluia!',
+        refrain: 'O Son of God, seated on the colt of an ass, save us who sing to Thee: Alleluia!',
         verses: [
           'I kept my faith, even when I said, "I am greatly afflicted."',
           'What shall I render to the Lord for all the things He has given me?',
@@ -1023,7 +1023,7 @@ const GREAT_FEAST_VARIANTS = {
         glory: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
       },
       third: {
-        refrain: 'By raising Lazarus from the dead before Your Passion, You confirmed the universal resurrection, O Christ God. Like the children with the palms of victory, we cry out to You, O Vanquisher of Death: "Hosanna in the highest! Blessed is He that comes in the Name of the Lord."',
+        refrain: 'By raising Lazarus from the dead before Thy Passion, Thou didst confirm the universal resurrection, O Christ God. Like the children with the palms of victory, we cry out to Thee, O Vanquisher of Death: "Hosanna in the highest! Blessed is He that comes in the Name of the Lord."',
         verses: [
           'O give thanks to the Lord, for He is good; for His mercy endures forever.',
           'Let the house of Israel say that He is good; for His mercy endures forever.',
@@ -1033,11 +1033,11 @@ const GREAT_FEAST_VARIANTS = {
       },
     },
     troparia: [
-      { tone: 1, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 1:', text: 'By raising Lazarus from the dead before Your Passion,\nYou confirmed the universal resurrection, O Christ God.\nLike the children with the palms of victory,\nwe cry out to You, O Vanquisher of Death:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord."' },
-      { tone: 4, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 4:', text: 'When we were buried with You in baptism, O Christ God,\nwe were made worthy of eternal life by Your Resurrection.\nNow we praise You and sing:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord!"' },
+      { tone: 1, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 1:', text: 'By raising Lazarus from the dead before Thy Passion,\nThou didst confirm the universal resurrection, O Christ God.\nLike the children with the palms of victory,\nwe cry out to Thee, O Vanquisher of Death:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord."' },
+      { tone: 4, rubric: 'Troparion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 4:', text: 'When we were buried with Thee in baptism, O Christ God,\nwe were made worthy of eternal life by Thy Resurrection.\nNow we praise Thee and sing:\n"Hosanna in the highest!\nBlessed is He that comes in the Name of the Lord!"' },
     ],
     kontakia: [
-      { tone: 6, rubric: 'Kontakion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 6:', text: 'Sitting on Your throne in Heaven,\ncarried on a foal on earth, O Christ God,\naccept the praise of angels and the songs of children, who sing:\n"Blessed is He Who comes to recall Adam!"' },
+      { tone: 6, rubric: 'Kontakion of Entry of Our Lord into Jerusalem (Palm Sunday), Tone 6:', text: 'Sitting on Thy throne in Heaven,\ncarried on a foal on earth, O Christ God,\naccept the praise of angels and the songs of children, who sing:\n"Blessed is He Who comes to recall Adam!"' },
     ],
     prokeimenon: { tone: 4, refrain: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us.', verse: 'O give thanks to the Lord, for He is good; for His mercy endures forever.' },
     alleluia: { tone: 1, verses: ['O sing to the Lord a new song, for He has done marvelous things!', 'All the ends of the earth have seen the salvation of our God.'] },

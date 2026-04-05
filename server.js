@@ -868,6 +868,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 4, rubric: 'Troparion of the Nativity of Christ, Tone 4:', text: 'Your Nativity, O Christ our God,\nhas shone to the world the Light of knowledge;\nfor by it, those who worshipped the stars\nwere taught by a star to adore You,\nthe Sun of Righteousness,\nand to know You, the Dayspring from on High.\nO Lord, glory to You!' },
+    ],
+    kontakia: [
+      { tone: 3, rubric: 'Kontakion of the Nativity of Christ, Tone 3:', text: 'Today the Virgin gives birth to the Transcendent One,\nand the earth offers a cave to the Unapproachable One!\nAngels with shepherds glorify Him.\nThe wise men journey with a star,\nsince for our sake the Pre-Eternal God was born as a young Child.' },
+    ],
+    prokeimenon: { tone: 8, refrain: 'All the earth shall worship Thee and shall sing to Thee; they shall sing to Thy Name, O Most High!', verse: 'Make a joyful noise unto God, all the earth; sing of the glory of His Name; give glory to His praise.' },
+    alleluia: { tone: 1, verses: ['The heavens declare the glory of God, and the firmament proclaims the work of His hands.', 'Day unto day pours forth speech, and night unto night declares knowledge.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, born of the Virgin, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable and more glorious than the heavenly hosts! I behold a strange and most glorious mystery: the cave a heaven, the Virgin a cherubic throne, and the manger a noble place in which Christ, the uncontained God, was laid. Let us sing and magnify Him!',
     communionHymn: 'The Lord has sent redemption to His people. Alleluia.',
@@ -907,6 +915,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 1, rubric: 'Troparion of the Theophany, Tone 1:', text: 'When You, O Lord, were baptized in the Jordan,\nthe worship of the Trinity was made manifest;\nfor the voice of the Father bore witness to You\nand called You His beloved Son.\nAnd the Spirit, in the form of a dove,\nconfirmed the truthfulness of His word.\nO Christ, our God, You have revealed Yourself\nand have enlightened the world, glory to You!' },
+    ],
+    kontakia: [
+      { tone: 4, rubric: 'Kontakion of the Theophany, Tone 4:', text: 'Today You have shown forth to the world, O Lord,\nand the light of Your countenance has been marked on us.\nKnowing You, we sing Your praises.\nYou have come and revealed Yourself,\nO unapproachable Light.' },
+    ],
+    prokeimenon: { tone: 4, refrain: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us.', verse: 'O give thanks to the Lord, for He is good, for His mercy endures forever.' },
+    alleluia: { tone: 1, verses: ['Bring to the Lord, O ye sons of God, bring to the Lord young rams.', 'The voice of the Lord is upon the waters; the God of glory has thundered, the Lord, upon many waters.'] },
     entranceHymn: 'Blessed is He that cometh in the Name of the Lord. God is the Lord and hath revealed Himself to us. O Son of God, baptized in the Jordan, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable than the heavenly hosts! No tongue knows how to praise thee worthily, O Theotokos; even Angels are overcome with awe praising thee. But since thou art good, accept our faith; for thou knowest our love inspired by God! Thou art the defender of Christians, and we magnify thee.',
     communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia.',
@@ -917,6 +933,14 @@ const GREAT_FEAST_VARIANTS = {
   meeting: {
     type: 'theotokos',
     label: 'The Meeting of the Lord (Presentation)',
+    troparia: [
+      { tone: 1, rubric: 'Troparion of the Meeting of the Lord, Tone 1:', text: 'Hail, Virgin Theotokos, full of grace;\nfor from you has shone forth the Sun of Righteousness, Christ our God,\ngiving light to those in darkness.\nBe glad, O righteous Elder;\nfor you received in your arms the Redeemer of our souls,\nWho bestows upon us the resurrection.' },
+    ],
+    kontakia: [
+      { tone: 1, rubric: 'Kontakion of the Meeting of the Lord, Tone 1:', text: 'By Your birth, You sanctified a virginal womb,\nand fittingly You blessed Simeon\'s hands, O Christ God;\neven now You have saved us by anticipation.\nGrant peace to Your faithful people whom You have loved, O only Lover of mankind.' },
+    ],
+    prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
+    alleluia: { tone: 8, verses: ['Now lettest Thou Thy servant depart in peace, O Master, according to Thy word.', 'A light for revelation to the Gentiles, and for glory to Thy people Israel.'] },
     megalynarion: 'O Virgin Theotokos, hope of all Christians, protect, preserve, and save those who hope in thee! In the shadow and letter of the Law, let us the faithful discern a figure: every male child that opens the womb is holy to God. Therefore we magnify the firstborn Word of the Father Who has no beginning, the Son firstborn of a Mother who had not known man.',
     communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
   },
@@ -954,6 +978,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 7, rubric: 'Troparion of the Transfiguration, Tone 7:', text: 'You were transfigured on the mountain, O Christ God,\nrevealing Your glory to Your disciples as far as they could bear it.\nLet Your everlasting Light also shine upon us sinners,\nthrough the prayers of the Theotokos.\nO Giver of Light, glory to You!' },
+    ],
+    kontakia: [
+      { tone: 7, rubric: 'Kontakion of the Transfiguration, Tone 7:', text: 'On the Mountain You were Transfigured, O Christ God,\nand Your disciples beheld Your glory as far as they could see it;\nso that when they would behold You crucified,\nthey would understand that Your suffering was voluntary,\nand would proclaim to the world,\nthat You are truly the Radiance of the Father!' },
+    ],
+    prokeimenon: { tone: 4, refrain: 'O Lord, how manifold are Thy works! In wisdom hast Thou made them all.', verse: 'Bless the Lord, O my soul! O Lord my God, Thou art very great!' },
+    alleluia: { tone: 8, verses: ['Thine are the heavens, and Thine is the earth.', 'Blessed are the people who know the joyful sound.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the Lord Who was transfigured on Mount Tabor! Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos!',
     communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia.',
@@ -992,6 +1024,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 1, rubric: 'Troparion of the Elevation of the Cross, Tone 1:', text: 'O Lord, save Your people,\nand bless Your inheritance.\nGrant victories to the Orthodox Christians\nover their adversaries.\nAnd by virtue of Your Cross,\npreserve Your habitation.' },
+    ],
+    kontakia: [
+      { tone: 4, rubric: 'Kontakion of the Elevation of the Cross, Tone 4:', text: 'As You were voluntarily raised upon the cross for our sake,\ngrant mercy to those who are called by Your Name, O Christ God;\nmake all Orthodox Christians glad by Your power,\ngranting them victories over their adversaries,\nby bestowing on them the Invincible trophy, Your weapon of Peace.' },
+    ],
+    prokeimenon: { tone: 7, refrain: 'Exalt the Lord our God; worship at His footstool, for He is holy!', verse: 'The Lord reigns; let the peoples tremble.' },
+    alleluia: { tone: 1, verses: ['Remember Thy congregation, which Thou hast gotten of old.', 'God is our King before the ages; He has worked salvation in the midst of the earth.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most precious Cross of the Lord! Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee!',
     communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia.',
@@ -1079,6 +1119,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 4, rubric: 'Troparion of the Ascension, Tone 4:', text: 'You ascended in glory, O Christ our God,\ngranting joy to Your Disciples by the promise of the Holy Spirit.\nThrough the blessing, they were assured\nthat You are the Son of God,\nthe Redeemer of the world!' },
+    ],
+    kontakia: [
+      { tone: 6, rubric: 'Kontakion of the Ascension, Tone 6:', text: 'When You had fulfilled the dispensation for our sake,\nand united earth to heaven:\nYou ascended in glory, O Christ our God,\nnot being parted from those who love You,\nbut remaining with them and crying:\n"I am with you, and there is no one against you!"' },
+    ],
+    prokeimenon: { tone: 7, refrain: 'Be exalted, O God, above the heavens; and Your glory be over all the earth!', verse: 'My heart is steadfast, O God, my heart is steadfast. I will sing and make melody.' },
+    alleluia: { tone: 2, verses: ['God has gone up with a shout; the Lord with the sound of a trumpet!', 'Oh, clap your hands, all you peoples. Shout to God with loud songs of joy!'] },
     entranceHymn: 'God has gone up with a shout, the Lord with the sound of a trumpet. O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, Christ the Giver of Life, who has ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
     communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia.',
@@ -1115,6 +1163,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 8, rubric: 'Troparion of Pentecost, Tone 8:', text: 'Blessed art Thou, O Christ our God,\nwho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit;\nthrough them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!' },
+    ],
+    kontakia: [
+      { tone: 8, rubric: 'Kontakion of Pentecost, Tone 8:', text: 'When the Most High came down and confused the tongues,\nHe divided the nations;\nbut when He distributed the tongues of fire,\nHe called all to unity.\nTherefore, with one voice, we glorify the All-holy Spirit!' },
+    ],
+    prokeimenon: { tone: 8, refrain: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe.', verse: 'The heavens declare the glory of God, and the firmament proclaims the work of His hands.' },
+    alleluia: { tone: 1, verses: ['By the Word of the Lord were the heavens made, and all the host of them by the Spirit of His mouth.', 'The Lord looked down from heaven; He saw all the sons of men.'] },
     entranceHymn: 'Be exalted, O Lord, in Thy strength! We will sing and praise Thy power. O Gracious Comforter, save us who sing to Thee: Alleluia!',
     megalynarion: 'Rejoice, O Queen, glory of mothers and virgins! For no tongue, be it ever so gifted, hath power to praise thee worthily. Every mind is dizzied in attempting to comprehend thy childbearing. Wherefore, with one accord, we glorify thee!',
     communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia.',
@@ -1125,6 +1181,14 @@ const GREAT_FEAST_VARIANTS = {
   nativityTheotokos: {
     type: 'theotokos',
     label: 'The Nativity of the Theotokos',
+    troparia: [
+      { tone: 4, rubric: 'Troparion of the Nativity of the Theotokos, Tone 4:', text: 'Your Nativity, O Virgin,\nhas proclaimed joy to the whole universe!\nThe Sun of Righteousness, Christ our God,\nhas shone from you, O Theotokos!\nBy annulling the curse,\nHe bestowed a blessing.\nBy destroying death, He has granted us eternal Life.' },
+    ],
+    kontakia: [
+      { tone: 4, rubric: 'Kontakion of the Nativity of the Theotokos, Tone 4:', text: 'By your Nativity, O Most Pure Virgin,\nJoachim and Anna are freed from barrenness;\nAdam and Eve, from the corruption of death.\nAnd we, your people, freed from the guilt of sin, celebrate and sing to you:\n"The barren woman gives birth to the Theotokos, the nourisher of our life."' },
+    ],
+    prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
+    alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'Magnify, O my soul, the most glorious birth of the Mother of God! Virginity is foreign to mothers; childbearing is strange for virgins. But in thee, O Theotokos, both were accomplished. For this all the earthly nations unceasingly magnify thee.',
     communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
   },
@@ -1132,6 +1196,14 @@ const GREAT_FEAST_VARIANTS = {
   entryTheotokos: {
     type: 'theotokos',
     label: 'The Entry of the Theotokos into the Temple',
+    troparia: [
+      { tone: 4, rubric: 'Troparion of the Entry of the Theotokos, Tone 4:', text: 'Today is the prelude of the good will of God,\nof the preaching of the salvation of mankind.\nThe Virgin appears in the temple of God,\nin anticipation proclaiming Christ to all.\nLet us rejoice\nand sing to her:\n"Rejoice, O Fulfillment of the Creator\'s dispensation."' },
+    ],
+    kontakia: [
+      { tone: 4, rubric: 'Kontakion of the Entry of the Theotokos, Tone 4:', text: 'The most pure Temple of the Savior;\nthe precious Chamber and Virgin;\nthe sacred Treasure of the glory of God,\nis presented today to the house of the Lord.\nShe brings with her the grace of the Spirit,\ntherefore, the angels of God praise her:\n"Truly this woman is the abode of heaven."' },
+    ],
+    prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
+    alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'The angels beheld the entrance of the Pure One and were amazed. How has the Virgin entered into the Holy of Holies? Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Truly, thou art more exalted than all, O pure Virgin!',
     communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
   },
@@ -1139,6 +1211,14 @@ const GREAT_FEAST_VARIANTS = {
   annunciation: {
     type: 'theotokos',
     label: 'The Annunciation',
+    troparia: [
+      { tone: 4, rubric: 'Troparion of the Annunciation, Tone 4:', text: 'Today is the beginning of our salvation,\nthe revelation of the eternal mystery!\nThe Son of God becomes the Son of the Virgin\nas Gabriel announces the coming of Grace.\nTogether with him let us cry to the Theotokos:\nHail, O Full of Grace,\nthe Lord is with You!' },
+    ],
+    kontakia: [
+      { tone: 8, rubric: 'Kontakion of the Annunciation, Tone 8:', text: 'O Victorious Leader of Triumphant Hosts!\nWe, your servants, delivered from evil, sing our grateful thanks to you, O Theotokos!\nAs you possess invincible might, set us free from every calamity\nso that we may sing: Hail, O unwedded Bride!' },
+    ],
+    prokeimenon: { tone: 4, refrain: 'From day to day proclaim the salvation of our God!', verse: 'Sing to the Lord a new song; sing to the Lord, all the earth!' },
+    alleluia: { tone: 1, verses: ['He descends like rain upon the fleece, like raindrops that water the earth.', 'May His Name be blessed forever; may His Name continue as long as the sun!'] },
     megalynarion: 'O earth, announce good tidings of great joy: O heavens, praise the glory of God! Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Rejoice, O Lady, full of grace, the Lord is with thee!',
     communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia.',
   },
@@ -1146,6 +1226,14 @@ const GREAT_FEAST_VARIANTS = {
   dormition: {
     type: 'theotokos',
     label: 'The Dormition of the Theotokos',
+    troparia: [
+      { tone: 1, rubric: 'Troparion of the Dormition, Tone 1:', text: 'In giving birth, you preserved your virginity,\nand in falling asleep you did not forsake the world, O Theotokos.\nYou passed into life as the Mother of Life,\nand by your prayers, you deliver our souls from death.' },
+    ],
+    kontakia: [
+      { tone: 2, rubric: 'Kontakion of the Dormition, Tone 2:', text: 'Neither the tomb, nor death had power over the Theotokos,\nwho is unsleeping in her intercessions and an unchanging hope in her protection.\nFor as the Mother of Life,\nshe was translated into life by Him who dwelt in her ever-virginal womb.' },
+    ],
+    prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
+    alleluia: { tone: 8, verses: ['Arise, O Lord, into Thy resting place, Thou and the Ark of Thy holiness.', 'The Lord has sworn in truth to David, and He will not annul it.'] },
     megalynarion: 'The Angels, as they looked upon the Dormition of the Virgin, were struck with wonder, seeing how the Virgin went up from earth to heaven. The limits of nature are overcome in thee, O Pure Virgin: for birthgiving remains virginal, and life is united to death; a virgin after childbearing and alive after death, thou dost ever save thine inheritance, O Theotokos.',
     communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
   },
@@ -1183,6 +1271,14 @@ const GREAT_FEAST_VARIANTS = {
         ],
       },
     },
+    troparia: [
+      { tone: 5, rubric: 'Troparion of Pascha, Tone 5:', text: 'Christ is risen from the dead,\ntrampling down death by death,\nand upon those in the tombs bestowing life!' },
+    ],
+    kontakia: [
+      { tone: 8, rubric: 'Kontakion of Pascha, Tone 8:', text: 'Thou didst descend into the tomb, O Immortal,\nThou didst destroy the power of death.\nIn victory didst Thou arise, O Christ God,\nproclaiming, "Rejoice!" to the Myrrhbearing Women,\ngranting peace to Thine Apostles, and bestowing Resurrection on the fallen.' },
+    ],
+    prokeimenon: { tone: 8, refrain: 'This is the day which the Lord has made; let us rejoice and be glad in it!', verse: 'O give thanks to the Lord, for He is good, for His mercy endures forever.' },
+    alleluia: { tone: 4, verses: ['Thou, O Lord, shalt arise and have compassion on Zion.', 'The Lord looked down from heaven to the earth.'] },
     entranceHymn: 'In the gathering places bless ye God the Lord, from the wellsprings of Israel! O Son of God, risen from the dead, save us who sing to Thee: Alleluia!',
     megalynarion: 'The Angel cried to the Lady full of grace: Rejoice, O pure Virgin! Again I say: Rejoice! Thy Son is risen from His three days in the tomb! With Himself He has raised all the dead! Rejoice, all ye people! Shine! Shine! O new Jerusalem! The glory of the Lord has shone on thee! Exult now and be glad, O Zion! Be radiant, O pure Theotokos, in the Resurrection of thy Son!',
     communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia.',
@@ -1833,10 +1929,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     communionHymn,
     weHaveSeen: season === 'brightWeek' ? 'paschal' : null,
     dismissal: {
-      opening: isSunday ? 'sunday' : 'weekday',
+      opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
+      feastLabel: feast?.label || null,
       dayPatron: DAY_PATRONS[dow] || null,
       saints:  (orthocalData.saints || []).slice(0, 3),
     },
+    dismissalTroparia: feast ? {
+      troparion: feast.troparia?.[0] || null,
+      kontakion: feast.kontakia?.[0] || null,
+    } : null,
   };
 }
 

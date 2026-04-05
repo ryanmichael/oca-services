@@ -244,6 +244,47 @@ describe('API routes', () => {
     assert.ok(res.json.blocks.length >= 20);
   });
 
+  // ── Liturgy section ordering invariants ─────────────────────────────────
+
+  it('Liturgy — Communion Prayer comes after Communion Hymn and before Post-Communion', async () => {
+    const res = await get('/api/liturgy?date=2026-06-14');
+    assert.equal(res.status, 200);
+    const blocks = res.json.blocks;
+    const sections = blocks.map(b => b.section);
+    const communionHymnIdx  = sections.indexOf('Communion Hymn');
+    const communionPrayerIdx = sections.indexOf('Communion Prayer');
+    const postCommunionIdx  = sections.indexOf('Post-Communion Blessing');
+    assert.ok(communionHymnIdx > -1, 'Should have Communion Hymn section');
+    assert.ok(communionPrayerIdx > -1, 'Should have Communion Prayer section');
+    assert.ok(postCommunionIdx > -1, 'Should have Post-Communion Blessing section');
+    assert.ok(communionHymnIdx < communionPrayerIdx,
+      `Communion Hymn (${communionHymnIdx}) should come before Communion Prayer (${communionPrayerIdx})`);
+    assert.ok(communionPrayerIdx < postCommunionIdx,
+      `Communion Prayer (${communionPrayerIdx}) should come before Post-Communion (${postCommunionIdx})`);
+  });
+
+  // ── Great Feast liturgy (Palm Sunday) ──────────────────────────────────
+
+  it('Liturgy — Palm Sunday has feast dismissal troparia', async () => {
+    // Pascha 2026 = April 12; Palm Sunday = April 5
+    const res = await get('/api/liturgy?date=2026-04-05');
+    assert.equal(res.status, 200);
+    const dtBlocks = res.json.blocks.filter(b => b.section === 'Dismissal Troparia');
+    assert.ok(dtBlocks.length >= 2, 'Should have dismissal troparia blocks');
+    const tropText = dtBlocks.find(b => b.type === 'hymn')?.text || '';
+    assert.ok(tropText.includes('Lazarus'),
+      'Palm Sunday dismissal troparion should mention Lazarus');
+  });
+
+  it('Liturgy — Palm Sunday dismissal does not use resurrection formula', async () => {
+    const res = await get('/api/liturgy?date=2026-04-05');
+    assert.equal(res.status, 200);
+    const disProper = res.json.blocks.find(b => b.id === 'dis-proper');
+    assert.ok(disProper, 'Should have dismissal proper block');
+    assert.ok(!disProper.text.includes('rose from the dead'),
+      'Palm Sunday dismissal should not use "rose from the dead" Sunday formula');
+  });
+
   // ── Data routes ────────────────────────────────────────────────────────
 
   it('GET /api/days — returns calendar data for a date range', async () => {

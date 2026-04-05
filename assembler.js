@@ -1019,37 +1019,40 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 25. Litany before Lord's Prayer + Lord's Prayer
   blocks.push(..._litLordsPrayer(isBasil, liturgyFixed));
 
-  // 26. Pre-Communion (Bow prayer + Elevation + Communion prayer)
+  // 26. Pre-Communion (Bow prayer + Elevation)
   blocks.push(..._litPreCommunion(isBasil, liturgyFixed));
 
   // 27. Communion Hymn
   blocks.push(..._litCommunionHymn(spec.communionHymn));
 
-  // 28. Post-Communion Blessing
+  // 28. Communion Prayer ("I believe, O Lord...")
+  blocks.push(..._litCommunionPrayer(liturgyFixed));
+
+  // 29. Post-Communion Blessing
   blocks.push(..._litPostCommunion(spec, liturgyFixed));
 
-  // 29. Hymn of Thanksgiving
+  // 30. Hymn of Thanksgiving
   blocks.push(makeBlock('let-our-mouths', 'Hymn of Thanksgiving', 'hymn', 'choir',
     liturgyFixed['let-our-mouths']));
 
-  // 30. Litany of Thanksgiving
+  // 31. Litany of Thanksgiving
   blocks.push(..._litThanksgiving(isBasil, liturgyFixed));
 
-  // 31. Prayer behind the Ambon
+  // 32. Prayer behind the Ambon
   const ambonKey = isBasil ? 'prayer-ambon-basil' : 'prayer-ambon-chrysostom';
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
     liturgyFixed[ambonKey]));
 
-  // 32. Blessed be the Name
+  // 33. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
 
-  // 33. Psalm 33
+  // 34. Psalm 33
   blocks.push(..._litPsalm33(liturgyFixed));
 
-  // 34. Dismissal Troparia
-  blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed));
+  // 35. Dismissal Troparia
+  blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed, spec.dismissalTroparia));
 
-  // 35. Dismissal
+  // 36. Dismissal
   blocks.push(..._litDismissal(spec.dismissal, isBasil));
 
   blocks._warnings = _warnings.slice();
@@ -1617,7 +1620,13 @@ function _litPreCommunion(isBasil, f) {
     makeBlock('pc-elevation-d', section, 'prayer',  'deacon', pc.elevation.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',  'priest', pc.elevation.priest),
     makeBlock('pc-elevation-r', section, 'response','choir',  pc.elevation.people),
-    makeBlock('pc-prayer',      section, 'prayer',  'all',    pc['prayer-chrysostom']),
+  ];
+}
+
+function _litCommunionPrayer(f) {
+  const pc = f['pre-communion'];
+  return [
+    makeBlock('pc-prayer', 'Communion Prayer', 'prayer', 'all', pc['prayer-chrysostom']),
   ];
 }
 
@@ -1687,8 +1696,26 @@ function _litPsalm33(f) {
   ];
 }
 
-function _litDismissalTroparia(isBasil, f) {
+function _litDismissalTroparia(isBasil, f, feastTroparia) {
   const section  = 'Dismissal Troparia';
+
+  // Great feasts: use feast troparion + kontakion instead of liturgy-saint troparia
+  if (feastTroparia?.troparion) {
+    const ft = feastTroparia.troparion;
+    const blocks = [
+      makeBlock('dt-rubric', section, 'rubric', null, ft.rubric || `Troparion, Tone ${ft.tone}:`),
+      makeBlock('dt-trop',   section, 'hymn',   'choir', ft.text, { tone: ft.tone }),
+    ];
+    if (feastTroparia.kontakion) {
+      const fk = feastTroparia.kontakion;
+      blocks.push(
+        makeBlock('dt-glory',  section, 'doxology', null, 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'),
+        makeBlock('dt-kont',   section, 'hymn',     'choir', fk.text, { tone: fk.tone }),
+      );
+    }
+    return blocks;
+  }
+
   const tropKey  = isBasil ? 'troparion-basil' : 'troparion-chrysostom';
   const trop     = f[tropKey];
   const theos    = f['dismissal-theotokion'];
@@ -1710,9 +1737,14 @@ function _litDismissal(dismissalSpec, isBasil) {
   const saintsStr = (dismissalSpec.saints || []).join('; ');
   const dayPatron = dismissalSpec.dayPatron || null;
 
-  const opening = dismissalSpec.opening === 'sunday'
-    ? 'May He Who rose from the dead, Christ our true God,'
-    : 'May Christ our true God,';
+  let opening;
+  if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
+    opening = `May Christ our true God,`;
+  } else if (dismissalSpec.opening === 'sunday') {
+    opening = 'May He Who rose from the dead, Christ our true God,';
+  } else {
+    opening = 'May Christ our true God,';
+  }
 
   // Order: Theotokos → day-of-week patron → liturgy saint → day's saints → all saints
   const parts = ['through the prayers of His most pure Mother'];
@@ -1846,6 +1878,10 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
   blocks.push(makeBlock('ch-text', 'Communion Hymn', 'hymn', 'choir',
     presanctifiedFixed['communion-hymn'].text));
 
+  // 20a. Communion Prayer
+  blocks.push(makeBlock('pc-prayer', 'Communion Prayer', 'prayer', 'all',
+    presanctifiedFixed['pre-communion-prayer'].text));
+
   // 21. Post-Communion
   {
     const section = 'Post-Communion';
@@ -1946,7 +1982,6 @@ function _psSupplication(f) {
 function _psPreCommunion(f) {
   const section = 'Pre-Communion';
   const el = f['elevation'];
-  const pr = f['pre-communion-prayer'];
   return [
     makeBlock('pc-peace',       section, 'prayer',   'priest', 'Peace be unto all.'),
     makeBlock('pc-peace-r',     section, 'response', 'choir',  'And to thy spirit.'),
@@ -1955,7 +1990,6 @@ function _psPreCommunion(f) {
     makeBlock('pc-elevation-d', section, 'prayer',   'deacon', el.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',   'priest', el.priest),
     makeBlock('pc-elevation-r', section, 'response', 'choir',  el.people),
-    makeBlock('pc-prayer',      section, 'prayer',   'all',    pr.text),
   ];
 }
 
@@ -3177,6 +3211,9 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   // ── Communion Hymn ─────────────────────────────────────────────────────────
   blocks.push(S('communion-hymn', 'Communion Hymn', 'hymn', 'choir',
     vf.communionHymn.text));
+
+  // ── Communion Prayer ───────────────────────────────────────────────────────
+  blocks.push(..._litCommunionPrayer(lf));
 
   // ── Post-Communion ─────────────────────────────────────────────────────────
   blocks.push(..._litPostCommunion({}, lf));

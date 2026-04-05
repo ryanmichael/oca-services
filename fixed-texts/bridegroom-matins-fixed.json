@@ -1,10 +1,16 @@
 {
   "_meta": {
-    "description": "Fixed liturgical texts for Bridegroom Matins — served Mon/Tue/Wed evenings of Holy Week",
+    "description": "Fixed liturgical texts for Bridegroom Matins — served on the evenings of Palm Sunday, Holy Monday, and Holy Tuesday",
     "tradition": "OCA (Orthodox Church in America)",
-    "translation": "OCA / St. Tikhon's Monastery Press",
-    "version": "0.1.0",
-    "note": "The Bridegroom services are Matins anticipated on the preceding evening. Monday evening = Matins of Tuesday, etc. The Bridegroom Troparion and Exaposteilarion are the same all three nights; the kontakion, ikos, and stichera vary."
+    "translation": "OCA Department of Religious Education (modified, TT)",
+    "version": "0.2.0",
+    "note": "Keys (monday/tuesday/wednesday) refer to the LITURGICAL DAY, not the evening of service. Holy Monday matins is sung Palm Sunday evening, Holy Tuesday matins is sung Monday evening, Holy Wednesday matins is sung Tuesday evening.",
+    "sources": {
+      "monday": "https://files.oca.org/service-texts/2026-0406-texts-matins-tt.docx",
+      "tuesday": "https://files.oca.org/service-texts/2026-0407-texts-matins-tt.docx",
+      "wednesday": "https://files.oca.org/service-texts/2026-0408-texts-matins-tt.docx",
+      "tuesdayStructure": "https://stnicholasoca.org/files/Service-Books/Bridegroom-Matins-of-Great-and-Holy-Tuesday.pdf"
+    }
   },
 
   "opening": {
@@ -31,119 +37,288 @@
   "troparion": {
     "tone": 8,
     "label": "Troparion of the Bridegroom",
-    "text": "Behold the Bridegroom cometh at midnight,\nand blessed is the servant whom He shall find watching;\nand again, unworthy is the servant whom He shall find heedless.\nBeware, therefore, O my soul, do not be weighed down with sleep,\nlest you be given up to death and lest you be shut out of the Kingdom.\nBut rouse yourself, crying:\nHoly, holy, holy art Thou, O our God!\nThrough the Theotokos, have mercy on us!"
-  },
-
-  "kathismata": {
-    "_note": "Sessional hymns sung after the kathisma readings. These vary by night.",
-    "monday": {
-      "tone": 1,
-      "text": "Behold, the Bridegroom comes in the middle of the night,\nand blessed is the servant whom He shall find awake.\nBut unworthy is he whom He shall find careless.\nBeware then, O my soul, lest thou fall into deep slumber,\nand the door of the Kingdom be shut against thee,\nand thou be delivered to death.\nBut be wakeful, crying:\nHoly, holy, holy art Thou, O God:\nthrough the Theotokos, have mercy on us."
-    },
-    "tuesday": {
-      "tone": 3,
-      "text": "The harlot came to Thee, O Lover of mankind,\npouring myrrh mixed with tears upon Thy feet.\nAt Thy command she was delivered from the stench of her evil deeds.\nBut the ungrateful disciple, though breathing Thy grace,\nrejected it and wallowed in filth,\nselling Thee for the sake of greed.\nGlory to Thy compassion, O Christ!"
-    },
-    "wednesday": {
-      "tone": 4,
-      "text": "Judas the betrayer, deceitful and crafty,\nwith a treacherous kiss delivered the Savior, the Lord of all.\nHe sold as a slave the Master of all creation,\nand like a lamb to the slaughter, the Son and God of all was led.\nHe alone is most compassionate!"
-    }
+    "text": "Behold, the Bridegroom comes at midnight,\nand blessed is the servant whom He shall find watching;\nand again, unworthy is the servant whom He shall find heedless.\nBeware, therefore, O my soul, do not be weighed down with sleep,\nlest thou be given up to death, and lest thou be shut out of the Kingdom!\nBut rouse thyself, crying:\n\"Holy, holy, holy, art Thou, O our God!\"\nThrough the Theotokos have mercy on us!"
   },
 
   "monday": {
+    "_theme": "Joseph in Egypt; the barren fig tree",
+    "kathismata": [
+      {
+        "tone": 1,
+        "afterKathisma": 4,
+        "text": "Today Christ's holy Passion draws upon the world as a saving light.\nFor He comes of His goodness to suffer.\nHe Who holds all things in His hand\nconsents to be hung upon the Wood in order to save mankind."
+      },
+      {
+        "tone": 1,
+        "afterKathisma": 5,
+        "text": "O invisible Judge, how hast Thou been seen in the flesh?\nHow hast Thou been slain by lawless men,\ncondemning our condemnation by Thy sufferings?\nTherefore, with one voice, O Word,\nwe ascribe glory, dominion, and praise to Thy power."
+      },
+      {
+        "tone": 8,
+        "afterKathisma": 6,
+        "text": "Today shines as the first-fruits of the Lord.\nCome, then, all who love the feast and join together in hymns.\nFor the Creator comes to accept the Cross, the afflictions, the beatings, and the judgment by Pilate.\nA servant strikes Him on the head, but He endures all things that He may save mankind.\nTherefore, let us cry out to Him:\n\"Grant remission of sins to those who venerate Thy holy Passion in faith,\nO Christ, our God, Who lovest mankind!\""
+      }
+    ],
+    "gospel": {
+      "reference": "Matthew 21:18-43",
+      "pericope": "84"
+    },
     "kontakion": {
-      "tone": 2,
-      "text": "Consider, O my soul, the end which is to come,\nand tremble before the cutting of the fig tree,\nand labor diligently with the talent given to thee, O wretched one:\nwatch and pray,\nthat we may not remain outside the bridal chamber of Christ."
+      "tone": 8,
+      "text": "Jacob lamented the loss of Joseph,\nbut his noble son was seated on a chariot and honored as a king.\nFor when he refused to be enslaved by the pleasures of the Egyptian woman,\nhe was glorified by the Lord, Who beholds the hearts of men\nand bestows upon them an incorruptible crown."
     },
     "ikos": {
-      "text": "Why art thou idle, O my wretched soul?\nWhy dost thou dream endlessly of things that do not profit?\nWhy dost thou busy thyself with things that pass away?\nThe last hour is at hand, and we shall be parted from all things here below.\nWhile thou hast time, come to thy senses and cry:\nI have sinned against Thee, O my Savior. Do not cut me down\nlike the barren fig tree,\nbut in Thy compassion, O Christ, have mercy on me,\nwho cry in fear:\nLet us not remain outside the bridal chamber of Christ."
+      "text": "Today let us add lamentation to lamentation!\nLet our tears flow with those of Jacob, who weeps for his celebrated and sober-minded son;\nfor though bodily Joseph was indeed a slave,\nhe preserved the freedom of his soul and was lord over all Egypt.\nFor God prepares for His servants an incorruptible crown."
+    },
+    "canon": {
+      "type": "Three-Ode Canon",
+      "tone": 2,
+      "odes": [1, 8, 9]
     },
     "stichera": {
-      "_note": "Lauds stichera for Monday evening (Matins of Tuesday). Theme: the barren fig tree.",
+      "_note": "Lauds stichera for Holy Monday matins (sung Palm Sunday evening).",
       "hymns": [
         {
           "tone": 1,
-          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
-          "text": "O Lord, coming to Thy voluntary Passion,\nThou didst say to Thy disciples:\n\"If you could not watch one hour with Me,\nhow did you promise to die for Me?\nSee how Judas does not sleep,\nbut hastens to betray Me to the lawless.\nArise and pray, lest any of you deny Me\nwhen you see Me on the Cross.\"\nO long-suffering Lord, glory to Thee!"
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "As the Lord was going to His voluntary Passion,\nHe said to the Apostles on the way:\n\"Behold, we go up to Jerusalem,\nand the Son of Man shall be delivered up, as it is written of Him.\"\nCome, therefore, let us also go with Him,\npurified in mind!\nLet us be crucified with Him and die through Him\nto the pleasures of this life!\nThen we shall live with Him and hear Him say:\n\"I go no more to the earthly Jerusalem to suffer,\nbut to My Father and your Father,\nto My God and your God.\nI shall raise you up to the Jerusalem on high\nin the Kingdom of Heaven.\""
         },
         {
           "tone": 1,
-          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
-          "text": "Judas, the slave and deceiver,\nthe disciple and betrayer,\nthe friend and devil, was revealed by his deeds.\nFor following the Master, he plotted betrayal within himself.\nHe said: \"I will deliver Him up and gain the money promised.\"\nHe desired the myrrh to be sold,\nand Jesus to be taken by deceit.\nHe gave a kiss and delivered Christ.\nAnd the Lamb of God, the Son of the Father,\nalone most compassionate,\nwas led as a sheep to the slaughter."
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true,
+          "_note": "Repeat of the first sticheron."
+        },
+        {
+          "tone": 5,
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "We have reached the saving Passion of Christ our God.\nLet us, the faithful, glorify His ineffable forbearance,\nthat in His compassion He may raise us up who were dead in sin,\nfor He is good and loves mankind!"
+        },
+        {
+          "tone": 5,
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! Praise the Lord! (Ps. 150:5)",
+          "repeat": true,
+          "_note": "Repeat of the third sticheron."
         }
       ],
-      "glory": {
-        "tone": 2,
-        "text": "The Lamb whom Isaiah proclaimed\ncomes voluntarily to the slaughter.\nHe gives His back to scourging,\nHis cheeks to blows.\nHe does not turn His face from the shame of spitting,\nand is condemned to a shameful death.\nHe Who is sinless accepts all things willingly,\nthat He may grant to all the Resurrection from the dead."
-      },
-      "now": {
-        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+      "gloryNow": {
+        "tone": 5,
+        "_note": "Combined Glory/Now sticheron.",
+        "text": "Going to Thy Passion, O Lord,\nThou didst take Thy Disciples aside and reassure them:\n\"How have you forgotten the words that I once spoke?\nIs it not written:\n'A prophet cannot be killed but in Jerusalem?'\nNow is the time of which I told you.\nBehold, I am betrayed into the hands of sinners to be mocked!\nThey will nail Me to the Cross and deliver Me up to burial,\nregarding Me as a dead man, a thing of loathing.\nYet take courage, for I will arise on the third day,\ngiving to the faithful joy and life everlasting!\""
+      }
+    },
+    "aposticha": {
+      "hymns": [
+        {
+          "tone": 5,
+          "text": "The mother of Zebedee's children, O Lord,\ncould not understand the ineffable mystery of Thy dispensation.\nShe asked the honor of a temporal kingdom for her sons;\nbut instead, Thou didst promise Thy friends\nthat they should drink the cup of death,\na cup that Thou wouldst drink before them for the cleansing of sins.\nTherefore we cry out to Thee:\n\"O Salvation of our souls, glory to Thee!\""
+        },
+        {
+          "tone": 5,
+          "verse": "Satisfy us in the morning with Thy steadfast love, that we may rejoice and be glad all our days. Make us glad as many days as Thou hast afflicted us, and as many years as we have seen evil. Let Thy work be manifest to Thy servants, and Thy glorious power to their children. (Ps. 89:16-18)",
+          "text": "Thou didst teach Thy Disciples, O Lord, to desire what is perfect,\nsaying: \"Be not like the Gentiles, who oppress the weak!\nIt shall not be so with you, O My disciples,\nfor of My own will I am poor.\nLet the first among you, therefore, be the servant of all!\nLet the ruler be like those who are ruled!\nLet him who is first be like the last!\nFor I have come to serve Adam in his poverty,\nand to give My life as a ransom for the many who cry to Me:\n'O Lord, glory to Thee!'\""
+        },
+        {
+          "tone": 8,
+          "verse": "Let the favor of the Lord our God be upon us, and establish Thou the work of our hands upon us; yea, the work of our hands, establish Thou it. (Ps. 89:19)",
+          "text": "The fig tree was withered up because it was unfruitful.\nWe should fear the same punishment, O brethren,\nand bring worthy fruits of repentance to Christ,\nWho brings to us great mercy."
+        }
+      ],
+      "gloryNow": {
+        "tone": 8,
+        "_note": "Combined Glory/Now sticheron.",
+        "text": "The serpent found a second Eve in the Egyptian woman,\nand plotted the fall of Joseph through words of flattery.\nBut, leaving behind his garment, Joseph fled from sin.\nHe was naked but unashamed, like Adam before the fall.\nThrough his prayers, O Christ, have mercy on us!"
       }
     }
   },
 
   "tuesday": {
+    "_theme": "The Ten Virgins; the Talents; the Last Judgment",
+    "kathismata": [
+      {
+        "tone": 4,
+        "afterKathisma": 9,
+        "text": "Let us love the Bridegroom, O brothers!\nLet us keep our lamps aflame with virtues and true faith,\nso that we, like the wise virgins of the Lord,\nmay be ready to enter with Him into the marriage feast!\nFor the Bridegroom, as God, grants unto all an incorruptible crown."
+      },
+      {
+        "tone": 4,
+        "afterKathisma": 10,
+        "text": "In envy, the priests and scribes\ncunningly gathered a council against Thee, O Savior,\nmoving Judas to betrayal.\nHe shamelessly went forth and spoke against Thee,\nsaying to a transgressing people:\n\"What will you give me if I deliver Him into your hands?\"\nFrom his condemnation save our souls, O Lord!"
+      },
+      {
+        "tone": 8,
+        "afterKathisma": 11,
+        "text": "Judas loves money with his mind;\nthe impious one moves against the Master.\nHe wills and plans the betrayal.\nReceiving darkness, he falls from the light.\nHe agrees to the price and sells the Priceless One.\nAs payment for his deeds the wretch gains hanging and a terrible death.\nFrom his lot deliver us, O Christ God,\ngranting remission of sins to those who celebrate Thine immaculate Passion with love!"
+      }
+    ],
+    "gospel": {
+      "reference": "Matthew 22:15-23:39",
+      "pericope": "90"
+    },
     "kontakion": {
-      "tone": 4,
-      "text": "I have transgressed more than the harlot, O Good One,\nyet never have I offered Thee my flowing tears.\nBut in silence I fall down before Thee and with love I kiss Thy most pure feet,\nbeseeching Thee as Master to grant me remission of sins;\nand I cry to Thee, O Savior:\nDeliver me from the filth of my evil deeds."
+      "tone": 2,
+      "text": "Thou knowest that this is the last hour, O wretched soul,\nand dost fear the cutting of the fig tree.\nWork diligently, therefore, with the talent given to thee.\nKeep watch and cry:\n\"Let us not remain outside the bridal chamber of Christ!\""
     },
     "ikos": {
-      "text": "The woman who was formerly prodigal\nnow appeared chaste, hating the deeds of shameful sin\nand the pleasures of the body.\nShe pondered the great shame and the judgment of torment\nthat harlots and profligates shall endure.\nOf their number I am first, and I am afraid.\nBut foolishly I continue in my evil habit.\nThe sinful woman, in fear, hastened to her Deliverer and cried to Him:\nO merciful Lover of mankind, deliver me from the filth of my evil deeds."
+      "text": "Why art thou idle, my wretched soul?\nWhat useless cares cause thee to be lost in dreams?\nWhy busy thyself with things that pass away?\nThe last hour is at hand, and we shall be parted from all earthly things.\nTherefore, while there is time, rouse thyself and cry:\n\"I have sinned before Thee, O my Savior!\nDo not cut me off like the barren fig tree!\nIn Thy compassion, O Christ, take pity on me who call out in fear:\n'Let us not remain outside the bridal chamber of Christ!'\""
+    },
+    "canon": {
+      "type": "Two-Ode Canon",
+      "tone": 2,
+      "odes": [8, 9]
     },
     "stichera": {
-      "_note": "Lauds stichera for Tuesday evening (Matins of Wednesday). Theme: the sinful woman and Judas's betrayal.",
+      "_note": "Lauds stichera for Holy Tuesday matins (sung Monday evening). Theme: the wise/foolish virgins, the talents.",
       "hymns": [
         {
           "tone": 1,
-          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
-          "text": "The sinful woman ran to buy precious myrrh\nto anoint the Benefactor.\nShe cried to the perfume dealer:\n\"Give me myrrh, that I may anoint\nHim Who has wiped away all my sins.\""
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "How shall I, the unworthy one,\nappear in the splendor of Thy saints?\nFor if I dare enter Thy bridal chamber with them,\nmy garments will betray me:\nthey are unfit for a wedding.\nThe angels will cast me out in chains.\nCleanse the filth of my soul, O Lord,\nand save me in Thy love for mankind!"
         },
         {
           "tone": 1,
-          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
-          "text": "The sinful woman brought myrrh and tears together\nand poured them at the feet of the Master.\nShe kissed them and was made clean at once.\nGod granted her remission of her sins,\nfor He endured the Cross for the sake of us all."
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true,
+          "_note": "Repeat of the first sticheron."
+        },
+        {
+          "tone": 2,
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "O Christ the Bridegroom,\nmy soul has slumbered in laziness.\nI have no lamp aflame with virtues.\nLike the foolish virgins, I wander aimlessly when it is time for work.\nBut do not close Thy compassionate heart to me, O Master!\nRouse me; shake off my heavy sleep!\nLead me with the wise virgins into the bridal chamber,\nthat I may hear the pure voice of those that feast and cry unceasingly:\n\"O Lord, glory to Thee!\""
+        },
+        {
+          "tone": 2,
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! Praise the Lord! (Ps. 150:5)",
+          "repeat": true,
+          "_note": "Repeat of the third sticheron."
         }
       ],
-      "glory": {
+      "gloryNow": {
+        "tone": 4,
+        "_note": "Combined Glory/Now sticheron.",
+        "text": "Thou hast heard the condemnation, O soul,\nof the man who hid his talent.\nBut do not hide the Word of God!\nProclaim His wonders,\nthat, increasing the gift of grace,\nthou mayest enter into the joy of thy Lord!"
+      }
+    },
+    "aposticha": {
+      "hymns": [
+        {
+          "tone": 6,
+          "text": "Come, O faithful,\nlet us work zealously for the Master,\nfor He distributes wealth to His servants!\nLet each of us, according to his ability,\nincrease his talent of grace:\nlet one be adorned in wisdom through good works;\nlet another celebrate a service in splendor!\nThe one distributes his wealth to the poor;\nthe other communicates the Word to those untaught.\nThus we shall increase what has been entrusted to us,\nand, as faithful stewards of grace,\nwe shall be accounted worthy of the Master's joy.\nMake us worthy of this, O Christ our God,\nin Thy love for mankind!"
+        },
+        {
+          "tone": 6,
+          "verse": "Satisfy us in the morning with Thy steadfast love, that we may rejoice and be glad all our days. Make us glad as many days as Thou hast afflicted us, and as many years as we have seen evil. Let Thy work be manifest to Thy servants, and Thy glorious power to their children. (Ps. 89:16-18)",
+          "text": "When Thou shalt come in glory, O Jesus,\nwith the Angelic Hosts,\nand shalt sit upon the throne for judgment,\ndo not drive me away, O Good Shepherd!\nFor Thou knowest the paths on Thy right hand,\nbut those on Thy left hand lead astray!\nDo not destroy me with the goats,\nthough I am coarse with sin,\nbut number me with the sheep on Thy right hand,\nand save me in Thy love for mankind!"
+        },
+        {
+          "tone": 6,
+          "verse": "Let the favor of the Lord our God be upon us, and establish Thou the work of our hands upon us; yea, the work of our hands, establish Thou it. (Ps. 89:19)",
+          "text": "Thou art more beautiful than all men, O Bridegroom!\nThou hast invited us\nto the spiritual banquet of Thy bridal chamber.\nStrip me of the ugly garment of my sins,\nas I participate in Thy Passion!\nAdorn me in the glorious robe of Thy beauty\nthat proclaims me a guest in Thy Kingdom, O merciful Lord!"
+        }
+      ],
+      "gloryNow": {
         "tone": 7,
-        "text": "The sinful woman approached Thee, the Lover of mankind.\nBathing Thy feet with tears, she cried:\n\"Have mercy on me, O Master!\nI beseech Thee, destroy the great burden of my sins!\nAs Thou didst accept the tears of Peter,\naccept mine as well, O Savior,\nfor Thou art the One Who callest all men to salvation.\""
-      },
-      "now": {
-        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+        "_note": "Combined Glory/Now sticheron.",
+        "text": "Behold, the Master has entrusted thee with the talent, O my soul!\nReceive the gift with fear!\nRepay the One Who gave by giving to the poor,\nand gain the Lord as thy friend,\nso that when He comes in glory,\nthou mayest stand at His right hand and hear His blessed voice:\n\"Enter, My servant, into the joy of thy Lord!\"\nThough I have gone astray, make me worthy of this, O Savior,\nthrough Thy great mercy!"
       }
     }
   },
 
   "wednesday": {
+    "_theme": "The sinful woman anointing Christ; Judas's betrayal; the Hymn of Kassiane",
+    "kathismata": [
+      {
+        "tone": 3,
+        "afterKathisma": 14,
+        "text": "The harlot came to Thee, O Lover of mankind,\npouring myrrh and tears on Thy feet.\nAt Thy command she was delivered from the stench of her evil deeds,\nbut Thy graceless Disciple, though breathing Thy grace,\nrejected it and wallowed in filth,\nselling Thee in his love of money.\nGlory, O Christ, to Thy compassion!"
+      },
+      {
+        "tone": 4,
+        "afterKathisma": 15,
+        "text": "Deceitful Judas,\nburning with love of money,\ndeceitfully plotted to betray Thee, O Lord,\nthe treasury of life.\nHe drunkenly runs to the Jews\nand says to those transgressors:\n\"What will you give me, and I shall deliver Him to you, that He may be crucified?\""
+      },
+      {
+        "tone": 1,
+        "afterKathisma": 16,
+        "text": "In tears the harlot cried out, O compassionate One,\nas she fervently wiped Thy most pure feet with the hair of her head,\nand she groaned from the depths of her soul:\n\"Cast me not away, neither abhor me, O my God,\nbut receive me in my repentance and save me,\nfor Thou alone art the Lover of mankind!\""
+      }
+    ],
+    "gospel": {
+      "reference": "John 12:17-50",
+      "pericope": "41-ctr"
+    },
     "kontakion": {
       "tone": 4,
-      "text": "I have transgressed more than the harlot, O Good One,\nyet never have I offered Thee my flowing tears.\nBut in silence I fall down before Thee and with love I kiss Thy most pure feet,\nbeseeching Thee as Master to grant me remission of sins;\nand I cry to Thee, O Savior:\nDeliver me from the filth of my evil deeds."
+      "text": "Though I have transgressed more than the harlot, O Good One,\nI have not offered Thee a flood of tears,\nbut praying in silence I fall down before Thee.\nWith love I embrace Thy most pure feet.\nAs Master, grant me remission of sins,\nwhen I cry to Thee, O Savior:\n\"Deliver me from the filth of my evil deeds!\""
     },
     "ikos": {
-      "text": "The woman who was formerly prodigal\nnow appeared chaste, hating the deeds of shameful sin\nand the pleasures of the body.\nShe pondered the great shame and the judgment of torment\nthat harlots and profligates shall endure.\nOf their number I am first, and I am afraid.\nBut foolishly I continue in my evil habit.\nThe sinful woman, in fear, hastened to her Deliverer and cried to Him:\nO merciful Lover of mankind, deliver me from the filth of my evil deeds."
+      "text": "The woman who was once a profligate suddenly is wise.\nShe hates her shameful deeds and carnal pleasures,\nremembering the magnitude of her shame\nand the verdict of condemnation which awaits profligates and harlots.\nOf these, I am indeed the first, and though in terror, I foolishly remain in my evil ways.\nBut the harlot, though in terror, hastens to the Deliverer to cry:\n\"In Thy compassion and love for mankind,\ndeliver me from the filth of my evil deeds!\""
+    },
+    "canon": {
+      "type": "Three-Ode Canon",
+      "tone": 2,
+      "odes": [3, 8, 9]
     },
     "stichera": {
-      "_note": "Lauds stichera for Wednesday evening (Matins of Thursday). Theme: the anointing at Bethany and Judas's bargain.",
+      "_note": "Lauds stichera for Holy Wednesday matins (sung Tuesday evening). Theme: the sinful woman and Judas.",
       "hymns": [
         {
           "tone": 1,
-          "verse": "Let every breath praise the Lord. Praise the Lord from the heavens; praise Him in the highest!",
-          "text": "While the sinful woman was bringing the myrrh,\nthe disciple was making an agreement with the lawless.\nShe rejoiced to pour out what was very precious;\nhe hastened to sell the One Who is above all price.\nShe acknowledged Christ as Lord;\nhe severed himself from the Master.\nShe was set free, but Judas became a slave of the enemy.\nGrievous was his lack of love!\nGreat was her repentance!\nGrant me such repentance, O Savior,\nWho didst suffer for our sake,// and save us!"
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "A harlot recognized Thee as God, O Son of the Virgin.\nWith tears equal to her past deeds, she besought Thee, weeping:\n\"Loose my debt, as I have loosed my hair!\nLove the woman who, though justly hated, loves Thee!\nThen with the publicans will I proclaim Thee,\nO Benefactor, Who lovest mankind.\""
         },
         {
           "tone": 1,
-          "verse": "Praise Him for His mighty acts; praise Him according to the multitude of His greatness!",
-          "text": "What wickedness, Judas!\nThe harlot brought myrrh to anoint the Master;\nand thou didst come to an agreement with the lawless.\nShe poured out her precious possession,\nand thou didst sell the Precious One.\nShe recognized the Master;\nthou didst separate thyself from Him.\nShe was set free; thou didst become the slave of the devil.\nFearful is thy carelessness, O Judas!\nGrant such repentance to us, O God,// and save us!"
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "text": "The harlot mingled precious myrrh with her tears.\nShe poured it on Thy most pure feet and kissed them.\nAt once Thou didst justify her.\nO Lord, Who didst suffer for our sakes,\nforgive us also and save us!"
+        },
+        {
+          "tone": 1,
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "As the sinful woman was bringing her offering of myrrh,\nthe disciple was scheming with lawless men.\nShe rejoiced in pouring out her precious gift.\nHe hastened to sell the priceless One.\nShe recognized the Master, but Judas parted from Him.\nShe was set free, but Judas was enslaved to the Enemy.\nHow terrible his slothfulness!\nHow great her repentance!\nO Savior, Who didst suffer for our sakes,\ngrant repentance to us also and save us!"
+        },
+        {
+          "tone": 1,
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! Praise the Lord! (Ps. 150:5)",
+          "text": "Oh, the wretchedness of Judas!\nHe saw the harlot kiss the footsteps of Christ,\nbut deceitfully he contemplated the kiss of betrayal.\nShe loosed her hair while he bound himself with wrath.\nHe offered the stench of wickedness instead of myrrh,\nfor envy cannot distinguish value.\nOh, the wretchedness of Judas!\nDeliver our souls from it, O God!"
         }
       ],
       "glory": {
-        "tone": 6,
-        "label": "Hymn of Kassiane",
-        "_note": "The famous Hymn of Kassiane — the most beloved sticheron of Holy Week. Sung on Wednesday evening.",
-        "text": "O Lord, the woman who had fallen into many sins,\nperceiving Thy divinity,\ntook upon herself the duty of a myrrh-bearer.\nWith lamentation she brought sweet-smelling myrrh to Thee before Thy burial.\n\"Woe is me,\" she said,\n\"for night surrounds me, dark and moonless,\nand stings my lustful passion with the love of sin.\nAccept the fountain of my tears,\nO Thou Who drawest the water of the sea through the clouds.\nBow down Thine ear to the sighing of my heart,\nO Thou Who didst bow the heavens by Thine ineffable condescension.\nI will kiss Thy most pure feet\nand wipe them with the tresses of my head,\nthose feet at whose sound Eve hid herself in fear\nwhen she heard Thee walking in Paradise in the cool of the day.\nWho can search out the multitude of my sins,\nor the depths of Thy judgments, O my Savior?\nDo not despise me, Thy servant,\nfor Thy mercy is boundless.\""
+        "tone": 2,
+        "text": "The sinful woman ran to buy the precious myrrh\nwith which to anoint her Savior.\nShe cried to the merchant: \"Give me myrrh,\nthat I may anoint Him Who has cleansed all my sins!\""
       },
       "now": {
-        "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
+        "tone": 6,
+        "text": "The woman who was engulfed in sin\nfound in Thee a haven of salvation.\nShe poured out myrrh with her tears and cried to Thee:\n\"Behold the One Who brings repentance to sinners!\nRescue me from the tempest of sin, O Master,\nthrough Thy great mercy!\""
+      }
+    },
+    "aposticha": {
+      "hymns": [
+        {
+          "tone": 6,
+          "text": "Today Christ comes to the house of the Pharisee.\nA sinful woman crawls to His feet and cries:\n\"Look at me who am engulfed in sin,\nin despair because of my evil deeds!\nBut in Thy goodness do not despise me!\nGrant me forgiveness of my evil deeds, O Lord,\nand save me!\""
+        },
+        {
+          "tone": 6,
+          "verse": "Satisfy us in the morning with Thy steadfast love, that we may rejoice and be glad all our days. Make us glad as many days as Thou hast afflicted us, and as many years as we have seen evil. Let Thy work be manifest to Thy servants, and Thy glorious power to their children. (Ps. 89:16-18)",
+          "text": "The harlot spread out her hair to Thee, O Master,\nJudas spread out his hands to lawless men:\nshe in order to receive forgiveness;\nhe in order to receive some silver.\nWe cry to Thee, Who wast sold for us and yet didst set us free:\n\"O Lord, glory to Thee!\""
+        },
+        {
+          "tone": 6,
+          "verse": "Let the favor of the Lord our God be upon us, and establish Thou the work of our hands upon us; yea, the work of our hands, establish Thou it. (Ps. 89:19)",
+          "text": "The corrupt and filthy woman\ndrew near to Thee, O Savior.\nShe poured out her tears on Thy feet\nand thus announced Thy Passion.\n\"How can I gaze on Thee, O Master?\nYet Thou didst come to save the harlot.\nRaise me from the depths, for I am dead in sin,\nas Thou didst raise Lazarus from the tomb after four days.\nAccept me in my misery, O Lord,\nand save me!\""
+        },
+        {
+          "tone": 6,
+          "verse": "I will thank Thee, O Lord, with all my heart; I will tell of all Thy wondrous works. (Ps. 9:1)",
+          "text": "Despairing for her life, and despaired of for her deeds,\nthe woman came bearing myrrh to Thee and cried:\n\"O Son of the Virgin,\nthough I am a harlot, do not cast me aside!\nO Joy of the angels,\ndo not despise my tears!\nAs Thou didst not reject me as a sinner,\naccept me now as a penitent, in Thy great mercy!\""
+        }
+      ],
+      "gloryNow": {
+        "tone": 8,
+        "label": "The Hymn of Kassiane",
+        "_note": "The famous Hymn of Kassiane — the most beloved sticheron of Holy Week. Sung on Tuesday evening (Matins of Holy Wednesday).",
+        "text": "The woman had fallen into many sins, O Lord,\nyet, when she perceived Thy divinity,\nshe joined the ranks of the myrrh-bearing women.\nIn tears she brought Thee myrrh before Thy burial.\nShe cried: \"Woe is me!\nFor I live in the night of licentiousness,\nshrouded in the dark and moonless love of sin.\nBut accept the fountain of my tears,\nThou Who didst gather the waters of the sea into clouds!\nBow down Thine ear to the sighing of my heart,\nO Thou Who didst bow the heavens in Thine ineffable condescension!\nOnce Eve heard Thy footsteps in Paradise in the cool of the day,\nand in fear she ran and hid herself.\nBut now I will tenderly embrace those pure feet\nand wipe them with the hair of my head.\nWho can measure the multitude of my sins,\nor the depth of Thy judgments, O Savior of my soul?\nDo not despise Thy servant in Thine immeasurable mercy!\""
       }
     }
   },
@@ -152,7 +327,7 @@
     "tone": 3,
     "label": "Exaposteilarion of the Bridegroom",
     "_note": "Sung three times — same all three nights.",
-    "text": "I see Thy bridal chamber adorned, O my Savior,\nand I have no wedding garment that I may enter.\nO Giver of Light, enlighten the vesture of my soul,\nand save me!"
+    "text": "Thy bridal chamber I see adorned, O my Savior,\nand I have no wedding garment that I may enter.\nO Giver of Light,\nenlighten the vesture of my soul, and save me!"
   },
 
   "greatDoxology": {

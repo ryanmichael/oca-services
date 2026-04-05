@@ -2538,13 +2538,25 @@ function assembleBridegroomMatins(f, night) {
       { tone: f.troparion.tone }));
   }
 
-  // ── Sessional Hymn (Kathisma) ─────────────────────────────────────────────
+  // ── Kathisma Readings + Sessional Hymns ─────────────────────────────────
   {
-    const kath = f.kathismata[night];
-    if (kath) {
-      blocks.push(S('kathisma', 'Sessional Hymn', 'hymn', 'choir', kath.text,
-        { tone: kath.tone }));
+    const kaths = nightData.kathismata;
+    if (kaths && kaths.length) {
+      for (let i = 0; i < kaths.length; i++) {
+        const k = kaths[i];
+        const section = 'Sessional Hymn';
+        blocks.push(S(`kathisma-label-${i}`, section, 'rubric', null,
+          `Following Kathisma ${k.afterKathisma}`));
+        blocks.push(S(`kathisma-hymn-${i}`, section, 'hymn', 'choir', k.text,
+          { tone: k.tone }));
+      }
     }
+  }
+
+  // ── Gospel ────────────────────────────────────────────────────────────────
+  if (nightData.gospel) {
+    blocks.push(S('gospel', 'Gospel', 'rubric', null,
+      `Gospel: ${nightData.gospel.reference} (Pericope ${nightData.gospel.pericope})`));
   }
 
   // ── Psalm 50 ──────────────────────────────────────────────────────────────
@@ -2556,9 +2568,14 @@ function assembleBridegroomMatins(f, night) {
     }
   }
 
-  // ── Canon (abbreviated — rubric placeholder) ──────────────────────────────
-  blocks.push(S('canon-rubric', 'Canon', 'rubric', null,
-    '[The Canon is chanted here. Odes 1–9 with troparia and katavasia.]'));
+  // ── Canon (rubric) ────────────────────────────────────────────────────────
+  {
+    const canon = nightData.canon;
+    const odeList = canon ? canon.odes.join(', ') : '1–9';
+    const canonType = canon ? canon.type : 'Canon';
+    blocks.push(S('canon-rubric', 'Canon', 'rubric', null,
+      `[${canonType}, Tone ${canon ? canon.tone : ''}: Odes ${odeList} with troparia and katavasia.]`));
+  }
 
   // ── Kontakion + Ikos (after Ode 6 of Canon) ──────────────────────────────
   blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', nightData.kontakion.text,
@@ -2578,19 +2595,57 @@ function assembleBridegroomMatins(f, night) {
   {
     const section = 'Lauds';
     const lauds = nightData.stichera;
+    // Track which sticheron to repeat
+    let lastNonRepeatText = null;
+    let lastNonRepeatTone = null;
     for (let i = 0; i < lauds.hymns.length; i++) {
       const h = lauds.hymns[i];
       blocks.push(S(`lauds-verse-${i}`, section, 'verse', 'reader', `V. ${h.verse}`));
-      blocks.push(S(`lauds-hymn-${i}`, section, 'hymn', 'choir', h.text,
+      const text = h.repeat ? lastNonRepeatText : h.text;
+      const tone = h.repeat ? lastNonRepeatTone : h.tone;
+      blocks.push(S(`lauds-hymn-${i}`, section, 'hymn', 'choir', text,
+        { tone }));
+      if (!h.repeat) {
+        lastNonRepeatText = h.text;
+        lastNonRepeatTone = h.tone;
+      }
+    }
+    // Glory/Now — may be combined (gloryNow) or separate (glory + now)
+    if (lauds.gloryNow) {
+      blocks.push(S('lauds-glorynow', section, 'doxology', null,
+        'Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.'));
+      blocks.push(S('lauds-glorynow-hymn', section, 'hymn', 'choir', lauds.gloryNow.text,
+        { tone: lauds.gloryNow.tone, label: lauds.gloryNow.label || null }));
+    } else {
+      blocks.push(S('lauds-glory', section, 'doxology', null,
+        'Glory to the Father, and to the Son, and to the Holy Spirit.'));
+      blocks.push(S('lauds-glory-hymn', section, 'hymn', 'choir', lauds.glory.text,
+        { tone: lauds.glory.tone, label: lauds.glory.label || null }));
+      blocks.push(S('lauds-now', section, 'doxology', null,
+        'Now and ever and unto ages of ages. Amen.'));
+      blocks.push(S('lauds-now-hymn', section, 'hymn', 'choir', lauds.now.text,
+        { tone: lauds.now.tone }));
+    }
+  }
+
+  // ── Aposticha ─────────────────────────────────────────────────────────────
+  if (nightData.aposticha) {
+    const section = 'Aposticha';
+    const ap = nightData.aposticha;
+    for (let i = 0; i < ap.hymns.length; i++) {
+      const h = ap.hymns[i];
+      if (h.verse) {
+        blocks.push(S(`aposticha-verse-${i}`, section, 'verse', 'reader', `V. ${h.verse}`));
+      }
+      blocks.push(S(`aposticha-hymn-${i}`, section, 'hymn', 'choir', h.text,
         { tone: h.tone }));
     }
-    blocks.push(S('lauds-glory', section, 'doxology', null,
-      'Glory to the Father, and to the Son, and to the Holy Spirit.'));
-    blocks.push(S('lauds-glory-hymn', section, 'hymn', 'choir', lauds.glory.text,
-      { tone: lauds.glory.tone, label: lauds.glory.label || null }));
-    blocks.push(S('lauds-now', section, 'doxology', null,
-      'Now and ever and unto ages of ages. Amen.'));
-    blocks.push(S('lauds-now-hymn', section, 'hymn', 'choir', lauds.now.text));
+    if (ap.gloryNow) {
+      blocks.push(S('aposticha-glorynow', section, 'doxology', null,
+        'Glory to the Father, and to the Son, and to the Holy Spirit;\nnow and ever, and unto ages of ages. Amen.'));
+      blocks.push(S('aposticha-glorynow-hymn', section, 'hymn', 'choir', ap.gloryNow.text,
+        { tone: ap.gloryNow.tone, label: ap.gloryNow.label || null }));
+    }
   }
 
   // ── Great Doxology (read) ─────────────────────────────────────────────────

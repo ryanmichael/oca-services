@@ -26,7 +26,7 @@ const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalK
         isPresanctifiedDay, isBridegroomMatins, isPassionGospelsDay, isLamentationsDay, isVesperalLiturgyDay, isRoyalHoursDay,
         getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday,
         getEothinon } = require('./calendar-rules');
-const { renderVespers }                          = require('./renderer');
+const { renderService, renderVespers }             = require('./renderer');
 const { getMatinsKathismata }                    = require('./kathisma');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -433,6 +433,29 @@ function renderErrorPage(message, detail = '') {
   <p><a href="/">← Back</a></p>
 </body>
 </html>`;
+}
+
+/**
+ * Renders blocks as a standalone HTML service sheet with back-bar and warnings.
+ * Used by all service routes when format=html is requested.
+ */
+function renderServiceHTML(res, blocks, title, date, pronoun) {
+  const pronounLabel = pronoun === 'yy' ? ' (You/Your)' : ' (Thee/Thy)';
+  const html = renderService(blocks, { title, date: `${date}${pronounLabel}` });
+  const backBar = `<div style="font-family:sans-serif;font-size:10pt;padding:10px 40px;background:#f5f0ec;border-bottom:1px solid #ddd;">
+  <a href="/" style="color:#8b1a1a;text-decoration:none;">← Back</a>
+</div>`;
+  const rawWarnings = blocks._warnings || [];
+  const warningMessages = rawWarnings.map(w => formatAssemblyWarning(w.source, w.key)).filter(Boolean);
+  const uniqueWarnings = [...new Set(warningMessages)];
+  const warningBanner = uniqueWarnings.length > 0
+    ? `<div style="font-family:sans-serif;font-size:9.5pt;padding:10px 40px;background:#fff3cd;border-bottom:2px solid #e6ac00;color:#6b4800;">
+         <strong>⚠ Some portions of this service are incomplete:</strong>
+         <ul style="margin:4px 0 0 16px;padding:0;">${uniqueWarnings.map(m => `<li>${m}</li>`).join('')}</ul>
+       </div>`
+    : '';
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  res.end(html.replace('<body>', '<body>' + backBar + warningBanner));
 }
 
 // ─── Menaion DB helpers ───────────────────────────────────────────────────────
@@ -3104,6 +3127,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3181,12 +3205,19 @@ function handleRequest(req, res) {
         const variantName = calendarEntry.liturgy.variant === 'basil'
           ? 'Liturgy of St. Basil the Great'
           : 'Liturgy of St. John Chrysostom';
+        const serviceName = `Divine Liturgy — ${variantName}`;
+
+        if (format === 'html') {
+          const toneLabel = tone ? ` · Tone ${tone}` : '';
+          renderServiceHTML(res, blocks, serviceName, `${formatDate(date)}${toneLabel}`, pronoun);
+          return;
+        }
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           date,
           serviceType:    'liturgy',
-          serviceName:    `Divine Liturgy — ${variantName}`,
+          serviceName,
           tone,
           season,
           liturgicalLabel,
@@ -3205,6 +3236,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3297,6 +3329,12 @@ function handleRequest(req, res) {
           if (!b.provenance) b.provenance = 'OCA';
         }
 
+        if (format === 'html') {
+          const toneLabel = tone ? ` · Tone ${tone}` : '';
+          renderServiceHTML(res, blocks, 'Liturgy of the Presanctified Gifts', `${formatDate(date)}${toneLabel}`, pronoun);
+          return;
+        }
+
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           date,
@@ -3320,6 +3358,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3363,6 +3402,11 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'Bridegroom Matins', `${formatDate(date)} · ${NIGHT_NAMES[night] || 'Holy Week'}`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3377,6 +3421,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3444,6 +3489,12 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        const toneLabel = tone ? ` · Tone ${tone}` : '';
+        renderServiceHTML(res, blocks, 'Matins (Orthros)', `${formatDate(date)}${toneLabel}`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3459,6 +3510,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3495,6 +3547,11 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'The Twelve Passion Gospels', `${formatDate(date)} · Great and Holy Thursday`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3509,6 +3566,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3545,6 +3603,11 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'Royal Hours of Great Friday', `${formatDate(date)} · Great and Holy Friday`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3559,6 +3622,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3595,6 +3659,11 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'The Lamentations', `${formatDate(date)} · Great and Holy Friday`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3609,6 +3678,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3645,6 +3715,11 @@ function handleRequest(req, res) {
         }
       }
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'Vesperal Liturgy of St. Basil', `${formatDate(date)} · Great and Holy Saturday`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3659,6 +3734,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3703,6 +3779,11 @@ function handleRequest(req, res) {
         friday: 'Bright Friday', saturday: 'Bright Saturday',
       };
 
+      if (format === 'html') {
+        renderServiceHTML(res, blocks, 'The Paschal Hours', `${formatDate(date)} · ${NAMES[dow] || 'Bright Week'}`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3717,6 +3798,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3787,6 +3869,11 @@ function handleRequest(req, res) {
               if (block.text)  block.text  = applyYouYour(block.text);
               if (block.label) block.label = applyYouYour(block.label);
             }
+          }
+
+          if (format === 'html') {
+            renderServiceHTML(res, allBlocks, 'Holy Pascha Collection', `${formatDate(date)} · The Holy Pascha`, pronoun);
+            return;
           }
 
           res.writeHead(200, { 'Content-Type': 'application/json' });

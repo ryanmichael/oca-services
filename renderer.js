@@ -198,8 +198,8 @@ const CSS = `
  * @param {{ title?: string, date?: string }} [options]
  * @returns {string}
  */
-function renderVespers(blocks, options = {}) {
-  const title = options.title || 'Great Vespers';
+function renderService(blocks, options = {}) {
+  const title = options.title || 'Service';
   const date  = options.date  || '';
 
   const bodyHTML = renderBody(blocks);
@@ -456,4 +456,6 @@ function escHtml(str) {
 
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
-module.exports = { renderVespers };
+// Backward-compatible alias
+const renderVespers = renderService;
+module.exports = { renderService, renderVespers };

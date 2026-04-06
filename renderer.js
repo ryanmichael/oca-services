@@ -275,17 +275,79 @@ function renderService(blocks, options = {}) {
           var measure = document.getElementById('measure');
           var children = Array.from(measure.children);
 
+          // Helper: add an HTML chunk to the current page, starting a new page if needed
+          function addToPages(pages, heights, html, h) {
+            var idx = pages.length - 1;
+            if (heights[idx] + h > PAGE_H && pages[idx].length > 0) {
+              pages.push([]); heights.push(0);
+              idx = pages.length - 1;
+            }
+            pages[idx].push(html);
+            heights[idx] += h;
+          }
+
           var pages = [[]];
           var heights = [0];
           children.forEach(function(el) {
             var h = el.getBoundingClientRect().height + 16;
             var idx = pages.length - 1;
-            if (heights[idx] + h > PAGE_H && pages[idx].length > 0) {
-              pages.push([]); heights.push(0);
+            var remaining = PAGE_H - heights[idx];
+
+            // If block fits, just add it
+            if (heights[idx] + h <= PAGE_H || pages[idx].length === 0) {
+              pages[idx].push(el.outerHTML);
+              heights[idx] += h;
+              return;
             }
-            var last = pages.length - 1;
-            pages[last].push(el.outerHTML);
-            heights[last] += h;
+
+            // If block is small enough (<40% of page), move to next page as before
+            if (h < PAGE_H * 0.4) {
+              pages.push([]); heights.push(0);
+              var last = pages.length - 1;
+              pages[last].push(el.outerHTML);
+              heights[last] += h;
+              return;
+            }
+
+            // Large block that doesn't fit: split at <br /> boundaries
+            var inner = el.innerHTML;
+            var parts = inner.split(/<br\\s*\\/?>/i);
+            if (parts.length <= 1) {
+              // Can't split — move to next page
+              pages.push([]); heights.push(0);
+              var last = pages.length - 1;
+              pages[last].push(el.outerHTML);
+              heights[last] += h;
+              return;
+            }
+
+            // Measure line height from the element
+            var lineH = h / parts.length;
+            var tag = el.tagName.toLowerCase();
+            var cls = el.className ? ' class="' + el.className + '"' : '';
+
+            // Distribute lines across pages
+            var chunk = [];
+            for (var i = 0; i < parts.length; i++) {
+              var chunkH = (chunk.length + 1) * lineH;
+              var curIdx = pages.length - 1;
+              if (heights[curIdx] + chunkH > PAGE_H && pages[curIdx].length > 0 && chunk.length > 0) {
+                // Flush current chunk to this page
+                var html = '<' + tag + cls + '>' + chunk.join('<br />') + '</' + tag + '>';
+                pages[curIdx].push(html);
+                heights[curIdx] += chunk.length * lineH;
+                chunk = [];
+                pages.push([]); heights.push(0);
+              }
+              chunk.push(parts[i]);
+            }
+            // Flush remaining
+            if (chunk.length > 0) {
+              var curIdx = pages.length - 1;
+              var html = '<' + tag + cls + '>' + chunk.join('<br />') + '</' + tag + '>';
+              pages[curIdx].push(html);
+              heights[curIdx] += chunk.length * lineH;
+            }
           });
 
           while (pages.length % 4 !== 0) pages.push([]);

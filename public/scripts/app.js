@@ -1192,6 +1192,8 @@ function printBooklet() {
       }
     });
 
+    console.log('[booklet] Total items after extraction:', allItems.length);
+
     var tmp = document.createElement('div');
     tmp.className = 'bk-half';
     tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};height:auto;overflow:visible;padding:0;';
@@ -1206,6 +1208,13 @@ function printBooklet() {
       return h;
     });
     document.body.removeChild(tmp);
+
+    // Debug: dump first 30 items with heights
+    console.log('[booklet] PAGE_H=' + PAGE_H);
+    allItems.slice(0, 30).forEach(function(item, i) {
+      var preview = item.html.replace(/<[^>]+>/g, '').substring(0, 60);
+      console.log('[booklet] item ' + i + ': h=' + itemHeights[i].toFixed(1) + ' kw=' + item.keepWithNext + ' "' + preview + '"');
+    });
 
     var MIN_SPLIT = 80; // don't leave a sliver shorter than this on a page
     var pages = [[]], heights = [0];
@@ -1282,6 +1291,11 @@ function printBooklet() {
         }
       }
     }
+
+    // Debug: show page fill levels
+    heights.slice(0, 5).forEach(function(h, i) {
+      console.log('[booklet] page ' + i + ': height=' + h.toFixed(1) + '/' + PAGE_H + ' items=' + pages[i].length);
+    });
 
     measure.style.display = 'none';
     return pages;

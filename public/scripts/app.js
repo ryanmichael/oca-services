@@ -1431,6 +1431,11 @@ ${activeEducation !== 'on' ? '.edu-module { display: none !important; }' : ''}
   margin-bottom: 5px; line-height: 1.5;
   break-inside: avoid;
 }
+.instruction {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
+  font-style: italic; color: var(--muted);
+  margin-bottom: 4px; line-height: 1.5;
+}
 .prayer {
   font-family: 'EB Garamond', Georgia, serif; font-size: 15pt;
   line-height: 1.75; color: var(--text); margin-bottom: 8px;

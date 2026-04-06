@@ -400,6 +400,7 @@ function renderService(blocks, options = {}) {
         '.section-head { font-size: 8pt; font-weight: bold; letter-spacing: .12em; text-transform: uppercase; color: #8b1a1a; text-align: center; margin: 18px 0 8px; padding: 5px 0; border-top: 1px solid #c8a0a0; border-bottom: 1px solid #c8a0a0; }\\n' +
         '.speaker { display: inline-block; font-size: 7.5pt; font-weight: bold; letter-spacing: .10em; text-transform: uppercase; color: #8b1a1a; margin-bottom: 1px; }\\n' +
         'p.rubric { color: #8b1a1a; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
+        'p.instruction { color: #666; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
         'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; }\\n' +
         'div.glory-line { font-weight: bold; margin: 8px 0 3px; }\\n' +

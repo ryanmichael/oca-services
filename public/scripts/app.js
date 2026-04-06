@@ -1156,6 +1156,10 @@ function printBooklet() {
     var measure  = document.getElementById('measure');
     var allItems = [];
 
+    // Title is a real measured item so page 1 accounts for its height
+    var titleHtml = '<div class="bk-title">' + TITLE_SVC + '</div><div class="bk-subtitle">' + TITLE_SUB + '</div>';
+    allItems.push({ html: titleHtml, isHead: false, keepWithNext: true });
+
     Array.from(measure.children).forEach(function (el) {
       if (el.classList.contains('svc-rule')) {
         allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
@@ -1258,10 +1262,6 @@ function printBooklet() {
           offset += sliceH;
         }
       }
-    }
-
-    if (pages.length > 0 && pages[0].length > 0) {
-      pages[0].unshift('<div class="bk-title">' + TITLE_SVC + '</div><div class="bk-subtitle">' + TITLE_SUB + '</div>');
     }
 
     measure.style.display = 'none';

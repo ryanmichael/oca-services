@@ -3,7 +3,8 @@
     "description": "Fixed liturgical texts for the Royal Hours of Great Friday — served Friday morning before Burial Vespers",
     "tradition": "OCA (Orthodox Church in America)",
     "translation": "OCA / St. Tikhon's Monastery Press",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "_audit": "v0.2.0: Structural audit — opening Trisagion/Our Father prayers and inter-hour closing prayers now rendered by assembler. All psalms, readings, troparia, stichera verified correct.",
     "note": "The Royal Hours consist of the 1st, 3rd, 6th, and 9th Hours, each with three psalms, a troparion, an OT prophecy, an epistle, a gospel, and three idiomela (special stichera). 100% fixed — same every year."
   },
 

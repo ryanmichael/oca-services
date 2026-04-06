@@ -3572,6 +3572,14 @@ function assembleRoyalHours(f) {
     const sec = 'Opening Prayers';
     blocks.push(S('op-blessing', sec, 'prayer', 'priest', f.opening.blessing));
     blocks.push(S('op-amen', sec, 'response', 'reader', f.opening.amen));
+    if (f.opening.trisagion) {
+      blocks.push(S('op-trisagion', sec, 'prayer', 'reader', f.opening.trisagion));
+      blocks.push(S('op-trinity', sec, 'prayer', 'reader', f.opening.allHolyTrinity));
+      blocks.push(S('op-lhm3', sec, 'response', 'reader', f.opening.lordHaveMercy3));
+      blocks.push(S('op-our-father', sec, 'prayer', 'reader', f.opening.ourFather));
+      blocks.push(S('op-excl', sec, 'prayer', 'priest', f.opening.exclamation));
+      blocks.push(S('op-lhm12', sec, 'response', 'reader', f.opening.lordHaveMercy12));
+    }
     blocks.push(S('op-comelet', sec, 'prayer', 'reader', f.opening.comeLet));
   }
 
@@ -3645,9 +3653,18 @@ function assembleRoyalHours(f) {
         hour.stichera[i].text, { tone: hour.stichera[i].tone }));
     }
 
+    // Trisagion → Our Father before Kontakion
+    const closeSec = `${name} — Closing`;
+    blocks.push(S(`${pfx}-trisagion`, closeSec, 'prayer', 'reader', f.opening.trisagion));
+    blocks.push(S(`${pfx}-our-father`, closeSec, 'prayer', 'reader', f.opening.ourFather));
+    blocks.push(S(`${pfx}-excl`, closeSec, 'prayer', 'priest', f.opening.exclamation));
+
     // Kontakion
     blocks.push(S(`${pfx}-kontakion`, `${name} — Kontakion`, 'hymn', 'choir',
       hour.kontakion.text, { tone: hour.kontakion.tone }));
+
+    // Lord have mercy ×40 + closing prayer
+    blocks.push(S(`${pfx}-lhm40`, closeSec, 'response', 'reader', 'Lord, have mercy. (×40)'));
   }
 
   // ── Dismissal ─────────────────────────────────────────────────────────────

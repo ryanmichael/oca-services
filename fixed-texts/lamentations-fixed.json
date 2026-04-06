@@ -2,22 +2,20 @@
   "_meta": {
     "description": "Fixed liturgical texts for the Lamentations — Matins of Great and Holy Saturday, served Friday evening",
     "tradition": "OCA (Orthodox Church in America)",
-    "translation": "OCA / St. Tikhon's Monastery Press",
-    "version": "0.1.0",
-    "note": "The Lamentations (Epitaphios service) center on three stases of verses sung around the burial shroud of Christ. Psalm 118 (119) verses are interspersed with composed troparia. The service concludes with a procession with the Epitaphios."
+    "translation": "Mother Mary / Archimandrite Kallistos Ware (Lenten Triodion, St. Tikhon's Press)",
+    "version": "0.2.0",
+    "note": "The Lamentations (Epitaphios service) center on three stases of verses sung around the burial shroud of Christ. Psalm 118 (119) verses are interspersed with composed troparia. The service concludes with a procession with the Epitaphios.",
+    "_audit": "v0.2.0: Full Lamentations troparia (183 pairs) from orthochristian.com (Mother Mary / Kallistos Ware translation, published by St. Tikhon's Press). Small litany exclamations corrected per stasis (orthodox.net structural reference)."
   },
-
   "opening": {
     "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
     "amen": "Amen."
   },
-
   "sixPsalms": {
     "_note": "Psalms 3, 37, 62, 87, 102, 142. Read from psalter.json at assembly time.",
     "intro": "Glory to God in the highest, and on earth peace, good will among men. (×3)\n\nO Lord, Thou shalt open my lips, and my mouth shall declare Thy praise. (×2)",
     "midGlory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia! Glory to Thee, O God! (×3)\n\nLord, have mercy. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
   },
-
   "godIsTheLord": {
     "tone": 2,
     "verses": [
@@ -27,7 +25,6 @@
       "This is the Lord's doing, and it is marvelous in our eyes."
     ]
   },
-
   "troparia": {
     "nobleJoseph": {
       "tone": 2,
@@ -45,259 +42,782 @@
       "text": "The angel stood by the tomb and cried to the myrrh-bearing women:\n\"Myrrh is fitting for the dead,\nbut Christ has shown Himself a stranger to corruption.\""
     }
   },
-
   "stasis1": {
-    "_note": "Stasis 1 — 'In the grave they laid Thee.' Tone 5. Psalm 118 verses paired with troparia about the burial of Christ.",
+    "_note": "Stasis 1 — Tone 5. Psalm 118:1–72 (Aleph–Teth) with troparia. 73 pairs + Glory + Now. Translation: Mother Mary / Kallistos Ware (Lenten Triodion, published by St. Tikhon's Press).",
     "tone": 5,
-    "refrain": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love.",
+    "refrain": "Thou who art the Life wast laid in a tomb, O Christ; and the hosts of angels were amazed and glorified Thy self-abasement.",
     "verses": [
       {
-        "psalm": "Blessed are the blameless in the way, who walk in the law of the Lord.",
-        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+        "psalm": "Blessed art those that are blameless in the way, who walk in the law of the Lord.",
+        "troparion": "Thou who art the Life wast laid in a tomb, O Christ; and the hosts of angels were amazed and glorified Thy self-abasement."
       },
       {
-        "psalm": "Blessed are they that search out His testimonies; with their whole heart shall they seek after Him.",
-        "troparion": "O Life, how canst Thou die? How canst Thou dwell in a tomb? Yet Thou dost destroy the kingdom of death and raise the dead from below."
+        "psalm": "Blessed are they that search out His testimonies, and seek Him with their whole heart.",
+        "troparion": "O Life, how canst Thou die? How canst Thou dwell in a tomb? Yet Thou dost destroy death's kingdom and raise the dead from hell."
       },
       {
-        "psalm": "For they that work iniquity have not walked in His ways.",
-        "troparion": "We magnify Thee, O Jesus our King, and we honor Thy burial and Thy sufferings, whereby Thou hast saved us from corruption."
+        "psalm": "For they that work wickedness have not walked in His ways.",
+        "troparion": "We magnify Thee, Jesus our King: we honor Thy burial and Thy sufferings, whereby Thou hast saved us from corruption."
       },
       {
         "psalm": "Thou hast commanded us to keep Thy precepts diligently.",
-        "troparion": "O Jesus, Thou Who dost establish the measure of the earth, Thou dost dwell today in a little tomb; and Thou dost raise the dead from their graves."
+        "troparion": "O Jesus, King of all, who hast set measures to the earth, Thou dost go this day to dwell in a narrow grave, raising up the dead from their tombs."
       },
       {
         "psalm": "O that my ways were directed to keep Thy statutes!",
-        "troparion": "O Jesus, my Christ and my King, why hast Thou come to those in hell? Was it not to free mankind from its bondage?"
+        "troparion": "O Jesus, my Christ and King of all, why hast Thou come to those in hell? Is it to set free the race of mortal men?"
       },
       {
-        "psalm": "Then shall I not be ashamed, when I have respect unto all Thy commandments.",
-        "troparion": "The Master of all is seen lying dead, and in a new tomb He is laid, He Who empties the tombs of the dead."
+        "psalm": "Then shall I not be ashamed, when I give heed unto all Thy commandments.",
+        "troparion": "The Master of all is seen lying dead, and in a new tomb He is laid, who empties the tombs of the dead."
       },
       {
         "psalm": "I will praise Thee with uprightness of heart, when I shall have learned the judgments of Thy righteousness.",
-        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+        "troparion": "Thou who art Life wast laid in a tomb, O Christ: by Thy death Thou hast destroyed death and art become a fountain of life for the world."
       },
       {
-        "psalm": "I will keep Thy statutes; O forsake me not utterly.",
-        "troparion": "O Life, Thou wast laid in a tomb; and trembling, death by Thy death was destroyed, and with Thee Adam was raised up."
+        "psalm": "I will keep Thy statutes: O forsake me not utterly.",
+        "troparion": "Numbered with the transgressors, O Christ, Thou dost free us all from the guilt brought upon us of old by the deceiver."
       },
       {
-        "psalm": "Wherewithal shall a young man correct his way? By keeping Thy words.",
-        "troparion": "The Cherubim tremble before Thee, and the company of angels is amazed; yet Thou art laid in the earth, O Savior, Who hast saved all."
+        "psalm": "Wherewithal shall a young man cleanse his way? By keeping Thy words.",
+        "troparion": "Fairer in His beauty than all mortal men, He appears now as a corpse without form or comeliness, He who has made beautiful the nature of all things."
       },
       {
-        "psalm": "With my whole heart have I sought Thee; let me not wander from Thy commandments.",
-        "troparion": "O Jesus, sweet Light, the Church cries to Thee with tears: I was bereft of Thee, O my Bridegroom."
+        "psalm": "With my whole heart have I sought Thee: O let me not wander from Thy commandments.",
+        "troparion": "How could hell endure Thy coming, O Savior? Was it not shattered and struck blind by the dazzling radiance of Thy light?"
       },
       {
         "psalm": "Thy words have I hid in my heart, that I might not sin against Thee.",
-        "troparion": "O Christ, the Giver of Life, the faithful cry to Thee: Come and raise us, for we have fallen asleep in the shadow of death."
+        "troparion": "O Jesus, my sweetness and light of salvation, how art Thou hidden in a dark tomb? O forbearance ineffable, beyond all words!"
       },
       {
-        "psalm": "Blessed art Thou, O Lord; teach me Thy statutes.",
-        "troparion": "The company of Thy disciples rejoiced with the Theotokos, for with Thee they shall also celebrate Thy resurrection."
+        "psalm": "Blessed art Thou, O Lord: teach me Thy statutes.",
+        "troparion": "The spiritual powers and the angelic hosts are amazed, O Christ, at the mystery of Thy burial past utterance and speech."
       },
       {
-        "psalm": "With my lips have I declared all the judgments of Thy mouth.",
-        "troparion": "Joseph and Nicodemus have glorified Thee with funeral hymns, O Christ Who art laid in a tomb."
+        "psalm": "With my lips have I declared all the judgements of Thy mouth.",
+        "troparion": "O strange wonder, new to man! He who granted me the breath of life is carried lifeless in Joseph's hands to burial."
       },
       {
         "psalm": "I have rejoiced in the way of Thy testimonies, as much as in all riches.",
-        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+        "troparion": "Thou hast gone down into the tomb, O Christ, yet wast Thou never parted from Thy Father's side. O marvelous wonder!"
       },
       {
-        "psalm": "I will meditate on Thy precepts, and have respect unto Thy ways.",
-        "troparion": "O Savior, Thou shone forth as a beautiful Sun, and all the earth was filled with Thy light."
+        "psalm": "I will meditate on Thy precepts, and I will understand Thy ways.",
+        "troparion": "Though Thou wast shut within the narrowest of sepulchres, O Jesus, all creation knew Thee as true King of Heaven and earth."
       },
       {
-        "psalm": "I will delight myself in Thy statutes; I will not forget Thy word.",
-        "troparion": "O Thou Who holdest all things together, when Thou wast lifted upon the Cross, all the creation trembled."
+        "psalm": "My study shall be in Thy statutes: I will not forget Thy words.",
+        "troparion": "When Thou wast laid in a tomb, O Christ the Creator, the foundations of hell were shaken and the graves of mortal men were opened."
       },
       {
-        "psalm": "Deal bountifully with Thy servant, that I may live and keep Thy word.",
-        "troparion": "Tears the Virgin Mother shed over Thee, O Jesus: O my Son, where has Thy beauty gone?"
+        "psalm": "O reward Thy servant: give me life, and I shall keep Thy words.",
+        "troparion": "He who holds the earth in the hollow of His hand is held fast by the earth; put to death according to the flesh, He delivers the dead from the grasping hand of hell."
       },
       {
-        "psalm": "Open Thou mine eyes, that I may behold wondrous things out of Thy law.",
-        "troparion": "O my sweet springtime, O my sweetest Child, where has Thy beauty gone? the all-pure one lamented."
+        "psalm": "Open Thou mine eyes, that I may behold the wondrous things of Thy law.",
+        "troparion": "O Savior, my Life, dying Thou hast gone to dwell among the dead: yet Thou hast shattered the bars of hell and arisen from corruption."
       },
       {
-        "psalm": "I am a stranger in the earth; hide not Thy commandments from me.",
-        "troparion": "O wondrous wonder! He Who is the Giver of Life to all is handed over to a tomb! He seeks to raise all mankind."
+        "psalm": "I am but a sojourner upon the earth: hide not Thy commandments from me.",
+        "troparion": "The flesh of God is hidden now beneath the earth, like a candle underneath a bushel, and it drives away the darkness in hell."
       },
       {
-        "psalm": "My soul breaketh for the longing that it hath unto Thy judgments at all times.",
-        "troparion": "In the grave they laid Thee, O my Life and my Christ, and the armies of the angels were sore amazed, as they sang the praise of Thy submissive love."
+        "psalm": "My soul is consumed with the longing that it has for Thy judgements at all times.",
+        "troparion": "The multitude of the heavenly powers makes haste with Joseph and Nicodemus, and within a narrow sepulchre they enclose Thee whom nothing can contain."
+      },
+      {
+        "psalm": "Thou hast rebuked the proud: and cursed are they that do err from Thy commandments.",
+        "troparion": "With Thine own consent slain and laid beneath the earth, O my Jesus, Fountain of Life, Thou hast brought me back to life when I was dead through bitter sin."
+      },
+      {
+        "psalm": "Remove from me reproach and contempt; for I have sought Thy testimonies.",
+        "troparion": "The whole creation was altered by Thy Passion: for all things suffered with Thee, knowing, O Word, that Thou holdest all in unity."
+      },
+      {
+        "psalm": "Princes also did sit and speak against me: but Thy servant did meditate on Thy statutes.",
+        "troparion": "All-devouring hell received within himself the Rock of Life, and cast forth all the dead that he had swallowed since the beginning of the world."
+      },
+      {
+        "psalm": "Thy testimonies also are my study: and Thy statutes are my counsellors.",
+        "troparion": "Thou wast laid in a new tomb, O Christ, and hast made new the nature of mortal man, rising from the dead by Thy divine power."
+      },
+      {
+        "psalm": "My soul has cleaved unto the dust: quicken Thou me according to Thy word.",
+        "troparion": "To earth hast Thou come down, O Master, to save Adam: and not finding him on earth, Thou hast descended into hell, seeking him there."
+      },
+      {
+        "psalm": "I have declared my ways, and Thou heardest me: teach me Thy statutes.",
+        "troparion": "The whole earth quaked with fear, O Word, and the daystar hid its rays, when Thy great Light was hidden in the earth."
+      },
+      {
+        "psalm": "Make me to understand the way of Thy precepts: so shall I talk of Thy wondrous works.",
+        "troparion": "Willingly Thou diest as a mortal man, O Savior, but as God Thou dost raise up the dead from the grave and from the depths of sin."
+      },
+      {
+        "psalm": "My soul is grown drowsy from heaviness: strengthen me with Thy words.",
+        "troparion": "Tears of lamentation the pure Virgin shed over Thee, Jesus, and with a mother's grief she cried: “How shall I bury Thee, my Son?”"
+      },
+      {
+        "psalm": "Remove from me the way of lying: and take pity on me with Thy law.",
+        "troparion": "Buried in the earth like a grain of wheat, Thou hast yielded a rich harvest, raising to life the mortal sons of Adam."
+      },
+      {
+        "psalm": "I have chosen the way of truth: Thy judgements have I not forgotten.",
+        "troparion": "Now art Thou hidden like the setting sun beneath the earth and covered by the night of death: but, O Savior, rise in brighter dawn."
+      },
+      {
+        "psalm": "I have stuck unto Thy testimonies: O Lord, put me not to shame.",
+        "troparion": "As the moon hides the circle of the sun, O Savior, now the grave has hidden Thee, bodily eclipsed in death."
+      },
+      {
+        "psalm": "I have run the way of Thy commandments: for Thou hast enlarged my heart.",
+        "troparion": "Christ the Life, by tasting death, has delivered mortal men from death, and now gives life to all."
+      },
+      {
+        "psalm": "Teach me, O Lord, the way of Thy statutes; and I shall seek it always.",
+        "troparion": "Adam was slain of old through envy, but by Thy dying Thou hast brought him back to life, O Savior, revealed in the flesh as the new Adam."
+      },
+      {
+        "psalm": "Give me understanding, and I shall seek Thy law; yea, I shall observe it with my whole heart.",
+        "troparion": "When the ranks of angels saw Thee, O Savior, laid out dead for our sake, they were filled with wonder and veiled their faces with their wings."
+      },
+      {
+        "psalm": "Make me to go in the path of Thy commandments; for therein do I delight.",
+        "troparion": "Taking Thee down dead from the Tree, O Word, Joseph now has laid Thee in a tomb: but rise up as God to save us all."
+      },
+      {
+        "psalm": "Incline my heart unto Thy testimonies, and not to covetousness.",
+        "troparion": "Thou art the Joy of the angels, O Savior, but now Thou art become the cause of their grief, as they see Thee in the flesh a lifeless corpse."
+      },
+      {
+        "psalm": "Turn away mine eyes from beholding vanity, and quicken Thou me in Thy way.",
+        "troparion": "Uplifted on the Cross, Thou hast uplifted with Thyself all living men; and then descending beneath the earth, Thou raisest all that lie buried there."
+      },
+      {
+        "psalm": "Stablish Thy word in Thy servant, that I may fear Thee.",
+        "troparion": "As a lion hast Thou fallen asleep in the flesh, O Savior, and as a young lion hast Thou risen from the dead, putting off the old age of the flesh."
+      },
+      {
+        "psalm": "Take away my reproach which I fear: for Thy judgements are good.",
+        "troparion": "O Thou who hast fashioned Eve from Adam's side, Thy side was pierced and from it flowed streams of cleansing."
+      },
+      {
+        "psalm": "Behold, I have longed after Thy precepts: quicken me in Thy righteousness.",
+        "troparion": "Of old the lamb was sacrificed in secret; but Thou, longsuffering Savior, wast sacrificed beneath the open sky and hast cleansed the whole creation."
+      },
+      {
+        "psalm": "Let Thy mercy come also upon me, O Lord, even Thy salva­tion, according to Thy word.",
+        "troparion": "Who can describe this strange and terrible thing? The Lord of Creation today accepts the Passion and dies for our sake."
+      },
+      {
+        "psalm": "So shall I give an answer to them that reproach me: lor I trust in Thy word.",
+        "troparion": "“How do we see the Giver of Life now dead?” the angels cried in amazement. “How is God enclosed within a tomb?”"
+      },
+      {
+        "psalm": "And take not the word of truth utterly out of my mouth; for I have hoped in Thy judgements.",
+        "troparion": "Pierced by a spear, O Savior, from Thy side Thou pourest out life upon Eve, the mother of all the living, who banished me from life; and Thou quickenest me also with her."
+      },
+      {
+        "psalm": "So shall I keep Thy law continually forever and ever.",
+        "troparion": "Stretched out upon the Wood, Thou hast drawn mortal men to unity; pierced in Thy life-giving side, O Jesus, Thou art become a fountain of forgiveness unto all."
+      },
+      {
+        "psalm": "And I walked at liberty: for I have sought Thy precepts.",
+        "troparion": "With fear and reverence noble Joseph lays Thee out for burial as a corpse, O Savior, and he looks with wonder on Thy dread form."
+      },
+      {
+        "psalm": "I spoke of Thy testimonies also before kings, and was not ashamed.",
+        "troparion": "Of Thine own will descending as one dead beneath the earth, O Jesus, Thou leadest up the fallen from earth to Heaven."
+      },
+      {
+        "psalm": "And my study was in Thy commandments, which I have loved exceedingly.",
+        "troparion": "Dead in outward appearance, yet alive as God, O Jesus, Thou leadest up the fallen from earth to Heaven."
+      },
+      {
+        "psalm": "My hands also have I lifted up unto Thy commandments, which I have loved.",
+        "troparion": "Dead in outward appearance, yet alive as God, Thou hast restored dead mortals to life and slain him that slew me."
+      },
+      {
+        "psalm": "And I have meditated in Thy statutes.",
+        "troparion": "How great the joy, how full the gladness, that Thou hast brought to those in hell, shining as lightning in its gloomy depths."
+      },
+      {
+        "psalm": "Remember Thy words unto Thy servant, in which Thou hast caused me to hope.",
+        "troparion": "I venerate Thy Passion, I sing the praises of Thy burial, and I magnify Thy power, O loving Lord: through them I am set free from corrupting passions."
+      },
+      {
+        "psalm": "This is my comfort in my affliction: for Thy word has quickened me.",
+        "troparion": "A sword was sharpened against Thee, O Christ: but the sword of the strong was blunted, and the sword that guards Eden was turned back."
+      },
+      {
+        "psalm": "The proud have transgressed exceedingly: yet have I not turned aside from Thy law.",
+        "troparion": "The Ewe, seeing her Lamb slaughtered, was pierced with anguish: and she cried aloud in grief, calling the flock to lament with her."
+      },
+      {
+        "psalm": "I remembered Thy judgements of old, O Lord; and was comforted.",
+        "troparion": "Though Thou art buried in a grave, though Thou goest down to hell, O Savior Christ, yet hast Thou emptied the graves and stripped hell naked."
+      },
+      {
+        "psalm": "Discouragement has taken hold upon me, because of the wicked that forsake Thy law.",
+        "troparion": "Willingly, O Savior, Thou hast gone down beneath the earth, and Thou hast restored the dead to life, leading them back to the glory of the Father."
+      },
+      {
+        "psalm": "Thy statutes have been my songs in the house of my pilgrimage.",
+        "troparion": "One of the Trinity endures a shameful death in the flesh on our account; the sun trembles and the earth quakes."
+      },
+      {
+        "psalm": "I have remembered Thy Name, O Lord, in the night, and have kept Thy law.",
+        "troparion": "Offspring from a bitter source, the children of the tribe of Judah have cast into a pit Jesus who fed them with manna."
+      },
+      {
+        "psalm": "This has been my reward, because I sought Thy precepts.",
+        "troparion": "The Judge stood as one accused before the judgement-seat of Pilate, and He was condemned to an unjust death upon the wood of the Cross."
+      },
+      {
+        "psalm": "Thou art my portion, O Lord: I have said that I would keep Thy law.",
+        "troparion": "O arrogant Israel, O people guilty of blood, why hast thou set free Barabbas but delivered the Savior to be crucified?"
+      },
+      {
+        "psalm": "I entreated Thy favor with my whole heart: be merciful unto me according to Thy word.",
+        "troparion": "With Thy hand Thou hast fashioned Adam from the earth; and for his sake Thou hast become by nature man and wast of Thine own will crucified."
+      },
+      {
+        "psalm": "I thought on Thy ways, and turned my feet unto Thy testimonies.",
+        "troparion": "In obedience to Thine own Father, O Word, Thou hast descended to dread hell and raised up the race of mortal men."
+      },
+      {
+        "psalm": "I made ready, and I was not troubled: that I might keep Thy commandments.",
+        "troparion": "“Woe is me, Light of the world! Woe is me, my Light! Jesus, my heart's desire!” cried the Virgin in her bitter grief."
+      },
+      {
+        "psalm": "The cords of the wicked have entangled me: but I have not forgotten Thy law.",
+        "troparion": "O bloodthirsty people, jealous and vengeful! May the very grave-clothes and the napkin put you to shame at Christ's Resurrection."
+      },
+      {
+        "psalm": "At midnight I rose to give thanks unto Thee because of the judgements of Thy righteousness.",
+        "troparion": "Come, evil disciple, murderer of thy Lord, and show me the manner of thy wickedness, how thou hast become Christ's betrayer."
+      },
+      {
+        "psalm": "I am a companion of all them that fear Thee and keep Thy commandments.",
+        "troparion": "O blind fool, utterly wicked, implacable in hatred, thou dost make a pretense of love for men, yet thou hast sold for money the sweet Myrrh."
+      },
+      {
+        "psalm": "The earth, O Lord, is full of Thy mercy: teach me Thy statutes.",
+        "troparion": "What price hast thou received for the heavenly Myrrh? What wast thou given in exchange for Him who is precious? Thou hast gained folly and madness, O accursed Satan."
+      },
+      {
+        "psalm": "Thou hast dealt well with Thy servant, O Lord, according unto Thy word.",
+        "troparion": "If thou lovest the poor and dost grieve over the ointment emptied out in cleansing propitiation for a soul, how canst thou sell the Giver of Light for gold?"
+      },
+      {
+        "psalm": "Teach me goodness, discipline and knowledge: for I have believed in Thy commandments.",
+        "troparion": "“O my God and Word, my Joy, how shall I endure Thy three days in the tomb? Now is my heart torn in pieces by a mother's grief.”"
+      },
+      {
+        "psalm": "Before I was humbled I went astray: but now have I kept Thy word.",
+        "troparion": "“Who will give me water and springs of tears,” cried the Virgin Bride of God, “that I may weep for my sweet Jesus?”"
+      },
+      {
+        "psalm": "Thou art good, O Lord: in Thy goodness teach me Thy statutes.",
+        "troparion": "“O hills and valleys, the multitude of men, and all creation, weep and lament with me, the Mother of our God.”"
+      },
+      {
+        "psalm": "The injustice of the proud is multiplied against me: but I will seek Thy commandments with my whole heart.",
+        "troparion": "“When shall I see Thee, Savior, Light eternal, the joy and gladness of my heart?” cried the Virgin in her bitter grief."
+      },
+      {
+        "psalm": "Their heart is curdled like milk; but my study has been in Thy law.",
+        "troparion": "Thy side was pierced, O Savior, like the rock of flint in the wilderness; but Thou hast poured forth a stream of living water, for Thou art the Fount of Life."
+      },
+      {
+        "psalm": "It is good for me that Thou hast humbled me: that I might learn Thy statutes.",
+        "troparion": "Out of Thy side, as from a single source, there flows a double stream; and drinking from it we gain immortal life."
+      },
+      {
+        "psalm": "The law of Thy mouth is better unto me than thousands of gold and silver pieces.",
+        "troparion": "Of Thine own will, O Word, Thou wast laid dead in the tomb: yet dost Thou live, my Savior, and, as Thou hast foretold, Thou shalt raise up mortal men by Thy Resurrection. Glory be to the Father. . . . O Word and God of all, in our hymns we praise Thee with the Father and Thy Holy Spirit, and we glorify Thy divine burial. Both now. . . Theotokion We bless thee, O pure Theotokos, and with faith we honor the three-day burial of thy Son and our God. Thou who art Life wast laid in a tomb, O Christ, and the hosts of angels were amazed and glorified Thy self-abasement. The beginning of the procession with the epitaphios at the end of Matins."
       },
       {
         "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
-        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
+        "troparion": "O Word and God of all, in our hymns we praise Thee with the Father and the Holy Spirit, and we glorify Thy burial."
       },
       {
         "psalm": "Now and ever and unto ages of ages. Amen.",
-        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
+        "troparion": "We bless thee, O pure Theotokos, and with faith we honor the burial three days suffered by thy Son, Who is our God."
       }
     ]
   },
-
   "stasis2": {
-    "_note": "Stasis 2 — 'Worthy is it to magnify Thee, O Giver of Life.' Tone 5. Continues Psalm 118 with troparia.",
+    "_note": "Stasis 2 — Tone 5. Psalm 118:73–131 (Yod–Ayin) with troparia. 59 pairs + Glory + Now. Translation: Mother Mary / Kallistos Ware.",
     "tone": 5,
-    "refrain": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy.",
+    "refrain": "It is right to magnify Thee, Giver of Life, who hast stretched out Thine arms upon the Cross and broken the power of the enemy.",
     "verses": [
       {
-        "psalm": "Thy hands have made me and fashioned me; give me understanding, that I may learn Thy commandments.",
-        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
+        "psalm": "Thy hands have made me and fashioned me: give me understanding, and I shall learn Thy commandments.",
+        "troparion": "It is right to magnify Thee, Creator of all, for through Thy Passion we are freed from passions and corruption."
       },
       {
-        "psalm": "They that fear Thee will be glad when they see me, because I have hoped in Thy word.",
-        "troparion": "Worthy is it to magnify Thee, the Creator of all, for through Thy sufferings we have been freed from suffering and delivered from corruption."
+        "psalm": "They that fear Thee will be glad when they see me: because I have hoped in Thy words.",
+        "troparion": "The earth trembled with fear, O Savior Christ, and the sun hid itself, seeing Thee, the Light that knows no evening, sinking in Thy body down into the tomb."
       },
       {
-        "psalm": "I know, O Lord, that Thy judgments are right, and that Thou in faithfulness hast afflicted me.",
-        "troparion": "O how the earth trembles! How the sun hides its face! For the never-setting Sun has set in the tomb in the flesh."
-      },
-      {
-        "psalm": "Let, I pray Thee, Thy merciful kindness be for my comfort, according to Thy word unto Thy servant.",
-        "troparion": "Christ is fallen asleep, but His watchful plan brings death to death, and from their graves He raises the dead."
-      },
-      {
-        "psalm": "Let Thy tender mercies come unto me, that I may live; for Thy law is my delight.",
-        "troparion": "O God, Who art above all, who would dare take thought to wash Thy Body? For it trembles, and the earth quakes with fear!"
-      },
-      {
-        "psalm": "Let the proud be ashamed, for they dealt perversely with me without a cause; but I will meditate in Thy precepts.",
-        "troparion": "O strange wonder! He Who sustains creation suffers willingly, and is laid in the tomb as one dead, that He may give life to the dead."
-      },
-      {
-        "psalm": "Let those that fear Thee turn unto me, and those that have known Thy testimonies.",
-        "troparion": "In a borrowed tomb Thou art laid, O Christ, Thou Who by nature canst not be contained, that Thou mayest open the gates of paradise."
-      },
-      {
-        "psalm": "Let my heart be sound in Thy statutes, that I be not ashamed.",
-        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
-      },
-      {
-        "psalm": "My soul hath longed for Thy salvation; I have hoped in Thy word.",
-        "troparion": "Both higher and lower creation mourn Thee, O Jesus: the sun is darkened and the earth trembles."
-      },
-      {
-        "psalm": "Mine eyes fail for Thy word, saying: When wilt Thou comfort me?",
-        "troparion": "The rocks are split and the veil of the temple is torn in two, for the Master endures the Cross for us sinners."
-      },
-      {
-        "psalm": "For I am become like a bottle in the smoke; yet do I not forget Thy statutes.",
-        "troparion": "Thou hast set in the west like the sun, O Jesus, and beneath the earth art Thou hidden, to bring light to all who are in the night of death."
-      },
-      {
-        "psalm": "How many are the days of Thy servant? When wilt Thou execute judgment on them that persecute me?",
-        "troparion": "The Master of all is dead, and the earth has received Him in its womb; a soldier stands at the sealed tomb."
-      },
-      {
-        "psalm": "The proud have digged pits for me, which is not after Thy law.",
-        "troparion": "Thou dost free Adam from corruption, O Savior, and raise the dead from hell by Thy death."
-      },
-      {
-        "psalm": "All Thy commandments are truth; they persecute me wrongfully; help Thou me.",
-        "troparion": "Weeping, the Virgin cried: The light of the world has been buried in a tomb; but arise, O Savior, and save me!"
-      },
-      {
-        "psalm": "They had almost consumed me upon earth; but I forsook not Thy precepts.",
-        "troparion": "How can I lament Thee, O my God? cried the Virgin. If I lament Thee not, the very stones will cry out!"
-      },
-      {
-        "psalm": "Quicken me after Thy lovingkindness; so shall I keep the testimony of Thy mouth.",
-        "troparion": "Worthy is it to magnify Thee, the Giver of Life, Who didst stretch out Thy hands upon the Cross and destroy the power of the enemy."
-      },
-      {
-        "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
-        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
-      },
-      {
-        "psalm": "Now and ever and unto ages of ages. Amen.",
-        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
-      }
-    ]
-  },
-
-  "stasis3": {
-    "_note": "Stasis 3 — 'All generations offer the hymn of burial praise to Thee, O my Christ.' Tone 3.",
-    "tone": 3,
-    "refrain": "All generations offer the hymn of burial praise to Thee, O my Christ.",
-    "verses": [
-      {
-        "psalm": "The proud have forged a lie against me, but I will keep Thy precepts with my whole heart.",
-        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
-      },
-      {
-        "psalm": "Their heart is as gross as fat, but I have delighted in Thy law.",
-        "troparion": "The myrrh-bearing women came with myrrh to anoint Thee, O Christ."
-      },
-      {
-        "psalm": "It is good for me that I have been in trouble, that I might learn Thy statutes.",
-        "troparion": "Come, let us all sing hymns to Christ as He is put to death, as the faithful myrrh-bearing women did."
-      },
-      {
-        "psalm": "The law of Thy mouth is better unto me than thousands of gold and silver.",
-        "troparion": "Death is truly the death of death, for Christ, being dead, has raised the dead."
-      },
-      {
-        "psalm": "Thy hands have made me and fashioned me; give me understanding, that I may learn Thy commandments.",
-        "troparion": "O great and most sacred wonder! The Creator of all lies hidden in the earth."
-      },
-      {
-        "psalm": "They that fear Thee will be glad when they see me, because I have hoped in Thy word.",
-        "troparion": "Though Thou art placed in a tomb, O Word, yet Thou art not separated from the Father's bosom."
-      },
-      {
-        "psalm": "I know, O Lord, that Thy judgments are right, and that Thou in faithfulness hast afflicted me.",
-        "troparion": "Thou hast come, O Christ, as a Bridegroom adorned from the chamber, to seek Thy lost creation."
+        "psalm": "I know, O Lord, that Thy judgements are right, and that with truth Thou hast humbled me.",
+        "troparion": "Thou hast slept, O Christ, a life-giving sleep in the tomb, and aroused mankind from the heavy slumber of sin."
       },
       {
         "psalm": "O let Thy merciful kindness be for my comfort, according to Thy word unto Thy servant.",
-        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
+        "troparion": "“Alone among women without pain I bore Thee, my Child', said the Holy Virgin. “But now at Thy Passion I suffer unbearable pain.”"
       },
       {
-        "psalm": "Let Thy tender mercies come unto me, that I may live; for Thy law is my delight.",
-        "troparion": "The earth covers Thee, O Savior, but the heavenly hosts tremble at Thy sight."
+        "psalm": "Let Thy tender mercies come unto me, and I shall live: for Thy law is my study.",
+        "troparion": "The seraphim, O Savior, beheld Thee on high, united inseparably with the Father, yet they saw Thee below lying dead in the tomb; and they trembled with fear."
       },
       {
-        "psalm": "Let the proud be ashamed, for they dealt perversely with me without a cause; but I will meditate in Thy precepts.",
-        "troparion": "O sweetest Jesus, the Church cries out to Thee: I am bereft of Thee, but Thou art my Life."
+        "psalm": "Let the proud be ashamed, for they have transgressed against me unjustly: but I will meditate on Thy commandments.",
+        "troparion": "The veil of the temple is rent in twain at Thy Crucifixion, O Word, and the lights of heaven hide their radiance, when Thou, the Sun, art hidden beneath the earth."
       },
       {
-        "psalm": "Let those that fear Thee turn unto me, and those that have known Thy testimonies.",
-        "troparion": "O Jesus, Thou King and Lord of all, why hast Thou come to raise those in hell?"
+        "psalm": "Let those that fear Thee turn unto me, and those that know Thy testimonies.",
+        "troparion": "He who at the beginning by His will alone set the earth upon its course, now descends dead beneath the earth. Tremble, O Heaven, at this sight."
       },
       {
-        "psalm": "Let my heart be sound in Thy statutes, that I be not ashamed.",
-        "troparion": "Thou art called the never-setting Sun, O Jesus, and Thou settest beneath the earth; arise and shine forth!"
+        "psalm": "Let my heart be blameless in Thy statutes: that I be not ashamed.",
+        "troparion": "O Thou who hast fashioned Adam with Thine own hand, Thou hast gone down beneath the earth, to raise up fallen men by Thine almighty power."
       },
       {
-        "psalm": "My soul hath longed for Thy salvation; I have hoped in Thy word.",
-        "troparion": "O Thou Who art the Life, Thou art laid in a tomb; and trembling, hell was destroyed by Thy might."
+        "psalm": "My soul faints for Thy salvation: and I have hoped in Thy words.",
+        "troparion": "Come, and as the women bearing myrrh let us sing a holy lament to the dead Christ, that like them we too may hear Him say “Rejoice!'"
       },
       {
-        "psalm": "Mine eyes fail for Thy word, saying: When wilt Thou comfort me?",
-        "troparion": "The women have brought myrrh to Thee, and the earth offers Thee a tomb, O Master."
+        "psalm": "Mine eyes have grown dim with waiting for Thy word; they say: when wilt Thou comfort me?",
+        "troparion": "Thou art in very truth, O Word, the myrrh that never fails: yet the women with their spices brought myrrh to Thee, the living God, to anoint Thee as a corpse."
       },
       {
-        "psalm": "For I am become like a bottle in the smoke; yet do I not forget Thy statutes.",
-        "troparion": "All generations offer the hymn of burial praise to Thee, O my Christ."
+        "psalm": "For I am become like a wineskin in the frost; yet have I not forgotten Thy statutes.",
+        "troparion": "Through Thy burial, O Christ, Thou dost destroy the palaces of hell: by Thy death Thou slayest death, and dost deliver from cor­ruption the children of the earth."
+      },
+      {
+        "psalm": "How many are the days of Thy servant? When wilt Thou execute judgement on them that persecute me?",
+        "troparion": "Source of the river of life, the Wisdom of God descends into the tomb and gives life to all those in the depths of hell."
+      },
+      {
+        "psalm": "The transgressors told me idle tales, which are not after Thy law, O Lord.",
+        "troparion": "“To renew the broken nature of mortal men, willingly have I been wounded in the flesh by death. O Mother, do not strike thy breast in grief.”"
+      },
+      {
+        "psalm": "All Thy commandments are true: they persecute me wrongfully; help Thou me.",
+        "troparion": "O Morning Star of righteousness, Thou art gone down beneath the earth and hast raised up the dead as if from sleep, dispersing all the darkness of hell."
+      },
+      {
+        "psalm": "They had almost made an end of me upon earth; but I forsook not Thy commandments.",
+        "troparion": "The life-giving Seed, twofold in nature, today is sown with tears in the furrows of the earth; but springing up He will bring joy to the world."
+      },
+      {
+        "psalm": "Quicken me according to Thy mercy; so shall I keep the testimonies of Thy mouth.",
+        "troparion": "Adam was afraid when God walked in Paradise, but now he rejoices when God descends to hell. Then he fell, but now he is raised up."
+      },
+      {
+        "psalm": "Forever, O Lord, Thy word endures in Heaven.",
+        "troparion": "Seeing Thy body laid in the tomb, O Christ, Thy Mother brings Thee the offering of her tears, and she says: “Arise, my Child, as Thou hast foretold.”"
+      },
+      {
+        "psalm": "Thy truth also remains from one generation to another: Thou hast established the earth, and it abides.",
+        "troparion": "Joseph hid Thee reverently in a new tomb, O Savior, and lamenting sang to Thee a funeral hymn fitting for God."
+      },
+      {
+        "psalm": "The day continues according to Thine ordinance: for all things are Thy servants.",
+        "troparion": "Seeing Thee, O Word, pierced with nails upon the Cross, Thy Mother was wounded in her soul with the nails and arrows of bitter grief."
+      },
+      {
+        "psalm": "Unless Thy law had been my study, I should have perished in my humiliation.",
+        "troparion": "Thy Mother saw Thee drink the bitter vinegar, O Sweetness of the world, and her cheeks were wet with bitter tears."
+      },
+      {
+        "psalm": "I will never forget Thy precepts: for with them Thou hast quickened me.",
+        "troparion": "“I am grievously wounded and my heart is torn, O Word, as I behold Thee slain unjustly', said the All-pure Virgin weeping."
+      },
+      {
+        "psalm": "I am Thine, save me; for I have sought Thy precepts.",
+        "troparion": "“How shall I close Thy sweet eyes and Thy lips, O Word? And how shall I lay Thee out for burial as a corpse?” cried Joseph trembling."
+      },
+      {
+        "psalm": "Sinners have waited for me to destroy me: but I have understood Thy testimonies.",
+        "troparion": "Joseph and Nicodemus now sing hymns of burial to the dead Christ; and with them sing the seraphim."
+      },
+      {
+        "psalm": "I have seen the outcome of all perfection: but Thy commandment is exceeding broad.",
+        "troparion": "O Savior, Sun of Righteousness, Thou dost set beneath the earth: therefore the Moon, Thy Mother, is eclipsed in grief, seeing Thee no more."
+      },
+      {
+        "psalm": "O how I have loved Thy law, O Lord! It is my meditation all the day.",
+        "troparion": "Hell trembled, O Savior, when he saw Thee, the Giver of Life, despoiling him of his wealth and raising up the dead from every age."
+      },
+      {
+        "psalm": "Thou through Thy commandment hast made me wiser than mine enemies: for it is mine forever.",
+        "troparion": "After the night the sun shines out again in brightness; and after death do Thou, O Word, arise once more and shine in Thy glory, as a bridegroom coming from his chamber."
+      },
+      {
+        "psalm": "I have more understanding than all my teachers: for Thy testimonies are my meditation.",
+        "troparion": "When she received Thee in her bosom, O Creator and Savior, the earth shook in fear, and with her quaking she awoke the dead."
+      },
+      {
+        "psalm": "I understand more than my elders, because I have sought Thy commandments.",
+        "troparion": "In a new and strange way Nicodemus and noble Joseph buried Thee with spices, and they cried aloud: “Tremble, all the earth!”"
+      },
+      {
+        "psalm": "I have restrained my feet from every evil way, that I might keep Thy words.",
+        "troparion": "Thou hast gone down beneath the earth, O Creator of light, and with Thee the sun's light has also set; creation is seized with trembling and proclaims Thee the Maker of all."
+      },
+      {
+        "psalm": "I have not departed from Thy judgements: for Thou hast taught me.",
+        "troparion": "A stone hewn from the rock covers the Cornerstone; and a mortal man now buries God in the grave as one dead. Tremble, O earth!"
+      },
+      {
+        "psalm": "How sweet are Thy words unto my taste! yea, sweeter than honey to my mouth!",
+        "troparion": "“Behold the disciple whom Thou hast loved and Thine own Mother, O my sweetest Child, and do Thou speak to them,” cried the pure Virgin weeping."
+      },
+      {
+        "psalm": "Through Thy commandments I have gained understanding: therefore have I hated every evil way.",
+        "troparion": "Since Thou art Life-giver, O Word, when stretched out upon the Cross, Thou hast not slain the Jews but raised their forefathers from the dead."
+      },
+      {
+        "psalm": "Thy law is a lamp unto my feet, and a light unto my path.",
+        "troparion": "At Thy Passion, O Word, there was neither form nor beauty in Thee: but Thou hast risen in glory, and with Thy divine light Thou hast given beauty to mortal men."
+      },
+      {
+        "psalm": "I have sworn, and am steadfastly purposed, that I will keep the judgements of Thy righteousness.",
+        "troparion": "Daystar without evening, Thou hast gone down in the flesh neath the earth; and the sun grew dark at height of noon-day, for could not bear to look upon Thee."
+      },
+      {
+        "psalm": "I have been very greatly humbled: quicken me, O Lord, according unto Thy word.",
+        "troparion": "The sun and moon grew dark together, O Savior, like faithful servants clothed in black robes of mourning."
+      },
+      {
+        "psalm": "Accept, I beseech Thee, the free-will offerings of my mouth, O Lord, and teach me Thy judgements.",
+        "troparion": "“The centurion knew Thee to be God, though Thou wast dead. How, then, my God, shall I touch Thee with my hands? I am afraid,” cried Joseph."
+      },
+      {
+        "psalm": "My soul is continually in Thy hands: yet have I not forgotten Thy law.",
+        "troparion": "Adam slept, and from his side there came death; now Thou dost sleep, O Word of God, and from Thy side there flows a fountain of life for the world."
+      },
+      {
+        "psalm": "Sinners have laid a snare for me: yet have I not gone astray from Thy commandments.",
+        "troparion": "Thou hast slept a little while, and brought the dead to life; Thou hast arisen, O loving Lord, and raised up those that from the be­ginning of time had fallen asleep."
+      },
+      {
+        "psalm": "Thy testimonies have I received as an heritage forever: for they are the rejoicing of my heart.",
+        "troparion": "O life-giving Vine, Thou wast lifted up from the earth, yet hast Thou poured out the wine of salvation. I glorify Thy Passion and Thy Cross."
+      },
+      {
+        "psalm": "I have inclined my heart to perform Thy statutes: for therein is an everlasting reward.",
+        "troparion": "When the chief captains of the heavenly hosts saw Thee, Savior, stripped, bloodstained and condemned, how could they bear the boldness of Thy crucifiers?"
+      },
+      {
+        "psalm": "I have hated transgressors: but Thy law have I loved.",
+        "troparion": "Perverse and crooked people of the Hebrews, ye knew how the temple would be raised again: why then did ye condemn Christ?"
+      },
+      {
+        "psalm": "Thou art my helper and defender: I have hoped in Thy words.",
+        "troparion": "In a robe of mockery ye clothe Him who ordered all things, who adorned the heavens with stars and the earth with wonders."
+      },
+      {
+        "psalm": "Depart from me, ye evildoers: for I will seek the commandments of my God.",
+        "troparion": "Wounded in Thy side, O Word, through the life-giving drops of Thy blood as the pelican Thou hast restored Thy dead children to life."
+      },
+      {
+        "psalm": "Uphold me according unto Thy word, and give me life: and turn me not away in shame from mine expectation.",
+        "troparion": "Of old Joshua made the sun stand still, as he smote the heathen tribes; but Thou hast blotted out its light, whilst casting down the prince of darkness."
+      },
+      {
+        "psalm": "Help me, and I shall be saved: and my study shall be ever in Thy statutes.",
+        "troparion": "Without leaving Thy Father's side, O merciful Christ, Thou hast consented in Thy love to become a mortal man, and Thou hast gone down to hell."
+      },
+      {
+        "psalm": "Thou hast brought to nothing all them that depart from Thy statutes: for their inward thought is unrighteous.",
+        "troparion": "He who hung the earth upon the waters is hung upon the Cross. As a lifeless corpse He is laid in the earth, and it quakes in terror, unable to endure His presence."
+      },
+      {
+        "psalm": "I have regarded all the wicked of the earth as transgressors: therefore I love Thy testimonies.",
+        "troparion": "“Woe is me, my Son!” laments the Virgin. “I see Thee now condemned upon the Cross, whom I had hoped to see enthroned as King.”"
+      },
+      {
+        "psalm": "Nail my flesh with the fear of Thee: for I am afraid of Thy judgements.",
+        "troparion": "“Such were the tidings Gabriel brought me when he flew down from Heaven: for he said that the Kingdom of my Son Jesus would be eternal.”"
+      },
+      {
+        "psalm": "I have done judgement and justice: O give me not over unto mine oppressors.",
+        "troparion": "“Alas! the prophecy of Simeon has been fulfilled: for Thy sword has pierced my heart, Emmanuel.”"
+      },
+      {
+        "psalm": "Be surety for Thy servant for good: let not the proud accuse me falsely.",
+        "troparion": "Be ashamed, O Jews, for the Life-giver raised your dead, yet ye slew Him out of envy."
+      },
+      {
+        "psalm": "Mine eyes have failed with waiting for Thy salvation, and for the word of Thy righteousness.",
+        "troparion": "Seeing Thee, my Christ, the Light invisible, hidden lifeless in the tomb, the sun trembled and darkened its light."
+      },
+      {
+        "psalm": "Deal with Thy servant according unto Thy mercy, and teach me Thy statutes.",
+        "troparion": "Thine all-blameless Mother wept bitterly, O Word, when she beheld Thee in the grave, God ineffable and without beginning."
+      },
+      {
+        "psalm": "I am Thy servant; give me understanding, that I may know Thy testimonies.",
+        "troparion": "Thine undefiled Mother, seeing Thy death, O Christ, cried to Thee in bitter sorrow: “Tarry not, O Life, among the dead.”"
+      },
+      {
+        "psalm": "It is time for the Lord to act: for they have made void Thy law.",
+        "troparion": "Cruel hell trembled when he saw Thee, O immortal Sun of glory, and in haste he yielded up his prisoners."
+      },
+      {
+        "psalm": "Therefore have I loved Thy commandments above gold or topaz.",
+        "troparion": "Great and fearful is the sight now before our eyes, O Savior: for of His own will the Cause of life submits to death, that He may give life to all."
+      },
+      {
+        "psalm": "Therefore I walked uprightly according unto all Thy com­mandments: and I hated every evil way.",
+        "troparion": "Thy side is pierced, O Master, and Thy hands are transfixed with nails; so Thou healest the wound of our first parents and the sinful greed of their hands."
+      },
+      {
+        "psalm": "Thy testimonies are wonderful: therefore has my soul sought them.",
+        "troparion": "Once they wept in every house for Rachel's child; and now the company of Christ's disciples with His Mother lament for the Virgin's Son."
+      },
+      {
+        "psalm": "The revelation of Thy words shall give light and under­standing unto the simple.",
+        "troparion": "With their hands they struck Christ in the face, though He it was who formed man with His hand and crushed the teeth of the beast."
+      },
+      {
+        "psalm": "I opened my mouth, and drew in my breath: for I longed for Thy commandments.",
+        "troparion": "In our hymns, O Christ, with all the faithful we worship now Thy Crucifixion and Thy Sepulchre, for by Thy burial we are set free from death. Glory be to the Father. . . . O God without beginning, Word coeternal, and Holy Spirit, in Thy love strengthen the power of our rulers against their enemies. Both now… Theotokion O Virgin pure and undefiled, who hast given birth to our Life, bring to an end the scandals of the Church and in thy love grant her peace."
       },
       {
         "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
-        "troparion": "O Trinity, our God, the Father, the Son, and the Holy Spirit, have mercy on the world."
+        "troparion": "O God without beginning, Word coeternal, and Holy Spirit, in Thy love for mankind grant peace unto the world."
       },
       {
         "psalm": "Now and ever and unto ages of ages. Amen.",
-        "troparion": "Grant us, O Virgin, to behold the Resurrection of thy Son, as we sing His praise with glory."
+        "troparion": "O Virgin pure and undefiled, who hast given birth to our Life, bring to an end the scandals of the Church, and grant her peace, for thou art good."
       }
     ]
   },
-
+  "stasis3": {
+    "_note": "Stasis 3 — Tone 3. Psalm 118:132–176 (Pe–Tav) with troparia. 45 pairs + Glory + Now. Translation: Mother Mary / Kallistos Ware.",
+    "tone": 3,
+    "refrain": "Every generation, O my Christ, offers praises at Thy burial.",
+    "verses": [
+      {
+        "psalm": "Look Thou upon me, and be merciful unto me, according the judgement of those that love Thy Name.",
+        "troparion": "Taking Thee down from the Tree, Joseph of Arimathaea lay Thee in a sepulchre."
+      },
+      {
+        "psalm": "Order my steps in Thy word: and let not any iniquity have dominion over me.",
+        "troparion": "Providently bringing Thee sweet spices, O my Christ, the Myrrh-bearers drew near."
+      },
+      {
+        "psalm": "Deliver me from the false accusation of men: so will I keep Thy commandments.",
+        "troparion": "Come, and with the whole creation let us offer a funeral hymn to the Creator."
+      },
+      {
+        "psalm": "Make Thy face to shine upon Thy servant; and teach me Thy statutes.",
+        "troparion": "Understanding what we do, with the Myrrhbearers let us all anoint the Living as a corpse."
+      },
+      {
+        "psalm": "Rivers of water have run down from mine eyes, because I kept not Thy law.",
+        "troparion": "O thrice-blessed Joseph, bury the body of Christ, the Giver of Life."
+      },
+      {
+        "psalm": "Righteous art Thou, O Lord, and upright are Thy judgements.",
+        "troparion": "Those He fed with manna have lifted up their heel against their Benefactor."
+      },
+      {
+        "psalm": "Thy testimonies that Thou hast commanded are righteous and very faithful.",
+        "troparion": "Those He fed with manna offer to the Savior vinegar and gall."
+      },
+      {
+        "psalm": "My zeal has consumed me, because mine enemies have forgotten Thy words.",
+        "troparion": "O the folly of those who killed the prophets and slew Christ!"
+      },
+      {
+        "psalm": "Thy word is tried in the fire to the uttermost: therefore has Thy servant loved it.",
+        "troparion": "Like a foolish servant, the disciple has betrayed the Abyss of Wisdom."
+      },
+      {
+        "psalm": "I am young and despised: yet have I not forgotten Thy statutes.",
+        "troparion": "Judas the traitor has sold his Deliverer and himself become a captive."
+      },
+      {
+        "psalm": "Thy righteousness is an everlasting righteousness, and Thy law is. truth.",
+        "troparion": "As Solomon said, the mouth of the transgressing Hebrews is a deep pit."
+      },
+      {
+        "psalm": "Trouble and anguish have taken hold on me: yet Thy com­mandments are my study.",
+        "troparion": "In the crooked paths of the transgressing Hebrews there are thorns and snares."
+      },
+      {
+        "psalm": "The righteousness of Thy testimonies is everlasting: give me understanding, and I shall live.",
+        "troparion": "Joseph and Nicodemus bury the Creator with the honors that befit the dead."
+      },
+      {
+        "psalm": "I cried with my whole heart; hear me, O Lord: I will seek Thy statutes.",
+        "troparion": "Life-giver and Savior, Thou hast destroyed hell: to Thy power be glory!"
+      },
+      {
+        "psalm": "I cried unto Thee; save me, and I shall keep Thy testimonies.",
+        "troparion": "When she saw Thee lying dead, O Word, the all-pure Virgin wept with a mother's grief."
+      },
+      {
+        "psalm": "I rose up before it was dawn, and cried: I have hoped in Thy word.",
+        "troparion": "“O my sweet springtime, O my sweetest Child, where has all Thy beauty gone?”"
+      },
+      {
+        "psalm": "Mine eyes woke before the morning: that I might meditate in Thy words.",
+        "troparion": "When Thou, O Word, wast dead, Thine all-pure Mother raised a lamentation for Thee."
+      },
+      {
+        "psalm": "Hear my voice according unto Thy loving-kindness, O Lord quicken me according to Thy judgement.",
+        "troparion": "The women came with myrrh to anoint Christ, the Myrrh of Cod."
+      },
+      {
+        "psalm": "They draw nigh that persecute me unlawfully: they are far from Thy Law.",
+        "troparion": "By dying, O my God, Thou puttest death to death through Thy divine power."
+      },
+      {
+        "psalm": "Thou art near, O Lord; and all Thy ways are truth.",
+        "troparion": "The deceiver is deceived, and those he misled are set free by Thy wisdom, O my God."
+      },
+      {
+        "psalm": "Concerning Thy testimonies, I have known of old that Thou hast founded them forever.",
+        "troparion": "The traitor was cast down to the depths of hell, and to the pit of destruction."
+      },
+      {
+        "psalm": "Behold my humiliation, and deliver me: for I have not for­gotten Thy law.",
+        "troparion": "Thorns and snares beset the path of Judas the foolish and the thrice-wretched."
+      },
+      {
+        "psalm": "Judge my cause, and deliver me: quicken me according to Thy word.",
+        "troparion": "All that crucified Thee shall be destroyed together, O Word, Thou Son of God and King of all."
+      },
+      {
+        "psalm": "Salvation is far from the wicked: for they have not sought Thy statutes.",
+        "troparion": "In the pit of destruction shall all the men of blood be destroyed together."
+      },
+      {
+        "psalm": "Many are Thy tender mercies, O Lord: quicken me accord­ing to Thy judgement.",
+        "troparion": "O Son of God and King of all, my God and my Creator, how hast Thou accepted suffering?"
+      },
+      {
+        "psalm": "Many are they that persecute and afflict me: yet have I not turned aside from Thy testimonies.",
+        "troparion": "As the mother of a foal, the Virgin gazed on Thee in grief when she saw Thee hanging on the Tree."
+      },
+      {
+        "psalm": "I beheld the foolish and was grieved; because they kept not Thy words.",
+        "troparion": "Joseph and Nicodemus bury the body that is the Source of life."
+      },
+      {
+        "psalm": "See how I have loved Thy commandments: quicken me, O Lord, in Thy mercy.",
+        "troparion": "Pierced to the heart, the Virgin shed warm tears and cried aloud."
+      },
+      {
+        "psalm": "The beginning of Thy words is truth: and every one of Thy righteous judgements endures forever.",
+        "troparion": "“O Light of mine eyes, my sweetest Child, how art Thou hidden now in the sepulchre?”"
+      },
+      {
+        "psalm": "Princes have persecuted me without a cause: but my heart stands in awe of Thy words.",
+        "troparion": "“Weep not, O Mother, for I suffer this to set at liberty Adam and live.”"
+      },
+      {
+        "psalm": "I will rejoice at Thy words, as one that finds great spoil.",
+        "troparion": "“O my Son, I glorify Thy supreme compassion, that causes Thee to suffer so.”"
+      },
+      {
+        "psalm": "I have hated and abhorred injustice: but Thy law have I loved.",
+        "troparion": "Thou hast drunk vinegar and gall, in Thy compassion, to loose us from the guilt of the forbidden fruit."
+      },
+      {
+        "psalm": "Seven times a day have I praised Thee because of the judgements of Thy righteousness.",
+        "troparion": "Thou art nailed upon the Cross, who of old hast sheltered Thy people with a pillar of cloud."
+      },
+      {
+        "psalm": "Great peace have they that love Thy law: and for them there is no stumbling-block.",
+        "troparion": "The women bearing myrrh came, O Savior, to Thy tomb and offered Thee sweet spices."
+      },
+      {
+        "psalm": "Lord, I have looked for Thy salvation, and loved Thy commandments.",
+        "troparion": "Arise, O merciful Lord, and raise us from the depths of hell,"
+      },
+      {
+        "psalm": "My soul has kept Thy testimonies: and loved them exceedingly.",
+        "troparion": "“Arise, O Giver of Life', the Mother who bore Thee said with tears."
+      },
+      {
+        "psalm": "I have kept Thy commandments and Thy testimonies: for all my ways are before Thee, O Lord.",
+        "troparion": "Make haste to arise, O Word, and take away the sorrow of Thy Virgin Mother."
+      },
+      {
+        "psalm": "Let my prayer draw near to Thee, O Lord; give me understanding according to Thy word.",
+        "troparion": "All the powers of Heaven were filled with fear and wonder when they saw Thee dead."
+      },
+      {
+        "psalm": "Let my supplication come before Thee, O Lord: deliver mc according to Thy word.",
+        "troparion": "With love and fear we honor Thy Passion: grant us the forgiveness of our sins."
+      },
+      {
+        "psalm": "Let my lips speak of Thy praise: for Thou hast taught me Thy statutes.",
+        "troparion": "Strange and dreadful wonder! How art Thou now hidden in the earth, O Word of God?"
+      },
+      {
+        "psalm": "Let my tongue speak of Thy words: for all Thy commandments are righteousness.",
+        "troparion": "Joseph once fled with Thee, O Savior, and now another Joseph buries Thee."
+      },
+      {
+        "psalm": "Let Thine hand be near to save me: for I have chosen Thy commandments.",
+        "troparion": "Thine all-holy Mother weeps for Thee lamenting, O my Savior, at Thy death."
+      },
+      {
+        "psalm": "I have longed for Thy salvation, O Lord; and Thy law is my study.",
+        "troparion": "The spiritual powers tremble at Thy strange and fearful burial, O Maker of all."
+      },
+      {
+        "psalm": "My soul shall live, and it shall praise Thee: and Thy judgements shall help me.",
+        "troparion": "Early in the morning the myrrh-bearers came to Thee and sprinkled myrrh upon Thy tomb."
+      },
+      {
+        "psalm": "I have gone astray like a lost sheep: seek Thy servant, for I have not forgotten Thy commandments.",
+        "troparion": "By Thy Resurrection give peace to the Church and salvation to Thy people."
+      },
+      {
+        "psalm": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "troparion": "O my God in Trinity, Father, Son and Spirit, grant Thy mercy to the world."
+      },
+      {
+        "psalm": "Now and ever and unto ages of ages. Amen.",
+        "troparion": "Grant to us thy servants to behold, O Virgin, the Resurrection of thy Son."
+      }
+    ]
+  },
+  "smallLitanies": {
+    "_note": "Small litanies (ektenias) after each stasis. Each has a different priestly exclamation.",
+    "petitions": {
+      "opening": "Again and again, in peace, let us pray to the Lord.",
+      "response": "Lord, have mercy.",
+      "helpUs": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+      "commemoration": "Calling to remembrance our most holy, most pure, most blessed, glorious Lady Theotokos and Ever-Virgin Mary with all the saints, let us commit ourselves and one another and all our life unto Christ our God.",
+      "commitResponse": "To Thee, O Lord."
+    },
+    "afterStasis1": {
+      "exclamation": "For blessed is Thy Name and glorified is Thy Kingdom, of the Father, and of the Son, and of the Holy Spirit, now and ever and unto ages of ages.",
+      "amen": "Amen."
+    },
+    "afterStasis2": {
+      "exclamation": "For holy art Thou, our God, Who dost rest upon the glorious throne of the cherubim, and to Thee we ascribe glory, together with Thine eternal Father and Thy most holy, good and life-creating Spirit, now and ever and unto ages of ages.",
+      "amen": "Amen."
+    },
+    "afterStasis3": {
+      "_note": "Some traditions omit the small litany after Stasis 3 and proceed directly to the Evlogetaria. OCA practice typically includes it.",
+      "exclamation": "For Thou art our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages.",
+      "amen": "Amen."
+    }
+  },
   "evlogetaria": {
     "_note": "Evlogetaria of the Dead, adapted for Holy Saturday. Tone 5. Sung after the three stases.",
     "tone": 5,
@@ -330,7 +850,6 @@
     ],
     "alleluia": "Alleluia, alleluia, alleluia! Glory to Thee, O God! (×3)"
   },
-
   "canon": {
     "_note": "The Great Canon of Holy Saturday. Abbreviated — full odes would be very lengthy.",
     "rubric": "The Canon of Holy Saturday is chanted here. It is the work of Mark, Bishop of Hydrous, and of the Nun Kassiane. The irmoi serve as the katavasia.",
@@ -342,14 +861,12 @@
       "text": "He who holds all things together was lifted on the Cross,\nand all creation wept seeing Him hanging naked on the Tree.\nThe sun hid its rays; the stars withdrew their light.\nThe earth trembled with great fear;\nthe sea fled, and the rocks were split.\nMany tombs were opened, and the bodies of holy men arose.\nHell groaned below, and the Jews sought to slander the Resurrection of Christ;\nbut the women cried:\n\"This is the most blessed Sabbath,\non which Christ has fallen asleep,\nto rise on the third day!\""
     }
   },
-
   "exaposteilarion": {
     "tone": 2,
     "label": "Exaposteilarion",
     "text": "Holy is the Lord our God!",
     "_note": "Sung three times, with the verse 'For He is holy' and 'Exalt the Lord our God.'"
   },
-
   "lauds": {
     "_note": "Lauds stichera. Tone 2. Sung with 'Let every breath praise the Lord.'",
     "hymns": [
@@ -382,29 +899,24 @@
       "text": "Most blessed art thou, O Virgin Theotokos,\nfor through Him Who was incarnate of thee,\nHades is led captive,\nAdam recalled, the curse destroyed,\nEve freed, death slain,\nand we are given life.\nWherefore, we cry out in praise:\nBlessed art Thou, O Christ our God, Who art thus well pleased! Glory to Thee!"
     }
   },
-
   "greatDoxology": {
     "_note": "The Great Doxology is SUNG (not read) at the Lamentations service.",
     "text": "Glory to God in the highest, and on earth peace, good will among men.\n\nWe praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\nO Lord God, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ; and O Holy Spirit.\n\nO Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; Thou that takest away the sins of the world, receive our prayer; Thou that sittest at the right hand of the Father, have mercy on us.\n\nFor Thou only art holy, Thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen.\n\nEvery day will I bless Thee, and I will praise Thy Name forever and ever.\n\nVouchsafe, O Lord, to keep us this day without sin.\n\nBlessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy Name forever. Amen.\n\nLet Thy mercy, O Lord, be upon us, as we have set our hope on Thee.\n\nBlessed art Thou, O Lord; teach me Thy statutes.\nBlessed art Thou, O Master; make me to understand Thy statutes.\nBlessed art Thou, O Holy One; enlighten me with Thy statutes.\n\nThy mercy, O Lord, endureth forever. O despise not the works of Thy hands.\n\nTo Thee belongeth worship, to Thee belongeth praise, to Thee belongeth glory: to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
   },
-
   "trisagion": {
     "_note": "Sung during the procession with the Epitaphios, after the Great Doxology.",
     "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (×3)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nHoly Immortal, have mercy on us.\n\nHoly God, Holy Mighty, Holy Immortal, have mercy on us."
   },
-
   "procession": {
     "_note": "The Epitaphios procession takes place after the Great Doxology. The Trisagion is sung during the procession.",
     "rubric": "The Great Doxology is sung. At its conclusion the priest takes up the Epitaphios (burial shroud of Christ) and carries it in procession around the church, while the Trisagion is chanted."
   },
-
   "prophecy": {
     "_note": "After the procession, the prophecy from Ezekiel is read.",
     "label": "Prophecy of Ezekiel",
     "pericope": "Ezekiel 37:1–14",
     "text": "The hand of the Lord was upon me, and carried me out in the Spirit of the Lord, and set me down in the midst of the valley which was full of bones, and caused me to pass by them round about: and, behold, there were very many in the open valley; and, lo, they were very dry. And He said unto me: Son of man, can these bones live? And I answered: O Lord God, Thou knowest. Again He said unto me: Prophesy upon these bones, and say unto them: O ye dry bones, hear the word of the Lord. Thus saith the Lord God unto these bones: Behold, I will cause breath to enter into you, and ye shall live: and I will lay sinews upon you, and will bring up flesh upon you, and cover you with skin, and put breath in you, and ye shall live; and ye shall know that I am the Lord. So I prophesied as I was commanded: and as I prophesied, there was a noise, and behold a shaking, and the bones came together, bone to his bone. And when I beheld, lo, the sinews and the flesh came up upon them, and the skin covered them above: but there was no breath in them. Then said He unto me: Prophesy unto the wind, prophesy, son of man, and say to the wind: Thus saith the Lord God: Come from the four winds, O breath, and breathe upon these slain, that they may live. So I prophesied as He commanded me, and the breath came into them, and they lived, and stood up upon their feet, an exceeding great army. Then He said unto me: Son of man, these bones are the whole house of Israel: behold, they say: Our bones are dried, and our hope is lost; we are cut off for our parts. Therefore prophesy and say unto them: Thus saith the Lord God: Behold, O My people, I will open your graves, and cause you to come up out of your graves, and bring you into the land of Israel. And ye shall know that I am the Lord, when I have opened your graves, O My people, and brought you up out of your graves, and shall put My Spirit in you, and ye shall live, and I shall place you in your own land: then shall ye know that I the Lord have spoken it, and performed it, saith the Lord."
   },
-
   "epistle": {
     "prokeimenon": {
       "tone": 4,
@@ -422,14 +934,12 @@
       ]
     }
   },
-
   "gospel": {
     "book": "Matthew",
     "pericope": "27:62–66",
     "label": "The Sealing of the Tomb",
     "text": "Now the next day, that followed the day of the preparation, the chief priests and Pharisees came together unto Pilate, saying: Sir, we remember that that deceiver said, while He was yet alive: After three days I will rise again. Command therefore that the sepulchre be made sure until the third day, lest His disciples come by night, and steal Him away, and say unto the people: He is risen from the dead; so the last error shall be worse than the first. Pilate said unto them: Ye have a watch; go your way, make it as sure as ye can. So they went, and made the sepulchre sure, sealing the stone, and setting a watch."
   },
-
   "dismissal": {
     "text": "May He Who for our salvation endured the spitting, and the scourging, and the buffeting, and the Cross, and death, and was laid in the tomb, Christ our true God, through the prayers of His all-pure Mother, and of all the saints, have mercy on us and save us, for He is good and loveth mankind.",
     "response": "Amen."

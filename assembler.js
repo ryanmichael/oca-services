@@ -3134,10 +3134,22 @@ function assembleLamentations(f) {
     }
   }
 
-  // ── Small Litany ───────────────────────────────────────────────────────────
-  blocks.push(S('sl-1', 'Small Litany', 'prayer', 'deacon',
-    'Again and again, in peace, let us pray to the Lord.'));
-  blocks.push(S('sl-1-resp', 'Small Litany', 'response', 'choir', 'Lord, have mercy.'));
+  // ── Small Litany after Stasis 1 ─────────────────────────────────────────────
+  {
+    const section = 'Small Litany';
+    const sl = f.smallLitanies || {};
+    const pet = sl.petitions || {};
+    blocks.push(S('sl-1-open', section, 'prayer', 'deacon',
+      pet.opening || 'Again and again, in peace, let us pray to the Lord.'));
+    blocks.push(S('sl-1-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-1-help', section, 'prayer', 'deacon', pet.helpUs || 'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.'));
+    blocks.push(S('sl-1-help-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-1-comm', section, 'prayer', 'deacon', pet.commemoration || ''));
+    blocks.push(S('sl-1-comm-resp', section, 'response', 'choir', pet.commitResponse || 'To Thee, O Lord.'));
+    const s1Excl = (sl.afterStasis1 || {});
+    blocks.push(S('sl-1-excl', section, 'prayer', 'priest', s1Excl.exclamation || ''));
+    blocks.push(S('sl-1-amen', section, 'response', 'choir', s1Excl.amen || 'Amen.'));
+  }
 
   // ── Stasis 2 ───────────────────────────────────────────────────────────────
   {
@@ -3152,10 +3164,22 @@ function assembleLamentations(f) {
     }
   }
 
-  // ── Small Litany ───────────────────────────────────────────────────────────
-  blocks.push(S('sl-2', 'Small Litany', 'prayer', 'deacon',
-    'Again and again, in peace, let us pray to the Lord.'));
-  blocks.push(S('sl-2-resp', 'Small Litany', 'response', 'choir', 'Lord, have mercy.'));
+  // ── Small Litany after Stasis 2 ─────────────────────────────────────────────
+  {
+    const section = 'Small Litany';
+    const sl = f.smallLitanies || {};
+    const pet = sl.petitions || {};
+    blocks.push(S('sl-2-open', section, 'prayer', 'deacon',
+      pet.opening || 'Again and again, in peace, let us pray to the Lord.'));
+    blocks.push(S('sl-2-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-2-help', section, 'prayer', 'deacon', pet.helpUs || 'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.'));
+    blocks.push(S('sl-2-help-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-2-comm', section, 'prayer', 'deacon', pet.commemoration || ''));
+    blocks.push(S('sl-2-comm-resp', section, 'response', 'choir', pet.commitResponse || 'To Thee, O Lord.'));
+    const s2Excl = (sl.afterStasis2 || {});
+    blocks.push(S('sl-2-excl', section, 'prayer', 'priest', s2Excl.exclamation || ''));
+    blocks.push(S('sl-2-amen', section, 'response', 'choir', s2Excl.amen || 'Amen.'));
+  }
 
   // ── Stasis 3 ───────────────────────────────────────────────────────────────
   {
@@ -3170,10 +3194,22 @@ function assembleLamentations(f) {
     }
   }
 
-  // ── Small Litany ───────────────────────────────────────────────────────────
-  blocks.push(S('sl-3', 'Small Litany', 'prayer', 'deacon',
-    'Again and again, in peace, let us pray to the Lord.'));
-  blocks.push(S('sl-3-resp', 'Small Litany', 'response', 'choir', 'Lord, have mercy.'));
+  // ── Small Litany after Stasis 3 ─────────────────────────────────────────────
+  {
+    const section = 'Small Litany';
+    const sl = f.smallLitanies || {};
+    const pet = sl.petitions || {};
+    blocks.push(S('sl-3-open', section, 'prayer', 'deacon',
+      pet.opening || 'Again and again, in peace, let us pray to the Lord.'));
+    blocks.push(S('sl-3-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-3-help', section, 'prayer', 'deacon', pet.helpUs || 'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.'));
+    blocks.push(S('sl-3-help-resp', section, 'response', 'choir', pet.response || 'Lord, have mercy.'));
+    blocks.push(S('sl-3-comm', section, 'prayer', 'deacon', pet.commemoration || ''));
+    blocks.push(S('sl-3-comm-resp', section, 'response', 'choir', pet.commitResponse || 'To Thee, O Lord.'));
+    const s3Excl = (sl.afterStasis3 || {});
+    blocks.push(S('sl-3-excl', section, 'prayer', 'priest', s3Excl.exclamation || ''));
+    blocks.push(S('sl-3-amen', section, 'response', 'choir', s3Excl.amen || 'Amen.'));
+  }
 
   // ── Evlogetaria ────────────────────────────────────────────────────────────
   {

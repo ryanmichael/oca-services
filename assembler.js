@@ -495,9 +495,21 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
       }
     }
   } else if (prokeimenonSpec.pattern === 'burialVespers') {
-    // Holy Friday Burial Vespers: OT readings → Epistle (with prokeimenon) → Gospel
-    // 1. OT Readings (no prokeimena between them — just announced and read)
+    // Holy Friday Burial Vespers: Prokeimenon → OT Reading (×3) → Epistle Prokeimenon → Epistle → Alleluia → Gospel
+    // 1. OT Readings with prokeimena interspersed (readings 1 & 2 have prokeimena; reading 3 does not)
     for (const rdg of prokeimenonSpec.readings) {
+      if (rdg.prokeimenon) {
+        const rp = rdg.prokeimenon;
+        blocks.push(makeBlock(`prok-${rdg.order}-announce`, section, 'rubric', 'deacon',
+          `The prokeimenon in Tone ${rp.tone}.`));
+        blocks.push(makeBlock(`prok-${rdg.order}-refrain`, section, 'hymn', 'choir', rp.refrain,
+          { tone: rp.tone }));
+        rp.verses.forEach((v, i) => {
+          blocks.push(makeBlock(`prok-${rdg.order}-v${i}`, section, 'verse', 'deacon', v.text));
+          blocks.push(makeBlock(`prok-${rdg.order}-refrain-rep-${i}`, section, 'hymn', 'choir', rp.refrain,
+            { tone: rp.tone }));
+        });
+      }
       blocks.push(makeBlock(`lesson-announce-${rdg.order}`, section, 'rubric', 'deacon', 'Wisdom.'));
       blocks.push(makeBlock(`lesson-reader-${rdg.order}`, section, 'rubric', 'reader',
         `The reading from ${rdg.book}.`));

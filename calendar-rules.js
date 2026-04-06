@@ -976,22 +976,40 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       prokeimenon: {
         pattern: 'burialVespers',
         readings: [
-          { order: 1, book: 'Exodus',  pericope: '33:11–23', label: 'First Reading' },
-          { order: 2, book: 'Job',     pericope: '42:12–17',  label: 'Second Reading' },
-          { order: 3, book: 'Isaiah',  pericope: '52:13–54:1', label: 'Third Reading' },
+          {
+            order: 1, book: 'Exodus', pericope: '33:11–23', label: 'First Reading',
+            prokeimenon: {
+              tone: 4,
+              refrain: 'They divide my garments among them, and for my raiment they cast lots.',
+              verses: [{ text: 'My God, my God, look upon me! Why hast Thou forsaken me?' }],
+              psalmRef: 'Ps. 21:18',
+            },
+          },
+          {
+            order: 2, book: 'Job', pericope: '42:12–17', label: 'Second Reading',
+            prokeimenon: {
+              tone: 4,
+              refrain: 'Judge, O Lord, those who wrong me; fight against those who fight against me!',
+              verses: [{ text: 'They rewarded me evil for good; my soul is forlorn.' }],
+              psalmRef: 'Ps. 34:1',
+            },
+          },
+          { order: 3, book: 'Isaiah', pericope: '52:13–54:1', label: 'Third Reading' },
         ],
         epistle: {
           book: 'I Corinthians', pericope: '1:18–2:2',
           prokeimenon: {
-            tone: 4,
-            refrain: 'They parted my garments among them, and upon my vesture did they cast lots.',
-            verses: [{ text: 'My God, my God, look upon me; why hast Thou forsaken me?' }],
+            tone: 6,
+            refrain: 'They have laid me in the depths of the pit, in the regions dark and deep.',
+            verses: [{ text: 'O Lord God of my salvation, I call for help by day; I cry out in the night before Thee.' }],
+            psalmRef: 'Ps. 87:6',
           },
           alleluia: {
             tone: 1,
             verses: [
               { text: 'Save me, O God; for the waters have come up to my soul.' },
               { text: 'They gave me gall for food, and in my thirst they gave me vinegar to drink.' },
+              { text: 'Let their eyes be darkened, so that they cannot see!' },
             ],
           },
         },

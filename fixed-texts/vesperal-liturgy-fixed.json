@@ -3,44 +3,66 @@
     "description": "Fixed liturgical texts unique to the Vesperal Liturgy of St. Basil the Great — served Holy Saturday morning",
     "tradition": "OCA (Orthodox Church in America)",
     "translation": "OCA / St. Tikhon's Monastery Press",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "_audit": "Audited 2026-04-05 against OCA 2026-0411-texts-tt.docx. Fixes: Lord I Call On 6→On 8 (4 Octoechos Tone 1 + 4 Triodion Tone 8 + Glory Tone 6 + Dogmatikon), prokeimenon tone 4→5, removed spurious alleluia (Arise O God replaces it), Arise O God 4→6 verses + OCA translation, added Holy Saturday megalynarion, updated communion hymn.",
     "note": "This service combines Great Vespers with the Liturgy of St. Basil. The vespers portion includes 15 Old Testament readings (baptismal prophecies). Shared texts (Psalm 103, litanies, anaphora, etc.) are loaded from vespers-fixed.json and liturgy-fixed.json at assembly time."
   },
 
   "lordICall": {
-    "_note": "Lord I Call stichera for Holy Saturday Vespers. Tone 1. Theme: Hades groaning at Christ's descent.",
+    "_note": "Lord I Call stichera for Holy Saturday Vespers — On 8. First 4: Octoechos Tone 1 (resurrectional). Last 4: Triodion Tone 8 (Hades groaning, v.3 repeats v.4). Glory: Tone 6 (Great Moses). Now: Tone 1 Dogmatikon. Source: OCA 2026-0411-texts-tt.docx",
     "stichera": [
       {
         "tone": 1,
-        "text": "Today Hades cries out groaning:\n\"My power has been destroyed!\nI received a Dead Man as one of the dead,\nbut against Him I could not prevail.\nFrom eternity I have ruled the dead,\nbut behold, this One raises all!\nBecause of Him I perish.\""
+        "source": "octoechos",
+        "text": "Accept our evening prayers, O holy Lord!\nGrant us remission of sins,\nfor Thou alone hast manifested the Resurrection to the world."
       },
       {
         "tone": 1,
-        "text": "Today Hades cries out groaning:\n\"My dominion has been shattered!\nThe Shepherd has been crucified and has raised Adam.\nI have been deprived of those whom I once ruled.\nThose whom I swallowed in my strength I have given up.\nThe Crucified One has emptied the tombs;\nthe power of death has been vanquished.\""
+        "source": "octoechos",
+        "text": "Encircle Zion and surround her, O people!\nGive glory in her to the One Who rose from the dead!\nFor He is our God,\nWho has delivered us from our transgressions!"
       },
       {
         "tone": 1,
-        "text": "Today Hades cries out groaning:\n\"My authority has been swallowed up!\nThe Shepherd has been crucified on the Tree\nand has raised the dead.\nHe has shattered the gates of death;\nHe has broken the bars of Hades.\nAnd those whom I had swallowed I have given up.\nThe Crucified One has emptied the tombs!\""
+        "source": "octoechos",
+        "text": "Come, O people, let us hymn and fall down before Christ,\nglorifying His Resurrection from the dead!\nFor He is our God,\nWho has delivered the world from the Enemy's deceit!"
       },
       {
         "tone": 1,
-        "text": "Glory to Thy Crucifixion and Thy Resurrection, O Lord!\nBy Thy Cross Thou didst grant us freedom,\nand by Thy burial Thou hast put death to death.\nThou didst descend to Hades and as God didst destroy its power,\nraising with Thyself all whom Hades had swallowed from the ages.\nO Giver of Life, glory to Thee!"
+        "source": "octoechos",
+        "text": "We have been freed from sufferings by Thy suffering, O Christ.\nWe have been delivered from corruption by Thy Resurrection.\nO Lord, glory to Thee!"
       },
       {
-        "tone": 1,
-        "text": "Hades reigned over mortal nature, O Christ,\nbut not forever!\nFor Thou, having been placed in the tomb, O Powerful One,\nby Thy life-creating palm didst rend the bars of death.\nThou didst preach deliverance to those sitting in darkness from the ages,\nO Almighty Savior."
+        "tone": 8,
+        "source": "triodion",
+        "text": "Today, Hell cries out groaning:\n\"I should not have accepted the Man born of Mary.\nHe came and destroyed my power.\nHe shattered the gates of brass.\nAs God, He raised the souls that I had held captive.\"\nGlory to Thy Cross and Resurrection, O Lord!"
       },
       {
-        "tone": 1,
-        "text": "Come, let us see our Life lying in the tomb,\nthat He may give life to those lying in the tombs.\nCome, let us look today on the Son of Judah as He sleeps\nand cry to Him with the prophet:\n\"Thou hast laid down and slept as a lion.\nWho shall rouse Thee, O King?\nArise by Thine own power, O Thou Who gavest Thyself for us!\nO Lord, glory to Thee!\""
+        "tone": 8,
+        "source": "triodion",
+        "_note": "Repeat of previous sticheron at verse 3",
+        "text": "Today, Hell cries out groaning:\n\"I should not have accepted the Man born of Mary.\nHe came and destroyed my power.\nHe shattered the gates of brass.\nAs God, He raised the souls that I had held captive.\"\nGlory to Thy Cross and Resurrection, O Lord!"
+      },
+      {
+        "tone": 8,
+        "source": "triodion",
+        "text": "Today, Hell cries out groaning:\n\"My dominion has been shattered.\nI received a dead Man as one of the dead,\nbut against Him I could not prevail.\nFrom eternity I had ruled the dead,\nbut behold, He raises all.\nBecause of Him do I perish.\"\nGlory to Thy Cross and Resurrection, O Lord!"
+      },
+      {
+        "tone": 8,
+        "source": "triodion",
+        "text": "Today, Hell cries out groaning:\n\"My power has been trampled down.\nThe Shepherd is crucified and Adam is raised.\nI have been deprived of those whom I ruled.\nThose whom I swallowed in my strength I have given up.\nHe Who was crucified has emptied the tombs.\nThe power of death has been vanquished.\"\nGlory to Thy Cross and Resurrection, O Lord!"
       }
     ],
     "glory": {
-      "tone": 5,
-      "text": "Come, let us bless Joseph of eternal memory,\nwho came to Pilate by night and begged for the Life of all:\n\"Give me this Stranger, Who has no place to lay His head.\nGive me this Stranger, Whom His evil disciple betrayed to death.\nGive me this Stranger, Whom His Mother saw hanging on the Cross\nand, crying out with a mother's sorrow, exclaimed:\n'Woe is me, O my Child!\nWoe is me, O my Light and the Beloved of my womb!\nFor what Simeon foretold in the temple has come to pass this day:\na sword pierces my heart.\nBut change my grief to joy by Thy Resurrection!'\"\nWe worship Thy Passion, O Christ.\nShow us also Thy glorious Resurrection!"
+      "tone": 6,
+      "source": "triodion",
+      "text": "The great Moses mystically foreshadowed this day when he said:\n\"God blessed the seventh day.\"\nThis is the blessed Sabbath;\nthis is the day of rest,\non which the only-begotten Son of God rested from all His works.\nBy suffering death to fulfill the plan of salvation,\nHe kept the Sabbath in the flesh;\nby returning again to what He was,\nHe has granted us eternal life through His Resurrection,\nfor He alone is good and the Lover of man."
     },
     "now": {
-      "text": "He Who covers Himself with light as with a garment\nstood naked at the judgment.\nHe received blows on His cheek from the hands He had made.\nA lawless people nailed to the Cross\nthe Lord of glory.\nThen the veil of the temple was rent in two.\nThe sun was darkened, unable to bear the sight\nof God outraged,\nbefore Whom all things tremble.\nLet us worship Him!"
+      "tone": 1,
+      "source": "octoechos",
+      "_note": "Theotokion — Dogmatikon, Tone 1",
+      "text": "Let us praise the Virgin Mary!\nThe gate of heaven, the glory of the world!\nThe song of the angels, the beauty of the faithful!\nShe was born of man, yet gave birth to God!\nShe was revealed as the heaven, as the temple of the Godhead!\nShe destroyed the wall of enmity!\nShe commenced the peace; she opened the Kingdom!\nSince she is our foundation of faith,\nour defender is the Lord Whom she bore!\nCourage! Courage! O People of God!\nFor Christ will destroy our enemies\nsince He is all powerful."
     }
   },
 
@@ -161,15 +183,17 @@
   },
 
   "ariseOGod": {
-    "_note": "Sung after the readings and Song of the Three Youths, replacing the usual Alleluia. The choir sings while the clergy change vestments from dark to white.",
+    "_note": "Sung in place of the Alleluia after the Epistle. Psalm 81 (82). The choir sings the refrain after each verse while clergy change vestments from dark to white. Source: OCA 2026-0411-texts-tt.docx",
     "tone": 7,
     "label": "Arise, O God!",
-    "text": "Arise, O God, judge the earth,\nfor Thou shalt take all the nations for Thine inheritance!",
+    "text": "Arise, O God, judge the earth,\nfor to Thee belong all the nations!",
     "verses": [
-      "God stands in the assembly of the gods; in the midst of the gods He judges.",
-      "How long will you judge unjustly and accept the persons of the wicked?",
-      "Judge for the orphan and the poor; do justice to the humble and the needy.",
-      "Rescue the poor and the needy; deliver them out of the hand of the wicked."
+      "God has taken His place in the divine council; in the midst of the gods He holds judgment.",
+      "How long will you judge unjustly and accept the faces of sinners?",
+      "Give justice to the weak and the fatherless; maintain the right of the afflicted and the destitute!",
+      "Rescue the weak and the needy; deliver them from the hand of the sinner!",
+      "They have neither knowledge nor understanding; they walk about in darkness.",
+      "Let all the foundations of the earth be shaken! I say: \"You are gods, sons of the Most High, all of you; nevertheless, you shall die like men, and fall like any prince.\""
     ]
   },
 
@@ -180,21 +204,15 @@
   },
 
   "epistle": {
+    "_note": "Alleluia is replaced by 'Arise, O God' (ariseOGod section) — there is no separate alleluia at this service.",
     "prokeimenon": {
-      "tone": 4,
-      "refrain": "All the earth shall worship Thee and shall sing unto Thee; they shall sing unto Thy Name, O Most High.",
-      "verse": "Make a joyful noise unto God, all the earth; sing forth the honor of His Name, give glory to His praise."
+      "tone": 5,
+      "refrain": "Let all the earth worship Thee and praise Thee; let it praise Thy Name, O Most High!",
+      "verse": "Make a joyful noise to God, all the earth! Sing of His Name, give glory to His praise!"
     },
     "book": "Romans",
     "pericope": "6:3–11",
-    "text": "Brethren: Know ye not, that so many of us as were baptized into Jesus Christ were baptized into His death? Therefore we are buried with Him by baptism into death, that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life.\n\nFor if we have been planted together in the likeness of His death, we shall be also in the likeness of His Resurrection; knowing this, that our old man is crucified with Him, that the body of sin might be destroyed, that henceforth we should not serve sin. For he that is dead is freed from sin.\n\nNow if we be dead with Christ, we believe that we shall also live with Him, knowing that Christ being raised from the dead dieth no more; death hath no more dominion over Him. For in that He died, He died unto sin once; but in that He liveth, He liveth unto God.\n\nLikewise reckon ye also yourselves to be dead indeed unto sin, but alive unto God through Jesus Christ our Lord.",
-    "alleluia": {
-      "tone": 5,
-      "verses": [
-        "Let God arise, let His enemies be scattered; let them also that hate Him flee before Him.",
-        "As smoke is driven away, so drive them away; as wax melteth before the fire."
-      ]
-    }
+    "text": "Brethren: Know ye not, that so many of us as were baptized into Jesus Christ were baptized into His death? Therefore we are buried with Him by baptism into death, that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life.\n\nFor if we have been planted together in the likeness of His death, we shall be also in the likeness of His Resurrection; knowing this, that our old man is crucified with Him, that the body of sin might be destroyed, that henceforth we should not serve sin. For he that is dead is freed from sin.\n\nNow if we be dead with Christ, we believe that we shall also live with Him, knowing that Christ being raised from the dead dieth no more; death hath no more dominion over Him. For in that He died, He died unto sin once; but in that He liveth, He liveth unto God.\n\nLikewise reckon ye also yourselves to be dead indeed unto sin, but alive unto God through Jesus Christ our Lord."
   },
 
   "gospel": {
@@ -204,8 +222,14 @@
     "text": "In the end of the sabbath, as it began to dawn toward the first day of the week, came Mary Magdalene and the other Mary to see the sepulchre. And, behold, there was a great earthquake; for the angel of the Lord descended from heaven, and came and rolled back the stone from the door, and sat upon it. His countenance was like lightning, and his raiment white as snow. And for fear of him the keepers did shake, and became as dead men.\n\nAnd the angel answered and said unto the women: Fear not ye; for I know that ye seek Jesus, which was crucified. He is not here; for He is risen, as He said. Come, see the place where the Lord lay. And go quickly, and tell His disciples that He is risen from the dead; and, behold, He goeth before you into Galilee; there shall ye see Him. Lo, I have told you.\n\nAnd they departed quickly from the sepulchre with fear and great joy; and did run to bring His disciples word. And as they went to tell His disciples, behold, Jesus met them, saying: All hail! And they came and held Him by the feet, and worshipped Him. Then said Jesus unto them: Be not afraid; go tell My brethren that they go into Galilee, and there shall they see Me.\n\nNow when they were going, behold, some of the watch came into the city, and showed unto the chief priests all the things that were done. And when they were assembled with the elders, and had taken counsel, they gave large money unto the soldiers, saying: Say ye, His disciples came by night, and stole Him away while we slept. And if this come to the governor's ears, we will persuade him, and secure you. So they took the money, and did as they were taught; and this saying is commonly reported among the Jews until this day.\n\nThen the eleven disciples went away into Galilee, into a mountain where Jesus had appointed them. And when they saw Him, they worshipped Him; but some doubted. And Jesus came and spake unto them, saying: All power is given unto Me in heaven and in earth. Go ye therefore, and teach all nations, baptizing them in the Name of the Father, and of the Son, and of the Holy Spirit, teaching them to observe all things whatsoever I have commanded you; and, lo, I am with you always, even unto the end of the world. Amen."
   },
 
+  "megalynarion": {
+    "_note": "Replaces 'All of creation rejoices' at the Liturgy of St. Basil on Holy Saturday. Source: OCA 2026-0411-texts-tt.docx",
+    "text": "Do not lament Me, O Mother, seeing Me in the tomb,\nthe Son conceived in the womb without seed!\nFor I shall arise and be glorified with eternal glory as God.\nI shall exalt all who magnify thee in faith and love."
+  },
+
   "communionHymn": {
-    "text": "The Lord hath awaked as one that sleepeth,\nand He is risen, saving us. Alleluia!"
+    "_note": "Psalm 77:70 (78:65). Source: OCA 2026-0411-texts-tt.docx",
+    "text": "The Lord awoke as one asleep, and arose, saving us.\nAlleluia!"
   },
 
   "dismissal": {

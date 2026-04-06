@@ -3368,12 +3368,12 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
     blocks.push(S('ps140', section, 'prayer', 'reader', psalmVerses.psalm140.text));
     blocks.push(S('ps141', section, 'prayer', 'reader', psalmVerses.psalm141.text));
 
-    // Psalm 129 + 116 verses with stichera interleaved (on 6)
+    // Psalm 129 + 116 verses with stichera interleaved (dynamic count: On 6 or On 8)
     const stichera = vf.lordICall.stichera;
     const sticheraMap = {};
-    const verseNums = [6, 5, 4, 3, 2, 1];
-    for (let i = 0; i < stichera.length; i++) {
-      sticheraMap[verseNums[i]] = stichera[i];
+    const count = stichera.length;
+    for (let i = 0; i < count; i++) {
+      sticheraMap[count - i] = stichera[i];
     }
 
     const maxVerse = Math.max(...Object.keys(sticheraMap).map(Number));
@@ -3457,6 +3457,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(S('vl-peace-resp', 'Epistle', 'response', 'choir', 'And to thy spirit.'));
 
   // ── Epistle ────────────────────────────────────────────────────────────────
+  // Note: No Alleluia at this service — "Arise, O God" (rendered above) replaces it
   {
     const section = 'Epistle';
     const ep = vf.epistle;
@@ -3467,11 +3468,6 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
     blocks.push(S('ep-announce', section, 'rubric', 'deacon',
       `The Reading from ${ep.book} (${ep.pericope}).`));
     blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text));
-    blocks.push(S('ep-alleluia', section, 'hymn', 'choir',
-      'Alleluia, alleluia, alleluia!', { tone: ep.alleluia.tone }));
-    for (let i = 0; i < ep.alleluia.verses.length; i++) {
-      blocks.push(S(`ep-alleluia-v${i}`, section, 'verse', 'reader', ep.alleluia.verses[i]));
-    }
   }
 
   // ── Gospel ─────────────────────────────────────────────────────────────────
@@ -3507,8 +3503,8 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   // ── Anaphora of St. Basil ──────────────────────────────────────────────────
   blocks.push(..._litAnaphora(isBasil, lf));
 
-  // ── Megalynarion (Basil variant) ───────────────────────────────────────────
-  blocks.push(..._litMegalynarion('basil-liturgy', isBasil, lf));
+  // ── Megalynarion — "Do not lament Me, O Mother" (replaces "All of creation") ──
+  blocks.push(..._litMegalynarion(vf.megalynarion, isBasil, lf));
 
   // ── Lord's Prayer ──────────────────────────────────────────────────────────
   blocks.push(..._litLordsPrayer(isBasil, lf));

@@ -1169,13 +1169,32 @@ function printBooklet() {
         Array.from(el.children).forEach(function (child) {
           var isHead = child.classList.contains('svc-head');
           var isLabel = child.classList.contains('stich-label');
+          // Split blocks with <br> into individual lines for natural pagination
+          if (!isHead && !isLabel && /<br\\s*\\/?>/i.test(child.innerHTML)) {
+            var m = child.outerHTML.match(/^(<[^>]+>)([\\s\\S]*?)(<\\/[^>]+>)$/);
+            if (m) {
+              var open = m[1], inner = m[2], close = m[3];
+              var lines = inner.split(/<br\\s*\\/?>/i);
+              if (lines.length > 1) {
+                var openNoMB = /style="/.test(open)
+                  ? open.replace(/style="([^"]*)"/, 'style="$1;margin-bottom:0"')
+                  : open.replace(/>$/, ' style="margin-bottom:0">');
+                lines.forEach(function (line, j) {
+                  var wrap = j < lines.length - 1 ? openNoMB : open;
+                  allItems.push({ html: wrap + line.trim() + close, isHead: false, keepWithNext: false });
+                });
+                return;
+              }
+            }
+          }
           allItems.push({ html: child.outerHTML, isHead: isHead, keepWithNext: isHead || isLabel });
         });
       }
     });
 
     var tmp = document.createElement('div');
-    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};font-family:EB Garamond,Georgia,serif;font-size:15pt;line-height:1.75;';
+    tmp.className = 'bk-half';
+    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};height:auto;overflow:visible;padding:0;';
     document.body.appendChild(tmp);
     var itemHeights = allItems.map(function (item) {
       tmp.innerHTML = item.html;
@@ -1357,7 +1376,8 @@ function printBooklet() {
 
 /* ── Measure container (off-screen, matches page content width + font) ── */
 #measure { position: absolute; top: -9999px; left: 0; width: ${MEASURE_W};
-  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt; line-height: 1.75; }
+  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt; line-height: 1.75;
+  height: auto; overflow: visible; padding: 0; }
 
 /* ── Booklet spreads (one per print page = landscape letter sheet) ── */
 #booklet { visibility: hidden; }

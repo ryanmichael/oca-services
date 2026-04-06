@@ -9,8 +9,7 @@
  * this captures ALL stichera — on great feasts everything is feast-specific.
  *
  * Available DOCX feasts: Transfiguration, Dormition, Meeting, Nativity of
- * Theotokos, Elevation, Entry of Theotokos.
- * NOT available as DOCX: Nativity, Theophany, Annunciation (published as PDFs).
+ * Theotokos, Elevation, Entry of Theotokos, Nativity, Theophany, Annunciation.
  *
  * Usage:
  *   node scrape-great-feasts.js                 — all available feasts
@@ -41,6 +40,10 @@ const FEASTS = {
   nativityBVM:     { month: 9,  day: 8,  year: 2025, name: 'Nativity of Theotokos',  commId: 1843 },
   elevation:       { month: 9,  day: 14, year: 2025, name: 'Elevation of the Cross', commId: 1890 },
   entryBVM:        { month: 11, day: 21, year: 2025, name: 'Entry of Theotokos',     commId: 2380 },
+  // Feasts whose vespers is in vesperal-liturgy DOCX (Eve date for Nativity/Theophany)
+  nativity:        { month: 12, day: 24, year: 2025, name: 'Nativity of Christ',     commId: 2591, urlSuffix: 'vesplit' },
+  theophany:       { month: 1,  day: 5,  year: 2026, name: 'Theophany',              commId: 36,   urlSuffix: 'vesplit' },
+  annunciation:    { month: 3,  day: 25, year: 2026, name: 'Annunciation',           commId: 599,  urlSuffix: 'vespers', feastTones: [6] },
 };
 
 // ─── Network ─────────────────────────────────────────────────────────────────
@@ -278,8 +281,8 @@ function parseFeastLordICall(paras, startIdx, endIdx) {
       continue;
     }
 
-    // OT readings marker — stop parsing
-    if (p.anyBold && /old testament/i.test(p.text)) break;
+    // OT readings / prokeimenon marker — stop parsing
+    if (p.anyBold && /old testament|prokeimenon|entrance/i.test(p.text)) break;
 
     // Hymn text
     if (!p.anyRed && !p.centered && inHymn && p.text) {
@@ -453,6 +456,10 @@ function parseFeastAposticha(paras, startIdx, endIdx) {
       continue;
     }
 
+    // Troparion marker — stop parsing aposticha (check before label handler,
+    // since troparion labels can match the label pattern too)
+    if (p.anyBold && /troparion/i.test(p.text)) break;
+
     // Label paragraph
     if (p.hasItalicRed && p.runs.some(r => r.bold && !r.italic && !r.red)) {
       flush();
@@ -471,9 +478,6 @@ function parseFeastAposticha(paras, startIdx, endIdx) {
       inHymn = true;
       continue;
     }
-
-    // Troparion marker — stop parsing aposticha
-    if (p.anyBold && /troparion/i.test(p.text)) break;
 
     // Red italic verse continuation (psalm verse text, not a hymn) — skip
     if (p.anyRed && p.hasItalicRed && !p.anyBold) continue;
@@ -529,10 +533,12 @@ function parseFeastTroparion(paras, apostEnd) {
 // ─── Per-feast scraper ───────────────────────────────────────────────────────
 
 async function scrapeFeast(feast, dryRun) {
-  const { month, day, year, name, commId } = feast;
+  const { month, day, year, name, commId, urlSuffix } = feast;
   const mm  = String(month).padStart(2, '0');
   const dd  = String(day).padStart(2, '0');
-  const url = `${BASE_URL}/${year}-${mm}${dd}-texts-tt.docx`;
+  const url = urlSuffix
+    ? `${BASE_URL}/${year}-${mm}${dd}-texts-${urlSuffix}-tt.docx`
+    : `${BASE_URL}/${year}-${mm}${dd}-texts-tt.docx`;
 
   console.log(`\n${'='.repeat(60)}`);
   console.log(`${name} (${mm}/${dd}) — ${url}`);
@@ -568,6 +574,18 @@ async function scrapeFeast(feast, dryRun) {
   // Parse troparion
   const troparion = parseFeastTroparion(paras, apostStart >= 0 ? apostEnd : end);
 
+  // Filter out non-feast stichera when feastTones is specified (e.g. Annunciation
+  // in Lent has mixed Lenten + feast stichera — keep only feast-tone hymns).
+  // Glory doxastica are always kept (they're feast-specific regardless of tone).
+  if (feast.feastTones) {
+    const keep = t => feast.feastTones.includes(t);
+    lic.stichera = lic.stichera.filter(s => keep(s.tone));
+    lic.stichera.forEach((s, i) => s.order = i + 1);
+    apost.stichera = apost.stichera.filter(s => keep(s.tone));
+    apost.stichera.forEach((s, i) => s.order = i + 1);
+    console.log(`  Filtered to feast tones [${feast.feastTones}]: ${lic.stichera.length} LIC, ${apost.stichera.length} aposticha (glory kept)`);
+  }
+
   // Report
   console.log(`  Lord I Call: ${lic.stichera.length} stichera${lic.glory ? ' + Glory' : ''}`);
   for (const s of lic.stichera) {
@@ -588,6 +606,7 @@ async function scrapeFeast(feast, dryRun) {
     console.log(`    [${s.order}] Tone ${s.tone}: ${s.text.substring(0, 60)}...`);
   }
   if (apost.glory) {
+    console.log(`    [Glory] Tone ${apost.glory.tone}: ${apost.glory.text.substring(0, 60)}...`);
     if (apost.glory.combinesGloryNow) console.log(`    (combines Glory/Now)`);
   }
 

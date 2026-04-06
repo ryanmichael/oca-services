@@ -2689,95 +2689,182 @@ function assemblePassionGospels(f) {
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
 
+  const preGospelResp = f.preGospelResponse || 'Glory to Thy passion, O Lord.';
+  const postGospelResp = f.postGospelResponse || 'Glory to Thy longsuffering, O Lord.';
+
   // ── Opening ────────────────────────────────────────────────────────────────
   blocks.push(S('opening-excl', 'Opening', 'prayer', 'priest', f.opening.exclamation));
   blocks.push(S('opening-amen', 'Opening', 'response', 'reader', f.opening.amen));
 
   // ── Alleluia (instead of "God is the Lord" — fasting day) ──────────────────
-  blocks.push(S('alleluia', 'Alleluia', 'hymn', 'choir',
-    'Alleluia, alleluia, alleluia!', { tone: 8 }));
+  {
+    const section = 'Alleluia';
+    const a = f.alleluia || {};
+    const tone = a.tone || 8;
+    blocks.push(S('alleluia', section, 'hymn', 'choir',
+      a.exclamation || 'Alleluia, alleluia, alleluia!', { tone }));
+    if (a.verses) {
+      for (let i = 0; i < a.verses.length; i++) {
+        blocks.push(S(`alleluia-v${i}`, section, 'verse', 'reader', a.verses[i]));
+      }
+    }
+  }
 
   // ── Troparion ──────────────────────────────────────────────────────────────
-  const tropSection = 'Troparion';
-  blocks.push(S('trop-1', tropSection, 'hymn', 'choir', f.troparion.text,
-    { tone: f.troparion.tone, label: f.troparion.label }));
-  blocks.push(S('trop-glory', tropSection, 'doxology', null,
-    'Glory to the Father, and to the Son, and to the Holy Spirit.'));
-  blocks.push(S('trop-2', tropSection, 'hymn', 'choir', f.troparion.text,
-    { tone: f.troparion.tone }));
-  blocks.push(S('trop-now', tropSection, 'doxology', null,
-    'Now and ever and unto ages of ages. Amen.'));
-  blocks.push(S('trop-3', tropSection, 'hymn', 'choir', f.troparion.text,
-    { tone: f.troparion.tone }));
+  {
+    const section = 'Troparion';
+    blocks.push(S('trop-1', section, 'hymn', 'choir', f.troparion.text,
+      { tone: f.troparion.tone, label: f.troparion.label }));
+    blocks.push(S('trop-glory', section, 'doxology', null,
+      'Glory to the Father, and to the Son, and to the Holy Spirit.'));
+    blocks.push(S('trop-2', section, 'hymn', 'choir', f.troparion.text,
+      { tone: f.troparion.tone }));
+    blocks.push(S('trop-now', section, 'doxology', null,
+      'Now and ever and unto ages of ages. Amen.'));
+    blocks.push(S('trop-3', section, 'hymn', 'choir', f.troparion.text,
+      { tone: f.troparion.tone }));
+  }
 
-  // ── Helper: render a Gospel reading ────────────────────────────────────────
-  function addGospel(gospel) {
+  // ── Helper: render a Passion Gospel reading ────────────────────────────────
+  function addGospel(gospel, extras) {
     const section = `Gospel ${gospel.number}`;
+    // Pre-Gospel dialogue
+    blocks.push(S(`gos-${gospel.number}-prayer`, section, 'rubric', 'deacon',
+      'And that we may be accounted worthy of hearing the holy Gospel, let us pray to the Lord God.'));
+    blocks.push(S(`gos-${gospel.number}-mercy`, section, 'response', 'choir',
+      'Lord, have mercy. Lord, have mercy. Lord, have mercy.'));
     blocks.push(S(`gos-${gospel.number}-wisdom`, section, 'rubric', 'deacon',
-      'Wisdom. Let us attend.'));
-    blocks.push(S(`gos-${gospel.number}-announce`, section, 'rubric', 'deacon',
-      `The reading of the Holy Gospel according to ${gospel.book}.`));
+      'Wisdom. Stand upright. Let us listen to the holy Gospel.'));
+    blocks.push(S(`gos-${gospel.number}-peace`, section, 'rubric', 'priest',
+      'Peace be unto all.'));
+    blocks.push(S(`gos-${gospel.number}-spirit`, section, 'response', 'choir',
+      'And to thy spirit.'));
+    blocks.push(S(`gos-${gospel.number}-announce`, section, 'rubric', 'priest',
+      `The reading from the holy Gospel according to ${gospel.book}.`));
     blocks.push(S(`gos-${gospel.number}-glory`, section, 'response', 'choir',
-      'Glory to Thee, O Lord, glory to Thee!'));
+      preGospelResp));
     blocks.push(S(`gos-${gospel.number}-attend`, section, 'rubric', 'deacon',
       'Let us attend.'));
     blocks.push(S(`gos-${gospel.number}-text`, section, 'prayer', 'reader',
       `[${gospel.book} ${gospel.pericope}]`, { label: gospel.label }));
     blocks.push(S(`gos-${gospel.number}-glory-end`, section, 'response', 'choir',
-      'Glory to Thee, O Lord, glory to Thee!'));
+      postGospelResp));
+    if (gospel.bellRings) {
+      blocks.push(S(`gos-${gospel.number}-bell`, section, 'rubric', null,
+        `A bell is rung ${gospel.bellRings === 1 ? 'once' : gospel.bellRings === 2 ? 'twice' : gospel.bellRings === 3 ? 'thrice' : gospel.bellRings + ' times'}.`));
+    }
+    // Priest's reading after certain gospels
+    if (extras && extras.priestReading) {
+      blocks.push(S(`gos-${gospel.number}-priest`, section, 'prayer', 'priest',
+        extras.priestReading));
+    }
   }
 
   // ── Helper: render a group of 3 antiphons ─────────────────────────────────
-  function addAntiphonGroup(start) {
+  function addAntiphonGroup(start, groupNum) {
     for (let i = start; i < start + 3 && i <= 15; i++) {
       const a = f.antiphons[i - 1];
       const section = `Antiphon ${a.number}`;
       blocks.push(S(`ant-${i}-text`, section, 'hymn', 'choir', a.text,
         { tone: a.tone }));
+      if (a.verse) {
+        blocks.push(S(`ant-${i}-verse`, section, 'verse', 'reader', a.verse));
+      }
+      if (a.troparion) {
+        blocks.push(S(`ant-${i}-trop`, section, 'hymn', 'choir', a.troparion));
+      }
+      if (a.additionalStichera) {
+        for (let j = 0; j < a.additionalStichera.length; j++) {
+          blocks.push(S(`ant-${i}-extra-${j}`, section, 'hymn', 'choir',
+            a.additionalStichera[j]));
+        }
+      }
+      if (a.glory) {
+        blocks.push(S(`ant-${i}-glory-dox`, section, 'doxology', null,
+          'Glory to the Father, and to the Son, and to the Holy Spirit.'));
+        blocks.push(S(`ant-${i}-glory`, section, 'hymn', 'choir', a.glory));
+      }
+      if (a.theotokion && typeof a.theotokion === 'string' && !a.theotokion.endsWith('...')) {
+        blocks.push(S(`ant-${i}-now-dox`, section, 'doxology', null,
+          'Now and ever and unto ages of ages. Amen.'));
+        blocks.push(S(`ant-${i}-theotokion`, section, 'hymn', 'choir', a.theotokion));
+      }
       blocks.push(S(`ant-${i}-refrain`, section, 'response', 'choir', a.refrain));
+    }
+    // Sessional hymn after this antiphon group
+    if (f.sessionalHymns) {
+      const sh = f.sessionalHymns.find(h => h.afterAntiphonGroup === groupNum);
+      if (sh) {
+        blocks.push(S(`sess-${groupNum}`, `Sessional Hymn`, 'hymn', 'choir',
+          sh.text, { tone: sh.tone }));
+      }
     }
   }
 
   // ── Gospel 1 ───────────────────────────────────────────────────────────────
   addGospel(f.gospels[0]);
 
-  // After Gospel 1: Troparion is repeated
-  blocks.push(S('trop-after-g1', 'Troparion', 'hymn', 'choir', f.troparion.text,
-    { tone: f.troparion.tone }));
-
-  // ── Antiphons 1–3 + Small Litany + Gospel 2 ───────────────────────────────
-  addAntiphonGroup(1);
+  // ── Antiphons 1–3 + Sessional Hymn + Gospel 2 ─────────────────────────────
+  addAntiphonGroup(1, 1);
   addGospel(f.gospels[1]);
 
-  // ── Antiphons 4–6 + Small Litany + Gospel 3 ───────────────────────────────
-  addAntiphonGroup(4);
+  // ── Antiphons 4–6 + Sessional Hymn + Gospel 3 ─────────────────────────────
+  addAntiphonGroup(4, 2);
   addGospel(f.gospels[2]);
 
-  // ── Antiphons 7–9 + Small Litany + Gospel 4 ───────────────────────────────
-  addAntiphonGroup(7);
+  // ── Antiphons 7–9 + Sessional Hymn + Gospel 4 ─────────────────────────────
+  addAntiphonGroup(7, 3);
   addGospel(f.gospels[3]);
 
-  // ── Antiphons 10–12 + Small Litany + Gospel 5 ─────────────────────────────
-  addAntiphonGroup(10);
+  // ── Antiphons 10–12 + Sessional Hymn + Gospel 5 ───────────────────────────
+  addAntiphonGroup(10, 4);
   addGospel(f.gospels[4]);
 
-  // ── Antiphons 13–15 + Small Litany + Gospel 6 ─────────────────────────────
-  addAntiphonGroup(13);
+  // ── Antiphons 13–15 + Sessional Hymn + Gospel 6 ───────────────────────────
+  addAntiphonGroup(13, 5);
   addGospel(f.gospels[5]);
 
-  // ── Beatitudes + Gospel 7 ─────────────────────────────────────────────────
+  // ── Beatitudes ────────────────────────────────────────────────────────────
   {
     const section = 'Beatitudes';
+    const bt = f.beatitudes;
     blocks.push(S('beat-intro', section, 'rubric', 'reader',
       'In Thy Kingdom remember us, O Lord, when Thou comest into Thy Kingdom.'));
-    for (let i = 0; i < f.beatitudes.troparia.length; i++) {
-      blocks.push(S(`beat-trop-${i}`, section, 'hymn', 'choir',
-        f.beatitudes.troparia[i].text));
+    for (let i = 0; i < bt.troparia.length; i++) {
+      const t = bt.troparia[i];
+      if (t.label) {
+        blocks.push(S(`beat-label-${i}`, section, 'doxology', null, t.label));
+      }
+      if (t.verse) {
+        blocks.push(S(`beat-verse-${i}`, section, 'verse', 'reader', t.verse));
+      }
+      if (t.text) {
+        blocks.push(S(`beat-trop-${i}`, section, 'hymn', 'choir', t.text,
+          { tone: bt.tone }));
+      }
     }
   }
+
+  // ── Little Litany + Prokeimenon ────────────────────────────────────────────
+  blocks.push(S('litany-small', 'Little Litany', 'prayer', 'deacon',
+    'Again and again in peace let us pray to the Lord.'));
+  blocks.push(S('litany-small-resp', 'Little Litany', 'response', 'choir',
+    'Lord, have mercy.'));
+  if (f.prokeimenon) {
+    const section = 'Prokeimenon';
+    blocks.push(S('prok-announce', section, 'rubric', 'deacon',
+      `The prokeimenon in the ${['', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'][f.prokeimenon.tone] || f.prokeimenon.tone} tone: ${f.prokeimenon.text}`));
+    blocks.push(S('prok-choir', section, 'hymn', 'choir', f.prokeimenon.text,
+      { tone: f.prokeimenon.tone }));
+    blocks.push(S('prok-verse', section, 'verse', 'deacon', f.prokeimenon.verse));
+    blocks.push(S('prok-choir-2', section, 'hymn', 'choir', f.prokeimenon.text,
+      { tone: f.prokeimenon.tone }));
+  }
+
+  // ── Gospel 7 ──────────────────────────────────────────────────────────────
   addGospel(f.gospels[6]);
 
-  // ── Psalm 50 + Gospel 8 ───────────────────────────────────────────────────
+  // ── Psalm 50 ──────────────────────────────────────────────────────────────
   {
     const psalter = getPsalter();
     const ps50 = psalter['50'];
@@ -2786,38 +2873,63 @@ function assemblePassionGospels(f) {
         ps50.verses.join('\n')));
     }
   }
+
+  // ── Gospel 8 ──────────────────────────────────────────────────────────────
   addGospel(f.gospels[7]);
 
-  // ── Gospels 9, 10, 11 (interspersed with canon — canon abbreviated) ──────
-  addGospel(f.gospels[8]);
-  addGospel(f.gospels[9]);
-  addGospel(f.gospels[10]);
-
-  // ── Kontakion + Ikos ──────────────────────────────────────────────────────
-  blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', f.kontakion.text,
-    { tone: f.kontakion.tone }));
-  blocks.push(S('ikos', 'Kontakion', 'hymn', 'reader', f.ikos.text));
-
-  // ── Exaposteilarion (×3) ──────────────────────────────────────────────────
-  {
-    const section = 'Exaposteilarion';
-    for (let i = 0; i < 3; i++) {
-      blocks.push(S(`exapost-${i}`, section, 'hymn', 'choir', f.exaposteilarion.text,
-        { tone: f.exaposteilarion.tone, label: i === 0 ? f.exaposteilarion.label : null }));
+  // ── Canon (abbreviated: Ode 5 irmos, Kontakion, Ode 8, Ode 9, Katavasia) ─
+  if (f.canon) {
+    const section = 'Canon';
+    if (f.canon.ode5) {
+      blocks.push(S('canon-ode5-label', section, 'rubric', null, 'Fifth Ode'));
+      blocks.push(S('canon-ode5', section, 'hymn', 'choir', f.canon.ode5.irmos,
+        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
+    }
+    // Kontakion sits within the canon
+    blocks.push(S('kontakion', section, 'hymn', 'choir', f.kontakion.text,
+      { tone: f.kontakion.tone, label: `Kontakion, Tone ${f.kontakion.tone}` }));
+    blocks.push(S('ikos', section, 'hymn', 'reader', f.ikos.text, { label: 'Ikos' }));
+    if (f.canon.ode8) {
+      blocks.push(S('canon-ode8-label', section, 'rubric', null, 'Eighth Ode'));
+      blocks.push(S('canon-ode8', section, 'hymn', 'choir', f.canon.ode8.irmos,
+        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
+    }
+    if (f.canon.ode9) {
+      blocks.push(S('canon-ode9-label', section, 'rubric', null, 'Ninth Ode'));
+      blocks.push(S('canon-ode9', section, 'hymn', 'choir', f.canon.ode9.irmos,
+        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
+    }
+    if (f.canon.katavasia) {
+      blocks.push(S('canon-katavasia-label', section, 'rubric', null,
+        `Katavasia, Tone ${f.canon.tone}`));
+      blocks.push(S('canon-katavasia', section, 'hymn', 'choir',
+        f.canon.katavasia.text, { tone: f.canon.tone }));
+      if (f.canon.katavasia.troparion) {
+        blocks.push(S('canon-katavasia-trop', section, 'hymn', 'choir',
+          f.canon.katavasia.troparion, { tone: f.canon.tone }));
+      }
     }
   }
 
-  // ── Gospel 12 ─────────────────────────────────────────────────────────────
-  addGospel(f.gospels[11]);
+  // ── Gospel 9 ──────────────────────────────────────────────────────────────
+  addGospel(f.gospels[8]);
 
-  // ── Lauds (Praises) ──────────────────────────────────────────────────────
+  // ── Lauds (The Praises) — after Gospel 9 ──────────────────────────────────
   {
     const section = 'Lauds';
+    let lastNonRepeatText = null;
+    let lastNonRepeatTone = null;
     for (let i = 0; i < f.lauds.stichera.length; i++) {
       const s = f.lauds.stichera[i];
       blocks.push(S(`lauds-verse-${i}`, section, 'verse', 'reader', `V. ${s.verse}`));
-      blocks.push(S(`lauds-hymn-${i}`, section, 'hymn', 'choir', s.text,
-        { tone: s.tone }));
+      const text = s.repeat ? lastNonRepeatText : s.text;
+      const tone = s.repeat ? lastNonRepeatTone : s.tone;
+      blocks.push(S(`lauds-hymn-${i}`, section, 'hymn', 'choir', text,
+        { tone }));
+      if (!s.repeat) {
+        lastNonRepeatText = s.text;
+        lastNonRepeatTone = s.tone;
+      }
     }
     blocks.push(S('lauds-glory', section, 'doxology', null,
       'Glory to the Father, and to the Son, and to the Holy Spirit.'));
@@ -2825,16 +2937,89 @@ function assemblePassionGospels(f) {
       { tone: f.lauds.glory.tone }));
     blocks.push(S('lauds-now', section, 'doxology', null,
       'Now and ever and unto ages of ages. Amen.'));
-    blocks.push(S('lauds-now-hymn', section, 'hymn', 'choir', f.lauds.now.text));
+    blocks.push(S('lauds-now-hymn', section, 'hymn', 'choir', f.lauds.now.text,
+      { tone: f.lauds.now.tone }));
   }
 
-  // ── Great Doxology ────────────────────────────────────────────────────────
-  blocks.push(S('great-doxology', 'Great Doxology', 'prayer', 'reader',
-    f.greatDoxology.text));
+  // ── Gospel 10 ─────────────────────────────────────────────────────────────
+  addGospel(f.gospels[9]);
+
+  // ── Small Doxology (read, not sung) ───────────────────────────────────────
+  {
+    const section = 'Small Doxology';
+    blocks.push(S('small-dox-label', section, 'rubric', null,
+      'The Small Doxology is read.'));
+    blocks.push(S('small-dox', section, 'prayer', 'reader',
+      'Glory to God in the highest, and on earth peace, good will towards men.\n\n' +
+      'We praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for Thy great glory.\n\n' +
+      'O Lord God, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ; and O Holy Spirit.\n\n' +
+      'O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; Thou that takest away the sins of the world, receive our prayer; Thou that sittest at the right hand of the Father, have mercy on us.\n\n' +
+      'For Thou only art holy, Thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen.\n\n' +
+      'Every day will I bless Thee, and I will praise Thy Name forever and ever.\n\n' +
+      'Lord, Thou hast been our refuge from generation to generation. I said, Lord, be merciful to me and heal my soul, for I have sinned against Thee. Lord, I have fled unto Thee; teach me to do Thy will, for Thou art my God. For with Thee is the fountain of life, and in Thy light shall we see light. O continue Thy mercy upon them that know Thee.\n\n' +
+      'Vouchsafe, O Lord, to keep us this day without sin. Blessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy Name forever. Amen. Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee. Blessed art Thou, O Lord: teach me Thy statutes. Blessed art Thou, O Master: make me to understand Thy statutes. Blessed art Thou, O Holy One: enlighten me with Thy statutes.\n\n' +
+      'Thy mercy, O Lord, endureth forever. O despise not the works of Thy hands. To Thee is due praise; to Thee is due a song; to Thee is due glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'));
+  }
+
+  // ── Gospel 11 ─────────────────────────────────────────────────────────────
+  addGospel(f.gospels[10], f.postGospel11Priest
+    ? { priestReading: f.postGospel11Priest.text } : null);
+
+  // ── Aposticha ─────────────────────────────────────────────────────────────
+  if (f.aposticha) {
+    const section = 'Aposticha';
+    for (let i = 0; i < f.aposticha.stichera.length; i++) {
+      const s = f.aposticha.stichera[i];
+      if (s.verse) {
+        blocks.push(S(`apost-verse-${i}`, section, 'verse', 'reader', `V. ${s.verse}`));
+      }
+      blocks.push(S(`apost-hymn-${i}`, section, 'hymn', 'choir', s.text,
+        { tone: s.tone, label: s.theotokion ? 'Theotokion' : null }));
+    }
+    if (f.aposticha.glory) {
+      blocks.push(S('apost-glory-dox', section, 'doxology', null,
+        'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+      blocks.push(S('apost-glory', section, 'hymn', 'choir', f.aposticha.glory.text,
+        { tone: f.aposticha.glory.tone }));
+    }
+  }
+
+  // ── Gospel 12 ─────────────────────────────────────────────────────────────
+  addGospel(f.gospels[11], f.postGospel12Priest
+    ? { priestReading: f.postGospel12Priest.text } : null);
+
+  // ── Trisagion + Our Father ────────────────────────────────────────────────
+  {
+    const section = 'Closing Prayers';
+    blocks.push(S('closing-itagtt', section, 'prayer', 'reader',
+      'It is a good thing to give thanks unto the Lord, and to sing unto Thy Name, O Most High; to tell of Thy mercy in the morning, and of Thy truth every night.'));
+    blocks.push(S('closing-trisagion', section, 'prayer', 'reader',
+      'Holy God, Holy Mighty, Holy Immortal: have mercy on us. (Thrice)'));
+    blocks.push(S('closing-glory-now', section, 'doxology', null,
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+    blocks.push(S('closing-trinity', section, 'prayer', 'reader',
+      'O most holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for Thy Name\'s sake.'));
+    blocks.push(S('closing-lordmercy', section, 'response', 'choir',
+      'Lord, have mercy. (Thrice)'));
+    blocks.push(S('closing-ourfather', section, 'prayer', 'reader',
+      'Our Father, who art in heaven, hallowed be Thy Name. Thy kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one.'));
+    blocks.push(S('closing-excl', section, 'prayer', 'priest',
+      'For Thine is the kingdom, and the power, and the glory of the Father, and of the Son, and of the Holy Spirit, now and ever and unto ages of ages.'));
+    blocks.push(S('closing-amen', section, 'response', 'choir', 'Amen.'));
+  }
 
   // ── Closing Troparion ─────────────────────────────────────────────────────
-  blocks.push(S('closing-trop', 'Closing', 'hymn', 'choir', f.closingTroparion.text,
-    { tone: f.closingTroparion.tone }));
+  blocks.push(S('closing-trop', 'Closing Troparion', 'hymn', 'choir',
+    f.closingTroparion.text, { tone: f.closingTroparion.tone }));
+
+  // ── Litany of Fervent Supplication ────────────────────────────────────────
+  {
+    const section = 'Litany of Fervent Supplication';
+    blocks.push(S('fervent-opening', section, 'prayer', 'deacon',
+      'Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.'));
+    blocks.push(S('fervent-resp', section, 'response', 'choir',
+      'Lord, have mercy. (Thrice)'));
+  }
 
   // ── Dismissal ─────────────────────────────────────────────────────────────
   blocks.push(S('dismissal', 'Dismissal', 'prayer', 'priest', f.dismissal.text));

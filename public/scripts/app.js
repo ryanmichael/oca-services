@@ -1171,7 +1171,7 @@ function printBooklet() {
     });
 
     var tmp = document.createElement('div');
-    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};';
+    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};font-family:EB Garamond,Georgia,serif;font-size:15pt;line-height:1.75;';
     document.body.appendChild(tmp);
     var itemHeights = allItems.map(function (item) {
       tmp.innerHTML = item.html;
@@ -1355,8 +1355,9 @@ function printBooklet() {
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --rubric: #8B1A1A; --gold: #C9A84C; --text: #1A1209; --muted: #6B6358; }
 
-/* ── Measure container (off-screen, matches page content width) ── */
-#measure { position: absolute; top: -9999px; left: 0; width: ${MEASURE_W}; }
+/* ── Measure container (off-screen, matches page content width + font) ── */
+#measure { position: absolute; top: -9999px; left: 0; width: ${MEASURE_W};
+  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt; line-height: 1.75; }
 
 /* ── Booklet spreads (one per print page = landscape letter sheet) ── */
 #booklet { visibility: hidden; }

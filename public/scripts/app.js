@@ -112,10 +112,18 @@ function getServiceRows(day) {
     return rows;
   }
 
+  // Morning services (day-of-week determines defaults)
   if (dow === 'saturday') {
     if (day.services.vesperalLiturgy) {
       rows.push({ key: 'vesperalLiturgy', name: 'Vesperal Liturgy of St. Basil', available: true });
-    } else {
+    }
+    if (day.services.royalHours) {
+      rows.push({ key: 'royalHours', name: 'Royal Hours', available: true });
+    }
+    if (day.services.paschalHours) {
+      rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
+    }
+    if (!day.services.vesperalLiturgy) {
       rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
       if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
       rows.push({ key: 'matins',  name: 'Matins',        available: day.services.matins });
@@ -127,29 +135,13 @@ function getServiceRows(day) {
     }
     rows.push({ key: 'matins',       name: 'Matins',        available: false });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
-    if (day.services.bridegroomMatins) {
-      rows.push({ key: 'bridegroomMatins', name: 'Bridegroom Matins', available: true });
-    }
-    rows.push({ key: 'dailyVespers', name: 'Daily Vespers',  available: day.services.dailyVespers });
   } else {
-    // Weekday services
-    if (day.services.burialVespers) {
-      rows.push({ key: 'burialVespers', name: 'Burial Vespers', available: true });
-    }
+    // Weekday morning services
     if (day.services.royalHours) {
       rows.push({ key: 'royalHours', name: 'Royal Hours', available: true });
     }
-    if (day.services.lamentations) {
-      rows.push({ key: 'lamentations', name: 'The Lamentations', available: true });
-    }
-    if (day.services.vesperalLiturgy) {
-      rows.push({ key: 'vesperalLiturgy', name: 'Vesperal Liturgy of St. Basil', available: true });
-    }
-    if (day.services.bridegroomMatins) {
-      rows.push({ key: 'bridegroomMatins', name: 'Bridegroom Matins', available: true });
-    }
-    if (day.services.passionGospels) {
-      rows.push({ key: 'passionGospels', name: 'Twelve Passion Gospels', available: true });
+    if (day.services.paschalHours) {
+      rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
     }
     if (day.services.matins) {
       rows.push({ key: 'matins', name: 'Matins', available: true });
@@ -157,15 +149,29 @@ function getServiceRows(day) {
     if (day.services.presanctified) {
       rows.push({ key: 'presanctified', name: 'Presanctified Liturgy', available: true });
     }
-    if (day.services.paschalHours) {
-      rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
-    }
-    if (day.services.dailyVespers) {
-      rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
-    }
     if (day.services.liturgy) {
       rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: true });
     }
+  }
+
+  // Evening services — shown regardless of day-of-week
+  if (day.services.burialVespers) {
+    rows.push({ key: 'burialVespers', name: 'Burial Vespers', available: true });
+  }
+  if (day.services.vesperalLiturgy && dow !== 'saturday') {
+    rows.push({ key: 'vesperalLiturgy', name: 'Vesperal Liturgy of St. Basil', available: true });
+  }
+  if (day.services.bridegroomMatins) {
+    rows.push({ key: 'bridegroomMatins', name: 'Bridegroom Matins', available: true });
+  }
+  if (day.services.lamentations) {
+    rows.push({ key: 'lamentations', name: 'The Lamentations', available: true });
+  }
+  if (day.services.passionGospels) {
+    rows.push({ key: 'passionGospels', name: 'Twelve Passion Gospels', available: true });
+  }
+  if (dow !== 'saturday' && day.services.dailyVespers) {
+    rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
   }
 
   return rows;

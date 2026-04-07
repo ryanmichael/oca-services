@@ -3372,13 +3372,16 @@ function handleRequest(req, res) {
       if (!isBridegroomMatins(d)) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
-          error: 'Bridegroom Matins is only served on the evenings of Holy Monday, Tuesday, and Wednesday.',
+          error: 'Bridegroom Matins is only served on the evenings of Palm Sunday, Holy Monday, and Holy Tuesday.',
           date,
         }));
         return;
       }
 
-      const night = getDayOfWeek(d);  // monday, tuesday, or wednesday
+      // API date = civil evening; content from NEXT liturgical day
+      const nextDay = new Date(d);
+      nextDay.setUTCDate(nextDay.getUTCDate() + 1);
+      const night = getDayOfWeek(nextDay);  // monday, tuesday, or wednesday
       const NIGHT_NAMES = {
         monday:    'Holy Monday',
         tuesday:   'Holy Tuesday',

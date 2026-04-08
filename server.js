@@ -2184,7 +2184,7 @@ function assembleForDate(date, pronoun, entryOverride) {
 
       // Determine provenance label for dev-mode display
       const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
-      const menaionProvenance = firstDbSrc && firstDbSrc.startsWith('stSergius')
+      let menaionProvenance = firstDbSrc && firstDbSrc.startsWith('stSergius')
         ? 'St. Sergius'
         : 'OCA';
 
@@ -2282,12 +2282,26 @@ function assembleForDate(date, pronoun, entryOverride) {
       }
 
       // Inject Menaion aposticha stichera when available
-      const apostStichera = sticheraData?.[0]?.stichera.filter(
+      let apostStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'aposticha' && s.order >= 1
       ).slice(0, 3) ?? [];
-      const apostGlory = sticheraData?.[0]?.stichera.find(
+      let apostGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'aposticha' && s.order === 0
       ) ?? null;
+
+      // General Menaion aposticha fallback when day-specific aposticha is missing
+      if (apostStichera.length === 0 && !apostGlory && primary?.saint_type) {
+        const gmTexts = getGeneralMenaionTexts(primary.saint_type, primary.title);
+        if (gmTexts) {
+          const gmApost = gmTexts.filter(r => r.section === 'aposticha' && r.order >= 1).slice(0, 3);
+          const gmGlory = gmTexts.find(r => r.section === 'aposticha' && r.order === 0) ?? null;
+          if (gmApost.length > 0 || gmGlory) {
+            apostStichera = gmApost;
+            apostGlory = gmGlory;
+            menaionProvenance = 'St. Sergius (General)';
+          }
+        }
+      }
 
       if (apostStichera.length > 0 || apostGlory) {
         autoSlot.aposticha = {

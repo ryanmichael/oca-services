@@ -12,6 +12,7 @@
  *   node scrape-menaion-stichera-stsergiusmenaion.js --month 1
  *   node scrape-menaion-stichera-stsergiusmenaion.js --date 01/01
  *   node scrape-menaion-stichera-stsergiusmenaion.js --force
+ *   node scrape-menaion-stichera-stsergiusmenaion.js --fill-aposticha [--month N] [--dry-run]
  */
 
 'use strict';
@@ -26,6 +27,7 @@ const { DatabaseSync } = require('node:sqlite');
 const args     = process.argv.slice(2);
 const DRY_RUN  = args.includes('--dry-run');
 const FORCE    = args.includes('--force');
+const FILL_APOSTICHA = args.includes('--fill-aposticha');
 const ONLY_MONTH = (() => { const i = args.indexOf('--month'); return i >= 0 ? parseInt(args[i+1], 10) : null; })();
 const ONLY_DATE  = (() => { const i = args.indexOf('--date');  return i >= 0 ? args[i+1] : null; })();
 
@@ -544,13 +546,31 @@ function getGapDays(db) {
   `).all();
 }
 
+function getApostichaGapDays(db) {
+  // Days that have Lord I Call stichera but NO aposticha
+  return db.prepare(`
+    SELECT c.month, c.day
+    FROM commemorations c
+    WHERE c.id = (
+      SELECT MIN(c2.id) FROM commemorations c2 WHERE c2.month = c.month AND c2.day = c.day
+    )
+    AND EXISTS (
+      SELECT 1 FROM stichera s WHERE s.commemoration_id = c.id AND s.section = 'lordICall'
+    )
+    AND NOT EXISTS (
+      SELECT 1 FROM stichera s WHERE s.commemoration_id = c.id AND s.section = 'aposticha'
+    )
+    ORDER BY c.month, c.day
+  `).all();
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
   const db = openDb();
 
   // Determine which days to process
-  let days = getGapDays(db);
+  let days = FILL_APOSTICHA ? getApostichaGapDays(db) : getGapDays(db);
 
   // Apply --month filter
   if (ONLY_MONTH !== null) {
@@ -609,7 +629,7 @@ async function main() {
       skippedDays++;
       continue;
     }
-    if (!FORCE && hasExistingStichera(db, comm.id)) {
+    if (!FORCE && !FILL_APOSTICHA && hasExistingStichera(db, comm.id)) {
       console.log(`  ${dateLabel}: already has stichera — skipped (use --force to override)`);
       skippedDays++;
       continue;

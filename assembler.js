@@ -2677,13 +2677,12 @@ function assembleBridegroomMatins(f, night) {
         const k = kaths[i];
         const section = 'Kathisma Reading';
 
-        // Kathisma reading rubric
-        blocks.push(S(`kathisma-rubric-${i}`, section, 'rubric', null,
-          `The reader reads the ${_ordinal(k.afterKathisma)} Kathisma from the Psalter.`));
+        // Full kathisma reading (may be abbreviated or omitted per local practice)
+        blocks.push(S(`kathisma-note-${i}`, section, 'rubric', null,
+          `Note: The kathisma reading may be abbreviated or omitted at the discretion of the rector.`));
+        blocks.push(...assembleKathismaReading(k.afterKathisma, section));
 
         // Post-kathisma prayers
-        blocks.push(S(`kathisma-glory-${i}`, section, 'doxology', 'reader',
-          'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
         blocks.push(S(`kathisma-alleluia-${i}`, section, 'response', null,
           'Alleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'));
         blocks.push(S(`kathisma-lhm-${i}`, section, 'response', null,

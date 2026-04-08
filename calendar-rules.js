@@ -319,7 +319,7 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
  * All stichera come from the feast (injected from DB by server.js at runtime).
  * The feast key is used to identify the feast for the Liturgy assembler.
  */
-function generateGreatFeastVespers(dateStr, dow, tone, feastKey) {
+function generateGreatFeastVespers(dateStr, dow, tone, feastKey, season) {
   return {
     _meta: {
       generated:   true,
@@ -328,7 +328,7 @@ function generateGreatFeastVespers(dateStr, dow, tone, feastKey) {
     },
     date:      dateStr,
     dayOfWeek: dow,
-    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle', greatFeast: feastKey },
+    liturgicalContext: { season, tone, toneSource: 'octoechosCycle', greatFeast: feastKey },
     commemorations: [],
     vespers: {
       serviceType: 'all-night-vigil',
@@ -1596,7 +1596,7 @@ function generateCalendarEntry(dateStr) {
   // own season generators below.
   const feastKey = getGreatFeastKey(date);
   if (feastKey && !['palmSunday', 'ascension', 'pentecost', 'pascha'].includes(feastKey)) {
-    return generateGreatFeastVespers(dateStr, dow, tone, feastKey);
+    return generateGreatFeastVespers(dateStr, dow, tone, feastKey, season);
   }
 
   // ── Vigil-rank saints override ordinary day logic ──────────────────────────
@@ -1665,8 +1665,7 @@ function generateCalendarEntry(dateStr) {
     return generatePentecostarionDay(dateStr, dow, tone, litKey);
   }
 
-  // ── Not yet supported ──────────────────────────────────────────────────────
-  // preLenten → return null
+  // ── Fallback ───────────────────────────────────────────────────────────────
   return null;
 }
 

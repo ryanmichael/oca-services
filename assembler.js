@@ -29,6 +29,23 @@ function getMatinsFixed() {
   return _matinsFixed;
 }
 
+/**
+ * Returns psalm verses with superscription (title) lines removed.
+ * The title may span one or more leading verses.
+ */
+function psalmBody(psalm) {
+  if (!psalm.title) return psalm.verses;
+  // Find how many leading verses the title covers
+  let skip = 0;
+  let accumulated = '';
+  for (let i = 0; i < psalm.verses.length; i++) {
+    accumulated += (i > 0 ? ' ' : '') + psalm.verses[i];
+    skip++;
+    if (accumulated.length >= psalm.title.length) break;
+  }
+  return psalm.verses.slice(skip);
+}
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 /**
@@ -282,29 +299,20 @@ function assembleKathismaReading(kathNum, section) {
       stasis.forEach(psalmNum => {
         const psalm = psalter[psalmNum];
         if (!psalm) return;
-        blocks.push(makeBlock(`k-ps${psalmNum}-hd`, section, 'rubric', null,
-          `PSALM ${psalmNum}`));
-        // If psalm has a superscription (title), render it as a rubric
-        // and skip the duplicate first verse
-        const verses = psalm.title
-          ? psalm.verses.slice(1)
-          : psalm.verses;
-        if (psalm.title) {
-          blocks.push(makeBlock(`k-ps${psalmNum}-title`, section, 'rubric', null,
-            psalm.title));
-        }
+        const psSection = `Psalm ${psalmNum}`;
+        // Skip superscription (title) verse — psalm number is the section title
+        const verses = psalmBody(psalm);
         const text = verses.join('\n\n');
-        blocks.push(makeBlock(`k-ps${psalmNum}`, section, 'prayer', 'reader', text));
+        blocks.push(makeBlock(`k-ps${psalmNum}`, psSection, 'prayer', 'reader', text));
       });
     } else {
       // Psalm 118 verse-range stasis
       const { psalm: psalmNum, fromVerse, toVerse } = stasis;
       const psalm = psalter[psalmNum];
       if (psalm) {
-        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}hd`, section, 'rubric', null,
-          `PSALM ${psalmNum}:${fromVerse}–${toVerse}`));
+        const psSection = `Psalm ${psalmNum}:${fromVerse}–${toVerse}`;
         const verses = psalm.verses.slice(fromVerse - 1, toVerse);
-        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}`, section, 'prayer', 'reader',
+        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}`, psSection, 'prayer', 'reader',
           verses.join('\n\n')));
       }
     }
@@ -2585,8 +2593,8 @@ function assembleBridegroomMatins(f, night) {
     for (const n of [19, 20]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`ro-ps${n}`, section, 'prayer', 'reader', ps.verses.join('\n'),
-          { label: `Psalm ${n}` }));
+        const verses = psalmBody(ps);
+        blocks.push(S(`ro-ps${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
       }
     }
 
@@ -2641,8 +2649,8 @@ function assembleBridegroomMatins(f, night) {
     for (const n of [3, 37, 62]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
       }
     }
 
@@ -2652,8 +2660,8 @@ function assembleBridegroomMatins(f, night) {
     for (const n of [87, 102, 142]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
       }
     }
 
@@ -2792,7 +2800,7 @@ function assembleBridegroomMatins(f, night) {
   {
     const ps50 = psalter['50'];
     if (ps50) {
-      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', ps50.verses.join('\n')));
+      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', psalmBody(ps50).join('\n')));
     }
   }
 
@@ -3789,7 +3797,7 @@ function assembleLamentations(f) {
     const psalter = getPsalter();
     const ps50 = psalter['50'];
     if (ps50) {
-      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', ps50.verses.join('\n')));
+      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', psalmBody(ps50).join('\n')));
     }
   }
 
@@ -4565,7 +4573,7 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     const psalter = getPsalter();
     const ps50 = psalter['50'];
     if (ps50) {
-      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', ps50.verses.join('\n')));
+      blocks.push(S('ps50', 'Psalm 50', 'prayer', 'reader', psalmBody(ps50).join('\n')));
     }
   }
 

@@ -2645,12 +2645,17 @@ function assembleBridegroomMatins(f, night) {
     const section = 'Six Psalms';
     blocks.push(S('6ps-intro', section, 'rubric', 'reader', f.sixPsalms.intro));
 
+    const andAgain = mf.sixPsalms.andAgain || {};
+
     // First group: Psalms 3, 37, 62
     for (const n of [3, 37, 62]) {
       const ps = psalter[String(n)];
       if (ps) {
         const verses = psalmBody(ps);
         blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
+        if (andAgain[String(n)]) {
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
+        }
       }
     }
 
@@ -2662,6 +2667,9 @@ function assembleBridegroomMatins(f, night) {
       if (ps) {
         const verses = psalmBody(ps);
         blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
+        if (andAgain[String(n)]) {
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
+        }
       }
     }
 

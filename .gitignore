@@ -1,4 +1,22 @@
 storage/raw/
 storage/manifest.json
 storage/parsed/
+storage/oca.db-shm
+storage/oca.db-wal
 vespers-*.html
+
+# macOS
+.DS_Store
+
+# Scraper intermediate output
+*-scraped.json
+
+# Working notes / prompts
+agents/
+booklet-print-calibrated.md
+booklet-print-prompt.md
+divine-liturgy-handoff.md
+fix-booklet-blanks.md
+
+# One-off test artifacts
+2026-10-03

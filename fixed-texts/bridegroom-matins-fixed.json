@@ -1,14 +1,15 @@
 {
   "_meta": {
-    "description": "Fixed liturgical texts for Bridegroom Matins — served on the evenings of Palm Sunday, Holy Monday, and Holy Tuesday",
+    "description": "Fixed liturgical texts for Bridegroom Matins — served on the evenings of Palm Sunday through Holy Wednesday",
     "tradition": "OCA (Orthodox Church in America)",
     "translation": "OCA Department of Religious Education (modified, TT)",
     "version": "0.2.0",
-    "note": "Keys (monday/tuesday/wednesday) refer to the LITURGICAL DAY, not the evening of service. Holy Monday matins is sung Palm Sunday evening, Holy Tuesday matins is sung Monday evening, Holy Wednesday matins is sung Tuesday evening.",
+    "note": "Keys (monday/tuesday/wednesday/thursday) refer to the LITURGICAL DAY, not the evening of service. Holy Monday matins is sung Palm Sunday evening, Holy Tuesday matins is sung Monday evening, Holy Wednesday matins is sung Tuesday evening, Holy Thursday matins is sung Wednesday evening.",
     "sources": {
       "monday": "https://files.oca.org/service-texts/2026-0406-texts-matins-tt.docx",
       "tuesday": "https://files.oca.org/service-texts/2026-0407-texts-matins-tt.docx",
       "wednesday": "https://files.oca.org/service-texts/2026-0408-texts-matins-tt.docx",
+      "thursday": "https://files.oca.org/service-texts/2026-0409-texts-matins-tt.docx",
       "tuesdayStructure": "https://stnicholasoca.org/files/Service-Books/Bridegroom-Matins-of-Great-and-Holy-Tuesday.pdf"
     }
   },
@@ -422,6 +423,194 @@
     }
   },
 
+  "thursday": {
+    "_theme": "The Last Supper; the Washing of Feet; Judas's betrayal",
+    "_source": "https://files.oca.org/service-texts/2026-0409-texts-matins-tt.docx",
+    "troparion": {
+      "tone": 8,
+      "label": "Troparion of Holy Thursday",
+      "text": "When the glorious Disciples were enlightened at the washing of the feet before the supper,\nthen the impious Judas was darkened, ailing with avarice,\nand to the lawless judges he betrays Thee, the Righteous Judge.\nBehold, O lover of money, this man who because of money hanged himself!\nFlee from the greedy soul which dared such things against the Master!\nO Lord, Who art good towards all men, glory to Thee!"
+    },
+    "gospel": {
+      "reference": "Luke 22:1-39",
+      "pericope": "108-ctr"
+    },
+    "kontakion": {
+      "tone": 2,
+      "text": "With his hands the betrayer receives the bread.\nWith his hands he secretly receives the silver,\nthe price of Him Who fashioned man with His hands;\nso the servant and deceiver Judas remains depraved."
+    },
+    "ikos": {
+      "text": "Let us all approach the mystical table in fear\nand receive the Bread with pure souls;\nand let us stay with the Master, so that we may see\nhow He washes His Disciples' feet and wipes them with a towel.\nLet us do as we have seen Him do,\nsubmitting to one another and washing one another's feet,\nfor Christ Himself thus commanded His Disciples.\nBut the servant and deceiver Judas did not take heed."
+    },
+    "canon": {
+      "type": "Canon",
+      "tone": 6,
+      "odes": [1, 3, 4, 5, 6, 7, 8, 9],
+      "_source": "oca-2026-0409-matins-tt",
+      "_author": "St. Cosmas of Maiuma",
+      "sessionalHymns": [
+        {
+          "tone": 1,
+          "text": "The Lord, Who alone loves mankind,\nWho created the lakes, the rivers, and the seas,\ngave us a special commandment of love\nwhen He wrapped a towel around His waist\nand washed the feet of His Disciples.\nHe humbled Himself in the greatness of His goodness,\nraising us from the depths of evil."
+        },
+        {
+          "tone": 3,
+          "text": "In Thy goodness Thou didst humble Thyself,\nwashing the feet of Thy Disciples.\nPeter would not allow this, not seeing the divine plan.\nWhen Thou didst reveal it, He obeyed and was washed.\nWe fervently pray to Thee:\n\"Grant us great mercy!\""
+        },
+        {
+          "tone": 4,
+          "text": "Eating with Thy Disciples, O Master,\nThou didst reveal a holy mystery to them:\nthat Thou wouldst be slain, delivering us from corruption,\nfor we venerate Thy holy Passion."
+        }
+      ],
+      "ode1": {
+        "irmos": "At a stroke the Red Sea was parted in two,\nthe swelling depths were dried up—\na path for those unarmed, a grave for those in full array.\nA song befitting God was sung,\nfor gloriously has Christ our God been glorified.",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "Cause of all and Giver of life, the infinite Wisdom of God,\nhas built a house from a pure, unwedded mother.\nFor, clothed in the temple of His body,\ngloriously has Christ our God been glorified.",
+          "Initiating His friends into the mystery, the true Wisdom of God has set a table that nourishes the soul, and has mixed a cup of immortality for the faithful. Let us draw near with reverence and cry out:\n\"Gloriously has Christ our God been glorified!\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "Let us the faithful all listen as the uncreated and innate Wisdom of God calls out with a loud voice, for He cries: \"Taste, and knowing that I am God, exclaim:\n'Gloriously has Christ our God been glorified!'\"",
+        "katavasia": "At a stroke the Red Sea was parted in two,\nthe swelling depths were dried up—\na path for those unarmed, a grave for those in full array.\nA song befitting God was sung,\nfor gloriously has Christ our God been glorified."
+      },
+      "ode3": {
+        "irmos": "The Lord and Creator of all, the Changeless God,\ndescended to unite the creature to Himself.\nNow as the Passover He offers Himself\nto those for whom He is about to die, crying:\n\"Eat My Body and be confirmed in faith!\"",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "Thou didst fill Thy cup of gladness, which redeems all the race of men,\nand didst give it to Thy Disciples to drink, O Good One. Thou didst offer\nThyself, crying: \"Drink My Blood and be confirmed in faith!\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "\"Foolish is the man among you who is a betrayer,\" foretold the Patient\nOne to His Disciples. \"He shall not know these things, and being\nwithout understanding, He shall not understand. Yet abide in Me\nand be confirmed in faith!\"",
+        "katavasia": "The Lord and Creator of all, the Changeless God,\ndescended to unite the creature to Himself.\nNow as the Passover He offers Himself\nto those for whom He is about to die, crying:\n\"Eat My Body and be confirmed in faith!\""
+      },
+      "ode4": {
+        "irmos": "Foreseeing Thine ineffable mystery,\nthe Prophet foretold Thee, O Christ:\n\"Thou hast shown a mighty love, O Compassionate Father,\nby sending Thine only-begotten Son into the world as its atonement.\"",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "Going to the Passion, which pours forth freedom from passion to all\nof Adam's race, Thou didst say to Thy friends, O Christ: \"I have earnestly\ndesired to share this Passover with you. For the Father has sent Me,\nthe only-begotten Son, into the world as its atonement.\"",
+          "Partaking of the Cup, Thou didst cry out to Thy Disciples, O Immortal\nOne: \"No more shall I drink of the fruit of the vine while I am living\namong you! For the Father has sent Me, the only-begotten Son, into\nthe world as its atonement.\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "Thou didst say to Thy friends, O Christ: \"In My Kingdom I shall drink\na new vintage beyond understanding, so that I shall be with you\nas God among gods. For the Father has sent Me, the only-begotten\nSon, into the world as its atonement.\"",
+        "katavasia": "Foreseeing Thine ineffable mystery,\nthe Prophet foretold Thee, O Christ:\n\"Thou hast shown a mighty love, O Compassionate Father,\nby sending Thine only-begotten Son into the world as its atonement.\""
+      },
+      "ode5": {
+        "irmos": "The Apostles were united by a bond of love,\ndedicated to Christ, Who rules over all.\nTheir beautiful feet were washed\nfor the preaching of the Gospel of peace to all.",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "The Wisdom of God, Who rules the ungovernable waters of the\nheavens, Who tames the deeps and restrains the seas, now pours\nwater into a basin, and the Master washes the feet of His servants."
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "The Master shows the Disciples an example of humility; He Who\nwraps the vault of heaven in clouds girds Himself with a towel; He\nWho holds in His hands the breath of all that exists, kneels down to\nwash the feet of His servants.",
+        "katavasia": "The Apostles were united by a bond of love,\ndedicated to Christ, Who rules over all.\nTheir beautiful feet were washed\nfor the preaching of the Gospel of peace to all."
+      },
+      "ode6": {
+        "irmos": "The final abyss of sins has encompassed me.\nUnable to bear its waves, like Jonah I cry to Thee:\n\"Lead me from corruption, O Master!\"",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "\"You call me Lord and Teacher, O Disciples, for so I am.\nTherefore, imitate the example which you have seen in Me!\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "\"He who has no filth does not need to wash, except for his feet.\nAnd you are clean, O Disciples, but not all of you. For a\nmad impulse rages within one of you.\"",
+        "katavasia": "The final abyss of sins has encompassed me.\nUnable to bear its waves, like Jonah I cry to Thee:\n\"Lead me from corruption, O Master!\""
+      },
+      "ode7": {
+        "irmos": "The Youths in Babylon were not afraid of the flaming furnace.\nWhen cast into the midst of the flames,\nthey were washed in dew and sang:\n\"Blessed art Thou, O Lord God of our fathers!\"",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "Nodding his head in agreement, Judas deliberately stirs up\nevil, seeking an opportunity to hand over to condemnation\nthe Judge Who is Lord of all and God of our fathers.",
+          "Christ cried out to His friends: \"One of you will betray Me.\"\nThey forgot their gladness and were seized by anxiety and\ngrief, saying: \"Tell us who it is, O God of our fathers!\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "\"He that boldly dips his hand in the same dish with Me. It would\nbe better for that man if he had never passed through the gate\nof life.\" Thus did Christ, the God of our fathers, disclose the one who\nwould betray Him.",
+        "katavasia": "The Youths in Babylon were not afraid of the flaming furnace.\nWhen cast into the midst of the flames,\nthey were washed in dew and sang:\n\"Blessed art Thou, O Lord God of our fathers!\""
+      },
+      "ode8": {
+        "irmos": "The blessed Youths in Babylon braved dangers for their fathers' laws.\nThey ignored the ignorant command of the king.\nUnited by a fire which did not consume them,\nthey sang a hymn worthy of the Almighty:\n\"Praise the Lord, all works of the Lord!\nExalt Him throughout all ages!\"",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "The blessed Apostles, those guests faithfully present with the Word in\nZion, followed the Shepherd like sheep; and united by Christ, from\nWhom they were not parted, they fed upon the divine Word, crying\nout in thanksgiving: \"Praise the Lord, all works of the Lord. Exalt\nHim throughout all ages!\"",
+          "Iscariot, that man of ill-omened name, forced from his mind the law of\nlove, and moved to betrayal the feet which Thou hadst washed, O Christ.\nHe then ate Thy Bread, even Thy Divine Body, lifted up his heel\nagainst Thee, and knew not how to cry: \"Praise the Lord, all works of\nthe Lord! Exalt Him throughout all ages!\""
+        ],
+        "glorySuffix": "Let us bless the Father, the Son, and the Holy Spirit, the Lord,",
+        "nowSuffix": "now and ever and unto ages of ages! Amen.",
+        "theotokion": "Without conscience Judas accepted the Body that cleanses from sin and\nthe Blood that was shed for the world. But he was not ashamed of\ndrinking what he had sold for a price. He was not offended at evil, and\nknew not how to cry: \"Praise the Lord, all works of the Lord! Exalt\nHim throughout all ages!\"",
+        "katavasia": "We praise, bless, and worship the Lord,\nsinging and exalting Him throughout all ages.\nThe blessed Youths in Babylon braved dangers for their fathers' laws.\nThey ignored the ignorant command of the king.\nUnited by a fire which did not consume them,\nthey sang a hymn worthy of the Almighty:\n\"Praise the Lord, all works of the Lord!\nExalt Him throughout all ages!\""
+      },
+      "ode9": {
+        "irmos": "Come, O faithful, let us enjoy the Master's hospitality:\nthe Banquet of Immortality!\nIn the upper chamber with uplifted minds,\nlet us receive the exalted words of the Word,\nWhom we magnify.",
+        "refrain": "Glory to Thee, our God, glory to Thee!",
+        "troparia": [
+          "\"Go,\" says the Word to His Disciples, \"and in the upper chamber\nprepare the Passover that confirms the mind of those whom I initiate\nwith the unleavened word of truth; and magnify the strength of grace!\"",
+          "\"Before the ages the Father begot Me, His creative Wisdom. He made\nMe the beginning of His ways for His works, which now have been\nmystically perfected. For, being by nature the uncreated Word, I make\nMy own the words of that nature which I have now assumed.\""
+        ],
+        "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit,\nnow and ever, and unto ages of ages. Amen.",
+        "theotokion": "\"Just as I am Man in essence and not in imagination, so also the nature\nthat has been united to Me is God by reason of communion. Therefore\nknow Me, the one Christ, Who am saving those things from which\nand in which I was brought forth!\"",
+        "katavasia": "Come, O faithful, let us enjoy the Master's hospitality:\nthe Banquet of Immortality!\nIn the upper chamber with uplifted minds,\nlet us receive the exalted words of the Word,\nWhom we magnify."
+      }
+    },
+    "stichera": {
+      "_note": "Lauds stichera for Holy Thursday matins (sung Wednesday evening).",
+      "hymns": [
+        {
+          "tone": 2,
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "The assembly of the Jews gathers together\nto deliver to Pilate the Maker and Creator of all.\nWhat lawlessness! What faithlessness!\nThe Judge of the living and the dead they prepare for judgment.\nThe Healer of suffering they prepare for sufferings.\nHow great is Thy mercy!\nO long-suffering Lord, glory to Thee!"
+        },
+        {
+          "tone": 2,
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "text": "The transgressor Judas, O Lord,\ndipped his hand in the plate with Thee at supper.\nBut now, he unlawfully stretches forth his hand for silver.\nHe calculated the price of the woman's myrrh,\nyet he does not shudder in selling Thee, the Priceless One.\nHe let the Master wash his feet,\nyet he deceitfully kisses Him in betrayal to lawless men.\nCast out from the ranks of the Apostles,\nhe casts away the thirty pieces of silver,\nnot seeing the Resurrection on the third day.\nBy it, have mercy on us!"
+        },
+        {
+          "tone": 2,
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Judas, the treacherous deceiver,\nwith a deceitful kiss betrayed the Lord and Savior.\nHe sold the Master as a slave to lawless men,\nand the Lamb of God, the Son of the Father,\nthe only greatly merciful One,\nwas led as a sheep to the slaughter."
+        },
+        {
+          "tone": 2,
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! Praise the Lord! (Ps. 150:5)",
+          "text": "Servant and deceiver,\ndisciple and betrayer, friend and devil,\nJudas has been revealed by his deeds.\nWhile following the Master, he plotted His betrayal.\nHe said to himself: \"I shall betray Him and gain the purse.\"\nHe sought to have the myrrh sold\nand, by deceit, to have Jesus seized.\nHe gave the kiss and gave up the Christ.\nBut like a sheep led to the slaughter,\nso went the only compassionate Lover of mankind."
+        }
+      ],
+      "gloryNow": {
+        "tone": 2,
+        "text": "The Lamb, Whom Isaiah proclaimed,\ngoes willingly to the slaughter;\nHe gives His back to scourging, His cheeks to buffeting.\nHe does not turn His face from the shame of spitting.\nHe is condemned to a shameful death.\nHe, Who is sinless, willingly submits to all\nto grant to all resurrection from the dead."
+      }
+    },
+    "aposticha": {
+      "hymns": [
+        {
+          "tone": 8,
+          "text": "Today the evil assembly gathers against the Christ\nand devises false charges against Him,\nto deliver the Innocent One over to Pilate to die.\nToday Judas sets up for himself the gallows of wealth,\nabandoning both earthly and heavenly life.\nToday Caiaphas prophesies unwittingly, saying:\n\"It is expedient that one Man should die for the people.\"\nFor truly Christ came to suffer for our sins,\nto free us from bondage to the enemy,\nfor He is good and loves mankind."
+        },
+        {
+          "tone": 8,
+          "verse": "He who ate of My bread has lifted his heel against Me. (Ps. 40:9b)",
+          "text": "Today Judas abandons all pretense of love for the poor.\nNot caring for them, he assumes the very shape of greed.\nInstead of selling the sinful woman's myrrh,\nHe sells the Anointed One of God and steals the proceeds.\nHe runs to the lawless Jews and asks:\n\"What will you give me if I betray Him to you?\"\nCursed be the traitor's love of silver!\nHe lowers the price and bargains like a trader.\nHe sells Jesus like a runaway slave, not asking much,\nFor thieves never regard the value of precious things.\nNow the disciple casts holy things to the dogs.\nMaddened with avarice, he howls against the Master.\nLet us flee from his example and cry:\n\"O long-suffering Lord, glory to Thee!\""
+        },
+        {
+          "tone": 8,
+          "verse": "When he goes out, he tells it abroad. (Ps. 40:6b)",
+          "text": "Thy life, O lawless Judas, is filled with deceit.\nSick with avarice, thou didst gain the contempt of all men.\nIf thou didst desire wealth, why didst thou follow Him Who taught poverty?\nIf thou didst love the priceless One, why didst thou sell Him?\nWhy didst thou hand Him over to be murdered?\nShudder, O sun! O earth, lament and cry with fear:\n\"O long-suffering Lord, glory to Thee!\""
+        },
+        {
+          "tone": 8,
+          "verse": "He utters lawless words against Me. (Ps. 40:8a)",
+          "text": "Let no one be ignorant of the Lord's supper, O believers.\nLet no one approach the banquet with deceit like Judas,\nfor he received a morsel, yet abandoned the Bread of Life.\nHe looked like a disciple, but in fact he was a murderer.\nHe lived with the Apostles, but he rejoiced with the Jews.\nWith hatred he kissed, and with a kiss he sold God,\nWho had redeemed us from the curse, the Savior of our souls."
+        }
+      ],
+      "glory": {
+        "tone": 8,
+        "text": "Thy life, O lawless Judas, is filled with deceit.\nSick with avarice, thou didst gain the contempt of all men.\nIf thou didst desire wealth, why didst thou follow Him Who taught poverty?\nIf thou didst love the priceless One, why didst thou sell Him?\nWhy didst thou hand Him over to be murdered?\nShudder, O sun! O earth, lament and cry with fear:\n\"O long-suffering Lord, glory to Thee!\""
+      },
+      "now": {
+        "tone": 5,
+        "text": "Instructing Thy Disciples in the mystery, O Lord,\nThou didst say to them:\n\"My beloved, see that no fear separates you from Me!\nThough I suffer, it is for the sake of the world.\nLet Me not be a cause of scandal to you!\nI came, not to be served, but to serve;\nto give Myself for the redemption of the world.\nIf you are My friends, then imitate Me!\nLet the first among you be the last!\nLet the master be like the servant!\nAbide in Me and bear fruit, for I am the vine of life!\""
+      }
+    }
+  },
+
   "exaposteilarion": {
     "tone": 3,
     "label": "Exaposteilarion of the Bridegroom",
@@ -448,6 +637,7 @@
     "monday": "May the Lord Who is going to His voluntary Passion for our salvation, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.",
     "tuesday": "May the Lord Who is going to His voluntary Passion for our salvation, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.",
     "wednesday": "May He Who for our salvation endured spitting, and scourging, and buffeting, and the Cross and death, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.",
+    "thursday": "May He Who for our salvation endured spitting, and scourging, and buffeting, and the Cross and death, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.",
     "response": "Amen."
   }
 }

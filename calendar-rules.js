@@ -1910,12 +1910,12 @@ function isPresanctifiedDay(date) {
  * @returns {boolean}
  */
 function isBridegroomMatins(date) {
-  // Bridegroom Matins is served on the EVENING of Sun/Mon/Tue of Holy Week.
+  // Bridegroom Matins is served on the EVENING of Sun/Mon/Tue/Wed of Holy Week.
   // API date = civil evening (the date the person attends).
-  // Content is from the NEXT liturgical day (Mon/Tue/Wed).
+  // Content is from the NEXT liturgical day (Mon/Tue/Wed/Thu).
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && ['sunday', 'monday', 'tuesday'].includes(dow);
+  return season === 'holyWeek' && ['sunday', 'monday', 'tuesday', 'wednesday'].includes(dow);
 }
 
 /**

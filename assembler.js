@@ -2659,16 +2659,18 @@ function assembleBridegroomMatins(f, night) {
     }
   }
 
-  // ── Troparion of the Bridegroom (×2, Glory/Now, ×1) ───────────────────────
+  // ── Troparion (×2, Glory/Now, ×1) ──────────────────────────────────────────
   {
     const section = 'Troparion';
-    blocks.push(S('trop-1', section, 'hymn', 'choir', f.troparion.text,
-      { tone: f.troparion.tone, label: f.troparion.label }));
+    // Holy Thursday has its own troparion; other nights use the shared Bridegroom troparion
+    const trop = nightData.troparion || f.troparion;
+    blocks.push(S('trop-1', section, 'hymn', 'choir', trop.text,
+      { tone: trop.tone, label: trop.label }));
     blocks.push(S('trop-rubric', section, 'rubric', null, '(twice)'));
     blocks.push(S('trop-glory', section, 'doxology', 'reader',
       'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
-    blocks.push(S('trop-3', section, 'hymn', 'choir', f.troparion.text,
-      { tone: f.troparion.tone }));
+    blocks.push(S('trop-3', section, 'hymn', 'choir', trop.text,
+      { tone: trop.tone }));
     blocks.push(S('trop-lhm3', section, 'response', null, 'Lord, have mercy. (×3)'));
     blocks.push(S('trop-small-glory', section, 'doxology', null,
       'Glory to the Father, and to the Son, and to the Holy Spirit.'));
@@ -2824,12 +2826,38 @@ function assembleBridegroomMatins(f, night) {
               odeData.nowSuffix));
           }
 
+          // Theotokion (final troparion after Glory/Now, before katavasia)
+          if (odeData.theotokion) {
+            blocks.push(S(`canon-ode${odeNum}-theotokion`, section, 'hymn', 'reader',
+              odeData.theotokion));
+          }
+
           // Katavasia
           if (odeData.katavasia) {
             blocks.push(S(`canon-ode${odeNum}-katavasia-label`, section, 'rubric', null,
               `Katavasia, Tone ${canon.tone}`));
             blocks.push(S(`canon-ode${odeNum}-katavasia`, section, 'hymn', 'choir',
               odeData.katavasia, { tone: canon.tone }));
+          }
+
+          // Sessional hymns after Ode 3 (Holy Thursday)
+          if (odeNum === 3 && canon.sessionalHymns) {
+            for (let sh = 0; sh < canon.sessionalHymns.length; sh++) {
+              const sess = canon.sessionalHymns[sh];
+              if (sh === 0) {
+                // no doxology prefix before first
+              } else if (sh === 1) {
+                blocks.push(S('canon-sess-glory', 'Sessional Hymn', 'doxology', null,
+                  'Glory to the Father, and to the Son, and to the Holy Spirit;'));
+              } else {
+                blocks.push(S('canon-sess-now', 'Sessional Hymn', 'doxology', null,
+                  'now and ever, and unto ages of ages. Amen.'));
+              }
+              blocks.push(S(`canon-sess-label-${sh}`, 'Sessional Hymn', 'rubric', null,
+                `Kathisma Hymn, Tone ${sess.tone}`));
+              blocks.push(S(`canon-sess-${sh}`, 'Sessional Hymn', 'hymn', 'choir',
+                sess.text, { tone: sess.tone }));
+            }
           }
         } else {
           // Rubric placeholder for odes without full data

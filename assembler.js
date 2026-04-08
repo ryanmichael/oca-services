@@ -279,7 +279,16 @@ function assembleKathismaReading(kathNum, section) {
         if (!psalm) return;
         blocks.push(makeBlock(`k-ps${psalmNum}-hd`, section, 'rubric', null,
           `PSALM ${psalmNum}`));
-        const text = psalm.verses.join('\n\n');
+        // If psalm has a superscription (title), render it as a rubric
+        // and skip the duplicate first verse
+        const verses = psalm.title
+          ? psalm.verses.slice(1)
+          : psalm.verses;
+        if (psalm.title) {
+          blocks.push(makeBlock(`k-ps${psalmNum}-title`, section, 'rubric', null,
+            psalm.title));
+        }
+        const text = verses.join('\n\n');
         blocks.push(makeBlock(`k-ps${psalmNum}`, section, 'prayer', 'reader', text));
       });
     } else {

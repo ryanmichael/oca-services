@@ -3100,14 +3100,15 @@ function _ordinal(n) {
  * Served on the evening of Great Thursday. 100% fixed content.
  *
  * Structure:
- *   Opening → Alleluia + Troparion → Gospel 1 → Troparion →
- *   Antiphons 1–3 + Gospel 2 → Antiphons 4–6 + Gospel 3 →
- *   Antiphons 7–9 + Gospel 4 → Antiphons 10–12 + Gospel 5 →
- *   Antiphons 13–15 + Gospel 6 → Beatitudes + Gospel 7 →
- *   Psalm 50 + Gospel 8 → Canon (abbreviated) →
- *   Gospel 9 → Gospel 10 → Gospel 11 →
- *   Kontakion + Ikos → Exaposteilarion →
- *   Gospel 12 → Lauds → Great Doxology → Closing
+ *   Opening (Royal Office prayers) → Six Psalms → Great Litany →
+ *   Alleluia + Troparion → Gospel 1 →
+ *   Antiphons 1–3 + Sessional + Gospel 2 → Antiphons 4–6 + Sessional + Gospel 3 →
+ *   Antiphons 7–9 + Sessional + Gospel 4 → Antiphons 10–12 + Sessional + Gospel 5 →
+ *   Antiphons 13–15 + Sessional + Gospel 6 → Beatitudes → Little Litany →
+ *   Prokeimenon + Gospel 7 → Psalm 50 + Gospel 8 → Canon (abbreviated) →
+ *   Gospel 9 → Lauds → Gospel 10 → Small Doxology → Bow-Head Prayer →
+ *   Gospel 11 → Aposticha → Gospel 12 →
+ *   Closing Prayers → Closing Troparion → Fervent Supplication → Dismissal
  *
  * @param {Object} f - Parsed fixed-texts/passion-gospels-fixed.json
  * @returns {ServiceBlock[]}
@@ -3118,24 +3119,106 @@ function assemblePassionGospels(f) {
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
 
+  const vf = getVespersFixed();
+  const mf = getMatinsFixed();
+  const psalter = getPsalter();
+
   const preGospelResp = f.preGospelResponse || 'Glory to Thy passion, O Lord.';
   const postGospelResp = f.postGospelResponse || 'Glory to Thy longsuffering, O Lord.';
 
-  // ── Opening ────────────────────────────────────────────────────────────────
-  blocks.push(S('opening-excl', 'Opening', 'prayer', 'priest', f.opening.exclamation));
-  blocks.push(S('opening-amen', 'Opening', 'response', 'reader', f.opening.amen));
+  // ── Opening (Royal Office) ────────────────────────────────────────────────
+  {
+    const section = 'Opening';
+    blocks.push(S('opening-excl', section, 'prayer', 'priest', f.opening.exclamation));
+    blocks.push(S('opening-amen', section, 'response', 'reader', f.opening.amen));
+
+    // Opening prayers: Glory to Thee, O Heavenly King, Trisagion through Our Father
+    blocks.push(S('opening-glorytothee', section, 'prayer', 'reader',
+      'Glory to Thee, our God, glory to Thee.'));
+    blocks.push(S('opening-heavenlyking', section, 'prayer', 'reader', vf.prayers.heavenlyKing));
+    blocks.push(S('opening-trisagion', section, 'prayer', 'reader',
+      vf.prayers.trisagion +
+      '\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.' +
+      '\n\n' + vf.prayers.mostHolyTrinity +
+      '\n\nLord, have mercy. (×3)' +
+      '\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+    blocks.push(S('opening-ourfather', section, 'prayer', 'reader', vf.prayers.ourFather));
+    blocks.push(S('opening-ourfather-excl', section, 'prayer', 'priest', vf.prayers['ourFather.doxology']));
+    blocks.push(S('opening-ourfather-amen', section, 'response', 'reader', 'Amen.'));
+
+    // Lord, have mercy ×12
+    blocks.push(S('opening-lhm12', section, 'response', 'reader', 'Lord, have mercy. (×12)'));
+
+    // Glory/Now
+    blocks.push(S('opening-glorynow', section, 'doxology', 'reader',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+
+    // Come, let us worship
+    blocks.push(S('opening-comeletusworship', section, 'prayer', 'reader',
+      'Come, let us worship God our King.\nCome, let us worship and fall down before Christ, our King and our God.\nCome, let us worship and fall down before Christ Himself, our King and our God.'));
+
+    // Priest: Glory to the holy Trinity
+    blocks.push(S('opening-trinity', section, 'prayer', 'priest',
+      f.opening.trinityGlory || mf.royalOffice.trinityGlory));
+    blocks.push(S('opening-trinity-amen', section, 'response', 'choir', 'Amen.'));
+  }
+
+  // ── Six Psalms ────────────────────────────────────────────────────────────
+  {
+    const section = 'Six Psalms';
+    blocks.push(S('6ps-intro', section, 'rubric', 'reader', mf.sixPsalms.intro));
+
+    for (const n of [3, 37, 62]) {
+      const ps = psalter[String(n)];
+      if (ps) {
+        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n}`));
+        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.join('\n')));
+      }
+    }
+
+    blocks.push(S('6ps-mid-glory', section, 'doxology', 'reader', mf.sixPsalms.midGlory));
+
+    for (const n of [87, 102, 142]) {
+      const ps = psalter[String(n)];
+      if (ps) {
+        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n}`));
+        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.join('\n')));
+      }
+    }
+
+    blocks.push(S('6ps-closing', section, 'doxology', 'reader',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'));
+  }
+
+  // ── Great Litany ──────────────────────────────────────────────────────────
+  {
+    const section = 'Great Litany';
+    const gl = vf.litanies.great;
+    blocks.push(S('gl-opening', section, 'prayer', 'deacon', gl.opening));
+    blocks.push(S('gl-response', section, 'response', 'choir', gl.response));
+    for (let i = 0; i < gl.petitions.length; i++) {
+      blocks.push(S(`gl-pet-${i}`, section, 'prayer', 'deacon', gl.petitions[i]));
+    }
+    blocks.push(S('gl-commemoration', section, 'prayer', 'deacon', gl.commemoration));
+    blocks.push(S('gl-commem-resp', section, 'response', 'choir', gl.commemorationResponse));
+    blocks.push(S('gl-exclamation', section, 'prayer', 'priest', gl.exclamation));
+    blocks.push(S('gl-amen', section, 'response', 'choir', 'Amen.'));
+  }
 
   // ── Alleluia (instead of "God is the Lord" — fasting day) ──────────────────
   {
     const section = 'Alleluia';
     const a = f.alleluia || {};
     const tone = a.tone || 8;
-    blocks.push(S('alleluia', section, 'hymn', 'choir',
-      a.exclamation || 'Alleluia, alleluia, alleluia!', { tone }));
-    if (a.verses) {
-      for (let i = 0; i < a.verses.length; i++) {
-        blocks.push(S(`alleluia-v${i}`, section, 'verse', 'reader', a.verses[i]));
-      }
+    blocks.push(S('alleluia-announce', section, 'prayer', 'deacon',
+      `In the eighth tone: Alleluia, alleluia, alleluia.`));
+    blocks.push(S('alleluia-v0', section, 'verse', 'deacon', `V. ${a.verses[0]}`));
+    blocks.push(S('alleluia-rep0', section, 'hymn', 'choir',
+      'Alleluia, alleluia, alleluia.', { tone }));
+    for (let i = 1; i < a.verses.length; i++) {
+      blocks.push(S(`alleluia-v${i}`, section, 'verse', 'deacon', `V. ${a.verses[i]}`));
+      blocks.push(S(`alleluia-rep${i}`, section, 'hymn', 'choir',
+        'Alleluia, alleluia, alleluia.', { tone }));
     }
   }
 
@@ -3275,10 +3358,7 @@ function assemblePassionGospels(f) {
   }
 
   // ── Little Litany + Prokeimenon ────────────────────────────────────────────
-  blocks.push(S('litany-small', 'Little Litany', 'prayer', 'deacon',
-    'Again and again in peace let us pray to the Lord.'));
-  blocks.push(S('litany-small-resp', 'Little Litany', 'response', 'choir',
-    'Lord, have mercy.'));
+  _emitLittleLitany(blocks, S, 'Little Litany', mf.littleLitany, 'afterOde9');
   if (f.prokeimenon) {
     const section = 'Prokeimenon';
     blocks.push(S('prok-announce', section, 'rubric', 'deacon',
@@ -3390,6 +3470,19 @@ function assemblePassionGospels(f) {
       'Thy mercy, O Lord, endureth forever. O despise not the works of Thy hands. To Thee is due praise; to Thee is due a song; to Thee is due glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'));
   }
 
+  // ── Bow-Head Prayer (after Small Doxology) ─────────────────────────────────
+  {
+    const section = 'Bow-Head Prayer';
+    const bh = mf.prayers.bowHeadsMorning;
+    blocks.push(S('bh-peace', section, 'prayer', 'priest', bh.dialogue.peace));
+    blocks.push(S('bh-response', section, 'response', 'choir', bh.dialogue.response));
+    blocks.push(S('bh-invite', section, 'prayer', 'deacon', bh.dialogue.invitation));
+    blocks.push(S('bh-invite-resp', section, 'response', 'choir', bh.dialogue.invitationResponse));
+    blocks.push(S('bh-prayer', section, 'prayer', 'priest', bh.prayer));
+    blocks.push(S('bh-exclamation', section, 'prayer', 'priest', bh.exclamation));
+    blocks.push(S('bh-amen', section, 'response', 'choir', 'Amen.'));
+  }
+
   // ── Gospel 11 ─────────────────────────────────────────────────────────────
   addGospel(f.gospels[10], f.postGospel11Priest
     ? { priestReading: f.postGospel11Priest.text } : null);
@@ -3444,15 +3537,33 @@ function assemblePassionGospels(f) {
   // ── Litany of Fervent Supplication ────────────────────────────────────────
   {
     const section = 'Litany of Fervent Supplication';
+    const aug = vf.litanies.augmented;
     blocks.push(S('fervent-opening', section, 'prayer', 'deacon',
       'Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.'));
     blocks.push(S('fervent-resp', section, 'response', 'choir',
-      'Lord, have mercy. (Thrice)'));
+      'Lord, have mercy. (×3)'));
+    for (let i = 0; i < aug.triplePetitions.length; i++) {
+      blocks.push(S(`fervent-pet-${i}`, section, 'prayer', 'deacon', aug.triplePetitions[i]));
+    }
+    blocks.push(S('fervent-excl', section, 'prayer', 'priest', aug.exclamation));
+    blocks.push(S('fervent-amen', section, 'response', 'choir', 'Amen.'));
   }
 
   // ── Dismissal ─────────────────────────────────────────────────────────────
-  blocks.push(S('dismissal', 'Dismissal', 'prayer', 'priest', f.dismissal.text));
-  blocks.push(S('dismissal-amen', 'Dismissal', 'response', 'choir', f.dismissal.response));
+  {
+    const section = 'Dismissal';
+    const md = mf.dismissal;
+    blocks.push(S('dis-wisdom', section, 'rubric', 'deacon', md.wisdom));
+    blocks.push(S('dis-bless', section, 'response', 'choir', md.bless));
+    blocks.push(S('dis-blessed', section, 'prayer', 'priest', md.blessed));
+    blocks.push(S('dis-confirm', section, 'response', 'choir', md.confirm));
+    blocks.push(S('dis-theotokos', section, 'prayer', 'priest', md.theotokos));
+    blocks.push(S('dis-morehon', section, 'hymn', 'choir', md.theotokosResponse));
+    blocks.push(S('dis-glory', section, 'prayer', 'priest', md.glory));
+    blocks.push(S('dis-final-glory', section, 'doxology', 'choir', md.finalGlory));
+    blocks.push(S('dismissal', section, 'prayer', 'priest', f.dismissal.text));
+    blocks.push(S('dismissal-amen', section, 'response', 'choir', f.dismissal.response));
+  }
 
   blocks._warnings = _warnings.slice();
   return blocks;

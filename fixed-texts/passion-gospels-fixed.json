@@ -13,18 +13,24 @@
 
   "opening": {
     "exclamation": "Blessed is our God always, now and ever and unto ages of ages.",
-    "amen": "Amen."
+    "amen": "Amen.",
+    "trinityGlory": "Glory to the holy, consubstantial, life-giving, and undivided Trinity, always, now and ever and unto ages of ages."
+  },
+
+  "sixPsalms": {
+    "_note": "Standard matins hexapsalmos. Psalm texts loaded from psalter.json at assembly time. Intro and midGlory reuse matins-fixed.json."
   },
 
   "alleluia": {
     "tone": 8,
     "exclamation": "Alleluia, alleluia, alleluia!",
     "verses": [
-      "Why do the heathen rage, and the people imagine vain things?",
-      "The kings of the earth set themselves, and the rulers take counsel together, against the Lord and against His anointed.",
-      "He that sitteth in the heavens shall laugh; the Lord shall have them in derision.",
-      "Bring evils upon them, O Lord; bring evils upon them, the glory of Israel."
-    ]
+      "In the night my soul rises early for Thee, O God, for Thy commandments are a light on the earth.",
+      "Learn righteousness, you that live on the earth.",
+      "Jealousy shall grasp an untaught people.",
+      "Bring evils upon them, O Lord; bring evils upon those who are glorious on the earth."
+    ],
+    "_source": "stNicholasOCA-passionGospels (Isaiah 26:9ff — Lenten Matins Alleluia)"
   },
 
   "troparion": {
@@ -42,7 +48,7 @@
       "number": 1,
       "book": "John",
       "pericope": "13:31–18:1",
-      "section": "58",
+      "section": "46–58",
       "label": "The Farewell Discourse and the High Priestly Prayer",
       "bellRings": 1
     },
@@ -166,7 +172,7 @@
       "troparion": "As brethren in Christ, let us acquire brotherly love; and let us not be lacking in compassion for our neighbour, lest for money's sake we be condemned like the unmerciful servant, and repent like Judas to no purpose.",
       "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!",
       "glory": "Glorious things are spoken of thee throughout all the world, for thou hast borne in the flesh the Maker of all, O Theotokos Mary, unwedded, worthy of all praise.",
-      "theotokion": "Hail, Theotokos, who hast..."
+      "theotokion": "Hail, Theotokos, who hast borne in the flesh the Maker of all, the Creator of the universe. Pray to Christ our God to grant peace to the whole world."
     },
     {
       "number": 5,
@@ -187,7 +193,7 @@
       "verse": "Peter denied thee three times, and straightway he understood thy words; but he offered thee tears of repentance. O God, be merciful to me and save me.",
       "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
       "glory": "The holy Virgin is a gateway to salvation, a fair Paradise, and a cloud of everlasting light: let us all sing in praise of her and say to her, \"Rejoice!\"",
-      "theotokion": "The holy Virgin is a gateway..."
+      "theotokion": "The holy Virgin is a gateway to salvation, a fair Paradise, and a cloud of everlasting light: let us all sing in praise of her and say to her, \"Rejoice!\""
     },
     {
       "number": 8,
@@ -208,7 +214,7 @@
       "verse": "The disciple denied thee and the thief cried aloud: Remember me, O Lord, in thy Kingdom.",
       "refrain": "Save us, O Son of God, Who wast nailed to the Cross in the flesh; we sing to Thee: Alleluia!",
       "glory": "O Lord who lovest mankind, for the sake of thy servants thou wast pleased to take flesh from the Virgin: grant peace to the world, that with one accord we may glorify thee.",
-      "theotokion": "O Lord who lovest mankind..."
+      "theotokion": "O Lord who lovest mankind, for the sake of thy servants thou wast pleased to take flesh from the Virgin: grant peace to the world, that with one accord we may glorify thee."
     },
     {
       "number": 11,
@@ -229,7 +235,7 @@
       "verse": "He before whom all things quake and tremble, to whom every tongue gives praise, Christ the Power of God and the Wisdom of God, is struck on the face by the priests, and they give him gall to drink. Yet he was pleased to suffer all things, wishing to save us from our sins by his own blood, in his love for mankind.",
       "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
       "glory": "O Theotokos, who through a word in ways past speech hast borne thine own Creator, pray unto him for the salvation of our souls.",
-      "theotokion": "O Theotokos, who through a word..."
+      "theotokion": "O Theotokos, who through a word in ways past speech hast borne thine own Creator, pray unto him for the salvation of our souls."
     },
     {
       "number": 14,
@@ -248,7 +254,7 @@
         "Thy Cross, O Lord, is life and resurrection to thy people; and putting all our trust in it, we sing to thee, our crucified God: Have mercy upon us."
       ],
       "glory": "Beholding thee hanging on the Cross, O Christ, thy Mother cried aloud: \"O my Son, what is this strange mystery that I behold? Nailed in the flesh, O Giver of Life, how dost thou die upon the Tree?\"",
-      "theotokion": "Beholding thee hanging..."
+      "theotokion": "Beholding thee hanging on the Cross, O Christ, thy Mother cried aloud: \"O my Son, what is this strange mystery that I behold? Nailed in the flesh, O Giver of Life, how dost thou die upon the Tree?\""
     }
   ],
 
@@ -380,7 +386,7 @@
       "troparion": "In that same hour, Thou did grant paradise to the wise thief, O Lord. That same hour Thou did grand paradise illumine me and save me by the tree of thy cross.",
       "_note": "Troparion sung twice"
     },
-    "postCanon": "O Lord, this very day..."
+    "postCanon": "O Lord, this very day Thou didst grant paradise to the wise thief. By the wood of the Cross, illumine me and save me."
   },
 
   "exaposteilarion": {

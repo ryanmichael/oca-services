@@ -1017,9 +1017,14 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
           book: 'Matthew/Luke/John',
           pericope: 'Matt. 27:1–38; Lk. 23:39–43; Matt. 27:39–54; Jn. 19:31–37; Matt. 27:55–61',
           label: 'The Composite Gospel of the Burial',
+          preGospelResponse: 'Glory to Thy passion, O Lord.',
+          postGospelResponse: 'Glory to Thy longsuffering, O Lord.',
         },
       },
       customCalendarEntry: true,
+      dismissal: {
+        opening: 'holyFriday',
+      },
     },
     saturday: {
       name:        'Great and Holy Saturday',
@@ -1090,6 +1095,14 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
             { position: 'glory', source: 'triodion', key: `${triKey}.troparia.nobleJoseph`,  tone: 2, label: 'Troparion of Holy Saturday' },
             { position: 'now',   source: 'triodion', key: `${triKey}.troparia.angelCame`,    tone: 2, label: 'Troparion' },
           ],
+        },
+        dismissal: {
+          opening: 'holyFriday',
+          saints: [],
+        },
+        epitaphion: {
+          source: 'triodion',
+          key: `${triKey}.epitaphion`,
         },
       },
     };

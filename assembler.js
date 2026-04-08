@@ -136,6 +136,11 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
   blocks.push(...assembleDismissal(fixedTexts, vespers.dismissal));
 
+  // ── 17. Epitaphion Procession (Burial Vespers only) ─────────────────────────
+  if (vespers.epitaphion) {
+    blocks.push(...assembleEpitaphion(vespers.epitaphion, sources));
+  }
+
   blocks._warnings = _warnings.slice();
   return blocks;
 }
@@ -570,14 +575,16 @@ function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
     // 3. Gospel
     const gos = prokeimenonSpec.gospel;
     if (gos) {
+      const preResp = gos.preGospelResponse || 'Glory to Thee, O Lord, glory to Thee!';
+      const postResp = gos.postGospelResponse || 'Glory to Thee, O Lord, glory to Thee!';
       blocks.push(makeBlock('gos-wisdom', section, 'rubric', 'deacon', 'Wisdom. Let us attend.'));
       blocks.push(makeBlock('gos-announce', section, 'rubric', 'deacon',
         `The reading of the Holy Gospel according to ${gos.book}.`));
-      blocks.push(makeBlock('gos-glory', section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee!'));
+      blocks.push(makeBlock('gos-glory', section, 'response', 'choir', preResp));
       blocks.push(makeBlock('gos-attend', section, 'rubric', 'deacon', 'Let us attend.'));
       blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
         `[${gos.label}: ${gos.pericope}]`));
-      blocks.push(makeBlock('gos-glory-end', section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee!'));
+      blocks.push(makeBlock('gos-glory-end', section, 'response', 'choir', postResp));
     }
 
   } else if (prokeimenonSpec.pattern === 'soulSaturday') {
@@ -896,21 +903,25 @@ function assembleDismissal(fixedTexts, dismissalSpec) {
   // Build proper dismissal text
   let properText = '[Proper Dismissal for the day]';
   if (dismissalSpec) {
-    let opening;
-    if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
-      opening = 'May Christ our true God,';
-    } else if (dismissalSpec.opening === 'sunday') {
-      opening = 'May He Who rose from the dead, Christ our true God,';
+    if (dismissalSpec.opening === 'holyFriday') {
+      properText = 'May He Who for us men and for our salvation endured in the flesh the dread passion, the life-giving Cross and voluntary burial, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.';
     } else {
-      opening = 'May Christ our true God,';
-    }
+      let opening;
+      if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
+        opening = 'May Christ our true God,';
+      } else if (dismissalSpec.opening === 'sunday') {
+        opening = 'May He Who rose from the dead, Christ our true God,';
+      } else {
+        opening = 'May Christ our true God,';
+      }
 
-    const parts = ['through the prayers of His most pure Mother'];
-    if (dismissalSpec.dayPatron) parts.push(`of ${dismissalSpec.dayPatron}`);
-    const saints = dismissalSpec.saints || [];
-    if (saints.length > 0) parts.push(`of ${saints.join('; ')}`);
-    const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
-    properText = `${opening} ${closing}`;
+      const parts = ['through the prayers of His most pure Mother'];
+      if (dismissalSpec.dayPatron) parts.push(`of ${dismissalSpec.dayPatron}`);
+      const saints = dismissalSpec.saints || [];
+      if (saints.length > 0) parts.push(`of ${saints.join('; ')}`);
+      const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
+      properText = `${opening} ${closing}`;
+    }
   }
 
   return [
@@ -925,6 +936,28 @@ function assembleDismissal(fixedTexts, dismissalSpec) {
     makeBlock('dis-proper', section, 'prayer', 'priest', properText),
     makeBlock('dis-amen', section, 'response', 'choir', 'Amen.'),
   ];
+}
+
+function assembleEpitaphion(epitaphionSpec, sources) {
+  const section = 'Epitaphion Procession';
+  const blocks = [];
+  const ep = resolveSource(epitaphionSpec.source, epitaphionSpec.key, sources);
+  if (!ep) return blocks;
+
+  blocks.push(makeBlock('epi-rubric', section, 'rubric', null, ep.processionRubric));
+
+  if (ep.venerationHymn) {
+    blocks.push(makeBlock('epi-hymn', section, 'hymn', 'choir', ep.venerationHymn.text,
+      { tone: ep.venerationHymn.tone, label: ep.venerationHymn.label }));
+  }
+
+  if (ep.venerationRefrains) {
+    ep.venerationRefrains.forEach((r, i) => {
+      blocks.push(makeBlock(`epi-refrain-${i}`, section, 'response', 'all', r));
+    });
+  }
+
+  return blocks;
 }
 
 // ─── Divine Liturgy Assembler ─────────────────────────────────────────────────

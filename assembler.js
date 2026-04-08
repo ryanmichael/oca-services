@@ -2821,25 +2821,18 @@ function assembleBridegroomMatins(f, night) {
     blocks.push(S('priest-prayer-amen', section, 'response', 'choir', 'Amen.'));
   }
 
-  // ── Little Litany (before Kontakion) ──────────────────────────────────────
-  _emitLittleLitany(blocks, S, 'Little Litany', mf.littleLitany, 'afterOde6');
-
-  // ── Kontakion + Ikos ─────────────────────────────────────────────────────
-  blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', nightData.kontakion.text,
-    { tone: nightData.kontakion.tone, label: `Kontakion, Tone ${nightData.kontakion.tone}` }));
-  blocks.push(S('ikos', 'Kontakion', 'hymn', 'reader', nightData.ikos.text,
-    { label: 'Ikos' }));
-
-  // ── Synaxarion ──────────────────────────────────────────────────────────
-  if (nightData.synaxarion) {
-    blocks.push(S('synaxarion-heading', 'Synaxarion', 'rubric', null, 'Synaxarion'));
-    blocks.push(S('synaxarion', 'Synaxarion', 'prayer', 'reader', nightData.synaxarion.text));
-  }
-
   // ── Canon ────────────────────────────────────────────────────────────────
+  // Kontakion/Ikos/Synaxarion are emitted after the last ode ≤ 6
+  // (normally after Ode 6; for abbreviated canons like Holy Wed odes 3,8,9 → after Ode 3)
   {
     const canon = nightData.canon;
     const section = 'Canon';
+    let kontakionEmitted = false;
+
+    // Find the ode after which to place kontakion (highest ode ≤ 6)
+    const kontakionAfterOde = canon && canon.odes
+      ? canon.odes.filter(n => n <= 6).pop() || canon.odes[0]
+      : null;
 
     if (canon && canon.odes) {
       for (const odeNum of canon.odes) {
@@ -2906,6 +2899,20 @@ function assembleBridegroomMatins(f, night) {
                 `Kathisma Hymn, Tone ${sess.tone}`));
               blocks.push(S(`canon-sess-${sh}`, 'Sessional Hymn', 'hymn', 'choir',
                 sess.text, { tone: sess.tone }));
+            }
+          }
+
+          // Kontakion/Ikos/Synaxarion after the last ode ≤ 6
+          if (odeNum === kontakionAfterOde && !kontakionEmitted) {
+            kontakionEmitted = true;
+            _emitLittleLitany(blocks, S, 'Little Litany', mf.littleLitany, 'afterOde6');
+            blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', nightData.kontakion.text,
+              { tone: nightData.kontakion.tone, label: `Kontakion, Tone ${nightData.kontakion.tone}` }));
+            blocks.push(S('ikos', 'Kontakion', 'hymn', 'reader', nightData.ikos.text,
+              { label: 'Ikos' }));
+            if (nightData.synaxarion) {
+              blocks.push(S('synaxarion-heading', 'Synaxarion', 'rubric', null, 'Synaxarion'));
+              blocks.push(S('synaxarion', 'Synaxarion', 'prayer', 'reader', nightData.synaxarion.text));
             }
           }
         } else {

@@ -981,7 +981,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
             prokeimenon: {
               tone: 4,
               refrain: 'They divide my garments among them, and for my raiment they cast lots.',
-              verses: [{ text: 'My God, my God, look upon me! Why hast Thou forsaken me?' }],
+              verses: [{ text: 'My God, My God, look upon me! Why hast Thou forsaken me?' }],
               psalmRef: 'Ps. 21:18',
             },
           },
@@ -990,7 +990,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
             prokeimenon: {
               tone: 4,
               refrain: 'Judge, O Lord, those who wrong me; fight against those who fight against me!',
-              verses: [{ text: 'They rewarded me evil for good; my soul is forlorn.' }],
+              verses: [{ text: 'They rewarded me evil for good; My soul is forlorn.' }],
               psalmRef: 'Ps. 34:1',
             },
           },

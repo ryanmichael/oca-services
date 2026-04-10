@@ -23,7 +23,7 @@ const path = require('path');
 const { assembleVespers, assembleLiturgy, assemblePresanctified, assemblePaschalHours, assembleMidnightOffice, assemblePaschalMatins, assembleBridegroomMatins, assemblePassionGospels, assembleLamentations, assembleVesperalLiturgy, assembleRoyalHours, assembleMatins, resolveSource } = require('./assembler');
 const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalKey,
         getLiturgyVariant, getTone, getTrisagionSubstitution, isLiturgyServed,
-        isPresanctifiedDay, isBridegroomMatins, isPassionGospelsDay, isLamentationsDay, isVesperalLiturgyDay, isRoyalHoursDay,
+        isPresanctifiedDay, isBridegroomMatins, isPassionGospelsDay, isLamentationsDay, isVesperalLiturgyDay, isRoyalHoursDay, isBurialVespersDay,
         getWeekOfLent, calculatePascha, getGreatFeastKey, isSoulSaturday,
         getEothinon } = require('./calendar-rules');
 const { renderService, renderVespers }             = require('./renderer');
@@ -2692,7 +2692,7 @@ function buildDashboardData(year) {
       greatVespers: entry?.vespers?.serviceType === 'greatVespers' && !entry?.vespers?.serviceKey,
       dailyVespers: entry?.vespers?.serviceType === 'dailyVespers',
       allNightVigil: entry?.vespers?.serviceType === 'all-night-vigil',
-      burialVespers: entry?.vespers?.serviceKey === 'burialVespers',
+      burialVespers: isBurialVespersDay(cur),
       bridegroomMatins: isBridegroomMatins(cur),
       lamentations: isLamentationsDay(cur),
       vesperalLiturgy: isVesperalLiturgyDay(cur),
@@ -4093,7 +4093,7 @@ function handleRequest(req, res) {
           greatVespers: vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
           dailyVespers: vespersEntry?.vespers?.serviceType === 'dailyVespers',
           allNightVigil: vespersEntry?.vespers?.serviceType === 'all-night-vigil',
-          burialVespers: vespersEntry?.vespers?.serviceKey === 'burialVespers',
+          burialVespers: isBurialVespersDay(cur),
       bridegroomMatins: isBridegroomMatins(cur),
           lamentations: isLamentationsDay(cur),
           vesperalLiturgy: isVesperalLiturgyDay(cur),

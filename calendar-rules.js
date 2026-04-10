@@ -1979,6 +1979,16 @@ function isRoyalHoursDay(date) {
   return season === 'holyWeek' && dow === 'friday';
 }
 
+/**
+ * Returns true if Burial Vespers is served on this date.
+ * Served on Great Friday afternoon (not Thursday evening).
+ */
+function isBurialVespersDay(date) {
+  const season = getLiturgicalSeason(date);
+  const dow    = getDayOfWeek(date);
+  return season === 'holyWeek' && dow === 'friday';
+}
+
 // ─── Eothinon Cycle ──────────────────────────────────────────────────────────
 
 /**
@@ -2035,6 +2045,7 @@ module.exports = {
   isLamentationsDay,
   isVesperalLiturgyDay,
   isRoyalHoursDay,
+  isBurialVespersDay,
   getEothinon,
   generateCalendarEntry,
 };

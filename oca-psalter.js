@@ -1,15 +1,63 @@
 /**
- * OCA Psalter — Canonical source for psalm text in all services.
+ * OCA Psalter & Source Preference — Canonical source for psalm text and
+ * translation preference logic across all services.
  *
- * All psalm verses in assembled services should flow through this module
- * so that the OCA translation (from psalter.json) is used consistently,
- * regardless of what translation appears in fixed-text JSON files or
- * external reference documents.
- *
- * Usage:
- *   const { getPsalmVerse, getPsalmBody, ocaPsalmText } = require('./oca-psalter');
+ * Psalm API:
+ *   const { getPsalmVerse, getPsalmBody } = require('./oca-psalter');
  *   const verse = getPsalmVerse(118, 0);  // first verse of Psalm 118
+ *
+ * Source preference:
+ *   const { SOURCE_PRIORITY, preferredSource } = require('./oca-psalter');
+ *   const best = preferredSource('oca-menaion', 'stSergius'); // → 'oca-menaion'
  */
+
+/**
+ * Source priority ranking (lower number = higher priority).
+ * When multiple translations exist for the same hymn, prefer the
+ * highest-priority source.
+ */
+const SOURCE_PRIORITY = {
+  'oca-menaion':        1,   // OCA Menaion — primary
+  'oca-feast':          1,   // OCA Great Feast — same tier
+  'stSergius':          2,   // St. Sergius of Radonezh Cathedral
+  'stSergius-general':  3,   // St. Sergius general menaion (fallback)
+};
+
+/**
+ * Return the preferred source name from two candidates.
+ * Unknown sources rank below all known ones.
+ */
+function preferredSource(a, b) {
+  const pa = SOURCE_PRIORITY[a] ?? 99;
+  const pb = SOURCE_PRIORITY[b] ?? 99;
+  return pa <= pb ? a : b;
+}
+
+/**
+ * Given an array of items each having a `source` (or `dbSource`) field,
+ * deduplicate by a key function, keeping the highest-priority source.
+ * @param {Array} items
+ * @param {Function} keyFn - returns a grouping key for each item
+ * @param {string} [sourceField='dbSource'] - name of the source property
+ * @returns {Array} deduplicated items, highest-priority source wins
+ */
+function deduplicateBySource(items, keyFn, sourceField = 'dbSource') {
+  const map = new Map();
+  for (const item of items) {
+    const key = keyFn(item);
+    const existing = map.get(key);
+    if (!existing) {
+      map.set(key, item);
+    } else {
+      const existingSrc = existing[sourceField] || '';
+      const newSrc = item[sourceField] || '';
+      if (preferredSource(newSrc, existingSrc) === newSrc) {
+        map.set(key, item);
+      }
+    }
+  }
+  return [...map.values()];
+}
 
 let _psalter = null;
 
@@ -123,4 +171,7 @@ module.exports = {
   getPsalmText,
   resolveVerse,
   capitalizeDivinePronouns,
+  SOURCE_PRIORITY,
+  preferredSource,
+  deduplicateBySource,
 };

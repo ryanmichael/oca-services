@@ -28,6 +28,7 @@ const { generateCalendarEntry, getLiturgicalSeason, getDayOfWeek, getLiturgicalK
         getEothinon } = require('./calendar-rules');
 const { renderService, renderVespers }             = require('./renderer');
 const { getMatinsKathismata }                    = require('./kathisma');
+const { deduplicateBySource }                    = require('./oca-psalter');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -563,6 +564,14 @@ function getMenaionRanked(month, day) {
         order: s.order, section: s.section, tone: s.tone, label: s.label, text: s.text,
         dbSource: s.dbSource,
       });
+    }
+    // Prefer OCA source when multiple translations exist for the same slot
+    for (const [commId, stichera] of Object.entries(sticheraMap)) {
+      sticheraMap[commId] = deduplicateBySource(
+        stichera,
+        s => `${s.section}:${s.order}`,
+        'dbSource'
+      );
     }
 
     const enriched = comms.map(c => ({
@@ -2078,8 +2087,20 @@ function buildDbSource(date, pronoun) {
 
     if (rows.length === 0) return {};
 
-    const bySection = {};
+    // Normalize source_filename to a source key for priority ranking
     for (const row of rows) {
+      row.dbSource = (row.source_filename || '').startsWith('stSergius')
+        ? 'stSergius' : 'oca-menaion';
+    }
+    // Prefer OCA blocks when multiple sources cover the same section+order
+    const deduped = deduplicateBySource(
+      rows,
+      r => `${r.section}:${r.block_order}`,
+      'dbSource'
+    );
+
+    const bySection = {};
+    for (const row of deduped) {
       (bySection[row.section] ??= []).push(row);
     }
 

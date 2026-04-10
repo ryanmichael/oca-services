@@ -8,14 +8,10 @@
  */
 
 // ─── Shared data (loaded once) ───────────────────────────────────────────────
-let _psalter      = null;
+const { getPsalter, psalmBody, resolveVerse } = require('./oca-psalter');
 let _kathismata   = null;
 let _vespersFixed = null;
 let _matinsFixed  = null;
-function getPsalter() {
-  if (!_psalter) _psalter = require('./fixed-texts/psalter.json');
-  return _psalter;
-}
 function getKathismata() {
   if (!_kathismata) _kathismata = require('./fixed-texts/kathismata.json');
   return _kathismata;
@@ -27,23 +23,6 @@ function getVespersFixed() {
 function getMatinsFixed() {
   if (!_matinsFixed) _matinsFixed = require('./fixed-texts/matins-fixed.json');
   return _matinsFixed;
-}
-
-/**
- * Returns psalm verses with superscription (title) lines removed.
- * The title may span one or more leading verses.
- */
-function psalmBody(psalm) {
-  if (!psalm.title) return psalm.verses;
-  // Find how many leading verses the title covers
-  let skip = 0;
-  let accumulated = '';
-  for (let i = 0; i < psalm.verses.length; i++) {
-    accumulated += (i > 0 ? ' ' : '') + psalm.verses[i];
-    skip++;
-    if (accumulated.length >= psalm.title.length) break;
-  }
-  return psalm.verses.slice(skip);
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -3745,13 +3724,26 @@ function assembleLamentations(f) {
   }
 
   // ── Stasis 1 ───────────────────────────────────────────────────────────────
+  // Ps 118:1-72 across 73 verse pairs (verse 48 split into two)
   {
     const section = 'Stasis 1';
     blocks.push(S('s1-heading', section, 'rubric', null,
       `Tone ${f.stasis1.tone}. "${f.stasis1.refrain.substring(0, 40)}…"`));
     for (let i = 0; i < f.stasis1.verses.length; i++) {
       const v = f.stasis1.verses[i];
-      blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', v.psalm));
+      // Map array index to Ps 118 verse index (0-based into psalmBody)
+      // Indices 0-47 → Ps verses 0-47; index 48 → split (use inline);
+      // indices 49-72 → Ps verses 48-71. Glory/Now entries have no psalm mapping.
+      let psIdx = null;
+      if (i <= 47) psIdx = i;
+      else if (i === 48) psIdx = null; // second half of split Ps 118:48
+      else if (i <= 72) psIdx = i - 1;
+      // else: Glory/Now — use inline text
+      const resolved = psIdx !== null
+        ? resolveVerse(118, psIdx, v.psalm)
+        : { text: v.psalm, provenance: 'inline' };
+      blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', resolved.text,
+        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
       blocks.push(S(`s1-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis1.tone }));
     }
@@ -3775,13 +3767,22 @@ function assembleLamentations(f) {
   }
 
   // ── Stasis 2 ───────────────────────────────────────────────────────────────
+  // Ps 118:73-131 across 59 verse pairs
   {
     const section = 'Stasis 2';
     blocks.push(S('s2-heading', section, 'rubric', null,
       `Tone ${f.stasis2.tone}. "${f.stasis2.refrain.substring(0, 45)}…"`));
     for (let i = 0; i < f.stasis2.verses.length; i++) {
       const v = f.stasis2.verses[i];
-      blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', v.psalm));
+      // Stasis 2 index i → Ps 118 verse 72+i (0-based into psalmBody)
+      // Last 2 entries are Glory/Now — no psalm mapping
+      const isGloryNow = i >= f.stasis2.verses.length - 2;
+      const psIdx = isGloryNow ? null : 72 + i;
+      const resolved = psIdx !== null
+        ? resolveVerse(118, psIdx, v.psalm)
+        : { text: v.psalm, provenance: 'inline' };
+      blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', resolved.text,
+        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
       blocks.push(S(`s2-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis2.tone }));
     }
@@ -3805,13 +3806,22 @@ function assembleLamentations(f) {
   }
 
   // ── Stasis 3 ───────────────────────────────────────────────────────────────
+  // Ps 118:132-176 across 45 verse pairs
   {
     const section = 'Stasis 3';
     blocks.push(S('s3-heading', section, 'rubric', null,
       `Tone ${f.stasis3.tone}. "${f.stasis3.refrain.substring(0, 45)}…"`));
     for (let i = 0; i < f.stasis3.verses.length; i++) {
       const v = f.stasis3.verses[i];
-      blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', v.psalm));
+      // Stasis 3 index i → Ps 118 verse 131+i (0-based into psalmBody)
+      // Last 2 entries are Glory/Now — no psalm mapping
+      const isGloryNow = i >= f.stasis3.verses.length - 2;
+      const psIdx = isGloryNow ? null : 131 + i;
+      const resolved = psIdx !== null
+        ? resolveVerse(118, psIdx, v.psalm)
+        : { text: v.psalm, provenance: 'inline' };
+      blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', resolved.text,
+        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
       blocks.push(S(`s3-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis3.tone }));
     }

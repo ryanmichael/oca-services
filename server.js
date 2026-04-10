@@ -1544,8 +1544,46 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     return _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
   }
 
-  // Only proceed if we have matins data in the menaion file
-  if (!menaionData || !menaionData.matins) return null;
+  // ── Weekday/Saturday Matins (no menaion matins data) ────────────────────
+  // Build a minimal spec with fixed content + Menaion DB troparion/kontakion
+  if (!menaionData || !menaionData.matins) {
+    const kathNums = getMatinsKathismata(dow, season);
+    const menaionRanked = getMenaionRanked(mo, dy);
+    const principal = menaionRanked?.principal;
+
+    const spec = {
+      isSunday: false,
+      feastRank: null,
+      tone,
+      alleluia: isLentenWeekday,
+      useSmallDoxology: true,
+      kathismaCount: kathNums.length || 2,
+      kathismaNumbers: kathNums,
+    };
+
+    // Troparion from Menaion DB
+    if (principal?.hasTroparion) {
+      const trop = principal.troparia.find(t => t.type === 'troparion');
+      if (trop) {
+        spec.troparion = { text: trop.text, tone: trop.tone, label: principal.title };
+      }
+    }
+
+    // Kontakion from Menaion DB (placed after Ode 6 if we have a canon stub)
+    if (principal) {
+      const kont = principal.troparia.find(t => t.type === 'kontakion');
+      if (kont) {
+        spec.kontakion = { text: kont.text, tone: kont.tone, label: principal.title };
+      }
+    }
+
+    // Final troparion for small doxology path
+    if (spec.troparion) {
+      spec.finalTroparion = spec.troparion;
+    }
+
+    return spec;
+  }
 
   const mat = menaionData.matins;
 
@@ -2718,6 +2756,7 @@ function buildDashboardData(year) {
       lamentations: isLamentationsDay(cur),
       vesperalLiturgy: isVesperalLiturgyDay(cur),
       royalHours: isRoyalHoursDay(cur),
+      matins: !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur)),
       liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
       passionGospels: isPassionGospelsDay(cur),
       presanctified: isPresanctifiedDay(cur),

@@ -133,7 +133,7 @@ function getServiceRows(day) {
     if (day.services.greatVespers) {
       rows.push({ key: 'greatVespers', name: 'Great Vespers', available: true });
     }
-    rows.push({ key: 'matins',       name: 'Matins',        available: false });
+    rows.push({ key: 'matins',       name: 'Matins',        available: day.services.matins });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
   } else {
     // Weekday morning services

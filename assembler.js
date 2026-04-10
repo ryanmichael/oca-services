@@ -3224,11 +3224,16 @@ function assemblePassionGospels(f) {
     const section = 'Six Psalms';
     blocks.push(S('6ps-intro', section, 'rubric', 'reader', mf.sixPsalms.intro));
 
+    const andAgain = mf.sixPsalms.andAgain || {};
+
     for (const n of [3, 37, 62]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
+        if (andAgain[String(n)]) {
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
+        }
       }
     }
 
@@ -3237,8 +3242,11 @@ function assemblePassionGospels(f) {
     for (const n of [87, 102, 142]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
+        if (andAgain[String(n)]) {
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
+        }
       }
     }
 
@@ -3333,13 +3341,29 @@ function assemblePassionGospels(f) {
     for (let i = start; i < start + 3 && i <= 15; i++) {
       const a = f.antiphons[i - 1];
       const section = `Antiphon ${a.number}`;
-      blocks.push(S(`ant-${i}-text`, section, 'hymn', 'choir', a.text,
-        { tone: a.tone }));
-      if (a.verse) {
-        blocks.push(S(`ant-${i}-verse`, section, 'verse', 'reader', a.verse));
+      // Support both old single-text and new troparia-array format
+      if (a.troparia && Array.isArray(a.troparia)) {
+        for (let t = 0; t < a.troparia.length; t++) {
+          blocks.push(S(`ant-${i}-trop-${t}`, section, 'hymn', 'choir',
+            a.troparia[t], t === 0 ? { tone: a.tone } : {}));
+        }
+      } else if (a.text) {
+        blocks.push(S(`ant-${i}-text`, section, 'hymn', 'choir', a.text,
+          { tone: a.tone }));
+        if (a.verse) {
+          blocks.push(S(`ant-${i}-verse`, section, 'verse', 'reader', a.verse));
+        }
+        if (a.troparion) {
+          blocks.push(S(`ant-${i}-trop`, section, 'hymn', 'choir', a.troparion));
+        }
       }
-      if (a.troparion) {
-        blocks.push(S(`ant-${i}-trop`, section, 'hymn', 'choir', a.troparion));
+      // Additional troparia with their own tone (e.g. antiphon 4 Tone I troparion)
+      if (a.additionalTroparia) {
+        for (let j = 0; j < a.additionalTroparia.length; j++) {
+          const at = a.additionalTroparia[j];
+          blocks.push(S(`ant-${i}-addtrop-${j}`, section, 'hymn', 'choir',
+            at.text || at, at.tone ? { tone: at.tone } : {}));
+        }
       }
       if (a.additionalStichera) {
         for (let j = 0; j < a.additionalStichera.length; j++) {
@@ -3442,38 +3466,51 @@ function assemblePassionGospels(f) {
   // ── Gospel 8 ──────────────────────────────────────────────────────────────
   addGospel(f.gospels[7]);
 
-  // ── Canon (abbreviated: Ode 5 irmos, Kontakion, Ode 8, Ode 9, Katavasia) ─
+  // ── Canon (Odes 5, 8, 9 with troparia; Kontakion/Ikos after Ode 5) ──────
   if (f.canon) {
     const section = 'Canon';
-    if (f.canon.ode5) {
-      blocks.push(S('canon-ode5-label', section, 'rubric', null, 'Fifth Ode'));
-      blocks.push(S('canon-ode5', section, 'hymn', 'choir', f.canon.ode5.irmos,
-        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
-    }
-    // Kontakion sits within the canon
-    blocks.push(S('kontakion', section, 'hymn', 'choir', f.kontakion.text,
-      { tone: f.kontakion.tone, label: `Kontakion, Tone ${f.kontakion.tone}` }));
-    blocks.push(S('ikos', section, 'hymn', 'reader', f.ikos.text, { label: 'Ikos' }));
-    if (f.canon.ode8) {
-      blocks.push(S('canon-ode8-label', section, 'rubric', null, 'Eighth Ode'));
-      blocks.push(S('canon-ode8', section, 'hymn', 'choir', f.canon.ode8.irmos,
-        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
-    }
-    if (f.canon.ode9) {
-      blocks.push(S('canon-ode9-label', section, 'rubric', null, 'Ninth Ode'));
-      blocks.push(S('canon-ode9', section, 'hymn', 'choir', f.canon.ode9.irmos,
-        { tone: f.canon.tone, label: `Irmos, Tone ${f.canon.tone}` }));
-    }
-    if (f.canon.katavasia) {
-      blocks.push(S('canon-katavasia-label', section, 'rubric', null,
-        `Katavasia, Tone ${f.canon.tone}`));
-      blocks.push(S('canon-katavasia', section, 'hymn', 'choir',
-        f.canon.katavasia.text, { tone: f.canon.tone }));
-      if (f.canon.katavasia.troparion) {
-        blocks.push(S('canon-katavasia-trop', section, 'hymn', 'choir',
-          f.canon.katavasia.troparion, { tone: f.canon.tone }));
+    const canonTone = f.canon.tone;
+    for (const odeKey of ['ode5', 'ode8', 'ode9']) {
+      const ode = f.canon[odeKey];
+      if (!ode) continue;
+      const odeLabel = odeKey === 'ode5' ? 'Fifth Ode' : odeKey === 'ode8' ? 'Eighth Ode' : 'Ninth Ode';
+      blocks.push(S(`canon-${odeKey}-label`, section, 'rubric', null,
+        `${odeLabel}, Tone ${canonTone}`));
+      blocks.push(S(`canon-${odeKey}`, section, 'hymn', 'choir', ode.irmos,
+        { tone: canonTone, label: 'Irmos' }));
+      // Troparia
+      if (ode.troparia) {
+        for (let t = 0; t < ode.troparia.length; t++) {
+          blocks.push(S(`canon-${odeKey}-ref-${t}`, section, 'verse', 'reader',
+            ode.refrain || 'Glory to Thee our God, glory to Thee.'));
+          blocks.push(S(`canon-${odeKey}-trop-${t}`, section, 'hymn', 'reader',
+            ode.troparia[t]));
+        }
+      }
+      // Glory/Now troparion
+      if (ode.glory) {
+        blocks.push(S(`canon-${odeKey}-glory-dox`, section, 'doxology', null,
+          'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+        blocks.push(S(`canon-${odeKey}-glory`, section, 'hymn', 'reader', ode.glory));
+      }
+      // Katavasia (irmos repeated)
+      const katKey = `katavasia${odeKey.slice(3)}`;
+      if (f.canon[katKey]) {
+        blocks.push(S(`canon-${odeKey}-katavasia-label`, section, 'rubric', null, 'Katavasia'));
+        blocks.push(S(`canon-${odeKey}-katavasia`, section, 'hymn', 'choir',
+          ode.irmos, { tone: canonTone }));
+      }
+      // Kontakion/Ikos/Synaxarion after Ode 5
+      if (odeKey === 'ode5') {
+        // Small Litany
+        blocks.push(S('canon-ll5', section, 'rubric', null, 'Small Litany'));
+        blocks.push(S('kontakion', section, 'hymn', 'choir', f.kontakion.text,
+          { tone: f.kontakion.tone, label: `Kontakion, Tone ${f.kontakion.tone}` }));
+        blocks.push(S('ikos', section, 'hymn', 'reader', f.ikos.text, { label: 'Ikos' }));
       }
     }
+    // Small Litany after Ode 9
+    blocks.push(S('canon-ll9', section, 'rubric', null, 'Small Litany'));
   }
 
   // ── Gospel 9 ──────────────────────────────────────────────────────────────
@@ -3661,18 +3698,20 @@ function assembleLamentations(f) {
     for (const n of [3, 37, 62]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
       }
     }
     blocks.push(S('6ps-mid-glory', section, 'doxology', 'reader', f.sixPsalms.midGlory));
     for (const n of [87, 102, 142]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
       }
     }
+    blocks.push(S('6ps-closing', section, 'doxology', 'reader',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'));
   }
 
   // ── Great Litany (minimal) ─────────────────────────────────────────────────
@@ -4368,11 +4407,10 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     for (const n of [3, 37, 62]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
         if (andAgain[String(n)]) {
-          blocks.push(S(`6ps-${n}-again-label`, section, 'rubric', null, 'And again:'));
-          blocks.push(S(`6ps-${n}-again`, section, 'prayer', 'reader', andAgain[String(n)]));
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
         }
       }
     }
@@ -4382,14 +4420,16 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     for (const n of [87, 102, 142]) {
       const ps = psalter[String(n)];
       if (ps) {
-        blocks.push(S(`6ps-${n}-intro`, section, 'instruction', null, `Psalm ${n} — ${ps.verses[0]}`));
-        blocks.push(S(`6ps-${n}`, section, 'prayer', 'reader', ps.verses.slice(1).join('\n')));
+        const verses = psalmBody(ps);
+        blocks.push(S(`6ps-${n}`, `Psalm ${n}`, 'prayer', 'reader', verses.join('\n')));
         if (andAgain[String(n)]) {
-          blocks.push(S(`6ps-${n}-again-label`, section, 'rubric', null, 'And again:'));
-          blocks.push(S(`6ps-${n}-again`, section, 'prayer', 'reader', andAgain[String(n)]));
+          blocks.push(S(`6ps-${n}-again`, `Psalm ${n}`, 'prayer', 'reader', andAgain[String(n)]));
         }
       }
     }
+
+    blocks.push(S('6ps-closing', section, 'doxology', 'reader',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'));
   }
 
   // ── 3. Great Litany ─────────────────────────────────────────────────────────

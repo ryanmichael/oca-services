@@ -2,12 +2,12 @@
   "_meta": {
     "description": "Fixed liturgical texts for Matins of Great Friday — The Service of the Twelve Passion Gospels",
     "tradition": "OCA (Orthodox Church in America)",
-    "translation": "St. Sergius Orthodox Theological Institute",
-    "version": "0.4.0",
+    "translation": "OCA (SVS Holy Week Vol. 2, 1983)",
+    "version": "0.5.0",
     "note": "Served on the evening of Great and Holy Thursday. All content is fixed — identical every year. The 15 Antiphons and 12 Gospel readings are the heart of the service.",
     "sources": [
-      "St. Sergius Orthodox Theological Institute — Holy and Great Friday at Matins (st-sergius.org/services/triod/75.pdf)",
-      "Antiochian Orthodox Christian Archdiocese music edition (secondary reference for choir portions)",
+      "SVS Press — The Services of Holy Friday (Holy Week Vol. 2, 1983). English text: OCA Holy Friday Matins (1980).",
+      "St. Sergius Orthodox Theological Institute — Holy and Great Friday at Matins (st-sergius.org/services/triod/75.pdf) [antiphon troparia pending update]",
       "OCA Rubrics"
     ]
   },
@@ -42,8 +42,8 @@
     "_source": "stSergius-triod75"
   },
 
-  "postGospelResponse": "Glory to Thy longsuffering, O Lord, glory be to Thee.",
-  "preGospelResponse": "Glory to Thy Passion, O Lord, glory be to Thee.",
+  "postGospelResponse": "Glory to Thy long-suffering, O Lord, O Lord.",
+  "preGospelResponse": "Glory to Thy Passion, O Lord, O Lord.",
 
   "gospels": [
     {
@@ -400,69 +400,74 @@
       },
       {
         "verse": "Blessed are they that hunger and thirst after righteousness: for they shall be filled.",
-        "text": "Through a tree Adam became homeless in Paradise, but through the Tree of the Cross the thief settled in Paradise. For the one, by eating, transgressed the commandment of his Maker; but the other, crucified with Thee, confessed Thee to be the hidden God. Remember us also in Thy Kingdom."
+        "text": "Through a tree Adam lost his home in paradise, but through the tree of the cross the thief came there to dwell. By tasting of the fruit, the first broke the Creator's commandment, but He who was crucified with Thee confessed Thee, the hidden God. Remember us also, O Savior, in Thy kingdom!"
       },
       {
         "verse": "Blessed are the merciful: for they shall obtain mercy.",
-        "text": "The lawless ones purchased the Maker of the Law from His disciple, and they led Him as a transgressor before the judgment-seat of Pilate, crying \"Crucify Him,\" He who gave them manna in the wilderness. But we, emulating the righteous thief, cry with faith: Remember us also, O Savior, in Thy Kingdom."
+        "text": "Lawless men bought the Creator of the law from a disciple and brought Him before the judgment seat of Pilate as a transgressor. Though He had given them manna in the wilderness, they cried out: Crucify Him! But we, imitating the righteous thief, cry out in faith: Remember us also, O Savior, in Thy kingdom!"
       },
       {
         "verse": "Blessed are the pure in heart: for they shall see God.",
-        "text": "The murderers of God, the lawless nation of the Hebrews, cried to Pilate in their madness, saying, \"Crucify the innocent Christ\"; asking for Barabbas in His stead. But with the words of the good thief we cry to Him: Remember us also, O Savior, in Thy Kingdom."
+        "text": "The swarm of those who would kill God, the lawless nation of the Jews, cried out in fury to Pilate: Crucify Him! — Christ, the innocent one. And they sought instead the release of Barabbas. But with the wise thief we lift up our voices: Remember us also, O Savior, in Thy kingdom!"
       },
       {
         "verse": "Blessed are the peacemakers: for they shall be called the children of God.",
-        "text": "Thy life-giving side, O Christ, doth flow like a fountain from Eden, watering Thy Church, the noetical Paradise. From whence it divideth into the four streams of the Gospels, refreshing the world, and making glad creation, teaching the nations to faithfully venerate Thy Kingdom."
+        "text": "From Thy life-bearing side, O Christ, a fountain flows forth as from Eden, giving drink to Thy Church as to a living paradise. From there it divided to become the four rivers of the Gospels, watering the world, gladdening creation, and teaching the nations to worship Thy kingdom in faith."
       },
       {
         "verse": "Blessed are they that are persecuted for righteousness' sake: for theirs is the Kingdom of Heaven.",
-        "text": "For my sake Thou wast crucified, to become for me a fount of forgiveness. Thy side was pierced, that drips of life might trickle upon me. Thou wast transfixed with nails, that I might be assured of the loftiness of Thy Sovereignty, and the depth of Thy Passion, and cry to Thee, O Christ the Giver of Life: Glory to Thy Cross O Savior, and Thy Passion."
+        "text": "Thou wast crucified for my sake, in order to pour forth forgiveness for me. Thy side was pierced so that streams of life might flow for me. Thy hands were transfixed by nails so that, convinced of the height of Thy power by the depth of Thy sufferings, I might cry out to Thee, O Christ, Thou giver of life: Glory to Thy cross and to Thy Passion, O Savior!"
       },
       {
-        "verse": "Blessed are ye, when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for My sake.",
-        "text": "Upon seeing Thee crucified, O Christ, all creation trembled in fear. The foundations of the earth quaked in dread of Thy power. The celestial lights hid themselves and the veil of the temple was rent in twain, the mountains trembled and the rocks were split asunder, and we the faithful with the thief cry to Thee O Savior: Remember us in Thy Kingdom."
+        "verse": "Blessed are you when men shall revile you and persecute you, and shall say all manner of evil against you falsely for my sake.",
+        "text": "When it beheld Thee crucified, O Christ, all creation trembled. The foundations of the earth shook for fear of Thy might. The lights of heaven hid themselves, and the curtain of the temple was torn in two. The mountains quaked, and the rocks were split, and with us the believing thief cried out to Thee, O Savior: Remember me in Thy kingdom!"
       },
       {
-        "verse": "Rejoice and be exceeding glad: for great is your reward in heaven.",
-        "text": "On the Cross didst Thou tear up the record of our sins, and numbered among the reposed, O Lord, Thou didst bind the tyrant of Hades, delivering all mankind from the chains of death by Thy Resurrection. Through this Thy Resurrection, O Lord, O Lover of mankind, we have been granted light, and cry to Thee: Remember us also, O Savior, in Thy Kingdom."
+        "verse": "Rejoice and be exceedingly glad: for great is your reward in heaven.",
+        "text": "On the cross Thou didst destroy the legal bond against us, O Lord. Thou wast reckoned with the dead and there didst bind the tyrant, delivering all from the bonds of death by Thy resurrection. By it we have been illumined, O Lord who lovest mankind, and we cry out to Thee: Remember us also, O Savior, in Thy kingdom!"
       },
       {
         "verse": null,
-        "text": "Let us the faithful pray with one accord that we may glorify the Father, Son and Holy Spirit, in true devotion, one Godhead in three Hypostases, remaining uncommingled, simple, and undivided; whom no man can approach, and by whom we have been delivered from the flames of torment.",
+        "text": "Thou wast lifted up upon the cross, O Lord. Thou didst destroy the power of death, and as God Thou didst cancel the legal bond against us. Grant the repentance of the thief also unto us who worship Thee in faith, O only lover of mankind, and who cry out to Thee, O Christ our God: Remember us also, O Savior, in Thy kingdom!",
+        "_note": "8th troparion, read before Glory"
+      },
+      {
+        "verse": null,
+        "text": "Let us, the faithful, all pray that with one voice we may worthily glorify the Father, the Son, and the Holy Spirit: One God existing in three persons yet remaining unconfused, simple, undivided, and unapproachable; by Whom we escape the flames of punishment.",
         "label": "Glory to the Father and to the Son and to the Holy Spirit."
       },
       {
         "verse": null,
-        "text": "Thy Mother, O Christ, who seedlessly gave birth to Thee in the flesh, and remained an undefiled virgin even after giving birth, do we offer as an intercessor. O Master, Who art abundant in mercy, grant remission of sins unto those who cry: Remember us also, O Savior, in Thy Kingdom.",
+        "text": "We offer to Thee as an intercessor, O Christ, Thy mother who bore Thee in the flesh without seed, the true virgin who after giving birth remained incorrupt. Through her intercessions, O most merciful Master, grant forgiveness of sins to us who cry unceasingly: Remember us also, O Savior, in Thy kingdom!",
         "label": "Now and ever and unto ages of ages. Amen."
       }
     ],
-    "_source": "stSergius-triod75"
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "prokeimenon": {
     "tone": 4,
     "text": "They have parted My garments amongst themselves, and for my vesture they have cast lots.",
     "verse": "O God, My God, attend to Me; why hast Thou forsaken Me?",
-    "_source": "stSergius-triod75"
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "kontakion": {
     "tone": 8,
-    "text": "Come, and let us all sing the praises of Him who was crucified for us.\nFor when Mary beheld Him on the Tree she said:\n\"Though Thou dost endure the Cross, yet Thou art my Son and God.\"",
-    "_source": "stSergius-triod75"
+    "text": "Come let us all sing the praises of Him who was crucified for us, for Mary said when she beheld Him upon the tree: Though Thou dost endure the Cross, Thou art my Son and my God.",
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "ikos": {
-    "text": "Seeing her own Lamb led to the slaughter, Mary His Mother followed Him with the other women, and in her grief cried aloud: \"Where dost Thou go, O my Child? Why dost Thou run so swiftly? Is there another wedding in Cana, to which Thou dost hasten to turn the water into wine? Shall I go with Thee, my Child, or shall I wait for Thee? Speak Thou a word to me, O Word; do not pass me by in silence, O Thou Who hast preserved me in virginity, for Thou art my Son and God.\"",
-    "_source": "stSergius-triod75"
+    "text": "Seeing her own Lamb led to the slaughter, Mary His Mother followed Him with the other women, and in her grief cried aloud: \"Where dost Thou go, O my Child? Why dost Thou run so swiftly? Is there another wedding in Cana, to which Thou dost hasten to turn the water into wine? Shall I go with Thee, my Child, or shall I wait for Thee? Speak Thou a word to me, O Word; do not pass me by in silence, O Thou Who hast preserved me in virginity, for Thou art my Son and my God.\"",
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "canon": {
     "_note": "Three-canticled Canon by St. Cosmas. In each ODE, the Irmos is sung twice, then the Troparia are repeated to make up the number twelve. The Irmos is sung at the end of each ODE as Katavasia.",
     "tone": 6,
     "ode5": {
-      "irmos": "I seek Thee early in the morning, Who for our sake didst mercifully empty Thyself without undergoing change, and without passion didst submit to Thy Passion. O Word of God, grant unto me the fallen one, Thy peace, O Lover of mankind.",
+      "irmos": "Early will I seek Thee, O Word of God, Who without change didst empty Thyself in Thy compassion for fallen man, Who without suffering, didst bow down to suffering. Grant peace to me, O Thou Who lovest mankind.",
       "refrain": "Glory to Thee our God, glory to Thee.",
       "troparia": [
         "Having eaten at Thy table the Bread of Life, the treacherous disciple of iniquity, preparing the nails with which to pierce Thy hands, O Lover of mankind.",
@@ -471,7 +476,7 @@
       "glory": "\"See,\" Thou didst say to Thy friends, \"that ye be not troubled, for now the hour is come when I shall be taken and slain by the hands of wicked men; and ye shall all be scattered and forsake Me. But I shall gather you together to preach of Me, the Lover of mankind.\""
     },
     "ode8": {
-      "irmos": "The divine Children rebuked the wicked god-hating idol; and the lawless Sanhedrin raged against Christ, vainly taking council to kill Him, who doth hold life in the hollow of His hand, wherefore the whole of creation doth bless and glorify Him throughout all ages.",
+      "irmos": "The godly youths exposed a monument of godless wickedness, but the lawless assembly is enraged and takes vain counsel against Christ. They plan to kill Him who holds life in the palm of His hand, whom all creation blesses and glorifies throughout all ages.",
       "refrain": "Glory to Thee our God, glory to Thee.",
       "troparia": [
         "\"Shake now the sleep from your eyelids,\" didst Thou say to the disciples, O Christ. \"Watch in prayer, that ye fall not into temptation. And most of all thee, Simon: for the trial is greatest for the strongest. Understand Me, O Peter, Whom the whole of creation doth bless and glorify throughout all ages.\"",
@@ -481,7 +486,7 @@
       "glory": "\"Thou dost protest, O Simon Peter, concerning the very action that shall shortly come to pass, even as I have foretold. A maidservant shall suddenly approach and fill thee with fear,\" said the Lord. \"Yet, weeping bitterly, thou shalt find Me merciful; for the whole creation doth bless and glorify Me throughout all ages.\""
     },
     "ode9": {
-      "irmos": "More honorable than the cherubim, and beyond compare more glorious than the seraphim, who without corruption hast given birth to God the Word: the very Theotokos, thee do we magnify.",
+      "irmos": "More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement you gave birth to God the Word; true Theotokos, we magnify you.",
       "refrain": "Glory to Thee our God, glory to Thee.",
       "troparia": [
         "The destructive band of god-haters, the synagogue of the murderers of God, drew near to Thee, O Christ, and led away as a malefactor, Thee, the Creator of all, Whom we magnify.",
@@ -490,18 +495,18 @@
       ],
       "glory": "Like rabid dogs didst they encompass Thee, O King, and striking Thee on the face; they questioned Thee, bearing false witness against Thee, all these things didst Thou endure to save all mankind."
     },
-    "katavasia5": "I seek Thee early in the morning ...",
-    "katavasia8": "The divine Children rebuked ...",
-    "katavasia9": "More honorable than the cherubim ...",
-    "_source": "stSergius-triod75"
+    "katavasia5": "Early will I seek Thee ...",
+    "katavasia8": "The godly youths exposed ...",
+    "katavasia9": "More honorable than the Cherubim ...",
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "exaposteilarion": {
     "tone": 3,
-    "text": "The Good Thief, O Lord, on this very day wast deemed worthy of Paradise.\nBy the Wood of the Cross do Thou also enlighten me and save me.",
+    "text": "The wise thief didst Thou make worthy of Paradise in a single moment, O Lord.\nBy the wood of Thy Cross, illumine me as well, and save me.",
     "label": "Exaposteilarion of Great Friday",
-    "_note": "Sung three times.",
-    "_source": "stSergius-triod75"
+    "_note": "Sung three times. Also known as 'The Wise Thief'.",
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "lauds": {
@@ -509,35 +514,35 @@
     "stichera": [
       {
         "tone": 3,
-        "verse": "Praise Him for His mighty acts, praise Him according to the multitude of His greatness.",
-        "text": "Israel, My first-born Son, hath committed two evils: he hath forsaken Me, the fount of the water of life, and dug for himself a broken cistern, and upon the Cross he hath crucified Me, asking for Barabbas to be released instead. Heaven was amazed by this, and the sun hid its rays; but thou, O Israel, wast not ashamed, but hast delivered Me up to death. O Holy Father, forgive them, for they know not what they have done."
+        "verse": "Praise Him for His mighty deeds; Praise Him according to His exceeding greatness!",
+        "text": "Israel, my first-born son, has committed two evil deeds. He abandoned me, the fountain of living water, and dug for himself a broken well. He crucified me upon the wood, and asked for Barabbas and released him. Heaven was amazed at this, and the sun hid his rays. But you, O Israel, were not ashamed, but delivered me to death. Forgive them, O Holy Father, for they know not what they do."
       },
       {
         "tone": 3,
-        "verse": "Praise Him with the sound of trumpet, praise Him with the psaltery and harp.",
-        "text": "Israel, My first-born Son ...",
+        "verse": "Praise Him with trumpet sound; praise Him with lute and harp!",
+        "text": "Israel, my first-born son ...",
         "repeat": true
       },
       {
         "tone": 3,
-        "verse": "Praise Him with timbrel and dance, praise him with strings and flute.",
-        "text": "Every member of Thy holy body endured dishonor for our sakes: Thy head, the thorns; Thy face, the spitting; Thy cheeks, the buffeting; Thy mouth, the taste of gall mingled with vinegar; Thine ears, the wicked blasphemies; Thy back, the scourging and Thy hand, the reed; Thy whole body, the stretching out upon the Cross; Thy limbs, the nails; and Thy side, the spear. Thou didst suffer for us and by Thy Passion set us free from passions; Thou didst come down unto us O Lover of mankind, and didst raise us up: O Savior almighty, have mercy on us."
+        "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe.",
+        "text": "Every member of Thy holy flesh endured dishonor for us. Thy head — the thorns, Thy face — the spitting, Thy cheeks — the buffeting, Thy mouth — the taste of vinegar mingled with gall, Thine ears — the impious blasphemies, Thy back — the scourge, Thy hand — the reed, Thy whole body — extension upon the Cross, Thy joints — the nails, Thy side — the spear. By Thy sufferings Thou hast set us free from suffering. In Thy love for man Thou didst stoop down to raise us up. O Almighty Savior, have mercy on us."
       },
       {
         "tone": 3,
-        "verse": "Praise Him with tuneful cymbals, praise Him with cymbals of jubilation. Let every breath praise the Lord.",
-        "text": "Upon seeing Thee crucified, O Christ, the whole of creation trembled. The foundations of the earth were shaken with the fear of Thy power. For when Thou wast raised upon the Tree today, the race of the Hebrew people perished, the veil of the temple was rent in twain, the graves were opened, and the dead arose from the tombs. Upon seeing the wonder, the centurion stood amazed, and Thy Mother, standing by Thee, cried out, sorrowing with a mother's grief: \"How shall I not lament and strike upon my breast, upon beholding Thee stripped naked and hung upon the Wood as one condemned?\" O Thou Who wast crucified and buried, and arisen from the dead: O Lord, glory be to Thee."
+        "verse": "Praise Him with sounding cymbals; praise Him with loud, clashing cymbals! Let everything that breathes praise the Lord! Praise the Lord!",
+        "text": "Beholding Thee crucified, O Christ, the whole creation trembled. The foundations of the earth shook for fear of Thy might, for by Thy lifting up today the Hebrew race perished. The curtain of the temple was torn in two. The tombs were opened and the dead arose from their graves. The centurion shuddered when he saw the wonder. Thy Mother stood by and cried out with motherly lamentation: \"How shall I not weep and beat my breast, seeing Thee naked and hanging upon the Cross as one condemned?\" O Lord, crucified and buried and risen from the dead, glory to Thee!"
       }
     ],
     "glory": {
       "tone": 6,
-      "text": "They stripped Me of My garments and clothed Me in a scarlet robe; they set upon My head a crown of thorns, and placed a reed in My right hand, that I may break them in pieces like a potter's vessel."
+      "text": "They have stripped me of my garments and clothed me in a scarlet robe. They have set upon my head a crown of thorns and have given me a reed in my right hand, that I might dash them in pieces like a potter's vessel."
     },
     "now": {
       "tone": 6,
-      "text": "My back didst I gave over to scourging; I turned not My face away from the spitting; I stood before the judgment-seat of Pilate, and endured the Cross for the salvation of the world."
+      "text": "I gave my back to scourgings. I did not turn my face from spittings. I stood before the judgment seat of Pilate and endured the Cross for the salvation of the world."
     },
-    "_source": "stSergius-triod75"
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "smallDoxology": {
@@ -549,39 +554,39 @@
     "stichera": [
       {
         "tone": 1,
-        "text": "The whole of creation was transformed by fear, when it saw Thee, O Christ, hanging upon the Cross. The sun was darkened and the foundations of the earth were shaken; all things suffered with the Creator of all. Willingly hast Thou endured this for our sakes: O Lord, glory be to Thee."
+        "text": "All creation was changed by fear when it saw Thee hanging upon the Cross, O Christ. The sun was darkened, and the foundations of the earth were shaken. All things suffered with the Creator of all. O Lord, who didst willingly endure this for us, glory to Thee."
       },
       {
-        "verse": "They have parted My garments amongst themselves, and for my vesture have they cast lots.",
+        "verse": "They divide my garments among them, and for my raiment, they cast lots.",
         "tone": 2,
-        "text": "Why doth the wicked and transgressing people imagine vain things? Why have they condemned the Life of all to death? O great wonder! The Creator of the world hath been delivered into the hands of lawless men, and He who is the Lover of mankind is raised upon the Cross, that He may free the prisoners in Hades, who cry aloud: O long-suffering Lord, glory be to Thee."
+        "text": "An impious and transgressing people, why do they imagine vain things? Why do they condemn to death the Life of all? O great wonder! The Creator of the world is betrayed into the hands of lawless men. He who loves mankind is lifted up upon the wood, that He might free those bound in hell, who cry: O long-suffering Lord, glory to Thee!"
       },
       {
-        "verse": "They gave Me gall for my food: and for My thirst they gave Me vinegar to drink.",
+        "verse": "They gave me gall for food, and for my thirst they gave me vinegar to drink.",
         "theotokion": true,
-        "text": "Today, O Word, the most pure Virgin beheld Thee hanging upon the Cross; and with a mother's love she lamented, her heart was wounded bitterly. She groaned in anguish from the depth of her soul, and in her grief struck at her face and tore at her hair.\nAnd, beating her breast, she cried with pity: \"Woe is me, O my divine Child! Woe is me, Thou Light of the world! Why dost Thou vanish from my sight, O Lamb of God?\"\nThen the hosts of bodiless powers seized with trembling, said: \"O Lord beyond all understanding, glory be to Thee.\""
+        "text": "Today the blameless Virgin saw Thee suspended upon the Cross, O Word. She mourned within herself and was sorely pierced in her heart. She groaned in agony from the depth of her soul. Exhausted from tearing her hair and cheeks and beating her breast, she cried out lamenting: \"Woe is me, O my divine Child! Woe is me, O Light of the world! Why hast Thou departed from mine eyes, O Lamb of God?\" Then the bodiless hosts were seized with trembling and cried: \"O incomprehensible Lord, glory to Thee!\""
       },
       {
-        "verse": "God is our King before the ages: He has wrought salvation in the midst of the earth.",
-        "text": "Seeing Thee hanging on the Cross, O Christ the Creator and God of all, Thy Virgin Mother cried out bitterly: \"O my Son, where is the comeliness of Thy form to be found? I cannot bear to look upon Thee as one unjustly crucified. Make haste, then, to arise, that I also may see Thy third day Resurrection from the dead.\""
+        "verse": "God is our King before the ages, He has wrought salvation in the midst of the earth.",
+        "text": "When she who bore Thee without seed saw Thee suspended upon the tree, O Christ, the Creator and God of all, she cried bitterly: \"Where is the beauty of Thy form, O my Son? I cannot bear to see Thee unjustly crucified. Hasten and arise, that I too may see Thy Resurrection from the dead on the third day.\""
       }
     ],
     "glory": {
       "tone": 8,
-      "text": "O Lord, when Thou didst ascend the Cross, fear and trembling seized all of creation. For Thou didst not suffer the earth to swallow up those who crucified Thee; but commanded Hades to give up its prisoners, for the renewal of mankind. O Judge of the living and the dead, Thou hast come to bring life, and not death. O Lover of mankind, glory be to Thee."
+      "text": "When Thou didst ascend the Cross, O Lord, fear and trembling fell upon creation, yet Thou didst forbid the earth to swallow up those who crucified Thee, and Thou didst command hell to send up its captives for the regeneration of mortals. O Judge of the living and the dead, Thou hast come to grant life, not death. O Lover of mankind, glory to Thee!"
     },
     "now": {
-      "tone": 6,
-      "text": "Already the unjust judges having dipped their pens in ink, sentenced and condemned Jesus to the Cross; and creation suffereth, beholding its Lord crucified. But Thou didst suffer in the flesh for my sake, O Good One, O Lord, glory be to Thee."
+      "tone": 8,
+      "text": "Now the unjust judges dip the pen of judgment. Jesus is tried and sentenced to the Cross. All creation suffers as it beholds the Lord on the Cross. O Good Lord, who in Thy human nature didst suffer for me, glory to Thee!"
     },
-    "_source": "stSergius-triod75"
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "closingTroparion": {
     "_note": "Sung at the conclusion after Trisagion/Our Father",
     "tone": 4,
-    "text": "Thou hast redeemed us from the curse of the Law by Thy precious Blood: having been nailed to the Cross and pierced with a spear, Thou hast gushed forth immortality upon mankind. O our Savior, glory be to Thee.",
-    "_source": "stSergius-triod75"
+    "text": "By Thy precious blood Thou hast redeemed us from the curse of the law. By being nailed to the Cross and pierced by a spear, Thou hast poured forth immortality for man. O our Savior, glory to Thee.",
+    "_source": "SVS Holy Week Vol. 2 (1983)"
   },
 
   "dismissal": {

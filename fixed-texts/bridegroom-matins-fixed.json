@@ -3,7 +3,7 @@
     "description": "Fixed liturgical texts for Bridegroom Matins — served on the evenings of Palm Sunday through Holy Wednesday",
     "tradition": "OCA (Orthodox Church in America)",
     "translation": "OCA Department of Religious Education (modified, TT)",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "note": "Keys (monday/tuesday/wednesday/thursday) refer to the LITURGICAL DAY, not the evening of service. Holy Monday matins is sung Palm Sunday evening, Holy Tuesday matins is sung Monday evening, Holy Wednesday matins is sung Tuesday evening, Holy Thursday matins is sung Wednesday evening.",
     "sources": {
       "monday": "https://files.oca.org/service-texts/2026-0406-texts-matins-tt.docx",
@@ -83,8 +83,9 @@
       "tone": 2,
       "odes": [1, 8, 9],
       "_source": "domoca-2016",
+      "_irmosSource": "svs-holyWeek-vol1-1980",
       "ode1": {
-        "irmos": "Let us sing to the Lord! By His divine command, He dried up the raging and impassable sea, and led the people of Israel through on foot, for gloriously hath He been glorified!",
+        "irmos": "Let us sing to the Lord! By His divine command He dried up the raging and impassible sea, and led the people of Israel through on foot, for gloriously has He been glorified.",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "Oh, the inexpressible condescension of the Word of God! For Christ, Who is both God and man, did not count equality with God a thing to be grasped, but emptied Himself and appeared to His disciples in the form of a servant. Gloriously hath He been glorified!",
@@ -101,17 +102,17 @@
         ],
         "glorySuffix": "Let us bless the Father, the Son, and the Holy Spirit, the Lord.",
         "nowSuffix": "Now and ever and unto ages of ages. Amen.",
-        "katavasia": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages. The relentless fire was fed by fuel in endless supply. Yet it shrank before the flesh of the Holy Youths, as pure as their souls, and when the never-ending flame was quenched, the singing of an everlasting hymn began: Praise the Lord, all works of the Lord, and exalt Him throughout all ages."
+        "katavasia": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages. The relentless fire was fed by fuel in endless supply, yet it shrank before the flesh of the Holy Youths, as pure as their souls, and when the never-ending flame was quenched, the singing of an everlasting hymn began: Praise the Lord, all works of the Lord, and exalt Him throughout all ages."
       },
       "ode9": {
-        "irmos": "Thou hast magnified the Theotokos who bore Thee, O Christ. From her Thou hast put on a body like our own, O our Creator, which releaseth us from our errors. Blessing her, we in all generations magnify Thee!",
+        "irmos": "Thou hast magnified the Theotokos who bore Thee, O Christ. From her Thou hast put on a body like our own, O our Creator, which releases us from our errors. Blessing her, we in all generations magnify Thee!",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "Thou didst warn Thine Apostles, O Wisdom of all: \"Flee from all impure passion. Seek, instead, wisdom worthy of the Kingdom of God. Thus ye will be glorified and shine more brightly than the sun.\"",
           "The Lord said to His disciples: \"As ye look at Me, do not be haughty, but be joined to the lowly. The cup which I drink, drink also, that ye may be glorified with Me in My Father's Kingdom.\""
         ],
         "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
-        "katavasia": "Thou hast magnified the Theotokos who bore Thee, O Christ. From her Thou hast put on a body like our own, O our Creator, which releaseth us from our errors. Blessing her, we in all generations magnify Thee!"
+        "katavasia": "Thou hast magnified the Theotokos who bore Thee, O Christ. From her Thou hast put on a body like our own, O our Creator, which releases us from our errors. Blessing her, we in all generations magnify Thee!"
       }
     },
     "stichera": {
@@ -120,7 +121,7 @@
         {
           "tone": 1,
           "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
-          "text": "As the Lord was going to His voluntary Passion,\nHe said to the Apostles on the way:\n\"Behold, we go up to Jerusalem,\nand the Son of Man shall be delivered up, as it is written of Him.\"\nCome, therefore, let us also go with Him,\npurified in mind!\nLet us be crucified with Him and die through Him\nto the pleasures of this life!\nThen we shall live with Him and hear Him say:\n\"I go no more to the earthly Jerusalem to suffer,\nbut to My Father and your Father,\nto My God and your God.\nI shall raise you up to the Jerusalem on high\nin the Kingdom of Heaven.\""
+          "text": "As the Lord was going to His voluntary Passion,\nHe said to the Apostles on the way:\n\"Behold, we go up to Jerusalem,\nand the Son of Man shall be delivered up, as it is written of Him.\"\nCome, therefore, let us also go with Him,\npurified in mind!\nLet us be crucified with Him and die through Him\nto the pleasures of this life!\nThen we shall live with Him and hear Him say:\n\"I go no more to the earthly Jerusalem to suffer,\nbut to My Father and your Father,\nto My God and your God.\nI shall raise you up into the Jerusalem on high\nin the Kingdom of Heaven.\""
         },
         {
           "tone": 1,
@@ -196,7 +197,7 @@
     },
     "kontakion": {
       "tone": 2,
-      "text": "Thou knowest that this is the last hour, O wretched soul,\nand dost fear the cutting of the fig tree.\nWork diligently, therefore, with the talent given to thee.\nKeep watch and cry:\n\"Let us not remain outside the bridal chamber of Christ!\""
+      "text": "Thou knowest that this is the last hour, O wretched soul,\nand dost fear the cutting of the fig tree.\nWork diligently, therefore, at the talent given to thee.\nKeep watch and cry:\n\"Let us not remain outside the bridal chamber of Christ!\""
     },
     "ikos": {
       "text": "Why art thou idle, my wretched soul?\nWhat useless cares cause thee to be lost in dreams?\nWhy busy thyself with things that pass away?\nThe last hour is at hand, and we shall be parted from all earthly things.\nTherefore, while there is time, rouse thyself and cry:\n\"I have sinned before Thee, O my Savior!\nDo not cut me off like the barren fig tree!\nIn Thy compassion, O Christ, take pity on me who call out in fear:\n'Let us not remain outside the bridal chamber of Christ!'\""
@@ -209,8 +210,10 @@
       "type": "Two-Ode Canon",
       "tone": 2,
       "odes": [8, 9],
+      "_source": "stNicholasOCA-bridegroomMatins",
+      "_irmosSource": "svs-holyWeek-vol1-1980",
       "ode8": {
-        "irmos": "The three holy children were not obedient to the decree of the tyrant; but when cast into the furnace they confessed God, singing: O all ye works of the Lord, bless ye the Lord.",
+        "irmos": "The three holy youths would not obey the decree of the tyrant. When cast into the furnace they sang: Bless the Lord, O works of the Lord!",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "Let us cast aside slothfulness and go to meet Christ, the immortal Bridegroom, with brightly shining lamps and with hymns, crying: O all ye works of the Lord, bless ye the Lord.",
@@ -219,10 +222,10 @@
         ],
         "glorySuffix": "Let us bless the Father, and the Son, and the Holy Spirit, the Lord.",
         "nowSuffix": "Now and ever, and unto ages of ages. Amen.",
-        "katavasia": "We praise, bless, and worship the Word, singing and exalting Him throughout all ages. The three holy children were not obedient to the decree of the tyrant; but when cast into the furnace they confessed God, singing: O all ye works of the Lord, bless ye the Lord."
+        "katavasia": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages. The three holy youths would not obey the decree of the tyrant. When cast into the furnace they sang: Bless the Lord, O works of the Lord!"
       },
       "ode9": {
-        "irmos": "Thou hast enclosed within thy womb the God whom nothing can enclose, and thou hast brought joy into the world. We sing thy praises, O most holy Virgin.",
+        "irmos": "In thy womb thou didst contain God Who cannot be contained. Thou didst conceive the joy of the world. We praise thee, O most holy Virgin.",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "\"Watch,\" thou hast said to thy disciples, O loving Savior. \"For ye know not in what hour the Lord shall come to reward every man.\"",
@@ -230,7 +233,7 @@
         ],
         "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit.",
         "nowSuffix": "Now and ever, and unto ages of ages. Amen.",
-        "katavasia": "Thou hast enclosed within thy womb the God whom nothing can enclose, and thou hast brought joy into the world. We sing thy praises, O most holy Virgin."
+        "katavasia": "In thy womb thou didst contain God Who cannot be contained. Thou didst conceive the joy of the world. We praise thee, O most holy Virgin."
       }
     },
     "stichera": {
@@ -329,8 +332,9 @@
       "tone": 2,
       "odes": [3, 8, 9],
       "_source": "domoca-2016",
+      "_irmosSource": "svs-holyWeek-vol1-1980",
       "ode3": {
-        "irmos": "Thou hast established me on the rock of faith. Thou hast opened wide my mouth against mine enemies, for my spirit rejoiceth in singing: \"None is holy but our God, and none is righteous but Thee, O Lord!\"",
+        "irmos": "Thou hast established me on the rock of faith. Thou hast opened wide my mouth against my enemies. For my spirit rejoices in singing: None is holy but our God, and none is righteous but Thee, O Lord!",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "The assembly of lawless men gathereth together for empty discussion and with evil intent, to pronounce sentence upon Thee, O Christ the Deliverer. But we sing to Thee: \"Thou art our God, and none is holy but Thee, O Lord.\"",
@@ -339,7 +343,7 @@
         "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen."
       },
       "ode8": {
-        "irmos": "The command of the tyrant prevailed: the furnace was heated sevenfold. But the youths were not burned in it. Trampling on the king's decree, they sang: \"Praise the Lord, all works of the Lord, sing and exalt Him throughout all ages.\"",
+        "irmos": "The command of the tyrant prevailed; the furnace was heated sevenfold. But the youths were not burned in it, trampling on the king's decree, they sang: Praise the Lord, all works of the Lord, sing and exalt Him throughout all ages!",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "The woman poured precious myrrh upon Thy kingly, divine, and awesome head, O Christ. She grasped Thy most pure feet with her impure hands and cried: \"Praise the Lord, all works of the Lord! Sing and exalt Him throughout all ages!\"",
@@ -350,7 +354,7 @@
         "katavasia": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages."
       },
       "ode9": {
-        "irmos": "With pure souls and blameless lips, come, let us magnify the all pure and spotless Mother of Emmanuel. Through her let us offer prayers to Him Who was born of her: \"Spare our souls, O Christ our God, and save us.\"",
+        "irmos": "With pure souls and blameless lips, come, let us magnify the all-pure and spotless Mother of Emmanuel. Through her let us offer prayers to Him who was born of her: Spare our souls, O Christ our God, and save us.",
         "refrain": "Glory to Thee, our God, glory to Thee.",
         "troparia": [
           "Envious Judas proved himself both ignorant and evil. He sold the divine gift through Whom our debt of sin is loosed. This miserable man sold the grace of love. But spare our souls, O Christ our God, and save us.",
@@ -358,7 +362,7 @@
           "O blind and greedy avarice! Hast thou forgotten what thou wast taught, that the whole world is not worth thy soul? Yet thou, O traitor, despaired of thy life, and made a noose and hanged thyself. But spare our souls, O Christ our God, and save us."
         ],
         "glorySuffix": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
-        "katavasia": "With pure souls and blameless lips, come, let us magnify the all pure and spotless Mother of Emmanuel. Through her let us offer prayers to Him Who was born of her: \"Spare our souls, O Christ our God, and save us.\""
+        "katavasia": "With pure souls and blameless lips, come, let us magnify the all-pure and spotless Mother of Emmanuel. Through her let us offer prayers to Him who was born of her: Spare our souls, O Christ our God, and save us."
       }
     },
     "stichera": {

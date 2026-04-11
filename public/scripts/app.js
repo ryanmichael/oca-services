@@ -1115,7 +1115,7 @@ function printBooklet() {
   // ── Build booklet JS that runs in the new window ──────────────────────────
   const bookletScript = `
 (function () {
-  var PAGE_H  = ${PAGE_CONTENT_H} - 4;  // small buffer to prevent clipping at page edges
+  var PAGE_H  = ${PAGE_CONTENT_H} - 24;  // buffer to prevent clipping from font-rendering / margin rounding
   var LINE_H  = Math.round(15 * 1.75 * 96 / 72);  // ~35px — snap splits to line boundaries
   var TITLE_SVC  = ${JSON.stringify(svc)};
   var TITLE_SUB  = ${JSON.stringify(date + (saintName ? ' | ' + saintName : ''))};

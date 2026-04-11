@@ -2,10 +2,11 @@
   "_meta": {
     "description": "Fixed liturgical texts for the Royal Hours of Great Friday — served Friday morning before Burial Vespers",
     "tradition": "OCA (Orthodox Church in America)",
-    "translation": "OCA / St. Tikhon's Monastery Press",
-    "version": "0.2.0",
-    "_audit": "v0.2.0: Structural audit — opening Trisagion/Our Father prayers and inter-hour closing prayers now rendered by assembler. All psalms, readings, troparia, stichera verified correct.",
-    "note": "The Royal Hours consist of the 1st, 3rd, 6th, and 9th Hours, each with three psalms, a troparion, an OT prophecy, an epistle, a gospel, and three idiomela (special stichera). 100% fixed — same every year."
+    "translation": "OCA Holy Friday Matins (1980) / SVS Holy Week Vol. 2 (1983)",
+    "version": "0.3.0",
+    "_audit": "v0.3.0: Updated 3rd/6th/9th Hour troparia, stichera, and prokeimena to SVS Holy Week Vol. 2 (1983) OCA translation. Added stichera psalm verses. 1st Hour troparion/stichera retained from v0.2.0 (not visible in SVS scan p.184); prokeimenon updated from SVS p.185.",
+    "note": "The Royal Hours consist of the 1st, 3rd, 6th, and 9th Hours, each with three psalms, a troparion, an OT prophecy, an epistle, a gospel, and three idiomela (special stichera). 100% fixed — same every year.",
+    "_source": "SVS Holy Week Vol. 2 (1983), pp. 184–191"
   },
 
   "opening": {
@@ -36,8 +37,10 @@
       },
       "prokeimenon": {
         "tone": 4,
-        "refrain": "Thou hast heard me, O God, when I cried unto Thee; in my tribulation Thou hast enlarged me.",
-        "verse": "When I called, the God of my righteousness heard me."
+        "psalm": 41,
+        "refrain": "His heart gathered iniquity to itself; he went out and spoke to the multitude.",
+        "verse": "Blessed is he who considers the poor and needy; the Lord delivers him in the day of trouble.",
+        "_source": "SVS Holy Week Vol. 2, p. 185"
       },
       "prophecy": {
         "book": "Zechariah",
@@ -78,7 +81,7 @@
       "psalms": [34, 108, 50],
       "troparion": {
         "tone": 6,
-        "text": "O Lord, the Jews condemned Thee to death,\nthe Life of all.\nThey who crossed the Red Sea on foot\nnailed Thee to the Cross.\nThey who were fed with honey from a rock\noffered Thee gall.\nBut Thou didst suffer willingly\nto free us from the bondage of the enemy.\nO Christ our God, glory to Thee!"
+        "text": "O Lord, the Life of all,\nthe Jews delivered Thee over to death.\nThou didst lead them through the Red Sea by Moses' rod,\nyet they handed Thee over to be crucified.\nThou didst feed them with honey from the rock,\nand they repaid Thee with gall and vinegar,\nbut Thou didst willingly endure these things,\nto free us from bondage to the enemy.\nO Christ God, glory to Thee!"
       },
       "glory": {
         "tone": 6,
@@ -89,8 +92,10 @@
       },
       "prokeimenon": {
         "tone": 4,
-        "refrain": "For dogs have compassed me; the assembly of the wicked hath enclosed me; they pierced my hands and my feet.",
-        "verse": "My God, my God, look upon me; why hast Thou forsaken me?"
+        "psalm": 38,
+        "refrain": "I am ready for scourging, and my pain is ever with me.",
+        "verse": "O Lord, rebuke me not in Thy anger, nor chasten me in Thy wrath.",
+        "_source": "SVS Holy Week Vol. 2, p. 187"
       },
       "prophecy": {
         "book": "Isaiah",
@@ -109,16 +114,18 @@
       },
       "stichera": [
         {
-          "tone": 5,
-          "text": "Come, O ye faithful, let us behold at what place Judas\nshook hands with the lawless priests against our Savior.\n\"What will you give me if I deliver Him unto you?\"\nAnd while the agreement was being made,\nthe Lord Who was to be sold stood by, unknowing of the price.\nFor what king comes in such a way?\nBut the Only-begotten Son of God came to be sold.\nLet us fall down before Him!"
+          "tone": 8,
+          "text": "For fear of the Jews, O Lord,\nThy friend and companion Peter denied Thee.\nIn bitter grief, he cried aloud:\n\"O compassionate Master,\nturn not away in silence from my tears.\nI said that I would keep faith, but have failed Thee.\"\nAccept also our repentance and have mercy on us, O Lord!"
+        },
+        {
+          "tone": 8,
+          "verse": "Give ear to my words, O Lord; give heed to my groaning.",
+          "text": "Before Thy Crucifixion, O Lord,\nas the soldiers were mocking Thee,\nthe angels hid their faces, unable to bear the sight,\nfor Thou Who didst adorn the earth with flowers\nwast arrayed in a crown of thorns;\nThou Who hast wrapped the heavens with clouds\nwast clothed in a robe of mockery,\nyet all these things fulfilled Thy saving plan,\nby which Thy compassion was revealed to us.\nO Christ of great mercy, glory to Thee!"
         },
         {
           "tone": 5,
-          "text": "He who was sold for thirty pieces of silver,\nO ye lawless ones, was not a mortal man;\nbut the Master and God of Israel,\nWho through the Law and the Prophets\nsaid to the people:\n\"O My people, what have I done unto thee,\nor wherein have I wearied thee?\nI led thee out of Egypt; I fed thee in the wilderness.\nWhat have I done unto thee?\"\nBut they repaid Him with gall and vinegar."
-        },
-        {
-          "tone": 5,
-          "text": "The Lawgiver became obedient to the Law,\nfulfilling the Law and the Prophets.\nPilate said: \"I find no fault in this Man.\"\nAnd the Thief on the Cross cried out:\n\"Remember me, O Lord, in Thy Kingdom!\"\nDeliver us, O Lord, from the snares of the enemy,\nand grant us the Great Mercy!"
+          "verse": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+          "text": "When Thou wast raised upon the Cross, O Lord,\nThou didst cry out to the Jews:\nfor what deeds do you crucify Me, O My people?\nIs it because I made your paralytics walk?\nBecause I raised the dead as from sleep?\nBecause I healed the woman with the issue of blood,\nand took pity on the woman of Canaan?\nFor what deeds do you seek to kill Me?\nYou shall look upon Him Whom you have pierced,\nupon your Messiah, O transgressors."
         }
       ],
       "kontakion": {
@@ -131,7 +138,7 @@
       "psalms": [53, 139, 90],
       "troparion": {
         "tone": 2,
-        "text": "Thou hast wrought salvation in the midst of the earth, O Christ our God:\nThou didst stretch out Thy most pure hands upon the Cross,\ngathering together all the nations\nwho cry to Thee:\nO Lord, glory to Thee!"
+        "text": "Thou hast worked salvation in the midst of the earth, O Christ our God;\nby stretching out Thy most pure hands upon the Cross,\ngathering together all the nations, who cry:\nO Lord, glory to Thee!"
       },
       "glory": {
         "tone": 2,
@@ -142,8 +149,10 @@
       },
       "prokeimenon": {
         "tone": 4,
-        "refrain": "O Lord, Thou hast been our dwelling place in all generations.",
-        "verse": "Before the mountains were brought forth, or ever Thou hadst formed the earth and the world."
+        "psalm": 8,
+        "refrain": "O Lord, our Lord, how wonderful is Thy Name in all the earth!",
+        "verse": "Thy majesty is exalted above the heavens.",
+        "_source": "SVS Holy Week Vol. 2, p. 189"
       },
       "prophecy": {
         "book": "Isaiah",
@@ -163,15 +172,17 @@
       "stichera": [
         {
           "tone": 8,
-          "text": "Today the Master of creation stands before Pilate.\nToday the Creator of all is condemned to the Cross.\nOf His own will the Lamb of God is brought forward.\nHe Who rained down manna upon His people in the wilderness\nis nailed to the Cross.\nHis side is pierced with a lance.\nA sponge of vinegar touches the lips\nof Him Who rained down the waters of the Jordan.\nThe Bridegroom of the Church is struck upon the face.\nThe Son of the Virgin is crowned with thorns.\nWe worship Thy sufferings, O Christ!\nShow us also Thy glorious Resurrection!"
+          "text": "Thus says the Lord to the Jews:\nMy people, what have I done to you,\nor how have I offended you?\nTo your blind I gave sight, your lepers I cleansed,\nthe paralytic I raised from his bed.\nMy people, what have I done to you,\nand how have you repaid Me?\nInstead of manna, gall; instead of water, vinegar;\ninstead of loving Me, you nail Me to the Cross.\nI can bear no more.\nI shall call the Gentiles Mine.\nThey will glorify Me with the Father and the Spirit,\nand I shall give them life eternal."
         },
         {
           "tone": 8,
-          "text": "We do not celebrate, O Lord,\nthe nailing of Thy hands and feet,\nwhich Thou didst endure for our sake,\nbut rather do we cry to Thee:\nO Thou Who by Thy sufferings hast granted us life,\nwho with the condemned Thief hast made us worthy of paradise,\nO Lord, glory to Thee!"
+          "verse": "They gave me gall for food, and in my thirst they gave me vinegar to drink.",
+          "text": "The choir of the Apostles cries out to you,\nO law-givers of Israel, scribes and Pharisees:\nbehold the temple which you destroyed!\nBehold the Lamb Whom you crucified!\nYou delivered Him to the tomb, but by His own power He arose.\nDo not be deceived, O Jews.\nHe it is that saved you in the sea and fed you in the wilderness.\nHe is the Life, the Light, and the Peace of the world."
         },
         {
-          "tone": 8,
-          "text": "Seeing Thee crucified, O Christ,\nall creation trembled.\nThe foundations of the earth were shaken for fear of Thy power.\nThe lights of heaven hid themselves.\nThe veil of the temple was rent in twain.\nThe mountains trembled and the rocks were split.\nAnd the faithful Thief cried out to Thee with us:\n\"Remember us in Thy Kingdom!\""
+          "tone": 5,
+          "verse": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+          "text": "Come, O Christ-bearing people!\nLet us see what the traitor Judas and the lawless priests\nhave plotted against our Savior.\nToday they made the deathless Word subject to death.\nThey delivered Him to Pilate\nand crucified Him on Golgotha.\nSuffering these things our Savior cried aloud and said:\n\"Father, forgive them this sin,\nthat all nations may know My resurrection from the dead.\""
         }
       ],
       "kontakion": {
@@ -184,7 +195,7 @@
       "psalms": [68, 69, 85],
       "troparion": {
         "tone": 8,
-        "text": "When the Thief beheld the Author of Life hanging on the Cross,\nhe said: \"If He Who is crucified with us were not God Incarnate,\nthe sun would not have hidden its rays\nnor would the earth have trembled with quaking.\nBut Thou Who dost endure all things,\nremember me, O Lord, in Thy Kingdom!\""
+        "text": "When the Thief beheld the Author of Life hanging upon the Cross, he said:\n\"If it were not God in the flesh crucified here with us,\nthe sun would not have hidden his rays\nnor would the earth have quaked and trembled,\nbut remember me in Thy Kingdom, O long-suffering Lord!\""
       },
       "glory": {
         "tone": 8,
@@ -194,9 +205,11 @@
         "text": "Seeing the Lamb and Shepherd and Savior of the world upon the Cross,\nthe Ewe who bore Him said through her tears:\n\"The world rejoices receiving deliverance,\nbut my heart burns seeing Thy Crucifixion,\nwhich Thou dost endure for the sake of all, my Son and my God.\""
       },
       "prokeimenon": {
-        "tone": 4,
-        "refrain": "O Lord my God, in Thee have I put my trust; save me from all them that persecute me, and deliver me.",
-        "verse": "Lest at any time he seize my soul like a lion, while there is none to redeem me nor to save me."
+        "tone": 6,
+        "psalm": 14,
+        "refrain": "The fool says in his heart: there is no God.",
+        "verse": "There is none that does good, no, not one.",
+        "_source": "SVS Holy Week Vol. 2, p. 191"
       },
       "prophecy": {
         "book": "Jeremiah",
@@ -215,16 +228,18 @@
       },
       "stichera": [
         {
-          "tone": 6,
-          "text": "They stripped Me of My garments\nand put on Me a scarlet robe.\nThey set upon My head a crown of thorns\nand put a reed in My right hand,\nthat I might shatter them like a potter's vessel."
+          "tone": 7,
+          "text": "A strange wonder it was to see the Maker of heaven and earth suspended\non the Cross.\nThe sun was darkened and the day was changed into night.\nThe earth gave up the bodies of the dead from their graves.\nWith them we worship Thee: save us, O Lord!"
+        },
+        {
+          "tone": 2,
+          "verse": "They divide my garments among them, and for my raiment they cast lots.",
+          "text": "When transgressors nailed the King of Glory to the Cross,\nHe cried out to them:\n\"How have I caused you pain?\nOr in what have I angered you?\nWho before Me delivered you from affliction?\nAnd how have you now rewarded Me?\nBy returning evil for good.\nFor the pillar of fire you nail Me to the Cross.\nFor the cloud you dig Me a grave.\nInstead of manna you bring Me gall.\nInstead of water you give Me vinegar to drink.\nHenceforth I shall call the Gentiles,\nand they will glorify Me with the Father and the Holy Spirit.\""
         },
         {
           "tone": 6,
-          "text": "I gave My back to scourging\nand My face I turned not from the shame of spitting.\nI stood before the judgment seat of Pilate\nand endured the Cross for the salvation of the world."
-        },
-        {
-          "tone": 6,
-          "text": "Today He Who hung the earth upon the waters\nis hung upon the Cross.\nHe Who is the King of the angels\nis arrayed in a crown of thorns.\nHe Who wraps the heavens in clouds\nis wrapped in the purple of mockery.\nHe Who in the Jordan set Adam free\nreceives blows upon His face.\nThe Bridegroom of the Church is transfixed with nails.\nThe Son of the Virgin is pierced with a lance.\nWe venerate Thy Passion, O Christ!\nShow us also Thy glorious Resurrection!"
+          "verse": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+          "text": "Today He Who hung the earth upon the waters is hung on the tree.\nThe King of the angels is decked with a crown of thorns.\nHe Who wraps the heavens in clouds is wrapped in the purple of mockery.\nHe Who freed Adam in the Jordan is slapped on the face.\nThe Bridegroom of the Church is affixed to the Cross with nails.\nThe Son of the Virgin is pierced by a spear.\nWe worship Thy Passion, O Christ.\nWe worship Thy Passion, O Christ.\nWe worship Thy Passion, O Christ.\nShow us also Thy glorious Resurrection."
         }
       ],
       "kontakion": {

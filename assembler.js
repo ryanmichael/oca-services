@@ -4305,6 +4305,10 @@ function assembleRoyalHours(f) {
     // Stichera (3 idiomela)
     const stiSection = `${name} — Stichera`;
     for (let i = 0; i < hour.stichera.length; i++) {
+      if (hour.stichera[i].verse) {
+        blocks.push(S(`${pfx}-stich-${i}-v`, stiSection, 'verse', 'reader',
+          hour.stichera[i].verse));
+      }
       blocks.push(S(`${pfx}-stich-${i}`, stiSection, 'hymn', 'choir',
         hour.stichera[i].text, { tone: hour.stichera[i].tone }));
     }

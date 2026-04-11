@@ -26,10 +26,11 @@
     ]
   },
   "troparia": {
+    "_source": "svs-holyWeek-vol3-2005",
     "nobleJoseph": {
       "tone": 2,
       "label": "Troparion",
-      "text": "Noble Joseph, taking down Thy most pure body from the Tree,\nwrapped it in clean linen with sweet spices,\nand he laid it in a new tomb."
+      "text": "Come, let us bless Joseph of eternal memory,\nwho came by night to Pilate and begged for the Life of All:\n\"Give me this Stranger, who has no place to lay His head.\nGive me this Stranger, whom an evil disciple\nbetrayed to death.\nGive me this Stranger, whom His mother saw hanging upon the cross,\nand with a mother's sorrow cried, weeping:\n'Woe is me, O my child, light of my eyes\nand beloved of my bosom!\nFor what Simeon foretold in the temple now has come to pass:\na sword has pierced my heart;\nbut change my grief to gladness by Thy resurrection.'\"\nWe worship Thy Passion, O Christ!\nWe worship Thy Passion, O Christ!\nWe worship Thy Passion, O Christ, and Thy holy resurrection!"
     },
     "glory": {
       "tone": 2,
@@ -860,15 +861,166 @@
     "alleluia": "Alleluia, Alleluia, Alleluia, glory to Thee, O God. (×3)"
   },
   "canon": {
-    "_note": "The Great Canon of Holy Saturday. Abbreviated — full odes would be very lengthy.",
+    "_note": "The Great Canon of Holy Saturday. Tone 6. Irmoi by Kassiani; troparia by Mark of Hydrous (Odes 1,3-6) and Kosmas of the Holy City (Odes 7-9).",
     "_source": "svs-holyWeek-vol3-2005",
-    "rubric": "The Canon of Holy Saturday is chanted here. The first, third, fourth, and ODES of this canon are the work of Mark the Monk, Bishop of Hydrous, and the last four ODES are by Kosmas of the Holy City. The Irmoi are the work of the nun Kassiani.",
+    "ode1": {
+      "irmos": "Of old Thou didst bury the pursuing tyrant beneath the waves of the sea. Now the children of those who were saved bury Thee beneath the earth. But like the maidens, let us sing to the Lord, for gloriously has He been glorified.",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Unto Thee I sing a hymn for the departed and a song of burial, O Lord my God, who by Thy burial hast opened for me the entrance to life and by Thy death hast put Death and Hell to death."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Beholding Thee upon the throne on high and in the grave below, the things of heaven and the things beneath the earth trembled at Thy death; for in a manner past understanding wast Thou, the very Source of Life, seen dead."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "Thou didst descend to the depths of the earth to fill all with Thy glory; for my person that is in Adam was not hidden from Thee, and when Thou wast buried, Thou didst renew me who am corrupt, O Lover of mankind."
+        }
+      ],
+      "katavasia": "Of old Thou didst bury the pursuing tyrant beneath the waves of the sea. Now the children of those who were saved bury Thee beneath the earth. But like the maidens, let us sing to the Lord, for gloriously has He been glorified."
+    },
+    "ode3": {
+      "irmos": "Thou didst suspend the earth immovably upon the waters. Now creation beholds Thee suspended on Calvary. It quakes with great amazement and cries: \"None is holy but Thee, O Lord!\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "By a multitude of visions Thou didst indicate the signs of Thy burial, O Master. But now, as God and man, Thou dost make clear Thy hidden things even unto those in hell, who cry: \"None is holy but Thee, O Lord!\""
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Thou hast stretched out Thy hands, O Savior, and united what before had been divided; and by clothing Thyself in a winding sheet Thou hast saved even those held captive by the tomb, who cry: \"None is holy but Thee, O Lord!\""
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "By Thy will a sealed tomb contained Thee who cannot be contained; for by Thy divine accomplishments Thou hast made known Thy power unto those who sing: \"None is holy but Thee, O Lord who lovest mankind!\""
+        }
+      ],
+      "katavasia": "Thou didst suspend the earth immovably upon the waters. Now creation beholds Thee suspended on Calvary. It quakes with great amazement and cries: \"None is holy but Thee, O Lord!\""
+    },
+    "sessionalHymn": {
+      "tone": 1,
+      "text": "The soldiers guarding Thy tomb, O Savior, became as dead men at the lightning flash of the angel who appeared announcing Thy resurrection to the women. We glorify Thee who cleansest from corruption. We fall down before Thee who didst rise from the tomb, our only God."
+    },
+    "ode4": {
+      "irmos": "Foreseeing Thy divine humiliation on the cross, Habakkuk cried out trembling: \"Thou didst shatter the dominion of the mighty by joining those in Hell as the Almighty Lord.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Thou hast sanctified this, the seventh day, which of old Thou didst bless by rest from work; for Thou dost bring all things into being and renew them, O my Savior, while resting and reviving on the sabbath."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "By the overwhelming strength of Thy divine nature Thou didst win the victory, O Word; for Thy soul was parted from the flesh, sundering by Thy might the bonds of hell and death."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "When Hell encountered Thee as a mortal man deified, marked with wounds yet having almighty power, it cried out at Thine awesome appearance."
+        }
+      ],
+      "katavasia": "Foreseeing Thy divine humiliation on the cross, Habakkuk cried out trembling: \"Thou didst shatter the dominion of the mighty by joining those in Hell as the Almighty Lord.\""
+    },
+    "ode5": {
+      "irmos": "Isaiah saw the never-setting light of Thy compassionate manifestation to us as God, O Christ. Rising early from the night he cried out: \"The dead shall arise. Those in the tombs shall awake. All those on earth shall greatly rejoice.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "When Thou didst become earthly, O Creator, Thou didst renew those born on earth; and the winding sheet and the grave revealed the mystery concerning Thee, O Word; for Joseph the noble counsellor, fulfills the counsel of Him who begot Thee and who wondrously renews me in Thee."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Through death Thou dost transform what is mortal, and through burial Thou dost transform what is corruptible; for in a manner befitting God Thou dost make incorrupt and immortal the nature which Thou hast assumed, since Thy flesh did not see corruption, and in a wondrous manner Thy soul was not abandoned in hell."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "Thou didst come forth from a painless birth, O my Maker, and Thy side was pierced. By this hast Thou, the new Adam, accomplished the restoration of Eve. Thou didst fall into a sleep surpassing nature, and, as the all-powerful One, Thou didst raise up life from sleep and corruption."
+        }
+      ],
+      "katavasia": "Isaiah saw the never-setting light of Thy compassionate manifestation to us as God, O Christ. Rising early from the night he cried out: \"The dead shall arise. Those in the tombs shall awake. All those on earth shall greatly rejoice.\""
+    },
+    "ode6": {
+      "irmos": "Jonah was caught but not held fast in the belly of the whale. He was a sign of Thee who hast suffered and accepted burial. Coming forth from the beast as from a bridal chamber, He called out to the guard: \"By observing vanities and lies you have forsaken your own mercy.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Thou wast killed, O Word, but not separated from the flesh which Thou dost share with us; for even though the temple of Thy body was destroyed at the time of the Passion, the Person of Thy divinity and of Thy flesh was one, for in both dost Thou remain one Son, God and man."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "The fall of Adam resulted in the death of man, not God; for even though the earthly substance of Thy flesh suffered, Thy divinity remained passionless. In Thyself Thou hast transformed the corruptible to incorruption, and by Thy resurrection Thou hast revealed a fountain of incorruptible life."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "Hell rules the race of mortal men, but not eternally; for when Thou wast placed in the grave, O Powerful One, Thou didst tear asunder the bars of death by Thy life-creating hand and didst proclaim true deliverance to those sleeping there from the ages, since Thou, O Savior, hast become the firstborn of the dead."
+        }
+      ],
+      "katavasia": "Jonah was caught but not held fast in the belly of the whale. He was a sign of Thee who hast suffered and accepted burial. Coming forth from the beast as from a bridal chamber, He called out to the guard: \"By observing vanities and lies you have forsaken your own mercy.\""
+    },
     "kontakion": {
       "tone": 6,
       "text": "He who shut in the depths is beheld dead,\nwrapped in fine linen and spices.\nThe Immortal One is laid in a tomb as a mortal man.\nThe women have come to anoint Him with myrrh,\nweeping bitterly and crying:\n\"This is the most blessed sabbath,\non which Christ has fallen asleep to rise on the third day.\""
     },
     "ikos": {
       "text": "He who holds all things together has been lifted up upon the cross,\nand all of creation weeps at seeing Him hanging naked upon the wood.\nThe sun hid its rays and the stars cast aside their splendor.\nThe earth shook with great fear, the sea fled,\nand the rocks were split asunder.\nMany tombs were opened, and the bodies of holy men arose.\nHell groaned below, and the Jews considered how to slander the resurrection of Christ,\nbut the women cried:\n\"This is the most blessed sabbath,\non which Christ has fallen asleep to rise on the third day.\""
+    },
+    "ode7": {
+      "irmos": "Inexpressible wonder! In the furnace Thou didst save the holy youths from the flame. Now Thou art placed in the grave as a lifeless corpse, for the salvation of us who sing: \"Blessed art Thou, O God our Redeemer.\"",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Hell was wounded in heart when it received Him whose side was pierced by a spear, and it groans, consumed by divine fire, unto the salvation of us who sing: \"Blessed art Thou, O God, our Redeemer!\""
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "Happy is the tomb! For having received the Creator as one asleep, it became a divine treasury of life, for the salvation of us who sing: \"Blessed art Thou, O God, our Redeemer!\""
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "In accordance with the law of the dead, the Life of all accepts burial in the tomb, and the tomb becomes the source of resurrection, unto the salvation of us who sing: \"Blessed art Thou, O God, our Redeemer!\""
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "In hell, in the tomb, and in Eden, the divinity of Christ was one and undivided with the Father and the Spirit, for the salvation of us who sing: \"Blessed art Thou, O God, our Redeemer!\""
+        }
+      ],
+      "katavasia": "Inexpressible wonder! In the furnace Thou didst save the holy youths from the flame. Now Thou art placed in the grave as a lifeless corpse, for the salvation of us who sing: \"Blessed art Thou, O God our Redeemer.\""
+    },
+    "ode8": {
+      "irmos": "Be amazed, O heavens! Be shaken, O foundations of the earth! Behold, He that dwells in the highest is numbered among the dead and sheltered in a lowly tomb. Bless Him, O youths! Praise Him, O priests! O people, exalt Him above all forever!",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "The pure Temple has been destroyed, yet He raises with Himself the tabernacle that had fallen; for the second Adam, who dwells in the highest, has descended to the first Adam, even unto the lowest chambers of Hell. Bless Him, O youths! Praise Him, O priests! O people, exalt Him above all forever!"
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "The courage of all the disciples failed, but Joseph of Arimathea showed valor; for seeing the God of all dead and naked, he sought Him and dressed Him for burial, crying: \"Bless Him, O youths! Praise Him, O priests! O people, exalt Him above all forever!\""
+        },
+        {
+          "refrain": "Let us bless the Father, and the Son, and the Holy Spirit, the Lord!",
+          "text": "What new wonders! What great goodness! What ineffable forbearance! For He that dwells in the highest is willingly sealed beneath the earth, and God is slandered as a deceiver. Bless Him, O youths! Praise Him, O priests! O people, exalt Him above all forever!"
+        }
+      ],
+      "katavasia": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages."
+    },
+    "ode9": {
+      "irmos": "Do not lament me, O Mother, seeing me in the tomb, the Son conceived in the womb without seed, for I shall arise and be glorified with eternal glory as God. I shall exalt all who magnify you in faith and in love.",
+      "troparia": [
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "I escaped sufferings and was blessed beyond nature at Thy strange birth, O Son who art without beginning. But now, beholding Thee, my God, dead and without breath, I am sorely pierced by the sword of sorrow. But arise, that I may be magnified."
+        },
+        {
+          "refrain": "Glory to Thee, our God, glory to Thee!",
+          "text": "By mine own will, the earth covers me, O Mother, but the gatekeepers of hell tremble at seeing me clothed in the blood-stained garments of vengeance; for when I have vanquished mine enemies on the cross, I shall arise as God and magnify you."
+        },
+        {
+          "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+          "text": "Let creation rejoice! Let all born on earth be glad! For hateful Hell has been despoiled. Let the women with myrrh come to meet me; for I am redeeming Adam and Eve and all their descendants, and on the third day shall I arise!"
+        }
+      ],
+      "katavasia": "Do not lament me, O Mother, seeing me in the tomb, the Son conceived in the womb without seed, for I shall arise and be glorified with eternal glory as God. I shall exalt all who magnify you in faith and in love."
     }
   },
   "exaposteilarion": {

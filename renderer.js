@@ -350,7 +350,10 @@ function renderService(blocks, options = {}) {
             }
           });
 
-          while (pages.length % 4 !== 0) pages.push([]);
+          // Pad to a multiple of 4 for booklet imposition.
+          // Prepend blanks so they land on the outer covers (front/back)
+          // rather than scattering through the middle of the booklet.
+          while (pages.length % 4 !== 0) pages.unshift([]);
           var n = pages.length;
 
           var spreads = [];

@@ -133,6 +133,7 @@ describe('Assembler — direct', () => {
   });
 
   it('Holy Week — fixed services assemble with valid blocks', () => {
+    const vespersFixed    = loadJSON('fixed-texts/vespers-fixed.json');
     const bridegroomFixed = loadJSON('fixed-texts/bridegroom-matins-fixed.json');
     const passionFixed    = loadJSON('fixed-texts/passion-gospels-fixed.json');
     const lamentFixed     = loadJSON('fixed-texts/lamentations-fixed.json');
@@ -145,7 +146,7 @@ describe('Assembler — direct', () => {
     const pg = assemblePassionGospels(passionFixed);
     assertBlockShape(pg, 'Passion Gospels');
 
-    const lam = assembleLamentations(lamentFixed);
+    const lam = assembleLamentations(lamentFixed, vespersFixed);
     assertBlockShape(lam, 'Lamentations');
 
     const rh = assembleRoyalHours(royalFixed);

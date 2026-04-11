@@ -3659,7 +3659,7 @@ function assemblePassionGospels(f) {
  * @param {Object} f - Parsed fixed-texts/lamentations-fixed.json
  * @returns {ServiceBlock[]}
  */
-function assembleLamentations(f) {
+function assembleLamentations(f, vespersFixed) {
   _warnings = [];
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
@@ -3693,11 +3693,8 @@ function assembleLamentations(f) {
       'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAlleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'));
   }
 
-  // ── Great Litany (minimal) ─────────────────────────────────────────────────
-  blocks.push(S('gl-opening', 'The Peace Litany', 'prayer', 'deacon',
-    'In peace, let us pray to the Lord.'));
-  blocks.push(S('gl-response', 'The Peace Litany', 'response', 'choir',
-    'Lord, have mercy.'));
+  // ── Great Litany ───────────────────────────────────────────────────────────
+  blocks.push(...assembleGreatLitany(vespersFixed));
 
   // ── God is the Lord + Troparia ─────────────────────────────────────────────
   {
@@ -3865,13 +3862,43 @@ function assembleLamentations(f) {
     }
   }
 
-  // ── Canon (abbreviated — rubric placeholder) ──────────────────────────────
-  blocks.push(S('canon-rubric', 'Canon', 'rubric', null, f.canon.rubric));
+  // ── Canon of Holy Saturday (Tone 6) ────────────────────────────────────────
+  // Full canon text sourced from midnight-office-fixed.json (same canon)
+  {
+    const moFixed = require('./fixed-texts/midnight-office-fixed.json');
+    const canon = moFixed.canon;
+    const odes = ['ode1', 'ode3', 'ode4', 'ode5', 'ode6', 'ode7', 'ode8', 'ode9'];
+    const odeNames = { ode1:'Ode I', ode3:'Ode III', ode4:'Ode IV', ode5:'Ode V',
+                       ode6:'Ode VI', ode7:'Ode VII', ode8:'Ode VIII', ode9:'Ode IX' };
 
-  // ── Kontakion + Ikos (after Ode 6 of Canon) ──────────────────────────────
-  blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', f.canon.kontakion.text,
-    { tone: f.canon.kontakion.tone }));
-  blocks.push(S('ikos', 'Kontakion', 'hymn', 'reader', f.canon.ikos.text));
+    for (const ode of odes) {
+      const o = canon[ode];
+      const sec = `Canon — ${odeNames[ode]}`;
+
+      blocks.push(S(`${ode}-irm`, sec, 'hymn', 'choir', o.irmos, { tone: 6, label: 'Irmos' }));
+
+      for (let i = 0; i < o.troparia.length; i++) {
+        const t = o.troparia[i];
+        blocks.push(S(`${ode}-ref-${i}`, sec, 'verse', 'reader', t.refrain));
+        blocks.push(S(`${ode}-trop-${i}`, sec, 'hymn', 'choir', t.text, { tone: 6 }));
+      }
+
+      blocks.push(S(`${ode}-kat`, sec, 'hymn', 'choir', o.katavasia, { tone: 6, label: 'Katavasia' }));
+
+      // Sessional hymn after Ode III
+      if (ode === 'ode3' && canon.sessionalHymn) {
+        blocks.push(S('sess-hymn', 'Sessional Hymn', 'hymn', 'choir', canon.sessionalHymn.text,
+          { tone: canon.sessionalHymn.tone }));
+      }
+
+      // Kontakion & Ikos after Ode VI
+      if (ode === 'ode6') {
+        blocks.push(S('kontakion', 'Kontakion', 'hymn', 'choir', f.canon.kontakion.text,
+          { tone: f.canon.kontakion.tone }));
+        blocks.push(S('ikos', 'Kontakion', 'hymn', 'reader', f.canon.ikos.text));
+      }
+    }
+  }
 
   // ── Exaposteilarion (×3) ──────────────────────────────────────────────────
   {

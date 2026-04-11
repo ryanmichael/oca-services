@@ -1539,6 +1539,12 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const isLent = season === 'greatLent';
   const isLentenWeekday = isLent && !isSunday && dow !== 'saturday';
 
+  // ── Holy Week / Bright Week: no regular Matins ─────────────────────────
+  // Mon–Sat of Holy Week have special services (Bridegroom, Passion Gospels,
+  // Lamentations). Bright Week has Paschal Matins/Hours.
+  // Palm Sunday keeps regular Sunday Matins (with festal content).
+  if ((season === 'holyWeek' && !isSunday) || season === 'brightWeek') return null;
+
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
     return _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
@@ -3070,7 +3076,12 @@ function handleRequest(req, res) {
       // Vespers is the first service of the next liturgical day.  The API date
       // represents the civil evening the service is served; the liturgical
       // content comes from the *next* calendar date.
-      const vespersDate = getNextDateStr(date);
+      //
+      // Exception: Burial Vespers (Holy Friday afternoon) uses the day's own
+      // texts — it is NOT the evening vespers that begins the next day.
+      const dayEntry = getCalendarEntry(date);
+      const isBurialVespers = dayEntry?.vespers?.serviceKey === 'burialVespers';
+      const vespersDate = isBurialVespers ? date : getNextDateStr(date);
 
       // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API
       let entryOverride = null;
@@ -3722,7 +3733,7 @@ function handleRequest(req, res) {
 
       let blocks;
       try {
-        blocks = assembleLamentations(lamentationsFixed);
+        blocks = assembleLamentations(lamentationsFixed, fixedTexts);
       } catch (err) {
         console.error('assembleLamentations error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });

@@ -3,14 +3,15 @@
     "description": "Fixed liturgical texts for Bridegroom Matins — served on the evenings of Palm Sunday through Holy Wednesday",
     "tradition": "OCA (Orthodox Church in America)",
     "translation": "OCA Department of Religious Education (modified, TT)",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "note": "Keys (monday/tuesday/wednesday/thursday) refer to the LITURGICAL DAY, not the evening of service. Holy Monday matins is sung Palm Sunday evening, Holy Tuesday matins is sung Monday evening, Holy Wednesday matins is sung Tuesday evening, Holy Thursday matins is sung Wednesday evening.",
     "sources": {
       "monday": "https://files.oca.org/service-texts/2026-0406-texts-matins-tt.docx",
       "tuesday": "https://files.oca.org/service-texts/2026-0407-texts-matins-tt.docx",
       "wednesday": "https://files.oca.org/service-texts/2026-0408-texts-matins-tt.docx",
       "thursday": "https://files.oca.org/service-texts/2026-0409-texts-matins-tt.docx",
-      "tuesdayStructure": "https://stnicholasoca.org/files/Service-Books/Bridegroom-Matins-of-Great-and-Holy-Tuesday.pdf"
+      "tuesdayStructure": "https://stnicholasoca.org/files/Service-Books/Bridegroom-Matins-of-Great-and-Holy-Tuesday.pdf",
+      "svs": "SVS Holy Week Vol. 1 (1980), OCA Bridegroom Services translation (1978)"
     }
   },
 
@@ -27,12 +28,13 @@
 
   "alleluia": {
     "_note": "During Holy Week, Alleluia replaces 'God is the Lord' at Matins.",
+    "_source": "svs-holyWeek-vol1-1980",
     "tone": 8,
     "verses": [
-      "Out of the night my spirit seeks Thee early, O God, for Thy commandments are a light upon the earth.",
-      "Learn righteousness, ye that dwell upon the earth.",
-      "Jealousy shall seize upon an uninstructed people.",
-      "Bring evils upon them, O Lord; bring evils upon those who are glorious on the earth."
+      "In the night my soul rises early for Thee, O God, for Thy commandments are a light on the earth.",
+      "Learn righteousness, you inhabitants of the earth.",
+      "Jealousy shall grasp an untaught people.",
+      "Bring more evils on them, O Lord, bring more evils on those who are glorious on the earth."
     ]
   },
 
@@ -48,7 +50,7 @@
       {
         "tone": 1,
         "afterKathisma": 4,
-        "text": "Today Christ's holy Passion draws upon the world as a saving light.\nFor He comes of His goodness to suffer.\nHe Who holds all things in His hand\nconsents to be hung upon the Wood in order to save mankind."
+        "text": "Today Christ's holy Passion dawns upon the world as a saving light.\nFor He comes of His goodness to suffer.\nHe Who holds all things in His hand\nconsents to be hung upon the Wood in order to save mankind."
       },
       {
         "tone": 1,
@@ -58,7 +60,7 @@
       {
         "tone": 8,
         "afterKathisma": 6,
-        "text": "Today shines as the first-fruits of the Lord.\nCome, then, all who love the feast and join together in hymns.\nFor the Creator comes to accept the Cross, the afflictions, the beatings, and the judgment by Pilate.\nA servant strikes Him on the head, but He endures all things that He may save mankind.\nTherefore, let us cry out to Him:\n\"Grant remission of sins to those who venerate Thy holy Passion in faith,\nO Christ, our God, Who lovest mankind!\""
+        "text": "Today shines as the first-fruits of the Passion of the Lord.\nCome, then, all who love the feast and join together in hymns.\nFor the Creator comes to accept the Cross, the afflictions, the beatings, and the judgment by Pilate.\nA servant strikes Him on the head, but He endures all things that He may save mankind.\nTherefore, let us cry out to Him:\n\"Grant remission of sins to those who venerate Thy holy Passion in faith,\nO Christ, our God, Who lovest mankind!\""
       }
     ],
     "gospel": {
@@ -612,9 +614,10 @@
   },
 
   "exaposteilarion": {
-    "tone": 3,
+    "tone": 8,
     "label": "Exaposteilarion of the Bridegroom",
     "_note": "Sung twice, then Glory/Now/Amen, then once more — same all three nights.",
+    "_source": "svs-holyWeek-vol1-1980",
     "text": "Thy bridal chamber I see adorned, O my Savior,\nand I have no wedding garment that I may enter.\nO Giver of Light,\nenlighten the vesture of my soul, and save me!"
   },
 

@@ -2,29 +2,32 @@
   "_meta": {
     "description": "Fixed liturgical texts for Paschal Matins — the Canon of Pascha and related hymns",
     "tradition": "OCA (Orthodox Church in America)",
-    "version": "0.1.0"
+    "version": "0.2.0",
+    "_source": "oca-paschalService-2016"
   },
 
   "procession": {
     "_note": "Sung before and during the procession around the church. Clergy begin quietly, repeating thrice with increasing volume. Choir continues repeatedly as the procession circles the church.",
-    "text": "Thy Resurrection, O Christ Savior, / the angels in the heavens sing; / enable us on earth // to glorify Thee in purity of heart."
+    "_source": "oca-paschalService-2016",
+    "text": "Thy Resurrection, O Christ Savior, the angels in the heavens sing; enable us on earth to glorify Thee in purity of heart."
   },
 
   "openingDoxology": "Glory to the holy, and consubstantial, and life-creating, and indivisible Trinity, always, now and ever, and unto the ages of ages.",
 
   "paschalTroparion": "Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
 
+  "_stichoiSource": "oca-paschalService-2016",
   "stichoi": [
-    "Let God arise and let His enemies be scattered, and let them that hate Him flee from before His face.",
-    "As smoke vanisheth, so let them vanish, as wax melteth before the fire.",
-    "So let the sinners perish at the presence of God, and let the righteous be glad.",
-    "This is the day which the Lord hath made; let us rejoice and be glad therein."
+    "Let God arise, let His enemies be scattered; let those who hate Him flee from before His face!",
+    "As smoke vanishes, so let them vanish; as wax melts before the fire!",
+    "So the sinners will perish before the face of God; but let the righteous be glad!",
+    "This is the Day which the Lord has made. Let us rejoice and be glad in it!"
   ],
 
   "paschalTroparionSplit": {
     "_note": "After the stichoi, Glory, and Now, the troparion is split between priest and choir.",
-    "priest": "Christ is risen from the dead, trampling down death by death.",
-    "choir": "And upon those in the tombs bestowing life."
+    "priest": "Christ is risen from the dead, trampling down death by death!",
+    "choir": "And upon those in the tombs bestowing life!"
   },
 
   "greatLitany": {
@@ -50,154 +53,159 @@
 
   "canon": {
     "_note": "Canon of Pascha, Tone 1. By St. John of Damascus. Each ode is followed by the Paschal Troparion (thrice) and a small litany with a unique priestly exclamation.",
+    "_source": "oca-paschalService-2016",
     "tone": 1,
 
     "ode1": {
-      "irmos": "It is the Day of Resurrection, / let us be radiant, O ye people; / Pascha, the Lord's Pascha: / for from death to life, / and from earth to heaven, / Christ God hath brought us, // as we sing the song of victory.",
+      "irmos": "This is the day of resurrection! Let us be illumined, O people! Pascha, the Pascha of the Lord! For from death to life and from earth to heaven has Christ our God led us, as we sing the song of victory!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Let us purify our senses, / and we shall behold Christ, / radiant with the unapproachable light of the Resurrection, / and we shall clearly hear Him say, Rejoice! // as we sing the hymn of victory."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Let us purify our senses, and we shall see Christ shining in the unapproachable light of His resurrection! We shall clearly hear Him say, \"Rejoice!\" as we sing the song of victory!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Let the heavens be glad as is meet, / and let the earth rejoice, / and let the whole world, both visible and invisible, / keep festival: / for Christ is risen, // O gladness eternal."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Let the heavens be glad and let the earth rejoice! Let the whole world, visible and invisible, keep the feast, for Christ is risen, our eternal joy!"
         }
       ],
-      "litanyExclamation": "For Thine is the dominion, and Thine is the kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "For Thine is the majesty, and Thine is the kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode3": {
-      "irmos": "Come, let us drink a new drink, / not one miraculously brought forth from a barren rock / but the Fountain of Incorruption, / springing forth from the tomb of Christ, // in Whom we are strengthened.",
+      "irmos": "Come, let us drink, not miraculous water drawn forth from a barren stone, but a new vintage from the Fount of Incorruption, springing from the tomb of Christ! In Him we are established!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Now all things are filled with light; / heaven and earth, / and the nethermost parts of the earth; / let all creation, therefore, celebrate the arising of Christ // whereby it is strengthened."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Now all is filled with light: heaven and earth and the lower regions! Let all creation celebrate the rising of Christ! In Him we are established!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Yesterday I was buried with Thee, O Christ; / today I rise with Thine arising. / Yesterday I was crucified with Thee; / do Thou Thyself glorify me with Thee, O Savior, // in Thy kingdom."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Yesterday I was buried with Thee, O Christ. Today I arise with Thee in Thy resurrection! Yesterday I was crucified with Thee. Glorify me with Thee, O Savior, in Thy kingdom!"
         }
       ],
-      "litanyExclamation": "For Thou art our God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "For Thou art our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode4": {
-      "irmos": "On divine watch let the God-inspired Habakkuk stand with us, / and show forth the light-bearing angel clearly saying: / Today salvation is come to the world, / for Christ is risen // as Almighty.",
+      "irmos": "The inspired prophet Habakkuk now stands with us in holy vigil! He is like a shining angel who cries with a piercing voice: \"Today salvation has come to the world, for Christ is risen as all-powerful!\"",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "As a man-child did Christ appear / when He came forth from the Virgin's womb, / and as a mortal was He called the Lamb. / Without blemish also, is our Pascha / for He tasted no defilement; // and as true God, perfect was He proclaimed."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Christ our Pascha has appeared as a male Child, the Son that opens a virgin womb! He is called the Lamb as one destined to be our food, unblemished for He has not tasted of defilement, and perfect for He is our true God!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Like unto a yearling lamb, / Christ, our blessed Crown, / of His own will was sacrificed for all, / a Pascha of purification; / and from the tomb the beautiful Sun of Righteousness // shone forth again upon us."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Christ, the Crown with which we are blessed, has appeared as a yearling Lamb. Freely He has given Himself as our cleansing Paschal Sacrifice. From the tomb He has shone forth once again, our radiant Sun of Righteousness!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "David, the ancestor of God, / danced with leaping before the symbolical Ark; / let us also, the holy people of God, / beholding the fulfillment of the symbols, / be divinely glad; // for Christ is risen as Almighty."
+          "refrain": "Christ is risen from the dead!",
+          "text": "David the ancestor of God, leaped and danced before the ark which prefigured Thee! Now let us the holy people of God, seeing the fulfillment of all figures, rejoice in piety, for Christ is risen, as all-powerful!"
         }
       ],
       "litanyExclamation": "For Thou art a good God, and the Lover of mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode5": {
-      "irmos": "Let us awake in the deep dawn, / and instead of myrrh, offer a hymn to the Master, / and we shall see Christ, / the Sun of Righteousness, // Who causeth life to dawn for all.",
+      "irmos": "Let us arise at the rising of the sun and bring to the Master a hymn instead of myrrh, and we shall see Christ, the Sun of Righteousness, Who causes life to dawn for all!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Seeing Thy boundless compassion / they who were held in the bonds of hades / hastened to the light, O Christ, / with gladsome feet, // praising the Pascha eternal."
+          "refrain": "Christ is risen from the dead!",
+          "text": "The souls bound in the chains of hell, O Christ, seeing Thy compassion without measure, pressed onward to the Light with joyful steps, praising the eternal Pascha!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Bearing lights, let us approach Christ, / Who cometh forth from the tomb like a bridegroom, / and with the feast-loving ranks of angels / let us celebrate // the saving Pascha of God."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Let us go with lamps in hand to meet Christ, Who comes from the tomb like a bridegroom! And with the festive ranks of angels, let us celebrate the saving Pascha of God!"
         }
       ],
-      "litanyExclamation": "For sanctified and glorified is Thy most honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "For sanctified and glorified is Thine all-honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode6": {
-      "irmos": "Thou didst descend into the nethermost parts of the earth, / and didst shatter the eternal bars that held the fettered, O Christ, / and on the third day, / like Jonah from the whale, // Thou didst arise from the tomb.",
+      "irmos": "Thou didst descend, O Christ, to the depths of the earth. Thou didst break the everlasting bars which had held death's captives, and like Jonah from the whale on the third day, Thou didst arise from the grave!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Having kept the seals intact, O Christ, / Thou didst rise from the tomb, / O Thou Who didst not break the seal of the Virgin by Thy birth, / and Thou hast opened for us // the doors of Paradise."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Thou didst arise, O Christ, and yet the tomb remained sealed, as at Thy birth the Virgin's womb remained unharmed, and Thou hast opened for us the gates of Paradise!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "O my Savior, the living and unslain Sacrifice, / when, as God, Thou, of Thine Own will, / hadst offered up Thyself unto the Father, / Thou didst raise up with Thyself the whole race of Adam, // when Thou didst rise from the tomb."
+          "refrain": "Christ is risen from the dead!",
+          "text": "O my Savior, as God Thou didst bring Thyself freely to the Father, a Victim living and unsacrificed, resurrecting Adam, the father of us all, when Thou didst arise from the grave!"
         }
       ],
-      "litanyExclamation": "For Thou art the King of peace, and the Savior of our souls, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "For Thou art the King of peace and the Savior of our souls, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode7": {
-      "irmos": "He Who delivered the Children from the furnace, / became man, suffereth as a mortal, / and through His Passion / doth clothe mortality with the beauty of incorruption, / He is the only blessed and most glorious // God of our fathers.",
+      "irmos": "He Who saved the three young men in the furnace became incarnate and suffered as a mortal Man! Through His sufferings He clothed what is mortal in the robe of immortality! He alone is blessed and most glorious: the God of our fathers!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "The godly-wise women with myrrh / followed after Thee in haste; / but Him Whom they sought with tears as dead, / they worshipped joyfully as the living God, / and they brought unto Thy disciples, O Christ, // the good tidings of the mystical Pascha."
+          "refrain": "Christ is risen from the dead!",
+          "text": "The Godly women had hastened to Thee with myrrh, O Christ! In tears they had sought Thee as a dead Man, but in joy they worshipped Thee as the Living God and proclaimed the mystical Pascha to Thy disciples!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "We celebrate the death of death, / the destruction of hades, / the beginning of another life eternal, / and leaping for joy, / we hymn the Cause, // the only blessed and most glorious God of our fathers."
+          "refrain": "Christ is risen from the dead!",
+          "text": "We celebrate the death of Death and the overthrow of Hell, the beginning of another life which is eternal, and in exaltation we sing the praises of its source! He alone is blessed and most glorious: the God of our fathers!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "For truly sacred and all-festive is this saving night, / and this shining, light-bearing day, / the harbinger of the Resurrection, / whereon the Timeless Light bodily // from the tomb upon all hath shined."
+          "refrain": "Christ is risen from the dead!",
+          "text": "This is the bright and saving night, sacred and supremely festal! It heralds the radiant Day of the Resurrection, on which the Timeless Light shone forth bodily from the tomb for all!"
         }
       ],
-      "litanyExclamation": "Blessed and most glorified be the dominion of Thy kingdom: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "Blessed and glorified be the might of Thy kingdom: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode8": {
-      "irmos": "This chosen and holy day / is the first of the sabbaths, / the queen and lady, / the feast of feasts, / and the festival of festivals, // wherein we bless Christ unto the ages.",
+      "irmos": "This is the Chosen and Holy Day, First of Sabbaths, King and Lord of Days, the Feast of Feasts, Holy Day of Holy Days! On this day we bless Christ forevermore!",
       "troparia": [
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Come, on this auspicious day of the Resurrection, / let us partake of the fruit of the new vine / of divine gladness of the kingdom of Christ, / praising Him as God // unto the ages."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Come on this chosen day of the Resurrection, let us partake of the new Fruit of the Vine! Let us share in the divine rejoicing of the Kingdom of Christ, praising Him as God forevermore!"
         },
         {
-          "refrain": "Christ is risen from the dead.",
-          "text": "Lift up thine eyes about thee, O Zion, / and see, for behold, there cometh unto thee / like God-illumined beacons, / from the west, and from the north, / and from the sea, and from the east, // thy children, in thee blessing Christ unto the ages."
+          "refrain": "Christ is risen from the dead!",
+          "text": "Lift up thine eyes, O Zion, round about and see: thy children like divinely shining stars assemble from the North, the South, the East, and the West, to bless Christ in thee forevermore!"
         },
         {
-          "refrain": "O Most Holy Trinity, our God, glory be to Thee.",
-          "text": "O Father Almighty, and Word, and Spirit, / one Nature united in three Persons, / transcendent and most divine! / Into Thee have we been baptized, // and Thee will we bless unto all ages."
+          "refrain": "O Most Holy Trinity, our God, glory to Thee!",
+          "text": "Father almighty, Word, and Spirit, One Nature in Three Persons, surpassing essence and divinity! In Thee have we been baptized, and Thee we bless forevermore!"
         }
       ],
       "litanyExclamation": "For blessed is Thy name, and glorified is Thy kingdom: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
     },
 
     "ode9": {
-      "_note": "Ode 9 has unique refrains for each troparion, unlike the other odes.",
+      "_note": "Ode 9 has unique refrains for each troparion, unlike the other odes. The Angel Cried replaces the Magnificat.",
+      "angelCried": {
+        "_source": "oca-paschalService-2016",
+        "text": "The angel cried to the Lady full of grace: \"Rejoice, rejoice, O Pure Virgin! Again I say: Rejoice! Thy Son is risen from His three days in the tomb! With Himself He has raised all the dead!\" Rejoice, rejoice, O ye people!"
+      },
       "irmos": {
-        "refrain": "Magnify, O my soul, Him Who willingly suffered, and was buried, and rose from the grave on the third day.",
-        "text": "Shine, shine, O new Jerusalem, / for the glory of the Lord is risen upon thee; / dance now and be glad, O Zion, / and do thou exult, O pure Theotokos, // in the arising of Him Whom thou didst bear."
+        "refrain": "Magnify, O my soul, Him Who willingly suffered, and was buried, and rose from the grave on the third day!",
+        "text": "Shine! Shine! O New Jerusalem! The glory of the Lord has shone on thee! Exult now, exult and be glad, O Zion! Be radiant, O Pure Theotokos, in the Resurrection, the Resurrection of thy Son!"
       },
       "troparia": [
         {
           "refrain": "Magnify, O my soul, Christ the Giver of life, Who arose from the grave on the third day.",
-          "text": "Shine, shine, O new Jerusalem, / for the glory of the Lord is risen upon thee; / dance now and be glad, O Zion, / and do thou exult, O pure Theotokos, // in the arising of Him Whom thou didst bear."
+          "text": "Shine! Shine! O New Jerusalem! The glory of the Lord has shone on thee! Exult now, exult and be glad, O Zion! Be radiant, O Pure Theotokos, in the Resurrection, the Resurrection of thy Son!"
         },
         {
-          "refrain": "Christ is the new Pascha, the living-sacrifice, the Lamb of God that taketh away the sin of the world.",
-          "text": "O how divine, how loving, / how sweet is Thy voice! / For Thou hast truly promised / to be with us unto the end of the age, O Christ; / having this foundation of hope, // we the faithful rejoice."
+          "refrain": "Christ is the new Pascha, the living sacrifice, the Lamb of God that taketh away the sin of the world.",
+          "text": "O how divine, how loving, how sweet is Thy voice! For Thou hast truly promised to be with us unto the end of the age, O Christ; having this foundation of hope, we the faithful rejoice."
         },
         {
           "refrain": "Today all creation is glad and rejoiceth, for Christ is risen, and hades is led in captivity.",
-          "text": "O how divine, how loving, / how sweet is Thy voice! / For Thou hast truly promised / to be with us unto the end of the age, O Christ; / having this foundation of hope, // we the faithful rejoice."
+          "text": "O how divine, how loving, how sweet is Thy voice! For Thou hast truly promised to be with us unto the end of the age, O Christ; having this foundation of hope, we the faithful rejoice."
         },
         {
           "refrain": "Magnify, O my soul, the dominion of the Tri-hypostatic and Indivisible Godhead.",
-          "text": "O Christ, Thou great and most sacred Pascha! / O Wisdom, Word and power of God! / Grant us to partake of Thee more fully / in the unwaning day // of Thy kingdom."
+          "text": "O Christ, Thou great and most sacred Pascha! O Wisdom, Word and power of God! Grant us to partake of Thee more fully in the unwaning day of Thy kingdom."
         },
         {
           "refrain": "Rejoice, O Virgin, rejoice; rejoice O blessed one; rejoice, O most glorified one: for thy Son is risen on the third day from the grave.",
-          "text": "O Christ, Thou great and most sacred Pascha! / O Wisdom, Word and power of God! / Grant us to partake of Thee more fully / in the unwaning day // of Thy kingdom."
+          "text": "O Christ, Thou great and most sacred Pascha! O Wisdom, Word and power of God! Grant us to partake of Thee more fully in the unwaning day of Thy kingdom."
         }
       ],
-      "litanyExclamation": "For all the hosts of heaven praise Thee, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
+      "litanyExclamation": "For all the powers of heaven praise Thee, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages."
     }
   },
 
@@ -212,37 +220,43 @@
   },
 
   "hypakoe": {
-    "_note": "After Ode III and its small litany. Hypakoe of Pascha, Tone 8.",
-    "tone": 8,
-    "text": "Forestalling the dawn, the women came with Mary, / and found the stone rolled away from the sepulchre, and heard from the angel: / Why seek ye among the dead, as though He were mortal, Him Who liveth in everlasting light? / Behold the grave-clothes. Go quickly and proclaim to the world that the Lord is risen and hath slain death. // For He is the Son of God Who saveth mankind."
+    "_note": "After Ode III and its small litany. Hypakoe of Pascha, Tone 4. All three OCA sources (Holy Trinity, DOM OCA, St. Symeon) confirm Tone 4.",
+    "_source": "oca-paschalService-2016",
+    "tone": 4,
+    "text": "Forestalling the dawn, the women came with Mary, and found the stone rolled away from the sepulchre, and heard from the angel: Why seek ye among the dead, as though He were mortal, Him Who liveth in everlasting light? Behold the grave-clothes. Go quickly and proclaim to the world that the Lord is risen and hath slain death. For He is the Son of God Who saveth mankind."
   },
 
   "kontakion": {
     "_note": "After Ode VI and its small litany. Kontakion of Pascha, Tone 8.",
+    "_source": "oca-paschalService-2016",
     "tone": 8,
-    "text": "Thou didst descend into the tomb, O Immortal, / Thou didst destroy the power of hell. / In victory didst Thou arise, O Christ God, / proclaiming \"Rejoice!\" to the myrrh-bearing women; / granting peace to Thine apostles, // and bestowing resurrection on the fallen."
+    "text": "Thou didst descend into the tomb, O Immortal, Thou didst destroy the power of death! In victory didst Thou arise, O Christ God, proclaiming \"Rejoice!\" to the myrrh-bearing women, granting peace to Thine Apostles, and bestowing resurrection on the fallen!"
   },
 
   "ikos": {
     "_note": "Ikos of Pascha — follows the kontakion after Ode VI.",
-    "text": "The myrrh-bearing women forestalled the dawn, seeking, as it were day, the Sun that was before the sun and Who had once set in the tomb, and they cried out one to another: O friends! come, let us anoint with spices the life-bringing and buried Body, the Flesh that raised up fallen Adam, that now lieth in the tomb. Let us go, let us hasten, like the Magi, and let us worship and offer myrrh as a gift to Him Who is wrapped now not in swaddling clothes but in a shroud. And let us weep and cry aloud: O Master, arise, Thou Who dost grant resurrection to the fallen."
+    "_source": "oca-paschalService-2016",
+    "text": "Before the dawn, the myrrh-bearing women sought, as those who seek the day, their Sun, Who was before the sun yet had descended to the grave, and they cried to each other, \"O friends, come let us anoint with spices His Life-bearing yet buried body, the flesh which raised the fallen Adam and now lies in the tomb. Let us assemble and, like the Magi, let us hasten and let us worship and let us bring myrrh as a gift to Him Who is wrapped now, not in swaddling clothes, but in a winding-sheet. Let us lament and cry: 'Arise, O Master, and bestow resurrection on the fallen!'\""
   },
 
   "havingBeheld": {
     "_note": "Hymn of the Resurrection — sung thrice, after the kontakion and ikos.",
-    "text": "Having beheld the Resurrection of Christ, let us worship the holy Lord Jesus, the only sinless One. We worship Thy Cross, O Christ, and Thy holy Resurrection we hymn and glorify. For Thou art our God, and we know none other beside Thee; we call upon Thy name. O come, all ye faithful, let us worship Christ's holy Resurrection, for, behold, through the Cross joy hath come to all the world. Ever blessing the Lord, we hymn His Resurrection; for, having endured crucifixion, He hath destroyed death by death."
+    "_source": "oca-paschalService-2016",
+    "text": "Having beheld the Resurrection of Christ, let us worship the holy Lord Jesus, the Only Sinless One. We venerate Thy Cross, O Christ, and we praise and glorify Thy holy Resurrection; for Thou art our God, and we know no other than Thee; we call on Thy name. Come, all you faithful, let us venerate Christ's holy Resurrection, for, behold, through the Cross joy has come into all the world. Let us ever bless the Lord, praising His Resurrection, for by enduring the Cross for us, He has destroyed death by death!"
   },
 
   "exapostilarion": {
     "_note": "After Ode IX and its small litany. Sung thrice.",
+    "_source": "oca-paschalService-2016",
     "tone": 3,
-    "text": "Having fallen asleep in the flesh, as a mortal, O King and Lord, on the third day Thou didst rise again, raising up Adam from corruption, and abolishing death: O Pascha of incorruption, Salvation of the world!"
+    "text": "In the flesh Thou didst fall asleep as a mortal Man, O King and Lord. Thou didst rise on the third day, raising Adam from corruption and destroying death: O Pascha of incorruption, the salvation of the world!"
   },
 
   "lauds": {
     "_note": "The Praises — Psalms 148-150 verses with stichera. Tone 1 for the resurrectional stichera, Tone 5 for the Paschal stichera.",
-    "opening": "Let every breath praise the Lord. Praise the Lord from the heavens, praise Him in the highest. To Thee is due praise, O God.",
-    "secondVerse": "Praise Him, all ye His angels; praise Him, all ye His hosts. To Thee is due praise, O God.",
+    "_source": "oca-paschalService-2016",
+    "opening": "Let everything that breathes praise the Lord! Praise the Lord from the heavens! Praise Him in the highest! To Thee, O God, is due a song! Praise Him, all you angels of His! Praise Him, all His hosts! To Thee, O God, is due a song!",
+    "secondVerse": "Praise Him, all you angels of His! Praise Him, all His hosts! To Thee, O God, is due a song!",
     "psalmVerses": [
       "Praise Him, O sun and moon; praise Him all ye stars and light.",
       "Praise Him, ye heavens of heavens, and thou water that art above the heavens.",
@@ -272,20 +286,20 @@
       "tone": 1,
       "stichera": [
         {
-          "stichos": "Praise Him for His mighty acts, praise Him according to the multitude of His greatness.",
-          "text": "We hymn, O Christ, Thy saving Passion, // and glorify Thy Resurrection."
+          "stichos": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness!",
+          "text": "We praise Thy saving suffering, O Christ, and we glorify Thy Resurrection!"
         },
         {
-          "stichos": "Praise Him with the sound of trumpet, praise Him with the psaltery and harp.",
-          "text": "O Thou Who didst endure the Cross, / and didst abolish death, / and didst rise again from the dead: / Make our life peaceful, O Lord, // for Thou alone art almighty."
+          "stichos": "Praise Him with trumpet sound; praise Him with lute and harp!",
+          "text": "Thou didst endure the Cross and destroy death by rising from the dead! Give peace to our life, O Lord, as the only Almighty One!"
         },
         {
-          "stichos": "Praise Him with timbrel and dance, praise Him with strings and flute.",
-          "text": "O Thou Who didst lead hades captive, / and didst raise up man by Thy Resurrection, / deem us worthy, with pure hearts, // to hymn and glorify Thee."
+          "stichos": "Praise Him with timbrel and dance; praise Him with strings and pipe!",
+          "text": "Thou didst capture hell, O Christ, and resurrect man by Thy Resurrection! Enable us to praise and glorify Thee in purity of heart!"
         },
         {
-          "stichos": "Praise Him with tuneful cymbals, praise Him with cymbals of jubilation. Let every breath praise the Lord.",
-          "text": "Glorifying Thy Godly-majestic condescension, / we hymn Thee, O Christ; / for Thou wast born of a Virgin, / yet Thou didst remain inseparable from the Father; / Thou didst suffer as a man, and willingly didst endure the Cross; / Thou didst rise from the tomb, / coming forth as from a bridal chamber, / that Thou mightest save the world: // O Lord, glory be to Thee."
+          "stichos": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord!",
+          "text": "We glorify Thy divine condescension, and we praise Thee, O Christ! Thou wast born of a Virgin yet not separated from the Father! Thou hast suffered as a Man and voluntarily endured the Cross! Thou hast risen from the tomb, coming as from a bridal chamber to save the world! O Lord, glory to Thee!"
         }
       ]
     },
@@ -294,38 +308,39 @@
       "tone": 5,
       "stichera": [
         {
-          "stichos": "Let God arise and let His enemies be scattered.",
-          "text": "A Pascha sacred today hath been shown unto us; Pascha new and holy, a Pascha mystical, a Pascha all-venerable! A Pascha that is Christ the Redeemer; a Pascha immaculate, a great Pascha; a Pascha of the faithful; a Pascha that hath opened the gates of Paradise to us; a Pascha that doth sanctify all the faithful."
+          "stichos": "Let God arise, let His enemies be scattered!",
+          "text": "Today, a sacred Pascha is revealed to us! A new and holy Pascha! A mystical Pascha! A Pascha worthy of veneration! A Pascha which is Christ the Redeemer! A blameless Pascha! A great Pascha! A Pascha of the faithful! A Pascha which has opened for us the gates of Paradise! A Pascha which sanctifies all the faithful!"
         },
         {
-          "stichos": "As smoke vanisheth, so let them vanish.",
-          "text": "Come from the vision, O ye women, bearers of good tidings, and say ye unto Zion: Receive from us the good tidings of the Resurrection of Christ; adorn thyself, exult, and rejoice, O Jerusalem, for thou hast seen Christ the King, like a bridegroom come forth from the tomb."
+          "stichos": "As smoke vanishes, so let them vanish!",
+          "text": "Come from that scene, O women, bearers of glad tidings, and say to Zion: Receive from us the glad tidings of joy, of Christ's Resurrection! Exult and be glad, and rejoice, O Jerusalem, seeing Christ the King, Who comes forth from the tomb like a Bridegroom in procession!"
         },
         {
-          "stichos": "So let sinners perish at the presence of God, and let the righteous be glad.",
-          "text": "The myrrh-bearing women in the deep dawn stood before the tomb of the Giver of life; they found an angel sitting upon the stone, and he, speaking to them, said thus: Why seek ye the Living among the dead? Why mourn ye the Incorruptible amid corruption? Go, proclaim unto His disciples."
+          "stichos": "So the sinners will perish before the face of God; but let the righteous be glad!",
+          "text": "The myrrh-bearing women, at the break of dawn, drew near to the tomb of the Life-Giver. There they found an angel sitting upon the stone! He greeted them with these words: Why do you seek the Living among the dead? Why do you mourn the Incorrupt amid corruption? Go, proclaim the glad tidings to His Disciples!"
         },
         {
-          "stichos": "This is the day which the Lord hath made, let us rejoice and be glad therein.",
-          "text": "Pascha the beautiful, Pascha, the Lord's Pascha, the Pascha all-venerable hath dawned upon us. Pascha, with joy let us embrace one another. O Pascha! Ransom from sorrow, for from the tomb today, as from a bridal chamber, hath Christ shone forth, and hath filled the women with joy, saying: Proclaim unto the apostles."
+          "stichos": "This is the Day which the Lord has made! Let us rejoice and be glad in it!",
+          "text": "Pascha of beauty! The Pascha of the Lord! The Pascha! A Pascha worthy of all honor has dawned for us! Pascha! Let us embrace each other joyously! Pascha, ransom from affliction! for today as from a bridal chamber Christ has shone forth from the tomb and filled the women with joy saying: Proclaim the glad tidings to the Apostles!"
         }
       ]
     },
-    "gloryNow": "It is the Day of Resurrection, let us be radiant for the feast, and let us embrace one another. Let us say, Brethren, even to them that hate us, let us forgive all things on the Resurrection, and thus let us cry out: Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life."
+    "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen. This is the Day of Resurrection! Let us be illumined by the Feast! Let us embrace each other! Let us call \"Brothers\" even those that hate us, and forgive all by the Resurrection, and so let us cry: Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!"
   },
 
   "chrysostomHomily": {
-    "_note": "The Catechetical Homily of St. John Chrysostom is read by the senior priest. Source: OCA (oca.org/fs/sermons/the-paschal-sermon).",
-    "rubric": "The senior priest readeth the Catechetical Homily of St. John Chrysostom. We do not sit during this reading, but we all listen while standing.",
+    "_note": "The Catechetical Homily of St. John Chrysostom is read by the senior priest.",
+    "_source": "oca-paschalService-2016",
+    "rubric": "The Catechetical Sermon of St. John Chrysostom is read by the celebrant. No one sits during the reading, but all stand and listen.",
     "text": [
-      "If any man be devout and love God, let him enjoy this fair and radiant triumphal feast. If any man be a wise servant, let him rejoicing enter into the joy of his Lord. If any have labored long in fasting, let him now receive his recompense. If any have wrought from the first hour, let him today receive his just reward. If any have come at the third hour, let him with thankfulness keep the feast. If any have arrived at the sixth hour, let him have no misgivings; because he shall in nowise be deprived thereof. If any have delayed until the ninth hour, let him draw near, fearing nothing. If any have tarried even until the eleventh hour, let him, also, be not alarmed at his tardiness; for the Lord, who is jealous of his honor, will accept the last even as the first; He gives rest unto him who comes at the eleventh hour, even as unto him who has wrought from the first hour.",
-      "And He shows mercy upon the last, and cares for the first; and to the one He gives, and upon the other He bestows gifts. And He both accepts the deeds, and welcomes the intention, and honors the acts and praises the offering. Wherefore, enter you all into the joy of your Lord; and receive your reward, both the first, and likewise the second. You rich and poor together, hold high festival. You sober and you heedless, honor the day. Rejoice today, both you who have fasted and you who have disregarded the fast. The table is full-laden; feast ye all sumptuously. The calf is fatted; let no one go hungry away.",
-      "Enjoy ye all the feast of faith: Receive ye all the riches of loving-kindness. Let no one bewail his poverty, for the universal kingdom has been revealed. Let no one weep for his iniquities, for pardon has shown forth from the grave. Let no one fear death, for the Savior's death has set us free. He that was held prisoner of it has annihilated it. By descending into Hell, He made Hell captive. He embittered it when it tasted of His flesh. And Isaiah, foretelling this, did cry: Hell, said he, was embittered, when it encountered Thee in the lower regions. It was embittered, for it was abolished. It was embittered, for it was mocked. It was embittered, for it was slain. It was embittered, for it was overthrown. It was embittered, for it was fettered in chains. It took a body, and met God face to face. It took earth, and encountered Heaven. It took that which was seen, and fell upon the unseen.",
-      "O Death, where is your sting? O Hell, where is your victory? Christ is risen, and you are overthrown. Christ is risen, and the demons are fallen. Christ is risen, and the angels rejoice. Christ is risen, and life reigns. Christ is risen, and not one dead remains in the grave. For Christ, being risen from the dead, is become the first fruits of those who have fallen asleep. To Him be glory and dominion unto ages of ages. Amen."
+      "If any man be devout and loveth God, let him enjoy this fair and radiant triumphal Feast. If any man be a wise servant, let him rejoicing enter into the joy of his Lord. If any have labored long in fasting, let him now receive his recompense. If any have wrought from the first hour, let him today receive his just reward. If any have come at the third hour, let him with thankfulness keep the Feast. If any have arrived at the sixth hour, let him have no misgivings; because he shall in no wise be deprived therefor. If any have delayed until the ninth hour, let him draw near, fearing nothing. If any have tarried even until the eleventh hour, let him, also, be not alarmed at his tardiness; for the Lord, who is jealous of His honor, will accept the last even as the first; He giveth rest unto him who cometh at the eleventh hour, even as unto him who hath wrought from the first hour.",
+      "And He showeth mercy upon the last, and careth for the first; and to the one He giveth, and upon the other He bestoweth gifts. And He both accepteth the deeds, and welcometh the intention, and honoreth the acts and praiseth the offering. Wherefore, enter ye all into the joy of your Lord; and receive your reward, both the first, and likewise the second. You rich and poor together, hold high festival. You sober and you heedless, honor the Day. Rejoice today, both you who have fasted and you who have disregarded the fast. The table is full-laden; feast ye all sumptuously. The calf is fatted; let no one go hungry away.",
+      "Enjoy ye all the feast of faith: Receive ye all the riches of loving-kindness. Let no one bewail his poverty, for the universal Kingdom has been revealed. Let no one weep for his iniquities, for pardon has shone forth from the grave. Let no one fear death, for the Savior's death has set us free. He that was held prisoner of it has annihilated it. By descending into Hell, He made Hell captive. He embittered it when it tasted of His flesh. And Isaiah, foretelling this, did cry: Hell, said he, was embittered, when it encountered Thee in the lower regions. It was embittered, for it was abolished. It was embittered, for it was mocked. It was embittered, for it was slain. It was embittered, for it was overthrown. It was embittered, for it was fettered in chains. It took a Body, and met God face to face. It took earth, and encountered Heaven. It took that which was seen, and fell upon the Unseen.",
+      "O Death, where is thy sting? O Hell, where is thy victory? Christ is risen, and thou art overthrown! Christ is risen, and the demons are fallen! Christ is risen, and the angels rejoice! Christ is risen, and life reigns! Christ is risen, and not one dead remains in the grave! For Christ, being risen from the dead, is become the first-fruits of those who have fallen asleep. To Him be glory and dominion unto ages of ages. Amen."
     ],
     "troparion": {
       "tone": 8,
-      "text": "Grace shining forth from thy mouth like a beacon hath illumined the universe, / and disclosed to the world treasures of uncovetousness, / and shown us the heights of humility; / but while instructing by thy words, O Father John Chrysostom, // intercede with the Word, Christ our God, to save our souls."
+      "text": "Grace shining forth from thy lips like a beacon has enlightened the universe! It has shown to the world the riches of poverty! It has revealed to us the heights of humility! Teaching us by thy words, O Father John Chrysostom, intercede before the Word, Christ our God, to save our souls!"
     }
   },
 
@@ -379,7 +394,7 @@
     },
     "confirmFaith": "Amen. Establish, O God, the holy Orthodox Faith and Orthodox Christians, unto the ages of ages.",
     "finalTroparionSplit": {
-      "clergy": "Christ is risen from the dead, trampling down death by death:",
+      "clergy": "Christ is risen from the dead, trampling down death by death!",
       "choir": "And upon those in the tombs bestowing life!"
     }
   },

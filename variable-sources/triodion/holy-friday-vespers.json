@@ -2,7 +2,7 @@
   "_meta": {
     "service": "Great and Holy Friday — Burial Vespers (The Unnailing)",
     "source": "OCA Department of Liturgical Music and Translations, 2026 Holy Week service texts (TT)",
-    "note": "Sung on Friday afternoon. The Epitaphion (burial shroud) is brought out during the service."
+    "note": "Sung on Friday afternoon. The Epitaphion (burial shroud) is brought out during the service. Select texts updated from SVS Holy Week Vol. 2 (1983): alleluia verse 1, aposticha sticheron 3, veneration hymn, veneration refrains."
   },
 
   "key": "holyWeek.friday",
@@ -95,7 +95,7 @@
       "alleluia": {
         "tone": 1,
         "verses": [
-          { "text": "Save me, O God; for the waters have come up to my soul.", "psalmRef": "Ps. 68:1" },
+          { "text": "Save me, O God; for the waters have come up to my neck.", "psalmRef": "Ps. 68:1", "_source": "SVS Holy Week Vol. 2 (1983)" },
           { "text": "They gave me gall for food, and in my thirst they gave me vinegar to drink.", "psalmRef": "Ps. 68:22" },
           { "text": "Let their eyes be darkened, so that they cannot see!", "psalmRef": "Ps. 68:28" }
         ]
@@ -128,7 +128,8 @@
           "label": "Automelon",
           "verse": "For He has established the world, so that it shall never be moved.",
           "psalmRef": "Ps. 92:2",
-          "text": "In the flesh Thou wast willingly enclosed in the tomb,\nWho art boundless and infinite in Thy divinity.\nThou didst close the chambers of death, O Christ.\nThou hast emptied all the palaces of Hell.\nThou hast honored this Sabbath with Thy blessing, glory, and splendor."
+          "text": "In the flesh Thou wast willingly enclosed in the tomb,\nWho art boundless and infinite in Thy divinity.\nThou didst close the chambers of death, O Christ.\nThou hast emptied all the palaces of Hell.\nThou hast honored this Sabbath with Thy blessing, glory, and honor.",
+          "_source": "SVS Holy Week Vol. 2 (1983)"
         },
         {
           "tone": 2,
@@ -165,12 +166,14 @@
       "venerationHymn": {
         "tone": 5,
         "label": "Hymn at the Veneration of the Epitaphion",
-        "text": "Come and let us bless Joseph of everlasting memory, who came to Pilate by night and begged for the Life of all: \"Give me this stranger, who has no place to lay his head. Give me this stranger, whom his evil disciple delivered to death. Give me this stranger, whom his Mother saw hanging on the Cross, and with a mother's sorrow she cried weeping: 'Woe is me, my Child! Woe is me, Light of mine eyes and beloved fruit of my womb! For what Simeon foretold in the temple is come to pass today: a sword pierces my heart, but do thou change my grief to gladness by thy Resurrection.'\""
+        "_source": "SVS Holy Week Vol. 2 (1983)",
+        "text": "Come and let us bless Joseph of eternal memory, who came to Pilate by night and begged for the Life of all: \"Give me this stranger, who has no place to lay his head. Give me this stranger, whom an evil disciple betrayed to death. Give me this stranger, whom his Mother saw hanging on the Cross, and with a mother's sorrow she cried weeping: 'Woe is me, my Child! Woe is me, Light of mine eyes and beloved fruit of my womb! For what Simeon foretold in the temple is come to pass today: a sword pierces my heart, but change my grief to gladness by thy Resurrection.'\""
       },
+      "_venerationRefrainsSource": "SVS Holy Week Vol. 2 (1983)",
       "venerationRefrains": [
-        "We venerate Thy Passion, O Christ.",
-        "We venerate Thy Passion, O Christ.",
-        "We venerate Thy Passion, O Christ, and Thy holy Resurrection."
+        "We worship Thy Passion, O Christ.",
+        "We worship Thy Passion, O Christ.",
+        "We worship Thy Passion, O Christ, and Thy holy Resurrection."
       ]
     }
   }

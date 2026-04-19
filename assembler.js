@@ -969,6 +969,16 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 1. Opening Doxology
   blocks.push(..._litOpeningDoxology(liturgyFixed));
 
+  // 1b. Paschal Troparion (Pascha through Leavetaking)
+  if (spec.paschalOpening) {
+    const section = 'Paschal Troparion';
+    const paschalText = 'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!';
+    blocks.push(makeBlock('pt-priest', section, 'prayer', 'priest',
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (twice)'));
+    blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
+      'And upon those in the tombs bestowing life!'));
+  }
+
   // 2. Great Litany
   blocks.push(..._litGreatLitany(liturgyFixed));
 
@@ -1125,7 +1135,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed, spec.dismissalTroparia));
 
   // 36. Dismissal
-  blocks.push(..._litDismissal(spec.dismissal, isBasil));
+  blocks.push(..._litDismissal(spec.dismissal, isBasil, spec.paschalOpening));
 
   blocks._warnings = _warnings.slice();
   return blocks;
@@ -1708,11 +1718,19 @@ function _litPostCommunion(spec, f) {
   const section = 'Post-Communion Blessing';
   const pc = f['post-communion-blessing'];
   const isPaschal = spec.weHaveSeen === 'paschal';
-  const whs = f[isPaschal ? 'christ-is-risen' : 'we-have-seen'];
+  if (isPaschal) {
+    // During the Paschal period, "Christ is risen" (sung once) replaces
+    // "We have seen the true Light."
+    const christIsRisen = 'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!';
+    return [
+      makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
+      makeBlock('we-have-seen', section, 'hymn',     'choir',  christIsRisen),
+    ];
+  }
   return [
     makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
     makeBlock('pcb-response', section, 'response', 'choir',  pc.people),
-    makeBlock('we-have-seen', section, 'hymn',     'choir',  whs),
+    makeBlock('we-have-seen', section, 'hymn',     'choir',  f['we-have-seen']),
   ];
 }
 
@@ -1791,7 +1809,7 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
   ];
 }
 
-function _litDismissal(dismissalSpec, isBasil) {
+function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod) {
   const section = 'Dismissal';
   if (!dismissalSpec) {
     return [makeBlock('dis-text', section, 'prayer', 'priest', '[Dismissal]')];
@@ -1817,7 +1835,7 @@ function _litDismissal(dismissalSpec, isBasil) {
   if (saintsStr) parts.push(`of ${saintsStr}`);
   const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
-  return [
+  const blocks = [
     makeBlock('dis-wisdom',  section, 'prayer',  'deacon', 'Wisdom!'),
     makeBlock('dis-bless',   section, 'prayer',  'choir',  'Father, bless.'),
     makeBlock('dis-blessed', section, 'prayer',  'priest', 'Blessed is He that is, Christ our true God, always, now and ever, and unto ages of ages.'),
@@ -1825,10 +1843,21 @@ function _litDismissal(dismissalSpec, isBasil) {
     makeBlock('dis-theos',   section, 'prayer',  'priest', 'Most holy Theotokos, save us.'),
     makeBlock('dis-mag',     section, 'response','choir',  'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.'),
     makeBlock('dis-glory',   section, 'prayer',  'priest', 'Glory to Thee, O Christ our God and our hope, glory to Thee.'),
-    makeBlock('dis-glory-r', section, 'response','choir',  'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.'),
-    makeBlock('dis-proper',  section, 'prayer',  'priest', `${opening} ${closing}`),
-    makeBlock('dis-amen',    section, 'response','choir',  'Amen.'),
   ];
+
+  if (isPaschalPeriod) {
+    // During Paschal period: "Christ is risen" ×3 replaces the usual Glory response
+    blocks.push(makeBlock('dis-paschal', section, 'hymn', 'choir',
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (thrice)'));
+    blocks.push(makeBlock('dis-paschal-end', section, 'prayer', 'priest',
+      'And unto us He has given eternal life. Let us worship His Resurrection on the third day!'));
+  } else {
+    blocks.push(makeBlock('dis-glory-r', section, 'response','choir',  'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.'));
+    blocks.push(makeBlock('dis-proper',  section, 'prayer',  'priest', `${opening} ${closing}`));
+    blocks.push(makeBlock('dis-amen',    section, 'response','choir',  'Amen.'));
+  }
+
+  return blocks;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

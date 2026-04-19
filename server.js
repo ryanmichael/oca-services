@@ -1702,6 +1702,35 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const isSunday = dow === 'sunday';
   const tk       = `tone${tone}`;
 
+  // ── Paschal period detection ────────────────────────────────────────────────
+  // "Christ is risen" opening, Paschal megalynarion, and "We Have Seen" replacement
+  // apply from Pascha through the Leavetaking (Wed before Ascension = Pascha + 38).
+  const pascha = calculatePascha(date.getUTCFullYear());
+  const DAY = 86400000;
+  const daysSincePascha = Math.round((date - pascha) / DAY);
+  const isPaschalPeriod = daysSincePascha >= 0 && daysSincePascha <= 38;
+
+  // ── Pentecostarion Sunday overrides ─────────────────────────────────────────
+  // Each Pentecostarion feast Sunday has its own prokeimenon, alleluia, communion
+  // hymn, and uses only its feast troparia/kontakia (no resurrectional, no Menaion).
+  // Source: OCA Department of Liturgical Music & Translations service texts.
+  const PENTECOSTARION_SUNDAY_OVERRIDES = {
+    7:  { // Thomas Sunday (Antipascha) — Pascha + 7
+      troparia: [
+        { tone: 7, rubric: 'Troparion of Thomas Sunday, Tone 7:',
+          text: 'From the sealed tomb, Thou didst shine forth, O Life!\nThrough closed doors Thou didst come to Thy Disciples, O Christ God.\nRenew in us through them an upright spirit,\nby the greatness of Thy mercy, O Resurrection of all!' },
+      ],
+      kontakia: [
+        { tone: 8, rubric: 'Kontakion of Thomas Sunday, Tone 8:',
+          text: 'Thomas touched Thy life-giving side with an eager hand, O Christ God,\nwhen Thou camest to Thine Apostles through closed doors.\nHe cried out with all: "Thou art my Lord and my God!"' },
+      ],
+      prokeimenon: { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.', verse: 'Praise the Lord! For it is good to sing praises to our God!' },
+      alleluia:    { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!', 'For the Lord is a great God, and a great King over all the earth.'] },
+      communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia.',
+    },
+  };
+  const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
+
   // ── Scripture readings from the API ──────────────────────────────────────────
   const readings   = orthocalData.readings || [];
   const epistleR   = readings.find(r => r.source === 'Epistle');
@@ -1719,13 +1748,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
 
   // ── Troparia & Kontakia ──────────────────────────────────────────────────────
-  // Great Feasts: use only the feast's own troparia/kontakia (no resurrectional, no Menaion)
+  // Great Feasts & Pentecostarion feast Sundays: use only the feast's own
+  // troparia/kontakia (no resurrectional, no Menaion).
   const troparia = [];
   const kontakia = [];
+  const feastOnly = !!feast?.troparia || !!pentOverride;
 
   if (feast?.troparia) {
     troparia.push(...feast.troparia);
-  } else {
+  } else if (pentOverride?.troparia) {
+    troparia.push(...pentOverride.troparia);
+  } else if (!feastOnly) {
     // Start with resurrectional troparion (Sundays)
     const troparionRaw  = srcs.octoechos?.[tk]?.saturday?.vespers?.troparion;
     const troparionText = typeof troparionRaw === 'object' ? troparionRaw?.text : troparionRaw;
@@ -1747,7 +1780,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
 
   if (feast?.kontakia) {
     kontakia.push(...feast.kontakia);
-  } else {
+  } else if (pentOverride?.kontakia) {
+    kontakia.push(...pentOverride.kontakia);
+  } else if (!feastOnly) {
     // Start with resurrectional kontakion (Sundays)
     const kontakionRaw = srcs.octoechos?.[tk]?.saturday?.vespers?.kontakion;
     if (isSunday && kontakionRaw) {
@@ -1919,10 +1954,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     if (date.getTime() === meatfareDate.getTime())   lentenKey = 'meatfare';
   }
 
-  // Great Feast prokeimenon/alleluia override (highest priority)
+  // Great Feast / Pentecostarion Sunday prokeimenon/alleluia override (highest priority)
   if (feast?.prokeimenon) {
     const fp = feast.prokeimenon;
     prokeimenon = { tone: fp.tone, refrain: fp.refrain, verse: fp.verse };
+  } else if (pentOverride?.prokeimenon) {
+    const pp = pentOverride.prokeimenon;
+    prokeimenon = { tone: pp.tone, refrain: pp.refrain, verse: pp.verse };
   } else if (lentenKey !== null && LENTEN_SUNDAY_PROKEIMENA[lentenKey]) {
     const lp = LENTEN_SUNDAY_PROKEIMENA[lentenKey];
     prokeimenon = { tone: lp.tone, refrain: lp.refrain, verse: lp.verse };
@@ -1937,6 +1975,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   if (feast?.alleluia) {
     const fa = feast.alleluia;
     alleluia = { tone: fa.tone, verses: fa.verses };
+  } else if (pentOverride?.alleluia) {
+    const pa = pentOverride.alleluia;
+    alleluia = { tone: pa.tone, verses: pa.verses };
   } else if (lentenKey !== null && LENTEN_SUNDAY_ALLELUIA[lentenKey]) {
     const la = LENTEN_SUNDAY_ALLELUIA[lentenKey];
     alleluia = { tone: la.tone, verses: la.verses };
@@ -1957,20 +1998,25 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!' };
   }
 
-  // ── Megalynarion: feast → Basil → typical ─────────────────────────────────
+  // ── Megalynarion: feast → Paschal period → Basil → typical ─────────────────
+  const PASCHAL_MEGALYNARION = 'The Angel cried to the Lady, full of grace:\n"Rejoice, O pure Virgin! Again, I say: Rejoice,\nthy Son is risen from His three days in the tomb!\nWith Himself He has raised all the dead."\nRejoice, O ye people!\n\nShine, shine, O new Jerusalem!\nThe glory of the Lord has shone on thee.\nExult now, and be glad, O Zion!\nBe radiant, O pure Theotokos,\nin the Resurrection of thy Son!';
   let megalynarion;
   if (feast?.megalynarion) {
     megalynarion = { text: feast.megalynarion };
+  } else if (isPaschalPeriod) {
+    megalynarion = { text: PASCHAL_MEGALYNARION };
   } else if (isBasil) {
     megalynarion = 'basil-liturgy';
   } else {
     megalynarion = null;
   }
 
-  // ── Communion hymn: feast override → day-of-week ──────────────────────────
+  // ── Communion hymn: feast → Pentecostarion Sunday → day-of-week ───────────
   const communionHymn = feast?.communionHymn
     ? { text: feast.communionHymn }
-    : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+    : pentOverride?.communionHymn
+      ? { text: pentOverride.communionHymn }
+      : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   const feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
@@ -1994,7 +2040,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     megalynarion,
     cherubicOverride,
     communionHymn,
-    weHaveSeen: season === 'brightWeek' ? 'paschal' : null,
+    paschalOpening: isPaschalPeriod,
+    weHaveSeen: isPaschalPeriod ? 'paschal' : null,
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || null,

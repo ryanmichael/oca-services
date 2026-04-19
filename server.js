@@ -1803,6 +1803,49 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
           text: '"Now, Hell, thou hast orders. Give me back the dead thou once hadst strength to swallow," the Life-giver and God, who came to ransom all mankind from thine insatiable maw, crieth out to thee.' },
       ],
     },
+    21: { // Paralytic Sunday — Pascha + 21
+      feastOnly: true, // troparia array has resurrectional included
+      troparia: [
+        // Resurrectional troparion, Tone 3 (from OCA service text)
+        { tone: 3, rubric: 'Troparion of the Resurrection, Tone 3:',
+          text: 'Let the heavens rejoice!\nLet the earth be glad!\nFor the Lord has shown strength with His arm.\nHe has trampled down death by death.\nHe has become the first born of the dead.\nHe has delivered us from the depths of hell,\nand has granted to the world//\ngreat mercy.' },
+      ],
+      kontakia: [
+        // Kontakion of the Paralytic, Tone 3 (from OCA service text)
+        { tone: 3, rubric: 'Kontakion, Tone 3:', connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          text: 'By Thy divine intercession, O Lord,\nas Thou didst raise up the Paralytic of old,\nso raise up my soul, paralyzed by sins and thoughtless acts;\nso that being saved I may sing to Thee://\n"Glory to Thy power, O compassionate Christ!"' },
+        // Kontakion of Pascha, Tone 8
+        { tone: 8, rubric: 'Kontakion of Pascha, Tone 8:', connector: 'Now and ever, and unto ages of ages. Amen.',
+          text: 'Thou didst descend into the tomb, O Immortal,\nThou didst destroy the power of death.\nIn victory didst Thou arise, O Christ God,\nproclaiming, "Rejoice!" to the Myrrhbearing Women,//\ngranting peace to Thine Apostles, and bestowing Resurrection on the fallen.' },
+      ],
+      // Source: Lash Pentecostarion (Tone 3, by Joseph of Thessaloniki), converted to TT
+      ikos: 'Thou dost grasp the ends of the earth in the hollow of Thy hand, O Jesus, God without beginning with the Father, Master of all things with the Holy Spirit; Thou didst appear in flesh, healing diseases and banishing sufferings, giving light to the blind, and with a divine word Thou didst raise up the Paralysed Man, ordering him to walk quickly and to take up on his shoulders the bed which had borne him; therefore with him we all sing praises and cry out: O merciful Christ, glory to Thy might.',
+      prokeimenon: { tone: 1, refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!', verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
+      alleluia:    { tone: 5, verses: ['I will sing of Thy mercies, O Lord, forever; with my mouth I will proclaim Thy truth from generation to generation.', 'For Thou hast said: Mercy will be established forever; Thy truth will be prepared in the heavens.'] },
+      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      // Beatitudes: 4 Resurrection (Octoechos Tone 3 Ode 3) + 4 Pentecostarion Canon Ode 6
+      beatitudesTroparia: [
+        // Octoechos Tone 3, Ode 3 (Resurrectional)
+        { tone: 3, label: 'Irmos of Ode 3',
+          text: 'O Most High, Ruler of all, who out of nothing hath established all things, fashioned by Thy Word, perfected by the Spirit, confirm me in Thy love.' },
+        { tone: 3, label: 'Troparion of Ode 3',
+          text: 'Through Thy Cross the wicked one hath been shamed, for he hath fallen into the pit which he himself hath dug; while the horn of the humble, O Christ, hath been exalted in Thy Resurrection.' },
+        { tone: 3, label: 'Troparion of Ode 3',
+          text: 'The preaching of true religion hath covered like flowing waters the seas of the nations, O Lover of mankind; for by arising from the tomb Thou hast revealed the light of the Trinity.' },
+        { tone: 3, label: 'Theotokion of Ode 3',
+          text: 'Glorious things are spoken of thee, O living city of Him who is king forever; for through thee, O Sovereign Lady, God dwelt among those on earth.' },
+        // Pentecostarion Canon of the Paralytic, Tone 3 (Joseph of Thessaloniki), Ode 6
+        // Source: Lash Pentecostarion, converted to TT
+        { tone: 3, label: 'Irmos of Ode 6',
+          text: 'The deep of the passions hath risen up against me, and a tempest of contrary winds; but come quickly, my Saviour, save me and deliver me from corruption, as Thou didst save the Prophet from the beast.' },
+        { tone: 3, label: 'Troparion of Ode 6',
+          text: 'Willingly Thou wast raised on a tree, Thou wast placed as a dead man in a tomb, and having given life to all the dead in Hell together, Thou didst rise, O Christ, by divine power.' },
+        { tone: 3, label: 'Troparion of Ode 6',
+          text: 'Hell meeting Thee below was embittered, O Merciful One, and hastily gave back his prisoners, as they hymned Thy dread Resurrection, O Saviour, with never silent voices.' },
+        { tone: 3, label: 'Troparion of Ode 6',
+          text: 'He who of old had lain for many years on a bed of pain, at Thy order, O Christ, was made whole, and with hymns glorified Thy compassion, O Giver of life.' },
+      ],
+    },
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 

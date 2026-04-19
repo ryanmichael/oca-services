@@ -1031,6 +1031,12 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 9. Kontakia
   blocks.push(..._litKontakia(spec.kontakia));
 
+  // 9a. Ikos (Pentecostarion feast Sundays)
+  if (spec.ikos) {
+    blocks.push(makeBlock('ikos-rubric', 'Kontakia', 'rubric', null, 'Ikos:'));
+    blocks.push(makeBlock('ikos', 'Kontakia', 'hymn', 'choir', spec.ikos));
+  }
+
   // 9b. Pre-Trisagion exclamation
   blocks.push(makeBlock('pre-tris-excl', 'Kontakia', 'prayer', 'priest',
     'For Holy art Thou, O our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.'));

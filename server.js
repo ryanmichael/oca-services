@@ -1716,6 +1716,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // Source: OCA Department of Liturgical Music & Translations service texts.
   const PENTECOSTARION_SUNDAY_OVERRIDES = {
     7:  { // Thomas Sunday (Antipascha) — Pascha + 7
+      feastOnly: true,
       troparia: [
         { tone: 7, rubric: 'Troparion of Thomas Sunday, Tone 7:',
           text: 'From the sealed tomb, Thou didst shine forth, O Life!\nThrough closed doors Thou didst come to Thy Disciples, O Christ God.\nRenew in us through them an upright spirit,\nby the greatness of Thy mercy, O Resurrection of all!' },
@@ -1724,6 +1725,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
         { tone: 8, rubric: 'Kontakion of Thomas Sunday, Tone 8:',
           text: 'Thomas touched Thy life-giving side with an eager hand, O Christ God,\nwhen Thou camest to Thine Apostles through closed doors.\nHe cried out with all: "Thou art my Lord and my God!"' },
       ],
+      // Source: Lash Pentecostarion (Tone 8, by St. Romanos), converted to TT
+      ikos: 'Who then preserved the Disciple\'s palm unmelted when it approached the fiery side of the Lord? Who gave it daring, and gave it strength to handle bone of flame? Only that side which was handled; for had not the side given the power, how could a hand of clay have handled wounds which had shaken things above and things below? This grace was given Thomas, to handle it and to cry out to Christ, "Thou art my Lord and my God!"',
       prokeimenon: { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.', verse: 'Praise the Lord! For it is good to sing praises to our God!' },
       alleluia:    { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!', 'For the Lord is a great God, and a great King over all the earth.'] },
       communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia.',
@@ -1750,6 +1753,56 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
           text: 'Thomas, who was not present at Thy first entrance, handled Thy side and, believing, acknowledged Thee.' },
       ],
     },
+    14: { // Myrrhbearers Sunday — Pascha + 14
+      feastOnly: true, // suppresses Menaion injection; troparia array has resurrectional included
+      troparia: [
+        // Resurrectional troparion, Tone 2 (from OCA service text)
+        { tone: 2, rubric: 'Troparion of the Resurrection, Tone 2:',
+          text: 'When Thou didst descend to death, O Life immortal,\nThou didst slay hell with the splendor of Thy Godhead.\nAnd when from the depths Thou didst raise the dead,\nall the powers of heaven cried out://\n"O Giver of life, Christ our God, glory to Thee!"' },
+        // "The Noble Joseph", Tone 2 (from OCA service text)
+        { tone: 2, rubric: 'Troparion, Tone 2:',
+          text: 'The noble Joseph,\nwhen he had taken down Thy most pure Body from the Tree,\nwrapped it in fine linen and anointed it with spices,\nand placed it in a new tomb.\nBut Thou didst arise on the third day, O Lord,//\ngranting the world great mercy.' },
+        // "The Angel came", Tone 2 (from OCA service text)
+        { tone: 2, rubric: 'Troparion, Tone 2:',
+          text: 'The Angel came to the myrrhbearing women at the tomb and said:\n"Myrrh is fitting for the dead;\nbut Christ has shown Himself a stranger to corruption!\nSo proclaim: \'The Lord is risen,//\ngranting the world great mercy.\'"' },
+      ],
+      kontakia: [
+        // Kontakion of the Myrrhbearers, Tone 2 (from OCA service text)
+        { tone: 2, rubric: 'Kontakion, Tone 2:', connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          text: 'Thou didst command the Myrrhbearers to rejoice, O Christ God.\nBy Thy Resurrection, Thou didst stop the lamentation of Eve, the first mother.\nThou didst command them to preach to Thine Apostles://\n"The Savior is risen from the tomb!"' },
+        // Kontakion of Pascha, Tone 8 (from OCA service text)
+        { tone: 8, rubric: 'Kontakion of Pascha, Tone 8:', connector: 'Now and ever, and unto ages of ages. Amen.',
+          text: 'Thou didst descend into the tomb, O Immortal,\nThou didst destroy the power of death.\nIn victory didst Thou arise, O Christ God,\nproclaiming, "Rejoice!" to the Myrrhbearing Women,//\ngranting peace to Thine Apostles, and bestowing Resurrection on the fallen.' },
+      ],
+      // Source: Lash Pentecostarion (Tone 2, by Andrew of Crete), converted to TT
+      ikos: 'As they went to Thy tomb, O Saviour, the Myrrhbearers were troubled among themselves in mind and they said, "Who will roll away the stone from the grave for us?" And looking up they see that the stone has been rolled away. They were amazed by the appearance of the Angel and his raiment; they were seized with fright and thought to flee; but the young man cried out to them, "Do not be afraid. The One you seek has risen. Come, see the place where the body of Jesus was laid and going quickly tell His disciples: The Saviour has risen from the grave."',
+      prokeimenon: { tone: 6, refrain: 'O Lord, save Thy people, and bless Thine inheritance!', verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
+      alleluia:    { tone: 8, verses: ['O Lord, Thou hast been gracious to Thy land; Thou hast turned back the captivity of Jacob.', 'Mercy and truth are met together; righteousness and peace have kissed each other.'] },
+      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      // Beatitudes: 4 Resurrection (Octoechos Tone 2 Ode 3) + 4 Pentecostarion Canon Ode 6
+      // All 8 included directly to avoid tone calculation issues during Pentecostarion
+      beatitudesTroparia: [
+        // Octoechos Tone 2, Ode 3 (Resurrectional)
+        { tone: 2, label: 'Irmos of Ode 3',
+          text: 'The desert of the barren Church of the nations blossomed like a lily at Thy coming, O Lord, therein hath my heart been established.' },
+        { tone: 2, label: 'Troparion of Ode 3',
+          text: 'At Thy passion creation was changed when it saw Thee, who doest all things by Thy divine bidding, humbled in form and derided by lawless men.' },
+        { tone: 2, label: 'Troparion of Ode 3',
+          text: 'Thou didst fashion me from dust by Thine own hand in accordance with Thine image, and when I through sin, was crushed back to the dust of death from whence I came Thou didst descend with me into Hades, O Christ, and raise me up again with Thyself.' },
+        { tone: 2, label: 'Theotokion of Ode 3',
+          text: 'The Angelic Orders were astonished, and the hearts of mortals trembled at thy birth-giving, O Most pure one; wherefore in faith we honor thee as the Mother of God.' },
+        // Pentecostarion Canon of the Myrrhbearers, Tone 2 (Andrew of Crete), Ode 6
+        // Source: Lash Pentecostarion, converted to TT
+        { tone: 2, label: 'Irmos of Ode 6',
+          text: 'I am ever held by an abyss of sins, and I am sinking deep in the sea of life. But like Jonas from the beast, bring me up and save me.' },
+        { tone: 2, label: 'Troparion of Ode 6',
+          text: 'Hell is dead. Take courage, ye who are born of earth, for Christ, hung upon the tree, hath hurled away the sword against him and Hell lieth dead. For, stripped naked, he hath been despoiled of those he held.' },
+        { tone: 2, label: 'Troparion of Ode 6',
+          text: '"Hell hath been despoiled! Take courage ye dead! The graves have been opened; arise!" Christ, who came to ransom all mankind from death and corruption, crieth out to you from Hell.' },
+        { tone: 2, label: 'Troparion of Ode 6',
+          text: '"Now, Hell, thou hast orders. Give me back the dead thou once hadst strength to swallow," the Life-giver and God, who came to ransom all mankind from thine insatiable maw, crieth out to thee.' },
+      ],
+    },
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
@@ -1774,7 +1827,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // troparia/kontakia (no resurrectional, no Menaion).
   const troparia = [];
   const kontakia = [];
-  const feastOnly = !!feast?.troparia || !!pentOverride;
+  const feastOnly = !!feast?.troparia || !!(pentOverride?.feastOnly);
 
   if (feast?.troparia) {
     troparia.push(...feast.troparia);
@@ -2063,6 +2116,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     entranceHymn,
     troparia,
     kontakia,
+    ikos: pentOverride?.ikos || null,
     trisagion: { substitution: getTrisagionSubstitution(date) },
     prokeimenon,
     epistle:  epistleR ? { book: epistleR.book, display: epistleR.display, text: extractPassageText(epistleR) } : null,

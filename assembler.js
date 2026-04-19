@@ -992,6 +992,15 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
       liturgyFixed['only-begotten-son']));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
     blocks.push(..._litFeastAntiphon(spec.feastAntiphons.third, 'Third Antiphon', 'a3'));
+  } else if (spec.paschalAntiphons12) {
+    // Paschal period: Paschal psalm antiphons for 1st/2nd, Beatitudes for 3rd
+    blocks.push(..._litFeastAntiphon(spec.paschalAntiphons12.first, 'First Antiphon', 'a1'));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
+    blocks.push(..._litFeastAntiphon(spec.paschalAntiphons12.second, 'Second Antiphon', 'a2'));
+    blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
+      liturgyFixed['only-begotten-son']));
+    blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
+    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed));
   } else {
     blocks.push(..._litTypicalAntiphon1(liturgyFixed));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));

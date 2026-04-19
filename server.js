@@ -1727,6 +1727,28 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       prokeimenon: { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.', verse: 'Praise the Lord! For it is good to sing praises to our God!' },
       alleluia:    { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!', 'For the Lord is a great God, and a great King over all the earth.'] },
       communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia.',
+      // Beatitudes: Pentecostarion Canon Tone 1 (John the Monk), Odes 3+6
+      // Source: Lash Pentecostarion, converted to TT
+      beatitudesTroparia: [
+        // Ode 3
+        { tone: 1, label: 'Irmos of Ode 3',
+          text: 'Establish me, O Christ, on the rock of Thy commandments, and enlighten me with the light of Thy face; for none is holy but Thee, O Lover of mankind.' },
+        { tone: 1, label: 'Troparion of Ode 3',
+          text: 'When by Thy Cross, O Christ, Thou hadst made us new instead of old, instead of corruptible incorruptible, Thou didst command us to live worthily in newness of life.' },
+        { tone: 1, label: 'Troparion of Ode 3',
+          text: 'Though Thou hadst been locked in the tomb with Thy finite flesh, O Christ, as infinite Thou didst arise; and when the doors were shut Thou camest to Thy Disciples, O All-powerful.' },
+        { tone: 1, label: 'Troparion of Ode 3',
+          text: 'By keeping Thy wounds, O Christ, which Thou hadst borne willingly for our sakes, Thou gavest Thy Disciples proof of Thy glorious Resurrection.' },
+        // Ode 6
+        { tone: 1, label: 'Irmos of Ode 6',
+          text: 'Thou didst save the Prophet from the whale, O Lover of mankind; lead me up too, I pray, from the deep of offences.' },
+        { tone: 1, label: 'Troparion of Ode 6',
+          text: 'Thou didst not leave Thomas, O Master, plunged in the deep of unbelief, when Thou didst stretch out Thy palms for investigation.' },
+        { tone: 1, label: 'Troparion of Ode 6',
+          text: 'The Saviour said: "Handle Me and see that I have bones and flesh. I am not altered."' },
+        { tone: 1, label: 'Troparion of Ode 6',
+          text: 'Thomas, who was not present at Thy first entrance, handled Thy side and, believing, acknowledged Thee.' },
+      ],
     },
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
@@ -2019,7 +2041,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
-  const feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
+  let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
+
+  // ── Paschal antiphons for 1st/2nd during Paschal period ─────────────────
+  // Local practice: use Paschal psalm antiphons (Ps. 66/67) for First and
+  // Second Antiphons from Pascha through Leavetaking, with Beatitudes for Third.
+  const paschalAntiphons12 = (!feastAntiphons && isPaschalPeriod)
+    ? { first: GREAT_FEAST_VARIANTS.pascha.antiphons.first,
+        second: GREAT_FEAST_VARIANTS.pascha.antiphons.second }
+    : null;
 
   // ── Litany for the Departed (Soul Saturdays) ─────────────────────────────
   const includeDepartedLitany = isSoulSaturday(date);
@@ -2027,7 +2057,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   return {
     variant,
     feastAntiphons,
-    beatitudes: feastAntiphons ? null : { troparia: buildBeatitudesTroparia(isSunday, tone, srcs) },
+    paschalAntiphons12,
+    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs) },
     includeDepartedLitany,
     entranceHymn,
     troparia,

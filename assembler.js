@@ -1750,6 +1750,13 @@ function _litPostCommunion(spec, f) {
       makeBlock('we-have-seen', section, 'hymn',     'choir',  christIsRisen),
     ];
   }
+  if (spec.weHaveSeen) {
+    // Custom substitution (e.g. Ascension troparion during afterfeast)
+    return [
+      makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
+      makeBlock('we-have-seen', section, 'hymn',     'choir',  spec.weHaveSeen),
+    ];
+  }
   return [
     makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
     makeBlock('pcb-response', section, 'response', 'choir',  pc.people),

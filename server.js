@@ -1846,6 +1846,168 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
           text: 'He who of old had lain for many years on a bed of pain, at Thy order, O Christ, was made whole, and with hymns glorified Thy compassion, O Giver of life.' },
       ],
     },
+    28: { // Samaritan Woman Sunday — Pascha + 28
+      feastOnly: true, // troparia array has resurrectional included
+      troparia: [
+        // Resurrectional troparion, Tone 4 (OCA Octoechos)
+        { tone: 4, rubric: 'Troparion of the Resurrection, Tone 4:',
+          text: 'When the women disciples of the Lord\nlearned from the angel the joyous message of Thy Resurrection,\nthey cast away the ancestral curse\nand elatedly told the apostles:\n"Death is overthrown!\nChrist God is risen,//\ngranting the world great mercy!"' },
+        // Troparion of Midfeast, Tone 8 (OCA, converted to TT)
+        { tone: 8, rubric: 'Troparion of Midfeast, Tone 8:',
+          text: 'In the middle of the Feast, O Savior,\nfill my thirsting soul with the waters of godliness,\nas Thou didst cry to all:\n"If anyone thirst, let him come to Me and drink!"//\nO Christ God, Fountain of our life, glory to Thee!' },
+      ],
+      kontakia: [
+        // Kontakion of the Samaritan Woman, Tone 8 (OCA, converted to TT)
+        { tone: 8, rubric: 'Kontakion of the Samaritan Woman, Tone 8:', connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          text: 'The Samaritan Woman came to the well in faith;\nshe saw Thee, the Water of Wisdom, and drank abundantly.\nShe inherited the Kingdom on high,//\nand is ever glorified!' },
+        // Kontakion of Midfeast, Tone 4 (OCA, converted to TT)
+        { tone: 4, rubric: 'Kontakion of Midfeast, Tone 4:', connector: 'Now and ever, and unto ages of ages. Amen.',
+          text: 'Christ God, the Creator and Master of all,\ncried to all in the midst of the feast of the Law:\n"Come and draw the water of immortality!"\nWe fall before Thee and faithfully cry://\n"Grant us Thy bounties, for Thou art the Fountain of our life!"' },
+      ],
+      // Source: St. Sergius Pentecostarion (Lambertsen), Samaritan Woman Ikos
+      ikos: 'Let us hear of the noble mysteries, as John teacheth us what cometh to pass in Samaria, how the Lord speaketh unto a woman, asking water of her, even He that gathered the waters into the places where they are gathered, and Who is of one throne with the Father and the Spirit; for He, the renowned One, came, seeking out His image forever.',
+      prokeimenon: { tone: 3, refrain: 'Sing praises to our God, sing praises! Sing praises to our King, sing praises!', verse: 'Clap your hands, all ye nations! Shout unto God with the voice of triumph!' },
+      alleluia:    { tone: 4, verses: ['Go forth and prosper and reign, because of truth and meekness and righteousness!', 'Thou lovest righteousness, and hatest iniquity.'] },
+      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      // Beatitudes "On 12": 4 Resurrection T4 + 4 Samaritan Ode 3 T4 + 4 Midfeast Ode 6 T8
+      // All 12 included directly to avoid tone calculation issues during Pentecostarion
+      beatitudesTroparia: [
+        // Octoechos Tone 4, Ode 3 (Resurrectional) — 4 troparia
+        { tone: 4, label: 'Irmos of Ode 3',
+          text: 'Thy Church, O Christ, rejoiceth in Thee crying aloud: Thou, O Lord, art my strength, my refuge and foundation.' },
+        { tone: 4, label: 'Troparion of Ode 3',
+          text: 'The Tree of life, the true noetic Vine, is seen hanging upon the Cross, pouring forth unto all incorruption.' },
+        { tone: 4, label: 'Troparion of Ode 3',
+          text: 'As One great, as One to be feared, as One who hath subdued the rage of Hades, and as God incorruptible, Thou hast arisen in the flesh.' },
+        { tone: 4, label: 'Theotokion of Ode 3',
+          text: 'O Theotokos, thou hast become the sole intermediary of supernatural blessings for those on earth, wherefore we bring unto thee our salutation.' },
+        // Pentecostarion Canon of the Samaritan Woman, Tone 4, Ode 3 — 4 troparia
+        // Source: St. Sergius Pentecostarion (Lambertsen)
+        { tone: 4, label: 'Irmos of Ode 3',
+          text: 'An Angel shining like lightning spake unto the myrrh-bearers: Why are ye astonished? Why do ye bring myrrh and seek the Master in the grave, O ye women? He is risen, and hath raised the world up with Himself.' },
+        { tone: 4, label: 'Troparion of Ode 3',
+          text: 'Since Thou art the Life and Well-spring of immortality, Thou didst sit down at the well, O Compassionate One, and didst fill with Thy supremely wise waters the Samaritan woman who besought Thee and praised Thee.' },
+        { tone: 4, label: 'Glory',
+          text: 'The Father, the Son, and the Divine Spirit are praised as one God in Trinity over all, Whom the orders of the Heavens glorify with fear as they cry out clearly: Holy, Holy, Holy art Thou, O Lord.' },
+        { tone: 4, label: 'Both now',
+          text: 'Having inexplicably conceived in thy womb the God of all, O Virgin Mother, thou didst give birth in a manner transcending mind and speech, and didst remain a virgin, even as thou wast before giving birth, O Bride of God.' },
+        // Pentecostarion Canon of Midfeast, Tone 8, Ode 6 — 4 troparia
+        // Source: St. Sergius Pentecostarion (Lambertsen)
+        { tone: 8, label: 'Irmos of Ode 6',
+          text: 'O Jesus, Who takest care for all the ends of the earth, Thou didst go up to the temple at Mid-feast, as John hath said, and taught the multitudes the Word of truth.' },
+        { tone: 8, label: 'Troparion of Ode 6',
+          text: 'Thou didst open Thy lips, O Master, and didst preach to the world the most pure Father and the all-holy Spirit, preserving Thy kinship with both even after Thine Incarnation.' },
+        { tone: 8, label: 'Troparion of Ode 6',
+          text: 'Thou didst accomplish the work of the Father and didst confirm Thy words by Thy deeds, for Thou didst perform healings and signs, O Savior, raising the paralytic, cleansing lepers, and resurrecting the dead.' },
+        { tone: 8, label: 'Theotokion of Ode 6',
+          text: 'We praise thee who didst remain a virgin after giving birth; thee alone do we glorify as both Virgin and Mother, O pure Maiden, Bride of God; for from thee God truly became incarnate and thus quickened us.' },
+      ],
+    },
+    35: { // Blind Man Sunday — Pascha + 35
+      feastOnly: true, // troparia array has resurrectional included
+      troparia: [
+        // Resurrectional troparion, Tone 5 (OCA Octoechos)
+        { tone: 5, rubric: 'Troparion of the Resurrection, Tone 5:',
+          text: 'Let us, the faithful, praise and worship the Word,\ncoeternal with the Father and the Spirit,\nborn for our salvation from the Virgin;\nfor He willed to be lifted up on the Cross in the flesh,\nto endure death,\nand to raise the dead//\nby His glorious Resurrection.' },
+      ],
+      kontakia: [
+        // Kontakion of the Blind Man, Tone 4 (OCA, converted to TT)
+        { tone: 4, rubric: 'Kontakion, Tone 4:', connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          text: 'I come to Thee, O Christ,\nblind from birth in my spiritual eyes,\nand I call to Thee in repentance://\n"Thou art the most radiant Light of those in darkness!"' },
+        // Kontakion of Pascha, Tone 8
+        { tone: 8, rubric: 'Kontakion of Pascha, Tone 8:', connector: 'Now and ever, and unto ages of ages. Amen.',
+          text: 'Thou didst descend into the tomb, O Immortal,\nThou didst destroy the power of death.\nIn victory didst Thou arise, O Christ God,\nproclaiming, "Rejoice!" to the Myrrhbearing Women,//\ngranting peace to Thine Apostles, and bestowing Resurrection on the fallen.' },
+      ],
+      // Source: St. Sergius Pentecostarion (Lambertsen), Blind Man Ikos
+      ikos: 'Grant me a stream of ineffable wisdom and knowledge from on high, O Christ, Thou Light of them that are in darkness and Guide of all those who are gone astray, that I may tell of those things that the divine book of the Gospel of peace hath taught, to wit, the miracle that was wrought upon the blind man; for though blind from birth, he receiveth the physical eyes as well as the eyes of the soul, as he crieth out in faith: Of those in darkness art Thou the most radiant Light.',
+      prokeimenon: { tone: 8, refrain: 'Pray and make your vows before the Lord our God!', verse: 'In Judah God is known; His name is great in Israel.' },
+      alleluia:    { tone: 8, verses: ['O come, let us rejoice in the Lord; let us make a joyful noise unto God our Savior!', 'Let us come before His presence with thanksgiving, and let us make a joyful noise unto Him with psalms.'] },
+      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      // Beatitudes "On 8": 4 Resurrection T5 + 4 Pentecostarion Canon Ode 6 T5
+      beatitudesTroparia: [
+        // Octoechos Tone 5, Ode 3 (Resurrectional)
+        { tone: 5, label: 'Irmos of Ode 3',
+          text: 'By Thy command Thou didst establish the earth upon nothing and suspended it unsupported; do Thou establish Thy Church on the unshakeable rock of Thy commandments, O Christ, who alone art good and the Lover of mankind.' },
+        { tone: 5, label: 'Troparion of Ode 3',
+          text: 'Unto Thee O Christ, Who didst work the wondrous miracle in the wilderness, did the ungrateful children of Israel, who had suckled honey from the rocks, offer gall, and in exchange for Thy deeds of goodness they offered Thee vinegar instead of manna.' },
+        { tone: 5, label: 'Troparion of Ode 3',
+          text: 'They who of old were protected by a cloud of light, laid Christ, who is life, in a tomb; but by Thine own power Thou didst arise and grant unto all the faithful the effulgence of the Spirit, which doth mystically overshadow them from above.' },
+        { tone: 5, label: 'Theotokion of Ode 3',
+          text: 'Without wedlock and without the pain of childbirth thou hast become the Mother of Him Who shone forth from the incorrupt Father through thee; Since thou didst bear the Word made flesh, with Orthodox belief we proclaim thee to be the Theotokos.' },
+        // Pentecostarion Canon of the Blind Man, Tone 5, Ode 6 — 4 troparia
+        // Source: St. Sergius Pentecostarion (Lambertsen)
+        { tone: 5, label: 'Irmos of Ode 6',
+          text: 'Even as Thou didst deliver the Prophet from the beast, O Lord, so do Thou lead me up from the depths of unrestrained passions, I pray Thee, that I may dare to look upon Thy holy temple.' },
+        { tone: 5, label: 'Troparion of Ode 6',
+          text: 'O Master, Who wast crucified with thieves, Thou didst deliver from crafty thieves and soul-corrupting passions all those who with one accord praise Thy crucifixion and arising, O man-befriending Lord.' },
+        { tone: 5, label: 'Troparion of Ode 6',
+          text: 'In a sepulcher they laid Thee dead and without breath, O Christ, Who dost breathe life into all the dead. But Thou didst arise, O Lord, emptying all the tombs by Thy divine might, O Word.' },
+        { tone: 5, label: 'Troparion of Ode 6',
+          text: 'After Thine arising, O Christ, Thou didst say unto Thy friends: Tarry ye in Jerusalem, until ye be endued with invincible power and sure assistance from on high.' },
+      ],
+    },
+    42: { // Holy Fathers of Nicaea — Pascha + 42 (7th Sunday, Ascension afterfeast)
+      feastOnly: true,
+      troparia: [
+        // Resurrectional troparion, Tone 6 (OCA service text)
+        { tone: 6, rubric: 'Troparion of the Resurrection, Tone 6:',
+          text: 'The Angelic Powers were at Thy tomb;\nthe guards became as dead men.\nMary stood by Thy grave,\nseeking Thy most pure body.\nThou didst capture hell, not being tempted by it.\nThou didst come to the Virgin, granting life.\nO Lord, Who didst rise from the dead,//\nglory to Thee.' },
+        // Troparion of the Ascension, Tone 4 (OCA service text, TT)
+        { tone: 4, rubric: 'Troparion of the Ascension, Tone 4:',
+          text: 'Thou didst ascend in glory, O Christ our God,\ngranting joy to Thy Disciples by the promise of the Holy Spirit.\nThrough the blessing, they were assured\nthat Thou art the Son of God,//\nthe Redeemer of the world!' },
+        // Troparion of the Fathers, Tone 8 (OCA service text)
+        { tone: 8, rubric: 'Troparion of the Fathers, Tone 8:',
+          text: 'Thou art most glorious, O Christ our God,\nWho hast established the Holy Fathers as lights on the earth.\nThrough them Thou hast guided us to the True Faith.//\nO greatly compassionate One, glory to Thee!' },
+      ],
+      kontakia: [
+        // Kontakion of the Fathers, Tone 8 (OCA service text)
+        { tone: 8, rubric: 'Kontakion of the Fathers, Tone 8:', connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          text: 'The Apostles\' preaching and the Fathers\' doctrines have established one Faith for the Church.\nAdorned with the robe of truth, woven from heavenly theology,//\nIt defines and glorifies the great mystery of piety.' },
+        // Kontakion of the Ascension, Tone 6 (OCA service text, TT)
+        { tone: 6, rubric: 'Kontakion of the Ascension, Tone 6:', connector: 'Now and ever, and unto ages of ages. Amen.',
+          text: 'When Thou hadst fulfilled the dispensation for our sake,\nand united earth to heaven,\nThou didst ascend in glory, O Christ our God,\nnot being parted from those who love Thee,\nbut remaining with them and crying://\n"I am with you, and there is no one against you!"' },
+      ],
+      // Source: Lash Pentecostarion, Ikos of the Fathers
+      ikos: 'Let us listen to the Church of God as she cries out with lofty proclamation: Whoever is thirsty let him come to me and drink; the bowl that I carry is the bowl of truth; the drink in it I have mixed with the word of truth, pouring in not the water of contradiction but that of confession; the new Israel as he drinks from it sees God who declares: See, see, it is I; I have not changed; I am God first and last, and beside me there is no other at all. Those who partake from here shall be filled and praise the great mystery of true religion.',
+      prokeimenon: { tone: 4, refrain: 'Blessed art Thou, O Lord God of our fathers, and praised and glorified is Thy Name forever!', verse: 'For Thou art just in all that Thou hast done for us!' },
+      alleluia:    { tone: 1, verses: ['The Lord, the God of gods, speaks and summons the earth from the rising of the sun to its setting.', 'Gather to Me My venerable ones, who made a covenant with Me by sacrifice!'] },
+      communionHymn: 'Praise the Lord from the heavens, praise Him in the highest!\nRejoice in the Lord, O you righteous; praise befits the just! Alleluia.',
+      // Ascension afterfeast: special megalynarion and post-communion
+      megalynarion: GREAT_FEAST_VARIANTS.ascension.megalynarion,
+      weHaveSeen: 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!',
+      // Beatitudes "On 12": 4 Resurrection T6 + 4 Ascension Ode 4 T5 + 4 Fathers Ode 6 T6
+      beatitudesTroparia: [
+        // Octoechos Tone 6, Ode 3 (Resurrectional)
+        { tone: 6, label: 'Irmos of Ode 3',
+          text: 'There is none as holy as Thou, O Lord my God, who hast exalted the horn of Thy faithful, O good One, and strengthened us upon the rock of Thy confession.' },
+        { tone: 6, label: 'Troparion of Ode 3',
+          text: 'Seeing God crucified in the flesh, all creation quaked from fear, but was held fast by the sustaining hand of Him Who was crucified for our sake.' },
+        { tone: 6, label: 'Troparion of Ode 3',
+          text: 'Death, having been despoiled by death, doth lie miserably breathless, for unable to endure the revelation of Divine Life, the mighty one hath been slain and resurrection hath been bestowed upon all.' },
+        { tone: 6, label: 'Theotokion of Ode 3',
+          text: 'The wonder of thy divine child-birth, O pure one, surpasseth all that is natural, for above nature hast thou conceived God in thy womb, and in giving birth remained Ever-virgin.' },
+        // Ascension Canon, Tone 5, Ode 4 — 4 troparia
+        // Source: Lash Pentecostarion, converted to TT
+        { tone: 5, label: 'Troparion of Ode 4',
+          text: 'Thou wast taken up in glory, King of the Angels, to send us the Comforter from the Father. And so we cry out: Glory, O Christ, to Thine Ascension.' },
+        { tone: 5, label: 'Troparion of Ode 4',
+          text: 'As the Saviour had ascended to the Father with His flesh, the hosts of Angels were struck with amazement, and cried out: Glory, O Christ, to Thine Ascension.' },
+        { tone: 5, label: 'Troparion of Ode 4',
+          text: 'The angelic Powers cried out to those above: Lift up the gates for Christ, our King; Whom we hymn, together with the Father and the Spirit.' },
+        { tone: 5, label: 'Theotokion of Ode 4',
+          text: 'The Virgin gave birth, and did not know a mother\'s pangs; but she is Mother, yet remained Virgin; as we hymn her we cry: Hail, Mother of God.' },
+        // Fathers Canon, Tone 6, Ode 6 — 4 troparia
+        // Source: Lash Pentecostarion, converted to TT
+        { tone: 6, label: 'Troparion of Ode 6',
+          text: 'Escape the mystery of providence he could not, the sower of tares, who was called by the surname Lunacy; for having rivalled Judas, like him the wholly evil one was split asunder.' },
+        { tone: 6, label: 'Troparion of Ode 6',
+          text: 'Master, the revered, godly assembly of the Fathers proclaimed Thee as the only-begotten brightness shining from the Father\'s essence, and as the Son begotten before all things.' },
+        { tone: 6, label: 'Troparion of Ode 6',
+          text: 'Burst open was the belly, the source which poured out the foul and undrinkable water of impious heresies, by the ploughshare of the intercession of the inspired Priests.' },
+        { tone: 6, label: 'Theotokion of Ode 6',
+          text: 'Lampstand, ark, table and jar, so Moses, greatest of the prophets, wrote of thee of old, in symbols signifying the incarnation from thee of the Most High, O Virgin Mother.' },
+      ],
+    },
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
@@ -2121,6 +2283,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   let megalynarion;
   if (feast?.megalynarion) {
     megalynarion = { text: feast.megalynarion };
+  } else if (pentOverride?.megalynarion) {
+    megalynarion = { text: pentOverride.megalynarion };
   } else if (isPaschalPeriod) {
     megalynarion = { text: PASCHAL_MEGALYNARION };
   } else if (isBasil) {
@@ -2169,7 +2333,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     cherubicOverride,
     communionHymn,
     paschalOpening: isPaschalPeriod,
-    weHaveSeen: isPaschalPeriod ? 'paschal' : null,
+    weHaveSeen: pentOverride?.weHaveSeen || (isPaschalPeriod ? 'paschal' : null),
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || null,

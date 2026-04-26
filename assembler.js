@@ -977,14 +977,6 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
       'And upon those in the tombs bestowing life!'));
 
-    // 1c. Psalm 103 — read after "Christ is risen" during Paschal period
-    const vf = getVespersFixed();
-    const ps103 = vf.psalm103;
-    if (ps103) {
-      const psSection = 'Psalm 103';
-      blocks.push(makeBlock('ps103-body', psSection, 'prayer', 'reader', ps103.body));
-      blocks.push(makeBlock('ps103-close', psSection, 'doxology', 'reader', ps103.close));
-    }
   }
 
   // 2. Great Litany

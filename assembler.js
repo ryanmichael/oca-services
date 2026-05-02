@@ -61,6 +61,14 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   const isGreatVespers = isVigil || vespers.serviceType === 'greatVespers';
 
   // ── 1. Opening ──────────────────────────────────────────────────────────────
+  // Pentecostarion Sundays: "Christ is risen" 2½ times before the opening
+  if (vespers.paschalOpening) {
+    const section = 'Paschal Troparion';
+    blocks.push(makeBlock('pt-priest', section, 'prayer', 'priest',
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (twice)'));
+    blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
+      'And upon those in the tombs bestowing life!'));
+  }
   blocks.push(...assembleOpening(fixedTexts, isGreatVespers));
 
   // ── 2. Psalm 103 ────────────────────────────────────────────────────────────
@@ -329,7 +337,12 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     const sourceTexts = resolveSource(slot.source, slot.key, sources);
     if (!sourceTexts) continue;
     slot.verses.forEach((verseNum, i) => {
-      const hymn = sourceTexts.hymns ? sourceTexts.hymns[i] : null;
+      // When more slots than hymns (e.g. 7 resurrectional from 6 unique),
+      // the first hymn is doubled (standard typikon practice: sing first sticheron twice).
+      const hymns = sourceTexts.hymns || [];
+      const extra = slot.count - hymns.length;
+      const hymnIdx = extra > 0 && i < extra ? 0 : i - Math.max(0, extra);
+      const hymn = hymns[hymnIdx] || null;
       if (hymn) {
         verseMap[verseNum] = { hymn, slot };
       }
@@ -667,8 +680,8 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     calendarDay.dayOfWeek === 'saturday';
   const isLentenSaturday = isGreatVespersSaturday &&
     calendarDay.liturgicalContext?.season === 'greatLent';
-  const isPaschalVespers = calendarDay.liturgicalContext?.season === 'brightWeek' &&
-    calendarDay.dayOfWeek === 'sunday';
+  const isPaschalVespers = calendarDay.vespers?.paschalAposticha ||
+    (calendarDay.liturgicalContext?.season === 'brightWeek' && calendarDay.dayOfWeek === 'sunday');
   const verseTexts = isPaschalVespers
     ? fixedTexts.aposticha.paschalVerses
     : (isGreatVespersSaturday && !isLentenSaturday)
@@ -693,15 +706,24 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       continue;
     }
 
-    const sourceObj = resolveSource(slot.source, slot.key, sources);
+    // Resolve text: 'fixed' source reads from fixedTexts, others from variable sources
+    let sourceObj, slotSource;
+    if (slot.source === 'fixed') {
+      const text = deepGet(fixedTexts, slot.key);
+      sourceObj = text ? { text } : null;
+      slotSource = 'pentecostarion';
+    } else {
+      sourceObj = resolveSource(slot.source, slot.key, sources);
+      slotSource = slot.source;
+    }
     if (!sourceObj) continue;
 
     const prov = slot.provenance || sourceObj.provenance;
     if (slot.position === 1) {
       // First sticheron — no preceding verse, just the hymn
       blocks.push(makeBlock(`apost-idiomelon`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, provenance: prov }));
-      idiomelon = { text: sourceObj.text, tone: slot.tone, source: slot.source, provenance: prov };
+        sourceObj.text, { tone: slot.tone, source: slotSource, label: slot.label, provenance: prov }));
+      idiomelon = { text: sourceObj.text, tone: slot.tone, source: slotSource, provenance: prov };
     } else {
       // Subsequent stichera — verse then hymn
       // Prefer explicit verse from slot spec (e.g. Holy Friday), fall back to fixed verse table
@@ -712,13 +734,21 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
           `V. ${verseText}`));
       }
       blocks.push(makeBlock(`apost-hymn-${i}`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slot.source, label: slot.label, provenance: prov }));
+        sourceObj.text, { tone: slot.tone, source: slotSource, label: slot.label, provenance: prov }));
     }
   }
 
   // Glory + Now
   if (apostichaSpec.glory) {
-    const glorySource = resolveSource(apostichaSpec.glory.source, apostichaSpec.glory.key, sources);
+    let glorySource, glorySrc;
+    if (apostichaSpec.glory.source === 'fixed') {
+      const text = deepGet(fixedTexts, apostichaSpec.glory.key);
+      glorySource = text ? { text } : null;
+      glorySrc = 'pentecostarion';
+    } else {
+      glorySource = resolveSource(apostichaSpec.glory.source, apostichaSpec.glory.key, sources);
+      glorySrc = apostichaSpec.glory.source;
+    }
     if (apostichaSpec.glory.combinesGloryNow) {
       blocks.push(makeBlock('apost-glory-now-label', section, 'doxology', null,
         fixedTexts.doxology.gloryNow));
@@ -728,17 +758,25 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
     if (glorySource) {
       blocks.push(makeBlock('apost-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: apostichaSpec.glory.tone, source: apostichaSpec.glory.source, label: apostichaSpec.glory.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
+        glorySource.text, { tone: apostichaSpec.glory.tone, source: glorySrc, label: apostichaSpec.glory.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
     }
   }
 
   if (apostichaSpec.now) {
-    const nowSource = resolveSource(apostichaSpec.now.source, apostichaSpec.now.key, sources);
+    let nowSource, nowSrc;
+    if (apostichaSpec.now.source === 'fixed') {
+      const text = deepGet(fixedTexts, apostichaSpec.now.key);
+      nowSource = text ? { text } : null;
+      nowSrc = 'pentecostarion';
+    } else {
+      nowSource = resolveSource(apostichaSpec.now.source, apostichaSpec.now.key, sources);
+      nowSrc = apostichaSpec.now.source;
+    }
     blocks.push(makeBlock('apost-now-label', section, 'doxology', null,
       fixedTexts.doxology.nowOnly));
     if (nowSource) {
       blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: apostichaSpec.now.tone, source: apostichaSpec.now.source, label: apostichaSpec.now.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
+        nowSource.text, { tone: apostichaSpec.now.tone, source: nowSrc, label: apostichaSpec.now.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
     }
   }
 

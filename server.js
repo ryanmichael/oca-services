@@ -2558,8 +2558,10 @@ function assembleForDate(date, pronoun, entryOverride) {
   const isWeekdayInjection  = !isSaturdayInjection;
   // Skip Menaion injection when the service already has complete Triodion content
   // (lordICall slots are DB-sourced, meaning a special observance like Meatfare Saturday)
+  // Also skip for Pentecostarion Sundays — they use only Octoechos + Pentecostarion texts
   const hasTriodionContent = calendarEntry.vespers?.lordICall?.slots?.some(s => s.source === 'db');
-  if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && !hasTriodionContent) {
+  const isPentSundayVespers = calendarEntry.vespers?.isPentecostarionSunday;
+  if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && !hasTriodionContent && !isPentSundayVespers) {
     const [, mm, dd] = date.split('-').map(Number);
     const ranked = getMenaionRanked(mm, dd);
     const primary = ranked?.principal ?? null;

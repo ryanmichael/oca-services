@@ -1394,6 +1394,20 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
  *   - Regular weekdays: weekday prokeimenon by day of week
  */
 function generatePentecostarionDay(dateStr, dow, tone, litKey) {
+  // ── Fixed tones for Pentecostarion Sundays ─────────────────────────────────
+  // Each Pentecostarion Sunday has a fixed tone, not the regular Octoechos cycle.
+  const PENT_SUNDAY_TONES = {
+    'pentecostarion.week.2.sunday': 1, // Thomas Sunday
+    'pentecostarion.week.3.sunday': 2, // Myrrhbearers
+    'pentecostarion.week.4.sunday': 3, // Paralytic
+    'pentecostarion.week.5.sunday': 4, // Samaritan Woman
+    'pentecostarion.week.6.sunday': 5, // Blind Man
+    'pentecostarion.week.7.sunday': 6, // Holy Fathers
+  };
+  if (PENT_SUNDAY_TONES[litKey] !== undefined) {
+    tone = PENT_SUNDAY_TONES[litKey];
+  }
+
   // ── Saturday: ordinary-time Great Vespers ──────────────────────────────────
   if (dow === 'saturday') {
     const entry = generateOrdinaryTimeSaturday(dateStr, tone);
@@ -1439,23 +1453,24 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   }
 
   // ── Lord I Call stichera slots ────────────────────────────────────────────
-  // Weeks 4-7 Sundays have feast-specific stichera in the DB (scraped from
-  // L'vov-Bakhmetev PDFs). The remaining verses use resurrectional stichera
-  // from the Octoechos. Other named feasts (Thomas, Myrrhbearers, Ascension,
-  // Pentecost) use all 6 resurrectional stichera from the Octoechos.
+  // Pentecostarion Sunday Great Vespers: 10 stichera total
+  // (7 resurrectional from Octoechos + 3 Pentecostarion from DB).
+  // Thomas Sunday, Ascension, Pentecost: 10 all from DB (feast-only).
+  // Source: OCA rubrics for Pentecostarion Sunday Great Vespers.
   const FEAST_STICHERA_COUNT = {
-    'pentecostarion.week.2.sunday': 6,  // Thomas Sunday — all feast stichera, no resurrectional
-    'pentecostarion.week.3.sunday': 4,  // Myrrhbearers — 4 feast + 2 resurrectional
-    'pentecostarion.week.4.sunday': 2,  // Paralytic
-    'pentecostarion.week.5.sunday': 3,  // Samaritan Woman
-    'pentecostarion.week.6.sunday': 2,  // Blind Man
-    'pentecostarion.week.7.sunday': 4,  // Holy Fathers
-    'pentecostarion.ascension':     6,  // Ascension — all feast stichera
-    'pentecostarion.pentecost':     6,  // Pentecost — all feast stichera
+    'pentecostarion.week.2.sunday': 10, // Thomas Sunday — all feast stichera
+    'pentecostarion.week.3.sunday': 3,  // Myrrhbearers — 7 resurrectional + 3 feast
+    'pentecostarion.week.4.sunday': 3,  // Paralytic — 7 resurrectional + 3 feast
+    'pentecostarion.week.5.sunday': 3,  // Samaritan Woman — 7 resurrectional + 3 feast
+    'pentecostarion.week.6.sunday': 3,  // Blind Man — 7 resurrectional + 3 feast
+    'pentecostarion.week.7.sunday': 3,  // Holy Fathers — 7 resurrectional + 3 feast
+    'pentecostarion.ascension':     10, // Ascension — all feast stichera
+    'pentecostarion.pentecost':     10, // Pentecost — all feast stichera
   };
+  const totalStichera = (dow === 'sunday' && litKey in PENT_SUNDAY_TONES) ? 10 : 6;
   const feastCount  = FEAST_STICHERA_COUNT[litKey] || 0;
-  const resCount    = 6 - feastCount;
-  const allVerses   = [6, 5, 4, 3, 2, 1];
+  const resCount    = totalStichera - feastCount;
+  const allVerses   = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
   const licSlots    = [];
   if (resCount > 0) {
     licSlots.push({
@@ -1472,49 +1487,54 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     });
   }
 
-  // Glory: feast doxastichon from DB (weeks 4-7), or Octoechos glory.
-  // Tone 5 has no resurrectional doxastichon — combine Glory+Now into the dogmatikon.
-  const licGlory = feastCount > 0
-    ? { source: 'db',        key: `${litKey}.vespers.lordICall.glory`,          tone }
-    : tone === 5
-      ? { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,        tone, label: 'Theotokion — Dogmatikon', combinesGloryNow: true }
-      : { source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.glory`,   tone };
+  // Glory: feast doxastichon from DB; Now and ever: Dogmatikon from Octoechos.
+  const licGlory = { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone };
 
-  // "Now and ever": major feasts use the DB theotokion; mixed Sundays use dogmatikon
-  const DB_FULL_LIC = new Set([
-    'pentecostarion.week.2.sunday', 'pentecostarion.ascension', 'pentecostarion.pentecost',
-  ]);
-  const nowSlot = DB_FULL_LIC.has(litKey)
-    ? { source: 'db', key: `${litKey}.vespers.lordICall.now`, tone, label: 'Theotokion' }
-    : { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
+  // "Now and ever": Dogmatikon of the tone
+  const nowSlot = { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' };
 
-  // Aposticha: for major feasts (feastCount === 6) all aposticha come from DB;
-  // for mixed services, use Octoechos idiomelon with feast glory from DB.
+  // ── Aposticha ────────────────────────────────────────────────────────────
+  // Pentecostarion Sunday aposticha (OCA rubric): 1 Resurrectional + Paschal stichera
+  // with Psalm 67 verses. Glory: Pentecostarion, Now and ever: "This is the day…"
+  // Major feasts (Thomas, Ascension, Pentecost): all aposticha from DB.
+  const isPentSunday = dow === 'sunday' && litKey in PENT_SUNDAY_TONES;
   const DB_FULL_APOSTICHA = new Set([
     'pentecostarion.week.2.sunday',   // Thomas Sunday
     'pentecostarion.ascension',        // Ascension
     'pentecostarion.pentecost',        // Pentecost
   ]);
   const useDbAposticha = DB_FULL_APOSTICHA.has(litKey);
-  const apostichaGlory = feastCount > 0
-    ? { source: 'db',        key: `${litKey}.vespers.aposticha.glory`, tone }
-    : null;
 
-  // Build aposticha slots
-  const apostichaSlots = useDbAposticha
-    ? [
-        { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-        { position: 2, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-        { position: 3, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-      ]
-    : [
-        { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
-        { position: 2, repeatPrevious: true },
-        { position: 3, repeatPrevious: true },
-      ];
-  const apostichaNow = useDbAposticha
-    ? { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, label: 'Theotokion' }
-    : { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' };
+  let apostichaSlots, apostichaGlory, apostichaNow;
+  if (useDbAposticha) {
+    apostichaSlots = [
+      { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+      { position: 2, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+      { position: 3, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
+    ];
+    apostichaGlory = { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone };
+    apostichaNow = { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, label: 'Theotokion' };
+  } else if (isPentSunday) {
+    // 1 Resurrectional idiomelon + 4 Paschal stichera (with Ps 67 verses)
+    apostichaSlots = [
+      { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional Idiomelon' },
+      { position: 2, source: 'fixed', key: 'paschalAposticha.1', tone: 5, label: 'Paschal Sticheron' },
+      { position: 3, source: 'fixed', key: 'paschalAposticha.2', tone: 5, label: 'Paschal Sticheron' },
+      { position: 4, source: 'fixed', key: 'paschalAposticha.3', tone: 5, label: 'Paschal Sticheron' },
+      { position: 5, source: 'fixed', key: 'paschalAposticha.4', tone: 5, label: 'Paschal Sticheron' },
+    ];
+    apostichaGlory = { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone };
+    // "Now and ever": "This is the day of Resurrection..." + "Christ is risen" ×1
+    apostichaNow = { source: 'fixed', key: 'paschalAposticha.now', label: 'Paschal' };
+  } else {
+    apostichaSlots = [
+      { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
+      { position: 2, repeatPrevious: true },
+      { position: 3, repeatPrevious: true },
+    ];
+    apostichaGlory = null;
+    apostichaNow = { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' };
+  }
 
   return {
     _meta: {
@@ -1524,14 +1544,17 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     },
     date:      dateStr,
     dayOfWeek: dow,
-    liturgicalContext: { season: 'pentecostarion', tone, toneSource: 'octoechosCycle' },
+    liturgicalContext: { season: 'pentecostarion', tone, toneSource: isPentSunday ? 'pentecostarionFixed' : 'octoechosCycle' },
     commemorations: [],
     vespers: {
       serviceType,
       rubricNote: name,
+      paschalOpening: isPentSunday,       // "Christ is risen" 2½ times before Psalm 103
+      isPentecostarionSunday: isPentSunday, // suppress Menaion injection
+      paschalAposticha: isPentSunday,     // use Paschal Ps 67 verses in aposticha
       lordICall: {
         tone,
-        totalStichera: 6,
+        totalStichera,
         slots:  licSlots,
         glory:  licGlory,
         now:    nowSlot,

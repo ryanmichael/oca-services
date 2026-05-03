@@ -1125,7 +1125,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
     blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null,
-      'Sung slowly and softly:'));
+      "Sung slowly and very softly (extension marks reflect the L'vovsky / Greek Chant setting):"));
     blocks.push(makeBlock('cherubic-part1', section, 'hymn', 'choir', ch.part1));
     blocks.push(makeBlock('cherubic-amen', section, 'response', 'choir', ch.amen));
   }
@@ -1138,7 +1138,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
     blocks.push(makeBlock('cherubic-rubric2', section, 'rubric', null,
-      'The choir completes the hymn:'));
+      'Then more quickly, with strength:'));
     blocks.push(makeBlock('cherubic-part2', section, 'hymn', 'choir', ch.part2));
     blocks.push(makeBlock('cherubic-alleluia', section, 'hymn', 'choir', ch.alleluia));
   }

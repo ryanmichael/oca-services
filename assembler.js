@@ -1167,6 +1167,10 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   blocks.push(..._litPostCommunion(spec, liturgyFixed));
 
   // 30. Hymn of Thanksgiving
+  blocks.push(makeBlock('hot-always', 'Hymn of Thanksgiving', 'prayer', 'priest',
+    liturgyFixed['always-now-and-ever']));
+  blocks.push(makeBlock('hot-amen', 'Hymn of Thanksgiving', 'response', 'choir',
+    liturgyFixed['amen']));
   blocks.push(makeBlock('let-our-mouths', 'Hymn of Thanksgiving', 'hymn', 'choir',
     liturgyFixed['let-our-mouths']));
 
@@ -1188,7 +1192,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed, spec.dismissalTroparia));
 
   // 36. Dismissal
-  blocks.push(..._litDismissal(spec.dismissal, isBasil, spec.paschalOpening));
+  blocks.push(..._litDismissal(spec.dismissal, isBasil, spec.paschalOpening, liturgyFixed));
 
   blocks._warnings = _warnings.slice();
   return blocks;
@@ -1747,6 +1751,8 @@ function _litPreCommunion(isBasil, f) {
     makeBlock('pc-elevation-d', section, 'prayer',  'deacon', pc.elevation.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',  'priest', pc.elevation.priest),
     makeBlock('pc-elevation-r', section, 'response','choir',  pc.elevation.people),
+    makeBlock('pc-draw-near',   section, 'prayer',  'priest', pc.drawNear),
+    makeBlock('pc-blessed',     section, 'response','choir',  pc.blessedIsHe),
   ];
 }
 
@@ -1869,7 +1875,7 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
   ];
 }
 
-function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod) {
+function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   const section = 'Dismissal';
   if (!dismissalSpec) {
     return [makeBlock('dis-text', section, 'prayer', 'priest', '[Dismissal]')];
@@ -1900,10 +1906,16 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod) {
     makeBlock('dis-bless',   section, 'prayer',  'choir',  'Father, bless.'),
     makeBlock('dis-blessed', section, 'prayer',  'priest', 'Blessed is He that is, Christ our true God, always, now and ever, and unto ages of ages.'),
     makeBlock('dis-confirm', section, 'response','choir',  'Amen. Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages.'),
-    makeBlock('dis-theos',   section, 'prayer',  'priest', 'Most holy Theotokos, save us.'),
-    makeBlock('dis-mag',     section, 'response','choir',  'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.'),
-    makeBlock('dis-glory',   section, 'prayer',  'priest', 'Glory to Thee, O Christ our God and our hope, glory to Thee.'),
   ];
+
+  if (isPaschalPeriod && liturgyFixed && liturgyFixed['megalynarion-paschal']) {
+    blocks.push(makeBlock('dis-mag-paschal', section, 'response', 'choir', liturgyFixed['megalynarion-paschal']));
+  } else {
+    blocks.push(makeBlock('dis-theos', section, 'prayer',   'priest', 'Most holy Theotokos, save us.'));
+    blocks.push(makeBlock('dis-mag',   section, 'response', 'choir',  'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.'));
+  }
+
+  blocks.push(makeBlock('dis-glory', section, 'prayer', 'priest', 'Glory to Thee, O Christ our God and our hope, glory to Thee.'));
 
   if (isPaschalPeriod) {
     // During Paschal period: "Christ is risen" ×3 replaces the usual Glory response
@@ -4272,6 +4284,10 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(..._litPostCommunion({}, lf));
 
   // ── Hymn of Thanksgiving ───────────────────────────────────────────────────
+  blocks.push(S('hot-always', 'Hymn of Thanksgiving', 'prayer', 'priest',
+    lf['always-now-and-ever']));
+  blocks.push(S('hot-amen', 'Hymn of Thanksgiving', 'response', 'choir',
+    lf['amen']));
   blocks.push(S('let-our-mouths', 'Hymn of Thanksgiving', 'hymn', 'choir',
     lf['let-our-mouths']));
 

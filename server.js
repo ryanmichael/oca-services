@@ -2299,10 +2299,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
 
-  // ── Paschal antiphons for 1st/2nd during Paschal period ─────────────────
-  // Local practice: use Paschal psalm antiphons (Ps. 66/67) for First and
-  // Second Antiphons from Pascha through Leavetaking, with Beatitudes for Third.
-  const paschalAntiphons12 = (!feastAntiphons && isPaschalPeriod)
+  // ── Paschal antiphons for 1st/2nd during Bright Week only ────────────────
+  // Most OCA parishes sing Paschal Antiphons (Ps. 65/66) only during Bright
+  // Week and revert to Typical Antiphons (Ps. 102/145, "Bless the Lord, O
+  // my soul") for the rest of the Paschal period.
+  const isBrightWeek = daysSincePascha >= 0 && daysSincePascha <= 6;
+  const paschalAntiphons12 = (!feastAntiphons && isBrightWeek)
     ? { first: GREAT_FEAST_VARIANTS.pascha.antiphons.first,
         second: GREAT_FEAST_VARIANTS.pascha.antiphons.second }
     : null;

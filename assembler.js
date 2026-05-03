@@ -1067,9 +1067,14 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     blocks.push(makeBlock('ikos', 'Kontakia', 'hymn', 'choir', spec.ikos));
   }
 
-  // 9b. Pre-Trisagion exclamation
+  // 9b. Pre-Trisagion exclamation + "O Lord, save us who fear Thee" exchange
   blocks.push(makeBlock('pre-tris-excl', 'Kontakia', 'prayer', 'priest',
     'For Holy art Thou, O our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.'));
+  blocks.push(makeBlock('pre-tris-pious-d',  'Kontakia', 'prayer',   'deacon', 'O Lord, save us who fear Thee.'));
+  blocks.push(makeBlock('pre-tris-pious-c',  'Kontakia', 'response', 'choir',  'O Lord, save us who fear Thee.'));
+  blocks.push(makeBlock('pre-tris-hear-d',   'Kontakia', 'prayer',   'deacon', 'And hear us.'));
+  blocks.push(makeBlock('pre-tris-hear-c',   'Kontakia', 'response', 'choir',  'And hear us.'));
+  blocks.push(makeBlock('pre-tris-ages-d',   'Kontakia', 'prayer',   'deacon', 'And unto ages of ages. Amen.'));
   blocks.push(makeBlock('pre-tris-amen', 'Kontakia', 'response', 'choir', 'Amen.'));
 
   // 10. Trisagion

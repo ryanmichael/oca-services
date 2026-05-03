@@ -1778,7 +1778,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'As they went to Thy tomb, O Saviour, the Myrrhbearers were troubled among themselves in mind and they said, "Who will roll away the stone from the grave for us?" And looking up they see that the stone has been rolled away. They were amazed by the appearance of the Angel and his raiment; they were seized with fright and thought to flee; but the young man cried out to them, "Do not be afraid. The One you seek has risen. Come, see the place where the body of Jesus was laid and going quickly tell His disciples: The Saviour has risen from the grave."',
       prokeimenon: { tone: 6, refrain: 'O Lord, save Thy people, and bless Thine inheritance!', verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
       alleluia:    { tone: 8, verses: ['O Lord, Thou hast been gracious to Thy land; Thou hast turned back the captivity of Jacob.', 'Mercy and truth are met together; righteousness and peace have kissed each other.'] },
-      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 Resurrection (Tone 2) + 4 from Pentecostarion Canon Ode 6
       // Source: St. Sergius Pentecostarion (pent/30.pdf, p.31) — swap for OCA when available
       beatitudesTroparia: [
@@ -1821,7 +1821,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Thou dost grasp the ends of the earth in the hollow of Thy hand, O Jesus, God without beginning with the Father, Master of all things with the Holy Spirit; Thou didst appear in flesh, healing diseases and banishing sufferings, giving light to the blind, and with a divine word Thou didst raise up the Paralysed Man, ordering him to walk quickly and to take up on his shoulders the bed which had borne him; therefore with him we all sing praises and cry out: O merciful Christ, glory to Thy might.',
       prokeimenon: { tone: 1, refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!', verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
       alleluia:    { tone: 5, verses: ['I will sing of Thy mercies, O Lord, forever; with my mouth I will proclaim Thy truth from generation to generation.', 'For Thou hast said: Mercy will be established forever; Thy truth will be prepared in the heavens.'] },
-      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 Resurrection (Tone 3) + 4 from Pentecostarion Canon Ode 6
       // Source: St. Sergius Pentecostarion (pent/40.pdf) — swap for OCA when available
       beatitudesTroparia: [
@@ -1867,7 +1867,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Let us hear of the noble mysteries, as John teacheth us what cometh to pass in Samaria, how the Lord speaketh unto a woman, asking water of her, even He that gathered the waters into the places where they are gathered, and Who is of one throne with the Father and the Spirit; for He, the renowned One, came, seeking out His image forever.',
       prokeimenon: { tone: 3, refrain: 'Sing praises to our God, sing praises! Sing praises to our King, sing praises!', verse: 'Clap your hands, all ye nations! Shout unto God with the voice of triumph!' },
       alleluia:    { tone: 4, verses: ['Go forth and prosper and reign, because of truth and meekness and righteousness!', 'Thou lovest righteousness, and hatest iniquity.'] },
-      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes "On 12": 4 Resurrection T4 + 4 Samaritan Ode 3 + 4 Midfeast Ode 6
       // Source: St. Sergius Pentecostarion (pent/50.pdf) — swap for OCA when available
       beatitudesTroparia: [
@@ -1919,7 +1919,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Grant me a stream of ineffable wisdom and knowledge from on high, O Christ, Thou Light of them that are in darkness and Guide of all those who are gone astray, that I may tell of those things that the divine book of the Gospel of peace hath taught, to wit, the miracle that was wrought upon the blind man; for though blind from birth, he receiveth the physical eyes as well as the eyes of the soul, as he crieth out in faith: Of those in darkness art Thou the most radiant Light.',
       prokeimenon: { tone: 8, refrain: 'Pray and make your vows before the Lord our God!', verse: 'In Judah God is known; His name is great in Israel.' },
       alleluia:    { tone: 8, verses: ['O come, let us rejoice in the Lord; let us make a joyful noise unto God our Savior!', 'Let us come before His presence with thanksgiving, and let us make a joyful noise unto Him with psalms.'] },
-      communionHymn: 'Receive the Body of Christ; taste the Fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest! Alleluia.',
+      communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 Resurrection (Tone 5) + 4 from Pentecostarion Canon Ode 6
       // Source: St. Sergius Pentecostarion (pent/60.pdf) — swap for OCA when available
       beatitudesTroparia: [

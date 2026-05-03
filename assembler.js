@@ -65,9 +65,9 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   if (vespers.paschalOpening) {
     const section = 'Paschal Troparion';
     blocks.push(makeBlock('pt-priest', section, 'prayer', 'priest',
-      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (twice)'));
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (2½ times)'));
     blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
-      'And upon those in the tombs bestowing life!'));
+      'and upon those in the tombs bestowing life!'));
   }
   blocks.push(...assembleOpening(fixedTexts, isGreatVespers));
 
@@ -1011,9 +1011,9 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   if (spec.paschalOpening) {
     const section = 'Paschal Troparion';
     blocks.push(makeBlock('pt-priest', section, 'prayer', 'priest',
-      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (twice)'));
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (2½ times)'));
     blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
-      'And upon those in the tombs bestowing life!'));
+      'and upon those in the tombs bestowing life!'));
 
   }
 

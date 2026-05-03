@@ -1124,8 +1124,9 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     // Standard Cherubic Hymn — Part 1 before the Great Entrance, Part 2 after
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
+    const settingTag = ch._setting_label ? ` (${ch._setting_label})` : '';
     blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null,
-      "Sung slowly and very softly (extension marks reflect the L'vovsky / Greek Chant setting):"));
+      `Sung slowly and very softly${settingTag}:`));
     blocks.push(makeBlock('cherubic-part1', section, 'hymn', 'choir', ch.part1));
     blocks.push(makeBlock('cherubic-amen', section, 'response', 'choir', ch.amen));
   }

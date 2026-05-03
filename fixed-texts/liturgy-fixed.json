@@ -182,7 +182,19 @@
   },
 
   "cherubic-hymn": {
-    "_note": "Em-dash extensions reflect the L'vovsky / Greek Chant setting in the OCA AAC addendum. Each em-dash ≈ one held beat in the soprano line.",
+    "_setting": "tchaikovsky-dgm",
+    "_setting_label": "Tchaikovsky setting; English paraphrase by D G M",
+    "_source": "https://santacruzmusic.net/chorale/201512/tcha-che_02954.pdf",
+    "part1": "All we who represent, represent the Cherubim, the Cherubim here on earth in mystic form\nsing unto the life-giving Trinity, sing unto the life-giving Trinity,\nthe thrice holy hymn, the thrice holy hymn,\nthe thrice holy hymn to the Trinity, the thrice holy hymn to the Trinity.\nLet us now lay aside, lay aside all care,\nlet us lay aside, lay aside all earthly care,\nlay, lay aside, aside all earthly care.",
+    "amen": "Amen.",
+    "part2": "That we may receive the King of all, we may receive the King,\nthe King of all in glory,\nWho comes invisible borne in triumph by the ranks of angels,\nby the ranks of angels.",
+    "alleluia": "Alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia, alleluia."
+  },
+
+  "cherubic-hymn-lvovsky": {
+    "_setting": "lvovsky-greek-chant",
+    "_setting_label": "L'vovsky / Greek Chant setting; em-dash extensions ≈ held beats in the soprano line",
+    "_source": "https://files.oca.org/aacs/19thaac-divineliturgy-addendum.pdf",
     "part1": "Let——— us who mys-tic'-ly, mys-tic'-ly re——— pre-sent the Che——ru-bim, the Che——ru-bim,\nand who sing the thrice—— ho——————— ly hymn, and who sing the thrice—— ho——————— ly hymn,\nto the life-cre-a-ting, life-cre-a-ting Trin———i-ty,\nnow——— lay a-side, lay a-side all cares,— now——— lay a-side all earth-ly cares,— all earth-ly cares.———",
     "amen": "A——————— men.",
     "part2": "That we may re-ceive, re-ceive the King of all,\nWho comes in-vi-si-bly, in-vi-si-bly up-borne\nby the an-gel-ic hosts, by the an-gel-ic hosts.",

@@ -1118,9 +1118,8 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
     // Standard Cherubic Hymn — Part 1 before the Great Entrance, Part 2 after
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
-    const settingTag = ch._setting_label ? ` (${ch._setting_label})` : '';
     blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null,
-      `Sung slowly and very softly${settingTag}:`));
+      'Sung slowly and very softly:'));
     blocks.push(makeBlock('cherubic-part1', section, 'hymn', 'choir', ch.part1));
     blocks.push(makeBlock('cherubic-amen', section, 'response', 'choir', ch.amen));
   }
@@ -1534,8 +1533,6 @@ function _litAugmentedLitany(f) {
     blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
   blocks.push(
-    makeBlock('al-comm',      section, 'prayer',   'deacon', lit.commemoration),
-    makeBlock('al-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
     makeBlock('al-excl',      section, 'prayer',   'priest', lit.exclamation),
     makeBlock('al-amen',      section, 'response', 'choir',  lit.amen),
   );
@@ -1591,22 +1588,29 @@ function _litLitaniesFaithful(f) {
   const section = 'Litanies of the Faithful';
   const l1 = f['litany-faithful-1'];
   const l2 = f['litany-faithful-2'];
-  return [
+  const blocks = [
     makeBlock('lf1-opening',    section, 'prayer',   'deacon', l1.opening),
     makeBlock('lf1-response',   section, 'response', 'choir',  l1.response),
     makeBlock('lf1-petition',   section, 'prayer',   'deacon', l1.petition),
-    makeBlock('lf1-comm',       section, 'prayer',   'deacon', l1.commemoration),
-    makeBlock('lf1-comm-resp',  section, 'response', 'choir',  l1.commemorationResponse),
+    makeBlock('lf1-pet-resp',   section, 'response', 'choir',  l1.response),
+    makeBlock('lf1-wisdom',     section, 'prayer',   'deacon', l1.wisdom),
     makeBlock('lf1-excl',       section, 'prayer',   'priest', l1.exclamation),
     makeBlock('lf1-amen',       section, 'response', 'choir',  l1.amen),
     makeBlock('lf2-opening',    section, 'prayer',   'deacon', l2.opening),
     makeBlock('lf2-response',   section, 'response', 'choir',  l2.response),
+  ];
+  (l2.petitions || []).forEach((p, i) => {
+    blocks.push(makeBlock(`lf2-p${i}`,       section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`lf2-p${i}-resp`,  section, 'response', 'choir',  l2.response));
+  });
+  blocks.push(
     makeBlock('lf2-petition',   section, 'prayer',   'deacon', l2.petition),
-    makeBlock('lf2-comm',       section, 'prayer',   'deacon', l2.commemoration),
-    makeBlock('lf2-comm-resp',  section, 'response', 'choir',  l2.commemorationResponse),
+    makeBlock('lf2-pet-resp',   section, 'response', 'choir',  l2.response),
+    makeBlock('lf2-wisdom',     section, 'prayer',   'deacon', l2.wisdom),
     makeBlock('lf2-excl',       section, 'prayer',   'priest', l2.exclamation),
     makeBlock('lf2-amen',       section, 'response', 'choir',  l2.amen),
-  ];
+  );
+  return blocks;
 }
 
 function _litGreatEntrance(f) {

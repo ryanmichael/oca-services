@@ -108,7 +108,7 @@
   },
 
   "augmented-litany": {
-    "_note": "Also called the Litany of Fervent Supplication. Responses alternate between Lord, have mercy (single) and Lord, have mercy (×3).",
+    "_note": "Also called the Litany of Fervent Supplication. Responses alternate between Lord, have mercy (single) and Lord, have mercy (×3). Per OCA Service Book / Liturgikon, no Theotokos commemoration is appended in this litany.",
     "opening": "Let us say with all our soul and with all our mind, let us say:",
     "response": "Lord, have mercy.",
     "petitions": [
@@ -123,8 +123,6 @@
       "Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.",
       "Again we pray for those who bring offerings and do good works in this holy and all-venerable temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy."
     ],
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
     "exclamation": "For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },
@@ -165,21 +163,27 @@
   },
 
   "litany-faithful-1": {
+    "_note": "First Litany of the Faithful per OCA Liturgikon. No Theotokos commemoration. Deacon's 'Wisdom!' precedes the priest's exclamation.",
     "opening": "We, the faithful, again and again in peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
     "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
+    "wisdom": "Wisdom!",
     "exclamation": "For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },
 
   "litany-faithful-2": {
+    "_note": "Second Litany of the Faithful per OCA Liturgikon (long form): the deacon prefaces with 'Wisdom!' and recites the great-litany-style petitions before 'Help us, save us...' Then a second 'Wisdom!' introduces the priest's exclamation. No Theotokos commemoration.",
     "opening": "Again and again in peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
+    "petitions": [
+      "For the peace from above, and for the salvation of our souls, let us pray to the Lord.",
+      "For the peace of the whole world, the good estate of the holy churches of God, and the union of all, let us pray to the Lord.",
+      "For this holy temple, and for those who enter with faith, reverence, and the fear of God, let us pray to the Lord.",
+      "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord."
+    ],
     "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
+    "wisdom": "Wisdom!",
     "exclamation": "That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },

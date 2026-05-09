@@ -1253,15 +1253,15 @@ function _litTypicalAntiphon1(f) {
   a.verses.forEach((v, i) => {
     blocks.push(makeBlock(`a1-v${i}`, section, 'verse', 'choir', v));
   });
-  blocks.push(makeBlock('a1-glory',  section, 'doxology', 'choir', a.glory));
-  blocks.push(makeBlock('a1-grefrain', section, 'response', 'choir', a.gloryRefrain));
   return blocks;
 }
 
 function _litTypicalAntiphon2(f) {
   const section = 'Second Antiphon';
+  const a1 = f['typical-antiphon-1'];
   const a = f['typical-antiphon-2'];
   const blocks = [];
+  blocks.push(makeBlock('a2-glory-open', section, 'doxology', 'choir', a1.glory));
   a.verses.forEach((v, i) => {
     blocks.push(makeBlock(`a2-v${i}`, section, 'verse', 'choir', v));
   });

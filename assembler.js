@@ -1148,11 +1148,10 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   blocks.push(makeBlock('creed', 'The Creed', 'prayer', 'all',
     liturgyFixed['creed']));
 
-  // 23. Anaphora
-  blocks.push(..._litAnaphora(isBasil, liturgyFixed));
-
-  // 24. Megalynarion / Hymn to the Theotokos
-  blocks.push(..._litMegalynarion(spec.megalynarion, isBasil, liturgyFixed));
+  // 23. Anaphora — includes the Megalynarion / Hymn to the Theotokos at the
+  //     liturgically correct point (between the megalynarion cue and the
+  //     intercessions exclamation).
+  blocks.push(..._litAnaphora(isBasil, liturgyFixed, spec.megalynarion));
 
   // 25. Litany before Lord's Prayer + Lord's Prayer
   blocks.push(..._litLordsPrayer(isBasil, liturgyFixed));
@@ -1651,7 +1650,7 @@ function _litSupplication(f) {
   return blocks;
 }
 
-function _litAnaphora(isBasil, f) {
+function _litAnaphora(isBasil, f, megalynarionSpec) {
   const section  = 'Anaphora';
   const key      = isBasil ? 'anaphora-basil' : 'anaphora-chrysostom';
   const anaphora = f[key];
@@ -1712,8 +1711,17 @@ function _litAnaphora(isBasil, f) {
     }
   }
 
-  // Megalynarion cue
+  // Commemoration of the saints — leads directly into the megalynarion cue
+  if (anaphora['commemoration-saints']) {
+    blocks.push(makeBlock('comm-saints', section, 'prayer', 'priest',
+      anaphora['commemoration-saints'], { density: 'compact' }));
+  }
+
+  // Megalynarion cue + the choir's Hymn to the Theotokos
   blocks.push(makeBlock('meg-cue', section, 'prayer', 'priest', anaphora['megalynarion-cue']));
+  if (megalynarionSpec !== undefined) {
+    blocks.push(..._litMegalynarion(megalynarionSpec, isBasil, f));
+  }
 
   // Intercessions exclamation + Final blessing
   blocks.push(makeBlock('interc-excl', section, 'prayer', 'priest', anaphora['intercessions-exclamation']));
@@ -4291,11 +4299,10 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(..._litSupplication(lf));
   blocks.push(S('creed', 'The Creed', 'prayer', 'all', lf['creed']));
 
-  // ── Anaphora of St. Basil ──────────────────────────────────────────────────
-  blocks.push(..._litAnaphora(isBasil, lf));
-
-  // ── Megalynarion — "Do not lament Me, O Mother" (replaces "All of creation") ──
-  blocks.push(..._litMegalynarion(vf.megalynarion, isBasil, lf));
+  // ── Anaphora of St. Basil — includes the Megalynarion ("Do not lament Me,
+  //    O Mother", replacing "All of creation") at the liturgically correct
+  //    point between the megalynarion cue and the intercessions exclamation.
+  blocks.push(..._litAnaphora(isBasil, lf, vf.megalynarion));
 
   // ── Lord's Prayer ──────────────────────────────────────────────────────────
   blocks.push(..._litLordsPrayer(isBasil, lf));

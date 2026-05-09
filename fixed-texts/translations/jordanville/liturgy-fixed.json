@@ -1,0 +1,38 @@
+{
+  "_note": "Sparse overlay: Jordanville-style (thee/thy) translation of liturgy fixed texts. Merge over the default fixed-texts/liturgy-fixed.json when translation='jordanville'. Only keys that differ from the default need to appear here.",
+
+  "typical-antiphon-1": {
+    "_note": "Psalm 102 — typical First Antiphon, Jordanville-style (thee/thy).",
+    "refrain": "Through the intercessions of the Theotokos, O Savior, save us.",
+    "verses": [
+      "Bless the Lord, O my soul; and all that is within me, bless His holy name.",
+      "Bless the Lord, O my soul, and forget not all His benefits.",
+      "Who forgiveth all thine iniquities, Who healeth all thy diseases.",
+      "Who redeemeth thy life from destruction; Who crowneth thee with lovingkindness and tender mercies.",
+      "The Lord executeth righteousness and judgment for all that are oppressed.",
+      "The Lord is merciful and gracious, slow to anger, and plenteous in mercy.",
+      "For as the heaven is high above the earth, so great is His mercy toward them that fear Him.",
+      "As far as the east is from the west, so far hath He removed our transgressions from us.",
+      "Bless the Lord, all ye His angels, that excel in strength, that do His commandments."
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "gloryRefrain": "Through the intercessions of the Theotokos, O Savior, save us."
+  },
+
+  "typical-antiphon-2": {
+    "_note": "Psalm 145 — typical Second Antiphon, Jordanville-style (thee/thy).",
+    "refrain": "Save us, O Son of God, who art risen from the dead, who sing to Thee: Alleluia.",
+    "refrainWeekday": "Save us, O Son of God, who art wondrous in Thy saints, who sing to Thee: Alleluia.",
+    "verses": [
+      "Praise the Lord, O my soul. I will praise the Lord while I live; I will sing praises unto my God while I have my being.",
+      "Put not your trust in princes, nor in the son of man, in whom there is no help.",
+      "His breath goeth forth, he returneth to his earth; in that very day his thoughts perish.",
+      "Happy is he that hath the God of Jacob for his help, whose hope is in the Lord his God.",
+      "Who made heaven and earth, the sea, and all that therein is; Who keepeth truth forever.",
+      "Who executeth judgment for the oppressed; Who giveth food to the hungry. The Lord looseth the prisoners.",
+      "The Lord preserveth the strangers; He relieveth the fatherless and widow.",
+      "The Lord shall reign forever, even thy God, O Zion, unto all generations."
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+  }
+}

@@ -33,18 +33,20 @@
   },
 
   "typical-antiphon-1": {
-    "_note": "Psalm 102 — typical First Antiphon, sung when no feast antiphon is appointed.",
+    "_note": "Psalm 102 — typical First Antiphon, sung when no feast antiphon is appointed. OCA Typika translation. Line breaks within a verse correspond to '*' breath/musical breaks in the source.",
+    "_source": "OCA Typika",
     "refrain": "Through the intercessions of the Theotokos, O Savior, save us.",
     "verses": [
-      "Bless the Lord, O my soul; and all that is within me, bless His holy name.",
-      "Bless the Lord, O my soul, and forget not all His benefits.",
-      "Who forgiveth all thine iniquities, Who healeth all thy diseases.",
-      "Who redeemeth thy life from destruction; Who crowneth thee with lovingkindness and tender mercies.",
-      "The Lord executeth righteousness and judgment for all that are oppressed.",
-      "The Lord is merciful and gracious, slow to anger, and plenteous in mercy.",
-      "For as the heaven is high above the earth, so great is His mercy toward them that fear Him.",
-      "As far as the east is from the west, so far hath He removed our transgressions from us.",
-      "Bless the Lord, all ye His angels, that excel in strength, that do His commandments."
+      "Bless the Lord, O my soul. Blessed art thou, O Lord.\nBless the Lord, O my soul; and all that is within me, bless his holy name.\nBless the Lord, O my soul, and forget not all his benefits,",
+      "who forgives all your iniquities, who heals all your diseases,\nwho redeems your life from the pit, who crowns you with steadfast love and mercy,\nwho satisfies you with good as long as you live, so that your youth is renewed like the eagle's.",
+      "The Lord works vindication and justice for the oppressed.\nHe made known his ways to Moses, his acts to the people of Israel.",
+      "The Lord is compassionate and merciful, long-suffering and of great goodness.\nHe will not always chide, nor will he keep his anger forever.",
+      "The Lord has established his throne in the heavens, and his kingdom rules over all.",
+      "Bless the Lord, O you his angels, you mighty ones who do his word,\nhearkening to the voice of his word.",
+      "Bless the Lord, all his hosts, his ministers that do his will.",
+      "Bless the Lord, all his works, in all places of his dominion.",
+      "Bless the Lord, O my soul, and all that is within me,\nbless his holy name.",
+      "Blessed art thou, O Lord!"
     ],
     "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
     "gloryRefrain": "Through the intercessions of the Theotokos, O Savior, save us."
@@ -62,20 +64,21 @@
   },
 
   "typical-antiphon-2": {
-    "_note": "Psalm 145 — typical Second Antiphon, sung when no feast antiphon is appointed.",
+    "_note": "Psalm 145 — typical Second Antiphon, sung when no feast antiphon is appointed. OCA Typika translation. Line breaks within a verse correspond to '*' breath/musical breaks in the source.",
+    "_source": "OCA Typika",
     "refrain": "Save us, O Son of God, who art risen from the dead, who sing to Thee: Alleluia.",
     "refrainWeekday": "Save us, O Son of God, who art wondrous in Thy saints, who sing to Thee: Alleluia.",
     "verses": [
-      "Praise the Lord, O my soul. I will praise the Lord while I live; I will sing praises unto my God while I have my being.",
-      "Put not your trust in princes, nor in the son of man, in whom there is no help.",
-      "His breath goeth forth, he returneth to his earth; in that very day his thoughts perish.",
-      "Happy is he that hath the God of Jacob for his help, whose hope is in the Lord his God.",
-      "Who made heaven and earth, the sea, and all that therein is; Who keepeth truth forever.",
-      "Who executeth judgment for the oppressed; Who giveth food to the hungry. The Lord looseth the prisoners.",
-      "The Lord preserveth the strangers; He relieveth the fatherless and widow.",
-      "The Lord shall reign forever, even thy God, O Zion, unto all generations."
+      "Praise the Lord, O my soul.\nI will praise the Lord as long as I live; I will sing praises to my God while I have being.",
+      "Put not your trust in princes, in sons of men, in whom there is no salvation.\nWhen his breath departs, he returns to his earth; on that very day his plans perish.",
+      "Blessed is he whose help is the God of Jacob, whose hope is in the Lord his God,\nwho made heaven and earth, the sea and all that is in them;",
+      "who keeps his faith forever;\nwho executes justice for the oppressed;\nwho gives food to the hungry.",
+      "The Lord sets the prisoners free; the Lord opens the eyes of the blind.\nThe Lord lifts up those who are bowed down; the Lord loves the righteous.",
+      "The Lord watches over the sojourners, he upholds the widow and the fatherless;\nbut the way of the wicked he will bring to ruin.",
+      "The Lord will reign forever,",
+      "thy God, O Zion, to all generations."
     ],
-    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+    "glory": "Now and ever, and unto ages of ages. Amen."
   },
 
   "only-begotten-son": "Only-begotten Son and immortal Word of God, Who for our salvation didst will to be incarnate of the holy Theotokos and Ever-Virgin Mary, Who without change didst become man and wast crucified, O Christ our God, trampling down death by death, Who art one of the Holy Trinity, glorified with the Father and the Holy Spirit: save us.",
@@ -105,7 +108,7 @@
   },
 
   "augmented-litany": {
-    "_note": "Also called the Litany of Fervent Supplication. Responses alternate between Lord, have mercy (single) and Lord, have mercy (×3).",
+    "_note": "Also called the Litany of Fervent Supplication. Responses alternate between Lord, have mercy (single) and Lord, have mercy (×3). Per OCA Service Book / Liturgikon, no Theotokos commemoration is appended in this litany.",
     "opening": "Let us say with all our soul and with all our mind, let us say:",
     "response": "Lord, have mercy.",
     "petitions": [
@@ -120,8 +123,6 @@
       "Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.",
       "Again we pray for those who bring offerings and do good works in this holy and all-venerable temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy."
     ],
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
     "exclamation": "For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },
@@ -162,21 +163,27 @@
   },
 
   "litany-faithful-1": {
+    "_note": "First Litany of the Faithful per OCA Liturgikon. No Theotokos commemoration. Deacon's 'Wisdom!' precedes the priest's exclamation.",
     "opening": "We, the faithful, again and again in peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
     "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
+    "wisdom": "Wisdom!",
     "exclamation": "For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },
 
   "litany-faithful-2": {
+    "_note": "Second Litany of the Faithful per OCA Liturgikon (long form): the deacon prefaces with 'Wisdom!' and recites the great-litany-style petitions before 'Help us, save us...' Then a second 'Wisdom!' introduces the priest's exclamation. No Theotokos commemoration.",
     "opening": "Again and again in peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
+    "petitions": [
+      "For the peace from above, and for the salvation of our souls, let us pray to the Lord.",
+      "For the peace of the whole world, the good estate of the holy churches of God, and the union of all, let us pray to the Lord.",
+      "For this holy temple, and for those who enter with faith, reverence, and the fear of God, let us pray to the Lord.",
+      "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord."
+    ],
     "petition": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
-    "commemoration": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
-    "commemorationResponse": "To Thee, O Lord.",
+    "wisdom": "Wisdom!",
     "exclamation": "That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
     "amen": "Amen."
   },
@@ -188,7 +195,7 @@
     "part1": "All we who represent, represent the Cherubim, the Cherubim here on earth in mystic form\nsing unto the life-giving Trinity, sing unto the life-giving Trinity,\nthe thrice holy hymn, the thrice holy hymn,\nthe thrice holy hymn to the Trinity, the thrice holy hymn to the Trinity.\nLet us now lay aside, lay aside all care,\nlet us lay aside, lay aside all earthly care,\nlay, lay aside, aside all earthly care.",
     "amen": "Amen.",
     "part2": "That we may receive the King of all, we may receive the King,\nthe King of all in glory,\nWho comes invisible borne in triumph by the ranks of angels,\nby the ranks of angels.",
-    "alleluia": "Alleluia, alleluia, alleluia… (×17 in the Tchaikovsky setting)"
+    "alleluia": "Alleluia, alleluia, alleluia… (x17)"
   },
 
   "cherubic-hymn-lvovsky": {
@@ -208,7 +215,7 @@
 
   "great-entrance": {
     "_note": "The deacon and priest carry the Holy Gifts through the nave. The commemorations are variable.",
-    "rubric": "The Holy Doors are opened. The priest and deacon carry the Holy Gifts from the Table of Oblation through the nave to the Holy Table.",
+    "rubric": "Procession of the Holy Gifts.",
     "commonCommemoration": "All of you Orthodox Christians, may the Lord God remember in His Kingdom, always, now and ever, and unto ages of ages.",
     "response": "Amen."
   },
@@ -238,7 +245,20 @@
     "amen": "Amen."
   },
 
+  "kiss-of-peace": {
+    "_note": "Said immediately before the Creed. Deacon's call, people's response, then deacon's 'The doors!' before the Creed begins.",
+    "deaconCall": "Let us love one another, that with one mind we may confess:",
+    "response": "Father, Son, and Holy Spirit: the Trinity, one in essence and undivided.",
+    "doors": "The doors! The doors! In wisdom let us attend!"
+  },
+
   "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by Whom all things were made; Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and was made man; and was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again, according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and He shall come again with glory to judge the living and the dead, Whose Kingdom shall have no end.\n\nAnd I believe in the Holy Spirit, the Lord, the Giver of Life, Who proceedeth from the Father; Who with the Father and the Son together is worshiped and glorified; Who spake by the Prophets.\n\nIn one holy, catholic, and apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead, and the life of the age to come. Amen.",
+
+  "anaphora-opening": {
+    "_note": "Deacon's call and people's response immediately before the Sursum Corda. Same for Chrysostom and Basil.",
+    "deaconCall": "Let us stand aright; let us stand in fear; let us attend, that we may offer the Holy Oblation in peace.",
+    "response": "A mercy of peace, a sacrifice of praise."
+  },
 
   "anaphora-chrysostom": {
     "_note": "The Anaphora of St. John Chrysostom. Silent prayers are indicated in rubrics. Only the audible/sung portions are stored here.",
@@ -250,8 +270,8 @@
       { "speaker": "priest", "text": "Let us give thanks unto the Lord." },
       { "speaker": "people", "text": "It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided." }
     ],
-    "preface-incipit": "It is meet and right to hymn Thee, to bless Thee, to praise Thee, to give thanks to Thee, and to worship Thee in every place of Thy dominion…",
-    "sanctus-introduction": "…singing the triumphal hymn, shouting, crying aloud, and saying:",
+    "preface": "It is meet and right to hymn Thee, to bless Thee, to praise Thee, to give thanks unto Thee, and to worship Thee in every place of Thy dominion: for Thou art God ineffable, inconceivable, invisible, incomprehensible, ever-existing and eternally the same, Thou and Thine Only-begotten Son and Thy Holy Spirit. Thou it was Who didst bring us from non-existence into being, and when we had fallen away didst raise us up again, and didst not cease to do all things until Thou hadst brought us up to heaven and hadst endowed us with Thy Kingdom which is to come. For all these things we give thanks unto Thee, and to Thine Only-begotten Son, and to Thy Holy Spirit; for all things of which we know and of which we know not, whether manifest or unseen; and we thank Thee for this Liturgy which Thou hast been pleased to accept at our hands, though there stand by Thee thousands of archangels and ten thousands of angels, the cherubim and the seraphim, six-winged, many-eyed, soaring aloft upon their pinions,",
+    "sanctus-introduction": "singing the triumphal hymn, shouting, crying aloud, and saying:",
     "sanctus": "Holy, holy, holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that cometh in the name of the Lord! Hosanna in the highest!",
     "institution-body": "Take, eat, this is My Body, which is broken for you, for the forgiveness of sins.",
     "institution-cup": "Drink of it, all of you; this is My Blood of the New Testament, which is shed for you and for many, for the forgiveness of sins.",

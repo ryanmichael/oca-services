@@ -102,6 +102,7 @@ const CSS = `
     color: #444;
     margin: 4px 0 4px 1.5em;
     font-size: 11.5pt;
+    white-space: pre-line;
   }
 
   p.response {
@@ -405,7 +406,7 @@ function renderService(blocks, options = {}) {
         'p.rubric { color: #8b1a1a; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
         'p.instruction { color: #666; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
-        'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; }\\n' +
+        'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; white-space: pre-line; }\\n' +
         'div.glory-line { font-weight: bold; margin: 8px 0 3px; }\\n' +
         '.source-tag { display: none; }\\n' +
         '.service-title { text-align: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #8b1a1a; }\\n' +

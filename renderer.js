@@ -104,6 +104,12 @@ const CSS = `
     font-size: 11.5pt;
     white-space: pre-line;
   }
+  p.prayer.compact, p.response.compact {
+    font-style: italic;
+    color: #444;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
 
   p.response {
     margin: 0 0 6px;
@@ -407,6 +413,7 @@ function renderService(blocks, options = {}) {
         'p.instruction { color: #666; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
         'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; white-space: pre-line; }\\n' +
+        'p.prayer.compact, p.response.compact { font-style: italic; color: #444; font-size: 9pt; line-height: 1.4; }\\n' +
         'div.glory-line { font-weight: bold; margin: 8px 0 3px; }\\n' +
         '.source-tag { display: none; }\\n' +
         '.service-title { text-align: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #8b1a1a; }\\n' +
@@ -464,9 +471,11 @@ function renderBlock(block) {
       break;
 
     case 'prayer':
-    case 'response':
-      lines.push(`    <p class="${escHtml(block.type)}">${text}</p>`);
+    case 'response': {
+      const compact = block.density === 'compact' ? ' compact' : '';
+      lines.push(`    <p class="${escHtml(block.type)}${compact}">${text}</p>`);
       break;
+    }
 
     case 'verse':
       lines.push(`    <p class="verse">${text}</p>`);

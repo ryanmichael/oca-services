@@ -376,6 +376,9 @@ body.dev-mode .src-tag { display: inline; }
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
   color: var(--muted); margin-bottom: 10px; line-height: 1.6;
 }
+.prayer.compact {
+  font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.6;
+}
 .spk {
   display: block;
   font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
@@ -673,6 +676,7 @@ body.dev-mode .src-tag { display: inline; }
 
   /* Scale up panel reading text for comfortable phone reading */
   .prayer      { font-size: 20px; }
+  .prayer.compact { font-size: 16px; }
   .rubric      { font-size: 17px; }
   .instruction { font-size: 17px; }
   .verse       { font-size: 16px; }

@@ -1183,7 +1183,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 32. Prayer behind the Ambon
   const ambonKey = isBasil ? 'prayer-ambon-basil' : 'prayer-ambon-chrysostom';
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    liturgyFixed[ambonKey]));
+    liturgyFixed[ambonKey], { density: 'compact' }));
 
   // 33. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
@@ -1471,7 +1471,7 @@ function _litEpistle(epistle) {
   ];
   if (epistle.text) {
     blocks.push(makeBlock('ep-ref', section, 'rubric', null, epistle.display || `${epistle.book} ${epistle.pericope}`));
-    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader', epistle.text));
+    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader', epistle.text, { density: 'compact' }));
   } else {
     blocks.push(makeBlock('ep-text', section, 'prayer', 'reader',
       `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`));
@@ -1512,7 +1512,7 @@ function _litGospel(gospel) {
   ];
   if (gospel.text) {
     blocks.push(makeBlock('gos-ref', section, 'rubric', null, gospel.display || `${gospel.book} ${gospel.pericope}`));
-    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader', gospel.text));
+    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader', gospel.text, { density: 'compact' }));
   } else {
     blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
       `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`));
@@ -1674,7 +1674,7 @@ function _litAnaphora(isBasil, f) {
   // Preface — full prayer (or incipit if full text not yet sourced)
   const prefaceText = anaphora['preface'] || anaphora['preface-incipit'];
   if (prefaceText) {
-    blocks.push(makeBlock('preface', section, 'prayer', 'priest', prefaceText));
+    blocks.push(makeBlock('preface', section, 'prayer', 'priest', prefaceText, { density: 'compact' }));
   }
   // Audible cue introducing the Sanctus
   blocks.push(makeBlock('preface-cue', section, 'prayer', 'priest',
@@ -1758,7 +1758,8 @@ function _litPreCommunion(isBasil, f) {
     makeBlock('pc-bow',        section, 'prayer',   'deacon', pc.bowHeads.deacon),
     makeBlock('pc-bow-r',      section, 'response', 'choir',  pc.bowHeads.peopleResponse),
     makeBlock('pc-bow-prayer', section, 'prayer',   'priest',
-      isBasil ? pc['bow-prayer-basil'] : pc['bow-prayer-chrysostom']),
+      isBasil ? pc['bow-prayer-basil'] : pc['bow-prayer-chrysostom'],
+      { density: 'compact' }),
     makeBlock('pc-elevation-d', section, 'prayer',  'deacon', pc.elevation.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',  'priest', pc.elevation.priest),
     makeBlock('pc-elevation-r', section, 'response','choir',  pc.elevation.people),
@@ -1824,7 +1825,8 @@ function _litThanksgiving(isBasil, f) {
     blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
   });
   blocks.push(makeBlock('lt-prayer', section, 'prayer', 'priest',
-    isBasil ? lit['prayer-basil'] : lit['prayer-chrysostom']));
+    isBasil ? lit['prayer-basil'] : lit['prayer-chrysostom'],
+    { density: 'compact' }));
   blocks.push(
     makeBlock('lt-comm',      section, 'prayer',   'deacon', lit.commemoration),
     makeBlock('lt-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
@@ -2073,7 +2075,7 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
 
   // 23. Prayer behind the Ambon
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    presanctifiedFixed['prayer-ambon']));
+    presanctifiedFixed['prayer-ambon'], { density: 'compact' }));
 
   // 24. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
@@ -2182,7 +2184,7 @@ function _psThanksgiving(f) {
     blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
   });
   blocks.push(
-    makeBlock('lt-prayer',    section, 'prayer',   'priest', lit.prayer),
+    makeBlock('lt-prayer',    section, 'prayer',   'priest', lit.prayer, { density: 'compact' }),
     makeBlock('lt-comm',      section, 'prayer',   'deacon', lit.commemoration),
     makeBlock('lt-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
     makeBlock('lt-excl',      section, 'prayer',   'priest', lit.exclamation),
@@ -4062,7 +4064,7 @@ function assembleLamentations(f, vespersFixed) {
     blocks.push(S('ep-prok-v', section, 'verse', 'reader', ep.prokeimenon.verse));
     blocks.push(S('ep-announce', section, 'rubric', 'deacon',
       `The Reading from ${ep.book} (${ep.pericope}).`));
-    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text));
+    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text, { density: 'compact' }));
     blocks.push(S('ep-alleluia', section, 'hymn', 'choir',
       'Alleluia, alleluia, alleluia!', { tone: ep.alleluia.tone }));
     for (let i = 0; i < ep.alleluia.verses.length; i++) {
@@ -4239,7 +4241,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
     blocks.push(S('ep-prok-v', section, 'verse', 'reader', ep.prokeimenon.verse));
     blocks.push(S('ep-announce', section, 'rubric', 'deacon',
       `The Reading from ${ep.book} (${ep.pericope}).`));
-    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text));
+    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text, { density: 'compact' }));
   }
 
   // ── Gospel ─────────────────────────────────────────────────────────────────
@@ -4249,7 +4251,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
       'Glory to Thee, O Lord, glory to Thee!'));
     blocks.push(S('gospel-label', section, 'rubric', 'deacon',
       `${vf.gospel.label} (${vf.gospel.book} ${vf.gospel.pericope})`));
-    blocks.push(S('gospel-text', section, 'prayer', 'priest', vf.gospel.text));
+    blocks.push(S('gospel-text', section, 'prayer', 'priest', vf.gospel.text, { density: 'compact' }));
     blocks.push(S('gospel-glory-end', section, 'doxology', 'choir',
       'Glory to Thee, O Lord, glory to Thee!'));
   }
@@ -4307,7 +4309,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
 
   // ── Prayer behind the Ambon ────────────────────────────────────────────────
   blocks.push(S('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    lf['prayer-ambon-basil']));
+    lf['prayer-ambon-basil'], { density: 'compact' }));
 
   // ── Blessed be the Name + Psalm 33 ─────────────────────────────────────────
   blocks.push(..._litBlessedBeTheName(lf));

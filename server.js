@@ -2398,17 +2398,21 @@ function buildNestedPath(dotPath, value) {
  */
 function categorizeHymn(label) {
   if (!label) return null;
+  // Order matters: Midfeast pattern is checked before the broader
+  // "from the Pentecostarion" pattern that would otherwise match.
   if (/for the Resurrection/i.test(label))                 return 'resurrectional';
   if (/for Midfeast/i.test(label))                         return 'midfeastIdiomela';
-  if (/for the Samaritan Woman/i.test(label))              return 'feastIdiomela';
-  if (/for the Paralytic/i.test(label))                    return 'feastIdiomela';
-  if (/for the Myrrhbearers/i.test(label))                 return 'feastIdiomela';
-  if (/for the Blind Man/i.test(label))                    return 'feastIdiomela';
-  if (/for the Holy Fathers/i.test(label))                 return 'feastIdiomela';
-  if (/for Thomas/i.test(label) || /for Antipascha/i.test(label)) return 'feastIdiomela';
-  if (/by Romanos/i.test(label))                           return 'feastIdiomela';
+  if (/for the Forerunner/i.test(label))                   return 'menaionFeast';
   if (/Theotokion/i.test(label))                           return 'theotokion';
   if (/Dogmatikon/i.test(label))                           return 'dogmatikon';
+  // Day-specific Pentecostarion Sunday idiomela:
+  //   "for the <Sunday-name>" — Paralytic, Samaritan Woman, Blind Man, Holy Fathers, Myrrhbearers, Thomas, Antipascha
+  //   "from the Pentecostarion[, …]" — generic Pentecostarion idiomelon when the Sunday-name suffix is absent
+  //   "by <hymnographer>" — Romanos, John the Monk, Anatolius (compose Pentecostarion idiomela)
+  if (/for the (Samaritan Woman|Paralytic|Blind Man|Holy Fathers|Myrrhbearers)/i.test(label)) return 'feastIdiomela';
+  if (/for Thomas/i.test(label) || /for Antipascha/i.test(label)) return 'feastIdiomela';
+  if (/from the Pentecostarion/i.test(label))              return 'feastIdiomela';
+  if (/by (Romanos|John the Monk|Anatolius)/i.test(label)) return 'feastIdiomela';
   return null;
 }
 

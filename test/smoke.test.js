@@ -247,7 +247,7 @@ describe('API routes', () => {
 
   // ── Liturgy section ordering invariants ─────────────────────────────────
 
-  it('Liturgy — Communion Prayer comes after Communion Hymn and before Post-Communion', async () => {
+  it('Liturgy — Communion Prayer comes before Communion Hymn, both before Post-Communion', async () => {
     const res = await get('/api/liturgy?date=2026-06-14');
     assert.equal(res.status, 200);
     const blocks = res.json.blocks;
@@ -258,10 +258,10 @@ describe('API routes', () => {
     assert.ok(communionHymnIdx > -1, 'Should have Communion Hymn section');
     assert.ok(communionPrayerIdx > -1, 'Should have Communion Prayer section');
     assert.ok(postCommunionIdx > -1, 'Should have Post-Communion Blessing section');
-    assert.ok(communionHymnIdx < communionPrayerIdx,
-      `Communion Hymn (${communionHymnIdx}) should come before Communion Prayer (${communionPrayerIdx})`);
-    assert.ok(communionPrayerIdx < postCommunionIdx,
-      `Communion Prayer (${communionPrayerIdx}) should come before Post-Communion (${postCommunionIdx})`);
+    assert.ok(communionPrayerIdx < communionHymnIdx,
+      `Communion Prayer (${communionPrayerIdx}) should come before Communion Hymn (${communionHymnIdx})`);
+    assert.ok(communionHymnIdx < postCommunionIdx,
+      `Communion Hymn (${communionHymnIdx}) should come before Post-Communion (${postCommunionIdx})`);
   });
 
   // ── Great Feast liturgy (Palm Sunday) ──────────────────────────────────

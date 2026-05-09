@@ -1159,11 +1159,12 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 26. Pre-Communion (Bow prayer + Elevation)
   blocks.push(..._litPreCommunion(isBasil, liturgyFixed));
 
-  // 27. Communion Hymn
-  blocks.push(..._litCommunionHymn(spec.communionHymn));
-
-  // 28. Communion Prayer ("I believe, O Lord...")
+  // 27. Communion Prayer ("I believe, O Lord...") — said by the people
+  //     before approaching the chalice.
   blocks.push(..._litCommunionPrayer(liturgyFixed));
+
+  // 28. Communion Hymn — sung while the faithful are receiving.
+  blocks.push(..._litCommunionHymn(spec.communionHymn));
 
   // 29. Post-Communion Blessing
   blocks.push(..._litPostCommunion(spec, liturgyFixed));
@@ -1186,6 +1187,9 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
 
   // 33. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
+
+  // 33a. Closing Doxology — "Glory to Thee, O Christ our God and our hope..."
+  blocks.push(..._litClosingDoxology(spec.paschalOpening));
 
   // 34. Psalm 33
   blocks.push(..._litPsalm33(liturgyFixed));
@@ -1880,6 +1884,24 @@ function _litBlessedBeTheName(f) {
   ];
 }
 
+function _litClosingDoxology(isPaschalPeriod) {
+  const section = 'Closing Doxology';
+  const blocks = [
+    makeBlock('cd-glory', section, 'prayer', 'priest',
+      'Glory to Thee, O Christ our God and our hope, glory to Thee.'),
+  ];
+  if (isPaschalPeriod) {
+    blocks.push(makeBlock('cd-paschal', section, 'hymn', 'choir',
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (thrice)'));
+    blocks.push(makeBlock('cd-paschal-end', section, 'prayer', 'priest',
+      'And unto us He has given eternal life. Let us worship His Resurrection on the third day!'));
+  } else {
+    blocks.push(makeBlock('cd-glory-r', section, 'response', 'choir',
+      'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.'));
+  }
+  return blocks;
+}
+
 function _litPsalm33(f) {
   const section = 'Psalm 33';
   const p = f['psalm-33'];
@@ -1961,19 +1983,10 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
     blocks.push(makeBlock('dis-mag',   section, 'response', 'choir',  'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.'));
   }
 
-  blocks.push(makeBlock('dis-glory', section, 'prayer', 'priest', 'Glory to Thee, O Christ our God and our hope, glory to Thee.'));
-
-  if (isPaschalPeriod) {
-    // During Paschal period: "Christ is risen" ×3 replaces the usual Glory response
-    blocks.push(makeBlock('dis-paschal', section, 'hymn', 'choir',
-      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (thrice)'));
-    blocks.push(makeBlock('dis-paschal-end', section, 'prayer', 'priest',
-      'And unto us He has given eternal life. Let us worship His Resurrection on the third day!'));
-  } else {
-    blocks.push(makeBlock('dis-glory-r', section, 'response','choir',  'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.'));
-    blocks.push(makeBlock('dis-proper',  section, 'prayer',  'priest', `${opening} ${closing}`));
-    blocks.push(makeBlock('dis-amen',    section, 'response','choir',  'Amen.'));
-  }
+  // The Closing Doxology ("Glory to Thee, O Christ our God and our hope...")
+  // is emitted earlier, immediately after "Blessed be the Name".
+  blocks.push(makeBlock('dis-proper',  section, 'prayer',  'priest', `${opening} ${closing}`));
+  blocks.push(makeBlock('dis-amen',    section, 'response','choir',  'Amen.'));
 
   return blocks;
 }
@@ -2085,13 +2098,13 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
   // 19. Elevation + Pre-Communion
   blocks.push(..._psPreCommunion(presanctifiedFixed));
 
-  // 20. Communion Hymn
-  blocks.push(makeBlock('ch-text', 'Communion Hymn', 'hymn', 'choir',
-    presanctifiedFixed['communion-hymn'].text));
-
-  // 20a. Communion Prayer
+  // 20. Communion Prayer — said by the people before approaching the chalice.
   blocks.push(makeBlock('pc-prayer', 'Communion Prayer', 'prayer', 'all',
     presanctifiedFixed['pre-communion-prayer'].text));
+
+  // 20a. Communion Hymn — sung while the faithful are receiving.
+  blocks.push(makeBlock('ch-text', 'Communion Hymn', 'hymn', 'choir',
+    presanctifiedFixed['communion-hymn'].text));
 
   // 21. Post-Communion
   {
@@ -2112,6 +2125,9 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
 
   // 24. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
+
+  // 24a. Closing Doxology
+  blocks.push(..._litClosingDoxology(false));
 
   // 25. Psalm 33
   blocks.push(..._litPsalm33(liturgyFixed));
@@ -4343,8 +4359,9 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(S('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
     lf['prayer-ambon-basil'], { density: 'compact' }));
 
-  // ── Blessed be the Name + Psalm 33 ─────────────────────────────────────────
+  // ── Blessed be the Name + Closing Doxology + Psalm 33 ─────────────────────
   blocks.push(..._litBlessedBeTheName(lf));
+  blocks.push(..._litClosingDoxology(false));
   blocks.push(..._litPsalm33(lf));
 
   // ── Dismissal ──────────────────────────────────────────────────────────────

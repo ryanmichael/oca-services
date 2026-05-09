@@ -1140,7 +1140,11 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 21. Litany of Supplication
   blocks.push(..._litSupplication(liturgyFixed));
 
-  // 22. Creed
+  // 22. Kiss of Peace + Creed
+  const kop = liturgyFixed['kiss-of-peace'];
+  blocks.push(makeBlock('kop-call',  'The Creed', 'prayer',   'deacon', kop.deaconCall));
+  blocks.push(makeBlock('kop-resp',  'The Creed', 'response', 'choir',  kop.response));
+  blocks.push(makeBlock('kop-doors', 'The Creed', 'prayer',   'deacon', kop.doors));
   blocks.push(makeBlock('creed', 'The Creed', 'prayer', 'all',
     liturgyFixed['creed']));
 

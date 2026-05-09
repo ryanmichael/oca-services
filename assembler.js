@@ -1695,6 +1695,23 @@ function _litAnaphora(isBasil, f) {
   blocks.push(makeBlock('anamnesis', section, 'prayer', 'priest', anaphora['anamnesis']));
   blocks.push(makeBlock('anamnesis-r', section, 'response', 'choir', anaphora['anamnesis-response']));
 
+  // Epiclesis — invocation of the Holy Spirit upon the gifts
+  const epiclesis = anaphora['epiclesis'];
+  if (epiclesis) {
+    blocks.push(makeBlock('epi-invocation', section, 'prayer', 'priest',
+      epiclesis.invocation, { density: 'compact' }));
+    (epiclesis.exchanges || []).forEach((ex, i) => {
+      const speaker = ex.speaker;
+      const type = (ex.text === 'Amen.' && speaker === 'deacon') ? 'response' : 'prayer';
+      blocks.push(makeBlock(`epi-x${i}`, section, type, speaker, ex.text));
+    });
+    blocks.push(makeBlock('epi-amen', section, 'response', 'choir', epiclesis.tripleAmen));
+    if (epiclesis.fruits) {
+      blocks.push(makeBlock('epi-fruits', section, 'prayer', 'priest',
+        epiclesis.fruits, { density: 'compact' }));
+    }
+  }
+
   // Megalynarion cue
   blocks.push(makeBlock('meg-cue', section, 'prayer', 'priest', anaphora['megalynarion-cue']));
 

@@ -278,6 +278,22 @@
     "institution-response": "Amen.",
     "anamnesis": "Thine own of Thine own, we offer unto Thee, on behalf of all and for all.",
     "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks to Thee, O Lord, and we pray unto Thee, O our God.",
+    "epiclesis": {
+      "_note": "The Epiclesis — invocation of the Holy Spirit upon the gifts. Priest prays the opening invocation (in many parishes silently); a short dialogue with the deacon follows over the bread and the cup, with the choir's triple Amen at the consecration.",
+      "invocation": "Once again we offer unto Thee this rational and bloodless worship, and we beseech Thee, and we pray Thee, and we entreat Thee: send down Thy Holy Spirit upon us and upon these gifts here offered.",
+      "exchanges": [
+        { "speaker": "deacon", "text": "Bless, master, the holy bread." },
+        { "speaker": "priest", "text": "And make this bread the precious Body of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless, master, the holy cup." },
+        { "speaker": "priest", "text": "And that which is in this cup, the precious Blood of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless them both, master." },
+        { "speaker": "priest", "text": "Changing them by Thy Holy Spirit." }
+      ],
+      "tripleAmen": "Amen. Amen. Amen.",
+      "fruits": "So that they may be to those who partake, for the purification of soul, for the remission of sins, for the communion of Thy Holy Spirit, for the fulfillment of the Kingdom of Heaven, for boldness toward Thee, and not for judgment or condemnation."
+    },
     "megalynarion-cue": "Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.",
     "intercessions-exclamation": "And grant that with one mouth and one heart we may glorify and hymn Thine all-honorable and majestic Name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
     "intercessions-response": "Amen.",

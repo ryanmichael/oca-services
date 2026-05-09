@@ -1061,12 +1061,6 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 9. Kontakia
   blocks.push(..._litKontakia(spec.kontakia));
 
-  // 9a. Ikos (Pentecostarion feast Sundays)
-  if (spec.ikos) {
-    blocks.push(makeBlock('ikos-rubric', 'Kontakia', 'rubric', null, 'Ikos:'));
-    blocks.push(makeBlock('ikos', 'Kontakia', 'hymn', 'choir', spec.ikos));
-  }
-
   // 9b. Pre-Trisagion exclamation + "O Lord, save us who fear Thee" exchange
   blocks.push(makeBlock('pre-tris-excl', 'Kontakia', 'prayer', 'priest',
     'For Holy art Thou, O our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.'));
@@ -1392,11 +1386,6 @@ function _litTroparia(tropariaSpec) {
   const blocks  = [];
   if (!tropariaSpec || !tropariaSpec.length) return blocks;
   tropariaSpec.forEach((t, i) => {
-    // "Glory..." before the last troparion (when there are multiple)
-    if (i === tropariaSpec.length - 1 && tropariaSpec.length > 1) {
-      blocks.push(makeBlock('trop-glory', section, 'doxology', null,
-        'Glory to the Father, and to the Son, and to the Holy Spirit.'));
-    }
     if (t.rubric) blocks.push(makeBlock(`trop-rubric-${i}`, section, 'rubric', null, t.rubric));
     blocks.push(makeBlock(`trop-${i}`, section, 'hymn', 'choir', t.text,
       { tone: t.tone }));

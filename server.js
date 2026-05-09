@@ -1869,7 +1869,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       alleluia:    { tone: 4, verses: ['Go forth and prosper and reign, because of truth and meekness and righteousness!', 'Thou lovest righteousness, and hatest iniquity.'] },
       communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes "On 12": 4 Resurrection T4 + 4 Samaritan Ode 3 + 4 Midfeast Ode 6
-      // Source: St. Sergius Pentecostarion (pent/50.pdf) — swap for OCA when available
+      // Per OCA rubric (2026-0510-order-services.docx).
+      // Source: St. Sergius Pentecostarion (saintjonah.org/lit/lit_pascha4.htm)
       beatitudesTroparia: [
         // 4 Resurrection Beatitudes verses, Tone 4
         { tone: 4, label: 'Resurrection Beatitude', _source: 'stSergius-pentecostarion',
@@ -1880,23 +1881,23 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
           text: 'Truly, Christ hath risen! And the sepulcher beareth witness to you, O violators of the Law; for leaving His grave-clothes behind, He arose on the third day, though the stone was sealed and a watch stood before the tomb. Hades hath been made captive; death hath been slain! Christ hath not been stolen! Believe with us in the resurrection!' },
         { tone: 4, label: 'Resurrection Beatitude', _source: 'stSergius-pentecostarion',
           text: 'O ye faithful, let us entreat Him who hath risen from the dead, hath made captive the dominion of hades, and wast seen by the myrrh-bearing women and said to them: "Rejoice!", that He deliver from corruption the souls of us who ever cry out to Him with the voice of the noble thief: Remember us also in Thy kingdom!' },
-        // 4 from Samaritan Woman Canon, Ode 3 — first troparion sung twice
-        { tone: 4, label: 'Troparion of Ode 3', _source: 'stSergius-pentecostarion',
+        // 4 from Samaritan Woman Canon, Ode 3
+        { tone: 4, label: 'Troparion of Ode 3 (Samaritan Woman)', _source: 'stSergius-pentecostarion',
+          text: 'Of Thine own will wast Thou lifted up upon the Tree, O Word. The rocks were rent asunder at the sight thereof, and all creation was agitated, and the dead arose from the tombs as though from sleep.' },
+        { tone: 4, label: 'Troparion of Ode 3 (Samaritan Woman)', _source: 'stSergius-pentecostarion',
+          text: 'All the souls of the righteous were loosed from eternal bonds when they beheld Thee come unto Hades with Thy soul, O Word, and they praised Thy sovereign power, which surpasseth the mind.' },
+        { tone: 4, label: 'Troparion of Ode 3 (Samaritan Woman)', _source: 'stSergius-pentecostarion',
           text: 'An Angel shining like lightning spake unto the myrrh-bearers: Why are ye astonished? Why do ye bring myrrh and seek the Master in the grave, O ye women? He is risen, and hath raised the world up with Himself.' },
-        { tone: 4, label: 'Troparion of Ode 3', _source: 'stSergius-pentecostarion',
-          text: 'An Angel shining like lightning spake unto the myrrh-bearers: Why are ye astonished? Why do ye bring myrrh and seek the Master in the grave, O ye women? He is risen, and hath raised the world up with Himself.' },
-        { tone: 4, label: 'Troparion of Ode 3', _source: 'stSergius-pentecostarion',
-          text: 'Since Thou art the Life and Well-spring of immortality, Thou didst sit down at the well, O Compassionate One, and didst fill with Thy supremely wise waters the Samaritan woman who besought Thee and praised Thee.' },
-        { tone: 4, label: 'Troparion of Ode 3', _source: 'stSergius-pentecostarion',
+        { tone: 4, label: 'Troparion of Ode 3 (Samaritan Woman)', _source: 'stSergius-pentecostarion',
           text: 'Since Thou art the Life and Well-spring of immortality, Thou didst sit down at the well, O Compassionate One, and didst fill with Thy supremely wise waters the Samaritan woman who besought Thee and praised Thee.' },
         // 4 from Midfeast Canon, Ode 6
-        { tone: 8, label: 'Troparion of Ode 6', _source: 'stSergius-pentecostarion',
-          text: 'O Jesus, Who takest care for all the ends of the earth, Thou didst go up to the temple at Mid-feast, as John hath said, and taught the multitudes the Word of truth.' },
-        { tone: 8, label: 'Troparion of Ode 6', _source: 'stSergius-pentecostarion',
-          text: 'Thou didst open Thy lips, O Master, and didst preach to the world the most pure Father and the all-holy Spirit, preserving Thy kinship with both even after Thine Incarnation.' },
-        { tone: 8, label: 'Glory', _source: 'stSergius-pentecostarion',
+        { tone: 8, label: 'Troparion of Ode 6 (Midfeast)', _source: 'stSergius-pentecostarion',
+          text: 'O Jesus, Who takest care for all the ends of the earth, Thou wentest up to the temple at Mid-feast, as John doth cry, and taughtest the multitudes the word of truth.' },
+        { tone: 8, label: 'Troparion of Ode 6 (Midfeast)', _source: 'stSergius-pentecostarion',
           text: 'Thou didst accomplish the work of the Father and didst confirm Thy words by Thy deeds, for Thou didst perform healings and signs, O Savior, raising the paralytic, cleansing lepers, and resurrecting the dead.' },
-        { tone: 8, label: 'Both now', _source: 'stSergius-pentecostarion',
+        { tone: 8, label: 'Troparion of Ode 6 (Midfeast)', _source: 'stSergius-pentecostarion',
+          text: 'The beginningless Son received a beginning and became man, taking upon Himself what is proper to our nature. And at Mid-feast He taught and said: Hasten ye unto the ever-flowing Spring, that ye may draw forth life.' },
+        { tone: 8, label: 'Theotokion (Ode 6, Midfeast)', _source: 'stSergius-pentecostarion',
           text: 'We praise thee who didst remain a virgin after giving birth; thee alone do we glorify as both Virgin and Mother, O pure Maiden, Bride of God; for from thee God truly became incarnate and thus quickened us.' },
       ],
     },
@@ -2264,10 +2265,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     alleluia = { tone: wa.tone, verses: wa.verses };
   }
 
-  // ── Entrance hymn: feast override → Sunday → weekday ──────────────────────
+  // ── Entrance hymn: feast override → Paschal period → Sunday → weekday ────
+  // From Pascha through the Leavetaking, the entrance hymn takes the
+  // Pentecostarion form ("In the gatherings bless God the Lord, from the
+  // wellsprings of Israel"), regardless of day of week.
   let entranceHymn;
   if (feast?.entranceHymn) {
     entranceHymn = { text: feast.entranceHymn };
+  } else if (isPaschalPeriod) {
+    entranceHymn = { text: 'In the gatherings bless God the Lord, from the wellsprings of Israel. O Son of God, who didst rise from the dead, save us who sing to Thee: Alleluia!' };
   } else if (isSunday) {
     entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!' };
   } else {
@@ -2321,7 +2327,6 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     entranceHymn,
     troparia,
     kontakia,
-    ikos: pentOverride?.ikos || null,
     trisagion: { substitution: getTrisagionSubstitution(date) },
     prokeimenon,
     epistle:  epistleR ? { book: epistleR.book, display: epistleR.display, text: extractPassageText(epistleR) } : null,

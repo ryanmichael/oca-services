@@ -1723,6 +1723,14 @@ function _litAnaphora(isBasil, f, megalynarionSpec) {
     blocks.push(..._litMegalynarion(megalynarionSpec, isBasil, f));
   }
 
+  // Commemoration of the hierarchy
+  if (anaphora['commemoration-hierarchs']) {
+    blocks.push(makeBlock('comm-hierarchs', section, 'prayer', 'priest',
+      anaphora['commemoration-hierarchs'], { density: 'compact' }));
+    blocks.push(makeBlock('comm-hierarchs-r', section, 'response', 'choir',
+      anaphora['commemoration-hierarchs-response']));
+  }
+
   // Intercessions exclamation + Final blessing
   blocks.push(makeBlock('interc-excl', section, 'prayer', 'priest', anaphora['intercessions-exclamation']));
   blocks.push(makeBlock('interc-resp', section, 'response', 'choir', anaphora['intercessions-response']));

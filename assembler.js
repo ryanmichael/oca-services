@@ -1907,7 +1907,7 @@ function _litPsalm33(f) {
   const p = f['psalm-33'];
   return [
     makeBlock('ps33-rubric', section, 'rubric', null, p.rubric),
-    makeBlock('ps33-text',   section, 'prayer', 'reader', p.text),
+    makeBlock('ps33-text',   section, 'prayer', 'reader', p.text, { density: 'compact' }),
     makeBlock('ps33-glory',  section, 'doxology', null, p.glory),
   ];
 }

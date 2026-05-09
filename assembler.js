@@ -1970,13 +1970,23 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
   const blocks = [
-    makeBlock('dis-wisdom',  section, 'prayer',  'deacon', 'Wisdom!'),
-    makeBlock('dis-bless',   section, 'prayer',  'choir',  'Father, bless.'),
-    makeBlock('dis-blessed', section, 'prayer',  'priest', 'Blessed is He that is, Christ our true God, always, now and ever, and unto ages of ages.'),
     makeBlock('dis-confirm', section, 'response','choir',  'Amen. Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages.'),
   ];
 
-  if (isPaschalPeriod && liturgyFixed && liturgyFixed['megalynarion-paschal']) {
+  // Seasonal Theotokos magnification at the dismissal.
+  // Selection order:
+  //   1. Explicit override on the calendar entry (`spec.dismissalTheotokos`)
+  //      — used for Ascension period, Pentecost period, great-feast irmos, etc.
+  //      May be either { priestCue, hymn } pair or just a hymn string.
+  //   2. Paschal period (Pascha → Pascha leavetaking): "The Angel cried..."
+  //   3. Default: "Most holy Theotokos, save us." + "More honorable than the Cherubim..."
+  const dt = dismissalSpec.dismissalTheotokos;
+  if (dt && typeof dt === 'object' && dt.hymn) {
+    if (dt.priestCue) blocks.push(makeBlock('dis-theos', section, 'prayer', 'priest', dt.priestCue));
+    blocks.push(makeBlock('dis-mag', section, 'response', 'choir', dt.hymn));
+  } else if (typeof dt === 'string' && dt.length > 0) {
+    blocks.push(makeBlock('dis-mag', section, 'response', 'choir', dt));
+  } else if (isPaschalPeriod && liturgyFixed && liturgyFixed['megalynarion-paschal']) {
     blocks.push(makeBlock('dis-mag-paschal', section, 'response', 'choir', liturgyFixed['megalynarion-paschal']));
   } else {
     blocks.push(makeBlock('dis-theos', section, 'prayer',   'priest', 'Most holy Theotokos, save us.'));

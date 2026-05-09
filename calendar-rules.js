@@ -1453,38 +1453,50 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   }
 
   // ── Lord I Call stichera slots ────────────────────────────────────────────
-  // Pentecostarion Sunday Great Vespers: 10 stichera total
-  // (7 resurrectional from Octoechos + 3 Pentecostarion from DB).
-  // Thomas Sunday, Ascension, Pentecost: 10 all from DB (feast-only).
+  // Pentecostarion Sunday Great Vespers: 10 stichera total. Most Sundays use
+  // 7 resurrectional + 3 feast idiomela. Holy Fathers Sunday is special:
+  // 3 resurrectional + 3 Ascension idiomela + 4 Fathers idiomela. Thomas /
+  // Ascension / Pentecost are 10 all from feast.
   // Source: OCA rubrics for Pentecostarion Sunday Great Vespers.
-  const FEAST_STICHERA_COUNT = {
-    'pentecostarion.week.2.sunday': 10, // Thomas Sunday — all feast stichera
-    'pentecostarion.week.3.sunday': 3,  // Myrrhbearers — 7 resurrectional + 3 feast
-    'pentecostarion.week.4.sunday': 3,  // Paralytic — 7 resurrectional + 3 feast
-    'pentecostarion.week.5.sunday': 3,  // Samaritan Woman — 7 resurrectional + 3 feast
-    'pentecostarion.week.6.sunday': 3,  // Blind Man — 7 resurrectional + 3 feast
-    'pentecostarion.week.7.sunday': 3,  // Holy Fathers — 7 resurrectional + 3 feast
-    'pentecostarion.ascension':     10, // Ascension — all feast stichera
-    'pentecostarion.pentecost':     10, // Pentecost — all feast stichera
+  const PENT_SUNDAY_LIC_LAYOUT = {
+    'pentecostarion.week.2.sunday': [{ count: 10, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.week.3.sunday': [{ count: 7, source: 'octoechos' }, { count: 3, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.week.4.sunday': [{ count: 7, source: 'octoechos' }, { count: 3, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.week.5.sunday': [{ count: 7, source: 'octoechos' }, { count: 3, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.week.6.sunday': [{ count: 7, source: 'octoechos' }, { count: 3, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.week.7.sunday': [
+      { count: 3, source: 'octoechos' },
+      { count: 3, category: 'ascensionIdiomela', source: 'db', label: 'For the Ascension' },
+      { count: 4, category: 'fatherIdiomela',    source: 'db', label: 'For the Fathers'   },
+    ],
+    'pentecostarion.ascension':     [{ count: 10, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
+    'pentecostarion.pentecost':     [{ count: 10, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
   };
   const totalStichera = (dow === 'sunday' && litKey in PENT_SUNDAY_TONES) ? 10 : 6;
-  const feastCount  = FEAST_STICHERA_COUNT[litKey] || 0;
-  const resCount    = totalStichera - feastCount;
-  const allVerses   = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
-  const licSlots    = [];
-  if (resCount > 0) {
-    licSlots.push({
-      verses: allVerses.slice(0, resCount), count: resCount,
-      source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.resurrectional`,
-      tone, label: 'Resurrectional',
-    });
-  }
-  if (feastCount > 0) {
-    licSlots.push({
-      verses: allVerses.slice(resCount), count: feastCount,
-      source: 'db', key: `${litKey}.vespers.lordICall`,
-      tone, label: 'Stichera',
-    });
+  const layout        = PENT_SUNDAY_LIC_LAYOUT[litKey] || [{ count: totalStichera, source: 'octoechos' }];
+  const allVerses     = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
+  const licSlots      = [];
+  let cursor = 0;
+  for (const part of layout) {
+    const verseSlice = allVerses.slice(cursor, cursor + part.count);
+    if (verseSlice.length === 0) break;
+    if (part.source === 'octoechos') {
+      licSlots.push({
+        verses: verseSlice, count: part.count,
+        source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.resurrectional`,
+        tone, label: 'Resurrectional',
+      });
+    } else {
+      licSlots.push({
+        verses: verseSlice, count: part.count,
+        source: 'db', key: `${litKey}.vespers.lordICall`,
+        // Select by category so the slot pulls the right idiomela
+        // regardless of where they live in the source's flat hymns array.
+        category: part.category,
+        tone, label: part.label || 'Stichera',
+      });
+    }
+    cursor += part.count;
   }
 
   // Glory: feast doxastichon from DB; Now and ever: Dogmatikon from Octoechos.

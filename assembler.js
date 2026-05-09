@@ -1671,9 +1671,12 @@ function _litAnaphora(isBasil, f) {
     blocks.push(makeBlock(`sc-${i}`, section, type, speaker, line.text));
   });
 
-  // Preface (incipit — priest says silently; cue is audible)
-  blocks.push(makeBlock('preface-rubric', section, 'rubric', null,
-    'The priest reads the Preface prayer (mostly in silence). It concludes:'));
+  // Preface — full prayer (or incipit if full text not yet sourced)
+  const prefaceText = anaphora['preface'] || anaphora['preface-incipit'];
+  if (prefaceText) {
+    blocks.push(makeBlock('preface', section, 'prayer', 'priest', prefaceText));
+  }
+  // Audible cue introducing the Sanctus
   blocks.push(makeBlock('preface-cue', section, 'prayer', 'priest',
     anaphora['sanctus-introduction']));
 

@@ -122,8 +122,9 @@
   // ─── Block rendering ─────────────────────────────────────────────────────
 
   function renderBlock(block, opts) {
-    const { type, speaker, text, tone, label, source } = block;
+    const { type, speaker, text, tone, label, source, density } = block;
     const choirMode = opts && opts.choirMode;
+    const compactCls = density === 'compact' ? ' compact' : '';
 
     // Choir mode: service divider
     if (type === 'choir-divider') {
@@ -147,7 +148,7 @@
 
       case 'prayer':
       case 'response':
-        return `<div class="prayer">${speakerPrefix(speaker)}${esc(text)}</div>`;
+        return `<div class="prayer${compactCls}">${speakerPrefix(speaker)}${esc(text)}</div>`;
 
       case 'doxology':
         return `<div class="prayer" style="font-style:italic;color:var(--muted)">${esc(text)}</div>`;

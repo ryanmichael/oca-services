@@ -252,7 +252,7 @@
     "doors": "The doors! The doors! In wisdom let us attend!"
   },
 
-  "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by Whom all things were made; Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and was made man; and was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again, according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and He shall come again with glory to judge the living and the dead, Whose Kingdom shall have no end.\n\nAnd I believe in the Holy Spirit, the Lord, the Giver of Life, Who proceedeth from the Father; Who with the Father and the Son together is worshiped and glorified; Who spake by the Prophets.\n\nIn one holy, catholic, and apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead, and the life of the age to come. Amen.",
+  "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and he was crucified for us under Pontius Pilate, and suffered, and was buried; and the third day he rose again, according to the Scriptures, and ascended into heaven, and sits at the right hand of the Father; and he shall come again with glory to judge the living and the dead; whose kingdom shall have no end.\n\nAnd in the Holy Spirit, the Lord, the Giver of life, who proceeds from the Father; who with the Father and the Son together is worshipped and glorified; who spoke by the prophets.\n\nIn One, Holy, Catholic, and Apostolic Church. I acknowledge one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
 
   "anaphora-opening": {
     "_note": "Deacon's call and people's response immediately before the Sursum Corda. Same for Chrysostom and Basil.",
@@ -278,7 +278,26 @@
     "institution-response": "Amen.",
     "anamnesis": "Thine own of Thine own, we offer unto Thee, on behalf of all and for all.",
     "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks to Thee, O Lord, and we pray unto Thee, O our God.",
+    "epiclesis": {
+      "_note": "The Epiclesis — invocation of the Holy Spirit upon the gifts. Priest prays the opening invocation (in many parishes silently); a short dialogue with the deacon follows over the bread and the cup, with the choir's triple Amen at the consecration.",
+      "invocation": "Once again we offer unto Thee this rational and bloodless worship, and we beseech Thee, and we pray Thee, and we entreat Thee: send down Thy Holy Spirit upon us and upon these gifts here offered.",
+      "exchanges": [
+        { "speaker": "deacon", "text": "Bless, master, the holy bread." },
+        { "speaker": "priest", "text": "And make this bread the precious Body of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless, master, the holy cup." },
+        { "speaker": "priest", "text": "And that which is in this cup, the precious Blood of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless them both, master." },
+        { "speaker": "priest", "text": "Changing them by Thy Holy Spirit." }
+      ],
+      "tripleAmen": "Amen. Amen. Amen.",
+      "fruits": "So that they may be to those who partake, for the purification of soul, for the remission of sins, for the communion of Thy Holy Spirit, for the fulfillment of the Kingdom of Heaven, for boldness toward Thee, and not for judgment or condemnation."
+    },
+    "commemoration-saints": "Again we offer unto Thee this rational worship for those who have departed in the faith: forefathers, fathers, patriarchs, prophets, apostles, preachers, evangelists, martyrs, confessors, ascetics, and for every righteous spirit made perfect in faith.",
     "megalynarion-cue": "Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.",
+    "commemoration-hierarchs": "Among the first remember, O Lord, our Metropolitan [N.], our Archbishop [N.], and our Bishop [N.], whom do Thou grant unto Thy holy churches in peace, safety, honor, and health, for many years, rightly defining the word of Thy truth.",
+    "commemoration-hierarchs-response": "And all mankind.",
     "intercessions-exclamation": "And grant that with one mouth and one heart we may glorify and hymn Thine all-honorable and majestic Name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
     "intercessions-response": "Amen.",
     "final-blessing": "And the mercies of our great God and Savior Jesus Christ be with you all.",
@@ -339,7 +358,7 @@
   },
 
   "lords-prayer": {
-    "text": "Our Father, Who art in heaven, hallowed be Thy name; Thy Kingdom come; Thy will be done on earth, as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+    "text": "Our Father, who art in heaven, hallowed be thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one.",
     "doxology": "For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
     "response": "Amen."
   },

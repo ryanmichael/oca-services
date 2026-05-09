@@ -1148,11 +1148,10 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   blocks.push(makeBlock('creed', 'The Creed', 'prayer', 'all',
     liturgyFixed['creed']));
 
-  // 23. Anaphora
-  blocks.push(..._litAnaphora(isBasil, liturgyFixed));
-
-  // 24. Megalynarion / Hymn to the Theotokos
-  blocks.push(..._litMegalynarion(spec.megalynarion, isBasil, liturgyFixed));
+  // 23. Anaphora — includes the Megalynarion / Hymn to the Theotokos at the
+  //     liturgically correct point (between the megalynarion cue and the
+  //     intercessions exclamation).
+  blocks.push(..._litAnaphora(isBasil, liturgyFixed, spec.megalynarion));
 
   // 25. Litany before Lord's Prayer + Lord's Prayer
   blocks.push(..._litLordsPrayer(isBasil, liturgyFixed));
@@ -1183,7 +1182,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 32. Prayer behind the Ambon
   const ambonKey = isBasil ? 'prayer-ambon-basil' : 'prayer-ambon-chrysostom';
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    liturgyFixed[ambonKey]));
+    liturgyFixed[ambonKey], { density: 'compact' }));
 
   // 33. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
@@ -1471,7 +1470,7 @@ function _litEpistle(epistle) {
   ];
   if (epistle.text) {
     blocks.push(makeBlock('ep-ref', section, 'rubric', null, epistle.display || `${epistle.book} ${epistle.pericope}`));
-    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader', epistle.text));
+    blocks.push(makeBlock('ep-text', section, 'prayer', 'reader', epistle.text, { density: 'compact' }));
   } else {
     blocks.push(makeBlock('ep-text', section, 'prayer', 'reader',
       `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`));
@@ -1512,7 +1511,7 @@ function _litGospel(gospel) {
   ];
   if (gospel.text) {
     blocks.push(makeBlock('gos-ref', section, 'rubric', null, gospel.display || `${gospel.book} ${gospel.pericope}`));
-    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader', gospel.text));
+    blocks.push(makeBlock('gos-text', section, 'prayer', 'reader', gospel.text, { density: 'compact' }));
   } else {
     blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
       `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`));
@@ -1651,7 +1650,7 @@ function _litSupplication(f) {
   return blocks;
 }
 
-function _litAnaphora(isBasil, f) {
+function _litAnaphora(isBasil, f, megalynarionSpec) {
   const section  = 'Anaphora';
   const key      = isBasil ? 'anaphora-basil' : 'anaphora-chrysostom';
   const anaphora = f[key];
@@ -1674,7 +1673,7 @@ function _litAnaphora(isBasil, f) {
   // Preface — full prayer (or incipit if full text not yet sourced)
   const prefaceText = anaphora['preface'] || anaphora['preface-incipit'];
   if (prefaceText) {
-    blocks.push(makeBlock('preface', section, 'prayer', 'priest', prefaceText));
+    blocks.push(makeBlock('preface', section, 'prayer', 'priest', prefaceText, { density: 'compact' }));
   }
   // Audible cue introducing the Sanctus
   blocks.push(makeBlock('preface-cue', section, 'prayer', 'priest',
@@ -1695,8 +1694,42 @@ function _litAnaphora(isBasil, f) {
   blocks.push(makeBlock('anamnesis', section, 'prayer', 'priest', anaphora['anamnesis']));
   blocks.push(makeBlock('anamnesis-r', section, 'response', 'choir', anaphora['anamnesis-response']));
 
-  // Megalynarion cue
+  // Epiclesis — invocation of the Holy Spirit upon the gifts
+  const epiclesis = anaphora['epiclesis'];
+  if (epiclesis) {
+    blocks.push(makeBlock('epi-invocation', section, 'prayer', 'priest',
+      epiclesis.invocation, { density: 'compact' }));
+    (epiclesis.exchanges || []).forEach((ex, i) => {
+      const speaker = ex.speaker;
+      const type = (ex.text === 'Amen.' && speaker === 'deacon') ? 'response' : 'prayer';
+      blocks.push(makeBlock(`epi-x${i}`, section, type, speaker, ex.text));
+    });
+    blocks.push(makeBlock('epi-amen', section, 'response', 'choir', epiclesis.tripleAmen));
+    if (epiclesis.fruits) {
+      blocks.push(makeBlock('epi-fruits', section, 'prayer', 'priest',
+        epiclesis.fruits, { density: 'compact' }));
+    }
+  }
+
+  // Commemoration of the saints — leads directly into the megalynarion cue
+  if (anaphora['commemoration-saints']) {
+    blocks.push(makeBlock('comm-saints', section, 'prayer', 'priest',
+      anaphora['commemoration-saints'], { density: 'compact' }));
+  }
+
+  // Megalynarion cue + the choir's Hymn to the Theotokos
   blocks.push(makeBlock('meg-cue', section, 'prayer', 'priest', anaphora['megalynarion-cue']));
+  if (megalynarionSpec !== undefined) {
+    blocks.push(..._litMegalynarion(megalynarionSpec, isBasil, f));
+  }
+
+  // Commemoration of the hierarchy
+  if (anaphora['commemoration-hierarchs']) {
+    blocks.push(makeBlock('comm-hierarchs', section, 'prayer', 'priest',
+      anaphora['commemoration-hierarchs'], { density: 'compact' }));
+    blocks.push(makeBlock('comm-hierarchs-r', section, 'response', 'choir',
+      anaphora['commemoration-hierarchs-response']));
+  }
 
   // Intercessions exclamation + Final blessing
   blocks.push(makeBlock('interc-excl', section, 'prayer', 'priest', anaphora['intercessions-exclamation']));
@@ -1758,7 +1791,8 @@ function _litPreCommunion(isBasil, f) {
     makeBlock('pc-bow',        section, 'prayer',   'deacon', pc.bowHeads.deacon),
     makeBlock('pc-bow-r',      section, 'response', 'choir',  pc.bowHeads.peopleResponse),
     makeBlock('pc-bow-prayer', section, 'prayer',   'priest',
-      isBasil ? pc['bow-prayer-basil'] : pc['bow-prayer-chrysostom']),
+      isBasil ? pc['bow-prayer-basil'] : pc['bow-prayer-chrysostom'],
+      { density: 'compact' }),
     makeBlock('pc-elevation-d', section, 'prayer',  'deacon', pc.elevation.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',  'priest', pc.elevation.priest),
     makeBlock('pc-elevation-r', section, 'response','choir',  pc.elevation.people),
@@ -1824,7 +1858,8 @@ function _litThanksgiving(isBasil, f) {
     blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
   });
   blocks.push(makeBlock('lt-prayer', section, 'prayer', 'priest',
-    isBasil ? lit['prayer-basil'] : lit['prayer-chrysostom']));
+    isBasil ? lit['prayer-basil'] : lit['prayer-chrysostom'],
+    { density: 'compact' }));
   blocks.push(
     makeBlock('lt-comm',      section, 'prayer',   'deacon', lit.commemoration),
     makeBlock('lt-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
@@ -2073,7 +2108,7 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
 
   // 23. Prayer behind the Ambon
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    presanctifiedFixed['prayer-ambon']));
+    presanctifiedFixed['prayer-ambon'], { density: 'compact' }));
 
   // 24. Blessed be the Name
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
@@ -2182,7 +2217,7 @@ function _psThanksgiving(f) {
     blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
   });
   blocks.push(
-    makeBlock('lt-prayer',    section, 'prayer',   'priest', lit.prayer),
+    makeBlock('lt-prayer',    section, 'prayer',   'priest', lit.prayer, { density: 'compact' }),
     makeBlock('lt-comm',      section, 'prayer',   'deacon', lit.commemoration),
     makeBlock('lt-comm-resp', section, 'response', 'choir',  lit.commemorationResponse),
     makeBlock('lt-excl',      section, 'prayer',   'priest', lit.exclamation),
@@ -4062,7 +4097,7 @@ function assembleLamentations(f, vespersFixed) {
     blocks.push(S('ep-prok-v', section, 'verse', 'reader', ep.prokeimenon.verse));
     blocks.push(S('ep-announce', section, 'rubric', 'deacon',
       `The Reading from ${ep.book} (${ep.pericope}).`));
-    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text));
+    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text, { density: 'compact' }));
     blocks.push(S('ep-alleluia', section, 'hymn', 'choir',
       'Alleluia, alleluia, alleluia!', { tone: ep.alleluia.tone }));
     for (let i = 0; i < ep.alleluia.verses.length; i++) {
@@ -4239,7 +4274,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
     blocks.push(S('ep-prok-v', section, 'verse', 'reader', ep.prokeimenon.verse));
     blocks.push(S('ep-announce', section, 'rubric', 'deacon',
       `The Reading from ${ep.book} (${ep.pericope}).`));
-    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text));
+    blocks.push(S('ep-text', section, 'prayer', 'reader', ep.text, { density: 'compact' }));
   }
 
   // ── Gospel ─────────────────────────────────────────────────────────────────
@@ -4249,7 +4284,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
       'Glory to Thee, O Lord, glory to Thee!'));
     blocks.push(S('gospel-label', section, 'rubric', 'deacon',
       `${vf.gospel.label} (${vf.gospel.book} ${vf.gospel.pericope})`));
-    blocks.push(S('gospel-text', section, 'prayer', 'priest', vf.gospel.text));
+    blocks.push(S('gospel-text', section, 'prayer', 'priest', vf.gospel.text, { density: 'compact' }));
     blocks.push(S('gospel-glory-end', section, 'doxology', 'choir',
       'Glory to Thee, O Lord, glory to Thee!'));
   }
@@ -4272,11 +4307,10 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(..._litSupplication(lf));
   blocks.push(S('creed', 'The Creed', 'prayer', 'all', lf['creed']));
 
-  // ── Anaphora of St. Basil ──────────────────────────────────────────────────
-  blocks.push(..._litAnaphora(isBasil, lf));
-
-  // ── Megalynarion — "Do not lament Me, O Mother" (replaces "All of creation") ──
-  blocks.push(..._litMegalynarion(vf.megalynarion, isBasil, lf));
+  // ── Anaphora of St. Basil — includes the Megalynarion ("Do not lament Me,
+  //    O Mother", replacing "All of creation") at the liturgically correct
+  //    point between the megalynarion cue and the intercessions exclamation.
+  blocks.push(..._litAnaphora(isBasil, lf, vf.megalynarion));
 
   // ── Lord's Prayer ──────────────────────────────────────────────────────────
   blocks.push(..._litLordsPrayer(isBasil, lf));
@@ -4307,7 +4341,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
 
   // ── Prayer behind the Ambon ────────────────────────────────────────────────
   blocks.push(S('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
-    lf['prayer-ambon-basil']));
+    lf['prayer-ambon-basil'], { density: 'compact' }));
 
   // ── Blessed be the Name + Psalm 33 ─────────────────────────────────────────
   blocks.push(..._litBlessedBeTheName(lf));

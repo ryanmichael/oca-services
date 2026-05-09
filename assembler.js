@@ -337,9 +337,14 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     const sourceTexts = resolveSource(slot.source, slot.key, sources);
     if (!sourceTexts) continue;
     slot.verses.forEach((verseNum, i) => {
+      // When the slot specifies a category, filter the source's hymns to just
+      // the matching ones (robust against data ordering / index drift).
+      const allHymns = sourceTexts.hymns || [];
+      const hymns = slot.category
+        ? allHymns.filter(h => h && h.category === slot.category)
+        : allHymns;
       // When more slots than hymns (e.g. 7 resurrectional from 6 unique),
       // the first hymn is doubled (standard typikon practice: sing first sticheron twice).
-      const hymns = sourceTexts.hymns || [];
       const extra = slot.count - hymns.length;
       const hymnIdx = extra > 0 && i < extra ? 0 : i - Math.max(0, extra);
       const hymn = hymns[hymnIdx] || null;

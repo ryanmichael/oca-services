@@ -1483,6 +1483,9 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     licSlots.push({
       verses: allVerses.slice(resCount), count: feastCount,
       source: 'db', key: `${litKey}.vespers.lordICall`,
+      // Select by category so the slot pulls the day-specific feast idiomela
+      // regardless of where they live in the source's flat hymns array.
+      category: 'feastIdiomela',
       tone, label: 'Stichera',
     });
   }

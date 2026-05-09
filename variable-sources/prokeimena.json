@@ -7,26 +7,27 @@
 
   "weekday": {
     "saturdayGreatVespers": {
+      "tone": 6,
+      "label": "The Lord is King",
+      "note": "Sung at Saturday Great Vespers (Saturday evening, entering Sunday). Tone 6, from Psalm 92.",
+      "refrain": "The Lord is King; He is clothed with majesty.",
+      "psalmRef": "Ps. 92:1a",
+      "verses": [
+        { "text": "The Lord is robed, He is girded with strength.", "psalmRef": "Ps. 92:1b" },
+        { "text": "For He has established the world, so that it shall never be moved.", "psalmRef": "Ps. 92:2" },
+        { "text": "Holiness befits Thy house, O Lord, forevermore!", "psalmRef": "Ps. 92:7b" }
+      ]
+    },
+    "fridayEveningGreatProkeimenon": {
       "tone": 8,
       "label": "Great Prokeimenon",
-      "note": "Sung at Saturday Great Vespers in place of the weekday prokeimenon. Always Tone 8.",
+      "note": "Sung at Friday evening Vespers (entering Saturday) commemorating the dead. Tone 8, from Psalm 60.",
       "refrain": "Thou hast given an inheritance to them that fear Thee, O Lord.",
       "psalmRef": "Ps. 60:5b",
       "verses": [
         { "text": "From the ends of the earth I call to Thee.", "psalmRef": "Ps. 60:2a" },
         { "text": "I will take shelter under the shadow of Thy wings.", "psalmRef": "Ps. 60:4b" },
         { "text": "So I will ever sing praises to Thy Name.", "psalmRef": "Ps. 60:8a" }
-      ]
-    },
-    "saturday": {
-      "tone": 6,
-      "label": "The Lord is King",
-      "refrain": "The Lord is King: He is robed in majesty.",
-      "psalmRef": "Ps. 92:1a",
-      "verses": [
-        { "text": "The Lord is robed, He is girded with strength.", "psalmRef": "Ps. 92:1b" },
-        { "text": "For He has established the world, so that it shall never be moved.", "psalmRef": "Ps. 92:2" },
-        { "text": "Holiness befits Thy house, O Lord, forevermore!", "psalmRef": "Ps. 92:7b" }
       ]
     },
     "sunday": {

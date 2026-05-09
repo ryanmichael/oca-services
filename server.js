@@ -2396,6 +2396,22 @@ function buildNestedPath(dotPath, value) {
  *   - All other hymns are collected into hymns[] in document order.
  *   - text/tone/label are convenience aliases for hymns[0] (idiomelon pattern).
  */
+function categorizeHymn(label) {
+  if (!label) return null;
+  if (/for the Resurrection/i.test(label))                 return 'resurrectional';
+  if (/for Midfeast/i.test(label))                         return 'midfeastIdiomela';
+  if (/for the Samaritan Woman/i.test(label))              return 'feastIdiomela';
+  if (/for the Paralytic/i.test(label))                    return 'feastIdiomela';
+  if (/for the Myrrhbearers/i.test(label))                 return 'feastIdiomela';
+  if (/for the Blind Man/i.test(label))                    return 'feastIdiomela';
+  if (/for the Holy Fathers/i.test(label))                 return 'feastIdiomela';
+  if (/for Thomas/i.test(label) || /for Antipascha/i.test(label)) return 'feastIdiomela';
+  if (/by Romanos/i.test(label))                           return 'feastIdiomela';
+  if (/Theotokion/i.test(label))                           return 'theotokion';
+  if (/Dogmatikon/i.test(label))                           return 'dogmatikon';
+  return null;
+}
+
 function transformSectionBlocks(section, blocks) {
   const hymns = [];
   let glory      = null;
@@ -2419,7 +2435,11 @@ function transformSectionBlocks(section, blocks) {
     // Only applies when verse blocks exist — sparse data has no refrain block.
     if (section === 'lordICall' && !seenVerse && hasVerseBlocks) continue;
 
-    hymns.push({ text: b.text, tone: b.tone, label: b.label, ...(b.source_filename && { provenance: 'OCA' }) });
+    hymns.push({
+      text: b.text, tone: b.tone, label: b.label,
+      category: categorizeHymn(b.label),
+      ...(b.source_filename && { provenance: 'OCA' }),
+    });
   }
 
   return {

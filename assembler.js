@@ -1657,6 +1657,13 @@ function _litAnaphora(isBasil, f) {
   const anaphora = f[key];
   const blocks   = [];
 
+  // Deacon's call before Sursum Corda
+  const opening = f['anaphora-opening'];
+  if (opening) {
+    blocks.push(makeBlock('anaphora-call', section, 'prayer',   'deacon', opening.deaconCall));
+    blocks.push(makeBlock('anaphora-resp', section, 'response', 'choir',  opening.response));
+  }
+
   // Sursum Corda
   anaphora['sursum-corda'].forEach((line, i) => {
     const speaker = line.speaker === 'people' ? 'choir' : 'priest';

@@ -225,8 +225,12 @@ function assembleKathisma(calendarDay, fixedTexts) {
   // Kathisma omitted for this occasion (Holy Week, Bright Week, etc.)
   if (kathNum === null) return [];
 
-  // Saturday Great Vespers: sing Kathisma 1, Section 1 — "Blessed Is The Man"
-  if (vespers.serviceType === 'greatVespers' && dayOfWeek === 'saturday') {
+  // Saturday Great Vespers (= Sunday Vespers, sung Saturday evening): sing
+  // Kathisma 1, Section 1 — the "Blessed Is The Man" antiphon. After the
+  // Vespers date-shift, the calendar entry is for Sunday so dayOfWeek is
+  // 'sunday'; older entries used 'saturday'. Match either.
+  if (vespers.serviceType === 'greatVespers' &&
+      (dayOfWeek === 'sunday' || dayOfWeek === 'saturday')) {
     return assembleBlessedIsTheMan(fixedTexts);
   }
 

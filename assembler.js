@@ -1699,13 +1699,17 @@ function _litAnaphora(isBasil, f, megalynarionSpec) {
   // Sanctus
   blocks.push(makeBlock('sanctus', section, 'hymn', 'choir', anaphora['sanctus']));
 
-  // Institution narrative (priest says; people respond)
-  blocks.push(makeBlock('inst-rubric', section, 'rubric', null,
-    'The priest continues in silence. At the words of institution, the choir responds:'));
-  blocks.push(makeBlock('inst-body', section, 'prayer', 'priest', anaphora['institution-body']));
-  blocks.push(makeBlock('inst-body-r', section, 'response', 'choir', anaphora['institution-response']));
-  blocks.push(makeBlock('inst-cup', section, 'prayer', 'priest', anaphora['institution-cup']));
-  blocks.push(makeBlock('inst-cup-r', section, 'response', 'choir', anaphora['institution-response']));
+  // Institution narrative — the post-Sanctus prayer flows directly into
+  // the Words of Institution for the bread ("...saying: Take, eat...").
+  // Combine into one priest block so the prayer is rendered as a single
+  // continuous utterance.
+  const bodyText = anaphora['post-sanctus']
+    ? `${anaphora['post-sanctus']} ${anaphora['institution-body']}`
+    : anaphora['institution-body'];
+  blocks.push(makeBlock('inst-body',   section, 'prayer',   'priest', bodyText, { density: 'compact' }));
+  blocks.push(makeBlock('inst-body-r', section, 'response', 'choir',  anaphora['institution-response']));
+  blocks.push(makeBlock('inst-cup',    section, 'prayer',   'priest', anaphora['institution-cup']));
+  blocks.push(makeBlock('inst-cup-r',  section, 'response', 'choir',  anaphora['institution-response']));
 
   // Anamnesis / Oblation
   blocks.push(makeBlock('anamnesis', section, 'prayer', 'priest', anaphora['anamnesis']));

@@ -1108,7 +1108,11 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   }
 
   // 17. Litany for the Catechumens
-  blocks.push(..._litCatechumens(liturgyFixed));
+  // Omitted during the Paschal period (Bright Week + Pentecostarion).
+  const season17 = calendarDay.liturgicalContext?.season;
+  if (season17 !== 'brightWeek' && season17 !== 'pentecostarion') {
+    blocks.push(..._litCatechumens(liturgyFixed));
+  }
 
   // 18–19. Litanies of the Faithful
   blocks.push(..._litLitaniesFaithful(liturgyFixed));

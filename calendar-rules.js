@@ -76,7 +76,20 @@ function getAllSaints(year) {
  * i.e., the Sunday that started that week sets the tone.
  */
 function getTone(date) {
-  const year = date.getUTCFullYear();
+  // Pentecostarion override: weekdays follow the tone of the immediately
+  // preceding Pentecostarion Sunday (Thomas=1, Myrrhbearers=2, Paralytic=3,
+  // Samaritan=4, Blind Man=5, Holy Fathers=6). Bright Week and Pentecost
+  // week have no Octoechos tone proper; return 0 so callers can branch.
+  const year   = date.getUTCFullYear();
+  const pascha = calculatePascha(year);
+  const diff   = Math.floor((date - pascha) / DAY_MS);
+  if (diff >= 0 && diff <= 49) {
+    if (diff <= 6) return 0;                 // Bright Week — no tone
+    const weekIdx = Math.floor((diff - 7) / 7); // 0..5 for weeks 2..7
+    if (weekIdx <= 5) return weekIdx + 1;    // weeks 2..7 → tones 1..6
+    return 0;                                // Pentecost itself — no tone
+  }
+
   // Tone 1 begins the Sunday AFTER All Saints, not All Saints itself
   let anchor = new Date(getAllSaints(year).getTime() + 7 * DAY_MS);
   if (date < anchor) anchor = new Date(getAllSaints(year - 1).getTime() + 7 * DAY_MS);
@@ -1408,6 +1421,17 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     tone = PENT_SUNDAY_TONES[litKey];
   }
 
+  // ── Paschal greeting window: Pascha day through Pascha leavetaking ────────
+  // "Christ is risen" is sung at the start of services from Pascha (+0)
+  // through the Tuesday before Ascension (+38). After +38 (Pascha leavetaking)
+  // it ceases until next Pascha. This applies to weekdays too, not just
+  // Pentecostarion Sundays.
+  const [py, pm, pd]  = dateStr.split('-').map(Number);
+  const dateObj       = new Date(Date.UTC(py, pm - 1, pd));
+  const pascha        = calculatePascha(py);
+  const daysSincePascha = Math.floor((dateObj - pascha) / DAY_MS);
+  const isPaschalGreeting = daysSincePascha >= 0 && daysSincePascha <= 38;
+
   // ── Saturday: ordinary-time Great Vespers ──────────────────────────────────
   if (dow === 'saturday') {
     const entry = generateOrdinaryTimeSaturday(dateStr, tone);
@@ -1472,8 +1496,15 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     'pentecostarion.ascension':     [{ count: 10, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
     'pentecostarion.pentecost':     [{ count: 10, category: 'feastIdiomela', source: 'db', label: 'Stichera' }],
   };
+  // Sundays/named feasts in Pentecostarion: 10 stichera per the Sunday's
+  // rubric (see PENT_SUNDAY_LIC_LAYOUT above). Weekday Daily Vespers: 6
+  // stichera, pulling day-of-week-specific Octoechos content (e.g. for
+  // Thursday Vespers the Apostles/St. Nicholas themed stichera in the
+  // week's tone). Menaion stichera are injected at runtime by the server.
   const totalStichera = (dow === 'sunday' && litKey in PENT_SUNDAY_TONES) ? 10 : 6;
-  const layout        = PENT_SUNDAY_LIC_LAYOUT[litKey] || [{ count: totalStichera, source: 'octoechos' }];
+  const weekdayKey    = `${tk}.${dow}.vespers.lordICall`;
+  const layout        = PENT_SUNDAY_LIC_LAYOUT[litKey]
+    || [{ count: totalStichera, source: 'octoechos', key: weekdayKey, label: 'Octoechos' }];
   const allVerses     = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
   const licSlots      = [];
   let cursor = 0;
@@ -1481,10 +1512,13 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     const verseSlice = allVerses.slice(cursor, cursor + part.count);
     if (verseSlice.length === 0) break;
     if (part.source === 'octoechos') {
+      // Sundays use Saturday-evening resurrectional content; weekdays use
+      // the day-of-week-specific Octoechos key passed in `part.key`.
+      const octoKey = part.key || `${tk}.saturday.vespers.lordICall.resurrectional`;
       licSlots.push({
         verses: verseSlice, count: part.count,
-        source: 'octoechos', key: `${tk}.saturday.vespers.lordICall.resurrectional`,
-        tone, label: 'Resurrectional',
+        source: 'octoechos', key: octoKey,
+        tone, label: part.label || 'Resurrectional',
       });
     } else {
       licSlots.push({
@@ -1539,13 +1573,16 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     // "Now and ever": "This is the day of Resurrection..." + "Christ is risen" ×1
     apostichaNow = { source: 'fixed', key: 'paschalAposticha.now', label: 'Paschal' };
   } else {
+    // Weekday Pentecostarion: use day-of-week-specific Octoechos aposticha.
+    // (Sundays/named feasts are handled by the branches above.)
+    const apostBase = `${tk}.${dow}.vespers.aposticha`;
     apostichaSlots = [
-      { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
+      { position: 1, source: 'octoechos', key: `${apostBase}.hymns.0`, tone, label: 'Aposticha' },
       { position: 2, repeatPrevious: true },
       { position: 3, repeatPrevious: true },
     ];
     apostichaGlory = null;
-    apostichaNow = { source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.theotokion`, tone, label: 'Theotokion' };
+    apostichaNow = { source: 'octoechos', key: `${apostBase}.theotokion`, tone, label: 'Theotokion' };
   }
 
   return {
@@ -1561,7 +1598,7 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     vespers: {
       serviceType,
       rubricNote: name,
-      paschalOpening: isPentSunday,       // "Christ is risen" 2½ times before Psalm 103
+      paschalOpening: isPaschalGreeting,  // "Christ is risen" before Psalm 103 (through Pascha leavetaking)
       isPentecostarionSunday: isPentSunday, // suppress Menaion injection
       paschalAposticha: isPentSunday,     // use Paschal Ps 67 verses in aposticha
       lordICall: {

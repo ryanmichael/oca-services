@@ -12,30 +12,36 @@
  */
 
 // Ordinary time — evening kathisma by day of week.
-// Source: OCA Reader's Service Book / Psalter schedule.
-// "Saturday" here = Great Vespers (Kathisma 1, Section 1).
+// Source: Slavonic Typikon. At every weekday Vespers the appointed
+// kathisma is Kathisma 18 (the Songs of Ascent, Pss 119–133). The
+// Saturday-evening service (= Sunday Vespers) uses Kathisma 1, sung
+// as the "Blessed Is The Man" antiphon. Sunday-evening Vespers
+// (entering Monday) omits the kathisma.
+//
+// dayOfWeek here is the day the Vespers is FOR (i.e., after the
+// date-shift it is the next civil day). 'sunday' therefore means
+// Saturday Great Vespers; 'monday' is Sunday-evening Vespers; etc.
 const ORDINARY_TIME = {
   sunday:    1,
-  monday:    4,
-  tuesday:   6,
-  wednesday: 9,
-  thursday:  11,
-  friday:    13,
-  saturday:  1,
+  monday:    null,
+  tuesday:   18,
+  wednesday: 18,
+  thursday:  18,
+  friday:    18,
+  saturday:  18,
 };
 
-// Great Lent — daily vespers kathisma by day of week.
-// Lent intensifies the Psalter reading; additional kathismata are added
-// to Matins and the Hours, but Vespers follows a similar weekday pattern.
-// TODO: verify against full Lenten Psalter schedule.
+// Great Lent — same weekday rotation as ordinary time. The Lenten
+// Psalter is read more intensively at Matins and the Hours; Vespers
+// follows the same Kathisma-18 pattern.
 const GREAT_LENT = {
   sunday:    1,
-  monday:    4,
-  tuesday:   6,
-  wednesday: 9,
-  thursday:  11,
-  friday:    13,
-  saturday:  1,
+  monday:    null,
+  tuesday:   18,
+  wednesday: 18,
+  thursday:  18,
+  friday:    18,
+  saturday:  18,
 };
 
 /**

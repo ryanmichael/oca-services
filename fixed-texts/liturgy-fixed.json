@@ -189,6 +189,16 @@
   },
 
   "cherubic-hymn": {
+    "_setting": "plain",
+    "_setting_label": "Plain prose text (no musical repetitions or held-note markers)",
+    "_source": "OCA / Antiochian Liturgikon — 'We, who mystically represent the Cherubim' translation",
+    "part1": "We, who mystically represent the Cherubim, and who sing to the Life-creating Trinity the thrice-holy hymn, let us now lay aside all earthly cares.",
+    "amen": "Amen.",
+    "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts.",
+    "alleluia": "Alleluia! Alleluia! Alleluia!"
+  },
+
+  "cherubic-hymn-tchaikovsky": {
     "_setting": "tchaikovsky-dgm",
     "_setting_label": "Tchaikovsky setting; English paraphrase by D G M",
     "_source": "https://santacruzmusic.net/chorale/201512/tcha-che_02954.pdf",

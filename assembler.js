@@ -1070,15 +1070,21 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 9. Kontakia
   blocks.push(..._litKontakia(spec.kontakia));
 
-  // 9b. Pre-Trisagion exclamation + "O Lord, save us who fear Thee" exchange
-  blocks.push(makeBlock('pre-tris-excl', 'Kontakia', 'prayer', 'priest',
-    'For Holy art Thou, O our God, and unto Thee we ascribe glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.'));
-  blocks.push(makeBlock('pre-tris-pious-d',  'Kontakia', 'prayer',   'deacon', 'O Lord, save us who fear Thee.'));
-  blocks.push(makeBlock('pre-tris-pious-c',  'Kontakia', 'response', 'choir',  'O Lord, save us who fear Thee.'));
-  blocks.push(makeBlock('pre-tris-hear-d',   'Kontakia', 'prayer',   'deacon', 'And hear us.'));
-  blocks.push(makeBlock('pre-tris-hear-c',   'Kontakia', 'response', 'choir',  'And hear us.'));
-  blocks.push(makeBlock('pre-tris-ages-d',   'Kontakia', 'prayer',   'deacon', 'And unto ages of ages. Amen.'));
-  blocks.push(makeBlock('pre-tris-amen', 'Kontakia', 'response', 'choir', 'Amen.'));
+  // 9b. Short litany before the Trisagion — Slavonic parish form.
+  //   Deacon: "Let us pray to the Lord."   Choir: "Lord, have mercy."
+  //   Deacon: "O Lord, save the pious."    Choir: "O Lord, save the pious."
+  //   Deacon: "And hear us."               Choir: "And hear us."
+  //   Priest: "...And unto ages of ages."  Choir: "Amen."
+  // The priest's "For Holy art Thou, O our God..." prayer is said
+  // silently here; only its closing clause is audible.
+  blocks.push(makeBlock('pre-tris-pray-d',  'Kontakia', 'prayer',   'deacon', 'Let us pray to the Lord.'));
+  blocks.push(makeBlock('pre-tris-pray-c',  'Kontakia', 'response', 'choir',  'Lord, have mercy.'));
+  blocks.push(makeBlock('pre-tris-pious-d', 'Kontakia', 'prayer',   'deacon', 'O Lord, save the pious.'));
+  blocks.push(makeBlock('pre-tris-pious-c', 'Kontakia', 'response', 'choir',  'O Lord, save the pious.'));
+  blocks.push(makeBlock('pre-tris-hear-d',  'Kontakia', 'prayer',   'deacon', 'And hear us.'));
+  blocks.push(makeBlock('pre-tris-hear-c',  'Kontakia', 'response', 'choir',  'And hear us.'));
+  blocks.push(makeBlock('pre-tris-ages-d',  'Kontakia', 'prayer',   'priest', 'And unto ages of ages. Amen.'));
+  blocks.push(makeBlock('pre-tris-amen',    'Kontakia', 'response', 'choir',  'Amen.'));
 
   // 10. Trisagion
   blocks.push(..._litTrisagion(spec.trisagion, liturgyFixed));

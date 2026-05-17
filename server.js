@@ -2308,8 +2308,6 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   let entranceHymn;
   if (feast?.entranceHymn) {
     entranceHymn = { text: feast.entranceHymn };
-  } else if (isPaschalPeriod) {
-    entranceHymn = { text: 'In the gatherings bless God the Lord, from the wellsprings of Israel. O Son of God, who didst rise from the dead, save us who sing to Thee: Alleluia!' };
   } else if (isSunday) {
     entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!' };
   } else {

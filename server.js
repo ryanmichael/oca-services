@@ -1919,7 +1919,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       // Source: St. Sergius Pentecostarion (Lambertsen), Blind Man Ikos
       ikos: 'Grant me a stream of ineffable wisdom and knowledge from on high, O Christ, Thou Light of them that are in darkness and Guide of all those who are gone astray, that I may tell of those things that the divine book of the Gospel of peace hath taught, to wit, the miracle that was wrought upon the blind man; for though blind from birth, he receiveth the physical eyes as well as the eyes of the soul, as he crieth out in faith: Of those in darkness art Thou the most radiant Light.',
       prokeimenon: { tone: 8, refrain: 'Pray and make your vows before the Lord our God!', verse: 'In Judah God is known; His name is great in Israel.' },
-      alleluia:    { tone: 8, verses: ['O come, let us rejoice in the Lord; let us make a joyful noise unto God our Savior!', 'Let us come before His presence with thanksgiving, and let us make a joyful noise unto Him with psalms.'] },
+      alleluia:    { tone: 8, verses: ['Look upon me and have mercy on me!', 'Guide my steps according to Thy word!'] },
       communionHymn: 'Receive the Body of Christ; taste the fountain of immortality!\nPraise the Lord from the heavens, praise Him in the highest!\nAlleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 Resurrection (Tone 5) + 4 from Pentecostarion Canon Ode 6
       // Source: St. Sergius Pentecostarion (pent/60.pdf) — swap for OCA when available
@@ -2012,6 +2012,42 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const readings   = orthocalData.readings || [];
   const epistleR   = readings.find(r => r.source === 'Epistle');
   const gospelR    = readings.find(r => r.source === 'Gospel');
+
+  // orthocal returns the generic book name "Apostol" for all epistles; the
+  // actual book lives in the display field (e.g. "Acts 16.16-34",
+  // "Romans 6.18-23"). Derive a proper liturgical announcement from it.
+  //   Acts → "the Acts of the Holy Apostles"
+  //   Pauline → "the Epistle of the Holy Apostle Paul to the X"
+  //   Catholic → "the Epistle of the Holy Apostle X"
+  function announceEpistleBook(display) {
+    if (!display) return 'Epistle';
+    const m = display.match(/^((?:[123] )?[A-Za-z]+)/);
+    const book = m ? m[1] : null;
+    if (!book) return 'Epistle';
+    // Phrasing slots in after "The reading from the " — return the part
+    // that follows. (No leading "the".)
+    if (/^Acts$/i.test(book)) return 'Acts of the Holy Apostles';
+    const paulineMap = {
+      Romans: 'Romans',
+      '1 Corinthians': 'Corinthians', '2 Corinthians': 'Corinthians',
+      Galatians: 'Galatians', Ephesians: 'Ephesians',
+      Philippians: 'Philippians', Colossians: 'Colossians',
+      '1 Thessalonians': 'Thessalonians', '2 Thessalonians': 'Thessalonians',
+      '1 Timothy': 'Timothy', '2 Timothy': 'Timothy',
+      Titus: 'Titus', Philemon: 'Philemon', Hebrews: 'Hebrews',
+    };
+    if (book in paulineMap) {
+      return `Epistle of the Holy Apostle Paul to the ${paulineMap[book]}`;
+    }
+    const catholicMap = {
+      James: 'James', '1 Peter': 'Peter', '2 Peter': 'Peter',
+      '1 John': 'John', '2 John': 'John', '3 John': 'John', Jude: 'Jude',
+    };
+    if (book in catholicMap) {
+      return `Catholic Epistle of the Holy Apostle ${catholicMap[book]}`;
+    }
+    return book;
+  }
 
   // Extract full passage text from orthocal's passage[] array
   function extractPassageText(reading) {
@@ -2329,7 +2365,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     kontakia,
     trisagion: { substitution: getTrisagionSubstitution(date) },
     prokeimenon,
-    epistle:  epistleR ? { book: epistleR.book, display: epistleR.display, text: extractPassageText(epistleR) } : null,
+    epistle:  epistleR ? { book: announceEpistleBook(epistleR.display), display: epistleR.display, text: extractPassageText(epistleR) } : null,
     alleluia,
     gospel:   gospelR ? { book: gospelR.book, display: gospelR.display, text: extractPassageText(gospelR) } : null,
     megalynarion,

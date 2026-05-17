@@ -1175,15 +1175,26 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   // 25. Litany before Lord's Prayer + Lord's Prayer
   blocks.push(..._litLordsPrayer(isBasil, liturgyFixed));
 
-  // 26. Pre-Communion (Bow prayer + Elevation)
-  blocks.push(..._litPreCommunion(isBasil, liturgyFixed));
-
-  // 27. Communion Prayer ("I believe, O Lord...") — said by the people
-  //     before approaching the chalice.
-  blocks.push(..._litCommunionPrayer(liturgyFixed));
-
-  // 28. Communion Hymn — sung while the faithful are receiving.
-  blocks.push(..._litCommunionHymn(spec.communionHymn));
+  // 26–28. Pre-Communion + Communion Hymn + Communion Prayer.
+  // During the Paschal period (Bright Week + Pentecostarion), the priest's
+  // "In the fear of God, and with faith, draw near!" and the choir's
+  // "Blessed is He that comes in the Name of the Lord..." are replaced
+  // by the antiphonal Communion Hymn (Koinonikon) sung immediately after
+  // "One is holy, one is Lord..."; the Communion Prayer is said after
+  // the hymn. Outside the Paschal period the standard sequence applies.
+  const paschalCommunionOrder = (
+    calendarDay.liturgicalContext?.season === 'brightWeek' ||
+    calendarDay.liturgicalContext?.season === 'pentecostarion'
+  );
+  if (paschalCommunionOrder) {
+    blocks.push(..._litPreCommunion(isBasil, liturgyFixed, { paschal: true }));
+    blocks.push(..._litCommunionHymn(spec.communionHymn));
+    blocks.push(..._litCommunionPrayer(liturgyFixed));
+  } else {
+    blocks.push(..._litPreCommunion(isBasil, liturgyFixed));
+    blocks.push(..._litCommunionPrayer(liturgyFixed));
+    blocks.push(..._litCommunionHymn(spec.communionHymn));
+  }
 
   // 29. Post-Communion Blessing
   blocks.push(..._litPostCommunion(spec, liturgyFixed));
@@ -1809,10 +1820,10 @@ function _litLordsPrayer(isBasil, f) {
   return blocks;
 }
 
-function _litPreCommunion(isBasil, f) {
+function _litPreCommunion(isBasil, f, opts = {}) {
   const section = 'Pre-Communion';
   const pc = f['pre-communion'];
-  return [
+  const blocks = [
     makeBlock('pc-peace',      section, 'prayer',   'priest', pc.bowHeads.text),
     makeBlock('pc-peace-r',    section, 'response', 'choir',  pc.bowHeads.response),
     makeBlock('pc-bow',        section, 'prayer',   'deacon', pc.bowHeads.deacon),
@@ -1823,9 +1834,15 @@ function _litPreCommunion(isBasil, f) {
     makeBlock('pc-elevation-d', section, 'prayer',  'deacon', pc.elevation.deacon),
     makeBlock('pc-elevation-p', section, 'prayer',  'priest', pc.elevation.priest),
     makeBlock('pc-elevation-r', section, 'response','choir',  pc.elevation.people),
-    makeBlock('pc-draw-near',   section, 'prayer',  'priest', pc.drawNear),
-    makeBlock('pc-blessed',     section, 'response','choir',  pc.blessedIsHe),
   ];
+  // Outside the Paschal period: priest's "In the fear of God..." call +
+  // choir's "Blessed is He that comes...". In the Paschal period these
+  // are replaced by the antiphonal Communion Hymn sung after "One is holy".
+  if (!opts.paschal) {
+    blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
+    blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
+  }
+  return blocks;
 }
 
 function _litCommunionPrayer(f) {

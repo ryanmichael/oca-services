@@ -1489,6 +1489,13 @@ function _litProkeimenon(prok) {
     makeBlock('prok-verse',    section, 'verse',  'reader', `V. ${prok.verse}`),
     makeBlock('prok-refrain2', section, 'hymn',  'choir',  prok.refrain, { tone: prok.tone }),
   ];
+  // Co-celebrated saint's prokeimenon: rubric + refrain (no verse, per OCA layout).
+  if (prok.secondary) {
+    const sec = prok.secondary;
+    blocks.push(makeBlock('prok-2-rubric', section, 'rubric', null,
+      `Tone ${sec.tone} Prokeimenon (${sec.label || ''}):`));
+    blocks.push(makeBlock('prok-2-refrain', section, 'hymn', 'choir', sec.refrain, { tone: sec.tone }));
+  }
   return blocks;
 }
 
@@ -1507,6 +1514,19 @@ function _litEpistle(epistle) {
   } else {
     blocks.push(makeBlock('ep-text', section, 'prayer', 'reader',
       `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`));
+  }
+  // Co-celebrated saint's epistle, read immediately after the first (no second
+  // announcement of "Wisdom!"; the rubric simply names the additional reading).
+  if (epistle.secondary) {
+    const sec = epistle.secondary;
+    blocks.push(makeBlock('ep-2-reader', section, 'prayer', 'reader',
+      `The reading from the ${sec.book || 'Epistle'}.`));
+    if (sec.text) {
+      blocks.push(makeBlock('ep-2-ref', section, 'rubric', null, sec.display));
+      blocks.push(makeBlock('ep-2-text', section, 'prayer', 'reader', sec.text, { density: 'compact' }));
+    } else {
+      blocks.push(makeBlock('ep-2-text', section, 'prayer', 'reader', `[${sec.display}]`));
+    }
   }
   blocks.push(
     makeBlock('ep-peace',   section, 'prayer',  'priest', 'Peace be unto thee.'),
@@ -1528,6 +1548,16 @@ function _litAlleluia(alleluia) {
     blocks.push(makeBlock(`all-v${i}`, section, 'verse', 'reader', `V. ${v}`));
     blocks.push(makeBlock(`all-r${i}`, section, 'hymn',  'choir', 'Alleluia!'));
   });
+  // Co-celebrated saint's alleluia verse(s) follow in the saint's tone.
+  if (alleluia.secondary) {
+    const sec = alleluia.secondary;
+    blocks.push(makeBlock('all-2-rubric', section, 'rubric', null,
+      `Tone ${sec.tone}${sec.label ? ` (${sec.label})` : ''}:`));
+    (sec.verses || []).forEach((v, i) => {
+      blocks.push(makeBlock(`all-2-v${i}`, section, 'verse', 'reader', `V. ${v}`));
+      blocks.push(makeBlock(`all-2-r${i}`, section, 'hymn', 'choir', 'Alleluia!'));
+    });
+  }
   return blocks;
 }
 
@@ -1548,6 +1578,18 @@ function _litGospel(gospel) {
   } else {
     blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
       `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`));
+  }
+  // Co-celebrated saint's gospel, read immediately after the first.
+  if (gospel.secondary) {
+    const sec = gospel.secondary;
+    blocks.push(makeBlock('gos-2-rubric', section, 'prayer', 'priest',
+      `The reading of the Holy Gospel according to ${sec.book}.`));
+    if (sec.text) {
+      blocks.push(makeBlock('gos-2-ref', section, 'rubric', null, sec.display));
+      blocks.push(makeBlock('gos-2-text', section, 'prayer', 'reader', sec.text, { density: 'compact' }));
+    } else {
+      blocks.push(makeBlock('gos-2-text', section, 'prayer', 'reader', `[${sec.display}]`));
+    }
   }
   blocks.push(makeBlock('gos-end', section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'));
   return blocks;
@@ -1863,6 +1905,13 @@ function _litCommunionHymn(communionHymn) {
   if (communionHymn.label)
     blocks.push(makeBlock('ch-label', section, 'rubric', null, communionHymn.label));
   blocks.push(makeBlock('ch-text', section, 'hymn', 'choir', communionHymn.text));
+  // Co-celebrated saint's communion hymn follows.
+  if (communionHymn.secondary) {
+    const sec = communionHymn.secondary;
+    if (sec.label)
+      blocks.push(makeBlock('ch-2-label', section, 'rubric', null, sec.label));
+    blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
+  }
   return blocks;
 }
 
@@ -1888,7 +1937,6 @@ function _litPostCommunion(spec, f) {
   }
   return [
     makeBlock('pcb-priest',   section, 'prayer',   'priest', pc.priest),
-    makeBlock('pcb-response', section, 'response', 'choir',  pc.people),
     makeBlock('we-have-seen', section, 'hymn',     'choir',  f['we-have-seen']),
   ];
 }
@@ -1994,11 +2042,14 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   }
 
   const liturgySaintName = isBasil ? 'our holy father Basil the Great, Archbishop of Caesarea in Cappadocia' : 'our father among the saints John Chrysostom, Archbishop of Constantinople';
-  const saintsStr = (dismissalSpec.saints || []).join('; ');
+  const saintsList = (dismissalSpec.saints || []).filter(Boolean);
   const dayPatron = dismissalSpec.dayPatron || null;
 
   let opening;
-  if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
+  if (dismissalSpec.dismissalIntroit) {
+    // Festal introit names the feast (e.g., Ascension: "Who ascended in glory from us into heaven…").
+    opening = dismissalSpec.dismissalIntroit;
+  } else if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
     opening = `May Christ our true God,`;
   } else if (dismissalSpec.opening === 'sunday') {
     opening = 'May He Who rose from the dead, Christ our true God,';
@@ -2010,7 +2061,7 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   const parts = ['through the prayers of His most pure Mother'];
   if (dayPatron) parts.push(`of ${dayPatron}`);
   parts.push(`of ${liturgySaintName}`);
-  if (saintsStr) parts.push(`of ${saintsStr}`);
+  saintsList.forEach(s => parts.push(`of ${s}`));
   const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
   const blocks = [

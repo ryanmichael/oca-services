@@ -1148,6 +1148,7 @@ const GREAT_FEAST_VARIANTS = {
           'Hear this, all peoples; give ear, all inhabitants of the world.',
           'Earth-born and the sons of men, rich and poor together.',
           'My mouth shall speak wisdom, and the meditation of my heart shall be understanding.',
+          'I will incline my ear to a proverb; I will solve my riddle in psalmody.',
         ],
       },
     },
@@ -1162,6 +1163,13 @@ const GREAT_FEAST_VARIANTS = {
     entranceHymn: 'God has gone up with a shout, the Lord with the sound of a trumpet. O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, Christ the Giver of Life, who has ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
     communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia.',
+    // Festal dismissal introit + seasonal Theotokos magnification (used Pascha+39..+47).
+    // Source: OCA 2026-0521-tt.docx Department of Liturgical Music & Translations.
+    dismissalIntroit: 'May Christ our true God, Who ascended in glory from us into heaven, and is seated at the right hand of God the Father,',
+    dismissalTheotokos: {
+      priestCue: 'Magnify, O my soul, Christ the Giver of Life Who has ascended from earth to heaven.',
+      hymn: 'We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
+    },
   },
 
   pentecost: {
@@ -1709,6 +1717,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const DAY = 86400000;
   const daysSincePascha = Math.round((date - pascha) / DAY);
   const isPaschalPeriod = daysSincePascha >= 0 && daysSincePascha <= 38;
+  // Ascension (Pascha+39) through Apodosis of Ascension (Friday before Pentecost = Pascha+47).
+  // During this period the Troparion of the Ascension replaces "We have seen the true Light"
+  // and is used as the seasonal Theotokos magnification at the dismissal.
+  // Source: OCA Department of Liturgical Music & Translations service text (2026-0521-tt.docx).
+  const isAscensionAfterfeast = daysSincePascha >= 39 && daysSincePascha <= 47;
 
   // ── Pentecostarion Sunday overrides ─────────────────────────────────────────
   // Each Pentecostarion feast Sunday has its own prokeimenon, alleluia, communion
@@ -2008,10 +2021,55 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
+  // ── Co-celebrated saints overlay ────────────────────────────────────────────
+  // For dates where a major fixed-calendar commemoration falls on a Great Feast,
+  // OCA's published "combined" service appends a secondary set of propers:
+  // troparion + kontakion (before the feast kontakion), 2nd prokeimenon,
+  // 2nd epistle/alleluia/gospel, 2nd communion hymn.
+  // Source: OCA Department of Liturgical Music & Translations service texts.
+  const COCELEBRATED_OVERLAYS = {
+    // May 21: Sts. Constantine and Helen co-celebrated with Ascension
+    '5-21': {
+      troparion: {
+        tone: 8,
+        rubric: 'Troparion of Sts. Constantine and Helen, Tone 8:',
+        text: 'Thy servant Constantine, O Lord and only Lover of man,\nbeheld the figure of the Cross in the heavens.\nLike Paul, not having received his call from men,\nbut as an apostle among rulers set by Thy hand over the royal city,\nhe preserved lasting peace through the prayers of the Theotokos.',
+      },
+      kontakion: {
+        tone: 3,
+        rubric: 'Kontakion of Sts. Constantine and Helen, Tone 3:',
+        connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+        text: 'Today Constantine and his mother Helen reveal the precious Cross,\nthe weapon of Orthodox Christians against their enemies,\nfor it is manifest for us as a great and fearful sign in struggle.',
+      },
+      prokeimenon: {
+        tone: 8,
+        label: 'Sts. Constantine and Helen',
+        refrain: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe.',
+      },
+      alleluia: {
+        tone: 1,
+        label: 'Sts. Constantine and Helen',
+        verses: ['I have exalted one chosen out of My people.'],
+      },
+      communionHymn: {
+        label: 'Sts. Constantine and Helen',
+        text: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia.',
+      },
+      // Second readings for epistle and gospel are pulled automatically from
+      // orthocal's readings[] array when present (Acts 26:1-5,12-20; John 10:1-9).
+    },
+  };
+  const dateKey = `${mo}-${dy}`;
+  const overlay = COCELEBRATED_OVERLAYS[dateKey] || null;
+
   // ── Scripture readings from the API ──────────────────────────────────────────
   const readings   = orthocalData.readings || [];
-  const epistleR   = readings.find(r => r.source === 'Epistle');
-  const gospelR    = readings.find(r => r.source === 'Gospel');
+  const epistleAll = readings.filter(r => r.source === 'Epistle');
+  const gospelAll  = readings.filter(r => r.source === 'Gospel');
+  const epistleR   = epistleAll[0];
+  const gospelR    = gospelAll[0];
+  const epistleR2  = epistleAll[1] || null;
+  const gospelR2   = gospelAll[1] || null;
 
   // orthocal returns the generic book name "Apostol" for all epistles; the
   // actual book lives in the display field (e.g. "Acts 16.16-34",
@@ -2119,6 +2177,21 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // If no kontakia at all, add the default Theotokos kontakion as the final kontakion
   // (OCA rubric: when no other kontakion is appointed, "O protection of Christians..." is sung)
   // This is already handled by the dismissal troparia section, so leave kontakia empty if none found.
+
+  // Layer co-celebrated saints onto troparia/kontakia. The saint's troparion is
+  // appended after the feast troparion; the saint's kontakion is inserted BEFORE
+  // the feast kontakion (per OCA combined-service layout — "Glory…" then saint
+  // kontakion, then "Now and ever…" then feast kontakion).
+  if (overlay?.troparion) {
+    troparia.push(overlay.troparion);
+  }
+  if (overlay?.kontakion && kontakia.length > 0) {
+    // Force "Now and ever..." connector onto the feast kontakion (was implicit default)
+    kontakia[0] = { ...kontakia[0], connector: 'Now and ever, and unto ages of ages. Amen.' };
+    kontakia.unshift(overlay.kontakion);
+  } else if (overlay?.kontakion) {
+    kontakia.push(overlay.kontakion);
+  }
 
   // ── Communion Hymn ───────────────────────────────────────────────────────────
   const COMMUNION_HYMNS = {
@@ -2285,6 +2358,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
   }
 
+  // Attach co-celebrated secondary prokeimenon (e.g., Constantine & Helen on Ascension)
+  if (prokeimenon && overlay?.prokeimenon) {
+    prokeimenon = { ...prokeimenon, secondary: overlay.prokeimenon };
+  }
+
   if (feast?.alleluia) {
     const fa = feast.alleluia;
     alleluia = { tone: fa.tone, verses: fa.verses };
@@ -2329,12 +2407,20 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     megalynarion = null;
   }
 
+  // Attach co-celebrated secondary alleluia (e.g., Constantine & Helen on Ascension)
+  if (alleluia && overlay?.alleluia) {
+    alleluia = { ...alleluia, secondary: overlay.alleluia };
+  }
+
   // ── Communion hymn: feast → Pentecostarion Sunday → day-of-week ───────────
-  const communionHymn = feast?.communionHymn
+  let communionHymn = feast?.communionHymn
     ? { text: feast.communionHymn }
     : pentOverride?.communionHymn
       ? { text: pentOverride.communionHymn }
       : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+  if (overlay?.communionHymn) {
+    communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
+  }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
@@ -2363,19 +2449,59 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     kontakia,
     trisagion: { substitution: getTrisagionSubstitution(date) },
     prokeimenon,
-    epistle:  epistleR ? { book: announceEpistleBook(epistleR.display), display: epistleR.display, text: extractPassageText(epistleR) } : null,
+    epistle:  epistleR ? {
+      book: announceEpistleBook(epistleR.display),
+      display: epistleR.display,
+      text: extractPassageText(epistleR),
+      secondary: epistleR2 ? {
+        book: announceEpistleBook(epistleR2.display),
+        display: epistleR2.display,
+        text: extractPassageText(epistleR2),
+      } : null,
+    } : null,
     alleluia,
-    gospel:   gospelR ? { book: gospelR.book, display: gospelR.display, text: extractPassageText(gospelR) } : null,
+    gospel:   gospelR ? {
+      book: gospelR.book,
+      display: gospelR.display,
+      text: extractPassageText(gospelR),
+      secondary: gospelR2 ? {
+        book: gospelR2.book,
+        display: gospelR2.display,
+        text: extractPassageText(gospelR2),
+      } : null,
+    } : null,
     megalynarion,
     cherubicOverride,
     communionHymn,
     paschalOpening: isPaschalPeriod,
-    weHaveSeen: pentOverride?.weHaveSeen || (isPaschalPeriod ? 'paschal' : null),
+    weHaveSeen:
+      pentOverride?.weHaveSeen
+      || (isPaschalPeriod ? 'paschal' : null)
+      || (isAscensionAfterfeast
+        ? 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!'
+        : null),
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || null,
       dayPatron: DAY_PATRONS[dow] || null,
-      saints:  (orthocalData.saints || []).slice(0, 3),
+      // Dismissal saints: prefer orthocal's "feasts" (major commemorations) over
+      // "saints" (minor entries). On a great feast, skip feasts[0] — it's named
+      // in the introit. Co-celebrated commemorations (Constantine & Helen on
+      // Ascension, etc.) come from feasts[1+]; fall back to minor saints if empty.
+      saints: (() => {
+        const f = orthocalData.feasts || [];
+        const s = orthocalData.saints || [];
+        const coCelebrated = feast ? f.slice(1) : f;
+        return [...coCelebrated, ...s].slice(0, 3);
+      })(),
+      // Festal dismissal introit and seasonal Theotokos magnification.
+      // Apply on the feast itself and through its afterfeast period.
+      dismissalIntroit:
+        feast?.dismissalIntroit
+        || (isAscensionAfterfeast ? GREAT_FEAST_VARIANTS.ascension.dismissalIntroit : null),
+      dismissalTheotokos:
+        feast?.dismissalTheotokos
+        || (isAscensionAfterfeast ? GREAT_FEAST_VARIANTS.ascension.dismissalTheotokos : null),
     },
     dismissalTroparia: feast ? {
       troparion: feast.troparia?.[0] || null,

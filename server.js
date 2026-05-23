@@ -3177,7 +3177,7 @@ function getDayLabel(entry, dow, season) {
       'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
       'pentecostarion.week.5.sunday': 'Sunday of the Samaritan Woman',
       'pentecostarion.week.6.sunday': 'Sunday of the Blind Man',
-      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers',
+      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers of the 1st Ecumenical Council — Afterfeast of the Ascension',
       'pentecostarion.ascension':     'The Ascension of our Lord',
       'pentecostarion.pentecost':     'Holy Pentecost',
     };
@@ -3615,10 +3615,28 @@ function handleRequest(req, res) {
       const isBurialVespers = dayEntry?.vespers?.serviceKey === 'burialVespers';
       const vespersDate = isBurialVespers ? date : getNextDateStr(date);
 
-      // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API
+      // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API.
+      // For vigil-rank Sundays with OT prophecies (e.g. Holy Fathers), enrich
+      // otReadings with full scripture text from orthocal.
       let entryOverride = null;
       try {
         const baseEntry = getCalendarEntry(vespersDate);
+        if (baseEntry?.vespers?.otReadings?.length > 0) {
+          const orthocalData = await fetchOrthocalDay(vespersDate);
+          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
+          const enrichedReadings = baseEntry.vespers.otReadings.map((r, i) => {
+            const match = vesperReadings[i];
+            if (match?.passage?.length) {
+              const text = match.passage.map(p => p.content).join(' ');
+              return { ...r, text };
+            }
+            return r;
+          });
+          entryOverride = {
+            ...baseEntry,
+            vespers: { ...baseEntry.vespers, otReadings: enrichedReadings },
+          };
+        }
         if (baseEntry?.liturgicalContext?.season === 'greatLent' &&
             baseEntry?.vespers?.serviceType === 'dailyVespers') {
           const orthocalData = await fetchOrthocalDay(vespersDate);

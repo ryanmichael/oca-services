@@ -1543,21 +1543,41 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   // Pentecostarion Sunday aposticha (OCA rubric): 1 Resurrectional + Paschal stichera
   // with Psalm 67 verses. Glory: Pentecostarion, Now and ever: "This is the day…"
   // Major feasts (Thomas, Ascension, Pentecost): all aposticha from DB.
+  // Holy Fathers Sunday (week 7) is AFTER Apodosis of Pascha (Pascha+38), so
+  // Paschal aposticha no longer apply — uses regular Octoechos pattern
+  // (1 idiomelon + 3 resurrectional with Ps 92 verses) which is stored in DB.
   const isPentSunday = dow === 'sunday' && litKey in PENT_SUNDAY_TONES;
   const DB_FULL_APOSTICHA = new Set([
     'pentecostarion.week.2.sunday',   // Thomas Sunday
+    'pentecostarion.week.7.sunday',   // Holy Fathers (after Apodosis of Pascha)
     'pentecostarion.ascension',        // Ascension
     'pentecostarion.pentecost',        // Pentecost
   ]);
   const useDbAposticha = DB_FULL_APOSTICHA.has(litKey);
 
+  // How many stichera the DB has for this litKey (varies by feast). Holy
+  // Fathers Sunday has 4 (1 resurrectional idiomelon + 3 with Ps. 92 verses);
+  // Thomas/Ascension/Pentecost have 3.
+  const DB_APOSTICHA_HYMN_COUNT = {
+    'pentecostarion.week.2.sunday': 3,
+    'pentecostarion.week.7.sunday': 4,
+    'pentecostarion.ascension':     3,
+    'pentecostarion.pentecost':     3,
+  };
+
   let apostichaSlots, apostichaGlory, apostichaNow;
   if (useDbAposticha) {
-    apostichaSlots = [
-      { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-      { position: 2, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-      { position: 3, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
-    ];
+    // Each slot must point to a specific hymn index (hymns.0, hymns.1, …) —
+    // otherwise the resolver returns hymns[0] for every slot and the first
+    // sticheron is repeated.
+    const count = DB_APOSTICHA_HYMN_COUNT[litKey] ?? 3;
+    apostichaSlots = Array.from({ length: count }, (_, i) => ({
+      position: i + 1,
+      source: 'db',
+      key: `${litKey}.vespers.aposticha.hymns.${i}`,
+      tone,
+      label: 'Sticheron',
+    }));
     apostichaGlory = { source: 'db', key: `${litKey}.vespers.aposticha.glory`, tone };
     apostichaNow = { source: 'db', key: `${litKey}.vespers.aposticha.now`, tone, label: 'Theotokion' };
   } else if (isPentSunday) {
@@ -1600,7 +1620,20 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
       rubricNote: name,
       paschalOpening: isPaschalGreeting,  // "Christ is risen" before Psalm 103 (through Pascha leavetaking)
       isPentecostarionSunday: isPentSunday, // suppress Menaion injection
-      paschalAposticha: isPentSunday,     // use Paschal Ps 67 verses in aposticha
+      // Paschal aposticha (Ps 67 verses + Paschal stichera) only while the Paschal
+      // greeting is in effect. After Apodosis (Pascha+38) — i.e. Holy Fathers
+      // Sunday at Pascha+42 — the regular Saturday Vespers aposticha is used.
+      paschalAposticha: isPentSunday && isPaschalGreeting,
+      // Three OT prophecies for the Holy Fathers (read at Great Vespers before
+      // the Litya). Scripture text is enriched from orthocal in the server route.
+      // Source: OCA 2026-0524-tt.docx.
+      otReadings: litKey === 'pentecostarion.week.7.sunday'
+        ? [
+            { order: 1, book: 'Genesis',     pericope: '14:14-20' },
+            { order: 2, book: 'Deuteronomy', pericope: '1:8-11, 15-17' },
+            { order: 3, book: 'Deuteronomy', pericope: '10:14-21' },
+          ]
+        : null,
       lordICall: {
         tone,
         totalStichera,
@@ -1628,10 +1661,14 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
             ];
           }
           if (DB_GLORY_TROPARION.has(litKey)) {
+            // Holy Fathers Sunday (week 7): Resurrection + DB Glory (Fathers T8) + DB Now (Ascension T4).
+            // The DB has the proper Now-and-ever theotokion for the day, which
+            // supersedes the Saturday Vespers dismissal theotokion during the
+            // Ascension afterfeast.
             return [
               { order: 1,          tone, source: 'octoechos', key: `${tk}.saturday.vespers.troparion`, label: 'Resurrectional Troparion' },
               { position: 'glory', tone, source: 'db',        key: dbKey,                              label: 'Feast Troparion' },
-              dismissal,
+              { position: 'now',   tone, source: 'db',        key: dbKey,                              label: 'Feast Theotokion' },
             ];
           }
           // Weeks 4-6: resurrectional troparion from Octoechos only

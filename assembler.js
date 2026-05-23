@@ -101,6 +101,11 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   // ── 8. Prokeimenon(a) + Lessons ─────────────────────────────────────────────
   blocks.push(...assembleProkeimenon(vespers.prokeimenon, fixedTexts, sources));
 
+  // ── 8b. Old Testament Readings (vigil-rank Sundays with prophecies) ─────────
+  if (vespers.otReadings && vespers.otReadings.length > 0) {
+    blocks.push(...assembleOTReadings(vespers.otReadings));
+  }
+
   // ── 9. Augmented Litany (Great Vespers) ─────────────────────────────────────
   if (isGreatVespers) {
     blocks.push(...assembleAugmentedLitany(fixedTexts));
@@ -448,6 +453,23 @@ function deepGet(obj, path) {
 /**
  * Assembles prokeimena. Handles both single (non-Lenten) and double (Lenten with readings).
  */
+function assembleOTReadings(readings) {
+  const section = 'Old Testament Readings';
+  const blocks = [];
+  for (const r of readings) {
+    blocks.push(makeBlock(`ot-${r.order}-wisdom`,  section, 'rubric',  'deacon', 'Wisdom!'));
+    blocks.push(makeBlock(`ot-${r.order}-reader`,  section, 'rubric',  'reader', `The reading from ${r.book}.`));
+    blocks.push(makeBlock(`ot-${r.order}-attend`,  section, 'rubric',  'deacon', 'Let us attend.'));
+    blocks.push(makeBlock(`ot-${r.order}-ref`,     section, 'rubric',  null,     `${r.book} ${r.pericope}`));
+    if (r.text) {
+      blocks.push(makeBlock(`ot-${r.order}-text`,  section, 'prayer',  'reader', r.text, { density: 'compact' }));
+    } else {
+      blocks.push(makeBlock(`ot-${r.order}-text`,  section, 'prayer',  'reader', `[${r.book} ${r.pericope}]`));
+    }
+  }
+  return blocks;
+}
+
 function assembleProkeimenon(prokeimenonSpec, fixedTexts, sources) {
   const section = 'Evening Prokeimenon';
   const blocks = [
@@ -683,17 +705,21 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
   const blocks = [];
 
   // Determine which aposticha psalm verses to use.
-  // Lenten Saturdays use Ps. 122 (defaultVerses), not the ordinary Ps. 92 saturdayVerses.
-  const isGreatVespersSaturday =
-    calendarDay.vespers.serviceType === 'greatVespers' &&
-    calendarDay.dayOfWeek === 'saturday';
-  const isLentenSaturday = isGreatVespersSaturday &&
+  // Sunday Great Vespers — whether the calendar entry has dayOfWeek='saturday'
+  // (Saturday-evening date) or 'sunday' (date-shifted next-day entry) — uses
+  // Ps. 92 verses ("The Lord is King…"). Lenten Saturdays use Ps. 122
+  // (defaultVerses) instead.
+  const isGreatVespers = calendarDay.vespers.serviceType === 'greatVespers';
+  const isSundayVespers = isGreatVespers &&
+    ['saturday', 'sunday'].includes(calendarDay.dayOfWeek);
+  const isLentenSaturday = isSundayVespers &&
+    calendarDay.dayOfWeek === 'saturday' &&
     calendarDay.liturgicalContext?.season === 'greatLent';
   const isPaschalVespers = calendarDay.vespers?.paschalAposticha ||
     (calendarDay.liturgicalContext?.season === 'brightWeek' && calendarDay.dayOfWeek === 'sunday');
   const verseTexts = isPaschalVespers
     ? fixedTexts.aposticha.paschalVerses
-    : (isGreatVespersSaturday && !isLentenSaturday)
+    : (isSundayVespers && !isLentenSaturday)
       ? fixedTexts.aposticha.saturdayVerses
       : fixedTexts.aposticha.defaultVerses;
 
@@ -767,7 +793,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
     if (glorySource) {
       blocks.push(makeBlock('apost-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: apostichaSpec.glory.tone, source: glorySrc, label: apostichaSpec.glory.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
+        glorySource.text, { tone: glorySource.tone || apostichaSpec.glory.tone, source: glorySrc, label: apostichaSpec.glory.label || glorySource.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
     }
   }
 
@@ -785,7 +811,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       fixedTexts.doxology.nowOnly));
     if (nowSource) {
       blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: apostichaSpec.now.tone, source: nowSrc, label: apostichaSpec.now.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
+        nowSource.text, { tone: nowSource.tone || apostichaSpec.now.tone, source: nowSrc, label: apostichaSpec.now.label || nowSource.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
     }
   }
 
@@ -811,9 +837,23 @@ function assembleTroparia(tropariaSpec, sources) {
   const section = 'Troparia';
   const blocks = [];
   for (const slot of tropariaSpec.slots) {
-    const key = slot.key.split('.').slice(-1)[0]; // last segment as display key
     const sourceObj = resolveSource(slot.source || tropariaSpec.source, slot.key, sources);
     if (!sourceObj) continue;
+
+    // Position-aware text selection: when the resolved object is a structured
+    // section (DB-style with glory/now sub-objects), pick the matching
+    // sub-object — and skip the slot if it isn't present (avoids duplicating
+    // the top-level Resurrection troparion at the Glory or Now position).
+    // Flat sources (Octoechos dismissalTheotokion etc.) fall through.
+    const isStructured = sourceObj.glory != null || sourceObj.now != null;
+    let entry = sourceObj;
+    if (slot.position === 'glory' && isStructured) {
+      if (!sourceObj.glory) continue;
+      entry = sourceObj.glory;
+    } else if (slot.position === 'now' && isStructured) {
+      if (!sourceObj.now) continue;
+      entry = sourceObj.now;
+    }
 
     if (slot.position === 'glory') {
       blocks.push(makeBlock('trop-glory-label', section, 'doxology', null, 'Glory to the Father, and to the Son, and to the Holy Spirit.'));
@@ -823,8 +863,8 @@ function assembleTroparia(tropariaSpec, sources) {
 
     blocks.push(makeBlock(
       `troparion-${slot.position || slot.order || 1}`,
-      section, 'hymn', 'choir', sourceObj.text,
-      { tone: slot.tone, source: slot.source || tropariaSpec.source, label: sourceObj.label, provenance: slot.provenance || sourceObj.provenance }
+      section, 'hymn', 'choir', entry.text,
+      { tone: entry.tone || slot.tone, source: slot.source || tropariaSpec.source, label: entry.label || slot.label, provenance: slot.provenance || entry.provenance }
     ));
   }
   return blocks;

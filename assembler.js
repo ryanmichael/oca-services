@@ -2047,6 +2047,27 @@ function _litPsalm33(f) {
 function _litDismissalTroparia(isBasil, f, feastTroparia) {
   const section  = 'Dismissal Troparia';
 
+  // Pentecostarion Sundays: repeat the full Liturgy troparia + kontakia
+  // (Resurrection + feast troparia + saint kontakia, etc.).
+  if (feastTroparia?.troparia?.length) {
+    const blocks = [];
+    feastTroparia.troparia.forEach((t, i) => {
+      if (t.rubric) blocks.push(makeBlock(`dt-trop-rubric-${i}`, section, 'rubric', null, t.rubric));
+      blocks.push(makeBlock(`dt-trop-${i}`, section, 'hymn', 'choir', t.text, { tone: t.tone }));
+    });
+    (feastTroparia.kontakia || []).forEach((k, i) => {
+      if (k.connector) {
+        blocks.push(makeBlock(`dt-kont-conn-${i}`, section, 'doxology', null, k.connector));
+      } else if (i === 0) {
+        blocks.push(makeBlock('dt-kont-glory-now', section, 'doxology', null,
+          'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'));
+      }
+      if (k.rubric) blocks.push(makeBlock(`dt-kont-rubric-${i}`, section, 'rubric', null, k.rubric));
+      blocks.push(makeBlock(`dt-kont-${i}`, section, 'hymn', 'choir', k.text, { tone: k.tone }));
+    });
+    return blocks;
+  }
+
   // Great feasts: use feast troparion + kontakion instead of liturgy-saint troparia
   if (feastTroparia?.troparion) {
     const ft = feastTroparia.troparion;

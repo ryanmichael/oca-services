@@ -910,7 +910,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['The heavens declare the glory of God, and the firmament proclaims the work of His hands.', 'Day unto day pours forth speech, and night unto night declares knowledge.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, born of the Virgin, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable and more glorious than the heavenly hosts! I behold a strange and most glorious mystery: the cave a heaven, the Virgin a cherubic throne, and the manger a noble place in which Christ, the uncontained God, was laid. Let us sing and magnify Him!',
-    communionHymn: 'The Lord has sent redemption to His people. Alleluia.',
+    communionHymn: 'The Lord has sent redemption to His people. Alleluia, Alleluia, Alleluia!',
   },
 
   theophany: {
@@ -957,7 +957,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['Bring to the Lord, O ye sons of God, bring to the Lord young rams.', 'The voice of the Lord is upon the waters; the God of glory has thundered, the Lord, upon many waters.'] },
     entranceHymn: 'Blessed is He that cometh in the Name of the Lord. God is the Lord and hath revealed Himself to us. O Son of God, baptized in the Jordan, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable than the heavenly hosts! No tongue knows how to praise thee worthily, O Theotokos; even Angels are overcome with awe praising thee. But since thou art good, accept our faith; for thou knowest our love inspired by God! Thou art the defender of Christians, and we magnify thee.',
-    communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia.',
+    communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia, Alleluia, Alleluia!',
   },
 
   // Meeting of the Lord: OCA practice does NOT use festal antiphons for this feast.
@@ -974,7 +974,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Now lettest Thou Thy servant depart in peace, O Master, according to Thy word.', 'A light for revelation to the Gentiles, and for glory to Thy people Israel.'] },
     megalynarion: 'O Virgin Theotokos, hope of all Christians, protect, preserve, and save those who hope in thee! In the shadow and letter of the Law, let us the faithful discern a figure: every male child that opens the womb is holy to God. Therefore we magnify the firstborn Word of the Father Who has no beginning, the Son firstborn of a Mother who had not known man.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   transfiguration: {
@@ -1020,7 +1020,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 8, verses: ['Thine are the heavens, and Thine is the earth.', 'Blessed are the people who know the joyful sound.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the Lord Who was transfigured on Mount Tabor! Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos!',
-    communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia.',
+    communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia, Alleluia, Alleluia!',
   },
 
   elevation: {
@@ -1066,7 +1066,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['Remember Thy congregation, which Thou hast gotten of old.', 'God is our King before the ages; He has worked salvation in the midst of the earth.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most precious Cross of the Lord! Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee!',
-    communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia.',
+    communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia, Alleluia, Alleluia!',
   },
 
   palmSunday: {
@@ -1115,7 +1115,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['O sing to the Lord a new song, for He has done marvelous things!', 'All the ends of the earth have seen the salvation of our God.'] },
     entranceHymn: 'Blessed is He that comes in the Name of the Lord. We bless you from the house of the Lord. God is the Lord and He has revealed Himself to us.',
     megalynarion: 'God is the Lord and has revealed Himself to us! Celebrate the feast and come with gladness! Let us magnify Christ with palms and branches, singing: "Blessed is He that comes in the Name of the Lord, our Savior!"',
-    communionHymn: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us. Alleluia.',
+    communionHymn: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us. Alleluia, Alleluia, Alleluia!',
   },
 
   ascension: {
@@ -1161,13 +1161,13 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 7, refrain: 'Be exalted, O God, above the heavens; and Your glory be over all the earth!', verse: 'My heart is steadfast, O God, my heart is steadfast. I will sing and make melody.' },
     alleluia: { tone: 2, verses: ['God has gone up with a shout; the Lord with the sound of a trumpet!', 'Oh, clap your hands, all you peoples. Shout to God with loud songs of joy!'] },
     entranceHymn: 'God has gone up with a shout, the Lord with the sound of a trumpet. O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
-    megalynarion: 'Magnify, O my soul, Christ the Giver of Life, who has ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
-    communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia.',
+    megalynarion: 'Magnify, O my soul, Christ the Giver of Life, Who hath ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
+    communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia, Alleluia, Alleluia!',
     // Festal dismissal introit + seasonal Theotokos magnification (used Pascha+39..+47).
     // Source: OCA 2026-0521-tt.docx Department of Liturgical Music & Translations.
     dismissalIntroit: 'May Christ our true God, Who ascended in glory from us into heaven, and is seated at the right hand of God the Father,',
     dismissalTheotokos: {
-      priestCue: 'Magnify, O my soul, Christ the Giver of Life Who has ascended from earth to heaven.',
+      priestCue: 'Magnify, O my soul, Christ the Giver of Life Who hath ascended from earth to heaven.',
       hymn: 'We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
     },
   },
@@ -1213,7 +1213,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['By the Word of the Lord were the heavens made, and all the host of them by the Spirit of His mouth.', 'The Lord looked down from heaven; He saw all the sons of men.'] },
     entranceHymn: 'Be exalted, O Lord, in Thy strength! We will sing and praise Thy power. O Gracious Comforter, save us who sing to Thee: Alleluia!',
     megalynarion: 'Rejoice, O Queen, glory of mothers and virgins! For no tongue, be it ever so gifted, hath power to praise thee worthily. Every mind is dizzied in attempting to comprehend thy childbearing. Wherefore, with one accord, we glorify thee!',
-    communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia.',
+    communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia, Alleluia, Alleluia!',
   },
 
   // ── Feasts of the Theotokos (typical antiphons, special megalynarion) ───────
@@ -1230,7 +1230,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'Magnify, O my soul, the most glorious birth of the Mother of God! Virginity is foreign to mothers; childbearing is strange for virgins. But in thee, O Theotokos, both were accomplished. For this all the earthly nations unceasingly magnify thee.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   entryTheotokos: {
@@ -1245,7 +1245,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'The angels beheld the entrance of the Pure One and were amazed. How has the Virgin entered into the Holy of Holies? Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Truly, thou art more exalted than all, O pure Virgin!',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   annunciation: {
@@ -1260,7 +1260,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 4, refrain: 'From day to day proclaim the salvation of our God!', verse: 'Sing to the Lord a new song; sing to the Lord, all the earth!' },
     alleluia: { tone: 1, verses: ['He descends like rain upon the fleece, like raindrops that water the earth.', 'May His Name be blessed forever; may His Name continue as long as the sun!'] },
     megalynarion: 'O earth, announce good tidings of great joy: O heavens, praise the glory of God! Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Rejoice, O Lady, full of grace, the Lord is with thee!',
-    communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia.',
+    communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia, Alleluia, Alleluia!',
   },
 
   dormition: {
@@ -1275,7 +1275,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Arise, O Lord, into Thy resting place, Thou and the Ark of Thy holiness.', 'The Lord has sworn in truth to David, and He will not annul it.'] },
     megalynarion: 'The Angels, as they looked upon the Dormition of the Virgin, were struck with wonder, seeing how the Virgin went up from earth to heaven. The limits of nature are overcome in thee, O Pure Virgin: for birthgiving remains virginal, and life is united to death; a virgin after childbearing and alive after death, thou dost ever save thine inheritance, O Theotokos.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   // ── Pascha (Feast of Feasts) ────────────────────────────────────────────────
@@ -1321,7 +1321,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 4, verses: ['Thou, O Lord, shalt arise and have compassion on Zion.', 'The Lord looked down from heaven to the earth.'] },
     entranceHymn: 'In the gathering places bless ye God the Lord, from the wellsprings of Israel! O Son of God, risen from the dead, save us who sing to Thee: Alleluia!',
     megalynarion: 'The Angel cried to the Lady full of grace: Rejoice, O pure Virgin! Again I say: Rejoice! Thy Son is risen from His three days in the tomb! With Himself He has raised all the dead! Rejoice, all ye people! Shine! Shine! O new Jerusalem! The glory of the Lord has shone on thee! Exult now and be glad, O Zion! Be radiant, O pure Theotokos, in the Resurrection of thy Son!',
-    communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia.',
+    communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia, Alleluia, Alleluia!',
   },
 };
 
@@ -1742,7 +1742,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Who then preserved the Disciple\'s palm unmelted when it approached the fiery side of the Lord? Who gave it daring, and gave it strength to handle bone of flame? Only that side which was handled; for had not the side given the power, how could a hand of clay have handled wounds which had shaken things above and things below? This grace was given Thomas, to handle it and to cry out to Christ, "Thou art my Lord and my God!"',
       prokeimenon: { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.', verse: 'Praise the Lord! For it is good to sing praises to our God!' },
       alleluia:    { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!', 'For the Lord is a great God, and a great King over all the earth.'] },
-      communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia.',
+      communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 from Ode III + 4 from Ode VI (all Pentecostarion canon, no Resurrection Beatitudes)
       // Source: St. Sergius Pentecostarion (pent/20.pdf) — swap for OCA when available
       beatitudesTroparia: [
@@ -1982,7 +1982,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Let us listen to the Church of God as she cries out with lofty proclamation: Whoever is thirsty let him come to me and drink; the bowl that I carry is the bowl of truth; the drink in it I have mixed with the word of truth, pouring in not the water of contradiction but that of confession; the new Israel as he drinks from it sees God who declares: See, see, it is I; I have not changed; I am God first and last, and beside me there is no other at all. Those who partake from here shall be filled and praise the great mystery of true religion.',
       prokeimenon: { tone: 4, refrain: 'Blessed art Thou, O Lord God of our fathers, and praised and glorified is Thy Name forever!', verse: 'For Thou art just in all that Thou hast done for us!' },
       alleluia:    { tone: 1, verses: ['The Lord, the God of gods, speaks and summons the earth from the rising of the sun to its setting.', 'Gather to Me My venerable ones, who made a covenant with Me by sacrifice!'] },
-      communionHymn: 'Praise the Lord from the heavens, praise Him in the highest!\nRejoice in the Lord, O you righteous; praise befits the just! Alleluia.',
+      communionHymn: 'Praise the Lord from the heavens, praise Him in the highest!\nRejoice in the Lord, O you righteous; praise befits the just! Alleluia, Alleluia, Alleluia!',
       // Ascension afterfeast: special megalynarion and post-communion
       megalynarion: GREAT_FEAST_VARIANTS.ascension.megalynarion,
       weHaveSeen: 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!',
@@ -2053,7 +2053,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       },
       communionHymn: {
         label: 'Sts. Constantine and Helen',
-        text: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia.',
+        text: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
       },
       // Second readings for epistle and gospel are pulled automatically from
       // orthocal's readings[] array when present (Acts 26:1-5,12-20; John 10:1-9).
@@ -2195,13 +2195,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
 
   // ── Communion Hymn ───────────────────────────────────────────────────────────
   const COMMUNION_HYMNS = {
-    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia.',
-    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia.',
-    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia.',
-    wednesday: 'O taste and see that the Lord is good. Alleluia.',
-    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia.',
-    friday:    'Salvation is created in the midst of the earth, O God. Alleluia.',
-    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia.',
+    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!',
+    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia, Alleluia, Alleluia!',
+    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia, Alleluia, Alleluia!',
+    wednesday: 'O taste and see that the Lord is good. Alleluia, Alleluia, Alleluia!',
+    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
+    friday:    'Salvation is created in the midst of the earth, O God. Alleluia, Alleluia, Alleluia!',
+    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia, Alleluia, Alleluia!',
   };
 
   // DAY_PATRONS moved to module scope
@@ -2503,10 +2503,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
         feast?.dismissalTheotokos
         || (isAscensionAfterfeast ? GREAT_FEAST_VARIANTS.ascension.dismissalTheotokos : null),
     },
-    dismissalTroparia: feast ? {
-      troparion: feast.troparia?.[0] || null,
-      kontakion: feast.kontakia?.[0] || null,
-    } : null,
+    // Dismissal Troparia: repeated after Psalm 33 before the final dismissal.
+    // - Great Feast: feast troparion + kontakion (single).
+    // - Pentecostarion Sunday with pentOverride: repeat the full set of Liturgy
+    //   troparia + kontakia (Sunday's Resurrection + feast troparia, etc.).
+    // - Otherwise: fall back to liturgy-saint troparion + default Theotokion
+    //   (rendered inside _litDismissalTroparia).
+    dismissalTroparia: feast
+      ? { troparion: feast.troparia?.[0] || null, kontakion: feast.kontakia?.[0] || null }
+      : pentOverride?.troparia
+        ? { troparia: troparia, kontakia: kontakia }
+        : null,
   };
 }
 

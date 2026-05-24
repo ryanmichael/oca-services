@@ -1809,7 +1809,13 @@ function _litAnaphora(isBasil, f, megalynarionSpec) {
   blocks.push(makeBlock('inst-cup',    section, 'prayer',   'priest', anaphora['institution-cup']));
   blocks.push(makeBlock('inst-cup-r',  section, 'response', 'choir',  anaphora['institution-response']));
 
-  // Anamnesis / Oblation
+  // Anamnesis prayer — priest's prayer of remembrance after the Words of
+  // Institution, leading into the aloud Oblation ("Thine own of Thine own…").
+  if (anaphora['anamnesis-prayer']) {
+    blocks.push(makeBlock('anamnesis-prayer', section, 'prayer', 'priest',
+      anaphora['anamnesis-prayer'], { density: 'compact' }));
+  }
+  // Oblation + choir response
   blocks.push(makeBlock('anamnesis', section, 'prayer', 'priest', anaphora['anamnesis']));
   blocks.push(makeBlock('anamnesis-r', section, 'response', 'choir', anaphora['anamnesis-response']));
 

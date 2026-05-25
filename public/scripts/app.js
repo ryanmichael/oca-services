@@ -15,6 +15,9 @@ let activeSvcType = null;
 let activePronoun = localStorage.getItem('pronoun') || 'tt';  // 'tt' or 'yy'
 let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'choir'
 let activeEducation = localStorage.getItem('education') || 'off'; // 'on' or 'off'
+let activeTranslation = localStorage.getItem('translation') || '';  // '' = default, else overlay id
+let activeJurisdiction = localStorage.getItem('jurisdiction') || 'all';  // filter for the translation picker
+let translationsCache = null; // { default, translations: [...] } from /api/translations
 let educationModules = null; // cached education modules data (liturgy)
 let educationModulesVespers = null; // cached education modules data (vespers)
 let choirData     = null;  // cached choir-prep response for current date
@@ -70,6 +73,11 @@ async function fetchDays(from, to) {
   return res.json();
 }
 
+/** Builds the &translation= suffix when an overlay is selected. */
+function translationParam() {
+  return activeTranslation ? `&translation=${encodeURIComponent(activeTranslation)}` : '';
+}
+
 async function fetchService(date, svcType, pronoun = 'tt') {
   const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
                  : svcType === 'presanctified'     ? '/api/presanctified'
@@ -83,7 +91,7 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
-  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}`);
+  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}${translationParam()}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`${endpoint} failed: ${res.status}`);
@@ -934,6 +942,8 @@ function openSettings() {
   closeCal();
   document.getElementById('view-main').classList.add('hidden');
   document.getElementById('view-settings').classList.add('visible');
+  // Kick off translations load (async); syncSettingsUI re-runs when it resolves.
+  loadTranslations().then(syncSettingsUI);
   syncSettingsUI();
 }
 
@@ -959,6 +969,102 @@ function syncSettingsUI() {
   document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.edu === activeEducation);
   });
+  // Translation picker
+  document.querySelectorAll('#jurisdiction-row .seg-btn-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.jur === activeJurisdiction);
+  });
+  populateTranslationSelect();
+}
+
+/** Fetches /api/translations once and caches the result. */
+async function loadTranslations() {
+  if (translationsCache) return translationsCache;
+  try {
+    const res = await fetch('/api/translations');
+    if (!res.ok) return null;
+    translationsCache = await res.json();
+    return translationsCache;
+  } catch (e) {
+    console.warn('Failed to load translations:', e);
+    return null;
+  }
+}
+
+/** Rebuilds the translation <select> based on the active jurisdiction filter. */
+function populateTranslationSelect() {
+  const sel = document.getElementById('translation-select');
+  if (!sel || !translationsCache) return;
+  const all = translationsCache.translations || [];
+
+  // Filter: 'all' shows everything; 'cross' shows entries with no jurisdiction
+  // ('null'); otherwise match the jurisdiction id.
+  const filtered = activeJurisdiction === 'all'
+    ? all
+    : activeJurisdiction === 'cross'
+      ? all.filter(t => t.jurisdiction == null)
+      : all.filter(t => t.jurisdiction === activeJurisdiction);
+
+  // Group by kind ('parish' first since they're most relevant, then 'tradition')
+  const parishes = filtered.filter(t => t.kind === 'parish');
+  const traditions = filtered.filter(t => t.kind === 'tradition');
+
+  sel.innerHTML = '';
+  const defaultOpt = document.createElement('option');
+  defaultOpt.value = '';
+  defaultOpt.textContent = 'Default (no overlay)';
+  sel.appendChild(defaultOpt);
+
+  const makeGroup = (label, items) => {
+    if (!items.length) return null;
+    const og = document.createElement('optgroup');
+    og.label = label;
+    items.forEach(t => {
+      const o = document.createElement('option');
+      o.value = t.id;
+      o.textContent = t.name + (t.kind === 'parish' ? ' (parish)' : '');
+      og.appendChild(o);
+    });
+    return og;
+  };
+  const pg = makeGroup('Parishes', parishes);
+  const tg = makeGroup('Translation traditions', traditions);
+  if (pg) sel.appendChild(pg);
+  if (tg) sel.appendChild(tg);
+
+  // Restore current selection if it's still visible under this filter, else
+  // fall back to default. (If it's just hidden by the filter, we keep the
+  // saved value in localStorage but the dropdown shows Default.)
+  const visibleIds = new Set([...sel.querySelectorAll('option')].map(o => o.value));
+  sel.value = visibleIds.has(activeTranslation) ? activeTranslation : '';
+
+  // Render meta (description + extends chain)
+  const meta = document.getElementById('translation-meta');
+  if (meta) {
+    const current = all.find(t => t.id === activeTranslation);
+    if (!current) {
+      meta.innerHTML = '<em>Using the default OCA service text without any overlay.</em>';
+    } else {
+      const desc = current.description ? `${current.description}` : '';
+      const chain = current.extends?.length ? `Inherits from: ${current.extends.join(' → ')}` : '';
+      meta.innerHTML = `${desc}${chain ? `<div class="chain">${chain}</div>` : ''}`;
+    }
+  }
+}
+
+function setJurisdiction(jur) {
+  activeJurisdiction = jur;
+  localStorage.setItem('jurisdiction', jur);
+  syncSettingsUI();
+}
+
+function setTranslation(translationId) {
+  activeTranslation = translationId || '';
+  if (activeTranslation) localStorage.setItem('translation', activeTranslation);
+  else localStorage.removeItem('translation');
+  syncSettingsUI();
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
 }
 
 function setMode(mode) {
@@ -1033,12 +1139,17 @@ function initSettingsToggles() {
   document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
     btn.addEventListener('click', () => setEducation(btn.dataset.edu));
   });
+  document.querySelectorAll('#jurisdiction-row .seg-btn-pill').forEach(btn => {
+    btn.addEventListener('click', () => setJurisdiction(btn.dataset.jur));
+  });
+  const sel = document.getElementById('translation-select');
+  if (sel) sel.addEventListener('change', () => setTranslation(sel.value));
 }
 
 // ─── Choir mode helpers ──────────────────────────────────────────────────────
 
 async function fetchChoirPrep(date, pronoun = 'tt') {
-  const res = await fetch(`/api/choir-prep?date=${date}&pronoun=${pronoun}`);
+  const res = await fetch(`/api/choir-prep?date=${date}&pronoun=${pronoun}${translationParam()}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`/api/choir-prep failed: ${res.status}`);

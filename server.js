@@ -45,13 +45,19 @@ function loadJSON(relPath) {
 }
 
 // ─── Translation overlay system ─────────────────────────────────────────────
-// A sparse overlay lives at fixed-texts/translations/<name>/liturgy-fixed.json.
-// At request time the overlay is deep-merged over the default liturgy-fixed,
-// so parishes (or translation traditions) can override only the keys that
-// differ. Selection priority: ?translation= query param > LITURGY_TRANSLATION
-// env var > none (default texts).
+// Each overlay lives at fixed-texts/translations/<id>/ and consists of:
+//   - manifest.json    — { name, kind, jurisdiction, extends, description, ... }
+//   - liturgy-fixed.json — sparse overrides (deep-merged onto the base)
+//
+// Cascade: base → extends[0] → extends[1] → ... → self. Only keys that
+// differ from the layer above need to be stored at each layer.
+//
+// Selection priority: ?translation= query param > LITURGY_TRANSLATION env var
+// > none (default texts).
 const TRANSLATIONS_DIR = path.join(__dirname, 'fixed-texts', 'translations');
 const translationCache = new Map();
+const translationManifestCache = new Map();
+const baseKeySetCache = new WeakMap();
 
 function deepMergeOverlay(base, overlay) {
   if (overlay === null || overlay === undefined) return base;
@@ -59,32 +65,128 @@ function deepMergeOverlay(base, overlay) {
   if (typeof overlay !== 'object' || Array.isArray(overlay)) return overlay;
   const out = { ...base };
   for (const [k, v] of Object.entries(overlay)) {
-    if (k.startsWith('_')) continue;  // strip overlay-only metadata (_note, _source)
+    if (k.startsWith('_')) continue;  // strip overlay-only metadata (_note, _source, etc.)
     out[k] = (k in base) ? deepMergeOverlay(base[k], v) : v;
   }
   return out;
 }
 
+function loadOverlayManifest(overlayId) {
+  if (translationManifestCache.has(overlayId)) return translationManifestCache.get(overlayId);
+  const manifestPath = path.join(TRANSLATIONS_DIR, overlayId, 'manifest.json');
+  let manifest = null;
+  try {
+    manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}': manifest unreadable — ${err.message}`);
+    // Backward-compat: overlays without a manifest are still loadable as flat.
+  }
+  translationManifestCache.set(overlayId, manifest);
+  return manifest;
+}
+
+function loadOverlayData(overlayId) {
+  const dataPath = path.join(TRANSLATIONS_DIR, overlayId, 'liturgy-fixed.json');
+  try {
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}': data file unreadable — ${err.message}`);
+    return null;
+  }
+}
+
 function listAvailableTranslations() {
   try {
     return fs.readdirSync(TRANSLATIONS_DIR, { withFileTypes: true })
-      .filter(e => e.isDirectory())
+      .filter(e => e.isDirectory() && !e.name.startsWith('_'))
       .map(e => e.name);
   } catch {
     return [];
   }
 }
 
+function getTranslationManifests() {
+  const ids = listAvailableTranslations();
+  return ids.map(id => {
+    const m = loadOverlayManifest(id) || {};
+    return {
+      id,
+      name: m.name || id,
+      kind: m.kind || 'tradition',
+      jurisdiction: m.jurisdiction ?? null,
+      extends: Array.isArray(m.extends) ? m.extends : [],
+      description: m.description || null,
+      sources: m.sources || null,
+    };
+  });
+}
+
+/** Returns the set of leaf-text keys present anywhere in the base object.
+ *  Used to flag overlay keys that don't correspond to any base key (likely a typo). */
+function collectKeyPaths(obj, prefix = '', out = new Set()) {
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return out;
+  for (const k of Object.keys(obj)) {
+    if (k.startsWith('_')) continue;
+    const p = prefix ? `${prefix}.${k}` : k;
+    out.add(p);
+    collectKeyPaths(obj[k], p, out);
+  }
+  return out;
+}
+
+function warnUnknownKeys(overlayId, overlay, base) {
+  let basePaths = baseKeySetCache.get(base);
+  if (!basePaths) { basePaths = collectKeyPaths(base); baseKeySetCache.set(base, basePaths); }
+  const stack = [['', overlay]];
+  while (stack.length) {
+    const [prefix, node] = stack.pop();
+    if (!node || typeof node !== 'object' || Array.isArray(node)) continue;
+    for (const k of Object.keys(node)) {
+      if (k.startsWith('_')) continue;
+      const p = prefix ? `${prefix}.${k}` : k;
+      if (!basePaths.has(p)) {
+        console.warn(`Translation '${overlayId}': key '${p}' not present in base liturgy-fixed.json (silent drift?)`);
+      } else {
+        stack.push([p, node[k]]);
+      }
+    }
+  }
+}
+
+/** Resolves an overlay's full extends chain depth-first, parents before children.
+ *  Detects cycles. Returns the chain as an ordered list of ids (parents first,
+ *  the requested id last). */
+function resolveExtendsChain(overlayId, visited = new Set(), stack = new Set()) {
+  if (!overlayId) return [];
+  if (stack.has(overlayId)) {
+    console.warn(`Translation '${overlayId}': circular extends chain (path: ${[...stack, overlayId].join(' → ')})`);
+    return [];
+  }
+  if (visited.has(overlayId)) return [];  // already merged earlier in the walk
+  visited.add(overlayId);
+  stack.add(overlayId);
+  const manifest = loadOverlayManifest(overlayId);
+  const parents = Array.isArray(manifest?.extends) ? manifest.extends : [];
+  const chain = [];
+  for (const parent of parents) {
+    chain.push(...resolveExtendsChain(parent, visited, stack));
+  }
+  chain.push(overlayId);
+  stack.delete(overlayId);
+  return chain;
+}
+
 function getLiturgyFixed(overlayName) {
   if (!overlayName) return liturgyFixed;
   if (translationCache.has(overlayName)) return translationCache.get(overlayName);
-  const overlayPath = path.join(TRANSLATIONS_DIR, overlayName, 'liturgy-fixed.json');
+  const chain = resolveExtendsChain(overlayName);
   let merged = liturgyFixed;
-  try {
-    const overlay = JSON.parse(fs.readFileSync(overlayPath, 'utf8'));
-    merged = deepMergeOverlay(liturgyFixed, overlay);
-  } catch (err) {
-    if (err.code !== 'ENOENT') console.warn(`Translation overlay '${overlayName}' failed to load:`, err.message);
+  for (const id of chain) {
+    const overlay = loadOverlayData(id);
+    if (overlay) {
+      warnUnknownKeys(id, overlay, liturgyFixed);
+      merged = deepMergeOverlay(merged, overlay);
+    }
   }
   translationCache.set(overlayName, merged);
   return merged;
@@ -3815,6 +3917,16 @@ function handleRequest(req, res) {
         res.end(JSON.stringify({ error: 'Failed to load vespers education modules.' }));
       }
 
+    } else if (pathname === '/api/translations') {
+      // Lists every available translation overlay with its manifest summary.
+      // Front-end uses this to build the settings-panel picker.
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        default: process.env.LITURGY_TRANSLATION || null,
+        translations: getTranslationManifests(),
+      }));
+
     } else if (pathname === '/api/liturgy') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -4668,9 +4780,12 @@ function handleRequest(req, res) {
         .map(([key]) => svcMap[key])
         .filter(Boolean);
 
-      // Fetch each service via internal HTTP requests
+      // Fetch each service via internal HTTP requests. Thread the translation
+      // overlay through so all inner Liturgy/Vespers/etc. requests see it.
+      const translation = resolveTranslation(q);
+      const translationSuffix = translation ? `&translation=${encodeURIComponent(translation)}` : '';
       const fetchInternal = (endpoint, dateStr, pron) => new Promise((resolve, reject) => {
-        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}`;
+        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}`;
         http.get(url, (resp) => {
           let body = '';
           resp.on('data', chunk => body += chunk);

@@ -2,7 +2,7 @@
   "name": "St. John of Damascus, Tyler, TX",
   "kind": "parish",
   "jurisdiction": "oca",
-  "extends": [],
-  "description": "Local customizations for St. John of Damascus Orthodox Church, Tyler, TX (OCA).",
+  "extends": ["sts-sluzhebnik"],
+  "description": "Local customizations for St. John of Damascus Orthodox Church, Tyler, TX (OCA). Layered over the St. Tikhon's Sluzhebnik — only parish-specific deltas live in liturgy-fixed.json here.",
   "sources": "Parish service book"
 }

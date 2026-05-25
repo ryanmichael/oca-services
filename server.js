@@ -44,6 +44,56 @@ function loadJSON(relPath) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, relPath), 'utf8'));
 }
 
+// ─── Translation overlay system ─────────────────────────────────────────────
+// A sparse overlay lives at fixed-texts/translations/<name>/liturgy-fixed.json.
+// At request time the overlay is deep-merged over the default liturgy-fixed,
+// so parishes (or translation traditions) can override only the keys that
+// differ. Selection priority: ?translation= query param > LITURGY_TRANSLATION
+// env var > none (default texts).
+const TRANSLATIONS_DIR = path.join(__dirname, 'fixed-texts', 'translations');
+const translationCache = new Map();
+
+function deepMergeOverlay(base, overlay) {
+  if (overlay === null || overlay === undefined) return base;
+  if (typeof base !== 'object' || base === null || Array.isArray(base)) return overlay;
+  if (typeof overlay !== 'object' || Array.isArray(overlay)) return overlay;
+  const out = { ...base };
+  for (const [k, v] of Object.entries(overlay)) {
+    if (k.startsWith('_')) continue;  // strip overlay-only metadata (_note, _source)
+    out[k] = (k in base) ? deepMergeOverlay(base[k], v) : v;
+  }
+  return out;
+}
+
+function listAvailableTranslations() {
+  try {
+    return fs.readdirSync(TRANSLATIONS_DIR, { withFileTypes: true })
+      .filter(e => e.isDirectory())
+      .map(e => e.name);
+  } catch {
+    return [];
+  }
+}
+
+function getLiturgyFixed(overlayName) {
+  if (!overlayName) return liturgyFixed;
+  if (translationCache.has(overlayName)) return translationCache.get(overlayName);
+  const overlayPath = path.join(TRANSLATIONS_DIR, overlayName, 'liturgy-fixed.json');
+  let merged = liturgyFixed;
+  try {
+    const overlay = JSON.parse(fs.readFileSync(overlayPath, 'utf8'));
+    merged = deepMergeOverlay(liturgyFixed, overlay);
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.warn(`Translation overlay '${overlayName}' failed to load:`, err.message);
+  }
+  translationCache.set(overlayName, merged);
+  return merged;
+}
+
+function resolveTranslation(query) {
+  return query?.translation || process.env.LITURGY_TRANSLATION || null;
+}
+
 /** Recursively tag all hymn-like objects in a source tree with a provenance label. */
 function tagProvenance(obj, label) {
   if (!obj || typeof obj !== 'object') return;
@@ -3809,9 +3859,12 @@ function handleRequest(req, res) {
           }
         }
 
+        const translation = resolveTranslation(q);
+        const liturgyFixedResolved = getLiturgyFixed(translation);
+
         let blocks;
         try {
-          blocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+          blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, sources);
         } catch (err) {
           console.error('assembleLiturgy error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -3942,9 +3995,12 @@ function handleRequest(req, res) {
         const dbSource = buildDbSource(date, pronoun);
         const assemblerSources = { ...sources, db: dbSource };
 
+        const translation = resolveTranslation(q);
+        const liturgyFixedResolved = getLiturgyFixed(translation);
+
         let blocks;
         try {
-          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixed, presanctifiedFixed, assemblerSources);
+          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixedResolved, presanctifiedFixed, assemblerSources);
         } catch (err) {
           console.error('assemblePresanctified error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4344,9 +4400,12 @@ function handleRequest(req, res) {
         return;
       }
 
+      const translation = resolveTranslation(q);
+      const liturgyFixedResolved = getLiturgyFixed(translation);
+
       let blocks;
       try {
-        blocks = assembleVesperalLiturgy(vesperalLiturgyFixed, fixedTexts, liturgyFixed);
+        blocks = assembleVesperalLiturgy(vesperalLiturgyFixed, fixedTexts, liturgyFixedResolved);
       } catch (err) {
         console.error('assembleVesperalLiturgy error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4505,7 +4564,7 @@ function handleRequest(req, res) {
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
           }
           if (calendarEntry?.liturgy) {
-            const litBlocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+            const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(resolveTranslation(q)), sources);
             allBlocks.push(...litBlocks);
           }
 

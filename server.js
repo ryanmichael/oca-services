@@ -45,19 +45,32 @@ function loadJSON(relPath) {
 }
 
 // ─── Translation overlay system ─────────────────────────────────────────────
-// Each overlay lives at fixed-texts/translations/<id>/ and consists of:
-//   - manifest.json    — { name, kind, jurisdiction, extends, description, ... }
-//   - liturgy-fixed.json — sparse overrides (deep-merged onto the base)
+// Each overlay lives at fixed-texts/translations/<id>/ and may contain any
+// of the per-service fixed-text overrides:
+//   - manifest.json              — { name, kind, jurisdiction, extends, description, … }
+//   - liturgy-fixed.json         — sparse overrides for the Divine Liturgy
+//   - presanctified-fixed.json   — sparse overrides for the Presanctified Liturgy
+//   - vespers-fixed.json         — sparse overrides for Vespers
+//   - …                          — one file per service type, optional
 //
-// Cascade: base → extends[0] → extends[1] → ... → self. Only keys that
-// differ from the layer above need to be stored at each layer.
+// Cascade per file: base → extends[0] → extends[1] → … → self. Only the keys
+// that differ from the layer above need to be stored at each layer. Files an
+// overlay doesn't supply are simply skipped (the base is used as-is).
 //
 // Selection priority: ?translation= query param > LITURGY_TRANSLATION env var
 // > none (default texts).
 const TRANSLATIONS_DIR = path.join(__dirname, 'fixed-texts', 'translations');
-const translationCache = new Map();
+const translationCache = new Map();           // key: "<serviceFile>:<overlayId>" → merged result
 const translationManifestCache = new Map();
 const baseKeySetCache = new WeakMap();
+
+// Registry of service-name → base fixed-text object. Populated as base files
+// load below. `getOverlayFixed('liturgy', overlayId)` consults this to pick
+// the right base to merge onto.
+const fixedTextRegistry = {};
+function registerBaseFixed(serviceName, baseObj) {
+  fixedTextRegistry[serviceName] = baseObj;
+}
 
 function deepMergeOverlay(base, overlay) {
   if (overlay === null || overlay === undefined) return base;
@@ -85,12 +98,12 @@ function loadOverlayManifest(overlayId) {
   return manifest;
 }
 
-function loadOverlayData(overlayId) {
-  const dataPath = path.join(TRANSLATIONS_DIR, overlayId, 'liturgy-fixed.json');
+function loadOverlayData(overlayId, serviceName = 'liturgy') {
+  const dataPath = path.join(TRANSLATIONS_DIR, overlayId, `${serviceName}-fixed.json`);
   try {
     return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   } catch (err) {
-    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}': data file unreadable — ${err.message}`);
+    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}/${serviceName}': data file unreadable — ${err.message}`);
     return null;
   }
 }
@@ -105,10 +118,60 @@ function listAvailableTranslations() {
   }
 }
 
+// Allowed enum values for manifest schema validation.
+const ALLOWED_KINDS = new Set(['tradition', 'parish', 'jurisdiction']);
+const ALLOWED_JURISDICTIONS = new Set([
+  'oca', 'rocor', 'antiochian', 'goa', 'serbian', 'romanian', 'bulgarian', 'georgian',
+]);
+
+/** Validates a manifest. Returns an array of human-readable warnings (empty = OK).
+ *  All checks are non-fatal; loader handles defaults so the overlay still loads.
+ *  Pass `allIds` (the set of existing overlay ids on disk) to validate extends refs. */
+function validateManifest(id, manifest, allIds) {
+  const warnings = [];
+  if (!manifest || typeof manifest !== 'object') {
+    warnings.push('manifest.json missing or unreadable');
+    return warnings;
+  }
+  if (!manifest.name || typeof manifest.name !== 'string') {
+    warnings.push("missing or non-string 'name' field");
+  }
+  if (!manifest.kind) {
+    warnings.push("missing 'kind' field (defaulting to 'tradition')");
+  } else if (!ALLOWED_KINDS.has(manifest.kind)) {
+    warnings.push(`unknown kind '${manifest.kind}' (allowed: ${[...ALLOWED_KINDS].join(', ')})`);
+  }
+  if (manifest.jurisdiction != null) {
+    if (typeof manifest.jurisdiction !== 'string') {
+      warnings.push(`jurisdiction must be a string id or null, got ${typeof manifest.jurisdiction}`);
+    } else if (!ALLOWED_JURISDICTIONS.has(manifest.jurisdiction)) {
+      warnings.push(`unknown jurisdiction '${manifest.jurisdiction}' (allowed: ${[...ALLOWED_JURISDICTIONS].join(', ')}, or null)`);
+    }
+  }
+  if (manifest.extends !== undefined) {
+    if (!Array.isArray(manifest.extends)) {
+      warnings.push("'extends' must be an array (use [] if no parents)");
+    } else {
+      manifest.extends.forEach((parent, i) => {
+        if (typeof parent !== 'string') {
+          warnings.push(`extends[${i}] must be a string id, got ${typeof parent}`);
+        } else if (parent === id) {
+          warnings.push(`extends[${i}] is self-reference '${parent}' (will be detected as cycle)`);
+        } else if (allIds && !allIds.has(parent)) {
+          warnings.push(`extends[${i}] '${parent}' is not a known overlay id`);
+        }
+      });
+    }
+  }
+  return warnings;
+}
+
 function getTranslationManifests() {
   const ids = listAvailableTranslations();
+  const idSet = new Set(ids);
   return ids.map(id => {
     const m = loadOverlayManifest(id) || {};
+    const warnings = validateManifest(id, m, idSet);
     return {
       id,
       name: m.name || id,
@@ -117,8 +180,28 @@ function getTranslationManifests() {
       extends: Array.isArray(m.extends) ? m.extends : [],
       description: m.description || null,
       sources: m.sources || null,
+      ...(warnings.length ? { warnings } : {}),
     };
   });
+}
+
+/** Validates all overlays at startup and logs any warnings. Called once
+ *  at boot so misconfigured manifests surface in the server log immediately,
+ *  not just when an end-user happens to load /api/translations. */
+function validateAllTranslations() {
+  const ids = listAvailableTranslations();
+  const idSet = new Set(ids);
+  let total = 0;
+  for (const id of ids) {
+    const m = loadOverlayManifest(id);
+    const warnings = validateManifest(id, m, idSet);
+    if (warnings.length) {
+      total += warnings.length;
+      for (const w of warnings) console.warn(`Translation manifest '${id}': ${w}`);
+    }
+  }
+  if (total) console.warn(`Translation overlay validation: ${total} warning(s) across ${ids.length} overlay(s).`);
+  else console.log(`Translation overlay validation: ${ids.length} overlay(s) OK.`);
 }
 
 /** Returns the set of leaf-text keys present anywhere in the base object.
@@ -134,7 +217,7 @@ function collectKeyPaths(obj, prefix = '', out = new Set()) {
   return out;
 }
 
-function warnUnknownKeys(overlayId, overlay, base) {
+function warnUnknownKeys(overlayId, overlay, base, serviceName = 'liturgy') {
   let basePaths = baseKeySetCache.get(base);
   if (!basePaths) { basePaths = collectKeyPaths(base); baseKeySetCache.set(base, basePaths); }
   const stack = [['', overlay]];
@@ -145,7 +228,7 @@ function warnUnknownKeys(overlayId, overlay, base) {
       if (k.startsWith('_')) continue;
       const p = prefix ? `${prefix}.${k}` : k;
       if (!basePaths.has(p)) {
-        console.warn(`Translation '${overlayId}': key '${p}' not present in base liturgy-fixed.json (silent drift?)`);
+        console.warn(`Translation '${overlayId}/${serviceName}': key '${p}' not present in base ${serviceName}-fixed.json (silent drift?)`);
       } else {
         stack.push([p, node[k]]);
       }
@@ -176,20 +259,129 @@ function resolveExtendsChain(overlayId, visited = new Set(), stack = new Set()) 
   return chain;
 }
 
-function getLiturgyFixed(overlayName) {
-  if (!overlayName) return liturgyFixed;
-  if (translationCache.has(overlayName)) return translationCache.get(overlayName);
+/** Generalized overlay loader. Returns the base fixed-text for `serviceName`
+ *  (e.g. 'liturgy', 'presanctified') with the named overlay's cascade applied.
+ *  When no overlay is selected, returns the base unmodified. */
+function getOverlayFixed(serviceName, overlayName) {
+  const base = fixedTextRegistry[serviceName];
+  if (!base) {
+    console.warn(`Translation: no base registered for service '${serviceName}'`);
+    return null;
+  }
+  if (!overlayName) return base;
+  const cacheKey = `${serviceName}:${overlayName}`;
+  if (translationCache.has(cacheKey)) return translationCache.get(cacheKey);
   const chain = resolveExtendsChain(overlayName);
-  let merged = liturgyFixed;
+  let merged = base;
   for (const id of chain) {
-    const overlay = loadOverlayData(id);
+    const overlay = loadOverlayData(id, serviceName);
     if (overlay) {
-      warnUnknownKeys(id, overlay, liturgyFixed);
+      warnUnknownKeys(id, overlay, base, serviceName);
       merged = deepMergeOverlay(merged, overlay);
     }
   }
-  translationCache.set(overlayName, merged);
+  translationCache.set(cacheKey, merged);
   return merged;
+}
+
+/** Backward-compatible wrapper. Existing callers (and the four routes we've
+ *  wired so far) keep working unchanged. New routes / callers can use
+ *  getOverlayFixed directly. */
+function getLiturgyFixed(overlayName) {
+  return getOverlayFixed('liturgy', overlayName);
+}
+
+// ─── Overlay diff + provenance ──────────────────────────────────────────────
+// For attribution: when an overlay overrides a string value, the resulting
+// ServiceBlock should be tagged with `_overlay: "<id>"` so consumers (and
+// devs debugging) can see exactly which blocks came from the active overlay.
+//
+// Approach: post-merge, walk both base and merged, collect the set of string
+// values that exist in merged but not in base. After assembly, any block
+// whose `text` is in that set gets the `_overlay` tag.
+
+const overlayStringsCache = new Map();   // key: "<serviceFile>:<overlayId>" → Set<string>
+const overlayDiffCache    = new Map();   // key: "<serviceFile>:<overlayId>" → diff array
+
+function collectStringValues(obj, out = new Set()) {
+  if (typeof obj === 'string') { out.add(obj); return out; }
+  if (!obj || typeof obj !== 'object') return out;
+  if (Array.isArray(obj)) { obj.forEach(v => collectStringValues(v, out)); return out; }
+  for (const k of Object.keys(obj)) {
+    if (k.startsWith('_')) continue;
+    collectStringValues(obj[k], out);
+  }
+  return out;
+}
+
+/** Returns the set of string values introduced by the overlay (present in the
+ *  merged result but not in the base). Used for block-level attribution. */
+function getOverlayIntroducedStrings(serviceName, overlayId) {
+  if (!overlayId) return null;
+  const cacheKey = `${serviceName}:${overlayId}`;
+  if (overlayStringsCache.has(cacheKey)) return overlayStringsCache.get(cacheKey);
+  const base = fixedTextRegistry[serviceName];
+  const merged = getOverlayFixed(serviceName, overlayId);
+  if (!base || !merged) return null;
+  const baseStrs = collectStringValues(base);
+  const mergedStrs = collectStringValues(merged);
+  const introduced = new Set();
+  for (const s of mergedStrs) if (!baseStrs.has(s)) introduced.add(s);
+  overlayStringsCache.set(cacheKey, introduced);
+  return introduced;
+}
+
+/** Tags blocks whose text matches an overlay-introduced string with the
+ *  overlay id. Mutates blocks in place; safe no-op when overlayId is null. */
+function tagBlocksWithOverlay(blocks, serviceName, overlayId) {
+  if (!overlayId || !Array.isArray(blocks)) return;
+  const introduced = getOverlayIntroducedStrings(serviceName, overlayId);
+  if (!introduced || introduced.size === 0) return;
+  for (const b of blocks) {
+    if (b && b.text && introduced.has(b.text)) b._overlay = overlayId;
+  }
+}
+
+/** Returns the diff between base and merged for a given service+overlay.
+ *  Each entry: { path: "dotted.key.path", base: "...", overlay: "..." }.
+ *  Arrays are diffed wholesale (path points at the array, before/after are JSON-encoded). */
+function diffOverlay(serviceName, overlayId) {
+  if (!overlayId) return [];
+  const cacheKey = `${serviceName}:${overlayId}`;
+  if (overlayDiffCache.has(cacheKey)) return overlayDiffCache.get(cacheKey);
+  const base = fixedTextRegistry[serviceName];
+  const merged = getOverlayFixed(serviceName, overlayId);
+  if (!base || !merged) return [];
+
+  const diffs = [];
+  function walk(prefix, b, m) {
+    if (b === m) return;
+    if (typeof b === 'string' || typeof m === 'string'
+        || typeof b !== 'object' || typeof m !== 'object'
+        || b === null || m === null
+        || Array.isArray(b) !== Array.isArray(m)) {
+      diffs.push({ path: prefix, base: b ?? null, overlay: m ?? null });
+      return;
+    }
+    if (Array.isArray(b)) {
+      if (JSON.stringify(b) !== JSON.stringify(m)) {
+        diffs.push({ path: prefix, base: b, overlay: m });
+      }
+      return;
+    }
+    const keys = new Set([...Object.keys(b), ...Object.keys(m)]);
+    for (const k of keys) {
+      if (k.startsWith('_')) continue;
+      const p = prefix ? `${prefix}.${k}` : k;
+      if (!(k in b)) { diffs.push({ path: p, base: null, overlay: m[k] }); continue; }
+      if (!(k in m)) { diffs.push({ path: p, base: b[k], overlay: null }); continue; }
+      walk(p, b[k], m[k]);
+    }
+  }
+  walk('', base, merged);
+
+  overlayDiffCache.set(cacheKey, diffs);
+  return diffs;
 }
 
 function resolveTranslation(query) {
@@ -3634,6 +3826,7 @@ try {
 let liturgyFixed;
 try {
   liturgyFixed = loadJSON('fixed-texts/liturgy-fixed.json');
+  registerBaseFixed('liturgy', liturgyFixed);
   console.log('Liturgy fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load liturgy fixed texts:', err.message);
@@ -3643,11 +3836,16 @@ try {
 let presanctifiedFixed;
 try {
   presanctifiedFixed = loadJSON('fixed-texts/presanctified-fixed.json');
+  registerBaseFixed('presanctified', presanctifiedFixed);
   console.log('Presanctified fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load presanctified fixed texts:', err.message);
   process.exit(1);
 }
+
+// Defer translation validation until AFTER all base fixed-text files have
+// registered, so drift warnings have a base to check against.
+validateAllTranslations();
 
 let paschalHoursFixed;
 try {
@@ -3927,6 +4125,29 @@ function handleRequest(req, res) {
         translations: getTranslationManifests(),
       }));
 
+    } else if (pathname.startsWith('/api/translations/') && pathname.endsWith('/diff')) {
+      // Returns the merged-vs-base diff for an overlay. Useful for confirming
+      // overrides took effect and (during STS population) for cataloguing
+      // which keys an overlay touches.
+      // Path: /api/translations/<id>/diff?service=liturgy
+      const id = pathname.slice('/api/translations/'.length, -'/diff'.length);
+      const q = parseQuery(url);
+      const service = (q.service || 'liturgy').trim();
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      if (!fixedTextRegistry[service]) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: `Unknown service '${service}'. Available: ${Object.keys(fixedTextRegistry).join(', ')}` }));
+        return;
+      }
+      const diffs = diffOverlay(service, id);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        overlay: id,
+        service,
+        count: diffs.length,
+        diffs,
+      }));
+
     } else if (pathname === '/api/liturgy') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -3984,6 +4205,11 @@ function handleRequest(req, res) {
           return;
         }
 
+        // Tag blocks whose text came from the active overlay (must happen
+        // BEFORE pronoun substitution, which would change the strings and
+        // defeat the match).
+        tagBlocksWithOverlay(blocks, 'liturgy', translation);
+
         if (pronoun === 'yy') {
           for (const block of blocks) {
             if (block.text)  block.text  = applyYouYour(block.text);
@@ -4029,6 +4255,7 @@ function handleRequest(req, res) {
           season,
           liturgicalLabel,
           commemorations,
+          translation: translation || null,
           blocks,
         }));
       })().catch(err => {
@@ -4108,17 +4335,24 @@ function handleRequest(req, res) {
         const assemblerSources = { ...sources, db: dbSource };
 
         const translation = resolveTranslation(q);
-        const liturgyFixedResolved = getLiturgyFixed(translation);
+        const liturgyFixedResolved = getOverlayFixed('liturgy', translation);
+        const presanctifiedFixedResolved = getOverlayFixed('presanctified', translation);
 
         let blocks;
         try {
-          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixedResolved, presanctifiedFixed, assemblerSources);
+          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixedResolved, presanctifiedFixedResolved, assemblerSources);
         } catch (err) {
           console.error('assemblePresanctified error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: err.message }));
           return;
         }
+
+        // Tag blocks from overlay overrides (both liturgy and presanctified
+        // bases, since Presanctified borrows from both). Must run before
+        // pronoun substitution.
+        tagBlocksWithOverlay(blocks, 'liturgy', translation);
+        tagBlocksWithOverlay(blocks, 'presanctified', translation);
 
         if (pronoun === 'yy') {
           for (const block of blocks) {
@@ -4154,6 +4388,7 @@ function handleRequest(req, res) {
           season,
           liturgicalLabel,
           commemorations,
+          translation: translation || null,
           blocks,
         }));
       })().catch(err => {

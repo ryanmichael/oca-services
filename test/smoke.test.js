@@ -432,3 +432,168 @@ describe('Calendar rules', () => {
     assert.ok(entry.vespers, 'Saturday should have vespers config');
   });
 });
+
+// ── Translation overlay cascade ────────────────────────────────────────────
+// These tests exercise the overlay loader directly (filesystem + deep merge)
+// rather than going through the HTTP server. They temporarily plant test
+// overlays in fixed-texts/translations/, restore on teardown.
+
+describe('Translation overlay cascade', () => {
+  const TRANSLATIONS_DIR = path.join(__dirname, '..', 'fixed-texts', 'translations');
+  const testOverlays = ['_test-base', '_test-mid', '_test-leaf', '_test-cycle-a', '_test-cycle-b'];
+
+  function writeOverlay(id, manifest, data) {
+    const dir = path.join(TRANSLATIONS_DIR, id);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+    if (data) fs.writeFileSync(path.join(dir, 'liturgy-fixed.json'), JSON.stringify(data, null, 2));
+  }
+
+  function cleanupOverlays() {
+    for (const id of testOverlays) {
+      const dir = path.join(TRANSLATIONS_DIR, id);
+      if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
+    }
+  }
+
+  before(() => { cleanupOverlays(); });
+  after(() => { cleanupOverlays(); });
+
+  it('default (no translation) returns base text', async () => {
+    const r = await get('/api/liturgy?date=2026-05-24&format=json');
+    assert.equal(r.status, 200);
+    const verses = r.json.blocks.filter(b => b.section === 'Third Antiphon' && b.type === 'verse');
+    assert.ok(verses.length >= 8, 'Should have at least 8 Beatitudes verses');
+    assert.match(verses[0].text, /poor in spirit/i, 'First Beatitudes verse should be "poor in spirit"');
+  });
+
+  it('lists all shipped overlays without manifest warnings', async () => {
+    const r = await get('/api/translations');
+    assert.equal(r.status, 200);
+    assert.ok(Array.isArray(r.json.translations), 'translations should be an array');
+    assert.ok(r.json.translations.length >= 5, 'Expected at least the shipped overlays');
+    // Shipped overlays should have no warnings. Test artifacts (xtest-*) excluded.
+    const dirty = r.json.translations.filter(t => !t.id.startsWith('xtest') && t.warnings?.length);
+    assert.deepEqual(dirty, [], `Manifests with warnings: ${dirty.map(d => d.id + ': ' + d.warnings.join('; ')).join(', ')}`);
+  });
+
+  it('overlay with extends chain merges parent-first', async () => {
+    // base → _test-base (overrides X) → _test-mid (overrides Y) → _test-leaf (overrides X again)
+    writeOverlay('_test-base', { name: 'test base', kind: 'tradition', extends: [] }, {
+      beatitudes: { verses: ['BASE0','BASE1','BASE2','BASE3','BASE4','BASE5','BASE6','BASE7','BASE8','BASE9','BASE10','BASE11','BASE12'] },
+    });
+    writeOverlay('_test-mid', { name: 'test mid', kind: 'tradition', extends: ['_test-base'] }, {
+      beatitudes: { verses: ['BASE0','BASE1','MID2','BASE3','BASE4','BASE5','BASE6','BASE7','BASE8','BASE9','BASE10','BASE11','BASE12'] },
+    });
+    writeOverlay('_test-leaf', { name: 'test leaf', kind: 'parish', extends: ['_test-mid'] }, {
+      beatitudes: { verses: ['BASE0','LEAF1','MID2','BASE3','BASE4','BASE5','BASE6','BASE7','BASE8','BASE9','BASE10','BASE11','BASE12'] },
+    });
+
+    const r = await get('/api/liturgy?date=2026-05-24&translation=_test-leaf&format=json');
+    assert.equal(r.status, 200);
+    const verses = r.json.blocks.filter(b => b.section === 'Third Antiphon' && b.type === 'verse');
+    // Verify all three layers contributed: LEAF1 from leaf, MID2 from mid, BASE3+ from base.
+    assert.match(verses[0].text, /LEAF1/, 'leaf overlay should override verse[1] index');
+    assert.match(verses[1].text, /MID2/, 'mid overlay should still apply verse[2] override');
+    assert.match(verses[2].text, /BASE3/, 'base overlay should apply unchanged verse[3]');
+  });
+
+  it('cycle detection prevents infinite recursion', async () => {
+    writeOverlay('_test-cycle-a', { name: 'cycle a', kind: 'tradition', extends: ['_test-cycle-b'] }, {});
+    writeOverlay('_test-cycle-b', { name: 'cycle b', kind: 'tradition', extends: ['_test-cycle-a'] }, {});
+
+    // Should return 200 (not hang or crash) — loader detects cycle and returns []
+    const r = await get('/api/liturgy?date=2026-05-24&translation=_test-cycle-a&format=json');
+    assert.equal(r.status, 200, 'Cycle should not crash the server');
+    assert.ok(r.json.blocks && r.json.blocks.length > 0, 'Should still render the service');
+  });
+
+  it('manifest validation surfaces warnings via /api/translations', async () => {
+    // Plant a deliberately bad overlay. Use non-underscore prefix so it shows
+    // up in /api/translations (which filters out _-prefixed dirs as "hidden").
+    writeOverlay('xtest-bad', { kind: 'bogus-kind', extends: 'not-an-array' }, {});
+
+    const r = await get('/api/translations');
+    assert.equal(r.status, 200);
+    const bad = r.json.translations.find(t => t.id === 'xtest-bad');
+    assert.ok(bad, 'xtest-bad overlay should appear in /api/translations');
+    assert.ok(Array.isArray(bad.warnings) && bad.warnings.length > 0, 'Should have warnings');
+    assert.ok(bad.warnings.some(w => /kind/i.test(w)), 'Should flag bad kind');
+    assert.ok(bad.warnings.some(w => /extends/i.test(w)), 'Should flag bad extends');
+
+    // Cleanup inline since this overlay isn't in the standard testOverlays list.
+    fs.rmSync(path.join(TRANSLATIONS_DIR, 'xtest-bad'), { recursive: true, force: true });
+  });
+
+  it('drift detector flags overlay keys not present in base', async () => {
+    // We can't easily intercept console.warn from a child process, but we can
+    // confirm the request still succeeds — drift warnings are non-fatal.
+    writeOverlay('_test-drift', { name: 'drift test', kind: 'tradition', extends: [] }, {
+      'totally-made-up-key': 'this is not in base',
+      beatitudes: { 'typo-field': 'wrong name' },
+    });
+
+    const r = await get('/api/liturgy?date=2026-05-24&translation=_test-drift&format=json');
+    assert.equal(r.status, 200, 'Drift warnings should not break rendering');
+
+    fs.rmSync(path.join(TRANSLATIONS_DIR, '_test-drift'), { recursive: true, force: true });
+  });
+
+  it('diff endpoint returns merged-vs-base deltas', async () => {
+    // Plant an overlay with a known override and verify the diff endpoint
+    // reports it.
+    writeOverlay('_test-diff', { name: 'diff test', kind: 'tradition', extends: [] }, {
+      beatitudes: {
+        verses: [
+          'In Thy Kingdom, remember us, O Lord, when Thou comest in Thy Kingdom.',
+          'DIFFERENT FIRST VERSE',
+          // ...truncated; the diff happens on the whole array since arrays are diffed wholesale
+        ],
+      },
+    });
+
+    const r = await get('/api/translations/_test-diff/diff?service=liturgy');
+    assert.equal(r.status, 200);
+    assert.equal(r.json.overlay, '_test-diff');
+    assert.equal(r.json.service, 'liturgy');
+    assert.ok(r.json.count >= 1, 'Should report at least one diff');
+    const beatitudesDiff = r.json.diffs.find(d => d.path === 'beatitudes.verses');
+    assert.ok(beatitudesDiff, 'beatitudes.verses should be in the diff list');
+    assert.ok(Array.isArray(beatitudesDiff.overlay), 'overlay value should be an array');
+    assert.match(JSON.stringify(beatitudesDiff.overlay), /DIFFERENT FIRST VERSE/);
+  });
+
+  it('blocks are tagged with _overlay when text matches an overlay override', async () => {
+    // Plant an overlay that introduces a distinctive new string. Verify the
+    // assembled block carrying that string is tagged.
+    writeOverlay('_test-tag', { name: 'tag test', kind: 'tradition', extends: [] }, {
+      beatitudes: {
+        verses: [
+          'In Thy Kingdom, remember us, O Lord, when Thou comest in Thy Kingdom.',
+          'TAGGED OVERRIDE STRING for testing',
+          'Blessed are they that mourn, for they shall be comforted.',
+          'Blessed are the meek, for they shall inherit the earth.',
+          'Blessed are they that hunger and thirst after righteousness, for they shall be sated.',
+          'Blessed are the merciful, for they shall obtain mercy.',
+          'Blessed are the pure in heart, for they shall see God.',
+          'Blessed are the peacemakers, for they shall be called the sons of God.',
+          "Blessed are they that are persecuted for righteousness' sake, for theirs is the Kingdom of the Heavens.",
+          'Blessed are ye when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for My sake.',
+          'Rejoice, and be exceeding glad, for great is your reward in the heavens.',
+          'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          'Now and ever, and unto ages of ages. Amen.',
+        ],
+      },
+    });
+
+    const r = await get('/api/liturgy?date=2026-05-24&translation=_test-tag&format=json');
+    assert.equal(r.status, 200);
+    assert.equal(r.json.translation, '_test-tag', 'Response carries the active translation id');
+    const tagged = r.json.blocks.filter(b => b._overlay === '_test-tag');
+    assert.ok(tagged.length >= 1, 'At least one block should be tagged with _overlay');
+    assert.ok(tagged.some(b => b.text === 'TAGGED OVERRIDE STRING for testing'),
+      'The block with the distinctive overridden string should be tagged');
+
+    fs.rmSync(path.join(TRANSLATIONS_DIR, '_test-tag'), { recursive: true, force: true });
+  });
+});

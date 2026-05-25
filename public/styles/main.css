@@ -268,6 +268,15 @@ header,
 .panel-date-str {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
 }
+.panel-translation {
+  margin-top: 4px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.panel-translation[hidden] { display: none; }
+.panel-translation .pt-label { color: var(--muted); }
+.panel-translation .pt-name  { color: var(--rubric); margin-left: 6px; font-style: normal; }
 /* Panel detail toggle */
 .panel-detail-toggle {
   display: flex; align-items: center; gap: 8px;

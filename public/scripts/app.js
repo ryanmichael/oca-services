@@ -78,6 +78,35 @@ function translationParam() {
   return activeTranslation ? `&translation=${encodeURIComponent(activeTranslation)}` : '';
 }
 
+/** Shows or hides the translation indicator beneath the service date.
+ *  Called after each service load with the response's `translation` field.
+ *  Fetches /api/translations on first call to resolve the friendly name. */
+function updateTranslationIndicator(translationId) {
+  const el = document.getElementById('p-translation');
+  if (!el) return;
+  if (!translationId) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+  // Resolve friendly name from the cached list. Falls back to the raw id
+  // while the list loads; refreshes once the fetch resolves.
+  const render = (name) => {
+    el.innerHTML = `<span class="pt-label">Service text:</span><span class="pt-name">${name}</span>`;
+    el.hidden = false;
+  };
+  const fromCache = translationsCache?.translations?.find(t => t.id === translationId);
+  if (fromCache) {
+    render(fromCache.name);
+  } else {
+    render(translationId);
+    loadTranslations().then(() => {
+      const t = translationsCache?.translations?.find(t => t.id === translationId);
+      if (t) render(t.name);
+    });
+  }
+}
+
 async function fetchService(date, svcType, pronoun = 'tt') {
   const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
                  : svcType === 'presanctified'     ? '/api/presanctified'
@@ -324,6 +353,11 @@ async function loadPanelContent(date, svcType) {
     const dateStr = `${formatLong(displayDate)}${toneStr}${labelStr}`;
     document.getElementById('p-date').textContent = dateStr;
     document.getElementById('print-header-date').textContent = dateStr;
+
+    // Translation indicator \u2014 shows when an overlay is active for this response.
+    // Resolves the friendly name from the cached /api/translations list (fetched
+    // lazily so it doesn't block the first paint).
+    updateTranslationIndicator(data.translation);
 
     // Populate saints list; auto-expand detail section when there are commemorations
     const comms    = data.commemorations || [];

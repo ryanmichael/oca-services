@@ -1,0 +1,21 @@
+{
+  "_note": "St. Tikhon's Sluzhebnik (2010, 2nd ed.) overrides for presanctified-fixed.json. Sparse — only keys whose wording differs from the base.",
+  "_source": "STS Service Books of the Orthodox Church, 2nd ed. 2010 — pages cited in _section comments",
+
+  "_section_ephrem": "Prayer of St. Ephraim — STS p. 202. Distinctive: 'Take from me' (vs base 'give me not'), 'mine own' (vs base 'my own'), exclamations after 'life' and 'King'.",
+  "prayer-of-st-ephrem": {
+    "text": "O Lord and Master of my life! Take from me the spirit of sloth, despair, lust of power, and idle talk.\n\nBut give rather the spirit of chastity, humility, patience, and love to Thy servant.\n\nYea, O Lord and King! Grant me to see mine own transgressions and not to judge my brother, for blessed art Thou unto ages of ages. Amen."
+  },
+
+  "_section_now_the_powers": "Hymn of the Entrance — STS p. 212. Distinctive: capitalized 'Powers of Heaven', period after 'with us' (vs base semicolon), 'Behold' standalone (vs 'for behold'), secondHalf reads 'is upborne, fulfilled' (vs base 'all accomplished, is ushered in'), conclusion uses deacon's 'Let us draw near in faith and love'.",
+  "now-the-powers": {
+    "firstHalf": "Now the Powers of Heaven do serve invisibly with us. Behold, the King of Glory enters.",
+    "secondHalf": "Behold, the mystical sacrifice is upborne, fulfilled.",
+    "conclusion": "Let us draw near in faith and love, and become communicants of life eternal. Alleluia! Alleluia! Alleluia!"
+  },
+
+  "_section_communion_hymn": "Presanctified Communion Hymn — STS p. 217. Exclamations: 'good!' + 'Alleluia! Alleluia! Alleluia!'.",
+  "communion-hymn": {
+    "text": "O taste and see that the Lord is good! Alleluia! Alleluia! Alleluia!"
+  }
+}

@@ -1,45 +1,66 @@
 'use strict';
 
-// Calibrated against the Slavonic Octoechos daily cycle. Each day requires at
-// least one matching keyword across the Lord I Call stichera (case-insensitive
-// substring). Today's weekday-off-by-one bug would have flagged here:
-// liturgical Thursday rendered Cross content with zero "apostle"/"Nicholas".
-const THEMES = {
-  monday:    { keywords: ['compunction', 'repent', 'angel', 'bodiless'],   note: 'Compunction + Bodiless Powers' },
-  tuesday:   { keywords: ['forerunner', 'baptist'],                        note: 'Forerunner' },
-  wednesday: { keywords: ['cross', 'crucifi', 'theotokos'],                note: 'Cross + Theotokos' },
-  thursday:  { keywords: ['apostle', 'disciple', 'preach', 'nicholas', 'hierarch'], note: 'Apostles + St. Nicholas' },
-  friday:    { keywords: ['cross', 'crucifi'],                             note: 'Cross + Theotokos' },
+const fs   = require('fs');
+const path = require('path');
+
+// Inlined intentionally — the rule references the *canonical* mapping so it
+// keeps catching regressions even if VESPERS_SUNG_EVE is removed or mutated
+// in calendar-rules.js. Source: project_pent_weekday_fixes.md + the project's
+// sung-evening convention documented in octoechos.json._meta.
+const VESPERS_SUNG_EVE = {
+  monday:    'sunday',
+  tuesday:   'monday',
+  wednesday: 'tuesday',
+  thursday:  'wednesday',
+  friday:    'thursday',
+  saturday:  'friday',
+  sunday:    'saturday',
 };
 
+// Strengthens the prior keyword-heuristic version. Catches the off-by-one bug
+// directly: for each (tone, liturgical-day) the assembled "octoechos"-tagged
+// LIC hymns must come from the source data at
+// `octoechos.json` → tone{N}.{VESPERS_SUNG_EVE[dow]}.vespers.lordICall.hymns.
+// Menaion injection can displace some hymns, but every Octoechos block that
+// IS rendered must be findable in the expected source set. A consumer reading
+// the wrong day's data flags here, regardless of how much Menaion took.
+
+const octoechos = JSON.parse(fs.readFileSync(
+  path.join(__dirname, '..', '..', '..', 'variable-sources', 'octoechos.json'),
+  'utf8'
+));
+
+const norm = (s) => (s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+
 module.exports = {
-  id:             'F-weekday-vespers-theme',
+  id:             'F-weekday-vespers-octoechos-source',
   family:         'theme',
-  severity:       'medium',
-  description:    'Weekday Vespers Lord I Call stichera should contain at least one keyword from the day\'s liturgical theme.',
+  severity:       'high',
+  description:    'Assembled "octoechos"-source Lord I Call hymns must come from the source data at the (tone, sung-evening-day) key — catches weekday lookup-axis regressions.',
   needsAssembled: true,
-  // Restricted to ordinary time: Triodion/Pentecostarion/Holy Week stichera
-  // replace weekday Octoechos content and have their own (non-weekday) themes.
   appliesTo: (ctx) =>
     ctx.service === 'vespers' &&
     ctx.season === 'ordinaryTime' &&
-    THEMES[ctx.dow] !== undefined,
+    ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].includes(ctx.dow),
   check: (ctx) => {
-    const theme = THEMES[ctx.dow];
-    const blocks = ctx.assembled?.blocks || [];
-    const lic = blocks.filter(b => /^Lord, I/.test(b.section || '') && b.type === 'hymn');
-    if (!lic.length) return [];
-    // Menaion stichera displace the back half of weekday Octoechos hymns —
-    // the theme-bearing ones (Forerunner / Apostles / etc.) often live there.
-    // When Menaion has injected stichera, skip the theme check rather than
-    // flag a false positive.
-    if (lic.some(b => b.source === 'menaion')) return [];
-    const text = lic.map(b => (b.text || '').toLowerCase()).join(' ');
-    const hits = theme.keywords.filter(kw => text.includes(kw));
-    if (hits.length > 0) return [];
+    const sungEve = VESPERS_SUNG_EVE[ctx.dow];
+    if (!sungEve) return [];
+    const tk = `tone${ctx.tone}`;
+    const sourceHymns =
+      octoechos?.[tk]?.[sungEve]?.vespers?.lordICall?.hymns || [];
+    if (!sourceHymns.length) return [];
+
+    const expected = new Set(sourceHymns.map(h => norm(h.text)));
+    const assembledOcto = (ctx.assembled?.blocks || []).filter(b =>
+      /^Lord, I/.test(b.section || '') && b.type === 'hymn' && b.source === 'octoechos'
+    );
+    if (!assembledOcto.length) return [];
+
+    const stray = assembledOcto.filter(b => !expected.has(norm(b.text)));
+    if (!stray.length) return [];
     return [{
-      message: `${ctx.dow} Vespers LIC contains none of ${JSON.stringify(theme.keywords)} — expected theme: ${theme.note}`,
-      hint:    'Octoechos weekday lookup may be misaligned; see VESPERS_SUNG_EVE in calendar-rules.js.',
+      message: `${stray.length}/${assembledOcto.length} Octoechos LIC hymn(s) not found in source ${tk}.${sungEve}.vespers.lordICall — lookup axis may be wrong`,
+      hint:    'Check VESPERS_SUNG_EVE mapping in calendar-rules.js and the consumer that reads octoechos.json weekday keys.',
     }];
   },
 };

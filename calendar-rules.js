@@ -2183,4 +2183,5 @@ module.exports = {
   isBurialVespersDay,
   getEothinon,
   generateCalendarEntry,
+  VESPERS_SUNG_EVE,
 };

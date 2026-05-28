@@ -100,7 +100,11 @@ async function main() {
   const services     = listFrom(args.services) || ['vespers', 'matins', 'liturgy'];
   const ruleFilter   = listFrom(args.rules);
   const allowlistOn  = !args['no-allowlist'];
-  const httpBase     = args['http-base'] || (args.http ? 'http://localhost:3000' : null);
+  const httpBase     =
+       (typeof args['http-base'] === 'string' && args['http-base'])
+    || (typeof args.http === 'string' && args.http)
+    || (args.http === true && 'http://localhost:3000')
+    || null;
 
   console.log(`Auditing ${dates.length} date(s) × ${services.length} service(s)${httpBase ? ` (assembled via ${httpBase})` : ''}…`);
 

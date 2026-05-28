@@ -3455,7 +3455,15 @@ function applyYouYour(text) {
 
 const ORDINALS = ['', '1st', '2nd', '3rd', '4th', '5th', '6th'];
 
-function getDayLabel(entry, dow, season) {
+function getDayLabel(entry, dow, season, date) {
+  // Great Feasts override every season's default label.
+  if (date) {
+    const d = date instanceof Date ? date : new Date(date + 'T12:00:00Z');
+    const feastKey = getGreatFeastKey(d);
+    if (feastKey && GREAT_FEAST_VARIANTS[feastKey]?.label) {
+      return GREAT_FEAST_VARIANTS[feastKey].label;
+    }
+  }
   if (season === 'greatLent') {
     if (dow === 'saturday') {
       const note = entry._meta?.note || '';
@@ -4049,7 +4057,7 @@ function handleRequest(req, res) {
       const { blocks, calendarEntry, serviceTitle, tone } = result;
       const season = calendarEntry.liturgicalContext?.season || null;
       const dow    = calendarEntry.dayOfWeek || null;
-      const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+      const liturgicalLabel = getDayLabel(calendarEntry, dow, season, calendarEntry.date);
 
       // Use calendar entry commemorations if present; otherwise fall back to Menaion DB
       let commemorations = calendarEntry.commemorations || [];
@@ -4227,7 +4235,7 @@ function handleRequest(req, res) {
         const season = calendarEntry.liturgicalContext?.season || null;
         const tone   = calendarEntry.liturgicalContext?.tone ?? null;
         const dow    = calendarEntry.dayOfWeek || null;
-        const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+        const liturgicalLabel = getDayLabel(calendarEntry, dow, season, calendarEntry.date);
         let commemorations  = calendarEntry.commemorations || [];
         if (commemorations.length === 0) {
           const [, mm, dd] = date.split('-').map(Number);
@@ -4371,7 +4379,7 @@ function handleRequest(req, res) {
         const season = calendarEntry.liturgicalContext?.season || null;
         const tone   = calendarEntry.liturgicalContext?.tone ?? null;
         const dow    = calendarEntry.dayOfWeek || null;
-        const liturgicalLabel = getDayLabel(calendarEntry, dow, season);
+        const liturgicalLabel = getDayLabel(calendarEntry, dow, season, calendarEntry.date);
         const commemorations  = calendarEntry.commemorations || [];
 
         // Relabel 'db' source
@@ -4972,7 +4980,7 @@ function handleRequest(req, res) {
       const entry  = getCalendarEntry(date);
       const season = entry ? (entry.liturgicalContext?.season || null) : null;
       const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
-      const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
+      const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season, entry.date) : null;
 
       // Feast + commemorations
       let commemorations = [];
@@ -5115,7 +5123,7 @@ function handleRequest(req, res) {
         const entry  = getCalendarEntry(dateStr);
         const season = entry ? (entry.liturgicalContext?.season || null) : null;
         const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
-        const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season) : null;
+        const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season, entry.date) : null;
 
         // Vespers date-shift: vespers served on this evening belongs to
         // the *next* liturgical day, so look up tomorrow's calendar entry.

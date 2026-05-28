@@ -273,18 +273,21 @@ function assembleKathismaReading(kathNum, section) {
   const kathismata = getKathismata();
   const psalter    = getPsalter();
   const kathisma   = kathismata[String(kathNum)];
+  // Include the kathisma number in every id so multi-kathisma services
+  // (e.g. Matins reading both Kathisma 2 and Kathisma 3) don't collide.
+  const pre = `k${kathNum}`;
   if (!kathisma) {
-    return [makeBlock('kathisma-rubric', section, 'rubric', null, `KATHISMA ${kathNum}`)];
+    return [makeBlock(`${pre}-rubric`, section, 'rubric', null, `KATHISMA ${kathNum}`)];
   }
 
   const blocks = [];
-  blocks.push(makeBlock('kathisma-rubric', section, 'rubric', null,
+  blocks.push(makeBlock(`${pre}-rubric`, section, 'rubric', null,
     kathisma.label.toUpperCase()));
 
   const GLORY_ALLELUIA = [
-    makeBlock('k-glory', section, 'doxology', 'reader',
+    makeBlock(`${pre}-glory`, section, 'doxology', 'reader',
       'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'),
-    makeBlock('k-alleluia', section, 'response', 'reader',
+    makeBlock(`${pre}-alleluia`, section, 'response', 'reader',
       'Alleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'),
   ];
 
@@ -299,7 +302,7 @@ function assembleKathismaReading(kathNum, section) {
         // Skip superscription (title) verse — psalm number is the section title
         const verses = psalmBody(psalm);
         const text = verses.join('\n\n');
-        blocks.push(makeBlock(`k-ps${psalmNum}`, psSection, 'prayer', 'reader', text));
+        blocks.push(makeBlock(`${pre}-ps${psalmNum}`, psSection, 'prayer', 'reader', text));
       });
     } else {
       // Psalm 118 verse-range stasis
@@ -308,7 +311,7 @@ function assembleKathismaReading(kathNum, section) {
       if (psalm) {
         const psSection = `Psalm ${psalmNum}:${fromVerse}–${toVerse}`;
         const verses = psalm.verses.slice(fromVerse - 1, toVerse);
-        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}`, psSection, 'prayer', 'reader',
+        blocks.push(makeBlock(`${pre}-ps${psalmNum}-${fromVerse}`, psSection, 'prayer', 'reader',
           verses.join('\n\n')));
       }
     }
@@ -316,7 +319,7 @@ function assembleKathismaReading(kathNum, section) {
     // Glory + Alleluia after stases 1 and 2 (not after the last stasis)
     if (stasisIdx < kathisma.stases.length - 1) {
       GLORY_ALLELUIA.forEach((b, i) => {
-        blocks.push({ ...b, id: `k-s${stasisIdx}-sep${i}` });
+        blocks.push({ ...b, id: `${pre}-s${stasisIdx}-sep${i}` });
       });
     }
   });

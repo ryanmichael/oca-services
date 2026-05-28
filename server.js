@@ -1692,6 +1692,35 @@ const GREAT_FEAST_VARIANTS = {
  * Build Sunday Matins spec from Octoechos data.
  * Sundays always use the Great Doxology path and have a Gospel.
  */
+function _buildGreatFeastMatinsStub(feastKey, season, date) {
+  const variant = GREAT_FEAST_VARIANTS[feastKey];
+  if (!variant) return null;
+
+  const trop = variant.troparia?.[0];
+  const kont = variant.kontakia?.[0];
+
+  const spec = {
+    isSunday: true,
+    feastRank: 'greatFeast',
+    feastType: variant.type || null,
+    tone: trop?.tone || kont?.tone || 1,
+    useSmallDoxology: false,
+    kathismaCount: 2,
+    kathismaNumbers: getMatinsKathismata('sunday', season),
+    sedalion: [],
+    _stub: true,
+    _stubNote: `Festal Matins propers for ${variant.label} are a known content gap; serving troparion + kontakion only.`,
+  };
+
+  if (trop) spec.troparion = { text: trop.text, tone: trop.tone, label: variant.label };
+  if (kont) spec.kontakion = { text: kont.text, tone: kont.tone, label: variant.label };
+  if (variant.prokeimenon) spec.prokeimenon = variant.prokeimenon;
+
+  if (spec.troparion) spec.finalTroparion = spec.troparion;
+
+  return spec;
+}
+
 function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
   const tk = `tone${tone}`;
   const oct = sources.octoechos[tk];
@@ -1899,7 +1928,17 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
 
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
-    return _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
+    const sundaySpec = _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
+    if (sundaySpec) return sundaySpec;
+
+    // Octoechos returned null — happens on great-feast Sundays with no tone
+    // (Pentecost; Pascha is handled via Paschal Matins route).
+    // Build a minimal festal stub from GREAT_FEAST_VARIANTS so the service is
+    // at least browsable; full festal matins propers are a content gap.
+    if (feastKey && GREAT_FEAST_VARIANTS[feastKey]) {
+      return _buildGreatFeastMatinsStub(feastKey, season, date);
+    }
+    return null;
   }
 
   // ── Weekday/Saturday Matins (no menaion matins data) ────────────────────
@@ -4518,6 +4557,38 @@ function handleRequest(req, res) {
       const dow    = getDayOfWeek(d);
       const season = getLiturgicalSeason(d);
       const tone   = getTone(d);
+
+      // ── Bright Week: Matins = Paschal Matins (Pascha through Bright Saturday) ──
+      if (season === 'brightWeek') {
+        let blocks;
+        try {
+          blocks = assemblePaschalMatins(paschalMatinsFixed);
+        } catch (err) {
+          console.error('assemblePaschalMatins error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+          return;
+        }
+        if (pronoun === 'yy') {
+          for (const block of blocks) {
+            if (block.text)  block.text  = applyYouYour(block.text);
+            if (block.label) block.label = applyYouYour(block.label);
+          }
+        }
+        if (format === 'html') {
+          renderServiceHTML(res, blocks, 'Paschal Matins', formatDate(date), pronoun);
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          date,
+          serviceType: 'matins',
+          serviceName: 'Paschal Matins',
+          season,
+          blocks,
+        }));
+        return;
+      }
 
       // Build the matins spec from available data
       const matinsSpec = buildMatinsSpec(date, d, dow, season, tone);

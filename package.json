@@ -7,7 +7,8 @@
     "start": "node server.js",
     "test": "node --test test/smoke.test.js",
     "audit": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified --http http://localhost:3000",
-    "audit:quick": "node audit/index.js --year 2026 --services vespers --strict"
+    "audit:quick": "node audit/index.js --year 2026 --services vespers --strict",
+    "audit:date": "node audit/index.js --print --services vespers,matins,liturgy,presanctified --date"
   },
   "engines": {
     "node": ">=22.5.0"

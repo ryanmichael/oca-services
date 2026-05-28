@@ -1692,6 +1692,38 @@ const GREAT_FEAST_VARIANTS = {
  * Build Sunday Matins spec from Octoechos data.
  * Sundays always use the Great Doxology path and have a Gospel.
  */
+function _loadFestalMatins(feastKey, season) {
+  const festalPath = path.join(__dirname, 'variable-sources', 'festal-matins', `${feastKey}.json`);
+  if (!fs.existsSync(festalPath)) return null;
+
+  const data = loadJSON(`variable-sources/festal-matins/${feastKey}.json`);
+
+  const spec = {
+    isSunday: true,
+    feastRank: data.feastRank || 'greatFeast',
+    feastType: data.feastType || null,
+    tone: data.tone || (data.troparion && data.troparion.tone) || 1,
+    useSmallDoxology: false,
+    kathismaCount: 2,
+    kathismaNumbers: getMatinsKathismata('sunday', season),
+    sedalion: data.sedalion || [],
+  };
+
+  if (data.troparion)              spec.troparion              = data.troparion;
+  if (data.magnification)          spec.magnification          = data.magnification;
+  if (data.prokeimenon)            spec.prokeimenon            = data.prokeimenon;
+  if (data.gospel)                 spec.gospel                 = data.gospel;
+  if (data.postGospelSticheron)    spec.postGospelSticheron    = data.postGospelSticheron;
+  if (data.canon)                  spec.canon                  = data.canon;
+  if (data.exapostilaria)          spec.exapostilaria          = data.exapostilaria;
+  if (data.lauds)                  spec.lauds                  = data.lauds;
+  if (data.troparionAfterDoxology) spec.troparionAfterDoxology = data.troparionAfterDoxology;
+  if (data.finalTroparion)         spec.finalTroparion         = data.finalTroparion;
+  if (data.isGreatFeastOfLord != null) spec.isGreatFeastOfLord = data.isGreatFeastOfLord;
+
+  return spec;
+}
+
 function _buildGreatFeastMatinsStub(feastKey, season, date) {
   const variant = GREAT_FEAST_VARIANTS[feastKey];
   if (!variant) return null;
@@ -1928,13 +1960,18 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
 
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
+    // Moveable-feast festal matins (Pentecost, etc.) — loaded by feastKey
+    if (feastKey) {
+      const festalSpec = _loadFestalMatins(feastKey, season);
+      if (festalSpec) return festalSpec;
+    }
+
     const sundaySpec = _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
     if (sundaySpec) return sundaySpec;
 
-    // Octoechos returned null — happens on great-feast Sundays with no tone
-    // (Pentecost; Pascha is handled via Paschal Matins route).
-    // Build a minimal festal stub from GREAT_FEAST_VARIANTS so the service is
-    // at least browsable; full festal matins propers are a content gap.
+    // Octoechos returned null and no festal matins data — fall back to a
+    // minimal stub from GREAT_FEAST_VARIANTS so the service is at least
+    // browsable; this signals a content gap rather than a 404.
     if (feastKey && GREAT_FEAST_VARIANTS[feastKey]) {
       return _buildGreatFeastMatinsStub(feastKey, season, date);
     }

@@ -4997,8 +4997,8 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
       { label: g.reading, source: g.source || 'gospel' }));
   }
 
-  // ── 12. Having Beheld the Resurrection (Sundays only) ──────────────────────
-  if (isSunday) {
+  // ── 12. Having Beheld the Resurrection (Sundays only, except great feasts of the Lord) ──
+  if (isSunday && !spec.isGreatFeastOfLord) {
     blocks.push(S('having-beheld', 'Having Beheld the Resurrection', 'hymn', 'choir',
       matinsFixed.havingBeheld.text));
   }
@@ -5238,6 +5238,12 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
       if (odeData.irmos) {
         blocks.push(S(`canon-ode${odeNum}-irmos`, section, 'hymn', 'choir',
           odeData.irmos, { tone, label: `Ode ${odeNum} — Irmos` }));
+      }
+      // Second-canon irmos (e.g., Pentecost: 1st canon Tone 7 + 2nd canon Tone 4)
+      if (odeData.irmos2) {
+        const tone2 = odeData.tone2 || canonSpec._secondCanonTone || tone;
+        blocks.push(S(`canon-ode${odeNum}-irmos2`, section, 'hymn', 'choir',
+          odeData.irmos2, { tone: tone2, label: `Ode ${odeNum} — Irmos (2nd Canon)` }));
       }
 
       // Troparia (if provided)

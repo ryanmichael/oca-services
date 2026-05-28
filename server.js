@@ -2071,20 +2071,24 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.postGospelSticheron = mat.postGospelSticheron;
   }
 
+  // Sessional hymns after Kathismata (rendered at the kathisma reading points)
+  if (mat.sedalion) {
+    spec.sedalion = mat.sedalion;
+  }
+
   // Canon
   if (mat.canon) {
     const canonSpec = {
       tone: mat.canon.tone || spec.tone,
       author: mat.canon.author,
     };
-    // Copy ode data + canon-level metadata (second-canon tone, katavasia tone,
-    // explicit skipMagnificat, authors, etc.)
+    // Copy ode data + every canon-level field (metadata, skipMagnificat,
+    // sedalenAfterOde3, etc.). `tone`/`author` are already set above.
     for (const [k, v] of Object.entries(mat.canon)) {
-      if (k.startsWith('ode') || k.startsWith('_') || k === 'skipMagnificat') {
-        canonSpec[k] = v;
-      }
+      if (k === 'tone' || k === 'author') continue;
+      canonSpec[k] = v;
     }
-    // Sessional hymns after Ode 3
+    // Sessional hymns after Ode 3 (matins-level overrides canon-level)
     if (mat.sessionalHymns) {
       canonSpec.sedalenAfterOde3 = mat.sessionalHymns;
     } else if (mat.sedalen) {

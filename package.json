@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test test/smoke.test.js",
-    "audit": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified --http http://localhost:3000",
+    "audit": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --http http://localhost:3000",
     "audit:quick": "node audit/index.js --year 2026 --services vespers --strict",
-    "audit:date": "node audit/index.js --print --services vespers,matins,liturgy,presanctified --date"
+    "audit:date": "node audit/index.js --print --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --date"
   },
   "engines": {
     "node": ">=22.5.0"

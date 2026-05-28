@@ -14,12 +14,20 @@ function nextDateStr(s) {
   return d.toISOString().slice(0, 10);
 }
 
-// Per-cell context. `service` indicates which spec to audit; for vespers we
-// apply the date-shift so that calendar entry / dow / tone reflect the
-// liturgical day, matching what the API would serve.
+// Services served in the evening for the *next* liturgical day's office —
+// dow / season / tone come from the shifted date so rule ctx aligns with
+// what the API actually serves. Burial Vespers (Holy Friday afternoon) is
+// the documented exception; it serves the current day's content.
+const NEXT_DAY_SHIFTED = new Set([
+  'vespers',
+  'bridegroom-matins',  // Sun/Mon/Tue/Wed eve → Mon/Tue/Wed/Thu liturgically
+  'lamentations',       // Fri eve → Sat morning matins of Great Saturday
+  'passion-gospels',    // Thu eve → Holy Friday matins
+]);
+
 function buildContext(civilDate, service) {
-  const isVespersShift = service === 'vespers';
-  const entryDate = isVespersShift ? nextDateStr(civilDate) : civilDate;
+  const isShifted = NEXT_DAY_SHIFTED.has(service);
+  const entryDate = isShifted ? nextDateStr(civilDate) : civilDate;
 
   const civilD = dateFromStr(civilDate);
   const d      = dateFromStr(entryDate);

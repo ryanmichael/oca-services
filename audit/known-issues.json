@@ -1,7 +1,43 @@
 {
   "$schema": "see audit/README.md",
   "_sourceConvention": "_source values prefixed `oca-` are OCA-jurisdiction (not flagged as gaps by the print report). Anything else is flagged unless listed in trackedGaps below.",
-  "parishOverrides": [],
+  "parishOverrides": [
+    {
+      "id": "LIT-beatitudes-htm",
+      "appliesTo": { "service": "liturgy" },
+      "reason": "Parish uses Holy Transfiguration Monastery (Boston) Beatitudes wording — 'sated', 'Kingdom of the Heavens' — not OCA-Hapgood. Documented in feedback_oca_audit_workflow.md (May 2026 audit).",
+      "anticipatedRule": "Future rule comparing Beatitudes text against OCA standard wording",
+      "addedAt": "2026-05-28"
+    },
+    {
+      "id": "LIT-pre-trisagion-slavonic-form",
+      "appliesTo": { "service": "liturgy" },
+      "reason": "Parish uses Slavonic full form before Trisagion ('Let us pray to the Lord' / 'O Lord, save the pious' / 'And hear us'), not OCA abbreviated. Documented in project_pre_trisagion.md.",
+      "anticipatedRule": "Future rule expecting OCA short-form pre-Trisagion",
+      "addedAt": "2026-05-28"
+    },
+    {
+      "id": "LIT-entrance-hymn-paschal-period",
+      "appliesTo": { "service": "liturgy", "season": ["brightWeek", "pentecostarion"] },
+      "reason": "Parish uses standard Sunday Entrance Hymn ('Come, let us worship...') year-round; OCA Liturgikon prints Paschal entrance ('In the gatherings...') during the Paschal period. Documented in commit 0b5d18c.",
+      "anticipatedRule": "Future rule expecting Paschal Entrance during brightWeek/pentecostarion per OCA Liturgikon",
+      "addedAt": "2026-05-28"
+    },
+    {
+      "id": "LIT-catechumens-litany-omitted-paschal",
+      "appliesTo": { "service": "liturgy", "season": ["brightWeek", "pentecostarion"] },
+      "reason": "Parish omits Litany of the Catechumens during the Paschal period; OCA Liturgikon includes it. Documented in commit 1504deb.",
+      "anticipatedRule": "Future rule expecting Catechumens Litany present in every Liturgy",
+      "addedAt": "2026-05-28"
+    },
+    {
+      "id": "LIT-cherubic-hymn-default-tchaikovsky",
+      "appliesTo": { "service": "liturgy" },
+      "reason": "Default Cherubic Hymn is Tchaikovsky setting (DGM paraphrase); L'vovsky preserved under cherubic-hymn-lvovsky. Future direction: make user-selectable. Documented in project_cherubic_settings.md.",
+      "anticipatedRule": "Future rule expecting a specific Cherubic Hymn setting per OCA reference",
+      "addedAt": "2026-05-28"
+    }
+  ],
   "trackedGaps": [
     {
       "matchSource": "johnsanidopoulos-goarch-theethy",

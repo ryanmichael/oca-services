@@ -562,7 +562,7 @@ async function parseTone(n) {
   const canonIrmoi = parseCanonIrmoi(matinsLines);
 
   const result = {
-    _source: 'stSergius-octoechos',
+    _source: 'oca-parma-stsergius',
     sessionalHymns: {
       afterKathisma2: sessionalK2,
       afterKathisma3: sessionalK3,

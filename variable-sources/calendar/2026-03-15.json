@@ -22,7 +22,7 @@
   "liturgy": {
     "variant": "basil",
     "beatitudes": {
-      "_note": "6 Resurrectional (Octoechos Tone 7, 3 from Ode 3 + 3 from Ode 6) + 4 from Triodion Cross Canon Ode 6 (still to be sourced).",
+      "_note": "6 Resurrectional (Octoechos Tone 7, 3 from Ode 3 + 3 from Ode 6) + 4 from Triodion Cross Canon Ode 6, Tone 1 (Canon of St. Theodore the Studite, SVS Lenten Triodion p. 342).",
       "troparia": [
         { "tone": 7, "source": "octoechos", "label": "Irmos of Ode 3", "_source": "oca-parma-stsergius",
           "text": "O Lord and Savior, Who in the beginning established the heavens by Thine all-powerful Word, and by the divine and all-accomplishing Spirit hath granted them all their strength, do Thou establish me on the unshakeable rock of Thy confession." },
@@ -36,7 +36,14 @@
           "text": "The souls of the righteous, who were held in bondage and forsaken in Hades, remembered Thee and prayed for salvation from Thee, which Thou didst grant unto them through Thy Cross, O Christ, when in Thy compassion Thou didst descend into the nether regions of the earth." },
         { "tone": 7, "source": "octoechos", "label": "Troparion of Ode 6", "_source": "oca-parma-stsergius",
           "text": "The choir of Apostles despaired of ever gazing again upon Thy living temple not made with hands, which had been destroyed by the passion, but praying beyond hope they were granted to proclaim everywhere that Thou art Risen." },
-        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1", "count": 4 }
+        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1", "_source": "svs-lenten-triodion",
+          "text": "Thou hast crushed death, O Christ, and risen as a mighty King; Thou hast recalled us from the depths of hell, and brought us up to the land of immortality, granting us the joy of the Kingdom of Heaven." },
+        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1", "_source": "svs-lenten-triodion",
+          "text": "O ye faithful, let us cry aloud with joy and sing triumphantly to God, as we greet the Cross of the Lord; for it is a fountain of holiness to all the world." },
+        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1, Trinitarian (at Glory)", "_source": "svs-lenten-triodion",
+          "text": "I praise the Unity in three Persons and the Trinity worshipped in one Nature, the Triune God, threefold Light, Father, Son and Holy Spirit." },
+        { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1, Theotokion (at Both now)", "_source": "svs-lenten-triodion",
+          "text": "O Ewe free from blemish, the greatest wonder of all wonders was revealed in thee; for thou hast borne the Lamb that takes away the sin of the world. Entreat Him fervently for those who sing thy praises." }
       ]
     },
     "entranceHymn": {

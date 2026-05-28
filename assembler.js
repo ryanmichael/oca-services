@@ -5173,6 +5173,32 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
         trop.text, { tone: trop.tone }));
     }
 
+    // ── Veneration stichera (Elevation of the Cross procession, etc.) ──
+    // After the Great Doxology and the festal troparion, when the clergy
+    // and faithful venerate (e.g. the Cross on Sep 14), a sequence of
+    // idiomela is sung during the procession. Glory/Now is rendered if
+    // the spec includes a `glory` block.
+    if (spec.venerationStichera) {
+      const v = spec.venerationStichera;
+      const section = v.section || 'Veneration';
+      if (v.rubric) {
+        blocks.push(S('ven-rubric', section, 'rubric', null, v.rubric));
+      }
+      (v.stichera || []).forEach((s, i) => {
+        blocks.push(S(`ven-${i}`, section, 'hymn', 'choir', s.text,
+          { tone: s.tone, label: s.label || s.author, _source: s._source }));
+      });
+      if (v.glory) {
+        blocks.push(S('ven-glory', section, 'doxology', null,
+          vespersFixed.doxology.gloryNow));
+        blocks.push(S('ven-glory-hymn', section, 'hymn', 'choir', v.glory.text,
+          { tone: v.glory.tone, label: v.glory.label || v.glory.author, _source: v.glory._source }));
+      }
+      if (v.closingRubric) {
+        blocks.push(S('ven-closing', section, 'rubric', null, v.closingRubric));
+      }
+    }
+
     // ── Litanies (no-aposticha path) ──────────────────────────────────────
     blocks.push(...assembleAugmentedLitany(vespersFixed));
     blocks.push(..._assembleMorningLitany(matinsFixed, vespersFixed));

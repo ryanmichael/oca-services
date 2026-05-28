@@ -1722,6 +1722,7 @@ function _loadFestalMatins(feastKey, season, dow, tone) {
   if (data.lauds)                  spec.lauds                  = data.lauds;
   if (data.troparionAfterDoxology) spec.troparionAfterDoxology = data.troparionAfterDoxology;
   if (data.finalTroparion)         spec.finalTroparion         = data.finalTroparion;
+  if (data.venerationStichera)     spec.venerationStichera     = data.venerationStichera;
   if (data.isGreatFeastOfLord != null) spec.isGreatFeastOfLord = data.isGreatFeastOfLord;
   if (data.includeHavingBeheld != null) spec.includeHavingBeheld = data.includeHavingBeheld;
 
@@ -2119,6 +2120,11 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   // Festal troparion after the Great Doxology (overrides Sunday default)
   if (mat.troparionAfterDoxology) {
     spec.troparionAfterDoxology = mat.troparionAfterDoxology;
+  }
+
+  // Veneration stichera (Elevation procession after the Great Doxology, etc.)
+  if (mat.venerationStichera) {
+    spec.venerationStichera = mat.venerationStichera;
   }
 
   // Flags forwarded from the festal matins data

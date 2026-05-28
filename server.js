@@ -3274,7 +3274,7 @@ function assembleForDate(date, pronoun, entryOverride) {
       if (licStichera.length > 0) {
         const lic = calendarEntry.vespers.lordICall;
 
-        if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast) {
+        if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast && !isVigilFeast) {
           // Saturday: split verses between resurrectional (Octoechos) and Menaion
           const menaionCount        = licStichera.length;
           const resurrectionalCount = 6 - menaionCount;

@@ -876,16 +876,18 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
 
   // Variable stichera (from Menaion/Triodion/Pentecostarion when available)
   if (lityaSpec && lityaSpec.slots && lityaSpec.slots.length > 0) {
+    let hymnIdx = 0;
     for (const slot of lityaSpec.slots) {
       const sourceTexts = resolveSource(slot.source, slot.key, sources);
       if (!sourceTexts) continue;
       const hymns = sourceTexts.hymns || (sourceTexts.text ? [sourceTexts] : []);
-      hymns.forEach((hymn, i) => {
+      for (const hymn of hymns) {
         blocks.push(makeBlock(
-          `litya-hymn-${i}`, section, 'hymn', 'choir', hymn.text,
+          `litya-hymn-${hymnIdx}`, section, 'hymn', 'choir', hymn.text,
           { tone: slot.tone, source: slot.source, label: slot.label }
         ));
-      });
+        hymnIdx++;
+      }
     }
   }
 

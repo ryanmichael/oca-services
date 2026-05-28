@@ -2050,6 +2050,10 @@ function isPresanctifiedDay(date) {
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
 
+  // Great Feasts on Lenten weekdays serve the full Chrysostom Liturgy *instead
+  // of* Presanctified (e.g. Annunciation Mar 25 falling Wed/Fri of Lent).
+  if (getGreatFeastKey(date)) return false;
+
   if (season === 'greatLent' && (dow === 'wednesday' || dow === 'friday')) return true;
   if (season === 'holyWeek' && ['monday', 'tuesday', 'wednesday'].includes(dow)) return true;
 

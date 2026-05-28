@@ -99,12 +99,22 @@ async function fetchAssembled(httpBase, service, date) {
   } catch (_) { return null; }
 }
 
+function loadAllowlist() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'known-issues.json'), 'utf8'));
+  } catch (_) {
+    return { parishOverrides: [], trackedGaps: [], knownFailures: [] };
+  }
+}
+
 async function writePrintReport(date, services, result, httpBase) {
+  const allowlist = loadAllowlist();
   const lines = [];
   lines.push(`# Service audit — ${date}`);
   lines.push('');
 
-  let totalGaps = 0;
+  let trackedGaps = 0;
+  let untrackedGaps = 0;
   const stats = { high: 0, medium: 0, low: 0, suppressed: 0 };
 
   for (const service of services) {
@@ -150,12 +160,26 @@ async function writePrintReport(date, services, result, httpBase) {
         return m;
       }, {});
       lines.push('');
-      lines.push(`⚠ ${provBlocks.length} provenance gap(s) (non-OCA \`_source\` tags):`);
+      const tracked   = { entries: [], count: 0 };
+      const untracked = { entries: [], count: 0 };
       for (const [src, sections] of Object.entries(bySrc)) {
         const uniq = [...new Set(sections)];
-        lines.push(`  - \`${src}\` × ${sections.length} (${uniq.slice(0, 3).join(', ')}${uniq.length > 3 ? `, +${uniq.length - 3} more` : ''})`);
+        const tail = `${uniq.slice(0, 3).join(', ')}${uniq.length > 3 ? `, +${uniq.length - 3} more` : ''}`;
+        const entry = `  - \`${src}\` × ${sections.length} (${tail})`;
+        const bucket = (allowlist.trackedGaps || []).find(g => g.matchSource === src) ? tracked : untracked;
+        bucket.entries.push(entry);
+        bucket.count += sections.length;
       }
-      totalGaps += provBlocks.length;
+      if (tracked.entries.length) {
+        trackedGaps += tracked.count;
+        lines.push(`⚪ ${tracked.count} tracked provenance gap(s) — research pending, see audit/known-issues.json:`);
+        for (const e of tracked.entries) lines.push(e);
+      }
+      if (untracked.entries.length) {
+        untrackedGaps += untracked.count;
+        lines.push(`⚠ ${untracked.count} untracked provenance gap(s) — needs investigation:`);
+        for (const e of untracked.entries) lines.push(e);
+      }
     }
 
     stats.suppressed += suppressed.length;
@@ -164,7 +188,7 @@ async function writePrintReport(date, services, result, httpBase) {
   }
 
   lines.push(`---`);
-  lines.push(`**Summary:** ${stats.high} high, ${stats.medium} medium, ${stats.low} low, ${totalGaps} provenance gaps, ${stats.suppressed} suppressed`);
+  lines.push(`**Summary:** ${stats.high} high, ${stats.medium} medium, ${stats.low} low — ${trackedGaps} tracked + ${untrackedGaps} untracked provenance gap(s), ${stats.suppressed} suppressed`);
 
   const outDir = path.join(__dirname, 'reports');
   fs.mkdirSync(outDir, { recursive: true });

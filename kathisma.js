@@ -110,7 +110,15 @@ const MATINS_LENT = {
  * @returns {number[]}  Array of kathisma numbers (1–20), or empty if omitted.
  */
 function getMatinsKathismata(dayOfWeek, season) {
-  if (season === 'holyWeek' || season === 'brightWeek') {
+  // Palm Sunday (the only Sunday in `holyWeek`) keeps regular Sunday Matins
+  // with festal content — including the ordinary Sunday kathisma schedule.
+  // Other Holy Week days have their own services (Bridegroom Matins, etc.)
+  // with kathismata handled inside those flows. Bright Week has Paschal
+  // Hours/Matins, no regular kathisma reading.
+  if (season === 'holyWeek') {
+    return dayOfWeek === 'sunday' ? MATINS_ORDINARY.sunday : [];
+  }
+  if (season === 'brightWeek') {
     return [];
   }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test test/smoke.test.js",
-    "audit": "node audit/index.js --year 2026 --services vespers,liturgy,presanctified --http http://localhost:3000",
+    "audit": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified --http http://localhost:3000",
     "audit:quick": "node audit/index.js --year 2026 --services vespers --strict"
   },
   "engines": {

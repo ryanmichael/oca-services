@@ -14,6 +14,7 @@ Run date: 2026-05-28. Year audited: 2026.
 | `E4-aposticha-distinct` | deaa946 (Holy Fathers Vespers, Bug 2) | 3 — Thomas / Ascension / Pentecost (first sticheron repeated ×3) | **3/3 high** — Apr 18 (Thomas), May 20 (Ascension), May 30 (Pentecost), each "slots 0↔1, 0↔2" | ✅ Full match |
 | `L1-communion-ordering` | dab7cb5 (Restore Communion Hymn position) | All Liturgy days affected by Paschal communion order swap | **50/50 high** — Pascha onward, Communion Prayer rendering after Communion Hymn | ✅ Full match |
 | `F-weekday-vespers-octoechos-source` (v2) | bf4ba30 (weekday off-by-one) | All ordinary-time weekday vespers (Mon–Fri) for Jan–Apr + Jun–Dec | **163/163 high** — every ordinary-time weekday flags "Octoechos LIC hymns not found in source tone{N}.{sungEve}.vespers" | ✅ Full match (after rule rewrite) |
+| `L2-trisagion-substitution` | this session (Pentecost audit) | Pascha + 6 Bright Week days + Pentecost should render baptismal substitution; pre-fix `getTrisagionSubstitution` returned 'typical' for all 8 | **8/8 high** — Apr 12 (Pascha), Apr 13–18 (Bright Week), May 31 (Pentecost) | ✅ Full match |
 | `B1-presanctified-shape` | — | — (no specific past bug) | n/a | — |
 | `M1-sunday-matins-sections` | — | — (no specific past bug) | n/a | — |
 | `M2-matins-section-ordering` | — | — (no specific past bug) | n/a | — |

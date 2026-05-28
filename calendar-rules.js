@@ -1359,6 +1359,7 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
     commemorations: [],
     vespers: {
       serviceType: 'greatVespers',
+      paschalOpening: true,
       rubricNote:  `${name} — Paschal Vespers`,
       lordICall: {
         totalStichera: 6,
@@ -1455,6 +1456,7 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
     const entry = generateOrdinaryTimeSaturday(dateStr, tone);
     entry.liturgicalContext.season = 'pentecostarion';
     entry._meta.note = entry._meta.note.replace('ordinaryTime', 'pentecostarion');
+    if (isPaschalGreeting) entry.vespers.paschalOpening = true;
     return entry;
   }
 

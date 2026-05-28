@@ -2066,6 +2066,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // and is used as the seasonal Theotokos magnification at the dismissal.
   // Source: OCA Department of Liturgical Music & Translations service text (2026-0521-tt.docx).
   const isAscensionAfterfeast = daysSincePascha >= 39 && daysSincePascha <= 47;
+  // Pentecost (Pascha+49) through Apodosis of Pentecost (Saturday after Pentecost = Pascha+55).
+  // Same substitution rule as Ascension afterfeast: "We have seen the true Light" is replaced
+  // by the Troparion of Pentecost. Pascha+48 is the Saturday of Souls before Pentecost — a
+  // memorial day, not part of the feast window. Pascha+56 is All Saints Sunday.
+  const isPentecostAfterfeast = daysSincePascha >= 49 && daysSincePascha <= 55;
 
   // ── Pentecostarion Sunday overrides ─────────────────────────────────────────
   // Each Pentecostarion feast Sunday has its own prokeimenon, alleluia, communion
@@ -2833,6 +2838,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       || (isPaschalPeriod ? 'paschal' : null)
       || (isAscensionAfterfeast
         ? 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!'
+        : null)
+      || (isPentecostAfterfeast
+        ? 'Blessed art Thou, O Christ our God, who hast revealed the fishermen as most wise by sending down upon them the Holy Spirit; through them Thou didst draw the world into Thy net. O Lover of Man, glory to Thee!'
         : null),
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),

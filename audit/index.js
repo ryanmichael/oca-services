@@ -206,10 +206,13 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
 
   let dates;
-  if (args.date)       dates = [args.date];
-  else if (args.dates) dates = listFrom(args.dates);
-  else if (args.year)  dates = datesForYear(parseInt(args.year, 10));
-  else { console.error('Provide --date YYYY-MM-DD, --dates a,b,c, or --year YYYY'); process.exit(1); }
+  const year = args.year ? parseInt(args.year, 10) : new Date().getUTCFullYear();
+  if (args.date)        dates = [args.date];
+  else if (args.dates)  dates = listFrom(args.dates);
+  else if (args.sample === 'representative')
+                        dates = require('./sample-dates.js').representativeDates(year);
+  else if (args.year)   dates = datesForYear(year);
+  else { console.error('Provide --date YYYY-MM-DD, --dates a,b,c, --year YYYY, or --sample representative'); process.exit(1); }
 
   const services     = listFrom(args.services) || ['vespers', 'matins', 'liturgy', 'presanctified'];
   const ruleFilter   = listFrom(args.rules);

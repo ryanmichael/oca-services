@@ -3951,6 +3951,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -4073,6 +4074,12 @@ function handleRequest(req, res) {
       for (const b of blocks) {
         if (b.source === 'db') b.source = dbSourceLabel;
         if (!b.provenance) b.provenance = 'OCA';
+      }
+
+      if (format === 'html') {
+        const toneLabel = tone ? ` · Tone ${tone}` : '';
+        renderServiceHTML(res, blocks, serviceTitle, `${formatDate(date)}${toneLabel}`, pronoun);
+        return;
       }
 
       res.writeHead(200, { 'Content-Type': 'application/json' });

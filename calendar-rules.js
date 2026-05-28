@@ -31,6 +31,23 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+// ─── Vespers sung-evening lookup ──────────────────────────────────────────────
+// octoechos.json keys weekday Vespers by the civil evening it is sung — not by
+// the liturgical day it opens. `monday.vespers` = Monday-evening Vespers, which
+// liturgically opens Tuesday. Calendar entries carry the liturgical `dow`, so
+// when reading weekday Vespers data, map liturgical day → sung-evening day.
+// (Sunday Great Vespers sung Saturday eve already lives at `saturday.vespers`,
+// so Sun-liturgical correctly maps to "saturday".)
+const VESPERS_SUNG_EVE = {
+  monday:    'sunday',     // Mon liturgical ← Sun evening Vespers (Compunction)
+  tuesday:   'monday',     // Tue liturgical ← Mon evening Vespers (Forerunner)
+  wednesday: 'tuesday',    // Wed liturgical ← Tue evening Vespers (Cross)
+  thursday:  'wednesday',  // Thu liturgical ← Wed evening Vespers (Apostles+Nicholas)
+  friday:    'thursday',   // Fri liturgical ← Thu evening Vespers (Cross)
+  saturday:  'friday',     // Sat liturgical ← Fri evening Vespers (memorial/all-saints)
+  sunday:    'saturday',   // Sun liturgical ← Sat evening Vespers (Sunday Great Vespers)
+};
+
 // ─── Pascha calculation ───────────────────────────────────────────────────────
 
 /**
@@ -285,7 +302,8 @@ function getLiturgicalKey(date) {
  * No resurrectional stichera; those belong to Saturday Great Vespers only.
  */
 function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
-  const tk = `tone${tone}`;
+  const tk  = `tone${tone}`;
+  const eve = VESPERS_SUNG_EVE[dow] || dow;
   return {
     _meta: {
       generated:   true,
@@ -305,7 +323,7 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
         slots: [
           // 3 Octoechos stichera (tone of the week, day of the week)
           // Server may reduce count when Menaion stichera are available
-          { verses: [6, 5, 4], count: 3, source: 'octoechos', key: `${tk}.${dow}.vespers.lordICall`, tone, label: 'Octoechos' },
+          { verses: [6, 5, 4], count: 3, source: 'octoechos', key: `${tk}.${eve}.vespers.lordICall`, tone, label: 'Octoechos' },
         ],
         glory: null, // server injects Menaion glory doxastichon
         now:   null, // server injects theotokion
@@ -313,12 +331,12 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
       prokeimenon: { pattern: 'weekday', weekday: dow },
       aposticha: {
         slots: [
-          { position: 1, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
-          { position: 2, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.1`, tone, label: 'Aposticha' },
-          { position: 3, source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.hymns.2`, tone, label: 'Aposticha' },
+          { position: 1, source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
+          { position: 2, source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.hymns.1`, tone, label: 'Aposticha' },
+          { position: 3, source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.hymns.2`, tone, label: 'Aposticha' },
         ],
         glory: null, // server injects Menaion glory if available
-        now:   { source: 'octoechos', key: `${tk}.${dow}.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
+        now:   { source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.theotokion`, tone, label: 'Theotokion' },
       },
       troparia: {
         slots: [],   // server injects Menaion troparion
@@ -1502,7 +1520,12 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   // Thursday Vespers the Apostles/St. Nicholas themed stichera in the
   // week's tone). Menaion stichera are injected at runtime by the server.
   const totalStichera = (dow === 'sunday' && litKey in PENT_SUNDAY_TONES) ? 10 : 6;
-  const weekdayKey    = `${tk}.${dow}.vespers.lordICall`;
+  // octoechos.json weekday vespers keys are keyed by sung-evening day, not
+  // liturgical day. Monday-evening Vespers (sung Mon eve, opens Tue
+  // liturgically) lives at `monday.vespers`. The calendar entry's `dow` is the
+  // liturgical day, so look up under the PREVIOUS day for the correct theme.
+  const vespersSungEve = VESPERS_SUNG_EVE[dow] || dow;
+  const weekdayKey    = `${tk}.${vespersSungEve}.vespers.lordICall`;
   const layout        = PENT_SUNDAY_LIC_LAYOUT[litKey]
     || [{ count: totalStichera, source: 'octoechos', key: weekdayKey, label: 'Octoechos' }];
   const allVerses     = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
@@ -1595,7 +1618,8 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   } else {
     // Weekday Pentecostarion: use day-of-week-specific Octoechos aposticha.
     // (Sundays/named feasts are handled by the branches above.)
-    const apostBase = `${tk}.${dow}.vespers.aposticha`;
+    // See VESPERS_SUNG_EVE — data is keyed by sung-evening day, not liturgical.
+    const apostBase = `${tk}.${VESPERS_SUNG_EVE[dow] || dow}.vespers.aposticha`;
     apostichaSlots = [
       { position: 1, source: 'octoechos', key: `${apostBase}.hymns.0`, tone, label: 'Aposticha' },
       { position: 2, repeatPrevious: true },

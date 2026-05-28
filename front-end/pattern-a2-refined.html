@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern A — Refined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F0E8;
+    --surface: #FAF7F2;
+    --text: #1A1209;
+    --rubric: #8B1A1A;
+    --gold: #C9A84C;
+    --muted: #6B6358;
+    --border: #DDD5C4;
+    --panel-w: 70vw;
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--text); }
+
+  /* ── HEADER ── */
+  header {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 12px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+  }
+  .header-cross { color: var(--rubric); font-size: 18px; }
+  .header-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+  .header-about {
+    margin-left: auto;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+    color: var(--muted); text-decoration: none;
+  }
+  .header-about:hover { color: var(--rubric); }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: flex;
+    height: calc(100vh - 52px);
+    margin-top: 52px;
+    overflow: hidden;
+  }
+
+  /* ── CENTER COLUMN ── */
+  .center {
+    flex: 1;
+    overflow-y: auto;
+    min-width: 0;
+    padding: 0;
+  }
+
+  /* Sticky sub-bar */
+  .center-bar {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+  }
+
+  .week-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: .18em; color: var(--muted);
+  }
+
+  /* Date jump button */
+  .date-btn {
+    display: flex; align-items: center; gap: 7px;
+    background: none; border: 1px solid var(--border);
+    padding: 6px 12px; cursor: pointer;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+    color: var(--muted);
+    transition: border-color .15s, color .15s;
+    position: relative;
+  }
+  .date-btn:hover, .date-btn.active { border-color: var(--rubric); color: var(--rubric); }
+  .date-btn .cal-icon { font-size: 12px; }
+
+  /* ── CALENDAR POPOVER ── */
+  .cal-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(26,18,9,.12);
+    padding: 18px;
+    width: 240px;
+    z-index: 300;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .18s, transform .18s;
+  }
+  .cal-popover.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .cal-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .cal-head span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .1em; }
+  .cal-nav {
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); font-size: 12px; padding: 2px 6px;
+  }
+  .cal-nav:hover { color: var(--rubric); }
+
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .cal-dow {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .05em;
+    color: var(--muted); text-align: center; padding: 3px 0 6px;
+  }
+  .cal-day {
+    font-family: 'EB Garamond', serif; font-size: 13px;
+    text-align: center; padding: 5px 2px;
+    cursor: pointer; color: var(--muted);
+    border-radius: 2px;
+    position: relative;
+  }
+  .cal-day:hover { color: var(--text); background: var(--border); }
+  .cal-day.has-service { color: var(--text); font-weight: 500; }
+  .cal-day.has-service::after {
+    content: '';
+    display: block; width: 3px; height: 3px;
+    background: var(--rubric); border-radius: 50%;
+    margin: 1px auto 0;
+  }
+  .cal-day.today { color: var(--rubric); font-weight: 600; }
+  .cal-day.today::before {
+    content: '';
+    position: absolute; inset: 1px;
+    border: 1px solid var(--rubric);
+    border-radius: 2px;
+  }
+  .cal-day.empty { cursor: default; pointer-events: none; }
+
+  /* ── SERVICE LIST ── */
+  .service-list-body { padding: 28px 32px 60px; }
+
+  .date-block { margin-bottom: 32px; }
+
+  .date-heading {
+    display: flex; align-items: baseline;
+    gap: 10px; flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gold);
+    margin-bottom: 10px;
+  }
+  .dow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .12em; color: var(--rubric); }
+  .date-d { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .08em; color: var(--text); }
+  .feast { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--muted); }
+
+  .svc-rows { display: flex; flex-direction: column; }
+
+  .svc-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 12px;
+    background: none; border: none; border-left: 2px solid transparent;
+    cursor: pointer; text-align: left; width: 100%;
+    transition: border-color .12s, background .12s;
+  }
+  .svc-row:hover { border-left-color: var(--gold); background: rgba(201,168,76,.07); }
+  .svc-row.active { border-left-color: var(--rubric); background: rgba(139,26,26,.06); }
+  .svc-row .name { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--text); }
+  .svc-row .arrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em;
+    color: var(--rubric); opacity: 0; transition: opacity .12s;
+  }
+  .svc-row:hover .arrow, .svc-row.active .arrow { opacity: 1; }
+
+  .svc-row.dimmed { opacity: .35; cursor: default; pointer-events: none; }
+  .svc-row .soon { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); }
+
+  /* ── RIGHT PANEL ── */
+  .panel {
+    width: 0; flex-shrink: 0;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    overflow: hidden;
+    transition: width .28s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .panel.open { width: var(--panel-w); }
+
+  .panel-inner {
+    width: var(--panel-w);
+    display: flex; flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .panel-head {
+    padding: 14px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .panel-top-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px;
+  }
+  .btn-close {
+    background: none; border: none; cursor: pointer;
+    font-size: 16px; color: var(--muted); padding: 2px 6px;
+    font-family: 'EB Garamond', serif;
+    transition: color .12s;
+  }
+  .btn-close:hover { color: var(--rubric); }
+  .btn-print {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+    background: none; border: 1.5px solid var(--rubric);
+    color: var(--rubric); padding: 5px 14px; cursor: pointer;
+    transition: background .12s, color .12s;
+  }
+  .btn-print:hover { background: var(--rubric); color: var(--surface); }
+
+  .panel-svc {
+    font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: .1em; color: var(--rubric);
+    margin-bottom: 2px;
+  }
+  .panel-date-str {
+    font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
+  }
+
+  .pronoun-row {
+    display: flex; align-items: center; gap: 12px; margin-top: 9px;
+    font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em; color: var(--muted);
+  }
+  .pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  .pronoun-row input { accent-color: var(--rubric); }
+
+  .panel-body {
+    flex: 1; overflow-y: auto;
+    padding: 24px 22px 48px;
+  }
+
+  /* Service text */
+  .svc-sec { margin-bottom: 28px; }
+  .svc-head {
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em;
+    text-align: center; color: var(--text); margin-bottom: 12px;
+  }
+  .svc-rule { height: 1px; background: var(--gold); margin: 20px 0; }
+  .rubric {
+    font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+    color: var(--rubric); margin-bottom: 8px; line-height: 1.6;
+  }
+  .prayer {
+    font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88;
+    color: var(--text); margin-bottom: 14px;
+  }
+  .stich-label {
+    font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .verse {
+    font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
+    color: var(--muted); margin-bottom: 10px; line-height: 1.6;
+  }
+
+  /* Overlay to close popover on outside click */
+  .overlay {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 150;
+  }
+  .overlay.active { display: block; }
+
+  /* ── Print modal ── */
+  .print-modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55); z-index: 600;
+    align-items: center; justify-content: center;
+  }
+  .print-modal-overlay.active { display: flex; }
+  .print-modal {
+    background: var(--surface); padding: 36px 32px 28px;
+    width: 420px; border-top: 2px solid var(--gold);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+  .print-modal-title {
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .22em;
+    color: var(--rubric); text-align: center; margin-bottom: 24px;
+  }
+  .print-options { display: flex; gap: 14px; margin-bottom: 20px; }
+  .print-option {
+    flex: 1; padding: 18px 14px; border: 1.5px solid var(--border);
+    cursor: pointer; background: none; text-align: left;
+    transition: border-color .12s, background .12s;
+  }
+  .print-option:hover { border-color: var(--gold); background: rgba(201,168,76,.06); }
+  .print-option-name {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .16em;
+    color: var(--rubric); display: block; margin-bottom: 7px;
+  }
+  .print-option-desc {
+    font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+    color: var(--muted); line-height: 1.5;
+  }
+  .print-modal-cancel {
+    display: block; width: 100%; padding: 9px;
+    font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .14em;
+    color: var(--muted); background: none; border: 1px solid var(--border);
+    cursor: pointer; transition: color .12s, border-color .12s;
+  }
+  .print-modal-cancel:hover { color: var(--rubric); border-color: var(--rubric); }
+
+  /* ── Print ── */
+  @media print {
+    header, .center, .overlay { display: none !important; }
+    body { background: white; }
+    .panel {
+      width: 100%; height: auto;
+      border: none; box-shadow: none;
+      position: static; display: block;
+    }
+    .panel-head, .btn-print, .btn-close, .pronoun-row { display: none; }
+    .panel-body { overflow: visible; padding: 0; }
+    .prayer, .rubric { break-inside: avoid; }
+  }
+
+  @page {
+    margin: 0.75in;
+    @bottom-center {
+      content: counter(page);
+      font-family: 'EB Garamond', serif;
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="header-cross">☩</span>
+  <span class="header-title">ORTHODOX DAILY SERVICES</span>
+  <a href="#" class="header-about">About</a>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeCal()"></div>
+
+<div class="layout">
+
+  <!-- CENTER COLUMN -->
+  <main class="center">
+
+    <div class="center-bar">
+      <span class="week-label">MARCH 7 – 14, 2026</span>
+
+      <div style="position:relative">
+        <button class="date-btn" id="date-btn" onclick="toggleCal()">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block">
+            <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="4" y1="1" x2="4" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="8" y1="1" x2="8" y2="3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          CHANGE
+        </button>
+
+        <!-- Floating calendar popover -->
+        <div class="cal-popover" id="cal-popover">
+          <div class="cal-head">
+            <button class="cal-nav">◀</button>
+            <span>MARCH 2026</span>
+            <button class="cal-nav">▶</button>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-dow">S</div><div class="cal-dow">M</div><div class="cal-dow">T</div>
+            <div class="cal-dow">W</div><div class="cal-dow">T</div><div class="cal-dow">F</div>
+            <div class="cal-dow">S</div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+            <div class="cal-day">5</div><div class="cal-day">6</div>
+            <div class="cal-day has-service" onclick="jumpTo('mar7'); closeCal()">7</div>
+            <div class="cal-day">8</div><div class="cal-day">9</div>
+            <div class="cal-day today">10</div>
+            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div>
+            <div class="cal-day has-service" onclick="jumpTo('mar14'); closeCal()">14</div>
+            <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
+            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
+            <div class="cal-day has-service" onclick="jumpTo('mar21'); closeCal()">21</div>
+            <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+            <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div>
+            <div class="cal-day has-service" onclick="jumpTo('mar28'); closeCal()">28</div>
+            <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-list-body">
+
+      <div class="date-block" id="mar7">
+        <div class="date-heading">
+          <span class="dow">SATURDAY</span><span class="date-d">MARCH 7</span>
+          <span class="feast">· Hieromartyr Nestor of Thessalonica</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Great Vespers', 'Saturday, March 7, 2026', 'Tone 8 · Cheesefare Saturday')">
+            <span class="name">Great Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row" onclick="openPanel(this, 'Daily Vespers', 'Saturday, March 7, 2026', 'Tone 8 · Cheesefare Saturday')">
+            <span class="name">Daily Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar8">
+        <div class="date-heading">
+          <span class="dow">SUNDAY</span><span class="date-d">MARCH 8</span>
+          <span class="feast">· Sunday of Forgiveness</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row dimmed"><span class="name">Great Vespers</span><span class="soon">COMING SOON</span></button>
+          <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar9">
+        <div class="date-heading">
+          <span class="dow">MONDAY</span><span class="date-d">MARCH 9</span>
+          <span class="feast">· 40 Holy Martyrs of Sebaste · Clean Monday</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Daily Vespers', 'Monday, March 9, 2026', 'Tone 1 · Monday of the 1st Week')">
+            <span class="name">Daily Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar10">
+        <div class="date-heading">
+          <span class="dow" style="color:var(--text)">TODAY — TUESDAY</span>
+          <span class="date-d">MARCH 10</span>
+          <span class="feast">· 1st Week of Great Lent</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Daily Vespers', 'Tuesday, March 10, 2026', 'Tone 1 · Tuesday of the 1st Week')">
+            <span class="name">Daily Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar14">
+        <div class="date-heading">
+          <span class="dow">SATURDAY</span><span class="date-d">MARCH 14</span>
+          <span class="feast">· 1st Saturday of Great Lent</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Great Vespers', 'Saturday, March 14, 2026', 'Tone 1 · 1st Saturday of Great Lent')">
+            <span class="name">Great Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row" onclick="openPanel(this, 'Daily Vespers', 'Saturday, March 14, 2026', 'Tone 1 · 1st Saturday of Great Lent')">
+            <span class="name">Daily Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar21">
+        <div class="date-heading">
+          <span class="dow">SATURDAY</span><span class="date-d">MARCH 21</span>
+          <span class="feast">· 2nd Saturday of Great Lent</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Great Vespers', 'Saturday, March 21, 2026', 'Tone 2 · 2nd Saturday of Great Lent')">
+            <span class="name">Great Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+        </div>
+      </div>
+
+      <div class="date-block" id="mar28">
+        <div class="date-heading">
+          <span class="dow">SATURDAY</span><span class="date-d">MARCH 28</span>
+          <span class="feast">· 3rd Saturday of Great Lent</span>
+        </div>
+        <div class="svc-rows">
+          <button class="svc-row" onclick="openPanel(this, 'Great Vespers', 'Saturday, March 28, 2026', 'Tone 3 · 3rd Saturday of Great Lent')">
+            <span class="name">Great Vespers</span><span class="arrow">VIEW →</span>
+          </button>
+          <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <aside class="panel" id="panel">
+    <div class="panel-inner">
+      <div class="panel-head">
+        <div class="panel-top-row">
+          <button class="btn-close" onclick="closePanel()">✕</button>
+          <button class="btn-print" onclick="openPrintModal()">PRINT</button>
+        </div>
+        <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
+        <div class="panel-date-str" id="p-date">Saturday, March 14, 2026 · Tone 1</div>
+        <div class="pronoun-row">
+          PRONOUNS:
+          <label><input type="radio" name="pron" value="thee"> Thee / Thy</label>
+          <label><input type="radio" name="pron" value="you" checked> You / Your</label>
+        </div>
+      </div>
+      <div class="panel-body" id="p-body"></div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- Print options modal -->
+<div class="print-modal-overlay" id="print-modal" onclick="handlePrintOverlayClick(event)">
+  <div class="print-modal">
+    <div class="print-modal-title">PRINT OPTIONS</div>
+    <div class="print-options">
+      <button class="print-option" onclick="printStandard()">
+        <span class="print-option-name">STANDARD</span>
+        <span class="print-option-desc">Full-page layout, single column, page numbers at bottom</span>
+      </button>
+      <button class="print-option" onclick="printBooklet()">
+        <span class="print-option-name">BOOKLET</span>
+        <span class="print-option-desc">2 pages per sheet — fold in half to assemble</span>
+      </button>
+    </div>
+    <button class="print-modal-cancel" onclick="closePrintModal()">CANCEL</button>
+  </div>
+</div>
+
+<script>
+  let activeRow = null;
+
+  function openPanel(btn, svc, date, tone) {
+    document.getElementById('p-svc').textContent = svc.toUpperCase();
+    document.getElementById('p-date').textContent = date + ' · ' + tone;
+    document.getElementById('p-body').innerHTML = sampleText();
+    document.getElementById('panel').classList.add('open');
+    if (activeRow) activeRow.classList.remove('active');
+    activeRow = btn;
+    btn.classList.add('active');
+  }
+
+  function closePanel() {
+    document.getElementById('panel').classList.remove('open');
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+  }
+
+  function toggleCal() {
+    const pop = document.getElementById('cal-popover');
+    const btn = document.getElementById('date-btn');
+    const ov = document.getElementById('overlay');
+    const isOpen = pop.classList.contains('open');
+    pop.classList.toggle('open', !isOpen);
+    btn.classList.toggle('active', !isOpen);
+    ov.classList.toggle('active', !isOpen);
+  }
+
+  function closeCal() {
+    document.getElementById('cal-popover').classList.remove('open');
+    document.getElementById('date-btn').classList.remove('active');
+    document.getElementById('overlay').classList.remove('active');
+  }
+
+  function jumpTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      // Offset for sticky bar height
+      const top = el.offsetTop - 56;
+      document.querySelector('.center').scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+
+  function sampleText() {
+    return `
+      <div class="svc-sec">
+        <div class="rubric">The Priest: Blessed is our God, always, now and ever, and unto the ages of ages.</div>
+        <div class="prayer">Reader: Amen. O come, let us worship God our King.<br>
+        O come, let us worship and fall down before Christ, our King and God.<br>
+        O come, let us worship and fall down before Christ Himself, our King and God.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PSALM 103</div>
+        <div class="prayer">Bless the Lord, O my soul! O Lord my God, You are very great. You are clothed with honor and majesty, Who cover Yourself with light as with a garment, Who stretch out the heavens like a curtain.</div>
+        <div class="prayer">He set the earth on its foundations, so that it should never be moved. You covered it with the deep as with a garment; the waters stood above the mountains. At Your rebuke they fled; at the sound of Your thunder they hurried away.</div>
+        <div class="prayer">The mountains rose, the valleys sank down to the place which You appointed for them. You set a boundary that they may not pass, so that they might not again cover the earth.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LORD, I HAVE CRIED</div>
+        <div class="rubric">In Tone 1. The stichera are chanted beginning with verse 10.</div>
+        <div class="verse">Out of the depths I have cried to You, O Lord; Lord, hear my voice.</div>
+        <div class="stich-label">Sticheron 1 — Tone 1, Octoechos</div>
+        <div class="prayer">Come, let us worship and bow down, let us weep before Christ. For He Himself is our God, Who can save us from our sins. He descended to earth not to judge the world, but that the world through Him might be saved.</div>
+        <div class="verse">Let Your ears be attentive to the voice of my supplication.</div>
+        <div class="stich-label">Sticheron 2 — Tone 1, Octoechos</div>
+        <div class="prayer">Evening I know, and morning and noon I praise, I hymn, I bless, and give thanks to You, O Master of all, You who love mankind. Direct my prayer as incense before You, and do not turn Your face away from me.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PROKEIMENON</div>
+        <div class="rubric">The Deacon: Wisdom! Let us attend.</div>
+        <div class="prayer"><em>The Lord reigns, He is clothed with majesty.</em><br>
+        <span class="verse" style="margin:6px 0 0; display:block">Verse: The Lord is clothed, He has girded Himself with strength.</span></div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LITIYA</div>
+        <div class="rubric">The following stichera are chanted at the Litiya:</div>
+        <div class="prayer">O Lord, at the evening hour of this day, grant us and the whole world Your peace. For You have given us all things of life and godliness through Your divine and saving commandments.</div>
+      </div>
+    `;
+  }
+
+  // ── Print modal ──────────────────────────────────────────────────────────────
+
+  function openPrintModal() {
+    document.getElementById('print-modal').classList.add('active');
+  }
+  function closePrintModal() {
+    document.getElementById('print-modal').classList.remove('active');
+  }
+  function handlePrintOverlayClick(e) {
+    if (e.target === document.getElementById('print-modal')) closePrintModal();
+  }
+
+  function printStandard() {
+    closePrintModal();
+    window.print();
+  }
+
+  // ── Booklet print ─────────────────────────────────────────────────────────────
+
+  function printBooklet() {
+    closePrintModal();
+
+    const contentHTML = document.getElementById('p-body').innerHTML;
+    const svc  = document.getElementById('p-svc').textContent;
+    const date = document.getElementById('p-date').textContent;
+
+    const win = window.open('', '_blank');
+    if (!win) { alert('Please allow popups to use booklet printing.'); return; }
+
+    win.document.write(buildBookletDocument(contentHTML, svc, date));
+    win.document.close();
+  }
+
+  function buildBookletDocument(contentHTML, svc, date) {
+    // Booklet page = half of letter paper = 5.5" × 8.5"
+    // Each printed sheet = letter landscape = two pages side by side
+    // Content area per page: 4.5" wide × 7.0" tall (with 0.5" side margins, 0.75" top/bottom)
+
+    const bookletJS = `
+      document.fonts.ready.then(function() {
+        var PAGE_H = 7.0 * 96;   // 7.0in content height in CSS px (96px/in)
+        var measure = document.getElementById('measure');
+        var children = Array.from(measure.children);
+
+        // Greedily bin children into pages
+        var pages = [[]];
+        var heights = [0];
+        children.forEach(function(el) {
+          var h = el.getBoundingClientRect().height + 16; // +16 for bottom margin
+          var idx = pages.length - 1;
+          if (heights[idx] + h > PAGE_H && pages[idx].length > 0) {
+            pages.push([]); heights.push(0);
+          }
+          var last = pages.length - 1;
+          pages[last].push(el.outerHTML);
+          heights[last] += h;
+        });
+
+        // Pad to multiple of 4
+        while (pages.length % 4 !== 0) pages.push([]);
+        var n = pages.length;
+
+        // Booklet imposition: for each sheet, [outerLeft, outerRight] then [innerLeft, innerRight]
+        // Sheet k: front=[n-1-2k, 2k], back=[2k+1, n-2-2k]
+        var spreads = [];
+        for (var k = 0; k < n / 4; k++) {
+          spreads.push([n - 1 - 2*k, 2*k]);           // front of sheet k
+          spreads.push([2*k + 1, n - 2 - 2*k]);       // back of sheet k
+        }
+
+        // Render spreads
+        var booklet = document.getElementById('booklet');
+        spreads.forEach(function(pair) {
+          var spread = document.createElement('div');
+          spread.className = 'spread';
+
+          pair.forEach(function(pageIdx, side) {
+            var page = document.createElement('div');
+            page.className = 'bk-page';
+
+            if (pages[pageIdx] && pages[pageIdx].length > 0) {
+              page.innerHTML = pages[pageIdx].join('');
+              var pgNum = document.createElement('div');
+              pgNum.className = 'bk-page-num ' + (side === 0 ? 'pg-left' : 'pg-right');
+              pgNum.textContent = pageIdx + 1;
+              page.appendChild(pgNum);
+            }
+            spread.appendChild(page);
+          });
+
+          booklet.appendChild(spread);
+        });
+
+        measure.style.display = 'none';
+        booklet.style.visibility = 'visible';
+        setTimeout(function() { window.print(); }, 400);
+      });
+    `;
+
+    return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<title>Booklet — ${svc} — ${date}</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --rubric: #8B1A1A; --gold: #C9A84C;
+    --text: #1A1209; --muted: #6B6358;
+  }
+
+  /* ── Measurement container (off-screen, content-width) ── */
+  #measure {
+    position: absolute; top: -9999px; left: 0;
+    width: 4.5in; /* matches bk-page content width */
+  }
+  #measure .svc-sec  { margin-bottom: 16px; }
+  #measure .svc-rule { margin: 12px 0; }
+
+  /* ── Booklet layout ── */
+  #booklet { visibility: hidden; }
+
+  .spread {
+    width: 11in; height: 8.5in;
+    display: flex;
+    break-after: page;
+  }
+  .spread:last-child { break-after: auto; }
+
+  .bk-page {
+    width: 5.5in; height: 8.5in;
+    padding: 0.75in 0.5in;
+    overflow: hidden; position: relative;
+  }
+  .bk-page:first-child {
+    border-right: 0.5pt dashed #ccc; /* fold guide */
+  }
+
+  .bk-page-num {
+    position: absolute; bottom: 0.4in;
+    font-family: 'EB Garamond', serif; font-size: 9pt; color: var(--muted);
+  }
+  .pg-left  { left:  0.5in; }
+  .pg-right { right: 0.5in; }
+
+  /* ── Service text styles (scaled for booklet) ── */
+  .svc-sec  { margin-bottom: 16px; }
+  .svc-head {
+    font-family: 'Cinzel', serif; font-size: 7.5pt; letter-spacing: .18em;
+    text-align: center; color: var(--text); margin-bottom: 9px;
+  }
+  .svc-rule { height: 0.5pt; background: var(--gold); margin: 10px 0; }
+  .rubric {
+    font-family: 'EB Garamond', serif; font-size: 10pt; font-style: italic;
+    color: var(--rubric); margin-bottom: 5px; line-height: 1.5;
+  }
+  .prayer {
+    font-family: 'EB Garamond', serif; font-size: 11pt; line-height: 1.7;
+    color: var(--text); margin-bottom: 9px;
+  }
+  .stich-label {
+    font-family: 'EB Garamond', serif; font-size: 9pt; font-style: italic;
+    color: var(--muted); margin-bottom: 4px;
+  }
+  .verse {
+    font-family: 'EB Garamond', serif; font-size: 9pt; font-style: italic;
+    color: var(--muted); margin-bottom: 7px; line-height: 1.5;
+  }
+
+  @page { size: letter landscape; margin: 0; }
+  @media screen {
+    body { background: #eee; padding: 20px; }
+    .spread { background: white; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+  }
+</style>
+</head>
+<body>
+  <div id="measure">${contentHTML}</div>
+  <div id="booklet"></div>
+  <script>${bookletJS}<\/script>
+</body>
+</html>`;
+  }
+</script>
+</body>
+</html>

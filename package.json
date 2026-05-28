@@ -10,7 +10,8 @@
     "audit:full": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --http http://localhost:3000",
     "audit:quick": "node audit/index.js --year 2026 --services vespers --strict",
     "audit:date": "node audit/index.js --print --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --date",
-    "audit:judge": "node audit/llm-judge.js --date"
+    "audit:judge": "node audit/llm-judge.js --date",
+    "db:clear-cache": "sqlite3 storage/oca.db 'DELETE FROM orthocal_cache;' && echo 'orthocal_cache cleared'"
   },
   "engines": {
     "node": ">=22.5.0"

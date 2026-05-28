@@ -24,3 +24,12 @@ fix-booklet-blanks.md
 2026-10-03
 node_modules
 .claude/settings.local.json
+
+# Per-user MCP config (contains absolute paths)
+.mcp.json
+
+# Translation overlay sandboxes
+fixed-texts/translations/_*/
+
+# Source PDFs (large; kept locally)
+reference/*.pdf

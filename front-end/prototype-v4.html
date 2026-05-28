@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orthodox Daily Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #F5F0E8;
+    --surface: #FAF7F2;
+    --text:    #1A1209;
+    --rubric:  #8B1A1A;
+    --gold:    #C9A84C;
+    --muted:   #6B6358;
+    --border:  #DDD5C4;
+    --panel-w: 70vw;
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
+
+  /* ─────────────────────────────────
+     TWO FULL-SCREEN VIEWS
+     Both live in the same space.
+     .view-main is visible by default.
+     .view-search slides up over it.
+  ───────────────────────────────── */
+  .view {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, opacity;
+  }
+
+  /* Main view — slides down/away when search opens */
+  .view-main {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform .38s cubic-bezier(.4, 0, .2, 1),
+                opacity    .28s ease;
+    z-index: 1;
+  }
+  .view-main.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Search view — starts below, rises into place */
+  .view-search {
+    transform: translateY(32px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .38s cubic-bezier(.4, 0, .2, 1),
+                opacity    .28s ease;
+    z-index: 2;
+    background: var(--bg);
+  }
+  .view-search.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─────────────────────────────────
+     HEADER (shared look, two instances)
+  ───────────────────────────────── */
+  .hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px; gap: 12px;
+    flex-shrink: 0;
+  }
+  .hdr-cross  { color: var(--rubric); font-size: 18px; }
+  .hdr-title  { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+  .hdr-about  { margin-left: auto; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em; color: var(--muted); text-decoration: none; }
+  .hdr-about:hover { color: var(--rubric); }
+
+  /* ─────────────────────────────────
+     MAIN VIEW — inner layout
+  ───────────────────────────────── */
+  .layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .center { flex: 1; overflow-y: auto; min-width: 0; }
+
+  /* Sub-bar */
+  .center-bar {
+    position: sticky; top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px; height: 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 50;
+  }
+  .week-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em; color: var(--muted); }
+  .bar-btns   { display: flex; align-items: center; gap: 8px; }
+
+  .bar-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid var(--border);
+    padding: 5px 11px; cursor: pointer;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+    color: var(--muted);
+    transition: border-color .15s, color .15s;
+  }
+  .bar-btn:hover, .bar-btn.active { border-color: var(--rubric); color: var(--rubric); }
+
+  /* Calendar popover */
+  .cal-anchor { position: relative; }
+  .cal-popover {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(26,18,9,.12);
+    padding: 18px; width: 240px; z-index: 300;
+    opacity: 0; transform: translateY(-6px); pointer-events: none;
+    transition: opacity .18s, transform .18s;
+  }
+  .cal-popover.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .cal-head span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .1em; }
+  .cal-nav { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 12px; padding: 2px 6px; }
+  .cal-nav:hover { color: var(--rubric); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .cal-dow { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .05em; color: var(--muted); text-align: center; padding: 3px 0 6px; }
+  .cal-day { font-family: 'EB Garamond', serif; font-size: 13px; text-align: center; padding: 5px 2px; cursor: pointer; color: var(--muted); border-radius: 2px; position: relative; }
+  .cal-day:hover { color: var(--text); background: var(--border); }
+  .cal-day.has-service { color: var(--text); }
+  .cal-day.has-service::after { content: ''; display: block; width: 3px; height: 3px; background: var(--rubric); border-radius: 50%; margin: 1px auto 0; }
+  .cal-day.today { color: var(--rubric); font-weight: 600; }
+  .cal-day.today::before { content: ''; position: absolute; inset: 1px; border: 1px solid var(--rubric); border-radius: 2px; }
+  .cal-day.empty { cursor: default; pointer-events: none; }
+
+  /* Service list */
+  .svc-list-body { padding: 28px 32px 60px; }
+  .date-block    { margin-bottom: 32px; }
+  .date-heading  { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid var(--gold); margin-bottom: 10px; }
+  .dow   { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .12em; color: var(--rubric); }
+  .dated { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .08em; color: var(--text); }
+  .feast { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--muted); }
+  .svc-rows { display: flex; flex-direction: column; }
+  .svc-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: none; border: none; border-left: 2px solid transparent; cursor: pointer; text-align: left; width: 100%; transition: border-color .12s, background .12s; }
+  .svc-row:hover  { border-left-color: var(--gold);   background: rgba(201,168,76,.07); }
+  .svc-row.active { border-left-color: var(--rubric); background: rgba(139,26,26,.06); }
+  .svc-row .name  { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--text); }
+  .svc-row .arrow { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em; color: var(--rubric); opacity: 0; transition: opacity .12s; }
+  .svc-row:hover .arrow, .svc-row.active .arrow { opacity: 1; }
+  .svc-row.dimmed { opacity: .35; cursor: default; pointer-events: none; }
+  .svc-row .soon  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); }
+
+  /* Right panel */
+  .panel { width: 0; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border); overflow: hidden; transition: width .28s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+  .panel.open { width: var(--panel-w); }
+  .panel-inner { width: var(--panel-w); display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+  .panel-head  { padding: 14px 20px 0; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .panel-top   { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .btn-close   { background: none; border: none; cursor: pointer; font-family: 'EB Garamond', serif; font-size: 17px; color: var(--muted); padding: 0 4px; transition: color .12s; }
+  .btn-close:hover { color: var(--rubric); }
+  .btn-print   { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em; background: none; border: 1.5px solid var(--rubric); color: var(--rubric); padding: 5px 14px; cursor: pointer; transition: background .12s, color .12s; }
+  .btn-print:hover { background: var(--rubric); color: var(--surface); }
+  .panel-svc      { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: .1em; color: var(--rubric); margin-bottom: 2px; }
+  .panel-date-str { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); }
+
+  /* Expandable detail row */
+  .panel-detail-toggle {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 10px; padding: 10px 0 12px;
+    cursor: pointer; background: none; border: none;
+    width: 100%; text-align: left;
+    border-top: 1px solid var(--border);
+  }
+  .panel-detail-toggle:hover .pdt-label { color: var(--text); }
+  .pdt-label {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .16em;
+    color: var(--muted); flex: 1;
+    transition: color .15s;
+  }
+  .pdt-icon {
+    width: 16px; height: 16px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .15s, transform .22s ease;
+  }
+  .panel-detail-toggle:hover .pdt-icon { border-color: var(--rubric); }
+  .pdt-icon svg { color: var(--muted); transition: color .15s; }
+  .panel-detail-toggle:hover .pdt-icon svg { color: var(--rubric); }
+
+  /* Expanded state — swap + to - via data attr, no rotation */
+  .panel-detail-toggle.open .pdt-icon { border-color: var(--rubric); }
+  .panel-detail-toggle.open .pdt-icon svg { color: var(--rubric); }
+  .panel-detail-toggle.open .pdt-label { color: var(--rubric); }
+  .panel-detail-toggle .pdt-minus { display: none; }
+  .panel-detail-toggle .pdt-plus  { display: block; }
+  .panel-detail-toggle.open .pdt-minus { display: block; }
+  .panel-detail-toggle.open .pdt-plus  { display: none; }
+
+  /* Collapsible content */
+  .panel-detail-body {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .28s cubic-bezier(.4,0,.2,1), opacity .22s ease;
+  }
+  .panel-detail-body.open {
+    max-height: 320px;
+    opacity: 1;
+  }
+  .panel-detail-body-inner { padding: 0 0 14px; }
+
+  /* Saints list */
+  .p-saints {
+    margin-bottom: 12px;
+  }
+  .p-saint {
+    font-family: 'EB Garamond', serif; font-size: 15px; color: var(--text);
+    padding: 3px 0; line-height: 1.4;
+  }
+  .p-saint.major { font-weight: 500; }
+
+  /* Pronoun toggle */
+  .pronoun-row { display: flex; align-items: center; gap: 12px; font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em; color: var(--muted); }
+  .pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  .pronoun-row input { accent-color: var(--rubric); }
+  .panel-body { flex: 1; overflow-y: auto; padding: 24px 22px 48px; }
+
+  /* Service text */
+  .svc-sec     { margin-bottom: 28px; }
+  .svc-head    { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em; text-align: center; color: var(--text); margin-bottom: 12px; }
+  .svc-rule    { height: 1px; background: var(--gold); margin: 20px 0; }
+  .rubric      { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--rubric); margin-bottom: 8px; line-height: 1.6; }
+  .prayer      { font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88; color: var(--text); margin-bottom: 14px; }
+  .stich-label { font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic; color: var(--muted); margin-bottom: 6px; }
+  .verse       { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 10px; line-height: 1.6; }
+
+  /* Variable-logic alerts (dev mode) */
+  .var-alert {
+    margin: 10px 0 14px;
+    padding: 8px 12px 8px 10px;
+    background: rgba(197,147,58,.08);
+    border-left: 2px solid var(--gold);
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .var-alert strong {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .var-alert code {
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 11.5px;
+    background: rgba(26,18,9,.06);
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: var(--text);
+  }
+
+  .cal-overlay { display: none; position: fixed; inset: 0; z-index: 150; }
+  .cal-overlay.active { display: block; }
+
+  /* ═══════════════════════════════════
+     SEARCH VIEW
+  ═══════════════════════════════════ */
+
+  /* Search header — back button only */
+  .search-hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    flex-shrink: 0;
+  }
+
+  .search-back {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+    color: var(--muted); padding: 4px 0;
+    transition: color .15s;
+  }
+  .search-back:hover { color: var(--rubric); }
+
+  /* Search body */
+  .search-content {
+    flex: 1; overflow-y: auto;
+  }
+
+  /* Input lives in the body */
+  .search-input-wrap {
+    padding: 32px 32px 24px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .search-input-wrap.in { opacity: 1; transform: translateY(0); }
+
+  .search-input-row {
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 6px;
+    transition: border-color .2s;
+  }
+  .search-input-row:focus-within { border-bottom-color: var(--rubric); }
+  .search-input-row svg { color: var(--muted); flex-shrink: 0; }
+
+  #search-input {
+    flex: 1; background: none; border: none; outline: none;
+    font-family: 'EB Garamond', serif; font-size: 22px;
+    color: var(--text);
+  }
+  #search-input::placeholder { color: var(--muted); font-style: italic; }
+
+  .search-clear {
+    background: none; border: none; cursor: pointer;
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    color: var(--muted); padding: 0 2px; line-height: 1;
+    opacity: 0; transition: opacity .15s, color .15s;
+    pointer-events: none;
+  }
+  .search-clear.visible { opacity: 1; pointer-events: all; }
+  .search-clear:hover { color: var(--rubric); }
+
+  /* Hint state */
+  .search-hint-area {
+    padding: 28px 32px 0;
+    max-width: 640px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease .08s, transform .3s ease .08s;
+  }
+  .search-hint-area.in { opacity: 1; transform: translateY(0); }
+
+  .hint-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .hint-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .hint-tag {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em;
+    color: var(--muted); border: 1px solid var(--border);
+    padding: 6px 14px; cursor: pointer; background: none;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .hint-tag:hover { border-color: var(--rubric); color: var(--rubric); background: rgba(139,26,26,.04); }
+
+  /* Spinner */
+  .search-spinner-wrap {
+    display: none; justify-content: center; align-items: center;
+    padding: 64px 0;
+  }
+  .search-spinner-wrap.active { display: flex; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner-ring {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    border-top-color: var(--rubric);
+    animation: spin 1.1s cubic-bezier(.5,.1,.5,.9) infinite;
+  }
+
+  /* Results */
+  .search-results-area {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .28s ease, transform .28s ease;
+  }
+  .search-results-area.in { opacity: 1; transform: translateY(0); }
+
+  .results-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em;
+    color: var(--muted); padding: 20px 32px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .result-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; background: none;
+    border-left: 3px solid transparent;
+    border-right: none; border-top: none;
+    width: 100%; text-align: left;
+    transition: background .12s, border-left-color .15s;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row:hover { background: rgba(139,26,26,.04); border-left-color: var(--gold); }
+  .result-row.unavail { opacity: .38; cursor: default; pointer-events: none; }
+
+  .res-date { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); flex-shrink: 0; min-width: 96px; }
+  .res-name { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text); flex: 1; line-height: 1.4; }
+  .res-name em { font-style: normal; color: var(--rubric); }
+  .res-tag  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); flex-shrink: 0; }
+
+  .no-results {
+    padding: 56px 32px;
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    font-style: italic; color: var(--muted);
+  }
+
+
+  /* Hide bottom close on desktop */
+  .search-close-bottom { display: none; }
+
+  /* ─────────────────────────────────
+     MOBILE: thumb-friendly search
+  ───────────────────────────────── */
+  @media (max-width: 640px) {
+
+    /* Input: tighter padding, larger tap target */
+    .search-input-wrap {
+      padding: 20px 20px 16px;
+    }
+    #search-input { font-size: 19px; }
+
+    /* Make content area a column that fills height */
+    .search-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hints anchor to bottom — thumbs-first */
+    .search-hint-area {
+      padding: 0 20px 32px;
+      margin-top: auto;          /* pushes hints to bottom */
+    }
+
+    /* Larger, easier-to-tap hint tags */
+    .hint-tag {
+      padding: 10px 16px;
+      font-size: 10px;
+    }
+
+    /* Results fill from top, scroll naturally */
+    .search-results-area {
+      padding-bottom: 40px;
+    }
+    .result-row {
+      padding: 16px 20px;
+      gap: 16px;
+    }
+    .results-eyebrow { padding: 16px 20px 10px; }
+    .no-results { padding: 40px 20px; }
+
+    /* Back button easier to tap */
+    .search-back { padding: 8px 0; }
+
+    /* Spinner centered in remaining space */
+    .search-spinner-wrap { padding: 80px 0; }
+
+    /* Hide back button on mobile, show bottom close instead */
+    .search-hdr { display: none; }
+
+    .search-close-bottom {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0 36px;
+      flex-shrink: 0;
+    }
+    .search-close-bottom button {
+      display: flex; align-items: center; gap: 8px;
+      background: none; border: 1px solid var(--border);
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+      color: var(--muted); padding: 10px 28px; cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .search-close-bottom button:hover { border-color: var(--rubric); color: var(--rubric); }
+
+  }
+
+  /* ═══════════════════════════════════
+     CALENDAR VIEW
+  ═══════════════════════════════════ */
+
+  .view-cal {
+    transform: translateY(32px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .38s cubic-bezier(.4,0,.2,1),
+                opacity    .28s ease;
+    z-index: 2;
+    background: var(--bg);
+  }
+  .view-cal.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Header — back button only (desktop) */
+  .cal-hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    flex-shrink: 0;
+  }
+  .cal-back {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+    color: var(--muted); padding: 4px 0;
+    transition: color .15s;
+  }
+  .cal-back:hover { color: var(--rubric); }
+
+  /* Body */
+  .cal-view-body {
+    flex: 1; overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+
+  /* ── Week strip ── */
+  .cal-week-wrap {
+    padding: 28px 32px 24px;
+    flex-shrink: 0;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .3s ease, transform .3s ease;
+    border-bottom: 1px solid var(--border);
+  }
+  .cal-week-wrap.in { opacity: 1; transform: translateY(0); }
+
+  .cal-week-nav {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .cal-arrow {
+    background: none; border: 1px solid var(--border);
+    width: 32px; height: 32px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted);
+    transition: border-color .15s, color .15s;
+  }
+  .cal-arrow:hover { border-color: var(--rubric); color: var(--rubric); }
+  .cal-arrow:disabled { opacity: .3; pointer-events: none; }
+
+  .cal-week-strip {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow: hidden;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  .cal-week-strip.shifting { opacity: 0; transform: translateX(12px); }
+
+  .cal-week-day {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 10px 4px;
+    border: 1px solid var(--border);
+    cursor: default;
+    gap: 4px;
+    position: relative;
+    transition: background .12s, border-color .12s;
+    min-width: 0;
+  }
+  .cwd-dow {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .08em;
+    color: var(--muted); line-height: 1;
+  }
+  .cwd-num {
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    color: var(--muted); line-height: 1;
+  }
+  .cwd-month {
+    font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .06em;
+    color: var(--muted); line-height: 1;
+  }
+
+  /* Has service */
+  .cal-week-day.has-svc {
+    cursor: pointer;
+  }
+  .cal-week-day.has-svc .cwd-num { color: var(--text); }
+  .cal-week-day.has-svc:hover {
+    background: rgba(139,26,26,.05);
+    border-color: var(--gold);
+  }
+
+  /* Service dot — always present as a flex row, visible only on has-svc */
+  .cwd-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: transparent;
+    flex-shrink: 0;
+  }
+  .cal-week-day.has-svc .cwd-dot { background: var(--rubric); }
+
+  /* Today */
+  .cal-week-day.today { border-color: var(--rubric); }
+  .cal-week-day.today .cwd-num { color: var(--rubric); font-weight: 600; }
+  .cal-week-day.today .cwd-dow { color: var(--rubric); }
+
+  /* Week label */
+  .cal-week-label {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .18em;
+    color: var(--muted); margin-bottom: 14px;
+  }
+
+  /* Saint/feast list */
+  .cal-saint-strip {
+    padding: 24px 32px 0;
+    flex-shrink: 0;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .25s ease .08s, transform .25s ease .08s;
+  }
+  .cal-saint-strip.in { opacity: 1; transform: translateY(0); }
+
+  .css-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .18em;
+    color: var(--muted); margin-bottom: 12px;
+    border-bottom: 1px solid var(--border); padding-bottom: 10px;
+  }
+  .css-rows { display: flex; flex-direction: column; }
+  .css-row {
+    display: flex; align-items: baseline; gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; background: none;
+    border-left: 3px solid transparent;
+    border-right: none; border-top: none;
+    width: 100%; text-align: left;
+    transition: background .12s, border-left-color .15s;
+  }
+  .css-row:hover { background: rgba(139,26,26,.04); border-left-color: var(--gold); }
+  .css-row.unavail { opacity: .38; cursor: default; pointer-events: none; }
+  .css-date { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); min-width: 80px; flex-shrink: 0; }
+  .css-name { font-family: 'EB Garamond', serif; font-size: 17px; color: var(--text); flex: 1; }
+  .css-tag  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); flex-shrink: 0; }
+
+  /* Bottom close — mobile only */
+  .cal-close-bottom {
+    display: none;
+    justify-content: center;
+    padding: 16px 0 36px;
+    flex-shrink: 0;
+  }
+  .cal-close-bottom button {
+    display: flex; align-items: center; gap: 8px;
+    background: none; border: 1px solid var(--border);
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+    color: var(--muted); padding: 10px 28px; cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .cal-close-bottom button:hover { border-color: var(--rubric); color: var(--rubric); }
+
+  /* ── Mobile calendar overrides ────────── */
+  @media (max-width: 640px) {
+    .cal-hdr { display: none; }
+    .cal-close-bottom { display: flex; }
+
+    .cal-week-wrap { padding: 20px 16px 20px; }
+    .cal-arrow { width: 36px; height: 36px; }
+    .cwd-num { font-size: 16px; }
+    .cwd-dow { font-size: 7px; }
+    .cal-week-day { padding: 8px 2px; }
+
+    .cal-saint-strip { padding: 16px 20px 0; }
+    .css-row { padding: 14px 0; }
+    .css-name { font-size: 18px; }
+
+    .cal-view-body { justify-content: space-between; }
+  }
+
+
+  /* ─────────────────────────────────
+     MOBILE: full-screen panel + larger type
+  ───────────────────────────────── */
+  @media (max-width: 640px) {
+
+    /* Panel takes over the full screen */
+    .layout { position: relative; }
+
+    .panel {
+      position: fixed;
+      inset: 0;
+      width: 100% !important;
+      z-index: 100;
+      border-left: none;
+      transform: translateX(100%);
+      transition: transform .32s cubic-bezier(.4,0,.2,1);
+    }
+    .panel.open {
+      transform: translateX(0);
+    }
+    .panel-inner { width: 100%; }
+
+    /* Larger service text on mobile */
+    .prayer      { font-size: 19px; line-height: 2; }
+    .rubric      { font-size: 17px; }
+    .verse       { font-size: 16px; }
+    .stich-label { font-size: 15px; }
+    .svc-head    { font-size: 11px; }
+    .panel-body  { padding: 20px 20px 56px; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════
+     VIEW: MAIN
+════════════════════════════════════ -->
+<div class="view view-main" id="view-main">
+
+  <div class="hdr">
+    <span class="hdr-cross">☩</span>
+    <span class="hdr-title">ORTHODOX DAILY SERVICES</span>
+    <a href="#" class="hdr-about">About</a>
+  </div>
+
+  <div class="layout">
+    <main class="center">
+
+      <div class="center-bar">
+        <span class="week-label">MARCH 7 – 21, 2026</span>
+        <div class="bar-btns">
+
+          <button class="bar-btn" onclick="openSearch()">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <circle cx="4.5" cy="4.5" r="3.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="7.2" y1="7.2" x2="10" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            SEARCH
+          </button>
+
+          <button class="bar-btn" id="date-btn" onclick="openCal()">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <rect x="0.6" y="1.6" width="9.8" height="8.8" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                <line x1="0.6" y1="4.4" x2="10.4" y2="4.4" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="3.5" y1="0.5" x2="3.5" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="7.5" y1="0.5" x2="7.5" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              DATE
+            </button>
+
+        </div>
+      </div>
+
+      <div class="svc-list-body">
+
+        <div class="date-block" id="mar7">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 7</span><span class="feast">· Hieromartyr Nestor of Thessalonica</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 7, 2026','Tone 8 · Cheesefare Saturday','mar7')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Saturday, March 7, 2026','Tone 8 · Cheesefare Saturday','mar7')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar8">
+          <div class="date-heading"><span class="dow">SUNDAY</span><span class="dated">MARCH 8</span><span class="feast">· Sunday of Forgiveness</span></div>
+          <div class="svc-rows">
+            <button class="svc-row dimmed"><span class="name">Great Vespers</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar9">
+          <div class="date-heading"><span class="dow">MONDAY</span><span class="dated">MARCH 9</span><span class="feast">· Forty Holy Martyrs of Sebaste · Clean Monday</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Monday, March 9, 2026','Tone 1 · Monday of the 1st Week','mar9')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar10">
+          <div class="date-heading"><span class="dow">TUESDAY</span><span class="dated">MARCH 10</span><span class="feast">· 1st Week of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Tuesday, March 10, 2026','Tone 1 · Tuesday of the 1st Week','mar10')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar14">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 14</span><span class="feast">· 1st Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 14, 2026','Tone 1 · 1st Saturday of Great Lent','mar14')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Saturday, March 14, 2026','Tone 1 · 1st Saturday of Great Lent','mar14')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar15">
+          <div class="date-heading"><span class="dow" style="color:var(--text)">TODAY — SUNDAY</span><span class="dated">MARCH 15</span><span class="feast">· Third Sunday of Great Lent — Veneration of the Cross</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 14, 2026','Tone 7 · 2nd Saturday of Great Lent','mar14')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row" onclick="openPanel(this,'Divine Liturgy','Sunday, March 15, 2026','Tone 7 · Veneration of the Cross','mar15')"><span class="name">Divine Liturgy</span><span class="arrow">VIEW →</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar21">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 21</span><span class="feast">· 2nd Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 21, 2026','Tone 2 · 2nd Saturday of Great Lent','mar21')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar28">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 28</span><span class="feast">· 3rd Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 28, 2026','Tone 3 · 3rd Saturday of Great Lent','mar28')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <aside class="panel" id="panel">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="panel-top">
+            <button class="btn-close" onclick="closePanel()">✕</button>
+            <button class="btn-print" onclick="window.print()">PRINT</button>
+          </div>
+          <div class="panel-svc" id="p-svc"></div>
+          <div class="panel-date-str" id="p-date"></div>
+
+          <!-- Expandable: saints + pronouns -->
+          <button class="panel-detail-toggle" id="p-detail-toggle" onclick="togglePanelDetail()">
+            <span class="pdt-label" id="p-detail-label">DETAILS</span>
+            <span class="pdt-icon">
+              <svg class="pdt-plus" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <line x1="4" y1="0" x2="4" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <svg class="pdt-minus" width="8" height="2" viewBox="0 0 8 2" fill="none">
+                <line x1="0" y1="1" x2="8" y2="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="panel-detail-body" id="p-detail-body">
+            <div class="panel-detail-body-inner">
+              <div class="p-saints" id="p-saints"></div>
+              <div class="pronoun-row">
+                PRONOUNS:
+                <label><input type="radio" name="pron" value="thee" onchange="rerenderText()"> Thee / Thy</label>
+                <label><input type="radio" name="pron" value="you" checked onchange="rerenderText()"> You / Your</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body" id="p-body"></div>
+      </div>
+    </aside>
+  </div>
+
+</div><!-- /view-main -->
+
+
+<!-- ═══════════════════════════════════
+     VIEW: SEARCH
+════════════════════════════════════ -->
+<div class="view view-search" id="view-search" onkeydown="if(event.key==='Escape')closeSearch()">
+
+  <div class="search-hdr">
+    <button class="search-back" onclick="closeSearch()">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="search-content" id="search-content">
+
+    <!-- Input in body -->
+    <div class="search-input-wrap" id="search-input-wrap">
+      <div class="search-input-row">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <input id="search-input" type="text"
+          placeholder="Search saints, feasts, or dates…"
+          oninput="onSearch(this.value)"
+          autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+
+    <!-- Hint state (default) -->
+    <div class="search-hint-area" id="search-hint">
+      <div class="hint-eyebrow">SUGGESTIONS</div>
+      <div class="hint-tags">
+        <button class="hint-tag" onclick="fillSearch('Lent')">Lent</button>
+        <button class="hint-tag" onclick="fillSearch('Martyr')">Martyr</button>
+        <button class="hint-tag" onclick="fillSearch('Theodore')">Theodore</button>
+        <button class="hint-tag" onclick="fillSearch('Saturday')">Saturday</button>
+        <button class="hint-tag" onclick="fillSearch('Annunciation')">Annunciation</button>
+        <button class="hint-tag" onclick="fillSearch('Cross')">Cross</button>
+        <button class="hint-tag" onclick="fillSearch('March')">March</button>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div class="search-spinner-wrap" id="search-spinner">
+      <div class="spinner-ring"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="search-results-area" id="search-results"></div>
+
+  </div>
+
+  <div class="search-close-bottom" id="search-close-bottom">
+    <button onclick="closeSearch()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      CLOSE
+    </button>
+  </div>
+</div><!-- /view-search -->
+
+
+
+<!-- ═══════════════════════════════════
+     VIEW: CALENDAR
+════════════════════════════════════ -->
+<div class="view view-cal" id="view-cal" onkeydown="if(event.key==='Escape')closeCal()">
+
+  <div class="cal-hdr">
+    <button class="cal-back" onclick="closeCal()">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="cal-view-body">
+
+    <!-- Week strip -->
+    <div class="cal-week-wrap" id="cal-week-wrap">
+      <div class="cal-week-label" id="cal-week-label">MARCH 2026</div>
+      <div class="cal-week-nav">
+        <button class="cal-arrow" id="cal-prev" onclick="calShift(-1)">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M6 1L1 5.5 6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="cal-week-strip" id="cal-week-strip">
+          <!-- rendered by JS -->
+        </div>
+        <button class="cal-arrow" id="cal-next" onclick="calShift(1)">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Feast list for this week -->
+    <div class="cal-saint-strip" id="cal-saint-strip">
+      <div class="css-eyebrow">AVAILABLE SERVICES THIS WEEK</div>
+      <div class="css-rows" id="css-rows">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+
+    <div class="cal-close-bottom">
+      <button onclick="closeCal()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        CLOSE
+      </button>
+    </div>
+
+  </div>
+</div><!-- /view-cal -->
+
+<script>
+  /* ── Panel ── */
+  let activeRow = null;
+  let currentService = null;
+
+  // Saints data per date id
+  const SAINTS_DATA = {
+    mar7:  [{ name:'Hieromartyr Nestor of Thessalonica', major:false }],
+    mar8:  [{ name:'Sunday of Forgiveness', major:true }],
+    mar9:  [{ name:'Forty Holy Martyrs of Sebaste', major:true }, { name:'Clean Monday', major:false }],
+    mar10: [{ name:'Tuesday of the First Week of Great Lent', major:false }],
+    mar14: [{ name:'First Saturday of Great Lent', major:true }],
+    mar15: [{ name:'Veneration of the Cross', major:true }, { name:'Third Sunday of Great Lent', major:false }],
+    mar21: [{ name:'Second Saturday of Great Lent', major:true }],
+    mar28: [{ name:'Third Saturday of Great Lent', major:true }],
+  };
+
+  function openPanel(btn, svc, date, tone, dateId) {
+    currentService = svc;
+    document.getElementById('p-svc').textContent  = svc.toUpperCase();
+    document.getElementById('p-date').textContent = date + ' · ' + tone;
+
+    // Populate saints
+    const saints = dateId ? (SAINTS_DATA[dateId] || []) : [];
+    const saintEl = document.getElementById('p-saints');
+    saintEl.innerHTML = saints.map(s =>
+      `<div class="p-saint${s.major ? ' major' : ''}">${s.name}</div>`
+    ).join('');
+    saintEl.style.display = saints.length ? '' : 'none';
+
+    // Update label with saint count + active pronoun
+    updateDetailLabel();
+
+    // Collapse detail on new panel open
+    document.getElementById('p-detail-body').classList.remove('open');
+    document.getElementById('p-detail-toggle').classList.remove('open');
+
+    rerenderText();
+    document.getElementById('panel').classList.add('open');
+    if (activeRow) activeRow.classList.remove('active');
+    activeRow = btn; btn.classList.add('active');
+  }
+
+  function togglePanelDetail() {
+    const body   = document.getElementById('p-detail-body');
+    const toggle = document.getElementById('p-detail-toggle');
+    const open   = body.classList.contains('open');
+    body.classList.toggle('open', !open);
+    toggle.classList.toggle('open', !open);
+  }
+  function closePanel() {
+    document.getElementById('panel').classList.remove('open');
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+  }
+  function rerenderText() {
+    const p = document.querySelector('input[name="pron"]:checked')?.value || 'you';
+    if (currentService === 'Divine Liturgy') {
+      document.getElementById('p-body').innerHTML = liturgyText(p);
+    } else {
+      document.getElementById('p-body').innerHTML = sampleText(p);
+    }
+    updateDetailLabel();
+  }
+
+  function updateDetailLabel() {
+    const p = document.querySelector('input[name="pron"]:checked')?.value || 'you';
+    const pronLabel = p === 'thee' ? 'THEE / THY' : 'YOU / YOUR';
+    const saints = document.querySelectorAll('#p-saints .p-saint');
+    const count  = saints.length;
+    document.getElementById('p-detail-label').textContent =
+      count ? `${count} COMMEMORATION${count > 1 ? 'S' : ''} · ${pronLabel}` : pronLabel;
+  }
+
+  /* ── Calendar view ── */
+
+  const CAL_DATA = {
+    2026: {
+      3: {
+        7:  { id:'mar7',  feast:'Hieromartyr Nestor of Thessalonica',         avail:true  },
+        8:  { id:'mar8',  feast:'Sunday of Forgiveness',                       avail:false },
+        9:  { id:'mar9',  feast:'Forty Holy Martyrs of Sebaste',               avail:true  },
+        10: { id:'mar10', feast:'Tuesday of the 1st Week of Great Lent',       avail:true  },
+        14: { id:'mar14', feast:'First Saturday of Great Lent',                avail:true  },
+        15: { id:'mar15', feast:'Third Sunday of Great Lent — Veneration of the Cross', avail:true  },
+        21: { id:'mar21', feast:'Second Saturday of Great Lent',               avail:true  },
+        25: { id:null,    feast:'Annunciation of the Theotokos',               avail:false },
+        28: { id:'mar28', feast:'Third Saturday of Great Lent',                avail:true  },
+      },
+      4: {
+        4:  { id:'apr4',  feast:'Fourth Saturday of Great Lent',               avail:true  },
+        11: { id:'apr11', feast:'Akathist Saturday · Venerable Mary of Egypt', avail:true  },
+      }
+    }
+  };
+
+  const MONTHS  = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+                   'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+  const MONTHS3 = ['JAN','FEB','MAR','APR','MAY','JUN',
+                   'JUL','AUG','SEP','OCT','NOV','DEC'];
+  const DOWS    = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+  // Track the Sunday that starts the current displayed week
+  // Default: week containing March 10 (today in the prototype)
+  let weekStart = new Date(2026, 2, 15); // Sun March 15
+
+  // Bounds: earliest Sunday and latest Saturday in our data
+  const WEEK_MIN = new Date(2026, 2, 8);  // Sun Mar 8
+  const WEEK_MAX = new Date(2026, 3, 12); // Sun Apr 12
+
+  function openCal() {
+    document.getElementById('view-main').classList.add('hidden');
+    document.getElementById('view-cal').classList.add('visible');
+    renderWeek(weekStart);
+    setTimeout(() => {
+      document.getElementById('cal-week-wrap').classList.add('in');
+      document.getElementById('cal-saint-strip').classList.add('in');
+    }, 100);
+  }
+
+  function closeCal() {
+    document.getElementById('view-cal').classList.remove('visible');
+    document.getElementById('view-main').classList.remove('hidden');
+    document.getElementById('date-btn').classList.remove('active');
+    setTimeout(() => {
+      document.getElementById('cal-week-wrap').classList.remove('in');
+      document.getElementById('cal-saint-strip').classList.remove('in');
+    }, 400);
+  }
+
+  function calShift(dir) {
+    const next = new Date(weekStart);
+    next.setDate(next.getDate() + dir * 7);
+    if (next < WEEK_MIN || next > WEEK_MAX) return;
+    weekStart = next;
+
+    const strip = document.getElementById('cal-week-strip');
+    const feast = document.getElementById('cal-saint-strip');
+    strip.classList.add('shifting');
+    feast.classList.remove('in');
+
+    setTimeout(() => {
+      renderWeek(weekStart);
+      strip.classList.remove('shifting');
+      requestAnimationFrame(() => requestAnimationFrame(() =>
+        feast.classList.add('in')
+      ));
+    }, 180);
+
+    document.getElementById('cal-prev').disabled = (next <= WEEK_MIN);
+    document.getElementById('cal-next').disabled = (next >= WEEK_MAX);
+  }
+
+  function renderWeek(sunday) {
+    const today    = new Date();
+    const monthSet = new Set();
+
+    let stripHtml = '';
+    const weekFeasts = [];
+
+    for (let i = 0; i < 7; i++) {
+      const d    = new Date(sunday);
+      d.setDate(d.getDate() + i);
+      const y    = d.getFullYear();
+      const m    = d.getMonth() + 1; // 1-indexed
+      const day  = d.getDate();
+      monthSet.add(MONTHS[m - 1]);
+
+      const info    = (CAL_DATA[y] || {})[m]?.[day];
+      const isToday = (d.toDateString() === today.toDateString());
+      const hasSvc  = info?.avail;
+
+      let cls = 'cal-week-day';
+      if (hasSvc) cls += ' has-svc';
+      if (isToday) cls += ' today';
+
+      const onclick = hasSvc && info.id ? `onclick="onCalDayClick('${info.id}')"` : '';
+
+      stripHtml += `
+        <div class="${cls}" ${onclick}>
+          <span class="cwd-dow">${DOWS[d.getDay()]}</span>
+          <span class="cwd-num">${day}</span>
+          <span class="cwd-month">${MONTHS3[m - 1]}</span>
+          <span class="cwd-dot"></span>
+        </div>`;
+
+      if (info) weekFeasts.push({ day, month: m, info });
+    }
+
+    document.getElementById('cal-week-strip').innerHTML = stripHtml;
+
+    // Week label — show month(s)
+    const monthNames = [...monthSet];
+    document.getElementById('cal-week-label').textContent =
+      monthNames.join(' / ') + ' ' + sunday.getFullYear();
+
+    // Feast list
+    const rows = document.getElementById('css-rows');
+    if (!weekFeasts.length) {
+      rows.innerHTML = `<div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);padding:16px 0;">No feasts or services this week.</div>`;
+    } else {
+      rows.innerHTML = weekFeasts.map(({ day, month, info }) => {
+        const dateStr = MONTHS3[month - 1] + ' ' + day;
+        return `<button class="css-row${info.avail ? '' : ' unavail'}"
+          ${info.id ? `onclick="onCalDayClick('${info.id}')"` : ''}>
+          <span class="css-date">${dateStr}</span>
+          <span class="css-name">${info.feast}</span>
+          <span class="css-tag">${info.avail ? 'VIEW →' : 'NO SERVICE'}</span>
+        </button>`;
+      }).join('');
+    }
+
+    // Arrow bounds
+    document.getElementById('cal-prev').disabled = (sunday <= WEEK_MIN);
+    document.getElementById('cal-next').disabled = (sunday >= WEEK_MAX);
+  }
+
+  function onCalDayClick(id) {
+    closeCal();
+    setTimeout(() => jumpTo(id), 280);
+  }
+
+  function jumpTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const bar = document.querySelector('.center-bar').offsetHeight;
+    document.querySelector('.center').scrollTo({ top: el.offsetTop - bar - 4, behavior: 'smooth' });
+  }
+
+  /* ── Search view ── */
+  let searchTimer = null;
+
+  function openSearch() {
+    closeCal();
+    document.getElementById('view-main').classList.add('hidden');
+    document.getElementById('view-search').classList.add('visible');
+    setTimeout(() => {
+      document.getElementById('search-input-wrap').classList.add('in');
+      document.getElementById('search-hint').classList.add('in');
+      document.getElementById('search-input').focus();
+    }, 100);
+  }
+
+  function closeSearch() {
+    clearTimeout(searchTimer);
+    document.getElementById('view-search').classList.remove('visible');
+    document.getElementById('view-main').classList.remove('hidden');
+    // Reset after transition completes
+    setTimeout(resetSearch, 400);
+  }
+
+  function resetSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
+    document.getElementById('search-results').classList.remove('in');
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById('search-input-wrap').classList.remove('in');
+    document.getElementById('search-hint').classList.remove('in');
+  }
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
+    document.getElementById('search-results').classList.remove('in');
+    document.getElementById('search-results').innerHTML = '';
+    // Re-show hint
+    document.getElementById('search-hint').style.display = '';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => document.getElementById('search-hint').classList.add('in'));
+    });
+    document.getElementById('search-input').focus();
+  }
+
+  function fillSearch(term) {
+    document.getElementById('search-input').value = term;
+    onSearch(term);
+    document.getElementById('search-input').focus();
+  }
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function hl(text, q) {
+    if (!q) return esc(text);
+    return esc(text).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'), '<em>$1</em>');
+  }
+
+  const SAINTS = [
+    { date:'March 7',   id:'mar7',  name:'Hieromartyr Nestor of Thessalonica',     avail:true  },
+    { date:'March 8',   id:'mar8',  name:'Sunday of Forgiveness',                   avail:false },
+    { date:'March 9',   id:'mar9',  name:'Forty Holy Martyrs of Sebaste',           avail:true  },
+    { date:'March 9',   id:'mar9',  name:'Clean Monday',                            avail:true  },
+    { date:'March 10',  id:'mar10', name:'Tuesday of the First Week of Great Lent', avail:true  },
+    { date:'March 14',  id:'mar14', name:'First Saturday of Great Lent',            avail:true  },
+    { date:'March 15',  id:'mar15', name:'Third Sunday of Great Lent — Veneration of the Cross', avail:true },
+    { date:'March 21',  id:'mar21', name:'Second Saturday of Great Lent',           avail:true  },
+    { date:'March 25',  id:null,    name:'Annunciation of the Theotokos',           avail:false },
+    { date:'March 28',  id:'mar28', name:'Third Saturday of Great Lent',            avail:true  },
+    { date:'April 23',  id:null,    name:'Great Martyr George the Trophy-Bearer',   avail:false },
+    { date:'Feb 7',     id:null,    name:'Great Martyr Theodore the General',       avail:false },
+    { date:'Feb 8',     id:null,    name:'Great Martyr Theodore the Recruit',       avail:false },
+  ];
+
+  function onSearch(raw) {
+    const q = raw.trim();
+    const hint    = document.getElementById('search-hint');
+    const spinner = document.getElementById('search-spinner');
+    const results = document.getElementById('search-results');
+    const clear   = document.getElementById('search-clear');
+
+    clearTimeout(searchTimer);
+    clear.classList.toggle('visible', raw.length > 0);
+
+    if (q.length < 2) {
+      spinner.classList.remove('active');
+      results.classList.remove('in');
+      results.innerHTML = '';
+      hint.style.display = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => hint.classList.add('in')));
+      return;
+    }
+
+    // Hide hint, show spinner
+    hint.classList.remove('in');
+    setTimeout(() => { hint.style.display = 'none'; }, 280);
+    results.classList.remove('in');
+    spinner.classList.add('active');
+
+    searchTimer = setTimeout(() => {
+      const hits = SAINTS.filter(s =>
+        s.name.toLowerCase().includes(q.toLowerCase()) ||
+        s.date.toLowerCase().includes(q.toLowerCase())
+      );
+
+      spinner.classList.remove('active');
+
+      if (!hits.length) {
+        results.innerHTML = `<div class="no-results">No saints or feasts found for &ldquo;${esc(q)}&rdquo;</div>`;
+      } else {
+        const eyebrow = `<div class="results-eyebrow">SAINTS &amp; FEASTS MATCHING &ldquo;${esc(q.toUpperCase())}&rdquo;</div>`;
+        const rows = hits.map(s => `
+          <button class="result-row${s.avail ? '' : ' unavail'}"
+            onclick="${s.id ? `pickResult('${s.id}')` : 'void(0)'}">
+            <span class="res-date">${s.date}</span>
+            <span class="res-name">${hl(s.name, q)}</span>
+            <span class="res-tag">${s.avail ? 'VIEW →' : 'NO SERVICE'}</span>
+          </button>`).join('');
+        results.innerHTML = eyebrow + rows;
+      }
+
+      requestAnimationFrame(() => requestAnimationFrame(() => results.classList.add('in')));
+
+    }, 380);
+  }
+
+  function pickResult(id) {
+    closeSearch();
+    setTimeout(() => jumpTo(id), 280);
+  }
+
+  /* ── Service text ── */
+  function sampleText(pronoun) {
+    const you = pronoun === 'you';
+    const You = you?'You':'Thee', Your = you?'Your':'Thy';
+    return `
+      <div class="svc-sec">
+        <div class="rubric">The Priest: Blessed is our God, always, now and ever, and unto the ages of ages.</div>
+        <div class="prayer">Reader: Amen. O come, let us worship God our King.<br>
+        O come, let us worship and fall down before Christ, our King and God.<br>
+        O come, let us worship and fall down before Christ Himself, our King and God.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PSALM 103</div>
+        <div class="prayer">Bless the Lord, O my soul! O Lord my God, ${You} are very great. ${You} are clothed with honor and majesty, Who cover ${Your}self with light as with a garment, Who stretch out the heavens like a curtain.</div>
+        <div class="prayer">He set the earth on its foundations, so that it should never be moved. ${You} covered it with the deep as with a garment; the waters stood above the mountains. At ${Your} rebuke they fled; at the sound of ${Your} thunder they hurried away.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LORD, I HAVE CRIED</div>
+        <div class="rubric">In Tone 1. The stichera are chanted beginning with verse 10.</div>
+        <div class="verse">Out of the depths I have cried to ${You}, O Lord; Lord, hear my voice.</div>
+        <div class="stich-label">Sticheron 1 — Tone 1, Octoechos</div>
+        <div class="prayer">Come, let us worship and bow down, let us weep before Christ. For He Himself is our God, Who can save us from our sins. He descended to earth not to judge the world, but that the world through Him might be saved.</div>
+        <div class="verse">Let ${Your} ears be attentive to the voice of my supplication.</div>
+        <div class="stich-label">Sticheron 2 — Tone 1, Octoechos</div>
+        <div class="prayer">Evening I know, and morning and noon I praise, I hymn, I bless, and give thanks to ${You}, O Master of all, ${You} who love mankind. Direct my prayer as incense before ${You}, and do not turn ${Your} face away from me.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PROKEIMENON</div>
+        <div class="rubric">The Deacon: Wisdom! Let us attend.</div>
+        <div class="prayer"><em>The Lord reigns, He is clothed with majesty.</em></div>
+        <div class="verse">Verse: The Lord is clothed, He has girded Himself with strength.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LITIYA</div>
+        <div class="rubric">The following stichera are chanted at the Litiya:</div>
+        <div class="prayer">O Lord, at the evening hour of this day, grant us and the whole world ${Your} peace. For ${You} have given us all things of life and godliness through ${Your} divine and saving commandments.</div>
+      </div>`;
+  }
+
+  function liturgyText(pronoun) {
+
+    // Pronoun substitution: canonical text stored in Thee/Thy form
+    function pr(t) {
+      if (pronoun === 'thee') return t;
+      return t
+        .replace(/\bThou art\b/g, 'You are').replace(/\bthou art\b/g, 'you are')
+        .replace(/\bThou hast\b/g, 'You have').replace(/\bthou hast\b/g, 'you have')
+        .replace(/\bThou didst\b/g, 'You').replace(/\bthou didst\b/g, 'you')
+        .replace(/\bThou wast\b/g, 'You were').replace(/\bthou wast\b/g, 'you were')
+        .replace(/\bThou dost\b/g, 'You').replace(/\bthou dost\b/g, 'you')
+        .replace(/\bThou wilt\b/g, 'You will').replace(/\bthou wilt\b/g, 'you will')
+        .replace(/\bhath\b/g, 'has').replace(/\bloveth\b/g, 'loves')
+        .replace(/\bThou\b/g, 'You').replace(/\bThee\b/g, 'You')
+        .replace(/\bThy\b/g, 'Your').replace(/\bThine\b/g, 'Your').replace(/\bThyself\b/g, 'Yourself')
+        .replace(/\bthou\b/g, 'you').replace(/\bthee\b/g, 'you')
+        .replace(/\bthy\b/g, 'your').replace(/\bthine\b/g, 'your').replace(/\bthyself\b/g, 'yourself');
+    }
+    const R  = t => `<div class="rubric">${t}</div>`;
+    const P  = t => `<div class="prayer">${pr(t)}</div>`;
+    const Pi = t => `<div class="prayer"><em>${pr(t)}</em></div>`;
+    const V  = t => `<div class="verse">${pr(t)}</div>`;
+    const L  = t => `<div class="stich-label">${t}</div>`;
+    const H  = t => `<div class="svc-head">${t}</div>`;
+    const HR =     `<div class="svc-rule"></div>`;
+
+    // ── Calendar data for March 15, 2026 ──────────────────────────────────
+    const cal = {
+      liturgyVariant: 'basil',
+      tone: 7,
+      entranceHymn: { type: 'sunday',
+        text: 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!' },
+      troparia: [
+        { rubric: 'Troparion of the Resurrection, Tone 7:',
+          text:  'By Thy Cross Thou didst destroy death. To the thief Thou didst open Paradise. For the Myrrhbearers Thou didst change weeping into joy, and Thou didst command Thy disciples, O Christ God, to proclaim that Thou art risen, granting the world great mercy.' },
+        { rubric: 'Troparion of the Cross, Tone 1:',
+          text:  'O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries; and by virtue of Thy Cross, preserve Thy habitation!' },
+      ],
+      kontakia: [
+        { connector: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+          rubric: 'Kontakion of the Cross, Tone 7:',
+          text:  'Now the flaming sword no longer guards the gates of Eden; it has been mysteriously quenched by the wood of the Cross. The sting of death and the victory of hell have been vanquished; for Thou, O my Savior, hast come and cried to those in hell: "Enter again into Paradise!"' },
+      ],
+      trisagion: { substitution: 'cross',
+        text: 'Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify.' },
+      prokeimenon: { tone: 6, label: 'Triodion, Tone 6:',
+        text:  'O Lord, save Thy people, and bless Thine inheritance.',
+        verse: 'To Thee, O Lord, will I call. O my God, be not silent to me.' },
+      epistle: { display: '(311) Hebrews 4:14–5:6' },
+      alleluia: { tone: 8, label: 'Triodion, Tone 8:',
+        verses: ['Remember Thy congregation, which Thou hast purchased of old.',
+                 'God is our King before the ages; He has worked salvation in the midst of the earth.'] },
+      gospel: { display: '(37) Mark 8:34–9:1' },
+      megalynarion: { substitution: 'basil-liturgy',
+        text: 'All of creation rejoices in thee, O Full of Grace: the assembly of angels and the race of men. O sanctified temple and spiritual paradise, the glory of virgins, from whom God was incarnate and became a Child: our God before the ages. He made thy body into a throne, and thy womb He made more spacious than the heavens. All of creation rejoices in thee, O Full of Grace. Glory to thee!' },
+      communionHymn: { label: 'Triodion:',
+        text: 'The light of Thy countenance has shone on us, O Lord. Alleluia, Alleluia, Alleluia!' },
+      paschalSeason: false,
+    };
+
+    // ── Fixed texts ────────────────────────────────────────────────────────
+    const fixed = {
+      // Opening
+      openingDoxology: 'Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Great Litany
+      greatLitanyPetitions: [
+        'For the peace from above, and for the salvation of our souls, let us pray to the Lord.',
+        'For the peace of the whole world, the welfare of the holy churches of God, and the union of all, let us pray to the Lord.',
+        'For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.',
+        'For our Archbishop N., for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.',
+        'For this country, its President, for all civil authorities, and for the armed forces, let us pray to the Lord.',
+        'For this city, every city and countryside, and the faithful who dwell therein, let us pray to the Lord.',
+        'For seasonable weather, an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord.',
+        'For travelers by sea, by land, and by air; for the sick and the suffering; for captives and for their salvation, let us pray to the Lord.',
+        'For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.',
+        'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.',
+      ],
+      greatLitanyCommemoration: 'Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.',
+      greatLitanyExclamation: 'For unto Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Antiphons (Typical)
+      antiphon1Verses: [
+        'Bless the Lord, O my soul; and all that is within me, bless His holy name.',
+        'Bless the Lord, O my soul, and forget not all His benefits.',
+        'Who forgiveth all thine iniquities; Who healeth all thy diseases.',
+        'Who redeemeth thy life from destruction; Who crowneth thee with lovingkindness and tender mercies.',
+        'The mercy of the Lord is from everlasting to everlasting upon them that fear Him.',
+      ],
+      antiphon1Refrain: 'Through the intercessions of the Theotokos, O Savior, save us.',
+      antiphon2Verses: [
+        'Praise the Lord, O my soul. I will praise the Lord while I live; I will sing praises unto my God while I have my being.',
+        'Put not your trust in princes, nor in the son of man, in whom there is no help.',
+        'Happy is he that hath the God of Jacob for his help, whose hope is in the Lord his God.',
+        'The Lord preserveth the strangers; He relieveth the fatherless and widow; but the way of the wicked He maketh crooked.',
+        'The Lord shall reign forever; thy God, O Zion, unto all generations.',
+      ],
+      antiphon2Refrain: 'Save us, O Son of God, who art risen from the dead, who sing to Thee: Alleluia.',
+      onlyBegottenSon: 'Only-begotten Son and immortal Word of God, Who for our salvation didst will to be incarnate of the holy Theotokos and Ever-Virgin Mary, Who without change didst become man and wast crucified, O Christ our God, trampling down death by death, Who art one of the Holy Trinity, glorified with the Father and the Holy Spirit: save us.',
+
+      // Little Litany
+      littleLitanyExclamation1: 'For Thine is the might, and Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.',
+      littleLitanyExclamation2: 'For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+      littleLitanyCommemoration: 'Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.',
+
+      // Beatitudes verse framework (Matt 5:3–12)
+      beatitudesVerses: [
+        { verse: 'In Thy Kingdom, remember us, O Lord, when Thou comest in Thy Kingdom.' },
+        { verse: 'Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.' },
+        { verse: 'Blessed are they that mourn, for they shall be comforted.' },
+        { verse: 'Blessed are the meek, for they shall inherit the earth.',                                   slot: 10, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are they who hunger and thirst after righteousness, for they shall be filled.',     slot:  9, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are the merciful, for they shall obtain mercy.',                                    slot:  8, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are the pure in heart, for they shall see God.',                                    slot:  7, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are the peacemakers, for they shall be called the sons of God.',                   slot:  6, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are those who are persecuted for righteousness\u2019 sake, for theirs is the Kingdom of Heaven.', slot: 5, src: 'Resurrection, Tone 7' },
+        { verse: 'Blessed are ye when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for My sake.', slot: 4, src: 'Canon Ode 6, Tone 1' },
+        { verse: 'Rejoice, and be exceeding glad, for great is your reward in heaven.',                      slot:  3, src: 'Canon Ode 6, Tone 1' },
+        { verse: 'Glory to the Father, and to the Son, and to the Holy Spirit.',                             slot:  2, src: 'Canon Ode 6, Tone 1' },
+        { verse: 'Now and ever, and unto ages of ages. Amen.',                                               slot: 'theotokion', src: 'Canon Ode 6, Tone 1' },
+      ],
+
+      // Augmented Litany
+      augmentedPetitions: [
+        'O Lord Almighty, the God of our fathers, we pray Thee, hearken and have mercy.',
+        'Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.',
+      ],
+      augmentedTriplePetitions: [
+        'Again we pray for our Archbishop N., and for our Bishop N.',
+        'Again we pray for this country, its President, and for the armed forces.',
+        'Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.',
+        'Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.',
+        'Again we pray for those who bring offerings and do good works in this holy temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy.',
+      ],
+      augmentedExclamation: 'For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Litany for the Catechumens
+      catechumensPetitions: [
+        'Let us, the faithful, pray for the catechumens.',
+        'That the Lord will have mercy on them.',
+        'That He will teach them the word of truth.',
+        'That He will reveal to them the Gospel of righteousness.',
+        'That He will unite them to His holy, catholic, and apostolic Church.',
+        'Save them, have mercy on them, help them, and keep them, O God, by Thy grace.',
+      ],
+      catechumensExclamation: 'That they also, with us, may glorify Thy most honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Litanies of the Faithful
+      faithful1Exclamation: 'For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+      faithful2Exclamation: 'That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+      faithfulCommemoration: 'Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.',
+
+      // Cherubic Hymn
+      cherubicHymn: 'Let us who mystically represent the Cherubim, and who sing the thrice-holy hymn to the life-giving Trinity, now lay aside all earthly cares,\n\nthat we may receive the King of all, Who comes invisibly upborne by the angelic hosts. Alleluia! Alleluia! Alleluia!',
+
+      // Litany of Supplication
+      supplicationPetitions: [
+        'For the precious Gifts here offered, let us pray to the Lord.',
+        'For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.',
+        'For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.',
+        'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.',
+      ],
+      supplicationPetitions2: [
+        'That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.',
+        'An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.',
+        'Pardon and remission of our sins and transgressions, let us ask of the Lord.',
+        'All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.',
+        'That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.',
+        'A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.',
+      ],
+      supplicationExclamation: 'Through the mercies of Thine Only-begotten Son, with Whom Thou art blessed, together with Thine all-holy, good, and life-creating Spirit, now and ever, and unto ages of ages.',
+
+      // Creed
+      creed: 'I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by Whom all things were made; Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and was made man; and was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again, according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and He shall come again with glory to judge the living and the dead, Whose Kingdom shall have no end.\n\nAnd I believe in the Holy Spirit, the Lord, the Giver of Life, Who proceedeth from the Father; Who with the Father and the Son together is worshiped and glorified; Who spake by the Prophets.\n\nIn one holy, catholic, and apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead, and the life of the age to come. Amen.',
+
+      // Anaphora (audible portions)
+      surrumCorda: [
+        { speaker: 'Priest:', text: 'The grace of our Lord Jesus Christ, and the love of God the Father, and the communion of the Holy Spirit be with you all.' },
+        { speaker: 'People:', text: 'And with thy spirit.' },
+        { speaker: 'Priest:', text: 'Let us lift up our hearts.' },
+        { speaker: 'People:', text: 'We lift them up unto the Lord.' },
+        { speaker: 'Priest:', text: 'Let us give thanks unto the Lord.' },
+        { speaker: 'People:', text: 'It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided.' },
+      ],
+      sanctusIntro: '\u2026singing the triumphal hymn, shouting, crying aloud, and saying:',
+      sanctus: 'Holy, holy, holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that cometh in the name of the Lord! Hosanna in the highest!',
+      institutionBody: 'Take, eat, this is My Body, which is broken for you, for the forgiveness of sins.',
+      institutionCup: 'Drink of it, all of you; this is My Blood of the New Testament, which is shed for you and for many, for the forgiveness of sins.',
+      anamnesis: 'Thine own of Thine own, we offer unto Thee, on behalf of all and for all.',
+      anamnesisResponse: 'We hymn Thee, we bless Thee, we give thanks to Thee, O Lord, and we pray unto Thee, O our God.',
+      megalynarionCue: 'Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.',
+      intercessionsExclamation: 'And grant that with one mouth and one heart we may glorify and hymn Thine all-honorable and majestic Name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.',
+      anaphoraFinalBlessing: 'And the mercies of our great God and Savior Jesus Christ be with you all.',
+
+      // Litany before Lord's Prayer
+      lordsPrayerLitanyPetitions: [
+        'For the precious Gifts offered and sanctified, let us pray to the Lord.',
+        'For our deliverance from all affliction, wrath, danger, and necessity, let us pray to the Lord.',
+        'Help us, save us, have mercy on us, and keep us, O God, by Thy grace.',
+        'That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.',
+        'An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.',
+        'Pardon and remission of our sins and transgressions, let us ask of the Lord.',
+        'All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.',
+        'That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.',
+        'A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.',
+        'Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.',
+      ],
+      lordsPrayerExclamation: 'And make us worthy, O Master, that with boldness and without condemnation, we may dare to call on Thee, the heavenly God, as Father, and to say:',
+      lordsPrayer: 'Our Father, Who art in heaven, hallowed be Thy name; Thy Kingdom come; Thy will be done on earth, as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.',
+      lordsPrayerDoxology: 'For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Pre-Communion
+      bowPrayerChrysostom: 'We give thanks unto Thee, O King invisible, Who by Thy measureless power didst make all things, and in the greatness of Thy mercy didst bring all things from non-existence into being. Do Thou Thyself, O Master, look down from heaven upon those who have bowed their heads before Thee; for they have bowed not before flesh and blood, but before Thee, the awesome God. Do Thou, O Master, distribute these Gifts here offered unto all of us for good, according to the individual need of each; sail with those who sail, travel with those who travel by land and by air; heal the sick, O Thou Who art the Physician of our souls and bodies.',
+      bowPrayerBasil: 'O Master, Lord, Father of compassions and God of every consolation: Bless, sanctify, guard, strengthen, and confirm those who have bowed their heads before Thee. Withdraw them from every evil deed; apply them to every good work and make them worthy to partake without condemnation of these, Thy most pure and life-creating Mysteries, for remission of sins and for the communion of the Holy Spirit.',
+      elevation: 'The holy Things are for the holy!',
+      elevationResponse: 'One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen.',
+      preCommPrayerChrysostom: 'I believe, O Lord, and I confess, that Thou art truly the Christ, the Son of the living God, Who camest into the world to save sinners, of whom I am first. I believe also that this is truly Thine own most pure Body, and that this is truly Thine own precious Blood. Wherefore, I pray Thee: have mercy upon me, and forgive my transgressions, both voluntary and involuntary, of word and of deed, committed in knowledge or in ignorance. And make me worthy to partake without condemnation of Thy most pure Mysteries, for the remission of my sins, and unto life everlasting.\n\nOf Thy mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of Thy mystery to Thine enemies; neither will I give Thee a kiss as did Judas; but like the thief will I confess Thee: Remember me, O Lord, in Thy Kingdom. May the communion of Thy holy Mysteries be neither to my judgment nor to my condemnation, O Lord, but to the healing of soul and body.',
+      preCommPrayerBasil: 'O God, the God of salvation, do Thou teach us to thank Thee worthily for the benefits which Thou hast performed for us and still performest with us. Having accepted these Gifts, O our God, do Thou purify us from every defilement of flesh and spirit, and teach us how to perfect our sanctification in Thy fear, so that receiving a portion of Thy Holy Things with a pure conscience we may be united with the Holy Body and Blood of Thy Christ. Having received them worthily, may we have Christ dwelling in our hearts, and may we become the temple of Thy Holy Spirit. Yea, O our God, let none of us be guilty of these Thine awesome and heavenly Mysteries, nor be infirm in soul and body by partaking of them unworthily. But, enable us, even to our last breath, to receive a portion of Thy Holy Things worthily, as a support on the road to eternal life and an acceptable defense at the dread judgment seat of Thy Christ.',
+
+      // Post-communion
+      postCommunionBlessing: 'Save, O God, Thy people, and bless Thine inheritance.',
+      weHaveSeenLight: 'We have seen the true Light. We have received the heavenly Spirit. We have found the true Faith, worshiping the undivided Trinity, Who has saved us.',
+      letOurMouths: 'Let our mouths be filled with Thy praise, O Lord, that we may sing of Thy glory; for Thou hast made us worthy to partake of Thy holy, divine, immortal, and life-creating Mysteries. Keep us in Thy holiness, that all the day we may meditate upon Thy righteousness. Alleluia! Alleluia! Alleluia!',
+
+      // Litany of Thanksgiving
+      thanksgivingLitanyPetitions: [
+        'That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.',
+        'An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.',
+        'Pardon and remission of our sins and transgressions, let us ask of the Lord.',
+        'All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.',
+        'That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.',
+        'A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.',
+        'Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.',
+      ],
+      thanksgivingExclamation: 'For Thou art our sanctification, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Prayer behind the Ambon
+      prayerAmbonChrysostom: 'O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house; glorify them in return by Thy divine power, and forsake us not who set our hope on Thee. Give peace to Thy world, to Thy churches, to the clergy, to those who govern us, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, coming down from Thee, the Father of lights. And to Thee do we send up glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+      prayerAmbonBasil: 'O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house. Do Thou glorify them in return by Thy divine power, and forsake us not who set our hope in Thee. Give peace to Thy world, to Thy churches, to the priests, to those in authority, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, and cometh down from Thee, the Father of lights; and unto Thee do we ascribe glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.',
+
+      // Blessed Be the Name + Psalm 33
+      blessedBeTheName: 'Blessed be the name of the Lord, henceforth and forevermore.',
+      blessedBeFinalBlessing: 'The blessing of the Lord be upon you, through His grace and love for mankind, always, now and ever, and unto ages of ages.',
+      psalm33: 'I will bless the Lord at all times; His praise shall continually be in my mouth. In the Lord shall my soul make her boast; the humble shall hear thereof, and be glad. O magnify the Lord with me, and let us exalt His name together.\n\nI sought the Lord, and He heard me, and delivered me from all my fears. They looked unto Him, and were enlightened; and their faces were not ashamed. This poor man cried, and the Lord heard him, and saved him out of all his troubles. The angel of the Lord encampeth round about them that fear Him, and delivereth them. O taste and see that the Lord is good; blessed is the man that trusteth in Him.\n\nO fear the Lord, ye His saints; for there is no want to them that fear Him. The rich have become poor and hunger; but they that seek the Lord shall not want any good thing.\n\nCome, ye children, hearken unto me; I will teach you the fear of the Lord. What man is he that desireth life, and loveth many days, that he may see good? Keep thy tongue from evil, and thy lips from speaking guile. Depart from evil, and do good; seek peace, and pursue it.\n\nThe eyes of the Lord are upon the righteous, and His ears are open unto their cry. The face of the Lord is against them that do evil, to cut off the remembrance of them from the earth. The righteous cried, and the Lord heard, and delivered them out of all their distresses. The Lord is nigh unto them that are of a broken heart, and saveth such as be of a contrite spirit.\n\nMany are the afflictions of the righteous; but the Lord delivereth him out of them all. He keepeth all his bones; not one of them is broken. Evil shall slay the wicked; and they that hate the righteous shall be desolate. The Lord redeemeth the souls of His servants; and none of them that trust in Him shall be desolate.\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.',
+
+      // Dismissal
+      tropBasil: 'Thy proclamation has gone out into all the earth, which has received thy word. Thereby thou hast divinely taught the Faith; thou hast made manifest the nature of created things; thou hast made the moral life of men a royal priesthood. O Basil, our righteous father, intercede with Christ God that our souls may be saved.',
+      tropChrysostom: 'Grace shining forth from thy lips like a beacon hath illumined the universe, and disclosed to the world the treasures of non-covetousness, and shown us the heights of humility; but whilst thine own words teach us, O Father John Chrysostom, intercede with the Word, Christ our God, to save our souls.',
+      dismissalTheos: 'O protection of Christians that cannot be put to shame, O mediation unto the Creator most constant: despise not the suppliant voices of those who have sinned; but be thou quick, O good one, to come unto our aid, who in faith cry unto thee: Hasten to intercession, and speed thou to make supplication, thou who dost ever protect, O Theotokos, them that honor thee.',
+    };
+
+    // ── Section builders ──────────────────────────────────────────────────
+    function buildBeatitudes() {
+      let html = '';
+      for (const b of fixed.beatitudesVerses) {
+        html += V(b.verse);
+        if (b.slot !== undefined) {
+          const tag = b.slot === 'theotokion' ? 'Theotokion' : `Sticheron ${b.slot}`;
+          html += L(`${tag} — ${b.src}`)
+               +  `<div class="prayer" style="color:var(--muted);font-style:italic">[To be added]</div>`;
+        }
+      }
+      return html;
+    }
+
+    function buildLitany(petitions, response) {
+      return petitions.map(p => P(p) + P(response)).join('');
+    }
+    function buildSupplicationLitany(petitions, response) {
+      return petitions.map(p => P(p) + P(response)).join('');
+    }
+
+    const isBasil = cal.liturgyVariant === 'basil';
+    const variantName = isBasil ? 'Basil the Great' : 'John Chrysostom';
+    const tropDismissal = isBasil ? fixed.tropBasil : fixed.tropChrysostom;
+    const prayerAmbon = isBasil ? fixed.prayerAmbonBasil : fixed.prayerAmbonChrysostom;
+    const bowPrayer = isBasil ? fixed.bowPrayerBasil : fixed.bowPrayerChrysostom;
+    const preCommPrayer = isBasil ? fixed.preCommPrayerBasil : fixed.preCommPrayerChrysostom;
+
+    return `
+      <div class="svc-sec">
+        ${R(`Liturgy of St. ${variantName}`)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('OPENING DOXOLOGY')}
+        ${R('Priest:')}
+        ${P(fixed.openingDoxology)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('GREAT LITANY')}
+        ${R('Deacon:')}
+        ${P('In peace, let us pray to the Lord.')}
+        ${buildLitany(fixed.greatLitanyPetitions, 'Lord, have mercy.')}
+        ${P(fixed.greatLitanyCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.greatLitanyExclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('FIRST ANTIPHON')}
+        ${R('Psalm 102 — Refrain: \u201cThrough the intercessions of the Theotokos, O Savior, save us.\u201d')}
+        ${fixed.antiphon1Verses.map(v => V(v) + Pi(fixed.antiphon1Refrain)).join('')}
+        ${V('Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.')}
+        ${Pi(fixed.antiphon1Refrain)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITTLE LITANY')}
+        ${R('Deacon:')}
+        ${P('Again and again in peace, let us pray to the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${P('Help us, save us, have mercy on us, and keep us, O God, by Thy grace.')}
+        ${P(fixed.littleLitanyCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.littleLitanyExclamation1)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('SECOND ANTIPHON')}
+        ${R('Psalm 145 — Refrain: \u201cSave us, O Son of God, who art risen from the dead, who sing to Thee: Alleluia.\u201d')}
+        ${fixed.antiphon2Verses.map(v => V(v) + Pi(fixed.antiphon2Refrain)).join('')}
+        ${V('Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('ONLY-BEGOTTEN SON')}
+        ${P(fixed.onlyBegottenSon)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITTLE LITANY')}
+        ${R('Deacon:')}
+        ${P('Again and again in peace, let us pray to the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${P('Help us, save us, have mercy on us, and keep us, O God, by Thy grace.')}
+        ${P(fixed.littleLitanyCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.littleLitanyExclamation2)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('BEATITUDES')}
+        ${R('The Third Antiphon is replaced by the Beatitudes. Troparia are interspersed between the verses of Matthew 5:3\u201312.')}
+        ${L('6 troparia of the Resurrection, Tone 7 (Octoechos) \u00b7 4 troparia of Canon Ode 6, Tone 1 (Triodion)')}
+        ${buildBeatitudes()}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('SMALL ENTRANCE')}
+        ${R('The deacon leads the priest through the nave to the Holy Doors.')}
+        ${R('Deacon:')}
+        ${P('Wisdom! Attend!')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('ENTRANCE HYMN')}
+        ${P(cal.entranceHymn.text)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('TROPARIA')}
+        ${cal.troparia.map(t => R(t.rubric) + P(t.text)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('KONTAKIA')}
+        ${cal.kontakia.map(k => P(k.connector) + R(k.rubric) + P(k.text)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('TRISAGION')}
+        ${P(cal.trisagion.text)}
+        ${P(cal.trisagion.text)}
+        ${P(cal.trisagion.text)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('PROKEIMENON')}
+        ${R(cal.prokeimenon.label)}
+        ${Pi(cal.prokeimenon.text)}
+        ${V(`Verse: ${cal.prokeimenon.verse}`)}
+        ${Pi(cal.prokeimenon.text)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('EPISTLE')}
+        ${R(cal.epistle.display)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('ALLELUIA')}
+        ${R(cal.alleluia.label)}
+        ${cal.alleluia.verses.map(v => V(`Verse: ${v}`)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('GOSPEL')}
+        ${R(cal.gospel.display)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITANY OF FERVENT SUPPLICATION')}
+        ${R('Deacon:')}
+        ${P('Let us say with all our soul and with all our mind, let us say:')}
+        ${Pi('Lord, have mercy.')}
+        ${buildLitany(fixed.augmentedPetitions, 'Lord, have mercy.')}
+        ${fixed.augmentedTriplePetitions.map(p => P(p) + Pi('Lord, have mercy. Lord, have mercy. Lord, have mercy.')).join('')}
+        ${P(fixed.greatLitanyCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.augmentedExclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITANY FOR THE CATECHUMENS')}
+        ${R('Deacon:')}
+        ${P('Pray to the Lord, ye catechumens.')}
+        ${Pi('Lord, have mercy.')}
+        ${buildLitany(fixed.catechumensPetitions, 'Lord, have mercy.')}
+        ${P('Bow your heads before the Lord, ye catechumens.')}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.catechumensExclamation)}
+        ${Pi('Amen.')}
+        ${R('Deacon:')}
+        ${P('As many as are catechumens, depart! Depart, catechumens! As many as are catechumens, depart! Let none of the catechumens remain!')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('FIRST LITANY OF THE FAITHFUL')}
+        ${R('Deacon:')}
+        ${P('We, the faithful, again and again in peace, let us pray to the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${P('Help us, save us, have mercy on us, and keep us, O God, by Thy grace.')}
+        ${Pi('Lord, have mercy.')}
+        ${P(fixed.faithfulCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.faithful1Exclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('SECOND LITANY OF THE FAITHFUL')}
+        ${R('Deacon:')}
+        ${P('Again and again in peace, let us pray to the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${P('Help us, save us, have mercy on us, and keep us, O God, by Thy grace.')}
+        ${Pi('Lord, have mercy.')}
+        ${P(fixed.faithfulCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.faithful2Exclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('CHERUBIC HYMN')}
+        ${fixed.cherubicHymn.split('\n\n').map(line => P(line)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('GREAT ENTRANCE')}
+        ${R('The Holy Gifts are carried from the Table of Oblation through the nave to the Holy Table.')}
+        ${R('Priest or Deacon:')}
+        ${P('All of you Orthodox Christians, may the Lord God remember in His Kingdom, always, now and ever, and unto ages of ages.')}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITANY OF SUPPLICATION')}
+        ${R('Deacon:')}
+        ${P('Let us complete our prayer unto the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${buildLitany(fixed.supplicationPetitions, 'Lord, have mercy.')}
+        ${buildSupplicationLitany(fixed.supplicationPetitions2, 'Grant this, O Lord.')}
+        ${P(fixed.greatLitanyCommemoration)}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.supplicationExclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('THE CREED')}
+        ${R('All:')}
+        ${fixed.creed.split('\n\n').map(para => P(para)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('ANAPHORA')}
+        ${fixed.surrumCorda.map(e => R(e.speaker) + P(e.text)).join('')}
+        ${R('Priest (aloud):')}
+        ${Pi(fixed.sanctusIntro)}
+        ${R('People:')}
+        ${P(fixed.sanctus)}
+        ${R('Priest (aloud): Words of Institution')}
+        ${P(fixed.institutionBody)}
+        ${Pi('Amen.')}
+        ${P(fixed.institutionCup)}
+        ${Pi('Amen.')}
+        ${R('Priest (aloud):')}
+        ${P(fixed.anamnesis)}
+        ${R('People:')}
+        ${P(fixed.anamnesisResponse)}
+        ${R('Priest (aloud):')}
+        ${P(fixed.megalynarionCue)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('HYMN TO THE THEOTOKOS')}
+        ${P(cal.megalynarion.text)}
+        ${R('Priest (aloud):')}
+        ${P(fixed.intercessionsExclamation)}
+        ${Pi('Amen.')}
+        ${P(fixed.anaphoraFinalBlessing)}
+        ${Pi('And with thy spirit.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITANY BEFORE THE LORD\u2019S PRAYER')}
+        ${R('Deacon:')}
+        ${P('Having remembered all the saints, again and again in peace, let us pray to the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${fixed.lordsPrayerLitanyPetitions.slice(0, -1).map(p =>
+          p.startsWith('Having asked') ? P(p) + Pi('To Thee, O Lord.') : P(p) + Pi('Grant this, O Lord.')
+        ).join('')}
+        ${P(fixed.lordsPrayerLitanyPetitions[fixed.lordsPrayerLitanyPetitions.length - 1])}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.lordsPrayerExclamation)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('THE LORD\u2019S PRAYER')}
+        ${R('All:')}
+        ${P(fixed.lordsPrayer)}
+        ${R('Priest:')}
+        ${P(fixed.lordsPrayerDoxology)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('PRE-COMMUNION')}
+        ${R('Priest:')}
+        ${P('Peace be unto all.')}
+        ${Pi('And to thy spirit.')}
+        ${R('Deacon:')}
+        ${P('Bow your heads unto the Lord.')}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest (silently):')}
+        ${Pi(bowPrayer)}
+        ${R('Deacon:')}
+        ${P('Let us attend.')}
+        ${R('Priest:')}
+        ${P(fixed.elevation)}
+        ${R('People:')}
+        ${P(fixed.elevationResponse)}
+        ${R('All:')}
+        ${preCommPrayer.split('\n\n').map(para => P(para)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('COMMUNION HYMN')}
+        ${R(cal.communionHymn.label)}
+        ${P(cal.communionHymn.text)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('POST-COMMUNION BLESSING')}
+        ${R('Priest:')}
+        ${P(fixed.postCommunionBlessing)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('WE HAVE SEEN THE TRUE LIGHT')}
+        ${P(fixed.weHaveSeenLight)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('HYMN OF THANKSGIVING')}
+        ${P(fixed.letOurMouths)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('LITANY OF THANKSGIVING')}
+        ${R('Deacon:')}
+        ${P('Let us attend. Having partaken of the divine, holy, most-pure, immortal, heavenly, and life-creating, awesome Mysteries of Christ, let us worthily give thanks unto the Lord.')}
+        ${Pi('Lord, have mercy.')}
+        ${P('Help us, save us, have mercy on us, and keep us, O God, by Thy grace.')}
+        ${Pi('Lord, have mercy.')}
+        ${buildSupplicationLitany(fixed.thanksgivingLitanyPetitions.slice(0, -1), 'Grant this, O Lord.')}
+        ${P(fixed.thanksgivingLitanyPetitions[fixed.thanksgivingLitanyPetitions.length - 1])}
+        ${Pi('To Thee, O Lord.')}
+        ${R('Priest:')}
+        ${P(fixed.thanksgivingExclamation)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('PRAYER BEHIND THE AMBON')}
+        ${R(`Prayer of St. ${variantName}:`)}
+        ${P(prayerAmbon)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('BLESSED BE THE NAME OF THE LORD')}
+        ${P(fixed.blessedBeTheName + ' ' + fixed.blessedBeTheName + ' ' + fixed.blessedBeTheName)}
+        ${Pi('Amen. Amen. Amen.')}
+        ${R('Priest:')}
+        ${P(fixed.blessedBeFinalBlessing)}
+        ${Pi('Amen.')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('PSALM 33')}
+        ${R('Reader:')}
+        ${fixed.psalm33.split('\n\n').map(para => P(para)).join('')}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('DISMISSAL TROPARIA')}
+        ${R(`Troparion of St. ${variantName}:`)}
+        ${P(tropDismissal)}
+        ${P('Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.')}
+        ${P(fixed.dismissalTheos)}
+      </div>${HR}
+
+      <div class="svc-sec">
+        ${H('DISMISSAL')}
+        ${R('Priest:')}
+        ${P('May He Who rose from the dead, Christ our true God, through the prayers of His most pure Mother; of the holy, glorious, and all-laudable Apostles; of our father among the saints, Basil the Great, Archbishop of Caesarea in Cappadocia; of the holy and glorious Prophet, Forerunner, and Baptist John; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.')}
+      </div>
+    `;
+  }
+
+
+</script>
+</body>
+</html>

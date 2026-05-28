@@ -23,6 +23,23 @@ node audit/index.js --year 2026 --http http://localhost:3000  # enable rules tha
 
 `audit:date` produces a per-date pre-print checklist: for each service (vespers/matins/liturgy/presanctified) it shows clean rule count, any findings with hints, and provenance gaps (blocks tagged with non-OCA `_source` — content still awaiting OCA translation replacement). Auto-enables `--http`. Use before printing a service text to spot regressions and translation gaps in one glance.
 
+## LLM-as-judge (`audit:judge`)
+
+The rule-based auditor catches structural regressions. The LLM judge catches the rest — translation nuance, missing rubrical phrases, subtle ordering issues — exactly the bug class that surfaced four times this session via ad-hoc "try this date" prompts.
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+npm run audit:judge -- 2026-05-24    # Holy Fathers Sunday
+```
+
+Workflow:
+1. Fetches the assembled Liturgy from the local server (`/api/liturgy?date=...`)
+2. Locates the OCA reference DOCX — first in `reference/`, then on-demand from `https://files.oca.org/service-texts/`
+3. Sends both to Claude Haiku 4.5 with prompt caching on the system prompt
+4. Writes findings as a markdown report to `audit/reports/llm-judge-YYYY-MM-DD-SERVICE.md`
+
+Cost ≈ $0.005 per date with prompt caching on repeat runs. Skips dates where OCA hasn't published a weekly DOCX (most ordinary weekdays). System-prompt cache cuts the per-date cost as you run across multiple dates in the same hour.
+
 ## Representative date sampling
 
 `audit/sample-dates.js` exports `representativeDates(year)` which returns ~200 dates that exercise the same code paths the full 365-day sweep does, in roughly half the time. Composed of:

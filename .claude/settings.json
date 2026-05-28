@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:*)",
+      "Bash(npm test)",
+      "Bash(npm run audit)",
+      "Bash(npm run audit:quick)",
+      "Bash(npm run audit:date *)",
+      "mcp__sqlite-oca__read_query",
+      "mcp__sqlite-oca__list_tables",
+      "mcp__sqlite-oca__describe_table"
+    ]
+  }
+}

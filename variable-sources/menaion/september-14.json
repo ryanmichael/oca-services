@@ -1,0 +1,167 @@
+{
+  "_meta": {
+    "feast": "The Universal Exaltation of the Precious and Life-Giving Cross",
+    "feastKey": "elevation",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-0914-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-0914-texts-tt.docx",
+    "_note": "Single-canon (Tone 8 by Cosmas the Monk); each katavasia repeats its own ode's irmos (no separate katavasiae text). Lord's feast — but Having Beheld IS sung per OCA rubric (`includeHavingBeheld: true`). Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`). Veneration stichera sung after the Great Doxology are not yet captured."
+  },
+
+  "troparion": {
+    "text": "O Lord, save Thy people,\nand bless Thine inheritance!\nGrant victories to the Orthodox Christians\nover their adversaries;\nand by virtue of Thy Cross,\npreserve Thy habitation!",
+    "tone": 1,
+    "label": "Troparion of the Elevation"
+  },
+  "kontakion": {
+    "text": "As Thou wast voluntarily raised upon the Cross for our sake,\ngrant mercy to those who are called by Thy Name, O Christ God;\nmake all Orthodox Christians glad by Thy power,\ngranting them victories over their adversaries\nby bestowing on them the invincible trophy, Thy weapon of peace!",
+    "tone": 4,
+    "label": "Kontakion of the Elevation"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "greatFeast",
+      "feastType": "lord"
+    },
+    "isGreatFeastOfLord": true,
+    "includeHavingBeheld": true,
+
+    "sedalion": [
+      {
+        "text": "We venerate the wood of Thy Cross, O Lover of mankind,\nfor upon it Thou wast nailed, O Life of all.\nO Savior, Thou hast opened Paradise\nto the thief who turned to Thee in faith,\ncounting him worthy of blessedness\nwhen he confessed Thee crying: \"O Lord, remember me.\"\nAccept us like him, as we cry: \"We all have sinned,\nin Thy merciful kindness despise us not.\"",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Troparion melody"
+      },
+      {
+        "text": "No sooner had the wood of Thy Cross been set up, O Christ,\nthe foundations of death were shaken, O Lord.\nFor that which hell had swallowed up so eagerly,\nit let go in trembling.\nThou hast shown us Thy salvation, O Holy One, and we glorify Thee.\nHave mercy on us, O Son of God!",
+        "tone": 6,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Troparion melody"
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy precious Cross\nby which Thou hast saved us\nfrom the bondage of the enemy.",
+      "verses": [
+        "O Lord, judge those who offend me; fight against those who fight against me! (Ps. 34:1)",
+        "Take hold of shield and buckler, and stand up for my help. (Ps. 34:2)"
+      ],
+      "tone": 8
+    },
+
+    "prokeimenon": {
+      "refrain": "All the ends of the earth have seen the salvation of our God.",
+      "verse": "Sing to the Lord a new song, for the Lord has done marvelous things.",
+      "tone": 4,
+      "_psalmRef": "Ps. 97:5 / 97:1"
+    },
+
+    "gospel": {
+      "reading": "John 12:28-36",
+      "number": "42-ctr",
+      "_note": "The hour has come for the Son of Man to be glorified."
+    },
+
+    "postGospelSticheron": {
+      "text": "O Cross of Christ,\nthe hope of Christians,\nguide of those who have gone astray,\nhaven of the storm-tossed,\nvictory in warfare,\nthe safeguard of the inhabited earth,\nphysician of the sick,\nresurrection of the dead:\nhave mercy on us.",
+      "tone": 6,
+      "label": "Idiomelon of the Elevation",
+      "_source": "oca-2025-0914-tt"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Cosmas the Monk",
+      "_katavasiaeNote": "Each ode's katavasia repeats that ode's own irmos.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified.",
+        "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
+      },
+      "ode3": {
+        "irmos": "The rod of Aaron is an image of this mystery,\nfor when it budded it revealed who should be the priest;\nand for the Church, which before was barren,\nthe Tree of the Cross has blossomed forth\nfor her strength and firm foundation.",
+        "katavasia": "The rod of Aaron is an image of this mystery,\nfor when it budded it revealed who should be the priest;\nand for the Church, which before was barren,\nthe Tree of the Cross has blossomed forth\nfor her strength and firm foundation."
+      },
+      "ode4": {
+        "irmos": "I have heard the mystery of Thy dispensation, O Lord,\nI have meditated on Thy works\nand have glorified Thy Godhead.",
+        "katavasia": "I have heard the mystery of Thy dispensation, O Lord,\nI have meditated on Thy works\nand have glorified Thy Godhead."
+      },
+      "ode5": {
+        "irmos": "O thrice-blessed Tree, on which Christ the King and Lord was stretched!\nThrough thee the one who deceived us through a tree has fallen,\ncaught by the bait of God, Who was nailed to thee in the flesh,\nand Who grants peace to our souls.",
+        "katavasia": "O thrice-blessed Tree, on which Christ the King and Lord was stretched!\nThrough thee the one who deceived us through a tree has fallen,\ncaught by the bait of God, Who was nailed to thee in the flesh,\nand Who grants peace to our souls."
+      },
+      "ode6": {
+        "irmos": "In the belly of the sea monster, Jonah stretched out his hands in the form of a cross,\nplainly prefiguring the saving Passion.\nWhen he emerged from there on the third day,\nhe prefigured the transcendent Resurrection of Christ our God,\nWho was nailed to the Cross in the flesh\nand by His rising on the third day enlightened the world.",
+        "katavasia": "In the belly of the sea monster, Jonah stretched out his hands in the form of a cross,\nplainly prefiguring the saving Passion.\nWhen he emerged from there on the third day,\nhe prefigured the transcendent Resurrection of Christ our God,\nWho was nailed to the Cross in the flesh\nand by His rising on the third day enlightened the world."
+      },
+      "ode7": {
+        "irmos": "The senseless decree of the impious tyrant,\nspewing threats and blasphemy hateful to God,\nbrought the people to confusion.\nYet the three Children could not be frightened\neither by the brutal fury or the roaring fire,\nbut in the wind, moist with dew, that blew against it,\nthey stood together, and they sang:\n\"O praised above all, blessed art Thou,\nour God, and the God of our Fathers!\"",
+        "katavasia": "The senseless decree of the impious tyrant,\nspewing threats and blasphemy hateful to God,\nbrought the people to confusion.\nYet the three Children could not be frightened\neither by the brutal fury or the roaring fire,\nbut in the wind, moist with dew, that blew against it,\nthey stood together, and they sang:\n\"O praised above all, blessed art Thou,\nour God, and the God of our Fathers!\""
+      },
+      "ode8": {
+        "irmos": "O Children, equal in number to the Trinity,\nbless God the Father, the Creator;\npraise the Word, Who descended and changed the fire to dew,\nand exalt above all, to all ages,\nthe All-Holy Spirit, Who gives life to all!",
+        "katavasia": "O Children, equal in number to the Trinity,\nbless God the Father, the Creator;\npraise the Word, Who descended and changed the fire to dew,\nand exalt above all, to all ages,\nthe All-Holy Spirit, Who gives life to all!"
+      },
+      "ode9": {
+        "irmos": "Refrain: Magnify, O my soul, the most precious Cross of the Lord!\n\nHeirmos: Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee.",
+        "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
+      },
+
+      "kontakion": {
+        "text": "As Thou wast voluntarily raised upon the Cross for our sake,\ngrant mercy to those who are called by Thy Name, O Christ God;\nmake all Orthodox Christians glad by Thy power,\ngranting them victories over their adversaries\nby bestowing on them the invincible trophy, Thy weapon of peace!",
+        "tone": 4,
+        "label": "Kontakion of the Elevation"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "The Cross is the guardian of the whole earth.\nThe Cross is the beauty of the Church.\nThe Cross is the strength of Orthodox Christians.\nThe Cross is the support of the faithful.\nThe Cross is the glory of the angels,\nand the wounder of the demons.",
+      "tone": 2,
+      "label": "Exapostilarion of the Elevation",
+      "melody": "While the disciples",
+      "repeat": 3,
+      "_source": "oca-2025-0914-tt"
+    },
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "Oh, most glorious wonder!\nThe life-bearing Tree, the all-holy Cross\ntoday is raised up on high and shown to the world.\nAll the ends of the earth give glory;\nall the demons are struck with terror.\nOh, what a gift is bestowed on mortals.\nThrough the Cross, save our souls, O Christ,\nas Thou alone art compassionate!",
+          "tone": 8,
+          "melody": "Oh, most glorious wonder"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Oh, most glorious wonder!\nThe Cross that carried the Most High\nlike a cluster of grapes filled with life\ntoday is seen raised above the earth.\nThrough this we have all been drawn to God,\nand death is finally swallowed up.\nO immaculate Wood!\nThrough thee we enjoy the immortal food of Eden\nas we give glory to Christ!",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "Oh, most glorious wonder!\nThe length and breadth of the Cross is equal to heaven,\nfor by divine grace it sanctifies the universe.\nBy the Cross, pagan nations are overcome.\nBy the Cross the scepters of kings are firmly established.\nO divine ladder, by which we go up to heaven,\nexalting Christ the Lord in song!",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Today the Cross of the Lord comes forth;\nthe faithful welcome it with longing\nand receive healing of soul and body and of infirmity.\nLet us kiss it with joy and fear:\nfear because our sin, since we are unworthy,\nbut joy because of the salvation given to the world\nby Christ the Lord Who was nailed upon it,\nWho has great mercy.",
+        "tone": 6,
+        "author": "Doxastikon of the Elevation",
+        "_source": "oca-2025-0914-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O Lord, save Thy people,\nand bless Thine inheritance!\nGrant victories to the Orthodox Christians\nover their adversaries;\nand by virtue of Thy Cross,\npreserve Thy habitation!",
+      "tone": 1
+    }
+  }
+}

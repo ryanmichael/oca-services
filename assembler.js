@@ -4997,8 +4997,14 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
       { label: g.reading, source: g.source || 'gospel' }));
   }
 
-  // ── 12. Having Beheld the Resurrection (Sundays only, except great feasts of the Lord) ──
-  if (isSunday && !spec.isGreatFeastOfLord) {
+  // ── 12. Having Beheld the Resurrection ─────────────────────────────────────
+  // Default: Sundays sing it, except great feasts of the Lord (which replace
+  // the resurrectional hymnography). Weekday feasts can opt back in via
+  // `spec.includeHavingBeheld` (e.g., Ascension matins per OCA rubric).
+  const renderHavingBeheld = spec.includeHavingBeheld != null
+    ? spec.includeHavingBeheld
+    : (isSunday && !spec.isGreatFeastOfLord);
+  if (renderHavingBeheld) {
     blocks.push(S('having-beheld', 'Having Beheld the Resurrection', 'hymn', 'choir',
       matinsFixed.havingBeheld.text));
   }
@@ -5276,10 +5282,12 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
           `[Troparia of Ode ${odeNum} — from Octoechos, Menaion, and/or Triodion]`));
       }
 
-      // Katavasia
+      // Katavasia (may have its own tone — e.g. Ascension uses Tone 5 canon
+      // but Tone 4 katavasiai borrowed from the 2nd Pentecost canon)
       if (odeData.katavasia) {
+        const katTone = odeData.katavasiaTone || canonSpec._katavasiaTone || tone;
         blocks.push(S(`canon-ode${odeNum}-katav`, section, 'hymn', 'choir',
-          odeData.katavasia, { tone, label: 'Katavasia' }));
+          odeData.katavasia, { tone: katTone, label: 'Katavasia' }));
       }
 
       // Megalynarion for Ode 9 (great feasts)

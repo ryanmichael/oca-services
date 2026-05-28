@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orthodox Daily Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #F5F0E8;
+    --surface: #FAF7F2;
+    --text:    #1A1209;
+    --rubric:  #8B1A1A;
+    --gold:    #C9A84C;
+    --muted:   #6B6358;
+    --border:  #DDD5C4;
+    --panel-w: 70vw;
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
+
+  /* ─────────────────────────────────
+     TWO FULL-SCREEN VIEWS
+     Both live in the same space.
+     .view-main is visible by default.
+     .view-search slides up over it.
+  ───────────────────────────────── */
+  .view {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, opacity;
+  }
+
+  /* Main view — slides down/away when search opens */
+  .view-main {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform .38s cubic-bezier(.4, 0, .2, 1),
+                opacity    .28s ease;
+    z-index: 1;
+  }
+  .view-main.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Search view — starts below, rises into place */
+  .view-search {
+    transform: translateY(32px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .38s cubic-bezier(.4, 0, .2, 1),
+                opacity    .28s ease;
+    z-index: 2;
+    background: var(--bg);
+  }
+  .view-search.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─────────────────────────────────
+     HEADER (shared look, two instances)
+  ───────────────────────────────── */
+  .hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px; gap: 12px;
+    flex-shrink: 0;
+  }
+  .hdr-cross  { color: var(--rubric); font-size: 18px; }
+  .hdr-title  { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+  .hdr-about  { margin-left: auto; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em; color: var(--muted); text-decoration: none; }
+  .hdr-about:hover { color: var(--rubric); }
+
+  /* ─────────────────────────────────
+     MAIN VIEW — inner layout
+  ───────────────────────────────── */
+  .layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .center { flex: 1; overflow-y: auto; min-width: 0; }
+
+  /* Sub-bar */
+  .center-bar {
+    position: sticky; top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px; height: 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 50;
+  }
+  .week-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em; color: var(--muted); }
+  .bar-btns   { display: flex; align-items: center; gap: 8px; }
+
+  .bar-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid var(--border);
+    padding: 5px 11px; cursor: pointer;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em;
+    color: var(--muted);
+    transition: border-color .15s, color .15s;
+  }
+  .bar-btn:hover, .bar-btn.active { border-color: var(--rubric); color: var(--rubric); }
+
+  /* Calendar popover */
+  .cal-anchor { position: relative; }
+  .cal-popover {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(26,18,9,.12);
+    padding: 18px; width: 240px; z-index: 300;
+    opacity: 0; transform: translateY(-6px); pointer-events: none;
+    transition: opacity .18s, transform .18s;
+  }
+  .cal-popover.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .cal-head span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .1em; }
+  .cal-nav { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 12px; padding: 2px 6px; }
+  .cal-nav:hover { color: var(--rubric); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .cal-dow { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .05em; color: var(--muted); text-align: center; padding: 3px 0 6px; }
+  .cal-day { font-family: 'EB Garamond', serif; font-size: 13px; text-align: center; padding: 5px 2px; cursor: pointer; color: var(--muted); border-radius: 2px; position: relative; }
+  .cal-day:hover { color: var(--text); background: var(--border); }
+  .cal-day.has-service { color: var(--text); }
+  .cal-day.has-service::after { content: ''; display: block; width: 3px; height: 3px; background: var(--rubric); border-radius: 50%; margin: 1px auto 0; }
+  .cal-day.today { color: var(--rubric); font-weight: 600; }
+  .cal-day.today::before { content: ''; position: absolute; inset: 1px; border: 1px solid var(--rubric); border-radius: 2px; }
+  .cal-day.empty { cursor: default; pointer-events: none; }
+
+  /* Service list */
+  .svc-list-body { padding: 28px 32px 60px; }
+  .date-block    { margin-bottom: 32px; }
+  .date-heading  { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid var(--gold); margin-bottom: 10px; }
+  .dow   { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .12em; color: var(--rubric); }
+  .dated { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .08em; color: var(--text); }
+  .feast { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--muted); }
+  .svc-rows { display: flex; flex-direction: column; }
+  .svc-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; background: none; border: none; border-left: 2px solid transparent; cursor: pointer; text-align: left; width: 100%; transition: border-color .12s, background .12s; }
+  .svc-row:hover  { border-left-color: var(--gold);   background: rgba(201,168,76,.07); }
+  .svc-row.active { border-left-color: var(--rubric); background: rgba(139,26,26,.06); }
+  .svc-row .name  { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--text); }
+  .svc-row .arrow { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em; color: var(--rubric); opacity: 0; transition: opacity .12s; }
+  .svc-row:hover .arrow, .svc-row.active .arrow { opacity: 1; }
+  .svc-row.dimmed { opacity: .35; cursor: default; pointer-events: none; }
+  .svc-row .soon  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); }
+
+  /* Right panel */
+  .panel { width: 0; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border); overflow: hidden; transition: width .28s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+  .panel.open { width: var(--panel-w); }
+  .panel-inner { width: var(--panel-w); display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+  .panel-head  { padding: 14px 20px 0; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .panel-top   { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .btn-close   { background: none; border: none; cursor: pointer; font-family: 'EB Garamond', serif; font-size: 17px; color: var(--muted); padding: 0 4px; transition: color .12s; }
+  .btn-close:hover { color: var(--rubric); }
+  .btn-print   { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em; background: none; border: 1.5px solid var(--rubric); color: var(--rubric); padding: 5px 14px; cursor: pointer; transition: background .12s, color .12s; }
+  .btn-print:hover { background: var(--rubric); color: var(--surface); }
+  .panel-svc      { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: .1em; color: var(--rubric); margin-bottom: 2px; }
+  .panel-date-str { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); }
+
+  /* Expandable detail row */
+  .panel-detail-toggle {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 10px; padding: 10px 0 12px;
+    cursor: pointer; background: none; border: none;
+    width: 100%; text-align: left;
+    border-top: 1px solid var(--border);
+  }
+  .panel-detail-toggle:hover .pdt-label { color: var(--text); }
+  .pdt-label {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .16em;
+    color: var(--muted); flex: 1;
+    transition: color .15s;
+  }
+  .pdt-icon {
+    width: 16px; height: 16px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .15s, transform .22s ease;
+  }
+  .panel-detail-toggle:hover .pdt-icon { border-color: var(--rubric); }
+  .pdt-icon svg { color: var(--muted); transition: color .15s; }
+  .panel-detail-toggle:hover .pdt-icon svg { color: var(--rubric); }
+
+  /* Expanded state — swap + to - via data attr, no rotation */
+  .panel-detail-toggle.open .pdt-icon { border-color: var(--rubric); }
+  .panel-detail-toggle.open .pdt-icon svg { color: var(--rubric); }
+  .panel-detail-toggle.open .pdt-label { color: var(--rubric); }
+  .panel-detail-toggle .pdt-minus { display: none; }
+  .panel-detail-toggle .pdt-plus  { display: block; }
+  .panel-detail-toggle.open .pdt-minus { display: block; }
+  .panel-detail-toggle.open .pdt-plus  { display: none; }
+
+  /* Collapsible content */
+  .panel-detail-body {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .28s cubic-bezier(.4,0,.2,1), opacity .22s ease;
+  }
+  .panel-detail-body.open {
+    max-height: 320px;
+    opacity: 1;
+  }
+  .panel-detail-body-inner { padding: 0 0 14px; }
+
+  /* Saints list */
+  .p-saints {
+    margin-bottom: 12px;
+  }
+  .p-saint {
+    font-family: 'EB Garamond', serif; font-size: 15px; color: var(--text);
+    padding: 3px 0; line-height: 1.4;
+  }
+  .p-saint.major { font-weight: 500; }
+
+  /* Pronoun toggle */
+  .pronoun-row { display: flex; align-items: center; gap: 12px; font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: .1em; color: var(--muted); }
+  .pronoun-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  .pronoun-row input { accent-color: var(--rubric); }
+  .panel-body { flex: 1; overflow-y: auto; padding: 24px 22px 48px; }
+
+  /* Service text */
+  .svc-sec     { margin-bottom: 28px; }
+  .svc-head    { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .18em; text-align: center; color: var(--text); margin-bottom: 12px; }
+  .svc-rule    { height: 1px; background: var(--gold); margin: 20px 0; }
+  .rubric      { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--rubric); margin-bottom: 8px; line-height: 1.6; }
+  .prayer      { font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.88; color: var(--text); margin-bottom: 14px; }
+  .stich-label { font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic; color: var(--muted); margin-bottom: 6px; }
+  .verse       { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 10px; line-height: 1.6; }
+
+  .cal-overlay { display: none; position: fixed; inset: 0; z-index: 150; }
+  .cal-overlay.active { display: block; }
+
+  /* ═══════════════════════════════════
+     SEARCH VIEW
+  ═══════════════════════════════════ */
+
+  /* Search header — back button only */
+  .search-hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    flex-shrink: 0;
+  }
+
+  .search-back {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+    color: var(--muted); padding: 4px 0;
+    transition: color .15s;
+  }
+  .search-back:hover { color: var(--rubric); }
+
+  /* Search body */
+  .search-content {
+    flex: 1; overflow-y: auto;
+  }
+
+  /* Input lives in the body */
+  .search-input-wrap {
+    padding: 32px 32px 24px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .search-input-wrap.in { opacity: 1; transform: translateY(0); }
+
+  .search-input-row {
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 6px;
+    transition: border-color .2s;
+  }
+  .search-input-row:focus-within { border-bottom-color: var(--rubric); }
+  .search-input-row svg { color: var(--muted); flex-shrink: 0; }
+
+  #search-input {
+    flex: 1; background: none; border: none; outline: none;
+    font-family: 'EB Garamond', serif; font-size: 22px;
+    color: var(--text);
+  }
+  #search-input::placeholder { color: var(--muted); font-style: italic; }
+
+  .search-clear {
+    background: none; border: none; cursor: pointer;
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    color: var(--muted); padding: 0 2px; line-height: 1;
+    opacity: 0; transition: opacity .15s, color .15s;
+    pointer-events: none;
+  }
+  .search-clear.visible { opacity: 1; pointer-events: all; }
+  .search-clear:hover { color: var(--rubric); }
+
+  /* Hint state */
+  .search-hint-area {
+    padding: 28px 32px 0;
+    max-width: 640px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .3s ease .08s, transform .3s ease .08s;
+  }
+  .search-hint-area.in { opacity: 1; transform: translateY(0); }
+
+  .hint-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .hint-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .hint-tag {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .1em;
+    color: var(--muted); border: 1px solid var(--border);
+    padding: 6px 14px; cursor: pointer; background: none;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .hint-tag:hover { border-color: var(--rubric); color: var(--rubric); background: rgba(139,26,26,.04); }
+
+  /* Spinner */
+  .search-spinner-wrap {
+    display: none; justify-content: center; align-items: center;
+    padding: 64px 0;
+  }
+  .search-spinner-wrap.active { display: flex; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner-ring {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    border-top-color: var(--rubric);
+    animation: spin 1.1s cubic-bezier(.5,.1,.5,.9) infinite;
+  }
+
+  /* Results */
+  .search-results-area {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .28s ease, transform .28s ease;
+  }
+  .search-results-area.in { opacity: 1; transform: translateY(0); }
+
+  .results-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em;
+    color: var(--muted); padding: 20px 32px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .result-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; background: none;
+    border-left: 3px solid transparent;
+    border-right: none; border-top: none;
+    width: 100%; text-align: left;
+    transition: background .12s, border-left-color .15s;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row:hover { background: rgba(139,26,26,.04); border-left-color: var(--gold); }
+  .result-row.unavail { opacity: .38; cursor: default; pointer-events: none; }
+
+  .res-date { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); flex-shrink: 0; min-width: 96px; }
+  .res-name { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text); flex: 1; line-height: 1.4; }
+  .res-name em { font-style: normal; color: var(--rubric); }
+  .res-tag  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); flex-shrink: 0; }
+
+  .no-results {
+    padding: 56px 32px;
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    font-style: italic; color: var(--muted);
+  }
+
+
+  /* Hide bottom close on desktop */
+  .search-close-bottom { display: none; }
+
+  /* ─────────────────────────────────
+     MOBILE: thumb-friendly search
+  ───────────────────────────────── */
+  @media (max-width: 640px) {
+
+    /* Input: tighter padding, larger tap target */
+    .search-input-wrap {
+      padding: 20px 20px 16px;
+    }
+    #search-input { font-size: 19px; }
+
+    /* Make content area a column that fills height */
+    .search-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hints anchor to bottom — thumbs-first */
+    .search-hint-area {
+      padding: 0 20px 32px;
+      margin-top: auto;          /* pushes hints to bottom */
+    }
+
+    /* Larger, easier-to-tap hint tags */
+    .hint-tag {
+      padding: 10px 16px;
+      font-size: 10px;
+    }
+
+    /* Results fill from top, scroll naturally */
+    .search-results-area {
+      padding-bottom: 40px;
+    }
+    .result-row {
+      padding: 16px 20px;
+      gap: 16px;
+    }
+    .results-eyebrow { padding: 16px 20px 10px; }
+    .no-results { padding: 40px 20px; }
+
+    /* Back button easier to tap */
+    .search-back { padding: 8px 0; }
+
+    /* Spinner centered in remaining space */
+    .search-spinner-wrap { padding: 80px 0; }
+
+    /* Hide back button on mobile, show bottom close instead */
+    .search-hdr { display: none; }
+
+    .search-close-bottom {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0 36px;
+      flex-shrink: 0;
+    }
+    .search-close-bottom button {
+      display: flex; align-items: center; gap: 8px;
+      background: none; border: 1px solid var(--border);
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+      color: var(--muted); padding: 10px 28px; cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .search-close-bottom button:hover { border-color: var(--rubric); color: var(--rubric); }
+
+  }
+
+  /* ═══════════════════════════════════
+     CALENDAR VIEW
+  ═══════════════════════════════════ */
+
+  .view-cal {
+    transform: translateY(32px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .38s cubic-bezier(.4,0,.2,1),
+                opacity    .28s ease;
+    z-index: 2;
+    background: var(--bg);
+  }
+  .view-cal.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Header — back button only (desktop) */
+  .cal-hdr {
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    flex-shrink: 0;
+  }
+  .cal-back {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+    color: var(--muted); padding: 4px 0;
+    transition: color .15s;
+  }
+  .cal-back:hover { color: var(--rubric); }
+
+  /* Body */
+  .cal-view-body {
+    flex: 1; overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+
+  /* ── Week strip ── */
+  .cal-week-wrap {
+    padding: 28px 32px 24px;
+    flex-shrink: 0;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .3s ease, transform .3s ease;
+    border-bottom: 1px solid var(--border);
+  }
+  .cal-week-wrap.in { opacity: 1; transform: translateY(0); }
+
+  .cal-week-nav {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .cal-arrow {
+    background: none; border: 1px solid var(--border);
+    width: 32px; height: 32px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted);
+    transition: border-color .15s, color .15s;
+  }
+  .cal-arrow:hover { border-color: var(--rubric); color: var(--rubric); }
+  .cal-arrow:disabled { opacity: .3; pointer-events: none; }
+
+  .cal-week-strip {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow: hidden;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  .cal-week-strip.shifting { opacity: 0; transform: translateX(12px); }
+
+  .cal-week-day {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 10px 4px;
+    border: 1px solid var(--border);
+    cursor: default;
+    gap: 4px;
+    position: relative;
+    transition: background .12s, border-color .12s;
+    min-width: 0;
+  }
+  .cwd-dow {
+    font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .08em;
+    color: var(--muted); line-height: 1;
+  }
+  .cwd-num {
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    color: var(--muted); line-height: 1;
+  }
+  .cwd-month {
+    font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .06em;
+    color: var(--muted); line-height: 1;
+  }
+
+  /* Has service */
+  .cal-week-day.has-svc {
+    cursor: pointer;
+  }
+  .cal-week-day.has-svc .cwd-num { color: var(--text); }
+  .cal-week-day.has-svc:hover {
+    background: rgba(139,26,26,.05);
+    border-color: var(--gold);
+  }
+
+  /* Service dot — always present as a flex row, visible only on has-svc */
+  .cwd-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: transparent;
+    flex-shrink: 0;
+  }
+  .cal-week-day.has-svc .cwd-dot { background: var(--rubric); }
+
+  /* Today */
+  .cal-week-day.today { border-color: var(--rubric); }
+  .cal-week-day.today .cwd-num { color: var(--rubric); font-weight: 600; }
+  .cal-week-day.today .cwd-dow { color: var(--rubric); }
+
+  /* Week label */
+  .cal-week-label {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .18em;
+    color: var(--muted); margin-bottom: 14px;
+  }
+
+  /* Saint/feast list */
+  .cal-saint-strip {
+    padding: 24px 32px 0;
+    flex-shrink: 0;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .25s ease .08s, transform .25s ease .08s;
+  }
+  .cal-saint-strip.in { opacity: 1; transform: translateY(0); }
+
+  .css-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .18em;
+    color: var(--muted); margin-bottom: 12px;
+    border-bottom: 1px solid var(--border); padding-bottom: 10px;
+  }
+  .css-rows { display: flex; flex-direction: column; }
+  .css-row {
+    display: flex; align-items: baseline; gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; background: none;
+    border-left: 3px solid transparent;
+    border-right: none; border-top: none;
+    width: 100%; text-align: left;
+    transition: background .12s, border-left-color .15s;
+  }
+  .css-row:hover { background: rgba(139,26,26,.04); border-left-color: var(--gold); }
+  .css-row.unavail { opacity: .38; cursor: default; pointer-events: none; }
+  .css-date { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted); min-width: 80px; flex-shrink: 0; }
+  .css-name { font-family: 'EB Garamond', serif; font-size: 17px; color: var(--text); flex: 1; }
+  .css-tag  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); flex-shrink: 0; }
+
+  /* Bottom close — mobile only */
+  .cal-close-bottom {
+    display: none;
+    justify-content: center;
+    padding: 16px 0 36px;
+    flex-shrink: 0;
+  }
+  .cal-close-bottom button {
+    display: flex; align-items: center; gap: 8px;
+    background: none; border: 1px solid var(--border);
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+    color: var(--muted); padding: 10px 28px; cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .cal-close-bottom button:hover { border-color: var(--rubric); color: var(--rubric); }
+
+  /* ── Mobile calendar overrides ────────── */
+  @media (max-width: 640px) {
+    .cal-hdr { display: none; }
+    .cal-close-bottom { display: flex; }
+
+    .cal-week-wrap { padding: 20px 16px 20px; }
+    .cal-arrow { width: 36px; height: 36px; }
+    .cwd-num { font-size: 16px; }
+    .cwd-dow { font-size: 7px; }
+    .cal-week-day { padding: 8px 2px; }
+
+    .cal-saint-strip { padding: 16px 20px 0; }
+    .css-row { padding: 14px 0; }
+    .css-name { font-size: 18px; }
+
+    .cal-view-body { justify-content: space-between; }
+  }
+
+
+  /* ─────────────────────────────────
+     MOBILE: full-screen panel + larger type
+  ───────────────────────────────── */
+  @media (max-width: 640px) {
+
+    /* Panel takes over the full screen */
+    .layout { position: relative; }
+
+    .panel {
+      position: fixed;
+      inset: 0;
+      width: 100% !important;
+      z-index: 100;
+      border-left: none;
+      transform: translateX(100%);
+      transition: transform .32s cubic-bezier(.4,0,.2,1);
+    }
+    .panel.open {
+      transform: translateX(0);
+    }
+    .panel-inner { width: 100%; }
+
+    /* Larger service text on mobile */
+    .prayer      { font-size: 19px; line-height: 2; }
+    .rubric      { font-size: 17px; }
+    .verse       { font-size: 16px; }
+    .stich-label { font-size: 15px; }
+    .svc-head    { font-size: 11px; }
+    .panel-body  { padding: 20px 20px 56px; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════
+     VIEW: MAIN
+════════════════════════════════════ -->
+<div class="view view-main" id="view-main">
+
+  <div class="hdr">
+    <span class="hdr-cross">☩</span>
+    <span class="hdr-title">ORTHODOX DAILY SERVICES</span>
+    <a href="#" class="hdr-about">About</a>
+  </div>
+
+  <div class="layout">
+    <main class="center">
+
+      <div class="center-bar">
+        <span class="week-label">MARCH 7 – 14, 2026</span>
+        <div class="bar-btns">
+
+          <button class="bar-btn" onclick="openSearch()">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <circle cx="4.5" cy="4.5" r="3.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="7.2" y1="7.2" x2="10" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            SEARCH
+          </button>
+
+          <button class="bar-btn" id="date-btn" onclick="openCal()">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <rect x="0.6" y="1.6" width="9.8" height="8.8" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                <line x1="0.6" y1="4.4" x2="10.4" y2="4.4" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="3.5" y1="0.5" x2="3.5" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="7.5" y1="0.5" x2="7.5" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              DATE
+            </button>
+
+        </div>
+      </div>
+
+      <div class="svc-list-body">
+
+        <div class="date-block" id="mar7">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 7</span><span class="feast">· Hieromartyr Nestor of Thessalonica</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 7, 2026','Tone 8 · Cheesefare Saturday','mar7')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Saturday, March 7, 2026','Tone 8 · Cheesefare Saturday','mar7')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar8">
+          <div class="date-heading"><span class="dow">SUNDAY</span><span class="dated">MARCH 8</span><span class="feast">· Sunday of Forgiveness</span></div>
+          <div class="svc-rows">
+            <button class="svc-row dimmed"><span class="name">Great Vespers</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar9">
+          <div class="date-heading"><span class="dow">MONDAY</span><span class="dated">MARCH 9</span><span class="feast">· Forty Holy Martyrs of Sebaste · Clean Monday</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Monday, March 9, 2026','Tone 1 · Monday of the 1st Week','mar9')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar10">
+          <div class="date-heading"><span class="dow" style="color:var(--text)">TODAY — TUESDAY</span><span class="dated">MARCH 10</span><span class="feast">· 1st Week of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Tuesday, March 10, 2026','Tone 1 · Tuesday of the 1st Week','mar10')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar14">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 14</span><span class="feast">· 1st Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 14, 2026','Tone 1 · 1st Saturday of Great Lent','mar14')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row" onclick="openPanel(this,'Daily Vespers','Saturday, March 14, 2026','Tone 1 · 1st Saturday of Great Lent','mar14')"><span class="name">Daily Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar21">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 21</span><span class="feast">· 2nd Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 21, 2026','Tone 2 · 2nd Saturday of Great Lent','mar21')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+            <button class="svc-row dimmed"><span class="name">Divine Liturgy</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+        <div class="date-block" id="mar28">
+          <div class="date-heading"><span class="dow">SATURDAY</span><span class="dated">MARCH 28</span><span class="feast">· 3rd Saturday of Great Lent</span></div>
+          <div class="svc-rows">
+            <button class="svc-row" onclick="openPanel(this,'Great Vespers','Saturday, March 28, 2026','Tone 3 · 3rd Saturday of Great Lent','mar28')"><span class="name">Great Vespers</span><span class="arrow">VIEW →</span></button>
+            <button class="svc-row dimmed"><span class="name">Matins</span><span class="soon">COMING SOON</span></button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <aside class="panel" id="panel">
+      <div class="panel-inner">
+        <div class="panel-head">
+          <div class="panel-top">
+            <button class="btn-close" onclick="closePanel()">✕</button>
+            <button class="btn-print" onclick="window.print()">PRINT</button>
+          </div>
+          <div class="panel-svc" id="p-svc"></div>
+          <div class="panel-date-str" id="p-date"></div>
+
+          <!-- Expandable: saints + pronouns -->
+          <button class="panel-detail-toggle" id="p-detail-toggle" onclick="togglePanelDetail()">
+            <span class="pdt-label" id="p-detail-label">DETAILS</span>
+            <span class="pdt-icon">
+              <svg class="pdt-plus" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <line x1="4" y1="0" x2="4" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <svg class="pdt-minus" width="8" height="2" viewBox="0 0 8 2" fill="none">
+                <line x1="0" y1="1" x2="8" y2="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="panel-detail-body" id="p-detail-body">
+            <div class="panel-detail-body-inner">
+              <div class="p-saints" id="p-saints"></div>
+              <div class="pronoun-row">
+                PRONOUNS:
+                <label><input type="radio" name="pron" value="thee" onchange="rerenderText()"> Thee / Thy</label>
+                <label><input type="radio" name="pron" value="you" checked onchange="rerenderText()"> You / Your</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body" id="p-body"></div>
+      </div>
+    </aside>
+  </div>
+
+</div><!-- /view-main -->
+
+
+<!-- ═══════════════════════════════════
+     VIEW: SEARCH
+════════════════════════════════════ -->
+<div class="view view-search" id="view-search" onkeydown="if(event.key==='Escape')closeSearch()">
+
+  <div class="search-hdr">
+    <button class="search-back" onclick="closeSearch()">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="search-content" id="search-content">
+
+    <!-- Input in body -->
+    <div class="search-input-wrap" id="search-input-wrap">
+      <div class="search-input-row">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <input id="search-input" type="text"
+          placeholder="Search saints, feasts, or dates…"
+          oninput="onSearch(this.value)"
+          autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+
+    <!-- Hint state (default) -->
+    <div class="search-hint-area" id="search-hint">
+      <div class="hint-eyebrow">SUGGESTIONS</div>
+      <div class="hint-tags">
+        <button class="hint-tag" onclick="fillSearch('Lent')">Lent</button>
+        <button class="hint-tag" onclick="fillSearch('Martyr')">Martyr</button>
+        <button class="hint-tag" onclick="fillSearch('Theodore')">Theodore</button>
+        <button class="hint-tag" onclick="fillSearch('Saturday')">Saturday</button>
+        <button class="hint-tag" onclick="fillSearch('Annunciation')">Annunciation</button>
+        <button class="hint-tag" onclick="fillSearch('March')">March</button>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div class="search-spinner-wrap" id="search-spinner">
+      <div class="spinner-ring"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="search-results-area" id="search-results"></div>
+
+  </div>
+
+  <div class="search-close-bottom" id="search-close-bottom">
+    <button onclick="closeSearch()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      CLOSE
+    </button>
+  </div>
+</div><!-- /view-search -->
+
+
+
+<!-- ═══════════════════════════════════
+     VIEW: CALENDAR
+════════════════════════════════════ -->
+<div class="view view-cal" id="view-cal" onkeydown="if(event.key==='Escape')closeCal()">
+
+  <div class="cal-hdr">
+    <button class="cal-back" onclick="closeCal()">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="cal-view-body">
+
+    <!-- Week strip -->
+    <div class="cal-week-wrap" id="cal-week-wrap">
+      <div class="cal-week-label" id="cal-week-label">MARCH 2026</div>
+      <div class="cal-week-nav">
+        <button class="cal-arrow" id="cal-prev" onclick="calShift(-1)">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M6 1L1 5.5 6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="cal-week-strip" id="cal-week-strip">
+          <!-- rendered by JS -->
+        </div>
+        <button class="cal-arrow" id="cal-next" onclick="calShift(1)">
+          <svg width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Feast list for this week -->
+    <div class="cal-saint-strip" id="cal-saint-strip">
+      <div class="css-eyebrow">AVAILABLE SERVICES THIS WEEK</div>
+      <div class="css-rows" id="css-rows">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+
+    <div class="cal-close-bottom">
+      <button onclick="closeCal()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        CLOSE
+      </button>
+    </div>
+
+  </div>
+</div><!-- /view-cal -->
+
+<script>
+  /* ── Panel ── */
+  let activeRow = null;
+
+  // Saints data per date id
+  const SAINTS_DATA = {
+    mar7:  [{ name:'Hieromartyr Nestor of Thessalonica', major:false }],
+    mar8:  [{ name:'Sunday of Forgiveness', major:true }],
+    mar9:  [{ name:'Forty Holy Martyrs of Sebaste', major:true }, { name:'Clean Monday', major:false }],
+    mar10: [{ name:'Tuesday of the First Week of Great Lent', major:false }],
+    mar14: [{ name:'First Saturday of Great Lent', major:true }],
+    mar21: [{ name:'Second Saturday of Great Lent', major:true }],
+    mar28: [{ name:'Third Saturday of Great Lent', major:true }],
+  };
+
+  function openPanel(btn, svc, date, tone, dateId) {
+    document.getElementById('p-svc').textContent  = svc.toUpperCase();
+    document.getElementById('p-date').textContent = date + ' · ' + tone;
+
+    // Populate saints
+    const saints = dateId ? (SAINTS_DATA[dateId] || []) : [];
+    const saintEl = document.getElementById('p-saints');
+    saintEl.innerHTML = saints.map(s =>
+      `<div class="p-saint${s.major ? ' major' : ''}">${s.name}</div>`
+    ).join('');
+    saintEl.style.display = saints.length ? '' : 'none';
+
+    // Update label with saint count + active pronoun
+    updateDetailLabel();
+
+    // Collapse detail on new panel open
+    document.getElementById('p-detail-body').classList.remove('open');
+    document.getElementById('p-detail-toggle').classList.remove('open');
+
+    rerenderText();
+    document.getElementById('panel').classList.add('open');
+    if (activeRow) activeRow.classList.remove('active');
+    activeRow = btn; btn.classList.add('active');
+  }
+
+  function togglePanelDetail() {
+    const body   = document.getElementById('p-detail-body');
+    const toggle = document.getElementById('p-detail-toggle');
+    const open   = body.classList.contains('open');
+    body.classList.toggle('open', !open);
+    toggle.classList.toggle('open', !open);
+  }
+  function closePanel() {
+    document.getElementById('panel').classList.remove('open');
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+  }
+  function rerenderText() {
+    const p = document.querySelector('input[name="pron"]:checked')?.value || 'you';
+    document.getElementById('p-body').innerHTML = sampleText(p);
+    updateDetailLabel();
+  }
+
+  function updateDetailLabel() {
+    const p = document.querySelector('input[name="pron"]:checked')?.value || 'you';
+    const pronLabel = p === 'thee' ? 'THEE / THY' : 'YOU / YOUR';
+    const saints = document.querySelectorAll('#p-saints .p-saint');
+    const count  = saints.length;
+    document.getElementById('p-detail-label').textContent =
+      count ? `${count} COMMEMORATION${count > 1 ? 'S' : ''} · ${pronLabel}` : pronLabel;
+  }
+
+  /* ── Calendar view ── */
+
+  const CAL_DATA = {
+    2026: {
+      3: {
+        7:  { id:'mar7',  feast:'Hieromartyr Nestor of Thessalonica',         avail:true  },
+        8:  { id:'mar8',  feast:'Sunday of Forgiveness',                       avail:false },
+        9:  { id:'mar9',  feast:'Forty Holy Martyrs of Sebaste',               avail:true  },
+        10: { id:'mar10', feast:'Tuesday of the 1st Week of Great Lent',       avail:true  },
+        14: { id:'mar14', feast:'First Saturday of Great Lent',                avail:true  },
+        21: { id:'mar21', feast:'Second Saturday of Great Lent',               avail:true  },
+        25: { id:null,    feast:'Annunciation of the Theotokos',               avail:false },
+        28: { id:'mar28', feast:'Third Saturday of Great Lent',                avail:true  },
+      },
+      4: {
+        4:  { id:'apr4',  feast:'Fourth Saturday of Great Lent',               avail:true  },
+        11: { id:'apr11', feast:'Akathist Saturday · Venerable Mary of Egypt', avail:true  },
+      }
+    }
+  };
+
+  const MONTHS  = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+                   'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+  const MONTHS3 = ['JAN','FEB','MAR','APR','MAY','JUN',
+                   'JUL','AUG','SEP','OCT','NOV','DEC'];
+  const DOWS    = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+  // Track the Sunday that starts the current displayed week
+  // Default: week containing March 10 (today in the prototype)
+  let weekStart = new Date(2026, 2, 8); // Sun March 8
+
+  // Bounds: earliest Sunday and latest Saturday in our data
+  const WEEK_MIN = new Date(2026, 2, 8);  // Sun Mar 8
+  const WEEK_MAX = new Date(2026, 3, 12); // Sun Apr 12
+
+  function openCal() {
+    document.getElementById('view-main').classList.add('hidden');
+    document.getElementById('view-cal').classList.add('visible');
+    renderWeek(weekStart);
+    setTimeout(() => {
+      document.getElementById('cal-week-wrap').classList.add('in');
+      document.getElementById('cal-saint-strip').classList.add('in');
+    }, 100);
+  }
+
+  function closeCal() {
+    document.getElementById('view-cal').classList.remove('visible');
+    document.getElementById('view-main').classList.remove('hidden');
+    document.getElementById('date-btn').classList.remove('active');
+    setTimeout(() => {
+      document.getElementById('cal-week-wrap').classList.remove('in');
+      document.getElementById('cal-saint-strip').classList.remove('in');
+    }, 400);
+  }
+
+  function calShift(dir) {
+    const next = new Date(weekStart);
+    next.setDate(next.getDate() + dir * 7);
+    if (next < WEEK_MIN || next > WEEK_MAX) return;
+    weekStart = next;
+
+    const strip = document.getElementById('cal-week-strip');
+    const feast = document.getElementById('cal-saint-strip');
+    strip.classList.add('shifting');
+    feast.classList.remove('in');
+
+    setTimeout(() => {
+      renderWeek(weekStart);
+      strip.classList.remove('shifting');
+      requestAnimationFrame(() => requestAnimationFrame(() =>
+        feast.classList.add('in')
+      ));
+    }, 180);
+
+    document.getElementById('cal-prev').disabled = (next <= WEEK_MIN);
+    document.getElementById('cal-next').disabled = (next >= WEEK_MAX);
+  }
+
+  function renderWeek(sunday) {
+    const today    = new Date();
+    const monthSet = new Set();
+
+    let stripHtml = '';
+    const weekFeasts = [];
+
+    for (let i = 0; i < 7; i++) {
+      const d    = new Date(sunday);
+      d.setDate(d.getDate() + i);
+      const y    = d.getFullYear();
+      const m    = d.getMonth() + 1; // 1-indexed
+      const day  = d.getDate();
+      monthSet.add(MONTHS[m - 1]);
+
+      const info    = (CAL_DATA[y] || {})[m]?.[day];
+      const isToday = (d.toDateString() === today.toDateString());
+      const hasSvc  = info?.avail;
+
+      let cls = 'cal-week-day';
+      if (hasSvc) cls += ' has-svc';
+      if (isToday) cls += ' today';
+
+      const onclick = hasSvc && info.id ? `onclick="onCalDayClick('${info.id}')"` : '';
+
+      stripHtml += `
+        <div class="${cls}" ${onclick}>
+          <span class="cwd-dow">${DOWS[d.getDay()]}</span>
+          <span class="cwd-num">${day}</span>
+          <span class="cwd-month">${MONTHS3[m - 1]}</span>
+          <span class="cwd-dot"></span>
+        </div>`;
+
+      if (info) weekFeasts.push({ day, month: m, info });
+    }
+
+    document.getElementById('cal-week-strip').innerHTML = stripHtml;
+
+    // Week label — show month(s)
+    const monthNames = [...monthSet];
+    document.getElementById('cal-week-label').textContent =
+      monthNames.join(' / ') + ' ' + sunday.getFullYear();
+
+    // Feast list
+    const rows = document.getElementById('css-rows');
+    if (!weekFeasts.length) {
+      rows.innerHTML = `<div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);padding:16px 0;">No feasts or services this week.</div>`;
+    } else {
+      rows.innerHTML = weekFeasts.map(({ day, month, info }) => {
+        const dateStr = MONTHS3[month - 1] + ' ' + day;
+        return `<button class="css-row${info.avail ? '' : ' unavail'}"
+          ${info.id ? `onclick="onCalDayClick('${info.id}')"` : ''}>
+          <span class="css-date">${dateStr}</span>
+          <span class="css-name">${info.feast}</span>
+          <span class="css-tag">${info.avail ? 'VIEW →' : 'NO SERVICE'}</span>
+        </button>`;
+      }).join('');
+    }
+
+    // Arrow bounds
+    document.getElementById('cal-prev').disabled = (sunday <= WEEK_MIN);
+    document.getElementById('cal-next').disabled = (sunday >= WEEK_MAX);
+  }
+
+  function onCalDayClick(id) {
+    closeCal();
+    setTimeout(() => jumpTo(id), 280);
+  }
+
+  function jumpTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const bar = document.querySelector('.center-bar').offsetHeight;
+    document.querySelector('.center').scrollTo({ top: el.offsetTop - bar - 4, behavior: 'smooth' });
+  }
+
+  /* ── Search view ── */
+  let searchTimer = null;
+
+  function openSearch() {
+    closeCal();
+    document.getElementById('view-main').classList.add('hidden');
+    document.getElementById('view-search').classList.add('visible');
+    setTimeout(() => {
+      document.getElementById('search-input-wrap').classList.add('in');
+      document.getElementById('search-hint').classList.add('in');
+      document.getElementById('search-input').focus();
+    }, 100);
+  }
+
+  function closeSearch() {
+    clearTimeout(searchTimer);
+    document.getElementById('view-search').classList.remove('visible');
+    document.getElementById('view-main').classList.remove('hidden');
+    // Reset after transition completes
+    setTimeout(resetSearch, 400);
+  }
+
+  function resetSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
+    document.getElementById('search-results').classList.remove('in');
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById('search-input-wrap').classList.remove('in');
+    document.getElementById('search-hint').classList.remove('in');
+  }
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('search-spinner').classList.remove('active');
+    document.getElementById('search-results').classList.remove('in');
+    document.getElementById('search-results').innerHTML = '';
+    // Re-show hint
+    document.getElementById('search-hint').style.display = '';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => document.getElementById('search-hint').classList.add('in'));
+    });
+    document.getElementById('search-input').focus();
+  }
+
+  function fillSearch(term) {
+    document.getElementById('search-input').value = term;
+    onSearch(term);
+    document.getElementById('search-input').focus();
+  }
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function hl(text, q) {
+    if (!q) return esc(text);
+    return esc(text).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'), '<em>$1</em>');
+  }
+
+  const SAINTS = [
+    { date:'March 7',   id:'mar7',  name:'Hieromartyr Nestor of Thessalonica',     avail:true  },
+    { date:'March 8',   id:'mar8',  name:'Sunday of Forgiveness',                   avail:false },
+    { date:'March 9',   id:'mar9',  name:'Forty Holy Martyrs of Sebaste',           avail:true  },
+    { date:'March 9',   id:'mar9',  name:'Clean Monday',                            avail:true  },
+    { date:'March 10',  id:'mar10', name:'Tuesday of the First Week of Great Lent', avail:true  },
+    { date:'March 14',  id:'mar14', name:'First Saturday of Great Lent',            avail:true  },
+    { date:'March 21',  id:'mar21', name:'Second Saturday of Great Lent',           avail:true  },
+    { date:'March 25',  id:null,    name:'Annunciation of the Theotokos',           avail:false },
+    { date:'March 28',  id:'mar28', name:'Third Saturday of Great Lent',            avail:true  },
+    { date:'April 23',  id:null,    name:'Great Martyr George the Trophy-Bearer',   avail:false },
+    { date:'Feb 7',     id:null,    name:'Great Martyr Theodore the General',       avail:false },
+    { date:'Feb 8',     id:null,    name:'Great Martyr Theodore the Recruit',       avail:false },
+  ];
+
+  function onSearch(raw) {
+    const q = raw.trim();
+    const hint    = document.getElementById('search-hint');
+    const spinner = document.getElementById('search-spinner');
+    const results = document.getElementById('search-results');
+    const clear   = document.getElementById('search-clear');
+
+    clearTimeout(searchTimer);
+    clear.classList.toggle('visible', raw.length > 0);
+
+    if (q.length < 2) {
+      spinner.classList.remove('active');
+      results.classList.remove('in');
+      results.innerHTML = '';
+      hint.style.display = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => hint.classList.add('in')));
+      return;
+    }
+
+    // Hide hint, show spinner
+    hint.classList.remove('in');
+    setTimeout(() => { hint.style.display = 'none'; }, 280);
+    results.classList.remove('in');
+    spinner.classList.add('active');
+
+    searchTimer = setTimeout(() => {
+      const hits = SAINTS.filter(s =>
+        s.name.toLowerCase().includes(q.toLowerCase()) ||
+        s.date.toLowerCase().includes(q.toLowerCase())
+      );
+
+      spinner.classList.remove('active');
+
+      if (!hits.length) {
+        results.innerHTML = `<div class="no-results">No saints or feasts found for &ldquo;${esc(q)}&rdquo;</div>`;
+      } else {
+        const eyebrow = `<div class="results-eyebrow">SAINTS &amp; FEASTS MATCHING &ldquo;${esc(q.toUpperCase())}&rdquo;</div>`;
+        const rows = hits.map(s => `
+          <button class="result-row${s.avail ? '' : ' unavail'}"
+            onclick="${s.id ? `pickResult('${s.id}')` : 'void(0)'}">
+            <span class="res-date">${s.date}</span>
+            <span class="res-name">${hl(s.name, q)}</span>
+            <span class="res-tag">${s.avail ? 'VIEW →' : 'NO SERVICE'}</span>
+          </button>`).join('');
+        results.innerHTML = eyebrow + rows;
+      }
+
+      requestAnimationFrame(() => requestAnimationFrame(() => results.classList.add('in')));
+
+    }, 380);
+  }
+
+  function pickResult(id) {
+    closeSearch();
+    setTimeout(() => jumpTo(id), 280);
+  }
+
+  /* ── Service text ── */
+  function sampleText(pronoun) {
+    const you = pronoun === 'you';
+    const You = you?'You':'Thee', Your = you?'Your':'Thy';
+    return `
+      <div class="svc-sec">
+        <div class="rubric">The Priest: Blessed is our God, always, now and ever, and unto the ages of ages.</div>
+        <div class="prayer">Reader: Amen. O come, let us worship God our King.<br>
+        O come, let us worship and fall down before Christ, our King and God.<br>
+        O come, let us worship and fall down before Christ Himself, our King and God.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PSALM 103</div>
+        <div class="prayer">Bless the Lord, O my soul! O Lord my God, ${You} are very great. ${You} are clothed with honor and majesty, Who cover ${Your}self with light as with a garment, Who stretch out the heavens like a curtain.</div>
+        <div class="prayer">He set the earth on its foundations, so that it should never be moved. ${You} covered it with the deep as with a garment; the waters stood above the mountains. At ${Your} rebuke they fled; at the sound of ${Your} thunder they hurried away.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LORD, I HAVE CRIED</div>
+        <div class="rubric">In Tone 1. The stichera are chanted beginning with verse 10.</div>
+        <div class="verse">Out of the depths I have cried to ${You}, O Lord; Lord, hear my voice.</div>
+        <div class="stich-label">Sticheron 1 — Tone 1, Octoechos</div>
+        <div class="prayer">Come, let us worship and bow down, let us weep before Christ. For He Himself is our God, Who can save us from our sins. He descended to earth not to judge the world, but that the world through Him might be saved.</div>
+        <div class="verse">Let ${Your} ears be attentive to the voice of my supplication.</div>
+        <div class="stich-label">Sticheron 2 — Tone 1, Octoechos</div>
+        <div class="prayer">Evening I know, and morning and noon I praise, I hymn, I bless, and give thanks to ${You}, O Master of all, ${You} who love mankind. Direct my prayer as incense before ${You}, and do not turn ${Your} face away from me.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">PROKEIMENON</div>
+        <div class="rubric">The Deacon: Wisdom! Let us attend.</div>
+        <div class="prayer"><em>The Lord reigns, He is clothed with majesty.</em></div>
+        <div class="verse">Verse: The Lord is clothed, He has girded Himself with strength.</div>
+      </div>
+      <div class="svc-rule"></div>
+      <div class="svc-sec">
+        <div class="svc-head">LITIYA</div>
+        <div class="rubric">The following stichera are chanted at the Litiya:</div>
+        <div class="prayer">O Lord, at the evening hour of this day, grant us and the whole world ${Your} peace. For ${You} have given us all things of life and godliness through ${Your} divine and saving commandments.</div>
+      </div>`;
+  }
+</script>
+</body>
+</html>

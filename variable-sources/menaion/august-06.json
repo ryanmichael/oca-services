@@ -1,0 +1,173 @@
+{
+  "_meta": {
+    "feast": "Holy Transfiguration of Our Lord and Savior Jesus Christ",
+    "feastKey": "transfiguration",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-0806-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-0806-texts-tt.docx",
+    "_note": "Single-canon (1st Canon Tone 4 by Cosmas the Monk) with Tone 8 Katavasiae borrowed from the Canon of the Elevation of the Cross. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`). Great feast of the Lord — Having Beheld the Resurrection is suppressed."
+  },
+
+  "troparion": {
+    "text": "Thou wast transfigured on the mountain, O Christ God,\nrevealing Thy glory to Thy Disciples as far as they could bear it.\nLet Thine everlasting Light also shine upon us sinners,\nthrough the prayers of the Theotokos!\nO Giver of Light, glory to Thee!",
+    "tone": 7,
+    "label": "Troparion of the Transfiguration"
+  },
+  "kontakion": {
+    "text": "On the mountain Thou wast transfigured, O Christ God,\nand Thy Disciples beheld Thy glory as far as they could see it;\nso that when they would behold Thee crucified,\nthey would understand that Thy suffering was voluntary,\nand would proclaim to the world\nthat Thou art truly the Radiance of the Father.",
+    "tone": 7,
+    "label": "Kontakion of the Transfiguration"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 7,
+      "feastRank": "greatFeast",
+      "feastType": "lord"
+    },
+    "isGreatFeastOfLord": true,
+
+    "sedalion": [
+      {
+        "text": "Thou wast transfigured upon Mount Tabor, O Savior,\nshowing the exchange mortal men will make with Thy glory at Thy second and fearful coming.\nElijah and Moses talked with Thee,\nand Thou didst call the three disciples to be with Thee.\nAs they gazed upon Thy glory, O Master,\nthey were struck with wonder at Thy blinding brightness.\nThou Who hast shone upon them with Thy light, give light to our souls.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Troparion melody"
+      },
+      {
+        "text": "Thou wast transfigured upon Mount Tabor, O Jesus,\nand a shining cloud covered the apostles with Thy glory as a tabernacle!\nTheir gaze fell to the ground\nfor they could not bear to look upon the brightness of the unapproachable glory of Thy face!\nSavior Christ, God without beginning,\nWho hast shone upon them with Thy light,\ngive light to our souls.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 3)",
+        "melody": "Troparion melody"
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we venerate the all-glorious Transfiguration\nof Thy most pure Body.",
+      "verses": [
+        "Great is the Lord and greatly to be praised in the city of our God and in His holy mountain. (Ps. 47:1a)",
+        "Lord, who will abide in Thy tabernacle, and who will dwell in Thy holy mountain? (Ps. 14:1)"
+      ],
+      "tone": 7
+    },
+
+    "prokeimenon": {
+      "refrain": "Tabor and Hermon shall rejoice in Thy Name!",
+      "verse": "The heavens are Thine; the earth also is Thine.",
+      "tone": 4,
+      "_psalmRef": "Ps. 88:12a / 88:11a"
+    },
+
+    "gospel": {
+      "reading": "Luke 9:28-36",
+      "number": 45,
+      "_note": "The Transfiguration on Mount Tabor."
+    },
+
+    "postGospelSticheron": {
+      "text": "Having revealed a little of the light of Thy divinity\nto those who went up with Thee on the mountain,\nThou hast made them lovers of Thy heavenly glory.\nTherefore, they cried out in awe:\n\"It is good for us to be here.\"\nWith them we also sing to Thee, O transfigured Savior, Christ.",
+      "tone": 5,
+      "label": "Idiomelon of the Transfiguration",
+      "_source": "oca-2025-0806-tt"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_katavasiaTone": 8,
+      "_author": "Cosmas the Monk",
+      "_katavasiaeNote": "Katavasiae Tone 8 from the Canon of the Elevation of the Cross (by Cosmas the Monk), per the Transfiguration → Elevation preparatory cycle.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "When the choirs of Israel\ncrossed the Red Sea and the watery deep with dry feet,\nand saw the riders and captains of the enemy submerged in the sea,\nthey cried out for joy:\n\"Let us sing to our God, for He has been glorified!\"",
+        "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty has grown feeble,\nand the feeble have girded themselves with strength;\ntherefore, my heart is established in the Lord.",
+        "katavasia": "The rod of Aaron is an image of this mystery,\nfor when it budded it revealed who should be the priest;\nand for the Church, which before was barren,\nthe Tree of the Cross has blossomed forth\nfor her strength and firm foundation."
+      },
+      "ode4": {
+        "irmos": "I have heard of Thy glorious dispensation, O Christ our God:\nthat Thou wast born of the Virgin\nto deliver from error those who cry to Thee:\n\"Glory to Thy power, O Lord!\"",
+        "katavasia": "I have heard the mystery of Thy dispensation, O Lord,\nI have meditated on Thy works\nand have glorified Thy Godhead."
+      },
+      "ode5": {
+        "irmos": "O Christ, Who parted the original chaos from the light,\nthat, in light, Thy works might praise Thee as their Creator:\n\"Direct our paths in Thy light!\"",
+        "katavasia": "O thrice-blessed Tree, on which Christ the King and Lord was stretched!\nThrough thee the one who deceived us through a tree has fallen,\ncaught by the bait of God, Who was nailed to thee in the flesh,\nand Who grants peace to our souls."
+      },
+      "ode6": {
+        "irmos": "In my affliction I cried to the Lord,\nand the God of my salvation heard me.",
+        "katavasia": "In the belly of the sea monster, Jonah stretched out his hands in the form of a cross,\nplainly prefiguring the saving Passion.\nWhen he emerged from there on the third day,\nhe prefigured the transcendent Resurrection of Christ our God,\nWho was nailed to the Cross in the flesh\nand by His rising on the third day enlightened the world."
+      },
+      "ode7": {
+        "irmos": "In Babylon the Children, sons of Abraham,\nonce trampled upon the flame of the furnace,\nand they sang this song of praise:\n\"Blessed art Thou, the God of our Fathers!\"",
+        "katavasia": "The senseless decree of the impious tyrant,\nspewing threats and blasphemy hateful to God,\nbrought the people to confusion.\nYet the three Children could not be frightened\neither by the brutal fury or the roaring fire,\nbut in the wind, moist with dew, that blew against it,\nthey stood together, and they sang:\n\"O praised above all, blessed art Thou,\nour God, and the God of our Fathers!\""
+      },
+      "ode8": {
+        "irmos": "The Children in Babylon, on fire with zeal for God,\nbravely trampled upon the threat of the tyrant and the flames;\nand cast into the midst of the fire,\nbut refreshed with dew, they sang:\n\"Bless the Lord, all you works of the Lord!\"",
+        "katavasia": "O Children, equal in number to the Trinity,\nbless God the Father, the Creator;\npraise the Word, Who descended and changed the fire to dew,\nand exalt above all, to all ages,\nthe All-Holy Spirit, Who gives life to all!"
+      },
+      "ode9": {
+        "irmos": "Refrain: Magnify, O my soul, the Lord Who was transfigured on Mount Tabor!\n\nHeirmos: Thy childbearing was without corruption;\nGod came forth from thy body clothed in flesh,\nand appeared on earth and dwelt among men.\nTherefore we all magnify thee, O Theotokos.",
+        "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Thou wast transfigured upon Mount Tabor, O Christ God,\nbetween Moses and Elijah the wise,\nin the presence of James, Peter, and John;\nand Peter, as he stood there, spoke to Thee:\n\"It would be good to make three tabernacles here:\nOne for Moses, one for Elijah, and one for Thee, Christ our Master.\"\nThou Who hast shone upon them with Thy light, give light to our souls.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Troparion melody"
+      },
+
+      "kontakion": {
+        "text": "On the mountain Thou wast transfigured, O Christ God,\nand Thy Disciples beheld Thy glory as far as they could see it;\nso that when they would behold Thee crucified,\nthey would understand that Thy suffering was voluntary,\nand would proclaim to the world\nthat Thou art truly the Radiance of the Father.",
+        "tone": 7,
+        "label": "Kontakion of the Transfiguration"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O Word, Light unaltered from the Light of the unbegotten Father,\nin Thy Light made manifest today on Mount Tabor\nwe have seen the Father as Light and the Spirit as Light,\nguiding all creation as Light.",
+      "tone": 3,
+      "label": "Exapostilarion of the Transfiguration",
+      "repeat": 3,
+      "_source": "oca-2025-0806-tt"
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "Before Thy precious Cross and Thy Passion,\nThou didst take the holy Disciples whom Thou hadst especially chosen,\nand didst go up, O Master, onto Mount Tabor\nwishing to show them Thy glory.\nWhen they saw Thee transfigured, shining more brightly than the sun,\nthey fell on their faces, struck with amazement at Thy might,\nand they cried aloud:\n\"O Christ, Thou art the timeless light and the brightness of the Father,\neven though, of Thine own will, Thou art manifested in the flesh without change.\"",
+          "tone": 4,
+          "melody": "Called from on high"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Thou, Who from all eternity art God the Word,\nand coverest Thyself with light as with a garment,\nwast transfigured before Thy Disciples,\nand didst shine more brightly than the sun.\nMoses and Elijah stood by Thy side,\nmaking it plain that Thou art the Lord both of the dead and of the living.\nThey glorified Thine ineffable dispensation,\nThy mercy and Thy great condescension,\nby which Thou hast saved the world utterly lost in sin.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "O Lord, Who wast born from the Virgin Cloud and made flesh,\nand wast transfigured on Mount Tabor,\nsurrounding Thyself with a bright cloud,\nthe voice of the Father in the presence of the Disciples\nplainly declared Thee to be the beloved Son,\none in Essence and sharing the same throne.\nTherefore Peter spoke in amazement, not knowing what he said:\n\"It is good for us to be here, O Benefactor, rich in mercy!\"",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Christ took Peter, James, and John alone to a high mountain,\nand was transfigured before them.\nHis face shone like the sun, and His raiment became white as the light.\nMoses and Elijah appeared talking with Him.\nA bright cloud overshadowed them\nand behold, a voice from the cloud said:\n\"This is My beloved Son, in Whom I am well pleased; hear Him!\"",
+        "tone": 8,
+        "author": "Doxastikon of the Transfiguration",
+        "_source": "oca-2025-0806-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Thou wast transfigured on the mountain, O Christ God,\nrevealing Thy glory to Thy Disciples as far as they could bear it.\nLet Thine everlasting Light also shine upon us sinners,\nthrough the prayers of the Theotokos!\nO Giver of Light, glory to Thee!",
+      "tone": 7
+    }
+  }
+}

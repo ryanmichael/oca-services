@@ -1692,6 +1692,72 @@ const GREAT_FEAST_VARIANTS = {
  * Build Sunday Matins spec from Octoechos data.
  * Sundays always use the Great Doxology path and have a Gospel.
  */
+function _loadFestalMatins(feastKey, season, dow, tone) {
+  const festalPath = path.join(__dirname, 'variable-sources', 'festal-matins', `${feastKey}.json`);
+  if (!fs.existsSync(festalPath)) return null;
+
+  const data = loadJSON(`variable-sources/festal-matins/${feastKey}.json`);
+  const isSunday = dow === 'sunday';
+
+  const spec = {
+    isSunday,
+    feastRank: data.feastRank || 'greatFeast',
+    feastType: data.feastType || null,
+    tone: data.tone || (data.troparion && data.troparion.tone) || tone || 1,
+    useSmallDoxology: false,
+    // Great feasts follow the Sunday kathisma layout (2+3) regardless of weekday.
+    kathismaCount: 2,
+    kathismaNumbers: getMatinsKathismata('sunday', season),
+    sedalion: data.sedalion || [],
+  };
+
+  if (data.troparion)              spec.troparion              = data.troparion;
+  if (data.magnification)          spec.magnification          = data.magnification;
+  if (data.prokeimenon)            spec.prokeimenon            = data.prokeimenon;
+  if (data.gospel)                 spec.gospel                 = data.gospel;
+  if (data.postGospelSticheron)    spec.postGospelSticheron    = data.postGospelSticheron;
+  if (data.canon)                  spec.canon                  = data.canon;
+  if (data.exapostilaria)          spec.exapostilaria          = data.exapostilaria;
+  if (data.exapostilarion)         spec.exapostilarion         = data.exapostilarion;
+  if (data.lauds)                  spec.lauds                  = data.lauds;
+  if (data.troparionAfterDoxology) spec.troparionAfterDoxology = data.troparionAfterDoxology;
+  if (data.finalTroparion)         spec.finalTroparion         = data.finalTroparion;
+  if (data.venerationStichera)     spec.venerationStichera     = data.venerationStichera;
+  if (data.isGreatFeastOfLord != null) spec.isGreatFeastOfLord = data.isGreatFeastOfLord;
+  if (data.includeHavingBeheld != null) spec.includeHavingBeheld = data.includeHavingBeheld;
+
+  return spec;
+}
+
+function _buildGreatFeastMatinsStub(feastKey, season, date) {
+  const variant = GREAT_FEAST_VARIANTS[feastKey];
+  if (!variant) return null;
+
+  const trop = variant.troparia?.[0];
+  const kont = variant.kontakia?.[0];
+
+  const spec = {
+    isSunday: true,
+    feastRank: 'greatFeast',
+    feastType: variant.type || null,
+    tone: trop?.tone || kont?.tone || 1,
+    useSmallDoxology: false,
+    kathismaCount: 2,
+    kathismaNumbers: getMatinsKathismata('sunday', season),
+    sedalion: [],
+    _stub: true,
+    _stubNote: `Festal Matins propers for ${variant.label} are a known content gap; serving troparion + kontakion only.`,
+  };
+
+  if (trop) spec.troparion = { text: trop.text, tone: trop.tone, label: variant.label };
+  if (kont) spec.kontakion = { text: kont.text, tone: kont.tone, label: variant.label };
+  if (variant.prokeimenon) spec.prokeimenon = variant.prokeimenon;
+
+  if (spec.troparion) spec.finalTroparion = spec.troparion;
+
+  return spec;
+}
+
 function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
   const tk = `tone${tone}`;
   const oct = sources.octoechos[tk];
@@ -1897,9 +1963,26 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   // Palm Sunday keeps regular Sunday Matins (with festal content).
   if ((season === 'holyWeek' && !isSunday) || season === 'brightWeek') return null;
 
+  // ── Moveable-feast / weekday festal matins (Pentecost, Ascension, …) ────
+  // Tried first so that a feast falling on a weekday gets full festal
+  // propers rather than the DB-injected weekday stub below.
+  if (feastKey && (!menaionData || !menaionData.matins)) {
+    const festalSpec = _loadFestalMatins(feastKey, season, dow, tone);
+    if (festalSpec) return festalSpec;
+  }
+
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
-    return _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
+    const sundaySpec = _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
+    if (sundaySpec) return sundaySpec;
+
+    // Octoechos returned null and no festal matins data — fall back to a
+    // minimal stub from GREAT_FEAST_VARIANTS so the service is at least
+    // browsable; this signals a content gap rather than a 404.
+    if (feastKey && GREAT_FEAST_VARIANTS[feastKey]) {
+      return _buildGreatFeastMatinsStub(feastKey, season, date);
+    }
+    return null;
   }
 
   // ── Weekday/Saturday Matins (no menaion matins data) ────────────────────
@@ -1989,24 +2072,35 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.postGospelSticheron = mat.postGospelSticheron;
   }
 
+  // Sessional hymns after Kathismata (rendered at the kathisma reading points)
+  if (mat.sedalion) {
+    spec.sedalion = mat.sedalion;
+  }
+
   // Canon
   if (mat.canon) {
     const canonSpec = {
       tone: mat.canon.tone || spec.tone,
       author: mat.canon.author,
     };
-    // Copy ode data
+    // Copy ode data + every canon-level field (metadata, skipMagnificat,
+    // sedalenAfterOde3, etc.). `tone`/`author` are already set above.
     for (const [k, v] of Object.entries(mat.canon)) {
-      if (k.startsWith('ode')) canonSpec[k] = v;
+      if (k === 'tone' || k === 'author') continue;
+      canonSpec[k] = v;
     }
-    // Sessional hymns after Ode 3
+    // Sessional hymns after Ode 3 (matins-level overrides canon-level)
     if (mat.sessionalHymns) {
       canonSpec.sedalenAfterOde3 = mat.sessionalHymns;
     } else if (mat.sedalen) {
       canonSpec.sedalenAfterOde3 = mat.sedalen;
     }
-    // Kontakion/ikos (placed inside canon spec so they appear after Ode 6)
-    if (menaionData.kontakion) {
+    // Kontakion/ikos (placed inside canon spec so they appear after Ode 6).
+    // Prefer the matins-canon kontakion if present (festal-specific text);
+    // otherwise fall back to the top-level menaion kontakion.
+    if (mat.canon.kontakion) {
+      canonSpec.kontakion = mat.canon.kontakion;
+    } else if (menaionData.kontakion) {
       canonSpec.kontakion = menaionData.kontakion;
     }
     // Skip Magnificat on great feasts that have their own Ode 9 megalynarion
@@ -2016,10 +2110,28 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.canon = canonSpec;
   }
 
-  // Exapostilaria
+  // Exapostilaria (array or singular with `repeat: N`)
   if (mat.exapostilaria) {
     spec.exapostilaria = mat.exapostilaria;
+  } else if (mat.exapostilarion) {
+    spec.exapostilarion = mat.exapostilarion;
   }
+
+  // Festal troparion after the Great Doxology (overrides Sunday default)
+  if (mat.troparionAfterDoxology) {
+    spec.troparionAfterDoxology = mat.troparionAfterDoxology;
+  }
+
+  // Veneration stichera (Elevation procession after the Great Doxology, etc.)
+  if (mat.venerationStichera) {
+    spec.venerationStichera = mat.venerationStichera;
+  }
+
+  // Flags forwarded from the festal matins data
+  if (mat._meta?.feastRank)        spec.feastRank        = mat._meta.feastRank;
+  if (mat._meta?.feastType)        spec.feastType        = mat._meta.feastType;
+  if (mat.isGreatFeastOfLord != null) spec.isGreatFeastOfLord = mat.isGreatFeastOfLord;
+  if (mat.includeHavingBeheld != null) spec.includeHavingBeheld = mat.includeHavingBeheld;
 
   // Lauds
   if (mat.lauds) {
@@ -3168,7 +3280,7 @@ function assembleForDate(date, pronoun, entryOverride) {
       if (licStichera.length > 0) {
         const lic = calendarEntry.vespers.lordICall;
 
-        if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast) {
+        if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast && !isVigilFeast) {
           // Saturday: split verses between resurrectional (Octoechos) and Menaion
           const menaionCount        = licStichera.length;
           const resurrectionalCount = 6 - menaionCount;
@@ -4519,6 +4631,38 @@ function handleRequest(req, res) {
       const season = getLiturgicalSeason(d);
       const tone   = getTone(d);
 
+      // ── Bright Week: Matins = Paschal Matins (Pascha through Bright Saturday) ──
+      if (season === 'brightWeek') {
+        let blocks;
+        try {
+          blocks = assemblePaschalMatins(paschalMatinsFixed);
+        } catch (err) {
+          console.error('assemblePaschalMatins error:', err);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: err.message }));
+          return;
+        }
+        if (pronoun === 'yy') {
+          for (const block of blocks) {
+            if (block.text)  block.text  = applyYouYour(block.text);
+            if (block.label) block.label = applyYouYour(block.label);
+          }
+        }
+        if (format === 'html') {
+          renderServiceHTML(res, blocks, 'Paschal Matins', formatDate(date), pronoun);
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          date,
+          serviceType: 'matins',
+          serviceName: 'Paschal Matins',
+          season,
+          blocks,
+        }));
+        return;
+      }
+
       // Build the matins spec from available data
       const matinsSpec = buildMatinsSpec(date, d, dow, season, tone);
 
@@ -4920,20 +5064,25 @@ function handleRequest(req, res) {
             label: 'service-title',
           });
 
+          // Each sub-service assembler uses its own id namespace (e.g. multiple
+          // `dis-amen` blocks), so prefix per-service ids when bundling.
+          const namespace = (prefix, blocks) =>
+            blocks.map(b => b.id ? { ...b, id: `${prefix}-${b.id}` } : b);
+
           // ── Part 1: Midnight Office ──
           allBlocks.push(serviceTitle(1, 'The Midnight Office'));
           const moBlocks = assembleMidnightOffice(midnightOfficeFixed);
-          allBlocks.push(...moBlocks);
+          allBlocks.push(...namespace('mo', moBlocks));
 
           // ── Part 2: Paschal Matins ──
           allBlocks.push(serviceTitle(2, 'Paschal Matins'));
           const matinsBlocks = assemblePaschalMatins(paschalMatinsFixed);
-          allBlocks.push(...matinsBlocks);
+          allBlocks.push(...namespace('pm', matinsBlocks));
 
           // ── Part 3: Paschal Hours ──
           allBlocks.push(serviceTitle(3, 'The Paschal Hours'));
           const hoursBlocks = assemblePaschalHours(paschalHoursFixed);
-          allBlocks.push(...hoursBlocks);
+          allBlocks.push(...namespace('ph', hoursBlocks));
 
           // ── Part 4: Paschal Liturgy ──
           allBlocks.push(serviceTitle(4, 'The Paschal Divine Liturgy'));
@@ -4945,7 +5094,7 @@ function handleRequest(req, res) {
           }
           if (calendarEntry?.liturgy) {
             const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(resolveTranslation(q)), sources);
-            allBlocks.push(...litBlocks);
+            allBlocks.push(...namespace('pl', litBlocks));
           }
 
           // Pronoun switching

@@ -1,0 +1,156 @@
+{
+  "_meta": {
+    "feastKey": "pentecost",
+    "feastLabel": "Holy Pentecost — The Descent of the Holy Spirit",
+    "_source": "OCA service texts 2026-0531-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2026-0531-texts-tt.docx",
+    "_note": "Variable Matins propers for Pentecost. Two-canon structure (1st by Cosmas the Monk Tone 7, 2nd by John of Damascus Tone 4); 2nd-canon irmoi held in `irmos2` and rendered by _assembleCanon. Magnificat is NOT sung between Odes 8 and 9 per Pentecostarion rubric (`skipMagnificat: true`)."
+  },
+
+  "feastRank": "greatFeast",
+  "feastType": "lord",
+  "isGreatFeastOfLord": true,
+  "tone": 8,
+
+  "troparion": {
+    "text": "Blessed art Thou, O Christ our God,\nWho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit,\nand through them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!",
+    "tone": 8,
+    "label": "Troparion of Pentecost"
+  },
+
+  "magnification": {
+    "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy most-holy Spirit,\nWhom Thou didst send from the Father\nonto Thy divine Disciples.",
+    "verses": [
+      "The heavens are telling the glory of God, and the firmament proclaims His handiwork. (Ps. 18:1)",
+      "And all the host of them by the Spirit of His mouth. (Ps. 32:6b)"
+    ],
+    "tone": 8
+  },
+
+  "prokeimenon": {
+    "refrain": "Thy good Spirit shall lead me into the land of righteousness!",
+    "verse": "O Lord, hear my prayer, consider my supplication.",
+    "tone": 4,
+    "_psalmRef": "Ps. 142:12a / 142:1a"
+  },
+
+  "gospel": {
+    "reading": "John 20:19-23",
+    "number": 65,
+    "_note": "\"Having beheld the Resurrection of Christ…\" is NOT sung at Pentecost Matins; Psalm 50 is chanted at once."
+  },
+
+  "postGospelSticheron": {
+    "text": "O heavenly King,\nthe Comforter, the Spirit of Truth,\nWho art everywhere and fillest all things;\nTreasury of blessings\nand Giver of life,\ncome and abide in us,\nand cleanse us from every impurity,\nand save our souls, O Good One!",
+    "tone": 6,
+    "label": "Idiomelon of Pentecost",
+    "_source": "oca-2026-0531-tt"
+  },
+
+  "canon": {
+    "tone": 7,
+    "_secondCanonTone": 4,
+    "_authors": { "first": "Cosmas the Monk", "second": "John of Damascus" },
+    "skipMagnificat": true,
+
+    "ode1": {
+      "irmos": "He destroys His enemies with His mighty hand;\nHe covered Pharaoh and his chariots in the sea.\nLet us sing to Him, for He has been glorified.",
+      "irmos2": "After he was covered by divine darkness,\nMoses, the slow of speech, proclaimed the divinely-written law.\nAfter he purified the eye of his mind,\nhe beheld the \"I AM\" and was taught the knowledge of the Spirit,\nWhom he honored in divinely inspired song."
+    },
+    "ode3": {
+      "irmos": "Thou didst say to Thy Disciples, O Christ:\n\"Remain in Jerusalem until you are clothed with power from on high.\nAnd I will send you another Comforter, like unto Me.\nHe is My Spirit and the Spirit of My Father.\nIn Him you will be established.\"",
+      "irmos2": "Only the prayer of the Prophetess Hannah\nunsealed the bonds of the barren womb\nand stilled the unbearable taunts of the fertile woman;\nfor she offered up a broken spirit to the Lord,\nthe God of knowledge."
+    },
+    "ode4": {
+      "irmos": "Learning of Thy coming at the last times, O Christ,\nthe Prophet raised his voice:\n\"I have heard the report of Thy power, O Lord,\nfor Thou hast come to save all Thine anointed.\"",
+      "irmos2": "O King of Kings and only God from only God,\nonly Word coming forth from the Father,\nas our Benefactor Thou hast sent forth without fail Thine equal and mighty Spirit onto Thine Apostles\nas they sang, \"Glory to Thy might, O Lord.\""
+    },
+    "ode5": {
+      "irmos": "The Spirit of salvation\ncreates a clean heart in the Apostles.\nHe is the new and right Spirit\nput within the faithful.\nHe was conceived in the womb of the Prophets\nand brought forth upon the earth for fear of Thee, O Lord;\nfor Thy commandments are light and peace.",
+      "irmos2": "O children of the Church who appear as light,\nreceive the fiery dew of the Spirit,\nthe redeeming purification from your faults;\nfor now the Law has gone forth from Zion,\nthe Grace of the Spirit which appears as tongues of fire."
+    },
+    "ode6": {
+      "irmos": "I was sailing on the stormy sea of worldly cares,\nwith my sins as companions.\nThey cast me into the sea to drown;\nthey threw me to the soul-destroying beast.\nLike Jonah I cry to Thee, O Christ:\n\"Raise me up from the deadly deep!\"",
+      "irmos2": "As atonement for us and salvation, O Christ,\nThou hast shone forth as Master from the Virgin,\nto snatch the fallen race of Adam from corruption,\nlike the Prophet Jonah from the belly of the whale."
+    },
+    "ode7": {
+      "irmos": "When they were thrown into the fiery furnace,\nthe holy youths sang a hymn\nand thus changed the fire into dew.\nThey cried: \"Blessed art Thou, O Lord, the God of our Fathers!\"",
+      "irmos2": "Horn and pipe and every kind of music raised the call\nto worship a golden image without a soul,\nbut the light-bearing grace of the Comforter\ninspires those who cry:\n\"O Trinity, One in Might and without beginning, blessed art Thou alone!\""
+    },
+    "ode8": {
+      "irmos": "The burning bush on Sinai was not consumed by fire,\nbut made God known to Moses, who was slow of speech and tongue.\nAnd zeal for God made the three Youths immune to the fire\nas they sang: \"Praise the Lord, all His works;\nhighly exalt Him throughout all ages!\"",
+      "irmos2": "The bonds are loosed and the flames are sprinkled with dew\nin a type of the thrice-radiant Godhead.\nThe youths sing praise while all creation blesses its Benefactor,\nthe One Savior and Creator of all."
+    },
+    "ode9": {
+      "irmos": "Without knowing a man thou becamest a mother,\nwithout knowing corruption thou didst bear a Child,\ngiving flesh to the Word, Who creates all things,\ncontaining Him Who cannot be contained,\nencompassing thine infinite Maker:\nO Virgin Theotokos, we magnify thee.",
+      "irmos2": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee."
+    },
+
+    "kontakion": {
+      "text": "When the Most High came down and confused the tongues,\nHe divided the nations;\nbut when He distributed the tongues of fire, He called all to unity.\nTherefore, with one voice we glorify the All-holy Spirit.",
+      "tone": 8,
+      "label": "Kontakion of Pentecost"
+    }
+  },
+
+  "exapostilaria": [
+    {
+      "text": "O All-holy Spirit,\nproceeding from the Father,\nand dwelling through the Son\nin the unlettered Disciples,\nsave and sanctify all those who acknowledge Thee as God.",
+      "tone": 3,
+      "melody": "Thou didst cover the heavens with stars",
+      "label": "1st Exapostilarion",
+      "_source": "oca-2026-0531-tt"
+    },
+    {
+      "text": "The Father is Light, the Son is Light,\nthe Holy Spirit is also Light!\nHe was sent to the apostles in fiery tongues.\nThrough Him the whole world is enlightened\nand adores the Holy Trinity.",
+      "tone": 3,
+      "melody": "Thou didst cover the heavens with stars",
+      "label": "2nd Exapostilarion",
+      "_source": "oca-2026-0531-tt"
+    }
+  ],
+
+  "lauds": {
+    "tone": 4,
+    "stichera": [
+      {
+        "verse": "To execute on them the judgment written. This is glory for all His faithful ones. (Ps. 149:9)",
+        "text": "Today in the city of David\nall the nations beheld glorious wonders,\nwhen the Disciples of Christ had gathered together,\nand the Holy Spirit came down in tongues of fire,\nas Luke, inspired of God, records:\n\"A sound came like the rushing of a mighty wind;\nit filled all the house where they were sitting,\nand they all began to proclaim strange words, strange doctrines,\nstrange teachings of the Holy Trinity.\"",
+        "tone": 4
+      },
+      {
+        "verse": "Praise God in His sanctuary; praise Him in His mighty firmament. (Ps. 150:1)",
+        "repeat": true
+      },
+      {
+        "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+        "text": "The Holy Spirit was, and is, and ever shall be,\nwithout beginning, without ending,\nalways ranked and numbered with the Father and the Son;\nHe is Life and the Giver of life;\nHe is Light and the Giver of light;\nall-good and the Fountain of goodness,\nthrough Him the Father is known, the Son is glorified;\nthrough Him all people proclaim one power, one ranking,\none worship of the Holy Trinity.",
+        "tone": 4
+      },
+      {
+        "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+        "repeat": true
+      },
+      {
+        "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+        "text": "The Holy Spirit is Light and Life,\na living Fountain of spiritual gifts,\nthe Spirit of wisdom and understanding,\nall-knowing, upright and good:\nHe leads us and washes away our sins.\nHe is God, and He makes us gods;\nHe is Fire proceeding from Fire,\nspeaking and acting and distributing gifts.\nThrough Him all the Prophets, Martyrs and Apostles of God are crowned.\nStrange account, strange and wonderful sight:\nfire is divided for distributing gifts.",
+        "tone": 4
+      },
+      {
+        "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+        "repeat": true
+      }
+    ],
+    "doxastikon": {
+      "text": "O heavenly King,\nthe Comforter, the Spirit of Truth,\nWho art everywhere and fillest all things;\nTreasury of blessings\nand Giver of life,\ncome and abide in us,\nand cleanse us from every impurity,\nand save our souls, O Good One!",
+      "tone": 6,
+      "author": "Idiomelon of Pentecost",
+      "_source": "oca-2026-0531-tt"
+    }
+  },
+
+  "troparionAfterDoxology": {
+    "text": "Blessed art Thou, O Christ our God,\nWho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit,\nand through them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!",
+    "tone": 8
+  }
+}

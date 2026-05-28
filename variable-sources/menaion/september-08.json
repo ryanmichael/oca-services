@@ -1,0 +1,150 @@
+{
+  "_meta": {
+    "feast": "The Nativity of Our Most Holy Lady, the Theotokos and Ever-Virgin Mary",
+    "feastKey": "nativityTheotokos",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-0908-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-0908-texts-tt.docx",
+    "_note": "Single-canon (1st Canon Tone 2 by John of Damascus) with Tone 8 Katavasiae from the Canon of the Elevation of the Cross (Aug 6 → Sep 14 katavasiae cycle). Only the 2nd Exapostilarion (festal) is given; the 1st would be resurrectional and is omitted on weekday Theotokos feasts. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`)."
+  },
+
+  "troparion": {
+    "text": "Thy nativity, O Virgin,\nhas proclaimed joy to the whole universe!\nThe Sun of righteousness, Christ our God,\nhas shone from thee, O Theotokos.\nBy annulling the curse,\nHe bestowed a blessing.\nBy destroying death, He has granted us eternal life.",
+    "tone": 4,
+    "label": "Troparion of the Nativity of the Theotokos"
+  },
+  "kontakion": {
+    "text": "By thy nativity, O most pure Virgin,\nJoachim and Anna are freed from barrenness,\nAdam and Eve — from the corruption of death.\nAnd we, thy people, freed from the guilt of sin, celebrate and sing to thee:\n\"The barren woman gives birth to the Theotokos, the nourisher of our Life.\"",
+    "tone": 4,
+    "label": "Kontakion of the Nativity of the Theotokos"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "theotokos"
+    },
+
+    "magnification": {
+      "refrain": "We magnify thee,\nO Most-Holy Virgin,\nand we honor thy holy parents\nand praise thine all-glorious nativity.",
+      "verses": [
+        "O Lord, remember David and all his meekness. (Ps. 131:1)",
+        "Arise, O Lord, into Thy rest; Thou and the Ark of Thy Holiness. (Ps. 131:8)"
+      ],
+      "tone": 4
+    },
+
+    "prokeimenon": {
+      "refrain": "I will remember thy name from generation to generation.",
+      "verse": "My heart overflowed with a good word.",
+      "tone": 4,
+      "_psalmRef": "Ps. 44:16 / 44:1a"
+    },
+
+    "gospel": {
+      "reading": "Luke 1:39-49, 56",
+      "number": 4,
+      "_note": "The Visitation — Mary visits Elizabeth. \"My soul magnifies the Lord…\""
+    },
+
+    "postGospelSticheron": {
+      "text": "This is the day of the Lord!\nRejoice, O peoples,\nfor, behold, the bridal chamber of the Light, the book of the Word of Life,\nhas come forth from the womb!\nThe gate that faces the East is born\nand awaits the entry of the Great Priest.\nShe alone admits Christ into the world\nfor the salvation of our souls.",
+      "tone": 6,
+      "label": "Idiomelon of the Nativity of the Theotokos",
+      "_source": "oca-2025-0908-tt"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_katavasiaTone": 8,
+      "_author": "John of Damascus",
+      "_katavasiaeNote": "Katavasiae Tone 8 from the Canon of the Elevation of the Cross (by Cosmas the Monk), per the Aug 6 → Sep 14 cycle.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "Come, O peoples, let us sing a song to Christ our God\nWho parted the sea and through it led His people,\nwhom He had brought out of bondage in Egypt;\nfor He has been glorified!",
+        "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
+      },
+      "ode3": {
+        "irmos": "Establish us in Thyself, O Lord;\nThou Who on the Tree didst put sin to death,\nand implant the fear of Thee in the hearts\nof us who sing praises to Thee.",
+        "katavasia": "The rod of Aaron is an image of this mystery,\nfor when it budded it revealed who should be the priest;\nand for the Church, which before was barren,\nthe Tree of the Cross has blossomed forth\nfor her strength and firm foundation."
+      },
+      "ode4": {
+        "irmos": "I have heard, O Lord, the report of Thy dispensation,\nand I have glorified Thee,\nthe only Lover of mankind.",
+        "katavasia": "I have heard the mystery of Thy dispensation, O Lord,\nI have meditated on Thy works\nand have glorified Thy Godhead."
+      },
+      "ode5": {
+        "irmos": "Thou hast dispelled the mist of dark sayings obscurely worded,\nand hast illumined the hearts of the faithful\nby the fulfillment of the truth through the Maiden of God;\nguide us also by Thy light, O Christ!",
+        "katavasia": "O thrice-blessed Tree, on which Christ the King and Lord was stretched!\nThrough thee the one who deceived us through a tree has fallen,\ncaught by the bait of God, Who was nailed to thee in the flesh,\nand Who grants peace to our souls."
+      },
+      "ode6": {
+        "irmos": "From within the belly of the whale Jonah cried to the Lord:\n\"Lead me up, I pray Thee, from the depths of hell,\nthat with a voice of praise\nand in the Spirit of truth\nI may sacrifice to Thee as my Deliverer!\"",
+        "katavasia": "In the belly of the sea monster, Jonah stretched out his hands in the form of a cross,\nplainly prefiguring the saving Passion.\nWhen he emerged from there on the third day,\nhe prefigured the transcendent Resurrection of Christ our God,\nWho was nailed to the Cross in the flesh\nand by His rising on the third day enlightened the world."
+      },
+      "ode7": {
+        "irmos": "The bush on the mountain unconsumed by fire\nand the Chaldean furnace that shed dew\nplainly prefigured thee, the Bride of God,\nfor thou didst receive, without being consumed,\nthe divine and immaterial Fire in a material womb.\nTherefore, we cry to Him Who was born of thee:\n\"Blessed art Thou, the God of our Fathers!\"",
+        "katavasia": "The senseless decree of the impious tyrant,\nspewing threats and blasphemy hateful to God,\nbrought the people to confusion.\nYet the three Children could not be frightened\neither by the brutal fury or the roaring fire,\nbut in the wind, moist with dew, that blew against it,\nthey stood together, and they sang:\n\"O praised above all, blessed art Thou,\nour God, and the God of our Fathers!\""
+      },
+      "ode8": {
+        "irmos": "In the furnace of the Children,\nonce Thou didst prefigure Thine own Mother, O Lord;\nand this type delivered them from the fire\nas they walked in the midst of it unconsumed.\nTo her do we sing praises\nas Thou hast manifested her today to the ends of the earth,\nand we exalt her above all forever.",
+        "katavasia": "O Children, equal in number to the Trinity,\nbless God the Father, the Creator;\npraise the Word, Who descended and changed the fire to dew,\nand exalt above all, to all ages,\nthe All-Holy Spirit, Who gives life to all!"
+      },
+      "ode9": {
+        "irmos": "Refrain: Magnify, O my soul, the most glorious birth of the Mother of God!\n\nHeirmos: From thy virgin womb thou ineffably gavest a body\nto the Light that was before the sun,\neven God Who has shone forth upon us,\nand in the body came to dwell among us.\nBlessed and all-pure Theotokos, we magnify thee!",
+        "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
+      },
+
+      "kontakion": {
+        "text": "By thy nativity, O most pure Virgin,\nJoachim and Anna are freed from barrenness,\nAdam and Eve — from the corruption of death.\nAnd we, thy people, freed from the guilt of sin, celebrate and sing to thee:\n\"The barren woman gives birth to the Theotokos, the nourisher of our Life.\"",
+        "tone": 4,
+        "label": "Kontakion of the Nativity of the Theotokos"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Be renewed, O Adam, and be magnified, O Eve,\nyou prophets dance with the apostles and the righteous;\nlet there be common joy in the world among angels and mankind.\nFor the Theotokos is born today of righteous Joachim and Anna.",
+      "tone": 2,
+      "label": "2nd Exapostilarion of the Nativity of the Theotokos",
+      "repeat": 3,
+      "_source": "oca-2025-0908-tt"
+    },
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "Oh, the marvelous wonder!\nThe source of Life is born of a barren woman,\nand grace gloriously begins to bear its fruit.\nRejoice, Joachim, who have become the father of the Theotokos!\nThere is no other like thee among earthborn fathers, O man inspired by God;\nfor the Maiden in whom God would come to dwell,\nthe Tabernacle of God, the all-holy Mountain,\nhas been given to us through thee.",
+          "tone": 1,
+          "melody": "Oh, the Marvelous Wonder"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Oh, the marvelous wonder!\nThe fruit of a barren woman\nhas shone forth at the behest of the Almighty Maker of all\nand mightily destroyed the barrenness of this world, which was fruitless in good things.\nYou mothers, dance with the mother of the Theotokos and cry:\n\"Rejoice, O Full of Grace, the Lord is with thee,\nHe Who grants the world through thee His great mercy!\"",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "A living pillar of chastity\nand bright vessel shining with grace,\nglorious Anna has given birth to the true stronghold of virginity,\nthe divine flower, who manifestly bestows the beauty of virginity\non all virgins and women who desire that grace,\nand grants to all the faithful great mercy.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "This is the day of the Lord!\nRejoice, O peoples,\nfor, behold, the bridal chamber of the Light, the book of the Word of Life,\nhas come forth from the womb!\nThe gate that faces the East is born\nand awaits the entry of the Great Priest.\nShe alone admits Christ into the world\nfor the salvation of our souls.",
+        "tone": 6,
+        "author": "Doxastikon of the Nativity of the Theotokos",
+        "_source": "oca-2025-0908-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Thy nativity, O Virgin,\nhas proclaimed joy to the whole universe!\nThe Sun of righteousness, Christ our God,\nhas shone from thee, O Theotokos.\nBy annulling the curse,\nHe bestowed a blessing.\nBy destroying death, He has granted us eternal life.",
+      "tone": 4
+    }
+  }
+}

@@ -273,18 +273,21 @@ function assembleKathismaReading(kathNum, section) {
   const kathismata = getKathismata();
   const psalter    = getPsalter();
   const kathisma   = kathismata[String(kathNum)];
+  // Include the kathisma number in every id so multi-kathisma services
+  // (e.g. Matins reading both Kathisma 2 and Kathisma 3) don't collide.
+  const pre = `k${kathNum}`;
   if (!kathisma) {
-    return [makeBlock('kathisma-rubric', section, 'rubric', null, `KATHISMA ${kathNum}`)];
+    return [makeBlock(`${pre}-rubric`, section, 'rubric', null, `KATHISMA ${kathNum}`)];
   }
 
   const blocks = [];
-  blocks.push(makeBlock('kathisma-rubric', section, 'rubric', null,
+  blocks.push(makeBlock(`${pre}-rubric`, section, 'rubric', null,
     kathisma.label.toUpperCase()));
 
   const GLORY_ALLELUIA = [
-    makeBlock('k-glory', section, 'doxology', 'reader',
+    makeBlock(`${pre}-glory`, section, 'doxology', 'reader',
       'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'),
-    makeBlock('k-alleluia', section, 'response', 'reader',
+    makeBlock(`${pre}-alleluia`, section, 'response', 'reader',
       'Alleluia, alleluia, alleluia. Glory to Thee, O God. (×3)'),
   ];
 
@@ -299,7 +302,7 @@ function assembleKathismaReading(kathNum, section) {
         // Skip superscription (title) verse — psalm number is the section title
         const verses = psalmBody(psalm);
         const text = verses.join('\n\n');
-        blocks.push(makeBlock(`k-ps${psalmNum}`, psSection, 'prayer', 'reader', text));
+        blocks.push(makeBlock(`${pre}-ps${psalmNum}`, psSection, 'prayer', 'reader', text));
       });
     } else {
       // Psalm 118 verse-range stasis
@@ -308,7 +311,7 @@ function assembleKathismaReading(kathNum, section) {
       if (psalm) {
         const psSection = `Psalm ${psalmNum}:${fromVerse}–${toVerse}`;
         const verses = psalm.verses.slice(fromVerse - 1, toVerse);
-        blocks.push(makeBlock(`k-ps${psalmNum}-${fromVerse}`, psSection, 'prayer', 'reader',
+        blocks.push(makeBlock(`${pre}-ps${psalmNum}-${fromVerse}`, psSection, 'prayer', 'reader',
           verses.join('\n\n')));
       }
     }
@@ -316,7 +319,7 @@ function assembleKathismaReading(kathNum, section) {
     // Glory + Alleluia after stases 1 and 2 (not after the last stasis)
     if (stasisIdx < kathisma.stases.length - 1) {
       GLORY_ALLELUIA.forEach((b, i) => {
-        blocks.push({ ...b, id: `k-s${stasisIdx}-sep${i}` });
+        blocks.push({ ...b, id: `${pre}-s${stasisIdx}-sep${i}` });
       });
     }
   });
@@ -876,16 +879,18 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
 
   // Variable stichera (from Menaion/Triodion/Pentecostarion when available)
   if (lityaSpec && lityaSpec.slots && lityaSpec.slots.length > 0) {
+    let hymnIdx = 0;
     for (const slot of lityaSpec.slots) {
       const sourceTexts = resolveSource(slot.source, slot.key, sources);
       if (!sourceTexts) continue;
       const hymns = sourceTexts.hymns || (sourceTexts.text ? [sourceTexts] : []);
-      hymns.forEach((hymn, i) => {
+      for (const hymn of hymns) {
         blocks.push(makeBlock(
-          `litya-hymn-${i}`, section, 'hymn', 'choir', hymn.text,
+          `litya-hymn-${hymnIdx}`, section, 'hymn', 'choir', hymn.text,
           { tone: slot.tone, source: slot.source, label: slot.label }
         ));
-      });
+        hymnIdx++;
+      }
     }
   }
 
@@ -1692,7 +1697,7 @@ function _litCatechumens(f) {
     blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
-    makeBlock('cat-p2',        section, 'prayer',   'deacon', lit.petition2),
+    makeBlock('cat-petition2', section, 'prayer',   'deacon', lit.petition2),
     makeBlock('cat-bow',       section, 'prayer',   'deacon', lit.bowHeads),
     makeBlock('cat-bow-resp',  section, 'response', 'choir',  lit.bowHeadsResponse),
     makeBlock('cat-excl',      section, 'prayer',   'priest', lit.exclamation),
@@ -4074,8 +4079,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s1-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis1.tone }));
     }
@@ -4113,8 +4120,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s2-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis2.tone }));
     }
@@ -4152,8 +4161,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s3-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis3.tone }));
     }
@@ -4907,12 +4918,16 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     // Magnification (for great feasts)
     if (spec.magnification) {
       const mag = spec.magnification;
-      blocks.push(S('magnification', section, 'hymn', 'choir', mag.refrain, { label: 'Magnification' }));
-      if (mag.psalmVerses) {
-        for (let i = 0; i < mag.psalmVerses.length; i++) {
-          blocks.push(S(`mag-v${i}`, section, 'verse', 'reader', mag.psalmVerses[i].text));
-          blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain));
-        }
+      const magTone = mag.tone;
+      blocks.push(S('magnification', section, 'hymn', 'choir', mag.refrain, { tone: magTone, label: 'Magnification' }));
+      // Accept either `psalmVerses: [{ text, ref }]` (Annunciation-style) or
+      // `verses: ["...", "..."]` (Pentecost/Ascension/Dormition-style).
+      const verses = mag.psalmVerses
+        ? mag.psalmVerses.map(v => v.text || v)
+        : (mag.verses || []);
+      for (let i = 0; i < verses.length; i++) {
+        blocks.push(S(`mag-v${i}`, section, 'verse', 'reader', verses[i]));
+        blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain, { tone: magTone }));
       }
     }
 
@@ -4997,8 +5012,14 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
       { label: g.reading, source: g.source || 'gospel' }));
   }
 
-  // ── 12. Having Beheld the Resurrection (Sundays only) ──────────────────────
-  if (isSunday) {
+  // ── 12. Having Beheld the Resurrection ─────────────────────────────────────
+  // Default: Sundays sing it, except great feasts of the Lord (which replace
+  // the resurrectional hymnography). Weekday feasts can opt back in via
+  // `spec.includeHavingBeheld` (e.g., Ascension matins per OCA rubric).
+  const renderHavingBeheld = spec.includeHavingBeheld != null
+    ? spec.includeHavingBeheld
+    : (isSunday && !spec.isGreatFeastOfLord);
+  if (renderHavingBeheld) {
     blocks.push(S('having-beheld', 'Having Beheld the Resurrection', 'hymn', 'choir',
       matinsFixed.havingBeheld.text));
   }
@@ -5152,6 +5173,32 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
         trop.text, { tone: trop.tone }));
     }
 
+    // ── Veneration stichera (Elevation of the Cross procession, etc.) ──
+    // After the Great Doxology and the festal troparion, when the clergy
+    // and faithful venerate (e.g. the Cross on Sep 14), a sequence of
+    // idiomela is sung during the procession. Glory/Now is rendered if
+    // the spec includes a `glory` block.
+    if (spec.venerationStichera) {
+      const v = spec.venerationStichera;
+      const section = v.section || 'Veneration';
+      if (v.rubric) {
+        blocks.push(S('ven-rubric', section, 'rubric', null, v.rubric));
+      }
+      (v.stichera || []).forEach((s, i) => {
+        blocks.push(S(`ven-${i}`, section, 'hymn', 'choir', s.text,
+          { tone: s.tone, label: s.label || s.author, _source: s._source }));
+      });
+      if (v.glory) {
+        blocks.push(S('ven-glory', section, 'doxology', null,
+          vespersFixed.doxology.gloryNow));
+        blocks.push(S('ven-glory-hymn', section, 'hymn', 'choir', v.glory.text,
+          { tone: v.glory.tone, label: v.glory.label || v.glory.author, _source: v.glory._source }));
+      }
+      if (v.closingRubric) {
+        blocks.push(S('ven-closing', section, 'rubric', null, v.closingRubric));
+      }
+    }
+
     // ── Litanies (no-aposticha path) ──────────────────────────────────────
     blocks.push(...assembleAugmentedLitany(vespersFixed));
     blocks.push(..._assembleMorningLitany(matinsFixed, vespersFixed));
@@ -5239,6 +5286,12 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
         blocks.push(S(`canon-ode${odeNum}-irmos`, section, 'hymn', 'choir',
           odeData.irmos, { tone, label: `Ode ${odeNum} — Irmos` }));
       }
+      // Second-canon irmos (e.g., Pentecost: 1st canon Tone 7 + 2nd canon Tone 4)
+      if (odeData.irmos2) {
+        const tone2 = odeData.tone2 || canonSpec._secondCanonTone || tone;
+        blocks.push(S(`canon-ode${odeNum}-irmos2`, section, 'hymn', 'choir',
+          odeData.irmos2, { tone: tone2, label: `Ode ${odeNum} — Irmos (2nd Canon)` }));
+      }
 
       // Troparia (if provided)
       if (odeData.troparia) {
@@ -5270,10 +5323,12 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
           `[Troparia of Ode ${odeNum} — from Octoechos, Menaion, and/or Triodion]`));
       }
 
-      // Katavasia
+      // Katavasia (may have its own tone — e.g. Ascension uses Tone 5 canon
+      // but Tone 4 katavasiai borrowed from the 2nd Pentecost canon)
       if (odeData.katavasia) {
+        const katTone = odeData.katavasiaTone || canonSpec._katavasiaTone || tone;
         blocks.push(S(`canon-ode${odeNum}-katav`, section, 'hymn', 'choir',
-          odeData.katavasia, { tone, label: 'Katavasia' }));
+          odeData.katavasia, { tone: katTone, label: 'Katavasia' }));
       }
 
       // Megalynarion for Ode 9 (great feasts)
@@ -5356,7 +5411,8 @@ function _assembleMorningLitany(matinsFixed, vespersFixed) {
     makeBlock('ml-peace-response', section, 'response', 'choir', vespersFixed.responses.andToThySpirit),
     makeBlock('ml-bow', section, 'prayer', 'deacon', 'Let us bow our heads unto the Lord.'),
     makeBlock('ml-bow-response', section, 'response', 'choir', vespersFixed.responses.bowHeads),
-    makeBlock('ml-bow-prayer', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.text),
+    makeBlock('ml-bow-prayer', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.prayer),
+    makeBlock('ml-bow-excl', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.exclamation),
     makeBlock('ml-bow-amen', section, 'response', 'choir', 'Amen.'),
   );
   return blocks;

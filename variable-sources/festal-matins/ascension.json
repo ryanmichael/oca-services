@@ -1,0 +1,141 @@
+{
+  "_meta": {
+    "feastKey": "ascension",
+    "feastLabel": "The Ascension of Our Lord",
+    "_source": "OCA service texts 2026-0521-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2026-0521-texts-tt.docx",
+    "_note": "Single-canon structure (1st Canon Tone 5 by John the Monk) with Tone 4 katavasiai drawn from the 2nd Canon of Pentecost (by John of Damascus). Single exapostilarion (sung thrice in practice). \"Having beheld the Resurrection\" IS sung at Ascension Matins per OCA rubric (`includeHavingBeheld: true`), unlike Pentecost."
+  },
+
+  "feastRank": "greatFeast",
+  "feastType": "lord",
+  "isGreatFeastOfLord": true,
+  "includeHavingBeheld": true,
+  "tone": 4,
+
+  "troparion": {
+    "text": "Thou didst ascend in glory, O Christ our God,\ngranting joy to Thy Disciples by the promise of the Holy Spirit.\nThrough the blessing, they were assured\nthat Thou art the Son of God,\nthe Redeemer of the world!",
+    "tone": 4,
+    "label": "Troparion of the Ascension"
+  },
+
+  "magnification": {
+    "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy divine Ascension into heaven\nwith Thy most pure Body.",
+    "verses": [
+      "Oh, clap your hands, all you peoples. Shout to God with loud songs of joy! (Ps. 46:1)",
+      "For the Lord, the Most High is terrible; a great God over all the earth. (Ps. 46:2)"
+    ],
+    "tone": 4
+  },
+
+  "prokeimenon": {
+    "refrain": "God has gone up with a shout; the Lord with the sound of a trumpet!",
+    "verse": "Oh, clap your hands, all you peoples. Shout to God with loud songs of joy!",
+    "tone": 4,
+    "_psalmRef": "Ps. 46:5 / 46:1"
+  },
+
+  "gospel": {
+    "reading": "Mark 16:9-20",
+    "number": 71,
+    "_note": "Festal Matins Gospel of the Ascension."
+  },
+
+  "postGospelSticheron": {
+    "text": "Today the Powers above beheld our nature in the heavens\nand marveled at the strange manner of the ascent,\nin perplexity saying to one another:\n\"Who is this Who comes?\"\nBut seeing their own Master,\nthey gave the command to lift up the heavenly gates.\nWith them we unceasingly sing in praise of Thee,\nWho art coming again from there in the flesh\nas Judge of all and God Almighty.",
+    "tone": 6,
+    "label": "Idiomelon of the Ascension",
+    "_source": "oca-2026-0521-tt"
+  },
+
+  "canon": {
+    "tone": 5,
+    "_katavasiaTone": 4,
+    "_author": "John the Monk",
+    "_katavasiaeNote": "Katavasiae Tone 4 from the 2nd Canon of Pentecost (by John of Damascus).",
+
+    "ode1": {
+      "irmos": "To God the Savior\nWho led the people through the sea with dry feet,\nand drowned Pharaoh with all his host:\nto Him alone let us sing,\nfor He has been glorified.",
+      "katavasia": "After he was covered by divine darkness,\nMoses, the slow of speech, proclaimed the divinely-written law.\nAfter he purified the eye of his mind,\nhe beheld the \"I AM\" and was taught the knowledge of the Spirit,\nWhom he honored in divinely inspired song."
+    },
+    "ode3": {
+      "irmos": "By the power of Thy Cross, O Christ,\nestablish my understanding,\nthat I may hymn and glorify Thy saving Ascension.",
+      "katavasia": "Only the prayer of the Prophetess Hannah\nunsealed the bonds of the barren womb\nand stilled the unbearable taunts of the fertile woman;\nfor she offered up a broken spirit to the Lord,\nthe God of knowledge."
+    },
+    "ode4": {
+      "irmos": "I have heard the report, O Lord, of the might of Thy Cross,\nhow Paradise was opened through it,\nand I cried out: \"Glory to Thy power, O Lord!\"",
+      "katavasia": "O King of Kings and only God from only God,\nonly Word coming forth from the Father,\nas our Benefactor Thou hast sent forth without fail Thine equal and mighty Spirit onto Thine Apostles\nas they sang, \"Glory to Thy might, O Lord.\""
+    },
+    "ode5": {
+      "irmos": "Rising early, we cry out to Thee, O Lord:\n\"Save us;\nfor Thou art our God;\nwe know no other but Thee!\"",
+      "katavasia": "O children of the Church who appear as light,\nreceive the fiery dew of the Spirit,\nthe redeeming purification from your faults;\nfor now the Law has gone forth from Zion,\nthe Grace of the Spirit which appears as tongues of fire."
+    },
+    "ode6": {
+      "irmos": "The deep closed round about me,\nthe whale became my grave;\nbut I cried out to Thee, Who lovest mankind,\nand Thy right hand saved me, O Lord.",
+      "katavasia": "As atonement for us and salvation, O Christ,\nThou hast shone forth as Master from the Virgin,\nto snatch the fallen race of Adam from corruption,\nlike the Prophet Jonah from the belly of the whale."
+    },
+    "ode7": {
+      "irmos": "Thou didst save the Youths\nwho in the fiery furnace sang Thy praise:\n\"Blessed art Thou, the God of our fathers.\"",
+      "katavasia": "Horn and pipe and every kind of music raised the call\nto worship a golden image without a soul,\nbut the light-bearing grace of the Comforter\ninspires those who cry:\n\"O Trinity, One in Might and without beginning, blessed art Thou alone!\""
+    },
+    "ode8": {
+      "irmos": "The Son and God, begotten of the Father before the ages,\nand in the last times made flesh of a Virgin Mother,\nyou priests, extol,\nand, you people, highly exalt unto all ages.",
+      "katavasia": "The bonds are loosed and the flames are sprinkled with dew\nin a type of the thrice-radiant Godhead.\nThe youths sing praise while all creation blesses its Benefactor,\nthe One Savior and Creator of all."
+    },
+    "ode9": {
+      "irmos": "Magnify, O my soul,\nChrist the Giver of Life,\nWho has ascended from earth to heaven!\nWe the faithful, with one accord,\nmagnify thee, the Mother of God,\nwho, beyond reason and understanding,\nineffably gave birth in time to the Timeless One.",
+      "katavasia": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee."
+    },
+
+    "kontakion": {
+      "text": "When Thou hadst fulfilled the dispensation for our sake,\nand united earth to heaven,\nThou didst ascend in glory, O Christ our God,\nnot being parted from those who love Thee,\nbut remaining with them and crying:\n\"I am with you, and there is no one against you!\"",
+      "tone": 6,
+      "label": "Kontakion of the Ascension"
+    }
+  },
+
+  "exapostilarion": {
+    "text": "With Thy disciples watching Thee, O Christ,\nThou wast taken up to the Father to take Thy seat with Him.\nAngels ran forward crying out:\n\"Lift up the gates, lift them up!\nFor the King has gone up to the glory, the source of light.\"",
+    "tone": 3,
+    "label": "Exapostilarion of the Ascension",
+    "repeat": 3,
+    "_source": "oca-2026-0521-tt"
+  },
+
+  "lauds": {
+    "tone": 1,
+    "stichera": [
+      {
+        "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+        "text": "Let us who are in the world keep festival like the Angels,\nand to God Who is borne upon a throne of glory\nlet us sing this hymn aloud:\n\"Holy art Thou, heavenly Father;\nHoly art Thou, coeternal Word;\nHoly art Thou, All-holy Spirit.\"",
+        "tone": 1,
+        "melody": "Joy of the Heavenly Hosts"
+      },
+      {
+        "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+        "repeat": true
+      },
+      {
+        "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+        "text": "The leaders of the Angels\nwitnessed the strangeness of Thine ascent, O Savior,\nand said to one another in perplexity: \"What is this sight?\nHe Whom we see is human in form,\nyet as God He rises far above the heavens\nascending there in the flesh.\"",
+        "tone": 1
+      },
+      {
+        "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+        "text": "The men of Galilee saw Thee, O Word,\ntaken up from the mount of Olives in Thy body,\nand heard Angels crying out to them:\n\"Why do you stand gazing? This Jesus will come again in the flesh\nin the same way as you have seen Him.\"",
+        "tone": 1
+      }
+    ],
+    "doxastikon": {
+      "text": "Thou wast born, as Thou Thyself didst will,\nand didst appear as Thou Thyself didst desire;\nThou didst suffer in the flesh, O our God,\nand didst rise from the dead, having trampled on death.\nThou wast taken up in glory, filling all things,\nand Thou didst send us the Divine Spirit,\nthat we may praise and glorify Thy Godhead.",
+      "tone": 2,
+      "author": "Doxastikon of the Ascension",
+      "_source": "oca-2026-0521-tt"
+    }
+  },
+
+  "troparionAfterDoxology": {
+    "text": "Thou didst ascend in glory, O Christ our God,\ngranting joy to Thy Disciples by the promise of the Holy Spirit.\nThrough the blessing, they were assured\nthat Thou art the Son of God,\nthe Redeemer of the world!",
+    "tone": 4
+  }
+}

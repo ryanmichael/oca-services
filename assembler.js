@@ -4907,7 +4907,8 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     // Magnification (for great feasts)
     if (spec.magnification) {
       const mag = spec.magnification;
-      blocks.push(S('magnification', section, 'hymn', 'choir', mag.refrain, { label: 'Magnification' }));
+      const magTone = mag.tone;
+      blocks.push(S('magnification', section, 'hymn', 'choir', mag.refrain, { tone: magTone, label: 'Magnification' }));
       // Accept either `psalmVerses: [{ text, ref }]` (Annunciation-style) or
       // `verses: ["...", "..."]` (Pentecost/Ascension/Dormition-style).
       const verses = mag.psalmVerses
@@ -4915,7 +4916,7 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
         : (mag.verses || []);
       for (let i = 0; i < verses.length; i++) {
         blocks.push(S(`mag-v${i}`, section, 'verse', 'reader', verses[i]));
-        blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain));
+        blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain, { tone: magTone }));
       }
     }
 
@@ -5373,7 +5374,8 @@ function _assembleMorningLitany(matinsFixed, vespersFixed) {
     makeBlock('ml-peace-response', section, 'response', 'choir', vespersFixed.responses.andToThySpirit),
     makeBlock('ml-bow', section, 'prayer', 'deacon', 'Let us bow our heads unto the Lord.'),
     makeBlock('ml-bow-response', section, 'response', 'choir', vespersFixed.responses.bowHeads),
-    makeBlock('ml-bow-prayer', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.text),
+    makeBlock('ml-bow-prayer', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.prayer),
+    makeBlock('ml-bow-excl', section, 'prayer', 'priest', matinsFixed.prayers.bowHeadsMorning.exclamation),
     makeBlock('ml-bow-amen', section, 'response', 'choir', 'Amen.'),
   );
   return blocks;

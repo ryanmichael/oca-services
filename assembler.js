@@ -1692,7 +1692,7 @@ function _litCatechumens(f) {
     blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
-    makeBlock('cat-p2',        section, 'prayer',   'deacon', lit.petition2),
+    makeBlock('cat-petition2', section, 'prayer',   'deacon', lit.petition2),
     makeBlock('cat-bow',       section, 'prayer',   'deacon', lit.bowHeads),
     makeBlock('cat-bow-resp',  section, 'response', 'choir',  lit.bowHeadsResponse),
     makeBlock('cat-excl',      section, 'prayer',   'priest', lit.exclamation),

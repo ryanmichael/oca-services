@@ -1961,9 +1961,12 @@ function getGreatFeastKey(date) {
   const fixedKey = FIXED[`${month}-${day}`];
   if (fixedKey) return fixedKey;
 
-  // Moveable feasts
+  // Moveable feasts. Use Math.floor — pascha is midnight UTC while ctx dates
+  // can be any time of day; Math.round(-0.5) === -0 === 0, which falsely
+  // identifies the day BEFORE Pascha as Pascha. Math.floor matches the
+  // convention used throughout this file.
   const pascha = calculatePascha(date.getUTCFullYear());
-  const diff = Math.round((date - pascha) / DAY_MS);
+  const diff = Math.floor((date - pascha) / DAY_MS);
 
   if (diff === 0)  return 'pascha';
   if (diff === -7) return 'palmSunday';

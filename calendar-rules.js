@@ -1878,6 +1878,13 @@ function getTrisagionSubstitution(date) {
   // Great Saturday
   if (season === 'holyWeek' && dow === 'saturday') return 'baptismal';
 
+  // Pascha + Bright Week — the entire Paschal Octave (Pascha through Bright Sat)
+  if (season === 'brightWeek') return 'baptismal';
+
+  // Pentecost — Pascha+49
+  const pascha = calculatePascha(date.getUTCFullYear());
+  if (Math.floor((date - pascha) / DAY_MS) === 49) return 'baptismal';
+
   return 'typical';
 }
 

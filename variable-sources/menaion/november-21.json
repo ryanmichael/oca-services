@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "feast": "The Entry of the Most Holy Theotokos into the Temple",
+    "feastKey": "entryTheotokos",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-1121-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-1121-texts-tt.docx",
+    "_note": "Single-canon (1st Canon Tone 4 by George of Nicomedia) with Tone 1 Katavasiae from the 1st Canon of the Nativity of Christ (by Cosmas of Maiuma) — Nov 21 → Dec 25 katavasiae cycle. The OCA DOCX does not include the exapostilarion text; it is omitted here and may be added later from a Menaion source. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`)."
+  },
+
+  "troparion": {
+    "text": "Today is the prelude of the good will of God,\nof the preaching of the salvation of mankind.\nThe Virgin appears in the Temple of God,\nin anticipation proclaiming Christ to all.\nLet us rejoice and sing to her:\n\"Rejoice, O Fulfillment\nof the Creator's dispensation!\"",
+    "tone": 4,
+    "label": "Troparion of the Entry"
+  },
+  "kontakion": {
+    "text": "The most pure Temple of the Savior;\nthe precious Chamber and Virgin;\nthe sacred Treasure of the glory of God,\nis presented today to the house of the Lord.\nShe brings with her the grace of the Spirit,\ntherefore, the angels of God praise her:\n\"Truly this woman is the abode of Heaven!\"",
+    "tone": 4,
+    "label": "Kontakion of the Entry"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "theotokos"
+    },
+
+    "magnification": {
+      "refrain": "We magnify thee,\nO most holy Virgin, Maiden chosen by God;\nand we honor thine Entrance\ninto the Temple of the Lord.",
+      "verses": [
+        "Great is the Lord and greatly to be praised in the city of our God and on His holy mountain. (Ps. 47:1)",
+        "Holy is Thy Temple, and wonderful in righteousness. (Ps. 64:5b)"
+      ],
+      "tone": 4
+    },
+
+    "prokeimenon": {
+      "refrain": "Hearken, O daughter, and see, and incline thine ear!",
+      "verse": "My heart overflowed with a good word.",
+      "tone": 4,
+      "_psalmRef": "Ps. 44:9a / 44:1a"
+    },
+
+    "gospel": {
+      "reading": "Luke 1:39-49, 56",
+      "number": 4,
+      "_note": "The Visitation — shared with Annunciation, Dormition, Nativity of Theotokos."
+    },
+
+    "postGospelSticheron": {
+      "text": "Today the Theotokos, the Temple that is to hold God,\nis brought into the Temple of the Lord,\nand Zachariah receives her.\nToday the Holy of Holies is glad,\nand the choir of angels mystically keeps the feast.\nWith them let us celebrate the feast today,\nand with Gabriel let us cry aloud:\n\"Rejoice, O Full of Grace, the Lord is with thee,\nHe Who has great mercy!\"",
+      "tone": 4,
+      "label": "Idiomelon of the Entry",
+      "author": "George of Nicomedia",
+      "_source": "oca-2025-1121-tt"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_katavasiaTone": 1,
+      "_author": "George of Nicomedia",
+      "_katavasiaeNote": "Katavasiae Tone 1 from the 1st Canon of the Nativity of Christ (by Cosmas of Maiuma), per the Nov 21 → Dec 25 cycle.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her Entrance.",
+        "katavasia": "Christ is born, glorify Him!\nChrist comes from heaven, go to meet Him!\nChrist is on earth, be exalted!\nSing to the Lord, all the earth,\nand praise Him in gladness, O people,\nfor He has been glorified!"
+      },
+      "ode3": {
+        "irmos": "As thou art a living and abundant spring,\nestablish, O Theotokos, those who sing thy praise,\nforming a spiritual chorus;\nand at thine honorable Entrance\ncount them worthy of crowns of glory.",
+        "katavasia": "To the Son, begotten of the Father, before all ages,\nand incarnate of the Virgin\nwithout seed in these latter days—\nto Christ our God, let us cry out:\n\"Thou hast raised up our horn.\nHoly art Thou, O Lord!\""
+      },
+      "ode4": {
+        "irmos": "Perceiving the unsearchable divine counsel\nconcerning Thine incarnation from the Virgin, O Most High,\nthe Prophet Habakkuk cried:\n\"Glory to Thy Power, O Lord!\"",
+        "katavasia": "Stem and flower of the root of Jesse,\nThou hast blossomed from the Virgin, O Christ.\nFrom the mountain overshadowed by the forest, Thou art come,\nmade flesh from her than knew no man.\nO God, not formed from matter—\nglory to Thy power, O Lord!"
+      },
+      "ode5": {
+        "irmos": "All things were amazed at thy revered Entrance,\nfor thou, O Virgin, who hast not known wedlock,\nhast entered into the Temple of God,\nbeing thyself a most pure Temple,\nbestowing peace to all who sing thy praises.",
+        "katavasia": "O God of Peace, Father of Mercies,\nThou hast sent Thine Angel of Great Counsel to grant us peace.\nWe are guided to the light of the knowledge of God,\nand keeping watch by night,\nwe glorify Thee, O Lover of Man."
+      },
+      "ode6": {
+        "irmos": "As we celebrate this sacred and solemn feast of the Mother of God,\nlet us come, clapping our hands, O people of God,\ngiving glory to God Who was born of her!",
+        "katavasia": "The sea monster cast forth Jonah as it had received him,\nlike a babe from the womb.\nAnd when the Word came to dwell in the Virgin and was made flesh,\nHe came forth preserving her uncorrupt,\nfor as He Himself was not subject to decay,\nHe kept His mother free from harm."
+      },
+      "ode7": {
+        "irmos": "The Godly-minded Children\nwould not worship the creation rather than the Creator,\nbut bravely trampling on the threat of fire, they rejoiced and sang:\n\"Blessed art Thou and praised above all, O Lord God of our Fathers!\"",
+        "katavasia": "The children, brought up together in godliness,\nscorned the impious decree of the tyrant.\nThey were not afraid of the threat of fire,\nbut standing in the midst of the flames, they sang:\n\"Blessed art Thou, O God of our fathers!\""
+      },
+      "ode8": {
+        "irmos": "Hear, O Maiden, pure Virgin:\nlet Gabriel tell thee the counsel of the Most High which is ancient and true!\nMake ready to receive God,\nfor through thee, He Who cannot be contained will dwell among mortals.\nTherefore, rejoicing I cry aloud:\n\"Bless the Lord, all you works of the Lord!\"",
+        "katavasia": "The furnace, moist with dew,\nwas an image prefiguring a wonder beyond nature,\nfor it did not burn the children whom it had received,\nnor did the Fire of Divinity consume the Virgin's womb when it entered it.\nSo let us raise the song:\n\"Let all creation bless the Lord, and exalt Him throughout all ages!\""
+      },
+      "ode9": {
+        "irmos": "The angels beheld the entrance of the Pure One and were amazed.\nHow has the Virgin entered into the Holy of Holies?\nSince she is a living Ark of God, let no profane hand touch the Theotokos.\nBut let the lips of believers unceasingly sing to her,\npraising her in joy with the angel's song:\n\"Truly, thou art more exalted than all, O pure Virgin!\"",
+        "katavasia": "I behold a strange, most glorious mystery:\nheaven—the cave;\nthe cherubic throne—the Virgin;\nthe manger—the place where Christ lay:\nthe uncontainable God, Whom we magnify in song."
+      },
+
+      "kontakion": {
+        "text": "The most pure Temple of the Savior;\nthe precious Chamber and Virgin;\nthe sacred Treasure of the glory of God,\nis presented today to the house of the Lord.\nShe brings with her the grace of the Spirit,\ntherefore, the angels of God praise her:\n\"Truly this woman is the abode of Heaven!\"",
+        "tone": 4,
+        "label": "Kontakion of the Entry"
+      }
+    },
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "Virgins, bearing lamps to light the way for the ever-Virgin,\ntruly prophesy in the Spirit that which is to come.\nFor the Theotokos is the Temple of God,\nand from infancy is led into the Temple in virginal glory.",
+          "tone": 1,
+          "melody": "Joy of the Heavenly Hosts"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "text": "The glorious fruit of a holy promise,\nthe Theotokos is truly shown to the world as exalted over all.\nAs she is brought with reverence into the house of God,\nshe fulfills the prayer of her parents,\nbeing preserved by the Divine Spirit.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Thou wast nourished by faith with heavenly bread, O Virgin,\nin the Temple of the Lord,\nand thou broughtest forth for the world the Word, Who is the Bread of Life.\nAs His chosen and immaculate Temple,\nthou wast betrothed mystically through the Spirit\nto be the Bride of God the Father.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "Let the gate of the Temple where God dwells be opened,\nfor today Joachim takes into the Temple in glory\nthe Temple and Throne of the King of all,\nand dedicates as an offering to God\nher whom the Lord has chosen to be His Mother.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Today the immaculate Virgin is brought to the Temple\nto be the dwelling place of God, the Lord of all,\nWho sustains our whole life.\nToday the most pure Sanctuary is brought into the Holy of Holies,\nlike a heifer three years old.\nTo her let us cry out like the Angel:\n\"Rejoice, only One, blessed among women!\"",
+        "tone": 2,
+        "author": "Doxastikon of the Entry",
+        "_source": "oca-2025-1121-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Today is the prelude of the good will of God,\nof the preaching of the salvation of mankind.\nThe Virgin appears in the Temple of God,\nin anticipation proclaiming Christ to all.\nLet us rejoice and sing to her:\n\"Rejoice, O Fulfillment\nof the Creator's dispensation!\"",
+      "tone": 4
+    }
+  }
+}

@@ -67,16 +67,44 @@ function listDates(from, to) {
 }
 
 function presanctifiedDates(year) {
-  // Pull Wed/Fri of Great Lent + Holy Mon/Tue/Wed using calendar-rules.
-  // Falls back to a wide date sweep + isPresanctifiedDay() filter.
-  const { isPresanctifiedDay } = require('../calendar-rules.js');
+  return predicateDates(year, require('../calendar-rules.js').isPresanctifiedDay);
+}
+
+function predicateDates(year, predicate) {
   const out = [];
   const d   = new Date(Date.UTC(year, 0, 1));
   while (d.getUTCFullYear() === year) {
-    if (isPresanctifiedDay(d)) out.push(d.toISOString().slice(0, 10));
+    if (predicate(d)) out.push(d.toISOString().slice(0, 10));
     d.setUTCDate(d.getUTCDate() + 1);
   }
   return out;
+}
+
+function brightWeekDates(year) {
+  const { calculatePascha, getLiturgicalSeason } = require('../calendar-rules.js');
+  return predicateDates(year, d => getLiturgicalSeason(d) === 'brightWeek');
+}
+
+function paschaDates(year) {
+  const { calculatePascha } = require('../calendar-rules.js');
+  const p = calculatePascha(year);
+  return [p.toISOString().slice(0, 10)];
+}
+
+// Maps endpoints to a date selector. Default selector is the contiguous range.
+function dateSelectorFor(endpoint, year, from, to) {
+  const cal = require('../calendar-rules.js');
+  switch (endpoint) {
+    case '/api/presanctified':    return presanctifiedDates(year);
+    case '/api/bridegroom-matins':return predicateDates(year, cal.isBridegroomMatins);
+    case '/api/passion-gospels':  return predicateDates(year, cal.isPassionGospelsDay);
+    case '/api/lamentations':     return predicateDates(year, cal.isLamentationsDay);
+    case '/api/royal-hours':      return predicateDates(year, cal.isRoyalHoursDay);
+    case '/api/vesperal-liturgy': return predicateDates(year, cal.isVesperalLiturgyDay);
+    case '/api/paschal-hours':    return brightWeekDates(year);
+    case '/api/pascha-collection':return paschaDates(year);
+    default:                      return listDates(from, to);
+  }
 }
 
 function audit(j) {
@@ -162,18 +190,22 @@ async function runOne(base, endpoint, dates) {
   let runs;
   if (args.endpoint && !args.all) {
     const ep = args.endpoint;
-    const dates = (args.presanctified || ep === '/api/presanctified')
-      ? presanctifiedDates(year)
-      : listDates(from, to);
-    runs = [[ep, dates]];
+    runs = [[ep, dateSelectorFor(ep, year, from, to)]];
   } else {
-    const fullYear = listDates(from, to);
-    runs = [
-      ['/api/service',       fullYear],
-      ['/api/liturgy',       fullYear],
-      ['/api/presanctified', presanctifiedDates(year)],
-      ['/api/matins',        fullYear],
+    const allEndpoints = [
+      '/api/service',
+      '/api/liturgy',
+      '/api/presanctified',
+      '/api/matins',
+      '/api/bridegroom-matins',
+      '/api/passion-gospels',
+      '/api/royal-hours',
+      '/api/lamentations',
+      '/api/vesperal-liturgy',
+      '/api/paschal-hours',
+      '/api/pascha-collection',
     ];
+    runs = allEndpoints.map(ep => [ep, dateSelectorFor(ep, year, from, to)]);
   }
 
   let totalIssues = 0, totalErrors = 0;

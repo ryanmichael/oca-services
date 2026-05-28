@@ -4079,8 +4079,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s1-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s1-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis1.tone }));
     }
@@ -4118,8 +4120,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s2-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s2-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis2.tone }));
     }
@@ -4157,8 +4161,10 @@ function assembleLamentations(f, vespersFixed) {
       const resolved = psIdx !== null
         ? resolveVerse(118, psIdx, v.psalm)
         : { text: v.psalm, provenance: 'inline' };
-      blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', resolved.text,
-        resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      if (resolved.text) {
+        blocks.push(S(`s3-ps-${i}`, section, 'verse', 'reader', resolved.text,
+          resolved.provenance !== 'inline' ? { provenance: resolved.provenance } : undefined));
+      }
       blocks.push(S(`s3-tr-${i}`, section, 'hymn', 'choir', v.troparion,
         { tone: f.stasis3.tone }));
     }

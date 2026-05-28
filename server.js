@@ -5058,20 +5058,25 @@ function handleRequest(req, res) {
             label: 'service-title',
           });
 
+          // Each sub-service assembler uses its own id namespace (e.g. multiple
+          // `dis-amen` blocks), so prefix per-service ids when bundling.
+          const namespace = (prefix, blocks) =>
+            blocks.map(b => b.id ? { ...b, id: `${prefix}-${b.id}` } : b);
+
           // ── Part 1: Midnight Office ──
           allBlocks.push(serviceTitle(1, 'The Midnight Office'));
           const moBlocks = assembleMidnightOffice(midnightOfficeFixed);
-          allBlocks.push(...moBlocks);
+          allBlocks.push(...namespace('mo', moBlocks));
 
           // ── Part 2: Paschal Matins ──
           allBlocks.push(serviceTitle(2, 'Paschal Matins'));
           const matinsBlocks = assemblePaschalMatins(paschalMatinsFixed);
-          allBlocks.push(...matinsBlocks);
+          allBlocks.push(...namespace('pm', matinsBlocks));
 
           // ── Part 3: Paschal Hours ──
           allBlocks.push(serviceTitle(3, 'The Paschal Hours'));
           const hoursBlocks = assemblePaschalHours(paschalHoursFixed);
-          allBlocks.push(...hoursBlocks);
+          allBlocks.push(...namespace('ph', hoursBlocks));
 
           // ── Part 4: Paschal Liturgy ──
           allBlocks.push(serviceTitle(4, 'The Paschal Divine Liturgy'));
@@ -5083,7 +5088,7 @@ function handleRequest(req, res) {
           }
           if (calendarEntry?.liturgy) {
             const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(resolveTranslation(q)), sources);
-            allBlocks.push(...litBlocks);
+            allBlocks.push(...namespace('pl', litBlocks));
           }
 
           // Pronoun switching

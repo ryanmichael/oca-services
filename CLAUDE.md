@@ -72,6 +72,12 @@ node render.js                    # render static HTML files
 - **Translation:** Use OCA (thee/thy) sources for variable texts. Don't mix
   translations within a service. Some Matins content is tagged with non-OCA
   `_source` fields for future replacement.
+- **Translation overlays:** `fixed-texts/translations/<id>/` holds sparse
+  overlays (manifest.json + liturgy-fixed.json) that cascade onto the base.
+  Each overlay declares `extends: []` in its manifest; loader walks the chain
+  parent-first. Selected per-request via `?translation=` query param or
+  `LITURGY_TRANSLATION` env var. Drift detector warns when an overlay key
+  doesn't correspond to any base key. See `memory/project_translation_cascade.md`.
 - **Tone calculation:** Saturday Great Vespers uses the tone of the week that
   is ending (the preceding Sunday's tone), NOT the upcoming Sunday's tone.
 - **Menaion injection:** `getSticheraDay()` splits Lord I Call stichera between

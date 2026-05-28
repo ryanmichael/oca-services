@@ -63,6 +63,7 @@
           </div>
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
           <div class="panel-date-str" id="p-date"></div>
+          <div class="panel-translation" id="p-translation" hidden></div>
 
           <button class="panel-detail-toggle" id="p-detail-toggle">
             <span class="pdt-label" id="p-detail-label">DETAILS</span>
@@ -289,6 +290,23 @@
           <button class="seg-btn active" data-edu="off">Off</button>
           <button class="seg-btn" data-edu="on">On</button>
         </div>
+      </div>
+
+      <div class="settings-group" id="translation-group">
+        <div class="settings-label">SERVICE TEXT VERSION</div>
+        <div class="settings-desc">Filter by jurisdiction, then choose a translation tradition or your parish overlay. Parish texts inherit from a translation and layer local wording on top.</div>
+        <div class="settings-row" id="jurisdiction-row">
+          <button class="seg-btn-pill active" data-jur="all">All</button>
+          <button class="seg-btn-pill"        data-jur="oca">OCA</button>
+          <button class="seg-btn-pill"        data-jur="rocor">ROCOR</button>
+          <button class="seg-btn-pill"        data-jur="antiochian">Antiochian</button>
+          <button class="seg-btn-pill"        data-jur="goa">GOA</button>
+          <button class="seg-btn-pill"        data-jur="cross">Cross-jurisdictional</button>
+        </div>
+        <select id="translation-select" class="settings-select" aria-label="Translation overlay">
+          <option value="">Default (no overlay)</option>
+        </select>
+        <div class="settings-meta" id="translation-meta"></div>
       </div>
 
       <button class="settings-done" id="settings-done">Done</button>

@@ -1,0 +1,99 @@
+{
+  "_note": "St. Tikhon's Sluzhebnik (2010, 2nd ed.) overrides for liturgy-fixed.json. Sparse — only keys whose wording differs from the base. Populating in batches; section labels in comments map to the PDF page ranges so each override is auditable.",
+  "_source": "STS Service Books of the Orthodox Church, 2nd ed. 2010 — pages cited inline in _section comments",
+
+  "_section_beatitudes": "Beatitudes — Liturgy of St. John Chrysostom, p. 38–39. STS uses 'Kingdom of Heaven' (singular), 'those who' (modern), 'shall be filled', 'sons of God', 'in heaven', and lowercase 'my sake'. Note no comma between first 'In Thy Kingdom' and 'remember us'.",
+  "beatitudes": {
+    "verses": [
+      "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.",
+      "Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.",
+      "Blessed are those who mourn, for they shall be comforted.",
+      "Blessed are the meek, for they shall inherit the earth.",
+      "Blessed are those who hunger and thirst after righteousness, for they shall be filled.",
+      "Blessed are the merciful, for they shall obtain mercy.",
+      "Blessed are the pure in heart, for they shall see God.",
+      "Blessed are the peacemakers, for they shall be called the sons of God.",
+      "Blessed are those who are persecuted for righteousness' sake, for theirs is the Kingdom of Heaven.",
+      "Blessed are you when men shall revile you and persecute you, and shall say all manner of evil against you falsely for my sake.",
+      "Rejoice and be exceedingly glad, for great is your reward in heaven.",
+      "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "Now and ever, and unto ages of ages. Amen."
+    ]
+  },
+
+  "_section_lords_prayer": "Lord's Prayer — STS uses 'trespasses' (Mt 6 form) and 'deliver us from the evil one'. Capitalized 'Name', 'Kingdom'. Comma after 'be done' before 'on earth'.",
+  "lords-prayer": {
+    "text": "Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one."
+  },
+
+  "_section_megalynarion": "Hymn to the Theotokos — STS p. 71. Distinctive: 'without corruption' (vs base 'without defilement'), comma after 'most pure', colon after 'Seraphim'.",
+  "it-is-truly-meet": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim: without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee.",
+
+  "_section_post_communion": "Post-communion blessing — STS p. 86. 'O God, save Thy people' (not 'Save, O God, Thy people'). Exclamation marks. 'worshipping' (British spelling). Note also 'Who has saved us!' (vs base 'Who hath saved us.').",
+  "post-communion-blessing": {
+    "priest": "O God, save Thy people, and bless Thine inheritance!",
+    "people": "We have seen the true Light! We have received the heavenly Spirit! We have found the true Faith, worshipping the undivided Trinity, Who has saved us!"
+  },
+
+  "_section_megalynarion_basil": "STS p. 146. STS uses 'In thee rejoiceth all creation' word order (vs base 'All of creation rejoices in thee'), 'race of men', em dash before 'our eternal God', and 'Glory to thee!' (exclamation).",
+  "megalynarion-basil": "In thee rejoiceth all creation, O Full of Grace, the assembly of angels and the race of men. O sanctified temple and spiritual paradise, the glory of virgins, from whom God was incarnate and became a child—our eternal God. He made thy body into a throne, and thy womb He made more spacious than the heavens. In thee rejoiceth all creation, O Full of Grace. Glory to thee!",
+
+  "_section_anaphora_chrysostom": "Anaphora of St. John Chrysostom — STS p. 65–73. Sursum corda dialogue, preface, sanctus, post-sanctus, institution narrative, anamnesis prayer, oblation, epiclesis, intercessions, hierarchy commemoration, final blessing — STS has its own consistent priestly wording throughout this section.",
+  "anaphora-chrysostom": {
+    "sursum-corda": [
+      { "speaker": "priest", "text": "The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you." },
+      { "speaker": "people", "text": "And with thy spirit." },
+      { "speaker": "priest", "text": "Let us lift up our hearts." },
+      { "speaker": "people", "text": "We lift them up unto the Lord." },
+      { "speaker": "priest", "text": "Let us give thanks unto the Lord." },
+      { "speaker": "people", "text": "It is meet and right to worship the Father, and the Son, and the Holy Spirit: the Trinity, One in essence, and undivided." }
+    ],
+    "preface": "It is meet and right to hymn Thee, to bless Thee, to give thanks to Thee, and to worship Thee in every place of Thy dominion: for Thou art God ineffable, inconceivable, invisible, incomprehensible, ever-existing and eternally the same, Thou and Thine Only-begotten Son and Thy Holy Spirit. Thou it was Who brought us from non-existence into being, and when we had fallen away didst raise us up again, and didst not cease to do all things until Thou hadst brought us up to heaven, and hadst endowed us with Thy Kingdom which is to come. For all these things we give thanks to Thee, and to Thine Only-begotten Son, and to Thy Holy Spirit; for all things of which we know and of which we know not, whether manifest or unseen; and we thank Thee for this Liturgy which Thou hast deigned to accept at our hands, though there stand by Thee thousands of archangels and hosts of angels, the Cherubim and the Seraphim, six-winged, many-eyed, who soar aloft, borne on their pinions…",
+    "sanctus-introduction": "Singing the triumphant hymn, shouting, proclaiming and saying:",
+    "sanctus": "Holy! Holy! Holy! Lord of Sabbaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that comes in the Name of the Lord! Hosanna in the highest!",
+    "post-sanctus": "With these blessed powers, O Master Who lovest mankind, we also cry aloud and say: Holy art Thou and All-Holy, Thou and Thine Only-begotten Son and Thy Holy Spirit! Holy art Thou and All-Holy, and magnificent is Thy glory! Who hast so loved Thy world as to give Thine Only-begotten Son, that whoever believeth in Him should not perish but have everlasting life; Who when He had come and had fulfilled all the dispensation for us, in the night in which He was given up — or rather, gave Himself up for the life of the world — took bread in His holy, pure, and blameless hands; and when He had given thanks and blessed it, and hallowed it, and broken it, He gave it to His holy disciples and apostles saying:",
+    "institution-body": "Take! Eat! This is My Body which is broken for you, for the remission of sins.",
+    "institution-cup": "Drink of it, all of you! This is My Blood of the New Testament, which is shed for you and for many, for the remission of sins!",
+    "anamnesis-prayer": "Remembering this saving commandment and all those things which have come to pass for us: the Cross, the Tomb, the Resurrection on the third day, the Ascension into heaven, the Sitting at the right hand, and the second and glorious Coming,",
+    "anamnesis-response": "We praise Thee, we bless Thee, we give thanks unto Thee, O Lord; and we pray unto Thee, O our God.",
+    "epiclesis": {
+      "invocation": "Again we offer unto Thee this rational and bloodless worship, and ask Thee, and pray Thee, and supplicate Thee: Send down Thy Holy Spirit upon us and upon these Gifts here offered...",
+      "exchanges": [
+        { "speaker": "deacon", "text": "Bless, Master, the Holy Bread." },
+        { "speaker": "priest", "text": "...and make this Bread the Precious Body of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless, Master, the Holy Cup." },
+        { "speaker": "priest", "text": "And that which is in this Cup, the Precious Blood of Thy Christ." },
+        { "speaker": "deacon", "text": "Amen." },
+        { "speaker": "deacon", "text": "Bless both, Master." },
+        { "speaker": "priest", "text": "Making the change by Thy Holy Spirit." }
+      ],
+      "fruits": "That they may be to those who partake for the purification of soul, for the remission of sins, for the communion of Thy Holy Spirit, for the fulfillment of the Kingdom of Heaven, for boldness towards Thee, and not for judgment or condemnation."
+    },
+    "commemoration-saints": "Again we offer unto Thee this reasonable worship for those who have fallen asleep in the faith: ancestors, fathers, patriarchs, prophets, apostles, preachers, evangelists, martyrs, confessors, ascetics, and every righteous spirit made perfect in faith.",
+    "commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, our Metropolitan [N.]; His Eminence, our Archbishop [N.]; (or His Grace, our Bishop [N.]). Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "intercessions-exclamation": "And grant that with one mouth and one heart we may praise Thine all-honorable and majestic Name; of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "final-blessing": "And may the mercies of our great God and Savior Jesus Christ be with all of you."
+  },
+
+  "_section_anaphora_basil": "Anaphora of St. Basil the Great — STS p. 137–146. The Basil preface is a much longer prayer than Chrysostom's; STS prints the full text. The post-sanctus is also long (creation→fall→incarnation narrative) and leads through the institution narrative to the Anamnesis. STS also includes 'Do this in remembrance of Me…' before the Anamnesis proper. Note: the base file does not yet have a Basil epiclesis structure, so the rich Basil epiclesis dialogue (different from Chrysostom's) is not represented here — TODO when base adds anaphora-basil.epiclesis.",
+  "anaphora-basil": {
+    "sursum-corda": [
+      { "speaker": "priest", "text": "The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you." },
+      { "speaker": "people", "text": "And with thy spirit." },
+      { "speaker": "priest", "text": "Let us lift up our hearts." },
+      { "speaker": "people", "text": "We lift them up unto the Lord." },
+      { "speaker": "priest", "text": "Let us give thanks unto the Lord." },
+      { "speaker": "people", "text": "It is meet and right to worship the Father, and the Son, and the Holy Spirit: the Trinity, One in essence, and undivided." }
+    ],
+    "preface-incipit": "O Existing One, Master, Lord God, Father almighty and adorable! It is truly meet and right and befitting the magnificence of Thy holiness to praise Thee, to sing to Thee, to bless Thee, to worship Thee, to give thanks to Thee, to glorify Thee — the only truly existing God — and to offer to Thee this our reasonable worship with a contrite heart and a spirit of humility, for Thou hast granted us the knowledge of Thy truth. Who can utter Thy mighty acts? Or make all Thy praises known? Or tell of all Thy miracles at all times? O Master of all, Lord of heaven and earth and of all creation, both visible and invisible, Who sittest upon the throne of glory and beholdest the depths; without beginning, invisible, incomprehensible, indescribable, changeless. O Father of our Lord Jesus Christ, the great God and Savior, our hope, Who is the image of Thy goodness, the seal of Thy very likeness, showing forth in Himself Thee, O Father — the living Word, the true God, the eternal Wisdom, the Life, the Sanctification, the Power, the true Light, through Whom the Holy Spirit was revealed — the Spirit of truth, the gift of sonship, the pledge of future inheritance, the first fruits of eternal blessings, the life-creating power, the fountain of sanctification, through Whom every creature of reason and understanding worships Thee and always sings to Thee a hymn of glory, for all things are Thy servants. Thou art praised by angels, archangels, thrones, dominions, principalities, authorities, powers, and many-eyed Cherubim. Round about Thee stand the Seraphim, one with six wings and the other with six wings; with two they cover their faces, with two they cover their feet, and with two they fly, crying one to another with unceasing voices and ever-resounding praises:",
+    "sanctus-introduction": "Singing the triumphant hymn, shouting, proclaiming and saying:",
+    "sanctus": "Holy! Holy! Holy! Lord of Sabbaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that comes in the Name of the Lord! Hosanna in the highest!",
+    "institution-body": "He gave it to His holy disciples and apostles, saying: Take! Eat! This is My Body which is broken for you, for the remission of sins.",
+    "institution-cup": "He gave it to His holy disciples and apostles, saying: Drink of it, all of you! This is My Blood of the New Testament, which is shed for you and for many, for the remission of sins.",
+    "anamnesis-prayer": "Do this in remembrance of Me! For as often as you eat this Bread and drink this Cup, you proclaim My Death, you confess My Resurrection! Therefore, we also, O Master, remembering His saving Passion and life-creating Cross, His three-day Burial and Resurrection from the dead, His Ascension into heaven and Sitting at the right hand of Thee the God and Father, and His glorious and awesome Second Coming,",
+    "anamnesis-response": "We praise Thee, we bless Thee, we give thanks unto Thee, O Lord; and we pray unto Thee, O our God.",
+    "intercessions-exclamation": "And grant that with one mouth and one heart we may praise Thine all-honorable and majestic Name; of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "final-blessing": "And may the mercies of our great God and Savior Jesus Christ be with all of you."
+  }
+}

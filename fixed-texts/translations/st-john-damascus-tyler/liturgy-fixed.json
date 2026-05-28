@@ -1,0 +1,13 @@
+{
+  "_note": "Parish overlay for St. John of Damascus Orthodox Church, Tyler, TX (OCA). Extends sts-sluzhebnik — only the parish-specific deltas live here.",
+  "_source": "Parish service practice",
+
+  "_section_hierarchs": "Hierarchy commemoration at the Anaphora. Names His Beatitude Metropolitan Tikhon (Mollard), Primate of the OCA, and His Eminence Archbishop Alexander (Golitzin) of the Diocese of the South, the local ruling hierarch. Note: also overrides anaphora-basil so the same text renders on the 10 days Basil's Liturgy is served — even though the base anaphora-basil doesn't currently include a hierarchs key (drift warning is expected and informational).",
+  "anaphora-chrysostom": {
+    "commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Eminence, the Most Reverend Alexander, Archbishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth."
+  },
+  "anaphora-basil": {
+    "commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Eminence, the Most Reverend Alexander, Archbishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "commemoration-hierarchs-response": "And all mankind."
+  }
+}

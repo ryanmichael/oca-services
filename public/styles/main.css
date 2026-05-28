@@ -268,6 +268,15 @@ header,
 .panel-date-str {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
 }
+.panel-translation {
+  margin-top: 4px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.panel-translation[hidden] { display: none; }
+.panel-translation .pt-label { color: var(--muted); }
+.panel-translation .pt-name  { color: var(--rubric); margin-left: 6px; font-style: normal; }
 /* Panel detail toggle */
 .panel-detail-toggle {
   display: flex; align-items: center; gap: 8px;
@@ -849,6 +858,50 @@ body.dev-mode .src-tag { display: inline; }
 .settings-group.disabled .settings-desc::after {
   content: ' (available in Laity mode only)';
   font-style: normal; color: var(--muted);
+}
+
+/* ── Settings: translation picker (jurisdiction pills + version select) ───── */
+.settings-row {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 14px;
+}
+.seg-btn-pill {
+  background: none; border: 1.5px solid var(--border); cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+  color: var(--muted); padding: 7px 14px;
+  text-transform: uppercase;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.seg-btn-pill:hover { color: var(--text); border-color: var(--muted); }
+.seg-btn-pill.active {
+  background: var(--rubric); color: var(--surface); border-color: var(--rubric);
+}
+.settings-select {
+  display: block; width: 100%; max-width: 480px;
+  font-family: 'EB Garamond', serif; font-size: 15px;
+  color: var(--text); background: var(--surface);
+  border: 1.5px solid var(--border);
+  padding: 9px 12px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+.settings-select:focus { outline: none; border-color: var(--rubric); }
+.settings-meta {
+  margin-top: 10px;
+  font-family: 'EB Garamond', serif; font-size: 13.5px; font-style: italic;
+  color: var(--muted); line-height: 1.5;
+  min-height: 1.4em;
+}
+.settings-meta .chain {
+  font-style: normal; font-size: 11px; letter-spacing: .04em;
+  color: var(--muted); margin-top: 4px;
+  font-family: 'Cinzel', serif;
 }
 
 /* ── EDUCATION MODULE ────────────────────────────────────────────────────── */

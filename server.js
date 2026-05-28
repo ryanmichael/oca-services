@@ -44,6 +44,350 @@ function loadJSON(relPath) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, relPath), 'utf8'));
 }
 
+// ─── Translation overlay system ─────────────────────────────────────────────
+// Each overlay lives at fixed-texts/translations/<id>/ and may contain any
+// of the per-service fixed-text overrides:
+//   - manifest.json              — { name, kind, jurisdiction, extends, description, … }
+//   - liturgy-fixed.json         — sparse overrides for the Divine Liturgy
+//   - presanctified-fixed.json   — sparse overrides for the Presanctified Liturgy
+//   - vespers-fixed.json         — sparse overrides for Vespers
+//   - …                          — one file per service type, optional
+//
+// Cascade per file: base → extends[0] → extends[1] → … → self. Only the keys
+// that differ from the layer above need to be stored at each layer. Files an
+// overlay doesn't supply are simply skipped (the base is used as-is).
+//
+// Selection priority: ?translation= query param > LITURGY_TRANSLATION env var
+// > none (default texts).
+const TRANSLATIONS_DIR = path.join(__dirname, 'fixed-texts', 'translations');
+const translationCache = new Map();           // key: "<serviceFile>:<overlayId>" → merged result
+const translationManifestCache = new Map();
+const baseKeySetCache = new WeakMap();
+
+// Registry of service-name → base fixed-text object. Populated as base files
+// load below. `getOverlayFixed('liturgy', overlayId)` consults this to pick
+// the right base to merge onto.
+const fixedTextRegistry = {};
+function registerBaseFixed(serviceName, baseObj) {
+  fixedTextRegistry[serviceName] = baseObj;
+}
+
+function deepMergeOverlay(base, overlay) {
+  if (overlay === null || overlay === undefined) return base;
+  if (typeof base !== 'object' || base === null || Array.isArray(base)) return overlay;
+  if (typeof overlay !== 'object' || Array.isArray(overlay)) return overlay;
+  const out = { ...base };
+  for (const [k, v] of Object.entries(overlay)) {
+    if (k.startsWith('_')) continue;  // strip overlay-only metadata (_note, _source, etc.)
+    out[k] = (k in base) ? deepMergeOverlay(base[k], v) : v;
+  }
+  return out;
+}
+
+function loadOverlayManifest(overlayId) {
+  if (translationManifestCache.has(overlayId)) return translationManifestCache.get(overlayId);
+  const manifestPath = path.join(TRANSLATIONS_DIR, overlayId, 'manifest.json');
+  let manifest = null;
+  try {
+    manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}': manifest unreadable — ${err.message}`);
+    // Backward-compat: overlays without a manifest are still loadable as flat.
+  }
+  translationManifestCache.set(overlayId, manifest);
+  return manifest;
+}
+
+function loadOverlayData(overlayId, serviceName = 'liturgy') {
+  const dataPath = path.join(TRANSLATIONS_DIR, overlayId, `${serviceName}-fixed.json`);
+  try {
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.warn(`Translation '${overlayId}/${serviceName}': data file unreadable — ${err.message}`);
+    return null;
+  }
+}
+
+function listAvailableTranslations() {
+  try {
+    return fs.readdirSync(TRANSLATIONS_DIR, { withFileTypes: true })
+      .filter(e => e.isDirectory() && !e.name.startsWith('_'))
+      .map(e => e.name);
+  } catch {
+    return [];
+  }
+}
+
+// Allowed enum values for manifest schema validation.
+const ALLOWED_KINDS = new Set(['tradition', 'parish', 'jurisdiction']);
+const ALLOWED_JURISDICTIONS = new Set([
+  'oca', 'rocor', 'antiochian', 'goa', 'serbian', 'romanian', 'bulgarian', 'georgian',
+]);
+
+/** Validates a manifest. Returns an array of human-readable warnings (empty = OK).
+ *  All checks are non-fatal; loader handles defaults so the overlay still loads.
+ *  Pass `allIds` (the set of existing overlay ids on disk) to validate extends refs. */
+function validateManifest(id, manifest, allIds) {
+  const warnings = [];
+  if (!manifest || typeof manifest !== 'object') {
+    warnings.push('manifest.json missing or unreadable');
+    return warnings;
+  }
+  if (!manifest.name || typeof manifest.name !== 'string') {
+    warnings.push("missing or non-string 'name' field");
+  }
+  if (!manifest.kind) {
+    warnings.push("missing 'kind' field (defaulting to 'tradition')");
+  } else if (!ALLOWED_KINDS.has(manifest.kind)) {
+    warnings.push(`unknown kind '${manifest.kind}' (allowed: ${[...ALLOWED_KINDS].join(', ')})`);
+  }
+  if (manifest.jurisdiction != null) {
+    if (typeof manifest.jurisdiction !== 'string') {
+      warnings.push(`jurisdiction must be a string id or null, got ${typeof manifest.jurisdiction}`);
+    } else if (!ALLOWED_JURISDICTIONS.has(manifest.jurisdiction)) {
+      warnings.push(`unknown jurisdiction '${manifest.jurisdiction}' (allowed: ${[...ALLOWED_JURISDICTIONS].join(', ')}, or null)`);
+    }
+  }
+  if (manifest.extends !== undefined) {
+    if (!Array.isArray(manifest.extends)) {
+      warnings.push("'extends' must be an array (use [] if no parents)");
+    } else {
+      manifest.extends.forEach((parent, i) => {
+        if (typeof parent !== 'string') {
+          warnings.push(`extends[${i}] must be a string id, got ${typeof parent}`);
+        } else if (parent === id) {
+          warnings.push(`extends[${i}] is self-reference '${parent}' (will be detected as cycle)`);
+        } else if (allIds && !allIds.has(parent)) {
+          warnings.push(`extends[${i}] '${parent}' is not a known overlay id`);
+        }
+      });
+    }
+  }
+  return warnings;
+}
+
+function getTranslationManifests() {
+  const ids = listAvailableTranslations();
+  const idSet = new Set(ids);
+  return ids.map(id => {
+    const m = loadOverlayManifest(id) || {};
+    const warnings = validateManifest(id, m, idSet);
+    return {
+      id,
+      name: m.name || id,
+      kind: m.kind || 'tradition',
+      jurisdiction: m.jurisdiction ?? null,
+      extends: Array.isArray(m.extends) ? m.extends : [],
+      description: m.description || null,
+      sources: m.sources || null,
+      ...(warnings.length ? { warnings } : {}),
+    };
+  });
+}
+
+/** Validates all overlays at startup and logs any warnings. Called once
+ *  at boot so misconfigured manifests surface in the server log immediately,
+ *  not just when an end-user happens to load /api/translations. */
+function validateAllTranslations() {
+  const ids = listAvailableTranslations();
+  const idSet = new Set(ids);
+  let total = 0;
+  for (const id of ids) {
+    const m = loadOverlayManifest(id);
+    const warnings = validateManifest(id, m, idSet);
+    if (warnings.length) {
+      total += warnings.length;
+      for (const w of warnings) console.warn(`Translation manifest '${id}': ${w}`);
+    }
+  }
+  if (total) console.warn(`Translation overlay validation: ${total} warning(s) across ${ids.length} overlay(s).`);
+  else console.log(`Translation overlay validation: ${ids.length} overlay(s) OK.`);
+}
+
+/** Returns the set of leaf-text keys present anywhere in the base object.
+ *  Used to flag overlay keys that don't correspond to any base key (likely a typo). */
+function collectKeyPaths(obj, prefix = '', out = new Set()) {
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return out;
+  for (const k of Object.keys(obj)) {
+    if (k.startsWith('_')) continue;
+    const p = prefix ? `${prefix}.${k}` : k;
+    out.add(p);
+    collectKeyPaths(obj[k], p, out);
+  }
+  return out;
+}
+
+function warnUnknownKeys(overlayId, overlay, base, serviceName = 'liturgy') {
+  let basePaths = baseKeySetCache.get(base);
+  if (!basePaths) { basePaths = collectKeyPaths(base); baseKeySetCache.set(base, basePaths); }
+  const stack = [['', overlay]];
+  while (stack.length) {
+    const [prefix, node] = stack.pop();
+    if (!node || typeof node !== 'object' || Array.isArray(node)) continue;
+    for (const k of Object.keys(node)) {
+      if (k.startsWith('_')) continue;
+      const p = prefix ? `${prefix}.${k}` : k;
+      if (!basePaths.has(p)) {
+        console.warn(`Translation '${overlayId}/${serviceName}': key '${p}' not present in base ${serviceName}-fixed.json (silent drift?)`);
+      } else {
+        stack.push([p, node[k]]);
+      }
+    }
+  }
+}
+
+/** Resolves an overlay's full extends chain depth-first, parents before children.
+ *  Detects cycles. Returns the chain as an ordered list of ids (parents first,
+ *  the requested id last). */
+function resolveExtendsChain(overlayId, visited = new Set(), stack = new Set()) {
+  if (!overlayId) return [];
+  if (stack.has(overlayId)) {
+    console.warn(`Translation '${overlayId}': circular extends chain (path: ${[...stack, overlayId].join(' → ')})`);
+    return [];
+  }
+  if (visited.has(overlayId)) return [];  // already merged earlier in the walk
+  visited.add(overlayId);
+  stack.add(overlayId);
+  const manifest = loadOverlayManifest(overlayId);
+  const parents = Array.isArray(manifest?.extends) ? manifest.extends : [];
+  const chain = [];
+  for (const parent of parents) {
+    chain.push(...resolveExtendsChain(parent, visited, stack));
+  }
+  chain.push(overlayId);
+  stack.delete(overlayId);
+  return chain;
+}
+
+/** Generalized overlay loader. Returns the base fixed-text for `serviceName`
+ *  (e.g. 'liturgy', 'presanctified') with the named overlay's cascade applied.
+ *  When no overlay is selected, returns the base unmodified. */
+function getOverlayFixed(serviceName, overlayName) {
+  const base = fixedTextRegistry[serviceName];
+  if (!base) {
+    console.warn(`Translation: no base registered for service '${serviceName}'`);
+    return null;
+  }
+  if (!overlayName) return base;
+  const cacheKey = `${serviceName}:${overlayName}`;
+  if (translationCache.has(cacheKey)) return translationCache.get(cacheKey);
+  const chain = resolveExtendsChain(overlayName);
+  let merged = base;
+  for (const id of chain) {
+    const overlay = loadOverlayData(id, serviceName);
+    if (overlay) {
+      warnUnknownKeys(id, overlay, base, serviceName);
+      merged = deepMergeOverlay(merged, overlay);
+    }
+  }
+  translationCache.set(cacheKey, merged);
+  return merged;
+}
+
+/** Backward-compatible wrapper. Existing callers (and the four routes we've
+ *  wired so far) keep working unchanged. New routes / callers can use
+ *  getOverlayFixed directly. */
+function getLiturgyFixed(overlayName) {
+  return getOverlayFixed('liturgy', overlayName);
+}
+
+// ─── Overlay diff + provenance ──────────────────────────────────────────────
+// For attribution: when an overlay overrides a string value, the resulting
+// ServiceBlock should be tagged with `_overlay: "<id>"` so consumers (and
+// devs debugging) can see exactly which blocks came from the active overlay.
+//
+// Approach: post-merge, walk both base and merged, collect the set of string
+// values that exist in merged but not in base. After assembly, any block
+// whose `text` is in that set gets the `_overlay` tag.
+
+const overlayStringsCache = new Map();   // key: "<serviceFile>:<overlayId>" → Set<string>
+const overlayDiffCache    = new Map();   // key: "<serviceFile>:<overlayId>" → diff array
+
+function collectStringValues(obj, out = new Set()) {
+  if (typeof obj === 'string') { out.add(obj); return out; }
+  if (!obj || typeof obj !== 'object') return out;
+  if (Array.isArray(obj)) { obj.forEach(v => collectStringValues(v, out)); return out; }
+  for (const k of Object.keys(obj)) {
+    if (k.startsWith('_')) continue;
+    collectStringValues(obj[k], out);
+  }
+  return out;
+}
+
+/** Returns the set of string values introduced by the overlay (present in the
+ *  merged result but not in the base). Used for block-level attribution. */
+function getOverlayIntroducedStrings(serviceName, overlayId) {
+  if (!overlayId) return null;
+  const cacheKey = `${serviceName}:${overlayId}`;
+  if (overlayStringsCache.has(cacheKey)) return overlayStringsCache.get(cacheKey);
+  const base = fixedTextRegistry[serviceName];
+  const merged = getOverlayFixed(serviceName, overlayId);
+  if (!base || !merged) return null;
+  const baseStrs = collectStringValues(base);
+  const mergedStrs = collectStringValues(merged);
+  const introduced = new Set();
+  for (const s of mergedStrs) if (!baseStrs.has(s)) introduced.add(s);
+  overlayStringsCache.set(cacheKey, introduced);
+  return introduced;
+}
+
+/** Tags blocks whose text matches an overlay-introduced string with the
+ *  overlay id. Mutates blocks in place; safe no-op when overlayId is null. */
+function tagBlocksWithOverlay(blocks, serviceName, overlayId) {
+  if (!overlayId || !Array.isArray(blocks)) return;
+  const introduced = getOverlayIntroducedStrings(serviceName, overlayId);
+  if (!introduced || introduced.size === 0) return;
+  for (const b of blocks) {
+    if (b && b.text && introduced.has(b.text)) b._overlay = overlayId;
+  }
+}
+
+/** Returns the diff between base and merged for a given service+overlay.
+ *  Each entry: { path: "dotted.key.path", base: "...", overlay: "..." }.
+ *  Arrays are diffed wholesale (path points at the array, before/after are JSON-encoded). */
+function diffOverlay(serviceName, overlayId) {
+  if (!overlayId) return [];
+  const cacheKey = `${serviceName}:${overlayId}`;
+  if (overlayDiffCache.has(cacheKey)) return overlayDiffCache.get(cacheKey);
+  const base = fixedTextRegistry[serviceName];
+  const merged = getOverlayFixed(serviceName, overlayId);
+  if (!base || !merged) return [];
+
+  const diffs = [];
+  function walk(prefix, b, m) {
+    if (b === m) return;
+    if (typeof b === 'string' || typeof m === 'string'
+        || typeof b !== 'object' || typeof m !== 'object'
+        || b === null || m === null
+        || Array.isArray(b) !== Array.isArray(m)) {
+      diffs.push({ path: prefix, base: b ?? null, overlay: m ?? null });
+      return;
+    }
+    if (Array.isArray(b)) {
+      if (JSON.stringify(b) !== JSON.stringify(m)) {
+        diffs.push({ path: prefix, base: b, overlay: m });
+      }
+      return;
+    }
+    const keys = new Set([...Object.keys(b), ...Object.keys(m)]);
+    for (const k of keys) {
+      if (k.startsWith('_')) continue;
+      const p = prefix ? `${prefix}.${k}` : k;
+      if (!(k in b)) { diffs.push({ path: p, base: null, overlay: m[k] }); continue; }
+      if (!(k in m)) { diffs.push({ path: p, base: b[k], overlay: null }); continue; }
+      walk(p, b[k], m[k]);
+    }
+  }
+  walk('', base, merged);
+
+  overlayDiffCache.set(cacheKey, diffs);
+  return diffs;
+}
+
+function resolveTranslation(query) {
+  return query?.translation || process.env.LITURGY_TRANSLATION || null;
+}
+
 /** Recursively tag all hymn-like objects in a source tree with a provenance label. */
 function tagProvenance(obj, label) {
   if (!obj || typeof obj !== 'object') return;
@@ -910,7 +1254,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['The heavens declare the glory of God, and the firmament proclaims the work of His hands.', 'Day unto day pours forth speech, and night unto night declares knowledge.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, born of the Virgin, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable and more glorious than the heavenly hosts! I behold a strange and most glorious mystery: the cave a heaven, the Virgin a cherubic throne, and the manger a noble place in which Christ, the uncontained God, was laid. Let us sing and magnify Him!',
-    communionHymn: 'The Lord has sent redemption to His people. Alleluia.',
+    communionHymn: 'The Lord has sent redemption to His people. Alleluia, Alleluia, Alleluia!',
   },
 
   theophany: {
@@ -957,7 +1301,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['Bring to the Lord, O ye sons of God, bring to the Lord young rams.', 'The voice of the Lord is upon the waters; the God of glory has thundered, the Lord, upon many waters.'] },
     entranceHymn: 'Blessed is He that cometh in the Name of the Lord. God is the Lord and hath revealed Himself to us. O Son of God, baptized in the Jordan, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most pure Virgin Theotokos, more honorable than the heavenly hosts! No tongue knows how to praise thee worthily, O Theotokos; even Angels are overcome with awe praising thee. But since thou art good, accept our faith; for thou knowest our love inspired by God! Thou art the defender of Christians, and we magnify thee.',
-    communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia.',
+    communionHymn: 'The grace of God has appeared for the salvation of all men. Alleluia, Alleluia, Alleluia!',
   },
 
   // Meeting of the Lord: OCA practice does NOT use festal antiphons for this feast.
@@ -974,7 +1318,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Now lettest Thou Thy servant depart in peace, O Master, according to Thy word.', 'A light for revelation to the Gentiles, and for glory to Thy people Israel.'] },
     megalynarion: 'O Virgin Theotokos, hope of all Christians, protect, preserve, and save those who hope in thee! In the shadow and letter of the Law, let us the faithful discern a figure: every male child that opens the womb is holy to God. Therefore we magnify the firstborn Word of the Father Who has no beginning, the Son firstborn of a Mother who had not known man.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   transfiguration: {
@@ -1020,7 +1364,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 8, verses: ['Thine are the heavens, and Thine is the earth.', 'Blessed are the people who know the joyful sound.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the Lord Who was transfigured on Mount Tabor! Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos!',
-    communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia.',
+    communionHymn: 'O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia, Alleluia, Alleluia!',
   },
 
   elevation: {
@@ -1066,7 +1410,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['Remember Thy congregation, which Thou hast gotten of old.', 'God is our King before the ages; He has worked salvation in the midst of the earth.'] },
     entranceHymn: 'Come, let us worship and fall down before Christ. O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!',
     megalynarion: 'Magnify, O my soul, the most precious Cross of the Lord! Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee!',
-    communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia.',
+    communionHymn: 'The light of Thy countenance, O Lord, has been signed upon us. Alleluia, Alleluia, Alleluia!',
   },
 
   palmSunday: {
@@ -1115,7 +1459,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['O sing to the Lord a new song, for He has done marvelous things!', 'All the ends of the earth have seen the salvation of our God.'] },
     entranceHymn: 'Blessed is He that comes in the Name of the Lord. We bless you from the house of the Lord. God is the Lord and He has revealed Himself to us.',
     megalynarion: 'God is the Lord and has revealed Himself to us! Celebrate the feast and come with gladness! Let us magnify Christ with palms and branches, singing: "Blessed is He that comes in the Name of the Lord, our Savior!"',
-    communionHymn: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us. Alleluia.',
+    communionHymn: 'Blessed is He that comes in the Name of the Lord. God is the Lord and has revealed Himself to us. Alleluia, Alleluia, Alleluia!',
   },
 
   ascension: {
@@ -1148,6 +1492,7 @@ const GREAT_FEAST_VARIANTS = {
           'Hear this, all peoples; give ear, all inhabitants of the world.',
           'Earth-born and the sons of men, rich and poor together.',
           'My mouth shall speak wisdom, and the meditation of my heart shall be understanding.',
+          'I will incline my ear to a proverb; I will solve my riddle in psalmody.',
         ],
       },
     },
@@ -1160,8 +1505,15 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 7, refrain: 'Be exalted, O God, above the heavens; and Your glory be over all the earth!', verse: 'My heart is steadfast, O God, my heart is steadfast. I will sing and make melody.' },
     alleluia: { tone: 2, verses: ['God has gone up with a shout; the Lord with the sound of a trumpet!', 'Oh, clap your hands, all you peoples. Shout to God with loud songs of joy!'] },
     entranceHymn: 'God has gone up with a shout, the Lord with the sound of a trumpet. O Son of God, who ascended in glory, save us who sing to Thee: Alleluia!',
-    megalynarion: 'Magnify, O my soul, Christ the Giver of Life, who has ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
-    communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia.',
+    megalynarion: 'Magnify, O my soul, Christ the Giver of Life, Who hath ascended from earth to heaven! We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
+    communionHymn: 'God is gone up with a shout, the Lord with the sound of a trumpet. Alleluia, Alleluia, Alleluia!',
+    // Festal dismissal introit + seasonal Theotokos magnification (used Pascha+39..+47).
+    // Source: OCA 2026-0521-tt.docx Department of Liturgical Music & Translations.
+    dismissalIntroit: 'May Christ our true God, Who ascended in glory from us into heaven, and is seated at the right hand of God the Father,',
+    dismissalTheotokos: {
+      priestCue: 'Magnify, O my soul, Christ the Giver of Life Who hath ascended from earth to heaven.',
+      hymn: 'We the faithful, with one accord, magnify thee, the Mother of God, who, beyond reason and understanding, ineffably gave birth in time to the Timeless One.',
+    },
   },
 
   pentecost: {
@@ -1205,7 +1557,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 1, verses: ['By the Word of the Lord were the heavens made, and all the host of them by the Spirit of His mouth.', 'The Lord looked down from heaven; He saw all the sons of men.'] },
     entranceHymn: 'Be exalted, O Lord, in Thy strength! We will sing and praise Thy power. O Gracious Comforter, save us who sing to Thee: Alleluia!',
     megalynarion: 'Rejoice, O Queen, glory of mothers and virgins! For no tongue, be it ever so gifted, hath power to praise thee worthily. Every mind is dizzied in attempting to comprehend thy childbearing. Wherefore, with one accord, we glorify thee!',
-    communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia.',
+    communionHymn: 'Let Thy good Spirit lead me on a level path. Alleluia, Alleluia, Alleluia!',
   },
 
   // ── Feasts of the Theotokos (typical antiphons, special megalynarion) ───────
@@ -1222,7 +1574,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'Magnify, O my soul, the most glorious birth of the Mother of God! Virginity is foreign to mothers; childbearing is strange for virgins. But in thee, O Theotokos, both were accomplished. For this all the earthly nations unceasingly magnify thee.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   entryTheotokos: {
@@ -1237,7 +1589,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Hear, O daughter, and consider and incline your ear.', 'The rich among the people shall entreat your favor.'] },
     megalynarion: 'The angels beheld the entrance of the Pure One and were amazed. How has the Virgin entered into the Holy of Holies? Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Truly, thou art more exalted than all, O pure Virgin!',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   annunciation: {
@@ -1252,7 +1604,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 4, refrain: 'From day to day proclaim the salvation of our God!', verse: 'Sing to the Lord a new song; sing to the Lord, all the earth!' },
     alleluia: { tone: 1, verses: ['He descends like rain upon the fleece, like raindrops that water the earth.', 'May His Name be blessed forever; may His Name continue as long as the sun!'] },
     megalynarion: 'O earth, announce good tidings of great joy: O heavens, praise the glory of God! Since she is a living Ark of God, let no profane hand touch the Theotokos. But let the lips of believers unceasingly sing to her, praising her in joy with the angel\'s song: Rejoice, O Lady, full of grace, the Lord is with thee!',
-    communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia.',
+    communionHymn: 'The Lord has chosen Zion; He has desired it for His habitation. Alleluia, Alleluia, Alleluia!',
   },
 
   dormition: {
@@ -1267,7 +1619,7 @@ const GREAT_FEAST_VARIANTS = {
     prokeimenon: { tone: 3, refrain: 'My soul magnifies the Lord, and my spirit rejoices in God my Savior.', verse: 'For He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed.' },
     alleluia: { tone: 8, verses: ['Arise, O Lord, into Thy resting place, Thou and the Ark of Thy holiness.', 'The Lord has sworn in truth to David, and He will not annul it.'] },
     megalynarion: 'The Angels, as they looked upon the Dormition of the Virgin, were struck with wonder, seeing how the Virgin went up from earth to heaven. The limits of nature are overcome in thee, O Pure Virgin: for birthgiving remains virginal, and life is united to death; a virgin after childbearing and alive after death, thou dost ever save thine inheritance, O Theotokos.',
-    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia.',
+    communionHymn: 'I will receive the cup of salvation and call on the Name of the Lord. Alleluia, Alleluia, Alleluia!',
   },
 
   // ── Pascha (Feast of Feasts) ────────────────────────────────────────────────
@@ -1313,7 +1665,7 @@ const GREAT_FEAST_VARIANTS = {
     alleluia: { tone: 4, verses: ['Thou, O Lord, shalt arise and have compassion on Zion.', 'The Lord looked down from heaven to the earth.'] },
     entranceHymn: 'In the gathering places bless ye God the Lord, from the wellsprings of Israel! O Son of God, risen from the dead, save us who sing to Thee: Alleluia!',
     megalynarion: 'The Angel cried to the Lady full of grace: Rejoice, O pure Virgin! Again I say: Rejoice! Thy Son is risen from His three days in the tomb! With Himself He has raised all the dead! Rejoice, all ye people! Shine! Shine! O new Jerusalem! The glory of the Lord has shone on thee! Exult now and be glad, O Zion! Be radiant, O pure Theotokos, in the Resurrection of thy Son!',
-    communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia.',
+    communionHymn: 'Receive ye the Body of Christ; taste ye the Fountain of immortality. Alleluia, Alleluia, Alleluia!',
   },
 };
 
@@ -1709,6 +2061,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   const DAY = 86400000;
   const daysSincePascha = Math.round((date - pascha) / DAY);
   const isPaschalPeriod = daysSincePascha >= 0 && daysSincePascha <= 38;
+  // Ascension (Pascha+39) through Apodosis of Ascension (Friday before Pentecost = Pascha+47).
+  // During this period the Troparion of the Ascension replaces "We have seen the true Light"
+  // and is used as the seasonal Theotokos magnification at the dismissal.
+  // Source: OCA Department of Liturgical Music & Translations service text (2026-0521-tt.docx).
+  const isAscensionAfterfeast = daysSincePascha >= 39 && daysSincePascha <= 47;
 
   // ── Pentecostarion Sunday overrides ─────────────────────────────────────────
   // Each Pentecostarion feast Sunday has its own prokeimenon, alleluia, communion
@@ -1729,7 +2086,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Who then preserved the Disciple\'s palm unmelted when it approached the fiery side of the Lord? Who gave it daring, and gave it strength to handle bone of flame? Only that side which was handled; for had not the side given the power, how could a hand of clay have handled wounds which had shaken things above and things below? This grace was given Thomas, to handle it and to cry out to Christ, "Thou art my Lord and my God!"',
       prokeimenon: { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.', verse: 'Praise the Lord! For it is good to sing praises to our God!' },
       alleluia:    { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!', 'For the Lord is a great God, and a great King over all the earth.'] },
-      communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia.',
+      communionHymn: 'Praise the Lord, O Jerusalem! Praise thy God, O Zion! Alleluia, Alleluia, Alleluia!',
       // Beatitudes: 4 from Ode III + 4 from Ode VI (all Pentecostarion canon, no Resurrection Beatitudes)
       // Source: St. Sergius Pentecostarion (pent/20.pdf) — swap for OCA when available
       beatitudesTroparia: [
@@ -1969,7 +2326,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
       ikos: 'Let us listen to the Church of God as she cries out with lofty proclamation: Whoever is thirsty let him come to me and drink; the bowl that I carry is the bowl of truth; the drink in it I have mixed with the word of truth, pouring in not the water of contradiction but that of confession; the new Israel as he drinks from it sees God who declares: See, see, it is I; I have not changed; I am God first and last, and beside me there is no other at all. Those who partake from here shall be filled and praise the great mystery of true religion.',
       prokeimenon: { tone: 4, refrain: 'Blessed art Thou, O Lord God of our fathers, and praised and glorified is Thy Name forever!', verse: 'For Thou art just in all that Thou hast done for us!' },
       alleluia:    { tone: 1, verses: ['The Lord, the God of gods, speaks and summons the earth from the rising of the sun to its setting.', 'Gather to Me My venerable ones, who made a covenant with Me by sacrifice!'] },
-      communionHymn: 'Praise the Lord from the heavens, praise Him in the highest!\nRejoice in the Lord, O you righteous; praise befits the just! Alleluia.',
+      communionHymn: 'Praise the Lord from the heavens, praise Him in the highest!\nRejoice in the Lord, O you righteous; praise befits the just! Alleluia, Alleluia, Alleluia!',
       // Ascension afterfeast: special megalynarion and post-communion
       megalynarion: GREAT_FEAST_VARIANTS.ascension.megalynarion,
       weHaveSeen: 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!',
@@ -2008,10 +2365,55 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
+  // ── Co-celebrated saints overlay ────────────────────────────────────────────
+  // For dates where a major fixed-calendar commemoration falls on a Great Feast,
+  // OCA's published "combined" service appends a secondary set of propers:
+  // troparion + kontakion (before the feast kontakion), 2nd prokeimenon,
+  // 2nd epistle/alleluia/gospel, 2nd communion hymn.
+  // Source: OCA Department of Liturgical Music & Translations service texts.
+  const COCELEBRATED_OVERLAYS = {
+    // May 21: Sts. Constantine and Helen co-celebrated with Ascension
+    '5-21': {
+      troparion: {
+        tone: 8,
+        rubric: 'Troparion of Sts. Constantine and Helen, Tone 8:',
+        text: 'Thy servant Constantine, O Lord and only Lover of man,\nbeheld the figure of the Cross in the heavens.\nLike Paul, not having received his call from men,\nbut as an apostle among rulers set by Thy hand over the royal city,\nhe preserved lasting peace through the prayers of the Theotokos.',
+      },
+      kontakion: {
+        tone: 3,
+        rubric: 'Kontakion of Sts. Constantine and Helen, Tone 3:',
+        connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+        text: 'Today Constantine and his mother Helen reveal the precious Cross,\nthe weapon of Orthodox Christians against their enemies,\nfor it is manifest for us as a great and fearful sign in struggle.',
+      },
+      prokeimenon: {
+        tone: 8,
+        label: 'Sts. Constantine and Helen',
+        refrain: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe.',
+      },
+      alleluia: {
+        tone: 1,
+        label: 'Sts. Constantine and Helen',
+        verses: ['I have exalted one chosen out of My people.'],
+      },
+      communionHymn: {
+        label: 'Sts. Constantine and Helen',
+        text: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
+      },
+      // Second readings for epistle and gospel are pulled automatically from
+      // orthocal's readings[] array when present (Acts 26:1-5,12-20; John 10:1-9).
+    },
+  };
+  const dateKey = `${mo}-${dy}`;
+  const overlay = COCELEBRATED_OVERLAYS[dateKey] || null;
+
   // ── Scripture readings from the API ──────────────────────────────────────────
   const readings   = orthocalData.readings || [];
-  const epistleR   = readings.find(r => r.source === 'Epistle');
-  const gospelR    = readings.find(r => r.source === 'Gospel');
+  const epistleAll = readings.filter(r => r.source === 'Epistle');
+  const gospelAll  = readings.filter(r => r.source === 'Gospel');
+  const epistleR   = epistleAll[0];
+  const gospelR    = gospelAll[0];
+  const epistleR2  = epistleAll[1] || null;
+  const gospelR2   = gospelAll[1] || null;
 
   // orthocal returns the generic book name "Apostol" for all epistles; the
   // actual book lives in the display field (e.g. "Acts 16.16-34",
@@ -2120,15 +2522,30 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // (OCA rubric: when no other kontakion is appointed, "O protection of Christians..." is sung)
   // This is already handled by the dismissal troparia section, so leave kontakia empty if none found.
 
+  // Layer co-celebrated saints onto troparia/kontakia. The saint's troparion is
+  // appended after the feast troparion; the saint's kontakion is inserted BEFORE
+  // the feast kontakion (per OCA combined-service layout — "Glory…" then saint
+  // kontakion, then "Now and ever…" then feast kontakion).
+  if (overlay?.troparion) {
+    troparia.push(overlay.troparion);
+  }
+  if (overlay?.kontakion && kontakia.length > 0) {
+    // Force "Now and ever..." connector onto the feast kontakion (was implicit default)
+    kontakia[0] = { ...kontakia[0], connector: 'Now and ever, and unto ages of ages. Amen.' };
+    kontakia.unshift(overlay.kontakion);
+  } else if (overlay?.kontakion) {
+    kontakia.push(overlay.kontakion);
+  }
+
   // ── Communion Hymn ───────────────────────────────────────────────────────────
   const COMMUNION_HYMNS = {
-    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia.',
-    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia.',
-    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia.',
-    wednesday: 'O taste and see that the Lord is good. Alleluia.',
-    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia.',
-    friday:    'Salvation is created in the midst of the earth, O God. Alleluia.',
-    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia.',
+    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!',
+    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia, Alleluia, Alleluia!',
+    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia, Alleluia, Alleluia!',
+    wednesday: 'O taste and see that the Lord is good. Alleluia, Alleluia, Alleluia!',
+    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
+    friday:    'Salvation is created in the midst of the earth, O God. Alleluia, Alleluia, Alleluia!',
+    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia, Alleluia, Alleluia!',
   };
 
   // DAY_PATRONS moved to module scope
@@ -2285,6 +2702,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
   }
 
+  // Attach co-celebrated secondary prokeimenon (e.g., Constantine & Helen on Ascension)
+  if (prokeimenon && overlay?.prokeimenon) {
+    prokeimenon = { ...prokeimenon, secondary: overlay.prokeimenon };
+  }
+
   if (feast?.alleluia) {
     const fa = feast.alleluia;
     alleluia = { tone: fa.tone, verses: fa.verses };
@@ -2329,12 +2751,20 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     megalynarion = null;
   }
 
+  // Attach co-celebrated secondary alleluia (e.g., Constantine & Helen on Ascension)
+  if (alleluia && overlay?.alleluia) {
+    alleluia = { ...alleluia, secondary: overlay.alleluia };
+  }
+
   // ── Communion hymn: feast → Pentecostarion Sunday → day-of-week ───────────
-  const communionHymn = feast?.communionHymn
+  let communionHymn = feast?.communionHymn
     ? { text: feast.communionHymn }
     : pentOverride?.communionHymn
       ? { text: pentOverride.communionHymn }
       : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+  if (overlay?.communionHymn) {
+    communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
+  }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
@@ -2363,24 +2793,71 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     kontakia,
     trisagion: { substitution: getTrisagionSubstitution(date) },
     prokeimenon,
-    epistle:  epistleR ? { book: announceEpistleBook(epistleR.display), display: epistleR.display, text: extractPassageText(epistleR) } : null,
+    epistle:  epistleR ? {
+      book: announceEpistleBook(epistleR.display),
+      display: epistleR.display,
+      text: extractPassageText(epistleR),
+      secondary: epistleR2 ? {
+        book: announceEpistleBook(epistleR2.display),
+        display: epistleR2.display,
+        text: extractPassageText(epistleR2),
+      } : null,
+    } : null,
     alleluia,
-    gospel:   gospelR ? { book: gospelR.book, display: gospelR.display, text: extractPassageText(gospelR) } : null,
+    gospel:   gospelR ? {
+      book: gospelR.book,
+      display: gospelR.display,
+      text: extractPassageText(gospelR),
+      secondary: gospelR2 ? {
+        book: gospelR2.book,
+        display: gospelR2.display,
+        text: extractPassageText(gospelR2),
+      } : null,
+    } : null,
     megalynarion,
     cherubicOverride,
     communionHymn,
     paschalOpening: isPaschalPeriod,
-    weHaveSeen: pentOverride?.weHaveSeen || (isPaschalPeriod ? 'paschal' : null),
+    weHaveSeen:
+      pentOverride?.weHaveSeen
+      || (isPaschalPeriod ? 'paschal' : null)
+      || (isAscensionAfterfeast
+        ? 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!'
+        : null),
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || null,
       dayPatron: DAY_PATRONS[dow] || null,
-      saints:  (orthocalData.saints || []).slice(0, 3),
+      // Dismissal saints: prefer orthocal's "feasts" (major commemorations) over
+      // "saints" (minor entries). On a great feast, skip feasts[0] — it's named
+      // in the introit. Co-celebrated commemorations (Constantine & Helen on
+      // Ascension, etc.) come from feasts[1+]; fall back to minor saints if empty.
+      saints: (() => {
+        const f = orthocalData.feasts || [];
+        const s = orthocalData.saints || [];
+        const coCelebrated = feast ? f.slice(1) : f;
+        return [...coCelebrated, ...s].slice(0, 3);
+      })(),
+      // Festal dismissal introit and seasonal Theotokos magnification.
+      // Apply on the feast itself and through its afterfeast period.
+      dismissalIntroit:
+        feast?.dismissalIntroit
+        || (isAscensionAfterfeast ? GREAT_FEAST_VARIANTS.ascension.dismissalIntroit : null),
+      dismissalTheotokos:
+        feast?.dismissalTheotokos
+        || (isAscensionAfterfeast ? GREAT_FEAST_VARIANTS.ascension.dismissalTheotokos : null),
     },
-    dismissalTroparia: feast ? {
-      troparion: feast.troparia?.[0] || null,
-      kontakion: feast.kontakia?.[0] || null,
-    } : null,
+    // Dismissal Troparia: repeated after Psalm 33 before the final dismissal.
+    // - Great Feast: feast troparion + kontakion (single).
+    // - Pentecostarion Sunday with pentOverride: repeat the full set of Liturgy
+    //   troparia + kontakia (Sunday's Resurrection + feast troparia, etc.).
+    // - Otherwise: fall back to liturgy-saint troparion + default Theotokion
+    //   (rendered inside _litDismissalTroparia).
+    dismissalTroparia: feast
+      ? { troparion: feast.troparia?.[0] || null, kontakion: feast.kontakia?.[0] || null }
+      : pentOverride?.troparia
+        ? { troparia: troparia, kontakia: kontakia }
+        : null,
   };
 }
 
@@ -3051,7 +3528,7 @@ function getDayLabel(entry, dow, season) {
       'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
       'pentecostarion.week.5.sunday': 'Sunday of the Samaritan Woman',
       'pentecostarion.week.6.sunday': 'Sunday of the Blind Man',
-      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers',
+      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers of the 1st Ecumenical Council — Afterfeast of the Ascension',
       'pentecostarion.ascension':     'The Ascension of our Lord',
       'pentecostarion.pentecost':     'Holy Pentecost',
     };
@@ -3349,6 +3826,7 @@ try {
 let liturgyFixed;
 try {
   liturgyFixed = loadJSON('fixed-texts/liturgy-fixed.json');
+  registerBaseFixed('liturgy', liturgyFixed);
   console.log('Liturgy fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load liturgy fixed texts:', err.message);
@@ -3358,11 +3836,16 @@ try {
 let presanctifiedFixed;
 try {
   presanctifiedFixed = loadJSON('fixed-texts/presanctified-fixed.json');
+  registerBaseFixed('presanctified', presanctifiedFixed);
   console.log('Presanctified fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load presanctified fixed texts:', err.message);
   process.exit(1);
 }
+
+// Defer translation validation until AFTER all base fixed-text files have
+// registered, so drift warnings have a base to check against.
+validateAllTranslations();
 
 let paschalHoursFixed;
 try {
@@ -3468,6 +3951,7 @@ function handleRequest(req, res) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -3489,10 +3973,28 @@ function handleRequest(req, res) {
       const isBurialVespers = dayEntry?.vespers?.serviceKey === 'burialVespers';
       const vespersDate = isBurialVespers ? date : getNextDateStr(date);
 
-      // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API
+      // For Lenten weekday Vespers, enrich prokeimenon entries with pericopes from orthocal API.
+      // For vigil-rank Sundays with OT prophecies (e.g. Holy Fathers), enrich
+      // otReadings with full scripture text from orthocal.
       let entryOverride = null;
       try {
         const baseEntry = getCalendarEntry(vespersDate);
+        if (baseEntry?.vespers?.otReadings?.length > 0) {
+          const orthocalData = await fetchOrthocalDay(vespersDate);
+          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
+          const enrichedReadings = baseEntry.vespers.otReadings.map((r, i) => {
+            const match = vesperReadings[i];
+            if (match?.passage?.length) {
+              const text = match.passage.map(p => p.content).join(' ');
+              return { ...r, text };
+            }
+            return r;
+          });
+          entryOverride = {
+            ...baseEntry,
+            vespers: { ...baseEntry.vespers, otReadings: enrichedReadings },
+          };
+        }
         if (baseEntry?.liturgicalContext?.season === 'greatLent' &&
             baseEntry?.vespers?.serviceType === 'dailyVespers') {
           const orthocalData = await fetchOrthocalDay(vespersDate);
@@ -3574,6 +4076,12 @@ function handleRequest(req, res) {
         if (!b.provenance) b.provenance = 'OCA';
       }
 
+      if (format === 'html') {
+        const toneLabel = tone ? ` · Tone ${tone}` : '';
+        renderServiceHTML(res, blocks, serviceTitle, `${formatDate(date)}${toneLabel}`, pronoun);
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         date,
@@ -3613,6 +4121,39 @@ function handleRequest(req, res) {
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Failed to load vespers education modules.' }));
       }
+
+    } else if (pathname === '/api/translations') {
+      // Lists every available translation overlay with its manifest summary.
+      // Front-end uses this to build the settings-panel picker.
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        default: process.env.LITURGY_TRANSLATION || null,
+        translations: getTranslationManifests(),
+      }));
+
+    } else if (pathname.startsWith('/api/translations/') && pathname.endsWith('/diff')) {
+      // Returns the merged-vs-base diff for an overlay. Useful for confirming
+      // overrides took effect and (during STS population) for cataloguing
+      // which keys an overlay touches.
+      // Path: /api/translations/<id>/diff?service=liturgy
+      const id = pathname.slice('/api/translations/'.length, -'/diff'.length);
+      const q = parseQuery(url);
+      const service = (q.service || 'liturgy').trim();
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      if (!fixedTextRegistry[service]) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: `Unknown service '${service}'. Available: ${Object.keys(fixedTextRegistry).join(', ')}` }));
+        return;
+      }
+      const diffs = diffOverlay(service, id);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        overlay: id,
+        service,
+        count: diffs.length,
+        diffs,
+      }));
 
     } else if (pathname === '/api/liturgy') {
       const q       = parseQuery(url);
@@ -3658,15 +4199,23 @@ function handleRequest(req, res) {
           }
         }
 
+        const translation = resolveTranslation(q);
+        const liturgyFixedResolved = getLiturgyFixed(translation);
+
         let blocks;
         try {
-          blocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+          blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, sources);
         } catch (err) {
           console.error('assembleLiturgy error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: err.message }));
           return;
         }
+
+        // Tag blocks whose text came from the active overlay (must happen
+        // BEFORE pronoun substitution, which would change the strings and
+        // defeat the match).
+        tagBlocksWithOverlay(blocks, 'liturgy', translation);
 
         if (pronoun === 'yy') {
           for (const block of blocks) {
@@ -3713,6 +4262,7 @@ function handleRequest(req, res) {
           season,
           liturgicalLabel,
           commemorations,
+          translation: translation || null,
           blocks,
         }));
       })().catch(err => {
@@ -3791,15 +4341,25 @@ function handleRequest(req, res) {
         const dbSource = buildDbSource(date, pronoun);
         const assemblerSources = { ...sources, db: dbSource };
 
+        const translation = resolveTranslation(q);
+        const liturgyFixedResolved = getOverlayFixed('liturgy', translation);
+        const presanctifiedFixedResolved = getOverlayFixed('presanctified', translation);
+
         let blocks;
         try {
-          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixed, presanctifiedFixed, assemblerSources);
+          blocks = assemblePresanctified(calendarEntry, fixedTexts, liturgyFixedResolved, presanctifiedFixedResolved, assemblerSources);
         } catch (err) {
           console.error('assemblePresanctified error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: err.message }));
           return;
         }
+
+        // Tag blocks from overlay overrides (both liturgy and presanctified
+        // bases, since Presanctified borrows from both). Must run before
+        // pronoun substitution.
+        tagBlocksWithOverlay(blocks, 'liturgy', translation);
+        tagBlocksWithOverlay(blocks, 'presanctified', translation);
 
         if (pronoun === 'yy') {
           for (const block of blocks) {
@@ -3835,6 +4395,7 @@ function handleRequest(req, res) {
           season,
           liturgicalLabel,
           commemorations,
+          translation: translation || null,
           blocks,
         }));
       })().catch(err => {
@@ -4193,9 +4754,12 @@ function handleRequest(req, res) {
         return;
       }
 
+      const translation = resolveTranslation(q);
+      const liturgyFixedResolved = getLiturgyFixed(translation);
+
       let blocks;
       try {
-        blocks = assembleVesperalLiturgy(vesperalLiturgyFixed, fixedTexts, liturgyFixed);
+        blocks = assembleVesperalLiturgy(vesperalLiturgyFixed, fixedTexts, liturgyFixedResolved);
       } catch (err) {
         console.error('assembleVesperalLiturgy error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4354,7 +4918,7 @@ function handleRequest(req, res) {
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
           }
           if (calendarEntry?.liturgy) {
-            const litBlocks = assembleLiturgy(calendarEntry, liturgyFixed, sources);
+            const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(resolveTranslation(q)), sources);
             allBlocks.push(...litBlocks);
           }
 
@@ -4458,9 +5022,12 @@ function handleRequest(req, res) {
         .map(([key]) => svcMap[key])
         .filter(Boolean);
 
-      // Fetch each service via internal HTTP requests
+      // Fetch each service via internal HTTP requests. Thread the translation
+      // overlay through so all inner Liturgy/Vespers/etc. requests see it.
+      const translation = resolveTranslation(q);
+      const translationSuffix = translation ? `&translation=${encodeURIComponent(translation)}` : '';
       const fetchInternal = (endpoint, dateStr, pron) => new Promise((resolve, reject) => {
-        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}`;
+        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}`;
         http.get(url, (resp) => {
           let body = '';
           resp.on('data', chunk => body += chunk);

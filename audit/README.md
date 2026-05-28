@@ -5,13 +5,19 @@ Sweeps the liturgical calendar and runs structural / theme rules against the ass
 ## Run it
 
 ```bash
+npm run audit         # full year × vespers/liturgy/presanctified, needs server on :3000
+npm run audit:quick   # structural rules only, no server needed, --strict (used by pre-push)
+
+# Direct invocations for finer control:
 node audit/index.js --date 2026-05-13
 node audit/index.js --year 2026
 node audit/index.js --year 2026 --rules C2-paschal-aposticha-window
-node audit/index.js --year 2026 --strict        # fail process on high-severity findings
+node audit/index.js --year 2026 --strict        # exit 2 on any high-severity finding
 node audit/index.js --year 2026 --no-allowlist  # raw output, ignore known-issues
 node audit/index.js --year 2026 --http http://localhost:3000  # enable rules that need assembled output
 ```
+
+`audit:quick` runs in the pre-push hook (`.git/hooks/pre-push`). Rules that need assembled output (`needsAssembled: true`) are silently skipped when `--http` is omitted — only the calendar-entry-level rules fire, which makes the quick path fast and server-free.
 
 Reports land at `audit/reports/latest.{md,json}`.
 

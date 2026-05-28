@@ -1,6 +1,19 @@
 {
   "$schema": "see audit/README.md",
   "parishOverrides": [],
-  "trackedGaps": [],
+  "trackedGaps": [
+    {
+      "matchSource": "stSergius-octoechos",
+      "scope": "Sunday Matins variable hymns (Antiphons of Degrees, Matins Prokeimenon, Post-Gospel Stichera, sessional hymns, hypakoë, canon irmoi)",
+      "sourceUrl": "https://st-sergius.org/services/oktiochos/Tone{1-8}.pdf",
+      "researchPointer": "OCA does not publish weekly texts-matins-tt.docx for ordinary Sundays (only Holy Week). Investigate: oca.org/liturgics Music Downloads index; archived OCA Daily Matins PDF (referenced 2021-11-19 in matins-fixed.json history); per-tone Matins PDFs in OCA Music section. Replacing this source closes ~5 gaps per Sunday Matins."
+    },
+    {
+      "matchSource": "johnsanidopoulos-goarch-theethy",
+      "scope": "Eothinon Exapostilarion + Theotokion + Lauds doxastikon (11 eothinon sets)",
+      "sourceUrl": "https://www.johnsanidopoulos.com (GOA translations, thee/thy form)",
+      "researchPointer": "OCA Pentecostarion volume contains the eothinon set. No predictable OCA URL identified. Investigate: OCA service-music section, OCA published volumes. Replacing this source closes ~3 gaps per Sunday Matins (post-Pentecost ordinary time)."
+    }
+  ],
   "knownFailures": []
 }

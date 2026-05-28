@@ -22,9 +22,20 @@
   "liturgy": {
     "variant": "basil",
     "beatitudes": {
-      "_note": "6 Resurrectional (Octoechos Tone 7) + 4 from Triodion Canon Ode 6. Texts to be sourced.",
+      "_note": "6 Resurrectional (Octoechos Tone 7, 3 from Ode 3 + 3 from Ode 6) + 4 from Triodion Cross Canon Ode 6 (still to be sourced).",
       "troparia": [
-        { "tone": 7, "source": "octoechos", "label": "Resurrectional, Tone 7", "count": 6 },
+        { "tone": 7, "source": "octoechos", "label": "Irmos of Ode 3", "_source": "oca-parma-stsergius",
+          "text": "O Lord and Savior, Who in the beginning established the heavens by Thine all-powerful Word, and by the divine and all-accomplishing Spirit hath granted them all their strength, do Thou establish me on the unshakeable rock of Thy confession." },
+        { "tone": 7, "source": "octoechos", "label": "Troparion of Ode 3", "_source": "oca-parma-stsergius",
+          "text": "Ascending the Tree, O compassionate Savior, and willingly suffering pangs for our sake, Thou didst endure Thy wounds, O cause of peace and through them bring the faithful to salvation, O Merciful One, whereby we all have been reconciled to Thy Begetter." },
+        { "tone": 7, "source": "octoechos", "label": "Troparion of Ode 3", "_source": "oca-parma-stsergius",
+          "text": "My soul having been wounded by the bite of the serpent, hath been cleansed of its wounds by Thee O Christ, Who hath revealed Thy light to me, who of old lay in darkness and corruption; for through the Cross Thou didst descend into Hades and hast raised me up together with Thyself." },
+        { "tone": 7, "source": "octoechos", "label": "Irmos of Ode 6", "_source": "oca-parma-stsergius",
+          "text": "Sailing in the tempest of the cares of life, together with the ship I have been submerged by sins, and cast to the soul-corrupting beast, wherefore like Jonah I cry to Thee, O Christ: Lead me up from the deadly abyss." },
+        { "tone": 7, "source": "octoechos", "label": "Troparion of Ode 6", "_source": "oca-parma-stsergius",
+          "text": "The souls of the righteous, who were held in bondage and forsaken in Hades, remembered Thee and prayed for salvation from Thee, which Thou didst grant unto them through Thy Cross, O Christ, when in Thy compassion Thou didst descend into the nether regions of the earth." },
+        { "tone": 7, "source": "octoechos", "label": "Troparion of Ode 6", "_source": "oca-parma-stsergius",
+          "text": "The choir of Apostles despaired of ever gazing again upon Thy living temple not made with hands, which had been destroyed by the passion, but praying beyond hope they were granted to proclaim everywhere that Thou art Risen." },
         { "tone": 1, "source": "triodion", "label": "Triodion, Ode 6, Tone 1", "count": 4 }
       ]
     },

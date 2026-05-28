@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "feast": "Dormition of the Most Holy Theotokos",
+    "feastKey": "dormition",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-0815-texts-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-0815-texts-tt.docx",
+    "_note": "Variable Matins propers for Dormition. Two-canon structure (1st by Cosmas Tone 1 + 2nd by John of Damascus Tone 4). Magnificat replaced by feast-specific refrains in Ode 9 (`skipMagnificat: true`)."
+  },
+
+  "troparion": {
+    "text": "In giving birth thou didst preserve thy virginity.\nIn falling asleep thou didst not forsake the world, O Theotokos.\nThou wast translated to life, O Mother of Life,\nand by thy prayers thou dost deliver our souls from death.",
+    "tone": 1,
+    "label": "Troparion of the Dormition"
+  },
+  "kontakion": {
+    "text": "Neither the tomb, nor death, could hold the Theotokos,\nwho is constant in prayer and our firm hope in her intercessions.\nFor being the Mother of Life,\nshe was translated to life by the One Who dwelt in her virginal womb.",
+    "tone": 2,
+    "label": "Kontakion of the Dormition"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "greatFeast",
+      "feastType": "theotokos"
+    },
+
+    "magnification": {
+      "refrain": "We magnify thee,\nO most pure Mother of Christ our God,\nand we praise thine all-glorious Dormition.",
+      "verses": [
+        "Make a joyful noise unto the Lord, all the earth! (Ps. 65:1a)",
+        "Arise, O Lord, into Thy rest, Thou and the Ark of Thy sanctification! (Ps. 131:8)"
+      ],
+      "tone": 1
+    },
+
+    "prokeimenon": {
+      "refrain": "I will remember thy name from generation to generation.",
+      "verse": "Hearken, O daughter, and see, and incline thine ear!",
+      "tone": 4,
+      "_psalmRef": "Ps. 44:16 / 44:9a"
+    },
+
+    "gospel": {
+      "reading": "Luke 1:39-49, 56",
+      "number": 4,
+      "_note": "The Visitation — Mary visits Elizabeth. \"My soul magnifies the Lord…\""
+    },
+
+    "postGospelSticheron": {
+      "text": "When the Translation of thine immaculate body was being prepared,\nthe Apostles surrounded thy deathbed and looked on thee with trembling.\nThey gazed at thy body and were seized with awe,\nwhile Peter cried out to thee with tears:\n\"O Virgin, I see thee, who art the life of all, lying here outstretched,\nand I am struck with wonder;\nfor the Delight of the life to come made His dwelling in thee.\nBut fervently implore thy Son and God, O immaculate Lady,\nthat thy people may be kept safe from harm!\"",
+      "tone": 6,
+      "label": "Idiomelon of the Dormition",
+      "_source": "oca-2025-0815-tt"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 4,
+      "_authors": { "first": "Cosmas the Monk", "second": "John of Damascus" },
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "Clothed in the embroidered raiment of divine glory,\nthy sacred and renowned memorial, O Virgin,\nhas brought all the faithful together for joy;\nand led by Miriam, with dances and timbrels,\nthey sing to thine Only-begotten Son,\nfor He has been glorified.",
+        "irmos2": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her falling asleep."
+      },
+      "ode3": {
+        "irmos": "O Christ, the Wisdom and the Power of God,\ncreating and sustaining all things,\nestablish the Church unshaken and unwavering;\nfor Thou alone art holy,\nWho hast Thy resting place among the Saints!",
+        "irmos2": "As thou art a living and abundant spring,\nestablish, O Theotokos, those who sing thy praise,\nforming a spiritual chorus;\nand in thy divine glory\ncount them worthy of crowns of glory!"
+      },
+      "ode4": {
+        "irmos": "The sayings and riddles of the Prophets\nforeshadowed Thine incarnation from a Virgin, O Christ;\nthat the brightness of Thy lightning would come as a light for the nations;\nand the deep gives forth its voice to Thee in joy:\n\"Glory to Thy power, O Lover of man!\"",
+        "irmos2": "Perceiving the unsearchable divine counsel\nconcerning Thine incarnation from the Virgin, O Most High,\nthe Prophet Habakkuk cried:\n\"Glory to Thy Power, O Lord!\""
+      },
+      "ode5": {
+        "irmos": "I will declare the divine and ineffable beauty of Thy virtues, O Christ;\nfor Thou didst shine forth from the eternal glory in Thine own person,\nas co-eternal brightness;\nand, for those in darkness and in shadow,\nfrom a virgin womb, incarnate, Thou didst dawn as the sun.",
+        "irmos2": "All things were amazed at thy falling asleep,\nfor thou, O Virgin, who hast not known wedlock,\nhast passed over from earth to the eternal mansions\nand to the life without end,\nbestowing salvation upon all who sing thy praises."
+      },
+      "ode6": {
+        "irmos": "The fire within the whale, the monster dwelling in the salt sea,\nwas a prefiguring of Thy three-day burial;\nand Jonah became its interpreter,\nfor, saved and unharmed, as though he had never been swallowed, he cried aloud:\n\"I will sacrifice to Thee with a voice of praise, O Lord.\"",
+        "irmos2": "As we celebrate this sacred and solemn feast of the Mother of God,\nlet us come, clapping our hands,\nO people of God,\ngiving glory to God Who was born of her!"
+      },
+      "ode7": {
+        "irmos": "Fighting against cruel wrath and fire,\ndivine love quenched the fire with dew;\nand it laughed the wrath to scorn,\nmaking the three-stringed lyre of the holy Youths, inspired by God,\nsing in the midst of the flame, in answer to the instruments of music:\n\"Blessed art Thou, most glorious God,\nour God and the God of our fathers!\"",
+        "irmos2": "The godly-minded Children\nwould not worship the creation rather than the Creator,\nbut bravely trampling on the threat of fire, they rejoiced and sang:\n\"Blessed art Thou and praised above all, O Lord God of our Fathers!\""
+      },
+      "ode8": {
+        "irmos": "The all-powerful Angel of God revealed to the Youths\na flame that brings refreshment to the holy, but consumes the ungodly;\nwhile he made the Theotokos a spring, and a source of life,\ngushing forth destruction for death, but life for those who sing:\n\"We who have been delivered praise Him Who alone is Creator,\nand highly exalt Him unto all ages.\"",
+        "irmos2": "The Offspring of the Theotokos saved the innocent Youths in the furnace.\nThen He was prefigured: now He is Himself at work,\nand He gathers together the world as it sings:\n\"Praise the Lord, all His works,\nand highly exalt Him unto all ages!\""
+      },
+      "ode9": {
+        "irmos": "Refrain: The Angels, as they looked upon the Dormition of the Virgin,\nwere struck with wonder,\nseeing how the Virgin went up from earth to heaven.\n\nHeirmos: The limits of nature are overcome in thee, O Pure Virgin:\nfor birthgiving remains virginal, and life is united to death;\na virgin after childbearing and alive after death,\nthou dost ever save thine inheritance, O Theotokos.",
+        "irmos2": "Refrain: Magnify, O my soul,\nthe translation of the Mother of God from earth to heaven!\n\nHeirmos: Let all mortals born on earth,\ncarrying torches, in spirit leap for joy;\nand let the nature of the immaterial Minds keep festival\nand honor the holy Translation of the Mother of God,\nand let them cry:\n\"Rejoice, all-blessed one, pure Theotokos ever-Virgin!\""
+      },
+
+      "kontakion": {
+        "text": "Neither the tomb, nor death, could hold the Theotokos,\nwho is constant in prayer and our firm hope in her intercessions.\nFor being the Mother of Life,\nshe was translated to life by the One Who dwelt in her virginal womb.",
+        "tone": 2,
+        "label": "Kontakion of the Dormition"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Apostles, who have assembled here\nfrom the ends of the earth,\nbury my body in Gethsemane,\nand Thou, my Son and God,\nreceive my spirit!",
+      "tone": 3,
+      "label": "Exapostilarion of the Dormition",
+      "repeat": 3,
+      "_source": "oca-2025-0815-tt"
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "At thy glorious Dormition\nthe heavens rejoice, and the armies of Angels exult.\nThe whole earth is glad, addressing its funeral hymn to thee,\nthe Mother of the Master of all things,\nall-holy Virgin who knewest not wedlock,\nwho hast delivered the human race from the ancestral condemnation.",
+          "tone": 4,
+          "melody": "As one valiant"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "At a divine command\nthe chief Apostles gathered from the ends of the earth to bury thee,\nand when they saw thee being taken from the earth to heaven\nthey cried out with joy in Gabriel's words:\n\"Rejoice, chariot of the whole Godhead!\nRejoice, for thou alone by thy childbearing\nhast joined together things on earth with those on high!\"",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "O Virgin Mother, Bride of God,\nwho didst carry the Life within thy womb,\nby thy revered falling asleep thou hast passed over to immortal life.\nAngels, Rulers and Powers, Apostles, Prophets and all creation escorted thee,\nand thy Son received thy most pure soul in His immaculate hands.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "At thy deathless falling asleep,\nO Theotokos, Mother of Life,\nclouds caught the Apostles up into the air,\nand though they were dispersed throughout the world,\nthey were brought into a single choir beside thy most pure body.\nAs they reverently buried thee they cried out, singing Gabriel's words:\n\"Rejoice, O full of grace,\nVirgin Mother without bridegroom,\nthe Lord is with thee!\"\nWith them implore Him as thy Son and our God that our souls may be saved!",
+        "tone": 6,
+        "author": "Doxastikon of the Dormition",
+        "_source": "oca-2025-0815-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "In giving birth thou didst preserve thy virginity.\nIn falling asleep thou didst not forsake the world, O Theotokos.\nThou wast translated to life, O Mother of Life,\nand by thy prayers thou dost deliver our souls from death.",
+      "tone": 1
+    }
+  }
+}

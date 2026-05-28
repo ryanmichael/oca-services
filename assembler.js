@@ -4908,11 +4908,14 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
     if (spec.magnification) {
       const mag = spec.magnification;
       blocks.push(S('magnification', section, 'hymn', 'choir', mag.refrain, { label: 'Magnification' }));
-      if (mag.psalmVerses) {
-        for (let i = 0; i < mag.psalmVerses.length; i++) {
-          blocks.push(S(`mag-v${i}`, section, 'verse', 'reader', mag.psalmVerses[i].text));
-          blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain));
-        }
+      // Accept either `psalmVerses: [{ text, ref }]` (Annunciation-style) or
+      // `verses: ["...", "..."]` (Pentecost/Ascension/Dormition-style).
+      const verses = mag.psalmVerses
+        ? mag.psalmVerses.map(v => v.text || v)
+        : (mag.verses || []);
+      for (let i = 0; i < verses.length; i++) {
+        blocks.push(S(`mag-v${i}`, section, 'verse', 'reader', verses[i]));
+        blocks.push(S(`mag-r${i}`, section, 'hymn', 'choir', mag.refrain));
       }
     }
 

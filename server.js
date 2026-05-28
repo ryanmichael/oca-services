@@ -2077,9 +2077,12 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
       tone: mat.canon.tone || spec.tone,
       author: mat.canon.author,
     };
-    // Copy ode data
+    // Copy ode data + canon-level metadata (second-canon tone, katavasia tone,
+    // explicit skipMagnificat, authors, etc.)
     for (const [k, v] of Object.entries(mat.canon)) {
-      if (k.startsWith('ode')) canonSpec[k] = v;
+      if (k.startsWith('ode') || k.startsWith('_') || k === 'skipMagnificat') {
+        canonSpec[k] = v;
+      }
     }
     // Sessional hymns after Ode 3
     if (mat.sessionalHymns) {
@@ -2087,8 +2090,12 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     } else if (mat.sedalen) {
       canonSpec.sedalenAfterOde3 = mat.sedalen;
     }
-    // Kontakion/ikos (placed inside canon spec so they appear after Ode 6)
-    if (menaionData.kontakion) {
+    // Kontakion/ikos (placed inside canon spec so they appear after Ode 6).
+    // Prefer the matins-canon kontakion if present (festal-specific text);
+    // otherwise fall back to the top-level menaion kontakion.
+    if (mat.canon.kontakion) {
+      canonSpec.kontakion = mat.canon.kontakion;
+    } else if (menaionData.kontakion) {
       canonSpec.kontakion = menaionData.kontakion;
     }
     // Skip Magnificat on great feasts that have their own Ode 9 megalynarion
@@ -2098,10 +2105,23 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.canon = canonSpec;
   }
 
-  // Exapostilaria
+  // Exapostilaria (array or singular with `repeat: N`)
   if (mat.exapostilaria) {
     spec.exapostilaria = mat.exapostilaria;
+  } else if (mat.exapostilarion) {
+    spec.exapostilarion = mat.exapostilarion;
   }
+
+  // Festal troparion after the Great Doxology (overrides Sunday default)
+  if (mat.troparionAfterDoxology) {
+    spec.troparionAfterDoxology = mat.troparionAfterDoxology;
+  }
+
+  // Flags forwarded from the festal matins data
+  if (mat._meta?.feastRank)        spec.feastRank        = mat._meta.feastRank;
+  if (mat._meta?.feastType)        spec.feastType        = mat._meta.feastType;
+  if (mat.isGreatFeastOfLord != null) spec.isGreatFeastOfLord = mat.isGreatFeastOfLord;
+  if (mat.includeHavingBeheld != null) spec.includeHavingBeheld = mat.includeHavingBeheld;
 
   // Lauds
   if (mat.lauds) {

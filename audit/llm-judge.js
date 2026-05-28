@@ -15,9 +15,12 @@ const path = require('path');
 const { execSync } = require('child_process');
 const Anthropic = require('@anthropic-ai/sdk');
 
-// Haiku 4.5 — user explicitly named it as the cheap path. Doesn't support
-// `effort` or `thinking`; structured-output keyword check is enough here.
-const MODEL = 'claude-haiku-4-5';
+// Sonnet 4.6 — Haiku 4.5 wasn't reliable enough on liturgical reasoning
+// (1 false positive per clean date even after prompt tightening). Sonnet
+// brings noticeably better domain knowledge at ~3x the cost (~$0.015/run).
+// Adaptive thinking lets the model decide when to reason carefully; medium
+// effort balances quality vs. token usage for a per-date audit.
+const MODEL = 'claude-sonnet-4-6';
 
 const SYSTEM_PROMPT = `You are an expert in Orthodox Christian liturgical practice and OCA English-language service translations.
 
@@ -153,6 +156,8 @@ async function judge(client, date, service, assembled, refText) {
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 4096,
+    thinking: { type: 'adaptive' },
+    output_config: { effort: 'medium' },
     system: [
       { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } },
     ],

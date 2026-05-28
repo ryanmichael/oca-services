@@ -2362,6 +2362,16 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
           text: 'Moses, great among the Prophets, symbolically wrote aforetime concerning thee as an ark, and table, and lamp, and an urn, signifying the incarnation of the Most High that took place in thee, O Virgin Mother.' },
       ],
     },
+    49: { // Pentecost itself — Pascha + 49.
+      // Per OCA rubric (and standard Slavonic practice), on the day of a Great
+      // Feast of the Lord the post-Communion "We have seen the True Light" is
+      // replaced by the feast's troparion. Bright Week / Ascension+afterfeast /
+      // Holy Fathers already do this; Pentecost was the missed case. Feast-day
+      // antiphons, troparion, kontakion, megalynarion, communion hymn all flow
+      // through GREAT_FEAST_VARIANTS.pentecost — this entry adds only the
+      // post-Communion substitution.
+      weHaveSeen: 'Blessed art Thou, O Christ our God,\nwho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit;\nthrough them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!',
+    },
   };
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 

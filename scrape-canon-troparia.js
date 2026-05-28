@@ -353,7 +353,7 @@ async function parseTone(n) {
   console.log(`  TOTAL: ${total} troparia across ${odes.length} odes`);
 
   return {
-    _source: 'stSergius-octoechos',
+    _source: 'oca-parma-stsergius',
     canonTroparia,
   };
 }

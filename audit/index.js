@@ -153,7 +153,9 @@ async function writePrintReport(date, services, result, httpBase) {
       }
     }
 
-    const provBlocks = (assembled.blocks || []).filter(b => b._source);
+    // `_source` values prefixed `oca-` are OCA-jurisdiction (e.g.
+    // oca-parma-stsergius); skip those — they're attribution, not gaps.
+    const provBlocks = (assembled.blocks || []).filter(b => b._source && !b._source.startsWith('oca-'));
     if (provBlocks.length) {
       const bySrc = provBlocks.reduce((m, b) => {
         (m[b._source] = m[b._source] || []).push(b.section || '(unsectioned)');

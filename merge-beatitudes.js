@@ -38,7 +38,7 @@ for (let tone = 1; tone <= 8; tone++) {
   if (!oct[key].sunday.liturgy) oct[key].sunday.liturgy = {};
 
   oct[key].sunday.liturgy.beatitudes = {
-    source: 'stSergius-octoechos',
+    source: 'oca-parma-stsergius',
     note: 'Canon of the Resurrection, Odes 3 and 6. Standard Sunday "On 8" assignment.',
     ode3: {
       irmos: src.ode3.irmos,

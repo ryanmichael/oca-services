@@ -1756,7 +1756,7 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
       ? kontakionRaw : { text: kontakionRaw, tone };
   }
 
-  const matinsSource = matins._source || 'stSergius-octoechos';
+  const matinsSource = matins._source || 'oca-parma-stsergius';
 
   // ── Post-Gospel sticheron ─────────────────────────────────────────────
   const postGospelSticheron = matins.postGospelSticheron ? {

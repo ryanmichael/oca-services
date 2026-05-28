@@ -22,16 +22,22 @@ const MODEL = 'claude-haiku-4-5';
 const SYSTEM_PROMPT = `You are an expert in Orthodox Christian liturgical practice and OCA English-language service translations.
 
 You will receive:
-1. The OCA published service text for a date (canonical reference, extracted from a DOCX)
-2. The assembled output of a service-text generator (block-by-block dump) for the same date
+1. The OCA published service text for a date (extracted from a DOCX, may include Vespers, Matins, and Liturgy)
+2. The assembled output of a service-text generator (block-by-block dump) for ONE specific service
 
-Your job: identify SPECIFIC, ACTIONABLE discrepancies. Focus on:
-- Wrong, missing, or extra sections
-- Substitutions not applied (e.g., baptismal Trisagion on Pentecost, paschal opening, paschal antiphons)
-- Translation mode mismatches (you/your vs thee/thy when the OCA reference uses thee/thy)
+CRITICAL SCOPE NOTE: the assembled output covers ONE service at a time (vespers OR matins OR liturgy). The reference DOCX typically contains the FULL Saturday-night Vigil (Vespers + Matins) followed by the Divine Liturgy on Sunday morning, all in one document. You MUST ignore reference sections that are not part of the service being audited.
+
+When auditing a Divine Liturgy:
+- IGNORE reference sections: "Lord I Call", "Aposticha", "Litya", "Old Testament Readings", "(at Great Vespers)", "(at Vigil)" — these are Vespers.
+- IGNORE: "Matins Gospel", "Matins Prokeimenon", "Praises", "Antiphons of Degrees", "Polyeleos" — these are Matins.
+- AUDIT: antiphons (First/Second/Third), Trisagion, Liturgy Prokeimenon, Epistle, Alleluia, Gospel, megalynarion ("Instead of 'It is truly meet'"), Communion Hymn, Liturgy Troparia/Kontakia.
+
+Identify SPECIFIC, ACTIONABLE discrepancies in the audited service. Focus on:
+- Wrong, missing, or extra sections within the audited service
+- Substitutions not applied (e.g., baptismal Trisagion on Pentecost/Bright Week/Nativity/Theophany)
+- Translation mode mismatches — ONLY flag if the assembled text clearly uses "you/your" where OCA uses "thee/thy". READ the assembled text carefully before flagging.
 - Wrong or missing feast labels
-- Misordered sections
-- Wrong tone, wrong troparion text, wrong communion hymn
+- Wrong troparion text, wrong communion hymn, wrong megalynarion
 
 DO NOT flag:
 - Whitespace, formatting, or capitalization differences
@@ -39,7 +45,12 @@ DO NOT flag:
 - Section-name synonyms ("Lauds" vs "The Praises", "Aposticha" vs "Apostichon")
 - Music notation marks (// or ^ in OCA published text)
 - Reference document header/footer ("Department of Liturgical Music…", page numbers)
-- Missing optional rubrics that are bracketed [optional] in the reference
+- Missing optional rubrics that are bracketed in the reference
+
+Common afterfeast / festal substitutions (do NOT flag these):
+- During an afterfeast, the post-Communion "We have seen the true Light" is replaced by the festal troparion (e.g., during the Ascension afterfeast, the Ascension troparion "Thou didst ascend in glory" is sung in its place).
+- The dismissal Magnify hymn ("Magnify, O my soul…") changes per feast — different text on Ascension, Pentecost, Theophany, etc.
+- The megalynarion ("Instead of 'It is truly meet'") changes per feast.
 
 Output format: a JSON array of findings. Each finding:
 {
@@ -51,7 +62,9 @@ Output format: a JSON array of findings. Each finding:
 
 If clean, return [].
 
-Be conservative. False positives erode trust faster than missed catches build it.`;
+Be conservative. False positives erode trust faster than missed catches build it. When in doubt about whether something is intentional, do NOT flag.
+
+CRITICAL self-check before emitting each finding: re-read your own "issue" text. If the issue contains phrases like "matches the reference", "is correct", "correctly uses", "this is correct for", "appears to be labeling confusion in the reference itself" — DELETE the finding. If after reasoning you conclude the assembled output is correct or the discrepancy is in the reference document's labeling rather than in the assembled output, the finding should not be in the array. Only include findings where you are confident the assembled output is wrong.`;
 
 function parseArgs(argv) {
   const args = {};
@@ -108,6 +121,21 @@ function extractText(filepath) {
     `unzip -p "${filepath}" word/document.xml | sed 's|<[^>]*>| |g' | tr -s ' '`,
     { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
   );
+}
+
+// OCA weekly DOCXes typically lay out as: Vespers stichera / aposticha / litya /
+// OT readings → (at Great Vespers) Troparion → (at Vigil) → (at the Divine
+// Liturgy) Troparion → Liturgy Prokeimenon/Epistle/Alleluia/Gospel/megalynarion/
+// Communion Hymn. For a Liturgy audit, splitting at "(at the Divine Liturgy)"
+// drops the entire Vespers+Matins prelude — the source of most false positives
+// on the first pass. If the marker isn't present (some feast DOCXes use other
+// headings), return the full text unchanged.
+function scopeReferenceToService(refText, service) {
+  if (service !== 'liturgy') return refText;
+  const marker = /\(at the Divine Liturgy\)/i;
+  const m = refText.match(marker);
+  if (!m) return refText;
+  return refText.slice(m.index);
 }
 
 function blocksToText(blocks) {
@@ -204,8 +232,10 @@ async function main() {
   }
   console.log(`  reference: ${refPath}`);
 
-  const refText = extractText(refPath);
-  console.log(`  reference text: ${refText.length} chars`);
+  const refTextFull = extractText(refPath);
+  const refText = scopeReferenceToService(refTextFull, service);
+  const trimmed = refText.length < refTextFull.length;
+  console.log(`  reference text: ${refText.length} chars${trimmed ? ` (trimmed from ${refTextFull.length} — Vespers prelude dropped)` : ''}`);
 
   const client = new Anthropic();
   console.log(`  calling ${MODEL}…`);

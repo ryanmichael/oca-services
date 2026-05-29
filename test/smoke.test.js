@@ -488,6 +488,27 @@ describe('Per-feast Matins contracts', () => {
       minLaudsBlocks: 5,
     });
   });
+
+  it('Theophany Matins renders two canons separately, not flat', async () => {
+    // Theophany has two canons (Cosmas + John of Damascus). The assembler
+    // should emit "Ode N — First Canon" / Irmos / first-canon troparia /
+    // "Ode N — Second Canon" / Irmos 2 / second-canon troparia for each ode,
+    // not flatten both irmoi to the top with all troparia underneath.
+    const res = await get('/api/matins?date=2026-01-06');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    // Expect "First Canon" and "Second Canon" headings for each of 8 odes
+    const firstCanonHeadings  = canonRubrics.filter(t => /First Canon/.test(t));
+    const secondCanonHeadings = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(firstCanonHeadings.length >= 8,
+      `Expected ≥8 "First Canon" ode headings (one per Ode 1,3,4,5,6,7,8,9), got ${firstCanonHeadings.length}. ` +
+      `Sample rubrics: ${canonRubrics.slice(0, 5).join(' | ')}`);
+    assert.ok(secondCanonHeadings.length >= 8,
+      `Expected ≥8 "Second Canon" ode headings, got ${secondCanonHeadings.length}. ` +
+      `If 0, the assembler is rendering Theophany as flat-troparia instead of grouped two-canon.`);
+  });
 });
 
 // ═══════════════════════════════════════════════════════════════════════════

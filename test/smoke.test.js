@@ -489,6 +489,24 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Ascension (2026-05-21) renders full festal Matins, not stub', async () => {
+    await assertFestalMatins('2026-05-21', {
+      feastName: 'Ascension',
+      minBlocks: 320,
+      troparionText: 'Thou didst ascend in glory, O Christ our God',
+      minCanonBlocks: 50,   // single canon × 8 odes with troparia, actual ~88
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Ascension Matins includes Having Beheld the Resurrection (unlike Pentecost)', async () => {
+    const res = await get('/api/matins?date=2026-05-21');
+    assert.equal(res.status, 200);
+    const havingBeheld = res.json.blocks.find(b => b.text && b.text.includes('Having beheld the Resurrection'));
+    assert.ok(havingBeheld,
+      'Ascension Matins should include "Having beheld the Resurrection" per OCA rubric (includeHavingBeheld: true)');
+  });
+
   it('Pentecost (2026-05-31) renders full festal Matins with both canons', async () => {
     await assertFestalMatins('2026-05-31', {
       feastName: 'Pentecost',

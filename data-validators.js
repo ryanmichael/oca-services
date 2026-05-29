@@ -178,6 +178,27 @@ function validateCocelebratedOverlays(data) {
   return errs;
 }
 
+// ── liturgy-defaults.json ────────────────────────────────────────────────────
+
+function validateLiturgyDefaults(data) {
+  const errs = [];
+  const at = 'liturgy-defaults';
+  pushIf(errs, isObject(data.entranceHymn),                       `${at}.entranceHymn must be object`);
+  if (isObject(data.entranceHymn)) {
+    pushIf(errs, isString(data.entranceHymn.resurrection),        `${at}.entranceHymn.resurrection required`);
+    pushIf(errs, isString(data.entranceHymn.saints),              `${at}.entranceHymn.saints required`);
+  }
+  pushIf(errs, isString(data.paschalMegalynarion),                `${at}.paschalMegalynarion required`);
+  pushIf(errs, isObject(data.weHaveSeenSubstitutions),            `${at}.weHaveSeenSubstitutions must be object`);
+  if (isObject(data.weHaveSeenSubstitutions)) {
+    pushIf(errs, isString(data.weHaveSeenSubstitutions.ascensionAfterfeast),
+      `${at}.weHaveSeenSubstitutions.ascensionAfterfeast required`);
+    pushIf(errs, isString(data.weHaveSeenSubstitutions.pentecostAfterfeast),
+      `${at}.weHaveSeenSubstitutions.pentecostAfterfeast required`);
+  }
+  return errs;
+}
+
 // ── liturgical-day-labels.json ───────────────────────────────────────────────
 
 function validateLiturgicalDayLabels(data) {
@@ -358,6 +379,8 @@ function validateAll(loaded) {
     all.push(...validateDailyPropers(loaded.dailyPropers));
   if (loaded.liturgicalDayLabels)
     all.push(...validateLiturgicalDayLabels(loaded.liturgicalDayLabels));
+  if (loaded.liturgyDefaults)
+    all.push(...validateLiturgyDefaults(loaded.liturgyDefaults));
   if (loaded.menaionDir) {
     const fs = require('fs');
     const path = require('path');
@@ -375,6 +398,7 @@ module.exports = {
   validateCocelebratedOverlays,
   validateDailyPropers,
   validateLiturgicalDayLabels,
+  validateLiturgyDefaults,
   validateMenaionFeast,
   validateAllMenaionFeasts,
 };

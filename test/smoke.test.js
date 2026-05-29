@@ -629,6 +629,19 @@ describe('Data file validation', () => {
       `Expected missing-tone error, got: ${errs.join(' | ')}`);
   });
 
+  it('liturgical-day-labels.json passes validation as shipped', () => {
+    const labels = require('../variable-sources/liturgical-day-labels.json');
+    assert.deepEqual(validators.validateLiturgicalDayLabels(labels), []);
+  });
+
+  it('liturgical-day-labels rejects a non-numeric Lenten Sunday key', () => {
+    const broken = JSON.parse(JSON.stringify(require('../variable-sources/liturgical-day-labels.json')));
+    broken.lentenSundays['foo'] = 'X';
+    const errs = validators.validateLiturgicalDayLabels(broken);
+    assert.ok(errs.some(e => /lentenSundays.*'foo'/.test(e)),
+      `Expected key-format error, got: ${errs.join(' | ')}`);
+  });
+
   it('all menaion great-feast JSONs pass validation as shipped', () => {
     const fs = require('node:fs');
     const path = require('node:path');

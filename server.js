@@ -1230,6 +1230,12 @@ delete COCELEBRATED_OVERLAYS._meta;
 // tone, plus Lenten Sunday propers and day-of-week dismissal patrons.
 const DAILY_PROPERS = loadJSON('variable-sources/daily-propers.json');
 delete DAILY_PROPERS._meta;
+
+// ─── Liturgical Day Display Labels ────────────────────────────────────────────
+// Per-season display labels used by getDayLabel() and the bridegroom-matins
+// route. See variable-sources/liturgical-day-labels.json.
+const LITURGICAL_DAY_LABELS = loadJSON('variable-sources/liturgical-day-labels.json');
+delete LITURGICAL_DAY_LABELS._meta;
 const DAY_PATRONS              = DAILY_PROPERS.dayPatrons;
 const COMMUNION_HYMNS          = DAILY_PROPERS.communionHymns;
 const SUNDAY_PROKEIMENA        = DAILY_PROPERS.sundayProkeimena;
@@ -1248,6 +1254,7 @@ require('./data-validators').validateAll({
   pentecostarionOverrides: PENTECOSTARION_SUNDAY_OVERRIDES,
   cocelebratedOverlays:    COCELEBRATED_OVERLAYS,
   dailyPropers:            DAILY_PROPERS,
+  liturgicalDayLabels:     LITURGICAL_DAY_LABELS,
   menaionDir:              path.join(__dirname, 'variable-sources', 'menaion'),
 });
 
@@ -2727,15 +2734,7 @@ function getDayLabel(entry, dow, season, date) {
     }
     if (dow === 'sunday') {
       const wk = entry.liturgicalContext?.weekOfLent;
-      const names = {
-        1: 'Sunday of Orthodoxy',
-        2: 'Sunday of St. Gregory Palamas',
-        3: 'Sunday of the Holy Cross',
-        4: 'Sunday of St. John of the Ladder',
-        5: 'Sunday of St. Mary of Egypt',
-        6: 'Palm Sunday',
-      };
-      return names[wk] || null;
+      return LITURGICAL_DAY_LABELS.lentenSundays[wk] || null;
     }
     // Weekday
     const wk  = entry.liturgicalContext?.weekOfLent;
@@ -2745,52 +2744,23 @@ function getDayLabel(entry, dow, season, date) {
   }
 
   if (season === 'preLenten') {
-    const litKey = entry.liturgicalContext?.litKey || null;
-    const TRIODION_NAMES = {
-      'triodion.publicanPharisee':  'Sunday of the Publican and Pharisee',
-      'triodion.prodigalSon':       'Sunday of the Prodigal Son',
-      'triodion.meatfareSaturday':  'Meatfare Saturday',
-      'triodion.meatfareSunday':    'Meatfare Sunday',
-      'triodion.forgivenessSunday': 'Forgiveness Sunday',
-    };
-    // Try to extract the litKey from the meta note
     const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
     const key = noteMatch ? noteMatch[1] : null;
-    return TRIODION_NAMES[key] || null;
+    return LITURGICAL_DAY_LABELS.preLentenSundays[key] || null;
   }
 
   if (season === 'holyWeek') {
-    const names = {
-      sunday: 'Palm Sunday', monday: 'Holy Monday', tuesday: 'Holy Tuesday',
-      wednesday: 'Holy Wednesday', thursday: 'Great and Holy Thursday',
-      friday: 'Great and Holy Friday', saturday: 'Great and Holy Saturday',
-    };
-    return names[dow] || null;
+    return LITURGICAL_DAY_LABELS.holyWeek[dow] || null;
   }
 
   if (season === 'brightWeek') {
-    const names = {
-      sunday: 'Holy Pascha', monday: 'Bright Monday', tuesday: 'Bright Tuesday',
-      wednesday: 'Bright Wednesday', thursday: 'Bright Thursday',
-      friday: 'Bright Friday', saturday: 'Bright Saturday',
-    };
-    return names[dow] || null;
+    return LITURGICAL_DAY_LABELS.brightWeek[dow] || null;
   }
 
   if (season === 'pentecostarion') {
-    const FEAST_NAMES = {
-      'pentecostarion.week.2.sunday': 'Thomas Sunday (Antipascha)',
-      'pentecostarion.week.3.sunday': 'Sunday of the Myrrhbearers',
-      'pentecostarion.week.4.sunday': 'Sunday of the Paralytic',
-      'pentecostarion.week.5.sunday': 'Sunday of the Samaritan Woman',
-      'pentecostarion.week.6.sunday': 'Sunday of the Blind Man',
-      'pentecostarion.week.7.sunday': 'Sunday of the Holy Fathers of the 1st Ecumenical Council — Afterfeast of the Ascension',
-      'pentecostarion.ascension':     'The Ascension of our Lord',
-      'pentecostarion.pentecost':     'Holy Pentecost',
-    };
     const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
     const key = noteMatch ? noteMatch[1] : null;
-    return FEAST_NAMES[key] || null;
+    return LITURGICAL_DAY_LABELS.pentecostarionFeasts[key] || null;
   }
 
   return null;
@@ -3681,12 +3651,7 @@ function handleRequest(req, res) {
       const nextDay = new Date(d);
       nextDay.setUTCDate(nextDay.getUTCDate() + 1);
       const night = getDayOfWeek(nextDay);  // monday, tuesday, wednesday, or thursday
-      const NIGHT_NAMES = {
-        monday:    'Holy Monday',
-        tuesday:   'Holy Tuesday',
-        wednesday: 'Holy Wednesday',
-        thursday:  'Great and Holy Thursday',
-      };
+      const NIGHT_NAMES = LITURGICAL_DAY_LABELS.bridegroomMatinsNights;
 
       let blocks;
       try {

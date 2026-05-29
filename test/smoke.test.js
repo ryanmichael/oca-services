@@ -597,3 +597,49 @@ describe('Translation overlay cascade', () => {
     fs.rmSync(path.join(TRANSLATIONS_DIR, '_test-tag'), { recursive: true, force: true });
   });
 });
+
+describe('Data file validation', () => {
+  const validators = require('../data-validators');
+
+  it('great-feast-variants.json passes validation as shipped', () => {
+    const gfv = require('../variable-sources/great-feast-variants.json');
+    assert.deepEqual(validators.validateGreatFeastVariants(gfv), []);
+  });
+
+  it('pentecostarion-sunday-overrides.json passes validation as shipped', () => {
+    const p = require('../variable-sources/pentecostarion-sunday-overrides.json');
+    assert.deepEqual(validators.validatePentecostarionOverrides(p), []);
+  });
+
+  it('cocelebrated-overlays.json passes validation as shipped', () => {
+    const co = require('../variable-sources/cocelebrated-overlays.json');
+    assert.deepEqual(validators.validateCocelebratedOverlays(co), []);
+  });
+
+  it('great-feast-variants rejects a feast missing communionHymn', () => {
+    const broken = { theophany: { type: 'lord', label: 'X', troparia: [{ tone: 1, text: 't' }],
+      kontakia: [{ tone: 1, text: 'k' }], megalynarion: 'M', entranceHymn: 'E' } };
+    const errs = validators.validateGreatFeastVariants(broken);
+    assert.ok(errs.some(e => /communionHymn/.test(e)), `Expected communionHymn error, got: ${errs.join(' | ')}`);
+  });
+
+  it('great-feast-variants rejects a troparion missing tone', () => {
+    const broken = { theophany: { type: 'lord', label: 'X', entranceHymn: 'E',
+      troparia: [{ text: 'no tone' }], kontakia: [{ tone: 1, text: 'k' }],
+      megalynarion: 'M', communionHymn: 'C' } };
+    const errs = validators.validateGreatFeastVariants(broken);
+    assert.ok(errs.some(e => /tone/.test(e)), `Expected tone error, got: ${errs.join(' | ')}`);
+  });
+
+  it('pentecostarion overrides rejects a non-numeric key', () => {
+    const broken = { 'thomas': { feastOnly: true, troparia: [], kontakia: [], communionHymn: 'c' } };
+    const errs = validators.validatePentecostarionOverrides(broken);
+    assert.ok(errs.some(e => /numeric/.test(e)), `Expected numeric-key error, got: ${errs.join(' | ')}`);
+  });
+
+  it('cocelebrated overlays rejects a malformed date key', () => {
+    const broken = { 'May21': { troparion: { tone: 8, text: 't' } } };
+    const errs = validators.validateCocelebratedOverlays(broken);
+    assert.ok(errs.some(e => /M-D/.test(e)), `Expected date-format error, got: ${errs.join(' | ')}`);
+  });
+});

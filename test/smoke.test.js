@@ -390,6 +390,107 @@ describe('API routes', () => {
 });
 
 // ═══════════════════════════════════════════════════════════════════════════
+// PART 2b — Per-feast Matins contract tests
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// These pin the festal Matins data extracted into variable-sources/menaion/
+// for Theophany, Nativity, and Meeting. A silent regression to the weekday
+// stub path produces ~175 blocks with Small Doxology, Canon=1 (rubric
+// placeholder), Lauds=0; the assertions below catch that.
+//
+// Block counts are checked against generous bands so legitimate per-feast
+// enhancements don't fail the suite. Required sections + content checks
+// give the actual safety net.
+
+describe('Per-feast Matins contracts', () => {
+  /**
+   * @param {string} date YYYY-MM-DD
+   * @param {object} expected
+   *   - feastName: substring expected in serviceName
+   *   - minBlocks: minimum total block count (weekday stub is ~175)
+   *   - troparionText: distinctive substring of the feast troparion
+   *   - minCanonBlocks: weekday stub renders Canon as a single rubric block
+   *   - minLaudsBlocks: weekday stub has no Lauds at all
+   */
+  async function assertFestalMatins(date, expected) {
+    const res = await get(`/api/matins?date=${date}`);
+    assert.equal(res.status, 200, `Expected 200 for ${date}, got ${res.status}`);
+    const j = res.json;
+
+    const sections = {};
+    for (const b of j.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+
+    // Total block count above weekday-stub threshold
+    assert.ok(j.blocks.length >= expected.minBlocks,
+      `${date} (${expected.feastName}): expected ≥${expected.minBlocks} blocks, got ${j.blocks.length}. ` +
+      `If close to 175, the weekday stub path is firing — the menaion JSON probably failed to load.`);
+
+    // Great Doxology, not Small Doxology
+    assert.ok(sections['Great Doxology'] > 0,
+      `${date} (${expected.feastName}): Great Doxology missing — Small Doxology fallback suggests stub path. Sections: ${Object.keys(sections).join(', ')}`);
+    assert.ok(!sections['Small Doxology'],
+      `${date} (${expected.feastName}): Small Doxology present — should be Great Doxology on a great feast`);
+
+    // Polyeleios + Magnification (post-kathismata block)
+    assert.ok(sections['Polyeleios'] > 5,
+      `${date} (${expected.feastName}): Polyeleios section missing or thin (got ${sections['Polyeleios'] || 0} blocks)`);
+
+    // Matins Prokeimenon, Gospel
+    assert.ok(sections['Matins Prokeimenon'] > 0,
+      `${date} (${expected.feastName}): Matins Prokeimenon missing`);
+    assert.ok(sections['Matins Gospel'] > 0,
+      `${date} (${expected.feastName}): Matins Gospel missing`);
+
+    // Canon with substantive content (weekday stub renders one rubric block)
+    assert.ok((sections['Canon'] || 0) >= expected.minCanonBlocks,
+      `${date} (${expected.feastName}): Canon has ${sections['Canon'] || 0} blocks, expected ≥${expected.minCanonBlocks}`);
+
+    // Kontakion + Ikos (great feast)
+    assert.ok((sections['Kontakion'] || 0) >= 2,
+      `${date} (${expected.feastName}): Kontakion section should include Kontakion + Ikos (got ${sections['Kontakion'] || 0})`);
+
+    // Lauds (Praises) present
+    assert.ok((sections['Lauds'] || 0) >= expected.minLaudsBlocks,
+      `${date} (${expected.feastName}): Lauds has ${sections['Lauds'] || 0} blocks, expected ≥${expected.minLaudsBlocks}`);
+
+    // Distinctive troparion text present somewhere in the rendered service
+    const fullText = j.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes(expected.troparionText),
+      `${date} (${expected.feastName}): expected troparion text "${expected.troparionText.slice(0, 40)}..." not found in service`);
+  }
+
+  it('Theophany (2026-01-06) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-06', {
+      feastName: 'Theophany',
+      minBlocks: 300,
+      troparionText: 'When Thou, O Lord, wast baptized in the Jordan',
+      minCanonBlocks: 80,   // two canons × 8 odes, actual ~120
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Nativity (2026-12-25) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-12-25', {
+      feastName: 'Nativity of Christ',
+      minBlocks: 280,
+      troparionText: 'Thy Nativity, O Christ our God',
+      minCanonBlocks: 50,   // first canon only, actual ~68
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Meeting (2026-02-02) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-02-02', {
+      feastName: 'Meeting',
+      minBlocks: 280,
+      troparionText: 'Rejoice, O Virgin Theotokos, Full of Grace',
+      minCanonBlocks: 50,   // single canon × 8 odes, actual ~76
+      minLaudsBlocks: 5,
+    });
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
 // PART 3 — Calendar rules
 // ═══════════════════════════════════════════════════════════════════════════
 

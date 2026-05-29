@@ -1248,6 +1248,7 @@ require('./data-validators').validateAll({
   pentecostarionOverrides: PENTECOSTARION_SUNDAY_OVERRIDES,
   cocelebratedOverlays:    COCELEBRATED_OVERLAYS,
   dailyPropers:            DAILY_PROPERS,
+  menaionDir:              path.join(__dirname, 'variable-sources', 'menaion'),
 });
 
 /**

@@ -616,6 +616,19 @@ describe('Data file validation', () => {
     assert.deepEqual(validators.validateCocelebratedOverlays(co), []);
   });
 
+  it('daily-propers.json passes validation as shipped', () => {
+    const dp = require('../variable-sources/daily-propers.json');
+    assert.deepEqual(validators.validateDailyPropers(dp), []);
+  });
+
+  it('daily-propers rejects a missing tone-3 Sunday prokeimenon', () => {
+    const dp = JSON.parse(JSON.stringify(require('../variable-sources/daily-propers.json')));
+    delete dp.sundayProkeimena[3];
+    const errs = validators.validateDailyPropers(dp);
+    assert.ok(errs.some(e => /sundayProkeimena\.3 missing/.test(e)),
+      `Expected missing-tone error, got: ${errs.join(' | ')}`);
+  });
+
   it('great-feast-variants rejects a feast missing communionHymn', () => {
     const broken = { theophany: { type: 'lord', label: 'X', troparia: [{ tone: 1, text: 't' }],
       kontakia: [{ tone: 1, text: 'k' }], megalynarion: 'M', entranceHymn: 'E' } };

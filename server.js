@@ -1225,6 +1225,20 @@ delete PENTECOSTARION_SUNDAY_OVERRIDES._meta;
 const COCELEBRATED_OVERLAYS = loadJSON('variable-sources/cocelebrated-overlays.json');
 delete COCELEBRATED_OVERLAYS._meta;
 
+// ─── Daily Liturgy Propers ────────────────────────────────────────────────────
+// Communion hymns / prokeimena / alleluia keyed by day-of-week or octoechos
+// tone, plus Lenten Sunday propers and day-of-week dismissal patrons.
+const DAILY_PROPERS = loadJSON('variable-sources/daily-propers.json');
+delete DAILY_PROPERS._meta;
+const DAY_PATRONS              = DAILY_PROPERS.dayPatrons;
+const COMMUNION_HYMNS          = DAILY_PROPERS.communionHymns;
+const SUNDAY_PROKEIMENA        = DAILY_PROPERS.sundayProkeimena;
+const SUNDAY_ALLELUIA          = DAILY_PROPERS.sundayAlleluia;
+const WEEKDAY_PROKEIMENA       = DAILY_PROPERS.weekdayProkeimena;
+const WEEKDAY_ALLELUIA         = DAILY_PROPERS.weekdayAlleluia;
+const LENTEN_SUNDAY_PROKEIMENA = DAILY_PROPERS.lentenSundayProkeimena;
+const LENTEN_SUNDAY_ALLELUIA   = DAILY_PROPERS.lentenSundayAlleluia;
+
 // ─── Data file validation ─────────────────────────────────────────────────────
 // Light schema checks on the JSON data files extracted from server.js. Throws
 // on missing/mistyped fields so drift fails loud rather than producing silently
@@ -1233,6 +1247,7 @@ require('./data-validators').validateAll({
   greatFeastVariants:      GREAT_FEAST_VARIANTS,
   pentecostarionOverrides: PENTECOSTARION_SUNDAY_OVERRIDES,
   cocelebratedOverlays:    COCELEBRATED_OVERLAYS,
+  dailyPropers:            DAILY_PROPERS,
 });
 
 /**
@@ -1888,130 +1903,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     kontakia.push(overlay.kontakion);
   }
 
-  // ── Communion Hymn ───────────────────────────────────────────────────────────
-  const COMMUNION_HYMNS = {
-    sunday:    'Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!',
-    monday:    'He maketh His angels spirits, and His ministers a flame of fire. Alleluia, Alleluia, Alleluia!',
-    tuesday:   'The righteous shall be in everlasting remembrance; he shall not fear evil tidings. Alleluia, Alleluia, Alleluia!',
-    wednesday: 'O taste and see that the Lord is good. Alleluia, Alleluia, Alleluia!',
-    thursday:  'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
-    friday:    'Salvation is created in the midst of the earth, O God. Alleluia, Alleluia, Alleluia!',
-    saturday:  'Rejoice in the Lord, O ye righteous; praise befits the just. Alleluia, Alleluia, Alleluia!',
-  };
-
-  // DAY_PATRONS moved to module scope
-
-  // ── Sunday Prokeimena (by Octoechos tone — correct for ordinary-time Sundays) ─
-  // Source: OCA Department of Liturgical Music & Translations service texts
-  const SUNDAY_PROKEIMENA = {
-    1: { refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!',
-         verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
-    2: { refrain: 'The Lord is my strength and my song; He has become my salvation.',
-         verse: 'The Lord has chastened me sorely, but He has not given me over to death.' },
-    3: { refrain: 'Sing praises to our God, sing praises; sing praises to our King, sing praises.',
-         verse: 'Clap your hands, all ye nations; shout unto God with the voice of rejoicing.' },
-    4: { refrain: 'O how magnified are Thy works, O Lord; in wisdom hast Thou made them all.',
-         verse: 'Bless the Lord, O my soul; O Lord my God, Thou art very great.' },
-    5: { refrain: 'Thou, O Lord, shalt protect us and preserve us from this generation forever.',
-         verse: 'Save me, O Lord, for there is no longer any that is godly!' },
-    6: { refrain: 'O Lord, save Thy people, and bless Thine inheritance!',
-         verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
-    7: { refrain: 'The Lord shall give strength to His people. The Lord shall bless His people with peace.',
-         verse: 'Offer to the Lord, O you sons of God! Offer young rams to the Lord!' },
-    8: { refrain: 'Pray and make your vows before the Lord our God.',
-         verse: 'In Judah is God known; His name is great in Israel.' },
-  };
-
-  // ── Sunday Alleluia verses (by Octoechos tone) ────────────────────────────────
-  const SUNDAY_ALLELUIA = {
-    1: ['God gives vengeance unto me, and subdues people under me.',
-        'He magnifies the salvation of the King and deals mercifully with David, His anointed, and his seed forever.'],
-    2: ['May the Lord hear thee in the day of trouble! May the name of the God of Jacob protect thee!',
-        'Save the King, O Lord, and hear us on the day we call!'],
-    3: ['In Thee, O Lord, have I hoped; let me never be put to shame.',
-        'Be Thou a God of protection for me, a house of refuge in order to save me.'],
-    4: ['Go forth, and prosper, and reign, because of truth and meekness and righteousness.',
-        'Thou lovest righteousness and hatest iniquity.'],
-    5: ['I will sing of Thy mercies, O Lord, forever; with my mouth I will proclaim Thy truth from generation to generation.',
-        'For Thou hast said: Mercy will be established forever; Thy truth will be prepared in the heavens.'],
-    6: ['He who dwelleth in the shelter of the Most High will abide in the shadow of the heavenly God.',
-        'He will say to the Lord: My Protector and my Refuge; my God, in Whom I trust.'],
-    7: ['It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High.',
-        'To declare Thy mercy in the morning, and Thy truth by night.'],
-    8: ['Come, let us rejoice in the Lord; let us make a joyful noise to God our Savior.',
-        'Let us come before His face with thanksgiving; let us make a joyful noise unto Him with psalms.'],
-  };
-
-  // ── Weekday Prokeimena (fixed by day-of-week, not tone) ─────────────────────
-  // Source: Ponomar / OCA tradition — daily commemorations
-  const WEEKDAY_PROKEIMENA = {
-    monday:    { tone: 4, refrain: 'Who maketh His angels spirits, His servers a flaming fire.',
-                          verse: 'Bless the Lord, O my soul; O Lord my God, Thou art become very great.' },
-    tuesday:   { tone: 7, refrain: 'The righteous shall rejoice in the Lord, and he shall hope in Him.',
-                          verse: 'Hear my prayer, O God, when I pray unto Thee.' },
-    wednesday: { tone: 3, refrain: 'My soul doth magnify the Lord, and my spirit hath rejoiced in God my Savior.',
-                          verse: 'For He hath looked upon the humility of His servant; for behold from henceforth all generations shall bless me.' },
-    thursday:  { tone: 8, refrain: 'Their sound is gone forth into all the earth; their sayings to the ends.',
-                          verse: 'The heavens declare the glory of God; and the firmament proclaimeth His handiwork.' },
-    friday:    { tone: 7, refrain: 'Exalt ye the Lord our God, and worship at His footstool, for He is holy.',
-                          verse: 'The Lord hath reigned, let the people rage.' },
-    saturday:  { tone: 8, refrain: 'Be glad in the Lord, and rejoice, ye righteous.',
-                          verse: 'Blessed are they whose transgressions are forgiven, and whose sins are covered.' },
-  };
-
-  // ── Weekday Alleluia (fixed by day-of-week) ────────────────────────────────
-  const WEEKDAY_ALLELUIA = {
-    monday:    { tone: 5, verses: ['Praise ye the Lord, all His angels; praise ye Him all His powers.',
-                                   'For He spoke, and they came into being; He commanded and they were created.'] },
-    tuesday:   { tone: 4, verses: ['The righteous shall flourish like the palm tree; like the cedars of Lebanon.',
-                                   'They that are planted in the house of the Lord shall flourish in the courts.'] },
-    wednesday: { tone: 8, verses: ['Hearken, O Daughter, and see, and incline thine ear.',
-                                   'The rich among the people of the earth shall entreat thy countenance.'] },
-    thursday:  { tone: 1, verses: ['The heavens confess Thy wonders, O Lord, Thy truth in the church of the saints.',
-                                   'God, who is glorified in the council of the saints.'] },
-    friday:    { tone: 1, verses: ['Remember Thy congregation, which Thou hast possessed from the beginning.',
-                                   'God is our King before the ages; He hath wrought salvation in the midst.'] },
-    saturday:  { tone: 4, verses: ['The righteous cried, and the Lord heard them, and delivered them out of all tribulations.',
-                                   'Many are the tribulations of the righteous, but out of them all will the Lord deliver them.',
-                                   'Blessed are they whom Thou hast chosen and taken, O Lord; their memory is from generation to generation.'] },
-  };
-
-  // ── Lenten/Special Sunday Prokeimena & Alleluia ─────────────────────────────
-  // During Great Lent the prokeimenon follows the Apostolos (Epistle lectionary),
-  // NOT the weekly Octoechos tone. Each Lenten Sunday has a fixed prokeimenon.
-  // Source: OCA 2026 service texts, verified against Ponomar/Apostolos.
-  const LENTEN_SUNDAY_PROKEIMENA = {
-    meatfare:   { tone: 3, refrain: 'Great is our Lord, and abundant in power; His understanding is beyond measure.',
-                           verse: 'Praise the Lord! For it is good to sing praises to our God!' },
-    cheesefare: { tone: 8, refrain: 'Pray and make your vows before the Lord, our God!',
-                           verse: 'In Judah God is known; His name is great in Israel.' },
-    1: { tone: 4, refrain: 'Blessed art Thou, O Lord God of our fathers, and praised and glorified is Thy Name forever!',
-                  verse: 'For Thou art just in all that Thou hast done for us!' },
-    2: { tone: 5, refrain: 'Thou, O Lord, shalt protect us and preserve us from this generation forever.',
-                  verse: 'Save me, O Lord, for there is no longer any that is godly!' },
-    3: { tone: 6, refrain: 'O Lord, save Thy people, and bless Thine inheritance!',
-                  verse: 'To Thee, O Lord, will I call. O my God, be not silent to me!' },
-    4: { tone: 8, refrain: 'Pray and make your vows before the Lord, our God!',
-                  verse: 'In Judah God is known; His Name is great in Israel.' },
-    5: { tone: 1, refrain: 'Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!',
-                  verse: 'Rejoice in the Lord, O you righteous! Praise befits the just!' },
-  };
-  const LENTEN_SUNDAY_ALLELUIA = {
-    meatfare:   { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!',
-                                    'Let us come before His presence with thanksgiving; let us make a joyful noise to Him with songs of praise.'] },
-    cheesefare: { tone: 6, verses: ['It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High.',
-                                    'To declare Thy mercy in the morning, and Thy truth by night.'] },
-    1: { tone: 4, verses: ['Moses and Aaron were among His priests; Samuel also was among those who called on His Name.',
-                            'They called to the Lord and He answered them.'] },
-    2: { tone: 6, verses: ['He who dwelleth in the shelter of the Most High will abide in the shadow of the heavenly God.',
-                            'He will say to the Lord: "My Protector and my Refuge; my God, in Whom I trust."'] },
-    3: { tone: 8, verses: ['Remember Thy congregation, which Thou hast purchased of old!',
-                            'God is our King before the ages; He has worked salvation in the midst of the earth!'] },
-    4: { tone: 8, verses: ['Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!',
-                            'Let us come before His face with thanksgiving; let us make a joyful noise to Him with songs of praise!'] },
-    5: { tone: 1, verses: ['God gives vengeance unto me, and subdues people under me.',
-                            'He magnifies the salvation of the King and deals mercifully with David, His anointed, and his seed forever.'] },
-  };
+  // Communion hymn, Sunday/weekday/Lenten prokeimena and alleluia maps are loaded
+  // at module scope from variable-sources/daily-propers.json. See top of file.
 
   // ── Cherubic Hymn override ───────────────────────────────────────────────────
   let cherubicOverride = null;
@@ -3156,16 +3049,7 @@ function parseQuery(url) {
 }
 
 // Pre-load sources once at startup
-// Day-of-week patron saints for dismissal (shared by Liturgy and Vespers)
-const DAY_PATRONS = {
-  sunday:    'the holy, glorious, and all-laudable Apostles',
-  monday:    'the honorable, bodiless Powers of Heaven',
-  tuesday:   'the honorable, glorious Prophet, Forerunner, and Baptist John',
-  wednesday: 'the power of the precious and life-giving Cross',
-  thursday:  'the holy, glorious, and all-laudable Apostles; our father among the saints Nicholas the Wonderworker, Archbishop of Myra in Lycia',
-  friday:    'the power of the precious and life-giving Cross',
-  saturday:  'the holy, glorious, and right-victorious Martyrs',
-};
+// (DAY_PATRONS now lives in daily-propers.json, loaded at module top.)
 
 let sources;
 try {

@@ -102,6 +102,64 @@ function validatePentecostarionOverrides(data) {
   return errs;
 }
 
+// ── daily-propers.json ───────────────────────────────────────────────────────
+
+const DOW_KEYS = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+
+function validateDailyPropers(data) {
+  const errs = [];
+
+  function checkDayMap(map, fieldName, valueCheck) {
+    if (!isObject(map)) { errs.push(`daily-propers.${fieldName} must be object`); return; }
+    for (const dow of DOW_KEYS) {
+      // saturday absent from weekdayProkeimena/Alleluia is fine (covered by tone)
+      // sunday absent from weekday maps is fine (covered by tone)
+      if (map[dow] === undefined) continue;
+      valueCheck(map[dow], `daily-propers.${fieldName}.${dow}`, errs);
+    }
+  }
+
+  function checkToneMap(map, fieldName, valueCheck) {
+    if (!isObject(map)) { errs.push(`daily-propers.${fieldName} must be object`); return; }
+    for (let t = 1; t <= 8; t++) {
+      if (map[t] === undefined) { errs.push(`daily-propers.${fieldName}.${t} missing`); continue; }
+      valueCheck(map[t], `daily-propers.${fieldName}.${t}`, errs);
+    }
+  }
+
+  pushIf(errs, isObject(data.dayPatrons),     'daily-propers.dayPatrons must be object');
+  pushIf(errs, isObject(data.communionHymns), 'daily-propers.communionHymns must be object');
+  for (const dow of DOW_KEYS) {
+    pushIf(errs, isString(data.dayPatrons?.[dow]),     `daily-propers.dayPatrons.${dow} required`);
+    pushIf(errs, isString(data.communionHymns?.[dow]), `daily-propers.communionHymns.${dow} required`);
+  }
+
+  // Sunday Prokeimena/Alleluia: tone is implicit in the key (1-8), not in the value.
+  checkToneMap(data.sundayProkeimena, 'sundayProkeimena', (v, at, e) => {
+    pushIf(e, isObject(v) && isString(v.refrain) && isString(v.verse),
+      `${at} must have {refrain, verse}`);
+  });
+  checkToneMap(data.sundayAlleluia,   'sundayAlleluia',   (v, at, e) => {
+    pushIf(e, isArrayOf(v, isString) && v.length >= 2, `${at} must be array of >=2 verse strings`);
+  });
+
+  checkDayMap(data.weekdayProkeimena, 'weekdayProkeimena', checkProkeimenon);
+  checkDayMap(data.weekdayAlleluia,   'weekdayAlleluia',   (v, at, e) => checkAlleluia(v, at, e));
+
+  // Lenten maps: keys are mix of strings ('meatfare', 'cheesefare') and integers (1-5)
+  for (const map of [
+    { name: 'lentenSundayProkeimena', obj: data.lentenSundayProkeimena, check: checkProkeimenon },
+    { name: 'lentenSundayAlleluia',   obj: data.lentenSundayAlleluia,   check: checkAlleluia },
+  ]) {
+    if (!isObject(map.obj)) { errs.push(`daily-propers.${map.name} must be object`); continue; }
+    for (const [k, v] of Object.entries(map.obj)) {
+      map.check(v, `daily-propers.${map.name}.${k}`, errs);
+    }
+  }
+
+  return errs;
+}
+
 // ── cocelebrated-overlays.json ───────────────────────────────────────────────
 
 function validateCocelebratedOverlays(data) {
@@ -134,6 +192,8 @@ function validateAll(loaded) {
     all.push(...validatePentecostarionOverrides(loaded.pentecostarionOverrides));
   if (loaded.cocelebratedOverlays)
     all.push(...validateCocelebratedOverlays(loaded.cocelebratedOverlays));
+  if (loaded.dailyPropers)
+    all.push(...validateDailyPropers(loaded.dailyPropers));
   if (all.length > 0) {
     throw new Error('Data file validation failed:\n  - ' + all.join('\n  - '));
   }
@@ -144,4 +204,5 @@ module.exports = {
   validateGreatFeastVariants,
   validatePentecostarionOverrides,
   validateCocelebratedOverlays,
+  validateDailyPropers,
 };

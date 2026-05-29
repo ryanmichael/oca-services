@@ -489,6 +489,35 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Pentecost (2026-05-31) renders full festal Matins with both canons', async () => {
+    await assertFestalMatins('2026-05-31', {
+      feastName: 'Pentecost',
+      minBlocks: 320,
+      troparionText: 'Who hast revealed the fishermen as most wise',
+      minCanonBlocks: 70,   // two canons × 8 odes with troparia, actual ~105
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Pentecost Matins renders two canons separately, not flat', async () => {
+    const res = await get('/api/matins?date=2026-05-31');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const firstCanonHeadings  = canonRubrics.filter(t => /First Canon/.test(t));
+    const secondCanonHeadings = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(firstCanonHeadings.length >= 8,
+      `Expected ≥8 First Canon headings, got ${firstCanonHeadings.length}`);
+    assert.ok(secondCanonHeadings.length >= 8,
+      `Expected ≥8 Second Canon headings, got ${secondCanonHeadings.length}`);
+    // No "Troparia of Ode N from Octoechos/Menaion/Triodion" placeholders
+    const placeholders = canonRubrics.filter(t => /Troparia of Ode .* from/.test(t));
+    assert.equal(placeholders.length, 0,
+      `Pentecost canon should have no troparia placeholders, found ${placeholders.length}. ` +
+      `If >0, the canon JSON is missing troparia and falling through to the rubric placeholder.`);
+  });
+
   it('Theophany Matins renders two canons separately, not flat', async () => {
     // Theophany has two canons (Cosmas + John of Damascus). The assembler
     // should emit "Ode N — First Canon" / Irmos / first-canon troparia /

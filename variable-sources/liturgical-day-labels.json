@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "description": "Liturgical-day display labels by season. Used by getDayLabel() and the bridegroom-matins handler.",
+    "_note": "Extracted from server.js. Pre-Lenten and Pentecostarion keys come from calendar litKey notes; Lenten Sundays are keyed by week-of-Lent; holyWeek/brightWeek/bridegroomMatinsNights are keyed by day-of-week."
+  },
+  "lentenSundays": {
+    "1": "Sunday of Orthodoxy",
+    "2": "Sunday of St. Gregory Palamas",
+    "3": "Sunday of the Holy Cross",
+    "4": "Sunday of St. John of the Ladder",
+    "5": "Sunday of St. Mary of Egypt",
+    "6": "Palm Sunday"
+  },
+  "preLentenSundays": {
+    "triodion.publicanPharisee": "Sunday of the Publican and Pharisee",
+    "triodion.prodigalSon": "Sunday of the Prodigal Son",
+    "triodion.meatfareSaturday": "Meatfare Saturday",
+    "triodion.meatfareSunday": "Meatfare Sunday",
+    "triodion.forgivenessSunday": "Forgiveness Sunday"
+  },
+  "holyWeek": {
+    "sunday": "Palm Sunday",
+    "monday": "Holy Monday",
+    "tuesday": "Holy Tuesday",
+    "wednesday": "Holy Wednesday",
+    "thursday": "Great and Holy Thursday",
+    "friday": "Great and Holy Friday",
+    "saturday": "Great and Holy Saturday"
+  },
+  "brightWeek": {
+    "sunday": "Holy Pascha",
+    "monday": "Bright Monday",
+    "tuesday": "Bright Tuesday",
+    "wednesday": "Bright Wednesday",
+    "thursday": "Bright Thursday",
+    "friday": "Bright Friday",
+    "saturday": "Bright Saturday"
+  },
+  "pentecostarionFeasts": {
+    "pentecostarion.week.2.sunday": "Thomas Sunday (Antipascha)",
+    "pentecostarion.week.3.sunday": "Sunday of the Myrrhbearers",
+    "pentecostarion.week.4.sunday": "Sunday of the Paralytic",
+    "pentecostarion.week.5.sunday": "Sunday of the Samaritan Woman",
+    "pentecostarion.week.6.sunday": "Sunday of the Blind Man",
+    "pentecostarion.week.7.sunday": "Sunday of the Holy Fathers of the 1st Ecumenical Council — Afterfeast of the Ascension",
+    "pentecostarion.ascension": "The Ascension of our Lord",
+    "pentecostarion.pentecost": "Holy Pentecost"
+  },
+  "bridegroomMatinsNights": {
+    "monday": "Holy Monday",
+    "tuesday": "Holy Tuesday",
+    "wednesday": "Holy Wednesday",
+    "thursday": "Great and Holy Thursday"
+  }
+}

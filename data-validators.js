@@ -178,6 +178,37 @@ function validateCocelebratedOverlays(data) {
   return errs;
 }
 
+// ── liturgical-day-labels.json ───────────────────────────────────────────────
+
+function validateLiturgicalDayLabels(data) {
+  const errs = [];
+  const at = 'liturgical-day-labels';
+  // All six maps must be present and have string values for every key.
+  const required = ['lentenSundays','preLentenSundays','holyWeek','brightWeek',
+                    'pentecostarionFeasts','bridegroomMatinsNights'];
+  for (const k of required) {
+    pushIf(errs, isObject(data[k]), `${at}.${k} must be object`);
+    if (!isObject(data[k])) continue;
+    for (const [subKey, val] of Object.entries(data[k])) {
+      pushIf(errs, isString(val), `${at}.${k}.${subKey} must be string`);
+    }
+  }
+  // Lenten Sundays: keys must be 1-6
+  if (isObject(data.lentenSundays)) {
+    for (const k of Object.keys(data.lentenSundays)) {
+      pushIf(errs, /^[1-6]$/.test(k), `${at}.lentenSundays key '${k}' must be 1-6`);
+    }
+  }
+  // holyWeek and brightWeek: keys must be day-of-week
+  for (const mapName of ['holyWeek','brightWeek']) {
+    if (!isObject(data[mapName])) continue;
+    for (const k of Object.keys(data[mapName])) {
+      pushIf(errs, DOW_KEYS.includes(k), `${at}.${mapName} key '${k}' must be day-of-week`);
+    }
+  }
+  return errs;
+}
+
 // ── variable-sources/menaion/*.json (great-feast files only) ─────────────────
 //
 // Validates the shape of feast-day menaion files when they carry a `matins`
@@ -325,6 +356,8 @@ function validateAll(loaded) {
     all.push(...validateCocelebratedOverlays(loaded.cocelebratedOverlays));
   if (loaded.dailyPropers)
     all.push(...validateDailyPropers(loaded.dailyPropers));
+  if (loaded.liturgicalDayLabels)
+    all.push(...validateLiturgicalDayLabels(loaded.liturgicalDayLabels));
   if (loaded.menaionDir) {
     const fs = require('fs');
     const path = require('path');
@@ -341,6 +374,7 @@ module.exports = {
   validatePentecostarionOverrides,
   validateCocelebratedOverlays,
   validateDailyPropers,
+  validateLiturgicalDayLabels,
   validateMenaionFeast,
   validateAllMenaionFeasts,
 };

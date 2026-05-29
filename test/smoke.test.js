@@ -629,6 +629,58 @@ describe('Data file validation', () => {
       `Expected missing-tone error, got: ${errs.join(' | ')}`);
   });
 
+  it('all menaion great-feast JSONs pass validation as shipped', () => {
+    const fs = require('node:fs');
+    const path = require('node:path');
+    const dir = path.join(__dirname, '..', 'variable-sources', 'menaion');
+    const errs = validators.validateAllMenaionFeasts(dir, fs, path);
+    assert.deepEqual(errs, [], `Menaion validation errors:\n${errs.join('\n')}`);
+  });
+
+  it('menaion validator rejects a great-feast file missing canon.tone', () => {
+    const broken = {
+      troparion: { tone: 1, text: 't' },
+      kontakion: { tone: 1, text: 'k' },
+      matins: {
+        magnification: { refrain: 'r', verses: ['v'] },
+        prokeimenon: { tone: 4, refrain: 'r' },
+        gospel: { reading: 'X 1:1-2' },
+        canon: { /* missing tone */
+          ode1: { irmos: 'i' }, ode3: { irmos: 'i' }, ode4: { irmos: 'i' },
+          ode5: { irmos: 'i' }, ode6: { irmos: 'i' }, ode7: { irmos: 'i' },
+          ode8: { irmos: 'i' }, ode9: { irmos: 'i' },
+        },
+      },
+    };
+    const errs = validators.validateMenaionFeast(broken, 'test.json');
+    assert.ok(errs.some(e => /canon\.tone/.test(e)),
+      `Expected canon.tone error, got: ${errs.join(' | ')}`);
+  });
+
+  it('menaion validator rejects a canon ode missing irmos', () => {
+    const broken = {
+      matins: {
+        magnification: { refrain: 'r', verses: ['v'] },
+        prokeimenon: { tone: 4, refrain: 'r' },
+        gospel: { reading: 'X 1:1' },
+        canon: { tone: 4,
+          ode1: { /* missing irmos */ troparia: [{ text: 't' }] },
+          ode3: { irmos: 'i' }, ode4: { irmos: 'i' }, ode5: { irmos: 'i' },
+          ode6: { irmos: 'i' }, ode7: { irmos: 'i' }, ode8: { irmos: 'i' },
+          ode9: { irmos: 'i' },
+        },
+      },
+    };
+    const errs = validators.validateMenaionFeast(broken, 'test.json');
+    assert.ok(errs.some(e => /ode1\.irmos/.test(e)),
+      `Expected ode1.irmos error, got: ${errs.join(' | ')}`);
+  });
+
+  it('menaion validator skips files without a matins block', () => {
+    const soulSat = { vespers: { troparion: 'X' } };
+    assert.deepEqual(validators.validateMenaionFeast(soulSat, 'march-07.json'), []);
+  });
+
   it('great-feast-variants rejects a feast missing communionHymn', () => {
     const broken = { theophany: { type: 'lord', label: 'X', troparia: [{ tone: 1, text: 't' }],
       kontakia: [{ tone: 1, text: 'k' }], megalynarion: 'M', entranceHymn: 'E' } };

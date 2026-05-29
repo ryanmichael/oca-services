@@ -178,6 +178,137 @@ function validateCocelebratedOverlays(data) {
   return errs;
 }
 
+// ── variable-sources/menaion/*.json (great-feast files only) ─────────────────
+//
+// Validates the shape of feast-day menaion files when they carry a `matins`
+// block. Files without a matins block (Soul Saturday, special saints) are
+// not validated by this — they have their own shapes used elsewhere.
+
+const REQUIRED_ODES = ['ode1','ode3','ode4','ode5','ode6','ode7','ode8','ode9'];
+
+function checkCanonOde(ode, at, errs) {
+  if (!isObject(ode)) { errs.push(`${at} must be object`); return; }
+  pushIf(errs, isString(ode.irmos), `${at}.irmos required`);
+  // katavasia is optional — some feasts use the irmos as its own katavasia
+  if (ode.katavasia !== undefined) {
+    pushIf(errs, isString(ode.katavasia), `${at}.katavasia must be string`);
+  }
+  if (ode.troparia !== undefined) {
+    pushIf(errs, Array.isArray(ode.troparia), `${at}.troparia must be array`);
+    if (Array.isArray(ode.troparia)) {
+      ode.troparia.forEach((t, i) => {
+        pushIf(errs, isObject(t),       `${at}.troparia[${i}] must be object`);
+        if (!isObject(t)) return;
+        pushIf(errs, isString(t.text),  `${at}.troparia[${i}].text required`);
+      });
+    }
+  }
+}
+
+function checkLauds(lauds, at, errs) {
+  if (!isObject(lauds)) { errs.push(`${at} must be object`); return; }
+  // tone is optional (some feast lauds omit it; the per-sticheron tone is used)
+  pushIf(errs, Array.isArray(lauds.stichera) && lauds.stichera.length >= 1,
+    `${at}.stichera must be non-empty array`);
+  (lauds.stichera || []).forEach((s, i) => {
+    pushIf(errs, isObject(s), `${at}.stichera[${i}] must be object`);
+  });
+}
+
+function validateMenaionFeast(data, filename = 'menaion file') {
+  const errs = [];
+  const at = filename;
+
+  // Files without a matins block are special-case (Soul Saturday, etc.) — skip.
+  if (!isObject(data.matins)) return errs;
+
+  // Top-level troparion/kontakion expected for great-feast files
+  if (data.troparion !== undefined) checkTroparion(data.troparion, `${at}.troparion`, errs);
+  if (data.kontakion !== undefined) checkTroparion(data.kontakion, `${at}.kontakion`, errs);
+
+  const m = data.matins;
+  const matinsAt = `${at}.matins`;
+
+  // ── Polyeleios block ─────────────────────────────────────────────────────
+  pushIf(errs, isObject(m.magnification),                    `${matinsAt}.magnification required`);
+  if (isObject(m.magnification)) {
+    pushIf(errs, isString(m.magnification.refrain),          `${matinsAt}.magnification.refrain required`);
+    // Accept either `verses` (array of strings) or `psalmVerses` (array of {text, ref})
+    const hasVerses      = isArrayOf(m.magnification.verses, isString);
+    const hasPsalmVerses = Array.isArray(m.magnification.psalmVerses)
+      && m.magnification.psalmVerses.every(v => isObject(v) && isString(v.text));
+    pushIf(errs, hasVerses || hasPsalmVerses,
+      `${matinsAt}.magnification must have either .verses (strings) or .psalmVerses ({text, ref})`);
+  }
+
+  // ── Prokeimenon (Matins prokeimenon — uses .refrain only, may have .verse) ─
+  if (m.prokeimenon !== undefined) checkProkeimenon(m.prokeimenon, `${matinsAt}.prokeimenon`, errs);
+  else errs.push(`${matinsAt}.prokeimenon required`);
+
+  // ── Gospel ───────────────────────────────────────────────────────────────
+  pushIf(errs, isObject(m.gospel),                           `${matinsAt}.gospel required`);
+  if (isObject(m.gospel)) {
+    pushIf(errs, isString(m.gospel.reading),                 `${matinsAt}.gospel.reading required`);
+  }
+
+  // ── Canon ────────────────────────────────────────────────────────────────
+  pushIf(errs, isObject(m.canon),                            `${matinsAt}.canon required`);
+  if (isObject(m.canon)) {
+    pushIf(errs, isNumber(m.canon.tone),                     `${matinsAt}.canon.tone required`);
+    for (const odeKey of REQUIRED_ODES) {
+      // Some feasts may omit specific odes; warn only if all odes are missing
+    }
+    let presentOdes = 0;
+    for (const odeKey of REQUIRED_ODES) {
+      if (m.canon[odeKey] !== undefined) {
+        presentOdes++;
+        checkCanonOde(m.canon[odeKey], `${matinsAt}.canon.${odeKey}`, errs);
+      }
+    }
+    pushIf(errs, presentOdes >= 6,
+      `${matinsAt}.canon must include at least 6 of ode1/3/4/5/6/7/8/9 (got ${presentOdes})`);
+  }
+
+  // ── Lauds ────────────────────────────────────────────────────────────────
+  if (m.lauds !== undefined) checkLauds(m.lauds, `${matinsAt}.lauds`, errs);
+
+  // ── Optional sections ────────────────────────────────────────────────────
+  if (m.sedalion !== undefined) {
+    pushIf(errs, Array.isArray(m.sedalion), `${matinsAt}.sedalion must be array`);
+  }
+  if (m.exapostilarion !== undefined) {
+    pushIf(errs, isObject(m.exapostilarion) && isString(m.exapostilarion.text),
+      `${matinsAt}.exapostilarion.text required`);
+  }
+  if (m.exapostilaria !== undefined) {
+    pushIf(errs, Array.isArray(m.exapostilaria), `${matinsAt}.exapostilaria must be array`);
+  }
+  if (m.troparionAfterDoxology !== undefined) {
+    checkTroparion(m.troparionAfterDoxology, `${matinsAt}.troparionAfterDoxology`, errs);
+  }
+  if (m.postGospelSticheron !== undefined) {
+    pushIf(errs, isObject(m.postGospelSticheron) && isString(m.postGospelSticheron.text),
+      `${matinsAt}.postGospelSticheron.text required`);
+  }
+
+  return errs;
+}
+
+/**
+ * Validates every menaion JSON in variable-sources/menaion/. Files without
+ * a matins block are skipped (they have their own shape).
+ */
+function validateAllMenaionFeasts(menaionDir, fs, path) {
+  const errs = [];
+  for (const file of fs.readdirSync(menaionDir)) {
+    if (!file.endsWith('.json')) continue;
+    const fullPath = path.join(menaionDir, file);
+    const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+    errs.push(...validateMenaionFeast(data, `menaion/${file}`));
+  }
+  return errs;
+}
+
 // ── Driver ───────────────────────────────────────────────────────────────────
 
 /**
@@ -194,6 +325,11 @@ function validateAll(loaded) {
     all.push(...validateCocelebratedOverlays(loaded.cocelebratedOverlays));
   if (loaded.dailyPropers)
     all.push(...validateDailyPropers(loaded.dailyPropers));
+  if (loaded.menaionDir) {
+    const fs = require('fs');
+    const path = require('path');
+    all.push(...validateAllMenaionFeasts(loaded.menaionDir, fs, path));
+  }
   if (all.length > 0) {
     throw new Error('Data file validation failed:\n  - ' + all.join('\n  - '));
   }
@@ -205,4 +341,6 @@ module.exports = {
   validatePentecostarionOverrides,
   validateCocelebratedOverlays,
   validateDailyPropers,
+  validateMenaionFeast,
+  validateAllMenaionFeasts,
 };

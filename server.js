@@ -1225,6 +1225,16 @@ delete PENTECOSTARION_SUNDAY_OVERRIDES._meta;
 const COCELEBRATED_OVERLAYS = loadJSON('variable-sources/cocelebrated-overlays.json');
 delete COCELEBRATED_OVERLAYS._meta;
 
+// ─── Data file validation ─────────────────────────────────────────────────────
+// Light schema checks on the JSON data files extracted from server.js. Throws
+// on missing/mistyped fields so drift fails loud rather than producing silently
+// broken services. See data-validators.js for the rules.
+require('./data-validators').validateAll({
+  greatFeastVariants:      GREAT_FEAST_VARIANTS,
+  pentecostarionOverrides: PENTECOSTARION_SUNDAY_OVERRIDES,
+  cocelebratedOverlays:    COCELEBRATED_OVERLAYS,
+});
+
 /**
  * Builds a liturgy spec object from orthocal.info API data.
  * Used when no hand-authored liturgy key exists for the date.

@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "feast": "The Nativity according to the Flesh of our Lord, God, and Savior Jesus Christ",
+    "feastKey": "nativity",
+    "rank": "greatFeast",
+    "_source": "OCA service texts 2025-1225-texts-matins-tt.docx",
+    "_sourceUrl": "https://files.oca.org/service-texts/2025-1225-texts-matins-tt.docx",
+    "_note": "Two-canon feast (1st by Cosmas of Maiuma in Tone 1, 2nd by John of Damascus in iambic verse Tone 1). OCA service text gives only the First Canon; the second canon is referenced but its text is not included. Magnificat replaced by ode-9 megalynaria (skipMagnificat: true). Great feast of the Lord — Having Beheld the Resurrection is suppressed."
+  },
+
+  "troparion": {
+    "text": "Thy Nativity, O Christ our God,\nhas shone to the world the light of wisdom!\nFor by it, those who worshipped the stars,\nwere taught by a star to adore Thee,\nthe Sun of Righteousness,\nand to know Thee, the Orient from on high.//\nO Lord, glory to Thee!",
+    "tone": 4,
+    "label": "Troparion of the Nativity"
+  },
+  "kontakion": {
+    "text": "Today the Virgin gives birth to the Transcendent One,\nand the earth offers a cave to the Unapproachable One.\nAngels with shepherds glorify Him;\nThe Wise Men journey with the star,//\nsince for our sake the eternal God was born as a little Child.",
+    "tone": 3,
+    "label": "Kontakion of the Nativity"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "lord"
+    },
+    "isGreatFeastOfLord": true,
+
+    "sedalion": [
+      {
+        "text": "Come, O faithful,\nlet us go to see where Christ was born!\nWe shall follow the Wise Men, kings from the East,\nand be led by the guiding star\nto the place where Angels sing unceasing praise.\nShepherds in the fields offer fitting hymns:\n\"Glory in the highest to Him Who today was born\nof the Virgin Theotokos//\nin a cave in Bethlehem of Judah!\"",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Troparion melody",
+        "_note": "Sung twice (with Glory/Now between)."
+      },
+      {
+        "text": "Why dost thou marvel, O Mary?\nWhy art thou amazed at what has come to pass?\n\"I have given birth in time to a timeless Son;\nI cannot explain how He was conceived in me.\nI have known no man; how then shall I bear a child?\nWho has ever seen a birth without seed?\nWhen God so wills, as it is written:\n'The order of nature is overcome.'\"//\nChrist is born of the Virgin in Bethlehem of Judah.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Troparion melody",
+        "_note": "Sung twice (with Glory/Now between)."
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify Thee,\nO Christ, the Giver of life:\nWho for our sake now art born in the flesh of the Virgin Mary,\nunwedded and most pure.",
+      "verses": [
+        "Make a joyful noise unto the Lord, all the earth; sing the glory of His name; proclaim His glorious praise! (Ps. 65:1)",
+        "Our God is in heaven and on earth; He does whatever He pleases. (Ps. 113:11)"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "How can a womb contain Him Whom nothing can contain?\nHow can He remain in His Father's bosom, yet rest in His Mother's arms?\nIt is His good pleasure to accomplish this.\nHaving no flesh, He purposely assumes it for our sake.\nHE WHO IS becomes what He never was.\nHe shares our substance without forsaking His own nature.\nDesiring to make us citizens of the world on high,//\nChrist, the Only-begotten of the Father, is born on earth as a man.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Troparion melody",
+      "_note": "Sung twice (with Glory/Now between)."
+    },
+
+    "prokeimenon": {
+      "refrain": "\"Out of the womb before the morning star have I begotten Thee.\" The Lord has sworn and will not change His mind.",
+      "verse": "The Lord said to my Lord: \"Sit at My right hand, until I make Thine enemies Thy footstool.\"",
+      "tone": 4,
+      "_psalmRef": "Ps. 109:4a-b / 109:1"
+    },
+
+    "gospel": {
+      "reading": "Matthew 1:18-25",
+      "number": 2,
+      "_note": "The genealogy and birth of Jesus Christ."
+    },
+
+    "postGospelSticheron": {
+      "text": "Today all things are filled with joy,//\nfor Christ is born of the Virgin.",
+      "tone": 2,
+      "label": "Post-Gospel Sticheron (twice with Glory/Now/Both)",
+      "_source": "oca-2025-1225-matins-tt"
+    },
+
+    "postGospelDoxasticon": {
+      "text": "Glory to God in the highest, and on earth peace!\nToday Bethlehem receives Him Who reigns forever with the Father.\nToday Angels glorify the newborn Babe in hymns worthy of God:\n\"Glory to God in the highest,//\nand on earth, peace, good will to men!\"",
+      "tone": 6,
+      "label": "Doxasticon after Psalm 50",
+      "_source": "oca-2025-1225-matins-tt"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_author": "First Canon by Cosmas of Maiuma; Second Canon by John of Damascus (text not in OCA source)",
+      "_canonStructure": "twoCanonsFirstOnly",
+      "_canonNote": "Two canons in Tone 1. OCA service text supplies only the first canon. The refrain 'Glory to Thee, our God, glory to Thee!' precedes each troparion; the last troparion of each ode is preceded by 'Glory… now and ever…'.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "Christ is born, glorify Him!\nChrist comes from heaven, go to meet Him!\nChrist is on earth, be exalted!\nSing to the Lord, all the earth,\nand praise Him in gladness, O people,\nfor He has been glorified!",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Man was made in the image of God,\nbut he sinned, and lost immortality.\nHe fell from the divine and better life,\nenslaved completely by corruption.\nNow the wise Creator fashions him again,\nfor He has been glorified." },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "The Creator shaped man with His own hands,\nbut when He saw us perishing eternally,\nHe bowed the heavens and came down to earth,\nand clothed Himself completely in our nature,\ntruly incarnate from a pure and holy Virgin,\nfor He has been glorified." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Wisdom, and Word, and Power,\nChrist our God is the Father's Son, His Radiance.\nHe was made man,\na mystery concealed from every spirit above or on the earth.\nHe has won us for Himself,\nfor He has been glorified." }
+        ],
+        "katavasia": "Christ is born, glorify Him!…"
+      },
+
+      "ode3": {
+        "irmos": "To the Son, begotten of the Father before all ages,\nand incarnate of the Virgin\nwithout seed in these latter days—\nto Christ our God, let us cry out:\n\"Thou hast raised up our horn.\nHoly art Thou, O Lord!\"",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Adam was made from dust,\nyet he shared God's life-giving breath.\nHe was deceived by woman and fell,\nbut from the dead, he saw Christ born of woman.\nHe shouted: \"For my sake Thou hast become like me.\nHoly art Thou, O Lord!\"" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Thou hast assumed a body of lowly clay, O Christ.\nBy sharing our humble flesh,\nThou hast made our race partakers of divinity.\nBy becoming mortal man yet remaining God,\nThou hast raised us from death to life.\nHoly art Thou, O Lord!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Make merry, O Bethlehem!\nThou art the king of Judah's princes.\nChrist, the Shepherd of Israel,\nWho rides on the shoulders of the Cherubim,\nhas come forth from thee for all to see.\nHe has raised us from death to life, and reigns over all." }
+        ],
+        "katavasia": "To the Son…"
+      },
+
+      "sedalenAfterOde3": [
+        {
+          "text": "Heaven brought the first-fruits of the Gentiles as a gift for Thee;\na star summoned the Wise Men to the babe in the manger.\nThey were amazed to see neither throne nor scepter, but only abject poverty.\nWhat is more humble than a cave?\nWhat is more lowly than swaddling clothes?\nYet the riches of Thy Divinity shone through all these.//\nO Lord, glory to Thee!",
+          "tone": 8,
+          "label": "Hypakoe"
+        },
+        {
+          "text": "Let the heavens rejoice and let the earth be glad!\nThe Lamb of God has been born on earth, granting redemption to the world.\nThe Word, Who rests in the bosom of the Father, has come forth without seed from the Virgin.\nThe Wise Men were struck with amazement, seeing Him born as an infant in Bethlehem.//\nLet all creation glorify Him!",
+          "tone": 8,
+          "label": "Kathisma Hymn",
+          "melody": "Troparion melody"
+        }
+      ],
+
+      "ode4": {
+        "irmos": "Stem and flower of the root of Jesse,\nThou hast blossomed from the Virgin, O Christ.\nFrom the mountain overshadowed by the forest, Thou art come,\nmade flesh from her than knew no man.\nO God, not formed from matter—\nglory to Thy power, O Lord!",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Thou art the Expectation of the nations, O Christ,\nforetold by Jacob in days of old.\nThou hast sprung from Judah's tribe,\nto plunder the might of Damascus and the spoils of Samaria,\nreplacing error with faith acceptable to God.\nGlory to Thy power, O Lord!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Thou hast filled the stargazers with joy, O Lord.\nThey knew the hidden meaning of the Prophet Balaam's words.\nThou hast made the star of Jacob to rise.\nAs the first fruits of the Gentiles it led them unto Thee.\nThou didst openly receive their precious gifts.\nGlory to Thy power, O Lord!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Thou didst descend into the Virgin's womb, O Christ,\nlike rain upon the fleece and raindrops watering the earth.\nAll earth's rulers fall down before Thee:\nEthiopia and the islands of Arabia,\nthe kings of Tarshish, of Sheba, and the Medes.\nGlory to Thy power, O Lord!" }
+        ],
+        "katavasia": "Stem and flower…"
+      },
+
+      "ode5": {
+        "irmos": "O God of Peace, Father of Mercies,\nThou hast sent Thine Angel of Great Counsel to grant us peace.\nWe are guided to the light of the knowledge of God,\nand keeping watch by night,\nwe glorify Thee, O Lover of Man.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Thou wast registered as Caesar's subject, O Christ,\nin obedience to his decree.\nWe were slaves of sin, and subject to the hateful enemy;\nby Thy poverty Thou hast set us free.\nThou wast united to our nature in every way.\nThough we were formed from dust,\nby this communion we are made divine." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Behold, the Virgin, as foretold of old,\nhas conceived and given birth to God made man!\nShe remains a virgin still.\nThrough her we are reconciled to God.\nLet us sinners faithfully sing her praise!\nShe is truly Theotokos!" }
+        ],
+        "katavasia": "O God of Peace…"
+      },
+
+      "ode6": {
+        "irmos": "The sea monster cast forth Jonah as it had received him,\nlike a babe from the womb.\nAnd when the Word came to dwell in the Virgin and was made flesh,\nHe came forth preserving her uncorrupt,\nfor as He Himself was not subject to decay,\nHe kept His mother free from harm.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Christ our God has come in the flesh.\nThe Father begot Him from the womb before the Morning Star.\nHe rules the heavenly hosts,\nyet now He lies in a manger of dumb beasts.\nHe Who looses the tangled knots of sin\nnow is wrapped in swaddling clothes." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "A Son is born and given to the faithful,\na newborn Child of Adam's race,\nyet He is Father and Ruler of the world to come.\nHe is called the Angel of Great Counsel.\nHe is the mighty God,\nWho rules all creation by His might." }
+        ],
+        "katavasia": "The sea monster…"
+      },
+
+      "kontakion": {
+        "text": "Today the Virgin gives birth to the Transcendent One,\nand the earth offers a cave to the Unapproachable One.\nAngels with shepherds glorify Him;\nThe Wise Men journey with the star,//\nsince for our sake the eternal God was born as a little Child.",
+        "tone": 3,
+        "label": "Kontakion of the Nativity"
+      },
+      "ikos": {
+        "text": "Bethlehem has opened Eden. Come, let us see!\nWe have found joy in a secret place.\nCome, let us seize Paradise hidden in the cave!\nThere the unwatered Root has appeared,\nblossoming with forgiveness.\nThere is found the undug Well,\nfrom which David longed to drink of old.\nThere the Virgin has borne a child,\nquenching Adam's and David's thirst.\nLet us hurry to this place,\n(Oikos ending:)\nwhere the eternal God was born as a little Child!"
+      },
+
+      "ode7": {
+        "irmos": "The children, brought up together in godliness,\nscorned the impious decree of the tyrant.\nThey were not afraid of the threat of fire,\nbut standing in the midst of the flames, they sang:\n\"Blessed art Thou, O God of our fathers!\"",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "The shepherds, abiding in the fields,\nwere terrified by a dazzling sight.\nAround them shone the glory of the Lord.\nAn Angel shouted to them: \"Sing praises!\nThe Messiah is born!\"\nBlessed art Thou, O God of our fathers!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "After the Angel spoke,\nthe hosts of heaven suddenly cried out:\n\"Glory to God in the highest!\nPeace on earth, good will to men!\nChrist has shone forth.\"\nBlessed art Thou, O God of our fathers!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "\"What news is this?\" asked the shepherds.\n\"Has God's Messiah truly come?\nLet us go to Bethlehem!\"\nThey saw Thee there, and worshipped Thee.\nWith Thy mother, they sang;\n\"Blessed art Thou, O God of our fathers!\"" }
+        ],
+        "katavasia": "The children…"
+      },
+
+      "ode8": {
+        "irmos": "The furnace, moist with dew,\nwas an image prefiguring a wonder beyond nature,\nfor it did not burn the children whom it had received,\nnor did the Fire of Divinity consume the Virgin's womb when it entered it.\nSo let us raise the song:\n\"Let all creation bless the Lord, and exalt Him throughout all ages!\"",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "The daughter of Babylon\ndrove David's children from Zion with sword and spear.\nNow she sends her sons, the Wise Men,\nbearing gifts, to worship in David's city, where God has come to dwell.\nSo let us raise the song:\n\"Let all creation bless the Lord and exalt Him throughout all ages!\"" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Grief had silenced the harps.\nZion's children would not sing in a foreign land.\nBut now Christ has shone forth in Bethlehem,\ndestroying the din of Babylon's idolatries.\nSo let us raise the song:\n\"Let all creation bless the Lord and exalt Him throughout all ages!\"" },
+          { "refrain": "Let us bless the Father, the Son, and the Holy Spirit, the Lord, now and ever, and unto ages of ages. Amen.",
+            "text": "Babylon plundered Zion,\nand captured all her royal wealth.\nBut now, with a guiding star,\nChrist lures her treasure-laden Wise Men back to Zion.\nSo let us raise the song:\n\"Let all creation bless the Lord and exalt Him throughout all ages!\"" }
+        ],
+        "katavasia": "The furnace moist with dew…",
+        "_katavasiaCloser": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages."
+      },
+
+      "ode9": {
+        "irmos": "I behold a strange, most glorious mystery:\nheaven—the cave;\nthe cherubic throne—the Virgin;\nthe manger—the place where Christ lay:\nthe uncontainable God, Whom we magnify in song.",
+        "megalynarion": "Magnify, O my soul, the most pure Virgin Theotokos,\nmore honorable and more glorious than the heavenly hosts!",
+        "troparia": [
+          { "refrain": "Magnify, O my soul, God, born in the flesh from the Virgin!",
+            "text": "The Wise Men saw a new, uncharted star,\nfollowing an unexpected course.\nIts brightness surpassed every star in heaven.\nIt foretold the Messiah's birth: Christ, the King,\nborn on earth in Bethlehem, for our salvation." },
+          { "refrain": "Magnify, O my soul, the King born in the cave!",
+            "text": "(Repeat: \"The Wise Men saw a new…\")" },
+          { "refrain": "Magnify, O my soul, God, worshipped by the Wise Men!",
+            "text": "\"Where is the newborn Infant-King?\nWe have seen His star,\" the Wise Men said.\n\"We have come to worship Him.\"\nGodless Herod trembled with fury.\nIn his raging madness he plotted to kill Christ." },
+          { "refrain": "Magnify, O my soul, the Lord Who revealed Himself to the Wise Men by a star!",
+            "text": "(Repeat: \"Where is the newborn Infant-King?…\")" },
+          { "refrain": "Magnify, O my soul, the pure Virgin who gave birth to Christ the King!",
+            "text": "Herod inquired when the star appeared\nthat had led the Wise Men to Bethlehem,\nbut after they worshipped Christ with gifts,\nthat same star led them back to their own land,\nconfounding their pursuer, that godless murderer of children.\nWise Men and shepherds came to worship Christ, born in the city of Bethlehem." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "(Repeat: \"Herod inquired when the star…\")" }
+        ],
+        "katavasia": "Magnify, O my soul, the most pure Virgin Theotokos…\nI behold a strange, most glorious mystery…\n(or, the ninth heirmos of the second canon:)\nOut of fear, we should choose to love silence,\nfor that is a safer course;\nso difficult it is lovingly to compose intricately woven songs\nto thee, O Virgin.\nBut grant us strength, O Mother,\nequal to our natural calling."
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Our Savior, the Dayspring from the East,\nhas visited us from on high,\nand we, who were in darkness and shadow,\nhave found the Truth,\nfor the Lord is born of the Virgin.",
+      "tone": null,
+      "label": "Exaposteilarion of the Nativity",
+      "repeat": 3,
+      "_source": "oca-2025-1225-matins-tt"
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "Make glad, O you righteous!\nGreatly rejoice, O heavens!\nDance for joy, O mountains, for Christ is born!\nThe Virgin has become like the cherubic throne.\nShe carries at her bosom God the Word, made flesh.\nShepherds glorify the newborn Child.\nWise Men offer the Master gifts.\nAngels praise Him and sing://\n\"O Lord, past understanding, glory to Thee!\"",
+          "tone": 4,
+          "melody": "by Andrew of Jerusalem"
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "text": "It was the good pleasure of the Father:\nthe Word is made flesh.\nThe Virgin gives birth to God made man.\nA star announces the glad tidings.\nShepherds are amazed, and Wise Men worship,//\nand creation is filled with mighty joy.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Thou hast borne the Savior, O Virgin Theotokos.\nThou hast overthrown Eve's ancient curse.\nThou didst become the mother of the Son of God.\nThe Father is well-pleased in Him.\nThou dost carry at thy bosom God, the Word, made flesh.\nWe cannot fathom this mystery.\nWe can only believe, and give glory with thee://\nO Lord, beyond all explanation, glory to Thee!",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "Come, let us sing to the mother of the Savior,\nwho after childbearing remained a virgin:\n\"Hail, O spiritual city of God the King!\nChrist came to dwell in thee.\nHe has accomplished salvation.\"\nWith Gabriel, let us sing her praise,\nand with the shepherds, let us glorify her, crying out://\n\"O Theotokos, pray to Him Who took flesh from thee to save us!\"",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "When it was time for Thy coming on earth,\nthe first imperial taxation was held,\nbut Thou also didst take a census, O Lord,\nrecording the names of all men who believed in Thy birth.\nThou didst use the decree of Caesar for Thine own end:\nto make manifest Thy timeless and eternal Kingdom.\nTherefore we pay Thee our taxes, not with golden coins,\nbut with the riches of Orthodox theology,//\nO God and Savior of our souls.",
+        "tone": 6,
+        "author": "by Germanos",
+        "_source": "oca-2025-1225-matins-tt"
+      },
+      "theotokion": {
+        "text": "Today Christ is born of the Virgin in Bethlehem.\nToday He Who knows no beginning, begins.\nToday the Word is made flesh.\nThe powers of heaven greatly rejoice.\nThe earth makes merry with men.\nThe Wise Men offer gifts; the shepherds announce the wonder,\nand without ceasing we cry aloud:\n\"Glory to God in the highest,//\npeace on earth, good will to men!\"",
+        "tone": 2,
+        "author": "by John the Monk",
+        "_source": "oca-2025-1225-matins-tt"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Thy Nativity, O Christ our God,\nhas shone to the world the light of wisdom!\nFor by it, those who worshipped the stars,\nwere taught by a star to adore Thee,\nthe Sun of Righteousness,\nand to know Thee, the Orient from on high.//\nO Lord, glory to Thee!",
+      "tone": 4
+    }
+  }
+}

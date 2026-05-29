@@ -1,0 +1,280 @@
+{
+  "_meta": {
+    "feast": "The Meeting of our Lord and Savior Jesus Christ in the Temple",
+    "feastKey": "meeting",
+    "rank": "greatFeast",
+    "_source": "Matins: St-Sergius Emenaion 02-02.pdf; Vespers + Liturgy: OCA service texts 2026-0202-texts-tt.docx (LIC, Litya, Aposticha already in storage/oca.db)",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-02.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast (Vespers+Liturgy only). Matins content sourced from St-Sergius Emenaion — yy/archaic style (\"thy/Thou\") preserved; differs in register from OCA tt translations. Single canon by Cosmas of Maiuma in Tone 3. Great feast of the Lord — Having Beheld the Resurrection is suppressed."
+  },
+
+  "troparion": {
+    "text": "Rejoice, O Virgin Theotokos, Full of Grace!\nFrom thee shone the Sun of Righteousness, Christ our God,\nenlightening those who sat in darkness.\nRejoice and be glad, O righteous Elder,\nthou didst accept in thine arms the Redeemer of our souls,//\nWho grants us the Resurrection!",
+    "tone": 1,
+    "label": "Troparion of the Meeting"
+  },
+  "kontakion": {
+    "text": "By Thy Nativity Thou didst sanctify the Virgin's womb\nand didst bless Simeon's hands, O Christ God.\nNow Thou hast come and saved us through love.\nGrant peace to all Orthodox Christians,//\nO only Lover of Man!",
+    "tone": 1,
+    "label": "Kontakion of the Meeting"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "greatFeast",
+      "feastType": "lord",
+      "_source": "stSergius-menaion"
+    },
+    "isGreatFeastOfLord": true,
+
+    "sedalion": [
+      {
+        "text": "Let the choir of the angels marvel at the wonder!\nAnd let us mortals lift up our voices in hymnody,\nbeholding the ineffable condescension of God;\nfor He Who alone is the Lover of mankind,\nand before Whom the hosts of heaven tremble,//\ndo the arms of the elder now embrace.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice (with Glory/Now between)."
+      },
+      {
+        "text": "He Who is with the Father seated upon the holy throne,\nhath come to earth born of the Virgin;\nHe Who is unbounded by time, hath become a babe;\nand Symeon, receiving Him in his arms rejoicing, saith://\n\"Now lettest Thou Thy servant depart, O Compassionate One, having gladdened me!\"",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Let the choir of the angels",
+        "_note": "Sung twice (with Glory/Now between)."
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify Thee,\nO Christ, Bestower of life,\nand we honor Thy most pure Mother,\nby whom Thou hast now been borne\ninto the temple of the Lord in accordance with the law.",
+      "verses": [
+        "My heart hath poured forth a good word. I speak of my works to the King.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Thou didst become a babe for my sake, O Ancient of days,\nand didst partake of purification, O most pure God,\nthat I might be assured, it was flesh Thou didst assume from the Virgin.\nAnd Symeon, taught thereby, recognized Thee as God appearing in the flesh,\nand having kissed Thee, our Life, rejoicing he cried aloud://\n\"Release me, for I have seen Thee, the Life of all!\"",
+      "tone": 4,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Joseph marveled",
+      "_note": "Sung twice (with Glory/Now between)."
+    },
+
+    "prokeimenon": {
+      "refrain": "I shall commemorate thy name in every generation and generation.",
+      "verse": "My heart hath poured forth a good word. I speak of my works to the King.",
+      "tone": 4,
+      "_psalmRef": "Ps. 44:18 / 44:1"
+    },
+
+    "gospel": {
+      "reading": "Luke 2:25-32",
+      "number": 8,
+      "_note": "Simeon the Righteous receives the Christ-child in the Temple."
+    },
+
+    "postGospelSticheron": {
+      "text": "Let the gates of heaven be opened today;\nfor the beginningless Word of the Father,\nreceiving a beginning under time,\nwithout abandoning His divinity,\nis voluntarily borne by His Virgin Mother into the temple of the law as a babe forty days old.\nAnd Symeon taking Him in his arms, cried aloud:\n\"Let Thy servant depart, O Master, for mine eyes have seen Thy salvation!//\nO Lord Who hast come into the world to save the human race, glory be to Thee!\"",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 3,
+      "_author": "Cosmas of Maiuma",
+      "_canonNote": "Single canon. Acrostic: \"Joyously the elder embraceth Christ\". Irmoi chanted twice with 12 troparia. Katavasiae are the festal canon irmoi.",
+      "skipMagnificat": true,
+
+      "ode1": {
+        "irmos": "The Sun once passed over dry land in the midst of the deep.\nFor the water on both sides became firm as a wall\nwhile the people traversed the sea on foot,\nchanting in a manner pleasing to God:\nLet us sing unto the Lord;\nfor gloriously hath he been glorified.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Let the clouds pour forth rain,\nfor Christ the Sun Who is borne aloft upon a light cloud\nis brought to the temple as a babe in the arms of the unblemished one.\nWherefore, O ye faithful, let us cry aloud:\nLet us sing unto the Lord, for gloriously hath He been glorified!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Be strong, ye hands of Symeon feeble with age;\nand ye weary legs of the elder,\nhasten straightway to meet Christ,\njoining chorus with the incorporeal ones, chanting:\nLet us sing unto the Lord, for gloriously hath He been glorified!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "O ye heavens stretched out in wisdom, be glad; and rejoice, O thou earth!\nFor Christ the Fashioner,\nhaving come forth from the most blessed womb of His Mother,\nis borne by the Virgin Mother as a babe to God the Father,\nHe Who was before all the ages, for gloriously hath He been glorified!" }
+        ],
+        "katavasia": "The Sun once passed over dry land…"
+      },
+
+      "ode3": {
+        "irmos": "O Lord, the firm foundation of those who put their trust in Thee,\ndo Thou establish the Church,\nwhich Thou hast purchased with thy precious blood.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "He that was first begotten of the Father before the ages\nhath appeared as the firstborn Babe of the undefiled Virgin,\nstretching forth His hand unto Adam." },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "God the Word hath appeared as a babe,\nsetting aright the first-formed man,\nwho through deception had become childish of mind." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Without undergoing change, the Creator became a Babe,\nrendering divine our nature,\nthe product of earth to which it returneth again." }
+        ],
+        "katavasia": "O Lord, the firm foundation…"
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Of old, on Mount Sinai, Moses beheld the back-parts of God,\nand in the midst of the darkness and whirlwind\nwas deemed worthy to hear the still small voice of God;\nand now Symeon hath received in his arms\nGod Who hath immutably taken flesh for our sake.\nAnd hastening to leave things here below for life everlasting; he crieth out://\n\"Now lettest Thou Thy servant depart, O Master!\"",
+        "tone": 4,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Joseph marveled"
+      },
+
+      "ode4": {
+        "irmos": "Thy virtue hath covered the heavens, O Christ,\nfor having come forth from the Ark of Thy sanctification,\nfrom Thine undefiled Mother,\nThou hast appeared in the temple of Thy glory\nas an infant borne in arms,\nfilling all with Thy praise.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Rejoicing, the Theotokos cried aloud:\nO Symeon, initiate of ineffable mysteries,\ntake in thine arms Christ, the Word Who hath become a babe,\nof Whom thou wast informed of old by the Holy Spirit,\nand cry out to Him: All things are filled with Thy praise!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "O Symeon, rejoicing take up Christ, the little Child,\non Whom thou hast set thy hope,\nthe Consolation of the Israel of God,\nthe Creator and Master of the law, Who fulfilleth the tenets of the law;\nand cry aloud to Him: All things are filled with Thy praise!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Beholding the beginningless Word borne as a babe in the flesh by the Virgin\nas on the throne of the cherubim,\nthe Author of all, Symeon marveled and cried aloud to Him:\nAll things are filled with Thy praise!" }
+        ],
+        "katavasia": "Thy virtue hath covered the heavens…"
+      },
+
+      "ode5": {
+        "irmos": "In a vision Isaiah saw upon a throne,\nGod lifted up on high borne aloft by angels of glory;\nand he cried: 'Woe is me!\nFor I have foreseen God made flesh,\nthe Lord of the never-setting light\nand the King of peace.'",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "The divine elder, comprehending the glory that was revealed of old to the prophet,\nand beholding the Word held in His Mother's arms, cried aloud:\nRejoice, O pure one,\nfor like a throne, God the unwaning Light, Who reigneth with peace, is held by thee!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "The elder, bowing low and divinely touching the feet of the Mother of God who kneweth not wedlock, said:\nO pure one, thou dost bear Fire!\nI fear to hold the infant God, the unwaning Light, Who reigneth with peace!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Isaiah, purified by the burning ember brought by the seraphim,\nand the elder illumined by the Mother of God, cried to her:\nthou hast given me Him Whom thou dost bear in thine arms as with tongs,\nthe Light unwaning, Who reigneth with peace." }
+        ],
+        "katavasia": "In a vision Isaiah saw upon a throne…"
+      },
+
+      "ode6": {
+        "irmos": "The Elder, having seen with his eyes the salvation\nthat was to come unto the peoples from God,\ncried aloud unto Thee:\n'O Christ, Thou art my God.'",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "In Sion wast Thou set as a stone of stumbling and a rock of offense for the disobedient,\nand the inviolate salvation of the faithful." },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Clearly bearing the lineaments of Him Who begot Thee before the ages,\nin Thy tender compassion Thou hast now been clothed in the weakness of the earth-born." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "Now lettest him that worshipped Thee as the Son of the Most High,\nthe Son of the Virgin, God become a Child, depart in peace." }
+        ],
+        "katavasia": "The Elder, having seen with his eyes…"
+      },
+
+      "kontakion": {
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "tone": 1,
+        "label": "Kontakion of the Meeting (Sergius variant)"
+      },
+      "ikos": {
+        "text": "Let us make haste to the Theotokos,\ndesiring to behold her Son borne unto Symeon.\nLooking upon Him from heaven, the bodiless hosts in amazement proclaim:\n\"We behold things wondrous, most glorious, unapproachable and ineffable:\nfor He Who created Adam is borne as an infant;\nHe Whom naught can contain is held in the elder's arms;\nHe Who is in the infinite bosom of His Father\nis willingly constrained in the flesh, but not in His divinity,\nHe Who alone is the Lover of mankind.\""
+      },
+
+      "ode7": {
+        "irmos": "O Thou Who in the midst of the fire\nbedewed the children as they discoursed on things divine,\nand Who didst take up Thy dwelling in the pure Virgin:\nO Word of God, Thee do we reverently praise chanting:\nO God of our fathers, Blessed art Thou.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "I go to announce glad tidings unto Adam and Eve who dwell in Hades,\ncried Symeon, joining chorus with the prophets, singing:\nBlessed is the God of our fathers!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "God, the Redeemer of the race of mortals shall go even unto Hades;\nHe shall grant forgiveness to all, sight to the blind,\nand even the mute shall chant: Blessed is the God of our fathers!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "text": "And Symeon foretold to the Virgin:\nA sword shall pierce thy heart, O incorrupt one,\nbeholding thy Son upon the Cross,\nto Whom we cry out: Blessed is the God of our fathers!" }
+        ],
+        "katavasia": "O Thou Who in the midst of the fire…"
+      },
+
+      "ode8": {
+        "irmos": "United together in the unbearable fire,\nyet not harmed by the flame,\nthe children, champions of godliness, sang a divine hymn:\nO all ye works of the Lord,\nbless ye the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "O people of Israel, beholding your glory, Emmanuel,\nthe Babe born of the Virgin,\njoin ye now in chorus in the presence of the Ark of God, chanting:\nBless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
+          { "refrain": "Glory to Thee, our God, glory to Thee!",
+            "text": "Behold, cried Symeon, this One Who is both God and Babe shall be a sign of contradiction.\nO ye faithful, let us cry aloud:\nBless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
+          { "refrain": "Let us bless the Father, the Son, and the Holy Spirit, the Lord, now and ever, and unto ages of ages. Amen.",
+            "text": "God the Word, being Life itself and having become a Babe,\nshall be the downfall of the disobedient,\nbut the restoration of those who chant with faith:\nBless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" }
+        ],
+        "katavasia": "United together in the unbearable fire…"
+      },
+
+      "ode9": {
+        "irmos": "In the shadow and the letter of the Law,\nlet us, the faithful, discern a figure:\nevery male child that openeth the womb\nshall be sanctified to God.\nTherefore we magnify the firstborn Word\nand Son of the beginningless Father,\nthe firstborn Child of a Mother who hath not known a man.",
+        "megalynarion": "O Virgin Theotokos, thou hope of Christians, preserve and save those who trust in thee.",
+        "troparia": [
+          { "refrain": "\"It is not the elder who holdeth Me, but rather I hold him; for he asketh Me to dismiss him.\" (Twice)",
+            "text": "The ancients were wont to offer a pair of new-born doves and two young birds,\nbut the godly elder and the chaste prophetess Anna serve in their stead,\nmagnifying the only-begotten Son of the Father,\nWho was born of the Virgin and is borne into the temple." },
+          { "refrain": "How dost thou hold the Ember, O mystic tongs? How dost thou feed Him Who sustaineth all?",
+            "text": "(Repeat of preceding troparion)" },
+          { "refrain": "O daughter of Phanuel, come and stand with us, and give thanks to Christ the Savior, the Son of God!",
+            "text": "Thou hast imparted unto me the joy of Thy salvation, cried Symeon.\nAccept Thou Thy servant, for I am weary of the shadow,\nas a mystic and sacred preacher of the new grace, magnifying Thee in praise!" },
+          { "refrain": "The chaste Anna proclaimeth awesome things, confessing Christ, the Creator of heaven and earth. (Twice)",
+            "text": "(Repeat of preceding troparion)" },
+          { "refrain": "Unapproachable to angels and men is what was wrought within thee, O pure Virgin Mary.",
+            "text": "The aged Anna, chaste and venerable, prophesying in sacred manner,\nopenly confessed the Lord in the temple,\nand she magnified the Theotokos, proclaiming her to all present." },
+          { "refrain": "O Christ, Thou King of all, grant victory over all heresies to thy faithful hierarchs!",
+            "text": "(Same troparion repeated with this refrain.)" },
+          { "refrain": "Let us piously praise the thrice-radiant Godhead in three Hypostases.",
+            "text": "(Trinitarian troparion — in place of Glory.)" },
+          { "refrain": "O Virgin Mary, illumine my soul which hath been grievously darkened by the pleasures of life!",
+            "text": "(Theotokion — in place of Both now.)" }
+        ],
+        "katavasia": "In the shadow and the letter of the Law…"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "The elder, brought into the temple by the Spirit,\ntook the Master of the Law in his arms, crying:\nDo Thou now loose me from the bond of the flesh according to Thy word:\nfor mine eyes have seen the revelation of the Gentiles,\nand the salvation of Israel!",
+      "tone": 3,
+      "label": "Exaposteilarion of the Meeting",
+      "repeat": 3,
+      "_source": "stSergius-menaion"
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness! (Ps. 150:2)",
+          "text": "He Who is the Lover of mankind, fulfilling the law of the Scriptures,\nis now borne into the temple;\nand the elder Symeon receiveth Him in his arms, crying:\n\"Lettest me now depart to Thy blessedness,\nfor today I have seen clad in mortal flesh\nHim Who hath dominion over life and mastery over death!\"",
+          "tone": 4,
+          "melody": "Thou hast granted a sign",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise Him with trumpet sound; praise Him with lute and harp! (Ps. 150:3)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe! (Ps. 150:4)",
+          "text": "Thou didst show Thyself to be the Light of revelation,\nthe Sun of righteousness seated upon a light cloud,\nfulfilling the shadow of the law,\nand revealing the beginning of the new grace.\nWherefore, Symeon, seeing Thee, cried aloud://\n\"Set me free of corruption, for I have seen Thee today!\"",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals! Let everything that breathes praise the Lord! (Ps. 150:5)",
+          "text": "Without being separated from the bosom of the Father in Thy divinity,\nvoluntarily incarnate,\nThou wast held in the embrace of the Ever-virgin,\nand Thou Who holdest all things in Thy hands\nwast given into the arms of Symeon the God-receiver,\nwherefore, he cried aloud with joy://\n\"Lettest me Thy servant, now depart in peace, for I have seen Thee, O Master!\"",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "O Christ our God, Whose good pleasure it was to sit today\nin the arms of the elder, as in the chariot of the cherubim:\nin that Thou lovest mankind, deliver and save us who hymn Thee,//\ncalling us forth from the tyranny of the passions.",
+        "tone": 6,
+        "author": "by Germanus",
+        "_source": "stSergius-menaion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Rejoice, O Virgin Theotokos, Full of Grace!\nFrom thee shone the Sun of Righteousness, Christ our God,\nenlightening those who sat in darkness.\nRejoice and be glad, O righteous Elder,\nthou didst accept in thine arms the Redeemer of our souls,//\nWho grants us the Resurrection!",
+      "tone": 1
+    }
+  },
+
+  "vespers": {
+    "_note": "Vespers stichera (LIC, Litya, Aposticha) and OT readings are sourced from OCA service text 2026-0202-texts-tt.docx and already stored in storage/oca.db under commemoration_id=253. This block carries only troparion/kontakion for direct reference.",
+    "troparion": {
+      "text": "Rejoice, O Virgin Theotokos, Full of Grace!\nFrom thee shone the Sun of Righteousness, Christ our God,\nenlightening those who sat in darkness.\nRejoice and be glad, O righteous Elder,\nthou didst accept in thine arms the Redeemer of our souls,//\nWho grants us the Resurrection!",
+      "tone": 1
+    },
+    "kontakion": {
+      "text": "By Thy Nativity Thou didst sanctify the Virgin's womb\nand didst bless Simeon's hands, O Christ God.\nNow Thou hast come and saved us through love.\nGrant peace to all Orthodox Christians,//\nO only Lover of Man!",
+      "tone": 1
+    }
+  }
+}

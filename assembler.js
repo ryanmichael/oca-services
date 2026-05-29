@@ -5281,46 +5281,84 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
     const odeData = canonSpec[odeKey];
 
     if (odeData) {
-      // Irmos
-      if (odeData.irmos) {
+      // Two-canon feast detection: irmos2 present AND troparia explicitly
+      // partitioned via t.canon === 'secondCanon'. In that case, render in
+      // two groups (Irmos 1 → first-canon troparia → Irmos 2 → second-canon
+      // troparia) rather than the flat single-canon layout.
+      const tropList = odeData.troparia || [];
+      const isTwoCanonOde = !!odeData.irmos2
+        && tropList.some(t => t.canon === 'secondCanon');
+
+      // Per-troparion render helper (refrain + hymn block).
+      const emitTroparion = (t, i) => {
+        if (t.refrain) {
+          blocks.push(S(`canon-ode${odeNum}-ref-${i}`, section, 'verse', 'reader',
+            t.refrain));
+        }
+        const label = t.type === 'theotokion' ? 'Theotokion' : undefined;
+        blocks.push(S(`canon-ode${odeNum}-trop-${i}`, section, 'hymn', 'choir',
+          t.text || t, { tone: t.tone || tone, source: t.source, label }));
+      };
+
+      if (isTwoCanonOde) {
+        // ── First Canon ─────────────────────────────────────────────────────
+        blocks.push(S(`canon-ode${odeNum}-c1-hdr`, section, 'rubric', null,
+          `Ode ${odeNum} — First Canon`));
         blocks.push(S(`canon-ode${odeNum}-irmos`, section, 'hymn', 'choir',
-          odeData.irmos, { tone, label: `Ode ${odeNum} — Irmos` }));
-      }
-      // Second-canon irmos (e.g., Pentecost: 1st canon Tone 7 + 2nd canon Tone 4)
-      if (odeData.irmos2) {
+          odeData.irmos, { tone, label: 'Irmos' }));
+        tropList.forEach((t, i) => {
+          if (t.canon === 'secondCanon') return;
+          emitTroparion(t, i);
+        });
+
+        // ── Second Canon ────────────────────────────────────────────────────
+        blocks.push(S(`canon-ode${odeNum}-c2-hdr`, section, 'rubric', null,
+          `Ode ${odeNum} — Second Canon`));
         const tone2 = odeData.tone2 || canonSpec._secondCanonTone || tone;
         blocks.push(S(`canon-ode${odeNum}-irmos2`, section, 'hymn', 'choir',
-          odeData.irmos2, { tone: tone2, label: `Ode ${odeNum} — Irmos (2nd Canon)` }));
-      }
-
-      // Troparia (if provided)
-      if (odeData.troparia) {
-        let prevCanon = null;
-        odeData.troparia.forEach((t, i) => {
-          // Insert canon-type heading when switching between canons
-          if (t.canon && t.canon !== prevCanon) {
-            if (t.canon === 'crossResurrection') {
-              blocks.push(S(`canon-ode${odeNum}-cross-hdr`, section, 'rubric', null,
-                'Canon of the Cross and Resurrection'));
-            } else if (t.canon === 'theotokos') {
-              blocks.push(S(`canon-ode${odeNum}-theotokos-hdr`, section, 'rubric', null,
-                'Canon of the Theotokos'));
-            }
-            prevCanon = t.canon;
-          }
-          // Refrain before the troparion
-          if (t.refrain) {
-            blocks.push(S(`canon-ode${odeNum}-ref-${i}`, section, 'verse', 'reader',
-              t.refrain));
-          }
-          // Label for theotokia
-          const label = t.type === 'theotokion' ? 'Theotokion' : undefined;
-          blocks.push(S(`canon-ode${odeNum}-trop-${i}`, section, 'hymn', 'choir',
-            t.text || t, { tone: t.tone || tone, source: t.source, label }));
+          odeData.irmos2, { tone: tone2, label: 'Irmos' }));
+        tropList.forEach((t, i) => {
+          if (t.canon !== 'secondCanon') return;
+          emitTroparion(t, i);
         });
       } else {
-        blocks.push(S(`canon-ode${odeNum}-troparia`, section, 'rubric', null,
-          `[Troparia of Ode ${odeNum} — from Octoechos, Menaion, and/or Triodion]`));
+        // ── Single canon (existing layout) ──────────────────────────────────
+        // Irmos
+        if (odeData.irmos) {
+          blocks.push(S(`canon-ode${odeNum}-irmos`, section, 'hymn', 'choir',
+            odeData.irmos, { tone, label: `Ode ${odeNum} — Irmos` }));
+        }
+        // Second-canon irmos (e.g., Pentecost: 1st canon Tone 7 + 2nd canon Tone 4)
+        // Kept for back-compat with data that supplies irmos2 but no per-troparion
+        // canon tags (Pentecost today supplies only irmoi, no troparia).
+        if (odeData.irmos2) {
+          const tone2 = odeData.tone2 || canonSpec._secondCanonTone || tone;
+          blocks.push(S(`canon-ode${odeNum}-irmos2`, section, 'hymn', 'choir',
+            odeData.irmos2, { tone: tone2, label: `Ode ${odeNum} — Irmos (2nd Canon)` }));
+        }
+
+        // Troparia (if provided)
+        if (odeData.troparia) {
+          let prevCanon = null;
+          odeData.troparia.forEach((t, i) => {
+            // Insert canon-type heading when switching between canons
+            // (Sunday Matins resurrection / cross-resurrection / theotokos).
+            if (t.canon && t.canon !== prevCanon) {
+              if (t.canon === 'crossResurrection') {
+                blocks.push(S(`canon-ode${odeNum}-cross-hdr`, section, 'rubric', null,
+                  'Canon of the Cross and Resurrection'));
+              } else if (t.canon === 'theotokos') {
+                blocks.push(S(`canon-ode${odeNum}-theotokos-hdr`, section, 'rubric', null,
+                  'Canon of the Theotokos'));
+              }
+              prevCanon = t.canon;
+            }
+            emitTroparion(t, i);
+          });
+        } else {
+          blocks.push(S(`canon-ode${odeNum}-troparia`, section, 'rubric', null,
+            `[Troparia of Ode ${odeNum} — from Octoechos, Menaion, and/or Triodion]`));
+        }
       }
 
       // Katavasia (may have its own tone — e.g. Ascension uses Tone 5 canon

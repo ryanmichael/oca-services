@@ -1217,6 +1217,14 @@ delete GREAT_FEAST_VARIANTS._meta;
 const PENTECOSTARION_SUNDAY_OVERRIDES = loadJSON('variable-sources/pentecostarion-sunday-overrides.json');
 delete PENTECOSTARION_SUNDAY_OVERRIDES._meta;
 
+// ─── Co-celebrated Saints Overlay ─────────────────────────────────────────────
+// Secondary propers (troparion/kontakion, 2nd prokeimenon/alleluia/gospel/
+// communion hymn) for dates where a major fixed-calendar commemoration falls
+// on a Great Feast. Keyed by "M-D" date string. Second epistle/gospel are
+// pulled from orthocal's readings[] automatically.
+const COCELEBRATED_OVERLAYS = loadJSON('variable-sources/cocelebrated-overlays.json');
+delete COCELEBRATED_OVERLAYS._meta;
+
 /**
  * Builds a liturgy spec object from orthocal.info API data.
  * Used when no hand-authored liturgy key exists for the date.
@@ -1735,44 +1743,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   // Pentecostarion Sunday overrides (defined at module scope, see top).
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
-  // ── Co-celebrated saints overlay ────────────────────────────────────────────
-  // For dates where a major fixed-calendar commemoration falls on a Great Feast,
-  // OCA's published "combined" service appends a secondary set of propers:
-  // troparion + kontakion (before the feast kontakion), 2nd prokeimenon,
-  // 2nd epistle/alleluia/gospel, 2nd communion hymn.
-  // Source: OCA Department of Liturgical Music & Translations service texts.
-  const COCELEBRATED_OVERLAYS = {
-    // May 21: Sts. Constantine and Helen co-celebrated with Ascension
-    '5-21': {
-      troparion: {
-        tone: 8,
-        rubric: 'Troparion of Sts. Constantine and Helen, Tone 8:',
-        text: 'Thy servant Constantine, O Lord and only Lover of man,\nbeheld the figure of the Cross in the heavens.\nLike Paul, not having received his call from men,\nbut as an apostle among rulers set by Thy hand over the royal city,\nhe preserved lasting peace through the prayers of the Theotokos.',
-      },
-      kontakion: {
-        tone: 3,
-        rubric: 'Kontakion of Sts. Constantine and Helen, Tone 3:',
-        connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
-        text: 'Today Constantine and his mother Helen reveal the precious Cross,\nthe weapon of Orthodox Christians against their enemies,\nfor it is manifest for us as a great and fearful sign in struggle.',
-      },
-      prokeimenon: {
-        tone: 8,
-        label: 'Sts. Constantine and Helen',
-        refrain: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe.',
-      },
-      alleluia: {
-        tone: 1,
-        label: 'Sts. Constantine and Helen',
-        verses: ['I have exalted one chosen out of My people.'],
-      },
-      communionHymn: {
-        label: 'Sts. Constantine and Helen',
-        text: 'Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!',
-      },
-      // Second readings for epistle and gospel are pulled automatically from
-      // orthocal's readings[] array when present (Acts 26:1-5,12-20; John 10:1-9).
-    },
-  };
+  // Co-celebrated overlays (defined at module scope, see top).
   const dateKey = `${mo}-${dy}`;
   const overlay = COCELEBRATED_OVERLAYS[dateKey] || null;
 

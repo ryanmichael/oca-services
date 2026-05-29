@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "description": "Co-celebrated saints Liturgy overlay: secondary troparion/kontakion + 2nd prokeimenon/alleluia/gospel/communion hymn for dates where a major fixed-calendar commemoration falls on a Great Feast.",
+    "_note": "Keys are \"M-D\" date strings. Second epistle/gospel are pulled from orthocal readings[] automatically.",
+    "source": "OCA Department of Liturgical Music and Translations service texts (Thee/Thy register)."
+  },
+  "5-21": {
+    "troparion": {
+      "tone": 8,
+      "rubric": "Troparion of Sts. Constantine and Helen, Tone 8:",
+      "text": "Thy servant Constantine, O Lord and only Lover of man,\nbeheld the figure of the Cross in the heavens.\nLike Paul, not having received his call from men,\nbut as an apostle among rulers set by Thy hand over the royal city,\nhe preserved lasting peace through the prayers of the Theotokos."
+    },
+    "kontakion": {
+      "tone": 3,
+      "rubric": "Kontakion of Sts. Constantine and Helen, Tone 3:",
+      "connector": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "text": "Today Constantine and his mother Helen reveal the precious Cross,\nthe weapon of Orthodox Christians against their enemies,\nfor it is manifest for us as a great and fearful sign in struggle."
+    },
+    "prokeimenon": {
+      "tone": 8,
+      "label": "Sts. Constantine and Helen",
+      "refrain": "Their proclamation has gone out into all the earth, and their words to the ends of the universe."
+    },
+    "alleluia": {
+      "tone": 1,
+      "label": "Sts. Constantine and Helen",
+      "verses": [
+        "I have exalted one chosen out of My people."
+      ]
+    },
+    "communionHymn": {
+      "label": "Sts. Constantine and Helen",
+      "text": "Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!"
+    }
+  }
+}

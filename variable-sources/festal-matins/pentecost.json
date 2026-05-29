@@ -2,9 +2,15 @@
   "_meta": {
     "feastKey": "pentecost",
     "feastLabel": "Holy Pentecost — The Descent of the Holy Spirit",
-    "_source": "OCA service texts 2026-0531-texts-tt.docx",
-    "_sourceUrl": "https://files.oca.org/service-texts/2026-0531-texts-tt.docx",
-    "_note": "Variable Matins propers for Pentecost. Two-canon structure (1st by Cosmas the Monk Tone 7, 2nd by John of Damascus Tone 4); 2nd-canon irmoi held in `irmos2` and rendered by _assembleCanon. Magnificat is NOT sung between Odes 8 and 9 per Pentecostarion rubric (`skipMagnificat: true`)."
+    "_sources": [
+      {"role": "irmoi, troparion, magnification, prokeimenon, gospel, post-gospel sticheron, exapostilaria, lauds",
+       "url": "https://files.oca.org/service-texts/2026-0531-texts-tt.docx",
+       "label": "OCA service text"},
+      {"role": "sessional hymns, canon troparia, ikos, katavasia text",
+       "url": "https://st-sergius.org/services/pent/80.pdf",
+       "label": "St-Sergius Pentecostarion (yy register)"}
+    ],
+    "_note": "Two-canon feast (1st by Cosmas of Maiuma Tone 7, 2nd by John Arklas / John of Damascus Tone 4). OCA publishes only the heirmoi for both canons; troparia + sessional hymns sourced from St-Sergius Pentecostarion. The assembler renders interleaved by canon group when troparia carry canon: 'secondCanon' tags. Magnificat is NOT sung at Pentecost per Pentecostarion rubric (skipMagnificat: true). Mixed translation registers — irmoi/lauds OCA tt, troparia/sessional hymns St-Sergius yy/archaic."
   },
 
   "feastRank": "greatFeast",
@@ -18,6 +24,23 @@
     "label": "Troparion of Pentecost"
   },
 
+  "sedalion": [
+    {
+      "text": "Let us, O ye faithful, radiantly celebrate that which followeth the former feast,\nand is the concluding feast;\nthat is, the day of Pentecost,\nthe fulfillment of the promise and of the appointed time,\nfor thereon the fire from the Comforter came down upon earth,\nas it were in the form of tongues,\nand enlightened the disciples,\nmaking them participants in heavenly things.\nThe light of the Comforter//\nhath come and enlightened the world.",
+      "tone": 4,
+      "label": "Sessional Hymn (after Kathisma 1)",
+      "_source": "stSergius-pentecostarion",
+      "_note": "Sung twice (with Glory/Now between)."
+    },
+    {
+      "text": "The well-spring of the Spirit, coming to earth,\nnoetically divided into rivers of fire,\nand bedewed the apostles, enlightening them;\nand He was to them a bedewing cloud,\na fire enlightening them, a flame raining down.\nThrough them we have received grace, through fire and water.//\nThe light of the Comforter hath come and illumined the world.",
+      "tone": 4,
+      "label": "Sessional Hymn (after Kathisma 2)",
+      "_source": "stSergius-pentecostarion",
+      "_note": "Sung twice (with Glory/Now between)."
+    }
+  ],
+
   "magnification": {
     "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy most-holy Spirit,\nWhom Thou didst send from the Father\nonto Thy divine Disciples.",
     "verses": [
@@ -25,6 +48,14 @@
       "And all the host of them by the Spirit of His mouth. (Ps. 32:6b)"
     ],
     "tone": 8
+  },
+
+  "sessionalHymns": {
+    "text": "After Thine arising from the tomb, O Christ,\nand Thy divine Ascension to the height of heaven,\nThou didst send down Thy glory upon the God-seers, O compassionate One,\nhaving renewed a right spirit in Thy disciples.\nWherefore, like a musical harp plucked with a divine plectrum,//\nthey have mysteriously made clear Thy command, O Savior, and Thy dispensation.",
+    "tone": 8,
+    "label": "Sessional Hymn after the Polyeleios",
+    "_source": "stSergius-pentecostarion",
+    "_note": "Sung twice (with Glory/Now between)."
   },
 
   "prokeimenon": {
@@ -50,46 +81,154 @@
   "canon": {
     "tone": 7,
     "_secondCanonTone": 4,
-    "_authors": { "first": "Cosmas the Monk", "second": "John of Damascus" },
+    "_authors": { "first": "Cosmas the Monk", "second": "John Arklas / John of Damascus" },
+    "_canonNote": "Two canons in two tones. Troparia from St-Sergius Pentecostarion (yy register); irmoi/katavasia text from OCA service text (tt register) where present, St-Sergius elsewhere.",
     "skipMagnificat": true,
 
     "ode1": {
       "irmos": "He destroys His enemies with His mighty hand;\nHe covered Pharaoh and his chariots in the sea.\nLet us sing to Him, for He has been glorified.",
-      "irmos2": "After he was covered by divine darkness,\nMoses, the slow of speech, proclaimed the divinely-written law.\nAfter he purified the eye of his mind,\nhe beheld the \"I AM\" and was taught the knowledge of the Spirit,\nWhom he honored in divinely inspired song."
+      "irmos2": "After he was covered by divine darkness,\nMoses, the slow of speech, proclaimed the divinely-written law.\nAfter he purified the eye of his mind,\nhe beheld the \"I AM\" and was taught the knowledge of the Spirit,\nWhom he honored in divinely inspired song.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As of old Thou didst promise the disciples, O Christ Who didst send the Spirit Comforter,\nThou didst indeed shine forth light upon the world, O Thou Who lovest mankind." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "That which of old was preached by the Law and the prophets hath been fulfilled;\nfor today the grace of the divine Spirit hath been poured out upon all the faithful." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The pure and revered mouth spake: From you there shall be no separation, O My friends!\nFor, seated together upon the Father's most high throne,\nI will pour out the Spirit, to enlighten them that desire abundant grace." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "Having reached the end, the Word most true calmly perfecteth the heart;\nfor having finished His work, Christ gladdened His friends,\ngiving them the Spirit in a mighty wind with tongues of fire." }
+      ],
+      "katavasia": "Covered by the divine cloud,\nhe that was slow of tongue proclaimed the Law written by God;\nfor having shaken off the impurity from the eye of his mind,\nHe beholdeth Him That is, and he is initiated into the knowledge of the Spirit,\nwhile giving praise with God-inspired songs."
     },
+
     "ode3": {
       "irmos": "Thou didst say to Thy Disciples, O Christ:\n\"Remain in Jerusalem until you are clothed with power from on high.\nAnd I will send you another Comforter, like unto Me.\nHe is My Spirit and the Spirit of My Father.\nIn Him you will be established.\"",
-      "irmos2": "Only the prayer of the Prophetess Hannah\nunsealed the bonds of the barren womb\nand stilled the unbearable taunts of the fertile woman;\nfor she offered up a broken spirit to the Lord,\nthe God of knowledge."
+      "irmos2": "Only the prayer of the prophetess Anna,\nwho of old brought a broken spirit unto the mighty One and God of knowledge,\nloosed the fetters of a childless womb and the unruly rebuke of her with children.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The power of the divine Spirit coming down divinely joined together into one,\nthe divided tongues of those who of old had come to a wicked agreement,\nthereby imparting unto the faithful the knowledge of the Trinity, in which we are established." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Incomprehensible is the supreme Godhead,\nfor it hath shown the illiterate fishermen to be wise men\nwho with their speech stopped the mouths of the sophists,\nand brought out of the deepest night countless peoples, through the brilliance of the Spirit." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "From unbegotten Light the all-effecting never-failing Brightness doth proceed,\nWho now shineth forth the radiance one in nature, of the Father's power,\nthrough the Son, unto the nations in the fiery voice on Zion." }
+      ],
+      "katavasia": "Only the prayer of the prophetess Anna…"
     },
+
+    "sedalenAfterOde3": {
+      "text": "The ardent followers of the Savior were filled with joy,\nand they who were fearful before obtained boldness,\nfor today the Holy Spirit descended from on high upon the house of the disciples,\nand each one spake differently to the people;\nfor the tongues, in likeness as of fire, were dispersed, yet burned them not,//\nbut rather bedewed them.",
+      "tone": 8,
+      "label": "Sessional Hymn (after Ode 3)",
+      "_source": "stSergius-pentecostarion"
+    },
+
     "ode4": {
-      "irmos": "Learning of Thy coming at the last times, O Christ,\nthe Prophet raised his voice:\n\"I have heard the report of Thy power, O Lord,\nfor Thou hast come to save all Thine anointed.\"",
-      "irmos2": "O King of Kings and only God from only God,\nonly Word coming forth from the Father,\nas our Benefactor Thou hast sent forth without fail Thine equal and mighty Spirit onto Thine Apostles\nas they sang, \"Glory to Thy might, O Lord.\""
+      "irmos": "When the prophet perceived Thy coming in the last days, O Christ,\nhe cried out: I have heard of Thy might, O Lord,\nthat Thou hast come to save all Thine anointed ones.",
+      "irmos2": "O King of kings, even Thou Who art from the Only One,\nO Word, Who comest forth from the only uncaused Father,\nThou, as our Benefactor, didst unfailingly send\nThy Spirit, Equal in might, unto the apostles, who sing:\nGlory to Thy power, O Lord.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "He that formerly spake through the prophets, and was foretold in the law unto the imperfect,\nthe Comforter, the true God, doth become known today\nunto the ministers and witnesses of the Word." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Bearing the sign of Divinity, the Spirit was distributed in fire upon the apostles,\nand was manifested in strange tongues,\nfor the divine Power coming from the Father is absolute." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Having by word thrown open the divine laver of regeneration,\nThou, O Word of God, Compound Nature, dost bathe me with streams from Thine incorrupt, pierced side,\nsealing with the fervor of the Spirit." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "All things bow their knees unto the Comforter, and unto the Son of the Father,\nand unto the consubstantial Father, for in Three Hypostases they saw the true Being,\ninaccessible, timeless, and one; for the grace of the Spirit hath shone forth light." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "Be ye perfected by the supreme Godhead, all ye ministers of the Thrice-radiant Essence;\nfor, beyond nature, Christ as Benefactor doth work perfection,\nmaking light shine unto salvation, providing all the grace of the Spirit." }
+      ],
+      "katavasia": "O King of kings, even Thou Who art from the Only One…"
     },
+
     "ode5": {
-      "irmos": "The Spirit of salvation\ncreates a clean heart in the Apostles.\nHe is the new and right Spirit\nput within the faithful.\nHe was conceived in the womb of the Prophets\nand brought forth upon the earth for fear of Thee, O Lord;\nfor Thy commandments are light and peace.",
-      "irmos2": "O children of the Church who appear as light,\nreceive the fiery dew of the Spirit,\nthe redeeming purification from your faults;\nfor now the Law has gone forth from Zion,\nthe Grace of the Spirit which appears as tongues of fire."
+      "irmos": "The Spirit of salvation, O Lord,\nWho was conceived in the loins of the prophets because of their fear of Thee\nand was brought forth upon the earth,\ndoth purify the hearts of the apostles,\nand is renewed in an upright manner in the faithful;\nfor Thy commandments are light and peace.",
+      "irmos2": "O ye children of the Church,\nwhose likeness is like unto light,\nreceive ye the fire-breathing dew of the Spirit,\nwhich is a redeeming purification of offenses;\nfor now hath the Law gone forth from Zion,\neven the Spirit's grace, in the form of tongues of fire.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "This power that came down today is the Good Spirit,\nthe Spirit of the wisdom of God,\nthe Spirit that proceedeth from the Father, and through the Son hath appeared unto us the faithful,\npresented in the holiness of His nature, unto those in whom He dwelleth, and in whom He is seen." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As He Himself was well-pleased, of His own accord the unsubordinated Spirit cometh forth from the Father,\nmaking wise with tongues the apostles,\nsealing with the impress of the life-bearing Word,\nbeing of One Might with the Father, and One Form, of Whom the Savior spake also." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "That He might heal the minds of sin, the All-ruling God and Word\ndoth prepare for Himself as a spotless dwelling the apostles,\nin whom the light of the Spirit, One in might and essence with Him, doth now make Its abode." }
+      ],
+      "katavasia": "O ye children of the Church…"
     },
+
     "ode6": {
-      "irmos": "I was sailing on the stormy sea of worldly cares,\nwith my sins as companions.\nThey cast me into the sea to drown;\nthey threw me to the soul-destroying beast.\nLike Jonah I cry to Thee, O Christ:\n\"Raise me up from the deadly deep!\"",
-      "irmos2": "As atonement for us and salvation, O Christ,\nThou hast shone forth as Master from the Virgin,\nto snatch the fallen race of Adam from corruption,\nlike the Prophet Jonah from the belly of the whale."
-    },
-    "ode7": {
-      "irmos": "When they were thrown into the fiery furnace,\nthe holy youths sang a hymn\nand thus changed the fire into dew.\nThey cried: \"Blessed art Thou, O Lord, the God of our Fathers!\"",
-      "irmos2": "Horn and pipe and every kind of music raised the call\nto worship a golden image without a soul,\nbut the light-bearing grace of the Comforter\ninspires those who cry:\n\"O Trinity, One in Might and without beginning, blessed art Thou alone!\""
-    },
-    "ode8": {
-      "irmos": "The burning bush on Sinai was not consumed by fire,\nbut made God known to Moses, who was slow of speech and tongue.\nAnd zeal for God made the three Youths immune to the fire\nas they sang: \"Praise the Lord, all His works;\nhighly exalt Him throughout all ages!\"",
-      "irmos2": "The bonds are loosed and the flames are sprinkled with dew\nin a type of the thrice-radiant Godhead.\nThe youths sing praise while all creation blesses its Benefactor,\nthe One Savior and Creator of all."
-    },
-    "ode9": {
-      "irmos": "Without knowing a man thou becamest a mother,\nwithout knowing corruption thou didst bear a Child,\ngiving flesh to the Word, Who creates all things,\ncontaining Him Who cannot be contained,\nencompassing thine infinite Maker:\nO Virgin Theotokos, we magnify thee.",
-      "irmos2": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee."
+      "irmos": "Sailing in the tempest of the cares of life,\ntogether with the ship I have been submerged by sins,\nand cast to the soul-corrupting beast,\nwherefore like Jonah I cry to Thee, O Christ:\nLead me up from the deadly abyss.",
+      "irmos2": "Thou hast shown forth from the Virgin as forgiveness and salvation for us, O Christ Master;\nthat, like as Jonah was rift from the belly of the sea monster,\nThou mightest snatch from corruption all the fallen race of Adam.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Of Thy Spirit hast Thou abundantly poured out upon all flesh, according as Thou hast said, O Lord,\nand all things are filled with Thy knowledge,\nfor Thou, the Son, didst come forth from the Father immutably,\nand the Spirit indivisibly proceedeth." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Do Thou renew within us, that we may for ever possess the right Spirit that we long for,\nWho proceedeth from the Father always invisibly,\nconsuming the stains of hated matter and cleansing the filth of our minds, O Ruler of all." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "A long-desired dignity dost Thou establish for the apostles in Zion mindful of Thy coming, O Spirit:\nthe profession of the Word Begotten of the Father,\nwhich swiftly exposed the cruel prattle of the heathens' babbling." }
+      ],
+      "katavasia": "Thou hast shown forth from the Virgin…"
     },
 
     "kontakion": {
       "text": "When the Most High came down and confused the tongues,\nHe divided the nations;\nbut when He distributed the tongues of fire, He called all to unity.\nTherefore, with one voice we glorify the All-holy Spirit.",
       "tone": 8,
       "label": "Kontakion of Pentecost"
+    },
+    "ikos": {
+      "text": "Grant speedy and steadfast consolation unto Thy servants, O Jesus,\nwhen our spirits are become despondent.\nDepart not from our souls when they be in afflictions,\nnor be Thou afar from our minds when they be in tribulations,\nbut do Thou ever go before us.\nDraw nigh unto us, draw nigh, O Thou Who art everywhere present;\nand even as Thou wast ever with Thine apostles,\nso also do Thou unite Thyself to them that long for Thee, O compassionate One,\nthat, being one with Thee, we may praise and glorify Thine all-holy Spirit.",
+      "_source": "stSergius-pentecostarion"
+    },
+
+    "ode7": {
+      "irmos": "When they were thrown into the fiery furnace,\nthe holy youths sang a hymn\nand thus changed the fire into dew.\nThey cried: \"Blessed art Thou, O Lord, the God of our Fathers!\"",
+      "irmos2": "The harmonious music of the flutes sounded forth to honor the lifeless idol made of gold;\nbut the light bearing grace of the Comforter doth inspire us to cry out in reverence:\nTrinity in Unity, equal in might and beginningless, Blessed art Thou!",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "While the apostles proclaimed the great divine things,\nthe unbelievers considered as drunkenness the working of the Spirit,\nthrough Whom the Trinity becometh known, the one God of our fathers." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The indivisible Nature do we theologize in Orthodox manner:\nGod the beginningless Father, the Word and Spirit of the same authority,\nand we cry: O God of our fathers, Blessed art Thou." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Not understanding the prophetic voice, but hearing the apostles speak in strange tongues,\nthe foolish called it drunkenness caused by wine;\nwhereas we the pious fittingly call out to Thee: O Renewer of all things, blessed art Thou!" },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The divinely-inspired seer of visions, Joel, thundered forth a divine saying,\nas if spoken by the Word of the supreme Godhead:\nThey on whom I will pour out my Spirit, shall exclaim together:\nO Nature, splendid with the Triple Radiance, blessed art Thou!" },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "At the third hour grace was seen to be well distributed,\nthat it might indicate the worship of Three Hypostases in a simplicity of authority,\nbut now we see in that unity on this, the Lord's day, the Son, the Father and the blessed Spirit!" }
+      ],
+      "katavasia": "The harmonious music of the flutes sounded forth…"
+    },
+
+    "ode8": {
+      "irmos": "The burning bush on Sinai was not consumed by fire,\nbut made God known to Moses, who was slow of speech and tongue.\nAnd zeal for God made the three Youths immune to the fire\nas they sang: \"Praise the Lord, all His works;\nhighly exalt Him throughout all ages!\"",
+      "irmos2": "The type of the Godhead prefigured in the resplendent three\nloosed the bonds and moistened the flames with dew.\nThe children praise, and all creation that was made doth bless,\nthe only Savior and Creator of all, as their Benefactor.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "When the quickening mighty breath of the all-holy Spirit came down from on high\nupon the fishermen in the form of tongues of fire,\nthey proclaimed the greatness of God:\nAll ye works, praise ye the Lord, and supremely exalt Him throughout all ages." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Without dreading the fearful fire and like those treading up the untouchable mountain,\ncome, let us stand upon Mount Zion, in the city of the living God,\nsinging in choir together with the Spirit-bearing apostles:\nAll ye works, praise ye the Lord, and supremely exalt Him throughout all ages." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The Spirit coming down in likeness of the tongues of fire,\ndoth impress upon the memory of the apostles the man-saving doctrine\nwhich Christ Who heard it from the Father, declared unto them.\nCreation, formerly alienated and now reconciled, doth praise Thee." },
+        { "canon": "secondCanon", "refrain": "We bless Father, Son, and Holy Spirit, the Lord.", "_source": "stSergius-pentecostarion",
+          "text": "O Light self-radiant and the cause of light, being alone self-mastering,\nunto salvation hast Thou come filling the apostles, esteemed as the summit by Thy servants.\nO that Thou shouldest grant the Spirit in great abundance!" },
+        { "canon": "secondCanon", "refrain": "Now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "The Spirit-sated mouth of the prophets sang of Thy sojourning in the flesh, O Sovereign;\nand the Spirit, brought forth from the Father's bosom,\nUncreated, Co-Creator and Co-enthroned with Thee, is revered by those who believe in a singular incarnation." }
+      ],
+      "katavasia": "The type of the Godhead prefigured in the resplendent three…",
+      "_katavasiaCloser": "We praise, we bless, we worship the Lord, praising and supremely exalting Him throughout all ages."
+    },
+
+    "ode9": {
+      "irmos": "Without knowing a man thou becamest a mother,\nwithout knowing corruption thou didst bear a Child,\ngiving flesh to the Word, Who creates all things,\ncontaining Him Who cannot be contained,\nencompassing thine infinite Maker:\nO Virgin Theotokos, we magnify thee.",
+      "irmos2": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Borne in gladness upon a chariot of flaming fire,\nthe fire-breathing zealot of old typified that radiant breath\nwhich now shone forth from above upon the apostles,\nand these, illumined, made known the Trinity to all." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Strange things were heard from the disciples, not in accordance with the law of their nature,\nfor while only one voice spake, by the grace of the Spirit\nvarious peoples, tribes, and nations heard the great things of God,\nlearning the knowledge of the Trinity." },
+        { "canon": "secondCanon", "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "It is proper to hymn the maiden who giveth life;\nfor she alone carried in her womb the Word that came to heal the diseased nature of man;\nand Who seated now on the right hand of the Father, hath sent down the grace of the Spirit." },
+        { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.", "_source": "stSergius-pentecostarion",
+          "text": "Let all of us, on whom the divinely-poured grace hath breathed,\nshining, flashing, changed with a strange and most magnificent transformation,\nhaving come to know the Essence equal in might, indivisible, and wise, and thrice radiant, render glory." }
+      ],
+      "katavasia": "Rejoice, O Queen boast of virgins and of mothers…"
     }
   },
 

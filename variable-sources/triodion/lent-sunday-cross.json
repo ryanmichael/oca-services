@@ -1,0 +1,141 @@
+{
+  "_meta": {
+    "description": "Cross-Sunday Matins propers (Triodion overlay onto Sunday Octoechos)",
+    "scope": "Third Sunday of Great Lent — Sunday of the Veneration of the Precious Cross",
+    "source": "Lenten Triodion (Mother Mary & Kallistos Ware), pp. 337-350",
+    "tradition": "SVS",
+    "scopeNote": "MVP coverage: sessional hymn after Polyeleios, kontakion + ikos, Cross exapostilarion + theotokion, lauds Cross stichera, veneration stichera after Great Doxology, Cross troparion after Doxology. The full Cross Canon by St Theodore the Studite is NOT yet captured — the Sunday Octoechos canon still renders alone."
+  },
+
+  "key": "lent.sunday.cross",
+  "title": "Sunday of the Veneration of the Holy Cross — Third Sunday of Great Lent",
+
+  "matins": {
+
+    "sessionalHymnAfterPolyeleios": {
+      "_label": "Sessional Hymns of the Cross (after the Polyeleios)",
+      "_source": "lentenTriodion-svs-p339",
+      "stichera": [
+        {
+          "tone": 6,
+          "text": "Thy Cross, O Lord, is holy, and brings healing to those who are in sickness through their sins. Venerating it, we fall before Thee; have mercy upon us.",
+          "verse": "Exalt ye the Lord our God, and worship at His footstool, for He is holy. (Psalm 98:5)"
+        },
+        {
+          "tone": 6,
+          "text": "Today the words of the Prophet are fulfilled; for see, we worship at the place on which Thy feet have stood, O Lord; and tasting the Tree of salvation, we have been delivered from our sinful passions at the intercessions of the Theotokos, O Thou who alone lovest mankind."
+        }
+      ],
+      "glory": {
+        "tone": 6,
+        "text": "No sooner had the wood of Thy Cross been set up, O Christ our God, than the foundations of death were shaken. Hell swallowed Thee eagerly, but it let Thee go with trembling. Thou hast shown us Thy salvation, O Holy One, and we glorify Thee, O Son of God: have mercy upon us."
+      },
+      "bothNow": {
+        "_label": "Theotokion",
+        "tone": 6,
+        "text": "O Virgin Theotokos, pray thou unto thy Son, Christ our God, who willingly was nailed upon the Cross, and is risen from the dead, for the salvation of our souls."
+      }
+    },
+
+    "exapostilarion": {
+      "_note": "After the Eothinon exapostilarion of the Resurrection.",
+      "_source": "lentenTriodion-svs-p346",
+      "glory": {
+        "_label": "Exapostilarion of the Cross",
+        "text": "Seeing the Precious Cross of Christ placed this day before us, let us venerate it and rejoice in Him with faith; with love let us greet the Lord, who by His own free choice was crucified upon it, asking Him to grant us all unhindered to adore His Holy Passion and to attain the Resurrection."
+      },
+      "bothNow": {
+        "_label": "Theotokion",
+        "text": "All-hallowed Lady, with true devotion now we venerate the Wood on which Thy Son stretched out His most pure hands and feet for our sakes was nailed. Give us peace and grant that we may come to the Holy Passion that has saved the world, and may we worship with joy at all creation the radiant Festival of Easter, the Lord's Day that brings light and joy to all creation."
+      }
+    },
+
+    "laudsStichera": {
+      "_note": "Sung after four stichera of the Resurrection in the Tone of the week from the Octoechos, repeating the first.",
+      "_source": "lentenTriodion-svs-p346-347",
+      "stichera": [
+        {
+          "tone": 4,
+          "text": "With our voices let us shout and cry out, O honoured Cross, and with our bodies let us kiss it and cry out: O honoured Cross, sanctify our souls and bodies by thy power, and keep unharmed from all malice of every enemy those who venerate thee with true reverence. Today let us approach and draw waters that shall never fail; from the side of the Lord of all. Of His own will Thy holy Wood, source of divine gifts, on which Thy flesh blood and water flowed from the wounded side of the Lord of all. Of His own will, with Himself He has raised up mortal man.",
+          "verse": "Exalt ye the Lord our God, and worship at His footstool, for He is holy. (Psalm 98:5)"
+        },
+        {
+          "tone": 4,
+          "text": "O honoured Cross, thou art the firm foundation of the Church, the strength of kings, the glory and defence of monks. Venerating thee today, we are filled with light in heart and soul, through the divine grace of the Lord who was nailed upon thee and overthrew the power of our deceitful enemy, bringing the curse to naught.",
+          "verse": "God is our King before the ages: He has worked salvation in the midst of the earth. (Psalm 73:12)"
+        },
+        {
+          "tone": 4,
+          "text": "Arise, O Lord my God, lift up Thine hand: forget not Thy poor for ever. (Psalm 9:33) — Repeat the first sticheron."
+        }
+      ],
+      "doxastikon": {
+        "_label": "Glory (Tone 8)",
+        "tone": 8,
+        "text": "The Lord of all has taught us in a parable to shun the boastful thoughts of the evil Pharisees, and He has instructed us after the pattern of His humility we should think more highly than we should. He Himself became upon the Cross our example, for He emptied Himself even unto death, even as O Cross, let us therefore render thanks with the Publican and say: O God who hast suffered for us and yet remained impassible, deliver us from the passions and save our souls."
+      },
+      "theotokion": {
+        "_label": "Both now — Most blessed art thou (Tone 8)",
+        "tone": 8,
+        "text": "Most blessed art thou, O Virgin Theotokos, for through Him who was incarnate of thee is Hades led captive, Adam recalled, the curse annulled, Eve set free, death slain, and we are given life. Wherefore in hymns of praise we cry aloud: Blessed art Thou, O Christ our God, who hast been thus well-pleased: glory to Thee."
+      }
+    },
+
+    "venerationStichera": {
+      "_label": "Veneration of the Precious Cross (after the Great Doxology and the Cross Troparion)",
+      "_source": "lentenTriodion-svs-p348-350",
+      "section": "Veneration of the Cross",
+      "rubric": "During the stichera of Lauds, the officiating priest puts on all his vestments. While the choir sings the Great Doxology, he takes incense and goes three times round the holy Table, on which lies the Precious Cross upon a tray with branches of basil or other flowers; and then, after the choir sings the concluding Holy God of the Great Doxology, he takes the Cross with the tray and, placing it upon his head, he proceeds round the Holy Table and out of the sanctuary through the north door, preceded by candles and by the deacon with the incense. The priest stops in front of the Holy Doors, facing to the east, and when the final Holy God has ended, he says: Wisdom, let us attend. Then we sing the troparion of the feast, O Lord, save Thy people, three times. The priest places the Cross upon a table in the centre of the church, and venerates the Cross three times, going round it three times. Then the priest sings three times:",
+      "rubricAfter": "This is repeated three times by the choir and people. Meanwhile the priest makes two prostrations in front of the Cross, kisses it, then makes another prostration. The Cross is then venerated by the other clergy in order of rank and by all the faithful, each making two prostrations before venerating the Cross and one after. During the veneration of the Cross, the choir sings the following:",
+      "stichera": [
+        {
+          "tone": 6,
+          "text": "We venerate Thy Cross, O Master, and we glorify Thy holy Resurrection.",
+          "label": "Refrain (×3)"
+        },
+        {
+          "tone": 2,
+          "author": "by the Emperor Leo",
+          "text": "Come, ye faithful, and let us venerate the life-giving Wood, on which Christ the King of Glory, stretched out His hands of His own will, raised us up to the ancient blessedness, from which the enemy had despoiled us of old through pleasure, making us exiles far from God. Come, ye faithful, and let us venerate the Wood whereby we have been counted worthy to crush the heads of our invisible enemies. Come, all ye kindred of the nations, and let us honour in hymns the Cross of the Lord. Rejoice, O Cross, perfect redemption of fallen Adam. Glorying in thee, our faithful kings laid low by thy might the people of Ishmael. We Christians kiss thee now with awe, and glorifying God who was nailed upon thee, we cry aloud: O Lord, who upon the Cross wast crucified, have mercy upon us, for Thou art good and lovest mankind."
+        },
+        {
+          "tone": 8,
+          "text": "Today the Master of the creation and the Lord of Glory is nailed to the Cross and His side is pierced; and He who is the sweetness of the Church tastes gall and vinegar. A crown of thorns is put upon Him who covers the heaven with clouds. He is clothed in a cloak of mockery, and He who formed man with His hands is struck by a hand of clay. He who wraps the heaven in clouds is smitten upon His back. He accepts spitting and scourging, reproach and buffeting, and all these things my Deliverer and God endures for me that am condemned, that in His compassion He may save the world from error.",
+          "label": "Glory… (Tone 8)"
+        },
+        {
+          "tone": 8,
+          "_label": "Same Tone — Both now (Theotokion)",
+          "text": "Today He who is in essence unapproachable, becomes approachable for me and suffers His Passion, delivering me from passions. He who gives light unto the blind is spat upon by the mouths of transgressors, and He gives His back to scourging for the sake of those who are held captive. When the pure Virgin His Mother saw Him on the Cross, she cried aloud in pain: \"Woe is me, my Child! What is this that Thou hast done? Thou who wast beauty fairer than all mortal men, dost now appear without light! I cannot bear to look upon Thee sleeping, naked and inwardly, I groan inwardly, a harsh sword has pierced my heart, I sing the wounds of Thy Passion, I venerate Thy mercy and kindness: O long-suffering Lord, glory to Thee.\""
+        }
+      ],
+      "closingSticheron": {
+        "tone": 6,
+        "text": "Today the words of the Prophet are fulfilled; for see, we worship at the place on which Thy feet have stood, O Lord; and tasting the Tree of salvation, we have been delivered from our sinful passions at the intercessions of the Theotokos, O Thou who alone lovest mankind.",
+        "label": "Tone Six (closing)"
+      },
+      "closingRubric": "Then the two Litanies, as usual, and the Dismissal."
+    },
+
+    "kontakion": {
+      "_label": "Kontakion of the Cross",
+      "_source": "lentenTriodion-svs-p342",
+      "tone": 7,
+      "text": "The fiery sword no longer guards the gate of Eden, for in a strange and glorious way the wood of the Cross has quenched its flames. The sting of death and the victory of hell are now destroyed, for Thou, my Saviour, hast come and cried unto those in hell: \"Return again to Paradise.\""
+    },
+
+    "ikos": {
+      "_label": "Ikos",
+      "_source": "lentenTriodion-svs-p343",
+      "tone": 7,
+      "text": "Three crosses Pilate set up on Golgotha, two for the thieves and one for the Giver of Life. Seeing Him, hell cried to those whose ministers are below: \"Who is this that has fixed a nail in my heart? A wooden spear has pierced me suddenly, and I am torn apart. Inwardly I suffer; anguish has seized my belly; my senses moan; and my spirit trembles. I am constrained to cast out Adam and his posterity. For a Tree brought them to my realm, but now the Tree of the Cross brings them back again to Paradise.\""
+    },
+
+    "troparionAfterDoxology": {
+      "_label": "Troparion of the Cross",
+      "_source": "matins-fixed.royalOffice.troparia[0]",
+      "tone": 1,
+      "text": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries; and by virtue of Thy Cross, preserve Thy habitation!"
+    }
+  }
+}

@@ -1532,6 +1532,85 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
   return spec;
 }
 
+let _crossSundayOverlay = null;
+function _applyCrossSundayOverlay(spec) {
+  if (!_crossSundayOverlay) {
+    _crossSundayOverlay = loadJSON('variable-sources/triodion/lent-sunday-cross.json');
+  }
+  const ov = _crossSundayOverlay.matins;
+  if (!ov) return;
+
+  // Cross kontakion + ikos (placed after Ode 6 by the canon assembler)
+  spec.canon = spec.canon || {};
+  if (ov.kontakion) {
+    spec.canon.kontakion = {
+      text: ov.kontakion.text,
+      tone: ov.kontakion.tone,
+      label: ov.kontakion._label,
+      _source: ov.kontakion._source,
+    };
+  }
+  if (ov.ikos) {
+    spec.canon.ikos = {
+      text: ov.ikos.text,
+      tone: ov.ikos.tone,
+      label: ov.ikos._label,
+      _source: ov.ikos._source,
+    };
+  }
+
+  // Cross exapostilarion at Glory + Theotokion at Both now —
+  // appended after the eothinon exapostilaria already in the array.
+  if (ov.exapostilarion) {
+    spec.exapostilaria = spec.exapostilaria || [];
+    if (ov.exapostilarion.glory) {
+      spec.exapostilaria.push({
+        text: ov.exapostilarion.glory.text,
+        label: 'Glory — ' + (ov.exapostilarion.glory._label || 'Exapostilarion of the Cross'),
+        source: 'triodion',
+        _source: ov.exapostilarion._source,
+      });
+    }
+    if (ov.exapostilarion.bothNow) {
+      spec.exapostilaria.push({
+        text: ov.exapostilarion.bothNow.text,
+        label: 'Both now — ' + (ov.exapostilarion.bothNow._label || 'Theotokion'),
+        source: 'triodion',
+        _source: ov.exapostilarion._source,
+      });
+    }
+  }
+
+  // Cross troparion sung after the Great Doxology.
+  if (ov.troparionAfterDoxology) {
+    spec.troparionAfterDoxology = {
+      text: ov.troparionAfterDoxology.text,
+      tone: ov.troparionAfterDoxology.tone,
+    };
+  }
+
+  // Veneration of the Cross — stichera after the Great Doxology + troparion.
+  if (ov.venerationStichera) {
+    const v = ov.venerationStichera;
+    spec.venerationStichera = {
+      section: v.section || 'Veneration of the Cross',
+      rubric: v.rubric,
+      stichera: (v.stichera || []).map(s => ({
+        text: s.text,
+        tone: s.tone,
+        label: s.label || s.author || s._label,
+        _source: v._source,
+      })).concat(v.closingSticheron ? [{
+        text: v.closingSticheron.text,
+        tone: v.closingSticheron.tone,
+        label: v.closingSticheron.label,
+        _source: v._source,
+      }] : []),
+      closingRubric: v.closingRubric,
+    };
+  }
+}
+
 function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const mm = String(mo).padStart(2, '0');
@@ -1570,7 +1649,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
     const sundaySpec = _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
-    if (sundaySpec) return sundaySpec;
+    if (sundaySpec) {
+      // Cross-Sunday Triodion overlay (3rd Sunday of Great Lent)
+      if (isLent && getWeekOfLent(date) === 3) {
+        _applyCrossSundayOverlay(sundaySpec);
+      }
+      return sundaySpec;
+    }
 
     // Octoechos returned null and no festal matins data — fall back to a
     // minimal stub from GREAT_FEAST_VARIANTS so the service is at least

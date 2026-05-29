@@ -1,0 +1,377 @@
+{
+  "_meta": {
+    "feast": "The Holy, Glorious, and All-Praised Leaders of the Apostles, Peter and Paul",
+    "feastKey": "petersPaul",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins + Vespers + Liturgy: St-Sergius Emenaion 06-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-29.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins content sourced from St-Sergius Emenaion (yy/archaic register: \"thy/Thou\"). Two canons by John of Damascus: first to Peter in Tone IV, second to Paul in Tone VIII. Magnificat is sung (no skipMagnificat). Vespers LIC/Litya/Aposticha may still be sourced from OCA DOCX or DB; this file focuses on Matins."
+  },
+
+  "troparion": {
+    "text": "O first enthroned among the apostles\nand teachers of the whole world:\nentreat the Master of all,\nthat He grant peace to the world//\nand great mercy to our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy apostles"
+  },
+  "kontakion": {
+    "text": "The steadfast and divinely eloquent preachers,\nthe foremost of Thine apostles, O Lord,\nhast Thou received into the rest and delight of Thy good things;\nfor Thou hast accepted their pangs and death as greater than any wholeburnt offering,//\nO Thou Who alone knowest the hearts of all mankind.",
+    "tone": 2,
+    "label": "Kontakion of the holy apostles"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Forsaking the fishing of the deep,\nhaving received from the Father in heaven the divine revelation of the incarnation of the Son,\nwith boldness thou didst cry out with faith to thy Creator:\n\"I know that Thou art the consubstantial Son of God!\"\nWherefore, as is meet, thou wast truly shown to be a rock of faith and the key-bearer of grace.\nO Apostle Peter, entreat Christ God,\nthat He grant remission of sins unto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "O ye faithful, as is meet, let us praise the champion Paul, the net of the world,\nand the all-praised Peter, the rock of the Church,\nin that he holdeth the keys of heaven:\nfor the whole world hath been enlightened by them with the Faith of the Trinity.\nGlory to Him Who hath glorified you!\nGlory to Him Who hath strengthened you!//\nGlory to Him Who because of you hath given us everlasting life!",
+          "tone": 1,
+          "melody": "When the stone was sealed"
+        },
+        "bothNow": {
+          "text": "Stretching forth thy divine arms,\nwherewith thou didst bear the Creator Who in His goodness hath become incarnate,\nO most pure virgin, beseech Him to deliver from temptations, sufferings and tribulations\nus who praise thee with love and cry aloud:\nGlory to Him Who made His abode within thee!\nGlory to Him Who issued forth from thee!//\nGlory to Him Who hath delivered us by thy birthgiving!",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Receiving from Christ a calling from the heavens,\nthou wast shown to be a proclaimer of the light,\nillumining all with the teachings of grace;\nfor having cast off the worship of the letter of the law,\nthou didst make plain to the faithful the understanding of the Spirit.\nWherefore, thou wast fittingly caught up on high to the third heaven, and attained unto paradise.\nO Apostle Paul, entreat Christ God,\nthat He grant forgiveness of sins unto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "With luminous radiance ye enlighten the ends of the earth like stars\nwith the doctrines of holy preaching,//\nO apostles of the Lord, initiates of the mysteries of heaven.",
+          "tone": 4,
+          "melody": "Thou hast appeared today"
+        },
+        "bothNow": {
+          "text": "We, the faithful, bless the Theotokos,\nthrough whom we have been delivered from corruption:\nthe fervent ally of those in tribulation,//\nour helper and reconciliation with God.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, O apostles of Christ,\nwho enlightened the whole world with your teachings,\nand led all the ends of the earth unto Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Let us praise Peter and the most wise Paul,\nwho were shown to be preeminent among the disciples,\nthe great and radiant luminaries;\nfor shining forth with the fire of the divine Spirit,\nthey burned away all the gloom of deception.\nWherefore, they have fittingly been shown to be warriors of the kingdom on high,\nco-enthroned in grace.\nFor this cause we cry aloud:\nO apostles of Christ God,\nask forgiveness of transgressions for those who with love celebrate your holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice (with Glory/Now between).",
+      "bothNow": {
+        "text": "As the all-immaculate Bride of the Creator,\nMother of the Redeemer, who knewest not a man,\nand as the receptacle of the Comforter O all-hymned one,\nhasten thou to deliver me,\nthe vile abode of iniquity and noetic plaything of the demons,\nfrom their evil machinations;\nand make me the bright dwelling-place of the virtues,\nO thou incorrupt light-bearing one.\nDrive away the clouds of the passions and grant that,\nby thy supplications,\nI may receive a portion on high//\nand share in the never-waning light.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4,
+      "_psalmRef": "Ps. 18:5 / 18:1"
+    },
+
+    "gospel": {
+      "reading": "John 21:15-25",
+      "number": 67,
+      "_note": "The threefold restoration of Peter; \"Feed my sheep\"."
+    },
+
+    "postGospelSticheron": {
+      "text": "With hymns of praise let us honor the true preachers of piety,\nthe most radiant stars of the Church:\nPeter, the rock of Faith, and Paul, the teacher of the Truth and initiate of the mysteries of Christ.\nFor both of them, having sown the word of truth in the hearts of the faithful,\nbeseech Christ God Who granteth fruitfulness unto all,//\nthat our souls be saved.",
+      "tone": 6,
+      "label": "Sticheron Idiomelon after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "John of Damascus (Peter)", "second": "John of Damascus (Paul)" },
+      "_canonNote": "Two canons by John of Damascus: 1st to the holy Apostle Peter in Tone IV; 2nd to the holy Apostle Paul in Tone VIII. Irmos of each is chanted twice, followed by troparia. Second-canon troparia are tagged canon: 'secondCanon' for interleaved rendering.",
+
+      "ode1": {
+        "irmos": "There is none like unto Thee,\nO exceedingly glorious Lord;\nfor by Thy mighty arm\nThou didst deliver the people whom Thou hast acquired,\nO Lover of mankind.",
+        "irmos2": "That which had been hewn down divided the undivided,\nand land unseen was seen by the sun;\nwater engulfed the cruel enemy,\nand Israel traversed the impassable, chanting a hymn:\nLet us sing unto the Lord, for gloriously hath He been glorified!",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With divinely inspired songs let us hymn today the preeminent of the apostles\nas the first called of Christ." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having foreknown thee, O all-blessed Peter,\nthe Pre-eternal One ordained thee from of old as the leader of His Church,\nto be the first-enthroned." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Neither flesh nor blood, but the Father inspired thee\nto theologize Christ as the true Son of God Most High, O apostle." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We hymn thee, the holy mountain, the most exalted chariot,\nthe Mother of God and true Virgin." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When Christ called things into existence out of non-existence, O all-blessed Paul,\nHe chose thee from thy mother's womb to carry before the nations His divine name,\nwhich is above every name; for gloriously hath He been glorified." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Declaring to thee the coming effulgence of piety and the cleansing away of falsehood, O Paul,\nChrist, Who showed Himself to be as bright as lightning on the mountain,\ndimmed thy bodily eyes while enlightening the eyes of thy soul with the understanding of the Trinity:\nfor gloriously hath He been glorified." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Performing circumcision on the eighth day, as a zealot of the traditions of thy fathers, O Paul,\nand showing thyself to be a legalistic Pharisee, a Jew by birth, of the tribe of Benjamin,\nthou didst come to consider all such things as but dung, and didst acquire Christ:\nfor gloriously hath He been glorified." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Sovereign Lady, pure Mother of almighty God,\nwho sprang forth from royal stock and gavest birth in the flesh, in a manner transcending nature,\nto God Who alone reigneth over all:\nSave me from misfortunes, who chant unto thy Son:\nFor gloriously hast Thou been glorified!" }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee, O Lover of mankind.",
+        "irmos2": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The sweet mouth of Christ God showed thee to be blessed and a sure treasure of the kingdom;\nwherefore, we hymn thee, O Apostle Peter." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "On the rock of thy theology hath Jesus the Master unshakably established the Church,\nand therein we glorify thee, O Apostle Peter." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "How much greater than the angels was Peter in the body!\nFor Christ God said that at His radiant coming he would be a judge and would be co-enthroned." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O thou who knewest not wedlock, who hast given birth unto God in the flesh:\nrender me steadfast and unshaken by the assaults of the passions,\nfor we have none other helper than thee, O pure one." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast been set as a precious foundation stone for the souls of the faithful,\na corner-stone of the Savior and Lord." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O all-blessed Paul, pray thou that on thy foundations\nthe splendors of most praiseworthy virtues may be set firmly." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Ever perfectly bearing the mortality of Jesus on thy body, O Paul,\nthou wast deemed worthy of true life." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thee have we all of us Christians acquired as our rampart and refuge,\nand we glorify thee without ceasing, O thou who knewest not wedlock." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "What dungeon held thee not a prisoner?\nWhat Church had thee not as an orator?\nDamascus extolleth thee, O Paul, for it knew thee blinded by the light;\nand Rome, which received thy blood, boasteth in thee;\nbut Tarsus rejoiceth yet more and loveth thee, honoring thine infancy.\nO Peter, rock of the Faith, and Paul, boast of the whole world,\ncoming together from Rome make us steadfast.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy apostles (after Ode 3)"
+      },
+
+      "ode4": {
+        "irmos": "This is our God, Who hath become incarnate of the Virgin\nand hath deified our nature!\nHymning Him, let us cry aloud:\nGlory to Thy power, O Lord!",
+        "irmos2": "Thou didst mount Thy steeds O Lord,\nThine apostles,\nand taking their bridles in Thy hands,\nThy chariot became salvation unto those who sing with faith:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As He promised, Christ made thee a divine fisher of men for His Church,\nentrusting its helm to thee first." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Entreated by thee, O Peter, may Jesus, the Bestower of life,\nWho gaveth thee the authority to bind and to loose, be merciful unto me." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Pray thou earnestly, O Peter, that the kingdom of Christ be opened\nunto those who honor thy divine memory with unwavering faith." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-hymned Sovereign Lady, Birthgiver of God,\nhaving cleansed away mine evil thoughts by thy supplications,\nshow me forth as fruitful, O Mother of the God of all." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Once Saul crouched like a lion, wrathfully destroyed the Church of Christ;\nbut he was seized by the divine voice of the Lamb of God, Whom he had persecuted,\nand Who entrusted His flock to him as a shepherd." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He who would enlighten the whole world was struck blind;\nbut Ananias was sent to him,\nimparting unto him enlightenment of soul and body through divine revelation,\nand showing him to be a chosen vessel." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As is meet, Damascus is given drink by Paul;\nfor from him, as from the garden of paradise,\na great well-spring of divine waters once issued forth\nand irrigated the whole earth abundantly with divine knowledge." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Lord hath cast down the mighty from their thrones,\nas the Virgin Mother said,\nand with divine good things hath He filled the hungry,\nwho cry aloud with faith: Glory to Thy power, O Lord!" }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Having acquired us the chosen people by Thy blood, O Lord,\ndo Thou grant us peace,\npreserving Thy flock in oneness of mind.",
+        "irmos2": "Illumine us O Lord with Thy commandments,\nand with Thine arm raised on high\ngrant us Thy peace,\nO Lover of mankind!",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He Who through love received boldness before God\nhath fittingly become wondrous, though he was an ignorant fisherman,\nand he now worketh most glorious wonders through grace." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy godly apostle, O Christ, having acquired neither gold nor silver for Thy sake,\nbut rather virtue, hath been enriched by the power of miracles." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "By thine effective word the feet and joints of the lame were set aright,\nfor most glorious things were accomplished by the divine Spirit." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: God became incarnate, O pure one,\nhypostatically united to the flesh He received from thee,\nyet remaining immutable, and incorporeal in His divine nature." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst choose true praise, O Apostle Paul,\never bearing the Cross of Christ the King as a trophy." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "For thee to live is Christ, and to die is an excellent acquisition;\nfor through love thou wast crucified with Him Who was crucified for our sake, O most glorious Paul." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou dost truly rejoice in the Lord, O honorable Paul,\nhaving departed from the body and passed over to Christ God, the Bestower of life." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Ever beseech thy Son and our God, O pure Mary who knewest not wedlock,\nthat He send forth His mercy upon us, the faithful." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "For three days O Christ, Jonah lay within the sea monster,\nprefiguring Thee, the Immortal One,\nfor Thou didst willingly lay dead for three days\nin the heart of the earth.",
+        "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As of old with Thy right hand Thou didst save Peter who walked on foot upon the waters, O Christ,\nso do Thou save me, who am drowning amid the storm of cruel perils,\nin that Thou art full of loving-kindness." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst forsake things which were not essential, O Peter,\nand attain unto those things which are essential;\nand like a merchant thou didst manifestly search for Christ: the Pearl beyond price." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Peter, thou didst slay those who mindlessly tried to tempt the most holy Spirit,\nWhom before thou hadst theologized, openly confessing Him as God, O all-blessed one." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou hast given birth for us to the incarnate Word of God Who transcendeth all nature;\nwherefore, with lips and soul we profess thee to be the Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Spurning all the beautiful things of the world,\nthou wast wounded by the love of the Master and by the desire for the common salvation of mankind,\nwishing to bear witness unto Him, O blessed Paul.\nPray thou now on behalf of the whole world." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As an excellent emulator of the Master, clothed in Him, O Paul,\nthou wast truly all things to all men, that thou mightest acquire and save all the people;\nand pursuing the ends of the world for Christ, thou didst truly save them." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As is meet Christ hath given thee life in the heavens, O Apostle Paul;\nfor thou didst not desire a city which abideth here, O blessed one,\nbut wast a faithful minister and celebrant of His mysteries." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Lord looked down upon thee, restoring my nature, in that He is mighty;\nand doing mighty works, O all-immaculate Birthgiver of God,\nthrough thee my God hath saved me from corruption, in that He is full of loving-kindness." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "The steadfast and divinely eloquent preachers,\nthe foremost of Thine apostles, O Lord,\nhast Thou received into the rest and delight of Thy good things;\nfor Thou hast accepted their pangs and death as greater than any wholeburnt offering,//\nO Thou Who alone knowest the hearts of all mankind.",
+        "tone": 2,
+        "label": "Kontakion of the holy apostles"
+      },
+      "ikos": {
+        "text": "Fill my tongue with light, O my Savior,\nand having enlarged my mouth and filled it,\nhave pity on my heart, that I may speak, follow, and teach that which I should first do;\nfor Thou didst say that he who doeth and teacheth is great.\nFor if I speak only, and act not, I am accounted as sounding brass.\nWherefore, grant that I may speak fitting things and do that which is profitable,\nO Thou Who alone knowest the hearts of all mankind."
+      },
+
+      "ode7": {
+        "irmos": "Blessed art Thou, O supremely exalted God of our fathers,\nO only begotten Son and beginningless Word,\nWho didst exist in the beginning\nwith the Father and the Spirit.",
+        "irmos2": "On the plain of Dura the tyrant once placed a furnace\nto torment the God-bearers;\nand therein the three youths chanted hymns unto the one God,\nand the three together, chanted saying:\nO God of our fathers, blessed art Thou!",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Chastised by the divine providence of Christ,\nthou wast permitted to emulate the Merciful One, O Peter,\nthat thy distress over denying Him before His suffering might be assuaged." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having risen from the dead, Christ appeared to thee,\nthe first-called and exceeding beloved,\nas the right glorious one who was first to preside over the apostles." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Master, healing thy threefold denial before His suffering, O Peter,\nconfirmed thy love by a threefold divinely uttered question." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst call the all-seeing God the Word as witness to thy love for Christ, O Peter;\nwherefore, He entrusted the beloved flock to thee." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We all bless thee as the Mother of the God of all,\nwho conceived in the flesh of thy womb the pre-eternal Word Who shone forth from God the Father." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He who in latter times was called and surpassed all others in zeal,\nbecame the seal and crown of Thine apostles, O Christ.\nWith him the people of the Church chant unto thee:\nO God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Even though Paul the prisoner first persecuted Thy Church, O Christ,\nyet he later replaced his former ferocity with zeal for Thee;\nand gathered together the nations, who chant:\nO God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having from Jerusalem preached the Gospel unto all,\nthou didst take it round about the whole world, O Paul,\nteaching even unto the far ends of Illyricum, thou didst cry aloud:\nO God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Caught up in awe, thou didst attain unto the third heaven, O most noetically rich apostle;\nand didst hear ineffable words, and cry aloud:\nGlory to the transcendent Father and the Son,\nand to the equally-enthroned effulgence of the Spirit of God Who searcheth the depths!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Like rain upon the fleece Christ God descended upon thee, O Virgin,\nand issuing forth from thee in the flesh,\nHe united those things that before were separate,\nthereby granting peace on earth and in heaven.\nO God of our fathers, blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Christ Who doth bear all things in His unapproachable glory,\nbedewed the venerable children in the midst of the flame,\nwho cried aloud unto Him:\nBless the Lord, all ye works of the Lord!",
+        "irmos2": "Glorified in the holy mountain,\nthe Lord revealed the mystery of the Ever-Virgin unto Moses\nin the flames of the burning bush:\npraise ye and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The Master foretold thee: \"They shall stretch forth thine arms and bind thee to a cross,\"\nand commanded thee to follow Him;\nwherefore thou dost cry aloud:\nBless the Lord, all ye works of the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Working wonders, by the word of grace thou didst heal Eneus who was grievously paralyzed,\nand didst raise up Tabitha from the dead;\nwherefore they cried: Bless the Lord, all ye works of the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "O Christ Who announced unto Peter that the nations were cleansed,\nby spiritual radiance, do thou purify my thoughts,\nfor I cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-holy Virgin who hast given birth to God the Word in the flesh,\ndriving away darkness from my soul by thy supplications,\nand illumine me who cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Paul was bound to thee by Thy love and underwent a goodly change;\nfor the glorious one lived not for himself, O Compassionate One,\nbut had Thee living within him throughout all ages." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Thou didst betroth the Church unto Christ, presenting it to Him as a bride;\nfor thou wast shown to be its wedding-escort, O God-bearing Paul.\nWherefore, it glorifieth thee throughout all ages." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Thou didst fight the good fight, and finishing thy race lawfully,\ndidst preserve the treasure of the Faith.\nWherefore, thou hast been deemed worthy of crowns of righteousness, O Paul." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Rejoice, O fiery throne of the Lord!\nRejoice, O Virgin, unwedded Bride!\nRejoice, cloud who shone forth the Sun of righteousness,\nWhom we supremely exalt throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "With hymns do we magnify thee, O most glorious Bride,\nand all-holy Theotokos,\nwho hast given birth to the Creator of all things,\nvisible and invisible.",
+        "irmos2": "Thou hast passed the limits of nature,\nhaving conceived the Maker and the Lord,\nand didst become a door of salvation unto the world;\nwherefore we unceasingly magnify thee, O Theotokos.",
+        "troparia": [
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thine excellent grace is rightly glorified,\nfor thy very shadow dispelleth the sufferings of the sick, O Peter;\nwherefore, we magnify thee." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Blessed is Peter, who with ineffable divine power cast down Simon Magus,\nwho through sorcery had soared into the heights of the air." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "By thy supplications grant forgiveness of sins,\nenlightenment of heart and gladness of spirit unto those who hymn thy memory, O apostle." },
+          { "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Peter, all thy words, relics and dust are full of glory, sanctity and miracles\nfor those who with faith bow down with love before thy divine chains." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Fruit of thy womb caused the heavenly chorister,\nwho announced \"Rejoice!\" with a loud voice unto thee who hast given birth to joy,\nto hymn thy name." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "We bow down before thy chains, which thou didst bear for Christ like a malefactor, O Paul,\nand we kiss the wounds which thou didst bear on thy glorious and victorious body." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Now thou hast departed unto Him Whom thou didst unceasingly desire, O apostle;\nand dwelling within as a servant, with unceasing entreaties draw thou thy servants to thyself." },
+          { "canon": "secondCanon", "refrain": "Holy Apostles Peter and Paul, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "No longer is Christ visible to thee in shadows or in a reflection,\nbut thou dost gaze upon Him face to face,\nand He perfectly revealed to thee the understanding of the Godhead." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most holy Mother of God,\nthou wast the boast of the apostles of Christ, the glory of the martyrs and the foundation of the prophets;\nwherefore, we all magnify thee as is meet." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Let us all hymn the foremost among the apostles, the godly Peter and Paul,\nthe universal luminaries, the preachers of the Faith,\nthe divinely sounded trumpets, the speakers of dogmas,\nthe pillars of the Church and destroyers of falsehood.",
+      "tone": 3,
+      "label": "Exaposteilarion of the holy apostles",
+      "melody": "Hearken, ye women",
+      "repeat": 2,
+      "_source": "stSergius-menaion",
+      "bothNow": {
+        "text": "O divinely joyous Maiden, Mother of God and Virgin,\ngreat and most glorious is the mystery of thy birthgiving,\ndid the prophets proclaim, the apostles teach and the martyrs confess;\nthe angels hymn it, and men bow down before it.",
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "When the Savior put the question to the twelve disciples and apostles:\n\"Whom do men say that I am?\",\nPeter, the foremost of the apostles, receiving grace from heaven,\nanswered, theologizing, crying out clearly:\n\"Thou art the Christ, the Son of the living God!\"\nWherefore, he is fittingly blessed\nas one who received revelation from on high,//\nrightly receiving the authority to loose and to bind.",
+          "tone": 4,
+          "melody": "Called from on high"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "When Christ, the Word of God Who revealed Himself through the Father,\nasked \"Whom do ye suppose that I am?\",\ndidst thou speak unto all with divine eloquence, and straightway cried aloud:\n\"Thou art the Son of the living God!\"\nWherefore, thou didst receive as thy reward the Savior's words:\n\"Blessed art thou, Simon, son of Jonah!\"\nFor God doth glorify those who glorify Him\nand calleth them to a rich delight;\nand He set thee as the rock unashamed,//\nthe foundation and ground of the Church.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Called from on high, and not by mortals,\nwhen an earthly darkness covered thy bodily eyes,\nthus putting an end to thine ungodly plans,\na heavenly light illumined thy noetic eyes,\ndisclosing the beauty of piety.\nWherefore, thou didst recognize Christ our God\nWho brought forth light out of darkness.//\nHim do thou beseech, that He save and enlighten our souls.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "As a preacher of Christ bearing the boast of the Cross,\nmore than others didst thou discern the most ardent divine love\nwhich bindeth to the Desired One those who gaze upon it.\nWherefore, thou didst call thyself a prisoner of Christ,\nwho desired the burden of perils as something sweeter than any food,\nand who lived for thy Master.//\nHim do thou beseech, that He save and enlighten our souls.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "The most honored feast of the apostles hath arrived for the Church of Christ,\nbringing salvation unto us all.\nWherefore, mystically plaiting hymns for them, let us say:\nRejoice, O lamps unto those who are in darkness,\nshedding forth rays of the noetic Sun!\nRejoice, O Peter and Paul, ye unshakable foundations of the divine doctrines,\nfriends of Christ, precious vessels!//\nCome ye into our midst, vouchsafing immaterial gifts unto those who praise your feast with hymns.",
+        "tone": 6,
+        "author": "by Cosmas the Monk",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O first enthroned among the apostles\nand teachers of the whole world:\nentreat the Master of all,\nthat He grant peace to the world//\nand great mercy to our souls.",
+      "tone": 4
+    }
+  }
+}

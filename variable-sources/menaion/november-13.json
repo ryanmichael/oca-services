@@ -1,0 +1,311 @@
+{
+  "_meta": {
+    "feast": "Our Father Among the Saints John Chrysostom, Archbishop of Constantinople",
+    "feastKey": "stJohnChrysostom",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 11-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-13.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Single hierarch canon by Theophanes in Tone VIII (acrostic 'I hymn thee, the golden mouth of the Spirit') — the Theotokos Paraklisis canon mentioned in the Sergius rubric is omitted per the pattern. Magnificat retained."
+  },
+
+  "troparion": {
+    "text": "Grace shining forth from thy mouth like a beacon hath illumined the universe,\nand disclosed to the world treasures of uncovetousness,\nand shown us the heights of humility;\nbut while instructing by Thy words, O Father John Chrysostom,//\nintercede with the Word, Christ our God, to save our souls.",
+    "tone": 8,
+    "label": "Troparion of the holy hierarch"
+  },
+  "kontakion": {
+    "text": "From the heavens hast thou received grace,\nand by thy lips thou dost teach all to worship the One God in Trinity,\nO John Chrysostom, all blessed righteous one.//\nRightly do we acclaim thee, for thou art a teacher revealing things divine.",
+    "tone": 6,
+    "label": "Kontakion of the holy hierarch"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Thou hast shone forth in splendor upon mortals like a golden star, O all-blessed John Chrysostom,\nillumining the ends of the earth with the beams of thy discourses.\nWherefore, celebrating thy most holy memory today,\nwe ask for the remission of all our sins.",
+        "tone": 2,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The choir of angels",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O pure Virgin Theotokos who knewest not wedlock,\nthou sole intercessor and protection of the faithful:\nfrom tribulations, sorrows and cruel circumstances deliver all who place their trust in thee,\nO Maiden, and save our souls by thy divine supplications.",
+          "tone": 2,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "O ye faithful, as is meet let us honor Chrysostom,\nthe meadow of discourses on the divinely inspired Scriptures,\nwho guideth us to repentance, and who endured manifold trials,\nin that we have been taught by him;\nfor he prayeth to the Lord, that our souls be saved.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Awesome is the miracle of thy conceiving,\nand the ineffable image of birth giving known in thee, O pure Ever-virgin,\nfilleth my mind with awe and amazeth my thoughts.\nThy glory hath spread over all, O Theotokos, unto the salvation of our souls.",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch, father John Chrysostom,\nand we honor thy holy memory;\nfor thou dost entreat Christ our God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "By thy divine words, O blessed Chrysostom, thou wast truly manifest as a spiritual treasury of the world,\nand shining forth upon the ends of the earth,\nthou hast bestowed the riches of salvation upon all, guiding the people to repentance.\nWherefore, having completed the course of thy life, thou standest before the throne of the Most High,\nO ever-memorable John Chrysostom.\nEntreat Christ God, that He grant remission of sins unto those who with love celebrate thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Let us hymn the heavenly gate and ark, the most holy mountain, the cloud of light,\nthe heavenly ladder, the spiritual Paradise, the redemption of Eve,\nthe great treasure of the world;\nbecause salvation for the world and forgiveness of ancient offences were wrought in her.\nTherefore we cry unto her:\nIntercede with thine own Son and God to grant forgiveness of offences//\nto those who devoutly worship thine all-holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+      "tone": 4,
+      "_psalmRef": "Ps. 48:4 / 48:1"
+    },
+
+    "gospel": {
+      "reading": "John 10:1-9",
+      "number": 35,
+      "_note": "I am the door of the sheep."
+    },
+
+    "postGospelSticheron": {
+      "text": "Grace was poured forth through thy lips, O venerable father,\nand thou wast a pastor of the Church of Christ,\nteaching the reason-endowed sheep to believe in the consubstantial Trinity in one Godhead.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_authors": { "first": "Theophanes (Tone VIII; acrostic 'I hymn thee, the golden mouth of the Spirit')" },
+      "_canonNote": "Single hierarch canon. The Theotokos Paraklisis canon mentioned in the Sergius rubric is omitted per the pattern.",
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As a most fervent preacher of repentance, O father Chrysostom,\npray to God that I may be able to repent with all my heart,\nand beg thou that, through thy suffering, the wounds of mine ancient transgressions may be healed." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Receiving all the effulgence of the Holy Spirit, O venerable father,\nthou wast revealed to be a most radiant pillar going before the Church and guiding it,\nand a luminous cloud overshadowing the councils of the Orthodox, O all-blessed one." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A teacher ordained by Christ, with golden tongue and a divinely wise mind\nthou didst abundantly pour forth divine doctrines;\nfor thou wast revealed to be a river of God full of the waters of the Spirit, O divinely revealed Chrysostom." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: All-adorned with divers forms of grace, O divinely joyous and blessed one,\nthou hast given birth to the Word of the Father Who,\nin His great compassion, and in a manner past understanding and all telling, assumed flesh;\nand thou didst remain an undefiled Virgin." }
+        ],
+        "katavasia": "I will open my mouth…"
+      },
+
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Enriched by the mind of Christ, by thy pure life thou didst become an aid,\nthe explication and enabling of the salvation of all, O divinely inspired Chrysostom,\npouring forth salvific teachings." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Made rich by the immaterial treasures of the Spirit,\nthou didst draw forth an ever-flowing stream of doctrines from the wellsprings of salvation, O venerable father,\nwatering all of the Churches therewith." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With the most wise tilling of thy discourses thou didst clear the stony fields of men's souls,\nO wise and God-pleasing Chrysostom,\nrendering them fertile, and watering them with heavenly showers." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: There was no blemish or defilement within thee, O Virgin,\nand thou wast revealed to be a habitation transcending the beauties of heaven;\nfor in thee all the holiness of the virtues abided, O all-immaculate one." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "In a godly manner thou didst draw forth a wealth of knowledge of the ineffable wisdom,\ngathering in the waters of Orthodoxy for all,\nwhich divinely gladden the hearts of the faithful and drown, as is meet, the thoughts of infidels.\nWherefore, through the sweat of piety, thou didst show thyself to be an invincible champion of the Trinity, O John Chrysostom.\nEntreat Christ God, that He grant remission of sins unto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "Having come to know the wisdom which is from on high and the grace of words from God,\nthou didst shine forth upon all like gold in the crucible,\npreaching the Holy Trinity in Unity, and shooting down the delusion of avarice with the arrows of thy words.\nWherefore, having zealously reproved the empress,\nthou didst put to shame the alien thinking of Arius, O John Chrysostom.\nEntreat Christ God, that He grant remission of sins unto those who with love celebrate thy holy memory.",
+          "tone": 8
+        },
+        "bothNow": {
+          "text": "Pondering the flames and burning of Gehenna, and the weeping and lamentation therein,\nthe exceedingly accursed and most bitter separation,\nas well as the inheritance of the saints and their joyous assembly, O my soul,\nrestrain thyself and give utterance to sighs;\nstrive to erase the record of thy many debts with tears of compunction,\nhaving the pure Mother of God as thine unashamed companion.\nFor, it is for her sake that remission of sins hast been granted to those,\nwho in an Orthodox manner, glorify her as the Theotokos.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Christ Who, in that He is good, exerciseth forethought for all in His providence,\nhath given thee to us, O all-blessed John Chrysostom, as another peer of the apostles,\na proclaimer of the heavenly liturgy, and a divine expounder of celestial mysteries." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Let us honor the golden John Chrysostom of golden eloquence,\nwho hath rendered all things golden through the golden luster of his teachings,\nand hath illumined the world with his tongue, which shineth brighter than gold,\nis full of light and poureth forth divine grace." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast wholly the habitation of God; thou wast shown to be wholly the instrument of the Spirit,\nsounding forth a divinely inspired hymn of every virtue and the cause of salvation,\nand revealing the beauty of the kingdom of heaven, O all-blessed John Chrysostom." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst proclaim the compassion of God, setting forth examples of repentance,\nand most excellently instructing us how to avoid evils,\nO most blessed, most perfect and most honored father Chrysostom,\npouring forth excellent teachings on good works." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: After God, we have acquired thee as our intercessor;\nfor thou wast the Mother of God, the Creator and Fashioner, Who took upon Himself our guise,\nsaving it from corruption and death, and glorifying it with divine glory, O all-immaculate one." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "We all know thee to be the most radiant beacon of the Church,\nsaving the souls of all, rescuing them from the jaws of death,\nand guiding them to everlasting life, O ever-hymned father." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Protected by the armor of piety and with great courage of soul,\nthou dost rend asunder the hordes of the heretics, O thrice-blessed and most sacred one;\nand, rejoicing, thou dost most radiantly unite the choirs of the Orthodox in the bond of the Spirit." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy cheeks, full of divine scents like phials of perfume,\ngladden the whole world with noetic fragrance through the distilled mystagogy of thine understandings\nand the beauty of thy words, O all-wise one." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Conceiving God, thou hast given birth to the Lord, Creator and Fashioner, O pure one.\nAll mankind blesses thee, and the intelligent ranks of the bodiless ones glorify thee as the Mother of God." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As a rich bestower of discourse, thou hast enriched the whole world with spiritual wisdom;\nfor rich grace poured forth through thy lips from on high, O hierarch." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy sound hath gone forth into all the earth like lightning, O Chrysostom,\nand the power of thy words hath sounded in all the ends of the world like a blaring trumpet." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Clad in a robe of the virtues woven from on high, O all-blessed one,\nand arrayed in the beauty of thy discourses,\nthou wast revealed to be the glorious confirmation of the truth." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Lover of mankind, Who beareth all things by His omnipotent power\narrayed Himself in the weak flesh He received from thee, O all-immaculate Virgin,\nfor the benefit of mankind." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "From the heavens hast thou received grace,\nand by thy lips thou dost teach all to worship the One God in Trinity,\nO John Chrysostom, all blessed righteous one.//\nRightly do we acclaim thee, for thou art a teacher revealing things divine.",
+        "tone": 6,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "He Who fulfilled His providence concerning us"
+      },
+      "ikos": {
+        "text": "I bend my knee before the Creator of all, I stretch forth my hands to the pre-eternal Word,\nseeking the gift of discourse, that I may hymn the saint whom He Himself hath magnified;\nfor through His prophet He Who liveth forever doth say:\nI glorify those who glorify me with faith.\nHe Who in ancient times raised up Samuel hath now glorified a hierarch;\nfor, having invested well the talant with which he was entrusted, he hath brought it to the King,\nfor which cause the Transcendent One hath exalted him.\nI beg that the Word impart unto me his grace, unworthy as I am,\nthat I may be able to hymn him with piety.\nFor he is the teacher of the ends of the world, revealing things divine."
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Probing the depths of the abyss of goodness and compassion,\nthou didst show thyself to be the surety of salvation for those who fervently repent\nand cry aloud to the Lord with all their soul: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou settest aright every thought by thy teachings, O Chrysostom,\nand healest spiritual infirmities, as one most compassionate;\nand thou chantest in gladness to those who run well the race: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As elect, venerable, guileless, a priest of the Most High, splendidly arrayed in righteousness,\nO spiritually rich hierarch, thou hast been exalted,\ncrying out with gladness: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, thou didst conceive Him Who is God and Lord over all,\nWhose good pleasure it was to save the human race from corruption and death.\nHymning Him as is meet, we cry: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Using thy discourses with knowledge, O Chrysostom,\nwe learn what is precious in theology;\nwe bear as fruit the profit of good things and escape the harm of evil.\nFor thou hast been the common cause of our salvation,\ncrying aloud: Supremely exalt Christ throughout the ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "As thou hast most compassionate boldness, with thy merciful and sympathetic love\npray to the Master on our behalf, O father Chrysostom;\nfor we, the faithful, set thee before the Savior as our mediator and intercessor,\nas one who prayeth fervently for us, O divinely wise and all-blessed hierarch John." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Thou didst reprove the youthful opposition, headstrong thought and injustice of the rulers, O venerable one,\ninterceding fervently for the oppressed;\nand in thy loving conduct thou wast a father for orphans, widows and the poor,\ncrying: Supremely exalt Christ throughout the ages!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, the divinely eloquent prophets foretold thy supra-natural and wondrous birthgiving\nby means of bodily forms, divers indistinct images, and significant symbolic phenomena;\nwherefore, in gladness we piously hymn thee, supremely exalting Christ throughout all ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "troparia": [
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Truly delighting in the life for which thou didst struggle as far as thou wast able, O divinely eloquent father,\nand having excelled on earth by thine angelic life and acquired the tongue of Christ and a mouth of tranquility,\npray thou that those who truly bless thee with faith may be saved." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy words are the words of life, O thrice-blessed one, bringing life everlasting;\nfor Christ hath shown thee to be a flowing wellspring,\na river pouring forth torrents of divine teachings,\na true stream of sweetness and brook of remission, and a radiant preacher of repentance." },
+          { "refrain": "Holy Father John Chrysostom, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast been shown to be a most splendid mediator between God and mortals, O most radiant one;\nfor thou wast revealed to be a divinely luminous lamp of grace and divine understanding\nand a teacher of almsgiving.\nWherefore, O Chrysostom, with heartfelt love we now magnify thee as is meet." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure and exceedingly glorious Birthgiver of God,\nsave those who hymn thee with love, mercifully silencing the tumult of temptations;\nfor, having given birth unto God, thou doest all things whatsoever thou dost desire,\nand dost accomplish unhindered what thou dost will, O Virgin.\nWherefore, we all magnify thee." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "With thy discourses of golden luster the Church of Christ is rendered manifestly splendid, O father Chrysostom.\nAnd the souls of the faithful are gladdened, honoring thy most holy memory;\nfor thou hast been shown to all as a teacher of repentance and guide to salvation.",
+        "label": "Exaposteilarion of the holy hierarch",
+        "melody": "By the Spirit in the sanctuary",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Made steadfast by him, let us all praise the all-wise John, the trumpet-voiced preacher of repentance,\nthe treasure of the poor, the golden and right eloquent mouth of the Church,\nthe expounder of the Scriptures.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "melody": "Hearken, ye women",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "O all-immaculate Virgin, my Sovereign Lady, with the glorious Chrysostom entreat thy Son,\nthat those who hymn thee may be delivered from all dangers and receive everlasting good things.\nFor thou canst do whatsoever thou desirest, O all-holy one.",
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Thou wast a most precious vessel of the divine Spirit,\nand a most sacred pastor, an angel on earth,\na pillar of the Church and a foundation of the dogmas,\na surety for sinners and the divine consolation of the penitent,\nwho takest thought for the poor and dost comfort the orphaned,\nO John Chrysostom,//\nintercessor for our souls.",
+          "tone": 4,
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "Thou wast a sun of great brilliance illumining the whole world with thy discourses,\nO most radiant star shining forth rays of light,\nwhich ever guide to the most tranquil haven those who are tempest-tossed upon the sea of the world\nby the grace of salvation,\nO golden-worded Chrysostom,//\nintercessor for our souls.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Thou wast truly an earthly angel and a heavenly man,\na melodious nightingale, a river full of noetic waters,\na cloud pouring forth showers of understanding,\nabundantly watering us all, a teacher of salvation and an aid in repentance,//\nO John Chrysostom.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "Driven unjustly from thy flock, O venerable father, thou didst partake of tribulations\nand bitter imprisonment,\nwherein thou wast deemed worthy of a blessed end;\nand, vanquishing the most crafty one, as a valiant spiritual athlete,\nthou wast crowned by Christ with a diadem of victory, O John Chrysostom,//\nintercessor for our souls.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Having adorned the Church of God with golden words and divinely eloquent teachings,\nthou didst lay up therein the spiritual riches of thy divinely imparted discourses.\nWherefore, weaving a wreath for thee with hymns, as with never-fading flowers,\nthe Church offereth it to thy sacred memory,\nO divinely wise John, golden of both soul and tongue.\nYet as thou hast boldness, O venerable one,//\npray thou on behalf of our souls.",
+        "tone": 8,
+        "author": "by Anatolius",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplication of thy servants,\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Grace shining forth from thy mouth like a beacon hath illumined the universe,\nand disclosed to the world treasures of uncovetousness,\nand shown us the heights of humility;\nbut while instructing by Thy words, O Father John Chrysostom,//\nintercede with the Word, Christ our God, to save our souls.",
+      "tone": 8
+    }
+  }
+}

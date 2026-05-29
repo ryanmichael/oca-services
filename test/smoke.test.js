@@ -517,6 +517,174 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Sts Peter & Paul (2026-06-29) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-06-29', {
+      feastName: 'Sts Peter and Paul',
+      minBlocks: 320,
+      troparionText: 'first enthroned among the apostles',
+      minCanonBlocks: 100,  // two canons × 8 odes (3+theotokion each), actual ~167
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Sts Peter & Paul Matins renders two canons separately, not flat', async () => {
+    const res = await get('/api/matins?date=2026-06-29');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const firstCanonHeadings  = canonRubrics.filter(t => /First Canon/.test(t));
+    const secondCanonHeadings = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(firstCanonHeadings.length >= 8,
+      `Expected ≥8 First Canon headings, got ${firstCanonHeadings.length}`);
+    assert.ok(secondCanonHeadings.length >= 8,
+      `Expected ≥8 Second Canon headings, got ${secondCanonHeadings.length}`);
+  });
+
+  it('Prophet Elias (2026-07-20) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-07-20', {
+      feastName: 'Prophet Elias',
+      minBlocks: 320,
+      troparionText: 'angel in the flesh, and foundation of the prophets',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St Nicholas (2026-12-06) renders full festal Matins, not Sunday Octoechos', async () => {
+    await assertFestalMatins('2026-12-06', {
+      feastName: 'St Nicholas',
+      minBlocks: 320,
+      troparionText: 'icon of meekness, and teacher of temperance',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Three Hierarchs (2026-01-30) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-30', {
+      feastName: 'Three Hierarchs',
+      minBlocks: 320,
+      troparionText: 'In that ye share in the ways of the apostles',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Three Hierarchs suppresses Magnificat (replaced by custom megalynarion)', async () => {
+    const res = await get('/api/matins?date=2026-01-30');
+    assert.equal(res.status, 200);
+    const sections = {};
+    for (const b of res.json.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+    assert.equal(sections['Magnificat'] || 0, 0,
+      `Three Hierarchs should suppress the Magnificat per the rubric ('We do not sing the Magnificat'). Found ${sections['Magnificat'] || 0} blocks.`);
+    const fullText = res.json.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes('three great luminaries among the hierarchs'),
+      'Three Hierarchs Ode 9 should include the custom megalynarion replacing the Magnificat.');
+  });
+
+  it('Beheading of Forerunner (2026-08-29) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-08-29', {
+      feastName: 'Beheading of Forerunner',
+      minBlocks: 320,
+      troparionText: 'memory of the just is celebrated with hymns of praise',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Forty Martyrs (2026-03-09) renders full festal Matins content (Lenten weekday: Small Doxology per code policy)', async () => {
+    const res = await get('/api/matins?date=2026-03-09');
+    assert.equal(res.status, 200);
+    const j = res.json;
+
+    const sections = {};
+    for (const b of j.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+
+    assert.ok(j.blocks.length >= 400,
+      `Forty Martyrs: expected ≥400 blocks, got ${j.blocks.length}. Weekday stub renders ~170.`);
+    assert.ok(sections['Polyeleios'] > 5,
+      'Forty Martyrs: Polyeleios section missing or thin');
+    assert.ok(sections['Matins Prokeimenon'] > 0, 'Matins Prokeimenon missing');
+    assert.ok(sections['Matins Gospel'] > 0, 'Matins Gospel missing');
+    assert.ok((sections['Canon'] || 0) >= 100,
+      `Canon should have ≥100 blocks, got ${sections['Canon'] || 0}`);
+    assert.ok((sections['Kontakion'] || 0) >= 2,
+      `Kontakion should include Kontakion + Ikos (got ${sections['Kontakion'] || 0})`);
+    assert.ok((sections['Lauds'] || 0) >= 5,
+      `Lauds: ${sections['Lauds'] || 0} blocks`);
+
+    const fullText = j.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes('pangs which Thy saints, suffered for Thee'),
+      'Forty Martyrs troparion text not found');
+    // Lenten weekday: Small Doxology per server.js:1629 policy ("During Lent on
+    // weekdays, even great feasts use the Small (read) Doxology"). Tracking
+    // whether this should change for greatFeast-rank saints (Annunciation,
+    // 40 Martyrs, etc.) is a separate question.
+    assert.ok((sections['Great Doxology'] || 0) + (sections['Small Doxology'] || 0) > 0,
+      'Some doxology should be rendered');
+  });
+
+  it('Nativity of Forerunner (2026-06-24) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-06-24', {
+      feastName: 'Nativity of Forerunner',
+      minBlocks: 320,
+      troparionText: 'we who honor thee with love are at a loss',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St Demetrius (2026-10-26) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-10-26', {
+      feastName: 'St Demetrius',
+      minBlocks: 320,
+      troparionText: 'whole world hath found thee to be a great champion',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St John Chrysostom (2026-11-13) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-11-13', {
+      feastName: 'St John Chrysostom',
+      minBlocks: 320,
+      troparionText: 'Grace shining forth from thy mouth like a beacon',
+      minCanonBlocks: 50,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Synaxis of Archangels (2026-11-08) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-11-08', {
+      feastName: 'Synaxis of Archangels',
+      minBlocks: 320,
+      troparionText: 'supreme commanders of the heavenly hosts',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St George (2026-04-23) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-04-23', {
+      feastName: 'St George',
+      minBlocks: 320,
+      troparionText: 'As a liberator of captives',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St Anthony the Great (2026-01-17) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-01-17', {
+      feastName: 'St Anthony',
+      minBlocks: 320,
+      troparionText: 'Emulating the manner of the zealous Elijah',
+      minCanonBlocks: 50,
+      minLaudsBlocks: 5,
+    });
+  });
+
   it('Pentecost Matins renders two canons separately, not flat', async () => {
     const res = await get('/api/matins?date=2026-05-31');
     assert.equal(res.status, 200);

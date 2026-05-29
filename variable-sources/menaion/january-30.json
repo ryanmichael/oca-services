@@ -1,0 +1,397 @@
+{
+  "_meta": {
+    "feast": "Synaxis of the Three Holy Hierarchs: Basil the Great, Gregory the Theologian, and John Chrysostom",
+    "feastKey": "threeHierarchs",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 01-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-30.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons, both by John Mauropus, Metropolitan of Euchaita: Canon I in Tone II (acrostic 'I proclaim the three suns of the light of the threefold Sun'); Canon II in Tone VIII. The Theotokos canon by John Mauropus mentioned in the PDF rubric is omitted (parish practice typically uses only the two hierarchical canons). Magnificat is suppressed at Ode 9; replaced by a custom refrain 'Magnify, O my soul, the three great luminaries among the hierarchs!'. Katavasiae are the irmoi of the Meeting (Feb 2)."
+  },
+
+  "troparion": {
+    "text": "In that ye share in the ways of the apostles,\nO teachers of the whole world,\nentreat the Master of all,\nthat He grant peace to the world//\nand great mercy to our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarchs"
+  },
+  "kontakion": {
+    "text": "The sacred heralds of divine proclamation,\nthe foremost among the teachers,\nhast Thou received, O Lord,\ninto the enjoyment of Thy good things and into rest;\nfor Thou hast accepted their labors and death as surpassing any wholeburnt offering,//\nO Thou Who alone dost glorify Thy saints.",
+    "tone": 2,
+    "label": "Kontakion of the holy hierarchs"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Let us all praise Basil as the royal adornment of the Church, the inexhaustible treasury of dogmas;\nfor he hath instructed us to worship the Holy Trinity Which is united in essence but separate in hypostasis.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The co-beginningless Word",
+        "glory": {
+          "text": "O divinely wise fathers, most radiant luminaries of the Church of Christ,\nye have enlightened the world with your teachings,\nwithering the errors of all the heretics, and quenching the flaming tumults of the blasphemous.\nWherefore, as holy hierarchs of Christ, pray ye, that we be saved.",
+          "tone": 4,
+          "melody": "Go thou quickly before"
+        },
+        "bothNow": {
+          "text": "O all-hymned Virgin, Mother of Christ God, Mary, Bride of God who knewest not wedlock,\nintercession for the faithful, O Sovereign Lady Theotokos:\nfrom every misfortune and all want deliver those who with faith and love flee unto thy protection,\nO thou who alone art the Bride of God.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thou wast a pillar of the Church, and wast shown to be a wealth of piety which cannot be stolen away,\nO Gregory the Theologian.\nThou didst illumine thy life with dispassion, and didst make plain the dogmas of the Trinity.\nO venerable father, entreat Christ God for the salvation of our souls.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine Faith",
+        "glory": {
+          "text": "Hovering like wise bees over the meadow of the Scriptures,\nye embraced well the most excellent pollen of their flowers,\nand together ye have produced for all the faithful the honey of your teachings unto their utter delight.\nWherefore, each of us, delighting therein, crieth out with gladness:\neven after death be ye advocates for us who praise you, O blessed ones.",
+          "tone": 4,
+          "melody": "Joseph marveled"
+        },
+        "bothNow": {
+          "text": "Tempest-tossed by the threefold-waves of the passions,\nI who lack a conscience fervently call upon thee, O most pure one:\nDisdain me not, lest I perish, wretch that I am,\nO thou who hast given birth to the Abyss of mercy;\nfor I have no other hope than thee.\nLet me not become a joy unto mine enemies, nor a byword, for I trust in thee.\nFor whatsoever thou desirest thou canst do, in that thou art the Mother of the God of all.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, O holy hierarchs of Christ—\nBasil the Great, Gregory the Theologian and John Chrysostom,\nand we honor your holy memory;\nfor ye entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Let the most wise teachers of the whole world,\nwho glorified God on earth with their deeds and words,\nbe magnified today as mediators of salvation for us.",
+      "tone": 4,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Thou hast appeared",
+      "glory": {
+        "text": "The Church doth celebrate today the honored solemnity of the three teachers;\nfor they have made the Church steadfast by their divine dogmas.",
+        "tone": 4,
+        "melody": "Thou hast appeared"
+      },
+      "bothNow": {
+        "text": "O invincible intercessor for those afflicted, fervent help of those who trust in thee,\ndeliver me from misfortunes, for thou art the helper of all.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Thy priests shall be clothed with righteousness,\nand Thy righteous shall rejoice.",
+      "verse": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding.",
+      "tone": 4,
+      "_psalmRef": "Ps. 131:9 / 48:3"
+    },
+
+    "gospel": {
+      "reading": "John 10:9-16",
+      "number": 36,
+      "_note": "I am the good shepherd."
+    },
+
+    "postGospelSticheron": {
+      "text": "Grace was poured forth in your mouths, O venerable fathers,\nand ye became pastors of the Church of Christ,\nteaching the reason-endowed sheep to believe in the consubstantial Trinity,\nin a single Godhead.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "John Mauropus, Metropolitan of Euchaita (Canon I, Tone II; acrostic 'I proclaim the three suns of the light of the threefold Sun')", "second": "John Mauropus, Metropolitan of Euchaita (Canon II, Tone VIII)" },
+      "_canonNote": "Two hierarchical canons by John Mauropus. The Theotokos canon (also by John Mauropus) mentioned in the Sergius rubric is omitted; parish practice typically uses only the two hierarchical canons. Katavasiae are the irmoi of the Meeting (Feb 2). Magnificat is suppressed at Ode 9; replaced by a custom refrain.",
+
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;\nfor He hath been glorified.",
+        "irmos2": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "What manner of thanksgiving, what suitable description should we offer to our benefactors,\nby whom we have been instructed in a proper life of goodness, O ye people?" },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Let the tongues of the orators, their skill and craft, and all the power of their words,\nnow move toward a single goal;\nand, honoring the three, let us venerate them all together." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The heavenly minded ones could not bear earthly things, such things being foreign to them;\nyet they were revealed to be preservers of society and intercessors.\nLet them therefore be rendered communal praises." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-immaculate one, as with a single mouth, and in singular concord,\nwe all glorify thee, our common distinction of honor." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "This undertaking is not one that is begun with human zeal; but one aided by wisdom:\nseated on Thy throne, O Lover of mankind, grant me the grace of discourse,\nthat I may be enabled to glorify those whom wisdom itself hath beforehand glorified." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Like a cup filled to overflowing, O Master,\nThy grace and the great riches of Thy love for mankind have been poured forth\nrevealing those set forth for praise, to be like angels in the flesh." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "It is fitting that there be praises from heaven and angelic hymnody fit for the godly;\nfor they have become gods through communion,\nhaving Him, Who by nature is the one true God, living and speaking within them." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The memorial of the righteous doth perfect the divinely wise company with praises;\nand therewith the Mother of God, as their head, is magnificently glorified,\nholding the last, the first and the middle rank, and partaking of goodly praise." }
+        ],
+        "katavasia": "The Irmoi of the canon of the feast of the Meeting are sung as katavasiae."
+      },
+
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God\nand none more righteous than Thee, O Lord.",
+        "irmos2": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The great trumpet of the Church, the beacon illumining the whole world,\nthe preacher embracing all the ends of the earth with his proclamations,\nBasil of great renown doth inspire this present assembly." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Radiant beacon of life and actions, radiant beacon of discourse and teachings,\nshining more brightly than all, like another sun outshining the stars,\nthe much hymned Theologian is blessed." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Lo! the light of the world doth shine upon the world!\nBehold, the salt of the earth doth sweeten the earth!\nLo! the tree of life doth bring forth the fruits of immortality, the holy Chrysostom.\nAll ye who desire to escape death, come ye and take delight!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who brought all things into being from non-being\nand granted being to each creature,\nknoweth how to order the given natures as He so desireth.\nHence, who will not marvel on hearing that the Virgin gave birth?" },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The correctors of morals, the edifiers of souls, the common saviors of all,\nwho have shown us images of godly deeds and discourses,\nmay the radiant instructors of life be praised with splendor." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Spirit of God filled Basil with skill;\nGregory alone possessed fiery tongues breathing forth with the flames of lofty discourse;\nand the mouth of Christ spoke in John." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The foolishness of preaching manifestly rendered the wisdom of this age moot,\nmaking it submissive and slave-like;\nfor grace hath presented the wise preachers as orators." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who made His abode within the womb of the pure Virgin\nhath rendered the souls of the God-bearing saints His dwelling-place,\nand through their lips He hath expounded the mystery of His Mother." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Together let us praise the great and luminous beacons, the unbreakable pillars of the Church,\ndelighting in the goodly discourses and the grace of the most wise Chrysostom,\nthe great Basil and Gregory, the radiant Theologian.\nAnd to them let us cry aloud, giving voice from the depths of our hearts:\nO thrice-great holy hierarchs, entreat Christ God,\nthat He grant forgiveness of sins unto those who celebrate your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "Receiving wisdom from God, like an additional three apostles of Christ,\nye set forth with rational discourse, dogmas,\nwhich beforehand the fishermen through the power of the Spirit set forth in simple words;\nfor it was fitting that the initial exposition of our Faith be simple.\nWherefore, we all cry out to you: Entreat Christ God,\nthat He grant remission of sins unto those who celebrate your holy memory with love.",
+          "tone": 8,
+          "label": "Another Sessional Hymn"
+        },
+        "bothNow": {
+          "text": "O Theotokos, by the mercy of thy supplications go thou before my humble soul,\nengulfed by the waves and storm of life's temptations,\nand burdened with the heavy weight of sins,\nhaving become rudderless and nigh to sinking into the depths of Hades,\nand grant it peace, rescuing it from misfortunes,\nfor thou art a calm haven, ever praying to thy Son and God,\nthat He grant me forgiveness of sins;\nfor thee do I, thine unworthy servant, have as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee: Glory to Thy power, O Lord!",
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having acquired rational thinking through secular wisdom, O most glorious ones,\nye acquired helmsman-ship through divine wisdom;\nall-wisely rendering secular wisdom, like a handmaiden, subject to you." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O lovers of wisdom, in so far as ye love that which is wise, ye become wise,\nteaching all with words;\nwherefore marveling at your discourses,\nall have thereby been instructed in the disciplines of noetic activity and mystic vision." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Like a late morning rain, the Fashioner of the waters and the ages, O all-immaculate one,\ndescended into thy womb in these later days,\ngently cooling those who were fainting." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A pillar of fire going before the faithful people, consumed the enemies of the Faith\nand saved the tribes who followed it,\nthus also was the great Basil revealed to be,\nsuch that the Church of Christ might be bold and prevail, enriched by such a champion." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Gregory, thy discourse was sweetness to the tongue, the delight of every ear,\nthe manna of life, a dew of delight, honey from a rock, the heavenly bread of the angels,\nmoving those who partake thereof to enjoy fully, filling them with sweetness." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A river of spiritual gifts full to overflowing,\nflooding the goodly face of the earth like a torrent of sweetness,\nfloweth forth from the golden mouth,\ndelighting and watering every Christian city with the streams of divine waters." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Sovereign Lady, the three God-bearing teachers confessed\nthat in thy Son the divine nature is simple,\nand revealed to be uncommingled with the human nature;\nwherefore they proclaimed, that in Him exist two wills and two activities." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,\nfor I know no other God than Thee.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me\nand why has the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst permit the saints to drink deeply of the well-spring of Thy gifts,\nwhich in nowise is diminished in flow,\nbut watereth the whole of creation with the divine torrents flowing from its source,\nO Lover of mankind." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "What is gold to me? What are riches and glory and power to me?\nThey are but smoke dispersed upon the winds!\nLet them all vanish; let the wind bear them away!\nMine only cherished riches are the trinity of eloquent teachers." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The river of immortality poureth forth incorruptible sustenance and divine drink:\nproviding sustenance for those who hunger, and the beverage of incorruptibility for those who thirst.\nIts water is eternally living and sustaineth the life of those who drink of it.\nPartake ye all of its ever-flowing life!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Evil doth not utterly have power over us,\nfor it hath grown weak since the Virgin gave birth to Him Who is mighty in power,\ntaking upon Himself the weakness of the flesh and slaying him who is mighty in malice." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With thankful voices let us praise the wise sages of things human and divine,\nwho in their love of the Truth revealed unto us the nature of things,\ndescribing their Creator unto all, as is meet." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With their wise doctrinal discourses and skills the godly healers of men's souls\nsweetened that which is bitter and provided an astringent cure for salvation.\nO all ye pious, thus adorned, find ye delight and be saved!" },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All discourse falleth silent when the divine preachers utter divine things.\nThe New Testament hath prevailed over the Old,\nhaving set forth the precious tablets of the new laws therein,\nby which the congregation of the faithful are established." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The immortal Being passed over mortality to holiness,\nand the Virgin Maiden hath surpassed the incorporeal angels,\nfor she gave birth to God, the King of the angels, upon Whom they are unable to gaze." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The deep abyss of offenses hath surrounded me, O Lord,\nbut do Thou lead up my life from corruption,\nas Thou didst the Prophet Jonah, O Lord.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Together, O ye three, bless the properties of God:\nthe unbegottenness of the Father, the begottenness of the Word\nand the procession of the Spirit Himself." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Today hath salvation radiantly come unto this house;\nfor Christ, honoring His own name,\nis present in the midst of two or three who are gathered together." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Immeasurably distant from the heights of heaven is the abyss of the earth;\nyet divine desire hath borne the saints from the earth higher than the heavens." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The three divine preachers,\nhaving thee as a new well-spring and source of mysteries, O Virgin,\nadopted a novel mode of speech replete with new sources." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "We have learned to theologize concerning the only Trinity,\nand have agreed to hymn the threefold Unity:\nhaving been taught by the fathers to worship the single Essence in three Hypostases." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The co-beginningless Word and the Spirit of God existed in the beginning with the Father:\nthe beginningless God is a simple, consubstantial, co-essential Divinity,\nas the divine preachers say." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "I shall unite and separate those things that are separated through a unity;\nI think of the One as indivisible, and consider It Three;\nand I accept the three God-bearing teachers who have admonished me to believe thus." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Son and the Father, Who was without mother before assuming flesh\nand was without father after His incarnation,\nthese sayings surpass all understanding,\nfor such most glorious wonders befit God." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "The sacred heralds of divine proclamation,\nthe foremost among the teachers,\nhast Thou received, O Lord,\ninto the enjoyment of Thy good things and into rest;\nfor Thou hast accepted their labors and death as surpassing any wholeburnt offering,//\nO Thou Who alone dost glorify Thy saints.",
+        "tone": 2,
+        "label": "Kontakion of the hierarchs",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "Who can open his lips and move his tongue to breathe forth fire by the power of the Word and the Spirit?\nSay but the word, and I will boldly speak;\nfor these three have transcended human nature in their many and great gifts,\ntheir activity and vision, surpassing both in splendor.\nWherefore, having vouchsafed such great gifts,\nin so far as they are Thy faithful servants,\nThou alone hast glorified these Thy saints."
+      },
+
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
+        "irmos2": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The former inconstant audacity of heresies is vanquished and doth retreat, O blessed one,\nand every debased teaching is shown to be like wax melting in the presence of fire,\nstruck down by your fiery proclamations." },
+          { "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "They turned away from the false myths of the Greeks\nand chose persuasion alone to establish their authority among mankind;\nand these three, having established the truth therewith,\ntriumphed over the whole assembly of the faithful with their discourses, and exhortations." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: In thee hath every prophecy come to rest and reached its end,\namazing those who say: From thee, O pure one, do the wonders of prophecies pour forth most radiantly,\nshowing those who utter them to be wise." },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The divinely eloquent ones were pillars of virtue and wisdom,\nwhether they kept silent or spake, whether they watched or listened,\ncommanding us by their words and deeds to cry: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Receiving your divine voices which thunder forth upon us most wondrously from on high,\nand your exhortations which are like flashes of lightning, O divinely wise ones;\nwe chant with you: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "refrain": "Holy Hierarchs of Christ, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Stones shall be launched from the stone-bows of their tongues,\ncrushing those corrupted by false doctrines,\nif any among the blasphemers dare refuse to exclaim: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who buildeth with the elements,\nand transformeth nature as He so desireth,\nmade His abode within thee and left thee a virgin even after thou hast given birth,\nO Mary, Birthgiver of God.\nTo Him do we now cry out with thee, O all-immaculate one: Blessed is the God of our fathers!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "We reverently contemplate and glorify with equal honor the one Essence,\nthe immeasurably powerful Unity and Trinity, Who ordereth all these things in wisdom;\nfor thus have the three God-bearers taught us to worship,\nand with them we bow down before the Trinity unto the ages." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The three divine preachers have united themselves, joining together to form a trinity,\nand preserving themselves inseparable by their sacred nature;\nhave thus received a single, indivisible glory,\nwhich doth summon all those who supremely exalt the Trinity throughout the ages,\nto a common praise." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, the Benefactor, accepting what is ours, and giving us what is His own,\ndid not suffer, but merely created;\nfor though He is the Creator, He doth not ordain corruption;\nand though He suffered of His own will, through His suffering He setteth men loose from the passions,\nas the three fathers mystically teach us." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Lest he who rendereth praise favors one above the other,\nGod hath united the three in a unity of equal honor,\nesteeming them equal in their gifts, that He might grant them to chant equal hymns, singing:\nYe children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The mighty and invincible champions of the Godhead, the true allies of the Truth,\nhaving tested well the depths of the Spirit,\nsetting forth their divine contemplations concerning God,\nand teaching us to chant: Ye people, supremely exalt Christ throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "From heaven two magnificent luminaries have enlightened the earth,\none after the other according to their preeminence;\nbut the three all-great luminaries illumine the whole world more brightly,\nchanting together: Ye people, supremely exalt Christ throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: For our sake God deigned to become incarnate and undergo His honored sufferings,\nfor our sake He dwelt among mankind;\nand though He had not tasted of death and was free from passions,\nthrough a union with mortal flesh He partook of suffering and death.\nWherefore with His Mother, let us supremely exalt Christ throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,\nHim we faithful with one accord magnify in song.",
+        "irmos2": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "megalynarion": "Magnify, O my soul, the three great luminaries among the hierarchs!",
+        "_megalynarionNote": "Magnificat is suppressed; this refrain replaces it before the hierarchs' canon troparia (Canon I uses 'three great luminaries among the hierarchs'; Canon II uses 'three pastors of the most holy Trinity', etc.).",
+        "troparia": [
+          { "refrain": "Magnify, O my soul, the three great luminaries among the hierarchs!", "_source": "stSergius-menaion",
+            "text": "Lo! your crop, the flock for which ye endured the greatest of pangs,\nhaving assembled and received you three together,\nhath your most sweet union as their common boast." },
+          { "refrain": "Magnify, O my soul, the three luminaries of the Church of Christ!", "_source": "stSergius-menaion",
+            "text": "Grace wielded not a two-edged sword, but one with three edges against the foe,\na single blade forged in heaven and sharpened with threefold might,\nwhich ever fighteth for the one thrice-radiant Godhead." },
+          { "refrain": "Magnify, O my soul, those who illumine the Church of Christ!", "_source": "stSergius-menaion",
+            "text": "Your residence was in the heavens, O most glorious ones,\nwith those bearing flesh eternally undefiled;\nand dwelling most perfectly now among them, entreat those who are most high,\nthat they take thought and pray for us who abide yet on earth." },
+          { "refrain": "Magnify, O my soul, the most pure Virgin Theotokos, who is more honorable than the armies of heaven!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The expanse of thy mighty deeds doth confine me, O Sovereign Lady,\ngiving me discourse, and most glorious one I am at a loss because of thy magnificence.\nWherefore, we glorify Him Who hath thus magnified thee." },
+          { "canon": "secondCanon", "refrain": "Magnify, O my soul, the three pastors of the most holy Trinity!", "_source": "stSergius-menaion",
+            "text": "A threefold virtue hath been exalted and filled all things with glory,\nshining forth upon us another thrice-radiant ray as its own effulgence:\nthe initiates of the mysteries of heaven, by whom we are guided in piety to divine vision." },
+          { "canon": "secondCanon", "refrain": "Magnify, O my soul, the three great luminaries of the triple Sun!", "_source": "stSergius-menaion",
+            "text": "There is no repetition in these three, for each of them beareth the seniority:\nnone is first, but there is a surpassing equality of honor;\nand they all-joyously credit the victory to each other,\nfor the audacity of jealousy, which corrupteth oneness of mind, hath no place in them." },
+          { "canon": "secondCanon", "refrain": "Magnify, O my soul, the might of the indivisible Godhead in three Hypostases!", "_source": "stSergius-menaion",
+            "text": "The piety of the fathers, having shown forth its own firstborn sons,\nthrough them hath begotten faithful and blameless children of the light,\nwho made perfect by the Spirit, Who spake through them;\nasketh them to preserve, inviolate to the end, the peace which they inherited from them." },
+          { "canon": "secondCanon", "refrain": "Magnify, O my soul, the most pure Virgin Theotokos, who is more honorable than the armies of heaven!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Through the revelation of the Father,\nthe foremost of wise hierarchs proclaimed thy Son to be the Son of the living God, O Mother of God,\nreceiving knowledge of the mystery not from flesh and blood;\nwherefore, glorifying thee, the Virgin, he magnified thee as Mother and Theotokos." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Let us praise the God-bearing fathers, the three radiant lamps\nshining more brightly than the rays of the sun\nwith the light of the Trinity, the Author of light,\nthe three-Sunned Unity which is supra-naturally united.",
+        "tone": 3,
+        "label": "Exaposteilarion",
+        "melody": "O Light immutable",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Now let us all praise the receptacles of light, the lightning-flashes of beams of light:\nBasil the Great, Gregory the Theologian and John Chrysostom.",
+        "tone": 3,
+        "label": "Another Exaposteilarion (at Glory)",
+        "melody": "The heaven with stars",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "O sole Godhead—Father, Son and Spirit—\nthrough the entreaties of Basil, Gregory and John,\nand of the most pure Theotokos,\nmay I not be cut off from Thy glory!",
+        "tone": 3,
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 5,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Rejoice, O trinity of hierarchs, great bulwark of the Church,\npillars of piety, confirmation of the faithful,\ndownfall of heretics,\nye who shepherded the people of Christ with divine teachings\nand nurtured them with divers virtues,\nO manifest preachers of grace,\nwho set forth laws for the fullness of Christ's Church!\nO ye guides to the highest, ye gates of paradise,//\nentreat Christ, that He send down great mercy upon our souls!",
+          "tone": 5,
+          "author": "Nilus Xanthopoulus",
+          "melody": "Rejoice",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Rejoice, O trinity of hierarchs, earthly angels whose path is in the heavens,\nsalvation of the world, joy of mankind,\nteachers of the world, champions of the Word,\nmost wise healers of infirmities of soul and body,\never-flowing spiritual rivers watering the whole face of the earth with your teachings,\nstairways of theology!\nO ye godly ones of golden discourse,//\nentreat Christ, that He send down great mercy upon our souls!",
+          "tone": 5,
+          "author": "Nilus Xanthopoulus"
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "Rejoice, O trinity of hierarchs, ye earthly firmaments of the Sun,\nrays and beacons of the effulgence of the threefold Sun,\nenlightenment of the darkened,\nfragrant and most beautiful flowers of paradise,\nO Theologian, wise Basil and Chrysostom,\nye tablets of the Spirit inscribed by the finger of God,\nye breasts exuding the milk of salvation!\nO ye adornment of wisdom,//\nentreat Christ, that He grant unto our souls great mercy!",
+          "tone": 5,
+          "author": "Nilus Xanthopoulus"
+        }
+      ],
+      "doxastikon": {
+        "text": "Let us sound the trumpet of hymns,\nthat we may dance to festal music and leap up for joy,\nrejoicing in the all-honorable festival of our teachers!\nLet kings and princes come together,\nand let hierarchs clap their hands in hymns\nfor the three all-great rivers have poured forth doctrines,\nthe rushing torrents of the ever-living Spirit,\nthe pastors and teachers, the three initiates of the sacred mysteries of the all-adored Trinity!\nAnd, assembling, let us praise them:\nLet the philosophers praise them, because they are wise;\nthe priests, because they are pastors;\nthe sinners, because they are their intercessors;\nthe poor, because they enrich them;\nthose in sorrow, because they comfort them;\nthose who travel, because they journey with them;\nthose at sea, because they are their helmsmen.\nAnd let all of us everywhere, fervently praising the godly hierarchs, say thus:\nO most holy teachers, make haste to rescue the faithful from the temptations of life,//\nand deliver them from everlasting torments by your supplications!",
+        "tone": 5,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "Let us sound the trumpet of hymns,\nfor the Virgin Mother, the Queen of all,\nbowing down from on high, with blessings crowneth those who hymn her.\nLet kings and princes come together,\nand let them clap their hands in hymns\nfor the Queen who gave birth to the King\nWhose good pleasure it was, in His love for mankind, to loose those held by death from of old.\nYe pastors and teachers, assembling, let us praise the most pure Mother of the good Shepherd,\nthe lampstand of golden luster, the light-bearing cloud,\nher who is more spacious than the heavens, the animate ark,\nthe fiery throne of the Master,\nthe golden jar which held the Manna, the gate of the Word which was closed,\nthe refuge of all Christians;\nand, praising her with divinely eloquent hymns, let us say thus:\nO palace of the Word, vouchsafe the kingdom of heaven unto us, the lowly;//\nfor nothing is impossible to thy mediation!",
+        "tone": 5,
+        "author": "by Germanus",
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "In that ye share in the ways of the apostles,\nO teachers of the whole world,\nentreat the Master of all,\nthat He grant peace to the world//\nand great mercy to our souls.",
+      "tone": 4
+    }
+  }
+}

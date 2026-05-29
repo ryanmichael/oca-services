@@ -1,0 +1,406 @@
+{
+  "_meta": {
+    "feast": "St Nicholas the Wonderworker, Archbishop of Myra in Lycia",
+    "feastKey": "stNicholas",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 12-06.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-06.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two hierarchical canons: Canon I by Theophanes in Tone II (acrostic 'I chant divine hymnody unto thee, O Nicholas'); Canon II anonymous in Tone I (alphabetic acrostic). The Theotokos Paraklisis canon mentioned in the PDF rubric is omitted (parish practice typically uses only the two hierarchical canons). Canon II includes Triadicon troparia (Trinitarian) as well as Theotokia."
+  },
+
+  "troparion": {
+    "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Nicholas our father,//\nentreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarch"
+  },
+  "kontakion": {
+    "text": "In Myra thou wast shown to be a performer of the sacred mysteries, O holy one,\nfor, fulfilling the Gospel of Christ,\nthou didst lay down thy life for thy people, O venerable one,\nsaving the innocent from death.//\nWherefore, thou hast been sanctified as a great initiate of the grace of God.",
+    "tone": 3,
+    "label": "Kontakion of the holy hierarch"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Dwelling bodily in Myra, O hierarch,\nthou wast shown to be noetically anointed with the myrrh of the Spirit, O father Nicholas.\nWherefore, thou hast perfumed the world with the myrrh of thy wonders,\npouring forth ever-flowing myrrh through thy memory and thy discourses, which are fragrant of myrrh.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "glory": {
+          "text": "Thou shinest forth upon the earth with rays of miracles, O wise Nicholas,\nmoving every tongue to the glorification and praise of Him Who hath glorified thee on earth.\nHim do thou beseech, that we who with faith and love honor thy memory\nmay be delivered from all want, O thou who art chosen among the fathers.",
+          "tone": 1,
+          "label": "Another Sessional Hymn"
+        },
+        "bothNow": {
+          "text": "Through the Holy Spirit didst thou conceive in thy womb God,\nthe Creator and Fashioner of all,\nO pure and all-immaculate one, and gave birth to Him without corruption.\nGlorifying Him, we hymn thee, O Virgin, as the palace of the King of all,\nthe protection of the world.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thou intercedest for the faithful, protecting and preserving them, O blessed one,\nand manifestly delivering them from all sorrow,\nO most comely glory and boast of hierarchs, venerable Nicholas.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Thou hast appeared today",
+        "glory": {
+          "text": "Receiving from God a well-spring of miracles, O wise father,\nthou pourest forth honeyed waters upon all the faithful, O blessed one;\nfor as a pastor and preacher of the Faith,\nthou didst carry out the words of the true Shepherd.\nWherefore, as thou hast boldness before Him,\nthou didst save men from death, O blessed hierarch Nicholas.\nEntreat Christ God, that He grant remission of sins\nunto those who honor thy holy memory with love.",
+          "tone": 8,
+          "melody": "Of the Wisdom"
+        },
+        "bothNow": {
+          "text": "I have fallen into the mire of sins, and there is no firm place for me.\nThe tempest of transgressions hath cruelly engulfed me.\nYet as thou hast given birth to the Word Who alone is the Lover of mankind,\nlook upon me, thy servant, and deliver me from every sin and the soul-destroying passions,\nand from every wicked affliction of the murderer,\nO Theotokos who knewest not a man.\nEntreat Christ God, that He grant me remission of sins,\nfor thee do I, thy servant, have as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Nicholas,\nand we honor thy holy memory;\nfor thou dost entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "O ye faithful, let us all piously praise the God-bearing Nicholas, the most wise hierarch,\nas a fervent ally and defender amid misfortunes and sorrows, sent by God;\nfor he prayeth to the Lord on behalf of those who with faith celebrate and hymn his divine memory.",
+      "tone": 5,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "The co-beginningless Word",
+      "glory": {
+        "text": "Thou hast been shown to be a most ardent intercessor for the Church of Christ, O Nicholas,\nboldly refuting the ungodly teachings of heresies,\nand thou hast been revealed to all as a standard of Orthodoxy,\npraying for all who follow thy divine teachings and instructions.",
+        "tone": 4,
+        "melody": "Go thou quickly before"
+      },
+      "bothNow": {
+        "text": "Quickly receive our prayers, O Lady,\nand bring them to thy Son and God, O all-blameless Sovereign Lady;\nextinguish the blasphemies of the evil-tongued heretics;\nbring to naught their devices,\nand cast down the impudence of the ungodly who make war against thy servants,\nO most pure One.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4,
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "John 10:9-16",
+      "number": 36,
+      "_note": "I am the good shepherd."
+    },
+
+    "postGospelSticheron": {
+      "text": "O heir of God, fellow communicant of Christ, minister of the Lord, holy Nicholas:\nas was thy name, so also was thy life.\nFor the radiance of thy countenance bore witness to thine intellect,\nshining forth in thine innocence of spirit,\nand thy serenity proclaimed thy meekness.\nThy life was glorious, and thy repose is with the saints.//\nPray thou on behalf of our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 1,
+      "_authors": { "first": "Theophanes (Canon I, Tone II; acrostic 'I chant divine hymnody unto thee, O Nicholas')", "second": "anonymous (Canon II, Tone I; alphabetic acrostic excluding Triadica + Theotokia)" },
+      "_canonNote": "Two hierarchical canons. Canon of the Theotokos (in Tone I, mentioned in Sergius rubric) omitted; parish practice typically uses only the two hierarchical canons. Canon II includes Triadicon troparia (Trinitarian, sung before the Theotokion at the end of each ode) as well as a final Theotokion.",
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,\nfor gloriously hath He been glorified.",
+        "irmos2": "Christ is born, render ye glory.\nChrist cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted.\nO all the earth, sing unto the Lord,\nand sing praises in gladness, O ye people,\nfor He hath been glorified.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Standing, crowned, before the throne of Christ with the angelic armies, O most wise Nicholas,\ngrant me the enlightenment which illumineth the darkness of my soul,\nthat, rejoicing, I may praise thy memory, O all-blessed one." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Lord Who glorifieth all who glorify Him hath given thee to the faithful\nas a refuge delivering from perils those who have recourse to thy protection,\nwho call upon thee with faith and love, O Nicholas." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The all-wicked serpent, instilling in me the desire to make myself equal with the Creator, took me captive;\nbut through thee, O all-pure one, I have been restored and truly deified,\nfor thou hast given birth to Him Who hath deified me, O Mother of God." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Though my tongue and lips are at a loss, O Nicholas,\nI have come to bring this meager praise and entreaty to thy godly excellence;\nbut, as thou art a bestower of riches,\nrender God the Savior merciful to me." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As a heavenly man thou wast shown to be angelic upon the earth,\na ready defender of widows, an avenger of the oppressed,\nand a helper amid misfortunes for all who are sorrowful, O father Nicholas." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All who are under the heavens speak of the abyss of the wonders of thy virtues, O thrice blessed Nicholas:\nthe poor call thee their intercessor, the orphans and widows their nurturer,\nthe blind their guide, and all mankind their champion." },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: I honor the uncreated Trinity—the Father, the Son and the Spirit—\nthe simple Being, the Godhead, the indivisible Essence,\nwhich existeth essentially in three Hypostases,\ndistinguished as to Person and Hypostasis." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Without seed thou didst conceive the Word Who is One of the Trinity, O all-immaculate one,\ngiving birth to Him in the flesh, yet remaining a virgin after birthgiving, as thou wast before.\nEver entreat Him on our behalf, in that He is thy Son and God." }
+        ],
+        "katavasia": "Christ is born, render ye glory…"
+      },
+
+      "ode3": {
+        "irmos": "The desert of the barren Church of the nations blossomed like a lily at Thy coming, O Lord,\ntherein hath my heart been established.",
+        "irmos2": "To the Son who was begotten of the Father without change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud:\nThou hast raised up our horn, holy art Thou, O Lord.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O blessed Nicholas, as thou art the true disciple of the Master\nthou savest from grievous misfortunes and bitter death those who have recourse to thee." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Cleanse thy servants, granting them remission of sins, in that Thou art good,\nthrough the mediations before Thee of Nicholas, Thy favorite, O greatly Merciful One." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Quell thou the turmoil of my soul, O all-pure one, and guide thou my life,\nO most holy one who hast given birth to God, in Whom my heart hath been established." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having acquired in thy heart tablets inscribed with many virtues\nby the immortal and most pure finger of Christ God, O Nicholas,\nsweetness's greater than that of honey or the honey-comb poureth forth from thy lips." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Grace most gloriously showed forth miracles in thee, O Nicholas,\nfor thy pure life, truly more lustrous than gold,\nillumines darkened souls with the radiance of the divine Spirit." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou livest even after death, manifestly appearing in dreams,\nand most gloriously delivering the young men from death,\ncrying aloud to the emperor: \"Do no harm to these men, who have been slandered by vainglorious jealousy!\"" },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: Be merciful, O all-holy Trinity our God, unto me who have defiled my life with immeasurable transgressions,\nO Father, Son and living Spirit, Who preservest me wholly and ever unwounded by sorrow." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, thou givest thy servants hope of salvation.\nStand forth in thy speedy supplications to preserve and help us amid wants and perils,\nfor thou art the boast of us, the faithful, O Ever-virgin." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Having ascended to the summit of the virtues and been illumined by the divine splendors of miracles O father,\nthou wast truly revealed to be a most radiant pastor for the world,\nand an invincible intercessor for us amid perils.\nWherefore, having most gloriously vanquished the enemy,\nthou didst drive falsehood away and save many from sin.\nO Nicholas, entreat Christ God, that He grant remission of sins\nunto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "The Abyss of mercy hath shown thee to be a river pouring forth healings in abundance\nand an inexhaustible well-spring of miracles, O Nicholas;\nfor those who are bitterly afflicted with grievous ailments\nand cruelly tormented by the vexations of life\ntruly find the curative healing of all suffering in thy fervent defense.\nWherefore, we cry aloud to thee: Entreat Christ God,\nthat He grant remission of transgressions unto those who with love celebrate thy holy memory.",
+          "tone": 8,
+          "label": "Another Sessional Hymn"
+        },
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving, and together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee: Glory to Thy power, O Lord!",
+        "irmos2": "Rod of the root of Jesse, and flower that blossomed from his stem,\nO Christ, Thou hast sprung from the Virgin.\nFrom the Mountain overshadowed by the forest\nThou hast come, made flesh from her that knew not wedlock,\nO God who art not formed from matter.\nGlory to Thy power, O Lord.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having in purity drawn nigh to the rays of the Spirit,\nthou didst become a light-bearer, illumining the ends of the world,\ninterceding for all, and saving all who have recourse to thee with faith." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As of old thou didst appear, delivering the young men from death, O venerable Nicholas,\nso now save me from every evil circumstance, from perils and misfortunes, O all-blessed one." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst shine forth with the effulgence of the virtues, O all-blessed one,\nas a most excellent emulator of thy Master;\nsaving those who invoke and glorify thee with reverence and love." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Incarnate, the Master of creation came upon thee,\nwholly saving me, in that He is compassionate.\nWherefore, we, the faithful, glorify thee as Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When thy name alone is invoked, with all speed it truly delivereth those who fervently call upon thee\nfrom all the counsels of the enemy, O sacred Nicholas.\nAs of old thou didst deliver the soldiers, so also save us from every grievous circumstance." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Standing before the throne of God, cease thou never to make earnest supplication\non behalf of all of us, thy faithful servants, O wise and wondrous Nicholas,\nthat we may be delivered from everlasting fire, from the enemy, from the wicked tongue, and from affliction." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou dost everywhere pour forth healings upon those who have recourse to thee,\ndelivering all from bondage.\nWherefore, by thy supplications which are acceptable to God,\ntransform our grief into joy, O most radiant Nicholas,\ncasting down the proud haughtiness of our enemies." },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: I honor and venerate the principality of the beginningless Godhead—\nthe Father, the Son, and the all-holy Spirit, which accomplisheth all things,\nand is one, indivisible, and ever distinguished in three sets of characteristics and Hypostases:\nthe single undivided Kingship." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou alone art truly more honorable than those on earth and those in heaven, O Birthgiver of God,\nfor thou didst conceive in thy womb the Creator of all, clothed in material flesh,\ngiving birth to Him without seed. O what a new wondrous sight!" }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,\nfor I know no other God than Thee.",
+        "irmos2": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel, granting us peace.\nWherefore guided towards the light of the knowledge of God,\nand watching by night we glorify Thee, O Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Enlightened by a godly life, O thrice blessed one, standing forth\nthou didst deliver those condemned by an unjust sentence to death,\nand who cried to Christ God: We know none other God than Thee!" },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Now beholding everlasting glory in the heavens,\nand delighting in the most splendid effulgence of ineffable and divine radiance,\nprotect me by thine intercessions, O venerable and most honorable favorite of Christ." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: That Thou mightest seek out Thine image, which had been buried by the passions, O Savior,\nhiding from the heavenly hosts, Thou didst appear, incarnate of the Virgin,\nto those who cry to Thee: We know none other God than Thee!" },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The great metropolis of Myra, the province of Lycia, and all the parts of thy homeland,\nproclaim thy wonders and miracles,\nwhereby thou dost deliver all from pain and sorrow, O divinely blessed father Nicholas." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As the feeder of wisdom and father of orphans, the most excellent help of those in sorrow,\nthe consolation of the grieving, the shepherd and guide of all the lost, O Nicholas,\nby thy supplications deliver us from misfortunes." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast passed over from earth to the immaterial mansions,\nwhere thou dost gaze upon the ineffable beauty of Christ,\nand hast been revealed to be a converser with the angelic armies.\nWherefore, joining chorus with the apostles and martyrs, earnestly pray for us to the Master of all, O father Nicholas." },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: I manifestly glorify the three independent Hypostases of the one, indivisible Godhead,\nco-beginningless and co-enthroned, by Whom I have been brought out of nothingness into existence;\nand with the angels I cry; Holy, Holy, Holy art Thou, O Lord!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure one, who alone settest salvation and hope before all mankind and savest them,\nhelp us now who cry aloud to thee and ever call upon thee amid grievous circumstances;\nfor after God, we have none other intercessor than thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh, came forth from her yet kept her incorrupt.\nFor being Himself not subject to decay, He preserved His Mother free from all harm.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The crown of victory hath fittingly been placed upon thy head, O Nicholas.\nAs thou art a most excellent victor, save those who call upon thee." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Appearing, O blessed one, save me who am slain by transgressions\nand engulfed by the threefold billows of the passions,\nand lead me to the harbor of the will of God." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: In thee, O Ever-virgin Mother, have I placed my hope of salvation,\nand thee do I set forth as the steadfast and unshakable intercessor for my life." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast been shown to be a new Abraham, O Nicholas,\nfor, ever offering up the un-bloody sacrifice,\nthou didst bring thy mind to thy Master as if it were thine only-begotten son;\nwherefore, thou wast blessed as a lover of strangers, O father,\nand became a divine and immaculate habitation of the Trinity." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou workest strange and awesome miracles, O Nicholas,\ninterceding in thy speedy supplications for those in peril throughout the earth and far out at sea,\nshowing thyself to the faithful as a physician of the sick, a feeder of the poor,\nand the namesake of victory over the enemy." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Foreseeing things yet to come with the eye of thy mind,\nthou didst fill all the ends of the earth with right doctrines,\nand, declaring to us that the Son is consubstantial with the Father,\nthou didst set at naught the savagery of Arius, O pillar of the Orthodox Faith,\nsetting forth thine honored corrections." },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: I venerate and honor the indivisible Trinity,\nwhich is ever distinguished in three Hypostases, and united in essence and nature, as a single Principal:\nthe Father, the Son and the Holy Spirit,\nWho with might hath dominion over all and preserveth all things as He so desires." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Wholly incarnate within thy womb, O most pure one, Christ God was born without seed;\nfor, unable to endure the sight of the work of His hands tormented by the deceiver,\nHe came in the guise of a servant to deliver the race of mankind." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "In Myra thou wast shown to be a performer of the sacred mysteries, O holy one,\nfor, fulfilling the Gospel of Christ,\nthou didst lay down thy life for thy people, O venerable one,\nsaving the innocent from death.//\nWherefore, thou hast been sanctified as a great initiate of the grace of God.",
+        "tone": 3,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "With songs let us now hymn the holy hierarch, the pastor and teacher of the people of Myra,\nthat we may be enlightened by his prayers.\nFor, lo! he hath been shown to be wholly pure, incorrupt of spirit,\noffering to Christ the immaculate and pure sacrifice which is right acceptable to God,\nas a hierarch pure in soul and body.\nWherefore; as a true intercessor and champion of the Church,\nhe is a great initiate of the grace of God."
+      },
+
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "Scorning the impious decree of the godless one,\nthe Children brought up together in godliness\nfeared not the threat of fire,\nbut standing in the midst of the flames, they sang:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Into precipitous temptation have I fallen, and am grievously pierced;\nI have drawn nigh unto the gates of Hades and am wounded by sorrows.\nSave me by thy supplications, O blessed one, and raise me up who chant:\nO God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Illumined with the immaterial rays of the never-waning Light,\nrescue the afflicted who find themselves in the darkness of tribulations,\nand guide to the light of gladness those who chant:\nO God of our fathers, Blessed art Thou!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Ask Christ, thy Son and God, O Virgin Birthgiver of God, for those sold under grievous transgressions\nand the deceptions of the serpent, that by His precious Blood they may be delivered who chant:\nO God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having been shown to be a most excellent physician of all manner of grievous ailments,\nand having healed the infirmity of my soul, O father Nicholas,\ngrant me goodly health, that I may cry: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having of old delivered the warriors from death, O holy one,\nthou didst raise them up to hymn and glorify Christ with ardent faith;\nand they cried aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having mystically approached the cup of wisdom, O father Nicholas,\nfrom thy lips thou didst let fall rain-drops sweeter than honey or the honey-comb,\ncommanding the people to cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: We hymn Thee, O Trinity, Thou thrice-effulgent consubstantial Unity:\nFather, Son and Holy Spirit. And having been baptized there-into, we chant:\nO God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: As thou art more exalted than all other creatures, O Theotokos,\nentreat thy Son and God, that those who truly honor and glorify thee may be delivered from torments,\ncrying: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "irmos2": "The furnace moist with dew was an image and prefiguring of a wonder past nature,\nburning not the children whom it had received,\nso the fire of the Godhead consumed not the Virgin's womb into which it had descended.\nTherefore in song let us sing:\nLet the whole creation bless the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "As thou art good and compassionate, O blessed Nicholas,\nfree those who are grievously mired in the abyss of perils,\ngranting them release from the evils which hold them,\nby thy supplications to Christ the Savior, O initiate of the sacred mysteries." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "As thou art an initiate of things which pass understanding,\nthe minister of things holy and celestial, and a faithful hierarch, O divinely wise one,\nask our Savior for remission of transgressions, O thou who art manifest in sanctity." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: My mind now faileth, having fallen into the abyss of impiety,\nfor I am beset on every side by divers evils;\nyet do thou heal me, O Virgin, clothing me in the light of dispassion." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The ranks of the patriarchs and apostles, the assemblies of the hieromartyrs,\nthe company of prophets and the whole council of fasters bless thy godly life;\nand with them we also cry aloud: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "O Most High, O Word, Thou King of all great in might!\nThrough the supplications of the venerable pastor grant peace to the life of all Christians,\naiding our Orthodox hierarchs in the struggle against heresy,\nthat with him we may cry out to Christ: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Illumined with light unapproachable, O father,\nthou shinest upon the souls of those in tribulation,\ndispelling all the gloomy darkness of perils, and enlightening our hearts with gladness.\nAnd enlightened thereby from afar, we cry aloud: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: Following the truly divine teachings of the fathers, with faith we hymn the Trinity—\nthe Father, the Son and the Holy Spirit—the Life and Lives, the One and Three Lights.\nAnd with them we piously chant: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Of old on Mount Sinai, the bush prefigured a strange mystery, O pure Maiden,\nburning without being consumed, depicting the mystery of thy birthgiving;\nfor the fire of the Godhead which dwelt within thee preserved thee unharmed.\nHim do we magnify throughout all ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "irmos2": "A strange and most wondrous mystery do I see:\nthe cave is heaven; the Virgin the throne of the cherubim;\nthe manger a room, in which Christ God, whom nothing can contain, is laid.\nWhom we praise and magnify.",
+        "troparia": [
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Enlightened by lamps of grace, O divinely wise one,\nthou didst manifestly become a lamp of piety:\nsaving those in danger, delivering those out upon the deep of the sea,\nand most gloriously feeding the hungry, O all-blessed one." },
+          { "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Dwelling now in the sweetness of paradise, and clearly beholding ineffable glory,\nthou lookest down from the circles of heaven upon those who hymn thee,\ndelivering them from sufferings, O all-blessed God-bearer." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure Mother of God, thou hast given birth to the Wisdom, Power and hypostatic Word of the Father,\nWho built the temple of His body from thy most pure blood,\nand inseparably joined Himself to it through unification." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ye who love the feasts of the Church, let us all join chorus in spirit.\nYe heavens, ye mountains and hills, ye choirs of virgins and of the Church, ye splendor of fasters:\nrejoice at the memorial of the all-blessed one;\nand, assembling together thereon, let us magnify the Savior." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With hymns let all the ends of the earth chant unceasingly,\nmanifestly adorning Nicholas, the favorite of Christ God, with wreaths of praise.\nThrough his supplications may we be delivered from sufferings and misfortunes." },
+          { "canon": "secondCanon", "refrain": "Holy Father Nicholas, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Nicholas, accept this meager effort as fitting hymnody,\nas Christ accepted the widow's two mites.\nDisdain not one accursed with passions,\nfor it is not out of pride that I presumed to do so, O thrice-blessed one." },
+          { "canon": "secondCanon", "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: The Trinity is united in a consubstantial will, yet it is indivisibly distinguished in Hypostases—\nthe Father, the Son and the living Spirit—the one God in three Hypostases,\never preserving His might. Him do we magnify." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: All grief hath been abolished by thy birthgiving,\nand the Lord hath taken away lamentation, weeping, and every tear from the face of mortals,\nO pure Theotokos who knewest not wedlock.\nIn thee do we also fulfill our debt." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Let us all praise Nicholas, the great arch-pastor, hierarch and prelate of Myra;\nfor he saved those who were unjustly condemned to be executed,\nappearing to the emperor and to Ablavius in a dream,\nannulling the unjust verdict.",
+        "label": "Exaposteilarion of the holy hierarch",
+        "melody": "Hearken, ye women",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "The Lord glorified thee greatly in miracles, both during thy life and after thine end,\nO hierarch Nicholas;\nfor whenever anyone, out of love for the Faith, doth but call upon thy holy name,\nhe is straightway heard, and findeth thee to be a fervent intercessor.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Having given birth to Christ, the hypostatic Wisdom, the transcendent Word,\nthe Physician of all, O Virgin,\nheal thou the grievous and longstanding wounds of my soul,\nand slay thou the passionate thoughts of my heart.",
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Lifting thine eyes unwaveringly toward the heights of understanding,\nand gazing mystically into the abyss of wisdom, O father,\nthou hast enriched the world with thy teachings.\nPray thou ever to Christ on our behalf,//\nO holy hierarch Nicholas.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "O man of God, faithful favorite, performer of His mysteries,\nman of divine desires, animate pillar and inspired image:\nthe Church of Myra, marveling, received thee as a divine treasure,//\nand an advocate for our souls.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Soaring above the flowers of the Church,\nlike a fledgling of the angelic nest of the Most High,\nO thrice-blessed Nicholas,\nthou ever criest out to God\non behalf of us who find ourselves amid violent misfortunes and temptations,//\ndelivering us by thy supplications.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "Thou didst make the beauty of thy priestly vesture\nyet more splendid through active virtues, O God-bearing father;\nwherefore, as a hierarch thou dost accomplish wondrous things for us,\ndelivering us from evils,//\nO sacred minister of glorious miracles.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe. (Ps. 150:4)",
+          "text": "Passing through the beauties of the invisible ones,\nthou didst comprehend the awesome glory of the saints, O holy one;\nwherefore, O most sacred father,//\nthou hast revealed to us in heavenly words the visions of those who live eternally.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals. Let everything that breathes praise the Lord. (Ps. 150:5)",
+          "text": "Thou didst stand before the pious emperor in a dream,\nand didst deliver the prisoners from death, O father.\nPray thou unceasingly,\nthat, by thy supplications,\nwe also, who praise thee well,//\nmay be delivered from temptations, misfortunes and pain.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Rejoicing, let us sound the trumpet of festal hymns,\nlet us leap up and join chorus on this the God-bearing father's prayerful celebration.\nLet kings and princes come together,\nand let them hymn him who by his dread appearance in a dream\nprevailed upon the king to release the three warriors who were unjustly imprisoned.\nO ye teachers and pastors of the good Shepherd,\nassembling, let us praise the pastor who showed forth love like His.\nAnd lauding the great hierarch, the physician of the infirm,\nthe redeemer of those in misfortune, the helper of sinners,\nthe treasure of the poor, the consoler of the sorrowful,\nthe companion of those who travel,\nthe helmsman of those at sea,\nwho fervently anticipateth the needs of all in every place,\nlet us say thus: O most holy Nicholas,\ncome forth and deliver us from these present tribulations,//\nand save thy flock by thy supplications!",
+        "tone": 5,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "Let us sound the trumpet of hymnody!\nFor the Queen of all, who is both Mother and Virgin,\nhath been revealed from on high, and with blessings crowneth those who hymn her.\nLet those who exercise dominion assemble and in hymns praise the Queen\nwho hath given birth unto the King Who before was well-pleased, in His love for mankind,\nto deliver those held fast by death.\nYe pastors and teachers, assembling, let us praise the most pure Mother of the good Shepherd,\nthe golden lamp-stand, the Light-bearing cloud, her who is more spacious than the heavens,\nthe animate ark, the fiery throne of the Master,\nthe golden jar which received the Manna, the gate of the Word which was shut,\nthe refuge of all Christians;\nand praising her with divinely eloquent hymns, let us say thus:\nO palace of the Word, vouchsafe the kingdom of heaven unto us, the lowly,//\nfor naught is impossible for thy mediation.",
+        "tone": 5,
+        "author": "by Germanus the Patriarch",
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Nicholas our father,//\nentreat Christ God, that our souls be saved.",
+      "tone": 4
+    }
+  }
+}

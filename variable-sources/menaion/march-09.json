@@ -1,0 +1,395 @@
+{
+  "_meta": {
+    "feast": "The Holy Forty Martyrs of Sebaste",
+    "feastKey": "fortyMartyrs",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 03-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/03-09.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons both in Tone II: Canon I by John the Monk (acrostic 'I hymn the divinely-crowned company of martyrs'); Canon II by Theophanes (acrostic 'I hymn the divinely-crowned regiment of martyrs'). Falls during Great Lent — sessional hymns reflect the Saturday-of-Lent variant from the Sergius PDF. When Mar 9 lands on a Lenten weekday, parish practice typically transfers the festal Matins to the nearest Saturday or anticipates with First Hour. Magnificat retained. Single-tone two-canon (both Tone II); the two Tone-II irmoi are identical for some odes."
+  },
+
+  "troparion": {
+    "text": "By the pangs which Thy saints, suffered for Thee,\nhearken unto us, O Lord,\nand heal all our diseases,//\nwe beseech Thee, O Lover of mankind.",
+    "tone": 1,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Having fully left the army of the world,\nye cleaved unto the Master in the heavens,\nO forty passion-bearers of the Lord;\nfor, having passed through fire and water,\nO blessed ones,\nye received glory from the heavens as is meet//\nand a multitude of crowns.",
+    "tone": 6,
+    "label": "Kontakion of the holy martyrs"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "O ye forty divine martyrs of Christ,\nlike the greatest of stars ye ever illumine the honorable firmament of the Church\nand enlighten the faithful.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice (Saturday-of-Lent variant per Sergius; on a Lenten weekday the K1 + K2 sessional hymns come from the Triodion).",
+        "bothNow": {
+          "text": "Accepting the entreaty of us\nwho have recourse to thy protection, O Virgin,\ncease thou never to make supplication to Him\nWho is the Lover of mankind,//\nthat He save thy servants.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "O wondrous passion-bearers, passing over torment with most manly intent,\nye passed through fire and water,\nand crossed over to the wide spaces of salvation,\nreceiving the Kingdom of Heaven as an inheritance.\nWherein do ye make divine supplication on our behalf,\nO ye wise forty athletes.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Having been lifted up",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Theotokos and Sovereign Lady, we, thy servants,\nthankfully chanting from our hearts and earnestly entreating thy mercies, cry out, saying:\nO most holy Virgin, go thou before us\nand deliver us from our enemies, visible and invisible,\nand from every threat, for thou art our aid.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, O holy passion-bearers,\nthe forty martyrs of Christ,\nand we honor your honorable sufferings.",
+      "verses": [
+        "We went through fire and water, and Thou didst bring us out into refreshment.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Adornment of the holy martyrs! Lo! the divinely assembled company of the forty warriors of four-fold radiance!\nTried by fire and intense cold, the wise ones were truly revealed to be soldiers of Christ, the King of all,\nentreating Him that we be saved.",
+      "tone": 5,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "The co-beginningless Word",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "I weep now before the Judgment, O pure one,\nmindful of my wicked and evil deeds,\nof the abyss of my transgressions which hath grown from my youth,\nstifling my mind.\nBut by their intercession grant me forgiveness,\nand grant that I obtain salvation.",
+        "tone": 5,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "We went through fire and water,\nand Thou didst bring us out into refreshment.",
+      "verse": "Thou tried us even as silver is tried by fire.",
+      "tone": 4,
+      "_psalmRef": "Ps. 65:12 / 65:10"
+    },
+
+    "gospel": {
+      "reading": "Luke 21:12-19",
+      "number": 106,
+      "_note": "Persecution prophesied; 'In your patience possess ye your souls.'"
+    },
+
+    "postGospelSticheron": {
+      "text": "Prophetically David cried aloud in the Psalms:\nWe went through fire and water, and Thou didst bring us out into refreshment!\nAnd ye, O martyrs of Christ, fulfilling the word in very deed,\npassed through fire and water, and entered into the Kingdom of Heaven.\nWherefore, pray, O ye forty athletes,//\nthat we be granted great mercy.",
+      "tone": 2,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 2,
+      "_authors": { "first": "John the Monk (Canon I, Tone II; acrostic 'I hymn the divinely-crowned company of martyrs')", "second": "Theophanes (Canon II, Tone II; acrostic 'I hymn the divinely-crowned regiment of martyrs')" },
+      "_canonNote": "Both canons in Tone II; their irmoi are identical for each ode. Katavasiae: 'I shall open my mouth' (the Theotokos canon irmoi).",
+
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;\nfor He hath been glorified.",
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;\nfor He hath been glorified.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With hymns inspired by God I praise the divinely-crowned regiment of the martyrs of Christ,\nradiantly celebrating the annual commemoration of the forty,\nfor He hath been glorified!" },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Rejecting every title on earth, the forty desired the title of Christian,\nwherefore they now dwell in the Highest." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Living in Christ and despising the flesh and the world,\nye put off the old man and this transitory vesture,\nand clothed yourselves in the garment of incorruption." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Who is able fittingly to recount thy conceiving which surpasseth telling?\nFor thou, O most pure one, hast given birth in the flesh to God, the Savior of us all,\nWho hath revealed Himself unto us." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "By your supplication, O ye forty martyrs,\nrender God well-disposed towards us who call upon you with the pure love of our hearts." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Enlightened in the heavens with the rays of the splendor of the three-fold Sun,\nO ye forty martyrs, protect us who hymn you on earth,\nfrozen over by the winter of temptations." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O forty martyrs, invincible and unshaken rampart of piety and the Church:\ndo ye now pacify that which doth grievously trouble the Christian calling." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Theotokos, Mother who hath not known a man,\nthou hast given birth unto the Creator and Lord Who is supra-naturally over all\nand Who, for our sake, took upon Himself our flesh." }
+        ],
+        "katavasia": "I shall open my mouth, and it shall be filled with the Spirit…"
+      },
+
+      "ode3": {
+        "irmos": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee plant the fear of Thee.",
+        "irmos2": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee plant the fear of Thee.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Disdaining the army and life, the comeliness of their bodies and wealth,\nthe glorious forty martyrs inherited Christ instead of all of these things." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When the forty martyrs were beaten mercilessly with stones at the command of the tormentors,\nthrough the Spirit of God the stones were hurled back against those who commanded that they be beaten." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The serpent of him who invented blasphemy spake through the lips of the tormentors,\nbut his God-opposing mouth hath been broken by the rocks hurled against the martyrs." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Without seed didst thou conceive God in thy womb,\ngiving birth to Him who was ineffably incarnate;\nupon Whom the hosts of Heaven dare not gaze, O pure Ever-virgin." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ye martyred company and united chorus of crowned martyrs:\nstanding before the Master, ever save us who sing your praises." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Battered by the lake of the passions and by the waves of grievous temptations,\nwe flee to you, Christ's forty warriors." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Warmed in the bosom of Abraham and adorned with glorious apparel,\npray ye that Christ grant forgiveness unto those who are bound by the winter of evil circumstances." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Bride of God: be thou the confirmation, refuge and protection\nof those who have recourse unto thee in faith\nand confess thee to be the Mother of God." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Having served Christ in martyrdom as warriors, and having cast down the enemy through suffering,\nin your deeds ye fulfilled the words of the Prophet:\nye went manfully through fire and water, finding refreshment, and life incorruptible.\nWherefore, adorned with heavenly crowns,\nye rejoice with the choirs of the bodiless ones, O blessed and all-praised passion-bearers.\nEntreat Christ God, that He grant forgiveness of sins unto those who honor your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our innumerable sins,\nand fleeing unto the safe harbor of thy goodness O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee\nto ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,\nthat those who worthily hymn thee//\nmay be granted the remission of their sins.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee Who alone lovest mankind.",
+        "irmos2": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee Who alone lovest mankind.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"O ye most iniquitous ones, ye have been made to vainly offer such a poor bargain!\" said the sufferers." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Sharpened swords and wild beasts, fire and the cross\ndid the tormentors offer to the saints of Christ." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"The fire of Gehenna is frightful to us, but we are not afraid of any of our fellow servants here present,\"\nsaid the athletes." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"Let our arms be cut off, let our feet be burned,\" the holy ones cried out,\n\"for we shall receive them back incorruptible.\"" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We beseech thee, O most pure one who didst conceive God without seed:\never pray for thy servants." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O martyrs, through God ye have become our illumination,\nfor ye have clothed yourselves in undimmed splendor." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O divinely elect and crowned assembly of martyrs,\npray that those who hymn you be delivered from misfortunes." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O holy ones, having been deemed worthy to behold the unwaning light of Christ,\nye shine forth upon those who sit in darkness." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Shining with the noetic radiance of Christ, O ye glorious ones,\nguide us to the divine illumination." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Hymning Him Who was incarnate from thy womb, O pure one,\nwe glorify thee as the Mother of God." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,\nfor we know none other God than Thee.",
+        "irmos2": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,\nfor we know none other God than Thee.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Through the most mindless savagery of the tormentors,\nthe spiritual athletes, condemned to spend the night in the open air in the cold,\nchanted a hymn of thanksgiving unto God." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Rejoicing, the forty martyrs endured the painful ice, standing in the lake,\nyet were strengthened with the hope of divine crowns." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The serpent which before had made its nest in the waters, and now driven out,\nbecame an object of scorn for the forty martyrs of Christ,\nfor he was deprived of his deadly strength." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: To thee who hast given birth to Christ, the Creator of all, do we cry aloud:\nRejoice, O pure one! Rejoice, thou who hast shone forth the Light upon us!\nRejoice, thou who didst contain the infinite God!" },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "From the raging of the heretics do ye now deliver the honorable Church of Christ, O forty martyrs;\nfor, having been born within Her, ye have passed on to great dignity and glory." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Appearing to us, the forty divinely splendid martyrs of Christ\nlike fiery beacons light the salvific way of piety for the faithful." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Passing over from earth to the shelter of Heaven,\nwhere ye stand before Christ, the Judge of the contest, O martyrs,\ndeem me worthy to acquire divine joy." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Maiden Sovereign Lady, thou didst truly bear God as thy divine Offspring,\nas a mystery inscrutable and incomprehensible to all,\npassing all understanding." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With joy the author of enmity snatched him that fell away from the forty\nas did the wretched Judas from the twelve apostles,\nand mankind from Eden." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Being shameless, the devil rageth in vain,\nfor as of old by the thief and Matthias,\nso now by one in the office of guardsman, the tyrant hath also been rent asunder." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Vain-minded and worthy of lamentation is he who missed both lives,\nfor thawed by the fire, he departed into the unquenchable flames." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, thou hast given birth without knowing a man,\nand remainest forever a virgin,\nrevealing the images of thy Son and God, the true Deity." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O mighty ones, ye have been revealed to be watchful and vigilant preservers of the human race,\noffering up supplications, and set forth as helpers of the grieving." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Shining forth in the Church of Christ in your unexcelled beauties, O all-praised ones,\ndeliver those who honor you with love from all temptations." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Of old ye became destroyers of the deception of the demonized persecutors, O most eminent ones;\nand now be our ready help and rampart." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: On thee have I placed my hope of salvation, O Ever-virgin Mother;\nand Thee have I appointed as the steadfast and unshakable intercessor of my life." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Having fully left the army of the world,\nye cleaved unto the Master in the heavens,\nO forty passion-bearers of the Lord;\nfor, having passed through fire and water,\nO blessed ones,\nye received glory from the heavens as is meet//\nand a multitude of crowns.",
+        "tone": 6,
+        "label": "Kontakion of the holy martyrs"
+      },
+      "ikos": {
+        "text": "Unworthy as I am, I fall down before Christ Almighty, our Creator and God,\nWho sitteth upon an unapproachable throne, Who stretched out the heavens as it were a curtain,\nWho established the earth, Who gathered the waters in the bodies thereof,\nWho created all things out of nothing,\nWho granteth breath and life unto all,\nWho receiveth hymnody from the archangels,\nis worshipped by the angels and is glorified by all;\nand offering up entreaty, I beg the grace of eloquence,\nthat even I may piously hymn the saints whom He Himself showed forth as victors,\ngranting them glory from the heavens and a multitude of crowns."
+      },
+
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The guard set over the forty martyrs was struck with awe, beholding their crowns;\nand, rejecting that which bound him to life,\ntaking wing with the love of Thy manifest glory,\nwith the martyrs he sang: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Hastening to the soul-destroying bath, he that loved his life died;\nbut he that loved Christ, being a most exemplary apprehender of those things which he beheld,\nsang with the martyrs as in a bath of incorruption: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When the noetic fire flared up in the minds of the forty,\nthe most subtle madness of the impious was consumed, as it were melting wax.\nAnd to Thee, O Christ, they sang: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The power of Thy Cross, as exceeding splendid and magnificent, O Christ,\ndoth weave crowns for the forty martyrs with opposites;\nfor, having passed through fire and water,\nthey cry out in incorruption: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: On Mount Sinai Moses foresaw thee, O pure one, as a burning bush\nwhich, without being consumed, bore the unbearable radiance of the ineffable Being,\nWho as One of the holy Hypostases, hath united Himself to the coarseness of our flesh." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Your annual commemoration hath radiantly dawned, O ye spiritually rich martyrs,\nshining far, radiant with the splendor of the Fast.\nAnd celebrating it with faith, we chant with you:\nO God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "To all ye have been revealed to be as ones loosened from the passions\nand beacons shining from afar, the cleansing of the world,\nthe destruction of deception, clear-voiced proclaimers of the truth and expellers of falsehood,\nchanting: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Ye have been revealed to us as noetic beacons shining forth, O martyrs;\nfor ye save the tempest-tossed and guide those who sail and are battered by the storm of life,\nchanting unto Christ: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Beautiful to God and desirable to the angels is the divinely assembled and most splendid regiment of the forty martyrs\ninspired by God, the godly and awesome company which crieth out, saying:\nO God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: A beacon of light, a luminous cloud and a hallowed place hast thou been revealed to be,\nO thou who knewest not wedlock, for thou didst ineffably receive the Word, the Holy One of those who are holy.\nAnd chanting unto Him, we cry aloud: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "irmos2": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Savagely inciting every creature against the athletes,\nthe enemy hath been put to shame by them all,\nfor the forty martyrs unceasingly hymn and supremely exalt the Lord throughout all ages." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Cruelly were the members of your bodies crushed for Christ,\nand ye were offered unto God as a divine holocaust;\nwith the angels ye ever hold chorus, O martyrs, hymning Christ throughout all ages." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "With steadfast intent the Christ-loving mother took upon her shoulder him to whom she had given birth;\nand she offered him up as the fruit of piety, a martyr among martyrs,\nemulating the sacred action of Abraham." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "\"Make thy journey running straight to everlasting life, O my son,\"\nthe Christ-loving mother cried out to her Christ-loving child,\n\"for I could not bear to see thee appear in second place before Christ, the Judge of the contest!\"" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Son Who is not parted from the bosom of the Father,\nyet made His abode in thy maternal womb, O pure Virgin Bride of God,\ndo we hymn and supremely exalt throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Ye steadfastly gave yourselves over to a painful death in the midst of winter, O valiant ones;\nand now, having passed on to the true life which is hidden in Christ,\nye ask for salvation and forgiveness for us." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Having passed over from earth to the heavens, O crowned spiritual athletes,\nye chorus of victorious martyrs of the Church,\nask for us salvation and deliverance from misfortunes, passions and evil circumstances." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Rending asunder the bonds of death, the Savior hath given victory over death to His martyrs,\nfor, warmed by the cold, the forty sang, asking for salvation for all the faithful." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Through prayer the divine choir of passion-bearers manifestly drive the assaults of dangers,\nthe attack of the passions and the temptations of the demons away from those who hymn Christ throughout the ages." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Mortals given over to the dust of mortality and to corruption hast thou alone raised up,\nO pure Lady, Virgin Birthgiver of God,\nhaving given birth to Christ our God, the Author of life." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,\nHim we faithful with one accord magnify in song.",
+        "irmos2": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,\nHim we faithful with one accord magnify in song.",
+        "troparia": [
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Stripped naked and beaten with stones for the sake of Christ,\nye endured the wintry air, icy water and crushing of your limbs;\nand having been consumed by fire, O ye forty martyrs,\nye shine forth in the rushing river like beacons." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having acquired the Cross as a staff of divine power,\nthe forty spiritual athletes cried out to Christ:\nO Master, almighty Conqueror, crown us by Thine own hand,\nthat we all may unceasingly magnify Thee with hymns!" },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The pain of the ice and boundless cruelty of the cold did ye endure, O forty martyrs;\nbut paradise is sweet, for the bosom of the Patriarch Abraham doth warm you in the eternal mansions." },
+          { "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Manifest as conquerors by your sufferings,\nand having received crowns from the divine right hand of the Master, O forty martyrs,\npray ye now that peace be granted to the world and victory and salvation to us." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The multitudes of angels entreat thy Son, O Virgin Bride and Mother.\nAccept thou our supplication, O thou who alone art the hope of the faithful;\ngrant peace to the world, and victory and salvation unto us who love thee." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Supra-natural illumination and ineffable joy and glory have ye been deemed worthy to receive;\nand now, O soldiers of Christ, ye forty martyrs,\nfrom temptations, misfortunes and the wickedness of the enemy\ndeliver those who honor you with love." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having received power and might from the heavens, O ye most noetically rich martyrs,\nfellow prisoners of Christ, in that ye have become dispellers of falsehood,\ndrive away all the ephemeral gloom of idolatry and enlighten the world, O ye forty martyrs." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Adorned with the comeliness of an honorable martyrdom, and sharing in divine life,\nO forty martyrs, warriors of Christ, ye truly rejoice,\nunited to the most radiant and pure Light." },
+          { "canon": "secondCanon", "refrain": "Holy Forty Martyrs of Sebaste, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Standing now before Christ with the boldness of piety,\nand illumined with the light of the Godhead, O glorious forty martyrs,\nearnestly beseech Him, that those who praise you be illumined with the thrice-luminous radiance." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, portal of divine Light, with the immaterial rays of thy light\nillumine the manifest twilight of my soul,\nand grant that I who magnify thee faithfully and lovingly with hymns, O pure one,\nbe delivered from everlasting fire." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Let us hymn the company of forty as is meet, the victorious regiment,\nthe array of the holy martyrs,\nfor by fire, ice and water they have put to shame the regiments of the adversary\nand received crowns of glory from Christ the Savior.",
+        "tone": 3,
+        "label": "Exaposteilarion of the holy martyrs",
+        "melody": "Hearken, ye women",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Let the forty-member choir of the forty who were martyred for the supremely divine Trinity\nand the four-fold virtues, by the four elements: fire, air, water and earth,\nbe hymned with divine songs,\nfor they suffered for Christ, the Master of all.",
+        "tone": 3,
+        "label": "Another Exaposteilarion (at Glory)",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "O Virgin Mother who, though a maiden, hast given birth to the Master of all things and all creation:\nrescue me from the passions which torment me,\nand lead me to the radiance of thy tender compassion\nand to the most beautiful Pascha of thy risen Son.",
+        "tone": 3,
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 5,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Come ye, O brethren, and with praises let us hymn the regiment of martyrs\nwhich was consumed by fire and cold,\nand with burning zeal burned up the winter of deception,\nthe most brave army, the most sanctified company,\nthe unvanquished and invincible protection,\nthe rampart and protectors of the faith,\nthe divine choir of the forty martyrs\nwho mightily entreat Christ, the Mediator of the Church,//\nthat He send down upon our souls peace and great mercy.",
+          "tone": 5,
+          "melody": "Rejoice",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Rejoice, mighty and courageous assembly, victorious regiment,\npillars of piety, warriors of Christ,\nsteadfast and invincible swordsmen,\ntruly divine, most mighty of mind and manly of soul,\nholy choir desired of God, divinely elect company,\nO ye forty martyrs equal in suffering,\nequal also in character, and who received equal crowns://\nentreat Christ, that He grant our souls peace and great mercy!",
+          "tone": 5
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "Rejoice, victorious multitude, who were valorously courageous in battle,\nye stars who passed through fire and cold,\nwho broke asunder the water's ice,\nwho have rendered the earth heavenly and illumined all,\nand who are now warmed in the bosom of Abraham,\nhaving joined chorus with the armies of the angels.\nO ye forty martyrs, flowers emitting the fragrance of spiritual diffusion://\nentreat Christ, that He grant our souls great mercy.",
+          "tone": 5
+        }
+      ],
+      "doxastikon": {
+        "text": "O passion-bearers of Christ, ye have rendered the most honorable Fast radiant\nthrough the commemoration of your glorious suffering;\nfor, being forty in number, ye hallow the forty days of Lent,\nemulating the Savior's suffering in your own suffering for Christ.\nWherefore, as ye are possessed of boldness,\npray that we in the world may attain unto the Resurrection on the third day,//\nof God the Savior of our souls.",
+        "tone": 5,
+        "author": "by John the Monk",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "We, the faithful bless thee, O Virgin Theotokos,\nand we glorify thee as is meet,\nfor thou art the impregnable city, the impassable rampart,\nthe steadfast intercessor and refuge of our souls.",
+        "tone": 5,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "By the pangs which Thy saints, suffered for Thee,\nhearken unto us, O Lord,\nand heal all our diseases,//\nwe beseech Thee, O Lover of mankind.",
+      "tone": 1
+    }
+  }
+}

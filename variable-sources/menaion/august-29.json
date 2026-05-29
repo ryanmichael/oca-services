@@ -1,0 +1,387 @@
+{
+  "_meta": {
+    "feast": "The Beheading of the Holy Glorious Prophet, Forerunner, and Baptist John",
+    "feastKey": "beheadingForerunner",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 08-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-29.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons: Canon I by John the Monk in Tone VIII (8 troparia); Canon II by Andrew of Crete in same Tone (6 troparia). Strict fast day — faithful abstain from meat, cheese, eggs, fish. The Beatitudes troparia at Liturgy are drawn from canon Ode III/VI per the Sergius rubric."
+  },
+
+  "troparion": {
+    "text": "The memory of the just is celebrated with hymns of praise\nbut the Lord's testimony is enough for thee, O Forerunner,\nfor thou wast shown to be more wonderful than the Prophets\nsince thou wast granted to baptize in the running waters Him Whom thou didst proclaim.\nThen having endured great suffering for the Truth,\nThou didst rejoice to bring, even to those in Hades\nthe good tidings that God had appeared in the flesh\ntaking away the sin of the world//\nand granting us great mercy.",
+    "tone": 2,
+    "label": "Troparion of the holy forerunner"
+  },
+  "kontakion": {
+    "text": "The glorious beheading of the forerunner\nwas part of God's dispensation,\nthat he might proclaim to those in Hades\nthe coming of the Savior.\nLet Herodias, who demanded the iniquitous murder, therefore lament;\nfor she loved not the law of God nor the age of life,//\nbut rather this false and transitory one.",
+    "tone": 5,
+    "label": "Kontakion of the holy forerunner"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Assembling, O ye faithful, let us praise together the mediator between the law and grace;\nfor he preached repentance to us\nand, having boldly and publicly denounced Herod, was beheaded.\nAnd dwelling now with the angels, he entreateth Christ, that our souls be saved.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The co-beginningless Word",
+        "glory": {
+          "text": "Celebrating thy radiant memory today, we beseech thee, O forerunner:\nearnestly entreat the Savior and Lord, that He grant forgiveness of sins unto all.",
+          "tone": 4,
+          "melody": "Thou hast appeared today"
+        },
+        "bothNow": {
+          "text": "O ye faithful, let us bless the Theotokos,\nour helper, the fervent aid of those amid misfortune,//\nby whom we have been delivered from foreign bondage.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "In hymns let us praise John the forerunner, the baptizer of Christ,\nthe prophet who was revealed unto us in his mother's womb,\nthe luminary who manifestly issued forth unto the world from a barren woman,\nthe victorious spiritual athlete;\nfor he prayeth to the Lord, that our souls find mercy.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "glory": {
+          "text": "Now hath the baptizer of the Savior, the adornment of the desert and seal of the prophets,\nappeared unto us, and maketh glad the thoughts of the faithful with understanding.\nWherefore, the forerunner of Christ hath been shown forth, the true witness to His coming.\nLet us therefore cry out together unto John with spiritual hymns:\nO prophet, preacher of the truth, pray thou that we be saved.",
+          "tone": 4,
+          "melody": "Joseph marveled"
+        },
+        "bothNow": {
+          "text": "All the choirs of Angels were struck with wonder, O Pure Virgin,\nat the awesome mystery of thy conception.\nHow can the One who doth hold all things in place with only a nod,\nnow be held in Thine arms as a man?\nHow can the Eternal accept a beginning?\nHow can the One who nourishes everything that hath breath by His ineffable goodness,\nbe suckled at thy breast?\nAnd upon seeing these things, with hymns they glorify thee//\nas truly the Mother of God.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O John, thou baptizer of the Savior,\nand we all honor the severing of thy precious head.",
+      "verses": [
+        "Blessed is the man that feareth the Lord. In His commandments shall he greatly delight.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Having denounced Herod for the iniquity of Herodias, O ye faithful,\nthe forerunner, baptizer and angel of the Redeemer of all dieth, beheaded,\nthat he might proclaim with boldness to those in Hades the glad tidings\nthat God would descend thereto, to make death captive.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the piping of the shepherds",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "The Word of the Father descended to earth,\nand the radiant angel said to the Theotokos:\n\"Rejoice, O blessed one who alone hast preserved the bridal chamber,\ndo thou accept the conception of the pre-eternal God and Lord,\nthat He might, as God, save the human race from deception.\"",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4,
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "Matthew 14:1-13",
+      "number": 57,
+      "_note": "Herod the tetrarch hearing of Jesus; the death of John."
+    },
+
+    "postGospelSticheron": {
+      "text": "The disciple of the most evil devil danced,\nand received thy head as her reward, O forerunner.\nO feast full of blood!\nBetter would it have been not to have sworn thine oath, O iniquitous Herod, grandson of lies!\nFor even though thou didst make thy vow, it was not well sworn.\nBetter would it have been to be proved false,\nthan to cut off the head of the forerunner, who spake the truth.\nYet, honoring the Baptist as the greatest born of women,//\nwe call him blessed, as is meet.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "John the Monk (Canon I, Tone VIII, 8 troparia)", "second": "Andrew of Crete (Canon II, Tone VIII, 6 troparia)" },
+      "_canonNote": "Two canons of the holy forerunner. Both in Tone VIII. Katavasiae are those of the Cross.",
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "irmos2": "Unto Him Who overthrew the tyranny of Pharaoh in the sea\nand led Israel over dry land,\nlet us chant unto Christ our God,\nfor He hath been glorified throughout the ages.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Let us hymn the sacred forerunner, the prophet who appeared from the womb of a barren woman\nunto Him Who ineffably is borne in the Virgin's womb." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having transcended the boundaries of nature,\nthou didst preserve the laws of righteousness,\ndenouncing an iniquitous union, undaunted by the king's cruelty." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Nurtured by the law as with milk,\nthou didst oppose the vile adultery,\nsealing the legislation of lawful union like a seal of the law." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The ranks of angels and mortals praise thee unceasingly, O Mother unwedded;\nfor thou didst bear the Creator in thine arms as a babe." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The beauteous lamb of the wilderness, the fruit of Zachariah,\nand the offshoot which Elizabeth bore beyond hope,\ncommandeth the faithful to celebrate his honored memory beforehand." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O birthday full of blood! O abominable feast!\nFor Herod mingled drunkenness with slaying,\nand his table was full of vile murder." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ye faithful, let us hymn the Baptist who denounced iniquitous Herod\nand endured beheading, slain for his zeal for God." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou hast given birth to the infinite Word of God,\nWho made His abode within thee, O pure Birthgiver of God,\nand ineffably became incarnate from thee twofold in nature, as thine only Son." }
+        ],
+        "katavasia": "Inscribing the invincible weapon of the Cross upon the waters,\nMoses marked a straight line before him with his staff and divided the Red Sea,\nopening a path for Israel who went over dry-shod.\nThen he marked a second line across the waters and united them in one,\noverwhelming the chariots of Pharaoh.\nTherefore let us sing to Christ our God, for He hath been glorified."
+      },
+
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful, O only Lover of mankind.",
+        "irmos2": "There is none as holy as the Lord, and none as righteous as our God,\nWhom the whole of creation doth hymn:\nThere is none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As mediator standing between the old and the new covenant of the Gospel preaching,\nthou didst denounce the iniquitous union of the tyrant,\nand, rejoicing, didst accept a glorious death." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Instructed beforehand by her iniquitous mother,\nthe girl said unto Herod, who was befuddled with drunkenness:\n\"Give me the head of John on a platter, that I may present to my mother the gift she desireth!\"" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The shameless tyrant, unable to endure the reproof of thy God-bearing tongue, O glorious prophet,\ngave thy precious martyr's head to the girl as a reward for her dancing." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Having made thy bodily abode within the Virgin, O Lord,\nThou didst appear unto mankind, in that it was fitting that they behold Thee.\nHer didst Thou show to be the true Theotokos and the help of the faithful,\nO thou only Lover of mankind." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"None greater than John hath arisen among those born of women!\" cried Christ the Truth;\nfor in the womb the created being recognized the One Who had created him,\nand proclaimed Him with his mother's voice." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having first pointed to the Lamb with his finger,\nhe next denounced Herod with his tongue,\nand, lastly, poureth forth miracles upon us through his head, as from a sacred vessel." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy nativity was glorious, thy life blameless, and thy departure honorable, O Baptizer of Christ.\nThy pointing to Christ was awesome, thy death was precious, and thy burial full of glory." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: As God, O Only-begotten One, thou didst abase Thyself,\nthat Thou mayest save those whom Thou hadst created,\nfor whose sake Thou didst become a man, incarnate of the Virgin;\nand transforming my whole nature, Thou hast brought it to Thy Father." }
+        ],
+        "katavasia": "The rod of Aaron is an image of this mystery,\nfor when it budded it showed who should be priest.\nSo in the Church, that once was barren,\nthe wood of the Cross hath now budded forth,\nfilling her with strength and steadfastness."
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Having shone forth by the judgment of God from a barren woman,\nand loosed the bonds on the tongue of thy father,\nthou didst show forth the Sun Who illumineth thee as the morning-star,\nand to the people in the wilderness didst proclaim the Creator,\nthe Lamb Who taketh away the sins of the world.\nWherefore, thou didst denounce the king with zeal, O ever-memorable and all-praised John,\nand thy most glorious head was cut off.\nPray thou to Christ God, that He grant forgiveness of sins\nunto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving, and together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "From the overshadowed mountain, from the only Theotokos,\nthe Prophet in divine vision foresaw Thy coming in the flesh, O Word,\nand with fear he glorified Thy power.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He who was unable to endure the censure of boldness and the forthrightness of piety,\nwho incurred the retribution of the law, who was depraved by vile pleasures,\nhaving bound him who is enrolled immaterially in the heavenly choirs before the end,\nplaced him under guard." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The wretched voluptuary, sick with spiritually harmful drunkenness and the burning of fornication,\nhaving been bound by the dancing of a young woman's feet,\nbecameth the murderer of the prophet;\nfor he conceived drunkenness, the mother of fornication, and begat grievous iniquity." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Of a truth, in thee the divine voice did not prove false;\nfor thou art the greatest among the prophets,\nin that thou wast deemed worthy to prophesy from thy mother's womb,\nas a fetus not fully formed, and seeing God the Word Whom thou hadst prophesied,\nthou didst baptize Him in the body." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou art the boast of the faithful, O thou who knewest not wedlock;\nthou art the intercessor and refuge of Christians, their bulwark and haven.\nFor thou bearest entreaties to thy Son, O all-immaculate one,\nand savest from misfortunes those who with faith and love know thee to be the pure Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst make clear to us the kingdom of Christ,\nshowing the people the paths of repentance,\nand denouncing the iniquitous Herod, O wise John, thou great preacher." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Unable to bear reproof, Herod was overcome with wrath, jealousy and bitterness, O Baptist;\nand he marked the day of his birth by cutting off thy head, O preacher of Christ." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Be glad, O Baptist, that thy soul may make merry;\nfor here thou didst denounce the ungodly Herod,\nwhile in Hades thou didst preach to the souls, saying: \"Our salvation draweth nigh!\"" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The earth marvelleth at thy life, O John;\nheaven proclaimeth thine unjust murder;\nand the Church, chanting, declareth the multitude of thy virtues." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Born of the immaculate Virgin Mother, O Thou Who hast put on my whole nature save for sin,\nThou didst preserve her pure even after she gaveth birth." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Thou hast enlightened with the knowledge of God\nthe ends of the universe that lay in the night of ignorance,\ndo Thou also, O Lord, illumine me with the dawning of Thy love for mankind.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Inspired by the enmity of her mother, the yet more savage offspring of a savage lioness\ndemanded as the price of her foul demonic dancing\nthe head of the forerunner and herald, which the wild beasts themselves reverenced in the wilderness." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Thine ineffable and unapproachable judgments, O Lover of mankind!\nFor the vile young woman won with her dancing him who, while yet in his mother's womb,\nwas a receptacle of the Holy Spirit, and who grew in chastity and purity." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When he who with love and ardor preferred his intercourse with iniquity,\nhe permitted the murder of the prophet to be added to his birthday drinking\nand with love of pleasure mingled a cup full of the holy blood of the prophet." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Possessing maternal boldness before thy Son, O most pure one,\ndisdain not the thought of kinship with us, we pray,\nfor thee alone do Christians set before the Master as a merciful cleansing." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The forerunner, the lamb of the wilderness and treasure of the whole world,\nprepareth a spiritual banquet for us today." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O John, thou didst denounce Herod, the cruel lover of Herodias,\nthe slave of lust and violator of the laws." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Herodias danceth, and John is bound and slain.\nO the drunkenness of Herod! O the mindlessness of his soul!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Rejoice, O pure one, thou divine mountain from whence the stone was quarried\nwithout the aid of the hands of men,\nthou mountain of curds which provided God the Word with a body!" }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "irmos2": "As Thou didst deliver the prophet from the depths of the abyss, O Christ God,\nso deliver me also from my sins, O Lover of mankind,\nand guide my life, I pray Thee.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Bringing tribulation upon thyself for the commandments of the law, O blessed one,\nwith reproofs thou didst chastise the one who was committing iniquity;\nfor thou wast not a reed shaken by the winds of the enemy." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy head, dripping with the blood of thy slaughter,\nwas offered as a prize for a lustful display,\nbut continued to denounce Herod as one who committed incest, even after thine end." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Clad in camels' hair while in the wilderness,\nthou didst live as splendidly as a king therein;\nand bearing royal adornment therein, thou didst gain dominion over the passions." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: May we be delivered from grievous transgressions through thy supplications, O pure Birthgiver of God,\nand may we receive divine radiance from the Son of God\nWho was ineffably incarnate from thee, O most pure one." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Honoring the decapitation of thine honored and most praised head, O forerunner of Christ,\nwe glorify thine ever-laudable and universal memory, O most blessed one." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O the vile feast! O the bitter birthday!\nO the drunkenness of the abominable and iniquitous Herod!\nFor he was held fast by iniquity and, denounced, he was persuaded to slay the prophet." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The new Egyptian woman, dancing wantonly in the midst of the feast,\nasked for the head which had denounced her mother, the paramour of Herod." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Son of the Virgin is now shown to have first been the Son of the Father,\nWho is not understood to be different in any fashion from the visible Son;\nand He hath remained One, perfect in both His natures." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "The glorious beheading of the forerunner\nwas part of God's dispensation,\nthat he might proclaim to those in Hades\nthe coming of the Savior.\nLet Herodias, who demanded the iniquitous murder, therefore lament;\nfor she loved not the law of God nor the age of life,//\nbut rather this false and transitory one.",
+        "tone": 5,
+        "label": "Kontakion of the holy forerunner"
+      },
+      "ikos": {
+        "text": "The birthday of Herod was shown to all to be unholy\nwhen, into the midst of those who feasted,\nthe head of the faster was borne as though it were food.\nJoy was joined to grief and laughter transformed into bitter lamentation.\nFor, bearing the head of the Baptist on a platter, the girl entered in among them all, as she said.\nAnd because of Herod's oath lamentation fell upon all who reclined there with the king.\nShe did not gladden them, nor even Herod himself.\nFor he said: They sorrowed not with true grief, but with that which is feigned and transitory."
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "O Thou who in the beginning founded the earth\nand by Thy word made the heavens firm,\nblessed art Thou throughout the ages, O Lord God of our Fathers.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Armed with lustful desire and grievous drunkenness,\nstriking against the Baptizer of Christ, the immovable tower of abstinence\nand indestructible city of chastity, the iniquitous Herod was shattered." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Her mind beguiled by the persuasions of her mother,\nshe who was the pupil of the devil was neither afraid nor ashamed,\nnor in any way loath to bear thy precious head shamelessly on a platter." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Sent forth like an angel, thou didst shine forth like a beacon;\nas a prophet thou didst preach Christ Who appeared as the Lamb of God;\nand as a martyr thou wast beheaded, proclaiming Him to the dead in Hades." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Delivered from the ancient fall and condemnation by thy birth giving, O Virgin Mother,\nwe ever glorify thee as the manifest cause of our liberation,\nwith thy Son Who gaveth Himself as deliverance for us." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Preaching the law of God, John was not afraid to teach the impious and iniquitous Herod to be chaste;\nfor the fire of sin burned within him." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O the head which manifestly set forth the law and cried to Herod from out of the ground:\n\"It is not fit for thee, who committest iniquity,\nto wear the purple robe of kingship as a garment of tyranny!\"" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The iniquitous Herod, armed with vile weaponry,\ncommitted an iniquitous deed with an oath,\ndrunk at the banquet he was holding for himself." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Though incorporeal, the Creator of all became immutably incarnate;\nand being not subject to time, He was known to enter time through the Virgin,\nremaining as He had been, and becoming what He had not been, without commingling." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "Glorified in the holy mountain,\nthe Lord revealed the mystery of the Ever-Virgin unto Moses\nin the flames of the burning bush:\npraise ye and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Going before Thy nativity and divine suffering, in the nethermost parts of the earth\nJohn, as the voice of the Word, becometh, through the sword, the prophet and herald of Thy coming there,\ncrying: O ye dead, as Life-bestower, O ye blind, as the Giver of light,\nO ye captives, as your Redeemer! Supremely exalt Christ throughout all ages." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "He who from a barren woman preceded the Offspring of the Virgin\nhath now, through the cutting off of his head,\nbecome the precursor of the voluntary crucifixion of the Creator of all,\ncrying to those in Hades: Ye children bless; ye priests hymn;\nye people supremely exalt Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "When thy body was deprived of thy head, O forerunner,\nthy masterly soul was parted from thy flesh;\nbut the divinity of Emmanuel was never separated from his flesh,\nand not a bone of God the Master was broken.\nWherefore, we supremely exalt Him throughout all ages." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin, bearer of the Lord, by thy merciful supplication\ncleanse thou the wounds and sores of my soul, and raise me up who am fallen.\nSave, O save me, the prodigal, O all-immaculate one!\nFor thou art mine intercessor and help, who alone art pure and blessed throughout all ages." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Him who proclaimed the coming of Christ to those in Hades,\nexclaiming with faith: \"The Lord of glory cometh, loosing men's pangs!\"\nlet us supremely exalt throughout all ages." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Herod imprisoned thee in a dungeon, O John, thou second Elijah,\nand, having bound thee with iron chains, slew thee,\nthe faithful and sacred proclaimer of repentance and the kingdom." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "O feast full of blood! O food mingled with murder!\nO banquet replete with vainglory!\nO the inhumanity and vile murder of the iniquitous Herod!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Wholly above and wholly below,\nin the bosom of the Father and with Thy Mother,\nwholly God and wholly man by nature, of One Hypostasis yet dual in nature art Thou, O Merciful One." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;\nwherefore we the faithful magnify the most pure Theotokos.",
+        "irmos2": "The prophetic vision of the lawgiver on the mountain,\nin the fire of the burning bush, prefigured thy birthgiving O Ever-Virgin,\nthe salvation of us the faithful,\nwherefore with never silent hymns we magnify thee.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The evil horde and the devil, its commander, were afraid of thy divinely eloquent tongue\nwhich proclaimed Christ, O prophet,\nand through the agency of a wanton young woman prevailed upon Herod to cut off thy head;\nbut we magnify thee as the baptizer of Christ." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The valley of humble nature hath been exalted,\nand the hill of deadly pride hath been laid low;\nfor the voice of the Light crying in the wilderness hath cried out in the dwellings of Hades:\n\"Lift up, ye gates, for the King of all shall enter herein.\"" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Human passions tremble, and the demons flee in fear from the overshadowing of the grace given thee by God.\nBut deliver thy flock, which ever magnifieth thee with faith,\nO forerunner of the Lord, from temptation by both." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Draw Thy bow, and prosper and reign, O Son of the Mother of God,\nsubduing all heresies and granting victory to our Orthodox hierarchs,\nthrough the entreaties of her who gaveth birth to Thee, O Word of God." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Again doth Jezebel exult over Elijah; again doth the Egyptian woman seek after Joseph;\nfor the vile Herodias hath now been seen to devise the death of the prophet and baptizer of the Savior." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Beheaded by Herod, O John, thou wast sent to the souls in Hades,\nto proclaim Him Who had come to save all of the faithful who had reposed, from the time of Adam on." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O John, honored martyr of the Lord, lamp-stand of the Light, voice of the Word,\nherald of the Lamb of God, lamb of the wilderness:\npray that those who hymn thee be saved." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou alone among women wast shown to be a virgin even after giving birth;\nthou alone among women wast shown forth as the Birthgiver of God;\nthou alone hast loosed the pangs of Eve and caused the primeval curse to wither away." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "With hymns of praise let us magnify the forerunner of grace,\nwho is known to be the greatest among the prophets and was chosen before the apostles;\nfor he was beheaded for the sake of the law of the Lord.",
+        "label": "Exaposteilarion of the holy forerunner",
+        "melody": "While the disciples watched",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "The vile Herod was unable to cut off the reproofs of thy tongue, O baptizer of the Savior,\nand therefore deceitfully cut off the head of thee, the husbandman of purity.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Having destroyed the curse on the world by thy divine birthgiving, O pure Maiden,\nthrough thy supplications, deliver from all misfortunes\nthe flock which entreateth thee with faith.",
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "O most glorious wonder!\nthe impure wanton young woman hath borne to her adulterous mother\nthe sacred head, which even the angels reverence,\nand which denounced her iniquitous acts.\nO thine ineffable patience, O Lover of mankind,\nwhereby, save Thou our souls, O Christ,//\nin that Thou alone art full of tender compassion.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "O the hardness of Herod's heart!\nHe who dishonored God by violating His laws\ndisplayeth his hypocrisy by deceitfully keeping his oath\nand joineth murder to adultery, feigning regret.\nO Thine unspeakable loving-kindness, O Master,\nwhereby save Thou our souls, O Christ,//\nin that Thou alone art compassionate!",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O marvel past understanding!\nThe seal of the prophets, the earthly angel, is shown to be\nthe price of wanton dancing;\nthe tongue of theology is sent forth as herald of Christ to those in Hades.\nO Thine ineffable providence, O Master,\nwhereby save Thou our souls, O Christ,//\nin that Thou alone art compassionate!",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Again Herodias rageth insanely, again is she vexed.\nO what deceitful dancing, what a feast of deception!\nThe Baptist is beheaded, and Herod is troubled.\nThrough the supplications of Thy forerunner, O Lord,//\ngrant peace to our souls.",
+        "tone": 6,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "The memory of the just is celebrated with hymns of praise\nbut the Lord's testimony is enough for thee, O Forerunner,\nfor thou wast shown to be more wonderful than the Prophets\nsince thou wast granted to baptize in the running waters\nHim Whom thou didst proclaim.\nThen having endured great suffering for the Truth,\nThou didst rejoice to bring, even to those in Hades\nthe good tidings that God had appeared in the flesh\ntaking away the sin of the world//\nand granting us great mercy.",
+      "tone": 2
+    }
+  }
+}

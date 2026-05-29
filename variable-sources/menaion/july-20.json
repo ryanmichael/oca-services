@@ -1,0 +1,388 @@
+{
+  "_meta": {
+    "feast": "The Holy and Glorious Prophet Elijah the Tishbite",
+    "feastKey": "prophetElias",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-20.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons: Canon I in Tone II; Canon II in Tone VIII, composition of Hieromonk Pachomius, with acrostic 'I sing praise to the great Elijah'. The Theotokos Paraklisis canon mentioned in the PDF rubric is omitted (parish practice typically uses only the two prophet canons). Magnificat retained."
+  },
+
+  "troparion": {
+    "text": "The angel in the flesh, and foundation of the prophets,\nthe second forerunner of the Coming of Christ,\nthe glorious Elijah from on High\nsent down grace upon Elisha\nto dispel infirmities and to cleanse lepers.\nWherefore, he poureth forth healings//\nupon those who honor him.",
+    "tone": 4,
+    "label": "Troparion of the holy prophet"
+  },
+  "kontakion": {
+    "text": "O prophet, foreseer of the mighty works of our God,\nElijah of great renown,\nwho by thy voice didst restrain the cloud of rain:\non our behalf entreat thou Him//\nwho alone is the Lover of mankind.",
+    "tone": 2,
+    "label": "Kontakion of the holy prophet"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Ascending on a fiery chariot as on the wings of the wind, O divine prophet,\nthou dost most gloriously make thy journey to the Heavens today,\nleaving to Elisha a double measure of grace and thy mantle from on high.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice (with Glory/Now between).",
+        "bothNow": {
+          "text": "All we who with love flee for refuge to thy goodness\nknow thee to be the Mother of God\nand after childbirth still truly Virgin;\nfor we sinners have thee as our protection;\nwe have thee as our salvation in misfortunes,//\nas the only All-blameless one.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thy divine temple poureth forth healings upon all, O most wondrous prophet.\nWith the most marvelous Elisha, entreat Christ to send down peace upon the world\nand great mercy upon the people who honor thee.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "_note": "Sung twice (with Glory/Now between).",
+        "bothNow": {
+          "text": "Whither doth each one who is saved, rightly have recourse;\nand to what other such refuge can there be\nwhich doth protect our souls like thee,//\nO Theotokos?",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, a glorious Elijah,\nprophet and forerunner of the Coming of the Lord,\nand we honor thy fiery ascent to heaven in the flesh.",
+      "verses": [
+        "Lo, I have fled afar off and have dwelt in the wilderness.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Being a lover of wisdom, O most honored prophet,\nopenly denouncing the unjust king who acted unrighteously,\nthou didst constrain him to cry out:\n\"Truly there is but one God: He that is preached by Elijah!\"\nAnd thence thou didst proceed to upbraid Jezebel for her plundering and love of gold.\nO prophet and forerunner of the Coming of Christ, Elijah of great renown:\nentreat Christ God, that He grant remission of sins\nto those who with faith glorify thine ascent.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thine all-holy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thine all-holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Thou art a priest forever,\nafter the order of Melchizedek.",
+      "verse": "The Lord said unto my Lord: Sit Thou at My right hand, until I make Thine enemies the footstool of Thy feet.",
+      "tone": 4,
+      "_psalmRef": "Ps. 109:4 / 109:1"
+    },
+
+    "gospel": {
+      "reading": "Luke 4:22-30",
+      "_note": "Christ in the synagogue at Nazareth invoking Elijah and Elisha; the people's wrath."
+    },
+
+    "postGospelSticheron": {
+      "text": "On a fiery chariot wast thou taken up to the clouds,\nand wast translated to the land of light, O Elijah the Tishbite,\nhaving put the disgraceful prophets to shame.\nO thou who didst bound fast the sky by thy word,\nso also loose our transgressions by thy prayers to the Lord,//\nand save our souls.",
+      "tone": 4,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "anonymous (Canon I, Tone II)", "second": "Hieromonk Pachomius (Canon II, Tone VIII; acrostic: 'I sing praise to the great Elijah')" },
+      "_canonNote": "Two canons. Theotokos Paraklisis canon (mentioned in Sergius rubric) omitted in this rendering.",
+
+      "ode1": {
+        "irmos": "Let us chant a hymn of victory unto the Lord,\nWho of old guided the people in the midst of the sea,\nand drowned Pharaoh and all his army therein,\nfor He hath been glorified.",
+        "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Desiring to behold the fiery power of the miracles of Elijah,\nhis fiery and honored tongue and strength of spirit,\nwe have assembled as is meet." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O God-bearer, our lips and the muteness and lack of skill of our tongue do thou open\nthrough the activity of the Spirit which is within thee,\nand illumine us, that we may hymn thy wonders." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou dost grant that which transcendeth nature unto those who have submitted to Thine honored precepts, O Word,\nand Thou dost make the portals of the rain subject to them through the Spirit,\nconfirming their word." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: To the Lord Who was born of the Virgin and Who hath renewed the world,\nand Who for her sake hath bestowed upon us divine life,\nwe chant a hymn of victory, for He hath been glorified." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast been shown to be an instrument struck by the divine plectrum, O most wondrous prophet,\nhymning the omniscient God Who doth visit retribution upon all according to their deeds." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O wondrous prophet, unable to endure deception,\nthou didst denounce the unrighteous king for his iniquity.\nWherefore, thou didst impose God's judgment of condemnation, full of wrath, upon him." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O divine Elijah, prophet and forerunner of grace,\nhaving denounced Ahab, the iniquitous king, as a transgressor of the Law,\nthou didst destroy the shameful prophets as impious." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Ye faithful, let us make haste to praise in hymns as is meet the Mother of Christ,\nfor she gaveth birth unto the Savior of all,\nWho is the Master of life and death." }
+        ],
+        "katavasia": "I shall open my mouth, and it shall be filled with the Spirit,\nand I shall speak forth to the Queen and Mother;\nand I shall appear, keeping radiant festival,\nand joyously I will sing of her wonders."
+      },
+
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God\nand none more righteous than Thee, O Lord.",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He, that alone sustaineth every living thing by His good will,\nthrough a raven provided thee with a banquet as a chosen guest, O Prophet.\nTo Him do we all cry aloud: Thou art our God, and there is none holy save Thee, O Lord!" },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Grace be to the Benefactor and Guardian Who, in His ineffable providence,\nnourished the widow and the prophet.\nTo Him do we all cry out: Thou art our God, and none is holy save Thee, O Lord!" },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O thou who didst forbid the rain-laden clouds to pour forth,\nwhen the widow of Zarephath was deprived of food,\nthou didst cause the remnant of her food to increase continually;\nand didst cry aloud: None is holy save Thee, O Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou alone, surpassing all of ages past,\nhast been deemed worthy of great things transcending nature,\nfor thou didst receive the infinite God of all creation within thy womb and gave Him flesh.\nWherefore, we all honor thee as the Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With mercy dost thou chastise all,\ntaking pity on all who with faith have recourse to thee in thy temple.\nAnd in asking help of thee they have in no wise sinned." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst denounce Ahab, the impious king, O divine prophet,\nand judge him with the judgment of God as a violator of the Law." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The shameless Queen Jezebel sought to slay thee, O most divine prophet,\nfor thou didst pronounce the sentence of death upon her unholy priests, as was meet." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Lady, we hymn thee as a palace of the priesthood of glory\nand the altar which held Christ, the Bread of life, O pure one." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Ye faithful, with hymns let us all praise Elijah the Tishbite,\nthe wellspring of miracles and adornment of prophets;\nfor, being immortal while yet in the flesh, as a mortal he assured us of the resurrection of the dead.\nWherefore, having boldness before God, he granteth healing to those who ask with faith,\nand earnestly beseecheth Christ to bestow forgiveness of sins\nupon those who with love celebrate his holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy prophet (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee\nto ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,\nthat those who worthily hymn thee//\nmay be granted the remission of their sins.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee Who alone lovest mankind.",
+        "irmos2": "I have heard report of Thee O Lord, and I was afraid,\nfor thy counsel is ineffable,\nbeing the ever-existent God,\nThou didst come forth from the Virgin,\nwherefore I hymn Thee: glory to Thy condescension, O Christ,\nglory to Thy power.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou art shown to be one that cutteth down evil at its root\nand a planter of virtue, O wise prophet.\nWherefore, we bless thee." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With words the widow who fed thee upbraided thee for the death of her son,\ncompelling thee to raise him from the dead." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst clearly signify the glory of the Trinity with thy threefold breathing,\nand didst hand back alive the child to his mother." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "How thou didst burn, aflame with divine fire and zeal, O prophet,\ndenouncing the king who wrought iniquities!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure one, who without seed didst conceive God,\nwe entreat thee ever to pray for thy servants." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Lord crowned thee a prophet, O most wise one,\ngranting thee the grace to foretell things of the future as though they were of the present.\nWherefore, beholding now the fulfillment of thy words, we bless thee ever with praises as a true prophet." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As the soul of Thy prophet hath been most greatly adorned with humble-mindedness, O Christ God,\nso, aflame with zeal which surpasseth fire,\nhe destroyed the shameful priests." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Reflecting like a mirror with thy countenance, the face of Christ before Whom thou dost stand, O most wondrous prophet;\nfrom whence do thou mercifully visit us,\nthat with praises we may all bless thee as a prophet." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Having acquired thee as our hope and confirmation,\nan impregnable rampart of salvation, O all-hymned one,\nwe are delivered from every evil circumstance." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,\nfor we know none other God than Thee.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Law of thy fathers hath shown thee to be a true man of prayer, O Elijah,\na wonderworker who transformed the nature of the elements\nand utterly consumed the righteous sacrifice with water." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As thou art a true minister of God,\nthou didst utterly put to shame the prophets of abominable ignominy,\nO venerable and all-blessed Elijah, clearly marking the power of the Trinity." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Rendering priestly service through the word of grace, O Elijah,\nthou didst slay the shameful priests with thy blameless hands,\nconsumed with zeal as with fire." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: To thee who hast given birth unto Christ, the Creator of all, we cry aloud:\nRejoice, O pure one! Rejoice, thou who hast shone forth the Light upon us!\nRejoice, thou who didst contain the infinite God!" },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O prophet Elijah, whom the unwaning splendor of divine grace hath revealed:\nhaving diligently acquired a most divine mind,\nthou dost rouse the pious to song." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Who doth not marvel at thy divine zeal, O wondrous prophet?\nAnd who doth not hymn Christ Who hath given thee such great might?" },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With prophecy wast thou adorned by God, O Elijah, thou most wondrous prophet;\nhence, having wholly united thyself to God, and denouncing deception,\nthou didst lead the Israelites to the knowledge of God." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, who hast given birth to the never-setting Sun,\nenlighten me who am utterly darkened by the passions,\nand fill me with the divine light." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The deep abyss of offenses hath surrounded me, O Lord,\nbut do Thou lead up my life from corruption,\nas Thou didst the Prophet Jonah, O Lord.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A pillar of piety and of a pure life,\nan instiller of purity, and an emulator of the angels wast thou,\nO wondrous God-bearer Elijah." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The wrath of the prophet-slaying woman,\nhaving frightened thee who had received the power to bind and loose the flow of the rains, O wondrous Elijah,\ncaused thee to flee." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having knelt down, thou didst raise on high the supremely exalted eye of thy mind,\nand by thine eminent entreaty didst cause the rains to be loosed;\nand with showers, watered the furrows of the earth." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The bush on Sinai, which drew nigh to the Fire without being consumed,\nprefigured thee, the Ever-virgin Mother, O all-hymned Theotokos Mary." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A hymn of supplication do thou offer unto God, O most honored prophet,\non behalf of all who have recourse to thy divine temple,\nthat we may honor thee as a great helper." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The mortal mind doth not suffice to praise thy life as is meet, O prophet;\nfor, beholding the transfiguration of Christ,\nthou wast exalted far above the noetic ranks." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He who is the Lord and Creator of all hath appeared to us in accordance with thy prophecy,\nO blessed Elijah,\ncalling all to the knowledge of Him, for He is the Lover of mankind." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Mary, pure vessel of virginity:\ncleanse thou my mind of the gloom of the passions,\nand fill my heart with righteousness, O all-immaculate one." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "O prophet, foreseer of the mighty works of our God,\nElijah of great renown,\nwho by thy voice didst restrain the cloud of rain:\non our behalf entreat thou Him//\nwho alone is the Lover of mankind.",
+        "tone": 2,
+        "label": "Kontakion of the holy prophet"
+      },
+      "ikos": {
+        "text": "Beholding the great iniquity of mankind and the great love of God for them,\nthe prophet Elijah was troubled and grew wroth;\nand he addressed pitiless words to the Merciful One, crying aloud:\nBe Thou angered against those who deny Thee, O righteous Judge!\nBut he could not move the compassion of the Good One to torment those who deny Him,\nfor He who alone is the Lover of mankind doth ever await the repentance of all."
+      },
+
+      "ode7": {
+        "irmos": "The bush which burned with fire on the mountain\nand the dew-bearing furnace of the Chaldeans\nclearly prefigured thee, O Bride of God;\nfor, without being consumed,\nthou didst receive the divine and immaterial Fire within thy material womb.\nWherefore, we chant unto Him Who was born of thee:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity,\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Most gloriously vested with divine and formidable power,\nthou didst undertake a long journey,\nhaving eaten of food that sufficed thee for forty days, O wondrous Elijah.\nWherefore, thou didst say on Horeb: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The mild and gentle breeze showed the Lord to thee, O Elijah,\nwho wast zealous for God Almighty:\nnot the wind of the tempest, nor the earthquake, nor yet the fearsome fire.\nWherefore, to meek Jesus thou didst chant: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Like the great Moses, thou wast deemed worthy of the vision of God and prophecy, O wondrous Elijah,\nanointing prophets and kings with the Spirit.\nAnd having borne witness to the glory of Christ on Tabor,\nthou didst chant: O God of our fathers, Blessed art Thou!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: In times past thou didst supra-naturally and without seed give birth in the flesh\nto the beginningless and pre-eternal Lord, the Son, Power and Wisdom of the Father,\nO most pure one, unto the renovation of mortals.\nWherefore, we cry out to Him who was born of thee: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The people of Israel that came to thee with a captain of fifty\nthou didst utterly consume with fire from heaven as unworthy, O divine Elijah." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast a most divine prophet who wast rightly illumined with the vision of God, O most honored Elijah;\nand didst straightway put an end to the sacrifices made to Baal." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Inasmuch as the most holy Spirit gave thee the gift to prophesy, O most honored prophet Elijah,\nthou didst foretell the coming of the Son of God and didst not sin, O all-blessed one.\nTo Him do we chant: 'O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Truly, as was meet, the poison of death was poured forth through the judgment of God\nand the hand of the prophet upon the shameful priests\nthat ate unrighteously at the table of Jezebel." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Mother of God, save me who am held fast by the abyss of sins,\nand rescue me from all the malice of the foe,\nthat, saved by thee, I may magnify thine aid." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The relentless fire, fed with endless fuel,\ndrew back in fear before the pious Children,\npure in body and in soul;\nand as the flame waned in strength,\nthey sang an everlasting song:\nO all ye works, praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "irmos2": "The King of heaven, Who is glorified by the hosts of angels,\nlet us praise and supremely exalt throughout all ages.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Well did Ahab find the just destruction of his house, through the prophet's condemnation,\nto be the dread retribution for his vile commission of murder.\nAnd with fiery mind the Tishbite chanted a hymn unto the Bestower of life:\nAll ye works of the Lord, hymn and supremely exalt Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Fire rained down from heaven for thee, O Elijah,\ntwice consuming captains of fifty, in that thou art God's chosen minister;\nfor to Him who controlleth everlasting life didst thou in a godly manner hymn:\nAll ye works of the Lord, hymn and supremely exalt Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "On Tabor Christ showed thee to be an initiate of the mystery of His divine incarnation,\nas thou wast an instiller of purity and a most divine offshoot of virginity,\nshowing the unapproachable light of the Godhead in His Body to thee who dost cry aloud:\nAll ye works of the Lord, hymn and supremely exalt Him throughout all ages!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Exceedingly rich was the womb of the Mother of God;\nfor, having received the Word in the coarseness of the flesh\nand wrought therefrom an earthly form according to His hypostasis,\nit was shown to be the city of God wherein the Most High was well-pleased to dwell.\nTo Him do we chant: All ye works of the Lord, hymn and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "He who, as God, knoweth all things, entrusted to thee, O Elijah, in that thou art faithful,\nthe knowledge of things to come and of things that shall come to pass;\nand He showed thee things which are afar off as though they were near." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Having strengthened thy mind with pious boldness, O blessed prophet,\nthou dost foretell those things that are far off as though they were near, O most honored prophet." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Having cleansed thy mind of all defilement, O divine prophet,\nthou didst become completely holy, guiding all to the divine Light." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Word, to Whom thou didst give birth indescribably, do thou entreat\non behalf of those who faithfully honor thee, O pure Birthgiver of God." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Thee do we magnify, O blessed and most pure Theotokos,\nwho through thy virginal womb ineffably brought forth God incarnate,\nthe Luminary Who shone forth before the sun\nand hath come to us in the flesh.",
+        "irmos2": "Saved by thee, O pure Virgin, we confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts\nthee do we magnify.",
+        "troparia": [
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having lived on earth the course which man cannot change,\nand crossed the Jordan's stream by means of his mantle,\nthe Tishbite, that air-borne charioteer,\nmade a strange and heaven-traversing journey in the Spirit." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Tishbite, aflame with the zeal of piety, was taken up on a fiery chariot;\nand he let drop his mantle;\nand Elisha, robed therein, received divine grace which could not be concealed." },
+          { "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Tishbite and Moses the God-seer beheld in a revelation on Tabor\nwhat eye hath not seen, nor ear heard, and what hath not entered into the hearts of earth-born men:\nthe Lord Almighty, incarnate." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, we magnify thee,\nwho removed the severe condemnation which was of old the correction of our first mother,\nand who art ever the reconciliation of our race to God, thou bridge to the Creator." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast been deified by the immaterial splendor of the life-creating Trinity, O prophet Elijah;\nwherefore, we all appoint thee as an intercessor to God for the world, O blessed one." },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast known as an angel on earth, O divine prophet, and in heaven as a man of God;\nfor the Lord Himself said: Because thou art an austere man, O Elijah,\nthou canst not endure iniquitous Israel.\nCome thou up to Me, that I may come down!" },
+          { "canon": "secondCanon", "refrain": "Holy Prophet Elijah, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst live on earth as one of the bodiless ones, O divine prophet,\nand now, borne up to heaven, thou dost join chorus with the angelic choirs.\nFrom on high watch over us who hymn thee, O blessed one." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou didst bear in thine arms God Who beareth all things,\nand thou hast fed the Nourisher Who became like unto us, O pure one.\nHim do thou beseech, that He grant to thy people deliverance from all oppressors." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "The Light Who showed thee to be a charioteer traversing the sky on a fiery chariot drawn by four steeds, O Elijah,\ndid not consume thee utterly;\nfor with thy fiery tongue thou didst draw fire down and didst dry it up with showers.",
+        "label": "Exaposteilarion of the holy prophet",
+        "melody": "O immutable Light",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Thou wast caught up on a fiery chariot to the circles of heaven;\nwhence looking down, as thou art close to the Light,\ngrant noetic light unto us that now celebrate thy holy memory with faith.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Thou wast the author of the blessings bestowed by God on the world, O Theotokos.\nAnd do thou now entreat the easily-placated God for the salvation of all.",
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "O wondrous prophet,\nwhen thou didst unite thyself to God by thy pure life of virtue,\nand hadst received dominion thereby,\nthou noetically didst traverse creation,\nby thy will shutting up the portals of the rain,\nand didst call down fire from on high,\ndestroying the enemy.//\nPray that our souls be saved.",
+          "tone": 8,
+          "melody": "What shall we call you"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "Aflame with zeal for the Lord,\nthou didst openly denounce the iniquitous king,\nand zealously put to death the shameless priests,\nkindling fire amid the water, O blessed one.\nAnd thou wast a source of food not produced by cultivation,\nand with thy mantle didst part the waters of the Jordan.//\nPray that our souls be saved.",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "When thou O prophet,\ndidst show forth a life on earth which was truly heavenly,\nenriched by the hypostatic Life within thee,\nthou didst resurrect a dead boy by thy breath;\nand thou didst remain apart from death for many years,\nfor thou didst sit upon a fiery chariot and wast raised up to the Highest.//\nPray that our souls be saved.",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "The zealous Elijah, ruler over the passions, hath today been taken up in the air,\nthe initiate of the mysteries and the inaugurator of universal salvation.\nO precious glory, which the heaven-traversing prophet hath been vouchsafed!\nO eminent adornment of the prophets!\nFor, lo! by his reproofs he showed himself to be an angel in the flesh and an incorporeal man.\nPraising him, let us say://\nHelp us, O wise one, on the day of Judgment!",
+          "tone": 1,
+          "author": "by Germanus"
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and pipe. (Ps. 150:4)",
+          "text": "With spiritual songs let us all praise the prophets of Christ:\nfor Elijah the Tishbite became a traversor of the heavens,\nand through his mantle Elisha received a double measure of grace from God;\nand they have both been revealed to be radiant beacons for the whole world,//\npraying ceaselessly on behalf of our souls.",
+          "tone": 1,
+          "author": "by Germanus"
+        },
+        {
+          "verse": "Praise Him with sounding cymbals; praise Him with loud clashing cymbals. Let everything that breathes praise the Lord. (Ps. 150:5)",
+          "text": "O ye faithful, like David let us honor with hymns today the prophet of the Lord,\nElijah the Tishbite, the most splendid zealot.\nFor, lo! by his speech he shut heaven like a curtain and rendered the fertile earth barren.\nO most glorious wonder! A man of earth doth not permit the heavens to rain!\nO wonder! A corruptible man is clothed in incorruption,\nand hath ascended to the heavens on a fiery chariot;\nand by his mantle bestowed a double measure of grace upon Elisha,\nand denounced the king, and destroyed the disobedient people with famine.\nHe put to shame all the shameful priests,\nand raised up the widow's son from the dead by his word.\nThrough his supplications, O Christ our God,\npreserve all right-believing Orthodox Christians in peace,//\ngranting them the triumph of victory over their enemies.",
+          "tone": 1,
+          "author": "by Germanus"
+        }
+      ],
+      "doxastikon": {
+        "text": "O ye faithful, let us honor in song the chiefs among the prophets,\nthe most radiant beacons of the whole world: Elijah and Elisha.\nAnd let us joyously cry out to Christ:\nO compassionate Lord, through the supplications of Thy prophets,//\ngrant Thy people forgiveness of sins and great mercy.",
+        "tone": 8,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "The angel in the flesh, and foundation of the prophets,\nthe second forerunner of the Coming of Christ,\nthe glorious Elijah from on High\nsent down grace upon Elisha\nto dispel infirmities and to cleanse lepers.\nWherefore, he poureth forth healings//\nupon those who honor him.",
+      "tone": 4
+    }
+  }
+}

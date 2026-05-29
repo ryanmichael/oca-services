@@ -629,6 +629,19 @@ describe('Data file validation', () => {
       `Expected missing-tone error, got: ${errs.join(' | ')}`);
   });
 
+  it('liturgy-defaults.json passes validation as shipped', () => {
+    const ld = require('../variable-sources/liturgy-defaults.json');
+    assert.deepEqual(validators.validateLiturgyDefaults(ld), []);
+  });
+
+  it('liturgy-defaults rejects missing paschal megalynarion', () => {
+    const broken = JSON.parse(JSON.stringify(require('../variable-sources/liturgy-defaults.json')));
+    delete broken.paschalMegalynarion;
+    const errs = validators.validateLiturgyDefaults(broken);
+    assert.ok(errs.some(e => /paschalMegalynarion/.test(e)),
+      `Expected paschalMegalynarion error, got: ${errs.join(' | ')}`);
+  });
+
   it('liturgical-day-labels.json passes validation as shipped', () => {
     const labels = require('../variable-sources/liturgical-day-labels.json');
     assert.deepEqual(validators.validateLiturgicalDayLabels(labels), []);

@@ -1236,6 +1236,12 @@ delete DAILY_PROPERS._meta;
 // route. See variable-sources/liturgical-day-labels.json.
 const LITURGICAL_DAY_LABELS = loadJSON('variable-sources/liturgical-day-labels.json');
 delete LITURGICAL_DAY_LABELS._meta;
+
+// ─── Liturgy Defaults ─────────────────────────────────────────────────────────
+// Default entrance hymns / paschal megalynarion / We-Have-Seen substitutions
+// used when no feast or Pentecostarion override applies.
+const LITURGY_DEFAULTS = loadJSON('variable-sources/liturgy-defaults.json');
+delete LITURGY_DEFAULTS._meta;
 const DAY_PATRONS              = DAILY_PROPERS.dayPatrons;
 const COMMUNION_HYMNS          = DAILY_PROPERS.communionHymns;
 const SUNDAY_PROKEIMENA        = DAILY_PROPERS.sundayProkeimena;
@@ -1255,6 +1261,7 @@ require('./data-validators').validateAll({
   cocelebratedOverlays:    COCELEBRATED_OVERLAYS,
   dailyPropers:            DAILY_PROPERS,
   liturgicalDayLabels:     LITURGICAL_DAY_LABELS,
+  liturgyDefaults:         LITURGY_DEFAULTS,
   menaionDir:              path.join(__dirname, 'variable-sources', 'menaion'),
 });
 
@@ -1983,20 +1990,19 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
   if (feast?.entranceHymn) {
     entranceHymn = { text: feast.entranceHymn };
   } else if (isSunday) {
-    entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!' };
+    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.resurrection };
   } else {
-    entranceHymn = { text: 'Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!' };
+    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.saints };
   }
 
   // ── Megalynarion: feast → Paschal period → Basil → typical ─────────────────
-  const PASCHAL_MEGALYNARION = 'The Angel cried to the Lady, full of grace:\n"Rejoice, O pure Virgin! Again, I say: Rejoice,\nthy Son is risen from His three days in the tomb!\nWith Himself He has raised all the dead."\nRejoice, O ye people!\n\nShine, shine, O new Jerusalem!\nThe glory of the Lord has shone on thee.\nExult now, and be glad, O Zion!\nBe radiant, O pure Theotokos,\nin the Resurrection of thy Son!';
   let megalynarion;
   if (feast?.megalynarion) {
     megalynarion = { text: feast.megalynarion };
   } else if (pentOverride?.megalynarion) {
     megalynarion = { text: pentOverride.megalynarion };
   } else if (isPaschalPeriod) {
-    megalynarion = { text: PASCHAL_MEGALYNARION };
+    megalynarion = { text: LITURGY_DEFAULTS.paschalMegalynarion };
   } else if (isBasil) {
     megalynarion = 'basil-liturgy';
   } else {
@@ -2073,12 +2079,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     weHaveSeen:
       pentOverride?.weHaveSeen
       || (isPaschalPeriod ? 'paschal' : null)
-      || (isAscensionAfterfeast
-        ? 'Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!'
-        : null)
-      || (isPentecostAfterfeast
-        ? 'Blessed art Thou, O Christ our God, who hast revealed the fishermen as most wise by sending down upon them the Holy Spirit; through them Thou didst draw the world into Thy net. O Lover of Man, glory to Thee!'
-        : null),
+      || (isAscensionAfterfeast ? LITURGY_DEFAULTS.weHaveSeenSubstitutions.ascensionAfterfeast : null)
+      || (isPentecostAfterfeast ? LITURGY_DEFAULTS.weHaveSeenSubstitutions.pentecostAfterfeast : null),
     dismissal: {
       opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || null,

@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "description": "Default Liturgy strings used when no feast or Pentecostarion override applies. Editable per translation/parish without code changes.",
+    "_note": "Extracted from server.js inline literals (Sunday/weekday entrance hymns, Paschal megalynarion, Ascension/Pentecost afterfeast We-Have-Seen substitutions).",
+    "source": "OCA Department of Liturgical Music and Translations service texts (Thee/Thy register)."
+  },
+
+  "entranceHymn": {
+    "resurrection": "Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!",
+    "saints":       "Come, let us worship and fall down before Christ. O Son of God, who art wondrous in Thy saints, save us who sing to Thee: Alleluia!"
+  },
+
+  "paschalMegalynarion": "The Angel cried to the Lady, full of grace:\n\"Rejoice, O pure Virgin! Again, I say: Rejoice,\nthy Son is risen from His three days in the tomb!\nWith Himself He has raised all the dead.\"\nRejoice, O ye people!\n\nShine, shine, O new Jerusalem!\nThe glory of the Lord has shone on thee.\nExult now, and be glad, O Zion!\nBe radiant, O pure Theotokos,\nin the Resurrection of thy Son!",
+
+  "weHaveSeenSubstitutions": {
+    "_note": "During Ascension afterfeast (Pascha+39..+47) and Pentecost afterfeast (Pascha+49..+55), 'We have seen the true Light' is replaced by the feast troparion.",
+    "ascensionAfterfeast": "Thou didst ascend in glory, O Christ our God, granting joy to Thy Disciples by the promise of the Holy Spirit. Through the blessing, they were assured that Thou art the Son of God, the Redeemer of the world!",
+    "pentecostAfterfeast": "Blessed art Thou, O Christ our God, who hast revealed the fishermen as most wise by sending down upon them the Holy Spirit; through them Thou didst draw the world into Thy net. O Lover of Man, glory to Thee!"
+  }
+}

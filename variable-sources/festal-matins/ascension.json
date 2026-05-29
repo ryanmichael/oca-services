@@ -2,9 +2,15 @@
   "_meta": {
     "feastKey": "ascension",
     "feastLabel": "The Ascension of Our Lord",
-    "_source": "OCA service texts 2026-0521-texts-tt.docx",
-    "_sourceUrl": "https://files.oca.org/service-texts/2026-0521-texts-tt.docx",
-    "_note": "Single-canon structure (1st Canon Tone 5 by John the Monk) with Tone 4 katavasiai drawn from the 2nd Canon of Pentecost (by John of Damascus). Single exapostilarion (sung thrice in practice). \"Having beheld the Resurrection\" IS sung at Ascension Matins per OCA rubric (`includeHavingBeheld: true`), unlike Pentecost."
+    "_sources": [
+      {"role": "irmoi, troparion, magnification, prokeimenon, gospel, post-gospel sticheron, exapostilarion, lauds, katavasiae",
+       "url": "https://files.oca.org/service-texts/2026-0521-texts-tt.docx",
+       "label": "OCA service text"},
+      {"role": "sessional hymns, canon troparia (1st canon), ikos, Ode 9 megalynaria refrains",
+       "url": "https://st-sergius.org/services/pent/64.pdf",
+       "label": "St-Sergius Pentecostarion (yy register)"}
+    ],
+    "_note": "Single-canon structure per OCA practice (1st Canon Tone 5 by John the Monk); Tone 4 katavasiae borrowed from the 2nd Canon of Pentecost. OCA publishes only irmoi for the canon; troparia + sessional hymns + ikos sourced from St-Sergius Pentecostarion. Magnificat NOT sung; before Ode 9 irmos+troparia the megalynarion 'Magnify, O my soul, Christ the Giver of Life…' is sung as a leading refrain. \"Having beheld the Resurrection\" IS sung at Ascension Matins per OCA rubric (includeHavingBeheld: true), unlike Pentecost. Mixed registers — irmoi/lauds OCA tt, troparia/sessional hymns St-Sergius yy/archaic."
   },
 
   "feastRank": "greatFeast",
@@ -19,6 +25,23 @@
     "label": "Troparion of the Ascension"
   },
 
+  "sedalion": [
+    {
+      "text": "While angels gazed with wonder upon Thy dread Ascension,\nand while the disciples were awestruck as Thou wast taken from earth,\nO Savior, as God Thou didst ascend in glory\nwhile the gates were raised for Thee.\nFor this cause then the Hosts of the heavens cried out, while marveling in amazement:\nGlory to Thy descent, O Savior Christ.\nGlory to Thy Kingdom's sovereignty.\nGlory be to Thine Ascension,//\nO Thou only Lover of mankind.",
+      "tone": 1,
+      "label": "Sessional Hymn (after Kathisma 1)",
+      "_source": "stSergius-pentecostarion",
+      "_note": "Sung twice (with Glory/Now between)."
+    },
+    {
+      "text": "God the beginningless One, Who existed before all ages,\nand Who took man's nature upon Himself,\nand mystically deified it, was taken up on this day.\nHence, the angels ran before and indicated Him unto the apostles\nas He rose with great glory to heaven's heights.\nAnd as they worshipped Him, they cried aloud and said//\nGlory be to God Who was taken up.",
+      "tone": 3,
+      "label": "Sessional Hymn (after Kathisma 2)",
+      "_source": "stSergius-pentecostarion",
+      "_note": "Sung twice (with Glory/Now between)."
+    }
+  ],
+
   "magnification": {
     "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy divine Ascension into heaven\nwith Thy most pure Body.",
     "verses": [
@@ -26,6 +49,13 @@
       "For the Lord, the Most High is terrible; a great God over all the earth. (Ps. 46:2)"
     ],
     "tone": 4
+  },
+
+  "sessionalHymns": {
+    "text": "Having come down from heaven unto the things of earth, O Christ, as God,\nwith Thyself, Thou didst resurrect Adam's form,\nwhich lay prostrate in the nether holds of Hades' vault;\nin Thine Ascension to the heights\nThou didst lead it up unto the heavens and Thou didst seat it upon the throne of Thy Father,//\nsince Thou, the Lover of mankind, art merciful.",
+    "tone": 5,
+    "label": "Sessional Hymn after the Polyeleios",
+    "_source": "stSergius-pentecostarion"
   },
 
   "prokeimenon": {
@@ -53,44 +83,152 @@
     "_katavasiaTone": 4,
     "_author": "John the Monk",
     "_katavasiaeNote": "Katavasiae Tone 4 from the 2nd Canon of Pentecost (by John of Damascus).",
+    "skipMagnificat": true,
 
     "ode1": {
       "irmos": "To God the Savior\nWho led the people through the sea with dry feet,\nand drowned Pharaoh with all his host:\nto Him alone let us sing,\nfor He has been glorified.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "O all ye peoples, let us sing a song of victory unto Christ,\nWho is taken up with glory upon the shoulders of the cherubim,\nand Who hath seated us together with Himself at the right hand of the Father; for He is glorified." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Beholding Christ, the Mediator between God and man, with His flesh in the heights,\nthe choirs of the angels were amazed,\nand with one accord they sang a hymn of victory." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Let us all sing unto God, Who was seen upon Mount Sinai,\nand Who gave the Law unto Moses, the seer of God,\nand Who ascended from the Mount of Olives in the flesh, for He is glorified." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "O most pure Mother of God, do thou unceasingly intercede with Him Who assumed flesh from thee,\nyet was not separated from the bosom of the Father,\nthat He save from every danger those whom He hath fashioned." }
+      ],
       "katavasia": "After he was covered by divine darkness,\nMoses, the slow of speech, proclaimed the divinely-written law.\nAfter he purified the eye of his mind,\nhe beheld the \"I AM\" and was taught the knowledge of the Spirit,\nWhom he honored in divinely inspired song."
     },
+
     "ode3": {
       "irmos": "By the power of Thy Cross, O Christ,\nestablish my understanding,\nthat I may hymn and glorify Thy saving Ascension.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Thou didst go up unto the Father, O Life-giving Christ,\nand Thou didst exalt our race by Thine ineffable compassion, O Lover of mankind." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The orders of angels, O Savior, on beholding man's nature ascending together with Thee,\nwere amazed and ceaselessly praised Thee." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The choirs of angels were amazed, O Christ,\nas they beheld thee taken up with Thy body,\nand they praised Thy holy Ascension." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Thou didst raise up human nature which had fallen into corruption, O Christ,\nand in Thine Ascension Thou didst exalt us and glorify us together with Thyself." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "Unceasingly entreat Him Who came forth from thy loins, O pure one,\nthat those who praise thee as the Mother of God may be delivered from the deception of the devil." }
+      ],
       "katavasia": "Only the prayer of the Prophetess Hannah\nunsealed the bonds of the barren womb\nand stilled the unbearable taunts of the fertile woman;\nfor she offered up a broken spirit to the Lord,\nthe God of knowledge."
     },
+
+    "sedalenAfterOde3": {
+      "text": "Having mounted upon heaven's clouds, O Christ,\nThou didst leave peace unto those upon the earth;\nand Thou didst ascend and sit at the Father's right hand on high,\nsince Thou art one in essence with Him, and the Spirit, O Lord;\nfor though Thou hadst appeared in the flesh, without undergoing change.\nWherefore Thou dost now wait till the last consummation,\nwhen Thou shalt return to judge all of mankind upon the earth.\nO Thou most righteous Judge and Lord,\nsince Thou art a greatly merciful God,\ndo Thou spare our souls and do Thou grant to us, Thy lowly servants,//\nthe pardon of our failings and our sins.",
+      "tone": 8,
+      "label": "Sessional Hymn (after Ode 3)",
+      "_source": "stSergius-pentecostarion"
+    },
+
     "ode4": {
       "irmos": "I have heard the report, O Lord, of the might of Thy Cross,\nhow Paradise was opened through it,\nand I cried out: \"Glory to Thy power, O Lord!\"",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Thou wast taken up in glory, O King of the angels,\nthat Thou mightest send us the Comforter from the Father.\nWherefore we cry: Glory to Thine Ascension, O Christ." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As the Savior ascended in the flesh unto the Father,\nthe arrays of the angels were astonished at Him\nand cried aloud: Glory to Thine Ascension, O Christ." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The hosts of the angels cried unto those above: Lift up the gates for Christ our King;\nHim do we praise together with the Father and the Spirit." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "The Virgin gave birth without the experience of those things that pertain to motherhood.\nBut though she was a mother, she remained a virgin;\nwherefore praising her, we cry: Rejoice, O Theotokos." }
+      ],
       "katavasia": "O King of Kings and only God from only God,\nonly Word coming forth from the Father,\nas our Benefactor Thou hast sent forth without fail Thine equal and mighty Spirit onto Thine Apostles\nas they sang, \"Glory to Thy might, O Lord.\""
     },
+
     "ode5": {
       "irmos": "Rising early, we cry out to Thee, O Lord:\n\"Save us;\nfor Thou art our God;\nwe know no other but Thee!\"",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Having filled all things with joy, O Merciful One,\nThou didst come in Thy flesh unto the hosts on high." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As the hosts of angels saw Thee being lifted up,\nthey cried aloud: Lift ye the gates for our King." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As the apostles beheld the Savior being lifted up on high,\nthey cried with trembling: Glory be to Thee, O our King." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "We praise thee as a Virgin after childbirth, O Theotokos;\nfor thou didst conceive God the Word in the flesh for the sake of the world." }
+      ],
       "katavasia": "O children of the Church who appear as light,\nreceive the fiery dew of the Spirit,\nthe redeeming purification from your faults;\nfor now the Law has gone forth from Zion,\nthe Grace of the Spirit which appears as tongues of fire."
     },
+
     "ode6": {
       "irmos": "The deep closed round about me,\nthe whale became my grave;\nbut I cried out to Thee, Who lovest mankind,\nand Thy right hand saved me, O Lord.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "In their hope for the coming of the Spirit, the apostles leapt for joy\nas they beheld on high the Creator being lifted up,\nand they cried out with fear: Glory be to Thine ascent." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "The angels came and cried unto Thy disciples, O Christ:\nIn like manner as ye see Christ going up,\nso shall He, the righteous Judge of all, come in the flesh." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "As the hosts of heaven saw Thee, our Savior, being taken up into the heights together with Thy body,\nthey cried out, saying: Great is Thy love for mankind, O Master." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "O Thou bush un-burnt, and mountain and living ladder, and gate of heaven,\nwe glorify thee as is meet, O glorious Mary, thou boast of the Orthodox." }
+      ],
       "katavasia": "As atonement for us and salvation, O Christ,\nThou hast shone forth as Master from the Virgin,\nto snatch the fallen race of Adam from corruption,\nlike the Prophet Jonah from the belly of the whale."
-    },
-    "ode7": {
-      "irmos": "Thou didst save the Youths\nwho in the fiery furnace sang Thy praise:\n\"Blessed art Thou, the God of our fathers.\"",
-      "katavasia": "Horn and pipe and every kind of music raised the call\nto worship a golden image without a soul,\nbut the light-bearing grace of the Comforter\ninspires those who cry:\n\"O Trinity, One in Might and without beginning, blessed art Thou alone!\""
-    },
-    "ode8": {
-      "irmos": "The Son and God, begotten of the Father before the ages,\nand in the last times made flesh of a Virgin Mother,\nyou priests, extol,\nand, you people, highly exalt unto all ages.",
-      "katavasia": "The bonds are loosed and the flames are sprinkled with dew\nin a type of the thrice-radiant Godhead.\nThe youths sing praise while all creation blesses its Benefactor,\nthe One Savior and Creator of all."
-    },
-    "ode9": {
-      "irmos": "Magnify, O my soul,\nChrist the Giver of Life,\nWho has ascended from earth to heaven!\nWe the faithful, with one accord,\nmagnify thee, the Mother of God,\nwho, beyond reason and understanding,\nineffably gave birth in time to the Timeless One.",
-      "katavasia": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee."
     },
 
     "kontakion": {
       "text": "When Thou hadst fulfilled the dispensation for our sake,\nand united earth to heaven,\nThou didst ascend in glory, O Christ our God,\nnot being parted from those who love Thee,\nbut remaining with them and crying:\n\"I am with you, and there is no one against you!\"",
       "tone": 6,
       "label": "Kontakion of the Ascension"
+    },
+    "ikos": {
+      "text": "Leaving the things of earth upon the earth,\nand surrendering to the earth things of ashes,\ncome, let us come to our senses and raise our eyes and thoughts on high;\nlet us, O mortals, turn our gaze together with our senses up unto the heavenly gates.\nLet us consider ourselves present at the Mount of Olives,\nand gaze intently at the Redeemer who is riding upon a cloud;\nfor the Lord hath hastened up from there into the heavens.\nAnd there the bountiful Giver of gifts distributed gifts unto His apostles,\ncalling to them as a Father, and strengthening them;\nHe guided them like Sons and said unto them:\nI am not separated from you; I am with you, and no one can be against you.",
+      "_source": "stSergius-pentecostarion"
+    },
+
+    "ode7": {
+      "irmos": "Thou didst save the Youths\nwho in the fiery furnace sang Thy praise:\n\"Blessed art Thou, the God of our fathers.\"",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "O Thou Who wast taken up on a cloud of light, Thou didst save the world,\nO God of our fathers, Blessed art Thou." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "O Christ, having taken upon Thy shoulders our nature, which had gone astray,\nThou didst ascend and bring it unto God the Father." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "O Thou Who didst ascend in the flesh unto the bodiless Father,\nO God of our fathers, Blessed art Thou." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Having raised our nature, which was deadened by sin,\nThou didst bring it unto Thine own Father, O Savior." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "O Thou Who wast born of the Virgin, thereby making her the Theotokos,\nO God of our fathers, Blessed art Thou." }
+      ],
+      "katavasia": "Horn and pipe and every kind of music raised the call\nto worship a golden image without a soul,\nbut the light-bearing grace of the Comforter\ninspires those who cry:\n\"O Trinity, One in Might and without beginning, blessed art Thou alone!\""
+    },
+
+    "ode8": {
+      "irmos": "The Son and God, begotten of the Father before the ages,\nand in the last times made flesh of a Virgin Mother,\nyou priests, extol,\nand, you people, highly exalt unto all ages.",
+      "troparia": [
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Unto Christ, the Giver of life, Who in two essences hath risen into the heavens with glory\nand sitteth together with the Father,\nO ye priests hymn, and ye peoples supremely exalt throughout all ages." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Unto Thee, O Savior, Who didst deliver creation from slavery to the idols,\nand didst present it free unto Thine own Father,\ndo we give praise, and supremely exalt throughout all ages." },
+        { "refrain": "Glory to Thee, our God, glory to Thee.", "_source": "stSergius-pentecostarion",
+          "text": "Unto Him Who by His descent destroyed the adversary,\nand Who by His ascent raised up mankind give praise;\nO ye priests, hymn, and ye peoples, supremely exalt Him throughout all ages." },
+        { "refrain": "O Most Holy Theotokos, save us.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "Thou hast proved to be more excellent than the cherubim, O pure Theotokos,\nsince thou hast carried in thy womb Him that rideth upon them.\nTogether with the bodiless ones, we mortals glorify Him throughout all ages." }
+      ],
+      "katavasia": "The bonds are loosed and the flames are sprinkled with dew\nin a type of the thrice-radiant Godhead.\nThe youths sing praise while all creation blesses its Benefactor,\nthe One Savior and Creator of all.",
+      "_katavasiaCloser": "We praise, we bless, we worship the Lord, praising and supremely exalting Him throughout all ages."
+    },
+
+    "ode9": {
+      "irmos": "O Thou Who art God's Mother transcending mind and word,\nwho ineffably in time hast given birth unto the Timeless One,\nThee do we the faithful magnify with one accord.",
+      "megalynarion": "Magnify, O my soul,\nChrist the Giver of Life,\nWho ascended from earth to heaven.",
+      "_megalynarionNote": "Sung before the irmos and as the refrain to each troparion; Magnificat is omitted at Ascension Matins.",
+      "troparia": [
+        { "refrain": "Magnify, O my soul, Christ the Giver of Life, Who ascended from earth to heaven.", "_source": "stSergius-pentecostarion",
+          "text": "As the apostles beheld Thee, Christ God, the Redeemer of the world, being exalted in a manner befitting God,\nthey magnified Thee with awe as they leapt for joy." },
+        { "refrain": "Magnify, O my soul, Christ the Giver of Life, Who ascended from earth to heaven.", "_source": "stSergius-pentecostarion",
+          "text": "Beholding Thy deified flesh on high, O Christ,\nthe angels beckoned to one another: Truly this is our God." },
+        { "refrain": "Magnify, O my soul, Christ the Giver of Life, Who ascended from earth to heaven.", "_source": "stSergius-pentecostarion",
+          "text": "As the orders of the Bodiless saw Thee being lifted up in the clouds, O Christ God,\nthey cried: Lift up the gates for the King of Glory." },
+        { "refrain": "Magnify, O my soul, Christ the Giver of Life, Who ascended from earth to heaven.", "_source": "stSergius-pentecostarion",
+          "text": "Thee, Who didst descend unto the utmost depths of the earth,\nand Who didst save man and exalt him by Thine Ascension, do we magnify." },
+        { "refrain": "Magnify, O my soul, Christ the Giver of Life, Who ascended from earth to heaven.", "type": "theotokion", "_source": "stSergius-pentecostarion",
+          "text": "Rejoice, O Theotokos, Mother of Christ God.\nAs thou didst behold ascending from the earth Him Whom thou didst conceive,\nthou didst magnify Him together with the angels." }
+      ],
+      "katavasia": "Rejoice, O Queen, glory of mothers and virgins!\nNo tongue, however sweet or fluent, is eloquent enough to praise thee worthily.\nEvery mind is overawed by thy childbearing.\nTherefore, with one voice, we glorify thee."
     }
   },
 

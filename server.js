@@ -1546,6 +1546,39 @@ function _applyCrossSundayOverlay(spec) {
     spec.sessionalHymnAfterPolyeleios = ov.sessionalHymnAfterPolyeleios;
   }
 
+  // Cross Canon by St Theodore the Studite — interleaved as a third sub-canon
+  // after the Octoechos resurrection / cross-resurrection / theotokos groups.
+  // Each Cross-Theodore troparion is tagged `canon: 'crossOfTheStudite'`; the
+  // first troparion of each ode carries the ode's irmos via `_irmos` so the
+  // assembler can emit the header rubric + Irmos block before the troparia.
+  if (ov.crossCanon?.odes) {
+    spec.canon = spec.canon || {};
+    const cc = ov.crossCanon;
+    for (const [odeStr, ode] of Object.entries(cc.odes)) {
+      const odeKey = `ode${odeStr}`;
+      const odeSpec = spec.canon[odeKey] = spec.canon[odeKey] || {};
+      odeSpec.troparia = odeSpec.troparia || [];
+      const ccTroparia = [];
+      (ode.troparia || []).forEach((text, i) => {
+        const trop = { canon: 'crossOfTheStudite', text, tone: cc.tone };
+        if (i === 0 && ode.irmos) {
+          trop._irmos = ode.irmos;
+          trop._irmosTone = cc.tone;
+        }
+        ccTroparia.push(trop);
+      });
+      if (ode.theotokion) {
+        ccTroparia.push({
+          canon: 'crossOfTheStudite',
+          text: ode.theotokion,
+          tone: cc.tone,
+          type: 'theotokion',
+        });
+      }
+      odeSpec.troparia = odeSpec.troparia.concat(ccTroparia);
+    }
+  }
+
   // Cross kontakion + ikos (placed after Ode 6 by the canon assembler)
   spec.canon = spec.canon || {};
   if (ov.kontakion) {

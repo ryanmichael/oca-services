@@ -4,7 +4,7 @@
     "scope": "Third Sunday of Great Lent — Sunday of the Veneration of the Precious Cross",
     "source": "Lenten Triodion (Mother Mary & Kallistos Ware), pp. 337-350",
     "tradition": "SVS",
-    "scopeNote": "MVP coverage: sessional hymn after Polyeleios, kontakion + ikos, Cross exapostilarion + theotokion, lauds Cross stichera, veneration stichera after Great Doxology, Cross troparion after Doxology. The full Cross Canon by St Theodore the Studite is NOT yet captured — the Sunday Octoechos canon still renders alone."
+    "scopeNote": "Full coverage: sessional hymn after Polyeleios, kontakion + ikos, Cross exapostilarion + theotokion, lauds Cross stichera, veneration stichera after Great Doxology, Cross troparion after Doxology, AND the Cross Canon by St Theodore the Studite (8 odes — 3 troparia of the Cross + Theotokion per ode), interleaved as a third sub-canon after the Octoechos resurrection + cross-resurrection + theotokos groups via the `canon: 'crossOfTheStudite'` tag."
   },
 
   "key": "lent.sunday.cross",
@@ -131,6 +131,92 @@
       "_source": "lentenTriodion-svs-p343",
       "tone": 7,
       "text": "Three crosses Pilate set up on Golgotha, two for the thieves and one for the Giver of Life. Seeing Him, hell cried to those whose ministers are below: \"Who is this that has fixed a nail in my heart? A wooden spear has pierced me suddenly, and I am torn apart. Inwardly I suffer; anguish has seized my belly; my senses moan; and my spirit trembles. I am constrained to cast out Adam and his posterity. For a Tree brought them to my realm, but now the Tree of the Cross brings them back again to Paradise.\""
+    },
+
+    "crossCanon": {
+      "_label": "Canon of the Cross by St Theodore the Studite",
+      "_source": "lentenTriodion-svs-p337-346",
+      "_note": "Tone 1. Irmoi adapted from the Paschal canon (Sunday of the Cross stands at the midpoint of Lent, anticipating Pascha). Sub-canon tag: `crossOfTheStudite` — assembler emits a header rubric when troparia tagged with this tag follow the Octoechos resurrection/cross-resurrection/theotokos groups.",
+      "tone": 1,
+      "odes": {
+        "1": {
+          "irmos": "This is the day of Resurrection. This is a day of festival: at the Awakening of Christ, death has fled away, and the light of life has dawned; Adam has arisen and dances for joy. Therefore let us cry aloud and sing a song of victory.",
+          "troparia": [
+            "The day of the veneration of the Precious Cross is at hand: let us all come and embrace its glory and rejoice in its risen brightness. Let us all draw near and kiss it with great rejoicing in our souls.",
+            "O mighty Cross of the Lord, manifest thyself! Show me the divine vision of thy beauty, and grant me worthily to venerate thee. For I speak to thee and embrace thee as though thou wert alive, O blessed Cross.",
+            "Let heaven and earth give praise with one accord, for the all-blessed Cross is now set forth before us all, on which Christ's Body was nailed when He was offered in sacrifice. Let us venerate it with great rejoicing in our souls."
+          ],
+          "theotokion": "O Virgin who hast not known a man, without seed thou hast conceived: pure and sinless is the birth, and the Child thou hast borne is the Maker of all, Christ our God. Entreat Him to grant the whole world peace.",
+          "katavasia": "Moses prefigured Thy Cross in days of old, when he divided the Red Sea with his rod and led Israel across on dry land; and he sang a song of deliverance unto Thee, O Christ our God."
+        },
+        "3": {
+          "irmos": "O come, ye faithful, and let us drink a new drink, not from a well of earthly water that perishes, but from the fountain of light, that the Cross of Christ has risen from the tomb; for His Cross is our glory.",
+          "troparia": [
+            "Now in Paradise of old, the enemy stripped me bare; for by giving me its fruit to eat, he brought death. But now the Tree of the Cross that clothes men with the garment of life has been set up on earth, and the whole world is filled with boundless joy. Beholding it venerated, O ye people, let us with one accord raise in faith our cry to God: His house is full of glory.",
+            "O mighty Cross of the Lord, manifest thyself; show me the divine vision of thy beauty, and grant me worthily to venerate thee. For I speak to thee and embrace thee as though thou wert alive: O Tree thrice-blessed, save those who venerate thee with faith and love.",
+            "Let heaven and earth give praise with one accord, for the thrice-blessed Cross is set before us. On it Christ's Body was offered in sacrifice for the salvation of the world. Let us venerate it with great rejoicing."
+          ],
+          "theotokion": "O Trinity of Persons, O Unity of Essence, Father, Son and Spirit, equal in power, one in purpose and will, one in dominion and rule, watch over Thy world and grant it peace.",
+          "katavasia": "O Virgin Mother of God, thou hast borne the Lord in time; Entreat Him to grant peace to the world."
+        },
+        "4": {
+          "irmos": "When Habakkuk, inspired by God, beheld Christ arisen, the Angel said to the women bearing sweet spices: 'Behold, Christ is risen,' and he said to the apostles: 'Rejoice, today is the salvation of the world; for through Christ's death the tyranny of the enemy has been destroyed.'",
+          "troparia": [
+            "As we celebrate today the joyful veneration of Thy life-giving Cross, O Christ our Saviour, we prepare ourselves for Thy most holy Passion; for Thou in Thine almighty power hast freed us from the lairs of corruption.",
+            "There is joy today in heaven and on earth, for the sign of the Cross is made manifest to the world. The thrice-blessed Cross is set before us, and to all who show it veneration it is a fount of ever-flowing grace.",
+            "What shall we offer Thee, O Christ? For Thou hast given us Thy Precious Cross to venerate, on which Thy holy Blood was shed, to which Thy flesh was fixed by nails. With love we kiss it and give thanks to Thee."
+          ],
+          "theotokion": "I sing the praises of the three Persons in one Godhead; I proclaim one simple Nature undivided: Father eternal, Son and Holy Spirit, one in throne and lordship, one single Kingdom, one everlasting Power."
+        },
+        "5": {
+          "irmos": "Let us arise early in the morning, and instead of myrrh offer a hymn to the Master; and we shall see Christ, the Sun of righteousness, who causes life to dawn for all.",
+          "troparia": [
+            "Seeing Thee, O mighty Lord, upon the Cross, the sun was seized with fear, with dread sun was darkened. Earth fell its rays, with dread the whole creation trembled at Thy longsuffering, and the earth was filled with Thy praise.",
+            "Let us draw near in the morning, and instead of sweet spices offer a hymn to the Master; and we shall behold Him in the world, the never-setting Sun who has scattered the dark sorrow of death from the compassion of those who have driven out hell from the earth.",
+            "Cleansed by abstinence, let us draw near, and with fervent praise venerate the all-holy Wood on which Christ was crucified, when He saved the host of angels dancing with gladness at the veneration of Today the host of angels dancing with gladness at the veneration of Thy Cross. For through the Cross, O Christ, Thou hast shattered the hosts of devils and saved mankind."
+          ],
+          "theotokion": "The Church of Paradise of old, a tree of life, O Lord. By it, like the Tree of life, we share in immortality."
+        },
+        "6": {
+          "irmos": "Thou hast gone down, O Christ, Thou hast crushed death, O Christ, and risen as a mighty King; Thou hast recalled us from the depths of hell and brought us up to the land of immortality, granting us the joy of the Kingdom of Heaven.",
+          "troparia": [
+            "O ye who feast and faithful, let us cry aloud with joy: it is a fountain of holiness. O ye see the Cross of the Lord; for it is a fountain of holiness. The words of the Psalmist are fulfilled: for see, we worship at the footstool of Thy most pure feet, O Lord all-powerful, at Thy Precious Cross, the thrice-blessed Wood.",
+            "The wood which the Prophet of lamentation saw placed in Thy bread — Thy Cross, O merciful Lord — we venerate, and we sing in praise of Thy bonds and tomb, of the spear and nails.",
+            "We kiss the holy Cross, O Christ, which Thou wast pleased to bear upon Thy shoulders, on which Thou hast accepted to be lifted up and crucified in the flesh; and from it we receive strength against our invisible enemies."
+          ],
+          "theotokion": "O Eve free from blemish, the greatest wonder of all wonders was revealed in thee: for thou hast borne the Lamb that takes away the sin of the world. Entreat Him fervently for those who sing thy praises.",
+          "katavasia": "Jonah in the belly of the whale foreshadowed with his outstretched hands the figure of the Cross; and he leapt out from the monster, saved by Thy power, O Word."
+        },
+        "7": {
+          "irmos": "He who delivered the Children from the furnace, having become man, suffers as a mortal man; and through His Passion He clothes mortal man with the splendid robe of incorruption, O God of our fathers, blessed and greatly glorified.",
+          "troparia": [
+            "Thou hast risen on the third day from the tomb as one awakening from sleep, O Lord, and by Thy divine power Thou hast struck down the gatekeepers of hell. Thou hast raised up all our ancestors from the beginning, O God of our fathers, who alone art blessed and greatly glorified.",
+            "This day, ye peoples, let us dance and sing to the music of the lyre, and greatly rejoice at the veneration of the Cross, giving glory to Christ who was nailed upon it. The God of our fathers, who alone is blessed and greatly glorified, is honoured by the whole world.",
+            "Thy Cross, O Lord and venerated, is honoured by the whole world. The Tree has become the instrument of death, but a source of life. For thanks be to those who venerate it, O God of our fathers, who alone art blessed and greatly glorified."
+          ],
+          "theotokion": "Thou alone, O only Jesus, art merciful and tenderhearted; illumine and sanctify those who venerate with faith Thy Cross and teach the divine Passion, O God of our fathers, who alone art blessed and greatly glorified."
+        },
+        "8": {
+          "irmos": "This is the chosen and holy day, the first of the Sabbaths, the queen and lady of days, the feast of feasts, and the festival of festivals, on which we bless Christ unto the ages.",
+          "troparia": [
+            "Why do ye hold sweet-smelling spices in your hands? Whom are ye seeking,' cried the young man clothed in light to the women bearing myrrh, 'Christ our God is risen, granting life to the dead from the hidden depths of hell.'",
+            "Rejoice, O Cross, thrice-blessed and divine Wood, a light to those in darkness. Shining on the four corners of the earth, thou dost prepare us for the dawn of Christ's Resurrection. O grant to all the faithful that they may come to the festival of Easter.",
+            "On this day the Wood anointed with life, the Cross of Christ, fills all things with the perfume of divine grace. Let us swell its God-given fragrance, venerating it with faith for ever."
+          ],
+          "theotokion": "Come, Elijah and the prophet, and tell us plainly: What was the wood that thou hast cast into the water? It was the Cross of Christ, which draws us up from the depths of corruption: and we venerate it with faith for ever.",
+          "katavasia": "Jacob prefigured Thy Cross in days of old, O Christ, when he venerated the top of Joseph's holy staff, in which, he saw foreshadowed the dread sceptre of Thy Kingdom; and now we venerate Thy Cross in faith for ever."
+        },
+        "9": {
+          "irmos": "Shine, shine, O new Jerusalem, for the glory of the Lord is risen upon thee! Dance now and be glad, O Sion, and do thou exult, O pure Theotokos, in the arising of Him whom thou didst bear. Glory to Thy Resurrection, O Christ, all-powerful.",
+          "troparia": [
+            "The tomb, O Christ, has brought me life: for Thou, the Lord of life, hast come and cried to those who were dwelling in the grave: 'O all who are in bonds, be loosed: for I am come, the Ransom of the world.'",
+            "Let all the trees of the forest dance and sing, as they behold their fellow-tree, the Cross, today receiving veneration: for Christ, as holy David prophesied, has exalted it on high.",
+            "I died through a tree, but I have found in thee a Tree of Life, O Cross of Christ, Thou art my invincible protector, my strong defence against the demons. Venerating thee this day, I cry aloud: Sanctify me by thy glory."
+          ],
+          "theotokion": "Thou at the great mountain, O Virgin, wherein Christ dwelt, as holy David says. By thee we are raised up to heaven, all-blessed Lady, regaining through the Spirit the adoption of sons. O Virgin Mother and true Theotokos, without end thou hast borne Christ our God, who was lifted up in the flesh upon the Cross. We and all the faithful, as is right, magnify thee with the Son.",
+          "katavasia": "Rejoice and be exceeding glad, O Church of God, as thou dost venerate today the thrice-blessed wood of the most holy Cross of Christ, that is attended by the ranks of angels, and with fear they stand before it."
+        }
+      }
     },
 
     "troparionAfterDoxology": {

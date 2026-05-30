@@ -914,6 +914,28 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Sunday of the Cross (2026-03-15) renders the Cross Canon by St Theodore as a 3rd sub-canon', async () => {
+    // Pascha 2026 = April 12 → Sunday of the Cross = March 15 (3rd Sunday of Lent).
+    // The Octoechos Sunday canon already has 3 sub-canons (resurrection,
+    // crossResurrection, theotokos); the Cross-Theodore overlay adds a 4th.
+    const res = await get('/api/matins?date=2026-03-15');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const studiteHeadings = canonRubrics.filter(t => /Cross by St Theodore the Studite/.test(t));
+    assert.ok(studiteHeadings.length >= 8,
+      `Expected ≥8 'Cross by St Theodore the Studite' headings (one per Ode 1,3,4,5,6,7,8,9), got ${studiteHeadings.length}. ` +
+      `Sample rubrics: ${canonRubrics.slice(0, 5).join(' | ')}`);
+
+    // Distinctive Cross-Theodore irmos text should appear
+    const fullText = res.json.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes('This is the day of Resurrection. This is a day of festival'),
+      'Cross-Theodore Ode 1 irmos missing — overlay may not have fired');
+    assert.ok(fullText.includes('O mighty Cross of the Lord, manifest thyself'),
+      'Cross-Theodore Ode 1 troparion missing');
+  });
+
   it('Pentecost Matins renders two canons separately, not flat', async () => {
     const res = await get('/api/matins?date=2026-05-31');
     assert.equal(res.status, 200);

@@ -5387,6 +5387,13 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
               } else if (t.canon === 'theotokos') {
                 blocks.push(S(`canon-ode${odeNum}-theotokos-hdr`, section, 'rubric', null,
                   'Canon of the Theotokos'));
+              } else if (t.canon === 'crossOfTheStudite') {
+                blocks.push(S(`canon-ode${odeNum}-cross-studite-hdr`, section, 'rubric', null,
+                  'Canon of the Cross by St Theodore the Studite'));
+                if (t._irmos) {
+                  blocks.push(S(`canon-ode${odeNum}-cross-studite-irmos`, section, 'hymn', 'choir',
+                    t._irmos, { tone: t._irmosTone || tone, label: 'Irmos' }));
+                }
               }
               prevCanon = t.canon;
             }

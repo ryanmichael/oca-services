@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Nina (2026-01-14) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-14', {
+      feastName: 'St Nina',
+      minBlocks: 250,
+      troparionText: 'O holy Nina, equal of the apostles',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 3,
+    });
+  });
+
   it('St Olga (2026-07-11) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-07-11', {
       feastName: 'St Olga',

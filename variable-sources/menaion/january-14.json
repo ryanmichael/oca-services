@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "feast": "St Nina, Equal-to-the-Apostles, Enlightener of Georgia",
+    "feastKey": "stNina",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 01-14.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-14.pdf",
+    "_note": "Single canon of the venerable one in Tone I. Jan 14 falls in the afterfeast of Theophany (Jan 6); Sergius PDF interleaves two Theophany canons (Canon I by Cosmas Tone II, Canon II by John of Damascus Tone II) with the Nina canon — both feast canons are omitted per the menaion-matins-track pattern (the Theophany content lives in the festal-matins flow when Jan 6 itself is requested). Magnification of St Nina. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "O holy Nina, equal of the apostles,\nminister of the word of God,\nwho emulated the first-called Andrew and the other apostles in apostolic preaching,\nenlightener of Iberia and harp of the Holy Spirit://\nentreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of St Nina"
+  },
+  "kontakion": {
+    "text": "Come ye all, and let us hymn today the all-famed Nina,\nthe preacher of the Word of God,\nthe equal of the apostles, who was chosen by Christ,\nthe wise evangelist who hath led the people of Kartalinia to the path of life and truth,//\nthe disciple of the Mother of God, our fervent helper and tireless guardian.",
+    "tone": 2,
+    "label": "Kontakion of St Nina"
+  },
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy Nina, equal of the apostles,\nminister of the word of God,\nwho emulated the first-called Andrew and the other apostles in apostolic preaching,\nenlightener of Iberia and harp of the Holy Spirit://\nentreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the venerable one"
+    },
+    "sedalion": [
+      {
+        "text": "With spiritual discourse thou didst bedew our whole land, O Nina, equal of the apostles,\nand thus rendered it fertile, that it might produce the seed of faith.\nAnd thou didst enlighten the ends of the world and uproot the tares of unbelief,//\nbaptizing the peoples of Iberia in the name of the beginningless Trinity.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "bothNow": {
+          "text": "Thou didst sanctify the streams of the Jordan and didst crush the might of sin, O Christ our God;\nThou didst bow Thy head beneath the hand of the forerunner and hast saved the human race from deception.//\nWherefore, we entreat Thee: Save Thou our souls!",
+          "tone": 4,
+          "label": "Sessional Hymn of the feast (Theophany)",
+          "melody": "Go Thou quickly before"
+        }
+      },
+      {
+        "text": "O holy city, adornment of the Church, rejoice and be glad,\nfor today is celebrated the splendid festival of our mother Nina, the equal of the apostles,\nthe preacher of the Gospel who founded thee;//\nand cry out with us: O Christ God, by her supplications establish Thy Faith.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "bothNow": {
+          "text": "Wherefore didst thou marvel, O River Jordan, seeing the Invisible One naked?\n'I beheld and trembled,' it said, 'for how could I have desired not to be filled with awe of Him and withdraw?'\nThe angels were filled with fear, beholding Him; heaven was affrighted, and the earth quaked;\nthe sea, and all things visible and invisible, were troubled.//\nChrist appeared in the Jordan, to sanctify the waters.",
+          "tone": 4,
+          "label": "Sessional Hymn of the feast (Theophany)"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy Nina, equal of the apostles,\nwho illumined the whole land of Iberia with the light of the Gospel//\nand led it to Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Having been chosen beforehand by the Mother of God, and taken the rank of the apostles,\nthou didst illumine the land of Iberia with the light of the Gospel,\nhymning the Redeemer with the angels and praying unceasingly to Him for us,//\nthat Christ grant us grace and mercy.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "bothNow": {
+        "text": "Come, O ye faithful, let us see where Christ hath been baptized.\nLet us follow now to the River Jordan, to the voice of him who crieth in the wilderness,\nand let us behold there the Creator of Adam, Who in His ineffable compassion is touched by the hand of His servant,//\nand let us cry aloud to Him: Thou hast come, Thou hast appeared in the Jordan, to sanctify the waters!",
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (Theophany)",
+        "melody": "Joseph was amazed"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament showeth forth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "Matthew 10:1, 5-8", "number": 34 },
+    "postGospelSticheron": {
+      "text": "Come, let us all hymn Nina, the equal of the apostles, the divinely wise enlightener of Iberia;\nfor she dispelled the delusion of idolatry, leading us out of the darkness into the light,\nand taught us to worship the consubstantial Trinity.\nWherefore, all ye faithful, let us celebrate her honored memory with faith,//\nand glorify our Savior.",
+      "tone": 6,
+      "label": "Idiomelon of St Nina"
+    },
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the venerable one (Tone I). The two Theophany feast canons (Cosmas Tone II + John of Damascus Tone II) interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "The Master saved His people by working a wonder, making solid the watery waves of the sea of old;\nand having willingly been born of the Virgin, He hath set before us a path leading to heaven.//\nLet us glorify Him Who is by nature equal to both the Father and mankind.",
+        "troparia": [
+          { "text": "Open Thou my lips, O Christ God, that I may praise and hymn the virgin Nina, the equal of the apostles and preacher; and enlighten my mind, that, as is meet, I may adorn with flowers of discourse her who is worthy." },
+          { "text": "Thou didst bring knowledge to tribes alien to thee, O all-famed Nina, and, made wise by the Holy Spirit, thou didst behold the Lord Himself in a vision. Wherefore, O divinely wise virgin, in a barren land thou didst bring the people of Iberia to Christ." },
+          { "text": "Like a dove who flew in from the West, by thy love thou didst turn to the Creator the hardhearted barbarians who worshipped idols, and when they were renewed by grace, O immaculate bride of Christ, thou didst betroth them to thy Bridegroom." },
+          { "text": "Theotokion: The holy virgin was the vessel of thy beneficence, O most pure Virgin Theotokos, and she enlightened the land which had fallen to thee by lot. Wherefore, we beseech thee: Take her with thee to make entreaty for those who cry out to thee: Have mercy upon thy portion!" }
+        ]
+      },
+      "ode3": {
+        "irmos": "Look upon the hymns of Thy servants, O Benefactor,\nand humble the vaunted pride of the enemy;\nbearing far above sin those who hymn Thee,//\nmaking them unshakably firm by the foundation of faith, O Thou Good One.",
+        "troparia": [
+          { "text": "Mercifully mindful of us in His tender compassion, God made thee a zealous evangelist, who, though a woman, wast adorned with manly understanding; and He hath revealed thee to us as full of the Holy Spirit, and by thy preaching of Christ hath adopted us through faith in Him." },
+          { "text": "The shell hath fallen away from our insensitive hearts, our deafened ears have been opened by the sound of thy preaching, and the darkness of our mind hath been scattered by the light of the Christian doctrine proclaimed by thee, O holy Nina, equal of the apostles, valiant disciple of Christ." },
+          { "text": "Those who once worshiped graven images and abode in the darkness of ungodliness have been freed from the delusion of idolatry by thy coming, O blessed Nina. And Arman trembled when thunder rolled, and the savagery of Zaden was brought to an end." },
+          { "text": "Theotokion: Through thee, O Virgin Theotokos, were we removed from the pit of ungodliness when it pleased thee to accomplish our enlightenment by a woman. And when we emerged from the holy font, through the blessed Nina we came to know thy Son and our God." }
+        ]
+      },
+      "ode4": {
+        "irmos": "The renewal of the human race was hymned of old and proclaimed beforehand by the Prophet Habbakuk,\nwho having ineffably been deemed worthy to behold in image;\nthe Word coming forth from the mountain, the Virgin, as a little Babe,//\nfor the restoration of the people.",
+        "troparia": [
+          { "text": "As one greater than a fearless lion, thou didst mightily preach Christ God. Thou didst pursue the Parthians with the power of miracles, offering Garana and Rhipsimia to Christ as a gift through the contest of their valiant martyrdom, and He preserved thee, to enlighten the land of Iberia through thee." },
+          { "text": "Like an eagle thou didst bring the form of our land of Iberia to thine eyes, O most glorious Nina, and, burning with holy zeal for God, illumining it with the light of the Gospel." },
+          { "text": "Having authority to dispel the darkness, emulating the Emperor Constantine, the equal of the apostles, thou didst enlighten the wise king, O our instructress and sensible physician. Wherefore, we bless thy name, O virgin preacher of Christ, great Nina, equal of the apostles." },
+          { "text": "Theotokion: The people of Iberia, whose lot fell to thee, O Theotokos, delivered by thee from the delusion of idolatry, and enlightened with the glad tidings of our venerable mother Nina, cry out to thee: Save us, O Mother of Christ God, who art our deliverance!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ Who art our cleansing, come unto us,\nwho out of the night of the deeds of gloomy delusion, valiantly hymn Thee as a Benefactor,//\ngranting us an expeditious path, ascending upon which we find glory.",
+        "troparia": [
+          { "text": "The idols fell in the land of Iberia, and temples of the Lord were erected by thee, O our mother; and we, the children of Sion, enlightened by thee, today glorify the Godhead in three Hypostases, venerate the precious Cross of Christ, and honor His healing tunic." },
+          { "text": "The children of those who had been exiled in the days of the tower of Babylon because of their impiety, and knew not how to chant hymnody to the Lord, now issuing forth from the holy font, say: We have been clothed in Christ, having been baptized into Christ!" },
+          { "text": "When Pharaoh reigned over the Egyptians, those who sat in the darkness of Egypt were not able to worship the true God; but let us, the children of Sion, delivered by Nina, joyfully chant unto the Lord today." },
+          { "text": "Theotokion: When the physician came unto me, O most holy Theotokos, I arose from my bed of sickness, and I have been delivered by the venerable Nina from the delusion of unclean idols. These things doth the generation of Iberia cry out, saying: I hymn thee, my hope, O Mother of God!" }
+        ]
+      },
+      "ode6": {
+        "irmos": "Dwelling in the uttermost depths of the sea, Jonah besought Thee to come and still the tempest;\nand I, pierced by the arrow of the tyrant, chant unto Thee, O Christ,//\nThou Destroyer of evil, do Thou come quickly unto my slothfulness!",
+        "troparia": [
+          { "text": "When the light arises from the West, desist O north, and blow thou O south; for the sun hath arisen dispelling the darkness, and a warm breeze hath drawn nigh to melt the ice. Behold, the holy Nina, the preacher of Christ, cometh!" },
+          { "text": "Delivered by thee from the darkness of idolatry, O Nina equal of the apostles, all the people of Kartalinia hymn thee and cry out with compunction: Dispel wickedness and drive away the devil and our adversaries from us!" },
+          { "text": "The holy font, prepared by thee by the life-creating pillar and the place where the tunic of the Lord was preserved, did not slay the children, but brought them to life, anointing them with holy oil. Wherefore, we cry out to thee: Rejoice, O virgin Nina, equal of the apostles!" },
+          { "text": "Theotokion: O unashamed hope of those who trust in thee, who alone hast given birth in the flesh to Christ our God in a manner transcending nature, with the blessed Nina beseech Him, that He grant to the land of Iberia confirmation and prosperity in the Faith, and to us correction of life before the end." }
+        ]
+      },
+      "kontakion": {
+        "text": "Come ye all, and let us hymn today the all-famed Nina,\nthe preacher of the Word of God,\nthe equal of the apostles, who was chosen by Christ,\nthe wise evangelist who hath led the people of Kartalinia to the path of life and truth,//\nthe disciple of the Mother of God, our fervent helper and tireless guardian.",
+        "tone": 2,
+        "label": "Kontakion of the venerable one"
+      },
+      "ikos": {
+        "text": "With spiritual harps let the all-famed Nina be praised:\nthe wise preacher, the enlightener of Iberia,\nwho through the chosen priests sanctified in the font of baptism the people who had fallen to her by lot,\nthe equal of the apostles, the beloved handmaid of Christ,\nwho received Ten Commandments of God like Moses the God-seer.\nCome ye, therefore, and with hymns let us bless today//\nour fervent helper and tireless guardian."
+      },
+      "ode7": {
+        "irmos": "Captured by the love of the King of all, the children reviled the uncontrollable rage and ungodly blasphemies of the tyrant,\nand the great fire submitted to them as they spake unto the Master saying://\nBlessed art Thou unto the ages.",
+        "troparia": [
+          { "text": "Thou didst spurn the chambers of the king and queen as a place of captivity and sojourning; yet by the grace of Christ thou didst lead them to Christ God out of uttermost captivity, O Nina equal of the apostles, preacher of the glad tidings of salvation." },
+          { "text": "When thou didst erect thy holy pillar and lift up thy hands, the hosts of the devil were filled with fear and trembling, and, fleeing, they groaned bitterly; but we cry aloud: Blessed art Thou, O Christ God, forever!" },
+          { "text": "When thy words rang forth, the people fell prostrate as though at the sound of royal trumpets, and realms and rulers trembled, saying: O captive who art the liberation of captives, may thine arrival be blessed!" },
+          { "text": "Theotokion: O Mother of God who wast manifestly foretold by the prophets, O most immaculate Virgin Mary, by thy sojourn in Egypt with Jesus Christ, the divine Infant, thou didst break asunder the graven images of Egypt down to the foundation, and through Nina hast destroyed the idols of Kartalinia. Be thou blessed, O Ever-virgin!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The children who in the time of the Old Covenant were cast into the fire,\nprefigured the unconsumed womb of the Maiden, which hath supernaturally given birth yet remaineth sealed;//\nand both working as a single miracle moveth the people to hymn the Grace of each.",
+        "troparia": [
+          { "text": "The memory of the holy Nina deserveth celebration. Come, therefore, ye who are faithful to Christ, let us glorify and thank our merciful God. Ye generations, tribes and children of Sion, hold festival with us in spiritual joy, saying: Glory to the preacher of Christ our God!" },
+          { "text": "Rejoice, O land of Kartalinia, crowned by Nina with the crown of Christ! Shine thou and adorn thyself; for the holy Nina, the equal of the apostles, doth summon us, illumining all with the light of the Lord!" },
+          { "text": "Thou hast commanded us to keep holy the Faith which thou didst teach to the newly converted people, O equal of the apostles. Wherefore, visit thou and establish the vines which thou hast planted amid thy spiritual flock." },
+          { "text": "Theotokion: O Mother of Christ God, the Creator of all things that exist, preserve thou the generation of Kartalinia, which through thee hath been vouchsafed life everlasting, through the supplications of the blessed Nina." }
+        ]
+      },
+      "ode9": {
+        "irmos": "From fear it may be easier, for us to prefer silence,\nfor though not fraught with danger, O Virgin, it is difficult to fashion hymns fittingly wrought for thee.\nYet, O Mother, grant us the power to chant in such a way,//\ninsofar as it is our will.",
+        "troparia": [
+          { "text": "For us thy memory is desirable, thy working of miracles is wondrous, thy life is holy. O chaste Nina, through thee are all things become for our good." },
+          { "text": "The shrine of thy relics, which pour forth grace, is the confirmation of the land of Iberia. Wherefore, it crieth unto thee: O blessed Nina, preserve us by thine aid!" },
+          { "text": "O preacher and enlightener, look upon our compunctionate hymnody, and move thou the Lord to have mercy on us. Let not us, who love to sing thy praises, perish in our sins, but, standing before the throne of God, entreat Christ God, that our souls be saved." },
+          { "text": "Theotokion: Hearken to our entreaties, O Mother of God, and with the help of the venerable Nina drive away from us all temptations. Grant thy mercy unto us, and victory over heresies to our Orthodox hierarchs." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "O equal of the apostles, preacher and evangelist of Christ,\nwho deliverest us from the assaults of the enemy,\neven though thou art hidden in the earth, away from our sight, yet thou abidest alive at the throne of Christ our God.//\nBe thou therefore the helper of those who fervently honor thee.",
+      "tone": 3,
+      "label": "Exapostilarion of the venerable one",
+      "melody": "The Orient from on high hath visited us",
+      "repeat": 2,
+      "bothNow": {
+        "text": "From on high our Savior, the Dayspring of the East, hath visited us,\nand we who are in darkness and shadow have truly found Him;//\nfor the Lord hath been born of the Virgin.",
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Theophany)"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Rejoice with thy children in the glorious assembly of the blessed Nina, O Church of God!\nRejoice and form a spiritual solemnity, to hymn our preacher,//\nthe herald of the glad tidings of the kingdom of heaven, who is the equal of the apostles!",
+          "tone": 1,
+          "_note": "Sung twice."
+        },
+        {
+          "text": "The holy Cross of Christ, the spiritual sign, hath been signed upon us who have received the preaching of the blessed Nina.\nWherefore, let us cry aloud, saying: O life-creating Cross of the Lord, preserve us all,\nfor in Christ have we been baptized, and we have put on Christ!//\nSave Thou Thy people, O Christ God!",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Today the hosts of heaven rejoice with those on earth;\ntoday the land of Kartalinia, protected by the Cross, is arrayed in power, and the horn of the Church is lifted up;\ntoday the temple of the most holy Theotokos is magnificently adorned for the memorial of the holy Nina.\nO ye faithful, let us hymn Christ, Who is both God and man, and let us cry aloud://\nGlory to God in the highest!",
+        "tone": 2
+      },
+      "theotokion": {
+        "text": "Today Christ hath come to be baptized in the Jordan! Today John toucheth the head of the Master!\nThe hosts of heaven were in awe, beholding this most glorious mystery;\nthe sea saw and fled, the Jordan, seeing it, turned back. But we, illumined, cry out://\nGlory to God Who hath appeared, was seen on earth and hath illumined the world!",
+        "tone": 6,
+        "label": "Both now (of the feast, by Anatolius)",
+        "author": "Anatolius"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy Nina, equal of the apostles,\nminister of the word of God,\nwho emulated the first-called Andrew and the other apostles in apostolic preaching,\nenlightener of Iberia and harp of the Holy Spirit://\nentreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the venerable one"
+    }
+  }
+}

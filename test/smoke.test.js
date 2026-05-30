@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Andrew the First-Called (2026-11-30) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-11-30', {
+      feastName: 'St Andrew',
+      minBlocks: 320,
+      troparionText: 'As thou art the first-called of the apostles',
+      minCanonBlocks: 100,
+      minLaudsBlocks: 5,
+    });
+  });
+
   it('Sts Constantine & Helena (2027-05-21) renders full festal Matins, not weekday stub', async () => {
     // 2026-05-21 is Ascension (Pascha Apr 12 + 39d) — festal-matins takes
     // precedence over the menaion saint that year. We test 2027 instead,

@@ -561,6 +561,26 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Olga (2026-07-11) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-07-11', {
+      feastName: 'St Olga',
+      minBlocks: 250,
+      troparionText: 'Having furnished thy mind with wings of divine knowledge',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('St Tikhon of Voronezh (2026-08-13) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-08-13', {
+      feastName: 'St Tikhon of Voronezh',
+      minBlocks: 250,
+      troparionText: 'From thy youth thou didst love Christ',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St Augustine of Hippo (2026-07-15) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-07-15', {
       feastName: 'St Augustine',

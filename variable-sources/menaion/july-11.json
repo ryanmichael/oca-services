@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "feast": "Holy Equal-to-the-Apostles Princess Olga of Russia",
+    "feastKey": "stOlga",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 5,
+    "_source": "Matins: St-Sergius Emenaion 07-11.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-11.pdf",
+    "_note": "Single canon of the righteous one in Tone V. Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9. The Sergius PDF shows the Kontakion of Olga appearing both after Ode 3 (as the canon's sessional/kontakion pair) and again after Ode 6 (proper kontakion + ikos slot); we place it at Ode 6 per the assembler's canon convention."
+  },
+  "troparion": {
+    "text": "Having furnished thy mind with wings of divine knowledge,\nthou didst soar far above visible creation;\nand seeking God, the Creator of all, and finding Him,\nthou didst receive rebirth through baptism;\nand delighting in the Tree of life, O ever-glorious Olga,//\nthou remainest incorrupt forever.",
+    "tone": 1,
+    "label": "Troparion of St Olga"
+  },
+  "kontakion": {
+    "text": "Let us hymn today God the Benefactor of all,\nWho glorified the divinely wise Olga in Russia,\nthat through her supplications//\nHe grant unto our souls the remission of sins.",
+    "tone": 4,
+    "label": "Kontakion of St Olga",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": { "tone": 5, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Having furnished thy mind with wings of divine knowledge,\nthou didst soar far above visible creation;\nand seeking God, the Creator of all, and finding Him,\nthou didst receive rebirth through baptism;\nand delighting in the Tree of life, O ever-glorious Olga,//\nthou remainest incorrupt forever.",
+      "tone": 1,
+      "label": "Troparion of the righteous one"
+    },
+    "sedalion": [
+      {
+        "text": "Thou hast truly been shown to be most wise among women, O glorious Olga,\nwho rejected pagan delusion, believed in Christ, and inspired Vladimir toward Him.\nWherefore, as our first mother, forget not us, thine unworthy children,//\nbut make us steadfast in Orthodoxy and piety by thy God-pleasing supplications.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "bothNow": {
+          "text": "Soften our hearts which have been hardened by evil, O most pure Virgin;\nassuage our grief, O thou who endured many sorrows at the Cross of thy Son;\nand listen unto our petitions,//\nin that thou art the good one who speedily hearkeneth unto us.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "The steps of a man are guided aright by the Lord;\nwherefore, O holy Olga, He Who trieth the hearts and reins of man guided thee to the kingdom of heaven.//\nThrough thy supplications may we also not be deprived thereof.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "bothNow": {
+          "text": "O Lady Theotokos, thou unashamed hope and unassailable bulwark of Christians,\nreject not the entreaties of those who have recourse unto thee,//\nbut, in that thou art good, do thou help and have mercy upon us.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O blessed Princess Olga, equal of the apostles,\nand we honor the holy memory of thee who trampled the idols underfoot//\nand enlightened many of the people of Russia with holy baptism.",
+      "verses": [
+        "Blessed is the man that feareth the Lord, in His commandments shall he greatly delight."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "It was fitting that thou receive the name of the empress who was the equal of the apostles, O blessed one,\nfor thou didst emulate her who had diligently sought out the Cross of Christ,\nthyself seeking for Christ our true God and taking up His Cross.\nHim do thou entreat, that we who are weighed down by sins//\nmay also take up the easy yoke of the Cross and receive the hope of heaven.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "bothNow": {
+        "text": "'Henceforth all generations shall call me blessed,' thou didst say, O most pure Virgin,\nwhen thou didst receive the salutation of the righteous Elizabeth.\nWherefore, we also have been taught by our fathers//\nto hymn thee as the Theotokos and Mother of the Light.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "Matthew 13:33, 44-50", "_note": "From §§ 53, 55." },
+    "postGospelSticheron": {
+      "text": "Let us praise the all-wise Olga, the proclaimer of the Faith and divinely chosen guide to salvation,\nand with hymns let us honor her holy memory;//\nfor with all the saints of our land she prayeth for the salvation of our souls.",
+      "tone": 6,
+      "label": "Idiomelon of St Olga"
+    },
+    "canon": {
+      "tone": 5,
+      "_author": "Canon of the righteous one (Tone V). Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted.",
+      "ode1": {
+        "irmos": "Let us hymn Christ, Who drowned the haughty Pharaoh and his captains and armaments in the sea,\nand Who most gloriously saved Israel and led them across dry land,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Thou art our greatness and boast, O divinely wise Olga; for by thee we have been freed from the delusion of idolatry. And now do thou pray for the generations of generations which thou hast led to God, hymning Christ, for He is glorious." },
+          { "text": "Thou didst drive the arrogant devil from Russia, everywhere breaking asunder the ungodly graven images; and thou hast freed all the people from iniquity, teaching them with wisdom to hymn Christ, for He is glorious." },
+          { "text": "Thou didst utterly wash away the blackness of sin with the laver of baptism, and didst love Christ; standing before Him, pray thou for thy servants who glorify thee with faith." },
+          { "text": "Theotokion: Isaiah calleth thee the rod, O most pure one, and David called thee the throne of the Lord; Habbakuk referred to thee as the mountain overshadowed, and Moses proclaimed thee the bush unburnt. But we call thee the Mother of God." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;//\nand be seen radiantly keeping festival, joyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "With Thy mighty arm and powerful word Thou didst create heaven and earth;\nand Thy Church, which Thou hast redeemed by Thy blood, is established in Thee, crying out://\nThere is none holy save Thee, O Lord!",
+        "troparia": [
+          { "text": "With mighty arm, wise words and powerful discourse thou didst teach thy son the law of Christ, and didst forbid the people to offer sacrifice to idols, O most glorious Olga, and, assembling now in thy memory, we glorify thee." },
+          { "text": "Like a bee of goodly understanding thou didst seek the Faith of Christ which blossomed afar off, and, acquiring baptism in the Imperial City like true honey, thou didst give it to thy city and people; And all, satisfied therewith, escape the bitterness of sin." },
+          { "text": "We offer thee a cry full of praise and supplication, O Olga; for through thee have we come to know God before Whom thou now dost stand. Ask thou peace and victory over pagans for all Orthodox Christians, and remission of sins for the souls of us who hymn thee, O ever-blessed one." },
+          { "text": "Theotokion: Thou wast shown to be a habitation of the unapproachable God. Wherefore, the ranks of the angels unceasingly hymn thee, doing homage to the Master. For thou hast given birth unto the Word of the Father, Who is co-beginningless and without an earthly father. O the wonder! The Holy Spirit overshadowed thee!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "Purified by the Spirit of God which inspired him,\nthe divine Prophet Habbakuk said in fear://\nWhen the years draw nigh, Thou shalt be acknowledged, O God, unto the salvation of mankind!",
+        "troparia": [
+          { "text": "The Spirit of God rested upon thee as on the Prophetess Deborah of old; and illumined thereby, and strengthening the wise Vladimir, thou didst bring down the devil in thy snare through thy grandson's baptism, as Barak vanquished Sisera at the brook of Kishon." },
+          { "text": "O divinely wise Olga, with contrite heart thou didst stand praying to God like a torrent; and thou didst deliver the race of thy people from the oppression of graven images freeing them from the captivity of the foe, and calling upon Christ to help us." },
+          { "text": "On the renowned day of thy holy repose we joyously keep festival, sending up a hymn of supplication to Christ Who hath crowned thee with an imperishable crown, O divinely wise Olga, ask thou remission of sins for us who glorify thee with faith." },
+          { "text": "Theotokion: We praise thee as the Mother of God and pure Virgin, the rod of the Spirit of God which, as Isaiah foretold, sprung forth from the root of Jesse and budded forth Christ as a flower, bearing the Transcendent One in the flesh." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O almighty Word of God, send peace upon the whole world,\nenlightening and illumining with the light of truth all who,//\nawakening out of the night, glorify Thee.",
+        "troparia": [
+          { "text": "As a chaste dove thou didst soar to the top of the palm tree of the virtues on sacred wings of silver; and taking wing thereon thou hast made thy nest in the bounty of paradise, O glorious Olga." },
+          { "text": "Of thee did Solomon sing of old: Within the vineyard of the King an olive tree hath blossomed forth; for thou didst plant in Russia the grapes of holiness, bringing forth the fruit of repentance, wherein Christ Himself rejoiceth." },
+          { "text": "Have pity, O Master, on Thy newly enlightened people, and give us not over into the hands of the heathen because of the multitude of our iniquities. But by the prayers of our instructress Olga, deliver us from all temptations." },
+          { "text": "Theotokion: O all ye clouds, as it is written, let gladness fall upon mortals; for Christ, the Child of God, Who cleanseth the world of sins, became incarnate of the Virgin and hath been given unto us." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Accept Thou my supplication in Thy holy and heavenly Church,\nThat like Jonah I may cry unto Thee from the depths of the heart of the sea://\nLead me up from my sins, I pray Thee, O Lord!",
+        "troparia": [
+          { "text": "Receiving the zeal of the Holy Spirit in thy heart, thou didst hate the false religion of thy forebears; and seeking Christ, the true God, thou wast shown to be a child of light, joining chorus with the first-fruits of the saints in the heavens." },
+          { "text": "Thou wast shown to be a new teacher of Christ in Russia, going about its cities and villages, destroying graven images, and teaching the people to worship the one God. Him do thou entreat on behalf of those who hymn thee." },
+          { "text": "O divinely blessed Olga, pray to God for thy children; ask for constant peace for our hierarchy, and remission of sins for us who ever glorify thee." },
+          { "text": "Theotokion: Having through thee come to know the Word of God, the almighty only begotten Son, we mortals cry out to thee: Rejoice, O blessed Theotokos, thou hope of our souls!" }
+        ]
+      },
+      "kontakion": {
+        "text": "Let us hymn today God the Benefactor of all,\nWho glorified the divinely wise Olga in Russia,\nthat through her supplications//\nHe grant unto our souls the remission of sins.",
+        "tone": 4,
+        "label": "Kontakion of the righteous one",
+        "melody": "Thou hast appeared today"
+      },
+      "ikos": {
+        "text": "Seeing the Christians' way of life, and understanding the futility of the lives of the heathen,\nthou didst say to thyself, O divinely wise Olga:\n'O the depth of the wisdom and goodness of the Creator of all!\nHow hast Thou hid Thyself from me until now?\nHow can I worship idols henceforth?\nFor no one, having tasted that which is sweet, desireth that which is bitter.\nWherefore, even though I am old in years, call me to Thee, O Holy Trinity,//\nand grant me remission of sins!'"
+      },
+      "ode7": {
+        "irmos": "The pious children enslaved the fire of the furnace; wherefore, it bedewed them from on high;\nand though by nature they were subject to being consumed,\nyet having transcended nature they manfully cried aloud://\nBlessed art Thou, O Lord, on the throne of the glory of Thy kingdom!",
+        "troparia": [
+          { "text": "Hymns of praise do we offer thee as a royal diadem for thy divinely wise head on the day of thy commemoration, O right wondrous Olga, whom Christ hath crowned with incorruption. Pray for thy flock, that they be delivered from all evil who cry aloud: Blessed art Thou on the throne of the glory of Thy kingdom, O Lord!" },
+          { "text": "Shall we call thee the mountain of Lebanon? For upon thee the dew of heaven hath descended. Or shall we call thee the river Phison, more comely than the precious stone sapphire, having Vladimir, by whom the land of Russia was enlightened? Yet pray for us who cry aloud: Blessed art Thou on the throne of the glory of Thy kingdom, O Lord!" },
+          { "text": "Theotokion: In the Spirit do we call thee the ark covered with beaten gold, who hast saved the world from the noetic flood, O Virgin. Save us, for we set our hope on thee, and to thee do we flee. From sins and temptations deliver us who lie in the pit of despair, for we cry aloud: Blessed art Thou on the throne of the glory of Thy kingdom, O Lord!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The three children girded with strength, having been clothed in the power of the Holy Trinity,\npursued and vanquished the Chaldeans; and nature was wondrously changed:\nFor the fire become dew, and preserved them as if in swaddling-bands;\nO God Who hath poured forth wisdom upon all Thy works,//\nThee do we supremely exalt throughout the ages!",
+        "troparia": [
+          { "text": "Invested with the power of the Holy Spirit, strong as a lioness, Olga made haste alone to destroy the idols in every place, a thing marveled at in heaven and on earth: how a woman first came to recognize God, by which gender the fall came upon our whole race in the beginning. And saved by her now, we chant: O God Who pourest forth wisdom in all Thy works, Thee do we supremely exalt forever!" },
+          { "text": "The Wisdom of God wrote aforetime concerning thee: Lo! thou art My good and most comely one, and there is no blemish in thee! The radiance of thy countenance, like the odor of myrrh, marked thy baptism, O Olga, wherewith Christ perfumed thee in the midst of the delusion of idols and by His mercy hath brought us all from the stench of the demons to repentance." },
+          { "text": "Remember me thy poor servant who have been robbed by the enemy and have sinned more than other men, O Sovereign Olga; and pray to Christ, that He grant me forgiveness of all the offenses which, wretch that I am, I have senselessly committed; that I may cry aloud in repentance: O God Who pourest forth wisdom in all Thy works, Thee do we supremely exalt forever!" },
+          { "text": "Theotokion: Disdain not the entreaties of thy servants, O Virgin, for we boast in thee, and are thy little flock. Haste thou to our assistance, and rescue us from our enemies; take pity on us who acknowledge thee to be the Mother of God and cry out to thy Son: O God Who pourest forth wisdom in all Thy works, Thee do we supremely exalt forever!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Our race departed from Eden because of our first mother, Eve;\nbut it hath been recalled by thee who for our sake hast given birth to Christ, the new Adam, in two natures, O pure Virgin.\nAdam, our forefather, leapt up in joy, having escaped the ancient curse;\nand we, boasting in thee, have come to know God because of thee,//\nwherefore we magnify thee.",
+        "troparia": [
+          { "text": "Be glad, O Eve our foremother, for he who deceived thee hath been expelled from Eden and is now trampled down by thine offspring. For, lo! Olga hath planted the Tree of life, the Cross of Christ, in Russia, whereby paradise hath been opened to all the faithful. And we, rejoicing that we have come to know God because of her, magnify Vladimir with her." },
+          { "text": "We call thee a woman by nature, yet thou didst struggle in a manner beyond the power of women. Myriads of gold pieces didst thou distribute, that thou mightest acquire the law of Christ thy teacher, wherewith thou didst enlighten the land of Russia. And we, rejoicing that we have come to know God because of thee, magnify thee with the martyrs." },
+          { "text": "O pure instructress in the law and teacher of the Faith of Christ, accept thou the praise of thine unworthy servants, and make entreaty to God concerning us who keep thy memory with honor; that we may be freed from temptations, misfortunes, grief and grievous sins. And deliver us from the torments which await us, we who magnify thee unceasingly beseech thee." },
+          { "text": "Theotokion: Behold, the tabernacle! Behold, the holy mountain of God! Behold, the rod, the golden vessel! Behold, the sealed fountain! Behold, the holy paradise of the new Adam! Behold, the dread throne! Behold, the most pure Mother of God, the helper of all who hymn her!" }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Illumined by the light of the grace of God, O divinely wise Olga,\nthou didst light the lamp of the true Faith in thy homeland,\nand provide an example for our father Vladimir,//\nby whom we have been led out of the darkness of ignorance into the light of Christ.",
+      "tone": 3,
+      "label": "Exapostilarion of the righteous one",
+      "bothNow": {
+        "text": "We who languish in the darkness of iniquities and have been defiled by the impurity of sin\nhave thee as a guide to the never-waning Light.\nWherefore, lead thou my wretched soul to the purity of heaven by thine almighty intercession,//\nO most pure Virgin.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 3,
+      "stichera": [
+        {
+          "text": "O brethren, let us praise our Savior and Lord for His most great benefactions;\nfor, in that He is the Lover of mankind, He placed the fire of divine love in the heart of our first mother Olga,\nand through her revealed the abundantly rich fruits of His sowing in our land:\ntrue leaders to the heavenly kingdom among our princes, wise guides to salvation among our hierarchs,\nand pillars of faith and piety among every choir of the venerable.//\nAnd through their supplications He saveth our souls from death.",
+          "tone": 3,
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Sing unto the Lord a new song, ye groves and dales of the land of Russia, in memory of our guide!\nCry unto God with a voice of rejoicing, ye mountains and hills which of old were defiled by idolatrous sacrifices,\nwhich served for the perdition of our fathers,\nbut have now been sprinkled with the dew of the grace of your Creator and overshadowed by the Cross of His Son,//\nand with us worship Him Who saveth our souls.",
+          "tone": 3
+        },
+        {
+          "text": "Because of us there have multiplied in our midst mindless ones who not only say in their hearts, 'There is no God',\nbut also preach unto us pernicious and depraved doctrines, drawing away from the Holy Church those who are of little faith.//\nYet through the supplications of the blessed Olga may the Lord save our souls from them.",
+          "tone": 3
+        }
+      ],
+      "doxastikon": {
+        "text": "Tell us, O our beloved mother, how thou didst vanquish all the wiles of the enemy by the grace of the Most High,//\nthat, taught by thee, we also may be shown to have the skill to save our souls.",
+        "tone": 8
+      },
+      "theotokion": {
+        "text": "O Theotokos, Mother unwedded, thou art our refuge and strength, thou art our hope and unassailable rampart.\nTurn not thy face away from us, but entreat thy Son and our God,//\nthat through thee He may save our souls.",
+        "tone": 8,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Having furnished thy mind with wings of divine knowledge,\nthou didst soar far above visible creation;\nand seeking God, the Creator of all, and finding Him,\nthou didst receive rebirth through baptism;\nand delighting in the Tree of life, O ever-glorious Olga,//\nthou remainest incorrupt forever.",
+      "tone": 1,
+      "label": "Troparion of the righteous one"
+    }
+  }
+}

@@ -571,6 +571,41 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Gregory the Theologian (2026-01-25) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-25', {
+      feastName: 'St Gregory the Theologian',
+      minBlocks: 320,
+      troparionText: 'The shepherd\'s pipe of thy theology',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St Photius the Great (2026-02-06) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-02-06', {
+      feastName: 'St Photius',
+      minBlocks: 250,
+      troparionText: 'As a radiant beacon hidden in God',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('Findings of the Forerunner\'s Head (2026-02-24) renders festal Matins content (Lenten weekday: Small Doxology per code policy)', async () => {
+    const res = await get('/api/matins?date=2026-02-24');
+    assert.equal(res.status, 200);
+    const j = res.json;
+    assert.ok(j.blocks.length >= 280,
+      `Findings of Forerunner's Head: expected ≥280 blocks, got ${j.blocks.length}.`);
+    const sections = {};
+    for (const b of j.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+    assert.ok(sections['Polyeleios'] > 5, 'Polyeleios section missing or thin');
+    assert.ok(sections['Canon'] >= 30, `Canon should have ≥30 blocks, got ${sections['Canon']}`);
+    const fullText = j.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes('head of the Forerunner'),
+      'Findings should include "head of the Forerunner" in troparion');
+  });
+
   it('St Athanasius of Athos (2026-07-05) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-07-05', {
       feastName: 'St Athanasius of Athos',

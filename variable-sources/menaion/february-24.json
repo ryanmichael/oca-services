@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "feast": "First and Second Findings of the Precious Head of the Holy Glorious Prophet, Forerunner and Baptist John",
+    "feastKey": "findingOfForerunnerHead",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 02-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-24.pdf",
+    "_note": "Single canon of the Forerunner in Tone VI. Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Feb 24 commonly falls during Great Lent; on a Lenten weekday the assembler forces Small Doxology per server.js policy (same as March 9 Forty Martyrs). Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "The head of the Forerunner, which hath shone forth from the earth,\nsheddeth rays of incorruption and healing upon the faithful.\nAssembling a multitude of angels on High,\nit calleth upon the human race below//\nto send up glory with one voice to Christ God.",
+    "tone": 4,
+    "label": "Troparion of the Finding"
+  },
+  "kontakion": {
+    "text": "O prophet of God and Forerunner of grace,\nhaving obtained thy head from the earth like a most sacred rose,\nwe ever receive healings,//\nfor now, as of old, thou dost preach repentance in the world.",
+    "tone": 2,
+    "label": "Kontakion of the Finding",
+    "melody": "Seeking the Highest"
+  },
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "The head of the Forerunner, which hath shone forth from the earth,\nsheddeth rays of incorruption and healing upon the faithful.\nAssembling a multitude of angels on High,\nit calleth upon the human race below//\nto send up glory with one voice to Christ God.",
+      "tone": 4,
+      "label": "Troparion of the Finding"
+    },
+    "sedalion": [
+      {
+        "text": "As a divine treasure hidden in the earth, Christ hath revealed thy head unto us, O prophet and Forerunner;\nwherefore, assembling on the feast of its discovery,//\nwith divinely eloquent songs we all hymn the Savior Who hath saved our life by thine intercession.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "We hymn thee, O Bride of God, Mother of Christ God, glorifying thine unapproachable Offspring,\nby Whom we have been delivered from the deceit of the devil and from all misfortune, O Lady Theotokos;//\nand we faithfully cry out: Have mercy on thy flock, O thou who alone art all-hymned!",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Freed from the impassable bosom of the earth like gold from a mine,\nthy sacred head hath most gloriously enriched all the thoughts of the faithful with knowledge divine,\ncrying out: Repent! as is its wont.\nAnd bowing down before it, O Forerunner,//\nwe faithfully glorify Christ with loud voices.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Having been lifted up",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Virgin Mother of God, Sovereign Lady we thy servants with gratitude fervently hymn thee,\never entreating thee for mercy, and crying unto thee:\n'O most holy Virgin, deliver us from enemies visible and invisible and from every threat of the adversary,//\nfor thou art our protection.'",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, John the Forerunner of the Savior,//\nand all honor the finding of thy venerable head.",
+      "verses": [
+        "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Like a pearl was the head of the Baptist concealed in the damp earth,\nand, adorned like a divinely radiant lamp, it illumineth the whole world, working wonders.\nFor like the dawn hath the Forerunner put forth the sun most splendidly,//\npreaching to us again with unwaning light, crying out: Behold, the Lamb of God!",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "That which was mystically commanded",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "We ever thank and magnify thee, O most pure Theotokos,\nand bowing down, we hymn thy birthgiving and unceasingly cry aloud, O thou who art full of grace:\ndo thou Save us, O all-merciful Virgin,\nin that thou art good, do thou snatch us from the demons at the hour of trial, and the dread sentence,//\nthat we, thy servants, may not be put to shame.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "There will I make to spring forth a horn for David,\nI have prepared a lamp for my Christ.",
+      "verse": "Remember, O Lord, David and all his meekness.",
+      "tone": 4
+    },
+    "gospel": { "reading": "Luke 7:17-30", "number": 31 },
+    "postGospelSticheron": {
+      "text": "The precious head of the Baptist of Christ, which of old preached repentance to all the faithful,\ndenounced the impurity of the iniquitous Herod, and lay upon a charger,\nhath appeared out of the hidden places of the earth and lieth before those who have recourse unto it with faith,\nwho touch it with fear and bow down before it with spiritual love.//\nGranting forgiveness of transgressions, and with forgiveness it bestoweth that which is needful and great mercy.",
+      "tone": 6,
+      "label": "Idiomelon of the Finding"
+    },
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the Forerunner (Tone VI). Theotokos Paraklisis canon omitted per pattern.",
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried://\nLet us sing to God a song of victory.",
+        "troparia": [
+          { "text": "Come, ye faithful, and with spiritual odes let us glorify the Forerunner, the voice of the Word, weaving hymns with a right laudable tongue and an almighty spirit, though our lips be impure." },
+          { "text": "With peaceful tranquility the Church of Christ hath been calmed, and with countless multitudes it is prosperously tended, chanting its yearly hymns unto thee, O Forerunner." },
+          { "text": "Assembling, O ye faithful, let us all honor with hymns, as is meet, the God-bearing head of the Forerunner which hath been given unto us by God as an inviolate treasure." },
+          { "text": "Theotokion: O pure one, who received the Creator, as He Himself desired, beyond understanding assuming flesh seedlessly from thy womb, thou hast truly been shown to be the Sovereign Lady of creation." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "A barren womb put thee forth as a divine off-shoot, a glorious attendant to the Bride which is the Church of the nations, betrothing Her to Christ, the true God and Bridegroom." },
+          { "text": "O Forerunner John, the wretched adulteress could not stop thy divinely eloquent voice with the sword, for from the earth thou hast revealed thy divine head to us." },
+          { "text": "The city of Jerusalem, desiring thee and radiantly celebrating, keepeth festival, having found thy head as a hidden treasure and an inexhaustible wellspring of healings, O Forerunner." },
+          { "text": "Theotokion: The wonder of thy divine birthgiving surpasseth the order of nature; for in a manner transcending nature thou didst conceive God in thy womb and, having given birth, dost ever remain a Virgin." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Christ is my power, my God and my Lord, the holy Church divinely singeth,\ncrying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Clearly thou wast the seal of the Old Covenant and the prophets, O spiritually rich Baptist, and preaching unto the ends of the earth, thou hast been revealed as the adorner of the bridal chamber of the New Covenant, O Forerunner." },
+          { "text": "O Forerunner rejoicing, thou didst endure the covering of thy precious and glorious head with coarse rags, as with a garment of royal purple." },
+          { "text": "By thy divine instructions, O John, a poor man, and a homeless wanderer, hath revealed thy divine head to be an abundant treasure." },
+          { "text": "O Forerunner, ever pray that the city of Jerusalem which honoreth thee be illumined with the radiance of the divine Spirit, and that it rejoice with the incorporeal ones in thy divine memory." },
+          { "text": "Theotokion: Eating hath shown me to be a dead plant, O most pure one, but the Tree of Life Who revealed Himself through thee, hath raised me up and made me an heir to the nourishment of paradise." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,//\nthat they may know Thee, O Word of God, as the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "O Baptist, thou wast not a reed shaken by the trying winds of enmity, but an unshakable pillar for the people of God; for thou didst manifest thyself by the power of Elijah and the Spirit." },
+          { "text": "He that rejected the Godhead and belittled the glory of Christ, Who was baptized of thee, concealing thy divine grace, is rightly kept from the fold of God." },
+          { "text": "Thou hast opened up the portal of a bountiful and divine wellspring which poureth forth the waters of divine grace upon those who with love hymn thee, O glorious Forerunner, gladdening all with the streams of healing." },
+          { "text": "Theotokion: Bearing the noetic beauty of thy soul thou didst become the Bride of God, sealed in thy virginity, O pure one, enlightening the world with the radiance of purity." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations, I run to Thy calm haven, and cry to Thee://\nRaise up my life from corruption, O greatly Merciful One.",
+        "troparia": [
+          { "text": "Christ called thee a true prophet, and the most exalted of the prophets, the Baptist and Forerunner of Life; for thou didst behold Him Whom the Law and the prophets foretold." },
+          { "text": "The fountain of miracles, the treasury of grace, thy sacred head, O Baptist, Prophet and Forerunner, could not bear to be concealed, and, having revealed itself, it poured forth springs of healing." },
+          { "text": "The Christ-loving and right glorious city hath set before itself thy precious and divine head, O Forerunner, as richly praiseworthy, and a radiantly adorned shield of salvation." },
+          { "text": "Theotokion: Moses, great among the prophets, prefigured thee in the ark, the table, the candlestick and the jar, signifying the incarnation of the Most High which took place through thee, O Virgin Mother." }
+        ]
+      },
+      "kontakion": {
+        "text": "O prophet of God and Forerunner of grace,\nhaving obtained thy head from the earth like a most sacred rose,\nwe ever receive healings,//\nfor now, as of old, thou dost preach repentance in the world.",
+        "tone": 2,
+        "label": "Kontakion of the Finding",
+        "melody": "Seeking the Highest"
+      },
+      "ikos": {
+        "text": "Thou wast exalted above all mankind, O John, as the Lord Himself bore witness.\nHence, I fear to offer thee hymns of praise; yet, inspired by love, I have made bold to begin a hymn.\nWherefore, deem me not to be an unworthy helper, that I may crown thy holy head, O thrice blessed one;//\nfor thou hast preached repentance to the world."
+      },
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans and prevailed upon the tyrant to cry://\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "The Offspring of the Virgin called thee the greatest among those born of women, for thou didst live for Him on earth like an incorporeal one, an equal to the angels, crying out: O God of our fathers, Blessed art Thou!" },
+          { "text": "From within the barren womb of thy mother, thou didst recognize Him Who had taken up His abode within the Virgin's womb, O Forerunner; and, with the voice of thy mother, leaping up, thou didst cry out to Him: O God of our fathers, Blessed art Thou!" },
+          { "text": "Out of the wilderness thou didst appear like a radiant dawn, an angel of light, taught by the most holy Spirit, teaching us to cry out: O God of our fathers, Blessed art Thou!" },
+          { "text": "Having acquired thee as a treasure, O ever-memorable one, this city is now truly blessed among all cities, O Forerunner of Christ. Wherefore, keeping festival it crieth aloud: O God of our fathers, Blessed art Thou!" },
+          { "text": "Theotokion: Through thee, O Virgin Mother, a radiant Light hath shone forth upon the whole world, for thou didst give birth unto God, the Creator of all. Him do thou beseech, O most pure one, that He send down great mercy upon us, the faithful." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children, and didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,//\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "The Forerunner was sent as the voice of the Son of God, crying out to barren hearts, making steadfast the pious faith in Him Who is God, Whom we supremely exalt throughout all ages!" },
+          { "text": "Even now the Forerunner saith: Prepare ye the way of the Lord! For, having come for the sake of our sanctification, He maketh His abode in our hearts with the Father and the Spirit, throughout all ages." },
+          { "text": "When the voice of the Father was heard, and the divine Spirit was seen by the eyes of man, John the Forerunner, laying his hand upon Thee, O Christ, became a God-bearer in every way." },
+          { "text": "Thou wast sanctified from the womb by the Spirit of God, and shown to be a prophet while yet carried in the womb; and now, thou hast been shown to be the delight of the city that seeketh thee in the bosom of the earth, O prophet." },
+          { "text": "Theotokion: The golden candlestick prefigured thee who hast ineffably received the unapproachable Light which illumineth mankind with the knowledge of Himself. Him do we supremely exalt throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one, did the Word Incarnate become a man//\nand with the Heavenly Hosts Him we magnify and thee we call blessed.",
+        "troparia": [
+          { "text": "Being clearly one who kept the Ten Commandments, O Forerunner, thou wast rightly honored by Christ with ten-fold gifts. Wherefore, knowing thee to be a friend of the Word, we bless thee as an initiate of the mysteries of the Spirit." },
+          { "text": "Thou wast revealed to be a prophet of Christ and an apostle, an angel and forerunner, the Baptizer of God Incarnate, a priest and faithful martyr, a preacher to those bound in Hades, a rule for virgins, and an offspring of the desert." },
+          { "text": "The unbelieving soul of the priest hath been reproved by the miracle of the withered hand; for when his faith blossomed anew after thy head appeared, O blessed one, his outstretched hand was renewed." },
+          { "text": "The ranks of angels have truly proclaimed thy prophetic appearance to him who beheld thee, emulating the divine announcement of Gabriel which the sacred Zacharias received before thy birth." },
+          { "text": "Theotokion: Let us draw forth the healing of our passions, making haste to the glorious temple of the Forerunner; for choirs of angels, the souls of all the righteous, the Sovereign Lady and John the Baptist enter therein, bestowing healings." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Thy precious and luminous head hath shone forth from the impassable bosom of the earth, O Forerunner John, beacon of the immaterial light;\nand, celebrating the discovery thereof with love, we beseech thee to obtain the forgiveness of our grievous deeds,//\nthat we may complete the period of abstinence well, by thy prayers, O all-praised Baptist of the Savior.",
+      "tone": 2,
+      "label": "Exapostilarion of the Finding",
+      "melody": "To the disciples",
+      "repeat": 2,
+      "bothNow": {
+        "text": "The divinely wise assembly of the faithful, which doth minister and faithfully hymn thee as truly the Theotokos, is comforted, O all-pure one.\nWherefore, grant that by thy prayers we may properly finish the course of the fast,//\nand bow down before the precious Cross and the saving sufferings of thy Son and God.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Thy most precious head hath opened the outer gates of abstinence, O all-praised one,\nsetting before all the sweetest of divine gifts,\nand with faith partaking of them, we sweeten the bitterness of fasting,\npraising thee with faith, and crying out to Christ God://\nO Jesus Almighty, Thou art the Savior of our souls!",
+          "tone": 4,
+          "melody": "Thou hast given a sign",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "The head of the Forerunner which putteth forth myrrh like an ever-flowing stream of water,\nhath today been set upon a mystical and divine table,\nnoetically perfuming and dispelling the bitterness of sorrows,\nand filling with gladness all who cry out with love://\nO Jesus Almighty, Thou art the Savior of our souls!",
+          "tone": 4
+        },
+        {
+          "text": "Like a most sharp sword thy head hath severed the heads of the iniquitous foe,\npouring forth healings and divine gifts upon all who reverence the Law.\nWherefore, we faithfully praise thee, the friend and Forerunner of the Creator, O John,\nand earnestly cry out to Him://\nO Jesus Almighty, Thou art the Savior of our souls!",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Faithfully receiving with a voice of praise the most precious head of Thy Baptist, O Lord,\nwhich today was revealed taken from the earth,\nwe Thy sinful servants, led to prayer, pray that on the day of Judgment//\nwe may for his sake, obtain cleansing and great mercy from Thee.",
+        "tone": 6
+      },
+      "theotokion": {
+        "text": "O right loving God and Savior, from all evil circumstances save Thou Thy servants,\nby the prayers of Thy Forerunner, and of all the saints,//\nand through the entreaties of Thy Mother.",
+        "tone": 6,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "The head of the Forerunner, which hath shone forth from the earth,\nsheddeth rays of incorruption and healing upon the faithful.\nAssembling a multitude of angels on High,\nit calleth upon the human race below//\nto send up glory with one voice to Christ God.",
+      "tone": 4,
+      "label": "Troparion of the Finding"
+    }
+  }
+}

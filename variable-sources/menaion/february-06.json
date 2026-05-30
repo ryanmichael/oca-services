@@ -1,0 +1,223 @@
+{
+  "_meta": {
+    "feast": "St Photius the Great, Patriarch of Constantinople",
+    "feastKey": "stPhotius",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 02-06.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-06.pdf",
+    "_note": "Single canon of the holy hierarch in Tone IV. Feb 6 falls in the afterfeast of the Meeting of the Lord (Feb 2); the Meeting feast canon by Cosmas (Tone III) and Meeting Both-now sessional hymns interleaved at the actual service are preserved in feast slots and the feast canon proper is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "As a radiant beacon hidden in God and a defender of Orthodoxy revealed from on high,\nO great Photius, blessed adornment of patriarchs,\nthou didst refute the innovations of prideful heresy.\nO light of the holy Churches, luminary of the Orient on high,//\ndo thou preserve them from all error.",
+    "tone": 5,
+    "label": "Troparion of St Photius"
+  },
+  "kontakion": {
+    "text": "Now let the most brilliant luminary of the Church be crowned with flowers of hymnody;\nthe most godly instructor of the Orthodox,\nthe divinely inspired harp of the Spirit,\nthe most mighty opponent of heresy;//\nand let us cry out to him: Rejoice, O most honored Photius!",
+    "tone": 8,
+    "label": "Kontakion of St Photius",
+    "melody": "To thee, the champion leader"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "As a radiant beacon hidden in God and a defender of Orthodoxy revealed from on high,\nO great Photius, blessed adornment of patriarchs,\nthou didst refute the innovations of prideful heresy.\nO light of the holy Churches, luminary of the Orient on high,//\ndo thou preserve them from all error.",
+      "tone": 5,
+      "label": "Troparion of the holy hierarch",
+      "_note": "On 'God is the Lord': Troparion of the feast (Meeting, Tone I, Twice); Glory: troparion of the hierarch; Both now: troparion of the feast."
+    },
+    "sedalion": [
+      {
+        "text": "Lo, the spring of my soul hath burst forth; for, behold! today the radiant memory of the wise and all-blessed hierarch Photius hath been revealed.\nWherefore, let us all praise him as one who hath confirmed the Faith of the Orthodox//\nby the power of the Spirit.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "bothNow": {
+          "text": "Having become a babe for my sake, Thou wast borne into the temple, O Life of all;\nhaving of old engraved the law on stone tablets on Mount Sinai, Thou hast placed Thyself under the law,\nthat Thou mightest set all free from ancient servitude to the law.\nGlory to Thy compassion, O Savior! Glory to Thy Kingdom!//\nGlory to Thy dispensation, O only Lover of mankind!",
+          "tone": 1,
+          "label": "Sessional Hymn of the feast (Meeting)"
+        }
+      },
+      {
+        "text": "Receiving divine illumination, having been instructed in the divine life, thou didst shine forth in the priesthood as befitteth thy name;\nfor, explaining the dogmas of the Faith in a manner surpassing nature, thou didst make the Church steadfast in Orthodoxy, O venerable father.//\nEntreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine Faith",
+        "bothNow": {
+          "text": "Fulfilling the ordinances of the Law, Thou wast brought into the temple, O Savior, Thou Maker, Master and Giver of the Law;\nand in Thy good pleasure Thou didst desire to be carried, incarnate, in the aged arms of Simeon and to reveal Thy light to all,//\nO Thou Who alone art compassionate.",
+          "tone": 5,
+          "label": "Sessional Hymn of the feast (Meeting)"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch, father Photius,\nand we honor thy holy memory;//\nfor thou dost entreat Christ our God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "O chief hierarch, honored and divinely eloquent preacher, splendid instructor of the Church:\nwith grace thou dost water the thoughts of the faithful, burning up the thoughts of the heretics, and pouring forth the grace of miracles.\nTruly thou dost wash away the impurity of all the passions,//\nO venerable and all-glorious father Photius.",
+      "tone": 1,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Having been lifted up",
+      "bothNow": {
+        "text": "The Ancient of days, having become a babe, is borne into the temple by the Virgin Mother,\nfulfilling the promise of His own law;\nand Symeon, receiving Him, said:\n'Now lettest Thou Thy servant depart in peace, according to Thy word;//\nfor mine eyes have seen Thy salvation, O Holy One!'",
+        "tone": 1,
+        "label": "Sessional Hymn of the feast (Meeting)",
+        "melody": "Joseph marveled"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 10:1-9" },
+    "postGospelSticheron": {
+      "text": "Grace flowed from thy lips, O venerable father;\nas thou didst shepherd the Church of Christ,//\nteaching the rational sheep to believe in the consubstantial Trinity, the one Godhead.",
+      "tone": 6,
+      "label": "Idiomelon of St Photius"
+    },
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hierarch (Tone IV). Feast canon (Meeting, Cosmas, Tone III) interleaved at the actual service is omitted; the Feast Kontakion (after Ode 3) by Romanus the Melodist is preserved.",
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "O most divinely radiant beacon, O holy one who art the namesake of light: thou hast dispelled the darkness of my mind, illumining me with rays of divine light, that I may praise thy proclamations." },
+          { "text": "We have known thee, O Photius, to be the confirmation of the Faith, a teacher of the Church and immovable pillar of confession, a lamp of grace most bright and a mouth of divine inspiration." },
+          { "text": "As a faithful and holy hierarch, thou didst lawfully struggle, braving battle for the divine teaching, O wondrous one; and with the cords of thy dogmas thou didst strangle the vain-minded Nicholas as though a wild beast." },
+          { "text": "Theotokion: Come ye all, and let us hymn the most pure Mary, who alone hath adorned mankind, having given birth unto God incarnate, and yet remained a pure Virgin." }
+        ],
+        "katavasia": "The Sun once passed over dry land in the midst of the deep.\nFor the water on both sides became firm as a wall while the people traversed the sea on foot,\nchanting in a manner pleasing to God://\nLet us sing unto the Lord; for gloriously hath He been glorified."
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory.",
+        "troparia": [
+          { "text": "The vile serpent from the West who uttered blasphemy against heaven was silenced by thy words, O most divinely luminous beacon; wherefore, we, the Orthodox, honor thee as is meet." },
+          { "text": "The serpent of heresy hath been slain by thy most wise words, O father, its head crushed as though struck by a stone. Wherefore, the Church doth fittingly honor thee." },
+          { "text": "By learned exegesis of the Scriptures, thou didst define the energies of the grace of the Spirit, O wise one, and that the Spirit proceedeth from the Father hypostatically." },
+          { "text": "Theotokion: The Word of the beginningless Father, Who surpasseth every principality, hath now received an incarnate beginning, O pure one; and He Who transcendeth time hath placed Himself under time." }
+        ]
+      },
+      "kontakionOfTheFeast": {
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth and didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "tone": 1,
+        "label": "Kontakion of the feast (Meeting) — by Romanus the Melodist",
+        "_note": "Sung after Ode 3; followed by the Meeting Ikos and Tone IV sessional hymn of the feast."
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God,\nis come in a swift cloud and with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "In thy youth thou wast manifestly chaste; in old age, filled with understanding; and throughout thy whole life, steadfast and longsuffering, with love for all who cry out: Glory to Thy power, O Christ!" },
+          { "text": "By every godly virtue thy most illustrious life was revealed to be a renowned model of prayer, fasting, vigil and supplication unto God, Who lovest mankind." },
+          { "text": "O God-bearing father, thou didst not give slumber to thine eyelids nor sleep to thine eyes until thou hadst made of thyself a most comely habitation for the all-seeing Master, to Whom thou didst cry out: Glory to Thy power, O Christ!" },
+          { "text": "Theotokion: Thou didst give life to mortals, O most holy one, raising up those who had fallen into corruption, and having given birth unto the Giver of life, thou dost deliver those who cry: Glory to Thy power, O Christ!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all,//\nand gave birth to the timeless Son, bestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "text": "Having received the grace of the most holy Spirit, thou wast revealed to be a divine dwelling place, reverently proclaiming the light of divine knowledge, O wise and wondrous Photius, most holy father, confirmation of the Church." },
+          { "text": "Thy tongue becameth the pen of the Comforter, Who quickly giveth deliverance unto those who acknowledge His dominion, breathing into their souls heavenly wisdom, O most sacred Photius." },
+          { "text": "Christ hath shown thee to be one resplendent with the grace of eloquence and teaching, repelling the assaults of the heretics and enlightening the souls of all the faithful, who hymn thee as a preacher of the Faith." },
+          { "text": "Theotokion: The Virgin gaveth birth to the pre-eternal Son, Who clothed Himself in human nature and thereby saved our nature from corruption through the suffering of His body, as taught by the holy hierarch." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast of the Mother of God\nO ye divinely wise, let us come, clapping our hands,//\nand glorify God who was born of her.",
+        "troparia": [
+          { "text": "Let us hymn the great Photius, the trumpet which proclaimed the procession of the divine Spirit from the Father, as did the son of thunder theologize." },
+          { "text": "By thy speech, all the arrogance of the heretics was rent asunder, O most sacred Photius. Wherefore, the assembly of the faithful radiantly honoreth thy memory, O holy one." },
+          { "text": "The whole assembly of Orthodox believers doth make merry and is gladdened, O most honorable Photius, seeing thee as a truly worthy successor to Gregory and Chrysostom." },
+          { "text": "Theotokion: I hymn thy conceiving, O Maiden; I hymn thine ineffable birthgiving; I hymn thy protection, whereby thou hast delivered from all harm those who earnestly have recourse to thy tranquility." }
+        ]
+      },
+      "kontakion": {
+        "text": "Now let the most brilliant luminary of the Church be crowned with flowers of hymnody;\nthe most godly instructor of the Orthodox,\nthe divinely inspired harp of the Spirit,\nthe most mighty opponent of heresy;//\nand let us cry out to him: Rejoice, O most honored Photius!",
+        "tone": 8,
+        "label": "Kontakion of the hierarch",
+        "melody": "To thee, the champion leader"
+      },
+      "ikos": {
+        "text": "An angel among mankind wast thou shown to be, O father, who from earth attained unto things of heaven.\nWherefore, beholding thee made equal to the bodiless choirs, I am stricken with awe, and with love reverently cry out to thee such things as these:\nRejoice, thou by whom the Trinity is worshipped; Rejoice, thou by whom God is praised!\nRejoice, most correct standard of the Orthodox; Rejoice, thou that most firmly dost denounce the wicked!//\nRejoice, height of humility unattainable by many!"
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Thou didst pass on to the mansions of heaven, and having drawn nigh unto God, thou wast made divine and deified by communion with Him, O venerable and divinely wise father, chanting: Blessed art Thou, and praised above all, O Lord God of our fathers!" },
+          { "text": "We are instructed by thy words of admonition, O all-praised father, to honor the Godhead, indivisible and inseparable, as three Suns in One; and to Him do we chant: Blessed art Thou, and praised above all, O Lord God of our fathers!" },
+          { "text": "How acceptable unto God and most sacred is thy confession, O thrice-blessed father; for having tried thyself like gold in the fire, thou didst please God, O venerable one, rejoicing in the emulation of the Savior's Passion." },
+          { "text": "Theotokion: Thou hast been revealed to all mankind as the cause of divine redemption, O all-immaculate one, who hast given birth unto the Redeemer of all, and to Whom we all chant: Blessed art Thou, and praised above all, O Lord God of our fathers!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee: all ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "The fountains of thy dogma flow forth watering the holy Church throughout all the world, O most wondrous father Photius; wherefore, we praise thee as the confirmation and boast of the Orthodox, and unceasingly blessing the Lord, we supremely exalt Him throughout all ages." },
+          { "text": "Thou didst arrive at the calm haven, having braved the storms of life; for, O Photius most wise, during thy journey thou didst have as an Helmsman to guide thee, the Lord Who created all things by a mere gesture, Whom we supremely exalt throughout all ages." },
+          { "text": "The thrice-radiant light of the most holy Trinity made its abode within thee, and showed thee to be a secondary luminary, enlightening the assembly of the Orthodox and blunting the enemy's assault, while crying: O all ye works of the Lord, bless ye the Lord, and supremely exalt Him throughout all ages." },
+          { "text": "Theotokion: O Lady, Bride of God, the Bridegroom from on high made His abode within thee, finding thee to be a rose among thorns, a fragrant lily of the valley, a most pure flower; and He hath perfumed the whole world, wherefore we supremely exalt Him throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "troparia": [
+          { "text": "I have placed my whole self under thy divine protection; for, as a holy hierarch, having received authority from Christ to loose transgression, thou hast broken asunder the chains of my sin. Save me by thy supplications, and illumine me with thy divine light." },
+          { "text": "Delivered from earthly things, thou wast taken up to the never-waning Light, O glorious father; and standing now with the ranks on high before the Almighty, the Light of the threefold Sun, thou dost delight in the radiance which emanateth therefrom, illumining us who praise thee." },
+          { "text": "As a struggler thou wast revealed to be a denouncer of the falsehood of heresy and a divine defender of Orthodoxy, O Photius, together with Ignatius whose successor thou wast, of both his throne and his way of life. Pray thou with him to the Lord on our behalf." },
+          { "text": "Theotokion: Desiring to wholly deify me, God united Himself fully with thee, and a new mystery inaccessible to all hath begun: thou, the incorrupt Virgin, giveth birth, and God is seen in the flesh, Whom praising, we now call thee blessed, O Mary, as thou thyself didst foretell." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The Church hath thee as a most fervent intercessor and brilliant teacher, O father.\nWherefore, she doth radiantly celebrate thy memory, crying out://\nDo thou ever protect thy flock and preserve it unscathed by heresy and harm, O chief hierarch of the Lord!",
+      "tone": 3,
+      "label": "Exapostilarion of the hierarch",
+      "melody": "Hearken, ye women",
+      "bothNow": {
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying:\nDo Thou now loose me from the bond of the flesh according to Thy word://\nfor mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!",
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Meeting)"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Let us praise the truly godly chief hierarch of the Church, the great teacher and preacher of the Word,\nPhotius, wondrous peer of the apostles;\nfor his all-glorious commemoration hath dawned,//\nbringing gladness to all the faithful.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "With the apostles wast thou united as their peer;\nfor, having shown thyself to be an apostolic preacher to Bulgaria and all the Slavic peoples,\nthou didst lead them to Christ, giving them new life through holy baptism.//\nDo thou preserve them in Orthodoxy.",
+          "tone": 1
+        },
+        {
+          "text": "Like the Archangel Michael, O glorious one, thou didst vie with an earthly Lucifer\nwho, grievously puffed up with pride, set his throne higher than the stars,\nand thou didst say://\nLet us stand aright! Let us all stand in the precious traditions of the Fathers!",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Wherever thy name is invoked, O thou who art the namesake of light, the power of the devil is dispelled;\nfor the fallen Lucifer is unable to endure the brilliance of thy light.\nWherefore, we entreat thee: Quench thou the fiery darts which he doth hurl against us,//\nand deliver us from his temptation by thine intercession, O right laudable hierarch Photius.",
+        "tone": 5
+      },
+      "theotokion": {
+        "text": "A great, awesome and strange mystery is the dispensation of God,\nWho, embracing all things and making infants,//\nis borne as a Babe in arms.",
+        "tone": 2,
+        "label": "Both now (of the feast, Meeting)",
+        "melody": "O house of Ephratha"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder who hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+      "tone": 1,
+      "label": "Troparion of the feast (Meeting of the Lord)",
+      "_note": "On Feb 6 (afterfeast of Meeting), the troparion of the feast is sung after the Great Doxology; the troparion of St Photius was already chanted at the beginning of Matins on 'God is the Lord' (Glory slot)."
+    }
+  }
+}

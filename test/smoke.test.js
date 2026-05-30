@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Repose of St John the Theologian (2026-09-26) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-09-26', {
+      feastName: 'St John the Theologian (Repose)',
+      minBlocks: 320,
+      troparionText: 'O beloved apostle of Christ God',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
   it('St Athanasius of Athos (2026-07-05) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-07-05', {
       feastName: 'St Athanasius of Athos',

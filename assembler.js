@@ -5445,6 +5445,19 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
       });
     }
 
+    // Second saint's kontakion at the after-Ode-3 slot (joint commemorations
+    // sometimes place each saint's kontakion at a different ode — e.g. 06-06
+    // Bessarion + Hilarion places Hilarion's kontakion here and Bessarion's
+    // at the standard after-Ode-6 slot).
+    if (odeNum === 3 && canonSpec.kontakionAfterOde3) {
+      const k = canonSpec.kontakionAfterOde3;
+      blocks.push(S('canon-kontakion-ode3', 'Kontakion', 'hymn', 'choir',
+        k.text, { tone: k.tone, label: k.label }));
+      if (k.ikos) {
+        blocks.push(S('canon-ikos-ode3', 'Kontakion', 'hymn', 'reader', k.ikos.text));
+      }
+    }
+
     // Kontakion + Ikos after Ode 6
     if (odeNum === 6 && canonSpec.kontakion) {
       blocks.push(S('canon-kontakion', 'Kontakion', 'hymn', 'choir',

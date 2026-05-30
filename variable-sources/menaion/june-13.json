@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Aquilina & Holy Hierarch Triphyllius, Bishop of Leucosia",
+    "feastKey": "ssAquilinaTriphyllius",
+    "rank": "simple",
+    "feastRank": "simple",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 06-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-13.pdf",
+    "_note": "Joint simple-rank. Canon I of Aquilina (Joseph, Tone VIII) + Canon II of Triphyllius (Tone II). Triphyllius kontakion after Ode 3; Aquilina after Ode 6. Two sessional hymns + theotokion. GAP: Two separate troparia (martyr Tone IV + hierarch Tone IV) — only Aquilina's stored here as primary; Triphyllius troparion: 'The truth of things revealed thee to thy flock as a rule of faith, icon of meekness, and teacher of temperance; wherefore, thou hast attained the heights through humility and riches through poverty; O hierarch Triphyllius our father, entreat Christ God, that our souls be saved.' Aposticha from Octoechos (gap pending weekday Octoechos scrape). Ode 7 Canon I has Triadicon in the theotokion slot. Ode 9 Canon I has 4 saint troparia."
+  },
+
+  "troparion": {
+    "text": "Thy ewe-lamb Aquilina, O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom, and, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee, as an unblemished offering!\"//\nBy her supplications, in that Thou art merciful, save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of St. Aquilina"
+  },
+  "kontakion": {
+    "text": "Having utterly purified thy soul with the beauties of thy virginity and attained the heights by martyrdom, O most honored Aquilina,\nwounded with the love of Christ thy Bridegroom,//\nthou standest before Him with the angels in gladness. With them cease thou never to pray on behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of St. Aquilina",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Illumined with the divine light of the virtues, thou wast adorned with the wreath of a spiritual athlete, O most glorious and honored one; and, comely in beauty, thou wast truly betrothed to the Master of all by thy faith, O thou who art undefiled and incorrupt. Wherefore, thou hast been deemed worthy of the heavenly bridal chambers, having contended well and vanquished the evil one, O divinely wise Aquilina. Entreat Christ God, that He grant forgiveness of sins unto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of St. Aquilina (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Possessed of the zeal of faith, O most blessed one, by which thou didst put forth ripe fruit, for thou didst put to shame the legions of the enemy and slay the devil, O Triphyllius. Entreat Christ God, O venerable father, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Glory — Sessional Hymn of St. Triphyllius",
+        "melody": "Of the divine Faith"
+      },
+      {
+        "text": "Thou wast the divine tabernacle of the Word, O only most pure Virgin Mother, who hast surpassed the angels in purity. With the divine waters of thy supplications cleanse me, who more than all others am dust and defiled by carnal transgressions, O pure one, and grant me great mercy.",
+        "tone": 3,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "Thy ewe-lamb Aquilina, O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom, and, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee, as an unblemished offering!\"//\nBy her supplications, in that Thou art merciful, save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of St. Aquilina"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I of Aquilina by Joseph, acrostic 'Accept this hymnody O Aquilina who doest good', in Tone VIII + Canon II of Triphyllius in Tone II.",
+
+      "kontakionAfterOde3": {
+        "text": "Receiving the purity of virginity through the excellency of thy life, O Triphyllius,\nthou wast the first hierarch of Leucosia and wast revealed to be its evangelizer and instructor in the knowledge of God.//\nWherefore, with joy we cry out to thee: Rejoice, O adornment of hierarchs!",
+        "tone": 8,
+        "label": "Kontakion of St. Triphyllius",
+        "melody": "To thee, the champion leader"
+      },
+
+      "ode1": {
+        "irmos": "That which had been hewn down divided the undivided, and land unseen was seen by the sun;\nwater engulfed the cruel enemy, and Israel traversed the impassable, chanting a hymn://\nLet us sing unto the Lord, for gloriously hath He been glorified!",
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation which He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Thou dost most gloriously truly stand in the heavens before Christ, thy Bridegroom. Wherefore, by thy supplications, O honored one, do thou glorify those on earth who piously glorify thee, and with thee make them partakers of glory who chant: For gloriously hath He been glorified!" },
+          { "text": "The grace of the Spirit, which dwelt within thee, made thy soul pure, O glorious one, and thou wast all the more comely in the wounding of thy body. Wherefore, O all-famed one, the Bridegroom betrothed to Himself thee who art utterly pure and incorrupt." },
+          { "text": "When of old the winter of deception cruelly lay upon the ends of the earth, thou, the divinely wise, right wondrous and glorious Aquilina, attained unto the spring-time of life and didst lay hold of the trophy of victory, as a true martyr of the Lord Almighty, filled with the Spirit." },
+          { "type": "theotokion", "text": "Theotokion: He Who is equal in being with the beginningless Father entered into thy womb, becoming a man, and saved us who are weighed down by evil and enslaved to the deception of the enemy, O Mary, Bride of God. Wherefore, with faith and love we call thee blessed." },
+          { "canon": "secondCanon", "text": "With faith let us all offer praise unto God, Who adorned His favored one with all manner of virtues and raised him up as a second Moses." },
+          { "canon": "secondCanon", "text": "Having ascended the mountain of the virtues, O father Triphyllius, thou didst receive the divine law, and with the tablets of thy thought revealed the beauty of thy soul." },
+          { "canon": "secondCanon", "text": "Thou wast shown to be a noetic ally emitting a sweet fragrance, O venerable one; for thou didst put forth healing for all mortals, O father, manifesting thyself as a divinely inspired dressing for the faithful." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou art the well-spring of life, O pure Virgin Mary, who hast given birth unto the Lord and Author of creation, the Life of all, bedewing those who glorify thee with faith." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "irmos2": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,//\nand in the hearts of us who hymn Thee plant the fear of Thee.",
+        "troparia": [
+          { "text": "By grace thou didst weave a robe of light, O glorious martyr Aquilina, dying it with thy blood in a sacred manner." },
+          { "text": "Thou wast manifestly wounded with divine love, O most honored one; wherefore, thou didst steadfastly endure cruel wounding and pangs." },
+          { "text": "The Lord and Redeemer wholly sanctified thee, O honored Aquilina, Who loved Him with all thy might and soul." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, we know thee to be the unwedded Bride and pure habitation of Jesus, who art more holy than the cherubim." },
+          { "canon": "secondCanon", "text": "Like the sun, thy memory hath shone forth radiantly upon the world, O holy hierarch, shedding light upon the hearts of us who observe it faithfully with grace." },
+          { "canon": "secondCanon", "text": "A garden of the divine Spirit, which put forth divine grapes, from which thou hast noetically pressed out the wine of faith for us, the faithful." },
+          { "canon": "secondCanon", "text": "Taking up the sword of divine grace, thou didst cut down the rage of Belial, and showing thyself to us as a victor in Christ, O sacred one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Neither the tongue of mortals, nor the mind of the incorporeal ones, can speak of thy birthgiving; for thou hast given birth to the Creator in a manner beyond nature and understanding, O Theotokos." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "irmos2": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "troparia": [
+          { "text": "In the weakness of thy body thou didst cast down the prideful serpent, doing battle splendidly and setting at naught the rage of the tyrants." },
+          { "text": "In the splendor of thy martyrdom and the divine beauty of thy virginity, O Aquilina, thou wast an excellent bride for the Master." },
+          { "text": "The torrents of thy blood quenched the fire of polytheism, and the streams of thy miracles washed away the infirmities of all mankind." },
+          { "type": "theotokion", "text": "Theotokion: By the slumber of despondency, O Maiden, the sleep of sin hath crept over me; but rouse me to repentance by thy vigilant supplication." },
+          { "canon": "secondCanon", "text": "Thou wast truly revealed to be a most pure fruit, O most blessed hierarch, wherefore the divine Spirit made His abode within thee." },
+          { "canon": "secondCanon", "text": "Illumined by the divine Spirit, thou didst direct thy mind to things above, and struggle mightily against deception, O father." },
+          { "canon": "secondCanon", "text": "Thou didst shepherd thy reason-endowed lambs like sheep, O most blessed one, leading them to Christ by thy words." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Theotokos, we, the faithful, have ever acquired thee as an invincible rampart and mighty hope amid dangers." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou hast enlightened with the knowledge of God the ends of the universe that lay in the night of ignorance,\ndo Thou also, O Lord, illumine me//\nwith the dawning of Thy love for mankind.",
+        "irmos2": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "troparia": [
+          { "text": "When thou wast assailed by falsehood as by a raging sea, O martyr Aquilina, thou wast revealed to be guided by the grace of Christ." },
+          { "text": "Looking to the victor's wreaths, O martyr, thou didst steadfastly endure the dismemberment of thy limbs and a violent death." },
+          { "text": "Astonishing thine adversaries, thou wast radiantly adorned with thy comely beauty and majesty of soul." },
+          { "type": "theotokion", "text": "Theotokion: All who have been delivered from the ancestral condemnation by thy birthgiving cry out to thee: Rejoice, O divinely joyous and all-hymned one!" },
+          { "canon": "secondCanon", "text": "Arrayed mightily with divine grace, O wise and glorious one, thou didst cast down the power of the enemy and, as an initiate of the mysteries of God, received a crown from Him as is meet." },
+          { "canon": "secondCanon", "text": "Lifting up the eyes of thy soul to heaven, O glorious father, thou didst plumb the depths of divine doctrines, revealing the radiance of the Trinity to mankind." },
+          { "canon": "secondCanon", "text": "Putting on the armor of God in council, O sacred one, thou didst put to shame the arrogance of the enemy, and having crushed his head with divine doctrines, thou rejoicest eternally." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Son, Who was seedlessly born from thee in the flesh, O Birthgiver of God, have we, the faithful, recognized as true God and a man by nature. Wherefore, we glorify thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Thou O Lord, didst place Jonah alone within the sea monster.\nDo Thou save me, who am ensnared in the nets of the enemy,//\nas Thou didst save him from corruption.",
+        "irmos2": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Desiring to follow the glorious sufferings of Christ, with manly wisdom thou didst endure beatings and the rending of thy holy body, O virgin." },
+          { "text": "Having endured all manner of pangs, thou didst scorn the pain of the fire. Wherefore, O Aquilina, thou dost alleviate all our pain by thy supplications." },
+          { "text": "Looking down from above, the choir of the angels was amazed at thine endurance, O glorious virgin, and at how in the flesh thou didst vanquish the incorporeal foe by grace." },
+          { "type": "theotokion", "text": "Theotokion: That mankind might become divine, God showed Himself to be a man, O Virgin, born ineffably from thy womb. And that which He was, He remained without change." },
+          { "canon": "secondCanon", "text": "Like Enoch thou wast translated in spirit from earthly things to the heavenly, O blessed one; and as is meet thou didst receive incorruption." },
+          { "canon": "secondCanon", "text": "Leucosia has thee as its confirmation, O father, its pastor and instructor in the mysteries of grace, like a radiant sun illumining the world with miracles." },
+          { "canon": "secondCanon", "text": "By thy supplications, O father, thou unshakable foundation of the Church, make firm the temple of my soul, which is shaken by all the wiles of the enemy." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O all-immaculate one, who art greater and more holy than the heavenly powers: in a manner transcending nature thou hast contained the infinite Word within thy womb." }
+        ],
+        "kontakion": {
+          "text": "Having utterly purified thy soul with the beauties of thy virginity and attained the heights by martyrdom, O most honored Aquilina,\nwounded with the love of Christ thy Bridegroom,//\nthou standest before Him with the angels in gladness. With them cease thou never to pray on behalf of us all.",
+          "tone": 2,
+          "label": "Kontakion of St. Aquilina",
+          "melody": "Seeking the highest"
+        }
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud://\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "irmos2": "The wise children did not adore the golden idol, but went themselves into the flame and defied the pagan gods.\nThey prayed in the midst of the flame, and an Angel bedewed them saying://\n'The prayer of your lips hath been heard'.",
+        "troparia": [
+          { "text": "Suffering, thou didst disdain the body, O divinely wise Aquilina, looking instead to the rewards of heaven, light, glory, godly beauty and divine gladness." },
+          { "text": "Possessing a body undefiled and a heart united to the Lord, O godly wise and pure one, thou didst stand before the tribunal, denouncing the ignorant tyrant." },
+          { "text": "Thou didst exchange the corrupt world for the incorrupt life of heaven, transitory food for everlasting, and a mortal betrothed for the immortal Bridegroom, O virgin." },
+          { "type": "theotokion", "label": "Triadicon", "text": "Triadicon: With hymns do we honor the single divine Monarchy, the most glorious Trinity of Hypostases, which is simple in nature; and we cry out: Blessed art Thou, O Lord God, forever!" },
+          { "canon": "secondCanon", "text": "Rationally and in abstinence, thou didst refuse to worship the idol of the passions and the furnace could not consume the dew of thy body, O father, for filled with the Holy Spirit, thou didst cry aloud with boldness: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "text": "Thou wast shown to be the first-ordained and mighty pastor of Leucosia, O wise one, and didst lead to thy Master a great harvest of people. Wherefore, with faith we beseech thee: in thine intercessions to God, pray thou for thy flock, that we may be delivered from all corruption." },
+          { "canon": "secondCanon", "text": "The living well-spring of thy tears hath astonished all, O wise and most glorious Triphyllius; for ever enriched by the streams of healings, we hymn the grace of thy relics and say: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Theotokos, thou steadfast refuge, awesome intercessor and invincible rampart of those who are beset with afflictions and who are tempest-tossed by tribulations: by thine entreaties to thy Son save thy servants from all manner of temptations." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Treading down the fiery flame in the furnace, the divinely eloquent children sang://\n'Bless the Lord, ye works of the Lord'.",
+        "irmos2": "God Who descended into the fiery furnace with the Hebrew children, and transformed the flame into dew,//\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "Illumined with the radiance of purity and arrayed in the stains of thy blood as in an embroidered vesture, O virgin Aquilina, thou dost stand before Christ our God." },
+          { "text": "Thou didst offer thyself to Christ our God as a pure sacrifice, a most radiant offering and an incense of sweet savor, O divinely wise Aquilina." },
+          { "text": "Thy holy body, which lieth in the tomb, O most glorious Aquilina, healeth the divers ailments of all, and dispelleth the harm of the demons." },
+          { "type": "theotokion", "text": "Theotokion: In a manner beyond all telling thou didst give birth to the incorruptible Word Who hath delivered us from all corruption; wherefore, O Virgin, we all glorify thee." },
+          { "canon": "secondCanon", "text": "Thou didst open the path of salvation to all in Leucosia, being the first to occupy the cathedra of its Church, O wise and glorious hierarch, receiving it from the divine effulgence as was meet." },
+          { "canon": "secondCanon", "text": "Unceasingly entreat Christ our Benefactor, O sacred one, that He may deliver those who have recourse to thy shrine from misfortunes and the temptations of the enemy." },
+          { "canon": "secondCanon", "text": "The choirs of the angels were amazed, the multitudes of the demons were seized with great trembling, and every created being was stricken with awe by thy fasting, O wise one: wherefore the human race honoreth thee as is meet." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Forget not the cry of those who pray to thee, O awesome intercessor, but by thy supplications rescue us from all pain and every threat, for thy maternal entreaty persuadeth God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Saved by thee, O pure Virgin,\nwe confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts//\nthee do we magnify.",
+        "irmos2": "God the Word, God of God, Who by ineffable wisdom came to create Adam anew after his grievous fall to corruption through eating,\nand Who took flesh beyond all telling from the Holy Virgin for our sake,//\nHim we faithful with one accord magnify in song.",
+        "troparia": [
+          { "text": "With steadfast intent, the virgin was crucified for the Savior Who had been nailed to the Cross, whereby she trampled upon the head of the serpent." },
+          { "text": "Comely is thy beauty, O most noetically rich Aquilina, and great the nobility of thy soul, which hath now been manifest in a godly fashion." },
+          { "text": "United with the choirs of the incorporeal ones and the assemblies of the martyrs, O all-famed one, entreat God on behalf of us all." },
+          { "text": "Thy most glorious memory, O martyr Aquilina, doth summon all joyfully to hymn thy glorious pangs and sufferings." },
+          { "type": "theotokion", "text": "Theotokion: We cry to thee with the cry of the angel, O most pure one: Rejoice, O salvation of all mankind, and the divine crowning of the glorious martyrs!" },
+          { "canon": "secondCanon", "text": "Lifting up the eye of thy soul to the heights of heaven, thou didst recognize the effulgence of the Trinity, O wise one, and, illumining mortal men, in a godly manner thou hast enriched all with divine illumination. Wherefore as is meet, we magnify thee in hymns." },
+          { "canon": "secondCanon", "text": "To the inhabitants of Leucosia thou wast shown to be a noetic beacon, O wise one, passing through the outlying lands, adorning them in a godly manner with the knowledge of Christ, as with sacred rays of inspiration, straightway delivering the world from deception." },
+          { "canon": "secondCanon", "text": "Having assembled now, we the faithful entreat thee, O father: unceasingly pray to Christ, that He deliver us from famine, barbarian devastation and all misfortunes, in that He is mighty, that we may magnify thee in hymns as is meet." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: What words of mortals can speak of the unutterable birthgiving of thine ineffable Offspring? For God was born a Babe, and thou wast the handmaid who bore the Son Who was born, O Mother and Theotokos. Wherefore, we hymn thee and thy birthgiving." }
+        ]
+      }
+    }
+  }
+}

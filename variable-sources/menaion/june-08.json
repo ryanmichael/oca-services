@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "feast": "Great-martyr Theodore Stratelates (the General)",
+    "feastKey": "stTheodoreStratelates",
+    "rank": "simple",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 06-08.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-08.pdf",
+    "_note": "Simple-rank. Single canon of the great-martyr by Theophanes in Tone IV with acrostic 'With divine praises I hymn thee, the namesake of divine gifts'. 3 troparia + theotokion per ode. Has sessional hymn after Ode 3 (Tone VIII), kontakion in Tone II with ikos, exapostilarion in Tone III. PDF rubric notes 'Both canons from the Oktoechos, without the Martyria' interleaved at the actual service; per menaion-matins-track pattern, only the festal canon is captured here. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Through noetic recruitment thou didst become a most comely general of the heavenly King,\nO passion-bearer Theodore;\nfor wisely arraying thyself with the weaponry of faith\nthou didst vanquish legions of demons,\nrevealing thyself to be a victorious spiritual athlete.//\nWherefore, with faith we ever bless thee.",
+    "tone": 4,
+    "label": "Troparion of the great-martyr"
+  },
+  "kontakion": {
+    "text": "Arrayed in faith with manliness of soul,\nand taking in hand the word of God as a spear,\nthou didst conquer the enemy, O Theodore, great among the martyrs.//\nWith them unceasingly entreat Christ God on behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Having taken up the armor of God and destroyed the delusion of idolatry,\nthou didst move the angels to praise thy struggles;\nfor having set thy mind aflame with divine love, thou didst manfully endure a fiery death.\nWherefore, true to thy name, thou dost bestow divine gifts upon those who ask, O passion-bearer Theodore;//\nfor which cause we cry out to thee: Entreat Christ God, that He grant remission of sins to those who lovingly honor thy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn of the great-martyr (after Ode 3)",
+      "melody": "Of the wisdom",
+      "bothNow": {
+        "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee to ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,//\nthat those who worthily hymn thee may be granted the remission of their sins.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Through noetic recruitment thou didst become a most comely general of the heavenly King,\nO passion-bearer Theodore;\nfor wisely arraying thyself with the weaponry of faith\nthou didst vanquish legions of demons,\nrevealing thyself to be a victorious spiritual athlete.//\nWherefore, with faith we ever bless thee.",
+      "tone": 4,
+      "label": "Troparion of the great-martyr"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the great-martyr by Theophanes in Tone IV; acrostic 'With divine praises I hymn thee, the namesake of divine gifts'. The two Octoechos canons (without the Martyria) interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea, marched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "A martyr manifestly adorned with splendors, thou dost stand before Christ the Benefactor, arrayed by Him, for thou art the namesake of divine gifts, O martyr Theodore." },
+          { "text": "Armed with the divine weaponry of faith, thou didst steadfastly mow down the soul-destroying legions of the enemy, O Theodore; and as a victor thou hast been crowned with the martyrs." },
+          { "text": "Showing forth the splendid courage of thy soul before the impious emperor, O divinely wise one, thou O Theodore, didst put him to shame by the wisdom of thy words and the grace of thy deeds." },
+          { "type": "theotokion", "text": "Theotokion: By the will of the Father and through the divine Spirit thou didst seedlessly conceive the Son of God, and give birth in the flesh unto Him Who was begotten of the Father without mother, and Who for our sake was born of thee without father." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "text": "Like a mighty commander vanquishing legions of the impious, thou didst trample down all the wiles of the perverse serpent." },
+          { "text": "In that thou wast earnest of soul, O glorious one, with pious intent thou didst destroy the adulterous temples of the impious." },
+          { "text": "With strength of mind thou didst endure the assaults of the cruel foe, emulating the life-creating death of the Judge of the contest." },
+          { "type": "theotokion", "text": "Theotokion: O Mother of God, in a manner transcending nature thou alone hast become the mediator of blessings for those on earth. Wherefore, we cry to thee: Rejoice!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness, lifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Thou didst wound the serpent who wished to wound thee, and by thy steadfast opposition, revealed thyself to be a martyr, earnestly chanting unto Him who gave thee strength: Glory to Thy power, O Lord!" },
+          { "text": "Having laid waste to thy flesh with many cruel wounds, thou didst set thy mind immovable, O thrice-blessed one, chanting earnestly unto Him who gave thee strength: Glory to Thy power, O Lord!" },
+          { "text": "Having adorned thyself by joining thine honored sufferings to those of the Master, O most wise one, thou wast deemed worthy of His radiance and longed-for comeliness." },
+          { "type": "theotokion", "text": "Theotokion: Without knowing wedlock thou hast given birth, O Virgin, and after thy birthgiving thou wast again revealed to be virginal. Wherefore, unceasingly and with steadfast faith we cry out to thee, O Sovereign Lady: Rejoice!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "With the shedding of the blood of thy flesh thou didst put an end to the destructive blood offerings to the demons, O invincible Theodore." },
+          { "text": "O, the pious demeanor! O, the noble mind! O, the most fervent faith of the honored passion-bearer, by which he acquired God!" },
+          { "text": "Possessed of a mind illumined by the light of God, thou didst cast into darkness the serpent, the champion of evil, O God-bearing Theodore." },
+          { "type": "theotokion", "text": "Theotokion: Thee do we set as an invincible weapon against the enemy; thee have we acquired as the confirmation and hope of our salvation, O Bride of God." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise',\nhaving been cleansed of the blood of the demons//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Stretched upon a cross and transfixed with nails, presenting an image of the saving Passion of the Creator, O blessed one, thou didst boldly vanquish those who have been cast down." },
+          { "text": "When lawfully contesting by imprisonment in the dungeon, Christ appeared unto thee, raising thee up to feats of battle against the enemy, in that He is the Judge of the contest, O most glorious one." },
+          { "text": "Thou didst bring thyself as a sacrifice pure, holy and unblemished unto Him who willingly offered Himself as a sacrifice for thy sake, O passion-bearer Theodore." },
+          { "type": "theotokion", "text": "Theotokion: O wonder greater than all wonders! As a Virgin, without knowing a man, thou didst conceive in thy womb Him who sustaineth all things, without confining Him therein." }
+        ],
+        "kontakion": {
+          "text": "Arrayed in faith with manliness of soul,\nand taking in hand the word of God as a spear,\nthou didst conquer the enemy, O Theodore, great among the martyrs.//\nWith them unceasingly entreat Christ God on behalf of us all.",
+          "tone": 2,
+          "label": "Kontakion of the holy great-martyr",
+          "melody": "Seeking the highest",
+          "ikos": {
+            "text": "Come, all ye faithful, and with wreaths of hymnody let us crown Theodore, the most radiant adornment of spiritual athletes;\nfor in the splendor of his miracles he is shown to be God's great gift to the world.\nHaving vanquished Belial the enemy by his honored sufferings, he sendeth down as dew streams of healings with the drops of his blood.\nIn all these things doth Christ rejoice, granting everlasting peace.//\nWherefore, we cry out to the martyr: Pray thou unceasingly for us all!"
+          }
+        }
+      },
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "In the furnace of thy struggles didst thou utterly consume the fuel of impiety, O glorious martyr, and wast a beacon of piety, chanting: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "As a commander wise and sober in deed, thou didst prevail over the senseless and impious emperor; and, strengthened by the power of the Spirit, didst show him to be powerless." },
+          { "text": "By the praises of thy greatness the law hath been overcome; for with the most radiant effulgence of torments thou didst shine forth, O Theodore, crying out to thy Master: Blessed is the might of Thy dominion!" },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O divine and sanctified habitation of the Most High, for through thee, O Theotokos, joy hath been imparted to those who cry aloud: Blessed art thou among women, O all-immaculate Sovereign Lady!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "'Trusting in Thee, Who for my sake didst endure the Cross and death, I have been lifted up upon a cross, O Master, and pierced by arrows, I am inflicted with grievous wounds, O Lord,' thus didst thou cry aloud in thy suffering, O noble-minded martyr Theodore." },
+          { "text": "Rejoicing, thou didst offer thyself as a pure sacrifice to thy Creator, O Theodore, and translated to the kingdom of heaven, O glorious one, with the martyrs thou dost ever cry aloud in a sacred manner: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Like a lily, like a noetic rose, thou dost perfume us with the fragrance of thy sufferings, ever driving away the stench of our passions with grace, and constraining us to sing with sweet-smelling souls: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Thou alone among all generations wast shown to be the Mother of God, O most pure Virgin. Thou wast not consumed by the fire of the unapproachable Light. Wherefore, we all bless thee, O Mary, thou Bride of God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Adorned by thy sufferings, abiding and rejoicing with the assemblies of the blessed and the choirs of martyrs, wearing thy crown, thou dost stand now before Him Whom thou didst desire, O Theodore." },
+          { "text": "Caught up to the heights of heaven, disdaining earthly things and rejoicing, thou wast deemed worthy of the end for which thou didst long, receiving the very perfection of desires, O Theodore." },
+          { "text": "Having boldness before God, as a noble and wise spiritual athlete, ask thou forgiveness of sins for us who praise thee with love, delivering us all from sufferings and sorrows." },
+          { "text": "The divinely wise martyr, desiring Thee alone, the immortal Word, Who suffered and died in the flesh, having received Thine immortality, hath made his abode in the heavens, in the presence of Thee, the almighty Creator of all." },
+          { "type": "theotokion", "text": "Theotokion: Come ye all, and with faith and love let us unceasingly praise the blessed Mary, the Virgin Mother of God, having on her account received everlasting joy." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Adorned with comeliness, as a right mighty commander, and a warrior glorious among spiritual athletes,\nthou didst offer thyself to Christ,//\nand wast shown to be a divine gift to the world, O Theodore.",
+      "tone": 3,
+      "label": "Exapostilarion of the great-martyr",
+      "melody": "Heaven with stars",
+      "bothNow": {
+        "text": "By thy mighty protection, O pure one,\npreserve all of us, thy servants unharmed, by the attacks of enemies;//\nfor thee alone do we have as our refuge in times of need.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

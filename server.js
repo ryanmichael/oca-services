@@ -3295,6 +3295,16 @@ try {
   process.exit(1);
 }
 
+let kneelingVespersFixed;
+try {
+  kneelingVespersFixed = loadJSON('fixed-texts/kneeling-vespers-fixed.json');
+  registerBaseFixed('kneeling-vespers', kneelingVespersFixed);
+  console.log('Kneeling Vespers fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Kneeling Vespers fixed texts:', err.message);
+  process.exit(1);
+}
+
 let royalHoursFixed;
 try {
   royalHoursFixed = loadJSON('fixed-texts/royal-hours-fixed.json');
@@ -4201,6 +4211,156 @@ function handleRequest(req, res) {
         blocks,
       }));
 
+    } else if (pathname === '/api/kneeling-vespers') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      // Kneeling Vespers is served on the evening of Pentecost Sunday only
+      // (Pascha + 49). It uses the same Pentecost vespers propers as the
+      // Saturday-evening Vigil, with three sets of St. Basil's Kneeling
+      // Prayers inserted at the prescribed points.
+      const d = new Date(date + 'T00:00:00Z');
+      const pascha = calculatePascha(d.getUTCFullYear());
+      const DAY_MS = 24 * 60 * 60 * 1000;
+      const daysSincePascha = Math.round((d - pascha) / DAY_MS);
+      if (daysSincePascha !== 49) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'Kneeling Vespers is only served on Pentecost Sunday.',
+          date,
+        }));
+        return;
+      }
+
+      // Assemble the Pentecost Sunday vespers content (same call as the
+      // Saturday-evening Vigil, with the Pentecost-day liturgical entry).
+      let result;
+      try {
+        result = assembleForDate(date, pronoun);
+      } catch (err) {
+        console.error('assembleForDate (kneeling-vespers) error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+      if (!result) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Failed to assemble Pentecost vespers content.' }));
+        return;
+      }
+
+      const { blocks: baseBlocks, calendarEntry, tone } = result;
+
+      // Relabel 'db' source for dev-mode display (mirrors /api/service)
+      for (const b of baseBlocks) {
+        if (b.source === 'db') b.source = 'pentecostarion';
+        if (!b.provenance) b.provenance = 'OCA';
+      }
+
+      // ── Build the three Kneeling Prayer groups as ServiceBlocks ────────
+      // Resolve translation overlay: prayer texts live in overlay files
+      // (e.g. sts-sluzhebnik/kneeling-vespers-fixed.json) because the base
+      // file ships only universal rubrics + placeholders.
+      const translation = resolveTranslation(q);
+      const kv = getOverlayFixed('kneeling-vespers', translation) || kneelingVespersFixed;
+      const r  = kv.rubrics;
+      function buildSet(setKey, sectionName, prayerKeys, includeIntroNotice) {
+        const out = [];
+        if (includeIntroNotice) {
+          out.push({
+            id: `kn-${setKey}-notice`, section: sectionName, type: 'rubric',
+            speaker: null, text: r.kneelingNotice,
+          });
+        }
+        out.push({
+          id: `kn-${setKey}-heading`, section: sectionName, type: 'rubric',
+          speaker: null, text: kv[setKey].heading,
+        });
+        out.push({
+          id: `kn-${setKey}-bid`, section: sectionName, type: 'prayer',
+          speaker: 'deacon', text: r.deaconBidsKneeling,
+        });
+        out.push({
+          id: `kn-${setKey}-bid-resp`, section: sectionName, type: 'response',
+          speaker: 'choir', text: 'Lord, have mercy.',
+        });
+        prayerKeys.forEach((pk, i) => {
+          if (i > 0) {
+            out.push({
+              id: `kn-${setKey}-adds-${i}`, section: sectionName, type: 'rubric',
+              speaker: null, text: r.andHeAdds,
+            });
+          }
+          out.push({
+            id: `kn-${setKey}-${pk}`, section: sectionName, type: 'prayer',
+            speaker: 'priest', text: kv[setKey][pk],
+          });
+        });
+        out.push({
+          id: `kn-${setKey}-rise`, section: sectionName, type: 'prayer',
+          speaker: 'deacon', text: r.deaconBidsRising,
+        });
+        out.push({
+          id: `kn-${setKey}-rise-resp`, section: sectionName, type: 'response',
+          speaker: 'choir', text: r.deaconBidsRisingResponse,
+        });
+        return out;
+      }
+
+      const set1Blocks = buildSet('set1', 'First Kneeling', ['firstPrayer','secondPrayer'], true);
+      const set2Blocks = buildSet('set2', 'Second Kneeling', ['firstPrayer','secondPrayer'], false);
+      const set3Blocks = buildSet('set3', 'Third Kneeling', ['firstPrayer','secondPrayer','thirdPrayer'], false);
+
+      // Splice each set in *before* the named section's first block
+      function insertBeforeSection(arr, sectionName, inserted) {
+        const idx = arr.findIndex(b => b.section === sectionName);
+        if (idx === -1) return arr.concat(inserted); // fallback: append
+        return arr.slice(0, idx).concat(inserted, arr.slice(idx));
+      }
+      let blocks = baseBlocks;
+      blocks = insertBeforeSection(blocks, 'Litany of Fervent Supplication', set1Blocks);
+      blocks = insertBeforeSection(blocks, 'Litany of Completion',           set2Blocks);
+      blocks = insertBeforeSection(blocks, 'Aposticha',                       set3Blocks);
+
+      // Tag blocks whose text came from the overlay (for dev-mode attribution).
+      tagBlocksWithOverlay(blocks, 'kneeling-vespers', translation);
+
+      const season = calendarEntry.liturgicalContext?.season || 'pentecostarion';
+      const dow    = calendarEntry.dayOfWeek || null;
+      const liturgicalLabel = getDayLabel(calendarEntry, dow, season, calendarEntry.date)
+                              || 'The Descent of the Holy Spirit (Pentecost)';
+      const commemorations = calendarEntry.commemorations || [];
+
+      if (format === 'html') {
+        const toneLabel = tone ? ` · Tone ${tone}` : '';
+        renderServiceHTML(res, blocks,
+          'Kneeling Vespers of Pentecost',
+          `${formatDate(date)}${toneLabel}`, pronoun);
+        return;
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:     'kneelingVespers',
+        serviceName:     'Kneeling Vespers of Pentecost',
+        tone,
+        season,
+        liturgicalLabel,
+        commemorations,
+        blocks,
+      }));
+
     } else if (pathname === '/api/paschal-hours') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -4411,6 +4571,7 @@ function handleRequest(req, res) {
         vesperalLiturgy: { key: 'vesperalLiturgy',  name: 'Vesperal Liturgy of St. Basil',  endpoint: '/api/vesperal-liturgy' },
         paschalHours:    { key: 'paschalHours',      name: 'Paschal Hours',                  endpoint: '/api/paschal-hours' },
         paschaCollection:{ key: 'paschaCollection',  name: 'Holy Pascha Collection',         endpoint: '/api/pascha-collection' },
+        kneelingVespers: { key: 'kneelingVespers',   name: 'Kneeling Vespers of Pentecost',  endpoint: '/api/kneeling-vespers' },
       };
 
       // Build available services list
@@ -4431,6 +4592,12 @@ function handleRequest(req, res) {
         paschaCollection: (() => {
           const p = calculatePascha(d.getUTCFullYear());
           return d.getUTCMonth() === p.getUTCMonth() && d.getUTCDate() === p.getUTCDate();
+        })(),
+        kneelingVespers: (() => {
+          const p = calculatePascha(d.getUTCFullYear());
+          const DAY = 86400000;
+          const midnight = new Date(date + 'T00:00:00Z');
+          return Math.round((midnight - p) / DAY) === 49;
         })(),
       };
 
@@ -4567,6 +4734,10 @@ function handleRequest(req, res) {
           paschaCollection: (() => {
             const p = calculatePascha(cur.getUTCFullYear());
             return cur.getUTCMonth() === p.getUTCMonth() && cur.getUTCDate() === p.getUTCDate();
+          })(),
+          kneelingVespers: (() => {
+            const p = calculatePascha(cur.getUTCFullYear());
+            return Math.round((cur - p) / DAY_MS_LOCAL) === 49;
           })(),
         };
 

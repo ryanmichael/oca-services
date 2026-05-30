@@ -992,6 +992,26 @@ describe('Per-feast Matins contracts', () => {
     assert.ok(second.length >= 8, `Twelve Apostles: expected ≥8 Second Canon headings, got ${second.length}`);
   });
 
+  it('St Philip the Apostle (2026-11-14) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-11-14', {
+      feastName: 'St Philip',
+      minBlocks: 250,
+      troparionText: 'O holy Apostle Philip, entreat the Merciful God',
+      minCanonBlocks: 35,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St James of Alphaeus (2026-10-09) renders full festal Matins', async () => {
+    await assertFestalMatins('2026-10-09', {
+      feastName: 'St James',
+      minBlocks: 250,
+      troparionText: 'O holy Apostle James, entreat the Merciful God',
+      minCanonBlocks: 35,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St Spyridon (2026-12-12) renders Doxology-rank Matins (Greek usage)', async () => {
     await assertDoxologyMatins('2026-12-12', {
       feastName: 'St Spyridon',

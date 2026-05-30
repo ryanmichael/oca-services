@@ -1475,9 +1475,19 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   const name = FEAST_NAMES[litKey] || `Pentecostarion (${dow})`;
 
   // ── Service type: Great Vespers for Sundays and named feasts ───────────────
+  // Pentecost and Ascension are served as All-Night Vigil (Great Vespers with
+  // Entrance + Litya + Blessing of Bread) per OCA rubric. The Litya stichera
+  // for these feasts already exist in the Pentecostarion DB block table.
   const isNamedFeast = litKey in FEAST_NAMES;
   const isGreat      = dow === 'sunday' || isNamedFeast;
-  const serviceType  = isGreat ? 'greatVespers' : 'dailyVespers';
+  const VIGIL_PENT_FEASTS = new Set([
+    'pentecostarion.pentecost',
+    'pentecostarion.ascension',
+  ]);
+  const isVigilFeast = VIGIL_PENT_FEASTS.has(litKey);
+  const serviceType  = isVigilFeast ? 'all-night-vigil'
+                     : isGreat       ? 'greatVespers'
+                     :                 'dailyVespers';
   const tk           = `tone${tone}`;
 
   // ── Prokeimenon ────────────────────────────────────────────────────────────
@@ -1668,6 +1678,19 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
         now:    nowSlot,
       },
       prokeimenon,
+      // Litya stichera for vigil-served Pentecostarion feasts. The
+      // Pentecostarion DB scrape currently provides a single idiomelon at
+      // hymns[0] and a theotokion at the "now" position (DB scrape gap —
+      // OCA Pentecostarion typically has multiple stichera at this slot).
+      // [[project-pent-litya-coverage]] tracks the missing texts.
+      ...(isVigilFeast ? {
+        litya: {
+          slots: [
+            { position: 1, source: 'db', key: `${litKey}.vespers.litya.hymns.0`, tone, label: 'Litya Sticheron' },
+          ],
+          now: { source: 'db', key: `${litKey}.vespers.litya.now`, tone, label: 'Theotokion' },
+        },
+      } : {}),
       aposticha: {
         slots: apostichaSlots,
         ...(apostichaGlory ? { glory: apostichaGlory } : {}),

@@ -1678,25 +1678,31 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
         now:    nowSlot,
       },
       prokeimenon,
-      // Litya stichera for vigil-served Pentecostarion feasts. Sticheron 1 is
-      // the OCA-translation idiomelon (from the 2025-0608 scrape); stichera 2+
-      // were backfilled from the Sergius Pentecostarion in
-      // scripts/scrape-pent-litya.js. The Glory/Both-now combined doxastichon
-      // sits at the DB's `now` slot. Counts: Pentecost has 3 stichera in
-      // Tone II; Ascension has 5 in Tone I + 1 in Tone IV (= 6 total).
+      // Litya stichera for vigil-served Pentecostarion feasts.
+      // Texts live in fixed-texts/vespers-fixed.json under `pentecostarionLitya`
+      // (Sergius English Pentecostarion translation; OCA service-text docx
+      // ships only an abbreviated set). See [[project-pent-litya-coverage]].
       ...(isVigilFeast ? (() => {
-        const counts = { 'pentecostarion.pentecost': 3, 'pentecostarion.ascension': 6 };
-        const n = counts[litKey] || 1;
+        const slug = litKey === 'pentecostarion.pentecost' ? 'pentecost'
+                   : litKey === 'pentecostarion.ascension' ? 'ascension'
+                   : null;
+        if (!slug) return {};
+        const counts = { pentecost: 3, ascension: 6 };
+        const n = counts[slug];
         return {
           litya: {
             slots: Array.from({ length: n }, (_, i) => ({
               position: i + 1,
-              source: 'db',
-              key: `${litKey}.vespers.litya.hymns.${i}`,
-              tone,
-              label: i === 0 ? 'Litya Sticheron' : 'Litya Sticheron (Sergius Pentecostarion)',
+              source: 'fixed',
+              key: `pentecostarionLitya.${slug}.stichera.${i}`,
+              label: 'Litya Sticheron',
             })),
-            now: { source: 'db', key: `${litKey}.vespers.litya.now`, tone, label: 'Theotokion' },
+            now: {
+              source: 'fixed',
+              key: `pentecostarionLitya.${slug}.now`,
+              label: 'Glory/Both-now doxastichon',
+              combinesGloryNow: true,
+            },
           },
         };
       })() : {}),

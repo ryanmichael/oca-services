@@ -878,16 +878,35 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
   const blocks = [];
 
   // Variable stichera (from Menaion/Triodion/Pentecostarion when available)
+  // Slots may use source='db' (Pentecostarion DB blocks) or source='fixed'
+  // (texts hand-loaded into fixed-texts/vespers-fixed.json — used for the
+  // Pentecost + Ascension Litya stichera that aren't fully scraped into the
+  // DB yet; see fixed-texts/vespers-fixed.json:pentecostarionLitya).
+  const resolveLityaSlot = (slot) => {
+    if (slot.source === 'fixed') {
+      const data = deepGet(fixedTexts, slot.key);
+      if (!data) return null;
+      // Fixed-text values may be a raw string or a {text, tone, label} object.
+      if (typeof data === 'string') return { text: data, tone: slot.tone, label: slot.label };
+      return {
+        text:  data.text,
+        tone:  data.tone  || slot.tone,
+        label: data.label || slot.label,
+      };
+    }
+    return resolveSource(slot.source, slot.key, sources);
+  };
+
   if (lityaSpec && lityaSpec.slots && lityaSpec.slots.length > 0) {
     let hymnIdx = 0;
     for (const slot of lityaSpec.slots) {
-      const sourceTexts = resolveSource(slot.source, slot.key, sources);
+      const sourceTexts = resolveLityaSlot(slot);
       if (!sourceTexts) continue;
       const hymns = sourceTexts.hymns || (sourceTexts.text ? [sourceTexts] : []);
       for (const hymn of hymns) {
         blocks.push(makeBlock(
           `litya-hymn-${hymnIdx}`, section, 'hymn', 'choir', hymn.text,
-          { tone: slot.tone, source: slot.source, label: slot.label }
+          { tone: slot.tone || hymn.tone, source: slot.source, label: slot.label || hymn.label }
         ));
         hymnIdx++;
       }
@@ -896,23 +915,23 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
 
   // Glory doxastichon
   if (lityaSpec && lityaSpec.glory) {
-    const glorySource = resolveSource(lityaSpec.glory.source, lityaSpec.glory.key, sources);
+    const glorySource = resolveLityaSlot(lityaSpec.glory);
     if (glorySource) {
       blocks.push(makeBlock('litya-glory-label', section, 'doxology', null,
         fixedTexts.doxology.gloryOnly));
       blocks.push(makeBlock('litya-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: lityaSpec.glory.tone, source: lityaSpec.glory.source }));
+        glorySource.text, { tone: lityaSpec.glory.tone || glorySource.tone, source: lityaSpec.glory.source, label: lityaSpec.glory.label || glorySource.label }));
     }
   }
 
-  // Now theotokion
+  // Now theotokion (or combined Glory/Both-now doxastichon)
   if (lityaSpec && lityaSpec.now) {
-    const nowSource = resolveSource(lityaSpec.now.source, lityaSpec.now.key, sources);
+    const nowSource = resolveLityaSlot(lityaSpec.now);
     if (nowSource) {
       blocks.push(makeBlock('litya-now-label', section, 'doxology', null,
-        fixedTexts.doxology.nowOnly));
+        lityaSpec.now.combinesGloryNow ? fixedTexts.doxology.gloryNow : fixedTexts.doxology.nowOnly));
       blocks.push(makeBlock('litya-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: lityaSpec.now.tone, source: lityaSpec.now.source }));
+        nowSource.text, { tone: lityaSpec.now.tone || nowSource.tone, source: lityaSpec.now.source, label: lityaSpec.now.label || nowSource.label }));
     }
   }
 

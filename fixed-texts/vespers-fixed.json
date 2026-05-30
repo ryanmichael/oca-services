@@ -242,6 +242,75 @@
     "now": "This is the day of Resurrection! Let us be illumined by the feast! Let us embrace each other! Let us call \"brethren\" even those that hate us, and forgive all by the Resurrection, and so let us cry:\nChrist is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life!"
   },
 
+  "pentecostarionLitya": {
+    "_note": "Litya stichera for vigil-served Pentecostarion feasts. The OCA published service texts abbreviate the Litya; full sets here are from the Sergius English Pentecostarion (Slavonic recension, Thee/Thou). The `now` field is the combined Glory/Both-now doxastichon.",
+    "pentecost": {
+      "tone": 2,
+      "stichera": [
+        {
+          "tone": 2,
+          "label": "Sticheron of Pentecost",
+          "text": "In the prophets Thou didst proclaim unto us the way of salvation, and the grace of Thy Spirit hath shone in the apostles, O our Savior;\nThou art God Who art from the beginning, and for time to come, and unto the ages,//\nThou art our God."
+        },
+        {
+          "tone": 2,
+          "label": "Sticheron of Pentecost",
+          "text": "In Thy courts shall I praise Thee, the Savior of the world,\nand bending my knee I shall worship Thine invincible might.\nIn the evening, in the morn, at midday,//\nand at all times shall I bless Thee, O Lord."
+        },
+        {
+          "tone": 2,
+          "label": "Sticheron of Pentecost",
+          "text": "In Thy courts, O Lord, as we the faithful bend the knee of the soul and the body,\nwe praise Thee, the beginningless Father,\nthe co-beginningless Son,\nand the co-eternal and Most holy Spirit,//\nWho dost enlighten and sanctify our souls."
+        }
+      ],
+      "now": {
+        "tone": 8,
+        "label": "Glory/Both-now doxastichon",
+        "text": "When Thou didst send down Thy Spirit, O Lord, while the apostles were seated,\nthe children of the Jews beheld and were astonished with amazement;\nfor they heard them speaking in other, foreign tongues, according as the Spirit bestowed on them;\nfor though they were unlearned, they were made wise;\nand in catching and bringing the nations to the Faith, they preached of things divine.\nWherefore, we also cry to Thee://\nO Thou Who wast seen on earth and didst save us from error, O Lord, glory be to Thee."
+      }
+    },
+    "ascension": {
+      "tone": 1,
+      "stichera": [
+        {
+          "tone": 1,
+          "label": "Sticheron of Ascension",
+          "text": "As Thou didst ascend into the heavens, from whence Thou didst also descend,\nleave us not orphaned, O Lord;\nlet Thy Spirit come, bringing peace unto the world;//\nshow Thou unto the sons of men the works of Thy might, O Lord and Lover of mankind."
+        },
+        {
+          "tone": 1,
+          "label": "Sticheron of Ascension",
+          "text": "Though Thou wast not parted from His uncircumscribable bosom,\nThou didst ascend unto Thy beginningless Father, O Christ,\nand the hosts on high accepted no addition to the thrice-holy praise.\nBut even after Thou didst become man\nthey recognized Thee as the one Son, only-begotten of the Father, O Lord.//\nIn the multitude of Thy compassions, have mercy on us."
+        },
+        {
+          "tone": 1,
+          "label": "Sticheron of Ascension",
+          "text": "Thine angels said unto the apostles, O Lord:\nYe men of Galilee, why stand ye looking up into heaven?\nThis is Christ God, Who hath been taken up from you into heaven.\nHe shall come again in the manner ye have seen Him going into heaven.//\nWorship Him in holiness and righteousness."
+        },
+        {
+          "tone": 4,
+          "label": "Sticheron of Ascension",
+          "text": "When Thou, O Christ, didst come unto the Mount of Olives to accomplish the good will of the Father,\nthe heavenly angels were amazed and the nethermost regions shuddered with fear.\nThe disciples stood by with joy and trembling as Thou spakest unto them,\nand a cloud prepared as a throne awaited opposite them;\nand heaven, throwing open the gates, shone with comeliness;\nand the earth revealeth its hidden chambers, that the descent and immediate ascent might be made known unto Adam;\nbut his steps were led upwards as it were by a hand, and his mouth was heard blessing Thee greatly;\nthe cloud took Thee up and heaven received Thee within itself.//\nThou hast wrought this great and strange deed, O Lord, for the salvation of our souls."
+        },
+        {
+          "tone": 1,
+          "label": "Sticheron of Ascension",
+          "text": "Thou hast renewed in Thyself Adam’s nature, which had gone down into the lower parts of the earth,\nand Thou didst raise it up above every principality and authority today.\nFor since Thou didst love it, Thou didst seat it together with Thyself;\nsince Thou hast taken compassion on it, Thou didst unite it to Thyself;\nsince Thou didst unite it to Thyself, Thou didst suffer with it;\nand enduring the Passion, though Thou art impassable, Thou didst glorify it.\nBut the Bodiless ones said: Who is this comely man?\nBut not only is He man, but God and man; that which is manifest is twofold.\nWherefore, beside themselves, the angels, flying about clad in radiant vesture,\ncried unto the disciples: Ye men of Galilee, He that is gone from you, Jesus, Man and God,\nshall come again as the God-man to judge the living and the dead;//\nand He granteth unto the faithful the forgiveness of sins and great mercy."
+        },
+        {
+          "tone": 1,
+          "label": "Sticheron of Ascension",
+          "text": "When Thou didst ascend in glory, O Christ God, while the disciples were watching,\nthe clouds took Thee up with Thy flesh;\nthe heavenly gates were lifted up;\nthe choir of the angels rejoiced with rejoicing;\nthe powers above cried aloud, saying:\nLift up thy gates, O ye princes, and the King of Glory shall enter therein.\nAnd the disciples were astonished and said://\nBe Thou not parted from us, O Good Shepherd, but send unto us Thy most holy Spirit to guide and establish our souls."
+        }
+      ],
+      "now": {
+        "tone": 4,
+        "label": "Glory/Both-now doxastichon",
+        "text": "O Lord, having fulfilled the mystery that was hidden from before the ages and from all generations,\nas Thou art good Thou didst come with Thy disciples to the Mount of Olives,\nhaving together with Thyself her that gave birth unto Thee, the Creator and Fashioner of all things;\nfor it was meet that she who, as Thy Mother, suffered at Thy Passion more than all,\nshould also enjoy the surpassing joy of the glorification of Thy flesh, O Master,//\nwhich we have attained by Thine Ascension to the heavens, and we glorify Thy great mercy toward us."
+      }
+    }
+  },
+
   "psalm33": {
     "_note": "Psalm 33 (34 in Hebrew numbering) — read after the Blessing of Bread at the All-Night Vigil. Traditionally only verses 1–10 are read.",
     "body": "I will bless the Lord at all times; His praise shall continually be in my mouth. My soul makes its boast in the Lord; let the humble hear and be glad. O magnify the Lord with me, and let us exalt His Name together. I sought the Lord, and He answered me, and delivered me from all my fears. Look to Him and be radiant, so your faces shall never be ashamed. This poor man cried, and the Lord heard him, and saved him out of all his troubles. The angel of the Lord encamps around those who fear Him, and delivers them. O taste and see that the Lord is good! Blessed is the man who takes refuge in Him. O fear the Lord, you His saints, for those who fear Him have no want. The young lions suffer want and hunger; but those who seek the Lord lack no good thing."

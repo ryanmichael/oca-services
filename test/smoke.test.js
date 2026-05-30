@@ -561,6 +561,36 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Mark the Evangelist (2026-04-25) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-04-25', {
+      feastName: 'St Mark',
+      minBlocks: 250,
+      troparionText: 'O holy apostle and evangelist Mark',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('St Luke the Evangelist (2026-10-18) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-10-18', {
+      feastName: 'St Luke',
+      minBlocks: 250,
+      troparionText: 'O holy Apostle Luke',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('St Matthew the Evangelist (2026-11-16) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-11-16', {
+      feastName: 'St Matthew',
+      minBlocks: 250,
+      troparionText: 'O holy Apostle and evangelist Matthew',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St Sergius of Radonezh (2026-09-25) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-09-25', {
       feastName: 'St Sergius of Radonezh',

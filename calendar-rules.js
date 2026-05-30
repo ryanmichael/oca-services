@@ -1678,19 +1678,28 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
         now:    nowSlot,
       },
       prokeimenon,
-      // Litya stichera for vigil-served Pentecostarion feasts. The
-      // Pentecostarion DB scrape currently provides a single idiomelon at
-      // hymns[0] and a theotokion at the "now" position (DB scrape gap —
-      // OCA Pentecostarion typically has multiple stichera at this slot).
-      // [[project-pent-litya-coverage]] tracks the missing texts.
-      ...(isVigilFeast ? {
-        litya: {
-          slots: [
-            { position: 1, source: 'db', key: `${litKey}.vespers.litya.hymns.0`, tone, label: 'Litya Sticheron' },
-          ],
-          now: { source: 'db', key: `${litKey}.vespers.litya.now`, tone, label: 'Theotokion' },
-        },
-      } : {}),
+      // Litya stichera for vigil-served Pentecostarion feasts. Sticheron 1 is
+      // the OCA-translation idiomelon (from the 2025-0608 scrape); stichera 2+
+      // were backfilled from the Sergius Pentecostarion in
+      // scripts/scrape-pent-litya.js. The Glory/Both-now combined doxastichon
+      // sits at the DB's `now` slot. Counts: Pentecost has 3 stichera in
+      // Tone II; Ascension has 5 in Tone I + 1 in Tone IV (= 6 total).
+      ...(isVigilFeast ? (() => {
+        const counts = { 'pentecostarion.pentecost': 3, 'pentecostarion.ascension': 6 };
+        const n = counts[litKey] || 1;
+        return {
+          litya: {
+            slots: Array.from({ length: n }, (_, i) => ({
+              position: i + 1,
+              source: 'db',
+              key: `${litKey}.vespers.litya.hymns.${i}`,
+              tone,
+              label: i === 0 ? 'Litya Sticheron' : 'Litya Sticheron (Sergius Pentecostarion)',
+            })),
+            now: { source: 'db', key: `${litKey}.vespers.litya.now`, tone, label: 'Theotokion' },
+          },
+        };
+      })() : {}),
       aposticha: {
         slots: apostichaSlots,
         ...(apostichaGlory ? { glory: apostichaGlory } : {}),

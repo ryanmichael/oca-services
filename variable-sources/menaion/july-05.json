@@ -1,0 +1,213 @@
+{
+  "_meta": {
+    "feast": "St Athanasius of Mt Athos",
+    "feastKey": "stAthanasiusAthos",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 07-05.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-05.pdf",
+    "_note": "Single canon of the venerable one in Tone VIII. Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted per the menaion-matins-track pattern. Jul 5 also commemorates the Uncovering of the Relics of St Sergius of Radonezh; the Sergius PDF file covers Athanasius. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "The ranks of the angels marveled at thy life in the flesh:\nhow in the body thou didst go forth to wrestle with invisible foes,\nand wounded hordes of demons O ever-glorious one.\nHence, O Athanasius, Christ hath bestowed rich gifts upon thee.//\nWherefore, pray that our souls be saved, O father.",
+    "tone": 3,
+    "label": "Troparion of St Athanasius of Athos"
+  },
+  "kontakion": {
+    "text": "Thy flock, O divinely eloquent one,\ncalleth upon thee as an excellent seer of immaterial beings and a most true and active interpreter.\nFail not to pray for thy servants,\nthat thou mayest deliver from dangers and assaults those who cry out to thee://\nRejoice, O father Athanasius!",
+    "tone": 8,
+    "label": "Kontakion of St Athanasius",
+    "melody": "To the chosen"
+  },
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "The ranks of the angels marveled at thy life in the flesh:\nhow in the body thou didst go forth to wrestle with invisible foes,\nand wounded hordes of demons O ever-glorious one.\nHence, O Athanasius, Christ hath bestowed rich gifts upon thee.//\nWherefore, pray that our souls be saved, O father.",
+      "tone": 8,
+      "label": "Troparion of the venerable one"
+    },
+    "sedalion": [
+      {
+        "text": "Thou hast been shown to be a greatly radiant star of monastics, and a renowned foundation,\nthe farthest limit of abstinence, a most luminous mirror of prudence, O venerable one.\nStanding before God, O most blessed one,//\nask thou forgiveness of sins for those who joyously celebrate thy memory.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "bothNow": {
+          "text": "Do thou guide to the path of repentance, us who have ever wandered away into the trackless wastes of evil\nand have angered the supremely good Lord, O blessed Mary who knewest not wedlock,//\nthou refuge of despairing men and dwelling-place of God.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Held fast by the divine desire for immortality, O Athanasius,\nand having taken the Cross upon thy shoulders, of old thou didst make thine abode on Athos,\nfollowing thy desire, O venerable one, where thou didst assemble a flock for the Lord.//\nWherefore, we have acquired thee as a fervent intercessor before the Lord.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine Faith",
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word, O only most pure Virgin Mother who surpassed the angels in purity.\nBy the divine waters of thy supplications cleanse me who, more than all others, have become dust, defiled by carnal transgressions;//\nand grant me great mercy, O pure one.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We bless thee, O venerable father Athanasius,\nand we honor thy holy memory,//\nO instructor of monks and converser with the angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Having received vision and activity, O venerable one, reining in thy senses thou didst steer thy life by the divine commandments;\nfor thou wast shown to be a radiant beacon for monks, guiding us to knowledge and enlightening us.\nWherefore, praising the memory of thy passion, we magnify thee with love, O God-bearing Athanasius.\nFor which cause we cry out to thee: Entreat Christ God,//\nthat He grant forgiveness of sins to those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "Let us hymn the heavenly gate and ark, the all-holy mountain, the cloud of light,\nthe heavenly ladder, the spiritual Paradise, the redemption of Eve,\nthe great treasure of the world;\nbecause salvation for the world and forgiveness of ancient offences were wrought in her.\nTherefore we cry unto her: Intercede with thine own Son and God to grant forgiveness of offences//\nto those who devoutly worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4
+    },
+    "gospel": { "reading": "Matthew 11:27-30", "number": 43 },
+    "postGospelSticheron": {
+      "text": "Let us all praise the namesake of immortality, who manfully and valiantly struggled on Athos,\nwho assembled this flock and lovingly raised up a temple for the Lord,\nentrusting all to the Mother of God.//\nTo her doth he pray on behalf of us who with faith celebrate his memory.",
+      "tone": 6,
+      "label": "Idiomelon of St Athanasius"
+    },
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the venerable one (Tone VIII). Theotokos Paraklisis canon omitted per pattern.",
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "troparia": [
+          { "text": "As the namesake of immortality, O father Athanasius, when thou didst reach the end of thy life and didst pass over from transitory things, thou wast revealed to be a receptacle of true immortality. Standing before Christ, be thou mindful of us who commemorate you." },
+          { "text": "Pious from thine earliest infancy, O venerable one, the loss of thy parents in nowise hindered thine acquisition of virtue; but with all thy power thou didst turn all thy desire and zeal to the one Creator." },
+          { "text": "As a recipient of desire for thee and a fellow prisoner of love, with boldness I chant praise to thee with defiled lips; but be thou merciful, O father, and grant that I may worthily offer thee this praise." },
+          { "text": "Theotokion: Ineffably thou hast given birth to the Ancient of days as a little babe Who hath shown forth the new path of virtue on earth. And thy faithful favorite Athanasius, consumed by love of Him, O Maiden, erected his temple for thee." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;//\nand be seen radiantly keeping festival, joyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "text": "Caught up to God by love from thy childhood, gathering together thy peers among the children and forming them into a choir, thou didst spiritually instruct them, changing their habits, O most wise one." },
+          { "text": "Overcome by the desire for wisdom, like a wise bee thou didst travel to the noble City of Constantine, O divinely wise one, and having industriously joined pure deeds to thy words, thou didst forsake those things which are unprofitable." },
+          { "text": "Piloting the ship of thy soul with the sail of the Cross, O father, thou didst serenely and easily escape the cruel tide of life and, rejoicing, steered it to the tranquility of the harbors of God." },
+          { "text": "Theotokion: He Who before time began was begotten ineffably of the Father hath issued forth from thy womb in the latter days, O Virgin Mother, and hath deified our nature, manifestly leading forth choirs of the venerable." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.//\nTherefore with the Prophet Habbakuk I cry unto Thee, 'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "Making thy mind master over the passions, guided by the divine laws and trusting in the commandments of God, as one who is most wise thou didst piously avert childish conversations, the gatherings of the vile and the cavorting of the demons, preferring that which is higher." },
+          { "text": "Taking up the easy yoke of the Savior, sustained by the fear of God, and cleansing body and soul, thou wast a cause of purity and chastity, the limit of abstinence, the seal of dispassion and the image of love, O Athanasius." },
+          { "text": "Passing through an outward discipline of philosophy, which was definitive and caused thee to grow, thou didst traverse it, guarded by righteousness, wisdom and prudence, humility and understanding and other beautiful gifts." },
+          { "text": "Theotokion: The Master, Who is borne up on the shoulders of the dread cherubim, as upon a fiery throne, made His abode within thy womb, O pure one, and, taking on flesh, hath deified human nature, as Athanasius, excellent among the saints, hath taught, O thou who alone art all-hymned." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee,//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Thou wast shown to be like a magnet, O father, attracting all with both the sweetness of thy words of instruction, and obedience to the teaching which thou didst unceasingly utter, and also to see and behold thine honored and joyous countenance." },
+          { "text": "Following the divine laws and submitting to the precepts of the Creator, thou wast shown to be a legislator and most excellent rule for monks, a reproof to the foolish, a guide for the lost, and a beacon amid the darkness, O most glorious one." },
+          { "text": "As an organ of the virtues and a well-gifted receptacle of the Holy Spirit, thou didst found a sacred and beauteous habitation, offering monks life in abundance." },
+          { "text": "Theotokion: Even the mouths of orators are unable to hymn thee as is meet, O all-hymned one who art higher than the cherubim and all creation. Wherefore, with the godly Athanasius, entreat the Master on behalf of us all." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,//\nO God of my salvation.",
+        "troparia": [
+          { "text": "Thou didst mortify the carnal passions with great abstinence, crucifying thyself to the world and the passions with fasting and tears, and cleaving unto God with prayers and unceasing hymns." },
+          { "text": "As an instructor of the monks on Mount Athos and an exemplary model of the works of virtue, thou didst adorn the sojourns of all the celibates there." },
+          { "text": "Thou wast sweet, righteous and good, meek and humble, a kind neighbor, merciful, compassionate and full of tender compassion, emulating Christ in these qualities." },
+          { "text": "Theotokion: Shown to be a new Moses, thou didst erect a fold as another tabernacle, O most honored one, which thou didst cause to grow by thy pangs and sweat, entrusting it to the Mother of God." }
+        ]
+      },
+      "kontakion": {
+        "text": "Thy flock, O divinely eloquent one,\ncalleth upon thee as an excellent seer of immaterial beings and a most true and active interpreter.\nFail not to pray for thy servants,\nthat thou mayest deliver from dangers and assaults those who cry out to thee://\nRejoice, O father Athanasius!",
+        "tone": 8,
+        "label": "Kontakion of the venerable one",
+        "melody": "To the chosen"
+      },
+      "ikos": {
+        "text": "Most gloriously receiving thy calling from on high, thou didst inherit immortal life;\nfor, living the life of the incorporeal ones on earth in the flesh, thou didst remain untouched by the passions.\nTherefore, we praise thee, O father, saying:\nRejoice, radiant glory of monastics; rejoice, bright pillar of chastity!\nRejoice, openly spoken recognition of valor; rejoice, manifestation of a mind most wise!\nRejoice, fair rule, proclamation of righteousness; rejoice, thou who didst exert thyself by word and deed!\nRejoice, mind nourished by ineffable thoughts; rejoice, thou who didst amaze all creation with thy piety!\nRejoice, thou by whom the demons were put to shame; Rejoice, thou by whom every passion was mortified!\nRejoice, wellspring of living waters; Rejoice, savior of those who cry out to thee with faith://\nRejoice, O father Athanasius!"
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "Report of the corrections of thy life had in nowise passed throughout all creation, O father, for God glorified thee and made thee renowned by all upon thine attainment unto the most glorious heights." },
+          { "text": "Emulating thy Teacher, O father, thou wast one who housed the poor, a patron of widows, a guardian of orphans, a speedy consolation for the grieving, a refuge for the drowning and a help for the oppressed." },
+          { "text": "Knowing thee to be a universal star, a never-waning beacon for monastics, a helper amid tribulations, a great refuge for sinners, O most honored one, we set thee before Christ the Master as our mediator and intercessor." },
+          { "text": "Theotokion: Thy favored one, desiring to behold the ineffable glory of thy Son and God, O Birthgiver of God, took His precious Cross upon his shoulders and followed His life-bearing and divine steps." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "Conquering the princes and powers of darkness in thy youth, O Athanasius, thou wast a great teacher and guide to salvation, laying bare their assaults, treachery and deceits, and preserving thy flock unharmed by all the malice of the demons." },
+          { "text": "Walking upon the earth as a man, thou didst truly acquire life in the heavens. And shown to be a converser with the angels, emulating their life, thou dost now chant with them: Ye priests bless, ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Assembling together today, we praise thee as is meet and venerate the shrine of thy relics, asking that, through thy supplications, deliverance from the passions, forgiveness of sins, and loosing from every temptation and evil circumstance be granted to those who celebrate thy holy memory with faith and joy throughout all ages." },
+          { "text": "Theotokion: Liken to Elijah, who dwelt of old on Mount Carmel, so didst thou, struggling in asceticism on Mount Athos, especially desire to be with God; and, illumined by divine visions, thou wast shown to be a favorite of the honored Theotokos, crying out to her with the archangel: Rejoice!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens.//\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "Having lived on earth as one incorporeal, in purity and chastity, in a pure sojourn and an undefiled life, thou didst hasten to the paths of heaven and dost rejoice with all the righteous and venerable, entreating Christ on behalf of all." },
+          { "text": "Thou didst greatly magnify thy Master on earth, most gloriously glorifying Him with thy members through vision and activity; and thou didst appear, seen everywhere, and wast glorious, O God-bearer; for virtue truly knoweth how to put the adversary to shame." },
+          { "text": "Thou didst join the armies of the incorporeal ones and didst enroll in the choirs of the venerable; and thou dost dance with all the elect, sharing in true deification and immortal life, O father. With them entreat thy Master unceasingly on behalf of thy flock." },
+          { "text": "Theotokion: As the sanctified temple which contained One of the Trinity, the honored favorite Athanasius raised up a temple to thy glory and honor, O Lady. Therein cease thou never to render aid by thy supplications continually." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "As a light-bearer, O Athanasius, thou didst shine forth upon the darkened as from afar,\nillumining the gloom-enshrouded lands with the radiance of thy virtues.//\nCease not to beseech the Lord on behalf of the world.",
+      "tone": 3,
+      "label": "Exapostilarion of the venerable one",
+      "bothNow": {
+        "text": "Entreated by the supplications of the honored Athanasius, O Queen of all,\npreserve thou untouched by any adversary thy flock,//\nwhich ever beseecheth thee, the intercessor of the world.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "Truly precious was the death of Thy saint in Thy sight, O Christ;\nfor, lo! a wellspring of blood poured forth from the foot of Thy favored one,\neven after his death driving away every ailment\nand expelling evil spirits against which he armed himself as a deadly opponent//\neven while yet alive.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "The Lord hath shown forth unto mankind the shrine of thy relics as a wellspring of miracles and a river of divine gifts, O most wise Athanasius.\nIt hath been granted such that the blind may see, the lepers find cleansing,\nand those held fast by unclean spirits be delivered from their power//\nand made chaste.",
+          "tone": 8
+        },
+        {
+          "text": "Rejoice, O father Athanasius, thou beacon of fasters, star of monastics, boast of pastors, dweller with the venerable!\nRejoice, habitation of the Trinity! Rejoice, wellspring of love and chastity!\nRejoice, most splendid lamp of prudence!//\nRejoice, O upright rule and animate tower of the virtues!",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "We honor thee, O Athanasius our father, as the instructor of a multitude of monks;\nfor, following thy path we have truly learned how to walk aright.\nBlessed art thou who, laboring for Christ, didst denounce the power of the enemy, O converser with the angels and companion of the venerable and the righteous.//\nWith them pray unto the Lord, that our souls find mercy.",
+        "tone": 8
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,//\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "The ranks of the angels marveled at thy life in the flesh:\nhow in the body thou didst go forth to wrestle with invisible foes,\nand wounded hordes of demons O ever-glorious one.\nHence, O Athanasius, Christ hath bestowed rich gifts upon thee.//\nWherefore, pray that our souls be saved, O father.",
+      "tone": 3,
+      "label": "Troparion of the venerable one"
+    }
+  }
+}

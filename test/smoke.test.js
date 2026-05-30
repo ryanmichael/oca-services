@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Athanasius of Athos (2026-07-05) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-07-05', {
+      feastName: 'St Athanasius of Athos',
+      minBlocks: 250,
+      troparionText: 'The ranks of the angels marveled at thy life in the flesh',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St Nina (2026-01-14) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-01-14', {
       feastName: 'St Nina',

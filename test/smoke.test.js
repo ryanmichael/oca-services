@@ -561,6 +561,19 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Sts Constantine & Helena (2027-05-21) renders full festal Matins, not weekday stub', async () => {
+    // 2026-05-21 is Ascension (Pascha Apr 12 + 39d) — festal-matins takes
+    // precedence over the menaion saint that year. We test 2027 instead,
+    // where Ascension falls Jun 10 and May 21 is the regular menaion feast.
+    await assertFestalMatins('2027-05-21', {
+      feastName: 'Sts Constantine & Helena',
+      minBlocks: 250,
+      troparionText: 'Beholding the image of Thy Cross in the sky',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St John the Theologian (2026-05-08) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-05-08', {
       feastName: 'St John the Theologian',

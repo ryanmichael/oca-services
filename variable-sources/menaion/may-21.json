@@ -1,0 +1,247 @@
+{
+  "_meta": {
+    "feast": "Holy Equals-of-the-Apostles, the Emperor Constantine and the Empress Helena",
+    "feastKey": "constantineHelena",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 05-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-21.pdf",
+    "_note": "Single canon of the righteous ones (Constantine + Helena, Tone VIII). Falls in the Pentecostarion period (between Pascha and Pentecost). Sergius PDF specifies a Pentecostarion canon (6 troparia incl. Irmos) + the righteous-ones canon (8 troparia) interleaved at the actual service; the Pentecostarion canon and its Both-now theotokion/sessional slots are omitted here per the menaion-matins-track pattern. Magnificat retained at Ode 9."
+  },
+
+  "troparion": {
+    "text": "Beholding the image of Thy Cross in the sky,\nand like Paul receiving a call not from men,\nThine apostle among kings placed the imperial city in Thy hands, O Lord.\nDo Thou ever preserve it in peace,//\nthrough the supplications of the Theotokos, O Thou Who alone lovest mankind.",
+    "tone": 8,
+    "label": "Troparion of Sts Constantine and Helena"
+  },
+
+  "kontakion": {
+    "text": "Today Constantine and his mother Helena have revealed the Cross, the most precious Tree,\nwhich putteth to shame all the Jews\nand is the weapon of faithful kings against the adversary.//\nFor our sake the great standard hath appeared, terrible in battle.",
+    "tone": 3,
+    "label": "Kontakion of Sts Constantine and Helena",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "Beholding the image of Thy Cross in the sky,\nand like Paul receiving a call not from men,\nThine apostle among kings placed the imperial city in Thy hands, O Lord.\nDo Thou ever preserve it in peace,//\nthrough the supplications of the Theotokos, O Thou Who alone lovest mankind.",
+      "tone": 8,
+      "label": "Troparion of the righteous ones",
+      "_note": "On 'God is the Lord': Pentecostarion troparion (Twice); Glory: troparion of the righteous ones; Both now: Pentecostarion troparion."
+    },
+
+    "sedalion": [
+      {
+        "text": "Thou wast the image of a new David, receiving the horn of royal anointing over thy head;\nfor with the oil of the Spirit hath the transcendent Word and Lord anointed thee, O glorious one.\nWherefore, thou hast also received a royal scepter, O most wise one,//\nasking great mercy for us.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Of the divine Faith",
+        "_note": "Sung twice. Glory/Both-now: Pentecostarion sessional, or the Theotokion 'Thou wast the divine tabernacle of the Word…'",
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother who surpassed the angels in purity.\nBy the divine waters of thy supplications cleanse me who, more than all others,\nhave become dust, defiled by carnal transgressions;//\nand grant me great mercy, O pure one.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "The Creator of the sun and creation, Who was wounded on the Cross,\nwith the stars of heaven drew thee to Him like a radiant star,\nand invested thee as the first with royal dominion.\nWherefore, we praise thee, O Constantine, thou most pious emperor,//\nwith thy divinely wise mother Helena.",
+        "tone": 6,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The angelic hosts",
+        "_note": "Sung twice. Glory/Both-now: Pentecostarion sessional, or the Theotokion 'Gideon hath foretold of thy conception…'",
+        "bothNow": {
+          "text": "Gideon hath foretold of thy conception,\nand David hath revealed thine ineffable child-bearing, O Theotokos;\nfor the Word descended like a dew upon the fleece of thy womb,\nand thou O Virgin full of grace, like unto a holy and fertile earth,//\nbudded forth without seed our salvation, Christ God.",
+          "tone": 6,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, right faithful sovereigns Constantine and Helena,\nequals of the apostles,\nand we honor the holy memory of you who enlightened the whole world with holy baptism.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Thy harmonious memorial, made manifest unto us, illumineth the ends of the earth\nwith the light of divine knowledge, O divinely inspired Constantine;\nfor thou hast been shown to be one pious among kings, having kept the laws of the King of heaven.//\nWherefore, by thy supplications deliver us from temptations.",
+      "tone": 4,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Go thou quickly before",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "By thy divine birthgiving, O pure one,\nthou hast renewed the mortal nature of those born on earth,\nwhich had become corrupt through the passions,\nraising up all from death to a life of incorruption.\nWherefore, as is meet we all bless thee,//\nO exceedingly glorious Virgin, as thou didst foretell.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "I have raised up one chosen out of My people;\nI have found David My servant.",
+      "verse": "Wherefore God, thy God, hath anointed Thee with the oil of gladness.",
+      "tone": 4
+    },
+
+    "gospel": {
+      "reading": "John 10:9-16",
+      "number": 36,
+      "_note": "Matins Gospel."
+    },
+
+    "postGospelSticheron": {
+      "text": "The memory of the pious Constantine hath shone forth today, poured out like myrrh;\nfor, desiring Christ, he spurned the idols,\nraising up a temple on the earth to Him Who was crucified for our sake;//\nand in the heavens he hath received the crown of hope.",
+      "tone": 2,
+      "label": "Idiomelon of St Constantine"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the righteous ones (Tone VIII). The Pentecostarion canon (6 troparia) interleaved at the actual service is omitted from this MVP file.",
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,//\nthe Israelites cried aloud: Unto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "O Thou Who alone art the King of heaven, through the entreaties of Thy favorites, free Thou my lowly soul from sin, which now reigneth within me." },
+          { "text": "As one who loved the kingdom on high, O blessed Constantine, believing with a pure mind, thou didst worship the King and Master of all." },
+          { "text": "Illumined with divine light, O divinely wise Helena, thou didst truly forsake the darkness of ignorance and most sincerely enslave thyself to the King of the ages." },
+          { "text": "Theotokion: O Lady, thou portal of the divine East, open unto me the door of repentance, and by thine intercession deliver me from the gates of deadly sin." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,//\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          { "text": "Thou didst strive to receive heavenly rewards; wherefore, O divinely wise father, thou didst follow Him Who called thee, forsaking the darkness of the falsehood bequeathed to thee, and didst become a luminary through the divine Spirit." },
+          { "text": "Having cleaved unto Christ and set all thy hope on Him, O most honored one, thou didst attain unto His sacred places, wherein the Supremely good One, having become incarnate, endured His most pure sufferings." },
+          { "text": "Burning with divine desire, O divinely blessed one, thou didst uncover the precious Cross, the weapon of salvation, the insuperable victory, the hope of Christians, which had been hidden in malice." },
+          { "text": "Theotokion: Having fallen away from my sacred citizenship, O most pure one, I have become like a beast and am wholly condemned. O thou who hast given birth to the Judge, deliver and save me from all condemnation." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Christ the Lord pursued thee from heaven, as He had Paul of old, O Constantine, teaching thee to worship Him as the only King." },
+          { "text": "With a most radiant sign of stars, O blessed one, Christ the Sun illumined thee, showing thee to be a luminary for the darkened." },
+          { "text": "O blessed one, thou wast God-loving in nature and right wondrous in thy divine works; wherefore, we glorify thee with faith." },
+          { "text": "Theotokion: O Ever-virgin who hast given birth to the Sun of righteousness, illumine my soul, which hath been darkened by sins." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "Having risen at dawn unto the never-waning Sun and Master, O divinely wise emperor, thou wast filled with light." },
+          { "text": "Wearing love and perfect loving-kindness like a robe of royal purple, thou hast now made thine abode in the kingdom on high." },
+          { "text": "O Helena, thou hast joined the choirs of the incorporeal ones, having pleased God by thy virtuous works." },
+          { "text": "Theotokion: Cleanse thou my soul, which hath been defiled by carnal pleasures through the treachery of the serpent, O Virgin." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "I will pour out my prayer unto the Lord, and to Him will I proclaim my grief;\nfor my soul is filled with evils, and my life unto Hades hath drawn nigh,//\nand like Jonah I pray unto Thee: Raise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Most gloriously didst thou assemble the divine choir of the God-bearing fathers, O Constantine, and through them make steadfast the storm-tossed hearts of all, that they might glorify the Word as equal in honor and co-enthroned with the One Who begat Him." },
+          { "text": "Having believed on the living Lord Who giveth life unto all, O Helena, thou didst spurn the abominable worship of vain idols and joyously received the kingdom of heaven." },
+          { "text": "Guided by Thy hand, O Word, through Thee the sovereigns thrust aside the most profound darkness of ignorance and the tempest of cruel godlessness, and arrived, rejoicing, at the calm havens of piety." },
+          { "text": "Theotokion: Heal thou my heart, which hath grown incurably sick and hath been grievously wounded by the sting of the evil one, O Maiden, and by thine entreaties grant healing unto me, and save me who trust in thee, O most pure one." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Today Constantine and his mother Helena have revealed the Cross, the most precious Tree,\nwhich putteth to shame all the Jews\nand is the weapon of faithful kings against the adversary.//\nFor our sake the great standard hath appeared, terrible in battle.",
+        "tone": 3,
+        "label": "Kontakion of the righteous ones",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Let us honor Constantine, and Helena his mother;\nfor, hearing the words of David, they recognized the three parts of the Cross in the cedar, the pine and the cypress,\nupon which the suffering of the Savior was accomplished.\nAnd having found it, in preparation to display it before the people,\nthey set it before all the Jews, hidden because of their hatred and jealousy;\nrevealing it to be the great justification.\nWherefore, they have been revealed to all as victors,//\nbearing the invincible trophy, the great standard, terrible in battle."
+      },
+
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud://\n'Blessed art Thou, O Lord our God, throughout the ages.'",
+        "troparia": [
+          { "text": "Keeping Thy precepts, Constantine submitted to Thy law. Wherefore, he hath cast down hordes of the iniquitous, crying out to Thee: Blessed art Thou, O Lord God!" },
+          { "text": "The Tree which hath drawn all from the pit of destruction, O right wondrous one, and which was buried out of malice, thou didst disclose unto us, burying the most pernicious demons forever." },
+          { "text": "By godly works thou didst make thy heart a temple of God, O Helena, and didst likewise build sacred churches for Him, where for our sake He endured His most pure sufferings for our sake." },
+          { "text": "Theotokion: Willingly committing sins, and enslaved by unseemly habits, I flee now to thy tender compassion. O most holy Sovereign Lady, save me who am in despair!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power,\nhe cried aloud to the Creator and Redeemer:\n'O ye youths bless, O ye priests praise,//\nO ye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "Arrayed in loving-kindness as in a robe and in goodly meekness as in cloak, O glorious one, thou wast adorned with a mind perfect in the virtues as with a crown; and having been translated from earth to the kingdom on high, thou dost cry aloud: O ye priests bless; O ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Beholding thee rejoicing with thy divinely wise son, in the kingdom of God, O glorious Helena, we magnify Christ Who hath shown us your honored festival, which illumineth us more brightly than the rays of the sun, wherefore we chant with faith: O ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Wondrous is thy desire and godly thy character, O glorious Helena, thou boast of women! For having attained unto the places where the precious sufferings took place, thou didst adorn them with all-beauteous temples of the Master of all, crying: O ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Theotokion: O Theotokos, enlighten the eyes of my soul, which have been blinded by many crimes; grant peace to my mind and heart, which have been vexed by multifarious pleasures, I pray, and save me who cry: O ye priests bless; ye people supremely exalt the pure one throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens.//\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "The tomb wherein thy sacred and precious body doth lie, O Constantine, doth ever pour forth the radiance of divine healings upon those whoever approach it in purity, driving away the darkness of divers passions and illumining those who praise thee with never-waning light." },
+          { "text": "Having finished thy life in holiness, thou hast now made thine abode with the saints, full of sanctity and enlightenment. Wherefore, ever pouring forth rivers of healings, thou dost burn up our sufferings, giving drink to our souls, O blessed Helena." },
+          { "text": "O beginningless and immortal King, Thou hast vouchsafed Thy heavenly kingdom to the holy Helena and the great Constantine, whom of old thou didst grant to reign piously on earth, and who loved Thee in purity, O Lord. By their supplications have pity on us all." },
+          { "text": "Theotokion: Having conceived, thou hast given birth to the King and Creator of all, O Virgin. And, lo! as a Queen thou standest forth now at His right hand. Wherefore, I beseech thee: at the hour of judgment deliver me from the left side, and number me with the sheep on the right." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Ye have truly been shown to be luminaries enlightening the whole world with the faith of piety,\nO divinely crowned Constantine and glorious Helena;//\nand with hymns we glorify Christ Who hath magnified you and is wondrous in His saints.",
+      "tone": 3,
+      "label": "Exapostilarion of the righteous ones",
+      "melody": "Hearken, ye women",
+      "glory": {
+        "text": "The great Constantine and his mother did not receive royal dominion from mortals,\nbut through divine grace.\nIlluminated by heaven, he beheld the divine trophy of the Cross,\nand having vanquished the enemy therewith,//\nhe abolished the delusion of idolatry and strengthened the Orthodox Faith in peace.",
+        "tone": 3,
+        "label": "Another Exapostilarion",
+        "melody": "As the disciples"
+      },
+      "_note": "Both-now Exapostilarion comes from the Pentecostarion (not captured here)."
+    },
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "Rejoice, O most wise Constantine, wellspring of Orthodoxy,\never irrigating the whole world with sweet waters!\nRejoice, O root from whence the fruit sprang forth which feedeth the Church of Christ!\nRejoice, O most glorious one, the boast of the ends of the earth,\nfirst among Christian emperors!//\nRejoice, O joy of the faithful!",
+          "tone": 8,
+          "melody": "O most glorious wonder"
+        },
+        {
+          "text": "He Who ruleth over creation, perceiving the submissiveness of thy heart,\nrationally pursued thee who wast held fast in irrationality, O most wise one;\nand, having illumined thy thoughts with the understandings of piety,\nHe showed thee forth to the world as a radiant sun emitting beams of divine works,//\nO most glorious one.",
+          "tone": 8
+        },
+        {
+          "text": "Having received the teachings of the Lord like choice earth, O all-praised one,\nthou didst produce the goodly fruit of virtuous deeds,\nnourishing our thoughts by the emulation of thy citizenship, O most wise Helena.//\nWherefore, observing thy memorial today, we celebrate it with joy.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "God, the King of kings, Who adorneth the worthy with rich gifts,\nHimself pursued thee from heaven, as He had the most glorious Paul, O Constantine.\nBut thee He pursued with the sign of the Cross, saying: 'By this sign vanquish thine enemies!'\nAnd having sought Him with thy divinely wise mother, and found Him as thou didst desire,\nthou didst mightily put them to flight.\nWith her, therefore, entreat thou Him Who alone is the Lover of mankind,\non behalf of Orthodox kings, the Christ-loving armies, and all who celebrate thy memory with faith,//\nthat they may be delivered from all wrath.",
+        "tone": 8,
+        "author": "Methodius the Patriarch"
+      },
+      "_note": "Both-now Theotokion comes from the Pentecostarion (not captured here)."
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Beholding the image of Thy Cross in the sky,\nand like Paul receiving a call not from men,\nThine apostle among kings placed the imperial city in Thy hands, O Lord.\nDo Thou ever preserve it in peace,//\nthrough the supplications of the Theotokos, O Thou Who alone lovest mankind.",
+      "tone": 8,
+      "label": "Troparion of the righteous ones"
+    }
+  }
+}

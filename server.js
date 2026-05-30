@@ -1677,8 +1677,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
 
   // ── Moveable-feast / weekday festal matins (Pentecost, Ascension, …) ────
   // Tried first so that a feast falling on a weekday gets full festal
-  // propers rather than the DB-injected weekday stub below.
-  if (feastKey && (!menaionData || !menaionData.matins)) {
+  // propers rather than the DB-injected weekday stub below. A festal-matins
+  // file (great feast of the Lord) ALWAYS wins over a coincident menaion
+  // saint — e.g. Ascension (May 21 in 2026) overrides Sts Constantine &
+  // Helena. Saints with their own menaion files but no festal-matins file
+  // (Theophany, Nativity, Transfiguration, Forerunner-feasts, etc.) fall
+  // through to the menaion branch below.
+  if (feastKey) {
     const festalSpec = _loadFestalMatins(feastKey, season, dow, tone);
     if (festalSpec) return festalSpec;
   }

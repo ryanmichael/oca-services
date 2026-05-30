@@ -970,6 +970,38 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('Synaxis of the Twelve Apostles (2026-06-30) renders Doxology-rank Matins (two canons)', async () => {
+    await assertDoxologyMatins('2026-06-30', {
+      feastName: 'Synaxis of the Twelve Apostles',
+      minBlocks: 280,
+      troparionText: 'O first enthroned among the apostles and teachers of the whole world',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Synaxis of the Twelve Apostles (2026-06-30) renders two canons separately, not flat', async () => {
+    const res = await get('/api/matins?date=2026-06-30');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const first  = canonRubrics.filter(t => /First Canon/.test(t));
+    const second = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(first.length >= 8,  `Twelve Apostles: expected ≥8 First Canon headings, got ${first.length}`);
+    assert.ok(second.length >= 8, `Twelve Apostles: expected ≥8 Second Canon headings, got ${second.length}`);
+  });
+
+  it('St Spyridon (2026-12-12) renders Doxology-rank Matins (Greek usage)', async () => {
+    await assertDoxologyMatins('2026-12-12', {
+      feastName: 'St Spyridon',
+      minBlocks: 220,
+      troparionText: 'champion of the First Council and a wonderworker',
+      minCanonBlocks: 35,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('Conception of the Theotokos (2026-12-09) renders two canons separately, not flat', async () => {
     const res = await get('/api/matins?date=2026-12-09');
     assert.equal(res.status, 200);

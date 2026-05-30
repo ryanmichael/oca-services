@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "feast": "St Spyridon, Bishop of Trimythous, the Wonderworker",
+    "feastKey": "stSpyridon",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 12-12.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-12.pdf",
+    "_note": "Doxology-rank PER GREEK USAGE (Sergius rubric line 263: 'In Greek usage, the service to St. Spyridon is of Doxology rank, rather than of six-Stichera rank, as in the Slavonic Menaion. Therefore, if Greek usage is followed, On the Praises: ...'). This file follows Greek usage — 4 Lauds stichera Tone I (Spec. Mel. 'Joy of the ranks of heaven', 1st sung twice) + Glory Tone IV. Slavonic-usage parishes would render the 6-Stichera-rank Octoechos aposticha instead. Single canon of the holy hierarch by Theophanes in Tone II. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+  "troparion": {
+    "text": "Thou wast shown forth as a champion of the First Council and a wonderworker, O Spyridon, our God-bearing father.\nWherefore, thou didst speak to one dead in the grave, and didst change a serpent into gold.\nAnd, whilst chanting thy holy prayers, thou didst have angels serving with thee, O most sacred one.\nGlory to Him that hath given thee strength! Glory to Him that hath crowned thee!//\nGlory to Him that worketh healings for all through thee!",
+    "tone": 1,
+    "label": "Troparion of the holy hierarch"
+  },
+  "kontakion": {
+    "text": "O most sacred one, wounded with love for Christ,\nand giving wings to thy mind through the radiance of the Spirit,\nthou didst find thy work fulfilled in the activity of divine vision.//\nO thou who art pleasing to God, thou divine oblation, beseech Him that divine illumination be granted unto all.",
+    "tone": 2,
+    "label": "Kontakion of the holy hierarch",
+    "melody": "Seeking the Highest"
+  },
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Thou wast shown forth as a champion of the First Council and a wonderworker, O Spyridon, our God-bearing father.\nWherefore, thou didst speak to one dead in the grave, and didst change a serpent into gold.\nAnd, whilst chanting thy holy prayers, thou didst have angels serving with thee, O most sacred one.\nGlory to Him that hath given thee strength! Glory to Him that hath crowned thee!//\nGlory to Him that worketh healings for all through thee!",
+      "tone": 1,
+      "label": "Troparion of the holy hierarch",
+      "_note": "Sergius provides two alternative troparia: this Tone I 'Thou wast shown forth as a champion of the First Council' (preserved) and a Tone IV 'The truth of things revealed thee to thy flock as a rule of faith' (not preserved here)."
+    },
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy hierarch by Theophanes in Tone II. Two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.//\nExceedingly glorious is the Lord, for gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "Having attained unto the land of the meek, being thyself meek, merciful and pure, O father, calm thou the present tempest of my heart, that, in divine tranquility, I may hymn thee." },
+          { "text": "Having cleared thy soul of the overgrowth of the passions through godly cultivation, O father Spyridon, thou didst become god-like and wast enriched by the most radiant splendor of the divine Spirit. Wherefore, thou dost illumine those who sincerely bless thee." },
+          { "text": "Taking thee from a flock as He had David, the Creator appointed thee as a most eminent shepherd of the rational sheep, shining forth in simplicity and meekness, and adorned with guilelessness, O venerable pastor." },
+          { "text": "Theotokion: O most holy and pure Virgin, enlighten and hallow my thoughts and soul, I pray thee, dispelling the clouds of mine ignorance, and removing the darkness of sin, that I may bless thee as is meet." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith, and my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing://\nThere is none as holy as our God and none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Having illumined thy mind with dispassion and adorned thyself with divine humility, thou didst receive the gifts of the Spirit to cast out evil spirits and to loose the infirmities of those who faithfully honor thee, O most sacred one." },
+          { "text": "Having slain the serpent, the author of evil, and trampled down the inclination towards avarice, O holy hierarch, taking pity on him who was in need, thou didst transform a serpent into a golden ornament by thy sacred prayers, O venerable father." },
+          { "text": "Thou didst ascend the mountain of dispassion; thou didst enter the darkness of the vision of God, and didst receive the law of salvation on the tablets of thy heart, in that thou art a most sacred and faithful favorite of thy Master." },
+          { "text": "Theotokion: Heal thou the wounds of my soul, O Bride of God, and illumine my mind which hath been darkened by neglect, that I may chant: There is none blameless save thee, O immaculate one, and none pure but thee, O Lady!" }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Thou didst shine forth as a divinely appointed pastor, O Spyridon, raised from the tending of sheep by God,\nWho entrusted thee to preside over the Church of Christ.\nThou didst drive away the wolves of false teaching by thy words, grazing thy flock on the pasture of piety.\nWherefore, thou didst affirm the Faith by the wisdom of the Spirit in the midst of the God-bearing fathers, O blessed hierarch.//\nEntreat Christ God, that He grant remission of sins unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "bothNow": {
+          "text": "As the all-immaculate Bride of the Creator, Mother of the Redeemer, who knewest not a man,\nand as the receptacle of the Comforter O all-hymned one, hasten thou to deliver me,\nthe vile abode of iniquity and noetic plaything of the demons, from their evil machinations;\nand make me the bright dwelling-place of the virtues, O thou incorrupt light-bearing one.\nDrive away the clouds of the passions and grant that, by thy supplications, I may receive a portion on high//\nand share in the never-waning light.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate, and didst save me, the whole man;//\nwherefore I cry unto Thee: Glory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Set afire by the burning coal of the honored Spirit, thou didst burn up all the readily kindled fuel of the passions, O all-blessed one, enlightening the world with the fiery rays of thy virtues." },
+          { "text": "Having slain the movements of thy flesh, O divinely inspired one, thou didst raise up the dead by thy life-imparting call. Wherefore, I beseech thee: Enliven my slain soul, O father!" },
+          { "text": "O father, the dead woman, obeying thee, spake, and by thy commands the raging of the river was restrained. For thou wast revealed as a worker of wonders endowed with divine grace, O blessed one." },
+          { "text": "Theotokion: The prophets foretold the incomprehensible abyss of thy mystery, for thou alone, O pure one, didst give birth unto the Unknowable One, Who, in His unutterable tender compassion, became incarnate." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin,\nI rise early to hymn Thee O King of Peace, enlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "The river of the gifts which are within thee doth water every heart, O venerable one, and richly granteth health unto all, moving all to glorify God, Who hath glorified thee and honored thee with all manner of wonders." },
+          { "text": "The earthly emperor clearly recognized thee as a true servant of the heavenly King, full of divine gifts, O blessed one, when thou didst come to him, proclaiming the great Physician, Who is God." },
+          { "text": "Emulating the hospitable character of Abraham, thou didst open the doors of thy house unto all, and wast all things to all people, mindful of those who were in evil straits, O blessed Spyridon." },
+          { "text": "Theotokion: For us hast thou given birth unto a newborn Babe, Who before the ages was begotten of the beginningless Father, O Maiden. Him do thou entreat as thy Son and God, that He spare those who, with a pure soul, proclaim thee to be the Theotokos." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin, I appeal to the unfathomable abyss of Thy compassion://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Gold was as mire to thee who shone forth in dispassion more brightly than gold, and wast enriched by thy most golden gifts of the Spirit, O venerable one." },
+          { "text": "Serving thy Master in purity, O venerable one, thou didst have a multitude of the angelic hosts serving thee with unseen voices, O most sacred one." },
+          { "text": "O most glorious and all-wise father, thy life hath made thee most glorious to the world. Wherefore, rejoicing, we that hymn thee celebrate thy divine memory." },
+          { "text": "Theotokion: More spacious than the heavens was thy womb, which contained God Whom no place can contain, O all-holy virgin Bride of God, who knewest not a man." }
+        ]
+      },
+      "kontakion": {
+        "text": "O most sacred one, wounded with love for Christ,\nand giving wings to thy mind through the radiance of the Spirit,\nthou didst find thy work fulfilled in the activity of divine vision.//\nO thou who art pleasing to God, thou divine oblation, beseech Him that divine illumination be granted unto all.",
+        "tone": 2,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "Seeking the Highest"
+      },
+      "ikos": {
+        "text": "Let us now praise Spyridon, the hierarch of the Lord, sanctified from his mother's womb,\nwho received the tablets of the grace of divine glory, as one most glorious in miracles from all of creation,\nas a fervent witness of the divine radiance, intercessor for the poor, and spiritual guide for the sinful;//\nfor he hath become a divine oblation for the throne of Christ, asking divine illumination for all."
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,//\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "Having acquired the guilelessness of Moses, the meekness of David and the blamelessness of Job of Uz, thou didst become a dwelling-place of the Spirit, chanting most sacredly: Blessed and supremely glorious art Thou!" },
+          { "text": "The showers of heaven rained down upon thy head during the harvest and prefigured the future; for, as thou didst say, God glorified thy divine memory, sanctifying the faithful by thy mediation." },
+          { "text": "In the council of the fathers God glorified thee, who guarded thy words in judgment, O blessed one. Thou didst bring them forth with faith, openly disclosing the follies of the most irrational Arius and destroying his opposition." },
+          { "text": "Theotokion: Through the ineffable Word, O Virgin, thou didst put forth the Cluster of grapes as the Branch which alone was uncultivated and which poureth forth the wine gladdening all mankind, sanctifying mortals and dispelling all the drunkenness of the wicked." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans, but bedewed the faithful, who chant://\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Thou didst extinguish the furnace of the passions with divine outpourings of the divine Spirit, O father, pouring forth a dew which taketh away the fever of the ailing who ever have recourse unto thee in faith, O blessed and most noetically rich Spyridon." },
+          { "text": "Guileless, upright, meek, merciful, not mindful of the wrongs done thee, loving and hospitable wast thou, O most sacred hierarch, adorned with the wisdom of Orthodoxy, O venerable one. Wherefore, we honor thee with faith." },
+          { "text": "Of old, the dead woman when questioned by thee O father, replied as though alive. Oh what a most marvelous wonder! Oh what a most glorious mystery! Oh, the grace which thou hast received, having adorned thyself with an angelic life, O right wondrous one!" },
+          { "text": "Theotokion: Heal thou the passions of my heart with thy mercy, O all-hymned one; calm thou my mind, enlighten my soul, and guide me to walk the paths of salvation, that I may ever hymn thee, O all-hymned one." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord, hath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;//\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Exalted among the God-bearing fathers, thou didst openly proclaim the Son of the beginningless Father to be of one essence and equally everlasting with the Father, and didst stop the mouths of the iniquitous, O all-blessed and holy hierarch." },
+          { "text": "O all-radiant sun, adornment of the fathers, glory of priests, converser with angels: By thy prayers grant the unwaning Light unto those who now joyously celebrate thy light-bearing memory." },
+          { "text": "With a voice of rejoicing have the divine mansions, the heavenly city and the beauteous choir of those who hold festival received thy soul, which hath been hallowed and adorned with the virtues, O all-blessed one." },
+          { "text": "Theotokion: The great mystery of thy birthgiving, which passeth understanding doth astound the angels, O divinely joyous one, delighting the assembly of the venerable and making glad the sacred fathers who hymn thee, the hope of our souls, in a godly manner." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "O God-bearing Spyridon, thou light of the world, like Moses and David, whose calling thou didst follow,//\nthe Spirit led thee up from an irrational flock unto the rational one.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy hierarch",
+      "melody": "He, Who as God hath adorned heaven with stars",
+      "_note": "Exapostilarion from the Oktoechos first; Glory ..., the foregoing.",
+      "bothNow": {
+        "text": "Thou wast the cause of the blessings bestowed by God upon the world, O Theotokos.//\nAnd, even now, for the salvation of all, do thou move to pity God, Who is readily appeased.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Illumined with the radiance of the Spirit, thou didst dispel the darkness of the foolish prating of Arius, O wise hierarch.\nWherefore, in simplicity, faithfully teaching the Trinity,//\nthou wast glorified by the wise and learned, and didst confirm the Council.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Illumined with heavenly rays and with the power of Christ,\nthou dost bestow healing of both soul and body upon those who even now celebrate thy memory with faith,//\nO divinely blessed father and wonderworker. Cease thou never to intercede for us.",
+          "tone": 1
+        },
+        {
+          "text": "In thy faithfulness to the commandments, thou wast shown to be a husbandman of Christ, the True Vine, O God-bearer.//\nWherefore, having mystically received the talent of the kingdom from on high, pray thou without ceasing for us that honor thee, O wise Spyridon.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "O venerable father, most praised and holy hierarch, filled with the teaching of the apostles,\nand manifest as the habitation of the divine Spirit by thy virtuous life,\nwith thy teachings thou didst drive off the wolves that beset the Church, and didst make clear the Faith of the Orthodox, and wast a pillar and champion of piety.\nWherefore, working wonders in days past, thou didst transform a serpent into gold, and didst raise up a dead woman to question her.//\nYet, O thou that art right wondrous among the fathers, converser with teachers, entreat the Savior, that He save our souls.",
+        "tone": 4,
+        "label": "Glory"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thou wast shown forth as a champion of the First Council and a wonderworker, O Spyridon, our God-bearing father.\nWherefore, thou didst speak to one dead in the grave, and didst change a serpent into gold.\nAnd, whilst chanting thy holy prayers, thou didst have angels serving with thee, O most sacred one.\nGlory to Him that hath given thee strength! Glory to Him that hath crowned thee!//\nGlory to Him that worketh healings for all through thee!",
+      "tone": 1,
+      "label": "Troparion of the holy hierarch"
+    }
+  }
+}

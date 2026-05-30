@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "feast": "St John the Theologian, Apostle and Evangelist (with St Arsenius the Great)",
+    "feastKey": "stJohnTheologian",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 05-08.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-08.pdf",
+    "_note": "May 8 commemorates both St John the Theologian (apostle/evangelist — principal) and St Arsenius the Great (venerable one). May 8 falls in the Pentecostarion period (between Pascha and Pentecost), so the rubric specifies a Pentecostarion canon + theotokia + sessional hymns intertwined with the saint material. This file captures only St John (Canon of the holy evangelist by John of Damascus, Tone VIII); the Arsenius canon and the Pentecostarion overlay are omitted per the menaion-matins-track pattern (cf. similar omissions for Theotokos canons in jan-30, dec-06, etc.). Magnificat is retained at Ode 9 (no rubric suppression — Theotokion present)."
+  },
+
+  "troparion": {
+    "text": "O beloved apostle of Christ God,\nhasten thou to deliver a defenseless people.\nHe Who permitted thee to recline against His breast receiveth thee, prostrate in supplication.\nHim do thou beseech, O theologian,\nthat He dispel the gloom of the nations which doth beset us,//\nasking peace and great mercy for us.",
+    "tone": 2,
+    "label": "Troparion of St John the Theologian"
+  },
+
+  "kontakion": {
+    "text": "Who can recount thy mighty works, O virgin apostle?\nFor thou pourest out miracles, bringing forth a flow of healings;\nand thou prayest on behalf of our souls,//\nin that thou art a theologian and the beloved of Christ.",
+    "tone": 2,
+    "label": "Kontakion of St John the Theologian"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "O beloved apostle of Christ God,\nhasten thou to deliver a defenseless people.\nHe Who permitted thee to recline against His breast receiveth thee, prostrate in supplication.\nHim do thou beseech, O theologian,\nthat He dispel the gloom of the nations which doth beset us,//\nasking peace and great mercy for us.",
+      "tone": 2,
+      "label": "Troparion of the holy evangelist",
+      "_note": "On 'God is the Lord' sequence: troparion from the Pentecostarion (Once); troparion of the holy evangelist (Once); Glory: troparion of the venerable one (St Arsenius, Tone VIII); Both now: troparion from the Pentecostarion."
+    },
+
+    "sedalion": [
+      {
+        "text": "As the disciple of Christ, the Master of all,\nthou didst teach the people and illumine the world,\nguiding them to the knowledge of Him, O apostle.\nWherefore, we all call thee the preacher of the Truth and Theologian,//\nthe friend of Christ, who reclined against His breast.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice. Glory/Both-now: Sessional Hymn from the Pentecostarion (not captured here)."
+      },
+      {
+        "text": "With hymns and sacred praises let us all hymn the most honored John,\nthe apostle and disciple of Christ,\nwho preached that the Father divinely begat Christ, our Redeemer and King;//\nfor he prayeth unceasingly, that our souls find mercy.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice. Glory/Both-now: Sessional Hymn from the Pentecostarion."
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ and evangelist John the theologian,\nand we honor the pangs and labors\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Reclining against the breast of Jesus, thou didst receive boldness,\nasking as a disciple: 'Who is Thy betrayer, Lord?'\nAnd since thou wast exceedingly beloved, O most praised one,\nHe manifestly indicated the traitor to thee with a sop of bread.\nWherefore, as an initiate of ineffable mysteries,\nthou teachest the incarnation of the Word to the ends of the earth.\nO apostle and theologian, entreat Christ God//\nthat He grant forgiveness of sins unto those who celebrate thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice. Glory/Both-now: Sessional Hymn from the Pentecostarion, OR the Theotokion 'Let us hymn the heavenly gate and ark…'",
+      "bothNow": {
+        "text": "Let us hymn the heavenly gate and ark, the all-holy mountain, the cloud of light,\nthe heavenly ladder, the spiritual Paradise, the redemption of Eve,\nthe great treasure of the world;\nbecause salvation for the world and forgiveness of ancient offences were wrought in her.\nTherefore we cry unto her: Intercede with thine own Son and God to grant forgiveness of offences//\nto those who devoutly worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+
+    "gospel": {
+      "reading": "John 21:15-25",
+      "number": 67,
+      "_note": "Matins Gospel of the holy evangelist."
+    },
+
+    "postGospelSticheron": {
+      "text": "O virgin theologian, beloved disciple of the Savior,\nby thy supplications save us from all harm, we pray,//\nfor we are thy flock.",
+      "tone": 2,
+      "label": "Idiomelon of the holy evangelist"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy evangelist (Tone VIII). The Pentecostarion canon (4 troparia) and the Arsenius canon (4 troparia) interleaved at the actual service are omitted from this MVP file.",
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "troparia": [
+          { "text": "In so far as thou wast pure and beloved of the incorruptible light, thou didst recline, resting against His breast, and with boldness of soul didst draw forth from the Abyss of wisdom the light of understanding, O blessed Apostle John." },
+          { "text": "Theologizing supra-naturally, thou didst thunder forth, O beloved of Christ: 'In the beginning was the Word, as alive and hypostatic as His Father; and the Word was God; and the Word became flesh, and remained God immutable.'" },
+          { "text": "Theotokion: If we flee from beneath thy protection, O most pure one, we are buried beneath all the perils which befall us. Wherefore, we now beseech thee: From the depths of our transgressions raise up us who have fallen, by thy divine entreaties, O pure one." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Christ, fortify me on the rock of Thy commandments,\nThou Who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "text": "Among fishermen thou didst become a fisher of men and a theologian, O wise John, setting aside the love of thy father and that of the world, and with divine desire thou didst follow the Word and Master." },
+          { "text": "Having purified the eyes of thy soul, O theologian, thou didst behold the ineffable glory which doth emanate from the Word, the only-begotten Son of the Father, through Whom all things are wisely accomplished by the divine Spirit." },
+          { "text": "Theotokion: We flee beneath thy saving refuge, O Virgin Theotokos, and find salvation from the assaults of the enemy by thy supplications; whereby we are delivered from the torment which is to come, O pure one." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nWho without leaving the Father's bosom hast visited our lowliness;//\nwherefore, with the prophet Habbakuk I cry: Glory to Thy power, O Lover of mankind!",
+        "troparia": [
+          { "text": "Beholding the most pure Light Who shone forth amid the darkness of the world, thou wast transformed by love; and as a beacon of piety, O John, thou didst illumine with the light of theology generations of the multitudes of nations." },
+          { "text": "Having learned that the shadowy law was given by Moses, but that divine grace came about through Christ our God, O beloved son of thunder, thou didst proclaim His divinity with the precise language of theology." },
+          { "text": "Theotokion: Thou art my protection and might, my confirmation and indestructible rampart, O most pure one, and I call upon thee: night and day preserve me from all the harm wrought by Belial, that I may glorify thee with faith and love." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps, I implore Thee,//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Beholding the most pure Light Who shone forth amid the darkness of the world, thou wast transformed by love; and as a beacon of piety, O John, thou didst illumine with the light of theology generations of the multitudes of nations." },
+          { "text": "Having learned that the shadowy law was given by Moses, but that divine grace came about through Christ our God, O beloved son of thunder, thou didst proclaim His divinity with the precise language of theology." },
+          { "text": "Theotokion: Thou art my protection and might, my confirmation and indestructible rampart, O most pure one, and I call upon thee: night and day preserve me from all the harm wrought by Belial, that I may glorify thee with faith and love." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The abyss of my sins and the storm of my transgressions\ndisquieten me and thrust me down into the depths of despondency;\nbut do Thou stretch forth Thy mighty arm, unto me as Thou didst to Peter,//\nand save me, O my Guide.",
+        "troparia": [
+          { "text": "Isaiah beheld in an image the Ember of the divine fire which purified his lips, and he was deemed worthy of prophecy; and thou, O blessed John, wast revealed as he who reclined upon the breast of the incarnate Word of God." },
+          { "text": "The only-begotten Word Who sitteth in the bosom of the Father was seen incarnate, O blessed John, and told thee, as the beloved initiate of His mysteries, that thou wouldst behold the incorporeal God Whom no-one can look upon." },
+          { "text": "Theotokion: Illumine my soul, O all-hymned Virgin Theotokos, having given birth to the Effulgence of the Father's glory; for, having thy true grace, we abstain from all blasphemous rhetoric." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Who can recount thy mighty works, O virgin apostle?\nFor thou pourest out miracles, bringing forth a flow of healings;\nand thou prayest on behalf of our souls,//\nin that thou art a theologian and the beloved of Christ.",
+        "tone": 2,
+        "label": "Kontakion of the holy evangelist"
+      },
+      "ikos": {
+        "text": "It is an unattainable thing of boldness, to study the heights of heaven and to plumb the depths of the sea;\nfor as it is impossible to calculate the number of the stars and the sands of the shore,\nso is it impossible to speak sufficiently of the theologian,\nwhom Christ loveth and hath crowned with so many crowns.\nFor, reclining against His breast, he ate with Him at the mystical supper,//\nin that he is a theologian and friend of Christ."
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "Thou didst diligently depart from the bonds of matter, O all-blessed one, as an intercessor before God, and as a herald of divinely inspired theology thou hast taught all to cry: O God of our fathers, Blessed art Thou!" },
+          { "text": "Thou didst consider gold and riches to be like grass, O all-blessed one, and by the action of God thou didst transform hay into gold when thou didst theologize concerning the Creator and Lord, crying: O God of our fathers, Blessed art Thou!" },
+          { "text": "The Holy Spirit Who proceedeth from the beginningless Father have we accepted as indivisible from Thee, O only-begotten Word of God; whereby Thou didst call upon the apostles to cry aloud: O God of our fathers, Blessed art Thou!" },
+          { "text": "Theotokion: Thou wast the temple and palace of Christ the King; thou alone wast the couch of Solomon, which, as saith the Scriptures, sixty of the mighty surrounded. And with thee, O Virgin, they cry aloud chanting: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power,\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "As thy most glorious memory is magnificent and rightly renowned, O herald of the divinity of Christ, it shineth forth upon the Church, perfuming her with godliness. Wherefore, rejoicing, O ye faithful, we cry aloud: O ye youths bless, O ye priests praise, O ye people, supremely exalt Him throughout all ages!" },
+          { "text": "Having the theologian as the leader of our choir, O Christ, we declare Thee, Who wast theologized by him, with the Father and the Spirit, to be God, and hymning the unity in governance thereof, we cry aloud: O ye youths bless, O ye priests praise, O ye people, supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: O all-immaculate one, thou hast given birth to God the Word in the flesh. Him do thou beseech, that He deliver me from the fire; for, lo! my whole life hath become a burden and I have become wholly enslaved to cruel sins. Wherefore, I flee to thee, O Virgin, and call upon thee, the joyous one." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens.//\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "Standing before the Cross of the Master and the pure Virgin Theotokos, the beloved disciple, the pure instrument of theology, in that he himself was virginal, accepted the commission to care for her, and, becoming the guardian of the immaculate Theotokos, he is now blessed as is meet." },
+          { "text": "The Most pure One, loving thine honored and blameless life as is meet, accepted thee, who lived angelically on earth, together with thy brother, O blessed John, and declared thee the son of His own Mother, the Theotokos. With her we all call thee blessed." },
+          { "text": "Theotokion: Be thou a pillar of salvation for me, O pure one; render the hordes of the demons impotent, cutting off the tumult of temptations and misfortunes, granting me pure freedom, and bestowing upon me divine gifts in abundance." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "As a son of thunder thou didst proclaim theology to all mankind, saying: 'In the beginning was the Word!',\nO Apostle John;\nfor, reclining against the breast of thy Master with faith and drawing forth therefrom streams of theology,//\nthou hast watered all creation.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy evangelist",
+      "melody": "Hearken, ye women"
+    },
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "O most wise and blessed John,\nin the magnitude of thine ardor for the love of Christ thou wast the greatest of all,\na beloved disciple of the Word Who seeth all things and judgeth the whole world with the scales of justice;\nand thou wast illumined, in body and mind, with the purity and the beauties of virginity,//\nO divinely blessed one.",
+          "tone": 8,
+          "melody": "O most glorious wonder"
+        },
+        {
+          "text": "With spiritual hymns let us now praise the most honorable John as a servant of Christ,\nthe flower of virginity, the pleasant dwelling-place of precious virtues,\nthe instrument of wisdom, the temple of the Spirit,\nthe radiant mouth of grace,//\nthe most resplendent eye of the Church.",
+          "tone": 8
+        },
+        {
+          "text": "Reclining against the breast of Christ,\nthou didst draw forth the waters of theology and wisdom,\nand having watered the world therewith, O most excellent John,\nthou hast caused the sea of ungodliness to dry up by the proper-understanding of the Trinity;\nand becoming an animate pillar of cloud,//\nthou dost guide us unto the heavenly inheritance.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "O evangelist John, peer of the angels, virgin theologian instructed by God,\nin an Orthodox manner thou didst preach to the world,\nconcerning the most pure side which poured forth blood and water,//\nfrom whence we obtain life everlasting for our souls.",
+        "tone": 8
+      },
+      "_note": "Both-now Theotokion comes from the Pentecostarion (not captured here)."
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O beloved apostle of Christ God,\nhasten thou to deliver a defenseless people.\nHe Who permitted thee to recline against His breast receiveth thee, prostrate in supplication.\nHim do thou beseech, O theologian,\nthat He dispel the gloom of the nations which doth beset us,//\nasking peace and great mercy for us.",
+      "tone": 2,
+      "label": "Troparion of the holy evangelist",
+      "_note": "Followed by Glory: troparion of the venerable one (St Arsenius, Tone VIII); Both now: troparion from the Pentecostarion."
+    }
+  }
+}

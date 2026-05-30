@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St John the Theologian (2026-05-08) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-05-08', {
+      feastName: 'St John the Theologian',
+      minBlocks: 250,
+      troparionText: 'O beloved apostle of Christ God',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('St Basil (2026-01-01) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-01-01', {
       feastName: 'St Basil / Circumcision',

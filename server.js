@@ -1785,13 +1785,19 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const mat = menaionData.matins;
 
   // ── Determine doxology type ─────────────────────────────────────────────
-  // During Lent on weekdays, even great feasts use the Small (read) Doxology
-  const useSmallDoxology = isLentenWeekday;
+  // During Lent on weekdays, even great feasts use the Small (read) Doxology.
+  // Simple-rank (six-stichera) services also use Small Doxology by definition —
+  // they have no Lauds and end with Small Doxology + festal troparion +
+  // Octoechos Aposticha.
+  const resolvedFeastRank = menaionData._meta?.feastRank
+    || mat?._meta?.feastRank
+    || (feastKey ? 'greatFeast' : null);
+  const useSmallDoxology = isLentenWeekday || resolvedFeastRank === 'simple';
 
   // ── Build the spec ──────────────────────────────────────────────────────
   const spec = {
     isSunday,
-    feastRank: menaionData._meta?.feastRank || (feastKey ? 'greatFeast' : null),
+    feastRank: resolvedFeastRank,
     feastType: menaionData._meta?.feastType || null,
     tone: menaionData._meta?.tone || tone,
     alleluia: false, // great feasts override Lenten Alleluia

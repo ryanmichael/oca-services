@@ -281,8 +281,16 @@ function validateMenaionFeast(data, filename = 'menaion file') {
   const m = data.matins;
   const matinsAt = `${at}.matins`;
 
-  // ── Polyeleios block ─────────────────────────────────────────────────────
-  pushIf(errs, isObject(m.magnification),                    `${matinsAt}.magnification required`);
+  // Doxology-rank services omit Polyeleos (and therefore the Polyeleos-
+  // Magnification + Matins Prokeimenon + Gospel triplet). They keep canon,
+  // lauds, Great Doxology, troparion-after-doxology.
+  const isDoxologyRank = m._meta?.feastRank === 'doxology'
+    || data._meta?.feastRank === 'doxology';
+
+  // ── Polyeleios block (greatFeast/polyeleos only) ────────────────────────
+  if (!isDoxologyRank) {
+    pushIf(errs, isObject(m.magnification),                  `${matinsAt}.magnification required`);
+  }
   if (isObject(m.magnification)) {
     pushIf(errs, isString(m.magnification.refrain),          `${matinsAt}.magnification.refrain required`);
     // Accept either `verses` (array of strings) or `psalmVerses` (array of {text, ref})
@@ -295,10 +303,12 @@ function validateMenaionFeast(data, filename = 'menaion file') {
 
   // ── Prokeimenon (Matins prokeimenon — uses .refrain only, may have .verse) ─
   if (m.prokeimenon !== undefined) checkProkeimenon(m.prokeimenon, `${matinsAt}.prokeimenon`, errs);
-  else errs.push(`${matinsAt}.prokeimenon required`);
+  else if (!isDoxologyRank) errs.push(`${matinsAt}.prokeimenon required`);
 
   // ── Gospel ───────────────────────────────────────────────────────────────
-  pushIf(errs, isObject(m.gospel),                           `${matinsAt}.gospel required`);
+  if (!isDoxologyRank) {
+    pushIf(errs, isObject(m.gospel),                         `${matinsAt}.gospel required`);
+  }
   if (isObject(m.gospel)) {
     pushIf(errs, isString(m.gospel.reading),                 `${matinsAt}.gospel.reading required`);
   }

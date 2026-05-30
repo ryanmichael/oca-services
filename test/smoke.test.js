@@ -914,6 +914,74 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  // ── Doxology-rank contract ──────────────────────────────────────────────
+  // Doxology-rank services have Great Doxology + festal Lauds + festal Canon
+  // but NO Polyeleios, NO Magnification, NO Matins Prokeimenon, NO Matins
+  // Gospel. The weekday-stub path renders ~175 blocks with Small Doxology;
+  // these saints should render ~225+ blocks with Great Doxology and a full
+  // canon.
+  async function assertDoxologyMatins(date, expected) {
+    const res = await get(`/api/matins?date=${date}`);
+    assert.equal(res.status, 200, `Expected 200 for ${date}, got ${res.status}`);
+    const j = res.json;
+    const sections = {};
+    for (const b of j.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+
+    assert.ok(j.blocks.length >= expected.minBlocks,
+      `${date} (${expected.feastName}): expected ≥${expected.minBlocks} blocks, got ${j.blocks.length}`);
+    assert.ok(sections['Great Doxology'] > 0,
+      `${date} (${expected.feastName}): Great Doxology missing — Doxology-rank should sing Great Doxology`);
+    assert.ok(!sections['Small Doxology'],
+      `${date} (${expected.feastName}): Small Doxology present — should be Great Doxology`);
+    // KEY DOXOLOGY-RANK CHECK: Polyeleios MUST be absent
+    assert.ok(!sections['Polyeleios'],
+      `${date} (${expected.feastName}): Polyeleios should be absent on Doxology rank, got ${sections['Polyeleios']} blocks`);
+    assert.ok(!sections['Matins Prokeimenon'],
+      `${date} (${expected.feastName}): Matins Prokeimenon should be absent on Doxology rank`);
+    assert.ok(!sections['Matins Gospel'],
+      `${date} (${expected.feastName}): Matins Gospel should be absent on Doxology rank`);
+    assert.ok((sections['Canon'] || 0) >= expected.minCanonBlocks,
+      `${date} (${expected.feastName}): Canon has ${sections['Canon'] || 0} blocks, expected ≥${expected.minCanonBlocks}`);
+    assert.ok((sections['Lauds'] || 0) >= expected.minLaudsBlocks,
+      `${date} (${expected.feastName}): Lauds has ${sections['Lauds'] || 0} blocks, expected ≥${expected.minLaudsBlocks}`);
+
+    const fullText = j.blocks.map(b => b.text || '').join('\n');
+    assert.ok(fullText.includes(expected.troparionText),
+      `${date} (${expected.feastName}): troparion text "${expected.troparionText.slice(0, 40)}..." missing`);
+  }
+
+  it('St James the Brother of God (2026-10-23) renders Doxology-rank Matins (Great Doxology, no Polyeleios)', async () => {
+    await assertDoxologyMatins('2026-10-23', {
+      feastName: 'St James, Brother of God',
+      minBlocks: 220,
+      troparionText: 'as the brother of God, thou hast boldness before Him',
+      minCanonBlocks: 35,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('Conception of the Theotokos by St Anna (2026-12-09) renders Doxology-rank Matins (two canons)', async () => {
+    await assertDoxologyMatins('2026-12-09', {
+      feastName: 'Conception of the Theotokos',
+      minBlocks: 280,
+      troparionText: 'Today, the bonds of barrenness are loosed',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('Conception of the Theotokos (2026-12-09) renders two canons separately, not flat', async () => {
+    const res = await get('/api/matins?date=2026-12-09');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const first  = canonRubrics.filter(t => /First Canon/.test(t));
+    const second = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(first.length >= 8,  `Conception: expected ≥8 First Canon headings, got ${first.length}`);
+    assert.ok(second.length >= 8, `Conception: expected ≥8 Second Canon headings, got ${second.length}`);
+  });
+
   it('Sunday of the Cross (2026-03-15) renders the Cross Canon by St Theodore as a 3rd sub-canon', async () => {
     // Pascha 2026 = April 12 → Sunday of the Cross = March 15 (3rd Sunday of Lent).
     // The Octoechos Sunday canon already has 3 sub-canons (resurrection,

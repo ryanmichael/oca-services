@@ -108,11 +108,25 @@ function analyze(text) {
   if (/Great\s+Doxology/i.test(text)) result.hasGreatDoxology = true;
   if (/Exapostilarion/i.test(text)) result.hasExapostilarion = true;
 
-  // Canons: count "Canon to/of the ..." headers in Matins section
+  // Canons: count "Canon to/of the ..." headers in Matins section. When a day
+  // carries two canons (one per saint), this header repeats inside every ode,
+  // so the value scales with ode count — 8 odes × 2 canons ≈ 16 hits.
   const matinsIdx = text.search(/AT\s+MATINS/i);
   const matinsText = matinsIdx >= 0 ? text.slice(matinsIdx) : text;
   const canonMatches = matinsText.match(/Canon\s+(?:to|of)\s+the\s+[a-z]/gi);
   result.canonCount = canonMatches ? canonMatches.length : 0;
+
+  // Explicit "Canon I" / "Canon II" Roman-numeral markers (06-07 pattern, where
+  // odes 8–9 split into two canons even though the file otherwise reads single).
+  const romanCanonMatches = matinsText.match(/^Canon\s+(I{1,3})(?:[\s,:]|$)/gm);
+  result.explicitCanonRomans = romanCanonMatches ? new Set(romanCanonMatches.map(s => s.trim())).size : 0;
+
+  // "composition of …" tags — but only inside the matins section. A vespers-
+  // stichera composer attribution (Macarius 01-19 picks up Anatolius for the
+  // vespers Glory) is unrelated to canon-author count and was producing
+  // false-positive `simple-rank-multisaint` classifications.
+  const matinsAuthorMatches = [...matinsText.matchAll(/the\s+composition\s+of\s+[A-Z]/g)];
+  result.matinsCanonAuthorCount = matinsAuthorMatches.length;
 
   // Matins gospel reading
   if (/Gospel\s+(?:reading|according)/i.test(matinsText)) result.hasMatinsGospel = true;
@@ -155,10 +169,18 @@ function classify(r) {
     // is a single saint with no feast context — directly authorable. Anything
     // else needs joint-commemoration or afterfeast infrastructure first.
     if (r.isAfterfeast || r.isForefeast || r.isLeavetaking) return 'simple-rank-afterfeast';
-    // Multiple distinct canon authors ⇒ separate per-saint canons, needs
-    // joint-commemoration infrastructure (even when COMMEMORATION OF combines
-    // names into one header).
-    if (r.canonAuthorCount >= 2) return 'simple-rank-multisaint';
+    // Definitive joint two-canon signals:
+    //   • explicit `Canon I`/`Canon II` Roman markers
+    //   • canonCount ≥ 5 (a single canon prints "Canon of …" 0–3 times across
+    //     the whole matins section; two canons print it once per ode = ~16 hits)
+    //   • two distinct "composition of …" attributions inside matins
+    if (r.explicitCanonRomans >= 2) return 'simple-rank-multisaint';
+    if (r.canonCount >= 5) return 'simple-rank-multisaint';
+    if (r.matinsCanonAuthorCount >= 2) return 'simple-rank-multisaint';
+    // Multiple commemoration headers, but the actual canon is single (e.g.
+    // 06-28 Translation of Cyrus & John — "the canon of the holy
+    // unmercenaries" covers both jointly). These remain authorable on the
+    // simple-rank track; flag them so the author can spot-check.
     if (r.commemorationCount >= 2) return 'simple-rank-combined';
     return 'simple-rank';
   }
@@ -179,7 +201,9 @@ function fmtRow(mmdd, r, rank) {
     r.isForefeast ? 'Fore' : '',
     r.isLeavetaking ? 'Leave' : '',
     r.commemorationCount > 1 ? `comm=${r.commemorationCount}` : '',
-    r.canonAuthorCount > 1 ? `auth=${r.canonAuthorCount}` : '',
+    r.explicitCanonRomans >= 2 ? `canI/II` : '',
+    r.canonCount >= 5 ? `canCnt=${r.canonCount}` : '',
+    r.matinsCanonAuthorCount > 1 ? `matAuth=${r.matinsCanonAuthorCount}` : '',
   ].filter(Boolean).join(' ');
   return `${mmdd}  ${rank.padEnd(26)}  ${flags}`;
 }

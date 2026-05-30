@@ -561,6 +561,16 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Sergius of Radonezh (2026-09-25) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-09-25', {
+      feastName: 'St Sergius of Radonezh',
+      minBlocks: 320,
+      troparionText: 'As a virtuous ascetic athlete',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
   it('St Andrew the First-Called (2026-11-30) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-11-30', {
       feastName: 'St Andrew',

@@ -1,0 +1,465 @@
+{
+  "_meta": {
+    "feast": "The Circumcision of Our Lord Jesus Christ; Commemoration of St. Basil the Great, Archbishop of Caesarea in Cappadocia",
+    "feastKey": "circumcisionBasil",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 01-01.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-01.pdf",
+    "_note": "Two canons in Tone II, interleaved: Canon I of the feast of the Circumcision (composition of Stephen) + Canon II of the holy hierarch Basil (composition of John of Damascus). Magnificat is suppressed at Ode 9; replaced by custom megalynarion refrains (one for the Circumcision, one for St. Basil, plus Glory/Both-now magnifications). Katavasiae are the irmoi of Theophany Canon I + Canon II (Jan 6 is 5 days away). Polyeleos has the magnification 'We magnify Thee, O Basil, thou holy hierarch of Christ...' — an alternate magnification of the Circumcision is provided if the church is dedicated to the Circumcision."
+  },
+  "troparion": {
+    "text": "Thy sound hath gone forth into all the earth,\nwhich hath received thy discourse,\nO venerable father;\nwhereby thou hast divinely taught and made clear the nature of created things,\nand having adorned the customs of mankind and the royal priesthood,//\nentreat Christ God, that our souls be saved.",
+    "tone": 1,
+    "label": "Troparion of the holy hierarch Basil"
+  },
+  "kontakion": {
+    "text": "Thou hast been shown to be an unshakeable foundation of the Church,\nbestowing upon all mankind an indomitable dominion,\nsealing them with thy precepts,//\nO divinely revealed and venerable Basil.",
+    "tone": 4,
+    "label": "Kontakion of St. Basil",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "feastRank": "greatFeast",
+      "feastType": "lord",
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "O Jesus, Thou Who art seated with Thy beginningless Father, and the divine Spirit upon a fiery throne in the highest,\nThou wast well-pleased to be born on earth of Thine unwedded Mother,\nwherefore, thou wast circumcised as a babe eight days of age.\nGlory to Thy supremely good counsel! Glory to Thy dispensation!//\nGlory to Thy condescension, O only Lover of mankind!",
+      "tone": 1,
+      "label": "Troparion of the Circumcision",
+      "_note": "Sung twice on 'God is the Lord', then Glory: troparion of the holy hierarch, Both now: troparion of the feast."
+    },
+    "sedalion": [
+      {
+        "text": "Let us all praise Basil as the royal adornment of the Church,\nan inexhaustible treasury of doctrines;\nfor he hath thereby taught us to worship the Holy Trinity,\nunited in essence, but separate in Hypostasis.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The co-beginningless Word",
+        "glory": {
+          "text": "O most wise Basil, as thou standest before the Trinity,\npray that we who hymn thee and honor thy memory\nmay receive grace, mercy and the cleansing of our transgressions on the day of judgment,\nthat with our heart and lips we may glorify Him//\nWho alone is the Lover of mankind.",
+          "tone": 1,
+          "melody": "Thy tomb, O Savior"
+        },
+        "bothNow": {
+          "text": "The Creator of all and Master of the world,\nthough with the Father and the Spirit on high,\nis circumcised on earth as a babe eight days of age.\nTruly divine and wondrous are Thy works!\nFor Thou, O Master, Who art the Fulfillment of the law,//\nwast circumcised for our sake.",
+          "tone": 1,
+          "label": "Sessional Hymn of the feast"
+        }
+      },
+      {
+        "text": "Divinely drawing forth the mystic riches of ineffable wisdom,\nthou hast poured forth upon all the waters of Orthodoxy,\ndivinely gladdening the hearts of the faithful and rightly drowning the commands of the infidels.\nWherefore by the sweat of thy works of piety, O holy hierarch Basil,\nthou hast been revealed in both as an invincible champion of the Trinity.\nEntreat Christ God, that He grant forgiveness of sins//\nunto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "Thou hast granted the whole world to drink as though water,\nthy doctrines and collected dogmas of piety;\nfor the Well-spring of life truly resided within thee, O Basil.\nSince thou hast acquired boldness, O divinely inspired one,//\nbeseech Him to grant us great mercy.",
+          "tone": 3,
+          "melody": "Of the divine Faith"
+        },
+        "bothNow": {
+          "text": "He Who is invisible in essence hath now become visible in the flesh;\nthe uncreated Word hath now taketh form, born of the pure Virgin.\nWherefore, following the law for the sake of mankind,\nHe hath been circumcised as a babe eight days of age.//\nLet us therefore worship Him as our Savior.",
+          "tone": 4,
+          "label": "Sessional Hymn of the feast"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O Basil,\nthou holy hierarch of Christ,\nwho didst piously preserve the Church of Christ immaculate.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+        "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding."
+      ],
+      "tone": 4,
+      "_note": "If the church is dedicated to the Circumcision of the Lord, the alternate magnification is used: 'We magnify Thee, O Christ, Bestower of life, and we honor the circumcision of Thy most pure flesh, which Thou didst deign to endure in accordance with the law.' Selected verses then: 'Judge them, O God, that do me injustice…' and 'Take hold of weapon and shield, and arise unto my help.'"
+    },
+    "sessionalHymns": {
+      "text": "By the power of thy divine words thou didst cast down dark heresies:\ndrowning all the insolence of Eunomius, for thou didst preach that the Spirit is God,\nthereby slaying the enemy by the work of thy hands;\nand driving away all the ministry of Sabellius, thou didst also set at naught all the reasonings of Nestorius.\nO holy hierarch Basil, entreat Christ God,//\nthat He grant forgiveness of sins unto those who with love celebrate thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "glory": {
+        "text": "The grace of thy divine discourses and the mystic heights of thy dogmas\nare like a ladder of divine ascent for us;\nfor having acquired the trumpet of the Spirit, O father, thou didst proclaim divine doctrines.\nWherefore, having made thine abode in a place of verdure,\nthou hast received the reward for thy struggles.\nO venerable hierarch Basil, entreat Christ God,//\nthat He grant forgiveness of sins unto those who with love celebrate thy holy memory.",
+        "tone": 8
+      },
+      "bothNow": {
+        "text": "The Master and Creator of all, having received flesh from thy most pure womb,\nhath shown thee to be an intercessor on behalf of mankind, O all-immaculate one;\nwherefore, we all flee to thee, asking to be cleansed of our transgressions, O Sovereign Lady,\nand to be delivered from everlasting torments and all the oppression of the evil prince of this world.\nWherefore we cry unto thee: Entreat thy Son and God,\nthat He grant remission of sins//\nunto those who with faith worship thine all-holy birthgiving.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+      "tone": 4
+    },
+    "gospel": {
+      "reading": "John 10:9-16",
+      "number": 36,
+      "_note": "Matins Gospel of the holy hierarch."
+    },
+    "postGospelSticheron": {
+      "text": "Grace poured forth from thy lips, O venerable father,\nand thou wast a shepherd of the Church of Christ,\nteaching the reason-endowed sheep//\nto believe in the consubstantial Trinity, in the one Godhead.",
+      "tone": 6,
+      "label": "Idiomelon of the holy hierarch"
+    },
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I (feast) — Stephen; Canon II (St. Basil) — John of Damascus",
+      "_canonHeadings": [
+        "Canon of the Circumcision",
+        "Canon of the holy hierarch Basil"
+      ],
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "troparia": [
+          {
+            "text": "The eighth day, which is the image of that which is to come, is by Thy voluntary abasement enlightened and sanctified, O Christ; for thereon Thou wast circumcised in the flesh in accordance with the law."
+          },
+          {
+            "text": "Christ receiveth circumcision on the eighth day after His nativity, and the shadow of that day doth withdraw, the light of the new grace having shone forth."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "It is fitting that thy voice come unto those desiring to sing thy praises, O father Basil. Having accepted their entreaty, grant us grace in abundance."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst tread the difficult path of the virtues, and attaining unto the smooth and pleasant entry into heaven, O Basil, thou hast shown thyself to be an example for all."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Through thy desire for the love of wisdom thou didst restrain the uprising of the passions which torment the flesh; wherefore, thou dost dwell in the incorrupt mansions of heaven, O father Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "With the sword of the Spirit thou didst right profitably cut down the passions of both soul and body, O Basil, bringing thyself to the Master as a living sacrifice."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "As an initiate of the ineffable mysteries, O sacred father Basil, thou didst instruct the Church of Christ concerning them, shining upon us the light of the Trinity."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: Who can fittingly describe thy conceiving, which is beyond words? For thou hast given birth in the flesh to God Who hath shown Himself to be our Savior and Lord, O most pure one."
+          }
+        ],
+        "katavasia": "The Lord mighty in battle uncovered the foundation of the deep\nand led His servants on dry ground;\nbut He covered their adversaries with the waters,//\nfor He hath been glorified."
+      },
+      "ode3": {
+        "irmos": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,//\nand in the hearts of us who hymn Thee plant the fear of Thee.",
+        "irmos2": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,//\nand in the hearts of us who hymn Thee plant the fear of Thee.",
+        "troparia": [
+          {
+            "text": "The transcendent Word Who became incarnate hath been circumcised that the law might cease; and He hath given us the beginning of divine grace and life incorruptible."
+          },
+          {
+            "text": "As the Fulfiller of the law, and One in nowise opposed to God, Christ showed Himself to be incarnate, and hath deigned of His own will to be circumcised on the eighth day."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy memorial hath arrived and shone forth at the same time as the nativity of Christ, the ineffable mystery whereof thou didst manifestly show forth by thy teachings."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Established in the fear of God, in that it is the beginning of wisdom, thou didst soar aloft in the highest love of wisdom, O Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Full of all instruction, O Basil, thou wast shown to be a light unto the world, not only that which is below and is trodden upon by our feet, but that which is far higher."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O most wise Basil, thou hast shown activity to be the entry into vision most divine, and by activity thou didst enter therein; and thou hast manifestly taught the understanding of all that existeth."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: Without seed thou didst conceive in thy womb, and didst ineffably give birth to God in the flesh, upon Whom the hosts of heaven dare not gaze, O pure Ever-virgin."
+          }
+        ],
+        "katavasia": "The Lord who granteth strength unto our kings, and exalteth the horn of His anointed,\nis born of a Virgin and cometh unto baptism.\nTherefore let us, the faithful, cry aloud://\nNone is as holy as our God and none is righteous save Thee, O Lord."
+      },
+      "kontakionOfTheFeast": {
+        "text": "In suffering circumcision, the Lord of all, since He is good,\nhath circumcised the sins of mankind, granting salvation to the world.\nAnd the Hierarch Basil, the Creator's light-bearer and seer of Christ's mysteries,//\nrejoiceth in the highest.",
+        "tone": 3,
+        "label": "Kontakion of the feast (after Ode 3)",
+        "melody": "Today the Virgin",
+        "_note": "Sung after Ode 3; followed by Sessional Hymn of the hierarch in Tone VIII, Glory/Both-now sessional of the feast in Tone IV."
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "irmos2": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "troparia": [
+          {
+            "text": "Circumcision hath ceased since Christ was willingly circumcised, saving the multitude of nations by grace."
+          },
+          {
+            "text": "The eighth day, in which the Master was circumcised in the flesh, is an image of the everlasting life of the age to come."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The Church of Christ is adorned like a bride by His nativity, and she is also adorned by thy memorial, O all-blessed one."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Doing battle for God, thou wast shown to be invincible, O Basil, making all subject to His precepts."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou hast been given to the Church by God as a firm rampart and bulwark, O all-blessed Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O father Basil, thou hast been shown to be a scythe cutting down the adversary, and a fire consuming falsehood."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: We beseech thee, O pure one who didst conceive God seedlessly: Do thou ever pray on behalf of thy servants."
+          }
+        ],
+        "katavasia": "I heard, O Lord, Thy voice,\nwhich Thou didst call the voice of one crying in the wilderness,\nfor Thou didst thunder over the multitude of waters,\nbearing witness to Thy Son.\nAnd, wholly filled with the Spirit which had descended, He cried aloud://\nThou art Christ, the Wisdom and Power of God!"
+      },
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "irmos2": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "troparia": [
+          {
+            "text": "Thou O Lord, having issued forth ineffably from the Virgin Mother, didst not decline to clothe Thyself in human guise as a babe, and in accordance with the law didst fulfill the law."
+          },
+          {
+            "text": "Israel, in that she loveth the shadow of the law, hath become like the night, engendering Christ, Who hath appeared, shining forth from her, as the Light of the world."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Today the Church doth truly introduce a twofold feast: that of the Master Who hath appeared on earth as a babe, and the memorial of His wise and thrice-blessed servant."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Christ, the Light unapproachable, resting in thee, O venerable one, hath shown thee to be a radiant lamp unto the world; wherefore, we hymn thy memory, O Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The Genesis described by Moses on Sinai amid great darkness hast thou described for all, speaking from the storehouses of divine wisdom, O most blessed Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Neither Moses the law-giver, nor Joseph, the chief of pharaoh's granaries, who lived before the law, were like unto thee; for thou, O Basil, didst show thyself to break the flesh of God."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: To thee, who hast given birth to Christ, the Creator of all, do we cry: Rejoice, O pure one! Rejoice, O thou who hast shone forth upon us the Light! Rejoice, O thou who didst contain the uncontainable God!"
+          }
+        ],
+        "katavasia": "Jesus, the Prince of Life, hath come to set loose from condemnation Adam the first-formed man;\nand though as God He needeth no cleansing,\nyet for the sake of fallen man He is cleansed in the Jordan.\nIn its streams He slew the enmity//\nand bestoweth the peace that passeth all understanding."
+      },
+      "ode6": {
+        "irmos": "The great abyss of sin doth encompass me,\nand, emulating the prophet, I cry unto thee://\nLead me up from corruption, O Lord!",
+        "irmos2": "The great abyss of sin doth encompass me,\nand, emulating the prophet, I cry unto thee://\nLead me up from corruption, O Lord!",
+        "troparia": [
+          {
+            "text": "The law hath come to an end since Christ, Who is the Fulfiller of the law, hath become a babe, receiving circumcision: He hath annulled the curse of the law."
+          },
+          {
+            "text": "The keeping of the Sabbath, circumcision and the arrogance of the Jews hath ceased upon the appearance of Christ, Who hath shone forth the springtime of grace."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst abundantly feed the souls of the poor beset by starvation, O Basil, filling the hearts of the hungry with divine gladness."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst richly feed the hungry with heavenly food; for thy discourse is the angelic bread, O Basil, of which thou wast a supplier of grain."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Basil, like a bee thou didst industriously gather honey from the flowers of all the virtues, and as a wise man thou art blessed therein."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst yearn to depart this world and to live with God; wherefore, forsaking things transitory and corruptible, O all-blessed Basil, as a wise man thou hast acquired things which are ever-abiding."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: Save thy servants from misfortunes, O Theotokos, for after God we flee to thee, as an impregnable rampart and intercession."
+          }
+        ],
+        "katavasia": "The Voice of the Word, the Candlestick of the Light,\nthe Morning Star and Forerunner of the Sun,\ncried in the wilderness to all the peoples:\n'Repent and be cleansed beforehand.\nFor lo, Christ is at hand,//\nWho delivereth the world from corruption.'"
+      },
+      "kontakion": {
+        "text": "Thou hast been shown to be an unshakeable foundation of the Church,\nbestowing upon all mankind an indomitable dominion,\nsealing them with thy precepts,//\nO divinely revealed and venerable Basil.",
+        "tone": 4,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "Thou hast appeared today"
+      },
+      "ikos": {
+        "text": "Basil the Great, the cup of chastity, the mouth of wisdom, the foundation of doctrines,\ndoth noetically shine forth upon all.\nCome ye, therefore, and let us stand in the house of God,\ngazing with fervor, adorning ourselves with his miracles,\nand illumined with the splendor of his life:\nRefreshed by his pure spirit, and emulating his faith, ardor and humility,\nwhereby he became a receptacle of the essence of God;\nlet us cry aloud unto him, chanting://\nO divinely revealed and venerable Basil!"
+      },
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame, they were bedewed, and sang://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame, they were bedewed, and sang://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          {
+            "text": "Radiant and most splendid is the nativity of Christ, which today hath depicted the mystery of the restoration which is to come! For the Savior is circumcised in lawful manner, not as God, but as man, the Fulfillment of the law."
+          },
+          {
+            "text": "Fulfilling the law, the Creator of the law today is of His own will circumcised in the flesh, cutting away the winter of sin, granting that all may cry: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The Son is the image of the Father, and the Spirit is the image of the Son; and thou, O Basil, art the pure reflection of the Spirit and the abode of the whole Trinity. Blessed is thy memory, and those who glorify it are themselves glorified!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O the single inspiration of mind of the sacred twain! For, united in their divine desire, Basil was as Gregory, and Gregory as Basil, like a single soul, inseparable, in two bodies. Entreat Christ now on behalf of your flock."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The father of orphans and defender of widows, the riches of the poor, the consolation of the sick, the guidance of the wealthy, the staff of old age and instruction of youth, and a rule of virtue for monastics wast thou revealed to be, O Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having purified thy mind of all the defilement of filth, O Basil, thou didst examine spiritual things with the Spirit Whom thou didst desire; wherefore, hymning the Trinity, with boldness thou didst cry aloud: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: On Mount Sinai Moses foresaw thee O pure One, in the bush which burned without being consumed, for having borne the unbearable effulgence of the ineffable Essence, even though He is one of the holy Hypostases, He united Himself to the coarseness of the flesh in thee."
+          }
+        ],
+        "katavasia": "The breath of the wind heavy with dew and the descent of the angel of God\npreserved the Holy Children from all harm, as they walked in the fiery furnace.\nRefreshed with dew in the flames, they sang in thanksgiving://\n'Blessed and supremely praised art Thou, O Lord God of our fathers.'"
+      },
+      "ode8": {
+        "irmos": "God the Word, Who in His ineffable wisdom hath created all things\nand brought them from nothingness into being,\nO all ye works bless the Lord,//\nand supremely exalt Him throughout all ages!",
+        "irmos2": "God the Word, Who in His ineffable wisdom hath created all things\nand brought them from nothingness into being,\nO all ye works bless the Lord,//\nand supremely exalt Him throughout all ages!",
+        "troparia": [
+          {
+            "text": "On the eighth day Jesus the Master was circumcised as a babe; and He receiveth His name, in that He is the Savior and Lord of the world."
+          },
+          {
+            "text": "To the nativity of Christ we join the eighth day, the all-glorious memorial of the holy hierarch; and honoring it with faith, let us hymn the Lord and supremely exalt Him throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O ye works of the Lord, bless ye the Lord Who, in His ineffable providence, hath given Basil to the world as a light of piety and trumpet of theology!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O ye works of the Lord, bless ye the Lord Who, in His rich activity, made His abode within the wise Basil, and through Him piously gave utterance to theology."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Delighting in thy divine discourses, O Basil, and celebrating unceasingly thy memory, we cry aloud: Bless the Lord, ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Basil, thou hast emitted thy discourses upon the world like brilliant rays which by light instruct all to worship the single Essence of the Trinity, crying: Bless the Lord, ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: O ye works of the Lord, bless ye the Lord, the timeless Word of God, Who issued forth from the Father before time began, and shone forth from the Virgin in latter times."
+          }
+        ],
+        "katavasia": "The Babylonian furnace, as it poured forth dew, foreshadowed a marvelous mystery:\nhow the Jordan should receive in its streams the immaterial fire,\nand should encompass the Creator, when He was baptized in the flesh.//\nHim do ye peoples bless and supremely exalt throughout all ages."
+      },
+      "ode9": {
+        "irmos": "Thee do we magnify, O blessed and all-pure Theotokos,\nwho through thy virginal womb ineffably brought forth God incarnate,//\nthe Luminary Who shone forth before the sun and hath come to us in the flesh.",
+        "irmos2": "Thee do we magnify, O blessed and all-pure Theotokos,\nwho through thy virginal womb ineffably brought forth God incarnate,//\nthe Luminary Who shone forth before the sun and hath come to us in the flesh.",
+        "megalynarion": "Magnify, O my soul, the Lord Who hath been circumcised in the flesh in accordance with the law!",
+        "_megalynarionNote": "Magnificat suppressed per rubric ('At ODE IX we do not sing the Magnificat'). This refrain leads the feast canon's troparia; additional megalynaria for the hierarch's canon and Glory/Both-now are listed in _megalynaria.",
+        "troparia": [
+          {
+            "text": "Transcending the bounds of all human nature, Christ was supra-naturally born of the Virgin; and in so far as He commanded the writing of the law, He is circumcised and shown to be the Fulfiller of the law."
+          },
+          {
+            "text": "Come, and in holiness let us celebrate the glorious names of Christ the Master; for in a godly manner He hath been named Jesus today. And with them let us also magnify the memory of the holy hierarch."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Basil, like a sheep faithful to Christ, the Chief Shepherd, thou didst follow His life-bearing steps; for thou didst expose thy soul to the tyrant, O all-blessed father, valiantly braving danger for the sake of the Church."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Beholding the most sacred unity of the Church of Christ, which was adorned by thine episcopate, O wise one, the tyrannical destroyer of all fell as though struck by a bolt of thunder; for he was unable to endure the radiance of the Spirit which was within thee, O Basil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Basil, thou wast vouchsafed an apostolic see, a place in the choir of the athletes of Christ, the tabernacle of the patriarchs, the delight of the righteous and the joy of the prophets; for thou wast a servant of the Theotokos and an initiate of the mysteries of the Trinity."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: The Lord Who alone covereth the chambers with waters, Who restraineth the sea and drieth up the depths, and Who received flesh from thee, O pure one, doth hasten from Bethlehem to the Jordan, to be baptized in the flesh."
+          }
+        ],
+        "_megalynaria": [
+          "Magnify, O my soul, the Lord Who hath been circumcised in the flesh in accordance with the law!",
+          "Magnify, O my soul, Him Who receiveth circumcision on the eighth day! (Twice)",
+          "Today the Master is circumcised in the flesh as a babe, fulfilling the law.",
+          "Today the Master hath been circumcised in the flesh and been called Jesus.",
+          "Magnify, O my soul, Basil who is great among hierarchs! (Twice)",
+          "Magnify, O my soul, the most radiant beacon of the whole world! (Twice)",
+          "Magnify, O my soul, the great Basil of Caesarea! (Twice)",
+          "Instead of Glory: Magnify, O my soul, him who hath adorned the Church of Christ!",
+          "Instead of Both now: Magnify, O my soul, the most pure Virgin Theotokos, who is more honorable than the armies of heaven!"
+        ],
+        "katavasia": "Every tongue is at a loss to praise thee as is due:\neven a spirit from the world above is filled with dizziness, when it seeketh to sing thy praises, O Theotokos.\nBut since thou art good, accept our faith:\nThou knowest well our love inspired by God,//\nfor thou art the Protector of Christians and we magnify thee."
+      }
+    },
+    "exapostilarion": {
+      "text": "With the desire of the love of wisdom thou didst circumcise that which covered thy soul, O father,\nand in thy miracles wast shown to the world to be like the sun;\nillumining the thoughts of the faithful, O divinely wise Basil;//\ninitiate of the mysteries of the Trinity and servant of the Theotokos.",
+      "tone": 8,
+      "label": "Exapostilarion of the holy hierarch",
+      "melody": "By the Spirit in the sanctuary",
+      "repeat": 2,
+      "bothNow": {
+        "text": "The Creator of the ages, Who hath fulfilled the law,\nis circumcised in the flesh as a babe eight days of age;\nHe is wrapped in swaddling bands as a man;\nHe Who, as God, sustaineth all things by His infinite might and holdeth all things in His hand,//\nis fed with milk.",
+        "label": "Exapostilarion of the feast"
+      }
+    },
+    "lauds": {
+      "tone": 5,
+      "stichera": [
+        {
+          "text": "He Who as the Word was ineffably begotten of the Father without separation or corruption hath endured circumcision in the flesh,\nand as God begotten by God, He remaineth immutably divine;\nwherefore, He Who is above the law, by following the law doth deliver all from the curse of the law,\ngranting them blessings from on high.\nFor this cause, praising His supremely good condescension,\nwe hymn and glorify Him in thanksgiving,//\nentreating Him to grant our souls great mercy.",
+          "tone": 5,
+          "melody": "Rejoice",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Having become a child of God through grace, by the regeneration of divine baptism, O venerable one,\nthou didst in essence and truth confess the pre-eternal Son and Word of God,\nas being consubstantial and co-beginningless with the Father;\nand by the brilliance of thy words thou didst shut the gaping mouths of the heretics.\nWherefore, thou hast made thine abode in the kingdom on high,\nreigning together with Christ, Who ruleth alone and naturally,//\nand doth richly grant great mercy to the world.",
+          "tone": 5
+        },
+        {
+          "text": "Through thine activity and vision thou didst enter within the temple of heaven as a sacred priest,\nvested in the principles of wisdom as with a holy raiment.\nAnd now, serving as priest at the altar of heaven, O venerable one,\nand standing before God, performing the immaterial service,\nmercifully remember those who celebrate thy sacred and most honored memory, O all-blessed Basil,//\nentreating Christ, Who granteth the world great mercy.",
+          "tone": 5
+        },
+        {
+          "text": "Wholly consecrated to God and dedicated to Him from childhood in every way,\nthou didst shine forth with rays of divine wisdom,\nmaking clear the understanding of those things which exist;\nby speaking plainly, and with wisdom, thou didst reveal the order of nature,\nsuch that all may recognize in it the handiwork of God.\nWherefore, we proclaim thee to be a divinely eloquent and godly teacher,//\nand a radiant beacon of the Church, who prayeth to Christ, that He grant the world great mercy.",
+          "tone": 5
+        },
+        {
+          "text": "Made steadfast by the fear of God, thou didst understand the beginning of wisdom, O Basil.\nThou didst overcome fear by the wisdom and uprightness of thy life, O father,\nand, united to God by love, thou didst become His alone.\nWherefore, having learned His divine justifications and judgments,\nthou didst teach morality to mankind,\nadorning the minds of the faithful, and rendering the council radiant by thy spiritual laws.//\nWherefore, entreat Christ God, that He grant great mercy to our souls.",
+          "tone": 5
+        }
+      ],
+      "doxastikon": {
+        "text": "Grace poured forth from thy lips, O venerable father,\nwhereby thou didst shepherd the Church of Christ,\nteaching the reason-endowed sheep//\nto believe in the consubstantial Trinity, in the one Godhead.",
+        "tone": 6
+      },
+      "theotokion": {
+        "text": "The Savior, having descended unto the race of mankind, was wrapped in swaddling-bands,\nand refused not to be circumcised in the flesh,\nbeing an eight-day old infant born of His Mother,\nbut beginningless according to His Father.\nTo Him, O ye faithful, let us cry aloud://\nThou art our God! Have mercy upon us!",
+        "tone": 8,
+        "label": "Theotokion of the feast"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thy sound hath gone forth into all the earth,\nwhich hath received thy discourse, O venerable father;\nwhereby thou hast divinely taught and made clear the nature of created things,\nand having adorned the customs of mankind and the royal priesthood,//\nentreat Christ God, that our souls be saved.",
+      "tone": 1,
+      "label": "Troparion of the holy hierarch",
+      "_note": "Followed by Glory/Both-now and the Troparion of the Circumcision (O Jesus, Thou Who art seated...)."
+    }
+  }
+}

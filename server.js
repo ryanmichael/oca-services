@@ -1540,6 +1540,12 @@ function _applyCrossSundayOverlay(spec) {
   const ov = _crossSundayOverlay.matins;
   if (!ov) return;
 
+  // Sessional hymn of the Cross — sung after Polyeleios + Evlogitaria,
+  // before the Antiphons of Degrees.
+  if (ov.sessionalHymnAfterPolyeleios) {
+    spec.sessionalHymnAfterPolyeleios = ov.sessionalHymnAfterPolyeleios;
+  }
+
   // Cross kontakion + ikos (placed after Ode 6 by the canon assembler)
   spec.canon = spec.canon || {};
   if (ov.kontakion) {
@@ -1578,6 +1584,37 @@ function _applyCrossSundayOverlay(spec) {
         source: 'triodion',
         _source: ov.exapostilarion._source,
       });
+    }
+  }
+
+  // Cross Lauds stichera — appended after the Octoechos Resurrection
+  // stichera; doxastikon (Tone 8) replaces the eothinon; theotokion is
+  // added at Both now.
+  if (ov.laudsStichera && spec.lauds) {
+    const cross = ov.laudsStichera;
+    spec.lauds.stichera = (spec.lauds.stichera || []).concat(
+      (cross.stichera || []).map(st => ({
+        text: st.text,
+        tone: st.tone,
+        verse: st.verse,
+        _source: cross._source,
+      }))
+    );
+    if (cross.doxastikon) {
+      spec.lauds.doxastikon = {
+        text: cross.doxastikon.text,
+        tone: cross.doxastikon.tone,
+        author: cross.doxastikon._label || 'Doxastikon of the Cross',
+        _source: cross._source,
+      };
+    }
+    if (cross.theotokion) {
+      spec.lauds.theotokion = {
+        text: cross.theotokion.text,
+        tone: cross.theotokion.tone,
+        label: cross.theotokion._label || 'Theotokion',
+        _source: cross._source,
+      };
     }
   }
 

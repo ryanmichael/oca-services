@@ -561,6 +561,25 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Basil (2026-01-01) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-01', {
+      feastName: 'St Basil / Circumcision',
+      minBlocks: 320,
+      troparionText: 'Thy sound hath gone forth into all the earth',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
+  it('St Basil Matins suppresses Magnificat (Ode 9 uses custom megalynaria)', async () => {
+    const res = await get('/api/matins?date=2026-01-01');
+    assert.equal(res.status, 200);
+    const sections = {};
+    for (const b of res.json.blocks) sections[b.section] = (sections[b.section] || 0) + 1;
+    assert.equal(sections['Magnificat'] || 0, 0,
+      `Jan 1 Matins should suppress the Magnificat per the rubric ('At ODE IX we do not sing the Magnificat'). Found ${sections['Magnificat'] || 0} blocks.`);
+  });
+
   it('Three Hierarchs (2026-01-30) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-01-30', {
       feastName: 'Three Hierarchs',

@@ -51,12 +51,12 @@
     },
 
     "laudsStichera": {
-      "_note": "Sung after four stichera of the Resurrection in the Tone of the week from the Octoechos, repeating the first.",
+      "_note": "Sung after four stichera of the Resurrection in the Tone of the week from the Octoechos, the first Cross sticheron being repeated.",
       "_source": "lentenTriodion-svs-p346-347",
       "stichera": [
         {
           "tone": 4,
-          "text": "With our voices let us shout and cry out, O honoured Cross, and with our bodies let us kiss it and cry out: O honoured Cross, sanctify our souls and bodies by thy power, and keep unharmed from all malice of every enemy those who venerate thee with true reverence. Today let us approach and draw waters that shall never fail; from the side of the Lord of all. Of His own will Thy holy Wood, source of divine gifts, on which Thy flesh blood and water flowed from the wounded side of the Lord of all. Of His own will, with Himself He has raised up mortal man.",
+          "text": "With our voices let us shout and cry out, and magnify in songs the Precious Cross; and bowing our bodies before its holy power, let us kiss it and cry out: O honoured Cross, sanctify our souls and bodies by thy power, and keep unharmed those who venerate thee with true reverence from all malice of every enemy.",
           "verse": "Exalt ye the Lord our God, and worship at His footstool, for He is holy. (Psalm 98:5)"
         },
         {
@@ -66,7 +66,9 @@
         },
         {
           "tone": 4,
-          "text": "Arise, O Lord my God, lift up Thine hand: forget not Thy poor for ever. (Psalm 9:33) — Repeat the first sticheron."
+          "verse": "Arise, O Lord my God, lift up Thine hand: forget not Thy poor for ever. (Psalm 9:33)",
+          "_repeatOfFirst": true,
+          "text": "With our voices let us shout and cry out, and magnify in songs the Precious Cross; and bowing our bodies before its holy power, let us kiss it and cry out: O honoured Cross, sanctify our souls and bodies by thy power, and keep unharmed those who venerate thee with true reverence from all malice of every enemy."
         }
       ],
       "doxastikon": {

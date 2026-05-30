@@ -561,6 +561,26 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Augustine of Hippo (2026-07-15) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-07-15', {
+      feastName: 'St Augustine',
+      minBlocks: 250,
+      troparionText: 'Today the whole world rejoiceth',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('St Paraskeva (2026-10-28) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-10-28', {
+      feastName: 'St Paraskeva',
+      minBlocks: 320,
+      troparionText: 'O most wise and all-praised Parasceva',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 5,
+    });
+  });
+
   it('St Mark the Evangelist (2026-04-25) renders full festal Matins, not weekday stub', async () => {
     await assertFestalMatins('2026-04-25', {
       feastName: 'St Mark',

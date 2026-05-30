@@ -1,0 +1,211 @@
+{
+  "_meta": {
+    "feast": "Blessed Augustine, Bishop of Hippo",
+    "feastKey": "stAugustine",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-15.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-15.pdf",
+    "_note": "Single canon of the holy hierarch in Tone IV (acrostic: 'We offer a canon to the hierarch Augustine'). The Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9. In Russian usage Jul 15 is also the feast of St Vladimir Equal-to-the-Apostles; the Sergius Emenaion file at this date covers Augustine."
+  },
+  "troparion": {
+    "text": "Today the whole world rejoiceth, celebrating thy commemoration,\nand thereon it praiseth thy struggles wherewith thou didst toil;\nand thy deeds proclaim thy love for Christ.\nFor thou didst trample down heresies, didst denounce the delusion of Manes,\nand wast a beacon of the Church.\nO holy hierarch, father Augustine, entreat Christ God,//\nthat our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of St Augustine"
+  },
+  "kontakion": {
+    "text": "O holy hierarch and theologian, boast of the Church of Christ,\ninstructor in piety and confirmation of the Orthodox Faith,\nuprooter of heresies and treasury of mystic teachings,\nblessed father Augustine, all-wondrous hierarch,//\npray thou ever for us all.",
+    "tone": 2,
+    "label": "Kontakion of St Augustine"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Today the whole world rejoiceth, celebrating thy commemoration,\nand thereon it praiseth thy struggles wherewith thou didst toil;\nand thy deeds proclaim thy love for Christ.\nFor thou didst trample down heresies, didst denounce the delusion of Manes,\nand wast a beacon of the Church.\nO holy hierarch, father Augustine, entreat Christ God,//\nthat our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarch"
+    },
+    "sedalion": [
+      {
+        "text": "Assemble together for the commemoration of our holy hierarch, ye multitudes of monks,\nand let us honor him with sacred hymns;\nand all the more let us glorify him by our manner of life,\nfor he seeketh the salvation of his children showing himself to be a fervent intercessor for those who honor his memory.\nLet no one turn away from the countenance of the blessed one,\nlet no one commit himself to the path of destruction,\nlet no one neglect his own salvation,//\nfor we are all children of the blessed hierarch.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "bothNow": {
+          "text": "How can I hymn thee worthily, how can I glorify thee, O our Lady?\nI am perplexed and filled with awe, afraid of mine audacity; but I also fear silence.\nYet accept our praise in the tender compassion which is thy wont,//\nand send down rich mercy upon those who hymn thee.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Let us all praise the orator of the Spirit, the instructor of Orthodoxy, the holy hierarch Augustine.\nFor he struck down heresies and shepherded well the flock of Christ;\nhe hath likewise led countless people to the mansions of heaven;//\nand even now poureth forth healings upon those who celebrate his memory with faith.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "bothNow": {
+          "text": "The Archangel Gabriel offered thee the salutation 'Rejoice!', but what shall we mortals offer thee?\nHow can we chant a worthy hymn, how can we offer praise and glory; what thanks can we offer?\nYet blessing thee in accordance with thine own words, we cry out to thee://\nRejoice, O thou who art full of grace! The Lord is with thee!",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Augustine,\nand we honor thy holy memory;//\nfor thou dost entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Gazing upon the beauty of the heavens and regarding the beauty of the earth,\nthou didst cleave unto the Creator of all things with all thy heart, and casting all aside, thou didst desire Him alone.\nWherefore, having distributed thy possessions among the poor, thou didst acquire spiritual riches,//\nand didst become an experienced monk, a holy hierarch and a great treasury of dogmas.",
+      "tone": 3,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Awed by the beauty of thy virginity",
+      "bothNow": {
+        "text": "We all hymn thee, O Virgin Theotokos, who hast delivered our first ancestor from the curse and led mankind into paradise;\nand we, thy servants, ever entreat thee:\nBeseech the most compassionate God, that He grant forgiveness of transgressions//\nand in His loving-kindness save us who set our hope on thee, O most hymned Virgin.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 10:1-8", "number": 35, "_note": "From the midpoint." },
+    "postGospelSticheron": {
+      "text": "Come, let us honor the memory of the holy hierarch, crying out to him with faith:\nO hierarch father Augustine, great boast of the Church, wondrous instructor of the whole world, most true teacher of monastics:\nAs thou standest now before the throne of the Lord, look down upon us, thy children,\nand forsake not us who love thee, but cry out unto us as we do battle with the foe://\nI am with you, and lo! no one shall be against you!",
+      "tone": 6,
+      "label": "Idiomelon of St Augustine"
+    },
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hierarch (Tone IV, acrostic 'We offer a canon to the hierarch Augustine'). Theotokos Paraklisis canon omitted per pattern.",
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "O blessed hierarch, in thy holy prayers remember those who today celebrate thy festival, that we also may set aside earthly care and leave the path of destruction, and set our steps toward the kingdom of God." },
+          { "text": "Possessing a name which signifieth greatness, thou didst clearly seal within thy soul the greatness of the Most holy Trinity, Whose hidden mystery thou didst broadly elucidate as far as is possible. Entreat the Godhead, that we find mercy because of the great multitude of our sins." },
+          { "text": "Having penetrated with faith that which is inaccessible to the corruptible mind, O father Augustine, thou didst clearly preach it; and thou didst thunder upon all the ends of the world, setting forth the greatness of dogmas. Ask also for us, who honor thee, spiritual enlightenment and great mercy." },
+          { "text": "Theotokion: O Ever-virgin, we hymn thee, the boast of our race; for God, having arrived through thee, made His abode among us, that He might save mankind from sins; and having saved mankind, He hath glorified him with His own divinity and deified him through the gift of His own grace." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory.",
+        "troparia": [
+          { "text": "Hippo possesseth thee as a precious lamp, yet now the whole world adorneth itself for thy commemoration, O Augustine. For thou wast a bulwark of Orthodoxy and the confirmation of the Church, a rule of life and a most honorable law of virtue." },
+          { "text": "Though Hippo hath fallen silent, the grave, the arbiter of oblivion, hath not closed thy mouth. For the whole world proclaimeth thy corrections and struggles and hymneth the labors whereby thou didst toil in teaching, instructing and setting forth the divine doctrines whereof thou hadst drunk." },
+          { "text": "When divine love came upon thee, O holy hierarch, thou didst reject all earthly things; and having distributed thy corruptible riches, thou didst acquire treasure in the heavens; and having left all thy kin, thou didst receive the choirs of angels as fellow intercessors in prayer." },
+          { "text": "Theotokion: Honoring thee with love, we bless thee, O Mother of God, most comely flower of the garden of incorruption, never-fading wreath of chastity, great throne of the Almighty, glory of the Christian race and great astonishment of the angels." }
+        ]
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God,\nis come in a swift cloud and with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "The foolish and mindless Manicheans didst thou denounce, and their false teachings didst thou blow away like dust with the wind of thy divine teachings; and didst cast down the pride of Pelagius, and bring the assembly of Donatists to the Orthodox Faith, O Augustine." },
+          { "text": "Though the blessed Monica wept, beholding thee departing from the straight path, yet her prayer was not in vain; for a blessed bishop prophesied unto her, saying, 'The fruit of such prayers cannot perish!', signifying thee, O honorable hierarch." },
+          { "text": "Bishop Valerius ordained thee a hierarch and treated thee like his own son; and when he reposed, thou didst receive the see of Hippo, wherein thou didst labor diligently for thirty five years, teaching and instructing, and providing a model of virtue for all." },
+          { "text": "Theotokion: O our Sovereign Lady, most pure Ever-virgin! In the hour of evil circumstances hearken unto us and save us, earnestly praying for us with the holy hierarch, that at the hour of judgment we may find mercy, and be speedily delivered from divers misfortunes." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all,//\nand gave birth to the timeless Son, bestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "text": "God heard thy prayer, O holy hierarch, and took thee to Himself before thy city fell captive to the barbarians, bestowing upon thee a crown of glory, in that thou wast a good shepherd, a good laborer of the vineyard of God, and a faithful servant who increased well the talent of thy Master." },
+          { "text": "Mystically interpreting the Sacred Scriptures, thou didst love the Gospel of John and his first epistle best of all; yet thou didst also clearly interpret the Sermon on the Mount, and by thy sacred commentaries, elucidate the Psalms of David, O divinely wise father." },
+          { "text": "Recognizing the mystery of the love of God, thou didst say that one cannot find the spirit of serenity until one finds the serenity which is with God, Who hath created it. As thou hast found this, pray for us, that we who are whirled about amid earthly things may also find it." },
+          { "text": "Theotokion: He who fleeth to thy protection, O Lady, findeth speedy rest from sins and the evil circumstances of life; wherefore, grant thy precious protection unto us who have recourse unto thee, O fervent helper of Christians." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast of the Mother of God\nO ye divinely wise, let us come, clapping our hands,//\nand glorify God who was born of her.",
+        "troparia": [
+          { "text": "Admonishing for three days the bishops who had fallen away from the Orthodox Faith, thou didst enlighten them with thy divine exhortations; wherefore, having rejected false doctrine and ardently embraced Orthodoxy, they showed thee to be a leader of the saved." },
+          { "text": "Thou didst teach that humble virginity is to be honored and embraced, but didst also magnify honorable matrimony, and didst teach that widowhood is likewise to be honored in every way; and thou didst take care for abstinence, teaching thy disciples to follow it and to attain salvation thereby, O thrice blessed father." },
+          { "text": "Carthage boasteth in thy youth, Tagaste in thy childhood, Rome in thy teaching, and Milan in thy repentance; but most of all the city of Hippo is glorified by thee, as its blessed pastor and honored prelate." },
+          { "text": "Theotokion: The Archangel Gabriel, appearing before the Virgin in Nazareth, announced the universal mystery, that God desired to be born of a woman in order to deify mankind. Wherefore, with love we ever magnify thee as the cause of our salvation." }
+        ]
+      },
+      "kontakion": {
+        "text": "O holy hierarch and theologian, boast of the Church of Christ,\ninstructor in piety and confirmation of the Orthodox Faith,\nuprooter of heresies and treasury of mystic teachings,\nblessed father Augustine, all-wondrous hierarch,//\npray thou ever for us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy hierarch"
+      },
+      "ikos": {
+        "text": "Enlighten the darkened eyes of my heart, O holy hierarch, and teach me worthily to hymn thy memory\nand to praise the wondrous life which thou didst live like an angel.\nTeach me to take thy doctrines into my soul,\nand guide me in walking the path of virtue,\nthat I may never depart from the path which leadeth to life everlasting.\nShow me that which I should think, say and do.\nBind thou my hands and feet with the fear of God; impel me toward the love of Christ,\nthat I may ever behold and not be deceived by the corruptible beauties of this world.\nStrengthen us, that we may assiduously seek the things which are to come;//\nand pray thou ever on behalf of us all."
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "No one so confessed his sins, no one so declared his love for the Lord like thee, O holy hierarch. 'I love my God, and count everything else to be as dust. Him alone do I seek, and unto Him alone do I desire to cleave!', thou didst say." },
+          { "text": "Thou wast a model for thy disciples, O father, and even when thou didst receive the honorable episcopate thou didst not slacken in thy monastic struggles, but didst take even greater care, struggling in ascetic endeavors and vigils, in fasting and labors, until thou wast more like an angel than a man." },
+          { "text": "Thou didst teach ancient Rome not to be troubled by its fall, O holy hierarch, for the city of God, the Church of Christ, will not fall forever. The dogmas thereof thou didst widely elucidate, and thou didst earnestly summon all the people, faithful and infidel alike, to become its children." },
+          { "text": "Theotokion: Adam fell when the advice of Eve entered his ears; but, saved by thee, O Maiden, he ever chanteth unto thee with joy: Rejoice, restoration of our race! Rejoice, crushing of the serpent! Rejoice, all-wondrous correction of Eve!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee: all ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Rejoice, O father, for thou didst heed the divine words of the great Ambrose, who instructed and taught thee, showing thee how to tread the good path. O Augustine, thou worthy fruit of an honorable mother, O greatest disciple of a great teacher, pray for our souls." },
+          { "text": "He Who of old saved Paul on the road to Damascus ensnared thee by Paul's epistle, saying: 'Take and read!' And when thou hadst read, thou didst count all worldly things as but dung; and finding Christ our Lord as a most precious pearl, with true love thou didst cleave unto Him." },
+          { "text": "Thou didst teach that mercy is shown in giving to the needy and forgiving those who offend us; and thou wast thyself a good instructor in this; for having distributed all thy possessions to the poor, thou didst acquire abundant meekness beyond calculation, and who among mortals can describe thy love as is meet?" },
+          { "text": "Theotokion: O Mother of God, cause of all good things, with tender compassion thou treatest us who are in misfortunes, and dost cause all to be saved who honor thee with love. Stand before us who are afflicted, lift from us our yoke of sin, and save us, O all-hymned Virgin." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "troparia": [
+          { "text": "Treading the path of virtue, thou didst cry aloud to those walking with thee, and without pausing, didst exclaim: 'Say It is enough and thou art lost!' Yet strengthen us, thy disciples, O father, to tread well the path of salvation unto the kingdom of heaven." },
+          { "text": "O honorable hierarch Augustine, beacon of the whole world, most wondrous instructor, against the passions strengthen us who today celebrate thy holy festival; aid us amid tribulations; guide us toward virtue; and pray unto the Lord, that He grant us salvation of soul." },
+          { "text": "When we pray to thee, O holy hierarch, look down upon us from the heights of heaven, and visit us in thy mercy. For thou dost behold the evil lack of faith and the tumult of the sea of life, and thou hearest the cries of the churches which have been destroyed. Help us who are weak, for as an honorable hierarch thou hast boldness before the Lord." },
+          { "text": "Theotokion: O Mother of the Almighty, pure Ever-virgin, having opened unto us the door of life, look upon us and cover us with thy precious veil. O Lady, help thy weak children, for in thee do we hope, and in thee do we ever boast." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Come ye all, and let us ever bless the holy hierarch Augustine as a good shepherd,\na wise instructor, a beacon of our Orthodox Faith,//\nand an intercessor for our souls.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy hierarch",
+      "bothNow": {
+        "text": "O Virgin, boast of Christians, defender of the afflicted,\nstrengthening and healing of the infirm, speedy redeemer of those weighed down by sin://\nSave us who trust in thee!",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "What shall we call thee, O holy hierarch! Adornment of the city of Hippo? Yet thou art the boast of the whole world.\nAn honorable man? Yet thou wast an angel in thy manner of life.\nRadiant lamp? Yet thy light hath never been extinguished, divinely eloquent mouth? Yet the grave, the arbiter of oblivion, hath not stopped thee.\nGreat is thy virtue, and great are the wreaths wherewith Christ hath crowned thee.//\nPray thou that our souls be saved.",
+          "tone": 8,
+          "melody": "What shall we call you"
+        },
+        {
+          "text": "What now shall we declare thee, O Augustine? Great hierarch or glory of monastics?\nExcellent shepherd or boast of ascetics? Bold denouncer of heresies or true instructor in meekness?\nModel of the virtues or rule of repentance? Love of wisdom or glory of anchorites?\nExemplary lover of the poor or one who utterly forsook all worldly things?\nBeauty of monastics, adornment of hierarchs or teacher of wisdom?//\nPray thou that our souls be saved.",
+          "tone": 8
+        },
+        {
+          "text": "What now shall we call thee, O Augustine? Beloved disciple of the great Ambrose?\nYet thou didst surpass him in the depths of thy theology.\nWondrous successor of Valerius? Yet thou didst shine more brightly than he.\nHoly fruit of the holy Monica? Yet thou didst achieve greater holiness than she,\nand having ascended to the heights of heaven, thou didst taste of everlasting joy.//\nPray that our souls be saved.",
+          "tone": 8
+        },
+        {
+          "text": "Proclaiming the city of God, whose great citizen thou wast and a expounder of the ineffable mysteries of God,\nthou didst make steadfast the Orthodox Churches, instructing and teaching them by thine acts and words;\nand having set now like the sun in the West, thou dost illumine us with thy writings,\nteaching us to seek the grace of God and not to think ourselves great,\nbut rather to be filled with the Spirit, of Whose inspiration thou didst abundantly partake, as a sacred-initiate of theology.//\nPray thou that our souls be saved.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Who can fittingly hymn the labors wherewith thou didst toil throughout the whole Church,\ncutting down ungodly heresies with the sword of thy corrections,\ndenouncing the Arians, casting down the Manicheans, exhorting the Donatists to return to the Orthodox Faith,\ncrushing the audacity of Pelagius, and planting Orthodoxy,\nuntil thou hadst assembled many children in the habitation of the Church\nand, instructing and guiding them, didst lead them to the mansions of heaven?\nGather us together, who are cruelly separated, and lead us to Christ our God,//\never entreating Him that our souls be saved.",
+        "tone": 6
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine that hast budded forth for us the Fruit of life.\nThee do we entreat: Pray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Today the whole world rejoiceth, celebrating thy commemoration,\nand thereon it praiseth thy struggles wherewith thou didst toil;\nand thy deeds proclaim thy love for Christ.\nFor thou didst trample down heresies, didst denounce the delusion of Manes,\nand wast a beacon of the Church.\nO holy hierarch, father Augustine, entreat Christ God,//\nthat our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarch"
+    }
+  }
+}

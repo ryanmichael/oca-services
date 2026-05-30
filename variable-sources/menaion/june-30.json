@@ -1,0 +1,256 @@
+{
+  "_meta": {
+    "feast": "Synaxis of the Holy Glorious and All-Praised Twelve Apostles",
+    "feastKey": "synaxisOfTwelveApostles",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 06-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-30.pdf",
+    "_note": "Day after Sts Peter & Paul. Sergius confirms doxology-rank: 'Great Doxology. Litanies. Dismissal.' at line 454 + 4 Lauds stichera Tone IV (Spec. Mel. 'Called from on high'). No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Two interleaved canons in Tone IV: Canon I of the holy apostles Peter & Paul (continuing the Jun 29 cycle, acrostic 'I honor Peter and hymn Paul with understanding') + Canon II of the Twelve Apostles by Theophanes (acrostic 'I honor the wise apostles of Christ'). Linked: [[apostlesPeterAndPaul]] for the Jun 29 source pattern."
+  },
+  "troparion": {
+    "text": "O first enthroned among the apostles and teachers of the whole world:\nentreat the Master of all,//\nthat He grant peace to the world and great mercy to our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy apostles"
+  },
+  "kontakion": {
+    "text": "Christ the Rock hath radiantly glorified the rock of Faith, the most excellent of His disciples,\nas He doth Paul and the assembly of the twelve today;\nand, faithfully celebrating their memory,//\nwe glorify Him Who glorified them.",
+    "tone": 2,
+    "label": "Kontakion of the holy apostles",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O first enthroned among the apostles and teachers of the whole world:\nentreat the Master of all,//\nthat He grant peace to the world and great mercy to our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy apostles",
+      "_note": "On 'God is the Lord': Troparion of the holy apostles (Twice); Glory ..., Both now ..., Theotokion."
+    },
+    "sedalion": [
+      {
+        "text": "The spiritual choir of the apostles hath been mystically sent into the world by God Most High;\nand they have been shown forth as physicians for the suffering.\nAnd calling upon the Unity in three Hypostases,//\nthey have wisely described the divine incarnation of the Lord Emmanuel.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Virgin, we hymn thee, the unburnt bush which Moses saw, the mountain of God, the holy cloud, the undefiled tabernacle, the God-pleasing table,//\nthe palace of the King Most High, the all-splendid and impassable gate.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "O divine trumpets of the Comforter declaring the inspiration of the words of salvation, make ye proclamation to the world.\nO apostles of the divine Light, rousing those who sleep in the darkness of deception,//\nlead them to the light of divine knowledge, entreating Christ God, that our souls be saved.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine Faith",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Without separating Himself from the divine Essence when He took flesh in thy womb,\nthe one Lord remained God though He had become a man;\nand even after thy birthgiving He preserved thee, His Virgin Mother, as immaculate as thou wast before giving birth.//\nHim do thou earnestly beseech, that He grant us great mercy.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of the holy apostles Peter & Paul in Tone IV (acrostic 'I honor Peter and hymn Paul with understanding') + Canon II of the Twelve Apostles by Theophanes in Tone IV (acrostic 'I honor the wise apostles of Christ').",
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "O Lord, grant me the gifts of Thy most holy Spirit like drops of rain, fitting discourse; and I shall rejoice, faithfully praising the corrections of Thy foremost apostles." },
+          { "text": "O all-famed Peter, zealously thou didst forsake transitory things and follow in the footsteps of Christ; and leaving behind thine unbelief, O Paul, thou didst follow Him Who called thee." },
+          { "text": "O apostles Peter and Paul, receiving the grace of the divine Spirit which descended upon you in essence, ye traversed the world, teaching the ends of the earth." },
+          { "text": "Theotokion: The most eloquent of orators and musical tongues of exalted sound are unable to honor or hymn thee, O pure one; for in thee alone have divine mysteries which transcend man been wrought." },
+          { "canon": "secondCanon", "text": "O Christ, in that Thou art God grant unto me, who desires to hymn the choir of the apostles, the radiance of the most holy Spirit and the light of Thy wisdom by their supplications." },
+          { "canon": "secondCanon", "text": "Strengthened by Thy power and grace, O Christ, Thine honored apostles destroyed the power of the adverse foe, in that they have become seers of God through Thine expansive gesture." },
+          { "canon": "secondCanon", "text": "Working healings by Thy name, O Master, the glorious apostles looked upon the multitudes of the nations and illumined them with Thy light." },
+          { "canon": "secondCanon", "text": "Having learned heavenly wisdom, O most wise and glorious apostles of Christ, with your successful preaching ye manifestly showed the overweening discourse of the impious to be foolish." },
+          { "canon": "secondCanon", "text": "Theotokion: O most pure Virgin Mother, thou hast given birth to One of the supremely divine Trinity, Who through thee hath revealed Himself to be like unto us in the flesh, through the good pleasure of Him Who begat Him, and through the activity of the most holy Spirit." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory.",
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "text": "Andrew, thy kinsman, O Peter, showed thee Christ the Messiah, and thou didst approach Him with faith; and thou, O wondrous Paul, wast enlightened by Ananias with divinely ordained baptism." },
+          { "text": "With the enlightenment of grace Peter netted the race of Israel, which had fallen, and been deceived by the letter of the law; and Paul delivered the flock of the nations from delusion." },
+          { "text": "Thou didst send Thy disciples to the nations naked and simple, bearing Thy holy name instead of a sword, O Christ; and with faith they set at naught the warfare of delusion." },
+          { "text": "Theotokion: O all-famed apostles Peter and Paul, all the earth was full of the knowledge of the Lord Who shone forth from the Virgin, and restored the world by your divine preaching." },
+          { "canon": "secondCanon", "text": "Divinely proclaiming the heavenly and precious doctrines on earth, and declaring them with fiery tongues, O preachers of Christ, ye transmitted them." },
+          { "canon": "secondCanon", "text": "O Master, Thou didst show forth Thy disciples as noetic heavens which declare Thy glory to all the ends of the earth." },
+          { "canon": "secondCanon", "text": "O most wise ones, ye are inscribed in the heavens and have been revealed as dwelling with Christ, preserve us now who honor you with love." },
+          { "canon": "secondCanon", "text": "Theotokion: He Who dwelleth in the highest and hath made His abode among us, O most pure one, hath manifested Himself, seedlessly receiving flesh from thee." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "O ye who have made your abode in unapproachable Light, as habitations of the Light,\nye ever illumine your holy temple with divine proclamations.\nWherefore, with faith we cry out: Entreating the Creator, O apostles,//\ndeliver us from darkness, from all manner of misfortunes and the cruel invasion of pagans.",
+        "tone": 4,
+        "label": "Sessional Hymn of the twelve apostles (after Ode 3)",
+        "melody": "Having been lifted up upon the Cross",
+        "glory": {
+          "text": "Let us praise Peter and the most wise Paul, the great and radiant luminaries, who have been shown to be the preeminent disciples;\nfor, shining with the fire of the divine Spirit, they have utterly consumed the darkness of falsehood.\nWherefore, they have been shown to be worthy citizens of the kingdom on high, sharing the throne of grace.//\nFor this cause we cry out to them: Entreat Christ God, that He grant forgiveness of sins unto those who with love celebrate your holy memory.",
+          "tone": 8,
+          "label": "Sessional Hymn of Peter & Paul",
+          "melody": "Of the Wisdom"
+        },
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed, in that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee, and thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee: Entreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God, that the incarnation of Thee the Most High, will be from a Virgin,\nthe Prophet Habbakuk cried aloud://\nGlory to Thy power, O Lord!",
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Piously joining the mighty with the lowly, orators with the unlearned, O Peter and Paul, apostles of Christ, ye won the victory." },
+          { "text": "The godly Peter denounced the cruel apostate Simon Magus as a lover of gold, and now the wise Paul hath rendered blind the steps of Elymas, who blasphemed Christ." },
+          { "text": "Though the fisherman and the tent-maker were coarse of speech, yet they have seasoned with divine salt the souls of those who love wisdom, leading them to Christ by faith." },
+          { "text": "Theotokion: Of old, manifestly declaring with divinely inspired speech, the divine Habbakuk called thee the pure and overshadowed mountain of Him Who cometh from the south and is incarnate of thee, O Sovereign Lady." },
+          { "canon": "secondCanon", "text": "The sound of the words of the divine apostles passed through the whole world like fire, burning up the tinder of falsehood and illumining the assemblies of the pious with grace." },
+          { "canon": "secondCanon", "text": "The world of ungodliness, darkened in gloom, did the disciples of the Lord, the divinely radiant beacons, illumine with rays of grace, shown forth by the radiance of their preaching." },
+          { "canon": "secondCanon", "text": "Illumined by the sacred rays of the noetic Sun, ye shine forth in the world like the sun, O all-famed ones, dispelling the gloom of delusion with divine light." },
+          { "canon": "secondCanon", "text": "Possessing Thy Cross as a staff of power, O Word, those who themselves beheld Thee, divided the salty sea of life, roiling the waters of polytheism like steeds." },
+          { "canon": "secondCanon", "text": "Theotokion: The animate heaven of Thee, O Christ, the King of kings, adorned with divers radiances, the most pure Virgin hath now been glorified as the Theotokos." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory; for thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all, and gave birth to the timeless Son,//\nbestowing peace upon all who hymn thee.",
+        "irmos2": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "In that thou art steadfast, O Peter, Christ called thee a stone, and on thee did He set the Church, against which the gates of hell will not prevail; and thee, O Paul, He called His vessel, chosen to bear His name before the nations." },
+          { "text": "Peter denied the Teacher thrice, and thrice made himself His by declaring his love for Him; and Paul, who before was a blasphemer who grievously oppressed the faithful, later preached Him Whom he before had persecuted." },
+          { "text": "An incorruptible name and everlasting glory have Peter and Paul obtained from Christ; for the one hath received the keys of heaven, and the other, caught up into paradise, heard ineffable words which surpass men's understanding." },
+          { "text": "Theotokion: Full of the divine Spirit, Isaiah foretold the birth without father of Emmanuel, God with us, from thee, O pure Virgin, Whom thou didst bear. Wherefore, we all hymn thee." },
+          { "canon": "secondCanon", "text": "Thy divine and most wise ministers hast Thou shown forth in the world as light, proclaiming Thee, the never-waning Light, unto all." },
+          { "canon": "secondCanon", "text": "Having manifestly passed through every virtue, O apostles, ye have utterly destroyed the divers webs of the demons' malice." },
+          { "canon": "secondCanon", "text": "Speaking with fiery tongues, O apostles, ye have revealed to us the effulgence of the Trinity, the Godhead in unity." },
+          { "canon": "secondCanon", "text": "Theotokion: Thee do we present as an invincible weapon against our enemies for thou art our foundation and our hope of salvation, O divine maiden." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast of the Mother of God\nO ye divinely wise, let us come, clapping our hands,//\nand glorify God who was born of her.",
+        "irmos2": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Splendid were the miracles of Peter, and wondrous the signs of Paul: for their garments and handkerchiefs worked healings when placed upon the sick." },
+          { "text": "The truly glorious Peter and the truly wondrous Paul, the two godly ones, the most precious habitations of the life-creating Trinity, are commemorated by all." },
+          { "text": "Like a divine and excellent physician Peter hath healed the souls and bodies of the sick, and Paul hath enlightened the nations, signing them with the light of the Lord." },
+          { "text": "Theotokion: We must needs hymn thee, yet are truly unable to do so worthily; wherefore, we hymn thee with silence, honoring the ineffable mystery wrought in thee, O Virgin." },
+          { "canon": "secondCanon", "text": "Having made Thy disciples steadfast through wisdom and miracles, Thou didst make them stronger than the foolish prating of the Greeks; and they have abolished their false precepts." },
+          { "canon": "secondCanon", "text": "The divine rivers of wisdom have filled all the valleys of the Church with salvific waters of salvation, enriching them with streams from the well-springs of salvation." },
+          { "canon": "secondCanon", "text": "Revealed as living stars, O all-famed ones, ye destroyed all the darkness of delusion with radiant effulgence, shining forth the light of divine knowledge." },
+          { "canon": "secondCanon", "text": "Theotokion: O Mother of God, the noetic Bridegroom found thee to be a perfect and most comely turtle-dove, a radiant lily and blossom of the valley; and He made His abode within thee." }
+        ]
+      },
+      "kontakion": {
+        "text": "Christ the Rock hath radiantly glorified the rock of Faith, the most excellent of His disciples,\nas He doth Paul and the assembly of the twelve today;\nand, faithfully celebrating their memory,//\nwe glorify Him Who glorified them.",
+        "tone": 2,
+        "label": "Kontakion of the holy apostles",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Celebrating now your most honored and most blessed memory, in hymns we earnestly cry out to you:\nO most radiant and divinely luminous beacons of the world, ye twelve beloved disciples of Christ,\nin that ye have boldness before Him, pray for us; for to you hath been given the grace to heal and forgive sins.\nWherefore, earnestly entreat Him, that we be delivered from sins and temptations,//\nthat we may glorify Him Who alone is the Lover of mankind, Who hath glorified you."
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire, cried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Peter was called blessed by Christ when he called Him the Son of the living God; and Paul was honored as a right profitable vessel; and they cried aloud: O Lord God of our fathers, blessed art Thou!" },
+          { "text": "Peter made wise the servants of the law as He was commanded, and Paul enlightened the gentiles; and both cleaved unto Christ through grace and cried aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "As a most excellent shepherd of Christ Peter hath received the flock, and Paul became their divine teacher; and they cry aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: O all-immaculate Mary, excellent in holiness, O Virgin who hast given birth to God in the flesh, O pure one who knewest not wedlock: entreat Him, that He deliver us from every assault and from sin." },
+          { "canon": "secondCanon", "text": "O Supremely good One Who art God by nature, before making Thy disciples sons Thou didst lovingly show them to be heirs of the inheritance of the Father, and it was Thy good pleasure that they walk with Thee, their God and Master." },
+          { "canon": "secondCanon", "text": "Bestowing an outpouring of wisdom, a breadth of heart, and right eloquent tongues upon Thy godly disciples, O Word, Thou didst send them forth to preach the Gospel of the kingdom to all the ends of the earth." },
+          { "canon": "secondCanon", "text": "The apostles, shown to be clouds of the light of God, let fall life-creating waters as rain upon all, crying aloud: blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "text": "Theotokion: Thou wast revealed to be wholly adorned by the glory of God, O most pure one, Mother and Virgin who alone didst conceive God the Word Who existed from before the beginning of time. Blessed art thou among women, O all-immaculate Sovereign Lady!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee: all ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Strengthened by divine power, Peter resurrected the dead Tabitha; and Paul raised up the dead Eutyches, who had fallen from a great height; and both cry out: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Having received an awesome and wondrous vision, Peter enlightened Cornelius, and Paul baptized Gaius, Crispus, Panestius and Stephaninus; and both cry out: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "At night, by His angel, Christ released Peter, who was fettered and kept under guard; and while Paul and Silas were praying, their feet made fast in stocks, He set them free and caused the prison to quake. Wherefore, they hymn Christ throughout the ages." },
+          { "text": "Theotokion: Deliver us from the most pernicious passions, and break asunder now the bonds of offenses wherewith each is bound; for we all have sinned, and, being guilty, we ask cleansing. Through thine entreaties, O Theotokos, grant it to us who supremely exalt Christ throughout the ages." },
+          { "canon": "secondCanon", "text": "With the fire of the Spirit the divine and most wise choir of the apostles utterly consumed many of the sanctuaries of the demons as though they were tares, and having enlightened the hearts of the faithful, cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "O godly disciples and apostles of Christ, who together thundered forth unto us the commandments of God, ye havens of the faith and common benefactors of mankind: serve ye the Savior, that we may honor you." },
+          { "canon": "secondCanon", "text": "Let us honor the most precious vessels, the receptacles of the virtues, the first-fruits of humanity, the trumpets of preaching, the torrents of life incorruptible, the God-bearing flashes of lightning, the well-springs of healing, the beautiful feet of the Gospel." },
+          { "canon": "secondCanon", "text": "Theotokion: He Who is full hath humbled Himself for our sake, that we may share in His fullness; for the Infinite One, entering into thy most pure womb, became incarnate without leaving the bosom of the Father. Wherefore, we all call thee blessed, O Mary Bride of God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "irmos2": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Ye passed over all the world, soaring as on wings, preaching the Gospel of Christ to all tribes, nations and lands; bringing them to the Faith, O most blessed Peter and wondrous apostle Paul." },
+          { "text": "Having attained an advanced age, O Peter, discharging the debts of nature ye endured the cross in emulation of thy Teacher Christ. And when thy head was severed, O Paul, O the wonder! instead of blood, milk poured forth in torrents, converting the unbelieving." },
+          { "text": "O ye two godly ones, who wisely dedicated yourselves to the souls of the whole world, converting them from ungodliness to piety, and, even after your death, saving the souls of the faithful: be ye now mindful of us, and intercede before Christ, O preeminent apostles." },
+          { "text": "Theotokion: O good Savior Who lovest mankind by nature, filled to overflowing with tender compassion: through the divine entreaties of Thine all-hymned Virgin Mother and the supplications of Thine apostles Peter and Paul, send down upon us from heaven Thy mercy and aid." },
+          { "canon": "secondCanon", "text": "Having received from the Master the authority to loose the bonds of transgressions, O ye who beheld God, mercifully cleanse us of sins who hymn you, and grant unto us salvation." },
+          { "canon": "secondCanon", "text": "O glorious apostles who learned exalted preaching and doctrine in the upper chamber, ye have all received the full effulgence of the Spirit which was made manifest to you essentially; and now as is meet, ye are called blessed." },
+          { "canon": "secondCanon", "text": "Christ hath now bestowed never-fading wreaths upon you, His friends, as ye rest, filling you with divine vision. Entreat Him now, that He save all the Churches." },
+          { "canon": "secondCanon", "text": "Theotokion: Desiring to come in the flesh, He Who hath adorned all things by His word made His abode within thee, finding thee to be holier than all others, and hath revealed thee to be the true Theotokos, O Virgin Mother." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Let us hasten together joyously praising the twelve most honored disciples, crying aloud:\nRejoice, O ye who traveled the world over,//\ndrew the nations from among the toils of unbelief and taught them divine things!",
+      "tone": 2,
+      "label": "Exapostilarion of the twelve holy apostles",
+      "melody": "To the disciples",
+      "glory": {
+        "text": "O ye faithful, let us all praise the choir of the twelve today, having been confirmed by them;//\nand let us cry aloud to Christ: Through their prayers, O Savior, bring peace to Thy world!",
+        "tone": 2
+      },
+      "bothNow": {
+        "text": "In thee do we boast, O Theotokos, and thee do we have as our intercessor before God.//\nStretch forth thine arm and crush our enemies, and send to thy servants help from the Holy One.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "O supreme foundation of the apostles, having forsaken all things thou didst follow after thy Teacher,\ncrying out to Him: 'I will die with Thee, that I may live the blessed life!'\nAnd thou wast the first bishop of Rome, the glory and boast of the greatest of cities, O Peter,\nthe confirmation of the Church against which the gates of hell will truly not prevail, as Christ hath foretold.//\nHim do thou entreat, that He save and enlighten our souls.",
+          "tone": 4,
+          "melody": "Called from on high"
+        },
+        {
+          "text": "Parted from thy mother's womb, thou didst avoid all the burden of material greatness,\ntruly soaring aloft on wings of divine love to divine heights, O Paul,\nwhere, entering into the most radiant darkness of the divine Light like one of the incorporeal ones,\nenriched with the teachings of ineffable discourses, thou wast sent to those in darkness,\nto proclaim the light of Christ our God.//\nHim do thou beseech, that He save and enlighten our souls.",
+          "tone": 4
+        },
+        {
+          "text": "O Savior, Thou Light from before time began: when it was Thy good pleasure to come to me, a man,\nin Thine ineffable love for mankind, and to become flesh in Thy goodness,\nThou didst show forth the apostles, Thy disciples, as secondary lights of Thine effulgence, brilliant flashes of lightning;\nand when they were sent forth they illumined all creation with Thy divine light,//\nentreating Thee to save and enlighten our souls.",
+          "tone": 4
+        },
+        {
+          "text": "O Peter and Paul, ye husbandmen of the Word, O Andrew, James and John most wise,\nBartholemew and Philip, Thomas and Matthew, Simon, Jude and the godly James,\nye twelve universally honored disciples who preached throughout the world the all-holy Trinity, God Who is eternal in essence,//\nye truly impregnable ramparts and unshakable pillars of the Church: entreat the Master of all, that we be saved.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "O disciples of the Savior, ye traversed creation, enlightening it and like tinder,\nconsuming the delusion of idolatry by your teachings,\nand having drawn the nations out of the abyss of ignorance unto divine understanding, ye saved them.//\nAnd now, pray ye to Christ, that He be merciful to us on the day of judgment.",
+        "tone": 8,
+        "label": "Glory (composition of Cosmas the Monk)"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,//\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Both now, Theotokion"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O first enthroned among the apostles and teachers of the whole world:\nentreat the Master of all,//\nthat He grant peace to the world and great mercy to our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy apostles",
+      "_note": "After the Great Doxology: 'Great Doxology. Litanies. Dismissal.' per Sergius rubric."
+    }
+  }
+}

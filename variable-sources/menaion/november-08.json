@@ -1,0 +1,388 @@
+{
+  "_meta": {
+    "feast": "The Synaxis of the Holy Archangel Michael and All the Bodiless Powers",
+    "feastKey": "synaxisArchangels",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-08.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-08.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons both by John of Damascus in Tone VIII (acrostic of Canon I: 'O ye divinely wise, let us solemnize praise to the assembly of the incorporeal ones...'). Theotokos canon omitted per pattern. Magnificat retained."
+  },
+
+  "troparion": {
+    "text": "O supreme commanders of the heavenly hosts,\nwe entreat you unworthy though we be,\nthat by your prayers, you will encompass us\nwith the protection of the wings of your immaterial glory\npreserving us who fall down before you and earnestly cry aloud:\ndeliver us from all misfortunes,//\nfor ye are the commanders of the hosts on high.",
+    "tone": 4,
+    "label": "Troparion of the holy angels"
+  },
+  "kontakion": {
+    "text": "Supreme Leaders of God's armies\nand ministers of the divine glory,\nprinces of the bodiless Angels and guides of mankind,\nask ye for that which is beneficial for us, and for great mercy,//\nas Supreme Leaders of the Bodiless Hosts.",
+    "tone": 2,
+    "label": "Kontakion of the holy angels"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Standing ever before the dread throne, illumined with the brilliant rays of the three-sunned Godhead,\ndispelling the gloom of sin, enlighten us who celebrate your assembly with splendor;\nand pray ye earnestly that we be delivered from misfortune, O most radiant intercessors.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "glory": {
+          "text": "The choir of angels, having the divine Michael as supreme commander,\ndoth offer hymnody with him unto the Holy Trinity,\nfor the Creator of all, by a word, did bring forth out of non-existence the host of the fiery ranks.",
+          "tone": 1,
+          "melody": "The choir of angels"
+        },
+        "bothNow": {
+          "text": "O most holy Virgin, hope of Christians, with the hosts on high\ndo thou unceasingly beseech God to Whom, in a manner surpassing understanding and all telling, thou hast given birth,\nthat He grant forgiveness of all our sins and correction of life\nunto those who with faith and love ever glorify thee.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thou hast been revealed as foremost among the legions of the angels, O Michael, supreme commander.\nUnceasingly entreat the King Most High to cast down the pride of tyrants here below.\nAnd as thou hast boldness at the fiery throne, pray for us, thy servants, without ceasing.",
+        "tone": 2,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "When Thou didst descend",
+        "glory": {
+          "text": "The cherubim and seraphim, the many-eyed hosts of ministering archangels,\ntogether with the virtues, thrones, dominions, angels, powers and principalities,\nentreat Thee, our Creator, God and Master, that Thou disdain not the supplication of sinful people,\nO Thou greatly merciful God.",
+          "tone": 4,
+          "melody": "Go thou quickly before"
+        },
+        "bothNow": {
+          "text": "O all-immaculate Virgin who hast given birth to the transcendent God:\ndo thou unceasingly entreat Him with the incorporeal ones,\nthat He grant forgiveness of transgressions and correction of life before the end,\nto us who, as is meet, hymn thee with faith and love,//\nO thou who alone art all-hymned.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, O archangels and angels, and all the hosts,\ncherubim and seraphim, which glorify the Lord.",
+      "verses": [
+        "I will confess Thee, O Lord, with my whole heart; I will tell of all Thy wonders.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Having worthily become, at the command of thy Creator, the master of the ranks of heaven\nand minister of divine glory, thou art a saving mediator for Christians,\nwatching over those who are on earth with thine immaterial glory.\nWherefore, we all praise thee as is meet, hymning thy divine festivity today.\nO Michael, supreme commander, entreat Christ God,\nto grant remission of sins unto those who with love celebrate thy holy feast.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "glory": {
+        "text": "The ranks of angels stand with fear before Thy throne, O Master, Christ God,\nand, ever illumined with rays therefrom, they unceasingly chant to thee a hymn of victory.\nThrough their sacred prayers do Thou grant peace to the world and great mercy to our souls.",
+        "tone": 4,
+        "melody": "Go thou quickly before"
+      },
+      "bothNow": {
+        "text": "O pure, all-immaculate one who knewest not a man, who alone hast given birth within time to the timeless Son and Word of God,\nwith the holy and honored patriarchs, the martyrs, prophets and the venerable,\nentreat Him, that He grant us purification and great mercy.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "He maketh His angels spirits,\nand His ministers a flame of fire.",
+      "verse": "Praise the Lord, O my soul; O Lord my God, Thou art become exceeding glorious.",
+      "tone": 4,
+      "_psalmRef": "Ps. 103:4 / 103:1"
+    },
+
+    "gospel": {
+      "reading": "Matthew 13:24-30, 36-43",
+      "_note": "Parable of the wheat and the tares; the harvest by the angels."
+    },
+
+    "postGospelSticheron": {
+      "text": "Thine angels, O Christ, standing in fear before the throne of majesty, ever illumined by Thine effulgence,\nThy chanters of hymns on high, and the ministers of Thy counsel sent down by Thee from on high,\nbestow illumination upon our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "John of Damascus (Canon I, Tone VIII)", "second": "John of Damascus (Canon II, Tone VIII)" },
+      "_canonNote": "Two canons of the bodiless hosts both by John of Damascus in Tone VIII. Theotokos canon omitted per pattern.",
+
+      "ode1": {
+        "irmos": "Let us, O ye people, send up a hymn unto our wondrous God\nWho hath freed Israel from bondage, chanting a hymn of victory and crying aloud:\nWe sing unto Thee, O only Master.",
+        "irmos2": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Ye faithful let us all hymn the uncreated Trinity, Who doth govern all the immaterial ranks of the heavenly choirs,\ncrying aloud: Holy, holy, holy art Thou, O Almighty God!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Creator of the angels, Thou didst set as a beginning to Thy creations the immaterial essence\nwhich doth surround Thy most honored throne\nthat it might cry out to Thee: Holy, holy, holy art Thou, O Almighty God!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Rejoice, O Gabriel, initiate of the mystery of the incarnation of God,\nand Michael, foremost among the immaterial ranks,\nwho unceasingly cry out: Holy, holy, holy art Thou, O Almighty God!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: I tremble before the mystery of Thy condescension, O Christ;\nfor, God in essence, Thou didst deign to be born from the Virgin as a man,\nthat Thou mightest save the world from slavery to the enemy." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Come ye, and, joining chorus, let us praise the noetic choirs of the incorporeal ranks,\nfor they are divine ministers who unceasingly pray for our salvation and rejoice over our repentance." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The chief captains of the angels, chosen before others, the valiant commanders, the incorporeal intelligences,\ntoday arise for the celebration of the feast of their radiant memory.\nWith them we also rejoice, offering a hymn to the Trinity." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ye people, with spiritual joy let us be glad today with the angels,\nfor Gabriel again announceth glad tidings:\nthe union of the Churches and the destruction of all adverse heresies, in the commemoration of the supreme commanders." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, through the Holy Spirit thou hast given birth unto the Word of the Father,\nWho transcending nature made His abode within thee,\nbeing of two natures and wills, yet immutably one in hypostasis;\nand Whose countenance we venerate." }
+        ],
+        "katavasia": "I will open my mouth…"
+      },
+
+      "ode3": {
+        "irmos": "Thy fear, O Lord, do Thou plant in the hearts of Thy servants\nand be Thou the confirmation of us who in truth call upon Thee.",
+        "irmos2": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness, and my spirit doth hymn Thee.",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With strength, O Immortal One, hast Thou appointed the mighty ones who fulfill Thine all-holy will,\never standing before Thee in the highest." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Christ, accept those who pray on our behalf, the commanders of the angels,\ninitiates of the mystery of Thine incarnation and Thine honored Resurrection." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast appointed angels as guardians for all mankind, in that Thou art compassionate;\nand Thou hast shown forth the ministers of the salvation of Thy favored ones." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Bride of God, thou hast ineffably conceived the Lord and Savior,\nWho delivereth from evil those who call upon thee in truth." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Michael, chief captain, foremost among the angels,\nas a secondary luminary of the Trinity hast thou revealed thyself to those who faithfully praise thee." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having proclaimed the coming of God in the flesh,\nGabriel faithfully filled the whole world with the effulgence of divine grace." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ever-hymned couple, radiant and immaterial pair,\nshow forth the light of God upon those who faithfully celebrate your memory." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure one, Isaiah hymned thine Offspring, Who transcendeth nature;\nand I too sing, that I may obtain His cleansing." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "O ye captains of the heavenly hosts, foremost among those who are enthroned on high,\nand awesome in divine glory, O Michael and Gabriel, supreme commanders,\nchief captains of the angels, and all ye bodiless ones, ministers of the Master:\npraying unceasingly on behalf of the world, ask for the remission of the sins we have committed,\nand that we may find mercy and grace on the day of Judgment.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "That which was commanded",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O pure and blessed one, who art full of divine grace,\nout of the compassion of thy tender compassion,\nwith the hosts on high, the archangels and all the bodiless powers,\nunceasingly entreat Him Who was born from thee,\nthat, before the end, He mercifully grant us forgiveness of sins and correction of life,\nthat we may find mercy.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou didst mount Thy steeds O Lord, Thine apostles,\nand taking their bridles in Thy hands, Thy chariot became salvation unto those who sing with faith:\nGlory to Thy power, O Lord!",
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst mount the angels like steeds, O Lover of mankind,\nand taking their bridles in Thy hand, Thy chariot became salvation unto those who unceasingly cry aloud:\nGlory to Thy power, O Lord!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy virtue covereth the angels, O Lover of mankind,\nand with Thy divine, glorious praise, O Beginningless One,\nfilleth the ends of the earth, which cry out with them: Glory to Thy power, O Lord!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst go forth unto the salvation of Thy people, O compassionate Christ,\nsummoning Thy friends, the powers;\nand Thy coming hath been gladness unto all who faithfully cry aloud: Glory to Thy power, O Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou hast been supra-naturally revealed to be both Virgin and Mother, O all-pure one;\nfor thou hast given birth to Christ, both God and man,\nto Whom the ranks of the angels cry out with fear: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "In Jericho of old the great Michael, supreme commander of the hosts of the Lord and chief among the bodiless ones,\nappeared unto Joshua, son of Nun, who was waging war, and he gave them victory,\nfighting for him; and the servant of God, receiving power from him, conquering them with the spear by which the enemy was captured." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Once the great Gabriel, the truly divine archangel, chief among the bodiless hosts,\nappeared, bearing the glad tidings of a child to Zechariah the priest.\nWherefore, the voice of the Word, who was born John, restoreth the voice of prophecy to his own father." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All the ends of the earth rejoice today with exceeding joy, O God,\ncelebrating the honored memory of Thine archangels, the divine Michael and Gabriel of divine wisdom.\nAnd together with them all the ranks of angels rejoice, for by their protection the world is preserved." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou alone didst remain pure after giving birth,\nand only thou hast been shown to be without husband,\nO thou that with milk didst nourish the true Word of the Father,\nWho through the Holy Spirit assumed our form, that of a servant, O Virgin Theotokos.\nAnd venerating the divine likeness of His countenance, Him do we honor." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Guide me out of the night of ignorance with the light of Thine understanding, O Lord,\nfor I am lost on the path that ensnares the soul,\nand direct me to the way of Thy commandments.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Borne up to the heights by inexorable longing for Thee, O Christ, Thou ultimate of all desires,\nthe angelic powers unceasingly glorify Thee." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast made Thine angels noetic by nature and incorrupt by Thy grace,\nthat they may hymn Thy majesty, O Christ,\nhaving fashioned them according to Thine image, O Unapproachable One." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Through their nearness to Thee, O Christ, Thou hast kept Thy servants un-inclined towards evil,\nfor Thou art the Source of all goodness,\nand Thou doest good unto those who serve Thee as is meet." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Enliven my soul which hath been slain by vile passions, O all-immaculate one,\nfor thou hast given birth unto the Preserver of life,\nand direct it to the path of eternal and blessed life." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When, of old, Balaam the prophet refused to submit to the ineffable and divine wonders of God,\nan angel appeared to his donkey at the crossroads and strangely denounced him,\nshowing his irrational animal to be unnaturally rational." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "When Peter had been arrested and languished in prison,\nan angel of God appeared, delivering him from the hands of Herod, from bonds and death.\nWherefore, come ye, let us all honor the wise angels as divine protectors of our souls." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O angels and archangels, ye divine powers of God,\nby your ever-offered supplications to God put an end to the uproar of battles,\nheresies in the Church and all temptations, and maintain us in peace." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We know Thee to be the God of creation:\nOne in two natures, two actions and wills, though uncommingled,\nthe Son of God Who took flesh from a woman, whose image depicted in Icons we venerate." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Thou O Lord, didst place Jonah alone within the sea monster.\nDo Thou save me, who am ensnared in the nets of the enemy,\nas thou didst save him from corruption.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "By Thy Word, O Lord, Thou didst in a godly manner bring the heavenly beings,\nthe immortal hosts, out of non-existence, making them luminous." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Honored initiates of the mysteries of the praise of God have ye been, O incorporeal ones,\ncitizens of heaven, truly divine tabernacles, who serve the Creator as is meet." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thee, O beginningless Son of God, do the noetic ranks of the bodiless ones\nunceasingly praise and glorify as the Creator and Fashioner of all things." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, thou hast been deemed worthy to cradle in thine embrace Him\nWho eternally sitteth with the Father in the highest.\nRender Him merciful unto us, thy servants, O pure one." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Taking flight in mind away from material corruption,\nlet us with fear honor the immaterial ones who are bodiless like flames of fire and light,\nchanting hymns unto them with lips of clay." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Calm the tempests of the passions, O archangels, and quell all revolts against the Faith,\nfor ye are the holy and fiery chief commanders of the Trinity." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O captains Michael and Gabriel, ye chief commanders and archangels of God,\nleaders of the bodiless ones, preserve us from all heresies by your protection." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Christ, being incorporeal in that Thou art God,\nThou didst manifest Thyself incarnate from the womb of her who knew not a man,\nand, as man, thou wast a bearer of our flesh, Whose likeness we honor, O ye faithful." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Supreme Leaders of God's armies\nand ministers of the divine glory,\nprinces of the bodiless Angels and guides of mankind,\nask ye for that which is beneficial for us, and for great mercy,//\nas Supreme Leaders of the Bodiless Hosts.",
+        "tone": 2,
+        "label": "Kontakion of the holy angels"
+      },
+      "ikos": {
+        "text": "In Thy Scriptures, O immortal Lover of mankind, Thou didst say that a multitude of angels rejoiceth in heaven over one man that repenteth.\nWherefore, O Sinless One, Who alone knowest the hearts of all people,\namid our transgressions we ever make bold to beseech Thee\nto have compassion and send down compunction upon us, unworthy though we be,\ngranting us forgiveness, O Master; in that Thou art compassionate,\nfor the supreme commanders of the bodiless host entreat Thee on behalf of us all."
+      },
+
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "irmos2": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity,\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Compassionate One, Thou didst reveal the immaterial essence of Thine angels to be light,\nfor they are unceasingly filled with Thine ineffable light,\ncrying aloud: Blessed art Thou, O God, throughout the ages!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The myriads of ministering angels cannot endure to behold the sight of the Countenance\nbefore which they unceasingly stand,\ncrying aloud: Blessed art Thou, O God, throughout the ages!" },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst create the nature of the angels by Thy hypostatic Word,\nand having sanctified it by the divine Spirit, O God,\nThou didst teach it to bless the Trinity throughout all ages." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Trinitarian: Mindful of the three hypostases,\nwe glorify the un-circumscribed essence of the Father, the Son and the Spirit,\ncrying aloud: Blessed art Thou, O God, throughout the ages!" },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Come ye, O human race, and with the choirs of the bodiless ones let us worship,\ncelebrating on this auspicious day the memory of the wise archangels of Christ,\nsinging: Holy, holy, holy art Thou, O God of our fathers!" },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Of old, Abraham the God-seer, and the glorious Lot, gave shelter to the angels,\nin that they were hospitable, and they found fellowship with the angels,\ncrying: Holy, holy, holy art Thou, O God of our fathers!" },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "To the valiant Manoah and the most wise Tobit appeared the angels who give rewards for the struggles of life as is meet;\nand once the Angel of the children quenched the flame in the fiery furnace." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: All that is ours by nature didst Thou take from the Virgin, except change, O Jesus,\nand with the fathers we proclaim Thee to be of two natures, but One in hypostasis;\nand, depicting the visage thereof, we faithfully venerate it." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Glorified in the holy mountain, the Lord revealed the mystery of the Ever-Virgin unto Moses\nin the flames of the burning bush:\npraise ye and supremely exalt Him throughout all ages.",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Let us emulate the life of the angels and wing our thoughts to the heights,\nand with them let us immaterially chant unto the Lord,\nhymning and supremely exalting Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The angels, heavenly members of the chorus which doth surround the throne of glory\nand ever dance about God, hymn and supremely exalt Him throughout all ages!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Trinitarian: The Trinity, which unceasingly maketh its ministers a flame of immaterial fire in the highest\nand doth show forth its angels as spirits,\nlet us worship and glorify throughout all ages." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Him before Whom myriads of angels and archangels stand in trepidation\nwast thou deemed worthy to bear in thine arms, O Theotokos,\npray thou that those who glorify Him may be saved throughout all ages." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Michael the archangel is chief among the angels;\nbut with him Gabriel is also radiantly glorified as the initiate of the mystery of grace,\nthe honored one who obtained the consent of the Virgin, the champion leader of the bodiless ones;\nand they both proclaim joy unto those who cry: O ye people, exalt Christ supremely throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Ezekiel, beholding the ranks of angels in their divers forms, proclaimed, prophesying:\n'Among them six-winged seraphim stood in intercession, and many-eyed cherubim surrounded them;\nand with them I saw most radiant archangels glorifying Christ throughout all ages'." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "How the dread coming of Thy second Judgment will be was foretold by Daniel in revelation:\n'The thrones were set, and the Ancient One sat,\nand He let in the myriads of angels who stand with fear and cry out with incessant voices to the Trinity throughout all ages'." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Word, Who is consubstantial with the Father and the Spirit,\nof His own will manifested Himself from the Virgin is like unto us,\nnot mingling one with the other of the two natures of His awesome union.\nFor He showed Himself to be One and the Same in both, in two natures, and one hypostasis.\nAnd now we bow down before the image of His likeness." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Thou hast passed the limits of nature, having conceived the Maker and the Lord,\nand didst become a door of salvation unto the world;\nwherefore we unceasingly magnify thee, O Theotokos.",
+        "irmos2": "Saved by thee, O pure Virgin, we confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts thee do we magnify.",
+        "troparia": [
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Christ, Who hast ineffably united those who are in heaven with those who are on earth,\nand made one Church of angels and mortals, Thee do we unceasingly magnify." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O ye angels and archangels, thrones, virtues and dominions, principalities and powers, cherubim and seraphim:\npray ye with the Theotokos on behalf of the world." },
+          { "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Michael and Gabriel, who are shown to be leaders of all,\nvisit those who with love honor your most festive memory\nand faithfully cry aloud: Save us from all evil circumstances!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Rejoice, O holy bride of God!\nRejoice, thou that didst give birth unto the Light of the world for the faithful!\nRejoice, rampart and shelter of us all!\nDo thou unceasingly entreat God on our behalf, for He is our Benefactor." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Ye have shown yourselves to be champions for the infirm,\nfor those who sail the sea and those who are in need,\nO Michael and Gabriel, first among the bodiless hosts." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Gabriel, in that thou dost hold chorus with the divine powers and thrones,\nand art the champion leader of the angels and an initiate of the mysteries of God,\npray thou to the Savior for us." },
+          { "canon": "secondCanon", "refrain": "Holy archangels and all bodiless powers, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "In that ye are the protectors of the world and commanders of the hosts on high,\nentreat ye the Savior on our behalf." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Together we glorify thee, O Theotokos,\nfor thou dost save us from the passions\nand dost fulfill those of our supplications which are to our benefit." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "O Michael, chief captain, from the Father of lights thou didst receive command of the fiery servants.\nWherefore, thou dost have the radiant brilliance of His glory,\nstanding before His most honored throne as first among the immaterial ranks.",
+        "label": "Exaposteilarion of the holy angels",
+        "melody": "By the Spirit in the sanctuary",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "O most glorious Michael, divine supreme commander, who standest before God,\nleader of the immaterial powers, archangels and angels, dominions, thrones and principalities:\nstanding before the unbearable throne, protect, keep, preserve and save all who with faith honor thee\nas the intercessor for the world.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "melody": "With the disciples",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Thou art more honorable than the glorious cherubim, O all-hymned one,\nand more glorious beyond compare than the awesome seraphim,\nand more holy than all the holy angels, O most pure one;\nfor thou didst ineffably give birth in the flesh to the Creator of all, O Theotokos.\nHim do thou entreat, that He grant remission of transgressions unto thy servants.",
+        "label": "Theotokion (at Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "O Michael, chief commander,\nwith fear we hymn thee as first captain of the heavenly ranks,\nmighty intercessor, protector and deliverer of men on earth;//\nand we pray that thou deliver us from every deadly pestilence.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "As chief captain of the divine hosts of heaven\nthou dost today summon the choirs of mankind to hold one radiant festival with the angels,\nthat of their divine synaxis,//\nand with them to chant the thrice-holy hymn unto God.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "O Michael, divine intellect,\ndo thou keep and protect all throughout life us that with faith flee beneath the shelter of thy divine wings;\nand at the dreaded hour of our death, O archangel,//\ndo thou stand forth as a most gracious helper for us all.",
+          "tone": 1
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O supreme commanders, three-sunned rays made luminous by light divine,\nye enlighten the immaterial legions;\nshown forth as light with splendid brightness in the highest,\nye shine forth the fire of the unapproachable Godhead in the world.\nWherefore, with lips of flame ye unceasingly chant the thrice-holy hymn:\nHoly, holy, holy art Thou, O our God!//\nGlory be to Thee!",
+          "tone": 4,
+          "author": "Ephraim of Karyes"
+        }
+      ],
+      "doxastikon": {
+        "text": "Where thy grace doth overshadow, O archangel, the power of the devil is driven off,\nfor the fallen Morning Star cannot bear to behold thy light.\nWherefore, we beseech thee, by thy mediation quench thou his fiery darts which are hurled at us,\ndelivering us from his temptations,//\nO right praiseworthy supreme commander Michael.",
+        "tone": 5,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "We, the faithful bless thee, O Virgin Theotokos, and we glorify thee as is meet,\nfor thou art the impregnable city, the impassable rampart,\nthe steadfast intercessor and refuge of our souls.",
+        "tone": 5,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O supreme commanders of the heavenly hosts,\nwe entreat you unworthy though we be,\nthat by your prayers, you will encompass us\nwith the protection of the wings of your immaterial glory\npreserving us who fall down before you and earnestly cry aloud:\ndeliver us from all misfortunes,//\nfor ye are the commanders of the hosts on high.",
+      "tone": 4
+    }
+  }
+}

@@ -4976,6 +4976,32 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
       { tone: spec.antiphons.tone, source: 'octoechos', _source: spec.antiphons._source }));
   }
 
+  // ── 10b. Sessional hymn after Polyeleios (Triodion overlays, etc.) ─────────
+  if (spec.sessionalHymnAfterPolyeleios) {
+    const s = spec.sessionalHymnAfterPolyeleios;
+    const section = 'Sessional Hymn (after Polyeleios)';
+    if (s.label) {
+      blocks.push(S('shap-label', section, 'rubric', null, s.label));
+    }
+    (s.stichera || []).forEach((st, i) => {
+      if (st.verse) {
+        blocks.push(S(`shap-v${i}`, section, 'verse', 'reader', `V. ${st.verse}`));
+      }
+      blocks.push(S(`shap-${i}`, section, 'hymn', 'choir', st.text,
+        { tone: st.tone, _source: s._source }));
+    });
+    if (s.glory) {
+      blocks.push(S('shap-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
+      blocks.push(S('shap-glory-hymn', section, 'hymn', 'choir', s.glory.text,
+        { tone: s.glory.tone, _source: s._source }));
+    }
+    if (s.bothNow) {
+      blocks.push(S('shap-bn', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+      blocks.push(S('shap-bn-hymn', section, 'hymn', 'choir', s.bothNow.text,
+        { tone: s.bothNow.tone, label: s.bothNow.label || s.bothNow._label, _source: s._source }));
+    }
+  }
+
   // ── 11. Prokeimenon + Let Everything That Breathes + Gospel ────────────────
   if (hasGospel) {
     // Prokeimenon
@@ -5129,11 +5155,22 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
       });
     }
 
-    // Glory/Now + Doxastikon
+    // Glory + Doxastikon
     if (laudsSpec.doxastikon) {
-      blocks.push(S('lauds-glory-now', section, 'doxology', null, vespersFixed.doxology.gloryNow));
+      // If a Both-now theotokion follows, emit Glory-only; otherwise Glory-Now.
+      const gloryText = laudsSpec.theotokion
+        ? vespersFixed.doxology.gloryOnly
+        : vespersFixed.doxology.gloryNow;
+      blocks.push(S('lauds-glory', section, 'doxology', null, gloryText));
       blocks.push(S('lauds-doxastikon', section, 'hymn', 'choir', laudsSpec.doxastikon.text,
         { tone: laudsSpec.doxastikon.tone, label: laudsSpec.doxastikon.author, _source: laudsSpec.doxastikon._source }));
+    }
+
+    // Both now + Theotokion (e.g. Cross Sunday's "Most blessed art thou…")
+    if (laudsSpec.theotokion) {
+      blocks.push(S('lauds-bothnow', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+      blocks.push(S('lauds-theotokion', section, 'hymn', 'choir', laudsSpec.theotokion.text,
+        { tone: laudsSpec.theotokion.tone, label: laudsSpec.theotokion.label, _source: laudsSpec.theotokion._source }));
     }
   }
 
@@ -5350,6 +5387,13 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
               } else if (t.canon === 'theotokos') {
                 blocks.push(S(`canon-ode${odeNum}-theotokos-hdr`, section, 'rubric', null,
                   'Canon of the Theotokos'));
+              } else if (t.canon === 'crossOfTheStudite') {
+                blocks.push(S(`canon-ode${odeNum}-cross-studite-hdr`, section, 'rubric', null,
+                  'Canon of the Cross by St Theodore the Studite'));
+                if (t._irmos) {
+                  blocks.push(S(`canon-ode${odeNum}-cross-studite-irmos`, section, 'hymn', 'choir',
+                    t._irmos, { tone: t._irmosTone || tone, label: 'Irmos' }));
+                }
               }
               prevCanon = t.canon;
             }

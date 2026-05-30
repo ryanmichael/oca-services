@@ -1,0 +1,262 @@
+{
+  "_meta": {
+    "feast": "Holy Great-Martyr Paraskeva (Friday)",
+    "feastKey": "stParaskeva",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 10-28.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-28.pdf",
+    "_note": "Two interleaved great-martyr canons: Canon I in Tone IV + Canon II in Tone VIII. Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "O most wise and all-praised Parasceva, martyr of Christ,\nhaving received manly might and set aside thy womanly weakness,\nthou didst vanquish the devil and put the tyrant to shame, crying out and saying:\n'Come ye, cut my body asunder with your swords and burn me with fire;\nfor, rejoicing, I shall go to Christ my Bridegroom!'\nBy her supplications,//\nO Christ God, save our souls.",
+    "tone": 4,
+    "label": "Troparion of St Paraskeva"
+  },
+  "kontakion": {
+    "text": "As a dowry, bearing thine all-holy and undefiled torment, unto Christ the immortal Bridegroom,\nthou didst gladden the choir of the angels and overcome the wiles of the demons.\nWherefore, we cherish thee with honor and faith,//\nO much suffering martyr Parasceva.",
+    "tone": 3,
+    "label": "Kontakion of St Paraskeva",
+    "melody": "Today the Virgin"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O most wise and all-praised Parasceva, martyr of Christ,\nhaving received manly might and set aside thy womanly weakness,\nthou didst vanquish the devil and put the tyrant to shame, crying out and saying:\n'Come ye, cut my body asunder with your swords and burn me with fire;\nfor, rejoicing, I shall go to Christ my Bridegroom!'\nBy her supplications,//\nO Christ God, save our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr"
+    },
+    "sedalion": [
+      {
+        "text": "Loving the Bridegroom, thy Creator and God, thou didst forsake a corruptible bridegroom, O honored martyr Parasceva,\nand, rejoicing, endured torments, laceration and torture by fire.\nWherefore, wearing a crown, thou hast entered into the divine bridal-chamber,//\nasking remission of sins for all.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O all-immaculate Virgin who hast given birth to the transcendent God:\ndo thou unceasingly entreat Him with the incorporeal ones,\nthat He grant forgiveness of transgressions and correction of life before the end,\nto us who, as is meet, hymn thee with faith and love,//\nO thou who alone art all-hymned.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Loving Christ thy Bridegroom, and making thy lamp radiant with light,\nthou didst shine forth with the virtues, O glorious one;\nwherefore, thou hast ascended to the heavenly bridal-chamber, having received the crown of martyrdom.//\nFrom misfortunes deliver us who celebrate thy memory, O Parasceva.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Having been lifted up",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "After God, it is to thy divine protection that I, the lowly one, flee, O Theotokos,\nand falling down, I pray: Have mercy, O most pure one,\nfor my sins have engulfed me, and I fear torments and tremble.//\nO pure Lady, entreat thy Son, that He deliver me them.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy passion-bearer Parasceva,\nand we reverence thine honored sufferings,//\nwhich thou didst endure for Christ.",
+      "verses": [
+        "Our God is refuge and strength, a helper in afflictions which mightily befall us."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Wedded to the Lord in a godly manner, thou didst offer Him thy blood and sacrifice as a gift,\nO passion-bearer and maiden Parasceva;\nand as is meet thou hast reached the divine bridal-chamber, continually full of ineffable radiance.\nWherefore, spiritually celebrating thy holy and honored memory, we glorify the Savior and cry out to thee with faith:\nentreat Christ God, that He grant remission of sins//\nunto those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee: Entreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Wondrous is God in His saints,\nthe God of Israel.",
+      "verse": "In congregations bless ye God, the Lord from the well-springs of Israel.",
+      "tone": 4
+    },
+    "gospel": { "reading": "Matthew 15:21-28", "number": 62 },
+    "postGospelSticheron": {
+      "text": "Thou hast been reckoned among the ranks of those on high, O glorious one,\nhaving forsaken the world and loved Christ, O all-honored Parasceva,//\nask for us peace and great mercy.",
+      "tone": 1,
+      "label": "Idiomelon of St Paraskeva"
+    },
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I (Tone IV) + Canon II (Tone VIII). Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted.",
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "irmos2": "Let us sing unto the Lord, who led His people through the Red Sea://\nfor He alone hath gloriously been glorified.",
+        "troparia": [
+          { "text": "Illumined from on high with divine light, drive away the darkness of mine ignorance, and through thy supplications grant me the grace to hymn the multitudes of thy wonders, O martyr Parasceva." },
+          { "text": "Like the dawn thou hast truly shone forth more radiantly than the sun, in that thou art the confirmation of the Church, O martyr Parasceva, and with the rays of thy struggles and thy miracles thou hast illumined the ends of the world." },
+          { "text": "Loving Christ, the immortal Bridegroom, thou didst show thyself to share in His sufferings through faith, and hast received the everlasting kingdom and an imperishable crown, O glorious martyr Parasceva." },
+          { "text": "Theotokion: O all-immaculate Virgin who hast given birth to Christ and didst bear Him wholly in thine arms, dispel the darkness of my soul and enlighten me, that I may hymn thee, O thou who art truly well named." },
+          { "canon": "secondCanon", "text": "Let us chant unto the Lord Who hath glorified the memory of the martyr and leadeth earthly choirs unto praise today." },
+          { "canon": "secondCanon", "text": "Spurning riches, thou didst also disdain glory, O honored martyr Parasceva, and giving thyself over to suffering." },
+          { "canon": "secondCanon", "text": "The Master desired thy beauty, O martyr, and caused thee to dwell in the bridal-chamber of heaven." },
+          { "canon": "secondCanon", "text": "Theotokion: Having found a paradise of blessedness through thee which passeth understanding, O Theotokos, we, the race of Adam, praise thee as is meet." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty hath waxed feeble and the weak have girded themselves with strength://\ntherefore is my heart established in the Lord.",
+        "irmos2": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "Mercilessly beaten with staves, her sinews and bones broken, the ever-memorable martyr Parasceva rejoiced, crying out: 'Nothing will separate me from Thy love, O Christ!'" },
+          { "text": "The mouths and boastful tongues of the ungodly who spoke iniquity against the Righteous One were closed when the martyr Parasceva cried out, preaching the Savior." },
+          { "text": "With the sprinkling of thy blood thou didst extinguish the fire of ungodliness, O much suffering martyr Parasceva, enlightening the understanding of the faithful." },
+          { "text": "Theotokion: Piously are the words of Isaiah fulfilled; for the Virgin gave birth in the flesh to Christ, the Bestower of life, the Savior of our souls." },
+          { "canon": "secondCanon", "text": "'Thou art my confirmation, O Lord,' said the martyr, 'Thou art my help; and to Thee have I fled, O King of the world!'" },
+          { "canon": "secondCanon", "text": "Thou didst appear at the tribunal, possessed of a manly-wise soul, and vanquished the enemy as a coward, O all-praised one." },
+          { "canon": "secondCanon", "text": "Heal thou my spiritual eyes by thy supplications, O all-praised martyr, and direct thou my soul." },
+          { "canon": "secondCanon", "text": "Theotokion: Grant us aid through thy supplications, O most pure one, fending off evil circumstances by thy counsels." }
+        ]
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God,\nis come in a swift cloud and with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Wounded with the love of Christ, with thy might thou didst slay the hordes of the tyrants pouring forth the grace of life everlasting; and thou hast received a reward for thy sufferings, O Parasceva, adornment of the martyrs of Christ." },
+          { "text": "Surpassing all in the love of Christ thy Bridegroom, and hating carnal love, thou didst mightily endure painful sufferings, O martyr Parasceva, crying aloud: 'Cut me not off from Thy desire, O Christ, that I may finish the contest of martyrdom!'" },
+          { "text": "Rejecting all the vanity of the world, thou didst cleave to God alone, enduring the pangs of suffering, O martyr Parasceva, thou manly minded bride of God." },
+          { "text": "Theotokion: As the prophet said of old, O all-immaculate one, the word descended into thy womb like dew upon the fleece, and thou hast given birth to Him in two natures. To Him do we cry out: Glory to Thy power, O word!" },
+          { "canon": "secondCanon", "text": "Hearing the commandment of the Gospel, O Lord, the martyr Parasceva glorified Thy divinity." },
+          { "canon": "secondCanon", "text": "Thou didst in nowise offer sacrifices to the vile demons, but didst give thyself over to the Lord as a living sacrifice." },
+          { "canon": "secondCanon", "text": "Standing mightily before the tribunal, the martyr cried aloud: 'When I have been crucified with Christ my Bridegroom, I shall reign with Him.'" },
+          { "canon": "secondCanon", "text": "Theotokion: As Thou art sinless, grant us cleansing of our offenses; and as Thou art good, bestow peace upon Thy people, through the supplications of her who gave Thee birth." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "irmos2": "Rising early we cry to Thee, O Lord; save us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "The never-waning Light dwelt within thy soul, that thou mayest shine forth with virtue, illumining those who glorify thee without ceasing." },
+          { "text": "Thou didst dry up the stream of impious ungodliness, O martyr Parasceva, and with the torrents of thine unjustly shed blood thou didst quench the fire of delusion." },
+          { "text": "Possessed of a brilliant mind, thou wast deemed worthy of the gift of prophecy and to all manifestly foretold things to come, O much suffering Parasceva." },
+          { "text": "Theotokion: O Mother of God who ineffably hast given birth to God the Word, thou hast healed the evil of my soul; wherefore, all generations call thee blessed." },
+          { "canon": "secondCanon", "text": "Waking at dawn, the martyr Parasceva cried aloud: 'Nothing will separate me from the love of Christ!'" },
+          { "canon": "secondCanon", "text": "In his intention to weaken the godly martyr, the wicked one was himself shown to be a laughing-stock." },
+          { "canon": "secondCanon", "text": "Grant me enlightenment, O all-praised one, and illumine my much-troubled mind by thy supplications." },
+          { "canon": "secondCanon", "text": "Theotokion: Still thou the ever-raging tempest of the passions, O thou who hast given birth to Christ, the Helmsman and Lord." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons//\nby the blood that for mercy's sake flowed from Thy side.",
+        "irmos2": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "Having shone forth from Rome like a radiant sun, O holy martyr, thou dost drive away from all the darkness of the demons by thine entreaties, O much-suffering Parasceva." },
+          { "text": "By touching the shrine of thy relics those who approach it receive healing; lepers and those with an issue of blood are cleansed, and the demonic hordes flee the invocation of thy holy name." },
+          { "text": "Thou didst rise at dawn unto Christ, the never-setting Sun, and with His splendors thou didst illumine thy soul and heart, O divinely wise and honored Parasceva; and, rejoicing, thou didst pass over to the light of the Trinity." },
+          { "text": "Theotokion: Heal thou the passions of my soul, O all-immaculate one who hast given birth to the Well-spring of dispassion, and dispel the torment which continually vexes my heart." },
+          { "canon": "secondCanon", "text": "Parasceva cried aloud: 'Cover me with a robe from heaven, O greatly Merciful One Who dost clothe the heavens with clouds!'" },
+          { "canon": "secondCanon", "text": "As the Lord hearkened unto Daniel in the lions' den, so did He grant healing to thee as thou didst pray in prison." },
+          { "canon": "secondCanon", "text": "Thou didst cast down the pride of the tyrant, and, remaining unharmed, didst thyself brave torture." },
+          { "canon": "secondCanon", "text": "Theotokion: The Word of God hath shown thee to mortals as a heavenly ladder, for by thee hath He descended to us." }
+        ]
+      },
+      "kontakion": {
+        "text": "As a dowry, bearing thine all-holy and undefiled torment, unto Christ the immortal Bridegroom,\nthou didst gladden the choir of the angels and overcome the wiles of the demons.\nWherefore, we cherish thee with honor and faith,//\nO much suffering martyr Parasceva.",
+        "tone": 3,
+        "label": "Kontakion of the holy great-martyr",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Who can describe the powers of the Lord? Who can recount thy sufferings and virtues, O martyr?\nWhat tongue can hymn thee as is meet?\nWherefore, unworthy though I am, I shall attempt to hymn, praise and glorify the Master, the Bestower of life,\nWho granted strength in the arena to thee who confessed Him as the true God,\nthat thou mightest not fear the tyrants.//\nFor this cause, we honor thee with faith and love, O much suffering martyr Parasceva."
+      },
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire and slay the Chaldeans,\nwho unjustly entrapped the righteous ones.//\nO supremely hymned Lord, God of our fathers, blessed art Thou.",
+        "irmos2": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity,//\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "O martyr Parasceva, thou turtle-dove with wings of gold, protected by the weapon of the Cross, thou didst drive away the Saracens who drew nigh to thy city at night, saving from slaughter the faithful who chant: O all-hymned God of our fathers, blessed art Thou!" },
+          { "text": "Having endured multifarious pangs for the sake of Christ, O martyr Parasceva, thou didst obtain from Him rest without pain; and, rejoicing, thou criest out: O all-hymned God of our fathers, blessed art Thou!" },
+          { "text": "How invincible was thine understanding, O honored Parasceva! For thou didst not fear the torments of the choir of leading tormenters, and, contending against them, thou didst repose as a servant of the mystery of divine glory, chanting: O all-hymned God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: Blessed is the Fruit of thy blessed womb, O blessed one, Whom the hosts of heaven bless and the assemblies of mankind praise, Who hath delivered from the ancient curse us who chant: O all-hymned God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "The wonders of the divine martyr have been shown to be past understanding, for in her virginal youth she vanquished the tyrant, crying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Standing in the midst of the tribunal, thou didst shut the mouths of the foolish which are hateful to God, and confessed God, crying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Unmindful of thy feminine weakness, and manfully strengthening thyself with patience, amid thy suffering thou didst cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Theotokion: Incarnate through the Virgin's womb, Thou didst manifest Thyself for our salvation; wherefore, acknowledging Thy Mother to be the Theotokos, we cry out in thanksgiving: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee: all ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "irmos2": "The King of heaven, Who is glorified by the hosts of angels,//\nlet us praise and supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Illumined with the divine splendors of the noetic Sun, O all-praised martyr Parasceva, thou didst pass through the night of ungodliness, chanting with single-mindedness of soul: Hymn the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "Like a ewe-lamb, like an unblemished heifer, like a divine turtle-dove, as a voluntary immolation thou didst bring thyself to thy Creator, O martyr Parasceva, and didst offer thyself as a blameless sacrifice, chanting harmoniously: Hymn the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "By thy martyrdom thou didst put on a splendid robe dyed in thy blood, O valiant martyr Parasceva, truly shedding the corrupt man with his sins; and, rejoicing, thou didst chant: Hymn the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "Theotokion: The women hastened after thee, O all-pure Bride of God who alone knewest not wedlock, acknowledging the sweet-smelling Myrrh, Christ God, the only-begotten Son Who shone forth from thy womb; and they reign with thee, hymning Him throughout the ages." },
+          { "canon": "secondCanon", "text": "The virgin martyr Parasceva confessed Christ God the King, chanting: Praise and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "For love of the divine Trinity thou didst quench the fire of ungodliness, crying: Supremely exalt ye Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "With thy struggles toward God thou didst cast down the prince of darkness, crying: Supremely exalt ye Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "Theotokion: Extinguish the sparks of the assault of those who oppose us, O Virgin, that we may hymn the Lord and supremely exalt Him throughout the ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "irmos2": "Saved by thee, O pure Virgin, we confess thee to be truly the Theotokos,//\nand together with the choirs of the bodiless hosts thee do we magnify.",
+        "troparia": [
+          { "text": "Having made thine abode in the heavenly bridal-chamber, O most honored virgin Parasceva, consciously delighting in invisible beauties, and receiving ineffable effulgence, enlighten those who hymn and magnify thee." },
+          { "text": "Thou didst receive a crown for thy head, O valiant minded Parasceva, having finished the race and kept the Faith intact; and the ranks of the righteous have joyfully received thee. Wherefore, we now call thee blessed." },
+          { "text": "To those in need thou givest drops of healing as from a well-spring, O most noetically rich martyr Parasceva, stopping the torrents of infirmities, driving off the burning heat of the passions, and watering the hearts of the pious, that they may produce godly works." },
+          { "text": "Theotokion: In a manner surpassing all understanding thou hast been revealed to be a habitation of wisdom, O all-immaculate Maiden, and an animate throne and portal. Wherefore, the virgins, loving thee as their Queen, followed in thy train, O divine Maiden." },
+          { "canon": "secondCanon", "text": "Thou wast truly worthy of thy name, O Parasceva, emulating the sufferings of Christ and joining chorus with the armies of heaven." },
+          { "canon": "secondCanon", "text": "Thou didst reach the end of thy torment through thy manifold sufferings and pangs, glorifying Christ with the angels in the heavens, O all-honored one." },
+          { "canon": "secondCanon", "text": "As thou hast boldness before the Savior and Master, O glorious martyr Parasceva, pray for those who hymn thy memory." },
+          { "canon": "secondCanon", "text": "Theotokion: With hymns we sing to thee, O thou who art full of the grace of God, and unceasingly we offer thee the cry 'Rejoice!', for thou hast poured forth gladness upon us all." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Like a most comely rose didst thou spring forth from a thorny root, O virgin Parasceva,\nempurpled with the blood of thy sacred suffering as with dew://\nFrom misfortunes save us who now celebrate thy divine memory with love.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy great-martyr",
+      "melody": "Hearken, ye women",
+      "bothNow": {
+        "text": "O most pure Mary, Birthgiver of God,\nthe divinely wise virgins who surround thee as a Queen by birth have been brought before thy Son, the King of all, as becometh brides.//\nHim do thou entreat on our behalf, O Virgin Maiden and Mother.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Virginity and most wondrous martyrdom didst thou offer unto Christ incorruptibly,\nO most honored virgin Parasceva.\nThou didst cast down the arrogance of ungodly delusion by the power of the Cross and with manly intelligence.//\nWherefore, the whole Church of Christ doth celebrate thy holy memory.",
+          "tone": 4,
+          "melody": "As one valiant among the martyrs"
+        },
+        {
+          "text": "O wise virgin, blessed Parasceva,\nthe choirs of the angels were manifestly amazed at thy suffering, thine opposition, and thine invincibility,\nhow with manly combat thou didst break the invisible foe,//\nand didst richly receive from the hand of the Bestower of life a crown of victory.",
+          "tone": 4
+        },
+        {
+          "text": "Burning with fire, thou didst quench the material flame with fiery wisdom,\nand, keeping the lamp of thy soul alight, thou didst enter with Christ, thy Bridegroom, into the heavenly bridal-chamber;\nand, having slain the passions with the sparks of miracles,//\nthou hast vanquished the demonic hordes as a martyr.",
+          "tone": 4
+        },
+        {
+          "text": "Thou hast made thine abode in the courts of heaven, O martyr Parasceva,\nand hast been admitted to its choirs both because of the blood of thy sufferings and thy visions,//\nO all-praised one.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        }
+      ],
+      "doxastikon": {
+        "text": "Let the martyr of Christ be honored with hymns, for all laudation becometh her.\nFor, weaving her own wreath of praises, as one unbowed and steadfast she set at naught the great evil of the tyrants.\nWherefore, suffering pain, she cried aloud://\n'Be Thou mine aid, O Lord, and forsake me not!'",
+        "tone": 6
+      },
+      "theotokion": {
+        "text": "We have come to know God Who was incarnate of thee, O Virgin Theotokos.//\nHim do thou entreat for the salvation of our souls.",
+        "tone": 6,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O most wise and all-praised Parasceva, martyr of Christ,\nhaving received manly might and set aside thy womanly weakness,\nthou didst vanquish the devil and put the tyrant to shame, crying out and saying:\n'Come ye, cut my body asunder with your swords and burn me with fire;\nfor, rejoicing, I shall go to Christ my Bridegroom!'\nBy her supplications,//\nO Christ God, save our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr"
+    }
+  }
+}

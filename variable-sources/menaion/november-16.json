@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle and Evangelist Matthew",
+    "feastKey": "stMatthewEvangelist",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-16.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-16.pdf",
+    "_note": "Single canon of the evangelist by Theophanes in Tone IV (3 troparia per ode incl. Theotokion). The Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "O holy Apostle and evangelist Matthew,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3,
+    "label": "Troparion of St Matthew the Evangelist"
+  },
+  "kontakion": {
+    "text": "Casting off the yoke of the office of a publican,\nthou didst shoulder the yoke of righteousness\nand wast shown to be a most excellent merchant, bringing in the wisdom from on high as riches.\nWherefore, thou didst preach the Word of truth\nuplifting the souls of the despondent,//\ndescribing the hour of judgment.",
+    "tone": 4,
+    "label": "Kontakion of St Matthew",
+    "melody": "Having been lifted up"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy Apostle and evangelist Matthew,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy evangelist"
+    },
+    "sedalion": [
+      {
+        "text": "The exceedingly wise Matthew, who was first to record the Gospel of Christ illumining all creation under the heavens,\nthe excellent initiate of the mysteries of Christ, who is now honored with sacred hymns,//\ndoth beg forgiveness of sins on behalf of those who honor him with love.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we who with love flee for refuge to thy goodness know thee to be the Mother of God\nand after childbirth still truly Virgin;\nfor we sinners have thee as our protection;//\nwe have thee as our salvation in misfortunes, as the only All-blameless one.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Resplendent with works of the right Faith, thou didst extinguish all false religion;\nand as an insuperable victor thou hast proclaimed the Gospel unto all, richly adorning all the Churches,//\nO Apostle Matthew, entreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine Faith",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Without separating Himself from the divine Essence when He took flesh in thy womb,\nthe one Lord remained God though He had become a man;\nand even after thy birthgiving He preserved thee, His Virgin Mother, as immaculate as thou wast before giving birth.//\nHim do thou earnestly beseech, that He grant us great mercy.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ and evangelist Matthew,\nand we honor thy pangs and labors,//\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Truly the sound of thy wise words hath gone forth to all the ends of the earth, O all-praised apostle of the Lord,\nfor thou didst manifestly preach to all the vision of God, bringing the nations from ignorance to understanding.\nWherefore, having dispelled the darkness of idolatry,\nthou hast shone forth the light of knowledge upon those who sit in darkness, O all-praised Matthew.\nEntreat Christ God, that He grant remission of sins//\nunto those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee: Entreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 21:15-25" },
+    "postGospelSticheron": {
+      "text": "Let us clap our hands in hymnody, O ye faithful, in memory of the honored Apostle and Evangelist Matthew;\nfor, casting away the yoke and gold of his publican's booth,\nhe followed after Christ and becameth a preacher of the divine Gospel.\nHence, as the prophet saith, his sound hath gone forth into all the world,//\nand he prayeth that our souls be saved.",
+      "tone": 6,
+      "label": "Idiomelon of St Matthew"
+    },
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the evangelist by Theophanes (Tone IV). Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted.",
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "O all-glorious Matthew, servant of Christ, richly bestow upon me the grace which abideth within thee, that I may cry aloud, splendidly proclaiming, and, rejoicing, hymn thy wonders." },
+          { "text": "Thou didst utterly abandon the tumult of earthly things; for, having hearkened to the voice of the incarnate Word, thou wast revealed to be a steward and God-pleasing herald of His grace." },
+          { "text": "As an eye-witness and servant of the radiant Word of the pre-eternal Father, O apostle, thou didst go forth, proclaiming the glad tidings of His coming unto all the nations." },
+          { "text": "Theotokion: Thou didst announce the glad tidings of the destruction of death, the abolishment of corruption and the manifestation of life, O wise one; for, having conceived the Unapproachable One in her womb, the Virgin hath restored the world." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory.",
+        "troparia": [
+          { "text": "O Word of God, Thou hast shown forth Thine apostles as beacons of life which drive away the gloom of ungodliness, illumining the whole world with Thy divine glory, O Master." },
+          { "text": "Having armed the most valiant Matthew with Thine armor, O Savior, thou hast made him mightier than the tormenters and revealed him to be the destroyer of the deception of idolatry, O Master and Lover of mankind." },
+          { "text": "The sound of thy fiery tongue consumed the temples of the demons, O divinely inspired Matthew, thou instrument of the Comforter, through whom Christ, the hypostatic Life of all, hath been proclaimed." },
+          { "text": "Theotokion: The trumpet of theology which soundeth forth mightily hath illumined the divinely wise Matthew to proclaim to the peoples, the Effulgence of the Trinity and the incarnation of the Word from thee, O most pure one, in a manner transcending understanding." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God, that the incarnation of Thee the Most High,\nwill be from a Virgin, the Prophet Habbakuk cried aloud://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Taught by Thy hypostatic Word, O God, the God-seeing disciple destroyed worldly wisdom, crying aloud unto Thee: Glory to Thy power, O Lord!" },
+          { "text": "What manner of praise can we offer unto thee who wast blessed by Christ, O divinely eloquent one? For no man is able to describe in words, the grace which hath blossomed forth in thee, O right wondrous one." },
+          { "text": "Looking upon thine undefiled and pure mind as a lamp placed on a lofty stand, shining upon those in darkness, O divinely manifest one, the Most High hath set thee before all." },
+          { "text": "Theotokion: O blessed and all-praised Maiden, thou hast elevated slain human nature, in that, in a manner surpassing nature, thou hast given birth to the might of the Most High, as Matthew hath taught." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all,//\nand gave birth to the timeless Son, bestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "text": "Receiving the grace of the all-holy Spirit, thou wast shown to be a divine habitation, having taught the light of divine knowledge in a godly manner, wherefore thou wast entrusted with the task of committing to writing the dogmas of Christ, as a chosen eye-witness of God." },
+          { "text": "Thy tongue was the pen of the Paraclete, Who grants speedy deliverance unto those who acknowledge His dominion and breathes heavenly understanding into the souls of the wise, O most honored Matthew." },
+          { "text": "Christ sent thee unto the world shining with miracles and the grace of healing, trampling upon the might of the demons and enlightening the souls of all the faithful who hymn thee, the preacher of the world." },
+          { "text": "Theotokion: O Virgin, thou hast given birth to the pre-eternal son Who clothed Himself in human nature and saved it from corruption in His absolute goodness, as the divinely eloquent one said in his teaching; thou didst remain a Virgin." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I have reached the depths of the sea and the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss//\nO Greatly-merciful One.",
+        "troparia": [
+          { "text": "By Thine omnipotent might, O Maker of all, the divinely eloquent and most excellent Matthew was transformed from a publican into an evangelist, in that he followed Thee." },
+          { "text": "By the spiritually nourishing words of thy glad tidings, O all-blessed Matthew, a multitude of the gentiles have been lifted up and directed to the lofty summit of the virtues." },
+          { "text": "With the divinely woven nets of the disciple Matthew the assemblies of the faithful are ever drawn up, guided to the knowledge of Thee, O our Benefactor." },
+          { "text": "Theotokion: O all-immaculate one, the most excellent Matthew announceth glad tidings, describing thee as the Virgin who gaveth birth without seed and corruption unto Him Who fashioned all things." }
+        ]
+      },
+      "kontakion": {
+        "text": "Casting off the yoke of the office of a publican,\nthou didst shoulder the yoke of righteousness\nand wast shown to be a most excellent merchant, bringing in the wisdom from on high as riches.\nWherefore, thou didst preach the Word of truth\nuplifting the souls of the despondent,//\ndescribing the hour of judgment.",
+        "tone": 4,
+        "label": "Kontakion of the evangelist"
+      },
+      "ikos": {
+        "text": "The tyranny of the enemy oppresseth me constantly and seizeth all the seed of my soul, O Matthew, friend of Christ;\nyet, providing me with the seed of thy prayers, render me fruitful to serve thee,\nand show me to be the least of those who hymn thee\nand a recounter of thy many and great corrections,\nfor without hesitation, forsaking all things for the love of Christ,\nthou didst ardently follow after Him Who called thee,//\nbeing the first evangelist in the world, describing the hour of judgment."
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Thou wast a divine image of the primal effulgence, as a disciple set afire by His splendors; and, chanting to Him, thou didst say: Blessed and supremely praised art Thou, O Lord God of our Fathers!" },
+          { "text": "As servant of the Word, O all-blessed one, thou hast made thine abode in the divine mansions where Christ abideth, as the one supremely divine Lord and God of all the fathers promised thee." },
+          { "text": "Infirmities are banished and a multitude of demons are forced to flee by the gifts of the divine Spirit which are in thee, wherein thou didst chant: Blessed and supremely praised art Thou, O Lord God of our Fathers!" },
+          { "text": "Theotokion: With thy divine words, O apostle, thou didst describe the all-hymned Virgin who hath given birth to the Creator. To Him do we all chant: Blessed and supremely praised art Thou, O Lord God of our Fathers!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee: all ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Deified by the mighty forces within Thee and by Thine ordination and nature, O Master, the most sacred Matthew prevailed upon the whole world to chant to Thee: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "The Word sent the theologian forth like lightning to the whole world, driving away the darkness and enlightening the nations with the dogmas of theology. Wherefore, he chanted: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "With pure discourse and mind God conversed with thee; for having rid thyself of mire, thou didst draw nigh and associate with Him, O glorious one. Wherefore, thou dost chant: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: The Word willed to become incarnate for the good of mankind; for the Lord passed through the portal of virginity and showed her forth as the Theotokos. Wherefore, we cry aloud: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "troparia": [
+          { "text": "Thou didst receive the divine diadem of noetic beauty, O apostle, and wast adorned with the most magnificent crown of the kingdom by the right hand of the Almighty, O wise one. And thou dost shine, standing with the angels before the throne of Christ the Master, O all-blessed one." },
+          { "text": "Thou didst receive the tree of life as is meet, O preacher of the living God, having spread the glad tidings of life, the visitation of God to the world; for thou didst not permit thy mind to become corrupt through the tree of knowledge, remaining an unshaken and immovable foundation of the Church, O all-blessed one." },
+          { "text": "In a godly manner thou didst adorn the Church, the Bride of Christ, with thy Gospel as with a diadem, O divinely blessed one, and now it splendidly celebrateth thy divine memory, pray thou, O Apostle Matthew, that it be delivered from every evil circumstance and cruel misfortune." },
+          { "text": "Theotokion: Without leaving the bosom of the beginningless Father, the beginningless Word became incarnate from thee, O pure and all-praised one, wholly clothing Himself in human nature and accepting its traits, as Matthew writeth, proclaiming the glad tidings." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The God-pleasing Matthew, the glorious recorder of the Gospel of Christ,\nhath related divine wonders unto us.//\nHonoring him with love, let us chant unto him with godly melodies.",
+      "tone": 3,
+      "label": "Exapostilarion of the evangelist",
+      "melody": "He hath visited us",
+      "glory": {
+        "text": "Having wisely cast off the yoke of thy publican's office, thou didst follow Christ, O divinely wise Matthew;\nand following wondrously in His steps,//\nthou didst obtain a share of His kingdom and glory through communion with Him, being an initiate of ineffable mysteries.",
+        "tone": 3
+      },
+      "bothNow": {
+        "text": "O Virgin Theotokos, lift up thine all-holy hands, wherewith thou didst hold the Creator, in supplication to Him for us,\nthat He deliver us from all the temptations of the evil one//\nand grant that we may receive His good things in the world to come, O all-hymned one.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Thou didst shine forth, O apostle, as luminous as the sun, with the rays of the Spirit,\nand hast illumined the whole world with the knowledge of God, O blessed one.\nAnd thou hast dispelled the gloom of polytheism, O all-wise Matthew.\nWherefore, we celebrate today, thy most radiant and right wondrous solemnity//\nas a well-spring of sanctification.",
+          "tone": 4,
+          "melody": "Thou hast given a sign",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Seated on the heights of divine knowledge, O apostle, thou didst receive the effulgence of the Spirit,\nwhich appeared to thee in the guise of a tongue of fire;\nand thou didst manifestly consume all the tinder of the impiety of ungodliness.\nWherefore, we honor thee as an apostle and herald of God,//\ncelebrating thy holy festival today.",
+          "tone": 4
+        },
+        {
+          "text": "Thou didst thunder forth sacred and saving teachings unto the whole world, O all-wise Matthew,\ncleansing all creation of the madness of idolatry,\nand illumining the people with the splendors of the Gospel.\nand, having destroyed the pagan temples by means of grace,//\nthou didst raise up churches to the glory of God.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Abandoning the yoke of injustice and casting away the gold of usury,\nthou didst make haste to the yoke of righteousness\nand dost grasp inexhaustible wealth like an able merchant,\ntrading transitory things for what is everlasting and corruptible things for what abideth.\nFor, having acquired the divinely lustrous pearl of great price,\nthou didst wisely leave to Caesar the things which keep men below;\nand having obediently followed after Christ, the King of all,\nthou didst enrich all creation with the divine words of the Gospel, O wise one.//\nO all-excellent Matthew, ask thou now that salvation and great mercy be granted to those who honor thee.",
+        "tone": 2,
+        "author": "Byzantius"
+      },
+      "theotokion": {
+        "text": "Save from misfortunes thy servants O Virgin Theotokos,\nfor after God it is to thee that we flee,//\nas to an impregnable rampart and protection.",
+        "tone": 2,
+        "label": "Both now"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy Apostle and evangelist Matthew,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the evangelist"
+    }
+  }
+}

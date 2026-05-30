@@ -1,0 +1,295 @@
+{
+  "_meta": {
+    "feast": "Our Father Among the Saints Anthony the Great",
+    "feastKey": "stAnthony",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 01-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-17.pdf",
+    "_note": "OCA does not publish a Matins DOCX. Matins from St-Sergius Emenaion (yy/archaic register). Single venerable-one canon by Theophanes in Tone VIII (acrostic 'It is good to praise the godly Anthony'). Theotokos canon by John of Damascus omitted per pattern."
+  },
+
+  "troparion": {
+    "text": "Emulating the manner of the zealous Elijah,\nand following the Baptist with righteous steps, O father Anthony,\nthou wast a dweller in the desert;\nmaking the whole world steadfast by thy supplications.//\nWherefore, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the venerable one"
+  },
+  "kontakion": {
+    "text": "Having cast aside the tumults of life,\nthou didst live a life of stillness unto the end,\nin every way emulating the Baptist, O all-venerable one.\nWherefore, with him we honor thee,//\nO Anthony, first among the fathers.",
+    "tone": 2,
+    "label": "Kontakion of the venerable one"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Thou didst follow the call of thy Lord, rejecting the world and all the beautiful things in the world, O all-blessed Anthony;\nand diligently bearing the discomfort of the desert,\nthou didst manfully rout the hordes of the demons.\nWherefore, we ever faithfully praise thy memory with hymns.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Go Thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "By thy divine birthgiving, O pure one,\nthou hast renewed the mortal nature of those born on earth,\nwhich had become corrupt through the passions,\nraising up all from death to a life of incorruption.\nWherefore, as is meet we all bless thee,//\nO exceedingly glorious Virgin, as thou didst foretell.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "With hymns let us honor the faster of the Lord, as one who truly mortified all the assaults of the passions with abstinence and steadfast endurance,\nwho utterly put to shame the adverse foe and all his pride,\nand now prayeth to the Lord, that our souls find mercy.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "An awesome miracle of conception and an inexpressible birthgiving have been recognized in thee, O pure Ever-virgin,\nby which my mind is filled with awe and my thoughts amazed.\nThy glory, O Theotokos, hath reached into all things,//\nunto the salvation of our souls.",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We bless thee, O venerable father Anthony,\nand we honor thy holy memory,\nO instructor of monastics and converser with the angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Having received pastoral skill, O pillar and ground of monastics, with strength thou didst shepherd thy reason-endowed flock;\nfor, desiring the divine teachings of Christ,\nthou didst sow the word therein, O venerable one.\nWherefore, thou didst raise all up to the zeal of the angelic life,\nto glorify God with oneness of mind, O God-bearing Anthony.\nEntreat Christ God, that He grant forgiveness of transgressions to those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Let us hymn the heavenly door and ark, the all-holy mountain, the radiant cloud, the unburnt bush,\nthe paradise of the Word, the restoration of Eve, the great treasure of the whole world,\nfor in her have been wrought on behalf of the world,\nthe salvation and the remission of the ancient transgressions.\nWherefore, we cry out to her: Entreat thy Son, that He grant forgiveness of sins//\nunto those who piously worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4,
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "Matthew 11:27-30",
+      "number": 43,
+      "_note": "Come unto Me, all ye that labor; My yoke is easy."
+    },
+
+    "postGospelSticheron": {
+      "text": "O venerable father, the sound of thy corrections hath gone forth into all the earth;\nwherefore, thou hast found the reward of thy labors in the heavens,\nhast destroyed the hordes of the demons, and hast attained unto the ranks of the angels,\nwhose life thou didst blamelessly emulate.\nAs thou hast boldness before Christ God,//\nask thou peace for our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_authors": { "first": "Theophanes (Tone VIII; acrostic 'It is good to praise the godly Anthony')" },
+      "_canonNote": "Single venerable-one canon. Theotokos canon by John of Damascus omitted per pattern.",
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Manifestly embracing immortality and life everlasting, and delighting in the threefold radiance, O father,\npray thou that my darkened soul be illumined with grace,\nthat I may hymn thee as is meet." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Though thou wast small of bodily stature, choosing the new path of virtue thou didst tread it safely,\nobedient to the new law of the Savior and following the life-bearing precepts of the Gospel, O thrice blessed one." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Illumined with the effulgence of the threefold Sun, O all-wise and blessed one,\naflame with divine desire thou didst break the savagery of the demons,\nthe mouths of the wild beasts and the pain of sores as though they were a spider's web." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Possessing boldness, as the Mother of God, before the only-begotten Son Who hath been born of thee,\nand the co-beginningless Father, and the co-essential Spirit,\ncease thou never to pray, that they save from tribulations those who glorify thee as the Theotokos, O all-immaculate one." }
+        ],
+        "katavasia": "The Sun once passed over dry land in the midst of the deep…"
+      },
+
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With steadfast mind and mighty endurance thou didst cause the flame of the passions to die out O father Anthony,\nand thou didst array thyself in the splendid vesture of dispassion and the robe of salvation." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst disdain the feeble power of the demons who dared mighty assaults and assumed the guise of wild beasts;\nfor thou didst have a mighty ally in battle." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Denouncing the princes and powers of darkness O Anthony,\nthrough mighty asceticism thou didst become a God-bearer, a mighty victor,\nthe glory of fasters and boast of monastics." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: By the activity of the Life Who manifested Himself to the world through thee, O pure one,\nraise up my mind which hath been slain and guide it to Life,\nO thou who alone hast destroyed the gates of death by thy birthgiving." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Having bound thy wounds with the love of Christ and wisely hated all the things of the earth O venerable father,\nthou didst make thine abode in the deserts and mountains;\nfor, having tasted of the noetic tree, O glorious initiate of the mysteries,\nthou didst shine forth like an angel with never-waning rays.\nWherefore, having passed through the darkness of thy flesh,\nthou didst dispel the gloom of the demons, O Anthony, first-chosen among monastics.\nEntreat Christ God, that He grant forgiveness of transgressions unto those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "As the all-immaculate Bride of the Creator, Mother of the Redeemer, who knewest not a man,\nand as the receptacle of the Comforter O all-hymned one,\nhasten thou to deliver me, the vile abode of iniquity and noetic plaything of the demons,\nfrom their evil machinations;\nand make me the bright dwelling-place of the virtues, O thou incorrupt light-bearing one.\nDrive away the clouds of the passions and grant that, by thy supplications,\nI may receive a portion on high//\nand share in the never-waning light.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Using the divine ladder of the virtues, O father, thou didst ascend to the summit,\nand didst behold God standing thereon,\ndistributing gifts with His generous hand unto those who chant with faith: Glory to Thy power, O Lover of mankind!" },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou alone didst dedicate thyself wholly to God alone, O all-wise Anthony,\nuniting thyself to Him with virtue and spiritual discourses,\nand as thou art pure, thou wast vouchsafed divine revelation;\nfor, having abandoned the earth and the things of the earth, thou didst receive the delights of heaven, as is meet." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having purified mind and soul, O father Anthony,\nthou didst denounce the soul-destroying deceit, the wiles, bitter deceptions and phantasms of the enemy;\nfor, having trained, thou didst achieve mastery,\nand having achieved mastery, thou didst teach the multitudes of monastics, O all-blessed one." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Beseech the God Who was incarnate of thee,\nwho immutably remained what He was,\nWho is equal to the Father in essence and didst become consubstantial with thee who gave Him birth,\nthat He grant forgiveness of transgressions and salvation of soul to those who hymn thee with faith." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why has the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having God Who seeth all things living within thee, O blessed one, teaching, enlightening and making thee wise,\nthou wast vouchsafed to behold the ascents of pure and blessed souls, O thrice-blessed one." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O wise one, Christ hath given thee the grace to heal divers ailments and power against unclean spirits;\nfor, having vanquished nature supernaturally, O father,\nthou didst receive a share of the gifts of the Spirit." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Having thee as a rampart, and preserved by thine intercession, we bless thee,\nboasting in thy divine glory;\nfor thou, O most pure one, pourest forth gladness and joy upon our souls." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The abyss of my sins and the storm of my transgressions disquieten me and thrust me down into the depths of despondency;\nbut do Thou stretch forth Thy mighty arm, unto me as Thou didst to Peter, and save me, O my Guide.",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Accepting the life of God's law as an athlete from thine earliest childhood, O divinely wise one,\nthou didst preserve it even unto the end;\nand as a godly warrior thou hast received the crown of victory from the King of all." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having thee as a mighty advocate before God, an intercessor, a champion and pious mediator,\nwho sharest in our cares,\nwe are saved from all manner of tribulations, perils and evil circumstances." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou hast truly raised up fallen human nature, O Mother of God,\nhaving borne in thy womb, without seed, the immutable Son,\nWho is visible in divine appearance and in His equality with the Father." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Having cast aside the tumults of life,\nthou didst live a life of stillness unto the end,\nin every way emulating the Baptist, O all-venerable one.\nWherefore, with him we honor thee,//\nO Anthony, first among the fathers.",
+        "tone": 2,
+        "label": "Kontakion of the venerable one",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Hearkening to the voice of Christ, thou didst follow His commandments,\nand, stripping off thy former life, thou didst cast away all the cares of possessions,\nproperty and thy slaves, as well as the love of thy sister, O God-bearing Anthony;\nand most purely conversing alone with God in the deserts,\nthou didst receive the grace of understanding,\nwhich do thou send upon me who praise thee in hymns, O Anthony, first among the fathers."
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy cheeks were as phials of perfume, emitting the sweet fragrance of the virtues and salvation,\nas from a garden, for those who cry with faith: Blessed is the God of our fathers!" },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The grace of the all-holy Spirit, dwelling within thee, O father,\nmade thee a dispeller of the wickedness of evil spirits and an instructor of monks,\ncrying out: Blessed is the God of our fathers!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Let us praise the most pure and all-holy Mary;\nfor through her the grace of spiritual gifts is poured forth upon us in a manner past understanding, as from a torrent of divine goodness.\nLet us bless her now with pious intent." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Like an angel on earth showing, by purity of mind, vigilance in prayer, might in ascetic endeavors and endurance amid tribulations, O Anthony,\nthou didst cry out to God: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Continually drawing nigh unto God through supplications and entreaties, O venerable one,\nthou didst ascend to the highest summit, escaping the snares of the demons;\nand, freed from their tyranny, O divinely wise one, thou dost chant: Ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Like a new Moses, thou didst win a victory over the foes and adversaries in the desert,\nguiding thy people, the assembly of ascetics, in gladness and a new way of life;\nand they cry out to the Master: Ye priests, bless; ye people, supremely exalt God throughout all ages!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-pure Birthgiver of God, cleanse the wounds of my soul and the stripes of my sins,\nwashing them with the springs which issue forth from the side of thine Offspring,\nand purifying them with the streams which flow therefrom;\nfor to thee do I cry, to thee do I flee and on thee do I call, who art full of the grace of God." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "troparia": [
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O all-blessed father Anthony, thy splendid feast hath dawned,\nfull of joy, full of spiritual gladness, full of the Holy Spirit, full of sweet fragrance and enlightenment;\nand having thee now as a rule and giver of the laws of asceticism, we rejoice." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Cease thou never to pray to the Redeemer, O most honored father,\nthat He grant to those who reverently celebrate thy sacred memorial\nforgiveness of transgressions, the reception of spiritual gifts, divine intercession, salvation of soul and everlasting joy." },
+          { "refrain": "Holy Father Anthony, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having lived angelically upon the earth, thou hast found the splendor of the angels;\nfor thou hast obtained a share of their God-seeing effulgence.\nAnd with them thou dost ever rejoice, as a prophet of God, a crowned martyr, preeminent among monastics." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Without seed, without carnal desire, O Virgin, thou didst conceive the Word of God Who created all things,\nand thou hast given birth to Him without corruption, without experiencing the pangs of motherhood.\nWherefore, confessing thee with tongue and heart, we magnify thee, the Theotokos." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "O Anthony, father of fathers, thou hast been revealed to be a light for those who share thy way of life,\nhaving taught the pious to tread the paths of light;\nand thou emittest the flame and fire of lightning, consuming hordes of the demons.",
+        "tone": 3,
+        "label": "Exaposteilarion of the venerable one",
+        "melody": "O Light immutable",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "With unceasing hymns we bless thee, O Virgin Theotokos,\nin that thou hast given birth to One of the Trinity,\nand didst bear in thy divine embrace the Word Who is immutably and unchangeably transcendent.",
+        "tone": 3,
+        "label": "Theotokion (at Glory ... Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "O venerable father Anthony,\ntaking the yoke of Christ upon your shoulders,\nthou didst valiantly trample the visitation of the enemy underfoot,\nand didst show forth cities in the desert;\nwherefore, we all honor thee with faith, O all-blessed one, thou boast of monastics.\nTherefore, unceasingly beseech Christ,//\nthat we be saved.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Assembling with faith, we all honor thee, O Anthony, as an ascetic of Christ;\nfor, rejoicing, thou didst tread the trackless wilderness, O wise one,\nand didst become an honored instructor.\nWherefore, we cry out to thee with faith:\nO all-blessed boast of monastics, pray thou for us to the Lord,//\nthat we be saved!",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O venerable father Anthony,\nthou didst enclose thyself in a tomb for the sake of true life,\nand wast in nowise affrightened by the invisible foe;\nfor though they came upon thee to smite thee,\nby thy prayers thou didst render them insensible, O thou of forthright soul, first leader of the desert.//\nWherefore, we all honor and bless thee with faith.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Ascending from the desert to heaven on the ladder of the virtues, O wondrous one,\nthou didst attain its bastions through ascetic endeavor,\nencircling the beauties of the celestial Jerusalem;\nand, receiving honors through thy painful struggles as is meet,\nthou rejoicest with the ranks of heaven, O all-blessed one,\nbecoming an heir to everlasting good things and an inhabitant of the kingdom.\nO God-bearing Anthony, entreat the Savior of all,//\nthat He grant peace to the world and save our souls.",
+        "tone": 8,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Sovereign lady,\naccept the supplications of thy servants,//\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Emulating the manner of the zealous Elijah,\nand following the Baptist with righteous steps, O father Anthony,\nthou wast a dweller in the desert;\nand making the whole world steadfast by thy supplications.//\nWherefore, entreat Christ God, that our souls be saved.",
+      "tone": 4
+    }
+  }
+}

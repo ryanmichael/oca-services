@@ -1,0 +1,240 @@
+{
+  "_meta": {
+    "feast": "Synaxis of the Holy Glorious Prophet, Forerunner John the Baptist",
+    "feastKey": "stForerunnerSynaxis",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 01-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-07.pdf",
+    "_note": "Single canon of the holy forerunner by Theophanes in Tone II (acrostic 'O Baptist of Christ, accept my praise'). Day after Theophany; the two Theophany feast canons (Cosmas Tone II + John of Damascus Tone II) interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern (Theophany content lives in the festal-matins flow when Jan 6 itself is requested). Theophany Both-now sessional hymns, exapostilarion, lauds theotokion, and katavasiae preserved as feast overlays at the appropriate slots. Magnificat suppressed at Ode 9: refrain 'Magnify, O my soul, the forerunner who is greatest among the prophets'. Polyeleos magnification of the Forerunner added per parish practice for the Synaxis (the Sergius rubric goes directly from Sessional 2 to the canons, but the Synaxis is universally treated as a major-feast Matins; magnification follows the same template as the Nativity and Beheading of the Forerunner files)."
+  },
+  "troparion": {
+    "text": "The memory of the righteous is celebrated with hymns of praise,\nbut the Lord's testimony is sufficient for thee, O forerunner.\nThou wast truly shown to be more honorable than the prophets,\nin that thou wast deemed worthy to baptize in the streams Him Whom thou didst proclaim.\nWherefore, having suffered, rejoicing, for the truth,\neven unto those in Hades thou didst proclaim God, Who had manifested Himself in the flesh,\nWho taketh away the sin of the world,//\nand granteth us great mercy.",
+    "tone": 2,
+    "label": "Troparion of the holy forerunner"
+  },
+  "kontakion": {
+    "text": "Stricken with awe by Thy coming in the flesh,\nthe Jordan turned back in fear;\nand John, fulfilling the prophetic ministry, shrank back with trembling.\nThe ranks of the angels were amazed,\nbeholding Thee baptized in the flesh in the streams,\nand all who were in darkness were enlightened,//\nhymning Thee Who hast appeared and illumined all things.",
+    "tone": 6,
+    "label": "Kontakion of the holy forerunner"
+  },
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee, calling Thee His beloved Son;\nand the Spirit in the guise of a dove confirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+      "tone": 1,
+      "label": "Troparion of the feast (Theophany)",
+      "_note": "On 'God is the Lord': Troparion of the feast (Tone I, Twice); Glory: troparion of the forerunner (Tone II) — see _troparionOfTheForerunner; Both now: troparion of the feast."
+    },
+    "_troparionOfTheForerunner": {
+      "text": "The memory of the righteous is celebrated with hymns of praise,\nbut the Lord's testimony is sufficient for thee, O forerunner.\nThou wast truly shown to be more honorable than the prophets,\nin that thou wast deemed worthy to baptize in the streams Him Whom thou didst proclaim.\nWherefore, having suffered, rejoicing, for the truth,\neven unto those in Hades thou didst proclaim God, Who had manifested Himself in the flesh,\nWho taketh away the sin of the world,//\nand granteth us great mercy.",
+      "tone": 2,
+      "label": "Troparion of the holy forerunner"
+    },
+    "sedalion": [
+      {
+        "text": "When Jesus had been born of the Virgin Mary and was baptized by John in the Jordan,\nthe Spirit seen in the guise of a dove, descended upon Him.\nWherefore, the prophet said with the angels://\n'Glory to Thy coming, O Christ! Glory to Thy kingdom! Glory to Thy dispensation, O Thou Who alone lovest mankind!'",
+        "tone": 1,
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "melody": "When the stone had been sealed",
+        "_note": "Sung twice; Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "text": "Seeing Thee about to be baptized in the streams of the Jordan, O Christ, the great forerunner cried out with gladness://\n'Thou hast come, Thou hast appeared, the Light unapproachable!'",
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "melody": "Thou hast appeared today",
+        "_note": "Sung twice; Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O John, forerunner of the Savior,\nand we honor thy holy Synaxis.",
+      "verses": [
+        "Blessed be the Lord God of Israel, for He hath visited and wrought deliverance for His people.",
+        "And thou, child, shalt be called the prophet of the Most High; for thou shalt go before the face of the Lord to prepare His ways."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "When Thou didst appear in the flesh for baptism, O Invisible One,\nJordan ministered to Thee with its streams, and John stretched forth his corruptible hand;\nyet the one turned back in fear, and the other straightway touched Thee the Incorruptible One, with trembling.\nTruly Thou art the Lamb of God, the ever-living Fountain Who hath sanctified the springs, the sea and all mankind;\nfor the Trinity shone forth from on high://\nthe Father calleth Thee His Son, and the Holy Spirit descendeth.",
+      "tone": 8,
+      "label": "Sessional Hymn of the feast (after Polyeleos)",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice; Glory ..., Both now ..., the foregoing is repeated. Per Sergius rubric this sessional hymn follows Ode 3; in our shape we place it at the post-Polyeleos slot."
+    },
+    "prokeimenon": {
+      "refrain": "The righteous shall flourish like a palm tree,//\nand like a cedar of Lebanon shall he be multiplied.",
+      "verse": "Planted in the house of the Lord, in the courts of our God shall they blossom forth.",
+      "tone": 4
+    },
+    "gospel": {
+      "reading": "John 1:29-34",
+      "_note": "John seeth Jesus coming unto him, and saith, 'Behold the Lamb of God, which taketh away the sin of the world.' Same reading as the Liturgy Gospel for the Synaxis."
+    },
+    "postGospelSticheron": {
+      "text": "O Baptist, thou didst issue forth, an angel, from a barren womb,\nand didst sojourn in the desert from thine infancy,\nand wast shown to be the seal of all the prophets;\nfor Him Whom they beheld in many divers forms and proclaimed in indistinct images\nthou wast deemed worthy to baptize in the Jordan.\nAnd thou didst hear the voice of the Father from heaven bearing witness to His Sonship,\nand beheldest the Spirit in the guise of a dove descending upon Him Who was baptized.//\nO thou who art greater than all the prophets, cease thou never to pray for us who celebrate thy memory with faith.",
+      "tone": 6,
+      "label": "Idiomelon of the Forerunner"
+    },
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy forerunner by Theophanes (Tone II, acrostic 'O Baptist of Christ, accept my praise'). Theophany Canon I by Cosmas and Canon II by John of Damascus (both Tone II) interleaved at the actual service are omitted per the menaion-matins-track pattern. Katavasiae are the Irmoi of the two feast canons.",
+      "ode1": {
+        "irmos": "Let us sing unto the Lord, Who by His divine command\ndried up the billowing and impassable sea,\nand through it led the Israelite people on foot://\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "Anticipating me in thy supplications, O forerunner, save me who am drowning amid the tempest of the passions; for thou thyself wast the honored and most pure receptacle of dispassion, appointed from infancy by the Lord from on high." },
+          { "text": "With salutation the angel of God stood before the honorable Zachariah, thy priestly father, and he announced thee, the peer of the angels, who wouldst become the forerunner and friend of the Lord, O all-blessed one." },
+          { "text": "Thou wast filled with the all-holy Spirit, even when thou wast borne within thy mother's womb, O most honored prophet, and with thy beautiful leaps thou didst announce the Fruit of the Virgin and worship Him." },
+          { "text": "Let us praise the godly and divinely wise forerunner of the Lord, who cut through the strange path of life which before was closed to all mankind, and baptized Christ in the Jordan's streams." },
+          { "text": "Theotokion: O pure one, thou most hallowed temple of virginity, who bore God the Word within thy womb: By thy supplications save those who have recourse to thee and call upon thee, repelling the assault of misfortunes, O all-immaculate one." }
+        ],
+        "katavasia": "The Lord mighty in battle uncovered the foundation of the deep\nand led His servants on dry ground;\nbut He covered their adversaries with the waters,//\nfor He hath been glorified."
+      },
+      "ode3": {
+        "irmos": "On the rock of faith hast Thou established me,\nand Thou hast emboldened my mouth against mine enemies.\nFor my spirit rejoiceth when I sing://\nThere is none as holy as our God and none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Thou didst loose the reproach of barrenness, and, recognizing the divine Offspring of the Virgin, lept up, rejoicing, in thy mother's womb, O all-praised one who dwellest with the angels, most blessed forerunner of the Lord." },
+          { "text": "Preparing the Lord's ways, thou didst go before His face, O prophet; for thou wast shown to be like a beacon, revealing the Effulgence of the Father's glory, Who appeared in the flesh for our sake, O thou who art most excellent of all." },
+          { "text": "Thou didst shine forth like the dawn, announcing the Sun of righteousness to those in darkness; for thou wast the preacher and forerunner of the salvation of all, and didst say to all: 'Come ye to Christ with faith, and be saved!'" },
+          { "text": "Theotokion: Receiving ineffable joy, O Mother of God, thou didst seedlessly conceive thy Master, Who calleth the whole world. To Him do we cry aloud: There is none holy save Thee, O Lord!" }
+        ],
+        "katavasia": "The Lord who granteth strength unto our kings,\nand exalteth the horn of His anointed,\nis born of a Virgin and cometh unto baptism.\nTherefore let us, the faithful, cry aloud://\nNone is as holy as our God and none is righteous save Thee, O Lord."
+      },
+      "kontakionOfTheFeast": {
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us who with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "tone": 4,
+        "label": "Kontakion of the feast (Theophany)",
+        "_note": "Sung after Ode 3 alongside the feast Ikos; followed by the Tone VIII sessional hymn of the feast."
+      },
+      "ode4": {
+        "irmos": "I hymn Thee, O Lord, for I have heard report of Thee, and I was afraid;\nfor Thou comest to me, seeking me who am lost.//\nWherefore, I glorify Thy great condescension towards me, O greatly Merciful One.",
+        "troparia": [
+          { "text": "Thou wast sent to cleanse the impure with water, preparing them to receive Christ the Master, Who taketh away their sins and driveth darkness away with the radiance of the knowledge of God, O most honored one." },
+          { "text": "Entreat Christ to heal me of the serpent's venom, O blessed one who baptized Him in the waters of the Jordan, wherein the Savior crushed the nesting malice of the serpents." },
+          { "text": "Adorned with the wisdom of God, thou didst come as the herald of Christ; for thou wast the trumpet voice of one crying aloud: 'Repent!' As a prophet thou didst foretell Him Who pointeth thee out to us as the greatest of all mankind." },
+          { "text": "O most excellent one who led a life strange and untrodden by men, thou didst stand before the waters of the Jordan, listening to the voice of the Father and beholding the coming of the Spirit." },
+          { "text": "Theotokion: The Lord Who created all things doth make Himself like unto us, O all-pure one, taking up His abode within thine all-holy womb; and, clothing Himself in human form, He hath saved His own image." }
+        ],
+        "katavasia": "I heard, O Lord, Thy voice, which Thou didst call the voice of one crying in the wilderness,\nfor Thou didst thunder over the multitude of waters, bearing witness to Thy Son.\nAnd, wholly filled with the Spirit which had descended, He cried aloud://\nThou art Christ, the Wisdom and Power of God!"
+      },
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin,\nI rise early to hymn Thee O King of Peace, enlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "Illumined with the splendors of supra-natural virtue, thou didst stand before the waters of the Jordan as an initiation into the mysteries of heaven, baptizing and cleansing with water those who have recourse to thee with faith of soul, O forerunner." },
+          { "text": "The pure and incorrupt Light, desiring to be baptized, showed thee forth as a most pure vessel, O John; for thou, the most honored of the prophets, wast chosen beforehand by Him as the greatest of all, for thou wast deemed worthy to behold Him Whom thou didst prophesy." },
+          { "text": "Set forth before the face of the Lord of all, and indicating His paths unto all mankind, the forerunner, trembling, toucheth the head of the Master and baptizeth Him, saying: 'I know none other God than Thee.'" },
+          { "text": "Who hath ever seen or heard of the Undefiled One Who sustaineth all things bowing His head before one of His creatures? Wherefore, with trembling the Baptist cried aloud: 'I know none other God than Thee!'" },
+          { "text": "Theotokion: The Son of God, Who, as God, doth accomplish His works by His will alone, manifestly showed Himself to be thy Son, O Virgin. Wherefore, we all call thee the true Theotokos, for we know none other Mother of God than thee." }
+        ],
+        "katavasia": "Jesus, the Prince of Life, hath come to set loose from condemnation Adam the first-formed man;\nand though as God He needeth no cleansing, yet for the sake of fallen man He is cleansed in the Jordan.\nIn its streams He slew the enmity//\nand bestoweth the peace that passeth all understanding."
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin, I appeal to the unfathomable abyss of Thy compassion://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Thou, the voice of the Word, didst precede Him and didst shine forth like a radiant star, the Sun of righteousness illumining thee, O forerunner." },
+          { "text": "Thou didst not pay heed to earthly cares, and wast enriched with the expectations of heaven. And thou didst perfect thy life like that of an angel on earth, O all-blessed one." },
+          { "text": "We know thee to be the seal of the prophets, the mediator between the old and new covenants, and we proclaim thee to be the Baptist and forerunner of Christ the Savior." },
+          { "text": "Theotokion: All the faithful acknowledge and believe thy conceiving to be truly ineffable and thy birthgiving to be inexpressible and unapproachable, O only Bride of God." }
+        ],
+        "katavasia": "The Voice of the Word, the Candlestick of the Light,\nthe Morning Star and Forerunner of the Sun,\ncried in the wilderness to all the peoples:\n'Repent and be cleansed beforehand.\nFor lo, Christ is at hand,//\nWho delivereth the world from corruption.'"
+      },
+      "kontakion": {
+        "text": "Stricken with awe by Thy coming in the flesh,\nthe Jordan turned back in fear;\nand John, fulfilling the prophetic ministry, shrank back with trembling.\nThe ranks of the angels were amazed,\nbeholding Thee baptized in the flesh in the streams,\nand all who were in darkness were enlightened,//\nhymning Thee Who hast appeared and illumined all things.",
+        "tone": 6,
+        "label": "Kontakion of the holy forerunner"
+      },
+      "ikos": {
+        "text": "Though Adam had become blind in Eden, the Sun appeared out of Bethlehem and opened his eyes,\nwashing them with the waters of the Jordan: the ever-burning Light shone forth upon him who was enshrouded in darkness and gloom.\nFor him there is no longer any night, but eternal day.\nFor his sake the Morning hath dawned; for he hid himself until the evening, as it is written, and found the radiance which restoreth him.//\nHe who fell at eventide hath turned from the darkness and attained unto the dawning of Him Who hath appeared and illumined all things."
+      },
+      "ode7": {
+        "irmos": "The bush which burned with fire on the mountain and the dew-bearing furnace of the Chaldeans clearly prefigured thee, O Bride of God;\nfor, without being consumed, thou didst receive the divine and immaterial Fire within thy material womb.\nWherefore, we chant unto Him Who was born of thee://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "Having accomplished the sacred baptism and performed the mysteries which were manifestly given thee by God, O sacred minister, thou didst offer thyself as a sacrifice, as an innocent lamb. Wherefore, we chant together with thee: Blessed is the God of our fathers!" },
+          { "text": "Thou wast a new Elijah, denouncing the iniquitous king with boldness and showing us an immaterial life, as he did, O thrice-blessed forerunner. Wherefore, we chant with thee, O prophet: Blessed is the God of our fathers!" },
+          { "text": "Inheriting the divine honor of the apostles of Christ, O forerunner, thou greatest of the prophets, thou wast manifestly shown to be the fulfillment of the law and the beginning of the new grace. Wherefore, we chant with thee, O thrice-blessed one: Blessed is the God of our fathers!" },
+          { "text": "Theotokion: O ye pious, with chanting let us all hymn, as is meet, the all-pure Lady who was acceptable to God; for she gave birth to God the Only-begotten one, Who hath appeared to mankind. To Him, O ye faithful, let us chant together: Blessed is the God of our fathers!" }
+        ],
+        "katavasia": "The breath of the wind heavy with dew and the descent of the angel of God\npreserved the Holy Children from all harm, as they walked in the fiery furnace.\nRefreshed with dew in the flames, they sang in thanksgiving://\n'Blessed and supremely praised art Thou, O Lord God of our fathers.'"
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans, but bedewed the faithful, who chant://\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "With joy do we honor thee, O all-blessed John, who by thy steadfast life on earth showed thyself to be the peer of the angels; and we cry: Bless the Lord, all ye works of the Lord!" },
+          { "text": "O prophet, thou didst teach the one essence of the Godhead in Three Hypostases, consubstantial in hypostases; for by the voice of the Father and the coming of the Spirit thou didst recognize Him Whom thou baptized as the ever-existing Word of God." },
+          { "text": "Thou didst hasten forth from the barren woman, O most honored John, thou noetic dawn proclaiming the Sun Who shone forth from the Virgin and thou didst preach the Lamb Who, in His love for mankind, taketh away the sin of the world." },
+          { "text": "Watching over us now from on high, O blessed, all-blessed forerunner, by thy supplications preserve those who follow thy divine preaching, who abide in the teachings of thy divine and saving dogmas." },
+          { "text": "Theotokion: Ineffably thou didst conceive the pre-eternal effulgence of the Father's glory, the beginningless Word Who is known to exist from the beginning, and Who is now become thy First-born, immutably becoming a creature, O all-pure one." }
+        ],
+        "katavasia": "The Babylonian furnace, as it poured forth dew,\nforeshadowed a marvelous mystery:\nhow the Jordan should receive in its streams the immaterial fire,\nand should encompass the Creator, when He was baptized in the flesh.//\nHim do ye peoples bless and supremely exalt throughout all ages."
+      },
+      "ode9": {
+        "_skipMagnificat": true,
+        "_megalynaria": [
+          "Magnify, O my soul, the most pure Virgin Theotokos, who is more honorable than the armies on high.",
+          "Magnify, O my soul, the forerunner who is greatest among the prophets."
+        ],
+        "megalynarion": "Magnify, O my soul, the forerunner who is greatest among the prophets.",
+        "irmos": "From thy virginal womb God, the light that was before the sun, hath appeared and assumed flesh in a manner past understanding,\nand came to dwell among us,//\nwherefore hymn thee O blessed and all-pure Theotokos.",
+        "troparia": [
+          { "text": "From the wilderness the forerunner, the voice of the Word, pointeth to Him Who hath come to us in the flesh; and he prepareth most joyfully to baptize the Preexisting One Who cleanseth our souls from sin for the sake of our faith." },
+          { "text": "Grace and the law manifestly set thee forth as the mediator between them: for thou didst seal the one and begin the other, art honored by the Word as greatest of all the prophets, and didst live beyond visible things, O most honored one." },
+          { "text": "Showing forth a life like unto that of the incorporeal ones, he dwelleth with the angelic choirs, and rejoiceth, standing before the throne of the Master, asking forgiveness and salvation for those who praise him." },
+          { "text": "Theotokion: In His compassion the Redeemer of all hath become a man and accepted to be born in the flesh of thy virginal womb, for He is the Lover of mankind with a love beyond that of mortals, O all-blessed Birthgiver of God." }
+        ],
+        "katavasia": "Every tongue is at a loss to praise thee as is due:\neven a spirit from the world above is filled with dizziness, when it seeketh to sing thy praises, O Theotokos.\nBut since thou art good, accept our faith:\nThou knowest well our love inspired by God,//\nfor thou art the Protector of Christians and we magnify thee."
+      }
+    },
+    "exapostilarion": {
+      "text": "Thou didst wondrously prepare the ways of the Lord;\nfor thou wast the herald of His coming, the preacher most true and the greatest of the prophets, O blessed John.//\nThou didst behold the Light, fulfilling His ineffable dispensation.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy forerunner",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "The Savior appeared, grace and truth, in the streams of the Jordan,//\nand He illumined those sleeping in darkness and shadow, for He, the immutable Light, hath come and appeared.",
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Theophany)"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Christ our Savior, the Light of Light, hath shone forth upon the world, manifesting Himself as God.//\nLet us worship Him, O ye people!",
+          "tone": 4,
+          "label": "Sticheron of the feast"
+        },
+        {
+          "text": "How can we who are servants honor the Master as is meet?//\nfor He hath restored us all in the waters.",
+          "tone": 4,
+          "label": "Sticheron of the feast"
+        },
+        {
+          "text": "Baptized in the Jordan, touched by Thy servant's hand, O our Savior, Thou didst sanctify the waters, healing the sufferings of the world.\nGreat is the mystery of Thine epiphany!//\nO Lord Who lovest mankind, glory be to Thee!",
+          "tone": 4,
+          "label": "Sticheron of the feast"
+        },
+        {
+          "text": "The true Light hath appeared and giveth enlightenment to all.\nChrist is baptized with us, Who is above all in purity.\nHe draweth sanctification into the water and becometh the cleansing of our souls,\nwhich is at once earthly and transcendeth the heavens.\nSalvation is accomplished through the laver, and the Spirit cometh through water.\nThrough immersion is our ascent to God made.\nWondrous are Thy works, O Lord!//\nGlory be to Thee!",
+          "tone": 4,
+          "label": "Sticheron of the feast"
+        }
+      ],
+      "doxastikon": {
+        "text": "O Baptist, thou didst issue forth, an angel, from a barren womb,\nand didst sojourn in the desert from thine infancy, and wast shown to be the seal of all the prophets;\nfor Him Whom they beheld in many divers forms and proclaimed in indistinct images\nthou wast deemed worthy to baptize in the Jordan.\nAnd thou didst hear the voice of the Father from heaven bearing witness to His Sonship,\nand beheldest the Spirit in the guise of a dove descending upon Him Who was baptized.//\nO thou who art greater than all the prophets, cease thou never to pray for us who celebrate thy memory with faith.",
+        "tone": 6
+      },
+      "theotokion": {
+        "text": "Today Christ hath come to be baptized in the Jordan!\nToday John toucheth the head of the Master!\nThe hosts of heaven were in awe, beholding this most glorious mystery;\nthe sea saw and fled, the Jordan, seeing it, turned back.\nBut we, illumined, cry out://\nGlory to God Who hath appeared, was seen on earth and hath illumined the world!",
+        "tone": 2,
+        "label": "Both now (of the feast, composition of Anatolius)"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "The memory of the righteous is celebrated with hymns of praise,\nbut the Lord's testimony is sufficient for thee, O forerunner.\nThou wast truly shown to be more honorable than the prophets,\nin that thou wast counted worthy to baptize in the streams Him Whom thou didst proclaim.\nWherefore, having suffered, rejoicing, for the truth,\neven unto those in Hades thou didst proclaim God, Who had manifested Himself in the flesh,\nWho taketh away the sin of the world,//\nand granteth us great mercy.",
+      "tone": 2,
+      "label": "Troparion of the holy forerunner",
+      "_note": "After the Great Doxology: Troparion of the forerunner; Glory ..., Both now ..., Troparion of the feast (Theophany, Tone I) — already chanted at the beginning of Matins on 'God is the Lord'."
+    }
+  }
+}

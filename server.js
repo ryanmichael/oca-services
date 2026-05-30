@@ -1532,6 +1532,155 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date) {
   return spec;
 }
 
+let _crossSundayOverlay = null;
+function _applyCrossSundayOverlay(spec) {
+  if (!_crossSundayOverlay) {
+    _crossSundayOverlay = loadJSON('variable-sources/triodion/lent-sunday-cross.json');
+  }
+  const ov = _crossSundayOverlay.matins;
+  if (!ov) return;
+
+  // Sessional hymn of the Cross — sung after Polyeleios + Evlogitaria,
+  // before the Antiphons of Degrees.
+  if (ov.sessionalHymnAfterPolyeleios) {
+    spec.sessionalHymnAfterPolyeleios = ov.sessionalHymnAfterPolyeleios;
+  }
+
+  // Cross Canon by St Theodore the Studite — interleaved as a third sub-canon
+  // after the Octoechos resurrection / cross-resurrection / theotokos groups.
+  // Each Cross-Theodore troparion is tagged `canon: 'crossOfTheStudite'`; the
+  // first troparion of each ode carries the ode's irmos via `_irmos` so the
+  // assembler can emit the header rubric + Irmos block before the troparia.
+  if (ov.crossCanon?.odes) {
+    spec.canon = spec.canon || {};
+    const cc = ov.crossCanon;
+    for (const [odeStr, ode] of Object.entries(cc.odes)) {
+      const odeKey = `ode${odeStr}`;
+      const odeSpec = spec.canon[odeKey] = spec.canon[odeKey] || {};
+      odeSpec.troparia = odeSpec.troparia || [];
+      const ccTroparia = [];
+      (ode.troparia || []).forEach((text, i) => {
+        const trop = { canon: 'crossOfTheStudite', text, tone: cc.tone };
+        if (i === 0 && ode.irmos) {
+          trop._irmos = ode.irmos;
+          trop._irmosTone = cc.tone;
+        }
+        ccTroparia.push(trop);
+      });
+      if (ode.theotokion) {
+        ccTroparia.push({
+          canon: 'crossOfTheStudite',
+          text: ode.theotokion,
+          tone: cc.tone,
+          type: 'theotokion',
+        });
+      }
+      odeSpec.troparia = odeSpec.troparia.concat(ccTroparia);
+    }
+  }
+
+  // Cross kontakion + ikos (placed after Ode 6 by the canon assembler)
+  spec.canon = spec.canon || {};
+  if (ov.kontakion) {
+    spec.canon.kontakion = {
+      text: ov.kontakion.text,
+      tone: ov.kontakion.tone,
+      label: ov.kontakion._label,
+      _source: ov.kontakion._source,
+    };
+  }
+  if (ov.ikos) {
+    spec.canon.ikos = {
+      text: ov.ikos.text,
+      tone: ov.ikos.tone,
+      label: ov.ikos._label,
+      _source: ov.ikos._source,
+    };
+  }
+
+  // Cross exapostilarion at Glory + Theotokion at Both now —
+  // appended after the eothinon exapostilaria already in the array.
+  if (ov.exapostilarion) {
+    spec.exapostilaria = spec.exapostilaria || [];
+    if (ov.exapostilarion.glory) {
+      spec.exapostilaria.push({
+        text: ov.exapostilarion.glory.text,
+        label: 'Glory — ' + (ov.exapostilarion.glory._label || 'Exapostilarion of the Cross'),
+        source: 'triodion',
+        _source: ov.exapostilarion._source,
+      });
+    }
+    if (ov.exapostilarion.bothNow) {
+      spec.exapostilaria.push({
+        text: ov.exapostilarion.bothNow.text,
+        label: 'Both now — ' + (ov.exapostilarion.bothNow._label || 'Theotokion'),
+        source: 'triodion',
+        _source: ov.exapostilarion._source,
+      });
+    }
+  }
+
+  // Cross Lauds stichera — appended after the Octoechos Resurrection
+  // stichera; doxastikon (Tone 8) replaces the eothinon; theotokion is
+  // added at Both now.
+  if (ov.laudsStichera && spec.lauds) {
+    const cross = ov.laudsStichera;
+    spec.lauds.stichera = (spec.lauds.stichera || []).concat(
+      (cross.stichera || []).map(st => ({
+        text: st.text,
+        tone: st.tone,
+        verse: st.verse,
+        _source: cross._source,
+      }))
+    );
+    if (cross.doxastikon) {
+      spec.lauds.doxastikon = {
+        text: cross.doxastikon.text,
+        tone: cross.doxastikon.tone,
+        author: cross.doxastikon._label || 'Doxastikon of the Cross',
+        _source: cross._source,
+      };
+    }
+    if (cross.theotokion) {
+      spec.lauds.theotokion = {
+        text: cross.theotokion.text,
+        tone: cross.theotokion.tone,
+        label: cross.theotokion._label || 'Theotokion',
+        _source: cross._source,
+      };
+    }
+  }
+
+  // Cross troparion sung after the Great Doxology.
+  if (ov.troparionAfterDoxology) {
+    spec.troparionAfterDoxology = {
+      text: ov.troparionAfterDoxology.text,
+      tone: ov.troparionAfterDoxology.tone,
+    };
+  }
+
+  // Veneration of the Cross — stichera after the Great Doxology + troparion.
+  if (ov.venerationStichera) {
+    const v = ov.venerationStichera;
+    spec.venerationStichera = {
+      section: v.section || 'Veneration of the Cross',
+      rubric: v.rubric,
+      stichera: (v.stichera || []).map(s => ({
+        text: s.text,
+        tone: s.tone,
+        label: s.label || s.author || s._label,
+        _source: v._source,
+      })).concat(v.closingSticheron ? [{
+        text: v.closingSticheron.text,
+        tone: v.closingSticheron.tone,
+        label: v.closingSticheron.label,
+        _source: v._source,
+      }] : []),
+      closingRubric: v.closingRubric,
+    };
+  }
+}
+
 function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const mm = String(mo).padStart(2, '0');
@@ -1561,8 +1710,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
 
   // ── Moveable-feast / weekday festal matins (Pentecost, Ascension, …) ────
   // Tried first so that a feast falling on a weekday gets full festal
-  // propers rather than the DB-injected weekday stub below.
-  if (feastKey && (!menaionData || !menaionData.matins)) {
+  // propers rather than the DB-injected weekday stub below. A festal-matins
+  // file (great feast of the Lord) ALWAYS wins over a coincident menaion
+  // saint — e.g. Ascension (May 21 in 2026) overrides Sts Constantine &
+  // Helena. Saints with their own menaion files but no festal-matins file
+  // (Theophany, Nativity, Transfiguration, Forerunner-feasts, etc.) fall
+  // through to the menaion branch below.
+  if (feastKey) {
     const festalSpec = _loadFestalMatins(feastKey, season, dow, tone);
     if (festalSpec) return festalSpec;
   }
@@ -1570,7 +1724,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────
   if (isSunday && (!menaionData || !menaionData.matins)) {
     const sundaySpec = _buildSundayMatinsFromOctoechos(tone, season, menaionData, date);
-    if (sundaySpec) return sundaySpec;
+    if (sundaySpec) {
+      // Cross-Sunday Triodion overlay (3rd Sunday of Great Lent)
+      if (isLent && getWeekOfLent(date) === 3) {
+        _applyCrossSundayOverlay(sundaySpec);
+      }
+      return sundaySpec;
+    }
 
     // Octoechos returned null and no festal matins data — fall back to a
     // minimal stub from GREAT_FEAST_VARIANTS so the service is at least
@@ -1625,13 +1785,19 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const mat = menaionData.matins;
 
   // ── Determine doxology type ─────────────────────────────────────────────
-  // During Lent on weekdays, even great feasts use the Small (read) Doxology
-  const useSmallDoxology = isLentenWeekday;
+  // During Lent on weekdays, even great feasts use the Small (read) Doxology.
+  // Simple-rank (six-stichera) services also use Small Doxology by definition —
+  // they have no Lauds and end with Small Doxology + festal troparion +
+  // Octoechos Aposticha.
+  const resolvedFeastRank = menaionData._meta?.feastRank
+    || mat?._meta?.feastRank
+    || (feastKey ? 'greatFeast' : null);
+  const useSmallDoxology = isLentenWeekday || resolvedFeastRank === 'simple';
 
   // ── Build the spec ──────────────────────────────────────────────────────
   const spec = {
     isSunday,
-    feastRank: menaionData._meta?.feastRank || (feastKey ? 'greatFeast' : null),
+    feastRank: resolvedFeastRank,
     feastType: menaionData._meta?.feastType || null,
     tone: menaionData._meta?.tone || tone,
     alleluia: false, // great feasts override Lenten Alleluia
@@ -3129,6 +3295,16 @@ try {
   process.exit(1);
 }
 
+let kneelingVespersFixed;
+try {
+  kneelingVespersFixed = loadJSON('fixed-texts/kneeling-vespers-fixed.json');
+  registerBaseFixed('kneeling-vespers', kneelingVespersFixed);
+  console.log('Kneeling Vespers fixed texts loaded.');
+} catch (err) {
+  console.error('Failed to load Kneeling Vespers fixed texts:', err.message);
+  process.exit(1);
+}
+
 let royalHoursFixed;
 try {
   royalHoursFixed = loadJSON('fixed-texts/royal-hours-fixed.json');
@@ -4035,6 +4211,156 @@ function handleRequest(req, res) {
         blocks,
       }));
 
+    } else if (pathname === '/api/kneeling-vespers') {
+      const q       = parseQuery(url);
+      const date    = (q.date    || '').trim();
+      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const format  = (q.format  || '').trim().toLowerCase();
+
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid or missing date parameter.' }));
+        return;
+      }
+
+      // Kneeling Vespers is served on the evening of Pentecost Sunday only
+      // (Pascha + 49). It uses the same Pentecost vespers propers as the
+      // Saturday-evening Vigil, with three sets of St. Basil's Kneeling
+      // Prayers inserted at the prescribed points.
+      const d = new Date(date + 'T00:00:00Z');
+      const pascha = calculatePascha(d.getUTCFullYear());
+      const DAY_MS = 24 * 60 * 60 * 1000;
+      const daysSincePascha = Math.round((d - pascha) / DAY_MS);
+      if (daysSincePascha !== 49) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          error: 'Kneeling Vespers is only served on Pentecost Sunday.',
+          date,
+        }));
+        return;
+      }
+
+      // Assemble the Pentecost Sunday vespers content (same call as the
+      // Saturday-evening Vigil, with the Pentecost-day liturgical entry).
+      let result;
+      try {
+        result = assembleForDate(date, pronoun);
+      } catch (err) {
+        console.error('assembleForDate (kneeling-vespers) error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+        return;
+      }
+      if (!result) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Failed to assemble Pentecost vespers content.' }));
+        return;
+      }
+
+      const { blocks: baseBlocks, calendarEntry, tone } = result;
+
+      // Relabel 'db' source for dev-mode display (mirrors /api/service)
+      for (const b of baseBlocks) {
+        if (b.source === 'db') b.source = 'pentecostarion';
+        if (!b.provenance) b.provenance = 'OCA';
+      }
+
+      // ── Build the three Kneeling Prayer groups as ServiceBlocks ────────
+      // Resolve translation overlay: prayer texts live in overlay files
+      // (e.g. sts-sluzhebnik/kneeling-vespers-fixed.json) because the base
+      // file ships only universal rubrics + placeholders.
+      const translation = resolveTranslation(q);
+      const kv = getOverlayFixed('kneeling-vespers', translation) || kneelingVespersFixed;
+      const r  = kv.rubrics;
+      function buildSet(setKey, sectionName, prayerKeys, includeIntroNotice) {
+        const out = [];
+        if (includeIntroNotice) {
+          out.push({
+            id: `kn-${setKey}-notice`, section: sectionName, type: 'rubric',
+            speaker: null, text: r.kneelingNotice,
+          });
+        }
+        out.push({
+          id: `kn-${setKey}-heading`, section: sectionName, type: 'rubric',
+          speaker: null, text: kv[setKey].heading,
+        });
+        out.push({
+          id: `kn-${setKey}-bid`, section: sectionName, type: 'prayer',
+          speaker: 'deacon', text: r.deaconBidsKneeling,
+        });
+        out.push({
+          id: `kn-${setKey}-bid-resp`, section: sectionName, type: 'response',
+          speaker: 'choir', text: 'Lord, have mercy.',
+        });
+        prayerKeys.forEach((pk, i) => {
+          if (i > 0) {
+            out.push({
+              id: `kn-${setKey}-adds-${i}`, section: sectionName, type: 'rubric',
+              speaker: null, text: r.andHeAdds,
+            });
+          }
+          out.push({
+            id: `kn-${setKey}-${pk}`, section: sectionName, type: 'prayer',
+            speaker: 'priest', text: kv[setKey][pk],
+          });
+        });
+        out.push({
+          id: `kn-${setKey}-rise`, section: sectionName, type: 'prayer',
+          speaker: 'deacon', text: r.deaconBidsRising,
+        });
+        out.push({
+          id: `kn-${setKey}-rise-resp`, section: sectionName, type: 'response',
+          speaker: 'choir', text: r.deaconBidsRisingResponse,
+        });
+        return out;
+      }
+
+      const set1Blocks = buildSet('set1', 'First Kneeling', ['firstPrayer','secondPrayer'], true);
+      const set2Blocks = buildSet('set2', 'Second Kneeling', ['firstPrayer','secondPrayer'], false);
+      const set3Blocks = buildSet('set3', 'Third Kneeling', ['firstPrayer','secondPrayer','thirdPrayer'], false);
+
+      // Splice each set in *before* the named section's first block
+      function insertBeforeSection(arr, sectionName, inserted) {
+        const idx = arr.findIndex(b => b.section === sectionName);
+        if (idx === -1) return arr.concat(inserted); // fallback: append
+        return arr.slice(0, idx).concat(inserted, arr.slice(idx));
+      }
+      let blocks = baseBlocks;
+      blocks = insertBeforeSection(blocks, 'Litany of Fervent Supplication', set1Blocks);
+      blocks = insertBeforeSection(blocks, 'Litany of Completion',           set2Blocks);
+      blocks = insertBeforeSection(blocks, 'Aposticha',                       set3Blocks);
+
+      // Tag blocks whose text came from the overlay (for dev-mode attribution).
+      tagBlocksWithOverlay(blocks, 'kneeling-vespers', translation);
+
+      const season = calendarEntry.liturgicalContext?.season || 'pentecostarion';
+      const dow    = calendarEntry.dayOfWeek || null;
+      const liturgicalLabel = getDayLabel(calendarEntry, dow, season, calendarEntry.date)
+                              || 'The Descent of the Holy Spirit (Pentecost)';
+      const commemorations = calendarEntry.commemorations || [];
+
+      if (format === 'html') {
+        const toneLabel = tone ? ` · Tone ${tone}` : '';
+        renderServiceHTML(res, blocks,
+          'Kneeling Vespers of Pentecost',
+          `${formatDate(date)}${toneLabel}`, pronoun);
+        return;
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        date,
+        serviceType:     'kneelingVespers',
+        serviceName:     'Kneeling Vespers of Pentecost',
+        tone,
+        season,
+        liturgicalLabel,
+        commemorations,
+        blocks,
+      }));
+
     } else if (pathname === '/api/paschal-hours') {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
@@ -4245,6 +4571,7 @@ function handleRequest(req, res) {
         vesperalLiturgy: { key: 'vesperalLiturgy',  name: 'Vesperal Liturgy of St. Basil',  endpoint: '/api/vesperal-liturgy' },
         paschalHours:    { key: 'paschalHours',      name: 'Paschal Hours',                  endpoint: '/api/paschal-hours' },
         paschaCollection:{ key: 'paschaCollection',  name: 'Holy Pascha Collection',         endpoint: '/api/pascha-collection' },
+        kneelingVespers: { key: 'kneelingVespers',   name: 'Kneeling Vespers of Pentecost',  endpoint: '/api/kneeling-vespers' },
       };
 
       // Build available services list
@@ -4265,6 +4592,12 @@ function handleRequest(req, res) {
         paschaCollection: (() => {
           const p = calculatePascha(d.getUTCFullYear());
           return d.getUTCMonth() === p.getUTCMonth() && d.getUTCDate() === p.getUTCDate();
+        })(),
+        kneelingVespers: (() => {
+          const p = calculatePascha(d.getUTCFullYear());
+          const DAY = 86400000;
+          const midnight = new Date(date + 'T00:00:00Z');
+          return Math.round((midnight - p) / DAY) === 49;
         })(),
       };
 
@@ -4401,6 +4734,10 @@ function handleRequest(req, res) {
           paschaCollection: (() => {
             const p = calculatePascha(cur.getUTCFullYear());
             return cur.getUTCMonth() === p.getUTCMonth() && cur.getUTCDate() === p.getUTCDate();
+          })(),
+          kneelingVespers: (() => {
+            const p = calculatePascha(cur.getUTCFullYear());
+            return Math.round((cur - p) / DAY_MS_LOCAL) === 49;
           })(),
         };
 

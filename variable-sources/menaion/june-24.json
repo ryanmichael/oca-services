@@ -1,0 +1,390 @@
+{
+  "_meta": {
+    "feast": "The Nativity of the Holy Glorious Prophet, Forerunner, and Baptist John",
+    "feastKey": "nativityForerunner",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 06-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-24.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two canons both in Tone IV: Canon I by John the Monk (8 troparia); Canon II by Andrew of Crete (6 troparia). Magnificat retained."
+  },
+
+  "troparion": {
+    "text": "O prophet and forerunner of the coming of Christ,\nwe who honor thee with love are at a loss how to worthily praise thee;\nfor by thy glorious and honored nativity\nthou didst loose the barrenness of her who gave birth to thee\nand the muteness of thy father,//\nand proclaimed to the world the incarnation of the Son of God.",
+    "tone": 4,
+    "label": "Troparion of the holy forerunner"
+  },
+  "kontakion": {
+    "text": "Today she who before was barren\ngiveth birth unto the forerunner of Christ,\nhe is the fulfillment of all prophecy;\nfor, laying his hand in the Jordan upon Him Whom the prophets foretold,\nhe hath been shown to be the prophet, herald and forerunner//\nof the Word of God.",
+    "tone": 3,
+    "label": "Kontakion of the holy forerunner"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Now the fruit of Zacharias, the adornment of the desert, the foundation of the prophets, hath sprung forth,\nbringing gladness noetically to the thoughts of the faithful;\nwherefore, the forerunner of Christ hath appeared, the true witness of His coming.\nWith spiritual songs let us together cry out to the Baptist:\nO prophet and preacher of the truth, pray thou that we be saved!",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Joseph marveled",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "As he contemplated that which was beyond nature\nJoseph was struck with wonder O Theotokos, at thy conception without seed.\nHe contemplated the mysterious dew upon the fleece,\nthe bush un-burnt by fire,\nAaron's rod which budded.\nThus thy Betrothed and guardian bore witness and cried unto the priests saying:\nA Virgin beareth a child,//\nand after child-birth remaineth yet a virgin.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "O all-praised John, thou wast truly and most gloriously born as the herald of the coming of Christ,\nthe chief of the prophets;\nand, as the voice of the Word, thou didst cry out:\n\"Repent! The kingdom of heaven is at hand!\"\nWherefore, having prepared the way of the Lord,\nthou wast shown to the ends of the earth as the forerunner of grace.\nO baptizer and apostle, entreat Christ God,\nthat He grant forgiveness of transgressions unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most holy Virgin, Mother of Christ, heal thou the cruel passions of my soul, I pray,\nand grant me forgiveness of my transgressions,\nwhich I have foolishly committed, defiling both soul and body, wretch that I am.\nWoe is me! What shall I do at that hour\nwhen the angels will separate my soul from my passion-plagued body?\nThen be thou my helper and most fervent intercessor,\nfor I, thy servant, have thee as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O John, forerunner of the Savior,\nand we honor thy most glorious birth from a barren woman.",
+      "verses": [
+        "Blessed be the Lord God of Israel, for He hath visited and wrought deliverance for His people.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Let the father rejoice. Be glad, O mother,\nfor today thou hast given birth on earth unto a prophet,\nthe forerunner summoned by God by the promise.\nThe barren woman nurtureth the Baptist as a babe,\nand Zacharias rejoiceth, saying to the infant:\n\"My tongue hath been loosed by thine advent on earth, O candle-stand of the Light!\nA miracle truly most glorious!\"",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "That which was commanded",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "We ever thank thee, O pure Theotokos who art full of grace,\nand we magnify and bow down before thee,\nhymning thy birthgiving and crying out without ceasing:\nSave us, O almighty Virgin, in that thou art good,\nand rescue us from the dread sentence of the demons at the hour of trial,\nthat we, thy servants, may not be put to shame.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "And thou, O child,\nshalt be called the prophet of the Most High.",
+      "verse": "Blessed is the Lord God of Israel, for He hath visited and wrought deliverance for His people.",
+      "tone": 4,
+      "_psalmRef": "Lk. 1:76 / 1:68"
+    },
+
+    "gospel": {
+      "reading": "Luke 1:24-25, 57-68, 76, 80",
+      "number": 3,
+      "_note": "Elizabeth's conception and the birth of John; Zacharias' tongue loosed."
+    },
+
+    "postGospelSticheron": {
+      "text": "He who was sanctified from his mother's womb\nand was the fulfillment of the prophecy,\nis born today of a barren woman,\nmanifestly proclaiming the coming of the Lord, saying://\n\"Repent, for the kingdom of heaven is at hand!\"",
+      "tone": 2,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 4,
+      "_authors": { "first": "John the Monk (Canon I, Tone IV, 8 troparia)", "second": "Andrew of Crete (Canon II, Tone IV, 6 troparia)" },
+      "_canonNote": "Two canons both in Tone IV. Katavasiae: 'I shall open my mouth' (the Theotokos canon irmoi).",
+
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin,\ndrown I implore Thee, in the depth of dispassion\nthe triune nature of my soul,\nas Thou didst the mighty strongholds of the warriors,\nthat in the mortality of my flesh as on a timbrel\nI may chant a hymn of victory.",
+        "irmos2": "Let us chant unto God our Redeemer,\nWho of old guided Israel fleeing from the slavery of Pharaoh,\nand fed them in the wilderness,\nfor He hath been glorified.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The offspring of the barren woman manifestly proclaimeth the birthgiving of the Virgin,\npreceding the Sun like a magnificent dawn.\nAnd he now shineth forth the light of piety and grace upon the whole universe." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"Truly art thou called the prophet of the Most High;\nfor thou goest before the face of Christ, to prepare the way for the Creator!\"\nZacharias cried out to thee, his son, borne up by the most Holy Spirit, O all-famed John." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Hearing the words of Gabriel's divine news, Zacharias showed himself to be intractable,\nand was stricken with muteness;\nbut he is suddenly loosed therefrom, for John the Forerunner, the voice of the Word, hath been born." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most immaculate Theotokos, thou godly city of the King of all,\nhabitation well-pleasing unto God, precious treasure:\npreserve thine inheritance, which ever praiseth thee and honoreth thy birthgiving with faith." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The silence of the father is a symbol of the mysteries of the Scriptures of the law;\nfor when grace arrived Moses fell silent.\nFor it was fitting that all fall silent in the presence of the treasure of wisdom which had been revealed." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "While the priest was censing in the temple, an angel from on high stood before him and cried aloud:\n\"I am come unto thee bearing news of a strange birthgiving, O elder!\nFor thou shalt receive from the barren woman the baptizer of Christ as your offspring.\"" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "\"Wherefore dost thou marvel, O elder?\nWhy standest thou, refusing to believe the one who telleth thee these things?\nFor he is an angel, even if he is in the semblance of a man,\nbe thou therefore mute until the time of the birth of the voice of the Word!\"" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "He who made the silence of Zacharias a symbol of the written law\nhath thereby shown me to be a preacher of repentance who cry out:\nHe giveth unto the barren woman a son who is the voice who crieth." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O the most glorious pronouncements of the Forerunner of Christ!\nHe who, even before he was wrapped in swaddling bands,\nrecognized Him who hath loosed our bonds and sanctified the nations,\nis born today of Elizabeth and looseth the voice of his father." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou art the habitation of God and the noetic ladder by which God hath descended\nand, taking our form, hath led our nature up to the heavens.\nThee do we all praise as the mediatress of our salvation." }
+        ],
+        "katavasia": "I shall open my mouth…"
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee, O Lover of mankind.",
+        "irmos2": "Having established the thunder and fashioned the wind:\ndo Thou make me steadfast O Lord,\nthat I may hymn Thee in truth and do Thy will;\nfor none is as holy as Thou, O our God.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The birthgiving of the Master is accomplished through the Virgin,\nwhile that of His beloved servant is through an elderly and barren mother;\nwherefore, splendidly hath he proceeded the Wonder of wonders." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The elderly and barren woman kisseth the Virgin Mother, truly recognizing her birthgiving,\nfor the bond of her barrenness hath been loosed by the will of God." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O thou who hast given birth unto God incarnate without having known wedlock,\nmake me steadfast who am beset by the assaults of the passions;\nfor I have none other helper than thee, O most pure one." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Elizabeth, who before was barren, prefigured Thy Church of the nations, O Christ,\nand, giving birth most gloriously, she hath revealed as most fertile that which once was seen to be barren." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Making straight the ways of the Lord and preparing His path, O prophet and herald of Christ,\nthou didst show mankind the fruits of repentance, teaching them the way of life." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Dancing today, Elizabeth holdeth thee in her elderly arms, O Forerunner, and crieth out, uttering the praise:\nNone is as holy as Thou, O Lord our God!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most holy Theotokos, thou didst loose the grief of our first parents,\ngiving birth to the Creator of life and Redeemer for us.\nHim do thou earnestly entreat, that thy flock be saved." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "The Forerunner, the voice of the Word, upon his birth splendidly loosed the voice of Zacharias,\nand he hath shown unto all the barrenness of the law, crying out:\nRepent, ye who are on earth, for, lo! Jesus cometh and hath appeared,\ndesiring to deliver all from the primal curse, illumining them with baptism!\nTruly this is a most glorious wonder!",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "That which was commanded",
+        "glory": {
+          "text": "Like the radiant sun, the son of Zacharias hath shone forth upon us through the womb of Elizabeth,\nand loosed the muteness of his father,\ncrying out to all men with great boldness:\n\"Make straight the way of the Lord! For He freeth and saveth those who have recourse unto Him.\"\nEntreat Him Whom didst thou preach, O John, that our souls be saved.",
+          "tone": 4,
+          "melody": "Joseph marveled"
+        },
+        "bothNow": {
+          "text": "By thy divine birthgiving, O pure one,\nthou hast renewed the mortal nature of those born on earth,\nwhich had become corrupt through the passions,\nraising up all from death to a life of incorruption.\nWherefore, as is meet we all bless thee,//\nO exceedingly glorious Virgin, as thou didst foretell.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry:\nGlory to Thy power, O Christ.",
+        "irmos2": "I have heard of Thy glorious Dispensation, O Christ our God:\nhow Thou wast born of the Virgin,\nthat Thou mightest deliver from error those who cry aloud to Thee:\nGlory to Thy power, O Lord.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A mystery hath preceded ineffable mysteries,\nproclaiming release from suffering by a renewed nature,\nthrough its correction and deification, O Christ." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Isaiah prophesied that when the Son would become flesh,\nthe Father would say:\n\"Behold, I send before Thy face an earthly angel, the equal of the angels,\nwho crieth out: Glory to Thy power, O Christ!\"" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "I have been born to serve the Master as a servant;\nfor, lo! for this reason I have come, to announce His coming,\nthat the barren and elderly woman, putting forth fruit,\nmay believe beforehand the birthgiving of the Virgin." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The womb of the holy Theotokos, in whom it was Thy good pleasure\nto make Thine abode as in a fragrant dwelling, O supremely divine Word of the Father,\nwas neither corrupted, nor suffered pain;\nfor she gaveth birth to Emmanuel: God and man." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Repentance was made accessible through thy nativity, O Forerunner and herald;\nfor thou alone didst preach, crying aloud:\nRepent ye! The kingdom of heaven is at hand!" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Virginity is established and chastity doth triumph;\nthe desert rejoiceth, and the world holdeth festival in thy nativity, O Forerunner!" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Elizabeth rejoiceth and Zacharias speaketh once again.\nBoth, therefore, become young in their old age\nand are rendered luminous through John the voice of the Word." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Of old, the lawgiver saw thee as the bush unconsumed by the fire,\nand Daniel envisioned thee as a holy mountain,\nO Sovereign Lady who alone art Mother and Virgin." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Now I shall arise said God prophetically,\nnow I shall be glorified, now I shall be exalted,\nelevating fallen human nature, which I received from the Virgin,\nto the noetic light of My divinity.",
+        "irmos2": "Shine upon me, O Lord, the light of Thy commandments,\nfor my soul riseth early to Thee and hymneth Thee:\nFor Thou art our God,\nand unto Thee do I flee, O King of peace.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The earth hath given rise to the true herald, the voice who preacheth to all,\nwith the tongue of the Spirit, the Son of the Virgin,\nrighteousness from heaven which hath come down to us in a bodily substance." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Lord hath appointed thee the true luminary of Christ, enlightening all,\nclothing only those who are His enemies in shame, as in a garment,\nand forthrightly proclaiming the Word and Son of God." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All creation rejoiceth in thy nativity in a godly manner;\nfor thou wast shown to be an earthly angel and a heavenly man, O Forerunner,\nproclaiming the God of heaven Who assumed flesh for our sake." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who is begotten of the Father hath been born of thee and is ever with thee:\nthe ever-existing and indivisible Word, the only-begotten Son,\nWho, in the latter days, became incarnate of the Virgin and the Holy Spirit." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Sun of righteousness, Thou hast prepared a star, Thy baptizer John,\nwho today is born according to Thy promise and hath loosed the voice of his father." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Utter thou no words of protest, O sacred elder;\nfor Gabriel, the foremost among the archangels, telleth thee the mysteries of God,\ntelling all of His descent unto us." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Be not unbelieving, O elder;\nfor God hath promised that thou shalt beget a son in thine old age,\nin whose birth many shall rejoice, for he shall come with the power of Elijah." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O prophet, herald and forerunner, offspring of the barren woman, preacher of repentance,\nlamb of the wilderness, and lampstand of the Light:\npray thou for all with faith who honor thee." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We hymn thee, O Sovereign Lady, Mother of the Creator of all,\nas the impassable portal, the bush unconsumed,\nand the unquarried mountain from whom was cut the Stone Who is He Who assumed flesh from thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss\nO Greatly-merciful One.",
+        "irmos2": "The tempest of evil thoughts, hath overwhelmed me,\ndragging me down into the abyss of my numberless sins;\nbut, going before me, O good Helmsman,\ngovern me as Thou didst the Prophet, and save me.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "While yet in thy mother's womb, as a prophet thou didst recognize the Word of God,\nand, deified by the unapproachable light,\nthou didst utter theology in that dark chamber, employing her tongue." },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As the voice of one crying unceasingly, O Baptist,\ncease thou never to entreat the Redeemer of the world,\nthat He loose the spiritual barrenness of those who hymn thy nativity." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thy womb, O pure Theotokos, was revealed to be the dwelling-place of the unapproachable Godhead,\nupon Whom the heavenly ranks cannot gaze without fear." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Today John is born: the citizen of the desert, the preacher of repentance,\nthe true witness of grace, the forerunner of the Word, the star which shineth before the Light." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Today, the axe which hath been forged, hath portended the hewing of barren souls,\nand planting the fruits of the virtues, hath surely come forth in thy nativity, O forerunner." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Jordan hath rejoiced most gloriously and leapeth up,\nlearning that John is born of the barren one's womb;\nwherefore the sea danceth with leaping waters." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Coming forth, the candle-stand of the Light preached the coming of the Savior,\nthe Lamb of God, Who hath shone forth light upon the earth,\noffered spiritually for all nature." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-immaculate Birthgiver of God, who hast given birth to the Abyss of mercy:\ndrowning the abyss of my passions in the depths of thy compassions,\ngrant me a torrent of tears from my soul." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Today she who before was barren\ngiveth birth unto the forerunner of Christ,\nhe is the fulfillment of all prophecy;\nfor, laying his hand in the Jordan upon Him Whom the prophets foretold,\nhe hath been shown to be the prophet, herald and forerunner//\nof the Word of God.",
+        "tone": 3,
+        "label": "Kontakion of the holy forerunner",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Let us now praise the forerunner of the Lord,\nto whom Elizabeth gaveth birth for the priest, by means of her barren womb, though not seedlessly;\nfor Christ alone passed through an inviolate dwelling without seed.\nThe barren woman gaveth birth unto John, but did not beget him without the aid of her husband;\nbut the pure virgin gaveth birth to Jesus through the overshadowing of the Father and the Spirit of God.\nThe prophet, herald and forerunner was revealed through the barren woman to the Seedless One."
+      },
+
+      "ode7": {
+        "irmos": "The three youths in Babylon, regarded the tyrant's command as foolishness,\nand cried aloud in the midst of the flame:\nBlessed art Thou, O Lord God of our fathers!",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Before, all of human nature was in darkness, O forerunner;\nbut thou wast shown to be the dawn, crying out:\nBlessed art Thou, O Lord God of our fathers!" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy nativity through the barren woman hath healed all afflicted nature, O forerunner,\nteaching it to chant: Blessed art Thou, O Lord God of our fathers!" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast born of a barren woman, O forerunner,\nfor, since the law is barren, grace hath truly come,\nchanting unto Christ: Blessed art Thou, O Lord God of our fathers!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O blessed Virgin, pray for us who beseech thee;\nfor on thee do we set our hope, and to thee do we cry aloud:\nO Sovereign Lady, disdain not thy servants!" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Falling mute for a time, Zacharias made plain his silence by writing;\nand, provided again with speech through thy nativity, O forerunner,\nhe most gloriously announced the grace of the Spirit." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The most honored Elizabeth, that barren and childless woman, is like unto the Church:\nwhich before was bedimmed with sacrifices and ordure now boasteth in beauty and birthgiving." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Today the spiritual axe, whereby all the uprisings of the passions are hewn down,\nis honed by the nativity of the forerunner;\nand the fruits of repentance mystically flourish." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "We honor thee, O John, as the mediator between the old and the new testaments,\nthe one who maketh straight the paths of Christ\nWho cleanseth the threshing-floor of transgression with the winnowing-fan of the Spirit." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "We all hymn the glorious John who issued forth from the barren woman,\nthe forerunner and preacher of repentance,\nwho hastened like a star before the Sun, Christ our God." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Theotokos, cease thou never to pray on behalf of all unto Him\nWho, without seed, made His abode within thy womb,\nWho, in His ineffable and utter humility, was born and beggared Himself for our sake." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "O almighty Redeemer of all,\nhaving descended and bedewed the children in the midst of the flame,\nThou didst teach them to sing:\nAll ye works bless and hymn the Lord.",
+        "irmos2": "In wisdom hast Thou fashioned all things, O Master,\nThou didst establish the earth firmly upon the fathomless depths of the waters,\nin accordance with Thy knowledge,\nwherefore we hymn Thee chanting:\nUnceasingly bless ye the Lord all ye works of the Lord.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Moses the lawgiver was a servant, but Jesus is the God of the new covenant;\nand now the forerunner hymneth both, as mediator between them, saying:\nBless the Lord, all ye works of the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "A turtle-dove hath issued forth from the womb of the barren one!\nLike a divinely planted grove she hath offered the forerunner of Christ unto the Church, chanting:\nAll ye works of the Lord, bless ye the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "O God-bearing people, holy nation, liken yourselves unto the turtle-dove of Christ\nand, abiding in chastity, chant ye with voices flowing with honey:\nAll ye works of the Lord, bless ye the Lord!" },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: Illumined with the threefold Light, let us worship the one uncreated Godhead,\nceaselessly crying aloud in an Orthodox manner:\nAll ye works of the Lord, bless ye the Lord!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Before thy birth, before thine own swaddling-clothes, O forerunner,\nthou didst recognize Christ, the Bestower of life,\nWhom thou didst worship, pointing Him out by leaping,\nand naming Him thy Lord, by borrowing thy mother's tongue, and singing unto Christ our God." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The ends of the earth celebrate the forefeast today;\nthe angels and the souls of the righteous rejoice;\nthe quick and the dead are gladdened by the birth of John,\nreceiving through him the preaching of the Savior and Lord of all." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Today the Jordan, likening itself to John, hath leapt up most gloriously in its fluid torrents,\nlistening to him whose life is like unto that of the angels,\nwho was born of a barren and elderly woman,\nwho maketh straight the ways and paths of the Lord and hath baptized the world." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Today Zacharias noted on a slate the name of the prophet and forerunner which was designated by God,\nand in his silence he declared:\nLet him be called John who is born to me in mine old age!\nThis marvelous designation befitteth one who was begotten according to God's promise." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thy people, O Virgin, have thee as a mighty consolation, a hope unashamed,\nan unassailable rampart and divine intercession,\nand, saved, they glorify and cry out to thee earnestly:\nBless the Lord unceasingly, all ye works of the Lord!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The ineffable hidden mystery of God hath been revealed in thee, O most pure Virgin;\nfor in His tender compassion God become incarnate of thee.\nWherefore, we magnify thee as the Theotokos.",
+        "irmos2": "For the Mighty One hath done great things to me,\nand holy is His name;\nand His mercy is upon them that fear Him unto generation and generation.",
+        "troparia": [
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Lo! the voice of the forerunner falleth upon barren and empty hearts, crying:\nPrepare ye now the way of Christ, for He shall come in glory,\nand, submitting ourselves, we magnify Him!" },
+          { "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As of old, O forerunner, thou didst through the Holy Spirit manifestly preach the Son,\nWho is the Lamb of God Who taketh away the sins of the world,\nask thou forgiveness of sins for thy flock." },
+          { "refrain": "Glory to the Father, and to the Son, and to the Holy Spirit.", "_source": "stSergius-menaion",
+            "text": "Triadicon: Chanting in an Orthodox manner, O ye faithful, let us glorify the threefold Unity,\nthe consubstantial Trinity, Who illumineth us divinely\nand filleth our souls with the splendors of the never-waning light." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O thou who hast dominion over all creatures,\ngrant the trophy of victory to thy people\nand set the feet of Orthodox hierarchs upon all heresies and schisms,\nthat we may magnify thee as the Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Behold, in thee, O priest, hath God wrought a great and most glorious sign;\nfor thou hast begotten a son, the forerunner, in thine old age and in the mortality of thy flesh." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Let barren women hearken and chant unto God!\nFor, lo! Elizabeth crieth out:\nI give birth unto a son of mine old age and in the mortality of my flesh!" },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Be glad and rejoice now in God, O Zacharias!\nFor, lo! Elizabeth nourisheth the son of her old age at her breast\nand in the mortality of her flesh giveth birth to the forerunner." },
+          { "canon": "secondCanon", "refrain": "Holy Forerunner of the Lord, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Glory to Him Who hath giveth fruit to the barren woman in her old age\nand hath bestowed upon the aged prophet a son, the divine forerunner,\nwho prepareth for Him a perfected people." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who was begotten in the bosom of the Father without passion and corruption,\nhaving made His abode within thee, in His loving-kindness\nhath led us to the Father and the divine Spirit." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Today the joyous birth of the forerunner looseth the grief of his father's muteness\nand the barrenness of her who bore him.\nAnd he declareth the present joy and gladness.\nWherefore, all creation doth celebrate it with splendor.",
+        "label": "Exaposteilarion of the holy forerunner",
+        "melody": "Hearken, ye women",
+        "repeat": 2,
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "The prophets preached, the apostles taught,\nand with godly wisdom the martyrs openly confessed thy Son to be the God of all, O most pure one.\nWith them we glorify thee, delivered by thee from the ancient sentence.",
+        "label": "Theotokion (at Glory ... Both now)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "O most glorious wonder!\nFrom a mother advanced in age\nhath John, the proclaimer of God the Word\nhastened to issue forth today,\nand by his nativity he most clearly revealeth the bound tongue to speak.\nO Thine ineffable dispensation, O Master,\nwhereby, O Christ,//\nsave Thou our souls, in that Thou alone art merciful.",
+          "tone": 8,
+          "melody": "O most glorious wonder"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "O most glorious wonder!\nThe prophet who is the greatest among those born of women\nlooseth the condemnation of his mother's barrenness,\ncoming with the spirit and power of Elijah to make straight the way of the Lord.\nO Thine ineffable tender compassion, O Master,\nwhereby, O Christ,//\nsave Thou our souls, in that Thou alone art merciful.",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "O most glorious wonder!\nHe Who preached to men the condescension of Christ\nwith his voice doth indicate Him Who transcendeth all,\nand with power divine looseth the barrenness of her who gave him birth\nand the tongue of Zacharias.\nO Thy great wonders, O Master!\nThereby, O Christ,//\ndo Thou save those who honor Thy great forerunner.",
+          "tone": 8
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O most glorious wonder!\nThe prophet and forerunner is shown to be the greatest born of women,\nand the most sublime prophet and herald of the coming of Christ,\nleaping up in his mother's womb.\nO Thine exceeding great gifts, O Lover of mankind!\nThereby, O Christ,//\nsave Thou our souls, in that Thou art almighty.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "The forerunner, the star of stars, John who longeth for God,\nis born on earth today from a barren womb,\nand he revealeth the radiance of Christ, the Orient from on high,//\nfor the straight passage of the faithful.",
+        "tone": 6,
+        "author": "by Anatolius",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O prophet and forerunner of the coming of Christ,\nwe who honor thee with love are at a loss how to worthily praise thee;\nfor by thy glorious and honored nativity\nthou didst loose the barrenness of her who gave birth to thee\nand the muteness of thy father,//\nand proclaimed to the world the incarnation of the Son of God.",
+      "tone": 4
+    }
+  }
+}

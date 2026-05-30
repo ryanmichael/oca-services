@@ -1,0 +1,31 @@
+{
+  "_note": "Base file holds universal rubrics + structural placeholders. Prayer texts MUST come from a translation overlay (see fixed-texts/translations/<id>/kneeling-vespers-fixed.json). St. Tikhon's Sluzhebnik does not publish kneeling prayers (Pentecostarion content); the sts-sluzhebnik overlay carries a ROCOR-EAD Thee/Thou text as a stand-in until an OCA Pentecostarion edition is sourced.",
+  "_insertionPoints": {
+    "set1": "After the Evening (Great) Prokeimenon, before the Litany of Fervent Supplication.",
+    "set2": "After 'Vouchsafe, O Lord', before the Litany of Completion.",
+    "set3": "After the Litany of Completion, before the Aposticha."
+  },
+  "rubrics": {
+    "kneelingNotice": "At this Vespers, served on the evening of Pentecost, the faithful kneel for the first time since Pascha. The priest offers each set of prayers while all kneel; the prayers are concluded with the diaconal call to rise.",
+    "deaconBidsKneeling": "Again and again, on bended knees, let us pray to the Lord.",
+    "deaconBidsRising": "Help us, save us, have mercy on us, raise us up, and keep us, O God, by Thy grace.",
+    "deaconBidsRisingResponse": "Lord, have mercy.",
+    "andHeAdds": "And he addeth also this prayer:"
+  },
+  "set1": {
+    "heading": "The First Kneeling — The First Prayer",
+    "firstPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]",
+    "secondPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]"
+  },
+  "set2": {
+    "heading": "The Second Kneeling — The Second Prayer",
+    "firstPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]",
+    "secondPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]"
+  },
+  "set3": {
+    "heading": "The Third Kneeling — The Third Prayer",
+    "firstPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]",
+    "secondPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]",
+    "thirdPrayer": "[Kneeling Prayer text not available in the base translation. Select a translation overlay that supplies kneeling-vespers texts, e.g. ?translation=sts-sluzhebnik.]"
+  }
+}

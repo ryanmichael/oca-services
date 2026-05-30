@@ -1,0 +1,231 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle James the Son of Alphaeus",
+    "feastKey": "stJamesOfAlphaeus",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 10-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-09.pdf",
+    "_note": "Polyeleos-rank apostle Matins (Polyeleos + Magnification 'We magnify thee, O apostle of Christ James' at line 353). Single canon of the holy apostle by Theophanes in Tone VI (acrostic 'I honor the soul of Alpheus, the disciple of Christ'). Theotokos Paraklisis canon interleaved at the actual service is omitted per the menaion-matins-track pattern. Katavasiae: 'I shall open my mouth' (forefeast of Entry of Theotokos Nov 21 — also sung in October per the Sergius pattern). Same shared Gospel as the other apostle-feasts: John 21:15-25."
+  },
+  "troparion": {
+    "text": "O holy Apostle James, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostle"
+  },
+  "kontakion": {
+    "text": "With praises let us all bless the divine herald James,\nwho steadfastly instilled the dogmas of wisdom in the souls of the pious;\nfor, standing before the throne of the Master of glory,//\nhe rejoiceth with all the angels, praying unceasingly for us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy apostle",
+    "melody": "The steadfast"
+  },
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy Apostle James, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle",
+      "_note": "On 'God is the Lord': Troparion of the holy apostle (Twice); Glory ..., Both now ..., Theotokion (Tone III)."
+    },
+    "sedalion": [
+      {
+        "text": "The glorious apostle pursued the nations, teaching the ends of the earth to worship Thee with the Father and the Spirit, O Christ God.//\nFor his sake establish Thou Thy Church, and send down thy blessing upon the faithful, O only Merciful Lover of mankind.",
+        "tone": 2,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Through thee, O Ever-virgin Theotokos, we have become partakers of the divine nature;\nfor thou hast given birth to God incarnate for our sake.//\nWherefore, as is meet we all reverently magnify thee.",
+          "tone": 2,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Christ, the Sun of righteousness, emitted thee like a ray, enlightening the whole world, O glorious Apostle James;\nand with thy divine supplications thou dost ever illumine with the never-waning light of God,//\nall who with faith celebrate thy holy memory.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O unashamed hope of those who place their trust in thee, O thou who alone supra-naturally gave birth to Christ our God in the flesh:\nWith the holy apostles entreat Him, that He grant to the whole world, cleansing of sins//\nand to all of us before the end, correction of life.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ James,\nand we honor the pangs and labors//\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Having caught reason-endowed fish in the net of divine words, thou didst bring them as first-fruits to our God;\nand desiring to be clothed in the wounds of Christ, thou didst show thyself to be an emulator of His sufferings.\nWherefore, assembling as is meet, we honor thee, O glorious apostle, and cry out to thee together://\nEntreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "O most-pure Theotokos, thou noetic portal of life,\ndeliver us who have recourse to thee in faith,//\nthat we may glorify thy most holy birthgiving, unto the salvation of our souls.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,//\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 21:15-25", "number": 67 },
+    "postGospelSticheron": {
+      "text": "As an apostle and an initiate of the mysteries, as an excellent servant of the Master, the only Messiah,\nO all-praised and divine herald James, entreat Him to grant victory to our Orthodox hierarchs over all heresies,//\nand cleansing from sins to those who celebrate thy most holy memory.",
+      "tone": 4,
+      "label": "Idiomelon of the holy apostle"
+    },
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the holy apostle by Theophanes in Tone VI (acrostic 'I honor the soul of Alpheus, the disciple of Christ'). Theotokos Paraklisis canon interleaved at the actual service is omitted per the menaion-matins-track pattern. Katavasiae: 'I shall open my mouth' (forefeast of the Entry of the Theotokos).",
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried://\nLet us sing to God a song of victory.",
+        "troparia": [
+          { "text": "O James, disciple of Christ and seer of God, grant thy hand unto me who strives to praise thine honored feast, and by thy supplications shine forth light upon my heart." },
+          { "text": "Watered with streams of divine wisdom, thou didst flow forth from the paradise of sweetness like a river, and hast truly and manifestly irrigated the face of the earth with torrents of piety." },
+          { "text": "Thou hast been numbered among the most sacred choir of the disciples of Christ, O James, fulfilling the number twelve. Standing with them before the Master, be thou mindful of us." },
+          { "text": "Theotokion: The Lord Who stretched out the sky and founded the earth hath revealed thee to us as an earthly heaven, O most pure Virgin, issuing forth from thee in the flesh." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "Manifestly receiving the radiance of the divine Spirit, thou didst reveal thyself to those in darkness as one splendid as the dawn, declaring to all the appearance of the noetic Sun." },
+          { "text": "Dancing in a godly manner before the just and good King and treading the path to heaven, O blessed one, thou didst manifestly establish thy feet in righteousness." },
+          { "text": "O James, thou didst have the beginningless Son of God, Who createth all things in His divine goodness, as thine instructor in the true mysteries, teaching thee the knowledge of the truth." },
+          { "text": "Theotokion: O most pure Mary, thou hope of all who place their trust in thee, who hast given birth to the incarnate Word for our sake, deliver me from divers perils and misfortunes." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Having the wisdom of thy teacher truly teaching thee things beyond understanding, thou didst render foolish the wisdom of the Greeks, O divinely inspired one;\nand thou wast a divine beacon to the nations, guiding the foolish with words of piety.\nWherefore, delivered from delusion by thee, we hymn thee as is meet and faithfully call thee blessed, O divinely eloquent James.//\nEntreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O undefiled, blameless and all-immaculate Lady, thou cloud of the noetic Sun and golden candle-stand of the light of God:\nwith the radiance of dispassion illumine my soul, which hath grown dim through the blindness of the passions, I pray;\nwith torrents of compunction enlighten my polluted heart, and with tears of repentance cleanse me of the mire of my evil deeds,\nthat with love I may cry out to thee: O Ever-virgin Theotokos, entreat Christ God, that He grant me forgiveness of my transgressions;//\nfor thee do I, thy servant, have as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth, crying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "The Lord Himself, Who alone is holy, numbered thee among the honored choir of His disciples, O blessed one, foreseeing the honor and splendor of thy life." },
+          { "text": "Full of the miracles of the divine Spirit, O herald of God, thou workest wonders, dispelling infirmities; and freeing all from the wickedness of the evil spirits." },
+          { "text": "The effulgence of God which descended upon thy heart made it divinely radiant, O blessed one, and in a manner past understanding made it full of the gifts of the Spirit." },
+          { "text": "Theotokion: Through thy divine birthgiving, O Virgin, the all-holy ranks of the angels have been united to the assemblies of mortals; for thou hast given birth to Christ the Savior, the Author of peace." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,//\nas the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "As one who conversed with the noetic Sun, thou didst assimilate the rays thereof, O blessed one: And while He is by essence the primal Light, thou didst become a secondary luminary through grace, O glorious one." },
+          { "text": "Possessed of a most pure intelligence, and having acquired a radiant and pure heart, thou didst behold the incarnate God Who is incomprehensible to the mind." },
+          { "text": "Every prophecy and every law inclineth toward thee, O most noetically rich disciple; for thou wast deemed worthy to see with thine own eyes Him Who of old was proclaimed by them." },
+          { "text": "Theotokion: Behold, O Virgin, in accordance with the prophecy thou didst conceive in thy womb the Master and Lord Who is over all, and hast ineffably given birth to Him, O pure one, remaining an incorrupt virgin even after giving birth." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee://\nRaise up my life from corruption, O greatly Merciful One.",
+        "troparia": [
+          { "text": "Thy beautiful feet truly proclaim the glad tidings of transcendent peace, and thy mind is excellent, O most honored disciple of Christ." },
+          { "text": "Thou hast been deemed worthy to understand and preach the awesome mystery of the incarnation of God, O ever-memorable James, who hast received pristine rays of light from the Most High Himself." },
+          { "text": "Shining with the splendors of ineffable light as is meet, O supreme apostle of Christ, do thou earnestly pray for those who celebrate thy most honorable memory, O glorious one." },
+          { "text": "Theotokion: In that thou hast given birth to the good God Who hath dominion over all creation, O most pure one, do thou utterly remove the sores of mine offenses, rendering compassionate Him Who was born from thee." }
+        ]
+      },
+      "kontakion": {
+        "text": "With praises let us all bless the divine herald James,\nwho steadfastly instilled the dogmas of wisdom in the souls of the pious;\nfor, standing before the throne of the Master of glory,//\nhe rejoiceth with all the angels, praying unceasingly for us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy apostle",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "In so far as thou art the disciple and friend of Christ, and dost ever abide with the immaterial choirs, illumined with the light of the never-waning effulgence,\ndo thou dispel the darkness of my mind, O all-blessed one, that I may hymn thy luminous memory, which all creation doth hymn, reverently celebrating today;//\nfor thou art the guide and beacon of all the faithful, O James, praying unceasingly on behalf of us all."
+      },
+      "ode7": {
+        "irmos": "In Babylon the Children feared not the fiery furnace;\nbut cast into the midst of the flames they were bedewed and sang://\n'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "The multitude of the nations have thee as a divine seed illumined by the splendors and radiance of the Spirit; and it crieth aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "Adorned with divinely given wisdom, thou didst destroy the wisdom of the world, O apostle, crying out with godly wisdom: O God of our fathers, blessed art Thou!" },
+          { "text": "Thy sound hath gone forth into all the earth like thunder, O Apostle James, proclaiming the incarnate Word to all lands, and preaching Him as is meet." },
+          { "text": "Theotokion: Thou art holier than all the saints, O Virgin Mother, in that thou hast ineffably given birth to God; and hymning Him we all unceasingly cry aloud; O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Suffering affliction for the sake of the laws of their fathers, the blessed Children in Babylon scorned the foolish decree of the King.\nStanding together in the midst of the flames, they remained unharmed, and sang a song fitting for almighty God://\n'O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "Truly taught the mysteries of heaven as a sacred disciple, O blessed apostle, thou didst pass through the whole world, proclaiming the word of the Faith of Christ, and giving instruction through ineffable grace: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "As one rich and blessed, deemed worthy of all beatitude, as a converser and companion of the Master, enriched truly and well in his final portion, James chanted to the Lord in gladness: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "O blessed apostle, standing forth before the Savior as a most excellent intercessor for the world, ask that rich peace be granted from on high to the Churches, remission of sins to those who praise thee with faith and salvation for the souls of those who cry out: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: O only all-hymned Mother of God, thou hast been revealed to be the mediator of salvation for all, having given birth to God the Savior, the Word of God, Who hath delivered us from the ancient curse and given His blessing to those who cry aloud with faith: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Weep not for Me, O Mother, beholding in the tomb the Son Whom thou hast conceived without seed in the womb;\nfor I shall arise and shall be glorified, and as God I shall exalt with glory unceasing,//\nthose that with faith and love magnify thee.",
+        "troparia": [
+          { "text": "O blessed one, thou hast appeared to the world like a flash of lightning, drawing those who from of old sat in the darkness and shadow of ignorance, toward the never-waning light of the incarnate only-begotten Son, Whose witness and true servant thou wast, and Whom we magnify." },
+          { "text": "Receiving the breath of the tempest borne down from the heavens, and enriched by the Spirit's tongue of fire, thou dost burn up the ungodly wisdom of the world like thorns, shining with the luminous rays of the proclamation of Christ, and dispelling the darkness, O divinely blessed one." },
+          { "text": "O divinely eloquent Apostle James, accept the hymn of supplication which we offer to thee, celebrating Thy most honored and radiant memory. Deliver thy servants from their sins, O supreme apostle of Christ, praying earnestly, that we may magnify thee as is meet." },
+          { "text": "Theotokion: In that thou didst receive the Word in thy womb without knowing a man, O most pure Virgin, thou didst remain incorrupt, giving birth for us to Emmanuel, Who is both God and man. Acknowledging Him as possessing two natures, we magnify thee." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "We acknowledge thee not as the son of Alpheus, but as the disciple of the Word, O James, glory of the apostles;\nfor thou hast manifestly received the divine effulgence and the grace of miracles,//\ndriving away the infirmities of those who celebrate thy most sacred memory with faith.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy apostle",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "As thou hast compassion and great mercy, O all-immaculate Virgin Theotokos,\nlook upon my lowliness, and dispel the storm of the passions and the assaults of grief;//\nand deliver me from the fire of Gehenna by thy supplications, O pure one.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "With the rod of grace didst thou lure all up from the depths of vanity, O right wondrous James,\nobedient to the command of the Master, Who enlighteneth thy mind wholly,\nand hath shown thee to be an apostle, an honored and divine proclaimer//\nof His unapproachable divinity, O most blessed one.",
+          "tone": 4,
+          "melody": "As one valiant among the martyrs",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "The radiance of the Spirit descended upon thee in the aspect of fire, O blessed one,\nand made a divine refuge within thee, who with haste dost drive away the gloom of godlessness,\nenlightening the world with the radiance of thine all-wise words, O expounder of the mysteries,//\nadornment of the apostles, blessed eyewitness of Christ.",
+          "tone": 4
+        },
+        {
+          "text": "Illumining those who sat in the darkness of ignorance with the lightning flashes of thy preaching, O glorious one,\nthou didst show them to be children of our God and Master for the sake of their faith.\nThou didst emulate His sufferings and death, and wast thereby an inheritor of glory,//\nas one wise and divinely eloquent, O disciple of the Truth.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Forsaking earthly things, thou didst follow after Christ, and signed with the inspiration of the Holy Spirit,\nwast sent by Him to the nations that had fallen into perdition, that thou mightest turn all mankind to the light of knowledge of God,\nand having completed the struggles of thy divine suffering and divers torments, thou didst commit thy soul unto Christ, O Apostle James.//\nHim do thou entreat, O all-blessed one, that He grant us great mercy.",
+        "tone": 2,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "All my hope do I place in thee, O Mother of God.//\nKeep me under thy protection.",
+        "tone": 2,
+        "label": "Both now, Theotokion"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy Apostle James, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle"
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "_meta": {
+    "feast": "Conception of the Most Holy Theotokos by Righteous Anna",
+    "feastKey": "conceptionOfTheotokos",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 12-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-09.pdf",
+    "_note": "Second Doxology-rank menaion file (first being [[stJamesBrotherOfGod]]). Sergius rubric goes from Sessional Hymn after Kathisma 2 directly to the canons — no Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. But Great Doxology IS sung (line 393 of source) with festal Lauds (4 stichera Tone I Spec. Mel. 'Joy of the ranks of heaven' + Glory by Malax Tone VIII). Two canons of righteous Anna interleaved (Canon I by Andrew Tone I 8 troparia + Canon II alphabetic acrostic Tone I 6 troparia) via `canon: 'secondCanon'` tags. Katavasiae: 'Christ is born' (Nativity, Dec 25 is 16 days away). Troparion 'is chanted without a Theotokion' per rubric."
+  },
+  "troparion": {
+    "text": "Today, the bonds of barrenness are loosed,\nfor God, hearkening unto Joachim and Anna,\ndoth manifestly promise unto them who, beyond all expectation,\nwill give birth to the divine Maiden,\nfrom whom the Infinite One Himself, becoming a man, shall be born.\nAnd He commandeth the angels to cry unto her://\nRejoice, thou who art full of grace, the Lord is with thee!",
+    "tone": 4,
+    "label": "Troparion of the conception"
+  },
+  "kontakion": {
+    "text": "Today the whole world doth celebrate Anna's conceiving, which was brought about by God;//\nfor she gave birth unto her who ineffably gave birth unto the Word.",
+    "tone": 4,
+    "label": "Kontakion of the conception",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "doxology", "feastType": "theotokos", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Today, the bonds of barrenness are loosed,\nfor God, hearkening unto Joachim and Anna,\ndoth manifestly promise unto them who, beyond all expectation,\nwill give birth to the divine Maiden,\nfrom whom the Infinite One Himself, becoming a man, shall be born.\nAnd He commandeth the angels to cry unto her://\nRejoice, thou who art full of grace, the Lord is with thee!",
+      "tone": 4,
+      "label": "Troparion of the conception",
+      "_note": "On 'God is the Lord': Troparion of the conception (Thrice). 'This troparion is chanted without a Theotokion' per Sergius rubric."
+    },
+    "sedalion": [
+      {
+        "text": "A new heaven is fashioned in the womb of Anna by the command of God the Creator of all,\nfrom which the never-setting Sun shall shine forth, illumining the whole world with rays of divinity in the superabundance of His tender compassion,//\nin that He alone is the Lover of mankind.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The choir of angels",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "text": "Of old, the choir of prophets proclaimed the pure and immaculate divine maiden and Virgin,\nwhom Anna doth conceive, being barren and childless.\nHer do we bless today with gladness of heart,//\nhaving been saved for her sake, who alone is pure and immaculate.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The choir of angels (same melody)",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I by Andrew of Crete (Tone I, 8 troparia) + Canon II acrostic 'the alphabet' (Tone I, 6 troparia). Katavasiae of the Nativity ('Christ is born') — Dec 25 is 16 days away.",
+      "ode1": {
+        "irmos": "Let us all chant a triumphant hymn unto God\nWho wrought wondrous miracles with His upraised arm,\nand saved Israel,//\nfor He hath been glorified.",
+        "irmos2": "Christ is born, render ye glory. Christ cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted. O all the earth, sing unto the Lord,\nand sing praises in gladness, O ye people,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "O divinely wise Anna, we celebrate thy conception today, for, loosed of the bonds of barrenness, thou didst conceive her who contained Him Who is in nowise contained." },
+          { "text": "Thou didst hearken to the supplication of the righteous ones, didst fulfill the vow of Thy holy forebears, O Lord, and didst give them a fruit: the pure one who gave Thee birth." },
+          { "text": "The glorious Anna now conceiveth the pure one who conceived the supremely good, incorporeal Lord, and who will give birth in the flesh unto Christ." },
+          { "text": "From a corruptible womb didst thou shine forth, O Virgin, for in thine incorrupt womb thou didst bear the Sun of glory Who became as we are, save for change and confusion." },
+          { "canon": "secondCanon", "text": "Anna, receiving in her womb the pure Virgin and divine Maiden who will become the Mother of the Creator, cried out with joy: 'All ye tribes of Israel, rejoice with me! For, behold! I have conceived!'" },
+          { "canon": "secondCanon", "text": "Anna, holding in her womb the book which the prophet foretold, which was sealed by the divine Spirit, cried out to all: 'All the scriptures proclaim her! I am magnified, putting her forth this day!'" },
+          { "canon": "secondCanon", "text": "The temple of the divine Savior is contained and formed in her mother's womb. The ladder is set up which leadeth all men on high, whose conception we celebrate with faith." }
+        ],
+        "katavasia": "Christ is born, render ye glory. Christ cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted. O all the earth, sing unto the Lord,\nand sing praises in gladness, O ye people,//\nfor He hath been glorified."
+      },
+      "ode3": {
+        "irmos": "Let my heart be established in Thy will O Christ God,\nWho hath established a second heaven over the waters,\nand founded the earth upon the waters,//\nO all-powerful One.",
+        "irmos2": "To the Son who was begotten of the Father without change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud://\nThou hast raised up our horn, holy art Thou, O Lord.",
+        "troparia": [
+          { "text": "Anna cried to the Lord: 'If Thou wilt grant fruit to my womb, I shall be magnified, and will offer it to Thee.' Therefore, she conceived the pure Mother of God." },
+          { "text": "Having observed the provisions of the law and served God blamelessly, O most honorable Anna, thou truly bearest in thy womb her who wilt give birth unto the Giver of the law. Wherefore, we, the faithful, call thee blessed." },
+          { "text": "When thou didst pray in the garden, thou didst hear the voice of the Most High, O divinely wise Anna; and He gaveth fruit to thy womb: the portal which by grace shall open paradise." },
+          { "text": "Theotokion: Dispel all the barrenness of my fruitless mind, and show forth my soul to be fruitful in the virtues, O all-holy Theotokos, thou help of the faithful." },
+          { "canon": "secondCanon", "text": "Entreating the Lord, Joachim receiveth from on high the message he desired when an angel appeared before him and said: 'Depart, O righteous man, for the God of all hath fulfilled thy petitions.'" },
+          { "canon": "secondCanon", "text": "Calling upon the God of all, Anna once, standing in the garden, beheld an angel, who appeared before her, saying: 'Be thou not downcast, for thou shalt become the mother of the Mother of God!'" },
+          { "canon": "secondCanon", "text": "When thou, O Anna, full of zeal, didst offer up supplications to God, thou didst conceive in thy womb the pure one who without seed hast received the infinite Word, and thou hast imparted grace to us all in thy fertility." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "The sacred Joachim and Anna offered a gift to the priests of old, but it was not accepted, for they were barren;\nbut they made entreaty to the Giver of all things, and, hearkening to their prayer,//\nHe granteth them the Tree of Life, whose holy conception we honor.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "O Thou Who wast lifted up upon the Cross",
+        "bothNow": {
+          "text": "The divinely adorned Mary, the unblemished ewe-lamb and most pure bridal-chamber,\nnow most gloriously beginneth to issue forth from the righteous ones, O ye faithful.\nBe glad henceforth, O heaven and earth; and all ye born on earth, exult!\nFor this day hath God wrought most glorious things,//\nshowing forth in the womb the one Virgin, the fruit of a barren woman. Her do we hymn with faith.",
+          "tone": 4,
+          "label": "Theotokion",
+          "melody": "Joseph marveled"
+        }
+      },
+      "ode4": {
+        "irmos": "Foreseeing in the Spirit O Prophet Habbakuk, the incarnation of the Word,\nthou didst proclaim, crying aloud:\nWhen the years draw nigh, Thou shalt be known; when the season cometh, Thou shalt be shown forth!//\nGlory to Thy power, O Lord!",
+        "irmos2": "Rod of the root of Jesse, and flower that blossomed from his stem,\nO Christ, Thou hast sprung from the Virgin. From the Mountain overshadowed by the forest\nThou hast come, made flesh from her that knew not wedlock, O God who art not formed from matter.//\nGlory to Thy power, O Lord.",
+        "troparia": [
+          { "text": "'O the divine proclamation! O the strange report, if I shall conceive!' Anna cried out, amazed, to the angel who was sent to her. 'Glory be to my God, Who hath wrought marvelous things!'" },
+          { "text": "'Rejoice with me, all ye tribes of Israel! I have conceived in my womb a new heaven, from which Jesus, the Bestower of life, shall in time shine forth!' Anna cried, rejoicing." },
+          { "text": "God hearkened to the sighs of Anna; the Lord attended to her supplication and, dispelling the cloud of her childlessness, He most gloriously illumineth her with the light of fertility. Wherefore, she conceiveth her who alone is pure." },
+          { "text": "Theotokion: O Virgin Theotokos, undefiled tabernacle, with the most pure sprinkling of the compassions cleanse me now who have been defiled by transgressions, and grant me a helping hand, that I may cry: glory to thee, O pure and divinely glorious one!" },
+          { "canon": "secondCanon", "text": "Thy womb, which before bore no children, hath been opened, O Anna, and receiveth the heavenly cloud, from whence the radiant Sun, shining forth upon us, hath illumined all with the light of truth and driven away the profound darkness of ungodliness." },
+          { "canon": "secondCanon", "text": "The fiery throne of God hath been set up in thy womb, O blessed Anna, acceptable to God, and, seated thereon, He hath rested and taken away the labors of all the pious; and He hath planted the pure knowledge of God on earth." },
+          { "canon": "secondCanon", "text": "Behold, thou hast received in thy womb the bower which Solomon described beforehand, most truly preserved for the true King, for the divine restoration and conversion of the human race. Wherefore, O Anna, we bless thee with joy." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Grant us Thy peace, O Son of God,\nfor we know no other God than Thee,\nand we call upon Thy Name,//\nfor Thou art the God of the living and the dead.",
+        "irmos2": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel, granting us peace.\nWherefore guided towards the light of the knowledge of God,//\nand watching by night we glorify Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "Springing forth from the root of Jesse and David, Anna now beginneth to put forth the divine shoot which shall give rise to Christ, the mystic Flower, the Creator of all." },
+          { "text": "'The people look upon me who am become a mother, and marvel;' Anna cried, 'for, lo! I shall give birth, as is the good pleasure of Him Who loosed the bonds of my barrenness!'" },
+          { "text": "'The voices of the prophets proclaimed from afar the Maiden whom I have conceived, to be the mountain and the impassable gate!' Anna cried out most joyfully to those who came to her." },
+          { "text": "Theotokion: O pure Virgin Mother, we know thee to be the cloud, paradise and portal of light, the fleece, the jar bearing Manna within, the sweetness of the world." },
+          { "canon": "secondCanon", "text": "Joachim descended from the mountain, not receiving tablets of the law, but her whom the law prefigured and whom all the sayings of the prophets revealed the Mother of God. And, dancing, he cried aloud: 'My heart hath been magnified!'" },
+          { "canon": "secondCanon", "text": "When Anna felt in her womb the divinely fruitful branch which had been planted there, from whom the ripe Cluster would blossom forth which abundantly poureth forth upon us the wine of immortality, she exclaimed: 'What shall I render unto Thee, O compassionate Lord?'" },
+          { "canon": "secondCanon", "text": "Joachim, unable to endure the sight of creation bereft of piety, prayed that the barrenness of Anna might pass, and that she would conceive that Maiden to whom a Son would be given; the Most Exalted One Who bringeth about the adoption of all to His Father." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Emulating the Prophet Jonah, I cry aloud: Free Thou my life from corruption, O Good One;\nand save me who crieth out://\nO Savior of the world, Glory be to Thee!",
+        "irmos2": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh, came forth from her yet kept her incorrupt.//\nFor being Himself not subject to decay, He preserved His Mother free from all harm.",
+        "troparia": [
+          { "text": "How can she who contained God in her womb be contained? How can she who gave birth unto Christ in the flesh be born? How can she who nourished the Creator with milk take nourishment at a woman's breast?" },
+          { "text": "Hearkening unto your entreaty, O all-praised Joachim and Anna, God this day doth now grant you fertile fruit." },
+          { "text": "Having conceived the pure dove in her womb, Anna was truly filled with spiritual joy, offering hymns of thanksgiving unto God." },
+          { "text": "Theotokion: The threefold waves of wicked thoughts, the assaults of the passions and the abyss of sins bestorm my wretched soul. Help me, O holy Lady!" },
+          { "canon": "secondCanon", "text": "'The shadows of the law are manifestly transcended; for, lo! the ray of divine grace is shown forth: the cloud who is the Virgin, from whence the radiant Sun of the Godhead shall truly shine forth!' Anna cried out, rejoicing and magnifying the God of Israel." },
+          { "canon": "secondCanon", "text": "'A strange sight will it be if I, who before was barren and childless, conceive,' Anna said when she heard the angel announce that she would give birth to a child; and she cried aloud: 'Better than any good report will be the fulfillment of thy words!'" },
+          { "canon": "secondCanon", "text": "Let the mountains and hills, the fields and the sea, the multitude of the angels and all human nature be glad; for Anna received the divine temple of the Master, the beginning of our reconciliation. And when she sensed that she had conceived, she cried aloud." }
+        ]
+      },
+      "kontakion": {
+        "text": "Today the whole world doth celebrate Anna's conceiving, which was brought about by God;//\nfor she gave birth unto her who ineffably gave birth unto the Word.",
+        "tone": 4,
+        "label": "Kontakion of the conception",
+        "melody": "Thou hast appeared today"
+      },
+      "ikos": {
+        "text": "The wondrous Joachim and the divinely wise Anna, living together in all piety according to the law of Moses, were childless;\nand they prayed to God with all their heart, saying:\n'O supremely good Lord of hosts, Thou help of all: Thou knowest the pain, reproach and grief of childlessness.\nWherefore, grant us fruit of the womb, and Ye will bring to Thy temple as a sacred gift and perfect offering her who ineffably giveth birth unto the Word!'"
+      },
+      "ode7": {
+        "irmos": "Thy children who were in the furnace O Savior, were neither touched nor troubled by the fire.\nWhereupon the three sang, as with a single mouth Thy praises and blessed Thee, saying://\n'O God of our fathers, Blessed art Thou.'",
+        "irmos2": "Scorning the impious decree of the godless one, the Children brought up together in godliness\nfeared not the threat of fire, but standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Anna entreated the Master of all, that she might escape the reproach of childlessness; and, hearkening unto her pitiful cry, He granted her as fruit her who gave birth to Him, as was His good pleasure." },
+          { "text": "O Anna, the weaving of a robe of royal purple beginneth in thy womb, wherewith God, the King of all, having clothed Himself, appeareth unto men and layeth low the enemies which war against us." },
+          { "text": "In thy womb, O Anna, didst thou conceive the fragrant myrrh who, in a manner transcending nature, received the Master, the Myrrh of life, Who perfumeth our thoughts with the wafted scents of grace." },
+          { "text": "Theotokion: We glorify Thee as One of the Trinity, O Christ; for, incarnate of the Virgin without change, Thou didst assume full humanity, without separation from the Father's nature, though Thou didst unite Thyself to us." },
+          { "canon": "secondCanon", "text": "The fire-bearing bush of old, which Moses beheld upon Sinai, hath Anna conceived in her childless womb, and it consumeth the fire as impiety, for those who chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "A drop, O Anna, hath now been most gloriously poured into thy womb, which hath contained all the Water of life within it, bedewing those who cry out with faith thereto: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "As thou didst behold the bird's nest, thou wast furnished with wings by the Spirit and prayer; and thou didst receive the unblemished turtle-dove who beareth Christ, the olive branch Who freeth us from the noetic deluge, O Anna." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Him of whom the angels and all the hosts of heaven are in awe as their Lord and Creator,\nye priests hymn, ye children praise,//\nye peoples bless and supremely exalt throughout all ages.",
+        "irmos2": "The furnace moist with dew showed forth an image of a wonder past nature,\nfor it burned not the youths whom it had received;\nneither did the fire of the Godhead consume the Virgin when it descended into her womb.\nWherefore, chanting, we sing://\nLet all creation bless the Lord and supremely exalt Him throughout all ages!",
+        "troparia": [
+          { "text": "'Behold! I receive in my womb the Queen whom David foretold,' cried Anna; 'and I shall give birth unto the intercessor for all the faithful, who will give birth unto Christ the King!'" },
+          { "text": "The land in which the Creator of earth made His abode, the holy scepter, the new ark, the jar of Manna who gave birth to Him, beginneth to bud forth in her mother's womb." },
+          { "text": "The unburnt bush, the golden candle-stand, the animate bridal-chamber of the Lord God, the precious staff who gave birth to Him, beginneth to bud forth in her mother's womb." },
+          { "text": "Theotokion: Raise me up who lie in the abyss of evils, and vanquish the enemies that now engage me in battle. Disdain me not who am wounded by countless pleasures, O good and pure one, but take pity and save me." },
+          { "canon": "secondCanon", "text": "As Thou didst foretell through the prophets, O Master, Anna once cried out: 'What hast Thou done for my childless womb and my withered breasts? Loose Thou the disgrace of my childlessness and grant me a fruit with whom I may cry aloud: Let all creation bless the Lord and supremely exalt Him throughout all ages!'" },
+          { "canon": "secondCanon", "text": "O Anna, the lamp-stand hath entered thy womb, she who mystically contained the divine Lamp Who illumineth every creature with the effulgence of the knowledge of God. Wherefore, rejoicing, thou didst cry aloud: 'Let all creation bless the Lord and supremely exalt Him throughout all ages!'" },
+          { "canon": "secondCanon", "text": "Joachim and Anna, as a most comely husband and wife, bring forth the divine heifer, from whom the beautiful Bullock will shine forth, Who was slaughtered for all, and they chant: 'Let all creation bless the Lord and supremely exalt Him throughout all ages!'" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The ever-flowing wellspring of life, light-bearing candlestick of grace,\nthe animate temple, and most pure cloud, wider than the heavens and the earth,//\nthe Theotokos do we the faithful magnify.",
+        "irmos2": "A strange and most wondrous mystery do I see: the cave is heaven;\nthe Virgin the throne of the cherubim; the manger a room,//\nin which Christ God, whom nothing can contain, is laid. Whom we praise and magnify.",
+        "troparia": [
+          { "text": "Conceiving the Life-receiving well-spring, O divinely wise Anna, receive joy now, taking the holy temple into thy womb, magnifying her who is radiant with the light of the Creator's righteousness." },
+          { "text": "Let Joachim and Anna be honored: the honorable and most glorious twain, the forebears of the pre-eternal Son, the renowned observers of the law, who gave birth to the first-fruits of joy." },
+          { "text": "Let us hymn the Virgin Theotokos, whom Daniel beheld as a great mountain, whom Joel saw as a holy land, whom Isaiah perceived as an impassable gate, and another prophet foretold as a sealed fountain and divine fleece." },
+          { "text": "Theotokion: Let the Virgin Theotokos be glorified: the purple which dyed the fleece of the ineffable incarnation of the Word, the golden lamp-stand, the table on which Christ, the Bread of life, was set forth." },
+          { "canon": "secondCanon", "text": "Dance ye all and leap up! Now hath the earth been prepared which, without being ploughed, will produce the life-bearing Grain, eating of which those who magnify His goodness will hunger no more." },
+          { "canon": "secondCanon", "text": "O David, take up thy psaltery and harp and chant! Behold, the ark of God hath appeared which thou didst foretell would be for our edification. Thereby have we arisen from our fall into sin." },
+          { "canon": "secondCanon", "text": "Like two magnificent stars ye bore forth the most radiant beam who shineth forth the great Sun upon the world. Wherefore, we praise and glorify you, O Joachim and Anna, as divinely wise." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Her who gave birth unto the Light which illumineth all creation doth Anna begin to bring forth today from her barren womb.//\nWherefore, let us all make haste, for our redemption from the condemnation of Eve hath come.",
+      "tone": 2,
+      "label": "Exapostilarion of the conception",
+      "melody": "O Light immutable",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated."
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Human nature, which before was sterile, trusting in God, putteth forth the Virgin,\nthe first-fruits of piety, in whom the fertility of the good is proclaimed in her conception on earth,//\nto serve for the advent of Christ.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "The impassable gate of Christ the King, by the counsel of God,\nreceiveth conception in a barren womb. When she appeareth on earth,//\nthe portals of heaven are opened and permit the entry of mortals.",
+          "tone": 1
+        },
+        {
+          "text": "The conception of the pure and godly maiden, the first-fruits of faith, hath appeared,\nwhich before the ages was ineffably proclaimed by God in His divine and dread mysteries.//\nThrough her are the works of darkness and the passions brought to an end.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, ye of every rank and age, and together with the choirs of angels let us joyously celebrate today with splendor, the most glorious conception of the Theotokos.\nYe patriarchs, praise the Mother of the King of all! Ye prophets, praise her whom ye preached!\nYe forefathers, honor the Mother of God who is descended from you! Ye elders, acclaim the forebears of God!\nYe ancestors of God, bless the divine Maiden! Ye virgins, honor the Ever virgin!\nYe faithful, exalt the root of faith! Ye priests, magnify the most sacred temple of God!\nYe choirs of all the saints, acknowledge the cause of your assembling!//\nYe armies of angels, pay homage to her who gave birth to the Master of all creation, the Savior of our souls!",
+        "tone": 8,
+        "label": "Glory (composition of Malax)"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Today, the bonds of barrenness are loosed,\nfor God, hearkening unto Joachim and Anna,\ndoth manifestly promise unto them who, beyond all expectation,\nwill give birth to the divine Maiden,\nfrom whom the Infinite One Himself, becoming a man, shall be born.\nAnd He commandeth the angels to cry unto her://\nRejoice, thou who art full of grace, the Lord is with thee!",
+      "tone": 4,
+      "label": "Troparion of the conception",
+      "_note": "After the Great Doxology: 'The Troparion, once. Litanies and dismissal.'"
+    }
+  }
+}

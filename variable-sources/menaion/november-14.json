@@ -1,0 +1,240 @@
+{
+  "_meta": {
+    "feast": "Holy and Glorious Apostle Philip",
+    "feastKey": "stPhilipApostle",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 11-14.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-14.pdf",
+    "_note": "Polyeleos-rank apostle Matins (Polyeleos + Magnification 'We magnify thee, O Philip, apostle of Christ' at line 169). Single canon of the holy apostle by Theophanes in Tone VI (acrostic 'I hymn the glorious Philip in seemly manner'). Theotokos (Paraklisis) canon interleaved at the actual service is omitted per the menaion-matins-track pattern. Falls in the forefeast period of the Entry of the Theotokos (Nov 21); Katavasiae: 'I shall open my mouth' (Entry of Theotokos)."
+  },
+  "troparion": {
+    "text": "O holy Apostle Philip, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostle",
+    "_note": "Sergius provides a second alternate troparion in Tone III 'The whole world is splendidly adorned; Ethiopia doth dance...' — not preserved here as the primary."
+  },
+  "kontakion": {
+    "text": "Thy disciple and friend, the emulator of Thy suffering,\nthe divinely eloquent Philip, proclaimed Thee to the world as God;\nby his prayers and through the Theotokos,//\nkeep Thy Church and every city from most iniquitous enemies, O greatly Merciful One.",
+    "tone": 8,
+    "label": "Kontakion of the holy apostle",
+    "melody": "As the first-born"
+  },
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy Apostle Philip, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle",
+      "_note": "On 'God is the Lord': Troparion of the holy apostle (Twice); Glory ..., Both now ..., Theotokion (Tone III)."
+    },
+    "sedalion": [
+      {
+        "text": "O Philip most wise, apostle, martyr and beholder of Christ, blessed friend of God:\nby thy prayers do thou free from tenacious transgressions those who celebrate thine honored memory,//\nand grant that they may receive a heavenly inheritance.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Virgin, we hymn thee, the unburnt bush which Moses saw, the mountain of God, the holy cloud, the undefiled tabernacle, the God-pleasing table,//\nthe palace of the King Most High, the all-splendid and impassable gate.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Like an arrow hast thou been sent, a disciple of the Word and a proclaimer of the truth,\nenlightening those who are in grievous darkness, O holy apostle,\nand driving the gloom of godlessness from the earth,//\nthou didst show them forth as right believing children of the day, O beholder of Christ, holy Philip.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most pure Virgin, who art our protection, from divers temptations and evil circumstances and grievous misfortunes\ndo thou free us who have steadfast hope in thee,//\nbeseeching thy Son together with His apostles, and save thou all that hymn thee.",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O Philip, apostle of Christ,\nand we honor thy pangs and labors,//\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Thou didst set at naught the deception of idolatry, desiring the Savior's sufferings, O glorious Philip.\nThou didst appear unto the world, pouring forth heavenly wonders upon all, and wast an apostle to the Gentiles, O all-blessed one.\nWherefore, we honor thy memory as is meet, chanting://\nO apostle of the Lord, beseech Christ God to grant remission of sins unto those who celebrate thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "From the snares of enemies visible and invisible, we have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one, we have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee to ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,//\nthat those who worthily hymn thee may be granted the remission of their sins.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,//\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 21:15-25" },
+    "postGospelSticheron": {
+      "text": "O most wise fisherman, holy disciple, husbandman of the Savior and recounter of His sufferings,\nwho went about all creation in faith, gathering the deceived nations:\nrising to God as a sweet fragrance of incense, thou didst ascend unto the heavens.\nWherefore, standing before the Judge,//\nask that we be delivered from our transgressions and freed from torment on the day of Judgment.",
+      "tone": 6,
+      "label": "Idiomelon of the holy apostle"
+    },
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the holy apostle by Theophanes in Tone VI (acrostic 'I hymn the glorious Philip in seemly manner'). Theotokos Paraklisis canon (6 troparia) interleaved at the actual service is omitted per the menaion-matins-track pattern. Katavasiae: 'I shall open my mouth' (Entry of the Theotokos, Nov 21 forefeast).",
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried://\nLet us sing to God a song of victory.",
+        "troparia": [
+          { "text": "Manifestly delighting in the most luminous rays of the divine splendor of Christ, O divine preacher Philip, do thou enlighten us to partake of thy rays." },
+          { "text": "Christ Himself, showing thee the glory of the Father, enrolled thee in the choir of His disciples, O Philip, perceiving thy virtue, O divinely blessed one." },
+          { "text": "Now thou dost not behold Christ, the Wellspring of blessings, the Ultimate of desires, in indistinct images, or shadows, or reflections, O all-wise one, but thou dost clearly behold Him face to face." },
+          { "text": "Theotokion: O most pure one, thy Son and God, having come forth from the tribe of Judah unto its failing princes, hath now truly reigned as King, Ruler of the ends of the earth." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "Full of the light of active vision, thou wast deemed worthy to serve Christ, the great Light, Who hath been with us, O divinely eloquent Philip." },
+          { "text": "Thine explication of the mysteries hath been shown to be a ladder of divine dogmas whereby we have come to know the Son, Who is consubstantial and united with the Father." },
+          { "text": "Thou wast a golden lamp shining forth the ever-existing Light upon mankind and thereby manifestly enlightening the whole world with knowledge, O most eminent Philip." },
+          { "text": "Theotokion: Trusting in thee, O most holy and pure one, may I not fall from thine expectation; but, as thou art the merciful Mother of God, the Lover of mankind, deliver me from the snares of the enemy." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Truly thou hast been shown to be a spiritual rain-laden cloud for those on earth,\nmystically watering our hearts as though they were fields.\nHaving passed over the earth with the word, thou dost water the ends thereof, pouring forth a rain of myrrh from thy shrine.\nWherefore, having breathed the fragrance of the Spirit upon the hearts of unbelievers, thou didst lay up treasures therein, O apostle Philip.//\nEntreat Christ God to grant remission of sins unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+        "melody": "Of Wisdom",
+        "glory": {
+          "text": "Aspiring to the sufferings of the Savior, thou didst set the delusion of idolatry at naught, O glorious Philip;\nthou didst appear to the world pouring forth heavenly wonders upon all, having become an apostle to the Gentiles, O all-blessed one.\nWherefore, we honor thy memory as is meet, chanting://\nO apostle of Christ, entreat Christ God to grant remission of sins unto those who celebrate thy holy memory with love.",
+          "tone": 8
+        },
+        "bothNow": {
+          "text": "From the snares of enemies visible and invisible, we have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one, we have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee to ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,//\nthat those who worthily hymn thee may be granted the remission of their sins.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth, crying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Thou hast been shown to be a dwelling place of the Sun, of Christ Who is the Light, and a temple which containeth His splendor, and a heaven proclaiming the glory of God unto mankind." },
+          { "text": "Casting the salt of God which is from Christ, into mankind corrupted by the passions, O right glorious herald of God, thou didst dry up the filth thereof." },
+          { "text": "Strengthened with the power of Christ, O Philip, thou wast shown to be more powerful than the legions of demons and the wicked, proclaiming unto those who are on earth the glad tidings of divine life." },
+          { "text": "Theotokion: Christ hath revealed a calm harbor unto those who with faith and love and with a pure conscience proclaim thee, the true and all-immaculate Lady, to be the Theotokos." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,//\nas the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "O divinely eloquent one, having dried up the deadly abyss of the soul-destroying poison of the enemy with thy healing hands, thou dost deliver those who are opposed by grievous sickness." },
+          { "text": "Thou hast been revealed to be wholly fiery of breath, O Philip, through the descent and grace of the Paraclete, and with the warmth of faith thou hast restored to life those who were chilled through by the winter of godlessness." },
+          { "text": "Thou wast close to Christ, receiving directly the rays bestowed upon thee; enlightening those who have recourse unto thee, and leading them to their Creator." },
+          { "text": "Theotokion: The Lord, Who alone doth fashion all things by His Word and doth nourish them in His wise providence, as He willed in His tender compassion, was fashioned of thee and ineffably assumed flesh, O most pure one." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Jonah was caught but not held in the belly of the whale;\nfor, bearing the image of Thee, Who hast suffered and wast given to burial,\nhe came forth from the sea-monster as from a bridal chamber, and he called out to the watch://\n'O ye who keep guard falsely and in vain, ye have forsaken your own mercy.'",
+        "troparia": [
+          { "text": "Beholding the deception of the enemy which doth surround and destroy the human race, taking aim, Thou didst loose Thy sharpened arrows, the apostles, and didst lay open the serpent's mouth of clay, O Savior, healing all who had been harmed by his wounding corruption." },
+          { "text": "Shining with exalted splendor, thou didst appear as lightning illumining the whole world, as a mountain which sheddeth sweetness like a divine rose given by heaven, as an elect apostle completing the twelve-man host of the disciples of Christ, O all-blessed one." },
+          { "text": "The godly disciple, having learned the depth of Thy mystery, loudly proclaimed Thee the Glory of the nations, Who, like a river of the world and like a flooding wave, gave rise to streams of delight; and he announced the glad tidings of Thy glorious condescension for us, O Good One." },
+          { "text": "Theotokion: Having given birth unto Christ, the incorrupt Immortality, thou hast called all mankind, who are mortal and perishing, unto eternal life, enlightening and freeing the darkened, and loosing the bonds of our captivity." }
+        ]
+      },
+      "kontakion": {
+        "text": "Thy disciple and friend, the emulator of Thy suffering,\nthe divinely eloquent Philip, proclaimed Thee to the world as God;\nby his prayers and through the Theotokos,//\nkeep Thy Church and every city from most iniquitous enemies, O greatly Merciful One.",
+        "tone": 8,
+        "label": "Kontakion of the holy apostle",
+        "melody": "As the first-born"
+      },
+      "ikos": {
+        "text": "O Lord, Who created the nature of water, grant me a stream of discourse;\nand strengthen my heart, O Compassionate One, Who established the earth by Thy word;\nand enlighten my mind, O Thou that art covered with light as with a garment,//\nthat I may give utterance and chant fitting things and may praise Thy favorite as is meet, O greatly Merciful One."
+      },
+      "ode7": {
+        "irmos": "In Babylon the Children feared not the fiery furnace;\nbut cast into the midst of the flames they were bedewed and sang://\n'O Lord God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "As light, thou hast been loosed in the guise of an arrow, O apostle, illumining with splendid radiance those who cry out with faith: O Lord God of our fathers, blessed art Thou!" },
+          { "text": "Radiantly shining with the rich outpourings of divine preaching, O blessed one, thou hast enlightened those who are in darkness to chant: O Lord God of our fathers, blessed art Thou!" },
+          { "text": "Having vanquished by the mighty word of faith all the craft of the rhetors' logic and fables, thou didst chant: O Lord God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: O pure Virgin, thou didst give birth supra-naturally unto Christ in two unified, yet uncommingled, natures. To Him do we cry out: O Lord God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Suffering affliction for the sake of the laws of their fathers, the blessed Children in Babylon scorned the foolish decree of the King.\nStanding together in the midst of the flames, they remained unharmed, and sang a song fitting for almighty God://\n'O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "The hypostatic Word, the Light of the Father, made thee a light unto the world, O thrice-blessed one, choosing thee as an apostle from amongst those in the world. And having armed thee with His divine power, He sent thee as an invincible warrior, crying out: O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Strengthened with divine power, O apostle, thou didst conquer hosts of adversaries, destroying their raging army; for, taking up peace as thine inviolable weapon, thou didst instill a state of peace in the world, crying aloud: O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "With all thy love thou didst cleave unto the incarnate Word of God, O apostle, being His disciple, a servant of God and teacher of the mysteries. Hence, sent by Him unto the Gentiles, thou didst preach His coming, crying aloud: O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: In thy womb, O all-holy Virgin, the supremely Divine One wholly united Himself to all of mankind immutably and in a manner which surpasseth all understanding. Wherefore, Christ is known in two natures, being one and both. Chanting unto Him, we cry aloud: O ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one, did the Word Incarnate become a man//\nand with the Heavenly Hosts Him we magnify and thee we call blessed.",
+        "troparia": [
+          { "text": "Having now been deemed worthy of ineffable glory and the unwaning light, where the gladness is unutterable, and the joy unending, among the congregations of the firstborn, where the habitations of the righteous are, O Philip all-wise, pray thou for all Christians." },
+          { "text": "Invested with the comeliness of noetic splendor, adorned with a crown of the Kingdom and with radiant brilliance, enlightened with outpourings of supra-natural light, O divinely wise Philip, thou dost stand, rejoicing, before the throne of the Master, O blessed one." },
+          { "text": "With all the honored apostles, the prophets and passion-bearers, the venerable, the hierarchs and the righteous, and with the Theotokos, O Philip, ask that remission of many sins and the cleansing of transgressions be given to those who faithfully celebrate thy radiant and divine memory." },
+          { "text": "Theotokion: O Virgin Mother, thou didst give birth unto the incarnate Word, Who before was incorporeal. Wherefore, we all piously glorify thee as the Theotokos, ascribing to thee that most true of titles, O pure one, for thou ever remainest the root of the salvation of the faithful." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Turning the course of thy beautiful feet, O Philip, thou didst mount the path to heaven, rejoicing;\nand, standing before the Trinity, thou dost behold the Son and the divine Spirit in the Father.//\nWherefore, we celebrate thy most sacred and divine memory with faith.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy apostle",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "I call to mind the dreadful hour of testing, for the multitude of mine evil deeds doth terrify and frighten me.\nYet take pity on me in thy fervent prayer, O most pure one, and grant me salvation.//\nFor whatsoever thou desirest, thou canst do, in that thou hast given birth unto God, O blessed Mary.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "O most glorious wonder! The apostle who once cast his nets for fish hath become a fisher of men, appointed by God.\nHe fished for the nations with the net of his discourse and brought up the world with the rod of the Cross.\nO what a draught the divine worker hath brought unto God,//\nhe whose memory we now celebrate.",
+          "tone": 8,
+          "melody": "O most glorious wonder"
+        },
+        {
+          "text": "O most glorious wonder! Sent by God like a lamb amongst wolves, the apostle Philip fearlessly strode forth\nand, through faith, showed forth wild beasts to be lambs, divinely transforming the world.\nO, his works of faith! O, his most excellent powers!//\nBy his prayers, O Christ, save Thou our souls, in that Thou alone art compassionate.",
+          "tone": 8
+        },
+        {
+          "text": "O most glorious wonder! The apostle Philip hath, through the outpouring of wisdom,\nbecome a wellspring gushing forth life upon those who are in the world.\nTherefrom do streams of dogmas proceed and we drink of the torrents of the wonders thereof.//\nO, how many awesome miracles the divine worker hath wrought, whose memory we glorify with faith!",
+          "tone": 8
+        },
+        {
+          "text": "Thou wast revealed as a heavenly chalice of wisdom, for thou wast revealed to be a beauteous habitation of the Spirit,\nand didst recount the truth of the virtues, fishing for mortals with the noetic rod of the wisdom of God.//\nWherefore, we beseech thee, O apostle Philip: Pray thou on behalf of our souls.",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "Having exchanged the catching of fish for the fishing of men, with the net of thy mysteries thou hast drawn in those who are in the depths of deception, O apostle Philip.\nThou didst pursue the whole world and didst bring it to Christ, thy Teacher.\nWherefore, we entreat thee://\nBeseech Him unceasingly, that He save the souls of us who faithfully keep thy most honored memory.",
+        "tone": 3,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Theotokos, intercessor for all who pray to thee, in thee do we boast, in thee do we embolden ourselves;//\nin thee do we place all our hope. Beseech Him Who was born from thee on behalf of thine unprofitable servants.",
+        "tone": 3,
+        "label": "Both now, Theotokion"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy Apostle Philip, entreat the Merciful God//\nthat He grant remission of sins unto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle",
+      "_note": "After the Great Doxology: 'Great Doxology, Troparion and Theotokion, Dismissal.'"
+    }
+  }
+}

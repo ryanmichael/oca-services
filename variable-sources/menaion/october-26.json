@@ -1,0 +1,381 @@
+{
+  "_meta": {
+    "feast": "The Holy and Glorious Great-Martyr Demetrius the Myrrh-Streaming of Thessalonica",
+    "feastKey": "stDemetrius",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 3,
+    "_source": "Matins: St-Sergius Emenaion 10-26.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-26.pdf",
+    "_note": "OCA does not publish a Matins DOCX for this feast. Matins from St-Sergius Emenaion (yy/archaic register). Two great-martyr canons used: Canon I by Theophanes Tone IV (acrostic 'I address the right victorious Demetrius!'); Canon II by George of Skilitsa Tone VIII (acrostic 'I honor the grace of the myrrh of Demetrius'). The Sergius PDF also includes a Canon of the Earthquake by St Joseph (commemorating the great Constantinople earthquake of 740), omitted here per the pattern. Magnificat retained."
+  },
+
+  "troparion": {
+    "text": "The whole world hath found thee to be a great champion amid misfortunes,\nwho conquered the pagans, O passion-bearer.\nTherefore, as thou didst cast down the pride of Lyaeus\nand didst appoint the bold Nestor for the struggle,//\nthus, O Demetrius, beseech Christ God to grant us great mercy.",
+    "tone": 3,
+    "label": "Troparion of the holy great-martyr"
+  },
+  "kontakion": {
+    "text": "He that gaveth thee invincible strength,\nO Demetrius,\nhath dyed the Church in the streams of thy blood,\nand hath kept thy city unharmed,//\nfor thou art its confirmation.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 3,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Today we piously celebrate the feast of the passion-bearer Demetrius,\nfor he unceasingly entreateth Christ to grant peace and mercy unto all.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thou hast appeared today",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O ye faithful, let us bless the Theotokos,\nour helper, the fervent aid of those amid misfortune,//\nby whom we have been delivered from corruption.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thy memorial hath rendered the Church of Christ splendid, O glorious martyr Demetrius,\nand hath brought all together to praise thee fittingly with hymns\nas a true warrior and destroyer of the enemy, O divinely wise one.\nWherefore, by thy supplication deliver us from temptations.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "We hymn thee, O Bride of God, Mother of Christ God,\nglorifying thine unapproachable Offspring,\nby Whom we have been delivered from the deceit of the devil and from all misfortune,\nO Sovereign Lady Theotokos; and we faithfully cry out:\nHave mercy on thy flock, O thou who alone art all-hymned!",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy passion-bearer Demetrius,\nand we honor thy precious sufferings,\nwhich thou didst endure for Christ.",
+      "verses": [
+        "Our God is refuge and strength, a helper in afflictions which mightily befall us.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "As with rays of the radiance of miracles thou dost illumine and enlighten all the ends of the earth like a most luminous star.\nAnd like another paradise thou dost make fragrant and gladden souls, causing infirmities to cease.\nWherefore, we hymn thee as is meet, O all-blessed one, and with love we honor thy precious memory.\nO passion-bearer Demetrius, entreat Christ God,\nthat He grant remission of sins unto those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving, and together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Wondrous is God in His saints,\nthe God of Israel.",
+      "verse": "In the saints that are in His earth hath the Lord been wondrous; He hath wrought all His desires in them.",
+      "tone": 4,
+      "_psalmRef": "Ps. 67:36 / 67:35"
+    },
+
+    "gospel": {
+      "reading": "Matthew 10:16-22",
+      "_note": "Sheep among wolves; endurance unto the end."
+    },
+
+    "postGospelSticheron": {
+      "text": "Today the universal festival of the passion-bearer doth call us together.\nCome, then, O ye who love the feasts of the Church,\nand let us radiantly celebrate his commemoration, saying:\nRejoice, thou who didst rend the garment of impiety with faith and didst robe thyself in manliness of spirit!\nRejoice, thou who didst wreck the schemes of the alien one with the might given thee by the One God!\nRejoice, thou who with thy pierced limbs didst spiritually portray the suffering of Christ for us!\nHim do thou entreat, O Demetrius, adornment of spiritual athletes,//\nthat we be delivered from enemies, visible and invisible, and that our souls be saved!",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": { "first": "Theophanes (Canon I, Tone IV; acrostic 'I address the right victorious Demetrius!')", "second": "George of Skilitsa (Canon II, Tone VIII; acrostic 'I honor the grace of the myrrh of Demetrius')" },
+      "_canonNote": "Two great-martyr canons. Sergius PDF also includes a Canon of the Earthquake by St Joseph (omitted here per the pattern).",
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea, marched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
+        "irmos2": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Crowned with a divine crown of martyrdom, thou dost rejoice in the presence of God,\nshining with splendors therefrom and filled with radiance, O right wondrous great martyr." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Master hath received thee who art a witness to the truth,\nwho struggled patiently even to the shedding of thy blood,\nand steadfastly showed forth opposition to the tyrants, O blessed one." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The author of evil didst thou cast to the earth, O Demetrius,\nslaying him with the spear of thy martyrdom,\nstrengthened therefore with divine grace and power which passeth understanding, O blessed one." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: He Who, as God, was first begotten without a mother hath come among us,\nreceiving flesh and uniting Himself thereto through thee without a father, O all-hymned Theotokos,\nwhich transcendeth comprehension and all telling." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Demetrius, thou open wellspring of fragrant and precious myrrh,\nwho washest my heart clean of the filth of the passions,\nhaving shown me to be the fragrance of Christ through the exercise of the virtues,\nfill my mind with grace, that I may hymn thy divine graces." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Rivers of living water flow from the midst of the faithful, saith the word of God.\nWherefore, the ever-flowing springs of thy myrrh are poured forth,\nwhose streams gladden the city of God, which doth glorify thy martyr's boldness." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Of old, the staff of Moses, striking the rock in the desert land, disclosed gushing streams of water;\nand thy body, O Demetrius, pierced by a spear,\nhath shown forth a wellspring of myrrh, refreshing the new Israel." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O Demetrius, who hast received a recompense for the wounds of thy martyrdom the likes of which eyes hath not seen, nor ear heard,\nfor thou dost now pour forth a sea of myrrh, the rewards of purity, upon the ends of the earth,\nwashing away the passions of our souls." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-pure one, the Word of God, finding thee to be an exceedingly undefiled dwelling,\nmade His abode in thy womb; and having anointed with His divinity that which He took from thee,\nHe came forth with both alone and called Himself flowing Myrrh, for Christ is both God and man." }
+        ],
+        "katavasia": "I shall open my mouth…"
+      },
+
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength, my refuge and foundation.",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst account the tyrant's command but naught,\nfor thou didst honor the word of God above all, O passion-bearer." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A splendid candlestick in the midst of the tabernacle of martyrdom wast thou,\nshining with divine light, O Demetrius, martyr and spiritual athlete." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thy city, having acquired thee as a sacred and wondrous fountain of healings and an inviolable treasure,\nhath been enriched with all gladness." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, healing the corrupted image of the earthborn,\nthe Lover of mankind clothed Himself therein with flesh taken from thee,\nyet remaining as He was before." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Begotten from on high by God, thou wast an heir of divine blessings,\nbeing called His son, a co-heir with Christ;\nand thou dost reign with Him, for thy myrrh is a token of this, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Planted by flowing waters like the tree mentioned by David, O glorious one,\nthou didst put forth the great fruit of martyrdom,\nand hast been revealed to be a wellspring of myrrh, flowing unto the ends of the earth." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Drawing forth the grace of Christ, from Whose side flowed forth blood and water,\nthou didst shed thy blood, pierced for His sake,\nand now thou dost pour forth fragrant myrrh like water upon our hearts, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, thy sacred and spiritual vessels are full of fragrance\nand the myrrh of the divine Spirit Who descended upon thee.\nFor, having given birth unto God, thou hast rescued the faithful from the stench of the passions." }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "With psalms do we cry out to the valiant spiritual athlete, the mighty warrior of Christ,\nWho reigneth over all:\nRejoice, adornment and comeliness of martyrs!\nRejoice, radiant star of the Church!\nRejoice, rampart and refuge of those who have recourse to thee!\nO glorious great martyr Demetrius,//\nfrom every wound and affliction of the alien save all who hymn thee.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Joseph marveled",
+        "_note": "Sung twice."
+      },
+
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness, lifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud:\nGlory be to Thy power, O Lord!",
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Beholding thee, the vanquisher of the deception of impiety,\nthe most exalted Word of God hath crowned thee with glory,\nO Demetrius, who chantest: Glory to Thy power, O Lord!" },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having won a victory over falsehood,\nthou didst receive a victor's crown of righteousness, O Demetrius,\ncrying out to Thy Creator: Glory to Thy power, O Lord!" },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Guided by God's life-bearing hand, thou didst attain unto the most tranquil harbors,\nwhere, rejoicing, O Demetrius, thou dost now cry aloud: Glory to Thy power, O Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: As the most sacred of all created beings,\nthou alone wast deemed worthy to become the Mother of God;\nfor, having given birth unto Him, thou hast illumined the world with the grace of divine knowledge." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having done away with all the defilement of thy birth through the laver of regeneration,\nthou didst show thyself to be one who preserved his purity even unto the end.\nWherefore, Christ hath transformed thy natural goodness into myrrh, as He changed water into wine." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As the nature of fire is bestowed upon all, preserving its whole power,\nso thy myrrh is drawn forth by all, yet remaineth undiminished, O sufferer.\nWherefore, bowing down in worship, we piously hymn God, Who hath given thee grace." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Who can render Thee audible praises, O Christ, Thou Word of God,\nbeholding the graces which Thou hast bestowed upon Thy sufferers?\nFor, lo!, the myrrh of the martyr Demetrius floweth like a fountain,\nand his fragrance wafteth forth, dispelling the gloom of wickedness." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "A fountain springing up from the earth gave thee to drink before watering all the face thereof;\nand having been hidden beneath the earth,\nthou hast been revealed to be a wellspring of fragrant myrrh, O martyr Demetrius;\nfor a multitude of spears opened thy veins, thou dost now water the ends of the earth." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, we know thee to be the Bride and Mother of God,\nfor the Word of God, finding thee as a fragrant rose blossoming amidst the lowly valley of mankind,\ndesired thy beauty and, having come forth from thee, He hath perfumed the faithful." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance those who sing Thy praises in faith.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Receiving the fire of divine love in thy heart,\nthou didst quench the fire of the impious madness of idolatry, O glorious Demetrius." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast shown thyself to be one who delivereth us from misfortunes, O Demetrius,\nprotecting by thy prayers those who praise thee with faith and love." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Those who earnestly have recourse unto thy temple in faith, O Demetrius,\nare quickly delivered from infirmities and soul-destroying passions." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Word of God, Who is one in essence with the Father, O Mother of God,\nhath, in a manner transcending comprehension and all telling, become thy Son, of one essence with thee." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast a cistern collecting the mercy of Him Who descended from the heavens, as it were rain or dew;\nand thou didst gush forth with mystical gifts,\nand now thou dost put forth a wellspring of myrrh from thy tomb, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Following the rule of spiritual athletes, thou didst strip thyself naked of all earthly love, O martyr;\nand didst anoint thyself with the oil of grace, and, having vanquished the prince of darkness,\nthou didst receive the reward of pouring forth sweet-smelling myrrh, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast shown to be a rose blooming in the midst of the Master's meadow, O Demetrius,\nempurpled with the blood of thy torments, the wounds of thy lancings, and thy pangs of suffering." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Wounded with zeal for the love of Christ, like a new Elijah thou didst denounce the emperor and give thyself over unto death.\nYet thou livest and hast shown thy tomb to be a wellspring of myrrh,\nlike unto an inexhaustible container of oil." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Of old thy forefather, chanting, described thy mystery and all the glory within the daughter of the King,\nglorifying thee as her who is blessed among mortals.\nRejoice, thou restoration of the whole world." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons' by the blood that for mercy's sake flowed from Thy side.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Assembling together, we chant thy glorious and luminous memorial\nwhich is full of wonders and of the gifts of the honored and holy Spirit, O all-blessed one." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "By thy prayers loose thou the bonds of mine offenses,\nfor, as an invincible martyr, thou hast boldness before the Master;\nand be thou my refuge and protection, O Demetrius." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Finding thee, O pure one, as a most pure lily, a lily of the valley, among the thorns,\nthe Bridegroom, the Word, made His abode within thy womb, O Mother of God." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst flourish spiritually, like a fruitful olive tree,\nand wast forcibly pressed by the hands of soldiers.\nBut now thou dost comfort the faithful, O Demetrius, pouring forth myrrh from thy divine tomb." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Like a bee, thou didst show thyself to be a cultivator of all the virtues wrought by God, O blessed one,\nkeeping thine immaculate soul like a honeycomb;\nand now thou pourest forth myrrh, delighting our souls." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst love Christ with all thy soul and didst follow Him to the myrrh of sweet fragrance;\nand thou didst partake thereof through a better union.\nAnd now dost pour forth unending streams of myrrh, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The droplets of the blood of thy sufferings, falling upon the ground,\nhave made it a wellspring of fragrant myrrh.\nAnd now thou dost continually pour it out for those who draw it forth, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Beholding the golden and inextinguishable lamp of the Light,\nwe who have darkened our souls with a multitude of sins draw nigh,\nfor she giveth us illumination and driveth away all darkness." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "He that gaveth thee invincible strength,\nO Demetrius,\nhath dyed the Church in the streams of thy blood,\nand hath kept thy city unharmed,//\nfor thou art its confirmation.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr"
+      },
+      "ikos": {
+        "text": "Assembling in faith, let us all hymn the great Demetrius as a warrior and martyr of Christ,\ncrying out together in hymns and songs unto the Master and Creator of the universe:\nDeliver us from earthquake and want, O Lover of mankind,\nthrough the prayers of the Theotokos and of all Thy holy martyrs,\nfor in Thee do we all place our trust, that we be delivered from misfortunes and tribulations.\nFor Thou art our confirmation."
+      },
+
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "irmos2": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All adorned with divine glory and grace, O martyr and passion-bearer,\nthou hast shone forth brilliantly illumining those who cry aloud:\nBlessed art Thou in the temple of Thy glory, O Lord!" },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Arrayed in thy blood as in purple vesture, and holding the Cross instead of a scepter, O glorious one,\nthou dost now reign with Christ, O martyr Demetrius, crying aloud:\nBlessed art Thou in the temple of Thy glory, O Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O exceedingly glorious and radiant Mother of God:\nProtect all who honor thee as the Theotokos,\nfor blessed art thou among women, O all-immaculate Lady." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Isaiah doth in prophecy command the thirsting to draw forth water, O Demetrius.\nAnd if he had seen thy tomb, he would certainly have cried:\nCome ye to the wellspring of myrrh and draw forth salvation!" },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast born of earth and hast made thine abode in the land of the meek,\nwhere the waters of sweetness are found;\nand having drunk thy fill thereof, thou dost now pour forth an ever-flowing wellspring of myrrh, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou dost grow like the branch of a vine, remaining joined to God, without being cut off.\nAnd filled with the ineffable sap thereof, thou dost now pour forth myrrh in streams upon all, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O, thy new struggles! O, the strange sufferings of thy martyrdom!\nFor, accepting the drops of sweat which thou didst pour forth for Him,\nChrist hath shown thee to be a wellspring of myrrh, O blessed one." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Pouring forth the stream of thy myrrh, O Demetrius,\nthou hast spread out a great abyss of miracles drowning therein the infirmities of our bodies and souls,\nand calming every tempest of temptation." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: With thy milk didst thou nourish thy God, Who was born of thee incarnate,\nthat He might lighten the affliction in Hades of Adam,\nwho ate of the tree of knowledge and transgressed God's commandment." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Thou didst eclipse all the wrath of the enemy, O glorious one,\narrayed for battle with the indelible power of Christ,\nand as a victor thou didst cry aloud, O martyr Demetrius: Bless the Lord, all ye works of the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Having shown the steadfastness of the martyrs, thou didst inherit the eminence of the martyrs, O martyr,\nbeing washed in the holy laver which is not defiled by further attacks of sin;\nand, pierced by a spear, thou didst cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "The multitude of thy miracles and the gifts that Christ gave thee, which surpass comprehension,\nare evident to all, O glorious one,\nand the grace of healings, which transcendeth all telling, clearly proclaimeth thy grace unto us who cry out:\nBless the Lord, all ye works of the Lord!" },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Let us hymn the pure Theotokos, who, alone among all generations, is a Virgin Mother;\nfor she is the mediatress of our salvation, in that she hath given birth to the Word, the Redeemer of the world,\nto Whom we cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "May God reveal thee to those who are in this world, O Demetrius,\nas one who hath kept the lamp of thy soul alight, ever filled with the oil of good works.\nDoors, as of a chamber, have been opened unto thee,\nand He showeth thee to be an ever-flowing wellspring of divine myrrh, imparting grace thereto as the reward of thy purity." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Not of blood, nor of the lust of the flesh, O Demetrius, wast thou born, as the Gospel saith, but of God;\nfor thou dost honor the incarnate God, and zealously exhausting thyself for His sake,\nthou didst receive wondrous grace from on High, and pouring forth divine myrrh, and perfuming souls." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Thou art shown to be an animate ladder firmly anchored to the ground by pillars of flesh, but reaching to the heavens;\nfor thou wast enriched by God, Who was established within thee, O martyr.\nAnd having been shown to be a pillar anointed with the oil of the struggles of martyrdom,\nthou dost now pour forth a wellspring of divine myrrh upon those who approach with faith." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "David, chanting prophetically, O Demetrius, described thee as the river of God filled with waters;\nfor, lo! the flow of thy myrrh is inexhaustible.\nWherefore, the watery multitude of rivers lift up their voices and clap their hands to the glory of God,\nWho hath glorified thee by all of these things." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: In place of Adam, the Lord; in place of Eve, thee O most pure one;\ninstead of the lying serpent, Gabriel; instead of the tree; the Cross;\ninstead of Eden, the garden of the tomb; Rejoice! instead of grief;\nthe spear instead of the fiery sword, and the purple robe instead of the fig leaves.\nTherefore, we hymn thee, O maiden, as the cause of all these things." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee, O Theotokos.",
+        "irmos2": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Loose the bonds of the transgressions of those who hymn thee, O passion-bearer;\nput an end to the assaults of the passions; cause the tumult of heresies to cease,\nand calm the tempest of temptations by thy prayers." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O crowned martyr Demetrius, guide thou thy most sacred flock\nto the straight paths of the kingdom of heaven, to the pasture of salvation, to the eternal fold." },
+          { "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O martyr Demetrius, entreat the Lord, the Bestower of life and King of hosts,\nthat those who hymn thee may obtain crowns of glory and the kingdom of heaven." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Trusting in thee, O Virgin, all we, the faithful, honor thee as the root,\nthe wellspring and cause of incorruption;\nfor thou hast poured forth upon us the hypostatic Immortality." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst receive a soul like unto an alabaster box filled with the divine myrrh of virtue,\nand Christ bowed His head toward thee, O martyr;\nfor thy life was calmed by the brilliance of purity.\nWherefore, thou wast blessed and filled with the grace to pour forth myrrh upon the ends of the earth." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Behold the radiant types of ineffable rewards that await thee!\nBehold the wellspring of ever-flowing myrrh, O sufferer!\nWherefore, standing before God with the boldness of a martyr,\nbeg thou victory for Orthodox Christians over their adversaries." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With the sign of the Cross of the Victor thou didst vanquish the savagery of Lyaeus,\nsetting over him as victorious thy fellow contender Nestor.\nAnd now, do thou subject every barbaric nation to holy Orthodoxy, O Demetrius." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr Demetrius, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Us who have recourse with fervent love from the depths of our hearts to the coffer of thy relics,\nwhich poureth forth rivers of myrrh, O martyr of Christ,\ndo thou deliver from soul-destroying deeds and from the deluge of the stench of the passions by thy prayers;\nand show them forth as sweet fragrances before the Lord." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou, O all-pure one, art a golden dove which bore the Word of God like an olive sprig,\nanointing thy flesh with the oil of divinity.\nAnd the sufferer, having accepted Him into his heart, as in a coffer,\ndoth pour forth myrrh from his tomb, anointing the faces of the faithful." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Thou didst arm Nestor with the Cross, destroying the audacity of Lyaeus through him in the stadium, O Demetrius;\nlike Christ, thy side was opened by a spear,\nand with it thou hast preserved thy flock.",
+        "tone": 3,
+        "label": "Exaposteilarion of the holy great-martyr",
+        "melody": "O immutable Light",
+        "repeat": 2,
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "O Lord, Who lookest down upon the earth from heaven and makest all things to tremble:\nDeliver us from earthquake through the prayers of the Theotokos,\nwhom Thou hast given to Christians as an intercessor.",
+        "label": "Glory ... Both now ... (Theotokion)",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Having been pierced,\nthou didst wound the Adversary with thy spears\nand didst render him dead and of no effect;\ndeliver us from his malice, O Demetrius,\nrendering us ever strong against the tormenting passions by thy sacred prayers,\npiercing our hearts and souls//\nwith divine fear, O holy one.",
+          "tone": 4,
+          "melody": "As one valiant among the martyrs"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "Beholding thee to be a river full of spiritual waters, O holy one,\nwe pray thee:\nIn thy great goodness sacredly bedew our souls,\nwhich have wasted away through offenses of the passions,\nand those who are amid defilement do thou wash clean,\nand deliver from manifold misfortunes//\nand eternal torment.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "As a most radiant star\nhast thou shone forth upon the earth in the splendor of miracles;\never enlightening the earth, O glorious Demetrius,\nand driving away the gloom of darkness from our souls by thy prayers.\nHeal thou the infirmities of those who celebrate thy memory with love,//\nO glory and boast of the martyrs.",
+          "tone": 4
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O martyr of Christ, come thou to us who beseech thy merciful visitation,\nand deliver those who are afflicted with threats of torment and the mad raging of heresy.\nFor as captives and naked we are persecuted by them,\nmoving often from place to place and straying into the caves and mountains.\nTherefore, spare us, O all-famed one, and grant us liberty;\ncalm the tempest and dampen the displeasure which is directed against us,//\nentreating God, Who granteth great mercy to the world.",
+          "tone": 5,
+          "melody": "Rejoice"
+        }
+      ],
+      "doxastikon": {
+        "text": "Let us honor him who, through spears, hath inherited the grace of the Savior's side,\nwhich was pierced by a spear and from whence the Savior poureth forth the waters of life and incorruption,\nDemetrius, most wise in teachings and crowned amid torments,\nwho completed the course of suffering with the shedding of his blood\nand hath shone forth upon the whole world with miracles,\nwho loved the Master and mercifully loved the poor,\nthe intercession for the Thessalonians amid many and exceeding grievous misfortunes.\nAnd honoring his yearly memorial, let us glorify Christ God,//\nWho for his sake worketh healings for all.",
+        "tone": 2,
+        "author": "by Andrew",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "Deliver us from our needs,\nO Mother of Christ God,\nthou who hast given birth to the Creator of all,\nthat we all may cry out to thee://\nRejoice, O thou who alone art the intercessor for our souls!",
+        "tone": 2,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "The whole world hath found thee to be a great champion amid misfortunes,\nwho conquered the pagans, O passion-bearer.\nTherefore, as thou didst cast down the pride of Lyaeus\nand didst appoint the bold Nestor for the struggle,//\nthus, O Demetrius, beseech Christ God to grant us great mercy.",
+      "tone": 3
+    }
+  }
+}

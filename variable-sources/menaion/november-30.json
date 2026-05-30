@@ -1,0 +1,322 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Andrew the First-Called",
+    "feastKey": "stAndrew",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 11-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-30.pdf",
+    "_note": "Two canons of the holy apostle interleaved in Tone I: Canon I by John the Monk + Canon II (anonymous; both with Trinitarian troparia in addition to the standard Theotokion at most odes). Theotokos canon (Tone I, 6 troparia) interleaved at the actual service per the Sergius rubric is omitted from this file per the menaion-matins-track pattern. Polyeleos magnification of St Andrew. Katavasiae of the Nativity (Dec 25 is 25 days away)."
+  },
+
+  "troparion": {
+    "text": "As thou art the first-called of the apostles\nand the brother of the pre-eminent one,\nentreat thou the Master of all, O Andrew,\nthat He grant peace to the world//\nand great mercy to our souls.",
+    "tone": 4,
+    "label": "Troparion of St Andrew"
+  },
+
+  "kontakion": {
+    "text": "The divinely eloquent namesake of manliness,\nthe eminent follower of the Church,\nthe kinsman of Peter, let us praise,\nfor as of old he was called, so now he calleth us://\nCome ye, we have found the Desired One!",
+    "tone": 2,
+    "label": "Kontakion of St Andrew"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "As thou art the first-called of the apostles\nand the brother of the pre-eminent one,\nentreat thou the Master of all, O Andrew,\nthat He grant peace to the world//\nand great mercy to our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy apostle"
+    },
+
+    "sedalion": [
+      {
+        "text": "As a divine disciple and first-called of all the disciples of Christ,\nwe praise thee with love O apostle Andrew, and we cry out to thee with faith:\nDeliver thy flock, which hath been given thee by God,//\nfrom every sorrow and need, from temptations and every affliction.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O honored one, stretching forth thy hands now in pity,\nbestow upon us aid from the Holy One,\nand grant that those who glorify thy most holy birthgiving\nand ascribe to thee hope and praise, O Lady and Maiden,//\nmay complete this life without misfortune.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Christ found thee to be his first-called disciple,\na chosen initiate of His mysteries, O blessed Andrew,\nwho diligently exalted His precepts before the whole world.\nAnd, as though on wings, thou didst enlighten the states of the Gentiles.//\nHim do thou entreat as God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the divine faith",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother, who hast surpassed the angels in purity.\nWith the divine waters of thy supplications cleanse me,\nwho more than all others am dust and defiled by carnal transgressions, O pure one,//\nand grant me great mercy.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O Andrew, first-called apostle of Christ,\nand we honor thy pangs and labors,\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Let us all praise the apostle as one who himself beheld the Word,\na divine preacher and a truly spiritual fisher of nations,\nfor we have been brought to knowledge of Christ by the divinely eloquent Andrew, our truly great intercessor,//\nand he doth now unceasingly pray that our souls be saved.",
+      "tone": 5,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "The co-beginningless Word",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Those who have a steadfast hope in thee, O pure Virgin,\nfind protection and deliverance from a multitude of temptations, dangers, and wicked circumstances.\nDo thou intercede together with the apostles, before thy Son,//\nand save all those who sing thy praises.",
+        "tone": 5,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+
+    "gospel": {
+      "reading": "Matthew 4:18-23",
+      "_note": "Matins Gospel."
+    },
+
+    "postGospelSticheron": {
+      "text": "Let us praise Andrew, the preacher of the Faith and servant of the Word,\nfor he hath drawn forth souls from the abyss, wielding the Cross instead of a rod;\nand lowering a line of power, he leadeth them up from the delusion of the enemy,\nand offering them to God as an acceptable gift.\nLet us praise him, ye faithful, among the choirs of the disciples of Christ,//\nthat he may pray with them, that Christ be merciful unto us on the day of judgment.",
+      "tone": 8,
+      "label": "Idiomelon of St Andrew"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I (John the Monk) + Canon II (anonymous; includes Trinitarian troparia)",
+
+      "ode1": {
+        "irmos": "Thy victorious right arm, in a manner befitting God, hath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,//\nfashioning anew a path for the Israelites through the deep.",
+        "irmos2": "Guiding Israel with a pillar of fire and cloud,\nas God He divided the sea and engulfed the chariots of Pharaoh in the deep.\nLet us chant a hymn of victory,//\nfor He alone hath been glorified!",
+        "troparia": [
+          { "text": "My soul, which hath been troubled by wicked thoughts and words, do thou cleanse with the divine grace which dwelleth within thee, O Andrew, preacher of Christ, that I may pour forth a worthy hymn to thee in a pure manner." },
+          { "text": "The Forerunner of Christ, who sprang forth from a barren woman, led Andrew, rejoicing, the most eminent and honored of his disciples, to Christ the supremely glorified One Who was born from the Virgin." },
+          { "text": "With desire and unwavering love, beginning the steps of the virtues, ever learning to ascend, from weakness thou didst attain unto the most lofty strength, O Andrew." },
+          { "text": "Theotokion: Rejoice, O wellspring of grace! Rejoice, stairway and portal to heaven! Rejoice, golden candlestick and jar, and unquarried mountain, who for the world didst give birth unto Christ, the Bestower of life." },
+          { "canon": "secondCanon", "text": "With the rod of the Gospel didst thou fish, O all-praised Andrew, drawing forth souls from the deep of delusion, as Christ promised, Who taught thee to catch them as though fish." },
+          { "canon": "secondCanon", "text": "The divinely inspired Andrew, the pillar of the Faith and seat of the true dogmas of Christ, doth today summon all the ends of the earth to celebrate his yearly festival. Let us therefore make haste, all ye faithful!" },
+          { "canon": "secondCanon", "text": "Having pursued the whale of the sea with nets, with the skill of a fisherman thou dost fish for nations, tribes and peoples with the net of the Spirit, most plainly disclosing unto us through the Spirit the lofty depths, O most wondrous one." },
+          { "canon": "secondCanon", "text": "O thou who solemnly performed the mysteries of heaven, as an eyewitness and advocator of the ineffable knowledge of Christ, in that thou that had received the Holy Spirit from on high, thou didst discourse, and sit among the nations dispensing sacred gifts with fire: pray thou that we be saved." },
+          { "canon": "secondCanon", "text": "Trinitarian: With faith I worship the supra-natural Unity of the beginningless Trinity, not dividing the Godhead. For it is of a single kind, simple and indivisible. And I unite it by essence faithfully distinguishing the Hypostases." },
+          { "canon": "secondCanon", "text": "Theotokion: God is born an Infant through the Virgin, and He reneweth that which, through Adam, had become corrupt; and breaking down the middle-wall of partition and the chamber of enmity with His flesh, He came forth from His most pure Mother, abolishing the curse of our first mother." }
+        ],
+        "katavasia": "Christ is born, render ye glory.\nChrist cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted.\nO all the earth, sing unto the Lord, and sing praises in gladness, O ye people,//\nfor He hath been glorified."
+      },
+
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature and in compassion hast assumed its form;\ndo Thou gird me with power from on high, that I may cry unto Thee://\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "irmos2": "Let my heart be established in Thy will O Christ God,\nWho hath established a second heaven over the waters,//\nand founded the earth upon the waters, O all-powerful One.",
+        "troparia": [
+          { "text": "Not summoned, but of thine own will didst thou run like a thirsting hart to the Wellspring of life, and having found Him thou didst preach Him to all; and having drunk thereof thou didst drench the parched ends of the earth with the waters of incorruption." },
+          { "text": "Mindful of the laws of nature, O right wondrous Andrew, thou didst take thy kinsman into partnership, crying out: We have found the Desired One! And to him who prepared the way by his birth in the flesh thou didst reveal spiritual knowledge." },
+          { "text": "From the depths of delusion hast thou taken the rational fish in the net of the Word, O apostle, and brought as pure food to the table of Christ: those who have been enlightened by the grace of Him Who appeared in the likeness of the flesh." },
+          { "text": "Theotokion: Though thou didst conceive God in thy womb, O Virgin, by the all-holy Spirit thou wast preserved unconsumed, for to Moses the law-giver the unburnt bush manifestly foretold thee, who aflame, received the unbearable Fire." },
+          { "canon": "secondCanon", "text": "Peter and Andrew straightway followed Christ, Who summoned them, saying, Come, follow me! leaving their father, their boat and nets, for they were visionaries of faith." },
+          { "canon": "secondCanon", "text": "Transforming pagan temples into churches, O all-honored one, thou didst sanctify therein sons of baptism, whom grace hath renewed through the water and the Spirit." },
+          { "canon": "secondCanon", "text": "Thou didst mystically set before the world the pearl of great price which was hid within the field of thy heart, O apostle, which the Gentiles, finding, treasured faithfully." },
+          { "canon": "secondCanon", "text": "Taking up the Gospel in thy hands as a treasure, O much lauded one, thou didst enrich all the earth with thy divine preaching. Wherefore, it doth honor thy memory and thy sufferings." },
+          { "canon": "secondCanon", "text": "Trinitarian: Let us all hymn chanting in an Orthodox manner the Trinity, the one power of the beginningless, uncreated, consubstantial, co-enthroned, tri-hypostatic, three-sunned God." },
+          { "canon": "secondCanon", "text": "Theotokion: Every mother that beareth a child can no longer be a virgin; but thou, O Virgin Mother, having given birth unto Christ, remained so, nourishing our Life with milk and remaining pure." }
+        ],
+        "katavasia": "To the Son who was begotten of the Father without change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud://\nThou hast raised up our horn, holy art Thou, O Lord."
+      },
+
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes as the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel would come forth from thee,//\nfor our salvation and restoration.",
+        "irmos2": "Foreseeing in the Spirit O Prophet Habbakuk, the incarnation of the Word,\nthou didst proclaim, crying aloud: When the years draw nigh, Thou shalt be known;\nwhen the season cometh, Thou shalt be shown forth!//\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "The divine and consuming power of the higher, all-accomplishing and radiant Spirit, Who, in a godly manner, made His abode within thee in the form of a tongue of fire, O Andrew, showed thee to be a preacher of ineffable things." },
+          { "text": "The all-honored Andrew did not take up weapons of the flesh for retribution, even to lay low the strong citadels of the enemy, but, protected by Christ, having captured the nations, he brought them to obedience." },
+          { "text": "Our super-essential God, Who assumed our nature, hath revealed thee, O Andrew, to be a mountain pouring forth noetic gladness, destroying the cruel mountains of demonic arrogance." },
+          { "text": "By thy supplications, O most noetically rich Andrew, never cease to fill with the bountiful gifts of Christ, thy Teacher, those who with love celebrate thy memory in hymns." },
+          { "text": "Theotokion: We hymn thy great and awesome mystery, for He Who is ever existing, hiding Himself from the supra-mundane legions, descended upon thee like the dew upon the fleece, unto our salvation and restoration, O all-hymned one." },
+          { "canon": "secondCanon", "text": "Having cast aside thy nets and taken up the Cross, thou didst follow after Christ Who called thee, and, stretching out the net of the Spirit, thou dost catch souls instead of fish. Glory to Him Who gaveth thee the Spirit!" },
+          { "canon": "secondCanon", "text": "Having received the flaming tongue of the Spirit, thou didst become a man well-pleasing unto God, O apostle, going about the beauties of heaven, recognizing the noetic comeliness therein, and revealing it to us." },
+          { "canon": "secondCanon", "text": "Thou didst water the parched desert with thy divine words, O wise one, and didst show it forth as fertile, bearing fruit, the children of the Church, through the casting of the divine seed. Glory be to Him Who gaveth thee the Spirit!" },
+          { "canon": "secondCanon", "text": "Perceiving Thine ineffable goodness, O Jesus, Andrew summoned his kinsman, saying: O Peter, my blood kinsman, we have found the Messiah, Who was proclaimed in the Law and the Prophets! Come, let us truly join ourselves unto Life!" },
+          { "canon": "secondCanon", "text": "Trinitarian: O ye faithful, let us hymn the Trinity in Unity: the Father, the Son, and the divine Spirit, One in Godhead, Essence and Nature, indivisible, inseparable, undivided, for He is One God in three Hypostases." },
+          { "canon": "secondCanon", "text": "Theotokion: Having ineffably conceived One of the Trinity in thy womb, thou didst incorruptly give birth unto Him as a Son; yet the Trinity was not at any time added to, and as thou wast pure before giving birth, thou wast kept whole, O Mother of God." }
+        ],
+        "katavasia": "Rod of the root of Jesse, and flower that blossomed from his stem,\nO Christ, Thou hast sprung from the Virgin.\nFrom the Mountain overshadowed by the forest Thou hast come,\nmade flesh from her that knew not wedlock, O God who art not formed from matter.//\nGlory to Thy power, O Lord."
+      },
+
+      "ode5": {
+        "irmos": "Thou hast shone upon us with the radiance of Thy coming O Christ,\nand illumined the ends of the world with Thy Cross,//\nenlighten with the light of thine understanding the hearts of those who with right worship hymn Thee.",
+        "irmos2": "Illumine our minds with the light of Thy commandments\nand with the radiant splendor of Thy grace, O God,//\ngranting us Thy mercy O Good One, for Thy precepts are light and peace.",
+        "troparia": [
+          { "text": "Thou didst receive Him for Whom thou didst long, O apostle Andrew, making thine abode with Him in the incorruptible mansions, worthily having harvested the sheaves of thy labors. Wherefore, we glorify thee with hymns." },
+          { "text": "Thou didst love the Master, and quickly didst thou run after Him, guided in life by His footprints and sincerely emulating His sufferings even unto death, O most honorable Andrew." },
+          { "text": "Having drawn thee like a mighty arrow, O blessed one, the Lord loosed thee upon the world, wounding the demons and healing souls wounded by impiety." },
+          { "text": "Theotokion: The hosts of heaven are gladdened at the sight of thee, and with them rejoice assemblies of mankind; for by thy birthgiving, a Virgin Theotokos, they are united, glorifying thee as is meet." },
+          { "canon": "secondCanon", "text": "Having yearned for the Cross, O disciple of Christ, through thy cross thou didst obtain the incorruptible kingdom, drawing all the initiates of God thereto by the Cross, granting an inheritance unto us, the theologians thereof." },
+          { "canon": "secondCanon", "text": "Thou didst truly search for Christ our Life, and having searched, thou wast first to find Him; and having found Him, thou didst mystically embrace Him; and having received the Giver Himself, thou didst become a treasury of life incorruptible." },
+          { "canon": "secondCanon", "text": "The utterances of thy divine thundering were poured forth throughout the world and traveled from one end of the earth to the other, for they have circled round like a wheel; and thy lightnings, as David saith, have appeared to the whole world." },
+          { "canon": "secondCanon", "text": "Remember us who celebrate thy memory and venerate thy relics, O disciple of Christ. Pray thou ever earnestly on behalf of the flock whose preserver and salvation thou hast been from the beginning." },
+          { "canon": "secondCanon", "text": "Trinitarian: O ye faithful, together let us glorify God: the Father, the Son, and the Holy Spirit, the indivisible Trinity, the tri-hypostatic Kingdom, faithfully glorifying It with unceasing theology." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou didst give birth to the Light knowing not how, O thou who hast borne the lamp of the Light of the Sun; the new tabernacle of divine light, emitting rays of divine knowledge upon the whole world." }
+        ],
+        "katavasia": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel, granting us peace.\nWherefore guided towards the light of the knowledge of God,//\nand watching by night we glorify Thee, O Lover of mankind."
+      },
+
+      "ode6": {
+        "irmos": "The deepest abyss hath surrounded us, and there is none to deliver us,\nyea we have been counted as sheep for the slaughter;//\nsave Thy people O our God, for Thou art the strength and restoration of the weak.",
+        "irmos2": "Emulating the Prophet Jonah, I cry aloud:\nFree Thou my life from corruption, O Good One;//\nand save me who crieth out: O Savior of the world, Glory be to Thee!",
+        "troparia": [
+          { "text": "Sailing the sea of life in the vessel of thy body, thou didst discover Christ, the Steersman Who guideth all things, O all-blessed one, and thou didst stand before Him rejoicing, O most honored Andrew." },
+          { "text": "Evil spirits are cast out at thy word, infirmities take flight, a multitude of spiritual passions are driven far away from the afflicted by the grace given thee by God, O Andrew." },
+          { "text": "Like a calm wave, moved by a meek spirit, O blessed one, with divine streams didst thou drain the sea of wicked polytheism and didst pour forth rivers of divine knowledge for all." },
+          { "text": "Theotokion: O most pure Virgin, the ancestors of our race are gladdened on thine account, having received through thee Eden, which they had lost through transgression, for thou art pure both before and after giving birth." },
+          { "canon": "secondCanon", "text": "He that was led away from Bethsaida doth summon us to hold festival, having set before us the solemnity of the commemoration of his struggles." },
+          { "canon": "secondCanon", "text": "By trade a fisherman, by faith a disciple, plumbing the depths of the heart of the faithful, he doth lower the hook of the word and doth catch us." },
+          { "canon": "secondCanon", "text": "Spreading the fire of the love of Christ within thy heart, O disciple, thou didst cry out to the Gentiles: Your flame doth burn for Christ, Who hath truly appeared!" },
+          { "canon": "secondCanon", "text": "Having seasoned your minds with the salt of Christ, your wages have sweetened the heavenly dogmas of unwaning delight for us." },
+          { "canon": "secondCanon", "text": "Trinitarian: The Father, the Son, and the right Spirit, the tri-hypostatic Essence, indivisible, let us worship, O ye faithful, crying out: Glory to God in Trinity!" },
+          { "canon": "secondCanon", "text": "Theotokion: At the good pleasure of the Father and through the Holy Spirit was the Son incarnate in thy womb, O pure Birthgiver of God, and manifestly did He save that which was formerly in His image." }
+        ],
+        "katavasia": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh,\ncame forth from her yet kept her incorrupt.//\nFor being Himself not subject to decay, He preserved His Mother free from all harm."
+      },
+
+      "kontakion": {
+        "text": "The divinely eloquent namesake of manliness,\nthe eminent follower of the Church,\nthe kinsman of Peter, let us praise,\nfor as of old he was called, so now he calleth us://\nCome ye, we have found the Desired One!",
+        "tone": 2,
+        "label": "Kontakion of the holy apostle"
+      },
+      "ikos": {
+        "text": "Of old David constrained a sinner like me to declare the precepts of God honorably.\nAnd again he teacheth and with many tears doth proclaim:\nToday, if ye will hear His voice, harden not your hearts as Israel once embittered themselves!\nAnd he leadeth the rest in psalmody://\nCome ye, hymn the Lord, all ye lands, for we have found the Desired One!"
+      },
+
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos, to be a noetic furnace;\nfor as He, the supremely exalted One, saved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,//\nO Thou praised and supremely glorified God of our fathers.",
+        "irmos2": "Thy children who were in the furnace O Savior, were neither touched nor troubled by the fire.\nWhereupon the three sang, as with a single mouth Thy praises and blessed Thee, saying://\n'O God of our fathers, Blessed art Thou.'",
+        "troparia": [
+          { "text": "Truly and manifestly hath Thy promise been fulfilled, O Christ, for Thy most divine disciple, rebuking the tempest with a word, transformed it into a peaceful calm. Praised art Thou and supremely glorious, O God of our fathers!" },
+          { "text": "Commanded to ascend the mountain of the noetic Zion, O apostle, and having passed over death to divine life, rejoicing, thou dost bestow the cup of salvation of the praised and supremely glorious God of our fathers, having received it within thyself." },
+          { "text": "The divine Water of life showed thee forth, O blessed one, as a noetic river drying up the rivers of delusion with the streams of teaching, and watering those who cry aloud: Praised and supremely glorious art Thou, O God of our fathers!" },
+          { "text": "Though a mortal, O apostle, thou dost supra-naturally work wonders, for, undergoing suffering with love, thou didst follow after Christ Who loved thee, chanting: Praised and supremely glorious is our God!" },
+          { "text": "Theotokion: O Theotokos, Jacob prophetically understood thee to be a ladder, for through thee the supremely exalted One appeared and dwelt among mankind on earth, as he was well-pleased so to do. Praised and supremely glorious is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "O apostle of Christ, the fire of the all-holy Spirit descended from on high, and commanded thee to proclaim His mighty works upon the ends of the earth in new languages which thou hadst never spoken before." },
+          { "canon": "secondCanon", "text": "The proclamation which ye trumpeted forth throughout the earth astounded every mind, O initiates of the mysteries of Christ and beholders of lofty things, for as the twelve ye have enlightened the darkness covering the earth." },
+          { "canon": "secondCanon", "text": "O Master Christ, wondrous was Thy grace in Thy divinely wise disciples who, as simple and humble men, traversed the whole earth from one end thereof even unto all its ends." },
+          { "canon": "secondCanon", "text": "Who instructed thee to speak thus, O apostle? Who enlightened thy mind to behold clearly the radiance of the unapproachable glory which shineth forth the light of truth in our hearts?" },
+          { "canon": "secondCanon", "text": "Trinitarian: Let us hymn the Trinity, O ye faithful, glorifying the beginningless Father, and the Son, and the righteous Spirit, the single Essence; and let us chant threefold hymns, singing: Holy, holy, holy art Thou throughout the ages! Amen." },
+          { "canon": "secondCanon", "text": "Theotokion: O Christ, we glorify Thee as One of the Trinity, for, having become incarnate from the Virgin without undergoing change, Thou didst bear all things as a man without departing from the Father's essence, O Jesus, even though Thou wast united unto us." }
+        ],
+        "katavasia": "Scorning the impious decree of the godless one,\nthe Children brought up together in godliness feared not the threat of fire,\nbut standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou."
+      },
+
+      "ode8": {
+        "irmos": "In the furnace as in a fiery smelter the Israelite children shone more brightly than gold\nwith the beauty of godliness, as they exclaimed: Bless the Lord all ye works of the Lord,//\nhymn and supremely exalt Him throughout all ages.",
+        "irmos2": "The bush which burnt on Sinai was preserved unconsumed,\nlikewise the children in the midst of the burning flame were delivered by God,//\nhymn ye, bless and supremely exalt Him throughout the ages!",
+        "troparia": [
+          { "text": "O Andrew, apostle of Christ, thy divine memory doth emanate with radiant and gladdening rays of healing upon us who cry aloud: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
+          { "text": "Possessed of human nature, thou didst transcend the laws thereof and pass on to the habitations of the angels, O apostle Andrew; crying aloud: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
+          { "text": "The inspiration of the Spirit of God, which before illumined thee with fire from on high, O divinely eloquent apostle, hath revealed thee to be a zealous orator who crieth out to thy Christ: Hymn the Lord, all ye works of the Lord, and exalt Him supremely throughout all ages!" },
+          { "text": "Thou didst flash forth like lightning, like a radiant light unto the Gentiles, dispelling the darkness of ignorance and illumining the faithful, who cry aloud: Bless the Lord, all ye works of the Lord, hymn and supremely exalt Him throughout the ages!" },
+          { "text": "Theotokion: Rejoice, thou throne of the glory of God! Rejoice, rampart of the faithful through which Christ hath shone forth, the Light of those who are in darkness, who bless thee and cry aloud: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "With the craft of fishing thou didst draw fish from the sea, O all-wise one, and now, with faith, thou dost draw forth souls for Christ, from the delusion of the enemy. For such deception was once an abyss which drowned the nations in the storm of impiety." },
+          { "canon": "secondCanon", "text": "With faith in Christ thou didst navigate the noetic abyss of life without capsizing, O apostle, propelled by the sail of the Spirit. Wherefore, thou hast attained unto the harbor of life rejoicing throughout all ages." },
+          { "canon": "secondCanon", "text": "When the noetic Sun willingly set upon the Tree, the great Andrew, the lamp of the Church, the beacon of the Sun, seeking to end his life with Christ and to set in Him, was hung upon the wood of a cross." },
+          { "canon": "secondCanon", "text": "O disciple and beloved friend of Christ, and one of His apostles: when the Judge sitteth upon His throne with you, His twelve, to render judgment as He hath promised, be ye then a rampart of love for mankind and for us." },
+          { "canon": "secondCanon", "text": "Trinitarian: Let us glorify the thrice-radiant Unity, the equally-enthroned Trinity, not separating it, but uniting It consubstantially as truly One Essence, united without commingling in three Hypostases." },
+          { "canon": "secondCanon", "text": "Theotokion: Having conceived, thou didst give birth unto one of the Trinity, Who, incarnate from thee, renewed the laws of nature by thy birthgiving, O pure one. Cease not to ever beseech Him as God on our behalf, O Theotokos." }
+        ],
+        "katavasia": "The furnace moist with dew showed forth an image of a wonder past nature,\nfor it burned not the youths whom it had received;\nneither did the fire of the Godhead consume the Virgin when it descended into her womb.\nWherefore, chanting, we sing://\nLet all creation bless the Lord and supremely exalt Him throughout all ages!"
+      },
+
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed, prefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "irmos2": "The light-bearing cloud upon whom the beginningless Master of all descended from heaven,\nlike the dew upon the fleece, and of whom He was incarnate, becoming a man for our sake,//\nlet us all magnify as the pure Mother of God.",
+        "troparia": [
+          { "text": "As a most excellent disciple, following even thy Master unto death, Who was crucified of His own will upon the Cross, thou didst ascend the heights of thy cross rejoicing, and passed on to the heavens, O blessed Andrew." },
+          { "text": "The gates of Eden were opened unto thee, and the ladder of heaven was set up for thee. The mansions of heaven received thee and thou didst stand, rejoicing, before Christ, the Bestower of life, O apostle, most eminent intercessor for the world." },
+          { "text": "Thou wast glorified by sufferings like unto those of thy Teacher, O blessed and all-wise Andrew; for thou didst receive thine end through a cross and wast deified through communion. Wherefore, we beseech thee: Ever pray thou on our behalf." },
+          { "text": "Rejoice, most excellent pair, having now inherited citizenship in the heavens! Ye have transcended the desire for crowds; having conquered the power thereof, and ye illumine us with the radiance of divine gifts." },
+          { "text": "Theotokion: Thou didst spring forth from the root of David, the Prophet and forefather of God, O Virgin; but thou hast glorified David, for thou hast given birth unto the Lord of glory, Whom he prophesied. Hymning Him, we magnify thee as is meet." },
+          { "canon": "secondCanon", "text": "O holy one, who spread out the net of the mystic knowledge of God, and who ensnared fish therein with the beauties of heavenly thoughts: Entreat the Holy Trinity to pour forth cleansing upon us." },
+          { "canon": "secondCanon", "text": "The nations enlightened by thee and led up from earth to the heavens by thee give thanks, for, wrested from the service of the enemy, they have become co-dwellers with the holy angels, and partakers of the glory of the Lord." },
+          { "canon": "secondCanon", "text": "O ye apostles, witnesses of ineffable things and ministers of the Word, performers of the mysteries and beholders of inscrutable things: Pray ye that we become heirs to the Kingdom of Christ and partakers in His divinity." },
+          { "canon": "secondCanon", "text": "Having received from Christ the power to bind and to loose, loose ye us all from the bonds of our many transgressions when Christ shall come and all ye twelve will be seated upon thrones to judge the tribes of Israel." },
+          { "canon": "secondCanon", "text": "Trinitarian: Unceasingly we glorify in heaven and on earth the incomprehensible Trinity, the tri-hypostatic Essence, the indivisible Glory which is hymned in one Godhead, piously worshipping the Father, the Son and the Holy Spirit." },
+          { "canon": "secondCanon", "text": "Theotokion: We flee with faith to thy tender compassion, piously worshipping thy Son, O Virgin Birthgiver of God. Him do thou entreat as the God and Lord of all the world, that He deliver us from corruption, misfortune and every temptation." }
+        ],
+        "katavasia": "A strange and most wondrous mystery do I see:\nthe cave is heaven; the Virgin the throne of the cherubim;\nthe manger a room, in which Christ God, whom nothing can contain, is laid.//\nWhom we praise and magnify."
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Finding thee, the beginningless Word revealed thee to be the first-called of all the apostles,\nO all-blessed and ever-memorable Andrew;\nand having followed in His footsteps, thou didst show thyself to be a guide for those who are astray,//\nleading them to the divine and heavenly path.",
+      "tone": 8,
+      "label": "Exapostilarion of the holy apostle",
+      "melody": "By the Spirit in the sanctuary",
+      "glory": {
+        "text": "Most gloriously let us praise the apostle Andrew, the brother of Peter,\nthe first of all the disciples, the beholder and servant of Him Who is the Word,//\nfor he hath enlightened the nations and, crucified, met his end as a disciple of the Master.",
+        "tone": 8,
+        "melody": "Hearken, ye women"
+      },
+      "bothNow": {
+        "text": "O all-immaculate Virgin, with Andrew the first-called entreat God,\nto Whom thou hast given birth, on behalf of all who piously honor thee,\nthat we may receive the splendor of thy Son and a place to stand with the elect and all the saints;//\nfor what thou dost wish, thou canst do.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Be glad now, O Bethsaida,\nfor the most fragrant lilies, Peter and Andrew,\nhave blossomed forth in thee from the vale of their mother,\nperfuming the whole world with the preaching of the Faith by the grace of Christ;//\nand they have shared also in His sufferings.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "Rejoice and make glad, O Andrew,\nfor, clearly, in the radiance of the Word,\nthou hast received Christ, the Sun of glory, the Bestower of life,\ncleaving to Him with faith, thou didst preach Him.\nHim do thou unceasingly entreat//\non behalf of us who hymn thee with faith.",
+          "tone": 1
+        },
+        {
+          "text": "Andrew, the beholder of God,\nthe teacher of the mysteries of the divine dispensation of Christ,\nelect among the first to be disciples of the Word,\nbeholding Peter, his brother, crying aloud, said://\nWe have found the Messiah Whom the Scriptures and the prophets have foretold!",
+          "tone": 1
+        },
+        {
+          "text": "Thankfully honoring thee, the city of Patras hath acquired thee as its pastor,\na divine protector, a deliverer from all manner of misfortunes, and its preserver.//\nUnceasingly pray thou for it, that it be kept unharmed.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Let us praise Andrew, the preacher of the Faith and servant of the Word,\nfor he hath drawn forth men from the abyss, wielding the Cross instead of a rod;\nand lowering a line of power, he leadeth up souls from the deception of the enemy,\nand doth ever offer them to God as an acceptable gift.\nLet us praise him, ye faithful, among the choirs of the Disciples of Christ,//\nthat he may pray with them, that Christ be merciful unto us on the day of Judgment.",
+        "tone": 8
+      },
+      "theotokion": {
+        "text": "Receive thou, O Bethlehem, the Mother of God,\nfor the unapproachable Light cometh to be born in thee.\nO ye angels, marvel in heaven. O mankind, give glory on earth.\nO ye Magi from Persia, bring ye your most glorious threefold gifts.\nYe shepherds abiding in the fields, chant ye the thrice-holy hymn://\nLet every breath praise the Maker of all.",
+        "tone": 8,
+        "label": "Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "As thou art the first-called of the apostles\nand the brother of the pre-eminent one,\nentreat thou the Master of all, O Andrew,\nthat He grant peace to the world//\nand great mercy to our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy apostle"
+    }
+  }
+}

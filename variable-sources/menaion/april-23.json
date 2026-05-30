@@ -1,0 +1,357 @@
+{
+  "_meta": {
+    "feast": "The Holy Great-Martyr, Victory-Bearer and Wonderworker George",
+    "feastKey": "stGeorge",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 04-23.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/04-23.pdf",
+    "_note": "OCA does not publish a Matins DOCX. Matins from St-Sergius Emenaion (yy/archaic register). Two great-martyr canons: Canon I by Theophanes Tone II + Canon II by Cosmas Tone IV. Falls during Pentecostarion (Apr 23 is always between Pascha and Pentecost) — the Sergius rubric references Pentecostarion troparia/sessional hymns interleaved with the saint material; assembler handles that overlay. Magnificat retained. Lauds: 4 Stichera Tone II 'When from the Tree'."
+  },
+
+  "troparion": {
+    "text": "As a liberator of captives,\na helper of the poor,\nand a physician of the infirm, O champion of kings,\nvictorious great martyr George,//\nentreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the great martyr"
+  },
+  "kontakion": {
+    "text": "Having been cultivated by God,\nthou didst show thyself to be a most honorable husbandman of piety,\ngathering to thyself the sheaves of the virtues;\nfor, having sown in tears, thou reapest in gladness,\nand having suffered in the shedding of thy blood, thou hast received Christ.\nAnd by thy supplications, O holy one,//\nthou grantest forgiveness of sins unto all.",
+    "tone": 4,
+    "label": "Kontakion of the great martyr",
+    "melody": "Having been lifted up"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Behold! the springtime of grace hath shone forth, and the resurrection of Christ hath illumined all!\nAnd with Him He now raiseth up the martyr George.\nCome ye all, and, bearing lamps in godliness, let us splendidly celebrate the most festival and radiant day!",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "After 1st Kathisma is Pentecostarion sessional hymn; this is after 2nd.",
+        "glory": {
+          "text": "Disdaining the army which was on the earth, O martyr, thou didst desire the glory which is in the heavens,\nand thou didst endure pangs and a violent death.\nWherefore, we celebrate thy most holy memory today,\noffering praise unto Christ, O most blessed George.",
+          "tone": 1,
+          "melody": "The choir of the angels"
+        },
+        "bothNow": {
+          "text": "All we who with love flee for refuge to thy goodness\nknow thee to be the Mother of God and after childbirth still truly Virgin;\nfor we sinners have thee as our protection;\nwe have thee as our salvation in misfortunes,//\nas the only All-blameless one.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy and victorious great martyr George,\nand we reverence thine honored sufferings, which thou didst endure for Christ.",
+      "verses": [
+        "Our God is refuge and strength. A helper in afflictions which mightily befall us.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "Afire with the burning love of the Master, with manly mind thou didst cast down the treasuries of delusion,\nconfessing Christ before the tribunal, O all-blessed and victorious George.\nO most glorious martyr, entreat Christ God, that He grant us great mercy.",
+      "tone": 3,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Of the divine Faith",
+      "glory": {
+        "text": "Zealously cultivating the seed of the divine commandments,\nthou didst piously distribute all thy wealth to the poor,\nreceiving in its stead the glory of Christ, O most glorious one.\nWherefore, full of hope, thou didst go forth to the struggle and to mighty pangs, O martyr George,\nand earnest to partake of dispassionate suffering and the resurrection:\nSharing in the kingdom of God, pray thou now on our behalf.",
+        "tone": 4,
+        "melody": "Joseph marveled"
+      },
+      "bothNow": {
+        "text": "The Word of the Father, Christ our God, Who was incarnate of thee,\nwe have come to know, O Virgin Theotokos,\nwho alone art pure, who alone art blessed.//\nWherefore, we unceasingly hymn and magnify thee.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "The righteous man shall flourish like a palm-tree,\nand like a cedar in Lebanon shall he be multiplied.",
+      "verse": "They that are planted in the house of the Lord, in the courts of our God they shall blossom forth.",
+      "tone": 4,
+      "_psalmRef": "Ps. 91:13 / 91:14"
+    },
+
+    "gospel": {
+      "reading": "Luke 12:2-12",
+      "number": 63,
+      "_note": "Fear not them that kill the body; confessing Christ before men."
+    },
+
+    "postGospelSticheron": {
+      "text": "Today the whole world is enlightened by the rays of the passion-bearer.\nThe Church of Christ, adorned with flowers, crieth out to thee, O George:\nO favorite of Christ and fervent helper, cease thou never to pray for thy servants.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 4,
+      "_authors": { "first": "Theophanes (Canon I, Tone II)", "second": "Cosmas (Canon II, Tone IV)" },
+      "_canonNote": "Two great-martyr canons. Sergius PDF also includes a Pentecostarion canon (omitted here per pattern — handled by assembler's Pentecostarion overlay).",
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord, for gloriously hath He been glorified.",
+        "irmos2": "The people of Israel passed dry-shod across the watery deep of the Red Sea\nand beholding the riders and captains of the enemy swallowed by the waters,\nthey cried out for joy: 'Let us chant unto our God, for He hath been glorified.'",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Standing, most radiant, before the precious throne of Him Who hath dominion over all,\nby thy supplications and intercessions preserve those who call upon thee with fervent faith and love,\nO martyr of Christ, crown-bearer George." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast a noble field of Christ, O George, cultivated by the acts of thy martyrdom,\nand the Judge of the contest hath laid thee up in the treasuries of heaven as most glorious riches,\nin that thou didst contend most excellently." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Called to struggles, O George, thou didst strive steadfastly and with endurance, O most blessed George,\nand having cast down the bold array of the tyrants,\nthou hast become an advocate for all who call upon thee." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast now received the blessed life which is hidden in Christ,\nfor which thou didst contend, even to the shedding of thy blood, O George.\nPray thou, that those who hymn thee be saved from every evil circumstances, O passion-bearer." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou wast a noetic heaven, O Mother of God,\ncontaining within thy womb the heavenly Word by Whom all things — heaven and earth,\nand those things that are above them — came into being.\nWherefore, pray thou with boldness, that He save those who hymn thee." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast finished the course of sacred sufferings, and, arriving in the heaven,\nhast been shown to be an incorrupt crown-bearer, O George,\nrevealing thyself to be a right flourishing traveler;\nand thou joinest chorus with the angels, chanting: Let us sing unto our God, for He hath been glorified!" },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "While thou wast still in pain, thou wast shown to the heavenly choirs of the incorporeal beings\nto pour forth a torrent of blessings, O George,\nand didst amaze the ranks of mortals with thy divine sufferings.\nAnd dancing with them, thou criest out: Let us sing unto our God, for He hath been glorified!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The staff of Aaron which budded forth prefigured thee, the most pure one from the root of Jesse,\nwho for the world produced a Flower: God incarnate.\nCease thou never to entreat Him on behalf of us who flee to thee, O Ever-virgin." }
+        ],
+        "katavasia": "The Irmoi of the canon of Pascha."
+      },
+
+      "ode3": {
+        "irmos": "The desert of the barren Church of the nations blossomed like a lily at Thy coming, O Lord,\ntherein hath my heart been established.",
+        "irmos2": "Likened to a barren woman the Church from among the nations hath given birth,\nand the assembly abundant in children, hath grown weak.\nLet us cry out to our wondrous God: Holy art Thou, O Lord!",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Resplendent in the crown of suffering, O glorious and blessed one,\nentreat God our Redeemer, that He deliver from all necessity those who piously call upon thee." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Illumined with rich effulgence, O most wise one,\nfrom us who praise thee with faith drive far away dark grief and the gloom of the passions." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Made steadfast by hope and love, and fortified by faith, O George,\nstrengthened by the power of Christ thou didst cast down the delusion of the idols." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, thou gavest birth in the flesh to the Incorporeal One\nWho hath enlightened the ends of the earth,\nand Who before all things is co-beginningless with the Father.\nWherefore, we the faithful honor thee, the Theotokos." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst quietly distribute thy wealth to the poor, O George,\nand, having anointed thyself with the oil of love as an athlete,\nthou didst with body and soul vanquish the tyrant." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Made steadfast by grace, and consumed with the fire of zeal,\nthou wast not visible to those who interrogated thee, nor wast thou found by those who sought thee, O George,\nbeing angered for Christ's sake at the delusion of the idols." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: As thou bearest in thine arms and feedest at thy breast Him Who feedeth every creature,\nO Theotokos Mary, worshiping Him we proclaim:\nPray thou to Him, O pure one, on behalf of us all!" }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "Manfully contending in every manner of piety, O martyr, casting down the delusion of impiety\nthou didst trample the arrogance of the enemy underfoot;\nand ever burning with divine desire, thou didst quench the ungodly savagery of the tyrants.\nWherefore, thou hast fittingly received a crown as the reward for thy torments,\nand grantest healings unto those who have recourse to thee with faith.\nO passion-bearer George, entreat Christ God,\nthat He grant forgiveness of sins unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "Having distributed thine earthly riches to the poor on earth, O wise martyr,\nthrough thy labors thou hast inherited heavenly riches;\nfor, armed with the precious Cross as with a breast-plate,\nthou didst thereby put the arrogance of the tyrants to shame.\nWherefore, by thy supplications thou grantest divine gifts and the benefactions of healings unto those who petition thee.\nO passion-bearer George, entreat Christ God,\nthat He grant forgiveness of transgressions unto those who celebrate thy holy memory with love.",
+          "tone": 8
+        }
+      },
+
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee: Glory to Thy power, O Lord!",
+        "irmos2": "I have heard, O Christ, truly most glorious report of Thee,\nhow being God immortal, Thou didst assume the likeness of a mortal man,\nyet remained what Thou wast before.\nWherefore, I glorify Thy power.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "O most blessed George, we hymn thy struggles, whereby thou didst break asunder the worship of the idols;\nand thou didst set at naught all the delusion of the demons, O most glorious one." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Still thou the turbulence of perils and misfortunes, O right wondrous one,\nand dispel from those who hymn thee as a warrior of Christ every evil assault of the demons." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou hast shone forth like a radiant star, O George, driving away dark delusion\nwith valor of spirit and steadfastness of faith, and saving those who hymn thee." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, thou gavest birth to Him Who is in essence salvation,\nsaving mankind in the richness of His goodness and his essential kindness,\nand restoring His image which had become corrupt." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The utterance of the words of thy wisdom, which transcended the human mind,\nstruck the tyrants with awe before their tribunal, O George,\nand Christ God was acknowledged by those who knew Him not." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "With the word of the faith of Christ, O allwise George, thou didst demolish the philosophers' weaving of vile myths,\nand thou didst mock their gods as passion-ridden creatures, O champion of the Trinity." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The tyrants who heard the report of thy words were put to shame,\nfor, mocking their gods, thou didst show them to be objects of derision,\npreaching Christ God, Who was crucified in the flesh and hath abolished soul-destroying delusion." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: We glorify thee, O most pure one, the only Theotokos, the true Ever-virgin,\nwhom the bush which was mingled with fire without being consumed\nprefigured for Moses the God-beholder." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance, for I know no other God than Thee.",
+        "irmos2": "Do Thou O Lord send down upon us Thine enlightenment,\nand free us from the gloom of transgression, O Good One,\ngranting us Thy peace.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As thou hast the boldness of a martyr before the Master, earnestly beseech salvation for those who hymn thee,\ndoing away with their spiritual ailments by thine entreaties,\nO passion-bearing martyr, most blessed George." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As thou joinest chorus with the choirs of angels and martyrs, O crown-bearer,\nand sharest in immortal and blessed glory,\nrescue those who have recourse to thy protection from threefold waves and tempest." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Deliver us from all necessity, O Christ, in that Thou art merciful,\ndispelling the multifarious turmoil of sin and misfortune,\nand accepting the supplications of George Thy favorite." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou didst repay the debt of our first mother Eve, O Mother of God;\nfor thou didst wrap in flesh the Savior of the world Who was born of thee.\nWherefore, we all call thee blessed, O joyous and all-immaculate Virgin." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Wrestling like an athlete and manfully contending against the causes of divers deceptions, O George,\nnaked to the world thou didst strip away the might of the cruel prince of this world." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Protected by the weapon of the Cross, O George, with the hope of faith and mighty love\nthou didst blunt the sharp edges of all the weaponry of the cruel adversary." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The womb of the virgin put to shame the understanding of the tyrants;\nfor a child received the deadly sting of an adder in his hand,\nbut George, casting down the prideful one who fell away from God,\nhath humbled him beneath the feet of the faithful." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "Prefiguring Thy three-day burial Prophet Jonah praying in the belly of the sea-monster cried aloud:\nDeliver me from corruption O Jesus Thou King of hosts.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Transcending nature, all telling and understanding are the brave deeds of thy valor,\nwhich are unceasingly hymned, O most blessed martyr George." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "In that thou art a converser with the army of heaven, and beholdest the revelation of God insofar as thou canst attain thereto, O blessed one,\nsave those who honor thee with faith." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Inclining toward God in every way, and receiving the effulgence of miracles, O most blessed George,\nthou dost distribute gifts to those in need." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: I now flee to thee, O most pure one.\nSave and preserve me by the supplications;\nfor thou canst do all things whatsoever thou desirest, in that thou art the Mother of the Almighty." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst cry out to the Creator with boldness, O George:\n\"Give not thy servant over to the iniquitous, but grant me the strength to destroy their arrogance!\"" },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Scorning the vessels of the torturers, O George, of thine own will thou didst manfully hasten to the contest,\nand hast been crowned by Christ God with the honors of victory." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The deceitful tyrants, their threats turned to wonder during the testing of thy virtue, O George,\nmarveled at Christ, the Bestower of life, Whom thou didst preach." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Of old the serpent deceived me and made me subject to death through my first mother Eve;\nbut now, O pure one, He Who created me hath through thee called me back from corruption." }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Having been cultivated by God,\nthou didst show thyself to be a most honorable husbandman of piety,\ngathering to thyself the sheaves of the virtues;\nfor, having sown in tears, thou reapest in gladness,\nand having suffered in the shedding of thy blood, thou hast received Christ.\nAnd by thy supplications, O holy one,//\nthou grantest forgiveness of sins unto all.",
+        "tone": 4,
+        "label": "Kontakion of the great martyr"
+      },
+      "ikos": {
+        "text": "Desiring Christ the King, Who laid down His life for the life of the world,\nthe warrior hastened to die for Him, and, possessing great and divine zeal in his heart, he brought himself to Him.\nWith faith, then, let us all hymn the divine George as a fervent intercessor,\na glorious servant of Christ, who manifestly emulated his Master\nand respondeth to everyone who approacheth him;\nfor he doth ever hasten to entreat the Savior, that He grant forgiveness of sins unto all."
+      },
+
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
+        "irmos2": "Of old the Children of Abraham in Babylon trampled down the flame of the furnace,\ncrying aloud with hymns: O God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Emulating thy Master, O glorious martyr,\nthou didst willingly hasten to the struggle,\nand having received the victory hast become the guardian of the Church of Christ.\nDo thou ever preserve it by thine intercession." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "As an invincible martyr, as an athlete, as an unvanquished champion of the Faith, O all-wise George,\nbe thou now an unshakable pillar for those who praise thee,\nprotecting them by thy supplications." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Having wisely cultivated the divine seed, thou hast multiplied it,\nwatering it with the torrents of thy blood, with the urgency of thy pangs and divers wounds,\nwhereby thou didst put down the savagery of the tyrants." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou didst remain a virgin even after giving birth,\nfor thou gavest birth to God Who feedeth all creatures in His ineffable mercy,\nand Who in His great loving-kindness became a man, O pure one.\nHim do thou entreat, that our souls be saved." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Seeing the delusion of idolatry prevailing, O George,\nburning with the zeal of piety thou didst give thyself over to struggles." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou wast shown to preach the persecuted Faith, O George,\nand, denouncing the darkness of delusion,\nthou didst say: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Thou didst cut off falsehood at the root, didst cultivate great faith by piety, O George,\nand didst rejoice, saying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou art more exalted than all creatures, O Theotokos,\nin that thou gavest birth to the Creator and Lord.\nWherefore, I cry to thee: O blessed one, the Lord of hosts is with thee!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
+        "irmos2": "Rejoicing in their condemnation by the tyrant for not worshiping all his abominable gods,\nbut only the living God, the children braved the fire;\nand, bedewed by the Angel, they chanted the hymn:\nHymn the Lord, all ye works, and supremely exalt Him throughout all ages!",
+        "troparia": [
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "By thy supplications, O crown-bearer George, bring a halt to the torrent of cruel sufferings and misfortunes,\ntumultuous evil circumstances, attacks of pain, the wiles of the demons and the assaults of the ungodly." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Wholly illumined with purity by the light of the Trinity, O blessed dweller in heaven,\nas an invincible martyr, a champion of piety and a divinely crowned victor,\nby thy supplications save those who honor thee." },
+          { "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Adorned in every way with the noetic crown and diadem of the kingdom,\ndignified with a scepter and arrayed in a royal robe empurpled in thy blood, O blessed one,\nthou reignest with the King of hosts." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Mother, thou gavest birth to Him Who was begotten timelessly of the Father,\nWho shone forth before time began and hath created all things, visible and invisible.\nWherefore, we and all the terrestrial nations glorify thee, the Theotokos." },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Strengthened by the Spirit, thou didst spurn the instruments of pain,\nfor thou wouldst not offer praise to deaf idols, but only to Christ God,\nhaving acquired roving faith in Him, O George;\nand thou didst say: Hymn the Lord, all ye works, and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Seeking after no transitory beauty, rejoicing in the hope of divine life, O George,\nthou didst undergo divers afflictions;\nand paying no heed to thy terrible dismemberment,\nwith steadfastness of soul thou didst say: Hymn the Lord, all ye works, and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!", "_source": "stSergius-menaion",
+            "text": "Seeing thy body cut apart by instruments of bronze and dismembered limb by limb with sharp knives,\nalive in spirit thou didst say:\n\"These present tortures are for the glory which is to come, O ye unworthy!\nHymn the Lord, all ye works, and supremely exalt Him throughout all ages!\"" },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The Lord of all, Who formed thee from the rib of Adam, became incarnate of thy virginity;\nand, hymning Him, we cry: All ye works, bless and hymn the Lord, and supremely exalt Him throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "irmos2": "O pure Theotokos, thou art our boast,\nthou who wast born of earthborn mortals yet hast given birth unto the Creator:\nwherefore we magnify thee as the Sovereign Lady of all creation.",
+        "troparia": [
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Unceasingly entreat the Lord for us who hymn thee, O blessed one,\nas a martyr of Christ who vanquished the tyrant, as an expeller of evils spirits,\na tireless guardian, a helper unashamed." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The Master of all hath richly rewarded thee for thy sufferings, O thrice-blessed one;\nand, standing before him with the boldness of a martyr, preserve those who call upon thee with gladness." },
+          { "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "The earth covered thee, but heaven received thee and manifestly opened unto thee the gates of paradise, O athlete;\nand joyously dancing and leaping up therein, by thy supplications preserve those who hymn thee with faith." },
+          { "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: The tabernacle of the witness, wherein were the tablets of the law,\nthe jar of manna and the golden ark, prefigured thee, O most pure one;\nfor like it, O Theotokos, thou didst contain the beginningless Word, incarnate, within thy womb." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "Priests hymn, kings praise and the people utter laudation to thy sufferings, O martyr George;\nwherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "refrain": "Holy Great-Martyr George, pray to God for us!", "_source": "stSergius-menaion",
+            "text": "All the hosts of heaven hymned thy struggles;\nfor, sacrificing thyself, thou wast well pleasing to God, O martyr George.\nWherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "refrain": "Most holy Theotokos, save us!", "_source": "stSergius-menaion",
+            "text": "Theotokion: Rejoice, O pure Theotokos our boast,\nwho sprang forth from mortal parents and gavest birth to the Creator!\nThee do we magnify as her who hath dominion over creation." }
+        ]
+      }
+    },
+
+    "exapostilaria": [
+      {
+        "text": "Springtime hath shone forth upon us, the radiant and divine resurrection of the Master,\nsending us up from earth to the heavenly fold;\nand therewith doth the splendid memorial of the all-glorious martyr George shine forth,\nwhich we radiantly celebrate, that we may be counted worthy to receive divine grace from Christ the Savior.",
+        "label": "Exaposteilarion of the great martyr",
+        "melody": "As the disciples watched",
+        "_source": "stSergius-menaion"
+      },
+      {
+        "text": "Like the brilliant sun thou dost illumine all creation with rays of miracles, O passion-bearer George.\nWherefore, celebrating thy memory, we hymn Him Who arose from the tomb.",
+        "label": "Another Exaposteilarion (at Glory)",
+        "melody": "O Light immutable",
+        "_source": "stSergius-menaion"
+      }
+    ],
+
+    "lauds": {
+      "tone": 2,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "text": "Come, all ye who have celebrated\nthe most festive, radiant and glorious resurrection,\nand let us again celebrate with splendor the festival of the martyr George,\nand let us crown him with flowers of the spring as one who is invincible,\nthat through his entreaties we may receive deliverance from sorrows//\nand transgressions.",
+          "tone": 2,
+          "melody": "When from the Tree"
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "As a living and animate wholeburnt offering\nand a right acceptable and most pure sacrifice\ndidst thou bring thyself wholly to Him Who gave thee thy whole life, O all-blessed one.\nWherefore, thou hast become a most fervent intercessor,\nrescuing from tempest all who hymn thee with faith,//\nand call upon thee, O martyr George.",
+          "tone": 2
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Having diligently cultivated\nthe seed of the Word sown in thy pure heart,\nthou didst multiply it by the pangs of thy suffering,\nand, most wisely laid it up in the granaries of heaven, thou hast found incorrupt delight.\nAnd enjoying it now, O blessed one, by thy supplications to God//\nsave those who hymn thee with faith.",
+          "tone": 2
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O martyred spiritual athlete of Christ,\nby thine entreaties save those who find themselves amid violent dangers,\ndelivering them from every evil circumstance,\nand dispelling from them the cruel grief which destroyeth souls;\nand ask thou grace and mercy for us,\nthat, saved by thy supplications, rejoicing, we may all honor//\nThy precious struggles, O George.",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "Let the eye-lids of men assent to righteous things, said Solomon,\nfor he who looketh to righteous things shall find mercy from Christ God, he foretold.\nAnd, readily heeding these things, O greatly patient George,\nthou didst follow the teachings of the Master, and, giving thyself over to the iniquitous,\nthou didst endure and didst revile the deceitful demands as abominable;\nfor when thou didst surrender thy body out of love for the Creator,\nall thy members were cut off, and Belial, being utterly put to shame, was wounded,\nbeholding thee crowned with perfection.\nWherefore, O athlete of Christ who dwellest in the courts of thy Lord with the hosts on high,//\npray thou, that our souls be saved.",
+        "tone": 2,
+        "_source": "stSergius-menaion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "As a liberator of captives,\na helper of the poor,\nand a physician of the infirm, O champion of kings,\nvictorious great martyr George,//\nentreat Christ God, that our souls be saved.",
+      "tone": 4
+    }
+  }
+}

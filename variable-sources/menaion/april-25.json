@@ -1,0 +1,191 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle and Evangelist Mark",
+    "feastKey": "stMarkEvangelist",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 04-25.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/04-25.pdf",
+    "_note": "Single canon of the evangelist by Theophanes in Tone I. Falls in the Pentecostarion period (Pascha + 0-39 days, varies by year); Sergius PDF specifies a Pentecostarion canon (6 troparia) interleaved with the Mark canon (8 troparia) plus Pentecostarion sessional hymns and exapostilarion at the Both-now slots — all omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "O holy apostle and evangelist Mark,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3,
+    "label": "Troparion of St Mark the Evangelist"
+  },
+  "kontakion": {
+    "text": "Receiving from on high the grace of the Spirit,\nthou didst destroy the snares of the orators, O apostle,\nand, hunting all the nations, thou didst lead them to thy Master, O all-glorious Mark,//\npreaching the divine Gospel.",
+    "tone": 2,
+    "label": "Kontakion of St Mark",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy apostle and evangelist Mark,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy evangelist"
+    },
+    "sedalion": [
+      {
+        "text": "Having ascended to the summit of virtue, O divine Mark,\nas a godly preacher thou hast thundered down upon us the great mysteries of the dogmas of salvation.\nWherefore in faith we entreat thee, O most blessed one;//\nfree us from every sorrow, offense and misfortune.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Glory/Both-now: Pentecostarion sessional (not captured)."
+      },
+      {
+        "text": "As the Sun of righteousness Christ emitted thee to enlighten the whole earth with thy wondrous gospel,\nO glorious apostle and evangelist Mark,\nby thy godly supplications and thy divine and never-waning light,//\nillumine and enlighten all who celebrate thy holy memory with faith.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Having ascended",
+        "_note": "Glory/Both-now: Pentecostarion sessional."
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ and evangelist Mark,\nand we honor the pangs and labors//\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Filled with inspiration from on high and illumined with divine splendor, O apostle,\nthou wast deemed worthy to recount the miracles, doctrines and dogmas of Christ in thy glorious gospel,\nbeing an eye-witness of grace, and a beholder of the mysteries of God.\nEntreat Christ God, that He grant remission of sins//\nunto those who with love honor thy sacred memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Glory/Both-now: Pentecostarion sessional."
+    },
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4
+    },
+    "gospel": { "reading": "Luke 10:1-15", "number": 50 },
+    "postGospelSticheron": {
+      "text": "Thou didst follow after Christ, O godly Mark, and despising the world,\nhid His teachings in thy heart, and wast thereby revealed to be His apostle and evangelist.\nWherefore, going unto the darkened souls in Egypt,\nthou didst enlighten them with the commandments of the Savior,//\nthat they might believe in the consubstantial Trinity.",
+      "tone": 6,
+      "label": "Idiomelon of St Mark"
+    },
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the evangelist (Tone I). Pentecostarion canon (6 troparia) interleaved at the actual service is omitted.",
+      "ode1": {
+        "irmos": "Thy victorious right arm, in a manner befitting God, hath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,//\nfashioning anew a path for the Israelites through the deep.",
+        "troparia": [
+          { "text": "O blessed one, who like a skillful fisherman hast drawn men forth from the deep of transgressions with thy net, illumine my soul with radiant splendors, and grant that I may praise thy memory as is meet, O divinely revealed evangelist Mark." },
+          { "text": "The pre-eternal and supremely perfect God, Who with the Father is equally beginningless, appeared on earth incarnate as a man, and showed thee forth, O blessed one, as His fellow-laborer in grace and His most wise servant, who art strengthened by His power." },
+          { "text": "Thou wast a disciple of the most wise Peter, and was greatly enriched thereby, O all-glorious Mark, showing thyself to be an initiate of the divine mysteries, and one who followed in his glorious footsteps." },
+          { "text": "Theotokion: The Angel of Great Counsel, having assumed flesh, manifested Himself to the world through the Virgin Mother, and showed thee forth, O father Mark, as a disciple adorned with virtues, a divine herald proclaiming His words." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature and in compassion hast assumed its form;\ndo Thou gird me with power from on high, that I may cry unto Thee://\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "troparia": [
+          { "text": "Thy friend Mark, O Christ, proclaiming Thee, the hypostatic Wisdom, hath thereby enlightened the whole world O Lord, with thine abundantly splendid rays, O Lover of mankind." },
+          { "text": "O Christ, Who lovest mankind, Thine eyewitness Mark, having received an ever-flowing stream of wisdom resounding like a river, hath watered the ends of the earth with the light of divine knowledge, truly revealing Thy prophecy." },
+          { "text": "Manifestly following Peter, O wise one, as his disciple thou didst copy the Gospel, receiving from him the light of theology and clearly proclaiming the coming of God in the flesh, O apostle." },
+          { "text": "Theotokion: Thou didst cause the temples of the demons to quake, O Thou Who wast aforetime borne to Egypt in the Virgin's arms, and thither Thou didst send Mark, that all might know of Thy divine mystery and that Thou hadst become man." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes as the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel would come forth from thee,//\nfor our salvation and restoration.",
+        "troparia": [
+          { "text": "Thy sound hath gone forth into all the earth, O most wise one, and the power of thy words manifestly extendeth to the ends of the world, like David splendidly preaching our salvation and renewal." },
+          { "text": "Like lightning Thy most wise apostle hath appeared to the world, O Savior, announcing the joy of truth, illumined with the divine radiance of effulgence, unto our salvation and renewal." },
+          { "text": "Thy feet were adorned prophetically, for ineffably hast thou announced unto us the Peace that hath manifestly revealed Himself in the flesh to the ends of the world, unto our salvation and renewal." },
+          { "text": "Theotokion: The Word sat upon the cloud of the Virgin and, in that He is merciful, He made foolish the counsels of Egypt and hath destroyed thoughts adverse to God through the teachings of the divine Mark, unto our salvation and renewal." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou hast shone upon us with the radiance of Thy coming O Christ,\nand illumined the ends of the world with Thy Cross,//\nenlighten with the light of thine understanding the hearts of those who with right worship hymn Thee.",
+        "troparia": [
+          { "text": "Thou didst let fall the sweetness of piety, the shower of thy divine words, casting light over all in bright beams, clearly revealed by the grace of the noetic Sun, O all-blessed and God-pleasing Mark." },
+          { "text": "From the house of the Lord thou didst pour forth a wellspring watering barren hearts abundantly with spiritual streams, teaching them to bring forth fruit instead of barrenness, O apostle." },
+          { "text": "Thou wast the son of the great Peter, and illumined by his teaching thou didst enlighten the souls who approached thee fervently, O blessed apostle, seer of God." },
+          { "text": "Theotokion: O Christ Who shone forth from the Father before all creation, and wast born of the Virgin as a man, Thou wast sent to the Egyptians. For them, O Wise One, Thou didst anoint Mark who hath taught them the mysteries of divine knowledge." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The deepest abyss hath surrounded us, and there is none to deliver us,\nyea we have been counted as sheep for the slaughter;//\nsave Thy people O our God, for Thou art the strength and restoration of the weak.",
+        "troparia": [
+          { "text": "Thou didst set at naught the scorn of the wicked, O Lord, and didst put down their prideful arrogance, showing forth Thine apostle as a conqueror by Thy might, for Thou art the strength and restoration of the afflicted." },
+          { "text": "By thy words, O wise Mark, thou didst preach the Fashioner of creation, the Crown of hope wherewith we are now crowned, and which, to our glory, hath been wrought of the nature of the flesh." },
+          { "text": "O glorious one, the pre-eminent Peter clearly instructed thee to mystically record the precious Gospel, showing thee to be a servant of divine grace, for thou didst shed the light of divine knowledge upon us." },
+          { "text": "Theotokion: Through the Virgin Mother of God didst Thou enlighten Egypt which aforetime was in darkness, entering it as an infant, O Lord; and Thou didst reprove its vanity through the teachings of the divinely eloquent Mark, O Thou Who lovest mankind." }
+        ]
+      },
+      "kontakion": {
+        "text": "Receiving from on high the grace of the Spirit,\nthou didst destroy the snares of the orators, O apostle,\nand, hunting all the nations, thou didst lead them to thy Master, O all-glorious Mark,//\npreaching the divine Gospel.",
+        "tone": 2,
+        "label": "Kontakion of the evangelist"
+      },
+      "ikos": {
+        "text": "A disciple of the pre-eminent apostle, with him thou didst preach Christ the Son of God,\nrendering steadfast upon the rock of truth those who were shaken by falsehood.\nDo thou also make me steadfast thereon, and set aright my steps,\nthat, delivered from the snares of the enemy, I may glorify thee without faltering,//\nfor thou hast enlightened all, O wise Mark, preaching the divine Gospel."
+      },
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos, to be a noetic furnace;\nfor as He, the supremely exalted One, saved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,//\nO Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          { "text": "Illumined with divine rays, thou dost mystically, by reflection, emit radiant beams, O most blessed Mark, for thou didst preach the Word incarnate, the Timeless One, the praised and supremely glorious God of our fathers." },
+          { "text": "O Maker of all, having armed thy divinely eloquent disciple with divinely effective power, Thou didst make of him a wonderworker, for he hath dispelled affliction and healed wounds, preaching Thee, the supremely praised and supremely glorious God." },
+          { "text": "Having as teacher the divine Peter, the first in rank among the choir of the apostles, thou didst show thyself to be like unto him, for thou didst bring order to all the fullness of the Church of the supremely praised and supremely glorious God of our fathers." },
+          { "text": "Theotokion: Following the saying of Isaiah, O most glorious one, thou didst thyself set up a pillar in Egypt: the scripture of thy Gospel, for Him Who, without seed, was born of the Mother of God, proclaiming our supremely praised and supremely glorious God." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In the furnace as in a fiery smelter the Israelite children shone more brightly than gold\nwith the beauty of godliness, as they exclaimed: Bless the Lord all ye works of the Lord,//\nhymn and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Christ, the Word begotten of the Father before all ages, Who clothed Himself in human nature, didst thou preach, O glorious one; and thou didst cry aloud: O all ye works of the Lord, hymn and supremely exalt the Lord throughout all ages!" },
+          { "text": "O glorious one, thou didst glorify Christ Who gaveth Himself as deliverance from our offense and passion and raised up the fallen; and thou didst cry: O all ye works of the Lord, hymn and supremely exalt the Lord throughout all ages!" },
+          { "text": "Submitting to the most wise teaching of Peter, O Mark, thou didst most wisely commit to writing the precious Gospel for the faithful who cry aloud: O all ye works of the Lord, hymn and supremely exalt the Lord throughout all ages!" },
+          { "text": "Theotokion: Bearing Emmanuel as an infant, the Virgin stood before the Egyptians, to whom Mark is set like a radiant star, crying aloud: O all ye works of the Lord, hymn and supremely exalt the Lord throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed, prefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "troparia": [
+          { "text": "Having reached the ineffable wellspring of the three-sunned radiance O divinely revealed one, and most manifestly delighting in the divinity therein, which is beyond the mind of mortals, thou dost now unceasingly rejoice with the angels O most blessed one." },
+          { "text": "As one who was familiar with the teachings of Peter, and his godly preaching, thou dwellest now in the heavenly mansions with him, O most blessed and godly spoken one, do thou pray for us O apostle Mark." },
+          { "text": "The Light, thrice-radiantly joined and strangely unified, didst thou piously preach, a right worthy one, illumined by a ray of grace. Wherefore, we entreat thee: Ever offer supplication in our behalf." },
+          { "text": "Theotokion: The honored apostle Mark was given as a holy hierarch to the Egyptians, to whom the Lord of glory had also come, incarnate as a babe through the pure Virgin Mother of God; and Him do we magnify as is meet." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Having been taught heavenly wisdom, thou didst destroy with thy tongue the nets of the orators\nand the deceptions of the astrologers, O most glorious apostle Mark;\nand as a disciple of Peter//\nthou didst preach the words of the Gospel to the world.",
+      "tone": 3,
+      "label": "Exapostilarion of the evangelist",
+      "melody": "Hearken, ye women",
+      "repeat": 2
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "O all-blessed Mark, thou didst drink from a sweet stream, the pure river of peace\nwhich doth flow most splendidly from Eden,\nflooding the face of the earth with the waters of thy preaching of the Gospel//\nand pouring forth divinely inspired teachings upon the firmament of the Church.",
+          "tone": 1,
+          "melody": "O all-praised martyrs"
+        },
+        {
+          "text": "O Mark most glorious, in times past Moses drowned the Egyptians in the sea,\nbut thou, O most wise one, didst lead them forth from the sea of deception\nby the power of Him Who had come to them in the flesh//\nand utterly destroyed the works of their hands with His lofty arm.",
+          "tone": 1
+        },
+        {
+          "text": "O Mark most sacred, abiding in the light of the Spirit, thou wast wholly spiritual;\nand now, O spiritually rich apostle, deified by adoption and through abundant visions\nand exceedingly blessed radiance,//\nthou hast attained the summit of thy mystery, the longed-for goal.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "O fisherman most wise, holy disciple, husbandman of the Savior and recounter of His sufferings,\nthou who didst traverse the world with faith, and, having gathered the deluded gentiles, didst lead them to God:\nas a sweet-smelling fragrance of incense hast thou been wafted up to the heavens.\nWherefore, standing before the Judge, pray that we be delivered from our transgressions//\nand from torment on the day of judgment.",
+        "tone": 6
+      },
+      "_note": "Both-now Theotokion comes from the Pentecostarion (not captured here)."
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy apostle and evangelist Mark,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the evangelist"
+    }
+  }
+}

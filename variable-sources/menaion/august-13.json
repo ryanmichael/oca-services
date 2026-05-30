@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "feast": "St Tikhon, Bishop of Voronezh and Zadonsk, Wonderworker",
+    "feastKey": "stTikhonZadonsk",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 08-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-13.pdf",
+    "_note": "Single canon of the holy hierarch in Tone VIII (acrostic 'I glorify Tikhon, the holy hierarch and wonderworker'). Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9. Aug 13 falls in the afterfeast of the Transfiguration (Aug 6); the Sergius Both-now Lauds theotokion is the Transfiguration Gospel paraphrase by Byzantius."
+  },
+  "troparion": {
+    "text": "From thy youth thou didst love Christ, O blessed one;\nand thou wast an example unto all by word, life, love, spirit, faith, purity and humility.\nWherefore, thou hast made thine abode in the heavenly mansions,\nwhere, standing before the throne of the Most holy Trinity,//\ndo thou pray that our souls be saved, O holy hierarch Tikhon.",
+    "tone": 8,
+    "label": "Troparion of St Tikhon"
+  },
+  "kontakion": {
+    "text": "Successor to the apostles, adornment of holy hierarchs,\nteacher of the Orthodox Church:\nbeseech the Master of all to grant peace to the world//\nand great mercy to our souls!",
+    "tone": 8,
+    "label": "Kontakion of St Tikhon"
+  },
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "From thy youth thou didst love Christ, O blessed one;\nand thou wast an example unto all by word, life, love, spirit, faith, purity and humility.\nWherefore, thou hast made thine abode in the heavenly mansions,\nwhere, standing before the throne of the Most holy Trinity,//\ndo thou pray that our souls be saved, O holy hierarch Tikhon.",
+      "tone": 8,
+      "label": "Troparion of the holy hierarch"
+    },
+    "sedalion": [
+      {
+        "text": "A second Moses wast thou revealed to be;\nfor, having ascended the mount of the virtues, the dogmas of pure theology didst thou receive like tablets inscribed by the hand of God,\nnot struck with awe by fearsome signs,//\nbut guiding the new Israel to the calm haven by the teachings of divine words.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "bothNow": {
+          "text": "The one God of all entered into the womb of her that kneweth not wedlock,\nthat He might unite the lowly with the exalted;\nand He appeared in fleshly guise and broke down the middle wall of enmity,//\nand granted life and divine deliverance.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Christ the Lord, the unapproachable Light of life, resting in thee, O holy hierarch,\nrevealed thee to the world as a most radiant flame;\nfor thou dost shed light by thy life, enlightening all with the rays of thy teachings, and shining forth in miracles.//\nWherefore, we radiantly celebrate thy memory, O Tikhon most blessed.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "bothNow": {
+          "text": "O divinely joyous Lady, adornment of hierarchs, confirmation of the righteous and boast of all the venerable://\nfrom misfortunes, tribulations and grievous transgression save us that hymn thee with faith.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Tikhon,\nand we honor thy holy memory,//\nfor thou dost entreat Christ God for us.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Through abstinence didst thou subject thy body to thy spirit, setting thy mind as master over the passions;\nand illumining thy soul with the travails of fasting, O holy hierarch,\nthou didst offer a pure sacrifice unto Christ, of Whom thou wast beloved,//\nfor thou didst love Him and wast truly the abode of the divine Trinity.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "bothNow": {
+        "text": "With spiritual love I sing to thee, O Lady, thou ray of the most radiant Sun,\nportal of salvation, gate of heaven, noetic ladder for all Christians:\naccept the entreaty of those who bless thee, the hope of our souls,//\nand grant us salvation.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 10:9-16", "number": 36 },
+    "postGospelSticheron": {
+      "text": "Thou didst take the Cross upon thy shoulders and crucify thyself to the world,\nfollowing in the steps of Christ the Savior;\nshaking off the love of life and every attachment to the passions, and shining in thy blessed life,\nthou didst receive a heavenly inheritance.//\nRemember thy flock which doth ever honor thee, O holy hierarch, father Tikhon.",
+      "tone": 2,
+      "label": "Idiomelon of St Tikhon"
+    },
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy hierarch (Tone VIII, acrostic 'I glorify Tikhon, the holy hierarch and wonderworker'). Theotokos Paraklisis canon omitted per pattern.",
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,//\nthe Israelites cried aloud: Unto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "O Tikhon, holy hierarch of Christ, do thou thyself grant me understanding and speech, that I may worthily hymn the glory whereby Christ the Lord hath glorified thee." },
+          { "text": "A ray of divine light hast thou shone upon us. Come, ye children of the light, that we may be illumined thereby, that, magnifying the holy hierarch with hymns, we may become inflamed in spirit." },
+          { "text": "Let us glorify the blessed Tikhon, the successor to the apostles, enthroned with the holy hierarchs, dweller with the venerable, by whose intercession we obtain salvation." },
+          { "text": "Theotokion: The Master of all, having ineffably taken flesh from thee, O Mary, Birthgiver of God, became a perfect man; and when thou didst give birth, He kept thee as pure as thou hadst been before giving birth. Him do thou entreat, that He save our souls from misfortune." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,//\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          { "text": "Wounded with the love of Christ, O blessed one, from thy youth didst thou follow Him with unwavering desire, disdaining every carnal pleasure." },
+          { "text": "The passions of youth which vex the flesh didst thou cut down with the sword of philosophy, offering thyself as a sacrifice to Christ the Master." },
+          { "text": "O Tikhon, with greater love didst thou cleave unto wisdom, made steadfast in the fear of God, for it is the beginning of wisdom." },
+          { "text": "Theotokion: Let us hymn the divine temple of God! Let us bless the holy Virgin, having been deified and delivered from misfortunes by her!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.//\nTherefore with the Prophet Habbakuk I cry unto Thee, 'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "Like a lamb wast thou tended by Christ; like a shepherd didst thou tend thy flock, leading them to the pasture of thy life-bearing teachings." },
+          { "text": "An initiate of the mysteries of the doctrine of Christ, thou didst illumine the people with the knowledge of Him, showing forth His truth by word and deed." },
+          { "text": "A true and faithful guard wast thou over the house of God, watching over it in deed, giving an example by thy life, and by word, for thou didst diligently instruct, and by thought, for thou didst take thought for its wellbeing." },
+          { "text": "Theotokion: Finding thee to be a haven and rampart, a refuge and hope, a protection and a fervent intercessor, the faithful have recourse to thee and earnestly cry out to thee, as the blessed Tikhon hath taught us: O most holy Theotokos, save us!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee,//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "O holy hierarch, Christ, Whom thou didst love, Whom thou didst desire, for Whose sake thou didst struggle, do thou now beseech on behalf of thy servants, that, being merciful, He may grant a peaceful life to all of us who honor thy memory." },
+          { "text": "Filled with faith and the love of Christ, thou didst show thyself to be as a river, abundantly watering all the land of Russia with the word of thy teachings, O blessed Tikhon." },
+          { "text": "Like a bee gathering sweet honey from quickly fading blossoms, O father, thou didst gather spiritual treasure from the corruptible world, and thereby thou dost satisfy us all." },
+          { "text": "Theotokion: Fill thou our hearts with gladness, O most pure and divine Maiden, who didst give birth to the Cause of joy, destroying all the grief of sin." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,//\nO God of my salvation.",
+        "troparia": [
+          { "text": "Being pure of heart, thou didst cleave unto the pure Christ; being holy, unto the Holy One; being loving, unto Him that loveth; being meek, unto the Meek One, crying unceasingly: It is good for me to cleave unto God!" },
+          { "text": "The comfort, pleasure, honor, wealth, glory and all the treasures of the world didst thou despise, taking wing to the heavenly Jerusalem, to the home of thy Father, wherein there are many mansions." },
+          { "text": "Insults, sorrows and abuse didst thou joyfully endure, mindful that there is no crown without a victory, no victory without a contest, no contest without battle, and no battle without a foe." },
+          { "text": "Theotokion: O Virgin Sovereign Lady, Mother of the Creator: thou art the joy of the heavenly hosts, the blessed helper of the human race. Pray thou that our souls be saved!" }
+        ]
+      },
+      "kontakion": {
+        "text": "Successor to the apostles, adornment of holy hierarchs,\nteacher of the Orthodox Church:\nbeseech the Master of all to grant peace to the world//\nand great mercy to our souls!",
+        "tone": 8,
+        "label": "Kontakion of the holy hierarch"
+      },
+      "ikos": {
+        "text": "Having adorned thy soul with virtue and enlightened thy mind with the love of wisdom,\nthou wast revealed to be a good shepherd of the flock of Christ,\nteaching it by word and writing, admonishing and instructing,\ngiving an example of what thou didst say by thy life.\nWherefore, by Christ, the Chief Shepherd, thou hast been adorned with a crown of glory in heaven,\nshining forth on earth in the incorruption of thy relics\nand pouring forth abundant streams of wonders upon those who call upon thee in faith, O divinely wise Tikhon.//\nPray to the Lord, that He grant our souls great mercy!"
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "With patience didst thou acquire thy soul, O blessed one, and traversed the narrow path, that alone leadeth to everlasting life, ever directing thy gaze toward the way of the Cross of Christ, the Judge of the contest, and setting an image thereof as a model for thy life." },
+          { "text": "Thy whole self didst thou surrender to the love of God: soul and body, heart and mind, memory and will, purpose, ambition, word, deed and thought didst thou consecrate to God in love." },
+          { "text": "O blessed Tikhon, thou didst show thyself to be a father of orphans, a defender of widows, the wealth of the poor, the consolation of the sick and admonition of the wealthy, a staff for the aged, the instructor of the young, and a model of virtue for monastics." },
+          { "text": "Theotokion: Rejoice, O Mary! Rejoice, thou who hast given birth to the Savior of the world! Be thou a haven for us who are tempest-tossed by the storm of life, a calm harbor amid the deep of sorrows, and a guide to the heavenly mansions." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "A Son of the Kingdom while yet on earth, thou didst ever yearn for the Son of God, crying out to Him: Be Thou my food and drink; be Thou the light of my soul; be Thou my relief amid sorrows; be Thou life everlasting according to the Resurrection, that I may supremely exalt Thee throughout the ages!" },
+          { "text": "Ever mindful of the fall of Adam, the redemption through the sufferings of Christ, the hour of death, the dread Judgment, the torment of sinners and the blessed state of the righteous, thou didst lament, setting before us an example of compunction and purifying thyself aforetime for eternal glory." },
+          { "text": "Having taken up labors in this life out of faith and piety, thou didst sweetly rest from thy labors and wast granted repose; for thou didst descend into the grave, maturing like wheat for the harvest of God at the time of the reaping." },
+          { "text": "Theotokion: With the hyssop of the life-creating Blood of the Lamb, Who was slain for the salvation of the world, and Who took flesh from thy most pure blood, do thou sprinkle and cleanse me, who am defiled, O Lady, that I may be made whiter than snow by thy maternal assistance." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens.//\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "A mediator and fervent intercessor for us before God wast thou revealed to be, O hierarch, making supplication to the Master through thy prayers. Ask thou forgiveness of transgressions, O father, for those who faithfully celebrate thy sacred memory and magnify thee with heartfelt love." },
+          { "text": "O thou who hast been illumined with the radiance of God the Light, enlighten us who are darkened by the passions of life; and, having received of Him the authority to loose and to bind, loose thou our transgressions and grant the kingdom of heaven unto those who celebrate thy memory and magnify thee as is meet." },
+          { "text": "Mercifully accept this, our hymn of praise, which is offered up to thee with abundant fervor, from our unworthy and wretched souls, O holy hierarch, granting us grace abounding in compassion." },
+          { "text": "Theotokion: Thou didst raise up fallen Adam, O Mother of God, who hast given birth to the new Adam. Do thou also raise us up, who are fallen like Adam of old, but who fervently believe in the grace of the New." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Though thou hast fallen asleep in the flesh, O holy hierarch Tikhon,\nyet, alive in spirit, thou dost reign with Christ in the unwaning kingdom//\nand dost beseech Him on behalf of those who call upon thee in faith and love.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy hierarch",
+      "melody": "Having fallen asleep in the flesh",
+      "glory": {
+        "text": "Mindful of thee, shining with ineffable light in the bridal chamber of Christ the Bridegroom, O holy hierarch,\nI fain would attain unto the kingdom of heaven, but my mind hath become foolish through the sleep of sin,\nmy lamp hath expired like those who had no oil, the garment of my soul hath been befouled,\nand I perceive that the gates of the kingdom are closed unto me.\nBut, rousing me from the sleep of sin by thy prayers, grant me the oil of repentance;\nand covering my nakedness with the garment of the excellencies of Christ,//\nmake me worthy of the unwaning kingdom.",
+        "tone": 3,
+        "melody": "I behold Thy bridal chamber, O Savior"
+      }
+    },
+    "lauds": {
+      "tone": 3,
+      "stichera": [
+        {
+          "text": "O consoler of the sorrowful, thou didst lovingly receive those who were clad in rags;\nthou didst visit the imprisoned; to the poor, dying of fetid diseases, thou didst give peace;\nthou didst console the grieving who were of low estate, for thou wast a friend of the least of the brethren of Christ.\nWherefore, Christ hath numbered thee among the company of His friends.\nHim do thou beseech, that He soften the hardness of our hearts//\nand make us quick to render help and consolation in the doing of good unto those who are needy.",
+          "tone": 3,
+          "_note": "Sung twice."
+        },
+        {
+          "text": "O lover of peace, all abuse didst thou joyfully endure as one dumb, opening not thy mouth,\nforgiving all, that the offender be pacified;\nand thou didst show thyself to be a peacemaker for those at enmity.//\nWherefore, still our much troubling passions, destroying wrath, hatred and strife, and instructing with brotherly love and patience.",
+          "tone": 3
+        },
+        {
+          "text": "O lover of stillness, who didst set a watch before thy mouth and a door of enclosure round about thy lips,\nthat thou mightest converse alone with the One God:\nprevail over the unbridled malice of our tongues, and cure us of idle and vain speech and judging,//\nceaselessly offering thy fervent prayers unto the Lord on our behalf.",
+          "tone": 3
+        }
+      ],
+      "doxastikon": {
+        "text": "O emulator of the love of the heavenly Father, in that thou art a child of love,\never abiding in love, thou didst set love above fasting.\nWe pray thee: take thou and give to us of the spirit of thy love,\nand teach us to perceive our own transgressions and not to judge our brethren.//\nFor thou art able to do this, in so far as thou dost abide in God and God abideth in thee.",
+        "tone": 2
+      },
+      "theotokion": {
+        "text": "Having taken Peter, James and John alone up upon the lofty mountain, Christ was transfigured before them.\nHis face shone like the sun, and His garments were as white as light.\nAnd Moses and Elijah appeared, speaking with Him, and a cloud of light overshadowed them.\nAnd, lo! a voice spake from the cloud, saying://\n'This is my beloved Son, in Whom I am well pleased! Hear ye Him!'",
+        "tone": 8,
+        "label": "Both now (of the Transfiguration, by Byzantius)",
+        "author": "Byzantius"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "From thy youth thou didst love Christ, O blessed one;\nand thou wast an example unto all by word, life, love, spirit, faith, purity and humility.\nWherefore, thou hast made thine abode in the heavenly mansions,\nwhere, standing before the throne of the Most holy Trinity,//\ndo thou pray that our souls be saved, O holy hierarch Tikhon.",
+      "tone": 8,
+      "label": "Troparion of the holy hierarch"
+    }
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "_meta": {
+    "feast": "St Gregory the Theologian, Archbishop of Constantinople",
+    "feastKey": "stGregoryTheologian",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 01-25.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-25.pdf",
+    "_note": "Two interleaved hierarch canons in Tone I: Canon I by Theophanes (acrostic 'I hymn the ever-memorable and divinely eloquent Gregory') + Canon II by Cosmas the Monk. Theotokos canon (Tone VIII, 6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Katavasiae: Irmoi of the Meeting of the Lord (Feb 2). Magnificat retained at Ode 9."
+  },
+  "troparion": {
+    "text": "The shepherd's pipe of thy theology vanquished the trumpets of the rhetors;\nfor having delved into the depths of the Spirit, the beauties of discourse were added to thee.\nO father Gregory, entreat Christ God,//\nthat our souls be saved.",
+    "tone": 1,
+    "label": "Troparion of St Gregory the Theologian"
+  },
+  "kontakion": {
+    "text": "O glorious one who destroyed the webs of the rhetors' with the tongue of thy theology,\nadorning the Church with the vesture of theology woven from on high;\nand, adorned therein, it crieth out with us, thy children:\nRejoice, O father Gregory,//\nthou uttermost supreme mind of theology!",
+    "tone": 3,
+    "label": "Kontakion of St Gregory",
+    "melody": "Today the Virgin"
+  },
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "The shepherd's pipe of thy theology vanquished the trumpets of the rhetors;\nfor having delved into the depths of the Spirit, the beauties of discourse were added to thee.\nO father Gregory, entreat Christ God,//\nthat our souls be saved.",
+      "tone": 1,
+      "label": "Troparion of the holy hierarch"
+    },
+    "sedalion": [
+      {
+        "text": "Inheriting divine enlightenment, thou didst master the immaterial life, excelling in the same sanctity;\nfor, supra-naturally elucidating the dogmas of the Church, thou didst confirm the Faith with Orthodoxy.//\nO venerable father, entreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Of the divine Faith",
+        "glory": {
+          "text": "Thou wast revealed to be a pillar of the Church and a treasury of piety which cannot be taken away, O theologian Gregory,\nillumining thy life with dispassion and making plain the dogmas of the Trinity.//\nO venerable father, entreat Christ God, that He grant us great mercy.",
+          "tone": 3
+        },
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word, O only all-pure Virgin Mother who surpassed the angels in purity.\nBy the divine waters of thy supplications cleanse me who, more than all others, have become dust, defiled by carnal transgressions;//\nand grant me great mercy, O pure one.",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Vigilant with the word of truth, theologizing the might of the Trinity and casting down the evil and all-iniquitous heresy of Arius,\nO holy hierarch, as a guardian and champion of piety//\nthou hast illumined those who sit in the darkness of unbelief.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O all-immaculate one, I beseech thee to quickly heal the greatly painful suffering of my soul and the infirmities of my flesh,\nand to set aright the errors of my mind.\nGrant that I may offer up entreaties to the King of all in tranquility of thought, O Theotokos,//\nand beg thou on my behalf the remission of sins.",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Gregory,\nand we honor thy holy memory;//\nfor thou dost entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ],
+      "tone": 4
+    },
+    "sessionalHymns": {
+      "text": "Denouncing the deceit of the impious, in a godly manner thou didst disclose the meaning of the Scriptures,\nissuing forth, O right wondrous one, dogmas, delighting the hearts of the faithful more than honey;\nmanifestly teaching all to worship the unity of the Godhead in Trinity.\nWherefore, setting forth the image of the Savior on an icon, O theologian Gregory, thou didst proclaim it to be a token for the honoring of His humanity.//\nEntreat Christ God, that He grant forgiveness of sins to those who lovingly celebrate thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "When the Master and Fashioner of all shall come to judge the whole world, do thou number me, the condemned, at His right hand with the sheep;\nand deliver me, thine unprofitable servant, from the outermost darkness and torment, I pray,\nthat with thanksgiving I may magnify the richness of thy goodness, O all-immaculate one,\nand cry out to thee, rejoicing: Pray to Christ God, that He grant me remission of sins,//\nfor thee do I, thy servant, have as my hope.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+    "prokeimenon": {
+      "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+      "tone": 4
+    },
+    "gospel": { "reading": "John 10:1-8", "number": 35 },
+    "postGospelSticheron": {
+      "text": "O venerable, thrice-blessed and most holy father, good pastor and teacher of Christ, the Chief Shepherd,\nwho didst lay down thy life for thy sheep:\ndo thou now, O all-praised Gregory the theologian, by thy supplications make entreaty,//\nthat we be granted great mercy.",
+      "tone": 6,
+      "label": "Idiomelon of St Gregory"
+    },
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I by Theophanes (Tone I, acrostic 'I hymn the ever-memorable and divinely eloquent Gregory') + Canon II by Cosmas the Monk (Tone I). Theotokos canon (Tone VIII) omitted per pattern. Katavasiae of the Meeting.",
+      "ode1": {
+        "irmos": "Christ is born, render ye glory. Christ cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted. O all the earth, sing unto the Lord,//\nand sing praises in gladness, O ye people, for He hath been glorified.",
+        "irmos2": "Moses the God-seer declareth praise to Israel;\nand Miriam beginneth a hymn of victory unto the exceedingly wise women://\nLet us all chant unto God the Redeemer!",
+        "troparia": [
+          { "text": "Come, ye who love the words of the second Theologian, the pillar of heavenly light, the trumpet of the wisdom of God, and, assembling with love, let us praise him as the preacher of God." },
+          { "text": "The beginningless Word of the Father, as God Who, with providential power, taketh thought for all things, giveth thee to the Mother Church as a gift, enriching thy mind with wisdom, O blessed one." },
+          { "text": "Making thy mind master, thou didst restrain the carnal passions; and, as a receptacle of divine effulgence, thou hast enlightened us all to worship the one God in three Hypostases, O Gregory." },
+          { "text": "Theotokion: The Wisdom of God made for Himself a temple, taking up His abode within Thine all-immaculate womb, O thou who art full of grace; and, having united Himself thereto hypostatically, in a manner past understanding, O pure one, He hath appeared as a man." },
+          { "canon": "secondCanon", "text": "Thou didst stand, offering up in sacrifice the Blood divinely shed for our passions, which hath delivered the first-born Adam; and now, O all-wise Gregory, do thou reconcile all of us, the faithful, unto God." },
+          { "canon": "secondCanon", "text": "Once Moses, upon entering the divine darkness, received the divinely inscribed tablets; and thou, upon setting forth a God-pleasing banquet in mind, hast earnestly entreated God." },
+          { "canon": "secondCanon", "text": "Theotokion: Desiring, in His compassion, to call back human nature from death and corruption, the supremely divine One dwelt within thy pure womb, O all-immaculate Lady." }
+        ],
+        "katavasia": "Of old the Master who worketh wondrous deeds * saved the people, * making the moist wave of the sea into dry land; * but now of His own will is He born of a Maiden, * and so He maketh passable for us a way to heaven. * We glorify Him * who in essence is equal to the Father and to mortal men."
+      },
+      "ode3": {
+        "irmos": "To the Son who was begotten of the Father without change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud://\nThou hast raised up our horn, holy art Thou, O Lord.",
+        "irmos2": "Before the conception of the venerable Samuel, the sacred mother Hannah solemnly promised him to God,\nand doth now chant with us, rejoicing://\nMy heart hath been established in the Lord!",
+        "troparia": [
+          { "text": "Possessed of a well-spring of wisdom which unceasingly poureth forth thine all-wise teachings, O all-blessed one, thou didst fill the Church of Christ therewith, and it crieth out to the God of all: Holy art Thou, O Lord!" },
+          { "text": "The trumpet-voiced herald of piety, the far-famed theologian of theology, is set forth as a rich treasure of the vision of God, richly distributing to us the wealth which cannot be taken away." },
+          { "text": "The orator of fiery spirit, the God-proclaiming flute of grace, right excellently thundering forth with theological inspiration and divinely inspired declaration, hath played for us the hymn of the Essence in three Hypostases." },
+          { "text": "Theotokion: O Birthgiver of God, Queen of all the creation, cease thou never to entreat Christ, to Whom thou hast given birth for our sake, for the salvation of those on earth, that He save those who hymn thee." },
+          { "canon": "secondCanon", "text": "O venerable father, who even before birth, wast announced by a fitting name while yet in the womb of her who gave thee birth, unto thee do we cry with all our soul, Rejoice! O most wise sacred hierarch." },
+          { "canon": "secondCanon", "text": "O champion of the faithful, thou wast revealed as having chosen godly purity and chastity as thy spouse and companion, even before thou wast able to incline to wickedness; wherefore, in gladness we cry out to thee, Rejoice!" },
+          { "canon": "secondCanon", "text": "Theotokion: Thou didst set aright the stumbling which Eve, our first mother, made of old, O Virgin Mother, receiving within thyself the Word of the Father Who by His invincible power setteth aright those who have been cast down." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Rod of the root of Jesse, and flower that blossomed from his stem, O Christ, Thou hast sprung from the Virgin.\nFrom the Mountain overshadowed by the forest Thou hast come, made flesh from her that knew not wedlock,//\nO God who art not formed from matter. Glory to Thy power, O Lord.",
+        "irmos2": "Standing with the wondrous Habbakuk on thy divine watch, O Gregory,\nand recognizing Him Who is seated upon the shoulders of the cherubim,\nthou wast a herald of the universal salvation, ever crying aloud://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "As an initiate of the mysteries of the Trinity, thou didst enlighten the whole world with the understanding thereof, O wise and venerable one, shining forth rays of the dogmas of thine excellent teaching. And ever instructed thereby, we all piously praise thee." },
+          { "text": "Receiving the radiant dawn of piety, the splendor of the threefold Sun, within thyself, thou didst shine forth, O father, and with the effulgence of thy wise dogmas thou didst dispel the dark night of evil heresies, illumining the souls of the faithful." },
+          { "text": "Theologizing from that which is heavenly, O all-blessed father, thou didst piously teach by thy thunderous theology the transcendent Mind, the Source of the Word and the Spirit, having been taught this by Him, in so far as thy mind was cleansed of temporal activity." },
+          { "text": "Thou didst ascend the mountain of the virtues, having departed from living among things below and abandoned mortal affairs, thou didst receive the dogmas of thy precious theology inscribed by the hand of God, O Gregory, initiate of the divine mysteries." },
+          { "text": "Theotokion: With understanding thou didst restore fallen Adam, O all-immaculate one, having given birth to hypostatic Life from thy virginal womb, which had been cleansed by the Spirit; and thou didst call him to the most divine and incorrupt food of dispassion, O Lady." },
+          { "canon": "secondCanon", "text": "Emulating the ranks which stand before and nearby God, O all-wise one, thou didst soar far above them in mind attaining unto the most exalted depths of knowledge, bearing unto men from thence the riches which cannot be taken away." },
+          { "canon": "secondCanon", "text": "Entering the unapproachable darkness, as if a cave, and beholding the back-parts of God thou didst describe the uncommingled material and immaterial essences, O favorite of Christ, do thou ever entreat Him to be merciful to His servants." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou wast shown to be the noetic mountain from which was ineffably cut the precious Stone which doth break asunder the image of dark delusion, illumining with the light of grace those who ever cry out with faith: Glory to Thy power, O Lord!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "As Thou art the God of peace and Father of compassions, Thou hast sent unto us Thine Angel of great counsel,\ngranting us peace.\nWherefore guided towards the light of the knowledge of God,//\nand watching by night we glorify Thee, O Lover of mankind.",
+        "irmos2": "Of old the seraphim took a burning ember and with tongs touched it to the lips of Isaiah;\nand, purified, he proclaimed unto all://\nLearn ye righteousness!",
+        "troparia": [
+          { "text": "The divine sound of thy words and the grace of thy divine dogmas hath encompassed the world as fast as a flash of lightning, O Theologian, by theologizing and teaching us to worship the Trinity in a Unity and the Unity in Trinity." },
+          { "text": "Thou didst desire the wisdom of God, and love the beauty of discourse preferring it to all things beautiful on earth. Wherefore, O all-blessed one, He hath right magnificently adorned thee with a crown of gifts making thee truly a theologian." },
+          { "text": "Like Moses of old, O divinely eloquent one, thou didst desire to rationally behold Him Who Is, and, protected by a rock, be deemed worthy to see His back-parts, wherefore thou hast studied the unapproachable manifestations of the abyss of divine wisdom." },
+          { "text": "Theotokion: He Who of old created Eve, thy first mother, from whom thou hast descended, O Birthgiver and Mother of God, as One compassionate and the Master of all He hath manifestly healed and absolved her condemnation and disobedience." },
+          { "canon": "secondCanon", "text": "Having fully approached the fire of the vision of God, O all-blessed Gregory, thou didst insatiably draw forth in purity of mind and soul, as with thine own hand, the co-illumining light of the Trinity." },
+          { "canon": "secondCanon", "text": "Enfolded in the rays of the effulgence of the threefold Sun, and set afire with its radiance, thereby illumining thy mind with divine light, thou hast illuminated all with its radiance." },
+          { "canon": "secondCanon", "text": "Theotokion: Receiving Light from Light, the only-begotten and beginningless Word, O Virgin Mother, Thou didst reveal thyself as the portal of the Light, shining forth upon all the Sun of righteousness." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh, came forth from her yet kept her incorrupt.//\nFor being Himself not subject to decay, He preserved His Mother free from all harm.",
+        "irmos2": "He who by the casting of lots was cast into the sea, that the vessel might escape the tempest,\nwas seized by the mouth of the sea monster;\nyet, remaining unharmed, Jonah cried aloud://\nLet my life proceed forth to Thee, O Christ!",
+        "troparia": [
+          { "text": "With the streams of thy wise teachings, O all-wise one, thou didst dry up the turbulent mind of Arius, preserving thy flock in peace, afloat like a noetic ark; and therein, by the beauty of thy discourses, hast thou placed the seeds of piety." },
+          { "text": "With the splendor of the adored Trinity thou dost enrich thy mind, O father, and shining forth like a clear and newly polished mirror, made excellent through abstinence, thou hast been shown to be a God-seer by divine revelations." },
+          { "text": "Wholly imbued with the radiance of the Spirit, thou wast a most radiant beacon, O father, illumining the ends of the earth with the radiance of thy discourses and adorning the assembly of the faithful with the purity of theology, O Gregory the Theologian." },
+          { "text": "Thou wast shown to be a new divinely given Samuel, given to God even before thy conception, O all-blessed father, adorned with chastity and purity and invested with the all-holy robes of the priesthood, mediating between the Creator and His creation." },
+          { "text": "Theotokion: Thou wast foreknown to the prophets, O Virgin Mary, Mother and Bride of God, as the pure scroll who received the written Word Who before was uncircumscribable in His divinity; for thou hast ineffably contained in thy womb the Infinite One." },
+          { "canon": "secondCanon", "text": "Unencumbered by reason, yet probing the depth of the abyss of God, thou didst draw forth therefrom a pearl for the Master; counting silence as discourse, O most excellent Gregory." },
+          { "canon": "secondCanon", "text": "With pure prayer that didst still the raging sea; and, gushing forth a mixture of wondrous words, O Gregory, like dewdrop from heaven thou didst guide the faithful to the Master." },
+          { "canon": "secondCanon", "text": "Theotokion: The mystery of thine ineffable and strange birthgiving is inaccessible to the thoughts of mortals, O Virgin Mother of God; for, having given birth to the Creator of all, thou hast remained a virgin." }
+        ]
+      },
+      "kontakion": {
+        "text": "O glorious one who destroyed the webs of the rhetors' with the tongue of thy theology,\nadorning the Church with the vesture of theology woven from on high;\nand, adorned therein, it crieth out with us, thy children:\nRejoice, O father Gregory,//\nthou uttermost supreme mind of theology!",
+        "tone": 3,
+        "label": "Kontakion of the hierarch",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "With the exalted wisdom of thy theology fill thou mine impoverished and passion-plagued mind, that I may hymn thy life, O father;\nfor I cannot offer thee discourse if thou wilt not grant my strength of speech, understanding and wisdom, to bring thee that which is thine own.\nFrom thence I shall find a starting-point in the wealth of thy virtues and shall crown thy precious and holy head, crying out with the faithful://\nRejoice, O father, thou uttermost mind of theology!"
+      },
+      "ode7": {
+        "irmos": "Scorning the impious decree of the godless one, the Children brought up together in godliness\nfeared not the threat of fire,\nbut standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou.",
+        "irmos2": "Having passed through the unbearable flame of the furnace as though it were a bridal-chamber,\nthe children who for the sake of piety, were revealed as holy chanted together, singing the hymn://\nO God of our fathers, blessed art Thou!",
+        "troparia": [
+          { "text": "All thy desire, sweetness and discourse, O Gregory, was manifestly full of gladness and radiance, filling with sweet fragrance those who chant with faith: O God of our fathers, blessed art Thou!" },
+          { "text": "With an illumined mind thou didst attain unto a well-spring of enlightenment, and, set afire with lightning flashes therefrom, thou didst reduce to ashes the heresy of Eumenius, crying out to the Trinity: O God of our fathers, blessed art Thou!" },
+          { "text": "Releasing the flood-gates of the abyss of thy wise dogmas, and opening up the spring of wisdom, thou didst inundate the begetters of delusion, shining with the eternal light of the threefold Sun." },
+          { "text": "Theotokion: Descending like dew upon the fleece, the River of peace, the Well-spring of grace, who doth count even the drops of rain, made His abode in thy womb. O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Standing before the tribunals of the unjust rulers, O Gregory, by thy piety thou didst utterly consume the rushing conflagrations of the heretics' fire which raged cruelly, and didst cry aloud to the Trinity: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "O Gregory who poured forth from thy mouth upon the earth a clear spring of pious dogmas, thou didst show forth the all-holy Trinity, burning up the cruel priestess of Demeter. O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Theotokion: Our forefather was slain like a plant untimely plucked; but thou, O pure and blessed Virgin Birthgiver of God, hath budded forth Life without end, granting him to again dwell in paradise." }
+        ]
+      },
+      "ode8": {
+        "irmos": "The furnace moist with dew showed forth an image of a wonder past nature,\nfor it burned not the youths whom it had received;\nneither did the fire of the Godhead consume the Virgin when it descended into her womb.\nWherefore, chanting, we sing://\nLet all creation bless the Lord and supremely exalt Him throughout all ages!",
+        "irmos2": "The youths who refused to defile themselves with food taken from the king's table\nonce entered the fire, rejoicing, and, bedewed amid the flame, they zealously chanted aloud://\nBless the Lord, ye works of the Lord!",
+        "troparia": [
+          { "text": "Thou didst piously preach that the Word and the Spirit are co-equal with the Father in grace and sovereignty, recognizing their essential identity and unity. Wherefore, thou didst cry aloud, rejoicing: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Thou wast deemed worthy of the angelic glory, for like an angel thou didst shine forth upon the earth, O all-wise one, assiduously purifying soul, body and mind for the Trinity. And to the Trinity dost thou now chant in gladness: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Rendering the Master merciful by thy supplications, O father, ask for the forgiveness of sins of those who with faith celebrate thy sacred and most festive memorial, whereof with gladness we chant: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Becoming an initiate of the mysteries of the Potentate in three Hypostases and the Godhead in Trinity through mastering the virtues, O all-blessed one, thou wast revealed to be a theologian of the Trinity; and now, rejoicing, thou dost chant: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: The rich Word Who is glorified by the hymnody of the archangels impoverished Himself for our sake, choosing thee, the blessed beauty of Jacob, to be His Mother. Wherefore, chanting, we sing: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Soaring higher than the flame of Babylon, more afire with piety than it, O father, and showing thyself to be an initiate and preacher of the heavenly mysteries of the Trinity, thou criest out: Bless the Lord, ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Easily passing through divers dangers, and quenching the fire of the iron furnace, O father, thou didst soar aloft to heaven, crying: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Theotokion: Thy divine birthgiving, O immaculate and pure one, showed thee to be a golden candle-stand; for thou hast shone forth upon the world the unapproachable Light, to Whom we cry: Hymn the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed, prefigured Thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "irmos2": "O thou who hast disclosed the exalted abyss of the depths of the Godhead,\npiously exalting as from a rock, the mind of the incomprehensible, divine Trinity,//\nO all-blessed father. Thee do we magnify.",
+        "troparia": [
+          { "text": "The primal Trinity of Whom thou didst theologize hath granted thee life incorruptible, accepting the struggles, teachings and contentions thou didst make for His sake, O father; and now thou dost stand before Him as a most excellent intercessor for peace." },
+          { "text": "Illumined with the radiance of the splendor of the threefold Sun which proceedeth from the one Godhead, O Gregory, initiate of sacred mysteries, save those who hymn thee with faith and guide them with the light of the theology of thy dogmas." },
+          { "text": "Thou didst finish a good race, exerting thyself for the primal Trinity, and, as a theologian, thou hast received deification; and, as is meet, thou hast received the fulfillment of thy godly desire, O goodly adornment of the Churches." },
+          { "text": "Theotokion: O thine awesome wonder! For, giving birth to God the Word, O Virgin Theotokos, thou hast ineffably made manifest a mystery in existence from before all generations and hidden in God from before time began." },
+          { "canon": "secondCanon", "text": "O thrice blessed father, who hast pulled apart the threadbare garment of the writings of the law, interpreting for us the divine and mystic beauty of the Scriptures of the divine Spirit therein: thee do we magnify." },
+          { "canon": "secondCanon", "text": "Thou hast joined the heavenly choirs, O venerable father; for thou dwellest with them forever. Offer up entreaty to God for thy flock, O all-blessed father, for we magnify thee." },
+          { "canon": "secondCanon", "text": "O venerable father, who learned divine things with a divine inspiration surpassing understanding, and thereby mystically brought thyself to union with them, in a way which cannot be learned, through thy boundless desire: thee do we magnify." },
+          { "canon": "secondCanon", "text": "Theotokion: O pure one, in a manner transcending nature thou didst become a habitation of the Infinity of God, in that thou didst lend flesh unto God; and when He was seedlessly born of thee, He didst not rend thy virginal womb. Thee do we magnify." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The sword of thy words and its power utterly cut through the tongues of the infidels;\nfor thou didst consume their ungodly innovations like thorny tinder//\nand in godly manner didst teach all to worship the Trinity, O Gregory the Theologian.",
+      "tone": 2,
+      "label": "Exapostilarion of the hierarch",
+      "melody": "By the Spirit in the sanctuary",
+      "glory": {
+        "text": "Thou hast taught all to worship the Unity in three Hypostases, the perfect Trinity in one Godhead, O all-wise Theologian,\ncalling the Father Light, the Son Light, and the Holy Spirit likewise Light,\nteaching that there is one Light, indivisible and unconsumed,//\nexplaining that the one God is consubstantial, O blessed Gregory.",
+        "tone": 2,
+        "melody": "With the disciples"
+      },
+      "bothNow": {
+        "text": "With Mary the Virgin Mother of God and Basil the Great, O all-wise one,\nintercede before the unapproachable Trinity, that peace be granted to the world and victory over heresies to Orthodox hierarchs;//\nand ask now salvation for us who praise thee, O Gregory, hierarch and theologian, orator of the Church.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Cleaving the darkness with thy writing, by the Spirit didst thou enter into the most exalted Light,\nfrom whence bathed in effulgence, thou didst enrich all with theology, O all-wise Gregory,\ndispelling the dark clouds of heresy by the brilliance of thy words.\nWherefore, now making thine abode where the voice of those who keep festival is heard, O converser with the angels,//\npray thou unceasingly that our souls be saved.",
+          "tone": 4,
+          "melody": "Called from on high"
+        },
+        {
+          "text": "O Gregory, thou second theologian and initiate of the mysteries of divine splendor,\nradiant elucidator of the Trinity who supra-naturally taught about the ineffable and divine Essence\nand now radiantly delighting in God, do thou be mindful of those who honor thee, and champion the Church which thou didst preserve;\nfor thy discourses have gone forth throughout the ends of the world,//\nteaching all to glorify the consubstantial Trinity.",
+          "tone": 4
+        },
+        {
+          "text": "Cultivating the earth with thy tongue, O divinely eloquent one,\nand planting the divine seed in the furrows of men's hearts,\nthou hast enriched with the most exalted theology all the fullness of the Church.\nWhereby, thou hast burned up the tares of heresies by the fire of the Spirit, fed with the zeal of divine philosophy,\nO father of fathers and pastor of pastors, word of the faithful, lamp of priests, glory of the whole world,//\nall-blessed Gregory.",
+          "tone": 4
+        },
+        {
+          "text": "Putting thy precious mouth to the cup of wisdom, O father Gregory,\nthou didst draw forth the divine waters of theology granting it to the faithful in abundance,\nstaunching the soul-destroying torrent of heresy which is full of blasphemy.\nFor the Holy Spirit hath found thee a helmsman repelling and driving far away, like weak puffs of wind, the assaults of the impious,//\nproclaiming aloud the Trinity in oneness of Essence.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "O ye children of the Church, with hymns of theology let us name the harp of the Spirit,\nthe victor over heresies, the delight of the Orthodox, the second Theologian,\nwho with dogmas was an eye-witness to the Word, the wise chief shepherd.\nThou O Gregory art a good shepherd who hast given thyself for us as a teacher of Christ;//\njoining chorus with Paul and praying on behalf of our souls.",
+        "tone": 1
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "The shepherd's pipe of thy theology vanquished the trumpets of the rhetors;\nfor having delved into the depths of the Spirit, the beauties of discourse were added to thee.\nO father Gregory, entreat Christ God,//\nthat our souls be saved.",
+      "tone": 1,
+      "label": "Troparion of the holy hierarch"
+    }
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "_meta": {
+    "feast": "Repose of St Sergius the Wonderworker of Radonezh",
+    "feastKey": "stSergiusRadonezh",
+    "rank": "greatFeast",
+    "feastRank": "greatFeast",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 09-25.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-25.pdf",
+    "_note": "Two interleaved canons of the venerable one: Canon I in Tone VIII + Canon II in Tone I. Theotokos canon (Tone VI, 6 troparia) interleaved at the actual service per the Sergius rubric is omitted from this file per the menaion-matins-track pattern. Polyeleos magnification of St Sergius. Katavasiae of the Nativity of the Theotokos (Sep 8, lingering since the feast was 17 days ago)."
+  },
+
+  "troparion": {
+    "text": "As a virtuous ascetic athlete, and true warrior of Christ God\nfighting fiercely the good fight against the passions during this earthly life,\nlaboring in hymnody, vigil and fasting, thou wast an example to thy disciples.\nWherefore, the Holy Spirit made His abode within thee,\nWhose activity adorned thee with radiant beauty:\nSince thou hast great boldness towards the Holy Trinity,\nremember thy flock wisely gathered by thee\nand forget not as thou didst promise, to visit thy children,//\nO venerable father Sergius.",
+    "tone": 4,
+    "label": "Troparion of St Sergius"
+  },
+
+  "kontakion": {
+    "text": "Smitten with the love of Christ thou, O venerable father, hast followed Him without looking back,\nhating all carnal pleasures and shining like the sun upon the land of thy birth:\nwherefore Christ hath enriched thee with the gift of working miracles.\nRemember us who honor thy radiant memory that we may cry out to thee://\nRejoice! O Sergius thou Divinely-wise one.",
+    "tone": 8,
+    "label": "Kontakion of St Sergius"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "As a virtuous ascetic athlete, and true warrior of Christ God\nfighting fiercely the good fight against the passions during this earthly life,\nlaboring in hymnody, vigil and fasting, thou wast an example to thy disciples.\nWherefore, the Holy Spirit made His abode within thee,\nWhose activity adorned thee with radiant beauty:\nSince thou hast great boldness towards the Holy Trinity,\nremember thy flock wisely gathered by thee\nand forget not as thou didst promise, to visit thy children,//\nO venerable father Sergius.",
+      "tone": 4,
+      "label": "Troparion of the venerable one",
+      "_note": "Sung twice. Glory/Both-now: Theotokion 'The mystery hidden from all ages…'"
+    },
+
+    "sedalion": [
+      {
+        "text": "Revealed as wholly sanctified and a true God-bearer,\nwho, having despised the glitter of the world with its wealth, and all its visible good things\nin so far as they are but fleeting,\nfollowed Christ in humility and poverty.\nGathering a multitude of monks, thou didst enlighten them with the doctrines of pure Orthodoxy.\nWherefore, before thine end thou didst receive eternal grace,\nand lying in the tomb, thou, O divinely blessed Sergius hast remained without corruption.\nDo thou pray Christ our God//\nto grant remission of sins unto those who honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "As the all-immaculate Bride of the Creator, Mother of the Redeemer, who knewest not a man,\nand as the receptacle of the Comforter O all-hymned one,\nhasten thou to deliver me, the vile abode of iniquity and noetic plaything of the demons,\nfrom their evil machinations;\nand make me the bright dwelling-place of the virtues, O thou incorrupt light-bearing one.\nDrive away the clouds of the passions and grant that, by thy supplications,//\nI may receive a portion on high and share in the never-waning light.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Possessed of a wisdom rising towards God on high,\nthou, O Father, didst forsake all earthly things,\nand through many pains made thy life radiant yet simple,\nwherefore thou hast been shown forth as a dwelling-place of the divine virtues,\ndrawing near to the Lord in prayers and supplications.//\nDo thou ever pray to God that our souls be saved.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "As an uncultivated vine, O Virgin, thou didst sprout forth the most comely Cluster of grapes\nWhich poureth forth upon us the wine of salvation\nmaking glad the souls and bodies of all.\nWherefore, ever blessing thee as the cause of good things,//\nwith the angel we cry out to thee: Rejoice, O thou who art full of grace!",
+          "tone": 3,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We bless thee, O Venerable Father Sergius,\nand we honor thy holy memory,//\ninstructor of monks, and converser with the angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication."
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymns": {
+      "text": "O blessed one, when thy mind had winged its way unto its divine Desire,\nthou didst forsake all the wisdom that draws one downwards,\nand leaving all to dwell in the wilderness\nthou didst issue forth like fragrant lilies the comely blossoms of thy virtues,\nand having uprooted the thorns of the passions thou didst plant therein the fruitful seedlings of thy labors.\nWherefore thou didst reap a boundless wealth in heaven.\nO venerable father Sergius pray to Christ our God//\nthat those who honor with love thy holy memory be granted the remission of their sins.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "In Thee, O Full of grace, doth all creation rejoice,\nthe ranks of Angels and the race of mankind;\nO all-hallowed Temple and spiritual Paradise, boast of Virgins.\nFor from thee God became incarnate\nand He who is our God before the ages became a child.\nHe hath made thy womb a throne and rendered it wider than the heavens.\nIn thee, O Full of grace, doth all creation rejoice;//\nglory be to thee.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that he hath rendered unto me?",
+      "tone": 4
+    },
+
+    "gospel": {
+      "reading": "Matthew 11:27-30",
+      "_note": "Matins Gospel."
+    },
+
+    "postGospelSticheron": {
+      "text": "We honor Sergius the great one, an Angel on earth, and man of God in heaven,\ncomely adornment of the world,\nfood for good men and virtuous boast of those who fast.\nFor planted in the house of the Lord, he rightly blossomed like a cedar in the wilderness,//\nrendering the flock of Christ's rational sheep enriched in sanctity and truth.",
+      "tone": 6,
+      "label": "Idiomelon of St Sergius"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I (Tone VIII) + Canon II (Tone I); the Theotokos canon (Tone VI) interleaved at the actual service is omitted",
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "irmos2": "Thy victorious right arm, in a manner befitting God, hath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,//\nfashioning anew a path for the Israelites through the deep.",
+        "refrain": "Venerable Father Sergius, pray to God for us.",
+        "troparia": [
+          { "text": "Emulating Christ who humbled Himself for our sakes, even taking the form of a servant, thou didst love humility and, mortifying the soul, destroyed the passions. By copious vigil and prayer, thou hast ascended the mountain of freedom from passion, O most noetically rich Sergius." },
+          { "text": "Adorning thy soul with streams of tears as a lamp is adorned with light, thou hast offered up thyself as another Isaac, O venerable father, and sacrificed thine heart unto God." },
+          { "text": "O most blessed Sergius, who from thy mother's womb hast revealed thyself by thy threefold cry to be a servant of the Trinity and who, illuminated by the light of the threefold Sun, dashed the armies of demons as if destroying a spider's web!" },
+          { "text": "Theotokion: Thou hast given birth outside the laws of nature to the Giver of the law. He Who was both God and man. As He is good, do thou who art all undefiled entreat Him to overlook our iniquities as we ever cry aloud: 'Let us chant unto the Lord, for greatly hath He been glorified.'" },
+          { "canon": "secondCanon", "text": "Thou, O venerable father, hast been established in thy love of Christ, and appeared as a stream abundantly watering the whole earth with the word of thy teachings, O Sergius, divinely blessed one. Therefore with love we bless thy memory." },
+          { "canon": "secondCanon", "text": "At a divine command, a blessing came forth from thine hand; for by thy prayer, O venerable father Sergius, thou didst make water gush forth from the dry earth, and we who now draw forth thereof, unfailingly receive healing." },
+          { "canon": "secondCanon", "text": "From thy youth thou wast entirely dedicated to God, drawing near Him by thy virtues, for leaving behind the corruptible things of this earth, thou hast acquired heavenly riches." },
+          { "canon": "secondCanon", "text": "Theotokion: Rejoice O Fount of grace. Rejoice! O Ladder and heavenly Gate, Rejoice! Candlestick and vessel of gold, the un-hewn mountain, O thou who hast borne for the world Christ the Giver of Life." }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit, and utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "irmos2": "Thou alone knowest the weakness of human nature and in compassion hast assumed its form;\ndo Thou gird me with power from on high, that I may cry unto Thee://\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "troparia": [
+          { "text": "In thyself, as an example of virtue to thy disciples, thou hast drawn to salvation many souls who, separated from worldly passions, have found comfort in the joy of paradise." },
+          { "text": "O blessed venerable father, thou hast flowered like a fruitful olive-tree in the house of God, anointing with oil the souls of those who sing thy praises with love, O Sergius, and who cry aloud to Christ with faith: 'There is none holy save Thee, O only Lover of mankind.'" },
+          { "text": "O blessed venerable father, by watchful vigils thou didst put to sleep the soul-corrupting passions: and thereby, O divinely-wise Sergius, ascended to dwell in the heavenly mansions, having received the grace of healing." },
+          { "text": "Theotokion: O Theotokos, thou appearest higher the cherubim and seraphim, for Thou art undefiled, and thou alone hast received in thy womb the uncircumscribable God. Wherefore we the faithful bless thee, who art pure, with hymns." },
+          { "canon": "secondCanon", "text": "O blessed one, despising corruptible fame thou hast been deemed worthy of inheriting incorruptible and divine glory; for trampling underfoot all the beauty of this world thou rejoicest, with the angels on high, in the glory of God." },
+          { "canon": "secondCanon", "text": "Renewing the earth of thine heart, O venerable father, with the plough of prayer, thou hast shown thyself to be the comely corn of the Word and thou hast reached the dwelling-place of the never waning Light." },
+          { "canon": "secondCanon", "text": "Honored with the effulgence of the Holy Spirit, thou hast been adorned with a life that beareth the never-fading light, manifest in thy gifts to those who ask, receiving with love those in the monastic state, O venerable Father." },
+          { "canon": "secondCanon", "text": "Theotokion: A never-fading flower sprang forth from thee, O Pure one, making all mankind fragrant with the divine myrrh of His own nature. He Who, like the Father, is without beginning, became subject to time from thee, O all-immaculate Virgin." }
+        ],
+        "katavasia": "O Theotokos, thou living and plentiful fount, grant strength to those united in spiritual fellowship,\nwho sing hymns of praise to thee://\nand in thy divine glory grant unto them crowns of glory."
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.//\nTherefore with the Prophet Habbakuk I cry unto Thee, 'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "Perceiving thee with prophetic eyes as the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel would come forth from thee,//\nfor our salvation and restoration.",
+        "troparia": [
+          { "text": "O Father, thou art a temple of the most holy Spirit, a river full of living waters, an unshaken foundation of the Church, the confirmation of those living the monastic life, wherefore O Father Sergius, thou art a right wondrous." },
+          { "text": "O glorious Sergius, as did the Prophet David, thou didst anoint thy bed each day with streams of tears, until thou didst dry completely the passions; wherefore we reverence thine ever honored and holy memory." },
+          { "text": "O venerable father Sergius, thou wast deemed worthy to see Christ face to face, not 'through a glass darkly', but with the glass truly removed; and thus became separated from this world, soaring aloft to thy beloved Desire." },
+          { "text": "Theotokion: By the prayers of her who bore Thee O God, grant us, since Thou alone art without sin, the cleansing of our transgressions committed in ignorance, and grant peace to Thy world." },
+          { "canon": "secondCanon", "text": "O wise and most blessed Sergius, enlightened by the bright effulgence of the divine light, rejoicing, thou didst receive the joys of heaven, since thou wast truly thy Creator's most pure bread, wherefore thou dost cry aloud unto Him: Glory to Thy strength, O Lover of mankind." },
+          { "canon": "secondCanon", "text": "Traversing the mire of soul-destroying passions, thou pass over to the depths of silence, wherefore thou wast granted to raise up a dying youth before the parting of his soul from the body, rendering his mother glad beyond all hope. Wherefore, struck with wonder thou didst cry aloud to the Creator: Glory to Thy strength, O Lover of mankind." },
+          { "canon": "secondCanon", "text": "O wise and glorious venerable father, having raised on high the understanding of the soul, and subjected thy feelings to rational thought, thou didst announce to those on earth the holy tidings of godliness, which indicateth the way into heaven." },
+          { "canon": "secondCanon", "text": "Theotokion: The Archangel came from heaven bringing great Joy to thee, O pure one, bearing good tidings and saying: O most pure Virgin, God shall assume flesh and come forth from thee, for the salvation of all those who with love, hymn thy praises. Glory to Thy strength, O Thou helper of mankind." }
+        ],
+        "katavasia": "Seated in glory upon the throne of the Godhead,\nJesus most divine is come on a swift cloud,\nand with His incorrupt arm hath He saved those who cry aloud://\nGlory to Thy power, O Christ!"
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee,//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "As Thou art the God of peace and Father of compassions, Thou hast sent unto us Thine Angel of great counsel,\ngranting us peace.\nWherefore guided towards the light of the knowledge of God,//\nand watching by night we glorify Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "O wise venerable father, thou didst unwaveringly dwell in the activities of asceticism, firmly adhering to them even to the time of thine own departure, wherefore thou hast been deemed worthy of incorruptible blessedness." },
+          { "text": "Possessed of a mind sharpened to hearken unto God, thou didst subdue the soul-destroying passions and reaped thereby fruitful sheaves, with which thou dost feed those who praise thee, O venerable father Sergius." },
+          { "text": "Bright hath been thy life, O venerable father Sergius, renowned throughout all the earth, filled with divine comeliness, prayer and fasting, and love for Christ, the Lover of mankind." },
+          { "text": "Theotokion: Having thee as rampart, and guarded by thy protection, we bless thee exulting in thy divine glory: For thou, O most pure one, dost ever pour forth delight and rejoicing upon our souls." },
+          { "canon": "secondCanon", "text": "Thou didst manifestly put off the old man, O Father, and turning away from him with his sinful passions, as from an all-defiled garment, thou didst put on the new man, who is in the likeness of Christ, O all-glorious venerable father." },
+          { "canon": "secondCanon", "text": "By thine exalted way of life, equal to that of the angels, thou didst tear apart the bonds of passion, and having now received from on high the gift of working miracles, do thou, O Sergius, beg the cleansing of our sins." },
+          { "canon": "secondCanon", "text": "Theotokion: By thy childbirth, O Virgin, thou hast done away with the curse of Eve, the mother of us all, through shining forth the blessing of Christ upon the world. Therefore, praising thee with both tongue and heart, and acknowledging thee to be in truth the Theotokos, we magnify thee." }
+        ],
+        "katavasia": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all,//\nand gave birth to the timeless Son, bestowing peace upon all who hymn thee."
+      },
+
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,//\nO God of my salvation.",
+        "irmos2": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh, came forth from her yet kept her incorrupt.//\nFor being Himself not subject to decay, He preserved His Mother free from all harm.",
+        "troparia": [
+          { "text": "Unceasingly beseech the Redeemer, to grant remission of sins unto those who celebrate thy holy memorial, O blessed Father, that they may receive the heavenly Kingdom, where the sounds of those who keep festival gladden all mankind." },
+          { "text": "Made strong in Christ O Sergius, thou, by thy steadfast mind, didst rend to pieces all the machinations of the evil one, as though a spider's web, and hast revealed thyself to the world, O Sergius, as a most radiant light." },
+          { "text": "Effulgent with the divine light, and dwelling now with the incorporeal powers in heaven, do thou ever remember those who with faith honor thy memory, O venerable father, and ever-memorable Sergius." },
+          { "text": "Theotokion: In truth thou hast raised on high the fallen nature of mankind, for thou hast seedlessly borne within thy womb, O Mother of God, Him Who without change is the visible Son, the divine and co-equal image of the Father." },
+          { "canon": "secondCanon", "text": "O Father, thou dost mercifully shine forth from on high upon us thy flock, granting victory to our Fatherland by thy prayers, and raising on high the horn of the Orthodox; though it be humble, receive from us this prayer offered to thee." },
+          { "canon": "secondCanon", "text": "To thee hast been given the gift of healing diverse diseases, and from Christ thou hast been granted power over unclean spirits, wherefore thou hast received from Him Who reigneth over all, crowns of victory." },
+          { "canon": "secondCanon", "text": "Theotokion: Taught by God, all the choirs of Prophets proclaimed beforehand the untold mystery of the divine conception of the Word that was to take place from thee, O Mother and Virgin, for thou hast verily borne the true Primal Effulgence." }
+        ],
+        "katavasia": "Celebrating the divine and solemn feast of the Mother of God\nO ye divinely wise, let us come, clapping our hands,//\nand glorify God who was born of her."
+      },
+
+      "kontakion": {
+        "text": "Smitten with the love of Christ thou, O venerable father, hast followed Him without looking back,\nhating all carnal pleasures and shining like the sun upon the land of thy birth:\nwherefore Christ hath enriched thee with the gift of working miracles.\nRemember us who honor thy radiant memory that we may cry out to thee://\nRejoice! O Sergius thou Divinely-wise one.",
+        "tone": 8,
+        "label": "Kontakion of the venerable one"
+      },
+      "ikos": {
+        "text": "Having heard the sound of the Gospel, thou didst set aside, O Father, all the carnal wisdom,\nand deemed wealth and glory to be but dust,\nfighting against the passions as though without flesh,\nthou hast been deemed worthy of the honor of standing with the choirs of the incorporeal powers.\nReceiving the gift of understanding which thou dost grant to those who sing unto thee thusly:\nRejoice! O Sergius, venerable God-bearer; thou heavenly man and earthly angel:\nRejoice! thou dwelling-place of the Holy Spirit;\nRejoice! thou who by prayer hast received a gift bestowed by God;\nRejoice! For before thy birth, thou didst cry out glorifying the Holy Trinity Who glorified thee in this life and after death.\nRejoice! Pillar of chastity by whom every passion hath been vanquished.\nRejoice! For from thine early childhood thou didst follow Christ.\nRejoice! Intercessor for the salvation of those who run to thee;\nRejoice! pride of the land of thy birth.\nRejoice! thou who, adorned with prophecy, foretold the future as though it were the present.\nRejoice! for by thy prayers the adversaries are conquered.\nRejoice! pride and confirmation of truly believing people.\nThrough thy prayers keep us unharmed by the enemy that we may cry to thee://\nRejoice! O Sergius, Divinely-wise one."
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "We the faithful perceive thee, O Theotokos, to be a noetic furnace;\nfor as He, the supremely exalted One, saved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,//\nO Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          { "text": "In the flaming furnace of temptations divine grace bedewed thee, O venerable father, showing thee to be full of light in thy desire for the Trinity, crying aloud: 'O God of our fathers, Blessed art Thou.'" },
+          { "text": "O glorious Sergius, despising the world, thou didst live as an Angel on earth and wast thereby deemed worthy of a place in the angelic choir. Wherefore we venerate thee with faith, O right wondrous one." },
+          { "text": "O divinely wise venerable father, traveling unto the calm haven, thou didst shun worldly distractions, being a saving pilot for those sailing upon the storm-tossed seas of this life, and who cry aloud: 'O God of our fathers, Blessed art Thou.'" },
+          { "text": "Theotokion: O Virgin, a rod hath sprung forth from the root of Jesse, O all-blessed Fruit, that beareth the Flower of salvation for those who with faith cry aloud to thy Son: 'O God of our fathers, Blessed art Thou.'" },
+          { "canon": "secondCanon", "text": "O most blessed and divinely wise venerable father, by divine command thou hast revealed thyself on earth to be a second heaven, and living in the flesh like an angel, thou hast raised up thy rational flock." },
+          { "canon": "secondCanon", "text": "Having thee who art blessed, as a mighty supplicant before God, a comforter for those in affliction, a defender and advocate and mediator of Godliness, we thy children, O venerable father Sergius, are saved from all distress." },
+          { "canon": "secondCanon", "text": "Theotokion: Rejoice! O pure daughter of Adam; for the Shepherd verily clothing Himself in the full man that I am, came forth from thee. He, the God of our Fathers, is blessed and supremely exalted, for His boundless mercy." }
+        ],
+        "katavasia": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou."
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "irmos2": "The furnace moist with dew was an image and prefiguring of a wonder past nature,\nburning not the children whom it had received,\nso the fire of the Godhead consumed not the Virgin's womb into which it had descended.\nTherefore in song let us sing://\nLet the whole creation bless the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "O most blessed Sergius, thy light-bearing feast hath filled with joy and spiritual gladness, with fragrance and enlightenment, those who have thee as their defender and as their monastic rule." },
+          { "text": "With unceasing prayer thou didst ascend upwards to God, and from there enlightened by the effulgence of the thrice-sunned Godhead, thou hast established a bastion of struggle against the enemy. Thou didst lead companies of monks towards a new life, crying aloud to Christ: 'Ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages.'" },
+          { "text": "O Sergius, strengthened in fasting, ever vigilant in prayer, on earth thou didst show patience in temptations, crying aloud: 'Ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages.'" },
+          { "text": "Theotokion: O pure Birthgiver of God, cleanse the sinful sores and temptations of my soul steeping them in the waters that copiously stream forth from the side of thine Offspring: for I cry unto thee and take refuge in thee, and call upon thee, who art full of the grace of God." },
+          { "canon": "secondCanon", "text": "Earnestly hymning, we entreat thee: pray, O venerable father, for the truly believing people, that they be granted victory over adversaries, that the Church be granted majesty, and that the world be granted peace." },
+          { "canon": "secondCanon", "text": "The grace of the Holy Spirit, descended and dwelt within thee making thee an exorcist of evil spirits and showing thee to be a guide of monks, who cry aloud: 'Let the whole creation bless the Lord, and supremely exalt Him throughout all ages.'" },
+          { "canon": "secondCanon", "text": "Shining from afar with the light of the threefold Sun, do thou, O holy Father, grant unto those who sing thy praises in memory of thee, light and salvation, and unto the world peace, as they sing: 'Let the whole creation bless the Lord, and supremely exalt Him throughout all ages.'" },
+          { "canon": "secondCanon", "text": "Theotokion: The Word Who is supremely rich and Who is glorified by the songs of angels, made beggared Himself; choosing thee, for His Mother, thou blessed excellence of Jacob. Therefore as we praise Him, we sing: 'Let the whole creation bless the Lord, and supremely exalt Him throughout all ages.'" }
+        ],
+        "katavasia": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee://\nAll ye works praise ye the Lord and supremely exalt Him throughout all ages."
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens.//\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "irmos2": "The Bush, which burnt without being consumed, prefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "troparia": [
+          { "text": "Filled with the manifestation of spiritual radiance, thou hast appeared like a lamp illumining from afar, and beaming the light of reason upon us, revealing thyself to be a habitation of the supremely divine Trinity." },
+          { "text": "Christ gave thee, O wise Sergius, to the land of Russia, as a great teacher, guiding the land of his birth along the right and proper path, pouring forth teachings sweeter than honey, from which we the faithful draw forth, as from a vessel." },
+          { "text": "Having conquered the soul-destroying passions, thou, like a true shepherd, hast tended the reason-endowed flock of Christ, ever nourishing it like flowers from paradise, with the grace of the Spirit." },
+          { "text": "Theotokion: O thou divinely joyous one, we sing thy praises in psalms and with never-silent voices cry aloud to thee: 'Thou hast poured forth joy for all.'" },
+          { "canon": "secondCanon", "text": "Enlightened by the love of Christ and shining with virtues, thou didst not defile the beauty of thy soul, and having departed to the Father at a venerable age, thou, O Sergius, standest now before God together with the angels." },
+          { "canon": "secondCanon", "text": "Cleanse our transgressions, O Word, and enlighten the eyes of our heart, enabling us to see in purity from the outpouring of Thy divine light Thy brightness, by the prayers of venerable father Sergius, that we may all magnify Thee." },
+          { "canon": "secondCanon", "text": "Theotokion: O strange is thy wonder, for thou, O Virgin Theotokos, hast ineffably appeared giving birth to God the Word, the mystery from before all ages, hidden in God; Who hath created all things." }
+        ],
+        "katavasia": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin."
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Thou hast flourished, O Father, like the fig tree of David,\nand hast appeared as the dwelling-place of the all-holy Spirit,\nWho showed thee forth to the inhabited earth as glorious.\nDo thou O venerable father Sergius, pray to Christ without ceasing//\nfor us who venerate with faith thy most venerable memory.",
+      "tone": 3,
+      "label": "Exapostilarion of the venerable one",
+      "repeat": 2,
+      "bothNow": {
+        "text": "We ever bless thee in song, O Virgin,\nfor thou O Theotokos hast given birth to One of the Trinity,\nand didst bear in thy divine arms the abundantly rich Word,//\nunchangeable and immutable.",
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "When the call of God descended upon thee, O most noetically rich father,\nthou didst subject all the wisdom of the flesh to the spirit,\nhaving strengthened thyself with the pangs of fasting,\nand like gold purified in the forge,\nthou wast revealed to be an exceedingly radiant receptacle of the Holy Spirit.\nGathering together a multitude of monastics,\nthrough thine instructions raising them on high, unto the pinnacle of virtues,\nas with a ladder leading unto heaven.\nRemember us, who honor thy sacred memory,//\nand ever supplicate that our souls be saved.",
+          "tone": 4,
+          "melody": "Called from on high",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Today shineth forth thy most illustrious and all-festive memory,\nO most glorious Sergius which hath gathered together a multitude of assemblies of fasters\nand choirs of monastics, both truly Angels and men,\nunto the praise of Christ, our God adored in the Trinity.\nWherefore, approaching the sacred shrine of thy relics,\nwe abundantly receive the gifts of healing\nand glorify Christ, the Savior of our souls,//\nWho hath crowned thee.",
+          "tone": 4
+        },
+        {
+          "text": "O most blessed God-bearer, Father Sergius,\nAs did the Prophet of old, thou hast covered the earth with thy tears\nand never gave sleep unto thine eyes nor allowed thine eyelids to close in slumber,\nthus manifesting the yearning of thy heart after Christ, Whom thou didst exceedingly love;\nwherefore, thou wast an example unto all monastics\nelevating the understanding of every virtue;//\nwherefore, we also bless thee, magnifying Him Who hath glorified thee.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "O holy Father! Having from thy childhood fervently studied virtue,\nthou wast a receptacle of the Holy Spirit,\nand having obtained from Him the gift of working miracles,\nthou didst admonish thy people to shun the sweet things of this life.\nBeing now most clearly illumined with the ineffable divine light,//\nenlighten also our thoughts by thy generosity, O thou wise Sergius.",
+        "tone": 2
+      },
+      "theotokion": {
+        "text": "All my trust I place in thee, O Mother of God,//\ndo thou preserve me under thy protection.",
+        "tone": 2,
+        "label": "Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "As a virtuous ascetic athlete, and true warrior of Christ God\nfighting fiercely the good fight against the passions during this earthly life,\nlaboring in hymnody, vigil and fasting, thou wast an example to thy disciples.\nWherefore, the Holy Spirit made His abode within thee,\nWhose activity adorned thee with radiant beauty:\nSince thou hast great boldness towards the Holy Trinity,\nremember thy flock wisely gathered by thee\nand forget not as thou didst promise, to visit thy children,//\nO venerable father Sergius.",
+      "tone": 4,
+      "label": "Troparion of the venerable one"
+    }
+  }
+}

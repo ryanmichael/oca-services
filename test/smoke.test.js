@@ -882,6 +882,38 @@ describe('Per-feast Matins contracts', () => {
     });
   });
 
+  it('St Seraphim of Sarov (2026-01-02) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-02', {
+      feastName: 'St Seraphim',
+      minBlocks: 320,
+      troparionText: 'thou wast shown to be the beloved favorite of the Mother of God',
+      minCanonBlocks: 80,
+      minLaudsBlocks: 4,
+    });
+  });
+
+  it('St Seraphim (2026-01-02) renders two canons separately, not flat', async () => {
+    const res = await get('/api/matins?date=2026-01-02');
+    assert.equal(res.status, 200);
+    const canonRubrics = res.json.blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const first  = canonRubrics.filter(t => /First Canon/.test(t));
+    const second = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(first.length >= 8,  `Seraphim: expected ≥8 First Canon headings, got ${first.length}`);
+    assert.ok(second.length >= 8, `Seraphim: expected ≥8 Second Canon headings, got ${second.length}`);
+  });
+
+  it('Synaxis of the Forerunner (2026-01-07) renders full festal Matins, not weekday stub', async () => {
+    await assertFestalMatins('2026-01-07', {
+      feastName: 'Synaxis of the',
+      minBlocks: 260,
+      troparionText: 'even unto those in Hades thou didst proclaim God',
+      minCanonBlocks: 30,
+      minLaudsBlocks: 4,
+    });
+  });
+
   it('Pentecost Matins renders two canons separately, not flat', async () => {
     const res = await get('/api/matins?date=2026-05-31');
     assert.equal(res.status, 200);

@@ -256,9 +256,19 @@ function assembleBlessedIsTheMan(fixedTexts) {
     blocks.push(makeBlock(`kathisma-r${i}`, section, 'response', 'choir', k.refrain));
   });
 
-  blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
-    'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
-  blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir', k.refrain));
+  // HTM/Jordanville-family practice splits the doxology: "Glory…" + Alleluia
+  // ×3, then "Both now…" + Alleluia ×3. Overlay supplies `gloryOnly`/`nowOnly`
+  // to opt in; otherwise the combined Glory+Now form is used (single refrain).
+  if (k.gloryOnly && k.nowOnly) {
+    blocks.push(makeBlock('kathisma-glory', section, 'doxology', null, k.gloryOnly));
+    blocks.push(makeBlock('kathisma-glory-refrain', section, 'response', 'choir', k.refrain));
+    blocks.push(makeBlock('kathisma-now', section, 'doxology', null, k.nowOnly));
+    blocks.push(makeBlock('kathisma-now-refrain', section, 'response', 'choir', k.refrain));
+  } else {
+    blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
+      k.gloryNow || 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
+    blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir', k.refrain));
+  }
 
   return blocks;
 }

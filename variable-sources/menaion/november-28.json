@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "feast": "Holy Venerable-Martyr Stephen the New; Holy Martyr Irenarchus",
+    "feastKey": "stStephenTheNew",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "venerableMartyr",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 11-28.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-28.pdf",
+    "_note": "Simple-rank combined: Stephen the New (venerable-martyr, iconoclasm era) + Martyr Irenarchus. Canon of St Stephen in Tone VI, composition of Joseph, acrostic 'Christ crowneth thee with the wreath of martyrdom, O blessed one'. Both Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per menaion-matins-track pattern. Two kontakia given: Tone VIII after Ode 3, Tone III (with ikos) after Ode 6 — Tone III kontakion placed at top level of canon. No lauds section in PDF. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Struggling in fasting upon the mountain,\nthou didst slay the noetic hordes of the enemy\nwith the weapon of the Cross, O all-blessed one,\nmanfully arming thyself again for martyrdom,\nslaying Copronymus with the sword of the Faith.\nAnd for both hast thou been crowned by God,//\nO ever-memorable venerable martyr Stephen.",
+    "tone": 4,
+    "label": "Troparion of the holy venerable-martyr Stephen"
+  },
+  "kontakion": {
+    "text": "From a barren woman didst thou, the offshoot of a root, grow forth,\nO venerable father,\nnamesake of the protomartyr;\nand thou wast shown to be a great instructor of monks,\nunafraid of the wrath of the emperor\nwho did not wish to venerate the image of Christ.\nWherefore, in dying thou didst receive//\nthe crown of martyrdom, O Stephen.",
+    "tone": 3,
+    "label": "Kontakion of the holy venerable-martyr Stephen",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "simple", "feastType": "venerableMartyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Thy blood, O divinely wise one, mystically crieth out to God from the earth like that of Abel;\nfor thou didst clearly preach that Christ was both God and man.\nWherefore, thou didst put to shame the delusion of the iconoclasts\nand hast passed over to the mansions of heaven.\nPray thou that Christ save us.",
+      "tone": 1,
+      "label": "Sessional Hymn of the holy venerable-martyr (after Ode 3)",
+      "melody": "Thy tomb, O Savior",
+      "bothNow": {
+        "text": "O pure Virgin Theotokos who knewest not wedlock,\nthou sole intercessor and protection of the faithful:\nfrom tribulations, sorrows and cruel circumstances deliver all who place their trust in thee,\nO Maiden, and save our souls by thy divine supplications.",
+        "tone": 1,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Struggling in fasting upon the mountain,\nthou didst slay the noetic hordes of the enemy\nwith the weapon of the Cross, O all-blessed one,\nmanfully arming thyself again for martyrdom,\nslaying Copronymus with the sword of the Faith.\nAnd for both hast thou been crowned by God,//\nO ever-memorable venerable martyr Stephen.",
+      "tone": 4,
+      "label": "Troparion of the holy venerable-martyr Stephen"
+    },
+
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the holy venerable-martyr Stephen the New in Tone VI, the composition of Joseph, acrostic: 'Christ crowneth thee with the wreath of martyrdom, O blessed one'. The two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "From a barren woman didst thou, the offshoot of a root, grow forth,\nO venerable father,\nnamesake of the protomartyr;\nand thou wast shown to be a great instructor of monks,\nunafraid of the wrath of the emperor\nwho did not wish to venerate the image of Christ.\nWherefore, in dying thou didst receive//\nthe crown of martyrdom, O Stephen.",
+        "tone": 3,
+        "label": "Kontakion of the holy venerable-martyr Stephen",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "He who is the father of hatred and a stranger to God raised many temptations and threefold waves against thee; yet he could not bear to look upon thy godly life and the straight and undeviating steps of thy path. The vile one devised evils against thee, feigning to be thy disciple, like Judas of old; and made haste to place thee in the hands of the iniquitous, O father, who splendidly confessed Christ and venerated His image with love. Wherefore, thou hast received the crown of martyrdom, O Stephen."
+      },
+
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned,\nthey cried:\nLet us sing to God//\na song of victory.",
+        "troparia": [
+          { "text": "Joyfully treading the narrow path of fasting, O blessed one, thou didst scorch the assaults of the enemy on the griddle of martyrdom and inherited spacious life." },
+          { "text": "She who before was barren, the namesake of Hannah, brought thee forth as a root, like Samuel of old, and gave thee to God Who gave thee to her, O wise one, signifying the grace of thy life." },
+          { "text": "Arriving at the most sacred and divine rank of monastics, O venerable Stephen, thou didst shine forth like a most brilliant star in thy virtues, mystically illumining the faithful." },
+          { "text": "Confining thy body in a narrow dwelling, thou didst furnish thy mind with wings to fly to the heavens, O wise one, freeing thyself to soar well through the expanse of the heavens." },
+          { "type": "theotokion", "text": "Theotokion: With sacred voices let us glorify the holy Lady, O sacred people: the impassable portal, the pure temple of purity, her who is most comely among women." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock\nof Thy confession.",
+        "troparia": [
+          { "text": "Thy mind, made beautiful through the vision of God, O father, was revealed to be most comely, truly filled with every grace, and partaking of divine splendor." },
+          { "text": "Venerating the precious icon of Christ and her who gave birth to Him, O blessed one, by the power of the divine Spirit thou didst despise the vile command of the impious emperor." },
+          { "text": "The most foolish one, binding with iron fetters thee who dost possess a heart of iron, sent thee to prison, O all-blessed Stephen, as a preserver of the dogmas of Christ." },
+          { "text": "Thou didst manifestly possess beautiful feet which tread radiantly the paths of martyrdom, O venerable one, and crushed the heads of the enemy, O much-suffering Stephen." },
+          { "type": "theotokion", "text": "Theotokion: From thee, the only pure one, did the supremely divine Word become incarnate, as is known; and He hath saved from corruption us who worship His divine condescension, in that He is full of loving-kindness." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Illumined with the light of the Spirit, O father, thou didst impart light to the blind by thy supplications, emulating thy Master and God, O divinely inspired one." },
+          { "text": "Thou hast been seen by those sailing afar off at sea, by divine grace piloting to a calm harbor those who with faith invoke thy name, O blessed father Stephen." },
+          { "text": "As a sacred minister, thou didst offer thyself as a sacred immolation unto Him Who was slain for thy sake, O Stephen, and, rejoicing, thou hast found rest in the mansions of the first-born." },
+          { "text": "The dry field wast shown to be wholly healthy by thy precious word, O martyr, and we marvel at the grace given thee abundantly from on high for the correction of all mankind." },
+          { "type": "theotokion", "text": "Theotokion: On thee, O all-immaculate one, have I set all hope of my salvation, and I have fled to thy protection. Be thou my helper, O Maiden, delivering me from evil things." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,//\nWho recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "Our God, Who alone is the Judge of the contest, strengthened thee against the murderers, O venerable Stephen, and truly crowned thy labors of fasting with the honors of martyrdom." },
+          { "text": "Struggling right gloriously, thou wast found, O martyr, sharing fellowship with a multitude of martyrs in prison; for, surrounding thee like stars around a never-waning sun, they shone all the more greatly." },
+          { "text": "O sacred confessors with divine words as emulators of the divine sufferings, we bless you, the three hundred and forty-two who contended against the ungodly." },
+          { "text": "For the icon of Christ the most virtuously glorious multitude of the venerable endured the mockery of having their hair shorn off, their ears and hands severed, and their divine members burned away." },
+          { "type": "theotokion", "text": "Theotokion: O most pure one, who alone hast truly given birth to the Most holy One on earth; sanctify those who ceaselessly profess thee to be the Theotokos, and save us by thy mediation." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,//\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "The author of evil was unable to endure the power of thy words; wherefore, O Stephen, the deceiver savagely gave thee over to bonds, wounds and a violent death." },
+          { "text": "Thou wast burned like bread baked by fire, suspended pitilessly by thy feet, O Paul; thus offering thyself as a sacrifice to God, and been deemed worthy to dwell with the martyrs." },
+          { "text": "With faith and love we bless you, O ye thirty-eight venerable monks who suffered lawfully in Ephesus, imprisoned and deprived of life by suffocation." },
+          { "text": "Thou didst mightily oppose the judge, O right glorious Peter of great renown, and, with thy body lacerated by stripes, thou didst desire to die for Christ, the only Immortal One." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, with steadfast heart we bless thee, who alone among women art all-hymned and comely, the invincible rampart of Christians, the most pure Lady." }
+        ]
+      },
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Thine end was announced to thee by the all-accomplishing will of God, O blessed one; wherefore, thou didst give thyself over to yet greater fasting, and now, having been slain for Christ Who is God over all, thou hast gone from glory to glory." },
+          { "text": "Thou wast glorified with the protomartyr of the same name as thee; for, stoned, dragged and beaten mercilessly, thou didst fill the earth with blood and, rejoicing, surrendered thy soul to the Lord." },
+          { "text": "Dragged through the streets of the city, O martyr Stephen, thou didst smooth the way of martyrdom for all the faithful; and stepping forth upon it confidently, they have manifestly reached the city of heaven." },
+          { "type": "theotokion", "text": "Theotokion: The most sacred prophets announced beforehand the supremely revealed mystery of thine honored birthgiving, O pure one. And we, splendidly contemplating the fulfillment thereof, now piously call thee blessed." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,//\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Most savagely, like wild beasts, the murderous ones seized the lamb of Christ, beating him, and they who live iniquitously buried him with the malefactors." },
+          { "text": "Pitilessly the enemy crushed thy head which God hath crowned with the wreath of victory in the highest, O crowned sufferer, glory of martyrs and all the venerable." },
+          { "text": "The divinely wise and righteous Andrew, steadfastly opposing the tyrant, was broken by blows and mercilessly slain, chanting to Christ God throughout all ages." },
+          { "text": "As a most holy habitation of Him Who resteth in all the saints, O much-suffering Stephen, thou dost bear Him in thy heart throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: With the sprinkling of the divine blood which flowed from the side of thy Son and God, O Virgin who art blessed of God, wash away, I pray thee, the defilement which hath come upon me through wicked sin." }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts//\nHim we magnify and thee we call blessed.",
+        "troparia": [
+          { "text": "Beholding the ranks of angels, patriarchs, the venerable, prophets, martyrs, apostles and all the righteous, O divinely inspired one, thou didst rejoice; and as thou hast now joined them, be thou mindful of, and help those of us on earth, who in a pure manner call thee blessed." },
+          { "text": "Thou wast like a light, like the dawning, like the great sun, like the star-spangled sky replete with the splendors of miracles and holy wounds, O Stephen, truly adorning the thoughts of all who praise thee, O much-suffering martyr." },
+          { "text": "Having first destroyed the princes of darkness with the steadfast feats of asceticism, O father, thou didst later suffer mightily, giving them over to utter destruction, O Stephen, beauty of the martyrs and boast of the venerable." },
+          { "text": "Thy most glorious memory doth today illumine the multitudes of the earthborn with the most radiant beams of the gifts of the Spirit, O divinely blessed Stephen. Illumine and sanctify us who now joyfully celebrate it." },
+          { "type": "theotokion", "text": "Theotokion: O divinely joyous one, abode of the Light, true confirmation of hieromartyrs and boast of all the venerable: from misfortunes, evil circumstances and the invasion of enemies save us who hymn thee." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "With the pangs of asceticism didst thou utterly slay the serpent, the author of evil,\nlaying hold of the wreath of martyrdom in the end,\nO all-praised Stephen, rendering worship to the precious images,\nin that it manifestly passeth on to the Prototype, O all-blessed one.",
+      "label": "Exapostilarion of the holy venerable-martyr",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "Thou wast the all-immaculate Bride of the ineffable Son, and His most pure habitation, O Theotokos;\nfor thou hast given birth to God the Word, the pre-eternal Light Who dwelt within thee.\nHymning, therefore, thy birthgiving,\nwe magnify thee as is meet, O all-immaculate Maiden.",
+        "label": "Theotokion"
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "feast": "Holy Prophet Isaiah and Holy Martyr Christopher",
+    "feastKey": "prophetIsaiahMartyrChristopher",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "prophet-martyr",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 05-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-09.pdf",
+    "_note": "Two commemorations: Holy Prophet Isaiah (principal) and Holy Martyr Christopher. Single joint canon in Tone IV by Theophanes covering both saints — classified simple-rank-combined. Sessional hymns after Ode 3 given separately for each saint; 'Both now' is from the Pentecostarion (not captured). No exapostilarion in PDF. No lauds doxastikon in PDF. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Celebrating the memory * of Thy Prophet Isaiah, O Lord, * through him we entreat Thee: ** Save Thou our souls!",
+    "tone": 2,
+    "label": "Troparion of the Holy Prophet Isaiah"
+  },
+
+  "kontakion": {
+    "text": "Receiving the gift of prophecy, * O martyred Prophet Isaiah, thou herald of God, * thou didst explain to all the incarnation of the Lord, * exclaiming aloud to the ends of the earth: ** \"Behold, a Virgin shall conceive in her womb!\"",
+    "tone": 2,
+    "label": "Kontakion of the Holy Prophet Isaiah",
+    "melody": "The tomb and mortality"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "prophet-martyr",
+      "_source": "stSergius-menaion"
+    },
+
+    "sessionalHymns": {
+      "text": "Having cleansed thy soul of carnal passions, thou didst behold Him Who is God over all, O most noetically rich prophet, shining forth with the radiant beams of prophecy, and saying: \"The Creator shall be born as a little Babe, Who will save us from corruption through the supplications of her who gave Him birth!\"",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy prophet (after Ode 3)",
+      "melody": "Go thou quickly before",
+      "_note": "Glory: Sessional Hymn of the holy martyr Christopher (same tone, melody 'Thou hast appeared today'): 'Finishing the struggle of martyrdom, O glorious and blessed Christopher, thou didst receive a crown of victory from God, Whom do thou beseech that He deliver us from misfortunes.' Both now: Sessional Hymn from the Pentecostarion (not captured).",
+      "bothNow": null
+    },
+
+    "troparion": {
+      "text": "Celebrating the memory * of Thy Prophet Isaiah, O Lord, * through him we entreat Thee: ** Save Thou our souls!",
+      "tone": 2,
+      "label": "Troparion of the holy prophet"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy prophet and martyr in Tone IV, the composition of Theophanes",
+
+      "kontakion": {
+        "text": "Receiving the gift of prophecy, * O martyred Prophet Isaiah, thou herald of God, * thou didst explain to all the incarnation of the Lord, * exclaiming aloud to the ends of the earth: ** \"Behold, a Virgin shall conceive in her womb!\"",
+        "tone": 2,
+        "label": "Kontakion of the holy prophet",
+        "melody": "The tomb and mortality"
+      },
+      "ikos": {
+        "text": "Let all of us faithful from all lands, come together to hymn as is meet, Isaiah wondrous among the prophets; for, receiving the gift of prophecy, he illumined the whole world, proclaiming unto all the mystery of the divine union, and crying out with them: \"The invisible God is with us! Behold, a Virgin shall conceive in her womb!\""
+      },
+
+      "ode1": {
+        "irmos": "I will sing unto Thee, O Lord my God, * for Thou hast led Thy people out of the bondage of Egypt, * and hast drowned in the waters * the chariots and the might of Pharaoh.",
+        "troparia": [
+          { "text": "Enlighten me, O word my God, and guide me, that I may radiantly praise the glorious and honored festival of Thy divine prophet." },
+          { "text": "The divinely sounded trumpet of Isaiah, sounding forth unto the earth, hath summoned the children of the Church to celebrate his memory." },
+          { "text": "Having steadfastly made the passions of thy body subject to the thoughts of thy soul, O God-bearer, thou hast been deemed worthy to behold the glory of the Almighty." },
+          { "text": "Come, all ye Christ-bearers, and let us piously hymn today the memory of Christopher, the divinely wise witness to the Truth." },
+          { "text": "Having manfully struggled against falsehood, O passion-bearer, strengthened by the might of Christ thou didst trample underfoot the threats of the tyrants." },
+          { "type": "theotokion", "text": "Theotokion: O most pure Theotokos, the glorious Isaiah, foreseeing thee as a staff, proclaimed the incarnate Word Who would come forth from thee like a flower." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty hath waxed feeble * and the weak have girded themselves with strength: * therefore is my heart established * in the Lord.",
+        "troparia": [
+          { "text": "Receiving the full radiance of the Spirit, O glorious one, thou didst proclaim the ineffable mystery of the dispensation of the Word." },
+          { "text": "Thou wast caught up to the heights of heaven, and didst show forth the radiance of piety, denouncing the impotence of the vanity of idolatry." },
+          { "text": "Isaiah prophesied Christ the Master, Who sustaineth the universe, as the all-precious Cornerstone set in Sion." },
+          { "text": "Protected by the armor of the Cross, O martyr Christopher, thou didst endure wounds, delighting now, and rejoicing, in that which thou didst ever desire." },
+          { "text": "Thy flesh was cut away by wounds, O Christopher, but thy God-loving soul was nourished with love, meditating on the delight of the kingdom." },
+          { "type": "theotokion", "text": "Theotokion: Truly the saying of Isaiah hath been fulfilled: for the Virgin hath given birth to the incarnate Bestower of life, the Savior of our souls." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Proclaiming the advent of Thine appearance on earth, O Christ God, * the prophet cried aloud with gladness: * Glory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Ascending to the summit of the virtues, and conversing in purity with Him Whom thou didst desire, thou dost sing with joy: Glory to Thy power, O Lord!" },
+          { "text": "Isaiah was entrusted with the grace of prophecy, showing himself to be a dwelling-place of God; wherefore he hath been counted worthy of the incorrupt glory of the heavenly hosts." },
+          { "text": "As an initiate of ineffable mysteries, O glorious one, full of the divine Spirit thou didst say in a proverb that the children, the Churches of the nations, would be renewed." },
+          { "text": "Thou hast received a heavenly inheritance, O martyr, having struggled for Christ on earth, manfully extinguishing the idolatrous delusion of the cruel demon." },
+          { "text": "As he had tempted our forefather Adam of old, the serpent exposed thee to a woman's temptation, O martyr, but though he sought to choke thee, he was vanquished and put to shame." },
+          { "type": "theotokion", "text": "Theotokion: The Babe born from the Mother of God painlessly, hath been given to us by the prophetess; Whose governance the godly Isaiah proclaimed would be upon His shoulders." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Do Thou O Lord send down upon us * Thine enlightenment, and free us * from the gloom of transgression, O Good One, * granting us Thy peace.",
+        "troparia": [
+          { "text": "Beholding the lofty hidden mystery, and the ancient counsel of the Most High, thou didst announce God's dispensation concerning us, O divinely eloquent one." },
+          { "text": "The ever-flowing well-spring of Thy sufferings, O Lord, washeth away our passions; for Thou hast come, O Savior, as the Prophet Isaiah hath taught." },
+          { "text": "The pious Isaiah hath proclaimed to the ignorant the one Trinity in a single Essence: the Word and the Holy Spirit, Who came forth from God the Father." },
+          { "text": "With the enlightenment of grace thou didst fish for men, manifestly annulling the savagery of the ungodly tyrants, O wise one, who wast invested on earth with power from on high." },
+          { "text": "Manifestly desiring the enjoyment of heaven more than anything earthly, O wise Christopher, thou didst mightily endure the pangs of martyrdom, strengthened by the Cross." },
+          { "type": "theotokion", "text": "Theotokion: Isaiah clearly foresaw Thee sitting upon the cloud of Thy most hymned Mother, O Lord, casting down the idols of Egypt." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Prefiguring Thy three-day burial * Prophet Jonah praying in the belly of the sea-monster cried aloud: * Deliver me from corruption * O Jesus Thou King of hosts.",
+        "troparia": [
+          { "text": "Transported by the Spirit, Isaiah beheld on the throne of dominion the threefold shining glory, hymned with the thrice-holy hymn." },
+          { "text": "To thy fearful lips, O Isaiah, the seraph bore the burning ember, carrying it with tongs; making thee a mystically consecrated prophet of God." },
+          { "text": "Perceiving from afar the fulfillment of his prophecies, Isaiah rejoiced spiritually with the angels and, leaping up, glorified Him Who hath fulfilled his prophecies." },
+          { "text": "Waging war not against flesh or blood, the valiant one vanquished principalities and demons, strengthened by the invisible power of the Son of God." },
+          { "text": "Piously loving the uttermost Desire, O spiritual athlete, thou didst not feel pain when lacerated, ever elevating thy mind to thy Master." },
+          { "type": "theotokion", "text": "Theotokion: Having beheld the Virgin who hath conceived in her womb and given birth to the Word, the Son of God incarnate, the glorious Prophet Isaiah doth now rejoice." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Of old the Children of Abraham in Babylon * trampled down the flame of the furnace, * crying aloud with hymns: * O God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Beholding the deliverance of salvation which will come upon us, Isaiah cried aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "With the grace of prophecy and the crown of martyrdom hath Isaiah been crowned, who is my strength and my song. O God of our fathers, blessed art Thou!" },
+          { "text": "With thy God-bearing tongue thou didst lay down the bounds of piety and the laws of life, O divinely inspired prophet. O God of our fathers, blessed art Thou!" },
+          { "text": "Having run the path of martyrdom with endurance, Christopher dwelleth in the mansions of heaven, chanting: O God of our fathers, blessed art Thou!" },
+          { "text": "With the dew of piety Christopher caused the flame of ungodliness to die out, crying out in hymns: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Beholding the supra-natural birthgiving and the splendor of purity of the Virgin, Isaiah cried out: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon the godly Children, * burning with a fiery zeal for God * bravely trampled upon the threat of the tyrant and the fire; * and thrown into the midst of the flames * they were refreshed with dew and sang: * Bless the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Arrayed as with a bridegroom's robe of gladness, the glorious Isaiah doth now rejoice in gladness, delighting in divine food, and exclaiming with the angels: O all ye works of the Lord, bless ye the Lord!" },
+          { "text": "The accursed ones who were deceived by demonic words, of old cut themselves off from God, have fallen away from the pure earth, wherefore, in accordance with the prophet's words, they are rightly unable to chant: O all ye works of the Lord, bless ye the Lord!" },
+          { "text": "Forsaking falsehood, multitudes of the gentiles have hastened to the divine radiance and betrothed themselves to the Church of Christ, as Isaiah foresaid of old; and with hymns they now chant: O all ye works of the Lord, bless ye the Lord!" },
+          { "text": "The wave of the madness of idolatry, boldly issuing forth, hath been broken upon the steadfast and adverse opposition of the martyrs, who having accepted tribulations for Christ cry aloud: O all ye works of the Lord, bless ye the Lord!" },
+          { "text": "Beautifully arrayed now in a royal robe empurpled in thy blood, O invincible martyr Christopher, thou hast joined chorus with the angelic choirs, chanting to thy Creator: O all ye works of the Lord, bless ye the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: The Virgin Maiden, the Mother of God, holding as an infant the Word Who giveth life unto all and hath created all things, as Isaiah said of old, joyfully cried aloud: O all ye works of the Lord, bless ye the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin * because of the infirmity of disobedience; * but thou, O Virgin Theotokos, * hast through the Offspring of thy pregnancy * blossomed forth blessing upon the world. * Wherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Thou dost stand in splendor before the throne of the Master of hosts, O all-blessed and glorious God-pleaser, delighting in His glory and gathering together the fruits of thy piety; wherefore we all magnify thee." },
+          { "text": "Come now, O ye who desire the gifts of the prophet's light, earnestly receive ye the Book of Isaiah, which is full of divine knowledge. Let us attend unto it with steadfast desire, that we may be filled with divine radiance." },
+          { "text": "Manifestly illumined by the Spirit of radiance, O God-bearing Isaiah, pray thou that those who with faith celebrate thine honored and radiant memorial may receive salvation, that we all may magnify thee." },
+          { "text": "Receiving a radiant crown as a victor, O all-glorious Christopher, thou reignest with the Master, Who strengthened thee amid thy tortures and gave Thee His life-bearing hand, that thou mightest prevail over the author of evil." },
+          { "text": "Radiantly washed in the blood of martyrdom, thou wast illumined, O all-wondrous one; and, rejoicing now, thou hast entered with the Bridegroom into the virginal wedding-chamber. O glorious martyr, cease not to ask peace for the world." },
+          { "type": "theotokion", "text": "Theotokion: O pure divine Bride and Mother of God, in thine arms thou dost bear the noetic Ember, which Isaiah beheld, united to our form, and splendidly bestowing salvation upon the world. Wherefore, we all magnify thee." }
+        ]
+      }
+    }
+  }
+}

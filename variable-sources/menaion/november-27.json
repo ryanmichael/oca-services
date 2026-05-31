@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "feast": "Holy Great-Martyr James the Persian",
+    "feastKey": "stJamesThePersian",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "greatmartyr",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 11-27.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-27.pdf",
+    "_note": "Two commemorations: Holy Great-Martyr James the Persian (primary, Matins) and Venerable Palladius (secondary, canon assigned to Compline per Sergius rubric — omitted from Matins track). Single Matins canon of the great-martyr by Joseph in Tone II; acrostic 'With songs do I hymn the Persian martyr James'. 6 troparia per ode (3 saint + 1 theotokion; ode3 has 3 saint troparia + theotokion). Sessional hymn in Tone VIII after Ode 3. Kontakion + Ikos after Ode 6. Exapostilarion present; no tone number given in PDF. Lauds aposticha Glory in Tone II (composition of the Studite) stored in lauds.doxastikon. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "In his sufferings, Thy martyr James O Lord, *\nreceived an imperishable crown from Thee, our God; *\nfor, possessed of Thy might, *\nhe set at naught the tyrants and crushed the feeble audacity of the demons. **\nBy his supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy great-martyr"
+  },
+  "kontakion": {
+    "text": "Persuaded by thy good spouse, O James who wast patient of soul, *\nand fearing rather the dread tribunal, *\nthou didst spit upon the Persians' command and the fear of them, *\nshowing thyself to be an honorable martyr **\nwhose body was pruned like a vine.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "greatmartyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Christ hath caused the godly and ever-memorable martyr James to shine forth from Persia like a star newly-appeared;\nwherefore, he hath dispelled the darkness of deception and shone forth the grace of the Spirit upon the faithful.\nTherefore, let us keep his memory with faith and cry out, saying:\nO much suffering spiritual athlete, entreat Christ God,\nthat He grant remission of sins to those who with love celebrate his holy memorial.",
+      "tone": 8,
+      "label": "Sessional Hymn of the holy great-martyr (after Ode 3)",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "Mired in the depths of sin, there is no strength left in me;\nthe tempest of my trespasses hath engulfed me.\nBut since thou hast given birth to the Word, the only Lover of mankind,\nlook upon me thy servant, I entreat thee,\nand deliver me from sin and the soul-corrupting passions,\nand from every ill inflicted by the deceiver, O Lady,\nthat I may sing with joy:\nPray to Christ God on behalf of me thy servant,\nthat I may be granted the remission of sins;\nfor I have set my hope in thee.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "In his sufferings, Thy martyr James O Lord, *\nreceived an imperishable crown from Thee, our God; *\nfor, possessed of Thy might, *\nhe set at naught the tyrants and crushed the feeble audacity of the demons. **\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy great-martyr by Joseph in Tone II; acrostic 'With songs do I hymn the Persian martyr James'. The two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Persuaded by thy good spouse, O James who wast patient of soul, *\nand fearing rather the dread tribunal, *\nthou didst spit upon the Persians' command and the fear of them, *\nshowing thyself to be an honorable martyr **\nwhose body was pruned like a vine.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Let us all sigh from the depths of our souls, pouring forth tears as we envisage the martyr cruelly dismembered by those who were like barking dogs, and who, gathering together, tore off the limbs of the wondrous martyr, who was valiant in his confession. What then shall I say? If ye desire, let me tell all with zeal, how one day death came to James, whose body was pruned like a vine."
+      },
+
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nWhich He had brought up out of the bondage of Egypt;\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Standing now before the throne of Christ as one crowned, O glorious martyr James, by thy supplications grant me radiant illumination and grace from heaven." },
+          { "text": "Issuing forth from the east, O martyr James, thou hast shone upon us like a radiant dawn illumining the Church of Christ with the effulgence of thy sufferings." },
+          { "text": "Having shown youthful resistance, as a victor thou wast deemed worthy of the honors of a successful combat and eternal glory, O martyr James." },
+          { "type": "theotokion", "text": "Theotokion: The trumpets of the prophets announced thee, proclaiming the mystery wrought within thee, O Virgin Theotokos, having beheld thy wonders from afar." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee\nplant the fear of Thee.",
+        "troparia": [
+          { "text": "Thou wast like a choice vine of Christ, pruned with the sickle of torments, and which, bearing much fruit, is offered up in the winepress of the Savior." },
+          { "text": "Thou didst sensibly perceive the corruption and instability of transitory things, O crown-bearer; and as one with a great intellect, preferred the stability of those things which abide forever." },
+          { "text": "Thy body, dismembered by the savagery of the torturers, won thee splendid crowns, O James, and the delight of the food of paradise." },
+          { "type": "theotokion", "text": "Theotokion: Mankind, united hypostatically to the Master of all through thy divine birthgiving, O Virgin Bride of God, hath manifestly received mercy." }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee\nWho alone lovest mankind.",
+        "troparia": [
+          { "text": "Revived by the armor given thee by God, O glorious one, thou didst reduce to ashes all the deception of those who worship fire." },
+          { "text": "Ask thou cleansing for us who celebrate thy precious memory, O martyr James, in that thou dost possess boldness." },
+          { "text": "The torrents of blood gushing forth from thy members, O thrice blessed one, have quenched all the flames of delusion." },
+          { "type": "theotokion", "text": "Theotokion: Direct my thoughts to the calm haven of thy dispassion and purity, O most pure one." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,\nfor we know none other God than Thee.",
+        "troparia": [
+          { "text": "Thou wast truly like richly fertile earth, broken apart by the plough of bitter torments, O wise one, bringing a goodly harvest to the Creator." },
+          { "text": "With the blood of the severed limbs of thy body thou didst extinguish the burning arrows of the enemy, O thrice-blessed one; for thou wast shown to be protected by hope and faith." },
+          { "text": "As each of thy members was cruelly cut away, O most wise one, like a goodly lamb thou didst offer to Christ a hymn of victory and fitting praise." },
+          { "type": "theotokion", "text": "Theotokion: Clearly offering a genuine cry to thine honored and awesome birthgiving with heart and tongue, we now call thee the pure Theotokos." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Having sensibly accepted the instruction of thy friends, O glorious one, rejoicing, thou didst hasten to the struggle and received a crown of victory." },
+          { "text": "Suffering as though in another's body, O martyr James, thou didst endure dismemberment, sending up hymnody to the Master." },
+          { "text": "As a victorious martyr, O most wise one, thou didst manifestly array thyself in the robe of salvation and the vesture of gladness, which had been dyed in thy blood." },
+          { "text": "Having traversed the sea of martyrdom, thou didst receive a sacred crown of victory, and now joinest chorus with ranks of martyrs as is meet, O glorious James." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth without knowing a man, O Virgin, remaining a virgin forever, showing forth the impress of thy Son and God, the true Divinity." }
+        ]
+      },
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "When thy body was dismembered, O martyr James, strengthened by divine faith, noetic might and spiritual endurance, thou wast unmoved and unshaken, crying aloud: O God of our fathers, Blessed art Thou!" },
+          { "text": "Having set thy thoughts on the goal of a higher calling, thou wast not overwhelmed when torments were poured forth upon thee; but, enduring the wounds inflicted on thee by the iniquitous as is meet, dismembered, thou didst chant: O God of our fathers, Blessed art Thou!" },
+          { "text": "Blessed art Thou, and well is it for thee now, O most blessed one, who vanquished the savage cruelty of the wicked one and the wrath of the tyrant, saying with zeal: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Thou hast been shown to be a candle-stand of golden luster for the never-waning Light, the Candle of divine splendor, illumining all the world with the radiance of thine honorable virginity, and saving those who chant aloud: Blessed art thou who hast given birth to God in the flesh!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,\nand supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "Strengthened by the power of God, O blessed one, thou didst drive off the assemblies and hordes of the wicked, and having mightily dispelled them, received a crown of victory, crying aloud: Bless the Lord, all ye works of the Lord! Hymn and supremely exalt Him throughout the ages!" },
+          { "text": "Thou didst look upon the severing of thy members as goodly offerings, O martyr, ignoring the attendant pangs, but directing thy gaze rather to the beauteous crowning of the martyrs which is to come, and which hath been prepared by the just Judge." },
+          { "text": "Having steadfastly acquired supra-natural endurance, thou didst remain like a pillar, O blessed one, fearlessly undergoing the assaults and receiving the darts of the enemy, crying aloud: Bless ye Christ throughout the ages!" },
+          { "text": "The soul-corrupting enemy, the author of evil, assailing thee with great fury, and inspiring the torturers to break the strength of thy soul, was unable to accomplish his ends, O glorious one, for thou didst array thyself in the armor of Christ." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, we know thee to be the clear well-spring of immortality, for thou hast given birth to the Word of the immortal Father, Who hast delivered from death all who supremely exalt Him throughout the ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,\nHim we faithful with one accord magnify in song.",
+        "troparia": [
+          { "text": "Joining chorus with the martyrs, O thrice-blessed one, and standing as a martyr before the throne of Christ, by thy supplications deliver from cruel misfortunes those who celebrate thy memory today and with gladness honor thy radiant festival." },
+          { "text": "As a martyr, O James, thou hast now truly made thine abode in the heavens, where the assemblies of the martyrs are, where the holy multitude of all the saints rest, where the souls of the righteous and the Church of the firstborn are." },
+          { "text": "Thou hast taken thy place before the Savior of all as a lamp-bearer, for Whom thou didst endure the severing of the members of thy body and with might ignored the fire and wounds of thy trials. Wherefore, with faith and love we all call thee blessed, O James." },
+          { "text": "Clad now in an embroidered purple robe dyed in thine own blood, thou dost reign with Christ, O James; for through sufferings thou didst find the well-spring of dispassion, in which thou hast been deemed worthy to delight eternally, O all-blessed one." },
+          { "type": "theotokion", "text": "Theotokion: Manifestly ascribing to thee a title befitting the nature of things, and likewise offering up to thee a divine cry, we glorify thee, the Theotokos, as the one who conceived God and truly became the pure Mother of God." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "The Lord hath glorified thee as a branch pruned by manifold tortures,\nas an honored vine pouring forth wine in the wellsprings of thy blood,\nO spiritual athlete James,\nprotector of those who with love keep thy most sacred memory as is meet.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy great-martyr",
+      "melody": "By the Spirit in the Sanctuary",
+      "bothNow": {
+        "text": "There is no salvation in me, O Virgin,\nfor evilly I have fallen into the abyss of sin\nand await the threat of dread torment and the portion of the goats.\nTake pity upon me before the judgment,\nfor thou art my fervent help, O Theotokos.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "Enduring amid thy sufferings, O martyr James,\nthou didst surrender thy body unto Christ God,\nand when thy fingers, hands, arms, and legs were cut off, and finally thy head,\nthou didst take wing to the heavens, and reignest with the King of all.\nWherefore, O most mighty of spiritual athletes,\ncease thou never to pray, that our souls be saved from all the malice of the enemy.",
+        "tone": 2
+      }
+    }
+  }
+}

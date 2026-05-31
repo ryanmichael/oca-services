@@ -1,0 +1,174 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Januarius, Bishop of Benevento, and his Companions; Holy Hieromartyr Theodore, Bishop of Perge",
+    "feastKey": "ssJanuariusAndTheodore",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "hieromartyrs",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 04-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/04-21.pdf",
+    "_note": "Two hieromartyrs commemorated jointly. PDF has two separate canons both in Tone IV: Canon I of Januarius (irmos from Tone IV canon) + Canon II of Theodore (irmos from Tone IV canon). Authored as simple-rank per probe classification: Canon I (Januarius) included as primary; Canon II (Theodore) troparia included combined in each ode. Joint Kontakion Tone III after Ode 6; no Ikos in PDF. Two sessional hymns after Ode 3 (Januarius + Theodore, both Tone IV melody 'Having been lifted up') plus Theotokion. No exapostilarion in source PDF. No lauds doxastikon in source PDF. Troparion: standard hieromartyr-bishop form; source PDF does not include troparion text — using standard OCA form personalized to Januarius. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles and didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision, O divinely inspired one.\nWherefore, ordering the word of truth, thou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Januarius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyrs"
+  },
+  "kontakion": {
+    "text": "Ye were adorned with the anointing of the priesthood\nand the blood of martyrdom,\nO glorious Januarius and Theodore,\nshining forth everywhere,\ndancing in the highest, and look down upon us,\nwho have come to your temple and unceasingly cry out therein:\nPreserve us all,//\nentreating God Who is the Lover of mankind!",
+    "tone": 3,
+    "label": "Kontakion of the holy hieromartyrs",
+    "melody": "Having been lifted up"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "hieromartyrs", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": [
+      {
+        "text": "Having empurpled thy priestly vesture in the dye of thy blood, thou didst manifestly show it forth as most splendid, O favorite of Christ.\nWherefore, thou hast entered into the eternal mansions, pouring forth an abyss of healings upon those who honor thee,\never entreating God, that He grant forgiveness of transgressions unto all.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy hieromartyr Januarius (after Ode 3)",
+        "melody": "Having been lifted up"
+      },
+      {
+        "text": "Come, let us praise the namesake of the gifts of the Savior, the heir to His blessedness,\nas an emulator and martyr of Christ God,\ncelebrating now his honored memory and crying out to him:\nO great martyr, pray thou, that He grant us forgiveness of sins.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of the holy hieromartyr Theodore",
+        "melody": "Having been lifted up"
+      },
+      {
+        "text": "O Theotokos, fleeing to thy divine protection after God,\nI humbly fall down and beseech thee:\nHave mercy, O most pure one,\nfor my sins have submerged my being,\nand trembling O Sovereign Lady, I fear the torments to come,\nO pure one, entreat thy Son,//\nthat I may be delivered from them.",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles and didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision, O divinely inspired one.\nWherefore, ordering the word of truth, thou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Januarius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyrs"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon I of the holy hieromartyr Januarius in Tone IV + Canon II of the holy hieromartyr Theodore in Tone IV (both canons interleaved per the PDF; Theodore troparia included inline). The two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Ye were adorned with the anointing of the priesthood\nand the blood of martyrdom,\nO glorious Januarius and Theodore,\nshining forth everywhere,\ndancing in the highest, and look down upon us,\nwho have come to your temple and unceasingly cry out therein:\nPreserve us all,//\nentreating God Who is the Lover of mankind!",
+        "tone": 3,
+        "label": "Kontakion of the holy hieromartyrs",
+        "melody": "Having been lifted up"
+      },
+
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin,\ndrown I implore Thee, in the depth of dispassion\nthe triune nature of my soul,\nas Thou didst the mighty strongholds of the warriors,\nthat in the mortality of my flesh as on a timbrel//\nI may chant a hymn of victory.",
+        "troparia": [
+          { "text": "Dwelling with the armies of the immaterial angels, and illumining thy soul by partaking of the never-waning light, O blessed one; illumine the heart of me who praise thy radiant feast today." },
+          { "text": "A splendid army, a sacred assembly, suffered patiently with thee, O wise sacred minister, and with them thou didst destroy every machination of the serpent, enduring most complex tortures with firm resolve." },
+          { "text": "Following the steps of Christ, the great Chief Shepherd, O wise one, thou didst make the vesture of thy priesthood bright with the dye of thy martyrdom; wherefore, we honor thee with uprightness of mind." },
+          { "type": "theotokion", "text": "Theotokion: Blessed are the people who glorify thee, the true Mother of God, O pure Theotokos, and ever bless thee, as thou didst foretell, prophesying in a sacred manner, when thou didst bear Christ within thyself." },
+          { "text": "O Theodore, thou wast the adornment of the martyrs, a gift right-acceptable to God and beloved by Him; wherefore, I offer thee hymnody as a gift: Grant me thine aid." },
+          { "text": "As one comely of body and beautiful of spirit, thou didst go forth to do battle with the deceiver; and having destroyed him, thou hast received the crown of victory." },
+          { "text": "Thou didst set at naught the words of the wicked one, O Theodore, and didst manifestly show thyself to be a true favorite of the Lord, and a warrior and perfect martyr of Christ the King." },
+          { "type": "theotokion", "text": "Theotokion: He Who is unapproachable in His essence made His abode within thy womb, O most immaculate one, and in His ineffable loving-kindness hath shown us to be inhabitants of paradise, from whence we had been driven by the malice of the serpent." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty hath been rendered impotent\nand the infirm are now girded with strength;\nwherefore my heart is established in the Lord.",
+        "troparia": [
+          { "text": "Preserved by the effulgence of the Holy Spirit, thou didst dance within the furnace, O most blessed one, emulating the venerable children of old." },
+          { "text": "The ranks of sacred hosts danced with thee in the midst of the furnace, O divinely wise one; and with them thou didst hymn the Benefactor, remaining unconsumed." },
+          { "text": "Thy tongue was truly a honeyed river of mellifluous teachings, O most wise Januarius, delighting the thoughts of those who beheld thee." },
+          { "type": "theotokion", "text": "Theotokion: Break asunder the bonds of my sins, O Bride of God, in that through thy birthgiving thou hast broken the bonds of Hades and filled all with joy." },
+          { "text": "As the temple of the divine Spirit, O wise Theodore, thou didst demolish the pernicious temples of the graven images, and with thy words denounce the abominable offerings of the iniquitous." },
+          { "text": "With rage and wrathful intent the iniquitous judge beat thee who maintained the laws of our God, O Theodore. And beholding Him before thee, thou didst remain unshaken." },
+          { "text": "Thou didst willingly lie down upon the heated grill, O athlete Theodore, burning with zeal for God Almighty, and aflame with divine love for Him." },
+          { "type": "theotokion", "text": "Theotokion: He Who is timeless by nature became visible and subject to time through thee; and was born in the likeness of the flesh, overlooking mine immeasurable transgressions in His ineffable tender compassion, O all-immaculate one." }
+        ]
+      },
+      "ode4": {
+        "irmos": "For the sake of love for Thine image, O compassionate One,\nThou didst ascend the cross and the nations melted away.\nFor Thou, O Lover of mankind,//\nart my strength and my praise.",
+        "troparia": [
+          { "text": "Together let us all honor the deacon and athlete Sosius, the sacred Faustus, the great Proclus and Desiderius." },
+          { "text": "Thou didst in nowise fall into the slumber of impiety, O martyr Proclus, but with thy divine vigilance didst lull to sleep all the evil thoughts of the ungodly." },
+          { "text": "O Januarius, Christ our God preserved thee unharmed with thy fellow athletes, when, like a new Daniel, thou wast set in the midst of wild beasts." },
+          { "type": "theotokion", "text": "Theotokion: Let us magnify the only blessed one, for whose sake the Supremely good One, becoming incarnate of her, hath truly and greatly blessed all mankind." },
+          { "text": "An angel of heaven stood by thee as thou didst lie, unburned, upon the grill, bedewing thee, and revealing fearsome portents in the flooding of the river's waters, in earthquake and thunder." },
+          { "text": "Cleaving unto thee who didst work miracles by faith, O martyr, Dioscorus suddenly left falsehood for the Faith, rolling away from it like a stone; wherefore he hath been enrolled in the choir of the martyrs, having met his end in the fire." },
+          { "text": "Laying up, at the command of God, the Faith which thou didst have from childhood in safekeeping, as a guardian thereof thou didst preserve it for God, O most glorious one, and with perfect understanding didst revile as mindless those who did not cherished it." },
+          { "text": "Thou didst endure the trials of greatly painful tortures and manifold sufferings, O martyr, and hast been deemed worthy of the ability to heal, as an heir to the habitations devoid of pain, and life and delight truly devoid of grief." },
+          { "type": "theotokion", "text": "Theotokion: O Maiden, thou hast given birth without pain to the incorporeal God Who hath done away with the pain of our first mother and delivereth from the pangs of Hades the pain-filled life of those who have sinned." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Thou didst make thy vesture most splendid with thy sacred blood, O most noetically rich hieromartyr, and as a priest hast arrived in the temple on high." },
+          { "text": "Thou wast a river of healings, pouring forth thy most precious blood upon the earth and drying up the torrents of the passions." },
+          { "text": "The unjust judge who was blinded didst thou illumine by thy supplication, emulating the loving-kindness of the Master of all, O most noetically rich hieromartyr." },
+          { "type": "theotokion", "text": "Theotokion: We hymn thee, because of whom the Master of all, the never-waning Light, hath shone forth upon those in darkness, and with love we bless thee." },
+          { "text": "Thou didst thoroughly denounce ungodly delusion; wherefore, though thou wast bound to a chariot, thou didst remain whole when the fiery steeds of the chariot of flame bore thee aloft, like the glorious Elijah, O Theodore." },
+          { "text": "Raging, the iniquitous one cast thee, and the godly Dionysius and Socrates, into the burning furnace; and with them thou didst chant the sacred hymns of the prophet, O Theodore of valiant mind." },
+          { "text": "Let the godly Dionysius be praised in hymns, together with the valiant Socrates, for in the midst of the furnace they were pierced by a spear; for, having submitted to the divine instructions of Theodore, they became mighty martyrs." },
+          { "type": "theotokion", "text": "Theotokion: As thou alone art truly and surely most immaculate, O Theotokos, strengthen me, that I may gain control over the passions which enslave me, that, rejoicing, I may bless thee, the salvation of the faithful, with a free mind." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss,//\nO Greatly-merciful One.",
+        "troparia": [
+          { "text": "The assembly of the iniquitous, seeing thee working signs by thy words, O initiate of the sacred mysteries, came to the Creator with all their soul, being most gloriously enlightened." },
+          { "text": "Both before thine end and after thy divine repose, O holy hierarch, thou wast shown to work a multitude of miracles, having received the gift of the Holy Spirit from childhood." },
+          { "text": "In sacred convocation we all now hymn Faustus and Sosius, Desiderius and Eutychius, the wise Acutius and the God-bearing Proclus." },
+          { "type": "theotokion", "text": "Theotokion: God the Word became incarnate of thy pure blood for the good of all people, O Mother of God. Him do thou earnestly beseech, that our souls be saved." },
+          { "text": "The fire of the furnace was quenched by the divine arrival of the angel, O most blessed one, and thy heart, cooled by thy yearning for the Creator, was filled with boldness." },
+          { "text": "When the tyrant heard the holy words of her who gave thee birth, O martyr Theodore, he had her put to the sword, and she finished the race of martyrdom in a godly manner." },
+          { "text": "Like a heifer, Philippa desired to die with her son, and she hastened, unsummoned, to the tribunal, receiving the glory of the martyrs." },
+          { "type": "theotokion", "text": "Theotokion: Behold the holy mountain! Behold the phial of the Spirit, the bridge leading to the God of all, the Virgin Theotokos, whom we bless!" }
+        ]
+      },
+      "ode7": {
+        "irmos": "The three youths in Babylon\nregarded the tyrant's command as foolishness,\nand cried aloud in the midst of the flame:\nBlessed art Thou, O Lord God of our fathers!",
+        "troparia": [
+          { "text": "By the descent of the angel in the midst of the flame thou didst emulate the godly children, O Januarius, dancing about and hymning the Savior with mystic songs, chanting: Blessed art Thou, O Lord God of our fathers!" },
+          { "text": "Preserving thy mind free from pain by divine grace, even before thy suffering thou didst heal all manner of ailments, being known as a pastor, a martyr and a great wonder-worker." },
+          { "text": "Thou didst stand in the midst of the tribunal of the tyrants, O martyr, suffering patiently, putting the wicked to shame and showing the truth to all the deceived." },
+          { "type": "theotokion", "text": "Theotokion: Mortify the movements of my flesh, O most pure one who hast given birth to Life, and enliven my soul, which hath been slain by the passions and many sins, O pure one." },
+          { "text": "Preserved by the dew of the Spirit like the three children, unconsumed in the midst of the fire, O divinely wise Theodore, with them thou didst chant: Blessed art Thou, the all-hymned God of our fathers!" },
+          { "text": "With discourse of grace which richly flowed from thy lips thou didst denounce the delusion of the heathen, O martyr Theodore, and thou didst cry: O God of our fathers, blessed art Thou!" },
+          { "text": "She who gave thee birth was given knowledge of thy name and thy suffering even before thou wast conceived, O much-suffering great martyr Theodore, crying out: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Be thou my cleansing, O all-immaculate one, mediating before Him Who was born of thee, that He terminate my grievous debts, grant me divine entry into the kingdom of God, and delight in the sustenance and a share of the light of heaven." }
+        ]
+      },
+      "ode8": {
+        "irmos": "O almighty Redeemer of all,\nhaving descended and bedewed the children in the midst of the flame,\nThou didst teach them to sing:\nAll ye works bless and hymn the Lord.",
+        "troparia": [
+          { "text": "Let the great Proclus be hymned with Acutius and Eutychius, the godly Desiderius, Faustus and Sosius: the valiant minded and glorious martyrs of the Savior." },
+          { "text": "The blessed choir of athletes acquired thee as its chief, O glorious initiate of the sacred mysteries, and they trampled underfoot the chief among the demons destroying the haughty pride of ungodliness." },
+          { "text": "Like the children thou didst trample the fire underfoot, like Daniel thou didst restrain the raging of the wild beasts, O most excellent one, and like Paul thou wast beheaded, finishing thy race in piety." },
+          { "type": "theotokion", "text": "Theotokion: He Who made His abode within thy womb showed thee to be a dwelling-place for Himself, O most pure Bride of God. To Him do we unceasingly cry: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Uplifted upon thy cross, thou didst hang suspended thereon for three days, O Theodore, manifestly portraying the ever-memorable three-hour suffering of thy Master. Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Thou wast affixed to a tree, receiving painful wounds, and thou didst wound the serpent foe who had caused Adam and his descendants a painful death through eating of the tree, O Theodore. Wherefore, we honor thee throughout all ages." },
+          { "text": "Perge proclaimeth thy struggles, pangs, contest, wounds, blessed suffering and honored death, for the sake whereof thou hast passed over to immortal life, O Theodore, crying: Bless the Lord, all ye works, and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: O the depth of thine ineffable mystery! He Who of old formed man with His hands Himself taketh form, incarnate, entering the womb of the Ever-virgin; and He saveth me who cry out with fear: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "With gladness let us magnify the honored contest, struggles and battles of Januarius, his courage even to the shedding of his blood, his sufferings and violent death, and the unfathomable abyss of his miracles." },
+          { "text": "Thou hast been seen on the summit of honored martyrdom, O glorious one, like a never-setting sun; leading forth a multitude of martyrs like divine stars, who now enlighten the ends of the earth with the splendor of their great sufferings." },
+          { "text": "Thy radiant memory hath shone forth, illumining the whole world with the rays of the divine Spirit, driving away the darkness of evils; and thereon we beseech thee, O divinely inspired one, to enlighten all who hymn thee." },
+          { "type": "theotokion", "text": "Theotokion: With the effulgence of the Light within thee, O Maiden, illumine my blinded soul, and with thy hand teach me to walk along the paths of salvation and to avoid stumbling into delusion, that I may bless thee with faith." },
+          { "text": "Following the steps of Christ and the first martyr, O most wise one, thou didst endure crucifixion, accepting stripes and the wounds of nails; and hastening from earth to the heavens, thou hast received the honor of those who are crowned: the immutable kingdom of God." },
+          { "text": "Standing in the midst of the fire, thou wast shown to be like lustrous gold through the descent of the honored angel, O Theodore, and, aflame with desire for the Master, thou didst remain unconsumed. And with him thou didst chant a hymn of salvation, rejoicing in sanctity." },
+          { "text": "We stand piously in the house of our God, with faith blessing His athlete who contended with manly mind, casting down the arrogance of the enemy, and hath thereby received the crown of victory from the hand of Christ on high." },
+          { "text": "Rejoicing, O martyr Theodore, thou wast taken up to the mansions on high, and hast attained unto the ranks of the incorporeal ones, having with thy body mightily vanquished the incorporeal demons; and thou prayest with faith for those who honor thee, that we may receive release from our debts." },
+          { "type": "theotokion", "text": "Theotokion: Enlighten the eyes of my soul, O pure Birthgiver of God, that the grievous darkness of sin not overtake me, and the abyss of despair not cover me. Do thou thyself save and guide me, O intercessor for the faithful who cannot be put to shame." }
+        ]
+      }
+    }
+  }
+}

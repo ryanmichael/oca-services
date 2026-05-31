@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "feast": "Appearance of the Sign of the Precious Cross in the Sky above Jerusalem; Holy Martyr Acacius",
+    "feastKey": "appearanceOfCrossAndMartyrAcacius",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "cross",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 05-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-07.pdf",
+    "_note": "Simple-rank-combined. Two commemorations: Appearance of the Precious Cross (primary) and Holy Martyr Acacius (secondary). The Acacius canon is assigned to Compline in the PDF, not Matins. The Matins canon is solely the Canon of the Precious Cross in Tone IV. Sessional hymn after Ode 3 in Tone IV, melody 'Having been lifted up', sung twice; no separate theotokion given in PDF. Kontakion Tone IV with ikos after Ode 6. Exapostilarion melody 'To the disciples', no tone given in PDF and no theotokion printed. No lauds doxastikon in Matins section. Troparion is Tone VIII from Vespers/Liturgy. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "The image of Thy Cross hath now shone forth more brightly than the sun,\nand Thou, O Savior, hast extended it from the holy mountain to the place of the skull,\nthereby revealing Thy might, and strengthening all faithful Orthodox Christians.\nO Christ God, preserve them ever in peace,//\nand by the supplications of the Theotokos do Thou also save us.",
+    "tone": 8,
+    "label": "Troparion of the precious Cross"
+  },
+  "kontakion": {
+    "text": "Opening the heavens which were shut,\nthe most pure Cross hath shed most radiant heavenly beams upon the earth;\nwherefore, receiving the effulgence of its activity,\nwe are guided to the never-waning Light;\nand amid battles\nwe have it as a weapon of peace,//\nan invincible trophy.",
+    "tone": 4,
+    "label": "Kontakion of the precious Cross",
+    "melody": "Having been lifted up"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "cross", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "O Christ God, Thou hast shown the divine image of the Cross in the sky,\nas a guide to those on earth who acknowledge Thee,\nfor having revealed today, the never-waning splendor,\nand light of Thy countenance which hath been signed upon us,\nall of us the faithful now possess it as a weapon of peace,//\nand an invincible trophy.",
+      "tone": 4,
+      "label": "Sessional Hymn of the precious Cross (after Ode 3)",
+      "melody": "Having been lifted up"
+    },
+
+    "troparion": {
+      "text": "The image of Thy Cross hath now shone forth more brightly than the sun,\nand Thou, O Savior, hast extended it from the holy mountain to the place of the skull,\nthereby revealing Thy might, and strengthening all faithful Orthodox Christians.\nO Christ God, preserve them ever in peace,//\nand by the supplications of the Theotokos do Thou also save us.",
+      "tone": 8,
+      "label": "Troparion of the precious Cross"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the precious Cross in Tone IV",
+
+      "kontakion": {
+        "text": "Opening the heavens which were shut,\nthe most pure Cross hath shed most radiant heavenly beams upon the earth;\nwherefore, receiving the effulgence of its activity,\nwe are guided to the never-waning Light;\nand amid battles\nwe have it as a weapon of peace,//\nan invincible trophy.",
+        "tone": 4,
+        "label": "Kontakion of the precious Cross",
+        "melody": "Having been lifted up"
+      },
+      "ikos": {
+        "text": "Behold, the awesome sign of the great God which Constantine the Great beheld! And in which we have heard Jesus speak, He Who spake of old to the sovereign emperor of faithful Christians: \"Until the Second Coming this sign shall preserve the inheritance of thy city, and it shall remain until the end of time, and shall be the first of all cities. Let the Cross be its rampart, the weapon of peace, the invincible trophy!\""
+      },
+
+      "ode1": {
+        "irmos": "The chariots of pharaoh and his power\nwere cast into the sea by Him Who is mighty in battles:\nLet us chant a new hymn,//\nfor He hath been glorified!",
+        "troparia": [
+          { "text": "Thou hast revealed on earth the radiance of the Cross, and having thereby cast down the devil, Thou hast saved the human race, O Lord. Wherefore, we hymn Thy glory." },
+          { "text": "At the behest of the Father, the Redeemer destroyed disobedience and enmity of mind by the Cross, wherefore we chant unto Him a new hymn, for gloriously hath He been glorified." },
+          { "text": "As thou didst plant the tree of life in Eden, O Christ, so hast Thou shone Thy Cross forth in radiance upon the holy mountain as a scepter of victory." },
+          { "type": "theotokion", "text": "Theotokion: Thee, whom the choir of the prophets foresaw as the gateway of heaven and the unburnt bush, O pure Virgin Mother, do we acknowledge as the one who gave birth to God." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength:\ntherefore is my heart established//\nin the Lord.",
+        "troparia": [
+          { "text": "As with a shield we are protected by the sign of the invincible Cross, O Master, and the abominable one, unable to endure it, doth vanish with the demonic multitudes." },
+          { "text": "Thy Cross hath made glad all who confess Thee to be God crucified; and it shineth forth as with most radiant and unapproachable beauty." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O Mother who knew not wedlock, who contained God the Word in thy womb and gave birth to the Incarnate One, Who is both God and man." }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thee, O Lord,\nfor Thou hast appeared upon the earth;//\nand I have glorified Thy power.",
+        "troparia": [
+          { "text": "Mystically before, but visibly today, Thou hast shone forth the image of Thine all-precious Cross, O Christ." },
+          { "text": "Shining forth the image of the Cross, O compassionate Savior, Thou hast set at naught the audacity of the iniquitous slayers of God." },
+          { "text": "Thou hast confirmed the Christian Faith, forming the Cross for us in immaterial light, O Christ." },
+          { "type": "theotokion", "text": "Theotokion: O pure Mother, blessed Sovereign Lady, by thy supplications render God, Whom thou didst bear, merciful to us." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Thou Who hast caused the light to shine,\nwho hast made bright the dawn and revealed the day;\nglory be to Thee, glory be to Thee,//\nO Jesus Thou Son of God.",
+        "troparia": [
+          { "text": "When Adam was disobedient in Eden, the deadly tree brought death into the world; but the life-bearing Cross, which hath now appeared, hath illumined the ends of the world." },
+          { "text": "The Father, Who by His Word created the primordial light, doth now trace a radiant Cross, bearing witness to the divinity of His crucified Son." },
+          { "text": "Through faith, in the Father we behold Thee, the Son, the Light above the flood-chambers of the firmament in never-waning light, O Christ, and Thy Spirit hath shone forth upon our souls." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast not known the pangs of motherhood, O Maiden, having conceived God and supra-naturally given birth to Him in the flesh; wherefore as is meet, we all glorify thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "In mine affliction I cried unto the Lord,\nthe God of my salvation,//\nand He hearkened unto me.",
+        "troparia": [
+          { "text": "Let the eyes of the iniquitous be closed, for they are unable to look upon the radiant beauty of the Cross." },
+          { "text": "Let those who acknowledge that God was crucified in the flesh on the Tree delight in the radiance of the most pure Cross." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin who knewest not wedlock, who hast given birth to God, do thou never cease to entreat thy Son on our behalf." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO God of our fathers,//\nsupremely praised, and blessed art Thou O Lord.",
+        "troparia": [
+          { "text": "The material sun hid its rays when it beheld the Sun Who was lifted up upon the Cross at noonday. O God of our fathers, supremely praised, and blessed art Thou O Lord!" },
+          { "text": "He Who of old conversed with the God-seer in the fire and darkness is glorified as God today in the radiant brilliance of the Cross which hath appeared. O God of our fathers, supremely praised, and blessed art Thou O Lord!" },
+          { "text": "O equally everlasting Light, shining forth from the Light in the Light, Thou hast shown forth the victory of Thy Cross with Thy most pure light. O God of our fathers, supremely praised, and blessed art Thou O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: We piously hymn forever as Mother of our God her who ineffably and supra-naturally received in her womb the immutable God Who came to mankind in His tender compassion." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Christ God, Who appeared in the form of an Angel\nin the fiery furnace\nto those who sang therein,\nye children, hymn; ye people, bless//\nand supremely exalt Him throughout all ages!",
+        "troparia": [
+          { "text": "Him Who was seen on the throne of glory and was nailed to the tree of the Cross in His fleshly nature; ye children hymn, ye people, bless and supremely exalt Him throughout all ages!" },
+          { "text": "Him Who formed a cross with most pure light from Golgotha to the holy mountain; ye children hymn, ye people, bless and supremely exalt Him throughout all ages!" },
+          { "text": "Glorifying One of the Trinity Who illumineth the whole world with the radiance of the Cross; ye children hymn, ye people, bless and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Her who ineffably and without seed conceived and gave birth to Christ God, the joy of the whole world; ye children hymn, ye people, bless and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "O Thou Who in the fire and darkness of old didst set forth the laws for the disobedient, Thou hast now traced the image of Thy Cross, more resplendent than the stars, for Thy faithful people, which as is meet we magnify." },
+          { "text": "Creation lamented in darkness the audacity of those who crucified Thee; and now Thy life-bearing Cross hath shone forth with a most gloriously radiant light showing forth the hidden beauty of the Church." },
+          { "text": "Having set their hope on Thee, Thy noetically rich people set before thee as an advocate the Cross, Thine awesome protection. Yet in a goodly appropriate time grant us deliverance, O Word of God." },
+          { "type": "theotokion", "text": "Theotokion: Shed light upon us O Virgin, for thou hast given birth to the unapproachable Light, and with gladness, joy and divine understanding, fill us who in a divinely wise manner magnify thee in purity of heart." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "The Cross is the guardian of the whole world!\nThe Cross is the beauty of the Church!\nThe Cross is the dominion of kings!\nThe Cross is the confirmation of the faithful!\nThe Cross is the glory of the angels and the wounding of the demons!",
+      "label": "Exapostilarion of the precious Cross",
+      "melody": "To the disciples"
+    }
+  }
+}

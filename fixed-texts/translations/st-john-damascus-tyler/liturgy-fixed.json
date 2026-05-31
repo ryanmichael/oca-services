@@ -39,5 +39,13 @@
   "hierarch-commemoration": {
     "greatLitany":     "For the most blessed Metropolitan Tikhon, most reverend Archbishop Alexander, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
     "augmentedLitany": "Again we pray for the most blessed Metropolitan Tikhon, and for the most reverend Archbishop Alexander."
+  },
+
+  "_section_cherubic_hymn": "Parish uses a Slavonic-word-order calque ('We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting...') consistent with Jordanville / older Russian-tradition Liturgika and the widely-distributed Bortniansky English settings. PROVISIONAL: the parish reportedly rotates between settings — update this override (or add named alternates) as the rotation is confirmed.",
+  "cherubic-hymn": {
+    "_setting": "slavonic-calque",
+    "_setting_label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style English)",
+    "part1":    "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
+    "part2":    "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts."
   }
 }

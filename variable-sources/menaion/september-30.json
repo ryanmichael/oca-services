@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Hieromartyr Gregory, Bishop of Greater Armenia, Enlightener of Armenia",
+    "feastKey": "hieromartyGregoryArmenia",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "hieromartyr",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 09-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-30.pdf",
+    "_note": "Simple-rank. Single canon of the holy hieromartyr in Tone IV; acrostic: 'I hymn thee, the vigilant shepherd, O martyr'. 3 saint troparia + theotokion per ode. Sessional hymn after Ode 3 Tone IV, theotokion Tone IV. Kontakion Tone II with ikos after Ode 6. Exapostilarion 'To the disciples'. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles *\nand didst occupy their throne, *\nthou didst find thine activity to be a passage to divine vision, *\nO divinely inspired one. *\nWherefore, ordering the word of truth, *\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Gregory, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr"
+  },
+  "kontakion": {
+    "text": "O ye faithful, in songs and hymns let us all praise today *\nthe right glorious hierarch Gregory as a spiritual athlete,\na vigilant shepherd and teacher, *\na universal luminary and champion;//\nfor he prayeth to Christ, that we be saved.",
+    "tone": 2,
+    "label": "Kontakion of the holy hieromartyr",
+    "melody": "The steadfast"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "hieromartyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Having brightly illumined thy soul with most radiant splendors, O hierarch,\nthou didst enlighten the face of the earth with virtues,\nhaving Christ within thy heart;\nand like a never-setting sun\nthou dost enlighten the assemblies of the nations,\nadorning us with the beauties of martyrdom,//\nO Gregory all-wise.",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+      "melody": "Having been lifted up",
+      "bothNow": {
+        "text": "As one who loveth sin,\nI beseech thee who hast given birth to the sinless God\nWho taketh away the sins of the world:\nO most pure one, have compassion on my greatly sinful soul\nand cleanse me of my many sins;\nfor thou art the cleansing, salvation and aid of the faithful.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles *\nand didst occupy their throne, *\nthou didst find thine activity to be a passage to divine vision, *\nO divinely inspired one. *\nWherefore, ordering the word of truth, *\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Gregory, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hieromartyr in Tone IV. Acrostic: 'I hymn thee, the vigilant shepherd, O martyr'.",
+
+      "kontakion": {
+        "text": "O ye faithful, in songs and hymns let us all praise today *\nthe right glorious hierarch Gregory as a spiritual athlete,\na vigilant shepherd and teacher, *\na universal luminary and champion;//\nfor he prayeth to Christ, that we be saved.",
+        "tone": 2,
+        "label": "Kontakion of the holy hieromartyr",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "In hymns let us praise this divine luminary, great among spiritual athletes, the faithful pastor and teacher of Armenia, and let us crown his head with divine hymnody; for he hath destroyed the darkness of the ungodliness of the idols, and with them, all the activity of the demons. Wherefore, having borne labors with strength of mind and grace, he now prayeth to Christ, that we be saved."
+      },
+
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin, *\ndrown I implore Thee, in the depth of dispassion *\nthe triune nature of my soul, *\nas Thou didst the mighty strongholds of the warriors, *\nthat in the mortality of my flesh *\nas on a timbrel *\nI may chant a hymn of victory.",
+        "troparia": [
+          { "text": "Standing, crowned, before the adored Trinity\nas a vigilant shepherd and a sacred martyr,\nwith thy sacred supplications lull to sleep\nthe dark fantasies of my passions,\nfor I praise thee, O blessed Gregory." },
+          { "text": "Today the inextinguishable lamp, the great hierarch,\nthe much-suffering pastor, the test of struggles, the boast of Armenia\nhath summoned us to hymnody.\nAssembling, let us bless him." },
+          { "text": "Thou wast full of living waters, O blessed Gregory,\nlike a river issuing forth from the noetic Eden,\nwatering the face of the Church\nand drying up the depths of idolatry." },
+          { "type": "theotokion", "text": "Theotokion: Strengthened by the Cross of Him Who became incarnate of thee, O pure one,\nthe women suffered mightily;\nand they have been brought before Him in Thine entourage,\nresplendent in the brilliance of virginity and the blood of martyrdom." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Likened to a barren woman *\nthe Church from among the nations hath given birth, *\nand the assembly abundant in children, hath grown weak. *\nLet us cry out to our wondrous God: *\nHoly art Thou, O Lord!",
+        "troparia": [
+          { "text": "With the wounds of thy struggles thou didst break the teeth of the lions,\nand, inundating the blood of the demons with the outpourings of thy blood,\nthou dost cast down the temples of the idols from the foundation,\nO right wondrous one." },
+          { "text": "Neither the oppression of the wicked, nor bitter tortures,\nnor long imprisonment in a most gloomy pit\nchanged thine adamant resolve, O right wondrous martyr." },
+          { "text": "Thou gavest no slumber to thine eyes, O martyr,\nuntil thou didst show forth as children of the day\nthose wickedly held fast in evil slumber,\nwho cry aloud: Holy art Thou, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: The martyr Rhipsimia, knowing thee to be the only Virgin Mother, O Maiden,\ndesired thy beauties;\nand, shining with her sufferings,\nshe was led before Christ in Thine entourage." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Seated in glory *\nupon the throne of the Godhead, *\nJesus most divine is come on a swift cloud, *\nand with His incorrupt arm hath He saved those who cry aloud: *\nGlory to Thy power, O Christ!",
+        "troparia": [
+          { "text": "The Most High Lord, exalted in power,\nled thee up to the lofty eminence of martyrdom, O glorious one;\nand, rejoicing, thou didst emulate His sufferings, O hieromartyr,\ncrying aloud: Glory to Thy power!" },
+          { "text": "With divine power thou didst cast down the ungodly foe\nwho was destroying all the land of Armenia,\nand, shining forth like a ray of light,\nthou didst illumine those who lay in the darkness of vanity, O wise one." },
+          { "text": "O Gregory, thou didst bring to the Creator a talent increased many times:\nthose saved by thy divine teachings,\nand thou hast received from Him a portion which groweth not old;\nthe kingdom and splendor of the heavens." },
+          { "type": "theotokion", "text": "Theotokion: The virgin maidens who suffered with Rhipsimia\nloved thee in that thou art beautiful, elect and comely, O Virgin Mother Mary,\nand, rejoicing, they have been brought before thy Son in Thine entourage." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Do Thou O Lord send down upon us *\nThine enlightenment, and free us *\nfrom the gloom of transgression, O Good One, *\ngranting us Thy peace.",
+        "troparia": [
+          { "text": "Thou didst manifestly behold the sign of the Cross shining with light,\ndestroying the night of idolatry,\nand making the faithful children of the light." },
+          { "text": "In a pit most deep Christ God saved thee\nwho wast long enclosed with wild beasts,\nyet desired to illumine the mindless ones with the light of the divine Word." },
+          { "text": "Having struggled in martyrdom, thou wast crowned as a victor;\nand anointed with the oil of the high priesthood,\nthou didst anoint the people,\ndelivering them from fetid delusion, O Gregory." },
+          { "type": "theotokion", "text": "Theotokion: The virgins, sensing the sweet fragrance of the myrrh of the Word\nWho shone forth from thee, O pure Virgin,\nrejoicing, pleased Him well with the struggles of martyrdom." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Prefiguring Thy three-day burial *\nProphet Jonah praying in the belly of the sea-monster cried aloud: *\nDeliver me from corruption *\nO Jesus Thou King of hosts.",
+        "troparia": [
+          { "text": "By the power of thy words the temples of the idols were destroyed,\nthe fragile graven images of the demons were cast down,\nand the hearts of the faithful were made steadfast with divine love." },
+          { "text": "Like a lamb, thou didst lead Tiridates who was bound like a wild boar to the Lord,\nhe who before was like a ravening wolf,\nbut now hath been saved through the great bounty of God's compassion." },
+          { "text": "By thy true teachings thou didst show the divine path unto the lost, O hierarch Gregory,\nacting as a shepherd, emulating the true Shepherd." },
+          { "type": "theotokion", "text": "Theotokion: When Rhipsimia recognized the Crucified One\nWho had become incarnate of thee, O Theotokos,\nshe was crucified with Him,\noffering herself as a lamb to the shepherd, as an unblemished sacrifice to God." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Of old the Children of Abraham in Babylon *\ntrampled down the flame of the furnace, *\ncrying aloud with hymns: *\nO God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Having endured multifarious tortures, O martyr,\nthou hast freed many from manifold torments\nand the grief which is to come,\ncrying aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "Making thyself a house of the Trinity, O blessed one,\nthou didst destroy the temples of the idols\nand raise up temples to the Word Who seeth all things,\nfor the salvation of the people." },
+          { "text": "Thou wast shown to be a performer of the sacred rites,\nand didst first offer thyself fervently to thy Master as a sacrifice;\nand sacrificing to Him later,\nthou didst distribute Him to pious souls for their salvation." },
+          { "type": "theotokion", "text": "Theotokion: Adorned with the crowns of martyrdom,\nthe maidens were brought before God Who shone forth from the Virgin,\nchanting in hymnody: Blessed art Thou, O Christ!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "O almighty Redeemer of all, *\nhaving descended and bedewed the children *\nin the midst of the flame, *\nThou didst teach them to sing: *\nAll ye works bless and hymn the Lord.",
+        "troparia": [
+          { "text": "Having suffered lawfully,\nthou didst most mightily put to shame the iniquitous foes, O hierarch Gregory,\nand lead to God a multitude of those who chant:\nBless the Lord, all ye works of the Lord!" },
+          { "text": "Cultivating a barren field,\nthou didst sow the seeds of the Word,\nreaping a harvest of the grain of the Word a hundredfold,\nyielding souls in abundance for the Husbandman." },
+          { "text": "With the brilliance of thy discourses thou didst illumine many tens of thousands,\nand didst lead them forth to Him Who willingly endured sufferings for our sake,\nto Whom we chant: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Unafraid of the multitude of tortures,\nand refusing to submit to carnal pleasures,\nRhipsimia confessed the Lord Who came forth from the Virgin,\ncrying aloud: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin *\nbecause of the infirmity of disobedience; *\nbut thou, O Virgin Theotokos, *\nhast through the Offspring of thy pregnancy *\nblossomed forth blessing upon the world. *\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Strengthened by the power of Christ,\nthou didst endure the pangs of tortures,\nand didst destroy the fangs of the demons\nand demolish the temples of the idols;\nand thou hast illumined men who were in ignorance,\nO most honored hieromartyr." },
+          { "text": "Like the dawn thy memorial hath shone forth upon us,\nbearing the radiance of grace;\nfor thou wast shown to be a receptacle of divine Light,\nand hast ascended to the never-waning Light,\nO thou who art richly illumined with divine effulgence, O venerable one." },
+          { "text": "Thou hast been shown to be a converser with the prophets,\nand dweller with the martyrs and the apostles,\nthe hierarchs and the venerable, and a peer of the angels.\nWith them, O father, entreat the Lover of mankind,\non behalf of us who honor thee." },
+          { "type": "theotokion", "text": "Theotokion: Illumined with the light of the countenance of Him Who shone forth from thee,\nO Ever-virgin, in her flesh Rhipsimia emulated His sufferings and death with unbounded love.\nWherefore, she now rejoiceth with thee, O Lady." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Let us praise the glorious Gregory,\nwho was long enclosed in a pit with fierce beasts,\nwho transformed the tyrant Tiridates into a wild boar,//\nand proclaimed the word of enlightenment to all the land.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy hieromartyr",
+      "melody": "To the disciples",
+      "bothNow": {
+        "text": "O Theotokos who art more honorable than all other creatures\nand who hast given birth to Christ,\nentreat Him, that this, thy little flock,\nbe preserved unharmed by all the assaults of the adversary.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

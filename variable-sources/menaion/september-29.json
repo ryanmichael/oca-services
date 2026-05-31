@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "feast": "Venerable Kyriakos the Anchorite",
+    "feastKey": "venerableKyriakosAnchorite",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "monastic",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 09-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-29.pdf",
+    "_note": "Simple-rank. Single canon of the venerable one in Tone VIII, the composition of Stephen the Sabbaite; acrostic: 'O Cyriacus, be thou an intercessor before God!' 4 saint troparia + theotokion per ode. PDF prints kontakion at Ode 3 (Tone VIII, Spec. Mel. 'To thee, the champion leader') and a second kontakion at Ode 6 (Tone II) with ikos; Ode 6 kontakion placed in canon block per standard practice. Sessional hymn after Ode 3 Tone V. Exapostilarion 'By the Spirit in the sanctuary'. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "A desert dweller, an angel in the flesh and a wonder-worker *\nwast thou revealed to be, O our God-bearing father Cyriacus *\nReceiving heavenly gifts through fasting, vigils and prayers, *\nthou healest the infirm and the souls of those who with faith have recourse unto thee. *\nGlory to Him Who hath given thee strength! *\nGlory to Him Who hath crowned thee!//\nGlory to Him Who through thee worketh healings for all!",
+    "tone": 1,
+    "label": "Troparion of the venerable one"
+  },
+  "kontakion": {
+    "text": "Having divinely armed thyself with spiritual purity *\nand having mightily taken up unceasing prayer as a spear, *\nthou didst mow down legions of demons, *\nO Cyriacus our father.//\nPray thou unceasingly on behalf of us all.",
+    "tone": 8,
+    "label": "Kontakion of the venerable one",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "monastic", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Thou didst adorn thy life with abstinence and,\nhaving slain thy members, didst vanquish the assaults of the enemy,\nO venerable father,\nand wast shown to be a desert dweller and a noetic beacon unto the world.\nWherefore, beseech the Lord,//\nthat He have mercy on our souls.",
+      "tone": 5,
+      "label": "Sessional Hymn of the venerable one (after Ode 3)",
+      "melody": "The co-beginningless Word",
+      "bothNow": {
+        "text": "Finding thee to be a haven, a bulwark, a refuge,\nour hope, protection and fervent help,\nwe, the faithful, hasten to thee\nand cry out earnestly, exclaiming with faith:\nHave mercy upon those who place their trust in thee, O Theotokos,//\nand deliver us from transgressions.",
+        "tone": 5,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "A desert dweller, an angel in the flesh and a wonder-worker *\nwast thou revealed to be, O our God-bearing father Cyriacus *\nReceiving heavenly gifts through fasting, vigils and prayers, *\nthou healest the infirm and the souls of those who with faith have recourse unto thee. *\nGlory to Him Who hath given thee strength! *\nGlory to Him Who hath crowned thee!//\nGlory to Him Who through thee worketh healings for all!",
+      "tone": 1,
+      "label": "Troparion of the venerable one"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the venerable one in Tone VIII, the composition of Stephen the Sabbaite. Acrostic: 'O Cyriacus, be thou an intercessor before God!'",
+
+      "kontakion": {
+        "text": "Having divinely armed thyself with spiritual purity *\nand having mightily taken up unceasing prayer as a spear, *\nthou didst mow down legions of demons, *\nO Cyriacus our father.//\nPray thou unceasingly on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the venerable one",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "How shall I praise thy struggles, wretch that I am, O venerable father? How shall I pour forth a torrent of tears? For, soaring aloft in thy life, thou didst reach the choirs of angels. Truly thou didst slay all the passions by abstinence, O wise one, and, having enslaved thy flesh, subjected it to thy spirit. And, possessed of the sword of prayer, thou didst set at naught the prince of darkness. Pray thou unceasingly on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos": "Let us, O ye people, send up a hymn *\nunto our wondrous God *\nWho hath freed Israel from bondage, *\nchanting a hymn of victory *\nand crying aloud: *\nWe sing unto Thee, O only Master.",
+        "troparia": [
+          { "text": "Grant me grace and the glory of divine knowledge, O Christ,\nthat by the prayers of the venerable Cyriacus I may fittingly hymn him,\nfor Thou art the ineffable Treasury of wise teachings." },
+          { "text": "O blessed Cyriacus, compassionately accepting me who now offers thee a hymn,\nentreat Christ, that I may partake of divine radiance and illumination\nand receive salvation." },
+          { "text": "Firmly established by the power of the Master,\nand following in His footsteps, O father,\nthou didst vanquish the princes of darkness\nand attain unto the resting place on high, O all-blessed Cyriacus:" },
+          { "text": "Having subjected all the wisdom of thy flesh to the life-bearing Spirit,\non earth thou didst show forth a life like unto that of the bodiless ones.\nWherefore, with them thou dost now hold chorus in the courts of heaven, O God-bearer." },
+          { "type": "theotokion", "text": "Theotokion: With hymns, O ye faithful, let us praise the most pure Mary,\nthe grace-endowed Mother of God,\nthe divine shelter, the calm haven, the salvation of all the faithful." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as the Lord, *\nand none as righteous as our God, *\nWhom the whole of creation doth hymn: *\nThere is none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Unceasingly traveling along the path of life,\nfrom childhood thou didst love thy Creator, O venerable one,\nand, thirsting for Him, thou didst run like a hart unto streams of water and find Him." },
+          { "text": "O divinely eloquent one, having received, like a living book,\ntexts on the tablet of thy heart, inscribed by the finger of the Spirit,\nthou didst verily preserve the living commandments of Christ." },
+          { "text": "O venerable one, having restrained thy stomach in fasting,\nthou didst slay carnal pleasure and gluttonous desires,\nliving all thy life in purity, O father." },
+          { "text": "In gladness didst thou make thyself a rational temple for the Trinity,\ncleansing thy mind, body and soul, O thrice-blessed one;\nand thou didst become a receptacle of the light of the threefold Sun." },
+          { "type": "theotokion", "text": "Theotokion: O Mary Theotokos, O Virgin who knewest not wedlock,\nthou didst give birth, and, unwedded, remained a Virgin, O Mother.\nEntreat Christ our God that we be saved." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power, *\nThou art my God and Thou art my joy, *\nThou Who, while never leaving the bosom of Thy Father, *\nhast visited our poverty. *\nTherefore with the Prophet Habbakuk I cry unto Thee, *\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "The sun shuddered at thine abstinence and strength,\nand was in no wise saw thee angered through many years, O venerable one,\nfor thou didst not partake of food by day,\nbut right mightily kept vigil,\nchanting: Glory to Thy power, O Lover of mankind!" },
+          { "text": "Taught by the knowledge of men wise in the new, and the old covenant, O wise one,\nand acquiring the qualities of every virtue, and emulating the wise bee,\nthou didst become a chosen vessel,\nand cry aloud: Glory to Thy power, O Lover of mankind!" },
+          { "text": "O Christ God, Thou art a wealth of sweetness,\nand the glory and joy of the venerable.\nTherefore, Cyriacus, loving Thee,\nreckoned all consolations in the world but dung.\nTherefore he lovingly delighted in Thy beauty, living in impassible deserts." },
+          { "text": "I know of the most sweet waters of Marah of the prophet of old;\nand thou, O Cyriacus, who transformed the bitter poison of grasses into sweet food,\nhast manifestly shown similar boldness before the Lord,\nWho doth truly glorify His servants with divine power." },
+          { "type": "theotokion", "text": "Theotokion: O unwedded one, thou art the boast of the faithful!\nThou art our intercessor!\nThou art the refuge, rampart and haven of Christians,\nfor thou dost bear entreaty to thy Son, O all-immaculate one,\nand dost save from misfortunes those who with faith and love\nglorify thee as the pure Theotokos." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning, *\nwhy hast Thou turned Thy face from me *\nand why hath the alien darkness surrounded me, *\nwretched though I be? *\nBut do Thou guide my steps I implore Thee *\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Receiving from Christ the invincible grace of the Spirit,\nthou didst mightily cast down the cruel ruler of this world,\nand, restraining the passions of thy soul, O Cyriacus,\nthou wast crowned with a crown of dispassion." },
+          { "text": "Thou didst show thyself to be strong,\nsteadfastly enduring the pangs of fasting,\nremaining unyielding even unto the most profound old age,\nliving with much gladness in the deserts\nas if in the chamber of a royal palace, O venerable one." },
+          { "text": "Keeping all-night vigils and approaching God lacking all pride,\nthou didst converse in prayer with the immaterial Mind, O Cyriacus,\nand received brilliant rays of light,\nbeing radiantly illumined in mind." },
+          { "text": "Full of splendor and the gift of prophecy, O venerable one,\nthy pure tongue foretold of old\nthe nearly complete destruction of the error of Origen,\nthat deranged and soul-destroying man." },
+          { "type": "theotokion", "text": "Theotokion: The company of prophets came to know thy mysteries, O pure one,\nfor the Master hath shown thee to be the portal of heaven;\nand the Sun of righteousness, Who was incarnate of thee, O Virgin,\nhath shone forth upon those who are in darkness." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior, *\nfor many are mine iniquities; *\nlead me up from the abyss of evils I pray Thee, *\nfor unto Thee have I cried, *\nand Thou hast hearkened unto me, *\nO God of my salvation.",
+        "troparia": [
+          { "text": "Becoming a god by adoption through deification by Christ,\nWho is God in essence, O blessed one,\nthou didst set aright the sufferings of natural disability,\nhealing infirmities and straightway curing the demonized with divine grace." },
+          { "text": "Thou didst flee the multitude of peoples who approached thee,\nand didst seek out yet more remote ravines,\navoiding the empty praises of human glory." },
+          { "text": "Looking upon all the glory of the corrupt world as a dream,\nthou didst love the better glories of the only living God, O wise one,\nand wast rightly deemed worthy to be a partaker thereof." },
+          { "type": "theotokion", "text": "Theotokion: As an animate ark thou didst receive the beginningless Word;\nas a holy sanctuary thou didst contain the Creator;\nas a fiery throne thou dost bear the Master of all creation, O Mother of God." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace *\nboldly trampled upon the flames, *\nchanging the fire into dew, they cried aloud: *\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "text": "Thy most faithful favorite delighted himself\nwith the teaching of divinely inspired laws and words more than with honey,\nchanting: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "text": "O divinely eloquent and blessed one,\nthou dost lead to Christ those who hymn thee, O Cyriacus,\nand cleansed of the filth of the passions by thy prayers,\nthey cry aloud saying: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "text": "Daniel, escaping the ferocity of the lions, was glorified;\nbut Cyriacus, commanding them, had them as servants,\nand he cried to Thee: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "text": "All the grace of the Spirit didst thou cause to dwell in Cyriacus,\nfor he became an adorer of Thy most pure beauty,\ncrying out to Thee with all his soul: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: O Mother of God, quench the flame of my passions\nand subdue the tempest of heresies;\nfor we Christians have thee as our intercessor and champion,\nand thee do we hymn with faith throughout the ages." }
+        ]
+      },
+      "ode8": {
+        "irmos": "By Thy grace the children became vanquishers *\nof both the tyrant and the flames, *\ncarefully observing Thy commandments, *\nwherefore they cried aloud: *\nBless the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "With streams of tears didst thou water thy sacred soul, O blessed one,\nand didst show it forth as fertile,\nchanting: All ye works, bless the Lord and supremely exalt Him throughout the ages!" },
+          { "text": "The Tishbite of old dried up the showers of rain with drought;\nbut thou, O all-blessed one, didst call down a downpour of rain for the growth of crops,\nchanting: All ye works, bless the Lord and supremely exalt Him throughout the ages!" },
+          { "text": "The inglorious disciples of Origen, the trifler and recounter of fables,\ndidst thou denounce by thy mighty struggles,\nchanting: Bless ye the Lord in Orthodox manner,\nand supremely exalt Him throughout the ages!" },
+          { "text": "O father, thou didst piously teach the one Essence of the Trinity in three Suns\nas a single ray and radiance,\nsaying: Bless ye the Lord in an Orthodox manner,\nand supremely exalt Him throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, thou art shown to be a daughter of fallen Adam\nand the Mother of God, Who hath renewed my being.\nO all ye works hymn and supremely exalt Him as Lord throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Every ear is awestruck at hearing of God's ineffable condescension, *\nfor the Most High voluntarily descended and assumed flesh, *\nbecoming man in the Virgin's womb; *\nwherefore we the faithful magnify the most pure Theotokos.",
+        "troparia": [
+          { "text": "O wise one, a cave received thee,\nwho had received the fountain of grace from the divine father Chariton,\nwho of old worked wonders like Moses;\nand thou wast an immovable pillar\nand a most steadfast protector of thy flock." },
+          { "text": "Verily taking the Cross upon thy shoulders with the love of the divine life, O Cyriacus,\nthou didst make life an exercise in dying.\nWherefore, now, having passed on to the incorrupt delight that waneth not,\nthou dost ever hold chorus with the heavenly choirs in the light of God's presence." },
+          { "text": "Resplendent with brilliance kindled by the Spirit,\nthou wast revealed to be a luminary of the choirs on high.\nIllumine my mind with the noetic and thrice-radiant light of the Godhead by thy prayers,\nO blessed one, and save me from passions and transgressions." },
+          { "text": "Crowned with a diadem of victory,\nO divinely eloquent Chariton and blessed Cyriacus,\nye stand in the highest before Christ.\nPaternally delivering us from misfortunes,\nmercifully regard your flock as it celebrates your memory." },
+          { "type": "theotokion", "text": "Theotokion: Draw Thy bow, and prosper, and reign, O Son of the Mother of God,\nsubjecting the Ishmaelite foe, which doth battle against us,\nto all Christ-loving believers, we pray,\nthrough the prayers of her who gave birth to Thee without having known a man,\nin that Thou art God and the Lover of mankind." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Having cleansed thy soul of the darkness of the passions\nby intense fasting and unceasing prayer, O father,\nthou didst become a mirror of divine splendors,\nsending exaltations upon us now,//\nO God-bearing Cyriacus, beacon of monks.",
+      "tone": 0,
+      "label": "Exapostilarion of the venerable one",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "Saved by thee, O Lady,\nwe confess thee to be truly the Theotokos,\nfor thou didst give birth ineffably unto God,\nWho destroyed death by His Cross\nand hath drawn to Himself the assemblies of the venerable.\nWith them do we praise thee, O Virgin.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

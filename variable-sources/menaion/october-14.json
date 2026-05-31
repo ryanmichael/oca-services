@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Martyrs Gervasius, Nazarius, Protasius, and Celsus of Milan",
+    "feastKey": "martyrsGervasiusNazariusProtasiusCelsus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "martyrs",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 10-14.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-14.pdf",
+    "_note": "Simple-rank. Single canon of the holy martyrs in Tone IV, the composition of Joseph; acrostic: 'I faithfully hymn the crowned martyrs'. 3 saint troparia + theotokion per ode (4 total). Sessional hymn after Ode 3 Tone VIII. Kontakion Tone II with ikos after Ode 6. Exapostilarion 'By the Spirit in the sanctuary'. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord, *\nreceived imperishable crowns from Thee, our God; *\nfor, possessed of Thy might, *\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Revealed as radiant beacons, O divine martyrs, *\nye illumine creation with the light of miracles, *\never dispelling the profound night of infirmities, *\nand praying unceasingly to Christ, the one God,//\non behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy martyrs",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "martyrs", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Honoring the suffering and persecution of Nazarius\nand the pangs and wounds of Protase,\nlet us praise Gervase and Celsius,\nthe precious vessels of the Holy Trinity,\nthe radiant stars, the towers of defense of the faithful,\nthe true destroyers of impiety,\nthe pillars and unshakable foundation of the faith,\nto whom we cry out with faith:\nEntreat Christ God, that He grant remission of sins//\nunto those who with love honor your holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "All we, the generations of mankind, *\ncall thee blessed, *\nin that thou art the Virgin who alone among women *\nhast given birth without seed unto God in the flesh; *\nfor the fire of the Godhead made its abode within thee, *\nand thou didst feed the Creator and Lord *\nwith milk as an infant. *\nWherefore, we, the race of mankind and of angels, *\nglorify thy birthgiving, *\nand together we cry out to thee: *\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord, *\nreceived imperishable crowns from Thee, our God; *\nfor, possessed of Thy might, *\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyrs in Tone IV, the composition of Joseph. Acrostic: 'I faithfully hymn the crowned martyrs'.",
+
+      "kontakion": {
+        "text": "Revealed as radiant beacons, O divine martyrs, *\nye illumine creation with the light of miracles, *\never dispelling the profound night of infirmities, *\nand praying unceasingly to Christ, the one God,//\non behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy martyrs",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Ever standing as radiant and divine luminaries before the great Light, O divinely blessed martyrs, ever enlightened and deified by the effulgence of the never-waning divinity which is emitted thereby, enlighten those who with faith celebrate your divine memory, and deliver them from darkness, the passions, misfortunes and evils, praying unceasingly on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth, *\nand be filled with the Spirit, *\nand utter discourse to the Queen and Mother; *\nand be seen radiantly keeping festival, *\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "Having suffered faithfully and finished the contest,\nye were crowned with wreaths of victory, O divine martyrs;\nwherefore, in gladness we celebrate your godly memory." },
+          { "text": "Impelled by the sail of the divine Spirit,\nye passed over the deep of torments without sinking, O glorious martyrs,\nand have now made your abode in the divine haven of the Most High." },
+          { "text": "Clad in the Cross as in a breastplate, O blessed ones,\nye battled the incorporeal foe in the body,\nenduring subtle torments and an unjust death." },
+          { "type": "theotokion", "text": "Theotokion: Let us hymn the all-immaculate Maiden\nwho alone contained the pre-eternal God within her womb,\nfor she became more spacious than the heavens,\ngiving flesh to God for the sake of goodness." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount, *\nestablish in spiritual fellowship those who sing hymns to thee, *\nand in thy divine glory *\ngrant them crowns of glory.",
+        "troparia": [
+          { "text": "Ye were truly like divine grapes of the divine vine, O martyrs,\npouring forth upon us the wine which with grace\nspiritually gladdens the hearts of all." },
+          { "text": "O most noetically rich martyr of Christ Nazarius,\nthou didst mightily oppose the tyrant\nwho commanded thee to sacrifice to the abominable gods,\nand didst ready thyself like a lamb for the slaughter, O glorious one." },
+          { "text": "With faith let us all chant a symphony of praise today\nto Nazarius, Gervase, Protase and Celsius,\nwho were witnesses of the truth in the Spirit." },
+          { "type": "theotokion", "text": "Theotokion: The tabernacle of the law prefigured thee,\nwho wast to become the sacred habitation of God, O pure one,\nfrom whence our purification doth proceed,\ngranting sanctity unto us all." }
+        ]
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead, *\nJesus the true God, *\nis come in a swift cloud *\nand with His sinless hands he hath saved those who cry: *\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "In a manner past understanding\nthe love of Thy martyrs surpasseth all the devisings,\nbattles, manly struggles and contests\nwhich Thou hast set for those who lawfully contended, O Word." },
+          { "text": "The warriors of Christ most excellently showed forth a single understanding\nwhile they were wounded in their bodies,\nand confessing the one God in the arena\nthey manifestly destroyed the delusion of polytheism." },
+          { "text": "The angels marveled at the contest\nof Nazarius, Protase, Gervase and Celsius, the honorable martyrs:\nhow, struggling in the flesh against an incorporeal foe,\nthey most valiantly cast him down to the ground." },
+          { "type": "theotokion", "text": "Theotokion: Without leaving the bosom of the Father,\nthe supremely divine One reclined in thy pure womb, O most pure Theotokos,\npreparing for all a divine seat and everlasting glory by His goodness." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory; *\nfor thou, O Virgin who hast not known wedlock, *\ndidst contain within thy womb the God of all, *\nand gave birth to the timeless Son, *\nbestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "text": "Thy body, O Nazarius,\npartook of the wounds and stripes of many and varied torments;\nwherefore, it poureth forth upon us a sweet smelling myrrh\nwhich perfumeth the souls of those who honor thee with unwavering faith, O all-praised one." },
+          { "text": "With the sprinkling of thy blood\nthou didst extinguish the burning embers of polytheism, O spiritual athlete;\nand with the fire of divine miracles O all-wise one,\nthou didst burn up the filth of cruel sufferings\nthrough the grace of God the Savior, O Nazarius." },
+          { "text": "Let us faithfully honor and bless the most valiant and splendid martyrs:\nthe blossoms exuding the perfume of divine understanding,\nthe meadows of divine knowledge,\nthe right fruitful trees of paradise." },
+          { "type": "theotokion", "text": "Theotokion: The sword which of old guarded Eden\nhath been withdrawn from before the faithful, O pure one,\nbecause of the precious blood which poured forth from the side,\npierced by the spear, of Him Who shone forth from thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast *\nof the Mother of God *\nO ye divinely wise, *\nlet us come, clapping our hands, *\nand glorify God who was born of her.",
+        "troparia": [
+          { "text": "Thy journeys were on the waters, O all-blessed Nazarius,\nand thy paths in the Spirit were not known to thee,\nbut by His power thou didst put the enemy to shame." },
+          { "text": "By the grace of God thou hast healed the incurable sufferings of men's bodies,\nO martyr Nazarius,\npouring forth fragrant myrrh upon those who have recourse to thy precious relics." },
+          { "text": "The godly Protase, and with him the great Gervase,\nhaving manifestly trampled underfoot transitory wealth and power,\nhave been deemed worthy of eternal glory." },
+          { "type": "theotokion", "text": "Theotokion: Thou alone hast restored the laws of nature, O Virgin,\nhaving given birth to the immortal God,\nWho clothed Himself in mortal flesh,\nthat through grace He might bring life to the dead." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things *\nin place of the Creator, *\nthe divinely wise youths bravely trampled down the threatening fire *\nand rejoicing they sang aloud: *\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Having set your feet upon the rock of the knowledge of God, O glorious ones,\nye did not pervert your hearts with the wiles of the enemy,\nchanting: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "text": "Never-waning light shone upon you who suffered to the shedding of your blood,\nO great martyrs,\nand gladness manifestly embraced you,\nwho chant: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "text": "Most diligently traveling about, O blessed ones,\nye sanctified cities,\nconfessing Christ before tyrants\nand granting healings unto all those in need\nthrough the grace of the all-holy Spirit." },
+          { "type": "theotokion", "text": "Theotokion: God found thy womb to be a most splendid palace\nand made His abode therein, O all-immaculate one,\nmaking children of the light those who cry:\nO God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos *\nsaved the holy children in the furnace. *\nHe who was then prefigured hath now been born on earth, *\nand He gathereth all creation to hymn thee: *\nall ye works praise ye the Lord *\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Rising early unto the great Sun Who most gloriously shone forth from the Virgin,\nO invincible martyrs, ye yourselves became light\ndispelling the darkness of falsehood by grace,\ncrying: Praise ye the Lord ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Old Rome proclaimed thy struggles, O much suffering Nazarius;\nbut Constantinople, holding thy sacred relics with faith,\ndoth hymn thy wonders,\ncrying: Praise ye the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Pouring forth the myrrh of grace,\nthe divine Nazarius commandeth all who approach with faith to draw it forth,\nunto the enlightenment and purification of those who cry aloud:\nPraise ye the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Having united Himself to thee essentially in the flesh, O most pure one,\nHe Who brought all things into being hath wholly restored me\nand raised me up who have grown old through disobedience.\nWherefore we praise thee, the Virgin, and supremely exalt thee throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin *\nbecause of the infirmity of disobedience; *\nbut thou, O Virgin Theotokos, *\nhast through the Offspring of thy pregnancy *\nblossomed forth blessing upon the world. *\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Strengthened by the might of Christ\nWho destroyed the malice of the destroyer,\nye bowed your heads beneath the sword, receiving your end;\ndeparting from the flesh, O ye of great renown;\nwherefore ye are blessed as is meet." },
+          { "text": "Ye were beautiful in the wounds of your flesh\nand your emulations of the angels;\nand now ye stand before them all, ever rejoicing in beauty,\nmanifestly and most beautifully adorned by communion,\nO most honored ones." },
+          { "text": "Both before and after your end\nthe Master adorned you with signs and wonders,\nO invincible martyrs Nazarius, Protase, Celsius and Gervase;\nwherefore ye are blessed as is meet." },
+          { "type": "theotokion", "text": "Theotokion: In gladness, O most pure Maiden,\nwe offer thee the cry of the divine Gabriel:\nRejoice, O joyous Virgin Mother who knewest not wedlock,\nthou boast of the martyrs and apostles and salvation of all!" }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Like one of the incorporeal hosts\nthou didst endure unbearable tortures, O blessed Nazarius,\nthou glory of the martyrs,\ntogether with the wise Gervase, Protase and the godly Celsius.\nWherefore with faith we honor your most festive//\nand honored memorial.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy martyrs",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "The most glorious wonder of thy birthgiving,\nwhich passeth understanding,\ndoth astonish the mind of every mortal and angel,\nfor though a virgin, thou hast given birth\nyet remained a virgin even after giving birth, O Virgin,\nO awesome mystery! O wondrous nativity! O most glorious pregnancy!",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

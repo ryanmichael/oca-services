@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "feast": "Saint Michael the Confessor, Bishop of Synnada",
+    "feastKey": "saintMichaelConfessorBishopOfSynnada",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "hierarch",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 05-23.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-23.pdf",
+    "_note": "Simple-rank. Single canon of the holy hierarch and confessor in Tone II; no Octoechos or Pentecostarion canon given in the Matins header (the Pentecostarion canon is served alongside at the actual service). Sessional hymn Tone I after Ode 3 (Spec. Mel. 'Thy tomb, O Savior'). Kontakion Tone VIII (Spec. Mel. 'As first-fruits') after Ode 6; no ikos given in PDF. No exapostilarion or lauds doxastikon in PDF — KNOWN GAP. Troparion not given in St-Sergius PDF — Tone IV from probe; OCA text pending. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O holy father Michael,\nthou didst shine forth as a light upon Thy flock,\nconfessing the True Faith boldly before the tyrant,\nand enduring exile for the sake of the icon of Christ.\nWherefore, celebrating today thy most holy memory,//\nwe receive forgiveness of sins through thy supplications.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarch",
+    "_note": "Troparion text not found in St-Sergius PDF; this is a provisional rendering pending OCA source."
+  },
+  "kontakion": {
+    "text": "As a most honorable hierarch and sacred sufferer for piety,\nundaunted by the threats of the vile one, thou didst vanquish his heretical opposition,\ncrying aloud with a free voice: 'I venerate the icon of Christ and His most pure Mother!'//\nWherefore, we honor thee, O Michael.",
+    "tone": 8,
+    "label": "Kontakion of the holy hierarch",
+    "melody": "As first-fruits"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "hierarch", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Having sanctified thyself with a perfect life, thou wast revealed to be a priest of God Most High,\nand, strengthened by Him, thou didst shut the mouths of the heretics\nwhich were opened against the icon of Christ;\nand persecuted, thou didst finish thy course, O father.",
+      "tone": 1,
+      "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+      "melody": "Thy tomb, O Savior",
+      "bothNow": {
+        "text": "O pure Virgin Theotokos who knewest not wedlock,\nthou sole intercessor and protection of the faithful:\nfrom tribulations, sorrows and cruel circumstances\ndeliver all who place their trust in thee, O Maiden,//\nand save our souls by thy divine supplications.",
+        "tone": 1,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "O holy father Michael,\nthou didst shine forth as a light upon Thy flock,\nconfessing the True Faith boldly before the tyrant,\nand enduring exile for the sake of the icon of Christ.\nWherefore, celebrating today thy most holy memory,//\nwe receive forgiveness of sins through thy supplications.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarch",
+      "_note": "Provisional — troparion not found in St-Sergius PDF."
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy hierarch Michael the Confessor in Tone II. No acrostic given. The Pentecostarion canon (also present at this service) is omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "As a most honorable hierarch and sacred sufferer for piety,\nundaunted by the threats of the vile one, thou didst vanquish his heretical opposition,\ncrying aloud with a free voice: 'I venerate the icon of Christ and His most pure Mother!'//\nWherefore, we honor thee, O Michael.",
+        "tone": 8,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "As first-fruits"
+      },
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "Thou wast a holy hierarch of God, O wondrous father Michael, shining with the ineffable light of abstinence, thou wast a bearer of royal sanctity, shepherding the Church of Christ, O most blessed one." },
+          { "text": "Discoursing with thy radiant mouth, thou didst piously transmit the doctrines of theology to all, O most noetically rich Michael; and, denouncing the blasphemies of heresies, thou wast a champion of piety, O most blessed one." },
+          { "text": "As a vessel of divine gifts, O blessed and most praised Michael, thou didst manifestly give of them to all the faithful, having acquired a godly life and been vested with righteousness as with a robe." },
+          { "text": "Thou didst continue to venerate with honor the sacred image of Christ and the Mother of God, O most sacred Michael, casting down the blasphemous speech of the heretics, and vanquishing them with thy words and sufferings." },
+          { "type": "theotokion", "text": "Theotokion: The supremely glorious Lord, the Sun which shone forth upon us from thy womb, O pure and most holy one, illumined all with His divine splendors, driving away all the gloomy darkness of the demons; for gloriously hath He been glorified." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God,//\nand none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Through transitory things thou didst earn things which are lasting and abide forever, O divinely eloquent one; for living a different life, thou didst cry aloud: There is none as holy as our God, and none more righteous than Thee, O Lord!" },
+          { "text": "Divine grace was poured forth from thy lips, enlarging thy mouth, and having received the gifts of wisdom, thou didst cry aloud: There is none as holy as our God, and none more righteous than Thee, O Lord!" },
+          { "text": "Thou didst subdue the passions through abstinence, and illumining thy mind with divine vision, thou wast spiritually active, crying aloud: There is none as holy as our God, and none more righteous than Thee, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: We hymn the most pure Theotokos Mary as the mediatress who hath made manifest our salvation. O ye divinely wise, chant ye: There is none as immaculate as thee, O all-immaculate one, and none more pure than thee, O Sovereign Lady!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador,\nnor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Desiring crowns of glory, thou didst leave off pleasing the flesh, O most excellent initiate of the sacred mysteries; and didst offer thy whole life to God as a sacrifice of sweet savor." },
+          { "text": "Limping away from the main path, the iconoclasts fell into the pit of heresy, and are now shown to be aliens; but thou, O most blessed one, by venerating the image of Christ, didst denounce them." },
+          { "text": "Thou hast richly received the reward for thy sufferings, O most honored and blessed Michael, dwelling now with the heavenly hosts and dancing with the angels." },
+          { "text": "Thy tongue was shown to be a pen of the Spirit, O most glorious Michael, being instructed to record the dispensation in the flesh of the Almighty Word, O thou who art most praised." },
+          { "text": "Resplendent in the sacred and honorable vesture of thy priesthood, and adorned with confession, thou wast a sight for angels and men, O most honored one." },
+          { "type": "theotokion", "text": "Theotokion: Set my life aright, O Theotokos, directing it by the precepts of the Word Who assumed flesh from thee; and guide it toward the light, O Virgin Mother, Mary Bride of God." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin,\nI rise early to hymn Thee, O King of Peace;\nenlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "From thy youth thou didst offer thyself to the Word, revealed as sacred, thou didst offer the divine offering adorned with active vision, and, having reaped the fruit of wisdom, thou didst become a shepherd, O right pleasing Michael." },
+          { "text": "The Word of God dwelt abundantly within thee, O divinely wise and blessed one, pouring forth rivers of doctrines, drinking whereof we are gladdened, manifestly having thee as a merciful mediator between us and Christ Who hath fashioned us." },
+          { "text": "Perceiving thy radiance, O thou who art revealed by God, He Who hath adorned all things with divine power adorned thee with the myrrh of spiritual sanctity; for thou wast revealed to be a most wise priest of God." },
+          { "type": "theotokion", "text": "Theotokion: He Who shone forth pre-eternally from the Father, yet deigned to become like unto us in all things, made His abode within thee, O all-immaculate Mother of God, and was born of thee, being both man and omnipotent God." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Arrayed in the salvific garment of divine gladness, O most praised one, as is meet, thou didst receive from God a crown of confession." },
+          { "text": "Having endured bitter imprisonment, O wise one, thou didst attain unto the broad expanse of paradise, where thou dost join chorus with the martyrs, O divinely wise and most noetically rich hierarch." },
+          { "text": "As a disciple of Christ God, O blessed and divinely inspired one, thou didst emulate His sufferings, valiantly accepting tribulations for the sake of His Church." },
+          { "type": "theotokion", "text": "Theotokion: All the prophets, having noetically learned of thine ineffable birthgiving, O most pure one, disposed themselves spiritually, foretelling unto all the things of the future." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit;\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "The abominable beast could not bear the divine sound of thy tongue, O sacred Michael, and condemned thee to banishment in a remote country; yet he was put to shame, beholding thy firmness, O sacred preacher." },
+          { "text": "The most sacred assembly of Christ is guided by thy teachings, O most wise one; for thou wast an instrument sounded by the Spirit, O Michael, performer of the sacred mysteries, announcing the mighty works of the Almighty." },
+          { "text": "Wisely didst thou denounce the infamous adherents of the blasphemous impiety of Manes, openly preaching the veneration of the most pure icon of Christ, the Mother of God and the saints, O venerable father Michael." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast the beautiful vessel of the incarnation of the Word of God, O all-immaculate Virgin; for, as One blessed and exceedingly glorious, in His great loving-kindness He took me wholly upon Himself." }
+        ]
+      },
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,\nand supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "Standing before the judgment-seat, O Michael, preacher of God, thou wast not daunted by the threats of the iniquitous, but cried out with an unrestrained voice: 'I honor the most pure icon of Christ the Savior and all the saints!'" },
+          { "text": "With mighty steadfast character, O wise one, thou didst contend with those who fight against God, and wast shown to be the victor, manifest as such in deed and word, for it was fitting to honor the most pure icon of Christ the Savior and all the saints." },
+          { "text": "Knowing that the veneration shown to icons passeth to their Prototype, O father, following the divinely inspired Scriptures and revealed as sacred, thou didst teach all to honor the icon of Christ and all the saints." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, thou dost unceasingly pour forth a stream of healings upon us, the faithful; and, drawing forth the abundant grace therefrom, we hymn thy most pure birthgiving and supremely exalt it throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Shining now with boundless enlightenment, O most noetically rich confessor, as thou standest before the great Light, thou hast been deemed worthy to receive the end which thou didst desire, and hastening toward which thou didst run, living in piety, O right wondrous one." },
+          { "text": "Thou hast been counted worthy to behold the radiance which passeth understanding, O father, and which thou didst manifestly acquire on earth. Entreat Christ in mediation, that He deliver thy disciples who now praise and honor thee, O right wondrous one." },
+          { "text": "Strengthened by divine grace, with the effulgence of thy wisdom and the rays emitted thereby thou didst burn up the audacity of those who fought against God, O wise and wondrous Michael, sacred preacher of Christ, having acquired a well-spring of light within thyself." },
+          { "type": "theotokion", "text": "Theotokion: Thy womb, O most immaculate one, like a fleece, having received the sweet dew of heaven, hath given birth for us to Him Who bestoweth immortality upon those who piously hymn Him and proclaim thee to be the most praised Theotokos." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "As a most honorable hierarch and sacred sufferer for piety,\nthou didst vanquish the heretical opposition,\ncrying aloud with a free voice:\n'I venerate the icon of Christ and His most pure Mother!'//\nWherefore, we honor thee, O Michael.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy hierarch",
+      "_note": "Exapostilarion not given in St-Sergius PDF; this is a provisional rendering.",
+      "bothNow": {
+        "text": "Thou art blessed among women,\nO all-immaculate Lady Theotokos;\nfor through the One born of thee//\nHades hath been taken captive and Adam recalled.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Timothy of the Seventy and Venerable Martyr Anastasius the Persian",
+    "feastKey": "apostleTimothyAndAnastasiosThePersian",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "apostle",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 01-22.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-22.pdf",
+    "_note": "Simple-rank. Combined canon of the saints (Timothy apostle + Anastasius martyr) in Tone I, acrostic: 'With hymns I honor the Apostle Timothy', composition of Theophanes. Sessional hymn after Ode 3 in Tone IV. Kontakion Tone I with ikos after Ode 6. Exapostilarion Tone III. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Learning goodness and being sober in all things\nwith a good conscience, arrayed as a priest\nthou didst draw forth things ineffable from the chosen vessel;\nand having kept the faith, thou didst finish the even course.//\nO Apostle Timothy, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy apostle"
+  },
+  "kontakion": {
+    "text": "O ye faithful, let us all hymn Timothy,\nthe divine disciple and companion of Paul,\nhonoring with him the wise Anastasius,\nwho shone forth from Persia like a star\nand dispelleth the passions of our souls//\nand our bodily infirmities.",
+    "tone": 1,
+    "label": "Kontakion of the saints",
+    "melody": "The angelic choir"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "simple", "feastType": "apostle", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Adorned with divine gifts, O glorious apostle,\nthou didst adorn the radiant metropolis of Ephesus;\nfor thou wast shown to be a preacher,\nand with the divine Paul didst proclaim unto all the word of salvation.\nWherefore, we celebrate thy memory with faith.",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+      "melody": "Go Thou quickly before",
+      "bothNow": {
+        "text": "O all-immaculate Virgin who hast given birth to the transcendent God:\ndo thou unceasingly entreat Him with the incorporeal ones,\nthat He grant forgiveness of transgressions and correction of life before the end,\nto us who, as is meet, hymn thee with faith and love,//\nO thou who alone art all-hymned.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Learning goodness and being sober in all things\nwith a good conscience, arrayed as a priest\nthou didst draw forth things ineffable from the chosen vessel;\nand having kept the faith, thou didst finish the even course.//\nO Apostle Timothy, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy apostle"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the saints in Tone I, acrostic: 'With hymns I honor the Apostle Timothy', composition of Theophanes. Combined canon for Apostle Timothy and Martyr Anastasius the Persian.",
+
+      "kontakion": {
+        "text": "O ye faithful, let us all hymn Timothy,\nthe divine disciple and companion of Paul,\nhonoring with him the wise Anastasius,\nwho shone forth from Persia like a star\nand dispelleth the passions of our souls//\nand our bodily infirmities.",
+        "tone": 1,
+        "label": "Kontakion of the saints",
+        "melody": "The angelic choir"
+      },
+      "ikos": {
+        "text": "The annual festival of the saints hath shone forth more brightly than the sun, illumining the faithful, and dispelling the manifold power of the demons, washing away infirmities and fulfilling the petitions of those who entreat them. Wherefore, wretch though I am, I make haste and offer ye a supplication from my pained and passion-plagued heart, that I may receive that which I desire and need: freedom from grief, a life free from sorrow, forgiveness of transgressions, and divine healing of soul and body."
+      },
+
+      "ode1": {
+        "irmos": "Thy victorious right arm,\nin a manner befitting God,\nhath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,//\nfashioning anew a path for the Israelites through the deep.",
+        "troparia": [
+          { "text": "By thy supplications and with the radiant grace of dispassion, O blessed one, dispel the uprisings of the passions and the gloom of ignorance, that I may now worthily hymn thee, who art revealed by God." },
+          { "text": "God, Who knoweth all things beforehand, seeing the beauty of thy mind, O Timothy, showed thee forth as worthy of being a fellow minister with the divine apostles, taking thought concerning thee with His wise providence." },
+          { "text": "We know the one transcendent Source Who knoweth all things beforehand; for the Apostle Timothy, enlightened by the grace of Christ from among the Greeks, is now counted with the divine Paul." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O well-spring of grace! Rejoice, O ladder and portal of heaven! Rejoice, O golden lampstand and jar, O unquarried mountain, who for the world hast given birth unto Christ, the Bestower of life!" }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature\nand in compassion hast assumed its form;\ndo Thou gird me with power from on high,\nthat I may cry unto Thee:\nHoly is the animate temple of Thine ineffable glory,//\nO Lover of mankind!",
+        "troparia": [
+          { "text": "Grace was poured forth abundantly in thy lips, O all-blessed one, giving rise to rivers of dogmas, which water the Church of Christ and bring forth much fertile fruit, O divinely wise Apostle Timothy, thou preacher of Christ." },
+          { "text": "In accordance with the prophecy, O all-blessed one, thy feet were made beautiful; for thou didst proclaim the peace, which passeth all understanding, of the Savior and Lord of all, Who hath destroyed the ancient enmity of mankind, O all-wise one." },
+          { "text": "Having mortified thy fleshly members, O blessed Timothy, thou didst make that which is worse subject to thy discourse, giving dominion to that which is higher; and, restraining thy passions, thou didst illumine thy soul, instructed by the teachings of Paul." },
+          { "type": "theotokion", "text": "Theotokion: From thee, O pure one, the never-fading Bloom hath sprung forth, Who doth perfume all humanity with the divine myrrh of His nature, and Who is co-beginningless with the Father, yet came under time through thee, O all-immaculate Virgin." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes\nas the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel\nwould come forth from thee,//\nfor our salvation and restoration.",
+        "troparia": [
+          { "text": "Willingly suffering lawfully, O all-blessed one, with extreme abstinence thou didst make the threefold billows of the passions subject to thy mind, receiving the perfection of virtue, O divinely wise Timothy, thou great preacher." },
+          { "text": "Shining like the sun, Paul emitted thee like a radiant beam, illumining the whole world with rich light, O divinely revealed Timothy, unto our edification and confirmation." },
+          { "text": "Ardently desiring the uttermost of desires, and infusing thyself with love, with zeal thou didst pass over to another life, O God-pleaser, ever contemplating thy Creator and delighting in the vision of Him." },
+          { "type": "theotokion", "text": "Theotokion: Manifestly arriving from heaven, O pure one, the angelic commander announced joy to thee, saying: 'God shall issue forth from thee in the flesh, O most pure virgin, unto the salvation of those who hymn thee with love!'" }
+        ]
+      },
+      "ode5": {
+        "irmos": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel,\ngranting us peace.\nWherefore guided towards the light of the knowledge of God,\nand watching by night we glorify Thee,//\nO Lover of mankind.",
+        "troparia": [
+          { "text": "Illumined with the immaterial effulgence of the primal light of the Cause of all, thou hast illumined the world with honorable preaching; and been manifestly revealed to be a beacon of piety emitting the discourse of the highest life, O all-blessed initiate of the sacred mysteries." },
+          { "text": "The true disciple of the divine Paul followed in the footsteps of his teacher, sowing his teachings among the faithful; and thereby guided to the light of piety, rising early out of the night, we glorify Thee, the Lover of mankind." },
+          { "text": "Through enlightenment thou hast been shown to be a second Paul, ministering to the primal Radiance, with Whose understanding thou hast illumined us. Victoriously protected by his armor, Timothy hath been revealed to be his ally in battle." },
+          { "type": "theotokion", "text": "Theotokion: By thy birthgiving, O Virgin, thou hast annulled the curse of Eve, the mother of all, having given rise to Christ, the blessing of the world. Wherefore, rejoicing, with mouth and tongue we magnify thee, confessing thee to be the true Theotokos." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The sea monster spat forth Jonah as it had received him,\nlike a babe from the womb;\nwhile the Word, having dwelt in the Virgin and taken flesh,\ncame forth from her yet kept her uncorrupt.\nFor being Himself not subject to decay,//\nHe preserved His Mother free from harm.",
+        "troparia": [
+          { "text": "Thou wast shown to be a chariot of God, O God-pleasing Timothy, bearing His divine name before the face of the godless tyrants, undaunted by their savagery; for thou didst array thyself in the invincible might of the Savior." },
+          { "text": "Thou didst receive a magnificent crown, O divinely wise Apostle Timothy, who art most noetically rich; for crowned with the diadem of the kingdom as is meet, thou dost stand before the throne of thy Master, rejoicing with Paul in the mansions of heaven, O blessed one." },
+          { "text": "Perfumed with the noetic myrrh of Christ Who for our sake abased Himself by assuming flesh, O most honored Timothy, thou hast received His sweet fragrance; and granted it to those who have recourse to thee with faith, O holy initiate of the ineffable mysteries of His noetic love." },
+          { "type": "theotokion", "text": "Theotokion: The whole choir of the prophets, taught by God, foretold the mystery of the ineffable and divine conception of the divine Word through thee, O Virgin Mother; for thou hast truly revealed the most true and ancient counsel." }
+        ]
+      },
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos,\nto be a noetic furnace;\nfor as He, the supremely exalted One,\nsaved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,//\nO Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          { "text": "Becoming a member of the chorus of the ranks of heaven as is meet, thou dost now rejoice in gladness, O blessed Timothy, initiate of sacred mysteries, delighting in light-bestowing radiance and proclaiming our supremely praised and glorious God." },
+          { "text": "Performing the sacred propagation of the Gospel of Christ from the heights of virtue, rejoicing, the most godly Paul sent divinely written epistles to thee, his disciple, O Timothy, proclaiming our praised and supremely glorious God." },
+          { "text": "The weakness of the flesh thou didst strengthen with might of soul, O blessed of God; for, having lived on earth like one of the incorporeal hosts, thou didst become a martyr when thy head was crushed, O sacred minister of the mysteries of God." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O pure one, from whom the Shepherd in His compassion issued forth, Who, clothing Himself wholly in me, in the skin of Adam, is truly supremely glorified, the praised and supremely glorious God of our fathers." }
+        ]
+      },
+      "ode8": {
+        "irmos": "The furnace moist with dew\nwas an image and prefiguring of a wonder past nature,\nburning not the children whom it had received,\nso the fire of the Godhead consumed not the Virgin's womb into which it had descended.\nTherefore in song let us sing:\nLet the whole creation bless the Lord//\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Thou wast shown to be worthy to stand with the angels of the heavenly ranks, O blessed Timothy; for, having been taught supra-naturally, thou didst emulate their radiance, O wise one, and with them dost chant in gladness: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Invested with power from heaven which descended in a strange manner upon the disciples and eye-witnesses of the Word, thou wast shown to be an apostle, O divinely wise Timothy. And with them thou dost chant rejoicing: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Thou didst stand forth, O all-blessed Timothy, preacher of God, manifestly attaining the good things of uttermost desire, ever illumined brilliantly by the light of the Trinity; wherefore thou dost now chant in gladness: Let all creation bless the Lord and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: The rich Word Who is glorified with angelic hymnody hath beggared Himself for our sake, choosing thee, the beauty of Jacob, O blessed one, to be His Mother. Let all creation bless the Lord and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed,\nprefigured Thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "troparia": [
+          { "text": "The saying of David hath been fulfilled, for thou hast appeared to the world like lightning, illumining the ends of the earth with thy preaching, O ever memorable and blessed Timothy. Wherefore, we unceasingly magnify thee, O thou who wast revealed by God." },
+          { "text": "Partaking of the light-bearing radiance and divine effulgence of the three-Sunned Godhead, and delighting therein in purity, O blessed and most honored initiate of the sacred mysteries, from the darkness of transgressions save those who hymn thee." },
+          { "text": "Made steadfast by the teachings of Thine apostles; Paul, the preacher of Thy dispensation, and the divinely wise Timothy, O only-begotten Master, reasoning aright we glorify Thee as equal to the Father and the Spirit." },
+          { "type": "theotokion", "text": "Theotokion: O thine awesome wonder! For, having given birth ineffably to God the Word, O Virgin Theotokos, thou hast revealed the mystery hidden in God, Who hath created all things, before time and before all generations." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Two beacons shine forth radiantly in the world —\nTimothy, great among the apostles of Christ,\nand the martyr Anastasius, among his fellows,//\nwhom we praise together.",
+      "tone": 3,
+      "label": "Exapostilarion of the saints",
+      "melody": "O Light immutable",
+      "bothNow": {
+        "text": "All of us, the faithful, have appointed thee as a mediator before Him Who hath now been born of thee, O most holy one;\nand we are crucified with Him for the sake of that which is better.\nWherefore, cease thou never to pray on our behalf.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

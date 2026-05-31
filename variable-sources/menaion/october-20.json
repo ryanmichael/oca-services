@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Greatmartyr Artemius at Antioch",
+    "feastKey": "greatmartyArtemiusAntioch",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "martyr",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 10-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-20.pdf",
+    "_note": "Simple-rank. Single canon of the holy great-martyr in Tone II, the composition of venerable Joseph the Hymnographer; acrostic: 'Grant me thy rich grace, O blessed one'. 3 saint troparia + theotokion per ode. Sessional hymn after Ode 3 Tone VIII. Kontakion Tone II with ikos after Ode 6. Exapostilarion 'O immutable Light'. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "In his sufferings, Thy martyr Artemius O Lord, *\nreceived an imperishable crown from Thee, our God; *\nfor, possessed of Thy might, *\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy great-martyr"
+  },
+  "kontakion": {
+    "text": "Assembling, let us praise with hymns, as is meet, *\nthe pious and crown-bearing martyr, *\nwho hath won the trophy of victory over the enemy, *\nabundant bestower of miracles and most great among martyrs,//\nfor he entreateth the Lord on behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr",
+    "melody": "The steadfast"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "martyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Pleasing the King of the ages,\nthou didst spurn all the counsel of the iniquitous emperor,\nand didst not sacrifice unto graven images, O glorious one.\nHence thou didst bring thyself as a sacrifice unto the Word,\nWho had Himself been sacrificed, suffering mightily.\nWherefore, thou dost pour forth streams of miracles,\nhealing the faithful who approach thee.\nO passion-bearer Artemius, entreat Christ God,\nthat He grant remission of sins//\nunto those who with love honor thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn of the holy great-martyr (after Ode 3)",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "O undefiled, blameless and all-immaculate Lady,\nthou cloud of the noetic Sun and golden candle-stand of the light of God:\nwith the radiance of dispassion illumine my soul,\nwhich hath grown dim through the blindness of the passions, I pray;\nwith torrents of compunction enlighten my polluted heart,\nand with tears of repentance cleanse me of the mire of my evil deeds,\nthat with love I may cry out to thee:\nO Ever-virgin Theotokos, entreat Christ God,\nthat He grant me forgiveness of my transgressions;//\nfor thee do I, thy servant, have as my hope.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "In his sufferings, Thy martyr Artemius O Lord, *\nreceived an imperishable crown from Thee, our God; *\nfor, possessed of Thy might, *\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy great-martyr in Tone II, the composition of venerable Joseph the Hymnographer. Acrostic: 'Grant me thy rich grace, O blessed one'.",
+
+      "kontakion": {
+        "text": "Assembling, let us praise with hymns, as is meet, *\nthe pious and crown-bearing martyr, *\nwho hath won the trophy of victory over the enemy, *\nabundant bestower of miracles and most great among martyrs,//\nfor he entreateth the Lord on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "Who can recount thy struggles or the pains which thou didst manfully endure for the sake of thy faith in the Lord, or the gifts which thou wast deemed worthy of, O passion-bearer? Human lips are unable to proclaim them; for, adorned with wisdom and courage, disdaining wealth and transitory honor, thou didst show thyself to be a most dedicated warrior, and therefore dost entreat the Lord on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army. *\nBut the Incarnate Word annihilated pernicious sin. *\nExceedingly glorious is the Lord, *\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "Having fought the good fight, O martyr, and received a splendid crown,\nthou dost now stand, illumined, before the immaterial Light and dost partake thereof.\nWherefore, we beseech thee: Enlighten us by thy prayers." },
+          { "text": "Thy radiant festival, O martyr,\nhath joyously summoned us all to a banquet today,\nsetting before us the struggles of thy suffering, thy courage and resolve;\nand, delighted thereby, we bless thee with faith and love." },
+          { "text": "Slain upon a cross, O most blessed one,\nthou didst perceive the Lord Who is not perceptible to the flesh,\nand is the Cause of life;\nand thou didst love thy voluntary death of suffering.\nWherefore, thou hast received immortal glory." },
+          { "type": "theotokion", "text": "Theotokion: The incorporeal Word, incarnate of thee in a godly manner\nthrough the abundance of His love for mankind, O most pure one,\ndrew nigh to suffering;\nand pouring forth dispassion upon mortals,\nthe supremely glorious Lord hath gloriously been glorified!" }
+        ]
+      },
+      "ode3": {
+        "irmos": "The desert of the barren Church of the nations, *\nblossomed like a lily *\nat Thy coming, O Lord, *\ntherein hath my heart been established.",
+        "troparia": [
+          { "text": "Wishing to be adorned with crowns of martyrdom, O glorious one,\nby divine grace thou didst endure wounds\nand the bitter pain of being rent asunder." },
+          { "text": "The pillar of thy heart, O all-wise one,\ndid not quake at the most grievous prospect of torture,\nfor it was firmly established upon the immovable Rock of the Spirit." },
+          { "text": "Suspended upon a tree, covered on all sides with deep wounds,\nthou didst direct the gaze of thine eyes\nunto Him Who saveth, O right glorious one." },
+          { "type": "theotokion", "text": "Theotokion: Incarnate, of His own desire, from thy most pure blood, O Lady,\nthe Lord Who saveth mankind,\nhath assembled multitudes of martyrs." }
+        ]
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, *\nnor as an Angel, *\nbut the very Lord himself incarnate, *\nand didst save me, the whole man; *\nwherefore I cry unto Thee: *\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Emulating Him Who was crucified,\nthou wast of thine own will lifted up upon a tree,\nstretched out and inexorably flayed,\ndivesting thyself of the vesture of mortality." },
+          { "text": "The pangs of thy flesh and the intensity of the evils inflicted upon thee\nhave clearly brought thee rest without pain, O martyr;\nand, delighting therein, thou dost alleviate all the pain of our souls." },
+          { "text": "Unto thee, who hast become an equal to the angels\nby the radiance of thy suffering,\nby the hand of an angel, did our Life, the Bread of heaven,\nsend food which strengthened thee, O praiseworthy martyr." },
+          { "type": "theotokion", "text": "Theotokion: Even after giving birth thou wast kept an incorrupt Virgin by Christ,\nO undefiled one,\nfor He was well pleased, in His extreme goodness,\nto assume my whole manhood in thy womb." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ God Thou art a mediator between God and man; *\nfor by Thee, O Master, *\nwe have been led from the night of ignorance, *\nto Thy Father, the Source of light.",
+        "troparia": [
+          { "text": "Thou art seen through the Spirit to be a brilliant lamp, O Artemius,\nilluming the faithful\nand driving away the gloom of evil and the spirits of darkness." },
+          { "text": "Having anchored the pillars of thy soul to the Rock of life,\nthough crushed by stones and covered with wounds,\nthou didst remain unshaken, O true passion-bearer." },
+          { "text": "Armed with the precious powers of the Spirit, O victorious martyr,\nthou didst disdain the three-pronged blades,\nthereby removing the sting of the enemy." },
+          { "type": "theotokion", "text": "Theotokion: O Lady, He that was born of thee,\nhaving willingly endured the Cross and burial for our sake,\nin that He is mighty,\nhath made Artemius a most mighty witness to His own sufferings." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin, *\nI appeal to the unfathomable abyss of Thy compassion: *\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Thou didst bring thyself as a lamb and a whole-burnt offering, O Artemius,\nunto Him Who accepted voluntary crucifixion that we might be restored." },
+          { "text": "When thy body was rent asunder by unremitting flogging,\nO Artemius most patient in endurance,\nthou didst maintain thy spiritual nobility uncompromised by faith." },
+          { "text": "O Artemius, emulator of the Savior:\nfrom afflictions, temptations, passions and sorrows\ndo thou deliver us who have recourse unto thee." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin Theotokos, save me, thy servant,\nwho am in the midst of a raging sea of sorrows\nand am encompassed about by the billows and threefold waves of temptation." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant *\nfanned the roaring flame; *\nbut Christ bedewed the God-fearing children with the Spirit, *\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "Having acquired an invincible mind through steadfast firmness of spirit, O Artemius,\nthou didst foil the wiles of the enemy O martyr,\nchanting: Blessed and supremely glorious art Thou!" },
+          { "text": "With the streams of thy blood thou didst quench the raging fire of torments, O blessed one;\nand, drenched with the dew of the Spirit,\nthou didst cry aloud, rejoicing: Blessed and supremely glorious art Thou!" },
+          { "text": "Pouring forth gifts of healing, thou dost extinguish the burning of the passions\nwith divine grace,\ndriving away evil spirits by thy visitation, O Artemius,\nchanting: Blessed and supremely glorious art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O all-immaculate Virgin,\nin a godly manner thou didst give birth unto Him\nWho poureth forth immortality upon the dead.\nWherefore, entreat Him, that He slay the passions of our bodies, O pure one,\nand grant us everlasting life." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided, *\nfor, by the command of God it consumed the Chaldeans, *\nbut bedewed the faithful, who chant: *\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Thou didst endure the wasting of thy body with cruel wounds\ninflicted by three-pronged claws,\nbut directing thy gaze to the future reward\nwhich God, the Master and Lord of all was to bestow upon thee,\nthou didst cry out to Him, O glorious one." },
+          { "text": "Thou didst sanctify the earth with thy blood\nand revealed thy much-suffering body to be a source of healing,\never driving away all infirmities, afflictions and demonic harm\nfrom those who have recourse to thee in faith." },
+          { "text": "Thou wast revealed to be an adornment of the passion-bearers,\npiously spurning the things of this world\nand purchasing with thy precious blood transcendent things for the lowly,\nO all-famed one, chanting: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Thou hast restored us who fled after the bitter tasting of the fruit of the tree\nand fell headlong, O most pure one,\nwho hast given birth unto our Creator, the hypostatic Word.\nAnd unto Him, O pure one, we cry aloud: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord, *\nhath appeared to us incarnate of a Virgin, *\nto enlighten those in darkness, *\nand to gather the dispersed; *\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Wishing to behold the beauties of heaven,\nthou didst avoid the visible beauties of this world;\nand, having adorned thyself with the beauties of the passion-bearers,\nO valorous martyr, rejoicing, thou didst receive the greatest of blessings." },
+          { "text": "O blessed one, thy memory, illumining the hearts of the faithful like the dawn,\nhath shone forth like the sun;\nfor thou hast been revealed to be a radiant heir of the light and of the day,\nO Artemius, dispelling gloom from our souls." },
+          { "text": "Let us leap for joy, O ye people,\nspiritually holding chorus on this, the commemoration of the divine martyr Artemius;\nand with praise let us sing unto God\nWho is wondrous in His saints\nand Who sanctifieth those who with faith honor him." },
+          { "type": "theotokion", "text": "Theotokion: With the light of Thy countenance, O Lord,\nillumine me who am enshrouded in the darkness of despondency,\nfor I have as intercessors before Thee, O Word,\nThy truly pure Mother, the angelic hosts and the most glorious Artemius." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Light shone within thy heart, O passion-bearer Artemius,\nand thou didst manfully endure the most bitter of torments,\nreceiving from on high the grace of healing,//\nthat thou mightest ever cure infirmities.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy great-martyr",
+      "melody": "O immutable Light",
+      "bothNow": {
+        "text": "The Light which shone forth timelessly from the Father before the ages\nhath now in these latter days sprung forth in time from thee, O Virgin,\nfor the salvation of the world.\nHim do thou never cease to entreat on behalf of the world.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

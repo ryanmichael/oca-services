@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "feast": "Translation of the Relics of Hieromartyr Ignatius the Godbearer",
+    "feastKey": "translationRelicsIgnatiusTheGodbearer",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "hierarch",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 01-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-29.pdf",
+    "_note": "Simple-rank. Canon of the hieromartyr in Tone IV, acrostic: 'In songs do I hymn Ignatius, the star of the East', composition of Theophanes. Sessional hymn after Ode 3 in Tone III. Kontakion Tone IV with ikos after Ode 6. Exapostilarion Tone III. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO hieromartyr Ignatius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the hieromartyr"
+  },
+  "kontakion": {
+    "text": "Thou didst shine forth from the East today,\nillumining all creation with thy doctrines,//\nand adorned with martyrdom. O God-bearing and divine Ignatius.",
+    "tone": 4,
+    "label": "Kontakion of the hieromartyr",
+    "melody": "Thou hast appeared today"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "hierarch", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Illumined by the divine Spirit,\nwith pastoral boldness and great wisdom thou didst put to shame the savagery of the tyrants;\nand, drawing thyself across the chasm of delusion, O venerable father,\nthou didst reach the divine haven.\nEntreat Christ God, that He grant us great mercy.",
+      "tone": 3,
+      "label": "Sessional Hymn of the hieromartyr (after Ode 3)",
+      "melody": "Of the divine Faith",
+      "bothNow": {
+        "text": "Without separating Himself from the divine Essence,\nwhen taking flesh in thy womb, He remained God though He had became a man;\nand even after thy birthgiving,\npreserved thee, His Virgin Mother, as immaculate as thou wast before giving birth.\nHim do thou earnestly beseech, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO hieromartyr Ignatius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the hieromartyr"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the hieromartyr in Tone IV, acrostic: 'In songs do I hymn Ignatius, the star of the East', composition of Theophanes.",
+
+      "kontakion": {
+        "text": "Thou didst shine forth from the East today,\nillumining all creation with thy doctrines,//\nand adorned with martyrdom. O God-bearing and divine Ignatius.",
+        "tone": 4,
+        "label": "Kontakion of the hieromartyr",
+        "melody": "Thou hast appeared today"
+      },
+      "ikos": {
+        "text": "Sanctifying Jeremiah from his mother's womb and, as the all-knowing One, foreknowing when he would be born, and that he would be a habitation of His Holy Spirit, God straightway filled him with life from his childhood and sent him, as His prophet and herald, to proclaim His holy coming to all on earth. And when God Himself was born of the Virgin and went forth to preach, He found the God-bearing and divine Ignatius to be a disciple worthy of His grace from infancy."
+      },
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Guiding my life to virtue, O God-bearer Ignatius, illumine me with the light of the grace which shineth in thee and by thy supplications set at naught the tumult of the passions." },
+          { "text": "In thy harvest, O God-bearer Ignatius, thou wast like a most fertile soil, increasing its seed a hundredfold for Christ, Who watereth souls with the gentle rain of the Spirit." },
+          { "text": "The Master and God of all, perceiving with the power of His foreknowledge the nobility of thy soul, O God-bearer Ignatius, illumined thee with the divine radiance of grace." },
+          { "text": "Illumined by the rays of the noetic Sun, O all-wise one, thou didst hasten radiantly from the East like a material sun, and by thy preaching cast light upon the gloominess of the West." },
+          { "type": "theotokion", "text": "Theotokion: O all-pure Bride of God, thou hast given birth to One of the most holy Trinity Who through thee revealed Himself as like us in the flesh, as the Father willed and with the cooperation of the all-holy Spirit." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,//\nmy refuge and foundation.",
+        "troparia": [
+          { "text": "Heal my mind which hath been afflicted with cruel carnal passions, O ever-memorable Ignatius, martyr of Christ." },
+          { "text": "Knowing well that thou wast of one mind with the apostles, Christ appointed thee as a teacher shining with divine light upon all the Churches." },
+          { "text": "Seeing the Bestower of life slain for thy sake, O Ignatius, with love thou didst hasten to endure death for His sake." },
+          { "type": "theotokion", "text": "Theotokion: Cleansed by the Spirit beforehand, O pure one, thou hast given birth to the Word of the Father, for the benefit of rational nature." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Fittingly called the God-bearer, in that thou didst clothe thyself with life in Christ, thou dost radiantly anoint all to receive crowns by desire, O confirmation of martyrs." },
+          { "text": "Thou wast inspired by the power of Him Who for thy sake was nailed to the Cross, O God-bearer Ignatius; for permitting the wild beasts to separate thee from this world, thou didst depart to Him Whom with love thou didst desire." },
+          { "text": "Desiring the beauties of the Master, and loving Him with unwavering devotion, O God-bearing martyr Ignatius, thou didst diligently emulate His sufferings." },
+          { "text": "Adorned with the purple robe of thy blood and the oil of thy priestly anointing, O holy hierarch, initiate of the mysteries of God, thou dost shine forth with joy, crying unto Christ: Glory to Thy power, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: He Who by His divine power created all things out from nothingness, O Mother of God, was born of thee, illumining the world with the radiant beams of divinity and the splendor of divine knowledge." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Now beholding Christ face to face, no longer as a reflection in a mirror, O Ignatius, thou hast truly united thyself to Him Who loveth thee." },
+          { "text": "Thou hast truly drawn forth enlightenment from the well-spring of the Bestower of light, O Ignatius; for Christ, holding thee in His most pure hands, did hallow thee." },
+          { "text": "Acquiring a mind illumined by the Spirit of God, O Ignatius, thou sendest forth the divinely inscribed laws of grace like tablets." },
+          { "type": "theotokion", "text": "Theotokion: From on high the angel joyously cried unto thee, O Theotokos, announcing to thee the ineffable conception of the Master." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Possessed of the hypostatic Wisdom of God, thou didst set at naught the dogmas of the philosophy of the Greeks, O initiate of sacred mysteries, and with a tumult thou didst consign to oblivion all recollections of their falsehood." },
+          { "text": "Cease thou never to pray on behalf of those who celebrate thy memory, O all-blessed one, that they be delivered from most grievous temptations and misfortunes, in that thou art a right acceptable priest." },
+          { "text": "Excelling in courage and wisdom, O venerable and God-bearing martyr, thou wast shown to be adorned with the beauty of righteousness, and chastity, encompassed by the virtues." },
+          { "type": "theotokion", "text": "Theotokion: Finding thee alone like a most pure rose, a lily of the valley, in the midst of thorns, O Mother of God, the Bridegroom and Word issued forth from thy womb." }
+        ]
+      },
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory,//\nO Lord.",
+        "troparia": [
+          { "text": "Adorned with the divine myrrh of the priesthood, O venerable one, and with the blood of thy martyrdom, thou didst shine forth in both, crying aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Having enlightened the whole world with thy laws, as with the Bread of heaven, thou didst feed the faithful who cry out to thy Master: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Illumined with radiant beams and shining with the splendor of the effulgence of the Source of light, thou didst receive heavenly delight, rejoicing, O God-bearer, thou boast of martyrs." },
+          { "text": "Being the grain of God, as thou didst say O ever all-memorable martyr, thou wast ground by the teeth of wild beasts, and for Him Who nurtureth all things in His divine goodness, thou wast a most pure bread." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O sanctified and divine habitation of the Most High; for through thee, O Theotokos, joy hath been granted to those who cry: Blessed art thou among women, O all-immaculate Sovereign Lady!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws\nin their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord,//\nall ye works of the Lord.",
+        "troparia": [
+          { "text": "Standing before the tribunal, O wise and holy one, with purity of mind thou didst theologize concerning the uncreated Trinity; and, undaunted before the thrones of the savage tyrants, with noetic splendor thou didst cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Rationally governing thy mind with divine dogmas, O blessed Ignatius, with torrents of wisdom thou didst utterly drown the wicked demon-tyrant, the prince of deception, crying out: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Shining with the boundless light of the Divinity, O invincible martyr, thou didst dispel the inconstant darkness of ungodliness, sending forth radiant epistles to those who chant: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Thou didst not fear the savagery and rapacity of the wild beasts, O godly Ignatius; for the power of the Most High which shone forth from the Virgin arrayed thee in the armor of the Cross as thou didst chant: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Alone among all generations, O most pure Virgin, thou wast shown to be the Mother of God; and a dwelling-place of the Godhead, O all-immaculate one, unburnt by the fire of the unapproachable Light. Wherefore, we all call thee blessed, O Mary Bride of God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Most divine love, holding thy soul fast, O blessed one, burned up all the material grief of this world with immaterial fire, and presented thee as one crowned, to Him Who is the Summit of all desires." },
+          { "text": "Thou didst hasten to the most calm and radiant haven, O God-bearer, escaping the raging of both savage and rational beasts as though they were a tempest of threefold waves; and now thou art transported in ecstasy, receiving everlasting delight." },
+          { "text": "Adorned with an ornate crown, O initiate of the sacred mysteries, thou dost excel; for in thee the glory of the priesthood and martyrdom are joined, and as one who shareth in both thou hast been glorified by thy Master." },
+          { "text": "As one of manifest sanctity, possessing boldness before thy Master and God, O Ignatius, pray thou, that those who with faith celebrate thy memory be delivered now from temptations." },
+          { "type": "theotokion", "text": "Theotokion: Quench the flame of my passions with the radiant dew of thy prayer, O all-pure one, in that, without being consumed, thou didst receive the divine Fire in thy womb; for thee do I have as the hope of my salvation, O Bride of God." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "The Church of Christ doth possess thy splendid festival as a treasure which cannot be taken away,\nhaving received thy divine relics, from whence myrrh floweth forth upon all,//\nO God-bearer Ignatius.",
+      "tone": 3,
+      "label": "Exapostilarion of the hieromartyr",
+      "melody": "O Light immutable",
+      "bothNow": {
+        "text": "The Light which shone forth timelessly from the Father before the ages hath now,\nin these latter times, issued forth from thee, O Virgin, for the salvation of the world.\nCease thou never to intercede with Him, on behalf of thy people.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "feast": "Great Martyr Theodore the Tyro (Recruit)",
+    "feastKey": "greatMartyrTheodoreTheTyro",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "martyr",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 02-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-17.pdf",
+    "_note": "Simple-rank. Canon of the great martyr in Tone VIII, acrostic: 'Save those who call upon thee, O all-blessed one'. Sessional hymn after Ode 3 in Tone IV. Kontakion Tone VIII with ikos after Ode 6. Exapostilarion Tone III. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Great are the achievements of faith!\nThe holy martyr Theodore rejoiced in the fountain of the flames\nas though in the still waters of rest;\nconsumed in the fire, he was offered as a sacrifice to the Trinity.//\nBy his intercessions, O Christ God, save Thou our souls.",
+    "tone": 2,
+    "label": "Troparion of the great martyr"
+  },
+  "kontakion": {
+    "text": "The faith of Christ didst thou carry as a shield within thy heart,\ntrampling underfoot the power of the enemy\nO greatly-suffering martyr; as one unconquerable//\nthou hast received a heavenly and eternal crown.",
+    "tone": 8,
+    "label": "Kontakion of the great martyr"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "martyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Adorned with the comeliness of martyrdom, O martyr, crowned,\nthou dost stand rejoicing before the King of heaven;\nfor thou wast raised aloft upon a cross for His sake\nsteadfastly enduring the bite of the nails and iron claws,\nthe lash of the knout, and the gouging of thine eyes.\nWherefore, we honor thee with faith,//\nO thou who art most great.",
+      "tone": 4,
+      "label": "Sessional Hymn of the great martyr (after Ode 3)",
+      "melody": "Having been lifted up",
+      "bothNow": {
+        "text": "He that sitteth upon the throne of the cherubim\nand abideth in the bosom of the Father\ndoth sit in thy womb as upon a throne, O Lady;\nfor, being truly God incarnate,\nHe reigneth over all nations,\nand with understanding we now chant to Him.\nHim do thou also entreat,//\nthat thy servants be saved.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Great are the achievements of faith!\nThe holy martyr Theodore rejoiced in the fountain of the flames\nas though in the still waters of rest;\nconsumed in the fire, he was offered as a sacrifice to the Trinity.//\nBy his intercessions, O Christ God, save Thou our souls.",
+      "tone": 2,
+      "label": "Troparion of the great martyr"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the great martyr in Tone VIII, acrostic: 'Save those who call upon thee, O all-blessed one'.",
+
+      "kontakion": {
+        "text": "The faith of Christ didst thou carry as a shield within thy heart,\ntrampling underfoot the power of the enemy\nO greatly-suffering martyr; as one unconquerable//\nthou hast received a heavenly and eternal crown.",
+        "tone": 8,
+        "label": "Kontakion of the great martyr"
+      },
+      "ikos": {
+        "text": "With thanksgiving and faith we praise Thee Who art borne aloft upon a throne of light; for Thou, O Christ, hast given us a divine gift in the suffering of the valiant Theodore, in the life of the thrice-blessed one, for he is a champion of the truth who with pious thoughts desired Thee, O mighty conqueror of the deceiver, for he is invincible."
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer//\nlet us sing.",
+        "troparia": [
+          { "text": "Having fought the good fight and finished the course, O martyr of Christ, thou didst keep the divine faith and obtain a crown of righteousness." },
+          { "text": "Having received from Christ glory which surpasseth nature, O passion-bearer, thou dost go about the whole earth, delivering all who have recourse unto thee with faith and reverence." },
+          { "text": "As thou art a member of the heavenly choir with the incorporeal powers, O glorious one, from misfortune and temptation do thou deliver those who call upon thee." },
+          { "type": "theotokion", "text": "Theotokion: O thou who hast given birth ineffably to the Wisdom and Word of the Father, heal the grievous wounds of my soul and still the pain of my heart." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "The fire of torment did not frighten thee, O Theodore; wherefore, thou dost still the fire of temptation for those who have recourse to thee." },
+          { "text": "By thy praise deliver me from the grief that ever besetteth me, O martyr of Christ, smoothing all the roughness of life." },
+          { "text": "All my heart, thought and soul do I stretch forth to thee, O passion-bearer, seeking thine aid." },
+          { "type": "theotokion", "text": "Theotokion: Quell the constant turbulence of my thoughts, O Mother of God, and direct their movements toward thy Son." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Thee do I set as my helmsman, O favored one of God; guide me with the sail of the Spirit and divine winds, O most glorious one." },
+          { "text": "From every threat do thou deliver those who bless thee with faith and honor thy divine memory, we pray thee, O all-blessed Theodore." },
+          { "text": "Neither life, nor death, nor things present, nor things to come, nor fire, nor wounds were able to separate thee from Christ, O divinely wise one." },
+          { "type": "theotokion", "text": "Theotokion: O Mother of God, who for us didst give birth unto Him Who shone forth eternally from the Father, yet became subject to time. Him do thou beseech, that He save those who praise thee!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "As thou art the adornment of the martyrs, O martyr of Christ, be thou an invincible rampart and an aid for the faithful." },
+          { "text": "Delighting in that loftier union which is of blessings which surpass understanding, O Theodore, save those who honor thee." },
+          { "text": "Overcome by the love of the Creator, thou didst shed the attachments of life and wast well-pleasing unto God." },
+          { "type": "theotokion", "text": "Theotokion: God the Word, to Whom thou hast given birth, O all-immaculate one, do thou earnestly entreat Him on behalf of us who praise thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,//\nO God of my salvation.",
+        "troparia": [
+          { "text": "Being a most fervent champion of piety and a denouncer of the deception of idolatry, do thou destroy the images of demonic delusion and the passions of my soul." },
+          { "text": "O martyr Theodore, be thou my confirmation and an invincible rampart for me, replacing the weakness and corruption of my mind with strength, preserving it unharmed." },
+          { "text": "Thou didst reject corrupting and corrupted warfare, O all-blessed Theodore, yet didst wholly love the battle of life wherein thou wast shown to be a victor, O right wondrous one." },
+          { "type": "theotokion", "text": "Theotokion: Splendor shone forth from the Zion on High, and robed in the flesh He had received from thee, O thou who knewest not wedlock, and ineffably united thereto, He hath enlightened the world." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Children of Judaea,\nwho of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity,\nas they sang:\nO God of our fathers,//\nblessed art Thou.",
+        "troparia": [
+          { "text": "O divinely wise one, thee do I have as an intercessor for my life, an aid to my salvation and a protector who giveth confirmation unto those who cry: O God of our fathers, blessed art Thou!" },
+          { "text": "As a wondrous and most sacred sacrifice thou didst bring thyself to the Lord, O all-blessed one, and though utterly consumed by the fire of thy torments, O glorious one, thou didst cry aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "Partaking of the living inspiration of the Spirit of God, O blessed one, thou dost drive away evil spirits, heal infirmities and criest aloud, rejoicing: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: The Lord of all, incarnate, issued forth from thy womb, O Virgin. Wherefore, regarding thee in an Orthodox manner as the Theotokos, we cry out to thy Son: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\nYe children bless, ye priests praise,\nye people,//\nsupremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Surrounded by all manner of threefold waves, O most glorious one, and caught fast by the temptations of life, all we, the faithful, lead thee to the Master as a most speedy intercessor, a helper and champion, crying: Cease not to pray for those who praise thy most honorable memory!" },
+          { "text": "Bound with the chains of my sins, O most noetically rich martyr, and fettered with the shackles of my transgressions, I flee to thy protection, begging forgiveness, O crowned one. But as thou hast wondrous boldness before the Master of all, O divinely wise one, entreat thou that those who praise Christ be saved throughout all ages." },
+          { "text": "Illumined with the splendor of martyrdom, O all-praised one, thou wast numbered among the angelic choirs. Ever rejoicing in spiritual fellowship with them, O martyr, with miracles of healing thou dost enlighten those who praise thee with love, chanting: O ye people, supremely exalt Christ throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: The Maker and Author of creation, as compassionate, shared flesh with mankind which He had received from thee, O Birthgiver of God who knewest not wedlock. Wherefore, we, the faithful, truly glorify thee as the Theotokos, ever singing and crying aloud: O ye people, supremely exalt Christ throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "With never ceasing praises we magnify thee,\nthe Mother of God Most High,\nwho art higher than the all-pure hosts,\nand who beyond comprehension knew not wedlock,//\nyet hath truly given birth to God.",
+        "troparia": [
+          { "text": "Having acquired thee, O great martyr, as a watchful guardian, we unceasingly bless thee as one who dispels the depravity of the enemy and grants peace to the Church, O passion-bearer." },
+          { "text": "The Master hath given thee power over the demons, and to heal sufferings of body and soul, O blessed one, praying to the Savior with most pious boldness; wherefore, we all bless thee." },
+          { "text": "As thou dost contemplate the radiance of the single threefold Sun, the One Godhead in Three, the Principle beyond all beginning, the Source of goodness, O passion-bearer, protect those who praise thee." },
+          { "type": "theotokion", "text": "Theotokion: Rescue me from captivity of mind, O all-immaculate Lady, bestowing upon me redemption; for the crucifixion of thy Son hath been the redemption, peace and salvation of all who praise thee." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Tried like gold with fire and torture,\nthou wast most clearly revealed to be a worthy gift of the Most High God,\nO passion-bearer Theodore.\nPray thou now on our behalf.",
+      "tone": 3,
+      "label": "Exapostilarion of the great martyr",
+      "melody": "The heavens with stars",
+      "bothNow": {
+        "text": "By thy mighty protection, O pure one,\npreserve all of us, thy servants unharmed,\nby the attacks of enemies;//\nfor thee alone do we have as our refuge in times of need.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

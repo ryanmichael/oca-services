@@ -1,0 +1,150 @@
+{
+  "_meta": {
+    "feast": "Holy Fathers of the First Ecumenical Council",
+    "feastKey": "holyFathersFirstEcumenicalCouncil",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "council",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Epentecostarion pent/70.pdf (Seventh Sunday of Pascha, After-feast of the Ascension, Sunday of the Holy Fathers of the First Ecumenical Council)",
+    "_sourceUrl": "https://st-sergius.org/services/pent/70.pdf",
+    "_note": "Simple-rank. This is a moveable Sunday feast (Seventh Sunday of Pascha, 2026-05-24). Sunday Matins has three canons: Resurrection (Tone VI), Ascension, and Holy Fathers. Only the Holy Fathers canon is captured here per the menaion-matins-track pattern. Sessional hymn of the Fathers Tone IV after Polyeleios/Ode 3. Kontakion Tone VIII with ikos after Ode 6. Exapostilarion of the Fathers (Tone VI context). Lauds doxastikon of the Fathers Tone VIII. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Most glorious art Thou, O Christ our God,\nThou hast established our Holy Fathers as luminaries upon the earth,\nand through them hath instructed us all in the true faith.//\nO Most merciful One, glory be to Thee.",
+    "tone": 8,
+    "label": "Troparion of the Holy Fathers"
+  },
+  "kontakion": {
+    "text": "The preaching of the apostles and the doctrines of the Fathers\nhave confirmed the one Faith in the Church.\nAnd wearing the garment of truth woven from the theology on high,//\nshe rightly divideth and glorifieth the great mystery of piety.",
+    "tone": 8,
+    "label": "Kontakion of the Holy Fathers"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "council", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "O blessed Fathers, ye were truly shown unto the world\nto be luminous stars bright with the truth of Christ,\nshining most brilliantly upon the earth.\nHaving burnt up the heresies of slanderous babblers,\nye wholly quenched the blasphemers' flagrant confusions.\nAs hierarchs of Christ,//\npray ye then, that we may be saved.",
+      "tone": 4,
+      "label": "Sessional Hymn of the Holy Fathers (after Polyeleios/Ode 3)",
+      "bothNow": {
+        "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness, O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee\nto ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,\nthat those who worthily hymn thee//\nmay be granted the remission of their sins.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Most glorious art Thou, O Christ our God,\nThou hast established our Holy Fathers as luminaries upon the earth,\nand through them hath instructed us all in the true faith.//\nO Most merciful One, glory be to Thee.",
+      "tone": 8,
+      "label": "Troparion of the Holy Fathers"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the Holy Fathers of the First Ecumenical Council (Nicaea, 318 Fathers). From the Seventh Sunday of Pascha (After-feast of Ascension). The Resurrection canon (Tone VI) and Ascension canon are also sung at this Sunday service but are omitted here per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "The preaching of the apostles and the doctrines of the Fathers\nhave confirmed the one Faith in the Church.\nAnd wearing the garment of truth woven from the theology on high,//\nshe rightly divideth and glorifieth the great mystery of piety.",
+        "tone": 8,
+        "label": "Kontakion of the Holy Fathers"
+      },
+      "ikos": {
+        "text": "In the lofty preaching of the Church of God, let us hearken as she crieth: he that thirsteth, let him come and drink. The cup which I bear is the cup of wisdom. Its drink have I mixed with the word of truth. I pour forth the water, not of contention, but of confession. As Israel doth now drink thereof, it beholdeth God, Who saith: See, see, that I am He, and have not changed. I am God, I am first, and I am hereafter, and besides Me there is none other. Hence, they that partake shall be filled, and shall praise the great mystery of piety."
+      },
+
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried:\nLet us sing to God a song of victory.",
+        "troparia": [
+          { "text": "While acclaiming the all-holy Council of the holy Fathers, I entreat Thee, O Christ, crying: Preserve in me its all-holy prophetic proclamation." },
+          { "text": "The God-bearing Fathers, coming together like flashes of lightning on this day, clearly confessed Thee, O Christ, as the Only-begotten Son, co-beginningless and consubstantial with the Father." },
+          { "text": "Having clearly set forth the boundary of the Faith of Thy Bride, the Church, O Master, these glorious groomsmen have adorned it as with a majestic golden adornment." },
+          { "type": "theotokion", "text": "Theotokion: Adorned with the divine glory, the august Queen doth stand in the presence of her Son and God, entreating Him for the salvation of our souls." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful, O good One,\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "The foolish, ungodly Arius, impiously attributing change and passion and division unto Thy divine Nativity, is cut off by the cutting sword of the Fathers." },
+          { "text": "Like divine Abraham of old, all the august heralds of God, in waging war against Thy raging enemies, O good One, have mightily destroyed them by Thy might." },
+          { "text": "The first gathering of Thy priests, O Savior, piously proclaimed Thee to be begotten and consubstantial with the beginningless Father and Creator of all." },
+          { "type": "theotokion", "text": "Theotokion: Neither the speech nor the tongue of mortals can acclaim thee worthily, O Virgin; for without seed Christ, the Giver of life, was well-pleased to become incarnate from thee, O most pure One." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Arius of evil fame, having, in his foolish mind, adulterated the Orthodox Faith, was banished from the Church as a rotten member by the decrees of the Fathers." },
+          { "text": "The choir of the Fathers that struggled for Thee, O Master, mightily put to flight Thine enemies; and they glorified Thee as consubstantial with the Father and the Spirit." },
+          { "text": "Thou Who art God and man didst become a Mediator between God and mankind. Wherefore, O Christ, the men of godly mind proclaimed Thee, knowing Thee to be one Son in two natures." },
+          { "type": "theotokion", "text": "Theotokion: The tasting of the tree showed me forth as dead; but the Tree of Life, which appeared from thee, O all-pure One, raised me up and made me an heir of the joy of Paradise." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,//\nWho recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "Truly comely are the feet of those who proclaim Thee, the Peace that passeth all understanding of all angels and men, O Christ, Who by the abundance of peace hast united the world." },
+          { "text": "Coming together, the divine teachers of the all-holy priesthood, augustly sealed by the Law, proclaimed Thee to be the hypostatic Word, the Wisdom and Power of the Father." },
+          { "text": "Having watered the Church with the pure waters of Christ's teaching, ye now take delight by the waters of rest, rejoicing forever." },
+          { "type": "theotokion", "text": "Theotokion: O most pure One, knowing thee to be the radiant lamp that hath shone its ray — Christ, the Sun of Righteousness — upon all, wherefore we now invoke thy protection, O only pure Mother of God." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,//\nO greatly merciful One.",
+        "troparia": [
+          { "text": "The sower of tares, who was called the namesake of madness, was not able to escape the unspeakable judgment of providence; for having zealously emulated Judas, he, the most evil one, was rent asunder like him." },
+          { "text": "The divine and august assembly of the Fathers doth proclaim Thee as the Only-begotten Effulgence that shone forth from the essence of the Father, and as the Son Who was begotten before all ages, O Master." },
+          { "text": "By the prayers of the God-inspired priests, the bowels from whence the turbid and undrinkable water of impious heresies flowed, were literally rent asunder in a most providential manner." },
+          { "type": "theotokion", "text": "Theotokion: Moses, great among the prophets, symbolically wrote aforetime concerning thee as an ark, and table, and lamp, and an urn, signifying the incarnation of the Most High that took place within thee, O Virgin Mother." }
+        ]
+      },
+      "ode7": {
+        "irmos": "An angel made the furnace bedew the holy children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Ye conquered Arius, the namesake of madness, who was raging grievously and spake the utmost unjust things against God; for he refused to cry unto the Son: Blessed art Thou, the God of our fathers." },
+          { "text": "Imitating the Son of Thunder, O ye marvelous ones, with your fire-like mouths ye teach all to proclaim the Word, Who is co-beginningless and of one throne with the Father, and to cry: Blessed art Thou, the God of our fathers." },
+          { "text": "Ye came as though on wings, with the help of the Word, O ye blessed of God; for the Holy Spirit gathered you from the ends of the world, that ye might cry: Blessed art Thou, the God of our fathers." },
+          { "type": "theotokion", "text": "Theotokion: The furnace did not burn the three Youths, thus prefiguring thy giving of birth; for the divine Fire dwelt within thee, and did not consume thee, enlightening all to cry aloud: Blessed art thou who didst conceive God in the flesh." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Afire with the rays of Thy Divinity, Thy good shepherds confessed Thee as the Creator, Fashioner, and Lord of all things, Whom we supremely exalt throughout all ages." },
+          { "text": "The all-famed choir of shepherds, having gathered together, speak with divine authority in a godly-minded manner concerning the uncreated Trinity, and teach all to cry: Thee do we supremely exalt throughout all ages." },
+          { "text": "The many praiseworthy hierarchs and shepherds enlighten the Church of Christ, each of them illuminating it in diverse lands, and supremely exalting it throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: Mystically, in images, all the prophets foresaw thee who hast conceived the Word; for having taken flesh from thee, He came forth twofold, even Him Whom we supremely exalt throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man,\nand with the heavenly hosts,\nHim we magnify//\nand thee we call blessed.",
+        "troparia": [
+          { "text": "Arming you with the mighty strength of the Spirit, the Word, Who is co-beginningless and of one throne with the Father before the ages, found you to be allies, and gathered you together; Him do ye now ever glorify together with the heavenly hosts, O all-sacred ones." },
+          { "text": "As physicians of both souls and bodies, ye established, against the spread of Arius' grievous heresy, the Symbol of Faith, which ye set forth for all in a sacred manner, to which we now cleave, ever glorifying your memory, O sacred ministers." },
+          { "text": "Since Thou art the most pure Light, O Christ, do Thou redeem my soul out of the darkness of the passions, by the intercessions of Thy sacred ministers, O Master, who have now proclaimed Thee as the beginningless, uncreated Creator of all, and God, co-beginningless with the Father." },
+          { "type": "theotokion", "text": "Theotokion: Unto the dead hath resurrection now been granted through thine ineffable and inexpressible birthgiving, O Lady Theotokos; for Life, being clothed in flesh taken from thee, hath shone forth upon all, manifestly dispelling the gloom of death." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "While celebrating on this day the holy Fathers' memory,\nO all-compassionate Savior,\nwe pray Thee by their entreaties to save Thy people and Thy flock\nfrom all the harm of heresies,\nand thus make us all worthy to extol the Word and the Father,\nyea, and the all-holy Spirit.",
+      "tone": 0,
+      "label": "Exapostilarion of the Holy Fathers",
+      "bothNow": {
+        "text": "While Thy disciples looked on Thee, Thou didst ascend,\nO Christ, unto the Father to sit beside Him.\nAngels hastened, running on before, and cried:\nLift ye the gates up, lift them up;\nfor the King hath ascended//\nunto His bright primal glory.",
+        "tone": 0,
+        "label": "Theotokion (Exapostilarion of the Ascension)"
+      }
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "When the choir of the Holy Fathers flocked from the ends of the inhabited world,\nthey proclaimed the doctrine of the One Essence and One Nature of the Father, Son and Holy Spirit,\nthereby delivering plainly to the Church the mystery of theology.\nAs we acclaim them in faith, we call them blessed, saying:\nO divine array, ye God-proclaiming warriors of the Lord's company,\nye most brilliant stars of the spiritual firmament,\nye impregnable towers of the mystical Sion,\nye fragrant flowers of Paradise, ye all-golden mouths of the Word,\nthe boast of Nicaea and adornment of the whole world.//\nIntercede ye fervently on behalf of our souls.",
+        "tone": 8
+      }
+    }
+  }
+}

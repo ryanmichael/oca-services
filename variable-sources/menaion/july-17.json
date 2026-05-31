@@ -1,0 +1,153 @@
+{
+  "_meta": {
+    "feast": "Holy Great-Martyr Marina (Margaret) of Antioch",
+    "feastKey": "holyGreatMartyrMarinaOfAntioch",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "martyr",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 07-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-17.pdf",
+    "_note": "Simple-rank. Single canon of the holy great-martyr in Tone VIII. Acrostic: 'With hymns do I hymn the virgin martyr, the bride of Christ'. Sessional hymn Tone IV after Ode 3 (Spec. Mel. 'Go thou quickly before'). Kontakion Tone III (Spec. Mel. 'Today the Virgin') with ikos after Ode 6. Exapostilarion (Spec. Mel. 'Hearken, ye women'). No lauds doxastikon in PDF. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Thy ewe-lamb Marina, O Jesus, crieth out with a loud voice:\n'Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!'\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+    "tone": 5,
+    "label": "Troparion of the holy great-martyr"
+  },
+  "kontakion": {
+    "text": "Arrayed in the beauties of virginity,\nO virgin Marina, thou wast crowned with imperishable crowns;\nand stained with the blood of thy martyrdom, O martyr,\nthou hast received the trophy of victory for thy suffering,//\npiously shining forth miracles of healing.",
+    "tone": 3,
+    "label": "Kontakion of the holy great-martyr",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "martyr", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "O ye who love the feasts of the Church, a splendid solemnity hath dawned,\nthe commemoration of the glorious passion-bearer of Christ,\nbringing gladness unto all,\nshining forth rays of miracles in the world,\nand bearing constant grace for mankind.\nBy her supplications, O Christ, save Thou our souls.",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy great-martyr (after Ode 3)",
+      "melody": "Go thou quickly before",
+      "bothNow": {
+        "text": "O all-immaculate Virgin who hast given birth to the transcendent God:\ndo thou unceasingly entreat Him with the incorporeal ones,\nthat He grant forgiveness of transgressions and correction of life before the end,\nto us who, as is meet, hymn thee with faith and love,//\nO thou who alone art all-hymned.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Thy ewe-lamb Marina, O Jesus, crieth out with a loud voice:\n'Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!'\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+      "tone": 5,
+      "label": "Troparion of the holy great-martyr"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy great-martyr Marina in Tone VIII. Acrostic: 'With hymns do I hymn the virgin martyr, the bride of Christ'. The two Octoechos canons (without the martyrica) also sung at this service are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Arrayed in the beauties of virginity,\nO virgin Marina, thou wast crowned with imperishable crowns;\nand stained with the blood of thy martyrdom, O martyr,\nthou hast received the trophy of victory for thy suffering,//\npiously shining forth miracles of healing.",
+        "tone": 3,
+        "label": "Kontakion of the holy great-martyr",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Afire from childhood with love in thy heart, thou didst hasten to Christ thy Bridegroom like a deer thirsting for ever-flowing springs of water, O honored virgin and martyr; and having preserved thyself incorrupt through thy suffering, O right glorious bride, thou didst arrive, adorned and arrayed, in the bridal chamber of thy Creator, wearing thy crown of victory and bearing thy lamp, receiving the incorrupt Bridegroom and accepting like gold the trophy of victory for thy suffering."
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "Dancing for God and filled with rays of light by Him, O good virgin martyr, by thy supplications grant me a light-bearing beam." },
+          { "text": "Vested with a wise mind, O martyr of Christ, thou didst wisely disdain the fleeting and corrupt nature of transitory things; and hast been deemed worthy of the heavenly radiance of the righteous." },
+          { "text": "As a servant I come before thee, O honored martyr and passion-bearer. Save me from the tribulations of life by thine entreaties, and calm the turmoil of my passions." },
+          { "text": "Thy mind, illumined with wisdom and grace, O Marina, martyr of the Savior, was not afraid of the tyrant's threatening, being strengthened by divine power." },
+          { "type": "theotokion", "text": "Theotokion: Having conceived Life and given birth to Him in the flesh, O Mother of God, thou hast shown us the path to life and broken asunder the bonds of death." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as the Lord,\nand none as righteous as our God,\nWhom the whole of creation doth hymn:\nThere is none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Neither fire, nor wounds, nor beheading by the sword, neither the cruelty of the torturers, nor death, nor the savagery of wild beasts, was able to separate thee from the love of God, O all-praised one." },
+          { "text": "Thou wast an unshaken and unshakable pillar during thy trials, O all-glorious one, and a foundation of piety established firmly upon the rock of faith, O most blessed one." },
+          { "text": "Thou wast a virgin among the martyrs and an invincible martyr among virgins, O all-immaculate one, who betrothed thyself to Christ Who giveth thee a twofold crown." },
+          { "text": "The streams of thy holy blood, having poured forth, quenched all the falsehood of idolatry; and thou hast led a company of martyrs to thy Bridegroom." },
+          { "type": "theotokion", "text": "Theotokion: Strengthened by grace, in oneness of mind we glorify thee, the Theotokos, who hast given birth to Him Who became the flesh which He giveth unto all; and thou hast restored the world." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee://\nGlory to Thy power, O Lover of mankind!",
+        "troparia": [
+          { "text": "Thy life was truly godly, and thou wast shown to be beloved of the angels and untouched by the cruelty of their servants; for thou didst cry out to Christ: Glory to Thy power, O Lover of mankind!" },
+          { "text": "Having struggled on the earth and endured transitory pain, O spiritually rich and invincible martyr, and having now received rewards in the heavens from thy Master, thou criest out with the angels: Glory to Thy power, O Lover of mankind!" },
+          { "text": "The choirs of virgins now rejoice in thee, the assemblies of martyrs are now filled with gladness, and the multitudes of the pious, gathering together, now join chorus, rejoicing and crying out to the Master with unceasing voices: Glory to Thy power, O Lover of mankind!" },
+          { "text": "Thou wast all comely, O undefiled virgin, and wast shown to be an all-immaculate bride, beloved of men's soul for thy beauties, O all-blessed one, and through the tyrants' burnings thou wast shown to be most splendid, chanting unto Christ: Glory to Thy power, O Lover of mankind!" },
+          { "type": "theotokion", "text": "Theotokion: Thou alone didst remain pure even after giving birth, for thou alone hast given birth to the hypostatic Word, the Son Who is co-enthroned with the Father, O Bride of God; and thou bearest in thine arms Him Whom all things cannot contain and Who sustaineth all the ends of the earth." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps, I implore Thee,//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Mightily thou didst pass through the course of athletes at the tribunal, O maiden; for divine desire strengthened thy womanly weakness, manifestly revealing thee to be an independent martyr through the sufferings thou didst resolve to undertake." },
+          { "text": "Shedding drops of thy blood, O martyr, thou didst weave for thyself a purple robe of great price and a garment of gladness untouched by corruption; and now clad therewith in the heavens, O divinely wise one, thou standest noetically before thy Bridegroom." },
+          { "text": "Having bound the over-weaning serpent with the bonds of thy prayers, O maiden, thou didst humble to the ground his pride which of old was exalted; for the Omniscient One, in that He is good, hath known how to fill those who fear His will." },
+          { "text": "Truly the Word, thy Bridegroom, hath adorned thee with divine crowns of supremely exalted glory, deifying thee who suffered for His sake and patiently endured the stripes of beating, O glorious one." },
+          { "type": "theotokion", "text": "Theotokion: Beholding the nature of mortals cleansed of the ancient curse through the birthgiving of thy virginity, O all-immaculate one, we glorify Him Who was born of thee as thine only-begotten, in His loving-kindness. Him do thou beseech, O Virgin, that He save us." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils, I pray Thee;\nfor unto Thee have I cried,//\nand Thou hast hearkened unto me, O God of my salvation.",
+        "troparia": [
+          { "text": "Thou wast shown to be committed to Christ, beautiful and undefiled, and like unto a pure well-spring and a greatly fertile orchard, O all-glorious Marina, thou beloved bride and garden of paradise which cannot be stolen." },
+          { "text": "A most magnificent maiden followed after Thee, hastening to the sweet fragrance of Thy myrrh, O Master, and emulating with her patience Thy most pure and most honored sufferings." },
+          { "text": "Manfully thou didst endure struggles, O much-suffering martyr Marina of lordly name, and with the power of the Cross thou didst destroy him who of old greatly boasted aloud to bring harm to the souls of mortals." },
+          { "type": "theotokion", "text": "Theotokion: O Mary, thou pure and most pure vessel of the Creator of all, grant me tears to cleanse my soul, and hearken unto my entreaty, O all-immaculate one." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\nBlessed art Thou, O Lord our God, throughout the ages.",
+        "troparia": [
+          { "text": "The unapproachable Light enlightened thy soul as is meet, O Marina, and hath illumined with radiant lights those who chant: Blessed art Thou, O Lord our God, throughout the ages." },
+          { "text": "Thou wast truly taken up to the divine heights, for thou didst acquire an elevated understanding and hast made thine abode in a splendid mansion, crying out: Blessed art Thou, O Lord our God, throughout the ages." },
+          { "text": "A bride beloved of the Master wast thou shown to be, O God-bearing Marina, and as an invincible martyr thou criest out to Him: Blessed art Thou, O Lord our God, throughout the ages." },
+          { "type": "theotokion", "text": "Theotokion: Judea no longer lacketh a Prince, for the Master, the expectation of the nations, shone forth ineffably from thee, O most pure one. Blessed is the Fruit of thy womb!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The instruments of music sounded out in harmony,\nand countless multitudes worshipped the image in Dura;\nbut the three Children, refusing to bow in obeisance,\nhymn and glorify the Lord throughout all ages.",
+        "troparia": [
+          { "text": "Having acquired steadfast integrity and steadfastly enduring sufferings, thou wast crowned with a crown of victory, chanting: Hymn the Lord and supremely exalt Him throughout the ages." },
+          { "text": "God the Word, thy Bridegroom, prepared for thee a mystic bridal chamber in the heavens, and, beholding it, thou didst cry aloud: Hymn the Lord and supremely exalt Him throughout the ages." },
+          { "text": "Adorned with divers virtues, thou hast been deemed worthy of many more gifts, beholding thine uttermost desire and crying out: Hymn the Lord and supremely exalt Him throughout the ages." },
+          { "text": "O passion-bearer, thou wast shown to be the cause of salvation for mankind, and thou didst lead crowds of martyrs to Christ, crying out with them: Hymn the Lord and supremely exalt Him throughout the ages." },
+          { "type": "theotokion", "text": "Theotokion: Through thee, O Birthgiver of God, hath cleansing been granted to us; for thou alone hast repaid our debt, O Virgin, having conceived the Lord of all, Whom we supremely exalt throughout the ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;\nwherefore we the faithful magnify the most pure Theotokos.",
+        "troparia": [
+          { "text": "O Marina, martyr of Christ, truly thou hast earnestly embraced everlasting and imperishable life in the comfort of paradise; for, shining from afar in the blood of thy martyrdom, O goodly virgin, thou didst pass unharmed by the guarding sword." },
+          { "text": "Divine desire consumed thine every material and worldly thought, O virgin, and showed thee to be a most steadfast martyr who had shone forth first with the splendors of virginity, O all-wise Marina. Wherefore, all of us, the faithful, call thee blessed." },
+          { "text": "By thy supplications, O chosen bride, loose thou the bonds of mine offenses and rend asunder the record of my sins, O martyr, standing in splendor before Christ, thy most compassionate Bridegroom; and dispel the gloom of my passions." },
+          { "text": "The cruel arrogance of the false one hath been brought to an end; for, lo! a maiden suffered, unmindful of her womanly nature, and, splendidly winning the victory over him, she hath now manifestly set aright the fall of our first mother." },
+          { "type": "theotokion", "text": "Theotokion: Unharmed by the tree of knowledge, I reap the grain of life; for thou, O most holy one, didst bring forth Christ, the Tree of life, Who hath shown to all the way to life. Wherefore, we reverently proclaim thee the Theotokos, O all-pure one." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Strengthened by the Cross of thy Lord, O goodly virgin,\nthou didst destroy the pride of thy torturers,\nand suffering manfully, O martyr,\nthou didst receive from Christ the trophies of victory,\nO all-wise Marina of lordly name,//\nwho ever prayest for those who honor thee with love.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy great-martyr",
+      "melody": "Hearken, ye women",
+      "bothNow": {
+        "text": "The divinely wise virgins who stand round about thee,\nO most pure Mary, Birthgiver of God,\nhave been brought to thy Son, the King of all, as brides.\nHim do thou entreat on our behalf,//\nO Virgin Maiden and Mother.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

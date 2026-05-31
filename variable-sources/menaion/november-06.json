@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Saint Paul the Confessor, Archbishop of Constantinople",
+    "feastKey": "paulTheConfessor",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "hierarch",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-06.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-06.pdf",
+    "_note": "Simple-rank. Single canon of the holy hierarch in Tone IV, acrostic: 'I most wisely hymn Paul, the teacher of the mysteries', composition of Theophanes. Sessional hymn after Ode 3 in Tone III. Kontakion Tone II 'Seeking the highest' with ikos after Ode 6. Exapostilarion 'By the Spirit in the sanctuary'. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Through thy confession of the divine Faith the Church hath shown thee to be another Paul,\na zealot among her priests;\nand Abel crieth out to the Lord with thee, as doth the righteous blood of Zachariah.\nO venerable father, entreat Christ God,//\nthat we be given great mercy.",
+    "tone": 3,
+    "label": "Troparion of the holy hierarch"
+  },
+  "kontakion": {
+    "text": "O Paul, who shone forth upon the earth\nlike a star of heavenly splendor,\nthou dost now enlighten the universal Church for which thou didst suffer,\nlaying down thy life.//\nAnd like that of Zachariah and Abel thy blood crieth out to the Lord.",
+    "tone": 2,
+    "label": "Kontakion of the holy hierarch",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "hierarch", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Holding fast to Orthodox dogma, thou didst reject ungodly words, O divinely wise Paul, putting Arius to shame; for thou didst preach the Son as one in essence with the Father, making the faithful steadfast. O venerable Father, entreat Christ God, that we be granted great mercy.",
+      "tone": 3,
+      "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+      "bothNow": {
+        "text": "All we, the generations of mankind,\ncall thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord\nwith milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Through thy confession of the divine Faith the Church hath shown thee to be another Paul,\na zealot among her priests;\nand Abel crieth out to the Lord with thee, as doth the righteous blood of Zachariah.\nO venerable father, entreat Christ God,//\nthat we be given great mercy.",
+      "tone": 3,
+      "label": "Troparion of the holy hierarch"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hierarch in Tone IV. Acrostic: 'I most wisely hymn Paul, the teacher of the mysteries'. Composition of Theophanes.",
+
+      "kontakion": {
+        "text": "O Paul, who shone forth upon the earth\nlike a star of heavenly splendor,\nthou dost now enlighten the universal Church for which thou didst suffer,\nlaying down thy life.//\nAnd like that of Zachariah and Abel thy blood crieth out to the Lord.",
+        "tone": 2,
+        "label": "Kontakion of the holy hierarch",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Thou didst receive thy name from on high, and thy birth from the earth below, O Paul; and ripe as a comely garden, thou didst blossom forth like a garden in fasting, perfuming all with the sweet scent of the labor of thy manifold struggles, thy sweat, imprisonment, starvation, thirst and all thy tribulations. Therein thou didst successfully pass on, adorned with a wreath of victory, for thy blood crieth out to the Lord."
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "We proclaim thee, O Paul, to be the confirmation of the Faith, a teacher of the Church, an unshaken pillar of confession, a greatly luminous lamp of grace and the mouth of the fiery Spirit." },
+          { "text": "Paul the most great, the sun of the whole world, setteth thee forth as a mighty fire, like a second Paul mightily consuming heresies, and as a scythe cutting down ungodliness." },
+          { "text": "Thou didst contend lawfully, O divinely eloquent one, bearing the brunt of the divine battle of preaching; and as a faithful hierarch thou didst strangle like a wild beast with the cords of thy dogmas, the vain-minded Arius." },
+          { "type": "theotokion", "text": "Theotokion: Come ye, let us hymn the most pure Mary, who alone hath adorned the race of mankind, giving birth to God incarnate, and remaining an intact virgin." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory//\ngrant them crowns of glory.",
+        "troparia": [
+          { "text": "Adopted through divine grace, O Paul, thou didst not assume the nature of the only-begotten Son to be a created being, following the dogmas of the God-bearing Paul." },
+          { "text": "With thy mouth, heart and tongue thou didst preach the wisdom and power of God, the hypostatic Word, O divinely wise and venerable Paul, denouncing the impious Arius." },
+          { "text": "O all-wise one, thou didst preach God Who in essence is all-creating and omnipotent, through the righteous judgment of the transcendent authority of the Holy Spirit of God, whereby we are deified." },
+          { "type": "theotokion", "text": "Theotokion: The Word of the beginningless Father Who is beyond any beginning, hath now received a beginning, incarnate, from thee, O pure one; and He hath come under time Who transcendeth all time." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God,\nthat the incarnation of Thee the Most High,\nwill be from a Virgin,\nthe Prophet Habbakuk cried aloud:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "With His life-bearing right hand the Creator hath set upon thy head the crown of confession as a most precious honor, in that thou wast victorious, O divinely revealed and blessed Paul." },
+          { "text": "In that thou didst struggle beforehand for the sake of the dogmas of piety, O all-wise one, thou hast received rewards, having now attained unto the Tree of life, O divinely revealed, blessed and wondrous Paul." },
+          { "text": "As a splendid struggler and champion of the truth, O most honored Paul, thou hast been deemed worthy to join chorus in the land of heaven, where the feet of the meek dance." },
+          { "type": "theotokion", "text": "Theotokion: Desiring to save humanity, O Savior, as the Son, visibly consubstantial with the Father, thou became incarnate from the Virgin in a form consubstantial with us." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,//\nbestowing peace, upon all who hymn thee.",
+        "troparia": [
+          { "text": "Thou didst bring the pasturage and corruption of heresy to an end, O divinely wise father, applying a most excellent remedy: thy splendid confession of Orthodox dogmas, which is pure beyond understanding, and by thy divine zeal." },
+          { "text": "The grace of the Holy Spirit was poured forth in abundance through thy lips, O all-blessed one, truly finding thee to be a mighty and most excellent champion of Orthodoxy for the faithful. Wherefore, thou hast illumined the councils of the godly." },
+          { "text": "Thou didst smite the blasphemy of Arius and Macedonius with the sling of thy divinely inspired dogmas and doctrines, O Paul, as David did the Philistine, and, having first strangled them, thou didst utterly cast them down." },
+          { "type": "theotokion", "text": "Theotokion: The timeless and beginningless Word hath now come under time, receiving animate and rational flesh from thee, O pure Virgin who knewest not wedlock, granting peace to all who hymn thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss//\nO Greatly-merciful One.",
+        "troparia": [
+          { "text": "Arius, who uttered blasphemy against the highest and belittled the Son and Word of God as a creature, hath been damned, anathematized by thee, O divinely wise one." },
+          { "text": "The mindless, foolish and ungodly Macedonius, who rejected the Spirit of God, O father, hath been cast down by thy mighty opposition, O divinely manifest one." },
+          { "text": "The creeping serpent who raised up a horde of heresies is slain by thy vivifying words, O all-blessed hierarch of God, most sacred and divinely eloquent one." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin Mother of God, we hymn thy birth giving and undefiled purity, which transcend nature; for in thee virginity and an incorrupt birthgiving wondrously meet." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things\nin place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud:\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Thou hast passed over to the tabernacles of heaven, O divinely wise and venerable one, and, drawing nigh unto God, deified by communion with Him, thou hast become divine, chanting: O all-hymned Lord and God of our fathers, blessed art Thou!" },
+          { "text": "Made wise by thy words, O all-praised Paul, we learn to worship the indivisible and inseparable Godhead in three Suns, and to the Trinity do we chant: O all-hymned Lord and God of our fathers, blessed art Thou!" },
+          { "text": "Having purified thy most sacred, divine and God-pleasing confession like gold, with gladness thou didst offer thyself to God as a right acceptable sacrifice, O venerable one, emulating the suffering of our Savior." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast been shown to be the only mediatress of divine deliverance for all mankind, having given birth to the Redeemer of all, O all-immaculate one. To Him do we all chant: O all-hymned Lord and God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Springs of thy dogmas gush forth watering the whole Church, O father; and with thy precious blood thou hast hallowed all who follow thee in the Orthodox Faith and cry aloud: Hymn the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Having thrust aside the threefold waves of life thou hast now anchored in the calm harbor; for thou didst have the Lord, Who createth all things with His hand, as thy helmsman, steering the passage, O all-praised Paul, Him do we supremely exalt throughout all ages." },
+          { "text": "Dwelling within thee, the thrice radiant light of the supremely divine Trinity hath shown thee to be a secondary luminary illumining the council of the Orthodox and darkening the horde of the heretics, O father, who dost chant: Hymn the Lord and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Following the words of the prophets, O Virgin, we proclaim thee to be the Theotokos; for thou hast given birth to the Child named Emmanuel, Who is more ancient than all things. To Him do we now cry aloud: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth,\nradiant with light, in spirit leap for joy;\nand let the host of the angelic powers\ncelebrate and honor the holy feast of the Mother of God,\nand let them cry aloud:\nRejoice! O all-blessed Theotokos,//\nthou pure Ever-Virgin.",
+        "troparia": [
+          { "text": "My whole self do I offer to thy godly protection, O divinely eloquent one, for, having received from Christ, as a hieromartyr, the authority to loose transgressions, save me by thy supplications and illumine me with the divine light, cutting away the bonds of mine offenses." },
+          { "text": "Thou hast been revealed to be a new Paul aflame with zeal, O most excellent father Paul, in that thou hast now heard ineffable words in paradise; for thou dost share his character, having shared also his name, and hast received a most magnificent crown in the kingdom of Christ." },
+          { "text": "Thou hast been revealed to be a temple denouncing every heresy, and a godly champion of Orthodoxy, O all-glorious hieromartyr Paul, manifestly illumined with rays of grace and filled with the light of the uncreated Trinity." },
+          { "type": "theotokion", "text": "Theotokion: Clad in flesh He received from thee, O all-immaculate one, the Word dwelt, incarnate, in the world, in that He is compassionate; and suffering no diminution, in that before He was incorporeal, with His divine power He cast down the one who from of old hath tormented all." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Aflame with the zeal of thine ardent heart, thou wast revealed to be a spiritual champion of grace, mowing down the assemblies of the heretics with the sword of thy words, O holy hierarch; and, having finished thy race,//\nthou hast earned a place with the multitude of the martyrs.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy hierarch",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "Thou wast a most immaculate Bride and a most honored temple of an ineffable pregnancy, O Theotokos; for the pre-eternal Light made His abode within thee, and thou didst give birth to the Word of God. Hymning thy birthgiving,//\nO all-immaculate Maiden, we magnify thee as is meet.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

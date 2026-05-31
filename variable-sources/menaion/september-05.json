@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "feast": "Holy Prophet Zachariah and Righteous Elizabeth, parents of St John the Baptist",
+    "feastKey": "holyProphetZachariahAndElizabeth",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "prophet",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 09-05.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-05.pdf",
+    "_note": "Simple-rank. Single canon of the holy prophet in Tone I, the composition of Theophanes, with 6 troparia (3 saints + theotokion per ode, plus extra strophes). Sessional hymn after Ode 3 in Tone VIII, theotokion Tone IV. Kontakion Tone III with no ikos printed. Exapostilarion 'O Light immutable'. Lauds doxastikon Tone VIII. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Arrayed in the vesture of the priesthood, * and in accordance with the law, *\nthou didst offer the sacrifice of oblation in a sacred manner O all-wise one, *\nand wast manifestly a beacon and seer of sacred mysteries, *\nwho bore within thyself the tokens of grace, *\nand thou wast slain by the sword in the Temple of God O prophet of Christ,//\ntogether with the forerunner entreat Him that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy prophet"
+  },
+  "kontakion": {
+    "text": "Today Zacharias, the prophet and high priest of the Most High, *\nthe father of the Forerunner, *\nsetteth the table of his memorial, *\nfeeding the faithful; *\nfor he hath distributed the food of righteousness unto all. *\nWherefore, he hath reposed *\nas a divine initiate//\nof the mysteries of the grace of God.",
+    "tone": 3,
+    "label": "Kontakion of the holy prophet",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "simple", "feastType": "prophet", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Having ministered to God as a priest according to the law, O Zacharias,\nthou wast shown to the whole world as a pillar of light,\nprophesying that Christ would come forth from the Virgin,\nincarnate of the Holy Spirit,\nthe Orient from the heights of righteousness,\nWho doth illumine all the world,\ndirect our feet to the ways of peace,\nand save our race, thou didst say.",
+      "tone": 8,
+      "label": "Sessional Hymn of the holy prophet (after Ode 3)",
+      "melody": "That which hath been commanded",
+      "bothNow": {
+        "text": "O thou who hast given birth to the immutable God, *\nby thy maternal supplications *\nmake steadfast my heart which is ever-changing due to sin, *\nslothfulness and the attacks of the deceiver; *\nthat in thanksgiving I also may glorify thee O good one. *\nO all-immaculate Mary, Birthgiver of God,//\nhave mercy on the flock which thou hast acquired.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Arrayed in the vesture of the priesthood, * and in accordance with the law, *\nthou didst offer the sacrifice of oblation in a sacred manner O all-wise one, *\nand wast manifestly a beacon and seer of sacred mysteries, *\nwho bore within thyself the tokens of grace, *\nand thou wast slain by the sword in the Temple of God O prophet of Christ,//\ntogether with the forerunner entreat Him that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy prophet"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the holy prophet in Tone I, the composition of Theophanes.",
+
+      "kontakion": {
+        "text": "Today Zacharias, the prophet and high priest of the Most High, *\nthe father of the Forerunner, *\nsetteth the table of his memorial, *\nfeeding the faithful; *\nfor he hath distributed the food of righteousness unto all. *\nWherefore, he hath reposed *\nas a divine initiate//\nof the mysteries of the grace of God.",
+        "tone": 3,
+        "label": "Kontakion of the holy prophet",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "The high priest of the law was bound to silence by the voice of an angel, for within the barren and chaste Elizabeth, the angel of the coming of Christ, the prophet and initiate of the mysteries was to come forth. By his nativity, the grace, deliverance, universal reconciliation and renewal of our nature was to be revealed. By Him Who giveth fruit from the barren womb, the Son Who hath appeared from the Virgin, the divine initiate of the mysteries of the grace of God and his preaching of the Lamb was to be made manifest."
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land, *\nand having escaped the malice of the Egyptians, *\nthe Israelites cried aloud://\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "By thy mediation, O prophet, impart unto me the grace of the Spirit,\nto help me praise thy memory,\ncrying out: Let us chant unto our Redeemer and God!" },
+          { "text": "Thy life was found to be blameless,\nand thou wast arrayed in the vesture of the priesthood\nand the luminous splendors of prophecy,\nO divinely eloquent and blessed one." },
+          { "text": "Having thy head adorned with the crown of the law, O Zacharias,\nthou wast shown to be sacred,\ncrying aloud: Let us chant unto our Redeemer and God!" },
+          { "type": "theotokion", "text": "Theotokion: Clad in the vestment of the full-length tunic like Aaron,\nthou didst receive the Maiden who sprouted forth from the root of Jesse\nand bore the Redeemer in her womb." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, thou art the confirmation of those who flee to Thee, *\nThou art the Light of those in darkness, *\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "When thou didst offer the incense of the covenant, O high priest,\nthen didst thou receive the prophetic proclamation of the Forerunner." },
+          { "text": "The priesthood anointed thee with oil to serve as a priest, like Aaron.\nWherefore, thou wast deemed worthy to behold the angel." },
+          { "text": "Zacharias begat John,\nthe dawn which announced to the whole world Thee,\nthe noetic Sun, O Savior." },
+          { "type": "theotokion", "text": "Theotokion: Set my life aright, O all-pure Birthgiver of God,\nthou life which filled with light the house of Zacharias." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation; *\nI have considered Thy works, *\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Thy prophet, O Master, faithfully ministered unto Thee\nwith the symbols of the law\nand was deemed worthy of the grace to perceive Thy truth." },
+          { "text": "Thou, the most brilliant and most blessed one,\ndidst receive light through darkest light;\nfor through the law grace hath now been added unto thee." },
+          { "text": "The divine Gabriel, who standeth before God,\nannounced and revealed to thee\nthe manifestation of the voice and Forerunner of the Word, O blessed one." },
+          { "type": "theotokion", "text": "Theotokion: The Fashioner of creation,\nWho loosed the barrenness of Elizabeth,\nfound thee, O Virgin, to be a pure habitation, and dwelt therein." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord; *\nsave us, for Thou art our God, *\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "Upon thy head, O prophet,\nwas the mitre placed\nwhich bore the impress of the true and divine priesthood." },
+          { "text": "Creation rejoiceth in thine offspring, O high priest;\nfor thou didst beget the preacher of repentance." },
+          { "text": "Thou didst lead a life adorned,\nfor with Elizabeth thou didst keep all the commandments of the Lord." },
+          { "type": "theotokion", "text": "Theotokion: Thy tongue is directed toward hymnody, O divinely eloquent one;\nfor thou didst behold her who knoweth not wedlock\nbearing a Child within her womb." }
+        ]
+      },
+      "ode6": {
+        "irmos": "O Thou that puttest on light as a garment *\ngrant me also a robe of light, *\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "He who served the shadow of the law\nwas shown to be a preacher of grace, O our Savior;\nfor he was deemed worthy to behold Thine incarnation." },
+          { "text": "Adorned with words of judgment, O sacred Zacharias,\nthou didst receive the ever-existing Word bearing flesh." },
+          { "text": "Thou wast shown to serve God in the temple\nas a right wondrous priest,\nO divinely inspired initiate of the mysteries of God." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast recognized by the prophetess Elizabeth,\nO Virgin Mother of God,\nbearing the beginningless Word and Savior in thy womb." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace *\nboldly trampled upon the flames, *\nchanging the fire into dew, they cried aloud: *\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "text": "When the voice of one crying in the wilderness came forth from the barren woman supra-naturally,\nhe loosed the bonds of thy tongue\nthat thou couldst cry: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "The Forerunner, the beloved friend of the Bridegroom,\nwas born of a barren woman,\nmanifestly proclaiming the birthgiving of the Virgin\nunto those who cry out with faith: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "O thrice-blessed Zacharias,\nthou wast wholly a divine instrument of the Spirit,\nand didst proclaim thy son to be a prophet,\nwho crieth: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: Zacharias, beholding thee,\nrecognized thee as the fulfillment of the law,\nthe chief object of all prophecy, O Maiden,\nand he cried aloud: Blessed is the fruit of thy womb, O most pure one!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Glorified in the holy mountain, *\nthe Lord revealed the mystery of the Ever-Virgin unto Moses *\nin the flames of the burning bush: *\npraise ye and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Thou wast shown to be a prophet of the truth,\nfor thou didst prepare John the Forerunner\nto tread first the paths of Christ, O blessed high priest.\nHim do we supremely exalt throughout all ages." },
+          { "text": "Giving voice in speech,\nthou didst bless the Master, the Lord of glory\nWho hath bestowed salvation upon us,\nWho shone forth upon us in the flesh from David.\nHim do we supremely exalt throughout all ages." },
+          { "text": "Thou wast deemed worthy of great gifts, O divinely revealed one,\nbegetting the Forerunner, the greatest of all the prophets,\nwho hymneth and supremely exalteth the Lord throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: Rejoicing, Zacharias, the high priest and preacher of God,\npaid homage to the Virgin and Mother\nwho beareth the Lord of creation.\nHer do we supremely exalt throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Saved by thee, O pure Virgin, *\nwe confess thee to be truly the Theotokos, *\nand together with the choirs of the bodiless hosts *\nthee do we magnify.",
+        "troparia": [
+          { "text": "Thou wast filled with the inspiration of the Comforter\nand wast the beginning of the blessing of the Lord,\nO divinely wise initiate of the sacred mysteries, divinely blessed one." },
+          { "text": "Perceiving the fulfillment of the archangel's words,\nO all-famed and divinely eloquent one,\nthou didst straightway move thy tongue to blessing." },
+          { "text": "Thou wast adorned with crowns of suffering and the priesthood\nand with the enlightenment of prophecy,\nO most blessed Zacharias, divinely eloquent one." },
+          { "type": "theotokion", "text": "Theotokion: As thou art the dwelling-place of the Light, O Virgin,\nillumine my soul which hath been darkened by the passions,\nand by thy supplications deliver me from the outermost darkness." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "At first, thou wast struck mute in the holy of holies,\nby the voice of the angel,\nfor the springing forth from thee of the voice of one crying in the wilderness;\nand now thou art silent for his sake,//\nslain, O Zacharias, before the holy of holies.",
+      "tone": 0,
+      "label": "Exapostilarion of the holy prophet",
+      "melody": "O Light immutable",
+      "bothNow": {
+        "text": "Having shone forth eternally, Light from Light,\nbefore the morning star, O Word,\nThou didst come forth as Light, immutably, under time, from Thy Mother,\nillumining the ends of the world with radiant effulgence,//\nas Thou art the Light of the world.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "Offering sacrifices in accordance with the law, O Zacharias,\nthou didst willingly present thy holy soul to God,\nWho wast born in the flesh,\nas a whole-burnt offering in the Holy of Holies,\nwhen thou wast slain like a lamb by the sword,\nbetween the temple and the altar.",
+        "tone": 8
+      }
+    }
+  }
+}

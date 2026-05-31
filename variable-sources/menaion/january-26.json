@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Venerable Xenophon, his wife Mary, and sons Arcadius and John",
+    "feastKey": "venerableXenophonAndFamily",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "monastic",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 01-26.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-26.pdf",
+    "_note": "Simple-rank. Canon of the saints in Tone II, acrostic: 'I hymn Xenophon with his wife and children', composition of Theophanes. Sessional hymn after Ode 3 in Tone VIII. Kontakion Tone IV with ikos after Ode 6 (primary: 'Having fled the sea of life'). Exapostilarion Tone III. No lauds doxastikon. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the venerable saints"
+  },
+  "kontakion": {
+    "text": "Having gladly distributed thy riches to the poor,\nO blessed one,\nwith thy spouse and children\nthou wast vigilant in the commandments of the Lord.//\nWherefore, ye have inherited divine delight.",
+    "tone": 4,
+    "label": "Kontakion of the saints",
+    "melody": "Thou hast appeared"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "monastic", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Keeping vigil in the commandments of the Master, O blessed Xenophon,\nand instructing thy wife and children in like manner,\nwith them hast thou inherited the Kingdom on high,\nhaving left behind the tempest of all temptations.\nWherefore, we all piously praise and honor you with love,\nand faithfully cry aloud:\nO all-blessed God-bearers, pray ye to Christ God,\nthat He grant forgiveness of sins unto those who lovingly celebrate your holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn of the saints (after Ode 3)",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of men and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins\nunto those who with faith worship thine all-holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the venerable saints"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the saints in Tone II, acrostic: 'I hymn Xenophon with his wife and children', composition of Theophanes.",
+
+      "kontakion": {
+        "text": "Having fled the sea of life,\nthe righteous Xenophon,\nwith his honored spouse and children,//\nrejoice together in the heavens, magnifying Christ.",
+        "tone": 4,
+        "label": "Kontakion of the saints",
+        "melody": "Thou hast appeared"
+      },
+      "ikos": {
+        "text": "Strange is the path which thou didst tread with thy spouse in a godly manner, O Xenophon, for ye were not mindful of nature, and clearly showed yourselves to be as bodiless ones on earth. Wherefore, the portals of heaven have been opened unto you, and with your children ye join chorus with the angels, as godly laborers in the vineyard of the Lord. Wherefore, entreat ye Christ, that He grant the radiance of illumination unto the hearts of us that keep your splendid memory, magnifying Christ, the Bestower of crowns."
+      },
+
+      "ode1": {
+        "irmos": "Come, O ye people,\nlet us sing a song to Christ our God,\nWho divided the sea,\nand made a way for the nation which He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "O all-wise ones, having now truly obtained the tree of life and the delight of paradise as a family, pray ye to the Lover of mankind, that He save those who praise you." },
+          { "text": "Thy servant, O Master, fervently traveling the path of Thy commandments, hath attained unto the mansions of paradise through twofold desire, and doth enjoy everlasting life." },
+          { "text": "Thou didst show thy home to all as a new tent of Abraham. Wherefore, O wondrous one, rightly and justly hast thou found rest in the bosom of Abraham." },
+          { "type": "theotokion", "text": "Theotokion: The beginningless Word, Who shone forth from the Father before all ages and dwelt wholly within thee, O all-immaculate one, hath made me a new man." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God//\nand none is holy save Thee, O Lord.",
+        "troparia": [
+          { "text": "Honored with most splendid glories, thou didst adorn thyself with a splendid life; for thou didst show forth the action and ascent of the vision of God, crying out: Thou art our God, and none is holy save Thee, O Lord!" },
+          { "text": "As a steward of all things, thou didst receive the care of all and didst distribute thy wealth unto those who asked it of thee, wisely receiving the rank of monastics, O venerable father." },
+          { "text": "Nourishing thyself with the laws of the Master, O wondrous one, with instruction and edification in the Law of the Lord thou didst teach thy children, crying aloud: Thou art our God, and none is holy save Thee, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Come, O ye faithful, let us hymn Mary, who alone remaineth a Virgin after giving birth, her who is more holy than all the saints, the unwedded Theotokos; and let us cry out: Rejoice, O pure Mother! Rejoice, O Sovereign Lady!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "troparia": [
+          { "text": "Saved from the tempest of life, ye made haste to the harbor of piety, O most blessed children." },
+          { "text": "Having learned both human and divine knowledge, it was your will to serve God." },
+          { "text": "Most gloriously delivered from the abyss of the temporal world, O venerable ones, ye are come to the Abyss of blessings." },
+          { "type": "theotokion", "text": "Theotokion: Delivered by the Blood which flowed from the side of Thy Son, O Mother of God, we all bless thee." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "troparia": [
+          { "text": "Passing over to that life which perisheth not, O Arcadius, thou didst make haste to reach the sacred city and didst bow down there before the tomb of Life." },
+          { "text": "Truly magnificent was the providence of the Master of all concerning thee, and wondrous and most glorious was His divine direction, O all-blessed Arcadius!" },
+          { "text": "Christ, Who of old lay in the arms of Simeon the divine elder, taking thought aforetime concerning thee, O Arcadius, guided thee, leading thee to a godly elder." },
+          { "type": "theotokion", "text": "Theotokion: In a manner transcending nature didst thou give birth unto the beginningless Son, Who is equally everlasting with the Father and hath become incarnate of thee, O all-immaculate Maiden. Wherefore, we proclaim thee to be the pure Theotokos." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption,//\nO God.",
+        "troparia": [
+          { "text": "Desiring the blessed life, hastening to the assembly of monastics, thou didst make an inspired life thy companion, O John." },
+          { "text": "Rejecting the corruption and the deadly poison of the malice of the slayer of mankind, O John, thou didst make haste to the life-bearing tomb of Christ." },
+          { "text": "Thou didst emulate the life of John the Baptist, O John, for like him thou didst make thine abode in the wilderness dwelling there in purity, and purifying thyself for Christ." },
+          { "type": "theotokion", "text": "Theotokion: He that spread out the heaven at His behest, O pure Mother of God, hath made of thee another animate heaven, and from thee He hath shone forth upon those who are in darkness." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant\nfanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,//\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "The God-bearer, gazing upon your company with purity of mind, proclaimed: The righteous God, divinely rewarding your piety, hath gathered you together, for He is merciful!" },
+          { "text": "The Lover of mankind, beholding the zeal of your piety, accepting your desire and perceiving your faith, hath gathered you all together at one table, for He is the supremely glorious Benefactor." },
+          { "text": "O all-immaculate one, be thou a sure hope, a certain trust, a steadfast rampart, a shelter and helper for me, who place my trust in thee; for in thee, O pure one, do I set all my hope of salvation." },
+          { "type": "theotokion", "text": "Theotokion: O all-immaculate one, be thou a sure hope, a certain trust, a steadfast rampart, a shelter and helper for me, who place my trust in thee; for in thee, O pure one, do I set all my hope of salvation." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord,//\nall ye works of the Lord!",
+        "troparia": [
+          { "text": "Ye did steadfastly endure separation one from another as if it were a furnace burning with fire, for, torn apart within, your souls aflame, ye did suffer the torment of martyrdom through the pangs of filial attachment." },
+          { "text": "From on high the dew-bearing cloud of God's love for mankind overshadowed you on the mountains of Zion, where the dew of the Spirit enlightened the disciples, who cried aloud: Bless ye the Lord, all ye works of the Lord!" },
+          { "text": "O spiritually rich fathers, ye were united in nature and joined together by grace, entreat our Benefactor to be merciful and kind unto us who celebrate your sacred memory." },
+          { "type": "theotokion", "text": "Theotokion: God the Word, the only-begotten Son, Who before the ages shone forth ineffably from the beginningless Father, didst thou bear as the firstborn of creation. Wherefore, O Mother of God, all we, the nations, glorify thee." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;//\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Taking the Cross of Christ upon your shoulders, ye did truly tread the path of abstinence, exercising every virtue, until ye did in truth receive the life which ageth not, being crowned together as a family." },
+          { "text": "Having acquired dominion over the wisdom of the flesh, ye did lay up the wealth of the Spirit as treasure, receiving the grace of healing from the Source of gifts. And now, having passed on to Him, ye rest eternally." },
+          { "text": "Conquering the wiles of the serpent, O venerable ones, ye have been called to the ultimate of honors, receiving crowns of righteousness from Christ, as is meet. Him do ye now entreat, that He save our souls." },
+          { "type": "theotokion", "text": "Theotokion: Unto Him, that in the beginning was motherless in His first begetting, dost thou now give birth in the flesh without father, O Bride of God; and through the activities of His two natures, divine and human, is He known and believed." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "In God-pleasing manner didst thou distribute thy wealth to the poor,\nand with thy whole family thou didst unite thyself unto the Lord, O Xenophon.\nHim do thou beseech, O all-blessed one,//\nthat He deliver us from the passions.",
+      "tone": 3,
+      "label": "Exapostilarion of the saints",
+      "melody": "Heaven with stars",
+      "bothNow": {
+        "text": "Truly thy mighty works surpass the armies of the angels and choirs of the saints, O pure one.\nWherefore, entreat Christ on behalf of us sinful people.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

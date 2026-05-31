@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "feast": "Venerable Hilarion the Great",
+    "feastKey": "hilarionTheGreat",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "monastic",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 10-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-21.pdf",
+    "_note": "Simple-rank. Single canon of the venerable one in Tone II, acrostic: 'I hymn the splendor of thy miracles, O all-blessed one', composition of Theophanes. Sessional hymn after Ode 3 in Tone VIII, Spec. Mel. 'Of the Wisdom'. Kontakion Tone III 'Today the Virgin' with ikos after Ode 6. Exapostilarion 'Hearken, ye women'. No lauds doxastikon in PDF. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.//\nO Hilarion our father, entreat Christ God, that our souls be saved.",
+    "tone": 8,
+    "label": "Troparion of the venerable one"
+  },
+  "kontakion": {
+    "text": "Assembling today, in hymns we praise thee\nas a never-waning luminary of the noetic Sun;\nfor thou hast shone forth upon those in the darkness of ignorance,\nguiding all up to the divine heights, O Hilarion.//\nWherefore, we cry out: Rejoice, O father, thou foundation of all fasters!",
+    "tone": 3,
+    "label": "Kontakion of the venerable one",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "monastic", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Spiritually emulating the virtuous life of the godly Anthony, thou didst take the Cross of thy Lord upon thy shoulders, forsaking all the cares of life; and, having mortified the passions, thou didst live thy life in the Spirit. Wherefore, thou hast filled creation with most glorious miracles through the grace of the Spirit. O venerable Hilarion our father, entreat Christ God, that He grant remission of sins to those who honor thy holy memory with love.",
+      "tone": 8,
+      "label": "Sessional Hymn of the venerable one (after Ode 3)",
+      "melody": "Of the Wisdom",
+      "bothNow": {
+        "text": "All we, the generations of mankind,\ncall thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord\nwith milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.//\nO Hilarion our father, entreat Christ God, that our souls be saved.",
+      "tone": 8,
+      "label": "Troparion of the venerable one"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the venerable one in Tone II. Acrostic: 'I hymn the splendor of thy miracles, O all-blessed one'. Composition of Theophanes.",
+
+      "kontakion": {
+        "text": "Assembling today, in hymns we praise thee\nas a never-waning luminary of the noetic Sun;\nfor thou hast shone forth upon those in the darkness of ignorance,\nguiding all up to the divine heights, O Hilarion.//\nWherefore, we cry out: Rejoice, O father, thou foundation of all fasters!",
+        "tone": 3,
+        "label": "Kontakion of the venerable one",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Loving the divine commandments of Christ, and hating all the pleasures of the world, thou didst zealously go to Him, and become a luminary, enlightening all the ends of the earth with the radiance of the Spirit. Wherefore, falling down, I entreat thee: Enlighten also the eyes of my soul, that I may hymn the struggles which thou didst undertake on earth for the sake of the life to come. Enjoying them now, be thou mindful of those who cry out to thee: Rejoice, O father, thou foundation of all fasters!"
+      },
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "With the serenity of thy splendor illumine me who am eager to praise most joyously thy luminous and radiant life, O blessed father, and drive far from me the despondency of sin." },
+          { "text": "Removed from the flesh and the world, O blessed one, rejoicing, thou didst cleave to God with all thy being; and through abstinence preserved thy mind untroubled and steadfast, joining thyself to Him with the divine dispassion which cometh from Him." },
+          { "text": "Illumined with the splendid rays of the beginningless and uncreated Godhead, thou didst choose to reject the false belief of thy father, and turning away from his tumultuous ignorance, united thyself to the Trinity alone." },
+          { "type": "theotokion", "text": "Theotokion: The invisible Sun Who shone forth from the Father before time and through thee became most gloriously circumscribed in a visible body, O Ever-virgin Mother, hath illumined all with the light of piety." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God\nand none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Thou didst dry up the uprisings of the poisonous passions, restraining them with the medicine of fasting, O ever-memorable one, and crying aloud: There is none as holy as our God, and none more righteous than Thee, O Lord!" },
+          { "text": "Having cut away garments of mortal skin with the knife of abstinence, thou didst fashion a robe of salvation, crying out to thy Creator: Thou art our God, and there is none more holy than Thee, O Lord!" },
+          { "text": "Strengthened by hope of things eternal, and brought to God by the hands of the divinely wise Anthony, O venerable God-bearer, emulating him thou didst become a beacon, shedding rays of the most glorious miracles." },
+          { "type": "theotokion", "text": "Theotokion: He Who formed all things by His divine desire deigned to form Himself into a man, taking form in thy womb, O Theotokos. To Him do we now cry out: Thou art our God, and there is none more righteous than Thee, O Lord!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "I hymn Thee, O Lord, for I have heard report of Thee,\nand I was afraid;\nfor Thou comest to me, seeking me who am lost.\nWherefore, I glorify Thy great condescension towards me,//\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "Having mortified the wisdom of thy flesh, O venerable father, escaping the torrent of the tumult of iniquity and the wiles of the demons, thou hast found rest with the righteous in the serenity of the divine Spirit." },
+          { "text": "Irrigated by the watery torrents of thy tears, O venerable father, through the husbandry of the Savior thou didst manifestly reveal the meadow of thy soul to be most fertile, increasing the companies of fasters." },
+          { "text": "Strengthened by the communion of the Holy Spirit, O God-bearer, thou didst cast down evil spirits, healing the infirmities of all by the power of Christ, enriching them with the purity of prophecy." },
+          { "type": "theotokion", "text": "Theotokion: O blessed Mother of God, we understand thee to be the animate temple and bridal-chamber, the noetic table and lampstand, from whence the Light, the Effulgence of the Father's essence, hath shone forth upon those in darkness." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "Illumined with the light of piety, O divinely blessed one, thou didst drive away the prince of darkness, shining forth in the world like lightning, emulating the incorporeal ones in the purity of thy life and thy manner of living." },
+          { "text": "Resplendent with all manner of miracles and illumined by the grace of God, O divinely wise one, thou didst become known as a treasury of healings unto all who love thee, O God-pleasing father, who art known to be like another prophet of God." },
+          { "text": "With the splendor of thy meek corrections, O father, thou didst drive away the dark hosts of the enemy, rescuing from their rage those who have recourse to thee, and lighting their way toward the Faith by thy divine teachings." },
+          { "type": "theotokion", "text": "Theotokion: Thou alone, O blessed one, hast ineffably given birth to God for us, God the Word, the one visible Hypostasis in two natures, Who became incarnate in His ineffable mercy. Wherefore, pray thou, that He preserve those who hymn Thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Serving the Godhead of the beginningless Divinity, thou didst denounce polytheism, setting the impiety of idolatry at naught by grace, O wise one." },
+          { "text": "Springing forth, thou didst flourish in the Church like a palm-tree, O divinely wise and all-blessed father, gladdening the fullness of the faithful with the sweetness of thy fruits." },
+          { "text": "Thou wast revealed to be an invincible conqueror of evil spirits, O all-glorious and blessed one, having received rich gifts from Christ." },
+          { "type": "theotokion", "text": "Theotokion: Without knowing a man, thou hast given birth, O Virgin, yet remaining forever virgin, revealing the true Divinity in images of thy Son and God." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant\nfanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,//\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "The sound of thy words and the divine grace of thy miracles have gone forth into all the earth, O all-blessed one, shining forth the serenity of miracles with the radiance of piety upon all those with faith." },
+          { "text": "Protected by the Cross of the Savior, thou wast unshaken when the savagery of the demons mindlessly assaulted thee, O all-wise one; for God the Most High knoweth how to preserve His favored ones." },
+          { "text": "Through fasting thou didst reveal thyself to be an unshakable pillar reaching to the heavens, an immovable rampart, shining with miracles, bestowing healings and pouring forth divine dogmas from thine ever-flowing wellspring of divinely inspired writings." },
+          { "type": "theotokion", "text": "Theotokion: Remaining a virgin, the Virgin, the cloud, gave birth to the Sun of righteousness Who shared in the coarseness of the flesh, becoming a man in His compassion and condescension. Him do we hymn as supremely glorious." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Illumined by divine understanding, thou wast truly a throne of sensibility; and guided with divine wisdom by the command of God, thou didst shine forth in virtue, crying: Bless the Lord, all ye works of the Lord!" },
+          { "text": "By the splendor of thy words, the manifestation of miracles and the purity of thy life, thou wast revealed to be a mystic chariot bearing the name of the Lord, O venerable one, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Adopted by divine grace, thou didst become a fellow heir with Christ and received the riches of heaven, and the kingdom which will never be superseded, O divinely eloquent one, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, thou didst bear within thy womb the Son, the noetic Myrrh which poureth forth, perfuming mortals with the incense of divinity and delivering from corruption those who cry aloud: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;//\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Having reached the end of thy holy life, thou wast deemed worthy to pass over to the habitations of the saints; and the thrice-radiant Light having shone upon thee who art righteous, granted thee a twofold gladness." },
+          { "text": "Receiving from Christ the reward of thy labors, and having manifestly partaken of everlasting life, and beyond understanding having become most excellent in the splendors of virtue, O father, pray thou to the Master on behalf of those who hymn Thee." },
+          { "text": "Exalted in virtue like a lofty cedar, O God-bearer, thou wast planted in the courts of God, and revealed to be like a walled orchard, like a right flourishing garden of paradise, like a well-spring pouring forth gifts of healings." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast the bridal-chamber of the Word Who, in a manner past understanding, became incarnate, O Virgin Birthgiver of God who art clothed and adorned with the glory of the virtues. Wherefore, O all-immaculate one, we declare thee to be the Theotokos." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Thou didst avoid attachment to the world as passionate, and having caused thy flesh to wither away by abstinence from food, thou dost restore those who hold bit and bridle and enriched them with glory, working most excellent miracles,//\nO God-pleasing Hilarion, summit of chief shepherds.",
+      "tone": 0,
+      "label": "Exapostilarion of the venerable one",
+      "melody": "Hearken, ye women",
+      "bothNow": {
+        "text": "O all-immaculate Virgin Mother of God, thou didst ineffably give birth to God in two natures and wills, but in a single hypostasis, Who for our sake abased Himself even to taking the Cross upon Himself of His own will,//\nand thereby granted us the riches of divinity.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

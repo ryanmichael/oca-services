@@ -1,0 +1,136 @@
+{
+  "_meta": {
+    "feast": "Venerable Theodore the Sanctified, Disciple of Pachomius the Great",
+    "feastKey": "venerableTheodoreTheSanctified",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "monastic",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 05-16.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-16.pdf",
+    "_note": "Simple-rank. Single canon of the venerable one in Tone II. Acrostic: 'I hymn thee, the gift sanctified for God'. Sessional hymn Tone III after Ode 3 (Spec. Mel. 'Of the divine Faith'). Kontakion Tone II (Spec. Mel. 'Seeking the highest') placed between Ode 3 and Ode 4 in PDF; note Kontakion and Ikos from the Pentecostarion are sung after Ode 6 at the actual service. No lauds doxastikon in PDF. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "A desert dweller, an angel in the flesh and a wonder-worker\nwast thou revealed to be, O our God-bearing father Theodore.\nReceiving heavenly gifts through fasting, vigils and prayers,\nthou healest the infirm and the souls of those who with faith have recourse unto thee.\nGlory to Him Who hath given thee strength!\nGlory to Him Who hath crowned thee!//\nGlory to Him Who through thee worketh healings for all!",
+    "tone": 1,
+    "label": "Troparion of the venerable one"
+  },
+  "kontakion": {
+    "text": "Thou didst flourish in the house of God like a palm-tree,\nand through excellent ascetic endeavor didst bring forth the fruit of the virtues for the Lord,\nO venerable father;\nwherefore, as one who standeth with the incorporeal hosts,//\nthou art called blessed.",
+    "tone": 2,
+    "label": "Kontakion of the venerable one",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "monastic", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Invested with divine power, thou didst strip naked the hordes of the adversary's hosts,\nO God-bearer, and, shining forth with the splendor of the virtues,\nthou hast emitted rays of healings, O venerable father.\nEntreat Christ God, that He grant us great mercy.",
+      "tone": 3,
+      "label": "Sessional Hymn of the venerable one (after Ode 3)",
+      "melody": "Of the divine Faith",
+      "bothNow": {
+        "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother,\nwho hast surpassed the angels in purity.\nWith the divine waters of thy supplications cleanse me,\nwho more than all others am dust and defiled by carnal transgressions, O pure one,//\nand grant me great mercy.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "A desert dweller, an angel in the flesh and a wonder-worker\nwast thou revealed to be, O our God-bearing father Theodore.\nReceiving heavenly gifts through fasting, vigils and prayers,\nthou healest the infirm and the souls of those who with faith have recourse unto thee.\nGlory to Him Who hath given thee strength!\nGlory to Him Who hath crowned thee!//\nGlory to Him Who through thee worketh healings for all!",
+      "tone": 1,
+      "label": "Troparion of the venerable one"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the venerable Theodore the Sanctified in Tone II. Acrostic: 'I hymn thee, the gift sanctified for God'. The Pentecostarion canon (also present at this service) and the Pentecostarion Kontakion/Ikos (sung after Ode 6) are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Thou didst flourish in the house of God like a palm-tree,\nand through excellent ascetic endeavor didst bring forth the fruit of the virtues for the Lord,\nO venerable father;\nwherefore, as one who standeth with the incorporeal hosts,//\nthou art called blessed.",
+        "tone": 2,
+        "label": "Kontakion of the venerable one",
+        "melody": "Seeking the highest"
+      },
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "In that thou art the namesake of divine gifts, O ever all-memorable one, drawing forth divine grace from thine inexhaustible treasuries, grant me a gift of radiance, for I desire to hymn thy festival now with song." },
+          { "text": "Earnestly studying the pure law, O father, thou didst become wholly pure and most pure; and, uniting thyself to the most honorable Word, thou wast revealed to be a radiant and sanctified vessel of purity, O all-blessed one." },
+          { "type": "theotokion", "text": "Theotokion: Having died to the world and piously led an angelic life on earth, thou didst follow after Him Who shone forth from the Virgin's womb, shouldering thy cross, O divinely wise and most blessed father." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The desert of the barren Church of the nations\nblossomed like a lily at Thy coming, O Lord;\ntherein hath my heart been established.",
+        "troparia": [
+          { "text": "O venerable Theodore, thou didst offer to the Master as a gift of love thy soul, which was saved and kept untouched by the passions by thine abstinence." },
+          { "text": "Sanctified for God, thou didst transcend the sense of things seen, O all-wise one; and with a pure mind conversed with the transcendent Mind, O most blessed one." },
+          { "type": "theotokion", "text": "Theotokion: Fleeing, thou didst retreat into the desert, O glorious one, receiving God the Word, Who shone forth from the Virgin; and in Him didst thou find salvation, O rightly glorious one." }
+        ]
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador,\nnor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "In that thou didst live with the godly Pachomius, thou didst emulate the ways of his abstinence, O divinely wise father Theodore, being like him also in the Orthodoxy of thy faith." },
+          { "text": "Worthily didst thou receive the laudable kingdom and divine effulgence, in that thou wast one endued with knowledge through purity and by partaking of ineffable joy, O father." },
+          { "text": "The dwelling-places of the Ethiopians and their demonic assemblies were stricken with awe by thy patience and humility, and thy constant standing in vigil, O rightly wondrous one." },
+          { "type": "theotokion", "text": "Theotokion: In astonishment, the heads of the powerful were cut off by fear of thy birthgiving, O all-immaculate Birthgiver of God; and the assembly of the venerable rightly marveled at thy divine grace." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ God, Thou art a mediator between God and man;\nfor by Thee, O Master,\nwe have been led from the night of ignorance//\nto Thy Father, the Source of light.",
+        "troparia": [
+          { "text": "Fervently holding to honorable doctrines, thou didst destroy the deceptive tenets of all heresies, O wise one, protecting thy flock with faith in the Trinity." },
+          { "text": "Living a blameless life, thou wast truly a light upon the earth, O ever memorable Theodore, thou adornment of fasters and boast of monastics." },
+          { "type": "theotokion", "text": "Theotokion: Watering thy heart with the flow of thy tears, O most noetically rich Theodore, thou didst show it forth as fruitful unto Christ the Master Who shone forth from the holy Virgin." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Thy radiant and God-pleasing life showed forth for thee the splendor of the saints in the mansions of heaven, O father Theodore." },
+          { "text": "Having acquired the Comforter as thine ally, thou didst become victorious, vanquishing the wickedness of the evil spirits, O God-pleasing Theodore." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, thou art the light cloud whereon the Lord Almighty sat when He came into Egypt; and He hath rendered the venerable ones there beacons of light." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit;\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "As a God-seer thou didst wisely desire to behold the effulgence of God, O Theodore; wherefore, thou didst abandon all things visible, and, entering the divine darkness, wast deemed worthy to see the Unapproachable One." },
+          { "text": "In nowise poisoned by the venom of the soul-destroying serpent, O most blessed father Theodore, thou didst destroy the very memory of him, having acquired the continual memory of God in thy heart, O blessed one." },
+          { "type": "theotokion", "text": "Theotokion: In a holy manner thou didst give birth to the Holy of holies, Who resteth in the saints and Who, though before incorporeal, assumed flesh from thee in His great love for mankind, O all-immaculate Virgin." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Conversing with the most radiant Light, O most blessed Theodore, thou wast revealed to be radiant; and, deified by a higher union, thou dost now cry aloud: Bless ye the Lord, all ye works of the Lord!" },
+          { "text": "As a steadfast witness against sin who contended even to the shedding of thy blood, O divinely wise Theodore, thou didst adorn thy head with the crown of suffering, crying out now: Bless ye the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Through thee, O Birthgiver of God, the radiant Sun of righteousness, the Most High incarnate, hath revealed Himself unto us, illumining all things with the rays of His divinity. To Him do we now sing: Bless ye the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Christ is now visible to thee not in indistinct images, for He Who before was seen as in a glass darkly, is now seen face to face as truly manifest, O namesake of the gifts of our Savior and God." },
+          { "text": "Thy divine desire was fulfilled, O Theodore: for reaching the end of thy life, which with compunction thou didst behold from afar through thine asceticism; thou hast set aside all temporal desires, O boast of fasters, and splendor of monastics." },
+          { "type": "theotokion", "text": "Theotokion: The first Adam, who fell prey to corruption through disobedience, was restored within thee, O Mother of God; for, having ineffably given birth without corruption to the incarnate Word, thou didst uproot corruption, blossoming forth incorruption." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "A desert dweller, an angel in the flesh and a wonder-worker\nwast thou revealed to be, O our God-bearing father Theodore.\nReceiving heavenly gifts through fasting, vigils and prayers,\nthou healest the infirm and the souls of those who with faith have recourse unto thee.",
+      "tone": 0,
+      "label": "Exapostilarion of the venerable one",
+      "bothNow": {
+        "text": "Thou art blessed among women,\nO all-immaculate Lady Theotokos;\nfor through the One born of thee//\nHades hath been taken captive and Adam recalled.",
+        "tone": 0,
+        "label": "Theotokion"
+      }
+    }
+  }
+}

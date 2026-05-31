@@ -2513,9 +2513,10 @@ function mapDbBlocks(dbBlocks) {
  * or null if no calendar entry exists for the date.
  * Throws on assembly error.
  */
-function assembleForDate(date, pronoun, entryOverride) {
+function assembleForDate(date, pronoun, entryOverride, vespersFixedOverride) {
   const calendarEntry = entryOverride || getCalendarEntry(date);
   if (!calendarEntry) return null;
+  const vespersFixed = vespersFixedOverride || fixedTexts;
 
   const dbSource = buildDbSource(date, pronoun);
 
@@ -2831,7 +2832,7 @@ function assembleForDate(date, pronoun, entryOverride) {
   }
 
   const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
-  const blocks = assembleVespers(calendarEntry, fixedTexts, reqSources);
+  const blocks = assembleVespers(calendarEntry, vespersFixed, reqSources);
 
   if (pronoun === 'yy') {
     for (const block of blocks) {
@@ -3244,6 +3245,7 @@ try {
 let fixedTexts;
 try {
   fixedTexts = loadJSON('fixed-texts/vespers-fixed.json');
+  registerBaseFixed('vespers', fixedTexts);
   console.log('Fixed texts loaded.');
 } catch (err) {
   console.error('Failed to load fixed texts:', err.message);
@@ -3467,9 +3469,14 @@ function handleRequest(req, res) {
         console.warn('Orthocal pericope fetch failed (non-fatal):', err.message);
       }
 
+      const translation = resolveTranslation(q);
+      const vespersFixedResolved = translation
+        ? (getOverlayFixed('vespers', translation) || fixedTexts)
+        : fixedTexts;
+
       let result;
       try {
-        result = assembleForDate(vespersDate, pronoun, entryOverride);
+        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved);
       } catch (err) {
         console.error('assembleForDate error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });

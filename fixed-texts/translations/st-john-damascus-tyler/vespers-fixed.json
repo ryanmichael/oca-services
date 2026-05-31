@@ -1,0 +1,20 @@
+{
+  "_note": "Sparse Vespers overlay for St. John of Damascus, Tyler, TX. The parish uses the HTM-family (Jordanville / Boston Psalter) rendering of Kathisma I, Section 1 — 'Blessed is the Man'. Duplicated here rather than inherited via `extends: ['jordanville']` because the Jordanville overlay also carries Liturgy overrides the parish doesn't use (parish Liturgy stays on sts-sluzhebnik).",
+
+  "kathisma": {
+    "blessedIsTheMan": {
+      "_source": "Parish service book; matches HTM Psalter wording.",
+      "refrain": "Alleluia, alleluia, alleluia.",
+      "verses": [
+        "Blessed is the man who hath not walked in the counsel of the impious.",
+        "For the Lord knoweth the way of the righteous and the way of the impious shall perish.",
+        "Serve ye the Lord in fear and rejoice unto him with trembling.",
+        "Blessed are all they that trust in Him.",
+        "Arise O Lord, save me O my God.",
+        "Salvation is of the Lord, and thy blessing is upon thy people."
+      ],
+      "gloryOnly": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "nowOnly":   "Both now and ever and unto ages of ages. Amen."
+    }
+  }
+}

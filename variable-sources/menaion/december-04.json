@@ -1,0 +1,256 @@
+{
+  "_meta": {
+    "feast": "Holy Great-Martyr Barbara and Venerable John of Damascus",
+    "feastKey": "barbaraAndJohnOfDamascus",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 12-04.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-04.pdf",
+    "_note": "Barbara is primary saint (doxology-rank); John of Damascus is secondary (2nd canon). Sergius rubric: 4 Lauds stichera for Barbara. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Two interleaved canons both in Tone II: Canon I of the holy great-martyr Barbara + Canon II of the venerable John of Damascus. Kontakion of John (after Ode 3); Kontakion + Ikos of Barbara (after Ode 6). Sessional hymns: Barbara (Tone III), Glory/John (Tone III), Both now/Theotokion (Tone III)."
+  },
+  "troparion": {
+    "text": "Let us honor the holy Barbara;\nfor the most honored one broke the snares of the enemy\nand was delivered from them like a bird,//\nwith the help and aid of the Cross.",
+    "tone": 8,
+    "label": "Troparion of the holy great-martyr Barbara"
+  },
+  "kontakion": {
+    "text": "Following God Who is piously hymned in Trinity,\nthou didst dim the pagan temples O spiritual athlete;\nand suffering amid thy contest, O Barbara of manly mind,\nthou wast not afraid of the threats of the tyrants,\never chanting aloud://\n\"I worship the Trinity, the One God!\"",
+    "tone": 4,
+    "label": "Kontakion of the holy great-martyr Barbara",
+    "melody": "Having been lifted up upon the Cross"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Let us honor the holy Barbara;\nfor the most honored one broke the snares of the enemy\nand was delivered from them like a bird,//\nwith the help and aid of the Cross.",
+      "tone": 8,
+      "label": "Troparion of the holy great-martyr Barbara",
+      "_note": "On 'God is the Lord': Troparion of Barbara (Twice); Glory ..., Troparion of John of Damascus; Both now ..., Theotokion, or Stavrotheotokion."
+    },
+    "troparionGlory": {
+      "text": "Teacher of Orthodoxy, instructor of piety and chastity,\nluminary of the Church, God-inspired nourishment of monastics,\nO supremely wise John, thou spiritual flute illumining all,//\nentreat Christ God that our souls be saved.",
+      "tone": 8,
+      "label": "Troparion of the venerable John of Damascus"
+    },
+    "sedalion": [
+      {
+        "text": "In thy suffering thou didst amaze all,\nfor thou didst endure the wounding, bonds, tortures and imprisonment\ninflicted upon thee by the tormenters, O all-famed Barbara.\nWherefore, Christ hath given thee a crown in heaven,\nand it is to Him that thou didst flee, desiring Him earnestly.\nHe hath imparted grace to thee, O martyr,//\nto pour forth healings upon all.",
+        "tone": 3,
+        "label": "Sessional Hymn of the holy great-martyr (after Kathisma)",
+        "melody": "Awed by the beauty of thy virginity",
+        "glory": {
+          "text": "Thou hast been shown to us to be a melodious and sanctified trumpet, O most sacred one,\nsounding forth in hymnody the teachings of the Lord and Savior to the ends of the earth;\nand by thy words thou hast illumined the earth, O venerable John,//\nentreat Christ God, that He grant us great mercy.",
+          "tone": 3,
+          "label": "Glory ..., Sessional Hymn of the venerable John of Damascus"
+        },
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother,\nwho hast surpassed the angels in purity.\nWith the divine waters of thy supplications cleanse me,\nwho more than all others am dust and defiled by carnal transgressions, O pure one,//\nand grant me great mercy.",
+          "tone": 3,
+          "label": "Both now ..., Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I of the holy great-martyr Barbara in Tone II + Canon II of the venerable John of Damascus in Tone II.",
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "irmos2": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "O most blessed and honored Trinity Who givest gifts to Thy servants which are beyond understanding, breathe Thou a ray of splendor into my darkened mind, that I may praise the ever-memorable martyr Barbara." },
+          { "text": "O most blessed and honored Trinity Who givest gifts to Thy servants which are beyond understanding, breathe Thou a ray of splendor into my darkened mind, that I may praise the ever-memorable martyr Barbara." },
+          { "text": "The glory of Thy martyrs hath truly passed every bound of praise, O Lover of mankind; yet, accepting the praise we offer thee with faith according to our measure, O Master, send down upon us rich rewards." },
+          { "text": "A most beauteous rose sprang forth from a thorny root and hath perfumed the Church of Christ: the glorious Barbara, who dyed her vesture in the blood of her suffering. Her do we hymn as is meet." },
+          { "canon": "secondCanon", "text": "To me who desires to begin thy praises, grant me now thy honeyed voice, O venerable one, wherewith thou didst with hymns illumine the Orthodox Church which honoreth thy memory, O father John." },
+          { "canon": "secondCanon", "text": "To me who desires to begin thy praises, grant me now thy honeyed voice, O venerable one, wherewith thou didst with hymns illumine the Orthodox Church which honoreth thy memory, O father John." },
+          { "canon": "secondCanon", "text": "Perceiving the nature of things most excellently, as a wise judge keen of intellect, thou didst prefer eternal things to those which do not last; for thou didst trade transitory things for those which are abiding, O John, where Christ hath now glorified thee." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou hast been shown to surpass all creation, visible and invisible, O pure Ever-virgin; for thou gavest birth to the Creator, in that it was His good pleasure to become incarnate in thy womb. Him do thou entreat with boldness, that He save those who hymn thee." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The desert of the barren Church of the nations\nblossomed like a lily at Thy coming, O Lord;//\ntherein hath my heart been established.",
+        "irmos2": "The desert of the barren Church of the nations\nblossomed like a lily at Thy coming, O Lord;//\ntherein hath my heart been established.",
+        "troparia": [
+          { "text": "Wounded by the love of Thee, her Bridegroom, O Master, the passion-bearer Barbara rejected all the ungodliness of her father with unrestrained vehemence." },
+          { "text": "Neither the sweet beauty and comeliness of flowers, nor riches, nor yet the sweetness of youth satisfied thee, O goodly virgin, glorious Barbara, who had become the bride of Christ." },
+          { "text": "Neither the hindrance of a feminine nature or youthful stature impeded the martyr's perfect struggles, O Christ; for she was fortified by Thine invisible power." },
+          { "canon": "secondCanon", "text": "Thou didst distribute thy wealth, thereby giving it back to God; wherefore, the kingdom in the heavens hath been prepared for thee, and thou hast now received abundant rewards, O John." },
+          { "canon": "secondCanon", "text": "Receiving a talent of wisdom, O John, thou didst adorn the Church of Christ, adorning it with thy deeds; and, departing this life, thou hast increased it exceedingly." },
+          { "canon": "secondCanon", "text": "Theotokion: The ranks of angels were astonished, O most pure one, and the hearts of mortals were filled with awe at thy birthgiving. Wherefore, we honor thee, the Theotokos, with faith." }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "Let us hymn John, the honored and divinely eloquent speaker and hymnographer,\nthe instructor and teacher of the Church, the opponent of the enemy;\nfor taking up the Cross of the Lord as a sword,\nhe hath cut down all the falsehood of heresies,\nand as a fervent intercessor before God//\nhe bestoweth forgiveness of transgressions upon all.",
+        "tone": 4,
+        "label": "Kontakion of the venerable John of Damascus",
+        "melody": "Having been lifted up upon the Cross",
+        "ikos": {
+          "text": "Together let us cry out to the instructor, teacher and priest of the Church, as an initiate of ineffable mysteries: By thy supplications to God open our mouths and grant that we may speak the words of thy doctrines; for thou didst appear in the world as one who shares in the Trinity, shining forth in the world like another sun, illumining all with thy miracles and teachings, like Moses ever instructing in the law of the Lord. And thou wast a luminary in word and deed, praying unceasingly, that forgiveness of transgressions be given to all."
+        }
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "In thy suffering thou didst amaze all,\nfor thou didst endure the wounding, bonds, tortures and imprisonment\ninflicted upon thee by the tormenters, O all-famed Barbara.\nWherefore, Christ hath given thee a crown in heaven,\nand it is to Him that thou didst flee, desiring Him earnestly.\nHe hath imparted grace to thee, O martyr,//\nto pour forth healings upon all.",
+        "tone": 3,
+        "label": "Sessional Hymn of the holy great-martyr Barbara",
+        "melody": "Awed by the beauty of thy virginity",
+        "glory": {
+          "text": "Thou hast been shown to us to be a melodious and sanctified trumpet, O most sacred one,\nsounding forth in hymnody the teachings of the Lord and Savior to the ends of the earth;\nand by thy words thou hast illumined the earth, O venerable John,//\nentreat Christ God, that He grant us great mercy.",
+          "tone": 3,
+          "label": "Glory ..., Sessional Hymn of the venerable John of Damascus"
+        },
+        "bothNow": {
+          "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother,\nwho hast surpassed the angels in purity.\nWith the divine waters of thy supplications cleanse me,\nwho more than all others am dust and defiled by carnal transgressions, O pure one,//\nand grant me great mercy.",
+          "tone": 3,
+          "label": "Both now ..., Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "irmos2": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "O Thou Who wast born of the Virgin, Thou hast given to virgin maidens the boldness to cast down the deceiver. Wherefore, the right victorious Barbara put his arrogance to shame." },
+          { "text": "Our first mother, led astray of old by the machinations of the deceiver, was driven from the food of paradise; but Barbara, putting him to shame, hath now made her abode in the bridal-chamber of heaven." },
+          { "text": "Thou didst destroy the power of death by Thy Cross; wherefore, the maiden Barbara, sparing not her body, most valiantly endured wounding with steadfast mind." },
+          { "canon": "secondCanon", "text": "Submitting to the command of Christ, thou didst forsake the beauty, wealth, sweetness and splendor of the world; and taking up thy cross for His sake, O wise John, thou didst follow after Him." },
+          { "canon": "secondCanon", "text": "Impoverishing thyself for Christ Who impoverished Himself for the sake of our salvation, thou wast glorified with Him as He promised, and dost now reign with Him Who reigneth forever, O John." },
+          { "canon": "secondCanon", "text": "Theotokion: All of us, the faithful, know thee to be the haven of salvation and an invincible rampart, O Lady Theotokos; for by thy supplications thou dost deliver our souls from tribulations." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ God Thou art a mediator between God and man;\nfor by Thee, O Master,\nwe have been led from the night of ignorance,//\nto Thy Father, the Source of light.",
+        "irmos2": "O Christ God Thou art a mediator between God and man;\nfor by Thee, O Master,\nwe have been led from the night of ignorance,//\nto Thy Father, the Source of light.",
+        "troparia": [
+          { "text": "Commanding that the bath-house be lighted by three windows, O Barbara, thou didst mystically describe baptism, which, through the light of the Trinity, is the radiant cleansing of thy soul." },
+          { "text": "Commanding that the bath-house be lighted by three windows, O Barbara, thou didst mystically describe baptism, which, through the light of the Trinity, is the radiant cleansing of thy soul." },
+          { "text": "Aflame with zeal for God, the all-praised maiden Barbara spat upon the vile faces of the false deities, putting to shame the prince of this world." },
+          { "text": "Opening for Barbara, who was fleeing the savagery of her cruel father, the mountain straightway received her, like the ever-memorable protomartyr Thecla of old, Christ having wrought a miracle." },
+          { "canon": "secondCanon", "text": "Made steadfast in the divine life by the fear of Christ, O father John, thou didst subject all thy carnal mind to thy spirit, cleansing thy senses." },
+          { "canon": "secondCanon", "text": "Having assiduously purified body, mind and soul of all defilement, O divinely wise one, thou didst receive the splendor of the threefold Sun, Who hath enriched thee with radiant gifts." },
+          { "canon": "secondCanon", "text": "Theotokion: Entreat thy Son and Lord, O pure Virgin; that He grant deliverance from the assaults of the adversary to all captives and peace to those who place their hope on thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I am held fast in the depths of sin O Savior,\nand am overwhelmed by the sea of life,\nbut as Jonah was delivered from the sea-monster,//\nso also deliver me from the passions, and save me.",
+        "irmos2": "I am held fast in the depths of sin O Savior,\nand am overwhelmed by the sea of life,\nbut as Jonah was delivered from the sea-monster,//\nso also deliver me from the passions, and save me.",
+        "troparia": [
+          { "text": "As Thou didst promise to give divinely inspired wisdom to those who stand before the tyrants' tribunals for Thy sake, the martyr Barbara was filled therewith." },
+          { "text": "As Thou didst promise to give divinely inspired wisdom to those who stand before the tyrants' tribunals for Thy sake, the martyr Barbara was filled therewith." },
+          { "text": "With divinely wise words thou didst denounce the falsehood of the ungodly, O glorious Barbara, and in enduring the deeds of the torments thou didst astonish the wise." },
+          { "text": "The blameless spiritual athlete gave her body over to be pitilessly afflicted with wounds and to be scraped thoroughly with rags of horse-hair, for the sake of Christ." },
+          { "canon": "secondCanon", "text": "Illumined by the grace of the Spirit, and clearly enriched by the knowledge of secular things, thou didst generously give thy wealth to the needy, O John." },
+          { "canon": "secondCanon", "text": "Like the choirs of heaven didst thou adorn the Church in Orthodox manner, intoning divine harmonious hymns to the Trinity." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou gavest birth without knowing a man, O Virgin, and remainest eternally virgin, revealing the true Godhead of thy Son and God in images." }
+        ]
+      },
+      "kontakion": {
+        "text": "Following God Who is piously hymned in Trinity,\nthou didst dim the pagan temples O spiritual athlete;\nand suffering amid thy contest, O Barbara of manly mind,\nthou wast not afraid of the threats of the tyrants,\never chanting aloud://\n\"I worship the Trinity, the One God!\"",
+        "tone": 4,
+        "label": "Kontakion of the holy great-martyr Barbara",
+        "melody": "Having been lifted up upon the Cross"
+      },
+      "ikos": {
+        "text": "Assembling, let us honor, as is meet, Barbara, who made herself the bride of Christ through martyrdom; for delivered from soul-corrupting danger, destruction and earthquake through her supplications, we lead our life in peace, and are granted Thy mercies, O Savior, with all the saints who have pleased Thee from ages past, to walk in the light and to chant with them. And Thou hast astonished all those who confess with faith: We worship the Trinity, the One God!"
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,//\ntherefore He is blessed and supremely exalted.",
+        "irmos2": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,//\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "The tyrant who rageth in vain to destroy the earth and annihilate the sea lieth like a plaything beneath the feet of the maiden Barbara; for Christ, having trampled him down, hath bound him like a vile bird." },
+          { "text": "The tyrant who rageth in vain to destroy the earth and annihilate the sea lieth like a plaything beneath the feet of the maiden Barbara; for Christ, having trampled him down, hath bound him like a vile bird." },
+          { "text": "When thy whole body was wracked with unbearable wounds and empurpled with the drops of thy blood, O all-praised glorious martyr Barbara, thou didst yet endure scorching of thy sides by candles." },
+          { "text": "O the inhuman and pitiless savagery and exceeding ungodliness of the torments! For with swords they cruelly severed the breasts of the martyr as though in a butcher's shop, but her mind was set steadfastly on Christ, the Judge of the contest." },
+          { "canon": "secondCanon", "text": "Afire with zeal, thou didst strike down all the false knowledge of God-opposing heresies with thy splendid writings, O John, manifestly making clear what had been sown of old by the wise and written carefully." },
+          { "canon": "secondCanon", "text": "With the discourses and the dogmas compiled by thee, thou didst fervently denounce the blasphemous impiety of the abominable disciples of Manes, who strove to infect the Church of Christ, O John." },
+          { "canon": "secondCanon", "text": "Theotokion: O undefiled Virgin, Mother unwedded, we know thee to be more holy than the saints, in that thou alone hast given birth to the immutable God; for thou hast poured forth incorruption upon all the faithful by thy divine birthgiving." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant://\nBless ye the Lord, all ye works of the Lord!",
+        "irmos2": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant://\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Christ appeared to thee in prison, O Barbara, surrounded by unapproachable light, commanding thee to be of good cheer, healing thy wounds and granting thee joy; wherefore, thou hast lovingly taken wing to thy Bridegroom." },
+          { "text": "Manifestly hath Thy prophecy been fulfilled, O Christ; for the father gave his own child over to death, the wretched parent having become the instigator of Thy martyr's slaughter. Wherefore, he was destroyed by fire from heaven." },
+          { "text": "An angel of light arrayed thee like a bride in brilliant vesture, O Barbara, who wast stripped naked for Christ's sake and wast subjected to suffering; for thou didst shed thy garments, receiving divine transformation." },
+          { "canon": "secondCanon", "text": "Thou didst openly denounce the division of Nestorius, the confusion of Severus and the monothelite foolishness, O thrice-blessed John, shining forth the radiance of Orthodoxy upon all the ends of the earth in the one true Faith." },
+          { "canon": "secondCanon", "text": "The enemy abundantly sowed the tares of heresy in the Church of Christ, that the worship of Christ in His precious icons might be eliminated; but he did not find thee sleeping, O all-blessed John, who uprooted every seed of evil." },
+          { "canon": "secondCanon", "text": "Theotokion: Without seed didst thou conceive Him Who is inseparable from the Father and dwelt in thy womb as God and man, and thou hast given birth to Him ineffably, O most pure Birthgiver of God. Wherefore, we confess thee to be the salvation of us all." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos//\ndo we magnify.",
+        "irmos2": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos//\ndo we magnify.",
+        "troparia": [
+          { "text": "Meeting the glorious end of thy martyrdom under the sword, O Barbara, and deemed worthy of a crown of martyrdom with Juliana, thou didst hear the voice of God, which filled thee with power." },
+          { "text": "United now with Christ thy Bridegroom, shining with the glory of the divine light in the mansions of heaven, O Barbara, look down upon those who hymn thee, lightening our sufferings and leading us to the living God." },
+          { "text": "Christ, fulfilling thy request, O Barbara, granteth healings to those who with faith keep thine annual memorial. For truly thy right glorious miracles have surpassed the sands of the sea in number." },
+          { "canon": "secondCanon", "text": "Thou hast taught all the children of the Church to hymn in an Orthodox fashion the adored Unity in Trinity, and to clearly theologize concerning the divine incarnation of the Word, O John, explaining those things which many find difficult to understand in the sacred Scriptures." },
+          { "canon": "secondCanon", "text": "Having hymned the ranks of the saints, the pure Theotokos, the forerunner of Christ, the apostles, the prophets, fasters and wise teachers, the righteous and the martyrs, O John, thou dost now abide in their mansions." },
+          { "canon": "secondCanon", "text": "Theotokion: In a manner beyond understanding, O Virgin Birthgiver of God, thou didst become the bridal-chamber of the incarnation of the Word, arrayed and embroidered with the glory of the virtues. Wherefore, we proclaim thee to be the Theotokos, O all-immaculate one." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Like a most beautiful rose, dyed with the blood of thy sacred suffering,\nthou didst spring forth from a thorny root,\nO virgin martyr Barbara,//\ndo thou now lovingly save from misfortunes those who keep thy divine memory.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy great-martyr Barbara",
+      "melody": "Hearken, ye women",
+      "glory": {
+        "text": "Thou didst shine forth like a divine light upon the Church, O father,\nillumining it with the splendor of thy hymns and the radiance of thy character,\nwhereby thou hast been revealed adorned by the dogmas of Christ,\nto Whom do thou never cease to pray for us,//\nO John.",
+        "tone": 2,
+        "label": "Glory ..., Exapostilarion of the venerable John of Damascus"
+      },
+      "bothNow": {
+        "text": "Saved by thee, we confess thee to be the true Theotokos, O Lady;\nfor thou didst ineffably give birth to God Who destroyed death by His Cross\nand drew to Himself the assemblies of the venerable,\nwith whom we praise thee,//\nO Virgin.",
+        "tone": 2,
+        "label": "Both now ..., Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Disdaining the sweetness of earthly food and the riches of thy father,\nand despising glory as well,\nthou didst love the heavenly Bridegroom, O all-glorious Barbara;\nfor, beheaded by the sword, thou didst enter unto Christ the Bridegroom with the wise virgins.\nWherefore, dispelling the deadly plague,\nthou dost heal the faithful by the activity of the Holy Spirit,//\npraying unceasingly for our souls.",
+          "tone": 1,
+          "label": "the composition of Anatolius"
+        },
+        {
+          "text": "The wicked enemy who lured our first-mother into sin,\nhath been put to shame, vanquished by a woman;\nfor Christ, the Word of the Father who became incarnate from the Virgin without change or commingling,\nas He Himself knew, lifted the curse from Eve and Adam,\nand He crowned the martyr Barbara as is meet,//\ngranting the world cleansing and great mercy for her sake.",
+          "tone": 2,
+          "label": "the composition of Byzantius"
+        },
+        {
+          "text": "The divinely called martyr Barbara, suffering in the tribunal, said:\n\"Cruel are my present torments, O ye torturers, but joyful will it be to receive everlasting life!\nI shall never prefer earthly things to those of heaven!\nWherefore, cut ye and lacerate my flesh, and give me over the fire,\nthat, rejoicing, I may depart unto Christ my Bridegroom!\"\nThrough her supplications, O Christ God,//\nsend down Thy mercies and save us who with faith celebrate her sufferings.",
+          "tone": 2
+        },
+        {
+          "text": "Come, ye people, let us hymn the festival of the spiritual athlete Barbara today;\nfor neither sword, nor fire, nor any torment, nor the crafty snares of Belial was able to triumph over her.\nTo her do we cry out with faith:\nEntreat Christ, O good and all-glorious martyr,//\nthat He grant us great mercy.",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "Treading the path of suffering, O most honored Barbara,\nthou didst avoid the counsel of thy father.\nBearing a lamp like a wise virgin, thou didst enter into the courts of thy Lord,\nand as a manly-wise martyr thou hast received the grace to heal carnal passions.\nDeliver us all, who hymn thee, from spiritual sickness//\nby thy prayers unto God.",
+        "tone": 6,
+        "label": "Glory ..., the composition of John the Monk"
+      },
+      "theotokion": {
+        "text": "Upon seeing Thee hanging upon the Cross\nthe all-pure one weeping, cried aloud with a mother's grief:\n'O my Son and my God, O my sweetest Child,//\nhow dost Thou endure this shameful suffering?'",
+        "tone": 6,
+        "label": "Both now ..., Stavrotheotokion"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Let us honor the holy Barbara;\nfor the most honored one broke the snares of the enemy\nand was delivered from them like a bird,//\nwith the help and aid of the Cross.",
+      "tone": 8,
+      "label": "Troparion of the holy great-martyr Barbara",
+      "_note": "After the Great Doxology: Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

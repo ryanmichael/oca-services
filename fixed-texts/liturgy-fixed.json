@@ -11,6 +11,12 @@
     "response": "Amen."
   },
 
+  "hierarch-commemoration": {
+    "_note": "Petition text for the hierarchs, referenced from the Great and Augmented litanies via '@@hierarch-commemoration.<litany>' sentinels. Parish overlays should override THESE keys (not the petition arrays themselves) to name their primate/diocesan/auxiliary bishops without copying the full petition list. The sentinel resolver lives in assembler.js (resolveFixedRef).",
+    "greatLitany":     "For our Archbishop N., for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+    "augmentedLitany": "Again we pray for our Archbishop N., and for our Bishop [or Archbishop] N."
+  },
+
   "great-litany": {
     "opening": "In peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
@@ -18,7 +24,7 @@
       "For the peace from above, and for the salvation of our souls, let us pray to the Lord.",
       "For the peace of the whole world, the welfare of the holy churches of God, and the union of all, let us pray to the Lord.",
       "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.",
-      "For our Archbishop N., for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+      "@@hierarch-commemoration.greatLitany",
       "For this country, its President [or: the civil authorities], for all civil authorities, and for the armed forces, let us pray to the Lord.",
       "For this city [or: village, or: holy monastery], every city and countryside, and the faithful who dwell therein, let us pray to the Lord.",
       "For seasonable weather, an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord.",
@@ -118,7 +124,7 @@
     ],
     "tripleResponse": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
     "triplePetitions": [
-      "Again we pray for our Archbishop N., and for our Bishop [or Archbishop] N.",
+      "@@hierarch-commemoration.augmentedLitany",
       "Again we pray for this country, its President [or: the civil authorities], and for the armed forces.",
       "Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.",
       "Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.",

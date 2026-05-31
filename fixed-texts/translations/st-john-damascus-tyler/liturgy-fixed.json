@@ -27,5 +27,17 @@
   "_section_pre_communion": "Parish uses the HTM (Holy Transfiguration Monastery, Boston) wording for the pre-Communion prayer of St. John Chrysostom — distinguished by 'of whom I am chief', 'most pure Body', 'Wherefore I pray Thee', 'vouchsafe me', 'receive me today as a communicant', and 'neither unto judgement nor unto condemnation'. PROVISIONAL: set 2026-05-31 pending confirmation against the parish booklet; user noted their parish wording is close to but not exactly Jordanville.",
   "pre-communion": {
     "prayer-chrysostom": "I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the living God, Who camest into the world to save sinners, of whom I am chief. Moreover, I believe that this is truly Thine own most pure Body, and that this is truly Thine own precious Blood. Wherefore, I pray Thee: have mercy upon me and forgive me my transgressions, voluntary and involuntary, whether in word or deed, in knowledge or in ignorance. And vouchsafe me without condemnation to partake of Thy most pure Mysteries, unto the remission of sins and unto life everlasting. Amen.\n\nOf Thy Mystical Supper, O Son of God, receive me today as a communicant; for I will not speak of Thy Mystery to Thine enemies, neither like Judas will I give Thee a kiss; but like the thief will I confess Thee: Remember me, O Lord, in Thy kingdom.\n\nMay the communion of Thy holy Mysteries be neither unto judgement nor unto condemnation for me, O Lord, but unto the healing of soul and body. Amen."
+  },
+
+  "_section_communion_of_faithful": "Parish uses the 'Receive ye the Body of Christ' wording year-round (not only during the Paschal period). Overriding both the standard and paschal keys keeps the rendered hymn identical inside and outside Pascha.",
+  "communion-of-faithful": {
+    "body-of-christ":         "Receive ye the Body of Christ; taste ye of the fountain of immortality.",
+    "body-of-christ-paschal": "Receive ye the Body of Christ; taste ye of the fountain of immortality."
+  },
+
+  "_section_hierarch_commemoration": "Hierarch commemorations in the Great and Augmented Litanies. Names the same hierarchs as the Anaphora override above — His Beatitude Metropolitan Tikhon (primate of the OCA) and His Eminence Archbishop Alexander (Diocese of the South, ruling hierarch). The base petition arrays reference these keys via '@@hierarch-commemoration.<litany>' sentinels, so the overlay only needs to supply the bishop names — surrounding petitions cascade unchanged.",
+  "hierarch-commemoration": {
+    "greatLitany":     "For the most blessed Metropolitan Tikhon, most reverend Archbishop Alexander, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+    "augmentedLitany": "Again we pray for the most blessed Metropolitan Tikhon, and for the most reverend Archbishop Alexander."
   }
 }

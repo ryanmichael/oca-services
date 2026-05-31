@@ -464,6 +464,18 @@ function deepGet(obj, path) {
 }
 
 /**
+ * Resolve a "@@dotted.path" sentinel string against the merged fixed-texts.
+ * Lets base petition arrays reference shared snippets (e.g. hierarch
+ * commemorations) that parish overlays can override surgically without
+ * copying the whole array. Non-sentinel strings pass through unchanged.
+ */
+function resolveFixedRef(value, fixedTexts) {
+  if (typeof value !== 'string' || !value.startsWith('@@')) return value;
+  const resolved = deepGet(fixedTexts, value.slice(2));
+  return typeof resolved === 'string' ? resolved : value;
+}
+
+/**
  * Assembles prokeimena. Handles both single (non-Lenten) and double (Lenten with readings).
  */
 function assembleOTReadings(readings) {
@@ -1358,7 +1370,7 @@ function _litGreatLitany(f) {
     makeBlock('gl-response', section, 'response', 'choir',  lit.response),
   ];
   lit.petitions.forEach((p, i) => {
-    blocks.push(makeBlock(`gl-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`gl-p${i}`, section, 'prayer', 'deacon', resolveFixedRef(p, f)));
     blocks.push(makeBlock(`gl-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
@@ -1719,11 +1731,11 @@ function _litAugmentedLitany(f) {
     makeBlock('al-response', section, 'response', 'choir',  lit.response),
   ];
   lit.petitions.forEach((p, i) => {
-    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', resolveFixedRef(p, f)));
     blocks.push(makeBlock(`al-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   lit.triplePetitions.forEach((p, i) => {
-    blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', resolveFixedRef(p, f)));
     blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
   blocks.push(

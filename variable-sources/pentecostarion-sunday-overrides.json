@@ -623,8 +623,29 @@
           "text": "Come, O people, let us worship the Godhead in three Persons: the Son in the Father, with the Holy Spirit. For the Father timelessly begot the Son, co-eternal and co-enthroned with Him; and the Holy Spirit was in the Father and is glorified with the Son. We worship one Power, one Essence, one Godhead, and we say: “Holy God, Who hast created all things through Thy Son with the cooperation of the Holy Spirit; Holy Mighty, through Whom we know the Father; and through Whom the Holy Spirit came to dwell in the world; Holy Immortal, Comforting Spirit, Who proceedest from the Father and restest in the Son.\nO Holy Trinity, glory to Thee!”"
         }
       }
-    }
-  },
+    },
+    "kneelingVespers": {
+      "aposticha": {
+          "stichera": [
+            { "tone": 3, "label": "Sticheron",
+              "text": "Now the fiery tongues have become a bright sign for all peoples. The Jews, from whom Christ came according to the flesh, in their unbelief have fallen from divine grace. But we, the peoples of all nations, are made worthy of divine light. We are strengthened by the words of the Disciples, who revealed the glory of the Benefactor and God of all. Let us bend our knees and hearts with them, since we are strengthened by the Holy Spirit,//\nbowing down in faith to worship the Savior of our souls!" },
+            { "tone": 3, "label": "Sticheron",
+              "text": "Now the comforting Spirit has been poured out on all flesh, spreading grace to the faithful, beginning with the choir of the Apostles. As a pledge of His mighty coming He distributed the tongues of fire; He gave them to the Disciples to the praise and glory of God. Spiritually enlightened in our hearts, strengthened in faith by the Holy Spirit,//\nlet us earnestly pray for salvation for our souls!" },
+            { "tone": 3, "label": "Sticheron",
+              "text": "Now the Apostles of Christ are clothed with power from on high. The Comforter is renewed in them and renews them with newness of knowledge. They preach in foreign tongues, proclaiming mystical knowledge in lofty words. They teach us to worship the Benefactor and God of all in His simple, eternal, tri-personal Nature. Enlightened by their teaching, let us bow down to worship Father, Son, and Spirit,//\nearnestly praying for salvation for our souls!" }
+          ],
+          "verses": [
+            "Create in me a clean heart, O God, and renew a right Spirit within me!",
+            "Cast me not away from Thy presence, and take not Thy Holy Spirit from me!"
+          ],
+          "doxastichon": {
+            "tone": 8,
+            "label": "Glory… Now and ever… (by Leo the Master)",
+            "text": "Come, O people, let us worship the Godhead in three Persons: the Son in the Father, with the Holy Spirit. For the Father timelessly begot the Son, co-eternal and co-enthroned with Him; and the Holy Spirit was in the Father and is glorified with the Son. We worship one Power, one Essence, one Godhead, and we say: “Holy God, Who hast created all things through Thy Son with the cooperation of the Holy Spirit; Holy Mighty, through Whom we know the Father; and through Whom the Holy Spirit came to dwell in the world; Holy Immortal, Comforting Spirit, Who proceedest from the Father and restest in the Son.\nO Holy Trinity, glory to Thee!”"
+          }
+        }
+      }
+    },
   "_meta": {
     "description": "Pentecostarion Sunday Liturgy overrides: feast-only troparia/kontakia/ikos/prokeimenon/alleluia/communion hymn for the Pentecostarion Sundays.",
     "_note": "Extracted from server.js (was nested inside buildLiturgyFromOrthocal). Keys are days-since-Pascha as numeric strings (JSON has no integer keys).",

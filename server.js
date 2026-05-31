@@ -4293,9 +4293,36 @@ function handleRequest(req, res) {
 
       // Assemble the Pentecost Sunday vespers content (same call as the
       // Saturday-evening Vigil, with the Pentecost-day liturgical entry).
+      // Enrich otReadings with full scripture text from orthocal so the
+      // three Pentecost prophecies (Numbers, Joel, Ezekiel) print in full
+      // instead of as bracketed citations.
+      (async () => {
+      let entryOverride = null;
+      try {
+        const baseEntry = getCalendarEntry(date);
+        if (baseEntry?.vespers?.otReadings?.length > 0) {
+          const orthocalData = await fetchOrthocalDay(date);
+          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
+          const enrichedReadings = baseEntry.vespers.otReadings.map((r, i) => {
+            const match = vesperReadings[i];
+            if (match?.passage?.length) {
+              const text = match.passage.map(p => p.content).join(' ');
+              return { ...r, text };
+            }
+            return r;
+          });
+          entryOverride = {
+            ...baseEntry,
+            vespers: { ...baseEntry.vespers, otReadings: enrichedReadings },
+          };
+        }
+      } catch (e) {
+        console.warn('kneeling-vespers OT enrichment failed:', e.message);
+      }
+
       let result;
       try {
-        result = assembleForDate(date, pronoun);
+        result = assembleForDate(date, pronoun, entryOverride);
       } catch (err) {
         console.error('assembleForDate (kneeling-vespers) error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4314,6 +4341,52 @@ function handleRequest(req, res) {
       for (const b of baseBlocks) {
         if (b.source === 'db') b.source = 'pentecostarion';
         if (!b.provenance) b.provenance = 'OCA';
+      }
+
+      // ── Replace Aposticha with Kneeling-Vespers-specific propers ───────
+      // The Saturday-eve Vigil aposticha (Tone 6 "The nations did not
+      // know…" + Tone 8 "The arrogance of the tower…") falls through from
+      // the same-day calendar entry; but for Sunday-evening Kneeling
+      // Vespers the Pentecostarion prescribes a distinct set — three Tone-3
+      // stichera with Ps. 50:10–11 verses + Tone-8 "Come, O people" (Leo
+      // the Master) doxastichon. See pentecostarion-sunday-overrides.json[49].kneelingVespers.aposticha.
+      {
+        const kvAposticha = PENTECOSTARION_SUNDAY_OVERRIDES[49]?.kneelingVespers?.aposticha;
+        if (kvAposticha?.stichera?.length) {
+          const apostBlocks = [];
+          kvAposticha.stichera.forEach((s, i) => {
+            if (i > 0 && kvAposticha.verses?.[i - 1]) {
+              apostBlocks.push({
+                id: `kv-apost-v${i}`, section: 'Aposticha', type: 'verse', speaker: 'reader',
+                text: `V. ${kvAposticha.verses[i - 1]}`,
+              });
+            }
+            apostBlocks.push({
+              id: `kv-apost-s${i + 1}`, section: 'Aposticha', type: 'hymn', speaker: 'choir',
+              text: s.text, tone: s.tone, source: 'pentecostarion',
+              label: s.label || 'Sticheron', provenance: 'OCA',
+            });
+          });
+          apostBlocks.push({
+            id: 'kv-apost-glory', section: 'Aposticha', type: 'doxology', speaker: null,
+            text: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+          });
+          apostBlocks.push({
+            id: 'kv-apost-now', section: 'Aposticha', type: 'doxology', speaker: null,
+            text: 'Now and ever and unto ages of ages. Amen.',
+          });
+          apostBlocks.push({
+            id: 'kv-apost-dox', section: 'Aposticha', type: 'hymn', speaker: 'choir',
+            text: kvAposticha.doxastichon.text, tone: kvAposticha.doxastichon.tone,
+            source: 'pentecostarion', label: kvAposticha.doxastichon.label, provenance: 'OCA',
+          });
+          const apostStart = baseBlocks.findIndex(b => b.section === 'Aposticha');
+          let apostEnd = -1;
+          baseBlocks.forEach((b, i) => { if (b.section === 'Aposticha') apostEnd = i; });
+          if (apostStart >= 0) {
+            baseBlocks.splice(apostStart, apostEnd - apostStart + 1, ...apostBlocks);
+          }
+        }
       }
 
       // ── Build the three Kneeling Prayer groups as ServiceBlocks ────────
@@ -4409,6 +4482,7 @@ function handleRequest(req, res) {
         commemorations,
         blocks,
       }));
+      })();
 
     } else if (pathname === '/api/paschal-hours') {
       const q       = parseQuery(url);

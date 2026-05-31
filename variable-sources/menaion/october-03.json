@@ -1,9 +1,155 @@
 {
   "_meta": {
     "description": "Menaion — October 3. Hieromartyr Dionysius the Areopagite, Bishop of Athens, and Martyrs Rusticus the Presbyter and Eleutherius the Deacon.",
-    "feastRank": "doxology",
+    "feast": "Holy Hieromartyr Dionysius the Areopagite",
+    "feastKey": "ssHieromartyrDionysius",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "rank": "simple",
+    "tone": 8,
+    "source": "OCA website — oca.org/saints/troparia/2026/10/03/ (scraped 2026-03)",
+    "_matinsSource": "Matins: St-Sergius Emenaion 10-03.pdf",
+    "_matinsSourceUrl": "https://st-sergius.org/services/Emenaion/10-03.pdf",
+    "_note": "Single-saint simple-rank file. One festal canon by Theophanes in Tone VIII with acrostic 'I praise the mind of wise teachings'. Exapostilarion present. Lauds doxastikon present (Germanus, Tone VIII). KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "Having learned goodness and been watchful in all things,\narrayed, as befitteth a priest, in a good conscience,\nthou didst draw forth ineffable things from the chosen vessel;\nand, having kept the Faith, thou didst complete a course like his.\nO hieromartyr Dionysius, entreat Christ God,//\nthat our souls be saved.",
     "tone": 4,
-    "source": "OCA website — oca.org/saints/troparia/2026/10/03/ (scraped 2026-03)"
+    "label": "Troparion of the holy hieromartyr"
+  },
+  "kontakion": {
+    "text": "Having, through the Spirit, passed the portals of heaven,\nas a disciple of the apostle who reached the third heaven, O Dionysius,\nthou wast enriched with all understanding of ineffable things\nand illumined those who sit in the darkness of unbelief.//\nWherefore, we cry out: Rejoice, O universal father!",
+    "tone": 8,
+    "label": "Kontakion of the holy hieromartyr",
+    "melody": "To thee the champion leader"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": [
+      {
+        "text": "Studying the depths of the Spirit in the abyss of wisdom, O divinely wise and venerable one, thou didst preach the one Godhead of the Trinity, describing all the ranks of the angels and the mysteries of their splendor. Wherefore, describing also the order of the earthly hierarchy, thou hast brought all into one unity. O hierarch Dionysius, entreat Christ God, that He grant remission of transgressions unto those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "O undefiled, blameless and all-immaculate Lady, thou cloud of the noetic Sun and golden candle-stand of the light of God: with the radiance of dispassion illumine my soul, which hath grown dim through the blindness of the passions, I pray; with torrents of compunction enlighten my polluted heart, and with tears of repentance cleanse me of the mire of my evil deeds, that with love I may cry out to thee: O Ever-virgin Theotokos, entreat Christ God, that He grant me forgiveness of my transgressions; for thee do I, thy servant, have as my hope.",
+        "tone": 8,
+        "label": "Glory ..., Both now ..., Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "Having learned goodness and been watchful in all things,\narrayed, as befitteth a priest, in a good conscience,\nthou didst draw forth ineffable things from the chosen vessel;\nand, having kept the Faith, thou didst complete a course like his.\nO hieromartyr Dionysius, entreat Christ God,//\nthat our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_authors": "Canon of Dionysius by Theophanes in Tone VIII, acrostic: 'I praise the mind of wise teachings'. Octoechos canons omitted.",
+
+      "kontakion": {
+        "text": "Having, through the Spirit, passed the portals of heaven,\nas a disciple of the apostle who reached the third heaven, O Dionysius,\nthou wast enriched with all understanding of ineffable things\nand illumined those who sit in the darkness of unbelief.//\nWherefore, we cry out: Rejoice, O universal father!",
+        "tone": 8,
+        "label": "Kontakion of the holy hieromartyr",
+        "melody": "To thee the champion leader"
+      },
+      "ikos": {
+        "text": "Dionysius, by his virtues was a great angel among us, like one replete with wings who learned heavenly things. Wherefore, with hymns we honor him as an angel, crying out to him such things as these: Rejoice, thou who didst come to know Christ through Paul; rejoice, thou who converted many to Christ! Rejoice, destroyer of the temples of polytheism; rejoice, watch-tower of the counsel of the knowledge of God! Rejoice, book inscribed by God with hidden mysteries; rejoice, godly tablet and mirror of heaven! Rejoice, for thou didst behold the suffering of the Lord; rejoice, for thou didst sacrifice thyself zealously for His sake! Rejoice, well-spring pouring forth understanding; rejoice, drop extinguishing foolishness! Rejoice, straight path of salvation; rejoice, wall denying entry to the impious! Rejoice, O universal father!"
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud://\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "Instructed by the divine Paul, the seer of heavenly things, O Dionysius, thou didst also straightway become an initiate of the mysteries of heaven and a herald of God." },
+          { "text": "Illumined with the grace of God, O blessed Dionysius; enlighten the souls of those who hymn thee, that we may understand thy divinely inspired teachings." },
+          { "text": "With soul and mind thoroughly purified, thou wast deemed worthy to know the radiance of the beauties of heaven and the choirs thereof, O Dionysius." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast shown to be the splendid bridal chamber of the incarnation of the Creator of all, in a manner past understanding; for through thee, O Mother of God, He assumed our flesh." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "Having passed above the heavenly ranks, armies and splendors of the circles of heaven, O father, with loudly proclaimed discourses and all-wise teachings thou hast explained them to all." },
+          { "text": "Taking thy fill of lofty vision, O venerable one, thou hast set forth the theology of the divine understanding of the names of God, as a theologian of the Trinity through grace, O divinely blessed Dionysius." },
+          { "text": "Mortified by thy constant desire for God, and having studied philosophy intently, O father, thou hast become a God-bearing instrument of light-bearing gifts which pass understanding." },
+          { "type": "theotokion", "text": "Theotokion: Through the activity of the all-accomplishing Spirit, O Virgin, thou didst bring forth as fruit the body of the Master of all, in Whom the world of sin hath been condemned and everlasting life hath poured forth." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "Thou hast adorned the goodly order of the Church, O father; for therein thou didst manifestly depict visible images through sacred writings about immaterial powers. And thereby all the assemblies of the faithful have been brought to the mysteries and illumined, O divinely wise one." },
+          { "text": "With the streams of thy theology the blossoms of the Word have been watered and firmly planted in Orthodox theology, flourishing exceedingly, O thou who art pleasing to God; for thou hast preached the unity of essence in the three Hypostases of the Trinity, the adored Sovereignty." },
+          { "text": "Possessed of the powerful desire and love for God of the angelic hierarchy and an unwavering inclination toward the divine and unattainable heights, with godly wisdom thou didst teach those who cry out with faith: Glory to Thy power, O Lover of mankind!" },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, thy Son was the sacred Accomplisher of salvation, the Guide and Enlightener, the righteousness and deliverance of all who hymn thee. Wherefore, with one mind we, the faithful, truly glorify thy sovereignty." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me,\nwretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "The sound of thy words, borne like a clap of thunder, smote the minds of the ungodly with the word of grace, illumining the hearts of the faithful with the most splendid rays of the precepts of God." },
+          { "text": "Thou wast like a merchant seeking goodly pearls, O most noetically rich hieromartyr; and having found the one Pearl which is truly beyond price, amazed at its divinely wrought luster, O holy hierarch, thou didst confess God." },
+          { "text": "Thou didst love the well-spring of wisdom, O wisdom-loving father, and, held fast by zeal and love for it, thou didst become great, ever pouring forth rivers of divine precepts, O divinely eloquent one." },
+          { "type": "theotokion", "text": "Theotokion: As one joyous, thou didst receive the beautifying magnificence of Him who hath created all things by His will alone, and Who, with divine comeliness and the light of the Orthodox Faith, hath made us comely, O Mother of God." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,//\nand Thou hast hearkened unto me, O God of my salvation.",
+        "troparia": [
+          { "text": "Studying philosophy lawfully, thou didst receive the gift of wisdom. And theologizing in a godly manner, O all-blessed one, thou didst leave us Orthodox dogmas, wherein delighting, the faithful call thee blessed." },
+          { "text": "Made comely by godly understanding, O divinely wise Dionysius, thou didst incline thine ear to listen to the divine Teacher, and learn heavenly wisdom from Him." },
+          { "text": "Thy life is marvelous, thy discourse most wondrous, thy tongue luminous, thy mouth fiery and moved by the Spirit, and thy mind full of experience, O divinely blessed father." },
+          { "type": "theotokion", "text": "Theotokion: Joyously do we, the faithful, cry out to thee with the voice of Gabriel, O Virgin; for from thee did the life-creating Creator, the Lover of mankind, issue forth unto us and mingle with mankind." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow,\nchanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "As showers from heaven water the thirsting earth, so do thy teachings ever anoint the hearts of the faithful and teach them to cry continually: O God of our fathers, blessed art Thou!" },
+          { "text": "With divinely wise understanding didst thou describe the incorporeal intelligences, and, as one blessed, thou hast instructed the Church to chant hymns to them: O God of our fathers, blessed art Thou!" },
+          { "text": "Thou wast shown to be the secure receptacle of the all-holy Spirit, and, proclaiming in prophecy His inspirations and manifestations, O wise Dionysius, thou didst cry out with gladness: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Behold, the divinely uttered prophecy of Isaiah hath now been fulfilled! For a Virgin hath conceived God the Word in her womb and given birth to the Bestower of life, to Whom all cry aloud: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "text": "Bright as a mirror, O Dionysius, and having through virtue made thy mind a receptacle of pure revelations, O most noetically rich hieromartyr, thou didst receive rays of the ineffable effulgence, and cry aloud: Ye priests bless; ye people supremely exalt Christ throughout all ages!" },
+          { "text": "The most abundant grace was poured forth in thy lips; wherefore, thou didst set forth divine teachings, extending unto us understanding past knowing, and manifestly and splendidly disclosing it unto those who with faith chant: Ye priests bless; ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Through thee, O Dionysius, hath the all-glorious metropolitan see of Athens become most renowned, and it offereth thee to the King of all as its sacred first-fruits, ever chanting: Ye children bless; ye priests bless; ye people supremely exalt Christ throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: O all-immaculate Mother of God, cause thou the sores of my soul and the wounds of sin to vanish; for thou hast given birth to the Son Who hath authority to readily release from unbreakable bonds those bound with the chains of sin: The one Benefactor, the one Bestower of life." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels//\nmagnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "Thou wast deemed worthy to behold the holy angels, and wast their fellow spiritual athlete and inheritor of glory. And with them thou didst hasten to see the body of the one truly life-giving Theotokos, the most pure one, whom we magnify as is meet." },
+          { "text": "As a lawful hierarch, and an invincible spiritual athlete, thou wast an heir of the divine kingdom in the heavens, O father, mingling the blood of thy martyrdom with the oil of the priesthood. Wherefore, thou hast been deemed worthy of a twofold crown, as is meet, O Dionysius, initiate of the sacred mysteries." },
+          { "text": "As thou hast boldness before Christ, as an initiate of the divinely bestowed sacred mysteries which are taught mystically, O wise hierarch Dionysius, ever pray that those who piously hymn thee be delivered from temptations, O student of ineffable visions." },
+          { "type": "theotokion", "text": "Theotokion: The honored Church, which Christ thy Son hath truly acquired by His precious blood, in that He is good, O joyous one, hath shone forth as having valiantly conquered heresies. And He hath saved us from the tribulations and evil circumstances which hold us fast, O Lady." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Having mounted to the heavens, ascending by thy virtues, O thou who art pleasing to God, thou didst recognize the ranks of the angels and the position of all those on high; and from Paul didst learn of the effulgence of the threefold Sun.",
+      "label": "Exapostilarion of the holy hieromartyr",
+      "melody": "As the disciples watched"
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "Excelling among hierarchs and martyrs, O venerable one, thou wast revealed to be a faithful shepherd, and didst drain the cup of Christ. Wherefore, having pleased him as both, pray for us all, O thou who dwellest now in light with the heavenly ministers.",
+        "tone": 8,
+        "label": "Glory ..., On the Aposticha",
+        "_author": "Germanus"
+      }
+    }
   },
 
   "vespers": {

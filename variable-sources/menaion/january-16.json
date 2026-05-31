@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "feast": "Veneration of the Precious Chains of the Holy Apostle Peter",
+    "feastKey": "stPeterChains",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 01-16.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-16.pdf",
+    "_note": "Single-saint simple-rank file. The probe classification of 'multisaint' appears to be a false positive: the PDF presents one menaion canon of the holy apostle in Tone IV (by Joseph), with 3 troparia + theotokion per ode. The two Oktoechos canons are omitted per the menaion-matins-track pattern. The PDF provides two distinct kontakia (both for Peter): Tone II after Ode 3 ('Christ the Rock') and Tone II after Ode 6 with Ikos ('Let us praise the great Peter'). The Ode 6 kontakion with Ikos is used as the primary; the Ode 3 kontakion is retained as kontakionAfterOde3 for the assembler. Sessional Hymn after Ode 3 in Tone IV (sung twice) + Theotokion in Tone IV. Exapostilarion of the holy apostle (Spec. Mel. By the Spirit in the sanctuary) + Theotokion. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "Without leaving Rome thou art come to us by the precious chains which thou didst bear,\nO first-enthroned of the apostles;\nand bowing down before them with faith we pray://\nby thy supplications unto God grant us great mercy!",
+    "tone": 4,
+    "label": "Troparion of the holy apostle"
+  },
+  "kontakion": {
+    "text": "Let us praise the great Peter,\nthe preeminent and first among the apostles,\nthe divine disciple of the Truth,\nand with faith let us kiss his chains,//\nreceiving release from our transgressions.",
+    "tone": 2,
+    "label": "Kontakion of the holy apostle",
+    "melody": "The Theotokos who is ever-vigilant in prayer"
+  },
+
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "With faith do we praise thee, O apostle, as the chief of the wise apostles and the keeper of the keys to the kingdom of heaven;\nand with pure conscience we kiss the chains which thou didst bear as though thou wast a malefactor, O Peter,\nthereby setting at naught the evil deeds of the enemy.//\nFrom which pray thou that we be delivered.",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+      "melody": "Having been lifted up",
+      "bothNow": {
+        "text": "O thou who art more exalted than the cherubim and seraphim,\nand more spacious than heaven and earth,\nhast been revealed to surpass creation, visible and invisible, in an unfathomable distinction;\nfor He Whom the heavens could not contain,//\nthou didst contain within thy womb, O pure one. Him do thou entreat that thy servants be saved.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "Without leaving Rome thou art come to us by the precious chains which thou didst bear,\nO first-enthroned of the apostles;\nand bowing down before them with faith we pray://\nby thy supplications unto God grant us great mercy!",
+      "tone": 4,
+      "label": "Troparion of the holy apostle"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy apostle, the acrostic: 'I hymn Peter, the foundation of the dogmas,' by Joseph, in Tone IV. The two Oktoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+
+      "kontakionAfterOde3": {
+        "text": "Christ the Rock doth radiantly glorify the rock of faith,\nthe first enthroned of His disciples;\nfor summoning all to celebrate the wonders of thy precious chains,\nO Peter,//\nHe granteth the forgiveness of sins.",
+        "tone": 2,
+        "label": "Kontakion of the holy apostle (after Ode 3)",
+        "melody": "Seeking the highest"
+      },
+
+      "kontakion": {
+        "text": "Let us praise the great Peter,\nthe preeminent and first among the apostles,\nthe divine disciple of the Truth,\nand with faith let us kiss his chains,//\nreceiving release from our transgressions.",
+        "tone": 2,
+        "label": "Kontakion of the holy apostle",
+        "melody": "The Theotokos who is ever-vigilant in prayer"
+      },
+      "ikos": {
+        "text": "What human tongue is able worthily to praise the great and glorious disciple of the Lord? What mind can praise him whom the Word of God blessed with a blessing? Yet what one attaineth according to his own powers, that should he bring as an offering unto God; and this I attempt to do. O ye that love the feasts of the Church, let us piously crown the first-enthroned one with hymns, receiving release from our transgressions."
+      },
+
+      "ode1": {
+        "irmos": "The choirs of Israel passed dry-shod across the watery deep of the Red Sea\nand beholding the riders and captains of the enemy swallowed by the waters, they cried out for joy://\nLet us chant unto our God, for He hath been glorified.",
+        "troparia": [
+          { "text": "All the Church of Christ keepeth festival in spirit, joining chorus and praising thee with faith, and lovingly kissing the precious chains which thou didst bear when thou wast bound, thus binding the tyrant." },
+          { "text": "Fishing for mortals in the deep of deception, O Peter, thou didst draw them forth like fish unto Him Who chose thee from among the fishermen to be truly the foremost of all His disciples. Wherefore, we kiss the chains which thou didst bear." },
+          { "text": "Upon the foundation of faith didst thou build up the souls of all the faithful; and having demolished the temples of deception, O Peter, thou didst found Churches which ever honor thee out loud, and the chains which thou didst bear." },
+          { "type": "theotokion", "text": "Theotokion: All the weapons of the deceitful enemy have utterly failed, O most pure Virgin, and the Word Who made His abode in thine immaculate womb was not wounded in the least. I entreat thee: let my heart now be wounded with the desire of Him most sweet." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength://\ntherefore is my heart established in the Lord.",
+        "troparia": [
+          { "text": "Wholly united to the Light most pure through divine communion, O Peter, thou hast been shown to be a secondary luminary enlightening our souls." },
+          { "text": "Thou hast confirmed the laws of Christ and taught observance of the law unto the most iniquitous ones, as the foremost of the apostles, the immovable foundation of the dogmas." },
+          { "text": "With thy sacred tongue thou didst preach God Who suffered and was crucified on the Cross. Wherefore, O Peter, we honor the chains which bound thee." },
+          { "type": "theotokion", "text": "Theotokion: The unrestrainable onslaught of death came to a halt before thee, for thou hast given birth unto the Wellspring of immortality, O Theotokos, Virgin Mother." }
+        ]
+      },
+      "ode4": {
+        "irmos": "For the sake of love for Thine image, O compassionate One,\nThou didst ascend the cross and the nations melted away.\nFor Thou, O Lover of mankind,//\nart my strength and my praise.",
+        "troparia": [
+          { "text": "Speaking in oration concerning the mighty works of the Master, thou didst convert the hearts of the disobedient Jews to the divine Faith, in that thou art the foundation of the Faith." },
+          { "text": "Thy journeys were known unto their Object, Him Who with most abundant love walked upon the waters, O Peter, and Who related to thee the ways of God." },
+          { "text": "As thy divine chains possess the power to heal all manner of ailments, O blessed one, we kiss them with faith, honoring thee." },
+          { "type": "theotokion", "text": "Theotokion: The King of all, dwelling within thy holy womb as in a spacious palace, hath appeared incarnate, O all-immaculate Lady." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Do Thou O Lord send down upon us Thine enlightenment,\nand free us from the gloom of transgression, O Good One,//\ngranting us Thy peace.",
+        "troparia": [
+          { "text": "By divine revelation, O all-praised one, Thou didst preach the Son Who is co-beginningless with the Father, and wast vouchsafed blessedness from the lips of the Blessed One." },
+          { "text": "When thou didst behold on Tabor the light which shone forth, blotting out the rays of the sun, thou wast illumined by that light which comest from the Light, O Peter, and hast thereby enlightened the faithful." },
+          { "text": "Thou didst preach Christ Who was dead for three days, and for Whose sake thou didst bear chains, O Peter, and deemed worthy to bow down before them, we piously honor thee." },
+          { "type": "theotokion", "text": "Theotokion: Lighten now the burden of me who am heavy laden with the weight of my many sins, O most pure one, giving me strength to bear the easy yoke of Christ." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Prefiguring Thy three-day burial\nProphet Jonah praying in the belly of the sea-monster cried aloud:\nDeliver me from corruption,//\nO Jesus Thou King of hosts.",
+        "troparia": [
+          { "text": "Most wondrously didst thou endure crucifixion upside-down; for thou didst thus prepare thy feet for the path to heaven. Do thou strengthen us also to walk it, O disciple of Christ." },
+          { "text": "Thou didst make thine abode in the life of the living and, bound for its sake, didst break the bonds of Belial who had bound thee. Wherefore, we honor thy chains." },
+          { "text": "Entreat the Master of creation, O all-blessed one, to send down purification, peace and mercy upon those who glorify thee, in that thou art His most fervent disciple." },
+          { "type": "theotokion", "text": "Theotokion: Our forefather hath been stripped of the skin garments of mortality, for the Creator hath robed Himself therein through thy blood, becoming incarnate in a manner past description, O all-immaculate one." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Of old the Children of Abraham in Babylon trampled down the flame of the furnace,\ncrying aloud with hymns://\nO God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Thrice didst thou deny Christ; wherefore by a threefold question did He heal thine offense, O most glorious Peter; and He showed forth the steadfastness of many that waver." },
+          { "text": "As a prisoner for Christ thou didst have thy share of divers bonds because of thy most sweet desire. Wherefore, with faith do we bow down before thy chains which loose the passions, O Peter." },
+          { "text": "Traversing the whole world like the sun most great, O Peter, glory of the apostles, who thyself didst behold Christ, thou hast banished the profound darkness of cruel polytheism." },
+          { "text": "Thou didst glorify Christ with thy members and didst become His boast, O most glorious Peter. Wherefore, we glorify thee and bow down before the chains which bound thee." },
+          { "type": "theotokion", "text": "Theotokion: He that descended upon the earth like rain hath in His divine knowledge, watered the whole earth; and He hath shown thee forth, O pure Virgin, as more honorable than all the angels." }
+        ]
+      },
+      "ode8": {
+        "irmos": "O almighty Redeemer of all, having descended and bedewed the children in the midst of the flame,\nThou didst teach them to sing://\nAll ye works bless and hymn the Lord.",
+        "troparia": [
+          { "text": "Working hard hearts like the soil, O Peter, thou didst render them most fruitful for the Husbandman of creation Who gave thee the divine keys and the authority to loose and bind transgressions." },
+          { "text": "We ever bless thee, O Peter, and we venerate the chains which thou didst bear as though a malefactor, slaying the prince of evil and binding him with thy chains, O apostle." },
+          { "text": "Preserving the fullness of the Church by thine immovable rock of faith, O Peter, drive temptations from its midst and ask a peaceful estate therefore, O blessed Peter." },
+          { "text": "Thou didst splendidly preach Him Who bound Hades and death with His bonds and most pure sufferings; wherefore, O all-blessed one, we are sanctified, kissing thy chains." },
+          { "type": "theotokion", "text": "Theotokion: In writing, the prophet described thee beforehand as a noetic candlestick bearing the divine Candle which hath illumined those who before were darkened by the darkness of evil, O Birthgiver of God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Thy birthgiving was revealed to be incorrupt,\nGod came forth from thy womb,\nand He appeared upon earth in mortal flesh and dwelt among mankind;//\nWherefore we all magnify thee, O Theotokos.",
+        "troparia": [
+          { "text": "Thou wast deemed worthy to behold things afar off for which thou didst faithfully hope, O Peter; and, rejoicing, thou hast received honors for thy labors from God Who is the Lover of mankind, and Whose divine suffering thou didst depict with thy flesh." },
+          { "text": "As the divine keeper of the keys of the kingdom, open the gates thereof unto those who faithfully honor thee on earth and kiss the precious chains wherewith thou wast bound, O Peter." },
+          { "text": "Whilst thou wast with the Son on Tabor, thou wast deemed worthy to hear the voice of the Father reveal Him; for thy heart, cleansed by the divine Spirit, was most gloriously illumined, O Peter." },
+          { "text": "O Peter, ask thou cleansing, release from debts and the delight of the kingdom of heaven for us who with love honor thee and kiss the chains with which thou wast bound." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast the abode of the Light, O Maiden; wherefore, by thy light guide me who am darkened by all the temptations of the enemy, that I may magnify thee with faith, O all-pure Virgin Mother." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O most blessed Peter, chief among the apostles,\nloose me, who am bound by the chains of the passions, wretch that I am,\nas once the angel of God loosed thy chains,\nmost gloriously leading thee forth from the dungeon wherein thou wast imprisoned, O blessed one.",
+      "label": "Exapostilarion of the holy apostle",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "O all-immaculate Virgin, thou art known as a Mother,\nfor thou hast given birth unto God and man in a manner transcending nature;\nand thine Offspring hath become the salvation of those who chant with love:\nGlory, honor and worship are due to the unapproachable and divine Trinity!",
+        "label": "Theotokion"
+      }
+    }
+  }
+}

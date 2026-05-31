@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Plato & Romanus",
+    "feastKey": "ssPlatoRomanus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 11-18.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-18.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of Plato by Theophanes in Tone VIII + Canon II of Romanus in Tone IV. Kontakion of Plato (Tone III, with Ikos) at standard after-Ode-6 slot; Romanus has no separate kontakion in PDF. Three sessional hymns: Plato Tone VIII + Romanus Tone IV + Theotokion Tone IV. Exapostilarion of the martyrs present. No lauds in source. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Thy holy memory doth gladden the whole world,\nsummoning all the faithful to thine all honorable temple,\nwhere, assembled now with joy, we chant in hymns amid splendor.\nWherefore, O Plato, we cry out to thee://\nDeliver thy city from the invasion of the heathen, O holy one.",
+    "tone": 3,
+    "label": "Kontakion of St. Plato",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Exalted in the breadth of thy struggles, O wise martyr, thou didst destroy the snares of the enemy, discomfiting them, O all-glorious one; and having run well the divine course, thou didst reach the expanse of heaven, rejoicing. Wherefore, the Church, resplendent today in an abundance of piety, doth celebrate thy memorial, O blessed one, and crieth out to thee: Entreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of St. Plato (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Having trampled underfoot the wicked one by fasting, thou wast glorified by suffering, O martyr of Christ, having endured manfully with a perfected mind. Wherefore, thou hast been numbered among the choirs of martyrs and reached the everlasting kingdom. Joining chorus therein, be thou mindful of us who celebrate thy holy memory with faith.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of St. Romanus",
+        "melody": "Having been lifted up"
+      },
+      {
+        "text": "O Theotokos, fleeing to thy divine protection after God,\nI humbly fall down and beseech thee:\nHave mercy, O most pure one,\nfor my sins have submerged my being,\nand trembling O Lady, I fear the torments to come,\nO pure one, entreat thy Son,//\nthat I may be delivered from them.",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of Plato by Theophanes in Tone VIII + Canon II of Romanus in Tone IV. Octoechos canons omitted.",
+
+      "kontakion": {
+        "text": "Thy holy memory doth gladden the whole world,\nsummoning all the faithful to thine all honorable temple,\nwhere, assembled now with joy, we chant in hymns amid splendor.\nWherefore, O Plato, we cry out to thee://\nDeliver thy city from the invasion of the heathen, O holy one.",
+        "tone": 3,
+        "label": "Kontakion of St. Plato",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Having abandoned all pagan superstition, the divinely wise Plato came to love the soul-saving teachings of the disciples of Christ. Wherefore, he appeared honorable to all, like an anchor of the Faith in his native land, and manifestly bore the title \"Of Ancyra.\" For, nurtured well, it found him to be an excellent protection against the enemy and a fervent helper in battle, crying aloud: Deliver thy city from the invasion of the heathen, O holy one!"
+      },
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "irmos2": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Traversing the most pure expanse of the eternal kingdom, O glorious one, from all tribulation and the dangers of imprisonment save those who hymn thee, leading to the path to heaven those who walk without turning back." },
+          { "text": "Protected by the armor of piety, and having shown thyself to be an unshakable pillar, O Plato, thou didst endure all the savagery of wounds and accepted the pangs of imprisonment, exalted by divine grace." },
+          { "text": "Showing forth the mettle of youth, in thy suffering thou didst cast off mortal and corruptible coarseness, O all-wise one, and, arrayed in the garment of incorruption, thou standest, rejoicing, before the Master." },
+          { "type": "theotokion", "text": "Theotokion: In a manner surpassing understanding thou hast given birth to the incarnate and only-begotten Word, Who is co-beginningless and everlasting with the Father, O blessed and most pure Theotokos. Wherefore, reasoning correctly, we proclaim and honorably glorify thee." },
+          { "canon": "secondCanon", "text": "Shining brightly with the never-waning radiance of the Trinity, and enlightened with the choirs of spiritual athletes, O Romanus, send down enlightenment upon me, and drive away the darkness of the passions by thy supplications, which are acceptable to God." },
+          { "canon": "secondCanon", "text": "Unmoved by the raging waves of the sea of idolatry, in that thou wast set firmly upon Christ the rock, thou didst destroy the threefold billows of most seditious ungodliness with the calm of the divine Spirit." },
+          { "canon": "secondCanon", "text": "The Church of Christ, which aboundeth in every good thing, O Romanus, didst thou preserve untouched by the wolves, like a right-glorious and right-fruitful meadow, making it steadfast by thy teaching." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Truly, human nature hath found mercy through thee, O all-immaculate one; for the Creator, having become incarnate from thee in a manner past all telling and understanding, was led to death for us, delivering us from Hades." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,//\nmy refuge and foundation.",
+        "troparia": [
+          { "text": "Manifestly aflame with the zeal of piety, and enlightened by the divine fire of the Faith, O all-blessed one, with endurance thou didst enter into the cruel flame like a spark of incorruption." },
+          { "text": "Having supra-naturally vanquished the servants of the demons, and borne with patience the pain of mighty tortures, O blessed and divinely wise Plato, thou wast shown to be a dweller with the angels and a crown-bearer." },
+          { "text": "Having struggled for Christ on earth, O all-blessed one, receiving from Him heavenly gifts and crowns which abide forever, thou dwellest in the pure land of paradise." },
+          { "type": "theotokion", "text": "Theotokion: O Mother of God, thou art the portal of the Light, adorned with the rays of the light of the Spirit; for through thee descended unto us the Word Who illumineth with divine light all who hymn thee." },
+          { "canon": "secondCanon", "text": "Having slain the spiritual beast with the sling of thy words, O Romanus, thou didst preserve the flock of Christ uncorrupted by the evil of idolatry." },
+          { "canon": "secondCanon", "text": "Rendered mighty by the armor of the Cross, thou didst turn back the assaults of the enemy and denounced their impotence, O wise and right blessed Romanus." },
+          { "canon": "secondCanon", "text": "When thy cheek was lacerated for Christ, O glorious, blessed and ever-memorable Romanus, thou didst cast down the enemy, breaking their jaws." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Clothed in the flesh He received from thee, He Who alone is God by nature, the Word of the Father, Who is one in essence with the Spirit, hath deified mortals, O Mother of God." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\n'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "Beholding Thee, the Sun of righteousness,\nlifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Wholly transformed by the love of thy Creator, thou didst not feel the pain of thy body, having shed the skin garments of thy flesh from passions and mortality, and clothed thyself in the robe of chastity and salvation." },
+          { "text": "Thou wast revealed to be a true priest of God, offering thyself unto Christ the Redeemer Who was slain for all, as an unblemished lamb and a perfect sacrifice, O martyr; for, having set thy soul afire with love for the Master, thou didst pay no heed to thy burning flesh." },
+          { "text": "Emulating the three youths who were in Babylon, thou didst not fear the all-devouring fire, but mightily and youthfully endured the unbearable flame thereof. Wherefore, the Bestower of dew hath rightly taken thee with them into the chamber of glory." },
+          { "type": "theotokion", "text": "Theotokion: In that thou art the royal root, thou hast given birth for us unto the Word of God Who reigneth over all, Who became flesh, yet remained unchanged. Wherefore, O all-holy Virgin, with truth and authority we glorify thee, the Theotokos." },
+          { "canon": "secondCanon", "text": "With ineffable beauty thou didst ascend the tree, mounting it like a stairway, O blessed one, and attained unto the everlasting choir, O right glorious martyr Romanus." },
+          { "canon": "secondCanon", "text": "Having shed thy mortal garments amid thy tortures, O blessed one, thou didst array thyself splendidly in a garment of light, O all-glorious martyr Romanus." },
+          { "canon": "secondCanon", "text": "Made wise by the inspiration of the Comforter, the tongue of the boy proclaimed Thee to be the Lord of glory, the Creator of all and God Who art able to save, O Lover of mankind." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Blessed is the Fruit of thy womb, O Virgin, whereby all peoples of the world have been delivered from the curse of death; and blessed by thee, we hymn thee as the mediatress of Life." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Thou, O Lord, camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Thou gavest neither slumber to thine eyelids, nor sleep to thine eyes, O martyr, until, beheaded by the sword, thou didst sleep the sleep of the blessed like those who love God, O blessed one." },
+          { "text": "Suffering, thou didst struggle as in another's body, O all-blessed one; thou didst suffer, viewing thy pangs as though another was experiencing them. For, set afire with divine zeal, thou didst not fear the future torments, O glorious one." },
+          { "text": "Thou hast discovered riches which cannot be taken away, and unfading glory, joining chorus with the angels in the mansions of heaven, partaking of incorruptible immortality, O most eminent one." },
+          { "type": "theotokion", "text": "Theotokion: By thy supplications grant remission of sins to thy servants, delivering them from temptations, misfortunes and sorrows, and from enslavement to blasphemous heretics, O all-praised Virgin Theotokos." },
+          { "canon": "secondCanon", "text": "With the martyric streams of thy blood thou didst engulf the sea of ungodliness; and thou hast poured forth rivers of healing, O Romanus." },
+          { "canon": "secondCanon", "text": "O Romanus, thou didst offer to the Master as a choice gift, an unblemished sacrifice, the slain boy Varulus who proclaimed theological things." },
+          { "canon": "secondCanon", "text": "Thou didst wound the foolishness of the enemy with the wisdom of the Holy Spirit, as he inflicted wounds upon thy body, O all-glorious Romanus." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In that thou hast given birth unto Joy, O Virgin Mary who knewest not wedlock, thou hast destroyed the curse and restored mankind through thy birthgiving." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,//\nand Thou hast hearkened unto me, O God of my salvation.",
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Transcending sufferings and tortures, thou didst endure the cutting away of thy flesh, O glorious one; for thou didst have Christ as thy Helper, Assistant and Companion." },
+          { "text": "Ever gazing upon the majesty of the Creator with spiritual understanding, and contemplating ineffable beauty, thou didst spurn the baseness of visible things." },
+          { "type": "theotokion", "text": "Theotokion: As an animate ark thou didst hold the Bestower of life, as a holy temple thou didst receive the Holy One Who had become a man, for the good of mankind, O all-blessed one." },
+          { "canon": "secondCanon", "text": "Having with ease shed mortality and corruption and arrayed thyself in the beauty of life incorruptible, O Romanus, thou hast been adorned with never-diminishing spiritual splendors." },
+          { "canon": "secondCanon", "text": "Thy tongue was severed and poured forth torrents of blood like teachings, O passion-bearer, and thou didst thereby inherit the imperishable blessedness which is ever-abiding." },
+          { "canon": "secondCanon", "text": "Thirsting for a stream of wisdom, by the counsel of his mother thou didst pour drink into the mouth of the boy who uttered theology, and who entered into the endless life by means of the sword." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Be thou a ready refuge for me, O most pure Mother of God, delivering me from violence, taking from me the shame of the passions and guiding me to the godly path." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "He Who set down the law hath crowned with a wreath of victory thee who suffered lawfully and trampled underfoot thine enemies, and who cried aloud, saying: O God of our fathers, Blessed art Thou!" },
+          { "text": "Thou didst pass over, rejoicing, to Him Whom from of old thou didst desire, emulating His most pure sufferings, which were the cause of the salvation of mankind; and thou didst chant: O God of our fathers, Blessed art Thou!" },
+          { "text": "All the hosts of heaven, and the people looking on, marveled at thy patient endurance of suffering; for thy severed tongue supra-naturally cried aloud: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Delivered from the bonds of death and the curse of the first-formed Adam by the divine Offspring of thy virginity, O most pure one, mindful that thou art the Theotokos, we cry aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "By being strangled, thou didst choke the serpent, O passion-bearer, and didst truly find life, O most glorious Romanus, ever crying aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "text": "Illumined with rays of never-waning light, O Romanus, thou didst quench the lofty flame, adorned with the gift of prophecy and numbered among the choirs of the martyrs, crying aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "text": "A fragrant rose of tender growth, watered with his mother's teachings and the blood of martyrdom, hath been incorruptibly offered to Christ as from a garden of many flowers." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O all-hymned one who hast alone given birth to God without seed, lead us forth who have fallen into the abyss of sin, but who hymn thee, saying: Blessed art Thou among women, O all-immaculate Lady." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Thou didst struggle in radiant feats, O all-praised one, and Christ bestowed upon thee the most splendid, blessed and ever-enduring fame, causing thee to dwell in the mansions of heaven, wherefore thou dost fervently chant: Ye priests hymn; ye people, supremely exalt Christ throughout the ages!" },
+          { "text": "As a most faithful supplicant, as a most fervent intercessor for us, we now set thee before the King of all, the Author of creation. Pray thou for us, interceding in thy martyr's boldness on behalf of those who praise thee and chant with faith: Ye people, supremely exalt Christ throughout the ages!" },
+          { "text": "Because of thine active faith thou wast deemed worthy to receive a kingship which cannot be taken away; for God, Who lieth not, promised to give it thee, and for Him thou didst commit thy body to fire and torture, crying aloud: Ye priests hymn; ye people, supremely exalt Christ throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: In a manner most divine thou didst give birth to the Word of God, Who is co-beginningless and of equal honor with the Father, Who brought all things forth out of non-existence by the counsel of the Father, and assumed flesh for the sake of mankind. Wherefore, acknowledging thee, in an Orthodox fashion, to be the Theotokos, we supremely exalt Christ throughout the ages." },
+          { "canon": "secondCanon", "text": "Thou wast obedient to the words of Christ, O glorious one, laying down thy life for thy flock, being strangled in thy zeal for it, tortured, lacerated and wounded; and thou didst cry aloud: Bless the Lord, all ye works of the Lord." },
+          { "canon": "secondCanon", "text": "Truly thy mouth and tongue were full of joy and gladness, continually blessing God; for, cut out and dripping with blood, O Romanus, it setteth forth for us the law of faith, crying: Bless the Lord, all ye works of the Lord." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Having given birth to the Word of the Father through the divine Spirit, thou didst remain a virgin, O Birthgiver of God, who knewest not a man, transcending the laws of nature in thy birthgiving. Wherefore, rejoicing, we chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;//\nwherefore we the faithful magnify the most pure Theotokos.",
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;//\ntherefore rejoicing we magnify thee, O Theotokos.",
+        "troparia": [
+          { "text": "O ye who love the martyrs, come, let us hymn the martyr, crowned by God, who extended the piety of his birth; for, as an offshoot of the branch of life, he bringeth forth fruit which poureth forth the wine of compunction for us." },
+          { "text": "Precious in the sight of the Lord was the death of the martyr, for he hath become the mediator of the true life which is everlasting and imperishable, giving abundant recompense, incorruption and immortal glory." },
+          { "text": "All thy life didst thou consecrate to God almighty, O martyr, and, rejoicing, thou didst offer thyself as a well-pleasing and living sacrifice. Wherefore, thou hast manifestly been deemed worthy of the sweetness which passeth understanding. Pray thou that those who hymn thee be delivered from temptations." },
+          { "type": "theotokion", "text": "Theotokion: Save me, O Mother of God who hast given birth to Christ my Savior, Who is both God and man, in two natures, but not in two hypostases, the Only-begotten of the Father and of thee, the first-born of all creation. Wherefore, all of us ever magnify thee." },
+          { "canon": "secondCanon", "text": "All thy trust didst thou place in the Master, O glorious martyr Romanus, enduring many and varied wounds; wherefore thou hast received ineffable glory and divine delight." },
+          { "canon": "secondCanon", "text": "Behold, instead of pain a torrent of sweetness hath been granted thee, O martyr Romanus, bearing a crown and wearing a robe dyed red in thine own blood. Like a fragrant and never-fading rose thou wast slain as a child for Christ's sake." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Virgin, thou hast delivered mortals from the primal curse of our ancestors, and opened unto us the life of Eden by thy birthgiving, which transcendeth nature. Wherefore, in gladness we magnify thee, O Theotokos." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "In all thy ways thou didst tread the hard and divine path, ascending unto the expanse of the kingdom of heaven, O Plato, glory of martyrs, shining with the light of the incorruptible Trinity. Wherefore, partaking of endless glory, be thou mindful of those who honor thee.",
+      "label": "Exapostilarion of the holy martyrs",
+      "melody": "By the Spirit in the sanctuary"
+    }
+  }
+}

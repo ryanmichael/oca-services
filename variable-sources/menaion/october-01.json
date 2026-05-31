@@ -1,0 +1,196 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Ananias of the Seventy & Our Venerable Father Romanus the Melodist",
+    "feastKey": "ssAnaniasRomanus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 10-01.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-01.pdf",
+    "_note": "Two interleaved festal canons: Canon I of Apostle Ananias (acrostic: 'Let the glory of Ananias be glorified') by John the Monk in Tone VIII + Canon II of Ven. Romanus the Melodist in Tone VI. Sessional hymns after Ode 3: Ananias Tone VIII + Glory Romanus Tone V + Both-now Theotokion Tone V. Kontakion of Romanus (Tone VIII, no ikos in PDF) at after-Ode-3 slot; Kontakion of Ananias (Tone II) with ikos at standard after-Ode-6 slot. Exapostilarion: Oktoechos + Glory that of the holy apostle Ananias. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "O holy Apostle Ananias,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostle Ananias"
+  },
+  "kontakion": {
+    "text": "O Ananias, helper most fervent in supplications\nand speedy heeder of those who petition thee,\naccept our entreaty,\nand beg Christ to have mercy upon us,//\nfor He alone doth rest in the saints.",
+    "tone": 2,
+    "label": "Kontakion of St. Ananias",
+    "melody": "In supplications"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Enlightened by the knowledge of God, O Ananias, thou wast a priest and martyr of Jesus and a divine apostle. And having immersed in water the former persecutor Saul, who had been blinded by God, through deifying instruction thou didst show him to be a great enlightener of our souls. Wherefore, we cry out to thee: Entreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of St. Ananias (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Planted like a tree by the rippling waters of fasting, O blessed father, through God's labor thou didst produce the fruits of thy pangs, which in time thou didst present to the Husbandman and Creator. Wherefore, we hymn thy holy memory, honoring thee, O venerable Romanus.",
+        "tone": 5,
+        "label": "Glory — Sessional Hymn of St. Romanus",
+        "melody": "The co-beginningless Word"
+      },
+      {
+        "text": "O fervent and invincible intercessor,\ndiligent and unashamed hope,\nrampart, protection and haven of those who have recourse to thee,\nO pure Ever-virgin do thou, together with the angels,\nentreat thy Son and God,//\nthat He grant peace, salvation and great mercy to the world.",
+        "tone": 5,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "O holy Apostle Ananias,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle Ananias"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 6,
+      "_authors": "Canon I of Apostle Ananias by John the Monk in Tone VIII + Canon II of Ven. Romanus the Melodist in Tone VI. Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "Adorned from childhood with the godly virtues of the Spirit,\nO most wise Romanus, thou wast a most precious adornment of the Church of Christ;\nfor thou hast adorned it with most beauteous hymnody. Wherefore, we entreat thee:\nGrant thy divine gift unto those who desire it, that we may cry out to thee://\nRejoice, O most blessed father, thou beauty of the Church!",
+        "tone": 8,
+        "label": "Kontakion of St. Romanus the Melodist"
+      },
+
+      "kontakion": {
+        "text": "O Ananias, helper most fervent in supplications\nand speedy heeder of those who petition thee,\naccept our entreaty,\nand beg Christ to have mercy upon us,//\nfor He alone doth rest in the saints.",
+        "tone": 2,
+        "label": "Kontakion of St. Ananias",
+        "melody": "In supplications"
+      },
+      "ikos": {
+        "text": "Illumining the darkness and blindness of my heart with the light of Thine effulgence, O my Christ, grant me discourse, that with a pure mind I may praise the divinely radiant virtues and sufferings of the blessed apostle; for Thou art the Wellspring of wisdom and the Bestower of good things, O greatly Compassionate One. Wherefore, having enlightened my tongue, accept this laudation in hymnody, O Thou Who alone dost rest in the saints."
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "irmos2": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned,\nthey cried:\nLet us sing to God\na song of victory.",
+        "troparia": [
+          { "text": "O all ye faithful, let us open mouths of praise, and let us make radiant our tongues in commemorating the archpastor Ananias; and with him let us chant unto our God." },
+          { "text": "The most glorious Ananias led the Church of Damascus to Christ, the most pure Bridegroom, as an undefiled bride. With her let us chant aloud to our God." },
+          { "text": "Thou wast an original disciple, O Ananias; and didst restore the sight of the new disciple who before was a persecutor; and thou dost sing: Let us chant unto our God!" },
+          { "type": "theotokion", "text": "Theotokion: The ranks of the angels and the generations of mortals unceasingly praise thee, O Mother who knewest not wedlock; for thou didst bear their Creator in Thine arms as a babe." },
+          { "canon": "secondCanon", "text": "By thy supplications, O wise and godly Romanus, send down upon us radiant beams of light from the heavens, that we may praise thy sacred memory with hymns." },
+          { "canon": "secondCanon", "text": "Offering thyself wholly unto Christ from thy youth, O Romanus, thou didst follow after Him, enlightening thy mind with luminous radiance from the heavens." },
+          { "canon": "secondCanon", "text": "Adorned with the beauty of the all-accomplishing and Holy Spirit, O wise Romanus, thou hast been revealed to the ends of the earth to be like a luminous star shining with the radiance of the virtues." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: From thee did the co-beginningless Word of God issue forth in latter times, O Theotokos; uplifting Adam, the first man, to salvation." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,\nand my spirit doth hymn Thee.",
+        "irmos2": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful O good One,\nand strengthened us upon the rock\nof Thy confession.",
+        "troparia": [
+          { "text": "Following the commands of thy Teacher, O apostle, thou didst become a high priest and a martyric sacrifice." },
+          { "text": "By thy supplications, O Apostle Ananias, render the Redeemer well-disposed to be merciful to those who hymn thee." },
+          { "text": "When He appeared to thee, His face enshrouded in ineffable light, the Lord restrained all the savagery of the wild beast." },
+          { "type": "theotokion", "text": "Theotokion: All of us Christians have acquired thee as our refuge and bulwark; and we glorify thee unceasingly, O thou who knewest not wedlock." },
+          { "canon": "secondCanon", "text": "Full of the true knowledge of piety and pouring forth divine preaching, thy mind became the dwelling-place of the Holy Trinity, O wise Romanus." },
+          { "canon": "secondCanon", "text": "Chanting divine hymns, thy precious tongue gushed forth torrents of streams, wisely explaining to us Christ's ineffable nativity from the Virgin." },
+          { "canon": "secondCanon", "text": "Behold, thou dost lavishly nurture our thoughts with wise teachings and beautiful hymns; and thou dost fill them with most divine sweetness, O godly eloquent Romanus." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou art more exalted than all the armies of heaven, O Virgin; for thou didst conceive their Creator, the Son of God, in thy womb, and, even after giving birth, remained ever virgin." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "irmos2": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Instructed by Thee, O Christ, the ever-memorable Ananias vanquished death in martyrdom and received honors from Thee." },
+          { "text": "Thou wast a disciple of the persecuted Word, O ever-memorable Ananias, and the teacher of him who persecuted the pious." },
+          { "text": "To the blinded Saul the Lord revealed thee, who wast hiding, O Ananias, and He showed thee forth as the mediator of his healing." },
+          { "type": "theotokion", "text": "Theotokion: O most pure Virgin, entreat God, to Whom thou hast given birth, that He deliver all who hymn thee from every evil circumstance." },
+          { "canon": "secondCanon", "text": "Thou wast a receptacle of the divine Spirit, O Romanus, and a fire-breathing mouth proclaiming divine hymns, delighting the souls of those who have recourse to thee." },
+          { "canon": "secondCanon", "text": "Thou wast like a heavenly harp and lyre, drawing every mind to thyself by thine all-telling and beautiful hymns." },
+          { "canon": "secondCanon", "text": "The grace of the all-accomplishing and most holy Spirit wafted forth and dwelt in thy radiant soul, O all-famed one, and made thee a receptacle and wise herald of God." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The serpent poured forth venom into the ears of our first mother; but thou, O pure one, hast shaken him off, having conceived Christ at the cry of the archangel and given birth unto Him." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,\nWho recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "He Who in His mercy rested within thee, in that thou wast a right manifest apostle, O blessed Ananias, showed thee to be an ever-flowing fountain, a divine haven for the tempest-tossed, and a beam of light, rendered by the unapproachable Light, for those in darkness." },
+          { "text": "He Who seeth hidden things and knoweth all things even before they come into being revealed to thee the hidden sun who before was a persecutor, but then became an apostle of the truth, which but a short time before he had sought to destroy." },
+          { "text": "Unfathomable is the end of the attainment of thy dispensation; for thereby, O Savior, hath dread death been annihilated. Wherefore, Ananias, rejoicing, was slain for Thee as a victorious hierarch." },
+          { "type": "theotokion", "text": "Theotokion: As thou hast maternal boldness before thy Son, O most pure one, spurn not the thought of thy kinship with us, we pray; for thee alone do we Christians set before the Master, that He mercifully purify us." },
+          { "canon": "secondCanon", "text": "The grace of the Comforter, finding thee, O divinely wise Romanus, to be as a right magnificent sanctuary, a most pure vessel, made thee a temple adorned with light; and thou didst rejoice." },
+          { "canon": "secondCanon", "text": "Appearing to thee at night, the Ever-virgin, who truly gave birth to the incarnate Son of God, illumined thy soul and filled thy mind with divine understanding." },
+          { "canon": "secondCanon", "text": "Revealing thyself to all as most truly sweet through the writings of thy sacred words, O ever-memorable one, thou dost gladden all, illumining our mind and teaching to all the knowledge of the Savior." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O pure, most pure Lady, who hast given birth to the Light, the eternal Word of the Father, by thy luminous supplications enlighten my mind and dispel the darkness of my soul." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,\nO God of my salvation.",
+        "irmos2": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "Accustomed to serving the living God, O most sacred Ananias, thou didst destroy the manifold enmity of the mindless ones, teaching all to worship the one Godhead in three Hypostases." },
+          { "text": "Taking the rudder of the Church in thy hands, thou didst move toward Christ, the Helmsman, O apostle Ananias; and with the Spirit steered it like a divine ship." },
+          { "text": "O Master, Thou fashioner of the straight path, Thou didst command Thy glorious disciple to set out straightway to find the Thy most righteous and elect vessel of prayer." },
+          { "type": "theotokion", "text": "Theotokion: May we be delivered from grievous transgressions by thine entreaties, O pure Birthgiver of God; and may we obtain the divine effulgence of the Son of God Who became ineffably incarnate through thee, O most pure one." },
+          { "canon": "secondCanon", "text": "Filled with enlightenment, and led by God up to the heights of the virtues, thou didst reject all earthly things, and became a heavenly pillar and beacon of piety." },
+          { "canon": "secondCanon", "text": "Thou didst cause the desires of the flesh to wither away, adorning thy soul with the most radiant beams of purity, and didst array thy comely beauty in the magnificence of the virtues." },
+          { "canon": "secondCanon", "text": "Hating transitory, vain, corrupt and fleeting pleasure, thou didst enter the temple of the Theotokos, and there didst sanctify thy mind, soul and body, O right glorious one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: All the prophets, foreseeing with divine vision Thy most immaculate nativity from the Virgin, which would take place splendidly on earth in the latter times, O my Christ, manifestly proclaimed it." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Children of Judaea,\nwho of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace\nthrough their faith in the Trinity,\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "irmos2": "In Babylon the Children feared not the fiery furnace;\nbut cast into the midst of the flames\nthey were bedewed and sang:\n'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "Let the divinely chosen flock wisely blow the clarion-voiced trumpet, sounding forth the sufferings of the shepherd Ananias, and crying out to Christ, his Chief Shepherd: O God of our fathers, blessed art Thou!" },
+          { "text": "Let the honored Church of Christ glorify thee, O Ananias, as the disciple of God, a faithful hierarch and a witness to the divine Passion, crying aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "Concealing himself, not out of fear of death, but out of love for thy flock, seeing the wolf become as tame as a lamb, Ananias cried out: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Thou didst reveal Thyself, O Christ, incarnate from the Virgin's womb for our salvation. Wherefore, knowing Thy Mother to be the Theotokos, we cry out in an Orthodox manner: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst have Mary the Theotokos as thy tutor, instructing and teaching thee, and commanding thee to chant: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "text": "Thou didst shine forth in the world like the most radiant sun, O divinely wise Romanus, radiantly illumining those who cry out with faith: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "text": "The sound of thy words hath filled the whole world and taught all to chant with comeliness unto Christ: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Now do all the generations of mankind call thee blessed as thou didst foretell, O pure Theotokos; and with faith they render thee glory, crying: Blessed is the Fruit of thy womb, O most pure one!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "Suffering affliction for the sake of the laws of their fathers,\nthe blessed Children in Babylon\nscorned the foolish decree of the King.\nStanding together in the midst of the flames, they remained unharmed,\nand sang a song fitting for almighty God:\n'O ye works of the Lord, praise ye the Lord\nand supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "The glorious Ananias expected to hear something terrible about the predatory power of the destroyer of Thy flock, O Master, but when he heard of his inexplicable conversion into a shepherd, he leapt for joy, crying aloud: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "Let Thine all-glorious and blessed city rejoice today and leap up in the Spirit, having received thy goodly help, O glorious one; and, giving thanks to the Savior, let it cry: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "At the command of the Bestower of light, O all-honored Ananias, thou didst preach to Saul the light-creating power of Him Whom he had seen; and thou didst restore his sight, touching him with thy healing hands, and didst remove the darts of the serpent as though they were scales, crying: supremely Exalt Christ throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: O all-holy Lady, who savest those in need and intercedest fervently, take pity on all in grief, save me and raise me up who have fallen grievously, extending to me a helping hand before the end, that the night of death not overtake me as I sleep, that I may glorify thee as is meet throughout the ages." },
+          { "canon": "secondCanon", "text": "Rejecting all the beauty, sweetness and glory of the world, thou didst cause thy soul to soar up to the choirs on high, to the glories and splendors of heaven, to ineffable beauties, to the habitations of paradise, to the light of the Godhead, crying out, O wise one: Thee do we supremely exalt O Christ, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Set afire with divine desire, thou didst make ascents in thy heart and didst acquire an incorporeal life while yet in the flesh. And emulating the angelic ranks, O wise one, even while in the world thou didst love the hymnody of heaven, O Romanus, crying out with faith: Thee do we supremely exalt, O Christ, throughout the ages!" },
+          { "canon": "secondCanon", "text": "With the exalted tone of thy divine and most sweet discourses, O most blessed Romanus, thou dost gladden every thought of men, dost delight them as thou wert a server of rich foods, dost enlighten them with splendor and teachest them to cry aloud: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The most evil serpent, the slayer of mankind, deceiving me by offering to make me an equal with God, carried me captive away from the sweetness of paradise. But the Master of nature, the Son of God, hath come forth, incarnate from the Virgin Mary, and restored me to the heights, deifying me: Him do we supremely exalt throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "With never ceasing praises we magnify thee,\nthe Mother of God Most High,\nwho art higher than the most pure hosts,\nand who beyond comprehension knew not wedlock,\nyet hath truly given birth to God.",
+        "irmos2": "Ineffable is the birthgiving\nof a seedless conception,\nfrom a mother who knew not a man;\nan undefiled childbearing.\nFor the birth of God hath renewed nature,\nwherefore all generations rightly worship and magnify thee\nas the Bride and Mother of God.",
+        "troparia": [
+          { "text": "Thou didst destroy the darkness of ignorance, O all-praised one, and didst shine forth upon Damascus the true light of the three Hypostases. As a loving father and a beloved archpastor, preserve it in the Orthodox Faith." },
+          { "text": "Celebrating this annual solemnity, come ye, and, illumined radiantly with spiritual dignity, let us hymn the thrice radiant virtues of Ananias, the servant and preacher of the Trinity." },
+          { "text": "O how far above mortal nature is thy dignity, O blessed Ananias! For as a disciple thou wast beloved, as a pastor thou hast found rest, and as a spiritual athlete thou hast been glorified with Christ, adorned with the crown of martyrdom." },
+          { "type": "theotokion", "text": "Theotokion: O most pure and most immaculate vessel of sweet fragrance, entreat Christ, to Whom thou hast given birth, that He grant our Orthodox hierarchs victory over all heresy and that thy people be delivered from the yoke of slavery; for without ceasing we magnify thee." },
+          { "canon": "secondCanon", "text": "Thou hast joined the choirs of the incorporeal ones on high, O glorious one, where indescribable joy and everlasting delight abound, where the light of the Godhead and gladness abide, and where there is ineffable glory, O most blessed one." },
+          { "canon": "secondCanon", "text": "Making thine abode with the righteous amid divine glory, thou dost look upon its ineffable beauty, seeing never-ending sweetness, and the choirs of the patriarchs, thou dost behold the comeliness of heaven which is truly desirable, O wise and glorious Romanus." },
+          { "canon": "secondCanon", "text": "By thy supplications do thou deliver those who with faith celebrate thy radiant memory from all misfortunes, harm and the oppression of the alien one, O divinely wise and most blessed Romanus, and grant that they may receive the glory of heaven and the kingdom on high." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The human race became subject to corruption and enslaved to sinful passions through the ancient fall of the first-formed man, O Virgin Theotokos; but the supremely good God Who was born from thee hath restored him in His compassion." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Damascus, whose might thou hast extended through thy martyrdom, now boasteth in thee, O Ananias, for, as an excellent disciple of the persecuted Christ, thou didst teach the persecutor of Christ. Pray thou to Him on our behalf.",
+      "label": "Exapostilarion of St. Ananias (Glory)",
+      "melody": "Hearken, ye women"
+    }
+  }
+}

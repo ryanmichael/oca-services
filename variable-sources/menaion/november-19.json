@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "feast": "Holy Prophet Obadiah & Holy Martyr Barlaam of Caesarea",
+    "feastKey": "ssObadiahBarlaam",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 5,
+    "_source": "Matins: St-Sergius Emenaion 11-19.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-19.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of Obadiah by Theophanes in Tone V + Canon II of Barlaam by Theophanes in Tone IV. Kontakion of Barlaam (Tone IV, 'Thou hast appeared') at after-Ode-6 slot; no Ikos in PDF. Sessional hymns: Obadiah Tone I + Barlaam Tone IV + Theotokion Tone IV. Exapostilarion of Obadiah. No lauds in source. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "In his sufferings, Thy martyr Barlaam O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyr Barlaam"
+  },
+  "kontakion": {
+    "text": "Thou wast shown to be most amazing\nin the fortitude whereby thou didst endure immolation,\noffering thyself in sacrifice unto Christ as incense of sweet savor.\nHaving received a crown of honor, O Barlaam,//\ndo thou ever pray for us, O spiritual athlete.",
+    "tone": 4,
+    "label": "Kontakion of St. Barlaam",
+    "melody": "Thou hast appeared"
+  },
+
+  "matins": {
+    "_meta": { "tone": 5, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "The great Obadiah, having acquired a mind luminous with divine splendor, spoke through the Holy Spirit, proclaiming things to come. Honoring him today with pious mind, we celebrate his sacred memory which enlightened men's hearts.",
+        "tone": 1,
+        "label": "Sessional Hymn of the holy prophet Obadiah (after Ode 3)",
+        "melody": "Thy tomb, O Savior"
+      },
+      {
+        "text": "Let the glorious Barlaam, who quenched the flame of impiety and set the hearts of the faithful afire with the dew of the knowledge of God, now be faithfully honored with divine hymns; for he put to shame the deception of idolatry and, having taken the crown of victory, asketh remission of sins for all.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of the holy martyr Barlaam",
+        "melody": "Having been lifted up"
+      },
+      {
+        "text": "He that sitteth upon the throne of the cherubim\nand abideth in the bosom of the Father\nsat in thy womb as upon a throne, O Lady;\nfor, being truly God incarnate,\nHe reigneth over all nations,\nand with understanding we now chant to Him.\nHim do thou also entreat,//\nthat thy servants be saved.",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "In his sufferings, Thy martyr Barlaam O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr Barlaam"
+    },
+
+    "canon": {
+      "tone": 5,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of Obadiah by Theophanes in Tone V + Canon II of Barlaam by Theophanes in Tone IV. Octoechos canons omitted.",
+
+      "kontakion": {
+        "text": "Thou wast shown to be most amazing\nin the fortitude whereby thou didst endure immolation,\noffering thyself in sacrifice unto Christ as incense of sweet savor.\nHaving received a crown of honor, O Barlaam,//\ndo thou ever pray for us, O spiritual athlete.",
+        "tone": 4,
+        "label": "Kontakion of St. Barlaam",
+        "melody": "Thou hast appeared"
+      },
+
+      "ode1": {
+        "irmos": "Unto God the Savior\nWho made His people pass dryshod through the sea,\nbut drowned Pharaoh with all his host,\nunto Him alone let us sing://\nFor He hath been glorified.",
+        "irmos2": "I hymn Thee, O Lord my God,\nfor Thou hast led Thy people out of the bondage of Egypt,\nand hast drowned in the waters\nthe chariots and the might of Pharaoh.",
+        "troparia": [
+          { "text": "Standing now as a prophet before God the Savior, entreat Him with boldness, that He enlighten with rays of light those who with faith call thee blessed, O divinely inspired one." },
+          { "text": "He who manifestly foreknoweth all things, beholding the untroubled and radiant purity of thy heart, O blessed one, appointed thee a God-pleasing prophet." },
+          { "text": "Truly beholding visions revealed to thee by God, thou didst proclaim the impiety and cruel perniciousness of thy brethren and their just destruction, O blessed one." },
+          { "type": "theotokion", "text": "Theotokion: Saved by thy seedless birthgiving, O pure Theotokos, we beseech thee: from the temptations of the world do thou deliver us, who together offer a hymn of victory unto thee." },
+          { "canon": "secondCanon", "text": "Rendered luminous by the splendors of thy contest, O Barlaam, do thou preserve us by thy supplications, for with faith we honor thy sacred memory." },
+          { "canon": "secondCanon", "text": "With hymnody let the wondrous Barlaam be honored, who, with fame, quenched the fire of impiety by the divinely inspired fire of his reverence for God." },
+          { "canon": "secondCanon", "text": "Having contended for piety, O crown-bearer Barlaam, thou hast now been honored at the right hand of the Almighty with a crown of glory, as is meet." },
+          { "canon": "secondCanon", "text": "The Master gave thee strength against divers wounds, O all-blessed martyr; wherefore, thou didst vanquish the savagery of the godless." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The ladder leading to heaven, which Jacob, thine ancestor, foresaw of old, hast thou truly been revealed to be, whereby the Word hath descended to us, O Virgin." }
+        ]
+      },
+      "ode3": {
+        "irmos": "By the power of Thy Cross, O Christ,\ndo Thou make steadfast mine understanding,\nthat I may hymn and glorify//\nThy saving Ascension.",
+        "irmos2": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength://\ntherefore is my heart established in the Lord.",
+        "troparia": [
+          { "text": "Like the waters of a mystic river didst thou appear, issuing forth from the abyss of the gifts of the Spirit, O herald of God." },
+          { "text": "Thou wast put forth by the will and providence of God to proclaim things to come, O right glorious one." },
+          { "text": "Illumined by the divine and heavenly light, O all-blessed one, thou didst proclaim the future salvation of the Gentiles." },
+          { "type": "theotokion", "text": "Theotokion: The Word made His abode within thee, O Virgin Mother, and by thy mediation He doth save those who know thee to be the Theotokos, O all-immaculate one." },
+          { "canon": "secondCanon", "text": "The whole bond of thy body and the cohesion of thy members were broken; yet the strength of thy soul was preserved intact." },
+          { "canon": "secondCanon", "text": "Mightily showing forth the endurance of youth, O all-blessed one, thou didst right mightily endure the assaults of those who lacerated thy sides." },
+          { "canon": "secondCanon", "text": "Who can rightly praise the mighty, powerful and tranquil understanding of thy thought, as is meet, O all-blessed one?" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In the hypostatic Life which appeared unto us through thy womb, O most pure Bride of God, hath the corruption of death been brought to an end." }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have heard report of the mighty deed\nof Thy Cross, O Lord,\nhow Paradise was opened thereby, and I cried://\nGlory to Thy power, O Lord.",
+        "irmos2": "Proclaiming the advent of Thine appearance on earth, O Christ God,\nthe prophet cried aloud with gladness://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Having cleansed thy soul of the passions beforehand, receiving the grace of prophecy through the Holy Spirit, thou didst cry out: Glory to Thy power, O Lord!" },
+          { "text": "The prophet Obadiah, illumined by the brilliance of the lightning of the Bestower of light, hath enlightened us to cry to Thee: Glory to Thy power, O Lord!" },
+          { "text": "Thou wast revealed to be like a wedding attendant of the Church, the Bride of Christ, O all-blessed one, proclaiming that the Savior would come forth from Zion, to Whom we cry aloud: Glory to Thy power, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: In a divine manner thou hast given birth, O pure one, unto the co-beginningless and everlasting Word of the Father, to Whom we cry: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "Spurning the foolish speech of the rhetors and accepting the true teaching of the apostles, O glorious one, thou wast a true witness." },
+          { "canon": "secondCanon", "text": "Thou didst withstand the fire and torments even unto death for Christ, O patient-hearted one, chanting aloud: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "Constrained by the most powerful fervor, O all-blessed one, thou didst trample deception underfoot with godly wisdom, chanting: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Incorporeal One, incarnate of the Virgin, hath come to us on earth; wherefore, with faith we cry aloud: Glory to Thy power, O Lord!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "Waking at dawn,\nwe cry unto Thee, O Lord:\nSave us, for Thou art our God;//\nwe know none other besides Thee.",
+        "irmos2": "O Thou Who hast caused the light to shine,\nwho hast made bright the dawn and revealed the day;\nglory be to Thee, glory be to Thee,//\nO Jesus Thou Son of God.",
+        "troparia": [
+          { "text": "Rising early unto the Lord, O all-praised one, thou didst receive the gift of the most holy Spirit from heaven." },
+          { "text": "Having acquired the godly life of Him Who helped thee, thou wast deemed worthy to behold Him Who is understood to be invisible." },
+          { "text": "Light shone upon thee, in that thou art a prophet, O all-blessed one, and gladness was given thee as a bride." },
+          { "type": "theotokion", "text": "Theotokion: The supremely divine One, Who created all things by His will, was formed from thee after our kind, O most pure one." },
+          { "canon": "secondCanon", "text": "Christ hath shown us a witness to His own sufferings, who crieth out: Glory to Thee! Glory to Thee, O Jesus, Thou Son of God!" },
+          { "canon": "secondCanon", "text": "For thy great endurance is a reward given, and a wreath of victory woven for thee who criest: Glory to Thee! Glory to Thee, O Jesus, Thou Son of God!" },
+          { "canon": "secondCanon", "text": "With the darts of thy words thou didst penetrate the hearts of the foe, crying: Glory to Thee! Glory to Thee, O Jesus, Thou Son of God!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Understanding thee to be a holy mountain and the tabernacle of the Most High, O Virgin, we cry aloud: Glory to thee, O Theotokos, our hope!" }
+        ]
+      },
+      "ode6": {
+        "irmos": "The abyss hath encompassed me,\nthe sea monster hath become my grave;\nbut I cried unto Thee,\nthe Lover of mankind,//\nand Thy right hand saved me, O Lord.",
+        "irmos2": "Prefiguring Thy three-day burial\nProphet Jonah praying in the belly of the sea-monster cried aloud:\nDeliver me from corruption//\nO Jesus Thou King of hosts.",
+        "troparia": [
+          { "text": "By the power of the divine Spirit thou didst behold things to come, receiving images of divine revelations as in a mirror through the splendor of thy soul." },
+          { "text": "By thy supplications entreat the Lord, O all-blessed prophet, asking that He grant forgiveness of sins unto those who with faith keep thy memory." },
+          { "text": "Take pity on Thy servants and grant them forgiveness of transgressions, O Lover of mankind, for Thy prophet who proclaimed Thee beforehand to the world doth entreat Thee." },
+          { "type": "theotokion", "text": "Theotokion: He Who beareth up all things by His word and divine power was borne in thine embrace, O thou who knewest not wedlock. Him do thou now beseech, that our souls be saved." },
+          { "canon": "secondCanon", "text": "Let the faces of the demons be smitten with the martyr's burned right hand; let the hearts of the faithful leap up, and let the choirs of the incorporeal ones be radiantly glad!" },
+          { "canon": "secondCanon", "text": "The conquests and victories of thy good struggles and the athletic contests of those who watched are adorned, O chosen and radiant triumph of the firstborn." },
+          { "canon": "secondCanon", "text": "Arise now, ye good artists! Adorn ye the image of the martyr with your goodly skills, manifestly depicting therein the Judge of the contest." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Delivered by thy birthgiving from the ancient curse and the bitter condemnation of death, our first mother rejoiceth in thee, O all-praised Mother of God." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The children were saved\nin the burning furnace, chanting:\nBlessed art Thou//\nO God of our fathers.",
+        "irmos2": "O God of our fathers, put us not to shame,\nbut grant that with boldness we may sing to Thee://\n'O God of our fathers, Blessed art Thou'.",
+        "troparia": [
+          { "text": "Truly supra-natural is the glory of Thy prophets, O blessed God of our fathers!" },
+          { "text": "Having been deemed worthy to dwell with God, thou dost chant: Blessed is the God of our fathers!" },
+          { "text": "Thou revealest Thy divine grace in Thy prophets, O blessed God of our fathers." },
+          { "type": "theotokion", "text": "Theotokion: Delivered by thy birthgiving, O most pure Virgin, we chant: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "As an invincible martyr hast thou been deemed worthy to cry aloud to Christ with the choirs of the martyrs: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "With radiant lamps thou didst enter into the divine bridal chamber, O great martyr, crying out to Christ: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Having acquired a right hand stronger than fire, as an intercessor at the right hand of thy Master thou criest out: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Delivered by thy most pure birthgiving, we, the faithful, hymn thee, crying out unceasingly: Blessed is the Fruit of thy womb, O most pure one!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Unto God the Son, Who was begotten of the Father before the ages\nand was incarnate of a Virgin Mother in these last times,\ngive praise, O ye priests,//\nand supremely exalt Him, O ye people, throughout all ages.",
+        "irmos2": "O all ye works of God and all creation,\nbless ye the Lord,\nye venerable and humble of spirit\nchant ye and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Enlightened by God, the prophets proclaim beforehand knowledge of things to come, crying aloud with divine wisdom: Ye priests hymn; ye people supremely exalt God throughout all ages!" },
+          { "text": "Illumined with divine beams of light, thou didst enlighten those who were in darkness like a ray in the deep, O herald of God, crying: Ye priests hymn; ye people supremely exalt God throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Thou hast revealed Thyself as of one nature with us, O Thou Who art consubstantial with Thy Father in the divine Essence, having become incarnate of the Mother, who kneweth not man. Wherefore, we hymn Thee, O Christ, and bless Thee throughout all ages." },
+          { "canon": "secondCanon", "text": "Thou didst destroy all the armor of the enemy, O right glorious Barlaam, utterly consuming the deception of idolatry, crying aloud: Thee do we supremely exalt, O Christ, throughout all ages!" },
+          { "canon": "secondCanon", "text": "Adorned with magnificence, thou didst stand before Christ, O ever-memorable spiritual athlete, arrayed in fine linen empurpled with thy martyr's blood and hymning the Master throughout all ages." },
+          { "canon": "secondCanon", "text": "Enkindled with the fire of piety, thou didst utterly consume all the illusions of the demons as if they were thorns, crying aloud: Thee do we exalt supremely, O Christ, throughout all ages!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Those who with faith call thee blessed, O all-immaculate one, are blessed by the Lord; for thou hast given birth unto the Master Who blesseth creation, Whom we supremely exalt, O pure one, throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "O thou who art God's Mother transcending mind and word,\nwho ineffably in time hast given birth unto the Timeless One,\nthee do we the faithful//\nwith one accord magnify.",
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;//\ntherefore rejoicing we magnify thee, O Theotokos.",
+        "troparia": [
+          { "text": "Adorned with divine discourse and activity, and having taken wing in the Spirit, O wondrous prophet, thou wast deemed worthy to behold things to come." },
+          { "text": "O glorious one, who dwellest where the choirs of the prophets and the splendors of the saints are, entreat the Lord to save those who praise thee with faith." },
+          { "text": "Cleaving wholly unto God with fervor, thou didst converse in a pure manner through divine revelations, wherein thou dost now delight, O all-blessed one." },
+          { "type": "theotokion", "text": "Theotokion: We hymn thee, the candle-stand of the Light and the tablet of grace, O pure one, and we magnify thee, who received the incarnate Word." },
+          { "canon": "secondCanon", "text": "The law of praise is overturned by the magnificence of thy struggles. Christ, the only Master, knoweth to glorify thee with divine radiance. Him do thou earnestly entreat on behalf of those who hymn thee." },
+          { "canon": "secondCanon", "text": "Having brought thy whole self to the Lord as a living sacrifice, thou wast revealed to be a fellow heir and sharer in His kingdom; and, rejoicing, thou now reignest with Him, O ever-memorable one." },
+          { "canon": "secondCanon", "text": "The godly martyr, having arrayed himself against sword, fire and torments, shedding his blood for the love of Thee, even unto death, O Savior, doth delight, receiving immortality from Thee, O Lover of mankind." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Rejoicing, I set thee forth as the helper of the world, the Virgin Mother of God, the intercessor and salvation of all my life; for having given birth unto God, thou art able to save those who hymn thee." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Dance thou and join chorus, O prophet Obadiah, beholding the fulfillment of thy words. And, standing before the Trinity, remember those who honor and keep thy radiant memory, O all-blessed one.",
+      "label": "Exapostilarion of the holy prophet Obadiah",
+      "melody": "When the disciples beheld"
+    }
+  }
+}

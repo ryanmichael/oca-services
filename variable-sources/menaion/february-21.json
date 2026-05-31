@@ -1,0 +1,182 @@
+{
+  "_meta": {
+    "feast": "Venerable Timothy of Symbola & St. Eustace, Archbishop of Antioch",
+    "feastKey": "ssTimothySymbolaEustaceAntioch",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 02-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-21.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of Timothy in Tone VIII + Canon II of Eustace in Tone VII. Timothy's kontakion (Tone IV) appears after Ode 6 in the canon body; no kontakion for Eustace present in source PDF. Sessional hymn of Timothy in Tone VIII after Ode 3; Glory — sessional hymn of Eustace in Tone III; Both now — Theotokion in Tone III. No exapostilarion in source PDF. No lauds doxastikon in source PDF. Octoechos canons omitted per menaion-matins-track pattern. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the holy fathers"
+  },
+  "kontakion": {
+    "text": "Shining forth from the east like a most radiant star,\nthou hast shone the virtues of thy wonders upon the hearts of the faithful,//\nO all-blessed wonderworker Timothy.",
+    "tone": 4,
+    "label": "Kontakion of St. Timothy",
+    "melody": "Thou hast appeared today"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Having learned the Word, Who for our sake was born of the Virgin without corruption, thou didst preach His divinity to the godless, and didst lead many to God through faith by many manifestations of sacred miracles. Wherefore, O God-bearer, celebrating thy holy memory we illumine our souls with thy grace and cry out to thee together: O God-bearing Timothy, entreat Christ God to grant forgiveness of sins unto those who honor thy holy memory with love!",
+        "tone": 8,
+        "label": "Sessional Hymn of St. Timothy (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Thou didst preach the Word, Who is consubstantial with the Father and the Spirit, O father Eustace, and didst soundly strangle with the cords of thy teachings the mindless Arius, who blasphemed against sound doctrine. Wherefore, rejoicing, thou hast joined the choirs of the fathers, the godly teachers. With them do thou remember us.",
+        "tone": 3,
+        "label": "Glory — Sessional Hymn of St. Eustace",
+        "melody": "Awed by the beauty of thy virginity"
+      },
+      {
+        "text": "As an uncultivated vine, O Virgin, thou didst put forth a most comely Cluster, which poureth forth for us the wine of salvation to gladden the souls and bodies of all. Wherefore, blessing thee ever as the cause of good things, with the angel we cry out to thee: Rejoice, thou who art full of grace!",
+        "tone": 3,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the holy fathers"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 7,
+      "_authors": "Canon I of Timothy in Tone VIII + Canon II of Eustace in Tone VII. Octoechos canons omitted per menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Shining forth from the east like a most radiant star,\nthou hast shone the virtues of thy wonders upon the hearts of the faithful,//\nO all-blessed wonderworker Timothy.",
+        "tone": 4,
+        "label": "Kontakion of St. Timothy",
+        "melody": "Thou hast appeared today"
+      },
+
+      "ode1": {
+        "irmos": "Let us sing unto the Lord,\nwho led His people through the Red Sea://\nfor He alone hath gloriously been glorified.",
+        "irmos2": "Let us chant unto God,\nWho alone helped Moses lead Israel out of Egypt,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Ever do we praise thee, O blessed father Timothy, thou noetic star shining forth in the heights of abstinence, illumining the hearts of the faithful." },
+          { "text": "Having the upright eye of thy mind directed towards God, thou didst shake off the sleep of despondency, O father, and wast a temple of the divine Spirit and a place of sanctification, O Timothy." },
+          { "text": "Protected against the wiles of the wicked one by thy humility, O father, thou didst pass over unharmed and ascend unto God, delighting continually in His glory, O blessed Timothy." },
+          { "type": "theotokion", "text": "Theotokion: With hymns let us honor the Theotokos, the virginal maiden who, in a manner past all telling, without seed conceived in her womb God, the Creator of all, and truly gaveth birth unto Him in the flesh." },
+          { "canon": "secondCanon", "text": "With hymns let us praise the great Eustace, the summit of the fathers, who was invested with the grace of discourse." },
+          { "canon": "secondCanon", "text": "Manifest as a zealot of the Faith, O venerable one, thou didst preserve the Church of Christ unencumbered by capture through thy struggle against heresy." },
+          { "canon": "secondCanon", "text": "As the mouth of the Word, thou didst pour forth an abyss of doctrine, O venerable one, wherein thou didst drown the impiety of Arius." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: As thou hast given birth in the flesh unto the Word, the Origin of life, at the word of the archangel, beseech Him unceasingly, that our souls be saved." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Savior Thou art my confirmation,\nmy refuge and power;\ndo Thou establish my wavering heart\nin the fear of Thee,//\nfor none is as holy as Thee, O our God.",
+        "irmos2": "My heart hath been established in the Lord;\nmy horn hath been exalted in my God;\nmy mouth hath been enlarged over the enemy;//\nand I am gladdened in Thy salvation.",
+        "troparia": [
+          { "text": "In having compassion upon all in thine almsgiving, thou wast another Abraham, receiving those who came to thee from all places, O Timothy, thereby pleasing the God of all." },
+          { "text": "Thou didst mortify thy members on earth, as the Apostle Paul instructeth, O father; and thou wast shown to be a partaker of the life of heaven, wherein do thou ever remember those who honor thee." },
+          { "text": "The sun of the orient of thy works was never-setting, O father, ever illumining the ends of the earth with the rays of thy struggles, and driving away the darkness of the demons." },
+          { "type": "theotokion", "text": "Theotokion: O holy Virgin, Mother of the King of kings, burst the bonds of my transgressions, and guide me to the paths of repentance by thy prayers." },
+          { "canon": "secondCanon", "text": "Drawing the sword of truth, thou wast shown to be the chief commander of piety, stabbing the opponents of the faith, O Eustace." },
+          { "canon": "secondCanon", "text": "Having cultivated the Church with pangs of love, O blessed one, with the scythe of thy doctrine thou didst cut down all the tares at the root." },
+          { "canon": "secondCanon", "text": "When thou didst truly preside with glory at the Council as senior hierarch, O divinely blessed one, with the stones of thy words thou didst wound Arius, who is truly the origin of falsehood." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou wast born in a manner past telling, and hast appeared as was well-pleasing unto Thee, O our Savior; and Thou hast renewed the world, O Lord." }
+        ]
+      },
+      "ode4": {
+        "irmos": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,//\nand with fear he glorified Thy power.",
+        "irmos2": "Thy virtue O Lord hath covered the heavens,\nand Thou hast filled all things with Thy praise.//\nGlory to Thy power, O Lover of mankind!",
+        "troparia": [
+          { "text": "Made ever steadfast by thy prayers, O most glorious father Timothy, thou didst count the bows and arrows of the noetic foe to be like the darts of children." },
+          { "text": "Bowing down with love before the image of Christ's dispensation toward us, O divinely wise Timothy, thou didst endure trial of torments at the hands of those who rejected it." },
+          { "text": "Thou wast an unshakable pillar, never resting in thy ceaseless glorification of God; remaining a partaker of the beauties thereof, O Timothy." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth on earth unto a new Child, Who was begotten without corruption from the Father before all ages, O pure Mother, thou restoration of Christians." },
+          { "canon": "secondCanon", "text": "Gathering together weapons of the victory of faith, O father, thou didst fell the impious Arius with the darts of thy words." },
+          { "canon": "secondCanon", "text": "When the splendor of thy words issued forth like lightning, O most wise Eustace, it utterly consumed the wicked belief of Arius." },
+          { "canon": "secondCanon", "text": "With thy words didst thou set a fence about the Church as the vineyard of the Word, O most venerable one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O pure Virgin, thou hast given birth in the flesh unto the beginningless Word, Who was before thee and Who, through thee in a manner beyond telling, became incarnate." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Disperse, O Word, the darkness from my soul,\nO Christ God, the Light-Giver,\nhaving driven out the primordial darkness of the abyss,\ngrant unto me the light of Thy commandments,//\nthat early in the morning I may glorify Thee.",
+        "irmos2": "My soul riseth unto Thee at dawn, O God,\nfor Thou art light, and Thy commandments\nhave become healing for Thy servants,//\nO Lover of mankind.",
+        "troparia": [
+          { "text": "Standing before the Trinity with a cleansed mind, O blessed father, and illumined with rays of splendor therefrom, do thou ever enlighten us who languish in darkness due to the passions of our souls." },
+          { "text": "Having adorned thy flesh with abstinence and thy soul with dispassion, O wise one, thou wast shown to be a favorite of the King of all, manifestly receiving gifts of miracles from Him, O Timothy." },
+          { "text": "The barren woman who drew nigh, asking thine aid, not with a deceitful mind, but with a pure heart, was revealed to be fertile by thy prayer, and cured of her barrenness; wherefore she hymneth Christ our God." },
+          { "type": "theotokion", "text": "Theotokion: He that dwelleth in the highest, having made His abode in thy womb, rendered thee more spacious than the heavens, O Mary Theotokos. In that thou art good, O Bride of God, cease not to entreat Him on behalf of us all." },
+          { "canon": "secondCanon", "text": "Thou hast dispelled the gloom of heresies and hast shone upon all the ends of the earth the rays of thy teachings, O blessed Eustace." },
+          { "canon": "secondCanon", "text": "Thou hast dispelled the gloom of heresies and hast shone upon all the ends of the earth the rays of thy teachings, O blessed Eustace." },
+          { "canon": "secondCanon", "text": "Hedged round about by the swords of thy teachings, we who stand for the divine faith vanquish heresies." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Cease not to entreat God, Who was born of thee in the flesh, O Virgin, that thy servants be delivered from every evil circumstance." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,//\nO God of my salvation.",
+        "irmos2": "Jonah cried out from the belly of Hades:\nLead my life up from corruption!\nAnd we cry aloud unto Thee://\nO almighty Savior, have mercy on us!",
+        "troparia": [
+          { "text": "Preserving well the dignity of thy virginity throughout thy whole life, thou didst never look upon the face of a woman, utterly repelling the harm that results therefrom." },
+          { "text": "Thou didst make haste unto the noetic harbor without sinking beneath the waves of the pleasures, O all-blessed Timothy; for thou didst sail well by the force of life-bearing winds, O all-glorious one." },
+          { "text": "In accordance with the psalm, thou didst depart, living in the mountains and ever dwelling in the wilderness, O wise one, until thou didst enter into the heavenly city of God, O blessed Timothy." },
+          { "type": "theotokion", "text": "Theotokion: He that sitteth upon the shoulders of the cherubim in His infirmity, dwelt finitely in thy womb in His flesh, but not in His divinity, hath issued forth from thee, saving me, O all-immaculate one." },
+          { "canon": "secondCanon", "text": "With the wind of thy divinely inspired words didst thou calm the tempest of the heretical, guiding the Church to the harbor of piety, O most blessed one." },
+          { "canon": "secondCanon", "text": "With the wind of thy divinely inspired words didst thou calm the tempest of the heretical, guiding the Church to the harbor of piety, O most blessed one." },
+          { "canon": "secondCanon", "text": "Blameless in virtue, O venerable one, thou wast revealed to be glorious in word and life, O adornment of the Church of Christ." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Cease not to entreat our God Who was ineffably born of thee, O Theotokos, that we who hymn thee may be delivered from misfortunes, O pure Ever-virgin." }
+        ]
+      },
+      "ode7": {
+        "irmos": "By an angel didst Thou refresh the Children in the furnace\ntransforming the roaring flames to dew.\nO God of our fathers, blessed art Thou.",
+        "irmos2": "In the Chaldean furnace,\nthe children of Abraham joined chorus with the Angel, saying:\nBlessed art Thou, O God of our fathers!",
+        "troparia": [
+          { "text": "Having quenched the flame of the passions with the dew of thy tears, thou didst pour forth the grace of miracles, cleansing the defilement of our passions, O Timothy." },
+          { "text": "Truly hast thou received divine blessedness, and inherited the land of the meek, O venerable one, delighting in the joy of the elect." },
+          { "text": "As thou hast acquired boldness, O blessed one, ask thou forgiveness of sins for those who celebrate the memory of thy repose with love." },
+          { "type": "theotokion", "text": "Theotokion: All we that have been delivered from the primal curse by thy most holy birthgiving bless thee, O undefiled Theotokos, who alone art blessed." },
+          { "canon": "secondCanon", "text": "Having won the battle against the heretical with the sword of the Spirit, and crowned by Christ, thou hast received unfading honors." },
+          { "canon": "secondCanon", "text": "Thy mouth hath been shown to be a two-edged sword wielded against the impious, by the hand of the Word, O father, for it cut them down in battle." },
+          { "canon": "secondCanon", "text": "With the winnowing fan of thy teaching thou hast hurled away like chaff the errors of Arius, gathering the grain of faith into the granary of life, O father." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We all honor the Theotokos, in that she hath given birth to the Savior, and we cry out with faith: Rejoice, O handmaid and Mother of Christ our God!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "O Thou who dost cover Thy chambers on high with the waters,\nThou Who hast set the sands to bound the sea\nand Who upholdest all things:\nthe sun doth sing Thy praises,\nthe moon giveth Thee glory,\nevery creature offereth a hymn unto Thee,\nas their Fashioner, throughout the ages.",
+        "irmos2": "The King of glory, who is alone without beginning,\nBefore Whom all the powers of heaven stand in awe\nand the hosts of angels tremble:\nO ye priests praise and ye people//\nsupremely exalt Him throughout the ages.",
+        "troparia": [
+          { "text": "Thou wast a slayer of the passions through great abstinence and the tremendous pangs of standing at vigil, O venerable one, ever teaching the virtues to the hearts of mortals by thy spiritual ascents, mounting from glory to the glory of life unending, and incorruption." },
+          { "text": "O venerable one, from the depths of thy soul thou didst offer thy pure prayers unto the most pure God as a sacrifice, and from Him didst thou receive the divine gift of working miracles, expelling demons and healing men's infirmities." },
+          { "text": "A hater of evil, guileless, merciful and meek, adorned with righteousness, O father, thou wast venerable and blameless, refraining from every injustice, a pillar for monastics. Wherefore, we, the faithful, honor thee throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: The Word of the Father chose thee alone, the beauty of Jacob, and made His abode in thy womb as was His good pleasure; He that is more comely than all mankind passed through thee, cleansing our darkened nature, O all-pure one." },
+          { "canon": "secondCanon", "text": "Having parted the divine depths of the Scriptures with the staff of thy wisdom, O holy hierarch of Christ, thou didst lead the new Israel over to the land of Orthodoxy; but the Arians thou didst drown like the Egyptians." },
+          { "canon": "secondCanon", "text": "Descending from the vision of heaven upon the Arian tower of Babel, thou didst confuse the tongues of the heretical, O wise Eustace, preaching the unanimous faith throughout the ages." },
+          { "canon": "secondCanon", "text": "With thy confession of the truth didst thou end thy life in the West, yet thou didst shine forth upon thy flock in the East, emitting the splendor of piety forever, O wise one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Him that created Adam in His image, Who came forth from his nature and saved the race of mankind, hymn, O ye priests, and exalt Him, O people, throughout the ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Blessed be the Lord God of Israel,\nWho hath exalted the horn of salvation on our behalf\nin the house of His child David,\nwherein the Dayspring from on high hath visited us,//\nand guided us on the path of peace.",
+        "irmos2": "O ye faithful, with hymns let us magnify the Theotokos,\nwho in a manner transcending nature became a mother,\nand is a Virgin by nature,//\nshe alone is blessed among women!",
+        "troparia": [
+          { "text": "Thou hast been revealed to be: a temple of sanctity, a wellspring of compunction, a stream of compassion, an unfathomable abyss of love, a true favorite of the Lord, a citizen of heaven, a kinsman of angels and a torrent of miracles, O most wise one." },
+          { "text": "Knowing the Judge to delight in mercy, O father, thou didst not spurn the stranger; but, good to all, thou didst open the purse of thine alms, O venerable one, becoming a father to the orphaned, a defender of widows, the vesture of the naked and the food of the hungry." },
+          { "text": "Thou didst leave earth for the heavens, where, whilst yet walking well in the flesh, thou didst live thy life, O venerable one, praying that we who faithfully honor thy holy memory be granted cleansing of our sins." },
+          { "text": "Thy precious shrine ever poureth forth upon us a torrent of healings, O father, drying up the outpourings of all the passions, and watering every soul, bringing it to fruitfulness, O sacred Timothy, favorite of Christ." },
+          { "type": "theotokion", "text": "Theotokion: Following thy words, all generations call thee blessed, O blessed one; for thou, O most holy and pure one, didst give birth unto Him Who is truly blessed, Who hath truly fashioned all the blessed to serve Him." },
+          { "canon": "secondCanon", "text": "Squeezing the grapes of the Scriptures in the press of thy teaching, thou hast given the faithful to drink of the wine of the truth of Christ, which maketh our hearts glad, O father." },
+          { "canon": "secondCanon", "text": "Wielding thy tongue of theology as a two-edged sword, thou hast felled the wicked rage of Arius, which sheddeth the blood of innocent souls, O blessed one." },
+          { "canon": "secondCanon", "text": "Spiritually celebrating the appointed and holy day of thy most holy memory, we beseech thee: Earnestly pray, O holy hierarch, that we be saved." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We magnify the true and most pure Theotokos, who in her womb conceived the uncircumscribable Word, and hath been revealed to be the Mother of Life." }
+        ]
+      }
+    }
+  }
+}

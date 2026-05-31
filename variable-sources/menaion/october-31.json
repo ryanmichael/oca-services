@@ -1,0 +1,188 @@
+{
+  "_meta": {
+    "feast": "Holy Apostles Stachys, Amplius, Urban, Apellius, Narcissus & Aristobulus & Holy Martyr Epimachus",
+    "feastKey": "ssApostlesStachysEpimachus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 10-31.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-31.pdf",
+    "_note": "Two interleaved festal canons: Canon I of the Holy Apostles (Joseph, Tone I) + Canon II of Holy Martyr Epimachus. Only one kontakion in Matins source (Apostles, Tone VIII, after Ode 6); no kontakion for Epimachus in the canon. Two exapostilaria (Apostles + Theotokion). Sessional hymns: Apostles Tone I + Epimachus Tone III (Glory) + Theotokion Tone III. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "O holy Apostles * entreat the Merciful God * that He grant remission of sins ** unto our souls.",
+    "tone": 3,
+    "label": "Troparion of the Holy Apostles"
+  },
+  "kontakion": {
+    "text": "Let us hymn the wise apostles as is meet: * Apellius, Urban and Aristobulus, Amplius, Narcissus and Stachys, * whom the grace of our God brought together, as sacred treasures ** of the all-holy Spirit and the effulgence of the Sun of glory.",
+    "tone": 8,
+    "label": "Kontakion of the Holy Apostles",
+    "melody": "As first-fruits"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Your proclamation went forth to the earth, enlightening the souls of the unbelieving with your sacred mediations, O glorious apostles. Wherefore, we joyfully celebrate your most honorable and splendid memory today, rejoicing with faith.",
+        "tone": 1,
+        "label": "Sessional Hymn of the Holy Apostles (after Ode 3)",
+        "melody": "Thy tomb, O Savior"
+      },
+      {
+        "text": "An animate tower, thou wast a witness to the truth amid thy suffering, vanquishing invisible foes with visible torturers and receiving a crown from Christ, O most excellent one. Wherefore, we cry out to thee: Cease thou never to pray that we be granted great mercy, O glorious one.",
+        "tone": 3,
+        "label": "Glory — Sessional Hymn of St. Epimachus the Martyr",
+        "melody": "Of the divine faith"
+      },
+      {
+        "text": "Without separating Himself from the divine Essence, when taking flesh in thy womb, He remained God though He had became a man; and even after thy birthgiving, preserved thee, His Virgin Mother, as immaculate as thou wast before giving birth. Him do thou earnestly beseech, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "O holy Apostles * entreat the Merciful God * that He grant remission of sins ** unto our souls.",
+      "tone": 3,
+      "label": "Troparion of the Holy Apostles"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I of the Holy Apostles Stachys, Amplius, Urban, Apellius, Narcissus & Aristobulus by Joseph in Tone I + Canon II of Holy Martyr Epimachus in Tone I. Octoechos canons omitted.",
+
+      "kontakion": {
+        "text": "Let us hymn the wise apostles as is meet: * Apellius, Urban and Aristobulus, Amplius, Narcissus and Stachys, * whom the grace of our God brought together, as sacred treasures ** of the all-holy Spirit and the effulgence of the Sun of glory.",
+        "tone": 8,
+        "label": "Kontakion of the Holy Apostles",
+        "melody": "As first-fruits"
+      },
+
+      "ode1": {
+        "irmos": "Thy victorious right arm,\nin a manner befitting God, hath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,\nfashioning anew a path for the Israelites through the deep.",
+        "irmos2": "I hymn Thee, O Lord my God,\nfor Thou hast led Thy people out of the bondage of Egypt,\nand hast drowned in the waters\nthe chariots and the might of Pharaoh.",
+        "troparia": [
+          { "text": "Deliver from the darkness of the passions those who honor your memory with faith and celebrate it joyously, O right eloquent ones, and make them partakers of everlasting joy." },
+          { "text": "Following in the steps of Christ, Who became incarnate in His loving-kindness, O most noetically rich apostles, and serving His divinely authored precepts, ye have been revealed to be guides to piety for all those astray." },
+          { "text": "Having assembled with faith, let us bless as is meet those who were disciples of Christ: Stachys and the wise Amplius, Urban and Apellius, Narcissus and Aristobulus." },
+          { "type": "theotokion", "text": "Theotokion: Let us bless her who is blessed among women: the manifest mountain of God, the holy tabernacle and table, the golden jar, the pure palace of Jesus." },
+          { "canon": "secondCanon", "text": "I raise a hymn to Thee, O Lord my God, for Thou hast shown unto us the memorial of the martyr, which illumineth all things, in that Thou alone art greatly merciful." },
+          { "canon": "secondCanon", "text": "I raise a hymn to Thee, O Lord my God, for Thou hast shown Thy martyr to be invincible, a champion among martyrs against ungodliness." },
+          { "canon": "secondCanon", "text": "I raise a hymn to Thee, O Lord my God, for Thou hast adorned Thy spiritual athlete Epimachus with divine gifts, and hast crowned him with honor." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: I raise a hymn to Thee, O Lord my God, for Thou wast born without seed from the womb of the Virgin, for whose sake Thou savest all, in that Thou alone art greatly merciful." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature\nand in compassion hast assumed its form;\ndo Thou gird me with power from on high,\nthat I may cry unto Thee:\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "irmos2": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength:\ntherefore is my heart established\nin the Lord.",
+        "troparia": [
+          { "text": "Thou wast shown to be greatly fertile grain, nurturing with the word of knowledge those who are famished with a hunger for faith, O divinely blessed and wise Stachys, making them partakers of better food through grace, by the power of the Spirit." },
+          { "text": "Casting right skillfully with the net of thy tongue, thou didst draw forth divine food from the deep of deception, O apostle Narcissus, offering it to the King and Master of creation Who came to save the lost." },
+          { "text": "Thou didst proceed from the east like a star, and, traveling, reached the cities of Britain, preaching the Gospel and illumining with grace those who accepted thy word with faith, O blessed Aristobulus." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast shown to be the splendid bridal chamber and most exalted throne of Christ, O all-immaculate Birthgiver of God; for He alone, resting within thee, hath taken away our toils and prepared ease in the future for those who are found worthy." },
+          { "canon": "secondCanon", "text": "Boasting in the all-praised Cross, the martyr Epimachus, the invincible one crowned by Christ, cast the savagery of the impious into the darkness." },
+          { "canon": "secondCanon", "text": "Disdaining transitory glory, the divinely wise martyr Epimachus, the heir of Christ, rejoiced, drawn to his contest." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Rejoice, O Ever-virgin Mother, who held God the Word in thy womb and hast given birth to the Incarnate One, as both God and man!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes\nas the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel\nwould come forth from thee,\nfor our salvation and restoration.",
+        "irmos2": "Proclaiming the advent of Thine appearance on earth, O Christ God,\nthe prophet cried aloud with gladness:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Shining forth on earth, the Sun of righteousness manifestly emitted mystic rays: Stachys and Narcissus, Urban and Amplius, Aristobulus and Apellius, who enlighten those who are in darkness." },
+          { "text": "Fortified by the strength of the divine Spirit, O apostle Amplius, thou didst show forth as children of the light those who live in darkness, performing most glorious works of miracles and setting at naught legions of demons." },
+          { "text": "Full of divine waters, O most blessed Urban, thou didst flow like a torrent of salvation, driving away bitter and un-potable waters, watering the pious with grace." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast shown to surpass the angels, O Lady; for thou wast deemed worthy to ineffably contain in thy womb Him Whom they hold in awe, and to bear in thine arms as a babe Him Who is more ancient than time itself." },
+          { "canon": "secondCanon", "text": "Scorning the threats of the ungodly, the right glorious Epimachus arrayed himself for the struggle, crying out with boldness: Glory to Thy power, O Lord! (Twice)" },
+          { "canon": "secondCanon", "text": "Having spurned earthly things, the glorious Epimachus inherited the kingdom through death, crying out with faith: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: He Who by the Faith and the Spirit is glorified in the highest did the right victorious Epimachus preach to all the ignorant in the arena." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou hast shone upon us with the radiance\nof Thy coming O Christ,\nand illumined the ends of the world with Thy Cross,\nenlighten with the light of Thine understanding\nthe hearts of those who with right worship hymn Thee.",
+        "irmos2": "Do Thou O Lord send down upon us\nThine enlightenment, and free us\nfrom the gloom of transgression, O Good One,\ngranting us Thy peace.",
+        "troparia": [
+          { "text": "The divinely chosen sheep of the good Shepherd were manifestly sent by Him among wolves, taming and leading them to the noetic fold by faith." },
+          { "text": "The great Andrew ordained thee bishop of Byzantium, O most sacred Stachys, who by divine grace dost guide to calm havens those who sail to there with faith." },
+          { "text": "The honorable Church of Heraclium hath thee as its precious cornerstone, O blessed Apellius, strengthening it with the word of truth. Wherefore, we honor thee as is meet." },
+          { "type": "theotokion", "text": "Theotokion: In a manner transcending all telling, thou didst conceive and give birth to the Word Whom the Father begat from the womb before the ages, O pure one. Wherefore, we call thee, His Mother, blessed, as is fitting." },
+          { "canon": "secondCanon", "text": "Defending himself with the weapon of the grace of the Cross, the martyr cried out to the impious ones: \"Neither the sword nor fire will cut me off from the love of Christ!\"" },
+          { "canon": "secondCanon", "text": "Standing before the tribunal of the iniquitous, the right glorious Epimachus cried out with great boldness: \"Your gods did not create heaven and the earth! Let the ungodly perish!\"" },
+          { "canon": "secondCanon", "text": "Inspired by God, the right glorious Epimachus preached to the ignorant the Trinity: the Father, the Word and the Holy Spirit." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Who is able to describe the most glorious manner of thy birthgiving which transcendeth all telling, O pure one? For thou didst indescribably and essentially give birth to God the Word incarnate." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The deepest abyss hath surrounded us,\nand there is none to deliver us,\nyea we have been counted as sheep for the slaughter;\nsave Thy people O our God,\nfor Thou art the strength and restoration of the weak.",
+        "irmos2": "Prefiguring Thy three-day burial\nProphet Jonah praying in the belly of the sea-monster cried aloud:\nDeliver me from corruption\nO Jesus Thou King of hosts.",
+        "troparia": [
+          { "text": "Having stirred up the sea of the nations with divine ascents, O divinely blessed ones, ye saved those who of old drowned in the bitter sea and brought them saved, to the Redeemer." },
+          { "text": "Thou didst preach God, Who willeth mercy, and didst free the souls of the pious; O divinely blessed and godly Narcissus, as the great primate of the Athenians and planter of beauteous gardens." },
+          { "text": "Pouring forth life-giving discourse and the grace of healings, the divine Urban drew all to the enlightenment of divine knowledge, as an emulator of Him Who became incarnate and saved the world." },
+          { "type": "theotokion", "text": "Theotokion: We hymn thee through whom we, who before were condemned, have been justified, and through whom we have joined the immaterial ministers and have been deemed worthy of paradise, O divinely joyous one who art blessed among women." },
+          { "canon": "secondCanon", "text": "Epimachus forsook the world and the things of the world and manfully gave his body over to tortures for the Master; and he became an heir of Christ." },
+          { "canon": "secondCanon", "text": "Epimachus abolished the delusion of the idols and hath been deemed worthy of true glory, receiving the grace of healings, from which all the faithful draw forth." },
+          { "canon": "secondCanon", "text": "Sharing in the sufferings of Christ through the power of Christ God Who was crucified in the flesh; Epimachus received crowns of glory from Him, as one who is faithful." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Virgin Theotokos, entreat our God, Who became incarnate through thee, on behalf of thy servants, for we know thee to be our only intercessor." }
+        ]
+      },
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos,\nto be a noetic furnace;\nfor as He, the supremely exalted One,\nsaved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,\nO Thou praised and supremely glorified God of our fathers.",
+        "irmos2": "Of old the Children of Abraham in Babylon\ntrampled down the flame of the furnace,\ncrying aloud with hymns:\nO God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "By enduring perils ye were delivered from the enemy who tested you, and with the showers of the living Word ye quenched all the flame of deception, O glorious apostles, crying aloud: O praised and supremely exalted God of our fathers, blessed art Thou!" },
+          { "text": "Most splendidly and excellently didst thou counsel thy disciples, O blessed Aristobulus, and didst perfectly instruct them; for thou wast possessed of the hypostatic Wisdom, which instructed thee to proclaim the praised and supremely glorious God of our fathers." },
+          { "text": "With sacred voices the hallowed concourse of the faithful calleth thee blessed, O Apellius, for thou didst have a blessed and an angelic life, ever hymning the praised and supremely glorious God of our fathers." },
+          { "type": "theotokion", "text": "Theotokion: Deliver us from perils, tribulations and divers griefs, and from the invasion of aliens, O all-hymned Lady, that we may glorify thee and cry out to thy Son: O praised God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Manfully trampling upon falsehood with fire, the right victorious Epimachus cried out to the Crucified One: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Fearing neither the flame, nor wild beasts, nor tortures, the invincible Epimachus cried out: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Preaching the Father, the Son and the all-holy Spirit to those who knew not God, Epimachus cried out: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou wast prefigured by the unconsumed bush and the dew-laden furnace, O pure Mother; for thou didst ineffably give birth to Christ God incarnate, O blessed one." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In the furnace as in a fiery smelter\nthe Israelite children shone more brightly than gold\nwith the beauty of godliness,\nas they exclaimed: Bless the Lord all ye works of the Lord,\nhymn and supremely exalt Him throughout all ages.",
+        "irmos2": "Christ God, Who appeared in the form of an Angel\nin the fiery furnace\nto those who sang therein,\nye children, hymn; ye people, bless\nand supremely exalt Him throughout all ages!",
+        "troparia": [
+          { "text": "Ye appeared in the world like lightning bolts, O beholders of God, consuming delusion and showing forth as children of the day those who chant and cry out: Bless the Lord, all ye works of the Lord; hymn and supremely exalt Him throughout all ages!" },
+          { "text": "With the sweet salt of thy teachings, O Amplius, thou didst cleanse away the corruption of delusion. Wherefore, honoring thee, we chant: Bless the Lord, all ye works of the Lord; Hymn and supremely exalt Him throughout all ages!" },
+          { "text": "Let the glorious Stachys and Amplius, Apellius and Narcissus, Urban and the all-wise Aristobulus be hymned, crying out with faith: Bless the Lord, all ye works of the Lord; Hymn and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Knowing thee to be a rampart, a refuge and a ladder which leadeth mankind up to heaven, O pure one, we cry out: Bless the Lord, all ye works of the Lord! Hymn and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Him Who showed forth the crowned Epimachus as victor over iniquitous men do ye hymn, O children; bless O ye priests! O ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Him Who hath given the spiritual athlete Epimachus to us as a physician of sufferings and cruel infirmities do ye hymn, O children; bless O ye priests! O ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Christ Who magnified the memory of Epimachus on earth and through him hath healed divers infirmities, do ye hymn, O priests, and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Virgin, who ineffably conceived and gave birth to Christ our God without seed, do ye hymn, O children; bless O priests! O ye people, supremely exalt her throughout the ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed,\nprefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,\nthat we may unceasingly magnify Thee.",
+        "irmos2": "Thee who contained the infinite Word within thy womb,\nand art more spacious than the heavens\nand more glorious than the cherubim\nO pure Theotokos,\nwith hymns do we magnify thee.",
+        "troparia": [
+          { "text": "That Thou mightest illumine with the light of the goodness of knowledge the ends of the earth, which were full of the deception of the enemy and replete with the darkness of ungodliness, Thou didst send forth Thy saving rays upon them, O Compassionate One." },
+          { "text": "Thou wast shown to be the namesake of the wheat of salvation which beareth for those in need the grain which imparteth confirmation of divine knowledge and easeth the noetic starvation of those who with faith and love hymn thee, O glorious and sacred preacher." },
+          { "text": "Ye are living God-seers in the heavens, O divine apostles. Grant that those who honor you on earth in a pure manner and ever sincerely call you blessed may be partakers of everlasting radiance." },
+          { "type": "theotokion", "text": "Theotokion: Thou didst hold Him Who holdeth all things and didst nurture with milk Him Who nourisheth all. Great and awesome and past understanding is thy mystery, O Virgin Theotokos, ark of precious sanctity. Wherefore, with faith we call thee blessed." },
+          { "canon": "secondCanon", "text": "As thy love was perfect, thou didst desire to die for Christ Who died for our sake. Wherefore, thou hast been enrolled by Him in His army in the highest, O martyr. With hymns we magnify Him with the Father and the Spirit." },
+          { "canon": "secondCanon", "text": "As thou didst with faith confess God the Savior on earth before the impious torturers, O martyr Epimachus, thou hast now been crowned by Him and the Father and the Spirit in the highest, in the presence of the angels." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thee, the pure and glorious Virgin and Mother of God, the light-bearing cloud, the unconsumed bush who mystically appeared to Moses on Mount Sinai, do we magnify in hymns." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Let the godly Aristobulus, most noetically rich Stachys, the divinely wise Apellius and Narcissus, and the all-wise Amplius and Urban now be honored by us as apostles of Christ by whom the world hath been delivered from all manner of falsehood.",
+      "label": "Exapostilarion of the Holy Apostles",
+      "melody": "Hearken, ye women",
+      "bothnow": {
+        "text": "Thou hast been shown to surpass the cherubim, O all-hymned one; for thou didst hold in thine embrace Him Who sitteth upon their shoulders, O most pure Maiden, and didst nourish Him with milk as a babe. Him do thou earnestly entreat on behalf of us who hymn thee as the true Theotokos.",
+        "label": "Both now — Theotokion"
+      }
+    }
+  }
+}

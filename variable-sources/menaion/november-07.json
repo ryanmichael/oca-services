@@ -1,0 +1,205 @@
+{
+  "_meta": {
+    "feast": "Holy 33 Martyrs of Melitene & Venerable Lazarus the Wonderworker of Mount Galesius",
+    "feastKey": "ssMartyrsMeliteneLazarus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 11-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-07.pdf",
+    "_note": "Joint commemoration simple-rank file. Two interleaved festal canons: Canon I of the 33 Martyrs in Tone VIII + Canon II of Lazarus the Wonderworker in Tone II. Sessional hymns after Ode 3: martyrs (Tone IV) + Lazarus (Tone III) + theotokion. Kontakion of Lazarus (Tone IV) at after-Ode-3 slot via kontakionAfterOde3; kontakion of the martyrs (Tone VIII) at standard after-Ode-6 slot with no ikos in Matins. Exapostilarion for martyrs (primary) and Lazarus (Glory). KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "With prayerful vigils and outpourings of tears thou didst water thy pillar,\nand with sighs from the depths of thy soul thou didst bring forth fruit a hundredfold,\nand wast a shepherd, granting the petitions of all.//\nO Lazarus our father, entreat Christ God, that our souls be saved.",
+    "tone": 8,
+    "label": "Troparion of St. Lazarus"
+  },
+  "kontakion": {
+    "text": "The radiant choir of martyrs, the luminous company, descending to us noetically,\nhath illumined the Church today with wondrous rays.\nWherefore, celebrating their honored memory, we ask of Thee, O our Savior://\nthrough their supplications deliver us from misfortunes, that we may chant unto Thee: Alleluia!",
+    "tone": 8,
+    "label": "Kontakion of the 33 Martyrs of Melitene",
+    "melody": "As first-fruits"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Having shown mighty courage, O wise ones, ye foiled the most malicious snares of the enemy, preaching Christ at the tribunal. Wherefore, when ye were beheaded, ye were crowned by the right hand of God, O thirty three blessed inhabitants of Melitene. O honorable martyrs, be ye mindful of us who honor you with faith.",
+        "tone": 4,
+        "label": "Sessional Hymn of the 33 Martyrs (after Ode 3)",
+        "melody": "Joseph marveled"
+      },
+      {
+        "text": "Thine heart, O venerable one, possessed of divine intelligence, exchanged earthly things for things divine and lasting; and thou hast now joined chorus with the angels, delighting in immaterial light and rejoicing unceasingly. Wherefore, O venerable one, entreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Glory — Sessional Hymn of St. Lazarus",
+        "melody": "Of the divine Faith"
+      },
+      {
+        "text": "Thou wast the divine tabernacle of the Word,\nO only most pure Virgin Mother,\nwho hast surpassed the angels in purity.\nWith the divine waters of thy supplications cleanse me,\nwho more than all others am dust and defiled\nby carnal transgressions, O pure one,//\nand grant me great mercy.",
+        "tone": 3,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "With prayerful vigils and outpourings of tears thou didst water thy pillar,\nand with sighs from the depths of thy soul thou didst bring forth fruit a hundredfold,\nand wast a shepherd, granting the petitions of all.//\nO Lazarus our father, entreat Christ God, that our souls be saved.",
+      "tone": 8,
+      "label": "Troparion of St. Lazarus"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I of the 33 Martyrs of Melitene in Tone VIII + Canon II of Lazarus the Wonderworker in Tone II. Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "With gladness the Church of Christ\ndoth glorify thee in psalms\nas a most wondrous luminary.\nWherefore, cease thou never to beseech Christ,//\nthat He grant forgiveness of transgressions unto all.",
+        "tone": 4,
+        "label": "Kontakion of St. Lazarus the Wonderworker",
+        "melody": "Thou hast appeared"
+      },
+
+      "kontakion": {
+        "text": "The radiant choir of martyrs, the luminous company, descending to us noetically,\nhath illumined the Church today with wondrous rays.\nWherefore, celebrating their honored memory, we ask of Thee, O our Savior://\nthrough their supplications deliver us from misfortunes, that we may chant unto Thee: Alleluia!",
+        "tone": 8,
+        "label": "Kontakion of the 33 Martyrs of Melitene",
+        "melody": "As first-fruits"
+      },
+
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "irmos2": "Come, O ye people,\nlet us sing a song to Christ our God,\nWho divided the sea,\nand made a way for the nation\nwhich He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Having joined the divine hosts of heaven, O right victorious martyrs, ask for the cleansing of all who praise your luminous memory." },
+          { "text": "Desiring to tread the path of martyrdom with splendor, ye mightily endured all the threefold waves of torture, strengthened by the Holy Spirit." },
+          { "text": "Ye were shown to be luminaries upon the earth, dispelling the darkness of polytheism, O divine spiritual athletes. Wherefore, ye have received the never-waning light." },
+          { "type": "theotokion", "text": "Theotokion: He Who createth all things by His command and hath crowned the spiritual athletes who likewise trampled down the foe, became ineffably incarnate from thee, O pure Mother." },
+          { "canon": "secondCanon", "text": "Come, ye faithful, and, rejoicing with faith and a godly spirit, let us praise the divine Lazarus, crying out to Him: O blessed one, deliver us from misfortunes by thy supplications." },
+          { "canon": "secondCanon", "text": "God caused thee to return again to thy native land, even though thou didst not desire to do so; wherefore, by thy supplications save me who ever pursue the passions." },
+          { "canon": "secondCanon", "text": "The radiant and divinely bestowed love which shone forth richly within thee, O God-bearer, caused thee to lay down thy life zealously for thy neighbor." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: From all wrath and tribulations do thou save us who bow down before thy holy image and confess thee with faith to be the Birthgiver of God, O all-immaculate Theotokos." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven\nand Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "irmos2": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee//\nplant the fear of Thee.",
+        "troparia": [
+          { "text": "With thy sacred precepts, O glorious and divinely blessed Hieron, thou didst train the sacred martyrs for the divine contest and most gloriously caused them to disregard the torments." },
+          { "text": "Crushed by a tree, O holy ones, ye emulated the precious suffering of the supremely good Master and with the grace of the Almighty crushed the pernicious deceivers." },
+          { "text": "Setting your hope upon the Lord of all, O martyrs who behold God, ye were in no wise moved from your great stand, but in a lawful manner accomplished the divine course with an upright character." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O pure Lady, Maiden of many names, who hast given birth unto the infinite Word Who became circumscribed in the flesh, Whom confessing the choir of the martyrs suffered most mightily." },
+          { "canon": "secondCanon", "text": "Fortified by divine strength, O wise one, thou wast delivered from savage beasts. Wherefore, entreat Christ, that He deliver from noetic beasts those who hymn thee." },
+          { "canon": "secondCanon", "text": "Strengthened by the power of Christ, O venerable one, thou didst manfully endure the hunger, privation and oppressiveness of the desert in the hope of ineffable sweetness." },
+          { "canon": "secondCanon", "text": "Protected by divine grace, O all-blessed one, thou didst escape the assaults of the hostile spawn of Hagar, saved for the benefit of many." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou hast given birth to the Master of all, O pure Virgin, in a manner ineffable and past all telling. Him do thou entreat, O all-hymned one, that He rescue those who hymn thee from the dominion of the passions." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\nGlory to Thy power, O Lover of mankind!",
+        "irmos2": "I hymn Thee, O Lord, for I have heard report of Thee,\nand I was afraid;\nfor Thou comest to me, seeking me who am lost.\nWherefore, I glorify Thy great condescension towards me,//\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "With the rays of divine struggles, O spiritually rich martyrs, ye most gloriously enlighten all the ends of the universe, driving away the darkness of the invisible foe. Wherefore, with pious mind we celebrate your radiant and divine solemnity." },
+          { "text": "Having completed the contest, and given your own blood for Him Who suffered and shed His divine blood willingly on the Cross for our salvation, O ye who are of one mind, ye have all been deemed worthy of equal honor. Wherefore, we call you blessed." },
+          { "text": "Now let us praise the wise martyrs Theogenes and Mamas, Hieron, Claudian, Nicon and Nicander, Longinus and Hesychius, Barachius, the great Callinicus and the godly Xanthius, Theophilus and Valerius." },
+          { "text": "Most wisely hastening to the struggle, O right glorious ones, ye found the divine grace of the Redeemer which accomplisheth all things, and right wisely endured all manner of tortures, chanting unto Christ with thanksgiving: Glory to Thy power, O Lover of mankind!" },
+          { "type": "theotokion", "text": "Theotokion: The shadows of the law and the visions of the prophets proclaimed thee of old to be the Mother of the Redeemer; and, beholding thee, O all-immaculate one, we now chant unto thee together, O glory of passion-bearers and might of the holy martyrs." },
+          { "canon": "secondCanon", "text": "As thou didst avoid all transitory things, passionate attachments and love, O venerable one, having ever set all thy hope on God, all that thou didst acquire, the hands of the poor received." },
+          { "canon": "secondCanon", "text": "Turning aside the malice of the demons through the onslaughts of wild beasts, O venerable and blessed one, thou didst remain in no wise touched thereby, protected by the grace of God Who doth ever aid thee in all things." },
+          { "canon": "secondCanon", "text": "Seeing thy love and gratitude towards God, O venerable one, the most wicked one sought to weaken thy strength. Wherefore, he set dogs upon thee; but his wiles were shown to be in vain." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: I hymn thee, O Lady Theotokos, and cry out to thee: Preserving me, sanctify me by thy supplication, and guide me who have fallen through many sins and am beset by the assaults of the demons, to salvation." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "troparia": [
+          { "text": "Let us praise the wise spiritual athletes who manfully completed the course, honoring Maximian and the godly Eugene, Theodore and Ducitius, Callimachus, Theodulus and Dorotheus." },
+          { "text": "The valiant warriors who were voluntarily slain and crushed have inherited everlasting immortality, and join chorus now in the spaciousness of paradise, having received blessed hope." },
+          { "text": "Having spurned the slumber of indifference, O all-praised ones, with godly vigilance ye raced each other during your contest, the course of the divine faith of martyrdom, and have now arrived at the refuge of heaven." },
+          { "type": "theotokion", "text": "Theotokion: O all-praised Lady who hast loosed the bonds of Hades by thy divine birthgiving: loose me who am bound with the bonds of transgressions, I pray thee, and set my feet upon the paths that lead to life." },
+          { "canon": "secondCanon", "text": "The evil one, hoping to cast down the steadfastness of thy soul and the firmness of thy resolve, O venerable one, transformed himself into a dog, and thus came to try thee." },
+          { "canon": "secondCanon", "text": "In great dearth of confusion the enemy departed, O blessed one, seeing thee in nowise affected, but moreover endured want with thanksgiving." },
+          { "canon": "secondCanon", "text": "Ever bearing the Cross in thy hands like a staff of power, O venerable one, thou didst grind down all the activity of the enemy's wiles to dust." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Save me from every assault of enemies visible and invisible, O all-hymned Mother of God, thou hope of the despairing and intercessor of the faithful." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,//\nO God of my salvation.",
+        "irmos2": "From within the sea monster Jonah cried unto the Lord:\nLead me up from the abyss of Hades, I pray Thee;\nfor with a voice of praise as to my Redeemer,\nin the spirit of truth//\nI offer myself to Thee.",
+        "troparia": [
+          { "text": "In hymns let us bless the spiritual athletes Theodotus and Hilarion, the wise Gigantius and Athanasius, and the divine Eutychius and Epiphanius." },
+          { "text": "With faith let the valiant martyrs of Christ be blessed: Hieron and Diodotus, the wise Castrycius and the godly Ostrychius, the great Themelius and Amonitus." },
+          { "text": "Having drowned the invisible Pharaoh and all his army in the outpouring of your blood, O right victorious martyrs, ye reached the heavens adorning the Church of the firstborn." },
+          { "type": "theotokion", "text": "Theotokion: The weaponry of the enemy hath been rendered useless, O Birthgiver of God, from the moment Christ to Whom thou hast given birth, was pierced by the spear, edifying with blood and water those who have become wearied." },
+          { "canon": "secondCanon", "text": "Desiring to show thy heart to be a temple of God, O venerable one, thou didst go about the churches of the saints, from whom thou didst abundantly receive the grace of the Holy Spirit as confirmation for many." },
+          { "canon": "secondCanon", "text": "Thy native land received thee back as a priceless treasure through the judgment of God, O divinely wise one. Wherefore, make me, who am a stranger to the homeland of Eden, to be an heir thereto, O venerable one." },
+          { "canon": "secondCanon", "text": "The church of the virgin-martyr Marina first received thee as a tenant, and therein thou didst shine forth like a never-waning star, shedding light upon those who sleep in the darkness of ignorance, O venerable one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O all-immaculate Virgin, entreat thy Son and Lord on behalf of thy servants who ever venerate the precious image of thy countenance with faith; for thou art able so to do." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Children of Judaea,\nwho of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace\nthrough their faith in the Trinity,\nas they sang://\nO God of our fathers, blessed art Thou.",
+        "irmos2": "Of old the youths revealed themselves to be rhetors\nwith a love for supreme wisdom,\nfor from the depths of their God-pleasing souls,\nthey theologized with their lips as they sang://\nO supremely divine God of our fathers, blessed art Thou!",
+        "troparia": [
+          { "text": "Seeing thy precious hand severed for the truth, O glorious Hieron, thou didst cry out hymns of thanksgiving unto Him Who seeth all things, chanting: O God of our fathers, blessed art Thou!" },
+          { "text": "With great sense wast thou the model for thy fellow sufferers, O glorious Hieron, and with them thou hast received a portion in the kingdom on high, chanting: O God of our fathers, blessed art Thou!" },
+          { "text": "As valiant warriors of the eternal King, with the sword of your courage ye destroyed the legions of the deceiver, chanting: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Since thou hast given birth to the Physician, O pure Virgin, heal thou the sufferings of my heart and deliver me from everlasting torment who cry out in hymns: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst prepare an abundant feast, replete with thy goodly divine virtues; and nurturing all therewith, thou didst teach them to chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Following the words of thy most wise teachings, and having with true zeal set aside the love of all transitory things, people chose to dwell with thee as something good, O all-blessed one." },
+          { "canon": "secondCanon", "text": "Having acquired thy manner of life from the wondrous Symeon, thou didst stand unsheltered upon thy pillar, adamant as stone, crying out in gladness: O most divine God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Save me from the snares of the enemy by thy mediation, O pure one, and to the ultimate love of thy good Son bind me who am ever driven away from Him by wicked pleasures." }
+        ]
+      },
+      "ode8": {
+        "irmos": "By Thy grace the children became vanquishers\nof both the tyrant and the flames,\ncarefully observing Thy commandments,\nwherefore they cried aloud://\nBless the Lord, all ye works of the Lord!",
+        "irmos2": "God Who descended into the fiery furnace\nwith the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,//\nand supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "Having died to the world, ye inherited the life to come and pour forth the grace of healing upon those who chant: Bless the Lord, all ye works of the Lord; exalt Him supremely forever!" },
+          { "text": "Shown by the beams of your sufferings to be splendid luminaries, ye illumine the world, O martyrs and passion-bearers, crying aloud: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout the ages!" },
+          { "text": "Cast into prison, O ye true divine preservers of the truth, your flesh scourged pitilessly with leather thongs, O blessed ones, ye in no wise strayed from the straight path. Wherefore, ye have received crowns of victory." },
+          { "type": "theotokion", "text": "Theotokion: As one holier than the angels, O pure one, thou didst receive the God of all Who resteth in the saints. Wherefore, all of us, the faithful, hymn and glorify thee throughout all ages." },
+          { "canon": "secondCanon", "text": "Truly studying the struggles and feats of the fathers who fasted before thee, O father, thou didst strive to show thyself their successor; and not only did so, but even surpassed them." },
+          { "canon": "secondCanon", "text": "Thou didst fulfill the supplication wherewith thou didst entreat God of old, O thrice-blessed one, offering thy bread unto all and saying: O Lord of glory, Thine own of Thine own do we offer unto Thee throughout all ages!" },
+          { "canon": "secondCanon", "text": "Directing those with thee toward the divine path by word and deed, O father, and being thyself directed thereto far more than they, thou didst perform miracles for them; for God increased the harvest through thy supplications." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Let heaven rejoice! Let the earth and mortals be glad! For the Virgin Mary hath ineffably given birth unto the Creator of all, to Whom we chant: We supremely exalt Thee, O Christ, throughout the ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels//\nmagnify thee as the Theotokos.",
+        "irmos2": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,//\nHim we faithful with one accord magnify in song.",
+        "troparia": [
+          { "text": "Strengthened by divine power, O all-wondrous Hieron, with strength of mind thou wast able to vanquish the greatly devious one, and lead to Christ an assembly of spiritual athletes by thy teachings, with whom we ever bless thee with faith." },
+          { "text": "Ye were shown to be an honorable army assembled in Christ, O ye of great renown, and opposers of the powers of the prince of this world. And having vanquished them with the sword of the divine faith, in gladness ye received crowns from the hand of the Author of life." },
+          { "text": "Rise up, O Melitene, bringing to the Almighty a goodly assembly of honored martyrs, whose city is on high, since they have completed the sacred race! And with all cities ever bless them with faith." },
+          { "text": "O Christ, Thou never-setting Sun: through the supplications of Thy glorious martyrs illumine with rays of splendor and sanctify those who celebrate their radiant and divine martyrdom, and, as Thou art God, grant us to share in the kingdom on high." },
+          { "type": "theotokion", "text": "Theotokion: I tremble before Thy coming judgment, O only King, and am afraid lest I be cast into suffering and torment. But cleanse me of all defilement of sin through the supplications of Thy most pure Mother, O Lover of mankind." },
+          { "canon": "secondCanon", "text": "Woe is me! I have led a life of sloth and fear the dread judgment! Yet, O Lord Who lovest mankind, by the entreaty of Lazarus send me torrents of tears, that I may thereby wash away the filth of my transgressions." },
+          { "canon": "secondCanon", "text": "Possessed of a calm soul, O father, thou didst likewise have a suitably meek countenance, O wise one, wholly revealed to be consoling to all, watering men's souls with the streams of thy words. Beseech Christ that He grant this tranquility also unto us." },
+          { "canon": "secondCanon", "text": "Desiring to reveal thy most clearly manifest and divine virtues plainly to all, O venerable father, God caused thee to approach the wild mountain, from whence thou didst illumine the whole world, readily emitting rays of life." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Show forth thy Son, to Whom thou hast given birth without seed, as a merciful Judge when He shall seat Himself upon the holy throne, as it is written, to judge all mortals for the wicked things they committed during their life, O Maiden." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Protected by the sword of Thy precious Cross, O Word, Thy spiritual athletes mightily vanquished the adverse powers and put the tyrant to shame. They suffered for Thee, and reign together with Thee, O my Christ, King of all.",
+      "label": "Exapostilarion of the 33 Martyrs",
+      "melody": "Hearken, ye women"
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "Let us all praise with hymns the ever-memorable Lazarus, the God-bearer and emulator of the Master, who with the power of God destroyed the savagery of the demons.",
+        "tone": null,
+        "label": "Glory — Exapostilarion of St. Lazarus",
+        "melody": "The heaven with stars"
+      }
+    }
+  }
+}

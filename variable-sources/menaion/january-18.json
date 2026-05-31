@@ -1,0 +1,211 @@
+{
+  "_meta": {
+    "feast": "Our Fathers among the Saints Athanasius & Cyril, Archbishops of Alexandria",
+    "feastKey": "ssAthanasiusCyrilAlexandria",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 01-18.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-18.pdf",
+    "_note": "Joint two-canon simple-rank file. Two interleaved festal canons: Canon I of Athanasius by Theophanes in Tone VIII + Canon II of Cyril by John Damascene in Tone IV. Shared troparion of the holy hierarchs in Tone IV. Joint kontakion of the hierarchs (Tone IV) placed at kontakionAfterOde3 slot; Athanasius's kontakion (Tone II) with Ikos placed at after-Ode-6 primary slot. Three sessional hymns after Ode 3: Athanasius (Tone III) + Glory/Cyril (Tone III) + Both-now Theotokion. Exapostilarion from the Oktoechos (Glory: joint exapostilarion of the hierarchs + Both-now Theotokion). Lauds doxastikon present (Glory of hierarchs, Tone VIII). KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O God of our fathers, ever deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarchs"
+  },
+  "kontakion": {
+    "text": "Having planted Orthodox doctrine, thou didst cut down the tares of heresy,\ncausing the seed of faith to increase by the gentle rain of the Spirit, O venerable one.//\nWherefore, we hymn thee, O Athanasius.",
+    "tone": 2,
+    "label": "Kontakion of St. Athanasius",
+    "melody": "Of thy blood"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "As He Who chose thee beforehand named thee, thou wast the embodiment of immortality,\npiously slaying all the opinions of Arius;\nfor thou wast an unscathed champion of the truth, O father Athanasius, thou boast of the Orthodox.//\nWherefore, hymning thee as is meet, we celebrate thy sacred memory.",
+        "tone": 3,
+        "label": "Sessional Hymn of St. Athanasius (after Ode 3)",
+        "melody": "Awed by the beauty of thy virginity"
+      },
+      {
+        "text": "Thou didst denounce the delusion of heresies and rendered clear the Orthodox Faith;\nand as one divinely eloquent and pious thou didst preach throughout the world\nthat men should worship the one Godhead in Trinity, consubstantial in Essence and uncommingled in Hypostases.//\nWherefore, assembling, we honor thy memory, O all-glorious Cyril.",
+        "tone": 3,
+        "label": "Glory — Sessional Hymn of St. Cyril",
+        "melody": "Awed by the beauty of thy virginity"
+      },
+      {
+        "text": "The awesome mystery of God which was wrought in thee, O divinely joyous Lady, is incomprehensible and unattainable;\nfor having conceived the Infinite One, thou didst give birth to Him wrapped in flesh through thy most pure blood.\nHim do thou ever entreat as thy Son, O pure one,//\nthat our souls be saved.",
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "O God of our fathers, ever deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarchs"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of Athanasius by Theophanes in Tone VIII + Canon II of Cyril by John Damascene in Tone IV. Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+
+      "kontakionAfterOde3": {
+        "text": "O most great and sacred primates,\nbrave champions of the Church of Christ,\npreserve all who chant:\nSave those who with faith honor Thee,//\nO Compassionate One!",
+        "tone": 4,
+        "label": "Kontakion of the holy hierarchs",
+        "melody": "Thou hast appeared"
+      },
+
+      "kontakion": {
+        "text": "Having planted Orthodox doctrine, thou didst cut down the tares of heresy,\ncausing the seed of faith to increase by the gentle rain of the Spirit, O venerable one.//\nWherefore, we hymn thee, O Athanasius.",
+        "tone": 2,
+        "label": "Kontakion of St. Athanasius",
+        "melody": "Of thy blood"
+      },
+      "ikos": {
+        "text": "O ye faithful, with hymns let us praise today the most festive memorial of Athanasius and Cyril; for they cast into the abyss of perdition Arius the deceiver, Eunomius and Sabellius, committing them to the destruction of everlasting fire, for they unjustly blasphemed the incarnation of the Savior. Wherefore, we hymn thee, O Athanasius."
+      },
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Offering up praise unto Athanasius and praising his virtue, I offer yet higher praise to God, Who hath given men the praiseworthy gift of virtue, of which he was the animate image and seal." },
+          { "text": "Thou wast full of divine wisdom, O blessed and venerable one, shining now in thine angelic life more than the sun; and thou hast surpassed the laws of praise which govern us. Yet accept it from us, O father, even though we are unworthy to praise thee." },
+          { "text": "Though we are bereft of mighty works, we weave hymnody as is meet, O Athanasius, according to the dignity of thy hymns; and we ask that through thee we be granted forgiveness and the abundant grace of the Spirit." },
+          { "text": "As a youth thou didst mortify the uprising of the carnal passions, acquiring in thy youth the right constant wisdom of an elder, O blessed Athanasius; for thou didst govern all thy senses with the desire of wisdom." },
+          { "type": "theotokion", "text": "Theotokion: Most glorious things have been said of thee among generations of generations, for thou didst contain God the Word in thy womb, and didst remain pure, O Theotokos Mary. Wherefore, we all honor thee, after God, as our intercessor." },
+          { "canon": "secondCanon", "text": "Receiving light-giving grace from God, and manifest as a radiant beacon, O Cyril, thou hast shone forth rays of reason upon us on the day of thy commemoration, that we may hymn thee as is meet." },
+          { "canon": "secondCanon", "text": "Thou wast full of the effulgence of the Spirit, O wise Cyril, as a keeper of the commandments of Christ, cleansed of the passions; and thou wast truly a dwelling-place of the all-divine Trinity." },
+          { "canon": "secondCanon", "text": "Filled with zeal and boldness, O glorious Cyril, and defending Orthodoxy, thou didst truly condemn all those who opposed God and the endless prating of their vile heresies." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O all-pure Bride of God, thou hast given birth to One of the most holy Trinity Who through thee revealed Himself to us in the flesh, at the Father's good pleasure and with the cooperation of the all-holy Spirit." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding and didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and my foundation.",
+        "troparia": [
+          { "text": "Having cleansed thy soul and body of all defilement, O Athanasius, thou wast shown forth as a rightly divine temple. Wherefore, the fullness of the Trinity rested within thee, O all-blessed initiate of the sacred mysteries." },
+          { "text": "The grace of the Comforter, finding thy soul purified of the passions, manifestly revealed its activity therein, O father, setting thee as a most radiant beacon for the world." },
+          { "text": "Thou wast shown forth as a rule of hierarchy for hierarchs, the prescription for a life of spiritual activity. Thy discourse, the form of thy vision and the extent of thy theology and doctrine were manifestly revealed, O most wise one." },
+          { "type": "theotokion", "text": "Theotokion: Thou wast shown to be more exalted than the cherubim and the seraphim; for thou alone didst receive the infinite God in thy womb, O undefiled one. Wherefore, all of us, the faithful, bless thee with hymns, O pure one." },
+          { "canon": "secondCanon", "text": "Strengthened by Christ, O Cyril, with steadfast mind thou didst rend apart the wiles of the evil serpent as though they were a spider's web." },
+          { "canon": "secondCanon", "text": "Thou didst scrape the mire of the passions from thy soul, O Cyril, casting down every evil thought which rose up against Christ." },
+          { "canon": "secondCanon", "text": "Like a successful athlete, O father, thou didst avoid every carnal pleasure as vainglorious and treacherous." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Having been cleansed beforehand by the Spirit, O pure one, thou hast given birth to the Word of the Father, the Essence of reason, unto our benefaction." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\nGlory to Thy power, O Lover of mankind!",
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "All the life-bearing inspiration of the Spirit of Christ, which in a godly manner came from on high in the upper chamber of old, breathed upon thee, O father, and showed thee to be a thirteenth apostle who preached the Orthodox Faith." },
+          { "text": "Burning exceedingly with divine zeal while taking part in the Council in Nicaea before thou wast consecrated to the hierarchy, thou didst preach the consubstantiality of the Trinity. Wherefore, Christ made thee a chief shepherd and teacher of the Church." },
+          { "text": "Having the helm of the Church entrusted to thee by the providence of God, O Athanasius, as with a scythe thou didst mow down all the spiritually harmful prating of the heretics, cutting them down like weeds; and, watering the seed of the Word, thou didst wisely cultivate it." },
+          { "text": "Thy fiery tongue burned up the confused affinity of Arius and the mingling of Sabellius, and every heretical blasphemy with them, which are boundless evil and absolute ungodliness, O Athanasius." },
+          { "type": "theotokion", "text": "Theotokion: Thou art the boast of the faithful, O unwedded one; thou art the intercessor and refuge of Christians, their bulwark and haven. For thou dost bear entreaties to thy Son, O all-immaculate one, and savest from misfortunes those who with faith and love acknowledge thee to be the pure Theotokos." },
+          { "canon": "secondCanon", "text": "Upon seeing thee victorious over soul-corrupting passions and mastering the flesh by noetic activity, O God-bearing father Cyril, Christ set thee as a primate over His divine Church." },
+          { "canon": "secondCanon", "text": "Having, as a beloved son, inherited the paternal virtue of Mark, thou wast an heir to his cathedra, following the steps of the godly evangelist." },
+          { "canon": "secondCanon", "text": "As a shepherd thou didst nurture thy flock with thy spiritually nourishing discourses, tending them like a lamb of Christ as with grace and flowers, and feeding them abundantly with grace." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: He Who by His divine power created all things out of nothing, O Mother of God, rejoiceth in thee, illumining the world with the radiant beams of His divinity and with the effulgence of the knowledge of God." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning, why hast Thou turned Thy face from me\nand why has the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Having Christ speaking in the eloquent instrument of thy tongue, O father Athanasius, thou didst put to shame in writing the heresy of the idols, guiding those astray and converting them to the true God." },
+          { "text": "With discourses and writings thou didst denounce all pernicious heresies, O blessed father, dispelling from the whole world divers falsehoods with thy wise proofs, elucidating the Orthodox Faith irrefutably." },
+          { "text": "The Church of Christ calleth thee directly the truly great teacher of wise doctrines, O father Athanasius, and hath numbered with the apostles thee who revealest the unadulterated word of the Faith." },
+          { "type": "theotokion", "text": "Theotokion: Having acquired maternal boldness toward thy Son, O all-pure one, disdain not our kindred thought, we pray; for we propose thee to Christ as the only merciful intercessor of Christians." },
+          { "canon": "secondCanon", "text": "Contemplating the countenance of Christ now face to face, no longer by reflection as in a mirror, O Cyril, thou hast been united to thy desire." },
+          { "canon": "secondCanon", "text": "Thy discourse, O Cyril, hath been likened truly to the mighty torrent of a river in full flood, overturning the machinations of the heretics." },
+          { "canon": "secondCanon", "text": "O Cyril, thou didst overturn both the vile division of Arius and the abominable mingling of Sabellius." },
+          { "canon": "secondCanon", "text": "Thou hast left to the Church of Christ thy rich discourses like treasures of gold and precious stones, O Cyril." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We set thee forth as an invincible weapon against the enemy, O Bride of God, for we have acquired thee as the confirmation and hope of our salvation." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,//\nand Thou hast hearkened unto me, O God of my salvation.",
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Appolinarius, having shown himself to be a sower of the alien seed of earthly discourse and understanding, was mightily denounced by thee, O all-blessed one, as senseless and foolish of mind, in thy book on the incarnation of Christ." },
+          { "text": "We the faithful draw forth honey most sweet, like water from a bowl, from the ever-flowing well-spring of grace which floweth in torrents of discourse pouring forth from thy lips, O venerable one." },
+          { "text": "Everyone doth marvel at the magnificence of thy wise writings, exclaiming in love, O wise father, foreseeing the heresies which would spring forth to be rejected by thee prophetically." },
+          { "type": "theotokion", "text": "Theotokion: May we be delivered from grievous transgressions by thine entreaties, O pure Birthgiver of God; and may we receive divine illumination from the Son of God Who was ineffably incarnate of thee, O all-pure one." },
+          { "canon": "secondCanon", "text": "The seraph bore the burning ember to the prophet with tongs, but thou, O initiate of the sacred mysteries, dost give to the Church of Christ the purifying ember of divine fire with thine own hands." },
+          { "canon": "secondCanon", "text": "Thou didst not destroy neighboring aliens like Samson, but didst cast down the aliens of heterodox doctrine and give might to the Orthodox, O Cyril." },
+          { "canon": "secondCanon", "text": "Manifestly heading the divinely elect Council, O father, thou didst cast down the heresy of Nestorius, the audacity of which opposeth Christ, O father, filled with zeal for the true Mother of God." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O wonder more recent than all other wonders! The Virgin, conceiving in her womb, without having known a man, Him Who sustaineth all things, did not confine Him!" }
+        ]
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire, cried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Having in an Orthodox manner preached that the Word is co-equal in honor and co-enthroned with the Father and His only-begotten Son, O father, thou namesake of immortality, thou dost straightway teach that the Spirit is also co-enthroned, of one essence and equally co-eternal." },
+          { "text": "The father of impiety, seeing that thou wast a manifestly sacred proclaimer and teacher of the light of the threefold Sun who declared the Orthodox Faith unto the ends of the earth, raised persecutions against thee." },
+          { "text": "The countless tribulations which thou didst endure, O blessed one, struggling for piety, were also splendid crowns; for thou wast unyielding to those who struck at thee, and didst draw all to thee like a magnet." },
+          { "text": "Strange doctrines foreign to the Church of Christ didst thou expel, theologizing concerning the Trinity of Hypostases, the unity of the Godhead, Whom thou didst hymn, saying: Blessed is the God of our fathers!" },
+          { "type": "theotokion", "text": "Theotokion: Now have all things been filled with divine light through thee, O most pure one; for thou wast shown to be the portal through which God conversed with the world, enlightening with faith those who cry: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "Moses of old, entering the darkness on Mount Sinai, received the law which slayeth by the letter, O Cyril; but thou hast disclosed the hidden beauty of the Spirit." },
+          { "canon": "secondCanon", "text": "The law which of old gave a cover of protection as to children, O father, hast thou uncovered like roses of understanding, speaking plainly in images." },
+          { "canon": "secondCanon", "text": "Inspired by the grace of the prophets, O Cyril, in a most pure manner thou hast revealed to us that the books of the God-pleasing divine preachers are full of the Spirit." },
+          { "canon": "secondCanon", "text": "Theologizing that there are three Hypostases in a divine Unity, un-separated by division, O father Cyril, thou hast plainly said that They are immutable in one Essence and Godhead." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Rejoice, O hallowed and divine habitation of the Most High! For through thee, O Theotokos, hath joy been given to those who cry: Blessed art thou among women, O all-immaculate Lady!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue, quenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "O Athanasius, thou right glorious adornment of hierarchs, pillar of light and confirmation of the Church, champion of the Trinity, golden trumpet of theology, famed scribe of the monastic life: thou dost celebrate with us, making priests and leading the faithful people to Christ throughout all ages." },
+          { "text": "Thou wast a true namesake of immortality, for thou didst surpass works with the discourse; and, vanquishing the artifices of discourse with the fame of thy life, thou didst transcend the boundaries of both. Wherefore, shining with most excellent virtue, thou hast acquired an immortal memory throughout all ages." },
+          { "text": "In thy valiant struggles thou didst show forth a most splendid episcopacy, O God-pleasing initiate of the mysteries of heaven, and by thy frequent banishments for preaching the Trinity, drove away falsehood, for thou didst proclaim the triune God, crying aloud: Worship the Father, theologize the Son and hymn the Spirit throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Let us hymn her who gave birth in the flesh to the One God in Trinity and even after giving birth hath constantly remained whole, for she hath surpassed the cherubim and is more honorable than the seraphim who cry aloud: Ye children, bless; ye priests, hymn; ye people, supremely exalt God throughout all ages!" },
+          { "canon": "secondCanon", "text": "In thee hath a well-spring of wisdom flowed forth which is truly like a wave of the sea; and ever-flowing rivers of pious doctrines have flowed forth from thy belly, as Christ foretold. For thy divinely eloquent words surpass in number the sands of the sea." },
+          { "canon": "secondCanon", "text": "Shown forth as a wise pastor and teacher of the Church, O venerable Cyril, thou didst manifestly interpret the two testaments; for, holding thy words as an anchor and a paternal inheritance, it crieth out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "For the sake of the Word, the Author of all things Who became incarnate for our sake, O Cyril, thou didst teach the ineffable union which is indivisible and unconfused, and didst worship each equally, crying out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Word Who of old was begotten of the Father without mother was born a second time from thee, without father, O all-pure one; and though before He was incorporeal, He became incarnate in His tender compassion, desiring to save those who chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of mortals and of angels//\nmagnify thee as the Theotokos.",
+        "irmos2": "Eve dwelt under the curse of sin because of the infirmity of disobedience;\nbut thou, O Virgin Theotokos, hast through the Offspring of thy pregnancy//\nblossomed forth blessing upon the world. Wherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Thy life shone forth like lightning, O father, and thy proclamation hath poured forth on all like thunder which the sun illumineth; for thou didst truly have inspiration from heaven on high. Wherefore, the grave, the medium of forgetfulness, hath not dimmed thy memory, O Athanasius." },
+          { "text": "Illumined now with the thrice-radiant light of the threefold Sun, thou dost reveal splendid effulgence to those who hymn thee, reflecting beams from on high, like a mirror reflecting those of the sun, O blessed one; and thou art given the forgiveness for which thou dost ask, which is great and of surpassing dignity." },
+          { "text": "We who hymn thee beg thee earnestly: Pray thou for the Church, grant victory over heresies to our hierarchs, giving them might to defend the Orthodox Faith against heretics; and grant salvation to us and peace to the world on the day of thy commemoration, O Athanasius." },
+          { "type": "theotokion", "text": "Theotokion: Without seed or carnal desire thou didst conceive the Word of God Who hath created all things, and thou hast given birth to Him without suffering the pangs of childbirth, O Virgin. Wherefore, confessing thee to be the Theotokos with tongue and heart, we magnify thee." },
+          { "canon": "secondCanon", "text": "Thou didst mightily cast down every ungodly uprising of Nestorius against Christ and His Mother, O Cyril: manifest as a duality of Sons and the commingling of essences by the Acephalites." },
+          { "canon": "secondCanon", "text": "With the power of reason and the enlightenment of grace, O blessed one, thou didst theologize the consubstantial Trinity and the incarnate Son of God; and as a champion of the Theotokos, thou art now glorified in the highest." },
+          { "canon": "secondCanon", "text": "From on high thou dost mercifully regard those who hymn thee, O father, granting victory to the Cross-bearers and exalting the horn of the Orthodox by thy prayers, illumining those who magnify thy memory." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O all-pure Virgin Theotokos who wast born of a barren woman and hast given birth to Him Who by His will and behest transformed all things: do thou show forth my heart as fruitful, deprived as it is of godly virtues, that I may hymn thee, the all-hymned one." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Ye were shown to be all-wise initiates of the mysteries and champions of the most divine Trinity,\nO blessed Athanasius and Cyril revealed of God,\ncasting down Arius, and with him Sabellius and Nestorius,\nand every other delusion of wicked heresies with them,//\nO holy hierarchs of the Lord.",
+      "label": "Glory — Exapostilarion of the holy hierarchs",
+      "bothNow": {
+        "text": "O all-blessed Cyril, thou dost teach the faithful to speak of the Theotokos with boldness\nand to do her homage in truth,//\ndestroying the ungodly heresy of Nestorius.",
+        "label": "Both now — Theotokion"
+      }
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "The much-suffering Athanasius, the great trumpet of the truth, today calleth the Church to a banquet.\nO ye faithful, let us all meet in splendor for the solemnity of the good shepherd,\nhonoring his sacred labors with hymns,\nthat, through his supplications,//\nwe may receive great mercy from Christ God.",
+        "tone": 3
+      }
+    }
+  }
+}

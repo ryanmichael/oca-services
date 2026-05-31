@@ -1,0 +1,198 @@
+{
+  "_meta": {
+    "feast": "Holy Prophet Hosea & Venerable Martyr Andrew of Crete",
+    "feastKey": "ssHoseaAndrewCrete",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 10-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-17.pdf",
+    "_note": "Joint two-canon simple-rank file. Canon I of Prophet Hosea by Theophanes in Tone I (acrostic 'I hymn the divinely inspired words of Hosea') + Canon II of Venerable Martyr Andrew of Crete by Joseph in Tone II (acrostic 'With love I hymn the namesake of manliness'). Two sessional hymns after Ode 3: Hosea (Tone VIII) + Andrew (Tone IV). Kontakion of Andrew (Tone III) at after-Ode-3 slot with ikos; ode-6 kontakion of Andrew (Tone VIII) is a second kontakion given at liturgy for the ODE VI slot — placed as canon kontakion after ode 6. No exapostilarion for Hosea given; exapostilarion of Andrew present. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "Struggling first upon the mountain in fasting,\nwith the whole armor of the Cross\nthou didst destroy the noetic hordes of the enemy,\nand then manfully array thyself O all-blessed one for thy contest,\nslaying Copronymus with the sword of faith.\nAnd for both thou hast been crowned by God,//\nO ever-memorable venerable martyr Andrew.",
+    "tone": 4,
+    "label": "Troparion of the venerable martyr Andrew of Crete"
+  },
+  "kontakion": {
+    "text": "Out of love for thee, O divinely blessed one,\nwe chant hymns of praise as thanksgiving to the namesake of manliness,\nto the teacher of the mysteries of piety.\nAs thou hast boldness before the Lord,\nsave us from all evils,//\nthat we may chant: Rejoice, O ever-memorable father!",
+    "tone": 8,
+    "label": "Kontakion of the venerable martyr Andrew",
+    "melody": "To thee the champion leader"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Having acquired a heart purified of the passions, O prophet, thou wast truly like a harmonious instrument of the Spirit, richly illumined by Him, O wise one, and receiving the knowledge of things to come. Wherefore, assembling together, we celebrate thy holy memory with faith, glorifying the Savior, O ever-memorable Hosea. Entreat Christ God, that He grant remission of sins to those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy prophet Hosea (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "O ye faithful, as is meet let us praise him who is wondrous in fasting and sufferings, as a preacher of piety and a mighty champion; for, fearlessly opposing Copronymus, he preached that the image of Christ ought to be venerated, in that he is the adornment of all fasters and a model of courage for the martyrs.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of the venerable martyr Andrew",
+        "melody": "Having been lifted up"
+      },
+      {
+        "text": "He that sitteth upon the throne of the cherubim and abideth in the bosom of the Father doth sit in thy womb as upon a throne, O Lady; for, being truly God incarnate, He reigneth over all nations, and with understanding we now chant to Him. Him do thou also entreat, that thy servants be saved.",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "Struggling first upon the mountain in fasting,\nwith the whole armor of the Cross\nthou didst destroy the noetic hordes of the enemy,\nand then manfully array thyself O all-blessed one for thy contest,\nslaying Copronymus with the sword of faith.\nAnd for both thou hast been crowned by God,//\nO ever-memorable venerable martyr Andrew.",
+      "tone": 4,
+      "label": "Troparion of the venerable martyr Andrew of Crete"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I of Prophet Hosea by Theophanes in Tone I + Canon II of Venerable Martyr Andrew of Crete by Joseph in Tone II. Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "Today the imperial city doth celebrate\nthe resplendent feast of thy radiant memory,\nsummoning every city and land;\nfor it rejoiceth, possessing thy much-suffering body as a great treasure,//\nO martyr Andrew, beacon of Orthodoxy.",
+        "tone": 3,
+        "label": "Kontakion of the venerable martyr Andrew",
+        "melody": "Today the Virgin",
+        "ikos": {
+          "text": "Thou wast shown to be an angel of the truth from Crete, denouncing impiety with the voice of theology, O all-wise father; and beholding thee wounded, I fear suffering, crying out and exclaiming to thee such things as these: Rejoice, O mighty swordsman of God! Rejoice, faithful favorite of the Lord! Rejoice, opponent of the blasphemous foe! Rejoice, restraint of those who speak evil! Rejoice, for thou didst suffer for the image of Christ! Rejoice, for thou didst bridle carnal pleasures! Rejoice, for by fasting thou didst vanquish the princes of darkness! Rejoice, for with suffering thou didst oppose Copronymus! Rejoice, ever-flowing fountain of miracles! Rejoice, thou who hast illumined the earth with thy sufferings! Rejoice, O father, thou dwelling-place of the faithful! Rejoice, our intercessor and deliverer! Rejoice, O ever-memorable father!"
+        }
+      },
+
+      "kontakion": {
+        "text": "Out of love for thee, O divinely blessed one,\nwe chant hymns of praise as thanksgiving to the namesake of manliness,\nto the teacher of the mysteries of piety.\nAs thou hast boldness before the Lord,\nsave us from all evils,//\nthat we may chant: Rejoice, O ever-memorable father!",
+        "tone": 8,
+        "label": "Kontakion of the venerable martyr Andrew (Ode VI slot)",
+        "melody": "To thee the champion leader"
+      },
+
+      "ode1": {
+        "irmos": "Let us sing a triumphant hymn unto God,\nwho came to Moses' aid in Egypt,\nand drowned Pharaoh with all his host://\nfor He hath been glorified.",
+        "irmos2": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "Truly standing before the Bestower of life as a prophet and speaker of divine things, O Hosea, pray thou earnestly, that He deliver from temptations those who faithfully praise thee." },
+          { "text": "Having cleansed the eyes of thy soul from pollution, O glorious one, thou wast deemed worthy to splendidly gaze upon things which were to come, and thereby truly foretell things which had not yet come to pass." },
+          { "text": "The wisdom of God, the source of foresight, showed the divinely eloquent Hosea to be an abundant river of prophecy pouring forth divine teachings." },
+          { "type": "theotokion", "text": "Theotokion: Out of Egypt the Father manifestly called Christ, Who had revealed Himself for our sake from the Virgin, as the God-seeing Prophet Hosea foretold of old." },
+          { "canon": "secondCanon", "text": "Having manfully enslaved the carnal passions to thy mind, as the namesake of manliness, O father, thou didst enslave the savagery of the tyrants and suffered lawfully. Wherefore, assembling together with faith, we call thee blessed." },
+          { "canon": "secondCanon", "text": "Noetically set afire like an ember by the fervor of the divine Spirit, thou didst melt the ice of the passions, extinguishing the alien fire of impiety with the torrents of thy blood, O wondrous and divinely blessed confessor Andrew." },
+          { "canon": "secondCanon", "text": "Having bound thyself with the love of Christ O father, accepting thy cross from the time of thy youth, rejoicing thou didst follow after Him, denying thyself through fasting, confession and a most perfect suffering." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Though my soul is burdened with the sleep of despair, O most pure Virgin Mother, I hasten to thine aid. Rouse me to the watchfulness of repentance, delivering me from everlasting torment." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Establish me, O Christ, upon the immovable rock of Thy commandments,\nand enlighten me with the light of Thy countenance;\nfor there is none more holy than Thee,//\nO Lover of mankind.",
+        "irmos2": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God//\nand none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Instructed in the divine teaching of the revelation of God, O prophet, impressed with the seal of the Holy Spirit thou didst manifestly proclaim the summoning of the nations." },
+          { "text": "Thou wast deemed worthy to foresee the things of the future as though they were present, O divinely wise one, manifestly declaring the falling away of the Jews and the destruction of those bound by the law." },
+          { "text": "Thou didst foretell that Israel would be delivered, not by battle, or the bow, or weaponry, but in the Lord God Almighty, signifying for us the incarnation of the Word." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O honored Virgin who didst conceive the Word incarnate Who hath delivered us from deception by His own holy blood and body." },
+          { "canon": "secondCanon", "text": "Having established the feet of thine understanding upon the rock of the love of Christ, O father, thou wast in nowise shaken by contrary winds, crying out to thy Creator: Thou art our God, and there is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "Pouring forth healings both before and after thine end, thou dost aid those who languish in infirmity, O venerable Andrew, driving away unclean spirits, and crying out to thy Creator: Thou art our God, and there is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "Drenched in the tears of fasting, thou didst adorn thyself with the blood of martyrdom, showing thyself to be wholly most comely; and hastening to Him Whom thou didst desire, thou didst cry aloud: Thou art our God, and there is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In a manner transcending nature, O all-immaculate one, thou hast given birth to God the Word, Who is consubstantial with the Father and assumed the likeness of our flesh; yet didst remain a virgin even after birthgiving. Wherefore, we bless thee with faith." }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have considered Thy dispensation,\nO Almighty One,\nand with fear have I glorified Thee, O Savior.",
+        "irmos2": "From a Virgin didst Thou come forth, not as an ambassador,\nnor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "O Hosea, most divine eye of the Church, deliver those who praise thee from misfortunes." },
+          { "text": "O most splendid and steadfast receptacle of the Spirit, pray that those who hymn thee be saved." },
+          { "text": "Standing before the Judge of all as a prophet of God, by thy supplications deliver me from the passions." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast surpassed the ranks of the angels, O Ever-virgin, having borne their Creator within thy womb." },
+          { "canon": "secondCanon", "text": "Obedient to the commandments of Christ, thou didst reverently venerate His image, O father; wherefore, the all-iniquitous one slew thee with multifarious wounds." },
+          { "canon": "secondCanon", "text": "Perfumed with the sweet fragrance of the virtues, while lying in the tomb thou dost perfume the faces of those who call upon thee with steadfast heart, O venerable father." },
+          { "canon": "secondCanon", "text": "As a champion of the Orthodox, O right wondrous and venerable Andrew, with boldness thou didst denounce the most evil Copronymus who was accursedly infected with heresy." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In that thou art fruitful, O all-hymned Theotokos, thou hast given rise to the grain of grace which feedeth all who in an Orthodox manner honor thee and the Word Who was incarnate through thee, O all-pure one." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Seeking Thee early in the morn,\nwe sing Thy praises, O Christ God,\nwho for our sake became poor\nand in Thy flesh endured the Cross and death.",
+        "irmos2": "O Christ my Savior, the enlightenment of those lying in the darkness of sin,\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "Moved by mercy, thou hast taught us of the long-suffering, compassion and goodness of God, whereby He taketh pity on all, O divinely eloquent prophet." },
+          { "text": "Having slain death, Christ arose, as thy wise prophecy proclaimed, O divinely eloquent one, granting life to the souls in Hades." },
+          { "text": "By thy supplications, O Prophet Hosea, rescue me from the abyss of sin, in that thou hast blameless boldness before Christ, O most noetically rich and divinely wise one." },
+          { "type": "theotokion", "text": "Theotokion: The Lord and King of all, Who is co-beginningless with the Father, came under time through thee, O Virgin Theotokos, and showed Himself to have flesh." },
+          { "canon": "secondCanon", "text": "Hating the darkness of sin, O father, thou didst reveal thyself to be light through the splendor of dispassion; and with the rays of healings and the grace of God thou dost enlighten the faithful who approach thy divine shrine." },
+          { "canon": "secondCanon", "text": "Thou wast revealed to be a receptacle of the fullness of God, having lived a good life and suffered with valiant mind, O father; and now, lying in the tomb, thou dost remain whole and untouched by corruption, O blessed one, releasing all the faithful from their sufferings." },
+          { "canon": "secondCanon", "text": "Having contended bravely against the demons and against heretical men, O all-blessed one, thou hast been deemed worthy of everlasting glory and crowns, O venerable Andrew. Wherefore, we, the faithful, ever call thee blessed." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Having ineffably given birth unto Christ, thou didst bear in thine embrace Him Who taketh in His arms those inclined to evil and wretchedly in thrall to the wicked one, O all-immaculate Maiden. Wherefore, we, the faithful, ever call thee blessed." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Thou didst save the Prophet from the sea monster,\nO Lover of mankind;\nlead me up also I pray,//\nfrom the abyss of transgressions.",
+        "irmos2": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Proclaiming things to come, O all-blessed Hosea, thou didst declare the descent of the Word unto mankind." },
+          { "text": "As thou didst foretell, immortal Life hath led up from the regions of Hades those deadened through sin." },
+          { "text": "O prophet, thou didst reveal the abolition of the prescriptions of the law, the falling away of the Jews and the entry of the nations." },
+          { "type": "theotokion", "text": "Theotokion: God the Word hath shone forth from thy womb, O all-immaculate one, having ineffably assumed flesh for our sake, in that He is compassionate." },
+          { "canon": "secondCanon", "text": "The iniquitous one cast thee into prison, O Andrew, but thou wast preserved by the Master, immutably obeying His divine will." },
+          { "canon": "secondCanon", "text": "Thou didst disdain thy body which was lacerated and covered with wounds, O blessed one, and, strengthened by God, didst endure, as though it were someone else suffering." },
+          { "canon": "secondCanon", "text": "Thou art revealed as a hidden and precious treasure, O father, lying before the pious, and dost enrich all who honor thee with miracles." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Of old, the prophet perceived thee as a noetic lampstand holding Christ, the divine lamp, O pure one, whereby we have all been enlightened." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Having prefigured the Trinity in the furnace,\nthe children of Abraham changed the flame of fire into dew,\nand chanting, cried aloud://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "Having illumined thy mind with supra-natural enlightenment, O blessed Hosea, thou wast enriched with the knowledge of things to come, crying out to the Master: O God of our fathers, Blessed art Thou!" },
+          { "text": "Having become like the prophets, thou didst multiply their visions, O immortal Savior, appearing in divers images to those who cried out to Thee with faith: O God of our fathers, Blessed art Thou!" },
+          { "text": "Thou art the well-spring of Israel, pouring forth the waters of salvation, proclaiming Christ, the River of peace, O Hosea; and to Him do we cry: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: He Who shone forth from the beginningless Father became incarnate from thee in His ineffable mercy, O Maiden, Mother of God; and chanting to Him we cry aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "The lofty waves of wickedness did not shake the mind of thee who stood on the rock of the knowledge of Christ, O glorious Andrew; wherefore, thou hast manifestly become a tranquil haven for the tempest-tossed." },
+          { "canon": "secondCanon", "text": "The evil-minded one, darkened of mind, strove with foolish arguments to mislead thee who art adorned with the splendors of theology, O wise one, yet he showed himself worthy of ridicule and was filled with shame by thy boldness." },
+          { "canon": "secondCanon", "text": "Thy mind, adorned with most divine inclinations, was shown to all to be a most radiant star, O right wondrous Andrew, illumining with miracles each of the faithful who praise thee." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou wast the temple of the living God, wherein He Who dwelleth in the heavens made His ineffable habitation, O all-hymned Virgin, being pleased to become a man in His bountiful goodness." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Praise ye the Lord Who preserved The Children\nin the fiery flame of the furnace,\ndescending unto them in the guise of an Angel,\nand supremely exalt Him throughout the ages.",
+        "irmos2": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant://\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Incomprehensible gifts were given to the prophets by the divine Giver: the activity and knowledge of things to come, that they might hymn the Lord and supremely exalt Him throughout the ages." },
+          { "text": "Having acquired a divinely inspired mouth and a tongue of godly eloquence, O Hosea, thou dost hymn the illumining Light of piety, chanting: Hymn the Lord, and supremely exalt Him throughout the ages!" },
+          { "text": "Prophesying by thy words and actions, thou didst denounce the adulterous people, O most noetically rich prophet, teaching them in images to chant: Hymn the Lord, and supremely exalt Him throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: God, the equally everlasting Word of God, appeared incarnate of the Virgin to those who cry out with faith: Hymn the Lord, and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "Having first mortified the carnal passions by struggles of fasting, O wise one, thou didst suffer mightily, reverently venerating the image of the Savior, the Ever-virgin and the saints." },
+          { "canon": "secondCanon", "text": "Those who raged insanely against Christ like savage wild beasts put thee to death, O father; wherefore, dragging thee along as they beat thee, they cast thee into a ravine, manifestly rendering thee a witness of the truth." },
+          { "canon": "secondCanon", "text": "Thou dost irrigate the faithful with miracles as with water, O all-blessed one, driving away the spirits of wickedness, and washing away our infirmities, having received the grace of healing from Christ our God on high." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou hast been revealed to be more spacious than the heavens, O Virgin, having contained within thy womb God Whom naught can contain. Him do thou entreat, that He deliver those who piously hymn thee from soul-corrupting circumstances, O pure Lady." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Rejoice, O boast of virgins!\nRejoice, O most pure Mother,\nwhom all creation doth magnify with divine hymns!",
+        "irmos2": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Thou didst receive honor as a prophet, O all-blessed Hosea, having received a crown of splendor from God." },
+          { "text": "Illumined by the light of Christ, O most excellent one, by thy supplications render Him merciful unto all who hymn thee." },
+          { "text": "Having lived an angelic life, O Hosea, thou standest with the ranks of angels before the Master, praising Him with laudations." },
+          { "type": "theotokion", "text": "Theotokion: Desiring to save mankind, the Savior and Lord clothed Himself in our flesh through the most pure Virgin." },
+          { "canon": "secondCanon", "text": "Behold, O venerable father, finishing thy course thou didst preserve unsullied the Orthodox Faith for which thou didst suffer lawfully, and hast received from on high a twofold crown, as an invincible martyr and an invulnerable ascetic." },
+          { "canon": "secondCanon", "text": "Like a sweet-smelling lily, like a rose didst thou manifestly blossom forth in the meadow of divine asceticism, O father; and, illumined as a martyr, thou dost spread thy fragrance like a cedar, O all-praised Andrew, adornment of monastics." },
+          { "canon": "secondCanon", "text": "Manifestly adorned with signs and wonders, thou didst lie, unharmed, before the sight of all, O all-blessed Andrew, and dost illumine the souls of those who with ardent faith have recourse to thee and ever bless thee." },
+          { "canon": "secondCanon", "text": "Celebrating thy holy memorial today, a festive day full of gladness, we cry out to thee with faith, O father: By thy holy supplications to God deliver us all from the evil circumstances of life." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thy womb became the dwelling-place of the Light Who illumineth the world with rays of divinity and hath utterly driven the darkness of ignorance away from the earth, O most immaculate Maiden. Wherefore, we glorify thee." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Let us all praise the right victorious Andrew, celebrating his honored memory in a godly manner, that we may be delivered from our infirmities; for he hath preached the reverent veneration of the precious images of the Savior and of all the saints. Wherefore, receiving a crown in the heavens, he rejoiceth with the angels.",
+      "label": "Exapostilarion of the venerable martyr Andrew",
+      "melody": "With the disciples let us ascend"
+    }
+  }
+}

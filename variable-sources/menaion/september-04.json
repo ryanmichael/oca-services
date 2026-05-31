@@ -1,0 +1,195 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Babylas of Antioch & Holy Prophet Moses the God-Seer",
+    "feastKey": "ssBabylasMoses",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 09-04.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-04.pdf",
+    "_note": "Two interleaved festal canons: Canon I of Hieromartyr Babylas by John the Monk in Tone VI + Canon II of Prophet Moses by John the Monk (Theotokia by Clement) in Tone IV. Sessional hymns after Ode 3: Babylas Tone III + Glory Moses Tone IV + Both-now Theotokion Tone IV. Kontakion of Moses (Tone II, no ikos) at after-Ode-3 slot; Kontakion of Babylas (Tone VIII) with ikos at standard after-Ode-6 slot. Exapostilarion of Babylas present. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Babylas, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr Babylas"
+  },
+  "kontakion": {
+    "text": "Illumined today, the church glorifieth thee as the preacher of piety\nand the confirmation of spiritual athletes, O glorious Babylas.\nSince thou hast boldness before the Lord, pray thou to Christ, O much suffering one,//\nthat He preserve those who magnify and praise thee in perfect peace.",
+    "tone": 8,
+    "label": "Kontakion of St. Babylas",
+    "melody": "As first-fruits"
+  },
+
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Pouring forth the confession of the Faith, thou didst extinguish the deception of false religion, denouncing the ungodliness of idolatry; and as a divine oblation, thou dost bedew the ends of the earth with miracles. O venerable father, entreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn of St. Babylas (after Ode 3)",
+        "melody": "Of the divine Faith"
+      },
+      {
+        "text": "Piously acknowledging thee as among all the prophets, we, the faithful, praise thee; for thou wast the first to behold God insofar as it is possible for mortals to see Him.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of Holy Prophet Moses"
+      },
+      {
+        "text": "Stretching forth thy most pure hands, O Virgin Mother,\nprotect those who place their trust in thee\nand cry out to thy Son://\nO Christ, grant Thy mercies unto all!",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Babylas, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr Babylas"
+    },
+
+    "canon": {
+      "tone": 6,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of Hieromartyr Babylas by John the Monk in Tone VI + Canon II of Prophet Moses by John the Monk in Tone IV (Theotokia by Clement). Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "Today the choir of the prophets rejoiceth\nwith Moses and Aaron,\nfor the end of their prophecy hath found fulfillment in us:\ntoday the Cross shineth forth, whereby Thou hast saved us.//\nThrough their supplications, O Christ God, have mercy upon us!",
+        "tone": 2,
+        "label": "Kontakion of Holy Prophet Moses"
+      },
+
+      "kontakion": {
+        "text": "Illumined today, the church glorifieth thee as the preacher of piety\nand the confirmation of spiritual athletes, O glorious Babylas.\nSince thou hast boldness before the Lord, pray thou to Christ, O much suffering one,//\nthat He preserve those who magnify and praise thee in perfect peace.",
+        "tone": 8,
+        "label": "Kontakion of St. Babylas",
+        "melody": "As first-fruits"
+      },
+      "ikos": {
+        "text": "Pondering the vanity of the world, and truly separate from the world, thou didst emulate the sufferings of Christ by mortifying the passions of the flesh; and, taking up thy cross, thou didst follow after thy Creator, O martyr. And now, abiding with Him, pray thou on behalf of those who truly honor thee, O much suffering one."
+      },
+
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned,\nthey cried:\nLet us sing to God\na song of victory.",
+        "irmos2": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Passing calmly over on thy blood, like Moses crossed the Red Sea, O blessed Babylas, thou didst cry out to God the hymn of victory: Let us chant unto the Lord, for He hath been glorified!" },
+          { "text": "Thou didst overcome the desire for earthly things, submitting thy desire to the Divine, that thou mayest live, O blessed Babylas who went forth to behold the beauty of Christ." },
+          { "text": "As a lover of the supremely divine Trinity, thou didst die, rejoicing, with the three children, O blessed Babylas, ever guiding their souls with divine desire." },
+          { "type": "theotokion", "text": "Theotokion: Having received thy Creator Who, in a manner beyond comprehension, was incarnate of thy seedless womb, O pure one, as He Himself desired, thou wast truly shown to be the Sovereign Lady of all creatures." },
+          { "canon": "secondCanon", "text": "Let Moses, the first among the prophets, be praised, for he was the first to converse openly with God, face to face, not in indistinct images, but beholding Him as in the guise of the flesh." },
+          { "canon": "secondCanon", "text": "God gaveth thee to thy people Israel as a divine leader and deliverer, O God-seer Moses, for this thou didst pray to the Father, thy birth having been announced beforehand through the promise of the anointing." },
+          { "canon": "secondCanon", "text": "Thy native virtues revealed thee to be like a treasure of knowledge and wisdom hidden by God in the ark, O God-seer Moses; wherefore thou wast reared by the queen and divine providence." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Moses was stricken with fear, beholding the most glorious vision of old: the awesome mingling of bush and fire which prefigured the incorrupt God Who would come forth from the Virgin Mother, and Whom, with the passing of time, he would behold in the flesh." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful O good One,\nand strengthened us upon the rock\nof Thy confession.",
+        "irmos2": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength:\ntherefore is my heart established\nin the Lord.",
+        "troparia": [
+          { "text": "There is none as holy as Thou, O Lord my God, Who hast lifted up the horn of Thy faithful Babylas and crowned him with the crown of Thy confession." },
+          { "text": "Thy Cross was the might of the martyrs, O Lord, Who established the children with the blessed Babylas and through them cast down the audacity of the deceit of the ungodly." },
+          { "text": "The might of the devil hath been utterly enfeebled, O Christ; for the mighty one hath been vanquished by the innocent children and the godly Babylas, and was driven away by them in shame." },
+          { "type": "theotokion", "text": "Theotokion: The wonder of thy divine birthgiving surpasseth every rank of nature, O pure one; for thou didst supra-naturally conceive God in thy womb, and in giving birth didst remain ever Virgin." },
+          { "canon": "secondCanon", "text": "Thou wast filled exceedingly with ineffable knowledge, O God-seer, and the Holy Spirit, through an angel, manifestly gave thee knowledge of things from the past." },
+          { "canon": "secondCanon", "text": "Splendidly bearing divine rays, thou didst astonish Egypt with divine signs, most gloriously transforming the nature of the elements, O most wise one." },
+          { "canon": "secondCanon", "text": "The beauty of thy comeliness illumineth thy splendid life with divine rays, O blessed one, drawing all to the beauty of God of which one can never be satiated." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou wast caught up in an awesome vision and didst behold a most dread vision, O most wise one; yet the Lord, Who was born in the flesh of the Virgin, restrained thy voice." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,\nkeeping festival in the Lord.",
+        "irmos2": "Beholding Thee, the Sun of righteousness,\nlifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud:\nGlory be to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Christ is my power, my God and Lord, didst thou cry out before the tribunal, undaunted by the threats of the tyrant, O hieromartyr Babylas, rejoicing in the Lord." },
+          { "text": "Offering up the immaculate, awesome and un-bloody sacrifice to the Lord, in the blood of thy martyrdom thou didst bring thyself to Him as an unblemished sacrifice, O hieromartyr Babylas." },
+          { "text": "Nurturing the young minds of the youths on spiritual milk as a wise teacher of children, O hieromartyr Babylas, thou didst guide them to perfection." },
+          { "type": "theotokion", "text": "Theotokion: The mysteries of thy magnificent birthgiving are truly ineffable and unapproachable to those on earth and in heaven, O Ever-virgin Theotokos." },
+          { "canon": "secondCanon", "text": "When by divine providence, the impediment of thy speech and voice were removed, O God-seer, thou wast revealed by thy words to be a proclaimer of the mysteries of God, and didst smite the Egyptians with plagues." },
+          { "canon": "secondCanon", "text": "How glorious is thy calling, O God-seer! How awesome the working of thy wonders! For God, He Who Is, appeared to thee, and, exalting thee with glory, sent thee to Israel as its savior." },
+          { "canon": "secondCanon", "text": "Thou didst strike down all the firstborn of Egypt, just as Christ slew the might of the demons; for the things wrought by thee were truly an image of that which was to come, O glorious one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Moses heard the voice of God crying out from the flame in the bush, saying: 'Draw not nigh'; for that place, holy in splendor, prefigured Christ Who would be born in the flesh of the pure one." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,\nWho recalleth us from the darkness of sin.",
+        "irmos2": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Truly the hieromartyr Babylas received Thy divine grace from on high, O Jesus, for he led young children to Thy love and the overcoming of death." },
+          { "text": "Illumined with Thy divine knowledge, O Lord, the hieromartyr Babylas taught all to know Thee as the one God Who is Lord, and calleth us forth from darkness and deception." },
+          { "text": "Foreordained by Thy divine election to shepherd Thy flock, O Word of God, the hieromartyr Babylas offereth his own blood to Thee, wisely guiding all to the path of salvation." },
+          { "type": "theotokion", "text": "Theotokion: O good Sovereign Lady of the world, save those who with all their soul confess thee to be the Theotokos; for thee, who art truly the Mother of God, do we have as an invincible intercessor." },
+          { "canon": "secondCanon", "text": "Striking the Red Sea, and making thereby a great division with thy staff, O God-seer thou didst reveal the divine power of the Cross." },
+          { "canon": "secondCanon", "text": "'O most lovely boldness! O pure purity of soul! For thou hast acknowledged me beyond all others, appearing to me noetically!' thus did the God-seer cry out to God." },
+          { "canon": "secondCanon", "text": "Sheltered by the stone, thou didst not see the face of God, for it was hidden, O God-seer, but didst recognize the incarnation of the Word in His hind-parts." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou didst enter into the darkness with thy senses, and learn ineffable things, O God-seer: that God the Savior would be born in the flesh from the Virgin." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,\nO greatly Merciful One.",
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Beholding the sea of life surging with the tempests of deception, Babylas, the most glorious spiritual athlete, cried aloud: Lead up my life from corruption, O greatly Merciful One!" },
+          { "text": "Emulating Christ, thou didst lay down thy life for thy flock, O glorious martyr and spiritual athlete, blessed Babylas, breaking down the walls of deception." },
+          { "text": "With his suffering the ever-memorable and most glorious spiritual athlete Babylas wisely rendered the unsteady minds of the children steadfast, guiding them from earth to the life of heaven." },
+          { "type": "theotokion", "text": "Theotokion: O most pure Lady who hast given birth to the Lord, the Helmsman of mortals, calm thou the tumultuous and grievous turmoil of my passions and grant tranquility to my heart." },
+          { "canon": "secondCanon", "text": "Having gathered Israel as a mighty army of God, thou didst destroy the evils of the seven Canaanite nations, giving their land to the people for their inheritance." },
+          { "canon": "secondCanon", "text": "Ineffably entering the divine darkness into which God called thee, O Moses, thou didst receive the tablets of the law which His finger inscribed, in that thou wast His great favorite." },
+          { "canon": "secondCanon", "text": "God appointed the God-seer Moses to listen to His voice, revealing Himself to him, that with glory he might show forth His dread mysteries." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: With a divine gesture the glorious Moses described thee beforehand, O Theotokos, as the ark covered with the glory of God as with gold, shining overall with the beams of the Spirit." }
+        ]
+      },
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Beholding the youths and the wondrous Babylas as victors over falsehood, the armies of heaven have cried out to Christ today, rejoicing: O Lord God of our fathers blessed art Thou!" },
+          { "text": "The radiant grace of the Master, descending, hath illumined the faithful, and the glorious Babylas, having been crowned, commanded those who suffered to cry aloud: O Lord God of our fathers blessed art Thou!" },
+          { "text": "The minds of the tyrants were at a loss how to help their false gods; but the wondrous Babylas commandeth them to cry out to the most holy Trinity: O God of our fathers blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Through thee, O Mother and Virgin, hath the radiant Light shone forth upon the whole world; for thou hast given birth to God, the Creator of all. Entreat Him, O all-pure one, that He send down great mercy upon us, the faithful." },
+          { "canon": "secondCanon", "text": "As the divine recorder of ineffable visions of God, O wise God-seer Moses, devising by word the whole plan of the tabernacle thou didst commit its fashioning to Bezalel the chief artisan." },
+          { "canon": "secondCanon", "text": "When Korah dared to perform priestly ministry with thee, he was seen carried down into Hades alive, when thou, O Moses, didst preserve the order of sacrifice precious to God, and the kingdom and the priesthood." },
+          { "canon": "secondCanon", "text": "When thou didst command the army of the Hebrew people of old, O Moses, Michael, the commander of the armies of heaven and the divine guardian of thy body, appeared to thee; and put to shame the author of evil who opposed thee." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The divine rod of Aaron showed thee budding forth as the loosing of the sins of all, O Theotokos; for thou wast the removal of the dread threat of God upon mortals, in that they had murmured against God." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,\nThee do we supremely exalt throughout all ages.",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws\nin their den;\nwhile the zealously pious youths,\ngirded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "In the flame the youths were commanded to hymn God, the Father and Creator, the consubstantial Son, and the divine Spirit: Let all creation bless the Lord and exalt Him supremely throughout all ages!" },
+          { "text": "The youths in the flame, O brethren, command that today the memory of the hieromartyr Babylas be hymned: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "Crowned today with their elder, the young disciples of Babylas, the priest and martyr, command that the hymn of the youths in the furnace be chanted: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth in the flesh to God Who holdeth all things in His hands, and didst bear Him in thine arms, O Virgin. Him do we hymn as Lord, O ye works, and supremely exalt throughout all ages." },
+          { "canon": "secondCanon", "text": "In that thou art meek thou didst hearken, and by thy works didst truly become the favorite of God. Wherefore, thou wast favored by the Lord more than all other prophets, O Moses; and He abode with thee and taught thee to chant with faith: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Manifest as an initiate of the mysteries of God, His minister, and the ruler of Israel, O God-seer Moses, thou didst proclaim that Christ would come in the flesh, describing His dread and divine advent by thyself; for thou wast manifestly shown to be a faithful prophet and His animate image." },
+          { "canon": "secondCanon", "text": "By the words of thy prophecy and through the precepts of the law, with faith thou didst instruct the people, guiding them with signs, wonders and the performing of miracles; for thou wast shown by God to be their leader, O God-seer Moses. Wherefore, with great glory thou hast passed over to thy fathers." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: No prophet heard ought before thee, O glorious God-seer Moses, thou favorite of Christ, for thou didst recount the whole dispensation of the Virgin, describing beforehand her divine birthgiving; for in the flame of the bush thou didst behold the visage of the Invisible One." }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts\nHim we magnify and thee we call blessed.",
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,\nO Theotokos.",
+        "troparia": [
+          { "text": "Through the Cross God hath shown mankind the smooth path to the heights of heaven, by which death hath been seen to be vanquished by mortals, for the young children and the wondrous Babylas, whom we call blessed, were not afraid of it." },
+          { "text": "As Thou art light all-pure, O Master Christ, cleanse my soul of the darkness of the passions through the supplications of Thy spiritual athletes, Babylas and the children. Celebrating their annual commemoration, we right gloriously hold festival." },
+          { "text": "Resorting to the glorious church of the martyrs, let us draw forth healing of our passions; for the choirs of angels and the souls of all the righteous have come thither with the heavenly Lady and the wondrous Babylas, to bestow healings upon all." },
+          { "type": "theotokion", "text": "Theotokion: Ineffably conceiving in thy womb the Son Who shone forth eternally from the Father, thou hast given birth to Him, O pure Mother of God. O most holy Virgin, entreat God Who alone is the Lover of mankind, on behalf of thy servants, that He save our race." },
+          { "canon": "secondCanon", "text": "Even after thy death thou didst see the Lord, O God-seer, and not in dim images as before, when thou wast in the rocky crevase; but rather beholding Him as Christ in a human body, illumining all with His divinity." },
+          { "canon": "secondCanon", "text": "Mount Tabor hath achieved glory far surpassing that of Sinai, for on Tabor Moses from among the dead and the Tishbite from the lands of the living, together with the apostles, beheld Christ transfigured as God." },
+          { "canon": "secondCanon", "text": "Save me by thy merciful supplication and the boldness of thy prayers, as thou didst save Israel from misfortunes, O God-seer Moses, and save the fullness of the Christian race from all harm, for it doth hymn thee." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Of old, Moses described thee, O Virgin, as the golden jar, the tablet of the law, and the divine table, manifestly indicating that God would be born of thee. And having beheld Him in the flesh, with faith we conclude thy hymnody." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O Babylas, thou wast shown to be both a priest and a sacrifice of God, offering to Him the un-bloody sacrifice and being slain in thine own blood with the blameless children. With them we now praise thee.",
+      "label": "Exapostilarion of the holy hieromartyr Babylas",
+      "melody": "The heaven with stars"
+    }
+  }
+}

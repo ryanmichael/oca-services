@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "feast": "Venerable Thomas of Mount Maleum & Venerable Acacius of Mount Sinai",
+    "feastKey": "ssThomasMaleumAcaciusSinai",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 07-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-07.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of Venerable Thomas of Mount Maleum in Tone II; Canon II of Venerable Acacius of Mount Sinai (acrostic: 'With songs do I hymn Acacius, excellent in obedience') in Tone IV. Kontakion after Ode 3: Acacius's (Tone II) via kontakionAfterOde3. Kontakion at standard Ode 6 slot: Thomas's (Tone IV, no ikos in PDF). Shared troparion of the venerable fathers in Tone IV. Two sessional hymns after Ode 3: Thomas (Tone IV) + Acacius (Tone IV) + Both now theotokion (Tone IV). No exapostilarion in source PDF. No lauds doxastikon in source PDF. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the venerable fathers"
+  },
+  "kontakion": {
+    "text": "Truly thou didst show forth a great victory!\nWherefore, aflame with divine life,\nthou didst vanquish the corrupt king and all beautiful things,\nmaking thine abode on Mount Maleum,\nfrom whence thou didst ascend to\nthe King of kings in the heavens.//\nO Thomas, pray thou unceasingly for us all.",
+    "tone": 4,
+    "label": "Kontakion of Venerable Thomas",
+    "melody": "Having been lifted up"
+  },
+
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Having shown thyself to be right pleasing by divine actions and a pure life, O venerable one, thou hast been deemed worthy of the inheritance of the bodiless ones.\nPray thou that we be saved.",
+        "tone": 4,
+        "label": "Sessional Hymn of Venerable Thomas (after Ode 3)",
+        "melody": "Thou hast appeared today"
+      },
+      {
+        "text": "By the splendor of faith and active light wast thou truly shown to be like an angel on the earth, O all-wise Acacius:\nthou didst manfully show forth the strength of thy mind and didst crush the uprisings of the passions by fasting.\nWherefore, even after thy demise thou wast shown to be as one alive,//\nO invincible one.",
+        "tone": 4,
+        "label": "Glory — Sessional Hymn of Venerable Acacius",
+        "melody": "Go thou quickly before"
+      },
+      {
+        "text": "By thy divine birthgiving, O pure one,\nthou hast renewed the mortal nature of those born on earth,\nwhich had become corrupt through the passions,\nraising up all from death to a life of incorruption.\nWherefore, as is meet we all bless thee,//\nO exceedingly glorious Virgin, as thou didst foretell.",
+        "tone": 4,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the venerable fathers"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of Venerable Thomas of Mount Maleum in Tone II + Canon II of Venerable Acacius of Mount Sinai (acrostic 'With songs do I hymn Acacius, excellent in obedience') in Tone IV. Octoechos canons omitted per menaion-matins-track pattern.",
+
+      "kontakionAfterOde3": {
+        "text": "Forsaking the world, thou didst follow Christ from childhood,\nO most wise and venerable Acacius,\nand, emulating His voluntary humility,\nthou didst cast down the prideful tyrant.//\nPray thou unceasingly on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of Venerable Acacius",
+        "melody": "Seeking the highest"
+      },
+
+      "kontakion": {
+        "text": "Truly thou didst show forth a great victory!\nWherefore, aflame with divine life,\nthou didst vanquish the corrupt king and all beautiful things,\nmaking thine abode on Mount Maleum,\nfrom whence thou didst ascend to\nthe King of kings in the heavens.//\nO Thomas, pray thou unceasingly for us all.",
+        "tone": 4,
+        "label": "Kontakion of Venerable Thomas",
+        "melody": "Having been lifted up"
+      },
+
+      "ode1": {
+        "irmos": "Come, O ye people,\nlet us sing a song to Christ our God,\nWho divided the sea,\nand made a way for the nation\nwhich He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "irmos2": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Having received the enlightenment of divine grace within thy soul, O glorious one, thou didst depart from the darkness of the passions as from another Egypt, and didst receive heavenly life." },
+          { "text": "Being splendid in life, O father, thou didst win countless victories over aliens; and having lived venerably as a monk, thou didst vanquish hordes of the demons." },
+          { "text": "Wrestling with the enemy through asceticism, O venerable one, with the aid of the divine Spirit thou didst humble him and receive from heaven a wreath of victory." },
+          { "type": "theotokion", "text": "Theotokion: O Maiden, thou alone hast given birth unto the God of all Who is infinite, yet in His goodness confined Himself within thy womb. Him do thou entreat, that He save those who hymn thee." },
+          { "canon": "secondCanon", "text": "Having invested thyself with an innocent character, thou didst acquire the right noble beauty of the virtues, emulating, even unto death, the voluntary obedience of Christ, O all-blessed one." },
+          { "canon": "secondCanon", "text": "With thine absence of evil thou didst put the author of evil to shame, O father, and by thine endurance of temptations thou didst bring his prideful and vaunted malice down to the ground, O all-blessed one." },
+          { "canon": "secondCanon", "text": "Having mastered patient abstinence beforehand and severed the roots of the passions, O venerable one, covered with divine grace thou didst later adorn thyself with the raiment of dispassion." },
+          { "canon": "secondCanon", "text": "Having strengthened the state of thy soul with steadfast patience and endured the struggle of martyrdom all the days of thy life with valiant mind, O all-blessed one, thou wast shown to be one who earned a crown." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: God the Lord, Who became incarnate for our sake and was born of thee, is our creating might and hymn, as Isaiah proclaimed in prophecy." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee//\nplant the fear of Thee.",
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,//\nmy refuge and foundation.",
+        "troparia": [
+          { "text": "Moved by thy supplications, God delivered thee from bonds by the hand of the prophet, and thou didst elect to tread the way along the difficult path of asceticism." },
+          { "text": "Having forsaken the bitter tumult of life, thou didst approach the haven of abstinence and divine tranquility, O father Thomas, full of the grace of the Spirit." },
+          { "text": "He Who once used a pillar to guide Israel in traversing the desert, O all-blessed one, guided thee with a pillar of fire, perceiving the nobility of thy soul." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, we truly name thee the golden censer, the jar of manna, the divine mountain, and the beautiful palace of God." },
+          { "canon": "secondCanon", "text": "Entrusting thyself wholly to thy Creator and God, O venerable one, thou didst endure abasement at the hands of the tyrant." },
+          { "canon": "secondCanon", "text": "Thou didst lawfully show forth the endurance of suffering on earth, O ascetic; wherefore, heavenly gladness hath been given thee." },
+          { "canon": "secondCanon", "text": "True humility, long-suffering, patience, abstinence and obedience didst thou strictly observe, O most blessed one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: For our sake, O most pure one, the Fashioner of all hath taken physical form, receiving animate flesh from thee, O most holy Bride of God." }
+        ]
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "irmos2": "Beholding Thee, the Sun of righteousness,\nlifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud:\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "With the divine fire of asceticism thou didst consume the thorns of sin, shining forth with the splendor of miracles, O father." },
+          { "text": "Having cleansed the eyes of thy soul of the mire of the passions, O father, thou didst open the eyes of the blind." },
+          { "text": "Thou didst withdraw from the tumult of the world, O God-bearer, and hast received heavenly tranquility." },
+          { "type": "theotokion", "text": "Theotokion: O Sovereign Lady who knewest not wedlock, who conceived God without seed, deliver us from all temptations and grief." },
+          { "canon": "secondCanon", "text": "Having mortified the wisdom of thy flesh, O father Acacius, thou didst enliven thy soul and hast received a crown of righteousness, crying: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "Undertaking lengthy struggles, O father, thou didst show forth patient opposition all the days of thy life. Wherefore, after death thou didst cry out as one alive: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "With steadfast mind thou didst endure oppression for Christ, O blessed Acacius, thinking of Him suspended upon the Cross for the salvation of our race." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most pure one, thou art more pure than the heavens and the noetic hosts, having given birth to their Creator." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "irmos2": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "O venerable father, thou didst have Elijah the Tishbite piously directing thee to the deserts, who appeared to thee at night and taught thee divine mysteries." },
+          { "text": "Thou madest thine abode upon Mount Maleum as upon another Carmel, O wise and blessed one, delighting in divine visions and most gloriously receiving the grace to work wonders." },
+          { "text": "Preferring the narrow path to that which is wide, O father, thou didst joyfully attain unto the broad expanse of paradise; and in gladness dost partake freely of the tree of life." },
+          { "type": "theotokion", "text": "Theotokion: In that thou art compassionate, heal my heart, which hath been wounded by the assaults of the enemy, O pure one who hath ineffably given birth to Him Who was nailed to the Cross in the flesh." },
+          { "canon": "secondCanon", "text": "Manfully wounded with stripes and beatings all the days of thy life, enduring them mightily thou didst venerably achieve rest, O holy one." },
+          { "canon": "secondCanon", "text": "Having finished the good race, O innocent Acacius, as one free of labors and pangs thou hast received rest." },
+          { "canon": "secondCanon", "text": "Thy mind, nourished with pure thought, O God-bearing Acacius, hastened right fittingly to the Cause of all things." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The intelligence of neither angels nor mortals can speak of thy birthgiving; for it surpasseth every attainment of understanding." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Thou madest thine abode in a waterless desert, O venerable one, and with the rain of thy prayers thou didst entreat the Master to pour forth abundantly rich water." },
+          { "text": "Like the righteous Abraham of old thou didst journey to a far land, drawing nigh to God, and dwelling in the land of the meek." },
+          { "text": "Thou wast a true monk, O father Thomas, and after thy burial with spiritual power thou dost pour forth gifts of healing upon those in need." },
+          { "type": "theotokion", "text": "Theotokion: He Who created all things by His will, as He so desired, made His abode within the womb of her who knew not wedlock, for, in that He is compassionate, He wished to honor with incorruption those who were afflicted with corruption." },
+          { "canon": "secondCanon", "text": "Thou didst fall into blessed sleep, O blessed father, and even after death didst show thyself to be obedient to those who called thee; for he who is obedient never dieth." },
+          { "canon": "secondCanon", "text": "Having finished the good struggles, O divinely wise namesake of innocence, thou wast truly deemed worthy of incorrupt immortality, where, rejoicing, thou hast received crowns of victory." },
+          { "canon": "secondCanon", "text": "The divine, goodly and God-pleasing asceticism of thy life hath made many steadfast with the fear of God, and desire for the good things to come, O blessed Acacius." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Truly do we glorify thee, the Theotokos, with faith, as the one who conceived God and, without knowing wedlock, hast given birth to Him Who took form from thee who wast received by the holy temple." }
+        ]
+      },
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "With the dew of abstinence thou didst quench the fire of the passions, O father, and shining forth like the sun in the radiance of thy virtues, O blessed one, thou dost illumine the hearts of all who cry out: O God of our fathers, Blessed art Thou!" },
+          { "text": "By the power of Christ giving sight to the blind, the ability to walk to the lame, deliverance to the sorrowful and healing to the sick, O father Thomas, thou didst cry out: O God of our fathers, Blessed art Thou!" },
+          { "text": "O most noetically rich and blessed father, thou didst finish thy life in stillness, illumined with poverty, adorned with asceticism, and chanting to the Master with compunction of heart: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O pure Virgin, thou blessed one who knew not wedlock; setting aright the fallen, and delivering the sinful, do thou save me, the prodigal! Save me who cry out to thy Son: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "O venerable one who went to the Master with all thy desire, enduring vexation, dishonor and wounding, thou didst cry out: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "text": "Thy wounded mind, pondering the suffering and crucifixion of the Master and learning death, chanted: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "text": "Lying dead and breathless in the grave, according to the law of the dead, to him who spake to thee thou didst exclaim in a manner transcending nature, \"I am not dead!\", and thou criest out: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Virgin who hast given birth to the true Life for those who have been held fast by the law, thou hast raised up those who cry out: Blessed art thou among women, O most immaculate Lady!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,//\nand supremely exalt as Lord throughout all ages.",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Having reined in the rampant passions of the soul with the bridle of abstinence, thou didst show thyself to be like unto the immaterial angels, crying out: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Following the sacred life of Elijah the Tishbite, O most blessed one, thou didst ascend a mountain to converse with God, cleansing thy mind with fasting, and chanting: Bless the Lord, all ye works of the Lord!" },
+          { "text": "As one meek and innocent, thou livest in the land of the meek, O divinely wise one, chanting with all the venerable and elect: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: In that thou hast given birth to the Well-spring of life, O Virgin Theotokos, give my soul to drink of the water of life, for it wasteth away through the flame of sin; that I may glorify thee throughout all ages." },
+          { "canon": "secondCanon", "text": "Through mighty asceticism and active vision, O venerable father, thou didst join thyself to God, sundering the bonds of the body and laying waste to the flesh; and thou didst cry out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Reckoned and numbered with the martyrs of Christ, O venerable one, unceasingly hymning the Lover of mankind, thou prayest for us who praise thee and cry out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Having suffered on earth, O venerable one, thou hast found heavenly rest with the saints, sharing in their gladness and joy, and crying out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: He Who before was incorporeal hath assumed flesh, and the Creator hath taken form through thee, O all-immaculate one; for the Unapproachable One, having descended into thy most pure womb, was wrapped in a fleshly appearance, as He desired. Wherefore, we all call thee blessed, O Mary, Bride of God." }
+        ]
+      },
+      "ode9": {
+        "irmos": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,//\nHim we faithful with one accord magnify in song.",
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Having become poor in spirit, thou hast received the kingdom of heaven with all the elect, O father Thomas, filled with ineffable glory, receiving the reward for your pangs. Wherefore, with faith and love we call thee blessed." },
+          { "text": "The shrine of thy relics poureth forth rivers of healing for those who approach it with faith, drowning the passions of men's souls and relieving their bodily pains, O blessed Thomas, who dost ever pray with faith for those who call thee blessed." },
+          { "text": "Joining the splendid choirs of the venerable, O father Thomas, illumined noetically with never-waning radiance, illumine those who with faith keep thy divine memory, and grant that, by thy supplications, they may receive salvation." },
+          { "type": "theotokion", "text": "Theotokion: The shining radiance of all thy miracles dispelleth the gloom of the passions and sorrows and putteth forth the noetic light of gladness for those who magnify thee as the Mother of God, O pure and divinely blessed one." },
+          { "canon": "secondCanon", "text": "Adorned with the beauty of innocence and shining with the comeliness of the virtues, O father, thou didst mercifully join thyself to the Benefactor of all; wherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "text": "Obedient to the law of the Master, thou didst bow thy neck under the monastic struggle, O all-blessed father, and, emerging victorious, thou didst attain perfect guilelessness." },
+          { "canon": "secondCanon", "text": "Thou hast been deemed worthy to send up hymnody to God with the incorporeal ones, having preserved their manner of life and purity; and by patiently doing thy tasks thou hast received the glory of the martyrs." },
+          { "canon": "secondCanon", "text": "Accept from us this hymnody, O God-bearer, offered to thee from our heart, and through thine entreaties grant us forgiveness of sins and salvation, O most honored one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: With praises of confirmation, all of us, the faithful, honor thee as her who is truly the root of incorruption, O Virgin; for thou hast given birth for us to the hypostatic Immortality." }
+        ]
+      }
+    }
+  }
+}

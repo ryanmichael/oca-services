@@ -1,0 +1,197 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Eleutherius & Venerable Paul of Latros",
+    "feastKey": "ssEleutheriosPaulLatros",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 12-15.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-15.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of Eleutherius by Joseph in Tone I + Canon II of Paul of Latros in Tone I. Kontakion of Eleutherius (Tone II, 'The steadfast', with Ikos) at standard after-Ode-6 slot; Kontakion of Paul of Latros (Tone VIII, 'To thee the champion leader') at after-Ode-3 slot. Three sessional hymns: Eleutherius Tone I + Paul Tone VIII + Theotokion Tone VIII. Exapostilarion of the venerable Paul. No lauds in matins section. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Eleutherius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr Eleutherius"
+  },
+  "kontakion": {
+    "text": "We all praise thee as the adornment of priests\nand the proclamation of passion-bearers,\nO venerable hieromartyr Eleutherius,\nand we entreat thee:\nFrom multifarious misfortunes free those\nwho celebrate thy memory with love,//\npraying unceasingly for us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy hieromartyr Eleutherius",
+    "melody": "The steadfast"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "Having acquired a mind free of the passions, thou wast a most dutiful servant of God, and didst free from delusion those who hearkened well unto thee; and having suffered as priest and martyr, O Eleutherius, thou hast received a twofold crown. Pray thou, that we be saved.",
+        "tone": 1,
+        "label": "Sessional Hymn of the holy hieromartyr Eleutherius (after Ode 3)",
+        "melody": "Thy tomb, O Savior"
+      },
+      {
+        "text": "Steered by the power of the Almighty, and impelled by the mast and sail of the Cross, thou didst pass easily through the storm of life and hast reached the truly divine havens; and having acquired a heavy cargo of the virtues, thou didst bring it to the Master of all, and didst hear from Him: Well done, O good servant. Wherefore, O blessed Paul, entreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Glory — Sessional Hymn of the venerable Paul of Latros",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Having fallen into the temptations of great cunning laid for me by enemies visible and invisible, caught in the tempest of my countless offenses, I make haste to the haven of thy goodness, O pure one, as to my fervent assistance and protection. Wherefore, O most pure one, pray thou earnestly to Him Who becameth incarnate of thee without seed on behalf of all thy servants who unceasingly entreat thee, O most pure one, ever beseeching Him to grant remission of sins unto those who hymn thy glory as is meet.",
+        "tone": 8,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Eleutherius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr Eleutherius"
+    },
+
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I of Eleutherius by Joseph in Tone I + Canon II of Paul of Latros in Tone I. Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "From thy youth, O wise one, thou didst manfully desire that which passeth understanding\nand didst forsake the tumult of the world.\nFor thy divine way of life thou didst become a dwelling-place of the Trinity,\nillumining those who have recourse to thee with faith.//\nWherefore, we cry out: Rejoice, O most noetically rich Paul!",
+        "tone": 8,
+        "label": "Kontakion of the venerable Paul of Latros",
+        "melody": "To thee, the champion leader"
+      },
+
+      "kontakion": {
+        "text": "We all praise thee as the adornment of priests\nand the proclamation of passion-bearers,\nO venerable hieromartyr Eleutherius,\nand we entreat thee:\nFrom multifarious misfortunes free those\nwho celebrate thy memory with love,//\npraying unceasingly for us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy hieromartyr Eleutherius",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "As Thou alone art the compassionate God Who is the Lover of mankind, O loving Bestower of life, look Thou upon the darkness of my soul, and with Thine omnipotent right hand free me from the oppression of the passions, O Word, that I may hymn Thy hierarch Eleutherius; for, truly acknowledging Thee from his mother's womb, he became sanctified, and like Samuel was offered by his sacred mother to Thee, the Creator, unceasingly praying for us all."
+      },
+
+      "ode1": {
+        "irmos": "Let us all chant a triumphant hymn unto God\nWho wrought wondrous miracles with His upraised arm,\nand saved Israel,//\nfor He hath been glorified.",
+        "irmos2": "Christ is born, render ye glory.\nChrist cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted.\nO all the earth, sing unto the Lord,//\nand sing praises in gladness, O ye people, for He hath been glorified.",
+        "troparia": [
+          { "text": "By thy radiant supplications, O martyr Eleutherius, free me, who am held captive by the darkness of the passions, that I may hymn thee, the servant of Christ, with divine hymns." },
+          { "text": "Thou didst shine forth with the most pure rays of suffering, O most sacred one, with thy blood didst thou dye thy priestly raiment, and become radiant through the Spirit." },
+          { "text": "Cleaving unto God from thy youth with a most pure mind, thou didst drive carnal understanding away from thy soul and became enriched with the abundant grace of miracles." },
+          { "type": "theotokion", "text": "Theotokion: Like a throne of fire thou didst bear the Creator, and like an animate bridal-chamber and a beautiful palace thou didst contain the King Who became as we are, apart from change and mingling of natures." },
+          { "canon": "secondCanon", "text": "New hymnody of praise do I hasten to bring to mine open lips, O God-bearing Paul. By thy prayers grant me the grace to speak, O venerable one, that I may recount thine honored struggles." },
+          { "canon": "secondCanon", "text": "Taking up the yoke of the Lord from thy youth, O venerable one, and sowing the wheat of the Spirit in the furrows of thy heart, thou didst reap the grain which maketh firm men's souls, O divinely blessed one." },
+          { "canon": "secondCanon", "text": "Through manifold efforts thou didst receive the kingdom on high, having lived on earth like an incorporeal being and passed through life like an angel in thy body. And now, standing in the highest before the Trinity, be thou mindful of us." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Incorporeal and supremely good One, receiving my corruptible flesh from thy body, and lying in the manger of His own will, O Bride of God, hath deified that which He received by uniting Himself with it." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Let my heart be established in Thy will O Christ God,\nWho hath established a second heaven over the waters,\nand founded the earth upon the waters,//\nO all-powerful One.",
+        "irmos2": "To the Son who was begotten of the Father\nwithout change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud://\nThou hast raised up our horn, holy art Thou, O Lord.",
+        "troparia": [
+          { "text": "O wise one who didst will to suffer for Christ, thou didst endure the wounding of thy body, finding delight in thy pangs and afflictions; wherefore, thou hast now received a life without pain." },
+          { "text": "Holding fast with the fervent desire for the Creator, O divinely wise spiritual athlete Eleutherius, bedewed by the fire of the Spirit thou didst submit thyself to fiery testing." },
+          { "text": "Shown forth as most sacred among priests and a martyr most steadfast among the martyrs, O blessed one, thou hast received a twofold crown, continually beholding the face of God." },
+          { "type": "theotokion", "text": "Theotokion: Thou didst bud forth the Staff of strength whereby we are made steadfast; for the staff of Aaron, which once put forth branches, prefigured thee, O land untouched by the plough, O pure turtle-dove, O Ever-virgin!" },
+          { "canon": "secondCanon", "text": "O thy courage! O the valor of thy soul, O glorious one! For, desiring to break the jaws of the invisible lions, thou didst carry two large stones at night, as a weight upon thy shoulders." },
+          { "canon": "secondCanon", "text": "Who can fittingly recount thy struggles? For, treading the hard paths in the wilderness, thou didst eat wild plants, learning to sweeten thy meals with the pangs of asceticism." },
+          { "canon": "secondCanon", "text": "Moses the God-seer of old was deemed worthy of a divine vision in the bush, and the most honored Paul manifestly recognized within himself the fire which appeared from on high, burning without being consumed." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Word, Who as God art beginningless in essence and art equally worshipped with the Father: in being born of the Virgin Thou hast received a beginning in time, manifesting Thyself as man by nature; and becoming a babe, O Christ, Thou didst reveal Thyself as an infant wrapped in swaddling bands." }
+        ]
+      },
+      "ode4": {
+        "irmos": "Foreseeing in the Spirit O Prophet Habbakuk,\nthe incarnation of the Word,\nthou didst proclaim, crying aloud:\nWhen the years draw nigh, Thou shalt be known;\nwhen the season cometh, Thou shalt be shown forth!//\nGlory to Thy power, O Lord!",
+        "irmos2": "Rod of the root of Jesse,\nand flower that blossomed from his stem,\nO Christ, Thou hast sprung from the Virgin.\nFrom the Mountain overshadowed by the forest\nThou hast come, made flesh from her that knew not wedlock,//\nO God who art not formed from matter. Glory to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Neither the gaping mouths of the lions, nor the raging of the fire, nor cruel threats were able to weaken the endurance of thy strength, O initiate of the sacred mysteries; but, as firm as adamant, thou didst delight in tortures, aflame with divine zeal." },
+          { "text": "Full of life-bearing waters, thy mouth poured forth rivers of divine doctrines, O hieromartyr, engulfing the mockery of the iniquitous and watering the hearts of those who acknowledge Christ as God." },
+          { "text": "Glorifying thee greatly, thy Creator, for Whom thou wast zealous to suffer, O spiritual athlete, sent a dove bearing angelic food to thee who didst become angelic through the most radiant splendors of suffering." },
+          { "type": "theotokion", "text": "Theotokion: The angelic armies were in awe, beholding how He Who is invisible became visible, through thee assuming a guise like unto us, O Virgin Birthgiver of God. Him do thou beseech, that He grant salvation unto all who glorify thee with faith." },
+          { "canon": "secondCanon", "text": "Once, in the time of thy youth, when thou wast overcome by sleep and didst weaken while standing all night, thine honored teacher Peter, seeing this, smote thee in the face; and, having smote thee, he straightway soothed thee." },
+          { "canon": "secondCanon", "text": "Conversing privily with God, having drawn nigh to Him directly, our father Paul was never overcome by sleep after the blow dealt him by his teacher; and becoming like unto the incorporeal ones, he ever remained vigilant." },
+          { "canon": "secondCanon", "text": "Shown forth as a most sacred vessel, thou didst receive the heavenly myrrh of Christ in thy heart; and, having brightly lighted the lamp of thy patient abstinence with a virtuous life, thou didst hasten to the divine Bridegroom." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Word Who hast heaven for Thy throne and the earth for Thy footstool, becoming incarnate Thou didst enter the womb of the Virgin and made Thine abode in a wretched cave; yet as King and the God-man Thou didst receive gifts from the magi, the kings of Persia." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Grant us Thy peace, O Son of God,\nfor we know no other God than Thee,\nand we call upon Thy Name,//\nfor Thou art the God of the living and the dead.",
+        "irmos2": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel,\ngranting us peace.\nWherefore guided towards the light of the knowledge of God,//\nand watching by night we glorify Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "The most wicked enemy, plotting to lead thee astray through deceitful words, O martyr, was shown to be put to scorn, the most crafty sage of malice being outwitted by thy wisdom." },
+          { "text": "Mounting the chariot of the divine virtues, O glorious one, thou didst reach the summit of martyrdom and didst cast down the vaunted pride of the wicked demons." },
+          { "text": "Desiring to behold the beauty of Jesus, O venerable one, thou didst adorn thyself with the beauty of martyrdom, and departed to Him, crowned with a wreath of splendor." },
+          { "type": "theotokion", "text": "Theotokion: Every mind marvels at the wonder of thee, O pure one; for thou hast given birth to God in the flesh and fed the Nurturer with milk, without having experienced the temptation of a man, as thou thyself knowest." },
+          { "canon": "secondCanon", "text": "Having cleansed thy mind of the mire of the passions, thou didst become an unblemished mirror, ever receiving the radiance of the Spirit, wherefore vanquished, the tempter who taught our ancestors the weakness of evil in the garden was put to shame by thee." },
+          { "canon": "secondCanon", "text": "Having acquired Christ God, Who is Wisdom, abiding in thy heart, thou didst trample beneath thy beautiful feet the foolish sage of evil who attempted to deceive thee with divers ideas, O divinely wise Paul." },
+          { "canon": "secondCanon", "text": "As a receptacle of the Light, a son of the Day, as though he were a lion thou didst deceive the prince of darkness who assailed thee with earthquakes and a rain of stones, seeking to terrify thee with his arrogance, and raging against thee, O Paul." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Incarnate of thee, O Ever-virgin Maiden Bride of God, the beginningless Word, Who through thee lowered Himself to lie as a babe in a manger of dumb beasts, hath delivered from irrationality our race, that of the first Adam who was driven from Eden." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Emulating the Prophet Jonah, I cry aloud:\nFree Thou my life from corruption, O Good One;//\nand save me who crieth out: O Savior of the world, Glory be to Thee!",
+        "irmos2": "The sea monster spat forth Jonah as it had received him,\nlike a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh,\ncame forth from her yet kept her incorrupt.\nFor being Himself not subject to decay,//\nHe preserved His Mother free from all harm.",
+        "troparia": [
+          { "text": "The excellent shepherd of the flock of Christ, the most eloquent pastor, the path of struggles, is glorified, having glorified God with his members." },
+          { "text": "Given life through visions of God, thou didst steadfastly render lifeless the greatly crafty foe, O ever-memorable wise one, glory of the martyrs and rule of the priesthood." },
+          { "text": "Enduring wounds, entering the fire of thine own will, thou didst put down the onslaughts of the savage beasts, possessing constant love for the Creator." },
+          { "type": "theotokion", "text": "Theotokion: Revealed as a tabernacle of sanctity, O Mary, sanctify my wretched soul, which hath been defiled by the pleasures, and make it a receptacle of divine glory." },
+          { "canon": "secondCanon", "text": "As the Savior, Christ our God fed a vast multitude with a few loaves of bread, so did Paul, the initiate of Christ's mysteries, with the little water contained in a tiny cruse gladden a multitude, filling them to satiety with its abundance." },
+          { "canon": "secondCanon", "text": "By thy supplications, O wondrous one, thou didst cause burning heat to cease and lifted a dire famine; and with waters poured forth from on high thou dost irrigate the earth and give drink to its dry furrows, causing it to put forth richly, multiplying the crops thereof." },
+          { "canon": "secondCanon", "text": "Amid thy pangs thou didst receive the life which is devoid of pain, and thou causest the affliction of cruel pangs to cease for those who with faith ask to receive healing from thee, O all-honored one, thou adornment of the fathers. Wherefore; loose thou the pangs of my body and soul, I pray thee." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Word of the Father, the timeless Son of God, the pre-eternal Offspring of the pure and divine Maiden and Mother, Who as man became a babe and as God is uncontainable, is now contained by the cave. Wherefore, marveling, we all worship the great mystery." }
+        ]
+      },
+      "ode7": {
+        "irmos": "Thy children who were in the furnace O Savior,\nwere neither touched nor troubled by the fire.\nWhereupon the three sang, as with a single mouth\nThy praises and blessed Thee, saying://\n'O God of our fathers, Blessed art Thou.'",
+        "irmos2": "Scorning the impious decree of the godless one,\nthe Children brought up together in godliness\nfeared not the threat of fire,\nbut standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Shattered, O wise one, thou didst cry out: \"May Christ now be magnified in my flesh! I fear neither the boiling of the cauldron, nor am I daunted by death or the assaults of wild beasts, for the sake of life!\"" },
+          { "text": "\"Seeking the beauty of the one God, I desire to receive His glory alone! Let my whole body be broken and burned!\" didst thou cry aloud, O glorious one; \"I seek the freedom which doth enslave me to Christ!\"" },
+          { "text": "Looking toward the life to come, O blessed one, thou didst truly die to the world, and, burned with the wounds of torture, thou didst shine forth like gold and hast been laid up in the treasuries of the mansions of heaven." },
+          { "type": "theotokion", "text": "Theotokion: The most pure Word of God, Who was born of thy womb, found thee alone to be most pure, O all-immaculate Bride of God, purifying us the faithful of the defilements which have come upon us through the passions and lack of restraint." },
+          { "canon": "secondCanon", "text": "Shining forth like the sun, thou didst straightway illumine the East, and ascending thy pillar, standing as in the midst of the heavens, thou hast gladdened the whole world with thy teachings, crying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst withdraw, fleeing the billows of the world, and, making thine abode in the wilderness, as saith the Psalms, O divinely blessed one, thou didst receive God in thy heart, Who preserved thee with angelic protection." },
+          { "canon": "secondCanon", "text": "With spiritual eyes thou didst behold the tortures of the next world, and pained in heart by thy loving soul, thou didst ever water thyself with tears, not like David, who only at night drenched his couch with tears." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Incorporeal One is become incarnate, the Timeless One cometh under time, the Lord Who wrappeth the earth in mist is wrapped in swaddling bands for our sake, Himself appearing, past understanding, unchanged through her who knew not a man." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Him of whom the angels and all the hosts of heaven are in awe\nas their Lord and Creator,\nye priests hymn, ye children praise,\nye peoples bless and supremely exalt//\nthroughout all ages.",
+        "irmos2": "The furnace moist with dew showed forth an image\nof a wonder past nature,\nfor it burned not the youths whom it had received;\nneither did the fire of the Godhead consume the Virgin\nwhen it descended into her womb.\nWherefore, chanting, we sing://\nLet all creation bless the Lord and supremely exalt Him throughout all ages!",
+        "troparia": [
+          { "text": "Blossoming, thou didst put forth a garden beauteous in the splendors of martyrdom, O adornment of the martyrs. Ye have now shown yourselves to be flowers of paradise, emitting a divine fragrance in a most godly manner." },
+          { "text": "Thy mother mingleth her own blood with the outpouring of the blood of thee who wast born from her; for, embracing thy body, O wise one, she was slain by the sword and liveth forevermore." },
+          { "text": "Thy shrine poureth forth the waters of healings and rivers of miracles upon those in need, who wash away the defilements of soul-destroying passions, O martyred hierarch, throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: Like rain Christ, the only Benefactor, descended upon thy womb, O Virgin, truly watering all creation, and drying up the turbid rivers of the madness of idolatry." },
+          { "canon": "secondCanon", "text": "With David thou didst chant a melodious hymn, well-tuned on all strings, saying: \"O King of all, Thy consolations have divinely gladdened my soul by Thy loving gesture!\" Wherefore, rejoicing, thou didst cry aloud: Let all creation bless the Lord and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "Granting thee that which is contrary to carnal love and preserving thee from thy youth with His right hand, the Creator thrice divinely fed thee with greens who from childhood trampled down every lust; and by the hand of an angel He gave such to thee who, loving the life of the angels, hast been glorified, O God-bearing Paul." },
+          { "canon": "secondCanon", "text": "The three men, bound and condemned, were able to escape execution as deserters from general service, invisibly freed from their bonds by thy name, O all-glorious father; for thou didst deliver those in fetters from misfortunes, and they were borne away by the hand alone of Him Who holdeth all things." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: She who gave birth to the Sun of righteousness by a star summoneth the magi with gold, myrrh and frankincense, who worship Him Who hath newly and immutably become a babe. Him the shepherds magnified and the multitude of angels hymned, glorifying Him as God in essence and man by nature." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The ever-flowing wellspring of life,\nlight-bearing candlestick of grace,\nthe animate temple, and most pure cloud,\nwider than the heavens and the earth,//\nthe Theotokos do we the faithful magnify.",
+        "irmos2": "A strange and most wondrous mystery do I see:\nthe cave is heaven;\nthe Virgin the throne of the cherubim;\nthe manger a room, in which Christ God,\nWhom nothing can contain, is laid.//\nWhom we praise and magnify.",
+        "troparia": [
+          { "text": "As the mouth of God, rescuing vain-minded people from the mouth of the alien, thou didst show them to be heirs of grace; and suffering mightily, thou livest with priests and passion-bearers, O Eleutherius." },
+          { "text": "Let Eleutherius be faithfully praised: the pure phial of the Spirit, the beautiful abode of the virtues, the innocent lamb, the ever-burning lamp, the foundation of hierarchs and martyrs." },
+          { "text": "Truly thou dost live in never-waning light, having become the most radiant light of the Sun; wherefore, by thy supplications to God, O Eleutherius deliver from the darkness of the passions those who celebrate thy radiant memory today." },
+          { "type": "theotokion", "text": "Theotokion: Spare us who hymn Thee, O Lord, Thou ineffable Offspring of the Virgin, in that Thou alone art our Benefactor Who lovest mankind, delivering Thy servants from perils, passions and tribulations." },
+          { "canon": "secondCanon", "text": "Thy boldness crieth out to God, and thou hast wrought wondrous works even after thy departure unto Him; for thou hast freed many from divers infirmities by the oil of thine effulgence." },
+          { "canon": "secondCanon", "text": "Possessed of a most radiant soul, O venerable one, and wholly anointed as with the ointment of grace, by oil thou dispellest demons, cleansing lepers and those confused in mind, and causing cruel scabs to fall away." },
+          { "canon": "secondCanon", "text": "Stumbling, Satan the most wicked one, falleth headlong like a most savage wild beast, upon beholding thee stretching forth the oil of thy lamp like myrrh for the healing of divers ailments; and, seized with fear, he hath been vanquished." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In latter times, O Mother who knew not a man, thou didst conceive in thy womb the Son Whom the Father begat incorruptibly before time. Him do the heavens show forth by the star and the earth by a cave in the ground." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "As David saith, thou didst flourish in the house of the word like a palm-tree, O venerable father, now multiplying the fruits of thy labors a hundredfold: Wherefore, drowning the hordes of the demons in the showers of thy tears, O blessed Paul, thou hast received honor from Christ O all-wise one, and a crown of victory, and the grace of rich and abundant miracles.",
+      "label": "Exapostilarion of the venerable Paul of Latros",
+      "melody": "With the disciples let us ascend"
+    }
+  }
+}

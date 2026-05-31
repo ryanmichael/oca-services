@@ -1,0 +1,193 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Anastasia the Roman & Venerable Abramius the Recluse",
+    "feastKey": "ssAnastasiaAbramius",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 10-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-29.pdf",
+    "_note": "Two interleaved festal canons: Canon I of Anastasia the Roman (Joseph, Tone VIII) + Canon II of Abramius the Recluse (Joseph, Tone VIII). Kontakion of Anastasia (Tone III) at after-Ode-3 slot; Kontakion of Abramius (Tone III, with ikos) at standard after-Ode-6 slot. Sessional hymns: Anastasia Tone VIII + Abramius Tone I (Glory) + Theotokion Tone I. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
+  },
+
+  "troparion": {
+    "text": "Thy ewe-lamb Anastasia, O Jesus crieth out with a loud voice: * \"Thee do I love, O my Bridegroom, * and, seeking Thee, I endure suffering. * In Thy baptism I am crucified and buried with Thee. * I suffer for Thy sake, that I may reign with Thee; * I die for Thee, that I may live with Thee. * Accept me, who with love sacrifice myself for Thee, * as an unblemished offering!\" ** By her supplications, in that Thou art merciful, save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of St. Anastasia the Roman"
+  },
+  "kontakion": {
+    "text": "On earth thou wast revealed to be an angel in the flesh, * and through fasting thou didst become like a planted tree, * thriving on the waters of abstinence, * and washing defilement away with the torrents of thy tears. ** Wherefore, thou hast been revealed as a divine dwelling of the Spirit, O Abramius.",
+    "tone": 3,
+    "label": "Kontakion of Venerable Abramius",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
+
+    "sessionalHymns": [
+      {
+        "text": "With the dew of abstinence thou didst quench the flame of the passions in thy youth, and with the fire of thy blood thou didst reduce all deception to ashes, bringing thy precious virginity and valiant suffering to the Word, thy Bridegroom, as a dowry. Wherefore He lead thee, into the bridal chamber of glory as one who wast splendidly courageous and trampled the serpent underfoot, O much-suffering Anastasia. Entreat Christ God, that He grant remission of sins unto those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of St. Anastasia the Roman (after Ode 3)",
+        "melody": "Of the Wisdom"
+      },
+      {
+        "text": "Emulating Abraham of old, O father Abramius, thou didst depart from thy kinsmen in the flesh, submitting to the calling of our God. Wherefore, having fasted, thou didst show thy soul to be more brilliant than the rays of the sun, O divinely wise and all-blessed one.",
+        "tone": 1,
+        "label": "Glory — Sessional Hymn of Venerable Abramius",
+        "melody": "Thy tomb, O Savior"
+      },
+      {
+        "text": "Do thou guide to the path of repentance, us who have ever wandered away into the trackless wastes of evil and have angered the supremely good Lord, O blessed Mary who knewest not wedlock, thou refuge of despairing men and dwelling-place of God.",
+        "tone": 1,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "troparion": {
+      "text": "Thy ewe-lamb Anastasia, O Jesus crieth out with a loud voice: * \"Thee do I love, O my Bridegroom, * and, seeking Thee, I endure suffering. * In Thy baptism I am crucified and buried with Thee. * I suffer for Thy sake, that I may reign with Thee; * I die for Thee, that I may live with Thee. * Accept me, who with love sacrifice myself for Thee, * as an unblemished offering!\" ** By her supplications, in that Thou art merciful, save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of St. Anastasia the Roman"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of Anastasia the Roman by Joseph in Tone VIII + Canon II of Abramius the Recluse by Joseph in Tone VIII. Octoechos canons omitted.",
+
+      "kontakionAfterOde3": {
+        "text": "Cleansed by the waters of virginity, O venerable Anastasia, * and crowned with the blood of martyrdom, * thou dost grant healing of infirmities * and salvation unto those in need * who have recourse to thee with their whole heart; * for Christ granteth might to thee, ** pouring forth ever-flowing grace.",
+        "tone": 3,
+        "label": "Kontakion of St. Anastasia the Roman",
+        "melody": "Today the Virgin"
+      },
+
+      "kontakion": {
+        "text": "On earth thou wast revealed to be an angel in the flesh, * and through fasting thou didst become like a planted tree, * thriving on the waters of abstinence, * and washing defilement away with the torrents of thy tears. ** Wherefore, thou hast been revealed as a divine dwelling of the Spirit, O Abramius.",
+        "tone": 3,
+        "label": "Kontakion of Venerable Abramius",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Having spurned corruptible things, thou didst receive incorruptible beauty; disdaining the pleasures of the flesh, thou didst come to love purity from thy childhood, O wise one. Wherefore, fleeing a worldly bridal-chamber, and rejecting a noble spouse and thy parents, thou didst manifestly desire the one, loving God, truly loving Him with all thy soul and heart, O father; for which cause thou hast been revealed as a divine dwelling place of virginity and of purity of spirit, O Abramius."
+      },
+
+      "ode1": {
+        "irmos": "Let us sing unto the Lord,\nwho led His people through the Red Sea:\nfor He alone hath gloriously been glorified.",
+        "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "O divinely wise one, grant thou enlightenment to me who honor this thy light-bearing commemoration, driving darkness from my soul." },
+          { "text": "From childhood thou didst offer thyself wholly to thy Creator, and with the fire of abstinence thou didst utterly consume the passions of thy body." },
+          { "text": "Thou didst ascend the heights of torment, O martyr, without pitying thy flesh, and as a virgin wast deemed worthy of the noetic bridal chamber." },
+          { "type": "theotokion", "text": "Theotokion: We honor thee, O Maiden, as the ladder reaching to heaven, whereon God Who hath made mortals heavenly established Himself." },
+          { "canon": "secondCanon", "text": "Resplendent with divine brilliance, O all-blessed Abramius, by thy supplications deliver those who celebrate thy light-bearing feast from the gloom of the passions." },
+          { "canon": "secondCanon", "text": "Divine desire set thy soul afire and quenched the burning of the flesh, O blessed father, causing thee to live on earth immaterially." },
+          { "canon": "secondCanon", "text": "Having mortified thy members on earth with fasting and all manner of sore afflictions, O wise father, thou wast deemed worthy of a better life in the heavens, O God-bearing Abramius." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Word of God the Father becameth supra-naturally incarnate of thy sacred blood, O Virgin Mary. Him do thou entreat, that He mortify the movements of my flesh." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,\nand my spirit doth hymn Thee.",
+        "irmos2": "O Lord, Creator of the vault of Heaven\nand Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "Thou didst stand before the tribunal of the tyrant, preaching Christ, the Word of God, the Maker and Master of all, O glorious one." },
+          { "text": "When thou wast given over to be a spectacle, O glorious one, the beauty of thy heart revealed thee to those who looked on as most comely." },
+          { "text": "Christ gaveth thee inexhaustible riches of healing, O maiden, for thou didst willingly love His poverty." },
+          { "type": "theotokion", "text": "Theotokion: With the fire of thy prayers consume thou the tinder of my sins, O Mother of the Light, bringing to me the divine dew of remission." },
+          { "canon": "secondCanon", "text": "Desiring the End of all desire in every way, O God-bearer, thou wast beyond the world and the flesh. Wherefore, thou hast received transcendent glory and everlasting delight, O father." },
+          { "canon": "secondCanon", "text": "A living temple of the all-accomplishing Spirit wast thou revealed to be, O father, having shut thy body up in a hut, O venerable one. Wherefore, thou wast resplendent with rays of the virtues, being deified in a sacred manner, O blessed Abramius." },
+          { "canon": "secondCanon", "text": "By the husbandry of hardship thou didst harvest the ripe grain of the virtues an hundredfold, wherewith those who celebrate thine honored repose with reverence are fed." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In thee, O all-holy one, the Cause of all made His abode as He so desired in the great abundance of His tender compassion; and He hath sanctified human nature which in the beginning fell headlong through transgression." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "The most iniquitous ones condemned thee, who from thy youth didst bear the most easy yoke of Christ, O martyr, to bear also a yoke of iron." },
+          { "text": "With drops of thy blood thou didst quench the embers of polytheism; and with the rays of thy miracles thou didst utterly consume the tinder of the passions." },
+          { "text": "The most wicked one, having stripped thy body naked, could not strip thee of grace; and he became the cause of thy receiving a most wonderfully woven seamless garment from on high." },
+          { "type": "theotokion", "text": "Theotokion: Even after giving birth thou didst remain a pure virgin, as thou wast before birthgiving; for thou didst bear a young babe Who is known to exist from before the ages." },
+          { "canon": "secondCanon", "text": "Having washed away defilement of soul with the streams of thy tears, thou didst become a divine and honorable habitation of the Spirit, O all-blessed father." },
+          { "canon": "secondCanon", "text": "Thou didst keep to all-night vigil, unceasing prayer, avoidance of any passionate attachment, love unfeigned and perfect faith." },
+          { "canon": "secondCanon", "text": "As a most true favorite of God, O venerable Abramius, thou didst receive the grace to heal sufferings and to drive out unclean spirits." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Theotokos, Mother and ever-Virgin, by thy supplications deliver me who am held fast by despondency and am now drowning in sin." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,\nand we know none other besides Thee.",
+        "irmos2": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Thou wast revealed to be unconsumed by the material fire, O martyr Anastasia, for the fire of the heart of divine love bedewed thee." },
+          { "text": "Adorned by blows to thy face, O martyr, thou didst repel the vile ignorance of the enemy." },
+          { "text": "Stretched out on the tree, O divinely wise Anastasia, thou didst emulate the divine suffering of thy Bridegroom with love." },
+          { "type": "theotokion", "text": "Theotokion: We hymn thee, O all-hymned Lady Theotokos, for thou hast given birth in the flesh unto the all-hymned God, O most pure one." },
+          { "canon": "secondCanon", "text": "Like a fruitful branch thou didst put forth the grapes of the divine virtues, O father Abramius, pouring forth the wine of compunction, dispelling the drunkenness of the passions from the souls of men, and making glad the hearts of the faithful." },
+          { "canon": "secondCanon", "text": "Divers temptations did the most wicked serpent raise against thee, O God-bearing father, but thou didst slay him with the sword of the Cross; and by righteous judgment thou didst receive from God a crown of victory, O divinely wise Abramius." },
+          { "canon": "secondCanon", "text": "Having become through faith a house of the sanctity of the divine Spirit, O father, thou didst erect a sacred house; and having with thine instructions converted the unhallowed council of unholy falsehood, thou didst consecrate them all to God." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Enlightened by the divine Spirit, O most pure one, with sacred voices the hallowed prophets proclaimed thee beforehand to be the Virgin maiden from whom God the Word became incarnate in His infinite tender compassion, in a manner beyond cause and understanding." }
+        ]
+      },
+      "ode6": {
+        "irmos": "O Thou that puttest on light as a garment\ngrant me also a robe of light,\nO All-merciful Christ, our God.",
+        "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Thy body, wracked with wounds, revealed the rightness of thy conscience to Christ our God, O spiritual athlete." },
+          { "text": "Thou wast suspended aloft, O right laudable martyr, enduring wounds and preserving the nobility of thy soul unharmed." },
+          { "text": "Thou didst endure the removal of teeth, hands and feet, O much-suffering martyr, lifting thine eyes unto Christ thy Bridegroom." },
+          { "type": "theotokion", "text": "Theotokion: Having given birth unto God Who is the Lover of mankind, O right loving Sovereign Lady, entreat Him, that we be delivered from the fire of Gehenna." },
+          { "canon": "secondCanon", "text": "Those who were in the darkness of deception, found thee to be a beacon guiding them straight to the paths of life, O God-bearing Abramius, putting away the darkness of ignorance, and were then revealed to be luminous by the divine Faith." },
+          { "canon": "secondCanon", "text": "Having vigilantly entreated God, thou didst send the enlightenment of salvation upon those who were held fast in the night of the madness of idolatry, O divinely wise Abramius; and through grace showed them all forth as children of the light and the day." },
+          { "canon": "secondCanon", "text": "Having peacefully come to the end of thy life amid a life of threefold tumult, O all-blessed Abramius, with godly hope thou didst pass on and attain unto the calm haven of the heavenly kingdom and divine splendor." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Through thy mediation, O Mother of God, raise me up who am heavy with the slumber of despondency, and grant that I sleep not the sleep of death, O Virgin, for I hold thee to be the intercessor and guide of my life." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "irmos2": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "text": "With the virgins thou dost rejoice where the sounds of the voices of those who keep festival are, O spiritual athlete, chanting to God the Creator: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "Beholding thy limbs broken and enduring the rending away of thy nails, thou didst offer thyself to God as a sacrifice, chanting: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "Thou wast shown to be like a vine, thy hands and feet pruned like branches, O divinely wise one, pouring forth for us noetic wine which consoleth our hearts, dispelling the drunkenness of the passions." },
+          { "type": "theotokion", "text": "Theotokion: The Undefiled One, having clad Himself in all of man save sin, issued forth from thy womb as a mortal, O pure one. Him do thou entreat, that He save those who honor thee with faith." },
+          { "canon": "secondCanon", "text": "That thou mightest receive the kingdom on high and ineffable glory, O wise one, as one intelligent and knowledgeable thou didst wisely despise downtrodden and corruptible glory." },
+          { "canon": "secondCanon", "text": "When the wicked wolf deceitfully rent thy ewe-lamb apart, O wise one, thou didst break his jaws; and as a most exemplary shepherd thou didst bring her to life." },
+          { "canon": "secondCanon", "text": "Obeying the Master's laws, thou didst seek that which had gone astray, and, having found it, like a shepherd thou didst take it upon thy shoulders, and didst lead it into the fold of repentance." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou alone, O Virgin, hast given birth to One of the Trinity, Who is seen in two natures and one hypostasis. To Him do we chant: Blessed art Thou, O Lord our God, throughout the ages!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "By Thy grace the children became vanquishers\nof both the tyrant and the flames,\ncarefully observing Thy commandments,\nwherefore they cried aloud:\nBless the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "Having prevailed like a youth, O most laudable spiritual athlete, thou didst win a victory over deception; for thou didst endure the deprivation of hands and feet and the removal of thy breasts and teeth, chanting with joy, O martyr: Ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Resplendent as the sun in the radiance of virginity, with the beauty of torment thou didst shine forth and didst illumine the world with the brilliant effulgence of thine endurance, O spiritual athlete, crying out: Ye children bless; ye priests hymn; ye people supremely exalt Christ throughout all ages!" },
+          { "text": "By thine entreaties, O bride of God, cleanse thou my soul, which hath been defiled by the passions and darkened by the assaults of the serpent of evil, and with thy radiant overshadowing, O martyr Anastasia, illumine it, that I may cry out: ye priests hymn; ye people supremely exalt Christ throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: The virgin Anastasia, desiring thee, the pure and unblemished one, kept her body and soul untainted, reducing to ashes the burning of the passions with patience; and having endured the temptation of many torments, she now rejoiceth with thee in the mansions of heaven, in gladness throughout all ages." },
+          { "canon": "secondCanon", "text": "The serpent malefactor cast thy pure dove into the pit of perdition; but thou didst all-wisely buy her out, O father, chanting: Bless the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "As thou didst make thy rounds in this life, O father Abramius, so after thine end thou hast been shown by the divine grace of the Spirit to be a physician of the sick, chanting: Bless the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "Shining forth in guilelessness, righteousness, chastity and faith, O blessed and venerable one, thou wast reckoned among the angels, chanting: Bless the Lord, ye works, and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou hast been revealed to be the all-holy dwelling of the Stream of life, from whence drinking, we who have been dead inherit life, crying out: Bless the Lord, ye works, and supremely exalt Him throughout the ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "irmos2": "Saved by thee, O pure Virgin,\nwe confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts\nthee do we magnify.",
+        "troparia": [
+          { "text": "Thou wast hung upon a tree, bringing to mind the blessed suffering of the Word of God, and endured the cutting off of thy hands and feet, the uprooting of thy teeth, and the severing of thy tongue and breasts, O pure Anastasia, glory of monastics and adornment of martyrs." },
+          { "text": "Like a bride wast thou adorned with comeliness, having betrothed thyself to the Bridegroom by well accomplished sufferings, and as one chosen thou dost rejoice within His splendid chambers, bearing the lamp of virginity. And now thou reignest throughout the ages in splendor with Him Who liveth, O Anastasia." },
+          { "text": "Thy pangs let fall a sweetness which taketh away the bitterness of sin, and thy shrine poureth forth rivers of healings drowning all sufferings and cruel afflictions, unto the glory of the Savior Who glorifieth thee as is meet, O honored Anastasia." },
+          { "text": "Strengthened by Thy Cross, O almighty Christ, women have become brave and have manfully crushed the head of the exceedingly crafty foe, O Word of God. And having received a dwelling place of joy in paradise, they have attained wondrous deification, hymning Thee." },
+          { "type": "theotokion", "text": "Theotokion: Thy martyr, O Lord, adorned with rays of virginity and wearing the purple vesture of the blood of her torment, in that she knew Thee to have taken flesh from a woman, hath been gloriously brought before Thee, our God Who reignest over creation, in the entourage of Thy mother." },
+          { "canon": "secondCanon", "text": "O God-bearing father, because of thy hope thou wast deemed worthy to behold things which have been longed for from of old, which eye hath not seen, nor ear heard." },
+          { "canon": "secondCanon", "text": "Thou hast appeared shining and comely with the divine rays of the virtues, O Abramius, and, rejoicing, thou standest before the comely Master." },
+          { "canon": "secondCanon", "text": "Thou hast joined thyself to the choirs of the venerable; and having received deification with them, O venerable one, pray thou that we all be saved." },
+          { "canon": "secondCanon", "text": "Honoring thy life and thy sacred repose, O Abramius, the Church joyously introduceth a day of gladness." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O right loving Virgin, bless thou my soul which hath been afflicted by sin, and make me a partaker of the good things of heaven." }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "_meta": {
+    "feast": "Conception of the Holy Glorious Prophet, Forerunner and Baptist John",
+    "feastKey": "conceptionOfForerunner",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 09-23.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-23.pdf",
+    "_note": "Doxology-rank. Sergius rubric: canons from Octoechos (both, without martyria) + canon of the Forerunner with 6 troparia. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Single canon of the Forerunner by John of Damascus in Tone VI. Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+  "troparion": {
+    "text": "Make merry, O barren woman,\nwho before wast unable to bear a child!\nFor, lo! thou hast manifestly conceived the lamp of the Sun,\nwho will enlighten all the world, which suffereth from blindness.\nDance thou, O Zechariah, crying out with boldness:\nHe who will be born//\nis the prophet of the Most High!",
+    "tone": 4,
+    "label": "Troparion of the holy conception"
+  },
+  "kontakion": {
+    "text": "Rejoice with splendor, O great Zechariah\nand all-glorious Elisabeth, his spouse,\nin conceiving John the Forerunner as is meet,\nwhom the archangel announced, rejoicing.\nO ye mortals, let us right worthily honor him//\nas the initiate of the mystery of grace.",
+    "tone": 1,
+    "label": "Kontakion of the holy conception",
+    "melody": "The choir of the angels"
+  },
+  "matins": {
+    "_meta": { "tone": 6, "feastRank": "doxology", "feastType": "forerunner", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Make merry, O barren woman,\nwho before wast unable to bear a child!\nFor, lo! thou hast manifestly conceived the lamp of the Sun,\nwho will enlighten all the world, which suffereth from blindness.\nDance thou, O Zechariah, crying out with boldness:\nHe who will be born//\nis the prophet of the Most High!",
+      "tone": 4,
+      "label": "Troparion of the holy conception",
+      "_note": "On 'God is the Lord': Troparion of the holy conception (Twice); Glory ..., Both now ..., Theotokion (Tone IV) — see _theotokionOfTroparion."
+    },
+    "_theotokionOfTroparion": {
+      "text": "The mystery hidden from all ages\nand unknown to the ranks of Angels,\nhath been revealed to those on earth through thee, O Theotokos:\nGod incarnate in an uncommingled union,\nWho willingly accepted the Cross for our sake,\nand through it hath raised up the first-formed man,//\nand saved our souls from death.",
+      "tone": 4,
+      "label": "Theotokion of the troparion"
+    },
+    "sedalion": [
+      {
+        "text": "Elisabeth hath been freed from barrenness;\nand the Virgin hath remained a virgin, even when she conceived in her womb at the cry of Gabriel.\nYet John the Forerunner leapeth up in his mother's womb,\nforeknowing his God and Master,\nWho had become incarnate for our salvation within the Virgin's womb.",
+        "tone": 5,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "The co-beginningless Word",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Rejoice, O holy and divinely trodden mountain!\nRejoice, animate and unburnt bush!\nRejoice, thou only bridge from the world to God, leading mortals to life eternal!\nRejoice, unblemished maiden who, without a man,//\nhast given birth unto the Salvation of our souls!",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "The dove that loveth the wilderness, the sacred Forerunner,\nwho preached repentance and who revealed that Christ the intercessor for all sinners,\nhad been born and become a man, ever helping all who are tempest-tossed.\nBy his supplications, O Christ, save Thou Thy world.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Bride of God who alone hast given birth unto the Creator of all,\nadoring mankind by thy birthgiving,\ndeliver me from the snares of the alien one,\nand set me upon the rock of Christ's will,\nearestly entreating Him//\nto Whom thou gavest flesh.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the Forerunner by John of Damascus in Tone VI, with 6 troparia. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+      "kontakion": {
+        "text": "Rejoice with splendor, O great Zechariah\nand all-glorious Elisabeth, his spouse,\nin conceiving John the Forerunner as is meet,\nwhom the archangel announced, rejoicing.\nO ye mortals, let us right worthily honor him//\nas the initiate of the mystery of grace.",
+        "tone": 1,
+        "label": "Kontakion of the holy conception",
+        "melody": "The choir of the angels"
+      },
+      "ikos": {
+        "text": "Let us open the hallowed Gospel which the sacred and wondrous Luke hath recorded for us,\nand let us behold the radiant and honorable conception of the Forerunner.\nFor he saith that, as the righteous elder Zechariah entered into the Holy of Holies to cense when it was his turn so to do,\nGabriel stood before him, proclaiming and saying:\n\"O priest, in thine old age thou shalt have a son, the prophet and Forerunner,\nthe voice and herald, the ever-radiant beacon and initiate of the mysteries of grace!\""
+      },
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried:\nLet us sing to God//\na song of victory.",
+        "troparia": [
+          { "text": "O offspring of the barren woman: uproot thou the barren thoughts of my barren soul, as I begin to praise thy holy conception in thy mother's womb." },
+          { "text": "The sacred Zechariah, entering the temple, beheld the divine angel, who manifestly proclaimed to him: O priest, in thine old age thou shalt receive a son, the Forerunner." },
+          { "text": "The great Forerunner, the radiant beacon of the Sun of glory, is conceived to shine forth in his mother's womb, by whom the darkness of the passions hath been rent asunder and the bonds of barrenness have been loosed." },
+          { "text": "Theotokion: Perceiving the Master borne in thy womb, O most pure Theotokos, John, as His Forerunner, manifestly leapt for joy in his mother's womb." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful, O good One,\nand strengthened us upon the rock//\nof Thy confession.",
+        "troparia": [
+          { "text": "Today the barren one conceiveth the sacred fruit, who in later times will cut down all the barrenness of souls with grace, the noetic axe." },
+          { "text": "Having been struck dumb within the temple, the great Zechariah receiveth the yoke of the Word by an awesome announcement, and radiantly magnified the compassionate Lord." },
+          { "text": "The glorious Forerunner, who hath shown the faithful the firm path of repentance, by divine counsel surpassing hope hath at the angel's command sprung forth in his mother's womb." },
+          { "text": "Theotokion: As he who was born of the barren woman perceived Christ borne in the Virgin's womb, he leapt up, heralding the Joy which had come into the world, delivering all from grief." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "From heaven Gabriel came down and stood before the sacred Zechariah as he was censing in the temple;\nand he said unto him: \"In thine old age thou shalt bear a right glorious fruit,\nand the former sterility of Elisabeth shall now straightway be loosed,\nand the barren one shall give birth.\nAnd having conceived, she shall bear the Forerunner and herald of Jesus.\"\nBy their entreaties, O Savior of the world,//\nsave Thou our souls.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy conception (after Ode 3)",
+        "melody": "Joseph marveled",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O pure and all-immaculate one who knewest not wedlock,\nthou who alone hast given birth in time to the timeless Son and Word of God:\nwith the holy and honorable apostles, martyrs and prophets, and the venerable,\ndo thou beseech Him to grant us cleansing//\nand great mercy.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,//\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "O blessed Forerunner, the voice of the angel proclaimed thee in a sacred manner to the priest as the herald of the coming of Christ, who wast to spring forth from a barren womb." },
+          { "text": "O barren one, who before wast childless and hadst not given birth, be thou now glad, for all-gloriously wilt thou bring forth as fruit the Baptist and Forerunner, O right wondrous Elisabeth." },
+          { "text": "O Forerunner, with the axe of thy prayer hew down the thorns of my passions and remove the stumbling block of mine evil thoughts; and by thy virtues render my mind fertile, O all-blessed one." },
+          { "text": "Theotokion: The womb of the Virgin held Thee Who holdest all things, O Christ; and when the Baptist, borne in his mother's womb, worshipped Thee, he rejoiced, leaping up." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,//\nWho recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "To the prophet who entered the sanctuary and was offering up to the Creator the services of the Law, the holy angel appeared, announcing the divine conception of the Forerunner." },
+          { "text": "\"How can this happen to me, for I am an old man, as thou seest, and I have a barren wife?\" Zechariah said to the archangel. \"Thou dost utter to me words which are contrary to nature!\"" },
+          { "text": "\"Look at Sarah, the wife of Abraham, and behold how she brought forth Isaac in her old age, O man; and believe thou those things which have been justly spoken,\" the great angel exhorted the elder." },
+          { "text": "Theotokion: \"Blessed art thou among women, O thou who art full of the joy of God,\" Elisabeth manifestly cried to thee when she knew thee to be her who would give birth without having known a man, her who alone would remain incorrupt after giving birth." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,//\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "\"My thoughts are filled with doubt, and I shall not believe thy words,\" the priest said to the archangel, \"for I am asking for the salvation of the people, not for the fruit of my loins.\"" },
+          { "text": "\"The Creator of nature, the King of angels, hath been well pleased that thou give birth unto the herald of His own coming,\" the ministering angel replied; \"Do not disbelieve my words, O man!\"" },
+          { "text": "\"Fiery is thine aspect, awesome thy visage, and wondrous thy discourse,\" said Zechariah to the servant of God; \"yet I will not believe thee who utterest words strange to me, and which surpass nature!\"" },
+          { "text": "Theotokion: In the dark abode of the womb, the lamp of the Sun offered worship and leapt up, rejoicing, recognizing the One concealed in the cloud of His Mother's womb." }
+        ]
+      },
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "\"Since thou dost not believe my words, receive thou manifest muteness; and when thou shalt see the voice of the Word born, receive again thy voice, crying out: 'Blessed art Thou, O God of Israel!'\"" },
+          { "text": "As radiant as the sun, Zechariah, cleaving unto Elisabeth, the moon, begat the light-bearing beacon of the Light, which shineth upon us who are cruelly held fast in the darkness of the passions." },
+          { "text": "Using leaps instead of words, the great Forerunner worshipped Thee in the Virgin's womb, O Christ Jesus, while he himself was borne in the womb of Elisabeth. O God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: Elisabeth, the moon, bearing within herself a star, the divine Forerunner, bowed down before Mary, the radiant cloud, who was bearing Christ, the Sun, Who had taken flesh of her for our salvation." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,//\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "The friend of the Bridegroom hath been prepared; the voice of the Word receiveth his beginning; the great warrior of the King of all is now nourished in the womb of the barren one." },
+          { "text": "A husbandman hath come forth to tend barren hearts; an axe is already forged to fell the passions; an honorable bullock is nurtured on abstinence: the great Forerunner. Be glad, O ye people!" },
+          { "text": "Break thou the stoniness of my mind, O Forerunner, as of old thou didst loose the bonds of the barren woman; and cause me to increase the fruits of repentance that I may live forever." },
+          { "text": "Theotokion: As Elisabeth beheld thee pregnant, O Maiden, she rejoiced in a godly manner, while within her the babe leapt as he recognized his Master." }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts//\nHim we magnify and thee we call blessed.",
+        "troparia": [
+          { "text": "Now having thrown wide the gate of the barren one, the great and divine Forerunner of Christ taketh up his abode within his mother's womb, as within a royal chamber, that he may issue forth as a warrior, preparing the way for the King of all." },
+          { "text": "Dance thou, O prophet of God and elder, for thou shalt bring forth a son, of whom none greater shall arise among mankind: John, the Forerunner of the Lord! Leap up, O Elisabeth! Rejoice, all the earth, and offer praise to God, the Creator of all!" },
+          { "text": "O prophet and Forerunner of the Lord, remember us now who praise thee in faith, and deliver us from spiritual passions. Save us from misfortunes, and guide us in a godly manner along the path to heaven, O ever-blessed one." },
+          { "text": "Theotokion: Sensing herself loosed of the bonds of barrenness and bearing the Forerunner of Him Who dwelt within thy womb, Elisabeth manifestly acknowledged thee to be the pure Mother, O pure Virgin Mary, full of the joy of God." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The glorious conception of the Forerunner heralds the King Who is to be born from the Virgin;\nfor he will be born from Elisabeth, barren and childless, and the great Zechariah, the elder and priest.\nThrough their prayers and those of the Theotokos and of John, Thy Baptist,//\nO Lord, save and take pity on all.",
+      "tone": null,
+      "label": "Exapostilarion of the holy conception",
+      "melody": "With the disciples",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "By the counsel of the Father the pre-eternal Son hath in truth wrought great things through thee;\nfor without pain thou hast given birth to immortal Life and remained as thou wast before birthgiving,\nescaping the pangs of motherhood;\nand thou didst remain a virgin even after childbirth,//\nO Virgin.",
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Creation rejoiceth in thy conception,\nO prophet and Forerunner, John the Baptist,\nfor thy divine birth doth foretell the nativity of the Master for us.\nWherefore, together, we on earth//\npraise thee as is meet.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "The angel, finding the conception of the barren\nto be a wondrous witness, reciteth it to Mary,\noffering it to her as confirmation.\nWherefore, we praise the barren Elisabeth,//\nZechariah, her spouse, and John.",
+          "tone": 1
+        },
+        {
+          "text": "The divinely wrought lamp of the everlasting Light,\nthe friend of the Bridegroom,\nthe great luminary of the glory of the Sun,\nthe living voice of the Word of God,\nthe Forerunner of the coming of the Lord,//\nis now conceived at the angel's announcement.",
+          "tone": 1
+        },
+        {
+          "text": "O Forerunner, thou art manifestly known\nto be the divine altar of the sweet-smelling incense of Christ,\nstationed at His right hand,\npouring forth the fragrance of the knowledge of Him\nprefigured by the angels and saints//\nstanding at His right hand.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Elisabeth conceived the Forerunner of grace,\nand the Virgin conceived the Lord of glory.\nWhen both mothers embraced in greeting,\nthe babe of the one leapt up,\nfor the servant within her was praising his Master.\nMarveling, the mother of the Forerunner began to cry aloud:\n\"Why is this granted to me, that the Mother of my Lord should come to me?\"\nMay He that hath great mercy//\nsave His despairing people.",
+        "tone": 6,
+        "label": "Glory (in Tone VI)"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Make merry, O barren woman,\nwho before wast unable to bear a child!\nFor, lo! thou hast manifestly conceived the lamp of the Sun,\nwho will enlighten all the world, which suffereth from blindness.\nDance thou, O Zechariah, crying out with boldness:\nHe who will be born//\nis the prophet of the Most High!",
+      "tone": 4,
+      "label": "Troparion of the holy conception",
+      "_note": "After the Great Doxology: Troparion once. Glory ..., Both now ..., Theotokion (Tone IV). Then Litanies and dismissal."
+    },
+    "_troparionTheotokion": {
+      "text": "The mystery hidden from all ages\nand unknown to the ranks of Angels,\nhath been revealed to those on earth through thee, O Theotokos:\nGod incarnate in an uncommingled union,\nWho willingly accepted the Cross for our sake,\nand through it hath raised up the first-formed man,//\nand saved our souls from death.",
+      "tone": 4,
+      "label": "Theotokion (after the troparion, in Tone IV)"
+    }
+  }
+}

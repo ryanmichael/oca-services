@@ -1,0 +1,250 @@
+{
+  "_meta": {
+    "feast": "Procession of the Honorable Wood of the Life-Giving Cross; Holy Maccabee Martyrs",
+    "feastKey": "processionOfTheCross",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 08-01.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-01.pdf",
+    "_note": "The Procession of the Precious Wood of the Honorable and Life-Creating Cross is primary (doxology-rank). The 7 Holy Maccabee Children, their mother Solomonia, and teacher Eleazar are secondary. Two interleaved canons: Canon I of the Cross in Tone VI + Canon II of the Maccabees in Tone VIII. Kontakion of the Maccabees (after Ode 3); Kontakion + Ikos of the Cross (after Ode 6). Sessional hymn after Ode 3: Maccabees (Tone VIII), Glory/Both now Cross (Tone VI). No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung with festal Lauds (6 stichera). After Doxology: Cross troparion thrice."
+  },
+  "troparion": {
+    "text": "Save O Lord Thy people\nand bless Thine inheritance,\ngrant now unto the faithful\nvictory over adversaries,\nand by the power of Thy Cross//\ndo Thou preserve Thy commonwealth.",
+    "tone": 1,
+    "label": "Troparion of the Cross"
+  },
+  "kontakion": {
+    "text": "O Thou Who wast willingly lifted up upon the Cross,\nbestow Thy compassions upon the new community named after Thee, O Christ God;\ngladden by Thy power Orthodox Christians,\ngranting them victory over all adversaries.//\nMay they have as an ally the invincible trophy, the weapon of peace.",
+    "tone": 4,
+    "label": "Kontakion of the Cross",
+    "melody": "Having been lifted up upon the Cross"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "doxology",
+      "feastType": "lordsFeast",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Save O Lord Thy people\nand bless Thine inheritance,\ngrant now unto the faithful\nvictory over adversaries,\nand by the power of Thy Cross//\ndo Thou preserve Thy commonwealth.",
+      "tone": 1,
+      "label": "Troparion of the Cross",
+      "_note": "On 'God is the Lord': Troparion of the Cross (Twice); Glory ..., Troparion of the righteous ones; Both now ..., Troparion of the Cross again."
+    },
+    "troparionGlory": {
+      "text": "By the pangs of the saints, which they suffered for Thee, O Lord,\nbe Thou entreated,\nand heal Thou all our infirmities,//\nwe pray Thee, O Lover of mankind.",
+      "tone": 1,
+      "label": "Troparion of the holy Maccabee martyrs"
+    },
+    "canon": {
+      "tone": 6,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of the Cross, the acrostic whereof is 'I bow down before the Cross, the salvation of the faithful', in Tone VI; Canon II of the holy Maccabee martyrs in Tone VIII.",
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned,\nthey cried:\nLet us sing to God//\na song of victory.",
+        "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer//\nlet us sing.",
+        "troparia": [
+          { "text": "I bow down before the Cross, the salvation of the faithful, and kissing it fervently, and, embracing it, I cry aloud: O all-blessed Tree of Christ, illumine my soul and mind, I pray!" },
+          { "text": "Today the sign of the Cross hath revealed itself to be victorious over the passions and the demons. Wherefore, O ye faithful, radiantly illumined in soul, let us all kiss it now." },
+          { "text": "The precious Cross emitteth brilliant rays and illumineth those who bow down before it with faith today, sanctifying our souls and bodies." },
+          { "text": "Laying visibly before us, the life-giving Cross sendeth forth brilliant rays of grace. Offering praise unto the Lord, let us approach and receive enlightenment, gladness, salvation and forgiveness." },
+          { "text": "Theotokion: O most holy Virgin who hast given birth in the flesh unto Christ Who of His own will suffered for our sake on the Cross: by thine entreaties save those who bless thee with honor." },
+          { "canon": "secondCanon", "text": "Appearing among the cruel ones with a single resolve, the choir of the seven spiritual athletes did not refuse to die, that they might confirm the law of their fathers." },
+          { "canon": "secondCanon", "text": "Disdaining glory on this earth, with their desire for the divine kingdom the godly Maccabees endured every pang; wherefore, they are honored today as is meet." },
+          { "canon": "secondCanon", "text": "The preservers of the law of Moses, the truly valiant Maccabees, revealed themselves to be brethren one to another when they trampled underfoot the ungodliness of Antiochus." },
+          { "canon": "secondCanon", "text": "Theotokion: The ranks of angels and men praise thee unceasingly, O unwedded Mother; for in thine arms thou didst bear the Creator of all as a babe." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as Thou,\nO Lord my God,\nwho hast exalted the horn of Thy faithful O good One,\nand strengthened us upon the rock//\nof Thy confession.",
+        "irmos2": "O Lord, Creator of the vault of Heaven\nand Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "Of old, a sword was given to guard the blessed tree of life after the disobedience of Adam the first-formed man; but the Cross hath opened a path thereto." },
+          { "text": "With eyes, mouth and soul, with our faces and hearts, let us all bow down before the most holy Cross of Christ, the Bestower of life, whereby the whole world is sanctified." },
+          { "text": "Becoming temples of God today, as the prophets said, bowing down before the wood of the most holy Cross, all of us who are the heirs thereto kiss it with fear." },
+          { "text": "We chant hymns to thee, O Christ, and with faith entreat thy power: Rescue us from the snares of the enemy, and direct all of us who hymn thee to the haven of salvation." },
+          { "text": "Theotokion: As a virgin thou hast given birth to the Son Who before thee was begotten of God the Father without mother before time began, and hath been crucified in the flesh, that He might save those who had sinned before." },
+          { "canon": "secondCanon", "text": "Walking according to the precepts of the law of your fathers, O blessed spiritual athletes of Christ, with your blood ye have acquired the life which ageth not, O all-praised ones." },
+          { "canon": "secondCanon", "text": "Neither fire nor the sword were ever able to alter the valor of your resolve for the Faith, O blessed ones, and therein ye set at naught the arrogance of the tormenters." },
+          { "canon": "secondCanon", "text": "Ye endured tortures for Christ God, O all-praised martyrs, and have received trophies of victory from on high, praying continually that He save our souls." },
+          { "canon": "secondCanon", "text": "Theotokion: As a virgin thou hast given birth, O thou who knewest not wedlock, and a virgin didst thou remain, O unwedded Mother. O Theotokos Mary, entreat Christ our God, that we be saved!" }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "O ye seven pillars of the wisdom of God,\nseven-branched lamp of the divine Light,\nO all-wise Maccabees\nwho before the martyrs, were martyrs most great:\nwith them entreat ye the God of all,//\nthat we who honor you may be saved!",
+        "tone": 2,
+        "label": "Kontakion of the holy Maccabee martyrs",
+        "melody": "Seeking the highest",
+        "ikos": {
+          "text": "Praise thy God with fervor, O Sion, for He hath strengthened the chains of thy gates and blessed thy children; for, like an invincible army, a legion truly valiant and mighty of mind, they stood with divine wisdom against the wiles of the ungodly, receive together the wreaths of victory of the heavenly Sion, and stand before the throne of God, praying unceasingly for all. Ask thou that those who hymn you may be saved."
+        }
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Having been raised in piety, O wise children, as martyrs ye manfully put to shame the threats of the tormenters;\nas champions of the law, ye were obedient to your fathers, O saints,\nand with your divinely wise mother ye suffered patiently.\nWherefore, having truly purchased the life of heaven by your death,\nye rejoice eternally, O Maccabees mighty of soul.\nEntreat Christ God, that He grant forgiveness of sins//\nunto those who honor your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy Maccabee martyrs (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "glory": {
+          "text": "Thy Cross, O Lord, is sacred,\nfor therein have healings been wrought for those sick in sins;\nwherefore, we fall down before Thee, and cry://\nHave mercy upon us!",
+          "tone": 6,
+          "label": "Glory ..., Both now ..., Sessional Hymn of the Cross"
+        }
+      },
+      "ode4": {
+        "irmos": "Christ is my power,\nmy God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,//\nkeeping festival in the Lord.",
+        "irmos2": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,\nand with fear he glorified Thy power.",
+        "troparia": [
+          { "text": "Let the whole earth drop forth joy, and let the trees of the forest be glad, deified today by the most precious Cross which illumineth the ends of the world." },
+          { "text": "O most glorious Cross, who wast intended to be an instrument of execution, but didst become an invincible weapon of victory bearing life into the world: illumine our hearts!" },
+          { "text": "O most honored Cross, thou art the divine conquest, thou art the accomplishment of our salvation, thou art the victory of the faithful and the divine sacrifice: Sanctify those who hymn thee!" },
+          { "text": "With all the earth is heaven gladdened. The passion-bearers, martyrs and apostles, and the souls of the righteous now joyfully rejoice, and the life-imparting Tree, which lay visibly in our midst, saveth all and sanctifieth the faithful with grace." },
+          { "text": "Theotokion: Truly hast thou appeared! Truly didst thou give birth to the Most High as thy Son, Who stretched forth His hands upon the Cross and summoned the world to Him, O Virgin Mother Mary." },
+          { "canon": "secondCanon", "text": "Having, like Moses of old, inscribed the law on the tablets of your mind, O blessed ones, ye would not violate it even unto death, but struggled steadfastly." },
+          { "canon": "secondCanon", "text": "Offering unto God the sacrifices of the law, and being zealous for the life of Moses, the spiritual athletes of Christ prevailed over the laws of the tyrant." },
+          { "canon": "secondCanon", "text": "As stones withstand the onslaught of the waves, O ye Maccabees, so did ye endure many tortures with manly resolve, even unto death." },
+          { "canon": "secondCanon", "text": "Triadicon: O beginningless Trinity, adored Unity, co-enthroned, O hymned Trinity: by the entreaties of the martyrs deliver from misfortunes and perils us who hymn Thee." },
+          { "canon": "secondCanon", "text": "Theotokion: Accept the cry, 'Rejoice!' from us, O holy Theotokos! Rejoice, O thou who hast given birth to Joy for the world! Rejoice, O blessed and pure Theotokos, who alone art the help of men!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,//\nas the true God, Who recalleth us from the darkness of sin.",
+        "irmos2": "Thou hast enlightened\nwith the knowledge of God\nthe ends of the universe\nthat lay in the night of ignorance,\ndo Thou also, O Lord, illumine me//\nwith the dawning of Thy love for mankind.",
+        "troparia": [
+          { "text": "With joy let us uplift the most blessed Cross which is set forth in the churches and cities, and let us bow down before it, that we may receive forgiveness of our debts." },
+          { "text": "The wicked serpent is now slain, the prince of darkness, unable to bear the radiance emitted by the life-bearing Cross, the precious scepter of the divine King." },
+          { "text": "Like a most brilliant star, like a magnificent pearl and the most radiant sun doth the Cross of the Lord, which we venerate, illumine all the ends of the earth. Lift up your voices in jubilation, O ye nations!" },
+          { "text": "Leap up, ye tribes, and chant unto God Who hath given us the indestructible confirmation of the Cross, which He now setteth before us! Rejoice, all ye faithful, receiving good things for its sake!" },
+          { "text": "Theotokion: Knowing thee to be the origin of salvation, O pure one, all the faithful bless thee; for thou hast given birth in the flesh to Him Who existed from the beginning, and by His own will was nailed to the Cross." },
+          { "canon": "secondCanon", "text": "In that ye never violated the law of your fathers, O holy martyrs, Christ Himself hath placed upon you crowns of righteousness." },
+          { "canon": "secondCanon", "text": "Standing with Eleazar as peers in resolve, O blessed children, with him ye offered yourselves unto Christ as a spiritual holocaust." },
+          { "canon": "secondCanon", "text": "O Lord Who freest all from deception by Thy saints, save us by their supplications, in that Thou art full of loving-kindness." },
+          { "canon": "secondCanon", "text": "Theotokion: Having been shown to be more honorable than the cherubim, O all-hymned Virgin, pray to thy Son, that He save the souls of those who hymn thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,//\nO greatly Merciful One.",
+        "irmos2": "O Thou that puttest on light as a garment\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "Seeing the Cross set forth today as a divine vessel, as a radiant lamp in churches, temples and cities, we hymn Him Who hath caused it to shine." },
+          { "text": "Death is slain, corruption is put to death, and the hordes of the demons flee, beholding the victorious and awesome Cross of Christ set forth today, unable to endure its touch." },
+          { "text": "Hymning Thee, God the King and Lord, in that Thou hast given us the Cross as an impregnable bulwark, we now kiss it with joy and thus escape evils." },
+          { "text": "Theotokion: Our first mother in Eden was poisoned by eating of the serpent's venom; but the Virgin, having given birth to the Author of life, hath poured forth incorruption and resurrection upon the world." },
+          { "canon": "secondCanon", "text": "Having arrayed yourselves in the vesture of martyrdom, O saints, ye embroidered it with the labors of your suffering." },
+          { "canon": "secondCanon", "text": "Desiring to be with Christ, O all-glorious martyrs, ye have run the course of suffering with unwavering resolve." },
+          { "canon": "secondCanon", "text": "Preserving the law which Moses handed down, O holy ones, ye suffered lawfully, putting the tyrant Antiochus to shame." },
+          { "canon": "secondCanon", "text": "Theotokion: O thou who alone hast given birth to the Word in the flesh at His word, deliver our souls from the snares of the enemy, we pray." }
+        ]
+      },
+      "kontakion": {
+        "text": "O Thou Who wast willingly lifted up upon the Cross,\nbestow Thy compassions upon the new community named after Thee, O Christ God;\ngladden by Thy power Orthodox Christians,\ngranting them victory over all adversaries.//\nMay they have as an ally the invincible trophy, the weapon of peace.",
+        "tone": 4,
+        "label": "Kontakion of the Cross",
+        "melody": "Having been lifted up upon the Cross"
+      },
+      "ikos": {
+        "text": "He who was caught up to the third heaven of paradise and heard unspeakable and divine words which the human tongue cannot utter, what was it hath he wrote to the Galatians, which, as lovers of the Scriptures, ye have both read and come to understand? — God forbid, saith he, that I should glory, save only in the Cross of the Lord, — whereon having suffered He slew the passions. Let us all then firmly hold this boast, the Cross of the Lord; for this Wood is our salvation, the invincible trophy, the weapon of peace!"
+      },
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "irmos2": "O Thou who in the beginning founded the earth\nand by Thy word made the heavens firm,\nblessed art Thou throughout the ages,//\nO Lord God of our Fathers.",
+        "troparia": [
+          { "text": "O ye faithful, let us bow down before the saving Tree, the most holy Cross, which all the armies of the angels serve, beholding it displayed, pouring forth sanctification and life upon us." },
+          { "text": "The most holy Cross of Christ, the Bestower of life, hath been revealed to be victorious, from on high driving away a multitude of the demons and the audacity of the barbarians, and showing forth our Orthodox hierarchs as conquerors of all heresies." },
+          { "text": "We hymn, glorify, magnify and bow down before Thy might, O Christ, for Thou hast given Thy divine Cross to us, Thy servants, as an inexhaustible sweetness and a guardian for our souls and bodies." },
+          { "text": "Theotokion: The furnace did not consume the three youths, prefiguring thy birthgiving; for the divine Fire, dwelling within thee, did not consume thee, teaching all to chant: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "In suffering the pain of martyrdom, ye were undaunted by the threats of the tyrant, crying out to Christ: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "In suffering the pain of martyrdom, ye were undaunted by the threats of the tyrant, crying out to Christ: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "Enduring pain with patience, ye vanquished the cruel wiles of the enemy, crying out to Christ: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "Theotokion: O God of our fathers, Who madest Thine abode within the Virgin's womb, and for her sake restored Adam, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Be thou astonished and afraid, O heaven,\nand let the foundations of the earth be shaken;\nfor lo! He Who of old burnt the sacrifice of the righteous man with water\ndoth clothe Himself in water!\nHim do ye children bless, ye priests hymn,//\nye people supremely exalt throughout all ages!",
+        "irmos2": "The Beginningless King of glory,\nbefore Whom tremble all the hosts of heaven,\nye priests hymn, and ye peoples//\nsupremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Prefiguring Thy Cross, Jacob once laid his arms cross-wise over his grandsons, blessing them and teaching grace among the nations. Ye children bless; ye priests hymn; ye people supremely exalt God throughout the ages!" },
+          { "text": "O Thine ineffable condescension and Thine indescribable good things, O Christ! Thou didst become incarnate, and, being crucified and accepting death, didst decide to release mankind from the curse, pouring forth incorruption upon the thrice-blessed Tree, the supremely glorious Cross, throughout the ages." },
+          { "text": "Let us praise today the all-holy Cross of the Lord, the divine victory, the origin of life, the destroyer of falsehood, the annihilator of the demons, the repeller of barbarians, the protector and champion of kings." },
+          { "text": "Theotokion: Beholding Christ pierced with nails, His incorrupt side run through with a spear, beaten about the head with a reed, and given gall to eat, the Virgin cried aloud: 'Whither hath Thy beauty departed, O most comely Word, more glorious than all the children of mankind?'" },
+          { "canon": "secondCanon", "text": "As true lovers and excellent keepers of the law, O all-praised martyrs, ye hymn Christ throughout the ages." },
+          { "canon": "secondCanon", "text": "Let us truly honor, as is meet, the seven Maccabees, the seven-branched fruit of a holy root, as martyrs of the Lord." },
+          { "canon": "secondCanon", "text": "Let us honor as is meet the zealots of the law, the faithful spiritual athletes one in soul, the seven Maccabees and their mother." },
+          { "canon": "secondCanon", "text": "Triadicon: O indivisible Trinity and Unity, I glorify Thee alone in divinity, and hymn Thee, one Power in three Hypostases." },
+          { "canon": "secondCanon", "text": "Theotokion: God, Who became incarnate of the Virgin for our sake in the latter times, O ye priests hymn and supremely exalt throughout the ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts//\nHim we magnify and thee we call blessed.",
+        "irmos2": "We magnify thee O Mother of God,\nand we glorify thee, O Virgin Theotokos,\nfor thou hast given birth to Christ//\nthe Savior of our souls.",
+        "troparia": [
+          { "text": "Through disobedience we became corrupt, being shown to be violators of the commandment of God; wherefore, death came upon mankind. For this cause immortality hath blossomed forth today; the victorious Cross of Christ, which we venerate." },
+          { "text": "Lo! the most holy Tree hath appeared; the mighty hope of the faithful, the deliverance from the curse; and it setteth joy before us, denouncing the prince of darkness. O ye faithful, let us bow down before it with gladness." },
+          { "text": "The desired Tree, the invincible weapon, the origin of blessing, the confirmation and bulwark of Christians, the steadfast aid, the deliverance from the curse, hath appeared to us; and it hath illumined and sanctified us who bow down before it." },
+          { "text": "Theotokion: O temple and portal of sanctity, O throne of God, cloud and most radiant lamp, O all-immaculate one, thou ark of grace; protect and preserve those who offer veneration to the precious image of thine only-begotten Son." },
+          { "canon": "secondCanon", "text": "O all-praised martyrs, ye have truly been shown to be a treasury of divine gifts and riches which cannot be taken away." },
+          { "canon": "secondCanon", "text": "O valiant advocates before the Creator of all, ask for our souls a tranquil life. Preserve us who with divine zeal and ardor of soul celebrate your memory, undevoured by the evil one." },
+          { "canon": "secondCanon", "text": "Triadicon: Let us worship the Father and the Spirit with the Son, crying out with the angels: Glory to God in the highest!" },
+          { "canon": "secondCanon", "text": "Theotokion: Rejoice, O holy gate which openeth unto God Who alone is most wise, O thou whom the most holy Spirit overshadowed!" }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "We hymn the wondrous Maccabees: Eleazar, the children and Solomonia;\nfor they cast down the arrogance of the serpent, the author of evil,\nand have been crowned as servants of the law.",
+      "label": "Glory ..., Exapostilarion of the holy Maccabee martyrs",
+      "_note": "Main exapostilarion from the Octoechos. Glory ..., of the Maccabees (this text). Both now ..., of the Cross.",
+      "bothNow": {
+        "text": "The Cross is the guardian of the whole world!\nThe Cross is the beauty of the Church!\nThe Cross is the dominion of kings!\nThe Cross is the confirmation of the faithful!\nThe Cross is the glory of the angels and the wounding of the demons!",
+        "label": "Both now ..., Exapostilarion of the Cross"
+      }
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "The precious Cross maketh the paths of heaven\nready for all to cross\nwho bow down before it with steadfast faith;\nand He Who was nailed thereto\njoineth those who hymn it with love//\nto the choirs of the immaterial hosts.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "Bowing down with faith\nbefore the precious Cross,\nwe hymn the Master Who was crucified thereon,\npurifying our lips and souls at His behest;\nand, praising Him,//\nwe are illumined with its noetic radiance.",
+          "tone": 1
+        },
+        {
+          "text": "Sweetening the bitter waters of old,\nMoses delivered Israel,\nusing an image of the Cross;\nand we, O ye faithful,\nmystically and divinely tracing its image in our hearts,//\nare ever saved by its might.",
+          "tone": 1
+        },
+        {
+          "text": "The much-suffering mother, calling her children to struggle, said:\n'Follow after the gray hairs of Abraham, that ye may share in the sacrifice of Isaac!'\nAnd, accepting this instruction, they went before her who taught them,\nwatching as each of them, one by one, underwent the torments of cruelty.\nThrough their supplications, O God,//\nhave mercy upon us!",
+          "tone": 1
+        },
+        {
+          "text": "The seven chosen pillars were hewn from a single noetic rock,\nand were shown to be unshakable pillars of the law.\nWherefore, be Thou well-pleased, O Savior,//\nto preserve our souls in peace.",
+          "tone": 4
+        },
+        {
+          "text": "The children of Solomonia, the preservers of the law,\nsuffering at the tribunal of Antiochus, cried out to him:\n'O Antiochus, we are enduring all for the law of our fathers;\nand neither fire, nor the sword, nor wild beasts, nor wounds shall separate us therefrom.\nWe will die together, with our aged mother and our father and teacher,//\nliving and rejoicing together for endless ages!'",
+          "tone": 5
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, O ye faithful, let us behold the force assembled against the Maccabees,\nand the valor of the holy children!\nFor the tyrannical king who held sway over all nations\nwas thwarted by an elderly man, seven children and one woman!\nThrough their supplications, O God,//\nhave mercy upon us!",
+        "tone": 4,
+        "label": "Glory ..., in Tone IV"
+      },
+      "theotokion": {
+        "text": "O Lord Who enabled the meek David to conquer the foreigner,\nally Thyself also with our pious Orthodox hierarchs\nand enable them to bring down all proponents of heresy and schism\nwith the weapon of the Cross.\nO Compassionate One, show forth upon us Thine ancient mercies,\nthat they may truly know that Thou art God,\nand that we who set our hope on Thee may triumph,\nentreating Thy most pure Mother, as is our wont,//\nthat we be granted great mercy.",
+        "tone": 4,
+        "label": "Both now ..., in Tone IV"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Save O Lord Thy people\nand bless Thine inheritance,\ngrant now unto the faithful\nvictory over adversaries,\nand by the power of Thy Cross//\ndo Thou preserve Thy commonwealth.",
+      "tone": 1,
+      "label": "Troparion of the Cross",
+      "_note": "After the Great Doxology: 'Wisdom! Stand aright!' — Troparion of the Cross sung thrice. Then the priest carries the Cross to the analogion in the center of the church. Veneration stichera follow. Then litanies and dismissal."
+    }
+  }
+}

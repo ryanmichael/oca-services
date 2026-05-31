@@ -1,0 +1,216 @@
+{
+  "_meta": {
+    "feast": "Dormition of the Righteous Anna, Mother of the Most Holy Theotokos; Virgin Martyr Eupraxia of Tabenna",
+    "feastKey": "dormitionOfAnna",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-25.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-25.pdf",
+    "_note": "Anna is primary saint (doxology-rank); Eupraxia is secondary (commemoration only; her canon is assigned to Compline in the Menaion, not Matins). Sergius rubric: 4 Lauds stichera for Anna + Glory/Both-now. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Single canon of the righteous Anna in Tone IV with 6 troparia (two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern). Sessional hymn after Ode 3 for Anna alone."
+  },
+  "troparion": {
+    "text": "O divinely wise Anna,\nin thy womb thou didst bear the pure Mother of God,\nwho gaveth birth unto Life.\nWherefore, rejoicing in glory,\nthou hast now been translated to the mansions of heaven,\nwhere is the abode of those who rejoice.\nO ever-blessed one,\nbeseech thou cleansing of transgressions//\nfor those who honor thee with love.",
+    "tone": 4,
+    "label": "Troparion of the righteous one"
+  },
+  "kontakion": {
+    "text": "We celebrate the memory of the forebears of Christ,\nentreating them with faith for help,\nthat from every tribulation\nall may be delivered who cry:\nOur God is with us,//\nWho hath glorified them, as was His good pleasure!",
+    "tone": 2,
+    "label": "Kontakion of the righteous one",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "O divinely wise Anna,\nin thy womb thou didst bear the pure Mother of God,\nwho gaveth birth unto Life.\nWherefore, rejoicing in glory,\nthou hast now been translated to the mansions of heaven,\nwhere is the abode of those who rejoice.\nO ever-blessed one,\nbeseech thou cleansing of transgressions//\nfor those who honor thee with love.",
+      "tone": 4,
+      "label": "Troparion of the righteous one",
+      "_note": "On 'God is the Lord': Troparion of the righteous Anna (Thrice)."
+    },
+    "sedalion": [
+      {
+        "text": "We celebrate thy dormition, O righteous Anna;\nfor Christ God hath glorified thee with ineffable glory, as His grandmother.\nWherefore, having been translated,\nby thy supplications beseech Him to grant us peace,\nprotecting our souls against the adversaries.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "By thy divine birthgiving, O pure one,\nthou hast renewed the mortal nature of those born on earth,\nwhich had become corrupt through the passions,\nraising up all from death to a life of incorruption.\nWherefore, as is meet we all bless thee,//\nO exceedingly glorious Virgin, as thou didst foretell.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Thou didst commit thy soul into the hands of Him Who for our sake became a man through the Virgin;\nyea, thy Creator and God hath translated thee to the life of incorruption.\nWherefore, with honor we now bless thee as the one truly honored and immaculate Theotokos;\nand together we cry out: Entreat Christ our Savior, thy Creator and God,//\nthat our souls be saved!",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Joseph marveled",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Joseph marveled, beholding that which transcends nature,\nand pondering thy seedless conception, O Theotokos,\nhe thought of the dew upon the fleece, the bush unconsumed by the fire,\nand the rod of Aaron which buddeth forth.\nAnd bearing witness, thy betrothed and guardian cried aloud to the priests saying://\nA Virgin giveth birth, and remaineth a Virgin even after birthgiving!",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the righteous Anna in Tone IV. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "Forgiveness of sins, deliverance from evils and correction of life do thou ask for me; for today I honor thy radiant memory, O all-praised Anna." },
+          { "text": "In a godly manner didst thou give birth unto her who gaveth birth unto Life; wherefore, thou hast been translated unto life everlasting, delighting in ineffable joy and the unwaning light, O Anna of godly calling." },
+          { "text": "Divine and pure grace hath translated unto joy her whose daughter gaveth birth without seed; and with great boldness she standeth before the Lord, praying that all be saved." },
+          { "text": "Having lived righteously and venerably, thou hast now been translated to the righteous Lord, to rejoice with righteous from all ages. Wherefore, having assembled, we honor thee with faith." },
+          { "text": "Theotokion: From thee hath the Sun of righteousness shone forth upon us, illumining all the earth with the knowledge of God and dispelled the gloom of ignorance, O pure, all-immaculate and blessed one." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee, O Christ,\nthe Hypostatic Wisdom of the Father;//\nfor there is none more holy than Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "Thou didst conceive her who conceived Him Who sustaineth all things; and in a manner past all telling thou hast given birth to her who gaveth birth unto Christ. Wherefore, we honor thy dormition, O Anna." },
+          { "text": "With praises thy glorious memory is celebrated today; for thou, O Anna beloved of God, hast given birth for us unto her who is far above praise: the pure Mother of God." },
+          { "text": "The glorious Joachim, uniting himself to Anna, like the sun to the moon, giveth birth to the effulgence of virginity, for whose sake the Beam of divinity hath shone forth." },
+          { "text": "From thy womb thou didst give birth to the divine mountain, O Anna blessed of God, and hast passed over to the noetic mountains and the mansions of paradise." },
+          { "text": "Theotokion: O Birthgiver of God, we have acquired thee as a steadfast intercessor; and, having set our hope on thee, we are saved. For, fleeing to thee, we find protection." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "The mother of the Mother of the Master and Creator wast thou, O all-praised Anna,\never keeping His commandments.\nWherefore, in dying thou hast truly been translated to immortal life and the unwaning light.\nWherefore, ever enlightened by the Spirit, we keep thy radiant and holy memory;\nand together we cry out to thee:\nEntreat Christ God, that He grant remission of sins//\nunto those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the righteous one (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+        "bothNow": {
+          "text": "The mother of the Mother of the Master and Creator wast thou, O all-praised Anna,\never keeping His commandments.\nWherefore, in dying thou hast truly been translated to immortal life and the unwaning light.\nWherefore, ever enlightened by the Spirit, we keep thy radiant and holy memory;\nand together we cry out to thee:\nEntreat Christ God, that He grant remission of sins//\nunto those who honor thy holy memory with love.",
+          "tone": 8,
+          "label": "Both now ..., the foregoing"
+        }
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "In study thou didst perfect the things which are written in the law, and became the mother of the Mother of the Bestower of the law. Wherefore, all creation now doth joyously celebrate thy memory as is meet." },
+          { "text": "Truly blessed is thy womb, O Anna, which bore within itself her who would bear the Light of the world; and beautiful are thy breasts, for they nourished with milk her who nurtured Christ our Nourisher." },
+          { "text": "As thou didst live a blameless life, thou didst give birth blamelessly to the Maiden Theotokos who bore the Word of the Father; and to Him hast thou been translated with glory, truly deified in partaking of honors." },
+          { "text": "Theotokion: The womb of the Virgin was shown to be like a mound upon a threshing-floor, holding the Grain which grew without being cultivated, whereby all nature is nourished, crying aloud: Glory to Thy power, O almighty Christ!" }
+        ]
+      },
+      "ode5": {
+        "irmos": "The wicked will not behold Thy glory, O Christ,\nbut we who rise early to hymn Thee shall behold Thee,\nthe Only-Begotten effulgence of Thy Father's divinity,//\nO Lover of mankind.",
+        "troparia": [
+          { "text": "O most glorious Anna, thou didst truly give birth to heaven on earth: to her who gaveth birth to the Creator of heaven, Who today translateth thee with glory to the heavens." },
+          { "text": "Filled with the radiance of the Bestower of riches, with an immaterial mind thou dost joyously join chorus with the immaterial choirs. Yet be thou mindful of us who praise thee with faith." },
+          { "text": "O glorious one who manifestly sprang forth from the root of Jesse, thou didst give rise unto the blossoming rod: the pure one who put forth Jesus our Redeemer, the never-withering Bloom." },
+          { "text": "Theotokion: To thee who alone art mighty, the protection of the faithful, do I flee; and on thee do I set the hope of my salvation. O most holy Lady Theotokos, disdain me not!" }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee, O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Let Joachim and Anna, the forebears of Jesus the Lord God, who are adorned with righteousness, be praised today in hymns, as is meet!" },
+          { "text": "Anna hath surpassed all praises, in that she hath given birth unto her who surpasseth all laudations. Wherefore, she maketh her abode in the choir of the righteous." },
+          { "text": "Thy memory is full of brilliance and splendor; and emitting the effulgence of salvation in the world, O chaste Anna, thou hast filled all with all manner of gifts." },
+          { "text": "The jar which contained the divine Manna didst thou bear in thy womb, O Anna; and, living now in the heavens with her, O all-praised one, thou prayest for us all." },
+          { "text": "Theotokion: Through Anna thou wast brought into the world, O most immaculate Queen who hast given birth to the King of all, who remained Virgin after giving birth and art more highly exalted than the cherubim." }
+        ]
+      },
+      "kontakion": {
+        "text": "We celebrate the memory of the forebears of Christ,\nentreating them with faith for help,\nthat from every tribulation\nall may be delivered who cry:\nOur God is with us,//\nWho hath glorified them, as was His good pleasure!",
+        "tone": 2,
+        "label": "Kontakion of the righteous one",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "We all come together to hymn prophetically the blessed repose of the grandmother of Christ; for today hath she been translated from this transitory life; and, progressing joyously to the heavens, she rejoiceth, as the mother of her who is truly the Theotokos. And with faith she crieth out: My soul doth magnify the Lord; for I have given birth on earth to His mother, whom He hath glorified, as was His good pleasure!"
+      },
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO supremely hymned Lord, God of our fathers,//\nblessed art Thou.",
+        "troparia": [
+          { "text": "As thou hast given birth to the Mother of true Life, O Anna, thou hast been translated to the true life and light, crying out: O Lord God of our fathers, blessed art Thou!" },
+          { "text": "As mother of the Mother of the Redeemer, O Anna, thou hast gone up from earth to heaven, adorned with the virtues, crying out in praise: O God of our fathers, blessed art Thou!" },
+          { "text": "O God-bearer, thou hast departed for never-ending life, for the vast plain of the meadow of paradise, for the unwaning light, crying out: O God of our fathers, blessed art Thou!" },
+          { "text": "Ripe with the virtues and adorned with the beauty of divine gifts, thou hast been translated to God, crying out unceasingly: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: Adorned with the beauties of the virtues, O most immaculate one, thou hast given birth to the Word Who is more comely than the sons of mankind, and Who adorneth those who hymn thee with beauteous majesty." }
+        ]
+      },
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "The mother of her who alone is the Theotokos, who was barren but is now the grandmother of Christ, shed the vesture of mortality as she had that of barrenness. And we cry out in the land of the living: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Christ hath opened unto thee the gates on high and received thee with joy; for thou hast given birth to the portal through which He Himself passed, showing it to be shut after His passage, O divinely wise and rightly hymned Anna. Wherefore, we, the faithful, honor thee throughout the ages." },
+          { "text": "Thou wast the mother of the holy ever-virgin who gaveth birth to the Most holy Word Who hath bestowed sanctification and deliverance upon us, O divinely wise and right wondrous Anna; and thou didst reach the end of thy life in a holy manner. Wherefore, we, the faithful, ever hymn thee throughout the ages." },
+          { "text": "Theotokion: O Lady, Birthgiver of God, to the calm haven of the breath of the Spirit do thou now guide me who am beset by many tribulations and am buffeted by the tempest of sin; for thou art the refuge of Christians. Wherefore, we hymn thee throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.//\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "From the earth of thy womb was the holy earth truly born which without seed put forth the uncultivated Wheat, the Nourisher and Lord of the world, Who most wisely hath brought thee over to inexhaustible nourishment, O Anna." },
+          { "text": "Today hath thy memory shone forth upon us more brightly than the sun in the effulgence of rich gifts, O most honored one, enlightening us and dispelling the darkness of the passions. Preserve those who celebrate it." },
+          { "text": "The godly Joachim and the divinely wise and all-glorious Anna, the honored and splendid couple, summon us in a godly manner to rejoice on their feast, which the Lord of all, the Bestower of light, hath made splendid." },
+          { "text": "Theotokion: O Mary, thou Sovereign Lady of all, free me now who am in thrall to all manner of offenses; for thou thyself hast given birth to the Redeemer of all Who hath delivered us from slavery to sin through a divine gesture." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "We rightly hymn Anna, who was called by God;\nfor, past all hope, she gaveth birth to the Virgin Mary, the Theotokos,\nwho was shown to be the mother of Christ our Redeemer in the flesh,\nWho today hath in a godly manner received her in the highest,//\nwho prayeth for us and for the peace of the world.",
+      "tone": 2,
+      "label": "Exapostilarion of the righteous one",
+      "melody": "With the disciples",
+      "_note": "Sung twice.",
+      "glory": {
+        "text": "Having given birth, O Anna, to Mary, the new heaven through which the Sun of glory shone forth,\nthou dost pass from earth to the heavens today,//\nrejoicing with Christ, O most glorious one.",
+        "tone": 2,
+        "label": "Glory ...",
+        "melody": "Heaven with stars"
+      },
+      "bothNow": {
+        "text": "Having given birth, O Anna, to Mary, the new heaven through which the Sun of glory shone forth,\nthou dost pass from earth to the heavens today,//\nrejoicing with Christ, O most glorious one.",
+        "tone": 2,
+        "label": "Both now ...",
+        "melody": "Heaven with stars"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Celebrating the honored memory of Anna, O Christ,\nwe hymn Thee Who hast now translated her\nfrom this transitory life to never-ending glory,\nin that she is the mother of the Theotokos and Ever-virgin Mother//\nwho without seed gave birth unto Thee in a manner transcending nature.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "Celebrating the honored memory of Anna, O Christ,\nwe hymn Thee Who hast now translated her\nfrom this transitory life to never-ending glory,\nin that she is the mother of the Theotokos and Ever-virgin Mother//\nwho without seed gave birth unto Thee in a manner transcending nature.",
+          "tone": 1
+        },
+        {
+          "text": "Celebrating the holy memory of Joachim and Anna,\nthe honored and blameless forebears of Christ,\nwithout ceasing we glorify our compassionate Lord and Redeemer,//\nWho hath translated them to life incorruptible which ageth not.",
+          "tone": 1
+        },
+        {
+          "text": "The joy of those who keep festival is made perfect\namong the immaterial choirs and the mansions of the righteous,\nwhere the ranks of the angels and the assembly of the saints are.\nAnd now it hath caused the souls of the righteous Joachim and Anna to dwell there,//\nwhom, piously praising, we call blessed.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, all ye who love virginity, ye lovers of purity!\nCome, let us celebrate the honored dormition of Anna;\nfor in a manner transcending nature, she gaveth birth to the divine Maiden Mary,\nthe well-spring of life,\nfrom whom was born the Redeemer//\nWho enlighteneth and sanctifieth our souls.",
+        "tone": 2,
+        "label": "Glory ..., Both now ..."
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O divinely wise Anna,\nin thy womb thou didst bear the pure Mother of God,\nwho gaveth birth unto Life.\nWherefore, rejoicing in glory,\nthou hast now been translated to the mansions of heaven,\nwhere is the abode of those who rejoice.\nO ever-blessed one,\nbeseech thou cleansing of transgressions//\nfor those who honor thee with love.",
+      "tone": 4,
+      "label": "Troparion of the righteous one",
+      "_note": "After the Great Doxology: Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "_meta": {
+    "feast": "Holy Unmercenary Physicians and Wonderworkers Cosmas and Damian at Rome",
+    "feastKey": "cosmasAndDamianRome",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-01.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-01.pdf",
+    "_note": "Doxology-rank. Single canon in Tone IV. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Lauds = 6 stichera. Angelina of Serbia: no separate canon found in Sergius PDF for this date."
+  },
+  "troparion": {
+    "text": "O holy unmercenaries and wonder-workers Cosmas and Damian,\nvisit our infirmities.//\nFreely have ye received, freely give unto us.",
+    "tone": 8,
+    "label": "Troparion of the holy unmercenaries"
+  },
+  "kontakion": {
+    "text": "Having received the grace of healings,\nye extend health to those in need,\nO most glorious physicians and wonder-workers.\nBy your visitation cast down the audacity of the enemy,//\nhealing the world with miracles.",
+    "tone": 2,
+    "label": "Kontakion of the holy unmercenaries"
+  },
+  "matins": {
+    "_meta": { "tone": 4, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O holy unmercenaries and wonder-workers Cosmas and Damian,\nvisit our infirmities.//\nFreely have ye received, freely give unto us.",
+      "tone": 8,
+      "label": "Troparion of the holy unmercenaries",
+      "_note": "On 'God is the Lord': Troparion of the holy unmercenaries (Twice); Glory ..., Both now ..., Theotokion or Stavrotheotokion."
+    },
+    "sedalion": [
+      {
+        "text": "By the grace of the Spirit ye have been revealed to all to be bestowers of healing,\nwonder-workers and radiant beacons of miracles;\nfor by faith ye cool the flame of the passions and warm the minds of those who believe in Him.\nWherefore fleeing to your divine church, and having acquired spiritual healing, we cry aloud:\nO God-bearing unmercenaries, entreat Christ God,\nthat He grant forgiveness of sins unto those who celebrate your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Shining forth rays of healings upon those on earth, O godly wonder-workers,\nye manifestly drive away the infirmities of all,\nhaving truly acquired within yourselves the never-waning Sun, Christ our God.\nWherefore, assembling as is meet, O holy and God-bearing unmercenaries,\nwe venerate your honorable memory.\nEntreat Christ God, that He grant forgiveness of sins//\nunto those who honor your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Upon beholding the Lamb, Shepherd and Redeemer upon the Cross,\nthe ewe-lamb exclaimed weeping, bitterly lamenting, and crying aloud:\n'The world rejoiceth, having received deliverance through Thee,\nbut my womb doth burn, beholding Thy crucifixion,\nwhich Thou hast endured in Thy merciful loving-kindness.\nO long-suffering Lord, Thou abyss and inexhaustible well-spring of mercy,\ntake pity, and grant forgiveness of sins//\nunto those who hymn Thy divine sufferings with faith!'",
+          "tone": 8,
+          "label": "Stavrotheotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy unmercenaries in Tone IV. Two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin,\ndrown I implore Thee, in the depth of dispassion\nthe triune nature of my soul,\nas Thou didst the mighty strongholds of the warriors,\nthat in the mortality of my flesh as on a timbrel//\nI may chant a hymn of victory.",
+        "troparia": [
+          { "text": "O ye two radiant and wise unmercenaries, standing with all the elect before the adored Trinity, pray that those who keep your radiant memory may be enlightened by the divine radiance of the Spirit." },
+          { "text": "Showing yourselves to be elevated in mind high above material things, O wise saints, ye have received the immaterial radiance of the Spirit. Wherefore, O unmercenaries, ever dispel the darkness of infirmities by your divine visitations." },
+          { "text": "Having acquired spiritual eyes which slumber not, O glorious, merciful and God-bearing unmercenaries, in divine fulfillment of the commandments of God, by His grace ye rouse to goodly health those who sleep in infirmities." },
+          { "text": "Theotokion: O most pure one, from thy pure blood thou hast given flesh to our Savior and God Who, through the Spirit, hath shown us the honorable unmercenaries as physicians for our souls, and salvific and fervent helpers." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee,//\nO Lover of mankind.",
+        "troparia": [
+          { "text": "Your divine temple doth sacredly pour forth in spiritual streams the fragrant myrrh of healings, ever washing away the fetid passions." },
+          { "text": "Ever dwelling in the mansions of heaven, O most wise ones, through the grace of the Almighty ye ever show your tabernacle to be a well-spring of healings." },
+          { "text": "Curbing the passions of the flesh with the reins of abstinence, ye have most abundantly received spiritual radiance, whereby ye enrich the world with healings." },
+          { "text": "Theotokion: God chose thee as the most beautiful among women, O pure one, and He Who resteth in His saints was well pleased to be born in the flesh from thee." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "By the grace of the Spirit ye have been revealed to all to be bestowers of healing,\nwonder-workers and radiant beacons of miracles;\nfor by faith ye cool the flame of the passions and warm the minds of those who believe in Him.\nWherefore fleeing to your divine church, and having acquired spiritual healing, we cry aloud:\nO God-bearing unmercenaries, entreat Christ God,\nthat He grant forgiveness of sins//\nunto those who celebrate your holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy unmercenaries (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God, is come in a swift cloud\nand with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "With life-bearing actions and all manner of activities, ye heal the mortal sufferings of all, O light-bearing pillars, immovable ramparts, divine branches of the true Vine." },
+          { "text": "Let the unmercenaries, the breasts of the Church who pour forth the milk of healings, nurturing all with the divine food of enlightenment, be praised with joyful hymns." },
+          { "text": "Your church, O saints, hath been shown to be a source of healing, and a calm and salvific harbor for the tempest-tossed. And having recourse thereto, we all attain tranquility and deliverance from evils." },
+          { "text": "Theotokion: O Virgin grant unto me the mercy which is within thee, for thou hast truly given birth to the merciful Word Who hath shown unto the ends of the earth the merciful healers and wonder-workers." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,//\nbestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "text": "Manifestly illumined with divine splendors, ye travel about the whole world enlightening all, dispelling the darkness of the passions, and expelling demons, O God-bearing unmercenaries." },
+          { "text": "Like two lamps ye illumine the world, O God-bearers, moved by the Spirit to go about all creation, visiting those who are on their beds in pain, rescuing them from misfortunes." },
+          { "text": "Without fee granting healing to the infirm, and deliverance from the passions, O God-bearing unmercenaries, ye have been revealed by God to be great intercessors, the helpers and assistants of all." },
+          { "text": "Theotokion: Thou hast given birth to the hypostatic Wisdom of God, O most pure Virgin Theotokos who hast shown forth the saints as most wise. Through them the arrogance and evil machinations of the wicked-minded one have fallen down." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Not by human skill, but by divine grace ye cleanse men of infirmities, O glorious ones; wherefore, having assembled, we call you blessed as is meet." },
+          { "text": "Bound with love for Christ, O God-bearers, by divine grace ye destroy all the malice of the demons; wherefore, we celebrate your solemn feast." },
+          { "text": "As shoots of the divine vine pouring forth the wine of healings upon us who are caught in the grief of infirmities, ye fill us with gladness, O unmercenaries." },
+          { "text": "Theotokion: O Lady, thou wast made a most pure temple by the supremely pure Word, Who hath forever magnified in miracles and signs the divine temple of the unmercenaries." }
+        ]
+      },
+      "kontakion": {
+        "text": "Having received the grace of healings,\nye extend health to those in need,\nO most glorious physicians and wonder-workers.\nBy your visitation cast down the audacity of the enemy,//\nhealing the world with miracles.",
+        "tone": 2,
+        "label": "Kontakion of the holy unmercenaries"
+      },
+      "ikos": {
+        "text": "The discourse of the wise physicians surpasseth all reason and wisdom, imparting understanding unto all, for, having received grace from the Most High, they grant health to all, from whence, even I have been granted the grace to sing of the abundance of healings the God-bearing favorites and ministers of Christ bestow; for they deliver multitudes from sickness, healing the world with miracles."
+      },
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire, cried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Opening a God-given well-spring, O holy ones, ye pour forth rivers of pure healings upon all, washing away the defilement of the passions and the most vile wickedness of the demons." },
+          { "text": "Strengthened by the grace of the omnipotent Spirit, Thy two right wondrous unmercenaries ever grant health to the sick, O Word, Who art the Wisdom and Power of God." },
+          { "text": "Thou alone art holy, for Thou dost glorify Thy saints, and by them deliver the world from misfortunes, enlightening those who cry aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Theotokion: In bringing forth Christ, O Mary, thou hast budded forth a staff from the root of Jesse, Who hath adorned with miracles as with flowers His favored unmercenaries." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Ye were revealed by the divine Spirit to be devoid of all evil, O saints, becoming the vesture of salvation, the cause of forgiveness, and the avoidance of evils for us who cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Becoming sons through divine communion, O Cosmas and Damian, through faith ye have now truly acquired both your Father's portion of heavenly delight and the radiant activity of miracles; and ye cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "With the divine drops of your blood, O saints, ye wash away the spiritual defilement of our souls, driving away the suffering of pain, and repelling the assaults of the demons, as ye are our intercessors and merciful healers." },
+          { "text": "Adorned by the Spirit like lilies, like noetic flowers, like roses, O saints, ye emit sweet fragrances, dispelling the stench of the passions, and have been revealed as such to us who cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Theotokion: By thee death hath been slain, O most pure one, for thou hast given birth to Christ God, the hypostatic Life, Who hath revealed the unmercenaries to be intercessors and physicians for us who cry aloud: Blessed is the Fruit of thy womb, O most pure one!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy blossomed forth blessing upon the world.//\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Behold, what is so good or so beautiful, as it is written, as for the brethren, whom we now fittingly bless, to dwell in oneness of mind, in a place of splendor, in the mansions of heaven, in never-fading glory?" },
+          { "text": "How great is the temple, ever adorned with miracles, which ye ever visit, O right wondrous Cosmas and Damian, granting health to those who are in need thereof. Wherefore, ye are fittingly blessed." },
+          { "text": "Today the angels, the divine apostles, the prophets, the venerable and all the righteous rejoice with us in your memory, O blessed ones; for, dwelling joyfully with them, ye pray on behalf of all the world." },
+          { "text": "O ye two divine and radiant unmercenaries, and most honorable God-bearers: ask forgiveness of sins, amendment of life and deliverance from all evils on behalf of us who ever praise you." },
+          { "text": "Theotokion: O only most pure Ever-virgin, since thou wast the abode of the Light Who hath illumined all, thou hast revealed the saints to be most radiant, ever driving away the darkness of soul-corrupting passions by the Spirit." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "What utterances can rightly describe the unmercenaries' grace of healing?\nFor, after God, they are the saving physicians of the whole world.",
+      "tone": null,
+      "label": "Exapostilarion of the holy unmercenaries",
+      "melody": "The heaven with stars",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "With thy mighty protection, O pure one,\npreserve all of us, thy servants, unharmed from the assaults of the enemy;\nfor thee alone have we acquired as our refuge amid tribulations.",
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Having received the grace of healings from God, O most comely unmercenaries, without fee ye fervently heal the passions of our souls and bodies. Wherefore, bestowing health upon the faithful through you, Christ hath revealed you to all the world as steadfast luminaries. Entreat Him that our souls be saved.",
+          "tone": 1
+        },
+        {
+          "text": "Drawing forth an abyss of healings from the nous of the Most High, O unmercenaries, ye pour forth healings upon all the faithful; for, having supra-naturally drawn forth from the treasuries of the Spirit saving remedies for the suffering of ailments, ye heal the afflicted with mystical therapy. Wherefore, as ye are manifestly temples of the life-creating Trinity, the Godhead made His abode within you. Pray ye to the Trinity, that our souls be saved.",
+          "tone": 1
+        },
+        {
+          "text": "Living actively with divine love and desire for the things to come, ye made straight the ways of salvation. Wherefore, having preserved the purity of your souls unsullied, ye stood fast against material things until the end; and rendered golden by the divine Spirit, ye grant healing to the infirm without fee, O sacred twain, radiant company, ye enlightened and godly unmercenaries, who visit us in our tribulations and pain, and freely heal the afflictions of our souls.",
+          "tone": 2,
+          "label": "The composition of Theophanes"
+        },
+        {
+          "text": "Vouchsafed great gifts, O all-famed ones, ye lived a humble life on earth; and going about everywhere, freely healing the sufferings of the sick, ye were shown to be conversers with the angels. O wise Cosmas and Damian, most comely brethren, heal also our sufferings through your supplications.",
+          "tone": 2,
+          "label": "The composition of Germanus"
+        },
+        {
+          "text": "The pool of healing cured but one person every year, but the temple of the unmercenaries healeth a great multitude of the infirm; for inexhaustible and unmovable are the riches of the saints. Through their supplications, O Christ, have mercy upon us.",
+          "tone": 2,
+          "label": "The composition of Germanus"
+        },
+        {
+          "text": "The choir of the saints rejoiceth throughout all ages, for they have inherited the kingdom of heaven. And the earth which received their relics emitted a sweet fragrance, for they were servants of Christ, who have made their abodes in everlasting life.",
+          "tone": 2,
+          "label": "The composition of Germanus"
+        }
+      ],
+      "doxastikon": {
+        "text": "The holy unmercenaries, possessed of a well-spring of healings, grant healing to all in need,\nfor they have been deemed worthy of great gifts by Christ the Savior, the ever-flowing Wellspring.\nFor the Lord told you, in that ye are emulators of the apostles:\n'Behold, I have given you authority over unclean spirits and every disease.'\nWherefore, having lived well in His commandments, ye freely received.\nFreely give also, healing the sufferings of our souls and bodies.",
+        "tone": 4,
+        "label": "Glory (the composition of Theophanes)"
+      },
+      "theotokion": {
+        "text": "The most pure one, beholding Christ, the lover of mankind, crucified,\nHis side pierced by a lance, cried out, lamenting:\n'What is this, O my Son?\nHow have these thankless people rewarded Thee for the good things Thou hast done for them?\nDost Thou hasten to leave me childless, O most Beloved?//\nI marvel, O Compassionate One, at Thy voluntary crucifixion!'",
+        "tone": 4,
+        "label": "Stavrotheotokion",
+        "melody": "As one valiant among the martyrs"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy unmercenaries and wonder-workers Cosmas and Damian,\nvisit our infirmities.//\nFreely have ye received, freely give unto us.",
+      "tone": 8,
+      "label": "Troparion of the holy unmercenaries",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

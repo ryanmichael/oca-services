@@ -130,7 +130,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
   blocks.push(...assembleNuncDimittis(fixedTexts));
 
   // ── 14. Troparia ────────────────────────────────────────────────────────────
-  blocks.push(...assembleTroparia(vespers.troparia, sources));
+  blocks.push(...assembleTroparia(vespers.troparia, sources, { repeatThrice: isVigil }));
 
   // ── 15. Augmented Litany (Daily Vespers — after troparia) ───────────────────
   if (!isGreatVespers) {
@@ -139,7 +139,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
 
   // ── 15b. Blessing of Bread (All-Night Vigil only) ────────────────────────
   if (isVigil) {
-    blocks.push(...assembleBlessingOfBread(fixedTexts));
+    blocks.push(...assembleBlessingOfBread(fixedTexts, { skipRejoiceOVirgin: isVigil }));
   }
 
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
@@ -234,7 +234,7 @@ function assembleKathisma(calendarDay, fixedTexts) {
   // Kathisma 1, Section 1 — the "Blessed Is The Man" antiphon. After the
   // Vespers date-shift, the calendar entry is for Sunday so dayOfWeek is
   // 'sunday'; older entries used 'saturday'. Match either.
-  if (vespers.serviceType === 'greatVespers' &&
+  if ((vespers.serviceType === 'greatVespers' || vespers.serviceType === 'all-night-vigil') &&
       (dayOfWeek === 'sunday' || dayOfWeek === 'saturday')) {
     return assembleBlessedIsTheMan(fixedTexts);
   }
@@ -757,11 +757,14 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     if (!sourceObj) continue;
 
     const prov = slot.provenance || sourceObj.provenance;
+    // Prefer the hymn's own tone (from the source) over the slot's outer tone,
+    // which is often the weekly tone (0 for fixed-tone feasts).
+    const effTone = sourceObj.tone || slot.tone;
     if (slot.position === 1) {
       // First sticheron — no preceding verse, just the hymn
       blocks.push(makeBlock(`apost-idiomelon`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slotSource, label: slot.label, provenance: prov }));
-      idiomelon = { text: sourceObj.text, tone: slot.tone, source: slotSource, provenance: prov };
+        sourceObj.text, { tone: effTone, source: slotSource, label: slot.label, provenance: prov }));
+      idiomelon = { text: sourceObj.text, tone: effTone, source: slotSource, provenance: prov };
     } else {
       // Subsequent stichera — verse then hymn
       // Prefer explicit verse from slot spec (e.g. Holy Friday), fall back to fixed verse table
@@ -772,7 +775,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
           `V. ${verseText}`));
       }
       blocks.push(makeBlock(`apost-hymn-${i}`, section, 'hymn', 'choir',
-        sourceObj.text, { tone: slot.tone, source: slotSource, label: slot.label, provenance: prov }));
+        sourceObj.text, { tone: effTone, source: slotSource, label: slot.label, provenance: prov }));
     }
   }
 
@@ -836,10 +839,20 @@ function assembleNuncDimittis(fixedTexts) {
   ];
 }
 
-function assembleTroparia(tropariaSpec, sources) {
+function assembleTroparia(tropariaSpec, sources, opts = {}) {
   const section = 'Troparia';
   const blocks = [];
-  for (const slot of tropariaSpec.slots) {
+  // Great-Feast / Vigil rubric: only the feast troparion is sung, thrice
+  // ("Rejoice O Virgin" is omitted at Blessing of Bread). Drop any
+  // dismissal-theotokion / Now-position slot so the troparion stands alone.
+  const slots = opts.repeatThrice
+    ? tropariaSpec.slots.filter(s => s.position !== 'now' && s.position !== 'glory')
+    : tropariaSpec.slots;
+  if (opts.repeatThrice && slots.length >= 1) {
+    blocks.push(makeBlock('trop-thrice-rubric', section, 'rubric', null,
+      'The Troparion is sung thrice:'));
+  }
+  for (const slot of slots) {
     const sourceObj = resolveSource(slot.source || tropariaSpec.source, slot.key, sources);
     if (!sourceObj) continue;
 
@@ -864,11 +877,14 @@ function assembleTroparia(tropariaSpec, sources) {
       blocks.push(makeBlock('trop-now-label', section, 'doxology', null, 'Now and ever and unto ages of ages. Amen.'));
     }
 
-    blocks.push(makeBlock(
-      `troparion-${slot.position || slot.order || 1}`,
-      section, 'hymn', 'choir', entry.text,
-      { tone: entry.tone || slot.tone, source: slot.source || tropariaSpec.source, label: entry.label || slot.label, provenance: slot.provenance || entry.provenance }
-    ));
+    const repeats = opts.repeatThrice ? 3 : 1;
+    for (let r = 0; r < repeats; r++) {
+      blocks.push(makeBlock(
+        `troparion-${slot.position || slot.order || 1}${repeats > 1 ? `-${r + 1}` : ''}`,
+        section, 'hymn', 'choir', entry.text,
+        { tone: entry.tone || slot.tone, source: slot.source || tropariaSpec.source, label: entry.label || slot.label, provenance: slot.provenance || entry.provenance }
+      ));
+    }
   }
   return blocks;
 }
@@ -960,16 +976,21 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
   return blocks;
 }
 
-function assembleBlessingOfBread(fixedTexts) {
+function assembleBlessingOfBread(fixedTexts, opts = {}) {
   const section = 'Blessing of Bread';
   const blocks = [];
 
-  // Troparion "Rejoice, O Virgin Theotokos" — sung thrice
-  const troparion = fixedTexts.prayers.blessingTroparion;
-  if (troparion) {
-    blocks.push(makeBlock('bob-troparion-rubric', section, 'rubric', null,
-      'The Troparion is sung thrice:'));
-    blocks.push(makeBlock('bob-troparion', section, 'hymn', 'choir', troparion));
+  // At a Great-Feast / Vigil, "Rejoice O Virgin" is omitted — the feast
+  // troparion has already been sung thrice in section 14 (Troparia) and the
+  // Blessing of Bread follows directly. On Sundays without a feast,
+  // "Rejoice O Virgin" is sung thrice here per the typikon.
+  if (!opts.skipRejoiceOVirgin) {
+    const troparion = fixedTexts.prayers.blessingTroparion;
+    if (troparion) {
+      blocks.push(makeBlock('bob-troparion-rubric', section, 'rubric', null,
+        'The Troparion is sung thrice:'));
+      blocks.push(makeBlock('bob-troparion', section, 'hymn', 'choir', troparion));
+    }
   }
 
   // Priest's blessing prayer over the five loaves

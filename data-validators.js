@@ -85,8 +85,10 @@ function validatePentecostarionOverrides(data) {
     if (key === '_meta') continue;
     const at = `pentecostarion-sunday-overrides.${key}`;
     pushIf(errs, /^[0-9]+$/.test(key), `${at} key must be numeric days-since-Pascha`);
-    // "weHaveSeen-only" form (Pentecost, key=49)
-    if (Object.keys(entry).length === 1 && isString(entry.weHaveSeen)) continue;
+    // Partial form (Pentecost, key=49): may have weHaveSeen + vespers overrides
+    // without full feast troparia/kontakia/communionHymn (those come from the
+    // great-feast-variants pipeline instead).
+    if (isString(entry.weHaveSeen) && !entry.troparia && !entry.kontakia && !entry.feastOnly) continue;
     // Full feast form
     pushIf(errs, entry.feastOnly === true,           `${at}.feastOnly must be true`);
     pushIf(errs, Array.isArray(entry.troparia) && entry.troparia.length > 0,
@@ -260,8 +262,11 @@ function checkCanonOde(ode, at, errs) {
 function checkLauds(lauds, at, errs) {
   if (!isObject(lauds)) { errs.push(`${at} must be object`); return; }
   // tone is optional (some feast lauds omit it; the per-sticheron tone is used)
-  pushIf(errs, Array.isArray(lauds.stichera) && lauds.stichera.length >= 1,
-    `${at}.stichera must be non-empty array`);
+  // stichera is optional — simple-rank files may supply only a doxastikon
+  if (lauds.stichera !== undefined && lauds.stichera !== null) {
+    pushIf(errs, Array.isArray(lauds.stichera) && lauds.stichera.length >= 1,
+      `${at}.stichera must be non-empty array`);
+  }
   (lauds.stichera || []).forEach((s, i) => {
     pushIf(errs, isObject(s), `${at}.stichera[${i}] must be object`);
   });

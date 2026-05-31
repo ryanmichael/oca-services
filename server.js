@@ -2520,6 +2520,48 @@ function assembleForDate(date, pronoun, entryOverride) {
   const dbSource = buildDbSource(date, pronoun);
 
   let menaionOverride = sources.menaion;
+
+  // ── Pentecostarion Sunday vespers override: inject LIC stichera from JSON ─
+  // PENTECOSTARION_SUNDAY_OVERRIDES[N].vespers.lordICall replaces DB-sourced
+  // slots so the assembler emits the correct feast idiomela + Tone 8 doxastichon
+  // instead of falling through to Menaion (May 31 = Hermias, etc.).
+  {
+    const [yy, mo, dd] = date.split('-').map(Number);
+    const dObj = new Date(Date.UTC(yy, mo - 1, dd));
+    const pa = calculatePascha(yy);
+    const dsp = Math.round((dObj - pa) / (24 * 60 * 60 * 1000));
+    const pentLic = PENTECOSTARION_SUNDAY_OVERRIDES[dsp]?.vespers?.lordICall;
+    if (pentLic && Array.isArray(pentLic.stichera) && calendarEntry.vespers?.lordICall) {
+      const stichera = pentLic.stichera;
+      const dox      = pentLic.doxastichon;
+      const total    = stichera.length;
+      const verses   = Array.from({ length: total }, (_, i) => total - i);
+      const lic      = calendarEntry.vespers.lordICall;
+      const provLabel = 'OCA';
+      lic.tone        = stichera[0].tone;
+      lic.totalStichera = total;
+      lic.slots = [{
+        verses, count: total,
+        source: 'menaion', provenance: provLabel,
+        key:    `auto.${date}.lordICall`,
+        tone:   stichera[0].tone,
+        label:  'Stichera of Pentecost',
+      }];
+      lic.glory = dox ? {
+        source: 'menaion', provenance: provLabel,
+        key:    `auto.${date}.lordICall.glory`,
+        tone:   dox.tone,
+        label:  dox.label || 'Glory… Now and ever…',
+        combinesGloryNow: true,
+      } : null;
+      lic.now = null;
+      // Suppress generic Menaion injection (which would pull May-31 Hermias).
+      calendarEntry.vespers.isPentecostarionSunday = true;
+      const autoSlot = { lordICall: { hymns: stichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) } };
+      if (dox) autoSlot.lordICall.glory = { text: dox.text, tone: dox.tone, label: dox.label };
+      menaionOverride = { ...sources.menaion, auto: { ...(sources.menaion.auto || {}), [date]: autoSlot } };
+    }
+  }
   const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
   const isSaturdayInjection = calendarEntry.dayOfWeek === 'saturday';
   const isGreatVespers      = calendarEntry.vespers?.serviceType === 'greatVespers' ||

@@ -596,7 +596,34 @@
     ]
   },
   "49": {
-    "weHaveSeen": "Blessed art Thou, O Christ our God,\nwho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit;\nthrough them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!"
+    "weHaveSeen": "Blessed art Thou, O Christ our God,\nwho hast revealed the fishermen as most wise\nby sending down upon them the Holy Spirit;\nthrough them Thou didst draw the world into Thy net.\nO Lover of Man, glory to Thee!",
+    "vespers": {
+      "lordICall": {
+        "stichera": [
+          { "tone": 1, "label": "Idiomelon of Pentecost",
+            "text": "We celebrate the feast of Pentecost and the coming of the Spirit, the appointed day of the promise, the fulfillment of hope. How majestic and great is the mystery! Therefore we cry aloud to Thee:\n“Glory to Thee, O Lord and Creator of all!”" },
+          { "tone": 1, "label": "Idiomelon of Pentecost",
+            "text": "Thou hast renewed Thy Disciples, O Christ, by giving them the gift of foreign tongues, that through them they might preach of Thee, the immortal Word and God,\nWho givest great mercy to our souls." },
+          { "tone": 1, "label": "Idiomelon of Pentecost",
+            "text": "The Holy Spirit provides all things: He pours forth prophecies, He leads priests to perfection, He teaches unschooled people wisdom, He reveals fishermen as theologians, He confirms the Church.\nO Comforter, one in essence and enthroned with the Father and the Son, glory to Thee!" },
+          { "tone": 2, "label": "Idiomelon of Pentecost",
+            "text": "We have seen the True Light. We have received the heavenly Spirit. We have found the true faith, worshipping the undivided Trinity,\nWho has saved us." },
+          { "tone": 2, "label": "Idiomelon of Pentecost",
+            "text": "In the Prophets, O our Savior, Thou didst proclaim to us the way of salvation. In the Apostles the grace of Thy Spirit shone forth. From the beginning and ever after, Thou art God,\nour God before the ages." },
+          { "tone": 2, "label": "Idiomelon of Pentecost",
+            "text": "In Thy courts I will praise Thee, the Savior of the world. On bended knee I will worship Thine invincible might. In the evening, in the morning, and at noontime –\nat all times I will bless Thee, O Lord." },
+          { "tone": 2, "label": "Idiomelon of Pentecost",
+            "text": "In Thy courts, O Lord, we faithful bend the knees of soul and body; with songs we proclaim Thee, O eternal Father, and co-eternal Son, and all-holy and co-eternal Spirit,\nWho dost sanctify and enlighten our souls." },
+          { "tone": 2, "label": "Idiomelon of Pentecost",
+            "text": "Let us praise in song the consubstantial Trinity: the Father, the Son, and the Holy Spirit.\nFor this was the preaching of all the Prophets, Apostles, and Martyrs." }
+        ],
+        "doxastichon": {
+          "tone": 8,
+          "label": "Glory… Now and ever… (by Leo the Master)",
+          "text": "Come, O people, let us worship the Godhead in three Persons: the Son in the Father, with the Holy Spirit. For the Father timelessly begot the Son, co-eternal and co-enthroned with Him; and the Holy Spirit was in the Father and is glorified with the Son. We worship one Power, one Essence, one Godhead, and we say: “Holy God, Who hast created all things through Thy Son with the cooperation of the Holy Spirit; Holy Mighty, through Whom we know the Father; and through Whom the Holy Spirit came to dwell in the world; Holy Immortal, Comforting Spirit, Who proceedest from the Father and restest in the Son.\nO Holy Trinity, glory to Thee!”"
+        }
+      }
+    }
   },
   "_meta": {
     "description": "Pentecostarion Sunday Liturgy overrides: feast-only troparia/kontakia/ikos/prokeimenon/alleluia/communion hymn for the Pentecostarion Sundays.",

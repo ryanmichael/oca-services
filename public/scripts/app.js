@@ -162,14 +162,15 @@ function getServiceRows(day) {
       rows.push({ key: 'paschalHours', name: 'Paschal Hours', available: true });
     }
     if (!day.services.vesperalLiturgy) {
-      rows.push({ key: 'greatVespers', name: 'Great Vespers',  available: day.services.greatVespers });
+      const vigilName = day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers';
+      rows.push({ key: 'greatVespers', name: vigilName, available: day.services.greatVespers || day.services.allNightVigil });
       if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
       rows.push({ key: 'matins',  name: 'Matins',        available: day.services.matins });
       rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
     }
   } else if (dow === 'sunday') {
-    if (day.services.greatVespers) {
-      rows.push({ key: 'greatVespers', name: 'Great Vespers', available: true });
+    if (day.services.greatVespers || day.services.allNightVigil) {
+      rows.push({ key: 'greatVespers', name: day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers', available: true });
     }
     rows.push({ key: 'matins',       name: 'Matins',        available: day.services.matins });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
@@ -221,7 +222,7 @@ function getServiceRows(day) {
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
   if (dow === 'saturday' || dow === 'sunday') return true;
-  return services.dailyVespers || services.greatVespers || services.burialVespers || services.bridegroomMatins || services.royalHours || services.lamentations || services.vesperalLiturgy || services.passionGospels || services.presanctified || services.paschalHours || services.liturgy || services.kneelingVespers;
+  return services.dailyVespers || services.greatVespers || services.allNightVigil || services.burialVespers || services.bridegroomMatins || services.royalHours || services.lamentations || services.vesperalLiturgy || services.passionGospels || services.presanctified || services.paschalHours || services.liturgy || services.kneelingVespers;
 }
 
 function renderServiceList(daysList) {

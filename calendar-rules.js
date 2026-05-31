@@ -1491,12 +1491,16 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   const tk           = `tone${tone}`;
 
   // ── Prokeimenon ────────────────────────────────────────────────────────────
-  // Thomas Sunday and Pentecost use "Who is so great a God" (great prokeimenon)
-  // Ascension uses "Our God is in heaven" (great prokeimenon)
+  // Thomas Sunday uses "Who is so great a God" (great prokeimenon).
+  // Ascension uses "Our God is in heaven" (great prokeimenon).
+  // Pentecost Vigil (Saturday evening) uses the regular Saturday Great
+  // Prokeimenon "The Lord is King" Tone 6 per the OCA service-text bulletin;
+  // "Who is so great a god as our God" Tone 7 is served at the SUNDAY-evening
+  // Kneeling Vespers (/api/kneeling-vespers), not at this Saturday-eve vigil.
   // Other Sundays / named feasts: Saturday Great Prokeimenon (from Octoechos)
   // Regular weekdays: appointed weekday prokeimenon
   let prokeimenon;
-  if (litKey === 'pentecostarion.week.2.sunday' || litKey === 'pentecostarion.pentecost') {
+  if (litKey === 'pentecostarion.week.2.sunday') {
     prokeimenon = { pattern: 'great', key: 'whoIsSoGreat' };
   } else if (litKey === 'pentecostarion.ascension') {
     prokeimenon = { pattern: 'great', key: 'ourGodIsInHeaven' };
@@ -1668,6 +1672,18 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
             { order: 1, book: 'Genesis',     pericope: '14:14-20' },
             { order: 2, book: 'Deuteronomy', pericope: '1:8-11, 15-17' },
             { order: 3, book: 'Deuteronomy', pericope: '10:14-21' },
+          ]
+        : litKey === 'pentecostarion.pentecost'
+        ? [
+            { order: 1, book: 'Numbers',  pericope: '11:16-17, 24-29' },
+            { order: 2, book: 'Joel',     pericope: '2:23-32' },
+            { order: 3, book: 'Ezekiel',  pericope: '36:24-28' },
+          ]
+        : litKey === 'pentecostarion.ascension'
+        ? [
+            { order: 1, book: 'Isaiah',    pericope: '2:2-3' },
+            { order: 2, book: 'Isaiah',    pericope: '62:10-12; 63:1-3, 7-9' },
+            { order: 3, book: 'Zechariah', pericope: '14:4, 8-11' },
           ]
         : null,
       lordICall: {

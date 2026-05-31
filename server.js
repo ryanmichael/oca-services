@@ -1816,6 +1816,12 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
       spec.finalTroparion = spec.troparion;
     }
 
+    // Octoechos weekday Matins Aposticha for stub dates (no menaion matins file)
+    if (!isSunday && !isLentenWeekday) {
+      const weekdayAposticha = sources?.octoechos?.[`tone${tone}`]?.[dow]?.matins?.aposticha;
+      if (weekdayAposticha) spec.aposticha = weekdayAposticha;
+    }
+
     return spec;
   }
 
@@ -1942,9 +1948,17 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     };
   }
 
-  // Aposticha (Lenten weekday only)
+  // Aposticha — two sources:
+  //   1. Menaion file's own aposticha (Lenten weekday feasts, if authored)
+  //   2. Octoechos weekday aposticha (ordinary time Mon–Sat, small-doxology path)
   if (isLentenWeekday && mat.aposticha) {
     spec.aposticha = mat.aposticha;
+  } else if (useSmallDoxology && !isSunday) {
+    // Inject Octoechos weekday Matins Aposticha for simple-rank weekday services
+    const weekdayAposticha = sources?.octoechos?.[`tone${tone}`]?.[dow]?.matins?.aposticha;
+    if (weekdayAposticha) {
+      spec.aposticha = weekdayAposticha;
+    }
   }
 
   // Final troparion (for aposticha path)

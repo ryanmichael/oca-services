@@ -44,6 +44,18 @@ const FILE_TO_DAY = {
   7: 'friday',
 };
 
+// Each PDF also contains the following morning's Matins aposticha:
+// File {t}-2.pdf (Sunday evening) → Monday Matins aposticha
+// File {t}-3.pdf (Monday evening) → Tuesday Matins aposticha, etc.
+const FILE_TO_MATINS_DAY = {
+  2: 'monday',
+  3: 'tuesday',
+  4: 'wednesday',
+  5: 'thursday',
+  6: 'friday',
+  7: 'saturday',
+};
+
 const BASE_URL = 'https://st-sergius.org/services/oktiochos';
 const OCTOECHOS_PATH = path.join(__dirname, 'variable-sources', 'octoechos.json');
 
@@ -72,6 +84,18 @@ function extractVespersSection(text) {
   const rest  = text.slice(start + 'AT VESPERS'.length);
   // Stop at the next major service heading
   const stop  = rest.search(/^(AT COMPLINE|AT MATINS|AT MIDNIGHT|AT THE MIDNIGHT OFFICE|SATURDAY MORNING|SUNDAY MORNING|MONDAY MORNING|TUESDAY MORNING|WEDNESDAY MORNING|THURSDAY MORNING|FRIDAY MORNING)/im);
+  return (stop >= 0 ? rest.slice(0, stop) : rest).trim();
+}
+
+/** Extract only the AT MATINS section (stop at AT LITURGY or next-day marker) */
+function extractMatinsSection(text) {
+  // Handle PDF spacing artifacts like "AT M AT IN S" as well as normal "AT MATINS"
+  const start = text.search(/AT\s*M\s*A\s*T\s*I\s*N\s*S/i);
+  if (start < 0) return null;
+  const matchEnd = text.slice(start).search(/\n/) + start;
+  const rest = text.slice(matchEnd);
+  // Stop at the Liturgy section or the next-day header (without "ON " prefix)
+  const stop = rest.search(/^(AT (THE )?LITURGY|[A-Z]+ MORNING: TONE)/im);
   return (stop >= 0 ? rest.slice(0, stop) : rest).trim();
 }
 
@@ -164,6 +188,11 @@ function parseVespers(section, tone, day) {
       flushHymn(); verseMode = false; mode = null;
       continue;
     }
+    // "Litany: Have mercy on us" always signals the end of matins aposticha
+    if (/^Litany:\s*Have mercy/i.test(line)) {
+      flushHymn(); verseMode = false; mode = null;
+      continue;
+    }
 
     // ── Prokeimenon lines ──
     if (mode === 'prok') {
@@ -185,11 +214,19 @@ function parseVespers(section, tone, day) {
       continue;
     }
 
-    // While collecting a multi-line verse, accumulate until asterisk + sentence end
+    // While collecting a multi-line verse, accumulate until asterisk + sentence end.
+    // Structural markers (Glory, Both now, To the martyrs, Litany) always end the verse
+    // even if the asterisk is missing (PDF omission in some tones).
     if (verseMode) {
-      hymnVerse += ' ' + line;
-      if (verseComplete(hymnVerse)) verseMode = false;
-      continue;
+      const isStructuralMarker = /^(Glory\s*\.\.\.|Both\s*now|To the [A-Z]|For the [A-Z]|Litany:)/i.test(line);
+      if (isStructuralMarker) {
+        verseMode = false;
+        // Fall through to let the line be handled by its own branch below
+      } else {
+        hymnVerse += ' ' + line;
+        if (verseComplete(hymnVerse)) verseMode = false;
+        continue;
+      }
     }
 
     // ── Glory / Both now lines ──
@@ -372,6 +409,40 @@ async function main() {
       }
 
       added++;
+
+      // ── Matins Aposticha (same PDF, next morning's service) ──────────────
+      const matinsSection = extractMatinsSection(cleaned);
+      const matinsDay = FILE_TO_MATINS_DAY[fileDay];
+      if (matinsSection && matinsDay) {
+        const parsedMatins = parseVespers(matinsSection, tone, matinsDay);
+        const matinsApost = parsedMatins.aposticha;
+        const matinsHymnCount = matinsApost.hymns.length;
+        console.log(`    ✓ Matins Aposticha (${matinsDay}): ${matinsHymnCount} stichera`);
+
+        if (!DRY_RUN && matinsHymnCount > 0) {
+          if (!octoechos[tk][matinsDay]) octoechos[tk][matinsDay] = {};
+          if (!octoechos[tk][matinsDay].matins) octoechos[tk][matinsDay].matins = {};
+          // Store in the format the assembler expects: stichera array + glory
+          octoechos[tk][matinsDay].matins.aposticha = {
+            _source: 'stSergius',
+            _sourceUrl: `${BASE_URL}/${tone}-${fileDay}.pdf`,
+            stichera: matinsApost.hymns.map(h => {
+              const st = { text: h.text, _source: 'stSergius' };
+              if (h.verse) st.verse = h.verse;
+              return st;
+            }),
+          };
+          const gloryObj = matinsApost.theotokion || matinsApost.glory;
+          if (gloryObj) {
+            octoechos[tk][matinsDay].matins.aposticha.glory = {
+              text: gloryObj.text,
+              _source: 'stSergius',
+            };
+          }
+        }
+      } else {
+        console.log(`    ✗ Matins section not found for ${matinsDay}`);
+      }
 
       // Clean up temp file
       try { fs.unlinkSync(pdfPath); } catch {}

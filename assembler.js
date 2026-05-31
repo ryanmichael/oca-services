@@ -1293,8 +1293,13 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   //     before approaching the chalice.
   blocks.push(..._litCommunionPrayer(liturgyFixed));
 
-  // 28. Communion Hymn — sung while the faithful are receiving.
+  // 28. Communion Hymn — the appointed Koinonikon, sung as the clergy commune.
   blocks.push(..._litCommunionHymn(spec.communionHymn));
+
+  // 28b. Communion of the Faithful — additional hymns sung while the people
+  //      approach the chalice (Body of Christ, repeated troparia/kontakia,
+  //      and other choir-discretion pieces).
+  blocks.push(..._litCommunionOfFaithful(spec, liturgyFixed, paschalCommunionOrder));
 
   // 29. Post-Communion Blessing
   blocks.push(..._litPostCommunion(spec, liturgyFixed));
@@ -2029,6 +2034,45 @@ function _litCommunionHymn(communionHymn) {
       blocks.push(makeBlock('ch-2-label', section, 'rubric', null, sec.label));
     blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
   }
+  return blocks;
+}
+
+function _litCommunionOfFaithful(spec, f, isPaschalPeriod) {
+  const section = 'Communion of the Faithful';
+  const cof = f['communion-of-faithful'];
+  if (!cof) return [];
+  const blocks = [];
+
+  blocks.push(makeBlock('cof-rubric', section, 'rubric', null, cof.rubric));
+
+  const bocText = isPaschalPeriod && cof['body-of-christ-paschal']
+    ? cof['body-of-christ-paschal']
+    : cof['body-of-christ'];
+  if (bocText) {
+    blocks.push(makeBlock('cof-body-of-christ', section, 'hymn', 'choir', bocText));
+  }
+
+  // Repeat troparia and kontakia of the day, framed as choir-discretion. The
+  // texts are duplicated here (rather than referenced) so a choir using this
+  // page during communion has the words in front of them.
+  const hasTroparia  = Array.isArray(spec.troparia)  && spec.troparia.length > 0;
+  const hasKontakia  = Array.isArray(spec.kontakia)  && spec.kontakia.length > 0;
+  if (hasTroparia || hasKontakia) {
+    blocks.push(makeBlock('cof-tk-rubric', section, 'rubric', null, cof['troparia-rubric']));
+    if (hasTroparia) {
+      spec.troparia.forEach((t, i) => {
+        if (t.rubric) blocks.push(makeBlock(`cof-trop-rubric-${i}`, section, 'rubric', null, t.rubric));
+        blocks.push(makeBlock(`cof-trop-${i}`, section, 'hymn', 'choir', t.text, { tone: t.tone }));
+      });
+    }
+    if (hasKontakia) {
+      spec.kontakia.forEach((k, i) => {
+        if (k.rubric) blocks.push(makeBlock(`cof-kont-rubric-${i}`, section, 'rubric', null, k.rubric));
+        blocks.push(makeBlock(`cof-kont-${i}`, section, 'hymn', 'choir', k.text, { tone: k.tone }));
+      });
+    }
+  }
+
   return blocks;
 }
 

@@ -1,0 +1,294 @@
+{
+  "_meta": {
+    "feast": "Beginning of the Church Year (Indiction) and St Symeon the Stylite",
+    "feastKey": "indictionAndSymeonStylite",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 09-01.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-01.pdf",
+    "_note": "Three commemorations: Indiction (New Year), St Symeon the Stylite the Elder, and the Holy Martyred Women with Deacon Ammon. Three canons in the service: Canon of the Indiction (John the Monk, Tone I, 6 troparia/ode), Canon of the holy martyred women (Tone IV, 4 troparia/ode), Canon of Venerable Symeon (John the Monk, Tone VIII, 4 troparia/ode). The women's canon troparia are included in the secondCanon group per ode. Kontakion after Ode 3 = Indiction; Kontakion after Ode 6 = Venerable Symeon. Great Doxology confirmed (line 782 of source). No Polyeleos, no Magnification, no Matins Gospel (the 'Song of Ascents ... Prokeimenon, Gospel' at line 280-281 is for temple dedicated to St Symeon only). File-root troparion = Indiction troparion (primary commemoration). Tone at file root follows Indiction (Tone II)."
+  },
+  "troparion": {
+    "text": "O Fashioner of all creation,\nWho in Thine authority hast appointed the times and seasons:\nbless Thou the crown of the year with Thy goodness, O Lord,\npreserving in peace Orthodox Christians and Thy city,//\nand through the prayers of the Theotokos do Thou save us.",
+    "tone": 2,
+    "label": "Troparion of the Indiction"
+  },
+  "kontakion": {
+    "text": "O Christ our King Who livest in the highest,\nCreator and Maker of all things, visible and invisible,\nWho hast fashioned days and nights, seasons and years:\nbless Thou now the crown of the year;\npreserve and keep in peace Orthodox hierarchs,\nthis city and Thy people,//\nO greatly Merciful One.",
+    "tone": 2,
+    "label": "Kontakion of the Indiction"
+  },
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "doxology", "feastType": "lord", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "O Fashioner of all creation,\nWho in Thine authority hast appointed the times and seasons:\nbless Thou the crown of the year with Thy goodness, O Lord,\npreserving in peace Orthodox Christians and Thy city,//\nand through the prayers of the Theotokos do Thou save us.",
+      "tone": 2,
+      "label": "Troparion of the Indiction",
+      "_note": "On 'God is the Lord': Troparion of the Indiction (Twice); Glory ..., Troparion of Venerable Symeon (Tone I); Both now ..., Theotokion (Tone I)."
+    },
+    "_troparionGlory": {
+      "text": "Thou wast a pillar of patience, O venerable one,\nemulating the forefathers:\nJob, in afflictions; Joseph, in temptations,\nand the life of the incorporeal hosts while in the body,\nO Symeon our father.//\nEntreat Christ God that our souls be saved.",
+      "tone": 1,
+      "label": "Troparion of the Venerable Symeon"
+    },
+    "_troparionBothNow": {
+      "text": "Rejoice, O divinely joyous Virgin Mary,\nhaven and intercession of the human race,\nfor from thee the Redeemer of the world became incarnate,\nfor thou alone art a Mother and a Virgin,\never-blessed and most glorified.//\nEntreat Christ God to grant peace unto the world.",
+      "tone": 1,
+      "label": "Theotokion of the Troparion"
+    },
+    "sedalion": [
+      {
+        "text": "As to the Master of all and the Bestower of blessings, before Thee do we fall down in faith, earnestly crying aloud: Be Thou entreated in Thy tender compassion, O Savior, and by the prayers of her who gave birth to Thee, and of all who have ever been well-pleasing unto Thee, and in so far as Thou art good, grant a good year to those who honor Thee in two natures and faithfully glorify Thee.",
+        "tone": 4,
+        "label": "Sessional Hymn of the Indiction (after Kathisma 1)",
+        "melody": "Joseph marveled",
+        "_note": "Sung twice.",
+        "glory": {
+          "text": "Taking up the Cross of the Lord, O wise one, and following after Him unto the end, thou didst not turn thy mind back to the world, O divinely wise one. Having slain the passions by abstinence and labors, thou didst prepare thyself as a temple for thy Lord. Wherefore, thou hast received a reward of heavenly gifts, to heal the afflicted and cast out evil spirits, O most venerable Symeon. Entreat Christ God, that He grant remission of sins unto those who celebrate thy holy memory with love.",
+          "tone": 8,
+          "label": "Glory — Sessional Hymn of the Venerable Symeon",
+          "melody": "Of the Wisdom"
+        },
+        "bothNow": {
+          "text": "As to the Master of all and the Bestower of blessings, before Thee do we fall down in faith, earnestly crying aloud: Be Thou entreated in Thy tender compassion, O Savior, and by the prayers of her who gave birth to Thee, and of all who have ever been well-pleasing unto Thee, and in so far as Thou art good, grant a good year to those who honor Thee in two natures and faithfully glorify Thee.",
+          "tone": 4,
+          "label": "Both now — Sessional Hymn of the Indiction",
+          "melody": "Joseph marveled"
+        }
+      },
+      {
+        "text": "Having trained thy soul in godly manner by abstinence, labors and prayers, thou didst become a companion of the martyrs, O blessed one, and didst truly receive gifts of miracles to heal the infirmities of those who faithfully honor thee. Wherefore, thou dost expel legions of demons by the authority given thee against them from on high, O most blessed Symeon. Entreat Christ God, that He grant remission of sins unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the Venerable Symeon (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "glory": {
+          "text": "Thou didst faithfully enter upon the struggle of torment, O Callista, preaching Christ our God with thy two brethren; for, nurtured with hope, thou didst truly make of them noetic vessels of the Church of Christ. Wherefore O martyr, thou hast joined thyself unto them in the life on High.",
+          "tone": 4,
+          "label": "Glory — Sessional Hymn of Holy Martyr Callista",
+          "melody": "Go thou quickly before"
+        },
+        "bothNow": {
+          "text": "O Virgin Mother, quickly accept thou our supplications, and bear them to thy Son and God. O all-pure Sovereign Lady, loose thou the evil circumstances which surround those who have recourse unto thee, and crush the attacks and audacity of those who now arm themselves against thy servants, O Virgin.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I: Canon of the Indiction, the composition of John the Monk, in Tone I (6 troparia per ode, including irmos). Canon II: Canon of the Venerable Symeon, the composition of John the Monk, in Tone VIII (acrostic 'Accept this hymn, O most blessed Symeon'); the Tone IV Canon of the Holy Martyred Women (acrostic 'I hymn the pangs of the steadfast martyred women') is grouped within the secondCanon odes but labeled separately. Katavasiae: Cross/Exaltation irmoi per Sergius rubric.",
+      "ode1": {
+        "irmos": "Let us all sing a song of victory, O ye people,\nunto Him that freed Israel from bitter slavery to Pharaoh\nand led them dry-shod through the depth of the sea,//\nfor He hath been glorified.",
+        "irmos2": "Let us sing unto the Lord all ye people\nWho engulfed Pharaoh in the Red Sea,\nsinging a hymn of victory,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Let us all chant a hymn of victory unto Christ, by Whom all things were fashioned and in Whom the incomprehensible is perfected, as the hypostatic Word begotten of God the Father, for He hath been glorified." },
+          { "text": "Let us all chant a hymn of victory unto Christ, Who through the Father's good pleasure appeared from the Virgin and proclaimed unto us the acceptable year of the Lord for deliverance, for He hath been glorified." },
+          { "text": "The Bestower of the law, arriving in Nazareth, taught on the Sabbath day, laying down for the Jews the law of His ineffable coming, whereby He hath saved our race, in that He is merciful." },
+          { "text": "Theotokion: O all ye faithful, chanting, let us ever praise the most wondrous Maiden who shone forth Christ upon the world and who filleth all things with the joy of everlasting life, for she hath been glorified." },
+          { "canon": "secondCanon", "text": "O God-bearing Symeon, by thine entreaties grant the divinely conferred light of knowledge unto me who with the vile organ of my tongue weave a hymn for thee." },
+          { "canon": "secondCanon", "text": "Persians, Ethiopians, Indians and Scythians, and a multitude of Arabs acknowledged thy wisdom, O father, and Christ Who is glorified in thee." },
+          { "canon": "secondCanon", "text": "Full of spiritual grace, being, like Jacob, David and Moses from shepherd lands, thou wast shown to be a leader of the flocks of the Word, O blessed one." },
+          { "canon": "secondCanon", "text": "Theotokion: O most pure Theotokos, rejoice! O honored one, who in thy womb didst contain the infinite God, ask that those who hymn thee be delivered from grievous circumstances." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Establish me, O Christ, upon the immovable rock of Thy commandments,\nand enlighten me with the light of Thy countenance;\nfor there is none more holy than Thee,//\nO Lover of mankind.",
+        "irmos2": "Thy fear, O Lord, do Thou plant\nin the hearts of Thy servants\nand be Thou the confirmation of us//\nwho in truth call upon Thee.",
+        "troparia": [
+          { "text": "O Good One, establish Thou that which Thy right hand hath lovingly planted on the earth, preserving Thy Church, the fertile vineyard, O Almighty One." },
+          { "text": "O Master, God of all things, lead through this year which beginneth those who adorn themselves with divinely beautiful spiritual works, and who hymn Thee with faith." },
+          { "text": "O compassionate Christ, grant me a tranquil year and fill me with Thy divine words which Thou didst reveal when Thou didst speak to the Jews on the Sabbath." },
+          { "text": "Theotokion: We ever glorify thee, for thou alone didst, in a manner surpassing nature, and beyond human comprehension, receive grace in thy womb and without changing didst give birth unto Christ God." },
+          { "canon": "secondCanon", "text": "Swiftly fleeing the wintry vexations of the demons, thou didst make haste unto thy salvific monastery, O Symeon, from whence thou didst receive life which ageth not." },
+          { "canon": "secondCanon", "text": "Rejoicing, thou didst incline thy dutiful ear to the Master Who blesseth, O all-blessed one, and thereby didst find the blessed life." },
+          { "canon": "secondCanon", "text": "Receiving the seed of the Word, and having watered it with thy tears, with the blades of thy heart thou didst reap the abundant grain of the virtues." },
+          { "canon": "secondCanon", "text": "Theotokion: Ineffably didst thou conceive the Savior and Lord Who delivereth from grievous circumstances us who call upon thee in truth, O Bride of God." }
+        ]
+      },
+      "sedalenAfterOde3": {
+        "text": "O Thou Who bestowest fruitful seasons and rains from heaven upon those on earth, accept now the supplications of Thy servants, and deliver from all want Thy city, for Thy compassions are truly manifest in all Thy works. Wherefore, bless Thou our goings out and our comings in, set aright among us the work of our hands, and grant us forgiveness of offenses O God: For, as Thou art mighty, Thou didst bring all things from non-existence into being.",
+        "tone": 8,
+        "label": "Sessional Hymn of the Indiction (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "glory": {
+          "text": "Having forsaken all things of the world, and while still bodily on earth, thou wast a heavenly angel in spirit; for, having slain the assailing passions with thy flesh, thou wast shown to be a favorite of the Trinity, O blessed one. Wherefore, heal thou the sufferings of the infirm and by thy word drive away the evil spirits by grace, O most blessed Symeon, and entreat Christ God to grant forgiveness of offenses unto those who lovingly honor thy holy memory.",
+          "tone": 8,
+          "label": "Glory — Sessional Hymn of the Venerable Symeon",
+          "melody": "Of the Wisdom"
+        },
+        "bothNow": {
+          "text": "Having finished the race and kept the faith, O reason-endowed ewe-lambs, with faith ye brought yourselves to the Lamb and Shepherd through martyrdom. Wherefore, magnifying Christ, O right wondrous ones, we joyously praise your sacred memory today.",
+          "tone": 1,
+          "label": "Glory — Sessional Hymn of the Holy Martyred Women",
+          "melody": "Thy tomb, O Savior",
+          "_theotokion": {
+            "text": "Do thou guide to the path of repentance, us who have ever wandered away into the trackless wastes of evil and have angered the supremely good Lord, O blessed Mary who knewest not wedlock, thou refuge of despairing men and dwelling-place of God.",
+            "tone": 1,
+            "label": "Theotokion"
+          }
+        }
+      },
+      "kontakionAfterOde3": {
+        "text": "O Christ our King Who livest in the highest,\nCreator and Maker of all things, visible and invisible,\nWho hast fashioned days and nights, seasons and years:\nbless Thou now the crown of the year;\npreserve and keep in peace Orthodox hierarchs,\nthis city and Thy people,//\nO greatly Merciful One.",
+        "tone": 2,
+        "label": "Kontakion of the Indiction (after Ode 3)",
+        "_note": "The Kontakion of the Indiction is sung after Ode 3; the Kontakion of the Venerable Symeon is sung after Ode 6."
+      },
+      "ode4": {
+        "irmos": "I have considered Thy dispensation,\nO Almighty One,\nand with fear have I glorified Thee,//\nO Savior.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "The beginning of the year do Thy people offer unto Thee, O Savior, glorifying Thee with angelic hymns." },
+          { "text": "As Thou lovest mankind, O Christ, deem those who begin the year worthy to complete it in a manner well-pleasing unto Thee." },
+          { "text": "O only and almighty Lord, having calmed the world, grant it cycles of years." },
+          { "text": "Theotokion: Let us all now hymn the Theotokos as the haven of our souls and our steadfast hope." },
+          { "canon": "secondCanon", "text": "Laying the foundation of thine abstinence not on sand, but on thy most profound labors, O most blessed one, thou didst erect an unshakable tower of the virtues." },
+          { "canon": "secondCanon", "text": "Causing thy body to dwell in a harsh abode, thou didst nail down thy spirit with fear and found a dwelling-place of divine inheritance, O venerable one." },
+          { "canon": "secondCanon", "text": "Thou didst subdue the hidden passions of thy body, O most noetically rich father, and, lying in dung with worms, thou didst emit a sweet fragrance, O father." },
+          { "canon": "secondCanon", "text": "Emulating the life-creating Dead One in thy voluntary suffering, thou didst commit thyself alive to a dark pit, as to a tomb." },
+          { "canon": "secondCanon", "text": "Theotokion: O most pure Mary, do thou ever entreat God Whom thou didst bear, that He grant thy servants remission of sins." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ Who art our cleansing, come unto us,\nwho out of the night of the deeds of gloomy delusion,\nvaliantly hymn Thee as a Benefactor,\ngranting us an expeditious path,//\nascending upon which we find glory.",
+        "irmos2": "Illumine us O Lord with Thy commandments,\nand with Thine arm raised on high\ngrant us Thy peace,//\nO Lover of mankind!",
+        "troparia": [
+          { "text": "O Christ, Who fillest all things with goodness: do Thou grant unto Thy servants a year of varied seasons, crowned with mildness, fruitfulness and blessings." },
+          { "text": "Yearly recompense, a turn for the better and a state of peace do Thou show unto us who know Thee to be Him Who became like unto men, O Word of God." },
+          { "text": "Thou didst come to earth proclaiming from the Father the release of captives and the recovery of the blind, and the acceptable time, O Thou who art co-beginningless with the Father." },
+          { "text": "Theotokion: We set our hopes and our desire on thee, O pure Theotokos, do thou render merciful unto us Him Whom thou didst bear, O Virgin." },
+          { "canon": "secondCanon", "text": "Christ showed thee forth as a new Daniel, O Symeon; for from the den of wild beasts he returned thee unharmed by an apparition." },
+          { "canon": "secondCanon", "text": "Casting thyself wholly upon the Lord, thou didst lay thyself bare to storm, cold and burning heat, and to the malice of the adversary." },
+          { "canon": "secondCanon", "text": "Thou didst show thyself to be a new Moses and Elijah, taking food but once during the whole forty-day fast all throughout thy life, O venerable one." },
+          { "canon": "secondCanon", "text": "Girded about with a rope as with a cincture of gold, O venerable Symeon, thou didst show thyself to be a traverser of the heavens with divine wings." },
+          { "canon": "secondCanon", "text": "Theotokion: Ever beseech thy Son and our God, O pure Mary who knewest not wedlock, that He send down great mercy upon us, the faithful." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Thou didst save the Prophet from the sea monster, O Lover of mankind;\nlead me up also I pray,//\nfrom the abyss of transgressions.",
+        "irmos2": "O Thou that puttest on light as a garment\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "O Master, with the beginning of the year grant us to begin a life well-pleasing unto Thee." },
+          { "text": "O compassionate Savior, show us forth who hymn Thee to be full of spiritual days in the study of Thy law." },
+          { "text": "Theotokion: O most pure and all-immaculate Theotokos who hast given birth to the Lord, from misfortunes deliver us who hymn thee." },
+          { "canon": "secondCanon", "text": "Christ hath shown thee to be a worker of signs and wonders and an acceptable habitation of divine activity, O blessed one." },
+          { "canon": "secondCanon", "text": "Thy body didst thou raise up upon thy pillar as upon a cross, O Symeon. Wherefore, thou hast been glorified with Christ Who was lifted up upon the Cross for thy sake." },
+          { "canon": "secondCanon", "text": "Having found the path on high, O wondrous Symeon, raise up to the heights of heaven those who faithfully hymn thee." },
+          { "canon": "secondCanon", "text": "Theotokion: We recognize thee as the mountain which Daniel beheld, from whence Christ, the unquarried Stone of faith, was cut." }
+        ]
+      },
+      "kontakion": {
+        "text": "Making of thy pillar a fiery chariot,\nsearching the heights thou didst unite thyself to those who are on High.\nWherefore, thou wast a converser with angels, O venerable one,\npraying unceasingly with them to Christ God//\non behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the Venerable Symeon (after Ode 6)",
+        "melody": "Making of thy pillar"
+      },
+      "ikos": {
+        "text": "What human tongue can ever suffice to confess in praise the unblemished life of Symeon? Yet, by the wisdom of God, I shall hymn the suffering and struggles on earth of this mighty spiritual giant; for he was shown to be a beacon to all mankind in the magnitude of his patience, shining forth in the choirs of the angels; for, unceasingly hymning Christ with them, and having acquired purity through abstinence, he prayeth without ceasing for us all."
+      },
+      "ode7": {
+        "irmos": "Scorning the impious decree of the godless one,\nthe Children brought up together in godliness\nfeared not the threat of fire,\nbut standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou.",
+        "irmos2": "In Babylon, the pious youths did not worship the golden image,\nbut, bedewed in the midst of the fiery furnace,\nthey chanted a hymn, saying:\nO supremely exalted God of our fathers,//\nblessed art Thou!",
+        "troparia": [
+          { "text": "O ye Orthodox peoples who now begin the year, let us set a beginning to our hymns to Christ Who reigneth over the everlasting Kingdom; and let us piously chant: O God of our fathers, blessed art Thou!" },
+          { "text": "O Christ, Who before wast, shalt be and art the Lord: fill Thou this year with Thy good gifts for those who hymn Thee, the Source of goodness, chanting: O God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: As servants petitioning their Master, we set before Thee Thy pure Mother, O Christ, that Thou mayest deliver from every evil circumstance Thy servants who chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst loose drought for the doubting and didst open the gates of the rain for them; and by thy supplications thou didst restrain the quaking earth, and teaching the people to cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "As a most magnificent beacon of the Church and a most radiant sun, O Symeon, thou didst shine, scattering thy rays in all directions, teaching the people to cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "A sea of humanity gathered in the garden of thine abstinence, flowing like water from all directions, O favorite of Christ, are taught by thee to cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Of old Christ rested in the arms of the elder Symeon, and in His invisible power He rested also within the tablets of thy heart, O venerable Symeon. Wherefore, thou didst cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Theotokion: O pure Virgin, it becameth Him Who without seed was incarnate from thee to come forth, for thou wast shown to be greater than all in purity. And crying aloud to Him in hymns, we say: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Unto Christ who saved the children\nthat sang His praises\nand who bedewed the raging furnace,\nlet us hymn and supremely exalt//\nthroughout all ages.",
+        "irmos2": "Glorified in the holy mountain,\nthe Lord revealed the mystery of the Ever-Virgin unto Moses\nin the flames of the burning bush:\npraise ye and supremely exalt Him//\nthroughout all ages.",
+        "troparia": [
+          { "text": "O Christ, the honored Church offereth Thee the beginning of the year, as to the Author of our salvation, crying: Hymn ye and supremely exalt Christ throughout the ages!" },
+          { "text": "The Creator Who hath wisely renewed all that He brought into existence, and hath brought forth the cycles of the seasons by His will, hymn ye and supremely exalt Him throughout the ages!" },
+          { "text": "Let us chant unto God, Who hath brought forth all things and Who changeth the seasons for the manifold prosperity of mankind: Hymn ye and supremely exalt Christ throughout the ages!" },
+          { "text": "Theotokion: With the cycles and seasons of time, we, the assemblies of men, hymn thee in Orthodox manner as the Theotokos, the pure Virgin Mother of God, the salvation of all." },
+          { "canon": "secondCanon", "text": "Having divorced thyself from every attachment, yet taking pity on thy mother's weakness, after thy death thou didst appear to her while she was yet alive, crying aloud: Hymn the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Thou didst gird up the paralyzed youth and command Phylarchus to take up his bed upon his shoulders, O most sacred one, crying aloud: Hymn the Lord and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Cleansing with the suffering of Job the foulness of thy putrid flesh, thou didst transform it into a pearl of great price, O Symeon, favorite of Christ, glorifying Him throughout all ages." },
+          { "canon": "secondCanon", "text": "Theotokion: O Virgin Theotokos, who received joy from the angel, thou who hast given birth unto the Lord of glory, and shone forth Light upon the world: we all hymn thee throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed,\nprefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "irmos2": "The prophetic vision of the lawgiver on the mountain,\nin the fire of the burning bush,\nprefigured thy birthgiving O Ever-Virgin,\nthe salvation of us the faithful,//\nwherefore with never silent hymns we magnify thee.",
+        "troparia": [
+          { "text": "O Word of God, Power, true hypostatic Wisdom, Who sustaineth and directeth all things wisely, do Thou now peacefully order the season which hath dawned for Thy servants." },
+          { "text": "All Thy works, O Lord: the heavens, the earth, light, and the sea, the waters and all the springs, the sun, the moon, darkness, the stars, fire, men and beasts, praise Thee together with the angels." },
+          { "text": "Thou alone art pre-eternal, in that Thou art the Creator of the ages. O reigning Godhead, One, indivisible, in three Hypostases: through the supplications of the pure Mother of God, show forth this year as fruitful for Thine inheritance." },
+          { "text": "Theotokion: O Savior of all, Maker, Creator, and Ruler of all creation: through the supplications of her who gave birth to Thee without seed, grant peace to Thy world, preserving Thy Church ever undisturbed." },
+          { "canon": "secondCanon", "text": "When thou didst gain dominion over the passions through patience, O God-bearing Symeon, Christ accepted thee as a participant in His Kingdom. Wherefore, we honor thee with hymns." },
+          { "canon": "secondCanon", "text": "Having been deemed worthy of the grace of healing from among the inviolate treasures of the Spirit, O God-bearing Symeon, thou dost bestow healings upon those who celebrate thy memory." },
+          { "canon": "secondCanon", "text": "Having trod the heavenly path on the air of the virtues, girded about with sufferings, thou didst take flight to the tabernacles of heaven. Pray thou that our souls be saved." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou hast appeared as a bush burning with fire yet remaining unconsumed, O Lady, having conceived without seed the God and Savior of the world, Whom we unceasingly magnify." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "O Lord and God of gods, Being of three Hypostases, unapproachable, uncreated, and the almighty Creator and Ruler of all; before Thee do we all fall down, and Thee do we entreat: blessing this beginning year, in that Thou art good, do Thou preserve all Orthodox Christians and Thy people in peace, O Compassionate One.",
+      "tone": 2,
+      "label": "Exapostilarion of the Indiction",
+      "melody": "To the disciples",
+      "glory": {
+        "text": "Thy life, O venerable one, which shone like a radiant beacon, hath illumined all the world with rays of miracles; for, praying for us who honor thee, O blessed one, by thy pillar thou didst ascend unto God as by a ladder, to that place where there is truly the ultimate fulfillment of all desires, O Symeon.",
+        "tone": 2,
+        "label": "Glory — Exapostilarion of the Venerable Symeon",
+        "melody": "To the disciples"
+      },
+      "bothNow": {
+        "text": "O Maker and Ruler of all creation, Who in Thine authority hast fixed the times and seasons: crown the cycles of the year with blessings of goodness, O Compassionate One, preserving Thy people in peace, unharmed and whole, we pray, through the supplications of her who gave birth to Thee, and of the divine angels.",
+        "tone": 2,
+        "label": "Both now — Exapostilarion of the Indiction",
+        "melody": "To the disciples"
+      }
+    },
+    "lauds": {
+      "tone": 3,
+      "_note": "Lauds open with 4 stichera of the Indiction (Tone III and Tone IV) by John the Monk, with one sticheron of the holy martyred women (Tone II) by Germanus. Glory = Venerable Symeon (Tone II). Both now = Indiction (Tone VIII) by Germanus.",
+      "stichera": [
+        {
+          "text": "O pre-eternal Word of the Father, Who art in the image of God, and Who, in Thine authority, hast fixed the times and seasons: Bless Thou the crown of the year with Thy goodness, granting peace unto Thy Churches and victories to Orthodox Christians, fertility to the earth and great mercy to us.",
+          "tone": 3
+        },
+        {
+          "text": "Thy Kingdom is the Kingdom of all ages, O Christ God, and Thy dominion continueth throughout all generations; for Thou hast fashioned all things in wisdom, fixing the times and seasons for us. Wherefore, giving thanks for all things, we cry aloud: Bless Thou the crown of the year with Thy goodness, and grant us to cry out to Thee without condemnation: Glory be to Thee, O Lord!",
+          "tone": 4
+        },
+        {
+          "text": "Thy travels are great and wondrous journeyings, O God. Wherefore, we magnify the power of Thy dispensation: for, being Light of Light, Thou didst come to Thy wretched world and destroy the primeval curse of ancient Adam, as Thou wast well pleased to do, O Word; and in Thy wisdom Thou hast appointed times and seasons for us, that we may glorify Thy goodness, which doth accomplish all things. O Lord, glory be to Thee!",
+          "tone": 4,
+          "label": "Sticheron of the Indiction (by Andrew of Pyres)"
+        },
+        {
+          "text": "When by Thy Passion, O Lord, Thou didst establish the whole world, then were the weak girded about with power, and women stood forth manfully against the most cruel tyrant and won a maternal victory; and they entered into the delight of paradise, unto the glory of Thee Who wast born of women and hast saved the human race.",
+          "tone": 2,
+          "label": "Sticheron of the Holy Martyred Women (by Germanus)"
+        }
+      ],
+      "doxastikon": {
+        "text": "The sacred Symeon sprang forth as good fruit from a goodly stock, nurtured from infancy more by grace than by milk. And lifting up his holy body upon the pillar of stone, and having lifted his mind up to God, he fashioned a heavenly dwelling-place with his virtues; and rejoicing in harmony with the hosts of God, he became an abode of Christ, the Savior of our souls.",
+        "tone": 2,
+        "label": "Glory — of the Venerable Symeon"
+      },
+      "theotokion": {
+        "text": "O Christ, Word and God, Who hast created all things in Thine ineffable wisdom, and hast appointed times and seasons for us: bless Thou the works of Thy hands and with Thy power make glad all right-believing Orthodox Christians, granting them might against the barbarians, in that Thou alone art good and the Lover of mankind.",
+        "tone": 8,
+        "label": "Both now — of the Indiction (by Germanus)"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O Fashioner of all creation,\nWho in Thine authority hast appointed the times and seasons:\nbless Thou the crown of the year with Thy goodness, O Lord,\npreserving in peace Orthodox Christians and Thy city,//\nand through the prayers of the Theotokos do Thou save us.",
+      "tone": 2,
+      "label": "Troparion of the Indiction",
+      "_note": "After the Great Doxology: Troparion of the Indiction; Glory ..., Troparion of the Venerable Symeon (Tone I); Both now ..., Theotokion (Tone I). Then the litanies, dismissal and First Hour."
+    }
+  }
+}

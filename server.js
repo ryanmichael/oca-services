@@ -4343,6 +4343,104 @@ function handleRequest(req, res) {
         if (!b.provenance) b.provenance = 'OCA';
       }
 
+      // ── Replace Lord-I-Call stichera with Kneeling-Vespers propers ─────
+      // Saturday-eve Vigil LIC (Tone 1+2 idiomela + Tone 8 "Come, O people")
+      // falls through; OCA Day-of-Holy-Spirit Vespers prescribes Tone 4
+      // idiomela ("Today in the city of David…" etc., on 6 with each
+      // repeated) + Tone 6 "O heavenly King" doxastichon.
+      {
+        const kvLic = PENTECOSTARION_SUNDAY_OVERRIDES[49]?.kneelingVespers?.lordICall;
+        if (kvLic?.stichera?.length === 3) {
+          const psalm129 = fixedTexts?.lordICall?.psalmVerses?.psalm129?.verses || [];
+          const psalm116 = fixedTexts?.lordICall?.psalmVerses?.psalm116?.verses || [];
+          const findVerse = (n) => {
+            const v = [...psalm129, ...psalm116].find(x => x.number === n);
+            return v ? v.text : '';
+          };
+          const verseTexts = [6, 5, 4, 3, 2, 1].map(findVerse);
+          const pairs = [
+            [verseTexts[0], kvLic.stichera[0], false],
+            [verseTexts[1], kvLic.stichera[0], true],
+            [verseTexts[2], kvLic.stichera[1], false],
+            [verseTexts[3], kvLic.stichera[1], true],
+            [verseTexts[4], kvLic.stichera[2], false],
+            [verseTexts[5], kvLic.stichera[2], true],
+          ];
+          const licBlocks = [];
+          pairs.forEach(([verseText, sticheron, isRepeat], i) => {
+            const verseNum = 6 - i;
+            licBlocks.push({
+              id: `kv-lic-v${verseNum}`, section: 'Lord, I Have Cried',
+              type: 'verse', speaker: 'reader',
+              text: `V. (${verseNum}) ${verseText}`,
+            });
+            licBlocks.push({
+              id: `kv-lic-s${i + 1}${isRepeat ? '-r' : ''}`, section: 'Lord, I Have Cried',
+              type: 'hymn', speaker: 'choir', text: sticheron.text, tone: sticheron.tone,
+              source: 'pentecostarion', label: sticheron.label || 'Idiomelon',
+              provenance: 'OCA',
+            });
+          });
+          licBlocks.push({
+            id: 'kv-lic-glory', section: 'Lord, I Have Cried', type: 'doxology',
+            speaker: null, text: 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.',
+          });
+          licBlocks.push({
+            id: 'kv-lic-dox', section: 'Lord, I Have Cried', type: 'hymn',
+            speaker: 'choir', text: kvLic.doxastichon.text, tone: kvLic.doxastichon.tone,
+            source: 'pentecostarion', label: kvLic.doxastichon.label, provenance: 'OCA',
+          });
+          // Replace from the first verse/hymn block of LIC through the last LIC block.
+          let licStart = -1, licEnd = -1;
+          baseBlocks.forEach((b, i) => {
+            if (b.section === 'Lord, I Have Cried' && (b.type === 'verse' || b.type === 'hymn' || b.type === 'doxology')) {
+              if (licStart === -1) licStart = i;
+              licEnd = i;
+            }
+          });
+          if (licStart >= 0) {
+            baseBlocks.splice(licStart, licEnd - licStart + 1, ...licBlocks);
+          }
+        }
+      }
+
+      // ── Replace Evening Prokeimenon with Great Prokeimenon Tone 7 ──────
+      // OCA prescribes "Who is so great a God as our God?" (Ps. 76) for the
+      // Day of Holy Spirit eve, not the Sunday "The Lord is king" (Ps. 92).
+      {
+        const kvProk = PENTECOSTARION_SUNDAY_OVERRIDES[49]?.kneelingVespers?.prokeimenon;
+        if (kvProk?.refrain) {
+          const section = 'Evening Prokeimenon';
+          const pBlocks = [
+            { id: 'kv-prok-intro', section, type: 'prayer', speaker: 'priest',
+              text: 'Let us attend. Peace be unto all.' },
+            { id: 'kv-prok-resp', section, type: 'response', speaker: 'choir',
+              text: 'And to thy spirit.' },
+            { id: 'kv-prok-announce', section, type: 'rubric', speaker: 'deacon',
+              text: `The great prokeimenon in Tone ${kvProk.tone}.` },
+            { id: 'kv-prok-refrain', section, type: 'hymn', speaker: 'choir',
+              text: kvProk.refrain, tone: kvProk.tone },
+          ];
+          kvProk.verses.forEach((v, i) => {
+            pBlocks.push({ id: `kv-prok-v${i}`, section, type: 'verse', speaker: 'deacon', text: v });
+            pBlocks.push({ id: `kv-prok-refrain-r${i}`, section, type: 'hymn', speaker: 'choir',
+              text: kvProk.refrain, tone: kvProk.tone });
+          });
+          pBlocks.push({ id: 'kv-prok-final', section, type: 'hymn', speaker: 'choir',
+            text: kvProk.refrain, tone: kvProk.tone });
+          let pkStart = -1, pkEnd = -1;
+          baseBlocks.forEach((b, i) => {
+            if (b.section === 'Evening Prokeimenon') {
+              if (pkStart === -1) pkStart = i;
+              pkEnd = i;
+            }
+          });
+          if (pkStart >= 0) {
+            baseBlocks.splice(pkStart, pkEnd - pkStart + 1, ...pBlocks);
+          }
+        }
+      }
+
       // ── Replace Aposticha with Kneeling-Vespers-specific propers ───────
       // The Saturday-eve Vigil aposticha (Tone 6 "The nations did not
       // know…" + Tone 8 "The arrogance of the tower…") falls through from

@@ -9,7 +9,6 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-19.pdf",
     "_note": "First menaion file authored at simple (six-stichera) rank. Sergius rubric: 6 LIC stichera, Octoechos aposticha with festal Glory at Vespers, no Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel, no festal Lauds, no Great Doxology. Single canon of the venerable one by Theophanes in Tone IV (acrostic 'I glorify Macarius who is most excellent among ascetics'); two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern. KNOWN GAP: Matins Aposticha currently empty — its body stichera come from weekday Octoechos Matins, which has not yet been scraped (see project memory simple-rank track). The festal Aposticha Glory in Tone IV ('Thy good works have shone forth like the sun') will be wired once Octoechos weekday Matins data lands."
   },
-
   "troparion": {
     "text": "Thou wast revealed to be a desert-dweller, an angel in the body and a wonder-worker,\nO our God-bearing father Macarius.\nHaving received heavenly gifts through fasting, vigil and prayer,\nthou dost heal the infirm and the souls of those who have recourse unto thee in faith.\nGlory to Him Who hath given thee strength!\nGlory to Him Who hath crowned thee!//\nGlory to Him Who worketh healings for all through thee!",
     "tone": 1,
@@ -21,10 +20,13 @@
     "label": "Kontakion of the venerable one",
     "melody": "The choir of the angels"
   },
-
   "matins": {
-    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion" },
-
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
     "sessionalHymns": {
       "text": "Tried by the fire of abstinence like gold in the crucible, O wise one, thou wast shown to shine with great luster;\nfor which cause thou hast passed over to the kingdom of heaven.\nWherefore, praising thee with faith, we cry aloud://\nAsk thou for grace, mercy and the cleansing away of our transgressions, O father!",
       "tone": 1,
@@ -37,104 +39,183 @@
         "label": "Theotokion"
       }
     },
-
     "troparion": {
       "text": "Thou wast revealed to be a desert-dweller, an angel in the body and a wonder-worker,\nO our God-bearing father Macarius.\nHaving received heavenly gifts through fasting, vigil and prayer,\nthou dost heal the infirm and the souls of those who have recourse unto thee in faith.\nGlory to Him Who hath given thee strength!\nGlory to Him Who hath crowned thee!//\nGlory to Him Who worketh healings for all through thee!",
       "tone": 1,
       "label": "Troparion of the venerable one"
     },
-
     "canon": {
       "tone": 4,
       "_author": "Canon of the venerable one by Theophanes in Tone IV; acrostic 'I glorify Macarius who is most excellent among ascetics'. Two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
       "ode1": {
         "irmos": "The choirs of Israel passed dry-shod across the watery deep of the Red Sea\nand beholding the riders and captains of the enemy swallowed by the waters,\nthey cried out for joy://\n'Let us chant unto our God, for He hath been glorified.'",
         "troparia": [
-          { "text": "Shining with divine light, and dwelling now with the angels, O father, by thy supplications save those who celebrate thy most sacred memory and cry out in joy: Let us sing unto our God, for He hath been glorified!" },
-          { "text": "Treading without wavering, O most blessed one, thou didst reach the end of the path which leadeth to life, fleeing the tumults, and thou didst put down the uprisings of the demons, crying out with joy: Let us sing unto our God, for He hath been glorified." },
-          { "text": "Having mortified carnal mindedness with ascetic struggles, O father, thou didst make thyself obedient to the divine Spirit; and, guided by His divine power, didst cry out in joy: Let us sing unto our God, for He hath been glorified!" },
-          { "text": "Thou didst forsake all beautiful things, loving the eternal beauty in the house of the Lord, O father, wherein is the sound of those who keep pure festival, crying out in joy: Let us sing unto our God, for He hath been glorified!" },
-          { "type": "theotokion", "text": "Theotokion: Having conceived in thy womb the timeless Son of the beginningless Father, Who became flesh for the sake of mankind, thou didst ineffably give birth to Him in time; and, rejoicing, we cry out to Him: Let us sing unto our God, for He hath been glorified!" }
+          {
+            "text": "Shining with divine light, and dwelling now with the angels, O father, by thy supplications save those who celebrate thy most sacred memory and cry out in joy: Let us sing unto our God, for He hath been glorified!"
+          },
+          {
+            "text": "Treading without wavering, O most blessed one, thou didst reach the end of the path which leadeth to life, fleeing the tumults, and thou didst put down the uprisings of the demons, crying out with joy: Let us sing unto our God, for He hath been glorified."
+          },
+          {
+            "text": "Having mortified carnal mindedness with ascetic struggles, O father, thou didst make thyself obedient to the divine Spirit; and, guided by His divine power, didst cry out in joy: Let us sing unto our God, for He hath been glorified!"
+          },
+          {
+            "text": "Thou didst forsake all beautiful things, loving the eternal beauty in the house of the Lord, O father, wherein is the sound of those who keep pure festival, crying out in joy: Let us sing unto our God, for He hath been glorified!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Having conceived in thy womb the timeless Son of the beginningless Father, Who became flesh for the sake of mankind, thou didst ineffably give birth to Him in time; and, rejoicing, we cry out to Him: Let us sing unto our God, for He hath been glorified!"
+          }
         ]
       },
       "ode3": {
         "irmos": "The bow of the mighty hath been rendered impotent\nand the infirm are now girded with strength;//\nwherefore my heart is established in the Lord.",
         "troparia": [
-          { "text": "Thou didst submit to the law of the Spirit, girding thyself about with His armor, O venerable one, and didst not subject thy will to the law of sin." },
-          { "text": "Having thine understanding directed to God on high, O God-bearer, thou didst forsake all things on earth, being unceasingly made light by the pangs of abstinence." },
-          { "text": "Having burst asunder the bonds of nature by thy supra-natural and pure life, O God-bearer, thou didst receive the ability to work things which transcend nature." },
-          { "text": "That thou mightest converse with God in stillness, O blessed father, thou didst resolve to dwell in the desert, withdrawing from tumult." },
-          { "type": "theotokion", "text": "Theotokion: Desiring to save mankind for his benefit, He Who is the Lover of mankind made His abode within thy womb without being circumscribed, O Mother of God, in that He is our Benefactor." }
+          {
+            "text": "Thou didst submit to the law of the Spirit, girding thyself about with His armor, O venerable one, and didst not subject thy will to the law of sin."
+          },
+          {
+            "text": "Having thine understanding directed to God on high, O God-bearer, thou didst forsake all things on earth, being unceasingly made light by the pangs of abstinence."
+          },
+          {
+            "text": "Having burst asunder the bonds of nature by thy supra-natural and pure life, O God-bearer, thou didst receive the ability to work things which transcend nature."
+          },
+          {
+            "text": "That thou mightest converse with God in stillness, O blessed father, thou didst resolve to dwell in the desert, withdrawing from tumult."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Desiring to save mankind for his benefit, He Who is the Lover of mankind made His abode within thy womb without being circumscribed, O Mother of God, in that He is our Benefactor."
+          }
         ]
       },
       "ode4": {
         "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry://\nGlory to Thy power, O Christ.",
         "troparia": [
-          { "text": "By true abstinence thou didst straightway put off the corrupt old man and sinful passions, O father; and didst put on Christ, the new Man, O most honored one." },
-          { "text": "Thy life was shown to be most radiant, as a most excellent standard of every divine virtue, O father, in prayers and fasting, vigils and supplications to Christ, Who is the Lover of mankind." },
-          { "text": "Thou gavest no slumber to thine eyelids, O divinely wise father, until thou didst make thyself a most beautiful abode for the Master Who seeth all things; and to Him thou didst cry: Glory to Thy power, O Christ!" },
-          { "text": "In thy youth thou didst show forth chastity, in old age, understanding, and throughout thy life, endurance and long-suffering, and love for all who cry: Glory to Thy power, O Christ!" },
-          { "type": "theotokion", "text": "Theotokion: O all-pure one, thou hast brought life to all the noetically dead and hast raised up those who have fallen into corruption, having given birth to the Bestower of life, Who delivereth those who cry: Glory to Thy power, O Christ!" }
+          {
+            "text": "By true abstinence thou didst straightway put off the corrupt old man and sinful passions, O father; and didst put on Christ, the new Man, O most honored one."
+          },
+          {
+            "text": "Thy life was shown to be most radiant, as a most excellent standard of every divine virtue, O father, in prayers and fasting, vigils and supplications to Christ, Who is the Lover of mankind."
+          },
+          {
+            "text": "Thou gavest no slumber to thine eyelids, O divinely wise father, until thou didst make thyself a most beautiful abode for the Master Who seeth all things; and to Him thou didst cry: Glory to Thy power, O Christ!"
+          },
+          {
+            "text": "In thy youth thou didst show forth chastity, in old age, understanding, and throughout thy life, endurance and long-suffering, and love for all who cry: Glory to Thy power, O Christ!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: O all-pure one, thou hast brought life to all the noetically dead and hast raised up those who have fallen into corruption, having given birth to the Bestower of life, Who delivereth those who cry: Glory to Thy power, O Christ!"
+          }
         ]
       },
       "ode5": {
         "irmos": "Do Thou O Lord send down upon us Thine enlightenment,\nand free us from the gloom of transgression, O Good One,//\ngranting us Thy peace.",
         "troparia": [
-          { "text": "Extending the intelligence of thy soul, and directing thy senses, O wise and glorious one, thou didst become a most honored temple dedicated to God." },
-          { "text": "Ruining the machinations of the most perverse serpent, thou didst blunt his bitter wiles, ever setting thy soul firmly in divine law." },
-          { "text": "Thou didst adorn the three parts of thy soul, O venerable one, and, having made thy mind master, didst have Christ guiding thee to the path of heaven." },
-          { "type": "theotokion", "text": "Theotokion: The Virgin gave birth to our most pure God, Who hath appointed purity as the law for all, and declareth the holiness of piety unto all on earth." }
+          {
+            "text": "Extending the intelligence of thy soul, and directing thy senses, O wise and glorious one, thou didst become a most honored temple dedicated to God."
+          },
+          {
+            "text": "Ruining the machinations of the most perverse serpent, thou didst blunt his bitter wiles, ever setting thy soul firmly in divine law."
+          },
+          {
+            "text": "Thou didst adorn the three parts of thy soul, O venerable one, and, having made thy mind master, didst have Christ guiding thee to the path of heaven."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: The Virgin gave birth to our most pure God, Who hath appointed purity as the law for all, and declareth the holiness of piety unto all on earth."
+          }
         ]
       },
       "ode6": {
         "irmos": "Prefiguring Thy three-day burial\nProphet Jonah praying in the belly of the sea-monster cried aloud://\nDeliver me from corruption O Jesus Thou King of hosts.",
         "troparia": [
-          { "text": "Thou didst ardently love to dwell in the desert, O God-bearer, therein receiving God Who delivered thee and guarded thy steps." },
-          { "text": "Thou didst remain unshaken in asceticism, O divinely wise one, maintaining such strictness even to the end, and thereby thou hast manifestly been vouchsafed incorrupt delight." },
-          { "text": "Thou didst live an angelic life on earth, and hast received angelic honor as is meet, standing before the God of all with the angels." },
-          { "type": "theotokion", "text": "Theotokion: In thy womb, O Mother of God, thou didst conceive the Word of the beginningless Father, Who for our sake immutably became a man like us, and is known in two natures." }
-        ],
-        "kontakion": {
-          "text": "Having in life reached the end of a blessed life,\nthou dwellest in the land of the meek with the choirs of the martyrs, as is meet;\nO God-bearing Macarius,\nhaving populated the desert as though a city,\nthou hast received from God the grace of miracles.//\nWherefore, we honor thee.",
-          "tone": 1,
-          "label": "Kontakion of the venerable one",
-          "melody": "The choir of the angels",
-          "ikos": {
-            "text": "As a zealous disciple of the God-bearing Anthony, O father, pliable as wax, thou didst truly take the form of his every virtue and struggle.\nWherefore, like Elijah to another Elisha, he gave the grace of miracles in twofold measure to thee, who hast also received the effulgence of the foreknowledge of the truth.\nThe great activity of thy life hath been established throughout the world, awakening those who sleep in the abyss of perdition.//\nWherefore, we honor thee."
+          {
+            "text": "Thou didst ardently love to dwell in the desert, O God-bearer, therein receiving God Who delivered thee and guarded thy steps."
+          },
+          {
+            "text": "Thou didst remain unshaken in asceticism, O divinely wise one, maintaining such strictness even to the end, and thereby thou hast manifestly been vouchsafed incorrupt delight."
+          },
+          {
+            "text": "Thou didst live an angelic life on earth, and hast received angelic honor as is meet, standing before the God of all with the angels."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: In thy womb, O Mother of God, thou didst conceive the Word of the beginningless Father, Who for our sake immutably became a man like us, and is known in two natures."
           }
+        ]
+      },
+      "kontakion": {
+        "text": "Having in life reached the end of a blessed life,\nthou dwellest in the land of the meek with the choirs of the martyrs, as is meet;\nO God-bearing Macarius,\nhaving populated the desert as though a city,\nthou hast received from God the grace of miracles.//\nWherefore, we honor thee.",
+        "tone": 1,
+        "label": "Kontakion of the venerable one",
+        "melody": "The choir of the angels",
+        "ikos": {
+          "text": "As a zealous disciple of the God-bearing Anthony, O father, pliable as wax, thou didst truly take the form of his every virtue and struggle.\nWherefore, like Elijah to another Elisha, he gave the grace of miracles in twofold measure to thee, who hast also received the effulgence of the foreknowledge of the truth.\nThe great activity of thy life hath been established throughout the world, awakening those who sleep in the abyss of perdition.//\nWherefore, we honor thee."
         }
       },
       "ode7": {
         "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO God of our fathers,//\nsupremely praised above all, and blessed art Thou O Lord.",
         "troparia": [
-          { "text": "Casting down the enemy with the help of God and assistance from on high, thou didst become a victor, crying aloud: O all-hymned Lord God of our fathers, blessed art Thou!" },
-          { "text": "Having purged away the gloom which cometh from the passions, thou wast illumined with the enlightenment of dispassion, a blessed one, crying: O all-hymned Lord God of our fathers, blessed art Thou!" },
-          { "text": "Having adorned thy soul with magnificent virtues and become beautiful for God with comeliness, thou didst chant, rejoicing: O all-hymned Lord God of our fathers, blessed art Thou!" },
-          { "type": "theotokion", "text": "Theotokion: Making His abode within thy womb, O Virgin, the Lord Who is the Lover of mankind, the blessed God of our fathers, became incarnate, calling us who had fallen into captivity, that we might become what we were in the beginning." }
+          {
+            "text": "Casting down the enemy with the help of God and assistance from on high, thou didst become a victor, crying aloud: O all-hymned Lord God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "Having purged away the gloom which cometh from the passions, thou wast illumined with the enlightenment of dispassion, a blessed one, crying: O all-hymned Lord God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "Having adorned thy soul with magnificent virtues and become beautiful for God with comeliness, thou didst chant, rejoicing: O all-hymned Lord God of our fathers, blessed art Thou!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Making His abode within thy womb, O Virgin, the Lord Who is the Lover of mankind, the blessed God of our fathers, became incarnate, calling us who had fallen into captivity, that we might become what we were in the beginning."
+          }
         ]
       },
       "ode8": {
         "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord//\nand supremely exalt Him throughout all ages.",
         "troparia": [
-          { "text": "Receiving the words of eternal life in thy heart, O all-blessed one, thou didst cause thy body to wither; and thou didst die to the world, clothing thyself in life-bearing immortality, crying aloud: Hymn the Lord, and supremely exalt Him throughout all ages!" },
-          { "text": "O God-bearer, entreat our only Benefactor, that He be merciful unto those who celebrate thy most sacred memory, asking forgiveness of sins for them. Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
-          { "text": "Heeding God with constant inclination, and thus receiving the radiance of effulgence, like a mirror thou didst send forth luminous reflected light upon those who chant: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
-          { "text": "Ever advancing with divine ascents, thou didst mount the ladder which stretcheth up to the heavens, whereon the Lord had appeared, O father, until thou didst reach those who chant: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
-          { "type": "theotokion", "text": "Theotokion: We hymn thee, O divinely joyous one, for thou hast given birth for us to God incarnate. Wherefore, we all call thee the Theotokos, the God-receiving table, the beauty of Jacob, crying: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" }
+          {
+            "text": "Receiving the words of eternal life in thy heart, O all-blessed one, thou didst cause thy body to wither; and thou didst die to the world, clothing thyself in life-bearing immortality, crying aloud: Hymn the Lord, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "O God-bearer, entreat our only Benefactor, that He be merciful unto those who celebrate thy most sacred memory, asking forgiveness of sins for them. Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "Heeding God with constant inclination, and thus receiving the radiance of effulgence, like a mirror thou didst send forth luminous reflected light upon those who chant: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "Ever advancing with divine ascents, thou didst mount the ladder which stretcheth up to the heavens, whereon the Lord had appeared, O father, until thou didst reach those who chant: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: We hymn thee, O divinely joyous one, for thou hast given birth for us to God incarnate. Wherefore, we all call thee the Theotokos, the God-receiving table, the beauty of Jacob, crying: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          }
         ]
       },
       "ode9": {
         "irmos": "Eve dwelt under the curse of sin because of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy blossomed forth blessing upon the world.//\nWherefore, we all magnify thee.",
         "troparia": [
-          { "text": "Thou didst water the field of thy heart with tears of fasting; and, rejoicing, O God-bearing father, and like sheaves, thou dost now joyously gather up the honors of thy struggles. Wherefore, we all bless thee." },
-          { "text": "The never-waning light shone upon thee, and thou hast received everlasting gladness; and, joining chorus with the angels around the King and Lord, be thou mindful of those who celebrate thy memory with faith, O all-blessed father." },
-          { "text": "Thou didst succeed in eluding the arrows of the demons and their wicked machinations; thy soul was saved, O blessed one, and stood forth, pure and undefiled, and thou hast been vouchsafed the inheritance of heaven. Wherefore, be thou mindful of those who hymn thee." },
-          { "text": "Thou didst contend according to the law of asceticism, as is meet, O father, and didst triumph. Wherefore, the only Benefactor hath honored thee with a crown of glory and hath granted thee divine effulgence and blessed delights." },
-          { "type": "theotokion", "text": "Theotokion: As thou hast given birth to the Creator of all creatures, O Mother of God, thou hast surpassed every creature in divine glory, holiness and grace, and in the perfection of every virtue. Wherefore, we all magnify thee." }
+          {
+            "text": "Thou didst water the field of thy heart with tears of fasting; and, rejoicing, O God-bearing father, and like sheaves, thou dost now joyously gather up the honors of thy struggles. Wherefore, we all bless thee."
+          },
+          {
+            "text": "The never-waning light shone upon thee, and thou hast received everlasting gladness; and, joining chorus with the angels around the King and Lord, be thou mindful of those who celebrate thy memory with faith, O all-blessed father."
+          },
+          {
+            "text": "Thou didst succeed in eluding the arrows of the demons and their wicked machinations; thy soul was saved, O blessed one, and stood forth, pure and undefiled, and thou hast been vouchsafed the inheritance of heaven. Wherefore, be thou mindful of those who hymn thee."
+          },
+          {
+            "text": "Thou didst contend according to the law of asceticism, as is meet, O father, and didst triumph. Wherefore, the only Benefactor hath honored thee with a crown of glory and hath granted thee divine effulgence and blessed delights."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: As thou hast given birth to the Creator of all creatures, O Mother of God, thou hast surpassed every creature in divine glory, holiness and grace, and in the perfection of every virtue. Wherefore, we all magnify thee."
+          }
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Desiring the life of the angels, thou didst withdraw into the deserts;\nand having subdued the passions of the flesh,\nthou wast shown to be angelic,//\nO our God-bearing father.",
       "tone": 3,

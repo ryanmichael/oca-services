@@ -9,7 +9,6 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-14.pdf",
     "_note": "Joint simple-rank. Canon I of Elisha, acrostic 'With gladness I hymn the grace of Elisha', Tone V + Canon II of Methodius Tone IV. Methodius kontakion after Ode 3; Elisha after Ode 6. Two sessional hymns + theotokion. Two named exapostilaria. GAP: Two separate troparia (prophet Tone IV + hierarch Tone IV at Glory) — Elisha stored as primary; Methodius troparion: 'The truth of things revealed thee to thy flock as a rule of faith, icon of meekness, and teacher of temperance; wherefore, thou hast attained the heights through humility and riches through poverty; O hierarch Methodius our father, entreat Christ God, that our souls be saved.' Probe 'Gospel' flag = false positive from Liturgy section. Elisha odes 4 and 8 have 4 saint troparia each (not 3)."
   },
-
   "troparion": {
     "text": "The angel in the flesh, the foundation of the prophets, the second forerunner of the coming of Christ,\nthe glorious Elijah sent down grace from on high upon Elisha to dispel infirmities and to cleanse lepers.//\nWherefore, he poureth forth healings upon those who honor him.",
     "tone": 4,
@@ -21,10 +20,14 @@
     "label": "Kontakion of the Holy Prophet Elisha",
     "melody": "Seeking the highest"
   },
-
   "matins": {
-    "_meta": { "tone": 5, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
-
+    "_meta": {
+      "tone": 5,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
     "sessionalHymns": [
       {
         "text": "With divine foresight the great Elijah took thee as his disciple, O wise Elisha, and showed thee forth as a prophet shining with the Spirit. Wherefore, celebrating thine all-holy memorial today with right honorable wisdom, we honor thee with him, O glorious one.",
@@ -44,13 +47,11 @@
         "label": "Both now — Theotokion"
       }
     ],
-
     "troparion": {
       "text": "The angel in the flesh, the foundation of the prophets, the second forerunner of the coming of Christ,\nthe glorious Elijah sent down grace from on high upon Elisha to dispel infirmities and to cleanse lepers.//\nWherefore, he poureth forth healings upon those who honor him.",
       "tone": 4,
       "label": "Troparion of the Holy Prophet Elisha"
     },
-
     "exapostilaria": [
       {
         "text": "Thou didst receive from God twice the grace of Elijah, O divinely blessed Elisha, and thou givest twofold healing, to both souls and bodies, unto those who with faith ask it of thee.",
@@ -67,137 +68,314 @@
         "label": "Both now — Theotokion"
       }
     ],
-
     "canon": {
       "tone": 5,
       "_secondCanonTone": 4,
       "_authors": "Canon I of Elisha, acrostic 'With gladness I hymn the grace of Elisha', Tone V + Canon II of Methodius, Tone IV.",
-
       "kontakionAfterOde3": {
         "text": "Thou didst struggle on earth like an incorporeal being, O Methodius,\nand hast inherited the heavens, as one who explained the veneration of icons to the ends of the earth;\nfor subjected all the more to labors and pangs,//\nthou didst not cease to boldly denounce those who cast aside the icons of Christ.",
         "tone": 2,
         "label": "Kontakion of St. Methodius",
         "melody": "The steadfast"
       },
-
       "ode1": {
         "irmos": "Unto God the Savior Who made His people pass dryshod through the sea,\nbut drowned Pharaoh with all his host,//\nunto Him alone let us sing: For He hath been glorified.",
         "irmos2": "O Thou Who smote Egypt and drowned the tyrant Pharaoh in the sea,\nThou didst save from slavery the people who like Moses chanted a hymn of victory,//\nfor He hath been glorified.",
         "troparia": [
-          { "text": "Hymns chanted unto God from the beginning, wherewith the Hymned One is hymned, resplendent in the praises of the prophets, do I sing, hymning Him Who hath glorified them, in that He is glorious." },
-          { "text": "Abandoning the plough, the prophet acquired his rank with spiritual radiance, receiving the fleece from the hand of the prophet, for he hath been glorified." },
-          { "text": "As from the beginning Thou didst know Elisha's disposition toward a higher calling, O Christ, Thou didst illumine him with the grace of prophecy, O almighty Savior, for Thou hast been glorified." },
-          { "type": "theotokion", "text": "Theotokion: O most pure Mother of God, unceasingly entreat God, Who became incarnate of thee yet did not separate Himself from the bosom of the Father, that He may save from all misfortunes those whom He created." },
-          { "canon": "secondCanon", "text": "Enslaving thy body amid fasting, O venerable one, thou didst anoint thy soul with divine ascents, pouring forth the inexhaustible sustenance of the kingdom on high." },
-          { "canon": "secondCanon", "text": "Armed with the noetic sword of the Spirit, and arrayed in faith as in a breast-plate, thou didst manfully fell hordes of heretics, O all-blessed father Methodius." },
-          { "canon": "secondCanon", "text": "Thy divine mouth was an ever-flowing river for the Church, truly drowning the heretical, O venerable Methodius, but giving drink unto the parched faithful." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: With hymns let us honor the most pure Mary, the animate tabernacle, the ark and table, the mountain from whence the Lord of all was cut without the aid of the hands of men." }
+          {
+            "text": "Hymns chanted unto God from the beginning, wherewith the Hymned One is hymned, resplendent in the praises of the prophets, do I sing, hymning Him Who hath glorified them, in that He is glorious."
+          },
+          {
+            "text": "Abandoning the plough, the prophet acquired his rank with spiritual radiance, receiving the fleece from the hand of the prophet, for he hath been glorified."
+          },
+          {
+            "text": "As from the beginning Thou didst know Elisha's disposition toward a higher calling, O Christ, Thou didst illumine him with the grace of prophecy, O almighty Savior, for Thou hast been glorified."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: O most pure Mother of God, unceasingly entreat God, Who became incarnate of thee yet did not separate Himself from the bosom of the Father, that He may save from all misfortunes those whom He created."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Enslaving thy body amid fasting, O venerable one, thou didst anoint thy soul with divine ascents, pouring forth the inexhaustible sustenance of the kingdom on high."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Armed with the noetic sword of the Spirit, and arrayed in faith as in a breast-plate, thou didst manfully fell hordes of heretics, O all-blessed father Methodius."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy divine mouth was an ever-flowing river for the Church, truly drowning the heretical, O venerable Methodius, but giving drink unto the parched faithful."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: With hymns let us honor the most pure Mary, the animate tabernacle, the ark and table, the mountain from whence the Lord of all was cut without the aid of the hands of men."
+          }
         ]
       },
       "ode3": {
         "irmos": "By the power of Thy Cross, O Christ, do Thou make steadfast mine understanding,\nthat I may hymn and glorify//\nThy saving Ascension.",
         "irmos2": "Having established the thunder and fashioned the wind:\ndo Thou make me steadfast O Lord, that I may hymn Thee in truth and do Thy will;//\nfor there is none holy like unto Thee, O our God.",
         "troparia": [
-          { "text": "Putting away earthly attachments, thou didst serve the Spirit Who breatheth fire, conversing with ministers pleasing unto God." },
-          { "text": "In the Spirit thou didst receive the gifts of thy teacher twofold, not having compromised his ascent by slothfulness." },
-          { "text": "Having stood before Elijah with lamentation and having rent thy garment, thou didst part the streams of the Jordan with his mantle." },
-          { "type": "theotokion", "text": "Theotokion: O pure Bride of God, unceasingly beseech Him Who issued forth from thy womb, that He deliver those who hymn thee from the deception of the devil." },
-          { "canon": "secondCanon", "text": "Thy tongue was a shower-laden cloud, O Methodius; for it watereth the hearts of the pious with discourse, and ever choketh the tares of the ungodly." },
-          { "canon": "secondCanon", "text": "Directing the discourse of faith, thou didst undergo the testing of wounds, O father, and wast condemned to imprisonment in a dark dungeon; wherefore, in gladness thou hast passed over into never-waning light." },
-          { "canon": "secondCanon", "text": "Thou didst hymn the sufferings of the martyrs and didst share in their joy which cannot be taken away, O father Methodius, having suffered exceedingly through never-ending tribulations and wounds." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Announcing 'Rejoice!' to the Virgin, Gabriel declared: 'The Holy Spirit shall come upon thee, O Virgin, and thou shalt conceive the Lord and Savior in thy womb.'" }
+          {
+            "text": "Putting away earthly attachments, thou didst serve the Spirit Who breatheth fire, conversing with ministers pleasing unto God."
+          },
+          {
+            "text": "In the Spirit thou didst receive the gifts of thy teacher twofold, not having compromised his ascent by slothfulness."
+          },
+          {
+            "text": "Having stood before Elijah with lamentation and having rent thy garment, thou didst part the streams of the Jordan with his mantle."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: O pure Bride of God, unceasingly beseech Him Who issued forth from thy womb, that He deliver those who hymn thee from the deception of the devil."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy tongue was a shower-laden cloud, O Methodius; for it watereth the hearts of the pious with discourse, and ever choketh the tares of the ungodly."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Directing the discourse of faith, thou didst undergo the testing of wounds, O father, and wast condemned to imprisonment in a dark dungeon; wherefore, in gladness thou hast passed over into never-waning light."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst hymn the sufferings of the martyrs and didst share in their joy which cannot be taken away, O father Methodius, having suffered exceedingly through never-ending tribulations and wounds."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Announcing 'Rejoice!' to the Virgin, Gabriel declared: 'The Holy Spirit shall come upon thee, O Virgin, and thou shalt conceive the Lord and Savior in thy womb.'"
+          }
         ]
       },
       "ode4": {
         "irmos": "I have heard, O Lord, of Thine arising from the tomb,\nand have glorified//\nThine invincible power.",
         "irmos2": "I have heard report of Thee, O Lord and I am afraid.\nHaving understood Thy works, I am in awe of Thee O Lord,//\nfor the earth is full of Thy praise.",
         "troparia": [
-          { "text": "As Thou didst with the waters of old, so do thou now heal my barren mind by grace, through the supplications of Elisha." },
-          { "text": "Thou wast divinely enriched by speaking of heavenly things, and by means of a bear thou didst set at naught the misbehavior of the children." },
-          { "text": "Thou wast shown to be adorned with virginity, O glorious one, shining like a beacon from afar upon those sitting in the darkness of delusion." },
-          { "text": "The tongue which is moved by the Spirit cannot keep silent concerning thy wondrous corrections in this life, O Elisha." },
-          { "type": "theotokion", "text": "Theotokion: We, the faithful, truly glorify thee, O unwedded Theotokos, and we flee to thy haven." },
-          { "canon": "secondCanon", "text": "Having moistened thy lips with the noetic chalice of wisdom, O venerable father, thou hast poured forth rivers of doctrines upon us who piously celebrate thy memorial." },
-          { "canon": "secondCanon", "text": "O venerable and holy hierarch Methodius, thou wast shown to be a most desirable preacher, sweet of discourse, simple of demeanor, and abundantly rich in the gifts of the Spirit." },
-          { "canon": "secondCanon", "text": "With the noetic spear of godly discourse, O Methodius, thou didst cause the audacity of ungodliness to cease, striking it down amid the abomination of heresy." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Rejoice, O noetic portal, from whence the King of heaven issued forth with an ineffable voice, preserving thee immaculate, leaving thee sealed as thou wast before." }
+          {
+            "text": "As Thou didst with the waters of old, so do thou now heal my barren mind by grace, through the supplications of Elisha."
+          },
+          {
+            "text": "Thou wast divinely enriched by speaking of heavenly things, and by means of a bear thou didst set at naught the misbehavior of the children."
+          },
+          {
+            "text": "Thou wast shown to be adorned with virginity, O glorious one, shining like a beacon from afar upon those sitting in the darkness of delusion."
+          },
+          {
+            "text": "The tongue which is moved by the Spirit cannot keep silent concerning thy wondrous corrections in this life, O Elisha."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: We, the faithful, truly glorify thee, O unwedded Theotokos, and we flee to thy haven."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having moistened thy lips with the noetic chalice of wisdom, O venerable father, thou hast poured forth rivers of doctrines upon us who piously celebrate thy memorial."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O venerable and holy hierarch Methodius, thou wast shown to be a most desirable preacher, sweet of discourse, simple of demeanor, and abundantly rich in the gifts of the Spirit."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "With the noetic spear of godly discourse, O Methodius, thou didst cause the audacity of ungodliness to cease, striking it down amid the abomination of heresy."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Rejoice, O noetic portal, from whence the King of heaven issued forth with an ineffable voice, preserving thee immaculate, leaving thee sealed as thou wast before."
+          }
         ]
       },
       "ode5": {
         "irmos": "Waking at dawn, we cry unto Thee, O Lord:\nSave us, for Thou art our God;//\nwe know none other besides Thee.",
         "irmos2": "Shine upon me, O Lord, the light of Thy commandments,\nfor my soul riseth early to Thee and hymneth Thee://\nFor Thou art our God, and unto Thee do I flee, O King of peace.",
         "troparia": [
-          { "text": "The stillness and meekness of thy soul hath shown thee to be a prophet, O divinely inspired Elisha, because of thy faith." },
-          { "text": "The divine action of thy discourses doth illumine me with spiritual words, O all-blessed Elisha." },
-          { "text": "As thou standest before the Lord as one living, O Prophet Elisha, sin hath been reckoned as slain." },
-          { "type": "theotokion", "text": "Theotokion: O Theotokos, cease thou never to pray to Him Whom thou didst bear, that He save the souls of us who hymn thee, O most pure one." },
-          { "canon": "secondCanon", "text": "Illumined by the light of the threefold Sun, O glorious one, thou didst piously dispel the gloomy darkness of heresy, and wast a star, illumining the faithful with splendors." },
-          { "canon": "secondCanon", "text": "Thy tongue hath been shown to be like the sharp stylus of a quickly-writing scribe, O Methodius, truly engraving the divine law of grace upon the tablets of men's hearts." },
-          { "canon": "secondCanon", "text": "Wearing like pearls, streams of tears, while standing at all-night vigils, O venerable one, thou didst thereby dry up torrents of sin; and reveal thyself to be a pure receptacle of the divine Spirit." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: By thy supplications thou dost deliver from every evil circumstance those who have recourse unto thy protection, O Mary Theotokos; for thou art an intercessor for those who honor thee, and their hope before God." }
+          {
+            "text": "The stillness and meekness of thy soul hath shown thee to be a prophet, O divinely inspired Elisha, because of thy faith."
+          },
+          {
+            "text": "The divine action of thy discourses doth illumine me with spiritual words, O all-blessed Elisha."
+          },
+          {
+            "text": "As thou standest before the Lord as one living, O Prophet Elisha, sin hath been reckoned as slain."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: O Theotokos, cease thou never to pray to Him Whom thou didst bear, that He save the souls of us who hymn thee, O most pure one."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Illumined by the light of the threefold Sun, O glorious one, thou didst piously dispel the gloomy darkness of heresy, and wast a star, illumining the faithful with splendors."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy tongue hath been shown to be like the sharp stylus of a quickly-writing scribe, O Methodius, truly engraving the divine law of grace upon the tablets of men's hearts."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Wearing like pearls, streams of tears, while standing at all-night vigils, O venerable one, thou didst thereby dry up torrents of sin; and reveal thyself to be a pure receptacle of the divine Spirit."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: By thy supplications thou dost deliver from every evil circumstance those who have recourse unto thy protection, O Mary Theotokos; for thou art an intercessor for those who honor thee, and their hope before God."
+          }
         ]
       },
       "ode6": {
         "irmos": "The abyss hath encompassed me, the sea monster hath become my grave;\nbut I cried unto Thee, the Lover of mankind,//\nand Thy right hand saved me, O Lord.",
         "irmos2": "The tempest of evil thoughts hath overwhelmed me, dragging me down into the abyss of my numberless sins;\nbut, going before me, O good Helmsman,//\ngovern me as Thou didst the Prophet, and save me.",
         "troparia": [
-          { "text": "Once neither rain nor the spirit of the air filled the torrents, O prophet, but the wind of grace filled thy discourse with the action of the Spirit." },
-          { "text": "As once thou didst fill a little vessel full to overflowing with oil for the woman, O Prophet Elisha, so pray thou, that divine mercy may be poured forth upon me." },
-          { "text": "Animated by faith, through thy supplication, O prophet, the honorable woman received release from barrenness in her old age, bearing goodly offspring." },
-          { "type": "theotokion", "text": "Theotokion: As is meet, O glorious Mary, thou boast of the Orthodox, we glorify thee as the unburnt bush, the mountain, the animate ladder, the portal of heaven." },
-          { "canon": "secondCanon", "text": "Emulating the industrious bee, thou didst gather honey from the Scriptures as from flowers, laying it up in thy heart as in a honey-comb, and pouring forth upon all the river of thy doctrines." },
-          { "canon": "secondCanon", "text": "Thy tongue, full of spiritual discourse, set at naught the sacrilege of the blasphemers, O most wise one, preaching the veneration of the incarnation of Christ and the image of His flesh." },
-          { "canon": "secondCanon", "text": "Having first praised the Lord as an elder upon the judgment-seat, thou wast later raised up upon a hierarchal cathedra, shepherding the chosen people in a god-pleasing manner, O father." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Sovereign Lady Theotokos, all creation doth acknowledge thee as the only Mother of our God, for thou alone didst ineffably contain God within thy womb without being consumed by the divine fire." }
-        ],
-        "kontakion": {
-          "text": "Thou wast shown to be a prophet of God, receiving a twofold measure of grace, which truly befitted thee, O blessed Elisha;\nfor thou wast the companion of Elijah,//\nand with him dost unceasingly entreat Christ God on behalf of us all.",
-          "tone": 2,
-          "label": "Kontakion of the Holy Prophet Elisha",
-          "melody": "Seeking the highest"
-        }
+          {
+            "text": "Once neither rain nor the spirit of the air filled the torrents, O prophet, but the wind of grace filled thy discourse with the action of the Spirit."
+          },
+          {
+            "text": "As once thou didst fill a little vessel full to overflowing with oil for the woman, O Prophet Elisha, so pray thou, that divine mercy may be poured forth upon me."
+          },
+          {
+            "text": "Animated by faith, through thy supplication, O prophet, the honorable woman received release from barrenness in her old age, bearing goodly offspring."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: As is meet, O glorious Mary, thou boast of the Orthodox, we glorify thee as the unburnt bush, the mountain, the animate ladder, the portal of heaven."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Emulating the industrious bee, thou didst gather honey from the Scriptures as from flowers, laying it up in thy heart as in a honey-comb, and pouring forth upon all the river of thy doctrines."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy tongue, full of spiritual discourse, set at naught the sacrilege of the blasphemers, O most wise one, preaching the veneration of the incarnation of Christ and the image of His flesh."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having first praised the Lord as an elder upon the judgment-seat, thou wast later raised up upon a hierarchal cathedra, shepherding the chosen people in a god-pleasing manner, O father."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: O Sovereign Lady Theotokos, all creation doth acknowledge thee as the only Mother of our God, for thou alone didst ineffably contain God within thy womb without being consumed by the divine fire."
+          }
+        ]
+      },
+      "kontakion": {
+        "text": "Thou wast shown to be a prophet of God, receiving a twofold measure of grace, which truly befitted thee, O blessed Elisha;\nfor thou wast the companion of Elijah,//\nand with him dost unceasingly entreat Christ God on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the Holy Prophet Elisha",
+        "melody": "Seeking the highest"
       },
       "ode7": {
         "irmos": "The children were saved in the burning furnace,\nchanting://\nBlessed art Thou O God of our fathers.",
         "irmos2": "In the Persian furnace the youths and descendants of Abraham, burning with a love of piety rather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
         "troparia": [
-          { "text": "Filled with higher wisdom, O Elisha, thou didst cry aloud: Blessed is the God of our fathers!" },
-          { "text": "As the servant of Life, O prophet, to the dead child's mother thou didst straightway show him forth as living." },
-          { "text": "Thou didst once feed the despairing children of the prophets, rendering their destructive food harmless." },
-          { "type": "theotokion", "text": "Theotokion: Blessed is the God of our fathers Who was born of the Virgin and made her the Theotokos." },
-          { "canon": "secondCanon", "text": "With the dew of divine love thou didst extinguish the burning furnace of the passions, O most glorious one; and having been tried by perils like gold in a crucible, thou dost shine like the sun." },
-          { "canon": "secondCanon", "text": "In the midst of tribulations and persecutions thy heart was unyielding, O Methodius; and thou now shinest forth with heavenly beams from thy fiery mouth, wherefore, we praise thee." },
-          { "canon": "secondCanon", "text": "Like an invincible tower thou didst remain unmoved by the assaults of perils, humbling the foundation of falsehood, O most blessed and holy hierarch Methodius, by the power of thy words." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou, the most wondrous bridal-chamber, alone hast given birth unto God Who hath united Himself to mankind, and thou didst remain a virgin, O Mary Bride of God, thou Virgin who knewest not wedlock." }
+          {
+            "text": "Filled with higher wisdom, O Elisha, thou didst cry aloud: Blessed is the God of our fathers!"
+          },
+          {
+            "text": "As the servant of Life, O prophet, to the dead child's mother thou didst straightway show him forth as living."
+          },
+          {
+            "text": "Thou didst once feed the despairing children of the prophets, rendering their destructive food harmless."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Blessed is the God of our fathers Who was born of the Virgin and made her the Theotokos."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "With the dew of divine love thou didst extinguish the burning furnace of the passions, O most glorious one; and having been tried by perils like gold in a crucible, thou dost shine like the sun."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "In the midst of tribulations and persecutions thy heart was unyielding, O Methodius; and thou now shinest forth with heavenly beams from thy fiery mouth, wherefore, we praise thee."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Like an invincible tower thou didst remain unmoved by the assaults of perils, humbling the foundation of falsehood, O most blessed and holy hierarch Methodius, by the power of thy words."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Thou, the most wondrous bridal-chamber, alone hast given birth unto God Who hath united Himself to mankind, and thou didst remain a virgin, O Mary Bride of God, thou Virgin who knewest not wedlock."
+          }
         ]
       },
       "ode8": {
         "irmos": "Unto Him Who bedewed the furnace preserving the children amid the burning flame,\ndo ye children hymn, ye priests bless,//\nand ye people supremely exalt, throughout all ages!",
         "irmos2": "The earth and all that is therein, the seas and all wellsprings, the heaven of heavens, light and darkness, frost and heat, ye sons of men, and ye priests,//\nbless ye the Lord and supremely exalt Him throughout the ages.",
         "troparia": [
-          { "text": "The prophet who at his command wrought purification do the children hymn, the hierarchs bless and the people supremely exalt throughout the ages." },
-          { "text": "Cleansed of dross, and held fast by desire, thou didst noetically behold the mind of the Immaterial One; wherefore, leaping up, thou didst cry aloud: Supremely exalt Christ throughout all ages!" },
-          { "text": "Through grace thou didst behold things to come, and didst perceive the most precious Cross depicted in the tree, O prophet taught by God; wherefore, rejoicing, thou didst cry: Supremely exalt Christ throughout all ages!" },
-          { "text": "The multitude of chariots of those who surrounded thee didst thou truly bring to a halt through darkness, denouncing their mindlessness and crying aloud: Supremely exalt Christ throughout all ages!" },
-          { "type": "theotokion", "text": "Theotokion: The angels glorify thy birthgiving, O pure Bride of God, and with them we all chant: Ye children hymn, ye priests bless, and ye people supremely exalt, throughout all ages!" },
-          { "canon": "secondCanon", "text": "Thou didst cast down the arrogance of the heretics who were truly wicked, and didst raise up with thyself the horn of the faithful of the Church, O father Methodius, rendering honor to the icon of Christ. Wherefore, we hymn and honor thee with love." },
-          { "canon": "secondCanon", "text": "Christ the Sun hath shown thee to be a most brilliant star in the firmament of the Church, O most wise father, and with the effulgence of thy precious doctrines thou hast illumined the ends of the earth throughout all ages." },
-          { "canon": "secondCanon", "text": "Like thunder did thy discourse smite the earth, O Methodius, and binding the minion of Manes, thou didst send him forth into everlasting darkness like the serpent, the father of lies." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou, Who alone art the Only-begotten on high and here below as well: wast begotten on high of the Father without mother, and below of Thy Mother without father, and abasing Thyself, within her thou didst take on the form of my alien nature which had been humbled by sin." }
+          {
+            "text": "The prophet who at his command wrought purification do the children hymn, the hierarchs bless and the people supremely exalt throughout the ages."
+          },
+          {
+            "text": "Cleansed of dross, and held fast by desire, thou didst noetically behold the mind of the Immaterial One; wherefore, leaping up, thou didst cry aloud: Supremely exalt Christ throughout all ages!"
+          },
+          {
+            "text": "Through grace thou didst behold things to come, and didst perceive the most precious Cross depicted in the tree, O prophet taught by God; wherefore, rejoicing, thou didst cry: Supremely exalt Christ throughout all ages!"
+          },
+          {
+            "text": "The multitude of chariots of those who surrounded thee didst thou truly bring to a halt through darkness, denouncing their mindlessness and crying aloud: Supremely exalt Christ throughout all ages!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: The angels glorify thy birthgiving, O pure Bride of God, and with them we all chant: Ye children hymn, ye priests bless, and ye people supremely exalt, throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst cast down the arrogance of the heretics who were truly wicked, and didst raise up with thyself the horn of the faithful of the Church, O father Methodius, rendering honor to the icon of Christ. Wherefore, we hymn and honor thee with love."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Christ the Sun hath shown thee to be a most brilliant star in the firmament of the Church, O most wise father, and with the effulgence of thy precious doctrines thou hast illumined the ends of the earth throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Like thunder did thy discourse smite the earth, O Methodius, and binding the minion of Manes, thou didst send him forth into everlasting darkness like the serpent, the father of lies."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Thou, Who alone art the Only-begotten on high and here below as well: wast begotten on high of the Father without mother, and below of Thy Mother without father, and abasing Thyself, within her thou didst take on the form of my alien nature which had been humbled by sin."
+          }
         ]
       },
       "ode9": {
         "irmos": "O thou who art God's Mother transcending mind and word,\nwho ineffably in time hast given birth unto the Timeless One,//\nthee do we the faithful magnify with one accord.",
         "irmos2": "For the Mighty One hath done great things to me, and holy is His name;\nand His mercy is upon them that fear Him//\nunto generation and generation.",
         "troparia": [
-          { "text": "Lifting up a pruning staff of iron, the prophet taught that human nature would be uplifted by the Cross." },
-          { "text": "Revealing the all-honorable character of the prophet, the Prince of life showed forth the resurrection of the body, raising up the dead man whose flesh was utterly bereft of breath." },
-          { "text": "In divine rest, O wondrous one, thou dost now entreat Christ, that those who ever bless thee may receive blessedness." },
-          { "type": "theotokion", "text": "Theotokion: Rejoice, O Theotokos, Mother of Christ God! Him do thou beseech, that He grant forgiveness of sins unto those who hymn thee with faith." },
-          { "canon": "secondCanon", "text": "O Methodius, thou art the adornment of holy hierarchs, the ornament of monks, a model for all the faithful, the shepherd of the Church and the foundation of the Orthodox." },
-          { "canon": "secondCanon", "text": "Having acquired the zeal of Elijah, thou didst fill with shame the iniquitous priests who refused to venerate the image of the incarnation of the Lord, O wise Methodius." },
-          { "canon": "secondCanon", "text": "Dancing with the angels before the face of the Redeemer, and delighting in His glory, by thy supplications deliver us from all manner of temptations, O Methodius." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We hymn thy birthgiving, and we glorify Him Who was born of thee as both God and man, O pure Virgin Mother. Him do thou earnestly entreat, that He have mercy upon us." }
+          {
+            "text": "Lifting up a pruning staff of iron, the prophet taught that human nature would be uplifted by the Cross."
+          },
+          {
+            "text": "Revealing the all-honorable character of the prophet, the Prince of life showed forth the resurrection of the body, raising up the dead man whose flesh was utterly bereft of breath."
+          },
+          {
+            "text": "In divine rest, O wondrous one, thou dost now entreat Christ, that those who ever bless thee may receive blessedness."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Rejoice, O Theotokos, Mother of Christ God! Him do thou beseech, that He grant forgiveness of sins unto those who hymn thee with faith."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Methodius, thou art the adornment of holy hierarchs, the ornament of monks, a model for all the faithful, the shepherd of the Church and the foundation of the Orthodox."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having acquired the zeal of Elijah, thou didst fill with shame the iniquitous priests who refused to venerate the image of the incarnation of the Lord, O wise Methodius."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Dancing with the angels before the face of the Redeemer, and delighting in His glory, by thy supplications deliver us from all manner of temptations, O Methodius."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: We hymn thy birthgiving, and we glorify Him Who was born of thee as both God and man, O pure Virgin Mother. Him do thou earnestly entreat, that He have mercy upon us."
+          }
         ]
       }
     }

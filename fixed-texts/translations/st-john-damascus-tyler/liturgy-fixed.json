@@ -9,5 +9,18 @@
   "anaphora-basil": {
     "commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Eminence, the Most Reverend Alexander, Archbishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
     "commemoration-hierarchs-response": "And all mankind."
+  },
+
+  "_section_trisagion": "Parish practice: the Trisagion is sung in three languages — English, Slavonic, then Greek. The `variants` array, when present, replaces the single repeated text in the typical (non-substituted) Trisagion. Glory/Now and the final \"Holy Immortal…\" remain in English from the base.",
+  "trisagion": {
+    "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "repetitions": 3,
+    "variants": [
+      { "lang": "English",  "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us." },
+      { "lang": "Slavonic", "text": "Svyatyi Bozhe, Svyatyi Krépkii, Svyatyi Bezsmértnyi, pomíluy nas." },
+      { "lang": "Greek",    "text": "Ágios o Theós, Ágios Ischyrós, Ágios Athánatos, eleíson imás." }
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "final": "Holy Immortal, have mercy on us."
   }
 }

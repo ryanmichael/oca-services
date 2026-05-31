@@ -260,8 +260,11 @@ function checkCanonOde(ode, at, errs) {
 function checkLauds(lauds, at, errs) {
   if (!isObject(lauds)) { errs.push(`${at} must be object`); return; }
   // tone is optional (some feast lauds omit it; the per-sticheron tone is used)
-  pushIf(errs, Array.isArray(lauds.stichera) && lauds.stichera.length >= 1,
-    `${at}.stichera must be non-empty array`);
+  // stichera is optional — simple-rank files may supply only a doxastikon
+  if (lauds.stichera !== undefined) {
+    pushIf(errs, Array.isArray(lauds.stichera) && lauds.stichera.length >= 1,
+      `${at}.stichera must be non-empty array`);
+  }
   (lauds.stichera || []).forEach((s, i) => {
     pushIf(errs, isObject(s), `${at}.stichera[${i}] must be object`);
   });

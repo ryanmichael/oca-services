@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "feast": "Translation of the Relics of the Holy Wonderworkers Cyrus and John, the Unmercenary Physicians",
+    "feastKey": "translationCyrusAndJohn",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "unmercenaries",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 06-28.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-28.pdf",
+    "_note": "Simple-rank. Single canon of the unmercenaries in Tone VIII with 6 troparia (3 saints + theotokion per ode). Sessional hymn after Ode 3 in Tone IV. Kontakion Tone III with ikos after Ode 6. Exapostilarion 'The heaven with stars'. Lauds doxastikon Tone IV. KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
+  },
+
+  "troparion": {
+    "text": "O Christ God Who hast given us the miracles\nof Thy holy martyrs as an invincible rampart,\nthrough their supplications set at naught the counsels of the heathen\nand strengthen right believing rulers,//\nin that Thou alone art good and the Lover of mankind.",
+    "tone": 5,
+    "label": "Troparion of the holy unmercenaries"
+  },
+  "kontakion": {
+    "text": "Receiving the gift of miracles from divine grace, O saints,\nye work wonders unceasingly,\ncutting down all our passions with invisible skill,\nO divinely wise Cyrus and glorious John;//\nfor ye are divine physicians.",
+    "tone": 3,
+    "label": "Kontakion of the holy unmercenaries",
+    "melody": "Today the Virgin"
+  },
+
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "simple", "feastType": "unmercenaries", "_source": "stSergius-menaion" },
+
+    "sessionalHymns": {
+      "text": "Trampling underfoot the pleasures which drag men down,\nye were taken up in splendor by grace to the divine heights of martyrdom,\nO spiritual athletes Cyrus and John, ye luminaries of all the world.\nWherefore, we beseech you: from the darkness of sin and afflictions deliver us,//\nentreat Him Who is God over all.",
+      "tone": 4,
+      "label": "Sessional Hymn of the holy unmercenaries (after Ode 3)",
+      "melody": "O Thou Who wast lifted up",
+      "bothNow": {
+        "text": "As one who loveth sin, I beseech thee who hast given birth to the sinless God\nWho taketh away the sins of the world:\nO most pure one, have compassion on my greatly sinful soul\nand cleanse me of my many sins;\nfor thou art the cleansing, salvation and aid of the faithful.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "troparion": {
+      "text": "O Christ God Who hast given us the miracles\nof Thy holy martyrs as an invincible rampart,\nthrough their supplications set at naught the counsels of the heathen\nand strengthen right believing rulers,//\nin that Thou alone art good and the Lover of mankind.",
+      "tone": 5,
+      "label": "Troparion of the holy unmercenaries"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy unmercenaries in Tone VIII. The two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+
+      "kontakion": {
+        "text": "Receiving the gift of miracles from divine grace, O saints,\nye work wonders unceasingly,\ncutting down all our passions with invisible skill,\nO divinely wise Cyrus and glorious John;//\nfor ye are divine physicians.",
+        "tone": 3,
+        "label": "Kontakion of the holy unmercenaries",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Offering yourselves to God, O saints, ye endured every trial for His sake, dying zealously, O valiant martyrs; and even after your repose ye pour forth divine gifts upon all who are in divers infirmities, healing many of afflictions, of whom I am the first, wretch that I am. For I ail in body and soul because of cruel wounds, wherefore with faith I cry out to you: Heal me, for ye are divine physicians."
+      },
+
+      "ode1": {
+        "irmos": "Unto Him Who overthrew the tyranny of Pharaoh in the sea\nand led Israel over dry land,\nlet us chant unto Christ our God,//\nfor He hath been glorified throughout the ages.",
+        "troparia": [
+          { "text": "O ye faithful, let us chant unto Him Who hath shown forth the honorable Cyrus and the martyr John as wonderworkers and physicians in the world, healing the sufferings of all by grace, and let us honor the memory of the martyrs." },
+          { "text": "Having rejected the things of the present, by shedding their blood the lovers of that which is to come followed Him Who truly loveth; wherefore, suffering amid wounding, they endured valiantly." },
+          { "text": "Having fortified themselves with boldness and made their souls steadfast, taught by Christ they manfully struggled with the martyrs and rightly plaited wreaths for themselves." },
+          { "type": "theotokion", "text": "Theotokion: O Mother of the Truth, save me who am grievously tempest tossed by the passions and am often drowning, and guide me to the safety of the calm haven, O pure one." }
+        ]
+      },
+      "ode3": {
+        "irmos": "There is none as holy as the Lord,\nand none as righteous as our God,\nWhom the whole of creation doth hymn://\nThere is none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "Thou didst hone Thy saints with faith, O Christ, forging them with hope, and enflaming them with love; and with tridents Thou didst weave for them a three-stranded wreath." },
+          { "text": "Valiantly did ye withstand the ungodly tyrants, O invincible martyrs, passing unharmed over the snares of deception; for, having been armed by Christ, ye rejoice with Him." },
+          { "text": "Like divinely erected pillars and firm foundations the martyrs ye were planted upon the rock of the ascent of Faith, having drunk the water of immortality from the Rock that is the chalice of Christ." },
+          { "type": "theotokion", "text": "Theotokion: Thou didst become the dwelling-place of the Spirit, having received the Fullness of the Godhead in the Son, and given birth to the Savior, Lord and Redeemer of our race." }
+        ]
+      },
+      "ode4": {
+        "irmos": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,//\nand with fear he glorified Thy power.",
+        "troparia": [
+          { "text": "Body, soul and intellect, and all the workings of your heart, did ye sacrifice unto Christ with faith; and vanquishing the savagery of the tyrants, ye were rightly crowned, O saints." },
+          { "text": "Surrendering your bodies to the sword and to fire, ye became sacrifices acceptable unto God, and on a mystical altar ye offered yourselves up as an odor of sweet savor." },
+          { "text": "The relics of Thy martyrs have shone forth upon the world as an inextinguishable radiance, O Benefactor; thereby hath the darkness of ignorance been dispelled and the knowledge of God hath been instilled in its place." },
+          { "type": "theotokion", "text": "Theotokion: O pure Sovereign Lady, portal of the divine Word, from all evils protect and preserve those who assemble in thy church and praise thee, the most pure one, with hymns." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "The virgins, having acquired the passion-bearers as companions, laid hold of the perfect crown of victory, rejoicing." },
+          { "text": "Illumined by the radiance of divine effulgence, O all-famed martyrs, ye ever enlighten the world." },
+          { "text": "Emulating the sufferings of the Lord, O invincible passion-bearers, with valiant mind ye endured pain." },
+          { "type": "theotokion", "text": "Theotokion: Still thou the inconstant tempest of my passions, O thou who hast given birth to God the Helmsman and Lord." }
+        ]
+      },
+      "ode6": {
+        "irmos": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "Valiantly arrayed in the breast-plate of the Faith, O martyrs, ye grievously wounded the adverse enemy and foe." },
+          { "text": "In hymns we glorify the memory of Thy saints, O Christ, and unto Thee our God do we offer worship with faith." },
+          { "text": "Emulating Thy sufferings, O Christ, the glorious martyrs endured tortures. By their supplications, save us all, O God." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, we the faithful declare thee to be the ark and temple of God, the animate bridal-chamber and portal of heaven." }
+        ]
+      },
+      "ode7": {
+        "irmos": "By an angel didst Thou refresh the Children in the furnace,\ntransforming the roaring flames to dew.//\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Thy saints Cyrus and John, O Lord, as lovers of the glory of heaven, forsook transitory and corruptible glory." },
+          { "text": "Giving up their bodies as a reasonable sacrifice and shedding their blood for Thee, their God, in worship, O Jesus, Thy passion-bearers were wholly consumed." },
+          { "text": "Awesome is the company of the martyrs, for even after their death they drive away evil spirits and impart healing to the infirm." },
+          { "type": "theotokion", "text": "Theotokion: Immaculately didst thou give birth to the Cause of all, Who in His surpassing goodness became a man; wherefore, we bless thee together, O pure one." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Begotten of the Father before time began,\nand incarnate of His Mother in the latter days,\nO ye priests hymn, and ye people\nsupremely exalt Him throughout all ages!",
+        "troparia": [
+          { "text": "Repelled by idolatrous sacrifices, O valiant martyrs, ye offered yourselves as spiritual sacrifices on the altar of heaven." },
+          { "text": "Performing mystical services, ye offered up the severing of your members as acceptable sacrifices unto Him Whose body and blood are offered up on altar and in the chalice." },
+          { "text": "Having eluded him who caused our first mother to fall, ye embraced the Torrent of sustenance and tasted of the divine Tree, O virgins, having adorned yourselves with sufferings." },
+          { "type": "theotokion", "text": "Theotokion: The prophecies of the prophets received their divine fulfillment in thee, O most holy one, and they impel the whole world to hymn thee as is meet, O pure one." }
+        ]
+      },
+      "ode9": {
+        "irmos": "We magnify thee, O Mother of God,\nand we glorify thee, O Virgin Theotokos,//\nfor thou hast borne Christ the Savior of our souls.",
+        "troparia": [
+          { "text": "Cyrus and John, the warriors of Christ and physicians of the ailing, having received the grace of miracles from God, heal us all." },
+          { "text": "Standing forth, the invincible Cyrus and John utterly dispel the passions of the soul by faith and the power of Christ." },
+          { "text": "O God our Creator, Whom Cyrus and John professed of old, have pity on all who celebrate the memory of their martyrdom." },
+          { "type": "theotokion", "text": "Theotokion: Let us all divinely honor the Mother of our God; because for her sake we who hymn her have been deemed worthy of heavenly honor." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O wonder-working luminaries Cyrus and John,\nhaving received from the Lord the grace of healings,//\ncure ye the infirmities of our souls and bodies.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy unmercenaries",
+      "melody": "The heaven with stars",
+      "bothNow": {
+        "text": "Thou wast the cause of the good things given by God to the world, O Theotokos.\nEntreat God, Who is easily reconciled,//\nfor the salvation of us all.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "doxastikon": {
+        "text": "With hymns of proper laudation, O ye faithful, let us magnify Cyrus and John, who in spirit were as of one blood and in the flesh were of brotherly mind, praising with them the valiant Athanasia and her offspring, Theodote, Eudoxia and Theoctiste, the ever-virginal spiritual athletes, who entreat Christ on behalf of our souls.",
+        "tone": 4
+      }
+    }
+  }
+}

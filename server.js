@@ -163,6 +163,22 @@ function validateManifest(id, manifest, allIds) {
       });
     }
   }
+  if (manifest.rubrics !== undefined) {
+    if (typeof manifest.rubrics !== 'object' || manifest.rubrics === null || Array.isArray(manifest.rubrics)) {
+      warnings.push("'rubrics' must be a plain object");
+    } else {
+      const r = manifest.rubrics;
+      if (r.omitCatechumensSeasons !== undefined) {
+        if (!Array.isArray(r.omitCatechumensSeasons)) {
+          warnings.push("rubrics.omitCatechumensSeasons must be an array of season ids");
+        } else {
+          r.omitCatechumensSeasons.forEach((s, i) => {
+            if (typeof s !== 'string') warnings.push(`rubrics.omitCatechumensSeasons[${i}] must be a string`);
+          });
+        }
+      }
+    }
+  }
   return warnings;
 }
 
@@ -289,6 +305,27 @@ function getOverlayFixed(serviceName, overlayName) {
  *  getOverlayFixed directly. */
 function getLiturgyFixed(overlayName) {
   return getOverlayFixed('liturgy', overlayName);
+}
+
+/** Resolves the merged `rubrics` object from an overlay's extends chain
+ *  (parent-first, child wins). Returns an empty object when no overlay is
+ *  active or none in the chain declares rubrics. Rubrics are parish-level
+ *  rubrical preferences (e.g. omitCatechumensSeasons) that adjust assembler
+ *  branching without changing any text. */
+const rubricsCache = new Map();
+function getOverlayRubrics(overlayId) {
+  if (!overlayId) return {};
+  if (rubricsCache.has(overlayId)) return rubricsCache.get(overlayId);
+  const chain = resolveExtendsChain(overlayId);
+  let merged = {};
+  for (const id of chain) {
+    const m = loadOverlayManifest(id);
+    if (m?.rubrics && typeof m.rubrics === 'object' && !Array.isArray(m.rubrics)) {
+      merged = { ...merged, ...m.rubrics };
+    }
+  }
+  rubricsCache.set(overlayId, merged);
+  return merged;
 }
 
 // ─── Overlay diff + provenance ──────────────────────────────────────────────
@@ -3648,7 +3685,8 @@ function handleRequest(req, res) {
 
         let blocks;
         try {
-          blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, sources);
+          blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, sources,
+            { rubrics: getOverlayRubrics(translation) });
         } catch (err) {
           console.error('assembleLiturgy error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4767,7 +4805,9 @@ function handleRequest(req, res) {
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
           }
           if (calendarEntry?.liturgy) {
-            const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(resolveTranslation(q)), sources);
+            const litTranslation = resolveTranslation(q);
+            const litBlocks = assembleLiturgy(calendarEntry, getLiturgyFixed(litTranslation), sources,
+              { rubrics: getOverlayRubrics(litTranslation) });
             allBlocks.push(...namespace('pl', litBlocks));
           }
 

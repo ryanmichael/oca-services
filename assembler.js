@@ -1099,7 +1099,7 @@ function assembleEpitaphion(epitaphionSpec, sources) {
  * @param {Object} sources        - { octoechos, triodion, menaion, … }
  * @returns {ServiceBlock[]}
  */
-function assembleLiturgy(calendarDay, liturgyFixed, sources) {
+function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   _warnings = [];
   const spec    = calendarDay.liturgy || {};
   const variant = spec.variant || 'chrysostom';
@@ -1209,9 +1209,15 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources) {
   }
 
   // 17. Litany for the Catechumens
-  // Omitted during the Paschal period (Bright Week + Pentecostarion).
+  // Default: always emit, per St Tikhon's Sluzhebnik (the canonical OCA
+  // priestly service book), which prints this litany in all three liturgies
+  // with no seasonal qualification. Parish overlays may declare seasonal
+  // omissions via manifest.rubrics.omitCatechumensSeasons — e.g. parishes
+  // following the Russian/ROCOR practice of omitting through Bright Week
+  // and the Pentecostarion. See server.js getOverlayRubrics.
+  const omitCatSeasons = opts.rubrics?.omitCatechumensSeasons || [];
   const season17 = calendarDay.liturgicalContext?.season;
-  if (season17 !== 'brightWeek' && season17 !== 'pentecostarion') {
+  if (!omitCatSeasons.includes(season17)) {
     blocks.push(..._litCatechumens(liturgyFixed));
   }
 

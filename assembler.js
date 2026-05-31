@@ -1540,7 +1540,17 @@ function _litTrisagion(trisagionSpec, f) {
     const tr = f['trisagion'];
     blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
       `Sung three times:`));
-    blocks.push(makeBlock('tris-text', section, 'hymn', 'choir', tr.text));
+    if (Array.isArray(tr.variants) && tr.variants.length > 0) {
+      // Multi-language parish customization: emit one hymn block per variant,
+      // no labels (the visual sequence is the cue). Base `text` is unused.
+      tr.variants.forEach((v, i) => {
+        // Only the first variant carries the "choir" speaker chip — the
+        // following variants render as continuations of the same chant.
+        blocks.push(makeBlock(`tris-text-${i + 1}`, section, 'hymn', i === 0 ? 'choir' : null, v.text));
+      });
+    } else {
+      blocks.push(makeBlock('tris-text', section, 'hymn', 'choir', tr.text));
+    }
     blocks.push(makeBlock('tris-glory', section, 'doxology', null, tr.glory));
     blocks.push(makeBlock('tris-final', section, 'hymn', 'choir', tr.final));
   } else if (trisagionSpec.substitution === 'cross') {

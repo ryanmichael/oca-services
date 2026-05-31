@@ -4293,32 +4293,11 @@ function handleRequest(req, res) {
 
       // Assemble the Pentecost Sunday vespers content (same call as the
       // Saturday-evening Vigil, with the Pentecost-day liturgical entry).
-      // Enrich otReadings with full scripture text from orthocal so the
-      // three Pentecost prophecies (Numbers, Joel, Ezekiel) print in full
-      // instead of as bracketed citations.
+      // OCA-strict Kneeling Vespers has no OT readings, so we do not enrich
+      // them; the OT Readings section is stripped below along with the other
+      // Vigil-only artifacts (Kathisma, Litya, Bread Blessing).
       (async () => {
-      let entryOverride = null;
-      try {
-        const baseEntry = getCalendarEntry(date);
-        if (baseEntry?.vespers?.otReadings?.length > 0) {
-          const orthocalData = await fetchOrthocalDay(date);
-          const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
-          const enrichedReadings = baseEntry.vespers.otReadings.map((r, i) => {
-            const match = vesperReadings[i];
-            if (match?.passage?.length) {
-              const text = match.passage.map(p => p.content).join(' ');
-              return { ...r, text };
-            }
-            return r;
-          });
-          entryOverride = {
-            ...baseEntry,
-            vespers: { ...baseEntry.vespers, otReadings: enrichedReadings },
-          };
-        }
-      } catch (e) {
-        console.warn('kneeling-vespers OT enrichment failed:', e.message);
-      }
+      const entryOverride = null;
 
       let result;
       try {
@@ -4487,6 +4466,48 @@ function handleRequest(req, res) {
         }
       }
 
+      // ── Strip Vigil-only artifacts (OCA-strict Kneeling Vespers shape) ──
+      // assembleForDate() returns the Saturday-eve Vigil structure for the
+      // Pentecost-day calendar entry. OCA's 2026-0601 docx prescribes a
+      // daily-vespers shape with kneeling-prayer insertions — no Kathisma,
+      // Litya, Bread Blessing, or OT readings. Vouchsafe also belongs in a
+      // different position (between 2nd and 3rd Kneeling Prayer rather than
+      // after the Litany of Fervent Supplication) — extract it here and
+      // re-splice below. See project_kneeling_vespers_order_audit.md.
+      const STRIP_SECTIONS = new Set([
+        'Old Testament Readings',
+        'The Litya',
+        'Blessing of Bread',
+      ]);
+      // Remove Kathisma + its trailing Little Litany as a contiguous block
+      // (other Little Litany instances elsewhere in the service must be kept).
+      {
+        const kStart = baseBlocks.findIndex(b => b.section === 'Kathisma');
+        if (kStart >= 0) {
+          let kEnd = kStart;
+          while (kEnd + 1 < baseBlocks.length &&
+                 (baseBlocks[kEnd + 1].section === 'Kathisma' ||
+                  baseBlocks[kEnd + 1].section === 'Little Litany')) {
+            kEnd++;
+          }
+          baseBlocks.splice(kStart, kEnd - kStart + 1);
+        }
+      }
+      // Extract Vouchsafe blocks (re-spliced below between 2nd and 3rd Kneeling).
+      const vouchsafeBlocks = [];
+      for (let i = baseBlocks.length - 1; i >= 0; i--) {
+        if (baseBlocks[i].section === 'Vouchsafe, O Lord') {
+          vouchsafeBlocks.unshift(baseBlocks[i]);
+          baseBlocks.splice(i, 1);
+        }
+      }
+      // Remove the rest of the strip list.
+      for (let i = baseBlocks.length - 1; i >= 0; i--) {
+        if (STRIP_SECTIONS.has(baseBlocks[i].section)) {
+          baseBlocks.splice(i, 1);
+        }
+      }
+
       // ── Build the three Kneeling Prayer groups as ServiceBlocks ────────
       // Resolve translation overlay: prayer texts live in overlay files
       // (e.g. sts-sluzhebnik/kneeling-vespers-fixed.json) because the base
@@ -4541,7 +4562,11 @@ function handleRequest(req, res) {
       const set2Blocks = buildSet('set2', 'Second Kneeling', ['firstPrayer','secondPrayer'], false);
       const set3Blocks = buildSet('set3', 'Third Kneeling', ['firstPrayer','secondPrayer','thirdPrayer'], false);
 
-      // Splice each set in *before* the named section's first block
+      // Splice each set in *before* the named section's first block.
+      // OCA-strict order (per 2026-0601-texts-tt.docx):
+      //   Set1 → Fervent Supplication → Set2 → Vouchsafe → Set3 → Completion → Aposticha
+      // We extracted Vouchsafe above; re-insert it between Sets 2 and 3,
+      // both placed before the Completion litany.
       function insertBeforeSection(arr, sectionName, inserted) {
         const idx = arr.findIndex(b => b.section === sectionName);
         if (idx === -1) return arr.concat(inserted); // fallback: append
@@ -4549,8 +4574,8 @@ function handleRequest(req, res) {
       }
       let blocks = baseBlocks;
       blocks = insertBeforeSection(blocks, 'Litany of Fervent Supplication', set1Blocks);
-      blocks = insertBeforeSection(blocks, 'Litany of Completion',           set2Blocks);
-      blocks = insertBeforeSection(blocks, 'Aposticha',                       set3Blocks);
+      blocks = insertBeforeSection(blocks, 'Litany of Completion',
+        [...set2Blocks, ...vouchsafeBlocks, ...set3Blocks]);
 
       // Tag blocks whose text came from the overlay (for dev-mode attribution).
       tagBlocksWithOverlay(blocks, 'kneeling-vespers', translation);

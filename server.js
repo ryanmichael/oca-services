@@ -4507,6 +4507,32 @@ function handleRequest(req, res) {
           baseBlocks.splice(i, 1);
         }
       }
+      // Collapse the Vigil thrice-troparion to a single hymn.
+      // Vigil pattern emits the festal troparion 3× with a "sung thrice"
+      // rubric; OCA Kneeling Vespers prints it once (daily-vespers shape).
+      {
+        const tropIdx = [];
+        baseBlocks.forEach((b, i) => {
+          if (b.section === 'Troparia') tropIdx.push(i);
+        });
+        if (tropIdx.length) {
+          const trop = baseBlocks.slice(tropIdx[0], tropIdx[tropIdx.length - 1] + 1);
+          const hymns = trop.filter(b => b.type === 'hymn');
+          if (hymns.length > 1) {
+            // Keep one hymn per distinct text; drop the thrice-rubric.
+            const seenText = new Set();
+            const kept = trop.filter(b => {
+              if (b.type === 'rubric' && /thrice|three times/i.test(b.text || '')) return false;
+              if (b.type === 'hymn') {
+                if (seenText.has(b.text)) return false;
+                seenText.add(b.text);
+              }
+              return true;
+            });
+            baseBlocks.splice(tropIdx[0], tropIdx[tropIdx.length - 1] - tropIdx[0] + 1, ...kept);
+          }
+        }
+      }
 
       // ── Build the three Kneeling Prayer groups as ServiceBlocks ────────
       // Resolve translation overlay: prayer texts live in overlay files

@@ -1,0 +1,416 @@
+{
+  "_meta": {
+    "feast": "The Holy Apostle James, Brother of John the Theologian",
+    "feastKey": "apostleJamesBrotherJohn",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "feastType": "apostle",
+    "tone": 4,
+    "_source": "OCA Menaion April 30 (pdf)",
+    "_note": "Polyeleos feast. 8 LIC stichera (3 from Pentecostarion + 5 for the apostle). Aposticha in Tone VIII. Canon of the holy apostle in Tone VIII with 8 troparia. Lauds: 6 stichera (3 from Pentecostarion + 3 for apostle). Gospel: John §67 (Jn. 21:15-25). Kontakion Tone II with ikos after Ode 6."
+  },
+
+  "troparion": {
+    "text": "Thou wast a chosen apostle of Christ\nand the only brother of the beloved Theologian,\nO all-praised James.\nAsk thou remission of sins\nfor those who hymn thee,//\nand great mercy for our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostle"
+  },
+
+  "kontakion": {
+    "text": "Hearing the voice of God calling thee,\nthou didst disdain the love of thy father,\nand with thy kinsman\nthou didst hasten after Christ, O glorious James.\nAnd with him thou wast deemed worthy\nto behold the divine transfiguration//\nof the Lord.",
+    "tone": 2,
+    "ikos": "Dwelling with thy brother in the mansions of heaven, by your supplications drive away the Moslems who trample upon holy things with vile and unclean feet; and, cutting down the devisings of the tyrants, grant freedom to those of us now held captive because of the multitude of our offenses, that, assembling together, we may behold the divine transfiguration of the Lord.",
+    "melody": "Seeking the highest",
+    "label": "Kontakion of the holy apostle"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "With the rod of grace\nthou didst draw men forth\nfrom the deep of vanity,\nO right wondrous James,\nobedient to the command of thy Teacher,\nWho illumined thy whole mind\nand showed thee forth\nas an apostle and an honored and divine herald\nof His unapproachable divinity, O most blessed one.",
+        "_note": "Sung twice. Sticheron 1 of 5 for the apostle (stichera 4-8 of 8)."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "With the rod of grace\nthou didst draw men forth\nfrom the deep of vanity,\nO right wondrous James,\nobedient to the command of thy Teacher,\nWho illumined thy whole mind\nand showed thee forth\nas an apostle and an honored and divine herald\nof His unapproachable divinity, O most blessed one.",
+        "_note": "Repeat (second singing)."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "The effulgence of the Spirit\ndescended upon thee in the guise of fire\nand made of thee, O blessed one,\na habitation of God\nwho dispellest the darkness of ungodliness with might\nenlightening the world\nwith the radiance of thy most wise words,\nO James, thou initiate of the mysteries,\nleader of the apostles, who beheld Christ with thine own eyes.",
+        "_note": "Sung twice. Sticheron 2 of 5."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "The effulgence of the Spirit\ndescended upon thee in the guise of fire\nand made of thee, O blessed one,\na habitation of God\nwho dispellest the darkness of ungodliness with might\nenlightening the world\nwith the radiance of thy most wise words,\nO James, thou initiate of the mysteries,\nleader of the apostles, who beheld Christ with thine own eyes.",
+        "_note": "Repeat (second singing)."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Illumining those who sleep in the darkness of ignorance\nwith the splendors of thy preaching,\nO glorious James,\nthou didst show them forth\nas children, by faith, of our Master and God,\nWhose suffering and death thou didst emulate;\nand, as thou art a most wise herald of God\nand His true disciple,\nthou hast a share in His glory.",
+        "_note": "Sticheron 3 of 5."
+      }
+    ],
+    "doxastikon": {
+      "text": "Come, let us all praise James with hymns of psalms:\nthe preacher of the mysteries of heaven and recounter of the Gospel;\nfor he hath been shown to be a river of the noetic paradise,\nwatering the furrows of men's souls with heavenly showers\nand showing them to be fertile for Christ God\nWho granted cleansing, enlightenment and great mercy unto all\nby his supplications.",
+      "tone": 8,
+      "label": "Glory"
+    },
+    "otReadings": [
+      {
+        "label": "A Reading from the General Epistle of James",
+        "reference": "Jas. 1:1-12"
+      },
+      {
+        "label": "A Reading from the General Epistle of James",
+        "reference": "Jas. 1:13-27"
+      },
+      {
+        "label": "A Reading from the General Epistle of James",
+        "reference": "Jas. 2:1-13"
+      }
+    ],
+    "aposticha": [
+      {
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "text": "O blessed James who beheld God,\nupon hearing the voice of the Word\nthou didst straightway abandon\nthy love for thy father, and thy desire to please him;\nwherefore, having forsaken the tumult of life,\nand traversing the noetic sea,\nthou didst trouble it with thy teachings of piety\nand with thy heavenly radiance,\nO thou who art blessed of God."
+      },
+      {
+        "verse": "Their sound hath gone forth into all the earth, and their words unto the ends of the world.",
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "text": "O blessed James, who with thine own eyes\nbeheld the Word, the Author of life,\nand by thine actions pleased the Father of things to come,\nthou hast deprived of his primacy\nthe most abominable Ishmael\nwho worshiped his belly as god,\nand having tripped him\nthou hast revealed him to be devoid of the Father's protection,\nhaving no share in His blessing and inheritance."
+      },
+      {
+        "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "text": "Thou hast now been appointed prince\nover all the earth, O glorious one,\nas was written of thee before,\nfor thou wast a disciple of Him Who created all things;\nand by thy steadfast zeal\nand invincible boldness\ndidst endure to be put to death, O blessed one,\nthe first slain among the honored company\nof the twelve disciples."
+      },
+      {
+        "label": "Glory",
+        "tone": 1,
+        "text": "Thou didst follow after Christ, O godly James, and despising the world, hide His teachings in thy heart, and wast thereby revealed to be His apostle. Wherefore, going unto the nations, with the commandments of the Savior thou didst enlighten souls darkened by deception and the passions, that they might believe in the consubstantial Trinity."
+      }
+    ]
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "feastType": "apostle",
+      "_source": "OCA Menaion April 30 (pdf)"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Fishing for reason-endowed fish with the net of divine words, thou didst bring the first-fruits thereof to our God, and desiring to clothe thyself in the wounds of God, thou didst show thyself to be an emulator of His suffering. Wherefore as is meet, assembling, we honor thy most festive memory, O glorious apostle, and cry out to thee together: entreat Christ God, that He grant remission of sins unto those who honor thy holy memory with love.",
+        "tone": 8,
+        "melody": "Of the Wisdom",
+        "label": "Sessional Hymn after Kathisma 1"
+      },
+      {
+        "text": "As the Sun of righteousness Christ emitted thee to enlighten the whole earth, O glorious apostle James, and with thy godly supplications and thy divine and never-waning light thou dost illumine and enlighten all who celebrate thy holy memory with faith.",
+        "tone": 4,
+        "label": "Sessional Hymn after Kathisma 2"
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ James,\nand we honor the pangs and labors\nwherewith thou didst struggle in the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God! (Thrice)"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Filled with rays of light from on high and illumined with divine splendor, O apostle James, thou didst behold the Creator and Lord transfigured on Mount Tabor and wast deemed worthy to hear the voice of the Father. Wherefore, thou hast been granted great rewards as an eye-witness and disciple of grace, and a beholder of the mysteries of God. Entreat Christ God, that He grant remission of offenses unto those who with love honor thy holy memory.",
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn after the Polyeleos",
+      "_note": "Sung twice."
+    },
+
+    "prokeimenon": {
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+      "tone": 4,
+      "_psalmRef": "Ps. 18:5 / 18:2",
+      "_note": "Song of Ascents, first antiphon of Tone IV precedes."
+    },
+
+    "gospel": {
+      "reading": "John 21:15-25",
+      "number": 67,
+      "_note": "Jesus speaks with Simon Peter after the Resurrection; the beloved disciple (John). James mentioned with John as partners with Simon."
+    },
+
+    "postGospelSticheron": {
+      "text": "Thou didst follow after Christ, O godly James, and despising the world, hid His teachings in thy heart, and wast thereby revealed to be His apostle. Wherefore, going unto the nations, with the commandments of the Savior thou didst enlighten souls darkened by deception and the passions, that they might believe in the consubstantial Trinity.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_note": "Canon of the holy apostle, Tone VIII, 8 troparia. Pentecostarion canon sung with 6 troparia including irmos. Katavasia from the Pentecostarion.",
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel\nas they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "O blessed one, who like a skillful fisherman hast drawn men forth from the deep of transgressions with thy net, illumine my soul with radiant splendors, and grant that I may praise thy memory as is meet, O divinely revealed disciple James."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The pre-eternal and all-perfect God, Who with the Father is equally beginningless, appeared on earth incarnate as a man, and showed thee forth, O blessed one, as His fellow-laborer in grace and His most wise servant, who art strengthened by His power."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "God Who foreknoweth all things perceived the nobility of thy soul, thy steadfastness and invincible mind, O glorious disciple; He numbered thee among His highest servants, for thou hast proclaimed Him unto the nations."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: The Angel of Great Counsel, having assumed flesh, manifested Himself to the world through the Virgin Mother, and showed thee forth, O father James, as a disciple adorned with virtues, a divine herald proclaiming His words."
+          }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The compelling breath of the Comforter from on high, setting thee afire, revealed thee to be a wise herald of God, openly proclaiming the mighty works of the incarnate Word, Whom thou didst see with thine own eyes."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Launching thee into the hearts of the enemies like a choice arrow sharpened by the Word, He cut in half the souls of the adversary, O most wise James, initiate of the mysteries of God, laying hold of them as plunder."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The tranquility of thine undefiled soul was apparent to the Master even before thy calling, O blessed James: thou wast shown to be most pleasing to Him, and a disciple of His providence."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Manifestly adorned with thy sacred life and thy splendid kinship with God, O all-blessed one, thou wast shown to be His companion; for from childhood thou didst dwell with the Word."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O virgin, thou wast shown to be the noetic gateway, surpassing the east, of Him Who appeared to those on earth; for through thee hath the Word come to us to save all from mindlessness, O most pure one."
+          }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "The glorious apostle fished the nations, teaching the ends of the earth to worship Thee O Christ God, together with the Father and the Spirit. For his sake establish Thy Church and send down Thy blessings upon the faithful, O only Merciful Lover of mankind.",
+        "tone": 2,
+        "label": "Sessional Hymn after Ode 3",
+        "bothNow": {
+          "text": "Conceiving the Wisdom and Word in thy womb without being consumed, O Mother of God, thou hast given birth to Him Who sustaineth the world, and bearing in thine arms the Nurturer of all thou hast nurtured the Fashioner of all creation. Wherefore, I entreat thee, O all-holy Virgin, and glorify thee with faith, that I may be delivered from transgressions. On the day of judgment, when I must stand before the face of my Creator, show me thine aid, O pure Virgin Sovereign Lady; for thou canst do all things whatsoever thou desirest, O all-hymned one.",
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Called as a preacher of Christ, O divine James, thou didst quickly follow Him, spurning the love of thy father and trading transitory things for those which are eternal. Wherefore, thou hast been granted an ineffable heavenly inheritance, O blessed and ever-memorable one, O thine ardent desire for Christ the Master!"
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Illumined by His radiance, thy desire for Him was so great that thou wast transfigured and revealed to all as a secondary luminary, enlightened by the effulgence and glory of the primal Light, O most honored and blessed James."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Thy life was honorable and all-wondrous, for, receiving unrestrained desire, thou didst attain unto perfect blessedness by the desire of the Godhead, O beholder of God, chanting with the incorporeal ones: Glory to Thy power, O Lover of mankind!"
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Placing thyself wholly at the service of the Master, O disciple who beheld God, thou wast borne up to the heights by thy virtues, truly to the divine summit; and from thence thou pourest forth rivers of healings upon those who glorify thy memory with faith."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou art the boast of the faithful, having never known wedlock, thou art our intercessor, the refuge of Christians, their rampart and haven. Thou bearest our entreaties to thy Son, O all-immaculate one, saving from tribulations those who with faith and love acknowledge thee to be the pure Theotokos."
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me,\nwretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Aflame with zeal like a new Elijah, thou didst desire to burn up those who would not listen to thy preaching, O glorious one; yet He Who desireth loving-kindness restrained thee, teaching thee gracious meekness."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Winged with the loftiest virtues, thou didst desire the throne of the Master out of love for higher things, O most wise one, that entering therein thou mayest hold fast principle things learned therein, not for the sake of vain glory, but to gaze forth in its midst."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "James hath transcended the laws of humanity, O Savior, for, arrayed in Thy power as in a garment, he poureth forth rivers of healings and miracles illumining the ends of the earth with faith."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The radiant cloud of the Word, Who shone forth as God in glory, covered thee on Mount Tabor, O blessed James; and thou wast deemed worthy to hear the voice of the Father declaring His Sonship."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The abyss of my sins and the storm of my transgressions\ndisquieten me and thrust me down\ninto the depths of despondency;\nbut do Thou stretch forth Thy mighty arm,\nunto me as Thou didst to Peter,\nand save me, O my Guide.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Unceasingly pouring forth streams of healings as from a well-spring, and piously emitting the enlightenment of doctrine, O wise and most blessed one, thou dost illumine the souls who approach thee with love and devotion."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The Master found thee to be a vessel containing his rich and honored benefactions, and He poureth forth as gifts mysteries which pass understanding, O servant of everlasting life."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "For our sake the Master desired to assume mortality, the cause of the true resurrection of mortals, O blessed one, and He selected thee, the wise initiate of His mysteries, as His assistant on the night whereon He was betrayed."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O Virgin Theotokos who hast given birth to the Abyss of compassions, save my soul from the sorrows of life and open unto me the gates of spiritual joy; for on thee have I set mine only hope."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Hearing the voice of God calling thee,\nthou didst disdain the love of thy father,\nand with thy kinsman\nthou didst hasten after Christ, O glorious James.\nAnd with him thou wast deemed worthy\nto behold the divine transfiguration//\nof the Lord.",
+        "tone": 2,
+        "ikos": "Dwelling with thy brother in the mansions of heaven, by your supplications drive away the Moslems who trample upon holy things with vile and unclean feet; and, cutting down the devisings of the tyrants, grant freedom to those of us now held captive because of the multitude of our offenses, that, assembling together, we may behold the divine transfiguration of the Lord.",
+        "melody": "Seeking the highest",
+        "label": "Kontakion of the holy apostle"
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe\nof God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Thou didst drain the cup as thou didst promise Christ the Master, and wast baptized with His baptism, O blessed of God. And to Him thou dost now cry out with fervor, rejoicing: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Thou wast shown to be illumined with the splendor of the vision of God, O James; wherefore, Christ the Benefactor hath adorned thee with the crown of the kingdom, and thou chantest with the angels: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Behold, the great Bestower hath fulfilled the promises He made to thee: thou hast been lifted up to Him by thine emulation of His sufferings. And, standing before Him now, thou criest out, rejoicing: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: We preach Him Who was incarnate of thee, as having two natures, but not two hypostases O Master. And, reconciled with God because of thee, we depict Him in the flesh and venerate the image of His countenance."
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Following Christ Who hath called thee, thou didst acquire the promise of Abraham, O thou who didst see God; for thou wast His most radiant minister, chanting to thy Creator and Deliverer: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Thy proclamation of the image of the law was mightier than the sound of thunder; for throughout all the world thou didst thunder Christ, our Creator and Deliverer, chanting: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: The tongues of orators are unable to hymn thee, O Theotokos Mary, Bride of God; for thou, O pure Maiden, gavest birth to God Who is over all, the Creator and Deliverer, to Whom we cry: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!"
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Passing through thy life in holiness, thou hast attained unto the abodes of the saints, where, rejoicing, thou dost behold the thrice-radiant Light, O most wise one. Delighting therein, and full of gladness, by thy supplications grant those who hymn thee joy, O most blessed James."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "The malefactors and murderers could not bear the sight of thee, as before they could not stand to look upon thy Master; for, denouncing them for their works, thou didst rebuke them by laying down thy life. And they slew thee with the sword, making thee an emulator of Christ Who was crucified in the flesh for mankind, O divinely eloquent and most blessed one."
+          },
+          {
+            "refrain": "Holy Apostle James, pray to God for us!",
+            "text": "Tortured by the sword of heaven, Herod died afflicted with sores, for the wretched one was not content to slay Thy servants and disciples, whom Thou didst name apostles, O Word. Wherefore, marveling at Thy righteous providence, we magnify Thee."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O Virgin Mother of God, thou wast revealed to be her who gave birth to God the Word in the flesh, Whom the Father generated from His own heart before time began, in that He is good. Him Whom we now understand as transcending flesh, even though He was clothed in a body."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Let us all hymn James, son of Zebedee,\nfor he ascended Mount Tabor with Christ\nand beheld the divine transfiguration;\nand, having descended, he preached with Peter and James\nto all the four corners of the earth.",
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the holy apostle",
+      "_note": "Sung twice. Glory: Both now from the Pentecostarion."
+    },
+
+    "lauds": {
+      "tone": 8,
+      "_note": "6 stichera total: 3 from Pentecostarion + 3 for the holy apostle. Lauds stichera 4-6 are for the apostle.",
+      "stichera": [
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "O blessed James the God-seer,\nwhen thou didst hear the voice of the Word\nthou didst straightway abandon\nthy love for thy father and thy desire to please him;\nwherefore, forsaking the tumult of life,\nand traversing the noetic sea,\nthou didst trouble it with thy teachings of piety\nand with thy heavenly radiance,\nO thou who art blessed of God.",
+          "_note": "Lauds sticheron 1 of 3 for the apostle (overall sticheron 4 of 6)."
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "O blessed James, who with thine own eyes\nbeheld the Word, the Author of life,\npleasing the Father of things to come by thine actions,\nthou hast deprived of his primacy\nthe most abominable Ishmael\nwho doth worship his belly as god,\nand thou hast tripped him\nand shown him to be devoid of the Father's protection,\nhaving no share in His blessing and inheritance.",
+          "_note": "Lauds sticheron 2 of 3 for the apostle."
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "Thou hast now been appointed prince\nover all the earth, O glorious one,\nas was written of thee before,\nfor thou wast a disciple of Him Who created all things;\nand by thy steadfast zeal\nand invincible boldness\nthou didst endure to be put to death, O blessed one,\nthe first slain among the honored company\nof the twelve disciple.",
+          "_note": "Lauds sticheron 3 of 3 for the apostle."
+        }
+      ],
+      "doxastikon": {
+        "text": "O fisher of all the world, holy disciple, laborer of the Savior, and recounter of His sufferings;\nhaving traveled around creation with faith, gathered in the deluded nations and brought them to God,\nthou wast brought up into the heavens.\nWherefore, standing before the Judge,\npray that we be delivered from our iniquities\nand find salvation from torment on the day of judgment.",
+        "tone": 6,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Both now — Theotokion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Thou wast a chosen apostle of Christ\nand the only brother of the beloved Theologian,\nO all-praised James.\nAsk thou remission of sins\nfor those who hymn thee,//\nand great mercy for our souls.",
+      "tone": 3
+    }
+  }
+}

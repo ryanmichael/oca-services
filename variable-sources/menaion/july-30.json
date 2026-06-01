@@ -1,0 +1,724 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr John the Warrior",
+    "feastKey": "holyMartyrJohnTheWarrior",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 07-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-30.pdf",
+    "_note": "Polyeleos rank. Great Vespers with entrance and three OT lessons. Two troparia at Vespers (Tone IV primary; Glory Tone VIII alternate). Matins uses the Tone VIII troparion on 'God is the Lord.' Two canons of the martyr interleaved with the fixed Paraclysis (Canon of supplication to the Theotokos): Canon I in Tone II, Canon II in Tone I, each with 8 Troparia (3 saint + 1 theotokion per canon per ode). Kontakion (Tone VI) + Ikos after Ode 6. Sessional hymn (Tone VIII) after Ode 3. Gospel: John §51 (Jn 15:9-16). Great Doxology. Litanies. Dismissal."
+  },
+
+  "troparion": {
+    "text": "O wonder-worker John,\nthou hast been shown to be a right faithful servant and warrior of God, the supremely good King;\nfor, having manfully suffered for the Faith\nand finished thy course in blessedness,\nin the heavens thou dost most splendidly behold the Lord and Creator of all,\nand helpest those who suffer amid all manner of trials.\nThou dost strengthen soldiers in battle,\nrescuing them from capture by the enemy,\nfrom wounds, sudden death and cruel misfortunes.\nWherefore, entreat Christ the Master, O ever-memorable one,\nthat He deal mercifully with us in every circumstance,\nthat He lead us not into temptations,//\nbut save our souls, in that He is the Lover of mankind.",
+    "tone": 4,
+    "label": "Troparion of the holy martyr"
+  },
+
+  "kontakion": {
+    "text": "Let us right worthily praise John the warrior with hymns,\nthe pious soldier of Christ,\nwho with divine wisdom\nvanquished enemies, spiritual and corporeal;\nfor working wonders, he bestoweth abundant healings\nupon suffering people,\nand he entreateth the Lord God\nto save the Orthodox faithful,//\nfrom all misfortunes.",
+    "tone": 6,
+    "label": "Kontakion of the holy martyr",
+    "ikos": "Who can recount thy struggles and sufferings for thy faith in the Lord Jesus? With what praises can we crown thee for thy courageous stand in the law of the Lord and true piety? For, armed with chastity and all manner of good works, thou didst trample underfoot all the wiles of the soul-destroying foe; and hating wealth, glory and harmful lust, thou didst love poverty and affliction for Christ's sake, helping the suffering amid their tribulations. Wherefore, having made thine abode in the tabernacles of heaven, thou hast been enriched with the gifts of most glorious miracles. Therefore, O blessed one, watch over those who have recourse unto thee, rendering them aid, and saving the Orthodox from all misfortunes."
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 2,
+        "melody": "When from the Tree",
+        "text": "When on earth thou wast a soldier of a corrupt king,\nthou wast a warrior faithful to God, O John,\nand then, receiving help from Christ the King,\naiding the martyrs of Christ\nthou didst vanquish the enemy, visible and invisible;\nand now thou joinest chorus with the angelic hosts and the armies on high.\nWherefore, O blessed passion-bearer,\npray thou to the Savior of us all,//\nthat He save our souls.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 2,
+        "melody": "When from the Tree",
+        "text": "When on earth thou wast a soldier of a corrupt king,\nthou wast a warrior faithful to God, O John,\nand then, receiving help from Christ the King,\naiding the martyrs of Christ\nthou didst vanquish the enemy, visible and invisible;\nand now thou joinest chorus with the angelic hosts and the armies on high.\nWherefore, O blessed passion-bearer,\npray thou to the Savior of us all,//\nthat He save our souls.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 2,
+        "melody": "When from the Tree",
+        "text": "Desiring to leave the earthly army,\nthou didst take care\nto please Christ the King of heaven;\nfor, having armed thyself\nwith faith in Him,\nthou wast found to be a mighty warrior, O John,\nprotecting the martyrs of Christ\nfrom the ungodly tyrant//\nby thy prayers to God, O blessed one."
+      },
+      {
+        "tone": 2,
+        "melody": "When from the Tree",
+        "text": "When by faith in Christ and by prayer\nthou didst desire to obtain the portion of the righteous,\nthou didst then aid those persecuted for their faith in Christ.\nTherefore, Christ the Lord\nhath enriched thee with gifts of miracles;\nfor unto those who call upon thee amid divers tribulations\nthou showest thyself to be a speedy helper.\nWherefore, pray thou unto God//\non behalf of us who observe thy most honored memorial."
+      },
+      {
+        "tone": 2,
+        "melody": "With what crowns of praise",
+        "text": "Come, ye who love what is holy,\nlet us all be glad in spirit and hold festival,\nglorifying Christ our God,\nfor today He hath prepared a most abundant banquet for us,\nthe memorial of the glorious martyr and valiant warrior John,\na helper for all amid tribulations,\ndenouncer of evil deeds\nand revealer of lost and hidden things//\nfor those who call upon his assistance.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 2,
+        "melody": "With what crowns of praise",
+        "text": "Come, ye who love what is holy,\nlet us all be glad in spirit and hold festival,\nglorifying Christ our God,\nfor today He hath prepared a most abundant banquet for us,\nthe memorial of the glorious martyr and valiant warrior John,\na helper for all amid tribulations,\ndenouncer of evil deeds\nand revealer of lost and hidden things//\nfor those who call upon his assistance.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 2,
+        "melody": "With what crowns of praise",
+        "text": "O most blessed and right victorious John,\nmighty warrior of our God, the Creator of all,\nas one chosen by God\nthou didst preserve thy nobility of soul;\nand having disdained the vanity and deceptions of the world,\nthou didst lovingly show sympathy for those in torment.\nAnd now thou abidest sweetly with Christ in the heavens,\nfrom whence look thou down upon and preserve all who call upon thee//\nin time of battle and all manner of misfortunes."
+      },
+      {
+        "tone": 2,
+        "melody": "With what crowns of praise",
+        "text": "What shall we offer unto Thee, O God our Creator?\nWhat manner of thanks shall we give Thee?\nFor Thou hast given Thy people true grace,\nthe holy John, a pious warrior and bestower of alms,\na helper of soldiers in battle,\na consoler of sorrows,\nwho doth pray fervently to Thee for our salvation.\nWherefore, for the sake of Thy mercy,//\nsave us, O Master and Lover of mankind!"
+      }
+    ],
+    "doxastikon": {
+      "text": "Having struggled zealously for Christ, O John, with the Christian martyrs,\nhelping Christians in the pious Faith,\nthou wast an exemplary soldier of thy Master.\nFeeding the needy and preparing abundant alms for the poor,\nthou didst reject the commands of the iniquitous Emperor Julian;\nand, destroying the vessels of His tyranny,\nthou wast shown to be a victor excellent in thine Orthodoxy.\nWherefore, thou hast passed over to the mansions of heaven,\nand there dost most joyously behold Christ,\nWho hath crowned thee with an imperishable crown.\nHim do thou unceasingly entreat, O most blessed one,\nthat those who honor thee be deemed worthy of everlasting blessedness.",
+      "tone": 6,
+      "label": "Glory"
+    },
+    "theotokion": {
+      "text": "Who doth not call thee blessed, O most holy Virgin?\nWho will not hymn thy most pure birthgiving?\nFor the only-begotten Son Who hath shone forth timelessly from the Father,\ncame forth, ineffably incarnate, from thee, O pure one;\nBy nature he is God, by nature for our sakes, he hath become a man\nnot divided into two Hypostases,\nbut known in two natures without commingling.\nHim do thou beseech, O pure and most blessed one,//\nthat our souls find mercy!",
+      "tone": 6,
+      "label": "Both now — Dogmatic Theotokion"
+    },
+    "litia": {
+      "stichera": [
+        {
+          "tone": 8,
+          "text": "O all-praised John, martyr of Christ,\nthou didst count as naught a violent death,\nand the assaults of the wicked and tyrannical emperor,\nhaving right boldly arrayed thyself for combat with manly wisdom.\nWherefore, crowned with the glory of victory,\nthou hast been numbered among all the righteous;\nand, praising thee with them, we call thee blessed."
+        },
+        {
+          "tone": 8,
+          "text": "O most blessed John, martyr of Christ,\nseeing the martyrs of Christ led to the slaughter,\nthou didst aid them with fraternal love.\nFor, exhorting them to suffer even to the shedding of their blood and unto death,\nthou didst say: \"Our suffering here is naught compared to the reward which awaiteth us in the heavens!\"\nAnd thou didst thyself strive to suffer with them for the sake of thy Creator's love.\nWherefore, having received the gift of miracles from Christ God,\nthou helpest those who suffer amid divers trials,\nrescuing from cruel misfortunes those who glorify the Lord\nand honor thy sacred sufferings with love."
+        },
+        {
+          "tone": 8,
+          "text": "O invincible John, martyr of the Lord,\nbearing the name which signifieth grace,\nthou bestowest grace and mercy upon those who with faith call upon thee with prayer,\nbringing joy to the divinely wise people who with faith call upon thee for aid\namid their trials and who honor thy memory with sacred joy.\nWherefore, entreat Christ,\nthat He save us from all misfortunes,\nin that He is omnipotent."
+        }
+      ],
+      "doxastikon": {
+        "text": "Who doth not marvel, who doth not render glory,\nwho doth not hymn the miracles of John, the glorious warrior of Christ, who is wise in the faith?\nFor even after his repose, he bestoweth a great many healings\nupon all who diligently have recourse unto him.\nFor his precious and holy relics pour forth grace,\nabundantly fulfilling profitable requests.\nWherefore, we piously cry out to him:\nUnceasingly beseech the Lord,\nthat He save our Orthodox hierarchs\nand all who with faith have recourse to thy holy temple\nand ask thy fervent intercession before God:\nfor thee do we have as an earnest mediator and intercessor for our souls.",
+        "tone": 4,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "Mercifully regard the supplications of thy servants,\nO all-immaculate one,\nquelling the cruel uprisings of the demons against us,\ndelivering us from every sorrow;\nfor thee alone do we have as a steadfast and sure confirmation,\nand having acquired thine intercession;\nlet not us who call upon thee be put to shame,\nO Lady.\nHasten thou to answer the entreaties of those who cry out to thee with faith:\nRejoice, thou help, joy and protection of all,//\nand the salvation of our souls!",
+        "tone": 4,
+        "label": "Both now"
+      }
+    },
+    "aposticha": {
+      "stichera": [
+        {
+          "tone": 4,
+          "melody": "As one valiant among the martyrs",
+          "text": "The cruel tyrant\ngave thy holy body over to be executed\nby multifarious tortures;\nyet thou, O John of godly mind,\ndidst not deny Christ,\nnor didst thou sacrifice to idols,\nbut valiantly endured all,\ntrusting in the future reward//\nof never-ending delight in the Lord."
+        },
+        {
+          "verse": "The righteous man shall flourish like a palm-tree, and like a cedar in Lebanon shall he be multiplied.",
+          "tone": 4,
+          "text": "By thy virtuous life\nthou didst spurn the world,\nO wonder-worker John,\nand, showing great loving-kindness for Christians\nin the command of thine army,\nthou didst set them at liberty.\nAnd having thereafter suffered thyself for Christ God\nin the Orthodox Faith,//\nthou didst receive the inheritance of eternal blessedness."
+        },
+        {
+          "verse": "They that are planted in the house of the Lord, in the courts of our God they shall blossom forth.",
+          "tone": 4,
+          "text": "Thy relics, O glorious one,\npour forth the gift of healings\nupon those who honor thee diligently,\ndrowning the passions\nand curing ailments, O John;\nputting hordes of wicked demons to flight,\nand watering the hearts of the faithful,\nproducing the divine fruits of the virtues//\nand the understanding of piety."
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, ye Christ-loving people,\nand with understanding let us contemplate\nthe good fight and generous courage attained upon the right path;\nfor John, who is newly crowned, the great intercessor and martyr,\ncrieth thus to the iniquitous Julian, an emperor loathsome to God:\n\"Thou canst not lure me with thy words of evil\nor by the luxury of this vain world,\nnor shalt thou separate me from the love of my God, the Creator of all!\nFor, lo! I place my trust in Him,\nand on Him do I set all my desire,\nthat I may become an heir to His heavenly kingdom!\"\nWherefore, glorifying Christ the King,\nlet us praise the martyr,\nand make earnest entreaty on this the day of his commemoration:\nO holy John, pray thou continually,\nthat peace be granted to the world and great mercy to our souls.",
+        "tone": 8,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,//\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Both now"
+      }
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "polyeleos",
+      "feastType": "saint",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+
+    "troparionOnGodIsTheLord": {
+      "text": "Loving the blessedness of the Gospel, O divinely wise John,\nthou didst honor purity with virginity of heart;\nwherefore, spurning the vanity of this world, thou didst hasten to behold God,\nWho hath glorified thee with miracles in the healing of those who suffer divers ailments.\nTherefore, we beseech thee: Entreat Christ God,\nthat He grant us deliverance from all tribulations,//\nthat we may receive the kingdom of heaven.",
+      "tone": 8,
+      "label": "Troparion of the holy martyr (on God is the Lord)",
+      "_note": "Sung twice; Glory… Both now… Theotokion in same tone."
+    },
+
+    "sedalion": [
+      {
+        "text": "Having beheld the sufferings of the honored martyrs,\nand kissed their fetters,\nthou didst ascend the heights of witness, O most wondrous one;\nand setting all thy desire on Christ,\nthou didst become a merciful helper for all,\nassisting the suffering and nurturing the hungry,\nuntil thou didst commit thy soul into the hands of the Lord,\nO much-suffering John.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most holy Virgin, hope of Christians,\nwith the hosts on high do thou unceasingly beseech God\nto Whom, in a manner surpassing understanding and all telling, thou hast given birth,\nthat He grant forgiveness of all our sins\nand correction of life\nunto those who with faith and love ever glorify thee.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Pleasing the immortal King of the ages,\nthou didst not sacrifice to graven images,\nbut didst spurn all the wicked counsels of the iniquitous emperor, O glorious one.\nWherefore, thou didst offer thyself as a sacrifice unto the Word Who was sacrificed;\nfor which cause thou pourest forth streams of miracles\nupon those who suffer amid trials,\nO merciful intercessor who prayest to God,\nO great John, soldier of the King, Christ our God.\nHim do thou beseech,\nthat He grant remission of sins\nunto those who honor thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O undefiled, blameless and all-immaculate Lady,\nthou cloud of the noetic Sun and golden candle-stand of the light of God:\nwith the radiance of dispassion illumine my soul,\nwhich hath grown dim through the blindness of the passions, I pray;\nwith torrents of compunction enlighten my polluted heart,\nand with tears of repentance cleanse me of the mire of my evil deeds,\nthat with love I may cry out to thee:\nO Ever-virgin Theotokos, entreat Christ God,\nthat He grant me forgiveness of my transgressions;\nfor thee do I, thy servant, have as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy passion-bearer John,\nand we reverence thine honored sufferings,\nwhich thou didst endure for Christ.",
+      "verses": [
+        "Our God is refuge and strength. A helper in afflictions which mightily befall us.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "We cry out to thee, O John, as to a valiant athlete, and mighty soldier of Christ, the King of all:\nRejoice, adornment and splendor of martyrs!\nRejoice, radiant star of the Church\nand rampart and haven for those who have recourse unto thee,\nO glorious great-martyr John the warrior!\nThrough thy supplications save those who hymn thee\nfrom all harm by the alien\nand deliver them from cruel afflictions.",
+      "tone": 4,
+      "label": "Sessional Hymn after the Polyeleios",
+      "melody": "Joseph marveled",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "We, thy sinful servants,\nfalling down cry out to thee with compunction,\nas to the Queen surpassing the hosts of heaven,\nthe Mother of Christ our God, the mighty helper of our race:\nO Mary Theotokos, Virgin, and Lady,\nguide us to the will of the Lord, the King of heaven all the days of our lives,\nand preserve us from all trials and afflictions of body and soul,\nentrusting us not to the aid of men;\nand have mercy on us, O all-hymned one.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "The righteous man shall flourish like a palm-tree,\nand like a cedar in Lebanon shall he be multiplied.",
+      "verse": "They that are planted in the house of the Lord, in the courts of our God they shall blossom forth.",
+      "tone": 4,
+      "_psalmRef": "Ps. 91:13 / 91:14"
+    },
+
+    "gospel": {
+      "reading": "John 15:9-16",
+      "number": 51,
+      "_note": "Gospel §51 for martyrs: As the Father hath loved me, so have I loved you."
+    },
+
+    "postGospelSticheron": {
+      "text": "Today, the universal festival of the passion-bearer calleth us together.\nCome, ye who love God, let us with splendor celebrate his memory, saying:\nRejoice, O great-martyr John, invincible warrior of the King of heaven,\nfor thou didst manfully spurn the mindless command of the lawless Emperor Julian the idolater!\nRejoice, O blessed one, helper of the spiritual athletes of Christ,\nfor thou didst make them steadfast in the Orthodox Faith during persecution by the iniquitous,\nand with love didst suffer with them!\nWherefore, Christ hath enriched thee with gifts of miracles.\nEntreat, then, the supremely good God,\nthat He save our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 1,
+      "_authors": {
+        "first": "Canon I of the holy martyr in Tone II",
+        "second": "Canon II of the holy martyr in Tone I"
+      },
+      "_canonNote": "Two canons of the holy martyr John the Warrior, interleaved with the fixed Paraclysis (Canon of supplication to the Theotokos). Canon I in Tone II with 8 troparia (3 saint + 1 theotokion per ode). Canon II in Tone I with 8 troparia. Kontakion (Tone VI) + Ikos after Ode 6. Sessional hymn (Tone VIII) after Ode 3.",
+
+      "ode1": {
+        "irmos": "Come, O ye people,\nlet us sing a song to Christ our God,\nWho divided the sea,\nand made a way for the nation\nwhich He had brought up out of the bondage of Egypt;\nfor He hath been glorified.",
+        "irmos2": "I shall exalt Thee, O God my Savior,\nfor Thou hast arisen from the dead,\ntrampling down death.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy splendid feast doth joyfully summon us to a spiritual banquet, O holy John;\nand thereat thou dost honor with gifts all who have recourse to thee,\nfulfilling our profitable requests."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having fought the good fight on earth, O most blessed John,\nprotecting the martyrs of Christ from the evil tyrant,\nthou hast received heavenly life from Christ God;\nwherefore, grant us help amid misfortunes."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having spurned the tyranny of the iniquitous emperor as a true soldier, O divinely wise one,\nand distributed thy wealth to the poor for Christ's sake,\nthou didst receive the gift of miracles from God;\nand reproving wicked men, thou didst give aid to the pious."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: In the excess of His love for mankind, the incorporeal Word became incarnate of thee in a godly manner, O most pure Virgin.\nHim do thou entreat, O Lady, that He grant us everlasting blessedness."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Jesus our Savior, grant us the disposition to thank Thee for all things,\nand to praise John, Thy favored one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O glorious spiritual athlete John, with a divinely wise mind thou didst do battle for God, the Creator of all;\nwherefore, thou hast conquered all our enemies."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O all-praised warrior, who hast been deemed worthy to behold the incarnate God,\nwe beseech thee: By thine entreaties deliver us from all misfortunes."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Mary, divinely joyous palace of the pre-eternal Word,\nin thy tender compassion make our hearts ever glad in God, even in the midst of tribulations."
+          }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God\nand none more righteous than Thee, O Lord.",
+        "irmos2": "O Lord and Master, Who hast by Thy word\nmade steadfast the whole world,\nthat I not be shaken, establish our mind in the fear of Thee.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having acquired a sure faith with the martyrs,\nand become a soldier of Christ Jesus, O courageous one,\nthou wast enriched with the virtues.\nWherefore, ever grant goodly enlightenment unto those who celebrate thine honored memory."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou hast revealed thyself to be an invisible persecutor of those who wickedly work evil,\nO martyr of Christ, exposing thefts which are done in secret.\nFor thou hast received from God the power to do for everyone\nall things which are conducive to salvation."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Possessed of a heart like an immovable pillar, O most honored John,\nthou didst show love for the martyrs of Christ,\nundaunted by the cruelty of the emperor.\nWherefore, help us, that we be rendered steadfast in the love of the Lord."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, Mother of Jesus the Lord,\nentreat Him with all the saints,\nthat He deliver us from all misfortunes and sorrows,\nthat all who do evil to thy servants may be put to shame;\nand grant that we may ever praise thee and thy Son."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Falling down before Thee, our God and Creator, in every evil circumstance, we pray:\nThrough the entreaties of Thy martyr establish us in Thy will and in love."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With steadfast mind thou didst rely on the uprightness of the knowledge of God,\nO divinely blessed John;\nwherefore, make our souls steadfast, that we may set our hope in the Lord in all things."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having spurned the lust of thy flesh, the lust of thine eyes and the pride of life, O martyr,\nthou wast established in the love of Jesus.\nHelp us also to attain this."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most blessed Lady who hast given birth unto Christ Who establisheth all things:\never strengthen us, that we may remain in His providence."
+          }
+        ]
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Ever pleasing the King of heaven and Creator of the ages,\nthou didst spurn the malicious and abominable counsels of the lawless tyrant Julian, O glorious one,\nrefusing to offer sacrifice unto inanimate idols;\nand thus thou didst commit thy soul into the hands of the Lord God.\nHim do thou beseech, O holy John,\nthat He grant remission of sins\nunto us who honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy martyr (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "In Thee, O Full of grace,\ndoth all creation rejoice,\nthe ranks of Angels and the race of mankind;\nO all-hallowed Temple and spiritual Paradise,\nboast of Virgins.\nFor from thee God became incarnate\nand He who is our God before the ages became a child.\nHe hath made thy womb a throne\nand rendered it wider than the heavens.\nIn thee, O Full of grace, doth all creation rejoice;//\nglory be to thee.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou hast come forth from the Virgin,\nnot as a mediator, nor as an angel,\nbut Thyself, incarnate, O Lord,\nand hast saved me, the whole man.\nWherefore, I cry unto Thee:\nGlory to Thy power, O Lord!",
+        "irmos2": "I have understood Thy dispensation,\nO Almighty one,\nand have glorified Thee with fear, O Savior.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst emulate Christ God,\nWho of His own will was crucified on the Tree, O most honored one,\ncrucifying thyself with Him by all manner of abstinence, prayer,\nalmsgiving and many benefactions."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Lo! even to thy death thou didst humble thyself, O martyr John;\nfor thy holy relics were hidden at a place where strangers were buried.\nWherefore, the Lord hath glorified thee throughout all the world."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having command of the corruptible army of the Emperor Julian the apostate,\nthou wast dispatched to put Christian martyrs to death;\nyet, preserving them, O blessed one,\nthou didst keep them in the Faith,\nthat they might chant: Glory to Thy power, O Lord!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Doubt of my salvation assaileth me, O most pure one,\nbecause of the evils which surround me;\nwherefore, quickly deliver me from them,\ngranting me goodly knowledge,\nfor to thee alone have I fled, O Mother of God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Great is Thy dispensation in all the world, O Lord,\nto Whom we ardently commit ourselves, praying to Thee with the saints."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having finished the good fight in suffering, O martyr,\nhelp us with goodly understanding to glorify the Lord in fear."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Casting aside all fear of tyrants,\nthou didst render brotherly assistance to the people of God in the time of persecution, O John.\nDrive from us the fear of dangers."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou wast deemed worthy to be the Queen and Mother of the almighty King.\nGrant that we may glorify His merciful dispensation toward us."
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,\nfor we know none other God than Thee.",
+        "irmos2": "O Lord, Who from the night of ignorance\nhath illumined the ends of the earth,\nillumine me with the dawning of Thy love for mankind.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Experiencing the divine mysteries in understanding, O John,\nthou didst proclaim the nativity of God,\nsaying in the presence of all:\n\"I know none other God than the Creator of all!\""
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "\"Love the Lord Who loveth you!\" thou didst say to the suffering martyrs, O passion-bearer;\nmade steadfast in His love, thou wast enriched with miracles, healing many sicknesses."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "For the sake of Christ's glory thou didst consider the glory of this world to be as naught,\nO divinely wise warrior;\nwherefore, having completed thy contest\nand been deemed worthy of divine glory,\npray that we also receive it."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Glorifying thy tender compassion toward us, O Lady, we entreat thee:\nFree us from all tribulations, O Mary,\nand help us to rise early unto God,\nthat we may be deemed worthy of everlasting blessedness."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Master Who lovest mankind,\nenlighten us on the day when Thy spiritual athlete is commemorated in prayer,\nthat with reverence we may rise early unto Thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou wast enlightened with God-given miracles, O martyr John;\nwherefore, rescue those who glorify thee from evil people, from loss and from pain."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Valiantly conquering all the soul-destroying enemies with the luminous dawn,\ndraw us out of the darkness of grievous passions into the light of joy."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin who hast given birth to God in our flesh,\nextending thy mercy unto all,\nentreat Him, that we be illumined with heavenly light."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "With Jonah I cry to Thee, O Lord,\npraying with a voice of praise:\nLead my life up from corruption!",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Strengthened by the power of God, O John, thou glory of the martyrs,\nthou didst pay no heed to the threats of the impious;\nand, gazing joyously now upon God, deliver us from evils."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With supplications, fasting and all manner of abstinence in chastity, O most honored one,\nthou didst please God.\nLooking down from on high, free us from tribulations."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou grantest the petitions of those who honor thee with faith, O blessed one,\ndenouncing evil people, and praying to God for the penitent."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos who hast given birth for us to Christ the Physician,\nheal thou the sufferings of our souls and bodies,\nand put to shame the evil machinations of the enemy by thy tender compassion."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "We will not cease to beseech Thee, the most compassionate Lord,\nmoving Thy faithful warrior to pray with us:\nRescuing us from sin, make us to dwell in heavenly life."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou dost praise God in the highest, O holy John,\nhaving served Him faithfully here on earth;\nwherefore, thou hast drawn nigh also unto us who praise thee, for our salvation."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having endured sufferings for Christ's sake, O all-praised one,\nthou hast received most joyful blessedness;\nwherefore, accept thou our entreaties, and lead us into joy."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin,\nwho hast saved the world from pernicious corruption,\ndeliver us from every evil circumstance."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Let us right worthily praise John the warrior with hymns,\nthe pious soldier of Christ,\nwho with divine wisdom\nvanquished enemies, spiritual and corporeal;\nfor working wonders, he bestoweth abundant healings\nupon suffering people,\nand he entreateth the Lord God\nto save the Orthodox faithful,//\nfrom all misfortunes.",
+        "tone": 6,
+        "label": "Kontakion of the holy martyr"
+      },
+      "ikos": {
+        "text": "Who can recount thy struggles and sufferings for thy faith in the Lord Jesus? With what praises can we crown thee for thy courageous stand in the law of the Lord and true piety? For, armed with chastity and all manner of good works, thou didst trample underfoot all the wiles of the soul-destroying foe; and hating wealth, glory and harmful lust, thou didst love poverty and affliction for Christ's sake, helping the suffering amid their tribulations. Wherefore, having made thine abode in the tabernacles of heaven, thou hast been enriched with the gifts of most glorious miracles. Therefore, O blessed one, watch over those who have recourse unto thee, rendering them aid, and saving the Orthodox from all misfortunes."
+      },
+
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "All Thy works are true,\nand Thy paths are straight,\nO God of our fathers.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Abrogating the ungodly command of the iniquitous tyrant, O passion-bearer John,\nthou wast shown to be a pious warrior of the almighty King;\nand, bedewed with grace, thou didst chant with the people of God:\nO God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The sweet, great and joyful festival which the chaste John, the most valiant of martyrs, hath organized,\nhath now illumined the people of the Lord;\nfor he poureth forth healings upon those who pray to the Lord with faith\nand cry aloud: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As thou hast boldness before the Master of all, O holy John, in that thou art His dear favorite,\nintercede before Him for us in the midst of our perils,\nand help us to find deliverance from sins,\nthat with godly mind we may chant: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: A most glorious mystery hath been accomplished in thee, O Mother of God;\nfor without seed thou didst conceive thy Son Who hast abolished the burden of our sins.\nWherefore, placing our hope in thee and looking to thy help,\nwe cry out with fervor: Blessed art thou, O Virgin Lady!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O John, physician who taketh no fee,\nby thy supplications heal the infirmities and sufferings of the souls and bodies\nof those who cry out to the Lord: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst set about doing the work of every virtue,\nand offered thyself to the Creator of all as a living sacrifice,\ncrying aloud: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having pleased the supremely good God in purity, with prayer and fasting, O martyr,\ngrant that we may cry out in a God-pleasing manner:\nO God of our fathers, Blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-immaculate Virgin who hast given birth to Christ, the way and the truth,\ndirect us to the life on high, to the God of our fathers."
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
+        "irmos2": "Jesus of Nazareth, the King of glory\nand the Vanquisher of death,\nexalt ye supremely throughout all ages!",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Seeking the highest, thou didst hate delusion on earth, O blessed of God.\nWherefore, united spiritually in love with the martyrs of Christ,\nthou didst boldly preach Jesus, the God-man,\nof Whom thou didst cry aloud: Bless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Providing in abundance what was needed, O John of pious mind, thou wast a nurturer of the poor;\nand watching over us who now have recourse unto thee, fulfill our requests,\nthat we may cry out with joy: Bless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Seeing thy zeal and thy perfect faith, O John,\nGod Who beholdeth all things glorified thee with everlasting glory.\nHim do thou expediently entreat,\nthat He take pity upon us who chant with reverent mind:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Mary, Bride of God, we flee unto thee and, falling down before thee, we pray:\nLook upon our sorrow and the affliction wrought upon us by our enemies, O Lady,\nand render peaceful the life of us all,\nin that thou hast given birth to the Lord,\nWhom we bless throughout the ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "O King of heaven, Who hast granted victory over the power of the enemy to thy holy martyr,\ngrant that, delivered from all want,\nwe also may glorify thee throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Joyfully, O blessed one, thou hast gazed upon the King and Lord in the highest.\nPray thou, that with a pure heart we may supremely exalt Him throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "O warrior who reignest with Christ,\nvanquish all barbarians and destroy the counsels wickedly devised against us,\nthat we may supremely exalt the Lord throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O almighty Queen,\nmaternally entreat God the King,\nthat we may supremely exalt Him in every place,\nand hymn thee the Sovereign Lady throughout all ages."
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "irmos2": "The incorporeal minister stood before her who is full of grace,\nsaying the Lord is with thee,\nwhom we magnify.",
+        "troparia": [
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou wast revealed to be a good ally of the people of God, O most glorious one,\nprotecting the persecuted,\nand even now aiding the faithful with miracles;\nwherefore, we magnify Christ God at the memorial of thy benefactions."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy wonders are proclaimed throughout all the world, O most blessed John;\nwherefore, assembling today,\nwe send up glory to Christ Who hath glorified thee."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Hearken today unto us who praise thee and ask thy help, O martyr of Christ,\nand cease not to guide us toward those things which are profitable,\nshowing thyself to be a most fervent intercessor and mediator before our God."
+          },
+          {
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou hast shown thyself to be an excellent physician of the hearts of mortals,\nhelping all the pious with miracles, O John;\nwherefore, hymning thee, we magnify Christ."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: We never cease to hymn thee, O Virgin,\nour helper, protection, speedy aid and unashamed intercessor.\nPreserve thy servants from all afflictions,\nand ever free us from the machinations of the evil one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Lord of hosts, be Thou with us,\nstrengthening our civil authorities, our hierarchs and all Thy people,\nand saving them by the supplications of Thy saint,\nthat we may magnify Thee and the Theotokos piously and without ceasing."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Pray thou to God in Trinity, O holy John,\nthat He deem those worthy, who believe on His name with a proper understanding,\nto ever magnify Him as the Creator of all."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyr John, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "By thine intercessions, O favorite of the Lord,\nfree from grief those who celebrate thy memory,\nand give us joy to drink,\nthat we may magnify the Lord and the Mother of God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Mary full of grace,\nregard all thy servants with mercy,\nthat in joy we may magnify thee without ceasing."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O holy crown-bearer,\nstanding before the throne of Christ with the angels,\nand filled with light therefrom,\nwin peace for the world by thy supplications, O spiritual athlete,\nand salvation for us who piously celebrate thy memory\nand have recourse to thee amid tribulations,\nO spiritually rich John.",
+      "label": "Exapostilarion of the holy martyr",
+      "melody": "With the disciples",
+      "glory": {
+        "text": "By knowing thyself, thou didst come to know God, the all-creating Cause,\nin Whom thou didst believe;\nand, having confessed Him,\nthou dost illumine the world with miracles, O divinely blessed John.",
+        "label": "Another Exapostilarion",
+        "melody": "The heaven with stars"
+      },
+      "bothNow": {
+        "text": "Desiring to recall the perishing world out of corruption, O Theotokos,\nthe Lord made His abode within thy womb, as thou didst know.\nWherefore, having obtained salvation,\nwe all cry out to thee:\nO most hymned Virgin who hast given birth to the Joy of the whole world,\nfill us with joy, ever preserving us from the evils committed by the enemy.",
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 6,
+      "stichera": [
+        {
+          "verse": "Beholding the sufferings of the right victorious martyrs, full of divine boldness\nthou didst not fear the tyrannical and ungodly emperor,\nbut, approaching them with zeal,\nthou didst strengthen them for their contest.\nWith them entreat the Lord,\nO athlete John,//\nthat our souls be saved.",
+          "tone": 6,
+          "melody": "Having set all aside",
+          "text": "Beholding the sufferings of the right victorious martyrs,\nfull of divine boldness\nthou didst not fear\nthe tyrannical and ungodly emperor,\nbut, approaching them with zeal,\nthou didst strengthen them for their contest.\nWith them entreat the Lord,\nO athlete John,//\nthat our souls be saved."
+        },
+        {
+          "tone": 6,
+          "text": "Beholding the flesh and flowing blood\nof the many saints\nwho were suffering\nat the hands of the iniquitous Emperor Julian\nfor Christ our God,\nthou didst help them, O blessed one, in their chains and afflictions,\nconsoling them with goodly discourse,\nthat they not lose their goodly hope,\nbut await their future reward//\nand the joy of heavenly crowns."
+        },
+        {
+          "tone": 6,
+          "text": "By thy patience,\nO John most praised,\nthou didst obtain thy reward,\ncommitting thy soul\ninto the hands of the Master of all;\nand thou hast been enriched by Him\nwith gifts of miracles.\nWherefore, beseech Christ God\non behalf of those who honor with love//\nthy holy memory."
+        },
+        {
+          "tone": 6,
+          "text": "A pious woman\nwas deemed worthy to behold thee.\nAnd, appearing to her, O martyr,\nthou didst command\nthat thy precious relics be glorified.\nAnd she, receiving them with joy,\nset them forth in the church with sweet fragrances.\nO spiritual athlete, entreat Christ God,\nthat He grant great mercy//\nunto those who hymn thee."
+        }
+      ],
+      "doxastikon": {
+        "text": "Let us hasten with faith and with love give voice to festive hymns,\nand let us join chorus, rejoicing, on the present festival of the all-praised John, the warrior of Christ.\nLet kings and princes come together,\nlet choirs of hierarchs hymn the feast of the spiritual athlete with song,\nand let the armies of the angels be glad, looking on.\nFor we know him to be our intercessor amid tribulations,\nthe true joy of the despondent, the enricher of the poor,\nthe comforter of all who find themselves in grief,\nwho fervently anticipateth the needs of all in every place.\nTo him do we now say: O John, warrior of Christ,\nby thy supplications save those who with faith have recourse to thy sacred temple.",
+        "tone": 5,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "Let us sound the trumpet of hymnody!\nFor the Queen of all, who is both Mother and Virgin,\nhath been revealed from on high,\nand with blessings crowneth those who hymn her.\nLet those who exercise dominion assemble\nand in hymns praise the Queen\nwho hath given birth unto the King\nWho before was well-pleased, in His love for mankind,\nto deliver those held fast by death.\nYe pastors and teachers, assembling,\nlet us praise the most pure Mother of the good Shepherd,\nthe golden lamp-stand, the Light-bearing cloud,\nher who is more spacious than the heavens,\nthe animate ark, the fiery throne of the Master,\nthe golden jar which received the Manna,\nthe gate of the Word which was shut, the refuge of all Christians;\nand praising her with divinely eloquent hymns, let us say thus:\nO palace of the Word, vouchsafe the kingdom of heaven unto us, the lowly,//\nfor naught is impossible for thy mediation.",
+        "tone": 5,
+        "label": "Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O wonder-worker John,\nthou hast been shown to be a right faithful servant and warrior of God, the supremely good King;\nfor, having manfully suffered for the Faith\nand finished thy course in blessedness,\nin the heavens thou dost most splendidly behold the Lord and Creator of all,\nand helpest those who suffer amid all manner of trials.\nThou dost strengthen soldiers in battle,\nrescuing them from capture by the enemy,\nfrom wounds, sudden death and cruel misfortunes.\nWherefore, entreat Christ the Master, O ever-memorable one,\nthat He deal mercifully with us in every circumstance,\nthat He lead us not into temptations,//\nbut save our souls, in that He is the Lover of mankind.",
+      "tone": 4,
+      "_note": "After the Great Doxology: Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

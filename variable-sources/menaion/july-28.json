@@ -1,0 +1,672 @@
+{
+  "_meta": {
+    "feast": "Our Father among the Saints Pitirim, Bishop of Tambov",
+    "feastKey": "hierarchPitirim",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 07-28.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-28.pdf",
+    "_note": "Bishop Pitirim of Tambov (+1698), wonderworker and defender of Orthodoxy. Polyeleos rank. LIC=8 (4 Tone I + 4 Tone IV). Lauds=4. Two canons of the holy hierarch: Canon I Tone II, Canon II Tone VIII. Plus Canon of the Theotokos (Paraklisis) Tone VIII with 6 troparia including irmos — that canon is a fixed text and not stored here. Great Vespers with entrance and three OT lessons. Kontakion Tone VIII after Ode 6 with ikos. Sessional Hymn after Ode 3 in Tone II. Gospel: John §36 (10:9-16). Prokeimenon Tone IV. Exapostilarion melody 'Heaven with stars'. Troparion Tone IV."
+  },
+
+  "troparion": {
+    "text": "Teacher of faith and piety,\nbeacon of the Church,\nexample for monastics,\nO most wise and holy hierarch Pitirim:\npiously hast thou tended thy flock and led it to Christ.\nWherefore, though adorned in the highest with a crown of glory,\nthou dost abide with us on earth in spirit,\nradiating miracles.\nEntreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarch"
+  },
+
+  "kontakion": {
+    "text": "Assembling together, let us hymn Pitirim:\nthe excellent instructor of monks,\nthe holy hierarch who is merciful to all,\nthe most wondrous worker of miracles,\nthe tireless intercessor for us,\nthe boast of the land of Tambov.",
+    "tone": 8,
+    "label": "Kontakion of the holy hierarch",
+    "ikos": "O ye faithful, in hymns and spiritual odes let us hymn today the great and holy hierarch: Rejoice, O God-bearing father Pitirim, thou most honored scion of the land of Smolensk, who by the grace of God wast planted in the city of Vyazma and blossomed like a lily, enriching the region of Tambov with the fruits of the virtues; Rejoice, good pastor who didst illumine the darkness of ungodliness with the light of piety and the planting of the true Faith! Rejoice, thou who didst convert many of the unbelieving and lead them to Christ through thy salvific labors and struggles; Rejoice, thou who didst leave to the city of Tambov as a legacy a miraculous icon of the Mother of God through which divers healings have poured forth! Rejoice, thou who with thine own hands didst dig a well of ever-abundant water, through which those who drink thereof receive healing of infirmities and release from soul-destroying passions; Rejoice, thou who didst make fragrant the vales and forests of Tambov by thy visitation with thy friends, the holy hierarch Metrophanes and the God-loving Basil! Rejoice, thou who didst thereby make a beginning for the monastic life in that place, and didst set an example of true friendship for those who live in the world! Rejoice, thou boast of the land of Tambov!"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "A day of splendid festivity hath dawned;\nthe angels join chorus in heaven;\nmortals rejoice on earth;\nand the whole assembly of the Church is glad,\nglorifying God Who is wondrous in His saints,\nWho hath revealed the holy hierarch Pitirim\nas a new wonderworker and intercessor for the Russian land.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "A day of splendid festivity hath dawned;\nthe angels join chorus in heaven;\nmortals rejoice on earth;\nand the whole assembly of the Church is glad,\nglorifying God Who is wondrous in His saints,\nWho hath revealed the holy hierarch Pitirim\nas a new wonderworker and intercessor for the Russian land.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "Rejoice, O land of Russia!\nBe glad, O city of Tambov!\nAdorn thyself, O assembly of the pious!\nFor today the Master and Lord of all,\nour Savior, the heavenly High Priest,\ncrowneth with an everlasting crown His faithful servant,\nthe holy hierarch Pitirim,\nthe good shepherd who prayeth fervently for his flock."
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "Come, O ye pious people, and behold a multitude of miracles today:\nby the mere invocation of the holy hierarch of God\nthe afflicted recover their health,\nthe demons are driven away,\nthe sorrowful receive assuagement,\nand the assembly of the faithful who have come together for his memorial is filled with joy."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Today the city of Tambov is glad as is meet,\nhaving the holy hierarch Pitirim as its helper,\nand with it the whole land of Russia rejoiceth in spirit;\nwherefore, O ye faithful, assembling to chant psalms and hymns,\nlet us praise the most wondrous Pitirim,\nthe treasure of mercy and purity,\nthe most radiant beacon of the Church,\nthe inexhaustible wellspring of miracles\nand dependable intercessor before God\nfor those who honor his holy memory with faith and love.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Today the city of Tambov is glad as is meet,\nhaving the holy hierarch Pitirim as its helper,\nand with it the whole land of Russia rejoiceth in spirit;\nwherefore, O ye faithful, assembling to chant psalms and hymns,\nlet us praise the most wondrous Pitirim,\nthe treasure of mercy and purity,\nthe most radiant beacon of the Church,\nthe inexhaustible wellspring of miracles\nand dependable intercessor before God\nfor those who honor his holy memory with faith and love.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Thou wast shown to be a faithful keeper of the commandment of the Gospel\nnot to lay up for thyself treasures upon the earth, O holy hierarch,\nwisely distributing thy possessions,\nbuilding churches of God and monasteries,\nfeeding the hungry and clothing the naked;\nwherefore, He Who beggared Himself for our sake\nhath received thee into the eternal mansions.\nHim do thou entreat,\nthat He grant remission of sins\nunto those who with faith and love honor thy holy memory."
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "In the throes of death thou didst utter a mighty cry unto the Lord,\nand thou wast heard in thy reverence;\nfor Christ Himself appeared to thee on a cloud,\nindicating with His blessing that thou art His faithful servant\nand imparting healing unto thee.\nHim do thou beseech, O holy hierarch who didst behold God,\nthat we also may meet Him on the clouds with all the saints\nwhen He shall come in glory to judge the whole world."
+      }
+    ],
+    "doxastikon": {
+      "text": "As in the days of the apostles the handkerchiefs and aprons of Paul wrought miracles,\nso today also the vestments of Pitirim, the holy hierarch of God,\nwho was illumined with the spirit of the apostles,\nwhen placed upon the afflicted,\nimpart the ability to walk unto the lame,\nthe recovery of sight unto the blind,\nstrength and power unto the paralyzed,\nconsolation to those who weep,\nhope to the despairing,\nand great mercy to all the faithful.",
+      "tone": 5,
+      "label": "Glory"
+    },
+    "aposticha": {
+      "stichera": [
+        {
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "O venerable father Pitirim,\nwho now dost hymn the Holy Trinity\nwith the angels and the choirs of the saints,\nand in thy love hast not withdrawn from us:\nbe thou mindful of the flock\nwhich thou didst gather together, O wise one,\npreserving it from the soul-destroying wolves,\nand invisibly leading it\ninto the fold of the kingdom of heaven."
+        },
+        {
+          "verse": "Precious in the sight of the Lord is the death of His saints.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "In thy lifetime thou didst become a habitation of the Holy Spirit,\nO Pitirim our father,\nhaving first cleansed thyself by faith and love;\nand, standing now before the throne of Christ,\nthe heavenly Master of the house,\npray thou earnestly to Him,\nthat He cleanse us of the passions which harm the soul\nand make His abode in our hearts with the Father and the Spirit,\nand lead us to the kingdom of heaven."
+        },
+        {
+          "verse": "Thy priests shall be clothed with righteousness, and Thy righteous shall rejoice.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "O Pitirim our father,\nhonored scion of the city of Vyazma,\nwhich was transplanted by the right hand of God to the city of Tambov,\nwatered by the grace of the Holy Spirit\nand adorned with the fruits of the virtues:\npray for us to Christ God,\nthat He not hew us down like the barren fig-tree,\nbut cause us to dwell\nwhere the light of His countenance doth shine."
+        }
+      ],
+      "doxastikon": {
+        "text": "Open wide the gates of heaven, O ye princes!\nYe angels, bow your heads!\nFor the King of heaven and earth Himself cometh forth\nand leadeth into celestial glory His faithful servant,\nthe venerable Pitirim,\nthe good shepherd and divinely wise teacher\nwho, during his life, acquired angelic purity by much sweat and toil,\nand who spurned the corruptible glory of the world,\ndesiring the kingdom of heaven.",
+        "tone": 6,
+        "label": "Glory … Both now …"
+      }
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "joint": true,
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "As of old the ailing were healed by merely touching the hem of the robe of Christ,\nso now also the sick are cured when they touch the vestments\nwherein thou didst stand before the throne of grace,\nO hierarch of God, Pitirim our father.\nWherefore, we glorify God and cry out to thee:\nHeal also our infirmities of soul and body, we pray thee, O holy one!",
+        "tone": 7,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "bothNow": {
+          "text": "O Lady, thou art a rampart and shelter,\na calm haven for all who find themselves amid tribulations\nand have recourse to thine aid with faith.\nWherefore, we also cry out to thee with boldness:\nSave us from misfortune and sorrow, O merciful Mother!",
+          "tone": 7,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "\"I shall build My Church, and the gates of Hades will not prevail against it,\"\nThou didst say to Thy disciples of old, O Savior;\nand now we see the fulfillment of these words:\nfor when unbelief and superstition arose against Thy Church,\nThou didst raise up a new wonderworker\nwho confirmed the holy Faith by his pious life and many miracles\nand put its enemies to shame.\nWherefore, rejoicing, we cry out to Thee:\nWondrous art Thou in Thy saints, O Lord!",
+        "tone": 2,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "bothNow": {
+          "text": "With the holy hierarch Pitirim do thou beseech Him\nto Whom thou didst give birth without seed through the Holy Spirit,\nthat He make us steadfast in Orthodoxy and oneness of mind,\nO most pure Virgin who knewest not wedlock.",
+          "tone": 2,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Pitirim,\nand we honor thy holy memory,\nfor thou dost entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "When thou wast set upon the candle stand of the Church of Tambov,\nthou gavest no sleep to thine eyes,\nneither slumber to thine eyelids,\nsaving thy reason-endowed sheep,\nstrengthening the weak, healing the infirm,\nsetting aright those astray,\nand humbling the unruly by thy meekness.\nAnd now, O Pitirim our father, cease thou never to entreat Christ the Savior,\nthat He grant to the pastors of the Church zeal and vigilance for souls.",
+      "tone": 4,
+      "label": "Sessional Hymn after the Polyeleios",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "O most pure Virgin Theotokos,\nbeseech thy Son and our God,\nthat He cleanse us of our iniquities\nand grant the joy of salvation\nunto us who kiss the precious image of the venerable Pitirim\nand cry aloud: Glory to Thy condescension, O Lover of mankind!",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4,
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "John 10:9-16",
+      "number": 36,
+      "_note": "The Good Shepherd passage; Gospel §36 for hierarchs."
+    },
+
+    "postGospelSticheron": {
+      "text": "With what hymns of praise shall we bless the holy hierarch Pitirim:\nthe preserver of the Orthodox Faith and denouncer of unbelief,\nthe champion of piety and fearsome reproof of iniquity,\nthe guide of monks and laymen,\nthe adornment of hierarchs and priests,\nfor whose sake Christ granteth peace and great mercy unto the Russian land?",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 8,
+      "_authors": {
+        "first": "Canon I of the holy hierarch in Tone II (8 troparia)",
+        "second": "Canon II of the holy hierarch in Tone VIII (8 troparia)"
+      },
+      "_canonNote": "Two canons of the holy hierarch. Canon I in Tone II; Canon II in Tone VIII. The Paraclysis (Canon of supplication to the Theotokos, Tone VIII, 6 troparia including irmos) is a fixed text and not stored here.",
+
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,\nfor gloriously hath He been glorified.",
+        "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Christ, the true Light, illumine mine understanding and cleanse my heart,\nthat I may glorify the memory of Thy favorite, the God-bearing Pitirim."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O venerable father Pitirim, standing before the fiery throne in the highest,\nillumined with the radiance of the threefold Sun,\nilluminethou the abyss of mine evils,\nthat I also may chant: For gloriously hath He been glorified!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As of old Moses the God-seer saved Israel from the hands of Pharaoh,\nso also do thou free me from slavery to the enemy, O God-bearing father,\nthat rejoicing, I may glorify God Who is wondrous in His saints."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Lady, Mother of the Redeemer,\nby thine intercession entreat thy Son,\nthat He destroy the sin which dwelleth within me\nand lead me forth into the freedom of the glory of His children."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Standing before the face of God in light unapproachable,\nO divinely wise and holy hierarch,\nilluminethou the darkness of our souls,\nand grant us utterance,\nthat, rejoicing, we may praise thy memory, O all-blessed one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "From thy youth didst thou subject the wisdom of thy flesh to thy spirit, O venerable one,\nand, clothed in dispassion,\nthou wast shown to be a chosen vessel of the grace of the priesthood\nand a true shepherd for thy flock.\nPray thou, O father, that we be saved."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy life was blameless, and thy repose is with the saints, O father;\nand thy memory is celebrated with hymns of praise.\nPray thou to Christ on our behalf,\nasking that which is profitable for us;\nfor the effective prayer of the righteous man is able to accomplish much."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: The threefold waves of evil thoughts and passions\nand the abyss of sins have engulfed my wretched soul.\nExtend unto me a helping hand,\nO Virgin Theotokos, thou refuge of the faithful."
+          }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders."
+      },
+
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God\nand none more righteous than Thee, O Lord.",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As the righteous Hannah of old gave up her child,\nthou didst give thyself as a gift to God, O father Pitirim.\nEstablish me also upon the rock of His commandments,\nthat I may cry: None is as holy as our God!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "By thy supplications, O father Pitirim,\nestablish our mind and heart in the Lord;\nexalt the horn of Orthodox Christians,\nthat the mouths of the enemies of the Faith may be shut\nand we may rejoice in our salvation."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "On the feast of the new wonderworker\nlet not the mighty one boast in his strength,\nnor let the wise man boast in his wisdom,\nnor yet the rich man boast in his wealth,\nbut let him boast who boasteth of understanding\nand knowing the Lord and acquiring the riches of His grace."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin, Mother who knewest not wedlock,\nby the grace of thy Son show forth my barren soul as fruitful,\nthrough the supplications of the new wonderworker Pitirim,\nthat I also may cry out with all the faithful: None is as holy as our God!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Emulating John the Almsgiver, O venerable one,\nin thy life thou didst show thyself to be merciful to those in need\nand a true father to the poor;\nand, dwelling now in the highest,\nbe thou merciful unto us who call thee blessed."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Of old many of the sick who touched the garments of Christ became well;\nand now those who place the vestments of the holy hierarch upon themselves\nand touch them for a blessing\nreceive healing of all manner of ailments.\nWherefore, O brethren, in accordance with the Gospel\nlet us glorify God Who hath given such authority unto mankind."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As thou wast a good helmsman of the ship of Christ's Church, O father,\ndeliver thy flock from the tempest of sins, tribulations and sorrows,\nguiding us to the calm haven of the will of God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: With hymns let us honor the most pure Mother and Virgin\nthrough whom heaven and the courts of the Lord have been opened unto mankind,\nchanting: There is none as pure as thee, O most pure one,\nand none more immaculate than thee, O Lady!"
+          }
+        ]
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Even though thy body descended beneath the earth,\nyet hath it shone forth like the sun from behind the clouds,\nemitting rays of grace.\nWherefore, celebrating thy memory,\nwe fervently entreat thee as our common father;\nfrom misfortunes and grievous circumstances deliver all who honor thee!",
+        "tone": 2,
+        "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most holy Virgin, hope of Christians,\ntaking Pitirim as thy fellow suppliant,\nentreat Him to Whom thou hast given birth in a manner past understanding and all telling,\nthat He grant us forgiveness of transgressions and correction of life,\nthat we may ever hymn thee who hast magnified our race.",
+          "tone": 2,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth,\nnot as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee:\nGlory to Thy power, O Lord!",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "From thy youth thou didst emulate the angels in the virginal purity of thy life,\nserving the salvation of mankind, O father Pitirim,\nand crying out to God, saying: Glory to Thy power, O Lord!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Like an angel in the flesh thou didst burn with the life of love for Christ, O holy one,\nillumining with the knowledge of the Son of God the people entrusted to thee,\nwho cry aloud: Glory to Thy power, O Lord!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O earthly angel and heavenly man,\nask salvation for us sinners from Christ God,\nthat we also may cry out with thee: Glory to Thy power, O Lord!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Mother of the Word and Virgin,\npreserve us from shameful passions,\nthat we may chant unto Christ Who dwelleth within us:\nGlory to Thy power, O Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "We who find ourselves amid sorrows\nhave acquired thee as a most fervent intercessor for us and a most ready helper, O father;\nfor thou dost preserve from every evil\nnot only the people of thy flock in thy city,\nbut also those afar off who invoke thy name."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst desire Christ alone, and wast wholly Christ-like, O venerable one.\nHim didst thou unwaveringly follow in thy life;\nHim didst thou strive to reach.\nWherefore, having now found the One desired by thee,\nby thy supplications join us to the flock of the elect."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As a faithful servant of the Holy Trinity,\nilluminemy wretched soul with the three divine virtues;\nfaith, hope and love,\nand grant that I may behold the Triune God in the age to come."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Having given birth unto the Lord, the Joy of the world, O all-praised Virgin,\nmake us partakers of the joy of heaven,\nthat we may cry out to thee with the voice of the archangel:\nRejoice, O thou who art full of grace! The Lord is with thee!"
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee, O King of Peace,\nenlighten me with Thy radiance,\nfor I know no other God than Thee.",
+        "irmos2": "Illumine us, O Lord, with Thy commandments,\nand with Thine arm raised on high\ngrant us Thy peace,\nO Lover of mankind!",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Lord Who hast illumined the whole universe with Thy light,\nenlighten my darkness and dispel the gloom of my soul,\non the honored day of the commemoration of Thy favorite Pitirim."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As thou art a lamp-stand of the Sun of righteousness,\never illumined with never-waning light, O Pitirim our father,\nshed light upon our mind and heart,\nthat, rejoicing, we may chant unto our Savior: We know none other God than Thee!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "What shall we offer Thee, O Christ our Savior!\nWhat hymns shall we chant unto Thy compassion?\nFor Thou hast shone forth upon us the light of salvation and deliverance from our iniquities,\nthrough the many miracles of the holy hierarch Pitirim."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Theotokos, holy Mother who hast given birth unto the Light unapproachable:\ndisdain not the entreaties of thine unworthy children who languish in the darkness of sin,\nbut illuminethem with the light of the knowledge of God,\nthat, rising early, we may glorify thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Foreseeing the beauty of thy soul,\nChrist, the Chief Shepherd, showed thee forth as a good shepherd and excellent teacher for His flock;\nwherefore, He hath received thee into His heavenly bridal-chamber with the holy hierarchs\nwhose life thou didst wisely emulate.\nWith them, therefore, pray in the heavens for us all."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Bodily infirmities assail us, and tribulations surround us on every side.\nWherefore, rescue us from them by thy supplications, O holy hierarch;\nfor thee do we have as a divinely given physician amid our ailments\nand a comforter amid sorrows."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having kept the commandments of Christ and taught them to thy flock,\nthou art fittingly called great in the kingdom of heaven.\nHasten thou, O father, and lead us also into the courts of the Lord;\nfor we are thy children and the sheep of thy reason-endowed flock."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin,\nglory of those in heaven and joy of those on earth:\nas thou art a Queen, with all the saints pray thou unceasingly for us to thy Son;\nfor in thee, after God, have we set all our hope."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption, O God.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The abyss of mine evils troubleth me and drags me down into the depths of despair.\nBut do Thou, O God, as the unfathomable Abyss of mercy,\nextend to me a helping hand, as Thou didst to Peter,\nthrough the intercession of Thy merciful favorite Pitirim, and save me."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Lord, Abyss of mercy and compassion:\ntake pity on us, Thy fallen creation;\nstill the waves of our passions,\nand lead us to the harbor of salvation,\nthrough the entreaties of the holy hierarch Pitirim."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Pitirim our father, faithful servant of the merciful God:\nentreat His beneficence,\nthat by the judgments He knoweth,\nHe may save us who are perishing\nand show us almighty aid through thine intercession."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most holy Lady, Mother of mercy:\nthe enemies of our Faith have surrounded us,\nand, as there is none to help us, we are perishing;\nfor torrents of iniquities have overcome us, and we are in despair.\nBut in thy maternal compassion do thou incline thy Son to mercy,\nthat He may save us from misfortunes, as He did Jonah from the whale."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O good shepherd who instructed the people of Christ with divine teachings\nand edified them with the virtues of thy soul:\nleave us not to perish in our sins,\nbut as thou thyself wast tempted as a man therein,\nhelp us now who are tempted."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O great wonder!\nThe tomb of the holy hierarch hath become a common hospital for all,\ntruly accessible and free of charge.\nCome, ye people, and with fear and faith\nfreely receive health for your souls and bodies,\nglorifying the Lord and blessing His favored one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Be thou an aid to thy city, O holy father,\nand with thine invincible intercession protect our whole country,\nthat we may all cry out to thee with gladness:\nRejoice, O ever-memorable Pitirim, thou boast of Tambov!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Beneath thy shelter all mortals flee, O Lady,\nand we cry out to thee with compunctionate souls:\nby thine almighty mediation, O Mother of God,\nrender Christ our God,\nto Whom thou hast given birth in a most pure manner, merciful unto us."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Assembling together, let us hymn Pitirim:\nthe excellent instructor of monks,\nthe holy hierarch who is merciful to all,\nthe most wondrous worker of miracles,\nthe tireless intercessor for us,\nthe boast of the land of Tambov.",
+        "tone": 8,
+        "label": "Kontakion of the holy hierarch"
+      },
+      "ikos": {
+        "text": "O ye faithful, in hymns and spiritual odes let us hymn today the great and holy hierarch: Rejoice, O God-bearing father Pitirim, thou most honored scion of the land of Smolensk, who by the grace of God wast planted in the city of Vyazma and blossomed like a lily, enriching the region of Tambov with the fruits of the virtues; Rejoice, good pastor who didst illumine the darkness of ungodliness with the light of piety and the planting of the true Faith! Rejoice, thou who didst convert many of the unbelieving and lead them to Christ through thy salvific labors and struggles; Rejoice, thou who didst leave to the city of Tambov as a legacy a miraculous icon of the Mother of God through which divers healings have poured forth! Rejoice, thou who with thine own hands didst dig a well of ever-abundant water, through which those who drink thereof receive healing of infirmities and release from soul-destroying passions; Rejoice, thou who didst make fragrant the vales and forests of Tambov by thy visitation with thy friends, the holy hierarch Metrophanes and the God-loving Basil! Rejoice, thou who didst thereby make a beginning for the monastic life in that place, and didst set an example of true friendship for those who live in the world! Rejoice, thou boast of the land of Tambov!"
+      },
+
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame,\nthey were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Lord our God, ineffable Love,\nThou hast adorned mankind, made of dust, with Thine image beyond gold and silver,\nand hast enriched him with all manner of gifts and many miracles.\nWherefore, celebrating the memory of Thy wonderworker Pitirim,\nwe cry out to Thee: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O venerable father Pitirim,\nhaving cleansed the image of thy Creator in thy soul from the passions,\naflame with the love of God thou didst commit thyself to the service of the Lord,\never crying aloud: O God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Like the pious youths in Babylon of old,\nthou didst establish the true Faith in the region of Tambov\nand didst denounce impiety, O father Pitirim,\never laboring, preaching the Gospel, praying and chanting:\nO God of our fathers, Blessed art Thou!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most holy Lady and Theotokos,\nthou didst give thy precious image to the city of Tambov\nas a blessing and mighty protection,\nthrough the hands of the holy hierarch Pitirim,\nthat through thee we may glorify Christ our mighty God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst exercise diligent care for thy flock,\nguiding all well to the path of salvation by thy life and word.\nWherefore, as a compassionate shepherd,\ndo thou now seek out me, thy sheep,\nwho am lost in the ways of perdition and cry out:\nBlessed art Thou, O Lord our God, throughout the ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The words of the Lord, that the pure of heart shall see God,\nhave been fulfilled in thee, O holy father;\nfor with the eyes of thy body thou didst behold Christ the Savior,\nWho hearkened to thy supplication when thou didst cry out to Him:\nBlessed art Thou, O Lord our God, throughout the ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "At the site of thy feats of prayer thou didst dig a well of grace-filled water,\nfrom whence reverent people draw off the healing of their infirmities\nif they ask thine aid and repent, crying:\nBlessed art Thou, O Lord our God, throughout the ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Wake thou from the sleep of sin, O my wretched soul,\nand cry out to the only helper of all:\nO Mother and Virgin,\nby thy supplications save me\nand grant the portion of the elect unto me who cry:\nBlessed art Thou, O Lord our God, throughout the ages!"
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,\nand supremely exalt as Lord throughout all ages.",
+        "irmos2": "By Thy grace the children became vanquishers of both the tyrant and the flames,\ncarefully observing Thy commandments,\nwherefore they cried aloud:\nBless the Lord, all ye works of the Lord!",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Lord my God,\nWho of old transformed the flames of fire into dew for the pious youths,\nquench Thou the flame of my passions\nwith the dew of the supplications of the pious and holy hierarch Pitirim,\nthat with him I also may exalt Thee throughout all ages."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Pitirim our father,\nwith the torrents of thy tears\nthou didst extinguish the fiery temptations of the passions and lusts of the flesh,\nand in thy pure heart thou didst ever dance as in a meadow,\nchanting: All ye works, bless and hymn the Lord!"
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Standing now in thy pure and God-loving soul\nwith the angels before the fiery throne of God,\nillumined with the never-waning beams emitted therefrom,\nand shining upon us with many miracles, O father Pitirim,\nenlighten the darkness of unbelief and superstition which surrounds us,\nthat we may hymn and bless God,\nWho is wondrous in His saints, throughout all ages."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Consumed by the passions as by a fiery furnace, I cry to thee, prodigal that I am:\nO pure Lady, Mother of the Almighty,\nsave and deliver me from fiery damnation!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst present the icon of the Mother of God to thy city, O father,\nas a sanctification, protection and defense,\nwhich hath been shown to be a source of grace-bearing healings\nand a mighty shield against all dangers\nfor those who cry: Bless the Lord, all ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou art a swiftly responding helper amid sorrows and sickness, O venerable one,\nfor those who invoke thee with faith,\nmanifesting thyself to some in dreams,\nclearly appearing before others,\nand doing good secretly to yet others who cry out:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Rising from thy tomb, thou didst manifestly appear to the audacious temple robber in thy church,\nO holy hierarch, calling him to repentance with an awesome admonition.\nPray thou that, before the end,\nrepentance also be given to us who cry:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: All generations of mankind call thee blessed,\nfor without father thou didst give birth in the flesh\nto the Son Who before time began was the Son of God begotten without mother.\nTo Him do we cry aloud:\nBless the Lord, all ye works of the Lord!"
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "irmos2": "Saved by thee, O pure Virgin,\nwe confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts\nthee do we magnify.",
+        "troparia": [
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Word of the beginningless Father, only begotten Son:\ndesiring to renew fallen mankind,\nthou didst manifest Thyself as the Son of the Virgin;\nand assuming the sins of the whole world,\nThou didst take up the Cross,\nand from thence gather the scattered children of God with Thine outstretched arms.\nWherefore, bound by the bond of Thy love today,\nwe magnify Thy wondrous favorite Pitirim\nand her who hath given birth to Thee."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Emulating the incarnate Son of God, thou didst humble thyself more than others,\nO venerable father Pitirim.\nWherefore, thou hast acquired the love of God\nand led the lost children of God to the heavenly Father,\nto glorify His compassion."
+          },
+          {
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Full of the love of Christ, O Pitirim our father,\nthou didst teach thy flock with thy word and life,\nto look after the orphaned, to feed the poor and to console the sorrowful.\nBeseech Christ the Savior,\nthat on this day of thy commemoration\nwe may adorn ourselves with sympathy and almsgiving,\nas beloved children of God."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O holy Mother, Virgin who kneweth not a man,\nwho in thy womb didst unite God and man in one;\ngrant that we who are scattered may be united in the one Christ, thy Son,\non Whom the Church hath been founded which magnifieth thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Aflame with pastoral zeal,\nother sheep, not of thy flock, didst thou lead to Christ,\nadmonishing the heretics\nand illumining the unbelieving with the light of the knowledge of God,\nthat, in the words of the Savior,\nthere may be one flock and one Shepherd."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Earnestly do we entreat thee as a heavenly physician\nwho hath received from the Lord the gift of healing, O holy hierarch:\nWith the heavenly treatment of thy prayers\nheal thou the cruel afflictions of our souls and bodies."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy hierarch Pitirim, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Disdain not this the hymn of thanksgiving of thy children, O favorite of God,\nbut accept it in thy compassion\nand offer it to the Creator of all,\nthat He may be merciful to those who honor thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Sovereign Lady,\nsave thy servants from misfortune,\nand free them from the passions,\nthrough the supplications of thy holy hierarch Pitirim;\nfor all who grieve have thee as an unassailable rampart,\nin that thou hast given birth to our salvation."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "He Who established the lights in the heavens\nhath revealed thee to His Church as a new and most radiant star,\nillumininus with the splendor of the Spirit and the brilliance of miracles,\nand putting the impious to shame,\nO holy hierarch, father Pitirim, our ever-vigilant intercessor.",
+      "label": "Exapostilarion of the holy hierarch",
+      "melody": "Heaven with stars",
+      "_source": "stSergius-menaion",
+      "glory": {
+        "text": "O most pure Mother who hast given birth to the ineffable Light:\nshow us to be children of the Light,\nand grant that we behold the blessedness of heaven,\nthat, rejoicing, we may cry out with thee and the venerable Pitirim:\nO Christ our God, Bestower of light, glory be to Thee!",
+        "label": "Glory … Both now … Theotokion",
+        "_source": "stSergius-menaion"
+      }
+    },
+
+    "lauds": {
+      "tone": 3,
+      "stichera": [
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "Come, all ye nations!\nUnderstand ye a mystery of our Faith!\nPitirim, the holy hierarch of God,\nthe preserver of spiritual gifts,\nwho hath departed bodily into the earth,\nremaineth even today with the faithful\nthrough the spirit of Christ's love\nand joyfully saveth from every misfortune,\nworking divers wonders:\nby the mere invocation of his name\nraising up healthy from their beds\nthose who suffer from grievous afflictions,\nstrengthening the doubting in the Faith,\ncorrecting those in error,\nsaving those who are in danger of drowning during their travels,\nthat they may ever thank God Who is beneficent unto them\nand glorify now His favorite wonderworker Pitirim.",
+          "tone": 3,
+          "_note": "Sung twice"
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "O divinely blessed father Pitirim,\nspurning all the beauties of this world and loving the law of God,\nthou didst lay waste to thy flesh by fasting;\nand by the keeping of vigils,\nadorned thyself with humility and meekness, patience and love,\nliving angelically upon the earth.\nWherefore, thou hast shone forth in many miracles as a most brilliant beacon,\nand hast been revealed to be a wellspring of the great gifts of God.\nEntreat the Lord Who hath glorified thee,\nthat He illumine the darkness of our sins and iniquities\nand grant peace and great mercy to the land of Russia.",
+          "tone": 3
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and flute. (Ps. 150:4)",
+          "text": "O God-bearing father Pitirim,\nascending the mountain of exalted virtues bearing God within thy soul as in a temple,\nthou didst lead thy flock up from earth to heaven\nwith the teachings of the commandments of Christ as by a ladder.\nWherefore, thou didst found monastic communities\nand adorn the churches of God with magnificence,\nteaching those who pray therein.\nBy thy supplications make us also temples of the Holy Spirit,\nin that thou art our intercessor, O great Pitirim.",
+          "tone": 3
+        }
+      ],
+      "doxastikon": {
+        "text": "We honor thee as the instructor of a multitude of monks\nand a great assembly of the people,\nand we glorify thee as a divinely wise teacher, O Pitirim our father;\nfor during thy lifetime thou didst diligently guide all on the path of salvation,\nand now in thy love thou dost embrace all\nand pourest forth streams of divine mercy\nupon those who with faith approach thy precious and much-healing tomb.\nPray for us, O most sacred father,\nthat we may be deemed worthy of the kingdom of heaven,\nwhere thou shinest forth in unwaning glory.",
+        "tone": 8,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Both now — Theotokion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Teacher of faith and piety,\nbeacon of the Church,\nexample for monastics,\nO most wise and holy hierarch Pitirim:\npiously hast thou tended thy flock and led it to Christ.\nWherefore, though adorned in the highest with a crown of glory,\nthou dost abide with us on earth in spirit,\nradiating miracles.\nEntreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarch",
+      "_note": "After Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

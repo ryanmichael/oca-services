@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "feast": "Translation of the Relics of the Holy Protomartyr and Archdeacon Stephen from Jerusalem to Constantinople",
+    "feastKey": "translationRelicsStephen",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 08-02.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-02.pdf",
+    "_note": "Translation of the Relics of the Holy Protomartyr Stephen is primary (doxology-rank). Blessed Basil of Moscow, Fool-for-Christ, is secondary commemoration but has no separate canon in this Sergius source. Single canon of the holy protomartyr by Theophanes in Tone VIII. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung with festal Lauds (4 stichera Tone IV + Glory Tone IV + Both-now Stavrotheotokion Tone IV). Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+  "troparion": {
+    "text": "For the sufferings which thou didst endure for Christ God,\nthy head hath been crowned with a royal diadem,\nO Stephen, first among those who have suffered;\nfor, having denounced the insanity of the Jews,\nthou didst behold thy Savior at the right hand of the Father.\nHim do thou therefore entreat//\non behalf of our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy protomartyr"
+  },
+  "kontakion": {
+    "text": "Thou wast the first to be sown on the earth\nby the heavenly Husbandman, O most laudable Stephen,\nand thou wast the first on earth to shed thy blood for Christ, O blessed one;\nfirst hast thou been to be crowned with the wreath of victory in the heavens,\nO first among spiritual athletes,// crown-bearer, and first among martyrs.",
+    "tone": 6,
+    "label": "Kontakion of the holy protomartyr"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "For the sufferings which thou didst endure for Christ God,\nthy head hath been crowned with a royal diadem,\nO Stephen, first among those who have suffered;\nfor, having denounced the insanity of the Jews,\nthou didst behold thy Savior at the right hand of the Father.\nHim do thou therefore entreat//\non behalf of our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy protomartyr",
+      "_note": "On 'God is the Lord': Troparion of the holy protomartyr (Twice); Glory ..., Both now ..., Theotokion (Tone IV) — see _theotokionOfTroparion."
+    },
+    "_theotokionOfTroparion": {
+      "text": "The mystery hidden from before the ages\nand unknown to the angelic hosts\nhath been revealed through thee, O Theotokos, to those on earth:\nGod incarnate in a simple union,\nWho willingly accepted the Cross for our sake,\nand thereby raising the first-formed man,//\nhath saved our souls from death.",
+      "tone": 4,
+      "label": "Theotokion of the troparion"
+    },
+    "sedalion": [
+      {
+        "text": "O apostle of Christ, first among deacons, wise protomartyr,\nchief among the martyrs:\nhaving sanctified the ends of the earth by thy sufferings,\nthou hast enlightened the souls of all by thy miracles.\nFrom all misfortunes deliver those who honor thee,//\nO most laudable Stephen.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Ode 3)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most holy Virgin, hope of Christians,\nwith the hosts on high do thou unceasingly beseech God\nto Whom, in a manner surpassing understanding and all telling,\nthou hast given birth,\nthat He grant forgiveness of all our sins and correction of life\nunto those who with faith and love ever glorify thee.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy protomartyr, the acrostic whereof is 'I crown the protomartyr with hymns,' the composition of Theophanes, in Tone VIII. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "troparia": [
+          { "text": "Standing before the Master, illumined with the radiant brilliance of the Spirit and with thy supra-natural sufferings, O Stephen, thou crown-bearer and most rich crown of the martyrs, enlighten those who hymn thine endurance." },
+          { "text": "As first among the spiritual athletes to run the race and head of the assembly of the martyrs, O glorious and wondrous Stephen, thou wast deemed worthy to behold Him Who setteth the contest extending to thee a divinely woven wreath of victory on His life-bearing right hand." },
+          { "text": "As Thou alone art a Treasury of goodness, O Savior, Thou didst show forth from the bosom of the earth a priceless treasure, riches which cannot be squandered, a possession which cannot be taken away: the relics of Thy protomartyr Stephen." },
+          { "text": "Manifestly illumined with angelic splendor, O protomartyr Stephen, foremost among the deacons, the place where thou wast hidden was revealed by angelic hymns, and, full of spiritual fragrance, thou hast been truly honored as is meet." },
+          { "text": "Theotokion: O most immaculate one, thou hast given birth unto the divine Word of the Father, Who before was incorporeal, yet became incarnate for our sake. O abode of virginity, vessel of purity, and temple of sanctity, O Bride of God, Sovereign Lady of the world!" }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee,//\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "Thou wast shown to be a sacred speaker of divine mysteries and a theologian, disputing with the assemblies of the Jews and mightily denouncing their godlessness and their disposition which opposeth God, O most excellent martyr Stephen." },
+          { "text": "Come ye all, and together let us honor with divine hymns the protomartyr of Christ, the first to minister as deacon, the converser with angels, who hath splendidly shown to the martyrs the threshold of the course." },
+          { "text": "The first of the martyrs, the first of those who were chosen to serve as deacons, appeareth as a treasure hidden in the earth; and he hath filled the world with divine fragrance and the Church with rich gifts." },
+          { "text": "Resurrect my mind which hath been slain, through the activity of life which was preached by thee, O wise one, to hymn thine honored solemnity, and deem me worthy to follow in thy footsteps, O blessed Stephen." },
+          { "text": "Theotokion: Thou hast been shown to be the portal of the noetic Orient, the Most High, Who appeared on earth, O Virgin; for through thee, O most pure one, the Word hath entered in unto us, to save all from ignorance." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "O apostle of Christ, first among deacons, wise protomartyr,\nchief among the martyrs:\nhaving sanctified the ends of the earth by thy sufferings,\nthou hast enlightened the souls of all by thy miracles.\nFrom all misfortunes deliver those who honor thee,//\nO most laudable Stephen.",
+        "tone": 1,
+        "label": "Sessional Hymn of the holy protomartyr (after Ode 3)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O most holy Virgin, hope of Christians,\nwith the hosts on high do thou unceasingly beseech God\nto Whom, in a manner surpassing understanding and all telling,\nthou hast given birth,\nthat He grant forgiveness of all our sins and correction of life\nunto those who with faith and love ever glorify thee.",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "O glorious protomartyr who art full of faith, divine power and grace, today thou hast poured forth for us streams of fragrant myrrh, a fountain welling forth a river of divine blessings, and thou hast opened unto us a sweet torrent." },
+          { "text": "The feast day of the protomartyr hath been made manifest unto the imperial city as sacred, splendid and harmonious, truly full of light and spiritual gladness, preserving the dominion of the honored Church and dispelling the audacity of the barbarians." },
+          { "text": "Thou hast received a good inheritance as is fitting, O blessed Stephen, and where Christ the King of all is, there hast thou made thine abode; for thou hast been shown to be His minister, working signs and wonders with power and granting healing unto the sick." },
+          { "text": "Stephen, the great preacher of the Truth, the true champion of suffering, hath been planted as an upright and steadfast pillar of the Church, and stretcheth from the earth even unto the heavens, enlightening all the ends of the earth with the radiance of piety." },
+          { "text": "Theotokion: O Savior and Redeemer of all, Thou art the new Adam, superseding the first Adam, born of the Virgin, who supersedeth Eve, our first mother, replacing death with true and immortal life. Wherefore, knowing her who gaveth birth unto Thee to be the Theotokos, all we, the faithful, call her blessed as is meet." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "The vain council of the iniquitous Jews didst thou denounce with true boldness; and, covered by the stones which they cast at thee, O divinely eloquent Stephen, as a victor thou wast taken up into the heavens by the Spirit." },
+          { "text": "As one as comely as the dawn hast thou been revealed to the world, O glorious Stephen, driving away the darkness, dispelling the illusions of the demons, and healing the sufferings of the infirm and the sores of their spiritual ailments, O divinely inspired one." },
+          { "text": "Rejoicing noetically with the angels, O blessed one, thou dost truly sanctify the ends of the earth by thine arrival and grace, fragrant with the sweet scent of spiritual myrrh, delivering us from misfortunes and temptations." },
+          { "text": "Theotokion: Possessed of maternal boldness toward thy Son, O all-pure one, abandon not thy kindred care for us, we pray; for thee alone do we Christians set before the Master to intercede mercifully for our cleansing." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,//\nO God of my salvation.",
+        "troparia": [
+          { "text": "Being like unto the angels in thy desires, thou didst acquire an angelic bearing, O blessed one; and rejoicing and dancing with them, save those who hymn thee." },
+          { "text": "The power of thy divinely inspired words manifestly fell like a loud clap of thunder upon the ears of the iniquitous and darkened their visage, O blessed one, who art pleasing unto God." },
+          { "text": "Thou wast deemed worthy to see the glory of the Father and the co-essential radiance thereof, O Stephen, and He awarded thee with splendid crowns for thy sufferings." },
+          { "text": "Theotokion: The only-begotten Son, Who was invisible from before the ages, in the latter days became thy firstborn: the God of my salvation, Who, through thee, became visible in the flesh, O Mother of God." }
+        ]
+      },
+      "kontakion": {
+        "text": "Thou wast the first to be sown on the earth\nby the heavenly Husbandman, O most laudable Stephen,\nand thou wast the first on earth to shed thy blood for Christ, O blessed one;\nfirst hast thou been to be crowned with the wreath of victory in the heavens,\nO first among spiritual athletes,// crown-bearer, and first among martyrs.",
+        "tone": 6,
+        "label": "Kontakion of the holy protomartyr"
+      },
+      "ikos": {
+        "text": "Beholding the blooms of paradise, which fill the whole world with their comely fragrance, I marvel at their strange appearance; for amid the image of winter many blossom forth, which is a thing strange for flowers. And the martyr of Christ who was first to blossom forth hath become a gateway for those who suffer under the law and who flower amid the deep winter of torment, for he hath shown the straight path to all who wish to suffer thus. Thou art the initiator of the contest, who wast revealed in thy pangs, O crowned one, to be the first among the martyrs to suffer thus."
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe\nof God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "The flow of thy blood hath opened the portals of heaven and hath shown thee standing before the Judge of the contest, Who extendeth to thee a crown; wherefore thou dost cry aloud: Blessed is the God of our fathers!" },
+          { "text": "Seizing the divinely manifest one like wild beasts, the murderers slew him with their hands which were defiled by murder, whilst he prayed earnestly for those who were slaying him, chanting: Blessed is the God of our fathers!" },
+          { "text": "With the law didst thou upbraid the iniquitous, being a lawful emulator of the Savior, and didst show them to be opposed to God; and, stoned to death by them, thou didst chant: Blessed is the God of our fathers!" },
+          { "text": "Theotokion: Having conceived the Timeless One within time without knowing wedlock, O pure one, thou hast given birth unto the Word, Who before was incorporeal, but received flesh from thee, O Virgin. To Him do we chant in unison, crying aloud: Blessed is the God of our fathers!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "text": "Resplendent with supra-natural radiance, O most excellent Stephen, the angelic visage of thy countenance showed forth the grace which issued forth from thee and which was richly hidden within thy soul. Wherefore, thou didst cry aloud: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "O crown-bearer Stephen, with the sprinkling of thy blood cleanse thou the pangs of my soul and my sinful wounds; for unto thy merciful aid and Christ-like character do I have recourse, crying aloud: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "A crown of graces, of which thou art the namesake, hath been placed upon thy precious head by the impartial Judge, Whom thou didst piously proclaim to be the Creator, God and King of all, crying out unceasingly: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "Into the hands of the Creator didst thou surrender thy spirit, and, rejoicing, the hosts of heaven received thee as a true friend, who, before on earth, wast equal to the angels and hast now joined their choirs, unceasingly chanting: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: Thou wast a vessel of unwaning Light, O all-pure one, for thou gavest birth unto the Light of those who are in darkness and shadow and Who illumineth all with the grace of the knowledge of God. To Him do we, the faithful, unceasingly chant: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels//\nmagnify thee as the Theotokos.",
+        "troparia": [
+          { "text": "The initiator of the sufferings of the martyrs, who hath brightly shown the straight path of torment which leadeth to the heavens, the protomartyr Stephen summoneth all in spirit to divine gladness, to partake of light and to share in sanctity." },
+          { "text": "Captivated by the love of Christ, and emulating His meekness and words, Stephen said: \"Lay not this sin to the charge of my murderers, O Lord; but receive my spirit, O Good One, and deem me worthy to inherit the divine kingdom and the ineffable food which are with Thee!\"" },
+          { "text": "Comely and angelic of men, full of wisdom and faith, shining with rays of divine splendor, with thy mouth of godly speech thou didst theologize like a river, making proclamations in a godly manner, O divinely blessed one; wherefore thou hast received a heavenly inheritance." },
+          { "text": "Thou wast crowned with a wreath of graces, surrounded by the choirs of the martyrs; and, standing before Christ, the Judge of the contest, pray thou on behalf of us who celebrate with splendor thy truly radiant festival, O blessed one, and deliver us from misfortunes." },
+          { "text": "Theotokion: O all-immaculate Lady, Mother of God, as the merciful intercessor for all Christians, deliver thy suffering servants from misfortunes and temptations, and heal those who are afflicted with the wounds of cruel transgressions and are held fast by grievous pangs." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The casting of stones hath woven for thee a transcendent wreath of incorruption,\nand the drops of thy blood have dyed for thee a robe of royal purple,//\nO excellent Stephen, first among martyrs.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy protomartyr",
+      "melody": "Thou hast visited us",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "O holy and most pure Lady, who alone hast not known wedlock,\nour salvation and hope:\nbeseech thou our Redeemer, Who was born of thee,\nthat He save the world from falsehood,//\nmisfortunes and tribulations.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Assembling mystically,\nO ye that love the feasts of the Church,\nlet us celebrate today\nthe prayerful and honored memory of the protomartyr,\nthereon receiving healing through his precious gifts;\nand let us cry aloud:\nO rightly hymned martyr,\npray thou that they that celebrate thy memory//\nbe delivered from misfortunes.",
+          "tone": 4,
+          "melody": "As one valiant among the martyrs"
+        },
+        {
+          "text": "Assembling mystically,\nO ye that love the feasts of the Church,\nlet us celebrate today\nthe prayerful and honored memory of the protomartyr,\nthereon receiving healing through his precious gifts;\nand let us cry aloud:\nO rightly hymned martyr,\npray thou that they that celebrate thy memory//\nbe delivered from misfortunes.",
+          "tone": 4,
+          "melody": "As one valiant among the martyrs"
+        },
+        {
+          "text": "The stones which were cast at thee\nwere like steps and stairs on the ascent to heaven;\nand, ascending thereon, thou didst behold the Lord\nstanding at the right hand of the Father,\nextending to thee the crown, whereof thou art the namesake,\nin his life-bearing right hand.\nAnd thou standest nigh unto Him,\nas one right victorious//\nand foremost among those who have suffered.",
+          "tone": 4
+        },
+        {
+          "text": "Having illumined thy thought with spiritual grace,\nthou wast shown to be like an angel in demeanor, O Stephen,\nwhen thy body shone with inner radiance\nand thy spiritual splendor was manifest unto those who looked upon thee,\nfor which cause thou didst receive sight of the Light\nwhen the heavens were most gloriously opened unto thee,//\nO first and boast of the martyrs.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Stephen, the good beginning of the martyrs, full of grace and power,\nworking signs and great wonders amongst the people,\nwas slain, stoned by the iniquitous;\nyet he shone forth like an angel,\nand beheld the glory of Thee, Who wast crucified for our sake,\nstanding at the right hand of power,\nand he was taken up into the heavens by the Spirit of grace.\nWherefore, abiding with the choirs of the angels,\nhe prayeth that our souls be saved.",
+        "tone": 4,
+        "label": "Glory ..."
+      },
+      "theotokion": {
+        "text": "Upon beholding Thee, the Lamb and Shepherd, upon the Tree,\nthe ewe-lamb who bore Thee lamented, and maternally exclaimed to Thee:\n\"O most desired Son,\nhow is it that Thou art suspended upon the tree of the Cross?\nHow is it that Thine arms and legs are nailed by the iniquitous ones,\nO long-suffering Word,//\nand that Thou hast shed Thy blood, O Master?\"",
+        "tone": 4,
+        "label": "Both now ..., Stavrotheotokion",
+        "melody": "As one valiant among the martyrs"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "For the sufferings which thou didst endure for Christ God,\nthy head hath been crowned with a royal diadem,\nO Stephen, first among those who have suffered;\nfor, having denounced the insanity of the Jews,\nthou didst behold thy Savior at the right hand of the Father.\nHim do thou therefore entreat//\non behalf of our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy protomartyr",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

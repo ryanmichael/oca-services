@@ -1,0 +1,148 @@
+{
+  "_meta": {
+    "feast": "Holy Great-Martyr Anastasia the Deliverer from Potions",
+    "feastKey": "stAnastasiaDelivererFromPotions",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 12-22.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-22.pdf",
+    "_note": "Dec 22 falls in the Forefeast of the Nativity. Matins: two canons (forefeast + martyr) interleaved. Menaion file holds only Anastasia's canon content. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology is sung. Sessional hymns for Kathisma 1 and 2 are forefeast (omitted here). Kontakion + Ikos of the martyr placed at canon top level per project convention. Lauds stichera are forefeast; doxastikon at lauds aposticha is Anastasia's (Byzantius, Tone V)."
+  },
+  "troparion": {
+    "text": "Thy ewe-lamb Anastasia O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful, save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy great-martyr Anastasia"
+  },
+  "kontakion": {
+    "text": "When those who have recourse to thy temple,\nfind themselves in temptations and sorrows,\nthey receive precious gifts through the divine grace which dwelleth within thee,\nO Anastasia.\nFor thou ever pourest forth healings upon the world.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr Anastasia",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Thy ewe-lamb Anastasia O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful, save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr Anastasia",
+      "_note": "On 'God is the Lord': Troparion of the forefeast (twice); Glory ..., Both now ..., Troparion of Anastasia — per Dec 22 rubric."
+    },
+    "sedalion": [
+      {
+        "text": "We praise thee as a bride of Christ, O virgin,\nand we honor thee like the honored Thecla, as is meet.\nWherefore, rivers of healings pour forth by the power of the Spirit\non the day of thy commemoration;\nfor thou hast received grace, in that thou didst keep the commandments of the Lord.",
+        "tone": 1,
+        "label": "Sessional Hymn of the holy great-martyr (after Ode 3)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Sung twice. Both now: Sessional Hymn of the forefeast (Tone VIII) follows in the service but belongs to the forefeast, not the menaion."
+      }
+    ],
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy great-martyr Anastasia, the acrostic whereof is 'I hymn thee with love, O martyr Anastasia', the composition of Joseph, in Tone VIII. The canon of the forefeast (Tone VI) is interleaved at the actual service; only Anastasia's canon is given here.",
+      "kontakion": {
+        "text": "When those who have recourse to thy temple,\nfind themselves in temptations and sorrows,\nthey receive precious gifts through the divine grace which dwelleth within thee,\nO Anastasia.\nFor thou ever pourest forth healings upon the world.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr Anastasia",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "As thou art the namesake of the resurrection of Christ, O martyr,\nby thy supplications, raise me up who have now fallen,\nletting the drops of thy miracles fall upon my soul,\nquenching the burning of grievous sin;\nfor thou dost ever save the world from a multitude of sins,\nof which I am also tempted,\nfor pouring forth healings upon the world,\nthou dost grant them abundantly to all."
+      },
+      "ode1": {
+        "irmos": "Let us, O ye people, send up a hymn\nunto our wondrous God\nWho hath freed Israel from bondage,\nchanting a hymn of victory and crying aloud:\nWe sing unto Thee, O only Master.",
+        "troparia": [
+          { "text": "Let us send up hymnody unto God, Who desireth to be born in the flesh of the Virgin in the city of Bethlehem, and to be laid in an infant's manger as a babe, that He may save the human race." },
+          { "text": "Seeking the only desirable beauties, those of Christ, O glorious martyr Anastasia, with steadfast character thou didst pass by the beauties of the world and wast deemed worthy to inherit immortality." },
+          { "text": "Enlightened by the effulgence of the Spirit, thou didst pass intently through the night of the gloom of deception, O honored one, and hast now made thine abode where the divine splendor of the uncreated Trinity doth shine." },
+          { "text": "Theotokion: The invisible God hath appeared, born of thee supra-naturally in His great loving-kindness, O Virgin Mother. The Rich One hath beggared Himself, that He might enrich the race of mankind with immortality." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven\nand Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "The untouchable Lord desireth to be seen lying in the manger, an infant wrapped in swaddling-bands. Leap up, O ye mountains, and, filled with light, array yourselves in divine joy, O ye hills!" },
+          { "text": "Enriched by the Savior's words, with the boldness of piety thou didst blunt the darts of the persecutors' burning words, O Anastasia, governing the movements of thy soul with divine love." },
+          { "text": "Thou didst simply cry out, O martyr: \"I seek the Lord to Whose love alone I have bound my soul! With most desired simplicity, I go to be richly illumined by His all-pure splendors.\"" },
+          { "text": "Theotokion: O Maiden who knewest not wedlock, thou didst bear within thy womb incarnate, Him Who holdeth all creation in His hand, the pre-eternal Babe Who, when He is born, Thou wilt lay in a manger." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Already fulfilled are the sayings of those who prophesied in the divine Spirit; for the Virgin cometh to give birth in the cave to the all-perfect One." },
+          { "text": "Seeking after the glory of martyrdom with love, thou didst receive it, suffering steadfastly, with a fearless will, O thou who art patient of soul." },
+          { "text": "When thy body was stripped, O all-praised spiritual athlete and martyr, thou wast truly vested in a robe of grace woven from on high." },
+          { "text": "Theotokion: O most pure one, the King of heaven cometh forth from thy light-bearing womb as a mortal, laying in a manger as though on a royal throne." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "The star of Judah hath shone forth from the land of Chaldea, moving the magi to worship, as it was written." },
+          { "text": "Lawfully didst thou contend, vanquishing the iniquitous with the power of the Spirit, O all-glorious martyr." },
+          { "text": "As is thy name, so didst thou show forth the resurrection of God, cursing the invisible foe, O all-praised one." },
+          { "text": "Theotokion: Christ cometh to be born of the Virgin in a subterranean cave, that all things may be glad." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "The Compassionate One, Who doth form babes in their mothers' wombs, took human nature from us and is seen as a babe; and wrapped in swaddling bands, He is laid in the manger, loosing the intricate bonds of my passions by grace." },
+          { "text": "Patiently following the struggles of the holy martyrs for Christ's sake, ministering to their needs, and cleansing their sores, O venerable one, thou wast most splendidly enriched, illumining them with glory." },
+          { "text": "Thou pourest forth drops of healing with showers of divine gifts, and dost hold in-check the rivers of the passions, helping those who are in cruel misfortune, O all-glorious martyr of Christ, thou namesake of the divine resurrection." },
+          { "text": "Theotokion: Healing human nature which had become corrupt through the ancient transgression, a new Babe is born without corruption; and He sitteth in thy womb, as upon a throne, O unwedded one, without leaving the throne that He shares with the Father in His divinity." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "text": "The choirs of the incorporeal ones give glory on high, and we on earth render homage, beholding Thee Who hast made Thyself like unto us mortals and liest in a manger, O Christ, Thou God of all." },
+          { "text": "Thou didst reduce the fire of deception to ashes, partaking of the flame as did the children. And thou didst show forth thy fervent love, O divinely wise one, which thou didst have for thy Master and Bridegroom." },
+          { "text": "Thou pourest forth showers of healings, assuaging the fever of illness, ever causing the people to chant: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "text": "Theotokion: A wonder which amazeth the mind hath been wrought in thee, O Virgin Mother: thou shalt give birth to God and lay in a manger Him Who is unapproachable even to the cherubim and is infinite in His being." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Treading down the fiery flame in the furnace,\nthe divinely eloquent children sang:\n'Bless the Lord, ye works of the Lord'.",
+        "troparia": [
+          { "text": "The cave holdeth the New-born, before Whom thousands and myriads of angels stand on high. O ye works, hymn Him unceasingly as Lord!" },
+          { "text": "Thou wast shown to be a temple of the Trinity when in the temples of God thou didst exercise thyself in fasting and supplication, O Anastasia, crying aloud: Bless the Lord, ye works of the Lord!" },
+          { "text": "Strengthening Chrysogonus with thy fortifying words, O passion-bearer, thou didst trample upon the feeble cruelty of the idols, suffering valiantly." },
+          { "text": "Theotokion: O Maiden who held God within thyself: thou hast given birth unto the Babe Who created time, the immutable Lord Who, in His ineffable mercy, is born in the city of Bethlehem." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Saved by thee, O pure Virgin,\nwe confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts\nthee do we magnify.",
+        "troparia": [
+          { "text": "Leap up in gladness, ye mountains, and gird yourselves about with joy, O ye hills! The Virgin now draweth nigh to give birth unto the Lord." },
+          { "text": "Today, creation offereth thee gladness, O Anastasia, glorifying the memory of the Word Whom thou didst glorify with thy blood." },
+          { "text": "Illumined now with a most pure light, O right noble martyr, by thy supplications ask that we all receive illumination from on high." },
+          { "text": "Theotokion: Let all creation now rejoice in splendor! The Theotokos cometh to give birth to God the Word Who hath become a man through the will of God." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Thou didst minister unto Chrysogonus when he was imprisoned in the dungeon,\nO Anastasia, and, submitting to his words,\nthou didst finish the course of martyrdom in God.\nAnd receiving the grace of healing from Him,\nthou dost heal the infirmities of all.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy great-martyr Anastasia",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice. Both now: Exapostilarion of the forefeast (same melody) follows in the service."
+    },
+    "lauds": {
+      "_note": "The 4 Lauds stichera ('On the Praises') are of the forefeast (Tone VI) and are not recorded in the menaion file. The martyr's contribution appears at the aposticha slot (doxastikon only, composition of Byzantius, Tone V).",
+      "doxastikon": {
+        "text": "The day of the forefeast of the nativity of Christ God,\nthe feast of the all-praised martyr Anastasia, hath shone forth today.\nLo! the Virgin draweth nigh to Bethlehem\nto lay her Babe, wrapped in swaddling-clothes, in a manger of dumb beasts:\nHim Who hath freed us from the ancient curse and saveth our souls.",
+        "tone": 5,
+        "label": "Glory (composition of Byzantius)",
+        "_note": "Appears at the aposticha after the Praises stichera. Both now follows from the forefeast."
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thy ewe-lamb Anastasia O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful, save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr Anastasia",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

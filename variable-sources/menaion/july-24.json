@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "feast": "Holy Passion-Bearers Boris and Gleb; Holy Martyr Christina of Tyre",
+    "feastKey": "borisGlebAndChristina",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-24.pdf",
+    "_note": "The St-Sergius PDF for July 24 contains service texts for the Holy Martyr Christina of Tyre only. Boris and Gleb are the OCA primary co-commemoration but their matins canon is absent from this PDF source. Doxology-rank: no Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Single canon of the holy martyr Christina by Joseph in Tone VIII (6 troparia). Lauds: 4 stichera in Tone IV + Glory in Tone V. Troparion after Doxology: Christina's troparion Tone IV. Boris and Gleb troparion/kontakion recorded at top level from OCA source (modern-English; needs thee/thy update from a Slavonic-tradition Menaion)."
+  },
+  "troparion": {
+    "text": "Righteous passion-bearers and true fulfillers of the Gospel of Christ,\nchaste Boris and guileless Gleb,\nye did not resist the attacks of your brother, the enemy,\nwhen he slew your bodies but could not touch your souls.\nTherefore, let the evil lover of power lament,\nwhile ye rejoice with the angels before the Holy Trinity.\nPray that those who honor your memory may be pleasing to God,//\nand that all Orthodox Christians may be saved.",
+    "tone": 2,
+    "label": "Troparion of the holy passion-bearers Boris and Gleb",
+    "_source": "oca-adapted",
+    "_note": "Adapted to thee/thy register from OCA modern text. Needs verification against a Slavonic-tradition English Menaion."
+  },
+  "kontakion": {
+    "text": "Today your most glorious memory shineth forth,\nnoble participants in the passion of Christ, holy Boris and Gleb;\nfor ye call us together to hymn Christ our God!\nPraying to Him before your holy icons,\nwe receive the gift of healing by your prayers,//\nfor ye are indeed divine healers.",
+    "tone": 3,
+    "label": "Kontakion of the holy passion-bearers Boris and Gleb",
+    "_source": "oca-adapted",
+    "_note": "Adapted to thee/thy register from OCA modern text. Needs verification against a Slavonic-tradition English Menaion."
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Thy ewe-lamb Christina, O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr Christina"
+    },
+    "sessionalHymnAfterOde3": {
+      "text": "With love thou didst offer thy blood to Christ thy Bridegroom,\nlike an alabaster phial of myrrh;\nand thou didst receive from Him as a reward a divine and imperishable crown,\nO right wondrous martyr.\nWherefore, thou hast received the grace of healings with spiritual power.",
+      "tone": 1,
+      "label": "Sessional Hymn of the holy martyr Christina (after Ode 3)",
+      "melody": "Thy tomb, O Savior",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "O pure Virgin Theotokos who knewest not wedlock,\nthou sole intercessor and protection of the faithful:\nfrom tribulations, sorrows and cruel circumstances\ndeliver all who place their trust in thee, O Maiden,//\nand save our souls by thy divine supplications.",
+        "tone": 1,
+        "label": "Both now ..., Theotokion"
+      }
+    },
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy martyr Christina, with 6 troparia, the acrostic: 'I hymn thee, the maiden who art the namesake of Christ', the composition of Joseph, in Tone VIII.",
+      "ode1": {
+        "irmos": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians,\nthe Israelites cried aloud:\nUnto our God and Redeemer//\nlet us sing.",
+        "troparia": [
+          { "text": "Having made thy mind steadfast with goodly hopes, O martyr Christina, thou didst take wing and wast borne aloft, away from transitory things, transported to the everlasting mansions." },
+          { "text": "Beholding the wicked one broken and lying at the feet of the maiden, O passion-bearers, let us all render praise to the Savior Who hath shown her forth as a victor." },
+          { "text": "Thou didst have the pure desire to behold the comely beauty of the Bridegroom and King; wherefore, O passion-bearer, thou didst splendidly adorn thyself with sufferings." },
+          { "text": "Theotokion: Thou didst conceive the Word of the Father, Who ineffably united Himself hypostatically to the flesh He received from thee, O pure Mother. And desiring Him, Christina obtained the glory of martyrdom." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "Directing thine eyes and thought to heaven, O glorious one, thou didst recognize the Fashioner of creation." },
+          { "text": "Faith in God didst thou possess as riches which cannot be taken away, O honored one; wherefore, thou didst forsake the poverty of idolatry." },
+          { "text": "Cruelly bound to the tree and enduring laceration, thou didst chant hymnody of thanksgiving unto Christ the Creator, O martyr." },
+          { "text": "Theotokion: Still thou the turmoil of my thoughts, O pure Lady, and calm all the grief of my soul, O thou who hast given birth to Christ." }
+        ]
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Gazing at the beauty of thy Bridegroom, O martyr, namesake of Christ, thou didst experience divine wounding, delighting in visions of Him." },
+          { "text": "O martyr, bound to the wheel thou didst cry aloud, \"I magnify Thee, O Lord, and I glorify the name of Thee Who strengthenest those who love Thee!\"" },
+          { "text": "\"I have cleaved unto Thee, wounded by desire for Thy love, and Thou hast shown me to be victorious amid suffering,\" the martyr cried aloud." },
+          { "text": "Theotokion: Of old, Isaiah, glorious among the prophets, called thee the staff which beareth the Lord as a blossom, O Ever-virgin Mother and Theotokos." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "As thou wast like an angel in the flesh, O martyr, the angels of heaven fed thee with angelic food." },
+          { "text": "Thou didst not reject the Rock of life, O Christina; wherefore, the enemies bound thee to a stone and cast thee in the water." },
+          { "text": "Thou wast caught up to the heights, flying aloft like a swallow on wings furnished by the divine Spirit; and thou didst find rest in the Creator." },
+          { "text": "Theotokion: O Virgin Mother Who hast given birth to the immortal Life, enliven me who have become dead through sin." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption,//\nO God.",
+        "troparia": [
+          { "text": "Thy heart was made sweet by the beauties of thy most sweet desired One, O passion-bearer, and with haste thou didst run to the fragrance of His sufferings, crying: \"O my Bridegroom, I now sacrifice myself for the sake of Thy love!\"" },
+          { "text": "Thy father, seeing thy love for the heavenly Father, O martyr, showed himself to be barbaric and inflicted multifarious tortures upon thee, for the wickedness of his nature knew no bounds." },
+          { "text": "Thou didst blossom forth like a lily in the vales of the martyrs, like a sweet-smelling rose; and emitting grace as myrrh, thou hast anointed the hearts of the faithful, O honored martyr, namesake of Christ, who sharest the portion of the holy angels." },
+          { "text": "Theotokion: Understanding the depth of thy mystery, O Virgin, the divinely eloquent prophets, illumined from afar by the Spirit of God, proclaimed thee in prophecy to be the Mother of the Master of all, in truth." }
+        ]
+      },
+      "kontakion": {
+        "text": "Thou wast known to be a radiant dove with wings of gold,\nsoaring aloft to the heights of heaven,\nO honored Christina.\nWherefore, we celebrate thy glorious festival,\nbowing down before the shrine of thy relics with faith,\nfrom whence divine healing for souls and bodies//\npoureth forth upon all in abundance.",
+        "tone": 4,
+        "label": "Kontakion of the holy martyr Christina",
+        "melody": "Having been lifted up upon the Cross"
+      },
+      "ikos": {
+        "text": "Piously hymning the Holy Trinity, O honored virgin martyr, thou didst show to those darkened by the gloom of cruel wrath, how the splendor of the Trinity illumineth the faithful. And thou didst elude the hands of the tyrant, fleeing the iniquitous like another Thecla, passing through the midst of their snares. Wherefore, hymning thy repose, we truly honor thee, giving thanks to the one God Who, for thy sake, hath imparted divine healing for both souls and bodies."
+      },
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\n'Blessed art Thou, O Lord our God,//\nthroughout the ages'.",
+        "troparia": [
+          { "text": "Drawing nigh to the roiling fire, thou didst utter a hymn to the Benefactor Who bedewed thy heart: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "Desiring to receive the one God, thou didst pay no heed to thy charred members and didst not deny Christ, O virgin, chanting: Blessed art Thou, O Lord our God, throughout the ages!" },
+          { "text": "With outpourings of thy blood thou didst dry up the streams of the madness of idolatry, and hast now caused an ocean of healings to fall like rain, O virgin martyr, having quenched the flame of the passions." },
+          { "text": "Theotokion: Transcending the laws of nature in thy conceiving, O Virgin, in a manner past nature thou hast given birth to God, crying: Blessed art Thou, O Lord our God, throughout the ages!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children, bless; ye priests, praise;\nye people, supremely exalt Him//\nthroughout all ages'.",
+        "troparia": [
+          { "text": "With divine guidance thou didst sail unharmed over the tumultuous sea of dangers and torments, drowning the serpent in the abyss of thy struggles, O martyr. Wherefore, thou didst safely attain unto the havens of paradise, crying out: Ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "text": "By thy life-creating struggles thou didst slay the cruel serpent, and didst lull to sleep wild beasts by standing in prayer; remaining untouched by the harm they could wreak, chanting to the Creator, O Christina: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "text": "With a voice of life thou didst raise up one who had died from the venom in a serpent's sting, O martyred passion-bearer; for God Who hath trampled down death by His divine burial heard thy prayers, O Christina. To Him dost thou cry out unceasingly: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: O Ever-virgin, thou steadfast helper of the faithful, deliver me from the deception of the wicked serpent who ever wageth cruel warfare, striving to bring me down; for thou art the sure guide of those who set their hope on thee and cry out without ceasing: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Saved by thee, O pure Virgin,\nwe confess thee to be truly the Theotokos,\nand together with the choirs of the bodiless hosts//\nthee do we magnify.",
+        "troparia": [
+          { "text": "Resplendent in the vesture of martyrdom, thou wast deemed worthy to behold thy Bridegroom adorned, O Christina, thou long-suffering martyr." },
+          { "text": "Since thy beauteous goodness loved Christ, Who is more comely than all beauties, He deemed thee worthy of the bridal chambers of heaven." },
+          { "text": "Thou hast joined the choirs of the bodiless hosts, O glorious one, and hast been numbered with the assemblies of the martyrs, entreating the Most Compassionate One on our behalf." },
+          { "text": "Thy memorial hath been shown to be brighter than the sun, O Christina, illumining those who honor thee with the radiance of the grace of the Spirit." },
+          { "text": "Theotokion: O right loving Virgin, bless thou my soul, which hath been afflicted by sins, and by thy supplications deliver me from the everlasting flame." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Thou didst spring forth like a most beautiful rose from a thorny root,\nO virgin martyr Christina,\ndyed red by the blood thou didst shed when flayed amidst thy torment.\nAnd now, do thou save from misfortunes//\nthose who keep thy divine memory.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy martyr Christina",
+      "melody": "Hearken, ye women",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Divinely wise virgins, standing round about thee like queens by birth,\nO Mary, Birthgiver of God, are brought as brides before thy Son,\nthe King of all, O most pure one.\nHim do thou entreat on our behalf,//\nO Virgin Mother and Maiden.",
+        "tone": 2,
+        "label": "Both now ..., Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Holding the Cross in thy hands as a mighty weapon, O martyr Christina,\nand bearing faith as a shield, hope as a breastplate and love as a bow,\nthou didst manfully overcome the vengeance of the tyrants\nand divinely put an end to the machinations of the demons.\nAnd having been beheaded, thou dost dance with Christ,//\nunceasingly praying for our souls.",
+          "tone": 4
+        },
+        {
+          "text": "Having forsaken the riches of her father, and truly desiring Christ,\nthe martyr found glory and heavenly riches;\nand, protected by continual grace-bearing prayer,\nshe felled the tyrant with the sword of the Cross.\nWherefore, marveling at her struggles, the angels said:\n\"The enemy hath fallen, vanquished by a woman!\nThe martyr hath won the crown of victory!\nAnd Christ reigneth forever as God,//\nbestowing great mercy upon the world!\"",
+          "tone": 4
+        },
+        {
+          "text": "We glorify Thy great loving-kindness, O Christ,\nand the goodness which Thou hast shown us,\nin that women have abolished the deceit of the insanity of idolatry\nby the power of Thy Cross, O Lover of mankind,\nand were unafraid of the torturers, trampling upon their falsehoods.\nThey were enabled to follow in Thy steps\nand hastened to the fragrance of Thy perfume,//\npraying for our souls.",
+          "tone": 4
+        },
+        {
+          "text": "The power of Thy Cross hath wrought wonders, O Christ.\nFor the martyr Christina fought the fight of martyrdom\nand, rejecting the weakness of her nature, she valiantly opposed the tyrants.\nWherefore, having received the crown of victory,//\nshe prayeth for our souls.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Christ, the King of glory, desired the beauty of thy virginity,\nand with incorrupt union He betrothed thee to Himself as an immaculate bride;\nfor, imparting power to thy beauty by His own will,\nHe showed thee to be unconquered by the enemy and the passions,\nand with a double wreath, crowned thee who endured bitter torments and savage tortures,\nsetting thee as a queen all adorned at His right hand.\nHim do thou beseech, O honored and much-suffering martyr Christina,\nthat He grant salvation, life and great mercy//\nto those who hymn thee.",
+        "tone": 5,
+        "label": "Glory ..."
+      },
+      "theotokion": {
+        "text": "For our sake, O my sinless Christ, Thou didst will to give Thy most pure blood\nas the great price of our deliverance, desiring to obtain salvation for us.\nWherefore, beholding Thee nailed, Thy Mother, lamenting, tore at her hair, saying:\n\"O my Child, unblemished Lamb, O Savior, never-waning Sun,\nThou Who bestowest enlightenment, peace and great mercy upon all\nhast set from before mine eyes,//\ndesiring to deliver the world with Thy precious blood.\"",
+        "tone": 5,
+        "label": "Both now ..., Stavrotheotokion",
+        "melody": "Rejoice"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thy ewe-lamb Christina, O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr Christina",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

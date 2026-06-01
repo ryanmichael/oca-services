@@ -1,0 +1,264 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Aquila of the Seventy and Holy Martyrs Cyricus and Julitta",
+    "feastKey": "apostleAquila",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 07-14.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-14.pdf",
+    "_note": "Aquila is the primary saint (doxology-rank); Cyricus and Julitta are the secondary saints. Two interleaved canons: Canon I of the holy apostle Aquila by Joseph in Tone II + Canon II of the holy martyrs Cyricus and Julitta by Joseph in Tone VIII. Kontakion of the holy apostle after Ode 3; Kontakion + Ikos of the holy martyrs after Ode 6. Exapostilarion: from Oktoechos; Glory = martyrs. Lauds: 4 stichera (composition of Germanus) + Glory (Byzantius, Tone II) + Stavrotheotokion. Great Doxology is sung; no Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel."
+  },
+  "troparion": {
+    "text": "O holy Apostle Aquila,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostle"
+  },
+  "kontakion": {
+    "text": "Having acquired thee like a great sun,\nO glorious Aquila, apostle of the Lord,\nthe Church enlighteneth\nwith the splendors of thy teaching//\nthose who faithfully honor thee.",
+    "tone": 4,
+    "label": "Kontakion of the holy apostle"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "O holy Apostle Aquila,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle",
+      "_note": "On 'God is the Lord': Troparion of the holy apostle (Twice); Glory ..., that of the holy martyrs (Tone IV); Both now ..., Theotokion or Stavrotheotokion."
+    },
+    "troparionGlory": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs Cyricus and Julitta"
+    },
+    "sedalion": [
+      {
+        "text": "Illumining thy soul with the words of Paul,\nthou didst shine like the sun with the light of divine knowledge, O blessed Aquila;\nplaiting for thyself a martyr's wreath in accordance with the law.\nWherefore, thou dost pour forth rivers of healings upon those who with faith celebrate thy memory,//\nO blessed one.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy apostle (after Kathisma)",
+        "melody": "Go thou quickly before",
+        "glory": {
+          "text": "Having suffered with thy mother and completed the course of piety, O glorious spiritual athlete Cyricus,\nthou wast shown to be a preacher of Christ in accordance with thy name;\nand, having trampled down all the power of the enemy,\nthou hast become for us the courage of faith,\nand with thy mother hast received a crown from heaven.\nO glorious one, entreat Christ,//\nthat the souls of all who keep your memory may be saved.",
+          "tone": 4,
+          "label": "Glory ..., Sessional Hymn of the holy martyrs",
+          "melody": "Joseph marveled"
+        },
+        "bothNow": {
+          "text": "Tempest-tossed by the threefold-waves of the passions,\nI who lack a conscience fervently call upon thee, O most pure one:\nDisdain me not, lest I perish, wretch that I am,\nO thou who hast given birth to the Abyss of mercy;\nfor I have no other hope than thee.\nLet me not become a joy unto mine enemies,\nnor a byword, for I trust in thee.\nFor whatsoever thou desirest thou canst do,//\nin that thou art the Mother of the God of all.",
+          "tone": 4,
+          "label": "Both now ..., Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 2,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of the holy apostle Aquila by Joseph in Tone II + Canon II of the holy martyrs Cyricus and Julitta by Joseph in Tone VIII. Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+      "kontakionAfterOde3": {
+        "text": "Having acquired thee like a great sun,\nO glorious Aquila, apostle of the Lord,\nthe Church enlighteneth\nwith the splendors of thy teaching//\nthose who faithfully honor thee.",
+        "tone": 4,
+        "label": "Kontakion of the holy apostle"
+      },
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation which He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "irmos2": "Having passed through the water as upon dry land, and having escaped the malice of the Egyptians,\nthe Israelites cried aloud://\nUnto our God and Redeemer let us sing.",
+        "troparia": [
+          { "text": "With hallowed songs let us hymn the sacred Aquila, and let us cry aloud: By his supplications save us all, O Compassionate One, in that Thou art supremely good!" },
+          { "text": "Thou didst splendidly make thyself wholly a habitation of the Spirit, O blessed one, made luminous by the splendid rays thereof; wherefore, thou hast brought light to those who are in darkness." },
+          { "text": "Hedging thy mind about with the law of Christ, thou didst cast down all the arrogance of the iniquitous, and having suffered, O divinely blessed one, thou didst demolish all the temples of the idols." },
+          { "text": "Theotokion: With a word, O pure one, thou didst conceive in thy womb the Word Who by His word created all things; wherefore, with godly words we hymn thee, O divinely joyous one." },
+          { "canon": "secondCanon", "text": "O ye who preached the Word Who is manifestly begotten of the Father and was incarnate of His Mother, ye became witnesses to His sufferings by your sufferings and death." },
+          { "canon": "secondCanon", "text": "Like the luminous moon doth the glorious martyr join herself to the sun, Cyricus who was born of her; and they have enlightened all creation with the rays of miracles." },
+          { "canon": "secondCanon", "text": "Thou didst spurn transitory things, being in nowise moved, O martyr; and, bearing thy son in thine arms, with him thou didst cast into darkness the iniquitous ones, and the deceit of the devil." },
+          { "canon": "secondCanon", "text": "O glorious lineage, O martyr Julitta, by thy divers sufferings and tortures thou didst become a daughter of the immortal King." },
+          { "canon": "secondCanon", "text": "Theotokion: Because of thee death was annulled and the sting of Hades broken, O pure Mother; for thou hast given birth to the immortal Master Who died in the flesh." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, who didst slay sin upon the tree,\nfirmly establish us in Thee,\nand in the hearts of us who hymn Thee//\nplant the fear of Thee.",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "As a righteous man thou didst desire God, the one Master and King, and didst do His divine will with an unwavering heart." },
+          { "text": "Suffering valiantly, O most sacred and most praised Aquila, thou didst cast down all the might of the evil one by the might of the adored and divine Spirit." },
+          { "text": "Contemplating the glory of the Lord with thy pure mind, O blessed one, thou didst partake wholly thereof, leaving behind transitory things for those things which are abiding." },
+          { "text": "Theotokion: The only Pure One, the one Lord, recognized thee alone as the most pure of all creation, O most immaculate one, and became incarnate of thy pure blood." },
+          { "canon": "secondCanon", "text": "Having broken the sling of the devil with the pangs of your suffering, O glorious martyrs, ye have been deemed worthy of the mansions of heaven, splendid repose, and everlasting glory." },
+          { "canon": "secondCanon", "text": "Like a comely fledgling thou didst emulate the chaste dove, thy mother, O glorious Cyricus, opposing the false one who approached deceitfully and sought to seize thee, who art invincible." },
+          { "canon": "secondCanon", "text": "The prideful serpent which set its mouth against heaven and boasted that it would destroy the earth hath an innocent babe utterly cast down and destroyed with the weapon of the Cross." },
+          { "canon": "secondCanon", "text": "Theotokion: The transcendent Word Who brought all things into being, without leaving the bosom of the Father, made His abode within thy womb, O most pure and all-immaculate one, and having become immutable flesh, deified human nature." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Illumining thy soul with the words of Paul,\nthou didst shine like the sun with the light of divine knowledge, O blessed Aquila;\nplaiting for thyself a martyr's wreath in accordance with the law.\nWherefore, thou dost pour forth rivers of healings upon those who with faith celebrate thy memory,//\nO blessed one.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "glory": {
+          "text": "Having suffered with thy mother and completed the course of piety, O glorious spiritual athlete Cyricus,\nthou wast shown to be a preacher of Christ in accordance with thy name;\nand, having trampled down all the power of the enemy,\nthou hast become for us the courage of faith,\nand with thy mother hast received a crown from heaven.\nO glorious one, entreat Christ,//\nthat the souls of all who keep your memory may be saved.",
+          "tone": 4,
+          "label": "Glory ..., Sessional Hymn of the holy martyrs",
+          "melody": "Joseph marveled"
+        },
+        "bothNow": {
+          "text": "Tempest-tossed by the threefold-waves of the passions,\nI who lack a conscience fervently call upon thee, O most pure one:\nDisdain me not, lest I perish, wretch that I am,\nO thou who hast given birth to the Abyss of mercy;\nfor I have no other hope than thee.\nLet me not become a joy unto mine enemies,\nnor a byword, for I trust in thee.\nFor whatsoever thou desirest thou canst do,//\nin that thou art the Mother of the God of all.",
+          "tone": 4,
+          "label": "Both now ..., Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "I have heard report of Thy dispensation, O Lord,\nand have glorified Thee//\nWho alone lovest mankind.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Those who slept the sleep of wicked impiety didst thou raise up to the light of piety, O Aquila." },
+          { "text": "Arming thyself with divine humility, thou didst cast down the prideful audacity of the enemy, O Aquila." },
+          { "text": "Blessedly didst thou suffer for Christ, shedding thy blood, as a priest and witness to His sufferings." },
+          { "text": "Theotokion: O Lady Theotokos, we call thee the noetic palace and exalted throne of the King." },
+          { "canon": "secondCanon", "text": "Though a child in stature, yet with a mature mind, thou didst humble the wickedness of the author and creator of evil, O sacred martyr." },
+          { "canon": "secondCanon", "text": "Like a fruitful vine, O martyr Julitta, thou didst put forth a cluster of grapes, the truly valiant Cyricus, who exudeth the sweetness of martyrdom." },
+          { "canon": "secondCanon", "text": "As thou wast tenderly gazing, like a ewe-lamb, upon thy martyred lamb, O right wondrous Julitta, thou wast cruelly put to the sword." },
+          { "canon": "secondCanon", "text": "Theotokion: In thy birth-giving, O most pure one, the laws of nature were supranaturally altered; for in a manner beyond understanding and all telling thou hast given birth to the Creator." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Lord, Bestower of light and Creator of the ages:\nguide us in the light of Thy commandments,//\nfor we know none other God than Thee.",
+        "irmos2": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Ever pouring forth the sweet word of piety, O most wise and all-praised Aquila, as an initiate of the mysteries of Christ thou didst sweeten the souls of those who waxed gross on bitter deception." },
+          { "text": "Thy praises did the divinely eloquent Luke truly record, for thou wast a disciple of the sacred Paul and a divine guide, manifestly leading all to divine things." },
+          { "text": "Finding the honored preaching of the sacred Paul like a brilliant star shedding rays of splendor, thou didst receive from him words of brilliance and didst become light." },
+          { "text": "Theotokion: Thou wast the Mother and handmaid of Christ Who became incarnate for our sake; Him do thou ever earnestly entreat, that He save us who call thee the pure Theotokos." },
+          { "canon": "secondCanon", "text": "When thy body was lacerated and broken, O divinely wise one, thou didst shed the grossness of corruption; and clothed thyself in the flesh which the only-begotten Son of the Virgin wore, deifying mankind." },
+          { "canon": "secondCanon", "text": "Steadfastly courageous, thou wast stripped of thy body, O all-glorious martyr, vanquishing fleshly shame, clothing in everlasting shame the enemy who of old stripped Eve naked, O Julitta." },
+          { "canon": "secondCanon", "text": "When thy head was severed, thou didst crush the head of the serpent, O all-praised martyr; and, deprived of thy wealth, thou hast inherited the riches of heaven, receiving the immutable kingdom with all the martyrs." },
+          { "canon": "secondCanon", "text": "Theotokion: God, the Word of God, receiving noetic and animate flesh of thee, O most pure one, became a man in His tender compassion, and hath deified me who have been cast out because of my transgressions. Him do thou beseech, that He save us all." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Grace poured forth from thy lips, O blessed and sacred one. Wherefore, the Lord of all hath blessed thee throughout the ages, O divinely inspired Aquila." },
+          { "text": "Thine entreaty, O blessed God-bearer Aquila, hath become deliverance from divers diseases and the cleansing of sinful souls." },
+          { "text": "The journeys which thou didst make, directed toward the ways of God, were shown to be instruction and a path to salvation for the lost." },
+          { "text": "Theotokion: O all-immaculate Sovereign Lady, who hast given birth to God, the Bestower of good things: From the multifarious perils do thou save those who ever hymn thee." },
+          { "canon": "secondCanon", "text": "Having sailed through the perilous waters of immeasurable tortures, O all-praised ones, ye manifestly reached the calm haven, having drowned the invisible Pharaoh in the streams of your blood." },
+          { "canon": "secondCanon", "text": "The city of Iconium, which raised thee, leapeth up, and Tarsus adorneth itself in thine honored memory, O Julitta; for with thy son thou didst accomplish thy martyrdom therein, and hast been deemed worthy of crowns of victory." },
+          { "canon": "secondCanon", "text": "Thou didst spurn the tortuous torments and wast shown to be a most comely dove, who with thy fledgling took wing and soared above all the snares of the serpent; and most wisely came to rest in the mansions of heaven, O most praiseworthy one." },
+          { "canon": "secondCanon", "text": "Theotokion: With the root-cutting scythe of thy prayer, O Maiden, cut down the wicked thoughts of my soul, and show it to be fruitful, I pray; for thou hast given birth unto the God and Savior of all." }
+        ]
+      },
+      "kontakion": {
+        "text": "Holding Cyricus in her embrace,\nJulitta, the martyr of Christ, cried aloud, exulting manfully in the contest://\n\"Christ is the boast of the martyrs!\"",
+        "tone": 4,
+        "label": "Kontakion of the holy martyrs Cyricus and Julitta",
+        "melody": "Thou hast been shown"
+      },
+      "ikos": {
+        "text": "With the light of Thy commandments illumine my mind, O Christ, that I may hymn the saints and recount their struggles. What tongue is able to relate the sufferings which they endured? Wherefore, I fall down before Thee, O Lover of mankind, praying: Grant forgiveness to my wretched soul! Give me time to repent; for, for this reason, Thou didst willingly assume flesh, that Thou mightest lead all up to life. His spiritual athletes, having accepted this, chant ceaselessly: Christ is the boast of the martyrs!"
+      },
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame, they were bedewed, and sang://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "The Hebrew children in the furnace boldly trampled upon the flames,\nchanging the fire into dew, they cried aloud://\n'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "text": "Weaving a robe of incorruption for thyself with the divine Spirit, thou didst become wholly beautiful, O Aquila. And thou didst strip the enemy naked and clothe in splendid raiment and the light of salvation those who had been stripped naked by him." },
+          { "text": "As a godly priest of the mysteries, O divinely wise and right wondrous one, with the bread of thy words thou didst feed the people afflicted and held fast in noetic starvation, and didst make them partakers of the heavenly banquet." },
+          { "text": "They who have recourse to thy holy temple receive health; they find release from their sufferings and cleansing from their infirmities, hymning thee with love and crying out, O all-famed one: O God of our fathers, Blessed art Thou!" },
+          { "text": "Theotokion: In the beginning death came to Adam through the food of corruption, O most immaculate one; but thou, O Virgin, having given birth unto our Life, didst bring Adam back to life. Wherefore, hymning thee as the cause of good things, we cry aloud: Blessed art thou who hast given birth to God in the flesh!" },
+          { "canon": "secondCanon", "text": "The iniquitous one shattered thy body with staves, O divinely wise Julitta, yet in nowise shook the firmness of thine intention; for thou didst wield the Cross of Christ as a staff of power." },
+          { "canon": "secondCanon", "text": "With the outpourings of the flux of their blood, the athletes of Christ quenched the fire of ungodliness, crying out fervently: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Bearing in thine arms him to whom thou hadst given birth, O martyr, thou didst appear at the tribunal and didst complete a good and twofold contest, crying: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Theotokion: Following thy words, all of us, the generations of mankind, call thee blessed, O Maiden, who art shown to be the Mother of the blessed God Who hath made blessed those who believe on Him." }
+        ]
+      },
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,\nand supremely exalt as Lord throughout all ages.",
+        "irmos2": "By Thy grace the children became vanquishers of both the tyrant and the flames,\ncarefully observing Thy commandments,\nwherefore they cried aloud:\nBless the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "O Aquila, who art divinely deified, and as a disciple dwellest joyfully in the heavens with the disciples and servants of God and the eyewitnesses to the Word, be thou mindful of those who hymn thee with faith and love." },
+          { "text": "The streams of thy sweat pour forth rivers of divine miracles upon us all, O blessed one, ever drying up the streams of the wicked passions, and drowning the hordes of the deceiver." },
+          { "text": "Drawing nigh unto God with an immaterial mind, thou didst become all light, ever deified by thine approach, having been released from the flesh; thou seest what the angels see, O glorious Aquila, sacred martyr of Christ." },
+          { "text": "Theotokion: O pure and all-immaculate one, having conceived in thy womb God, the Cause of all, Who transcendeth every other cause, and having given birth unto Him Who became like unto us for our sake, entreat Him on behalf of those who hymn thee." },
+          { "canon": "secondCanon", "text": "The luminous stars, upon which unerringly stood the firmament of the Church, enlightening the earth with wonders, are piously honored today by all who hymn Christ throughout the ages." },
+          { "canon": "secondCanon", "text": "Bearing thine honored son like a new scion sprung forth from a root planted by God, O divinely wise one, thou hast caused gardens of impiety to wither up, crying out to Him and saying: Thee, O Christ, do we supremely exalt throughout the ages." },
+          { "canon": "secondCanon", "text": "Like a most comely heifer, O Julitta, thou didst bear the glorious Cyricus like a young calf, as a living sacrifice to the Lamb Who shone forth from the Virgin and was slaughtered in His extreme loving-kindness." },
+          { "canon": "secondCanon", "text": "Theotokion: The Word Who became incarnate from thy most pure blood, O pure Maiden, hath by divine knowledge deified those who had been plunged into the irrational carnal passions. Him do we supremely exalt throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "God the Word, God of God,\nWho by ineffable wisdom came to create Adam anew\nafter his grievous fall to corruption through eating\nand Who took flesh beyond all telling from the Holy Virgin for our sake,\nHim we faithful with one accord magnify in song.",
+        "irmos2": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;\nwherefore we the faithful magnify//\nthe most pure Theotokos.",
+        "troparia": [
+          { "text": "Assembling, O Aquila, together we bless with sacred hymns, thee who wast the consecrated and precious vessel of the Word, a most wise preacher, a beacon for the world, and the confirmation of our faith." },
+          { "text": "Knowing thee to be a disciple of Paul, an inerrant luminary of the world, a sacred martyr, a destroyer of idols and an instructor in the knowledge of God, O divinely wise Aquila, we bless thee with pious thought." },
+          { "text": "Enlightening the world like the sun, Thine all-holy memory illumineth the souls of those who piously hymn thee. Thereon, O blessed one, pray that God grant cleansing of sins, peace profound and great mercy unto all." },
+          { "text": "Theotokion: The prophet foresaw thee as a radiant lamp bearing the Light Who shone forth from the Light, O most immaculate Virgin Mother, richly enlightening with the rays of His ineffable divinity, those who of old were darkened." },
+          { "canon": "secondCanon", "text": "The shrine of the glorious spiritual athletes, overflowing with the grace of the divine Spirit, offereth healing. Come ye, and draw forth and sanctify your souls, and be cleansed, O ye who love the martyrs, magnifying the Bestower of good things." },
+          { "canon": "secondCanon", "text": "Like a rose ye blossomed forth in the valleys of the martyrs, O all-blessed ones, like a sweet-smelling lily, like divine plants of paradise, truly pouring forth the perfume of myrrh, gladdening the souls of the faithful with a mystic fragrance." },
+          { "canon": "secondCanon", "text": "Ye were adorned with the wounds of martyrdom, O right victorious martyrs, and, manifestly emulating the angels, ye stand before God, splendidly vested with wreaths of victory, asking cleansing from sins on behalf of those who honor you." },
+          { "canon": "secondCanon", "text": "The martyr, like a ewe-lamb, bearing her son like a lamb, passed unharmed in the midst of wolves, making her abode in the fold of heaven. By their prayers, O Lord, ever save us who honor their sacred memory." },
+          { "canon": "secondCanon", "text": "Theotokion: O portal of the Light, illumine my soul, which hath been blinded by the passions and darkened and vexed by evil thoughts; and rescue me from temptations, tribulations and sorrows, that I may glorify thee, the hope and confirmation of the faithful." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Rejoice, adorn thyself and dance,\nkeeping splendid festival, O city of Iconium!\nFor from thee have two most wise luminaries shone forth:\nthe glorious Julitta and the divine wise Cyricus.\nFor, having struggled lawfully,//\nthey have received wreaths of victory.",
+      "tone": 2,
+      "label": "Glory ..., Exapostilarion of the holy martyrs Cyricus and Julitta",
+      "melody": "Hearken, ye women",
+      "_note": "The main exapostilarion (before Glory) is from the Oktoechos. This menaion entry is for the Glory slot.",
+      "bothNow": {
+        "text": "We hymn thee, the Mother and Virgin, O all-immaculate one;\nfor in thy womb thou didst bear the God of all;\nand professing His unity to be immutable in His hypostasis,\nwe who because of thee are saved,//\nconfess thee to be the Theotokos and Sovereign Lady.",
+        "label": "Both now ..., Theotokion"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "As is meet, we praise the valiant spiritual athlete and preacher of the Faith,\nwith his divinely wise mother;\nfor having suffered steadfastly, they manfully cast down the enemy, the author of evil, by the power of the Cross.\nWherefore, they have received crowns from God, the Judge of the contest,\nand entreat Him unceasingly with boldness,//\nthat He save those who with faith celebrate their sacred contest.",
+          "tone": 1,
+          "label": "the composition of Germanus"
+        },
+        {
+          "text": "As is meet, we praise the valiant spiritual athlete and preacher of the Faith,\nwith his divinely wise mother;\nfor having suffered steadfastly, they manfully cast down the enemy, the author of evil, by the power of the Cross.\nWherefore, they have received crowns from God, the Judge of the contest,\nand entreat Him unceasingly with boldness,//\nthat He save those who with faith celebrate their sacred contest.",
+          "tone": 1,
+          "_note": "Sung twice per rubric."
+        },
+        {
+          "text": "O martyr Cyricus, who from thine infancy wast full of grace,\npossessing the understanding of old age:\nin the victory of thy struggles pray thou to Christ God with thy mother,\nthat He grant peace to the world,//\nin that thou art a great confessor of the Trinity.",
+          "tone": 2,
+          "label": "the composition of Germanus"
+        },
+        {
+          "text": "Thou wast shown to be a child among martyrs,\nyet revealed thyself to be mature in understanding.\nSince thou didst accept the beginningless Word,\nthou wast not afraid of the fire of the iniquitous.\nWith thy mother, entreat the Creator,//\nthat He save our souls, in that He is the Savior.",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, O ye faithful, and, having assembled,\nlet us with praises crown the two most holy martyrs,\nwho upheld the worship of the Trinity;\nfor with their own feet they trampled down the deception of idolatry and the designs of the tyrants.\nPraising them, O ye faithful, let us cry aloud, saying:\nRejoice, O most honorable Julitta who, casting aside thy womanly weakness, didst struggle manfully!\nRejoice, O all-blessed Cyricus who, though but three years of age, didst cast down the most artful enemy!\nRejoice, ye boast and glory of us who with faith celebrate your sacred suffering!\nTherewith do we pray:\nEver entreat the Lord of all,\nthat He grant peace to the world//\nand great mercy to our souls!",
+        "tone": 2,
+        "label": "Glory ..., the composition of Byzantius"
+      },
+      "theotokion": {
+        "text": "Beholding Thee nailed to the Tree of the Cross, O Jesus,\nshe that kneweth not wedlock said weeping:\n\"O sweet Child, why hast Thou abandoned me who alone gave birth to Thee,\nO unapproachable Light of the beginningless Father?\nHasten Thou, and glorify Thyself,\nthat those who glorify Thy divine sufferings//\nmay receive divine glory!\"",
+        "tone": 2,
+        "label": "Both now ..., Stavrotheotokion",
+        "melody": "When from the Tree"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O holy Apostle Aquila,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostle",
+      "_note": "After the Great Doxology: Troparion of the holy apostle, once. Litanies and dismissal."
+    }
+  }
+}

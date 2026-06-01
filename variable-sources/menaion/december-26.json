@@ -1,0 +1,382 @@
+{
+  "_meta": {
+    "feast": "Synaxis of the Most Holy Theotokos; Hieromartyr Euthymius of Sardis",
+    "feastKey": "synaxisTheotokos",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 12-26.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-26.pdf",
+    "_note": "Second day of the Nativity — Synaxis of the Most Holy Theotokos. Doxology-rank: Great Doxology sung; no Polyeleos, no Magnification, no Matins Gospel. Both canons (Canon I by Cosmas of Maiuma, Tone I; Canon II by John of Damascus, Tone I) are Nativity canons used on this afterfeast day. Kontakion of the feast (Nativity, Tone III) after Ode 3; Kontakion of the Synaxis (Tone VI) after Ode 6. At Ode 9 the Magnificat is replaced by Nativity megalynaria (same as the feast itself). Hieromartyr Euthymius canon is appointed for Compline only, not Matins. Vespers: 6 LIC stichera for the Synaxis in Tone II."
+  },
+  "troparion": {
+    "text": "Thy Nativity, O Christ our God,\nhath shined the light of knowledge upon the world;\nfor thereby, they that worshipped the stars\nwere instructed by a star\nto worship Thee, the Sun of Righteousness,\nand to know Thee, the Dayspring from on high.//\nO Lord, glory be to Thee.",
+    "tone": 4,
+    "label": "Troparion of the feast"
+  },
+  "kontakion": {
+    "text": "He Who was born of the Father without mother\nbefore the morning star\nhath today become incarnate from thee on earth without a father;\nwherefore, the star announceth glad tidings to the magi,\nand the angels and shepherds hymn thine ineffable birthgiving,//\nO thou who art full of grace.",
+    "tone": 6,
+    "label": "Kontakion of the Synaxis of the Theotokos"
+  },
+  "vespers": {
+    "licStichera": {
+      "count": 6,
+      "tone": 2,
+      "label": "Stichera of the feast",
+      "stichera": [
+        {
+          "text": "Come, let us rejoice in the Lord, telling of this present mystery:\nThe middle wall of partition hath been demolished,\nthe fiery sword is removed, the cherub doth withdraw from the gate of life,\nand I partake of the food of paradise,\nfrom whence I was driven away because of disobedience;\nfor the immutable Image of the Father, the Image of His eternity,\ndoth assume the guise of a servant,\nissuing forth from the Mother who knew not wedlock,\nwithout undergoing change, yet He remained what He was before — our true God;\nand He hath received what He was not,\nbecoming a man in His love for mankind.\nTo Him let us cry aloud://\nO God Who wast born of the Virgin, have mercy on us!",
+          "tone": 2
+        },
+        {
+          "text": "Come, let us rejoice in the Lord, telling of this present mystery:\nThe middle wall of partition hath been demolished,\nthe fiery sword is removed, the cherub doth withdraw from the gate of life,\nand I partake of the food of paradise,\nfrom whence I was driven away because of disobedience;\nfor the immutable Image of the Father, the Image of His eternity,\ndoth assume the guise of a servant,\nissuing forth from the Mother who knew not wedlock,\nwithout undergoing change, yet He remained what He was before — our true God;\nand He hath received what He was not,\nbecoming a man in His love for mankind.\nTo Him let us cry aloud://\nO God Who wast born of the Virgin, have mercy on us!",
+          "tone": 2,
+          "label": "the composition of Anatolius (repeat)"
+        },
+        {
+          "text": "When the Lord Jesus was born from the holy Virgin,\nall things were enlightened;\nfor when the shepherds piped, the magi offered homage and the angels sang,\nHerod was troubled,\nfor God, the Savior of our souls, appeared in the flesh.",
+          "tone": 2,
+          "label": "the composition of Anatolius"
+        },
+        {
+          "text": "When the Lord Jesus was born from the holy Virgin,\nall things were enlightened;\nfor when the shepherds piped, the magi offered homage and the angels sang,\nHerod was troubled,\nfor God, the Savior of our souls, appeared in the flesh.",
+          "tone": 2,
+          "label": "the composition of Anatolius (repeat)"
+        },
+        {
+          "text": "Thy kingdom, O Christ God, is a kingdom of all the ages,\nand thy dominion is for all generations.\nO Christ God Who wast incarnate by the Holy Spirit\nand became a man through the Ever-virgin Mary,\nThou hast shone forth Thine advent upon us as light.\nO Light from Light, Effulgence of the Father,\nThou hast illumined all creation.\nEvery creature that hath breath praiseth Thee,\nthe Image of the glory of the Father.\nO Thou Who art and ever shall be,\nO God Who hast shone forth from the Virgin://\nHave mercy upon us!",
+          "tone": 2
+        },
+        {
+          "text": "What shall we offer Thee, O Christ,\nin that Thou hast appeared on earth as a man for our sake?\nFor every creature fashioned by Thee offereth Thee thanksgiving:\nthe angels, hymnody; the heavens, a star; the magi, gifts;\nthe shepherds, their wonder; the earth, a cave;\nthe wilderness, a manger; and we, the Virgin Mother.\nO God Who hast existed from before time,//\nhave mercy upon us!",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "Glory to God in the highest, and on earth peace!\nToday Bethlehem receiveth Him Who is ever seated with the Father.\nToday the angels glorify as God the Babe Who was born.\nGlory to God in the highest, and on earth peace,//\ngood will among men!",
+        "tone": 6,
+        "label": "Glory ..., Both now ..."
+      }
+    },
+    "aposticha": {
+      "tone": 8,
+      "label": "On the Aposticha, the composition of John",
+      "stichera": [
+        {
+          "text": "A most glorious mystery is wrought today:\nnature is restored and God becometh a man!\nHe hath remained what He hath been,\nand what He hath not been, He hath taken upon Himself,\nwithout undergoing either commingling or division.",
+          "tone": 8
+        },
+        {
+          "text": "Arriving in Bethlehem, O Lord,\nThou didst make Thine abode in the cave;\nThou Who hast heaven for Thy throne wast laid in a manger;\nThou Whom the armies of the angels surround\ndescended unto shepherds,\nthat Thou mayest save our race, in that Thou art compassionate.\nGlory be to Thee!",
+          "tone": 8,
+          "verse": "From the womb before the morning star have I begotten Thee. * The Lord hath sworn and will not repent."
+        },
+        {
+          "text": "How can I recount this great mystery?\nHe Who is incorporeal hath become incarnate,\nthe Word became flesh;\nthe Invisible became visible;\nthe Intangible is touched;\nthe Beginningless One beginneth to be.\nThe Son of God becometh the Son of man:\nJesus Christ, yesterday, today, and for evermore!",
+          "tone": 8,
+          "verse": "The Lord said unto my Lord: * Sit Thou at My right hand."
+        }
+      ],
+      "doxastikon": {
+        "text": "The shepherds hastened to Bethlehem,\nproclaiming the true Shepherd Who sitteth on the cherubim\nand lieth in the manger,\nhaving taken on the guise of a babe for our sake.\nO Lord, glory be to Thee!",
+        "tone": 8,
+        "label": "Glory ..., Both now ..."
+      }
+    }
+  },
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "doxology",
+      "feastType": "theotokos",
+      "joint": true,
+      "_source": "stSergius-menaion",
+      "_note": "Doxology-rank afterfeast. Two Nativity canons: Canon I by Cosmas of Maiuma (Tone I), Canon II by John of Damascus (Tone I). No Polyeleos, no Magnification, no Matins Gospel. Great Doxology is sung."
+    },
+    "troparion": {
+      "text": "Thy Nativity, O Christ our God,\nhath shined the light of knowledge upon the world;\nfor thereby, they that worshipped the stars\nwere instructed by a star\nto worship Thee, the Sun of Righteousness,\nand to know Thee, the Dayspring from on high.//\nO Lord, glory be to Thee.",
+      "tone": 4,
+      "label": "Troparion of the feast",
+      "_note": "On 'God is the Lord': Troparion of the feast (Thrice)."
+    },
+    "sedalion": [
+      {
+        "text": "When Jesus was born in Bethlehem of Judea,\ncreation was enlightened, recognizing its Creator;\nand the choirs of the angels were amazed,\nbeholding the Master, Who is inseparable from the Father,\nassuming the guise of a servant on earth.\nGlory be to God Who hath become incarnate!\nGlory be to Him Who hath been born on earth!\nGlory be to Him Whose good pleasure it was//\nto save our race!",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "When the stone had been sealed",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "text": "Why dost thou marvel, O Mary?\nWherefore art thou in awe of what hath taken place within thee?\n\"Because I have given birth within time to the timeless Son,\" said she;\n\"and am unaccustomed to conceiving a babe,\nsince I have not known a man, how is it that I give birth to a Son?\nWho hath ever seen a seedless birthgiving?\nFor where God desireth, the order of nature is overturned, as is it written.\"\nChrist is born, that He might restore His image which of old had fallen!",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Joseph marveled",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "canon": {
+      "tone": 1,
+      "_secondCanonTone": 1,
+      "_authors": "Canon I: the composition of Cosmas of Maiuma, acrostic 'Having become man, Christ remaineth God as He was before', Tone I. Canon II: the composition of John of Damascus, Tone I.",
+      "_note": "Both canons are Nativity canons chanted on the Synaxis/afterfeast day. The Irmos of each canon is chanted twice. 12 Troparia total.",
+      "ode1": {
+        "irmos": "Christ is born, render ye glory.\nChrist cometh from heaven, meet ye Him.\nChrist is on earth, be ye exalted.\nO all the earth, sing unto the Lord,\nand sing praises in gladness, O ye people,//\nfor He hath been glorified.",
+        "irmos2": "The Master saved His people by working a wonder,\nmaking solid the watery waves of the sea of old;\nand having willingly been born of the Virgin,\nHe hath set before us a path leading to heaven.\nLet us glorify Him Who is//\nby nature equal to both the Father and mankind.",
+        "troparia": [
+          {
+            "text": "That which, though fashioned in the image of God, became wholly corrupt through transgression, having fallen away from the divine life, hath the wise Creator restored, for He hath been glorified."
+          },
+          {
+            "text": "The Creator, seeing mankind, whom He had fashioned with His own hands, perishing, descended, bowing down the heavens, and becoming truly incarnate, taking upon Himself all the essence of man, through the pure and divine Virgin, for He hath been glorified."
+          },
+          {
+            "text": "Christ God, being the wisdom, Word, Power, Effulgence and Son of the Father, having made Himself unknowable to the powers of heaven, and even more so to those on earth, hath become a man and restored us, for He hath been glorified."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy sacred womb, which was clearly depicted by the bush which burned without being consumed, bore the Word, mingling God with the form of a mortal man and loosing the wretched womb of Eve from the ancient bitter curse. Let us glorify Him, O ye mortals!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The star plainly showed to the magi, Thee the merciful Word, existent before the sun, Who came to bring an end to sin, and wast wrapped in swaddling bands in a meager cave, and rejoicing, they beheld the very Lord Himself, as a man."
+          }
+        ]
+      },
+      "ode3": {
+        "irmos": "To the Son who was begotten of the Father\nwithout change before all ages,\nand in the last times, without seed, was made flesh of the Virgin,\nto Christ our God let us cry aloud:\nThou hast raised up our horn,//\nholy art Thou, O Lord.",
+        "irmos2": "Look upon the hymns of Thy servants, O Benefactor,\nand humble the vaunted pride of the enemy;\nbearing far above sin those who hymn Thee\nmaking them unshakably firm by the foundation of faith,//\nO Thou Good One Who seest all.",
+        "troparia": [
+          {
+            "text": "Adam, fashioned of dust, partook of a higher inspiration, yet he was led to stumble into corruption through a woman's deceit, seeing Christ born from a woman, he cried aloud: O Thou Who for my sake hast become like me, holy art Thou O Lord!"
+          },
+          {
+            "text": "O Lord Christ, mingling with clay, Thou didst conform Thyself thereto, imparting Thy divine essence to vile flesh by participating therein, becoming earthly, yet remaining God, and lifting up our horn: holy art Thou O Lord!"
+          },
+          {
+            "text": "O Bethlehem, thou king of the princes of Judah, be glad! For Christ Who doth shepherd Israel, seated on the shoulders of the cherubim, hath manifestly come forth from thee, and, having lifted up our horn, hath established His reign over all."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having been deemed worthy to behold the supremely rich Offspring of the most pure Bride, which passeth understanding, the chorus of shepherds bowed down in awe-filled homage; and the ranks of incorporeal beings hymned Christ the King, Who became incarnate without seed."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "In His tender compassion, He Who reigneth over the heights of heaven became like us through the unwedded Maiden; the Word Who before was immaterial, was later clothed in material flesh, that He might draw to Himself the first-formed man, who had fallen."
+          }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "Today the Virgin giveth birth to Him Who is transcendent in essence;\nand the earth offereth a cave to Him Who is unapproachable.\nAngels with shepherds give glory;\nthe Magi journey with a star;//\nfor our sake a young Child is born, Who is the pre-eternal God.",
+        "tone": 3,
+        "label": "Kontakion of the feast",
+        "ikos": {
+          "text": "Bethlehem hath opened Eden! We have found Joy in a secret place: come, and let us receive the things of paradise within the cave. There the unwatered Root hath blossomed, bearing forgiveness as its fruit. There an unfailing Wellspring hath been found, from whence David of old longed to drink. There the Virgin hath given birth to the Babe, straightway quenching the thirst of Adam and David. Wherefore, let us hasten to this place where now is born a young Child, the pre-eternal God!"
+        }
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "The first-fruits of the nations hath heaven brought to Thee Who liest as a babe in the manger,\nsummoning the magi by the star;\nand they were in awe to see, not scepters or thrones, but utter poverty.\nFor what is more lowly than a cave?\nWhat is more humble than the swaddling bands,\nwherein the richness of Thy divinity hath shone forth?//\nO Lord, glory be to Thee!",
+        "tone": 8,
+        "label": "Sessional Hymn (after Ode 3)"
+      },
+      "ode4": {
+        "irmos": "Rod of the root of Jesse,\nand flower that blossomed from his stem,\nO Christ, Thou hast sprung from the Virgin.\nFrom the Mountain overshadowed by the forest\nThou hast come, made flesh from her that knew not wedlock,//\nO God who art not formed from matter. Glory to Thy power, O Lord.",
+        "irmos2": "The renewal of the human race was hymned of old\nand proclaimed beforehand by the Prophet Habbakuk,\nwho having ineffably been deemed worthy to behold in image;\nthe Word coming forth from the mountain, the Virgin,//\nas a little Babe, for the restoration of the people.",
+        "troparia": [
+          {
+            "text": "O Christ Thou art He Whom Jacob foretold of old, as the expectation of the nations, and Who hath shone forth from the tribe of Judah, and come to overthrow the power of Damascus and the plunder of Samaria, transforming falsehood into godly faith. Glory to Thy power, O Lord!"
+          },
+          {
+            "text": "Shining forth, a Star out of Jacob, O Master, Thou hast filled with joy the wise observers of the stars, the followers of the words of Balaam, the soothsayer of old; manifestly receiving the first-fruits of the nations who have entered in to worship Thee. Glory to Thy power, O Lord!"
+          },
+          {
+            "text": "Like drops of rain falling upon the earth, and like the gentle rain upon the fleece, O Christ, Thou hast descended upon the womb of the Virgin. Ethiopia and Tharsis, the islands of Arabia and Saba, and they who rule all the land of the Medes, have fallen down before Thee, O Savior. Glory to Thy power, O Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Willingly receiving flesh from the Virgin, the Most High hath issued forth as equal to men, to cleanse us of the venom of the serpent's head, leading all from the sunless gates of Hades to life-bearing light, in that He is God."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The nations who of old were overwhelmed by corruption, having escaped the greatest enemy, lift up their hands with hymns of praise, honoring the one Christ as Benefactor, Who hath come to us in His mercy."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Theotokion: Having sprouted forth from the root of Jesse, O Virgin, thou didst transcend the laws of human nature, giving birth to the pre-eternal Word of the Father, in that He Himself was well pleased to pass through thy sealed womb in His strange abasement."
+          }
+        ]
+      },
+      "ode5": {
+        "irmos": "As Thou art the God of peace and Father of compassions,\nThou hast sent unto us Thine Angel of great counsel, granting us peace.\nWherefore guided towards the light of the knowledge of God,\nand watching by night we glorify Thee,//\nO Lover of mankind.",
+        "irmos2": "O Christ Who art our cleansing, come unto us,\nwho out of the night of the deeds of gloomy delusion,\nvaliantly hymn Thee as a Benefactor,\ngranting us an expeditious path,//\nascending upon which we find glory.",
+        "troparia": [
+          {
+            "text": "Submitting to be recorded among Thy servants at the command of Caesar, Thou hast freed us slaves from the enemy and sin, O Christ; and having abased Thyself for us, Thou hast rendered our nature divine through Thy union and sharing therein."
+          },
+          {
+            "text": "Behold, the Virgin hath conceived in her womb, as was foretold of old, and hath given birth to God made man, yet remaineth a virgin. O ye sinners who for her sake have been reconciled with God, faithfully hymn her as the true Theotokos."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "By His coming in the flesh the Master hath again cut down the cruel enmity directed against us, that He might destroy the soul-destroying ruler, uniting the world with the immaterial beings, making the Begetter accessible to creation."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The people who of old were darkened have finally seen the light of the radiance of the Most High; and the Son bringeth the nations to the Father as an inheritance, bestowing ineffable grace where sin once flourished exceedingly."
+          }
+        ]
+      },
+      "ode6": {
+        "irmos": "The sea monster spat forth Jonah as it had received him, like a babe from the womb:\nwhile the Word, having dwelt in the Virgin and taken flesh,\ncame forth from her yet kept her incorrupt.\nFor being Himself not subject to decay,//\nHe preserved His Mother free from all harm.",
+        "irmos2": "Dwelling in the uttermost depths of the sea,\nJonah besought Thee to come and still the tempest;\nand I, pierced by the arrow of the tyrant,\nchant unto Thee, O Christ\nThou Destroyer of evil,//\ndo Thou come quickly unto my slothfulness!",
+        "troparia": [
+          {
+            "text": "Christ our God, Whom the Father begat before the morning star, hath come forth incarnate, from a womb. He Who ruleth over the most pure powers lieth in a manger of dumb beasts and is wrapped in swaddling-bands, loosing the knotted bonds of transgressions."
+          },
+          {
+            "text": "A young Child, a Son, is born of the clay of Adam and given to the faithful: He is the Father and Prince of the age to come, and is called the Angel of great Counsel. He is the mighty God Who exerciseth dominion over all creation."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "God the Word, Who from the beginning was with God, now strengtheneth that which of old was seen to be weakened, that he may preserve that which He Himself shares with us, straightway showing it to be free from the passions."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "He Who dwelleth in light, and, contrary to His dignity, hath now been well pleased to dwell in a manger, cometh forth from the loins of Abraham for the sake of us who have fallen into the deep darkness of transgressions, that, for the salvation of mankind, He might raise up His fallen children."
+          }
+        ]
+      },
+      "kontakion": {
+        "text": "He Who was born of the Father without mother\nbefore the morning star\nhath today become incarnate from thee on earth without a father;\nwherefore, the star announceth glad tidings to the magi,\nand the angels and shepherds hymn thine ineffable birthgiving,//\nO thou who art full of grace.",
+        "tone": 6,
+        "label": "Kontakion of the Synaxis of the Theotokos"
+      },
+      "ikos": {
+        "text": "O mystic vine, thou hast given rise to the uncultivated Grapes, for bearing Him in thine arms as on branches, thou didst say: \"Thou art my Fruit, Thou art my Life! Wherefore, I have known that I yet am what I was. Thou art my God; for, beholding the seal of my virginity inviolate, I proclaim Thee the true Word Who hast become flesh. I have not known seed, and I acknowledge Thee to be the Destroyer of corruption; for I am pure, since Thou hast issued forth from me, and hast left my womb as Thou found it. Yea, I see that it is pure! Therefore, all creation joineth chorus, crying out to me: Rejoice, O thou who art full of grace!\""
+      },
+      "ode7": {
+        "irmos": "Scorning the impious decree of the godless one,\nthe Children brought up together in godliness\nfeared not the threat of fire,\nbut standing in the midst of the flames, they sang://\nO God of our fathers, blessed art Thou.",
+        "irmos2": "Captured by the love of the King of all,\nthe children reviled the uncontrollable rage and ungodly blasphemies of the tyrant,\nand the great fire submitted to them as they spake unto the Master saying://\nBlessed art Thou throughout the ages.",
+        "troparia": [
+          {
+            "text": "The piping shepherds received an awesome vision of light; for the glory of the Lord shone round about them, and an angel cried aloud: Sing ye, for Christ, the blessed God of your fathers, is born!"
+          },
+          {
+            "text": "Suddenly, at the voice of the angel, the armies of heaven cried out: \"Glory to God in the highest, and on earth peace, good-will among men! Christ hath shone forth: the blessed God of your fathers!\""
+          },
+          {
+            "text": "\"What words are these?\" said the shepherds; \"Let us go and see what hath become of the blessed Christ!\" And hastening to Bethlehem, they bowed down in worship with the Theotokos, chanting: \"O God of our fathers, blessed art Thou!\""
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The furnace which had been raised to a sevenfold heat savagely burnt the minions, but spared the youths who were wholly consumed with the fear of God; for the flame crowned them when the Lord freely granted them dew for the sake of their piety."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O Christ our Helper, using Thine ineffable incarnation as a bulwark of defense, and having taken on our form, Thou hast put to shame the adversary of mankind, bearing the richness of Thy deification, which we hope for, having fallen from the heights into the darkness of the uttermost depths."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou hast most mightily cast down sin, which is exalted in evil without restraint, frenzied from the perversion of the world; and those whom it formerly attracted hast Thou saved from its snares today, having become incarnate of Thine own will, O Benefactor."
+          }
+        ]
+      },
+      "ode8": {
+        "irmos": "The furnace moist with dew\nwas an image and prefiguring of a wonder past nature,\nburning not the children whom it had received,\nso the fire of the Godhead consumed not the Virgin's womb\ninto which it had descended.\nTherefore in song let us sing:\nLet the whole creation bless the Lord//\nand supremely exalt Him throughout all ages.",
+        "irmos2": "The children who in the time of the Old Covenant\nwere cast into the fire,\nprefigured the unconsumed womb of the Maiden,\nwhich hath supra-naturally given birth yet remaineth sealed;\nand both wondrously working as a single miracle\nmoveth the people to hymn//\nthe Grace of each.",
+        "troparia": [
+          {
+            "text": "The daughter of Babylon carried off the captive children of David from Sion to herself; but now she hath sent her own children, the magi bearing gifts, to the God-pleasing daughter of David, who prayeth. Wherefore, chanting, let us sing: Let all creation bless the Lord and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "The harps refused to play their sad songs, for the children of Sion would not sing in a strange land; but Christ, shining forth in Bethlehem, hath destroyed all the delusion of Babylon and her musical instruments. Wherefore, chanting, let us sing: Let all creation bless the Lord and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "Babylon received the plunder of the kingdom of Sion and its captive riches; but Christ hath drawn its treasures to His Sion, guiding the star-observing kings by a star. Wherefore, chanting, let us sing: Let all creation bless the Lord and supremely exalt Him throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Mankind, having fled the destructive delusion of becoming divine, unceasingly hymneth the Word Who hath abased Himself, and like the youths and all creation, with fear and trembling offereth meager praise, being corrupt, but wisely enduring."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou hast come, O Restoration of the nations, to bring lost human nature back from the hills of the wilderness to the flowered pastures; that Thou mightest extinguish the violent power of the manslayer, having by providence appeared as God and man."
+          }
+        ]
+      },
+      "ode9": {
+        "_note": "At Ode 9 the Magnificat is NOT chanted; instead, the Nativity megalynaria are sung as refrains, as on the feast itself.",
+        "skipMagnificat": true,
+        "irmos": "A strange and most wondrous mystery do I see:\nthe cave is heaven;\nthe Virgin the throne of the cherubim;\nthe manger a room, in which Christ God,\nwhom nothing can contain, is laid.//\nWhom we praise and magnify.",
+        "irmos2": "From fear it may be easier,\nfor us to prefer silence,\nfor though not fraught with danger, O Virgin,\nit is difficult to fashion hymns fittingly wrought for thee.\nYet, O Mother, grant us the power to chant in such a way,//\ninsofar as it is our will.",
+        "troparia": [
+          {
+            "text": "The magi beheld the excellent course of the strange star which had newly appeared, illumining the heavens and marking the birth of Christ the King in Bethlehem, for our salvation.",
+            "_refrain": "Magnify, O my soul, God Who was born in the flesh of the Virgin."
+          },
+          {
+            "text": "The star revealed the newborn infant King to the magi who said: \"Where is He, for we have come to worship Him?\" But Herod who fought against God, enraged, was troubled, seeking to slay the Christ.",
+            "_refrain": "Magnify, O my soul, God Who is worshipped by the magi."
+          },
+          {
+            "text": "Herod inquired concerning the time of the star, following whose course the magi worshipped Christ with gifts in Bethlehem; but, guided thereby to their homeland, they left the cruel murderer of the infants behind in mockery.",
+            "_refrain": "Magnify, O my soul, the only pure Virgin Theotokos, who gave birth to Christ the King."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O pure Mother, having beheld the indistinct images and dim shadows of the Word Who hath newly appeared through the closed gates, but mindful now of His true radiance, we bless thy womb as is meet.",
+            "_refrain": "Today the shepherds see the Savior wrapped in swaddling-bands and lying in a manger."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having attained their desire and been deemed worthy to see the advent of God, the people who delight in Christ are now consoled by this, insofar as thou bestowest life-bearing grace to those who worship this glory, O pure Virgin.",
+            "_refrain": "The heavenly hosts proclaim to the world the Savior, Lord and Master Who hath been born."
+          }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "From on high our Savior, the Dayspring of the East hath visited us\nand we who are in shadowy darkness have truly found Him;\nfor the Lord hath been born from the Virgin.",
+      "label": "Exapostilarion of the feast",
+      "_note": "Chanted thrice."
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Be glad, O ye righteous! Rejoice, O heavens!\nLeap up, ye mountains for Christ hath been born!\nThe Virgin sitteth, holding the incarnate Word of God in her bosom,\nlike unto the cherubim.\nShepherds marvel at Him Who hath been born;\nthe magi offer gifts to the Master;\nand the angels say, chanting://\nO unapproachable Lord, glory be to Thee!",
+          "tone": 4
+        },
+        {
+          "text": "O Virgin Theotokos having given birth to the Savior,\nthou hast abolished the ancient curse of Eve;\nfor thou didst become the Mother of Him in Whom the Father is well pleased\nbearing the incarnate Word of God in thy bosom.\nThis mystery is not subject to testing\nbut with faith alone we all glorify it,\ncrying out with thee and saying://\nO ineffable Lord, glory be to Thee!",
+          "tone": 4
+        },
+        {
+          "text": "Come let us hymn the Mother of the Savior,\nwho even after giving birth wast revealed to be a Virgin.\nRejoice O animate city of God the King,\nwherein Christ making His abode, hath wrought salvation!\nWe chant with Gabriel and offer up glory with the magi saying:\nO Theotokos, entreat Him Who became incarnate from thee,//\nthat we be saved!",
+          "tone": 4
+        },
+        {
+          "text": "The Father was well pleased;\nthe Word became flesh;\nthe Virgin gave birth to God incarnate;\nthe star proclaimeth Him;\nthe magi offer Him worship;\nthe shepherds marvel,//\nand creation rejoiceth.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Today invisible nature is joined to men through the Virgin!\nToday the boundless Essence is wrapped in swaddling bands in Bethlehem!\nToday God guideth the magi by the star, to offer Him homage,\nannouncing beforehand His own three-day burial\nin their gold, myrrh and frankincense.\nTo Him do we chant:\nO Christ God Who hast become incarnate through the Virgin,//\nsave Thou our souls!",
+        "tone": 6,
+        "label": "Glory ..."
+      },
+      "theotokion": {
+        "text": "Today Christ is born of the Virgin in Bethlehem!\nToday the Beginningless beginneth to be and the Word becometh incarnate!\nThe hosts of heaven rejoice, and earth and men are glad!\nThe magi offer gifts to the Master, and the shepherds marvel at Him Who hath been born!\nAnd we cry out unceasingly:\nGlory to God in the highest,//\nand on earth peace, good will among men!",
+        "tone": 2,
+        "label": "Both now ..., the composition of John the monk"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thy Nativity, O Christ our God,\nhath shined the light of knowledge upon the world;\nfor thereby, they that worshipped the stars\nwere instructed by a star\nto worship Thee, the Sun of Righteousness,\nand to know Thee, the Dayspring from on high.//\nO Lord, glory be to Thee.",
+      "tone": 4,
+      "label": "Troparion of the feast",
+      "_note": "After the Great Doxology: Troparion of the feast. Litanies. Dismissal."
+    }
+  }
+}

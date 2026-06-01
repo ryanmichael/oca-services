@@ -1,0 +1,476 @@
+{
+  "_meta": {
+    "feast": "Commemoration of the Wonder-Working Icon of the Most Holy Theotokos, Known as \"It Is Truly Meet\", and the Miracle Wrought by the Archangel Gabriel",
+    "feastKey": "itisTrulyMeetIcon",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "feastType": "theotokos",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 06-11.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-11.pdf",
+    "_note": "Polyeleos feast. Single canon of the Theotokos in Tone IV. Two kontakia: root kontakion is Tone IV 'icon' kontakion (used at Liturgy and in canon after Ode 6 with ikos); Tone VIII 'Theotokos' kontakion also sung at Liturgy. Great Vespers includes entrance and three Old Testament readings (Genesis 28, Ezekiel 44, Proverbs 9). Polyeleos magnification 'It is truly meet to magnify thee, O Theotokos...' Gospel: Luke §4 (Lk 1:39-49, 56)."
+  },
+
+  "troparion": {
+    "text": "O ye faithful, with boldness let us hasten to the Theotokos, our merciful Queen,\nand with compunction let us cry out to her:\nSend down upon us thy rich mercies;\npreserve our Church; and maintain the people in prosperity;\nand deliver our land from every evil circumstance;\nand grant peace to the world and salvation to our souls.",
+    "tone": 4,
+    "label": "Troparion of the icon"
+  },
+
+  "kontakion": {
+    "text": "All of Athos doth celebrate today,\nfor it hath miraculously received from the angel the hymn to thee,\nthe pure Mother of God,\nwhom all creation doth honor,//\nrendering thee glory.",
+    "tone": 4,
+    "ikos": "Let the multitude of the fathers of Athos now be glad, for, lo! to the former hymn to the Virgin which Cosmas, the divine hymnographer, wondrously sang to her, Gabriel hath now added a beginning: \"It is truly meet,\" he said to the monk, \"to bless thee, the Theotokos, ever-blessed and most blameless, and Mother of Our God.\" And he commanded him to tell all to begin thy hymn thus. And having engraved it on a tablet of stone with his hand, he suddenly vanished. Marveling, the monk hymned, as he had been taught, the pure Mother of God, whom all creation doth honor, rendering her glory.",
+    "label": "Kontakion of the icon",
+    "melody": "Thou hast appeared"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O wondrous miracle! God Who became incarnate of thee hath now been well-pleased to magnify thy hymn, O pure one. Wherefore, He sent His archangel in fitting guise to the novice, to teach him thy hymn; for Gabriel before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O wondrous miracle! God Who became incarnate of thee hath now been well-pleased to magnify thy hymn, O pure one. Wherefore, He sent His archangel in fitting guise to the novice, to teach him thy hymn; for Gabriel before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O thy miracles, O pure one! Thou hast been shown to be the Mother of the Most High, O Lady! And now, by thy forethought, O all-immaculate one, the Archangel Gabriel hath been sent from heaven in the guise of a stranger, to teach thy hymnody in a most perfect manner; for he before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O thy miracles, O pure one! Thou hast been shown to be the Mother of the Most High, O Lady! And now, by thy forethought, O all-immaculate one, the Archangel Gabriel hath been sent from heaven in the guise of a stranger, to teach thy hymnody in a most perfect manner; for he before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "We glorify thy forethought, O Virgin Mother of God, for by the strange arrival of the divine Gabriel, O all-immaculate one, thou hast now taught us the truly wondrous beginning to thy hymn. Wherefore, falling down with faith, we call out to thee, crying aloud with him: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "We glorify thy forethought, O Virgin Mother of God, for by the strange arrival of the divine Gabriel, O all-immaculate one, thou hast now taught us the truly wondrous beginning to thy hymn. Wherefore, falling down with faith, we call out to thee, crying aloud with him: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O wondrous miracle! The radiant Gabriel, in the guise of a monk, appeared to the monk who remained behind in his cell and miraculously received the amplification of thy hymnody, O all-immaculate one. And straightway with his finger he engraved what he had chanted upon a tablet of stone, and then vanished, leaving the astonished monk to glorify thee, O most hymned one.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 1,
+        "melody": "O wondrous miracle",
+        "text": "O wondrous miracle! The radiant Gabriel, in the guise of a monk, appeared to the monk who remained behind in his cell and miraculously received the amplification of thy hymnody, O all-immaculate one. And straightway with his finger he engraved what he had chanted upon a tablet of stone, and then vanished, leaving the astonished monk to glorify thee, O most hymned one.",
+        "_note": "Repeat (second)"
+      }
+    ],
+    "doxastikon": {
+      "text": "Fitting was it that on Mount Athos, which hath thee as its intercessor, O Mother of God, that this, the hymn of the archangel to thee, was first chanted unto thee, O most hymned Virgin, and that from hence it hath passed to all the ends of the world, as the crown of the hymns of the Mother of God. Wherefore, we cry out to thee: O most glorious Theotokos, beseech thy Son, that our souls be saved!",
+      "tone": 4,
+      "label": "Glory"
+    },
+    "otReadings": [
+      {
+        "label": "A Reading from Genesis",
+        "reference": "Gen. 28:11-17",
+        "summary": "Jacob's ladder: the Lord stood upon it; Jacob awoke saying 'How fearful is this place! This is none other than the house of God, and this is the gate of heaven.'"
+      },
+      {
+        "label": "A Reading from the Prophecy of Ezekiel",
+        "reference": "Ezek. 43:27–44:4",
+        "summary": "The shut eastern gate of the sanctuary: 'This gate shall be shut, it shall not be opened, and no one shall pass through it; for the Lord God of Israel shall enter by it.' The house was full of the glory of the Lord."
+      },
+      {
+        "label": "A Reading from Proverbs",
+        "reference": "Prov. 9:1-11",
+        "summary": "Wisdom hath built a house for herself and set up seven pillars; she calleth all to eat of her bread and drink of her wine. The fear of the Lord is the beginning of wisdom."
+      }
+    ],
+
+    "aposticha": {
+      "stichera": [
+        {
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "text": "Of old, God sent to thee the divine Gabriel, the prince of the ranks of heaven, O Virgin Maiden, to bear thee tidings of thine ineffable conception; and now he is first to teach us thy new hymnody."
+        },
+        {
+          "verse": "I shall commemorate thy name in every generation and generation.",
+          "tone": 1,
+          "text": "O Virgin Maiden, who can worthily recount this strange miracle, which took place to thy glory? For the angel hath now appeared in the guise of a monk, providing a new beginning for thy hymn with wondrous praises unto thee, and telling all to chant thus."
+        },
+        {
+          "verse": "The rich among the people shall entreat thy countenance.",
+          "tone": 1,
+          "text": "Meet it is, O Virgin, as the divine Gabriel truly chanted, to bless thee, the pure Theotokos, blessed and all-immaculate, who art in truth the Mother of God, and whom we magnify in hymns."
+        }
+      ],
+      "doxastikon": {
+        "text": "The monk now heard a hymn which he had never known; for the archangel taught him the beginning of thy hymn, O Virgin. Wherefore, marveling, the monk asked him to set it down in writing. He therefore engraved it with his finger upon a tablet of stone, and then vanished, having ensured that in joy thou wouldst ever be hymned as the Theotokos.",
+        "tone": 4,
+        "label": "Glory … Both now …"
+      }
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "feastType": "theotokos",
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "All the multitude of the fathers of Athos have now assembled to hymn thy glorious festival with splendor, O Maiden. For today the prince of the angels hath most gloriously proclaimed to us the beginning of thy hymn.",
+        "tone": 1,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Thy tomb, O Savior",
+        "_note": "Glory … Both now … the foregoing is repeated."
+      },
+      {
+        "text": "Before, Gabriel was sent to thee from heaven, O pure one, to announce thine awesome seedless conception. And now, in the guise of a monk, he hath openly appeared to teach thy hymnody, and miraculously engraved it. Wherefore, with the desert-dwellers and cenobites of Athos, we all cry aloud: Rejoice, O thou whom the ranks of angels hymn!",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Joseph marveled",
+        "_note": "Glory … Both now … the foregoing is repeated."
+      }
+    ],
+
+    "magnification": {
+      "refrain": "It is truly meet to magnify thee, O Theotokos, who art more honorable than the cherubim and beyond compare more glorious than the seraphim.",
+      "verses": [
+        "O God, give Thy judgment to the king, and Thy righteousness to the son of the King.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "All the multitudes of Athos are now glad, celebrating a splendid festival, having truly learned how to bless thee, the Theotokos, ever-blessed and pure, the all-immaculate and undefiled one, who art the Mother of our God. Wherefore, with Gabriel we cry aloud to thee: Rejoice, O thou who art full of grace!",
+      "tone": 3,
+      "melody": "Awed by the beauty of thy virginity",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Awed by the beauty of thy virginity and thy most radiant purity, Gabriel, crying aloud, hath now shown us how to chant the wondrous and most excellent beginning to thy hymn, and, having miraculously engraved it upon a tablet of stone, he straightway vanished. Wherefore, we honor thee.",
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Glory … Both now …"
+      }
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "I shall commemorate thy name\nin every generation and generation.",
+      "verse": "Hearken, O daughter, and see, and incline thine ear."
+    },
+
+    "gospel": {
+      "reading": "Luke 1:39-49, 56",
+      "number": 4,
+      "_note": "The Visitation of the Theotokos to Elizabeth; Mary's Magnificat. Gospel §4 for the Theotokos."
+    },
+
+    "postGospelSticheron": {
+      "text": "Of old, Gabriel announced to her who is full of grace: Rejoice, O unwedded Maiden who knewest not wedlock! And now, appearing in a strange guise to a monk, he hath chanted a new hymn. Then, he related his tidings to thee, O pure one, and now he hath wondrously hymned thee, O Virgin, as the all-immaculate one who gave birth to the Lord.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_authors": "Canon of the Theotokos, Tone IV",
+
+      "ode1": {
+        "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Athos, which is called the Holy Mountain, doth now celebrate with splendor thee who art truly the holy mountain, as thou didst foretell, O all-immaculate and pure one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Gabriel doth ever wondrously minister unto thy divine and excellent mysteries, O all-immaculate one; wherefore, rejoicing now, O Virgin, he chanteth the beginning of thy hymn."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "O all-immaculate and pure Mother, thou wilt never cease to work all-glorious miracles for thy servants, and in all times to pour forth thy benefactions, O most holy one, in that thou art our benefactress."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "How can I recount that greatest of miracles wrought by thee near the Skete of Karyes, O archangel, when by thine appearance thou didst teach us fitting hymnody for the Mother of God?"
+          }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory\ngrant them crowns of glory.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "When the time came for all the fathers to assemble in the Church of the Protaton, to celebrate praise throughout the night, then did the archangel chant thy divine hymn, O pure one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The elder of that novice went with the others; and to the one left behind the Archangel Gabriel appeared in similar guise, providing a beginning for thy hymn."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Adding a phrase to the beginning of that hymn which Cosmas sang to thee of old, thy divine servant said that it was his habit to begin thy hymn thus."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "O thine awesome wonders, O divine Archangel Gabriel: how in the guise of a monk didst thou chant to the Mother of God on this day and didst magnify her as is fitting!"
+          }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "The monk marveled at the hymnody of the angel, who chanted a strange hymn before thee, O pure one, appearing to him in monastic guise. And when the monk wished him to set it down in writing, he miraculously engraved it on a tablet of stone, and then vanished. Wherefore, this hymn hath proclaimed to all that thou, the Theotokos, be glorified, O all-immaculate one.",
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "_note": "Glory … Both now … the foregoing is repeated."
+      },
+
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God,\nthat the incarnation of Thee the Most High,\nwill be from a Virgin,\nthe Prophet Habbakuk cried aloud:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The Angel began: It is truly meet to bless thee, O most pure one, the Theotokos, ever-blessed and truly all-immaculate, the most pure Mother of God."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "When the divine Gabriel strangely chanted this introduction to the hymn, the monk who listened was amazed, and when he then asked, the angel said it was his custom thus to sing."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The divine Archangel Gabriel commanded that this introduction be added to the beginning of the divine hymn of Cosmas, and that it be taught unto all."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Because the monk asked thee to set down in writing the hymn he had heard, O divine Gabriel, thou didst straightway inscribe it on a tablet of stone. Glory to thine ineffable power, O archangel!"
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,\nbestowing peace upon all who hymn thee.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The man was filled with awe by the marvelous wonder as he beheld a miracle when the tablet of stone was graven and Gabriel, the glorious and honorable supreme commander who was conversing with him, vanished."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "When the elder returned to his kellion in the morning, and heard these strange tidings and beheld the stone tablet which had been engraved by the archangel's hand, with his disciple he straightway bore it to the superiors of the Holy Mountain."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "These miracles are well known to all, O Virgin, for the superiors of the Mountain solemnly dispatched the stone tablet immediately to the Imperial City, that all may glorify thee."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "All hastened to the lowly habitation wherein the strange wonder took place, and to thine icon before which the hymn was chanted, O most pure one; and, reverently bowing down, they unanimously decreed that it be kept in the Protaton."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast\nof the Mother of God,\nO ye divinely wise,\nlet us come, clapping our hands,\nand glorify God who was born of her.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "With ineffable joy and gladness the priests and monastics, all the multitudes of the Holy Mountain, hastened to take up thine icon, O most pure one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Holding this thy divine icon with all reverence, all the fathers, weaving hymnody, bore it into thy divine temple with hymns and songs, O most pure one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "O Virgin, they celebrated an all-night vigil, lovingly honoring thee and the archangel who proclaimed thy hymn; and we now likewise honor you together."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "After the celebration of the Mysteries, the godly fathers, chanting, took up thy divine icon, and with great reverence placed it within the sanctuary of thy temple."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "All of Athos doth celebrate today,\nfor it hath miraculously received from the angel the hymn to thee,\nthe pure Mother of God,\nwhom all creation doth honor,\nrendering thee glory.",
+        "tone": 4,
+        "label": "Kontakion of the icon"
+      },
+      "ikos": {
+        "text": "Let the multitude of the fathers of Athos now be glad, for, lo! to the former hymn to the Virgin which Cosmas, the divine hymnographer, wondrously sang to her, Gabriel hath now added a beginning: \"It is truly meet,\" he said to the monk, \"to bless thee, the Theotokos, ever-blessed and most blameless, and Mother of Our God.\" And he commanded him to tell all to begin thy hymn thus. And having engraved it on a tablet of stone with his hand, he suddenly vanished. Marveling, the monk hymned, as he had been taught, the pure Mother of God, whom all creation doth honor, rendering her glory."
+      },
+
+      "ode7": {
+        "irmos": "Refusing to worship created things\nin place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud:\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "All the fathers, past and present, have most rightly rendered most excellent honor to this thy divine icon, O all-immaculate one; for great honor is most gloriously due thee."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy divine icon is worthy of great grace, O all-immaculate one; for it was thy good pleasure that the beginning of thy hymn be first intoned before it. Wherefore, with love we now bow down before it as is fitting."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "We do not make of thine icon a deity, O most pure one, as the slanderers say of us; rather, rejoicing, we render it relative honor, and we, thy servants, venerate it with respect, now and forever, O all-immaculate one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "With thee, O most holy one, we will never cease to honor the glorious Gabriel, who hath now taught us thy hymn, and who of old, making salutation unto thee, cried: Rejoice, O thou who art full of grace!"
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Emulating the pious children, O most pure Theotokos, hymning thy wonders, which the Lord hath wrought to thy glory, we chant: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Truly blessed was he who was deemed worthy to hear thy divine praises from the angel, O all-holy and all-immaculate Virgin, as was Thy Son's good pleasure; for thereby he hath taught all to hymn thee worthily and to supremely exalt thee throughout all ages."
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "It was resolved as is meet, to call the place where this miracle took place \"Hymnody\", for this name doth forever fix the miracle in our memory, O most pure one, that we may hymn and supremely exalt thee throughout all ages."
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "To this day the kellion wherein thy divine icon, before which the beginning of thy hymn was first chanted, O pure Virgin, is manifestly called \"It Is Truly Meet\", that all may hymn thee as is meet and supremely exalt thee throughout all ages."
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Let every mortal born on earth,\nradiant with light, in spirit leap for joy;\nand let the host of the angelic powers\ncelebrate and honor the holy feast of the Mother of God,\nand let them cry aloud:\nRejoice! O all-blessed Theotokos,\nthou pure Ever-Virgin.",
+        "troparia": [
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "All of us, thy servants, hasten to thy divine temple, and we now hold festival, with splendor celebrating a feast at the annual commemoration of the miracle of the amplification of thy hymn today, O pure Ever-virgin Theotokos."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Rejoicing, let us never cease to say \"It is truly meet to bless thee, the ever-blessed and all-immaculate Mother of our God\", as we learned on this day from the angel, O pure Ever-virgin Theotokos."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Rejoicing together and offering up hymns of thanksgiving, we glorify today the glorious and divine Archangel Gabriel, who by a wondrous miracle hath taught all the divine hymn of the pure Mother of God; and let us cry aloud: Rejoice, initiate of ineffable mysteries!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Rejoice, O all-glorious temple of the Protaton, which boasteth in the treasure of the most precious and divine icon of the only Mother of God, the protectress of Athos, which poureth forth grace! For the Mountain became her chosen portion."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Gather together, leap up and celebrate with splendor! For in monastic guise the divine Gabriel hath now appeared to a monk, announcing for the first time the hymn of the Mother of God on Mount Athos, which hath acquired her as its intercessor.",
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the icon",
+      "_note": "Glory … Both now … the foregoing is repeated.",
+      "_source": "stSergius-menaion"
+    },
+
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "verse": "Praise ye God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "text": "Having descended from the vaults of heaven, the Archangel Gabriel hath now appeared to the novice monk in strange guise, chanting for him thine awesome hymn, therewith amplifying that which Cosmas once sang for thee, O Virgin.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "_note": "Sung twice"
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "text": "Having descended from the vaults of heaven, the Archangel Gabriel hath now appeared to the novice monk in strange guise, chanting for him thine awesome hymn, therewith amplifying that which Cosmas once sang for thee, O Virgin.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "_note": "Repeat (second)"
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "text": "Of old, Gabriel brought from heaven tidings for the Virgin, and cried aloud: Rejoice! And now he hath miraculously announced her awesome hymn to the Holy Mountain, chanting: It is truly meet to bless the most pure one!",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and flute. (Ps. 150:4)",
+          "text": "With love we venerate thy divine icon, O pure one, before which the angel first chanted the beginning of thy hymn. Wherefore, we kiss it now with faith, and together we celebrate the divine Gabriel, the author thereof.",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven"
+        }
+      ],
+      "doxastikon": {
+        "text": "Who can recount thy power, O pure one? Who can reckon the multitudes of thy miracles? For in a manner transcending nature thou dost work many wonders. O the mighty things thou hast done even now! For thou, O most pure Virgin, hast through the angel given us a beginning for thy hymn, and in thy forethought thou hast been well pleased that it be strangely graven upon a tablet of stone, that thou mayest be magnified in hymns, O all-immaculate one.",
+        "tone": 6,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O ye faithful, with boldness let us hasten to the Theotokos, our merciful Queen,\nand with compunction let us cry out to her:\nSend down upon us thy rich mercies;\npreserve our Church; and maintain the people in prosperity;\nand deliver our land from every evil circumstance;\nand grant peace to the world and salvation to our souls.",
+      "tone": 4
+    }
+  }
+}

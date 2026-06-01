@@ -1,0 +1,584 @@
+{
+  "_meta": {
+    "feast": "Venerable Euthymius the Great",
+    "feastKey": "euthymiusTheGreat",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion Jan-20 (OCA translation)",
+    "_note": "Two canons: Canon I by John of Damascus in Tone IV; Canon II by Theophanes in Tone VIII. Polyeleos rank with Magnification, Gospel (Mt 11:27-30, §43), and Great Doxology."
+  },
+
+  "troparion": {
+    "text": "Rejoice, O desert who hast not given birth!\nBe of good cheer, thou who hast not felt the pangs of travail!\nFor the man of spiritual desires hath multiplied children for thee,\nplanting them with piety and nurturing them with abstinence\nunto the perfection of the virtues.\nBy his prayers, O Christ God,//\nbring peace to our life.",
+    "tone": 4,
+    "label": "Troparion of the venerable Euthymius"
+  },
+
+  "kontakion": {
+    "text": "Creation found joy in thine honored nativity\nand in thy divine memory, O venerable one,\nreceiving the good cheer of thy many miracles.\nGive richly of them to our souls, and wash away the defilement of our sins,//\nthat we may chant: Alleluia!",
+    "tone": 8,
+    "melody": "As first-fruits",
+    "ikos": "How can I, wretch that I am, offer praise from my slothful heart?\nI am filled with fear when I hymn the great Euthymius.\nYet, trusting in his entreaties, I begin a hymn with good courage and great diligence,\nand recount to all his life and birth,\nand how his parents chanted unto God: Alleluia!",
+    "label": "Kontakion of the venerable Euthymius"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "O father Euthymius, an angel of heaven was sent to announce beforehand the birth of thee\nwho like John sprang forth from the womb of a barren woman;\nfor thou didst show thyself to be an emulator of him and a homeless one who spurned possessions, sharing his way of life,\nand, like the Baptist, sustaining thyself in the mountains,\nthou didst shine forth with boundless miracles."
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "O father Euthymius, thou didst produce the fruit of barrenness, yet wast truly shown to have many children;\nfor the desert, which before was trackless, became filled with monastics, thy spiritual seed.\nAnd now, make thou supplication, that our souls be granted peace and great mercy."
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "O father Euthymius, thy life was excellent and thy Faith truly Orthodox;\nfor through activity thou didst attain unto the most exalted vision,\nbecoming an abode of wisdom, worshiping Christ in two natures as One of the Trinity.\nHim do thou beseech on behalf of our souls."
+      },
+      {
+        "tone": 1,
+        "melody": "O all-praised martyrs",
+        "text": "O father Euthymius, sharing in the sufferings of Him Who was stretched out upon the Cross,\nthrough activity thou didst truly make thyself conformable to His resurrection and glory.\nHim do thou now entreat, that He grant to our souls peace and great mercy."
+      },
+      {
+        "tone": 4,
+        "melody": "Called from on high",
+        "text": "O thou who wast sanctified from thy mother's womb,\nwhen the eye of Him Who seeth all things perceived thy purpose and inclination leading constantly toward those things which are higher,\nthen, O most blessed one, declaring thee to be a God-given gift, the namesake of good courage,\nHe loosed the sorrow of thy parents.\nWherefore, advancing from infancy, thou didst please God, our Benefactor.\nHim do thou beseech, that He save and enlighten our souls.",
+        "_note": "Sung twice."
+      },
+      {
+        "tone": 4,
+        "melody": "Called from on high",
+        "text": "Finding thee to be like a clear mirror of divine revelations, Christ illumined thee\nwith the radiant splendor of His light, O father who art full of divine gifts.\nWherefore, thou hast been shown to be a well-spring overflowing with healings and a feeder of the hungry,\nwatering with rains the desire of those who thirst;\nand, looking upon souls as pledges, O wise one, by thy discourse thou didst make them better for God.\nHim do thou entreat that He save and enlighten our souls."
+      },
+      {
+        "tone": 4,
+        "melody": "Called from on high",
+        "text": "Shining forth with vision and activity, thy life was angelic,\na standard and most excellent model of virtue for those who desire to worship God, O summit of perfection.\nAnd thy divinely wise discourse, O Euthymius, hath taught all to worship the Trinity,\nthat Christ is known to be One in two natures,\nand that the councils were equal in number to the four Gospels of Christ.\nHim do thou beseech, that He save and enlighten our souls."
+      },
+      {
+        "tone": 3,
+        "label": "Glory",
+        "text": "Dedicated to God, like another Samuel from thy mother's womb, O father Euthymius,\nthou wast the namesake of the good courage for the faithful,\nthe staff and confirmation of monastics, and the pure habitation of the Holy Spirit.\nAsk thou great mercy for us who honor thee."
+      }
+    ],
+    "aposticha": [
+      {
+        "tone": 5,
+        "melody": "Rejoice",
+        "text": "Rejoice, O venerable father, in that thou art the cause of good cheer for the Church;\nfor by thy nativity all the assaults of the heretics were repulsed by the providence of God.\nWherefore, He called thee Euthymius, namesake of good courage.\nThou didst fill the ranks of celestial beings with joy by the radiance of thy life,\nand now, making thine abode with them, filled with light and enjoying most blessed and divine effulgence,\nentreat Christ, that He grant great mercy to our souls."
+      },
+      {
+        "verse": "Precious in the sight of the Lord is the death of His saints.",
+        "tone": 5,
+        "text": "Made steadfast by the staff of the Cross, thou didst dry up torrents of iniquity,\nand, noetically watered by the torrent of divine sweetness and the well-spring of paradise,\nthou didst show forth springs of salvation in the desert.\nAnd irrigated with streams of the divine Spirit like a palm-tree, O venerable one,\nthou didst hasten to the heights of heaven, showing thyself to be a fiery pillar full of luminous effulgence, O divinely wise one.\nWherefore, entreat Christ, that He grant great mercy to our souls."
+      },
+      {
+        "verse": "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight.",
+        "tone": 5,
+        "text": "Truly thou hast passed over with joy and gladness of soul to the wondrous tabernacles,\neven unto the house of God, O most blessed father,\nwhere thou dost listen to the beautiful voices, the sweet hymnody and the ineffable delight of those who keep festival,\nsharing in their beauty, O Euthymius.\nAnd desiring this alone, thou didst mortify thy flesh, which thou didst attain, adorned with divine righteousness.\nEntreat Christ, Who granteth the world great mercy."
+      },
+      {
+        "label": "Glory",
+        "tone": 5,
+        "text": "O venerable father, thou gavest no sleep to thine eyes, nor slumber to thine eyelids,\nuntil thou didst free soul and body from the passions and didst prepare thyself to be a dwelling-place for the Spirit;\nfor Christ, coming with the Father, made His abode within thee:\nIn that thou art a favorite of the consubstantial Trinity, O Euthymius our father, thou great preacher,\npray on behalf of our souls."
+      }
+    ]
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "joint": true,
+      "feastType": "saint",
+      "_source": "St-Sergius Emenaion Jan-20 (OCA translation)"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Shining with unapproachable light, thou didst shine forth like a star in the deserts,\nillumining with thy teachings those who approach thee with steadfast soul, O Euthymius.",
+        "tone": 4,
+        "melody": "Thou hast appeared today",
+        "label": "Sessional Hymn after Kathisma 1",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Accepting the entreaty of us who have recourse to thy protection, O Virgin,\ncease thou never to make supplication to Him Who is the Lover of mankind,\nthat He save thy servants.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "Rejecting the cares of life and embracing the angelic life,\nthou didst adorn thy soul with abstinence, and richly received grace from God, O God-bearing Euthymius.\nPray thou on behalf of us who piously praise thee.",
+        "tone": 5,
+        "melody": "The co-beginningless Word",
+        "label": "Sessional Hymn after Kathisma 2",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O all-holy Virgin, have mercy on us who with faith have recourse to thee, the mercifully compassionate one,\nand who ask thy fervent aid;\nfor, since thou art the good Mother of God Most High, O thou who art full of the grace of God,\nthou dost ever make entreaty with thy maternal supplications, that He save us all.",
+          "tone": 5,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We bless thee, O venerable father Euthymius,\nand we honor thy holy memory, O instructor of monks and converser with the angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Truly embracing the poverty of Him Who was born of the Virgin for our sake,\nthou didst reckon transitory things to be as grass, O blessed one;\nfor, having tasted of the tree of knowledge, O venerable one, thou didst show thyself to be a godly instructor of monastics.\nWherefore, thou didst raise up in them all, zeal for the angelic life and a proper understanding of the Faith,\nO sign-bearing Euthymius our father.\nEntreat Christ God, that He grant forgiveness of transgressions unto those who celebrate thy holy memory with love.",
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn after the Polyeleios",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women hast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins\nunto those who with faith worship thine all-holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "Matthew 11:27-30",
+      "number": 43,
+      "_note": "The Lord said to His disciples: All things are delivered unto Me of My Father…"
+    },
+
+    "postGospelSticheron": {
+      "text": "O venerable father, the sound of thy corrections hath gone forth into all the earth;\nwherefore, thou hast found the reward of thy labors in the heavens,\nhast destroyed legions of the demons and hast attained unto the ranks of the angels, whose life thou didst blamelessly emulate.\nAs thou hast boldness before Christ God, ask thou peace for our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": {
+        "first": "John of Damascus (Canon I, Tone IV, acrostic: 'Thou hast been shown to be the wealth of mortals, O Euthymius')",
+        "second": "Theophanes (Canon II, Tone VIII, acrostic: 'By thy supplications, O most blessed one, grant me light')"
+      },
+      "_canonNote": "Paraclysis canon with 6 troparia and two canons of the venerable one with 8 troparia total per ode.",
+
+      "ode1": {
+        "irmos": "There is none like unto Thee, O exceedingly glorious Lord;\nfor by Thy mighty arm Thou didst deliver the people\nwhom Thou hast acquired, O Lover of mankind.",
+        "irmos2": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,\nchanting a hymn unto God.",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Most gloriously thou didst loose the grief of thy parents, O namesake of good courage,\nhaving been promised to them by God as a gift before birth."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "The Church giveth utterance to a hymn of thanksgiving, O venerable one,\nhaving received thee from God as an offspring of peaceful and goodly courage who wast foretold."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "With thy supplications and entreaties beseech God;\ndispel the gloomy cloud of my despondency, O most blessed one,\nwho, standing before the King of all, art full of good cheer and consolation."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Having been promised and given by God like a new Samuel, even before thou wast conceived, O venerable father,\nthou hast been revealed to all the Churches by the splendor of thy good courage, in accordance with thy name."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Having made supplication and entreaty to God, thy parents received thee as a divine gift and a radiant offspring,\nwho by thy nativity hast declared the splendor of piety and the denunciation of heresy."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "From childhood thou wast dedicated to God Who had given thee life, O venerable one;\nand, looking to Him and guided by His life-creating precepts, O God-bearer,\nthou didst ascend to the uttermost summit of the virtues by faith."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Having thee as our intercession, O Mother of God,\nwe fear not the hordes of the enemy which assail those who glorify the God and Lord of all Who was born of thee.\nHim do thou entreat on our behalf."
+          }
+        ],
+        "katavasia": "The Sun once passed over dry land in the midst of the deep.\nFor the water on both sides became firm as a wall while the people traversed the sea on foot,\nchanting in a manner pleasing to God: Let us sing unto the Lord;\nfor gloriously hath He been glorified."
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ, the Hypostatic Wisdom of the Father;\nfor there is none more holy than Thee, O Lover of mankind.",
+        "irmos2": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters;\nfor there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Emulating Hannah, she who gave thee birth brought thee, like the venerable Samuel of old,\nas a living sacrifice to God, Who had glorified thee even before thou wast conceived."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Aflame with rich love for God, O venerable one, with most pious resolve thou didst master the passions;\nwherefore, the grace of God rested upon thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Born of a barren woman, thou wast shown to be a most skillful husbandman of spiritual fertility,\ncutting down the weeds of impiety and scattering the divine seed of piety, O venerable one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "As a sacred minister of supra-natural and mystic visions, O God-bearing father,\nby thy doctrines thou didst divinely lead unbelievers to Christ as believers instructed in higher things."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Having mortified the flesh with extreme abstinence, O Euthymius,\nholding fast to the most chaste and pious thought,\nthou didst straightway prefer everlasting life and sweetness to things which are transitory and corrupt."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Eluding the fiery pursuit of the demons by a soul aflame and wounded with the love of Christ, O father,\nthou wast illumined with dew-bearing grace, becoming a bearer of the sign of the Cross."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou didst seal the sayings of the prophets of God and their prophecies.\nYea, thou didst fulfill all their divine utterances, O blessed and all-immaculate one."
+          }
+        ],
+        "katavasia": "O Lord, the firm foundation of those who put their trust in Thee,\ndo Thou establish the Church, which Thou hast purchased with Thy precious blood."
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Thou didst spiritually fill the lamp of thy soul with the oil of abstinence, desiring the ever-radiant coming of thy Bridegroom, O venerable one.\nThou didst keep watch with vigilant prayers and didst make thine abode in His bridal chamber, O blessed one.\nWherefore, as is meet, thou hast truly received sweetness and the ever-vital ability to perform miracles,\nO God-bearing Euthymius.\nEntreat Christ God, that He grant forgiveness of transgressions unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "melody": "Of the Wisdom",
+        "label": "Sessional Hymn (after Ode 3)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "O Sovereign Lady, as is meet I offer thee thankful praise, like the widow's two mites, for all thy gifts;\nfor thou hast been shown to be my protection and help, ever rescuing me from perils and tribulations.\nWherefore, delivered from those who oppress me as from the midst of a burning furnace,\nI cry out to thee from the depths of my heart:\nO Theotokos, help me, entreating Christ God,\nthat He grant forgiveness of sins unto me, for I, thy servant, have thee as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "By thy descent, O Christ, Thou didst bow down the heavens in wisdom,\nrevealing Thyself incarnate on earth.\nWherefore, we all cry aloud: Glory to Thy power, O Lover of mankind.",
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Having preserved thine intelligence immutable, from earliest infancy thou didst show forth ascent unto God by thy way of life.\nAnd drawing nigh unto Him, thou didst ascend from power to higher power."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "As a traveler from hence to the city which received God, thou didst desire the humility of Christ,\nand wast crucified in spirit with Him Who suffered on the Cross for thy sake."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "It being thy will to contend lawfully, thou didst strip off thy life;\nand naked, wrestling like Christ against the enemy, thou didst raise high the trophy of victory in the desert."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Desiring undying glory, O father, thou didst consecrate thyself wholly unto God,\nand by thy blameless life, abstinence and the splendor of thy life,\ndidst zealously hasten to Him, crying out unceasingly:\nGlory to Thy power, O Lover of mankind!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Loving the Well-spring of goodness with all thy strength, O venerable one,\nthou didst become a well-spring of divine gifts for ascetics, healing those who thirst;\nfor thou didst most gloriously cause springs to issue forth in the desert, like Moses of old."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Emerging from the hidden recesses of the Spirit, thou didst set free the children of the bondwoman Hagar,\nregenerating them as worthy children of God by the baptism of adoption;\nfor, having emulated the life of the divine forerunner, thou wast shown to be a baptizer, O Euthymius."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Illumined by God with grace, O Euthymius, thou wast acknowledged by the ignorant;\nfor truly it did not befit thy virtue to hide and conceal thyself in the deserts.\nWherefore, the Master of all hath shown thee to all as a radiant lamp."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Rejoice, O honored one! Rejoice, O all-pure Virgin!\nRejoice, mountain overshadowed with grace! Rejoice, tabernacle! Rejoice, O ark!\nRejoice, candle stand who bore the divine Light!\nfor thou hast been for the faithful the mediatress of ineffable joy and gladness of soul."
+          }
+        ],
+        "katavasia": "Thy virtue hath covered the heavens, O Christ,\nfor having come forth from the Ark of Thy sanctification, from Thine undefiled Mother,\nThou hast appeared in the temple of Thy glory as an infant borne in arms, filling all with Thy praise."
+      },
+
+      "ode5": {
+        "irmos": "The wicked will not behold Thy glory, O Christ,\nbut we who rise early to hymn Thee shall behold Thee,\nthe Only-Begotten effulgence of Thy Father's divinity, O Lover of mankind.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thou didst submit to the law of God, for thou didst wield thy body like a spiritual weapon, O God-bearer,\nmaking the wisdom of thy flesh subject to thy spirit."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "In gladness thou didst complete the course of this life,\nand, conceiving the fear of God within thyself,\nthou didst give birth unto salvation for the lost, shining like the sun though hidden by the desert."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Revealed as a pillar of fire and cloud by the radiance of the Spirit, O Euthymius,\nthou didst go in advance of the pious ascetics, leading them towards the heavenly path\nand to non-perishing delight, guiding them to the heights of heaven, O father."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Christ hath given thee to the world, O father, as an exceeding merciful physician of the sick,\na most glorious feeder of the hungry, an instructor of the ignorant, a chastiser of the mindless,\nand a helper of orphans and the poor."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thou wast compassionate and merciful, possessing a humble-minded character, O father,\ncutting off the roots of the passions with divine teachings, enlightening and instructing thy disciples,\nand healing the afflictions of men's souls."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Emitting everywhere the rays of thy miracles, thou hast illumined all;\nlike a magnet thou hast drawn all to thy teachings, edifying the traits and gifts of their souls,\nsurpassing all in purity of soul."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: We all proclaim thee to be the true Theotokos, O thou who art blessed of God,\nhaving been delivered from corrupt birth by thy birthgiving and recalled to a better life,\nthrough the loving-kindness of the mercy of our God."
+          }
+        ],
+        "katavasia": "In a vision Isaiah saw upon a throne, God lifted up on high, borne aloft by angels of glory;\nand he cried: 'Woe is me! For I have foreseen God made flesh,\nthe Lord of the never-setting light and the King of peace.'"
+      },
+
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss, O Greatly-merciful One.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried, and Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "By thy supplications, O God-bearer, break thou the yoke of our bondage,\nhaving now through the laver of regeneration adopted the offspring of the bondwoman of old."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "The grace of God, O God-bearer, which dwelt actively within thee,\nappointed thee as a most wise founder, a chastiser of the mindless and an expeller of evil spirits."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Receiving from God great authority, thou didst drive away multitudes of adverse demons,\nhealing the noetic deformity of all who with faith had recourse to thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Truly blessed wast thou, O venerable father Euthymius,\nhaving acquired enriching poverty and tears of joy;\nfor thereby thou didst inherit the kingdom of heaven."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thou didst spurn quickly fading honor and glory on earth, O most blessed one,\nand received everlasting life and incorrupt delight,\nhaving made thine abode most excellently in the mansions of heaven."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: We call thee the Queen and Sovereign Lady of all;\nfor truly thou didst ineffably give birth unto God Who created, sustaineth, and embraceth all, O all-immaculate one."
+          }
+        ],
+        "katavasia": "The Elder, having seen with his eyes the salvation that was to come unto the peoples from God,\ncried aloud unto Thee: 'O Christ, Thou art my God.'"
+      },
+
+      "kontakion": {
+        "text": "Creation found joy in thine honored nativity\nand in thy divine memory, O venerable one,\nreceiving the good cheer of thy many miracles.\nGive richly of them to our souls, and wash away the defilement of our sins,//\nthat we may chant: Alleluia!",
+        "tone": 8,
+        "melody": "As first-fruits",
+        "label": "Kontakion of the venerable Euthymius"
+      },
+      "ikos": {
+        "text": "How can I, wretch that I am, offer praise from my slothful heart?\nI am filled with fear when I hymn the great Euthymius.\nYet, trusting in his entreaties, I begin a hymn with good courage and great diligence,\nand recount to all his life and birth,\nand how his parents chanted unto God: Alleluia!"
+      },
+
+      "ode7": {
+        "irmos": "The three youths in Babylon regarded the tyrant's command as foolishness,\nand cried aloud in the midst of the flame:\nBlessed art Thou, O Lord God of our fathers!",
+        "irmos2": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thou wast seen within a cloud, O father, enveloped by a supra-natural fire,\ncrying out, as a heavenly initiate of the mysteries of God:\nBlessed art Thou, O Lord God of our fathers!"
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "The Creator of nature hath freely given thee supra-natural powers, O father,\nfor as a divine initiate of the mysteries of heaven, thou didst cry aloud:\nBlessed art Thou, O Lord God of our fathers!"
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Worshipping the one Only-begotten, one in two natures according to His divine incarnation, O Euthymius,\nthou didst cry aloud: Blessed art Thou, O Lord God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Uniting thyself with the incorporeal ones through extreme abstinence, O father Euthymius,\nthou didst show thy life to be a contest of asceticism and an exercise in holiness,\ncrying: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Christ showed thee to be a two-edged sword cutting down hordes of the demons\nand piercing the hearts of the enemy,\nbut making glad the souls of those who chant: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Filled with the light of the threefold Sun, O father Euthymius,\nthrough communion thou wast shown to be a secondary luminary reflecting the primal Light,\nemitting rays upon those who chant: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou didst shine like the dawn, having within thee the Sun of righteousness,\nWho cleanseth the world of the darkness of ignorance with the radiance of divine knowledge.\nTo Him do we chant: Blessed is the God of our fathers!"
+          }
+        ],
+        "katavasia": "O Thou who in the midst of the fire bedewed the children as they discoursed on things divine,\nand Who didst take up Thy dwelling in the pure Virgin:\nO Word of God, Thee do we reverently praise chanting:\nO God of our fathers, Blessed art Thou."
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath since been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord and supremely exalt Him throughout all ages.",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "Having dedicated thyself to God and kindled the furnace of the conscience, O Euthymius,\nrejoicing thou didst set fire to thy whole self, thy life, as an unblemished sacrifice,\nchanting unto Christ: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "Having become a son by adoption through the grace of God, as an inheritance thou didst receive knowledge of things to come;\nfor, mastering thy nature, thou didst transcend nature in thy foreknowledge, hastening to fulfillment, O Euthymius.\nHymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "Having acquired a mighty way of life, O most blessed one, thou didst attain unto the most exalted vision,\nbecoming the receptacle containing the life-creating Spirit and the gifts which richly flow from Him;\nand thou chantest unceasingly: Ye people, supremely exalt Him forever!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "Moving thy residence, thou didst reach the outer limits of Sion;\nand thou didst attain unto the everlasting mansions, obtaining a heavenly inheritance by thy pangs.\nAnd thou chantest with the angelic choirs:\nYe children, bless; ye priests, hymn; ye people, supremely exalt God throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "As radiant as the sun, thou didst illumine the desert places, didst expel the dark-visaged demons\nand didst become a most brilliant pillar which reached up to the heights of heaven,\nshining with the effulgence of miracles,\nand unceasingly crying out to the Master: Ye priests, hymn; ye people, supremely exalt God throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord!",
+            "text": "Adorned with the most sacred activities of thy life, thou didst set aright the most basic virtue,\nbecoming radiant through the correctness of thy doctrines and an expounder of excellent theology,\ncrying out unceasingly: Ye priests, hymn; ye people, supremely exalt God throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O all-immaculate Bride of God, from captivity by the passions do thou rescue those who have recourse unto thee;\nand grant full freedom, O Lady, to the churches of the Orthodox,\nwho chant with faith: Ye priests, hymn; ye people, supremely exalt God throughout all ages!"
+          }
+        ],
+        "katavasia": "United together in the unbearable fire, yet not harmed by the flame,\nthe children, champions of godliness, sang a divine hymn:\nO all ye works of the Lord, bless ye the Lord and supremely exalt Him throughout all ages."
+      },
+
+      "ode9": {
+        "irmos": "Thou who during birth O most pure one and after giving birth\nwast as pure as thou wast before birthgiving,\ndoth all creation proclaim aloud,\nand as the true Theotokos we magnify thee.",
+        "irmos2": "Heaven was stricken with awe, and the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Finding thee reposing whole in thy shrine, O venerable one,\nwe bless thee as a victorious spiritual athlete,\nwho wast a well-spring of healings even before thy death."
+          },
+          {
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "He Who dwelleth in the highest hath made thee an ally for our earthly rulers against the barbarians,\nand for thy flock against divers temptations, O venerable father."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Christ told thee of thy much-loved departure unto Him, O father,\nas He did of old to Moses the God-seer, whose emulator thou hadst become through virtue;\nand thou didst part the sea of the passions and didst pass over unhindered to the promised land, vanquishing the adversary."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thou didst repose like Elijah the zealot, ascending to the heavens on a chariot of the virtues, O venerable one,\nwhere thy manner of life was manifestly recorded;\nand, standing now before the Master,\nbe thou mindful of those who with faith celebrate thy luminous and most sacred memory."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Thy manner of life was angelic and thy life was most luminous, O most blessed and divinely wise one;\nthy soul was radiantly godlike, and thy faith pious;\nfor thou wast an extoller of divine dogmas, O God-bearer,\nand revealed to be a true preacher of Orthodox doctrine."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable Euthymius, pray to God for us!",
+            "text": "Made steadfast by thy supplication, O divinely wise father, I earnestly set my hope on thee,\nas my advocate and intercessor, ever praying to God,\nand beseeching for the forgiveness of my sins and the termination of my debts,\nfor thou hast been granted divine compassion."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Be thou a tower of salvation for me, O pure one,\nrepelling the hordes of the demons and driving away the tumult of temptations and tribulations,\nrepulsing the assault of the passions, bestowing pure freedom,\nand granting an abundance of the gifts of God."
+          }
+        ],
+        "katavasia": "In the shadow and the letter of the Law, let us, the faithful, discern a figure:\nevery male child that openeth the womb shall be sanctified to God.\nTherefore we magnify the firstborn Word and Son of the beginningless Father,\nthe firstborn Child of a Mother who hath not known a man."
+      }
+    },
+
+    "exapostilarion": {
+      "text": "God sanctified thee from thy mother's womb, O venerable father,\nshowing thee to be a divine prophet, like unto Jeremiah and Samuel of old.\nWith them, O wonder-working and God-bearing Euthymius, co-dweller with the angels,\nbe thou mindful of those who hymn thee with faith.",
+      "tone": 2,
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the venerable Euthymius",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Saved because of thee, O Sovereign Lady, we regally confess thee to be the Theotokos;\nfor thou didst ineffably give birth to God, Who destroyed death by the Cross\nand hath drawn to Himself the assemblies of the venerable.\nWith them we praise thee, O Virgin.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "verse": "To do among them the judgment that is written: this glory shall be to all His saints. (Ps. 149:9)",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "text": "O venerable father Euthymius, having forsaken that which is earthly, thou didst follow after Christ;\nand thou didst not prefer corruptible things to things which are to come, O glorious one.\nDwelling in the desert as in a city, thou didst destroy hordes of the demons.\nO ever-glorious one, who can help but recount thy soul's true zeal for the Lord?",
+          "_note": "Sung twice."
+        },
+        {
+          "verse": "Praise God in His saints; praise Him in the firmament of His power. (Ps. 150:1)",
+          "repeat": true
+        },
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "tone": 8,
+          "text": "O venerable father Euthymius, thou wast shown to be a rule for monastics and their boast,\nthe delight of the Orthodox, and a radiant beacon for the whole world;\nfor thou wast not afraid of the terrors of the deceitful enemy when thou didst dwell in the cave.\nO the gifts replete in thee, O blessed one,\nwhereby thou didst manifestly trample underfoot all the arrogance of the demons!"
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "tone": 8,
+          "text": "O venerable father Euthymius, thou didst truly take wing, soaring aloft unto God, O holy one;\nand, having purified thy senses by fasting and unceasing supplications, O most blessed one,\nthou wast deemed worthy of immortal life.\nO most glorious adornment of ascetics,\nChrist hath received thee, rejoicing, into the immaterial mansions."
+        }
+      ],
+      "doxastikon": {
+        "text": "We honor thee, O Euthymius our father, as the instructor of a multitude of monks;\nfor by thy path have we truly come to learn how to walk aright.\nBlessed art thou, for, having labored for Christ, thou didst put down the power of the enemy,\nO converser with the angels, companion of the venerable and the righteous.\nWith them do thou entreat the Lord, that He have mercy upon our souls.",
+        "tone": 8,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Sovereign Lady, accept the supplications of thy servants,\nand deliver us from all want and grief.",
+        "tone": 8,
+        "label": "Both now, Theotokion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "Rejoice, O desert who hast not given birth!\nBe of good cheer, thou who hast not felt the pangs of travail!\nFor the man of spiritual desires hath multiplied children for thee,\nplanting them with piety and nurturing them with abstinence\nunto the perfection of the virtues.\nBy his prayers, O Christ God,//\nbring peace to our life.",
+      "tone": 4,
+      "label": "Troparion of the venerable Euthymius"
+    }
+  }
+}

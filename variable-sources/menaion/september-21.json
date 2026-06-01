@@ -1,0 +1,422 @@
+{
+  "_meta": {
+    "feastRank": "polyeleos",
+    "feast": "St. Demetrius of Rostov",
+    "tone": 8,
+    "_source": "stSergius-menaion",
+    "_note": "Sep 21 is the Leavetaking of the Exaltation of the Holy Cross (feast Sep 14). Little Vespers is present in the Sergius source but not implemented here. Two canons at Matins: Canon I = Exaltation of the Cross (Tone VIII, 6 troparia); Canon II = St. Demetrius of Rostov (Tone VI, 8 troparia). Ode 9 on the leavetaking uses a special structure (see ode9 note). Feast content in sedalion, kontakionAfterOde3, lauds Both now."
+  },
+  "troparion": {
+    "text": "O lover of Orthodoxy and uprooter of schisms, * healer of Russia and new advocate before God: * by thy writings thou didst heal the minds of the foolish. * O blessed Demetrius, thou harp of the Spirit, ** entreat Christ God, that our souls be saved.",
+    "tone": 8
+  },
+  "kontakion": {
+    "text": "Let us bless Demetrius, the golden-worded teacher, the radiant star of Russia, * who shone forth from Kiev, and through Novgorod and Seversky reached Rostov, * illumining the whole land with his teachings and miracles; * for he wrote down for posterity, those things which are for our edification, * that, like Paul, he might win all for Christ, ** and save our souls through the right Faith.",
+    "ikos": "Right it is for the righteous in heaven who rejoice over the repentant, and for us sinners on earth, to rejoice over thee, O righteous Demetrius; for we have acquired thee as a new advocate before God on our behalf. And blessing Him with fitting praises, in joy we cry aloud thus: Rejoice, O boast of Rostov and praise of all Russia!",
+    "tone": 8
+  },
+  "vespers": {
+    "_note": "Little Vespers (4 stichera Tone I for Demetrius + aposticha Tone VIII) precedes Great Vespers in the Sergius source but is not assembled here.",
+    "stichera": [
+      {
+        "text": "Raised on high, the Cross exhorteth all creation to hymn the most pure Passion of Him who was lifted up thereon. For thereon having slain him that slew us, in that He is merciful, He gave life unto the dead, and in the exceeding greatness of His goodness He hath made them beautiful and deemed them worthy to live in the heavens. Wherefore, rejoicing, we exalt His name, and magnify His extreme condescension.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "Feast — Exaltation of the Cross"
+      },
+      {
+        "text": "Raised on high, the Cross exhorteth all creation to hymn the most pure Passion of Him who was lifted up thereon. For thereon having slain him that slew us, in that He is merciful, He gave life unto the dead, and in the exceeding greatness of His goodness He hath made them beautiful and deemed them worthy to live in the heavens. Wherefore, rejoicing, we exalt His name, and magnify His extreme condescension.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "Feast — Exaltation of the Cross",
+        "_note": "Sung twice per rubric"
+      },
+      {
+        "text": "Moses prefigured Thee, stretching forth his arms on high, and vanquished the tyrant Amalek, O precious Cross, boast of the faithful, confirmation of sufferers, savior of all the venerable. Wherefore, creation, beholding thee lifted up, is gladdened, and keepeth festival, glorifying Christ, Who through thee hath gathered the dispersed in His extreme goodness.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "Feast — Exaltation of the Cross"
+      },
+      {
+        "text": "O most precious Cross, who art today exalted, and about whom the ranks of angels stand in gladness, by divine command thou dost uplift all who for the stealing of the fruit were driven out and were sunk in death. Wherefore, we, the faithful, venerating thee with hearts and lips, derive from thee sanctification, crying aloud: Exalt ye Christ, the supremely good God, and worship His divine footstool.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "Feast — Exaltation of the Cross"
+      },
+      {
+        "text": "On earth, O holy Demetrius, thou didst strive to make that which is base subject to that which is higher, and to make the flesh subject to the spirit; wherefore, thou didst receive the arch-pastoral staff, wherewith thou didst shepherd well those who were right submissive, and didst drive far away the disobedient. And now standing in the heavens as a priest, thou dost join chorus with the angels.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "St. Demetrius"
+      },
+      {
+        "text": "During thy lifetime, O holy hierarch Demetrius, thou didst gird thy loins with love, and, putting trust in Christ on thy feet as though shoes, thou didst adorn the lamp of faith with the oil of good works; wherefore with the wise, thou hast entered into the bridal-chamber of heaven, where, standing before Christ the Master, do thou pray that, when the cry cometh at midnight, we may be ready to go forth to meet Him.",
+        "tone": 6,
+        "melody": "Having set all aside",
+        "label": "St. Demetrius"
+      },
+      {
+        "text": "Having adorned thy soul with the virtues, and finished the race of this transitory life in the fear of God, thou hast found grace before God, O holy Demetrius; and, standing now before the throne of the Lord, pray thou that our souls be saved.",
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "label": "St. Demetrius"
+      },
+      {
+        "text": "O good shepherd, fervent emulator of the Good Shepherd, the Son of God: hearken unto us sinners, who call thine unceasing mediation to our aid, and entreat the all-merciful God on our behalf, that we may escape all evils and perils, and receive eternal blessedness, O holy hierarch Demetrius, that with thee we may glorify and hymn the Holy Trinity.",
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "label": "St. Demetrius"
+      }
+    ],
+    "doxastikon": {
+      "text": "With praises let us bless the holy hierarch Demetrius, the great bishop, the Chrysostom of Russia, who, having been made a chosen vessel of the all-holy Spirit, hath been revealed to be a member of the choir of the friends of God! And he prayeth that peace and length of days be granted to all Orthodox Christians, victory and triumph over their enemies, might to their native lands, and great mercy to the world.",
+      "tone": 8
+    },
+    "bothNow": {
+      "text": "Come, all ye nations, let us worship the blessed Tree whereby everlasting righteousness hath come to be; for he who by the tree deceived our forefather Adam, is himself deceived by the Cross, and he who by tyranny held fast the royal house, falleth, cast down by a strange fall. By the Blood of God the venom of the serpent is washed away, and the curse of the just condemnation was lifted by the Righteous One when He was condemned by an unjust sentence; for it was fitting that the tree be healed by a Tree, and that, by the sufferings of the Dispassionate One on the Tree, the sufferings of the condemned be loosed. Glory, O Christ our King, to Thy wise dispensation toward us, whereby Thou hast saved all, in that Thou art good and the Lover of mankind.",
+      "tone": 2,
+      "label": "Both now — Feast (Exaltation of Cross)"
+    },
+    "otReadings": [
+      { "book": "Proverbs", "reference": "Proverbs 10:7; 3:13-16; 8:6,34-36; 8:1; 9:1" },
+      { "book": "Proverbs", "reference": "Proverbs 10:31-32; 11:1-4,6-12" },
+      { "book": "Wisdom of Solomon", "reference": "Wisdom 4:7-15 (adapted)" }
+    ],
+    "litia": {
+      "_note": "Litia stichera in Tone VI: 'Come, ye councils of the Orthodox, let us hymn the holy hierarch...' (3 stichera for Demetrius). Glory Tone VI: 'The city hath been sanctified!...' Both now Tone IV: 'Moses, prefiguring the activity of the precious Cross...' Source: Sergius Emenaion 09-21."
+    },
+    "aposticha": {
+      "stichera": [
+        {
+          "text": "Rejoice, thou Life-bearing Cross, invincible victory of piety, door to paradise, confirmation of the faithful, rampart of the Church, whereby corruption hath been utterly destroyed, the dominion of death trampled down, and we have been lifted up from earth to those who are in Heaven, invincible weapon, contender against the demons, glory of the martyrs, true adornment of the venerable, haven of salvation, which grantest the world great mercy.",
+          "tone": 6,
+          "melody": "Rejoice thou Life-bearing Cross",
+          "label": "Feast — Exaltation of the Cross"
+        },
+        {
+          "verse": "Exalt ye the Lord our God, and worship the footstool of His feet, * for He is holy.",
+          "text": "Rejoice, thou Cross of the Lord, whereby mankind hath been loosed from the curse, all-honorable standard of joy which disperseth the enemy in thine exaltation, our helper, might of kings, Strength of the righteous, splendor of priests; which, when traced, doth deliver from misfortune, staff of power whereby we are tended, weapon of peace which the angels surround with fear, divine glory of Christ Who granteth the world great mercy.",
+          "tone": 6,
+          "melody": "Rejoice thou Life-bearing Cross",
+          "label": "Feast — Exaltation of the Cross"
+        },
+        {
+          "verse": "God is our King before the ages; * He hath wrought salvation in the midst of the earth.",
+          "text": "Rejoice, thou guide of the blind, physician of the ailing, resurrection of all the dead, which hast raised us up who had fallen into corruption, O precious Cross, whereby the curse was annulled and incorruption budded forth, and the earthly have been deified, and the devil utterly cast down! Beholding thee raised on high today in the hands of the high priest, we exalt Him who was exalted in thy midst, and bow down before thee, plenteously drawing forth from thee great mercy.",
+          "tone": 6,
+          "melody": "Rejoice thou Life-bearing Cross",
+          "label": "Feast — Exaltation of the Cross"
+        }
+      ],
+      "glory": {
+        "text": "Let us rejoice, ye councils of Russia, rendering praise and blessing to Demetrius, the wonderworker of Rostov; for he labored greatly for us in the writing of spiritually profitable books, whereby those who have wandered from the true path of piety have been directed to the Truth, and the hearts of the Orthodox have been made steadfast in the right Faith. To him let us cry aloud: O most wise teacher, entreat Christ, that instructed by thy doctrines, we may receive everlasting life.",
+        "tone": 4,
+        "label": "St. Demetrius"
+      },
+      "bothNow": {
+        "text": "That which Moses prefigured with his body of old cast down and vanquished Amalek; and David the psalmist, crying out, hath commanded us to bow down before Thy footstool, Thy precious Cross, O Christ God. Today we sinners also do homage with our unworthy lips to Thee Whose will it was to be nailed thereto; and, chanting, we pray: O Lord, grant that with the thief we may receive Thy kingdom!",
+        "tone": 8,
+        "label": "Both now — composition of John the Monk (Feast)"
+      }
+    }
+  },
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "feastType": "hierarch",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "text": "No sooner was the tree of Thy Cross planted, O Christ our Lord, than the foundations of death were shaken. That which Hades swallowed greedily it spewed forth, trembling. Thou hast revealed to us Thy salvation, O Holy One, and we glorify Thee. O Son of God, have mercy upon us!",
+        "tone": 6,
+        "label": "After 1st Kathisma — Feast (Exaltation of Cross)",
+        "bothNow": {
+          "text": "We bow down before the tree of Thy Cross, O Lover of mankind, for Thou wast nailed thereto, O Life of all. Thou didst open paradise to the thief who approached Thee with faith, O Savior, and he was deemed worthy of sweetness for confessing Thee: 'Remember me, O Lord!' Accept us like him, for we cry: We have all sinned! Disdain us not, for Thou art compassionate!",
+          "tone": 1,
+          "melody": "When the stone had been sealed",
+          "label": "Both now — Feast"
+        }
+      },
+      {
+        "text": "Today the words of the prophet have been fulfilled! For, behold! we bow down before the place where Thy feet stood, O Lord, and, receiving the Tree of salvation, we have achieved liberation from sinful passions through the supplications of the Theotokos, O Thou only Lover of mankind.",
+        "tone": 6,
+        "label": "After 2nd Kathisma — Feast (Exaltation of Cross)",
+        "bothNow": {
+          "text": "Of old, Joshua, the son of Nun, mystically prefigured the image of the Cross when he stretched forth his arms in the form of the Cross, O my Savior; and the sun stood still until he had cast down all the enemy which was opposed to Thee, O God. And now Thou hast raised with Thee the whole world, which saw Thee set upon the Cross, destroying the might of death.",
+          "tone": 8,
+          "melody": "That which was mystically commanded",
+          "label": "Both now — Feast"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch father Demetrius, and we honor thy holy memory; for thou entreatest Christ God for us.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ]
+    },
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Like a palm-tree hast thou blossomed forth from the earth in incorruption, and like the cedar in Lebanon hast thou been multiplied in miracles; thou hast been exalted in revelation, standing like a city upon a mountaintop, and like a lamp thou hast shone forth in thy memory as from under a bushel. And all of us, beholding the things fulfilled in thee, glorify Him Who hath magnified thee among His saints. As thou hast boldness before Christ the Lord, pray thou, O Demetrius manifest in holiness, that He save and enlighten our souls.",
+      "tone": 7,
+      "_note": "Glory ..., in same tone: 'Thou didst shine forth in thy virtuous life, O holy hierarch Demetrius...' Both now ..., Feast Tone VIII follows.",
+      "glory": {
+        "text": "Thou didst shine forth in thy virtuous life, O holy hierarch Demetrius, adorning thy ways with beauty, abstinence and tender compassion, and adorning the Church of Christ with thy golden-worded teachings. Wherefore, standing before the throne of the Almighty, O ever-memorable one, entreat Christ God, that He grant remission of sins unto those who with love celebrate thy most honored memory.",
+        "tone": 7
+      },
+      "bothNow": {
+        "text": "Of old, in paradise, a tree stripped me naked, the enemy bringing about mortality through eating; but the tree of the Cross, bearing on behalf of mankind the vesture of life, hath been planted in the ground, and the whole world hath been filled with all manner of joy. Beholding it uplifted, O ye people, let us cry aloud to God together: Fill Thou Thy house with glory!",
+        "tone": 8,
+        "melody": "That which was mystically commanded",
+        "label": "Both now — Feast"
+      }
+    },
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "My mouth shall speak wisdom, * and the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world."
+    },
+    "gospel": {
+      "reading": "John 10:1-8",
+      "number": 35
+    },
+    "postGospelSticheron": {
+      "text": "O holy hierarch Demetrius, thou good and faithful servant, who increased the talant entrusted to thee by thy Master: grace hath poured forth in thy lips, for with thy teachings thou hast adorned the Church, and made plain the truth of Orthodoxy putting the surmising of schismatics to shame. Wherefore, after thy departure, as during thy lifetime, strive thou that, convinced by thy miracles, the vain-minded may come to their senses and with us glorify God in three Hypostases.",
+      "tone": 6
+    },
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 6,
+      "_authors": "Canon I: Exaltation of the Holy Cross, leavetaking (Tone VIII, 6 troparia including irmos); Canon II: St. Demetrius of Rostov, Metropolitan (Tone VI, 8 troparia including irmos).",
+      "ode1": {
+        "irmos": "Inscribing the invincible weapon of the Cross upon the waters, Moses marked a straight line before him with his staff and divided the Red Sea, opening a path for Israel who went over dry-shod. Then he marked a second line across the waters and united them in one, overwhelming the chariots of Pharaoh. Therefore let us sing to Christ our God, for He hath been glorified.",
+        "irmos2": "When Israel walked on foot in the sea as on dry land, on seeing their pursuer Pharaoh drowned, they cried: Let us sing to God a song of victory.",
+        "troparia": [
+          { "text": "Of old, Moses, standing between the priests, prefigured in himself the image of Christ's most pure sufferings; for, forming a cross with his outstretched arms, he raised up victory, vanquishing the might of the tyrant Amalek. Wherefore, let us hymn Christ our God, for He hath been glorified." },
+          { "text": "Upon a pole Moses set the cure of the deadly and venomous sting of the serpents, and the deliverance therefrom; for to the tree, in the image of the Cross, he bound a serpent which crawleth upon the ground, triumphing over the sinister bane therein. Wherefore, let us hymn Christ God, for He hath been glorified." },
+          { "text": "The sky showed forth the victory of the Cross to the divinely wise Emperor Constantine, the pious ruler; and therein the audacity of the hostile foe was cast down, delusion was destroyed and the divine Faith spread to the ends of the earth. Wherefore let us hymn Christ our God, for He hath been glorified." },
+          { "text": "Standing before the Holy Trinity with the angelic ranks, O great hierarch Demetrius, pray for us sinners, that we may receive the remission of our sins.", "canon": "secondCanon" },
+          { "text": "Having enslaved thy body to thy spirit by all manner of asceticism and abstinence, and achieved incorruption in the body, imparting a healing power to its essential clay, O holy father, teach us also not to serve mammon.", "canon": "secondCanon" },
+          { "text": "Tending the flock entrusted to thee by Christ, the Chief Shepherd, and driving the soul-destroying wolves away from the fold by thy divinely inspired teachings, O holy hierarch Demetrius, look down now and see that vain minded schisms in nowise disturb the tranquility of the Church. And entreat God, the Lover of mankind, that we may all, with one mouth and one heart, praise His loving-kindness.", "canon": "secondCanon" },
+          { "text": "Understanding thee to be chosen and all-pure, O all-immaculate one, the Son of God became thy Son, and hath made children through the grace of adoption, those who honor thee as the Theotokos.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode3": {
+        "irmos": "The rod of Aaron is an image of this mystery, for when it budded it showed who should be priest. So in the Church, that once was barren, the wood of the Cross hath now budded forth, filling her with strength and steadfastness.",
+        "irmos2": "There is none as holy as Thou, O Lord my God, who hast exalted the horn of Thy faithful, O good One, and strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "The rough stone, struck, put forth water for a disobedient and hard-hearted people, and showed forth the mystery of the divinely elect Church, whereof the Cross is the might and confirmation." },
+          { "text": "When Christ's most pure side was pierced by the spear, blood and water flowed therefrom, renewing the covenant and washing sin away, for the Cross is the boast of the faithful, the might and confirmation of kings." },
+          { "text": "Established firmly upon the rock of the Faith of Christ, thou wast firm in the confession of Orthodoxy, and didst unceasingly denounce the ungodly.", "canon": "secondCanon" },
+          { "text": "Thou didst not cease to call out for the lost sheep of the flock of Christ, reproving, entreating and counseling them, even though not all heeded thy voice.", "canon": "secondCanon" },
+          { "text": "The children of the Church who had remained unshaken within its bosom, didst thou encourage; and we, attending to thy teachings with sweetness, cry aloud: There is none as holy as our God!", "canon": "secondCanon" },
+          { "text": "O pure and all-immaculate one, thou hast given birth unto Him Who hath delivered mankind from disobedience and by His blood hath washed away the ancestral sin of Adam.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "O Thou Who wast lifted up willingly upon the Cross, bestow Thy mercies upon the new community named after Thee, O Christ God; gladden with Thy power Orthodox Christians, granting them victory over enemies; may they have as Thy help the invincible trophy, the weapon of peace.",
+        "ikos": "He who was caught up to the third heaven of paradise and heard unspeakable and divine words which the human tongue cannot utter, what writeth he to the Galatians, which, as lovers of the Scriptures, ye have both read and come to understand? God forbid, saith he, that I should glory, save only in the Cross of the Lord, whereon having suffered He slew the passions. Let us all then firmly hold this boast, the Cross of the Lord; for this Wood is our salvation, the invincible trophy, the weapon of peace.",
+        "tone": 4,
+        "_note": "Kontakion of the Exaltation of the Holy Cross, sung at Ode 3 on the leavetaking."
+      },
+      "sedalenAfterOde3": {
+        "text": "Emulating the holiness of the fathers of old, when thou wast eight years of age thou didst dedicate thy life to the service of God; wherefore, thou didst become a great monk, priest, teacher, and hierarch, and now a wonderworker and advocate for our souls.",
+        "tone": 8,
+        "label": "St. Demetrius",
+        "bothNow": {
+          "text": "Rejoicing in thee, O thrice blessed and life-bestowing Cross, the people celebrate together with the immaterial choirs, the ranks of hierarchs reverently hymn thee, multitudes of monastics and fasters bow down before thee in adoration, and we all glorify Christ Who was crucified on thee.",
+          "tone": 4,
+          "melody": "Go thou quickly before",
+          "label": "Both now — Feast"
+        }
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation; I have considered Thy works, and I have glorified Thy Divinity.",
+        "irmos2": "Christ is my power, my God and my Lord, the holy Church divinely singeth, crying with a pure mind, keeping festival in the Lord.",
+        "troparia": [
+          { "text": "Of old, Moses transformed the bitter springs in the desert with a tree, showing forth the conversion of the gentiles to piety through the Cross." },
+          { "text": "Jordan, having hidden in its depths an axe-head, gave it forth again through the power of a stick, signifying the cutting off of deception by the Cross and baptism." },
+          { "text": "In a sacred manner the people encamped in four divisions; and preceding in this fashion the tabernacle of the witness, they were glorified in the cross-like formation of their ranks." },
+          { "text": "Wondrously stretched forth, the Cross emitted rays like the sun's, and the heavens declared the glory of our God." },
+          { "text": "Nurtured from childhood in proper learning, thou didst not turn the acuity of thy mind to vain-minded ideas, O holy hierarch Demetrius, but to the edification and confirmation of the Orthodox, and to the reproof and chastisement of the incorrigible. Wherefore, thou wast revealed to be a worthy successor of the throne of the apostles.", "canon": "secondCanon" },
+          { "text": "The healing shrine of thy relics poureth forth inexhaustible healing, and those who have recourse unto them with faith find deliverance from evils.", "canon": "secondCanon" },
+          { "text": "For the love which thou didst cherish for Christ and the saints thou hast been glorified with the gift of miracles and healings; wherefore, we bow down before thee and beseech thee as a favorite and friend of God, that thou remember us in thy holy prayers before Him.", "canon": "secondCanon" },
+          { "text": "Entreat God, the Lover of mankind, for us, O most holy Lady, that He remember not our iniquities, but rather that He deal with us according to His mercy.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode5": {
+        "irmos": "O thrice-blessed Tree, on which Christ the king and Lord was stretched! Through thee the beguiler fell, who tempted mankind with the tree. He was caught in the trap set by God, who was crucified upon thee in the flesh, granting peace unto our souls.",
+        "irmos2": "Illumine with Thy divine light, I pray, O Good One, the souls of those who with love rise early to pray to Thee, that they may know Thee, O Word of God, as the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "O ever-hymned Tree, whereon Christ was stretched: the whirling sword which guarded Eden stood in awe of thee, O Cross, and the dread cherubim withdrew, when Christ was nailed to thee, Who granteth peace unto our souls." },
+          { "text": "The adverse powers of the nether world are stricken with fear when the sign of the Cross is traced in the air in which they live, as are the generations of the earthborn and the heavenly, who bend the knee to Christ, Who granteth peace unto our souls." },
+          { "text": "Having shone forth a divine light and revealed itself in rays of incorruption unto the darkened gentiles astray in error, the divine Cross acquireth them for Christ Who was nailed thereto, and granteth peace unto our souls." },
+          { "text": "O holy hierarch of Christ, preserve thy homeland un-assailed by the enemy, and grant victory and triumph over its adversaries to our civil authorities.", "canon": "secondCanon" },
+          { "text": "O Demetrius, favorite of God, protect us from all the machinations of the wicked devil, that we may traverse the path of this life without stumbling, in fulfillment of the commandments of God.", "canon": "secondCanon" },
+          { "text": "O father Demetrius, burn away the darkness of sin from the eyes of our souls, and enlighten us with the knowledge of the will of God, that we may finish our race well in the light of His commandments.", "canon": "secondCanon" },
+          { "text": "O immaculate Virgin who gavest birth to the true Light, shine upon us the light of divine knowledge, for our salvation.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode6": {
+        "irmos": "Jonah stretched out his hands in the form of a cross within the belly of the sea monster, plainly prefiguring the redeeming Passion. Cast out from thence after three days, he foreshadowed the marvelous Resurrection of Christ our God, who was crucified in the flesh and enlightened the world by His Rising on the third day.",
+        "irmos2": "Beholding the sea of life surging with the tempest of temptations, I run to Thy calm haven, and cry to Thee: Raise up my life from corruption, O greatly Merciful One.",
+        "troparia": [
+          { "text": "Bent with age and weighed down with infirmity, Jacob drew himself up when he crossed his arms, showing forth the power of the life-bearing Cross; for God Who was nailed in the flesh hath set aright the obsolescence of the law of the Scripture which was written in shadows, and dispelled the soul-destroying disease of deception." },
+          { "text": "Divine Israel laid his hands cross-wise upon the heads of the youths, and insofar as those serving under the law give glory to the firstborn, he suspected he had erred in laying his hands thus, yet he did not alter the life-bearing image; wherefore crying aloud, raising the Cross on high, the newly established people of Christ God are protected thereby." },
+          { "text": "With the eye of thy compassion look upon the billowing of sin which doth assail us, O holy hierarch of Christ, and guide our voyage to the calm haven of God's loving-kindness.", "canon": "secondCanon" },
+          { "text": "O father Demetrius, be thou for us a good helmsman, and leave us not to perish in our sins, but as thou thyself wast tempted therein as a man, help us who are tempted, O holy Demetrius, and be thou a helper and mediator for us before the greatly merciful God, that He lead our life up from corruption.", "canon": "secondCanon" },
+          { "text": "With mouth and heart we magnify thee, the Mother of God. Do thou, who hast reconciled the whole of the human race with God, and deprive us not of thine aid.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "kontakion": {
+        "text": "Let us bless Demetrius, the golden-worded teacher, the radiant star of Russia, who shone forth from Kiev, and through Novgorod and Seversky reached Rostov, illumining the whole land with his teachings and miracles; for he wrote down for posterity, those things which are for our edification, that, like Paul, he might win all for Christ, and save our souls through the right Faith.",
+        "ikos": "Right it is for the righteous in heaven who rejoice over the repentant, and for us sinners on earth, to rejoice over thee, O righteous Demetrius; for we have acquired thee as a new advocate before God on our behalf. And blessing Him with fitting praises, in joy we cry aloud thus: Rejoice, O boast of Rostov and praise of all Russia!",
+        "tone": 8
+      },
+      "ode7": {
+        "irmos": "The senseless decree of the wicked tyrant, breathing forth threats and blasphemy hateful to God, confused the people. Yet neither the fury of the wild beast nor the roaring of the fire could frighten the three Children: but standing together in the flame, fanned by the wind that brought refreshment as the dew, they sang: 'Blessed and supremely praised art Thou, O our God and the God of our fathers.'",
+        "irmos2": "An Angel made the furnace bedew the holy Children. But the command of God consumed the Chaldeans and prevailed upon the tyrant to cry: O God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "The first man, tasting of the tree, went to dwell in corruption; for, having condemned himself to a shameful banishment from life, he imparted corruption to the whole race of mankind. But we mortals, finding restoration through the tree of the Cross, cry aloud: O supremely hymned God of our fathers, blessed art Thou!" },
+          { "text": "Breaking the commandment of God came about through disobedience, and the untimely partaking of the fruit of the tree brought death to mankind, but to preserve that which is most precious, access to the tree of life was forbidden, until God opened it to the suffering thief who with a proper understanding cried aloud: O supremely hymned God of our fathers, blessed art Thou!" },
+          { "text": "Israel, foreseeing things to come, laid hold of the tip of Joseph's staff, revealing beforehand that the most glorious Cross would seize the power of the kingdom, for it is the victorious boast of kings and a light for those who cry aloud with faith: O supremely hymned God of our fathers, blessed art Thou!" },
+          { "text": "For the sake of the humility of Christ, thou wast revealed to be a model of humility, O holy Demetrius. Grant that I may cry out, not in pride, but in humility: O God of our fathers, Blessed art Thou!", "canon": "secondCanon" },
+          { "text": "Through abstinence thou didst make thy body subject to thy spirit, O holy hierarch Demetrius. Grant that I may live in abstinence, that I may cry aloud with undefiled lips: O God of our fathers, Blessed art Thou!", "canon": "secondCanon" },
+          { "text": "By thy teachings, O father Demetrius, thou dost direct our thoughts; and, emulating thee, we chant unto God: O God of our fathers, Blessed art Thou!", "canon": "secondCanon" },
+          { "text": "O most pure Virgin, thou didst conceive the beginningless God in thy womb, Whom we hymn, saying: Blessed is the God of our fathers!", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode8": {
+        "irmos": "O children equal in number to the Trinity: bless ye God, the Father and Creator; hymn ye the Word Who came down and transformed the fire into dew; and supremely exalt ye Him Who giveth life unto all, the most holy Spirit, throughout the ages!",
+        "irmos2": "Thou didst make flame bedew the holy children, and didst burn the sacrifice of a righteous man with water. For Thou alone, O Christ, dost do all as Thou willest, Thee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "O hosts of heaven, chant ye to the exalted Tree which was drenched in the blood of the incarnate Word of God, and celebrate the restoration of those born on earth. O ye people, worship the Cross of Christ, by which the world hath been granted the resurrection throughout all ages!" },
+          { "text": "O ye mortal stewards of grace, with your hands reverently raise on high the Cross whereon Christ God stood and the spear which pierced the body of God the Word, that all the nations may see the salvation which is of God, glorifying Him throughout all ages!" },
+          { "text": "O faithful Christian kings, forechosen by divine decree, be ye glad! And having received from God the precious Cross, rejoice in it, the weapon of victory, for thereby tribes of enemy warriors seeking to make battle have been scattered throughout all ages." },
+          { "text": "Thou art our good teacher, O father Demetrius, crying out to all who heed thy teaching: Exalt Christ supremely throughout all ages!", "canon": "secondCanon" },
+          { "text": "O divinely wise hierarch, all-blessed Demetrius, by thy supplication and thy philanthropic love for us entreat God, the Lover of mankind, on our behalf, for we supremely exalt Him throughout the ages.", "canon": "secondCanon" },
+          { "text": "Thou didst overturn the wickedly harmful reasoning of the vain-minded, O holy Demetrius, and didst instruct the faithful to remain steadfast in the true Faith, crying out: Supremely exalt Christ throughout the ages.", "canon": "secondCanon" },
+          { "text": "O Virgin, we piously hymn thy supra-natural and wondrous birthgiving, supremely exalting Christ throughout the ages.", "canon": "secondCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode9": {
+        "_note": "Leavetaking structure: No Magnificat before Ode 9. Instead: Refrain 'Magnify, O my soul, the all-honored Cross of the Lord!' with Irmos 'O Theotokos, thou art a mystical Paradise...' for 6 troparia of Canon I feast. Then second refrain 'Magnify, O my soul, the exaltation of the life-creating Cross of the Lord!' with Irmos 'Today the death that came to man through eating of the tree...' for 6 troparia of Canon II feast. Then Canon of the hierarch (3+Theotokion) with irmos 'It is impossible for mankind to see God...'",
+        "irmos": "O Theotokos, thou art a mystical Paradise, who untilled brought forth Christ. By Whom the life-giving Tree of the Cross hath been planted upon the earth: Therefore celebrating its exaltation on this day, Him do we worship and thee do we magnify.",
+        "irmos2": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze; but through thee, O all-pure one, did the Word Incarnate become a man and with the Heavenly Hosts Him we magnify and thee we call blessed.",
+        "troparia": [
+          {
+            "text": "Let all the trees of the forests rejoice, for their nature hath been sanctified by Him Who planted them in the beginning — Christ Who was stretched out upon the Tree. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "_note": "Canon I feast — refrain: Magnify, O my soul, the all-honored Cross of the Lord!"
+          },
+          {
+            "text": "A sacred horn hath been lifted up, the chief horn for all the divinely wise: the Cross, whereby all the horns of the sinful are noetically broken asunder. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "_note": "Canon I feast"
+          },
+          {
+            "text": "Thou didst not permit the murderous bitterness of the tree to remain, O Lord, for thou didst utterly destroy it by the Cross. Wherefore, by a tree Thou didst once sweeten the bitterness of the waters of Marah, prefiguring the activity of the Cross, which all the hosts of heaven magnify.",
+            "_note": "Canon II feast — refrain: Magnify, O my soul, the exaltation of the life-creating Cross of the Lord! Irmos: 'Today the death that came to man through eating of the tree, is made of no effect through the Cross. For the curse of our Mother Eve that fell on all mankind is destroyed by the fruit of the pure Mother of God, whom all the powers of heaven magnify.'"
+          },
+          {
+            "text": "Today Thou hast raised up by the Cross those who remain continually mired in the darkness of our forefather, O Lord; for though our nature was humbled through deceit and an exceeding lack of restraint, the light of Thy Cross hath again guided all of us aright, which we, the faithful magnify.",
+            "_note": "Canon II feast"
+          },
+          {
+            "text": "That Thou mightest reveal to the world the image of the Cross venerated among all, O Lord, Thou didst trace its outline in the heavens, in that it is most glorious, radiant with boundless light: the invincible weapon for the emperor. Wherefore, all the hosts of heaven magnify Thee.",
+            "_note": "Canon II feast"
+          },
+          {
+            "text": "Enjoying the everlasting life for which thou didst diligently struggle, O father, pray thou that we also may attain unto it.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Even though thou hast passed from us to the heavens, O holy hierarch Demetrius, yet abiding in spirit with those who call upon thee, thou dost ever teach and strengthen them, that they may tread the path of the saving commandments of God.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou hast been revealed to be a most radiant beacon of piety, a most excellent rhetorician, and an adornment of Orthodox hierarchs. Wherefore, as is meet, we magnify thee with heartfelt love.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "O Virgin Theotokos, with the holy hierarch Demetrius beseech God, the Lover of mankind, Whom thou didst bear, that He save our souls.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The Cross is the guardian of the whole world! The Cross is the beauty of the Church! The Cross is the dominion of kings! The Cross is the confirmation of the faithful! The Cross is the glory of the angels and the wounding of the demons!",
+      "tone": null,
+      "melody": "When the disciples",
+      "_note": "Feast exapostilarion, sung twice.",
+      "glory": {
+        "text": "O our God, Who hath set the bounds of the nations according to the number of Thine angels, and Who hath assembled Thy Church from the scattered children of Adam, multiply therein Thy saints like the stars in heaven, among which the memory of Thy holy hierarch Demetrius hath shone forth. For his sake enlighten souls darkened by schismatic vain-mindedness, that together we may cry out to Thee the threefold hymn: Alleluia, Alleluia, Alleluia!",
+        "label": "St. Demetrius"
+      },
+      "bothNow": {
+        "text": "Today is the Cross raised on high, and the world is sanctified; for He that sitteth with the Father and the Holy Spirit stretched out his arms thereon. It hath brought the whole world to the knowledge of Thee, O Christ. Therefore, to those who hope in Thee do Thou grant divine glory.",
+        "tone": null,
+        "melody": "Hearken ye women",
+        "label": "Both now — Feast"
+      }
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "O most glorious wonder! the Life-bearing Tree, the most holy Cross is revealed today, lifted up on high. All the ends of the earth glorify it, and the hordes of the demons are affrighted. O what a gift hath been given to mortals! Thereby, O Christ, save Thou our souls, in that Thou alone art compassionate.",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "label": "Feast — Exaltation of the Cross"
+        },
+        {
+          "text": "O most glorious wonder! The Cross which bore the Most High like a cluster of grapes full of life is seen today lifted up from the earth. Thereby we have all been drawn to God, and death hath been utterly slain. O the most precious Tree whereby we have received the food of immortality in Eden, glorifying Christ!",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "label": "Feast — Exaltation of the Cross"
+        },
+        {
+          "text": "O most glorious wonder! The length and height of the Cross is equal to heaven! For it sanctifieth all things with divine grace. In it are the barbarian nations vanquished. In it are the scepters of kings made firm. O divine ladder, whereby we ascend to the heavens, exalting Christ the Lord in hymns!",
+          "tone": 8,
+          "melody": "O most glorious wonder",
+          "label": "Feast — Exaltation of the Cross"
+        },
+        {
+          "text": "From thy youth thou didst wholly take upon thyself the search for wisdom and the fear of God, which having found thou didst not hide in the earth, like the slothful servant; but teaching and laboring for Him Who gave thee the talant, thou didst increase it an hundredfold, and didst become a great merchant, making clear the understanding of the Old and New Testaments, and disclosing the depths of the meaning of the divinely written books: and thou hast taught us also to conduct such goodly trade. Wherefore, O Demetrius, thou good and faithful servant of God, for such treasures which thou hast revealed unto us thou hast entered into the joy of thy Lord.",
+          "tone": 6,
+          "melody": "Having set all aside",
+          "label": "St. Demetrius",
+          "_note": "Sung twice per rubric"
+        },
+        {
+          "text": "Thou didst bind thy holy mind to the obedience of faith, that thou mightest adorn it with good works; hence thou hast been shown to be a skillful husbandman of the vineyard of Christ. For every branch which did not produce fruit thou didst cut off by the fear of the Lord, and therein preserved piety alone, which thou didst hedge round about with the dogmas of the Church, and which thou didst strengthen within by the tower of Orthodoxy, wholly filling the wine-vats thereof with thy teachings. Wherefore, O holy Demetrius who loved the works of faith, visit now the vineyard which the right hand of the Most High hath planted, that it may produce the grapes of salvation.",
+          "tone": 6,
+          "melody": "Having set all aside",
+          "label": "St. Demetrius"
+        },
+        {
+          "text": "From thy youth thou didst wholly take upon thyself the search for wisdom and the fear of God, which having found thou didst not hide in the earth, like the slothful servant; but teaching and laboring for Him Who gave thee the talant, thou didst increase it an hundredfold, and didst become a great merchant, making clear the understanding of the Old and New Testaments, and disclosing the depths of the meaning of the divinely written books: and thou hast taught us also to conduct such goodly trade. Wherefore, O Demetrius, thou good and faithful servant of God, for such treasures which thou hast revealed unto us thou hast entered into the joy of thy Lord.",
+          "tone": 6,
+          "melody": "Having set all aside",
+          "label": "St. Demetrius",
+          "_note": "Third sticheron = first repeated per rubric (twice)"
+        }
+      ],
+      "doxastikon": {
+        "text": "Sing unto the Lord a new song, O Russia! Praise thy God, O city of Rostov! For the Most High hath been well-pleased to give us the new wonderworker Demetrius, to whom witness hath been borne by all, as also by truth itself. And honoring his memory among the saints, let us, elders and the young, praise and magnify our God, Who hath granted His favored one to shine forth upon us in holy incorruption and the working of miracles.",
+        "tone": 6,
+        "label": "St. Demetrius"
+      },
+      "bothNow": {
+        "text": "Today the Cross of the Lord cometh forth; and the faithful receive it with desire, and they derive healings of soul and body, and every pang. Let us venerate it with joy and fear: with fear, for we are unworthy because of our sins; and with joy, because of the salvation which is granted to the world by Christ God, Who hath great mercy, and Who was nailed to it.",
+        "tone": 6,
+        "label": "Both now — Feast (Exaltation of Cross)"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O lover of Orthodoxy and uprooter of schisms, healer of Russia and new advocate before God, by thy writings thou didst heal the minds of the foolish. O blessed Demetrius, thou harp of the Spirit, entreat Christ God, that our souls may be saved.",
+      "tone": 8,
+      "_note": "Glory ... Both now ..., Troparion of the feast (Tone I: 'Save O Lord Thy people...') sung after."
+    }
+  }
+}

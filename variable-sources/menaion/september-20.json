@@ -1,0 +1,170 @@
+{
+  "_meta": {
+    "feast": "Holy Great Martyr Eustathius Placidas, his wife Theopistes, and his sons Agapitus and Theopistus",
+    "feastKey": "stEustathiusPlacidas",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 09-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-20.pdf",
+    "_note": "Doxology-rank. Afterfeast of the Elevation of the Holy Cross (Sep 14-21). The parallel canon of the feast is omitted per the menaion-matins-track convention — only the martyrs' canon (Theophanes, Tone IV) is included. Sessional hymns after Kathismata 1-2 belong to the Cross feast and are not authored here. God is the Lord troparia: feast troparion (Tone I) twice, Glory = martyrs troparion (Tone IV), Both now = feast (per rubric). No Polyeleios, no Magnification."
+  },
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Manifestly emulating the sufferings of Christ,\nand having drained His cup with fervor,\nO Eustathius, thou wast a partaker and fellow heir of glory,\nreceiving divine remission of sins from on high//\nfrom the God of all Himself.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "doxology",
+      "feastType": "martyr",
+      "_source": "stSergius-menaion",
+      "_note": "Afterfeast of the Elevation of the Cross (Sep 14-21). God is the Lord: feast troparion (Tone I) twice; Glory = martyrs troparion (Tone IV); Both now = feast troparion. Sessional hymns after Kathismata 1 and 2 are of the Cross feast (not authored here). Single canon of the holy martyrs by Theophanes in Tone IV. Cross-feast canon (Tone I) interleaved at actual service is omitted per convention."
+    },
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs",
+      "_note": "On 'God is the Lord': feast troparion (Tone I) twice; Glory ..., this troparion; Both now ..., feast troparion."
+    },
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyrs, the acrostic whereof is 'Praise be to the namesake of goodly estate'; composition of Theophanes in Tone IV. The parallel canon of the feast is omitted per the menaion-matins-track convention.",
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "Subduing the uprising of my passions by thine entreaties, O martyr of Christ, by thy discourse may I be disposed to praise well the sacred celebration of thy struggles, O all-blessed one." },
+          { "text": "Thy name was not given thee by men, O most excellent one, but from the heavens, for Christ called thee as before He had called Paul, appearing like a hart and freeing thee from venomous serpents." },
+          { "text": "Full of heavenly wisdom, O martyr, crowned with all thy household thou didst most piously prefer the delight of heaven to corruptible riches and pleasures." },
+          { "text": "Theotokion: God, the Creator of all, found thee to be more pure than all creation, O all-pure one, and, intending to take the form of man in the flesh through thee, He was well-pleased to become incarnate." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "text": "Deprived of thy children and wife, thou didst mightily endure the threefold billows of perils, O glorious Eustathius, martyr of Christ." },
+          { "text": "Thy children, saved by God from the attacks of wild beasts, O Eustathius martyr of Christ, they vanquished also the noetic beasts." },
+          { "text": "Passing over life as though it were a river, O glorious one, by thy trials thou didst preserve unshaken the divine aspect of thy soul." },
+          { "text": "Theotokion: Come, ye faithful, and with songs of joy let us hymn the pure and honored habitation of purity and virginity." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Above the hart thou didst see the image of the Cross, and thereon the image of Jesus;\nand falling prostrate thou didst marvel at this vision\nand with all thy household, came to divine baptism;\nand becoming poor, thou wast shown to be like a second Job.\nWherefore, deprived of spouse and sons, thou didst cry aloud: 'The Lord hath given, and the Lord hath taken away!'\nO Eustathius, commander of warriors,\nentreat Christ God, that He grant remission of sins unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy great-martyr (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice. Glory ..., Both now ..., Sessional Hymn of the feast (in the same melody) — feast sessional not authored here.",
+        "bothNow": null
+      },
+      "kontakion": {
+        "text": "Manifestly emulating the sufferings of Christ,\nand having drained His cup with fervor,\nO Eustathius, thou wast a partaker and fellow heir of glory,\nreceiving divine remission of sins from on high//\nfrom the God of all Himself.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Grant me the gift of hymnody, O Lord my God, that I may now hymn and speak of the struggles of Thy spiritual athlete, that in good order I may praise Eustathius, who was valiant in sufferings, who was ever the victor in battle against the enemy, who was great in piety, and who hath shone forth among the choir of the martyrs. For together with them and the angels, he chanteth unceasingly to thee, O all-wise One, receiving divine remission from on high."
+      },
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Thou wast protected against the tyranny of the enemy by the hand of God, and thy spouse, preserving her chastity, cried out: glory to Thy power, O Lord!" },
+          { "text": "Placed in peril and subjected to divers trials, O Eustathius, martyr of Christ, thou didst hasten to the arena to bear witness, crying out to thy Master: Glory to Thy power, O Lord!" },
+          { "text": "Guided by the precepts of the Master, O ever-memorable and glorious Eustathius, thou and thy wife and children were shown to be adorned with the blood of martyrdom." },
+          { "text": "Theotokion: Without knowing wedlock, O Virgin, thou hast given birth, and even after birthgiving thou wast revealed to remain a virgin. Wherefore, with steadfast faith and unceasing voices we cry 'Rejoice!' to thee, O Lady." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Thou didst show thyself to be like Job; for, blameless and pious, thou wast found to sail through life with long-suffering.", "_note": "Sung twice per rubric." },
+          { "text": "Who can hymn the pangs which thou didst endure, O blessed martyr, deprived of spouse and children?" },
+          { "text": "Theotokion: O Mother of God, who hast given birth to the supremely good Word Who is the Benefactor of all: heal thou the affliction of my soul." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Thou didst desire Christ Who had appeared to Thee, O glorious one, and didst unite thyself to Him with love; for thou wast shown to be adorned, clad in the purple robe of thy blood.", "_note": "Sung twice per rubric." },
+          { "text": "Thou didst make haste to follow the divine steps of Christ, and, crowned with all thy household, O martyr, wast most perfectly shown to share in His sufferings and kingdom." },
+          { "text": "Theotokion: Using now the words of Gabriel, O all-immaculate Virgin, we cry out: Rejoice, O only blessed Mother! Rejoice, O thou who didst have within thee the Sun of righteousness!" }
+        ]
+      },
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety\nrather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Imprisoned within a brass bull glowing red hot with heat, as in a furnace, O martyrs of Christ, ye cried out in thanksgiving: Blessed art Thou in the temple of Thy glory, O Lord!", "_note": "Sung twice per rubric." },
+          { "text": "United by the law of love and nature, O right glorious martyrs, suffering ye showed forth a single endurance, chanting: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Theotokion: Thou alone art truly more exalted than the heavens of God from all ages; for thou hast given birth ineffably to their Creator, O all-pure Lady, Birthgiver of God." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws\nin their den;\nwhile the zealously pious youths,\ngirded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "The choir of true witnesses, united in splendor by the laws of nature and the word of the Faith, let us all now piously praise as zealots of piety; and with faith let us sing: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Ye were beautifully united, O honored ones, having been separated before by supreme providence; and having dyed the purple robe of betrothal in your blood, ye hastened ardently to the heavenly bridal chamber, crying: Bless the Lord, all ye works of the Lord!" },
+          { "text": "O blessed Eustathius, thou didst offer to God the fruit of thy loins and thy spouse who rejoiced; for thou didst receive them as partakers of suffering by nature, chanting to Christ: Bless the Lord, all ye works of the Lord!" },
+          { "text": "Theotokion: Thou wast a rod of the root of Jesse, O Virgin, who didst cause the almighty Lord to blossom forth. He Who perfumeth us and imparteth His sweet fragrance unto all who cry aloud: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "With gladness thou didst wholly pass over to the light of the Trinity and now rejoicest with the angelic army, O martyr Eustathius. With them pray thou unceasingly, that all who hymn thee be saved." },
+          { "text": "Thy struggles and divers tribulations on earth have now won for thee gladness in the heavens with the righteous. And enjoying it, O glorious one, grant it also unto those who hymn thee." },
+          { "text": "I offer myself wholly unto thee with fervor, O martyr Eustathius, that I may be enriched by thee, mine intercessor before the Master and mediator of divine salvation, who art able to help me out of every evil circumstance." },
+          { "text": "Theotokion: Confessing thee to be the Theotokos, O Virgin Mother, we all earnestly entreat thee, who without knowing a man hast given birth to the Savior, the Bestower of life, that through thy supplications we may be delivered from all sorrow." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "With thy divinely wise children and thine all-blessed wife\nthou hast received the glory of immortality and never-ending life,\nO blessed Eustathius, having abandoned the pleasures of the world.\nWherefore, with love we celebrate thy most sacred and divine memory.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy martyrs",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice. Glory ..., Both now ..., Exapostilarion of the feast — feast exapostilarion not authored here."
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "Who will not bless thy most blessed character, O Eustathius?\nFor thou didst valiantly undergo assault by the enemy, the author of evil,\nyet didst not despair at the loss of thy spouse and children,\nbut didst cry aloud the cry of Job's thanksgiving:\n'Naked came I forth from my mother's womb;\nand naked shall I depart to the only Creator, the Savior of our souls!'",
+          "tone": 4,
+          "_note": "Sung twice per rubric.",
+          "label": "Of the holy martyrs, by Andrew Pyrrhus"
+        },
+        {
+          "text": "Who will not bless thy most blessed character, O Eustathius?\nFor thou didst valiantly undergo assault by the enemy, the author of evil,\nyet didst not despair at the loss of thy spouse and children,\nbut didst cry aloud the cry of Job's thanksgiving:\n'Naked came I forth from my mother's womb;\nand naked shall I depart to the only Creator, the Savior of our souls!'"  ,
+          "tone": 4,
+          "_note": "Second singing of the above (rubric: Twice)."
+        },
+        {
+          "text": "As a habitation of the incorrupt Offspring of Mary,\nO martyr, abiding unceasingly in immaterial light,\nthou dost render the uncreated Trinity right merciful unto us.",
+          "tone": 6
+        },
+        {
+          "text": "Entering into the impenetrable cloud\nand uniting thyself to the Sun of righteousness\nWho appeared to thee noetically from on high,\nand having come in contact with the image of God through the imagery of a living creature,\nthou didst become an inspired image, O all-blessed Eustathius.\nWherefore, having been enlightened by water and the Spirit\nand having been washed by thine activity and the blood of martyrdom,\nthou hast been deemed worthy to join chorus with the assemblies of the angels in heaven,\nwherein do thou also unite us to Christ our God and Savior.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Having resigned thy military commission in a kingdom here below\nwhen our Savior appeared to thee in an image above a wild creature,\nthou, together with thy wife and children,\ndost now join chorus with the inhabitants of heaven, O all-blessed Eustathius.\nWherefore, we entreat thee: Beseech the Lord on behalf of our souls!",
+        "tone": 8,
+        "label": "Glory (composition of Germanus)"
+      },
+      "_note": "Both now ..., of the feast, in Tone VIII — fest theotokion not authored here (Cross afterfeast)."
+    },
+    "troparionAfterDoxology": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs",
+      "_note": "After the Great Doxology: troparion once. Litanies and dismissal."
+    }
+  }
+}

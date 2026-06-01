@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Ignatius the God-Bearer, Bishop of Antioch",
+    "feastKey": "ignatiusTheGodBearer",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 1,
+    "_context": "Forefeast of the Nativity of Christ (Dec 20)",
+    "_source": "Matins: St-Sergius Emenaion 12-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-20.pdf",
+    "_note": "Doxology-rank; forefeast of the Nativity. Two canons at the actual service (forefeast of Joseph + hieromartyr of Andrew of Crete, both Tone I), but only Ignatius's content is authored here per menaion-matins-track pattern. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Lauds (On the Praises) are 4 forefeast stichera by Romanus the Melodist (Tone VI) — no Ignatius lauds stichera; only his Aposticha-Matins Glory (Studite, Tone I) is captured as doxastikon."
+  },
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles * and didst occupy their throne, *\nthou didst find thine activity to be a passage to divine vision, * O divinely inspired one. *\nWherefore, ordering the word of truth, *\nthou didst suffer for the Faith even to the shedding of thy blood, **\nO hieromartyr Ignatius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr"
+  },
+  "kontakion": {
+    "text": "The luminous day of thy radiant struggles proclaimeth to all beforehand *\nHim Who hath been born in the cave; *\nfor thirsting to delight in His love, *\nthou didst hasten to be devoured by the wild beasts. **\nWherefore, thou hast been called the God-bearer, O all-wise Ignatius.",
+    "tone": 3,
+    "label": "Kontakion of the holy hieromartyr",
+    "melody": "Today the Virgin"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "doxology",
+      "feastType": "hieromartyr",
+      "_source": "stSergius-menaion",
+      "_note": "Forefeast context. On 'God is the Lord': Troparion of the forefeast (Twice); Glory ..., Troparion of the hieromartyr; Both now ..., Troparion of the forefeast. Kathisma sessional hymns are forefeast. Kontakion of forefeast after Ode 3; then Sessional Hymns of hieromartyr. Kontakion + Ikos of hieromartyr after Ode 6."
+    },
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles * and didst occupy their throne, *\nthou didst find thine activity to be a passage to divine vision, * O divinely inspired one. *\nWherefore, ordering the word of truth, *\nthou didst suffer for the Faith even to the shedding of thy blood, **\nO hieromartyr Ignatius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Glory ..., Troparion of the holy hieromartyr",
+      "_note": "On 'God is the Lord': Troparion of the forefeast (Twice); Glory ..., this troparion; Both now ..., Troparion of the forefeast."
+    },
+    "sedalion": [],
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the holy hieromartyr Ignatius by Andrew of Crete, in Tone I. The forefeast canon by Joseph (Tone I) sung concurrently at the actual service is omitted per the menaion-matins-track pattern.",
+      "ode1": {
+        "irmos": "Let us all chant a triumphant hymn unto God\nWho wrought wondrous miracles with His upraised arm,\nand saved Israel,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Celebrating with splendor, let us form ourselves into ranks; in a sacred manner the martyr Ignatius doth summon the Church of Christ to his much-hymned suffering." },
+          { "text": "O Ignatius, as the most radiant luminary of the Church thou hast enlightened all the ends of the earth, and, having arrived from the East, thou hast shone upon the lands of the West." },
+          { "text": "Emulating the tribulations of Paul in the cities and towns while thou wast a prisoner, O Ignatius, thou wast in nowise troubled, making steadfast the Churches of Christ by thy frequent epistles." },
+          { "text": "O all-blessed Ignatius, we all hymn thy glorious memory, and with hymns we honor Him Who crowned thy most precious head, O thou who art blessed of God." },
+          { "text": "\"Let my flesh be lacerated, let my blood flow forth! In my desire I make haste, ready for the wild beasts, adorned for crushing, for the fire, for the sword, for being devoured!\" the martyr cried aloud." },
+          { "text": "Theotokion: Adorn thyself, O Eden, for Ephratha hath been made ready for the Creator, Who is to be born from the Virgin Mother in the cave of Bethlehem, in His surpassing loving-kindness." }
+        ]
+      },
+      "ode3": {
+        "irmos": "The stone which the builders have rejected,\nthe same hath become the cornerstone:\nthis is the rock upon which Christ hath established the Church,//\nwhich He hath redeemed from among the nations.",
+        "troparia": [
+          { "text": "O father, thou hast been shown forth as a model of sacred suffering, a tower of endurance, a rule of courage, a pillar of the Church, the confirmation of the Faith, a sign of virtue: having been crowned with honored sufferings in Christ." },
+          { "text": "Truly wast thou called the God-bearer, O father, for held in the arms of the Lord while yet a babe, thou wast set forth by Him Who saith to us: \"Be ye for Me like unto this child!\"" },
+          { "text": "\"I am the pure wheat of God,\" thou didst cry, O father; \"and I hasten to be ground by the wild beasts, that my body may be crushed, that my members may be devoured, that I may become food for the beasts, that I may be shown to be pure bread for God!\"" },
+          { "text": "Thou didst complete the strange contest of martyrdom with endurance, and didst show forth wondrous courage surpassing all who suffered before thee, consumed with love of unremitting zeal which, like fire, set thy soul aflame." },
+          { "text": "Ever burning in spirit, the hieromartyr cried out with love in the midst of his afflictions: \"I press on toward Christ, rejoicing! I am crucified with Christ! I no longer live myself, but Christ alone liveth within me!\" said he." },
+          { "text": "Theotokion: Come forth, O Isaiah, and cry aloud: \"Behold! a Virgin will conceive in her womb the Redeemer of the world, and will give birth in a cave! And the name of Him Who will be born is Jesus, God is with us, Emmanuel, Sabaoth!\"" }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Guided by Christ God, thou didst make bright thy sacred vesture,\nhaving truly received witness, O God-bearer;\nfor thou didst provoke the wild beasts to separate thee from the world,\nemulating the wondrous Apostle Paul.\nWherefore, in Rome, O father,//\nthou didst finish thy martyrdom as is meet.",
+        "tone": 3,
+        "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+        "melody": "Awed by the beauty of thy virginity",
+        "glory": {
+          "text": "Shining forth like a star from the East, thou didst illumine the world,\nresplendent in the rays of thy discourses;\nthou didst drive away the darkness, and like Paul didst valiantly finish the race,\nenduring tribulations among the nations and in the cities.\nWherefore, like wheat thou wast ground by the teeth of wild beasts, as an offering for thy Lord,\nO blessed God-bearer Ignatius.\nEntreat Christ God,//\nthat He grant remission of sins to those who honor thy holy memory with love.",
+          "tone": 8,
+          "label": "Glory ..., another Sessional Hymn of the holy hieromartyr",
+          "melody": "Of the Wisdom"
+        },
+        "bothNow": {
+          "text": "The Word of God, Who shone forth without commingling from the bosom of the Father before time began,\nand within time came forth seedlessly from thy womb, O most pure one,\nlifting up him who of old had grievously stumbled, raising him up to his primal beauty.\nThe armies of the incorporeal beings come forth for His nativity\nand mystically send forth hymns of victory to mortals, crying:\nGlory to God Who hath given us peace,//\nbreaking down the middle wall of enmity, as is His good pleasure!",
+          "tone": 8,
+          "label": "Both now ..., Sessional Hymn of the forefeast"
+        }
+      },
+      "ode4": {
+        "irmos": "Foreseeing in the Spirit O Prophet Habbakuk,\nthe incarnation of the Word,\nthou didst proclaim, crying aloud:\nWhen the years draw nigh, Thou shalt be known;\nwhen the season cometh, Thou shalt be shown forth!//\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "As a prisoner thou dost illumine the earth with the effulgence of thy sufferings, O sacred Ignatius; for making thy transit like the sun, shedding rays of martyrdom, thou didst enlighten the whole evening, shining forth from the East." },
+          { "text": "Bound like Paul between irrational beasts, thou didst hasten to Rome, O wise Ignatius; yet even though thou wast chained thou didst not cease to make the Church steadfast, sending epistles to all the cities, that all the hierarchs of Christ be of good cheer." },
+          { "text": "\"I hasten to become Christ's! I desire Christ alone, for I am wholly Christ's!\", thou didst cry out, O spiritual athlete. \"I press onward toward Him; I strive, that I might reach Him! Wherefore, I endure fire, the sword and wild beasts, that I may receive life!\"" },
+          { "text": "\"Sweet to me is affliction, and lovely are the chains I bear for Him Whom I desire!\", thou didst cry, O spiritual athlete; \"Persecutions are sweeter to me than my homeland, as is my being broken sweeter than any gladness; my pangs are dearer to me than all the health of my body.\"" },
+          { "text": "\"Let the mouths of the wild beasts be my death and their bellies my tomb!\", thou didst cry, O spiritual athlete; \"Let no one hinder, let no one break my might; for I hasten to be ground like wheat, that God may find me to be pure bread!\"" },
+          { "text": "Theotokion: As God, O Good One, Thou wast well-pleased to be born for our sake in a cave of the earth, abasing Thyself in embracing our low estate in Thy loving-kindness, issuing forth, incarnate, from the Virgin, yet remaining the only Son of the Father and Thy Mother." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Grant us Thy peace, O Son of God,\nfor we know no other God than Thee,\nand we call upon Thy Name,//\nfor Thou art the God of the living and the dead.",
+        "troparia": [
+          { "text": "\"Such a hierarch hath become for us; wise, venerable, faithful, undefiled and innocent,\" cried Paul, describing beforehand the hallowed image of thy sacred character." },
+          { "text": "Bound and led forth as a hierarch and prisoner of Christ, O Ignatius, thou didst write to the Churches and cities, confirming all in confession." },
+          { "text": "Piously emulating the corrections of Paul, thou didst endure all tribulations, O right wondrous hieromartyr, thou radiance of the East and star of the evening." },
+          { "text": "Moved to contend by the desire of Paul, with chains on thy hands thou didst travel the world, O hieromartyr, that by thy sacred sufferings thou mightest be right manifest to all." },
+          { "text": "We hymn thy struggles, we honor thy fetters with censing and psalms, we venerate the dust of thy relics as rendered redolent of myrrh by thy sacred sufferings." },
+          { "text": "Theotokion: Becoming like unto mankind through thee, God is born as a babe for our sake, O Bride of God, yet remaineth wholly immutable. God, having become man, is seen in the flesh." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Emulating the Prophet Jonah, I cry aloud:\nFree Thou my life from corruption, O Good One;\nand save me who crieth out://\nO Savior of the world, Glory be to Thee!",
+        "troparia": [
+          { "text": "Truly loving Him Whom thou didst unwaveringly desire, and having noetically kindled a fire for Him, O Ignatius, thou didst have in thee the water which liveth and speaketh." },
+          { "text": "Fulfilling the testimony of thy conscience, thou wast not dissuaded at the sight of the wild beasts, nor wast thou affrighted, for thou didst desire to be ground like wheat by their jaws." },
+          { "text": "O hieromartyr, thy long torments and unbroken bonds, thy rending asunder in Rome, and the fire of the torturers, which thou didst endure for thy Creator, thou didst reckon as naught." },
+          { "text": "Burning greatly with the love of Christ, O spiritual athlete, thou didst tread upon the fire of thy trials as upon the morning dew, that thou mightest attain Him Who loveth thee thereby." },
+          { "text": "Even though, thirsting, thou didst drain the cup of Christ, yet didst thou ever prefer to suffer rather than to live; and thou didst cry out: \"These things are to me nothing more than the means whereby I may attain life!\"" },
+          { "text": "Theotokion: Adorn thyself, O Bethlehem! Prepare thyself, O Ephratha! For He Who was begotten of the Father without mother is carried in the womb by a Mother without father, and is born thereby saving us." }
+        ]
+      },
+      "kontakion": {
+        "text": "The luminous day of thy radiant struggles proclaimeth to all beforehand *\nHim Who hath been born in the cave; *\nfor thirsting to delight in His love, *\nthou didst hasten to be devoured by the wild beasts. **\nWherefore, thou hast been called the God-bearer, O all-wise Ignatius.",
+        "tone": 3,
+        "label": "Kontakion of the holy hieromartyr",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Once Abraham sacrificed his son, prefiguring the slaying of Him Who sustaineth all things; and thou, O divinely wise one, hast offered thy whole self to Him as a sacrifice, becoming food for the wild beasts, and showing thyself to be pure wheat for thy Creator, truly abiding forever in the granaries of heaven, delighting Him by thy zeal. Having forsaken the whole world for His sake, thou hast been called the God-bearer, O all-wise Ignatius."
+      },
+      "ode7": {
+        "irmos": "Thy children who were in the furnace O Savior,\nwere neither touched nor troubled by the fire.\nWhereupon the three sang, as with a single mouth,\nThy praises and blessed Thee, saying://\nO God of our fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Thou didst have within thee none of the fire which loveth fuel, O Ignatius, but rather the living water which speaketh, the water which crieth aloud: \"Come thou to the Father!\", the water which runneth from life to the life which transcendeth us." },
+          { "text": "\"Let the fangs of the wild beasts be for me a sword, weapons and slaughter; let the bellies of the lions be for me a tomb; and let the fire devour me before corruption devoureth my remains!\" said Ignatius." },
+          { "text": "\"To me death is sweet,\" he said; \"to me all the pangs of my labors are sweet: the wild beasts are delightful, and this fire is like dew unto me, if it doth not withhold Life from me. Wherefore, I hasten to die, that I may live with Christ!\"" },
+          { "text": "\"I prefer not to live in the body, for I desire to live in spirit. A thing of divine love is it for me to live for Christ. To Him do I go; Him do I love, and Him do I hope to receive!\", he said." },
+          { "text": "Theotokion: He Who was foretold by the prophet of old approacheth me as a babe born from the Virgin; Adam rejoiceth, and Eve, our first mother, is released from her pangs. And David, the father of her who giveth birth, danceth with her." }
+        ]
+      },
+      "ode8": {
+        "irmos": "Him of Whom the angels and all the hosts of heaven are in awe\nas their Lord and Creator,\nye priests hymn, ye children praise,\nye peoples bless and supremely exalt//\nthroughout all ages.",
+        "troparia": [
+          { "text": "Hymned be Ignatius, the godly hierarch, twice crowned, as martyr and pastor; for, having suffered for the love of God, desiring to be desired, he was not dissuaded from suffering." },
+          { "text": "With journeys of faith, like the sun from the heavens thou didst valiantly pass over the ends of the earth; and having passed without waning, from the earth to Christ, thou illuminest the world with the light of incorruption." },
+          { "text": "Thirsting for the cup of the suffering of Christ, thou didst hasten, bound, O wise Ignatius; and having reached the arena, thou didst not pause, crying aloud: \"I thirst for Christ with an eternal thirst!\"" },
+          { "text": "O the love and ardor of divine zeal! He is crucified to the desires that he might live for Him Who loveth. He thirsteth for Him Who thirsted and loveth Him Who loveth, preferring to die, that He might live forever." },
+          { "text": "Putting aside the flesh, he immaterially furnished wings to his mind; to soar aloft to Him Who Is, desiring Him Who loveth; for He is truly eternal Desire, Wisdom, the Life of those who have existed." },
+          { "text": "Theotokion: Christ, the Star, hath shone forth out of Jacob, and the magi hasten to the city of Bethlehem, to hymn, worship and honor Him Who was born from the womb of the pure Theotokos." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The ever-flowing wellspring of life,\nlight-bearing candlestick of grace,\nthe animate temple, and most pure cloud,\nwider than the heavens and the earth,//\nthe Theotokos do we the faithful magnify.",
+        "troparia": [
+          { "text": "Ignatius, the seer of things afar off, the minister of the highest mysteries, performing the immaculate service, as a priest hath made himself a sacrifice through martyrdom, and prepareth himself for the wild beasts and the fire." },
+          { "text": "Desiring to clothe thyself in the image of God, thou didst remove the ancient image. Wherefore, receiving the pristine beauty of man's primal appearance through that which is new, not that which is old, thou dwellest together with Christ." },
+          { "text": "By thy sufferings thou didst make thy sacred vesture yet more sacred, O most sacred one; wherefore, having received a twofold crown, with the martyrs and pastors thou dost hymn Christ our God, O Hieromartyr." },
+          { "text": "\"I am the pure wheat of God,\" thou didst say; \"and I am ground by the teeth of the wild beasts, that in sanctity I may be made into pure bread for God Who loveth mankind; and, loving Him, I do not refuse to die.\"" },
+          { "text": "Illumined with light unapproachable, and dwelling in the mansions on high, O sacred Ignatius, praying continually to God thy Creator on behalf of thy flock, cease thou never in thy supplications." },
+          { "text": "Theotokion: Rejoice, O pure one, thou animate city of God, wherein God was well-pleased to make His abode! For, without leaving the highest, He descended within thee, like rain upon the earth, O Birthgiver of God, and is born as a babe in the city of Bethlehem." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The beginningless Word, the Wisdom of God,\ncommuning with us in His ineffable goodness,\ntaught the people of old, holding thee in His arms, O God-bearer Ignatius;\nand, living in God, thou didst pass, rejoicing,//\nthrough the sufferings of martyrdom.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy hieromartyr",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Glory ..., Both now ...: Exapostilarion of the forefeast."
+    },
+    "lauds": {
+      "_note": "On the Praises (Lauds): 4 stichera of the forefeast, acrostic of the Greek alphabet, by Romanus the Melodist, in Tone VI. No specific Ignatius lauds stichera in the PDF; stichera field omitted so assembler uses forefeast or Octoechos. The doxastikon below is drawn from the Matins Aposticha Glory (composition of the Studite, Tone I).",
+      "doxastikon": {
+        "text": "Thine annual festival, O God-bearer Ignatius,\nhath arisen like an animate pillar and an inspired cloud,\nproclaiming thy mysteries and the mighty deeds which thou didst show forth\nwhen upholding the Faith even to the shedding of thy blood.\nYea, blessed and ever-memorable was thy voice when thou didst say:\n\"As the grain of God I am ground by the teeth of the wild beasts.\"\nWherefore, as thou wast an emulator of the suffering of thy Christ,//\npray thou, that our souls be saved.",
+        "tone": 1,
+        "label": "Glory ..., the composition of the Studite"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "As thou didst share in the ways of the apostles * and didst occupy their throne, *\nthou didst find thine activity to be a passage to divine vision, * O divinely inspired one. *\nWherefore, ordering the word of truth, *\nthou didst suffer for the Faith even to the shedding of thy blood, **\nO hieromartyr Ignatius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr",
+      "_note": "After the Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "feast": "Holy Great Martyr Katherine of Alexandria",
+    "feastKey": "katherineOfAlexandria",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 11-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-24.pdf",
+    "_note": "Katherine is primary saint (doxology-rank); Mercurius of Caesarea is secondary (2nd canon). Within afterfeast of Entry of the Theotokos (Nov 21–25) — Entry afterfeast content omitted. Two canons both in Tone VIII: Canon I of Katherine by Theophanes + Canon II of Mercurius by Joseph the Hymnographer. Kontakion of Mercurius (after Ode 3); Kontakion + Ikos of Katherine (after Ode 6). Sessional hymns: Katherine (Tone IV), Glory/Mercurius (Tone IV), Both now/feast (omitted — Entry afterfeast). Lauds: 4 stichera for Katherine in Tone IV; Glory doxastikon Tone II (Babylas the Monk)."
+  },
+  "troparion": {
+    "text": "Thy ewe-lamb Katherine O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy great-martyr Katherine of Alexandria"
+  },
+  "kontakion": {
+    "text": "O ye who love the martyrs,\nraise up an honored chorus in a most godly manner,\nhonoring the all-wise Katherine;\nfor in the arena she preached Christ and trod upon the serpent,//\ntrampling down the knowledge of the rhetors.",
+    "tone": 2,
+    "label": "Kontakion of the holy great-martyr Katherine",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "doxology",
+      "feastType": "saint",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Thy ewe-lamb Katherine O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr Katherine of Alexandria",
+      "_note": "On 'God is the Lord': Troparion of the feast (once); Troparion of Katherine; Glory ..., Troparion of Mercurius; Both now ..., Troparion of the feast (once)."
+    },
+    "troparionGlory": {
+      "text": "In his sufferings, Thy martyr Mercurius O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Glory ..., Troparion of the holy great-martyr Mercurius of Caesarea"
+    },
+    "sedalion": [
+      {
+        "text": "Thou didst love Christ thy Bridegroom,\nradiantly trimming thy lamp and shining forth with virtue, O glorious one.\nWherefore, with Him thou hast entered into the bridal chamber,\nreceiving a crown of suffering from Him.\nFrom misfortunes do thou deliver us who keep thy memory,//\nO Katherine.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy great-martyr Katherine (after Kathisma)",
+        "melody": "Having been lifted up upon the Cross",
+        "glory": {
+          "text": "Struggling, the martyr Mercurius put the deceiver to shame\nand became a mighty champion of Christ.\nTherefore, he hath now been numbered among the choirs of heaven,\nworthily sharing in everlasting glory.\nWherefore, we faithfully celebrate//\nhis sacred memory.",
+          "tone": 4,
+          "label": "Glory ..., Sessional Hymn of the holy great-martyr Mercurius of Caesarea",
+          "melody": "Go thou quickly before"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of the holy great-martyr Katherine in Tone VIII, the acrostic whereof is 'With hymns do I hymn the ever-memorable Catherine,' by Theophanes; Canon II of the holy great-martyr Mercurius in Tone VIII, the acrostic whereof is 'May the might of Mercurius preserve me!', the composition of Joseph the Hymnographer.",
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "irmos2": "That which had been hewn down divided the undivided,\nand land unseen was seen by the sun;\nwater engulfed the cruel enemy,\nand Israel traversed the impassable, chanting a hymn:\nLet us sing unto the Lord,//\nfor gloriously hath He been glorified!",
+        "troparia": [
+          { "text": "By the prayers of the all-wise martyr Katherine, O Christ, enlighten Thou the darkened eye of my soul, granting me a ray of Thy splendor, O Master, which destroyeth all the gloom of my soul-destroying falls." },
+          { "text": "O all-wise one, guided by the divine commandments of the Master and consumed with love for Him, thou didst hasten to thy struggles rendering the tormentors awestruck with thy knowledge, discourse, wisdom and grace." },
+          { "text": "Directed by the mighty hand of Christ, thou didst escape the tempests of idolatry, O martyr, voyaging dryshod with the sail of the Cross and the divine winds of the Spirit, chanting a hymn unto God." },
+          { "text": "Rejoicing in the beauties of virginity, O wise Katherine, and possessed of divine knowledge from heaven, thou didst right boldly and courageously put to shame the proponents of false knowledge, mightily vanquishing them." },
+          { "text": "Theotokion: O most pure one, he who proclaimeth thee to be the Theotokos doth reject every heresy; for thou hast given birth unto the ever-existing Word of God, Who immutably assumed flesh, O Birthgiver of God, who art more exalted than all creation." },
+          { "canon": "secondCanon", "text": "Standing joyfully before the Wellspring of blessings with the choirs of heaven, O Mercurius, and filled with divine delight, O ever-memorable one, preserve those who with love celebrate thy festival, chanting unto the Lord: Gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "text": "Willingly didst thou enter the arena of torment, O wise one, strengthened with the power of Christ, Who for our sakes willingly endured His saving sufferings; and, rejoicing, thou didst cry aloud: Let us chant unto the Lord, for gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "text": "Adorned with the confession of Christ, O blessed one, thou didst openly revile the words of the tyrant and, with gladness, endured all manner of pain, O Mercurius, crying out to Him Who strengthened thee: Let us chant unto the Lord, for gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "text": "Theotokion: For our sake didst Thou appear incarnate of the Virgin Maiden, becoming a man like unto us; and Thou dost reveal Mercurius, Thy valiant spiritual athlete, to be a faithful witness to Thy sufferings, who chanteth mightily unto Thee: Let us chant unto the Lord, for gloriously hath He been glorified!" }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,//\nfor there is none holy save Thee, O only Lover of mankind.",
+        "irmos2": "O Lord, Thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "Striving voluntarily of thine own will, thou didst go to thy suffering, emulating Christ; and, having radiantly vanquished myriads of the princes of this world, thou wast revealed to be crucified, O God-pleasing Katherine." },
+          { "text": "With strength of mind didst thou denounce the tormentors, who were overwhelmed in the abyss of godlessness, O all-praised martyr, plainly expounding the dogmas of the knowledge of God, illumined with the wisdom of God." },
+          { "text": "He who whispered thoughts of equality with God into the ears of Eve is now trod underfoot by a young maiden; for, defended with the sword of the Cross, the martyr Katherine hath put him to shame, immeasurably glorying over him." },
+          { "text": "Theotokion: O Birthgiver of God, who alone art most pure, raise up my morbid mind through the activity of the Life Who, from thee, manifested Himself to the world, cleansing the wounds and stripes of my sins." },
+          { "canon": "secondCanon", "text": "All aflame with divine love, O glorious Mercurius, thou didst regard fire and bonds, the sword and torments to be a dream." },
+          { "canon": "secondCanon", "text": "Meeting with grievous wounds, thou didst hymn the Creator, O wise martyr, and thereby received healing, O glorious one." },
+          { "canon": "secondCanon", "text": "Strengthened by the divine staff, O right valorous martyr, like a spiritual athlete thou didst mightily cast down the audacity of the enemy." },
+          { "canon": "secondCanon", "text": "Theotokion: To prefigure thy birthgiving, which surpasseth understanding, O pure one, a bush appeared, burning with fire, yet unconsumed." }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "Glorifying Mercurius with hymns,\nlet us bless him as an unvanquished warrior in battle,\nan unashamed helper amid misfortunes,\nand a deliverer from tribulations and sorrows,\nof those who celebrate his memory with gladness.",
+        "tone": 4,
+        "label": "Kontakion of the holy great-martyr Mercurius of Caesarea",
+        "melody": "Thou hast appeared today"
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Thou didst love Christ thy Bridegroom,\nradiantly trimming thy lamp and shining forth with virtue, O glorious one.\nWherefore, with Him thou hast entered into the bridal chamber,\nreceiving a crown of suffering from Him.\nFrom misfortunes do thou deliver us who keep thy memory,//\nO Katherine.",
+        "tone": 4,
+        "label": "Sessional Hymn of the holy great-martyr Katherine",
+        "melody": "Having been lifted up upon the Cross",
+        "glory": {
+          "text": "Struggling, the martyr Mercurius put the deceiver to shame\nand became a mighty champion of Christ.\nTherefore, he hath now been numbered among the choirs of heaven,\nworthily sharing in everlasting glory.\nWherefore, we faithfully celebrate//\nhis sacred memory.",
+          "tone": 4,
+          "label": "Glory ..., Sessional Hymn of the holy great-martyr Mercurius of Caesarea",
+          "melody": "Go thou quickly before"
+        }
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\n'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "O ever-memorable martyr Katherine, showing the determination of a spiritual athlete, with great endurance thou didst set thyself against the hostile one, trampling him beneath thy beautiful feet by the power of the Cross, O passion-bearer, thou boast of the martyrs." },
+          { "text": "O all-blessed Katherine, bride of Christ, thou art luminous with the radiant beams of divine beauty, splendid in comeliness. Wherefore, in gladness dost thou chant unto the Master: Glory to Thy power, O Lover of mankind!" },
+          { "text": "Thou didst set at naught the audacity of the tyrant by the godly discourse of thy wisdom, for thou didst rescue from the abyss of the false worship of demons those who were deceived thereby, teaching them to cry aloud to Christ in hymns: Glory to Thy power, O Lover of mankind!" },
+          { "text": "O all-praised one, who hast mightily trampled down the audacity of the enemy, the right glorious and splendid festival of thy memory hath dawned like the sun, and thereon we cry aloud to the Master: Glory to Thy power, O Lover of mankind!" },
+          { "text": "Theotokion: The might of those who reject the veneration of the icons of thee, O pure Maiden, and of Him who, in a manner surpassing understanding, was incarnate of thee and enlightened the whole world, and of all the saints, hath now been cast down. Enlighten those who honor thee with faith, O thou who alone art all-hymned." },
+          { "canon": "secondCanon", "text": "Thou didst make thyself like unto thy Creator, O divinely wise one, by the sufferings of thy divine martyrdom, and from Him hast thou received splendid crowns, in that thou didst remain unconquered, O glorious one." },
+          { "canon": "secondCanon", "text": "Thou hast now been arrayed in a garment woven by the grace of the Most High, O martyr, having shed the robe of mortality." },
+          { "canon": "secondCanon", "text": "Having contended, even to the shedding of thy blood, against sin, thou wast revealed to be victorious and hast been deemed worthy of the glory of the Most High, O Mercurius." },
+          { "canon": "secondCanon", "text": "Theotokion: O Ever-virgin, the saving Word descended upon thee like a shower drying up the flood of polytheism." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "Aflame with the fire of love for thy Master, O all-glorious martyr, and seeking to behold His incomprehensible beauty, thou didst willingly give thyself over to wounds, radiant with the graces of virginity." },
+          { "text": "Having splendidly adorned thyself with most-sacred sufferings, O good virgin maiden, thou didst ascend to the heavenly bridal chamber of Christ, and hast now been radiantly joined to thy Bridegroom in gladness, O all-blessed one." },
+          { "text": "Thou wast revealed to be an all-radiant maiden who, having loved Him Whom thou didst desire, and having followed in His steps by finishing a most difficult struggle, cried aloud unto Him as the fragrance of thy noetic myrrh: I have come, O my Bridegroom!" },
+          { "text": "Theotokion: Knowing thee to be the true Theotokos, and knowing the Word of God Who was born from thee, O most pure Lady, we all preach Him Who is known in two independent natures and wills, O Mother and Bride of God." },
+          { "canon": "secondCanon", "text": "Lacerated, cut with a blade without respite, O Mercurius, thou didst endure, strengthened by divine hope." },
+          { "canon": "secondCanon", "text": "Having fortified thy heart with the noetic Stone, O glorious Mercurius, thou didst not waver when crushed by a stone." },
+          { "canon": "secondCanon", "text": "Having shared in the sufferings of thy Master, thou didst partake of His glory and divine splendor." },
+          { "canon": "secondCanon", "text": "Theotokion: O Virgin, who hast given birth unto the Life which hath slain death: slay thou the sin which liveth within me." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The abyss of my sins and the storm of my transgressions\ndisquieten me and thrust me down into the depths of despondency;\nbut do Thou stretch forth Thy mighty arm unto me as Thou didst to Peter,//\nand save me, O my Guide.",
+        "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "The good and most pure Word, beholding thee all resplendent in the radiance and beauty of virginity and empurpled in the blood of thy martyrdom, O maiden, brought thee to dwell in the mansions of heaven." },
+          { "text": "By the Cross thou didst do away with the dominion of the tyrants, denouncing the vanity of earthly wisdom and pouring forth dogmas of divinely inspired teaching, O most wise and ever-memorable Katherine." },
+          { "text": "Mightily enduring the pain of thy wounds, O all-glorious martyr, thou didst cast down to the ground him who of old drove Adam from the sweetness of paradise through deceit, and thou hast been crowned with the crowns of the kingdom." },
+          { "text": "Theotokion: By thy prayers, O Mother, Virgin Theotokos, make thy Son and our Judge, Who doth deliver us from evil circumstances, to be merciful unto me on the day of Judgment, for in thee alone do I place my trust." },
+          { "canon": "secondCanon", "text": "The ever-existent Word beholding thee enduring all manner of torments for His sake, O wise martyr, enlivened thee, and by His angel, commanded thee to take heart, O Mercurius, and in no wise fear the opposition of the tormentors." },
+          { "canon": "secondCanon", "text": "The serpent of many guises hath been slain and trampled beneath the beautiful feet of the spiritual athlete, the valiant warrior, for, willingly striving unto death towards the wounds of torture, he was filled with glory." },
+          { "canon": "secondCanon", "text": "To the Master didst thou wholly offer the desire of thy heart, O martyr; and, having endured the rack, thou wast crowned by Him as a victor, O Mercurius, and dost now stand before Him in the heavens with all the martyrs." },
+          { "canon": "secondCanon", "text": "Theotokion: At the angel's cry thou didst conceive the Angel of Great Counsel, O Maiden, and gave birth incarnate of thy most pure blood unto Him, Who in His unutterable mercy, hath shown to all the ways which lead to life, O all-immaculate one." }
+        ]
+      },
+      "kontakion": {
+        "text": "O ye who love the martyrs,\nraise up an honored chorus in a most godly manner,\nhonoring the all-wise Katherine;\nfor in the arena she preached Christ and trod upon the serpent,//\ntrampling down the knowledge of the rhetors.",
+        "tone": 2,
+        "label": "Kontakion of the holy great-martyr Katherine of Alexandria",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Having received the wisdom of God from childhood, O martyr, thou didst also master well all external wisdom; and learning therefrom the movement of the elements and creation through discourse and Him that by His word fashioned them in the beginning, day and night didst thou render thanksgiving unto Him, setting at naught idols and those who worship them, putting down the knowledge of the rhetors."
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud://\n'Blessed art Thou, O Lord our God, throughout the ages.'",
+        "troparia": [
+          { "text": "Thou art the boast of martyrs and a teacher of piety, leading a multitude of martyrs unto Christ, thy radiant Bridegroom. And with them dost thou cry aloud, O all-praised one, chanting: O God of our fathers, Blessed art Thou!" },
+          { "text": "Thy most wise discourse brought many out of the madness of idolatry unto salvation, and thou didst show them forth as all-radiant martyrs, who cry aloud with thee: O God of our fathers, Blessed art Thou!" },
+          { "text": "Following in Thy footsteps, the maiden was brought to Thee beheaded by the sword, emulating Thy most pure Passion, crying aloud unto Thee, our Creator, and saying: O God of our fathers, Blessed art Thou!" },
+          { "text": "Theotokion: The Holy of Holies dwelt within thee in a hallowed manner, O pure Virgin Theotokos, and He became incarnate from thee to save those who cry out in faith: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Illumined with the light of heavenly enlightenment, O valiant warrior, thou dost enlighten those who now hymn thee and chant: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "O blessed one, having hymned the Benefactor of all, and consumed with love for Him while burning with material fire, thou didst chant: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Those who rendered homage to stone, and were thereby stony of heart, O martyr, weighted down thy neck with a stone, but thou didst cry aloud: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Having mingled thy precious blood with the blood of the Master and Lover of mankind, thou wast revealed to be a participant in His sufferings, O Mercurius, crying aloud: Blessed art Thou, O Lord God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Theotokion: The ranks of angels stand in awe of the depth of thy mystery, O Theotokos; for God appeared incarnate from thee, He to Whom we chant: Blessed art Thou, O Lord God, throughout the ages!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "troparia": [
+          { "text": "The empress, converted by thy teachings, advanced in piety and, mightily enduring the infliction of pain, was clearly deemed worthy of the everlasting kingdom of heaven, crying out to the Master: Ye priests bless; ye people exalt supremely Christ throughout all ages!" },
+          { "text": "Let the entreaties of the faithful be entrusted to the martyrs, for the passion-bearer doth stand before Christ, asking that which is best for all and mediating salvation for those who earnestly celebrate her most holy and honored memory and faithfully cry aloud: Ye people supremely exalt Christ throughout all ages!" },
+          { "text": "Opening wide the gateways of paradise, the Bridegroom doth receive thee, O all-wise one; and hath made thee a most radiant dwelling place, revealing thee to be one who shares in His kingdom and His suffering. And, standing now before Him, splendidly adorned, O daughter of the King, forget us not." },
+          { "text": "The tyrant tempted thee with alluring words; the cruel one sought to deceive thee with persuasions, hoping thereby to weaken thy resolve, O glorious one; but, wishing to betroth thyself to Christ, thou didst cry out to the Master: Ye priests hymn; ye people, supremely exalt Christ throughout the ages!" },
+          { "text": "Theotokion: O all-immaculate Theotokos, thou art more sacred than the supra-natural ranks of angels, for from thy virginal womb, which kneweth not wedlock, thou hast given birth unto their Creator and Lord in two natures, unconfused and immutable, God incarnate in a single hypostasis." },
+          { "canon": "secondCanon", "text": "The choir of passion-bearers accepted as one of their number thee who wast adorned and radiant with the precious beauties of thy sufferings and thy pious and honorable martyrdom. And now thou dost unceasingly cry aloud: Ye priests bless; ye people supremely exalt Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "Piously didst thou finish thy course, O glorious one, valiantly putting the foe to shame; and, laying hold of a heavenly trophy as a victor, thou dost now rejoice with the angelic choirs, unceasingly crying out with them: Ye priests hymn; ye people supremely exalt Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "In meeting thy death by the sword, and receiving the expected end, which thou didst desire, O all-blessed one, thou didst irrigate the ground with the outpourings of thy blood; whereupon thy blessed and victorious body was shown to be whiter than snow, having chanted: Ye priests hymn; ye people supremely exalt Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "Theotokion: All we, the faithful, hymn thee, O most pure one, as her who is the cause of our restoration; for in a manner beyond reproach thou didst give birth unto God, the Cause of all, Who in His tender compassion hath restored His image which had been marred by wickedness, O thou who alone art most blessed and joyous." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels//\nmagnify thee as the Theotokos.",
+        "irmos2": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;\nwherefore we the faithful//\nmagnify the most pure Theotokos.",
+        "troparia": [
+          { "text": "Adorned with bridal ornaments, thou hast passed on to the splendid bridal chambers, holding the lamp of virginity in thy right hand and thy severed head in the other. And now, standing before Christ, thy Bridegroom, preserve thou those who hymn thee." },
+          { "text": "Thy prayer was accepted, O divinely wise one, for the Master doth save from temptations those who call upon thy name with faith, O honored one, bestowing health upon them, and delivering them from divers spiritual and bodily ailments. Wherefore, in gladness we bless thee, O Katherine." },
+          { "text": "Thou hast now attained unto the calm harbor, O martyr, having easily sailed over this world's sea of threefold waves, and in good order, without succumbing to temptation, O all-wise virgin; bringing an offering of varied riches unto Christ, a multitude of martyrs, O all-blessed Katherine." },
+          { "text": "Joining chorus now with the choirs of virgins within the bridal chambers of heaven, and illumined with rays of thy sufferings, O all-wise Katherine, thou hast loosed the bonds of my falls, earnestly entreating the Benefactor of all, for Whom thou didst shed thy blood." },
+          { "text": "Theotokion: Thou hast been revealed, O Virgin Mother of God, to have given birth in the body, in a manner transcending nature, to the good Word, Whom the Father brought forth from His own heart before all ages, in that He is good, and Whom we now know to be more exalted than all bodies, even though clad in a body Himself." },
+          { "canon": "secondCanon", "text": "With grace the martyrs now dispel the stench of dung and with ineffable discourse they drive away our foul passions, pouring forth waters for the healing of our bones and watering the souls of those who hymn their wondrous miracles." },
+          { "canon": "secondCanon", "text": "We honor thee in a sacred manner as a great pillar of the Church of Christ, an indestructible rampart, a city which cannot be taken captive, a mighty warrior of God the King of all, a destroyer of our enemies and a noetic and universal beacon, O martyr." },
+          { "canon": "secondCanon", "text": "Thou didst receive an angel of light as a companion before thy suffering, O divinely wise one. Wherefore, lacerated, burned with candles and grievously cut asunder and beheaded with a sword, thou wast not afraid, O most valiant spiritual athlete of Christ." },
+          { "canon": "secondCanon", "text": "Thy divine memorial hath dawned as a day full of enlightenment, gladness and joy for us who honor thee, O martyr Mercurius, wherefore remember us who keep thy memorial and deliver us from grievous temptations, misfortunes and passions." },
+          { "canon": "secondCanon", "text": "Theotokion: O portal of the Light, enlighten my soul which hath been blinded by the passions and darkened by wicked thoughts, and is in danger; and deliver me from temptations, misfortunes and sorrows, that I may glorify thee, the hope and confirmation of the faithful." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Aflame with wisdom, O virgin Katherine,\nmost honorable among women, thou glory of passion-bearers,\nthrough God thou didst denounce the skill of the philosophers as foolishness and fables,\nhaving acquired the truly all-immaculate Mother of God//\nas thy companion.",
+      "tone": 3,
+      "label": "Exapostilarion of the holy great-martyr Katherine",
+      "melody": "By the Spirit in the sanctuary"
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Celebrating the most sacred memory\nof thine honored suffering,\nO all-praised Katherine,\nwith unceasing cries we glorify\nJesus, the Lover of mankind, our Savior and Lord,\nWho gave thee steadfast patience\nand showed thee to be victorious,\nand granted thee discourse,//\nwhich awed the rhetors.",
+          "tone": 4,
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "Celebrating the most sacred memory\nof thine honored suffering,\nO all-praised Katherine,\nwith unceasing cries we glorify\nJesus, the Lover of mankind, our Savior and Lord,\nWho gave thee steadfast patience\nand showed thee to be victorious,\nand granted thee discourse,//\nwhich awed the rhetors.",
+          "tone": 4,
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "O willing martyr,\nall-glorious Katherine,\nthou didst appear earnestly denouncing the tyrant\nand the wicked madness of polytheism,\nsetting them at naught by the radiance of thy knowledge of God\nand by divine grace.\nThus, Christ, the Savior of our souls,\nhath crowned thee as a martyr//\nand an immaculate virgin.",
+          "tone": 4,
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "Upon opening thy mouth,\nO all-glorious Katherine,\nthou didst receive the grace of the Spirit;\nand having cleansed thyself\nby thy life and patient thought,\nthou didst trample down the audacity of the tyrant,\nand with divine wisdom preferred spiritual beauty\nto the beauty of the body,//\nO adornment of passion-bearers.",
+          "tone": 4,
+          "melody": "Thou hast given a sign"
+        }
+      ],
+      "doxastikon": {
+        "text": "Having achieved an immaterial life, and having attained unto the godless tribunal,\nthou didst stand, adorned with the radiance of God as with flowers, arrayed in divine might,\nO victorious and honored Katherine,\nmocking the tyrant's command\nand putting an end to the audacious discourse of the rhetors,//\nO much-suffering one.",
+        "tone": 2,
+        "label": "Glory ..., the composition of Babylas the Monk"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thy ewe-lamb Katherine O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy great-martyr Katherine of Alexandria",
+      "_note": "After the Great Doxology: Litanies. Dismissal."
+    }
+  }
+}

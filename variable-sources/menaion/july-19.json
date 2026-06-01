@@ -1,0 +1,621 @@
+{
+  "_meta": {
+    "feast": "Glorification of our Venerable and God-bearing Father, Seraphim, Wonderworker of Sarov",
+    "feastKey": "stSeraphimGlorification",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 1,
+    "_source": "OCA Jul-19 service text (glorification / finding of relics). Jan 2 is the repose; this is the glorification feast.",
+    "_note": "Two canons of the venerable Seraphim: Canon I in Tone VI, Canon II in Tone VIII. Polyeleos rank with Magnification, Gospel (Mt 11:27-30), Great Doxology. 8 LIC stichera at Great Vespers. 4 Lauds stichera (Tone VIII) plus doxastikon and theotokion. Kontakion Tone II with Ikos after Ode 6."
+  },
+
+  "troparion": {
+    "text": "From thy youth didst thou love Christ, O blessed one;\nand, aflame with the desire to serve Him alone,\nthou didst struggle in the wilderness in unceasing prayer and labor;\nand with compunction of heart having acquired the love of Christ,\nthou wast shown to be the beloved favorite of the Mother of God.\nWherefore, we cry unto thee://\nSave us by thy prayers, O our venerable father Seraphim.",
+    "tone": 4,
+    "label": "Troparion of the venerable one"
+  },
+
+  "kontakion": {
+    "text": "Having forsaken the beauty of the world and the corruption therein,\nthou didst take up thine abode in the Monastery of Sarov.\nAnd having lived there as an angel,\nthou didst become a path for many to salvation.\nWherefore, Christ hath glorified thee, O father Seraphim,\nenriching thee with the gift of healings and miracles.//\nTherefore, we cry out to thee: Rejoice, O our venerable father Seraphim!",
+    "tone": 2,
+    "label": "Kontakion of the venerable one"
+  },
+
+  "vespers": {
+    "licStichera": {
+      "count": 8,
+      "tone": 1,
+      "melody": "O marvelous wonder",
+      "stichera": [
+        {
+          "text": "O most glorious wonder! * A struggler for piety is revealed at Sarov, * and the most wondrous Seraphim doth become a fervent intercessor for us before God. * Rejoice, O Monastery of Sarov, that dost hold within thyself the relics of the venerable one! * Leap for joy, O ye multitudes of the Orthodox, * who have the most wondrous Seraphim as a defender amid misfortune and who cry unto him: * Rejoice, thou light of the Russian land! * Utterly disperse the legions of our adversaries, ** and beseech the Lord to grant peace and great mercy to our souls.",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "O marvelous wonder! * In the Monastery of Sarov, * behold, the blessed Seraphim revealeth himself to us * as an unshakeable pillar of piety. * Wherefore, O ye assemblies of the divinely wise, * be ye exalted in the spirit to the heights, * crying to the venerable one: * O venerable father Seraphim, ** beseech the Lord to grant peace and great mercy to our souls!",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "Wondrous are Thy mysteries, * O Christ our God, * for Thou hast given us a beacon in the venerable Seraphim, * a mighty champion for our right-believing hierarchs * against the adversary, * and intercessor for monks and all Orthodox Christians, * and the boast and foundation of his holy monastery, * who now doth entreat Thee, O Lord, ** to grant peace and great mercy unto our souls.",
+          "_note": "Sung twice."
+        },
+        {
+          "text": "When thou didst enter the wilderness of Sarov, O venerable one, * having utterly cast off thine own will, * thou didst show steadfast obedience to all, * for thou didst joyously endure vexation and dishonor. * Thou didst receive blows and stripes from evil men, * for whom thou didst yet pray, O venerable one. * And glorifying thy most honored memory, * we beseech thee, O venerable one: ** Beg the Lord to grant peace to the world and great mercy to our souls."
+        },
+        {
+          "text": "Blessed is the Monastery of Sarov, * which hath thee, O venerable father Seraphim, as a treasury of virtues, * a vessel of purity and chastity, * a receptacle of grace, a fount of healings, * a physician who cureth the infirm without fee, * a true faster, a comforter of the afflicted, * and a calm haven for those who are tempest-tossed by the passions of life. * O venerable father Seraphim, pray that peace and great mercy be granted unto us ** that keep thine honored memory."
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, ye assemblies of the faithful, let us glorify our most wondrous father with songs of praise today,\nand let us cry thus unto him:\nO venerable father Seraphim, thou wast truly vouchsafed a godly life,\nreceiving a crown of unfading glory from God.\nWherefore, the Monastery of Sarov doth boast of thee,\nand the people, beholding the precious shrine of thy relics and the miracles that take place through thine intercession,\nglorify the Lord Who doth glorify thee.\nBeseech Him, O venerable father, that He grant peace and great mercy to our souls!",
+        "tone": 8,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "In His love for mankind, the King of heaven appeared on earth\nand dwelt among men;\nfor He Who received flesh from the pure Virgin and cameth forth from her having received human nature,\nis the only Son of God, twofold in nature but not Hypostasis.\nTherefore, proclaiming Him to be truly perfect God and perfect man, we confess Christ our God.\nHim do thou beseech, O unwedded Mother,//\nthat our souls find mercy!",
+        "tone": 8,
+        "label": "Both now, Dogmaticon"
+      }
+    },
+
+    "litiya": {
+      "stichera": [
+        {
+          "tone": 1,
+          "text": "With what crowns of praise shall we crown the great ascetic, the venerable Seraphim?\nFor he was shown to be a good guide in steadfast faith and virtue,\ninstructing those who came unto him with divinely inspired teachings and by his angelic life.\nWherefore, we cry unto him: O venerable one, beseech Christ to establish the Orthodox faith and to save our souls!"
+        },
+        {
+          "tone": 1,
+          "text": "Come, O ye multitudes of monks, let us piously praise the venerable one today,\nthe true disciple of the Savior,\nwho hath trampled down the deception of the world, hath taken the yoke of Christ upon his shoulders,\nand put to shame the hosts of the demons.\nLet us cry thus unto him: O father Seraphim, forget not us who praise and honor thy holy memory!"
+        },
+        {
+          "tone": 1,
+          "text": "O venerable Seraphim, thy radiant and godly memory hath struck kings, princes and hierarchs with wonder,\nfor while yet in the flesh thou, like one of the bodiless hosts, didst put to shame the invisible enemies.\nThe whole province of Tambov and the holy Monastery of Sarov rejoice,\npossessed of thy holy relics, through which health is granted unto all that draw nigh to thy precious reliquary in faith.\nWherefore, enlightened by thee we cry unto thee, O venerable one: Pray thou that our souls be saved!"
+        },
+        {
+          "tone": 5,
+          "label": "Glory",
+          "text": "O land of Russia, rejoice this day; and be thou glad, O holy Monastery of Sarov!\nYe multitudes of the faithful who have hastened hither today,\nlet us glorify our venerable father, pastor and teacher,\nthe divinely wise guide of those astray, the ready healer of all the afflicted,\nthe great adornment of the Russian land, whom praising thus we say:\nO venerable Seraphim, save us by thy prayers!"
+        },
+        {
+          "tone": 5,
+          "label": "Both now",
+          "text": "Thou art the temple and portal, * the palace and throne of the King, * O most honored Virgin, * through whom Christ the Lord, my Redeemer, * Who is the Sun of righteousness, * hath revealed Himself unto those who sleep in darkness, * deigning to enlighten those * whom He hath fashioned in His image by His own hand. * Wherefore, O all-hymned one, * as thou hast acquired a mother's boldness before Him, ** entreat Him without ceasing, that our souls be saved."
+        }
+      ]
+    },
+
+    "aposticha": {
+      "tone": 5,
+      "melody": "Rejoice",
+      "stichera": [
+        {
+          "text": "Rejoice, converser with angels, O venerable Seraphim!\nHaving lived piously on earth, thou didst teach the fear of the Lord unto the many who came to thee.\nIllumined by the grace of the most holy Spirit, thou didst behold as present things which were to come,\nand hast filled many that were suffering in spirit with compunction and joy.\nWherefore, we beseech thee: Pray to the Lord on behalf of those who honor thee!"
+        },
+        {
+          "verse": "Precious in the sight of the Lord * is the death of His saints.",
+          "text": "Rejoice, most wondrous instructor of the erring,\nwho wast vouchsafed to behold in the temple Christ the Lord with angels and archangels.\nAnd now, O venerable one, who in the heavens dost take unceasing delight in the vision of Him,\ndo thou pray for us who keep thy memory in faith."
+        },
+        {
+          "verse": "Blessed is the man that feareth the Lord; * in His commandments shall he greatly delight.",
+          "text": "Rejoice, O venerable Seraphim,\nfor thou hast commanded all to keep Christ's true faith;\nand, yearning for the life on high, thou didst disdain wealth,\nwherefore thou dost now behold the ineffable beauty of heaven\nand takest delight in the sweet hymnody of the angels.\nEntreat thou the Lord, that He grant us peace and great mercy."
+        },
+        {
+          "label": "Glory",
+          "tone": 6,
+          "text": "O venerable father Seraphim, who can recount thy labors and sufferings?\nAnd what tongue can describe thy harsh life in the wilderness,\nthy vigils and fasting, yea, and thy life in seclusion, thy silence and unceasing prayer?\nThou hast truly been shown to be the adornment of those who fast\nand a steadfast intercessor before God.\nWherefore, we cry unto thee: Rejoice, O model of monastic life!\nRejoice, great consolation amid misfortunes and sorrows, and fervent advocate for all!\nO venerable one, pray thou that our souls be saved!"
+        },
+        {
+          "label": "Both now",
+          "tone": 6,
+          "text": "Christ the Lord, my Creator and Redeemer, * Who came forth from thy womb, O most pure one, * and clothed Himself in my nature, * hath freed Adam from the primal curse. * Wherefore, like the angel * we unceasingly cry out to thee, * O most pure one, * who art truly the Mother of God and Virgin: * Rejoice!, O Sovereign Lady, ** the intercession, protection and salvation of our souls!"
+        }
+      ]
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "joint": true,
+      "feastType": "saint",
+      "_source": "OCA Jul-19 service text (glorification feast)"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Having overcome the temptations of the enemy by the sign of the Cross and by prayer,\nthou didst please the Lord right well with fasting and abstinence.\nWherefore, thou didst receive the gift of miracles,\nbestowing healing upon all that approach the shrine of thy relics with faith, O venerable Seraphim.\nBeseech Christ God, that He grant forgiveness of sins unto those who honor thy holy memory with love.",
+        "tone": 4,
+        "label": "Sessional Hymn after Kathisma 1",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Deliver us from our needs, * O Mother of Christ God, * thou who hast given birth to the Creator of all, * that we all may cry out to thee: ** Rejoice, O thou who alone art the intercessor for our souls!",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "In the depths of the wilderness of Sarov thou didst kneel upon a rock,\nstretching forth thy venerable hands unto the Lord.\nWherefore, thou didst receive from the Savior the grace of the Holy Spirit,\nto heal suffering bodies and to enlighten the souls of the faithful.\nTherefore, we cry unto thee: Entreat Christ God, O venerable one,//\nthat He save us who celebrate thy holy memory!",
+        "tone": 1,
+        "label": "Sessional Hymn after Kathisma 2",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Thou hast conceived the divine Fire without being consumed,\nand dist give birth without seed to the Lord the Source of life:\nO Theotokos full of grace//\nsave thou those who magnify thee!",
+          "tone": 1,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We bless thee, O venerable father Seraphim,\nand we honor thy holy memory,//\nthou instructor of monks and converser with angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication.",
+        "Glory… Both now… Alleluia… Glory to thee, O God!"
+      ],
+      "tone": 4
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Thy virtuous life hath now shone forth in the land of Russia, O venerable one,\nand thou art glorified with hymns of praise by all;\nfor, like Elijah ascending on the chariot of the virtues, in thy soul thou hast soared aloft to heaven,\nand there hast been justly crowned with a most splendid crown.\nWherefore, we cry unto thee in thanksgiving:\nO blessed Seraphim, beseech Christ God,\nthat He grant forgiveness of sins unto us that honor thy holy memory with love.",
+      "tone": 7,
+      "label": "Sessional Hymn after the Polyeleios",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "O Lady, to the right tranquil haven of salvation guide me who am tempest-tossed amid the tumult of slothfulness.",
+        "tone": 7,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
+      "tone": 4,
+      "_psalmRef": "Ps. 115:6 / 115:3"
+    },
+
+    "gospel": {
+      "reading": "Matthew 11:27-30",
+      "_note": "All things are delivered unto me of My Father…"
+    },
+
+    "postGospelSticheron": {
+      "text": "Celebrating in spirit on the appointed festival of the venerable father and piously rejoicing,\nlet us fervently cry aloud today, O ye faithful: Rejoice, O blessed Seraphim!\nRejoice, heavenly man and earthly angel!\nRejoice, O thou who hast guided many to the path of salvation!\nRejoice, boast of pious Orthodox Christians and confirmation of the Russian land!//\nPray thou on behalf of our souls!",
+      "tone": 6,
+      "label": "Idiomelon of St Seraphim (after Psalm 50)"
+    },
+
+    "canon": {
+      "tone": 6,
+      "_secondCanonTone": 8,
+      "_authors": {
+        "first": "Canon I of the venerable Seraphim in Tone VI",
+        "second": "Canon II of the venerable Seraphim in Tone VIII"
+      },
+      "_canonNote": "Two joint canons of the venerable Seraphim. Note: The service rubric specifies the Paraklisis Canon of the Theotokos with 6 troparia first, followed by both canons of the venerable one; in standard menaion rendering the Paraklisis canon is omitted and only the saint's two canons are included.",
+
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried:\nLet us sing to God a song of victory.",
+        "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians, the Israelites cried aloud:\nUnto our God and Redeemer let us now sing.",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "O Lord, open mine unworthy lips and grant me a word of understanding,\nthat I may worthily hymn the memory of the blessed Seraphim,\nwho with the angels doth now beseech Thee to deliver us from every grievous circumstance."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Thou wast a great intercessor before the Theotokos, O venerable one,\nand wast deemed worthy to behold her with the apostles.\nAnd now, cease not to visit thy children by thine intercessions."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "From thy youth, O venerable one, thou didst surrender thyself in mind unto the Lord,\nand having subdued the passions of thy body through rigorous abstinence,\nthou wast adorned with every virtue, O most wise one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O all-blessed Sovereign Lady, who hast given birth unto the supremely good God in the flesh,\ncleanse thou my heart which is tormented by passions,\nthat I may magnify thee with faith and love."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Thou didst tread the straight and narrow path to the heavenly kingdom\nin accordance with the commandment of Christ the Master, disdaining the broad and spacious path.\nAnd now do thou pray for us that keep thy most radiant memory."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Having ascended the mount of dispassion and taken up thy cross from thy youth,\nthou didst unfalteringly follow after Christ.\nAnd having acquired spiritual wisdom, thou didst attain the heavenly Jerusalem, O venerable one.\nPray thou to the Lover of mankind on our behalf."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Standing now before the throne of God, O venerable one,\nintercede thou for the suffering Russian land;\nand by thy prayers, O venerable one, entreat salvation for the Christ-loving people of Russia."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Hearken, O Lady, unto those who flee to thee with faith and love,\nand who hymn thee with fear."
+          }
+        ],
+        "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
+      },
+
+      "ode3": {
+        "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock of Thy confession.",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,//\nO Support of the faithful, O only Lover of mankind.",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Standing before God with the angels in thy prayer, O venerable one,\npray thou for the whole world,\nthat the assaults of the enemy be overcome\nand that Orthodox Christians be granted victory over their adversaries."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "From thy youth thou didst cleave with faith and love unto the Master of the hosts on high, O venerable Seraphim;\nand, shining forth like the sun in the wilderness of Sarov,\nthou wast a comfort to those who approached thee in sorrow.\nPray thou that we be saved!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "To those who pray unto thee, thou hast been revealed to be an unshakeable pillar\nand a refuge for those who have recourse unto the Monastery of Sarov,\nand abundant grace for those who receive healings."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Our first mother Eve heard: In sorrow thou shalt bring forth children.\nAnd thou, O pure Virgin, hearing: The Lord is with thee! Rejoice!\ndidst put to flight the grief of our first mother with this cry of joy!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Beseech Christ God, O blessed one,\nto deliver us from famine and plagues, from sudden death,\nfrom secret transgressions and wicked thoughts,\nthat with a pure heart we may cry out to Christ:\nO Lord, save us by the supplications of the venerable one!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Following after Christ the Master in meekness and humility, thou wast all things to all mankind;\ntirelessly instructing both rich and poor in piety,\nthou didst foresee the future as though it were the present.\nBeseech Christ God, O venerable one, to grant us forgiveness of our sins!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Deliver thy monastery from every assault of the enemy, O venerable one,\nand fill it with love and grace,\nthat it heed not the cares of this life,\nbut attain unto the goodness and beauty which save the soul."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Our trust and hope art thou, O most holy Sovereign Lady.\nSave the suffering Russian land and thy people that pray and call upon thy holy name!"
+          }
+        ],
+        "katavasia": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory."
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Having utterly overcome the passions of the sea of life by abstinence,\nand attained unto the haven of dispassion,\nthou wast revealed as a vessel of abstinence, O venerable Seraphim.\nBeseech Christ God to grant us great mercy!",
+        "tone": 4,
+        "label": "Sessional Hymn of the venerable one (after Ode 3)",
+        "bothNow": {
+          "text": "When thou dost stand before the face of my Creator on the day of His righteous Judgment, O Lady,\nintercede for me, and deliver me from eternal torment,\nthat I go not down into Hades,\nbut that I be saved by thy defense, O most holy Theotokos.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth, crying with a pure mind,//\nkeeping festival in the Lord.",
+        "irmos2": "I have heard report of Thy dispensation, O Lord,//\nand have glorified Thee Who alone lovest mankind.",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Today the Monastery of Sarov doth radiantly celebrate thy memory, O venerable one,\nbeseeching thee: Ask of the Lord peace for the whole world and great mercy for our souls!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "In thy great struggles didst thou flourish like a palm tree, O venerable one,\nsweetening the hearts of those who have recourse unto thee with fruitful words and a blameless life:\nWherefore, do thou now pray that we obtain mercy from Christ our Savior!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "By thy prayers entreat God for us, O venerable Seraphim,\nand drive away the sinful darkness of our grief.\nAdorn with dispassion, faith and love all who honor thy most glorious memory!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Rejoice, O Virgin Sovereign Lady, thou beauty of the Churches,\nmight and boast of the suffering Russian land!\nPray to Christ God without ceasing,\nthat He preserve us from misfortunes by thy prayers."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "It is not the Monastery of Sarov alone, but the whole land of Russia\nwhich hath thee, O blessed one, as a fervent intercessor and speedy helper,\nalmighty and invincible defender and mediator for our souls."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Be thou an intercessor and mediator for us before the most holy Trinity,\nand move thou to pray with thee the choirs of the saints whose life thou didst emulate, O venerable one.\nWith them pray for peace and the good estate of the whole world,\nthat in this age we may live a peaceful and quiet life, and in the future inherit eternal life."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Being great among fasters, O venerable one,\nthou didst lead an arduous monastic life in the wilderness,\nand didst end it in compunctionate prayer.\nPray that we be saved!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou art our refuge and confirmation, O most pure Theotokos.\nBeseech thy Son and our God, that He grant us salvation and forgiveness of sins."
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,//\nas the true God, Who recalleth us from the darkness of sin.",
+        "irmos2": "Illumine us O Lord with Thy commandments,\nand with Thine arm raised on high grant us Thy peace,//\nO Lover of mankind!",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Unto all who come to thee thou hast been a true teacher\nand a great intercessor before the Theotokos.\nAnd now, O venerable one, cease not to pray for thy children,\nfor thou hast great boldness."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Let the Christian people now enter into the temple of the Monastery of Sarov,\nbowing down before thy precious relics, O venerable Seraphim,\nand, glorifying Christ, let them ask of thee healing and salvation."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "The invisible enemy desired to affright thee when thou wast praying to God at night, O venerable one.\nBut, put to shame by thy prayer, the most wicked one vanished."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O most pure Mary, beseech God Who was born of thee,\nthat He grant forgiveness of transgressions unto thy servants."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Thou didst glorify the Monastery of Sarov with fasting and unceasing prayer, O venerable one,\nanointing the infirm with oil from the icon of the Theotokos and granting them healing in abundance.\nPray thou now that our souls be saved!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "O ye hierarchs and priests, rejoice with the monks of Sarov,\nand ye people, hymn together the blessed father,\nthe calm haven of those who are tempest-tossed by sorrows,\nthe ready healer of infirmities of body and soul."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Offer up thy prayers, O venerable one,\nas an acceptable and unblemished sacrifice unto the most holy Trinity,\nand forget not us who now keep thy memory.\nBeg mercy for those who hate, wrong and are angered against us,\nand deliver all from every sorrow."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Guide my mind which is tempest-tossed by many passions, O Sovereign Lady.\nSave us who have recourse unto thee, O Theotokos,\nfor apart from thee we know none other help, O pure one."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee://\nRaise up my life from corruption, O greatly Merciful One.",
+        "irmos2": "I will pour out my prayer unto the Lord, and to Him will I proclaim my grief;\nfor my soul is filled with evils, and my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee://\nRaise me up from corruption, O my God.",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Thy holy soul was an abode of God,\nwherein the Father, the Son and the Holy Spirit dwelt.\nWherefore, we pray thee, O venerable one,\ndispel the slanders of the enemy from those who honor thee,\nand grant peace to the suffering land of Russia."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "O venerable Seraphim, we honor thy great struggles and labors in the wilderness\nand the sweetness of thy teaching,\nwhereby thou hast enlightened many who came to thee,\nteaching them to hymn the consubstantial Trinity."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Following after Christ the Master in purity of life,\nthou didst complete the good race, O venerable one.\nHaving ascended to the eternal mansions,\nthou dost behold there what the angels see.\nWherefore, honoring thy memory, we glorify Christ."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: I now flee unto thee, O most pure one.\nSave and preserve me by thy supplications.\nFor whatsoever thou desirest, that thou canst do,\nin that thou art the Mother of the Almighty."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "We are all full of sin,\nbut thy prayers, O venerable Seraphim, ascend unto the Lord like fragrant incense.\nWe now pray thee: Calm thou the raging storm of evil impiety in the land of Russia,\nand entreat the Lord for the salvation of our souls."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Truly blessed wast thou, O venerable Seraphim,\nhaving acquired riches through poverty, and through tears, joy,\nwhich thou didst abundantly bestow upon those who came to thee.\nAnd now emitting rays of miracles, thou dost heal all who have recourse unto thee in faith."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Having dug with thine own hands a well in the wilderness, O venerable one,\nthou didst give drink unto the thirsty that came unto thee.\nAnd now thou healest the diseases of the sick with the water of this well.\nTruly, the Master hath shown thee forth unto all as a miraculous intercessor and wonderworker, O venerable one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: We confess thee to be indeed the Mother of God, the true Theotokos,\nfor by thy birthgiving we have been delivered from the curse of corruption,\nby the tender compassion of God, the Lover of mankind,\nand have been called to life incorruptible."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Having forsaken the beauty of the world and the corruption therein,\nthou didst take up thine abode in the Monastery of Sarov.\nAnd having lived there as an angel,\nthou didst become a path for many to salvation.\nWherefore, Christ hath glorified thee, O father Seraphim,\nenriching thee with the gift of healings and miracles.//\nTherefore, we cry out to thee: Rejoice, O our venerable father Seraphim!",
+        "tone": 2,
+        "label": "Kontakion of the venerable one"
+      },
+      "ikos": {
+        "text": "Having forsaken family and friends, and regarding riches as but dust,\nthou didst take up thine abode in the wilderness of Sarov;\nand having struggled against the passions like one of the bodiless hosts,\nthou wast deemed worthy to stand in the angelic choir.\nWherefore, having received spiritual knowledge,\ngrant even us, O venerable one, to chant this unto thee with understanding, saying:\nRejoice, O blessed Seraphim, heavenly man and earthly angel! Rejoice, emulator of Christ in thy love!\nRejoice, abode of the Holy Spirit! Rejoice, great joy of the despondent!\nRejoice, source of healing! Rejoice, sweet consolation for sorrowful souls!\nRejoice, calm haven for monks and most wise instructor! Rejoice, boast of the land of Russia!//\nRejoice, O our venerable father Seraphim!"
+      },
+
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry://\nO God of our fathers, blessed art Thou.",
+        "irmos2": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity, as they sang://\n'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Wondrously was thy life shown to be full of the grace of the divine Spirit, O venerable one.\nTruly thou didst receive the blessed end of the righteous, rejoicing in Christ.\nAnd we cry out to Him who hath glorified thee: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Gathering together at thy holy monastery today,\na multitude of people doth bow down before thy precious relics, O venerable Seraphim,\nand we all draw forth healings therefrom, crying out unceasingly: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "This report hath gone out into all the world,\nthat a most glorious wonderworker hath appeared in Sarov,\npouring forth a multitude of healings upon all who with faith approach and cry out:\nO God of our fathers, blessed art Thou!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O Virgin Theotokos, who ineffably didst give birth unto the Word, thy Creator:\nWith the venerable Seraphim beseech Him to have mercy upon our souls!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Have mercy on us, O Lord,\nand through the prayers of him who pleased Thee, the venerable Seraphim,\npreserve us from every soul-corrupting evil,\nthat we may all cry out with compunction: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Who is not astounded, who doth not glorify the unfathomable abyss of Thy tender compassion, O Lord?\nFor Thou hast revealed to the whole world him that pleased Thee, the venerable Seraphim,\nthe fervent intercessor before Thee for us who cry aloud: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Accept this hymn of thanksgiving which we offer unto thee, O venerable Seraphim,\nand grant healing unto all of us who keep thy holy memory,\nand who bow down before the shrine of thy relics and cry aloud: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou art our refuge and confirmation, O most holy Theotokos.\nEntreat thy Son and our God to grant us salvation and forgiveness of sins."
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,//\nThee do we supremely exalt throughout all ages.",
+        "irmos2": "The King of heaven, Who is glorified by the hosts of angels,//\nlet us praise and supremely exalt throughout all ages.",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Having subdued the passions of the flesh and died to the world,\nthou didst receive the words of eternal life in thy heart, O blessed one,\nteaching all who had recourse unto thee to cry aloud:\nO ye works, praise ye the Lord, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "At the glorification of thy precious relics, O venerable one,\nthe Monastery of Sarov was filled with joy.\nAnd all the people cried out unto God Who is wondrous in His saints:\nO ye works, praise ye the Lord, and supremely exalt Him for ever!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Being filled with the grace of the divine Spirit, O venerable Seraphim,\nthrough thy prayers beg forgiveness of sins for the faithful people that keep thy holy memory\nand cry out: Ye children, bless; ye priests, praise;\nye people, and supremely exalt the Lord throughout all ages!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O Theotokos, who hast given birth unto the Savior and Master of all,\nthou hast been shown forth to us as the mediatress of salvation;\nwherefore, we pray thee: Grant salvation unto all who faithfully hymn thee throughout the ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "The most evil enemy, hating thy virtuous life, desired to cause thee to falter, O venerable one.\nBut having put him to shame by the grace of God and the prayers of the Theotokos,\nthou didst glorify God, singing:\nO ye works, praise ye the Lord and supremely exalt Him throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "As flashing lightning illumineth the firmament,\nso have the reports of thy wonders gone forth throughout all the world, O venerable one.\nAnd marveling at thy glory, we cry out:\nO ye children, bless; ye priests, praise; ye people, supremely exalt the Lord throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Heal thou our minds which are disquieted by vain and passionate imaginings, O venerable one;\nquell thou the waves of evil disbelief in our land,\nand strengthen our hearts, which are crippled by worldly cares,\nthat we may glorify Christ the Creator throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Rejoice, O fiery throne of the Lord! Rejoice, O ray of immaterial splendor!\nRejoice, thou cloud of the radiant Sun of righteousness, Christ our Savior,\nWhom we supremely exalt throughout all ages!"
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one, did the Word Incarnate become a man\nand with the Heavenly Hosts//\nHim we magnify and thee we call blessed.",
+        "irmos2": "Saved by thee, O pure Virgin,\nwe truly confess thee to be the Theotokos,//\nand with the choirs of bodiless hosts we magnify thee.",
+        "troparia": [
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Accept, and disdain not, our small tribute,\noffered unto thee from unworthy lips, O venerable one.\nSanctify all who glorify thee,\nand deliver us from misfortunes, dangers and eternal torments,\nthat we may hymn thee throughout the ages."
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Manfully enduring the heat of the day and the cold of night in the solitude of the wilderness,\nthou wast an abode of the Wisdom of God,\nand didst hasten toward the unwaning radiance.\nPray thou that we be saved!"
+          },
+          {
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "This day is the monastery glorified,\nwherein thou didst consent to take upon thyself the yoke of Christ;\nfor there didst thou spend thy days in the wilderness;\nand, enlightening by thy teachings the many who came unto thee,\nthou didst teach them to be children of the Church of Christ."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Thou art our strength, thou art our boast and joy,\nour protectress, help, refuge and invincible intercessor.\nO most pure Theotokos, save thou thy servants!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "Emulating the great fathers who of old shone forth in fasting and ascetic struggle, O venerable one,\nthou didst spend all the days of thy life in prayer, tears and labor,\nuntil thou didst attain unto the heavenly mansions.\nWherefore as is meet, we bless thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "With mighty power did Christ God gird thee about and strengthen thee\nto overcome the wiles of the demons, O venerable one.\nWherefore, we now pray thee:\nEntreat God, the Lover of mankind, to deliver us all from the assaults and temptations of the enemies,\nand to save our souls."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Venerable father Seraphim, pray to God for us!",
+            "text": "In our pain and sorrow we flee to thee, O venerable one,\nand cry out from the depths of our souls:\nBe thou a calm haven and ready healer for the sick,\nand deliver us from every ill and want,\nthat we may unceasingly magnify thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: O most pure Virgin, thou didst give birth unto One of the Holy Trinity, the Son and Word,\nWhom do thou entreat with the saints and the righteous\non behalf of thy servants who with faith ask forgiveness of sins."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Come, all ye faithful, let us praise with sacred hymns the venerable Seraphim,\nwondrous in miracles, the new beacon of the land of Russia,//\nthe converser with angels and fervent intercessor before God for those who honor his holy memory!",
+      "tone": 2,
+      "label": "Exapostilarion of the venerable one",
+      "melody": "Hearken, ye women",
+      "glory": {
+        "text": "Come, all ye faithful, let us praise with sacred hymns the venerable Seraphim,\nwondrous in miracles, the new beacon of the land of Russia,//\nthe converser with angels and fervent intercessor before God for those who honor his holy memory!",
+        "tone": 2,
+        "label": "Glory (repeated)"
+      },
+      "bothNow": {
+        "text": "O most pure Theotokos,\nplacing our hope in thee after God, we pray:\nBeseech Him who was born of thee to grant peace and great mercy unto the world!",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "tone": 8,
+      "stichera": [
+        {
+          "text": "The most honored feast of the Monastery of Sarov hath arrived,\nthe memorial of the venerable Seraphim, to whom we now cry out:\nRejoice, light and confirmation of fasters, star like unto that of the Magi,\nshowing monks the way to the heavenly mansions,\nmost glorious boast of priests, ever-flowing fountain of love and chastity,\nmost radiant beacon of spiritual discernment!//\nRejoice, O great model of the virtues!",
+          "tone": 8,
+          "_note": "Sung twice."
+        },
+        {
+          "repeat": true
+        },
+        {
+          "text": "O blessed father Seraphim, thou didst truly follow after Christ,\ndrawing all to thyself by brotherly love and guilelessness,\nteaching mankind the path of virtue through meekness and humility.//\nWherefore, we lovingly bless thy memory, O venerable Seraphim.",
+          "tone": 8
+        },
+        {
+          "text": "Thou didst dwell in the wilderness, O venerable one,\nand, being filled with divine wisdom, thou didst ascend to the summit of virtue.\nWherefore, we cry out to thee:\nRejoice, adornment of the Church, fair consolation of priests, splendor and boast of monks, O blessed Seraphim!//\nPray Christ God to grant peace to the world and great mercy to our souls!",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, ye assemblies of monks and conference of fasters;\ncome, ye multitudes of Christian people,\nlet us honor the true faster with hymns, crying aloud:\nRejoice, thou who didst traverse the narrow path in the steps of Christ the Master,\nthou ready helper of those who come to thee in tribulations and sorrows,\nO most wondrous mediator of salvation!\nRejoice, thou who wast adorned with the gift of prophecy,\nforetelling the future as though it were the present!//\nPray thou, O venerable Seraphim, for those who honor thy holy memory with faith and love.",
+        "tone": 6,
+        "label": "Glory"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Both now, Theotokion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "From thy youth didst thou love Christ, O blessed one;\nand, aflame with the desire to serve Him alone,\nthou didst struggle in the wilderness in unceasing prayer and labor;\nand with compunction of heart having acquired the love of Christ,\nthou wast shown to be the beloved favorite of the Mother of God.\nWherefore, we cry unto thee://\nSave us by thy prayers, O our venerable father Seraphim.",
+      "tone": 4,
+      "label": "Troparion of the venerable one",
+      "_note": "After the Great Doxology: Litanies. Dismissal."
+    }
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "_meta": {
+    "feastRank": "polyeleos",
+    "feast": "St. Peter, Metropolitan of Kiev and All Russia",
+    "tone": 4,
+    "joint": true,
+    "_note": "Little Vespers (4 stichera Tone I for the hierarch + aposticha Tone II) precedes Great Vespers in the Sergius source but is not assembled here. THREE canons at Matins: forefeast (Tone IV, Joseph alphabet acrostic, irmos field), hierarch Canon I (Tone VIII, irmos2 field), hierarch Canon II (Tone I, Nativity irmoi, irmos3 field; troparia tagged 'thirdCanon'). Lauds = 8."
+  },
+  "troparion": {
+    "text": "Be glad now, O earth that before wast barren! For, lo! Christ hath shown forth within thee a luminary who shineth forth clearly in the world healing our infirmities and ailments. Wherefore, join chorus and rejoice with boldness; for it is the high priest of the Most High who doeth these things.",
+    "tone": 4
+  },
+  "kontakion": {
+    "text": "Unto thee, the chosen and wondrous wonderworker of our land, do we flee today with love, weaving hymns, O God-bearer, as thou hast boldness before the Lord, deliver us from multifarious evil circumstances that we may cry to thee: Rejoice, O confirmation of our city!",
+    "ikos": "Thou hast been revealed to be a new wonder-worker, imparting healings unto all who fervently approach thee in humility of heart. And, invisibly visiting the Christian people, O God-bearer, thou dost enlighten our land, that together we may cry out to thee thus: Rejoice, abode of the light of dispassion; Rejoice, dispeller of dark passions! Rejoice, thou who hast set at naught the wiles of the demons; Rejoice, thou who hast gladdened the ranks of the angels! Rejoice, summit of the pure vision of God; Rejoice, depths of humility, washing sicknesses away! Rejoice, for thou didst behold invisible things; Rejoice, for thou hast joined the choir of holy hierarchs! Rejoice, pastor and teacher of the Russian land; Rejoice, excellent boast of bishops! Rejoice, thou for whose sake God hath shown forth great miracles; Rejoice, thou in whom God is glorified! Rejoice, thou confirmation of our city.",
+    "tone": 8
+  },
+  "vespers": {
+    "_note": "Little Vespers (4 stichera Tone I for the hierarch + aposticha Tone II + troparion Tone IV + forefeast troparion bothNow) precedes Great Vespers in the Sergius source but is not assembled here.",
+    "stichera": [
+      {
+        "text": "With uprightness of mind let us utter beforehand hymns of the forefeast of the nativity of Christ; for He Who is equal in honor with the Father and the Spirit, having in His tender compassion clothed Himself in our nature, desireth to be born in Bethlehem, His ineffable nativity do the shepherds hymn with the angels.",
+        "tone": 4
+      },
+      {
+        "text": "Let us lift up our voices with cymbals and proclaim in hymns: The appearance of Christ hath been shown forth! That which the prophets foretold hath been fulfilled! For He Whom they prophesied hath appeared in the flesh unto mankind; He is born in the holy cave; He lieth in a manger as a babe, and as an infant is wrapped in swaddling bands.",
+        "tone": 4
+      },
+      {
+        "text": "Prepare thyself, O Bethlehem! Throw thyself open now, O Eden! The most holy one cometh to give birth! Let the heavens be glad; let men leap up! Life lieth in a manger; He Who is rich resteth in a cave! He cometh in the magnitude of His mercy, assuming the poverty of Adam without change or commingling.",
+        "tone": 4
+      },
+      {
+        "text": "With what wreaths of praise shall we crown the holy hierarch: the crown of the priesthood the instiller of piety, the brilliant ornament of the Church, the inexhaustible well-spring of divine healings, the river of many wonders: Peter, who maketh the land of Russia glad with torrents of miracles, our fervent intercessor and guardian?",
+        "tone": 2,
+        "count": 2
+      },
+      {
+        "text": "With what humble mouths shall we hymn the holy hierarch, who dwelleth with the incorporeal ones and is wondrous in miracles who was sanctified from earliest infancy: The unshakable pillar of the Church, the source of gladness for our land, the standard of righteousness, the feeder of orphans, the defender of the oppressed and physician of the sick who exacted no fee?",
+        "tone": 2,
+        "count": 2
+      },
+      {
+        "text": "Come, ye assemblies of the faithful, and let us clap our hands as say the psalms, hymning the divine Peter, the consolation of the grieving and the helper of the desperate, the boast of the Russian land and adornment of the whole priesthood, the river of mercy, who was truly a lover of the divine humility of Christ, Who granteth great mercy to the world.",
+        "tone": 2
+      }
+    ],
+    "doxastikon": {
+      "text": "Enlightened from on high with the radiance of the manifestation of God, O Peter, with firmness of mind thou didst avoid the laws of nature as though they were shadows, for thou wast bedewed with true grace, O thou who art all-wise. Wherefore, as a receptacle of the most holy Spirit, thou didst receive the gift of miracles, and dost enrich thy children therewith. And now, standing before Christ with the primates of the Churches, pray thou on behalf of our souls.",
+      "tone": 1
+    },
+    "bothNow": {
+      "text": "O manger, receive Him Whom Moses the law-giver foresaw in the bush on Horeb and Who is now born of the Virgin through the divine Spirit. She is the one who was spoken of in the law; she is the seal of the prophets, who revealeth God in the flesh unto those who are subject to corruption. Him do we worship.",
+      "tone": 1,
+      "label": "Forefeast of the Nativity"
+    },
+    "otReadings": [
+      "Proverbs (wisdom and the righteous man)",
+      "Wisdom of Solomon (the righteous who died early shall be at rest)",
+      "Wisdom of Solomon (the mouth of the righteous droppeth wisdom)"
+    ],
+    "litia": {
+      "stichera": [
+        {
+          "text": "Today the Church is splendidly adorned, and it rejoiceth, crying aloud: My beauty is more luminous than all others; for the glorious Peter, the ornament of holy hierarchs, hath ascended to heaven, to the King Who reigneth above all kings! Come, ye assemblies of the Orthodox who love the feasts of the Church, and let us offer up hymns and praises unto Him, crying aloud: O adornment of hierarchs, entreat Christ God that He deliver the Christian people from all sorrow, and save our souls!",
+          "tone": 4
+        },
+        {
+          "text": "The divine grace of the Spirit hath revealed thee to be a holy hierarch and hath shown thee to be an excellent teacher. Wherefore, rebuking the darkness of ungodliness, thou didst enlighten the people with teachings of the knowledge of God, O divinely wise and holy hierarch Peter, thou art the glory and adornment of hierarchs, and wast for all an excellent model of teachings. As thou hast boldness before Christ God, ever pray that our souls be saved.",
+          "tone": 6
+        },
+        {
+          "text": "The fruit of thy noble works enlightened the hearts of the faithful, O sacred father. For who hath heard of thy boundless humility and is not amazed at thy patience, and at thy kindness toward the poor and mercy toward the sorrowful? Thou didst teach all in a godly manner, O holy hierarch Peter, and crowned now in the heavens with a wreath which withereth not, pray thou on behalf of our souls.",
+          "tone": 6
+        }
+      ],
+      "doxastikon": {
+        "text": "O thrice-blessed, venerable and sacred father, good shepherd, disciple of Christ the Chief Shepherd, who laid down thy soul for thy sheep: O all-famed and holy hierarch Peter, by thy prayers entreat Him, that He grant us great mercy.",
+        "tone": 6
+      },
+      "bothNow": {
+        "text": "Hold festival, O Sion! Be glad, O Jerusalem! O city of Christ God, receive the Creator, Who is contained by the cave and the manger! Open thy gates unto me, that, entering through them, I may see Him Who holdeth creation in His hand, wrapped as a babe in swaddling-bands, He Whom the angels hymn with unceasing songs: the Lord, the Bestower of life, Who saveth our race.",
+        "tone": 6,
+        "label": "Forefeast"
+      }
+    },
+    "aposticha": {
+      "stichera": [
+        {
+          "text": "Seeing the Creator held in thine arms, O all-pure one, thou didst exclaim: O my sweet Child, how is it that I behold Thee as a babe, and am now unable to understand Thine unapproachable condescension? I hymn Thy might and worship Thy loving-kindness, for which cause Thou hast come to save the world!",
+          "tone": 1,
+          "verse": "God shall come forth out of Theman, and the Holy One out of the mountain overshadowed and densely wooded."
+        },
+        {
+          "text": "O Mother who knewest not wedlock, He Who is invisible hath appeared, incarnate of thee, born in a cave, and seen of the divine ranks of heaven; for He hath come to deliver man from the deception of the serpent. Be not amazed at thy birthgiving which transcendeth nature, O most immaculate one!",
+          "tone": 1,
+          "verse": "O Lord, I have heard Thy report, and I was afraid; O Lord, I considered Thy works, and I was stricken with awe."
+        },
+        {
+          "text": "I behold Thee, the all-perfect Babe, lying in the manger, and I cannot fathom the ineffable depths of this mystery! How have I remained incorrupt after giving birth, transcending the laws of nature? What manner of praise shall I offer Thee? How shall I glorify Thee? the Virgin Maiden exclaimed.",
+          "tone": 1
+        }
+      ],
+      "doxastikon": {
+        "text": "Come, all ye faithful, and together let us hymn the all-blessed Peter, the lamp of piety, the rule of abstinence, the pillar of patience, the treasury of simplicity, the abundant river of humility, the consolation of the poor, the receiver of strangers, the truly blessed husbandman of the true love of Christ. For, having lived and passed over to heaven, he hath been shown to be a helper and savior of all, a physician of illnesses and incurable sufferings, and a liberator from all manner of perils, and he entreateth Christ to save our souls.",
+        "tone": 8
+      },
+      "bothNow": {
+        "text": "O Bethlehem, become thou the metropolis of God: for the never-waning Light cometh to be born within thee! Ye angels, marvel in heaven! Ye men, render up glory on earth! Ye magi, bring a most glorious gift out of Persia! Ye shepherds, piping, sweetly sing the thrice-holy hymn: Let every breath praise Him Who accomplisheth all!",
+        "tone": 8,
+        "label": "Forefeast of the Nativity"
+      }
+    }
+  },
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "feastType": "hierarch",
+      "joint": true
+    },
+    "sedalion": [
+      {
+        "text": "Let the great hierarch of Christ, the godly Peter, be hymned: the pillar of light illumining us with the splendors of miracles, the moist cloud extinguishing the flame of the passions and bedewing the thoughts of the faithful.",
+        "tone": 1,
+        "label": "After 1st Kathisma",
+        "bothNow": {
+          "text": "He Who bowed down the heavens and made His abode within the Virgin cometh in the flesh, to be born in the cave of Bethlehem as was written, and He Who imparts life to babes in the womb, is to be seen as a babe. Wherefore, rejoicing, let us now greet Him with uprightness of heart.",
+          "tone": 1,
+          "label": "Forefeast"
+        }
+      },
+      {
+        "text": "With love we all cry out to thee, the merciful favorite of Christ, guileless and meek; and we earnestly pray: Bring an end to the civil strife of our passions, set at naught the ungodly wiles of the Moslems and make them subject to the Orthodox, O ever-blessed one, and deliver from all temptations those who hymn thee with love.",
+        "tone": 3,
+        "label": "After 2nd Kathisma",
+        "bothNow": {
+          "text": "Be glad, O Bethlehem! Make ready, O Ephratha! For, lo! The ewe-lamb, bearing the great Shepherd within her womb, cometh to give birth; and, seeing the divine star beforehand, the magi rejoice in uprightness of heart, singing with the shepherds.",
+          "tone": 1,
+          "label": "Forefeast"
+        }
+      }
+    ],
+    "magnification": {
+      "refrain": "We magnify thee, O holy hierarch Peter, and we honor thy holy memory; for thou dost entreat Christ God on our behalf.",
+      "verses": [
+        "Hear this, all ye nations; give ear, all ye that inhabit the world."
+      ]
+    },
+    "sessionalHymnAfterPolyeleios": {
+      "text": "With the effulgence of Orthodoxy thou hast enlightened those heavy laden with sins as ones lying in darkness; and thou hast repulsed all the wiles of the evil spirits, revealing thyself to be a worker of miracles, glorified by the providence of the Most High. Wherefore, we honor thee with faith, O holy hierarch Peter, who dwellest in company with the apostles and patriarchs.",
+      "tone": 5,
+      "bothNow": {
+        "text": "O Bethlehem, prepare thyself to greet the Virgin Mary, the Mother of God; for, lo! she cometh to thee, bearing the infant Christ, Who is co-beginningless with the Father and the Spirit. She will give birth to Him in the cave, and after giving birth will be shown to remain yet a virgin.",
+        "tone": 5,
+        "label": "Forefeast"
+      }
+    },
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding.",
+      "verse": "Hear this, all ye nations; give ear, all ye that inhabit the world."
+    },
+    "gospel": {
+      "reading": "John 10:1-8",
+      "number": 35
+    },
+    "postGospelSticheron": {
+      "text": "When the time came for thy precious body to fall asleep, O father, a multitude of the faithful, surrounding thy bier, accompanied thee with compunction. One of them, beholding thee blessing the people, was astonished, and Prince John cried out, weeping: O master, what shall I render unto thee for the benefactions which thou hast given us, having received grace from God? Wherefore, O holy hierarch Peter, earnestly beseech Christ our God, that thy city be preserved unassailed.",
+      "tone": 6
+    },
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_thirdCanonTone": 1,
+      "_authors": "Canon of forefeast (Tone IV), alphabet acrostic by Joseph; Canon I of the hierarch (Tone VIII); Canon II of the hierarch (Tone I, Nativity irmoi). Three canons total.",
+      "kontakionAfterOde3": {
+        "text": "Today the Virgin cometh to the cave to ineffably give birth unto the pre-eternal Word. Having heard this, be glad, O thou ecumene, and with the angels and shepherds glorify the pre-eternal God, Who is to appear as a little babe.",
+        "ikos": "O truly awesome wonder past all telling! He Who giveth existence to all, in His goodness hath entered the womb of the holy Virgin, and cometh to be born in the cave, and to be laid in a manger. And His star is herald from on high to the magi who come to do Him homage with gifts, drawing from afar those who zealously follow the prophecy of Balaam, who said: A star will proclaim beforehand the little babe, the pre-eternal God!",
+        "tone": 3,
+        "label": "Forefeast of the Nativity"
+      },
+      "sedalenAfterOde3": {
+        "text": "Thou hast been revealed to the world to be a resplendent beacon, illumining the thoughts of the faithful with the brilliance of thy discourses, O holy hierarch Peter our father; wherefore, with joy we all celebrate thy sacred and divine memory today.",
+        "tone": 4,
+        "bothNow": {
+          "text": "O virgin, begin ye beforehand the joy of virgins; ye mothers, praise the coming forth of the Mother of Christ our God; rejoice, O magi, with the angels, and ye shepherds with us! For the Virgin cometh to give birth in the city of Bethlehem to a Son, the pre-eternal God, Who saveth the world from corruption.",
+          "tone": 4,
+          "label": "Forefeast"
+        }
+      },
+      "kontakion": {
+        "text": "Unto thee, the chosen and wondrous wonderworker of our land, do we flee today with love, weaving hymns, O God-bearer, as thou hast boldness before the Lord, deliver us from multifarious evil circumstances that we may cry to thee: Rejoice, O confirmation of our city!",
+        "ikos": "Thou hast been revealed to be a new wonder-worker, imparting healings unto all who fervently approach thee in humility of heart. And, invisibly visiting the Christian people, O God-bearer, thou dost enlighten our land, that together we may cry out to thee thus: Rejoice, abode of the light of dispassion; Rejoice, dispeller of dark passions! Rejoice, thou who hast set at naught the wiles of the demons; Rejoice, thou who hast gladdened the ranks of the angels! Rejoice, summit of the pure vision of God; Rejoice, depths of humility, washing sicknesses away! Rejoice, for thou didst behold invisible things; Rejoice, for thou hast joined the choir of holy hierarchs! Rejoice, pastor and teacher of the Russian land; Rejoice, excellent boast of bishops! Rejoice, thou for whose sake God hath shown forth great miracles; Rejoice, thou in whom God is glorified! Rejoice, thou confirmation of our city.",
+        "tone": 8
+      },
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin, drown I implore Thee, in the depth of dispassion the triune nature of my soul, as Thou didst the mighty strongholds of the warriors, that in the mortality of my flesh as on a timbrel I may chant a hymn of victory.",
+        "irmos2": "Having passed through the water as upon dry land, and having escaped the malice of the Egyptians, the Israelites cried aloud: Unto our God and Redeemer let us sing.",
+        "irmos3": "Christ is born, render ye glory. Christ cometh from heaven, meet ye Him. Christ is on earth, be ye exalted. O all the earth, sing unto the Lord, and sing praises in gladness, O ye people, for He hath been glorified.",
+        "troparia": [
+          { "text": "Rejoice, O heaven, and be glad, O earth! For our God, having taken on flesh, is born of the Virgin Maiden and is wrapped in swaddling bands, breaking the bonds of our transgressions, in that He is compassionate.", "tone": 4 },
+          { "text": "The pure Queen giveth birth in a manner past understanding to the King of all Who openeth the kingdom on high to the faithful and utterly removeth the sin which ever accursedly reigneth within us.", "tone": 4 },
+          { "text": "The writings of the prophets have attained their end; for, lo! Christ Whom they proclaimed beforehand is revealed, incarnate, in the city of Bethlehem. Let us now hasten today to celebrate the forefeast of His nativity with uprightness of mind.", "tone": 4 },
+          { "text": "O divinely wise father, holy hierarch Peter, open thou mine unworthy lips, that I may hymn thee; and accept as incense of sweet savor that which, unworthy though I am, I offer unto thee out of my poverty.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Let us all hymn Peter, the great hierarch. Let us honor the helper and confirmation of the land of Russia, whom the Lord hath given to the city of Moscow as a vigilant guardian.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thou didst follow the saving commandments of Christ, O most wise and holy hierarch Peter, and wast an intercessor for widows and orphans, and the great defense of the Russian land.", "tone": 8, "canon": "secondCanon" },
+          { "text": "O most pure Theotokos, who hast given birth unto the Creator and Savior of all who hymn thee, from misfortunes save thy city, unceasingly praying to thy Son and our God for us.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "Taking the grace of the Spirit into thy heart, O father, holy hierarch of Christ, illumine the tongue and enlighten the heart of those who hymn thee, that with splendor we may hymn thy memory, O venerable Peter.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "The great Peter, the mighty pastor of the Church, summoneth shepherds and the flock, and the whole Church, to his memorial. Wherefore, having assembled let us with splendor keep the festival of our common father.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Even though thy corrections are beyond our words and thoughts, O father Peter, yet do thou accept with love the spiritual offering which we make unto thee according to our strength, O right wondrous one; for none of us are able to fashion fitting hymns for thee.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "The radiant Sun cometh, appearing from the gates which were shut; for His appearance hath abolished the night, and the day draweth nigh. Wherefore, O our corrupt nature, receive from the Virgin the Master Who is become man for thy sake.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode3": {
+        "irmos": "Likened to a barren woman the Church from among the nations hath given birth, and the assembly abundant in children, hath grown weak. Let us cry out to our wondrous God: Holy art Thou, O Lord!",
+        "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church, do Thou strengthen me in Thy love, O Summit of desire, O Support of the faithful, O only Lover of mankind.",
+        "irmos3": "To the Son who was begotten of the Father without change before all ages, and in the last times, without seed, was made flesh of the Virgin, to Christ our God let us cry aloud: Thou hast raised up our horn, holy art Thou, O Lord.",
+        "troparia": [
+          { "text": "Daniel beheld Thee, O Word, as the Stone cut from the mountain of the Virgin, which broke the temples of the idols in pieces by Thy might. Wherefore, we glorify Thee with fear.", "tone": 4 },
+          { "text": "Guided to Thee by the star, O Christ, Thou King of all, the magi from the East bring gifts; myrrh, gold and frankincense—marveling at Thy condescension.", "tone": 4 },
+          { "text": "The unploughed field beareth the life-bearing Grain; Mary cometh to give birth in the city of Bethlehem to Him Who feedeth the souls of all who cry: Holy art Thou, O Lord!", "tone": 4 },
+          { "text": "By thy prayers to our Creator and God crush the Moslems and all our godless adversaries, O venerable Peter, show forth their power, which warreth against us, as impotent; and put down their wicked savagery.", "tone": 8, "canon": "secondCanon" },
+          { "text": "O Master, in a generation gone by Thou didst show forth a wonder-worker, the holy hierarch Peter, the confirmation of the Russian land, the upright rule of Thy Church, the leader of the priestly rank.", "tone": 8, "canon": "secondCanon" },
+          { "text": "The man who touched thee while thou wast in thy coffin was counted worthy to receive healing, O holy one; for by the grace of God thou didst grant that he be able to stretch forth his arms, which were bent in upon his breast.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Be thou for me a refuge and haven, an unassailable rampart and helper, O most pure Virgin who hast given birth in the flesh unto God, the most compassionate Redeemer and Savior of those who hymn thee, O Bride of God.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "God, Who knoweth all things, knew thee in the womb before thou wast conceived, O God-bearer. And when thou wast born, He sanctified thee and made thee a great shepherd of His sheep; for He entrusted His sheep to thee, as He did to the Apostle Peter.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Parting the sea of the passions with the staff of abstinence, O blessed one, like Moses thou didst ascend the mountain of dispassion, and, having received noetic tablets, thou didst teach thy flock the law of God.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Thou wast shown to be humble, meek and gentle, O Peter; wherefore, the grace of the Spirit, abundantly poured forth upon thee, revealed thee to be a great man who shineth over our land with rays of miracles.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "God, Who is strong and mighty, hath now revealed Himself to those who are in the darkness of the shadow of death. O ye faithful, behold the great Light—Christ—in the cave, Who is to be born of the Virgin in an awesome manner. Let us hymn her with faith.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God, is come in a swift cloud and with His sinless hands he hath saved those who cry: Glory to Thy power, O Christ.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation; I have considered Thy works, and I have glorified Thy Divinity.",
+        "irmos3": "Rod of the root of Jesse, and flower that blossomed from his stem, O Christ, Thou hast sprung from the Virgin. From the Mountain overshadowed by the forest Thou hast come, made flesh from her that knew not wedlock, O God who art not formed from matter. Glory to Thy power, O Lord.",
+        "troparia": [
+          { "text": "The holy phial of precious sanctity cometh to pour forth in the city of Bethlehem Him Who imparteth sanctity unto all of us who cry: Glory to Thy power, O Christ!", "tone": 4 },
+          { "text": "O divinely eloquent Isaiah, beholding the fulfillment of thine honored prophesies, rejoice and be glad! For without seed the Virgin hath given birth in the flesh to the Uncontainable One in the cave of Bethlehem.", "tone": 4 },
+          { "text": "Jesus is born in the flesh; the Timeless One is seen as an infant in time, and by His ineffable abasement deifieth me who have become poor through corrupting disobedience.", "tone": 4 },
+          { "text": "With the grace of the Spirit thou wast anointed a high priest, O most excellent Peter; for thou didst put on Christ because of thy pure life. Wherefore, thou didst teach all to glorify the one God in Trinity.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Deliver thy flock from the storm of sin, from tribulations and sorrows, O venerable hierarch Peter, leading us to the calm harbor of the divine will of Christ.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thou wast shown to be a favorite of Christ, O most sacred father Peter; wherefore, cease thou never to pray to the Lord, that He deliver thy flock from perils, misfortunes and sorrows, and from violent trials.", "tone": 8, "canon": "secondCanon" },
+          { "text": "The assemblies of hierarchs and the choirs of the venerable glorify thee in a sacred manner; for thou didst bear in thine arms, as an infant, the Creator of all, the Son and Word of God.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "Bowing to the laws of the Spirit from earliest childhood, O venerable one, thou didst pass over the laws of the flesh, which by mighty asceticism thou didst mortify in thy life. Wherefore, thou hast been given to the faithful as a great wonder-worker, O blessed Peter.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Thou gavest neither sleep to thine eyes, nor slumber to thine eyelids, until the Creator of all found thy heart to be a tranquil place. And, having fittingly purified it, the eternal King and God showed it to be His habitation of glory.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Slay thou the incurable sensual knowledge of my flesh, O most wise one, and as thou art mighty and powerful, guide me to the divine ways. Make me subject to good laws, O blessed one, and show me, who art enslaved to cruel passions, to be a servant of Christ.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "As it is written, the Lord hath now sent deliverance unto peoples, tribes and nations; for He maketh all peoples for Himself, that they may worship the one incarnation of the Son and confess thee to be the Theotokos.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode5": {
+        "irmos": "The wicked will not behold Thy glory, O Christ, but we who rise early to hymn Thee shall behold Thee, the Only-Begotten effulgence of Thy Father's divinity, O Lover of mankind.",
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me and why hath the alien darkness surrounded me, wretched though I be? But do Thou guide my steps I implore Thee and turn me back towards the light of Thy commandments.",
+        "irmos3": "As Thou art the God of peace and Father of compassions, Thou hast sent unto us Thine Angel of great counsel, granting us peace. Wherefore guided towards the light of the knowledge of God, and watching by night we glorify Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "God Emmanuel is born from the Virgin, and laid in a manger; of His own will He worketh our restoration. Wherefore, we piously celebrate the forefeast of His nativity.", "tone": 4 },
+          { "text": "O Thou Who art the beginningless Word, equal in essence with the Father, having been laid in a manger of dumb beasts thou hast released from irrationality us who piously celebrate the forefeast of Thy nativity.", "tone": 4 },
+          { "text": "Blessed was the root of Jesse which produced the pure one who beareth the divine Flower, Christ the Lord. And, rejoicing, we celebrate the forefeast of His nativity.", "tone": 4 },
+          { "text": "Standing round about thy shrine, O venerable hierarch Peter, we have thee as a mediator before God, a help and an unshakable confirmation for the land of Russia.", "tone": 8, "canon": "secondCanon" },
+          { "text": "As thou wast merciful to the poor, O all-famed one, ask now the mercy of the Spirit; for in exercising almsgiving, O holy father Peter, thou didst set up a radiant lamp.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thou wast truly the habitation of the Holy Spirit, O blessed Peter, and wast well enriched by the divine gifts revealed in Him.", "tone": 8, "canon": "secondCanon" },
+          { "text": "O most pure one, we call thee the myrrh, in that thou hast given birth in the flesh unto God, the gracious Myrrh poured forth upon all who have recourse to thy protection.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "The great wealth of thy compassions hath been shown forth in our land as an infinite outpouring of thy mercy, O servant of Christ; for thou dost answer those who petition thee, and dost strive to fulfill their requests, O blessed one.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Thou wast shown to be meek and humble in deed and word, and thereby drew all to thee. With love and good works thou didst subdue all, and by thy miracles thou didst gladden the hearts of those strengthened by thee.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Christ, the great Shepherd of all, showed thee forth as the shepherd and teacher of His reason-endowed sheep, O blessed one. As a compassionate shepherd, seek me out now, who am thy sheep lost in the mountains of perdition.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "In the abyss of His ineffable compassions, the great Shepherd of mankind and High Priest came forth as a man from the Virgin. Prepare thyself, O Bethlehem! Ye shepherds, raise a hymn proclaiming unto the ends of the earth our common exaltation!", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode6": {
+        "irmos": "I have reached the depths of the sea and the tempest of my many sins hath engulfed me; but do Thou raise up my life from the abyss, O Greatly-merciful One.",
+        "irmos2": "Cleanse me, O Savior, for many are mine iniquities; lead me up from the abyss of evils I pray Thee, for unto Thee have I cried, and Thou hast hearkened unto me, O God of my salvation.",
+        "irmos3": "The sea monster spat forth Jonah as it had received him, like a babe from the womb: while the Word, having dwelt in the Virgin and taken flesh, came forth from her yet kept her incorrupt. For being Himself not subject to decay, He preserved His Mother free from all harm.",
+        "troparia": [
+          { "text": "Having been born for us as a little babe on earth, O Thou Who shone forth ineffably from the Father before all ages, free all from the ancient disobedience, in that Thou art compassionate.", "tone": 4 },
+          { "text": "Strange and most glorious things were heard in the city of Bethlehem when Thou wast born, O beginningless Word; for with the angels, shepherds offered up hymnody to Thee as Master.", "tone": 4 },
+          { "text": "The star of righteousness ineffably proclaimeth to the magi the Sun Who hath been born, and, rejoicing, we now celebrate the forefeast of His honored nativity.", "tone": 4 },
+          { "text": "Thou didst make thy life chaste, O thou who art manifest in sanctity, adorning thyself with righteousness and uniting to thyself the virtues by manliness of mind, O most blessed and holy hierarch Peter.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Preserve thy city from the predations of the ungodly infidels and from civil strife, O most blessed hierarch Peter, unceasingly entreating Christ the Master to grant peace to thy flock.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Glorified even after thy death as one living, thou workest miracles for the infirm and by the grace of God givest healing unto those who are crippled; for the Lord saith: I will glorify him who glorifieth Me.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thou wast more exalted than the heavenly hosts, having conceived the ineffable Word of God, Who hath accomplished all things by His word, and Who was begotten of the Father before all ages. Him do thou never cease to entreat, O pure one.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "Thou wast truly a father to orphans and a helper of widows, O glorious one, the sweet consolation of the grieving and those in sorrow, the healer of sufferings of soul and body; wherefore, we call upon thee to be our intercessor amid our adverse circumstances.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Joyfully celebrating thy memorial with the people today, sacred peoples keep festival, O father, and together with them true hermits and simple folk hymn thee in common as their intercessor and teacher.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "I alone am become a wicked child through vile passions, O glorious father, and for this cause am unworthy to participate in thy goodly and beautiful celebration; yet, having washed away the defilement of my soul and body, O venerable one, show me forth as worthy of thy festival.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "O true wonder! Wonder surpassing all telling and all understanding! The Virgin is acknowledged to be both Virgin and Mother, and Him Who was born of her to be both God and man. Celebrating the forefeast of His radiant nativity, we sing hymns of joy.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode7": {
+        "irmos": "The three youths in Babylon, regarded the tyrant's command as foolishness, and cried aloud in the midst of the flame: Blessed art Thou, O Lord God of our fathers!",
+        "irmos2": "The Children of Judaea, who of old came to dwell in Babylon, trampled underfoot the flame of the furnace through their faith in the Trinity, as they sang: O God of our fathers, blessed art Thou.",
+        "irmos3": "Scorning the impious decree of the godless one, the Children brought up together in godliness feared not the threat of fire, but standing in the midst of the flames, they sang: O God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "How can a cave contain Thee, the Uncontainable One, Who cometh to be born for our sake? How can the Virgin give suck to Thee, Who art the Nourisher of all, O compassionate Jesus?", "tone": 4 },
+          { "text": "Following the words of the magus Balaam, the magi hastened to pay homage to Christ with gifts, perceiving that He is the One Who reigneth over all creatures.", "tone": 4 },
+          { "text": "O human nature, barren of any of the virtues, rejoice and dance! For Christ cometh to be born in the flesh of the Virgin, that He might show thee to be right fruitful in good works.", "tone": 4 },
+          { "text": "Open unto me the gates of repentance, O most blessed hierarch Peter, that I may wash away the defilement of my wretched soul and body, directing all my senses and my conscience to chant unto God: O God of our fathers, blessed art Thou!", "tone": 8, "canon": "secondCanon" },
+          { "text": "We, thy servants, have thee as a fervent helper and the unassailable rampart and confirmation of thy city of Moscow; and we fear not the adverse foe, but vanquishing them by the power of Christ, we chant: O God of our fathers, blessed art Thou!", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thou didst confirm the rules of the fathers, and with the magnificence of the priesthood didst build an all-beauteous church for the most holy Mother of God; and by thy teachings instructed the people to chant: O God of our fathers, blessed art Thou!", "tone": 8, "canon": "secondCanon" },
+          { "text": "Having thee now as a haven of salvation, O Virgin Theotokos, we flee the misfortunes and storms of life; and, escaping to the harbor of thy tranquility, we cry out to thy Son: O God of our fathers, blessed art Thou!", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "Together our land and other countries proclaim thy wonders, O father, teaching all to chant unto Christ most joyously: O God of our fathers, blessed art Thou!", "tone": 1, "canon": "thirdCanon" },
+          { "text": "The Bridegroom Who surpasseth all the sons of mankind in beauty, as it is written, showed thee forth to His bride, the Church, as a most comely bridegroom who bore the likeness of His image.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Having adorned thy life with almsgiving, meekness and true love, thou wast shown to be an excellent emulator of the good Shepherd, having chosen well His virtues.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "The Master cometh to be born in the cave as a man. Let us go forth to greet the pure Virgin, O ye faithful, chanting unto her with joy: Rejoice, joy of the world! Rejoice, O Virgin Mother of Christ!", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode8": {
+        "irmos": "O almighty Redeemer of all, having descended and bedewed the children in the midst of the flame, Thou didst teach them to sing: All ye works bless and hymn the Lord.",
+        "irmos2": "Glorified in the holy mountain, the Lord revealed the mystery of the Ever-Virgin unto Moses in the flames of the burning bush: praise ye and supremely exalt Him throughout all ages.",
+        "irmos3": "The furnace moist with dew was an image and prefiguring of a wonder past nature, burning not the children whom it had received, so the fire of the Godhead consumed not the Virgin's womb into which it had descended. Therefore in song let us sing: Let the whole creation bless the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "In Thine ineffable loving-kindness, to save me who through my great disobedience have become a den of thieves, O Christ, it was Thy will to be born in a cave of the pure Virgin.", "tone": 4 },
+          { "text": "Signing a writ of complete remission for me, Thou, the Author of creation, didst register Thyself with servants in accordance with the edict of Caesar. O Master, I hymn the unfathomable abyss of Thy loving-kindness!", "tone": 4 },
+          { "text": "O radiant palace of the Master, how is it that thou hast entered the least of caves to give birth to the Lord and King Who became incarnate for our sake, O all-holy Virgin Bride of God?", "tone": 4 },
+          { "text": "Though I have been overcome by the enemy through many transgressions due to the tumults of life, like Manasseh I approach Thee with faith, O Christ, and cry out to Thee in repentance: Hymn the Lord, O ye works, and supremely exalt Him throughout the ages!", "tone": 8, "canon": "secondCanon" },
+          { "text": "O most blessed one, earnestly make supplications and entreaties unto God for thy servants, for, having thee as helper and ally amid griefs, we are saved from misfortunes, hymning the Lord and supremely exalting Him throughout the ages.", "tone": 8, "canon": "secondCanon" },
+          { "text": "The children of Hagar are arming themselves against thy humble people, O all-honored hierarch, father Peter. Crush them with the invisible power of thy prayers to the Master on behalf of us, thy faithful servants, who hymn the Lord and supremely exalt Him throughout the ages.", "tone": 8, "canon": "secondCanon" },
+          { "text": "O most pure and most glorious Virgin Lady, with the holy hierarch Peter earnestly entreat thy Son and King, that from all need and tribulation He deliver thy loyal city of Moscow, which blesseth thee with faith, O Sovereign Lady, and doth hymn and supremely exalt thee throughout the ages.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "By thy supplication nurture this thy flock which is great in number; by thy prayers still thou the storm of contrary winds, both physical and spiritual; deliver us from all temptations and troubles, and preserve us utterly unharmed.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "The descendents of Hagar, who rise up against us and desire to vex thine inheritance, have fallen, vanquished by thy supplications, and are become a mockery and a byword, bewailing their fall; but we joyously hymn thy sacred memory.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Ineffable is thy love for thy children, surpassing paternal love, O father; wherefore, thou dost ever invisibly visit us, by thy constant supplications asking salvation for us, and giving us joy and tranquility, O Peter.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Not disdaining that which He created in His own image—me who am wholly fallen and have perished, O pure Virgin Theotokos, God hath wholly restored me through thee. Wherefore, all creation continually hymneth thee, the cause of our salvation, saying: Blessed art thou among women, O all-immaculate Lady.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin because of the infirmity of disobedience; but thou, O Virgin Theotokos, hast through the Offspring of thy pregnancy blossomed forth blessing upon the world. Wherefore, we all magnify thee.",
+        "irmos2": "Heaven was stricken with awe, and the ends of the earth were filled with amazement, for God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens. Wherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "irmos3": "A strange and most wondrous mystery do I see: the cave is heaven; the Virgin the throne of the cherubim; the manger a room, in which Christ God, whom nothing can contain, is laid. Whom we praise and magnify.",
+        "troparia": [
+          { "text": "O ye faithful, let us dance, leap up and cry aloud together: The Salvation of all cometh! The Lord draweth nigh to be born, that He might save those who with godly wisdom celebrate His nativity!", "tone": 4 },
+          { "text": "Take up thy psaltery and harp, O holy David, and chant in hymnody: O house of Ephratha, be glad! For He Whom the Father begat from within Himself is most radiantly born in thee, incarnate of the Virgin!", "tone": 4 },
+          { "text": "Like a downpour, like a mighty rainfall hath the Master descended into thy womb, O Virgin Mother and Birthgiver of God, and He hath watered lands hardened by dark ungodliness, drying up the seas of falsehood.", "tone": 4 },
+          { "text": "Like the harlot, the thief and the publican I cry unto Thee from the depths of my heart: I have sinned! Forgive me my many offenses, O Master, and deliver me from all Thine anger through the prayers of the holy hierarch Peter, that I may unceasingly magnify Thee.", "tone": 8, "canon": "secondCanon" },
+          { "text": "Come, all ye people of Moscow! And, gathering at the tomb of the blessed hierarch Peter, cry out unto God with tears, saying: O Lord, deliver Thy people from misfortunes, that we may magnify Thee forever!", "tone": 8, "canon": "secondCanon" },
+          { "text": "Thine own city of Moscow greatly rejoiceth in thee, O all-honored father, holy hierarch Peter, having thee as an ally and helper. Depart not now in spirit from us, O master, making supplication for us to God, that He deliver us from the violence of the ungodly Moslems, our enemies, that we may ever magnify thee.", "tone": 8, "canon": "secondCanon" },
+          { "text": "O all-pure Mary, Sovereign Lady, by thine entreaties cleanse my defiled heart and soul, and make me an heir to life everlasting; and, remembering not my countless evils, beseech thy Son and God for me, wretch that I am, and preserve those who hymn thee, O most holy one.", "tone": 8, "canon": "secondCanon", "label": "Theotokion" },
+          { "text": "It is not possible to hymn thy glory as is meet; for thou grantest a multitude of miracles and abundant healings unto those who with ardent faith approach thee, O holy hierarch Peter, thou boast of our land.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Christ hath set thee as the foundation of His Church and a mighty tower forever unshakable, protecting and making steadfast thy city, that it might remain utterly unshaken and unassailed by its enemies.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Let all of us; bishops, priests and monks, and all the people, men and women, the old and the young, of every age and every dignity, splendidly celebrate the memory of our holy hierarch.", "tone": 1, "canon": "thirdCanon" },
+          { "text": "Let us hasten to behold the greatest of wonders! For the Virgin cometh, bearing in her womb the Babe Who giveth life to babes. Angels join in common hymnody with shepherds, proclaiming the salvation made manifest in the cave.", "tone": 1, "canon": "thirdCanon", "label": "Theotokion" }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Come, O ye faithful, let us all offer up hymns on the forefeast of the nativity! Christ already cometh to be born in Bethlehem, that He might save the world, in that He alone is the Lover of mankind.",
+      "label": "Forefeast",
+      "glory": {
+        "text": "The Holy Spirit anointed thee a hierarch, O most blessed Peter, to tend the flock of Christ in the fields of salvation; wherefore, thou didst strive to guide the people along the straight paths. For this cause thou hast now received twofold crowns from the Bestower of crowns.",
+        "label": "Holy Hierarch Peter"
+      },
+      "bothNow": {
+        "text": "Make ready, O Bethlehem! Adorn thy houses! For unto thee doth the Virgin come, bearing the infant Christ, Who with the Father is equally without beginning, for He hath come to save the human race.",
+        "label": "Forefeast"
+      }
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "The creative Wisdom now cometh forth! The clouds of prophecy are parted! Grace doth flourish, and Truth hath shone forth! The shadows of indistinct images cease to be! The gates of Eden have opened! Dance thou, O Adam! God our Creator hath of His own will taken on our form!",
+          "tone": 6
+        },
+        {
+          "text": "Fulfilling the sayings and visions of the prophets, the Word is born in the flesh, clothed in coarse matter and, having been born, lieth in a manger of dumb beasts. Lo! the extreme condescension! Behold the awesome dispensation, for which sake we chant: Christ, the King of Israel, hath now arrived!",
+          "tone": 6
+        },
+        {
+          "text": "Behold, in a manner transcending understanding and all telling, the pure one giveth birth to the Son of God Whom the prophets of old proclaimed; foreseeing through the Holy Spirit, Who preserved her undefiled, and released Adam from sin. O ye people, let us say: Christ our King hath now arrived in the flesh!",
+          "tone": 6
+        },
+        {
+          "text": "Without leaving the bosom of the Father, Thou didst reveal Thyself as a man, and held in the arms of the Virgin, Thou didst summon the magi from Persia by a star, who worshipped Thee as King and God. Thou dost destroy the ungodly princes of the heathen with the spirit of Thy lips, and dost shepherd the people whom Thou hast brought into existence.",
+          "tone": 6
+        },
+        {
+          "text": "O venerable father Peter, while yet in thy mother's womb thou didst receive a calling to be a bishop which was uttered by God. From childhood thou didst love Christ, receiving from Him the flock of His reason-endowed sheep, and thou didst shepherd well the Church of God. Wherefore, we celebrate thy dormition and, rejoicing, we magnify Christ.",
+          "tone": 8,
+          "count": 2,
+          "verse": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding."
+        },
+        {
+          "text": "Praying for us, O venerable hierarch Peter, by thy supplications unto God beg confirmation for the Church, care and guidance for the bishop of the flock, victory for the nation over the Moslems and triumph over all enemies, an unshakable and unassailable existence for thy city, and remission of sins for all the faithful people who have recourse unto the shrine of thy relics, O holy hierarch.",
+          "tone": 8,
+          "verse": "The mouth of the righteous shall meditate wisdom, and his tongue shall speak of judgment."
+        },
+        {
+          "text": "O venerable and divinely wise father, thou hast truly revealed thyself, guiding unto the way of truth the hearts of those who have been deceived. Thou wast the defender of the poor and widows, the steadfast chastening of nobles. O holy one, ask thou remission of sins for all the faithful who have recourse unto the most pure Mother of God.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Every city and land rejoiceth, celebrating today with the glorious city of Moscow; for the great Peter, our wondrous physician and savior, doth offer us doses of heavenly medicine. He hath lovingly called all to his free cures, which are not wrought by human skill or by bindings, but through the activity of the Holy Spirit, imparting supra-natural healing of soul and body. And receiving this in abundance, we of every generation and age glorify Christ God, Who for the sake of His favored one bestoweth great mercy upon those who sing his praises.",
+        "tone": 6
+      },
+      "bothNow": {
+        "text": "The prophecies of Balaam the magus receive their fulfillment; for those who were filled with Persian miracles, illumined with the brilliance of the unusual star by Christ Who was incarnate in Bethlehem, the neversetting Sun, indicate by their bestowal of gifts God the King, Who of His own will became a mortal man.",
+        "tone": 6,
+        "label": "Forefeast of the Nativity"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Be glad now, O earth that before wast barren! For, lo! Christ hath shown forth within thee a luminary who shineth forth clearly in the world healing our infirmities and ailments. Wherefore, join chorus and rejoice with boldness; for it is the high priest of the Most High who doeth these things.",
+      "tone": 4,
+      "bothNow": {
+        "text": "Make ready, O Bethlehem! Be thou opened unto all, O Eden! Adorn thyself, O Ephratha! For in the cave the Tree of Life hath sprung forth from the Virgin. Her womb is shown to be a noetic paradise, in the midst of which is the divine Tree, whereof eating, we shall live, and not die as did Adam. Christ is born, that He might restore His image which of old fell!",
+        "tone": 4,
+        "label": "Forefeast of the Nativity"
+      }
+    }
+  }
+}

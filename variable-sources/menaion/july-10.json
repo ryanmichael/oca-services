@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "feast": "45 Holy Martyrs of Nicopolis of Armenia",
+    "feastKey": "45MartyrsNicopolisArmenia",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 5,
+    "_source": "Matins: St-Sergius Emenaion 07-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-10.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone I. Single canon of the holy martyrs in Tone V (acrostic 'I hymn the divinely crowned regiment of martyrs'). Kontakion Tone VIII after Ode 6. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tormenters\nand crushed the feeble audacity of the demons.//\nThrough their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+
+  "kontakion": {
+    "text": "For the sake of Christ, O martyrs, ye endured many torments.\nYe set at naught all of idolatrous polytheism\nand destroyed all the ungodliness of every falsehood,\ntrampling them down by the power of Christ.//\nAnd ye teach us all to chant openly, with faith: Alleluia!",
+    "tone": 8,
+    "label": "Kontakion of the holy martyrs",
+    "melody": "As first-fruits"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 5,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tormenters\nand crushed the feeble audacity of the demons.//\nThrough their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "sessionalHymns": {
+      "text": "Crushed by stones, cut asunder by swords,\nburned with fire and cast into water,\nthe valiant warriors of Christ, contending well,\nutterly drowned the wicked foe in the streams of their blood;\nand they were manifestly shown to be crowned.\nWherefore, they are honored and faithfully glorified.",
+      "tone": 4,
+      "melody": "Having been lifted up",
+      "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+      "bothNow": {
+        "text": "He that sitteth upon the throne of the cherubim\nand abideth in the bosom of the Father\ndoth sit in thy womb as upon a throne, O Lady;\nfor, being truly God incarnate, He reigneth over all nations,\nand with understanding we now chant to Him.\nHim do thou also entreat,\nthat thy servants be saved.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 5,
+      "_author": "Canon of the holy martyrs, acrostic 'I hymn the divinely crowned regiment of martyrs', in Tone V.",
+
+      "kontakion": {
+        "text": "For the sake of Christ, O martyrs, ye endured many torments.\nYe set at naught all of idolatrous polytheism\nand destroyed all the ungodliness of every falsehood,\ntrampling them down by the power of Christ.//\nAnd ye teach us all to chant openly, with faith: Alleluia!",
+        "tone": 8,
+        "label": "Kontakion of the holy martyrs",
+        "melody": "As first-fruits"
+      },
+
+      "ode1": {
+        "irmos": "Unto God the Savior Who made His people pass dryshod through the sea,\nbut drowned Pharaoh with all his host,\nunto Him alone let us sing:\nFor He hath been glorified.",
+        "troparia": [
+          { "text": "With godly wisdom, O ye faithful, let us hymn the warriors and spiritual athletes of Christ as destroyers of deception and splendid conquerors, chanting unto God a hymn of victory, for He hath been glorified!" },
+          { "text": "Struggling splendidly upon the earth, the spiritual athletes endured torments and have received crowns in the heavens, chanting together the hymn of victory: For He hath been glorified!" },
+          { "text": "Bound together by faith and unity of soul, ye turned away from deception and were shown to be crowned victors, chanting together the hymn of victory: For He hath been glorified!" },
+          { "type": "theotokion", "text": "Theotokion: O most pure Mother of God, unceasingly entreat God, Who became incarnate from thee, yet was not separated from the bosom of His Father, that He save those whom He hath fashioned from every evil circumstance." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "By the power of Thy Cross, O Christ,\ndo Thou make steadfast mine understanding,\nthat I may hymn and glorify\nThy saving Ascension.",
+        "troparia": [
+          { "text": "Adorned with the understanding of Christ, O warriors, ye drowned the iniquitous foe in the outpourings of your blood." },
+          { "text": "Having given your bodies over to bitter and cruel tortures, O right laudable martyrs, through faith ye have received a divine inheritance." },
+          { "text": "Broken by the stones which were cast at you at the command of the tyrant, O ye spiritual athletes, ye mightily preserved the dominion of the right Faith." },
+          { "type": "theotokion", "text": "Theotokion: With the martyrs, O pure one, unceasingly entreat Him Who issued forth from thy womb, that He deliver those who hymn thee from the deception of the devil, O all-immaculate one." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "I have heard the report of the mighty deed of Thy Cross, O Lord,\nhow Paradise was opened thereby, and I cried:\nGlory to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Strengthened by the grace of the Savior, the choir of the spiritual athletes vanquished the God-hating enemy with the God-loving ways to which they cleaved." },
+          { "text": "O divinely summoned regiment of spiritual athletes of Christ, ye conquered the multitude of the impious opponents of God, chanting: Glory to Thy power, O Lord!" },
+          { "text": "Beholding the light unapproachable while languishing in prison, the spiritual athletes destroyed the darkness of the idolatrous delusion of polytheism, strengthened by the power of God." },
+          { "type": "theotokion", "text": "Theotokion: The power of the Most High overshadowed thee, O Virgin, and made of thee a garden of paradise, which had in its midst the Tree of life, the Lord and Mediator." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Waking at dawn, we cry unto Thee, O Lord:\nSave us, for Thou art our God;\nwe know none other besides Thee.",
+        "troparia": [
+          { "text": "Nurtured by the words of the Holy Spirit, the martyrs abolished irrational idolatry." },
+          { "text": "The athletes were luminous stars and flowers of the Faith emitting sweet fragrance." },
+          { "text": "Ye were shown to be a field of the Most High, O saints, harvested by the scythe of torture, O all-praised ones." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, cease thou never to beseech Him Whom thou didst bear, that He save the souls of us who earnestly hymn thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The abyss hath encompassed me,\nthe sea monster hath become my grave;\nbut I cried unto Thee, the Lover of mankind,\nand Thy right hand saved me, O Lord.",
+        "troparia": [
+          { "text": "In gladness the martyrs cried aloud: 'Take Thou our souls into Thy hands, O Master Who lovest mankind, and grant them rest; for Thee alone, Who art greatly merciful, do we love.'" },
+          { "text": "The choir of Thy martyrs came to share the habitations of the angels; for, having finished their race, they now pray that our souls be saved." },
+          { "text": "O divinely chosen choir of martyrs, ye glory of the martyrs, beauty of the martyrs, earnestly pray that all who have recourse to you may be saved." },
+          { "type": "theotokion", "text": "Theotokion: What words can recount the wonder of thy seedless conception, O most immaculate one? For Thou didst conceive God Who hath come for us in His loving-kindness." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "The children were saved in the burning furnace,\nchanting: Blessed art Thou\nO God of our fathers.",
+        "troparia": [
+          { "text": "In the furnace, O Christ, Thy spiritual athletes cried aloud: Blessed is the God of our fathers!" },
+          { "text": "Illumined with the light of the Trinity, the spiritual athletes surrendered their souls with gladness, chanting: Blessed is the God of our fathers!" },
+          { "text": "Standing before God with gladness, O ye crowned spiritual athletes, pray ye to Him on our behalf." },
+          { "type": "theotokion", "text": "Theotokion: We entreat thee as our salvation, O Theotokos: beseech Him Who was incarnate from thee, on our behalf." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Unto God the Son, Who was begotten of the Father before the ages\nand was incarnate of a Virgin Mother in these last times,\ngive praise, O ye priests,\nand supremely exalt Him, O ye people, throughout all ages.",
+        "troparia": [
+          { "text": "The petition of us, the faithful, shall rest with the martyrs, and we shall share in their inheritance, hymning Christ and supremely exalting Him throughout the ages." },
+          { "text": "With heartfelt joy the choir of the steadfast spiritual athletes received crowns from Christ in a godly manner; hymning Him with splendor and exalting Him throughout the ages." },
+          { "text": "Stained with the streams of your blood, O right laudable ones, ye reign forever with Christ in the heavens, chanting with piety and supremely exalting Him throughout the ages." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast been shown to be more exalted than the cherubim, O pure Theotokos, having borne in thy womb Him Who sitteth upon them. With the incorporeal ones we of earth also glorify and supremely exalt Him throughout the ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "O thou who art God's Mother transcending mind and word,\nwho ineffably in time hast given birth unto the Timeless One,\nthee do we the faithful\nwith one accord magnify.",
+        "troparia": [
+          { "text": "O most glorious martyrs, pray ye for the salvation of all, standing before Christ, for Whose sake ye endured tortures." },
+          { "text": "With mighty power ye brought down the fortress of deception, O invincible ones; and now ye have been deemed worthy to dwell with the angels in the mansions of heaven." },
+          { "text": "Having vanquished the tyrant with the ways of lawful martyrdom, O most honorable ones, ye have received crowns of righteousness." },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O Theotokos, Mother of Christ God, to Whom thou hast given birth! With the martyrs pray thou that remission of sins be given to those who hymn thee with faith." }
+        ]
+      }
+    }
+  }
+}

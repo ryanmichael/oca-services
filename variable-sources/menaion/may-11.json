@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Mocius",
+    "feastKey": "hieromartyeMocius",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 05-11.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-11.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone IV. This date falls within the Pentecostarion period (post-Pascha); the LIC Glory/BothNow and the Matins sessional BothNow come from the Pentecostarion (assembled at runtime). Single canon of the holy hieromartyr in Tone IV. Kontakion Tone II + Ikos after Ode 6. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Mocius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr"
+  },
+
+  "kontakion": {
+    "text": "Armed with the shield of faith,\nthou didst cut down legions of the ungodly,\nO hieromartyr Mocius, receiving a crown from Christ;\nwherefore, rejoicing now with the angels,\nfrom misfortunes save those who hymn thee,//\npraying unceasingly on behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of the holy hieromartyr",
+    "melody": "The steadfast"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Mocius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr"
+    },
+
+    "sessionalHymns": {
+      "text": "With praises let the glorious Mocius be honored:\nthe spiritual athlete renowned by all,\nwho utterly brought down the enemy and mightily endured fiery torment;\nfor he endured unbearable tortures and was beheaded,\nand as one crowned hath entered in unto Christ rejoicing.",
+      "tone": 4,
+      "melody": "Having been lifted up",
+      "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+      "_note": "Glory ..., Both now ..., from the Pentecostarion (assembled at runtime when date falls in Pentecostarion period)."
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hieromartyr in Tone IV.",
+
+      "kontakion": {
+        "text": "Armed with the shield of faith,\nthou didst cut down legions of the ungodly,\nO hieromartyr Mocius, receiving a crown from Christ;\nwherefore, rejoicing now with the angels,\nfrom misfortunes save those who hymn thee,//\npraying unceasingly on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy hieromartyr",
+        "melody": "The steadfast"
+      },
+
+      "ikos": {
+        "text": "In that I have a soul and body defiled by countless temptations and am cruelly engulfed by the storm of life, I dare not utter thy praise, nor am I able to, O blessed hieromartyr; but like a well-spring wash away my many temptations, and pray that the Word granteth me to open my mouth in praise, for thou prayest unceasingly on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "To the broad expanse of thy praises guide the narrowness of my mind, O blessed and all-praised martyr, and send down light upon my heart, which hymneth thy luminous and glorious memory." },
+          { "text": "The Church doth recognize thee as a star of great brilliance, illumining its firmament with the radiance of thy sufferings, O most blessed and all-wise Mocius, thou adornment of martyrs." },
+          { "text": "Thou didst destroy ungodliness with thy blood and didst rout the enemy with the struggles of thy warfare, and, consumed by fire, thou didst burn up all the vanity of the impious." },
+          { "text": "Beaten with a rod and tortured with fire, O divinely blessed Mocius, thou didst become more lustrous than gold, an image of the sufferings of Christ and a champion of the Faith." },
+          { "type": "theotokion", "text": "Theotokion: In that thou didst receive the fullness of the whole Divinity, O all-immaculate one, thou hast been revealed as the mediatress of joy for us; wherefore, like the angel, O divinely joyous one, together we all cry out to thee: Rejoice!" }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee,\nO Lover of mankind.",
+        "troparia": [
+          { "text": "Stripped naked for thy struggles, thou didst enter the fray, fortifying thy weakness with the power of the Cross; wherefore, thou hast cast down the boastful serpent." },
+          { "text": "Through a temporary death thou didst find immortal glory, and for the sake of the pangs of thy flesh thou didst find eternal delight, as thou didst desire, O invincible martyr." },
+          { "text": "Through uttermost love thou didst truly pass over from corruption to incorruption, making thine abode in joy, and becoming a companion of the angels, O Mocius." },
+          { "type": "theotokion", "text": "Theotokion: The Wisdom of God, finding thee to be a most pure habitation, became incarnate of thy pure blood, and revealed thee to be incorrupt even after giving birth." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry:\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "Thy body flayed all over, thou didst shed the skin-garments of ancient mortality, O blessed one, clothing thyself in the vesture of incorruption; and, rejoicing, thou dost now delight in the tree of life." },
+          { "text": "Thou didst adorn thyself in the comeliness of the virtues and illumining thyself through the pangs of thy voluntary suffering, O most glorious one, thereby emulating the angels; for like one of the incorporeal beings thou didst endure wounds and the breaking of thy bones." },
+          { "text": "The abyss of ungodliness hath in nowise drowned thee, for the Creator saved thee with His mighty hand; and rivers of torments were unable to move the unshakable pillar of thy soul, O wise one." },
+          { "type": "theotokion", "text": "Theotokion: He Who created all things by His will and desire formed flesh for Himself from thy blood, O Virgin Mother; issuing forth as One in two natures, saving us in His goodness." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Thy martyr, O Christ, having acquired Thee as mighty power against the invisible foe, cast down his feeble might." },
+          { "text": "The earth hath been hallowed by thy blood, O blessed one, and the hordes of the demons have been wounded by thy wounds, O divinely wise and right wondrous one." },
+          { "text": "Possessing thee as a lustrous and precious pearl, O all-blessed one, the honored Church is adorned in thy crowning." },
+          { "type": "theotokion", "text": "Theotokion: For us hast thou given birth to the timeless Light, the Effulgence of the Father, Who came under time in the richness of His goodness, O all-immaculate one." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "With love, hope and faith the great Judge of the contest armed thee as a mighty warrior of piety; wherefore, thou didst cast down the fortress of falsehood." },
+          { "text": "Thou didst cut thyself off from carnal love and, gazing upon the ineffable beauties of the Bridegroom, didst consider thy tortures as naught, O all-praised one." },
+          { "text": "Thou didst traverse the deep of martyrdom without sinking and didst hasten with all thy riches to the harbor of good things on high, receiving a crown of victory." },
+          { "type": "theotokion", "text": "Theotokion: O thou who hast given birth to the Abyss of loving-kindness, in that thou alone art merciful, lead me up from the depths of sin, and save me from the tempest of adverse thoughts." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO Lord God of our fathers,\nsupremer praised, and blessed art Thou.",
+        "troparia": [
+          { "text": "Cast into the furnace, thou didst find, bedewing thee, the Word in the guise of the Angel Who saved the three youths, O most blessed one; and thou didst cry out: O Lord God of our fathers, supremely praised, and blessed art Thou!" },
+          { "text": "Strengthened by divine power, O martyr, thou didst manfully oppose the sword, the fire and the heated instruments of torture; and thou didst cry out, rejoicing: O Lord God of our fathers, supremely praised, and blessed art Thou!" },
+          { "text": "With the torrents of thy blood thou didst quench the flame of delusion, and with the fire of patience, utterly consume the flammable tinder of idolatry, chanting: O Lord God of our fathers, supremely praised, and blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O Ever-virgin, we hymn thee who alone hast poured forth upon us Jesus Christ, the Water of forgiveness, the Well-spring of immortality, and we cry: O Lord God of our fathers, blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Having clothed thyself in a royal robe empurpled with thy blood, and bearing the invincible weapon instead of a scepter thou dost reign with the King of all, O Mocius, crying: O all ye works of the Lord, praise ye the Lord and supremely exalt Him throughout all ages!" },
+          { "text": "Like the sun hath the memory of thy suffering shone forth today upon the world, illumining all and dispelling the darkness of demonic malice, O glorious Mocius; wherefore we joyfully hymn thee, blessing Christ throughout all ages." },
+          { "text": "Making the blood of thy suffering a chariot, O divinely wise one, taken up to the heavens thou didst attain unto the ranks of the noetic hosts and the choirs of the martyrs. Standing with them before the Trinity, do thou ever pray for those who hymn thee." },
+          { "type": "theotokion", "text": "Theotokion: In thee were the journeys of the great King of hosts visible, which did away with the confusion of all mankind, O portal of heaven, O maiden who knewest not wedlock; wherefore, we hymn and supremely exalt thee, O Virgin, throughout all ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "As a most noetically rich hieromartyr, full of enlightenment and adorned with suffering, thou hast found a place within the bridal-chamber, rejoicing with the wise virgins; and thou beholdest unimaginable beauty, whose splendor thou didst acquire." },
+          { "text": "Having first suffered in other cities, thou didst arrive in the city of Byzantium, O martyr, and therein thou didst receive the end of thy struggles and the crown of victory, as an invincible spiritual athlete; and thou dost protect it by thine entreaties." },
+          { "text": "Thou didst truly receive the everlasting kingdom as reward for thy pangs, and didst acquire access to the tree of life through thy desire, O all-blessed and right wondrous martyr Mocius, becoming a god by communion." },
+          { "type": "theotokion", "text": "Theotokion: Following thy words, O Virgin, we ever call thee blessed; for thou hast given birth for us to the Word Who shone forth from the Father before time began, as He Himself hath willed, Whom as is meet we magnify." }
+        ]
+      }
+    }
+  }
+}

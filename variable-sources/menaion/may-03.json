@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Timothy and Maura",
+    "feastKey": "ssTimothyAndMaura",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 6,
+    "_source": "Matins: St-Sergius Emenaion 05-03.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-03.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone IV. This date falls within the Pentecostarion period (post-Pascha); the LIC Glory/BothNow and the Matins sessional BothNow come from the Pentecostarion (assembled at runtime). Single canon of the holy martyrs by Joseph in Tone VI. Kontakion of the martyrs (Tone IV) placed at kontakionAfterOde3 slot; after-Ode-6 Kontakion & Ikos come from the Pentecostarion (no menaion kontakion at that slot). Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+
+  "kontakion": {
+    "text": "Having endured multifarious wounds\nand received crowns from God,\npray ye to the Lord on behalf of us\nwho celebrate your most sacred memory,\nO Timothy all-great and all-glorious Maura,\nthat He grant peace to our city and people;//\nfor He is the confirmation of the faithful.",
+    "tone": 4,
+    "label": "Kontakion of the holy martyrs",
+    "melody": "Having been lifted up"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 6,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "sessionalHymns": {
+      "text": "Worshiping God, the wise Timothy and the glorious Maura cast falsehood into darkness;\nand having endured martyrdom, they have been enlightened beyond the rays of the sun,\nand have become concelebrants with the angels.\nYea, we glorify them with faith.",
+      "tone": 1,
+      "melody": "Thy tomb, O Savior",
+      "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+      "_note": "Glory ..., Both now ..., Sessional Hymn from the Pentecostarion (assembled at runtime when date falls in Pentecostarion period)."
+    },
+
+    "canon": {
+      "tone": 6,
+      "_author": "Canon of the holy martyrs, acrostic 'I honor the pangs of Timothy and Maura', the composition of Joseph, in Tone VI.",
+
+      "kontakionAfterOde3": {
+        "text": "Having endured multifarious wounds\nand received crowns from God,\npray ye to the Lord on behalf of us\nwho celebrate your most sacred memory,\nO Timothy all-great and all-glorious Maura,\nthat He grant peace to our city and people;//\nfor He is the confirmation of the faithful.",
+        "tone": 4,
+        "label": "Kontakion of the holy martyrs",
+        "melody": "Having been lifted up",
+        "_note": "After-Ode-6 Kontakion & Ikos come from the Pentecostarion (assembled at runtime)."
+      },
+
+      "ode1": {
+        "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried:\nLet us sing to God a song of victory.",
+        "troparia": [
+          { "text": "O ye sacred people, in sanctity let us honor the sacred and honored festival of the sacred spiritual athletes, that by their entreaties we may be delivered from misfortunes." },
+          { "text": "Striving, that they might receive from Christ crowns of sacred victory, the valiant martyrs manifestly chose to die rather than live; wherefore, they have received glory." },
+          { "text": "Undaunted by the pain of the flesh and unafraid of either the tortures or fire of the persecutors, O martyred spiritual athletes, ye manfully proclaimed Christ before the tribunal." },
+          { "type": "theotokion", "text": "Theotokion: The transcendent Word, receiving human essence from thy pure blood, O pure one, hath deified us and delivered us from corruption; wherefore, we, the faithful, ever glorify thee." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "text": "Opening the books of God to the people in a sacred manner, and enlightening their hearts, O Timothy, warrior of Christ, rejoicing, thou didst enter upon honored martyrdom." },
+          { "text": "Setting thy soul aflame with divine desire, O martyr, thou didst patiently approach the fire of tortures; wherefore, the divine dew of Christ cooled thee, O blessed one." },
+          { "text": "Thy mind enlightened by thy gaze directed toward God, thou didst not feel the touch of the cruelly heated iron implements, O glorious martyr Timothy." },
+          { "type": "theotokion", "text": "Theotokion: Though He is dispassionate by nature, thy Son, O pure Virgin, received flesh of thy pure blood, and by His suffering on the Cross hath delivered me from the passions." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind,\nkeeping festival in the Lord.",
+        "troparia": [
+          { "text": "Having desired great glory, ye were deemed worthy of it, becoming children of the divine Light, O great martyrs of Christ, ye peers of the angels." },
+          { "text": "Joining the ranks of the saints, and having thine ears attuned to the divine laws, O glorious Timothy, thou didst mightily endure the deprivation of thy hearing." },
+          { "text": "Having uplifted thee upon a tree, the vain-minded ones weighted thy head down with a stone, O glorious Timothy; yet Christ strengthened thee who art adorned with divine suffering." },
+          { "text": "Ye truly spurned those who ran the course of inconstancy, O blessed ones, and gave yourselves over to pangs; wherefore, ye have received the good things prepared from of old." },
+          { "type": "theotokion", "text": "Theotokion: O divinely joyous and pure one, thou abode of purity, dwelling-place of the Master of all and fulfillment of all the prophets: have pity on those who hymn thee." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God,\nWho recalleth us from the darkness of sin.",
+        "troparia": [
+          { "text": "O divinely blessed Maura, thou didst listen lovingly to the luminous discourses of thy spouse, and, rejecting the darkness of evil, didst become light through martyrdom." },
+          { "text": "Arming thyself with the divine Spirit, O honored Maura, rejoicing, thou didst go forth to do battle with the deceiver; and having vanquished him, thou hast received crowns of victory, O martyr." },
+          { "text": "The honored Maura, confessing Thee alone, O Jesus, as the Lord Who fashioned man with Thy hands, had her fingers severed, manfully enduring an unjust torture." },
+          { "type": "theotokion", "text": "Theotokion: Still thou the tempest of my thoughts, the uprisings of my passions and the turmoil of perils, O divinely joyous Virgin, and save me who hymn thy mighty works." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption,\nO greatly Merciful One.",
+        "troparia": [
+          { "text": "Equipped with the Cross as mast and sail, O holy martyrs, with faith ye safely traversed the deep of perils and came to rest in the havens of God." },
+          { "text": "Having heated a brazen cauldron, the ungodly ones cast thee into whilst thou confessed Christ, O Maura; but thou didst remain unharmed, and they found that thou hadst been cooled by the dew of the Spirit." },
+          { "text": "Bound, O martyrs, ye manfully loosed all the bonds of the enemy, and, putting off the flesh, ye have utterly bound your souls to Christ with love, O ever all-memorable ones." },
+          { "type": "theotokion", "text": "Theotokion: O most good Sovereign Lady who hast given birth in the flesh to the supremely good God, bless thou my heart, which hath been afflicted with the passions, that with faith and love I may magnify thee." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "text": "Burned allover with torches, the most glorious Maura did not feel pain, bearing the fire of the love of Christ in her heart and crying aloud to Him with fervor: O God of our fathers, Blessed art Thou!" },
+          { "text": "Shaking the slumber of evil from thine eyes, O Timothy, thou didst endure the blinding of thine eyes, gazing upon Christ with the eyes of thy heart, and chanting: O God of our fathers, Blessed art Thou!" },
+          { "text": "Having disdained things below, the divine martyrs have inherited a dwelling-place on high. Let them be honored with sacred hymns, that they may chant unceasingly with us: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O all-hymned Virgin who hast given birth to the all-hymned God, those who hymn thee do thou show forth as partakers of light, and by thy supplications deliver them from Gehenna and fire, and from all the malice of the enemy." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Keeping the laws of the Almighty, O valiant martyrs and heirs of Christ, ye did not submit to the dominion of the iniquitous, nor did ye offer worship to the wicked demons." },
+          { "text": "Manifestly joined together in an excellent union, together ye took the easy yoke of the Lord upon your necks, O martyrs, and have thereby been admitted to the flocks of the martyrs." },
+          { "text": "Having suffered for many days upon the tree of a cross, O all-praised ones, ye portrayed the honored suffering of Him Who of His own will suffered for our sake. Him do we supremely exalt throughout all ages." },
+          { "text": "Stretched out, ye endured pangs and a most violent death, O holy ones; wherefore, ye have passed over to the life which is devoid of pain, hymning Christ throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast been adorned, O Virgin, having given birth to Christ the Lord Who is most comely in beauty, and Who illumineth the faithful with divine rays. Him do we supremely exalt throughout all ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts\nHim we magnify and thee we call blessed.",
+        "troparia": [
+          { "text": "Ye have been deemed worthy to behold the glory of Him Who in His loving-kindness abased Himself, O all-praised ones; for ye kept His laws and came to share in His sufferings. Wherefore, assembling, we piously honor you." },
+          { "text": "O wise ones, ye spent as many days nailed to your tree as in His loving-kindness Christ spent hours on His Cross. And confessing Him as the Ruler of all, ye surrendered your spirit into His hands." },
+          { "text": "The army of the angels and the blessed choir of the prophets, apostles, martyrs and the venerable assembled to witness your departure from life, O martyrs; and the Master of all crowned you with wreaths of victory, in that He is supremely good." },
+          { "text": "O valiant and wise spiritual athletes of Christ, beg ye forgiveness of sins, correction of life and the avoidance of all evils for us who honor you with love and celebrate your honored festival." },
+          { "type": "theotokion", "text": "Theotokion: Illumine me with thy light, O Virgin who art divinely joyous among women, and deliver me from eternal fire, that I may magnify thee, and glorify thee, and fittingly hymn thy mighty works." }
+        ]
+      }
+    }
+  }
+}

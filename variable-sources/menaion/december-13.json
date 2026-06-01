@@ -1,0 +1,653 @@
+{
+  "_meta": {
+    "feast": "The Holy Martyrs Eustratius, Auxentius, Eugene, Mardarius & Orestes; the Holy Martyr Lucia",
+    "feastKey": "holymartyrEustratiosAndCompanions",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 12-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-13.pdf",
+    "_note": "Primary commemoration: Holy Martyrs Eustratius, Auxentius, Eugene, Mardarius & Orestes (5 martyrs). Secondary: Holy Martyr Lucia. Polyeleos-rank: Polyeleos, Magnification, Matins Gospel. Two interleaved canons: Canon I of the holy martyrs by John the Monk in Tone IV; Canon II of the holy martyrs in Tone VI. Kontakion after Ode 3 is in Tone II; Kontakion after Ode 6 is in Tone III. Katavasia: 'Christ is born...'"
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+
+  "kontakion": {
+    "text": "Eloquently speaking of divine things before the iniquitous, O all-wondrous one,\nthou didst endure beatings with a most courageous heart,\nshining forth with godly signs,\nand extinguishing the towering flame of delusion.\nWherefore, we honor thee, O all-blessed Eustratius, martyr of Christ.",
+    "tone": 3,
+    "label": "Kontakion of the holy martyrs",
+    "melody": "Today the Virgin"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 4,
+        "melody": "Thou hast given a sign",
+        "text": "Like the sun, in splendor, O Lord, shineth forth the memory of Thy passion-bearer Eustratius,\nwho eclipsed polytheism with his invincible discourses,\nrendering it, through his faith, as useless as a dark shadow,\nand who inspired four others to be his companions and fellow sufferers.\nFor their sake grant us cleansing, in that Thou lovest mankind.",
+        "label": "Sticheron 1 of the holy martyrs"
+      },
+      {
+        "tone": 4,
+        "melody": "Thou hast given a sign",
+        "text": "Eustratius compelled the stones to acknowledge the noetic mastery of him who in the flesh prevailed upon them to experience his power,\nwhich suddenly caused the wounds inflicted by dreadful tortures to disappear,\nand who destroyed delusion,\nthat he might theologize concerning Thee with his mouth, O Almighty Jesus,\nThou, Savior of our souls.",
+        "label": "Sticheron 2 of the holy martyrs"
+      },
+      {
+        "tone": 4,
+        "melody": "Thou hast given a sign",
+        "text": "By their discourses and sufferings, and the divers ways in which they were deprived of life,\nthe holy ones showed perfect and constant love for Thee, O Lord:\nthe glorious Orestes and Mardarius,\nwho struggled together with the wise Eustratius, Auxentius and Eugene.\nBy their supplications, save Thou our souls.",
+        "label": "Sticheron 3 of the holy martyrs"
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Serving well the King of hosts as a warrior,\nthou didst voluntarily give thyself over to torture and a violent death, O blessed Eustratius,\nbringing with thee a choir of martyrs.\nAnd with them thou didst suffer and hast received crowns of victory.\nWith them make supplication on our behalf, O all-glorious one.",
+        "label": "Sticheron 4 of the holy martyrs"
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "The divine wise Eustratius, the valiant Auxentius,\nthe glorious Eugene and Mardarius,\nwho, with the brave Orestes, vanquished the enemy\nand shone forth brightly like stars of great radiance,\nhave illumined the hearts of the faithful\nand dispelled the darkness of delusion by the effulgence of the Spirit.",
+        "label": "Sticheron 5 of the holy martyrs"
+      },
+      {
+        "tone": 4,
+        "melody": "As one valiant among the martyrs",
+        "text": "Unremittingly beaten, consumed by fire,\nthy feet pierced with the nails of iron sandals, O all-wise one,\nin which thou wast forced to walk the roads,\nimprisoned in a dungeon, and baked in an oven like a pure sacrifice,\nthou didst offer thyself to Him Who was sacrificed for thy sake,\nas an immolation of sweet savor for the banquet on high, O martyr Eustratius.",
+        "label": "Sticheron 6 of the holy martyrs"
+      }
+    ],
+    "doxastikon": {
+      "text": "Come, ye who love the martyrs, and in hymns let us honor the spiritual athletes of Christ:\nEustratius, the invincible martyr, Auxentius and Eugene, Mardarius and Orestes,\nthe five-membered choir of martyrs who fought the good fight against the invisible foe\nand have been crowned with wreaths of victory.\nFor they pray to Christ for those who celebrate their memory with faith and love.",
+      "tone": 6,
+      "label": "Glory, Tone VI"
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "polyeleos",
+      "feastType": "saint",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+
+    "sedalion": [
+      {
+        "text": "Manfully arrayed in the breastplate of faith,\nand piously armed with divine wisdom, O glorious Eustratius,\nthou didst vanquish all the hordes of the devil,\nand denounced the feeble audacity of the ungodly.\nAs thou hast boldness before God, pray that we be saved.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Go thou quickly before",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "Darkened in mind by many transgressions,\nI, the prodigal, cry out to thy mighty aid, O Theotokos:\nEnlighten the eyes of my soul,\nshine upon me a radiant beam of repentance,\nand clothe me in the armor of light, O pure Virgin Birthgiver of God.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      },
+      {
+        "text": "With the sword of thy discourses thou didst wound the tyrant,\nas a commander of the Christ-bearing people, O divinely wise Eustratius.\nThou didst shine forth upon the world with rays of miracles,\nand a crown was fashioned for thee from on high.\nWherefore, we glorify Christ on the day of thy commemoration.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "We hymn thee, O Bride of God, Mother of Christ God,\nglorifying thine unapproachable Offspring,\nby Whom we have been delivered from the deceit of the devil and from all misfortune,\nO Sovereign Lady Theotokos;\nand we faithfully cry out: Have mercy on thy flock, O thou who alone art all-hymned!",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify you, O holy passion-bearers and martyrs,\nand we reverence your noble sufferings, which ye endured for Christ.",
+      "verses": [
+        "Our God is refuge and strength, a helper in afflictions which mightily befall us.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Made steadfast by thy faith in the Trinity,\nand armed with the sling of truth,\nthou didst bring down the alien audacity of falsehood,\nand take up the sword of discourse,\ntherewith cutting down the lying opposition of the enemy.\nWherefore, having set falsehood at naught by thy victories,\nthou didst die in the body, yet live in spirit, O passion-bearer Eustratius.\nEntreat Christ God, that He grant remission of sins\nunto those who with love celebrate thy holy memory.",
+      "tone": 8,
+      "label": "Sessional Hymn after the Polyeleos",
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee\nto ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,\nthat those who worthily hymn thee\nmay be granted the remission of their sins.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "The righteous cried,\nand the Lord heard them.",
+      "verse": "Many are the tribulations of the righteous, and the Lord shall deliver them out of them all.",
+      "_psalmRef": "Ps. 33:18 / 33:20"
+    },
+
+    "gospel": {
+      "reading": "Matthew 10:16-22",
+      "number": 36,
+      "_note": "Martyrs' Gospel: I send you forth as sheep in the midst of wolves."
+    },
+
+    "postGospelSticheron": {
+      "text": "O ye people, hymning Christ the Savior,\nlet us praise the five-membered choir of the saints:\nEustratius the passion-bearer, patient of soul and steadfast,\nand with him Auxentius, Eugene, Mardarius and Orestes;\nfor, having suffered for the Faith, they trampled underfoot the threefold waves of the enemy,\nand pray to Christ, that He grant cleansing and remission of sins\nunto those who with faith celebrate their memory.",
+      "tone": 1,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 6,
+      "_authors": {
+        "first": "Canon I of the holy martyrs, the composition of John the Monk, in Tone IV",
+        "second": "Canon II of the holy martyrs, in Tone VI"
+      },
+      "_canonNote": "Two canons of the holy martyrs. Canon I in Tone IV; Canon II in Tone VI. Katavasia: Christ is born.",
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
+        "irmos2": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned,\nthey cried:\nLet us sing to God a song of victory.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Distributing gifts in the heavens to the spiritual athletes on earth with His almighty right hand,\nChrist the Judge of the contest sitteth\nand extendeth divine crowns to Eustratius and those with him."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Come, let us behold the five-membered choir of martyrs,\nwhich emitteth the most radiant light,\nand hath Eustratius as its desired leader, who is crowned with divine grace."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Casting off the vesture of an earthly army,\nthou didst enlist for the true King,\nreceiving the token of suffering from Christ through Auxentius, O Eustratius."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou wast the edifice which contained the divine Essence, O pure Birthgiver of God.\nWherefore Lucia, desiring thee, was as a virgin led to thy Son in thine entourage."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Christ, the King of the circles of heaven and Bestower of gifts,\nsetteth forth his seat,\nextending crowns of victory to Eustratius and those who suffered with him."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O ye faithful, let us praise the chanting and divinely crowned choir of the five passion-bearers,\nwhich had the wise Eustratius to lead them faithfully and divinely to Christ."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Desiring to enlist in the army of the Most High, O Eustratius, thou didst shun honors;\nand, leading thy life to God, O wise one, thou wast purified in sanctity."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Rejoicing, the choir of the right victorious martyrs, who have received crowns of victory, hymneth thee, O pure one;\nfor through thee hath heaven been rendered accessible to us,\nin that thou hast given birth past understanding to the Creator of heaven."
+          }
+        ],
+        "katavasia": "Christ is born…"
+      },
+
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength, my refuge and foundation.",
+        "irmos2": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,\nand strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O all-blessed Eustratius,\nby the hope of torments wast thou supra-naturally filled with all manner of joy,\nlike an immaterial treasury."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With spiritual wisdom and the endurance of perils\nthou didst denounce the ungodliness of the tyrant, O Auxentius, martyr of Christ."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Like most splendid adornments, like flowers,\nye were arrayed in the wounds of Christ, O martyrs of the Church of the faithful."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: We, the faithful, truly honor thee, the Theotokos, as our Sovereign Lady;\nfor thou hast given birth to God, Who became flesh, O all-immaculate one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having set all thy hope on God Most High with firmness of mind, O blessed one,\nthou wast wholly filled with consolation by the expectation of wounds."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Through divine wisdom thou didst flourish in the love of Christ;\nand by enduring wounds, O Auxentius,\nthou didst denounce the mindlessness of the persecutors, their insolence and vainglory."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The unrestrained rage of Lysius and the fire of mighty tortures didst thou account as but a dream, O wise one;\nfor, made steadfast in Christ, thou didst prevail, as though it were another who was suffering."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Chanting, we, the faithful, bless thee in a godly manner with voices of sacred discourse,\nO Virgin Mother of God,\nas the one who brought about our Author, Who became like unto us."
+          }
+        ]
+      },
+
+      "kontakionAfterOde3": {
+        "text": "Thou hast been shown to be a most splendid luminary\nfor those who sit in the darkness of ignorance, O passion-bearer;\nfor, armed with faith as with a spear,\nthou wast undaunted by the arrogance of the enemy,\nO Eustratius, who art far more eloquent than any orator.",
+        "tone": 2,
+        "label": "Kontakion of the holy martyrs (after Ode 3)",
+        "melody": "The tomb and mortality"
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Neither the sword, nor wild beasts, nor fire, nor any other thing that filleth material beings with fear\nwas able to dissuade thy steadfastness;\nfor, having trampled underfoot the power of the enemy by thy contest,\nas one impervious to fear thou didst pass over to the life of the incorporeal ones.\nWherefore, thou bestowest healings upon the faithful who hasten to thy memorial with love,\nO holy passion-bearer Eustratius.\nEntreat Christ God, that He grant remission of sins\nunto those who with love celebrate thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "When the Master and Fashioner of all shall come to judge the whole world,\ndo thou number me, the condemned, at His right hand with the sheep;\nand deliver me, thine unprofitable servant, from the outermost darkness and torment, I pray,\nthat with thanksgiving I may magnify the richness of thy goodness, O all-immaculate one,\nand cry out to thee, rejoicing:\nPray to Christ God, that He grant me remission of sins,\nfor thee do I, thy servant, have as my hope.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "For the sake of love for Thine image, O compassionate One,\nThou didst ascend the cross and the nations melted away.\nFor Thou, O Lover of mankind, art my strength and my praise.",
+        "irmos2": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth,\ncrying with a pure mind, keeping festival in the Lord.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With the wounds of thy flesh thou didst set aside the defilements of thy soul,\nand by faith thou didst shatter the arrows of the wicked serpent, O Eustratius."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "By thy wounds was the King of glory glorified, O passion-bearer Eustratius,\nand He hath filled thee with ineffable glory by the power of miracles."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Emulating the boldness of the fishermen,\nfishing with the net of martyrdom thou didst bring the wise Eugene to the Master, O Eustratius."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O all-immaculate one, who alone hast been revealed to be more holy than the cherubim:\nfrom every evil circumstance save the souls of us who hymn thee with faith."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The Almighty, enkindling divine desire in thy soul,\nshowed thee to be eminently wondrous,\nmaking the wounds of thy flesh whole."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Fishing with the spiritual net of the fishermen, O wise Eustratius,\nthou didst bring to Christ the King the wise Eugene."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy feet pierced by the nails of iron sandals during thy torture, O all-wise one,\nthou didst wholly stain thyself with thy blood,\nemulating the suffering of Jesus the King."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: The infinite and immutable Word of God the Father,\nhaving been transformed by an outward appearance in becoming incarnate through thee, O all-immaculate one,\nhath deified me in His love for mankind."
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
+        "irmos2": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,\nas the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Like a radiant star thou didst shine forth like a light from afar\namong the company of martyrs, O victorious Eustratius."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O the goodly fate! O the divinely given portion!\nO the most beauteous woman, who by light overcame the deception of our first mother."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst consider all things of beauty to be as dung, O Mardarius,\nsuperseding the laws of nature in thy suffering."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: The earthly mind cannot comprehend thy conceiving, which passeth understanding,\nO Virgin Maiden and Mother; for thou hast given birth unto God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Wondrous like a star for the Church, thou didst shine forth among the martyrs,\nwith martyric rays illumining the world more than the sun, O Eustratius."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The divinely eloquent Mardarius, seeing thee emitting radiance in brilliant splendors,\nin the simplicity of his heart followed thee like an innocent lamb."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The intelligent and Christ-loving woman who loved her husband\nachieved supremacy over her kindred nature and eminently vanquished it completely,\nanointing her husband for martyrdom."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O good one, save those who confess thee with all their soul\nto be the Theotokos and Sovereign Lady of the world;\nfor thee, who art the Theotokos, have we acquired as an invincible intercessor."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "irmos2": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee:\nRaise up my life from corruption, O greatly Merciful One.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Mardarius cried aloud \"Christ is more to me than everything: home, land, honor and fame\";\nfor he was thus taught by thee, O Eustratius."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Though cut out, thy tongue hath not ceased to sing,\nand thy severed hands have lifted themselves up to God, O Eugene,\nasking salvation for those who hymn thy memory."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Suspended upside-down by thy feet, thy shoulders burned with heated irons,\nthou didst surrender thy spirit to the Master, O Mardarius."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Finding thee to be her steadfast might, O Virgin,\nthe passion-bearer valiantly endured wounds,\nand rejoicing, was brought to the Master of all in thine entourage."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Crying aloud: \"Christ is more to me than all the things of my fathers\", O Mardarius,\nthy heels wholly burned away by heated irons,\nand thy breast pierced by arrows, thou didst repose, rejoicing."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Cut out, thy tongue did not cease to hymn Christ, O Eugene;\nand severed, thy hands elevated themselves to God, O blessed one,\nasking deliverance for those who hymn thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy manly soul was right wondrous, O most noble Eugene,\nfor when thy legs were violently broken thou didst surrender thy spirit\ninto the hands of the Master of all, rejoicing."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Lady who hast given birth to the Lord, and Helmsman of mortals,\ncalm thou the constant and grievous turbulence of my passions,\nand grant serenity to my heart."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "Eloquently speaking of divine things before the iniquitous, O all-wondrous one,\nthou didst endure beatings with a most courageous heart,\nshining forth with godly signs,\nand extinguishing the towering flame of delusion.\nWherefore, we honor thee, O all-blessed Eustratius, martyr of Christ.",
+        "tone": 3,
+        "label": "Kontakion of the holy martyrs",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Today the Church doth mystically celebrate a sacred feast,\nradiantly proclaiming thy valor, pangs and labors,\nthy divine struggles surpassing nature,\nand the wounds which covered thy body,\nwhereby thou didst cast down the greatly crafty one,\nO thou great glory and boast of spiritual athletes,\npillar of courage, beacon for all who piously honor thee,\ntreasury of healings, enricher of the poor,\nfirst champion of honorable martyrs,\nall-blessed Eustratius, martyr of Christ."
+      },
+
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "irmos2": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry:\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Possessed of the immutable wisdom of confession to worship the one God in Trinity,\nthou didst prevail over torments, crying aloud:\nBlessed art Thou in the temple of Thy glory, O Lord!"
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As one blessed, thou didst walk in the path of the blameless\nand didst right wisely bow the knee to the Redeemer,\ncommitting thy soul into the hands of the Master as a most fragrant sacrifice, O Auxentius."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The same God Who sent food to Elijah by a raven,\nO Auxentius, working a miracle with thy precious head,\nrevealed it to those who desired it, as a cherished object greatly desired by the world."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Mother, the pure Word loved thee as one pure and incorrupt,\nand, becoming incarnate of thee, He refashioned all of mankind,\nand hath glorified Lucia with miracles."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "As a victor thou didst hasten to the kingdom of heaven, O Auxentius;\nfor after many and varied trials and torments,\nthou didst die, beheaded, for Christ God, confessing Him."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Most wondrous is thy right wise courage, O Orestes,\nfor thou didst show forth understanding at the tribunal,\nbinding the soul of Lysius by the Cross,\nand chanting: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having Orestes as thy companion on the path of martyrdom,\nwalking with thee as a fellow prisoner, O Eustratius,\nthou didst enrich him chanting: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: The furnace did not consume the three youths, prefiguring thy birthgiving;\nfor the divine Fire, dwelling within thee, did not consume thee,\nillumining all to cry aloud: Blessed is the God of our fathers!"
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
+        "irmos2": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,\nThee do we supremely exalt throughout all ages.",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Opening thy lips in purity, thou didst draw in the divine Spirit, O Eustratius;\nwherefore, having denounced the feebleness of soul-destroying worship,\nthou didst cry out that mankind should worship God in the Trinity:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "His resolve strengthened by thy wise instructions, O martyr Eustratius,\nthe invincible Orestes, stretched out upon a bed of iron,\ncried out like the children to those who would destroy him by flame:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Thy body stretched forth patiently upon a heated bed, O glorious Orestes,\nthou wast numbered among the martyrs, rejoicing in the Lord,\nand hast found rest in the tabernacles of heaven,\ncrying aloud: Bless the Lord, all ye works of the Lord!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Thou hast been revealed to be more exalted than the heavens,\nhaving given birth to the God of heaven\nWho hath rendered heavenly the whole essence of mortals, O all-pure one,\nand illumined the memory of the honorable Lucia.\nTo Him do we ever cry: Bless the Lord, all ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Boldly preaching the infinite power of the one Essence of the Trinity,\nthou didst theologize, and denounced the vain worship of idols,\nO most divinely wise Eustratius."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "Ignorant of thy patience, the persecutor strove to terrify thee by the sight of the flames;\nbut, spitting upon his savagery, thou didst chant, rejoicing in the Lord, O Eustratius."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "_source": "stSergius-menaion",
+            "text": "The divinely wise Orestes, instructed by thy divine words,\nleapt up, dancing upon the bed, wholly consumed like an innocent lamb,\ncrying out to God, the Bestower of crowns:\nBless the Lord, all ye works of the Lord!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure Virgin, save me and be thou the help of my weakness.\nDeliver me from many tribulations and evils,\nthat I may glorify thee, who alone art the Theotokos."
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee, O Theotokos.",
+        "irmos2": "It is impossible for mankind to see God\nupon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one,\ndid the Word Incarnate become a man\nand with the Heavenly Hosts Him we magnify and thee we call blessed.",
+        "troparia": [
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Desiring to partake of the divine mysteries, O blessed passion-bearer Eustratius,\nand to be deemed worthy of the radiant manifestation of God,\nthou didst hasten to Christ Whom thou desired,\nand Who called thee to the heavens."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Rejoicing exceedingly in the gladsome condemnation of the full mindlessness of the tyrant,\nO passion-bearer Eustratius,\nchanting hymns thou didst magnify Christ, the Destroyer of death, the Judge of thy contest."
+          },
+          {
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Come, all ye who love the martyrs, and with sacred hymnody let us magnify Eugene, the destroyer of falsehood,\nand with him the wise Orestes and Mardarius, Auxentius and Eustratius."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Light hath now shone forth upon us from thy womb which knew not a man, O Virgin;\nand the wondrous Lucia, divinely illumined by His effulgence,\nbecame light, O Virgin Mother and Birthgiver of God."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Hymning Him Whom thou didst desire, O blessed Eustratius,\nand becoming a participant in the sacred mysteries,\nin prison thou wast deemed worthy of a divine vision of Him,\nWho called thee to the heavenly life of His kingdom."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Strengthened by the power of Christ, O glorious Eustratius,\nthou didst mock the blandishments of the persecutors, magnifying Christ with hymns;\nfor, like the youths of old, thou didst enter the furnace rejoicing, as if it were a beautiful garden, O blessed one."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Holy martyrs, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O all ye people, with songs and hymns let us praise the divine warriors\nAuxentius and Eugene, together with Mardarius,\nthe glorious Orestes and the wise Eustratius, their leader, fellow sufferer and guide."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin, thou wast the temple of Christ,\nWho reigneth with the Father and the Spirit;\nfor thy sake, O pure one, we have been deemed worthy of adoption by Him through baptism,\nbecoming temples through grace."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Thou didst complete the wondrous course of suffering, O blessed Eustratius,\nbringing with thee the honorable Eugene and the wise Auxentius, Mardarius and Orestes,\nat whose faith and boldness the assemblies of angels and mortals have marveled.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy martyrs",
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "As a most honorable temple, O all-immaculate Bride and Theotokos, thy birthgiving was ineffable;\nfor thou hast given birth to God the pre-eternal Word, Who made His abode within thee.\nWherefore, chanting, we magnify thy birthgiving, O all-immaculate Maiden.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "stichera": [
+        {
+          "text": "With discourse of eloquent rhetoric the warrior of Christ filled the iniquitous with awe;\nwith the wounds of his suffering the glorious Eustratius, the steadfast spiritual athlete,\nmanfully triumphed over the powers of the enemy:\nand, having trodden the narrow path which is full of sorrow,\nhe hath attained the land of life everlasting,\nwherein he entreateth Christ, that He grant us great mercy.",
+          "tone": 3,
+          "label": "Sticheron 1 (composition of Germanus)"
+        },
+        {
+          "text": "With martyric hymns let us crown Eustratius, great among witnesses,\nwho was revealed to be a philosopher of divine wisdom\nand shown to be an orator in the beauty of his discourses;\nfor this warrior of Christ, having gathered together a pious company,\nand arrayed himself for the struggles of martyrdom in the time of battle,\nseized the sword of the enemy and wounded him therewith.\nTo him let us cry aloud:\nO most excellent of martyrs, with those who suffered with thee\nentreat Christ God on behalf of those who celebrate thy most honored memory with faith.",
+          "tone": 3,
+          "label": "Sticheron 2 (composition of Germanus)"
+        },
+        {
+          "text": "Let the right victorious witnesses to the Truth be crowned by us with praises:\nEustratius, the denouncer of the myth-devising pagans, the preacher of the divine knowledge of Christ;\nAuxentius, who by the wisdom of his words and the patience of his acts denounced the ungodliness of the tyrants;\nand with him Eugene, who was right profitable for God, but useless for the tormenters because of his saving confession,\nand Orestes, the true and wondrous warrior of the King of all;\nand with them also Mardarius, the innocent dove who put the crafty serpent to shame\nby the grace of Christ God, the Savior of our souls.",
+          "tone": 4,
+          "label": "Sticheron 3 (composition of John the Monk)"
+        },
+        {
+          "text": "O holy martyrs, ye preferred the wisdom of the apostles to the teachings of the heathen,\nforsaking books of rhetoric and embracing the wisdom of the fishermen;\nfor ye learned eloquence of discourse and the divine knowledge of the Trinity\namong the unlettered and divinely eloquent.\nTherein pray ye, that our souls be preserved in peace.",
+          "tone": 4,
+          "label": "Sticheron 4 (composition of Cassia the nun)"
+        }
+      ],
+      "doxastikon": {
+        "text": "Let us hymn and piously praise the God-bearing martyrs—\nthe five-stringed harp and five-branched lamp-stand of the Church of God;\nin accordance with their names:\nRejoice, O divinely wise Eustratius, O rhetor of rhetors,\nwho wast well enrolled by God in the army of heaven, and who pleased Him Who enlisted thee!\nRejoice, O blessed Auxentius, who increased greatly the talent entrusted to thee by God!\nRejoice, O divinely wise Eugene, most comely scion of divine nobility!\nRejoice, O all-blessed Orestes, beauteous in aspect and supremely good of character,\ntwice eminent, who abidest wholly in the mountains of God!\nRejoice, O invincible Mardarius, thou pearl resplendent of luster,\nwho joyfully endured bitter tortures!\nRejoice, O choir of wise virgins equal in number to the martyrs!\nWe beseech you to deliver from all wrath and tribulations those who honor your annual memorial,\nand to make us partakers of your ineffable glory.",
+        "tone": 4,
+        "label": "Glory (composition of Cassia the nun)",
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "Having thee O Theotokos as our hope and intercession,\nwe fear not the assaults of the adversary,\nfor thou dost save our souls.",
+        "tone": 4,
+        "label": "Both now, Theotokion"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs",
+      "_note": "After the Great Doxology."
+    }
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Simon the Zealot",
+    "feastKey": "apostleSimonZealot",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "feastType": "apostle",
+    "tone": 3,
+    "_source": "Matins: St-Sergius Emenaion 05-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-10.pdf",
+    "_note": "Polyeleos feast. Vespers: 8 LIC stichera (3 from Pentecostarion + 5 of the holy apostle in Tone IV); aposticha 3+Glory in Tone I/VI. Matins: Magnification, Prokeimenon Tone IV, Gospel §67 (Jn 21:15-25). Single canon of the holy apostle in Tone VIII (8 troparia, acrostic 'I hymn the glory of the apostle Simon') interleaved with Pentecostarion canon (6 troparia). Kontakion & Ikos of the Pentecostarion read at Ode 3; Kontakion of the holy apostle at canon top level (after Ode 6)."
+  },
+
+  "troparion": {
+    "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3
+  },
+
+  "kontakion": {
+    "text": "In praises let us all bless the divinely eloquent Simon,\nwho hath diligently set the doctrines of wisdom in the hearts of the pious;\nfor standing now before the throne of glory\nand dwelling with the incorporeal ones,//\nhe doth unceasingly pray on behalf of us all.",
+    "tone": 2,
+    "ikos": "Let us all now praise and piously bless the commemoration of the apostle as though it were a day of salvation; for shineth forth like the sun upon the whole world, it dispelleth all darkness with the rays of its light, and with love illumineth those who celebrate his memory and who lovingly honor it. Wherefore, let us hasten with zeal, chanting to him, for he standeth before Christ, praying unceasingly on behalf of us all.",
+    "melody": "The steadfast"
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 4,
+        "melody": "Thou hast given a sign",
+        "label": "Stichera of the holy apostle",
+        "_note": "3 from Pentecostarion precede these 5; total LIC = 8.",
+        "hymns": [
+          {
+            "text": "The wondrous Simon, the glory of the apostles, like a brilliant ray, hath passed over the ends of the earth, driving away the darkness of polytheism with his saving, brilliant and divine teachings, enlightening all to worship the one Godhead in three Hypostases, indivisible and undivided.",
+            "_note": "Sung twice."
+          },
+          {
+            "text": "The apostle Simon, going about the ends of the earth, whirling about like a wheel, hath burned away the madness of idolatry from all the land; and, shedding the light of piety, he hath kindled luminous rays of grace for the faithful, that they may worship the one Godhead in three Hypostases, indivisible and undivided.",
+            "_note": "Sung twice."
+          },
+          {
+            "text": "The apostle Simon, most radiant and all-wondrous, the teacher of the nations, the net of God drawing us up from the depths of perdition with exalted theology, the true preacher, hath now wisely led all to the knowledge of Christ and set forth his corrections as a beautiful banquet."
+          }
+        ]
+      },
+      {
+        "tone": 2,
+        "label": "Glory",
+        "text": "Thou wast called the namesake of zeal, O rightly wondrous Simon, zealously emulating Almighty God, He showed thee to be filled to overflowing with divine miracles; for, possessing strange zeal, O blessed one, thou wast called the namesake of zeal, acquiring a title in accordance with thy character. Wherefore, dwelling with the heavenly choirs in the highest, entreat the Word, Christ our God, O God-seer, that He grant us great mercy.",
+        "isGlory": true
+      }
+    ],
+
+    "aposticha": {
+      "tone": 1,
+      "melody": "O all-praised martyrs",
+      "label": "Aposticha of the holy apostle",
+      "stichera": [
+        {
+          "text": "O ever all-memorable Simon, thou didst partake of the torrent of sweetness, drinking with divine wisdom the understanding of God which thou didst fervently desire. To Him hast thou now joyously passed over, deified by the most radiant glory of the Trinity and immeasurable peace."
+        },
+        {
+          "verse": "Their sound hath gone forth into all the earth, and their words unto the ends of the world.",
+          "text": "O all-wondrous Simon, contemplating the beauty of God, and looking upon it as far as thou wast able, and by a higher union delighting therein, thou wast deified by His gifts, and rejoicing, didst reach the only Divine One Whom thou didst desire, O ever all-memorable preacher of Christ, who dost now co-dwell with the angels."
+        },
+        {
+          "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+          "text": "O all-blessed Simon, thou hast shown thyself to be a faithful mediator between God and man; and now, by thy right bold supplications, render Christ merciful to us, and never cease to entreat the Lord, that He grant unto our souls peace and great mercy."
+        }
+      ],
+      "doxastikon": {
+        "text": "Like a high-flying eagle thou didst soar over creation, O most sacred Simon, disciple and apostle of Christ, and, burning up the falsehood of idolatry with the fiery words of thy dogmas, thou didst lead the nations out of the depths of ignorance unto the knowledge of God. And now, pray thou to Christ, that He be merciful to us on the day of judgment.",
+        "tone": 6
+      }
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 3,
+      "feastRank": "polyeleos",
+      "feastType": "apostle",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3
+    },
+
+    "sedalion": [
+      {
+        "text": "Fishing for the nations, the glorious apostle taught the ends of the earth to worship Thee with the Father and the Spirit, O Christ God. Wherefore, establish Thy Church, and send down Thy blessing upon the faithful, O only Merciful One, and Lover of mankind.",
+        "tone": 2,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion."
+      },
+      {
+        "text": "Like the sun, Christ emitted thee like a ray to enlighten all the earth, O glorious apostle Simon; and with thy divine supplications thou dost illumine and enlighten with divine and never-waning light all who celebrate thy holy memory with faith.",
+        "tone": 4,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion."
+      }
+    ],
+
+    "magnification": {
+      "refrain": "We magnify thee, O apostle of Christ Simon,\nand we honor the pangs and labors wherewith thou didst struggle\nin the proclamation of the Gospel of Christ.",
+      "verses": [
+        "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "label": "Sessional Hymn of the holy apostle (after Polyeleios)",
+      "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion.",
+      "stichera": [
+        {
+          "text": "With the net of thy divine words thou didst fish for the reason-endowed fish, bringing the first-fruits thereof to our God, and desiring to clothe thyself in the wounds of Christ, thou didst show thyself to be an emulator of His suffering. Wherefore, assembling as is meet, we honor thy most festive memory, O glorious apostle, and together cry out to thee: Entreat Christ God, that He grant forgiveness of sins unto those who honor thy holy memory with love.",
+          "tone": 8,
+          "melody": "Of the Wisdom"
+        }
+      ]
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
+      "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
+    },
+
+    "gospel": {
+      "reading": "John 21:15-25",
+      "number": 67
+    },
+
+    "postGospelSticheron": {
+      "text": "Manifestly receiving grace from the divine Spirit, thou wast a member of the choir of the apostles, breathing forth with a fiery tongue the fiery breath which once was borne down upon them from heaven, O Simon, utterly consuming the thorns of pagan ungodliness. O preacher of Christ God, entreat Him, that our souls be saved.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy apostle Simon in Tone VIII (8 troparia, acrostic 'I hymn the glory of the apostle Simon'); interleaved with canon from the Pentecostarion (6 troparia). Kontakion & Ikos from Pentecostarion at Ode 3.",
+
+      "ode1": {
+        "irmos": "Let us, O ye people, send up a hymn\nunto our wondrous God\nWho hath freed Israel from bondage,\nchanting a hymn of victory\nand crying aloud:\nWe sing unto Thee, O only Master.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Standing in the highest before the Master Who glorified thee and splendidly showed thee forth as His disciple, O wondrous apostle, illumine my soul, that I may hymn thy divine memory."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Bestowing upon thee an abundance of divine things, O apostle, Christ, the Summit of divine gifts, Who alone is righteous, revealed thee by His righteous judgment, O divinely revealed one."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Thou didst become fiery of spirit, O apostle, receiving the whole radiance of the Spirit Who descended upon thee from heaven, burning up all the delusion of idolatry."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Having revealed my mortality and corruption to be immortality and incorruption, O Savior, thou didst make Thine abode in the womb of the most pure and holy Virgin who knew not wedlock, taking the form of human nature."
+          }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "There is none as holy as the Lord,\nand none as righteous as our God,\nWhom the whole of creation hymns:\nThere is none more righteous than Thee, O Lord.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Thou didst truly recognize the divine mystery of the incarnation, O God-pleasing apostle Simon, receiving transcendent radiance from the Savior Himself."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "The beginningless and ever-existent Word richly illumined thee, His servant, O wondrous Simon, with the splendid effulgence of divine grace."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: The prophet described thee beforehand, O Theotokos, as an all golden candlestick, bearing Christ our God, the never-waning Light Who illumineth the world with the beams of divinity."
+          }
+        ]
+      },
+
+      "sedalenAfterOde3": {
+        "text": "With the radiant light of the divine Spirit thou hast destroyed the darkness of polytheism, and illumined the hearts of the faithful, and singing forth the Savior's commandments, thou didst abolish the fables of the pagans. O glorious Simon, entreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Sessional Hymn of the holy apostle (after Ode 3)",
+        "melody": "Of the divine Faith",
+        "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion."
+      },
+
+      "ode4": {
+        "irmos": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,\nand with fear he glorified Thy power.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Being wholly a treasury of evangelical gifts, full of grace, O all-blessed Simon, thou wast a light for the world and the salt of the universe."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Thou didst turn away from shameful things, O rightly wondrous one, and wast deemed worthy to behold the immaterial light of God Who took upon Himself matter in the guise of humanity."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "O Simon, disciple of Life incorruptible, slay thou our living sin with the life-bearing power of the Bestower of life, the activity whereof thou didst receive."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Being the peer of Thy Father in essence, Thou wast the peer of humanity in nature, having received our flesh from the most pure virgin, O Master."
+          }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou hast enlightened\nwith the knowledge of God\nthe ends of the universe\nthat lay in the night of ignorance,\ndo Thou also, O Lord, illumine me\nwith the dawning of Thy love for mankind.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Thou didst zealously receive the fiery tongue of the Spirit, O God-seer, which appeared to thee while seated in the upper chamber."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "As one exalted, living in the mansions on high, thou hast brought lofty and great doctrines unto us."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: By thy birthgiving, O Virgin, the former law hath been annulled, grace hath blossomed forth, and righteousness hath shone forth."
+          }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,\nO All-merciful Christ, our God.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "O right wondrous Simon, called the namesake of zeal, for with zeal thou didst emulate the Lord God Almighty."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Giving thee authority, through the activity of His grace the Savior showed thee to be a worker of divine miracles."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Let the mouths of the heretics who do not acknowledge thee to be the Theotokos be stopped, O all-immaculate one, and let their faces be covered with shame."
+          }
+        ]
+      },
+
+      "kontakion": {
+        "text": "In praises let us all bless the divinely eloquent Simon,\nwho hath diligently set the doctrines of wisdom in the hearts of the pious;\nfor standing now before the throne of glory\nand dwelling with the incorporeal ones,//\nhe doth unceasingly pray on behalf of us all.",
+        "tone": 2,
+        "melody": "The steadfast",
+        "label": "Kontakion of the holy apostle"
+      },
+      "ikos": {
+        "text": "Let us all now praise and piously bless the commemoration of the apostle as though it were a day of salvation; for shineth forth like the sun upon the whole world, it dispelleth all darkness with the rays of its light, and with love illumineth those who celebrate his memory and who lovingly honor it. Wherefore, let us hasten with zeal, chanting to him, for he standeth before Christ, praying unceasingly on behalf of us all."
+      },
+
+      "ode7": {
+        "irmos": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\nBlessed art Thou, O Lord our God, throughout the ages.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Possessed of strange zeal, O blessed Simon, thou wast called the namesake of zeal, and having acquired a title in accordance with thy character, thou didst cry aloud: Blessed art Thou, O Lord, throughout the ages!"
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Joining chorus before the Word as one who conversed with Him, thou hast found a share of His kingdom, crying aloud: Blessed art Thou, O Lord God, throughout the ages!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: Of old, through deceit the serpent drove our ancestors from their good inheritance; but thou hast restored it to them, O Mother of God. Blessed is the Fruit of thy womb, O most pure one!"
+          }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The instruments of music sounded out in harmony,\nand countless multitudes worshipped the image in Dura;\nbut the three Children, refusing to bow in obeisance,\nhymn and glorify the Lord throughout all ages.",
+        "troparia": [
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "As thy feet are beautiful, O Simon, so is thy tongue fair, which speaketh glory to the Lord and hath taught all to say: Hymn ye the Lord and supremely exalt Him throughout all ages."
+          },
+          {
+            "refrain": "We praise, bless, and worship the Lord, singing and exalting Him throughout all ages!",
+            "text": "Adorned with radiant beauties, and emitting the splendors of miracles, O Simon, thou wast recognized by the people as a blessed seed. Hymn the Lord, ye works, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: The human mind is incapable of describing thy birthgiving, O Birthgiver of God, and faileth when trying to speak of it; for, having conceived, O Virgin, thou hast given birth to God, Whom we supremely exalt throughout all ages."
+          }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "O ye people, with glory let us honor the pure Theotokos,\nwho received the fire of the Divinity in her womb\nyet remained unconsumed,\nlet us magnify her with hymns.",
+        "troparia": [
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Thou wast revealed to the ends of the world, shining with light; and, having received the fire of the Spirit, wast shown to be radiant. Wherefore, we magnify thee."
+          },
+          {
+            "refrain": "Holy Apostle Simon, pray to God for us!",
+            "text": "Having offered thyself wholly to God, thou wast united to Him. Entreat Him now, O divinely manifest one, on behalf of us who praise thee with faith and love."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "text": "Theotokion: In hymns we magnify the mediatress of the salvation of all, who hath appeared to mankind and illumined the world with the splendors of her divine purity."
+          }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Directing the course of thy beautiful feet to the path of heaven, O apostle Simon, thou didst ascend, rejoicing; and, standing before the Trinity, thou dost behold the Son and the divine Spirit in the Father. Wherefore, we celebrate with faith thy most sacred and divine memory.",
+      "tone": null,
+      "melody": "By the Spirit in the sanctuary",
+      "_note": "Sung twice. Glory & Both now: Exapostilarion from the Pentecostarion.",
+      "_source": "stSergius-menaion"
+    },
+
+    "lauds": {
+      "tone": 8,
+      "melody": "What shall we call you",
+      "stichera": [
+        {
+          "text": "What shall we call thee, O apostle? Heaven, for thou hast declared the glory of God. A river, for thou dost mystically water creation. A star illumining the Church. A cup pouring forth holy nectar. A most dear friend of Christ, a dweller with the incorporeal ones. Pray thou for the salvation of our souls.",
+          "tone": 8,
+          "_note": "Sung twice."
+        },
+        {
+          "repeat": true
+        },
+        {
+          "text": "O Simon, boast of the apostles, having adorned thy feet which trod well the path of preaching thou didst make narrow all the paths of the enemy by the breadth of thy divine understanding of the Word Who hath appeared in the coarseness of the flesh and Who chose thee to be His most glorious disciple, O blessed one. Him do thou beseech, that our souls be saved.",
+          "tone": 8
+        },
+        {
+          "text": "O divinely eloquent apostle Simon, thou wast sent by Christ like a radiant arrow wounding the enemy and manifestly imparting healing to wounded souls. Wherefore, as is meet, we call thee blessed and celebrate today thy holy solemnity. Pray thou, that our souls be saved.",
+          "tone": 8
+        }
+      ],
+      "doxastikon": {
+        "text": "Forsaking earthly things, thou didst follow after Christ, having been signed with the inspiration of the Holy Spirit and sent by Him to the nations which were perishing, that mankind might turn to the light of the knowledge of God; and having completed the struggles of thy divine suffering and diverse torments, O apostle Simon, thou didst surrender thy soul into the hands of Christ. Him do thou entreat, O all-blessed one, that He grant us great mercy.",
+        "tone": 2,
+        "_source": "stSergius-menaion"
+      },
+      "_bothNowNote": "Both now: Doxastikon from the Pentecostarion (supplied at runtime from Pentecostarion data)."
+    },
+
+    "troparionAfterDoxology": {
+      "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3
+    }
+  }
+}

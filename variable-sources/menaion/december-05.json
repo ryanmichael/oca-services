@@ -1,0 +1,598 @@
+{
+  "_meta": {
+    "feast": "Our Venerable and God-bearing Father, Sabbas the Sanctified",
+    "feastKey": "sabbasTheSanctified",
+    "rank": "polyeleos",
+    "feastRank": "polyeleos",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 12-05.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-05.pdf",
+    "_note": "Two canons: Canon of the Theotokos (acrostic: 'I chant praise unto the Life-bearing Maiden', Tone I, 6 troparia) and Canon of the Venerable One by Theophanes (acrostic: 'Lovingly I hymn Sabbas, most eminent among fasters', Tone VIII, 8 troparia). Katavasiae are those of the Nativity (Tone I)."
+  },
+
+  "troparion": {
+    "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Sabbas our father, entreat Christ God, that our souls be saved.",
+    "tone": 8
+  },
+
+  "kontakion": {
+    "text": "In thy virtue didst thou offer thyself from childhood unto God\nas an unblemished sacrifice, O blessed Sabbas,\nbecoming a gardener in the garden of piety.\nTherefore, thou wast an adornment for the venerable and a right praiseworthy citizen of the desert.\nWherefore, we cry to thee: Rejoice, O most noetically rich Sabbas!",
+    "ikos": "O leader of the fathers, beauty of the venerable, boldness of fasters before Christ, citizen and gardener of the desert: how can I hymn thy life, O venerable one? for thou dost shine forth in brilliance unto the ends of the earth, like the sun. Wherefore, I cry unto thee: Rejoice, beauteous glory of the Cappadocians! Rejoice, honored standard of the whole world! Rejoice, most good offspring of the desert! Rejoice, godly delight of the righteous! Rejoice, for thou didst disdain that which is fleeting and corruptible! Rejoice, for thou dost dwell with the angels in the heavens! Rejoice, correction and rule of monastics! Rejoice, rousing of the slothful toward God! Rejoice, divinely flowing fountain of miracles! Rejoice, honored instrument of the Spirit! Rejoice, thou with whom the East is adorned! Rejoice, thou through whom the Western lands shine forth! Rejoice, O most noetically rich Sabbas!",
+    "tone": 8
+  },
+
+  "vespers": {
+    "stichera": [
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, as one who standest together with the angels, abiding in union with the venerable, conversing with the prophets, O coheir to the kingdom with the martyrs and apostles, thou dost now dwell in unwaning Light, shining with His divine rays, and with extreme desire thou dost ever stand before Him with boldness, unceasingly enlightened, and delighting in His beauties. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Sung thrice"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, as one who standest together with the angels, abiding in union with the venerable, conversing with the prophets, O coheir to the kingdom with the martyrs and apostles, thou dost now dwell in unwaning Light, shining with His divine rays, and with extreme desire thou dost ever stand before Him with boldness, unceasingly enlightened, and delighting in His beauties. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, inextinguishable lamp of abstinence, most radiant beacon for monastics, ever illumined with rays of love, an immovable pillar of patience, confirmation and strength to those who honor thee with faith, treasury of healings, and a desert-dweller in truth, having shown it to be a divine paradise bearing the divine fruit of the saved. O venerable one. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Sung thrice"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, inextinguishable lamp of abstinence, most radiant beacon for monastics, ever illumined with rays of love, an immovable pillar of patience, confirmation and strength to those who honor thee with faith, treasury of healings, and a desert-dweller in truth, having shown it to be a divine paradise bearing the divine fruit of the saved. O venerable one. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Repeat (second)"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, inextinguishable lamp of abstinence, most radiant beacon for monastics, ever illumined with rays of love, an immovable pillar of patience, confirmation and strength to those who honor thee with faith, treasury of healings, and a desert-dweller in truth, having shown it to be a divine paradise bearing the divine fruit of the saved. O venerable one. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Repeat (third)"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, fiery pillar of the virtues, beacon guiding men from the sea of life to the divine harbor, who hast set at naught deceptions of the spirit, pure abode of the Holy Spirit, instructor of monastics, sure measure of abstinence, radiant summit of humility, wellspring which poureth forth an abyss of healings. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Sung twice"
+      },
+      {
+        "tone": 5,
+        "melody": "O venerable father",
+        "text": "O divinely wise Sabbas, fiery pillar of the virtues, beacon guiding men from the sea of life to the divine harbor, who hast set at naught deceptions of the spirit, pure abode of the Holy Spirit, instructor of monastics, sure measure of abstinence, radiant summit of humility, wellspring which poureth forth an abyss of healings. Entreat Christ, O venerable father, and beseech Him to grant to the Church oneness of mind, peace and great mercy.",
+        "_note": "Repeat (second)"
+      }
+    ],
+    "doxastikon": {
+      "text": "Having preserved that which was fashioned according to the image of God and through fasting, made thy mind master over the pernicious passions, thou didst ascend as one mighty, unto that which is according to the likeness of God. For, having manfully compelled thy nature, thou didst strive to subject that which was worse to the better, and to enslave the flesh to the spirit. Wherefore, thou hast been revealed to be the lofty summit of monastics, a desert-dweller, an admonisher of those who run the course of life well, and a most sure rule of virtue. And now, when the shadows have been set aside, O Sabbas, our father, in a pure manner thou dost behold the Holy Trinity in the heavens, praying directly on behalf of those who honor thee with faith and love.",
+      "tone": 6
+    },
+    "theotokion": {
+      "text": "Who doth not call thee blessed, O most holy Virgin? Who will not hymn thy most pure birthgiving? For the only-begotten Son Who hath shone forth timelessly from the Father, came forth, ineffably incarnate, from thee, O pure one; By nature he is God, by nature for our sakes, he hath become a man not divided into two Hypostases, but known in two natures without commingling. Him do thou beseech, O pure and most blessed one, that our souls find mercy!",
+      "tone": 6,
+      "label": "Dogmatic Theotokion"
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "feastRank": "polyeleos",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "magnification": {
+      "refrain": "We bless thee, O our venerable father Sabbas, and we honor thy holy memory, instructor of monks and converser with angels.",
+      "verses": [
+        "With patience I waited patiently for the Lord, and He was attentive unto me, and He hearkened unto my supplication.",
+        "Glory… Both now… Alleluia… Glory to Thee, O God!"
+      ]
+    },
+
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath rendered unto me?"
+    },
+
+    "gospel": {
+      "reading": "Luke 6:17-23",
+      "number": 24,
+      "_note": "The Beatitudes / Sermon on the Plain; standard matins gospel for venerable fathers."
+    },
+
+    "sessionalHymns": {
+      "text": "Having piously finished thy life on earth, thou wast revealed to be a pure dwelling-place of the Spirit, enlightening those who have recourse unto thee in faith, O blessed one: Wherefore, beseech thy Master, that He enlighten the souls of us who hymn thee, O divinely wise Sabbas, our father.",
+      "tone": 1,
+      "melody": "The choir of angels",
+      "_note": "After Kathisma 1; sung twice. After Kathisma 2 there is a separate sessional hymn in Tone IV.",
+      "bothNow": {
+        "text": "Through the Holy Spirit didst thou conceive in thy womb God, the Creator and Fashioner of all, O pure and all-immaculate one, and gave birth to Him without corruption. Glorifying Him, we hymn thee, O Virgin, as the palace of the King of all, the protection of the world.",
+        "tone": 1,
+        "label": "Theotokion"
+      },
+      "sessionalHymnAfterKathisma2": {
+        "text": "Having shone forth like the sun, thou dost emit splendid rays upon the earth, O venerable one, through the far-reaching effulgence of thy teaching, O wondrous and light-bearing Sabbas, thou boast of the venerable.",
+        "tone": 4,
+        "melody": "Thou hast appeared today",
+        "_note": "After Kathisma 2; sung twice.",
+        "bothNow": {
+          "text": "Accepting the entreaty of us who have recourse to thy protection, O all-holy Virgin, cease thou never to make supplication to Him Who is the Lover of mankind, that He save thy servants.",
+          "tone": 4,
+          "label": "Theotokion"
+        }
+      }
+    },
+
+    "sessionalHymnAfterPolyeleios": {
+      "text": "Truly thou wast sanctified from thy mother's womb, O most sacred Sabbas, and on earth thou didst live like an angel; for thou didst slay the flesh by abstinence, rightly emulating the demeanor of the great Euthymius, and revealed to be a favorite of the Trinity, O blessed one. Wherefore, having brought together a multitude of monastics emulating thy godly life, O our ever-memorable and God-bearing father, entreat Christ God, that He grant remission of sins unto those who honor thy holy memory with love.",
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Let us hymn the heavenly gate and ark, the all-holy mountain, the cloud of light, the heavenly ladder, the spiritual Paradise, the redemption of Eve, the great treasure of the world; because salvation for the world and forgiveness of ancient offences were wrought in her. Therefore we cry unto her: Intercede with thine own Son and God to grant forgiveness of offences to those who devoutly worship thine all-holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "postGospelSticheron": {
+      "text": "O venerable father, the sound of thy corrections hath gone forth into all the earth. Wherefore, thou hast found thy reward in the heavens, having destroyed legions of demons, thou hast attained unto the ranks of the angels, whose life thou didst blamelessly emulate. Having boldness before Christ God, beg peace for our souls.",
+      "tone": 6,
+      "label": "Sticheron after Psalm 50",
+      "_source": "stSergius-menaion"
+    },
+
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 1,
+      "_authors": {
+        "first": "Theophanes (Canon of the Venerable One, Tone VIII, 8 troparia; acrostic: 'Lovingly I hymn Sabbas, most eminent among fasters')",
+        "second": "Canon of the most holy Theotokos, Tone I, 6 troparia; acrostic: 'I chant praise unto the Life-bearing Maiden'"
+      },
+
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel\nas they fled on foot,\nchanting a hymn unto God.",
+        "irmos2": "Traversing dryshod the impassible, peculiar path in the sea,\nIsrael the chosen cried aloud:\nLet us chant unto the Lord,\nfor He hath been glorified!",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With the splendor of the Holy Spirit, O Sabbas, illumine us who with devout love praise thee with hymns as the boast of fasters, the glory of monastics, the adorner of the desert and teacher of piety."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having offered all thy love to God from thy youth and made Him the object of all thy desire, rejoicing, thou didst mortify the movements of the flesh and the assaults of the passions, O all-praised God-bearer Sabbas."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Conquering the serpent hidden in the fruit, thou didst trample it down and easily pass over his snares, taking flight on wings of piety, O father; and, rejoicing, thou didst partake of life in the garden of the Cross."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Illumined with the light of grace, thou didst enter into the fire and, like the three youths, remained unconsumed, for God preserved thee, revealing to all thine ultimate future progress and perfection, O father."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Death hath laid hold upon us with irresistible assaults; but, drawing nigh to thine Offspring, it perished and, rushing against Him, it was destroyed. For thou didst truly give birth unto everlasting Life incarnate, O Virgin Theotokos."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The immaterial ladder of old and the path of the sea made strangely firm revealed thy birthgiving, O pure one. Her do we all hymn, for she hath been glorified!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The power of the Most High, the perfect Hypostasis, the Wisdom of God incarnate from thee, O most pure one, hath conversed with mankind, for He hath been glorified!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The Sun of thy righteousness hath passed through the impassible door of thy locked womb, O pure one, and shone forth upon the world, for He hath been glorified!"
+          }
+        ],
+        "katavasia": "The Master saved His people by working a wonder,\nmaking solid the watery waves of the sea of old;\nand having willingly been born of the Virgin,\nHe hath set before us a path leading to heaven.\nLet us glorify Him Who is by nature equal to both the Father and mankind."
+      },
+
+      "ode3": {
+        "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
+        "irmos2": "The bow of the mighty hath been broken\nby Thy might, O Christ,\nand the enfeebled\nhave girded themselves with power.",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having set thy mind as master over the passions, O spiritually rich father, showing thyself to be a dispenser of justice; for thou didst manifestly subject what is worse to that which is better. Wherefore, thou didst flourish in the desert like a palm tree, O father."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having resolved to follow in the steps of the Master, thou didst forsake thy homeland; and, making thine abode in the desert, thou didst win a victory over the adversaries, strengthened by the power of God."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Strengthened by steadfastness of mind, O all-blessed one, thou didst denounce the divers wiles of the enemy, unmasking them in the sight of all, and setting at naught his conceited audacity, O wise one."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Perceiving thee to be sacred of soul and adorned with simplicity of intent and with the virtues, Euthymius, the most radiant star, received thee, prophetically proclaiming thy splendor, O all-blessed one."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O Virgin Mother, thou hast truly been known to be the splendid portal of the dispensation of the Word, Who hath saved us; for thou hast brought forth upon us the noetic Ray of the supremely divine Godhead."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "He that, as the Creator of time, is outside all time, O Virgin, willingly made Himself a Child through thee."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Let us hymn the womb which is far more spacious than the heavens, through which Adam hath made his abode in the heavens, rejoicing."
+          }
+        ],
+        "katavasia": "Look upon the hymns of Thy servants, O Benefactor,\nand humble the vaunted pride of the enemy;\nbearing far above sin those who hymn Thee\nmaking them unshakably firm by the foundation of faith,\nO Thou Good One Who seest all."
+      },
+
+      "sessionalHymnAfterOde3": {
+        "text": "Having forsaken all earthly things, while on earth in the body thou wast a companion of the angels in spirit; for, having mortified the passions present in thy body, thou wast shown to be a servant of the Trinity, O blessed one. Wherefore, thou dost cure the sufferings of the afflicted and, at thy word, dost drive away evil spirits through grace, O our God-bearing father. Pray thou to Christ God, that remission of sins be granted unto those who celebrate thy holy memory with love.",
+        "tone": 8,
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice (first sessional hymn after Ode 3).",
+        "glory": {
+          "text": "Abandoning the tumults of life and taking thy cross upon thy shoulders, thou didst offer thyself wholly unto God; and, being beyond the flesh and the world, thou didst become a converser with the Holy Spirit. Wherefore, raising men up to zealous deeds, thou didst empty the cities and didst make cities of desert places, O our God-bearing father. Entreat Christ God, that remission of transgressions be granted to those who celebrate thy holy memory with love.",
+          "tone": 8,
+          "label": "Another Sessional Hymn (at Glory)"
+        },
+        "bothNow": {
+          "text": "As the all-immaculate Bride of the Creator, Mother of the Redeemer, who knewest not a man, and as the receptacle of the Comforter O all-hymned one, hasten thou to deliver me, the vile abode of iniquity and noetic plaything of the demons, from their evil machinations; and make me the bright dwelling-place of the virtues, O thou incorrupt light-bearing one. Drive away the clouds of the passions and grant that, by thy supplications, I may receive a portion on high and share in the never-waning light.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "I have heard report O Lord,\nof Thy glorious dispensation,\nand I have glorified, Thine unapproachable power,\nO Lover of mankind.",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Cleansing and expanding the state of thy soul with divine visions, thou didst truly fashion it into a dwelling-place of divine gifts, O divinely blessed one; and by the laying on of thy hands thou didst heal the afflicted, being an emulator of the Master."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "He that waxed arrogant against thee, O father, was swallowed up like the wretched Dathan, and like Abiram was destroyed; for the grace of God invisibly preserved thee, intending the salvation of many, O all-blessed, glorious and divinely wise Sabbas."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O divinely eloquent one, having chastised thy senses with the Law of God, thou didst direct thy skillful thought to the knowledge of incorporeal and noetic things, passing inexorably from glory to glory and from strength to strength, O father."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Proposing to do good unto thy compatriots, thou didst found magnificent and spiritually profitable cities in the desert, bringing springs of water to the parched land, and most gloriously bringing down rains from heaven upon the waterless fields."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: A beauteous paradise newly sprung forth hast thou been shown to be, O thou who most divinely bore within thy womb and gave birth to, the Tree of Life planted therein, Which poureth forth the hope of salvation upon all who with faith know thee to be the Theotokos."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Behold! the supremely revealed Mother of God, the divine mountain of the house of the Lord, is exalted far above the heavenly powers."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "O Virgin, who, alone outside the laws of nature, hast given birth unto the Ruler of creation: thou hast been deemed worthy of a divine calling."
+          }
+        ],
+        "katavasia": "The renewal of the human race was hymned of old\nand proclaimed beforehand by the Prophet Habbakuk,\nwho having ineffably been deemed worthy to behold in image;\nthe Word coming forth from the mountain,\nthe Virgin, as a little Babe,\nfor the restoration of the people."
+      },
+
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me,\nwretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "The burning Ember was revealed to Isaiah,\nand the Sun hath shone forth from the Virgin's womb,\ngranting the enlightenment of the knowledge of God\nto those who in darkness have gone astray.",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Stretching forth unwavering thought toward Him Whom thou didst desire, from Him thou didst receive the sure grace of most wondrous miracles, O father; compassionately healing those who have recourse to thee in faith, O venerable one."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Putting away the coarseness of the heaviness of the flesh, thou didst become a divinely wrought and chosen vessel of the Holy Spirit, O wondrous one, adorned with abstinence from foods, patience and chastity."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou wast appointed the most resounding herald of the divine dogmas of the Councils, O father, and wast a partaker with the saints, enlightening emperors, to whom, O blessed one, thou wast clearly revealed to be protected by divine grace."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O divinely inspired one, the grace given thee by God sounded forth, for it hath been distributed unto all, unto the ends of the earth, manifestly bringing about the divine activity of wondrous revelation in a most godly manner."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O most pure one, intercessor for the faithful, indestructible rampart of those who praise thee, O thou who hast given birth in the flesh unto God, the Salvation revealed to the whole human race: save thou my soul!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Clouds of darkness rain down delight upon those who are on earth, for unto us hath a Child been given, Who hath existed from before all ages: our God, incarnate from the Virgin."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Light hath shone forth upon my life and my flesh, and hath destroyed the gloom of sin: the most Exalted One, Who in the latter days became incarnate without seed from the Virgin."
+          }
+        ],
+        "katavasia": "O Christ Who art our cleansing, come unto us,\nwho out of the night of the deeds of gloomy delusion,\nvaliantly hymn Thee as a Benefactor,\ngranting us an expeditious path,\nascending upon which we find glory."
+      },
+
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,\nO God of my salvation.",
+        "irmos2": "O Master, hearkening unto the sound of entreaties\nfrom a soul in pain,\ndo Thou deliver me from my grievous sins,\nfor Thou alone art the Cause of our salvation.",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having acquired love for God and neighbor, fulfilling the chief precepts of the Law and the prophets; thou didst achieve unattainable virtue, surpassing all others, O father."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst attain on earth a life equal to that of the angels, and Christ hath given thee honor equal to that of the angels, sending thy soul to accompany the ranks of the holy ones."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Having been shown to be a child of wisdom, thou didst desire the beginning of wisdom, the fear of God; and, strengthened thereby, O father, thou didst attain unto perfection as far is permitted."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure Lady, who hast given birth unto God, the Savior and Redeemer of all, Who took our flesh upon Himself: from misfortune save those who call upon thee!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Human nature, enslaved to sin, hath obtained freedom through thee, O pure Lady; for thy Son hath been sacrificed like a lamb."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "We all cry out to thee, the true Mother of God: Save thou thy wrathful servants, for thou alone hast boldness before thy Son."
+          }
+        ],
+        "katavasia": "Dwelling in the uttermost depths of the sea,\nJonah besought Thee to come and still the tempest;\nand I, pierced by the arrow of the tyrant,\nchant unto Thee, O Christ\nThou Destroyer of evil,\ndo Thou come quickly unto my slothfulness!"
+      },
+
+      "kontakion": {
+        "text": "In thy virtue didst thou offer thyself from childhood unto God\nas an unblemished sacrifice, O blessed Sabbas,\nbecoming a gardener in the garden of piety.\nTherefore, thou wast an adornment for the venerable and a right praiseworthy citizen of the desert.\nWherefore, we cry to thee: Rejoice, O most noetically rich Sabbas!",
+        "ikos": "O leader of the fathers, beauty of the venerable, boldness of fasters before Christ, citizen and gardener of the desert: how can I hymn thy life, O venerable one? for thou dost shine forth in brilliance unto the ends of the earth, like the sun. Wherefore, I cry unto thee: Rejoice, beauteous glory of the Cappadocians! Rejoice, honored standard of the whole world! Rejoice, most good offspring of the desert! Rejoice, godly delight of the righteous! Rejoice, for thou didst disdain that which is fleeting and corruptible! Rejoice, for thou dost dwell with the angels in the heavens! Rejoice, correction and rule of monastics! Rejoice, rousing of the slothful toward God! Rejoice, divinely flowing fountain of miracles! Rejoice, honored instrument of the Spirit! Rejoice, thou with whom the East is adorned! Rejoice, thou through whom the Western lands shine forth! Rejoice, O most noetically rich Sabbas!",
+        "tone": 8
+      },
+
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe\nof God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "Of old the youths revealed themselves to be rhetors\nwith a supreme love for wisdom,\nfor from the depths of their God-pleasing souls,\nthey theologized with their lips as they sang:\nO supremely divine God of our fathers, blessed art Thou!",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thou didst put away transitory things, being rewarded with eternal things; and with the angels dost thou join chorus as one that led an angelic life. And with them hast thou chanted: Blessed is the God of our fathers!"
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "In thanksgiving thy great and most honorable Lavra crieth out to the Lord, putting thee forward as its inhabitant, founder and citizen, O wise one, and crying out in praise: Blessed is the God of our fathers!"
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "O Sabbas most wise, entreat the Lord unceasingly on behalf of thy flock, and earnestly pray that thy labors be preserved forever for those who bear fruit and cry out with love: Blessed is the God of our fathers!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Reasoning rightly, we call thee the bridal chamber, the banquet hall and throne of the incarnation of the Word, most pure beyond telling; and, rejoicing, we cry out to thy Son: Blessed is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "At night Jacob beheld God as in a dream, and He Who became incarnate from thee hath revealed Himself in splendor unto those who chant: Most divine and supremely glorified is the God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "He that wrestled with Jacob, prefiguring the ineffable union in thee, O pure one, whereby He willingly united Himself to mankind: He is the most divine and supremely glorified God of our fathers!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "The vile one who did not proclaim Thee, the Son of the Virgin, to be One of the all-hymned Trinity, cried out with steadfast thought and with his tongue: Most divine and supremely glorified is the God of our fathers!"
+          }
+        ],
+        "katavasia": "Captured by the love of the King of all,\nthe children reviled the uncontrollable rage and ungodly blasphemies of the tyrant,\nand the great fire submitted to them as they spake unto the Master saying:\nBlessed art Thou throughout the ages."
+      },
+
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
+        "irmos2": "Disdaining the golden image, the thrice-blessed children,\nbeholding the immutable and living image of God,\nchanted in the midst of the flame:\nLet all existing creation hymn the Lord\nand supremely exalt Him throughout all ages!",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "With gladness the ranks of the saints preceded thy most pure soul to the place of delight among the splendid mansions, where the choirs of the righteous rejoice, O venerable one. With them dost thou now chant: Ye priests, hymn; ye people supremely exalt Christ throughout the ages!"
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Strange are thy wonders, for thou didst tame wild beasts, having quelled the waves of the passions; and with thy prophetic gift thou dost foretell things to come; and, expelling legions of demons, thou dost wound them with thy right powerful vigils, prayers and fasts, and by the invincible power of the Cross, O God-bearer."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "He, that of old spake to Moses from the pillar of cloud and fire, showed thee to be a most magnificent pillar reaching from the earth, where now thy patient and much-suffering body doth lie, unto heaven. Standing before it in faith, we piously chant: Ye people, exalt Christ supremely forever!"
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Joyously is thy memory celebrated, O all-praised one; for thou didst robe thyself in the virtue which bringeth joy, the true garment of salvation, the pure and radiant garment of gladness, wherein adorned, thou dost now chant unceasingly: Ye priests, hymn; ye people supremely exalt Christ throughout the ages!"
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: Remaining virgin, thou didst give birth without knowing wedlock, and by thy strange birthgiving thou hast brought all together, abolishing the strife of time and great distance, bearing in thy womb Christ, the Bestower of peace. Him do we faithfully hymn and supremely exalt throughout the ages."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "He Who is incomparable in grace and might became visible on earth and dwelt with mankind through thee. Chanting unto Him, O all ye faithful, let us cry out: Let all existing creation hymn the Lord and exalt Him supremely throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Truly proclaiming thee the pure one, we glorify thee, O Theotokos, for thou didst give birth to the One of the Trinity Who became incarnate. And to Him, with the Father and the Spirit, do we sing: Let all existing creation hymn the Lord and exalt Him supremely throughout all ages!"
+          }
+        ],
+        "katavasia": "The children who in the time of the Old Covenant\nwere cast into the fire,\nprefigured the unconsumed womb of the Maiden,\nwhich hath supra-naturally given birth yet remaineth sealed;\nand both wondrously working as a single miracle\nmoveth the people to hymn the Grace of each."
+      },
+
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
+        "irmos2": "Thou art all desire, Thou art all sweetness,\nO Word of God, Son of the Virgin,\nGod of gods, most holy Lord of the saints.\nWherefore, we magnify Thee\nand her who hath given birth to Thee.",
+        "troparia": [
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Thy shrine issueth forth a sweet spiritual fragrance, richly making glad thy children who fervently surround thee, commemorating thine angelic sojourn on earth, O venerable one, and the radiance, glory and everlasting beauty bestowed upon thee."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Water broke forth in the desert, and the parched earth became a marsh, transformed by thy prayers, O father; for legions of fasters inhabit it as it were a river valley, and the land of Jordan hath blossomed forth like a lily, watered by thy tears."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "The splendor of the saints in the heavens shone forth upon thee, in that thou wast a righteous man, O father; for thou didst manifestly love the true righteousness of Christ. Following His manner of life, O all-blessed one, thou didst emulate His life-imparting sanctity as far as thou wast able."
+          },
+          {
+            "refrain": "O our venerable father Sabbas, pray to God for us!",
+            "_source": "stSergius-menaion",
+            "text": "Shining with rich light, O God-bearer, beholding now the choirs of angels standing in splendor around the light of the Trinity, and receiving rays of divine knowledge through grace, pray thou unceasingly that remission of sins be granted to those who hymn thee."
+          },
+          {
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "Theotokion: O pure one, thou art more highly exalted than all mortal mankind in thine incomparable preeminence; for in thy womb thou didst contain God, the Creator of all creation. Him do thou beseech, in that He is merciful, that He grant to His Churches oneness of mind, peace and serene prosperity."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "In thy womb, O pure one, the Word of God was given to corruptible nature as a staff of strength. And He restored what had been dragged down to Hades. Wherefore, we magnify thee, O most pure one, as the Theotokos."
+          },
+          {
+            "canon": "secondCanon",
+            "refrain": "Most holy Theotokos, save us!",
+            "_source": "stSergius-menaion",
+            "text": "O Master, mercifully accept Thy mother as an intercessor on our behalf, as Thou hast willed, and all things shall be filled with Thy goodness, that we all may magnify Thee as our Benefactor."
+          }
+        ],
+        "katavasia": "From fear it may be easier,\nfor us to prefer silence,\nfor though not fraught with danger, O Virgin,\nit is difficult to fashion hymns fittingly wrought for thee.\nYet, O Mother, grant us the power to chant in such a way,\ninsofar as it is our will."
+      }
+    },
+
+    "exapostilarion": {
+      "text": "With thy wisdom-loving ways thou didst make the desert a city, O divinely wise father Sabbas, adornment of the fathers, and thou didst make of it a perfect noetic paradise blossoming with the divine flowers of a multitude of those who share thy ways, fittingly celebrating thine honored memory.",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "As one who hast compassion and great mercy, O all-hymned Virgin Theotokos, look upon my lowliness and quell the turmoil of the passions and the temptations of life that assail me, O Maiden, and by thy prayers deliver me from the fire of Gehenna.",
+        "label": "Theotokion"
+      }
+    },
+
+    "lauds": {
+      "stichera": [
+        {
+          "verse": "Praise Him for His mighty deeds; praise Him according to His exceeding greatness. (Ps. 150:2)",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "text": "The divinely wise Sabbas,\ndisdainer of things below,\nand sojourner and lover of things above,\ndweller in the desert,\ndoth command us all to celebrate with faith\nthe saving day of his departure unto God.",
+          "_note": "Sung twice"
+        },
+        {
+          "verse": "Praise Him with the sound of the trumpet; praise Him with the psaltery and harp. (Ps. 150:3)",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "text": "The divinely wise Sabbas,\ndisdainer of things below,\nand sojourner and lover of things above,\ndweller in the desert,\ndoth command us all to celebrate with faith\nthe saving day of his departure unto God.",
+          "_note": "Repeat"
+        },
+        {
+          "verse": "Praise Him with timbrel and dance; praise Him with strings and flute. (Ps. 150:4)",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "text": "Being in thy virtues apart from the flesh and from the world,\nthou didst thereby glorify the Lord of glory\non earth in thy life, O wise father.\nAnd as is fitting thou hast been glorified by Him\nand shown to be a divine wellspring of healings,\nO God-pleasing Sabbas."
+        },
+        {
+          "verse": "Praise Him with loud cymbals; praise Him with sounding cymbals. (Ps. 150:5)",
+          "tone": 1,
+          "melody": "Joy of the ranks of heaven",
+          "text": "O father, thou wast truly humble, guileless, meek, simple\nand more quiet than other men,\nand while material\nthou wast shown to be a most worthy immaterial house of God,\nmercifully imparting unto us\nthe gifts given thee by Him."
+        }
+      ],
+      "doxastikon": {
+        "text": "O venerable father, the sound of thy corrections hath gone forth into all the earth. Wherefore, thou hast found thy reward in the heavens, having destroyed legions of demons, thou hast attained unto the ranks of the angels, whose life thou didst blamelessly emulate. Having boldness before Christ God, beg peace for our souls.",
+        "tone": 6,
+        "_source": "stSergius-menaion"
+      },
+      "theotokion": {
+        "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,\nthat He have mercy upon our souls.",
+        "tone": 6,
+        "label": "Theotokion at Both now"
+      }
+    },
+
+    "troparionAfterDoxology": {
+      "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Sabbas our father, entreat Christ God, that our souls be saved.",
+      "tone": 8
+    }
+  }
+}

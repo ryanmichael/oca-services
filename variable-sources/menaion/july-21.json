@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "feast": "Venerable Symeon the Fool for Christ and John His Companion; Holy Prophet Ezekiel",
+    "feastKey": "ssSymeonFoolForChristEzekiel",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-21.pdf",
+    "_note": "Joint two-canon simple-rank. Canon I of the venerable ones Symeon & John by Theophanes in Tone IV + Canon II of the holy prophet Ezekiel in Tone VIII. 'Two canons of the saints, each with 4 Troparia' per rubric. Kontakion of the holy prophet (Ezekiel) in Tone IV appears after Ode 3 (kontakionAfterOde3); Kontakion of the venerable ones (Symeon & John) in Tone II appears at Ode 6 / canon top level (main kontakion). Sessional Hymn of the venerable ones (Tone V) + Glory: Sessional Hymn of the holy prophet (Tone III) + Both now: Theotokion (Tone III) after Ode 3. Vespers: 3 stichera Tone IV for Symeon & John + 3 stichera Tone VIII for Ezekiel + Glory/theotokion Tone VIII + troparia for both saints."
+  },
+
+  "troparion": {
+    "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the venerable ones",
+    "_note": "At Vespers: prophet troparion (Tone II) first, Glory ..., venerable ones troparion (Tone IV); Both now ..., Theotokion/Stavrotheotokion. At Liturgy: same order."
+  },
+
+  "kontakion": {
+    "text": "Let us praise the God-bearing Symeon,\nthe peer of the angels,\nwho appeared in the flesh as one incorporeal,\nand with him the ever-memorable John:\nfor with faith and love\nthey entreat the Lord unceasingly//\non behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of the venerable ones",
+    "melody": "The steadfast"
+  },
+
+  "vespers": {
+    "licStichera": {
+      "count": 6,
+      "label": "6 Stichera: 3 of the venerable ones + 3 of the holy prophet",
+      "stichera": [
+        {
+          "text": "Having made your abode in the wilderness\nin oneness of mind, O blessed ones,\nby fasting, prayer and radiant visions\nye manifestly caused the uprisings of the flesh to fall away,\nand made your hearts splendid,\nrendering them pleasing through spiritual surrender,\nO Symeon and John,//\nconfirmation of monastics.",
+          "tone": 4,
+          "label": "Of the venerable ones",
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "With foolish behavior\nthou didst render foolish the malice of the wise, O blessed father,\nworking most glorious miracles,\ncausing signs to show forth, expelling demons,\nand illumining those who are caught in the night of sin.\nAnd in the midst of tumults\nthou didst preserve thy mind untroubled, O Symeon,//\nreceiving dispassion from God.",
+          "tone": 4,
+          "label": "Of the venerable ones",
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "Humble in wisdom and merciful,\nGod-loving and full of love\nwast thou revealed to be, O divinely inspired one,\ncompunctionate and meek,\ngoing about the earth like an angel,\npossessed of a heavenly life.\nWherefore, the Father, the Son and the Holy Spirit\nrested in thee, O blessed Symeon,//\nas in a place of purity.",
+          "tone": 4,
+          "label": "Of the venerable ones",
+          "melody": "Thou hast given a sign"
+        },
+        {
+          "text": "O divinely blessed and wondrous Ezekiel,\nhaving cleansed soul and body,\nand thy mind with purity,\nthou didst noetically behold\nthe ineffable glory of the Lord\nwhich is more brilliant than a lightning-flash,\npassing understanding,\nfor He surpasseth and exceedeth the divine seraphim,//\nand is hymned by ten thousand mouths.",
+          "tone": 8,
+          "label": "Of the holy prophet",
+          "melody": "O most glorious wonder"
+        },
+        {
+          "text": "O God-pleasing Ezekiel,\nas an emulator of Christ\nthou didst endure the oppression of the alien's debt, cruelly tortured,\nprefiguring the salvation and deliverance\nwhich were to come unto the world\nthrough the precious Cross,\nO thou who wast revealed by God.\nPray thou that all who hymn thee now//\nmay partake thereof.",
+          "tone": 8,
+          "label": "Of the holy prophet",
+          "melody": "O most glorious wonder"
+        },
+        {
+          "text": "O divinely inspired Ezekiel,\nreceiving a scroll\nfrom the hands of the Almighty,\nthou didst become a God-seeing theologian,\nmanifest in sacred manner\nand godly in appearance, O glorious one,\nwhose lips were truly sweeter than honey,\nimparting wisdom//\nunto the enraged synagogue.",
+          "tone": 8,
+          "label": "Of the holy prophet",
+          "melody": "O most glorious wonder"
+        }
+      ],
+      "doxastikon": {
+        "text": "Rejoice, enlightenment of souls,\nforgiveness of the sinful,\ncorrection of the negligent!\nRejoice, consolation, joy and helper of the sorrowful!\nRejoice, O blessed one,\nthou healing of the souls of the infirm!\nRejoice, mediator and reconciler of mankind to God,\nO pure one who art more holy//\nthan all the seraphim!",
+        "tone": 8,
+        "label": "Glory ..., Both now ..., Theotokion"
+      },
+      "stavrotheotokion": {
+        "text": "What is this sight which I see,\nwhich mine eyes behold, O Master?\nHow is it that Thou Who dost sustain all creation,\nart lifted up upon the Tree and diest,\ngranting life unto all?\nThus said the Theotokos weeping,\nupon seeing God and man\nWho had shone forth ineffably from her//\nhanging upon the Cross.",
+        "label": "Stavrotheotokion"
+      }
+    },
+
+    "troparionOrder": {
+      "_note": "At Vespers on 'Now lettest Thou': Prophet Ezekiel (Tone II); Glory ..., Venerable Symeon & John (Tone IV); Both now ..., Theotokion or Stavrotheotokion."
+    }
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
+
+    "troparion": {
+      "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the venerable ones",
+      "_note": "On 'God is the Lord': Troparion of the holy prophet (Tone II), once; Glory ..., Troparion of the venerable ones (Tone IV); Both now ..., Theotokion or Stavrotheotokion."
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Illumined by divine accord, O venerable fathers,\nwith faith ye trod the paths which lead to divine effulgence;\nand having eluded the assaults of the enemy,\nO divinely blessed John and Symeon,\nye have been revealed to be children of the light and of the day.",
+        "tone": 5,
+        "label": "Sessional Hymn of the venerable ones (after Ode 3)",
+        "melody": "The co-beginningless Word"
+      },
+      {
+        "text": "Illumined by the divine Spirit, thou didst shed light beforehand\nconcerning the incarnation of the Word,\nO divinely inspired Ezekiel, great among the prophets of God.\nWherefore, in a sacred manner we bless thee as a prophet\nand celebrate thy memory today, crying together to thee, O wise one:\nEntreat Christ, that He save our souls!",
+        "tone": 3,
+        "label": "Glory ..., Sessional Hymn of the holy prophet",
+        "melody": "Awed by the beauty of thy virginity",
+        "prefix": "Glory ..."
+      },
+      {
+        "text": "Beyond understanding and unapproachable is the dread mystery\nof God wrought in thee, O divinely joyous sovereign Lady;\nfor having conceived the Infinite One,\nthou didst give birth to Him, clad in the flesh taken from thy most pure blood.\nHim do thou ever entreat as thy Son, O pure one,\nthat our souls be saved.",
+        "tone": 3,
+        "label": "Both now ..., Theotokion",
+        "prefix": "Both now ..."
+      }
+    ],
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of the venerable fathers Symeon & John the Fool for Christ by Theophanes in Tone IV + Canon II of the holy prophet Ezekiel in Tone VIII. Octoechos canons handled separately by server.",
+
+      "kontakionAfterOde3": {
+        "text": "Thou hast been revealed to be a prophet of God,\nO wondrous Ezekiel,\nand hast proclaimed unto all the incarnation of the Lord,\nthe Lamb and Creator, the Son of God//\nWho hath revealed Himself throughout the ages.",
+        "tone": 4,
+        "label": "Kontakion of the holy prophet",
+        "melody": "Thou hast appeared today"
+      },
+
+      "kontakion": {
+        "text": "Let us praise the God-bearing Symeon,\nthe peer of the angels,\nwho appeared in the flesh as one incorporeal,\nand with him the ever-memorable John:\nfor with faith and love\nthey entreat the Lord unceasingly//\non behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the venerable ones",
+        "melody": "The steadfast"
+      },
+
+      "ikos": {
+        "text": "Let us praise the God-bearing Symeon, the peer of the angels, who appeared in the flesh as one incorporeal, and with him the ever-memorable John: for with faith and love they entreat the Lord unceasingly on behalf of us all.",
+        "_note": "Ikos not present in source PDF; kontakion repeated as placeholder."
+      },
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "irmos2": "Let us sing unto the Lord,\nwho led His people through the Red Sea://\nfor He alone hath gloriously been glorified.",
+        "troparia": [
+          { "text": "Through communion with God thou didst become light, O venerable father Symeon, and by uttermost desire thou didst set thyself apart for Him, and received the fulfillment of thy goodly hopes." },
+          { "text": "Afire with desire for God, thou didst forsake the world, O father, taking the glorious John as thy companion; and with him didst tread the path of salvation, rejoicing." },
+          { "text": "In nowise desiring to become rich in superfluous things, O wise ones, with valiant mind ye spurned wealth and fleeting glory, transitory food and a worldly inheritance." },
+          { "type": "theotokion", "text": "Theotokion: Knowing thee to be comely, chosen and most honorable, O most immaculate one, the Son of God became thy Son, and through grace He hath made those who honor thee as the Theotokos His own children." },
+          { "canon": "secondCanon", "text": "O Benefactor, grant the gift and grace of the Spirit unto me who desire to praise Ezekiel Thy prophet." },
+          { "canon": "secondCanon", "text": "Having had noetic ascents, the sacred Ezekiel was an eye-witness of ineffable things, and illumined by the glory of the Lord." },
+          { "canon": "secondCanon", "text": "Having set thy life aright and made the uprising of thy flesh subject to thy mind, thou hast been revealed to be a God-pleasing prophet." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Wholly illumined, O divinely inspired one, thou didst prophetically describe the Virgin as the supremely hymned door facing East." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and foundation.",
+        "irmos2": "O Lord, Thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "By zeal thou wast attracted to noetic works, O Symeon, vanquishing the hordes of the enemy by thine alliance with the Spirit." },
+          { "text": "With the plagues of prayer and the blows of abstinence, O venerable father John, thou didst smite the Egypt of the passions." },
+          { "text": "O Master Jesus, joyously desiring Thy life-bearing mortality, Thine ascetics slew the enemy." },
+          { "type": "theotokion", "text": "Theotokion: O pure and all-immaculate one, thou hast given birth to the Cause of all, Who hath delivered mankind from the grievous fall into disobedience." },
+          { "canon": "secondCanon", "text": "Having achieved the mortification of the passions, O glorious one, as a prophet thou didst behold, and write beforehand of the resurrection of the dead." },
+          { "canon": "secondCanon", "text": "Showing mercy to His creation, O thou who wast divinely revealed, God made thee manifest as divine understanding for the erring." },
+          { "canon": "secondCanon", "text": "The effulgence of the Godhead Who sitteth upon the cherubim, O glorious and divinely eloquent one, made thee radiant, having appeared to Thee." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: With prophetic eyes Thy prophet, O Benefactor, beheld the pure one as a meadow, and an entry-way of virginity preserved for Thee." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "United on the path of righteousness, O venerable ones, ye entered into the divine fold of the God-bearing Nikon, and by his instructions ye were enriched by the radiance of salvation." },
+          { "text": "The God-bearing and venerable one, seeing the two of you reasoning together venerably as with a single mind; adorned you with godly words and the godly raiment of monastics." },
+          { "text": "The grace of the Holy Spirit, finding thy heart to be a blank tablet, inscribed perfect dispassion, faith and love unfeigned thereon, O father." },
+          { "type": "theotokion", "text": "Theotokion: Our supremely glorious God, Who sitteth on the exalted throne of the cherubim, had thee as a throne, when resting in thine embrace, O Mary Bride of God." },
+          { "canon": "secondCanon", "text": "The hand of thy Master, the Almighty, rested on thee, teaching thee ineffable things and illumining thee with divine precepts." },
+          { "canon": "secondCanon", "text": "When thou wast deemed worthy to behold divine visions, thou didst fall prostrate in awe, and hear the voice of the divine Spirit." },
+          { "canon": "secondCanon", "text": "The scroll placed by the hand of the Lord in thy mouth sweetened thy heart, O excellent one, and made thee a prophet of God." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Ezekiel beheld the radiant and divine portal through which the Lord hath passed, keeping it closed." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "irmos2": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "Receiving radiance of surpassing brightness, O John, thou wast shown to be like the sun, dispelling the darkness of the demons, O right glorious one." },
+          { "text": "Having furnished themselves with wings in their desire for Thee, O Christ, the venerable ones wisely shook off the desires of the flesh as though they were the foam of the sea." },
+          { "text": "Having strengthened your souls with divine power, O divinely wise fathers, rendering the passions barren, ye made your abode in the wilderness." },
+          { "type": "theotokion", "text": "Theotokion: The course of corruption hath come to an end, for the Virgin hath incorruptibly given birth to God the Word, remaining a virgin in a manner transcending nature and speech." },
+          { "canon": "secondCanon", "text": "O blessed and God-pleasing Ezekiel, by thy words thou hast instructed all sinners to turn from their ways." },
+          { "canon": "secondCanon", "text": "The prophet emulated the Lord in all things; for he made entreaty concerning the sins of others." },
+          { "canon": "secondCanon", "text": "Even the tongues of orators cannot praise thee; for thou hast been adorned with splendor surpassing that of the heavens." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The divine Ezekiel beheld thee, the door through which the Lord, the Bestower of light, hath shone upon us." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "irmos2": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
+        "troparia": [
+          { "text": "Straining with thy whole mind towards God, with unceasing asceticism thou didst not spare carnal love, O Symeon, winning for thyself the acquisition of good things." },
+          { "text": "Living in the midst of the world, O blessed one, thou didst receive neither spot nor wrinkle; rather, with pure supplications thou dost wash away the spiritual defilements of those who have recourse unto thee." },
+          { "text": "Transcending the understanding of the flesh, thou wast not wounded in mind when thou didst go about naked in the midst of women; for thou wast arrayed in the vesture of dispassion, O Symeon." },
+          { "type": "theotokion", "text": "Theotokion: With mouth, mind and heart we profess thee to be the Theotokos, O most pure one; for through thee we have been reconciled with God, who of old through the disobedience of our forefather were cast out." },
+          { "canon": "secondCanon", "text": "Thou wast deemed worthy to behold God, O wondrous and most blessed prophet, having been cleansed of every material desire." },
+          { "canon": "secondCanon", "text": "Having risen above the flesh, thou wast taken up by the supremely exalted power of the Spirit, and hast been filled with pure light." },
+          { "canon": "secondCanon", "text": "Possessed of a most honorable life, thou didst behold the heavenly chorus emitting the hymnody of the cherubim to the Almighty." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In an image thou didst behold the true Virgin Mother, the most splendid portal, the mediatress between God and mankind." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire, cried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "irmos2": "The Children of Judaea,\nwho of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace\nthrough their faith in the Trinity,\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "Embraced by the divine love of Christ, thou didst joyously give thyself over wholly to the salvation of others, O father, crying aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Thou receivest food given thee from the heavens, O father, and therewith didst feed all who right dutifully accepted thy precepts and forsook sin, which dragged them down, O blessed one." },
+          { "text": "Following the Traditions of the fathers, O wise father, the command to flee the impious heresy of Origen didst thou give to those who cry: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, O hallowed and divine dwelling-place of the Most High! For through thee, O Theotokos, joy hath been given to those who cry: Blessed art thou among women, O all-immaculate Lady!" },
+          { "canon": "secondCanon", "text": "Thou hast been shown to be an animate temple of God, O most blessed God-bearer, mystically acquiring knowledge of the full measure of the Church, and crying out in the Spirit: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Wholly awestruck, thou wast once translated to the holy city, where thou wast taught divine mysteries through revelation, learning to chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Manifest as a priest of God, O right wondrous one, thou dost offer up sacrifices and entreaties to the Master for the people who stand forth and chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The supremely divine Word desired to save human nature, and issued forth from the portal of the Virgin, arrayed in flesh through her. O God of our fathers, blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "irmos2": "The King of heaven,\nWho is glorified by the hosts of angels,//\nlet us praise and supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Thou wast a most radiant star, leading to life those mired in the passions; for thou didst inspire the lewd women to live chastely, and didst drive away cruel infirmities, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "As one whole of mind, O venerable one, amid an abundance of wise miracles thou didst draw many to become fools for Christ's sake, knowing that they would be mocked, and crying out with a most pure soul: Bless the Lord, all ye works of the Lord!" },
+          { "text": "The Lord of glory, Who alone resteth perfectly among His own as is meet, O venerable one, with splendid angelic discourse honoreth thee who wast taken away and confined to a tomb, yet who cried: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: The Lord Who hath delivered us shone forth from thee, O pure Virgin. Him do thou entreat, O Lady, that He illumine those who hymn thee and deliver from every evil circumstances those who cry: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Sacredly adorned with the prophetic priesthood of prophecy, O prophet, thou didst shine forth, hymning Christ the Bestower of light throughout all ages." },
+          { "canon": "secondCanon", "text": "In that Thou art good, accept Thou Ezekiel, the beholder of Thy glory, who kneeleth down in supplication for the world, that we may hymn Thee throughout all ages." },
+          { "canon": "secondCanon", "text": "Afire with divine desire, thou didst learn mysteries which surpass understanding, O Ezekiel, crying aloud: Thee, O Christ, do we supremely exalt throughout the ages!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Rising at dawn out of the night, and beholding the stream of forgiveness and virginity, Ezekiel cried aloud unto the Lord: Thee do we supremely exalt throughout the ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "irmos2": "The prophetic vision of the lawgiver on the mountain,\nin the fire of the burning bush,\nprefigured thy birthgiving O Ever-Virgin,\nthe salvation of us the faithful,//\nwherefore with never silent hymns we magnify thee.",
+        "troparia": [
+          { "text": "Relying zealously upon the Trinity with all your heart, and having thankfully received the beams thereof, ye became radiant and joined chorus with the angels." },
+          { "text": "United by divine desire, and illumined by abstinence, ye have already received the good things for which ye hoped and have obtained blessed delight, O divinely blessed ones." },
+          { "text": "Partaking of gladness which hath no end, O venerable Symeon and glorious John, in that your pangs and exertions have been received, be ye unceasingly mindful of us." },
+          { "type": "theotokion", "text": "Theotokion: Save me, O thou who hast given birth to the Redeemer and Benefactor of all! Dispel the clouds from my soul, O holy and Sovereign Lady, thou cloud of the Light, and make me powerful against the passions which war against me." },
+          { "canon": "secondCanon", "text": "Shining with the radiance of piety, O prophet, thou wast deemed worthy to behold Him Who appeared of old to Moses in the fire and the bush, and who mystically taught thee ineffable things." },
+          { "canon": "secondCanon", "text": "Thou wast shown to be a priest, an initiate of the mysteries, a giver of laws, a most wise prophet, an emulator of the Master, in that thou didst partake of sufferings; and now thou hast been revealed to be His heir." },
+          { "canon": "secondCanon", "text": "O the ineffable and divine effulgence which thou now enjoyest, O blessed one! For thou dost gaze from afar upon the Son and the Spirit in the Father, the three Hypostases of the Godhead." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Theotokos, thou art our weapon and rampart, thou art the help of those who set their hope on thee! And we now move thee to make supplication, that we may be delivered from our enemies." }
+        ]
+      }
+    }
+  }
+}

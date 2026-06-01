@@ -1932,6 +1932,11 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     spec.venerationStichera = mat.venerationStichera;
   }
 
+  // Sessional hymn after Polyeleios (polyeleos-rank menaion files supply this)
+  if (mat.sessionalHymnAfterPolyeleios) {
+    spec.sessionalHymnAfterPolyeleios = mat.sessionalHymnAfterPolyeleios;
+  }
+
   // Flags forwarded from the festal matins data
   if (mat._meta?.feastRank)        spec.feastRank        = mat._meta.feastRank;
   if (mat._meta?.feastType)        spec.feastType        = mat._meta.feastType;

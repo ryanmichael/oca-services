@@ -1,0 +1,255 @@
+{
+  "_meta": {
+    "feast": "Deposition of the Precious Cincture of the Most Holy Theotokos",
+    "feastKey": "cinctureMostHolyTheotokos",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 08-31.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-31.pdf",
+    "_note": "Theotokos feast at doxology-rank. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. Two interleaved canons: Canon I by Joseph in Tone VIII (6 troparia per ode) + Canon II in Tone IV (4 troparia per ode). Kontakion of the deposition in Tone II after Ode 3 (per Sergius rubric + Liturgy reference); main Kontakion + Ikos in Tone IV at canon level (after Ode 6). Troparion sung thrice on 'God is the Lord' (no secondary saint). 4 Lauds stichera in Tone IV; Glory/Both now in Tone II."
+  },
+  "troparion": {
+    "text": "O Ever-virgin Theotokos, protection of mankind:\nthou hast given to thy city a mighty legacy,\nthe robe and cincture of thy most honored body,\nwhich have remained incorrupt through thy seedless birthgiving.\nFor in thee are nature and time renewed.//\nWherefore, we beseech thee to grant peace to thy city and great mercy to our souls.",
+    "tone": 8,
+    "label": "Troparion of the deposition"
+  },
+  "kontakion": {
+    "text": "Today thy temple doth celebrate the deposition of thy precious cincture,\nO all-hymned one,\nand it earnestly crieth out to thee:\nRejoice, O Virgin,//\nthou boast of Christians!",
+    "tone": 4,
+    "label": "Kontakion of the deposition",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "doxology",
+      "feastType": "theotokos",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "O Ever-virgin Theotokos, protection of mankind:\nthou hast given to thy city a mighty legacy,\nthe robe and cincture of thy most honored body,\nwhich have remained incorrupt through thy seedless birthgiving.\nFor in thee are nature and time renewed.//\nWherefore, we beseech thee to grant peace to thy city and great mercy to our souls.",
+      "tone": 8,
+      "label": "Troparion of the deposition",
+      "_note": "On 'God is the Lord': Troparion of the deposition, Thrice."
+    },
+    "sedalion": [
+      {
+        "text": "Having given birth to the all-comely Word in the beauty of thy virginity,\nthou didst wind thy cincture about Him as a babe, O pure one.\nThis thou hast given to thy servants, O Lady,\nas a protection, help and a well-spring of sanctity.\nIts honored deposition do we all celebrate with faith,//\nO most holy Virgin.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 1)",
+        "melody": "Awed by the beauty of thy virginity",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+        "bothNow": {
+          "text": "Having given birth to the all-comely Word in the beauty of thy virginity,\nthou didst wind thy cincture about Him as a babe, O pure one.\nThis thou hast given to thy servants, O Lady,\nas a protection, help and a well-spring of sanctity.\nIts honored deposition do we all celebrate with faith,//\nO most holy Virgin.",
+          "tone": 3,
+          "label": "Both now ..., the foregoing is repeated"
+        }
+      },
+      {
+        "text": "Thou alone didst have a virginity and a birthgiving free of corruption, O blessed one,\nand to mankind thou hast given thy holy cincture as a garment of salvation,\nwhich even to this day remaineth untouched by corruption, O Bride of God;\nand because of it we, thy servants, receive great mercy,//\nO pure one.",
+        "tone": 3,
+        "label": "Sessional Hymn (after Kathisma 2)",
+        "melody": "Awed by the beauty of thy virginity",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+        "bothNow": {
+          "text": "Thou alone didst have a virginity and a birthgiving free of corruption, O blessed one,\nand to mankind thou hast given thy holy cincture as a garment of salvation,\nwhich even to this day remaineth untouched by corruption, O Bride of God;\nand because of it we, thy servants, receive great mercy,//\nO pure one.",
+          "tone": 3,
+          "label": "Both now ..., the foregoing is repeated"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of the deposition by Joseph in Tone VIII; Canon II of the deposition in Tone IV.",
+      "ode1": {
+        "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old,\nand by Moses' outstretched hands, raised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "With divine strength thou dost gird me about who piously hymn thy sacred cincture, as thou art the divine fortification, the might and impregnable rampart of thy city, O pure and all-hymned Virgin Maiden." },
+          { "text": "Thou hast given birth to the mighty God Who girdeth all the pious about with strength, O all-immaculate one. Wherefore, we call thee blessed, and, joyously kissing thy divine cincture, we draw forth mercy and grace therefrom." },
+          { "text": "Joyfully do we form a chorus today for the deposition of the sacred cincture of the honored divine Maiden, from whence a girdle of incorruption, a seamless garment and a robe of salvation have been woven for us." },
+          { "text": "Thy people hasten beneath thy power, O all-immaculate one, and ever flee to thy protection. Be thou a help for all, and grant to each those petitions which are conducive to salvation, saving our souls from tribulations." },
+          { "canon": "secondCanon", "text": "The temple of the Virgin hath, like a bright sky, acquired a splendid and undimmed luminary: her most radiant cincture; and it illumineth the whole world with beams of miracles." },
+          { "canon": "secondCanon", "text": "Thy city, noetically girded about with thy truly divine cincture, O most pure one, hath in it invincible might, strength and a bond of confirmation; wherefore, it boasteth therein." },
+          { "canon": "secondCanon", "text": "Thy shrine hath truly appeared to those on earth as the most precious ark of old, O Birthgiver of God, though thou bearest not tablets of stone, but faithfully preservest the knowledge of the truth." },
+          { "canon": "secondCanon", "text": "Mystic fragrances are poured forth in the temple of the pure one, from her honored shrine this day; and they fill with spiritual fragrance all who have recourse to her with love." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,//\nmy refuge and foundation.",
+        "troparia": [
+          { "text": "The heart is renewed which toucheth the sacred cincture of the Virgin with fervent faith, and it is girded about with invincible power against impure passions, and remaining unharmed by incorporeal foes." },
+          { "text": "Thy sacred cincture wherewith thou girded thine incorrupt body, O Maiden, still remaineth incorrupt, sanctifying those who approach it piously and removing the corruption of sickness and sorrow." },
+          { "text": "Thou wast the most beauteous dwelling of the Word Who was incarnate of thee, O pure one, and wast well pleased to place thy cincture in thy holy temple; and venerating it, we are sanctified." },
+          { "text": "Thy precious cincture do we all honorably venerate with joyful heart, as an honor for all the faithful, O Theotokos, in that it touched thy precious body." },
+          { "canon": "secondCanon", "text": "O ye faithful, let us honor the cincture of the pure one today as a bond of unity with God, and let us bow down before it with faith." },
+          { "canon": "secondCanon", "text": "The springs of grace ever flowing from thine all-precious shrine give drink to all the faithful, O pure one." },
+          { "canon": "secondCanon", "text": "The much hymned and precious cincture of the all-honored one poureth forth healings upon all of us, the faithful, through grace." },
+          { "canon": "secondCanon", "text": "Pouring forth thy gladness like the dew of the morning, O pure one, extinguish the furnace of the passions for those who ever hymn thee." }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "Thy precious cincture, which encircled thy womb\nwhich was pleasing to God, O Theotokos,\nis the invincible might of thy city\nand an inexhaustible treasury of good things,//\nO only Ever-virgin who hast given birth.",
+        "tone": 2,
+        "label": "Kontakion of the deposition",
+        "melody": "In supplications"
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Thy most precious cincture, wherewith thou didst gird thy womb about,\nwas sanctified in the temple of God, as a divine offering,\nO pure and all-immaculate one who didst conceive God.\nWherefore, touching it with faith, and venerating it with fear and honor,//\nwe are sanctified.",
+        "tone": 4,
+        "label": "Sessional Hymn of the deposition (after Ode 3)",
+        "melody": "Go thou quickly before",
+        "glory": {
+          "text": "Thy church doth celebrate the deposition of thy precious cincture with splendor,\nand crieth out to thee, O pure Virgin:\nThou dost gird all against the power of the enemy.\nHumble also the arrogance of the godless barbarians,\nand direct our life, that we may do the divine will//\nof the Lord.",
+          "tone": 4,
+          "label": "Glory ..., another Sessional Hymn",
+          "melody": "Having been lifted up"
+        }
+      },
+      "ode4": {
+        "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father, hast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee://\n'Glory to Thy power, O Lover of mankind!'",
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Having fallen into repose, thou wast taken up into the light unwaning, yet for those who call thee blessed thou hast left, in place of thy body, O pure one, thy precious cincture, a wellspring of miracles, a place of salvation, and a rampart for the city which honoreth thee, O most pure one." },
+          { "text": "We enter thy temple as a new heaven, where thy divine cincture hath been enshrined as a treasure as splendid as the sun, emitting rays of miracles, illumining the hearts of all, and dispelling the gloom of the passions, O Maiden." },
+          { "text": "Thou art the ark of noetic sanctity, O pure and all-hymned one; and thou bestowest upon thy people the precious shrine containing the cincture which thou didst wear upon thy body, as a great refuge and an inexhaustible wellspring of healings." },
+          { "text": "A gift of great value hath been brought to thy city: thy precious cincture, O all-immaculate one; and it was enshrined on this day in thy divine temple, and is become a cause of great rejoicing for those who fervently love thee, O Theotokos." },
+          { "text": "The shadows of the law and the visions of the prophets foretold that thou wouldst become the true Mother of God, O most pure one through whom the curse hath been lifted and perfect blessing and saving grace have blossomed forth for those who hymn thee with faith and love." },
+          { "canon": "secondCanon", "text": "Having appointed thee as a most honored firmament, O Theotokos, the Creator and Fashioner adorned thee with divine splendors, as with stars, whereby thou dost illumine the ends of the earth." },
+          { "canon": "secondCanon", "text": "Thy city, having thee as its might and firm foundation, O Theotokos, is sustained by thy divine cincture; and it stretcheth it out as an indestructible bond in time of battle." },
+          { "canon": "secondCanon", "text": "O Birthgiver of God, thy divine cincture draweth up from earth to heaven us who are transported by love for thee and it. Wherefore, we glorify thee as the cause of a greater glory." },
+          { "canon": "secondCanon", "text": "Behold, grace inexhaustible! Come ye all, and with ardent heart draw forth rivers ever flowing from the honored shrine of the most pure Mother, O ye who love the feasts of the Church." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me, wretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "irmos2": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "When thy divine cincture was enshrined on this day in thy temple, O divinely joyous one, all manner of blessings were laid up with it; and he who approacheth it is filled to overflowing with sanctity, receiving that for which he asketh with faith." },
+          { "text": "In giving birth to the most comely Word thou wast adorned, O Virgin, and in thy beauteous habitation thou hast been well-pleased to enshrine the beautiful cincture wherewith thou didst gird thy beauteous body, O Theotokos." },
+          { "text": "Thy holy temple is acknowledged by all to be a second paradise, O all-immaculate one; for, within, it hath acquired thy cincture, which filleth the hearts of those who with faith fall down before it, with divine fragrance, like a sweet-smelling rose." },
+          { "text": "A cloud of divine rain wast thou, O most immaculate one, letting fall the water of sanctification, bringing the land, frozen by sin, to the fruitfulness of piety. Wherefore, with faith we call thee blessed." },
+          { "canon": "secondCanon", "text": "Thou hast magnified Thy Mother, O Lord; Thou hast exalted her above all the noetic powers, for her glory is beyond compare." },
+          { "canon": "secondCanon", "text": "The grace of God is now bestowed unstintingly through thy precious shrine, O most pure Theotokos, upon those who do thee homage with faith." },
+          { "canon": "secondCanon", "text": "Faithful rulers are girded about with thy power; and thy city boasteth in thee as its ally, O most pure one, being honored by the possession of thy cincture." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The abyss of my sins and the storm of my transgressions\ndisquieten me and thrust me down into the depths of despondency;\nbut do Thou stretch forth Thy mighty arm unto me as Thou didst to Peter,//\nand save me, O my Guide.",
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "For our sake didst thou bear as a babe Him Who existed before time began, and thou renewest hearts grown old through sin, which obtain regeneration through the deposition of thy precious cincture, O Ever-virgin Maiden." },
+          { "text": "Thy holy church is marvelous in righteousness, having acquired thy miraculous cincture, which poureth forth wonders; and it hath been revealed to be an abyss of healing for the poor, O Virgin, Mother and Birthgiver of God." },
+          { "text": "Every soul that gathereth in thy holy temple is filled with gladness, beholding thy cincture therein like a radiant sun, emitting the light of the works of the Maker of all and the divine Spirit." },
+          { "text": "Overlooking all our offenses, O pure one, strengthen thou our hearts, for thou girdest about with power those who have faithfully acquired thy cincture as a treasure of great price which cannot be taken away." },
+          { "canon": "secondCanon", "text": "The Lord hath glorified thee wholly above all nature, exalting thee alone; and thee, together with thy temple, thy cincture and divine shrine, hath He honored in a manner past all telling, O Theotokos." },
+          { "canon": "secondCanon", "text": "Streams of grace pour forth, as out of the depths, from the shrine of the most pure one, and surround all of creation, giving drink to those who with faith worship thy birthgiving." },
+          { "canon": "secondCanon", "text": "Having acquired thee as their strength and boast, the faithful are girded about with glory, possessing thy precious cincture as a most splendid and precious ornament, O Birthgiver of God." }
+        ]
+      },
+      "kontakion": {
+        "text": "Today thy temple doth celebrate the deposition of thy precious cincture,\nO all-hymned one,\nand it earnestly crieth out to thee:\nRejoice, O Virgin,//\nthou boast of Christians!",
+        "tone": 4,
+        "label": "Kontakion of the deposition",
+        "melody": "Thou hast appeared today"
+      },
+      "ikos": {
+        "text": "Illumine me with thy light, O Virgin Theotokos, and disperse the darkness which lieth grievously upon my mind, that in purity I may approach thee, the pure one who hath brought deification to mortals. I hymn thy divine cincture, which doth outshine the sun, and which this world hath as its steadfast protection and hope, which vanquisheth the councils of the iniquitous foe, destroyeth their wiles, and ever preserveth thy servants, O all-immaculate and unblemished one. Rejoice, O Virgin, thou boast of Christians!"
+      },
+      "ode7": {
+        "irmos": "Once in Babylon the fire stood in awe of God's condescension;\nfor which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire, cried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "The Queen of all, having departed for the mansions of heaven, hath left behind her cincture as a treasure for the king of all cities, and thereby we are saved from the invasion of foes, visible and invisible." },
+          { "text": "Let us now approach the well-spring which poureth forth grace and mercy: the precious shrine containing the most precious cincture of the Virgin and Mother who honored humanity with her precious birthgiving." },
+          { "text": "Praise the Lord, all ye hosts of heaven! Glorify her who gaveth birth to Him, all ye nations of mankind! For she hath bestowed her cincture upon the faithful as a true refuge and salvation." },
+          { "text": "Let the clouds drop righteousness down from above at the deposition of thy cincture, O divinely joyous cloud; and let every soul sing sweetly, rejoicing: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "In that Thou alone art the Bestower of light, as the Sun of righteousness Thou hast divinely enlightened the temple of the pure one with Thy divers gifts; and, shining therein, she illumineth her cincture with rays of splendor." },
+          { "canon": "secondCanon", "text": "Surrounding thy cincture as it were the golden jar, O thou who alone art pure, we now partake in a truly divine manner of the sweetness of grace, and honor it as more exalted than the tablets of the law, O all-blessed one." },
+          { "canon": "secondCanon", "text": "Vessels of miracles truly pour forth thy grace upon the faithful, O pure Maiden, which issueth forth abundantly from thy shrine as from another river of Eden." },
+          { "canon": "secondCanon", "text": "Approach now with gladness, all ye on earth! Come ye! The shrine mystically crieth out to the Sovereign Lady: Surround ye the most glorious one who hath preserved her cincture in me!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer:\n'Ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages.'",
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Like a holy throne hath the coffer, containing the resting cincture of the only divine Maiden and pure Queen of all, been splendidly enshrined within the holy place wherein none may enter; and therefrom perfect rest issueth forth abundantly upon those who labor amid many pangs." },
+          { "text": "In a sacred manner thou didst give birth unto the Lord on the earth, and with thy holy hands didst truly gird Him about Who girdeth the pious with power; and now, having ascended on high to the heavens, thou hast left thy precious cincture as might and protection for all, O Virgin Theotokos." },
+          { "text": "The divine grace which followeth on thy precious cincture, O pure Virgin, is truly the healing of the ailing, the confirmation of those who stumble, the divine uplifting of the despondent, a rudder for those at sea and the return of the lost; and we venerate it with faith throughout all ages." },
+          { "text": "Celebrating today the holy deposition of thy divine cincture, we, thy servants, honor the sacred festivity and with joy cry out to thee: Rejoice, O Theotokos, joy of the angels and of all men who chant with faith: Ye children, bless; ye priests, hymn; ye people, supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Of old, the ark held the divine tablets inscribed by the hand of God, O most pure one; but thy revered and precious shrine, O pure Lady, containeth the cincture of thee who held within thyself the dread mystery of the One Who established the law thereof." },
+          { "canon": "secondCanon", "text": "The angels now join chorus in thine honored temple, O most pure one, and embrace thy precious and holy cincture, which we venerate with love, joy and great gladness, hymning thee, the glory of our race, O Lady." },
+          { "canon": "secondCanon", "text": "Thou art the rod which gaveth rise to the Flower of life, the joy of all, the pure and priceless phial of the Spirit, the treasury of good things, the fount of sweet fragrance; and from thy divine shrine the myrrh of healings poureth forth." },
+          { "canon": "secondCanon", "text": "The noetic warriors hymn thy mighty works, O most pure one; all the patriarchs and prophets manifestly proclaim thee, together with the apostles, the priests, and the choirs of the martyrs; and with them we also do thee homage." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels//\nmagnify thee as the Theotokos.",
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Behold, the divine couch of Solomon, which sixty of the powerful — the sayings of the Scripture — surround as though a royal bower! In a precious coffer she placeth her cincture today, that all the faithful may invoke her, and for the safekeeping of the pious." },
+          { "text": "O city of the King of heaven, of whom wondrous things have been spoken! Thou hast given thine all-holy cincture as a precious and holy gift to thy city, for the confirmation of all the faithful, and thereby the rulers, resplendent in Orthodoxy, vanquish the adversary." },
+          { "text": "Ye mountains, now drop down sweetness, and ye hills, everlasting gladness. O ye assemblies of patriarchs, choirs of martyrs, ye company of prophets and honored assembly of the divine apostles: rejoice with all of us at the deposition of the divine cincture of the divine Maiden." },
+          { "text": "Thou hast sanctified all things by thy birthgiving, O Virgin, and hast now bestowed upon us an excess of enlightenment: thy most holy cincture, at whose deposition all the earth danceth and honoreth thee, who hast filled mankind with ineffable joy." },
+          { "text": "As thou art merciful, O pure one, deliver me, who have recourse to thy mercy, from the false love of the passions, from the enemy who ever tempteth me with the burden of sins, from despondency, cruel abduction, captivity and sin, O most pure one." },
+          { "canon": "secondCanon", "text": "Thy shrine, which, like a treasury of life, doth worthily contain and preserve thy cincture as the garment of thy virginity and divine bridehood, is truly shown to be a most honorable wedding chamber, O Birthgiver of God." },
+          { "canon": "secondCanon", "text": "The Church, arrayed with thy divine and most holy cincture as with a diadem of divine beauty, O Theotokos, regally rejoiceth today, adorned with thy glory." },
+          { "canon": "secondCanon", "text": "The temple of the Virgin, like in all ways unto the heavens, is well adorned this day. O ye faithful, having received gifts of splendor, and being illumined as with the comeliness of the stars of heaven, make yourselves bright with radiance." },
+          { "canon": "secondCanon", "text": "Thy city, O Birthgiver of God, possesseth thy cincture as an ally and rampart of peace, the divine unity of the dogmas, the boast of the Orthodox, bestowing victory upon kings." },
+          { "canon": "secondCanon", "text": "We hymn thine ineffable glory and thine immeasurable grace, for thou art the well-spring of wisdom, from whence the Word hath issued forth for all who honor thee, O most pure one, and who magnify thy birthgiving." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Honoring thy precious cincture,\nwherewith thou didst gird thy sacred body, O Virgin Theotokos,\nwe now celebrate its deposition,\nwhereby we are delivered from corruption, tribulations and dangers,//\nO Mother of God Most High.",
+      "tone": 3,
+      "label": "Exapostilarion of the deposition",
+      "melody": "Hearken, ye women",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "text": "Honoring thy precious cincture,\nwherewith thou didst gird thy sacred body, O Virgin Theotokos,\nwe now celebrate its deposition,\nwhereby we are delivered from corruption, tribulations and dangers,//\nO Mother of God Most High.",
+        "tone": 3,
+        "label": "Both now ..., the foregoing is repeated"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "The Church is arrayed in thy holy cincture\nas with a truly resplendent crown, O most pure Theotokos,\nand, rejoicing, it is made radiant today, and danceth mystically,\ncrying out to thee, O Lady:\nRejoice, O crown, O divine diadem!\nRejoice, O sole glory of my fullness,//\nmine everlasting gladness!",
+          "tone": 4,
+          "melody": "As one mighty among the martyrs"
+        },
+        {
+          "text": "The Church is arrayed in thy holy cincture\nas with a truly resplendent crown, O most pure Theotokos,\nand, rejoicing, it is made radiant today, and danceth mystically,\ncrying out to thee, O Lady:\nRejoice, O crown, O divine diadem!\nRejoice, O sole glory of my fullness,//\nmine everlasting gladness!",
+          "tone": 4,
+          "_note": "Sung twice per rubric"
+        },
+        {
+          "text": "As thou art a mighty bulwark,\nan unshakeable confirmation and salvation, O most pure Lady,\nthou hast given thine all-honorable cincture to thy people and thy city\nas a splendid vesture,\nwhich saveth those who honor it with faith and earnest fervor//\nfrom every evil end, O Bride of God.",
+          "tone": 4
+        },
+        {
+          "text": "Thy temple, O most pure one, hath shown itself today to be an inexhaustible fountain.\nFor rivers of grace pour forth in abundance from thy holy shrine\nand gladden the thoughts of the faithful\nwho cry out to thee with faith and love:\nThou art our joy, our gladness,//\nand our life.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "Having cleansed our minds and thoughts,\nlet us hold festival with the angels,\nsplendidly beginning the hymn of David to the Maiden,\nthe Bride of Christ our God, the King of all, saying:\nArise, O Lord, into Thy rest,\nThou and the ark of Thy holiness!\nFor, having adorned her like a beautiful palace,\nThou hast assigned her to Thy city, O Master,\nto fortify and protect it from the pagan adversaries by Thy mighty power,//\nthrough her supplications.",
+        "tone": 2,
+        "label": "Glory ..., Both now ..."
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "O Ever-virgin Theotokos, protection of mankind:\nthou hast given to thy city a mighty legacy,\nthe robe and cincture of thy most honored body,\nwhich have remained incorrupt through thy seedless birthgiving.\nFor in thee are nature and time renewed.//\nWherefore, we beseech thee to grant peace to thy city and great mercy to our souls.",
+      "tone": 8,
+      "label": "Troparion of the deposition",
+      "_note": "After the Great Doxology. Litanies and dismissal."
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "_meta": {
+    "feast": "Holy Protomartyr and Equal-to-the-Apostles Thecla",
+    "feastKey": "stTheclaProtomartyr",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 09-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-24.pdf",
+    "_note": "Doxology-rank. Sergius rubric: both canons from the Octoechos (without martyrica) + canon of the holy protomartyr with 6 troparia, acrostic 'Let the protomartyr be divinely glorified', by John the Monk in Tone VIII. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung with festal Lauds (4 stichera: 2 in Tone II + 2 in Tone IV, Glory Tone I by Anatolius, Both-now Stavrotheotokion Tone I). Two kontakia appear in the canon: Tone VIII at Ode 3 and Tone II at Ode 6 with Ikos; the Tone II kontakion (Ode VI position) with Ikos is placed at canon top level per project convention."
+  },
+  "troparion": {
+    "text": "Taught by the words of Paul, * O Thecla, bride of God,\nand confirmed through faith by Peter, * O divinely called one,\nthou wast shown to be the protomartyr and first sufferer among women,\nentering the flame as it were a place abloom with flowers.\nThe wild beasts and bulls stood in awe of thee,\nfor thou didst arm thyself with the Cross.//\nWherefore, O all-praised one, entreat Christ, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy protomartyr"
+  },
+  "kontakion": {
+    "text": "Having wounded thy heart with the love of Christ, * O good virgin,\nthou didst spurn a transient betrothal as of no account;\nand didst brave the fire, shutting the mouths of the wild beasts.\nAnd, saved from them, O Thecla, * first among women to suffer,//\nthou didst take care to seek out Paul.",
+    "tone": 2,
+    "label": "Kontakion of the holy protomartyr",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": { "tone": 8, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "Taught by the words of Paul, * O Thecla, bride of God,\nand confirmed through faith by Peter, * O divinely called one,\nthou wast shown to be the protomartyr and first sufferer among women,\nentering the flame as it were a place abloom with flowers.\nThe wild beasts and bulls stood in awe of thee,\nfor thou didst arm thyself with the Cross.//\nWherefore, O all-praised one, entreat Christ, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy protomartyr",
+      "_note": "On 'God is the Lord': Troparion of the holy protomartyr (Twice); Glory ..., Both now ..., Theotokion (Tone IV) — see _theotokionOfTroparion."
+    },
+    "_theotokionOfTroparion": {
+      "text": "The mystery hidden from all ages\nand unknown to the ranks of Angels,\nhath been revealed to those on earth through thee, O Theotokos:\nGod incarnate in an uncommingled union,\nWho willingly accepted the Cross for our sake,\nand through it hath raised up the first-formed man,//\nand saved our souls from death.",
+      "tone": 4,
+      "label": "Theotokion of the troparion"
+    },
+    "sedalion": [
+      {
+        "text": "Transforming thy womanhood into manliness through the virtues and the love of Christ,\nby both thou didst become a dwelling place of God;\nfor, having diminished the gloom of the passions by fasting,\nby martyrdom, thou wast shown to be the boast of endurance of pangs.\nWherefore, thou shinest forth with a twofold radiance upon the world like a beacon,\nillumining all with rays of the Spirit,\nO all-praised protomartyr, entreat Christ God,\nthat He grant remission of transgressions unto those//\nwho with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy protomartyr (after Kathisma 2)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thine all-holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      }
+    ],
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy protomartyr, acrostic 'Let the protomartyr be divinely glorified', by John the Monk in Tone VIII. Two Octoechos canons interleaved at the actual service per the Sergius rubric are omitted per the menaion-matins-track pattern.",
+      "kontakion": {
+        "text": "Having wounded thy heart with the love of Christ, * O good virgin,\nthou didst spurn a transient betrothal as of no account;\nand didst brave the fire, shutting the mouths of the wild beasts.\nAnd, saved from them, O Thecla, * first among women to suffer,//\nthou didst take care to seek out Paul.",
+        "tone": 2,
+        "label": "Kontakion of the holy protomartyr",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Having learned the path of truth from Paul, thou didst follow after him without wavering, O most wondrous one,\nand having abandoned thine own people as strangers, with manly mind and in manly guise thou didst follow a stranger.\nWherefore, the Master hath shown thee forth as the first to suffer among women contenders in the world,\nwherein thou didst remain, O Thecla, first among women to suffer,//\ngoing about the ends thereof in search of Paul."
+      },
+      "ode1": {
+        "irmos": "Let us sing unto the Lord,\nwho led His people through the Red Sea://\nfor He alone hath gloriously been glorified.",
+        "troparia": [
+          { "text": "The sound of the tongue is unable to recount the all-glorious sufferings of the protomartyr, for it falleth short of fitting praise." },
+          { "text": "The most prideful superstitions of the tyrant ceased, for in Christ women have piously prevailed like men against him." },
+          { "text": "Instructed in the Gospel by thine ineffable words, O all-blessed Paul, the virgin betrothed herself to Christ." },
+          { "text": "Theotokion: The Virgin gaveth birth unto Thee, O Christ, the life-bearing Cluster of grapes, Who pourest forth the sweetness of universal salvation." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Lord, Thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
+        "troparia": [
+          { "text": "O thy love which passeth understanding, O most honored one, whereby, having united thyself in the Spirit, thou didst bind thyself to Paul in Christ!" },
+          { "text": "The mind was unable to wound thee who wast wounded with the desire of the Spirit, O delight of mortals." },
+          { "text": "Having rejected all fleshly attachments, thou wast not softened by the conversations of thy mother, O all-praised spiritual athlete." },
+          { "text": "Theotokion: Thou wast the correction of our first mother Eve, O Theotokos, having given birth unto the Author of life for the world." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Transforming thy womanhood into manliness through the virtues and the love of Christ,\nby both thou didst become a dwelling place of God;\nfor, having diminished the gloom of the passions by fasting,\nby martyrdom, thou wast shown to be the boast of endurance of pangs.\nWherefore, thou shinest forth with a twofold radiance upon the world like a beacon,\nillumining all with rays of the Spirit,\nO all-praised protomartyr, entreat Christ God,\nthat He grant remission of transgressions unto those//\nwho with love honor thy holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy protomartyr (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thine all-holy Offspring.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Paul, arranging thy marriage, joined thee, O most honored Thecla, who hadst been betrothed to Thamyris, to the heavenly Bridegroom, as one undefiled." },
+          { "text": "Thou wast brought to the love of piety by the words of Paul, O martyr, spurning the words of Thamyris as foolishness." },
+          { "text": "By the sprinkling of the divine Blood the race of Adam hath been blessed; and Eve rejoiceth, seeing the deceitful serpent humbled by women." },
+          { "text": "Loving piety, the protomartyr cast away all the beautiful things of life: riches, family, beauty, and the pleasures of a betrothed." },
+          { "text": "Theotokion: All we, the enlightened, know thee to be the Theotokos, O all-pure one; for thou, O Ever-virgin, hast given birth to the Sun of righteousness." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "With most grievous suffering thou didst struggle in the arena, O all-blessed Thecla, and wast counted worthy of honors." },
+          { "text": "The wicked serpent hath been laid waste, for the virgin learned obedience by divine sufferings." },
+          { "text": "By divine boldness hath thy shame been overcome, for the fire at the heart of the Trinity set thee aflame." },
+          { "text": "Theotokion: O Mary, unwedded Theotokos, make vain the hopes of our enemies and gladden those who hymn thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee://\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Having fortified the weakness of her nature with the might of the Cross, and repudiated youthful adornment with divine love, at night the maiden took courage and ran forth, seeking the fragrant teachings of Him Who was her Desired One." },
+          { "text": "With love, of her own will, the right glorious protomartyr Thecla supra-naturally left her bridal chambers to dwell in a dungeon with malefactors; for her desire for the Creator overcame her desire for habitations." },
+          { "text": "Drinking in the words of Paul in prison as in a divine meadow, the martyr kissed the chains of her divine teacher; and she grew spiritually, truly bringing forth most comely fruit for the Master." },
+          { "text": "Theotokion: Choosing thee from among the beautiful valleys of the world as a rose, a most comely lily, a sweet-scented fragrance, O Maiden, the Creator made His abode within thy womb; and, having been born, He hath filled all things with a sweet savor." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity,\nas they sang: 'O God of our fathers, blessed art Thou.'",
+        "troparia": [
+          { "text": "Like a prisoner thou wast bound to Paul with unbreakable bonds by love, O all-blessed one, piously crying out with faith and chanting with him: O God of our fathers, blessed art Thou!" },
+          { "text": "Thou didst stand with Paul before the unjust tribunal, O good virgin, and moved by love of the Master, thou didst cry out in awe, rejecting what was unseemly: O God of our fathers, blessed art Thou!" },
+          { "text": "Thou gavest thy body over to the furnace for the sake of divine love, O martyr, and by the power of Him Whom thou didst desire thou didst remain unconsumed, crying aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "The storm cloud, dousing the flame with rain and hail, rightly consumed the mindless ones and saved the martyr, who chanted thy hymn: O God of our fathers, blessed art Thou!" },
+          { "text": "Theotokion: Thou wast the rod that sprouted forth from the root of Jesse, O most blessed one, putting forth the Fruit of salvation for those who with faith cry out to thy Son: O God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "The King of heaven, Who is glorified by the hosts of angels,\nlet us praise and supremely exalt throughout all ages.",
+        "troparia": [
+          { "text": "Strange was thy thought; for thou, O virgin martyr, made thine abode in a grave as in Eden, hymning Christ throughout all ages." },
+          { "text": "Unable to endure seeing the magnificence and splendor of the beauty of thy virginity be dimmed, thou didst will to die and thus live throughout all ages." },
+          { "text": "Having united thyself to Christ the life-creating and supra-natural Bridegroom, O protomartyr, thou wast pleased that wild beasts be the preservers of thy virginity." },
+          { "text": "Having shed thy garment of corruption, O beautifully clad athlete of Christ, thou didst pass onto the life which ageth not, throughout all ages." },
+          { "text": "Theotokion: In a manner transcending nature thou hast given birth unto God the Word, the Creator and Savior, O Virgin; wherefore, we honor thee, O pure one, throughout the ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "With never ceasing praises we magnify thee,\nthe Mother of God Most High,\nwho art higher than the most pure hosts,\nand who beyond comprehension knew not wedlock,//\nyet hath truly given birth to God.",
+        "troparia": [
+          { "text": "Who doth not marvel at thine invincibility, O protomartyr? For, having subdued the passions, the noetic beasts, to the will of thy soul, thou wast not afraid of the unrestrained assaults of wild beasts, but remained incorrupt in their midst." },
+          { "text": "At the command of God, the hard and impassible rock split apart for thee, O God-bearing martyr who wast sealed by the laver of regeneration as a blessed bride, and it received thee like a chamber as thou didst flee." },
+          { "text": "Heal thou the wounds of my soul, O protomartyr; grant peace to the world, bestowing victories over heresies and schisms to all true Orthodox hierarchs, and bring peace to the Churches by thy prayers." },
+          { "text": "Theotokion: With unceasing hymns all we, the faithful, glorify thee, the most glorious and all-holy Theotokos, and we hymn thee as her who gaveth birth unto the Lord of all, unto the salvation of those who praise thee." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Let us praise Thecla, the equal of the apostles and first woman to suffer,\nthe glory of women, the instructor of spiritual athletes,//\nwho opened for all the way of martyrdom.",
+      "label": "Exapostilarion of the holy protomartyr",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "With thy mighty protection preserve all of us, thy servants,\nunharmed by the assaults of the enemies, O pure one;//\nfor thee alone do we have as a refuge in our needs.",
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "Having Christ God as thy Bridegroom in the heavens, O Thecla first to suffer,\nthou didst reject a transitory betrothed bridegroom;\nfor, wisely paying no heed to the enticements of thy mother, thou didst follow Paul,\ntaking the sign of the Cross upon thy shoulders, fearing not the fire.\nThe savagery of the wild beasts thou didst transform into meekness,\nand didst slay Phocas by the immersion of holy baptism in Christ,\ndo thou, who valiantly shone forth in divine sufferings,\ncease not to entreat Christ unceasingly on behalf of those//\nwho with faith keep thy most precious memory.",
+          "tone": 2,
+          "label": "composition of Anatolius"
+        },
+        {
+          "text": "Having offered thyself for the bidding of the Almighty, and forsaken earthly love,\nstrengthened as the protomartyr of Christ,\nthou hast arrayed thyself in the light of everlasting life,\nand thereby discovered the entrance to the blessed bridal chamber of eternal life\nwherein the flock of holy women rest.\nWith them pray thou for our souls, O Thecla, equal of the apostles.",
+          "tone": 2
+        },
+        {
+          "text": "Form a choir, O ye who love the martyrs,\nfor the time of struggles hath arrived, the annual commemoration of the protomartyr,\nwhich exhorteth all to the glorification of God.\nFor Thecla, first martyr among women, having finished the course of suffering,\nhath been revealed to be the first crown-bearer,//\nwho prayeth with boldness on behalf of our souls.",
+          "tone": 4
+        },
+        {
+          "text": "Thy superhuman suffering, O protomartyr of Christ,\nnot only astonished the nations, but also amazed the savage beasts.\nFlames were not considered flames by thee, O good virgin Thecla, for the sake of Christ thy Bridegroom;\nand, suffering for His sake, thou didst rejoice.\nAnd, cut off from the world, that thou mayest receive the blessedness of heaven,\nthou dost pray with boldness on behalf of our souls.",
+          "tone": 4
+        }
+      ],
+      "doxastikon": {
+        "text": "The struggle of the contest lieth before us, let us join chorus, O ye people,\nand look upon the most glorious things accomplished therein:\nfor the good virgin Thecla, the bride of God, the unblemished ewe-lamb,\nhath presented herself for sacrifice, following Christ God Who sacrificed Himself for our sake.\nWherefore, with faith in the Trinity she destroyed ungodliness,\nand, rejoicing with the angels, she beseecheth the Savior//\nto save our souls.",
+        "tone": 1,
+        "label": "Glory (composition of Anatolius)"
+      },
+      "theotokion": {
+        "text": "'A sword hath pierced me, O my Son,' said the Virgin upon seeing Christ hung upon the Tree,\n'my heart hath been rent, O Lord, as Simeon once foretold to me.\nBut arise, I pray Thee, O immortal One,//\nand glorify Thy Mother and handmaiden.'",
+        "tone": 1,
+        "label": "Both now — Stavrotheotokion",
+        "melody": "O all-praised martyrs"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Taught by the words of Paul, * O Thecla, bride of God,\nand confirmed through faith by Peter, * O divinely called one,\nthou wast shown to be the protomartyr and first sufferer among women,\nentering the flame as it were a place abloom with flowers.\nThe wild beasts and bulls stood in awe of thee,\nfor thou didst arm thyself with the Cross.//\nWherefore, O all-praised one, entreat Christ, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy protomartyr",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

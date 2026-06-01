@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Sergius and Bacchus",
+    "feastKey": "stSergiusAndBacchus",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 10-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-07.pdf",
+    "_note": "Doxology-rank joint martyrs. Single canon by Theophanes in Tone I. No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel. Great Doxology IS sung. LIC=6 (Tone VI x3 twice each) + Glory Tone IV + aposticha Glory Tone VIII. Lauds=4 (Germanus Tone I x2 + Tone II x2, Glory Tone III). Two troparia given (Tone IV and Tone V); Tone IV used as primary per OCA convention. Stavrotheotokia for weekday vespers/matins omitted per menaion-matins-track pattern."
+  },
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Manfully arming your mind against the enemy,\nO all-praised martyrs, ye destroyed all their delusion,\nreceiving the trophy of victory from on high,\nand crying out with oneness of mind://\nHow good and joyous it is to be with God!",
+    "tone": 2,
+    "label": "Kontakion of the holy martyrs",
+    "melody": "Seeking the highest"
+  },
+  "vespers": {
+    "licStichera": {
+      "count": 6,
+      "tone": 6,
+      "melody": "Having set all aside",
+      "stichera": [
+        {
+          "text": "Having disdained all earthly might and come to hate the flesh, ye came to love our holy God;\nand wearing a vesture of dishonor put upon you in mockery,\nye have received garments of light from heaven and robes which cannot be rent asunder.\nDancing therein, O most noetically rich crowned ones,\nbe ye a veil of protection and raiment for all of us\nwho have been stripped bare of life//\nthrough the deception of the serpent.",
+          "tone": 6,
+          "_note": "Twice"
+        },
+        {
+          "text": "O most glorious Sergius and most lauded Bacchus, ye vessels of the Spirit,\ntorrents pouring forth healings upon all, our protectors and mighty champions of the Church,\nvoluntary sacrifices and honored victims,\nbeacons illumining the ends of the earth with the light of piety:\ndispel the darkness which lieth upon our souls//\nand drive away all the gloom of evil.",
+          "tone": 6,
+          "_note": "Twice"
+        },
+        {
+          "text": "O glorious spiritual athletes, having issued forth from your corruptible bodies,\nye received habitations which pass not away, noetic gladness, never-waning light,\nand incorruptible life without care.\nYet pray that we who have been slain by the passions, and have turned aside to sin,\nmay also receive these things O Sergius and Bacchus,\nintercessors and havens for the faithful,\nwho pray with boldness//\non behalf of our souls.",
+          "tone": 6,
+          "_note": "Twice"
+        }
+      ],
+      "doxastikon": {
+        "text": "Radiant and twofold is the effulgence of the martyrs Sergius and Bacchus,\nfor they cast down the savagery of the tormenters, abolished the delusion of idolatry\nand, preaching with radiant voices, proclaimed the perfect mystery of divine knowledge.\nBy their supplications, O Christ, thou Giver of the law, Judge of the contest and Bestower of crowns,\ngrant that we also may receive crowns of might against the invisible powers of evil.",
+        "tone": 4,
+        "label": "Glory"
+      }
+    },
+    "apostichaGlory": {
+      "text": "The array of Christ's martyrs hath been fortified against the enemy;\nand among them, the right glorious and most excellent spiritual athletes Sergius and Bacchus shine like luminaries.\nBy them the evil host of demons was forced to turn in flight;\nby them the tyrants were amazed and the angels astonished,\nbeholding the incorporeal foe trampled underfoot by corporeal men.\nAnd the Church of the faithful, celebrating their most festive feast and universal joy, crieth aloud:\nO thou Who through the weakness of the flesh bound the mighty one,\nsave Thou our souls through the prayers of Thy saints!",
+      "tone": 8,
+      "label": "Glory (Aposticha)"
+    }
+  },
+  "matins": {
+    "_meta": { "tone": 1, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs",
+      "_note": "On 'God is the Lord': Troparion of the holy martyrs (Twice); Glory ..., Both now ..., Theotokion of the troparion tone."
+    },
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the martyrs, the acrostic whereof is 'I hymn Sergius the spiritual athlete and the ever-memorable Bacchus', the composition of Theophanes, in Tone I.",
+      "ode1": {
+        "irmos": "Thy victorious right arm, in a manner befitting God, hath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,//\nfashioning anew a path for the Israelites through the deep.",
+        "troparia": [
+          { "text": "O Sergius, thou favorite of Christ, taking the ever-memorable Bacchus as thy fellow intercessor and helper,\nwith godly wisdom ye finished your sufferings together.\nGrant a word of wisdom unto me who hymn you." },
+          { "text": "Having set your foundation upon the immovable rock of the Christian Faith, O holy martyrs,\nye were shown to be a rampart and towers of piety firmly established upon a solid foundation." },
+          { "text": "Believing the words of Christ and looking toward Him with an unwavering gaze,\nye spat upon all transitory glory, O holy ones, wounded with the love of everlasting glory." },
+          { "text": "Having divested yourselves of family, homeland and honor for Christ's sake, ye were filled with gladness;\nand when ye were clad in women's garments ye put on the robe of incorruption with splendor and manly wisdom." },
+          { "text": "Theotokion: O Mother of God, entreat the Word, to Whom thou hast given birth and Who came to us in the flesh,\nthat He be merciful and well-disposed towards the faithful;\nfor thee have we acquired as our intercessor and salvation." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature and in compassion hast assumed its form;\ndo Thou gird me with power from on high, that I may cry unto Thee:\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "troparia": [
+          { "text": "He Who, as God, alone knows all things before they come into being, seeing now your offerings to Him,\nhath filled you abundantly with the wisdom of discourse, divine knowledge and steadfast thought,\nfor ye are His warriors, O blessed ones." },
+          { "text": "O martyred spiritual athletes, favorites of Christ, wishing to suffer lawfully,\nwith love for the Creator and divinely wise mind ye spurned corruptible and transitory glory,\nthis world and the prince thereof." },
+          { "text": "Standing before the Lord in the most pure thoughts of your mind, and filled therein with splendor,\nand manifestly delighting in ineffable blessedness,\ndeliver from dangers those who honor you, O spiritual athletes." },
+          { "text": "Theotokion: Adam, the first to come under the dominion of death, hath now been delivered by thy birthgiving,\nO only Bride of God;\nfor in a manner transcending nature thou hast given birth to the truly hypostatic Life\nunited to the flesh hypostatically, O pure one." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Come, ye who love the martyrs, and let us honor the holy athletes Sergius and Bacchus,\nthe noetic pearls of the Lord,\nfor they manfully trampled the delusion of the enemy underfoot and destroyed all the might of the idols;\nwherefore, having received crowns of victory from heaven, as is meet, they join chorus with the angels.\nWith them let us all cry aloud:\nEntreat Christ God, that He grant remission of sins to those who with love honor your holy memory.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice.",
+        "bothNow": {
+          "text": "From the snares of enemies visible and invisible,\nwe have been overcome by the storms of our uncountable sins,\nand fleeing unto the safe harbor of thy goodness O pure one,\nwe have thee as our rampart and sure protection.\nWherefore we thy servants beseech thee to ceaselessly make fervent supplication, O most pure one,\nunto Him who seedlessly became incarnate from thee,\nthat those who worthily hymn thee//\nmay be granted the remission of their sins.",
+          "tone": 8,
+          "label": "Theotokion"
+        }
+      },
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes as the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel would come forth from thee,//\nfor our salvation and restoration.",
+        "troparia": [
+          { "text": "Two beacons shining forth from the West, holding the land against the ungodly and undertaking a journey,\nhave arrived at Thee, the radiant East of salvation, O Christ." },
+          { "text": "Neither fire, nor sword, nor persecution, nor wounds was able to separate you from the pious thought of God;\nfor, for His sake, ye despised this life which endeth, O right glorious ones,\nand have received blessed and imperishable sweetness." },
+          { "text": "The truly unwavering luminaries enlighten the firmament of the Church of Christ\nwith the light of divine effulgence, gladdening the souls of the pious, and emitting rays of miracles." },
+          { "text": "The godly Bacchus and the excellent Sergius annually summon the lovers of piety and the martyrs to a feast,\nsetting forth their valiant deeds." },
+          { "text": "Theotokion: The sword which guardeth the portal of Eden now giveth way before the faithful;\nand it receiveth them with splendor, beholding them marked with the precious Blood\nof Him Who was born from thy womb, and with grace." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Thou hast shone upon us with the radiance of Thy coming O Christ,\nand illumined the ends of the world with Thy Cross,//\nenlighten with the light of thine understanding the hearts of those who with right worship hymn Thee.",
+        "troparia": [
+          { "text": "Driving away delusion with the sword of truth and mightily enduring the tyrants' wounds,\nye became victors; and, crowned by Christ, ye now rejoice, as is meet." },
+          { "text": "Strengthened by the invincible power and grace of the Trinity,\nthe two martyrs cast down the prince of darkness and those who are enthralled by him;\nwherefore, with honor they are called blessed." },
+          { "text": "With endurance, spiritual courage and might of thought, the two glorious martyrs\ntranscended all the bitter fury of the tormenters and made their abode with the angels." },
+          { "text": "Theotokion: O Mother of God, like the dawn thou hast shone forth the never-setting Sun of true righteousness,\nbearing Him in thine arms united hypostatically to the flesh; wherefore, we all glorify thee." }
+        ]
+      },
+      "ode6": {
+        "irmos": "The deepest abyss hath surrounded us, and there is none to deliver us,\nyea we have been counted as sheep for the slaughter;\nsave Thy people O our God,//\nfor Thou art the strength and restoration of the weak.",
+        "troparia": [
+          { "text": "The relics of the martyrs pour forth streams of healings in abundance.\nO ye faithful, let us therefore fervently draw forth therefrom and bless the spiritual athletes,\nthe glorious Sergius and the ever-eloquent Bacchus." },
+          { "text": "Hating the tents of the iniquitous and setting at naught their falsehood,\nSergius and Bacchus made the journey to heaven in right orderly fashion,\nattaining unto the calm haven of Christ." },
+          { "text": "The portals of heaven are thrown open to the martyred spiritual athletes,\npaying homage to their honorable suffering,\nwhich was like unto the grace-bearing passion of our God,\nand which driveth away legions of demons." },
+          { "text": "Theotokion: With wisdom we proclaim thee truly to be the Mother of God, O most pure one;\nfor thou, O Virgin, didst ineffably give birth to the beginningless and only-begotten Son\nWho shone forth from the Father before the beginning of time." }
+        ]
+      },
+      "kontakion": {
+        "text": "Manfully arming your mind against the enemy,\nO all-praised martyrs, ye destroyed all their delusion,\nreceiving the trophy of victory from on high,\nand crying out with oneness of mind://\nHow good and joyous it is to be with God!",
+        "tone": 2,
+        "label": "Kontakion of the holy martyrs",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "In that Sergius and Bacchus dwell in the heavens and are filled with divine light by Thee, O Christ,\ngo Thou quickly before me who walk in the darkness of ignorance,\nand rescue me from the passions, O only Immortal One,\nsending down for me the vesture of repentance,\nthat with radiant mind I may hymn their splendid feast and cry out, rejoicing:\nHow good and joyous it is to be with God!"
+      },
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos, to be a noetic furnace;\nfor as He, the supremely exalted One, saved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,//\nO Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          { "text": "Rejoice, ye two glorious spiritual athletes!\nRejoice, ye who splendidly overcame the threat of the tyrants!\nRejoice, ye who finished the good race!\nRejoice, food that remaineth ever within us!\nRejoice, O ye blessed of God, who manifestly intercede before God!" },
+          { "text": "Walking upon the earth, O most radiant martyrs,\nye darkened the eyes of the demons and the faces of the persecutors\nwith the light of grace and the rays of your suffering,\nhymning our praised and supremely glorious God." },
+          { "text": "Being animate and living temples of the living God, O all-blessed spiritual athletes,\ntruly strengthened by the power of God,\nye vanquished hordes of the enemy, praising in hymns, God, Who is mighty in battles." },
+          { "text": "Theotokion: O blessed and all-pure Lady, thou wast a most pure temple and a most holy ark,\nhaving received the infinite Creator, God, the only-begotten Word, in thy womb,\ncontaining the Unapproachable One." }
+        ]
+      },
+      "ode8": {
+        "irmos": "In the furnace as in a fiery smelter the Israelite children shone more brightly than gold\nwith the beauty of godliness, as they exclaimed:\nBless the Lord all ye works of the Lord,//\nhymn and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "O Thou Who of old didst cool the flame with dew for the youths, strengthen Thou Thy martyrs,\nwho stand firm amid struggles and sing:\nBless the Lord, all ye works of the Lord;\nhymn and supremely exalt Him throughout all ages!" },
+          { "text": "Wisely did the spiritual athletes reject the poisonous and spiritually harmful blandishments of the torments,\ncrying out to Christ and saying:\nBless the Lord, all ye works of the Lord;\nhymn and supremely exalt Him throughout all ages!" },
+          { "text": "Christ hath shown Sergius and Bacchus, who are truly crowned, to be our true preservers,\nwho protect us and chant:\nBless the Lord, all ye works of the Lord;\nhymn and supremely exalt Him throughout all ages!" },
+          { "text": "Through the prayers of the martyrs, O Christ our Master,\nguide my steps to the virtues and grant that I may readily cry to Thee:\nBless the Lord, all ye works of the Lord;\nhymn and supremely exalt Him throughout all ages!" },
+          { "text": "Theotokion: I bless thee, the true Mother of our God, O pure and all-immaculate Lady,\noffering thee 'Rejoice!' with the angel;\nfor thee do all the works of the Lord unceasingly chant and exalt supremely throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed, prefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,//\nthat we may unceasingly magnify Thee.",
+        "troparia": [
+          { "text": "Ye have acquired all of Christ, having forsaken the whole world for His sake;\nand now ye dwell in the heavens with the choirs of the heavenly hosts,\nbeholding the splendors of the blessed." },
+          { "text": "O excellent pair, ye give grace from on high and remission of sins unto those\nwho with love offer you praises.\nEntreating Him Who alone is merciful and hastening to Him, ye have cast down care for things below." },
+          { "text": "Illumined with the splendor of the thrice radiant Godhead, O invincible martyrs,\nye rejected the deceptive ungodliness of polytheism and the fear of the tormenters;\nand ye now delight in the incorruptible sweetness of paradise." },
+          { "text": "Having finished your good race, striving to preserve the Faith of piety, O most glorious martyrs,\nye have been deemed worthy to receive the immovable kingdom,\ncrowned with crowns of beauty and magnificence." },
+          { "text": "Theotokion: O Thy wonders which pass understanding!\nFor thou alone, O Virgin Mother, in a manner transcending nature hast given birth to God the Word\nWho assumed flesh, and Who wisely sustaineth and nurtureth all things by His will." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Let us praise Sergius and Bacchus, the two radiant martyrs;\nfor they endured a battery of wounds and cast down the pride of the most evil tyrant\nby the power of the Trinity.",
+      "tone": 2,
+      "label": "Exapostilarion of the holy martyrs",
+      "melody": "To the disciples",
+      "_note": "Sung twice.",
+      "bothNow": {
+        "text": "Thou hast been shown to be more glorious than the cherubim and more exalted than the seraphim,\nhaving given birth to God incarnate\nWho hath shown mortals how to tread the straight paths which lead to salvation.",
+        "tone": 2,
+        "label": "Theotokion"
+      }
+    },
+    "lauds": {
+      "stichera": [
+        {
+          "text": "Not bound by love of nature, but by faith, like David the martyrs Sergius and Bacchus cried aloud:\n'Behold now, what is so good or so joyous as for brethren to dwell together in unity?'\nWherefore, the holy ones trampled upon the enemy, and, taking up the cross, followed after Christ;\nand they beseech our King and God to grant great mercy to our souls.",
+          "tone": 1,
+          "label": "Composition of Germanus",
+          "_note": "Twice"
+        },
+        {
+          "text": "Assembling today, let us cry out the hymn of the prophet to the saints:\nBehold now, what is so good or so joyous as for brethren to live together,\nnot by consequence of kinship, but by the unity of the faith in the Holy Spirit?\nFor the valiant martyrs Sergius and Bacchus cast aside all corruptible things\nand, taking the cross upon their shoulders, followed after Christ.\nAnd possessing boldness in the heavens, they ever pray for us,\nthat God grant us great mercy.",
+          "tone": 2
+        },
+        {
+          "text": "Shod with sandals pierced with nails, in preparation of the proclamation of the Gospel of peace,\nand with blood pouring from his feet,\nSergius blinded the serpent who doth bruise our heel, and received a martyr's crown.\nWherefore, by their prayers, O Christ God,\nnail Thou our flesh to the fear of Thee, and have mercy upon us.",
+          "tone": 2
+        }
+      ],
+      "doxastikon": {
+        "text": "How good and how pleasant is the brotherly mind of Thy martyrs, O Lord!\nFor Thou didst not make them brothers by blood,\nbut through their faith and fraternal love,\nmaking them wise even unto the shedding of their blood:\nThrough their supplications, O Christ God, have mercy upon us.",
+        "tone": 3,
+        "label": "Glory"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

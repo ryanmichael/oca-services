@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Forefeast of the Nativity of Christ; Holy Nun-Martyr Eugenia of Rome",
+    "feastKey": "foreFeastNativity_stEugeniaOfRome",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 12-24.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-24.pdf",
+    "_note": "Dec 24 is the last day of the Forefeast of the Nativity. The forefeast completely dominates: troparion, both sessional hymns (Kathisma 1 & 2), all Lauds stichera, all exapostilaria, and the Ode 6 kontakion/ikos are forefeast. Eugenia contributes 3 Vespers stichera (Tone VIII), a Sessional Hymn after Ode 3, and canon troparia (Tone II, by Theophanes). No separate saint troparion or kontakion is given in the Menaion for this day. Great Doxology is sung (doxology-rank). No Polyeleos, no Magnification, no Matins Prokeimenon, no Matins Gospel."
+  },
+  "vespers": {
+    "stichera": [
+      {
+        "text": "Forsaking the beauty of the world,\nthou didst illumine the nobility of thy soul\nwith the beauties of nobility,\nO all-praised Eugenia,\npreserving the grace of the image of God\nuntroubled throughout thy life, O invincible martyr,\nthou divine mirror of virginity,\nmost noble blossom of nature.",
+        "tone": 8,
+        "melody": "O most glorious wonder",
+        "label": "Sticheron of the holy nun-martyr Eugenia"
+      },
+      {
+        "text": "Having adorned thyself with discourse, life and grace,\nand with patience of soul,\nthou didst lead an army of spiritual athletes\nand an assembly of virgins\nto Him Who hath shone forth from the Virgin\nand hath manifestly disclosed to all the entrance of witness,\nO all-wise Eugenia.\nWith them entreat Him now,\nthat He save thy flock.",
+        "tone": 8,
+        "melody": "O most glorious wonder"
+      },
+      {
+        "text": "The Founder of righteousness\nhath magnificently adorned thee with a twofold crown,\nas a pure virgin and glorious martyr,\ngiving thee a beautiful bridal-chamber\nillumined with effulgence,\nwhere, making thine abode,\nthou hast now manifestly been enriched with eternal blessedness,\nO bride of Christ.",
+        "tone": 8,
+        "melody": "O most glorious wonder"
+      }
+    ],
+    "_note": "3 stichera of the holy nun-martyr Eugenia (Tone VIII, Spec. Mel. 'O most glorious wonder'). Preceded by 3 forefeast stichera (Tone V) and followed by Glory/Both now of the forefeast (Tone VI) — forefeast content not recorded here."
+  },
+  "matins": {
+    "_meta": { "tone": 2, "feastRank": "doxology", "feastType": "saint", "_source": "stSergius-menaion" },
+    "troparion": {
+      "_note": "On 'God is the Lord': Troparion of the forefeast (Tone IV), thrice. No separate saint troparion is given for this day in the Menaion — the forefeast troparion serves alone.",
+      "text": "Once Mary, pregnant with a seedless pregnancy,\nwas registered in Bethlehem with the elder Joseph,\nas being of the seed of David.\nAnd while they were there, the days were accomplished that she should be delivered,\nbut though there was no room for them in the inn,\nthe cave showed itself to be a beauteous palace for the Queen,//\nChrist is born to raise up the image that fell of old!",
+      "tone": 4,
+      "label": "Troparion of the forefeast (thrice)"
+    },
+    "sedalion": [
+      {
+        "text": "Confining thyself to feats of struggle,\nthou didst become glorious through the struggles of martyrdom,\nleading many of the saved to thy Creator;\nfor, having forsaken transitory things with divine love,\nthou didst accomplish courageous struggles, O glorious one.\nWherefore, after thine end thou hast found endless life,\nabiding ever with thy Bridegroom, O angelic Eugenia.\nEntreat Christ God, that He grant remission of sins\nunto those who honor thy most precious memory with love.",
+        "tone": 8,
+        "label": "Sessional Hymn of the holy nun-martyr (after Ode 3)",
+        "melody": "Of the Wisdom",
+        "_note": "Sung twice. Both now: Sessional Hymn of the forefeast (Tone VIII) follows in the service but belongs to the forefeast, not the menaion."
+      }
+    ],
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy nun-martyr Eugenia, the acrostic whereof is 'In songs I eminently hymn the great glory of Eugenia', the composition of Theophanes, in Tone II. The canon of the forefeast (Tone II, by Joseph) is interleaved at the actual service; only Eugenia's canon is given here. Kontakion/Ikos at Ode 6 are of the forefeast and are recorded at canon top level per project convention for the forefeast only.",
+      "kontakion": {
+        "text": "Today the Virgin cometh to the cave\nto ineffably give birth unto the pre-eternal Word.\nHaving heard this, be glad, O thou ecumene,\nand with the angels and shepherds glorify the pre-eternal God,//\nWho is to appear as a little babe.",
+        "tone": 3,
+        "label": "Kontakion of the forefeast",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "The sacred sayings of the prophets have received their fulfillment,\nfor, lo! the Virgin giveth birth to the Supremely perfect One in the city of Bethlehem, within a cave,\nrefashioning all creation.\nRejoice and be glad,\nthe Master of all hath come to dwell with His servants,\ndelivering from the dominion of the alien one,\nus who were cast down by corruption,\nand He is seen as an infant, wrapped in swaddling-clothes, in the manger,\nthe pre-eternal God, the little babe."
+      },
+      "ode1": {
+        "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,//\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "O Eugenia, martyr of Christ, joyfully dancing now with the angelic armies, as an immaculate virgin, as a spiritually rich and crowned martyr, pray thou, that He bestow grace upon those who hymn thee with love." },
+          { "text": "Hearkening to divine hymnody, O bride of Christ, through thy nobility thou didst soar aloft to the Most High; for like light the theology of hymns of the Spirit shone in thy heart, driving away all ungodliness." },
+          { "text": "Unmindful of thy feminine nature, thy mind hastened to manly feats, having found courage through grace, being directed toward the providence of God, O martyr Eugenia, namesake of divine nobility." },
+          { "text": "Illumined with noetic light, O divinely wise one, thou didst cause a great many to partake of effulgence; delivering from sin those who hymn thee, by thine entreaties grant it." },
+          { "text": "Theotokion: We the faithful who have been slain by the tree of knowledge, O pure one, have, by Christ God — the Tree of Life, Who sprang forth from thee in a manner past understanding, O Theotokos, been called back to life. Entreat Him with boldness, that our souls be saved." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God//\nand none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "With most perfect resolve thou didst offer thyself to the Master as an unblemished sacrifice, spurning corrupt wealth, O all-wise one, and crying aloud: Thou art our God, and there is none more holy than Thee, O Lord!" },
+          { "text": "O all-pure one, thy purity was recognized, and the might of thy sufferings hath shone forth; for thou didst make thine activity an ascent of vision, crying: Thou art our God, and there is none more holy than Thee, O Lord!" },
+          { "text": "Held fast by desire for chastity, thou didst preserve the boast of purity, and didst become pleasing in wisdom, crying out to Christ: Thou art our God, and there is none more holy than Thee, O Lord!" },
+          { "text": "Theotokion: O ye divinely wise, let us hymn Mary, the pure Theotokos, who hath been revealed to be the mediatress of salvation, and let us cry aloud: There is none as pure as thee, O most pure one, and none more immaculate than thee, O Lady!" }
+        ]
+      },
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador,\nnor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Thou hast come, taking flesh from the Virgin, O Most High, betrothing companies of virgins to Thyself, who loved Thee alone as their virginal Bridegroom." },
+          { "text": "Thou didst shed the raiment of thy fleshly birth, O all-glorious martyr, and by baptism didst splendidly clothe thyself in the incorrupt garment of regeneration." },
+          { "text": "Luminous radiance shone upon thy heart, with the effulgence of grace dispelling the gloom of delusion which had been poured forth, O Eugenia, martyr of Christ." },
+          { "text": "Thou didst illumine thy life with beauty and comeliness, having first caused the carnal passions to wither away through abstinence, and later shone forth most radiantly in suffering, O Eugenia." },
+          { "text": "Theotokion: Thou didst become more exalted than the angels, giving birth to the Angel of great Counsel, Who became a man in His exceeding loving-kindness, and is the Lover of mankind, O all-hymned one." }
+        ]
+      },
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin.\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "Seeing thy journey leading to salvation, the soul-destroying serpent raised up divers temptations against thee, striving to weaken thy might, O passion-bearer; but thou didst trample him underfoot, O divinely wise and pure one." },
+          { "text": "To Christ, the Accomplisher of all good things, the Benefactor and Bridegroom of souls, thou didst appear as adorned in ascetic struggles by abstinence and resplendent with the suffering of martyrdom, O goodly virgin Eugenia, martyr of Christ." },
+          { "text": "A crown of gifts was set upon thy brow, for thou didst cherish divine wisdom, disdaining the riches and glory of thy father; and with strength followed after thy beloved Bridegroom, O all-honored one." },
+          { "text": "Theotokion: The Life Who shone forth from thee upon the world, O Birthgiver of God, by communion calleth those who before were held fast by death to everlasting life, and who cry aloud with faith: We know none other God than Thee!" }
+        ]
+      },
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Thou gavest no slumber to thine eyelids until thou didst extinguish all passionate attachments, and made of thyself a pure dwelling-place for thy Creator." },
+          { "text": "Emulating the morals of the wife of Potiphar, she who was black in deed and name violently slandered thine honorable life, O all-honored one." },
+          { "text": "Showing forth steady radiance and enriched with the grace of healings and a wealth of faith, thou didst become the teacher of a company of nuns." },
+          { "text": "Theotokion: All the prophets mystically learned of thine ineffable birthgiving, O all-pure one, in the Spirit describing and foretelling to all those things which were to come." }
+        ]
+      },
+      "ode7": {
+        "irmos": "The godless order of the lawless tyrant\nfanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "Thou madest clear to all the truth of the divinely inspired Scriptures, having rendered manly thy feminine nature, and didst most gloriously astonish those whom thou didst lead in splendor to Christ when they had believed on Him, O spiritually rich martyr." },
+          { "text": "By thy divine teachings thou didst manifestly denounce the madness of idolatry, O all-praised one, by the blood of thy martyrdom betrothing an innumerable and radiant multitude of virgins to Christ Who reigneth over all." },
+          { "text": "Beholding thy radiant life, the glorious Basilla, moved by divine zeal, betrothed herself to Christ, forsaking all the passionate attachments of the flesh; and she hath now been deemed worthy of the joy of the martyrs." },
+          { "text": "Theotokion: Having seedlessly given birth to hypostatic Life, O all-immaculate Virgin, pure Birthgiver of God, thou hast healed the pasturage of death. Wherefore, rejoicing, we call thee the well-spring of immortality." }
+        ]
+      },
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace\nwith the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn,\nand supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "Thine endurance was tested in the river and the fire; and, transcending nature, thou didst pass through them mightily, crying out: Hymn Christ, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Christ, Who appeared in strange manner unto thee who wast held in prison, richly nourished thee, and by His own nativity uniteth to the armies on high thee who glorify Him throughout all ages." },
+          { "text": "Thy Bridegroom doth magnificently adorn thee with twofold crowns, O divinely wise Eugenia, and in that He is righteous, He rightly bestoweth upon thee a splendid bridal-chamber. Him do we supremely exalt throughout all ages!" },
+          { "text": "The grace of God, having radiantly illumined thee, now shineth in the mansions of heaven: Pray thou unceasingly, that by thy supplications those who celebrate thy memory may be filled therewith, O divinely wise one." },
+          { "text": "Theotokion: We know thee to be a wellspring of the radiance of immortality, O Theotokos, for thou hast given birth to the Word of the immortal Father, Who delivereth from death all who supremely exalt Him throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Making thine abode in the mansions of heaven, O glorious one, as a martyr most true and an all-immaculate virgin among martyrs, thou hast now manifestly been deemed worthy of the sweetness of paradise with the virgins, O all-blessed Eugenia." },
+          { "text": "Thou hast obtained the Desire which transcends understanding and thought, standing in splendor before the Ultimate Desire, manifestly shining with the brilliant rays of the Sovereign Trinity, O divinely wise and goodly virgin Eugenia." },
+          { "text": "Keeping the lamp of virginity ever-burning, thou wast adorned with the crown of martyrdom. Cease thou never in thy prayers for those who with piety and love honor thee, that we may be saved by thy supplications, O all-glorious Eugenia." },
+          { "text": "Thou hast now departed unto divine coolness, O most comely one, having passed through the unbearable fire of wounds and the surging waters of temptations, O martyr Eugenia. Wherefore, entreat Christ, that He save our souls." },
+          { "text": "Theotokion: Having conceived in thy womb the Rain of heaven which had descended upon the fleece, O all-immaculate one, thou hast given birth to Him Who granteth immortality, for us who piously hymn Him and magnify thee, the immaculate Theotokos." }
+        ]
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Once Mary, pregnant with a seedless pregnancy,\nwas registered in Bethlehem with the elder Joseph,\nas being of the seed of David.\nAnd while they were there, the days were accomplished that she should be delivered,\nbut though there was no room for them in the inn,\nthe cave showed itself to be a beauteous palace for the Queen,//\nChrist is born to raise up the image that fell of old!",
+      "tone": 4,
+      "label": "Troparion of the forefeast",
+      "_note": "After the Great Doxology: Troparion of the forefeast, once. Litanies and dismissal. No separate saint troparion is given for this day."
+    }
+  }
+}

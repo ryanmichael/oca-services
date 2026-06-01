@@ -1,0 +1,277 @@
+{
+  "_meta": {
+    "feast": "Forefeast of the Elevation of the Precious and Life-Giving Cross; and Hieromartyr Cornelius the Centurion",
+    "feastKey": "forefeeastCrossAndCornelius",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 09-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-13.pdf",
+    "_note": "Three commemorations: Dedication of the Church of the Holy Resurrection, Forefeast of the Elevation of the Cross (primary day character), and Hieromartyr Cornelius the Centurion. Doxology-rank with Great Doxology. Three canons: Dedication (John the Monk, Tone IV), Forefeast (Joseph, Tone IV), Cornelius (Joseph, Tone V). Modeled as joint two-canon: Canon I = Forefeast of the Cross; Canon II = Cornelius. Dedication canon troparia interspersed but omitted from this menaion-matins-track file per convention. Kontakion of the Forefeast at kontakionAfterOde3 slot; Kontakion of the Dedication at standard after-Ode-6 slot. Exapostilarion: Dedication (primary); Glory/Both now: Forefeast. Lauds: 6 stichera (3 Dedication + 3 mixed) + Glory Tone III + Both now Forefeast Tone III. Troparia at God is the Lord: Dedication (twice), Glory Cornelius, Both now Forefeast."
+  },
+  "troparion": {
+    "text": "Thou didst show forth the beauty\nof the holy dwelling-place of Thy glory here below, O Lord,\nlike the splendor of the firmament on high.\nEstablish it throughout all ages,\nand through the Theotokos\naccept the supplications we unceasingly offer unto Thee therein,//\nO Thou life and resurrection of all.",
+    "tone": 4,
+    "label": "Troparion of the Dedication"
+  },
+  "kontakion": {
+    "text": "Grant inner enlightenment and spiritual renewal of heart\nunto those who with faith celebrate\nthe sacred dedication of the temple of Thy house,\nof which it was Thy good pleasure to have built in Thy divine name,//\nO Thou Who art glorious in the saints.",
+    "tone": 2,
+    "label": "Kontakion of the Dedication",
+    "melody": "The steadfast"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "doxology",
+      "feastType": "forefeast",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Thou didst show forth the beauty\nof the holy dwelling-place of Thy glory here below, O Lord,\nlike the splendor of the firmament on high.\nEstablish it throughout all ages,\nand through the Theotokos\naccept the supplications we unceasingly offer unto Thee therein,//\nO Thou life and resurrection of all.",
+      "tone": 4,
+      "label": "Troparion of the Dedication",
+      "_note": "On 'God is the Lord': Troparion of the Dedication (Twice); Glory ..., Troparion of Cornelius; Both now ..., Troparion of the Forefeast."
+    },
+    "troparionGlory": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision, O divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Cornelius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the Holy Hieromartyr Cornelius"
+    },
+    "troparionBothNow": {
+      "text": "O Lord, we offer unto Thee in supplication\nthe life-creating Cross of Thy goodness,\nwhich Thou hast bestowed upon us, unworthy though we are.\nSave Thou all Orthodox Christians, and this Thy city,\nwhich entreateth Thee through the Theotokos,//\nO Thou Who alone lovest mankind.",
+      "tone": 4,
+      "label": "Troparion of the Forefeast"
+    },
+    "sedalion": [
+      {
+        "text": "Christ hath enlightened all by His advent and hath restored the world by His divine Spirit,\nand the souls of mortals are made new again;\nfor a house hath now been raised up to the glory of the Lord,\nwhere Christ our God reneweth the hearts of the faithful,//\nunto the salvation of mankind.",
+        "tone": 4,
+        "label": "Sessional Hymn of the Dedication (after Kathisma 1)",
+        "melody": "Go thou quickly before",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "text": "O ye faithful, the festive day of the dedication hath overtaken us,\ndecreeing that all the chosen of Christ be renewed,\nand that with radiant countenance they faithfully chant hymns from the depths of their hearts\nunto the Master, as the Redeemer Who reneweth us.",
+        "tone": 4,
+        "label": "Sessional Hymn of the Dedication (after Kathisma 2)",
+        "melody": "Go thou quickly before",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 5,
+      "_authors": "Canon I of the Forefeast of the Cross by Joseph in Tone IV (acrostic: Greek alphabet). Canon II of the Holy Hieromartyr Cornelius by Joseph in Tone V (acrostic: 'I hymn the glory of thy wonders, O blessed one'). Canon of the Dedication by John the Monk in Tone IV also present in source; interleaved Dedication troparia are omitted per menaion-matins-track convention. Octoechos canons omitted per menaion-matins-track pattern.",
+      "kontakionAfterOde3": {
+        "text": "The Church hath been shown to be a heaven of great splendor,\nwhich enlighteneth all the faithful;\nand, standing therein, we cry aloud: Establish this house, O Lord!",
+        "tone": 4,
+        "label": "Kontakion of the Forefeast",
+        "melody": "Thou hast appeared"
+      },
+      "ode1": {
+        "irmos": "O Thou who wast born of the Virgin,\ndrown I implore Thee, in the depth of dispassion\nthe triune nature of my soul,\nas Thou didst the mighty strongholds of the warriors,\nthat in the mortality of my flesh as on a timbrel//\nI may chant a hymn of victory.",
+        "irmos2": "Christ, who with an upraised arm bringeth wars to naught,\nhath shaken horse and rider in the Red Sea;\nbut Israel hath He saved//\nas they chanted a song of victory.",
+        "troparia": [
+          { "text": "Be glad, O heaven, and rejoice, O earth! For the most holy Cross cometh forth, sanctifying with grace those who venerate it as a well-spring of holiness and the cause of all deification." },
+          { "text": "O most holy Cross, strengthen us who bow down before thee with faith, that we may piously tread the path of heaven, that, avoiding the pitfalls of the adversary, we may come to share in divine glory." },
+          { "text": "O most precious Cross, as we are acknowledged by the Creator through thee, we ever embrace thee with heart and soul, gazing upon thee as thou liest before us; and we are enlightened in mind, glorifying the Word, Who accomplisheth all things." },
+          { "text": "Theotokion: O all-immaculate Theotokos, preserve thou the city of God the King of all, the God-pleasing and precious treasure, thy portion, which ever praiseth thee and honoreth thy birthgiving with faith." },
+          { "canon": "secondCanon", "text": "By thy supplications, O divinely blessed hierarch, enlighten those who celebrate this thy splendid and divine repose, thy most radiant memory and sacred festival." },
+          { "canon": "secondCanon", "text": "Even before the mysteries of initiation were performed upon thee, thou wast shown to exercise thyself in almsgiving and prayer, O wise and all-blessed Cornelius, seeking the Lord of all with upright mind." },
+          { "canon": "secondCanon", "text": "When the preeminent of the apostles taught thee at the behest of the Master, O blessed one, thou didst learn the laws of the Savior Who, in the excess of His goodness, had united Himself to the flesh." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou settest the hearts of the faithful on fire, that they may ever glorify thee with never-ending love, O Lady, Birthgiver of God; for thou art the glory of all mankind, having given birth to the Lord of glory, O pure one." }
+        ]
+      },
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father;\nfor there is none more holy than Thee,//\nO Lover of mankind.",
+        "irmos2": "By Thy command Thou didst establish the earth upon nothing\nand suspended it unsupported;\ndo Thou establish Thy Church on the unshakeable rock of Thy commandments, O Christ,//\nwho alone art good and the Lover of mankind.",
+        "troparia": [
+          { "text": "Glorified and enlightened by thy precious embrace, O most glorious Cross of the Lord, with faith we glorify thee, who art the glory of Christ." },
+          { "text": "Arriving in gladness, O ye faithful, let us draw forth the ever-living waters of the Cross as from a pure well-spring; and, saved, let us praise God." },
+          { "text": "In that He is life, Jesus died, hanging upon the Tree of the Cross; and embracing it now with faith, we drive away the passions, the mediators of death." },
+          { "text": "Theotokion: Having revealed thyself, O pure Virgin, dispel the darkness of my soul, crush thou the members of sin, and save me, O thou who hast given birth to the compassionate One." },
+          { "canon": "secondCanon", "text": "Thou and all thy household received the enlightenment of the Holy Spirit and the fullness of the grace of God through the divine mouth, and by the arrival of the preeminent apostle of God, who declared the doctrines of salvation unto you." },
+          { "canon": "secondCanon", "text": "Exalted in the virtues like a cedar of lofty stature, O blessed hierarch Cornelius, thou hast put forth for us fragrant fruits: the gift of doctrines, the grace of miracles and the working of healings." },
+          { "canon": "secondCanon", "text": "Having been deemed worthy of the greatest of splendor, O Cornelius, with the preeminent apostle and many others thou didst make haste to preach the divine proclamation everywhere; and we, enlightened thereby, have been delivered from the darkness of ignorance." },
+          { "canon": "secondCanon", "text": "Theotokion: Thou wast the radiant habitation of purity, bearing the incarnate Bestower of light, Who in His love for mankind manifested Himself as a man like unto us and destroyed corruption, O most pure Virgin Bride of God, thou incorrupt restoration of mankind." }
+        ]
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Christ showed forth the tabernacle of witness, and the godly Moses set it up on earth;\nand Solomon dedicated the temple with sacrifices;\nand we, hastening to the new Jerusalem with faith,\nlike David utter divine hymnody unto Him Who was crucified for our sake,//\nasking forgiveness for all things wherein we have sinned.",
+        "tone": 8,
+        "label": "Sessional Hymn of the Dedication (after Ode 3)",
+        "melody": "That which was commanded",
+        "glory": {
+          "text": "The Church received thee as the holy first-fruits from among the gentiles;\nand thou enlightenest it with thy virtuous deeds,//\nO divinely wise Cornelius, initiate of the sacred mysteries.",
+          "tone": 4,
+          "label": "Glory ..., Sessional Hymn of the Holy Hieromartyr Cornelius",
+          "melody": "Thou hast appeared"
+        },
+        "bothNow": {
+          "text": "Moses stretched out his arms to heaven on high, prefiguring the Cross,\nthe divine weapon of the faithful,\nto which Christ nailed our sins.\nWherefore, the enemy mourned, his senses wounded painfully, and said:\n'This spear of wood hath pierced my heart!//\nChrist releaseth all from the bonds of Hades!'",
+          "tone": 4,
+          "label": "Both now ..., Sessional Hymn of the Forefeast",
+          "melody": "Joseph marveled"
+        }
+      },
+      "ode4": {
+        "irmos": "For the sake of love for Thine image, O compassionate One,\nThou didst ascend the cross and the nations melted away.\nFor Thou, O Lover of mankind,//\nart my strength and my praise.",
+        "irmos2": "Habbakuk, prophetically apprehending Thy divine self-emptying, O Christ,\ncried out to Thee with trembling:\nThou hast come for the salvation of Thy people;//\nto save Thine anointed Ones.",
+        "troparia": [
+          { "text": "The Cross of the Lord, which is worshiped by the faithful, is seen to be as bright as the sun; and as we kiss it our souls are enlightened." },
+          { "text": "God the Lord hath appeared incarnate, uplifted upon the Tree; and He enlighteneth those who bow down before it, ever delivering them from evils." },
+          { "text": "Grant cleansing from offenses, O Word of God, unto those who today bow down with faith before Thy precious Cross, which lieth before us." },
+          { "text": "Theotokion: Without abandoning the bosom of the Father, the Word descended into thy womb as a babe, O Maiden, desiring to restore me who lie subject to corruption." },
+          { "canon": "secondCanon", "text": "Receiving the grace of the Spirit, O all-famed Cornelius, thou didst pass over the earth like a radiant sun, dispelling the darkness of idolatry." },
+          { "canon": "secondCanon", "text": "Issuing forth like a great river, thou waterest the whole face of the earth with divine teachings, choking the tares of polytheism, O Cornelius." },
+          { "canon": "secondCanon", "text": "Having died to all the world, O all-blessed Cornelius, thou didst announce to all those dead through the passions, the divine resurrection of Him Who was slain for our sake." },
+          { "canon": "secondCanon", "text": "Theotokion: O pure Virgin, thou didst supra-naturally become the precious dwelling-place of the Wisdom of the Father, by Whom we have now been delivered from the malice of the crafty one." }
+        ]
+      },
+      "ode5": {
+        "irmos": "Do Thou O Lord send down upon us Thine enlightenment,\nand free us from the gloom of transgression, O Good One,//\ngranting us Thy peace.",
+        "irmos2": "O Thou Who hast clothed Thyself in light as with a garment,\nI rise early unto Thee and cry out to Thee:\nEnlighten my darkened soul, O Christ,//\nin that Thou alone art compassionate!",
+        "troparia": [
+          { "text": "Against the corrupting passions strengthen us who honor and venerate thee, O precious Cross, most holy ensign of the holy Passion." },
+          { "text": "O ye faithful, illumined today in heart and soul with goodly sights, let us approach and bow down before the sacred and divine Tree." },
+          { "text": "Moses of old, in sweetening the waters of Marah, prefigured thee with a tree, O precious Cross, for thou hast exuded the sweetness of salvation for mankind." },
+          { "text": "Theotokion: O most pure Maiden, pray thou for us to Christ Who was clad in material flesh through thy precious blood and hath renewed mortals." },
+          { "canon": "secondCanon", "text": "Cleaving wholly to the Almighty, even when subjected to violence by vile and murderous men thou didst not offer worship to deaf idols, O initiate of the sacred mysteries." },
+          { "canon": "secondCanon", "text": "In supplications thou didst call upon the invisible God Most High, O Cornelius, and, causing great wonder, didst demolish the temple of the abominable idols." },
+          { "canon": "secondCanon", "text": "Keeping the commandments of the Almighty, thou didst endure imprisonment and loose the foolish from the bonds of false belief, O divinely wise one." },
+          { "canon": "secondCanon", "text": "Theotokion: Rain down upon me remission of sins, O most pure one, and visit me who am afflicted and buffeted by the perils of life and the passions of the flesh." }
+        ]
+      },
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss,//\nO Greatly-merciful One.",
+        "irmos2": "Calm the raging sea of the passions, O Master Christ,\nwith its soul-destroying tempest,\nand lead me up from corruption//\nin that Thou art compassionate.",
+        "troparia": [
+          { "text": "The Creator, His side pierced while He hung suspended upon thee of His own will, O Cross, poured forth blood and water, whereby we who kiss thee with faith have been edified." },
+          { "text": "O life-giving Tree of the Lord, thou wellspring of immortality and deliverance of the whole world, save us who venerate thee as our saving protector." },
+          { "text": "Thou hast been revealed to us to be a mighty weapon, whereby we kiss thee in a sacred manner, with uprightness of soul and thus overpower all the assaults of the adversary, O divine Cross." },
+          { "text": "Theotokion: O Birthgiver of God, thou wast the holy temple of Him Who resteth in the saints; wherefore, illumine us who hymn thee with faith, O Virgin Mother." },
+          { "canon": "secondCanon", "text": "While offering up thy supplications in purity, thou didst manifestly behold the angel of God, who taught thee the exalted things of salvation." },
+          { "canon": "secondCanon", "text": "Enlightened by the Spirit, thou wast shown to be a light-giving star illumining the ends of the earth with radiant splendors, O Cornelius, initiate of the sacred mysteries." },
+          { "canon": "secondCanon", "text": "O blessed one who before wast darkened by delusion, having recognized the Lord of glory thou didst obtain sight through thy supplication, and received divine cleansing for thyself and thy household." },
+          { "canon": "secondCanon", "text": "Theotokion: The Lord of glory became incarnate of thy virginal blood in a way that He alone knoweth, O all-hymned one, saving us by His goodness." }
+        ]
+      },
+      "kontakion": {
+        "text": "Grant inner enlightenment and spiritual renewal of heart\nunto those who with faith celebrate\nthe sacred dedication of the temple of Thy house,\nof which it was Thy good pleasure to have built in Thy divine name,//\nO Thou Who art glorious in the saints.",
+        "tone": 2,
+        "label": "Kontakion of the Dedication",
+        "melody": "The steadfast"
+      },
+      "ikos": {
+        "text": "The most wise Solomon of old, celebrating the memorial of the dedication, brought dumb beasts as whole-burnt offerings and sacrifices to God; and now that truth and grace have come to earth, He Who offered Himself as a sacrifice for our salvation hath abolished sacrifices, in that He is the Lover of mankind. He Who alone is glorious in the saints hath sanctified the church and shown it to be unshakable."
+      },
+      "ode7": {
+        "irmos": "The three youths in Babylon\nregarded the tyrant's command as foolishness,\nand cried aloud in the midst of the flame://\nBlessed art Thou, O Lord God of our fathers!",
+        "irmos2": "The supremely exalted Lord of our fathers quenched the flame,\nand bedewed the Youths\nas they chanted in harmony://\nO God, blessed art Thou!",
+        "troparia": [
+          { "text": "Of old, O precious Cross, Jacob prefigured thee in blessing the children of Joseph; but we, bowing down now, honor thee, drawing forth enlightenment." },
+          { "text": "The sayings of the divine prophets have now received their fulfillment, O most sacred Cross; for the Lord of all hath been lifted up upon thee, delivering all from corruption." },
+          { "text": "Embracing thee now with heart and mouth, O most precious Cross, we ever draw forth sanctity, health and salvation of soul and body." },
+          { "text": "Theotokion: O blessed Virgin, pray thou for us who entreat thee, for we all place our hope in thee and cry out to thee: O Lady, disdain not thy flock!" },
+          { "canon": "secondCanon", "text": "Thou wast the first-fruits of the gentiles, O Cornelius; for thou wast the first to receive holy baptism and the grace of the Spirit, like the divinely eloquent ones before thee." },
+          { "canon": "secondCanon", "text": "Performing most magnificent miracles through divine grace, thou didst draw to the Faith those who from of old were steeped in false knowledge, teaching them to chant: Blessed art Thou, O God!" },
+          { "canon": "secondCanon", "text": "Hidden in the earth and protected by a bush, O wise one, thou wast revealed by the words of God, pouring forth the grace of miracles and driving away infirmities." },
+          { "canon": "secondCanon", "text": "O Cornelius, thou wast shown to be the sweet-sounding harp of the doctrines of salvation, making sweet the souls of all, and chanting: Blessed art Thou, O God!" },
+          { "canon": "secondCanon", "text": "Theotokion: O all-immaculate Virgin, thou hast been shown to have deified human nature by thy divine birthgiving; wherefore, as is meet we, the faithful, glorify thee." }
+        ]
+      },
+      "ode8": {
+        "irmos": "O almighty Redeemer of all,\nhaving descended and bedewed the children in the midst of the flame,\nThou didst teach them to sing://\nAll ye works bless and hymn the Lord.",
+        "irmos2": "Unto Thee the Fashioner of all,\nthe children in the furnace chanted a hymn:\nAll ye works of the Lord,//\nsupremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Let us bow down before the Cross of the Lord, the unbroken weapon of salvation, the ready help of the faithful, our mighty defense, which now lieth before us all." },
+          { "text": "Prefiguring thee, the most precious Cross, Moses lifted a brazen serpent up high on a pole to oppose the serpents, as it is written, and by thee we are delivered from the deception of the noetic serpents." },
+          { "text": "Thou art the enlightenment of our souls, O light-giving and most precious Cross; for, embracing thee, with thy divine power we cut down the princes and powers of darkness." },
+          { "text": "Theotokion: We honor the pure Virgin who, for our salvation, gave birth supra-naturally to the beginningless and uncreated Word, crying out in hymnody: We bless thy birthgiving, O Virgin!" },
+          { "canon": "secondCanon", "text": "With uprightness of mind thou didst speak of the one God Who appeared on earth from among the spiritual beings; wherefore, O God-bearer thou didst become the honored first-fruits of the gentiles and the receptacle of the Spirit." },
+          { "canon": "secondCanon", "text": "With the burning ember of thy fiery words, O blessed one, thou didst burn up the tinder of vainglory; wherefore, thou hast passed over to the never-waning Light, illumining all who hymn thee with love." },
+          { "canon": "secondCanon", "text": "O divinely wise Cornelius, the Word Who calleth all things into being out of nothingness was to thee thy portion and lot, thy help and deliverer, thy might and boast, thy light and guide." },
+          { "canon": "secondCanon", "text": "Theotokion: Pour forth upon us thy mercies in abundance, O holy Maiden, and ask for the forgiveness of all our transgressions, whether committed in knowledge or in ignorance, and those made through inattention." }
+        ]
+      },
+      "ode9": {
+        "irmos": "Thy birthgiving was revealed to be incorrupt,\nGod came forth from thy womb,\nand He appeared upon earth in mortal flesh\nand dwelt among mankind;\nWherefore we all magnify thee,//\nO Theotokos.",
+        "irmos2": "O Isaiah, rejoice and be glad!\nThe Virgin hath conceived in her womb,\nand hath borne a Son, Emmanuel,\nwho is both God and man;\nand Orient is His name;//\nHim we magnify, and the Virgin we call blessed.",
+        "troparia": [
+          { "text": "Suspended upon thee, Christ truly raised up that which had fallen into the depths of perdition, O Cross of the Lord; wherefore, we now bow down before thee with love, and honor and glorify thee." },
+          { "text": "Let us purify our souls and hearts with good works alone, and, beholding the saving Tree which lieth in our midst, with divine wisdom let us bow down before it with faith and love." },
+          { "text": "Like the great sun thou dost illumine those in darkness with thy brilliance, driving away the demons, O most beautiful Cross; wherefore, we cry out: Illumine all who bow down before thee with faith!" },
+          { "text": "Theotokion: Illumine me with divine light, O Virgin, thou receptacle of the Light, truly dispelling the darkness of my passions and the deep night of pleasures, O all-holy Birthgiver of God." },
+          { "canon": "secondCanon", "text": "The Church summoneth all to a sacred festival, thine honored memorial, O preacher of Christ; for thou wast shown to be standing with the holy disciples and as one who is likened to them, inherited the Holy Spirit." },
+          { "canon": "secondCanon", "text": "Thou wast adorned with the dogmas of piety as a sacred priest, emulating the divine servants of God; and thou dost ever pour forth rivers of healing, driving away the sicknesses of mankind, O most sacred Cornelius." },
+          { "canon": "secondCanon", "text": "Adorned with the robe of salvation which the incarnate Christ wove, thou now goest about the kingdom on high with all joy, gazing in purity upon the incomprehensible beauty of the Bridegroom, O right glorious one." },
+          { "canon": "secondCanon", "text": "Theotokion: Ask enlightenment for us, O thou who hast given birth to the Light Who shone forth from Light, and drive far from me the darkness of pleasures and temptations, O most pure Lady, our unashamed intercessor." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "The most wondrous and most precious and holy Church,\nwhich Thou didst redeem by Thy most pure blood, O good Word,\ndo Thou renew by the Spirit,\nand adorn it with divine rays,//\nglorifying it by the glorying of those who properly celebrate the dedication of thy temple.",
+      "label": "Exapostilarion of the Dedication",
+      "melody": "By the Spirit in the sanctuary",
+      "bothNow": {
+        "text": "With light-giving splendors, the Cross of the Lord summoneth to its elevation\nall who with divine love stand before it.\nCome ye all, and with joy, love, fear and faith let us kiss it//\nand glorify the one Creator and Master!",
+        "label": "Both now ..., Exapostilarion of the Forefeast",
+        "melody": "By the Spirit in the sanctuary"
+      }
+    },
+    "lauds": {
+      "tone": 4,
+      "stichera": [
+        {
+          "text": "Today the divine, sacred, honored and light-bearing temple\nof the resurrection of Christ is splendidly consecrated,\nand His sepulcher giveth divine life unto the world;\na well-spring of immortality gusheth forth,\npouring forth streams of miracles,\nand, overflowing with the waters of grace,\nand granting healings//\nunto those who hymn it with faith.",
+          "tone": 4,
+          "melody": "Thou hast given a sign",
+          "label": "of the Dedication"
+        },
+        {
+          "text": "Shining forth from on high, a radiant beam hath shone forth, illumining all;\nwherefore, with faith let us all honor the resurrection of Christ the Creator\nand in hymns let us celebrate the life-bearing and divine festival of the dedication,\nand let us be jubilant in psalms,//\nthat we may find the Savior and Lord to be merciful to us.",
+          "tone": 4,
+          "label": "of the Dedication"
+        },
+        {
+          "text": "Desiring to see beforehand the holy scepter of the Cross borne aloft in the midst of the earth,\nlet us purify our souls in advance,\nand being illumined with light, let us render our thoughts radiant,\nand, shining with divine power let us hymn Christ\nWho imparteth His holiness through the precious Tree\nunto those who cry out with faith//\nand fervently hymn Him.",
+          "tone": 4,
+          "label": "of the Dedication"
+        },
+        {
+          "text": "Be thou renewed, be thou restored, O new Jerusalem!\nFor thy light hath come, and the glory of the Lord hath shone upon thee!\nThis house hath the Father built!\nThis house hath the Son established!\nThis house hath the Holy Spirit restored,//\nWho illumineth all, making firm and sanctifying our souls!",
+          "tone": 1,
+          "label": "the composition of John the Monk"
+        },
+        {
+          "text": "Solomon of old, in consecrating the temple, offered up sacrifices and wholeburnt offerings of dumb beasts, O Lord.\nBut Thou, O Savior, wast well pleased to abolish such prefigurings, that the truth might be known,\nwherefore generations of mortals now offer un-bloody sacrifices to Thy glory;\nfor Thou dost sanctify all things through the Holy Spirit,//\nO Thou Who hast dominion over all.",
+          "tone": 4,
+          "label": "the composition of Anatolius"
+        },
+        {
+          "text": "The Church of the nations is renewed today\nthrough the precious and life-bearing blood which flowed from the most pure and incorrupt side of Christ our God,\nWho was incarnate of the holy Virgin.\nWherefore, assembling, ye choirs of the faithful,\nlet us glorify the Father, the Son and the Holy Spirit,//\nthe one Godhead Who sustaineth all things.",
+          "tone": 4,
+          "label": "the composition of John the Monk"
+        }
+      ],
+      "doxastikon": {
+        "text": "Arise unto thyself, O man! Be thou new instead of old!\nAnd celebrate the restoration of the soul while yet thou hast life,\nthat the path of all life may be restored to thee;\nfor the old hath passed away, and, lo! all things are new!\nTransformed by a change for the good, offer this to the feast as fruit,//\nfor thus we are renewed, and thus the day of the dedication is honored.",
+        "tone": 3,
+        "label": "Glory ..., of the Dedication"
+      },
+      "theotokion": {
+        "text": "O Christ our God, Who for the common resurrection of the race of mankind didst accept voluntary crucifixion,\nand by the pen of the Cross didst stain Thy fingers with blood as with ink of royal purple,\nand in Thy love for mankind didst as King affix Thy signature to the document of our remission:\nDisdain us not who are in distress and are again far from Thee,\nbut have pity upon Thy people who find themselves in evil circumstances, O Long-suffering One.\nArise Thou, and do battle with those who fight against us,//\nin that Thou art almighty.",
+        "tone": 3,
+        "label": "Both now ..., of the Forefeast, by John the Monk"
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Thou didst show forth the beauty\nof the holy dwelling-place of Thy glory here below, O Lord,\nlike the splendor of the firmament on high.\nEstablish it throughout all ages,\nand through the Theotokos\naccept the supplications we unceasingly offer unto Thee therein,//\nO Thou life and resurrection of all.",
+      "tone": 4,
+      "label": "Troparion of the Dedication",
+      "_note": "After the Great Doxology: Troparion, once. Litanies and dismissal."
+    }
+  }
+}

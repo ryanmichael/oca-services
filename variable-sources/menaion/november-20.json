@@ -1,0 +1,263 @@
+{
+  "_meta": {
+    "feast": "Forefeast of the Entry of the Most Holy Theotokos; and Venerable Gregory the Decapolite",
+    "feastKey": "forefeasts_entryTheotokos_gregoryDecapolite",
+    "rank": "doxology",
+    "feastRank": "doxology",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-20.pdf",
+    "_note": "Forefeast of the Entry of the Theotokos (Nov 21) is primary; Venerable Gregory the Decapolite is secondary. Three canons at Matins: Canon of the Forefeast in Tone IV (6 troparia, Greek-alphabet acrostic through Ode VII, Ode VIII with own stichoi, Ode IX by Joseph); Canon of Gregory in Tone VIII (4 troparia, by Joseph); Canon of Proclus in Tone I (4 troparia, by Theophanes). Kontakion of Gregory after Ode 3; Kontakion of Forefeast after Ode 6. Doxology-rank: Great Doxology; NO Polyeleos, no Magnification. Proclus content omitted per three-commemorant convention; Gregory is the doxology-rank venerable. Joint two-canon shape: Forefeast = Canon I, Gregory = Canon II."
+  },
+  "troparion": {
+    "text": "Anna now beforehand doth betroth joy unto all,\nbringing forth the only Ever-virgin as a fruit assuaging grief,\nand today bringeth her, rejoicing,\ninto the temple of the Lord, in fulfillment of her promise.//\nFor she is the pure Mother, the temple of God the Word.",
+    "tone": 4,
+    "label": "Troparion of the Forefeast"
+  },
+  "kontakion": {
+    "text": "The Church knoweth thee to be a sun radiant with the beauties of the virtues,\nillumining all with rays of healings, O favorite of Christ.\nWherefore, we celebrate thine honored memory\nand honor thy struggles,//\nO all-blessed and most wise father Gregory.",
+    "tone": 3,
+    "label": "Kontakion of the venerable Gregory the Decapolite"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "doxology",
+      "feastType": "forefeast",
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "text": "Anna now beforehand doth betroth joy unto all,\nbringing forth the only Ever-virgin as a fruit assuaging grief,\nand today bringeth her, rejoicing,\ninto the temple of the Lord, in fulfillment of her promise.//\nFor she is the pure Mother, the temple of God the Word.",
+      "tone": 4,
+      "label": "Troparion of the Forefeast",
+      "_note": "On 'God is the Lord': Troparion of the Forefeast (Twice); Glory ..., Troparion of the Holy Fathers (Tone IV); Both now ..., Troparion of the Forefeast (again)."
+    },
+    "troparionGlory": {
+      "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+      "tone": 4,
+      "label": "Glory ..., Troparion of the Holy Fathers"
+    },
+    "sedalion": [
+      {
+        "text": "Before thy conception thou wast dedicated to God, O pure one,\nand, having been born on earth, thou hast now been brought to Him, fulfilling thy parents' vow;\nand given over with radiant lamps in the temple of God,\nas a divine temple pure from thine infancy,\nthou wast shown to be the receptacle of the unapproachable and divine Light.\nTruly great is thine arrival,//\nO only Bride of God and Ever-virgin!",
+        "tone": 4,
+        "label": "Sessional Hymn of the Forefeast (after Kathisma 1)",
+        "melody": "Joseph marveled",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "text": "The temple of God, the greatly honored chamber,\nwith gladness cometh forth with radiant lamps to the temple of God to take up her abode therein.\nZachariah rejoiceth in her, clearly perceiving the revelation of the sacred prophets fulfilled;\nand he is glad and hymneth the forefeast with song:\nJoy precedeth thine entry,//\nO Maiden, Virgin and Mother!",
+        "tone": 4,
+        "label": "Sessional Hymn of the Forefeast (after Kathisma 2)",
+        "melody": "Joseph marveled",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 8,
+      "_authors": "Canon I of the Forefeast in Tone IV (Greek-alphabet acrostic through Ode VII; Ode VIII with own stichoi; Ode IX by Joseph) + Canon II of Venerable Gregory the Decapolite in Tone VIII by Joseph. Canon of Holy Hierarch Proclus (Tone I, by Theophanes) omitted per three-commemorant convention.",
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders.",
+        "irmos2": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel as they fled on foot,//\nchanting a hymn unto God.",
+        "troparia": [
+          { "text": "The all-holy and immaculate one cometh forth to make her abode within the Holy of holies, that she may become the sanctified temple of our Most holy God; and virgin maidens precede her." },
+          { "text": "The pre-eternal counsel of our pre-eternal God cometh to fulfillment now that thou, O all-immaculate Lady, dost come forth to dwell in the Holy of holies, as the abode of the Word." },
+          { "text": "Thy godly parents lead thee, who art to become the Mother of God, into the Holy of holies, to make thy habitation there, and thereby fulfill the promise they made when they offered up entreaty, O most pure one." },
+          { "text": "O Lady, strengthen thou the weakness of my heart and make it steadfast, for it hath been shaken by the passions, that with faith and love I may call thee blessed, who art the ever-blessed and all-immaculate one." },
+          { "canon": "secondCanon", "text": "By thy supplications, O blessed Gregory, enliven my lowly soul, which hath been slain by the passions; for thou hast now received the life which ageth not, having mortified thy members on earth with the struggles of asceticism, O venerable one." },
+          { "canon": "secondCanon", "text": "Abstaining from the pleasures of the body with purity of mind, O father, from childhood thou wast an instrument of the Spirit, splendidly receiving His powers and being recognized as godly of visage." },
+          { "canon": "secondCanon", "text": "With divine desire thou didst cause the desires of the flesh to wither away, O blessed one, espousing to thyself purity as a bride, from whom thou didst beget all the virtues as children for thyself, and who made thee a child of God, O ever memorable one." },
+          { "canon": "secondCanon", "text": "Theotokion: O most pure and blessed one, thou heavenly ladder stretching from earth unto the heavens, ineffable is the wonder and incomprehensible the vision, for God the Word hath come down to mortal mankind! do thou save those who have recourse unto thee." }
+        ]
+      },
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory//\ngrant them crowns of glory.",
+        "irmos2": "O Lord, Creator of the vault of Heaven\nand Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,\nO Support of the faithful,//\nO only Lover of mankind.",
+        "troparia": [
+          { "text": "The virgin maidens who undertake to bear candles with splendor prefigure what is to come; for from her the enlightenment of knowledge will be born, Who looseth the darkness of deception." },
+          { "text": "Anna of old, filled with divinely wise zeal, fulfilleth her vow and escorteth to the sanctuary thee, her most sacred offspring, who art to give birth unto God, O most immaculate one." },
+          { "text": "The sun spread forth its rays, beholding the radiant cloud stretched forth at the behest of God within the Holy of holies, from whence remission will rain forth upon the stony passions." },
+          { "text": "Having made His abode within thee in His tender compassion, O all-immaculate and pure one, God deifieth me who was seduced aforetime by the deception of the serpent and corruption; and hath again given me the food of incorruption." },
+          { "canon": "secondCanon", "text": "Having ascended the mountain of the virtues, O venerable father, thou didst enter into the darkness of vision and, comprehending, thou didst contain, as far as thou wast able, Him Who is unapproachable in essence, O father, being filled with enlightenment." },
+          { "canon": "secondCanon", "text": "With heavenly light He Who was born in a cave for the deliverance of mortal mankind illumined thee like Paul, O all-blessed one, who of old wast dwelling in a cave, showing thee to be luminous, O father Gregory." },
+          { "canon": "secondCanon", "text": "The heavenly portal, the most pure Mother of Christ, furnished thee with wings, O father, who wast beset by the assaults of the demons, and through the grace of the Spirit rendered thee able to soar above them with strength." },
+          { "canon": "secondCanon", "text": "Theotokion: Rejoice, O thou who alone hast given birth to the Lord of all! Rejoice, thou who hast mediated life for all! Rejoice, thou mountain overshadowed and unquarried, confirmation of the faithful! Rejoice, O all-immaculate one!" }
+        ]
+      },
+      "kontakionAfterOde3": {
+        "text": "The Church knoweth thee to be a sun radiant with the beauties of the virtues,\nillumining all with rays of healings, O favorite of Christ.\nWherefore, we celebrate thine honored memory\nand honor thy struggles,//\nO all-blessed and most wise father Gregory.",
+        "tone": 3,
+        "label": "Kontakion of the venerable Gregory the Decapolite"
+      },
+      "sessionalHymnAfterOde3": {
+        "text": "Illumined with divine splendor, thou hast driven away the darkness of the soul-destroying passions, O most wise Gregory;\nand caught up to the most pure heights of dispassion,\nthou hast most gloriously shone forth rays of healings,\nhaving made thine abode in the never-waning light//\nof the kingdom of Christ.",
+        "tone": 4,
+        "label": "Sessional Hymn of the venerable Gregory the Decapolite",
+        "melody": "Go thou quickly before",
+        "glory": {
+          "text": "Being a divine and sacred preacher, O all-praised teacher of the mysteries,\nenriching the Church with divine doctrine,\nthou didst proclaim the most pure Virgin to be the Theotokos\nand didst thereby put Nestorius to shame.\nWherefore, we all faithfully honor thy memory,//\nasking that we be granted great mercy.",
+          "tone": 3,
+          "label": "Glory ..., Sessional Hymn of the holy hierarch Proclus",
+          "melody": "Of the divine Faith"
+        },
+        "bothNow": {
+          "text": "Give praise, ye virgins! Keep the forefeast, ye mothers!\nYe people, give glory! Ye priests, bless the most pure Mother of God!\nFor having been born before, a babe in the flesh,\nshe hath been brought to the temple as the most holy temple of God.\nWherefore, celebrating this spiritual feast,//\nwe hymn her as the intercessor for the race of mankind.",
+          "tone": 1,
+          "label": "Both now ..., Sessional Hymn of the Forefeast",
+          "melody": "When the stone had been sealed"
+        }
+      },
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God,\nthat the incarnation of Thee the Most High,\nwill be from a Virgin,\nthe Prophet Habbakuk cried aloud://\nGlory to Thy power, O Lord!",
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,//\n'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "text": "Sacred tongues proclaimed thee beforehand to be the dwelling of Him Who is infinite in nature, O pure one. Wherefore, choirs of virgins accompany thee to the Holy of holies, bearing lamps." },
+          { "text": "Joachim and Anna won glory, walking and bearing thee with gladness into the holy temple, O most holy temple of God, pure and all-immaculate Lady." },
+          { "text": "The sentence pronounced upon our ancestors hath been annulled; for, lo! a branch hath sprung forth which shall bear for us the incorrupt cluster Who shall bring the wine of gladness unto the ends of the earth." },
+          { "text": "The Word, the Creator, finding thee alone to be all-immaculate, made His abode within thy womb, accomplishing our salvation through grace, O most pure one, in His ineffable wisdom." },
+          { "canon": "secondCanon", "text": "He Who in His goodness for our sake became a stranger by a strange descent, O Gregory, seeing thee a stranger for His sake, received thee who wast far from thy homeland and made thee a divine heir of His kingdom, adorned with the virtues." },
+          { "canon": "secondCanon", "text": "For Christ Who for our sake became a babe and a child, O venerable one, thou didst give thyself over to a school of children, being as innocent as a babe, O divinely wise and venerable father; and with divine humility thou didst humble the malice of the enemy, O blessed Gregory." },
+          { "canon": "secondCanon", "text": "Watered with the showers of thy tears as with divine dew, O father Gregory, thou didst cause every virtue to grow bringing forth the blossoming of fruitfulness from the tree of perfect fasting planted by the springs of water." },
+          { "canon": "secondCanon", "text": "Theotokion: O blessed and all-immaculate Mother of God, heal thou the wounds of my soul, still the pleasures of the flesh, illumine my darkened heart, bring peace to my mind and deliver me from all the harm and assaults of the enemy." }
+        ]
+      },
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,//\nbestowing peace, upon all who hymn thee.",
+        "irmos2": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me,\nwretched though I be?\nBut do Thou guide my steps I implore Thee//\nand turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "text": "Let the clouds drop down righteousness today, for in the noetic sky of the temple of God, the divine cloud is spread out letting drop the Sweetness which taketh away all bitterness from our souls." },
+          { "text": "Strange is thy conception, strange thy nativity, O most pure Virgin, strange thy coming forth and thine entering of the holy place, and strange are Thy most glorious works, past all telling and understanding." },
+          { "text": "The all-holy Spirit wholly sanctified thee who abode within the temple and wast fed with heavenly food, O most beauteous Bride of the Father, for Whose sake thou didst become the Mother of the Word." },
+          { "text": "Setting all my hope on thee, O Maiden, I flee to thy compassions. Show forth my fallen soul to be untouched by the malice of the demons and unweakened by the floods of pleasures." },
+          { "canon": "secondCanon", "text": "By thine actions thou didst show thyself to be a fertile vine of the Word, O venerable father, bearing the magnificent ripe grapes of the virtues which exude the spiritual wine of salvation, making glad the hearts of the faithful." },
+          { "canon": "secondCanon", "text": "Glorious Rome, receiving thee from the East with faith, O father, as a never-waning lamp, became enlightened by thy precious gifts; for thou didst have Christ within thy soul like a light illumining those who beheld thee, O father." },
+          { "canon": "secondCanon", "text": "Walking the paths of life with godly vigilance as a favorite of God, as a husbandman of the commandments of Christ with the power of the Spirit, thou didst slay the serpent who lay in wait to bruise thy heel." },
+          { "canon": "secondCanon", "text": "Theotokion: O Ever-virgin Mother, intercessor for the world, pilot me and guide me to the right path, and direct my thoughts along the straight paths of righteousness, setting aright the steps of my soul." }
+        ]
+      },
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast\nof the Mother of God\nO ye divinely wise,\nlet us come, clapping our hands,//\nand glorify God who was born of her.",
+        "irmos2": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,//\nO God of my salvation.",
+        "troparia": [
+          { "text": "Strengthened by the grace of God, the parents of the divine Virgin lovingly surrender her, like a pure dove, to be raised in the Holy of holies." },
+          { "text": "Lighting lamps, O pure one, the maidens, dancing, radiantly accompany thee to the temple of God, for thou art to receive the Light Who proceedeth from the Light." },
+          { "text": "A palace full of glory, the great proclamation of the prophets, the holy throne, is led into the Holy of holies, making herself ready for the King of all." },
+          { "text": "I hymn thy conception, O Maiden, I also hymn thine ineffable nativity; and I likewise hymn thy protection, whereby we who flee to thy serenity are delivered from all harm." },
+          { "canon": "secondCanon", "text": "Deified by mystic visions and divine splendors, and by thy yearning for God, O most sacred one, as a divine prophet, as a favorite of God thou hast been deemed worthy of the grace of God." },
+          { "canon": "secondCanon", "text": "Thou didst perfect thy life in silence, O divinely inspired one, and wast revealed to be greater than the tumults of this life, higher than the passions, and a strange wanderer throughout all the earth." },
+          { "canon": "secondCanon", "text": "Like a clear mirror thou wast enriched with divine radiance; like a sacred vessel thou hast adorned the temple, O Gregory, illumining the heavenly Church of the firstborn." },
+          { "canon": "secondCanon", "text": "Theotokion: O Mary, pure palace of the King, having cleansed me who have become the impure den of thieves by thy supplications, show me to be a holy temple for Him Who was born from thee." }
+        ]
+      },
+      "kontakion": {
+        "text": "Today, on the most eminent feast of the Theotokos\nthe whole world hath been filled with gladness, crying://\nShe is the tabernacle of heaven!",
+        "tone": 4,
+        "label": "Kontakion of the Forefeast",
+        "melody": "Thou hast appeared"
+      },
+      "ikos": {
+        "text": "The Creator, Fashioner and Master of all, Who bowed Himself down in the ineffable tender compassion of His love for mankind, and seeing that which He had fashioned with His own hands fallen, took pity, and wishing to raise it up by His condescension into a most divine building, in that He is good and by nature merciful, took Mary, the pure Virgin, and made her the mediatress of the mystery, and through her bore our nature, wherefore she is truly the tabernacle of heaven."
+      },
+      "ode7": {
+        "irmos": "Refusing to worship created things\nin place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud://\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "irmos2": "Once in Babylon the fire stood in awe\nof God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted://\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "The holy temple received thee as a radiant sun, shining forth with the radiance of salvation upon all the ends of the earth, O pure Virgin, who shalt contain the Son of God." },
+          { "text": "Let us all clap our hands, beholding her who kneweth not wedlock bearing the images of deliverance; for by the hand of an angel, she who shall ineffably give birth for us to the Bread of life is fed." },
+          { "text": "All the souls of the righteous beneath the earth proclaimed thee, O golden dove, and they declare thee to be her who beareth the calm which shall put an end to the noetic deluge wherefore she rejoiceth with piety in the Holy of holies." },
+          { "text": "In that thou art beautiful, thou hast given birth to the Comely One Who restoreth our ugliness to its pristine beauty, O all-immaculate Maiden. To Him do we chant: O Lord God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "With the outpourings of thy tears thou didst quench the fire, O Gregory, pouring forth the water of dispassion and the pure beverage of healings upon those who chant: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Borne up by the perfection of honorable love as in a chariot of fire, thou didst mount to the summit, upon which thou didst acquire thy life, O divinely wise one, crying aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "With thy standing in all-night vigils thou didst still the threefold billows of the passions, and having fallen into the sleep of the righteous, thou hast passed over into the never-waning light, crying aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Theotokion: O pure virgin, thou who hast given birth to Light, enliven me who am perishing and dying through sin; save me and rescue me from Gehenna, who chant: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos": "Hearken, O pure Virgin Maiden,\nthat Gabriel may tell thee the true counsel of the Most High of old.\nMake ready to receive the Godhead;\nfor through thee the Infinite One hath come to dwell among mankind.\nWherefore, rejoicing, I cry aloud://\nBless the Lord, all ye works of the Lord!",
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,//\nye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "text": "'Hearken and understand, O wise elder,' Anna saith to Zachariah through divine counsel; 'Accept the pure Maiden whom we have conceived, with valiant soul; for her sake shall deliverance come to pass. Let us lead her into the holy temple, crying aloud: Bless the Lord, all ye works of the Lord!'" },
+          { "text": "'The Lord alone is blessed,' cried the priest; 'Those who made declaration unto us now manifestly show us the gates of life, the divinely inhabited palace, wherein the Messiah, the King of all, shall make His abode. To Him doth all the earth cry aloud: Bless the Lord, all ye works of the Lord!'" },
+          { "text": "'Behold, O most wise elder,' Anna said with reverence, 'receive with splendor the most comely Maiden whom God hath given me, and prophesy that she alone shall bring to a material end what was foretold. With the other prophets thou dost cry out: Bless the Lord, all ye works of the Lord!'" },
+          { "text": "'Now have I most clearly realized,' the elder said with understanding, 'a tree will grow in the midst of the temple, which will truly issue forth a divine Fruit Who shall lead into paradise those who were driven out because they ate of the food of corruption, and who shall cry out with joy: Bless the Lord, all ye works of the Lord!'" },
+          { "text": "The elder manifestly spake words of ineffable teaching: 'O pure Virgin Maiden, thy soul shall make its habitation in this divine temple; for, fed by an angel, thou shalt give birth to the Angel of great counsel, to Whom we chant: Bless the Lord, all ye works of the Lord!'" },
+          { "text": "With joy we chant to thee with the cry of Gabriel, O pure Maiden: Rejoice, thou who alone art the cause of joy for all! Rejoice, cleansing of our souls, in that thou hast given birth to the deliverance of us who render praise in hymns to Him: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Patiently sending up thy supplications to God, thou didst receive that for which thou didst ask with faith, O all-blessed one; for when thou didst sleep at night, an angel appeared to thee, who gave thee a fiery sword which cutteth down the passions of thy heart, cleanseth thee with immaterial fire and illumining thee with ineffable glory." },
+          { "canon": "secondCanon", "text": "Like the most radiant sun hast thou shone noetically with the brilliant light of the virtues, O Gregory, illumining all the earth with the effulgence of thy miracles and enlightening those who piously chant: Ye children bless; ye priests chant; ye people supremely exalt Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "Hearing the hymnody of the angels while still in thy mortal body, from which the senses of thy soul were manifestly delighted, O Gregory, thou wast shown to be godly and radiant of visage, crying out to the Master: Ye children bless; ye priests chant; ye people supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "Theotokion: O all-pure one who hast given birth to the Judge and Lord, Him do thou entreat as thy Son, at the hour of judgment, condemnation and fire, of darkness devoid of light and the gnashing of teeth, to deliver those who piously chant with faith: Ye priests chant; ye people supremely exalt Him throughout the ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos": "Let every mortal born on earth,\nradiant with light, in spirit leap for joy;\nand let the host of the angelic powers\ncelebrate and honor the holy feast of the Mother of God,\nand let them cry aloud://\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "irmos2": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;//\nwherefore we the faithful magnify the most pure Theotokos.",
+        "troparia": [
+          { "text": "Behold, the holy mountain of God entereth the Holy of holies escorted with radiant lamps. From her shall be quarried the Stone which shall destroy the temples and idols of the demons and shall make mortals themselves into temples and honorable habitations of God." },
+          { "text": "God hath sworn and shall now fulfill His vow, giving us the Ever-virgin from the tribe of Judah, whose womb shall put forth the Tree of Life which shall deliver those who fell through eating of the deadly fruit and were ruined by the deception of the serpent." },
+          { "text": "With radiant mouth Anna cried out in the temple of God: 'To Thee, O Master, do I offer the Maiden Thou hast given me, from whom, in Thine ineffable tender compassion, Thou shalt become a mortal man and shalt save the world which Thou hast created, magnifying her as Thy Mother!'" },
+          { "text": "Lo! the day of salvation hath dawned for those in the night of evils! The portal of heaven, the holy habitation of God, opening the gates of the temple, entereth into the Holy of holies accompanied by lighted lamps, to be nurtured by the holy hosts." },
+          { "text": "Illumine the eyes of my soul, O pure one who hast given birth to the Light, lest the most profound darkness of sin overtake me, and the deep of despair cover me; but do thou thyself save me and guide me to the haven of the will of God." },
+          { "canon": "secondCanon", "text": "With the sweat of thy fasting thou didst quench the burning ember of sin, O wise one, and manifestly receive grace from heaven in the guise of fire which burneth not, but rather bedewed and showed thee to be one mighty in strength over the passions." },
+          { "canon": "secondCanon", "text": "Thou didst blossom like a rose, like a fragrant lily, amid the vales of fasting, O father Gregory. Wherefore, thou pourest forth fragrant myrrh, and thy bones abundantly perfume our life; for thy cheeks have been shown to be full, like a cup, of sweet fragrance." },
+          { "canon": "secondCanon", "text": "Today, the council of fasters and the venerable, the patriarchs and prophets, rejoice with us on thy memorial, O blessed one, and the apostles and martyrs celebrate with us. With them be thou mindful of those who honor thee with faith, O right wondrous one." },
+          { "canon": "secondCanon", "text": "The shrine wherein thy precious and much suffering body lieth, poureth forth the grace of miracles upon us, O father Gregory, sanctifying the souls and bodies of us who have been enriched by thee and have thee as an intercessor and fervent helper." },
+          { "canon": "secondCanon", "text": "Theotokion: We, the faithful, with the cry of Gabriel joyfully cry aloud to thee: Rejoice, O garden of paradise who put forth the Tree of life! Rejoice, thou lifting of the curse, crown of martyrs, boast of the venerable and confirmation of the pious." }
+        ]
+      }
+    },
+    "exapostilarion": {
+      "text": "Thou wast a holy temple, O hierarch,\nand through divine communion thou hast now become a god and citizen of paradise,\nwherein thou dost partake directly of the tree of knowledge and incorruptible glory,\nmindful of those who with love and faith praise thee,//\nO wise Gregory, sacred father.",
+      "tone": 2,
+      "label": "Exapostilarion of the venerable Gregory the Decapolite",
+      "melody": "While the disciples watched",
+      "bothNow": {
+        "text": "The temple doth now observe a day of pre-festival for the most pure entrance of Mary, the Theotokos,\nwhom the angels hymn and we call blessed,\nand whom is accompanied by virgins, bearing lamps and rejoicing,//\ninto the temple of the Lord.",
+        "tone": 2,
+        "label": "Both now ..., Exapostilarion of the Forefeast",
+        "melody": "Hearken, ye women"
+      }
+    },
+    "lauds": {
+      "tone": 1,
+      "stichera": [
+        {
+          "text": "Come, ye faithful, and, assembling,\nlet us honor with hymns her\nwho was most gloriously born from a barren mother:\nthe divine Bride and Mother of the Creator;\nand let us go forth with virgins and lamps to meet her//\nas she entereth the Holy of holies of the temple.",
+          "tone": 1,
+          "label": "Sticheron of the Forefeast",
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "Having gathered the words of the Spirit\nfrom noetic meadows, like noetic flowers,\nlet us joyously weave wreaths of praise for the Virgin\nand offer her a gift as is meet,//\non her forefeast.",
+          "tone": 1,
+          "label": "Sticheron of the Forefeast",
+          "melody": "Joy of the ranks of heaven"
+        },
+        {
+          "text": "Let the gates of the temple of the Lord be made ready, and let them be opened;\nand, rejoicing, let them receive the dwelling-place of glory,\nher who alone transcendeth the heavens in a manner transcending understanding;//\nand let them hymn Christ the Savior.",
+          "tone": 1,
+          "label": "Sticheron of the Forefeast",
+          "melody": "Joy of the ranks of heaven"
+        }
+      ],
+      "doxastikon": {
+        "text": "Let heaven rejoice today from on high,\nand let the clouds rain down gladness\nfor the exceeding glorious mighty works of our God;\nfor, lo! the gate which faceth toward the East,\nhaving been born from the barren woman according to God's promise,\nhath been dedicated to God as His dwelling-place,\nand is today brought into the temple as an unblemished offering.\nLet David rejoice, striking his harp;\nfor he said: Virgins shall follow after her,\nthose near her shall be brought into the tabernacle of God,\ninto His sanctuary, to be raised in the habitation of\nHim Who was incorruptibly begotten of the Father before all ages,//\nfor the salvation of our souls.",
+        "tone": 1,
+        "label": "Glory ..., the composition of George of Nicomedia"
+      },
+      "theotokion": {
+        "text": "Let heaven rejoice today from on high,\nand let the clouds rain down gladness\nfor the exceeding glorious mighty works of our God;\nfor, lo! the gate which faceth toward the East,\nhaving been born from the barren woman according to God's promise,\nhath been dedicated to God as His dwelling-place,\nand is today brought into the temple as an unblemished offering.\nLet David rejoice, striking his harp;\nfor he said: Virgins shall follow after her,\nthose near her shall be brought into the tabernacle of God,\ninto His sanctuary, to be raised in the habitation of\nHim Who was incorruptibly begotten of the Father before all ages,//\nfor the salvation of our souls.",
+        "tone": 1,
+        "label": "Both now ..., the composition of George of Nicomedia",
+        "_note": "The rubric shows Glory/Both-now as a unified doxastikon of the forefeast by George of Nicomedia in Tone I; the 'Both now' repeats the same text."
+      }
+    },
+    "troparionAfterDoxology": {
+      "text": "Anna now beforehand doth betroth joy unto all,\nbringing forth the only Ever-virgin as a fruit assuaging grief,\nand today bringeth her, rejoicing,\ninto the temple of the Lord, in fulfillment of her promise.//\nFor she is the pure Mother, the temple of God the Word.",
+      "tone": 4,
+      "label": "Troparion of the Forefeast",
+      "_note": "After the Great Doxology: Great Doxology. Litanies. Dismissal."
+    }
+  }
+}

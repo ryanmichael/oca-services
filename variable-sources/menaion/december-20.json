@@ -161,11 +161,60 @@
       "_note": "Glory ..., Both now ...: Exapostilarion of the forefeast."
     },
     "lauds": {
-      "_note": "On the Praises (Lauds): 4 stichera of the forefeast, acrostic of the Greek alphabet, by Romanus the Melodist, in Tone VI. No specific Ignatius lauds stichera in the PDF; stichera field omitted so assembler uses forefeast or Octoechos. The doxastikon below is drawn from the Matins Aposticha Glory (composition of the Studite, Tone I).",
+      "_source": "St. Sergius",
+      "_note": "4 stichera of the forefeast, acrostic of the Greek alphabet, by Romanus the Melodist, Tone VI. No Ignatius-specific lauds stichera.",
+      "stichera": [
+        {
+          "tone": 6,
+          "text": "Go forth, ye angelic hosts,\nand prepare the manger in Bethlehem;\nfor the Word is born, Wisdom issueth forth,\nand the Church receiveth His salutation.\nUnto the joy of the Theotokos say, O ye people:\nO our blessed God Who hast come forth,//\nglory be to Thee!"
+        },
+        {
+          "tone": 6,
+          "text": "Let the mountains drop forth sweetness!\nFor, lo! God cometh from Theman!\nO ye nations, submit yourselves!\nRejoice, ye prophets!\nLeap up, O ye patriarchs!\nClap your hands, O ye mortals!\nChrist, the mighty and great Prince, is born!//\nThe King of the heavens cometh to earth!"
+        },
+        {
+          "tone": 6,
+          "text": "Lifting mankind up from the earth,\nthe Creator hath come,\nmaking His royal image new again.\nRejoice together, ye hosts on high, and sing!\nThe middle wall of enmity hath been broken down!\nHe hath come Who hath ruled.\nFor God is become a man, Christ our God,//\nthe King of Israel."
+        },
+        {
+          "tone": 6,
+          "text": "Come, O hard-hearted Israel!\nPart thou the cloud which hangeth over thy soul,\nand recognize the Creator Who is born in the cave.\nHe is the expectation of the nations.\nHe shall abolish thy feasts;\nfor thou wilt not submit to cry out:\nChrist is come,// the King of Israel!"
+        }
+      ],
       "doxastikon": {
-        "text": "Thine annual festival, O God-bearer Ignatius,\nhath arisen like an animate pillar and an inspired cloud,\nproclaiming thy mysteries and the mighty deeds which thou didst show forth\nwhen upholding the Faith even to the shedding of thy blood.\nYea, blessed and ever-memorable was thy voice when thou didst say:\n\"As the grain of God I am ground by the teeth of the wild beasts.\"\nWherefore, as thou wast an emulator of the suffering of thy Christ,//\npray thou, that our souls be saved.",
+        "tone": 6,
+        "text": "Christ draweth nigh!\nPrepare thyself, O Bethlehem!\nThe salvation of the nations already shineth forth!\nAdorn the manger, assemble the shepherds,\ncall forth the magi from Persia,\nand summon the armies of the incorporeal intelligences!//\nThe King of the heavens cometh to earth!",
+        "label": "Glory ..., of the forefeast"
+      },
+      "theotokion": {
+        "tone": 6,
+        "text": "Jealousy and fire devoured thee,\nO truly mindless deceiver,\nand the curse of the law.\nFor, lo! the Virgin, as Isaiah foretold,\nhath conceived in her womb\nand layeth in the manger the King\nin Whom no mighty ruler//\nshall be lacking in the tribe of Judah.",
+        "label": "Both now ..., of the forefeast"
+      }
+    },
+    "aposticha": {
+      "_source": "St. Sergius",
+      "_note": "3 stichera of the forefeast, Tone IV. Glory: Ignatius, Studite, Tone I. Both now (forefeast, Tone VI: 'Adorn thyself well, O cave!...') not rendered — assembler aposticha uses single combined Glory/Both-now slot.",
+      "stichera": [
+        {
+          "tone": 4,
+          "text": "Adorn thyself, O Bethlehem! Sing, O city of Sion!\nRejoice, O wilderness, betrothing joy beforehand!\nFor the star cometh forth to Bethlehem, heralding Christ, Who is to be born;\nthe cave receiveth Him Whom naught can contain;\nand the manger maketh ready to accept Life eternal.\nTo Him let us all chant and cry aloud:\nSave Thou our souls, O Jesus God,//\nWho didst become incarnate for our sake!"
+        },
+        {
+          "tone": 4,
+          "verse": "God shall come forth out of Theman, and the Holy One out of a mountain overshadowed and densely wooded.",
+          "text": "Christ our God, Who manifestly cometh, shall arrive, and will not delay.\nHe shall manifest Himself through her who knew not wedlock, and shall rest now in the cave.\nHe Whom heaven cannot contain shall lie in a manger of dumb beasts.\nReceive Him Who in thee shall be wrapped in swaddling-bands,\nWho by His word hath loosed us from irrationality!\nThe star proclaimeth Him, the magi offer worship, the shepherds pipe,\nbeholding the strange wonder,\nand the angels chant on earth,//\nseeing the deliverance of our race."
+        },
+        {
+          "tone": 4,
+          "verse": "O Lord, I have heard Thy report, and I was afraid; O Lord, I considered Thy works, and I was stricken with awe.",
+          "text": "Dance, O Isaiah, receiving the Word of God!\nProphesy unto the Maiden Mary,\nthe bush which burnt with fire, yet was not consumed by the effulgence of the Godhead!\nAdorn thyself well, O Bethlehem!\nOpen thy gates, O Eden!\nYe magi, come to behold Salvation wrapped in swaddling-bands in the manger,\nWhose star shone above the cave:\nThe Lord, the Bestower of life,//\nWho saveth our race."
+        }
+      ],
+      "glory": {
         "tone": 1,
-        "label": "Glory ..., the composition of the Studite"
+        "text": "Thine annual festival, O God-bearer Ignatius,\nhath arisen like an animate pillar and an inspired cloud,\nproclaiming thy mysteries and the mighty deeds which thou didst show forth\nwhen upholding the Faith even to the shedding of thy blood.\nYea, blessed and ever-memorable was thy voice when thou didst say:\n\"As the grain of God I am ground by the teeth of the wild beasts.\"\nWherefore, as thou wast an emulator of the suffering of thy Christ,//\npray thou, that our souls be saved.",
+        "author": "Glory ..., of the holy hieromartyr, the composition of the Studite"
       }
     },
     "troparionAfterDoxology": {

@@ -130,12 +130,68 @@
       "_note": "Sung twice. Both now: Exapostilarion of the forefeast (same melody) follows in the service."
     },
     "lauds": {
-      "_note": "The 4 Lauds stichera ('On the Praises') are of the forefeast (Tone VI) and are not recorded in the menaion file. The martyr's contribution appears at the aposticha slot (doxastikon only, composition of Byzantius, Tone V).",
+      "_source": "St. Sergius",
+      "_note": "4 stichera of the forefeast, Tone VI, Spec. Mel. 'Come forth, ye angelic hosts'. No Anastasia-specific lauds stichera; Glory and Both now are also forefeast.",
+      "stichera": [
+        {
+          "tone": 6,
+          "melody": "Come forth, ye angelic hosts",
+          "text": "Now have the ancient manifestations been resolved:\nfor a Virgin hath conceived in her womb;\nthe Stone hath been cut from the mountain,\nthe rod of Jesse hath sprouted forth,\nand the dew of Gideon hath now been poured forth upon the earth.\nO ye people, let us cry aloud:\nChrist, the King of Israel,// cometh forth!"
+        },
+        {
+          "tone": 6,
+          "melody": "Come forth, ye angelic hosts",
+          "text": "Now are the strange aspects of a strange birthgiving seen.\nHow doth He Who sitteth with the Father in the highest\ndesire to be laid in a manger of dumb beasts?\nHow is He Whom no one can touch wrapped in swaddling-clothes?\nHow is He Who is everywhere present contained in a cave?\nYe people, let us cry aloud:\nChrist, the King of Israel,// cometh forth!"
+        },
+        {
+          "tone": 6,
+          "melody": "Come forth, ye angelic hosts",
+          "text": "He Who worketh miracles,\nsmiting Egypt with plagues\nand raining manna down upon His foolish people,\nis incarnate and nurtured with milk.\nAnd, seen as a babe, He fleeth the tyrant Herod,\nborne by His Virgin Mother,\nas upon a cloud,//\nas Isaiah of most godly sight foresaw."
+        },
+        {
+          "tone": 6,
+          "melody": "Come forth, ye angelic hosts",
+          "text": "The Child Who hath been King from before all ages\nis born of His own will!\nA Son hath been given us!\nHearken, ye nations!\nPay heed, O Israel!\nUnderstand and submit yourselves!\nFor He is with us Who will grind down and wipe from the earth\nevery kingdom and principality//\nwhich doth not obey Him!"
+        }
+      ],
       "doxastikon": {
-        "text": "The day of the forefeast of the nativity of Christ God,\nthe feast of the all-praised martyr Anastasia, hath shone forth today.\nLo! the Virgin draweth nigh to Bethlehem\nto lay her Babe, wrapped in swaddling-clothes, in a manger of dumb beasts:\nHim Who hath freed us from the ancient curse and saveth our souls.",
+        "tone": 6,
+        "text": "With a staff of iron wilt thou be shepherded, O Judea,\nfor thou hast not submitted\nand hast not believed the prophets;\nfor when the Son is born\nthe Father will give to the gentiles the inheritance\nand dominion over all the world,\nand will drive thee out, O vile murderer,\nfor thou wilt not submit to cry out:\nChrist, the King of Israel,// cometh forth!",
+        "label": "Glory ..., of the forefeast"
+      },
+      "theotokion": {
+        "tone": 6,
+        "melody": "Come forth, ye angelic hosts",
+        "text": "Leap up, O David,\nfor Christ is sprung forth from within thee!\nRejoice, O Jesse,\nof thy root He hath blossomed forth!\nFrom thy loins, O Judah, shall the Lord come forth,\naccording to the prophecy of Balaam!\nBehold, ye nations, following the great Isaiah:\nLo! the all-pure Virgin//\ngiveth birth to the Babe Emmanuel!",
+        "label": "Both now ..., of the forefeast"
+      }
+    },
+    "aposticha": {
+      "_source": "St. Sergius",
+      "_note": "3 stichera of the forefeast, Tone II, Spec. Mel. 'O house of Ephratha'. Glory: Anastasia, Byzantius, Tone V. Both now (forefeast, Tone V) not rendered — assembler aposticha uses single Glory/Both-now slot.",
+      "stichera": [
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "text": "Christ draweth nigh,\nthe star shineth before Him,\nthe heavenly multitude\nof the army of the noetic hosts//\nbendeth low to see."
+        },
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "verse": "God shall come forth out of Theman, and the Holy One out of a mountain overshadowed and densely wooded.",
+          "text": "Rejoice, O Bethlehem!\nThe Shepherd hath arisen,\nWho saveth Israel!\nNo longer shalt thou be the least//\namong the princes of Judah!"
+        },
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "verse": "O Lord, I have heard Thy report, and I was afraid; O Lord, I considered Thy works, and I was stricken with awe.",
+          "text": "Come, ye mortals,\nand let us form a choir with the angels!\nLet us cry out to God://\nGlory in the highest!"
+        }
+      ],
+      "glory": {
         "tone": 5,
-        "label": "Glory (composition of Byzantius)",
-        "_note": "Appears at the aposticha after the Praises stichera. Both now follows from the forefeast."
+        "text": "The day of the forefeast of the nativity of Christ God,\nthe feast of the all-praised martyr Anastasia, hath shone forth today.\nLo! the Virgin draweth nigh to Bethlehem\nto lay her Babe, wrapped in swaddling-clothes, in a manger of dumb beasts:\nHim Who hath freed us from the ancient curse//\nand saveth our souls.",
+        "author": "Glory ..., of the holy great-martyr, the composition of Byzantius"
       }
     },
     "troparionAfterDoxology": {

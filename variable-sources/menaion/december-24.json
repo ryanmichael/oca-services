@@ -136,6 +136,73 @@
         ]
       }
     },
+    "lauds": {
+      "_source": "St. Sergius",
+      "_note": "4 stichera of the forefeast, Tone IV, Spec. Mel. 'Go forth, ye angels'. No Eugenia-specific lauds stichera; Glory and Both now are also forefeast.",
+      "stichera": [
+        {
+          "tone": 4,
+          "melody": "Go forth, ye angels",
+          "text": "A Star out of Jacob hath shone forth in the cave!\nLet us come and, celebrating the days of the forefeast,\nlet us hasten with the magi, let us go with the shepherds,\nlet us see God wrapped in swaddling-bands,\nlet us behold the Virgin feeding Him with her milk!\nO awesome sight!\nChrist, the King of Israel,// cometh forth!"
+        },
+        {
+          "tone": 4,
+          "melody": "Go forth, ye angels",
+          "text": "With hymns the choir of angels now honoreth thee,\nthe radiant Mother who knewest not a man,\nand, rejoicing, it danceth at thy birthgiving, O most pure one.\nRejoice, thou hope of the Orthodox!\nRejoice, intercession for those who hymn thee!\nWherefore, let us say:\nBlessed art Thou Who hast come!//\nO our God, glory be to Thee!"
+        },
+        {
+          "tone": 4,
+          "melody": "Go forth, ye angels",
+          "text": "A flower issueth forth from the root of Jesse,\nforetold by the radiant prophet;\nfor we see the Virgin\ngiving birth in a manner transcending nature\nto the lovely Rose in the cave,\nWho is co-enthroned with the Father in the highest.\nO ye people, let us say:\nBlessed art Thou Who hast come!//\nO our God, glory be to Thee!"
+        },
+        {
+          "tone": 4,
+          "melody": "Go forth, ye angels",
+          "text": "Today Adam hath been recalled from deception\nand from captivity to the dark and lying enemy;\nfor Christ is incarnate of the Virgin as a man,\nand He restoreth Adam,\nannulling the curse through the Virgin.\nO ye people, let us say:\nBlessed art Thou Who hast come!//\nO our God, glory be to Thee!"
+        }
+      ],
+      "doxastikon": {
+        "tone": 4,
+        "melody": "Go forth, ye angels",
+        "text": "Come, O Bethlehem,\nand prepare a place of birth!\nCome, O Joseph,\nand register thyself with Mary!\nThe most precious manger, the God-bearing swaddling-bands,\nwherein our Life was wrapped,\nChrist our God\nbreaketh asunder the bonds of death,//\nwrapping human nature in incorruption.",
+        "label": "Glory ..., of the forefeast"
+      },
+      "theotokion": {
+        "tone": 4,
+        "melody": "Go forth, ye angels",
+        "text": "O blessed womb of the divine Maiden,\nthou hast noetically been shown to be greater than heaven!\nFor thou bearest, holding within thee,\nHim Whom heaven cannot contain!\nO the blessed breasts of the Virgin,\nwhich Christ, Who feedeth every creature, doth suck,\ncreating flesh for Himself//\nin the womb of the Maiden who knew not a man!",
+        "label": "Both now ..., of the forefeast"
+      }
+    },
+    "aposticha": {
+      "_source": "St. Sergius",
+      "_note": "3 stichera of the forefeast, Tone II, Spec. Mel. 'O house of Ephratha'. Glory and Both now share one combined text (printed 'Glory ..., Both now ...' in the service book).",
+      "stichera": [
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "text": "Thou hast been shown to be\na dwelling-place of the Almighty, O Virgin;\nfor, making His abode within thee,\nthe Lord of glory//\nnow issueth forth to be born."
+        },
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "verse": "God shall come forth out of Theman, and the Holy One out of a mountain overshadowed and densely wooded.",
+          "text": "In Bethlehem, the pre-eternal God\nis born of the Virgin as a little babe,\nin a manger of dumb beasts.//\nO the wonder!"
+        },
+        {
+          "tone": 2,
+          "melody": "O house of Ephratha",
+          "verse": "O Lord, I have heard Thy report, and I was afraid; O Lord, I considered Thy works, and I was stricken with awe.",
+          "text": "O ye noetic ranks of the angels,\nwith the shepherds and the magi\nlift your voices in song\nunto Him Who is born://\nGlory to God in the highest!"
+        }
+      ],
+      "glory": {
+        "tone": 2,
+        "melody": "O house of Ephratha",
+        "text": "Glory to Thee, O Father,\nO Son and Spirit,\nby Whom this awesome mystery\nhath been accomplished//\nfor the regeneration of mortals!",
+        "author": "Glory ..., Both now ..., of the forefeast"
+      }
+    },
     "troparionAfterDoxology": {
       "text": "Once Mary, pregnant with a seedless pregnancy,\nwas registered in Bethlehem with the elder Joseph,\nas being of the seed of David.\nAnd while they were there, the days were accomplished that she should be delivered,\nbut though there was no room for them in the inn,\nthe cave showed itself to be a beauteous palace for the Queen,//\nChrist is born to raise up the image that fell of old!",
       "tone": 4,

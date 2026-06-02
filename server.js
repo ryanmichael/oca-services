@@ -1954,6 +1954,7 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
       tone: mat.lauds.stichera?.[0]?.tone || spec.tone,
       stichera: mat.lauds.stichera,
       doxastikon: mat.lauds.doxastikon,
+      theotokion: mat.lauds.theotokion,
     };
   }
 

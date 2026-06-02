@@ -4,11 +4,11 @@
     "feastRank": "greatFeast",
     "feastType": "theotokos",
     "tone": 4,
-    "_source": "OCA Department of Liturgical Music and Translations — 2025-0325-texts-matins-tt.docx",
+    "_source": "OCA Department of Liturgical Music and Translations — 2025-0325-texts-matins-tt.docx; canon troparia and sedalion from St. Sergius Menaion (March 25 PDF)",
     "notes": [
       "One of the 12 Great Feasts (Theotokos feast).",
       "When Annunciation falls on a Lenten weekday: God is the Lord (not Alleluia), but Small Doxology (read, not sung), and Triodion aposticha are included.",
-      "Canon heirmoi only — full troparia not included in OCA service text; sedalion also absent."
+      "Canon: Theophanes (Graptus), Tone IV. Alphabetic acrostic (Odes I–VIII). Dramatic dialogue between The Angel and The Theotokos. Irmoi from OCA tt source; troparia from St. Sergius Menaion."
     ]
   },
 
@@ -25,6 +25,37 @@
   },
 
   "matins": {
+
+    "sedalion": [
+      {
+        "_source": "St. Sergius Menaion",
+        "tone": 1,
+        "melody": "Thy tomb, O Savior",
+        "text": "The great commander of the immaterial angels, standing forth in the city of Nazareth, proclaimeth to thee the King and Lord of the ages, O most pure one, saying to thee: Rejoice, O blessed Mary, thou unapproachable and ineffable mystery, thou restoration of mankind!"
+      },
+      {
+        "_source": "St. Sergius Menaion",
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "text": "Today all creation rejoiceth as the archangel saith to thee 'Rejoice!', O blessed, honored and most pure Mother of Christ God. Today the arrogance of the serpent is cast into darkness; for the bond of our forefather's curse is annulled. Wherefore, we cry out to thee unceasingly: Rejoice, O joyous one!"
+      }
+    ],
+
+    "sessionalHymnAfterPolyeleios": {
+      "_source": "St. Sergius Menaion",
+      "stichera": [
+        {
+          "tone": 4,
+          "melody": "Joseph marveled",
+          "text": "Gabriel from heaven crieth out \"Rejoice!\" to the honored one; for she conceiveth in her womb the pre-eternal God Who formed the ends of the earth by His word. Wherefore, Mary replied: \"I know not a man: how then shall I give birth to a Son? Who hath ever seen a seedless birthgiving?\" And the angel, all-telling, said to the Virgin Theotokos: \"The Holy Spirit shall come upon thee, and the power of the Most High shall overshadow thee!\""
+        }
+      ],
+      "bothNow": {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "text": "Gabriel was sent to the Virgin Mary and announced to her ineffable joy; for she would conceive without seed and not suffer corruption. \"For thou shalt give birth to a Son, the pre-eternal God, and He will save His people from their sins. And He Who sent me beareth witness, telling me to cry to thee: Rejoice, O blessed one! O Virgin, thou shalt give birth, and shalt remain a virgin even after giving birth!\""
+      }
+    },
 
     "magnification": {
       "_note": "Sung at the Polyeleios with selected psalm verses. The magnification refrain alternates with the verses.",
@@ -58,42 +89,212 @@
 
     "canon": {
       "tone": 4,
-      "author": "John the Monk",
-      "_note": "Heirmoi only from the OCA text. Full troparia not provided. During Lent, the Triodion canon odes are also sung alongside the feast canon.",
+      "author": "Theophanes",
+      "_note": "Alphabetic acrostic canon (Odes I–VIII), dramatic dialogue between The Angel and The Theotokos. Irmoi from OCA 2025-0325-texts-matins-tt.docx; troparia from St. Sergius Menaion. During Lent, the Triodion canon odes are also sung alongside the feast canon.",
 
       "ode1": {
-        "irmos": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her conceiving."
+        "irmos": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her conceiving.",
+        "troparia": [
+          {
+            "text": "O Sovereign Lady, let David thy forefather chant to thee, striking his spiritual harp: \"Pay heed, O daughter, to the joyful voice of the angel; for he announceth to thee ineffable joy!\""
+          },
+          {
+            "label": "The Angel",
+            "text": "I cry to thee in gladness: Incline thine ear, and hearken unto me, who doth announce the seedless conception of God; for thou hast found before God favor which no one else hath ever found, O all-pure one!"
+          },
+          {
+            "label": "The Theotokos",
+            "text": "That I may understand the power of thy words, O angel, how shall what thou hast said come to pass? Speak more plainly: How shall I conceive, who am a virgin maiden? How shall I become the Mother of my Creator?"
+          },
+          {
+            "label": "The Angel",
+            "text": "Thou thinkest, I suppose, that I am making a false declaration. I rejoice, beholding thy steadfastness. Yet be thou of good cheer, O Sovereign Lady, for, God willing, most glorious things will easily come to pass!"
+          }
+        ]
       },
+
       "ode3": {
         "irmos": "As thou art a living and abundant spring,\nestablish, O Theotokos, those who sing thy praise,\nforming a spiritual chorus;\nand in thy divine glory\ncount them worthy of crowns of glory.",
-        "_note": "On Ode 3, the Biblical Canticle is NOT SUNG; Triodion verses are sung with refrain 'Glory to You, our God, glory to You!'"
+        "_note": "On Ode 3, the Biblical Canticle is NOT SUNG; Triodion verses are sung with refrain 'Glory to You, our God, glory to You!'",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "A ruler hath failed from Judah! The following time hath come, wherein Christ, the hope of the nations, shall appear! But tell me: how shall I, who am a virgin, give birth to Him?"
+          },
+          {
+            "label": "The Angel",
+            "text": "O Virgin, thou seekest to learn from me the manner of thy conceiving; yet it is indescribable. The Holy Spirit, overshadowing thee, shall accomplish it with His creative power."
+          },
+          {
+            "label": "The Theotokos",
+            "text": "My first mother, accepting the serpent's knowledge, was driven away from divine sustenance; wherefore, I fear thy strange salutation, wary lest I stumble."
+          },
+          {
+            "label": "The Angel",
+            "text": "I am sent as a divine intercessor to convey to thee the divine counsel. Wherefore fearest thou me who am even more in fear of thee, O all-immaculate one? Why dost thou render homage to me who render homage to thee with honor, O Lady?"
+          }
+        ]
       },
+
+      "sedalenAfterOde3": {
+        "_source": "St. Sergius Menaion",
+        "tone": 8,
+        "melody": "Of the shepherds' pipes",
+        "text": "The Word of God hath now come down to the earth, and the angel stood forth, crying out to the Virgin: \"Rejoice, O blessed one, receiving the pre-eternal Word and Lord in thy womb, that, as God, He might save the human race from deception!\"",
+        "gloryBothNow": {
+          "tone": 8,
+          "melody": "That which was commanded",
+          "text": "Gabriel, the supreme commander, was sent from heaven by God; and he quickly presented himself before the animate city, manifestly saying to her: \"Thou shalt receive the Creator in thy womb, O Virgin, and shalt immutably give birth to Him in the flesh! Wherefore, I am sent to announce to thee thy strange birth-giving, O pure one, and stand here, crying aloud to thee: Rejoice, O bride unwedded!\""
+        }
+      },
+
       "ode4": {
-        "irmos": "He Who sits in glory on the throne of the Godhead,\nJesus, the transcendent God, has come in a light cloud,\nand by His immaculate hand has saved those who cry:\n\"Glory to Your Power, O Christ!\""
+        "irmos": "He Who sits in glory on the throne of the Godhead,\nJesus, the transcendent God, has come in a light cloud,\nand by His immaculate hand has saved those who cry:\n\"Glory to Your Power, O Christ!\"",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "I have heard the prophet who of old prophesied that Emmanuel would come when a certain sanctified virgin giveth birth. Yet I wish to understand how human nature will endure mingling with the divinity?"
+          },
+          {
+            "label": "The Angel",
+            "text": "O joyous and most hymned one, the bush which was unconsumed when it received the flame revealed the most glorious mystery which will be wrought in thee, for thou shalt remain a pure Ever-virgin even after giving birth."
+          },
+          {
+            "label": "The Theotokos",
+            "text": "Illumined with the radiance of God Almighty, O Gabriel, thou herald of the Truth, speak thou things most true: How shall I give birth to the incorporeal Word in the flesh, while remaining in mine incorrupt purity?"
+          },
+          {
+            "label": "The Angel",
+            "text": "As a servant I stand with awe and fear before thee, my Maiden Lady, and I am abashed to look upon thee; for as the rain descended upon the fleece, so will the Word of the Father descend upon thee, as is His good pleasure."
+          }
+        ]
       },
+
       "ode5": {
-        "irmos": "All things were amazed at thy divine glory,\nfor thou, O Virgin, who hast not known wedlock,\nhast held in thy womb God Who is above all,\nand thou gavest birth to a timeless Son,\nWho bestows salvation upon all who sing thy praises."
+        "irmos": "All things were amazed at thy divine glory,\nfor thou, O Virgin, who hast not known wedlock,\nhast held in thy womb God Who is above all,\nand thou gavest birth to a timeless Son,\nWho bestows salvation upon all who sing thy praises.",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "I cannot understand the claim of thy words; for there have been miracles in great numbers, wrought by divine power, and the signs and images of the law; yet never hath a virgin given birth without knowing a man!"
+          },
+          {
+            "label": "The Angel",
+            "text": "Thou dost marvel, O all-immaculate one, for strange is the miracle wrought in thee; for thou alone shalt receive the King of all incarnate in thy womb. Yea, the sayings and indistinct images of the prophets and the types of the law have prefigured thee."
+          },
+          {
+            "label": "The Theotokos",
+            "text": "How can He, Whom naught can contain and is visible to no one, make His abode in a virgin's womb, which He Himself created? How shall I conceive God the Word, Who with the Father and the Spirit is co-beginningless?"
+          },
+          {
+            "label": "The Angel",
+            "text": "A promise was given to David, thine ancestor, that the Fruit of thy loins would sit upon the throne of his kingdom. And God hath chosen thee alone, the beauty of Jacob, to be His reason-endowed habitation."
+          }
+        ]
       },
+
       "kontakion": {
         "tone": 8,
         "label": "Kontakion of the Annunciation",
         "text": "O victorious leader of triumphant hosts!\nWe, thy servants delivered from evil\nsing our grateful thanks to thee, O Theotokos.\nAs thou dost possess invincible might set us free from every calamity\nso that we may sing: \"Rejoice, O unwedded Bride!\""
       },
 
+      "ikos": {
+        "_source": "St. Sergius Menaion",
+        "text": "An angelic chieftain was sent from heaven to cry to the Mother of God: Rejoice! with his incorporeal voice. And, beholding Thee incarnate, O Lord, he was filled with awe and stood, crying to her such things as these: Rejoice, thou through whom Joy shineth forth! Rejoice, thou through whom the curse will cease! Rejoice, restoration of fallen Adam! Rejoice, deliverance from tears for Eve! Rejoice, height hard to climb for human thoughts! Rejoice, depth hard to contemplate even for the eyes of angels! Rejoice, for thou art the throne of the King! Rejoice, thou who didst bear Him Who beareth all! Rejoice, star heralding the Sun! Rejoice, womb of the divine incarnation! Rejoice, thou through whom creation is made new! Rejoice, thou through whom we worship the Creator! Rejoice, thou Bride unwedded!"
+      },
+
       "ode6": {
-        "irmos": "Prefiguring the three days' burial,\nthe Prophet Jonah in the whale cried out in prayer:\n\"Deliver me from corruption, O Jesus, King of Hosts!\""
+        "irmos": "Prefiguring the three days' burial,\nthe Prophet Jonah in the whale cried out in prayer:\n\"Deliver me from corruption, O Jesus, King of Hosts!\"",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "Accepting the joyous sound of thy words, O Gabriel, I have been filled with divine gladness! For thou tellest of joy, and dost announce gladness without end!"
+          },
+          {
+            "label": "The Angel",
+            "text": "To thee hath divine joy been given, O Mother of God! To thee doth all creation cry out \"Rejoice!\", O Bride of God! For thou alone hath been called beforehand the Mother of the Son of God, O pure one!"
+          },
+          {
+            "label": "The Theotokos",
+            "text": "Let the condemnation of Eve now be annulled! Let her debt now be repaid by me! Through me let the ancient loan be paid in full!"
+          },
+          {
+            "label": "The Angel",
+            "text": "God promised to thine ancestor Abraham that the nations would be blessed in his seed, O pure one; and through thee hath this promise found its fulfillment this day!"
+          }
+        ]
       },
+
       "ode7": {
-        "irmos": "The Godly-minded Children\nwould not worship the creation rather than the Creator,\nbut bravely trampling on the threat of fire, they rejoiced and sang:\n\"Blessed are You and praised above all, O Lord God of our Fathers!\""
+        "irmos": "The Godly-minded Children\nwould not worship the creation rather than the Creator,\nbut bravely trampling on the threat of fire, they rejoiced and sang:\n\"Blessed are You and praised above all, O Lord God of our Fathers!\"",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "Declaring the radiant tidings, the divine announcement, that the immaterial Light Who, in His great loving-kindness, is uniting Himself to a material body, thou criest to me: \"Blessed is the Fruit of thy womb, O all-pure one!\""
+          },
+          {
+            "label": "The Angel",
+            "text": "Rejoice, O Virgin Sovereign Lady! Rejoice, O most pure one! Rejoice, O receptacle of God! Rejoice, O lamp-stand of the Light, restoration of Adam, deliverance of Eve, holy mountain, manifest sanctuary and bridal-chamber of immortality!"
+          },
+          {
+            "label": "The Theotokos",
+            "text": "My soul hath been cleansed, my body sanctified; I am made a temple fit to hold God, a divinely adorned tabernacle, a temple rendered animate through the visitation of the most holy Spirit, and am the pure Mother of the Life!"
+          },
+          {
+            "label": "The Angel",
+            "text": "I see thee now as a lamp of surpassing radiance, a bridal-chamber made by God, a golden ark. O Bride of God, receive the Giver of the law, Whose good pleasure it is to deliver corrupt human nature through thee!"
+          }
+        ]
       },
+
       "ode8": {
         "irmos": "Hear, O Maiden, pure Virgin:\nlet Gabriel tell thee the counsel of the Most High which is ancient and true!\nMake ready to receive God,\nfor through thee, He Who cannot be contained will dwell among mortals.\nTherefore, rejoicing I cry aloud:\n\"Bless the Lord, all ye works of the Lord!\"",
-        "_note": "After the festal Ode 8, the Triodion Ode 8 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 8."
+        "_note": "After the festal Ode 8, the Triodion Ode 8 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 8.",
+        "troparia": [
+          {
+            "label": "The Theotokos",
+            "text": "\"Every earthly mind is vanquished, pondering the most glorious things thou declarest unto me,\" answered the Virgin; \"I have heard thy words, yet am in fear and terror, lest through deception thou send me far away from God. Yet, behold! I cry out: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!\""
+          },
+          {
+            "label": "The Angel",
+            "text": "\"Behold, thy perplexity hath been resolved,\" Gabriel said; \"for thou hast said well that this is a matter hard to comprehend. Yet, submitting to the words of thy mouth, doubt not that this is true, but believe it. For, rejoicing, I cry: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!\""
+          },
+          {
+            "label": "The Theotokos",
+            "text": "\"This is God's law for mankind,\" the immaculate one straightway said, \"Birthgiving cometh from common love. I am utterly ignorant of the pleasure of a spouse. How then sayest thou that I will give birth? I fear that thou speakest delusion. Yet do I cry out: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!\""
+          },
+          {
+            "label": "The Angel",
+            "text": "\"The words thou declarest to me, O pure one, apply in general to the birthgiving of mortals,\" the angel said again; \"I promise thee that the true God, incarnate in a manner beyond all telling and comprehension, as He knoweth, will come forth from thee. Wherefore, rejoicing, I cry aloud: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!\""
+          },
+          {
+            "label": "The Theotokos",
+            "text": "\"Thou showest thyself to me as a herald of the truth,\" the Virgin said, \"for thou hast come as a harbinger of common joy. I have therefore cleansed soul and body. Be it unto me according to thy word, that God may dwell in me, to Whom I cry out with thee: Bless the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!\""
+          }
+        ]
       },
+
       "ode9": {
         "megalynarion": "O earth, announce good tidings of great joy:\nO heavens, praise the glory of God!",
         "irmos": "Since she is a living Ark of God\nlet no profane hand touch the Theotokos.\nBut let the lips of believers\nunceasingly sing to her,\npraising her in joy with the angel's song:\n\"Rejoice, O Lady, full of grace, the Lord is with thee!\"",
-        "_note": "After the festal Ode 9, the Triodion Ode 9 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 9."
+        "_note": "After the festal Ode 9, the Triodion Ode 9 is sung without Biblical Canticle, with refrain 'Glory to You, our God, glory to You!' Katavasia from Triodion after Ode 9.",
+        "troparia": [
+          {
+            "text": "Conceiving God in a manner past understanding, O Sovereign Lady, thou didst elude the order of nature; for in giving birth thou didst escape corrupt maternal nature, transcending it. Wherefore, thou hearest as is meet: Rejoice, O thou who art full of grace! The Lord is with thee!"
+          },
+          {
+            "text": "No earthly tongue can explain how thou pourest forth milk, O pure Virgin; for thou showest forth a thing strange to nature and dost transcend the rule of lawful birthgiving. Wherefore, thou hearest as is meet: Rejoice, O thou who art full of grace! The Lord is with thee!"
+          },
+          {
+            "text": "Mystically wast thou spoken of in the sacred Scriptures, O Mother of the Most High; for Jacob of old, seeing thee in a vision as a ladder, said: \"This is the ladder of God!\" Wherefore, thou hearest as is meet: Rejoice, O thou who art full of grace! The Lord is with thee!"
+          },
+          {
+            "text": "The bush and the fire showed forth a wondrous miracle to Moses, who was manifest in sanctity; and seeking the end thereof in the passage of time, he said: \"I perceive it in the pure Maiden!\" To her, as to the Theotokos, let it be said: Rejoice, O thou who art full of grace! The Lord is with thee!"
+          },
+          {
+            "text": "Daniel called thee the mystical mountain, and Isaiah called thee the birth-giver of God. Gideon saw thee as a fleece, David called thee a sanctuary, and another called thee a door. But Gabriel crieth out to thee: Rejoice, O thou who art full of grace! The Lord is with thee!"
+          }
+        ]
       }
     },
 

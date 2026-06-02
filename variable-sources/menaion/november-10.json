@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "feast": "Holy Apostles Erastus, Olympus, Rodion, Tertius, Sosipater & Quartus",
+    "feastKey": "apostlesErastusOlympusRodionTertiusSosipatarQuartus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 11-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-10.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone I. Single canon of the holy apostles (Joseph, Tone I, acrostic 'I earnestly hymn the divinely eloquent disciples'). Two kontakia: Ode-3 slot Tone IV 'Today hath dawned' = kontakionAfterOde3; Ode-6 slot Tone II 'Having illumined your minds' = canon.kontakion + ikos. Exapostilarion present."
+  },
+
+  "troparion": {
+    "text": "O holy Apostles,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+    "tone": 3,
+    "label": "Troparion of the holy apostles"
+  },
+
+  "kontakion": {
+    "text": "Having illumined your minds with divine light,\nye wisely destroyed the wiles of the orators;\nand having fished for all the gentiles, O glorious apostles,\nye brought them to the Master,//\nteaching them to glorify the divine Trinity.",
+    "tone": 2,
+    "melody": "Seeking the highest",
+    "label": "Kontakion of the holy apostles"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "O holy Apostles,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
+      "tone": 3,
+      "label": "Troparion of the holy apostles"
+    },
+
+    "sessionalHymns": {
+      "text": "Together let us honor the memory of Erastus and Olympus, Sosipater and Tertius, Rodion and Quartus, chanting to them: O divine preachers and servants of the Word, by your prayers deliver us from eternal torments.",
+      "tone": 1,
+      "melody": "Thy tomb",
+      "label": "Sessional Hymn of the holy apostles (after Ode 3)",
+      "bothNow": {
+        "text": "O pure Virgin Theotokos who knewest not wedlock,\nthou sole intercessor and protection of the faithful:\nfrom tribulations, sorrows and cruel circumstances\ndeliver all who place their trust in thee, O Maiden,\nand save our souls by thy divine supplications.",
+        "tone": 1,
+        "label": "Theotokion"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "In hymns we all faithfully glorify the apostles, the radiant habitations of the Holy Spirit, the all-luminous rays of the unwaning Day, the brilliant flashes of lightning.",
+      "label": "Exapostilarion of the holy apostles",
+      "theotokion": {
+        "text": "Thee do all we sinners have as our helper, O most holy Virgin; by thy maternal supplications render thy Son well-disposed unto us.",
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the holy apostles, the composition of Joseph, acrostic 'I earnestly hymn the divinely eloquent disciples', in Tone I.",
+
+      "kontakionAfterOde3": {
+        "text": "Today hath dawned the honored festival of the apostles\nwhich doth manifestly bestow the remission of sins//\nupon all who keep their memory.",
+        "tone": 4,
+        "melody": "Thou hast appeared",
+        "label": "Kontakion of the holy apostles (after Ode 3)"
+      },
+
+      "kontakion": {
+        "text": "Having illumined your minds with divine light,\nye wisely destroyed the wiles of the orators;\nand having fished for all the gentiles, O glorious apostles,\nye brought them to the Master,//\nteaching them to glorify the divine Trinity.",
+        "tone": 2,
+        "melody": "Seeking the highest",
+        "label": "Kontakion of the holy apostles (after Ode 6)"
+      },
+
+      "ikos": {
+        "text": "As disciples of the Master of all, O ye who behold God, from the abyss of transgressions draw forth with the net of your prayers my lowly soul which hath been ensnared in the nets of the demons' wiles; that, passing well through the remaining time of my life, I may hymn you with love and glorify your blameless life which ye brought to an end on earth, having enlightened those who were grievously darkened, teaching them to glorify the divine Trinity."
+      },
+
+      "ode1": {
+        "irmos": "Thy victorious right arm,\nin a manner befitting God,\nhath been glorified in strength, O Immortal One;\nfor in its infinite strength it shattered the enemy,\nfashioning anew a path for the Israelites through the deep.",
+        "troparia": [
+          { "text": "In that ye are divine disciples of our God Who, in His loving kindness, became incarnate, beseech Him to grant forgiveness of sins unto those who keep your memory, O blessed ones." },
+          { "text": "O blessed ones, ye have been revealed to be splendid mirrors of God, reflecting His benefactions upon all the faithful, graciously bestowing rays of salvation, O apostles, ye beholders of God." },
+          { "text": "Having drawn forth a wellspring of radiance, Erastus and Tertius, Olympus, Rodion and Sosipater, together with Quartus, have shone forth enlightenment upon all, wherefore we piously bless them." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, by thy birthgiving thou hast renewed the human race, for thou hast given birth to the Word of the Father Who clothed Himself in mortal flesh and shown us the ways of immortality." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thou alone knowest the weakness of human nature\nand in compassion hast assumed its form;\ndo Thou gird me with power from on high,\nthat I may cry unto Thee:\nHoly is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "troparia": [
+          { "text": "Bearing the word as a noetic torch, O apostles, obedient to God ye traversed all of creation, dispelling the gloom thereof and through grace revealing as sons of light those who had been enslaved to the night of unbelief." },
+          { "text": "The saving proclamation of your words hath prophetically gone forth into all the world, and the radiant manifestations of your deeds have gone about all the earth enlightening souls, O divinely eloquent apostles of the Lord." },
+          { "text": "Making His abode in your hearts, O wise ones, the all-holy Spirit made you great beholders of God; going everywhere about the world, ye destroyed the temples of idols by grace, and raising up churches to God." },
+          { "type": "theotokion", "text": "Theotokion: O Mary, Bride of God, having come to know the only-begotten Word of the Father Who was begotten without mother and born of thee without father, we confess thee to be the Mother of God who hast given birth without pain and inexpressibly remained Virgin." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Perceiving thee with prophetic eyes\nas the mountain overshadowed by the grace of God,\nHabbakuk proclaimed that the Holy One of Israel\nwould come forth from thee,\nfor our salvation and restoration.",
+        "troparia": [
+          { "text": "Being of old the confirmation of those who were foundationless, by your divinely bestowed teachings ye overthrew the manifold strongholds of the enemy and gave them over to desolation, O ye apostles of the Savior who beheld God." },
+          { "text": "O great preachers, divine apostles, ye have thoroughly preached the mighty works of Christ, and have radiantly greatly enlightened the most degraded of mortals, accomplishing this through mighty works of grace." },
+          { "text": "Let the divine Olympus be praised with hymnody, and with him let Rodion be piously magnified, for they completed the course of martyrdom with Peter, the proclaimer of God, in Rome, their heads being severed." },
+          { "type": "theotokion", "text": "Theotokion: In thee, O all-immaculate one, was a newly-wrought wonder, greater than all wonders, manifestly shown forth; for in the flesh thou didst give birth unto God Who in an uncommingled union united Himself to the earthly in His tender compassion, O Bride of God." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou hast shone upon us with the radiance\nof Thy coming O Christ,\nand illumined the ends of the world with Thy Cross,\nenlighten with the light of Thine understanding\nthe hearts of those who with right worship hymn Thee.",
+        "troparia": [
+          { "text": "The Wisdom of the Father, Who brought everything into being, sent you into the world as teachers, O glorious ones, to make all wise in the wisdom of the Spirit by the revelation of truth." },
+          { "text": "Casting the hook of the Word, O all-wise ones, by grace ye drew voiceless fish from the depths of ignorance and brought them, believing, unto the Lord." },
+          { "text": "Let us praise Olympus, and the great Rodion, and Tertius, and Sosipater, together with Erastus and the divine Quartus: the preachers of Christ and defenders of all the pious." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, Bride of God, at the pronouncement of a word thou didst conceive the Word and, in a manner surpassing comprehension and all telling, gave birth unto Him as a man. Wherefore, with divinely inspired words we ever bless thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The deepest abyss hath surrounded us,\nand there is none to deliver us,\nyea we have been counted as sheep for the slaughter;\nsave Thy people O our God,\nfor Thou art the strength and restoration of the weak.",
+        "troparia": [
+          { "text": "O all-honored ones, rolling like stones upon the earth ye impelled towards piety those who with wicked intent had worshiped inanimate stones, O most blessed and God-beholding initiates of the mysteries of the Word." },
+          { "text": "Preaching the uncommingled and indivisible Unity in three Hypostases, ye uprooted the delusion of polytheism from the earth, O ye true apostles of Christ, leading those who were cruelly deceived unto the light of divine knowledge." },
+          { "text": "O most wise apostles, with the most comely knowledge ye set at naught the foolishness of the foolish, rendering them steadfast in belief in the One God, the King of all, Who adorneth all creation with the outpourings of divine light." },
+          { "type": "theotokion", "text": "Theotokion: We glorify thee, O Lady, who hast been revealed to be another heaven yet more exalted than the first, shining forth upon us the Sun of righteousness and dispelling the deep darkness of unbelief." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "We the faithful perceive thee, O Theotokos,\nto be a noetic furnace;\nfor as He, the supremely exalted One,\nsaved the three children,\nso hath He wholly refashioned fallen humanity, in thy womb,\nO Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          { "text": "In his epistle the Apostle Paul proclaimed thee to be a sacred chamberlain of the Church of Christ in Jerusalem, O Erastus. With them we honor thee, chanting unto Christ: O praised and supremely glorious God of our fathers, blessed art Thou!" },
+          { "text": "Proved by the enduring of trials and tribulations and persecutions, and adorned with the wounds of Christ, O most noetically rich Erastus, thou didst cry aloud: O praised God of our fathers, blessed art Thou!" },
+          { "text": "Thou wast shown to be a proclaimer of the new law, O Quartus, leading the estranged away from the old iniquity and bringing to renewal of life those who cry aloud: O praised God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O Maiden, thou didst give flesh to the consubstantial Word of the Father, Who hath appeared in the flesh to those who are on earth, and having given birth to Him as a man, the praised and supremely glorious God of our fathers hath saved mankind." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In the furnace as in a fiery smelter\nthe Israelite children shone more brightly than gold\nwith the beauty of godliness,\nas they exclaimed:\nBless the Lord all ye works of the Lord,\nhymn and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Revealed to be indestructible pillars of the Church of Christ, ye destroyed all the ramparts of impiety, founding like stones upon the Rock of faith, the faithful who cry aloud: Hymn the Lord, all ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "Ye have been shown to be law-givers inscribing the law of the Spirit in the hearts of the faithful, O all-blessed ones, and enlightened thereby they sing: Hymn the Lord, all ye works, and supremely exalt Him throughout the ages!" },
+          { "text": "O blessed Olympus, having adorned thyself, thou didst meet thine end on the same day as the great Peter, manifestly dying by the sword with Rodion at the command of Nero, the iniquitous emperor." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, of old the jar which contained the manna prefigured thee; for thou didst bear in thy womb Christ, our Sweetness, and thou hast given birth in the flesh unto Him Who delivereth from all the bitterness of wicked transgressions those who supremely exalt Him throughout the ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Bush, which burnt without being consumed,\nprefigured thy pure birthgiving, O Theotokos.\nWherefore we now entreat Thee:\nquench the raging furnace of temptations that beset us,\nthat we may unceasingly magnify Thee.",
+        "troparia": [
+          { "text": "Having equally completed the course and been equally enriched by the Word and Master, ye have been deemed worthy of equal gifts of the Spirit and have received equal honors, O apostles of the Lord, enlighteners of our hearts." },
+          { "text": "Like the stars of Heaven ye have illumined all the earth with divine signs, dispelling the deep darkness of unbelief and showing forth as children of the day those who of old were enslaved by the wiles of the adversary." },
+          { "text": "Ye destroyed a legion of the evil-minded who of old escorted whole nations into the abyss; and ye led a multitude of the saved unto God, O most elect apostles of Christ who have joined the ranks of the incorporeal hosts." },
+          { "text": "Having passed on to those things that are above the world, the great Olympus and Sosipater, Tertius and Rodion, Quartus and the most sacred Erastus now entreat the Redeemer on behalf of the world." },
+          { "type": "theotokion", "text": "Theotokion: Spare Thy people, O Lord, delivering us from barbarian assault, from sins, temptations, and eternal torments, through the prayers of the most holy Virgin who gave birth to Thee, and of Thy glorious apostles." }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Acindynus, Pegasius, Aphthonius, Elpidephorus & Anempodistus",
+    "feastKey": "martyrsAcindynusPegasiusAphthoniusElpidephorusAnempodistus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-02.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-02.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone IV. Single canon of the holy martyrs in Tone IV (Theophanes, acrostic 'Through the entreaties of the multitude of Thy martyrs preserve me'). Kontakion Tone II 'The steadfast' + Ikos after Ode 6. Exapostilarion 'Hearken, ye women' melody."
+  },
+
+  "troparion": {
+    "text": "O spiritual athletes of the Lord,\nblessed is the earth which drank in your blood,\nand holy the habitations which have received your bodies;\nfor ye vanquished the enemy in the arena preaching Christ with boldness.//\nEntreat Him, in that He is good, we pray, that our souls be saved.",
+    "tone": 2,
+    "label": "Troparion of the holy martyrs"
+  },
+
+  "kontakion": {
+    "text": "The pious and God-bearing martyrs,\nwho forsook all things on earth:\nAcindynus, Pegasius and Anempodistus, and with them Aphthonius and Elpidephorus,\ndidst Thou receive into the delight of Thy good things and into rest,//\nO Thou Who alone are supremely good.",
+    "tone": 2,
+    "melody": "The steadfast",
+    "label": "Kontakion of the holy martyrs"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "O spiritual athletes of the Lord,\nblessed is the earth which drank in your blood,\nand holy the habitations which have received your bodies;\nfor ye vanquished the enemy in the arena preaching Christ with boldness.//\nEntreat Him, in that He is good, we pray, that our souls be saved.",
+      "tone": 2,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "sessionalHymns": {
+      "text": "Suffering in their struggle, with hope the right glorious ones ran the race of piety unharmed, strengthened by their crowns; for utterly destroying the adversaries, they gained their victory without faltering. Wherefore, they ever pour forth a multitude of healings abundantly upon those who ask with faith. To them we cry aloud together: Entreat Christ God, that He grant remission of sins to those who honor your holy memory with love!",
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+      "bothNow": {
+        "text": "All we, the generations of mankind,\ncall thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels,\nglorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "With hymns we crown Acindynus, Pegasius and Elpidephorus, together with Aphthonius and Anempodistus; for, having denounced the superstitious deception of the Persians, and endured beating and wounds for Christ, they have received ineffable glory.",
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the holy martyrs",
+      "theotokion": {
+        "text": "Rejoice, O palace of God! Rejoice, mountain overshadowed! Rejoice, bush unconsumed! Rejoice, throne of glory! Rejoice, divine table! Rejoice, golden jar! Rejoice, fiery candle stand! Rejoice, O Mary, Virgin Mother, thou light cloud!",
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyrs, the composition of Theophanes, acrostic 'Through the entreaties of the multitude of Thy martyrs preserve me', in Tone IV.",
+
+      "kontakion": {
+        "text": "The pious and God-bearing martyrs,\nwho forsook all things on earth:\nAcindynus, Pegasius and Anempodistus, and with them Aphthonius and Elpidephorus,\ndidst Thou receive into the delight of Thy good things and into rest,//\nO Thou Who alone are supremely good.",
+        "tone": 2,
+        "melody": "The steadfast",
+        "label": "Kontakion of the holy martyrs"
+      },
+
+      "ikos": {
+        "text": "Open my mouth, O Christ my Lord, that I may hymn and praise with honor the struggles of Thy spiritual athletes; for, forsaking all, and loving Thee, the Creator of all, they considered all things on earth corruptible. Thus, making the honored sign of Thy life-bearing Cross, they have diligently taken their place before their King, as valiant soldiers and martyrs, crying out to Thee, O Thou Who alone art supremely good."
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "As ye have Christ our God, the Sun of righteousness, ever illumining you with immaterial light, O saints, dispel the clouds of mine ignorance." },
+          { "text": "Pouring forth grace free from danger, O saints, ye untiringly bestow it upon those who approach with faith, causing all tribulation, all despondency, tempest and tumult to cease." },
+          { "text": "Girded about with invincible might, O saints, ye gave no thought to the weakness of the flesh; but, fearlessly showing forth wisdom, ye braved the fire and torment." },
+          { "type": "theotokion", "text": "Theotokion: Thou alone, O Bride of God, didst bear in thine arms Him Who is enthroned in the highest, though He took flesh; for from ages past thou wast shown to be a worthy receptacle for the Almighty." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee, O Lover of mankind.",
+        "troparia": [
+          { "text": "Made steadfast by the power of Christ, O most excellent ones, with firm resolve ye passed through fire and water to the heavens, suffering all the while." },
+          { "text": "Taking heart with an unfaltering hope of things to come, O all-glorious martyrs, with most courageous resolve ye put aside the pangs of the present." },
+          { "text": "Reasoning like the three youths in Babylon, O all-praised ones, ye were shown to quench the first of the Persians' foolishness, bedewed by the Spirit." },
+          { "type": "theotokion", "text": "Theotokion: Having acquired thee as a renowned intercessor, O Mother of God, and placing our trust in thee, we are saved, and having recourse to thee we are kept safe." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry:\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "Made brilliant by the beauty of a most excellent contest, O splendid luminaries, ye were revealed to be martyrs of Christ, enlightening with most splendid rays those who cry: Glory to Thy power, O Christ!" },
+          { "text": "The blood of the martyrs was an offering of cleansing, freely giving a truly most fragrant sacrifice unto God, and pouring forth upon all a well-spring of healing." },
+          { "text": "By your supplications to Christ ye have fended off the assault of divers temptations and misfortunes for those who diligently keep your most sacred and all-festive memory, O right wondrous ones." },
+          { "text": "Having rejected the idolatrous ungodliness of delusion, and showing forth the life-creating activity of the God of all by your deeds, O most blessed ones, ye cried aloud: Glory to Thy power, O Christ!" },
+          { "type": "theotokion", "text": "Theotokion: We wield thee as a most mighty weapon against the enemy; we hew down all sorrow and the harm of grievous circumstances; and we flee from the tumults of the heretics, O Mother of God." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "The wicked will not behold Thy glory, O Christ,\nbut we who rise early to hymn Thee shall behold Thee,\nthe Only-Begotten effulgence of Thy Father's divinity,\nO Lover of mankind.",
+        "troparia": [
+          { "text": "Thou didst offer thyself to Christ, O Aphthonius, mightily denouncing the ungodly wickedness of the tyrant; and, rejoicing, thou didst make haste to the light of faith, O glorious one." },
+          { "text": "When thou didst emulate the suffering of Christ, O Aphthonius, for Whose sake thy head was severed; for thou didst hasten toward immutable and undying rest." },
+          { "text": "Steadfast in unshakeable hope, thou didst spit upon the beautiful things which are in the world, O all-wise Elpidephorus; for thou didst run in haste to the arena of thy contest." },
+          { "type": "theotokion", "text": "Theotokion: The noetic Sun, shining forth from thee, hath shed radiant beams of His divinity upon all, O Lady Theotokos. Wherefore, we all glorify thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Having disdained corruptible and transitory things, ye have been deemed worthy to behold incorruptible things; wherefore, from temptations and misfortunes deliver those who call upon you with faith, O all-praised ones." },
+          { "text": "O most glorious martyrs, by your entreaties move the beginningless Trinity to spare and loose those who are cruelly bound and held inescapably in prisons." },
+          { "text": "Committing themselves to death for Thee, O my Savior, the valorous ones received immortality and are become the saviors of those amid tempest, dangers and sorrows." },
+          { "type": "theotokion", "text": "Theotokion: Rend asunder the record of my transgressions, O Maiden, granting release from the grief and sufferings which hold me fast, and preserving me ever unharmed, O Lady." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO supremely hymned Lord, God of our fathers,\nblessed art Thou.",
+        "troparia": [
+          { "text": "As Thou didst deliver the three pious youths from the flame, so also didst thou preserve in the midst of a fiery furnace the spiritual athletes who chanted unto Thee with divine wisdom: O God of our fathers, blessed art Thou!" },
+          { "text": "Abundant gifts dost Thou bestow, and Thou pourest forth miracles, O Christ, acting and working through Thy spiritual athletes, in that Thou art full of tender compassion, and revealing this to those who chant unto Thee: O God of our fathers, blessed art Thou!" },
+          { "text": "A multitude of martyrs truly assembled by faith have ye led to Christ, effecting the manifestation of most glorious miracles, and chanting: O God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Delivered from the ancestral curse by thee, and having passed on to everlasting sustenance, we cry out to thee: Rejoice, O exceedingly glorious Lady, who hast given birth to the incarnate God for us!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "The most devout feast of the martyrs hath now joyously arrived, illumining the world, bringing gladness and splendidly adorning those who chant with faith: O all ye works of the Lord, praise ye the Lord and supremely exalt Him throughout the ages!" },
+          { "text": "Having as your helper the invincible Lord of glory, O most excellent ones, ye braved wild beasts, the pit and cruel tortures. To Him do we now cry aloud: O all ye works of the Lord, praise ye the Lord and supremely exalt Him throughout the ages!" },
+          { "text": "Having you as a mighty rampart, O valiant spiritual athletes Acindynus, Pegasius and Anempodistus, with Aphthonius and the ever-memorable Elpidephorus, we praise the Lord and supremely exalt Him throughout the ages." },
+          { "text": "Adorned with a crown of victory, and resplendent in a diadem of beauty, O blessed martyrs, ye ultimately received unwaning radiance in the heavens, crying aloud: Praise ye the Lord and supremely exalt Him throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: Regarding thee with mouth and mind to be the Theotokos, we hymn thee, O all-immaculate one; for thou hast given birth to Christ, the Creator, God and King, Who wrapped Himself in flesh, O most pure one. Wherefore, we hymn thee, O Virgin, and supremely exalt thee throughout the ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Your labors on earth received the gladness of heaven, where the choirs of martyrs and the armies of the godly and all the first-born rejoice in your triumph, O all-blessed ones." },
+          { "text": "O all-blessed ones, from cruel bonds and misfortunes deliver all who with faith celebrate your holy festival, asking peace and tranquility and salvation, O blessed ones." },
+          { "text": "Illumined with rich light and shining with grace, O spiritual athletes, entreat the Benefactor, that He grant to those who have recourse unto you and those who struggled with you, remission of sins and grief." },
+          { "type": "theotokion", "text": "Theotokion: Eve was driven away from the tree of life of which she had been forbidden to eat; but thou, O Virgin Theotokos, hast given birth to everlasting Life, granting life-bearing activity to the world through faith." }
+        ]
+      }
+    }
+  }
+}

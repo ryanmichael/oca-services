@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Paramon",
+    "feastKey": "martyrParamon",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-29.pdf",
+    "_note": "Simple-rank. Paramon has canon AT MATINS (Joseph, Tone IV, acrostic 'Grant now that I may hymn thy grace, O martyr'). Venerable Acacius (also commemorated this day) has his canon AT COMPLINE only — a different service not tracked here. No dedicated kontakion at Ode 6 in Paramon's matins canon; the martyricon from the Octoechos is used at that slot. Exapostilarion 'Hearken, ye women' melody."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr"
+    },
+
+    "sessionalHymns": {
+      "text": "With the patience called for by the divine precepts thou didst cleanse thy soul of defilement and attain to the perfection of spiritual athletes; for thou didst renounce sacrifice to false graven images and, emulating Christ, wast slain with a spear. Him do thou earnestly entreat on behalf of the world, O all-blessed Paramon.",
+      "tone": 4,
+      "melody": "Having been lifted up",
+      "label": "Sessional Hymn of the holy martyr (after Ode 3)",
+      "bothNow": {
+        "text": "O Theotokos, fleeing to thy divine protection after God,\nI humbly fall down and beseech thee:\nHave mercy, O most pure one,\nfor my sins have submerged my being,\nand trembling O Lady, I fear the torments to come,\nO pure one, entreat thy Son,//\nthat I may be delivered from them.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "With the wisdom of piety let us hymn the invincible multitude of warriors, the divine and unvanquished company of martyrs which hath the wondrous Paramon as its leader, who denounced the tyrant and received a crown of glory with all the martyrs.",
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the holy martyr",
+      "theotokion": {
+        "text": "Rejoice, O palace of God! Rejoice, O mountain overshadowed! Rejoice, O bush unburnt! Rejoice, O throne of glory! Rejoice, O divine table! Rejoice, O golden jar! Rejoice, O candle-stand all golden! Rejoice, O Mary, Virgin and Mother, thou light cloud!",
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyr Paramon, the composition of Joseph, acrostic 'Grant now that I may hymn thy grace, O martyr', in Tone IV.",
+      "_note": "No dedicated kontakion at Ode 6 — the martyricon from the Octoechos is used at that slot per the rubrics.",
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "With the illumining rays of the Spirit enlighten the heart of me who hymn thy radiant memory, O martyr Paramon, and strengthen me to abide in the laws of God." },
+          { "text": "Thou wast radiantly enriched with martyric glory, having shone forth in the beauties of martyrdom and been adorned with beauteous wounds, O Paramon. Wherefore, with faith we call thee blessed." },
+          { "text": "Full of the life-creating waters of the Spirit, thou didst shed dew upon those grievously withering under the burning heat of ungodliness, O glorious one, and didst lead them to the water of peace." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth in time to the Timeless One Who became a man, O pure one. Him do thou earnestly beseech as thy Son and Lord, that He heal the temporal sufferings of my soul, O all-immaculate one." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,\nmy refuge and foundation.",
+        "troparia": [
+          { "text": "Having humbled the uprising of the enemy for Christ's sake, thou didst destroy him and cut down his legions with the sword of patience." },
+          { "text": "Thou didst destroy the counsel of the evil one against our Faith, and suffered mightily, O martyred spiritual athlete Paramon." },
+          { "text": "As a powerful warrior thou wast strengthened by divine grace, O martyr, reckoning cruel tortures to be like a dream." },
+          { "type": "theotokion", "text": "Theotokion: Strengthen my mind which is beset by many passions, O most pure Mother of God, that I may glorify thee as is meet." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud:\nGlory be to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Thy heart, protected by courage and set afire with boldness, O glorious one, considered the many and cunning tortures to be like the darts of children, O valiant minded martyr." },
+          { "text": "Seeing the sufferers slain at the command of the tyrant, the martyr Paramon received divine zeal like unto theirs, and went forth to suffering." },
+          { "text": "O blessed Paramon, Christ, the Judge of the contest, crowned thee who wast mightily lacerated, mercilessly pierced with spears, and who vanquished the wiles of the enemy." },
+          { "text": "Marveling at the endurance of the martyrs and amazed by their perfection, O glorious one, thou didst share in their zeal of faith and their all-honorable suffering." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin Mary, by thy Life-bearing birthgiving thou hast brought life to all mankind slain by disobedience; wherefore, we glorify and in godliness call thee blessed." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou hast come, O my Lord,\nas a light into the world,\na holy light turning from the gloom of ignorance\nthose who hymn Thee with faith.",
+        "troparia": [
+          { "text": "Thou didst offer thyself to thy Creator as a precious gift, having suffered and vanquished falsehood, O thou adornment of the martyrs." },
+          { "text": "Thou didst demolish graven images and the temples of demons, O wise Paramon, having acquired a steadfast resolve on the rock of divine faith." },
+          { "text": "Thou didst manfully wound a multitude of the demons with the wounding of thy flesh, O valiant-minded spiritual athlete. Wherefore, we call thee blessed." },
+          { "type": "theotokion", "text": "Theotokion: The Lord Who is equal in honor with the Father and the Spirit became incarnate from thy pure blood, O pure one, becoming a man." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "Thou wast not slothful during thy struggles, but wast surpassingly diligent and valiant amid thy divine suffering; wherefore, thou hast received a crown of glory." },
+          { "text": "Thou didst join the assembly of the martyrs who reached the end of their lives with zeal before thy contest, O ever-memorable one, and with them thou hast been deemed worthy to enter the heavenly bridal-chamber." },
+          { "text": "Spears made thee an emulator of Christ, for, pierced thereby, O martyr, thou didst hasten to Him as one crowned, having slain the foolish with the sword of patience." },
+          { "type": "theotokion", "text": "Theotokion: O most immaculate one, from the temptations of life deliver me who am held fast in the night of ignorance with unseemly thoughts and am ever darkened by the malice of the enemy." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety\nrather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Splendidly enriched by God with the grace of healings and miracles, O wise martyr, thou dost heal those who cry aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "Placing all thy care in the heavens, O right glorious one, thou didst disdain the tortures inflicted upon thee, crying aloud: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "text": "With the fire of thy blood thou didst consume all the wicked tinder of ungodliness, O glorious spiritual athlete; and with the dew of thy miracles bedewest those who are in the burning heat of evils, crying aloud, O right glorious one: Blessed art Thou in the temple of Thy glory, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: Rejoice, thou who alone hast given birth to the Joy of mankind! Rejoice, O heaven and throne of the cherubim, most glorious palace of Him Who reigneth throughout all ages, O all-immaculate Lady!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws\nin their den;\nwhile the zealously pious youths,\ngirded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "We all have been enriched, having acquired thee as a vigilant guardian of our souls, O much suffering one, ever lulling to sleep demonic fantasies and stilling the raging waves of the flesh and the storm of evil thoughts of those who cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "With the streams of thy sacred blood thou didst dye for thyself a purple robe which will never grow old, and, splendidly adorned, thou dwellest in the heavens, O blessed one, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "text": "As a pure lamb, as an unblemished sacrifice, as a whole-burnt offering consumed by the embers of suffering, O wise martyr, thou didst bring thyself to Christ, the Judge of the contest, chanting: Bless the Lord, all ye works of the Lord!" },
+          { "type": "theotokion", "text": "Theotokion: The shadow of the law and the proclamations of the prophets foreordained thee, O pure one full of the grace of God, as her who would ineffably become the Mother of our God. To Him do we all chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,\nO Theotokos.",
+        "troparia": [
+          { "text": "Behold! the splendid memory of the radiant passion-bearer hath shone forth, illumining with the divine Spirit the hearts of all the faithful who joyfully join chorus and bless him with faith." },
+          { "text": "Having joined thyself to the three hundred and seventy invincible martyrs, thy body doth lie with them, O martyr of Christ. With them pray thou, that we be saved." },
+          { "text": "Having passed through the arena of pain which is full of many and varied torments, and overcoming them splendidly with Christ Who conquered the world, ye dwell now in the heavens, O crowned martyrs." },
+          { "text": "Thou wast taken up from the earth and received honors for thy struggles; and now pourest forth rivers of miracles upon us who honor thee and piously celebrate thy memory, O Paramon." },
+          { "type": "theotokion", "text": "Theotokion: Enlighten the eyes of my soul which have been darkened by the blindness of corrupting sin, O most pure Lady, Birthgiver of God; for thou art the help and enlightenment of the faithful, O pure one." }
+        ]
+      }
+    }
+  }
+}

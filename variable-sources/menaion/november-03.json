@@ -1,0 +1,219 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Acepsimus the Bishop, Joseph the Priest & Aithalas the Deacon; Consecration of the Church of Great Martyr George in Lydda",
+    "feastKey": "martyrsAcepsimusJosephAithalasSt-GeorgeLydda",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 11-03.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-03.pdf",
+    "_note": "Joint two-saint simple-rank file. Canon I: Holy Martyrs Acepsimus/Joseph/Aithalas (Tone IV). Canon II: Holy Great Martyr George (Tone IV, acrostic 'O blessed one, I glorify thee, husbandman of God'). Three sessional hymns: Martyrs (Tone VIII 'Of wisdom'), Glory/George (Tone I 'Thy tomb'), Both-now (Tone I). Martyrs kontakion (Tone II) at Ode-3 slot; George kontakion (Tone VIII) + Ikos at Ode-6 slot. Exapostilarion for martyrs + Glory for George + Theotokion."
+  },
+
+  "troparion": {
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyrs"
+  },
+
+  "kontakion": {
+    "text": "Thou didst celebrate the mysteries blamelessly, O wise one,\nand wast thyself an acceptable sacrifice, O divinely blessed one;\nfor thou didst gloriously partake of the cup of Christ,\nwith thy fellow sufferers O holy Acepsimus,//\nand prayest unceasingly on behalf of us all.",
+    "tone": 2,
+    "melody": "Seeking the highest",
+    "label": "Kontakion of the holy martyrs"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
+
+    "troparion": {
+      "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyrs"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Joseph, the valiant struggler, Acepsimus, the destroyer of deception, and Aithalas, the invincible and glorious sufferer, the radiant stars, are today truly praised by the faithful in hymns, as is meet. For they did not accept the falsehood of the Persians and did not sacrifice to the sun nor honor fire. To them let us cry out with love: Entreat Christ God, that He grant remission of sins unto those who celebrate your holy memory with love.",
+        "tone": 8,
+        "melody": "Of wisdom",
+        "label": "Sessional Hymn of the holy martyrs (after Ode 3)"
+      },
+      {
+        "text": "Disdaining military service on earth, thou didst desire glory in the heavens, O martyr, enduring pain and a grievous death. Wherefore, celebrating thy holy memory today, we offer praise unto Christ, O thrice-blessed George.",
+        "tone": 1,
+        "melody": "Thy tomb",
+        "label": "Glory — Sessional Hymn of the holy great-martyr George"
+      },
+      {
+        "text": "O most holy Virgin, hope of Christians,\nwith the hosts on high do thou unceasingly beseech God\nto Whom, in a manner surpassing understanding and all telling, thou hast given birth,\nthat He grant forgiveness of all our sins\nand correction of life unto those who with faith and love ever glorify thee.",
+        "tone": 1,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "exapostilarion": {
+      "text": "Ye endured unbearable torments as if ye were bodiless ones, O all-praised Acepsimus, wondrous Joseph and marvelous Aithalas the deacon, initiates of the mysteries, and the incorporeal hosts are ever amazed by your pangs and sufferings.",
+      "melody": "By the Spirit in the sanctuary",
+      "label": "Exapostilarion of the holy martyrs",
+      "glory": {
+        "text": "Thou didst extinguish the flames of delusion with the streams of thy blood, O blessed one, utterly destroying the audacity of thy tormentors; and thereby glorified Christ, O passion-bearer George. Wherefore, thou hast received a crown of incorruption and life from the right hand of the Most High.",
+        "label": "Glory — Exapostilarion of the holy great-martyr"
+      },
+      "theotokion": {
+        "text": "There is no hope of salvation for me, O Virgin, for I have miserably fallen into the abyss of transgressions and await the menace of dreadful torments and the portion of the goats. But take pity on me before the Judgment, for thou art a fervent aid, O Theotokos.",
+        "label": "Both now — Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 4,
+      "_authors": "Canon I of the Holy Martyrs Acepsimus, Joseph and Aithalas, in Tone IV. Canon II of the Holy Great Martyr George, acrostic 'O blessed one, I glorify thee, husbandman of God', in Tone IV.",
+
+      "kontakionAfterOde3": {
+        "text": "Thou didst celebrate the mysteries blamelessly, O wise one,\nand wast thyself an acceptable sacrifice, O divinely blessed one;\nfor thou didst gloriously partake of the cup of Christ,\nwith thy fellow sufferers O holy Acepsimus,//\nand prayest unceasingly on behalf of us all.",
+        "tone": 2,
+        "melody": "Seeking the highest",
+        "label": "Kontakion of the holy martyrs (after Ode 3)",
+        "ikos": "Who among the faithful can in any wise fittingly hymn the most wise hierarch Acepsimus, the beacon of Christ? For he hath destroyed the deception of idolatry and put the demons' wiles to shame by the mighty power of Christ God, piously instructing us to worship the most holy Trinity and to honor the Father, the Son and the Holy Spirit in One Godhead; and he prayeth unceasingly on behalf of us all."
+      },
+
+      "kontakion": {
+        "text": "Having recourse to thine elect and speedy aid, O spiritual athlete of Christ,\nwe, the faithful, pray that those who hymn thee\nmay be delivered from the snares of the enemy\nand from all tribulation and afflictions,\nthat we may cry://\nRejoice, O martyr George.",
+        "tone": 8,
+        "melody": "To thee, the champion leader",
+        "label": "Kontakion of the holy great-martyr George (after Ode 6)"
+      },
+
+      "ikos": {
+        "text": "Thou art shown to be great among earth's intercessors, O friend and favorite of the Lord; for, protected by thee, faithful people are ever saved, O glorious one. Wherefore, with faith and love we cry to thee, O much suffering one: Rejoice, thou by whom the world hath been enlightened! Rejoice, thou by whom the army hath been made splendid! Rejoice, deliverance of the faithful from captivity! Rejoice, ready aid of the imprisoned! Rejoice, summit of those who fervently have recourse to thee! Rejoice, enricher of those who love thee! Rejoice, for thou art the protection of all people! Rejoice, for thou grantest victory in battle! Rejoice, star which illumines those at sea! Rejoice, banisher of all misery! Rejoice, thou to whom all the faithful have recourse! Rejoice, thou by whom the Creator is praised! Rejoice, O martyr George!"
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "irmos2": "O Thou who wast born of the Virgin,\ndrown I implore Thee, in the depth of dispassion\nthe triune nature of my soul,\nas Thou didst the mighty strongholds of the warriors,\nthat in the mortality of my flesh as on a timbrel\nI may chant a hymn of victory.",
+        "troparia": [
+          { "text": "O most noetically rich ones, equal in number to the most holy Trinity, of Whom ye were revealed to be honorable worshipers, intercede before the throne of the Trinity on behalf of those who have recourse unto you, O fervent helpers." },
+          { "text": "As worshipers of the three-sunned Trinity, O holy ones, ye destroyed the deception of polytheism, enduring divers torments and an unjust death, O ye blessed of God." },
+          { "text": "Traversing the abyss of torments by faith, without being capsized, O blessed ones; ye came to the land of life without grief, anchoring in the harbor of heavenly radiance in ineffable glory." },
+          { "type": "theotokion", "text": "Theotokion: O most immaculate one, thou hast been revealed to be our mediatress of joy, in that thou didst receive within thyself the fullness of the Divinity. Wherefore, together we all call thee the joy of the angels, O thou divinely joyous one." },
+          { "canon": "secondCanon", "text": "Thou didst manifest the prosperous husbandry of God, O passion-bearer George, nurturing by thy pious example the faithful who in a sacred manner celebrate thy splendid memorial, fervently glorifying thee." },
+          { "canon": "secondCanon", "text": "Divine love truly inflamed thy heart, O passion-bearer, and, unbidden, thou didst proceed to torment, consuming the deception of polytheism with fire and illumining thy mind with rays of salvation." },
+          { "canon": "secondCanon", "text": "Confident as a lion, thou didst confront the tribunal, proclaiming the incarnation of Christ, by which the world hath been delivered from the ancient fall; and thou hast received the primal blessed fruit, O thrice-blessed George." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Delivering us from our ancient condemnation, the Son of God became, as a man, the Son of the Virgin. Wherefore, with right believing hearts, we glorify Him in two natures and wills." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Not in wisdom, nor in power do we glory,\nbut we glory in Thee O Christ,\nthe Hypostatic Wisdom of the Father,\nfor there is none more holy than Thee, O Lover of mankind.",
+        "irmos2": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength:\ntherefore is my heart established in the Lord.",
+        "troparia": [
+          { "text": "Not in the learning of Hellenic vanity, O wise ones, but with divine knowledge did ye denounce the godlessness of the Persians, setting at naught their madness." },
+          { "text": "Illumined with the divine anointing of the episcopate, O sacred Acepsimus, thou didst adorn thyself with the blood of martyrdom, O divinely blessed one." },
+          { "text": "The crushing of thy limbs, O ever-memorable Joseph, hath utterly crushed the wiles of the deceiver and brought thee imperishable glory." },
+          { "type": "theotokion", "text": "Theotokion: Finding thee a most pure habitation, the Wisdom of God took flesh of thy blood, yet revealed thee as incorrupt even after thou hadst given birth." },
+          { "canon": "secondCanon", "text": "Joyously renouncing the glories of lineage and homeland, thou didst follow after Christ, O martyr, and hast been shown to be a most comely citizen of the heavenly Zion." },
+          { "canon": "secondCanon", "text": "As thou didst reveal thyself to be a special heir and dutiful son of the living God, thou didst endure the tormentors' waves of scourgings, O valiant martyr." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most immaculate one, He Who alone created mankind, clothing Himself in all of Adam, hath become a new Adam through thee, for the sake of His tender compassion." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry:\nGlory to Thy power, O Christ.",
+        "irmos2": "For the sake of love for Thine image, O compassionate One,\nThou didst ascend the cross\nand the nations melted away.\nFor Thou, O Lover of mankind,\nart my strength and my praise.",
+        "troparia": [
+          { "text": "Disdaining that which is below and turning their gaze towards those things that are alone everlasting, the valiant Acepsimus and the glorious Joseph and Aithalas received dwelling places therein; wherefore they are praised." },
+          { "text": "O mighty martyr Acepsimus, most wondrous passion-bearer of Christ, during thy suffering thou didst stretch forth thy thought unto Him Who alone is Master, and He lightened thine unbearable torments." },
+          { "text": "Harvested like a fruitful vine, O passion-bearer Aithalas, thine honored martyrdom poureth forth the wine of compunction upon the faithful, who cry out in gladness: Glory to Thy power, O Christ!" },
+          { "type": "theotokion", "text": "Theotokion: The holy Theotokos, in whom the Word of the Father, Who is co-equal in divinity with Him, was well pleased to make His abode, did not lose her purity, nor was she wearied by the pangs of labor; for she gave birth to Emmanuel, God and man." },
+          { "canon": "secondCanon", "text": "O blessed one, thy body, slain by torture, represented the sufferings of the Word, Who was slain and Who hath given thee eternal life." },
+          { "canon": "secondCanon", "text": "Protected by the shield of truth, with thy mighty mind thou didst altogether destroy the false contenders, O divinely wise George." },
+          { "canon": "secondCanon", "text": "The Word, Who on earth put on our weakness, hath been glorified by thy members. Wherefore, we everlastingly glorify thee, O George." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most pure one, He Who hath given us existence, by becoming a man Himself, hath granted the acquisition of goodness unto those corrupted by the transgression." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
+        "irmos2": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Calling upon the great and precious name of the Lord, O Acepsimus, rejoicing, thou didst drain the saving cup of sufferings." },
+          { "text": "The Most High, Who is our nourishment, hath received thee who wast summoned through wounds, O Joseph, as have the choirs of martyrs with whom ye now rejoice." },
+          { "text": "O blessed Aithalas, thou hast truly been revealed to be an ever-flowering garden nourishing the ends of the earth with the fruits of thy struggles." },
+          { "type": "theotokion", "text": "Theotokion: O most immaculate one, within time thou didst give birth for us unto the timeless Light, the Radiance of the Father, becoming a wealth of goodness." },
+          { "canon": "secondCanon", "text": "Having manfully entered upon the struggle of martyrdom, with thy broken body thou didst put an end to the audacity of idolatry, O passion-bearer." },
+          { "canon": "secondCanon", "text": "In His crown the Master hath set thee as a brilliant gem, thus illumining His Church, O passion-bearer." },
+          { "canon": "secondCanon", "text": "Slaughtered like a lamb, thou didst well represent the death of the good Chief Shepherd, offering thyself as an unblemished sacrifice at His exalted altar." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most pure Theotokos, from misfortunes, tribulations and the torments which are to come save us by thy prayers." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
+        "irmos2": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss\nO Greatly-merciful One.",
+        "troparia": [
+          { "text": "When thy head was severed from thy body, O Acepsimus, by faith thou didst inseparably join thy soul to Christ, ever enlightened by rays of heavenly light." },
+          { "text": "Slain by stoning like the protomartyr, thou didst not deny Christ, the living Stone, O martyr, but passed over to the radiant mansions of heaven." },
+          { "text": "Beaten mercilessly with staves, thou didst rejoice, possessed of a staff of power, the Cross and boast of the Lord, O most noetically rich and divinely wise passion-bearer Aithalas." },
+          { "type": "theotokion", "text": "Theotokion: The bush prefigured the great mystery of thy birthgiving, which surpasseth comprehension, for it was in no wise killed by the fire, nor consumed, O all-hymned Virgin." },
+          { "canon": "secondCanon", "text": "Though the vessel of thy body hath been broken by sufferings, O martyr, thou hast manfully destroyed all the evil machinations of the enemy, O all-blessed George." },
+          { "canon": "secondCanon", "text": "Aflame with the love of God, thou didst in no wise fear the hot irons of the furnace or the blades and wheels which lacerated thy body, O martyr." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Mother of God, thou wast a holy temple for Him Who resteth in the saints. Wherefore, sanctify us who faithfully hymn thee, O Ever-virgin." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Thou didst save the children of Abraham in the fire\nand slay the Chaldeans,\nwho unjustly entrapped the righteous ones.\nO supremely hymned Lord, God of our fathers,\nblessed art Thou.",
+        "irmos2": "The three youths in Babylon,\nregarded the tyrant's command as foolishness,\nand cried aloud in the midst of the flame:\nBlessed art Thou, O Lord God of our fathers!",
+        "troparia": [
+          { "text": "Receiving dew from God amid the fire of torment, ye set the adversaries afire with the flames of your patience, O passion-bearers, crying aloud: O God of our fathers, blessed art Thou!" },
+          { "text": "The worshipers of fire are shown to be its inheritors, for they tried to compel those who worship the Sun of glory to worship fire, but cried aloud: O God of our fathers, Blessed art Thou!" },
+          { "text": "Let Acepsimus, Joseph and Aithalas, the three beacons of the most honored Trinity, who illumined all the ends of the earth with rays of piety, be honored throughout the ages!" },
+          { "type": "theotokion", "text": "Theotokion: Blessed is the Fruit of thy womb, Whom the hosts of heaven and assemblies on earth bless, and Who hath delivered us from the original curse, O blessed one." },
+          { "canon": "secondCanon", "text": "Thou wast a living sacrifice unto Him Who was sacrificed like a lamb for our sake; and, strengthened by Christ, thou didst set at naught sacrifices vainly offered to demons." },
+          { "canon": "secondCanon", "text": "Thou art shown to be a fruitful branch which doth bear for us the grapes of patience, producing the divine wine which maketh glad the hearts of all the pious." },
+          { "canon": "secondCanon", "text": "Thou didst zealously give thy members over to be cut off for Christ's sake, and, gladdened, thou didst remain inseparable from His love, O most blessed one, and an heir to all blessings." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: All creation doth offer praise unto God, Who was born of thy most pure womb, O most immaculate maiden, and Who hath delivered us all from the ancient curse." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "irmos2": "O almighty Redeemer of all,\ndescending into the midst of the flame,\nThou didst bedew the pious\nand didst teach them to chant:\nBless and hymn the Lord, ye works!",
+        "troparia": [
+          { "text": "Having become abodes of the Word and, through the savagery of the tormentors, bearing the burden of His stripes as though already lifeless, ye set yourselves against the mindless ones, O valorous martyrs, being subjected to testing by many torments, yet supremely exalting Christ throughout the ages." },
+          { "text": "O ever-memorable martyrs, mediators of everlasting glory, adorned, ye went joyously forth, and ye loved the path of His testimony, crying aloud: Hymn the Lord and supremely exalt Him throughout the ages!" },
+          { "text": "Neither fire, nor stripes, nor beasts, nor the sword, nor family, nor death could separate the martyrs from Thy love, O Lord, Thou Wellspring of blessings, pouring forth inexhaustible streams of love. Praising them, O Christ, we bless Thee throughout the ages." },
+          { "type": "theotokion", "text": "Theotokion: Praising the Theotokos, the Mother who alone knew not a man, who alone is the most exalted of all created beings, the most holy mountain, the golden altar, with hymns, we cry aloud: Hymn the Lord, ye works, and supremely exalt Him throughout the ages." },
+          { "canon": "secondCanon", "text": "O George, thou hast been revealed to be a special helmsman of those who sail and a great helper amid tribulations, saving those who have recourse unto thee with faith and an unwavering heart." },
+          { "canon": "secondCanon", "text": "Thou hast been revealed to be a champion of truth and a denouncer of falsehood, and the confirmation of us who chant with faith, O passion-bearer: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "With the shedding of thy blood thou didst extinguish the burning coals of delusion, O George, watering the hearts of the faithful who faithfully hymn and keep thy glorious memory." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou didst spring forth from the root of Jesse, and uprooted the root of malice by putting forth the Fashioner of creation, O maiden. To Him do we chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,\nO Theotokos.",
+        "irmos2": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Let us praise the beacons of piety and destroyers of deception, the fragrant blossoms of the rational paradise, the honored vessels, the beholders of God's beauty." },
+          { "text": "The glowing coal which Isaiah beheld of old have ye received into your hearts; and illumined by the brilliance thereof, O martyrs, ye set at naught the dark worship of fire." },
+          { "text": "Adorned, ye now stand before the life-creating Trinity, and, illumined with crowns of comeliness, ye commemorate those on earth who ever keep your memory, O blessed ones." },
+          { "type": "theotokion", "text": "Theotokion: O Virgin, who hath conceived the Savior and given birth to Him in the flesh, save me who am in despair. For, weighed down by the burden of sin, I cry out to thee in pain: Spare me, and help thy servant!" },
+          { "canon": "secondCanon", "text": "Radiantly shining forth like the dawn, thou hast enlightened creation with the unwaning sunrays of thy sufferings and the manifestation of thy many miracles, O George, joy of martyrs. Therefore with love we bless thee." },
+          { "canon": "secondCanon", "text": "Thou hast revealed drops of divine sweetness which take away the bitterness of our passions, ever delighting the souls and hearts of those who bless thee with faith, O right glorious one." },
+          { "canon": "secondCanon", "text": "With thy blood thou didst hallow the earth and with the spirit of gladness thou hast filled the heavens, O martyr. Wherefore, all the souls of the pious love thee as a favorite of Christ and call thee their sure helper." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We offer thee the cry of gladness of the divine Gabriel, crying aloud: Rejoice, joy of the universe, who hast given birth unto the Abolisher of sorrow, and who hast removed the reproach of Eve! Rejoice, O Virgin, who hast not known a man!" }
+        ]
+      }
+    }
+  }
+}

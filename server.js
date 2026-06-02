@@ -2623,7 +2623,10 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedOverride) {
       menaionOverride = { ...sources.menaion, auto: { ...(sources.menaion.auto || {}), [date]: autoSlot } };
     }
   }
-  const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten'];
+  // 'greatLent' included so great feasts that fall in Lent (Annunciation, Meeting)
+  // still get their menaion stichera injected; regular Lenten weekdays are protected
+  // by hasTriodionContent (their slots already carry source:'db' Triodion content).
+  const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten', 'greatLent'];
   const isSaturdayInjection = calendarEntry.dayOfWeek === 'saturday';
   const isGreatVespers      = calendarEntry.vespers?.serviceType === 'greatVespers' ||
                               calendarEntry.vespers?.serviceType === 'all-night-vigil';

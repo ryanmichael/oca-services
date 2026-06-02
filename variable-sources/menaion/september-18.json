@@ -1,0 +1,394 @@
+{
+  "_meta": {
+    "feast": "Venerable Eumenius, Bishop of Gortyna the Wonderworker",
+    "feastKey": "stEumenius",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 09-18.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-18.pdf",
+    "_note": "Sep 18 falls in the afterfeast of the Exaltation of the Holy Cross. God is the Lord: feast troparion ×3 (no saint troparion at God is the Lord — plain spec.troparion path). Two canons at Matins: feast (Tone VIII) + saint Eumenius (Tone II, Joseph). Feast canon odes identical to Sep 17."
+  },
+  "troparion": {
+    "text": "Save O Lord Thy people, * and bless Thine inheritance. * Grant now unto the faithful * victory over adversaries, * and by the power of Thy Cross ** do Thou preserve Thy commonwealth.",
+    "tone": 1,
+    "label": "Troparion of the Holy Cross"
+  },
+  "kontakion": {
+    "text": "Illumined with the divine light, * thou dost enlighten us * who hymn thine honored, glorious and holy repose with love, * O all-blessed and holy hierarch, father Eumenius, ** unceasingly pray thou on behalf of us all.",
+    "ikos": null,
+    "tone": 2,
+    "label": "Kontakion of the holy hierarch"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
+    "sessionalHymns": [
+      {
+        "text": "Stretching forth his hands toward the heights of heaven, Moses prefigured the Cross, the divine weapon of the faithful, to which Christ nailed our sins. Wherefore, the enemy wept, suffering pain in his senses, and he said: A wooden shaft hath pierced me through my heart: Christ hath released all from the bonds of Hades!",
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "melody": "Joseph marveled ...",
+        "bothNow": {
+          "text": "Stretching forth his hands toward the heights of heaven, Moses prefigured the Cross, the divine weapon of the faithful, to which Christ nailed our sins. Wherefore, the enemy wept, suffering pain in his senses, and he said: A wooden shaft hath pierced me through my heart: Christ hath released all from the bonds of Hades!",
+          "tone": 4,
+          "label": "Both now (the foregoing is repeated)"
+        }
+      },
+      {
+        "text": "Lifted up on the tree of the Cross in thy great mercy, and pierced in the side by a spear, O Savior, Thou didst rend asunder the grievous record of the sins of mankind, in that Thou art God Almighty. Wherefore, we piously hymn Thine ineffable dispensation, O Word.",
+        "tone": 6,
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "melody": "O hope of the world ...",
+        "bothNow": {
+          "text": "Lifted up on the tree of the Cross in thy great mercy, and pierced in the side by a spear, O Savior, Thou didst rend asunder the grievous record of the sins of mankind, in that Thou art God Almighty. Wherefore, we piously hymn Thine ineffable dispensation, O Word.",
+          "tone": 6,
+          "label": "Both now (the foregoing is repeated)"
+        }
+      }
+    ],
+    "exapostilarion": {
+      "text": "With splendors of bright radiance and divine desire the Cross of the Lord, which lieth before us, doth summon all to its elevation. Come ye all, and with joy, love and fear let us kiss it with faith and glorify the one Creator and Master!",
+      "label": "Exapostilarion of the feast",
+      "bothNow": {
+        "text": "With splendors of bright radiance and divine desire the Cross of the Lord, which lieth before us, doth summon all to its elevation. Come ye all, and with joy, love and fear let us kiss it with faith and glorify the one Creator and Master!",
+        "label": "Both now (the foregoing is repeated)"
+      }
+    },
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 2,
+      "_authors": "Canon of the feast (Tone VIII); Canon of the holy hierarch, composition of Joseph, Tone II",
+      "kontakionAfterOde3": {
+        "text": "Illumined with the divine light, * thou dost enlighten us * who hymn thine honored, glorious and holy repose with love, * O all-blessed and holy hierarch, father Eumenius, ** unceasingly pray thou on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of the holy hierarch"
+      },
+      "kontakion": {
+        "text": "O Thou Who wast lifted up willingly upon the Cross, * bestow Thy mercies upon the new community named after Thee, * O Christ God; gladden with Thy power Orthodox Christians, * granting them victory over enemies; ** may they have as Thy help the invincible trophy, the weapon of peace.",
+        "tone": 4,
+        "label": "Kontakion of the feast"
+      },
+      "ikos": {
+        "text": "He that was caught up to the third heaven of paradise and heard unspeakable and divine words which the human tongue cannot utter, what writeth he to the Galatians, which, as lovers of the Scriptures, ye have both read and come to understand? God forbid, saith he, that I should glory, save only in the Cross of the Lord, whereon having suffered He slew the passions. Let us all then firmly hold this boast, the Cross of the Lord; for this Wood is our salvation, the invincible trophy, the weapon of peace.",
+        "label": "Ikos of the feast"
+      },
+      "ode1": {
+        "irmos": "Inscribing the invincible weapon of the Cross upon the waters, Moses marked a straight line before him with his staff * and divided the Red Sea, * opening a path for Israel who went over dry-shod. * Then he marked a second line across the waters * and united them in one, * overwhelming the chariots of Pharaoh. * Therefore let us sing to Christ our God, * for He hath been glorified.",
+        "irmos2": "Come, O ye people, * let us sing a song to Christ our God, * Who divided the sea, * and made a way for the nation * which He had brought up out of the bondage of Egypt; * for He hath been glorified.",
+        "troparia": [
+          {
+            "text": "Of old, Moses, standing between the priests, prefigured in himself the image of Christ's most pure sufferings; for, forming a cross with his outstretched arms, he raised up victory, vanquishing the might of the tyrant Amalek. Wherefore, let us hymn Christ our God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Upon a pole Moses set the cure of the deadly and venomous sting of the serpents, and the deliverance therefrom; for to the tree, in the image of the Cross, he bound a serpent which crawleth upon the ground, triumphing over the sinister bane therein. Wherefore, let us hymn Christ God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "The sky showed forth the victory of the Cross to the divinely wise Emperor Constantine, the pious ruler; and therein the audacity of the hostile foe was cast down, delusion was destroyed and the divine Faith spread to the ends of the earth. Wherefore let us hymn Christ our God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "In that Christ hearkeneth to thy godly prayers, O divinely wise Eumenius, render Him kindly disposed toward those who praise thee with love, O blessed one.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Loving humility from thy youth, which accomplisheth lofty things, O venerable one, thou didst humble the serpent and wast manifestly enriched with the gift of healing.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thou wast the particular instrument of the Spirit, through much fasting causing the wisdom of the flesh to become subject to thy soul, enslaving that which is base to that which is higher.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "The prophecies concerning thee have now been fulfilled, O Lady, Birthgiver of God; for they spake with a lofty voice of Him Whom thou didst contain within thy womb, Who existeth in two perfect natures.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode3": {
+        "irmos": "The rod of Aaron is an image of this mystery, * for when it budded it showed who should be priest. * So in the Church, that once was barren, * the wood of the Cross hath now budded forth, * filling her with strength and steadfastness.",
+        "irmos2": "O Lord, who didst slay sin upon the tree, * firmly establish us in Thee, * and in the hearts of us who hymn Thee * plant the fear of Thee.",
+        "troparia": [
+          {
+            "text": "The rough stone, struck, put forth water for a disobedient and hard-hearted people, and showed forth the mystery of the divinely elect Church, whereof the Cross is the might and confirmation.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "When Christ's most pure side was pierced by the spear, blood and water flowed therefrom, renewing the covenant and washing sin away, for the Cross is the boast of the faithful, the might and confirmation of kings.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Like a bee thou didst diligently make the rounds of the noetic flowers, O hierarch, gathering sweet honey and laying it upon the honeycombs of thy heart.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Having made thy life and discourse pure by the salt of God, O glorious Eumenius, thou didst show forth thy perfect grace and splendor.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Adorned with the virtues, thou didst ascend on high and attain to the throne of the Most High, and anointed with the myrrh of the divine Spirit, thou art known to be the sweet fragrance of Christ.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "O Mary, thou golden censer, drive away the fetid stench of my passions, and render me unshaken by the assaults of the deceitful adversary.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ],
+        "sedalenAfterOde3": {
+          "text": "Resplendent with Orthodox doctrines, O father Eumenius, thou didst set at naught all dark heresies; and having been shown to be a performer of miracles, thou didst become famous throughout the ecumene by the providence of God. Wherefore, with faith we honor thee as a hierarch and peer of the angels.",
+          "tone": 5,
+          "label": "Sessional Hymn of the holy hierarch",
+          "melody": "The co-beginningless Word ...",
+          "bothNow": {
+            "text": "Enduring the Cross on the counsel of Thy will, thou hast freed mankind from corruption, O Savior. And we, the faithful, hymn and worship Thee, in that Thou hast enlightened us by the power of the Cross; wherefore we all bless Thee as the Lord and Bestower of life, O Compassionate One, and Lover of mankind.",
+            "label": "Both now, of the feast"
+          }
+        }
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation; * I have considered Thy works, * and I have glorified Thy Divinity.",
+        "irmos2": "I have heard report of Thy dispensation, O Lord, * and have glorified Thee * Who alone lovest mankind.",
+        "troparia": [
+          {
+            "text": "Of old, Moses transformed the bitter springs in the desert with a tree, showing forth the conversion of the gentiles to piety through the Cross.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Jordan, having hidden in its depths an axe-head, gave it forth again through the power of a stick, signifying the cutting off of deception by the Cross and baptism.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "In a sacred manner the people encamped in four divisions; and preceding in this fashion the tabernacle of the witness, they were glorified in the cross-like formation of their ranks.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Wondrously stretched forth, the Cross emitted rays like the sun's, and the heavens declared the glory of our God.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Thou wast a dwelling-place of the Spirit, O hierarch, sojourning in the temples of God and adorning thyself with precious doctrines.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "As a hierarch pleasing to God and prelate of Gortyna, O wise father, thou didst emit beams of miracles.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "The great gaping maw of the serpent who assailed thee didst thou set afire with the rays of thy prayers, O most sacred one.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Of old, sacred voices proclaimed thy profound birthgiving, O pure one, and we have now beheld its fulfillment.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode5": {
+        "irmos": "O thrice-blessed Tree, on which Christ the king and Lord was stretched! * Through thee the beguiler fell, * who tempted mankind with the tree. * He was caught in the trap set by God, * who was crucified upon thee in the flesh, * granting peace unto our souls.",
+        "irmos2": "O Lord, Bestower of light and Creator of the ages: * guide us in the light of Thy commandments, * for we know none other God than Thee.",
+        "troparia": [
+          {
+            "text": "O ever-hymned Tree, whereon Christ was stretched: the whirling sword which guarded Eden stood in awe of thee, O Cross, and the dread cherubim withdrew, when Christ was nailed to thee, Who granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "The adverse powers of the nether world are stricken with fear when the sign of the Cross is traced in the air in which they live, as are the generations of the earthborn and the heavenly, who bend the knee to Christ, Who granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Having shone forth a divine light and revealed itself in rays of incorruption unto the darkened gentiles astray in error, the divine Cross acquireth them for Christ Who was nailed thereto, and granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Thou didst possess understanding, having calmed thy mind and soul which were beset by the passions; wherefore, thou didst pacify the disputes of those who reigned piously and submitted well to thee.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Having gained the ear of kings, O faithful one, thou didst end their long-standing enmity, which engenders destruction, and they came to love fraternal unity, O divinely wise Eumenius.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Arriving like a luminary, thou didst illumine Rome, working miracles and manifestly summoning those who were sunk in the abyss of the passions to the calm haven of healing, O blessed one.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thou hast given birth to the pre-eternal Son as a little Babe, Who existeth in two activities of wills, both man and God, O all-immaculate one.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode6": {
+        "irmos": "Jonah stretched out his hands in the form of a cross * within the belly of the sea monster, * plainly prefiguring the redeeming Passion. * Cast out from thence after three days, * he foreshadowed the marvelous Resurrection of Christ our God, * who was crucified in the flesh and enlightened the world * by His Rising on the third day.",
+        "irmos2": "Whirled about in the abyss of sin, * I appeal to the unfathomable abyss of Thy compassion: * Raise me up from corruption, O God.",
+        "troparia": [
+          {
+            "text": "Bent with age and weighed down with infirmity, Jacob drew himself up when he crossed his arms, showing forth the power of the life-bearing Cross; for God Who was nailed in the flesh hath set aright the obsolescence of the law of the Scripture which was written in shadows, and dispelled the soul-destroying disease of deception.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Divine Israel laid his hands cross-wise upon the heads of the youths, and insofar as those serving under the law give glory to the firstborn, he suspected he had erred in laying his hands thus, yet he did not alter the life-bearing image; wherefore crying aloud, raising the Cross on high, the newly established people of Christ God are protected thereby.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Having Christ in thy heart as an active and inexhaustible treasure, O Eumenius, thou didst transform into gold the clay which the king gave to thee.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thou art seated upon a lofty seat, O father, sending down upon the Church words of peace from on high; and it now doth boast in thy summons.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Unsullied by sin, thou didst sail through the greatly painful tempest of life and attained unto the safe haven, where the assemblies of the venerable rejoice.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "The heavenly Rain descended upon thee, O Ever-virgin, and, watering the stony soil with the waters of the knowledge of God, He hath shown it to be greatly fertile.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode7": {
+        "irmos": "The senseless decree of the wicked tyrant, * breathing forth threats and blasphemy hateful to God, * confused the people. * Yet neither the fury of the wild beast nor the roaring of the fire * could frighten the three Children: * but standing together in the flame, * fanned by the wind that brought refreshment as the dew, they sang: * 'Blessed and supremely praised art Thou, * O our God and the God of our fathers.'",
+        "irmos2": "When the golden image was worshipped on the plain of Dura, * Thy three children spurned the impious command, * and, cast into the midst of the flame, * they were bedewed, and sang: * O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          {
+            "text": "The first man, tasting of the tree, went to dwell in corruption; for, having condemned himself to a shameful banishment from life, he imparted corruption to the whole race of mankind. But we mortals, finding restoration through the tree of the Cross, cry aloud: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Breaking the commandment of God came about through disobedience, and the untimely partaking of the fruit of the tree brought death to mankind, but to preserve that which is most precious, access to the tree of life was forbidden, until God opened it to the suffering thief who with a proper understanding cried aloud: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Israel, foreseeing things to come, laid hold of the tip of Joseph's staff, revealing beforehand that the most glorious Cross would seize the power of the kingdom, for it is the victorious boast of kings and a light for those who cry aloud with faith: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Overcoming spiritually deadening thoughts by zeal of soul, O venerable Eumenius, thou didst make a journey in profound old age, to benefit those who with faith accepted thee as a sower of sacred and precious doctrines.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Having enjoyed thy goodly deeds, O father Eumenius, Rome sent thee to the Thebaid as a precious gift, which did not desire thee. There thou didst restrain the affliction of drought by the rain of thy precious prayers, O venerable one.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Feeding at the breasts of abstinence, thou didst suck forth the milk of purity and reached the measure of maturity, attaining to the heights of the virtues and shining forth more brightly than the sun with divine signs, upon those held fast by the night of the passions.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thy womb was the habitation of the immaterial Light Who set ungodliness at naught with the splendors of divine knowledge, O most pure Maiden Bride of God. To thee do we cry aloud, chanting: Blessed is the Fruit of thy womb!",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode8": {
+        "irmos": "O children equal in number to the Trinity: * bless ye God, the Father and Creator; * hymn ye the Word Who came down * and transformed the fire into dew; * and supremely exalt ye Him Who giveth life unto all, * the most holy Spirit, * throughout the ages!",
+        "irmos2": "God Who descended into the fiery furnace * with the Hebrew children, * and transformed the flame into dew, * do ye works hymn, * and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          {
+            "text": "O hosts of heaven, chant ye to the exalted Tree which was drenched in the blood of the incarnate Word of God, and celebrate the restoration of those born on earth. O Ye people, worship the Cross of Christ, by which the world hath been granted the resurrection throughout all ages!",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "O ye mortal stewards of grace, with your hands reverently raise on high the Cross whereon Christ God stood and the spear which pierced the body of God the Word, that all the nations may see the salvation which is of God, glorifying Him throughout all ages!",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "O faithful Christian kings, forechosen by divine decree, be ye glad! And having received from God the precious Cross, rejoice in it, the weapon of victory, for thereby tribes of enemy warriors seeking to make battle have been scattered throughout all ages.",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "Having vanquished the enemy and finished the good race, in most profound old age thou didst pass on to thy fathers, like a ripe grain of wheat, receiving thine end in a strange land.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "The children of the Thebaid, in nowise forgetting thy good works, generously dispatched thy sacred relics, which they held, to thy homeland and flock; and upon their return they poured forth the grace of miracles.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Before, Raxus once hid the precious and much-suffering body of Cyril, O wise one, and it likewise hid thine, but now, having joined those who lived in the same wisdom, the heavenly homeland doth possess thee throughout the ages.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "The most sacred and honorable choir of the prophets wrote of thee beforehand as the ark, the unquarried mountain, the staff, and the portal through which the Most High passed, as is known, leaving thee shut again, O Virgin.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode9": {
+        "irmos": "O Theotokos, thou art a mystical Paradise, * who untilled brought forth Christ. * by Whom the life-giving Tree of the Cross hath been planted upon the earth: * Therefore celebrating its exaltation on this day, * Him do we worship * and thee do we magnify.",
+        "irmos2": "God the Word, God of God, * Who by ineffable wisdom came to create Adam anew * after his grievous fall to corruption through eating * and Who took flesh beyond all telling from the Holy Virgin for our sake, * Him we faithful with one accord magnify in song.",
+        "troparia": [
+          {
+            "text": "Let all the trees of the forests rejoice, for their nature hath been sanctified by Him Who planted them in the beginning - Christ Who was stretched out upon the Tree. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "A sacred horn hath been lifted up, the chief horn for all the divinely wise: the Cross, whereby all the horns of the sinful are noetically broken asunder. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "That Thou mayest show the Cross, the invincible weapon, to the world, O adored Lord and King, in the sight of all Thou didst form its most glorious image in the skies, radiant with boundless light. Wherefore, all the powers of heaven magnify Thee.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "As a hierarch of Christ thou didst pass wondrously from power to power, O father, where the most sacred choirs, with all the heavenly hosts, in awe minister unto the adored Trinity, O all-blessed Eumenius.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Quell thou the present tempest which assaileth thy homeland, moving the Godhead to mercy by thy supplications, O blessed one; stem the invasion of barbarians which oppresseth us, a trial brought by the devil, which impelleth us toward the abyss of destruction, O ever-memorable Eumenius.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thy most sacred memory summoneth venerable pastors and pious people, bearing sanctification for all; and with the splendors of the grace which abideth in thee, it doth richly illumine us who celebrate it, O all-praised Eumenius.",
+            "canon": "secondCanon",
+            "refrain": "Holy Venerable One, intercede for us."
+          },
+          {
+            "text": "Thou dost bear Him Who beareth all things in His divine power, and dost feed at thy breast Him Who nourisheth every creature, O most pure one. The wonder of thee, which passeth understanding, amazeth angels and mortals, who ever hymn and bless thee with love.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      }
+    }
+  }
+}

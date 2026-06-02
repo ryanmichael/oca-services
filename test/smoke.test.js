@@ -1075,6 +1075,34 @@ describe('Per-feast Matins contracts', () => {
       `If >0, the canon JSON is missing troparia and falling through to the rubric placeholder.`);
   });
 
+  it('Sep 17 (Cross afterfeast + Sts Sophia/Faith/Hope/Charity) renders two canons + afterfeast troparion pattern', async () => {
+    // Sep 17 is the first afterfeast-modeled date. The assembler should:
+    // 1. Render feast troparion ×2 → Glory: saint → Both-now: feast ×1 (not ×3 single)
+    // 2. Render "First Canon" / "Second Canon" headings for feast + saint canons
+    const res = await get('/api/matins?date=2026-09-17');
+    assert.equal(res.status, 200);
+    const blocks = res.json.blocks;
+
+    // Troparion section: feast should appear ≥2 times (feast×2 + feast×1 = 3 total)
+    const tropSection = blocks.filter(b => b.section === 'Troparia' && b.type === 'hymn');
+    assert.ok(tropSection.length >= 3,
+      `Sep 17: expected ≥3 troparion blocks (feast×2, saint×1, feast×1), got ${tropSection.length}`);
+    const crossTrop = tropSection.filter(b => /Save.*Lord.*people|saving|cross/i.test(b.text));
+    assert.ok(crossTrop.length >= 2,
+      `Sep 17: expected Cross troparion ≥2 times, got ${crossTrop.length}`);
+
+    // Canon: two-canon headings
+    const canonRubrics = blocks
+      .filter(b => b.section === 'Canon' && b.type === 'rubric')
+      .map(b => b.text);
+    const first  = canonRubrics.filter(t => /First Canon/.test(t));
+    const second = canonRubrics.filter(t => /Second Canon/.test(t));
+    assert.ok(first.length >= 8,
+      `Sep 17: expected ≥8 First Canon headings, got ${first.length}`);
+    assert.ok(second.length >= 8,
+      `Sep 17: expected ≥8 Second Canon headings, got ${second.length}`);
+  });
+
   it('Theophany Matins renders two canons separately, not flat', async () => {
     // Theophany has two canons (Cosmas + John of Damascus). The assembler
     // should emit "Ode N — First Canon" / Irmos / first-canon troparia /

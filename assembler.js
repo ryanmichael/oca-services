@@ -4973,6 +4973,17 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
   // ── 5. Troparia after God is the Lord ───────────────────────────────────────
   if (spec.troparia) {
     blocks.push(...assembleTroparia(spec.troparia, sources));
+  } else if (spec.feastTroparion && spec.troparion) {
+    // Afterfeast pattern: feast×2 → Glory: saint → Both-now: feast×1
+    const section = 'Troparia';
+    const ft = spec.feastTroparion;
+    const st = spec.troparion;
+    blocks.push(S('trop-1', section, 'hymn', 'choir', ft.text, { tone: ft.tone, label: ft.label }));
+    blocks.push(S('trop-2', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
+    blocks.push(S('trop-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
+    blocks.push(S('trop-saint', section, 'hymn', 'choir', st.text, { tone: st.tone, label: st.label }));
+    blocks.push(S('trop-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+    blocks.push(S('trop-3', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
   } else if (spec.troparion) {
     // Simple case: single troparion repeated ×3 (e.g. great feast)
     const section = 'Troparia';

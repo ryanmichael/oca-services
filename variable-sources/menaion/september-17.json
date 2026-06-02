@@ -1,0 +1,411 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Sophia & her three daughters: Faith (Vera), Hope (Nadjezhda) and Charity (Lyubov)",
+    "feastKey": "ssSophiaFaithHopeCharity",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 09-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-17.pdf",
+    "_note": "Sep 17 falls in the afterfeast of the Exaltation of the Holy Cross (Sep 14; leavetaking Sep 21). Two canons at Matins: feast (Tone VIII, 8 troparia incl. irmos) + saints (Tone I by Theophanes, 4 troparia). Feast canon is Canon I; saints canon is Canon II (secondCanon). feastTroparion drives 'God is the Lord' pattern."
+  },
+  "feastTroparion": {
+    "text": "Save O Lord Thy people, * and bless Thine inheritance. * Grant now unto the faithful * victory over adversaries, * and by the power of Thy Cross ** do Thou preserve Thy commonwealth.",
+    "tone": 1,
+    "label": "Troparion of the Holy Cross"
+  },
+  "troparion": {
+    "text": "Thou didst blossom in the courts of the Lord * as a fruitful olive tree, * O holy Martyr Sophia; * in thy contest thou didst offer to Christ * the sweet fruit of thy womb, * Love, Hope and Faith. * With them, intercede for us all.",
+    "tone": 5,
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "text": "Faith, Hope and Charity, * revealed as most sacred branches of the honored Sophia, * through grace made foolish the wisdom of the Hellenes; * and having suffered and been revealed to be victorious, * they were crowned with an incorruptible crown ** by Christ the Master of all.",
+    "ikos": null,
+    "tone": 1,
+    "label": "Kontakion of the holy martyrs"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
+    "sessionalHymns": [
+      {
+        "text": "When Thou wast crucified, O Master Christ, the might and strength of death were destroyed, and all the tyranny of the enemy was trampled underfoot. And we who of old were slain by the transgression of eating of the tree, have been restored to life by the tree of the Cross. Wherefore, we glorify Thy sufferings.",
+        "tone": 2,
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "melody": "O compassionate one",
+        "bothNow": {
+          "text": "When Thou wast crucified, O Master Christ, the might and strength of death were destroyed, and all the tyranny of the enemy was trampled underfoot. And we who of old were slain by the transgression of eating of the tree, have been restored to life by the tree of the Cross. Wherefore, we glorify Thy sufferings.",
+          "tone": 2,
+          "label": "Both now (the foregoing is repeated)"
+        }
+      },
+      {
+        "text": "Rejoicing in thee, O thrice blessed and life-bestowing Cross, the people celebrate together with the immaterial choirs, the ranks of hierarchs reverently hymn thee, multitudes of monastics and fasters bow down before thee in adoration, and we all glorify Christ Who was crucified upon thee.",
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "melody": "Go thou quickly before",
+        "bothNow": {
+          "text": "Rejoicing in thee, O thrice blessed and life-bestowing Cross, the people celebrate together with the immaterial choirs, the ranks of hierarchs reverently hymn thee, multitudes of monastics and fasters bow down before thee in adoration, and we all glorify Christ Who was crucified upon thee.",
+          "tone": 4,
+          "label": "Both now (the foregoing is repeated)"
+        }
+      }
+    ],
+    "exapostilarion": {
+      "text": "The Cross is the preservation of the whole world; the Cross is the adornment of the Church; the Cross is the might of kings; the Cross is the confirmation of the faithful; the Cross is the glory of angels and the wounding of demons!",
+      "label": "Exapostilarion of the feast",
+      "bothNow": {
+        "text": "The Cross is the preservation of the whole world; the Cross is the adornment of the Church; the Cross is the might of kings; the Cross is the confirmation of the faithful; the Cross is the glory of angels and the wounding of demons!",
+        "label": "Both now (the foregoing is repeated)"
+      }
+    },
+    "canon": {
+      "tone": 8,
+      "_secondCanonTone": 1,
+      "_authors": "Canon of the feast (Tone VIII); Canon of the holy martyrs by Theophanes, Tone I",
+      "_katavasiaTone": 8,
+      "kontakionAfterOde3": {
+        "text": "Faith, Hope and Charity, * revealed as most sacred branches of the honored Sophia, * through grace made foolish the wisdom of the Hellenes; * and having suffered and been revealed to be victorious, * they were crowned with an incorruptible crown ** by Christ the Master of all.",
+        "tone": 1,
+        "label": "Kontakion of the holy martyrs"
+      },
+      "kontakion": {
+        "text": "O Thou Who wast lifted up willingly upon the Cross, * bestow Thy mercies upon the new community named after Thee, * O Christ God; gladden with Thy power Orthodox Christians, * granting them victory over enemies; ** may they have as Thy help the invincible trophy, the weapon of peace.",
+        "tone": 4,
+        "label": "Kontakion of the feast"
+      },
+      "ikos": {
+        "text": "He that was caught up to the third heaven of paradise and heard unspeakable and divine words which the human tongue cannot utter, what writeth he to the Galatians, which, as lovers of the Scriptures, ye have both read and come to understand? God forbid, saith he, that I should glory, save only in the Cross of the Lord, whereon having suffered He slew the passions. Let us all then firmly hold this boast, the Cross of the Lord; for this Wood is our salvation, the invincible trophy, the weapon of peace.",
+        "label": "Ikos of the feast"
+      },
+      "ode1": {
+        "irmos": "Inscribing the invincible weapon of the Cross upon the waters, Moses marked a straight line before him with his staff * and divided the Red Sea, * opening a path for Israel who went over dry-shod. * Then he marked a second line across the waters * and united them in one, * overwhelming the chariots of Pharaoh. * Therefore let us sing to Christ our God, * for He hath been glorified.",
+        "irmos2": "Thy victorious right arm, * in a manner befitting God, * hath been glorified in strength, O Immortal One; * for in its infinite strength it shattered the enemy, * fashioning anew a path for the Israelites through the deep.",
+        "troparia": [
+          {
+            "text": "Of old, Moses, standing between the priests, prefigured in himself the image of Christ's most pure sufferings; for, forming a cross with his outstretched arms, he raised up victory, vanquishing the might of the tyrant Amalek. Wherefore, let us hymn Christ our God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Upon a pole Moses set the cure of the deadly and venomous sting of the serpents, and the deliverance therefrom; for to the tree, in the image of the Cross, he bound a serpent which crawleth upon the ground, triumphing over the sinister bane therein. Wherefore, let us hymn Christ God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "The sky showed forth the victory of the Cross to the divinely wise Emperor Constantine, the pious ruler; and therein the audacity of the hostile foe was cast down, delusion was destroyed and the divine Faith spread to the ends of the earth. Wherefore let us hymn Christ our God, for He hath been glorified.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "O Master Christ, grant me Thine effulgent, transcendent and ineffable wisdom, that I may hymn Thy magnificent and right glorious martyrs, the offspring of Sophia.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Thy name was manifestly adorned by thy manner of life, O divinely wise and glorious Sophia; for, illumined with the grace of wisdom, thou didst spend thy whole life desiring wisdom.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Thine all-blessed fruit, adorned with the number of the supremely divine Trinity, struggled like spiritual athletes for Him, O all-wise Sophia, namesake of the divine Wisdom.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "The three virgin maidens, Faith, Hope and glorious Charity, having cleansed body and soul with the virtues, were brought in martyrdom to Thee, O Christ, the noetic Bridegroom.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "He Who was seen before as an image of God, hath taken upon Himself my whole form, and made His abode as God within thy womb, O most pure one, renewing all. Wherefore, all we, the faithful, glorify thee as the Theotokos.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode3": {
+        "irmos": "The rod of Aaron is an image of this mystery, * for when it budded it showed who should be priest. * So in the Church, that once was barren, * the wood of the Cross hath now budded forth, * filling her with strength and steadfastness.",
+        "irmos2": "Thou alone knowest the weakness of human nature * and in compassion hast assumed its form; * do Thou gird me with power from on high, * that I may cry unto Thee: * Holy is the animate temple of Thine ineffable glory, O Lover of mankind!",
+        "troparia": [
+          {
+            "text": "The rough stone, struck, put forth water for a disobedient and hard-hearted people, and showed forth the mystery of the divinely elect Church, whereof the Cross is the might and confirmation.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "When Christ's most pure side was pierced by the spear, blood and water flowed therefrom, renewing the covenant and washing sin away, for the Cross is the boast of the faithful, the might and confirmation of kings.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Hearkening to the voice of Christ calling them to a life devoid of death, and having suffered, the crowned virgin martyrs followed Thee, crying out to Thee, O Holy One: O Lover of mankind, holy is the animate temple of Thy pure glory!",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "As He promised, Christ gave you strength as ye stood before the tribunal as martyrs; filling you with divinely inspired wisdom, and showing you to be radiant, O victorious martyrs, resplendent in the grace of virginity.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Ye dulled the greatly arrogant mind of the enemy and cast down his pride, contending with great wisdom; and with the streams of your blood ye drowned him who of old boasted that he would destroy the sea.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Filled to abundance with the exalted wisdom of Christ, with elect and wise wisdom the three daughters of Sophia put to shame the savagery of the torturers and their unbearable cruelty, proclaiming divine teachings.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "In a holy manner thou hast given birth to Christ, the Holy of Holies, the holy tabernacle of sanctity, Who resteth in the saints; and to Him do we cry aloud: Holy is the animate temple of Thine ineffable glory, O Lover of mankind!",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ],
+        "sedalenAfterOde3": {
+          "text": "O reason-endowed ewe-lambs of the Lamb and Shepherd, ye were given over to cruel torments and have been revealed to be equal in honor with the angels. Wherefore, in gladness of heart we all celebrate your sacred memory, O divinely wise maidens.",
+          "tone": 1,
+          "label": "Sessional Hymn of the holy martyrs",
+          "melody": "The choir of the angels",
+          "bothNow": {
+            "text": "Once the weapon of the Cross was revealed to the pious Emperor Constantine in time of battle to be an invincible victory over the enemy, for the sake of his faith; before it the adverse powers tremble, for it hath become the salvation of the faithful and the boast of Paul.",
+            "tone": 1,
+            "label": "Both now, of the feast"
+          }
+        }
+      },
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation; * I have considered Thy works, * and I have glorified Thy Divinity.",
+        "irmos2": "Perceiving thee with prophetic eyes * as the mountain overshadowed by the grace of God, * Habbakuk proclaimed that the Holy One of Israel * would come forth from thee, * for our salvation and restoration.",
+        "troparia": [
+          {
+            "text": "Of old, Moses transformed the bitter springs in the desert with a tree, showing forth the conversion of the gentiles to piety through the Cross.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Jordan, having hidden in its depths an axe-head, gave it forth again through the power of a stick, signifying the cutting off of deception by the Cross and baptism.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "In a sacred manner the people encamped in four divisions; and preceding in this fashion the tabernacle of the witness, they were glorified in the cross-like formation of their ranks.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Wondrously stretched forth, the Cross emitted rays like the sun's, and the heavens declared the glory of our God.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Strengthened by divine grace, the right victorious Faith, Charity and Hope manfully put to shame the threats of the tyrant; and burnt by the fire, the all-wise ones were led to Christ the Bridegroom.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Protected by the armor of the Cross, the holy ones Faith, Charity and Hope were able to endure the wounds of their torturers with fortitude, opposing sin most mightily even to the shedding of their blood.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Faith, Charity and Hope, the three radiant lamps of the wisdom of the Trinity, illumined and manifestly shining, enlighten the Church most splendidly, for our salvation and defense.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "O all-praised Theotokos, thou holy of holies, from thee shone forth the Redeemer, the expectation of the nations and the salvation of the faithful, the Lord and Bestower of life, unto the salvation of us who hymn thee.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode5": {
+        "irmos": "O thrice-blessed Tree, on which Christ the king and Lord was stretched! * Through thee the beguiler fell, * who tempted mankind with the tree. * He was caught in the trap set by God, * who was crucified upon thee in the flesh, * granting peace unto our souls.",
+        "irmos2": "Thou hast shone upon us with the radiance * of Thy coming O Christ, * and illumined the ends of the world with Thy Cross, * enlighten with the light of thine understanding * the hearts of those who with right worship hymn Thee.",
+        "troparia": [
+          {
+            "text": "O ever-hymned Tree, whereon Christ was stretched: the whirling sword which guarded Eden stood in awe of thee, O Cross, and the dread cherubim withdrew, when Christ was nailed to thee, Who granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "The adverse powers of the nether world are stricken with fear when the sign of the Cross is traced in the air in which they live, as are the generations of the earthborn and the heavenly, who bend the knee to Christ, Who granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Having shone forth a divine light and revealed itself in rays of incorruption unto the darkened gentiles astray in error, the divine Cross acquireth them for Christ Who was nailed thereto, and granteth peace unto our souls.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "The three God-bearing virgins, bound by faith and nature, endured tortures with patience of will, and put to shame the audacious one, proclaiming the mysteries of wisdom which are in God.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Our first mother rejoiceth, seeing the deceiver, who of old drove her from Eden, vanquished by Hope, Faith and Charity, the divinely wise women born from Sophia.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Wounded by Thy love and Thy divine ardor, O Christ, the honored maidens avoided the venomous flattery of the tyrant and willingly endured the wounds of tortures.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Beholding thee, the hosts of heaven rejoice, and with them the assemblies of mortals make merry; for they have been united by thy nativity, O Virgin Theotokos, which as is meet we glorify.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode6": {
+        "irmos": "Jonah stretched out his hands in the form of a cross * within the belly of the sea monster, * plainly prefiguring the redeeming Passion. * Cast out from thence after three days, * he foreshadowed the marvelous Resurrection of Christ our God, * who was crucified in the flesh and enlightened the world * by His Rising on the third day.",
+        "irmos2": "The deepest abyss hath surrounded us, * and there is none to deliver us, * yea we have been counted as sheep for the slaughter; * save Thy people O our God, * for Thou art the strength and restoration of the weak.",
+        "troparia": [
+          {
+            "text": "Bent with age and weighed down with infirmity, Jacob drew himself up when he crossed his arms, showing forth the power of the life-bearing Cross; for God Who was nailed in the flesh hath set aright the obsolescence of the law of the Scripture which was written in shadows, and dispelled the soul-destroying disease of deception.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Divine Israel laid his hands cross-wise upon the heads of the youths, and insofar as those serving under the law give glory to the firstborn, he suspected he had erred in laying his hands thus, yet he did not alter the life-bearing image; wherefore crying aloud, raising the Cross on high, the newly established people of Christ God are protected thereby.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Rejoicing, O Master, the three honored and laudable maidens, equal in number to the Trinity, placed their hope in Thy most pure hands.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Resplendent with the beauties of virginity, they adorned themselves with the wounds of martyrdom, receiving from on high a twofold crown from Christ, the most compassionate Bestower of life.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Into the temple of Thee, Who reignest over all, were the precious treasures of virginity brought, O Master, to share in Thy kingdom; for Thou art their light and gladness.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "The forefathers of our race rejoice in thee, O most pure Virgin, receiving Eden through thee which they had lost through their transgression; for thou wast pure before giving birth and remained pure even after thy birthgiving.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode7": {
+        "irmos": "The senseless decree of the wicked tyrant, * breathing forth threats and blasphemy hateful to God, * confused the people. * Yet neither the fury of the wild beast nor the roaring of the fire * could frighten the three Children: * but standing together in the flame, * fanned by the wind that brought refreshment as the dew, they sang: * 'Blessed and supremely praised art Thou, * O our God and the God of our fathers.'",
+        "irmos2": "We the faithful perceive thee, O Theotokos, * to be a noetic furnace; * for as He, the supremely exalted One, * saved the three children, * so hath He wholly refashioned fallen humanity, in thy womb, * O Thou praised and supremely glorified God of our fathers.",
+        "troparia": [
+          {
+            "text": "The first man, tasting of the tree, went to dwell in corruption; for, having condemned himself to a shameful banishment from life, he imparted corruption to the whole race of mankind. But we mortals, finding restoration through the tree of the Cross, cry aloud: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Breaking the commandment of God came about through disobedience, and the untimely partaking of the fruit of the tree brought death to mankind, but to preserve that which is most precious, access to the tree of life was forbidden, until God opened it to the suffering thief who with a proper understanding cried aloud: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Israel, foreseeing things to come, laid hold of the tip of Joseph's staff, revealing beforehand that the most glorious Cross would seize the power of the kingdom, for it is the victorious boast of kings and a light for those who cry aloud with faith: O supremely hymned God of our fathers, blessed art Thou!",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Manifestly illumined with the thrice radiant grace of unity, the virgins destroyed the darkness of the demons, theologizing concerning the Light in three Hypostases, and chanting: O God of our Fathers, Thou praised and supremely glorified.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Possessing mansions in the heavens, O light-bearing souls, with gladness ye now join chorus with the angels, gazing upon eternal glory and saying: O God of our Fathers, Thou art praised and supremely glorified.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Showing steadfast opposition like the three youths, the maidens manfully trampled upon the fire; for, being equal in number with them, the God-bearing virgins acquired the same understanding of the praised and supremely glorious God of our fathers.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "O pure one, thou givest remission of transgressions unto those who hymn thee with faith, delivering them from temptations and every evil circumstance; for we have acquired thee as a refuge, O Bride of God, in that thou didst bear the praised God of our fathers in thine arms.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode8": {
+        "irmos": "O children equal in number to the Trinity: * bless ye God, the Father and Creator; * hymn ye the Word Who came down * and transformed the fire into dew; * and supremely exalt ye Him Who giveth life unto all, * the most holy Spirit, * throughout the ages!",
+        "irmos2": "In the furnace as in a fiery smelter * the Israelite children shone more brightly than gold * with the beauty of godliness, * as they exclaimed: Bless the Lord all ye works of the Lord, * hymn and supremely exalt Him throughout the ages.",
+        "troparia": [
+          {
+            "text": "O hosts of heaven, chant ye to the exalted Tree which was drenched in the blood of the incarnate Word of God, and celebrate the restoration of those born on earth. O Ye people, worship the Cross of Christ, by which the world hath been granted the resurrection throughout all ages!",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "O ye mortal stewards of grace, with your hands reverently raise on high the Cross whereon Christ God stood and the spear which pierced the body of God the Word, that all the nations may see the salvation which is of God, glorifying Him throughout all ages!",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "O faithful Christian kings, forechosen by divine decree, be ye glad! And having received from God the precious Cross, rejoice in it, the weapon of victory, for thereby tribes of enemy warriors seeking to make battle have been scattered throughout all ages.",
+            "refrain": "We praise, we bless, we worship the Lord."
+          },
+          {
+            "text": "The divinely radiant virgins Faith, Hope and Charity, were more lustrous than gold in the beauty of their piety, saying: Bless the Lord, all ye works of the Lord; hymn and supremely exalt Him throughout all ages!",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "The virgins who are radiant and were manifestly splendid amid their torment let us hymn, O ye faithful, saying: Bless the Lord, all ye works of the Lord; hymn and supremely exalt Him throughout all ages!",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "The shrines of the spiritual athletes ever pour forth a stream of healing abundantly, copiously and richly upon those who with faith cry aloud: Bless the Lord, all ye works of the Lord; hymn and supremely exalt Him throughout all ages!",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Thou wast holy ground, O pure one, giving birth to the life-bearing Ear of grain: Christ, the Mediator of everlasting life, to Whom we all cry aloud: Bless the Lord, all ye works of the Lord; hymn and supremely exalt Him throughout all ages!",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      },
+      "ode9": {
+        "irmos": "O Theotokos, thou art a mystical Paradise, * who untilled brought forth Christ. * by Whom the life-giving Tree of the Cross hath been planted upon the earth: * Therefore celebrating its exaltation on this day, * Him do we worship * and thee do we magnify.",
+        "irmos2": "The Bush, which burnt without being consumed, * prefigured thy pure birthgiving, O Theotokos. * Wherefore we now entreat Thee: * quench the raging furnace of temptations that beset us, * that we may unceasingly magnify Thee.",
+        "troparia": [
+          {
+            "text": "Let all the trees of the forests rejoice, for their nature hath been sanctified by Him Who planted them in the beginning - Christ Who was stretched out upon the Tree. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "A sacred horn hath been lifted up, the chief horn for all the divinely wise: the Cross, whereby all the horns of the sinful are noetically broken asunder. Wherefore, worshiping it as it is now raised aloft, we magnify thee, O Theotokos.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "That Thou mayest show the Cross, the invincible weapon, to the world, O adored Lord and King, in the sight of all Thou didst form its most glorious image in the skies, radiant with boundless light. Wherefore, all the powers of heaven magnify Thee.",
+            "refrain": "Glory to Thy Cross and Resurrection, O Lord."
+          },
+          {
+            "text": "Filled with thrice-radiant light, and delighting now in the divine radiance, O ye equal in number to the virtues and bearers of their names: Love, Hope and Faith, make us steadfast by hope, love and faith.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Let the might of heaven now subdue the tempest of heresy which besetteth us, O invincible spiritual athletes. We entreat you, O good virgins: pray ye unceasingly, that God grant oneness of mind to the faithful.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "Having passed through the night of this life, O all-wise ones, ye have reached the unwaning day, making merry as martyrs and boasting in grace as virgins, being deemed worthy of the divine and incorruptible kingdom.",
+            "canon": "secondCanon",
+            "refrain": "Holy Martyrs, intercede for us."
+          },
+          {
+            "text": "O how hath the Virgin given birth unto the eternal and hypostatic Word, the effulgence of the hypostasis of the Father, our Benefactor and Lord, Who became incarnate from her, whom we magnify as is meet.",
+            "type": "theotokion",
+            "canon": "secondCanon"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1847,7 +1847,11 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     useSmallDoxology,
   };
 
-  // Troparion
+  // Troparion — for afterfeast dates feastTroparion drives "God is the Lord"
+  // and the saint's troparion fills the Glory slot
+  if (menaionData.feastTroparion) {
+    spec.feastTroparion = menaionData.feastTroparion;
+  }
   if (menaionData.troparion) {
     spec.troparion = menaionData.troparion;
   }

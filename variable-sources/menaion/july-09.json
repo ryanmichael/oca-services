@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Pancratius of Taormina",
+    "feastKey": "hieromartyPancraciusTaormina",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "Matins: St-Sergius Emenaion 07-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-09.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone II. Single canon of the holy hieromartyr in Tone I. Troparion Tone IV (common hieromartyr). Kontakion Tone IV after Ode 6. No ikos in source. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Pancratius, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr"
+  },
+
+  "kontakion": {
+    "text": "Thou wast shown to be a brilliant star\nfor the people of Taormina, O Pancratius,\nand wast shown also to be a sufferer for Christ.\nStanding now before Him,//\npray thou for those who honor thee, O blessed one.",
+    "tone": 4,
+    "melody": "Thou didst appear",
+    "label": "Kontakion of the holy hieromartyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Pancratius, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr"
+    },
+
+    "sessionalHymns": {
+      "text": "Having shown thyself a champion of piety and a victor, O sacred Pancratius,\nthou standest now before the Lord with the incorporeal ones in the heavens.\nPray thou that our souls be saved.",
+      "tone": 4,
+      "melody": "Thou didst appear",
+      "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+      "bothNow": {
+        "text": "O ye faithful, let us bless the Theotokos,\nour helper, the fervent aid of those amid misfortune,//\nby whom we have been delivered from foreign bondage.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 1,
+      "_author": "Canon of the holy hieromartyr Pancratius of Taormina, in Tone I.",
+
+      "kontakion": {
+        "text": "Thou wast shown to be a brilliant star\nfor the people of Taormina, O Pancratius,\nand wast shown also to be a sufferer for Christ.\nStanding now before Him,//\npray thou for those who honor thee, O blessed one.",
+        "tone": 4,
+        "melody": "Thou didst appear",
+        "label": "Kontakion of the holy hieromartyr"
+      },
+
+      "ode1": {
+        "irmos": "Let us all chant a triumphant hymn unto God\nWho wrought wondrous miracles with His upraised arm,\nand saved Israel,//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Made ever steadfast by the foundation of thy words, O Pancratius, the Church knoweth thee to be a most precious stone. Wherefore, we honor thy memory today." },
+          { "text": "With the plough of thy divine words, O Pancratius, thou hast renewed hearts hardened before by the darkness of false belief; and thou hast manifestly shown them to be fruitful for the sake of their faith." },
+          { "text": "Proclaiming the threefold Unity united in a single nature, thou didst burn away the gloom of godlessness and enlighten men with teachings of luminous splendor." },
+          { "type": "theotokion", "text": "Theotokion: From thee, O pure Lady, Jesus the Lord, the Bestower of light, shone forth, illumining the ends of the earth; through Him have they that are in darkness and shadow seen the light." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Let my heart be established in Thy will O Christ God,\nWho hath established a second heaven over the waters,\nand founded the earth upon the waters,\nO all-powerful One.",
+        "troparia": [
+          { "text": "Made steadfast by the Spirit, thou didst drive away evil spirits; and by the labor of thy prayers, demolished the temples of the idols, raising up churches in their stead, O right wondrous one." },
+          { "text": "With thy sword-like discourse thou didst cut down the thorns of impiety, O venerable one; and plant in the souls of all the saving teachings of the virtues which cause the fruits thereof to abound, O sacred one." },
+          { "text": "The preeminent Apostle Peter found thee to be a vessel receiving the pure radiance of the divine Spirit, O most honorable one, and sent thee to the West to drive away the darkness of ungodliness." },
+          { "type": "theotokion", "text": "Theotokion: O thou who tasted not wedlock, we, the faithful, call thee blessed, for thou art the most luminous cloud, the golden ark and jar, the exceeding lofty ladder, and more spacious than the heavens." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Foreseeing in the Spirit O Prophet Habbakuk,\nthe incarnation of the Word,\nthou didst proclaim, crying aloud:\nWhen the years draw nigh, Thou shalt be known;\nwhen the season cometh, Thou shalt be shown forth!\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Shown to be a fiery spirit by the fire of the Comforter, thou didst utterly consume falsehood, O wise Pancratius, and, shining like a beacon upon those who are drowning in the sea of ignorance, thou didst bring them to the havens of the divine will." },
+          { "text": "Peter, having drunk to satiety of the unquarried Rock, sent thee forth as another river, to give drink unto hardened souls, O divinely wise one, and to dry up the rivers of ungodliness with the torrents of divine preaching." },
+          { "text": "Made luminous by the splendor of the understanding of Christ, O wise one, the sound of thy words poured forth. Thereby the wisdom of the Greeks was shown to be foolishness, and the malice of the philosophers to be utterly consumed, O hieromartyr Pancratius." },
+          { "text": "Having made thy life splendid with beauty, thou didst cast all of the assaults of the demons into darkness, and, dispelling the darkness of ungodliness, thou didst show forth as children of the day those who submitted to thy teachings with love." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth, O pure Maiden, unto the incarnate Word in two natures, Who most gloriously told those who were enslaved to falsehood the way to salvation." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Grant us Thy peace, O Son of God,\nfor we know no other God than Thee,\nand we call upon Thy Name,\nfor Thou art the God of the living and the dead.",
+        "troparia": [
+          { "text": "By showing forth wonders thou didst draw the people into thy net; by thy word thou didst bring down the temples of the pagans, and didst erect churches of beauty, unto the restoration of mankind." },
+          { "text": "With thy blood didst thou dye thy sacred vesture, and dry up the blood offered to demons; and as one triumphant thou didst ascend to heaven, receiving a crown of victory." },
+          { "text": "In thy presence a temple of the idolaters broke asunder; and a door to salvation was opened to the heathen, whereby divine grace hath been given to the hearts of the faithful, O father, thou keeper of the sacred mysteries of God." },
+          { "type": "theotokion", "text": "Theotokion: Like rain Christ descended upon thy womb, O pure one; and dried up the torrents of polytheism, bringing forth the water of divine knowledge for those who are amid the flame of falsehood." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Emulating the Prophet Jonah, I cry aloud:\nFree Thou my life from corruption, O Good One;\nand save me who crieth out:\nO Savior of the world, Glory be to Thee!",
+        "troparia": [
+          { "text": "Jesus, the enlightenment and God of all, having filled thy mind with grace and richly illumined it, gave deliverance to the people through thy words of foolish wisdom." },
+          { "text": "Having preached the Gospel of God as an hierarch, thou didst splendidly seal thy divine teachings with thy blood, O martyred sacred-initiate Pancratius." },
+          { "text": "Thou didst deliver mankind from idolatrous sprinklings of vile blood, and, slaughtered like a lamb, O Pancratius, thou didst offer thyself unto God as a living sacrifice." },
+          { "type": "theotokion", "text": "Theotokion: O all-immaculate one who hast given birth unto Christ the Savior, lead me up to the light of salvation and life, who am oppressed by the assaults of fruitless thoughts." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Thy children who were in the furnace O Savior,\nwere neither touched nor troubled by the fire.\nWhereupon the three sang, as with a single mouth\nThy praises and blessed Thee, saying:\n'O God of our fathers, Blessed art Thou.'",
+        "troparia": [
+          { "text": "With thine own blood wast thou baptized, having before baptized the people in the waters; and thou didst pass on to Christ rejoicing. Making thine abode with Him, thou art ever splendidly enriched by sharing in the blessings of heaven, O most blessed one." },
+          { "text": "Thou didst draw forth with the hook of thy words, those who were engulfed in the brine of evils, O sacred one; and with the pure rain of prayers thou didst dry up the turgid depths of false belief, O sacred-initiate of Christ." },
+          { "text": "The unbroken rock, the teacher of sacred truths, set thee as the foundation and ground of the sacred Church; and thereon hath all the malice of the infantile foe been destroyed." },
+          { "type": "theotokion", "text": "Theotokion: The Word of God found thee alone to be most pure, O all-immaculate and pure one; and being born of thy womb, O Bride of God, He cleanseth the faithful of the defilement which hath come upon us by our lack of abstinence from evil." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Him of whom the angels and all the hosts of heaven are in awe\nas their Lord and Creator,\nye priests hymn, ye children praise,\nye peoples bless and supremely exalt\nthroughout all ages.",
+        "troparia": [
+          { "text": "Consumed by the fire of divers trials, thou didst remain unharmed; and thy mind sharpened by splendid visions, revealed thee to be a sword cutting down the brushwood of polytheism, O wise one." },
+          { "text": "Thou didst manifestly work signs and wonders, bringing people to the knowledge of Christ, setting forth those things which were to come to pass, like a prophet of God, through the inspiration of the Comforter, O divinely wise one." },
+          { "text": "Showing to the people the image of the Creator, which He bore of His own will, uniting Himself to us, thou dost thereby work signs and wonders, driving away the audacity of polytheism." },
+          { "type": "theotokion", "text": "Theotokion: Like rain Christ, Who alone is our Benefactor, descended into thy womb, and hath thereby truly given drink to all creation, having dried up the turgid rivers of idolatry, O Virgin." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The ever-flowing wellspring of life,\nlight-bearing candlestick of grace,\nthe animate temple, and most pure cloud,\nwider than the heavens and the earth,\nthe Theotokos do we the faithful magnify.",
+        "troparia": [
+          { "text": "Thy mind and soul enlightened by the radiant splendors of Peter, thou didst attain unto the West like a star of great brilliance, illumining with thy teachings those who were sunk in the abyss of ignorance, O Pancratius." },
+          { "text": "Knowing that the honor accorded an icon passeth over to its Prototype, O glorious one, thou didst everywhere set up the precious icon of Jesus our God, unto the destruction of the temples of the demons." },
+          { "text": "Rejoicing, thy city and the assembly of the faithful keep this thy splendid festival, honoring thee faithfully, O wondrous Pancratius. Cease thou never to bless them as pastor, offering up prayer for all." },
+          { "type": "theotokion", "text": "Theotokion: Have pity on us who hymn Thee, O Lord Who wast ineffably born of the Virgin, delivering Thy servants from temptations, the passions and tribulations by her prayers, in that Thou alone art our Benefactor, and the Lover of mankind." }
+        ]
+      }
+    }
+  }
+}

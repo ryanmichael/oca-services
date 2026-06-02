@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "feast": "Our Father among the Saints Juvenal, Patriarch of Jerusalem",
+    "feastKey": "juvenalPatriarchJerusalem",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 2,
+    "_source": "Matins: St-Sergius Emenaion 07-02.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-02.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone I + Glory Tone VI. Single canon of the holy hierarch in Tone II (acrostic 'I praise the wondrous champion of Orthodoxy', composition of Valeria). Troparion Tone IV (common hierarch). Kontakion Tone II + Ikos after Ode 6. Exapostilarion present. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Juvenal our father,//\nentreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarch"
+  },
+
+  "kontakion": {
+    "text": "Assembling now, with hymns let us honor Juvenal,\nthe boast of Jerusalem, the namesake of youth,\nwho today hast been translated to the life which waxeth not old,\nthe heir of the apostles, fellow initiate of the mysteries with the God-bearing fathers,\nexpounder of the dogmas of Orthodoxy, denouncer of false doctrines,//\nthe universal teacher of the Truth.",
+    "tone": 2,
+    "label": "Kontakion of the holy hierarch"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Juvenal our father,//\nentreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarch"
+    },
+
+    "sessionalHymns": {
+      "text": "O Juvenal, thou sacred intercessor for the earthly Jerusalem,\nblessed dweller in the heavenly Jerusalem, partake of life which waxeth not old:\ninstruct thou the young and the old,\nthat they may preserve the dogmas of Orthodoxy unadulterated,\nand stand, even unto death, for the Faith of their fathers,\npiously honoring and calling the Ever-virgin Mary the Theotokos.\nTo her do thou now pray on behalf of our souls.",
+      "tone": 5,
+      "label": "Sessional Hymn of the holy hierarch (after Ode 3)",
+      "bothNow": {
+        "text": "O pure Ever-virgin, thou fervent and invincible intercessor,\nexcellent and unashamed hope, rampart, protection and refuge of those who have recourse unto thee:\nwith the angels entreat thy Son and God,\nthat He grant peace, salvation and great mercy to the world.",
+        "tone": 5,
+        "label": "Theotokion"
+      }
+    },
+
+    "exapostilarion": {
+      "text": "O pastor of the city of God, with the pipes of thy discourse and writings\ncall thou thy sheep together,\nthat, following after thee, they may attain unto the fold of the Lord.",
+      "label": "Exapostilarion of the holy hierarch",
+      "theotokion": {
+        "text": "Come, ye faithful, and with the most sacred Juvenal\nlet us honor the Mother of God as the Theotokos,\nfor her most precious robe is enshrined today in Blachernae\nand within the hearts of those who piously set their hope of salvation\non her sure intercession.",
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 2,
+      "_author": "Canon of the holy hierarch, acrostic 'I praise the wondrous champion of Orthodoxy', the composition of Valeria, in Tone II.",
+
+      "kontakion": {
+        "text": "Assembling now, with hymns let us honor Juvenal,\nthe boast of Jerusalem, the namesake of youth,\nwho today hast been translated to the life which waxeth not old,\nthe heir of the apostles, fellow initiate of the mysteries with the God-bearing fathers,\nexpounder of the dogmas of Orthodoxy, denouncer of false doctrines,//\nthe universal teacher of the Truth.",
+        "tone": 2,
+        "label": "Kontakion of the holy hierarch"
+      },
+
+      "ikos": {
+        "text": "Thou didst not emulate Pilate, who asked: 'What is truth?', O holy hierarch Juvenal; rather, thou didst clearly proclaim to the whole world that Christ, the God-man, is Truth and Life, commanding all to honor His most pure Mother as the true Theotokos. Wherefore, having assembled today, we honor thee with hymns, as the opponent of false teachings and the champion of the Truth."
+      },
+
+      "ode1": {
+        "irmos": "Come, O ye people, let us sing a song to Christ our God,\nWho divided the sea, and made a way for the nation\nwhich He had brought up out of the bondage of Egypt;//\nfor He hath been glorified.",
+        "troparia": [
+          { "text": "Come, glorify your patriarch and father, O children of the city of God, and with us chant hymns of divine beauty, celebrating now his annual commemoration!" },
+          { "text": "Aflame with apostolic zeal, thou didst thunder forth against the heretics in thy discourse, O Juvenal, as a fellow initiate of the mysteries and a converser with the God-bearing fathers, who confessed the Son of God in an Orthodox manner." },
+          { "text": "As heir to the apostle and brother of the Lord, thou didst shepherd his flock well, O holy hierarch; and, receiving the blessedness of those who are persecuted for the Truth, thou hast proclaimed the dogmas of Orthodoxy to all the world." },
+          { "type": "theotokion", "text": "Theotokion: Today, in Blachernae, a precious treasure is enshrined, thy robe O most pure Mother of God, wherewith do thou mercifully overshadow and protect us, preserving us from all misfortunes and perils." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thou hast established me on the rock of faith,\nand my mouth hath been emboldened against mine enemies.\nFor my spirit rejoiceth when I sing:\nThere is none as holy as our God//\nand none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "text": "O glorious Juvenal, thou companion of the God-bearing fathers, denouncer of the false wisdom of the heretics, golden trumpet proclaiming the Truth unto the world: establish us in the Orthodox Faith." },
+          { "text": "O sacred head of Sion, the mother of Churches, opposing the impiety of Nestorius thou didst cry out to the Theotokos: O Virgin, stop thou the mouths of the ungodly, for there is none besides thee who hath contained God!" },
+          { "text": "Thou didst utterly reject the artfully contrived reasoning of false understanding, O holy hierarch, and expound the divine Truth both to the most wise and to children, who chant together: There is none more righteous than Thee, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: O righteous Anna, join chorus now with us, for thou hast given birth to her who is more glorious than the seraphim and more spacious than the heavens, whose sacred robe we reverently kiss today, which is more precious than the purple vesture of kings, in-woven with gold, and is the protection and bulwark of the Christian people." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee://\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "In the city of David thou didst make thy flock steadfast in the apostolic Faith, in Ephesus thou didst denounce the teachings of the heretics, and in Chalcedon thou didst proclaim the truth to the whole world, like thunder, O holy hierarch Juvenal. Wherefore, thou dost now minister to the Truth Himself in heaven." },
+          { "text": "O most sacred hierarch Juvenal, contending for the Truth thou didst suffer manfully, and thou didst receive the blessedness of those who are persecuted for Christ, and deprived for a time of thy hierarchical throne, thou hast been seated on a throne of incorruption in the Jerusalem on high." },
+          { "text": "Openly didst thou proclaim the Truth, preaching the dogmas of Orthodoxy from the rooftops, O father Juvenal, and fasting and making supplication day and night, thou didst cry out in the inner chamber of thy soul: Glory to Thy power, O Lord!" },
+          { "type": "theotokion", "text": "Theotokion: We now enshrine thy robe in a church of the Imperial City, and we celebrate with splendor, O Sovereign Lady. On thee alone do we set our hope of salvation, for thou hast set the Christian race as a seal upon thine all-merciful heart, stretching forth thy most pure hands unceasingly to thy Son. To Him do we cry: Glory to Thy power, O Lord!" }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "O Christ my Savior, the enlightenment of those lying in the darkness of sin,\nI rise early to hymn Thee O King of Peace,\nenlighten me with Thy radiance,//\nfor I know no other God than Thee.",
+        "troparia": [
+          { "text": "O holy hierarch, thou didst preach to the world Christ the Savior, God the Word Who was begotten by God, and came forth, a perfect Man, from the divine Maiden Mary. Wherefore, through thee do we cry out to Him: We know none other God and God-man than Thee!" },
+          { "text": "The divinely wise Juvenal commandeth us to call the Ever-virgin Mary the true Theotokos, and with him we cry out unceasingly: We know none other Mother of the Most High than thee!" },
+          { "text": "Keep the eye of thine understanding pure and the Faith unadulterated, O brethren, in nowise allowing yourselves to be buffeted by the winds of adverse teachings, lest darkness be found within you instead of light, thus did the great Patriarch Juvenal command." },
+          { "type": "theotokion", "text": "Theotokion: Grant unto us a robe of salvation, and array us in the vesture of gladness, O Theotokos, for we zealously honor the deposition of thy robe, and fall down before thee, crying out: We know none other fervent helper than thee, O Virgin!" }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Taught by thee, O wise Juvenal, in an Orthodox manner we confess there to be two natures in Christ the Lord, uncommingled, immutable, indivisible and inseparable." },
+          { "text": "The voice which issued forth from Ephesus like thunder proclaimeth to the whole world, in an Orthodox manner: Understand that the pure Theotokos gave birth to Christ without corruption, wherefore be ye saved by her intercession!" },
+          { "text": "Taking thy cross upon thy shoulder, thou didst follow after Christ the Master, enduring persecutions and tribulations for His sake, and by thy supplications, O good shepherd, lead up from the abyss of sins, us, who lack endurance and are inclined toward vanity." },
+          { "type": "theotokion", "text": "Theotokion: The insatiable maw of hell already gapeth wide to swallow us who are besotted with sin; but do thou, O most hymned Theotokos, stretch forth thy robe over it and, closing off the entrance to the abyss, grant us time to repent." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "When the golden image was worshipped on the plain of Dura,\nThy three children spurned the impious command,\nand, cast into the midst of the flame, they were bedewed, and sang:\nO God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "text": "With thee, O Juvenal, we honor two natures in Christ the Savior, Who is immutably God and perfect man, crying out unceasingly: O God of our fathers, Blessed art Thou!" },
+          { "text": "O Juvenal, faithful servant of the Lord, thou didst command that we honor the Ever-virgin Mary as the true Theotokos; wherefore, adorned by her and joining chorus, we chant: Blessed art Thou, O most pure Sovereign Lady!" },
+          { "text": "Thou didst fight fearlessly for the Truth, O most blessed father, O true mouth of Chalcedon and radiant voice of Ephesus, rejoicing in the three-Sunned light of Orthodoxy, and crying aloud: O God of our fathers, Blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: Thine incorrupt body, which had contained God, O Virgin, didst thou cover with thy robe. Thereby do thou defend us who cry out to thee with love: Most blessed art Thou, O Theotokos Mary!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "God Who descended into the fiery furnace with the Hebrew children,\nand transformed the flame into dew,\ndo ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "text": "In the heavenly Sion thou, with many others, standest now in glory before the Lamb of God, having the name of the heavenly Father written upon thy forehead, O hierarch of God, chanting a new hymn before His throne, rejoicing throughout all ages." },
+          { "text": "Thou wast a venerator and faithful custodian of the tomb of the Lord, O holy hierarch father Juvenal, and in the church of Gethsemane thou didst unceasingly send up prayers to the Theotokos on behalf of all the world, emulating her glory in thy life." },
+          { "text": "By thy word and life thou didst command all to confess the Father, the Son and the Holy Spirit, O most blessed one; wherefore, standing now before the life-creating Trinity, thou dost glorify God throughout all ages." },
+          { "type": "theotokion", "text": "Theotokion: O Sovereign Lady, as the apple of our eye we cherish thy robe, wherewith thou didst cover thy most pure body which contained God, and we enshrine it now with honor in the church, crying: Protect us therewith from misfortunes and perils, throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Thou didst do battle steadfastly for the Faith, O Juvenal, and the peace of God which surpasseth all understanding thou didst preserve in thy heart; and now thou hast been crowned by the hand of the Almighty. Wherefore we all earnestly magnify thee." },
+          { "text": "Thou didst tend the lambs and sheep of the flock of Christ exceedingly well, and didst wound the cruel wolves with the sword of thy discourses, O beacon of Orthodoxy and truly good shepherd; wherefore, the whole world doth honor thee." },
+          { "text": "We who celebrate thy memory with love, O holy hierarch of Christ, ask thine aid before the throne of the King of glory; we learn righteousness in thy discourses, and magnify thee as the friend of God." },
+          { "type": "theotokion", "text": "Theotokion: The Theotokos and Mother of the Beginningless One, whom thou wast zealous to glorify as is meet, O Juvenal, do thou unceasingly entreat on behalf of those who honor thy memory with faith, that we may fervently magnify thine intercession." }
+        ]
+      }
+    }
+  }
+}

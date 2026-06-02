@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "feast": "Holy Hieromartyr Athenogenes and his Ten Disciples",
+    "feastKey": "hieromartyAthenogenesTenDisciples",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 8,
+    "_source": "Matins: St-Sergius Emenaion 07-16.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-16.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone VIII. Single canon of the holy hieromartyrs in Tone VIII (acrostic 'O Christ, I hymn the glory of Thine athletes', composition of Joseph). Troparion Tone IV (common hieromartyr). Kontakion Tone IV after Ode 6. No ikos in source. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Athenogenes, entreat Christ God, that our souls be saved.",
+    "tone": 4,
+    "label": "Troparion of the holy hieromartyr"
+  },
+
+  "kontakion": {
+    "text": "Following the love of the Master,\nas an excellent pastor thou didst lay down thy life for the sheep of Christ,\nO hieromartyr Athenogenes;\nfor this cause we praise thee, and the ten disciples who suffered with thee,\ninstructed by the fear of God and thy teaching.\nWherefore, with His life-creating right hand\nthe Master hath crowned you who pleased Him.//\nHim do ye entreat on behalf of us all.",
+    "tone": 4,
+    "melody": "Having been lifted up",
+    "label": "Kontakion of the holy hieromartyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "As thou didst share in the ways of the apostles\nand didst occupy their throne,\nthou didst find thine activity to be a passage to divine vision,\nO divinely inspired one.\nWherefore, ordering the word of truth,\nthou didst suffer for the Faith even to the shedding of thy blood,//\nO Hieromartyr Athenogenes, entreat Christ God, that our souls be saved.",
+      "tone": 4,
+      "label": "Troparion of the holy hieromartyr"
+    },
+
+    "sessionalHymns": {
+      "text": "Having first cleansed thy soul with abstinence, and later by suffering,\nthou didst please God with thy perfect mind, as a hierarch and martyr, O God-bearer,\nleading to the Master the assembly of thy disciples,\nwith whom thou dost earnestly pray for us, O glorious one.",
+      "tone": 4,
+      "melody": "Go thou quickly before",
+      "label": "Sessional Hymn of the holy hieromartyr (after Ode 3)",
+      "bothNow": {
+        "text": "O pure, most immaculate one who knewest not a man,\nwho alone hast given birth within time to the timeless Son and Word of God,\nwith the holy and honored patriarchs, the martyrs, prophets and the venerable,\nentreat Him, that He grant us purification and great mercy.",
+        "tone": 4,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 8,
+      "_author": "Canon of the holy hieromartyrs, acrostic 'O Christ, I hymn the glory of Thine athletes', the composition of Joseph, in Tone VIII.",
+
+      "kontakion": {
+        "text": "Following the love of the Master,\nas an excellent pastor thou didst lay down thy life for the sheep of Christ,\nO hieromartyr Athenogenes;\nfor this cause we praise thee, and the ten disciples who suffered with thee,\ninstructed by the fear of God and thy teaching.\nWherefore, with His life-creating right hand\nthe Master hath crowned you who pleased Him.//\nHim do ye entreat on behalf of us all.",
+        "tone": 4,
+        "melody": "Having been lifted up",
+        "label": "Kontakion of the holy hieromartyr"
+      },
+
+      "ode1": {
+        "irmos": "Let us sing unto the Lord,\nwho led His people through the Red Sea:\nfor He alone hath gloriously been glorified.",
+        "troparia": [
+          { "text": "Joining chorus now with the ranks of heaven, O right glorious hierarch and martyr, save those who hymn thee with faith." },
+          { "text": "Guided by the laws of the Master, O honored assembly of the martyrs of Christ, ye destroyed the counsels of the iniquitous." },
+          { "text": "Wholly consumed like an unblemished sacrifice, O blessed of God, for the sake of thy faith thou didst offer thyself to God through the fire of torments." },
+          { "type": "theotokion", "text": "Theotokion: O thou who knewest not wedlock, in a manner past understanding and all telling thou hast given birth to the pre-eternal Word, Who took flesh from thy blood." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Thou Who established the heavens by Thy word,\nestablish our mind and heart,\nthat we may hymn and glorify Thee\nunto the salvation of our souls.",
+        "troparia": [
+          { "text": "The martyred hierarch Athenogenes, having destroyed the cruel wiles of the enemy by his indestructible love for God, hath been deemed worthy of glory with his disciples." },
+          { "text": "With steadfast opposition the godly ones blunted the arrows and darts of the enemy, and with their splendid rays they illumine the thoughts of all." },
+          { "text": "Wielding a mighty lash, the mindless one pitilessly inflicteth stripes, unceasingly lacerating them; but he was unable to shake their firm resolve, which passeth understanding." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast been shown to surpass the cherubim and the seraphim, O Theotokos; for thou alone received the infinite God within thy womb, O undefiled one. Wherefore, all of us, the faithful, magnify thee with hymns, O pure one." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,\nand I have glorified Thy Divinity.",
+        "troparia": [
+          { "text": "Transported far above every mind by divine ascents, O divinely wise ones, ye were undaunted by the bitter wounds of your flesh." },
+          { "text": "As a God-pleasing emulator of Christ and a blameless hieromartyr, Athenogenes was deemed worthy of divine grace." },
+          { "text": "O martyrs who spake of the incarnation of the Word, ye endured wounds and death, passing over to immortality." },
+          { "type": "theotokion", "text": "Theotokion: O most immaculate one, thou gavest flesh to the Transcendent One Who is equally omnipotent and enthroned with the Father and, in His tender compassion, entered into communion with mortals." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,\nand we know none other besides Thee.",
+        "troparia": [
+          { "text": "Having closed off the wisdom of thy flesh through dispassion, O right wondrous one, thou didst emulate the suffering of the Dispassionate One." },
+          { "text": "By his divine precepts the glorious Athenogenes led the choir of his disciples to the Master." },
+          { "text": "The Bestower of light hath made thy memory radiant, O martyr, fulfilling thy petitions for those who have recourse to thee with faith." },
+          { "type": "theotokion", "text": "Theotokion: Knowing thee to be both Mother and Virgin, O most holy one, together we honor and piously bless thee." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,\nO God of my salvation.",
+        "troparia": [
+          { "text": "Athenogenes hath received the goodly title of martyr, and with him the choir of his disciples hath been crowned, having first fasted, and thereby overcome the wiles of the demons." },
+          { "text": "Christ the Master maketh thine honored memory radiant, fulfilling thy supplications to Him, O blessed one; for, behold, a deer led its young to thee at the behest of God." },
+          { "text": "Thou wast shown to be a noetic garden of paradise, O right glorious one, having the tree of life in thy midst; and with the fragrance of divine flowers thou dost manifestly perfume all." },
+          { "type": "theotokion", "text": "Theotokion: Thou didst bear the Giver of the law like a noetic ark; like a radiant lamp thou hast given birth to the Light; and like a watered root thou hast put forth the Grapes of life, O Theotokos." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Having quenched the all-consuming power of the Chaldean furnace\nwith the form of the Angel, that had descended therein,\nthe children cried out to the Creator:\nBlessed and praised art Thou, O God of our fathers!",
+        "troparia": [
+          { "text": "Having quenched the flame with the outpourings of thy blood, with the fire of thy struggles thou didst utterly consume the tinder of evil, O blessed one, crying aloud: Blessed is the God of our fathers!" },
+          { "text": "Let the martyrs be praised as warriors of Christ, for they destroyed the uprisings of the flesh by the pangs of asceticism, and false worship by the outpouring of their blood." },
+          { "text": "Like immovable pillars the venerable martyrs were not shaken by the command of the iniquitous, that their heads be cut off, nor by the laceration of their flesh, nor yet by multifarious tortures." },
+          { "type": "theotokion", "text": "Theotokion: Delivered from the first fall of our ancestors for thy sake, O most immaculate one, we cry out to thee, 'Rejoice!', and with faith we glorify Him Who, through thee, hath delivered us from corruption." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Treading down the fiery flame in the furnace,\nthe divinely eloquent children sang:\n'Bless the Lord, ye works of the Lord'.",
+        "troparia": [
+          { "text": "Gazing at the outpourings of divine light, Athenogenes destroyed the deep darkness of the falsehood of idolatry, and became light." },
+          { "text": "Glorifying the Lord, the choirs of angels and martyrs, hierarchs and the venerable, rejoice in the memory of the honored spiritual athletes." },
+          { "text": "Proceeding to thy martyrdom with thy ten disciples, O holy hierarch, thou wast numbered among the flocks of the martyrs. With them we bless thee with faith." },
+          { "type": "theotokion", "text": "Theotokion: Thou hast given birth to the Word in a manner past all telling, O Mary, Birthgiver of God. Pray for us who hymn thee with faith and call thee blessed, O most pure one." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "The prophetic vision of the lawgiver on the mountain,\nin the fire of the burning bush,\nprefigured thy birthgiving O Ever-Virgin,\nthe salvation of us the faithful,\nwherefore with never silent hymns we magnify thee.",
+        "troparia": [
+          { "text": "Behold the radiant feastday of the martyrs, resplendent with grace, illumining the hearts of the faithful with divine splendors! Come ye, let us draw forth from there enlightenment!" },
+          { "text": "Like pure offerings and unblemished lambs ye brought yourselves to Him Who was slain for our sake, O martyrs, receiving crowns of victory from Him as the Judge of the contest." },
+          { "text": "Thy pangs let fall drops of sweetness, O spiritual athlete, taking away all the bitterness of the passions for those who have recourse to thy temple with faith and celebrate thy salvific memory." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, thou hast borne on thine arm Him Who beareth all things, and thou didst feed the Nourisher Who became like unto us. Him do thou entreat, that He grant to thy people deliverance from all evils." }
+        ]
+      }
+    }
+  }
+}

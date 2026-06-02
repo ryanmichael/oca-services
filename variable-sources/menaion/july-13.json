@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "feast": "Synaxis of the Holy Archangel Gabriel & Venerable Father Stephen the Sabbaite",
+    "feastKey": "synaxisArchangelGabrielStephenSabbaite",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-13.pdf",
+    "_note": "Joint two-saint simple-rank file. Canon I: Archangel Gabriel (Joseph, Tone IV). Canon II: Venerable Stephen the Sabbaite (Tone II). Two kontakia for Gabriel: Ode-3 slot 'O wise Gabriel' (Tone II) and Ode-6 slot 'Supreme commander of God' (Tone II) + Ikos. Troparion of the archangel Tone IV. Two sessional hymns: Gabriel (Tone IV), Glory/Stephen (Tone III), Both-now/Theotokion (Tone III). Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "O supreme commander of the heavenly hosts,\nwe entreat thee unworthy as we are,\nthat by thy prayers, thou wilt encompass us\nwith the protection of the wings of thine immaterial glory\npreserving us who fall down before thee and earnestly cry aloud:\ndeliver us from all misfortunes,//\nfor thou art the commander of the hosts on high.",
+    "tone": 4,
+    "label": "Troparion of the holy archangel"
+  },
+
+  "kontakion": {
+    "text": "O wise Gabriel, thou leader of the angels,\nminister of the glory of God and divine champion of the world,\nwho dost behold the glory of God in the heavens,\nand bestow grace upon the earth;\nsave and preserve those who cry out to thee://\nBe thou thyself our helper, and none shall prevail against us!",
+    "tone": 2,
+    "label": "Kontakion of the holy archangel"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
+
+    "troparion": {
+      "text": "O supreme commander of the heavenly hosts,\nwe entreat thee unworthy as we are,\nthat by thy prayers, thou wilt encompass us\nwith the protection of the wings of thine immaterial glory\npreserving us who fall down before thee and earnestly cry aloud:\ndeliver us from all misfortunes,//\nfor thou art the commander of the hosts on high.",
+      "tone": 4,
+      "label": "Troparion of the holy archangel"
+    },
+
+    "sessionalHymns": [
+      {
+        "text": "Thou art foremost among the incorporeal ministers of God, O glorious Gabriel,\nfor to thee was entrusted the dread mystery of the ineffable birthgiving of the holy Virgin,\nwhich was commanded immemorially, when thou didst exclaim to her: Rejoice, O joyous one!\nWherefore as is meet, we the faithful ever bless thee with gladness.",
+        "tone": 4,
+        "melody": "Having been lifted up",
+        "label": "Sessional Hymn of the holy archangel (after Ode 3)"
+      },
+      {
+        "text": "The amendment of thy life doth truly serve as a light to the feet of those who emulate thee with faith, O father Stephen.\nWherefore, by thy supplications do thou ever save from all imprisonment those who bless thee with love,\nentreat Christ, O blessed, right wondrous and venerable one.",
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Glory — Sessional Hymn of the venerable Stephen"
+      },
+      {
+        "text": "As an uncultivated vine, O Virgin, thou didst sprout forth the most comely Cluster of grapes\nWhich poureth forth upon us the wine of salvation making glad the souls and bodies of all.\nWherefore, ever blessing thee as the cause of good things,\nwith the angel we cry out to thee://\nRejoice, O thou who art full of grace!",
+        "tone": 3,
+        "label": "Both now — Theotokion"
+      }
+    ],
+
+    "canon": {
+      "tone": 4,
+      "_secondCanonTone": 2,
+      "_authors": "Canon I of the Archangel Gabriel, the composition of Joseph, acrostic 'I praise Gabriel as all-honorable', in Tone IV. Canon II of the Venerable Stephen the Sabbaite, in Tone II. Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern.",
+
+      "kontakionAfterOde3": {
+        "text": "O wise Gabriel, thou leader of the angels,\nminister of the glory of God and divine champion of the world,\nwho dost behold the glory of God in the heavens,\nand bestow grace upon the earth;\nsave and preserve those who cry out to thee://\nBe thou thyself our helper, and none shall prevail against us!",
+        "tone": 2,
+        "label": "Kontakion of the holy archangel (after Ode 3)"
+      },
+
+      "kontakion": {
+        "text": "Supreme commander of God, minister of His divine glory,\nleader of the angels and instructor of mankind:\nask for us great mercy and that which is profitable,\nin that thou art the supreme commander//\nof the incorporeal hosts.",
+        "tone": 2,
+        "melody": "The steadfast",
+        "label": "Kontakion of the holy archangel (after Ode 6)"
+      },
+
+      "ikos": {
+        "text": "O Immortal One Who lovest mankind, in Thy Scriptures Thou didst say, that a multitude of angels rejoice in heaven over one repentant sinner. Wherefore, O Thou Who alone art sinless and knowest the hearts of all, we who are amid transgression ever dare to entreat Thee, in that Thou art compassionate: Have pity and send down compunction upon us, even though we are unworthy; and grant us forgiveness, for the supreme commander of the incorporeal hosts doth beseech Thee on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "irmos2": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,\nfor gloriously hath He been glorified.",
+        "troparia": [
+          { "text": "O archangel of the Lord, I entreat thee, as thou art light by partaking immaterially in the ultimate Light; do thou illumine my mind by thy prayers, that I may hymn thee." },
+          { "text": "In gladness let us form a godly choir today, honoring the foremost of the incorporeal intelligences, who announced the ineffable Joy which for the good of the world came thereto." },
+          { "text": "Having thee, O Gabriel, as a great intercessor and helper before God, and as a rampart and confirmation, we who love thee praise thee, and are delivered from misfortunes and the assaults of the serpent." },
+          { "type": "theotokion", "text": "Theotokion: When Gabriel beheld thee, the pure and all-immaculate one, he cried out in splendor unto thee, O Lady: Rejoice, thou who hast not known wedlock, thou salvation of mankind and the boast and praise of the angels!" },
+          { "canon": "secondCanon", "text": "In debt to thee for thy teaching, O most blessed one, plaiting a wreath of praises we offer it to thee in return. By thy prayers, O most noetically rich father, grant me the grace of spirit, showing thyself to be merciful." },
+          { "canon": "secondCanon", "text": "The most pernicious assaults of the passions didst thou quell, O father, possessed of the divine wisdom of the Word; for thou wast beneficent and right eloquent, meek and humble, and crowned by the Word with wisdom and knowledge, O Stephen." },
+          { "canon": "secondCanon", "text": "In a sacred manner thou didst adorn thyself with understanding and the active working of grace, O divinely eloquent father Stephen, desiring the crown of the glory of Christ; and thou wast not amiss in thy desire, O most blessed one." },
+          { "canon": "secondCanon", "text": "Manifestly didst thou lay hold of chastity, extreme meekness and lofty humility, O God-bearer; and, exalted thereby, through the activity of thy works and thy vision, thou didst present thyself before the Lord, rejoicing, and didst receive an imperishable crown." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O pure one, thou hast been revealed to be more exalted than all creatures, visible and invisible; for thou hast given birth unto the Creator, in that it was His good pleasure to assume flesh in thy womb. Him do thou now entreat with boldness, that He save those who hymn thee." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory\ngrant them crowns of glory.",
+        "irmos2": "The desert of the barren Church of the nations\nblossomed like a lily at Thy coming, O Lord,\ntherein hath my heart been established.",
+        "troparia": [
+          { "text": "O Gabriel, in that thou art truly immaterial and illumined immaterially through partaking of the immaterial Light, thou art seen to be a secondary luminary, ever enlightening the material mortals who hymn thee." },
+          { "text": "O thou who art great among the angels, thou hast been deemed worthy of renown, having disclosed unto us the great mystery whereby we who honor thee have been caught up to the most exalted heights." },
+          { "text": "From heaven dost thou ever appear unto all who seek thee with love, stilling the tempest of temptations and tribulations which rage against them, O Gabriel, thou supreme commander." },
+          { "type": "theotokion", "text": "Theotokion: Giving utterance unto the mystery which had been hidden from all ages, Gabriel once cried out to thee, O Maiden: Rejoice, thou palace of God, wherein making His abode He hath deified all mankind, in that He is full of loving-kindness!" },
+          { "canon": "secondCanon", "text": "Like the sun thy most splendid life hath shone forth throughout the world, O God-bearing Stephen, illumining those who approach thee with faith and love." },
+          { "canon": "secondCanon", "text": "The ends of the earth are illumined by thy teachings, O venerable one, for thou didst shine forth like a beacon upon the Church of Christ, wherein my heart hath been established, O God-bearer." },
+          { "canon": "secondCanon", "text": "Thou didst maintain thy soul un-enslaved by the passions and the pleasures of the flesh, O honored God-bearer Stephen. Wherefore, we now praise thee as is meet." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In thy purity thou hast been revealed to be like a lily amid thorns, O Lady, radiant in the splendors of thy virginity, O most pure Theotokos." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Perceiving the profound counsel of God,\nthat the incarnation of Thee the Most High,\nwill be from a Virgin,\nthe Prophet Habbakuk cried aloud:\nGlory to Thy power, O Lord!",
+        "irmos2": "From a Virgin didst Thou come forth, not as an ambassador, nor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee:\nGlory to Thy power, O Lord!",
+        "troparia": [
+          { "text": "Of old, by communion with God O right wondrous Gabriel, thou didst stand enlightening the Prophet Daniel, having expounded manifestations of incomprehensible things through the Spirit." },
+          { "text": "With mouths of clay we joyously praise thee who art fiery by nature. From the fire which burneth everlastingly do thou rescue us by thy divine mediations, O Gabriel." },
+          { "text": "Arrayed in divine vesture which shineth with unapproachable glory more brightly than the sun, O supreme commander of God's servants, thou dost stand in gladness before the King of heaven." },
+          { "type": "theotokion", "text": "Theotokion: Gabriel, understanding through the Spirit that thou art wholly pure, O all-immaculate one, manifestly cried out to thee: Rejoice, thou who art the deliverance from the primal curse, and the restoration of the forefathers!" },
+          { "canon": "secondCanon", "text": "Thou, O Stephen, wast the crown of monastics, adorned with the virtues as with precious stones; for thou art truly seen to be a divinely joyous adornment, O blessed one." },
+          { "canon": "secondCanon", "text": "Thou didst hold divine wisdom in veneration, O God-bearer; wherefore, Wisdom hath made thee radiant with crowns of spiritual gifts, bestowing eternal glory upon thee, O most honored father." },
+          { "canon": "secondCanon", "text": "By the splendor of thy demeanor and the nature of thy goodness thou didst live a fitting life, O venerable Stephen; wherefore, thou hast become accessible unto all, O all-blessed and most wondrous one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Eve offered me the fruit of mortality, but thou, O most pure one, giving birth to Life hypostatic, hast straightway set our life aright. Wherefore, I cry out to thee: Rejoice, O Ever-virgin!" }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,\nbestowing peace, upon all who hymn thee.",
+        "irmos2": "O Christ God Thou art a mediator between God and man;\nfor by Thee, O Master,\nwe have been led from the night of ignorance,\nto Thy Father, the Source of light.",
+        "troparia": [
+          { "text": "Made radiant by communing with the primordial Mind, thou art seen to be a secondary luminary, crying aloud with the countless ranks of the angels: Holy is the Father, the Accomplisher of all things, the co-beginningless Son, and the Spirit Who is enthroned with them!" },
+          { "text": "Fiery is thine aspect, most wondrous thy beauty, and great is thy glory, astonishing every mind, O Gabriel, great leader of the incorporeal hosts of God, thou adornment of all who hymn thee with faith." },
+          { "text": "When of old the godly Zacharias beheld thee standing nearby at the hour of censing, he fell mute; for he did not believe the strange proclamation made by thee, O Gabriel, thou supreme commander." },
+          { "type": "theotokion", "text": "Theotokion: As thou wast a temple of sanctification, O most immaculate one, at the cry of the archangel thou hast given birth unto the Most holy God Who resteth in the saints, Who sanctifieth all, rescuing them from evils." },
+          { "canon": "secondCanon", "text": "With desire for dispassion didst thou quell the assaults of the passions, O God-bearing Stephen; and with visions and good works thou didst enlighten the state of thy soul, O father." },
+          { "canon": "secondCanon", "text": "With a pure mind and spiritual writings didst thou converse, O divinely eloquent Stephen, gathering a divine wealth of visions and deeds, O venerable father." },
+          { "canon": "secondCanon", "text": "Plumbing the abyss of wisdom, O Stephen, thou didst attain to the discovery of that which is right profitable; and for thine efforts thou didst acquire the precious pearl of knowledge, O most blessed one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Lo! in a manner surpassing all telling thou didst contain Christ God within thy womb, O most pure Theotokos; and the Prophet Isaiah cried aloud, saying: Thou hast given birth unto Him Who is above our essence, O Birthgiver of God!" }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Celebrating the divine and solemn feast of the Mother of God,\nO ye divinely wise, let us come, clapping our hands,\nand glorify God who was born of her.",
+        "irmos2": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
+        "troparia": [
+          { "text": "Earthly tongues cannot honor thee, the radiant and heavenly intelligence, most splendidly illumined with divine radiance in a manner past understanding and all telling." },
+          { "text": "O greatly splendid beam of the Sun, leader of the fiery ministers, by thy radiant entreaties to the Master rescue those who hymn thee from the darkness of the passions." },
+          { "text": "Confound the counsels of the heathen; confirm the Orthodox Faith; and abolish the divisions of the Church, by thy supplications to the Creator of all, O archangel." },
+          { "type": "theotokion", "text": "Theotokion: Obedient to the divine words of Gabriel, O pure one, thou hast given birth in the flesh unto the beginningless Word Who hath delivered the world from madness." },
+          { "canon": "secondCanon", "text": "Thou hast been shown to be a most radiant beacon for the whole world, illumining with the brilliance of thy words those who with faith and love have recourse unto thee, O father Stephen." },
+          { "canon": "secondCanon", "text": "Thou didst pass thy blessed life lulling thy senses to sleep and setting thyself beyond the tumult of the world; and didst thereby draw nigh unto God, O Stephen." },
+          { "canon": "secondCanon", "text": "Crowned with the virtues, O most wise Stephen, thou hast now been crowned as with a most comely crown, having gained rule over the passions, O most eminent one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: In a manner transcending nature, thou hast given birth, O Virgin, and hast remained a virgin forever, having revealed the true divinity of thy Son and God." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud:\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "irmos2": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "text": "Thou didst announce the birth of John unto Zacharias, O glorious one, when he once stood within the temple of God and chanted unto our Redeemer and God: Blessed art Thou, O supremely hymned Lord and God of our fathers!" },
+          { "text": "The most glorious magnificence of thy temple, O Gabriel, doth most splendidly sanctify the souls of the faithful and impel them to cry aloud: Blessed art Thou, O supremely hymned Lord and God of our fathers!" },
+          { "text": "Mystically enlightened by communing with the primordial Light, O supreme commander, thou art seen to be truly a secondary luminary, and dost ever illumine those who sing: Blessed art Thou, O supremely hymned Lord and God of our fathers!" },
+          { "type": "theotokion", "text": "Theotokion: Gabriel, the supreme commander, was sent to announce joy unto thee, O pure Virgin Mother, for whose sake grief hath ceased, the curse hath truly lost its force, and blessing hath blossomed forth for the faithful throughout the ages." },
+          { "canon": "secondCanon", "text": "Shining forth with the grace of the Spirit, O venerable one, the words of thy teachings emit a sweet fragrance; for honoring the one Godhead in three Hypostases, and hymning the incarnation of the Word, thou dost render us fragrant, O most noetically rich father." },
+          { "canon": "secondCanon", "text": "With purity of mind and splendor of knowledge thou didst pass thy life, O divinely wise one; and with purity of body and the splendor of virginity thou didst show thyself to be an offering to the Almighty Who seeth all things." },
+          { "canon": "secondCanon", "text": "As thy discourse appeared seasoned with salt, O most wondrous one, so did thy life shine forth radiantly with grace, wherefore, rejoicing in Christ, thou hast made thine abode in the mansions of heaven, standing before Him now with boldness." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Directing my life, O most pure one, do thou guide it to thy calm haven, O thou who hast given birth to the Wellspring of blessing Who bestoweth an abundance of goodness upon all the faithful." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "irmos2": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "text": "With sacred utterances the priestly people hymn thee in gladness, for thou didst announce unto the Virgin, O archangel, the Word, the Cause of all, Who became incarnate for our sake, becoming one of us." },
+          { "text": "Uniting thyself immaterially to the great and primordial Mind, O archangel, with thy fiery mouth thou dost chant the awesome hymn which all the angelic choirs sing: Hymn the Lord, O ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "Manifestly adorned with divine splendor, thou dost traverse the heavens and the earth, carrying out the wishes of Christ, the God of all, O Gabriel, thou leader of angels and beauty of those who ever praise thee with faith." },
+          { "text": "The Word, wishing to associate Himself hypostatically, in the flesh, with mankind, had thee go before Him and prepare a sanctified palace for Him, O sacred Gabriel, chanting: Hymn the Lord and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Let us hymn the blessed Virgin as the beautiful throne of the King, for she is more eminent than all other creatures, having alone brought into the world the Transcendent One Who hath deified mankind through the supra-natural union of His ineffable and wondrous birthgiving." },
+          { "canon": "secondCanon", "text": "In accordance with the meaning of thy name, Christ, the Bestower of life, placed a splendid crown upon thy head, O Stephen; for thou didst shine forth in deeds and visions, and wast revealed to be one who crieth aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Having transcended all that is sensual, O most blessed one, thou didst draw nigh to the primordial Mind in purity of soul, wearing a crown because of the splendor of thy life, O Stephen, and crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "With eager desire thou didst follow after the God-bearing Sabbas, O most blessed Stephen, emulating his godly life through the splendor of thy life, O all-famed one, thus being a truly worthy disciple of him." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The dispassionate Mind hath united Himself to a human mind in thy womb, O most pure one, and He Who transcendeth time hath come under time through the coarseness of the flesh. Wherefore, with faith and love we glorify thee, the Theotokos." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Let every mortal born on earth, radiant with light, in spirit leap for joy;\nand let the host of the angelic powers celebrate and honor the holy feast of the Mother of God,\nand let them cry aloud:\nRejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "irmos2": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness, and to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "text": "Ministering before the throne of grace, illumined with splendor which passeth understanding, edified in sacred manner, beholding the Light and enlightening those who honor thee with faith, O sacred Gabriel, supreme commander, thou dost intercede for us in an awesome manner." },
+          { "text": "Like the heavens adorned with stars, thou dost appear resplendent with divine splendors; and, like a general, thou dost hold a most radiant staff in thy hands, going about the whole universe fulfilling the will of the Master and ever rescuing the faithful from evil circumstances." },
+          { "text": "Still thou the cruel storm of the barbarians which ever riseth up against thy servants, and heal thou the breaches within the Church; grant deliverance from transgressions unto those who hymn thee and victories to our Orthodox hierarchs over all heresies, through thy fervent intercession, O Gabriel." },
+          { "text": "O most good and most glorious twain, Michael and Gabriel, who stand before the throne of the glory of God: ask forgiveness of sins and release from evils for all, in that ye are our intercessors and in all emulate the goodness of the Master." },
+          { "type": "theotokion", "text": "Theotokion: The light of grace shone forth through thy birthgiving illumining the whole world and destroying the princes of darkness, O most pure Birthgiver of God, thou boast of the angels and salvation of all those who praise thee with unceasing hymnody." },
+          { "canon": "secondCanon", "text": "O most honored and blessed Stephen, who delightest now in a pure manner, receiving the sustenance which transcendeth understanding where the assemblies of the saints join chorus in the praise of God; in thy mediation draw unto thyself those who now hymn thee." },
+          { "canon": "secondCanon", "text": "Rejoicing, thou hast passed over to the ultimate Desire, to Him Who alone is blessedness itself, to the highest Beauty, to the Life which in truth never ageth, to the never-waning Light, O God-bearing father Stephen." },
+          { "canon": "secondCanon", "text": "In the assemblies of monks thou didst shine forth like the sun, sanctified from thine earliest childhood, O Stephen most sweet; emitting the virtues of thy life like beams, O our God-bearing and venerable father." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Perceiving from afar with prophetic eyes, the prophets clearly proclaimed thee who wast to become the Mother of the Creator and Master of all. Wherefore, we confess thee to be the Theotokos, O all-hymned one." }
+        ]
+      }
+    }
+  }
+}

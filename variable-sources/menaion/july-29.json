@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Callinicus",
+    "feastKey": "martyrCallinicus",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-29.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-29.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone VIII + Glory Tone VIII. Single canon of the holy martyr in Tone IV. Troparion Tone IV (common martyr). Kontakion Tone II after Ode 6. No ikos in source. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "In his sufferings, Thy martyr Callinicus O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyr"
+  },
+
+  "kontakion": {
+    "text": "The beautiful things of heaven\nhast thou now inherited as is meet;\nfor, greatly aflame with the love of Christ,\nthou didst manfully brave the fire therewith, O Callinicus.//\nStanding now before Him, cease not to pray on behalf of us all.",
+    "tone": 2,
+    "melody": "Seeking the highest",
+    "label": "Kontakion of the holy martyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "In his sufferings, Thy martyr Callinicus O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr"
+    },
+
+    "sessionalHymns": {
+      "text": "Having divine zeal within thy soul, O glorious one,\nthou didst steadfastly denounce those who vainly worked iniquity;\nand having drawn nigh unto torments,\nthou didst pass through thy struggle with valiant mind.\nO martyr Callinicus, entreat Christ God,\nthat He grant us great mercy.",
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of the holy martyr (after Ode 3)",
+      "bothNow": {
+        "text": "Without separating Himself from the divine Essence when He took flesh in thy womb,\nthe one Lord remained God though He had become a man;\nand even after thy birthgiving He preserved thee, His Virgin Mother,\nas immaculate as thou wast before giving birth.\nHim do thou earnestly beseech, that He grant us great mercy.",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyr, in Tone IV.",
+
+      "kontakion": {
+        "text": "The beautiful things of heaven\nhast thou now inherited as is meet;\nfor, greatly aflame with the love of Christ,\nthou didst manfully brave the fire therewith, O Callinicus.//\nStanding now before Him, cease not to pray on behalf of us all.",
+        "tone": 2,
+        "melody": "Seeking the highest",
+        "label": "Kontakion of the holy martyr"
+      },
+
+      "ode1": {
+        "irmos": "The chariots of pharaoh and his power\nwere cast into the sea by Him Who is mighty in battles:\nLet us chant a new hymn,\nfor He hath been glorified!",
+        "troparia": [
+          { "text": "Having truly mounted the noetic chariot, thou didst drown the captains of the noetic Egypt in the streams of thy blood, O Callinicus, thou boast of martyrs." },
+          { "text": "Clothed in divine vesture, O most blessed and wise one, thou didst divest thyself of earthly garments, hastening to the contest and putting the enemy to shame." },
+          { "text": "Having broken the subtle snares of the enemy with the bonds of thy suffering, thou didst cast him, helpless, to the ground, O Callinicus, and trampled him under thy feet." },
+          { "type": "theotokion", "text": "Theotokion: O pure Virgin Mother, we know thee to be her who gave birth to God, whom the choir of the prophets foresaw as the portal of heaven and the unburnt bush." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Having established the thunder and fashioned the wind:\ndo Thou make me steadfast O Lord,\nthat I may hymn Thee in truth and do Thy will;\nfor there is none holy like unto Thee, O our God.",
+        "troparia": [
+          { "text": "Wounded with the love of Christ, the martyr cried out, enduring pain amid his struggles: 'I make haste to the sweet fragrance of myrrh, following Thy Passion, through the suffering of my blood!'" },
+          { "text": "Thou wast preserved unassailed by the darts of the serpent; for the crafty one, having bruised thy heel amid thy wounds, crushed his own head in thy sufferings, O Callinicus." },
+          { "text": "Having cut down the thorns of deception with the sword of the Spirit, thou didst truly offer unto thy Master the fruit of the Christian Faith, O most blessed one: thy hundredfold pangs." },
+          { "type": "theotokion", "text": "Theotokion: In thy womb thou alone didst conceive as the ineffable Offspring of thy birthgiving, God the Word, Who existed before thee, O Mother; and with milk thou didst nourish the Beginningless One as a babe, O most pure one." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "I have heard report of Thee, O Lord and I am afraid.\nHaving understood Thy works,\nI am in awe of Thee O Lord,\nfor the earth is full of Thy praise.",
+        "troparia": [
+          { "text": "Washed in the streams of thy blood, O most blessed one, thou wast revealed as most pure by the Spirit, and hast attained unto the delight of the incorporeal ones, O martyr Callinicus." },
+          { "text": "Thou wast truly set as a stone precious to the Church, for shaking the temples of the idols thou didst cast them down to the ground by the steadfast opposition of thy sufferings." },
+          { "text": "The deadly allurements of the enemy didst thou truly turn aside with the words of the Spirit, O martyr; and, strengthened in thy soul, thou didst win the victory over deception." },
+          { "type": "theotokion", "text": "Theotokion: We now recognize thee, O pure one, as the bush which the great Moses beheld prophetically on Sinai, burning without being consumed, having borne Fire within thy womb." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Shine upon me, O Lord,\nthe light of Thy commandments,\nfor my soul riseth early to Thee and hymneth Thee:\nFor Thou art our God,\nand unto Thee do I flee, O King of peace.",
+        "troparia": [
+          { "text": "Foundering in the quicksand and abyss of my sins and having fallen into the tempest of mine evil deeds, I cry to thee: Be thou my helper!" },
+          { "text": "When the soles of thy feet were pierced with nails, O martyr, thou didst sing: 'In the path of Thy testimonies have I richly delighted, enduring wounds in the expectation of reward, O Master, Thou Judge of the contest!'" },
+          { "text": "Having traded well in torment, thou didst trim thy lamp with the oil of mercy, O most blessed one; wherefore, thou didst become a wholly unblemished sacrifice, an acceptable whole-burnt offering." },
+          { "type": "theotokion", "text": "Theotokion: O Theotokos, thou art the subject of the prophets' proclamation, the boast of the angels and the adornment of martyrs, bearing the divine Word, Who wast ineffably begotten of the Father before time, O most pure one." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "Drowning in the tempest of my sins,\nand as though imprisoned in the belly of the whale,\nwith the Prophet I cry out to Thee:\nRaise up my life from corruption, O Lord, and save me.",
+        "troparia": [
+          { "text": "The fold of thy flock hath been preserved unharmed from the beasts of heresy; for the stout staff of thy sufferings, which thou didst hold fast, O glorious one, hath been shown to drive the wolves away." },
+          { "text": "Thou didst escape the night of deception by thy suffering, and the beauty of faith hath shone forth like the sun upon the ends of the earth in thy confession." },
+          { "text": "As a renowned preacher of the Faith, thou didst readily cry out to the iniquitous one: 'Why dost thou threaten one whose spiritual strength is not weak? For the darts of the ungodly are feeble!'" },
+          { "type": "theotokion", "text": "Theotokion: As before thy birthgiving, O thou who hast not known wedlock, thou didst remain incorrupt and virginal; for in thee the mystery which passeth understanding and all telling hath been revealed, O Bride of God." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "The fire burning in the furnace quaked with fear,\nand the children were bedewed and sang, saying:\nBlessed art Thou, O only God of our fathers!",
+        "troparia": [
+          { "text": "'The terrors of torments are for me a means to obtain sweetness; for neither fire nor wounds will separate me from Him Who truly loveth me!' cried the martyr." },
+          { "text": "Strengthened by the support of Christ, O glorious one, thou didst contend and cast the adversary down to the ground; and, true to thy name, didst show thyself to be the goodly victor over the tyrant." },
+          { "text": "Thou didst put the devil to shame and didst gladden the angels with thy sufferings, O glorious one; and thou didst cry out to Christ: Blessed art Thou alone, O God of our fathers!" },
+          { "type": "theotokion", "text": "Theotokion: By thy birthgiving, O most pure Virgin, thou didst annul the curse of Eve our first mother; for thou art the Mother of the Master of all, who hast mediated joy for all." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "In wisdom hast Thou fashioned all things, O Master,\nThou didst establish the earth firmly upon the fathomless depths of the waters,\nin accordance with Thy knowledge,\nwherefore we hymn Thee chanting:\nUnceasingly bless ye the Lord all ye works of the Lord.",
+        "troparia": [
+          { "text": "Rejoice, O delight of true spiritual athletes! Rejoice, adornment and ornament of the Faith! Rejoice, torch-bearer most splendid among the martyrs, who hast dispelled deception and shone forth light upon the world by thy suffering, O most wise Callinicus." },
+          { "text": "The tyrant was put to shame by thy struggles and opposition, and the malefactors were vanquished by thy wounds, O blessed one. For though thy heels were pierced with nails, all deception was consumed, and the temples of the idolaters were destroyed by the fire of thy contest." },
+          { "text": "Bowing thy head, O Callinicus, in thy boldness pray unceasingly to God on behalf of those who honor thee. Intercede for thy flock, rescuing it from the divers snares of the deceiver, and make it steadfast by faith. For through thee hath it grown in stature and might." },
+          { "type": "theotokion", "text": "Theotokion: In the Spirit, the prophets perceived thee, the Virgin, as tabernacle and altar, jar and lamp-stand, the most holy mountain, the cloud and the tables of the law, the ark and the staff, the divine portal whereby ancient paradise hath been made accessible unto all." }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "O undefiled Theotokos,\nwith never-silent hymns\nwe magnify thine Offspring born without seed,\nChrist our God.",
+        "troparia": [
+          { "text": "A robe of faith was woven for thee on high, whereby thou didst strip the enemy naked at the tribunal, O glorious martyr." },
+          { "text": "The tyrant thought to deceive the martyr with allurements, but the martyr remained steadfast in the Faith." },
+          { "text": "O glorious Callinicus, thou didst offer thyself unto God as a pure whole-burnt offering and a pleasing sacrifice on the fire of thy contest." },
+          { "text": "Beautiful are thy feet, O athlete Callinicus, which, though pierced with nails, went on to preach God." },
+          { "type": "theotokion", "text": "Theotokion: O pure one, we have acquired thee as our protection and refuge, our rampart and bulwark, our ever firm hope amid tribulations." }
+        ]
+      }
+    }
+  }
+}

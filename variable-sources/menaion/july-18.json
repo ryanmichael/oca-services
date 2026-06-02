@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Emilian",
+    "feastKey": "martyrEmilian",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 4,
+    "_source": "Matins: St-Sergius Emenaion 07-18.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-18.pdf",
+    "_note": "Simple-rank. 3 LIC stichera Tone IV. Single canon of the holy martyr in Tone IV (acrostic 'Gloriously do I hymn the martyr Emilian', composition of Theophanes). Troparion Tone IV (common martyr). Kontakion Tone III after Ode 6. No ikos in source. Two Octoechos canons interleaved at the actual service are omitted per the menaion-matins-track pattern."
+  },
+
+  "troparion": {
+    "text": "In his sufferings, Thy martyr Emilian O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "tone": 4,
+    "label": "Troparion of the holy martyr"
+  },
+
+  "kontakion": {
+    "text": "Aflame with divine zeal, thou wast not afraid\nof the ministering fire,\nbut fearlessly ascending of thine own will,\nthou wast consumed by the kindled fire,\nand didst offer thyself to the Master as a sacrifice.\nO glorious martyr Emilian,//\nentreat Christ God, that He grant us great mercy.",
+    "tone": 3,
+    "melody": "Of the divine Faith",
+    "label": "Kontakion of the holy martyr"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
+
+    "troparion": {
+      "text": "In his sufferings, Thy martyr Emilian O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants and crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+      "tone": 4,
+      "label": "Troparion of the holy martyr"
+    },
+
+    "sessionalHymns": {
+      "text": "Strengthened by divine power,\nthou didst commit the gods of the ungodly to utter oblivion, O valiant spiritual athlete;\nand entering the tribunal, thou didst steadfastly suffer laceration\nand manfully endure the flames.\nWherefore, thou didst pass through the divine struggle and, rejoicing, received the crown of victory.\nO all-famed Emilian, entreat Christ God,\nthat He grant forgiveness of sins unto those who with love honor thy holy memory.",
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of the holy martyr (after Ode 3)",
+      "bothNow": {
+        "text": "All we, the generations of mankind, call thee blessed,\nin that thou art the Virgin who alone among women\nhast given birth without seed unto God in the flesh;\nfor the fire of the Godhead made its abode within thee,\nand thou didst feed the Creator and Lord with milk as an infant.\nWherefore, we, the race of mankind and of angels, glorify thy birthgiving,\nand together we cry out to thee:\nEntreat Christ God to grant forgiveness of sins//\nunto those who with faith worship thy most holy Offspring.",
+        "tone": 8,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy martyr, acrostic 'Gloriously do I hymn the martyr Emilian', the composition of Theophanes, in Tone IV.",
+
+      "kontakion": {
+        "text": "Aflame with divine zeal, thou wast not afraid\nof the ministering fire,\nbut fearlessly ascending of thine own will,\nthou wast consumed by the kindled fire,\nand didst offer thyself to the Master as a sacrifice.\nO glorious martyr Emilian,//\nentreat Christ God, that He grant us great mercy.",
+        "tone": 3,
+        "melody": "Of the divine Faith",
+        "label": "Kontakion of the holy martyr"
+      },
+
+      "ode1": {
+        "irmos": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
+        "troparia": [
+          { "text": "Let us praise today our God Who is over all things, and let us also praise His martyr, who suffered lawfully and won the crown of victory by the power of the Spirit." },
+          { "text": "Arrayed in the power and grace of Him Who clothed Himself in our weakness, O glorious and divinely blessed martyr, thou didst strip bare the vainglorious arrogance and weakness of idolatry." },
+          { "text": "Rejoicing, O glorious one, thou didst proclaim the triple Unity united in one essence, destroying the delusion of polytheism, and suffering steadfastly, O divinely blessed one." },
+          { "type": "theotokion", "text": "Theotokion: Christ the Lord, to Whom thou hast given birth, O all-immaculate one, is my strength and song and the enlightenment of my heart, and He is known to exist in two natures and in a single hypostasis." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory\ngrant them crowns of glory.",
+        "troparia": [
+          { "text": "The law of our God was truly a lamp to thy feet and a light for thy steps, and thereby, as one adorned as a martyr, thou didst cause the steps of the iniquitous to falter." },
+          { "text": "Thou didst direct the workings of thy mind toward the will of God, the calm haven, O wise one, fleeing the raging sea of polytheism, and the wickedness of the demons." },
+          { "text": "The hosts of heaven wondered at the divine sufferings of Emilian and his faith and courage even unto death, how in the flesh he cast down the incorporeal one, humbling him." },
+          { "type": "theotokion", "text": "Theotokion: Exempted from the laws of nature, O Virgin Mother, through thy supra-natural birthgiving thou didst remain a Virgin even after giving birth; for thou didst bear the Author of all creation, O pure one." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "He who sitteth in glory upon the throne of the Godhead,\nJesus the true God,\nis come in a swift cloud\nand with His sinless hands he hath saved those who cry:\nGlory to Thy power, O Christ.",
+        "troparia": [
+          { "text": "The divine desire of God set thee most gloriously afire; wherefore, thou didst endure the burning of bitter wounds, immolating the gods of the ungodly and bedewing the souls of the faithful, O most blessed one." },
+          { "text": "Thou didst disdain temporal things for the sake of those which last, and binding thy whole soul to divine love, thou didst destroy the might of impiety, O right wondrous passion-bearer Emilian." },
+          { "text": "Piously glorifying the one essence and one glory of the three-Sunned Godhead, O Emilian, thou didst enter the tribunal as a valiant warrior and didst cast the mighty serpent down to the ground." },
+          { "type": "theotokion", "text": "Theotokion: O most holy Maiden, we glorify thee who alone hast been found to be the place of sanctity of Him Who hath hallowed us; for, for thy sake we who live on earth have been deified and deemed worthy of true life." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,\nbestowing peace, upon all who hymn thee.",
+        "troparia": [
+          { "text": "With the drops of thy sacred blood thou didst extinguish the fire of ungodliness, O spiritual athlete Emilian; wherefore, thou hast poured forth a well-spring of miracles, which drieth up the lake of the passions, drowneth infirmities and doth engulf the demons." },
+          { "text": "The wicked one ordered thee stretched forth and beaten; wherefore, as thy body was lacerated and afflicted with stripes, O spiritual athlete, thou didst depict the blessed suffering of Him Who was wounded on the Cross." },
+          { "text": "Filled with spiritual gifts, O right wondrous one, thou dost heal the incurable ailments of the sick, cause the burning of fever to cease, drive out evil spirits and help all amid their grief." },
+          { "type": "theotokion", "text": "Theotokion: With thine effective remedies heal me who am wounded with the sword of sin, O thou who hast given birth to Christ the Savior, who for my sake was wounded with the spear and thereby pierced the heart of the serpent." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss\nO Greatly-merciful One.",
+        "troparia": [
+          { "text": "Thou wast enriched and filled with divine glory through thy martyrdom, O blessed one, and livest with the angels in the heavens. Pray thou that our souls be saved." },
+          { "text": "Thou didst not spare thy mortal body; wherefore, thou hast inherited lasting immortality, having died for the love of Him Who hath slain the passions, O glorious one." },
+          { "text": "The shrine of thy relics poureth forth the myrrh of healings, O most noetically rich and valiant martyr, ever dispelling the fetid sicknesses of all." },
+          { "type": "theotokion", "text": "Theotokion: Eve plucked the deadly fruit from the tree; but thou, O most pure one, hast given birth to the Tree of life, the taste of which giveth life to all the dying." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "Refusing to worship created things in place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud:\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "text": "Illumined with the grace of the divine Spirit, O blessed one, thou didst pass through the burning of the furnace and, unconsumed, didst chant: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "text": "Set alight by desire for Christ Whom thou loved, O blessed one, thou didst not fear the fire, and, bedewed therein by the Spirit, thou didst chant: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "text": "In the beauty of thy sufferings thou didst emulate the incorporeal ones, O wise one, and standing with them before the all-comely Christ, thou chantest, rejoicing: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "type": "theotokion", "text": "Theotokion: O Bride of God of lordly name, with faith we cry out to thee; for thou hast given birth to Christ the Lord, our ineffable joy, to Whom we cry: O supremely hymned Lord God of our fathers, blessed art Thou!" }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "The Offspring of the Theotokos saved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "text": "Destroying the worship of falsehood, O most wise one, thou didst loose the bonds of him who held thee, and voluntarily gave thyself over to torture, O all-famed one, crying: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "text": "'I have not been found by those who seek me, nor have I been revealed to those who asked for me!' thou dost cry, O most glorious one; 'Understand, ye iniquitous, for I have hastened to be slain as an innocent lamb, crying: Bless the Lord and supremely exalt Him throughout all ages!'" },
+          { "text": "The great Emilian hath summoned us to a banquet, offering us his struggles as food. Let us spiritually partake thereof, O ye faithful, and chant: Hymn the Lord, ye works, and supremely exalt Him throughout all ages!" },
+          { "type": "theotokion", "text": "Theotokion: Rain down drops of mercy upon me, O thou who hast given birth to the Well-spring of mercy, dry up the floods of my sin and still the raging waves of my soul, O Virgin Mary Theotokos, that I may glorify thee throughout all ages!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.\nWherefore, we all magnify thee.",
+        "troparia": [
+          { "text": "Desiring to behold the ineffable gladness and radiance of God, O glorious one, thou didst zealously despise all the beautiful things in this life, and rejoicing, passed through thy martyrdom. Wherefore, with faith we call thee blessed." },
+          { "text": "O all-famed one, preserved by the sweet savor of the Spirit and deemed worthy of true glory, thou didst offer thyself as a sacrifice, wholly consumed by fire, for the divine altar of Him Who was slaughtered like a lamb; wherefore, with love we call thee blessed." },
+          { "text": "Today thy memory hath shone forth upon us more brightly than the sun, O spiritual athlete, gladdening the hearts of all the faithful, illumining their thoughts and dispelling the darkness of infirmities; and we celebrate it with prayer." },
+          { "text": "The chosen choir of the firstborn hath acquired thee as a fellow citizen, and all the martyrs, beholding thee joining chorus therewith, rejoice. With them be thou also mindful of us who commemorate thee, O martyr of great renown." },
+          { "type": "theotokion", "text": "Theotokion: With thy light illumine me who walk in darkness, O all-hymned one; grant me a helping hand and drive away the clouds from my soul. For thou dost still the tempest of my passions, O refuge of the despairing." }
+        ]
+      }
+    }
+  }
+}

@@ -240,9 +240,13 @@ function validateLiturgicalDayLabels(data) {
 
 const REQUIRED_ODES = ['ode1','ode3','ode4','ode5','ode6','ode7','ode8','ode9'];
 
-function checkCanonOde(ode, at, errs) {
+function checkCanonOde(ode, at, errs, { afterfeast = false } = {}) {
   if (!isObject(ode)) { errs.push(`${at} must be object`); return; }
-  pushIf(errs, isString(ode.irmos), `${at}.irmos required`);
+  // Afterfeast canons supply only irmos2 (saint's irmos); Canon I irmos comes
+  // from the shared feast-canons file at runtime — so irmos is not required.
+  if (!afterfeast) {
+    pushIf(errs, isString(ode.irmos), `${at}.irmos required`);
+  }
   // katavasia is optional — some feasts use the irmos as its own katavasia
   if (ode.katavasia !== undefined) {
     pushIf(errs, isString(ode.katavasia), `${at}.katavasia must be string`);
@@ -331,11 +335,12 @@ function validateMenaionFeast(data, filename = 'menaion file') {
     for (const odeKey of REQUIRED_ODES) {
       // Some feasts may omit specific odes; warn only if all odes are missing
     }
+    const isAfterFeast = !!m.canon.afterfeastOf;
     let presentOdes = 0;
     for (const odeKey of REQUIRED_ODES) {
       if (m.canon[odeKey] !== undefined) {
         presentOdes++;
-        checkCanonOde(m.canon[odeKey], `${matinsAt}.canon.${odeKey}`, errs);
+        checkCanonOde(m.canon[odeKey], `${matinsAt}.canon.${odeKey}`, errs, { afterfeast: isAfterFeast });
       }
     }
     pushIf(errs, presentOdes >= 6,

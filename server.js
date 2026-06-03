@@ -1718,6 +1718,53 @@ function _applyCrossSundayOverlay(spec) {
   }
 }
 
+const AFTERFEAST_CANON_ODES = ['ode1', 'ode3', 'ode4', 'ode5', 'ode6', 'ode7', 'ode8', 'ode9'];
+
+// Merge a shared feast canon (Canon I) with a saint's canon (Canon II).
+// `saintCanon` is mat.canon from a menaion file that has `afterfeastOf: "<key>"`.
+// Returns a merged canon object shaped exactly like a two-canon menaion file
+// (irmos = feast, irmos2 = saint, secondCanon-tagged troparia = saint's).
+function _mergeAfterFeastCanon(saintCanon) {
+  const feastKey = saintCanon.afterfeastOf;
+  const feastCanon = loadJSON(`variable-sources/feast-canons/${feastKey}.json`);
+
+  const merged = {
+    tone: feastCanon.tone,
+    _secondCanonTone: saintCanon.tone,
+  };
+
+  // Copy all non-ode saint-canon fields (kontakion, ikos, kontakionAfterOde3,
+  // sedalenAfterOde3, skipMagnificat, joint flags, etc.)
+  for (const [k, v] of Object.entries(saintCanon)) {
+    if (k === 'afterfeastOf' || k === 'tone' || AFTERFEAST_CANON_ODES.includes(k)) continue;
+    merged[k] = v;
+  }
+
+  for (const ode of AFTERFEAST_CANON_ODES) {
+    const fOde = feastCanon[ode] || {};
+    const sOde = saintCanon[ode] || {};
+    if (!fOde.irmos && !sOde.troparia?.length) continue;
+
+    const mergedOde = {};
+    if (fOde.irmos)  mergedOde.irmos  = fOde.irmos;
+    if (sOde.irmos2) mergedOde.irmos2 = sOde.irmos2;
+
+    mergedOde.troparia = [
+      ...(fOde.troparia || []),
+      ...(sOde.troparia || []),
+    ];
+
+    if (fOde.katavasia) mergedOde.katavasia = fOde.katavasia;
+    // Saint's sessional hymn takes precedence; fall back to feast's
+    const sedalen = sOde.sedalenAfterOde3 || fOde.sedalenAfterOde3;
+    if (sedalen) mergedOde.sedalenAfterOde3 = sedalen;
+
+    merged[ode] = mergedOde;
+  }
+
+  return merged;
+}
+
 function buildMatinsSpec(dateStr, date, dow, season, tone) {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const mm = String(mo).padStart(2, '0');
@@ -1888,13 +1935,18 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
 
   // Canon
   if (mat.canon) {
+    // Afterfeast: merge shared feast canon (Canon I) with saint's canon (Canon II)
+    const srcCanon = mat.canon.afterfeastOf
+      ? _mergeAfterFeastCanon(mat.canon)
+      : mat.canon;
+
     const canonSpec = {
-      tone: mat.canon.tone || spec.tone,
-      author: mat.canon.author,
+      tone: srcCanon.tone || spec.tone,
+      author: srcCanon.author,
     };
     // Copy ode data + every canon-level field (metadata, skipMagnificat,
     // sedalenAfterOde3, etc.). `tone`/`author` are already set above.
-    for (const [k, v] of Object.entries(mat.canon)) {
+    for (const [k, v] of Object.entries(srcCanon)) {
       if (k === 'tone' || k === 'author') continue;
       canonSpec[k] = v;
     }
@@ -1907,13 +1959,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone) {
     // Kontakion/ikos (placed inside canon spec so they appear after Ode 6).
     // Prefer the matins-canon kontakion if present (festal-specific text);
     // otherwise fall back to the top-level menaion kontakion.
-    if (mat.canon.kontakion) {
-      canonSpec.kontakion = mat.canon.kontakion;
+    if (srcCanon.kontakion) {
+      canonSpec.kontakion = srcCanon.kontakion;
     } else if (menaionData.kontakion) {
       canonSpec.kontakion = menaionData.kontakion;
     }
     // Skip Magnificat on great feasts that have their own Ode 9 megalynarion
-    if (mat.canon.ode9?.megalynarion) {
+    if (srcCanon.ode9?.megalynarion) {
       canonSpec.skipMagnificat = true;
     }
     spec.canon = canonSpec;

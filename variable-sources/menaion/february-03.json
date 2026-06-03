@@ -1,0 +1,160 @@
+{
+  "_meta": {
+    "feast": "Holy Righteous Symeon the God-Receiver and Anna the Prophetess",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 02-03.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-03.pdf",
+    "_note": "Afterfeast of the Meeting of Our Lord. Two-canon Matins: Canon I = Meeting (afterfeastOf: meeting) loaded from feast-canons/meeting.json; Canon II = St. Symeon Tone IV by Joseph."
+  },
+  "troparion": {
+    "tone": 1,
+    "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+    "label": "Troparion of the feast (Meeting)"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Today the elder asked to be loosed\nfrom the bonds of this life of corruption,\nhaving received in his arms//\nChrist, the Creator and Lord.",
+    "label": "Kontakion of righteous Symeon",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "troparion": {
+      "tone": 1,
+      "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+      "label": "Troparion of the feast (Meeting)",
+      "_note": "On God is the Lord: feast troparion sung thrice (twice + Glory: Both now: once)."
+    },
+    "sedalion": [
+      {
+        "tone": 1,
+        "melody": "When the stone was sealed",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Having become a babe for my sake, Thou wast borne into the temple, O Life of all, having of old engraved the law on stone tablets on Mount Sinai, Thou hast placed Thyself under the law, that Thou mightest set all free from ancient servitude to the law. Glory to Thy compassion, O Savior! Glory to Thy Kingdom! Glory to Thy dispensation, O only Lover of mankind!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 5,
+        "melody": "The co-beginningless Word",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "O Savior, Creator, Master and Bestower of the law, in fulfillment of the law, Thou wast borne into the temple in the flesh; and by Thy good pleasure carried in the arms of Symeon, Thou Who art awesome to all and sustainest all creation, revealing Thy desire to shed light upon all of us, O Thou Who alone art compassionate.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Awed by the beauty of thy virginity",
+      "label": "Sessional Hymn of righteous Symeon (after Ode 3)",
+      "text": "Rejoicing, the sacred Symeon took in his arms, Thee Who had assumed flesh from the Virgin, O Christ, crying aloud: Now lettest Thou Thy servant depart, O Master! And like Anna, the blameless and glorious prophetess, who offered Thee confession and hymnody, we cry out to Thee, O Bestower of life: Glory to Thee Who hast thus been well pleased!",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": "Rejoicing, the sacred Symeon took in his arms, Thee Who had assumed flesh from the Virgin, O Christ, crying aloud: Now lettest Thou Thy servant depart, O Master! And like Anna, the blameless and glorious prophetess, who offered Thee confession and hymnody, we cry out to Thee, O Bestower of life: Glory to Thee Who hast thus been well pleased!"
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "melody": "Hearken, ye women",
+      "text": "The Word Who is immutable in Hypostasis hath united Himself to the flesh without seed, in thee O Birthgiver of God, becoming a babe; and bearing Him in thine arms, like the throne of the cherubim, thou hast now offered Him to God the Father; and the elder Symeon, rejoicing, hath received Him.",
+      "label": "Exapostilarion",
+      "bothNow": {
+        "tone": 3,
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "meeting",
+      "tone": 4,
+      "_author": "Canon of righteous Symeon by Joseph, Tone IV. Canon I (feast) from feast-canons/meeting.json.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Today the elder asked to be loosed\nfrom the bonds of this life of corruption,\nhaving received in his arms//\nChrist, the Creator and Lord.",
+        "label": "Kontakion of righteous Symeon",
+        "melody": "Thou hast appeared today"
+      },
+      "kontakion": {
+        "tone": 1,
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "label": "Kontakion of the feast (Meeting)"
+      },
+      "ikos": {
+        "text": "Let us make haste to the Theotokos, desiring to behold her Son borne unto Symeon. Looking upon Him from heaven, the bodiless hosts in amazement proclaim: \"We behold things wondrous, most glorious, unapproachable and ineffable: for He Who created Adam is borne as an infant; He Whom naught can contain is held in the elder's arms; He Who is in the infinite bosom of His Father is willingly constrained in the flesh, but not in His divinity, He Who alone is the Lover of mankind.\""
+      },
+      "ode1": {
+        "irmos2": "I shall open my mouth, and be filled with the Spirit, and utter discourse to the Queen and Mother; and be seen radiantly keeping festival, joyfully praising her wonders.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O righteous Symeon, abiding in joy in the mansions of the righteous of the just Lord; pray thou, O most blessed one, that those who celebrate thy divine repose may be justified." },
+          { "canon": "secondCanon", "text": "As an observer of the law, O most sacred one, thou didst behold the Babe Whom the law proclaimed; and having died in accordance with the law of nature, O God-receiver, thou didst pass on, rejoicing, to life immortal." },
+          { "canon": "secondCanon", "text": "Thou didst behold Him Who holdeth the ends of the universe in His arms borne in the arms of the Virgin; and taking Him into thine honored embrace, thou, O most noetically rich one, wast shown to be greater than Moses." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who is full hath emptied Himself; He Who is pre-eternal hath begun to be; the Logos becometh flesh; the Fashioner is formed; the Infinite One confineth Himself to space, becoming incarnate in thy womb, O thou who art full of the grace of God." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Likened to a barren woman the Church from among the nations hath given birth, and the assembly abundant in children, hath grown weak. Let us cry out to our wondrous God: Holy art Thou, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Elevated by sacred activities, O divinely eloquent one, thou wast like a lofty, radiant tower of the all-holy Spirit, manifestly made steadfast. Wherefore, we praise thee." },
+          { "canon": "secondCanon", "text": "O Symeon, thou didst behold the Lord of the law, Who opened the Virgin's womb, become a mortal babe, granting deliverance unto all." },
+          { "canon": "secondCanon", "text": "He Who fashioned mankind with His own hands is held in thine arms, in the flesh, manifestly sanctifying thee; and letting thee depart to the life to come as thou didst request, O blessed one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all-immaculate one, Symeon, beholding Thee Who had assumed flesh from thy blood in a manner past understanding, rejoiced and blessed thee, the noetic tongs which held the divine Ember." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God, is come in a swift cloud and with His sinless hands he hath saved those who cry: Glory to Thy power, O Christ.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Though thou didst grow elderly in age, yet thou didst remain ever young in faith, desiring to behold the newborn babe, the most Perfect One Who reneweth the world which hath grown old through the attacks of the ancient enemy." },
+          { "canon": "secondCanon", "text": "Together let us bless the blessed Symeon, as one who wast deemed worthy to behold our blessed God wrapped in flesh, that He might render blessed those who before were wretched." },
+          { "canon": "secondCanon", "text": "Recognizing Thee as the Bestower of the law, Who, in a manner outside the laws of nature had assumed flesh, Symeon cried aloud: O Thou Who alone art Lord, let me now retire to life incorruptible!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who beareth all things in His hand, Who is borne in the arms of the Ever-virgin, hath made her, in that she hath given birth to Him, higher than the cherubim and the seraphim. Her do we hymn and reverently call blessed." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "All creation stands in awe of thy divine glory; for thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all, and gave birth to the timeless Son, bestowing peace upon all who hymn thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With purity of mind serving God Almighty like an angel, O blessed one, of old thou didst cleanse the people of Israel with bloody sacrifices, clearly prefiguring the blood of the Savior." },
+          { "canon": "secondCanon", "text": "With godly deeds didst thou render thyself an all-holy temple for God, O divinely inspired one, and upon beholding in the holy temple God as a babe in the flesh, thou wast released to the divine habitations." },
+          { "canon": "secondCanon", "text": "Noetically joining chorus today, let us all hymn Symeon the God-receiver, and with him the chaste Anna, who were prophets of God and who beheld Him Who for our sake became a Child." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who is unchangeable in nature, being borne by thee manifested Himself as man, without burning thy womb, O thou who art more holy than the cherubim, and by thy birthgiving hath joined to Himself those thrust aside by corruption, O Mother of God." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Prefiguring Thy three-day burial, Prophet Jonah praying in the belly of the sea-monster cried aloud: Deliver me from corruption, O Jesus Thou King of hosts.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Beholding the Lord as thou wast promised, thou didst cry out O Symeon: Now lettest Thou Thy servant depart, O Savior, to proclaim Thy divine incarnation to all in Hades!" },
+          { "canon": "secondCanon", "text": "Thou wast adorned and wast more splendid than Moses, taking in thine arms Him Who is beauteous in comeliness, Who for our sake becameth a babe like us, O elder Symeon." },
+          { "canon": "secondCanon", "text": "Those confined there, beholding thee full of divine waters and descended into the lower regions of Hades, O Symeon, were filled with divine dew." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The thoroughly evil one ever seeketh to ensnare me; but rescue me from his traps, O Lady, and preserve me whole within the divine shelter of thy wings." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Refusing to worship created things in place of the Creator, the divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud: O supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As one truly righteous and blameless in the law, O blessed one, thou didst serve the Lord Almighty in accordance with the law. Wherefore, thou dost chant: O all-hymned Lord and God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "The joy of the sorrowful, the deliverance of Israel hath truly appeared as a babe in His own temple! Wherefore Symeon rejoicing cried aloud: Let me depart to the life to come!" },
+          { "canon": "secondCanon", "text": "In the tender loving-kindness of Thy compassions, O Savior, let me, Thy servant depart, who have been worn out with the writing of the law and bowed down with old age; for I have seen Thee bearing flesh on earth! Thus cried aloud Symeon." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who hath filled the most pure bosom of the Father Who begat Him, without forsaking it, sitteth in thy womb, O pure one, as a babe clearly preparing a sacred throne for those whose form He assumed, O most pure one." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "The Offspring of the Theotokos saved the holy children in the furnace. He who was then prefigured hath now been born on earth, and He gathereth all creation to hymn thee: all ye works praise ye the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The all-praised widow Anna, resplendent with the grace of prophecy, glorified the supremely divine One Who had come to adorn the bride; the world which was bereft of divine glory; revealing to all present, the divine redemption that was to come." },
+          { "canon": "secondCanon", "text": "O blessed priest, thou didst offer up the sacrifices of the law, the lambs, for ineffable mercy, showing forth beforehand the blood of the Savior; and receiving Him in the flesh, O Symeon, thou wast revealed to be more glorious than Moses and all the prophets." },
+          { "canon": "secondCanon", "text": "Having beheld Him Whom thou didst desire, thou didst receive release from thy body, O divinely inspired one, and like a flittering bird thou didst pass over to the fathers, O glorious one, having lived to a ripe old age. Wherefore, with spiritual joy we celebrate thy most festive memory." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The most divine Word found thee be like a lily, like a fragrant rose, like a divinely redolent scent, O most pure Bride of God; and making His abode within thy womb, He rendered fragrant, our nature which had been full of the stench of sin, O Mary Theotokos." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Eve dwelt under the curse of sin because of the infirmity of disobedience; but thou, O Virgin Theotokos, hast through the Offspring of thy pregnancy blossomed forth blessing upon the world. Wherefore, we all magnify thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Precious indeed are thy hands which touched the divine limbs of Him Who toucheth the mountains and maketh them smoke, as David chanted, O God-receiver; yea, thou wast truly blessed, wherefore, we praise thee as is meet." },
+          { "canon": "secondCanon", "text": "Thy shrine poureth forth healings upon the faithful, and thy blessed memory doth outshine the sun, illumining the souls of all, and dispelling the noetic darkness, O most honored initiate of the mysteries." },
+          { "canon": "secondCanon", "text": "The chaste Anna the Prophetess, and the glorious elder Symeon illumine the whole earth with noetic radiance, like the sun and the moon; for their sake, O Lord Who lovest mankind, deliver us from the darkness of sin." },
+          { "canon": "secondCanon", "theotokion": true, "text": "When he saw thee revealed as the Mother of God, O Theotokos, the elder said prophetically: \"Behold, thy Son is set for the rise and fall of many, O Lady, and for a sign which shall be spoken against.\"" }
+        ]
+      }
+    }
+  }
+}

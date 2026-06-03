@@ -1,0 +1,163 @@
+{
+  "_meta": {
+    "feast": "Holy Great Martyr Theodore the General; Holy Prophet Zachariah",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 02-08.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-08.pdf",
+    "_note": "Afterfeast of the Meeting. Three-canon Matins in Sergius: feast + Theodore (Tone VIII) + Zechariah (Tone VIII). Two-canon model: Canon I = Meeting (feast-canons/meeting.json); Canon II = Theodore (principal saint). Zechariah's canon omitted. Feast kontakion placed after Ode 3 per Sergius PDF (Theodore kontakion at Ode 6 due to great martyr rank)."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+    "label": "Troparion of the feast (Meeting)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "Through true recruitment didst thou become\na most worthy general of the heavenly King,\nO passion-bearer Theodore;\nfor thou didst wisely put on the whole armor of God\nand, vanquishing legions of demons,\nthou didst reveal thyself to be a victorious athlete.//\nWherefore, with faith do we ever bless thee.",
+    "label": "Troparion of the Holy Great Martyr Theodore"
+  },
+  "kontakion": {
+    "tone": 2,
+    "text": "Having put on the whole armor of faith with valor of soul,\nand taking in hand the word of God as a spear,\nthou didst conquer the enemy, O Theodore, great among the martyrs.\nWith them cease thou never to entreat Christ God//\non behalf of us all.",
+    "label": "Kontakion of the Holy Great Martyr Theodore",
+    "melody": "Seeking the Highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Rejoicing, the sacred Symeon took in his arms, Thee Who had assumed flesh from the Virgin, O Christ, crying aloud: Now lettest Thou Thy servant depart, O Master! And like Anna, the blameless and glorious prophetess, who offered Thee confession and hymnody, we cry out to Thee, O Bestower of life: Glory to Thee Who hast thus been well pleased!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the shepherds pipes",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Thou that art co-beginningless with the Father wast born on earth; and, though unapproachable, Thou wast borne to the temple where the elder, rejoicing, took Thee in his arms and cried aloud: Now lettest me depart whom Thou hast visited according to Thy word, O Thou Whose good pleasure it is, as God, to save the human race.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of St. Theodore (after Ode 3)",
+      "text": "Having put on the whole armor of God and cast down the delusion of idolatry, thou didst move the angels to praise thy struggles; for, having enflamed thy mind with divine love, thou didst bravely endure a fiery death. Wherefore, true to thy name, thou dost distribute godly gifts to those who ask, O passion-bearer Theodore. Wherefore, we cry out to thee: Beseech Christ God, that He grant forgiveness of sins unto those who with love celebrate thy memory.",
+      "bothNow": {
+        "tone": 1,
+        "melody": "The choir of angels",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "He Who is with the Father seated upon the holy throne, hath come to earth born of the Virgin; He Who is unbounded by time, hath become a babe; and Symeon, receiving Him in his arms rejoicing, saith: \"Now lettest Thou Thy servant depart, O Compassionate One, having gladdened me!\""
+      }
+    },
+    "exapostilarion": {
+      "tone": 3,
+      "melody": "By the Spirit in the sanctuary",
+      "label": "Exapostilarion of St. Theodore",
+      "text": "Thou didst utterly quench all the fiery darts of the wicked and the raging of demons, and having died for thy faith in the Creator, O blessed Theodore, as a witness to the Truth, thou dost save all those who have recourse to thee, from every tribulation and from the malice of the evil one.",
+      "bothNow": {
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "meeting",
+      "tone": 8,
+      "_author": "Canon of St. Theodore the Great Martyr Tone VIII. Canon I (feast) from feast-canons/meeting.json. Zechariah (Tone VIII, Canon III) omitted from two-canon model. Feast kontakion placed after Ode 3 per Sergius PDF.",
+      "kontakionAfterOde3": {
+        "tone": 1,
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "label": "Kontakion of the feast (Meeting)"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "Having put on the whole armor of faith with valor of soul,\nand taking in hand the word of God as a spear,\nthou didst conquer the enemy, O Theodore, great among the martyrs.\nWith them cease thou never to entreat Christ God//\non behalf of us all.",
+        "label": "Kontakion of the Holy Great Martyr Theodore",
+        "melody": "Seeking the Highest"
+      },
+      "ikos": {
+        "text": "Come, all ye faithful and with wreaths of hymnody let us crown Theodore, the most radiant adornment of the martyrs; for in the splendor of his miracles he is shown to be God's great gift to the world. Having vanquished Belial the enemy by his honorable struggle, he raineth down a deluge of healing with the drops of his blood. In all these things doth Christ rejoice, and He granteth everlasting peace. Wherefore, we cry out to the martyr: Pray thou unceasingly on behalf of us all!"
+      },
+      "ode1": {
+        "irmos2": "The wonderworking staff of Moses, striking and dividing the sea in the figure of a cross, once drowned Pharaoh the pursuing charioteer, while it saved the fleeing people of Israel as they fled on foot, chanting a hymn unto God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O Theodore, great among the martyrs, manifestly endued with divine splendor, sacredly adorned with the crown of martyrdom and radiant with the glory of the Holy Trinity: be thou mindful of us who praise thee." },
+          { "canon": "secondCanon", "text": "Full of light, full of divine grace, the sacred memory of thine honored struggles hath shone forth upon us, illumining with most radiant splendor all who piously honor thee, O Theodore, martyr and athlete." },
+          { "canon": "secondCanon", "text": "When the tempest of idolatry beset humanity, the sacred martyr, guided by the divine grace of the Cross, reached the haven of heaven rejoicing, having ended his voyage untouched by the storm." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin, portal of God, open unto me the doors of repentance, enlighten my soul with holy thoughts, and drive away the gloomy darkness of the passions; that, rejoicing, I may honor and bless thee as is meet." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Christ fortify me on the rock of Thy commandments, Thou who in the beginning didst establish the heavens with understanding and didst establish the earth upon the waters, for there is none holy save Thee, O only Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Like a mighty lion thou didst stand in the midst of the judgment hall, announcing the word of salvation, reproaching the impious, proclaiming the truth and denouncing the delusion of godlessness, O Theodore." },
+          { "canon": "secondCanon", "text": "The tyrant was amazed at thy valor, O wise one; and, moved to bestial wrath, he mercilessly flogged thee with a lash of hide, O Theodore, who had wrought destruction upon the abominable graven images." },
+          { "canon": "secondCanon", "text": "Shown forth as crowned by the power of the divine Spirit and strengthened by the grace of the Cross, O divinely wise one, with brave determination thou didst wipe away the bloody drops of thy wounds as though drops of water." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Lord Who was born of thee hath truly done great things to thee, and all generations bless thee, O Mother of God." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power, Thou art my God and Thou art my joy, Thou Who, while never leaving the bosom of Thy Father, hast visited our poverty. Therefore with the Prophet Habbakuk I cry unto Thee, 'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having Christ speaking through thee, O blessed one, thou didst set at naught the pride of Lucinius with words of wisdom; for, lo! truly didst thou denounce his great impiety, O martyr, and amaze those who beheld thy most glorious deeds, O Theodore, noble-minded sufferer." },
+          { "canon": "secondCanon", "text": "Hung aloft by the iniquity of the tyrant, torn with iron claws, stained with the drops of thine own unjustly shed blood, thou didst put off the coarse garments of the corruption of mortality." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Wipe away the wicked handwriting of my sins with the spear that pierced the sacred side of Him Whose desire it was to become incarnate of thee, O most holy Virgin, and pray that I, who have thoughtlessly separated myself from God, may be inscribed in the book of the saved." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me and why has the alien darkness surrounded me, wretched though I be? But do Thou guide my steps I implore Thee and turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Illumined with the radiance of the divine Spirit and consumed with love for Christ, nurtured with the hope of heaven, thou didst ardently despise the flesh knowing neither pain nor paying heed to torment." },
+          { "canon": "secondCanon", "text": "Bearing the easy yoke of the Master upon thy neck, O most blessed passion-bearer, and weighted down with a great weight, thou didst not yield in any way, nor wast thou shaken or conquered, O valiant warrior Theodore." },
+          { "canon": "secondCanon", "text": "Having called thee from heaven, the supremely good Word made thee valorous, and by His power thou didst endure the bitter pain, torment, want and death visited upon thee by the iniquitous, O glorious martyr of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Pray thou that I remain whole, and that my good disposition never change, and that I may walk according to that which is right and do those things which are pleasing unto God, O good one who hast given birth unto the good Word Who hath delivered us from irrationality." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "I will pour out my prayer unto the Lord, and to Him will I proclaim my grief; for my soul is filled with evils, and my life unto Hades hath drawn nigh, and like Jonah I pray unto Thee: Raise me up from corruption, O God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou wast crucified in the image of the Passion of the Dispassionate One, O glorious martyr, nailed to a tree, emulating the Master Who voluntarily freed mankind of the passions by the Cross, O most blessed one." },
+          { "canon": "secondCanon", "text": "Hung upon a tree like the Lamb, shot full of arrows, thine eyes plucked out, wounded throughout thy body, O blessed one, thou didst wound the hearts of thine enemies with the spear of thy passion." },
+          { "canon": "secondCanon", "text": "Though torrents of boundless torments threatened the house of thy soul, yet it remained unshaken, for it was founded upon the immovable rock of Him that shone forth from the Virgin and enlightened the human race." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Mary, Sovereign Lady of all the world, as thou didst give birth unto the Lord of all, do thou deliver me from bondage to the enemy, rescue me from his torment, and save me who place unwavering hope in thee." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Once in Babylon the fire stood in awe of God's condescension; for which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted: O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Rejoicing, thou didst speak of the mighty works of the Ruler of all; wherefore, those who looked on, in amazement forsook the tyranny of deceit and cried out with faith: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Rejoicing, with the nets of thy most wise words thou didst draw forth from the depths of ignorance those who drew near, O most blessed Theodore, making divine martyrs of them, who chanted: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "A holy angel, entering the prison where thou wast bound to a column, loosed thee, O Theodore, granting thee boldness and strengthening thee to cry aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Christ, for the sake of her who gave birth to Thee, take pity and save me who have lived in sloth and disdained Thy holy laws and Thy sacred commandments, for Thou art our God and abundantly merciful Benefactor." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God; but when he perceived that they had been saved by a greater power he cried aloud to the Creator and Redeemer; 'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Splendidly struggling, thou didst vanquish the enemy, having destroyed his armies with the weapon of faith. Wherefore, thou hast been crowned with a wreath of victory, chanting unto thy Master: Ye youths bless; ye priests praise, ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "After thy glorious crucifixion, thy blessed suffering and thy boundless torments, thou didst bow thy neck before God, O blessed one and thy precious head was cut off with a sword while crying out to the Master: Ye youths bless; ye priests praise, ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Thy sacred and much-suffering body hath been a wellspring of healing for the faithful, whence they that piously have recourse thereto draw forth deliverance from passions and salvation for their souls, crying out to the Master: Ye youths bless; ye priests praise, ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin, enliven my soul which hath been slain; raise it, for it hath fallen; heal it, for it hath been wounded; grant peace to my mind, calm thou the waves of temptations, and save me who cry out: Ye youths bless; ye priests praise, ye people supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Heaven was stricken with awe, and the ends of the earth were filled with amazement, for God hath appeared in the flesh, and thy womb was rendered more spacious than the heavens. Wherefore, the ranks of men and of angels magnify thee as the Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst wholly consecrate thyself to our God, the Lamb Who was slain, O martyr who wast raised up as a sweet-smelling holocaust unto Him, a sacred offering, a sacrifice perfect and most pure. Wherefore, we praise and bless thee as is meet." },
+          { "canon": "secondCanon", "text": "As the dawn of a radiant day, and as the sun, didst thou appear, O Theodore, piously illumining the earth with thy wonders and the splendid rays of thy suffering, driving away the darkness of error and the passions, O all-blessed Theodore." },
+          { "canon": "secondCanon", "text": "Having conquered the incorporeal foe, thou wast united with the angels while yet in the flesh, and with the choirs of the martyrs art ever gladdened. With them thou dost ever hymn the Trinity, O thrice-blessed Theodore, beacon of the Church and adornment of passion-bearers." },
+          { "canon": "secondCanon", "text": "The earth hath been gladdened by the deposition of thy precious body, O Theodore, and heaven rejoiceth, having acquired thy sacred soul. And mankind, ever celebrating thine honored memory, entreats thee in their prayers as our intercessor, O most blessed one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin beloved of God, having bathed the wounds of my heart in pure repentance and tearful weeping, entreat the Good One on my behalf, that He save me from all defilement, so that I may bless and magnify thee, O most immaculate one." }
+        ]
+      }
+    }
+  }
+}

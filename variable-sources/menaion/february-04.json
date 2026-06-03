@@ -1,0 +1,161 @@
+{
+  "_meta": {
+    "feast": "Venerable Isidore of Pelusium",
+    "feastRank": "simple",
+    "tone": 6,
+    "_source": "St-Sergius Emenaion 02-04.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-04.pdf",
+    "_note": "Afterfeast of the Meeting. Two-canon Matins: Canon I = Meeting (feast-canons/meeting.json); Canon II = Isidore Tone VI."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+    "label": "Troparion of the feast (Meeting)"
+  },
+  "troparion": {
+    "tone": 8,
+    "text": "In thee, O father, the image of God was preserved,\nfor taking up thy cross, thou didst follow after Christ;\nby activity thou didst learn to disdain the flesh, as something transient,\nbut to care for thy soul as something immortal.//\nWherefore, with the angels thy spirit doth rejoice, O venerable Isidore.",
+    "label": "Troparion of St. Isidore"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "The Church hath found thee to be another morning-star,\nO all glorious one,\nand crying out to thee,\nit is illumined by the lightning-flashes of thy words://\nRejoice, O all-blessed and divinely wise Isidore!",
+    "label": "Kontakion of St. Isidore",
+    "melody": "Thou hast appeared"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 6,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 1,
+        "melody": "The choir of angels",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "He Who is with the Father seated upon the holy throne, hath come to earth born of the Virgin; He Who is unbounded by time, hath become a babe; and Symeon, receiving Him in his arms rejoicing, saith: \"Now lettest Thou Thy servant depart, O Compassionate One, having gladdened me!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Go Thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Christ our God, Who became a babe through His Mother who knew not a man, didst thou take up in thine elderly arms, and gloriously receive the fulfillment of the promise, enabling thee by the effectual working of grace to depart, wherefore, we all glorify thee as is fitting.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of St. Isidore (after Ode 3)",
+      "text": "Thou didst appear to the most holy Spirit as a book written with a wealth of understanding of the doctrines of the Faith, revealing divine things to those in need, and laying up life for those who desire it. O venerable father, entreat Christ God, that He grant us great mercy.",
+      "bothNow": {
+        "tone": 8,
+        "melody": "Having risen",
+        "label": "Sessional Hymn of the feast",
+        "text": "Thou wast born on earth, O Thou Who art co-beginningless with the Father, and wast carried into the temple, O Unapproachable One. And, rejoicing, the elder took Thee in his arms, crying aloud: \"Now let me depart, whom Thou hast visited according to Thy word O God, Whose good pleasure it is to save the race of mankind!\""
+      }
+    },
+    "exapostilarion": {
+      "tone": 3,
+      "label": "Exapostilarion of the feast",
+      "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "tone": 3,
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "meeting",
+      "tone": 6,
+      "_author": "Canon of St. Isidore of Pelusium Tone VI (acrostic: I hymn thee, the glory of monastics, O father). Canon I (feast) from feast-canons/meeting.json.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "The Church hath found thee to be another morning-star,\nO all glorious one,\nand crying out to thee,\nit is illumined by the lightning-flashes of thy words://\nRejoice, O all-blessed and divinely wise Isidore!",
+        "label": "Kontakion of St. Isidore",
+        "melody": "Thou hast appeared"
+      },
+      "kontakion": {
+        "tone": 1,
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "label": "Kontakion of the feast (Meeting)"
+      },
+      "ikos": {
+        "text": "Let us make haste to the Theotokos, desiring to behold her Son borne unto Symeon. Looking upon Him from heaven, the bodiless hosts in amazement proclaim: \"We behold things wondrous, most glorious, unapproachable and ineffable: for He Who created Adam is borne as an infant; He Whom naught can contain is held in the elder's arms; He Who is in the infinite bosom of His Father is willingly constrained in the flesh, but not in His divinity, He Who alone is the Lover of mankind.\""
+      },
+      "ode1": {
+        "irmos2": "When Israel walked on foot in the sea as on dry land, on seeing their pursuer Pharaoh drowned, they cried: Let us sing to God a song of victory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Hearkening to the groaning of a contrite heart, O Master, by the supplications of Thy venerable saint, O Christ, heal Thou the grievous contrition of my soul, in that Thou art almighty." },
+          { "canon": "secondCanon", "text": "Having entered upon active virtue through pure vision, and ever conversing with God by beauteous revelations, O God-bearing Isidore, thou wast manifestly enriched." },
+          { "canon": "secondCanon", "text": "Thy mouth, upon receiving the cup of wisdom O most wise one, didst draw forth a stream of spiritual gifts therefrom, chanting to God a hymn of victory." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Christ the Creator, as One mighty, came upon thee on a light cloud, O pure Lady, to cast down the idols of Egypt, in that He is omnipotent." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "There is none as holy as Thou, O Lord my God, who hast exalted the horn of Thy faithful O good One, and strengthened us upon the rock of Thy confession.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having with keenness of intellect gathered knowledge of the nature of that which is, O wise and most glorious one, thou hast thereby attained unto the primal Cause, as a pure theologian." },
+          { "canon": "secondCanon", "text": "Clearly setting forth instruction for mortal life, O thrice-blessed God-bearer, thou didst mortify the material causes of the passions, held fast by the desire for dispassion." },
+          { "canon": "secondCanon", "text": "Rejoicing, thou didst follow after Christ, bearing thy cross in steadfast fasting, O father, and as far as thou wast able, thou didst emulate Him in purity of life." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Giving birth to the Master in a manner transcending the laws of nature, O Virgin Theotokos, thou didst abolish the ancient curse of disobedience, pouring forth a spring of blessing." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Christ is my power, my God and my Lord, the holy Church divinely singeth, crying with a pure mind, keeping festival in the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Submitting to Christ unstintingly, O venerable one, as a right dutiful servant thou didst distribute the wealth given thee, wherefore the Master hath deemed thee worthy of ineffable joy." },
+          { "canon": "secondCanon", "text": "Traversing the deep of wisdom, like a good merchant thou didst obtain the goodly Pearl, jealously cherishing Him alone as thy treasure." },
+          { "canon": "secondCanon", "text": "Illumined by the divine Spirit, like the sun thou hast emitted beams of discourse upon all, desiring the salvation of the faithful, divinely revealed by God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Truly, O Ever-virgin Theotokos, the mysteries of thy birthgiving to God are ineffable and unapproachable to those on earth and in heaven." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Illumine with Thy divine light, I pray, O Good One, the souls of those who with love rise early to pray to Thee, that they may know Thee, O Word of God, as the true God, Who recalleth us from the darkness of sin.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Being outside the body through the mortification of the passions, O all-wise one, with love thou didst draw nigh to God, the most holy and supremely radiant Light, Who alone requireth purity." },
+          { "canon": "secondCanon", "text": "Illumining his mind with Thy divine radiance, O Good One, the God-bearer became a most luminous pillar, sending forth upon all the divine rays of God's light, dispelling the darkness of ignorance." },
+          { "canon": "secondCanon", "text": "He Who desireth that all should be saved, in that He is good, showed thee to be a guide for the lost, turning many to the path of salvation, O all-wise, thrice-blessed, and most noetically rich father Isidore." },
+          { "canon": "secondCanon", "theotokion": true, "text": "With my mouth and soul, O good Sovereign Lady of the world, I confess thee to truly be the one who hath given birth to God in the flesh, O pure and all-immaculate one, and with faith I set thee forth as the intercessor of my life." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Beholding the sea of life surging with the tempest of temptations, I run to Thy calm haven, and cry to Thee: Raise up my life from corruption, O greatly Merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Adorned with judicious words as a priest, thou didst judge rationally, with body and soul, reasonably making that which is lower subject to that which is higher, O right wondrous God-bearer." },
+          { "canon": "secondCanon", "text": "O glorious boast of monastics, with the blows of asceticism thou didst mightily smite the passions and sustenance of Egypt, subjecting them to scrutiny, smoothing the way for the faithful." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who beareth all things by His divine power and upholdeth them in his hands, in that He is compassionate, O most pure one, is carried, incarnate, as a babe, though He is of the same essence as the Father." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "An Angel made the furnace bedew the holy Children. But the command of God consumed the Chaldeans and prevailed upon the tyrant to cry: O God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The Master hath set thee in the firmament of the Faith like a sun, O father, to illumine with noetic radiance the souls of those who cry out earnestly: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "With the outpourings of thy tears thou didst wash away defilement of the flesh and spirit, O God-bearer, and as a light for those on earth thou hast taught all to cry out: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Standing upon the immovable foundation of the Faith, O pure Mother of God, we confess thee to be the Theotokos; for without seed thou hast given birth to God the Word for our sake. Blessed is the Fruit of thy womb, O most pure one!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Thou didst make flame bedew the holy children, and didst burn the sacrifice of a righteous man with water. For Thou alone, O Christ, dost do all as Thou willest, Thee do we supremely exalt throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As a reasonable sacrifice of sweet savor, O father, thou didst offer up thy whole life, unto Christ, Who hung suspended upon the Cross for thy sake. Him do we supremely exalt throughout all ages." },
+          { "canon": "secondCanon", "text": "Even after thy death thou dost increase thy wealth of thine animate discourses, leaving them as an inheritance of great worth to all the faithful who supremely exalt Christ throughout all ages." },
+          { "canon": "secondCanon", "text": "Thou didst adorn thyself with the beauty of thy discourses, O most blessed one; for thou wast shown to be the pen of the Holy Spirit, piously expressing the mind of God in writing for those who supremely exalt Christ throughout all ages." },
+          { "canon": "secondCanon", "theotokion": true, "text": "I flee to thy protection, O all-immaculate one, and put thee forward now as the intercessor for my life, who, in a manner past understanding, hast given birth to God the Word, Whom we supremely exalt throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze; but through thee, O all-pure one, did the Word Incarnate become a man and with the Heavenly Hosts Him we magnify and thee we call blessed.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Like a ray of light hath the discourse of grace shone forth in thy soul, O venerable one; and through thee all the earth hath been filled with their radiance. Partaking of it, O father, we marvel at the treasury of thy wisdom." },
+          { "canon": "secondCanon", "text": "Following the doctrines of the fathers, with divine wisdom thou didst teach theologians to worship the uncreated, beginningless Trinity, the three Hypostases in a Unity of essence, Who poureth forth enlightenment upon all the faithful." },
+          { "canon": "secondCanon", "text": "Having found the reward of thy labors in the heavens and received life everlasting, O most wise and blessed Isidore, thou standest now with the angels before the throne of God asking for the salvation of those who hymn thy memory." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The incorrupt Word of God, taking upon Himself a corruptible form, hath clothed mankind in incorruption, making His abode within thee, O joyous one, as was the Father's good pleasure. Wherefore, O most pure one, with the armies of heaven we magnify thee." }
+        ]
+      }
+    }
+  }
+}

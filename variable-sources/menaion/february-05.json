@@ -1,0 +1,161 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Agatha of Palermo in Sicily",
+    "feastRank": "simple",
+    "tone": 2,
+    "_source": "St-Sergius Emenaion 02-05.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-05.pdf",
+    "_note": "Afterfeast of the Meeting. Two-canon Matins: Canon I = Meeting (feast-canons/meeting.json); Canon II = Agatha Tone II by Theophanes."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+    "label": "Troparion of the feast (Meeting)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "Thy ewe-lamb Agatha, O Jesus, crieth out with a loud voice:\n\"Thee do I love, O my Bridegroom,\nand, seeking Thee, I endure suffering.\nIn Thy baptism I am crucified and buried with Thee.\nI suffer for Thy sake, that I may reign with Thee;\nI die for Thee, that I may live with Thee.\nAccept me, who with love sacrifice myself for Thee,\nas an unblemished offering!\"\nBy her supplications, in that Thou art merciful,//\nsave Thou our souls.",
+    "label": "Troparion of St. Agatha"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Let the Church be adorned today\nwith a glorious robe of purple\ndyed in the pure blood of the martyr Agatha,\ncrying out://\nRejoice, thou boast of Catania!",
+    "label": "Kontakion of St. Agatha",
+    "melody": "Thou hast appeared"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 1,
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Let the choir of the angels marvel at the wonder! And let us mortals lift up our voices in hymnody, beholding the ineffable condescension of God; for He Who alone is the Lover of mankind, and before Whom the hosts of heaven tremble, do the arms of the elder now embrace.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the shepherds' pipes",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Thou wast born on earth, O Thou Who art co-beginningless with the Father, and hast been borne into the temple, O Unapproachable One. And, rejoicing, the elder took Thee in his arms, crying: \"Now lettest Thou Thy servant depart, whom Thou hast visited according to Thy word, O Thou Whose good pleasure it is, as God, to save the human race!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of St. Agatha (after Ode 3)",
+      "text": "Adorned with the glory of the Faith, with piety, reverence and virginity, and with zeal for suffering, thou wast called a venerable intellect, with a will of thine own, who, as the bride of God, dost pray that true worship be given to God, deliverance to thy homeland, and great mercy unto us.",
+      "bothNow": {
+        "tone": 3,
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Rejoicing, the sacred Symeon embraced Thee Who wast incarnate of the Virgin, O Christ, crying out: \"Now lettest Thou Thy servant depart, O Master!\" And Anna, the blameless and glorious prophetess, now offereth Thee confession and hymnody. And we cry out to Thee, O Bestower of Life: Glory to Thee Who hast thus been well pleased!"
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of St. Agatha",
+      "text": "For the sake of Christ thou didst endure the severing of thy breasts and all other torments, O good virgin athlete; wherefore, thy Bridegroom hath granted thee to dwell in the beautiful bridal-chamber, where thou dost rejoice eternally with the angels, O glorious virgin martyr Agatha.",
+      "bothNow": {
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "meeting",
+      "tone": 2,
+      "_author": "Canon of St. Agatha Tone II by Theophanes (acrostic: With goodly hymns I hymn the good one). Canon I (feast) from feast-canons/meeting.json.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Let the Church be adorned today\nwith a glorious robe of purple\ndyed in the pure blood of the martyr Agatha,\ncrying out://\nRejoice, thou boast of Catania!",
+        "label": "Kontakion of St. Agatha",
+        "melody": "Thou hast appeared"
+      },
+      "kontakion": {
+        "tone": 1,
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "label": "Kontakion of the feast (Meeting)"
+      },
+      "ikos": {
+        "text": "Let us make haste to the Theotokos, desiring to behold her Son borne unto Symeon. Looking upon Him from heaven, the bodiless hosts in amazement proclaim: \"We behold things wondrous, most glorious, unapproachable and ineffable: for He Who created Adam is borne as an infant; He Whom naught can contain is held in the elder's arms; He Who is in the infinite bosom of His Father is willingly constrained in the flesh, but not in His divinity, He Who alone is the Lover of mankind.\""
+      },
+      "ode1": {
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God, Who divided the sea, and made a way for the nation which He had brought up out of the bondage of Egypt; for He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Desiring the first Cause of good things, thou wast granted a name of goodly renown, of ineffable forethought, O martyr, signifying beforehand the goodness of thy character." },
+          { "canon": "secondCanon", "text": "Having disdained carnal-mindedness, O pure one, thou wast taken up to the most radiant life, gazing upon thy most desired Bridegroom." },
+          { "canon": "secondCanon", "text": "As a bride of Christ thou wast adorned with divine goodness and the beauty of virginity, O glorious one, and art crowned with thy divine blood of honorable martyrdom as with a twofold crown." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin Theotokos, thou wast a habitation fit for God, more spacious and pure than the heavens; and now the choir of virgins rejoiceth in thee." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Lord, who didst slay sin upon the tree, firmly establish us in Thee, and in the hearts of us who hymn Thee plant the fear of Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O martyr Agatha, bright and most beauteous glory and flower of the divine martyrs, heal thou the affliction of my soul and adorn it." },
+          { "canon": "secondCanon", "text": "Thou didst illumine thyself with thy native virtues, O Agatha, and, spurning transitory things and loving the kingdom of God, thou didst call thyself a martyr." },
+          { "canon": "secondCanon", "text": "Attracted by divine desire, O Agatha, thou didst prefer Christ to all things beautiful, boldly and manfully trampling underfoot the savagery of the tormenters." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O pure Bride of God, entreat God to Whom thou hast given birth, that He deliver those who hymn thee from trials and evil circumstances, from sufferings and tribulations, O all-blessed one." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "I hymn Thee, O Lord, for I have heard report of Thee, and I was afraid; for Thou comest to me, seeking me who am lost. Wherefore, I glorify Thy great condescension towards me, O greatly Merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The mindlessness of the false serpent hath been put to shame and denounced; for virgins now trample underfoot his savagery, since Christ hath shone forth from the Virgin and illumined all." },
+          { "canon": "secondCanon", "text": "Keeping thy lawful chastity undefiled, O athlete, rejoicing thou didst cast down the spirits of wickedness, armed with the grace of Christ, taking His Cross upon thy shoulders." },
+          { "canon": "secondCanon", "text": "Be mine intercessor, O all-wise one, and rescue me from evils and temptations, from tempest and tribulation, and deliver me from the violence of the enemy, that, set free, I may hymn thee as my good intercessor, O all-famed martyr." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou dost immeasurably surpass the angelic hosts in splendor, O most pure one, having ineffably given birth to Christ, the noetic Sun, Who doth illumine the thoughts of the faithful with the rays of His divinity." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Lord, Bestower of light and Creator of the ages: guide us in the light of Thy commandments, for we know none other God than Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Guided by the divine commandments, O glorious Agatha, thou wast loosed from the bonds of passionate carnal attachment, and revealed to be a fruitful olive-tree." },
+          { "canon": "secondCanon", "text": "Gazing, full of love for Christ, upon the most splendid radiance, thou didst spurn the pleasures which drag one downwards, desiring the beauty of Him alone." },
+          { "canon": "secondCanon", "text": "That thou mayest be deemed worthy to behold the ineffable life of the elect, O glorious one, rejoicing thou didst mightily endure tortures, O all-praised Agatha." },
+          { "canon": "secondCanon", "theotokion": true, "text": "To thee who hast given birth to Christ, the Creator of all, we cry aloud: Rejoice, O pure one! Rejoice, O thou who hast shone forth the Light upon us! Rejoice, thou who hast contained the Infinite One!" }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Whirled about in the abyss of sin, I appeal to the unfathomable abyss of Thy compassion: Raise me up from corruption, O God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Being vain-minded, the tyrant hoped to seduce thee, the beautiful virgin; but the shameless one was repulsed, dashing himself against thy firm resolve." },
+          { "canon": "secondCanon", "text": "Grace was poured forth through thy lips, O all-famed martyr; for thou didst openly and manifestly denounce the shameless one, having been enriched with discourse taught thee by God." },
+          { "canon": "secondCanon", "text": "Possessing a venerable mind with free will, O all-praised one, thou wast shown to be a most precious stone, O honored Agatha, becoming the sure deliverance of thy native land." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Praising thee in hymns, we cry out to thee: Rejoice, O most rich mountain of Christ God, wherein He was pleased to dwell, for the salvation of our race, O Bride of God!" }
+        ]
+      },
+      "ode7": {
+        "irmos2": "When the golden image was worshipped on the plain of Dura, Thy three children spurned the impious command, and, cast into the midst of the flame, they were bedewed, and sang: O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Speaking with exceeding great splendor, thou didst awe the tyrant with thy discourse of wisdom and grace; and bearing patiently, without pain, the fiery embers of torment, thou didst cry aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Looking upon thy youth and the swelling of thy breasts: the evil-hearted one wickedly schemed, but was held fast by his cruel rage; but thou O martyr, didst cry aloud, exclaiming to thy Bridegroom: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "The disciple of Christ stood radiantly when under guard, healing the grievous wounds which she had suffered, wherefore O invincible martyr, virgin of Christ, thou didst rejoice, saying: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Adam had to die, having violated the commandment of the Almighty; but when thou hast given birth to eternal Life, O all-immaculate Virgin, thou didst deliver him from death, wherefore he crieth to thy Son: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Sing of the acts of God Who descended into the fiery furnace with the Hebrew children, and transformed the flame into dew, and exalt Him supremely as Lord throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Deemed worthy to live in gladness and everlasting joy, O Agatha, pray thou to the Lord, that those who honor thee may be illumined with thine ineffable glory and may enjoy life incorruptible." },
+          { "canon": "secondCanon", "text": "With mind, heart and soul ineffably loving Christ, Who alone is full of surpassing love, thou didst soar aloft to Him, crying: \"I run after Thee and shall dwell with Thee throughout the ages!\"" },
+          { "canon": "secondCanon", "text": "Arrayed like the daughter of a king in supra-natural garments and beautiful raiment, thou standest before Christ in honor, O Agatha, crying aloud: \"Thee shall I supremely exalt throughout the ages, O Lord!\"" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Bearing Christ, the Myrrh poured forth upon us, within thy womb, O Theotokos, thou hast perfumed the world with a fragrance of godly scent. Wherefore, we cry aloud to Thee, O Virgin: Rejoice, O phial redolent with the scent of myrrh!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "God the Word, God of God, Who by ineffable wisdom came to create Adam anew after his grievous fall to corruption through eating and Who took flesh beyond all telling from the Holy Virgin for our sake, Him we faithful with one accord magnify in song.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Adorned with crowns of victory at the right hand of the Source of life, O divinely wise Agatha, pray thou now, that thy homeland may be delivered from tempest, as of old thou didst halt the onslaught of the fire, that we may all magnify thee unceasingly with hymns." },
+          { "canon": "secondCanon", "text": "Preserving all things by His divine providence, and rewarding now thy valor, O martyr, Christ hath granted thee to dwell in the mansions of heaven, as His own all-immaculate bride, and hath deemed thee worthy to rejoice with the angels and martyrs." },
+          { "canon": "secondCanon", "text": "By thy supplications, O honored and most glorious spiritual athlete, render Christ, the Judge of all, merciful to me, and cleanse me of the multitude of my transgressions, ever unceasingly entreating the Compassionate One, O thou adornment of the martyrs." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Son Who is co-beginningless with the Father, and Who was ineffably incarnate of thy pure blood hath revealed Himself to us like the sun, O most pure unwedded Mother; and, driving the darkness away, He hath illumined all things." }
+        ]
+      }
+    }
+  }
+}

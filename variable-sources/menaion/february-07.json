@@ -1,0 +1,162 @@
+{
+  "_meta": {
+    "feast": "Our Father Among the Saints Parthenius, Bishop of Lampsacus; and Our Venerable Father Luke of Hellas",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 02-07.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/02-07.pdf",
+    "_note": "Leavetaking of the Meeting (if not in Great Fast). Three-canon Matins in Sergius: feast + Parthenius (Tone IV) + Luke (Tone VI). Two-canon model: Canon I = Meeting (feast-canons/meeting.json); Canon II = Parthenius (principal saint). Luke's canon omitted."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "Rejoice, O Virgin Theotokos, full of grace,\nfor from thee hath shone forth Christ our God, the Sun of righteousness,\nillumining those in darkness.\nBe glad, also, O righteous elder\nwho hath received in thine arms the Redeemer of our souls,//\nWho granteth us the resurrection.",
+    "label": "Troparion of the feast (Meeting)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "O God of our fathers,\never deal with us according to Thy meekness.\nTake not Thy mercy from us,\nbut by the prayers of these saints//\ndirect our life in peace.",
+    "label": "Troparion of the saints"
+  },
+  "kontakion": {
+    "tone": 3,
+    "text": "Thou didst receive the divine grace of miracles,\nO sacred Parthenius of godly wisdom, God-bearing wonderworker,\ncleansing the faithful of all passions and dispelling spirits of wickedness, O father.\nWherefore, we hymn thee as a great initiate of the mysteries//\nof the grace of God.",
+    "label": "Kontakion of St. Parthenius",
+    "melody": "Today the Virgin"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Thou didst become a babe for my sake, O Ancient of days, and didst partake of purification, O most pure God, that I might be assured, it was flesh Thou didst assume from the Virgin. And Symeon, taught thereby, recognized Thee as God appearing in the flesh, and having kissed Thee, our Life, rejoicing he cried aloud: \"Release me, for I have seen Thee, the Life of all!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 1,
+        "melody": "The choir of the angels",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "He Who is with the Father seated upon the holy throne, hath come to earth born of the Virgin; He Who is unbounded by time, hath become a babe; and Symeon, receiving Him in his arms rejoicing, saith: \"Now lettest Thou Thy servant depart, O Compassionate One, having gladdened me!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of St. Parthenius (after Ode 3)",
+      "text": "Filled with the divine Spirit, thou didst shine forth in works of piety, O sacred wonderworker Parthenius, turning men away from falsehood, and healing the sufferings of the sick. O venerable father, entreat Christ God, that our souls be saved.",
+      "bothNow": {
+        "tone": 8,
+        "melody": "Of the shepherds' piping",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Thou wast born on earth, O Thou Who art co-beginningless with the Father, and wast borne into the temple, O Unapproachable One. And, rejoicing, the elder received Thee in his arms, crying aloud: \"Now lettest Thou depart him Whom Thou didst visit, according to Thy word, O Thou Whose good pleasure it is, as God, to save the human race.\""
+      }
+    },
+    "exapostilarion": {
+      "tone": 3,
+      "label": "Exapostilarion of the feast",
+      "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "tone": 3,
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The elder, brought into the temple by the Spirit, took the Master of the Law in his arms, crying: Do Thou now loose me from the bond of the flesh according to Thy word: for mine eyes have seen the revelation of the Gentiles, and the salvation of Israel!"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "meeting",
+      "tone": 4,
+      "_author": "Canon of St. Parthenius Tone IV. Canon I (feast) from feast-canons/meeting.json. Luke of Hellas (Tone VI, Canon III) omitted from two-canon model.",
+      "kontakionAfterOde3": {
+        "tone": 3,
+        "text": "Thou didst receive the divine grace of miracles,\nO sacred Parthenius of godly wisdom, God-bearing wonderworker,\ncleansing the faithful of all passions and dispelling spirits of wickedness, O father.\nWherefore, we hymn thee as a great initiate of the mysteries//\nof the grace of God.",
+        "label": "Kontakion of St. Parthenius",
+        "melody": "Today the Virgin"
+      },
+      "kontakion": {
+        "tone": 1,
+        "text": "O Thou Who didst hallow the Virgin's womb by Thy birth\nand didst bless the hands of Symeon as was meet,\nby anticipation Thou hast now saved even us, O Christ God.\nBut in the midst of battle grant peace to Thy community,\nand strengthen the hierarchs whom Thou hast loved,//\nO Thou Who alone lovest mankind.",
+        "label": "Kontakion of the feast (Meeting)"
+      },
+      "ikos": {
+        "text": "Let us make haste to the Theotokos, desiring to behold her Son borne unto Symeon. Looking upon Him from heaven, the bodiless hosts in amazement proclaim: \"We behold things wondrous, most glorious, unapproachable and ineffable: for He Who created Adam is borne as an infant; He Whom naught can contain is held in the elder's arms; He Who is in the infinite bosom of His Father is willingly constrained in the flesh, but not in His divinity, He Who alone is the Lover of mankind.\""
+      },
+      "ode1": {
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old, and by Moses' outstretched hands, raised in the form of a cross, the power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The radiant effulgence of miracles, emitting splendors, illumine us all with the grace of the virtues on the radiant festival of the wise hierarch." },
+          { "canon": "secondCanon", "text": "Thou didst lift up thy mind to the mountain of dispassion, O venerable Parthenius, and, entering the divine darkness of the Scriptures, thou wast shown to be full of uncreated light, O venerable and glorious one." },
+          { "canon": "secondCanon", "text": "Truly drawing the word of God as a sword, O holy hierarch Parthenius, thou didst wound the might of the enemy; wherefore, thou hast been granted trophies of victory over the demons." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In paradise, O Virgin, envy begat the death of mankind; but the Son of God the Father, to Whom thou hast given birth, hath mightily destroyed it, granting immortality to our race." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud: Thou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Flourishing like a palm-tree on earth in the virtues, O venerable one, thou didst store up the fruits of immortality in the heavens." },
+          { "canon": "secondCanon", "text": "The grace dwelling within thee, O venerable one, revealed thee to be a temple of the God of all; wherefore, thou hast been glorified, O Parthenius." },
+          { "canon": "secondCanon", "text": "Invested by God with the most precious vesture of the hierarchy, O glorious one, thou wast shown to be a performer of sacred acts, worthy of His goodness." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In a manner past understanding, O pure Lady, the middle-wall of our condemnation hath been destroyed by thy birthgiving, and we have been united with the divine Essence." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the cross, the Church now standeth arrayed and doth worthily cry aloud: Glory be to Thy power, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Delighting in the unspeakable mysteries of God, O thrice-blessed one, in a godly manner thou didst learn His secret things. Wherefore, thou hast poured forth rivers of understanding, O Parthenius." },
+          { "canon": "secondCanon", "text": "Wholly caught up in mind to heaven in a divine manner, O God-bearer, thou didst noetically behold ineffable Glory; wherefore, on earth thou wast shown to be an equal with the angels, O Parthenius." },
+          { "canon": "secondCanon", "text": "All creation rejoiceth with the angels, beholding the signs wrought by thee beyond understanding, O father; wherefore, it hymneth the Cause of them as the almighty God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In that the mysteries of thy new birthgiving are most glorious and ineffable, awesome and fearful, O pure Theotokos, mind and thought are vanquished therein, O most pure one." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world, art my light, a holy light turning from the darkness of ignorance those who sing Thy praises in faith.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O Parthenius, thou wast truly anointed with the oil of the Spirit to serve, as is meet, the Lord Who adorned thee with glory." },
+          { "canon": "secondCanon", "text": "Plumbing the depths of the Scriptures, O most glorious one, and choosing Christ, the Pearl of great price, thou didst give Him to thy flock." },
+          { "canon": "secondCanon", "text": "As thou dost possess inexhaustible grace from God, O wise one, thou pourest forth most glorious miracles upon all, O wonderworker Parthenius." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Let heaven sprinkle gladness and grace upon the earth; for now God hath given it gladness in the highest, the only Theotokos." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise,' having been cleansed of the blood of the demons by the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the sound of the Spirit, O most glorious one, thy God-bearing life trumpets forth to all the world thy gifts of wondrous miracles." },
+          { "canon": "secondCanon", "text": "Thou didst sprinkle the water of adoption upon thy flock, washing away with thy teachings the stain of impiety and illumining them with the light of grace, O Parthenius." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Birthgiver of God, thou didst bring forth into the world the Fruit of the incorrupt Mind, Him Who hath been revealed to be the ever-living Mediator of incorruption for those who honor thee with faith and love." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham, burning with a love of piety rather than by a flame of fire, cried aloud saying: Blessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The divine grace of the Spirit which dwelt within thee, O wise Parthenius, truly made thee a temple and church of glory, wherein the Father, the Son and the Comforter Himself abode." },
+          { "canon": "secondCanon", "text": "With divine grace thou didst burn up all the thorny delusion of ungodliness on earth, O venerable one, and didst sow divine teachings amongst thy flock producing the fruits of eternal life." },
+          { "canon": "secondCanon", "text": "Of old, with the lure of thy tongue, O Parthenius, thou didst draw thy flock out of the abyss of error and into life; and now, by thy supplications, O father, thou dost catch all manner of fish by grace." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Birthgiver of God, the angels beheld the corrupted nature of a race of dust strangely turned again to life and heavenly glory by thy birthgiving." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den; while the zealously pious youths, girded with virtue, quenched the power of the fire and cried aloud: Bless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the staff of faith thou didst demolish the temples of the pagans, O wise and venerable one, raising up temples to God our Savior, wherein thou didst offer up pure sacrifices, chanting to Him: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Thou didst offer thyself as a sacrifice of sweet savor, O wise Parthenius, and by the fire of abstinence didst send up a pure fragrance to the divine and unapproachable altar of God, chanting: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Possessing divine grace from God, O venerable father Parthenius, thou dost pour forth healings upon those who have recourse to thee, cleansing their infirmities and mightily driving off hordes of the demons, teaching them to ceaselessly hymn their Creator as God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Son and Word of God, Who is utterly unapproachable in His essence, made His abode within thee, O most pure one, and having clothed Himself in our image, in that He is compassionate, He showed Himself to be incarnate and dwelt amongst us. Wherefore, with great love we honor, hymn and praise thee." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain: even Christ, Who hath joined together the disparate natures; therefore rejoicing we magnify thee, O Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having truly been cleansed of the mire of the passions of the flesh, O thrice-blessed one, thou hast wholly immersed thyself in the divine life, and immaterial delight, where, dancing, thou dost oversee us." },
+          { "canon": "secondCanon", "text": "Reaping the delight and beauty of miracles like noetic flowers during thy holy commemoration, O incorrupt God-bearer, we wear thy deeds like an ornately woven wreath." },
+          { "canon": "secondCanon", "text": "Thou didst transcend all things in this world, O God-bearing father Parthenius, and having joined chorus with the incorporeal choirs of heaven. Pray thou for us who with faith keep thy memory." },
+          { "canon": "secondCanon", "theotokion": true, "text": "I hymn thy grace, O Virgin, and magnify thy glory; for thou art truly the enlightenment and consolation of my soul, my ready help, salvation and aid." }
+        ]
+      }
+    }
+  }
+}

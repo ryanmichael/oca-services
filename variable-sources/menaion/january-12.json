@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Tatiana of Rome",
+    "feastRank": "simple",
+    "tone": 2,
+    "_source": "St-Sergius Emenaion 01-12.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-12.pdf",
+    "_note": "Afterfeast of the Holy Theophany. Two-canon Matins: Canon I = Theophany (feast-canons/theophany.json); Canon II = Tatiana Tone II by Ignatius. Feast troparion sung thrice at God is the Lord (no separate saint troparion)."
+  },
+  "troparion": {
+    "tone": 1,
+    "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee\ncalling Thee His beloved Son;\nand the Spirit in the guise of a dove\nconfirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+    "label": "Troparion of the feast (Theophany)"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Thou didst shine forth radiantly in thy suffering,\nadorned with thy blood, O passion-bearer,\nand like a beautiful turtle-dove O Tatiana,\nthou hast soared aloft to the heavens.//\nWherefore, ever pray thou for those who honor thee.",
+    "label": "Kontakion of St. Tatiana",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Wherefore didst thou marvel, O River Jordan, seeing the Invisible One naked? \"I beheld and trembled,\" it said, \"for how could I have desired not to be filled with awe of Him and withdraw?\" The angels were filled with fear, beholding Him; heaven was affrightened, and the earth quaked; the sea, and all things visible and invisible, were troubled. Christ appeared in the Jordan, to sanctify the waters.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the shepherds' pipes",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Christ is baptized, enlightening the world, and from on high the Father beareth witness, saying: \"This is My Son, in Whom I am well pleased. Heed ye Him! This is He Who illumineth the universe with His loving-kindness, Who is baptized and hath saved the human race, in that He is God!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 4,
+      "melody": "Go Thou quickly before",
+      "label": "Sessional Hymn of St. Tatiana (after Ode 3)",
+      "text": "Having completed a twofold contest on earth, O martyr, thou hast been granted to receive a twofold crown from the hand of thy Bridegroom; for thou didst fast, restraining the carnal passions, and, suffering lawfully, thou didst cast down the enemy: Wherefore, by thine entreaties save us from perils.",
+      "bothNow": {
+        "tone": 4,
+        "melody": "Go Thou quickly before",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Christ our God, Who clotheth Himself in light as with a garment, is clad in the streams of the Jordan, while the Father beareth witness from on high that He is co-enthroned with Him, and He Who enlighteneth and sanctifieth us, the Spirit of glory, hath come down."
+      }
+    },
+    "exapostilarion": {
+      "melody": "Thou hast visited us",
+      "label": "Exapostilarion of the feast",
+      "text": "The Savior, grace and truth, have appeared, in the streams of the Jordan, and illumining those sleeping in the darkness and shadow of death, for He, the immutable Light, hath come and appeared.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The Savior, grace and truth, have appeared, in the streams of the Jordan, and illumining those sleeping in the darkness and shadow of death, for He, the immutable Light, hath come and appeared."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "theophany",
+      "tone": 2,
+      "_author": "Canon of St. Tatiana Tone II, the composition of Ignatius. Canon I (feast) from feast-canons/theophany.json.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Thou didst shine forth radiantly in thy suffering,\nadorned with thy blood, O passion-bearer,\nand like a beautiful turtle-dove O Tatiana,\nthou hast soared aloft to the heavens.//\nWherefore, ever pray thou for those who honor thee.",
+        "label": "Kontakion of St. Tatiana",
+        "melody": "Thou hast appeared today"
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "label": "Kontakion of the feast (Theophany)"
+      },
+      "ikos": {
+        "text": "Upon Galilee of the nations, upon the land of Zebulon and the land of Naphthali, as the prophet said, a great Light hath shone, even Christ. A radiant darkness hath dawned upon those who sat in darkness, shining forth from Bethlehem. The Lord born of Mary, the Sun of righteousness, shineth forth with splendor upon the whole world. Come, therefore, all ye naked children of Adam, and let us clothe ourselves in Him, that we may be warmed; for He Who covereth the naked and enlighteneth those who are in darkness, hath come. He hath appeared, the Light unapproachable!"
+      },
+      "ode1": {
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God, Who divided the sea, and made a way for the nation which He had brought up out of the bondage of Egypt; for He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Illumined by the splendors of martyrdom, O martyr, thou standest before thy pure Bridegroom, asking that those who praise thee be delivered from soul-corrupting transgressions." },
+          { "canon": "secondCanon", "text": "Thou didst utterly spurn corruptible riches, O martyr, possessing with zeal that which is incorrupt and abiding in the heavens; and, rejoicing, thou didst pass through the contest of martyrdom." },
+          { "canon": "secondCanon", "text": "Thou didst fearlessly set thyself apart for wounding, pain and multifarious beatings, O martyr, for thou didst have the grace of the Savior aiding and strengthening thee." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Maiden who hast given birth to the Well-spring of dispassion, heal me who have been wounded by the passions, and rescue me from everlasting fire, O thou who alone art full of the grace of God." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "On the rock of faith hast Thou established me, and Thou hast emboldened my mouth against mine enemies. For my spirit rejoiceth when I sing: There is none as holy as our God and none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The advancing threefold billows of torments did not shake the tower of thy heart, for it was founded upon the rock of the love of Christ, O all-praised one. To Him thou didst cry aloud: There is none more holy than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "He Who took upon Him human weakness gave thy weakness wings of power against the feeble serpent. Wherefore, O martyr, thou didst cast him down to the earth, crying out with faith: There is none more holy than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "With the streams of thy blood thou didst cause the torrents of iniquity to dry up, O blessed one, and now thou dost enjoy a torrent of sweetness dwelling in never-waning light, crying aloud: There is none more holy than Thee, O Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thy conceiving and birthgiving are beyond description, for at the word of Him Who created time thou hast given birth to Him Who hath delivered the ends of the earth from irrationality, O Maiden who knewest not a man. Him do thou ever beseech, that He save us." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "I hymn Thee, O Lord, for I have heard report of Thee, and I was afraid; for Thou comest to me, seeking me who am lost. Wherefore, I glorify Thy great condescension towards me, O greatly Merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Bearing a beautiful state of soul with the magnificence of piety, and shining most gloriously with the light of martyrdom, Tatiana hath made her abode with the pure Bridegroom." },
+          { "canon": "secondCanon", "text": "The angels of heaven, who were sent by God to help thee, tormented with blindness the most iniquitous ones who smote thy face with a rod; and they marveled at thine endurance." },
+          { "canon": "secondCanon", "text": "Lawfully preaching Christ, thou didst triumph over the most iniquitous ones; offering thyself to Him as an unblemished, right pleasing and most perfect sacrifice, crying out: Loving Thee, O Savior, I am slaughtered!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Guide me to the calm haven, O all-holy Bride of God; for the tempest and tumult of sin cruelly assail me, and I am shaken by the winds of the wicked demons who oppress me." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Christ my Savior, the enlightenment of those lying in the darkness of sin. I rise early to hymn Thee O King of Peace, enlighten me with Thy radiance, for I know no other God than Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Emulating Thine honored and blessed suffering, O Christ, Bestower of life, she who cleaved unto Thee with dispassion suffered ardently, her members severed, crying aloud: I know no other God than Thee!" },
+          { "canon": "secondCanon", "text": "Having mentally received the fear of God within thy womb, through steadfast suffering thou didst most gloriously give birth to the spirit of saving confession and martyrdom, O thou who art valiant of mind, putting to shame the princes of the adversary." },
+          { "canon": "secondCanon", "text": "Illumined by the effulgence of the Holy Spirit, thou shinest with radiant beams, shedding light upon the hearts of the faithful, dispelling the gloom of sin, O right wondrous martyr and passion-bearer of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O splendid cloud of the Sun, who illuminest me with radiance, dispelling the gloom of my transgressions: extend thy hand to me who have fallen into the mire of sin, and raise me up who lie therein, O thou who alone art the restoration of fallen Adam." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Whirled about in the abyss of sin, I appeal to the unfathomable abyss of Thy compassion: Raise me up from corruption, O God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "When the honored martyr acknowledged Thee Who wast stretched out upon the Tree, she deigned to be suspended aloft, her body lacerated for love of Thee, O Almighty." },
+          { "canon": "secondCanon", "text": "The most savage of beasts stood in awe of thee, who suffered manfully in the arena like the protomartyr Thecla of old, whose zeal thou didst acquire, O ever-memorable one." },
+          { "canon": "secondCanon", "text": "The angels of heaven, appearing before thee in the midst of the prison, illumined thee with light, taking away thy pain, and glorifying thee as a ewe-lamb of God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Creator chose thee, the beauty of Jacob, whom He loved, from among all generations, O all-immaculate one, and He appeared, shining forth from thee." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The godless order of the lawless tyrant fanned the roaring flame; but Christ bedewed the God-fearing children with the Spirit, therefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Right mightily didst thou patiently endure the removal of thy severed breasts, O invincible one; and with heavenly fire consumed those who would not worship God, O martyr, Whom all creation doth hymn, rendering glory." },
+          { "canon": "secondCanon", "text": "Bearing the fire of divine love in thy heart, O immaculate one, thou didst trample underfoot the fire and feared not the flames, thy fellow creature, embodying the courage and strength of the youths of old." },
+          { "canon": "secondCanon", "text": "The savagery of the wild beasts became submissive to thee, and without suffering harm thou didst close the gaping mouths of the lions with the help of God Whom thou didst glorify, fulfilling His sufferings in thy flesh, O all-praised one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In giving birth for us to the hypostatic Life Who hath manifestly destroyed death by death, O pure one, thou hast mortified the passions of the flesh of us who honor thee with faith as the all-glorious Theotokos." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "God Who descended into the fiery furnace with the Hebrew children, and transformed the flame into dew, do ye works hymn, and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Rendered beautiful by the virtues, thou wast adorned with the comeliness of martyrdom, and thus wedded thyself to the Bridegroom Who is more comely than all mankind, and art now resplendent in the beauty of immortality, O divinely wise Tatiana." },
+          { "canon": "secondCanon", "text": "In the prison thou didst render glory with the incorporeal ministers, shining with the glory of divine radiance, and remaining unapproachable to all who are held fast by the darkness of delusion." },
+          { "canon": "secondCanon", "text": "The breaking of thy limbs broke asunder the wiles of the foe, and the shedding of thy blood dried up the cruel torrents of ungodliness, O honored one who hast been shown to be an abyss of wonders for us." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Save and take pity upon us, O thou who in a manner beyond all telling hast given birth for us to God, the compassionate Savior, removing the burning heat of fiery thoughts and passions by thy supplications, O exceedingly glorious and pure one." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "God the Word, God of God, Who by ineffable wisdom came to create Adam anew after his grievous fall to corruption through eating and Who took flesh beyond all telling from the Holy Virgin for our sake, Him we faithful with one accord magnify in song.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "After many tortures the cruel judge condemned thee to be beheaded, and at thine ascent the heavenly ranks clapped their hands. With His omnipotent right hand, O martyr, Christ hath crowned thee, who suffered lawfully." },
+          { "canon": "secondCanon", "text": "Having most manifestly drawn nigh unto God, thou didst join with the most radiant assemblies of martyrs; and beholding what the angels see, as a virgin thou dost dwell in the bridal-chamber of thy Bridegroom, O honored one, praying that those who honor thee with love be saved." },
+          { "canon": "secondCanon", "text": "O Tatiana, we proclaim thee the sealed well-spring, the garden enclosed, the precious and sacred offering, the incorrupt bride of Christ, the victim and sacrifice, the ewe-lamb and goodly turtle-dove of the Master of all." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Moved by the voices of those who fervently entreat thee, O Sovereign Lady, only refuge of the faithful, save, take pity and preserve from harm and every invasion of the heathen, those who ever magnify thee with faith and love." }
+        ]
+      }
+    }
+  }
+}

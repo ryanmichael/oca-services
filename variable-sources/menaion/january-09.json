@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Polyeuctus of Melitene in Armenia",
+    "feastRank": "simple",
+    "tone": 8,
+    "_source": "St-Sergius Emenaion 01-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-09.pdf",
+    "_note": "Afterfeast of the Holy Theophany. Two-canon Matins: Canon I = Theophany (feast-canons/theophany.json); Canon II = Polyeuctus Tone VIII by Theophanes (acrostic: 'Bestow upon me the grace of prayer, O martyr')."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee\ncalling Thee His beloved Son;\nand the Spirit in the guise of a dove\nconfirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+    "label": "Troparion of the feast (Theophany)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In his sufferings, Thy martyr Polyeuctus O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "label": "Troparion of St. Polyeuctus"
+  },
+  "kontakion": {
+    "tone": 1,
+    "text": "When the Savior bowed His head in the Jordan,\nthe head of the serpent was crushed;\nand the decapitated head of Polyeuctus//\nhath put the deceiver to shame.",
+    "label": "Kontakion of St. Polyeuctus",
+    "melody": "Thou hast appeared today"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Having been lifted up",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Moved by Thy compassion, O God, in the tender compassion of Thy mercy Thou didst seek out that which was lost and had perished, O Lover of mankind. Wherefore, Thou hast come to the Jordan, giving utterance unto the mystery of the Holy Trinity. And, chanting hymns with faith, we cry out: Thou hast come, Thou hast appeared, O Light unapproachable!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the shepherds' pipes",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "The Master of all hath mystically appeared to us in the streams of the Jordan to cleanse us of every sin, in that He is merciful and supremely good. Let all creation then leap for joy, for Christ the Lord is baptized, Who as God hath been well pleased to save the human race!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 5,
+      "melody": "The Word co-beginningless",
+      "label": "Sessional Hymn of St. Polyeuctus (after Ode 3)",
+      "text": "As a valiant warrior of Christ, the God of all, strengthened by His grace, thou wast turned wholly to His love, O wise one, through the faithful warrior Nearchus, who was with thee. Wherefore, having suffered lawfully, thou hast been crowned by the Lord, as is meet, O martyr Polyeuctus.",
+      "bothNow": {
+        "tone": 5,
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Thou hast wrapped Thyself in the streams of the Jordan, O Thou Who dost most gloriously clothe Thyself in light, and hast restored therein the nature of Adam, which, O Word of God, had been corrupted by evil disobedience. Wherefore, we all praise and glorify Thy holy Epiphany."
+      }
+    },
+    "exapostilarion": {
+      "melody": "By the Spirit in the sanctuary",
+      "label": "Exapostilarion of St. Polyeuctus",
+      "text": "Having acquired the most desired riches of heaven and the glory and splendor which thy soul greatly desired, O blessed Polyeuctus, abiding in God thou didst receive a divine crown from the hands of the Most High, as a true member of the choir of the martyrs.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "Thou hast come in the guise of a servant, O Word, and, though eternal, didst ask for baptism as a man. Heaven and earth, the ranks of the angels and the nature of water were struck with awe. And the Forerunner, trembling, nevertheless performed his ministration in fear and joy."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "theophany",
+      "tone": 8,
+      "_author": "Canon of St. Polyeuctus Tone VIII by Theophanes (acrostic: 'Bestow upon me the grace of prayer, O martyr'). Canon I (feast) from feast-canons/theophany.json.",
+      "kontakionAfterOde3": {
+        "tone": 1,
+        "text": "When the Savior bowed His head in the Jordan,\nthe head of the serpent was crushed;\nand the decapitated head of Polyeuctus//\nhath put the deceiver to shame.",
+        "label": "Kontakion of St. Polyeuctus",
+        "melody": "Thou hast appeared today",
+        "ikos": {
+          "text": "In the river Jordan the Creator of all, bowing His head, received baptism; and, having invisibly crushed the serpents' heads, He bestowed upon mankind power against the exceeding crafty one, who of old in paradise ensnared Adam with the fruit of the tree and brought upon him death without hope. Wherefore, the athlete Polyeuctus, in no wise yielding to the flatteries of his wife, suffered steadfastly, and, stretching forth his head, he put the deceiver to shame upon its severing."
+        }
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "label": "Kontakion of the feast (Theophany)"
+      },
+      "ikos": {
+        "text": "Upon Galilee of the Gentiles, upon the land of Zebulon, and the land of Naphtali, as the prophet said, a great Light hath shone, even Christ. A radiant brightness hath dawned upon those who sat in darkness, shining forth from Bethlehem. The Lord born of Mary, the Sun of righteousness, shineth forth with splendor upon the whole universe. Come, therefore, all ye naked children of Adam, and let us clothe ourselves in Him, that we may be warmed; for He that covereth the naked, and enlighteneth those who are in darkness, hath come. He hath appeared, the Light unapproachable."
+      },
+      "ode1": {
+        "irmos2": "That which had been hewn down divided the undivided, and land unseen was seen by the sun; water engulfed the cruel enemy, and Israel traversed the impassable, chanting a hymn: Let us sing unto the Lord, for gloriously hath He been glorified!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Satisfied with much desired food, full of blessed radiance, and deemed worthy to join in the angelic chorus, O glorious Polyeuctus, save those who praise thy feast and chant unto the Lord: For gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "text": "Thy radiant and right renowned feast hath shown forth, full of light most divine, illumining those who with faith splendidly hymn thee, O all-blessed Polyeuctus, valiant warrior of Christ, chanting unto the Lord: For gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "text": "Strengthened by the might of the Spirit and invested with divine power, O blessed one, without hesitation thou didst go forth to contend with the prideful one; and, having mightily cast him down, thou didst cry aloud with zeal: Let us chant unto the Lord, for gloriously hath He been glorified!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all-immaculate and all-pure Virgin Theotokos, while manifestly remaining a virgin, thou didst yet give birth unto the Incarnate One Who before had been incorporeal, Who in the richness of His compassion impoverished Himself for our sake, and hath saved those who cry to Him: Gloriously hath He been glorified!" }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Lord, thou art the confirmation of those who flee to Thee, Thou art the Light of those in darkness, and my spirit doth hymn Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst exchange philosophy for piety, having been deemed worthy of the divine vision of the Savior from on high, O Polyeuctus." },
+          { "canon": "secondCanon", "text": "Desiring victory, O glorious one, thou didst spit upon all the things of this earth, and hast been granted heavenly delight." },
+          { "canon": "secondCanon", "text": "Desiring the glory which passeth understanding, thou didst run with endurance and set at naught the ignominy of idolatry." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Direct my steps, O Lady, that I may go to thy Son with a praiseworthy life." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power, Thou art my God and Thou art my joy, Thou Who, while never leaving the bosom of Thy Father, hast visited our poverty. Therefore with the Prophet Habbakuk I cry unto Thee, 'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "canon": "secondCanon", "text": "In thy pious confession, O most excellent one, thou didst bring thyself to the Master, lovingly accepting to become a sacrifice for Him, and being freed of every vice, O glorious one. Hence, thou criest to the Savior: Glory to Thy power, O Lover of mankind!" },
+          { "canon": "secondCanon", "text": "In the sweetness of piety didst thou take delight, and thou didst take wing with divine love. Wounded with pure and radiant desire, and aflame with the love of the kingdom on high, thou dost chant unto the Master: Glory to Thy power, O Lover of mankind!" },
+          { "canon": "secondCanon", "text": "Captivated by the supra-natural unity of mind shown forth by Nearchus, and catechized in the godly faith in the Trinity by his words, O divinely wise martyr Polyeuctus, thou wast truly deemed worthy of the greatly desired and lovely splendors of the martyrs." },
+          { "canon": "secondCanon", "text": "Having enrolled in the army of the martyrs, thou didst receive the indestructible kingdom; and, newly slain, thou didst enter therein, still dripping with thy blood. And thou wast taken into the immutable joy and unwaning light, receiving great glories." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Heavenly One, having likened Himself to those who are on earth, hath made them heavenly; and having suffered through His nature which is subject to human passions, He hath given us to partake of divine dispassion. Wherefore, knowing her who gaveth birth unto Him to be a maiden who kneweth not wedlock, we glorify her as the Theotokos." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me and why has the alien darkness surrounded me, wretched though I be? But do Thou guide my steps I implore Thee and turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "That thou mightest receive ever-existing delight, O most blessed one, thou didst disdain the beautiful things of this life, the character of nature, sweetness, glory and life itself; and thou didst not lose hope." },
+          { "canon": "secondCanon", "text": "Initiated into the divine mysteries of the image of God, by thy firmness of mind thou wast set apart for perfect struggles; and shown to be the victor, thou wast deemed worthy of imperishable crowns, O Polyeuctus." },
+          { "canon": "secondCanon", "text": "Burning with zeal for piety and filled with divinely inspired ardor, O most glorious one, thou didst piously reject most godless honor, being possessed of the wisdom which by its nature is contrary to evil; and thou didst set at naught the vain gods of the heathen." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Obedient to the words of thy mouth, O most pure one, we call thee blessed, for, truly accomplishing mighty works with thee, the Lord hath magnified thee, and He hath revealed thee to be the true Mother of God, having been born from thy womb." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The abyss of my sins and the storm of my transgressions disquieten me and thrust me down into the depths of despondency; but do Thou stretch forth Thy mighty arm, unto me as Thou didst to Peter, and save me, O my Guide.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Manifestly having displayed angelic zeal, O right wondrous martyr, thou hast been deemed worthy to enter the ranks of the angels. With them, therefore earnestly pray, O blessed one, that those who hymn thee be delivered from temptations." },
+          { "canon": "secondCanon", "text": "When thy head was severed by the sword, O much suffering athlete, thou didst lovingly sleep the needful sleep. And now, abiding with the martyrs in the heavens, thou hast inherited an incorrupt estate." },
+          { "canon": "secondCanon", "text": "Thou wast like unto the Savior, Who for our sake submitted to suffering on the Cross, and didst share in His suffering; and now, O blessed one, thou reignest with Him, as He promised, for time without end." },
+          { "canon": "secondCanon", "theotokion": true, "text": "As thou hast tender compassion, having given birth unto the Word Who is the Lover of mankind, save us from cruel and violent circumstances; for thee alone do we the faithful have, as an invincible intercessor, O all-pure Lady." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Once in Babylon the fire stood in awe of God's condescension; for which sake the youths in the furnace, dancing with joyous steps as in a meadow, chanted: O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst show Thy power to Thy servant, O Master; wherefore, with great fervor he went forth to his struggles unbidden. And, victorious, he chanted: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thy glorious and most renowned feast hath shone forth, O martyr; for it beareth the light of the manifestation of Thy Master and illumineth those who with faith cry out: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Riches that cannot be stolen and dignity which abideth and falleth not away hast thou found; and thou hast received glory which lasteth forever, O wondrous one, chanting: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having conceived Him Who is understood, to abide ever with the beginningless Father, O Virgin, thou hast given birth unto the incarnate Son, that He might save those who with faith cry aloud: O God of our fathers, Blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God; but when he perceived that they had been saved by a greater power he cried aloud to the Creator and Redeemer; 'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Today thy feast of great supplication is celebrated with sacred rites, O Polyeuctus, martyred athlete of Christ; for thou wast a sacrifice right pleasing and acceptable unto Christ, Who was slain and sacrificed for thy sake; ye children bless, ye priests hymn, ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Having shown forth on earth an athlete's opposition, even unto the shedding of thy blood, O Polyeuctus, thou hast come to dwell in a chamber of great splendor in the heavens, having been baptized in the laver of thine own blood, chanting unto the Master: Ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Raise up my soul which hath been slain by my falls into sin, reckoning it as embraced by the boldness of thy martyrdom, at the divine command, O glorious one, and right properly turning it to virtue as it chanteth unto the Master: Ye priests hymn, ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Rejoice, thou through whom we have found everlasting joy! Rejoice, thou who hast assuaged the grief of Eve and turned the sorrow of Adam into radiant gladness! Rejoice, O Virgin Theotokos, who hast given birth unto the incarnate God, thou intercessor for the faithful who supremely exalt thee throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "All are awestruck at hearing of God's ineffable condescension, for the Most High voluntarily descended and assumed flesh, becoming man in the Virgin's womb; wherefore we the faithful magnify the most pure Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Come, therefore, ye who love the martyrs, and let us hymn him who hath been crowned by God, whom the Most High hath glorified on His epiphany, which is named for the light, and hath honored and crowned and adorned on this, his honored day." },
+          { "canon": "secondCanon", "text": "With the streams of the blood of thy martyrdom which flowed forth, thou didst choke the most malicious worker of iniquity, O divinely blessed one; and watering therewith the Church of Christ which doth ever bless thee faithfully, thou hast made it bright." },
+          { "canon": "secondCanon", "text": "Be thou my helper, O martyr, delivering me from divers temptations and evil circumstances, loosing the bonds of heresy, and freeing me from cruel imprisonment by thy supplication, who hymn thee with a pure mind, O most glorious one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast given birth, O most pure one, unto Christ, the head and fulfillment of the Law and the prophets, Whose good pleasure it was, in the unfathomable abyss of His tender compassion, to become a man for our sake through thee, and Who hath saved those who ever magnify thee with faith." }
+        ]
+      }
+    }
+  }
+}

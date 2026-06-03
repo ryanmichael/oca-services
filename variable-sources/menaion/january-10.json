@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "feast": "Our Holy Father Gregory, Bishop of Nyssa",
+    "feastRank": "simple",
+    "tone": 5,
+    "_source": "St-Sergius Emenaion 01-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-10.pdf",
+    "_note": "Afterfeast of the Holy Theophany. Three-canon Matins in Sergius: feast + Gregory of Nyssa (Tone V) + Dometian (Tone I). Two-canon model: Canon I = Theophany (feast-canons/theophany.json); Canon II = Gregory (principal saint). Dometian omitted. Inverted kontakion order: feast kontakion after Ode 3, Gregory's kontakion after Ode 6."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee\ncalling Thee His beloved Son;\nand the Spirit in the guise of a dove\nconfirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+    "label": "Troparion of the feast (Theophany)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "O God of our fathers,\never deal with us according to Thy meekness;\ntake not Thy mercy from us,\nbut by their entreaties//\nguide our life in peace.",
+    "label": "Troparion of the saints (generic)"
+  },
+  "kontakion": {
+    "tone": 1,
+    "text": "Keeping watch with the eye of thy soul, O holy hierarch,\nthou didst show thyself to be a vigilant pastor for the world;\nand with the staff of thy wisdom and thy fervent intercession\nthou didst drive away all the heretics like wolves,\npreserving the flock unharmed,//\nO all-wise Gregory.",
+    "label": "Kontakion of St. Gregory of Nyssa",
+    "melody": "The choir of angels"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 5,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Today the Virgin",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Today the Master hath come to the Jordan to be baptized in the waters by the godly forerunner; and the Father bore witness to Him from high, saying: 'This is my Son, in Whom I am well pleased!' And the Spirit appeared above Him in the strange guise of a dove.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "It is the time of the Theophany! Christ hath appeared to us in the River Jordan! Come, ye faithful, let us draw forth the water of the forgiveness of our sins! For Christ hath come in the flesh, seeking the lamb which had been carried off by wild beasts; and, having found it, He leadeth it back into paradise, in that He is compassionate. Christ hath appeared in the Jordan and illumined the world!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of St. Gregory of Nyssa (after Ode 3)",
+      "text": "Thou hast inherited divine effulgence, having lived an immaterial life, and hast shone forth in the priesthood for which thou wast named; for, supernaturally explaining the doctrines of the Faith, thou didst make the world steadfast in Orthodoxy. O venerable father, entreat Christ God, that He grant us great mercy.",
+      "bothNow": {
+        "tone": 1,
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "When Jesus had been born of the Virgin Mary and was baptized by John in the Jordan, the Spirit, seen in the guise of a dove, descended upon Him. Wherefore, the prophet said with the angels: 'Glory to Thy coming, O Christ! Glory to Thy kingdom! Glory to Thy dispensation, O Thou Who alone lovest mankind!'"
+      }
+    },
+    "exapostilarion": {
+      "melody": "Thou hast visited us",
+      "label": "Exapostilarion of St. Gregory of Nyssa",
+      "text": "With festive hymns let us all glorify the all-wise Gregory, the good shepherd, the bishop of Nyssa, the brother in the flesh of the most wise Basil.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The Savior appeared, grace and truth, in the streams of the Jordan, and He illumined those sleeping in darkness and shadow, for He, the immutable Light, hath come and appeared."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "theophany",
+      "tone": 5,
+      "_author": "Canon of St. Gregory of Nyssa Tone V. Canon I (feast) from feast-canons/theophany.json. Dometian (Tone I, Canon III) omitted from two-canon model. Inverted kontakion order: feast kontakion after Ode 3, Gregory's kontakion after Ode 6.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "label": "Kontakion of the feast (Theophany)",
+        "ikos": {
+          "text": "Upon Galilee of the nations, upon the land of Zebulon and the land of Naphthali, as the prophet said, a great Light hath shone, even Christ. A radiant darkness hath dawned upon those who sat in darkness, shining forth from Bethlehem. The Lord born of Mary, the Sun of righteousness, shineth forth with splendor upon the whole world. Come, therefore, all ye naked children of Adam, and let us clothe ourselves in Him, that we may be warmed; for He Who covereth the naked and enlighteneth those who are in darkness, hath come. He hath appeared, the Light unapproachable!"
+        }
+      },
+      "kontakion": {
+        "tone": 1,
+        "text": "Keeping watch with the eye of thy soul, O holy hierarch,\nthou didst show thyself to be a vigilant pastor for the world;\nand with the staff of thy wisdom and thy fervent intercession\nthou didst drive away all the heretics like wolves,\npreserving the flock unharmed,//\nO all-wise Gregory.",
+        "label": "Kontakion of St. Gregory of Nyssa",
+        "melody": "The choir of angels"
+      },
+      "ikos": {
+        "text": "Through slothfulness have I, the wretched one, fallen asleep unto death; but as a most vigilant shepherd raise me up, O father, and lull to sleep the passions which cruelly torment me, that, rising up, in purity I may hymn thy splendid repose, which the Master of the universe hath glorified as is meet, as that of a most faithful servant, an all-wise teacher, a friend and initiate of the mysteries, as guardian of His Traditions, the anointing whereof thou didst well preserve, O all-wise Gregory."
+      },
+      "ode1": {
+        "irmos2": "Christ, who with an upraised arm bringeth wars to naught, hath shaken horse and rider in the Red Sea; but Israel hath He saved as they chanted a song of victory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "In that Thou art the Abyss of wisdom, O Christ, fill me with the waters of Thy wisdom, that I may worthily and with fitting words hymn the one who taught the words of Thy wisdom to all." },
+          { "canon": "secondCanon", "text": "O father Gregory, thou splendid adornment and heavenly citizen, thou didst desire the heavenly Jerusalem from thy youth, and wast known as a true dweller of heaven." },
+          { "canon": "secondCanon", "text": "The unapproachable Effulgence found thy sacred soul to be a worthy vessel and a beautiful dwelling-place for Itself; and thou wast illumined with the divine knowledge of God, O most blessed one." },
+          { "canon": "secondCanon", "text": "With rich and wise discourse, O Gregory, thou didst bring to naught the empty babbling of the enemies of the Faith, and didst strengthen all in the true doctrines of piety." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin Birthgiver of God, let the Faith be reckoned as one with the Tradition of the holy fathers, who confessed thee to be truly the Theotokos." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "By Thy command Thou didst establish the earth upon nothing and suspended it unsupported; do Thou establish Thy Church on the unshakeable rock of Thy commandments, O Christ, who alone art good and the Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst subdue the uprisings of the flesh with fasting and vigils, and, having humbled the passions, thou didst make of thyself a habitation of immaterial light, O father Gregory, thou beacon of hierarcas." },
+          { "canon": "secondCanon", "text": "Thou didst fittingly arm thy soul for piety with the weapons of the virtues, and manfully hast cast down and utterly destroyed the wiles of the enemies of God, O most glorious one." },
+          { "canon": "secondCanon", "text": "Thou didst join vision to activity, illumining thy soul with the divine light of the virtues, and hast truly been known as a model of all virtue, O God-bearing father." },
+          { "canon": "secondCanon", "text": "Passing beyond the boundaries of the virtues, O all-blessed Gregory, thou wast recognized as a most excellent shepherd, guiding the holy flock aright with thy words, O most divine and venerable father." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Mother of God, without enduring the pangs of travail, thou hast given birth to the Ruler of all things; and thou remainest a pure Virgin, as thou wast before thy birthgiving, O all-immaculate one." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Habbakuk, prophetically apprehending Thy divine self-emptying, O Christ, cried out to Thee with trembling: Thou hast come for the salvation of Thy people; to save Thine anointed Ones.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou wast seen to be a pillar most radiant in word and deed, illumined with spiritual fire, O most holy Gregory, and burning with the flame of piety thou didst enlighten the Church of Christ." },
+          { "canon": "secondCanon", "text": "Receiving the grace of the Spirit, thou didst pull aside the veil of the letter, and, beholding the glory of God face to face, thou gavest instruction in the divine knowledge to those who approached thee." },
+          { "canon": "secondCanon", "text": "Showing forth the blessed aspects of all the virtues, thou didst pass through life in humility and the love of God; and, glorifying the Trinity with clear doctrines, thou didst illuminate the Church." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Without becoming subject to corruption thou didst conceive in thy womb the incorrupt God, O all-pure one; and thou didst give birth and remain a virgin, as thou wast before thy birthgiving, O Bride of God." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Thou Who hath clothed Thyself in light as with a garment, I rise early unto Thee and cry out to Thee: Enlighten my darkened soul, O Christ, in that Thou alone art compassionate!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Like fire thou hast burned up the thorny and tangled words of heresies, O father Gregory, and hast wisely made the field of the Church bear abundant fruit." },
+          { "canon": "secondCanon", "text": "Thou didst denounce the iniquity of Eunomius, utterly confuting his insanity with wisdom, and didst reveal him to be a fabricator of falsehood and an enemy of the truth." },
+          { "canon": "secondCanon", "text": "Thou didst denounce the most ungodly Macedonius, who, by his madness, mutilated the one Lordship, and with fiery words thou didst disperse his array of impiety." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having seedlessly given birth for us to Christ, the God of all, who was incarnate of thy pure blood, O Virgin, thou didst remain incorrupt after thy birthgiving, O most immaculate one." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Calm the raging sea of the passions, O Master Christ, with its soul-destroying tempest, and lead me up from corruption in that Thou art compassionate.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having acquired humility of mind, thou wast shown to all as a meek soldier of Christ, and didst live a life most worthy of God, manifesting the pattern of the holy life." },
+          { "canon": "secondCanon", "text": "O Gregory, with thy rich discourse thou didst utterly cast down the reasoning of Arius, and, armed with the doctrines of piety, thou didst defend the Faith of the Orthodox." },
+          { "canon": "secondCanon", "text": "Sabellius, who waged war on God, stupidly reasoning that the Hypostases of the one Divinity were in confusion, thou didst wholly confute, O wise father, with keen distinctions." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin Mother, thou hast given birth, and giving birth remained pure; for thou didst give birth to God Who became man for our sake, without separating Himself from His own nature." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The supremely exalted Lord of our fathers quenched the flame, and bedewed the Youths as they chanted in harmony: O God, blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having united thyself by desire to the effulgence of the threefold Sun, O father, thou wast shown to be a luminary of the world and a teacher of divine wisdom, chanting: O God, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "As a father thou hast left thy discourses, the purity of the ways of thy soul, thy great labor for the sake of the divine knowledge, as a most precious inheritance to thy children, O Gregory." },
+          { "canon": "secondCanon", "text": "Thou didst declare the Father to be the primal Mind and Cause, and the Son and the Spirit to be of the same nature and Godhead and power, and thou didst bring the erring to the knowledge of the Trinity." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all-immaculate one, thou hast given birth to the incarnate God, a single Hypostasis in two natures; and thou hast been revealed to be the Mother of God, O all-pure Theotokos." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Unto Thee the Fashioner of all, the children in the furnace chanted a hymn: All ye works of the Lord, supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst receive all the radiance of the Comforter which descended upon thee with the fire of divine wisdom; wherefore thou becamest a luminary of the world, shining forth unto the ends of the earth, O Gregory." },
+          { "canon": "secondCanon", "text": "In the divine words of Christ, rivers of understanding flow forth upon us from thee, O wise and most blessed father; for with divine and heavenly streams thou dost refresh the souls of those who honor thee." },
+          { "canon": "secondCanon", "text": "O the two wondrous brethren, akin in the flesh and divine in understanding: Basil, great in wisdom, and thee, Gregory, his associate in the Spirit and equal in virtue." },
+          { "canon": "secondCanon", "text": "When the noetic Light made His abode within thee, O father, He adorned thee with the effulgences of His glory; and thou wast shown to be a god on earth, ever chanting: All ye works, bless the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all ye works, as is meet let us bless her who, in a manner past understanding, hath given birth to the noetic Light without being consumed, as did the Burning Bush of Moses of old." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "O Isaiah, rejoice and be glad! The Virgin hath conceived in her womb, and hath borne a Son, Emmanuel, who is both God and man; and Orient is His name; Him we magnify, and the Virgin we call blessed.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Manifestly unable to praise the brilliance of thy corrections and discourses, O wise Gregory, I cry to thee: O father, by thy supplications vouchsafe unto me pardon of all my transgressions." },
+          { "canon": "secondCanon", "text": "O most excellent initiation of the mysteries, standing now before the Trinity Whom thou didst proclaim and Whom thou didst throughout thy life glorify: remember us who honor thee with love, O Gregory." },
+          { "canon": "secondCanon", "text": "Thou lookest down now from on high, O holy hierarch, upon those who honor thee; and, as thou hast boldness before God, entreat Him to grant peace to the world and remission of our transgressions." },
+          { "canon": "secondCanon", "theotokion": true, "text": "As thou hast given birth to the Author of creation, O most pure one, and hast been shown to be the Mother of God in very deed, save from every peril those who with faith hymn thee as Theotokos." }
+        ]
+      }
+    }
+  }
+}

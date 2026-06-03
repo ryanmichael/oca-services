@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Hermylus and Stratonicus; Holy Fathers slain at Sinai and Raithu",
+    "feastRank": "simple",
+    "tone": 8,
+    "_source": "St-Sergius Emenaion 01-13.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-13.pdf",
+    "_note": "Apodosis of Theophany. Three-canon Matins in Sergius: feast + holy martyrs Hermylus & Stratonicus (Tone VIII, Joseph) + venerable martyrs/Holy Fathers at Sinai & Raithu (Tone IV, Joseph). Two-canon model: feast + holy martyrs (Canon II). Venerable martyrs (Canon III) omitted. No kontakion exists for Hermylus & Stratonicus specifically; the combined kontakion of Canon III ('Ye fled from the tumult') serves as the saint's kontakion. Inverted order: saint kontakion after Ode 3, feast kontakion after Ode 6. Exapostilarion is likewise from Canon III (specifically names Sinai & Raithu) but is the only saint exapostilarion in the service."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee\ncalling Thee His beloved Son;\nand the Spirit in the guise of a dove\nconfirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+    "label": "Troparion of the feast (Theophany)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "label": "Troparion of the holy martyrs"
+  },
+  "kontakion": {
+    "tone": 2,
+    "text": "Ye fled from the tumult of the world\nand having found rest in the calm haven,\nye were crowned with the blood of martyrdom\nand the labors of asceticism.//\nWherefore, ye have been shown to dwell together with the martyrs and the venerable.",
+    "label": "Kontakion of the saints",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Today the Virgin",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Today the Master came to the Jordan; and when He was baptized by the divine forerunner in its waters, the Father bore witness from on high, saying: This is my Son, in Whom I am well pleased! And the Spirit appeared over Him in the strange guise of a dove.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the Wisdom",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "When Thou didst appear in the flesh for baptism, O Invisible One, Jordan ministered to Thee with its streams, and John stretched forth his corruptible hand; yet the one turned back in fear, and the other straightway touched Thee, the Incorruptible One, with trembling. Truly Thou art the Lamb of God, the ever-living Fountain Who hath sanctified the springs, the sea and men; for the Trinity shone forth from on high: the Father calleth Thee His Son, and the Holy Spirit descendeth.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 1,
+      "melody": "Thy tomb, O Savior",
+      "label": "Sessional Hymn of the holy martyrs (after Ode 3)",
+      "text": "Together ye received a blessed end in the waters, O wise ones, drowning Belial therein by the grace of our God, O martyrs; wherefore, having received crowns as victors, ye rejoice with the angelic choirs. With them be ye mindful of us.",
+      "bothNow": {
+        "tone": 4,
+        "melody": "Go Thou quickly before",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Thou didst hallow the streams of the Jordan and didst crush the might of sin, O Christ our God. Thou didst bow down beneath the hand of the forerunner, and hast saved the human race from delusion. Wherefore, we pray: Save Thou our souls!"
+      }
+    },
+    "exapostilarion": {
+      "melody": "By the Spirit in the sanctuary",
+      "label": "Exapostilarion of the saints",
+      "text": "With the pangs of fasting ye utterly destroyed the serpent, the author of evil, and in death received the crown of martyrdom, O boast of the fathers and glory of the martyrs, ye most sacred multitude of wondrous fathers in Raithu and Sinai.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The day of never-waning light hath dawned, for Christ, the Truth, hath now come and appeared! As is meet let us hymn Him with psalms and hymns as Creator and Master! O the new mystery! The Creator of Adam hath of His own will appeared as a man!"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "theophany",
+      "tone": 8,
+      "_author": "Canon of Holy Martyrs Hermylus & Stratonicus Tone VIII, composition of Joseph (acrostic: 'I honor the glory of Thy martyrs, O Savior'). Canon I (feast) from feast-canons/theophany.json. Canon III (Holy Fathers at Sinai & Raithu, Tone IV, Joseph) omitted. Inverted kontakion order: saint kontakion after Ode 3, feast kontakion after Ode 6.",
+      "kontakionAfterOde3": {
+        "tone": 2,
+        "text": "Ye fled from the tumult of the world\nand having found rest in the calm haven,\nye were crowned with the blood of martyrdom\nand the labors of asceticism.//\nWherefore, ye have been shown to dwell together with the martyrs and the venerable.",
+        "label": "Kontakion of the saints",
+        "melody": "Seeking the highest",
+        "ikos": {
+          "text": "O ye who mortified your members on earth, with life-bearing mortality ye portrayed the suffering of Christ God, first in goodly asceticism, and later again in suffering. Wherefore, He Himself hath sent down twofold crowns upon your heads, O fathers, preparing for you a heavenly abode and an everlasting place, where, rejoicing now, ye have been shown to dwell together with the martyrs and the venerable."
+        }
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "label": "Kontakion of the feast (Theophany)"
+      },
+      "ikos": {
+        "text": "Upon Galilee of the nations, upon the land of Zebulon and the land of Naphthali, as the prophet said, a great Light hath shone, even Christ. A radiant darkness hath dawned upon those who sat in darkness, shining forth from Bethlehem. The Lord born of Mary, the Sun of righteousness, shineth forth with splendor upon the whole world. Come, therefore, all ye naked children of Adam, and let us clothe ourselves in Him, that we may be warmed; for He Who covereth the naked and enlighteneth those who are in darkness, hath come. He hath appeared, the Light unapproachable!"
+      },
+      "ode1": {
+        "irmos2": "Let us sing unto the Lord Who engulfed Pharaoh in the Red Sea, singing a hymn of victory, for He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O wise martyrs, ye have shown yourselves to be precious stars of godly radiance, shining in the firmament of the Church, illumining us with divine splendors." },
+          { "canon": "secondCanon", "text": "O glorious ones, ye were shown to be noetic embers set alight by the fire of the Spirit, and ye quenched the fire of idolatry with the streams of your blood." },
+          { "canon": "secondCanon", "text": "Drowned in the waters for the sake of Christ Who drowned our impiety in the waters, O martyrs, ye have dried up the rivers of ungodliness." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Stop thou the torrents of my sins, O thou who by thy birthgiving hast caused the corruption of death to wither away, and grant me compunction, O all-immaculate Birthgiver of God." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thy fear, O Lord, do Thou plant in the hearts of Thy servants and be Thou the confirmation of us who in truth call upon Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Despising the inconstancy of transitory things, O valiant athletes of Christ, the King of all, ye desired the incorrupt enjoyment of things to come." },
+          { "canon": "secondCanon", "text": "Ye manfully opposed Him Who most iniquitously commanded you to submit to impiety, O divinely wise ones, and have received crowns of victory from heaven." },
+          { "canon": "secondCanon", "text": "Ye cast down the temples of delusion and raised yourselves up as honored temples and pillars of divine knowledge, O martyrs of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The sword which before was brandished hath given way before me, withdrawing before the spear which pierced Him Who was born of thee, O Virgin Mother." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation; I have considered Thy works, and I have glorified Thy Divinity.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As a minister of the Word thou didst most diligently denounce the irrationality and foolishness of the iniquitous ones, O martyr Hermylus." },
+          { "canon": "secondCanon", "text": "Preaching the one nature of the Godhead, the single authority and dominion, O divinely wise ones, ye held the delusion of polytheism in contempt." },
+          { "canon": "secondCanon", "text": "Suspended aloft and lacerated, afflicted with wounds, thou didst remain unmoved, O divinely wise martyr and passion-bearer Hermylus." },
+          { "canon": "secondCanon", "theotokion": true, "text": "As the Mother of the Word, O most pure one, call me to repentance, who slumber in despondency and am covered with sin." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Light never-waning, why hast Thou turned Thy face from me and why has the alien darkness surrounded me, wretched though I be? But do Thou guide my steps I implore Thee and turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The clouds of tortures did not cover your courage, O all-praised martyrs; for it was shown to be brighter than the sun through the radiance of piety, which guideth the pious with light and dispelleth the gloom of the demons." },
+          { "canon": "secondCanon", "text": "Having passed beyond the bounds of humanity, O divinely blessed ones, and united yourselves with perfect purity to Him Who transcendeth being, ye endured bitter tortures, laceration and wounds with firmness of mind." },
+          { "canon": "secondCanon", "text": "Thou didst mightily oppose him who condemned thee, O most blessed and glorious martyr Hermylus, and wast vouchsafed to hear a voice from heaven, telling thee to draw nigh with love to the Judge of the contest Who called thee and Who strengtheneth His martyrs." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In that thou art beautiful, comely and resplendent in purity, thou didst give flesh to Him Who is comely in beauty, O Virgin Mother, and hast given birth to Him Who in the richness of His goodness granteth that all may become divine." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "I will pour out my prayer unto the Lord, and to Him will I proclaim my grief; for my soul is filled with evils, and my life unto Hades hath drawn nigh, and like Jonah I pray unto Thee: Raise me up from corruption, O my God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Full of life-creating waters, ye were cast into the river's streams, O all-praised ones, and receiving your end therein, ye strangled the princes of evil. And now ye pour forth upon us torrents of healing." },
+          { "canon": "secondCanon", "text": "Cast into a basket, ye were committed to the deep, O athletes; and ye have been borne up to the life on high, joyously finding the things for which ye had hoped from of old, O holy martyrs great in wisdom." },
+          { "canon": "secondCanon", "text": "Thou wast shown to be tormented with bitter torture, beaten with staves, O martyr Stratonicus, and wast an invincible pillar of endurance set upon the pedestal of the Faith, setting at naught the opposition of the tormenters with thy words and deeds." },
+          { "canon": "secondCanon", "theotokion": true, "text": "As thou art merciful, O most holy one, cure thou the sick passions of my soul, the pain of my heart and the multifarious changes of my mind, and still thou the cruel turmoil of mine evils, I pray." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The Hebrew children in the furnace boldly trampled upon the flames, changing the fire into dew, they cried aloud: 'Blessed art Thou, O Lord our God, throughout the ages'.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Honeyed discourse flowed from thy mouth, O Hermylus, cutting short the bitterness of the despondency of Stratonicus, thy fellow sufferer, which cried: Blessed art Thou, O God, throughout the ages!" },
+          { "canon": "secondCanon", "text": "Holding the Cross of the Savior as a staff of power, O valiant martyr Hermylus, thou didst zealously endure beating with a staff, chanting to thy Creator: Blessed art Thou, O God!" },
+          { "canon": "secondCanon", "text": "He Who most gloriously saved the prophet who was held fast in the belly of the sea monster saved your victorious relics from the waters of the river after your end, O athletes." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Annulling the curse of Eve, Thou didst make Thine abode within the all-immaculate Virgin, pouring forth springs of blessing upon those who cry: Blessed art Thou, O Lord God, forever!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God; but when he perceived that they had been saved by a greater power he cried aloud to the Creator and Redeemer; 'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Beaten and cruelly lacerated, covered with masses of wounds, thou didst endure, O glorious Hermylus; for thou wast the instructor of Stratonicus in struggles of piety, and with him thou didst cry out: Ye priests, bless; ye people, supremely exalt the Lord throughout all ages!" },
+          { "canon": "secondCanon", "text": "Unbowed in understanding, valiant through suffering, worthy of heavenly gifts, precious stones and bulwarks of the faithful, when ye were commanded, ye did not offer worship to stones, but cried out to God, the Master of all: Ye people, supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Raking thy sides with iron claws and pitilessly beheading thee with the sword, the torturer did not deprive thee of intelligence, who wast strengthened by divine love and didst look toward the beauty of the Redeemer. And standing now before Him with boldness, thou criest out: Ye people, supremely exalt the Lord throughout all ages!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who through thee was clad in the flesh, being perfect in all things, showed Himself to be unapproachable by me in His essence, O thou who knewest not wedlock. Him do thou earnestly entreat, that He cut short the time of mine iniquities and save me who chant: Ye priests, bless; ye people, supremely exalt the Lord throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "All are awestruck at hearing of God's ineffable condescension, for the Most High voluntarily descended and assumed flesh, becoming man in the Virgin's womb; wherefore we the faithful magnify the most pure Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having sailed across the abyss with the sail of torments, O martyrs of Christ, ye put in at the havens of rest, where the choirs of martyrs and assemblies of the righteous are, and where the never-waning light and the joy of those who keep festival in the Spirit are found." },
+          { "canon": "secondCanon", "text": "Today, the Church of Christ, observing the sacred memorial of your suffering, O all-blessed ones, doth celebrate a joyful and radiant feast, magnifying God Who crowned as His favorites you who magnify Him." },
+          { "canon": "secondCanon", "text": "Ye have truly been caught up to the exultingly radiant heights of confession, and having attained to the Summit of desires, truly received the immovable kingdom of God, O martyr Stratonicus and wise and divinely intelligent Hermylus, ye blessed saints." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Savior Who wast born and hast preserved her who gave Thee birth incorrupt, even after giving birth, spare me when Thou shalt sit to judge my deeds, overlooking mine iniquities and sins, in that Thou art sinless, as a merciful God and the Lover of mankind." }
+        ]
+      }
+    }
+  }
+}

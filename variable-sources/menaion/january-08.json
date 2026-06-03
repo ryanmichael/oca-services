@@ -1,0 +1,156 @@
+{
+  "_meta": {
+    "feast": "Our Venerable Father George the Chozebite; and Our Venerable Mother Domnica",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 01-08.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-08.pdf",
+    "_note": "Afterfeast of the Holy Theophany. Three-canon Matins in Sergius: feast + George (Tone IV) + Domnica (Tone II by Joseph). Two-canon model: Canon I = Theophany (feast-canons/theophany.json); Canon II = George (principal saint). Domnica's canon omitted. Feast troparion sung thrice at God is the Lord (no separate saint troparion)."
+  },
+  "troparion": {
+    "tone": 1,
+    "text": "When Thou wast baptized in the Jordan, O Lord,\nthe worship of the Trinity was made manifest:\nfor the voice of the Father bare witness unto Thee\ncalling Thee His beloved Son;\nand the Spirit in the guise of a dove\nconfirmed the certainty of His words.\nO Christ God, Who hast appeared//\nand enlightened the world, glory be to Thee!",
+    "label": "Troparion of the feast (Theophany)"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Thou hast been revealed to be a most radiant beacon\nillumining with divine rays the faithful who cry out to thee:\nPray for us to Christ the Master,\nWho appeared in the streams of the Jordan//\nand hath enlightened mortals.",
+    "label": "Kontakion of St. George the Chozebite",
+    "melody": "Thou hast appeared"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph was amazed",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Joshua, son of Nun, bringing the people and the ark of the covenant through the River Jordan, was an image of the future benefaction of God; for by his mystical crossing he spiritually represented both the image of our transformation and a true depiction of regeneration. Christ hath appeared in the Jordan to sanctify the waters.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "Of the shepherds' pipes",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Christ is baptized, enlightening the world, and from on high the Father beareth witness, saying: \"This is My Son, in Whom I am well pleased. Heed ye Him! This is He Who illumineth the universe with His tender compassion, Who is baptized and saveth the human race, in that He is God!\"",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 5,
+      "melody": "The co-beginningless Word",
+      "label": "Sessional Hymn of St. George the Chozebite (after Ode 3)",
+      "text": "Let us now hymn and magnify the glorious citizen of heaven, the intercessor for the faithful who is great in fasting; for with pure pangs and his glorious manner of life he truly strove to please Him Whose good pleasure it was to ascend the Cross.",
+      "bothNow": {
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Thou didst sanctify the streams of the Jordan and crush the might of sin, O Christ our God; Thou didst bow Thy head beneath the hand of the forerunner and hast thereby saved the human race from deception. Wherefore, we entreat Thee: Save Thou our souls!"
+      }
+    },
+    "exapostilarion": {
+      "melody": "Thou hast visited us",
+      "label": "Exapostilarion of the feast",
+      "text": "The Savior, Who is grace and truth, hath revealed Himself in the streams of the Jordan, and hath enlightened those who sleep in darkness and shadow; for He is come and hath appeared, the Light unapproachable.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "The Savior, Who is grace and truth, hath revealed Himself in the streams of the Jordan, and hath enlightened those who sleep in darkness and shadow; for He is come and hath appeared, the Light unapproachable."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "theophany",
+      "tone": 4,
+      "_author": "Canon of St. George the Chozebite Tone IV. Canon I (feast) from feast-canons/theophany.json. Domnica (Tone II by Joseph, Canon III) omitted from two-canon model.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Thou hast been revealed to be a most radiant beacon\nillumining with divine rays the faithful who cry out to thee:\nPray for us to Christ the Master,\nWho appeared in the streams of the Jordan//\nand hath enlightened mortals.",
+        "label": "Kontakion of St. George the Chozebite",
+        "melody": "Thou hast appeared"
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,//\nthe Light unapproachable.",
+        "label": "Kontakion of the feast (Theophany)"
+      },
+      "ikos": {
+        "text": "As the prophet said, Christ, the great Light, hath shone forth upon Galilee of the nations, the country of Zebulon and the land of Naphthali. The Lord hath manifested Himself as a radiant beam, shining forth from Bethlehem, yet more from Mary, upon the darkened; and He, the Sun of righteousness, doth illumine the whole universe with His rays. Wherefore, come, all ye naked children of Adam, let us clothe ourselves in Him, that we may be warm; for He covereth the naked and enlighteneth the darkened. Thou hast come, Thou hast revealed Thyself, O Light unapproachable!"
+      },
+      "ode1": {
+        "irmos2": "I shall open my mouth, and be filled with the Spirit, and utter discourse to the Queen and Mother; and be seen radiantly keeping festival, joyfully praising her wonders.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O George, entreat Jesus, the Origin of wisdom, that He grant me the grace to open my mouth, that, rejoicing, I may worthily hymn thy memory with divine songs, ignorant though I am." },
+          { "canon": "secondCanon", "text": "Thou didst live on earth as one of the incorporeal ones, O glorious one, and from hence hast joined the incorporeal choirs, hymning the Incorporeal One with thrice-holy hymns and receiving His effulgence." },
+          { "canon": "secondCanon", "text": "With thy thoughts which transcend the world thou didst spurn the world; and, having fasted in the land where Christ was raised, thou didst depart to the incorruptible world, joining the choirs of the firstborn, O wise one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Opening my mouth, O pure one, I propose to hymn thee who hast given birth to the hypostatic Wisdom; but as I am impure and am unable to sing of thee, the most pure one, as is fitting, I ask thine aid." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Theotokos, thou living and plentiful fount, establish in spiritual fellowship those who sing hymns to thee, and in thy divine glory grant them crowns of glory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Bathing thyself with thy tears, thou didst cleanse thy flesh of the mire of the world, and didst drown the hordes of the demons with thy fasting as with the river's streams." },
+          { "canon": "secondCanon", "text": "Thou didst pass through life venerably, blamelessly and righteously, O wise one; and with the pangs of abstinence thou didst inherit that life which is without pain, O divinely blessed George." },
+          { "canon": "secondCanon", "text": "Seized by divine desire, O all-blessed one, thou didst depart to the places of Sion and there didst make thine abode, even unto thy death, laying waste to thy flesh with thy pangs, O all-wise one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Maiden Bride of God, who hast given birth to the Word Who washeth away the sins of the world, to the paths of repentance guide the lost one who hymneth thee." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God, is come in a swift cloud and with His sinless hands he hath saved those who cry: Glory to Thy power, O Christ.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Lovingly nurturing thyself with fasting as with food, O blessed one, thou didst set thy soul, which now rejoiceth, before the Creator of all Who hath called thee, who rejoiceth in the divine glory on high." },
+          { "canon": "secondCanon", "text": "Thou didst show thyself to be a type of heaven, adorned with stars, bearing the Lord as thy sun, Who illumineth thy soul as it were the moon and showeth it to share in His glory." },
+          { "canon": "secondCanon", "text": "The Master, descending from heaven for our sake, found Sion to be a truly divine habitation, where thou, making thine abode, hast by thy desire ascended to the Sion on high as by a ladder, having lived in the one here below." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who sitteth eternally in the bosom of the Father without being circumscribed hath now appeared, seated in thine arms, circumscribed; and He hath shown thee, who hast given birth to Him, to be Ever-Virgin after birth giving, and truly incorrupt." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "All creation stands in awe of thy divine glory; for thou, O Virgin who hast not known wedlock, didst contain within thy womb the God of all, and gave birth to the timeless Son, bestowing peace, upon all who hymn thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The angels and all the assemblies of the venerable were amazed, beholding thy unceasing pangs and thy severe manner of life; for, bearing pain as though thou wert an inanimate stone, thou didst complete the correction of the virtues." },
+          { "canon": "secondCanon", "text": "The Great One Who filleth all things with radiance and freeth all from the darkness of the passions, illumined thy whole soul, like the most pure sun, emitting the movement of salvation." },
+          { "canon": "secondCanon", "text": "Thou didst leave thy homeland, O wise George, loving Christ, thou didst make thyself a stranger among mortals, and the things of this life. Wherefore, thou wast worthy of Him, and deemed worthy of heavenly grace." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast adorned the fullness of mankind, O pure one; for thou wast shown to be more spacious than the wide heavens, O Maiden who hast given birth to God the Word Who stretched out the heavens as though they were a curtain and hath restored all mankind." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Prefiguring Thy three-day burial Prophet Jonah praying in the belly of the sea-monster cried aloud: Deliver me from corruption O Jesus Thou King of hosts.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With never-ending tears thou didst cry out to God, and He saved thy life, as from a cruel sea monster, bringing thee to the tranquil and ever-flowing springs of deification." },
+          { "canon": "secondCanon", "text": "The choir of the virtues set thee up as a four-walled rampart, O blessed one, impervious to the bow-shots of the noetic foe; for as one mighty, thou dost vanquish the tempter." },
+          { "canon": "secondCanon", "text": "Like a pure lamb thou didst hasten to Khozeva, and, supporting thyself by thy deeds as with a staff, thou didst guide to Eden the Lord's sheep, which He entrusted to thee." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Lord made His abode in thy womb as a man, vouchsafing incorrupt habitations unto me, a man, and overlooking mine iniquitous deeds and transgressions, O pure one." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Refusing to worship created things in place of the Creator, the divinely wise youths bravely trampled down the threatening fire and rejoicing they sang aloud: O supremely hymned Lord and God of our Fathers, Blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Worn out by the pangs of asceticism, thou didst not give thyself over to the thoughts of Satan; for, having acquired a mind fixed unwaveringly upon the Lord Who is able to save, thou didst cast down every assault." },
+          { "canon": "secondCanon", "text": "By prostrations, vigils and fasting thou didst mortify all thy members on the earth; and now thou livest a life of incorruption, bereft of pain, O blessed one, praying on behalf of us who hymn thee with love." },
+          { "canon": "secondCanon", "text": "O wise one, thou didst greatly desire to behold and worship at the sepulcher of the Ever-existing One; and while there thou didst in holy manner conceive the thought of dying, through abstinence, with Him Who in His loving-kindness allowed Himself to be slain, O venerable one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "They who acknowledge thee to have given birth to the Creator have not worshiped a creation, O Maiden, but, knowing the Word, the true God Who shone forth from thee, they cry: Blessed art Thou, O Lord God of our fathers!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "The Offspring of the Theotokos saved the holy children in the furnace. He who was then prefigured hath now been born on earth, and He gathereth all creation to hymn thee: all ye works praise ye the Lord and supremely exalt Him throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou gavest no slumber to thine eyelids nor sleep to thine eyes, O father, until thou didst make thyself a pleasing habitation and dwelling-place for the Almighty: Him do all His works hymn and supremely exalt throughout all ages." },
+          { "canon": "secondCanon", "text": "O blessed one, thou didst acquire as the reward of thy countless labors the paradise which the Lord hath prepared for those who desire Him with all their soul and cry out unceasingly: Hymn and supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "The Monastery of Khozeva acquired as its rule and most excellent model thee who passed through every aspect of virtuous works, O wise George, thou boast of the venerable. Wherefore, having lived a godly life, they dance with thee throughout all ages." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In His ineffable mercy, He Who is simple in His divine essence manifested Himself through thee, O Birthgiver of God, as truly complex, receiving flesh from thy blood. Wherefore, knowing thee to be the Theotokos, we chant hymns throughout all ages." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Let every mortal born on earth, radiant with light, in spirit leap for joy; and let the host of the angelic powers celebrate and honor the holy feast of the Mother of God, and let them cry aloud: Rejoice! O all-blessed Theotokos, thou pure Ever-Virgin.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Every pleasure of life didst thou spurn for the sake of the sweetness of heaven; for thou didst love a harsh existence more than a comfortable life, and didst strive to extinguish the furnace of the passions with thy many tears, O George, precious adornment of monastics." },
+          { "canon": "secondCanon", "text": "Truly, O all-wise one, thou dost now stand before God, to Whom thou didst before strive to unite thyself through abstinence, and in Whose manifestations thou dost now plainly delight. Wherefore, grant thou enlightenment and a share of things divine unto all who honor thee." },
+          { "canon": "secondCanon", "text": "Delivered from the darkness of life, thou wast taken up to the never-waning Light, O glorious one, and thou standest with the heavenly ranks before the three-Sunned Light and delightest in the splendors which emanate therefrom. And thou dost illumine us who hymn thee, O blessed one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Desiring to deify me wholly, God uniteth Himself wholly to thee and worketh a new miracle inconceivable to all: Thou, an incorrupt Virgin, dost give birth, and God is seen in the flesh. Honoring Him, we now call thee blessed, O Mary, as thou thyself didst foretell." }
+        ]
+      }
+    }
+  }
+}

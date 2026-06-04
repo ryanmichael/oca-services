@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr & Archdeacon Euplus of Catania",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 08-11.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-11.pdf",
+    "_note": "Afterfeast of the Transfiguration. Two-canon Matins: Canon I = Transfiguration (feast-canons/transfiguration.json, Cosmas of Maiuma Tone IV) — matches Sergius for this day; Canon II = Euplus (Joseph, Tone IV, acrostic: 'I piously praise the glorious Euplus'). Feast troparion sung twice + Glory/Euplus + Both now/feast at 'God is the Lord'. Standard kontakion order: Euplus after Ode 3, feast after Ode 6."
+  },
+  "feastTroparion": {
+    "tone": 7,
+    "text": "Thou wast transfigured on the mountain, O Christ our God,\nshowing to Thy disciples Thy glory as each one could endure.\nShine forth Thou on us, who are sinners all,\nThy light ever-unending.\nThrough the prayers of the Theotokos,//\nLight-Bestower, glory to Thee.",
+    "label": "Troparion of the feast (Transfiguration)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In his sufferings, Thy martyr Euplus O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "label": "Troparion of St. Euplus"
+  },
+  "kontakion": {
+    "tone": 1,
+    "text": "Holding the laws of Christ in thy hand,\nthou didst stand before the enemy in the arena, crying aloud:\n'I have called myself to suffer steadfastly!'\nWherefore, joyfully bowing thy neck,\nthou didst undergo beheading by the sword,//\nfinishing thy course.",
+    "label": "Kontakion of St. Euplus",
+    "melody": "The choir of the angels"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Thou wast transfigured on Mount Tabor, O Jesus, and a radiant cloud, stretching forth like a shadow, covered the apostles with glory. Wherefore, they fell face down upon the ground, unable to bear the sight of the splendor of the unapproachable glory of Thy countenance, O beginningless Savior. O Christ our God, Who then shone forth Thy light upon them, illumine Thou our souls!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Thou hast appeared today",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "The most splendid feast of the Master hath arrived! Come ye all to the mountain, having first cleansed yourselves spiritually, let us ascend Tabor, to behold Christ!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 1,
+      "melody": "Thy tomb, O Savior",
+      "label": "Sessional Hymn of St. Euplus (after Ode 3)",
+      "text": "Having sailed well with the weapon of the Cross, thou didst enter the calm haven of the mansions of heaven. Making thine abode therein, pray thou to the Creator, that those who today celebrate the solemn memorial of thy struggles, may be delivered from all want and sorrow.",
+      "bothNow": {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "Transfigured by the unapproachable glory of Thy divine light, O Christ, Thou didst illumine Thy godly disciples, John, Peter and James, and didst enlighten them with divine grace. And they heard the voice of the Father bearing witness to His beloved Son, and beheld the glory of Thy countenance, O Savior. O Word Who desirest to save all mankind, illumine Thou our souls!"
+      }
+    },
+    "exapostilarion": {
+      "label": "Exapostilarion of the feast",
+      "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy manifest light the light of the Father and the light of the Spirit Who guideth all creation with light.",
+      "_note": "Glory ..., Both now ..., same repeated.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy manifest light the light of the Father and the light of the Spirit Who guideth all creation with light."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "transfiguration",
+      "tone": 4,
+      "_author": "Canon of the Holy Martyr Euplus Tone IV, by Joseph (acrostic: 'I piously praise the glorious Euplus'). Canon I (feast) from feast-canons/transfiguration.json (Cosmas of Maiuma Tone IV) — matches Sergius for this day. Standard kontakion order: Euplus after Ode 3, feast after Ode 6.",
+      "kontakionAfterOde3": {
+        "tone": 1,
+        "text": "Holding the laws of Christ in thy hand,\nthou didst stand before the enemy in the arena, crying aloud:\n'I have called myself to suffer steadfastly!'\nWherefore, joyfully bowing thy neck,\nthou didst undergo beheading by the sword,//\nfinishing thy course.",
+        "label": "Kontakion of St. Euplus",
+        "melody": "The choir of the angels"
+      },
+      "kontakion": {
+        "tone": 7,
+        "text": "Thou wast transfigured on the mountain O Christ God,\nand Thy disciples beheld Thy glory as far as they could endure;\nthat when they would see Thee crucified,\nthey would comprehend that Thy suffering was voluntary,\nand proclaim to the world that Thou art of a truth//\nthe Effulgence of the Father.",
+        "label": "Kontakion of the feast (Transfiguration)"
+      },
+      "ikos": {
+        "text": "Arise, ye slothful thoughts of my soul, which are ever dragged down unto the earth! Be ye borne up and rise aloft to the summit of divine ascent! Let us make haste to Peter and the sons of Zebedee, and with them let us go to Mount Tabor, that we may see the glory of our God with them, and may hear the voice which they heard from on high; and they preached the Effulgence of the Father."
+      },
+      "ode1": {
+        "irmos2": "O Thou who wast born of the Virgin, drown I implore Thee, in the depth of dispassion the triune nature of my soul, as Thou didst the mighty strongholds of the warriors, that in the mortality of my flesh as on a timbrel I may chant a hymn of victory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Sailing well with the weapon of the Cross, thou didst enter the harbor of life; and, joyously making thine abode therein, O glorious one, still thou the tumultuous turmoil of my heart, that I may calmly glorify thy memory." },
+          { "canon": "secondCanon", "text": "As a most radiant star illumining the faithful with the teachings of virtue, O wise one, thou didst shine forth in the honored firmament of the Church driving away the darkness of the demons by the power of the Spirit." },
+          { "canon": "secondCanon", "text": "Enlivened by divine power, O wise one, with boldness of mind thou didst proclaim God Who was begotten of God, and Who endured crucifixion of His own will, destroying death by death." },
+          { "canon": "secondCanon", "text": "Let every mouth be moved to praise thee, O God-bearer, for by divine teachings thou didst rescue from the mouth of the enemy all who right dutifully accepted thy words, O valiant spiritual athlete of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Illumining thy radiant womb like the sun by His awesome descent, O pure one, Christ shone forth upon those in the world, dispelling the dark gloom of polytheism and enlightening the ends of the world." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Likened to a barren woman the Church from among the nations hath given birth, and the assembly abundant in children, hath grown weak. Let us cry out to our wondrous God: Holy art Thou, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst offer thyself as a lamb, willingly desiring to be slain for Christ, Who willingly beggared Himself and was slaughtered for thy sake, O all-blessed Euplus." },
+          { "canon": "secondCanon", "text": "Thou didst joyously offer thyself to God, O blessed one, as an unblemished victim, a sacrifice of sweet savor, a perfect offering, crying aloud: Holy art Thou, O Lord!" },
+          { "canon": "secondCanon", "text": "Made steadfast by the laws of the Gospel, O divinely wise one, thou didst stand in the midst of iniquitous men, manifestly crying aloud: 'I have revealed myself to those who seek me not, that I may denounce their wickedness!'" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Making His abode within thee, O pure one, God in nowise disturbed the purity of thy virginity. Him do thou earnestly beseech, that He make steadfast all who hymn thee." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "For the sake of love for Thine image, O compassionate One, Thou didst ascend the cross and the nations melted away. For Thou, O Lover of mankind, art my strength and my praise.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou wast truly shown to be an animate temple of the most holy Trinity, O Euplus, and didst bring down the temples of the idols with the weapon of faith." },
+          { "canon": "secondCanon", "text": "Delighting in divine beauty, O blessed Euplus, thou didst overcome wounds, pangs and all manner of tortures, suffering joyfully." },
+          { "canon": "secondCanon", "text": "Humbling the haughty heart of the tyrant, O divinely wise martyr, thou didst bring him low, and hast ascended to Him Who hath exalted mortals." },
+          { "canon": "secondCanon", "text": "Aflame with zeal for the Master, O martyr, thou didst truly consume all falsehood, diligently setting thyself apart for martyrdom." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The rich among thy people entreat thee, the Maiden who hast given birth to Christ our God, Who hath enriched all with divine understandings." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "The wicked will not behold Thy glory, O Christ, but we who rise early to hymn Thee shall behold Thee, the Only-Begotten effulgence of Thy Father's divinity, O Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Wholly illumined by divine desires and strengthened with courage, with hope thou didst run like a magnificent lion to the tribunal, vanquishing impiety." },
+          { "canon": "secondCanon", "text": "Life without grief hath been bestowed upon thee by the Redeemer for Whom thou didst endure a bitter death, O glorious spiritual athlete, and He hath numbered thee, the valiant one, among the choir of the martyrs." },
+          { "canon": "secondCanon", "text": "Thou didst bow thy neck with zealous intent and, beheaded, didst draw nigh to Christ in purity and light, O venerable one, delighting in deification." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou wast truly shown to be more exalted than the angels, having given birth, in a manner past understanding, to the Creator of the angels, Who hath glorified the holy martyrs, O most holy Virgin Mother." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "I have reached the depths of the sea and the tempest of my many sins hath engulfed me; but do Thou raise up my life from the abyss, O Greatly-merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Shedding thy blood, thou didst stand before the Judge of thy contest, O valiant and divinely wise Euplus, and, rejoicing, hast received crowns of victory from Him." },
+          { "canon": "secondCanon", "text": "Thou didst manfully stand before the tribunal, holding the laws of the Master in thy hands, O venerable Euplus, and manifestly and zealously denouncing the iniquitous." },
+          { "canon": "secondCanon", "text": "Undaunted by the multitude of tortures and unafraid of the sword, thou didst piously proclaim the Truth at the tribunal of the tyrants and didst slay delusion." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O most glorious wonder! How is it that thou hast given birth, without having known a man? How is it, O Virgin Mother, that thou hast truly fed the Bestower of milk, the Sustainer of all creation?" }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The three youths in Babylon, regarded the tyrant's command as foolishness, and cried aloud in the midst of the flame: Blessed art Thou, O Lord God of our fathers!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Sprinkling drops of thy blood upon the earth, thou didst extinguish the fire of delusion, O all-blessed one; and they have richly watered the Church of Christ, which piously hymns thee." },
+          { "canon": "secondCanon", "text": "Possessed of mighty wisdom and an unshakable mind, thou didst cause falsehood to tremble, O all-wise Euplus, and with true teachings denounced the falsehoods which lay before thee." },
+          { "canon": "secondCanon", "text": "The portal of paradise opened to thee, O blessed Euplus, martyr of Christ, seeing thee adorned with divine suffering and a crown of victory." },
+          { "canon": "secondCanon", "text": "Having purified thy soul with the divine Ember, O martyr, thou didst burn up the coals of polytheism, crying out: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Persian furnace was an image of thy divine womb, O most immaculate one, for it preserved the youths unconsumed, crying: O Lord God of our fathers, blessed art Thou!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "O almighty Redeemer of all, having descended and bedewed the children in the midst of the flame, Thou didst teach them to sing: All ye works bless and hymn the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy relics are purification from all manner of sickness and the expulsion of evil spirits; and, approaching them, we cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "The assemblies of the faithful have rejoiced in thee, having acquired thee as a mediator before Christ and a fervent intercessor and advocate, O all-blessed deacon Euplus, converser with the holy angels." },
+          { "canon": "secondCanon", "text": "Assembling, O ye people, let us draw forth from the martyr's shrine the healing of divers ailments; and let us cry out with faith: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O pure and all-immaculate one who hast given birth to the Creator of angels and mortals, thine adornment hath surpassed all the magnificence of the angels; and we chant unto Him: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Eve dwelt under the curse of sin because of the infirmity of disobedience; but thou, O Virgin Theotokos, hast through the Offspring of thy pregnancy blossomed forth blessing upon the world. Wherefore, we all magnify thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having been truly deemed worthy to behold things afar off, O most noetically rich one, thou didst manifestly pass over to the desire for which thou didst wish, which is the perfection of those things desired by the righteous, O right wondrous deacon Euplus." },
+          { "canon": "secondCanon", "text": "Holding the Cross in thy hand as a scepter, O blessed and right wondrous deacon Euplus, thou didst drench thy purple robe in thy sacred blood, and dost now stand, splendidly adorned, before Christ the King." },
+          { "canon": "secondCanon", "text": "Today, having acquired thee as an excellent guardian, the honorable metropolis of Catania holdeth festival, celebrating thy divine suffering with all dioceses and cities, and thou dost enlighten them by thine entreaties." },
+          { "canon": "secondCanon", "text": "Thou wast manifestly a most radiant sun, O blessed martyr, and hast passed over to the radiance of God, deified by divine communion; and now thou dost illumine all those who hymn thy radiant suffering." },
+          { "canon": "secondCanon", "theotokion": true, "text": "With beams of light from within thee, O Bride of God, illumine my soul, and raise it up, for it lieth in the pit of destruction. Do thou scatter the enemies who ever vex my heart and drive me toward the passions." }
+        ]
+      }
+    }
+  }
+}

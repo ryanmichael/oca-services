@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Photius & Anicetas of Nicomedia; Venerable Maximus the Confessor (transferred; Apodosis of the Transfiguration)",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 08-12.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-12.pdf",
+    "_note": "Apodosis (Leave-taking) of the Transfiguration. Three-canon Matins in Sergius: Canon I = feast (John Tone VIII); Canon II = Photius & Anicetas (Joseph, Tone IV, acrostic: 'I praise the two beautiful martyrs'); Canon III = Maximus (Tone VIII). Two-canon model: feast = Canon I (from feast-canons/transfiguration.json), martyrs = Canon II, Maximus omitted. Maximus is transferred to this date due to Apodosis. No kontakionAfterOde3 (Ode 3 slot belongs to Maximus who is omitted; martyrs have no kontakion in this service). Feast troparion sung once + Glory/martyrs + Both now/feast at 'God is the Lord'. Kontakion at Liturgy: Maximus Tone VI + feast Tone VII."
+  },
+  "feastTroparion": {
+    "tone": 7,
+    "text": "Thou wast transfigured on the mountain, O Christ our God,\nshowing to Thy disciples Thy glory as each one could endure.\nShine forth Thou on us, who are sinners all,\nThy light ever-unending.\nThrough the prayers of the Theotokos,//\nLight-Bestower, glory to Thee.",
+    "label": "Troparion of the feast (Transfiguration)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In their sufferings, Thy martyrs O Lord,\nreceived imperishable crowns from Thee, our God;\nfor, possessed of Thy might,\nthey set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy their supplications save Thou our souls.",
+    "label": "Troparion of Sts. Photius & Anicetas"
+  },
+  "kontakion": {
+    "tone": 6,
+    "text": "The thrice-radiant Light which abode in thy soul\nshowed thee to be a chosen vessel revealing divine things to the ends of the earth,\nO blessed Maximus, who givest utterance to concepts hard to grasp,\nclearly proclaiming the transcendent and beginningless Trinity unto all.",
+    "label": "Kontakion of St. Maximus the Confessor",
+    "_note": "Maximus's kontakion is what Sergius sings at Liturgy on this date (with the feast kontakion); Maximus's canon is omitted from the two-canon model."
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Having been lifted up upon the Cross",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Moses and Elijah stood before Thee when Thou didst ascend the mountain with the disciples and shone forth in the glory of the Father; for the law and the prophets serve God; and the Father, declaring Christ's essential Sonship, called Him His Son. Him do we hymn with Thee and the Spirit.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Thou wast transfigured on Mount Tabor, O Jesus, and a radiant cloud, stretching forth like a shadow, covered the apostles with glory. Wherefore, they fell face down upon the ground, unable to bear the sight of the splendor of the unapproachable glory of Thy countenance, O beginningless Savior. O Christ our God, Who then shone forth Thy light upon them, illumine Thou our souls!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 4,
+      "melody": "Having been lifted up upon the Cross",
+      "label": "Sessional Hymn of Sts. Photius & Anicetas (after Ode 3)",
+      "text": "Having brought down the uprisings of the enemy by your endurance of cruel torments, O spiritual athletes, ye dwell now in the heavens, rejoicing, O glorious Photius and blessed Anicetas. Wherefore, ye are called blessed for ages of ages, entreating Christ on behalf of us who celebrate your memory.",
+      "bothNow": {
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "When Thou wast transfigured on Mount Tabor Thou didst show to Thy disciples the effulgence of Thy divine glory, as far as each one could endure, O Word of God; and with them we, who hymn Thee O only immutable and immortal Lord, have also been enlightened; for with faith we cry out to Thee: Glory to Thy kingdom, O Christ!"
+      }
+    },
+    "exapostilarion": {
+      "label": "Exapostilarion of the feast",
+      "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy light the manifest light of the Father and the light of the Spirit Who guideth all creation with light.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated. Maximus's exapostilarion omitted (his canon omitted from two-canon model).",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy light the manifest light of the Father and the light of the Spirit Who guideth all creation with light."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "transfiguration",
+      "tone": 4,
+      "_author": "Canon of the Holy Martyrs Photius & Anicetas Tone IV, by Joseph (acrostic: 'I praise the two beautiful martyrs'). Canon I (feast) from feast-canons/transfiguration.json (Cosmas of Maiuma Tone IV); Sergius uses John's Tone VIII feast canon for this day. Three-canon in Sergius: feast + martyrs + Maximus. Two-canon model omits Maximus (Canon III). No kontakionAfterOde3: Ode 3 slot belongs to Maximus who is omitted; martyrs have no kontakion in this service. Apodosis of Transfiguration.",
+      "kontakion": {
+        "tone": 7,
+        "text": "Thou wast transfigured on the mountain O Christ God,\nand Thy disciples beheld Thy glory as far as they could endure;\nthat when they would see Thee crucified,\nthey would comprehend that Thy suffering was voluntary,\nand proclaim to the world that Thou art of a truth//\nthe Effulgence of the Father.",
+        "label": "Kontakion of the feast (Transfiguration)"
+      },
+      "ikos": {
+        "text": "Arise, ye slothful thoughts of my soul, which are ever dragged down unto the earth! Be ye borne up and rise aloft to the summit of divine ascent! Let us make haste to Peter and the sons of Zebedee, and with them let us go to Mount Tabor, that we may see the glory of our God with them, and may hear the voice which they heard from on high; and they preached the Effulgence of the Father."
+      },
+      "ode1": {
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old, and by Moses' outstretched hands, raised in the form of a cross, the power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having endured the pangs of the body with the firm resolve of faith, O all-praised ones, ye have passed over, rejoicing, to a life devoid of pain, ever praying on our behalf." },
+          { "canon": "secondCanon", "text": "Protected by the divine armor of the faith, O Anicetas, thou didst bravely volunteer to do battle against the incorporeal foe, and destroyed their armies with the power of God." },
+          { "canon": "secondCanon", "text": "Enlightened by divine understanding, O glorious Anicetas, thou didst put to shame the myths of the rhetors and the unskilled minds of the pagans, giving thyself over to suffering." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast truly been shown to be a Virgin after giving birth, as thou wast before birthgiving; for, in a manner past understanding, thou hast given birth to God the Word, Who crowneth the holy martyrs who suffered for His sake." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud: Thou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Vanquishing the hordes of the enemy with Christ, O martyred spiritual athlete Anicetas, thou didst receive the crown of victory." },
+          { "canon": "secondCanon", "text": "Ye spurned the flesh as corruptible, O martyrs of Christ, and endured cruel torments with a steadfast mind." },
+          { "canon": "secondCanon", "text": "Full of life-creating waters, O wise martyrs, with the streams of your blood ye stopped the turgid streams of delusion." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The Lord Who dwelleth in the heavens made His abode within thy womb, O Theotokos, and hath driven all delusion away from us." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the Cross, the Church now standeth arrayed and doth worthily cry aloud: Glory be to Thy power, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Set afire by the love of God, ye diligently passed through the flame of the fire, kept unharmed by the dew of the Spirit, O invincible martyrs, divine intercessors on behalf of our souls." },
+          { "canon": "secondCanon", "text": "Spurning the body and lacerated in divers ways, with all their mind the spiritual athletes directed their gaze toward God, Who gave them patience for the sake of their faith." },
+          { "canon": "secondCanon", "text": "As mighty towers of piety, ye cast down the ramparts of the enemy and became citizens of the city of God, O martyrs, crying aloud: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "Ye did not fall into the slumber of impiety, O martyrs, but with divine vigilance ye guided those who ever sleep in death toward the Light by the grace of divine knowledge." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In that thou art beautiful, O pure Virgin Mother, thou hast given birth to the Comely One, Who hath shown forth as beautiful the martyrs who suffered steadfastly and destroyed ungodliness." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world, art my light, a holy light turning from the darkness of ignorance those who sing Thy praises in faith.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy body, O most blessed Anicetas, slain by manifold wounds, hath in holiness mediated for thee the life which ageth not." },
+          { "canon": "secondCanon", "text": "Thou wast the destruction of the raging fire, O Photius, who dost share in the divine radiance, thou true child of the never-waning day." },
+          { "canon": "secondCanon", "text": "Desiring in oneness of mind beautiful things which last, O glorious martyrs, ye utterly rejected the corruption of transitory things." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Who can tell of thy mystery, O Lady Theotokos? For, in a manner past understanding and all telling, thou didst ineffably give birth to God." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise' having been cleansed of the blood of the demons' by the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou wast lifted up upon a tree, unmercifully lacerated, casting off the coarseness of mortality, and invested by heaven with divine raiment, O martyr Anicetas." },
+          { "canon": "secondCanon", "text": "Breaking asunder the bonds of deception with your patience and endurance when ye were tightly bound, O saints, ye choked the prince of darkness with divine cords." },
+          { "canon": "secondCanon", "text": "Ye showed yourselves to be great luminaries, enlightening all creation with rays of healings and the brilliance of your divine struggles, O all-valiant spiritual athletes of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In a manner transcending the laws of nature thou hast given birth to the true Law-giver, O all-immaculate one. Him do thou beseech, that He have pity on my soul, which hath been vanquished by the law of sin, and save me." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham, burning with a love of piety rather than by a flame of fire, cried aloud saying: Blessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having passed through a strange struggle, O ye glorious martyrs of great renown, ye were truly shown to be strangers to carnal thoughts, fellow citizens with the angels and co-heirs of Christ." },
+          { "canon": "secondCanon", "text": "By your patience and endurance O most glorious ones, ye vanquished all the ungodly assaults of your enemies, and, becoming radiant through your pangs, ye passed over to the unwaning radiance." },
+          { "canon": "secondCanon", "text": "As temples of the supremely divine Trinity, ye manfully brought down the pillars and temples of the ungodly, O all-praised ones, and, rejoicing, have been translated to the temple of heaven." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In that thou art more spacious than the heavens, O pure and most immaculate one, thou didst receive the Word Who, in a manner past understanding, can in nowise be contained, and Who leadest to the broad expanse of divine life those who walk the narrow path." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den; while the zealously pious youths, girded with virtue, quenched the power of the fire and cried aloud: Bless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Showing forth firmness of mind, O wise ones, ye were not afraid of the onslaught of wild beasts, nor were ye daunted by the trampling of horses, nor of the severing of your members, nor the threats of the tyrants; but ye cried aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Ye heal the sufferings of the faithful, having emulated the blessed suffering of Christ by your own sufferings, O saints; and dispelling infirmities ye drive away evil spirits, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "The two most comely spiritual athletes confessed the uncreated Trinity and truly destroyed hordes of myriads of adversaries, and they have united themselves to ten thousands of noetic beings, chanting: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O holy Virgin who hast given birth to the most holy God Who hath crowned His holy martyrs with grace, save thou and sanctify us who fervently chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain: even Christ, Who hath joined together the disparate natures; therefore rejoicing we magnify thee, O Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Behold! the radiant and luminous day of the godly Photius and Anicetas hath shone forth full of grace, enlightening all who celebrate their radiant sufferings thereon." },
+          { "canon": "secondCanon", "text": "Ye were shown to be like embers burning up all the kindling of evil, and like honorable lambs, willingly slain and brought to the Lamb Who taketh away sins." },
+          { "canon": "secondCanon", "text": "Most gloriously glorifying your wounds, sufferings and pangs, your endurance which passeth understanding, your struggles and death; O spiritual athletes, we all rejoice today." },
+          { "canon": "secondCanon", "text": "Like roses the most comely spiritual athletes flowered forth in holiness in the vales of the martyrs, perfuming the hearts of the pious with the Spirit, and dispelling the stench of falsehood." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Enlighten us, O Virgin who hast given birth to the unapproachable Light, and fill with gladness, joy and divine understanding us who with a pure heart magnify thee with godly wisdom." }
+        ]
+      }
+    }
+  }
+}

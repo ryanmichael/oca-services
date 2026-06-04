@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr & Archdeacon Laurence of Rome",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 08-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-10.pdf",
+    "_note": "Afterfeast of the Transfiguration. Two-canon Matins: Canon I = Transfiguration (feast-canons/transfiguration.json, Cosmas Tone IV); Canon II = Laurence (Tone IV, acrostic: 'Most wisely do I hymn the mighty Laurence'). Sergius uses John's Tone VIII feast canon for this day; pragmatic mismatch handled via _author note. Feast troparion sung twice + Glory/Laurence + Both now/feast at 'God is the Lord'. Standard kontakion order: Laurence after Ode 3, feast after Ode 6."
+  },
+  "feastTroparion": {
+    "tone": 7,
+    "text": "Thou wast transfigured on the mountain, O Christ our God,\nshowing to Thy disciples Thy glory as each one could endure.\nShine forth Thou on us, who are sinners all,\nThy light ever-unending.\nThrough the prayers of the Theotokos,//\nLight-Bestower, glory to Thee.",
+    "label": "Troparion of the feast (Transfiguration)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In his sufferings, Thy martyr Laurence O Lord,\nreceived an imperishable crown from Thee, our God;\nfor, possessed of Thy might,\nhe set at naught the tyrants\nand crushed the feeble audacity of the demons.//\nBy his supplications save Thou our souls.",
+    "label": "Troparion of St. Laurence"
+  },
+  "kontakion": {
+    "tone": 2,
+    "text": "Kindling thy heart with divine fire,\nthou didst utterly reduce the fire of the passions to ashes,\nO God-bearing martyr Laurence,\nthou confirmation of spiritual athletes;\nand in the midst of thy sufferings thou didst cry aloud with faith://\nNothing can separate me from the love of Christ!",
+    "label": "Kontakion of St. Laurence",
+    "melody": "Seeking the highest"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Thou wast transfigured on Mount Tabor, O Jesus, and a radiant cloud, stretching forth like a shadow, covered the apostles with glory. Wherefore, they fell face down upon the ground, unable to bear the sight of the splendor of the unapproachable glory of Thy countenance, O beginningless Savior. O Christ our God, Who then shone forth Thy light upon them, illumine Thou our souls!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Transfigured in the unapproachable glory of Thy divine light, O Christ, Thou didst illumine Thy godly disciples, John, Peter and James, moving them to awe by Thy divine grace. And they heard the voice of the Father bearing witness unto Thee as His beloved Son, and beheld the glory of Thy countenance, O Savior. O Word Who desirest to save all mankind, enlighten Thou our souls!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of St. Laurence (after Ode 3)",
+      "text": "Having amassed heavenly riches and brought them to the poor, thou didst distribute them, and gave thy bread also to the hungry, and thereby having acquired life incorruptible, thou didst shine forth in thy confession of Christ, O glorious one. Wherefore, having courageously suffered under the law, thou didst receive from God a crown for thy labors, O spiritual athlete Laurence. Entreat Christ God, that He grant forgiveness of sins unto those who with love honor thy holy memory.",
+      "bothNow": {
+        "tone": 8,
+        "melody": "That which was commanded",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "The lightning hidden under the flesh of Thy nature and divine majesty, O Christ our Benefactor, didst thou show forth upon the holy mountain, shining upon the disciples who were with Thee. And when they perceived Thine unbearable glory, they cried aloud: 'Holy art Thou, for, though Thou art unapproachable, Thou art visible to the world in the flesh, O Thou only Lover of mankind!'"
+      }
+    },
+    "exapostilarion": {
+      "label": "Exapostilarion of the feast",
+      "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy light the manifest light of the Father and the light of the Spirit Who guideth all creation with light.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "O Word, Thou immutable Light of the light of the unbegotten Father: today on Mount Tabor we have seen in Thy light the manifest light of the Father and the light of the Spirit Who guideth all creation with light."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "transfiguration",
+      "tone": 4,
+      "_author": "Canon of the Holy Martyr Laurence Tone IV (acrostic: 'Most wisely do I hymn the mighty Laurence'). Canon I (feast) from feast-canons/transfiguration.json (Cosmas of Maiuma Tone IV); Sergius uses John's Tone VIII feast canon for this day. Standard kontakion order: Laurence after Ode 3, feast after Ode 6.",
+      "kontakionAfterOde3": {
+        "tone": 2,
+        "text": "Kindling thy heart with divine fire,\nthou didst utterly reduce the fire of the passions to ashes,\nO God-bearing martyr Laurence,\nthou confirmation of spiritual athletes;\nand in the midst of thy sufferings thou didst cry aloud with faith://\nNothing can separate me from the love of Christ!",
+        "label": "Kontakion of St. Laurence",
+        "melody": "Seeking the highest",
+        "ikos": {
+          "text": "Assembling, O ye faithful, with hymns let us all honor the spiritual athlete Laurence, who shone forth in the world like a steady beacon, as an initiate of ineffable mysteries; for by his supplications we are delivered from grievous transgressions. And having cleansed our hearts, let us glorify Christ Who glorifieth him who is mighty amid sufferings and who saith: Nothing can separate me from the love of Christ!"
+        }
+      },
+      "kontakion": {
+        "tone": 7,
+        "text": "Thou wast transfigured on the mountain O Christ God,\nand Thy disciples beheld Thy glory as far as they could endure;\nthat when they would see Thee crucified,\nthey would comprehend that Thy suffering was voluntary,\nand proclaim to the world that Thou art of a truth//\nthe Effulgence of the Father.",
+        "label": "Kontakion of the feast (Transfiguration)"
+      },
+      "ikos": {
+        "text": "Arise, ye slothful thoughts of my soul, which are ever dragged down unto the earth! Be ye borne up and rise aloft to the summit of divine ascent! Let us make haste to Peter and the sons of Zebedee, and with them let us go to Mount Tabor, that we may see the glory of our God with them, and may hear the voice which they heard from on high; and they preached the Effulgence of the Father."
+      },
+      "ode1": {
+        "irmos2": "O Thou who wast born of the Virgin, drown I implore Thee, in the depth of dispassion the triune nature of my soul, as Thou didst the mighty strongholds of the warriors, that in the mortality of my flesh as on a timbrel I may chant a hymn of victory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Taking delight in the garden of sweetness and joining chorus with the angelic hosts as is meet, as a warrior of Christ, pray thou that He grant effulgent radiance unto me who hymn thee, O blessed Laurence." },
+          { "canon": "secondCanon", "text": "Entering upon the feats of honored torment, O Laurence, in steadfastness of soul thou didst show thyself to be a victorious spiritual athlete, magnificently arrayed in the crown of righteousness and a diadem of victory." },
+          { "canon": "secondCanon", "text": "As thou wast a child of the light and of the day, thou hast shone forth upon us sensibly like the sun from the west, illumining the ends of the earth with a most splendid radiance, O all-glorious martyr Laurence." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Delivered from the bonds of Hades and corruption, and from the condemnation of the law, by thine honored birthgiving, O most holy Virgin, we cry to thee in thanksgiving: Rejoice, O thou who art full of joy, thou saving portal of grace!" }
+        ]
+      },
+      "ode3": {
+        "irmos2": "The bow of the mighty hath waxed feeble and the weak have girded themselves with strength: therefore is my heart established in the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the Cross as thy standard, thou didst valiantly array thyself against the enemy, and wast shown to be crowned with victory, O right wondrous one." },
+          { "canon": "secondCanon", "text": "Protected by the law of Christ, as one invincible thou didst oppose the laws of the impious with courageous endurance, O all-blessed one." },
+          { "canon": "secondCanon", "text": "Strengthened by the power of God, thou didst destroy the feebleness of polytheism and didst elucidate the pre-eternal divinity of Christ." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Equal to the Father and the Spirit in nature, essence and divinity, and to men also, was the Word Who becameth incarnate of thee, O all-immaculate one." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "He who sitteth in glory upon the throne of the Godhead, Jesus the true God, is come in a swift cloud and with His sinless hands he hath saved those who cry: Glory to Thy power, O Christ.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "For love of the Word, the servant of the Word, adorned with eloquence and spirituality, hath been slaughtered, and now reigneth in righteousness with the Word, enjoying gladness and His glory." },
+          { "canon": "secondCanon", "text": "Piously fighting off the slumber of impiety with divine vigilance, O sacred martyr of Christ, by thy martyr's stand thou didst cut off from thine eyes the sleep which is unto death." },
+          { "canon": "secondCanon", "text": "Protected by the true armor of piety against the proponents of the impious opposition, for the sake of the Faith thou didst utterly cast down the memory of them by thy love of morality." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having put aside all the defilement of the primeval food, we are nurtured with the Grain of Life from heaven, Which arose from the earth from the Virgin. Let us hymn her as the mediatress of good things." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "The wicked will not behold Thy glory, O Christ, but we who rise early to hymn Thee shall behold Thee, the Only-Begotten effulgence of Thy Father's divinity, O Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thine eyes fixed with unwavering vision upon divine beauties, O right wondrous Laurence, thou didst spurn all the beautiful things on earth and the cruel pangs of thy body." },
+          { "canon": "secondCanon", "text": "Having recognized Christ, Who became a servant for us, through gifts received from the Father, and having become His servant, thou didst depart unto Him through the shedding of thy blood, O most blessed one." },
+          { "canon": "secondCanon", "text": "O blessed one, thou didst offer thyself unto Christ as a sacred oblation and a magnificent adornment; and having adorned the tabernacle of heaven, thou dost now abide there delighting in radiance." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The only-begotten Son, of the same essence and like unto the Father, of His own will becameth akin to mankind, the Most High being incarnate from thy womb, O Virgin Mother." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "I have reached the depths of the sea and the tempest of my many sins hath engulfed me; but do Thou raise up my life from the abyss, O Greatly-merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Kindling a material fire, thou didst prepare thyself as sweet food for the King of all, Who loveth and craveth our salvation, O all-glorious one." },
+          { "canon": "secondCanon", "text": "Thou didst draw nigh wholly to the light of the ruling Trinity, and being radiant, as God's servant, thou dost illumine those who hymn thee, O spiritual athlete." },
+          { "canon": "secondCanon", "text": "Strengthened with divine power, lying on the heated grill thou didst endure torment for the love of Christ, enkindling thy soul with fire and spiritual dew." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin Mother, thou wast the place of God's lodging, an animate throne, the holy mountain, the ark, the divinely wrought tabernacle, and the golden candle-stand." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Thou didst save the children of Abraham in the fire and slay the Chaldeans, who unjustly entrapped the righteous ones. O supremely hymned Lord, God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Forechosen to celebrate the Mysteries and serve the Word, thou wast shown to be a sacred vessel and oblation of the temple of heaven, chanting unto the Creator: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Covered by the law of the life which is in Christ, O most blessed Laurence, thou didst not bow thy mind to those who imposed laws of death and corruption, but chanted: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Clad in a body as one who manifestly felt no pain, O most blessed one, with valorous mind, and as one most noetically rich, thou didst dare the all-devouring fire, crying aloud: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou wast shown to be the noetic eastward portal of the Most High Who, in a manner beyond speech and understanding, appeared to mankind on earth through thee, O Bride of God: the blessed God of our fathers." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "O almighty Redeemer of all, having descended and bedewed the children in the midst of the flame, Thou didst teach them to sing: All ye works bless and hymn the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "In thy steadfastness of mind thou wast mightier than the unbearable flame, burning as if in another's body, O blessed one, yet chanting with faith: All ye works bless and hymn the Lord!" },
+          { "canon": "secondCanon", "text": "Like unto the three children, thou didst quench the burning embers of the fire with the dew of divine grace, crying aloud and chanting: All ye works bless and hymn the Lord!" },
+          { "canon": "secondCanon", "text": "As Christ was thine enlightenment, He girded thee about with His own might, and led thee up to Himself as thou didst piously chant: All ye works bless and hymn the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "A rod sprung forth from the root of Jesse wast thou, and in a manner past nature thou gavest rise to Christ my God and Lord, the Flower of the Godhead. Let all works bless thy birthgiving, O Virgin!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Eve dwelt under the curse of sin because of the infirmity of disobedience; but thou, O Virgin Theotokos, hast through the Offspring of thy pregnancy blossomed forth blessing upon the world. Wherefore, we all magnify thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst offer thyself as a perfect sacrifice and incense pleasing unto the Master, being tried by the fire of suffering like gold in a crucible; whereby thou didst become a foremost adornment of the Church, O right wondrous one." },
+          { "canon": "secondCanon", "text": "Deified by the direct sight of God and by a higher union, O Laurence, in word and by divine vision thou wast radiantly illumined by the uttermost Light. Wherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "text": "Thou didst shine forth from the West like the sun, O blessed one, O great and most glorious wonder; illumining all the Church with thy beams, O right wondrous one; and warming all with the fervor of faith. Wherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The prophets, beholding images of thy birthgiving, O all-immaculate one, were instructed thereby from afar by divine inspiration, loudly proclaiming it to the world, and we now marvel at their fulfillment." }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Myron",
+    "feastRank": "simple",
+    "tone": 2,
+    "_source": "St-Sergius Emenaion 08-17.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-17.pdf",
+    "_note": "Afterfeast of the Dormition. Two-canon Matins: Canon I = Dormition (feast-canons/dormition.json, John of Damascus Tone IV); Canon II = Myron (Joseph, Tone II, acrostic: 'I hymn thy grace redolent of myrrh, O Myron'). Feast troparion sung thrice at 'God is the Lord'. Standard kontakion order: Myron after Ode 3, feast after Ode 6."
+  },
+  "troparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity,\nand in thy dormition thou didst not forsake the world, O Theotokos.\nThou hast been translated unto life,\nsince thou art the Mother of Life.//\nAnd by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Having loved Christ from childhood\nand having observed His divine commandments, O most glorious one,\nthou didst wholly make haste to Him, O most honorable Myron,\nand dost pray earnestly with the angels.//\nAsk for the forgiveness of sins of those who honor thy memory.",
+    "label": "Kontakion of St. Myron",
+    "melody": "Having been lifted up on the Cross"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Thy soul dwelleth among the noetic beings of heaven, O most immaculate one, and thy precious body hath passed over to paradise, away from corruption, to a place of light. Thus, let the Lord recompense the iniquitous, for they have spoken falsehoods against thine honored body. Therefore, with the apostles we cry aloud: Rejoice, O thou who art full of grace!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Having surrendered thy soul into the hands of thy Creator and God, Who for our sake became incarnate of thee, thou didst pass over to life incorruptible. Wherefore, with honor we all call thee blessed who alone art pure and unblemished; and confessing thee to be the Theotokos, we cry aloud: Entreat Christ, to Whom thou hast passed over, to save our souls!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 1,
+      "melody": "Thy tomb, O Savior",
+      "label": "Sessional Hymn of St. Myron (after Ode 3)",
+      "text": "Thou wast shown to be a sweet fragrance and fiery of spirit, O adornment of martyrs and ornament of the faithful; and, in accordance with thy name, thou dost render our hearts redolent by thy suffering. Wherefore, celebrating thy most holy memory today, all of us who honor thee are hallowed with love.",
+      "bothNow": {
+        "tone": 1,
+        "melody": "When the stone was sealed",
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "The most honorable choir of the most wise apostles was gathered together miraculously to bury thy most pure body gloriously, O all-hymned Theotokos. With them a multitude of the angels sang, with honor praising thy repose which we celebrate with faith."
+      }
+    },
+    "exapostilarion": {
+      "label": "Exapostilarion of the feast",
+      "text": "Though thou hast passed over from earth to heaven, forsake not thine inheritance, O pure one: make firm the rule of our land; subdue the nations, and pour forth peace upon the ends of the world.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "Though thou hast passed over from earth to heaven, forsake not thine inheritance, O pure one: make firm the rule of our land; subdue the nations, and pour forth peace upon the ends of the world."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 2,
+      "_author": "Canon of the Holy Martyr Myron Tone II, by Joseph (acrostic: 'I hymn thy grace redolent of myrrh, O Myron'). Canon I (feast) from feast-canons/dormition.json (John of Damascus Tone IV). Standard kontakion order: Myron after Ode 3, feast after Ode 6.",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Having loved Christ from childhood\nand having observed His divine commandments, O most glorious one,\nthou didst wholly make haste to Him, O most honorable Myron,\nand dost pray earnestly with the angels.//\nAsk for the forgiveness of sins of those who honor thy memory.",
+        "label": "Kontakion of St. Myron",
+        "melody": "Having been lifted up on the Cross"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos,\nwho is untiring in her supplications\nand our certain hope in her intercessions.\nFor, as the Mother of Life, she hath passed over to the Life//\nWho dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "Come, O ye people, let us sing a song to Christ our God, Who divided the sea, and made a way for the nation which He had brought up out of the bondage of Egypt; for He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Joining chorus today in memory of the spiritual athlete Myron, let us offer praise unto God Who bestowed upon him the strength to destroy the might of the enemy." },
+          { "canon": "secondCanon", "text": "Suffering under the law, O most suffering martyr, thou didst offer thyself to the Benefactor as a gift, a sacred oblation, a goodly victim, a sacrifice of sweet savor." },
+          { "canon": "secondCanon", "text": "As one wise, as a pure temple of Him Who shone forth from the Virgin, O glorious one, thou didst drive away the soul-destroying wolf who tried to harass the flock of God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The passion-bearing martyrs set delusion at naught, confessing God Who became like unto us and to Whom thou alone hast given birth without knowing wedlock, O pure Sovereign Lady." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thou hast established me on the rock of faith, and my mouth hath been emboldened against mine enemies. For my spirit rejoiceth when I sing: There is none as holy as our God and none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having lifted the desire of thy heart up to the Lord Who was lifted up upon the Cross, O most glorious one, lacerated on the tree thou wast exalted, crying out with fervor: There is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "With the keen darts of thy words thou didst pierce the heart of the tyrant, O valiant and all-praised warrior of Christ the King; and, chanting, thou didst say: There is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "Shining forth like the dawn, like the morn thou hast dispelled the gloom of ignorance, O much-suffering Myron, enlightening those who ever chant: Thou art our God, and there is none more righteous than Thee, O Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having given birth unto the Healer, O Virgin, thou hast most gloriously healed all creation, which is sickened with ungodliness. Wherefore, rendering thanks, we cry out to thee: There is none more pure than thee, O Lady!" }
+        ]
+      },
+      "ode4": {
+        "irmos2": "I hymn Thee, O Lord, for I have heard report of Thee, and I was afraid; for Thou comest to me, seeking me who am lost. Wherefore, I glorify Thy great condescension towards me, O greatly Merciful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Confessing the Savior, God and Lord, Who shone forth from the Virgin, O glorious one, in the midst of the tribunal, with thine endurance thou didst humble the insolence of the tyrants, setting polytheism at naught." },
+          { "canon": "secondCanon", "text": "Lacerated and beaten, O thou of valiant mind, thou wast not afraid, and thus didst astonish the angels who beheld thine endurance. And destroying the incorporeal foe therewith, thou wast shown to be a victorious martyr." },
+          { "canon": "secondCanon", "text": "Full of divine dew, with valiant mind thou didst pass through the fiery furnace, and wast seen therein rejoicing with the angels, O wise and blessed Myron, and in nowise consumed." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The great and awesome mystery of thy birthgiving doth astonish the heavenly intelligences, O pure one; for in His goodness, God was pleased to become incarnate through thee, for the salvation and establishment of the world." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Christ my Savior, the enlightenment of those lying in the darkness of sin. I rise early to hymn Thee O King of Peace, enlighten me with Thy radiance, for I know no other God than Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy divinely radiant and light-bearing memory, which, through the power of the Holy Spirit, hath spread throughout the world, hath illumined with the light of piety those who honor it and proclaim thy valiant deeds." },
+          { "canon": "secondCanon", "text": "As if one without a body didst thou undergo bitter persecution in thy youth, O courageous martyr; for, manifestly strengthened by invisible power, thou didst endure the flaying of thy skin, as though it was not thee, but another who was suffering, O glorious one." },
+          { "canon": "secondCanon", "text": "Thy fragrant myrrh hath poured forth in drops upon our sores, O martyr, dispelling all the stench of ungodliness, and ever perfuming the Holy Church of Christ, which manifestly blesseth thee with faith and love." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O blessed and most pure one, on our behalf entreat Him Who ineffably became incarnate from thee, that those who ever confess thee to be the Theotokos may be delivered from all enemies, visible and invisible, O all-immaculate one." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "From within the sea monster Jonah cried unto the Lord: 'Lead me up from the abyss of Hades, I pray Thee; for with a voice of praise as to my Redeemer, in the spirit of truth I offer myself to Thee.'",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the sprinkling of thy sacred blood thou didst drown legions of the demons, O valiant warrior; and, wearing thy wreath as an exemplary victor, thou didst hasten to God." },
+          { "canon": "secondCanon", "text": "Seeing thy countenance illumined with divine splendor, O passion-bearer, the tyrants were amazed; but, refusing to acknowledge God, they chose the darkness instead, and have been sent into eternal torment." },
+          { "canon": "secondCanon", "text": "At the command of the cruel tormenter, in a manner surpassing human nature thou didst endure the flaying of thy skin, O right laudable one, showing thy pure desire for God and thine unwavering gaze toward Him." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The laws of nature are renewed in thee, O Virgin; for, in a manner surpassing nature, and for our regeneration, thou hast given birth most gloriously unto God-Emmanuel, Who is unapproachable in His nature." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "When the golden image was worshipped on the plain of Dura, Thy three children spurned the impious command, and, cast into the midst of the flame, they were bedewed, and sang: O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Seeing thee standing in the flame amongst angels, thy countenance shining with ineffable light, O wise one, those who looked on marveled and, moved to hymnody, they chanted to the Master: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Standing with the angelic intelligences in the midst of the furnace with a pure mind, rejoicing thou didst hymn the supremely good Lord as the One Who bridled the flame and saved thee who chanted: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O most pure virgin, thou hast been revealed to be the dwelling-place and beauteous palace of God, and the divine throne whereon He sat and prepared for all a seat in heaven. Wherefore, we cry aloud: Blessed art thou who hast given birth unto God in the flesh!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Of old in the furnace of the holy children, Thou didst prefigure Thy Mother, O Lord, in the image of those who entered therein, and rescued therefrom remained unconsumed. Her who hath been revealed today do we hymn unto the ends of the earth, supremely exalting her throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Beholding thee unvanquished, O thou of courageous mind, when they were cutting strips of thy flesh down to the very bone, the mindless tormenter ordered that yet another torture be added: that thou be lacerated with claws of iron, afflicting thee incurably with unbearable wounds." },
+          { "canon": "secondCanon", "text": "In the hearing of all the people, O glorious martyr Myron, the voice of God was borne to thee, summoning thee to the ineffable places of rest and the beauteous choirs of the angels in heaven." },
+          { "canon": "secondCanon", "text": "Like Daniel, thou didst stand in the midst of wild beasts which stood in awe of thy blessed suffering, and the immeasurable magnitude of thy struggles, O most blessed one, and which were obedient to thy voice." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Pierced by the arrow of the enemy, I have utterly wounded my soul and suffer incurably. As thou art she who gaveth birth to Christ the Savior, O most immaculate one, heal and save me, thou hope of the hopeless." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "God the Word, God of God, Who by ineffable wisdom came to create Adam anew after his grievous fall to corruption through eating and Who took flesh beyond all telling from the Holy Virgin for our sake, Him we faithful with one accord magnify in song.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "That thou mightest be deemed worthy to behold the future glory and ineffable comeliness of Christ the Judge of the contest, O valiant one, thou didst bow thy neck and accept beheading with the sword; filling the divine legions of the martyrs with joy." },
+          { "canon": "secondCanon", "text": "Thy right praiseworthy memory, like a sweet-smelling myrrh perfuming the hearts of the faithful, hath dawned for those who desire it; by thy supplications fill us with divine fragrance, who celebrate thereon, O right laudable Myron." },
+          { "canon": "secondCanon", "text": "Achaia boasteth in thy swaddling bands and sufferings, O valiant spiritual athlete of Christ; and Cyzicus is greatly adorned, possessing thy much-suffering body as a veritable treasure, a well-spring of healings and a cure purging away illness." },
+          { "canon": "secondCanon", "text": "The beauteous Church, the noetic Sion, Mother of cities, elect of all that is holy in the highest, as it is written, hath thee as eminent among the martyrs, who as a martyr dost pray on our behalf." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O virgin, thou palace and throne of God, we all cry out to thee with the voice of the angel: Rejoice, thou through whom we, who of old were rejected because of corruption and foolishly ruined our pristine beauty, have been deemed worthy of the kingdom of heaven." }
+        ]
+      }
+    }
+  }
+}

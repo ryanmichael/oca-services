@@ -1,0 +1,150 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Anysia of Thessalonica; Venerable Melania the Roman (Apodosis of the Nativity)",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 12-30.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-30.pdf",
+    "_note": "Apodosis (Leave-taking) of the Nativity of Christ. Three-canon Matins in Sergius: feast (John the Monk, Tone I) + Anysia (Theophanes, Tone IV) + Melania (Joseph, Tone IV). Two-canon model: Canon I = Nativity (feast-canons/nativity.json); Canon II = Anysia (principal saint). Melania omitted. No kontakion after Ode 3 in Sergius; feast kontakion only after Ode 6. Exapostilarion of feast sung thrice. Zoticus canon appears at Compline only, not Matins."
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "Thy Nativity, O Christ our God,\nhath shined the light of knowledge upon the world;\nfor thereby, they that worshipped the stars\nwere instructed by a star\nto worship Thee, the Sun of Righteousness,\nand to know Thee, the Dayspring from on high.//\nO Lord, glory be to Thee.",
+    "label": "Troparion of the feast (Nativity)"
+  },
+  "kontakion": {
+    "tone": 3,
+    "text": "Today the Virgin giveth birth to Him Who is transcendent in essence;\nand the earth offereth a cave to Him Who is unapproachable.\nAngels with shepherds give glory;\nthe Magi journey with a star;//\nfor our sake a young Child is born, Who is the pre-eternal God.",
+    "label": "Kontakion of the feast (Nativity)",
+    "melody": "Today the Virgin"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 1,
+        "melody": "When the stone had been sealed by the Jews",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "The Son Who with the Father and the Spirit is everlasting, Who is the Wisdom and Understanding from before all ages, desired to be born of the Virgin for our sake in the latter times, that He might save the world from the tyranny of the alien foe. Glory be to Thee Who wast born in the flesh! Glory be to Thee Who wast thus well pleased! Glory be to Thee Who hast delivered us by Thy nativity!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "That which was commanded",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Let heaven rejoice and let the earth be glad, for the Lamb of God hath been born on earth, granting deliverance to the world. The Word Who is in the bosom of the Father hath issued forth from the Virgin without seed. At Him the magi marveled, beholding God in the flesh; and the shepherds cried aloud: Glory be to Him Who alone is truly God!",
+        "_note": "Glory ..., Both now ..., in Tone VIII, Spec. Mel. 'Of the Wisdom...': O incorrupt and divine Glory, Thou issue forth from the Virgin's womb and preserve inviolate her who gave birth to Thee; Thou didst rest in the manger as upon a throne, and didst show the cave to be a beautiful palace. Shepherds hymned Thee as the King of all, and the star made its journey showing the magi a divine light. Wherefore, we all cry out to Thee: O Master Christ our God, send down remission of sins upon those who with faith celebrate Thy divine nativity!"
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 4,
+      "melody": "Having been lifted up upon the Cross",
+      "label": "Sessional Hymn of St. Anysia (after Ode 3)",
+      "text": "Gaining dominion over the carnal passions, thou didst become a queen through life-creating sufferings, piously dyeing in thy blood a robe of purple for thyself, O honored Anysia. Wherefore, thou hast been revealed to be the immaculate bride of the King of all. Deliver from misfortunes us who celebrate thy glorious memory.",
+      "bothNow": {
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (Both now)",
+        "text": "All creation now rejoiceth in godliness, for Christ the Lord, the Son of God, is born of the pure Virgin, making the whole human race immortal and lifting the curse of our first mother Eve. Wherefore, we offer hymnody unto Him as to our Benefactor."
+      }
+    },
+    "exapostilarion": {
+      "label": "Exapostilarion of the feast",
+      "text": "From on high our Savior, the Dayspring of the East hath visited us and we who are in shadowy darkness have truly found Him; for the Lord hath been born from the Virgin.",
+      "_note": "Sung thrice.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "From on high our Savior, the Dayspring of the East hath visited us and we who are in shadowy darkness have truly found Him; for the Lord hath been born from the Virgin."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "nativity",
+      "tone": 4,
+      "_author": "Canon of St. Anysia Tone IV, the composition of Theophanes. Canon I (feast) from feast-canons/nativity.json (Cosmas; Sergius uses John the Monk Tone I for this day). Melania (Canon III, Joseph Tone IV) omitted from two-canon model. No kontakion after Ode 3 in Sergius.",
+      "kontakion": {
+        "tone": 3,
+        "text": "Today the Virgin giveth birth to Him Who is transcendent in essence;\nand the earth offereth a cave to Him Who is unapproachable.\nAngels with shepherds give glory;\nthe Magi journey with a star;//\nfor our sake a young Child is born, Who is the pre-eternal God.",
+        "label": "Kontakion of the feast (Nativity)",
+        "melody": "Today the Virgin"
+      },
+      "ikos": {
+        "text": "Bethlehem hath opened Eden! We have found Joy in a secret place: come, and let us receive the things of paradise within the cave. There the unwatered Root hath blossomed, bearing forgiveness as its fruit. There an unfailing Wellspring hath been found, from whence David of old longed to drink. There the Virgin hath given birth to the Babe, straightway quenching the thirst of Adam and David. Wherefore, let us hasten to this place where now is born a young Child, the pre-eternal God!"
+      },
+      "ode1": {
+        "irmos2": "Through the deep of the Red Sea, marched dry shod Israel of old, and by Moses' outstretched hands, raised in the form of a cross, the power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As thou standest in joy before the Father of lights, O all-praised one, send down light upon me who hymn thy radiant memory, driving away the storm of my passions by thy prayers." },
+          { "canon": "secondCanon", "text": "With abstinence, O divinely wise one, thou didst renew the meadow of thy soul, producing the grain of martyrdom for the Husbandman Who preserved thee and breathed strength into thee, O right wondrous virgin martyr." },
+          { "canon": "secondCanon", "text": "With thy hands which bestow riches far more precious than corruptible wealth, thou didst receive the richness of life which in nowise passeth away, a treasure which cannot be taken away, and heavenly glory, O martyr." },
+          { "canon": "secondCanon", "theotokion": true, "text": "For us the Creator of all is born of thee today, O thou who knewest not wedlock; and He Who hath wrapped the sea in mist is wrapped in swaddling bands, O Ever-virgin Mother." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud: Thou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy Creator, desiring thy spiritual beauty, truly betrothed Himself to thee, a goodly and blameless bride, O martyr." },
+          { "canon": "secondCanon", "text": "Loving the sufferings and death of the Dispassionate One Who died for our sake, O honored martyr, thou didst die a martyr's death." },
+          { "canon": "secondCanon", "text": "As a spiritual holocaust, as a sacrifice pure and perfect, did she who loved Thy Cross offer herself to Thee, O God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou wast a habitation containing the infinite Creator, O most pure and joyous one, who contained Him in the flesh." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Beholding Thee, the Sun of righteousness, lifted up upon the Cross, the Church now standeth arrayed and doth worthily cry aloud: Glory be to Thy power, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Following Thy life-bearing footsteps, O Master Christ, Thy handmaiden, who hymneth Thee, was wounded by a spear in the side and unwaveringly passed through the whirling blades." },
+          { "canon": "secondCanon", "text": "Shining with the splendors of martyrdom, crowned with a wreath of incorruption, O all-praised martyr Anysia, thou standest, rejoicing, before Christ, thy Bridegroom." },
+          { "canon": "secondCanon", "text": "Vanquishing with thy martyr's opposition him who caused our first mother Eve to trip, thou didst cast him down, showing him to be impotent, and chanting to Christ: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who created the immaterial beings is born of thee today as a man in the body, O Mother of God. To Him do we chant: Glory to Thy power, O Lord!" }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world, art my light, a holy light turning from the darkness of ignorance those who sing Thy praises in faith.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Knowing Thee, O Lord, to be the well-spring of salvation, Thy martyr drained the cup of salvation with a sure heart." },
+          { "canon": "secondCanon", "text": "O passion-bearer of the Lord, heifer of Christ, God-pleasing whole-burnt offering, sacrificed to God: pray thou that we be saved." },
+          { "canon": "secondCanon", "text": "Having most clearly drawn nigh unto the great Light, thou hast become light, illumining those who celebrate thy radiant memory." },
+          { "canon": "secondCanon", "theotokion": true, "text": "We wield thee as an invincible weapon against the enemy, O Bride of God, having acquired thee as the confirmation and hope of our salvation." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord, 'I will sacrifice unto Thee with a voice of praise having been cleansed of the blood of the demons' by the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having received manly intelligence in a woman's body, O martyr, thou didst go forth to do battle with the incorporeal foe, slaying them with the sword of patience." },
+          { "canon": "secondCanon", "text": "With floods of blood thou didst dry up the sea of false religion, and didst water the honored Church of Christ, O passion-bearer Anysia, thou boast of virgins." },
+          { "canon": "secondCanon", "text": "Thou didst pass over the sea of struggles without foundering or sinking; wherefore, thou hast hastened to the tranquil haven, and dost enjoy true serenity, O most glorious one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who created man in His own image, in His great tender compassion hath edified him, clothing Himself wholly in him through thee, O Virgin Mother of God." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Thou didst save the children of Abraham in the fire and slay the Chaldeans, who unjustly entrapped the righteous ones. O supremely hymned Lord, God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The torrents of tortures which flowed forth in no wise shook the house of thy soul, which was made noetically firm by thy confession of Christ, O martyr, who cried aloud: Blessed art Thou O God!" },
+          { "canon": "secondCanon", "text": "Having come to know Christ, the Sun of righteousness, O martyr, thou didst not wish to offer sacrifice wickedly to the sun when commanded to do so by the tyrant; rather, thou didst chant: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Having dyed a purple robe for thyself in thy sacred blood, O martyr, thou didst crown thy head with a wreath of victory; and now thou standest in gladness before God, the immortal King." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who wrapped the sky in clouds and the earth in mist, having been born from thy womb, is wrapped in swaddling bands and laid in a manger, O all-immaculate Mother of God, saving those who know thee to be the Theotokos." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den; while the zealously pious youths, girded with virtue, quenched the power of the fire and cried aloud: Bless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Loving the commands of the Almighty constantly, thou didst distribute thy wealth to the widows, orphans and paupers, and to all in need, O honored virgin, and didst seek the cup of honorable martyrdom; and having drained it, thou didst cause desire to cease." },
+          { "canon": "secondCanon", "text": "As a dowry thou didst bring to Christ fasting and tears, the mortification of the passions, the shedding of thy blood and the piercing of thy side; wherefore, He Who ageth not Himself giveth thee a crown, an incorrupt bridal chamber and heavenly glory." },
+          { "canon": "secondCanon", "text": "Thou dwellest in light with the angels and the ranks of virgins, celebrating with the assemblies of martyrs, gazing upon thy Bridegroom face to face, sharing in radiant glory and crying out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Behold, now a ruler and prince hath manifestly failed from the tribe of Judah, for thou, O all-immaculate one, hast given birth to Christ, the expectation of the nations, for Whom the things of old were stored up. To Him do we chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin, was cut from thee the unhewn mountain: even Christ, Who hath joined together the disparate natures; therefore rejoicing we magnify thee, O Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Those who rendered worship to stones rather than to the Creator, unable to bear thy commitment to God, O glorious one, cut thee asunder with a sword, betrothing divine immortality to thee through death." },
+          { "canon": "secondCanon", "text": "The city of Thessalonica boasteth in thy grave-clothes and sufferings, O virgin martyr; and the Church of the firstborn and the righteous is gladdened, possessing thy divine spirit." },
+          { "canon": "secondCanon", "text": "With faith the magi brought frankincense, gold and myrrh to Him Who was born in Bethlehem, and the passion-bearer hath brought the outpouring of the blood of her martyrdom, entreating Him on our behalf." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all-pure Birthgiver of God, thou hast caused a Rod to bud forth from the root of Jesse, having given birth for us today to Christ, the Flower of the Godhead, the uncontainable God Who hath now been swaddled as a babe." }
+        ]
+      }
+    }
+  }
+}

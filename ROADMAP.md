@@ -8,9 +8,9 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D + E all landed. `assembler.js` is now **579 lines** (down from 5,665 originally — **−90%**). 65+ functions extracted across 33 files. All 7 leaf services + the core trio (vespers / liturgy / matins) done.
+**Phase 2 — Modularize COMPLETE.** All 6 phases (A–F) shipped. `assembler.js` is now a **12-line facade** (down from 5,665 — **−99.8%**) re-exporting from `assemblers/index.js`. 12 top-level assemblers + 65+ section helpers across 36 files. The codebase is structurally ready to add per-jurisdiction variants (Greek / Antiochian) as sibling files — the Phase 2 trigger condition from `ASSESSMENT.md §3`.
 
-**Next: Phase F — composed services + facade collapse.** Extract `assemblePresanctified` + 7 `_ps*` helpers, then `assembleVesperalLiturgy`, then collapse `assembler.js` to a thin facade re-exporting from `./assemblers/`. ~5 hours total across 3 small PRs.
+**Next:** Old-Style calendar variant (Weeks 4–7), or `server.js` split, or jurisdiction work — whatever the strategic priority calls for. See Weeks 4–7 / 5–8 sections below.
 
 ---
 
@@ -36,7 +36,10 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] PR1: `assemblers/vespers.js` — 100 lines, no helper deps; snapshot 42/42 first try
   - [x] PR2: `assemblers/liturgy.js` + 11-file `assemblers/liturgy-parts/` (opening, antiphons, entrance, trisagion, readings, litanies, great-entrance, anaphora, communion, thanksgiving, dismissal); 37 `_lit*` helpers extracted; 15 still imported by Presanctified/Vesperal-Liturgy; snapshot 42/42 first try
   - [x] PR3: `assemblers/matins.js` — assembleMatins + `_assembleCanon` + `_assembleMorningLitany`; snapshot 42/42 first try
-- [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade
+- [x] Phase F — extracted composed services (presanctified, vesperal-liturgy) + collapsed `assembler.js` to a facade
+  - [x] PR1: `assemblers/presanctified.js` — assemblePresanctified + 7 `_ps*` helpers; snapshot 42/42 first try
+  - [x] PR2: `assemblers/vesperal-liturgy.js` — no own helpers, just composition; snapshot 42/42 first try
+  - [x] PR3: `assemblers/index.js` (28 lines) re-exports the 12 + `resolveSource`; `assembler.js` → 12-line facade; all 4 external callers (server.js, render.js, test-matins.js, test-assembly.js) keep working unchanged
 - [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
 
@@ -78,32 +81,32 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - **2026-06-05** — Pre-existing audit gap surfaced (not refactor-caused): `npm run audit` reports 25 high-severity findings (10 missing Sunday Matins sections, 8 eothinon mismatches, 4 Matins section-ordering, 3 Liturgy translation-consistency). All in code paths Phase A did not touch (snapshot byte-identical on the 42 reference entries that include several of the same flagged dates). These should be triaged separately — either fixed at the source or added to `audit/known-issues.json` `knownFailures` with rationale.
 - **2026-06-05** — Phase B complete. Followed the `grep_all_callers` rule from Phase A: anchor-check script verified the 12 deletion-range boundaries before any code moved, and the kathisma file collision with root `kathisma.js` was caught at design time via the explicit `require('../../kathisma')` path. Single commit, no regressions.
 - **2026-06-05** — Phase E complete (PRs 1–3 in one session, commits `97f1789`, `fe8af1f`, `16051a2`). 3 batched PRs landed back-to-back; each passed 42/42 snapshot, 109/109 tests, 0/0/0 audit first try. No regressions. `assembler.js` down to 579 lines. Pattern observation: with helpers already extracted (vespers-parts, common-parts), each leaf assembler extraction is mechanical — the dep-grep regex and snapshot harness make these PRs low-risk in series.
+- **2026-06-05** — Phase F complete (PRs 1–3 in same session, commits `0e69de8`, `0b929fc`, `2379045`). All 3 PRs clean first try. `assembler.js` → 12 lines (facade); `assemblers/index.js` → 28 lines (public API). External callers untouched. **Phase 2 modularize DONE.** From 5,665 → 12 lines over A through F. Pattern observation for future big-bang refactors: snapshot harness + per-PR helper-extraction + namespace re-export at the end is the durable pattern. Caller surface stays stable; internal physics moves freely.
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---
 
-## Phase F starting brief (as of commit `16051a2`, 2026-06-05)
+## Phase 2 — final layout
 
-What remains in `assembler.js` (579 lines, 2 top-level assemblers + 7 private helpers):
+`assembler.js` (12 lines) → `assemblers/index.js` (28 lines, the public API) → 12 top-level assembler modules + 4 helper directories:
 
-| Function | Lines (approx) | Size | Helpers to move with it |
-|---|---|---|---|
-| `assemblePresanctified` | 94–~212 | ~120 | composes vespers-parts + 7 `_ps*` helpers (213–~349) |
-| `assembleVesperalLiturgy` | ~350–578 | ~230 | composes vespers-parts + liturgy-parts; no own helpers |
+```
+assemblers/
+  index.js                                       # public API
+  _shared/                                       # 4 primitives
+    {make-block, warnings, resolve, fixed-text-loader}.js
+  vespers-parts/                                 # 10 vespers section helpers
+  common-parts/                                  # 3 cross-family helpers
+  liturgy-parts/                                 # 11 liturgy section helpers
+  vespers.js, liturgy.js, matins.js              # core trio
+  presanctified.js, vesperal-liturgy.js          # composed
+  paschal-hours.js, midnight-office.js,          # leaf services
+  royal-hours.js, paschal-matins.js,
+  bridegroom-matins.js, passion-gospels.js,
+  lamentations.js
+```
 
-Recommended sub-PR split:
-
-- **Phase F PR1 — presanctified + `_ps*` helpers**: extract `assemblers/presanctified.js` + 7 `_ps*` helpers (suggest co-locating in the same file since all are local to presanctified). ~2 hours.
-- **Phase F PR2 — vesperal-liturgy**: extract `assemblers/vesperal-liturgy.js`. Consumes both vespers-parts and liturgy-parts. ~2 hours.
-- **Phase F PR3 — facade collapse**: `assembler.js` becomes a tiny re-export. Add `assemblers/index.js` that re-exports the 12 assemblers + `resolveSource`. ~1 hour.
-
-**Lessons baked in from Phases A–E** (read before starting Phase F):
-
-- `memory/feedback_grep_all_callers.md` — grep ALL identifiers in the function body before extracting; check underscore-prefixed private helpers physically adjacent to the target; check inline `require('./fixed-texts/...')` paths.
-- For the dep-grep regex, include all extracted families: `(assembleOpening|assemblePsalm103|assembleGreatLitany|assembleLittleLitany|assembleAugmentedLitany|assembleEveningLitany|assembleKathisma|assembleBlessedIsTheMan|assembleKathismaReading|assembleLordICall|assembleOTReadings|assembleProkeimenon|assembleAposticha|assembleNuncDimittis|assembleLitya|assembleBlessingOfBread|assembleEpitaphion|assembleTroparia|assembleDismissal|_emitLittleLitany|_lit[A-Z][A-Za-z]+)`.
-- Always: `npm run snapshot:verify` after restart, before declaring victory. 42/42 byte-identical is the gate.
-- `audit/snapshots/baseline.json` is the authoritative reference. If a legitimate behavior change ships, refresh the baseline in the same commit with a note.
-- The snapshot harness has caught regressions in every Phase D PR (Phase E was clean only because the helper dependency graph was already well-mapped from earlier phases). Don't skip it.
+The snapshot harness (`audit/snapshots/baseline.json`, 42 entries, byte-identical reference) underwrote the entire refactor. It caught regressions in every Phase D PR. For any future structural change to assembler internals, keep that gate green.
 
 **Verification gate to keep running** (already enforced by pre-push hook):
 - `npm test` — 109/109 pass

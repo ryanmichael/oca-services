@@ -8,7 +8,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 1 — Positioning anchor** (Weeks 1–2). **Complete.** All 5 items shipped. Distribution-prep drafts (bishop letter, seminary outreach) are now unblocked. Phase 2 (modularize) is next — start with the `assembler.js` modularization sketch.
+**Phase 2 — Modularize** (Weeks 3–5). `assembler.js` modularization sketch landed at [`docs/refactor-assembler.md`](./docs/refactor-assembler.md) — pending review. After sign-off on the six decision points there, Phase A (extract `_shared/`) is a discrete first move.
 
 ---
 
@@ -22,8 +22,13 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Weeks 3–5 — Modularize before the next jurisdiction lands
 
-- [ ] Sketch `assembler.js` modularization plan (mapping → 12 service modules + `_shared.js`)
-- [ ] Split `assembler.js` along service lines
+- [x] Sketch `assembler.js` modularization plan → [`docs/refactor-assembler.md`](./docs/refactor-assembler.md) (26 target files, 6-phase migration, snapshot-test safety net)
+- [ ] Phase A — extract `assemblers/_shared/` (`makeBlock`, warnings, `resolveSource`, fixed-text loader)
+- [ ] Phase B — extract `assemblers/vespers-parts/`
+- [ ] Phase C — extract `assemblers/common-parts/` (`troparia`, `dismissal`)
+- [ ] Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in 2–3 batched PRs
+- [ ] Phase E — extract the core trio (vespers, liturgy, matins)
+- [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade
 - [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
 
@@ -60,6 +65,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 ## Notes / Blockers
 
 - **2026-06-05** — Phase 1 complete; `schema/` landed, so the bishop letter and seminary inquiry are now unblocked. Drafts can link to `schema/README.md` as the substantive contributor surface.
+- **2026-06-05** — `assembler.js` refactor sketch landed. Phase A (extract `_shared/`) is the next concrete move once decision points in `docs/refactor-assembler.md` § "Decision points for review" are confirmed.
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---

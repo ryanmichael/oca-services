@@ -8,7 +8,9 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D (all 3 PRs) landed. `assembler.js` is now 2,698 lines (down from 5,665 originally — **52% smaller**). 26 functions extracted across 20 files. All 7 leaf services done. Next: Phase E — extract the core trio (vespers, liturgy, matins).
+**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D (all 3 PRs) landed. `assembler.js` is now 2,698 lines (down from 5,665 originally — **52% smaller**). 26 functions extracted across 20 files. All 7 leaf services done.
+
+**Next: Phase E — the core trio (vespers, liturgy, matins).** See "Phase E starting brief" below for line numbers, dependency catalog, and recommended sub-PR split. Start a fresh session — the foundation pattern is well-established and the snapshot harness is the safety net.
 
 ---
 
@@ -75,6 +77,44 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---
+
+## Phase E starting brief (as of commit `5c2292a`, 2026-06-05)
+
+What remains in `assembler.js` (2,698 lines, 5 top-level assemblers + 46 private helpers):
+
+| Function | Lines (approx) | Size | Helpers to move with it |
+|---|---|---|---|
+| `assembleVespers` | 69–~167 | ~100 | none — just orchestration over vespers-parts |
+| `assembleLiturgy` | 180–1358 | ~1180 | 37 `_lit*` helpers (lines 422–1298) |
+| `assemblePresanctified` | 1376–~1492 | ~120 | composes vespers + 7 `_ps*` helpers (1496–1597) |
+| `assembleVesperalLiturgy` | 1633–1843 | ~210 | composes vespers + liturgy parts |
+| `assembleMatins` | 1872–2682 | ~810 | 2 helpers: `_assembleCanon` (L2474), `_assembleMorningLitany` (L2653) |
+
+Recommended sub-PR split — apply the same Phase D batching rhythm:
+
+- **Phase E PR1 — vespers** (smallest, fastest): extract `assemblers/vespers.js`. Probably ~3 hours.
+- **Phase E PR2 — liturgy + `liturgy-parts/`** (biggest): extract `assemblers/liturgy.js` plus the 37 `_lit*` helpers into a `liturgy-parts/` subdirectory grouped by service section (antiphons, beatitudes, trisagion, prokeimenon, epistle, alleluia, gospel, anaphora, communion, dismissal, etc.). Consider grouping per related sections (e.g., `liturgy-parts/communion.js` for all communion-related helpers). Probably 1 full day.
+- **Phase E PR3 — matins + `_assembleCanon`**: extract `assemblers/matins.js` and the two private helpers. Probably ~4 hours.
+
+Phase F afterward:
+
+- **Phase F PR1 — presanctified + `_ps*` helpers**: extract `assemblers/presanctified.js` + 7 `_ps*` helpers. ~2 hours.
+- **Phase F PR2 — vesperal-liturgy**: extract `assemblers/vesperal-liturgy.js`. ~2 hours.
+- **Phase F PR3 — facade collapse**: `assembler.js` becomes `module.exports = require('./assemblers');`. Add `assemblers/index.js` that re-exports the 12 + `resolveSource`. ~1 hour.
+
+**Lessons baked in from Phases A–D** (read these before starting Phase E):
+
+- `memory/feedback_grep_all_callers.md` — grep ALL identifiers in the function body before extracting; check underscore-prefixed private helpers physically adjacent to the target; check inline `require('./fixed-texts/...')` paths.
+- For the dep-grep regex, include vespers-parts function names too: `(assembleOpening|assemblePsalm103|assembleGreatLitany|assembleLittleLitany|assembleAugmentedLitany|assembleEveningLitany|assembleKathisma|assembleBlessedIsTheMan|assembleKathismaReading|assembleLordICall|assembleOTReadings|assembleProkeimenon|assembleAposticha|assembleNuncDimittis|assembleLitya|assembleBlessingOfBread|assembleEpitaphion|assembleTroparia|assembleDismissal|_emitLittleLitany)`. The PR3 lamentations regression happened because `assembleGreatLitany` wasn't in the original regex.
+- Always: `npm run snapshot:verify` after restart, before declaring victory. 42/42 byte-identical is the gate.
+- `audit/snapshots/baseline.json` is the authoritative reference. If a legitimate behavior change ships, refresh the baseline in the same commit with a note.
+- The snapshot harness has caught a regression in **every Phase D PR**. Don't skip it.
+
+**Verification gate to keep running** (already enforced by pre-push hook):
+- `npm test` — 109/109 pass
+- `npm run snapshot:verify` — 42/42 byte-identical
+- `npm run audit:quick` — 0/0/0 strict
+- `npm run audit:endpoints` — should hold at 11 pre-existing low-sev items
 
 ## How to use this doc
 

@@ -8,9 +8,9 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D (all 3 PRs) landed. `assembler.js` is now 2,698 lines (down from 5,665 originally — **52% smaller**). 26 functions extracted across 20 files. All 7 leaf services done.
+**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D + E all landed. `assembler.js` is now **579 lines** (down from 5,665 originally — **−90%**). 65+ functions extracted across 33 files. All 7 leaf services + the core trio (vespers / liturgy / matins) done.
 
-**Next: Phase E — the core trio (vespers, liturgy, matins).** See "Phase E starting brief" below for line numbers, dependency catalog, and recommended sub-PR split. Start a fresh session — the foundation pattern is well-established and the snapshot harness is the safety net.
+**Next: Phase F — composed services + facade collapse.** Extract `assemblePresanctified` + 7 `_ps*` helpers, then `assembleVesperalLiturgy`, then collapse `assembler.js` to a thin facade re-exporting from `./assemblers/`. ~5 hours total across 3 small PRs.
 
 ---
 
@@ -32,7 +32,10 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] PR1: paschal-hours, midnight-office, royal-hours — 328 lines extracted, snapshot 42/42 first try
   - [x] PR2: paschal-matins, bridegroom-matins — 839 lines extracted; snapshot caught two regressions (inline require path + `_emitLittleLitany` shared with passion-gospels); fix shipped `common-parts/emit-little-litany.js`; updated `feedback_grep_all_callers` memory
   - [x] PR3: passion-gospels, lamentations — 852 lines extracted; snapshot caught one regression (`assembleGreatLitany` missing import in lamentations.js — dep-grep regex didn't include vespers-parts names); fix shipped, `_emitLittleLitany` import dropped from assembler.js after passion-gospels move
-- [ ] Phase E — extract the core trio (vespers, liturgy, matins)
+- [x] Phase E — extracted the core trio (vespers, liturgy, matins) in 3 batched PRs
+  - [x] PR1: `assemblers/vespers.js` — 100 lines, no helper deps; snapshot 42/42 first try
+  - [x] PR2: `assemblers/liturgy.js` + 11-file `assemblers/liturgy-parts/` (opening, antiphons, entrance, trisagion, readings, litanies, great-entrance, anaphora, communion, thanksgiving, dismissal); 37 `_lit*` helpers extracted; 15 still imported by Presanctified/Vesperal-Liturgy; snapshot 42/42 first try
+  - [x] PR3: `assemblers/matins.js` — assembleMatins + `_assembleCanon` + `_assembleMorningLitany`; snapshot 42/42 first try
 - [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade
 - [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
@@ -74,41 +77,33 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - **2026-06-05** — Phase A complete. Six decision points in the sketch confirmed as recommended (flat layout, facade preserved, `{ reset, push, get }` warnings API, snapshot bundled, no variant dispatch yet, 3-batched-PR plan for Phase D). `audit/snapshots/baseline.json` is the authoritative byte-level reference for subsequent phases — refresh it as part of any commit that legitimately changes service output.
 - **2026-06-05** — Pre-existing audit gap surfaced (not refactor-caused): `npm run audit` reports 25 high-severity findings (10 missing Sunday Matins sections, 8 eothinon mismatches, 4 Matins section-ordering, 3 Liturgy translation-consistency). All in code paths Phase A did not touch (snapshot byte-identical on the 42 reference entries that include several of the same flagged dates). These should be triaged separately — either fixed at the source or added to `audit/known-issues.json` `knownFailures` with rationale.
 - **2026-06-05** — Phase B complete. Followed the `grep_all_callers` rule from Phase A: anchor-check script verified the 12 deletion-range boundaries before any code moved, and the kathisma file collision with root `kathisma.js` was caught at design time via the explicit `require('../../kathisma')` path. Single commit, no regressions.
+- **2026-06-05** — Phase E complete (PRs 1–3 in one session, commits `97f1789`, `fe8af1f`, `16051a2`). 3 batched PRs landed back-to-back; each passed 42/42 snapshot, 109/109 tests, 0/0/0 audit first try. No regressions. `assembler.js` down to 579 lines. Pattern observation: with helpers already extracted (vespers-parts, common-parts), each leaf assembler extraction is mechanical — the dep-grep regex and snapshot harness make these PRs low-risk in series.
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---
 
-## Phase E starting brief (as of commit `5c2292a`, 2026-06-05)
+## Phase F starting brief (as of commit `16051a2`, 2026-06-05)
 
-What remains in `assembler.js` (2,698 lines, 5 top-level assemblers + 46 private helpers):
+What remains in `assembler.js` (579 lines, 2 top-level assemblers + 7 private helpers):
 
 | Function | Lines (approx) | Size | Helpers to move with it |
 |---|---|---|---|
-| `assembleVespers` | 69–~167 | ~100 | none — just orchestration over vespers-parts |
-| `assembleLiturgy` | 180–1358 | ~1180 | 37 `_lit*` helpers (lines 422–1298) |
-| `assemblePresanctified` | 1376–~1492 | ~120 | composes vespers + 7 `_ps*` helpers (1496–1597) |
-| `assembleVesperalLiturgy` | 1633–1843 | ~210 | composes vespers + liturgy parts |
-| `assembleMatins` | 1872–2682 | ~810 | 2 helpers: `_assembleCanon` (L2474), `_assembleMorningLitany` (L2653) |
+| `assemblePresanctified` | 94–~212 | ~120 | composes vespers-parts + 7 `_ps*` helpers (213–~349) |
+| `assembleVesperalLiturgy` | ~350–578 | ~230 | composes vespers-parts + liturgy-parts; no own helpers |
 
-Recommended sub-PR split — apply the same Phase D batching rhythm:
+Recommended sub-PR split:
 
-- **Phase E PR1 — vespers** (smallest, fastest): extract `assemblers/vespers.js`. Probably ~3 hours.
-- **Phase E PR2 — liturgy + `liturgy-parts/`** (biggest): extract `assemblers/liturgy.js` plus the 37 `_lit*` helpers into a `liturgy-parts/` subdirectory grouped by service section (antiphons, beatitudes, trisagion, prokeimenon, epistle, alleluia, gospel, anaphora, communion, dismissal, etc.). Consider grouping per related sections (e.g., `liturgy-parts/communion.js` for all communion-related helpers). Probably 1 full day.
-- **Phase E PR3 — matins + `_assembleCanon`**: extract `assemblers/matins.js` and the two private helpers. Probably ~4 hours.
+- **Phase F PR1 — presanctified + `_ps*` helpers**: extract `assemblers/presanctified.js` + 7 `_ps*` helpers (suggest co-locating in the same file since all are local to presanctified). ~2 hours.
+- **Phase F PR2 — vesperal-liturgy**: extract `assemblers/vesperal-liturgy.js`. Consumes both vespers-parts and liturgy-parts. ~2 hours.
+- **Phase F PR3 — facade collapse**: `assembler.js` becomes a tiny re-export. Add `assemblers/index.js` that re-exports the 12 assemblers + `resolveSource`. ~1 hour.
 
-Phase F afterward:
-
-- **Phase F PR1 — presanctified + `_ps*` helpers**: extract `assemblers/presanctified.js` + 7 `_ps*` helpers. ~2 hours.
-- **Phase F PR2 — vesperal-liturgy**: extract `assemblers/vesperal-liturgy.js`. ~2 hours.
-- **Phase F PR3 — facade collapse**: `assembler.js` becomes `module.exports = require('./assemblers');`. Add `assemblers/index.js` that re-exports the 12 + `resolveSource`. ~1 hour.
-
-**Lessons baked in from Phases A–D** (read these before starting Phase E):
+**Lessons baked in from Phases A–E** (read before starting Phase F):
 
 - `memory/feedback_grep_all_callers.md` — grep ALL identifiers in the function body before extracting; check underscore-prefixed private helpers physically adjacent to the target; check inline `require('./fixed-texts/...')` paths.
-- For the dep-grep regex, include vespers-parts function names too: `(assembleOpening|assemblePsalm103|assembleGreatLitany|assembleLittleLitany|assembleAugmentedLitany|assembleEveningLitany|assembleKathisma|assembleBlessedIsTheMan|assembleKathismaReading|assembleLordICall|assembleOTReadings|assembleProkeimenon|assembleAposticha|assembleNuncDimittis|assembleLitya|assembleBlessingOfBread|assembleEpitaphion|assembleTroparia|assembleDismissal|_emitLittleLitany)`. The PR3 lamentations regression happened because `assembleGreatLitany` wasn't in the original regex.
+- For the dep-grep regex, include all extracted families: `(assembleOpening|assemblePsalm103|assembleGreatLitany|assembleLittleLitany|assembleAugmentedLitany|assembleEveningLitany|assembleKathisma|assembleBlessedIsTheMan|assembleKathismaReading|assembleLordICall|assembleOTReadings|assembleProkeimenon|assembleAposticha|assembleNuncDimittis|assembleLitya|assembleBlessingOfBread|assembleEpitaphion|assembleTroparia|assembleDismissal|_emitLittleLitany|_lit[A-Z][A-Za-z]+)`.
 - Always: `npm run snapshot:verify` after restart, before declaring victory. 42/42 byte-identical is the gate.
 - `audit/snapshots/baseline.json` is the authoritative reference. If a legitimate behavior change ships, refresh the baseline in the same commit with a note.
-- The snapshot harness has caught a regression in **every Phase D PR**. Don't skip it.
+- The snapshot harness has caught regressions in every Phase D PR (Phase E was clean only because the helper dependency graph was already well-mapped from earlier phases). Don't skip it.
 
 **Verification gate to keep running** (already enforced by pre-push hook):
 - `npm test` — 109/109 pass

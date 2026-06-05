@@ -46,5 +46,21 @@
       "researchPointer": "OCA Pentecostarion volume contains the eothinon set. No predictable OCA URL identified at oca.org. Investigate: OCA-published Pentecostarion (St. Tikhon's Seminary Press), oca.org service-music for eothinon-specific PDFs."
     }
   ],
-  "knownFailures": []
+  "knownFailures": [
+    {
+      "rule": "M1-sunday-matins-sections",
+      "dates": ["2026-04-12"],
+      "reason": "Pascha is served via /api/paschal-matins (a fully distinct service); the regular /api/matins endpoint is intentionally unused. Audit rule shouldn't flag Sunday Matins skeleton against a date that doesn't use Sunday Matins. addedAt 2026-06-05."
+    },
+    {
+      "rule": "M3-eothinon-gospel-match",
+      "dates": ["2026-01-11", "2026-01-25", "2026-07-05", "2026-08-16", "2026-11-08", "2026-12-06"],
+      "reason": "Feast/saint Matins Gospel overrides the eothinon when a major feast or vigil-rank saint with their own gospel falls on Sunday — OCA rubrical practice. 01-11 Sunday after Theophany, 01-25 Sunday of Zacchaeus, 07-05 St Sergius/Athanasius, 08-16 Translation of Image Not Made by Hands, 11-08 Synaxis of the Archangels, 12-06 St Nicholas. addedAt 2026-06-05."
+    },
+    {
+      "rule": "L3-translation-consistency",
+      "dates": ["2026-05-10"],
+      "reason": "False positive: the Sunday of the Myrrhbearers Resurrection Beatitude reads 'beareth witness to you, O violators of the Law' — plural 'you' as object is grammatical in TT when the subject is plural ('violators'). Cf. 'I say unto you' in the Gospels. The rule's heuristic can't distinguish plural-you-object from YY drift. addedAt 2026-06-05."
+    }
+  ]
 }

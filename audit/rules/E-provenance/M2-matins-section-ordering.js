@@ -25,6 +25,14 @@ module.exports = {
     if (!blocks.length) return [];
     const firstIdx = {};
     blocks.forEach((b, i) => {
+      // The Penitential Psalm 50 anchor must be the dedicated ps50 block,
+      // not a verse of Psalm 50 emitted inside a Kathisma reading (which
+      // also uses section "Psalm 50" for the underlying psalter verse).
+      if (b.id === 'ps50') {
+        if (firstIdx['Psalm 50'] === undefined) firstIdx['Psalm 50'] = i;
+        return;
+      }
+      if (b.section === 'Psalm 50') return;
       const s = b.section;
       if (s && firstIdx[s] === undefined) firstIdx[s] = i;
     });

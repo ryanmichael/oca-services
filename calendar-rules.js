@@ -2203,8 +2203,13 @@ function isBurialVespersDay(date) {
  * is suspended or follows special rules.
  */
 function getEothinon(date) {
+  // Suspended throughout the Triodion (Pre-Lent → Holy Week) and the
+  // Pentecostarion (Pascha → Pentecost). The cycle restarts at All Saints
+  // Sunday (Pascha + 56) with eothinon 1.
+  const season = getLiturgicalSeason(date);
+  if (season !== 'ordinaryTime') return null;
+
   const yr = date.getUTCFullYear();
-  const pascha = calculatePascha(yr);
   const allSaints = getAllSaints(yr);
 
   const diffMs = date.getTime() - allSaints.getTime();
@@ -2221,7 +2226,7 @@ function getEothinon(date) {
     return (prevDiff % 11) + 1;
   }
 
-  return null; // Deep Triodion
+  return null;
 }
 
 // ─── Exports ──────────────────────────────────────────────────────────────────

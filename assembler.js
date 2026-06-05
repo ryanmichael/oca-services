@@ -7,23 +7,12 @@
  * assembleVespers(calendarDay, fixedTexts, sources) → ServiceBlock[]
  */
 
-// ─── Shared data (loaded once) ───────────────────────────────────────────────
-const { getPsalter, psalmBody, resolveVerse } = require('./oca-psalter');
-let _kathismata   = null;
-let _vespersFixed = null;
-let _matinsFixed  = null;
-function getKathismata() {
-  if (!_kathismata) _kathismata = require('./fixed-texts/kathismata.json');
-  return _kathismata;
-}
-function getVespersFixed() {
-  if (!_vespersFixed) _vespersFixed = require('./fixed-texts/vespers-fixed.json');
-  return _vespersFixed;
-}
-function getMatinsFixed() {
-  if (!_matinsFixed) _matinsFixed = require('./fixed-texts/matins-fixed.json');
-  return _matinsFixed;
-}
+// ─── Shared data + primitives (extracted to ./assemblers/_shared/) ──────────
+const { getPsalter, psalmBody, resolveVerse }            = require('./oca-psalter');
+const { getKathismata, getVespersFixed, getMatinsFixed } = require('./assemblers/_shared/fixed-text-loader');
+const makeBlock                                          = require('./assemblers/_shared/make-block');
+const warnings                                           = require('./assemblers/_shared/warnings');
+const { resolveSource, resolveFixedRef, deepGet }        = require('./assemblers/_shared/resolve');
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -50,11 +39,8 @@ function getMatinsFixed() {
  * @param {Object} sources      - { triodion, menaion, octoechos, prokeimena }
  * @returns {ServiceBlock[]}
  */
-// Module-level warnings collector — reset at the start of each assembly
-let _warnings = [];
-
 function assembleVespers(calendarDay, fixedTexts, sources) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const vespers = calendarDay.vespers;
   const isVigil = vespers.serviceType === 'all-night-vigil';
@@ -150,7 +136,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
     blocks.push(...assembleEpitaphion(vespers.epitaphion, sources));
   }
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -438,41 +424,6 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
   }
 
   return blocks;
-}
-
-/**
- * Resolves a text object from sources using dot-notation key path.
- * e.g. resolveSource("triodion", "lent.soulSaturday2.lordICall.glory", sources)
- */
-function resolveSource(sourceName, keyPath, sources) {
-  const source = sources[sourceName];
-  if (!source) {
-    console.warn(`Source not found: ${sourceName}`);
-    _warnings.push({ source: sourceName, key: keyPath });
-    return null;
-  }
-  const result = deepGet(source, keyPath);
-  if (result == null) {
-    console.warn(`Key not found: ${sourceName}.${keyPath}`);
-    _warnings.push({ source: sourceName, key: keyPath });
-  }
-  return result;
-}
-
-function deepGet(obj, path) {
-  return path.split('.').reduce((curr, key) => curr?.[key], obj);
-}
-
-/**
- * Resolve a "@@dotted.path" sentinel string against the merged fixed-texts.
- * Lets base petition arrays reference shared snippets (e.g. hierarch
- * commemorations) that parish overlays can override surgically without
- * copying the whole array. Non-sentinel strings pass through unchanged.
- */
-function resolveFixedRef(value, fixedTexts) {
-  if (typeof value !== 'string' || !value.startsWith('@@')) return value;
-  const resolved = deepGet(fixedTexts, value.slice(2));
-  return typeof resolved === 'string' ? resolved : value;
 }
 
 /**
@@ -1112,7 +1063,7 @@ function assembleEpitaphion(epitaphionSpec, sources) {
  * @returns {ServiceBlock[]}
  */
 function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
-  _warnings = [];
+  warnings.reset();
   const spec    = calendarDay.liturgy || {};
   const variant = spec.variant || 'chrysostom';
   const isBasil = variant === 'basil';
@@ -1347,7 +1298,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // 36. Dismissal
   blocks.push(..._litDismissal(spec.dismissal, isBasil, spec.paschalOpening, liturgyFixed));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -2290,19 +2241,6 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   return blocks;
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-/**
- * Creates a ServiceBlock object.
- */
-function makeBlock(id, section, type, speaker, text, extras = {}) {
-  const block = { id, section, type, speaker, text };
-  for (const [k, v] of Object.entries(extras)) {
-    if (v !== undefined && v !== null) block[k] = v;
-  }
-  return block;
-}
-
 // ─── Presanctified Liturgy Assembler ──────────────────────────────────────────
 
 /**
@@ -2321,7 +2259,7 @@ function makeBlock(id, section, type, speaker, text, extras = {}) {
  * @returns {ServiceBlock[]}
  */
 function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanctifiedFixed, sources) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const vespers = calendarDay.vespers;
 
@@ -2434,7 +2372,7 @@ function assemblePresanctified(calendarDay, vespersFixed, liturgyFixed, presanct
   // 26. Dismissal
   blocks.push(..._psDismissal(presanctifiedFixed));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -2564,7 +2502,7 @@ function _psDismissal(f) {
  * @returns {ServiceBlock[]}
  */
 function assemblePaschalHours(f) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
 
   // 1. Opening
@@ -2640,14 +2578,14 @@ function assemblePaschalHours(f) {
     makeBlock('dis-final-amen', sectionD, 'response', 'choir', 'Amen.'),
   );
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
 // ─── Paschal Midnight Office ─────────────────────────────────────────────────
 
 function assembleMidnightOffice(f) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     blocks.push(makeBlock(id, section, type, speaker, text, extras));
@@ -2747,14 +2685,14 @@ function assembleMidnightOffice(f) {
   S('mo-dis', 'Dismissal', 'prayer', 'priest', f.dismissal.text);
   S('mo-dis-amen', 'Dismissal', 'response', 'choir', f.dismissal.response);
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
 // ─── Paschal Matins ──────────────────────────────────────────────────────────
 
 function assemblePaschalMatins(f) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     blocks.push(makeBlock(id, section, type, speaker, text, extras));
@@ -2959,7 +2897,7 @@ function assemblePaschalMatins(f) {
   }
   S('pm-dis-dox', 'Dismissal', 'hymn', 'choir', f.dismissal.finalDoxastikon);
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -2984,7 +2922,7 @@ function assemblePaschalMatins(f) {
  * @returns {ServiceBlock[]}
  */
 function assembleBridegroomMatins(f, night) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
@@ -3561,7 +3499,7 @@ function assembleBridegroomMatins(f, night) {
     blocks.push(S('dismissal-amen', section, 'response', 'choir', f.dismissal.response));
   }
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -3611,7 +3549,7 @@ function _ordinal(n) {
  * @returns {ServiceBlock[]}
  */
 function assemblePassionGospels(f) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
@@ -4099,7 +4037,7 @@ function assemblePassionGospels(f) {
     blocks.push(S('dismissal-amen', section, 'response', 'choir', f.dismissal.response));
   }
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -4122,7 +4060,7 @@ function assemblePassionGospels(f) {
  * @returns {ServiceBlock[]}
  */
 function assembleLamentations(f, vespersFixed) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
@@ -4438,7 +4376,7 @@ function assembleLamentations(f, vespersFixed) {
   blocks.push(S('dismissal', 'Dismissal', 'prayer', 'priest', f.dismissal.text));
   blocks.push(S('dismissal-amen', 'Dismissal', 'response', 'choir', f.dismissal.response));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -4467,7 +4405,7 @@ function assembleLamentations(f, vespersFixed) {
  * @returns {ServiceBlock[]}
  */
 function assembleVesperalLiturgy(vf, vesp, lf) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
@@ -4673,7 +4611,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
   blocks.push(S('dismissal', 'Dismissal', 'prayer', 'priest', vf.dismissal.text));
   blocks.push(S('dismissal-amen', 'Dismissal', 'response', 'choir', vf.dismissal.response));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -4689,7 +4627,7 @@ function assembleVesperalLiturgy(vf, vesp, lf) {
  * @returns {ServiceBlock[]}
  */
 function assembleRoyalHours(f) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const S = (id, section, type, speaker, text, extras) =>
     makeBlock(id, section, type, speaker, text, extras);
@@ -4803,7 +4741,7 @@ function assembleRoyalHours(f) {
   blocks.push(S('dismissal', 'Dismissal', 'prayer', 'priest', f.dismissal.text));
   blocks.push(S('dismissal-amen', 'Dismissal', 'response', 'choir', f.dismissal.response));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 
@@ -4836,7 +4774,7 @@ function assembleRoyalHours(f) {
  * @returns {ServiceBlock[]}
  */
 function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
-  _warnings = [];
+  warnings.reset();
   const blocks = [];
   const spec = calendarDay.matins;
   if (!spec) {
@@ -5428,7 +5366,7 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
   // ── 23. Dismissal ─────────────────────────────────────────────────────────
   blocks.push(...assembleDismissal(vespersFixed));
 
-  blocks._warnings = _warnings.slice();
+  blocks._warnings = warnings.get();
   return blocks;
 }
 

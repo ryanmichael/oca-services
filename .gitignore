@@ -5,6 +5,8 @@ storage/oca.db-shm
 storage/oca.db-wal
 vespers-*.html
 snapshots/
+!audit/snapshots/
+!audit/snapshots/baseline.json
 audit/reports/
 
 # macOS

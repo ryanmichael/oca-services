@@ -8,7 +8,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D PR1+PR2 landed. `assembler.js` is now 3,548 lines (down from 5,665 originally — 37% smaller). 24 functions extracted across 18 files. Next: Phase D PR3 (passion-gospels + lamentations).
+**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D (all 3 PRs) landed. `assembler.js` is now 2,698 lines (down from 5,665 originally — **52% smaller**). 26 functions extracted across 20 files. All 7 leaf services done. Next: Phase E — extract the core trio (vespers, liturgy, matins).
 
 ---
 
@@ -29,7 +29,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - [ ] Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in 2–3 batched PRs
   - [x] PR1: paschal-hours, midnight-office, royal-hours — 328 lines extracted, snapshot 42/42 first try
   - [x] PR2: paschal-matins, bridegroom-matins — 839 lines extracted; snapshot caught two regressions (inline require path + `_emitLittleLitany` shared with passion-gospels); fix shipped `common-parts/emit-little-litany.js`; updated `feedback_grep_all_callers` memory
-  - [ ] PR3: passion-gospels, lamentations
+  - [x] PR3: passion-gospels, lamentations — 852 lines extracted; snapshot caught one regression (`assembleGreatLitany` missing import in lamentations.js — dep-grep regex didn't include vespers-parts names); fix shipped, `_emitLittleLitany` import dropped from assembler.js after passion-gospels move
 - [ ] Phase E — extract the core trio (vespers, liturgy, matins)
 - [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade
 - [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`

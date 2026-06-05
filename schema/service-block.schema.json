@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ryanmichael/oca-services/main/schema/service-block.schema.json",
+  "title": "ServiceBlock",
+  "description": "A single rendered block in an assembled Orthodox service. The assembler returns ordered arrays of these (`ServiceBlock[]`). Produced by `assembler.js#makeBlock` and consumed by the HTML renderer and downstream API clients.",
+
+  "type": "object",
+  "required": ["id", "section", "type", "speaker", "text"],
+  "additionalProperties": true,
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable identifier unique within the assembled service. Used as the React-key equivalent for client rendering and as an audit-trail anchor."
+    },
+    "section": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable parent section label (e.g. 'Lord, I Have Cried', 'The Entrance', 'Aposticha'). Used for display grouping and search facets."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["rubric", "prayer", "hymn", "verse", "response", "doxology"],
+      "description": "What kind of block this is, for rendering and filtering. `rubric` = stage direction; `prayer` = spoken text; `hymn` = sung text; `verse` = psalm verse paired with a sticheron; `response` = liturgical answer (Amen, Lord have mercy); `doxology` = trinitarian formula."
+    },
+    "speaker": {
+      "oneOf": [
+        { "type": "string", "enum": ["priest", "deacon", "reader", "choir", "all"] },
+        { "type": "null" }
+      ],
+      "description": "Who says or sings this block. `null` is permitted for blocks that have no speaker attribution (e.g. ambient rubrics)."
+    },
+    "text": {
+      "type": "string",
+      "description": "The rendered text. May be empty for some structural blocks but the field itself is required. Empty-text blocks are flagged by `audit/endpoint-audit.js`."
+    },
+    "tone": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1, "maximum": 8 },
+        { "type": "null" }
+      ],
+      "description": "Tone (mode) number 1–8 when the block belongs to the Octoechos cycle or is otherwise tone-assigned."
+    },
+    "source": {
+      "type": "string",
+      "description": "Which liturgical book this block was drawn from. Common values: `octoechos`, `menaion`, `triodion`, `pentecostarion`, `fixed`, `db`. Used for provenance display and the choir-prep filter."
+    },
+    "label": {
+      "type": "string",
+      "description": "Optional display label rendered above the text (e.g. 'For the Martyrs', 'Dogmatikon', 'Theotokion')."
+    },
+    "_overlay": {
+      "type": "string",
+      "description": "Assembler-added: the translation overlay id (e.g. `htm-boston`, `st-john-damascus-tyler`) whose override produced this text. Absent when the text comes from the base layer. See `fixed-texts/translations/`."
+    },
+    "_source": {
+      "type": "string",
+      "description": "Assembler-added: provenance tag for content awaiting OCA-translation replacement. Used by `audit:date` to surface tracked gaps. Always carries traceability per STYLE.md §5."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "lic-hymn-v6",
+      "section": "Lord, I Have Cried",
+      "type": "hymn",
+      "speaker": "choir",
+      "text": "The passion-bearers of Christ have shone forth as suns…",
+      "tone": 5,
+      "source": "triodion",
+      "label": "For the Martyrs"
+    },
+    {
+      "id": "great-litany-amen",
+      "section": "The Great Litany",
+      "type": "response",
+      "speaker": "choir",
+      "text": "Amen."
+    }
+  ]
+}

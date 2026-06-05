@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ryanmichael/oca-services/main/schema/overlay-manifest.schema.json",
+  "title": "OverlayManifest",
+  "description": "Manifest for a translation / parish / jurisdiction overlay under `fixed-texts/translations/<id>/manifest.json`. Drives the cascade order (parent-first via `extends`) and surfaces metadata to the picker UI via `/api/translations`. Validated at server boot by `validateManifest` in `server.js`; this schema is the documentation contract that mirrors that runtime validator.",
+
+  "type": "object",
+  "required": ["name", "kind"],
+  "additionalProperties": false,
+
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable label shown in the settings picker. Example: 'St. Tikhon's Sluzhebnik (OCA)', 'Holy Transfiguration Monastery, Boston'."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["tradition", "parish", "jurisdiction"],
+      "description": "`tradition` = cross-jurisdictional translation lineage (HTM-Boston, Hapgood, Jordanville). `parish` = local customization layered on a tradition. `jurisdiction` = reserved for jurisdiction-wide defaults; not yet in active use."
+    },
+    "jurisdiction": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["oca", "rocor", "antiochian", "goa", "serbian", "romanian", "bulgarian", "georgian"]
+        },
+        { "type": "null" }
+      ],
+      "description": "Canonical jurisdiction tag used for picker filtering. `null` for cross-jurisdictional overlays (e.g. HTM-Boston). Mirrors `ALLOWED_JURISDICTIONS` in `server.js`."
+    },
+    "extends": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Parent overlay ids; applied parent-first, depth-first, then this overlay on top. Use `[]` (or omit) to layer only over the base fixed-text file. Cycle detection warns and skips the cyclic edge."
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line summary shown in the picker meta row. Plain prose."
+    },
+    "sources": {
+      "type": "string",
+      "description": "Provenance — the book, edition, ISBN, or URL the overlay's text was drawn from. Carries forward to STYLE.md §5 traceability."
+    },
+    "rubrics": {
+      "type": "object",
+      "description": "Non-text rubrical preferences that adjust assembler branching without changing any text. Merged across the extends chain (child wins). Mirrors validation in `server.js#validateManifest` rubrics branch.",
+      "additionalProperties": true,
+      "properties": {
+        "omitCatechumensSeasons": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Liturgical seasons during which the Litany of the Catechumens is omitted at this parish. Example: ['brightWeek', 'pentecostarion']."
+        }
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "name": "St. Tikhon's Sluzhebnik (OCA)",
+      "kind": "tradition",
+      "jurisdiction": "oca",
+      "extends": [],
+      "description": "St. Tikhon's Seminary Press priestly service book (2nd ed., 2010).",
+      "sources": "Service Books of the Orthodox Church, St. Tikhon's Seminary Press, 2010 (ISBN 978-1-878997-86-9)."
+    },
+    {
+      "name": "St. John of Damascus, Tyler, TX",
+      "kind": "parish",
+      "jurisdiction": "oca",
+      "extends": ["sts-sluzhebnik"],
+      "description": "Local customizations layered over the OCA's St. Tikhon's Sluzhebnik.",
+      "sources": "Parish service book",
+      "rubrics": {
+        "omitCatechumensSeasons": ["brightWeek", "pentecostarion"]
+      }
+    }
+  ]
+}

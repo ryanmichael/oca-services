@@ -126,7 +126,11 @@ const ALLOWED_JURISDICTIONS = new Set([
 
 /** Validates a manifest. Returns an array of human-readable warnings (empty = OK).
  *  All checks are non-fatal; loader handles defaults so the overlay still loads.
- *  Pass `allIds` (the set of existing overlay ids on disk) to validate extends refs. */
+ *  Pass `allIds` (the set of existing overlay ids on disk) to validate extends refs.
+ *
+ *  Documentation contract: `schema/overlay-manifest.schema.json`. When this
+ *  function is changed (enum additions, new fields, relaxed/tightened rules),
+ *  update the schema in the same commit. */
 function validateManifest(id, manifest, allIds) {
   const warnings = [];
   if (!manifest || typeof manifest !== 'object') {

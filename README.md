@@ -134,9 +134,19 @@ The fastest path to contribution is a **translation overlay or parish customizat
 3. Add `<service>-fixed.json` files with only the keys you want to override
 4. Restart the server (or `curl /api/translations` to verify the manifest)
 
-Full guide and schema: [`fixed-texts/translations/README.md`](./fixed-texts/translations/README.md).
+Full guide and conventions: [`fixed-texts/translations/README.md`](./fixed-texts/translations/README.md).
 
 For new jurisdictions, calendar variants, or service-structure additions, open an issue first — those touch `calendar-rules.js` and `assembler.js` and need coordination.
+
+### Schema — the public data contract
+
+Formal JSON Schema (draft 2020-12) definitions for the project's core data shapes live in [`schema/`](./schema/):
+
+- [`schema/service-block.schema.json`](./schema/service-block.schema.json) — the assembler's output shape
+- [`schema/calendar-entry.schema.json`](./schema/calendar-entry.schema.json) — the per-date conductor object
+- [`schema/overlay-manifest.schema.json`](./schema/overlay-manifest.schema.json) — the translation / parish overlay manifest
+
+External tooling can `$ref` these by their `$id` GitHub-raw URLs. See [`schema/README.md`](./schema/README.md) for strictness conventions, versioning policy, and how the schemas relate to the runtime validators (`server.js#validateManifest`, `data-validators.js`).
 
 ---
 

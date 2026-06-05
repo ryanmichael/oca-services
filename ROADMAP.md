@@ -8,7 +8,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 1 — Positioning anchor** (Weeks 1–2). 3 of 5 items shipped today (commit `bfa40c0`). Remaining: stand up `schema/` as a public contributor surface, then unblock the distribution-prep drafts.
+**Phase 1 — Positioning anchor** (Weeks 1–2). **Complete.** All 5 items shipped. Distribution-prep drafts (bishop letter, seminary outreach) are now unblocked. Phase 2 (modularize) is next — start with the `assembler.js` modularization sketch.
 
 ---
 
@@ -17,8 +17,8 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - [x] Four-lens strategic assessment landed (`ASSESSMENT.md`)
 - [x] Design philosophy promoted to root `STYLE.md` (5 durable principles + 10 named anti-patterns)
 - [x] README rewritten around multi-jurisdictional pitch; stale 2025-era TODOs removed
-- [ ] `schema/` directory with first formal JSON schemas (ServiceBlock, CalendarEntry, overlay manifest)
-- [ ] README Contributing section points at `schema/` as the public data contract
+- [x] `schema/` directory with first formal JSON schemas (ServiceBlock, CalendarEntry, OverlayManifest) + cross-references from `server.js#validateManifest` and `data-validators.js`
+- [x] README Contributing section points at `schema/` as the public data contract
 
 ## Weeks 3–5 — Modularize before the next jurisdiction lands
 
@@ -59,7 +59,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Notes / Blockers
 
-- **2026-06-05** — Bishop letter intentionally held until `schema/` lands; outreach should link to a substantive contributor doc, not just the README.
+- **2026-06-05** — Phase 1 complete; `schema/` landed, so the bishop letter and seminary inquiry are now unblocked. Drafts can link to `schema/README.md` as the substantive contributor surface.
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---

@@ -8,6 +8,13 @@
  * These are intentionally not full JSON Schema — they only check the
  * fields the assembler actually reads. Add a check when a new required
  * field is introduced; don't try to be exhaustive.
+ *
+ * Documentation contracts (JSON Schema, draft 2020-12) for the data
+ * shapes this project publishes live in `schema/`. When you change a
+ * validator here that corresponds to a published schema (currently:
+ * ServiceBlock, CalendarEntry, OverlayManifest), update the schema in
+ * the same commit. `ajv`-driven validation is on the roadmap but
+ * deliberately deferred — see `schema/README.md` § Future work.
  */
 
 'use strict';

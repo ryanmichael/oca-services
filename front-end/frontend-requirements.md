@@ -1,6 +1,8 @@
 # Frontend Requirements — Orthodox Daily Services
 
-This document is the authoritative spec for implementing the frontend of the Orthodox Daily Services app. The approved interactive prototype is `front-end/prototype.html` — match it visually and behaviorally exactly.
+This document is the authoritative **engineering spec** for implementing the frontend. The approved interactive prototype is `front-end/prototype.html` — match it visually and behaviorally exactly.
+
+The canonical **design philosophy** (durable principles, anti-patterns, brand posture) lives at [`../STYLE.md`](../STYLE.md). When the two documents disagree on intent, `STYLE.md` is authoritative; this document captures the implementation that flows from it.
 
 ---
 

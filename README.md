@@ -1,107 +1,153 @@
-# Orthodox Daily Services — Data Architecture
+# Orthodox Daily Services
 
-## Overview
+**The daily service-text platform for every Orthodox parish in America — in your jurisdiction's voice, your parish's translation, your choir's view.**
 
-A service like Great Vespers is not a static document — it is the **output of an assembly algorithm**. This project models that process as three distinct layers:
-
-```
-service-structure/        ← the "skeleton": ordered sections + assembly logic
-fixed-texts/              ← invariable prayers, psalms, litanies (same every time)
-variable-sources/         ← the "books" the typikon draws from by date
-  prokeimena.json         ← evening prokeimena by weekday + special occasions
-  octoechos.json          ← 8 tones × stichera / aposticha / troparia / theotokia  [TODO]
-  calendar.json           ← feast days, ranks, tone assignments per date           [TODO]
-  menaion/                ← fixed-calendar feasts (one file per feast day)         [TODO]
-  triodion/               ← Lenten/Paschal cycle propers                           [TODO]
-  pentecostarion/         ← Paschal cycle (Pascha → All Saints)                    [TODO]
-```
-
-Plus an **assembler** — a function `assembleService(date, serviceType)` that:
-1. Loads the service structure skeleton
-2. Resolves each `variable` block by looking up the correct source for the given date
-3. Returns an ordered array of rendered blocks for display or API delivery
+Production: [oca-services-production.up.railway.app](https://oca-services-production.up.railway.app/)
 
 ---
 
-## Block Types in Service Structure
+## What this is
 
-Each block in a service structure file is one of two types:
+A service like Great Vespers is not a static document. It is the **output of an assembly algorithm** that draws together fixed prayers, calendar-driven hymns from the Octoechos, Menaion, Triodion, and Pentecostarion, the appointed psalmody, and the parish's chosen translation tradition — and orders them according to centuries-old rubrics.
 
-### `fixed`
-Points to a key in `fixed-texts/`. Content is always identical.
-```json
+This project models that process as code, and exposes it as a free, modern, parish-customizable web app that serves clergy preparing services, choirs preparing music, laity following along, and catechumens learning the shape of Orthodox prayer.
+
+It is rooted in the Orthodox Church in America (OCA) and is being expanded jurisdiction by jurisdiction toward serving every canonical Orthodox parish in the United States.
+
+For the strategic frame and roadmap: see [`ASSESSMENT.md`](./ASSESSMENT.md). For the design philosophy: see [`STYLE.md`](./STYLE.md). For implementation conventions and the liturgical glossary: see [`CLAUDE.md`](./CLAUDE.md).
+
+---
+
+## What it does today
+
+### Services assembled
+
+| Service | Endpoint | Status |
+|---|---|---|
+| Great Vespers / Daily Vespers | `/api/service` | Production |
+| Matins | `/api/matins` | Production |
+| Divine Liturgy | `/api/liturgy` | Production |
+| Presanctified Liturgy | `/api/presanctified` | Production |
+| Vesperal Liturgy of St. Basil | `/api/vesperal-liturgy` | Production |
+| Bridegroom Matins | `/api/bridegroom-matins` | Production |
+| Twelve Passion Gospels | `/api/passion-gospels` | Production |
+| Royal Hours | `/api/royal-hours` | Production |
+| Lamentations | `/api/lamentations` | Production |
+| Paschal Matins | `/api/paschal-matins` (via service) | Production |
+| Paschal Hours | `/api/paschal-hours` | Production |
+| Pascha Collection | `/api/pascha-collection` | Production |
+| Kneeling Vespers of Pentecost | `/api/kneeling-vespers` | Production |
+
+### Modes
+
+- **Default reading view** — laity-facing service text, full rubrics, parchment palette
+- **Choir Director Mode** — `/api/choir-prep`, hymns-only filter, multi-service prep for the coming week
+- **Education Mode** — inline catechetical commentary on each block; patristic and rubrical context
+
+### Translation cascade
+
+Eight live overlay traditions and parish customizations, each layered manifest-first via `extends` chains over the OCA base:
+
+- `oca-tt` — OCA "thee/thou" base
+- `oca-modern` — OCA modern-English
+- `hapgood` — Service Book of the Holy Orthodox-Catholic Apostolic Church (Hapgood)
+- `htm-boston` — Holy Transfiguration Monastery, Boston
+- `jordanville` — Holy Trinity Publications (Jordanville)
+- `antiochian-aocana` — Antiochian Archdiocese
+- `sts-sluzhebnik` — St. Tikhon's Sluzhebnik
+- `st-john-damascus-tyler` — Parish overlay extending sts-sluzhebnik
+
+Allowed jurisdiction tags are enumerated for all eight canonical traditions: `oca, rocor, antiochian, goa, serbian, romanian, bulgarian, georgian`. See [`fixed-texts/translations/README.md`](./fixed-texts/translations/README.md) for the manifest schema and cascade rules.
+
+### Data coverage
+
+- 205 hand-authored Menaion entries
+- Complete Octoechos (all eight tones)
+- Full Triodion (Lenten and Pre-Lenten propers)
+- Pentecostarion (Paschal cycle through Pentecost)
+- Calendar generation by date for the full liturgical year (OCA New Style)
+
+---
+
+## The data architecture
+
+Three layers plus a conductor:
+
+```
+service-structure/        ← the skeleton: ordered sections + assembly logic
+fixed-texts/              ← invariable prayers, psalms, litanies
+  translations/           ← sparse overlays per tradition / parish
+variable-sources/         ← the "books": Octoechos, Menaion, Triodion, Pentecostarion
+  calendar/               ← per-date conductor entries (mostly runtime-generated)
+```
+
+The **calendar entry** for a given date specifies the season, weekly tone, all commemorations with rank, and for each service section: which source(s) to draw from, how many stichera, in what order, with which tone.
+
+The **assembler** (`assembler.js`) takes `(calendarDay, fixedTexts, sources)` and returns an ordered array of `ServiceBlock` objects suitable for rendering.
+
+```js
 {
-  "type": "fixed",
-  "speaker": "priest",
-  "textKey": "prayers.ourFather"
+  id:      "lic-hymn-v6",
+  section: "Lord, I Have Cried",
+  type:    "hymn",                 // rubric | prayer | hymn | verse | response | doxology
+  speaker: "choir",                // priest | deacon | reader | choir | all | null
+  text:    "The passion-bearers…",
+  tone:    5,
+  source:  "triodion",             // optional
+  label:   "For the Martyrs"       // optional
 }
 ```
 
-### `variable`
-Describes *how* to resolve content at runtime. A `resolvedBy` field names the resolver function; `params` and `sources` shape the lookup.
-```json
-{
-  "type": "variable",
-  "slot": "prokeimenon",
-  "resolvedBy": "prokeimenonResolver",
-  "params": { "sources": ["weekday", "greatFeast", "soulSaturday"] }
-}
+---
+
+## Quickstart
+
+```bash
+node server.js                          # HTTP server on :3000
+node server.js --port 8080              # alternate port
+
+# Audit suite
+npm test                                # backend smoke tests
+npm run audit:quick                     # structural rules (no server), pre-push gate
+npm run audit                           # ~208 representative dates against running server
+npm run audit:full                      # full 365-day sweep
+npm run audit:date -- 2026-06-07        # single date, pre-print checklist
+npm run audit:judge -- 2026-05-24       # LLM-as-judge vs OCA reference DOCX
 ```
 
----
-
-## Resolver Functions (to be implemented)
-
-| Resolver               | Responsibility                                                    |
-|------------------------|-------------------------------------------------------------------|
-| `kathismaResolver`     | Determine if/which kathisma section is read based on date rules   |
-| `prokeimenonResolver`  | Select correct prokeimenon (weekday / great feast / soul Sat)     |
-| `lessonsResolver`      | Return OT lessons if appointed by menaion/pentecostarion          |
-| `sticheraAssembler`    | Build ordered list of stichera with correct verse insertions      |
-| `apostichaAssembler`   | Build aposticha with correct verse set for day                    |
-| `tropariaAssembler`    | Assemble troparia with glory/now/theotokion structure             |
-| `dismissalResolver`    | Return correct dismissal text for feast/day                       |
+Requirements: Node ≥ 22.5 (uses `node:sqlite` and `node:http`). The only npm dependency is `@anthropic-ai/sdk`, required by `audit:judge`.
 
 ---
 
-## Variable Sources Status
+## Audit + quality
 
-| File                        | Status      | Notes                                      |
-|-----------------------------|-------------|--------------------------------------------|
-| `prokeimena.json`           | ✅ Complete  | All 7 weekdays + great prokeimena + Soul Sat|
-| `octoechos.json`            | 🔲 TODO     | Needs example service data to populate     |
-| `calendar.json`             | 🔲 TODO     | Needs feast day database                   |
-| `menaion/`                  | 🔲 TODO     | One file per fixed feast                   |
-| `triodion/`                 | 🔲 TODO     | Lenten propers                             |
-| `pentecostarion/`           | 🔲 TODO     | Paschal cycle                              |
+Structural correctness is enforced by a six-family rule auditor (`audit/rules/A`–`F`: calendar geometry, service availability, substitution flags, variant tables, provenance, theme/keyword) plus a Claude-based LLM judge that diffs the assembled output against the canonical OCA reference DOCX for the date. The pre-push hook runs `audit:quick`. See [`audit/README.md`](./audit/README.md).
 
 ---
 
-## Services Planned
+## Contributing
 
-- [x] Great Vespers structure
-- [ ] Daily Vespers structure
-- [ ] Matins structure
-- [ ] Divine Liturgy structure
+The fastest path to contribution is a **translation overlay or parish customization**:
 
----
+1. Create `fixed-texts/translations/<your-id>/`
+2. Add `manifest.json` declaring `name`, `kind` (`tradition` | `parish` | `jurisdiction`), `jurisdiction`, and optional `extends` parent overlays
+3. Add `<service>-fixed.json` files with only the keys you want to override
+4. Restart the server (or `curl /api/translations` to verify the manifest)
 
-## Key Rubrical Logic to Encode
+Full guide and schema: [`fixed-texts/translations/README.md`](./fixed-texts/translations/README.md).
 
-### Great vs Daily Vespers
-- **Great Vespers**: Kathisma 1 §1 ("Blessed is the Man"), Entrance, OT Lessons (when appointed), Augmented Litany *before* Vouchsafe
-- **Daily Vespers**: No kathisma on Sunday evenings, no entrance, no lessons, Augmented Litany *after* Troparia
-
-### Kathisma 1 §1 Exceptions (not sung at Great Vespers)
-- On eves of great feasts of the Lord (except when the eve falls on Sat or Sun evening)
-- On evenings of these feasts (except Saturday evening)
-
-### Prokeimenon Exceptions
-- Soul Saturday eve: Alleluia replaces prokeimenon
-- Great feasts on Saturday: usual Saturday prokeimenon takes precedence; great prokeimenon sung previous evening
+For new jurisdictions, calendar variants, or service-structure additions, open an issue first — those touch `calendar-rules.js` and `assembler.js` and need coordination.
 
 ---
 
-## Tone Cycle
+## Strategic frame
 
-The 8-tone (octoechos) cycle governs which tone's stichera/troparia are used on a given Sunday. The cycle resets at a fixed point (Tone 1 = first Sunday after All Saints Sunday). `calendar.json` will encode the tone for each date.
+This project is being built with a startup-discipline posture (growth thinking, product-market-fit rigor, modern UX) toward a free, durable, cross-jurisdictional public good — not a monetized product. The four-lens strategic assessment, including the 90-day plan and biggest-opportunity claim, lives at [`ASSESSMENT.md`](./ASSESSMENT.md).
+
+The design philosophy is canonicalized at [`STYLE.md`](./STYLE.md). It should be read before any visual contribution.
+
+---
+
+## License
+
+MIT. Provenance for variable texts is attributed at the overlay level (`manifest.sources`). Some traditions reserve attribution requirements — consult the relevant overlay's manifest before redistributing.

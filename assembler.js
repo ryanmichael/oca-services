@@ -28,6 +28,10 @@ const assembleNuncDimittis                               = require('./assemblers
 const { assembleLitya, assembleBlessingOfBread }         = require('./assemblers/vespers-parts/litya');
 const assembleEpitaphion                                 = require('./assemblers/vespers-parts/epitaphion');
 
+// ─── Cross-family helpers (./assemblers/common-parts/) ─────────────────────
+const assembleTroparia                                   = require('./assemblers/common-parts/troparia');
+const assembleDismissal                                  = require('./assemblers/common-parts/dismissal');
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 /**
@@ -152,98 +156,6 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
 
   blocks._warnings = warnings.get();
   return blocks;
-}
-
-function assembleTroparia(tropariaSpec, sources, opts = {}) {
-  const section = 'Troparia';
-  const blocks = [];
-  // Great-Feast / Vigil rubric: only the feast troparion is sung, thrice
-  // ("Rejoice O Virgin" is omitted at Blessing of Bread). Drop any
-  // dismissal-theotokion / Now-position slot so the troparion stands alone.
-  const slots = opts.repeatThrice
-    ? tropariaSpec.slots.filter(s => s.position !== 'now' && s.position !== 'glory')
-    : tropariaSpec.slots;
-  if (opts.repeatThrice && slots.length >= 1) {
-    blocks.push(makeBlock('trop-thrice-rubric', section, 'rubric', null,
-      'The Troparion is sung thrice:'));
-  }
-  for (const slot of slots) {
-    const sourceObj = resolveSource(slot.source || tropariaSpec.source, slot.key, sources);
-    if (!sourceObj) continue;
-
-    // Position-aware text selection: when the resolved object is a structured
-    // section (DB-style with glory/now sub-objects), pick the matching
-    // sub-object — and skip the slot if it isn't present (avoids duplicating
-    // the top-level Resurrection troparion at the Glory or Now position).
-    // Flat sources (Octoechos dismissalTheotokion etc.) fall through.
-    const isStructured = sourceObj.glory != null || sourceObj.now != null;
-    let entry = sourceObj;
-    if (slot.position === 'glory' && isStructured) {
-      if (!sourceObj.glory) continue;
-      entry = sourceObj.glory;
-    } else if (slot.position === 'now' && isStructured) {
-      if (!sourceObj.now) continue;
-      entry = sourceObj.now;
-    }
-
-    if (slot.position === 'glory') {
-      blocks.push(makeBlock('trop-glory-label', section, 'doxology', null, 'Glory to the Father, and to the Son, and to the Holy Spirit.'));
-    } else if (slot.position === 'now') {
-      blocks.push(makeBlock('trop-now-label', section, 'doxology', null, 'Now and ever and unto ages of ages. Amen.'));
-    }
-
-    const repeats = opts.repeatThrice ? 3 : 1;
-    for (let r = 0; r < repeats; r++) {
-      blocks.push(makeBlock(
-        `troparion-${slot.position || slot.order || 1}${repeats > 1 ? `-${r + 1}` : ''}`,
-        section, 'hymn', 'choir', entry.text,
-        { tone: entry.tone || slot.tone, source: slot.source || tropariaSpec.source, label: entry.label || slot.label, provenance: slot.provenance || entry.provenance }
-      ));
-    }
-  }
-  return blocks;
-}
-
-function assembleDismissal(fixedTexts, dismissalSpec) {
-  const section = 'Dismissal';
-  const d = fixedTexts.dismissal;
-
-  // Build proper dismissal text
-  let properText = '[Proper Dismissal for the day]';
-  if (dismissalSpec) {
-    if (dismissalSpec.opening === 'holyFriday') {
-      properText = 'May He Who for us men and for our salvation endured in the flesh the dread passion, the life-giving Cross and voluntary burial, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.';
-    } else {
-      let opening;
-      if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
-        opening = 'May Christ our true God,';
-      } else if (dismissalSpec.opening === 'sunday') {
-        opening = 'May He Who rose from the dead, Christ our true God,';
-      } else {
-        opening = 'May Christ our true God,';
-      }
-
-      const parts = ['through the prayers of His most pure Mother'];
-      if (dismissalSpec.dayPatron) parts.push(`of ${dismissalSpec.dayPatron}`);
-      const saints = dismissalSpec.saints || [];
-      if (saints.length > 0) parts.push(`of ${saints.join('; ')}`);
-      const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
-      properText = `${opening} ${closing}`;
-    }
-  }
-
-  return [
-    makeBlock('dis-wisdom', section, 'prayer', 'deacon', d.wisdom),
-    makeBlock('dis-father-bless', section, 'response', 'choir', d.fatherBless),
-    makeBlock('dis-blessed', section, 'prayer', 'priest', d.blessedHeWhoIs),
-    makeBlock('dis-confirm', section, 'response', 'choir', d.confirm),
-    makeBlock('dis-theotokos', section, 'prayer', 'priest', d.mostHolyTheotokos),
-    makeBlock('dis-magnification', section, 'response', 'choir', d.magnification),
-    makeBlock('dis-glory-christ', section, 'prayer', 'priest', d.gloryChrist),
-    makeBlock('dis-final', section, 'response', 'choir', d.finalResponse),
-    makeBlock('dis-proper', section, 'prayer', 'priest', properText),
-    makeBlock('dis-amen', section, 'response', 'choir', 'Amen.'),
-  ];
 }
 
 // ─── Divine Liturgy Assembler ─────────────────────────────────────────────────

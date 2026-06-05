@@ -8,7 +8,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B landed. `assembler.js` is now 4,783 lines (down from 5,665 originally — 16% smaller). All 17 Vespers building-block functions moved cleanly to `assemblers/vespers-parts/`. Snapshot 42/42 byte-identical first try. Next: Phase C — extract `common-parts/` (`assembleTroparia`, `assembleDismissal`).
+**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C landed. `assembler.js` is now 4,710 lines (down from 5,665 originally — 17% smaller). 19 functions moved out across three sub-phases; foundation (`_shared/`, `vespers-parts/`, `common-parts/`) complete. Next: Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in batched PRs.
 
 ---
 
@@ -24,8 +24,8 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 - [x] Sketch `assembler.js` modularization plan → [`docs/refactor-assembler.md`](./docs/refactor-assembler.md) (26 target files, 6-phase migration, snapshot-test safety net)
 - [x] Phase A — extracted `assemblers/_shared/` (`make-block`, `warnings`, `resolve`, `fixed-text-loader`); added `audit/snapshot.js` harness + `audit/snapshots/baseline.json` (42 entries byte-identical); harness already caught the `deepGet` near-miss
-- [x] Phase B — extracted `assemblers/vespers-parts/` (10 files, 17 functions: opening, litanies, kathisma, lord-i-call, ot-readings, prokeimenon, aposticha, nunc-dimittis, litya, epitaphion). `assembler.js` down to 4,783 lines (16% smaller). Snapshot 42/42 byte-identical first try.
-- [ ] Phase C — extract `assemblers/common-parts/` (`troparia`, `dismissal`)
+- [x] Phase B — extracted `assemblers/vespers-parts/` (10 files, 17 functions: opening, litanies, kathisma, lord-i-call, ot-readings, prokeimenon, aposticha, nunc-dimittis, litya, epitaphion). `assembler.js` down to 4,797 lines (15% smaller). Snapshot 42/42 byte-identical first try.
+- [x] Phase C — extracted `assemblers/common-parts/` (`troparia.js`, `dismissal.js`). `assembler.js` now 4,710 lines. Cross-family helpers now consumable by Vespers, Matins, Liturgy, Presanctified, Vesperal Liturgy. Snapshot 42/42 byte-identical first try.
 - [ ] Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in 2–3 batched PRs
 - [ ] Phase E — extract the core trio (vespers, liturgy, matins)
 - [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade

@@ -8,7 +8,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C landed. `assembler.js` is now 4,710 lines (down from 5,665 originally — 17% smaller). 19 functions moved out across three sub-phases; foundation (`_shared/`, `vespers-parts/`, `common-parts/`) complete. Next: Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in batched PRs.
+**Phase 2 — Modularize** (Weeks 3–5). Phases A + B + C + D PR1 landed. `assembler.js` is now 4,386 lines (down from 5,665 originally — 22.6% smaller). 22 functions extracted. Foundation + 3 of 7 leaf services done. Next: Phase D PR2 (paschal-matins + bridegroom-matins) and PR3 (passion-gospels + lamentations).
 
 ---
 
@@ -27,6 +27,9 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - [x] Phase B — extracted `assemblers/vespers-parts/` (10 files, 17 functions: opening, litanies, kathisma, lord-i-call, ot-readings, prokeimenon, aposticha, nunc-dimittis, litya, epitaphion). `assembler.js` down to 4,797 lines (15% smaller). Snapshot 42/42 byte-identical first try.
 - [x] Phase C — extracted `assemblers/common-parts/` (`troparia.js`, `dismissal.js`). `assembler.js` now 4,710 lines. Cross-family helpers now consumable by Vespers, Matins, Liturgy, Presanctified, Vesperal Liturgy. Snapshot 42/42 byte-identical first try.
 - [ ] Phase D — extract 7 leaf services (paschal-hours, midnight-office, royal-hours, paschal-matins, bridegroom-matins, passion-gospels, lamentations) in 2–3 batched PRs
+  - [x] PR1: paschal-hours, midnight-office, royal-hours — 328 lines extracted, snapshot 42/42 first try
+  - [ ] PR2: paschal-matins, bridegroom-matins
+  - [ ] PR3: passion-gospels, lamentations
 - [ ] Phase E — extract the core trio (vespers, liturgy, matins)
 - [ ] Phase F — extract composed services (presanctified, vesperal-liturgy) + collapse `assembler.js` to a facade
 - [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`

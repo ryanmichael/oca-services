@@ -8,9 +8,11 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Current focus
 
-**Phase 2 — Modularize COMPLETE.** All 6 phases (A–F) shipped. `assembler.js` is now a **12-line facade** (down from 5,665 — **−99.8%**) re-exporting from `assemblers/index.js`. 12 top-level assemblers + 65+ section helpers across 36 files. The codebase is structurally ready to add per-jurisdiction variants (Greek / Antiochian) as sibling files — the Phase 2 trigger condition from `ASSESSMENT.md §3`.
+**Phase 2 — Modularize COMPLETE.** All 6 phases (A–F) shipped. `assembler.js` is a **12-line facade** (down from 5,665 — **−99.8%**) re-exporting from `assemblers/index.js`. 12 top-level assemblers + 65+ section helpers across 36 files. The codebase is structurally ready to add per-jurisdiction variants (Greek / Antiochian) as sibling files — the Phase 2 trigger condition from `ASSESSMENT.md §3`.
 
-**Next:** Old-Style calendar variant (Weeks 4–7), or `server.js` split, or jurisdiction work — whatever the strategic priority calls for. See Weeks 4–7 / 5–8 sections below.
+**Audit triage shipped 2026-06-05** (`821d3ec`). 25 high-sev findings → 9 real Sunday-Matins coverage gaps. Fixed at source: getEothinon Triodion/Pentecostarion suspension, 2 YY→TT data fixes, M2 audit rule false-positive. Suppressed 8 as documented knownFailures (Pascha, feast-overrides, plural-object false positive). See [[reference-audit-triage-2026-06-05]] for the remaining gap list + recommended fix path.
+
+**Next:** the 9 Sunday-Matins gaps are the most tractable next pass — each one needs `matins.gospel` + Great Doxology wired into a specific Sunday calendar entry. After that: Old-Style calendar variant (Weeks 4–7), `server.js` split, or jurisdiction work.
 
 ---
 
@@ -82,6 +84,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 - **2026-06-05** — Phase B complete. Followed the `grep_all_callers` rule from Phase A: anchor-check script verified the 12 deletion-range boundaries before any code moved, and the kathisma file collision with root `kathisma.js` was caught at design time via the explicit `require('../../kathisma')` path. Single commit, no regressions.
 - **2026-06-05** — Phase E complete (PRs 1–3 in one session, commits `97f1789`, `fe8af1f`, `16051a2`). 3 batched PRs landed back-to-back; each passed 42/42 snapshot, 109/109 tests, 0/0/0 audit first try. No regressions. `assembler.js` down to 579 lines. Pattern observation: with helpers already extracted (vespers-parts, common-parts), each leaf assembler extraction is mechanical — the dep-grep regex and snapshot harness make these PRs low-risk in series.
 - **2026-06-05** — Phase F complete (PRs 1–3 in same session, commits `0e69de8`, `0b929fc`, `2379045`). All 3 PRs clean first try. `assembler.js` → 12 lines (facade); `assemblers/index.js` → 28 lines (public API). External callers untouched. **Phase 2 modularize DONE.** From 5,665 → 12 lines over A through F. Pattern observation for future big-bang refactors: snapshot harness + per-PR helper-extraction + namespace re-export at the end is the durable pattern. Caller surface stays stable; internal physics moves freely.
+- **2026-06-05** — Audit triage shipped (`821d3ec`). 25 high-sev findings → 9 real coverage gaps. 4 root-cause fixes (getEothinon Triodion/Pentecostarion suspension, YY→TT in two data files, M2 audit rule false-positive against Kathisma 7 Psalm 50 verses) + 8 documented knownFailures. Pattern observation: the audit suite is sensitive enough to expose both real bugs and rule misfires — when a finding is suppressed, the reason must be precise enough that a future reader can re-evaluate it.
 - **2026-06-04** — Long-running research agents hit socket timeouts during the assessment work; broke the research into smaller parallel queries instead. Pattern to remember for future deep-research sessions.
 
 ---

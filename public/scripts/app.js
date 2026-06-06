@@ -17,6 +17,7 @@ let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'cho
 let activeEducation = localStorage.getItem('education') || 'off'; // 'on' or 'off'
 let activeTranslation = localStorage.getItem('translation') || '';  // '' = default, else overlay id
 let activeJurisdiction = localStorage.getItem('jurisdiction') || 'all';  // filter for the translation picker
+let activeStyle = localStorage.getItem('style') || '';  // '' = follow overlay default; 'new' or 'old' = explicit override
 let translationsCache = null; // { default, translations: [...] } from /api/translations
 let educationModules = null; // cached education modules data (liturgy)
 let educationModulesVespers = null; // cached education modules data (vespers)
@@ -68,7 +69,7 @@ function formatWeekRange(startStr, endStr) {
 // ─── Fetch helpers ────────────────────────────────────────────────────────────
 
 async function fetchDays(from, to) {
-  const res = await fetch(`/api/days?from=${from}&to=${to}`);
+  const res = await fetch(`/api/days?from=${from}&to=${to}${translationParam()}${styleParam()}`);
   if (!res.ok) throw new Error(`/api/days failed: ${res.status}`);
   return res.json();
 }
@@ -76,6 +77,13 @@ async function fetchDays(from, to) {
 /** Builds the &translation= suffix when an overlay is selected. */
 function translationParam() {
   return activeTranslation ? `&translation=${encodeURIComponent(activeTranslation)}` : '';
+}
+
+/** Builds the &style= suffix when the user has explicitly overridden style.
+ *  Empty `activeStyle` means "follow the overlay default" (which the server
+ *  resolves from the active overlay's manifest, falling back to 'new'). */
+function styleParam() {
+  return activeStyle ? `&style=${encodeURIComponent(activeStyle)}` : '';
 }
 
 /** Shows or hides the translation indicator beneath the service date.
@@ -121,7 +129,7 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
-  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}${translationParam()}`);
+  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`${endpoint} failed: ${res.status}`);
@@ -1009,6 +1017,10 @@ function syncSettingsUI() {
   document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.edu === activeEducation);
   });
+  // Style toggle
+  document.querySelectorAll('#style-toggle .seg-btn').forEach(btn => {
+    btn.classList.toggle('active', (btn.dataset.style || '') === activeStyle);
+  });
   // Translation picker
   document.querySelectorAll('#jurisdiction-row .seg-btn-pill').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.jur === activeJurisdiction);
@@ -1131,6 +1143,33 @@ function setEducation(val) {
   }
 }
 
+/** '' = follow overlay default; 'new' or 'old' = explicit override. Touches
+ *  service availability (matins/liturgy badges on the home list), the day
+ *  cache (which feasts get full propers), and the panel content. */
+async function setStyle(val) {
+  activeStyle = val || '';
+  if (activeStyle) localStorage.setItem('style', activeStyle);
+  else localStorage.removeItem('style');
+  syncSettingsUI();
+  // Drop cached day data — the calendar style changes which dates are feasts.
+  calDayCache = {};
+  // Reload the home list + active panel.
+  try {
+    const today  = new Date();
+    const anchor = activeDate ? new Date(activeDate + 'T12:00:00') : today;
+    const from   = toIso(addDays(anchor, -7));
+    const to     = toIso(addDays(anchor, 28));
+    days = await fetchDays(from, to);
+    for (const day of days) calDayCache[day.date] = day;
+    renderServiceList(days);
+  } catch (err) {
+    console.error('Failed to reload days after style change:', err);
+  }
+  if (activeDate && activeSvcType) {
+    loadPanelContent(activeDate, activeSvcType);
+  }
+}
+
 async function getEducationModules() {
   if (educationModules) return educationModules;
   try {
@@ -1179,6 +1218,9 @@ function initSettingsToggles() {
   document.querySelectorAll('#education-toggle .seg-btn').forEach(btn => {
     btn.addEventListener('click', () => setEducation(btn.dataset.edu));
   });
+  document.querySelectorAll('#style-toggle .seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => setStyle(btn.dataset.style || ''));
+  });
   document.querySelectorAll('#jurisdiction-row .seg-btn-pill').forEach(btn => {
     btn.addEventListener('click', () => setJurisdiction(btn.dataset.jur));
   });
@@ -1189,7 +1231,7 @@ function initSettingsToggles() {
 // ─── Choir mode helpers ──────────────────────────────────────────────────────
 
 async function fetchChoirPrep(date, pronoun = 'tt') {
-  const res = await fetch(`/api/choir-prep?date=${date}&pronoun=${pronoun}${translationParam()}`);
+  const res = await fetch(`/api/choir-prep?date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`/api/choir-prep failed: ${res.status}`);

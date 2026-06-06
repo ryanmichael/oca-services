@@ -14,7 +14,9 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 **Sunday-Matins gap fix shipped 2026-06-06.** All 9 remaining gaps resolved via a single root-cause fix in `server-lib/sources/matins-spec.js` — `_overlaySundayDefaults()` layers Sunday-required pieces (eothinon Gospel, Octoechos Lauds, Great Doxology) on top of menaion-driven specs when a saint coincides with Sunday. Full audit now reports `high=0` (was 9).
 
-**Next:** Old-Style calendar variant (Weeks 4–7), per-jurisdiction route prefixes, or content backlog (afterfeast modeling layer, doxology-rank alternate sources, Pentecostarion Beatitudes).
+**Old-Style calendar axis shipped 2026-06-06** (commits `6fdb061`, `6977b85`, plus UI commit). `style: 'new' | 'old'` threaded through every fixed-feast lookup in `calendar-rules.js` + `matins-spec.js` + `liturgy-from-orthocal.js` + the calendar/assemble layer; 6 routes (matins/liturgy/vespers/days/choir-prep/dashboard) extract style from `(query.style || overlayStyle || 'new')` and echo it in their response JSON. Overlay manifests accept `style: 'new' | 'old'`. Two Old-Style overlays ship: `julian/` (calendar-only) and `jordanville/` (ROCOR). Front-end has a Default / New / Old toggle in settings. 33 contract tests in `test/old-style.test.js` + audit rule A1 + e2e spec 06. See [[project-old-style-axis]] and `docs/old-style-calendar.md`.
+
+**Next:** per-jurisdiction route prefixes, content backlog (afterfeast modeling layer, doxology-rank alternate sources, Pentecostarion Beatitudes), or LLM-assisted menaion authoring (Weeks 6–8).
 
 ---
 

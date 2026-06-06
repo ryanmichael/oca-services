@@ -2,7 +2,7 @@
 
 Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md §6`](./ASSESSMENT.md); this doc is the "where are we right now" glance — kept short on purpose.
 
-**Last updated:** 2026-06-06 (Phase 3 COMPLETE)
+**Last updated:** 2026-06-06 (Phase 3 COMPLETE + Playwright e2e shipped)
 
 ---
 
@@ -49,7 +49,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] Phase D — `server-lib/assemble/` (pronouns + day-label + for-date) + `server-lib/render/` (home + error + service + dashboard); 2bcbb01; snapshot 42/42; server.js 3,125 → 2,114 (−1,011)
   - [x] Phase E — `server-lib/routes/` (27 endpoint files + dispatcher); ctx-pass model; 2453754; snapshot 42/42 + 12/12 non-snapshot endpoints byte-match; server.js 2,114 → 268 (−1,846)
   - [x] Phase F — `server-lib/boot/load-fixed.js` bundles the 134-line boot block into `boot()`; `server-lib/index.js` public surface; 75c5bc3; snapshot 42/42 + 12/12 endpoints; server.js 268 → 22 (−246, **5,375 → 22 total, −99.6%**)
-- [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
+- [x] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch) — `test/e2e/` + `playwright.config.js`; 5/5 green in ~4s; run via `npm run test:e2e`
 
 ## Weeks 4–7 (parallel) — Old-Style calendar variant
 

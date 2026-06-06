@@ -190,6 +190,7 @@ function handle(req, res, ctx) {
         season,
         liturgicalLabel,
         commemorations,
+        translation:      translation || null,
         blocks,
       }));
       })().catch(err => {

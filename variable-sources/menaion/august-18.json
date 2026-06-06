@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Florus & Laurus",
+    "feastRank": "simple",
+    "tone": 8,
+    "_source": "St-Sergius Emenaion 08-18.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-18.pdf",
+    "_note": "Afterfeast of the Dormition. Two-canon Matins: Canon I = Dormition (feast-canons/dormition.json, Cosmas Tone I); Canon II = Florus & Laurus by Joseph Tone VIII (acrostic: I hymn the two comely martyrs)."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity, * and in thy dormition thou didst not forsake the world, O Theotokos. * Thou hast been translated unto life, * since thou art the Mother of Life. ** And by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "O ye faithful, let us praise as is meet * the most blessed Florus and the most honored Laurus, * the most comely and divinely wise and radiant twain, * who earnestly and manifestly proclaimed the uncreated Trinity to all. * Wherefore, having suffered even unto the shedding of your blood * and been crowned with most splendid crowns, ** entreat Christ God, that He save our souls.",
+    "label": "Troparion of the Holy Martyrs"
+  },
+  "kontakion": {
+    "tone": 8,
+    "text": "The whole world doth most gloriously honor Florus and Laurus today, * as martyrs of piety and divinely wise spiritual athletes of Christ, * that we may receive grace and mercy through their prayers, * and may be delivered from tribulations and dangers, ** and from wrath and sorrow on the day of judgment.",
+    "label": "Kontakion of the Holy Martyrs",
+    "melody": "As first-fruits"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Thou hast appeared today",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "The whole world is adorned by the immaterial Spirit in thy glorious memory, and it crieth out to thee noetically with gladness: Rejoice, O Virgin, thou boast of the Christians!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 6,
+        "melody": "The portal of tender compassion",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Praising thy repose, O pure one, all of us, the faithful, hymn thee; for thou hast been translated from the earth, from life unto life, and in the heavens thou prayest to God, that the human race be delivered from misfortunes.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of the Holy Martyrs (after Ode 3)",
+      "text": "Ye were shown to be spiritual architects, and through faith founded the souls of the pious by divine grace on the rock of Faith; and, having made yourselves a consecrated temple of the adored Trinity, ye suffered steadfastly. Wherefore, ye pour forth healings upon those who have recourse to you with faith, and drive away sufferings, O brethren and passion-bearers. Entreat Christ God, that He grant forgiveness of sins unto those who honor your holy memory with love.",
+      "bothNow": {
+        "tone": 8,
+        "label": "Sessional Hymn of the feast",
+        "text": "Having conceived God without seed and given birth to Him, incarnate, without corruption, thou wast clad in the new raiment of the incorruption of the Spirit; for as the Mother of Life and the Queen of all, O Virgin, thou hast been translated to immaterial life. Wherefore, as is meet, thou hast truly been shown to be a cloud pouring forth the waters of our life, O all-immaculate Mother of God. Entreat thy Son and God, that He grant forgiveness of sins unto those who celebrate thy holy dormition with love."
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "label": "Exapostilarion of the feast",
+      "text": "O ye apostles, having gathered here from the ends of the earth, bury my body in the Garden of Gethsemane. And do Thou, O my Son and God, receive my spirit!",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "melody": "Heaven with stars",
+      "bothNow": {
+        "tone": 2,
+        "text": "O ye apostles, having gathered here from the ends of the earth, bury my body in the Garden of Gethsemane. And do Thou, O my Son and God, receive my spirit!",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 8,
+      "_author": "Canon of the Holy Martyrs Florus & Laurus, the composition of Joseph in Tone VIII (acrostic: I hymn the two comely martyrs). Canon I (feast) from feast-canons/dormition.json (Cosmas Tone I).",
+      "kontakionAfterOde3": {
+        "tone": 8,
+        "text": "The whole world doth most gloriously honor Florus and Laurus today, * as martyrs of piety and divinely wise spiritual athletes of Christ, * that we may receive grace and mercy through their prayers, * and may be delivered from tribulations and dangers, ** and from wrath and sorrow on the day of judgment.",
+        "label": "Kontakion of the Holy Martyrs",
+        "melody": "As first-fruits"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos, * who is untiring in her supplications * and our certain hope in her intercessions. * For, as the Mother of Life, * she hath passed over to the Life ** Who dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "The wonderworking staff of Moses, * striking and dividing the sea in the figure of a cross, * once drowned Pharaoh the pursuing charioteer, * while it saved the fleeing people of Israel * as they fled on foot, * chanting a hymn unto God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Enlightened by the radiant brilliance of the Spirit, dispel ye the dark clouds of my soul, that, rejoicing, I may hymn your luminous and honorable memory, O holy and most comely martyrs of Christ." },
+          { "canon": "secondCanon", "text": "Having founded yourselves upon the rock of the unsullied Faith through divine virtues, O blessed ones, ye showed yourselves to be a most comely and beautiful temple, wherein the Father, the Son and the Holy Spirit dwelt." },
+          { "canon": "secondCanon", "text": "Cutting off the thorns of deception at the root with the cutting word of the divine Faith, O ye of great renown, ye renewed hearts grown stony through falsehood and showed them to be fertile, giving rise to the unsullied Faith like a flower." },
+          { "canon": "secondCanon", "theotokion": true, "text": "From thy virginal womb thou didst put forth the un-watered Root, the Husbandman of all, who became a man and endured suffering. Desiring Him, the divine martyrs suffered faithfully, O most pure, all-hymned Virgin." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Lord, Creator of the vault of Heaven * and Builder of the Church, * do Thou strengthen me in Thy love, O Summit of desire, * O Support of the faithful, * O only Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Fulfilling the divine law, O all-praised martyrs, ye generously gave bread to the poor and guided them to divine piety, becoming mediators of their salvation." },
+          { "canon": "secondCanon", "text": "The two radiant martyrs, shining with beams of miracles, dispelled the darkness of the delusion of polytheism and have guided to the effulgence of faith all who have been deceived." },
+          { "canon": "secondCanon", "text": "O pious and blessed martyrs, with divine teachings ye guided a childish people to the path of divine understanding, and cast down the temples of the demons by your supplication." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Virgin who knewest not wedlock, for whose sake the Word hath shone forth upon us, Who is understood to transcend any beginning; save thy flock, and every city and countryside, from every evil circumstance, O thou who art full of divine joy." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Thou, O Lord, art my strength and Thou art my power, * Thou art my God and Thou art my joy, * Thou Who, while never leaving the bosom of Thy Father, * hast visited our poverty. * Therefore with the Prophet Habbakuk I cry unto Thee, * 'Glory to Thy power, O Lover of mankind!'",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Wrestling with the enemy, like youths O valiant ones, ye firmly cast him down by the weapon of the Cross, and those who had been broken by sin ye made into living temples of the Lord, who piously chant: Glory to Thy power, O Lover of mankind!" },
+          { "canon": "secondCanon", "text": "Strengthened, O all-glorious saints, by Christ, the Stone cut, as is written, from the mountain of the divine Virgin Maiden, ye broke the idols in pieces and have been taken up to the high mountain of martyrdom, having manifestly emulated the angels." },
+          { "canon": "secondCanon", "text": "Rejoicing, Florus and Laurus, the two honored martyrs, proclaimed the single effulgence of the three-Sunned Godhead, and zealously drained the cup of martyrdom, chanting to Christ: Glory to Thy power, O Lover of mankind." },
+          { "canon": "secondCanon", "text": "Having placed yourselves under the law of God, O divine martyrs, by opening the eyes of the ungodly ye inclined them to worship Him alone, illumining their noetic sight, casting light upon all the ends of the earth like two beacons." },
+          { "canon": "secondCanon", "theotokion": true, "text": "God, the Creator of all, chose thee from among all generations as a pure Ever-virgin, O Theotokos; and the only King of the ages made thy womb an undefiled palace and appeared to men through thee." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Light never-waning, * why hast Thou turned Thy face from me * and why hath the alien darkness surrounded me, * wretched though I be? * But do Thou guide my steps I implore Thee * and turn me back towards the light of Thy commandments.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The two godly martyred brethren did not suffer separation; for, believing in the indivisible Holy Trinity with a single hope, through grace they united those held fast by unseemly division." },
+          { "canon": "secondCanon", "text": "Piously quarrying stony minds with the measuring-line of Truth and the stonecutter's maul of divine understanding, O spiritual athletes, through divine faith ye made most glorious temples for the Trinity through the power of the Spirit." },
+          { "canon": "secondCanon", "text": "Ye were shown to be severers of all wickedness at the root, O glorious martyrs, and planters of all piety by your words and deeds: in impassive hearts ye planted the Flower of Jesse which sprang forth from a divine root." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The pre-eternal Word of the Father, the great mystery hidden from before time began, which was unknown to the first generations, O all-immaculate one, was revealed through thee, incarnate, having become a man." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Cleanse me, O Savior, * for many are mine iniquities; * lead me up from the abyss of evils I pray Thee, * for unto Thee have I cried, * and Thou hast hearkened unto me, * O God of my salvation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Vanquishing the iniquitous with unwavering endurance, O spiritual athletes, in accordance with the law ye brought a right praiseworthy death unto Christ, without being covered by the vainglory of ungodliness." },
+          { "canon": "secondCanon", "text": "Revealed as swords of the mighty Spirit, O blessed ones, ye conquered the incorporeal foe, piously emulating the blessed suffering of Him Who was pierced by the spear." },
+          { "canon": "secondCanon", "text": "O glorious ones, ye were shown to be like two most comely breasts for the Church of Christ, not exuding milk, but pouring forth the free and saving gift of healings." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Heal thou my soul, which hath become sick through sin, O most pure one who hast given birth to the Physician of souls and bodies, confessing Whom, the divine martyrs were shown to be physicians of the passions." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Once in Babylon the fire stood in awe * of God's condescension; * for which sake the youths in the furnace, * dancing with joyous steps as in a meadow, chanted: * O God of our fathers, Blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Florus and Laurus of great renown, the pillars of divine knowledge, destroyed the wooden and stone gods of the ungodly and have set themselves before those who chant: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "text": "Full of the divine fire of the Spirit, O glorious martyrs, with the showers of your divine supplications ye preserved the righteous men who were about to be unjustly cast into the furnace." },
+          { "canon": "secondCanon", "text": "The martyrs Florus and Laurus ever impart healing to the sick, deliverance to the oppressed and salvation to all the persecuted, chanting: Blessed is the God of our fathers!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Maiden, Christ chose thee like a rose in the valley of life, and, making His abode within thee, O all-immaculate one, He passed forth in the flesh, perfuming with exhalations of divine knowledge us who ever confess thee to be the Theotokos." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze, * with heat fanned sevenfold for the servants of God; * but when he perceived that they had been saved by a greater power * he cried aloud to the Creator and Redeemer; * 'ye children bless, ye priests praise, * ye people, supremely exalt Him throughout all ages'.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Nourishing souls with the living word, O ever all-memorable ones, ye have shown yourselves to be saving food for those famished with hunger, and care for the poor and the orphaned, seeing to the needs of all and chanting to Christ: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Having your life and end sanctified, and being hidden for a long time, O wise ones, ye were given forth by the earth, shining forth beams of most glorious miracles brighter than the rays of the sun upon us who chant with faith: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Ye were shown to be two beacons in the noetic firmament, adorning the Church with sanctity; and ye ever radiantly illumine all creation with miracles, crying aloud: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O most holy Virgin who art holier than the angels, thou hast given birth to Him Who, in His tender compassion, became a man without commingling, as we are, that He might save those who cry out to Him unceasingly: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Heaven was stricken with awe, * and the ends of the earth were filled with amazement, * for God hath appeared in the flesh, * and thy womb was rendered more spacious than the heavens. * Wherefore, the ranks of men and of angels * magnify thee as the Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Behold now, David cried of old, what is so good, or so beautiful and saving, as for godly brethren, who have manifestly struggled and won victory over the devil, to dwell together in the Spirit? Wherefore we bless them as is meet." },
+          { "canon": "secondCanon", "text": "Through grace ye have been revealed to be the beautiful eyes of the honored Church; and before your death and after your sacred end, O holy and right laudable Florus and Laurus, ye have opened the eyes of those blinded from of old by the darkness of evil, unto the glory of the Benefactor of all." },
+          { "canon": "secondCanon", "text": "By manifest and awesome signs, as He foretold of old, Christ hath revealed your tomb and shrine, where your longsuffering bodies lie in sanctity, richly emitting rays of healing and right laudable fragrance." },
+          { "canon": "secondCanon", "text": "O Florus and Laurus, ye two truly godly and radiant right victorious martyrs: ever standing in the heavens before the all-accomplishing Trinity, ask deliverance from evil sins for those who celebrate your divine memory on earth with faith." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Awesome is thy birthgiving, O pure Mother; for thou hast given birth supra-naturally to the Word of God, Who became a man on earth, and before Whom the ranks of heaven tremble; yet thou remainest a virgin as before. Wherefore, confessing thee to be the Theotokos with tongue and heart, we magnify thee." }
+        ]
+      }
+    }
+  }
+}

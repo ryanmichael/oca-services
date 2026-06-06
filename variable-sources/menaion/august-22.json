@@ -1,0 +1,189 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Agathonicus & Those With Him; Holy Martyr Luppus",
+    "feastRank": "simple",
+    "tone": 1,
+    "_source": "St-Sergius Emenaion 08-22.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-22.pdf",
+    "_note": "Afterfeast of the Dormition. Two commemorations: Agathonicus (primary) and Luppus. Source PDF has three canons (feast Cosmas Tone I; Agathonicus by Joseph Tone I; Luppus by Joseph Tone IV). Authored to the two-canon pattern: Canon I = Dormition from feast-canons/dormition.json (Cosmas Tone I); Canon II = Agathonicus (irmos2) merged with Luppus troparia as additional secondCanon entries; Luppus's theotokion is used as the canon theotokion in each ode."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity, * and in thy dormition thou didst not forsake the world, O Theotokos. * Thou hast been translated unto life, * since thou art the Mother of Life. ** And by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "In their sufferings, Thy martyrs O Lord, * received imperishable crowns from Thee, our God; * for, possessed of Thy might, * they set at naught the tyrants * and crushed the feeble audacity of the demons. ** By their supplications save Thou our souls.",
+    "label": "Troparion of the Holy Martyrs"
+  },
+  "kontakion": {
+    "tone": 1,
+    "text": "Having acquired a good name, O divinely wise one, * thou didst convert wicked people to the Faith, * not fearing tortures, O glorious Agathonicus. * Wherefore, thou hast become an heir to good things, * and with those who suffered with thee ** hast thou received worthy crowns.",
+    "label": "Kontakion of the Holy Martyr Agathonicus",
+    "melody": "The choir of the angels"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 1,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Shown on earth to be more spacious than the heavens, in that thou hast given birth in the flesh to the Creator of all, thou hast now departed from the earth to the heavens. The souls of the righteous, beholding thee, and the choirs of the angels, looking on, ever offer thee praise as is meet, as unto a Queen. Wherefore, cease thou never to pray for those who hymn thee.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Go thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "We hymn thy dormition, O most pure one, to which Christ our God, Who became incarnate from thee, came to receive thy spirit. Wherefore, even though thou hast departed, O Theotokos, in thy supplications cease not to visit those who hymn thee.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of the Holy Martyr Agathonicus (after Ode 3)",
+      "text": "Drowning the noetic Pharaoh and His armies in the streams of thy blood, O glorious one, thou didst pass over to the land where dwell the meek and all the martyrs, receiving a crown of incorruption, O right wondrous one. Wherefore, thou pourest forth healings upon the faithful and dost ease their sufferings, and drivest away evil spirits. O spiritual athlete Agathonicus, entreat Christ God, that He grant remission of sins unto those who with love honor thy holy memory.",
+      "bothNow": {
+        "tone": 1,
+        "melody": "When the stone had been sealed",
+        "label": "Sessional Hymn of the feast",
+        "text": "The choir of the divine apostles assembled to bury thee with sublime honor, O all-pure Theotokos; and with them the ranks of angels hymned thy repose, crying out with sublime praise. Leaping up together with joy, O pure one, we, the faithful, offer laudation unto thee with voices of hymnody, and we exclaim: Rejoice, O intercessor of those who ever honor thee!"
+      }
+    },
+    "exapostilarion": {
+      "tone": 3,
+      "label": "Exapostilarion of the Holy Martyr Agathonicus",
+      "melody": "By the Spirit in the Sanctuary",
+      "text": "As the namesake of good things and of victory, O martyr Agathonicus, entreat God, Who loveth compassion, that I may have a share of everlasting good things with those who with faith hymn thy radiant and right laudable memory.",
+      "bothNow": {
+        "tone": 2,
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "O ye apostles, come ye together to bury the body of the one Bride of God and Mother of the Lord! Rejoice now, O Garden of Gethsemane, and chant funeral hymns to her who hath flown up to the heavens and joineth chorus with the angels in never-ending glory!"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 1,
+      "_author": "Canon of the Holy Martyr Agathonicus, the composition of Joseph in Tone I (irmos2). Canon I (feast) from feast-canons/dormition.json (Cosmas Tone I). Troparia of the Holy Martyr Luppus (Joseph, Tone IV) are merged into each ode as additional secondCanon entries; Luppus's theotokion serves as the canon theotokion.",
+      "kontakionAfterOde3": {
+        "tone": 1,
+        "text": "Having acquired a good name, O divinely wise one, * thou didst convert wicked people to the Faith, * not fearing tortures, O glorious Agathonicus. * Wherefore, thou hast become an heir to good things, * and with those who suffered with thee ** hast thou received worthy crowns.",
+        "label": "Kontakion of the Holy Martyr Agathonicus",
+        "melody": "The choir of the angels"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos, * who is untiring in her supplications * and our certain hope in her intercessions. * For, as the Mother of Life, * she hath passed over to the Life ** Who dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "Let us all chant a triumphant hymn unto God * Who wrought wondrous miracles * with His upraised arm, * and saved Israel, * for He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O holy one, as thou art a good emulator of the good God, make my soul blessed, which hath become wicked through the passions; and grant me discourse, that I may glorify thy memory." },
+          { "canon": "secondCanon", "text": "Thou wast known unto Him Who knoweth all things, O divinely inspired martyr, and didst preach His incarnation before the heathen, fearing not the death of the body." },
+          { "canon": "secondCanon", "text": "By thy word thou didst raise up the fallen and didst show them to be pious sharers in the resurrection and everlasting splendor, O most noetically rich martyr." },
+          { "canon": "secondCanon", "text": "O warrior of Christ, valiant spiritual athlete, who art ever illumined and standest before the divine Light: enlighten with never-waning radiance my soul, which hymneth thy splendid and luminous memory." },
+          { "canon": "secondCanon", "text": "Manfully entering upon the struggles of martyrdom, thou didst confess God Who had appeared on earth and deified human nature, O most wise one; and thou didst destroy the gods of the pagans with the power of the Spirit." },
+          { "canon": "secondCanon", "text": "Filling thy heart with streams of vivifying waters, as with a divine river, thou didst dry up deception; and therewith thou hast given faith as drink for the thoughts of men, which put forth heavenly fruit." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Like the dawn Jesus, the enlightenment and God of all, hath shone forth magnificently from thy womb, O Sovereign Lady, who knewest not wedlock, destroying the night of polytheism and illumining the world with never-waning splendors." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Let my heart be established in Thy will O Christ God, * Who hath established a second heaven over the waters, * and founded the earth upon the waters, * O all-powerful One.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The vain-minded one hoped to ensnare thee deceitfully with enticements, but his vain idea was set at naught when thou, O martyr, didst set thyself firmly upon the rock of the true Faith." },
+          { "canon": "secondCanon", "text": "Having navigated the abyss of the wounds and pangs of thy body by the helm of Christ, O martyr Agathonicus, thou didst set sail for the noetic havens, rejoicing." },
+          { "canon": "secondCanon", "text": "\"Let laceration and rending of the body come upon me this day, for I fear neither the sword, the grill, the fire, the wild beasts, nor death!\" didst thou cry out, O spiritual athlete Agathonicus." },
+          { "canon": "secondCanon", "text": "Made firm for thy struggles by the invincible power of the Spirit, O martyr, thou didst enter upon them manfully and didst set at naught the arrogance of deception, O most blessed Luppus." },
+          { "canon": "secondCanon", "text": "The savage tyrant, perceiving thee to be one who beareth witness to the sufferings of Christ, hoped to lead thy mind astray with enticements; but the most wicked one was proved mistaken." },
+          { "canon": "secondCanon", "text": "Struck like a harp by the all-accomplishing Spirit, in the presence of the tormenters thou didst joyfully give voice to a hymn of divine understanding, delighting those who came with faith." },
+          { "canon": "secondCanon", "theotokion": true, "text": "God, making His abode in the midst of thee, O pure one, as is known, did not disturb the seal of thy virginity. He hath made all firm on the immovable rock of the Faith." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Foreseeing in the Spirit O Prophet Habbakuk, * the incarnation of the Word, * thou didst proclaim, crying aloud: * When the years draw nigh, Thou shalt be known; * when the season cometh, Thou shalt be shown forth! * Glory to Thy power, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst enter the tribunal of martyrdom, O wise one, splendidly defending thyself with the sword of the divine Faith; and, wrestling with the enemy, thou didst mightily vanquish him and set him beneath thy feet, O martyr and spiritual athlete Agathonicus." },
+          { "canon": "secondCanon", "text": "By the wisdom of thy words and the divine revelation of sacred acts thou didst affright the enemy, who had hoped to conquer the steadfastness of thy mind and lead thee into deception, O Agathonicus, martyr of Christ." },
+          { "canon": "secondCanon", "text": "With thy mind aflame with the fire of divine love, O glorious one, thou wast not afraid of the fire of thine adversaries, but didst burn like an ember and consume the tinder of ungodliness, O sacred martyr Agathonicus." },
+          { "canon": "secondCanon", "text": "Transcending the earthly bounds of human weaknesses, O blessed and most glorious Luppus, beaten with staves thou didst endure wounds, bearing the saving staff of salvation, the Cross of our God." },
+          { "canon": "secondCanon", "text": "Trusting in God, O spiritual athlete Luppus, with divine help thou didst remain unshaken like a mountain. Wherefore, elevated to heaven by divine desire, thou didst endure the breaking of thy limbs." },
+          { "canon": "secondCanon", "text": "Full of faith, wisdom and grace, thou didst confess the Word of God in the midst of the iniquitous, and disdained the arrows loosed at thee, which were stopped by the power of Christ from approaching thee." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Jesus, the abyss of wisdom, descended upon thee like a gentle rain, O Virgin Birthgiver of God, finding thee alone to be pure, and thereby drowned the cruel torrents of impiety with divine grace." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Shine forth thy radiant and everlasting light * upon us who rise early at dawn, * unto the judgments of Thy commandments, * O Master, Lover of mankind, * Christ our God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As a lawful martyr, O glorious one, thou didst oppose the laws of the tyrant with the saving law of Christ our God, the Bestower of the law Who hath dominion over all." },
+          { "canon": "secondCanon", "text": "Agathonicus is now blessed as a splendid and most glorious martyr, and he ever rejoiceth radiantly with the hosts of heaven." },
+          { "canon": "secondCanon", "text": "Thou didst wish to die rather than live, O glorious one, that thou mayest forever acquire the everlasting life which is to come. Wherefore, thou didst bow thy head beneath the sword which severed thy neck." },
+          { "canon": "secondCanon", "text": "Thine enemies vowed to cut off thy members, O wise one, but instead they cut themselves, moved by God's hand, and beheld thee preserved unharmed and unwounded." },
+          { "canon": "secondCanon", "text": "Having made the eye of thy soul steadfast upon an unbreakable rock, O martyr, thou wast in no wise shaken by the waves of bitter torments, being strengthened by the power of God." },
+          { "canon": "secondCanon", "text": "With the sprinkling of thy blood thou didst quench the burning of idolatry, O spiritual athlete, and, set aflame by the Holy Spirit, with the fire of thy sufferings thou didst utterly consume falsehood." },
+          { "canon": "secondCanon", "theotokion": true, "text": "With a pure mind let us honor the pure one, the beauty of Jacob; and adorned with divine actions, let us piously hymn her as the Mother of our God." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Emulating the Prophet Jonah, I cry aloud: * Free Thou my life from corruption, O Good One; * and save me who crieth out: * O Savior of the world, Glory be to Thee!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the weakness of thy flesh thou didst vanquish the myriad-numbered multitude of noetic moors, O wise one, and didst unite thyself to tens of thousands of sacred servants." },
+          { "canon": "secondCanon", "text": "Manfully didst thou tread the path of martyrdom and restrict the paths of evil, O spiritual athlete; and thou hast attained to the spacious habitations of heaven." },
+          { "canon": "secondCanon", "text": "Made luminous like gold in the crucible of cruel sufferings, O Agathonicus, wise one of Christ, thou wast shown to be an example placed in the treasuries of God." },
+          { "canon": "secondCanon", "text": "Mightily didst thou endure the tortures of the flesh, tormenting the ungodly thoughts of the iniquitous and bitterly wounding multitudes of the demons, O right wondrous one." },
+          { "canon": "secondCanon", "text": "Thou didst cause the gods of the ungodly to quake, reducing them to dust; and thou didst raise thyself up as an animate pillar of piety and a model of courage, O divinely inspired one." },
+          { "canon": "secondCanon", "text": "Replete with tortures, thou didst rejoice, O glorious spiritual athlete, and in the Spirit didst foresee the crowns and eternal glory of the martyrs which is to come." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast given birth unto Him Whom the Father had begotten beginninglessly before time began, O pure one, and with thy breasts thou didst nourish the Nourisher; O wonder past understanding and mystery past all telling!" }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Thy children who were in the furnace O Savior, * were neither touched nor troubled by the fire. * Whereupon the three sang, as with a single mouth * Thy praises and blessed Thee, saying: * 'O God of our fathers, Blessed art Thou.'",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst share in the glory of heaven, hastening past all those on earth, having loved the Master of heaven and earth with all thy soul, O glorious one. Wherefore, we faithfully honor thy holy memory." },
+          { "canon": "secondCanon", "text": "Following the sufferings of Christ Who hath poured forth dispassion upon all the faithful, thou didst endure oppression, tribulation, and an undeserved death, O martyr, when, rejoicing, thou wast beheaded with the sword." },
+          { "canon": "secondCanon", "text": "Thou didst in no wise render honor to the lifeless altars; worshiping the immortal God Who manifested Himself as a mortal for our sake and hath slain the strength of the deceiver. Wherefore, thou hast obtained true life, O wise martyr." },
+          { "canon": "secondCanon", "text": "Made luminous by the beauties of virtuous sufferings, thou dost now stand, rejoicing, shining with divine effulgence, before Him Who for our sake endured suffering on the Cross." },
+          { "canon": "secondCanon", "text": "Water was most gloriously poured forth upon thee from heaven; and it enlightened and strengthened thy soul, commanding it to cry aloud: O supremely hymned Lord God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst stand amid thine enemies like a steadfast pillar, unshakable in mind by the machinations of multifarious torments, O glorious spiritual athlete; and with great intelligence thou didst set falsehood at naught." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He alone Who dwelleth in the heavens chose thee alone, the beauty of Jacob; and, making His abode within thee, O pure and blessed one, He in no wise disturbed the seal of thy virginity." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Him of whom the angels and all the hosts of heaven are in awe * as their Lord and Creator, * ye priests hymn, ye children praise, * ye peoples bless and supremely exalt * throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Dragged from place to place, O spiritual athlete, thou didst hallow the earth with thy steps; and, bowing thy neck beneath the severing sword, thou wast parted from the flesh and united unto God." },
+          { "canon": "secondCanon", "text": "Aflame with desire for God, thou didst overcome all manner of beatings and tortures of the flesh; and having finished thy good race, thou didst join the myriads on high." },
+          { "canon": "secondCanon", "text": "The strength of the incorporeal foe was cast down, and the martyrs of Christ vanquished him in weakness of their flesh, strengthened by the omnipotent might of the Master." },
+          { "canon": "secondCanon", "text": "After many torments, O blessed one, thou didst bow thy head to God, beheaded by the sword; and with faith thou didst sever the heads of thine iniquitous enemies amid their terror." },
+          { "canon": "secondCanon", "text": "Thou didst give thyself over to voluntary slaughter as an unblemished lamb, emulating the Lamb of God Who taketh away the sins of the world, Who neither cried out nor complained." },
+          { "canon": "secondCanon", "text": "Thy shrine hath become the healing of all manner of infirmities and the unexpected cure of souls; for it hath been made rich with grace from God, O all-famed Luppus." },
+          { "canon": "secondCanon", "theotokion": true, "text": "All creation blesseth thy birthgiving, O Virgin, with the blessing of Him Who hath crowned us and removed the curse. O thou who alone art exceedingly blessed and most glorious, who hast brought grace upon our race!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "The light-bearing cloud upon whom * the beginningless Master of all descended from heaven, * like the dew upon the fleece, * and of whom He was incarnate, * becoming a man for our sake, * let us all magnify as the pure Mother of God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O wise Agathonicus, as one crowned thou now standest radiantly before the Trinity, amid the holy choirs of the sacred apostles, in the mansions of the spiritual athletes, in the folds of the venerable, honored with the prophets, rejoicing with them." },
+          { "canon": "secondCanon", "text": "In that thy love was wondrous, thy faith firm, thy hope in God good, thy life luminous, and thy death full of grace, O martyr and spiritual athlete, He hath made thee to share in immortal glory." },
+          { "canon": "secondCanon", "text": "As is meet, O wise Agathonicus, we praise thee as a lamb of Christ, a sacred immolation, the beauty of spiritual athletes, a well-spring of miracles, the comely adornment of the Church, O divinely wise one." },
+          { "canon": "secondCanon", "text": "Thine all-holy memory which sanctifieth the world hath now come upon us, O all-glorious martyr; and thereon we pray to receive thine aide, honoring thee with love, O Agathonicus, as a good favorite of the Word." },
+          { "canon": "secondCanon", "text": "Even in the flesh thou wast able, O most glorious one, to trample down the ancient serpent by divine power, and thou wast crowned with a crown of victory. Wherefore, rejoicing with the martyrs, thou dwellest now in the heavens." },
+          { "canon": "secondCanon", "text": "Thou wast shown to be a star of great brilliance, shining forth like the sun upon those who sit in the darkness of perdition, O martyr. And enlightened thereby, they share now in the never-waning light by faith, O right glorious one." },
+          { "canon": "secondCanon", "text": "Today thy memory hath shone forth more brightly than the sun, illumining the whole earth, driving clouds away from all souls and dispelling the gloom of the passions. And with supplications we celebrate it." },
+          { "canon": "secondCanon", "text": "Sion on high, the city of the elect, beareth thy spirit, rejoicing; the Church of the first-formed hath been rendered luminous; and we, the faithful, honor thee, asking that, by thy supplications, we be saved, O divinely wise and all-blessed Luppus." },
+          { "canon": "secondCanon", "theotokion": true, "text": "With rays of the light which is within thee, O Bride of God, enlighten my soul; raise it up, for it lieth in the pit of destruction, and set at naught those who ever trouble my heart and impel me toward the passions." }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "feast": "Holy Prophet Samuel",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 08-20.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-20.pdf",
+    "_note": "Afterfeast of the Dormition. Two-canon Matins: Canon I = Dormition (feast-canons/dormition.json, Cosmas Tone I); Canon II = Holy Prophet Samuel by Joseph the Hymnographer Tone IV (acrostic: I hymn Samuel who beholdeth glory)."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity, * and in thy dormition thou didst not forsake the world, O Theotokos. * Thou hast been translated unto life, * since thou art the Mother of Life. ** And by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "troparion": {
+    "tone": 2,
+    "text": "Celebrating the memory of Thy Prophet Samuel, O Lord, * through him we entreat Thee: ** Save Thou our souls!",
+    "label": "Troparion of the Holy Prophet Samuel"
+  },
+  "kontakion": {
+    "tone": 8,
+    "text": "As a gift of great worth given to God before thy conception, * from thine infancy thou didst serve Him, O all-blessed one; * and thou wast deemed worthy to declare beforehand the things of the future. * Wherefore, we cry out to thee: ** Rejoice, O Samuel, prophet of God, thou great high priest!",
+    "label": "Kontakion of the Holy Prophet Samuel"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Having been shown on earth to be more spacious than the heavens, thou hast now been translated from earth to the heavens, O thou who hast given birth in the flesh unto the Creator of all. Therefore, the souls of the righteous, beholding thee, and the choirs of the angels, gazing upon thee, ever offer praise to thee, as to their Queen, as is meet. Wherefore, cease not to pray for those who hymn thee.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 5,
+        "melody": "The co-beginningless Word",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "The multitudes of angels glorify thee, and the human race doth faithfully hymn thee, for thou hast passed from earth to Him Who was born of thee, O pure Theotokos. And dost now earnestly pray, O Virgin, that those who celebrate thy repose with faith be delivered from misfortunes.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 3,
+      "melody": "Of the divine Faith",
+      "label": "Sessional Hymn of the Holy Prophet (after Ode 3)",
+      "text": "Raised on the judgments of the law, thou wast shown to be an honored anointing, having served as priest like Aaron; and illumining thy heart by the Spirit, thou didst see things afar off as though they were near at hand, O honored prophet. Entreat Christ God, that He grant our souls peace and great mercy.",
+      "bothNow": {
+        "tone": 8,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Sessional Hymn of the feast",
+        "text": "Thy seedless conception in giving birth, and thine incorrupt mortality in thy dormition, are a twofold wonder within a wonder, have merged within thee, O Theotokos. For how hast thou, who hast not known a man, become a pure nourisher of an Infant? And how dost thou, the Mother of God, perfume with the myrrh of immortality a mortal body? Wherefore, with the archangel we cry to thee: Rejoice, O thou who art full of grace!"
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "melody": "The heaven with stars",
+      "label": "Exapostilarion of the Holy Prophet",
+      "text": "Let Samuel be hymned who before his conception was given as a gift to God Most High by his all-blessed mother, and who anointed kings, as priest and prophet.",
+      "bothNow": {
+        "tone": 2,
+        "text": "O ye apostles, having gathered here from the ends of the earth, bury my body in the Garden of Gethsemane. And do Thou, O my Son and God, receive my spirit!",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 4,
+      "_author": "Canon of the Holy Prophet Samuel, the composition of Joseph the Hymnographer in Tone IV (acrostic: I hymn Samuel who beholdeth glory). Canon I (feast) from feast-canons/dormition.json (Cosmas Tone I).",
+      "kontakionAfterOde3": {
+        "tone": 8,
+        "text": "As a gift of great worth given to God before thy conception, * from thine infancy thou didst serve Him, O all-blessed one; * and thou wast deemed worthy to declare beforehand the things of the future. * Wherefore, we cry out to thee: ** Rejoice, O Samuel, prophet of God, thou great high priest!",
+        "label": "Kontakion of the Holy Prophet Samuel"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos, * who is untiring in her supplications * and our certain hope in her intercessions. * For, as the Mother of Life, * she hath passed over to the Life ** Who dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "O Thou who wast born of the Virgin, * drown I implore Thee, in the depth of dispassion * the triune nature of my soul, * as Thou didst the mighty strongholds of the warriors, * that in the mortality of my flesh * as on a timbrel * I may chant a hymn of victory.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O wise offspring of a barren woman, by thy supplications grant my barren soul to put forth the good fruits of the virtues, that I may praise thy splendid festival with sacred hymns, O Samuel." },
+          { "canon": "secondCanon", "text": "He, Who of old loosed the womb of Sarah, manifestly fulfilled the entreaty of Hannah and, through grace, made that barren woman fertile, O Samuel, and was well pleased that thou didst shine forth from her like a star." },
+          { "canon": "secondCanon", "text": "Having dyed thy divine vesture in a sacred manner, O most blessed one, thou didst enlighten thy soul with the mystic rays of the Spirit, learning every mystery and serving Almighty God like an angel, O divinely wise one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who, as the pre-eternal Son, is with the Father, in latter times truly became thy Son, incarnate, O pure one, and for the sake of their faith, as God He adopted all who labored for the cruel adversary." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Not in wisdom, nor in power do we glory, * but we glory in Thee O Christ, * the Hypostatic Wisdom of the Father, * for there is none more holy than Thee, O Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having cleaved unto God in a most exalted manner, O glorious one, thou wast beloved of Him, adorned with divine wisdom and made comely in soundness of soul." },
+          { "canon": "secondCanon", "text": "Showing forth an angelic life on earth, O Samuel, thou didst have angels conversing with thee openly and teaching thee things past understanding, O blessed one." },
+          { "canon": "secondCanon", "text": "Having acquired the radiant eye of thy soul, through grace thou didst truly behold things afar off as though they were near at hand, showing thyself to be a prophet of the Almighty." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Jesus Christ came forth from thee incarnate, and hath deified us by assuming our flesh, O all-immaculate one. Wherefore, we honor thee as His Mother." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "He who sitteth in glory upon the throne of the Godhead, * Jesus the true God, * is come in a swift cloud * and with His sinless hands he hath saved those who cry: * Glory to Thy power, O Christ.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Adorned in a sacred manner with an exemplary life, the saving laws of God were entrusted to thee to proclaim to transgressing Israel who ever driveth away the merciful." },
+          { "canon": "secondCanon", "text": "Eli the priest was condemned because of his iniquitous sons and hath been cut off from the service of God by the righteous Judge; and the priestly Samuel was installed in his place because of his guileless soul, as one obedient to Him Who called him." },
+          { "canon": "secondCanon", "text": "Standing forth alone with the justification of the law, like Aaron of old, thou didst serve the King of all and didst offer unto Him the sacrifices prescribed by the law, which prefigured the saving sacrifice of Christ." },
+          { "canon": "secondCanon", "text": "For thy foolish people who did not abide in the divine commandments of the King of all, at the behest of God thou didst anoint a king who cut asunder the horn of their mindless might." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Without abandoning the bosom of the Father, the Savior was well pleased to descend into thy womb as a newborn Babe, O Virgin, for the restoration of our souls. To Him do we cry aloud: Glory to Thy power, O Christ!" }
+        ]
+      },
+      "ode5": {
+        "irmos2": "The wicked will not behold Thy glory, O Christ, * but we who rise early to hymn Thee shall behold Thee, * the Only-Begotten effulgence of Thy Father's divinity, * O Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having been made wise by the divine Spirit, thou wast a servant of God from thine infancy, O glorious one, anointing kings with the oil of chrism and through grace, at the behest of God." },
+          { "canon": "secondCanon", "text": "To Saul who remained disobedient, O blessed Samuel, thou didst foretell his rash actions, the divine will and his open abandonment by the divine Spirit." },
+          { "canon": "secondCanon", "text": "Ever living with the Israelites in guilelessness, thou didst manifestly denounce their wicked turning away from God, setting them aright as a priest of God, a prophet most true." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Abiding with us in His tender compassion, the Savior became incarnate of thy sacred blood in a manner past understanding, O all-immaculate one; and being God and man, He is known as the Lover of mankind." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Prefiguring Thy three-day burial * Prophet Jonah praying in the belly of the sea-monster cried aloud: * Deliver me from corruption * O Jesus Thou King of hosts.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy discourse, rendered divine by the grace of the Word, revealed things afar off as though they were near at hand, O prophet Samuel, thou vessel of the divine Spirit." },
+          { "canon": "secondCanon", "text": "Elevated by exalted visions and deeds as a prophet and godly priest of the Almighty, thou dost cleanse the people with the services of the law, O right wondrous one." },
+          { "canon": "secondCanon", "text": "Saul proved himself unworthy, having transgressed God's command; and in his stead God commanded thee to anoint the meek David with chrism, O divinely wise Samuel." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Eve hath been delivered from pain, O most immaculate one; for thou hast given birth without pain unto Christ our God Who hath manifestly healed the sufferings and pain of all." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The three youths in Babylon, * regarded the tyrant's command as foolishness, * and cried aloud in the midst of the flame: * Blessed art Thou, O Lord God of our fathers!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "She who hath given birth to thee, having prayed a sacred prayer, brought thee to the King of all as a great gift, chanting: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "text": "Divine grace enlightened thee who lived within the temple and ministered to the Master of heaven according to the rank of Aaron, O glorious Samuel." },
+          { "canon": "secondCanon", "text": "Thou didst judge the people of Israel with divine discourse, O blessed one, ever declaring the righteousness of God to them and averting all adverse harm by earnest supplication." },
+          { "canon": "secondCanon", "text": "Having done away with all the dross of thy mind, thou wast shown to be a mirror of the Spirit, O glorious one, unceasingly crying out: Blessed art Thou, O Lord God of our fathers!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having truly given birth to the fire of the Godhead, O most pure one, thou wast shown to be unconsumed. Wherefore, as thou art merciful and right loving, O Birthgiver of God, burn up the tinder of my passions." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "O almighty Redeemer of all, * having descended and bedewed the children * in the midst of the flame, * Thou didst teach them to sing: * All ye works bless and hymn the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Arrayed in the vesture of Aaron, thou didst enter into the Holy of Holies, purifying Israel with sacrifices prefiguring the saving sacrifice of the Lamb, O most blessed one." },
+          { "canon": "secondCanon", "text": "Receiving the radiance of the Spirit with pure thought, O Samuel, thou didst proclaim things far off in the future as though they were in the present, as a divine prophet. Wherefore, we faithfully praise thee." },
+          { "canon": "secondCanon", "text": "Chosen was David among the sons of Jesse, as thou didst reveal, anointing him with holy chrism, O Samuel, and crying out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Celebrating thy festival, O Samuel, converser with the righteous, by thy supplication may we obtain the kingdom on high, crying out: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Grant unto me thy tender compassion, O merciful and God-loving Lady, and deliver me from Gehenna and the outer darkness thereof, that I may honor thee with faith and love." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Eve dwelt under the curse of sin * because of the infirmity of disobedience; * but thou, O Virgin Theotokos, * hast through the Offspring of thy pregnancy * blossomed forth blessing upon the world. * Wherefore, we all magnify thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Standing as a servant before the face of our Master and God, O blessed one, adorned with a blameless life, thou didst perform thy ministry, receiving divine rays and prophesying most manifestly." },
+          { "canon": "secondCanon", "text": "From the womb of thy mother thou wast shown to be a vessel of the Holy Spirit, O glorious one; and resplendent in thy sacred vesture, thou didst please God with meekness of heart and comeliness of thought, O most noetically rich prophet." },
+          { "canon": "secondCanon", "text": "Today, O God-bearer, thy memory hath, like the sun, shone upon us rays of rich gifts, enlightening the souls of those who honor thee, driving away the darkness of evil deeds. Wherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "text": "Taken up to the radiant mansions, thou hast shone forth more brilliantly than the sun; and deified by partaking of the blessings of heaven, O divinely inspired one, thou seest those things which the prophets, apostles and all the righteous behold. Wherefore, we all call thee blessed." },
+          { "canon": "secondCanon", "theotokion": true, "text": "A stranger to the corruption of mortals, thou didst take into thy womb the incorrupt Word Who hath delivered us who have become corrupt through many sins, by the suffering of His incorrupt flesh, O all-immaculate one, who alone art incorrupt." }
+        ]
+      }
+    }
+  }
+}

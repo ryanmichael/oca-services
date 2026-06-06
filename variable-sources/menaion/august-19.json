@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "feast": "Holy Martyr Andrew the General & the 2,593 Martyred with Him",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 08-19.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-19.pdf",
+    "_note": "Afterfeast of the Dormition. Two-canon Matins: Canon I = Dormition (feast-canons/dormition.json, Cosmas Tone I); Canon II = Andrew the General by Theophanes Tone IV (acrostic: With hymns do I hymn thee, a general Andrew)."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity, * and in thy dormition thou didst not forsake the world, O Theotokos. * Thou hast been translated unto life, * since thou art the Mother of Life. ** And by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "troparion": {
+    "tone": 5,
+    "text": "Leaving the glory of earthly rank behind, * thou didst inherit the kingdom of heaven, * adorning with crowns of incorruption * as with all-wondrous stones, * the assembly of spiritual athletes whom thou didst lead to Christ. * Having found Christ, the never-setting Sun, together with the choirs of the angels, * in light unwaning, O holy general Andrew. ** do thou ever entreat Him, with those who suffered with thee, that He save our souls.",
+    "label": "Troparion of the Holy Martyr Andrew"
+  },
+  "kontakion": {
+    "tone": 2,
+    "text": "Standing before the Lord in prayer, * like a star preceding the sun, * thou didst gain sight of the desired treasure of the kingdom, * full of ineffable joy; * and for ages without end, O general Andrew, * thou dost unceasingly sing to the immortal King with the angels. ** With them ever pray thou for us all.",
+    "label": "Kontakion of the Holy Martyr Andrew"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Awed by the beauty of thy virginity",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Thy soul is among the noetic beings of heaven, O most immaculate one, and thy precious body hath passed over to paradise, away from corruption, to a place of light, let the Lord recompense the iniquitous ones, who have spoken falsehoods against thine honored body, but we, with the apostles cry out to thee: Rejoice, O thou who art full of grace!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Go thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "The earth was blessed by thy burial, the air was sanctified by thine ascent, O all-hymned Mary, and the angels opened unto thee the portals of heaven, where, standing now, thou prayest to thy Son for the peace of the world, O Mother who knewest not wedlock.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 1,
+      "melody": "Thy tomb, O Savior",
+      "label": "Sessional Hymn of the Holy Martyr Andrew (after Ode 3)",
+      "text": "Strengthening thy soul with manliness, O martyr, thou didst destroy the mighty savagery of the enemy, and, rejoicing, suffered and pleased God. Wherefore, we all celebrate thy most holy memory with gladness of heart, O most noetically rich martyr Andrew.",
+      "bothNow": {
+        "tone": 1,
+        "melody": "When the stone had been sealed",
+        "label": "Sessional Hymn of the feast",
+        "text": "The choir of the divine apostles assembled to bury thee with surpassing honor, O all-pure Theotokos; and with them the ranks of angels hymned thy repose, crying out with surpassing praise. Leaping up together with joy, O pure one, we, the faithful, offer praise unto thee with voices of hymnody, crying aloud: Rejoice, O intercessor of those who ever honor thee!"
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "label": "Exapostilarion of the feast",
+      "text": "O ye apostles, having gathered here from the ends of the earth, bury my body in the Garden of Gethsemane. And do Thou, O my Son and God, receive my spirit!",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "melody": "The heaven with stars",
+      "bothNow": {
+        "tone": 2,
+        "text": "O ye apostles, having gathered here from the ends of the earth, bury my body in the Garden of Gethsemane. And do Thou, O my Son and God, receive my spirit!",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 4,
+      "_author": "Canon of the Holy Martyr Andrew the General, the composition of Theophanes in Tone IV (acrostic: With hymns do I hymn thee, a general Andrew). Canon I (feast) from feast-canons/dormition.json (Cosmas Tone I).",
+      "kontakionAfterOde3": {
+        "tone": 2,
+        "text": "Standing before the Lord in prayer, * like a star preceding the sun, * thou didst gain sight of the desired treasure of the kingdom, * full of ineffable joy; * and for ages without end, O general Andrew, * thou dost unceasingly sing to the immortal King with the angels. ** With them ever pray thou for us all.",
+        "label": "Kontakion of the Holy Martyr Andrew"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos, * who is untiring in her supplications * and our certain hope in her intercessions. * For, as the Mother of Life, * she hath passed over to the Life ** Who dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "Through the deep of the Red Sea, * marched dry shod Israel of old, * and by Moses' outstretched hands, * raised in the form of a cross, * the power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O glorious martyr, with the radiant beams of the Spirit illumine my soul and dispel the darkness of ignorance, that with zeal I may sing thy sacred festival." },
+          { "canon": "secondCanon", "text": "O blessed one, thou wast abundantly enriched with the splendor of the martyrs, and with divine power didst trample underfoot the deceiver with manly wisdom, becoming a victor, O Andrew, martyr of great renown." },
+          { "canon": "secondCanon", "text": "Having mortified earthly thoughts, O much-suffering martyr, thou didst manfully follow after the Word Who was slain for thy sake, and thou hast passed over to the life which is untainted by death." },
+          { "canon": "secondCanon", "theotokion": true, "text": "He Who in His supreme goodness truly clothed Himself in flesh through thee for the salvation of mankind, O all-immaculate one, is known as both God and man, in two natures." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thy Church, O Christ, rejoiceth in Thee crying aloud: * Thou, O Lord, art my strength, * my refuge and foundation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Sailing the deep of temptation with the mast of the Cross, O glorious one, with the streams of thy blood thou didst drown the enemy." },
+          { "canon": "secondCanon", "text": "Thou wast glorified as an excellent victor, O martyr, overcoming the stumbling-blocks of the deceiver and his machinations." },
+          { "canon": "secondCanon", "text": "Adorned with a crown of splendor, O martyr of Christ, thou dost ever stand in joy with the chosen martyrs." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O all-immaculate Virgin and Sovereign Lady, thou hast given birth to the Lord of all Who delivereth mortals from the tyranny of the enemy." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "Beholding Thee, the Sun of righteousness, * lifted up upon the Cross, * the Church now standeth arrayed and doth worthily cry aloud: * Glory be to Thy power, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having acquired thee as a mighty rampart, O most wise one, the Church hath been revealed to be unbroken by the assaults of the adversary, crying aloud: Glory to Thy power, O Lord!" },
+          { "canon": "secondCanon", "text": "Having fortified the regiment of the martyrs with divine teachings, O glorious one, as a general thou didst not spare thyself when thy body was being broken." },
+          { "canon": "secondCanon", "text": "Having armed thyself with courage as with a sword, O most blessed Andrew, thou didst destroy the enemy with the precious Cross as with a two-edged sword, in that thou art a most valiant general." },
+          { "canon": "secondCanon", "text": "We praise thee as a champion of the Faith, an invincible spiritual athlete, a partaker of the splendor of heaven, a well-spring pouring forth the waters of miracles for those in need." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O most immaculate one, thou boast of the martyrs and salvation of the faithful, all of us, the generations of mankind, praise thee; for thou hast given birth to God, yet remained an incorrupt Virgin." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world, * art my light, * a holy light turning from the darkness of ignorance * those who sing Thy praises in faith.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "As the namesake of true manliness, O all-blessed Andrew, thou didst rout thine enemies and utterly destroy them." },
+          { "canon": "secondCanon", "text": "Thou ever pourest forth the waters of healing upon the faithful, O all-famed one, enriching them with the saving grace of the Spirit." },
+          { "canon": "secondCanon", "text": "The fame of thy miracles and thine honored martyrdom hath truly gone through all the earth, O divinely inspired one, like the radiance of the grace of God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The weaponry of the enemy hath utterly failed, O Theotokos, since thou hast given birth to Him Who was wounded by the spear but hath restored the world." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord, * 'I will sacrifice unto Thee with a voice of praise' * having been cleansed of the blood of the demons' * by the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "By thy pangs thou didst break the sting of the evil one and, rejoicing, didst pass over to the glory which is without pain, O martyr Andrew, commander of the regiments of honored martyrs." },
+          { "canon": "secondCanon", "text": "Thou didst exchange a little blood for the splendor of everlasting glory, joy which never faileth, heavenly crowns and never-waning radiance." },
+          { "canon": "secondCanon", "text": "Having assembled a vast army, O blessed martyr, thou didst enroll into the choirs of the angels those who suffered with thee; and ye stand now in joy before the Master of all." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Ineffably hast thou given birth to Him Who is co-beginningless with the Father, and Who, in a manner beyond understanding and all telling, made Himself like unto men, O Birthgiver of God. Him do thou beseech, that thy servants be delivered from misfortunes." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham, * burning with a love of piety * rather than by a flame of fire, * cried aloud saying: * Blessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "With the streams of thy blood thou didst cause a well-spring to flow forth which truly healeth all manner of infirmities for those who approach thee with undoubting faith, O divinely inspired martyr." },
+          { "canon": "secondCanon", "text": "O wise martyr, through thy blood thou didst bring an assembly of saints to the most holy Word, and inherited that life which groweth not old; with them entreat Christ, the Lover of mankind, on our behalf." },
+          { "canon": "secondCanon", "text": "With divine zeal having dyed a robe of purple for thyself in thy blood, O martyr, and clad thyself therein, adorned with a crown of victory thou now reignest with Him Who is King over all." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Blessed art thou among women, O most immaculate Virgin and Sovereign Lady, who by thy divine birthgiving hast clearly deified human nature having ineffably given flesh to God." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws * in their den; * while the zealously pious youths, * girded with virtue, * quenched the power of the fire and cried aloud: * Bless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst restrain the onslaught of savage lions by thy brave struggles, O glorious one, by divine power humbling the arrogance of the ungodly tyrants, and as a victor thou hast hastened to the heavens, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Having contended valiantly and finished thy struggle by being beheaded with a sword, thou hast been deemed worthy to behold the splendor of the saints and to dwell in joy, O martyr. And now thou dost cry aloud with gladness: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Hastening to the divine temple, let us receive the light of the godly martyr; and ever touching the shrine of his relics with rejoicing, and receiving the sanctity of grace imparted thereby, let us cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O holy Virgin Who hast given birth in holiness to the most holy god, Whom all the holy martyrs confessed at the tribunal: send down sanctity and enlightenment upon us who cry aloud: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin, * was cut from thee the unhewn mountain: * even Christ, Who hath joined together the disparate natures; * therefore rejoicing we magnify thee, * O Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Lo! the radiant memorial of the passion-bearer hath shone forth brilliantly, dispelling the darkness of the demons and enlightening all the faithful. Let us celebrate it splendidly, magnifying him as is meet." },
+          { "canon": "secondCanon", "text": "O Andrew, thou hast been revealed to be like the sun amid those who suffered with thee, by thy words guiding them to the never-waning radiance of the splendor of heaven. With them we bless thee with faith." },
+          { "canon": "secondCanon", "text": "O martyr Andrew, we magnify thee who hast illumined all creation with the radiance of miracles and by thine unwavering martyrdom hast become a pillar of the Church and a foundation for the faithful." },
+          { "canon": "secondCanon", "text": "Thou didst blossom forth like a rose in the midst of a garden of spiritual athletes, O all-wise one, mystically bearing sweet fragrance, gladdening the fullness of the faithful and dispelling the stench of falsehood by divine grace." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Bearing in thine arms Christ Who holdeth all things in His hand, O Lady, entreat Him, that He deliver me from the hand of the alien one, for I unceasingly magnify thee with Orthodox faith." }
+        ]
+      }
+    }
+  }
+}

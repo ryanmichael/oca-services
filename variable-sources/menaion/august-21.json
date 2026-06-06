@@ -1,0 +1,193 @@
+{
+  "_meta": {
+    "feast": "Holy Apostle Thaddeus, & Holy Martyr Vassa & Those with Her",
+    "feastRank": "simple",
+    "tone": 8,
+    "_source": "St-Sergius Emenaion 08-21.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/08-21.pdf",
+    "_note": "Afterfeast of the Dormition. Two-canon Matins: Canon I = Dormition (feast-canons/dormition.json, Cosmas Tone I); Canon II = combined Apostle Thaddeus (Joseph Tone VIII, acrostic: 'I hymn the wise and divinely eloquent Thaddeus') + Martyr Vassa (Joseph Tone VIII, acrostic: 'I offer up thy struggles, O honored Vassa'). Both saint canons share Tone VIII and author Joseph; troparia interleaved (apostle first, then martyr) under secondCanon with the apostle's irmos2."
+  },
+  "feastTroparion": {
+    "tone": 1,
+    "text": "In giving birth thou didst preserve thy virginity, * and in thy dormition thou didst not forsake the world, O Theotokos. * Thou hast been translated unto life, * since thou art the Mother of Life. ** And by thine intercessions thou dost deliver our souls from death.",
+    "label": "Troparion of the feast (Dormition)"
+  },
+  "troparion": {
+    "tone": 3,
+    "text": "O holy Apostle Thaddeus, * entreat the Merciful God * that He grant remission of sins ** unto our souls.",
+    "label": "Troparion of the Holy Apostle Thaddeus"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "The Church, ever enlightened by thy miracles, * hath acquired thee as a most radiant star, O Apostle Thaddeus. ** Save those who with faith honor thy memory.",
+    "label": "Kontakion of the Holy Apostle Thaddeus"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 8,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Go thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "At the command of thy Creator, Who was born of thee, the apostles were assembled on clouds to behold thy repose. Whereupon, they buried thee with glory and great gladness, hymning the most pure body of thy blessedness, O Mother of Christ our God.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Joseph marveled",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "The choir of the apostles, scattered over the face of the earth, assembled in Sion to send the Theotokos from earth to the Most High, to Whom she had given birth. The hosts of heaven made haste on high, receiving the Mother of God who hath dominion over things visible and invisible.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 8,
+      "melody": "Of the Wisdom",
+      "label": "Sessional Hymn of the Holy Apostle (after Ode 3)",
+      "text": "Approaching the noetic Sun, thou didst receive mystic rays therefrom, and wast like a most radiant star, illumining the fullness of all the earth and destroying the darkness of deception, O blessed one. Wherefore, we celebrate thy light-bearing memory, praising thee with faith, and together we cry out to thee: O Apostle Thaddeus, entreat Christ God, that He grant remission of sins to those who with love honor thy holy memory.",
+      "glory": {
+        "tone": 1,
+        "melody": "Thy tomb, O Savior",
+        "label": "Glory — Sessional Hymn of the Holy Martyr",
+        "text": "With the dew of the Spirit thou didst quench the fire of torments, O honored one, and didst pass over to the divine and immaterial Light; and even after thy death thou dost blessedly pour forth drops of healing, dissipating the heat of the passions with the power of the Spirit."
+      },
+      "bothNow": {
+        "tone": 4,
+        "label": "Both now — Sessional Hymn of the feast",
+        "text": "The most honored choir of the most wise apostles assembled to bury thy most pure body with glory, O all-praised Theotokos. With them a multitude of angels chanted, praising with honor thy repose, which we celebrate with faith."
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "melody": "Hearken, ye women",
+      "label": "Exapostilarion of the Holy Apostle",
+      "text": "Having been anointed a luminary for Edessa, O all-wise Thaddeus, therein thou didst proclaim the divine dispensation of the Word; and having enlightened the local ruler Abgar and all with him, thou didst show them to be servants of the most radiant Trinity, O apostle and preacher of God.",
+      "bothNow": {
+        "tone": 2,
+        "label": "Glory ..., Both now ..., Exapostilarion of the feast",
+        "text": "O thy mysteries, O pure Birthgiver of God! For thou hast been shown to be the awesome throne of the Most High, greater than the cherubim, whereon He, the Author of creation, sat and revealed Himself. And having now passed over to Him, do thou protect the world and keep it safe."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "dormition",
+      "tone": 8,
+      "_author": "Canon of the Holy Apostle Thaddeus, the composition of Joseph in Tone VIII (acrostic: 'I hymn the wise and divinely eloquent Thaddeus'), interleaved with the Canon of the Holy Martyr Vassa, the composition of Joseph in the same Tone VIII (acrostic: 'I offer up thy struggles, O honored Vassa'). Apostle troparia listed first, then martyr troparia, sharing the apostle's irmos2. Canon I (feast) from feast-canons/dormition.json (Cosmas Tone I).",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "The Church, ever enlightened by thy miracles, * hath acquired thee as a most radiant star, O Apostle Thaddeus. ** Save those who with faith honor thy memory.",
+        "label": "Kontakion of the Holy Apostle Thaddeus"
+      },
+      "kontakion": {
+        "tone": 2,
+        "text": "The tomb and mortality could not hold the Theotokos, * who is untiring in her supplications * and our certain hope in her intercessions. * For, as the Mother of Life, * she hath passed over to the Life ** Who dwelt within her ever-virgin womb.",
+        "label": "Kontakion of the feast (Dormition)"
+      },
+      "ikos": {
+        "text": "Guard my thoughts, O my Christ, for I make bold to hymn the bulwark of the world, Thy pure Mother. Establish me firmly in the bastion of my words, and help me in the midst of difficult thoughts; for Thou fulfillest the entreaties of those who cry out and ask with faith. Wherefore, grant unto me a deft tongue and a ready mind, for every good deed of enlightenment cometh down from Thee, O Bestower of light, Who dwelt within her ever-virgin womb."
+      },
+      "ode1": {
+        "irmos2": "Let us sing unto the Lord, * who led His people through the Red Sea: * for He alone hath gloriously been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Standing before the throne of the Master, O most wise Thaddeus, bestow enlightenment upon me, that I may hymn thy radiant solemnity." },
+          { "canon": "secondCanon", "text": "The immemorial Light within time, the Transcendent One Who manifested Himself as being with us, hath left thee as a beam to enlighten the world, O blessed one." },
+          { "canon": "secondCanon", "text": "He Who is invincible in might, having girded thee about with power, strengthened thee to destroy all the might of the deceiver." },
+          { "canon": "secondCanon", "text": "Set afire by faith and the fervent desire for the surpassing love of Christ, O all-praised one, by the presence of an angel thou didst quench the fire and didst straightway utterly consume the ignorant people." },
+          { "canon": "secondCanon", "text": "Blessed now is the generation of the righteous, which shone forth from thy womb with the splendor of sufferings, destroying the darkness of the opposition of the iniquitous by the steadfastness of mind, O most glorious Vassa." },
+          { "canon": "secondCanon", "text": "O mother transcending the transitory laws of nature, who endured an undeserved death as she watched those whom she had nurtured on faith and milk as they, in a unity surpassing nature, were tortured by various means!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "O Lady, supremely hymned Virgin Theotokos, thou hast been shown to be the one who hath ineffably given birth to Him Who hath dominion over all creatures." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "O Lord, thou art the confirmation of those who flee to Thee, * Thou art the Light of those in darkness, * and my spirit doth hymn Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Enlightening the people with the splendor of divine grace, O glorious one, thou wast shown to be a pure light for those in the darkness of evil." },
+          { "canon": "secondCanon", "text": "Going to King Abgar, O wise one, by divinely effectual gestures thou didst bring him healing and deliverance." },
+          { "canon": "secondCanon", "text": "Thou didst build churches for the all-accomplishing Spirit, O wise one, and destroyed the vile temples of mortals." },
+          { "canon": "secondCanon", "text": "O blessed one, pray thou that enlightenment and forgiveness of soul-destroying sins be bestowed from heaven upon me who joyfully praise Thine all-glorious memory." },
+          { "canon": "secondCanon", "text": "Thy soul, guarded by the fear of the Lord, did not fear the commands which were abominable to God, nor divers wounds and tribulations, therefore, thou didst brave them manfully." },
+          { "canon": "secondCanon", "text": "With thy three sons, O passion-bearer, thou didst patiently undergo multifarious torments; and with them didst weave wreaths of incorruption, glorifying the Trinity." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Without the pangs of motherhood thou didst conceive the Word of the Father, O most holy one; and thou didst give birth to Him in a manner past all telling, for our salvation." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "O Lord, I have heard the mystery of Thy dispensation; * I have considered Thy works, * and I have glorified Thy Divinity.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Possessed of a lofty intelligence, O Thaddeus, disciple of the King of all, thou didst receive divine understanding and spiritual gifts." },
+          { "canon": "secondCanon", "text": "In teaching the divine mysteries, O most noetically rich and blessed one, thou didst enlighten the uninstructed to worship the consubstantial Trinity." },
+          { "canon": "secondCanon", "text": "Thou didst engrave the law of God upon men's hearts, O blessed one, having first erased the traces of ignorance and the false worship of graven Images." },
+          { "canon": "secondCanon", "text": "Being of undivided mind, thou didst set forth to do battle with the opponent, and didst drown him in the abyss of thy blood." },
+          { "canon": "secondCanon", "text": "The deep, receiving thee who wast condemned to an undeserved death, grew calm and saved thee, O passion-bearer Vassa, at the behest of God." },
+          { "canon": "secondCanon", "text": "With thy right laudable sons thou didst inherit the unshakable kingdom, the truly heavenly bridal-chamber and the never-waning light, O glorious one." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Of old, Habbakuk foresaw thee as an unquarried mountain, O Virgin; for God appeared through thee and hath saved us." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou hast enlightened * with the knowledge of God * the ends of the universe * that lay in the night of ignorance, * do Thou also, O Lord, illumine me * with the dawning of Thy love for mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Bearing the divine likeness of the Master, O blessed one, thou didst come as a divine physician to Abgar, the local king." },
+          { "canon": "secondCanon", "text": "After the divine ascension of the Word, the sacred Thomas sent thee as a preacher to those in need, O most wise Thaddeus." },
+          { "canon": "secondCanon", "text": "Abgar, beholding his illness dispelled and his heart healed, was filled with divine enlightenment through thy mediation." },
+          { "canon": "secondCanon", "text": "Held fast with a thirst for the love of Christ, O glorious and divinely blessed Agapius, thou didst hate wickedness utterly and didst mightily endure the pangs of tortures and bodily death by a spear." },
+          { "canon": "secondCanon", "text": "When thine internal organs were rent apart and the nails torn from thy members, O martyr Theognius, thou didst repeatedly acknowledge the God of all with purity and perfection. And to Him thou didst ascend in glory, shining with the splendors of martyrdom." },
+          { "canon": "secondCanon", "text": "Having entered into the tribunal of the unbelievers with unwavering faith, O most wise, faithful and blessed Pistus, thou didst astonish the hearts of the ignorant when thy bones were broken and all the members of thy body were severed." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast now set aright the fall of Eve, our first mother, having given birth unto the Redeemer, Savior and Creator of all, O Mother of God who alone art blessed among women. Wherefore we, the faithful, glorify thee." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Thou O Lord, didst place Jonah alone within the sea monster. * Do Thou save me, * who am ensnared in the nets of the enemy, * as thou didst save him from corruption.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The enlightenment of the Holy Spirit, which dwelt within thy heart, O Thaddeus, made of thee a true luminary for the world, dispersing the darkness of delusion." },
+          { "canon": "secondCanon", "text": "Bearing in thy flesh the saving wounds of Christ as an ornament, O wise Thaddeus, thou didst deliver the people from all ugliness and wast taken up into most beauteous joy." },
+          { "canon": "secondCanon", "text": "Thou didst reveal to us the morning Sun of righteousness, O glorious Thaddeus, showing those mortals who have been illumined thereby to be children of the noetic Light." },
+          { "canon": "secondCanon", "text": "Thou didst reduce utterly to dust the pedestals of the abominable gods, rooting thy soul in the unutterable love of God, O passion-bearer Vassa, and art now a dweller with the angels." },
+          { "canon": "secondCanon", "text": "Following Christ, thou didst pass through great struggles, O martyr, and didst receive great rewards from Him therefore: immortal fame, a divine dwelling-place, and nourishment which is not transitory." },
+          { "canon": "secondCanon", "text": "God, Who is wondrous in thee and is ever glorified in the councils of the saints, saved thee by His omnipotent power, O all-praised one, as of old He saved Jonah from the depths of the sea." },
+          { "canon": "secondCanon", "theotokion": true, "text": "For us thou hast given birth to a Babe Who is consubstantial with the Father, and Who hath elevated corrupt human nature to its former pristine beauty, O pure one." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "In Babylon, the pious youths did not worship the golden image, * but, bedewed in the midst of the fiery furnace, * they chanted a hymn, saying: * O supremely exalted God of our fathers, blessed art Thou!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Performing miracles through the invocation of Christ Who manifested Himself in the flesh, O all-praised one, thou didst draw to the excellent Faith peoples and cities, who cry aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Thou didst bring an end to the decay of ungodliness, O blessed apostle, with the divine salt of thy sweet words, and didst heal hearts wounded by the darts of the serpent, crying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Caught up to the heights of vision and filled with the divine Spirit, O Thaddeus, thou wast divinely enriched by the saving Word and didst teach men to cry: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Passing unconsumed through the flame of the fire by divine power, O martyr, with the fire of thy blood thou didst utterly consume delusion as though it were kindling, crying: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "O Master Who restrained the raging of the lions in the pit, saving Thy Daniel, Thou didst show the martyr to be unharmed by the wild beasts; and she chanted unto Thee: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Illumined with the radiant beams of the Cross, O glorious Vassa, thou didst pass unharmed through the darkness of deception and issued forth into the Light, crying aloud: O God of our fathers, blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Thou hast rent asunder the tangled bonds of mine offenses, O Bride of God, having given birth unto God, Who taketh away the sin of the world, in a manner past all telling, O blessed, pure and ever glorious one." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "By Thy grace the children became vanquishers * of both the tyrant and the flames, * carefully observing Thy commandments, * wherefore they cried aloud: * Bless the Lord, all ye works of the Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou wast shown to be like a heaven declaring the glory of God, and the enlightenment of the nations O Thaddeus, leading to the divine Faith those who fervently cry: Hymn ye the Lord and supremely exalt Him throughout the ages!" },
+          { "canon": "secondCanon", "text": "Bestowing strength upon the infirm, sight upon the blind, and the ability to walk upon the lame through the power of the Spirit, O blessed Thaddeus, thou wast a luminary of the city of Edessa, which ever praiseth thee with faith." },
+          { "canon": "secondCanon", "text": "Thaddeus, who by a wealth of miracles brought an unbelieving nation to the Faith at the behest of God, and saved those who fled to him from the delusion of idolatry, is glorified with faith, as is meet." },
+          { "canon": "secondCanon", "text": "He Who clad Himself in our weakness manifestly strengthened thy weak nature and rendered thee more powerful than the fire, the water, the wild beasts and the instruments of the torturers, O martyr, wherefore thou didst cry out with faith: Ye priests, bless; ye people, supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Contending as youths, the godly Theogmus, the sacred Agapius, together with Pistus, the honored children, manfully vanquished the opposition of the adversary, showing themselves forth in word and deed; and, having received crowns of victory from God, they supremely exalt Him throughout all ages!" },
+          { "canon": "secondCanon", "text": "Like an exceedingly fruitful olive-tree, like a heavy-laden vine replete with three branches, O Vassa, with them thou didst produce the grapes of confession, pouring forth the wine of witness which doth gladden the hearts of those who piously cry out: Ye people, supremely exalt Christ throughout the ages!" },
+          { "canon": "secondCanon", "text": "Standing around the throne of God with the ranks of the incorporeal ones and the armies of the martyrs, O all-famed ones, and full of glory, grace and enlightenment, ye dispel the darkness of the offenses of us who with faith celebrate your luminous, divine and excellent memory, which is full of spiritual gifts." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The shadow of the law ceased to exist when thou didst give birth to the Bestower of the law Who hath illumined the whole world with grace, O Lady. Him do thou ever entreat, that he quickly take pity on me who have become vanquished by the law of sin." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "Saved by thee, O pure Virgin, * we confess thee to be truly the Theotokos, * and together with the choirs of the bodiless hosts * thee do we magnify.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Drawing nigh to behold the divine rewards which are everlasting and the uttermost desires, O blessed Thaddeus, adorn thyself and dance!" },
+          { "canon": "secondCanon", "text": "Like a cedar, like a mighty cypress-tree, wast thou elevated by the virtues, O glorious Thaddeus, perfuming the hearts of those who praise thee." },
+          { "canon": "secondCanon", "text": "Joining the apostles and martyrs, and sharing the gladness of the choirs of the incorporeal ones, O blessed one, pray thou with them, that those who honor thee may be saved." },
+          { "canon": "secondCanon", "text": "Thy memory, illumining the thoughts of the faithful with the rich radiance of spiritual gifts, O Thaddeus, impelleth all to praise thee." },
+          { "canon": "secondCanon", "text": "Desiring to see what earthly eye hath truly never seen, illumined with immaterial radiance, thou didst manfully endure the painful crushing of the members of thy body, the onslaughts of wild beasts, the burning of fire, and the raging of the sea, O all-praised and all-blessed one." },
+          { "canon": "secondCanon", "text": "Thou didst truly shine forth like a radiant, magnificent and God-bearing moon of divine aspect, set among the shining stars of grace with those who issued forth from thy womb. And now, O blessed ones, illumine ye the whole world with immaterial splendor." },
+          { "canon": "secondCanon", "text": "Having established thoughts of heavenly ascent upon the rock of endurance, O blessed ones, ye were truly shown to be unaffected by the trials of various torments; and receiving the trophy of victory from Christ, ye have been deemed worthy to reign with Him, rejoicing throughout the ages." },
+          { "canon": "secondCanon", "text": "Like a truly chaste dove, like a turtle-dove who loved God, like a swallow on the wing with thy godly nestlings, thou hast made thine abode in the heavens, the divine and noetic realm, fleeing the winter and the pursuit of the demons, O Vassa, whom with love we call blessed." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having given birth to the Redeemer and Lover of mankind, O wondrous and right loving Lady, grant deliverance from sins to me by thy supplications; bless my soul which hath been oppressed by wicked thoughts, O most honored one; and show it to be freed from deadly passions, O all-immaculate one." }
+        ]
+      }
+    }
+  }
+}

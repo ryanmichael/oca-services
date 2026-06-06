@@ -500,6 +500,7 @@ function _mergeAfterFeastCanon(saintCanon) {
     tone: feastCanon.tone,
     _secondCanonTone: saintCanon.tone,
   };
+  if (saintCanon._thirdCanonTone) merged._thirdCanonTone = saintCanon._thirdCanonTone;
 
   // Copy all non-ode saint-canon fields (kontakion, ikos, kontakionAfterOde3,
   // sedalenAfterOde3, skipMagnificat, joint flags, etc.)
@@ -516,6 +517,7 @@ function _mergeAfterFeastCanon(saintCanon) {
     const mergedOde = {};
     if (fOde.irmos)  mergedOde.irmos  = fOde.irmos;
     if (sOde.irmos2) mergedOde.irmos2 = sOde.irmos2;
+    if (sOde.irmos3) mergedOde.irmos3 = sOde.irmos3;
 
     mergedOde.troparia = [
       ...(fOde.troparia || []),

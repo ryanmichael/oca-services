@@ -652,13 +652,16 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
     const odeData = canonSpec[odeKey];
 
     if (odeData) {
-      // Two-canon feast detection: irmos2 present AND troparia explicitly
-      // partitioned via t.canon === 'secondCanon'. In that case, render in
-      // two groups (Irmos 1 → first-canon troparia → Irmos 2 → second-canon
+      // Multi-canon feast detection: irmos2 (and optionally irmos3) present
+      // AND troparia explicitly partitioned via t.canon === 'secondCanon' (or
+      // 'thirdCanon'). In that case, render in groups (Irmos N → N-canon
       // troparia) rather than the flat single-canon layout.
       const tropList = odeData.troparia || [];
       const isTwoCanonOde = !!odeData.irmos2
         && tropList.some(t => t.canon === 'secondCanon');
+      const isThreeCanonOde = isTwoCanonOde
+        && !!odeData.irmos3
+        && tropList.some(t => t.canon === 'thirdCanon');
 
       // Per-troparion render helper (refrain + hymn block).
       const emitTroparion = (t, i) => {
@@ -678,7 +681,7 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
         blocks.push(S(`canon-ode${odeNum}-irmos`, section, 'hymn', 'choir',
           odeData.irmos, { tone, label: 'Irmos' }));
         tropList.forEach((t, i) => {
-          if (t.canon === 'secondCanon') return;
+          if (t.canon === 'secondCanon' || t.canon === 'thirdCanon') return;
           emitTroparion(t, i);
         });
 
@@ -692,6 +695,19 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
           if (t.canon !== 'secondCanon') return;
           emitTroparion(t, i);
         });
+
+        // ── Third Canon (rare — Nov 23, three simultaneous canons) ──────────
+        if (isThreeCanonOde) {
+          blocks.push(S(`canon-ode${odeNum}-c3-hdr`, section, 'rubric', null,
+            `Ode ${odeNum} — Third Canon`));
+          const tone3 = odeData.tone3 || canonSpec._thirdCanonTone || tone;
+          blocks.push(S(`canon-ode${odeNum}-irmos3`, section, 'hymn', 'choir',
+            odeData.irmos3, { tone: tone3, label: 'Irmos' }));
+          tropList.forEach((t, i) => {
+            if (t.canon !== 'thirdCanon') return;
+            emitTroparion(t, i);
+          });
+        }
       } else {
         // ── Single canon (existing layout) ──────────────────────────────────
         // Irmos

@@ -1,0 +1,237 @@
+{
+  "_meta": {
+    "feast": "Afterfeast of the Entry of the Theotokos & Sts Amphilochius, Bishop of Iconium, & Gregory, Bishop of Agrigentum",
+    "feastKey": "ssEntryAmphilochiusGregory",
+    "rank": "simple",
+    "feastRank": "simple",
+    "feastType": "saint",
+    "tone": 1,
+    "_source": "St-Sergius Emenaion 11-23.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-23.pdf",
+    "_note": "Afterfeast of the Entry of the Theotokos + Sts Amphilochius of Iconium + Gregory of Agrigentum. Joint THREE-canon simple-rank Matins: Canon I = Entry of the Theotokos via feast-canons/entry-theotokos.json (Joseph Tone IV); Canon II = Amphilochius (Theophanes Tone IV); Canon III = Gregory (Joseph Tone VIII). This is the first three-canon file in the project — relies on the irmos3 + canon:'thirdCanon' schema extension shipped 2026-06-06. KNOWN GAP: Matins Lauds stichera (Sergius PDF does not include them; would render via Octoechos weekday)."
+  },
+
+  "feastTroparion": {
+    "text": "Today is the prelude of God's good will\nand the proclamation of the salvation of mankind.\nThe Virgin hath manifestly appeared in the temple of God,\nproclaiming Christ unto all.\nTo her let us cry aloud://\nRejoice, O thou fulfillment of the Creator's dispensation!",
+    "tone": 4,
+    "label": "Troparion of the feast (Entry of the Theotokos)"
+  },
+
+  "troparion": {
+    "text": "O God of our fathers, ever deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+    "tone": 4,
+    "label": "Troparion of the holy hierarchs"
+  },
+
+  "kontakion": {
+    "text": "O hierarch Amphilochius,\nthou divine thunder, trumpet of the Spirit,\nhusbandman of the garden of Faith,\nscythe cutting down heresies,\ngreat favorite of the Trinity,\nstanding ever with the angels,//\npray thou unceasingly on behalf of us all.",
+    "tone": 2,
+    "label": "Kontakion of St. Amphilochius",
+    "melody": "Seeking the highest"
+  },
+
+  "matins": {
+    "_meta": { "tone": 1, "joint": true, "_source": "stSergius-menaion" },
+
+    "sessionalHymns": [
+      {
+        "text": "Being thyself the Holy of Holies, O Theotokos, thou wast brought to live in the Holy of Holies, as is meet, as the animate ark of the Lord and a truly divine habitation of the Holy Spirit, O Virgin Mary. Wherefore, thy Son, Who is the only-begotten of the Father, and consubstantial with the Holy Spirit, made His abode within thee without the aid of a man, deifying all mankind.",
+        "tone": 1,
+        "label": "Sessional Hymn of the feast (after the first chanting of the Psalter)",
+        "melody": "When the stone had been sealed"
+      },
+      {
+        "text": "The whole world is filled with gladness today on the right notable feast of the Theotokos, crying aloud://\nShe is the tabernacle of heaven!",
+        "tone": 4,
+        "label": "Sessional Hymn of the feast (after the second chanting of the Psalter)",
+        "melody": "Thou hast appeared"
+      }
+    ],
+
+    "troparion": {
+      "text": "O God of our fathers, ever deal with us according to Thy meekness.\nTake not Thy mercy from us,//\nbut by the prayers of these saints direct our life in peace.",
+      "tone": 4,
+      "label": "Troparion of the holy hierarchs"
+    },
+
+    "canon": {
+      "afterfeastOf": "entry-theotokos",
+      "tone": 4,
+      "_thirdCanonTone": 8,
+      "_authors": "Canon I = Entry of the Theotokos from feast-canons/entry-theotokos.json (Joseph Tone IV). Canon II = St. Amphilochius (Theophanes Tone IV), acrostic: 'I hymn the pastor who put delusion to shame'. Canon III = St. Gregory (Joseph Tone VIII), acrostic: 'I marvel at the wonder-working Gregory'.",
+
+      "kontakionAfterOde3": {
+        "text": "With effulgence of splendid radiance\nthe Church of the Holy Spirit illumineth\nthose who celebrate thy splendid repose,//\nO venerable and all-blessed father Gregory.",
+        "tone": 4,
+        "label": "Kontakion of St. Gregory (after Ode 3)",
+        "melody": "Thou hast appeared today"
+      },
+
+      "sessionalHymnsAfterOde3": [
+        {
+          "text": "Thou dost enlighten the ends of the earth at thy memorial, O wise and glorious Amphilochius; for thy body poureth forth a well-spring of healings. Wherefore, thou deliverest from every infirmity those who with faith approach thine honored temple. For this cause, pray thou now, that we be saved.",
+          "tone": 4,
+          "label": "Sessional Hymn of St. Amphilochius (after Ode 3)",
+          "melody": "Go thou quickly before"
+        },
+        {
+          "text": "Offered to the Lord from earliest infancy, as the most glorious Samuel had been of old, thou didst likewise hear the Savior calling thee, and, having purified thy soul with gifts of good things, thou didst worthily receive the grace of the priesthood. Wherefore, shepherding thy flock in the pasture of divine knowledge, thou didst shine forth acts of healing, O Gregory. Entreat Christ God, that He grant remission of sins unto those who celebrate thy holy memory with love.",
+          "tone": 8,
+          "label": "Glory — Sessional Hymn of St. Gregory",
+          "melody": "Of the Wisdom"
+        },
+        {
+          "text": "O David, go thou before us into the Temple of God, and, rejoicing, receive thou our Queen, and cry out unto her: Enter thou, O Sovereign Lady! Enter thou into the Temple of the King! Her glory is understood allegorically, for from her doth Christ the Light desire to pour Himself forth upon all!",
+          "tone": 4,
+          "label": "Both now — Sessional Hymn of the feast",
+          "melody": "Go thou quickly before"
+        }
+      ],
+
+      "kontakion": {
+        "text": "O hierarch Amphilochius,\nthou divine thunder, trumpet of the Spirit,\nhusbandman of the garden of Faith,\nscythe cutting down heresies,\ngreat favorite of the Trinity,\nstanding ever with the angels,//\npray thou unceasingly on behalf of us all.",
+        "tone": 2,
+        "label": "Kontakion of St. Amphilochius",
+        "melody": "Seeking the highest"
+      },
+      "ikos": {
+        "text": "Inspired by the Holy Spirit, the all-wise hierarch of Christ sealed the Church; for, possessed of the working of power, the glorious initiate of the mysteries, the acceptable teacher of the Faith, having hearkened to the reading of the divine Scriptures, drove away Eunomius by making the sign of the life-bearing and precious Cross; and, explaining the Faith and preaching Christ, he prayeth unceasingly on behalf of us all."
+      },
+
+      "ode1": {
+        "irmos2": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "irmos3": "To Him who crushed the enemy with His arm\nand led Israel through the Red Sea,\nto our Redeemer and our God let us sing,//\nfor He hath been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thou didst easily destroy the words and insolence of heresies, illumined with the radiance of Orthodoxy. O thou who art manifestly sacred, preserve us also who honor thee therein." },
+          { "canon": "secondCanon", "text": "The Lord Who ever desires the salvation of all appointed thee as a guide for His sacred flock, O hierarch, seeing thee shining excellently in word and life." },
+          { "canon": "secondCanon", "text": "Having chosen to contend lawfully for the Church of Christ, O glorious father, thou didst protect thyself with the sword of the Cross, and through grace wast revealed to be a victor and crown-bearer." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: To the Word Who is co-beginningless and equally everlasting with the Father, and is the image of His essence, didst thou ineffably give birth, incarnate, O thou who knewest not wedlock." },
+          { "canon": "thirdCanon", "text": "Ever illumined with the rays of the Spirit and having become a brilliant star, O sacred Gregory, wholly enlighten me by thy prayers, that I may hymn thee." },
+          { "canon": "thirdCanon", "text": "He Who knoweth all things beforehand, having shown grace to thy mind with divinely imparted effulgence, from thine earliest infancy hallowed thee, who desired to shine forth with godly virtues and miracles, O father." },
+          { "canon": "thirdCanon", "text": "Casting off the slumber of despondency from thine eyelids, thou didst show thyself to be a vigilant luminary, O God-bearer, showing forth thy calling which is confirmed as true by material things, O Gregory." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: I truly and decisively confess thee to be the Theotokos; for thou didst ineffably give birth to the Lord Who is understood in two natures and wills, O most pure Virgin." }
+        ]
+      },
+
+      "ode3": {
+        "irmos2": "Thy Church rejoiceth in Thee, O Christ, crying aloud://\nThou art my might, O Lord, my refuge and confirmation!",
+        "irmos3": "My heart is established in the Lord,\nmy horn is exalted in my God,\nmy mouth is enlarged against mine enemies,//\nand I rejoice in Thy salvation.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The divine and luminous effulgence of thy dogmas put down the evil hordes of the heretics, O glorious Amphilochius." },
+          { "canon": "secondCanon", "text": "As a high priest, like a river filled by God to overflowing with life-creating waters, thou dost give us thy piety to drink." },
+          { "canon": "secondCanon", "text": "Illumined with abundant radiance, thou didst illumine thy mind with the mystic splendor of thy teachings, O venerable one." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: All of us, the faithful, declare thee to be the lustrous candle-stand, the spiritually nourishing banquet of piety, and the ark, O most pure one." },
+          { "canon": "thirdCanon", "text": "The Creator, accepting thy labors for His sake, O father Gregory, led thee to an elder in the desert, who taught thee the meaning of every Scripture." },
+          { "canon": "thirdCanon", "text": "Passing a whole week without food, O father, thou wast nourished with heavenly food, drinking the rain of thy tears, divinely filled to repletion." },
+          { "canon": "thirdCanon", "text": "To thee, O hierarch, was breadth of heart given by God; for thou didst richly pour forth the most pure waters of teachings watering thereby the hearts of the faithful." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: The words of the divinely eloquent preachers have been fulfilled; for, lo! the Virgin hath given birth to a little Babe, Who is more ancient than Adam and co-enthroned with the Father." }
+        ]
+      },
+
+      "ode4": {
+        "irmos2": "Beholding Thee, the Sun of righteousness,\nlifted up upon the Cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord!",
+        "irmos3": "I have heard report of Thee, O Lord,\nand I was afraid,\nfor thy counsel is ineffable,\nbeing the ever-existent God,\nThou didst come forth from the Virgin,\nwherefore I hymn Thee:\nglory to thy condescension, O Christ,//\nglory to Thy power.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Come, ye divinely wise, let us clap our hands with faith on the sacred festival of the godly and divinely eloquent Amphilochius, strengthened by his doctrines and theology." },
+          { "canon": "secondCanon", "text": "As an attendant of the Church, the bride in Christ, O God-bearer, thou didst adorn her with the beauty of thy discourses and render her radiant with the comeliness of Orthodoxy." },
+          { "canon": "secondCanon", "text": "Thy divinely eloquent tongue of theology hath clearly explained to all the dominion of the Trinity One in honor, that they may worship the one Godhead in three Hypostases." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Virgin, we know thee to be the new tabernacle and pure sanctuary of the Master of all; for thou hast given birth to Him in the flesh in two united hypostases, O all-immaculate one." },
+          { "canon": "thirdCanon", "text": "Like fertile soil thou didst bring forth grain an hundredfold, O father, and with the axe of thy teachings thou didst cut down the impious opinions of the heretics, showing thyself to be a champion of the Council, O venerable Gregory." },
+          { "canon": "thirdCanon", "text": "The judgment of heaven showed thee forth as a hierarch, guiding well the flock which Christ, Who perceived the radiance of thy soul, obtained through His blood, O father, favorite of God." },
+          { "canon": "thirdCanon", "text": "Thou wast a temple of God cleansed of the defilement of the passions, and, standing before Him in the sacred temple, thou didst openly receive the advent of the Spirit in the form of a pure dove, when Christ glorified thee." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: The race of mankind hath been saved by thy birthgiving, which surpasseth understanding; and those in the darkness of corruption have seen the Light Which shone forth from thy womb, the Author of our restoration, O most pure Lady and Maiden." }
+        ]
+      },
+
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "irmos3": "Disperse, O Word, the darkness from my soul,\nO Christ God, the Light-Giver,\nHaving driven out the primordial darkness of the abyss,\ngrant unto me the light of Thy commandments,//\nthat early in the morning I may glorify Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Illumined with the light of the threefold Sun of the Godhead, O divinely wise Amphilochius, thou didst take thy seat upon thy hierarchal cathedra." },
+          { "canon": "secondCanon", "text": "Thou didst dedicate thyself wholly to God and wast a trumpet-voiced divine herald, O all-blessed father Amphilochius." },
+          { "canon": "secondCanon", "text": "The joyous and most sacred feast of the divine and wise teacher hath dawned for us, sanctifying the world." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most pure Mother of God, magnificent adornment of all the faithful, by thy supplications wash away the defilement of my soul." },
+          { "canon": "thirdCanon", "text": "With thy word thou didst once cleanse the vile infirmity of the leper who came to thee with faith; for, like the godly Elisha, O divinely wise Gregory, thou didst receive from God the grace of miracles." },
+          { "canon": "thirdCanon", "text": "By thine entreaty thou didst open the mouth and ears of the deaf-mute, O all-blessed Gregory; for enriched with the ability to work healings, thou didst also plumb the depths of theology, drying up the seas of ungodliness." },
+          { "canon": "thirdCanon", "text": "Having cleansed thyself of every passionate earthly attachment, O father, like Peter, the first-chosen of the apostles, thou didst effect healings by thy shadow, divinely curing those held fast by the cruel assaults of illness." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: Without leaving the bosom of the Father to become incarnate, the Word is seen held at thy bosom as a babe, O all-immaculate one. Him do thou render merciful unto those who piously honor thee, O Virgin Bride of God." }
+        ]
+      },
+
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "irmos3": "As Thou didst deliver the prophet from the depths of the abyss,\nO Christ God,\nso deliver me also from my sins,\nO Lover of mankind,//\nand guide my life, I pray Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Having mortified worldly understanding in the flesh, thou didst array thyself in the grace of dispassion, O father, initiate of the sacred mysteries, proclaiming the Trinity in most pure teachings." },
+          { "canon": "secondCanon", "text": "Protected by the fear of God, O venerable God-pleaser, having rendered thy soul pure of defilement, thou wast shown to be the most sacred instrument of theology." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Knowing thee to be the pure habitation of the King of glory and the temple and throne of the Most High, we pray: Save thou our souls, O all-hymned one!" },
+          { "canon": "thirdCanon", "text": "The maiden whose body had been paralyzed for many years, came to thee with faith and was strengthened by thy prayer, O venerable one, magnifying Christ, the Author of all things." },
+          { "canon": "thirdCanon", "text": "Following in the steps of the Master with a blameless life, O glorious one, unjustly oppressed and slandered, thou didst remain impervious to thine ill treatment." },
+          { "canon": "thirdCanon", "text": "Seizing thee like savage beasts, as if an innocent lamb, O father, those who lived together in wickedness condemned thee to prison; but by divine grace thou didst remain unharmed." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: The mind is at a loss how to understand the great mystery of thy birthgiving; for thou hast given birth to the incomprehensible God Who became a man, O Ever-virgin." }
+        ]
+      },
+
+      "ode7": {
+        "irmos2": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety\nrather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "irmos3": "By an angel didst Thou refresh the Children in the furnace\ntransforming the roaring flames into dew.//\nO God of our fathers, blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Heeding thy most mystical and divine admonitions, O father, we avoid Arius' division of the Godhead, glorifying with faith the uncreated and consubstantial Trinity." },
+          { "canon": "secondCanon", "text": "Beholding Macedonius denounced by thy teachings, O father, with faith we glorify the good Spirit, Who is equally worshipped and co-beginningless with the Father and the Son." },
+          { "canon": "secondCanon", "text": "Explaining by thy words the incarnation of the Word in a manner surpassing words, O God-pleaser, with divine wisdom thou didst teach us to worship the one God in two natures and to avoid division and commingling." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Come and, saved by faith in the Almighty Who was born of her, let us all fervently praise the Theotokos, crying: Blessed art thou among women, O all-immaculate one." },
+          { "canon": "thirdCanon", "text": "The Creator worked a miracle when thou wast condemned, O blessed one; for the adulterous woman fell prey to the assault of the demons and showed thee to be pure, O Gregory." },
+          { "canon": "thirdCanon", "text": "The light-bestowing divine disciples of the Savior, standing before thee, O venerable one, loosed the bonds which bound thee to the tree kissing them with joy." },
+          { "canon": "thirdCanon", "text": "Taking heed of thy patience, O father, the Master sacredly adorned thee with yet greater miracles, in that thou drivest away the gloom of infirmities." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: As a Mother thou hast given birth to the Creator of all and bore in thine arms, as though thou wast the throne of the cherubim, Him Who holdeth all things, O thou who knewest not wedlock." }
+        ]
+      },
+
+      "ode8": {
+        "irmos2": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths,\ngirded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "irmos3": "O Thou who dost cover Thy chambers on high with the waters,\nThou Who hast set the sands to bound the sea\nand Who upholdest all things:\nthe sun doth sing Thy praises,\nthe moon giveth Thee glory,\nevery creature offereth a hymn unto Thee,//\nas their Fashioner, throughout the ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Thy mouth, adorned with hymns, manifestly theologized concerning the uncreated, beginningless, consubstantial Trinity uncommingled in three Hypostases, O divinely wise father, wherefore to the Trinity we cry aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "The hypostatic Wisdom gave thee riches and the glory of honor, O most wise one, when thou didst piously theologize, casting down the arrogance of heresies and chanting with love: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "He Who bestoweth life upon all led thee into the church of the firstborn as a faithful and divinely eloquent hierarch who mystically exercised the priestly office and who chants with faith: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Behold, the tribe of Judah shall not now lack for a guide and leader; for thou, O all-immaculate one, hast given birth to Christ, the long-awaited expectation of the nations. To Him do we chant: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "thirdCanon", "text": "The maiden who slandered thee, a most righteous man, because of the wickedness of all-iniquitous men, was freed from the dreadful wounding of the demons by thy prayer, O blessed one, and in the midst of the council God, the Judge of the contest, doth glorify thee throughout all ages." },
+          { "canon": "thirdCanon", "text": "Those who through wickedness taught against thee are filled with gloomy darkness, O father Gregory, and thy radiant life shined forth before the fathers, in whose presence thou didst work a miracle, holding a burning coal in thy hand." },
+          { "canon": "thirdCanon", "text": "Thou hast been truly revealed to be like a most brilliant star in the firmament of the Church, O father, ever illumining with virtues and rays of miracles those who hymn thy luminous memory, O divinely wise and holy hierarch Gregory." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: Thy most glorious birthgiving doth fill our thoughts with awe, O thou who alone art blessed; for God received flesh from thee, while remaining immutable in essence, as He was, O Theotokos. Him do we supremely exalt throughout the ages." }
+        ]
+      },
+
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;//\ntherefore rejoicing we magnify thee, O Theotokos.",
+        "irmos3": "Blessed be the Lord God of Israel,\nWho hath exalted the horn of salvation on our behalf\nin the house of His child David,\nwherein the Dayspring from on high hath visited us,//\nand guided us on the path of peace.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Most piously theologizing concerning the one Essence in three Hypostases, the most holy, divine and unapproachable Trinity, thou hast been honored thereby, O Amphilochius manifest in sanctity." },
+          { "canon": "secondCanon", "text": "Possessing boldness before God as a hierarch, O God-bearer, standing before thy Master be thou ever mindful of those who celebrate thy sacred and luminous memory, O blessed one." },
+          { "canon": "secondCanon", "text": "O divinely wise and venerable father Amphilochius, as a most faithful hierarch thou dost grant an abundance of grace unto those who with an ardent heart weave praises for thee and ask for the remission of sins." },
+          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou wast revealed to be a descendant of Adam and art known to be the Mother of God; for from ages past thou wast revealed to be more holy than all of creation, O most pure and blessed one, wherefore, we magnify thee." },
+          { "canon": "thirdCanon", "text": "Behold, the radiant festival! Behold, the sacred memorial! Behold, the grace which is upon all the faithful who have assembled, pouring forth healings in abundance! Let us draw nigh, for the shrine of Gregory poureth forth ever-flowing enlightenment and immortality upon us." },
+          { "canon": "thirdCanon", "text": "Like a river full of the waters of Christ, like an olive-tree pouring forth the oil of life, like a date-palm wast thou exalted, O Gregory. Like a vine thou didst bear the grapes of thy virtues for us, and we drink the wine of incorruption therefrom." },
+          { "canon": "thirdCanon", "text": "Let the council of the sanctified, the multitude of the venerable and the ranks of all the angels rejoice with us today in thy memory, O father. Standing with them, illumined, before the Creator, be thou mindful of those who hymn thee with love." },
+          { "canon": "thirdCanon", "text": "Thou wast the sanctified vessel of Christ, O father, a pillar of the Church, the haven of the faithful, a sword cutting down falsehood, a wellspring of healings, and an abyss of divine understanding, an inextinguishable lamp and a shepherd of shepherds." },
+          { "canon": "thirdCanon", "type": "theotokion", "text": "Theotokion: O Virgin Maiden who hast given birth to the timeless Light Who shone forth from the Father, illumine my soul and mind, driving far from me the darkness of the passions, that I may bless thee, the ever-blessed hope of the faithful." }
+        ]
+      }
+    },
+
+    "exapostilarion": {
+      "text": "Becoming divine through immaterial communion with the nature of God, O all-wise one, thou wast anointed by angels as a high priest for the clergy of God, mediating between the Creator and creation, O God-pleasing father Amphilochius. Wherefore, celebrating thy memory, we hymn thee, delivered by thy prayers from corruption and perils.",
+      "label": "Exapostilarion of St. Amphilochius",
+      "melody": "When the disciples"
+    },
+    "exapostilarionGlory": {
+      "text": "Having adorned thy life with fasting, O wise and blessed father Gregory, thou wast revealed to be a hierarch of the honored Church of Christ, illumining the Orthodox with the rays of thy teachings and ineffable miracles. Wherefore, through thy prayers for us, ask for the salvation of the souls of those who celebrate thy most holy repose.",
+      "label": "Glory — Exapostilarion of St. Gregory"
+    },
+    "exapostilarionBothNow": {
+      "text": "With faith let us praise Mary, the divine Maiden, whom the company of the prophets proclaimed of old as the jar and the staff, the tablets and the unquarried mountain; for she is led today into the Holy of holies, to be raised for the Lord.",
+      "label": "Both now — Exapostilarion of the feast",
+      "melody": "Hearken, ye women"
+    }
+  }
+}

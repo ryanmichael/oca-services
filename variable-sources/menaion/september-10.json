@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "feast": "Holy Martyrs Menodora, Metrodora and Nymphodora",
+    "feastRank": "simple",
+    "tone": 4,
+    "_source": "St-Sergius Emenaion 09-10.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-10.pdf",
+    "_note": "Afterfeast of the Nativity of the Theotokos. Two-canon Matins: Canon I = Nativity of the Theotokos (feast-canons/nativity-theotokos.json, John of Damascus Tone II); Canon II = Holy Martyrs Menodora, Metrodora and Nymphodora by Joseph Tone IV (acrostic: I honor the fervent sufferings of the three sisters)."
+  },
+  "feastTroparion": {
+    "tone": 4,
+    "text": "Thy nativity, O Theotokos and Virgin, hath proclaimed joy to all the universe; * for from thee hath risen the Sun of righteousness, Christ our God, * dissolving the curse, He hath given the blessing; * and abolishing death, He hath bestowed on us life eternal.",
+    "label": "Troparion of the feast (Nativity of the Theotokos)"
+  },
+  "troparion": {
+    "tone": 4,
+    "text": "O ye lambs of the Word, * the all-honorable Menodora, Metrodora and Nymphodora, * having loved Christ above all else, * ye fled the world and were assembled in the upper chamber. * Wherefore, ye received the crown of incorruption from God, * the only Lover of mankind, ** to whom ye entreat that great mercy be granted unto our souls.",
+    "label": "Troparion of the Holy Martyrs"
+  },
+  "kontakion": {
+    "tone": 4,
+    "text": "Clad as sisters in the Spirit, * and having contended with endurance for the Trinity, * ye vanquished the greatly cunning enemy; * wherefore, ye have made your abode with the five virgins * in the heavenly bridal chamber, O passion-bearers, ** and with the angels ye stand in unceasing gladness before the King of all.",
+    "label": "Kontakion of the Holy Martyrs",
+    "melody": "Having been lifted up"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 4,
+        "melody": "Go thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Be thou magnified, O Judah, and let David be glad! Be thou renewed, O Adam, and let Levi be strengthened! For Christ hath been born to me through them. Strike thy harp, O psalmist, and proclaim who this is who hath been born, whom thou callest a daughter. She is the nurturer of our life, the Mother of Christ God.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 8,
+        "melody": "That which was mystically commanded",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "Be thou renewed, O Adam! Rejoice, O Eve! Make merry, O David! Be of good cheer, O Anna, for the Mother of thy Creator hath been most gloriously born! All the earth joineth chorus, renewed, and rejoiceth, clad in vesture of gladness. Let every tongue now cry out to thee in chorus, O Mary: Blessed is the house of David, for it nurtureth her who nourisheth our Life!",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 4,
+      "melody": "Joseph marveled",
+      "label": "Sessional Hymn of the Holy Martyrs (after Ode 3)",
+      "text": "The heavenly choirs of the incorporeal hosts marveled at your great patience; for, stripped naked, your members broken, enduring a bitter death, ye withstood all as though it were others suffering, thus crushing the apostate serpent with your feminine bodies, O virgin brides of the Bestower of life, champions of the Faith.",
+      "bothNow": {
+        "tone": 4,
+        "label": "Sessional Hymn of the feast",
+        "text": "Today is Mary, the divine Maiden, born for us from the root of Jesse and the loins of David. All things rejoice with joy and are renewed. Rejoice together, O heaven and earth! Praise her, ye people of our native land! Joachim maketh merry, and Anna keepeth festival, crying aloud: A barren woman giveth birth to the Theotokos, the nurturer of our Life!"
+      }
+    },
+    "exapostilarion": {
+      "tone": 2,
+      "label": "Exapostilarion of the feast",
+      "text": "Today the Theotokos doth issue forth like a flower from the barren Anna, instilling all the ends of the world with a most divine fragrance, filling all creation with joy. Hymning her, we praise her as is meet, as the one who is more exalted than all those earthborn.",
+      "_note": "Glory ..., Both now ..., the foregoing is repeated.",
+      "melody": "Heaven with stars",
+      "bothNow": {
+        "tone": 2,
+        "text": "Today the Theotokos doth issue forth like a flower from the barren Anna, instilling all the ends of the world with a most divine fragrance, filling all creation with joy. Hymning her, we praise her as is meet, as the one who is more exalted than all those earthborn.",
+        "label": "Exapostilarion of the feast (Both now)"
+      }
+    },
+    "canon": {
+      "afterfeastOf": "nativity-theotokos",
+      "tone": 4,
+      "_author": "Canon of the Holy Martyrs Menodora, Metrodora and Nymphodora, the composition of Joseph in Tone IV (acrostic: I honor the fervent sufferings of the three sisters). Canon I (feast) from feast-canons/nativity-theotokos.json (John of Damascus Tone II).",
+      "kontakionAfterOde3": {
+        "tone": 4,
+        "text": "Clad as sisters in the Spirit, * and having contended with endurance for the Trinity, * ye vanquished the greatly cunning enemy; * wherefore, ye have made your abode with the five virgins * in the heavenly bridal chamber, O passion-bearers, ** and with the angels ye stand in unceasing gladness before the King of all.",
+        "label": "Kontakion of the Holy Martyrs",
+        "melody": "Having been lifted up"
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "In thy holy nativity, O most pure one, * Joachim and Anna have been freed from the reproach of childlessness, * and Adam and Eve from mortal corruption. * And, delivered from the affliction of sin, * thy people celebrate it, crying out to thee: * A barren woman giveth birth to the Theotokos, * the nurturer of our Life!",
+        "label": "Kontakion of the feast (Nativity of the Theotokos)"
+      },
+      "ikos": {
+        "text": "The supplication of Joachim over his childlessness, together with the sighing of Anna over her barrenness, were right acceptable to God: they entered the ears of the Lord and brought forth life-bearing fruit for the world. For the one made supplication on the mountain, and the other bore her reproach in the garden; and with joy the barren woman giveth birth to the Theotokos, the nurturer of our Life."
+      },
+      "ode1": {
+        "irmos2": "I shall open my mouth, * and be filled with the Spirit, * and utter discourse to the Queen and Mother; * and be seen radiantly keeping festival, * joyfully praising her wonders.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O glorious martyrs, make supplication to the uncreated Trinity Whom ye preached, on behalf of us who now honor your divine sufferings and corrections O divinely blessed ones." },
+          { "canon": "secondCanon", "text": "Protected by the divine weaponry of faith, the maidens scorned the words of the tyrant, and for the sake of the Life of all they submitted to the threefold waves of torments and to an unjust death." },
+          { "canon": "secondCanon", "text": "Strengthened by the omnipotent power of the Creator, the most honored ones assumed a manly character, and with their feet they trampled upon the twisted and prideful serpent and cast him down to the ground." },
+          { "canon": "secondCanon", "theotokion": true, "text": "With hymns we honor the pure Mary as an animate temple, an incorrupt tabernacle, the portal of heaven, the divine table, the palace and throne of the Master." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Not in wisdom, nor in power do we glory, * but we glory in Thee O Christ, * the Hypostatic Wisdom of the Father, * for there is none more holy than Thee, O Lover of mankind.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Wounding thee cruelly, the all-iniquitous tormentor of our life, dead of mind, sought to force thee to renounce Christ, O martyr Menodora." },
+          { "canon": "secondCanon", "text": "The tyrant took no pity on thee who lifted thine eyes to God, O martyr, but with an iron rod mercilessly broke thy members, thus weaving for thee an everlasting crown which withereth not away." },
+          { "canon": "secondCanon", "text": "By your torments ye acquired treasure in the heavens and everlasting glory, O thrice rich holy martyrs, clearly drawing nigh unto God." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O pure Virgin who hast appeared, drive the darkness from my soul, burst the bonds of sin, and save me, O thou who hast given birth unto the most Compassionate One." }
+        ]
+      },
+      "ode4": {
+        "irmos2": "He who sitteth in glory upon the throne of the Godhead, * Jesus the true God, * is come in a swift cloud * and with His sinless hands he hath saved those who cry: * Glory to Thy power, O Christ.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Resplendent in the rays of the Cross, O ever-blessed Metrodora, bound to a tree thou didst endure torture by fire, quenching the burning coal of deception with the dew of the love of Christ." },
+          { "canon": "secondCanon", "text": "Stretching forth thy thought towards the visions manifested to thee, and beholding thy Bridegroom of unimaginable comeliness, O ever-blessed Metrodora, beaten with iron rods thou didst valiantly endure the pangs of torture." },
+          { "canon": "secondCanon", "text": "Ye have adorned yourselves and been radiantly glorified, O virgins, wholly loving the most glorious Word: for wounded by His love, ye steadfastly endured the assaults of suffering." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Enliven me who have been slain by the malice of the deceiver, O all-immaculate one who hast given birth unto Life, for to thee have I fled; and as thou art merciful, O all-immaculate one, raise me up who have fallen into the abyss of sin." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "Thou, O Lord, who camest into the world, * art my light, * a holy light turning from the darkness of ignorance * those who sing Thy praises in faith.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Showing forth steadfast behavior and insurmountable intent before the tribunal, the martyrs plaited a crown of victory for themselves." },
+          { "canon": "secondCanon", "text": "Suspended, Nymphodora, who loveth the immortal Bridegroom, mightily endured laceration with iron claws." },
+          { "canon": "secondCanon", "text": "With hymns let the divinely wise virgins be praised, the thrice-radiant lamps, the house of three chambers, the habitations of the Trinity." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Acquiring thee alone as elect, comely and immaculate, the supremely divine Word became incarnate from thee, O divinely joyous one." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "The church crieth out unto Thee O Lord, * 'I will sacrifice unto Thee with a voice of praise' * having been cleansed of the blood of the demons' * by the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Desiring to behold Thine inconceivable beauty, O beginningless Word, they who are wounded with Thy most sweet love valiantly endured the cruelty of tortures." },
+          { "canon": "secondCanon", "text": "The most glorious maidens blossomed like lilies in a garden, and by the grace of the Spirit perfume the Church with the fragrance of their divers torments." },
+          { "canon": "secondCanon", "text": "Desiring the immortal Bridegroom alone, the virgin maidens manifestly vanquished visible death, strengthened by invisible power." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The holy Lord Who dwelt in thy womb found thee to be more holy and pure than all of creation, O Mother of God regal of name, O most pure Sovereign Lady." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "Of old the Children of Abraham in Babylon * trampled down the flame of the furnace, * crying aloud with hymns: * O God of our Fathers, blessed art Thou.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Ye spat upon the impious tyrant who commanded you to offer sacrifice to deaf idols, O maidens, crying aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Illumined in mind with divine rays, O all-praised ones, ye darkened the gloom of the idols, chanting: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "text": "Neither the severing of their limbs, nor persecution, nor tribulation were in any wise able to separate Christ from the martyrs, who cried aloud: O God of our fathers, Blessed art Thou!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "In a manner transcending nature, thou, O Virgin, wast deemed worthy to give birth through thy womb to the Creator Who fashioned mortals who chant with faith: Blessed art Thou, O God!" }
+        ]
+      },
+      "ode8": {
+        "irmos2": "O almighty Redeemer of all, * having descended and bedewed the children * in the midst of the flame, * Thou didst teach them to sing: * All ye works bless and hymn the Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Sharpened by the love of the Creator, ye dulled the stings of the serpents, having taken up manly struggles in your feminine bodies; wherefore ye have been crowned with heavenly wreaths." },
+          { "canon": "secondCanon", "text": "Locked together in the midst of the contest, the divinely wise maidens vanquished invisible and incorporeal foes with their flesh, crying aloud: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Strengthened by God the Savior, made powerful by Christ Jesus, ye destroyed the feeble might of the enemy, chanting: Bless the Lord, all ye works of the Lord!" },
+          { "canon": "secondCanon", "text": "Covered with the embroidery of the wounds of your torments and adorned with comeliness, O right wondrous maidens, ye have received the kingdom on high, reigning with Christ Jesus." },
+          { "canon": "secondCanon", "theotokion": true, "text": "As the undefiled dwelling place of God, thou didst receive Him incarnate, known in two natures, O Maiden. To Him do we chant: Bless the Lord, all ye works of the Lord!" }
+        ]
+      },
+      "ode9": {
+        "irmos2": "A cornerstone not cut by hand O Virgin, * was cut from thee the unhewn mountain: * even Christ, Who hath joined together the disparate natures; * therefore rejoicing we magnify thee, * O Theotokos.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Desiring to see the beauty of the Bridegroom, O God-bearers, as the ultimate gesture to Him ye received immortality in your mortal bodies. Wherefore, ye are worthily called blessed." },
+          { "canon": "secondCanon", "text": "O unblemished ewe-lambs, ye found yourselves among tormentors as among savage wolves; and overcoming their bestiality, ye offered yourselves to Christ as a right acceptable sacrifice." },
+          { "canon": "secondCanon", "text": "An unfading wreath of divine glory have ye woven together, O virgins, and as martyrs ye have been deemed worthy to receive the truly unshakable kingdom with the martyrs." },
+          { "canon": "secondCanon", "text": "O honored virgins, as ye have boldness before the Master, pray ye that those who keep your memory with love receive the glory of which ye have been deemed worthy and the exultation ye have received." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Take pity on me, O Christ, when Thou comest to judge the world with glory. Dispel the gloom of my passions, through the prayers of her who hath given birth to Thee and of Thine honored martyrs, in that Thou art good and greatly merciful." }
+        ]
+      }
+    }
+  }
+}

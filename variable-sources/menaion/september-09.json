@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "feast": "Holy & Righteous Ancestors of God, Joachim & Anna; Holy Martyr Severian",
+    "feastRank": "simple",
+    "tone": 2,
+    "_source": "St-Sergius Emenaion 09-09.pdf",
+    "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-09.pdf",
+    "_note": "Afterfeast of the Nativity of the Theotokos. Two-canon Matins: Canon I = Nativity-Theotokos (feast-canons/nativity-theotokos.json, John of Damascus Tone II); Canon II = the Righteous Joachim & Anna in Tone II (acrostic: In chastity I hymn thy parents, O all-pure one). Severian's canon (Tone VIII) is appointed at Compline and is not included here."
+  },
+  "feastTroparion": {
+    "tone": 4,
+    "text": "Thy nativity, O Theotokos and Virgin, hath proclaimed joy to all the universe; * for from thee hath risen the Sun of righteousness, Christ our God, * dissolving the curse, He hath given the blessing; * and abolishing death, He hath bestowed on us life eternal.",
+    "label": "Troparion of the feast (Nativity of the Theotokos)"
+  },
+  "troparion": {
+    "tone": 2,
+    "text": "Celebrating the memory of Thy righteous ones, * O Lord, through them we entreat Thee: ** Save Thou our souls!",
+    "label": "Troparion of the Righteous Ancestors of God"
+  },
+  "kontakion": {
+    "tone": 2,
+    "melody": "Seeking the highest",
+    "text": "Anna now rejoiceth, * having broken the bond of barrenness; * and she nurtureth the most pure one, * calling upon all to hymn the One Who through her womb ** hath given unto mankind the only Mother who knew not a man.",
+    "label": "Kontakion of the Righteous Ancestors of God"
+  },
+  "matins": {
+    "_meta": {
+      "tone": 2,
+      "joint": true,
+      "_source": "stSergius-menaion"
+    },
+    "sedalion": [
+      {
+        "tone": 3,
+        "melody": "Today the Virgin",
+        "label": "Sessional Hymn of the feast (after Kathisma 1)",
+        "text": "Today the Virgin, Mary the Theotokos, the indestructible bridal-chamber of the heavenly Bridegroom, is born of Anna, the barren woman, in accordance with God's will, being prepared as the chariot of the Word of God; for the Maiden was commanded from of old to become the Mother of Life.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      },
+      {
+        "tone": 4,
+        "melody": "Go thou quickly before",
+        "label": "Sessional Hymn of the feast (after Kathisma 2)",
+        "text": "O David, He Who anointed thee of old promised thee that the fruit of thy loins would be seated upon thy throne, hath given us Mary. For thou beholdest her sprung forth from Anna of the tribe of Judah, and thou dost rejoice, for Christ, the Savior of all, became incarnate of her, saving our race in His boundless goodness.",
+        "_note": "Glory ..., Both now ..., the foregoing is repeated."
+      }
+    ],
+    "sessionalHymns": {
+      "tone": 5,
+      "melody": "The co-beginningless Word",
+      "label": "Sessional Hymn of the feast (after Ode 3)",
+      "text": "Joachim and Anna rejoice, for they found grace with God as is meet and gave birth to a God-pleasing fruit, the temple, the pure Virgin Mother of God, who alone is blessed, and prayeth unceasingly that our souls be saved.",
+      "bothNow": {
+        "tone": 5,
+        "label": "Sessional Hymn of the feast",
+        "text": "Joachim and Anna rejoice, for they found grace with God as is meet and gave birth to a God-pleasing fruit, the temple, the pure Virgin Mother of God, who alone is blessed, and prayeth unceasingly that our souls be saved."
+      }
+    },
+    "exapostilarion": {
+      "melody": "Thou hast visited us",
+      "label": "Exapostilarion of the feast",
+      "text": "She who hath abolished the curse of Eve is now born of Anna and Joachim, barren and elderly. With the angels let us praise her in hymns as is meet, O ye faithful.",
+      "_note": "Glory ..., Both now ..., another Exapostilarion.",
+      "bothNow": {
+        "label": "Exapostilarion of the feast (Both now)",
+        "text": "Like sun from sun and moon from moon, the all-immaculate Maiden was born of Anna and Joachim, and in her radiance she hath illumined the ends of the world. Hymning her as is meet, we call her blessed, celebrating their honored memory."
+      }
+    },
+    "canon": {
+      "afterfeastOf": "nativity-theotokos",
+      "tone": 2,
+      "_author": "Canon of the Righteous Ancestors of God Joachim & Anna in Tone II (acrostic: In chastity I hymn thy parents, O all-pure one). Canon I (feast) from feast-canons/nativity-theotokos.json (John of Damascus Tone II).",
+      "kontakionAfterOde3": {
+        "tone": 2,
+        "melody": "Seeking the highest",
+        "text": "Anna now rejoiceth, * having broken the bond of barrenness; * and she nurtureth the most pure one, * calling upon all to hymn the One Who through her womb ** hath given unto mankind the only Mother who knew not a man.",
+        "label": "Kontakion of the Righteous Ancestors of God"
+      },
+      "kontakion": {
+        "tone": 4,
+        "text": "In thy holy nativity, O most pure one, * Joachim and Anna have been freed from the reproach of childlessness, * and Adam and Eve from mortal corruption. * And, delivered from the affliction of sin, * thy people celebrate it, crying out to thee: * A barren woman giveth birth to the Theotokos, ** the nurturer of our Life!",
+        "label": "Kontakion of the feast (Nativity of the Theotokos)"
+      },
+      "ikos": {
+        "text": "The supplication of Joachim over his childlessness, together with the sighing of Anna over her barrenness, were right acceptable to God: they entered the ears of the Lord and brought forth life-bearing fruit for the world. For the one made supplication on the mountain, and the other bore her reproach in the garden; and with joy the barren woman giveth birth to the Theotokos, the nurturer of our Life."
+      },
+      "ode1": {
+        "irmos2": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army. * But the Incarnate Word annihilated pernicious sin. * Exceedingly glorious is the Lord, * for gloriously hath He been glorified.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Shining with the splendors of the virtues, O divinely wise Anna and ever-blessed Joachim, ye were deemed worthy to give birth to the lamp which emitted the noetic Sun, Who shone forth from her in the flesh." },
+          { "canon": "secondCanon", "text": "Praying tirelessly and looking to God in every way, the God-pleasing Joachim and the divine Anna truly gave birth to the most pure Theotokos, who is far greater than all creation in holiness." },
+          { "canon": "secondCanon", "text": "Possessed of a most exalted life and splendor of life, together ye surpassed all the parents of earth, giving birth to the incorrupt Virgin, and truly becoming ancestor of God because of her." },
+          { "canon": "secondCanon", "theotokion": true, "text": "The exceedingly blessed Joachim and glorious Anna, the authors of all creation, gave birth to the immaculate and most pure Theotokos, receiving her as the reward for their piety." }
+        ]
+      },
+      "ode3": {
+        "irmos2": "Thou hast established me on the rock of faith, * and my mouth hath been emboldened against mine enemies. * For my spirit rejoiceth when I sing: * There is none as holy as our God * and none more righteous than Thee, O Lord.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O God-pleasing Anna, who wast barren and bereft of children, and who besoughtest the Creator with tears, thou wast deemed worthy to give birth to the only blessed one, crying aloud: There is none as holy as Thee, O Lord!" },
+          { "canon": "secondCanon", "text": "The godly and divinely eloquent Joachim, having enriched his spouse with divine grace, was deemed worthy to beget the mediatress of mankind's salvation, to whom we cry aloud: There is none more immaculate than thee, O Lady!" },
+          { "canon": "secondCanon", "text": "We hymn the most honored couple from whom the Virgin hath shone forth upon us, who is more exalted than all creatures, in that she gave birth to God, to Whom we cry aloud: There is none more holy than Thee, O Lord!" },
+          { "canon": "secondCanon", "theotokion": true, "text": "Escaping the reproach of barrenness, Anna gave birth to the Theotokos who hath most gloriously abolished the reproach of Eve; and to her do we cry: There is none more immaculate than thee, O Lady!" }
+        ]
+      },
+      "ode4": {
+        "irmos2": "From a Virgin didst Thou come forth, not as an ambassador, * nor as an Angel, * but the very Lord himself incarnate, * and didst save me, the whole man; * wherefore I cry unto Thee: * Glory to Thy power, O Lord!",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Rejoicing, the divinely wise and God-pleasing Joachim receiveth from the barren one the virginal Virgin for whose sake the barrenness of the world hath been abolished through birthgiving." },
+          { "canon": "secondCanon", "text": "Joachim the most noetically rich ancestor of God, now setteth before us a spiritual banquet, for he hath begotten the Mother of God, the all-incorrupt Maiden." },
+          { "canon": "secondCanon", "text": "Grace setteth before us her who would become the Mother of God, who hath saved mankind from mortality and corruption and received the ineffably incarnate eternal Word." },
+          { "canon": "secondCanon", "text": "A couple hath sprung forth from the root of Jesse, from whom hath sprung forth the staff bearing the Flower which perfumeth me, the whole man, with the myrrh of divinity." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Direct my life, O Theotokos, guiding me with the divine precepts of the Word Who became incarnate from thee; and lead me to the Light, O Virgin Mother, Mary Bride of God." }
+        ]
+      },
+      "ode5": {
+        "irmos2": "O Christ my Savior, the enlightenment of those lying in the darkness of sin, * I rise early to hymn Thee, O King of Peace, * enlighten me with Thy radiance, * for I know no other God than Thee.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Anna and the God-pleasing Joachim, the chaste couple, shining forth a ray of purity which hath adorned barren human nature with the divine radiance of virginity, have given birth unto her for us." },
+          { "canon": "secondCanon", "text": "The all-praised Anna and Joachim, the two honored chaste ones, the divinely wise couple, have given birth to the divinely adorned throne of the Virgin, who hath been elevated above all by the hand of God." },
+          { "canon": "secondCanon", "text": "The divine God-seers Joachim and Anna, who lived in a divinely wise manner, have been deemed worthy to give birth to the luminous portal who revealed the Orient from on high, for the guidance of the lost." },
+          { "canon": "secondCanon", "text": "The Almighty hath with His hand now cut from the stone of the barren woman the divinely inscribed tablet of the new law, whereon the divine Word first formed the remission of the sins of the old law." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Give thou the command, O Virgin Mother of God, that my mind, which is darkened by sin, may be illumined with thy radiance, destroying the darkness of ignorance and transgressions; for I know none other protector than thee." }
+        ]
+      },
+      "ode6": {
+        "irmos2": "Whirled about in the abyss of sin, * I appeal to the unfathomable abyss of Thy compassion: * Raise me up from corruption, O God.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "Anna, the barren woman of old, having received fertile seed, was deemed worthy to give birth to a Maiden of divine radiance who hath dominion over all creatures." },
+          { "canon": "secondCanon", "text": "The barren woman, hath now given birth by God's will to the Virgin Who would with submission give birth untainted by carnal will, as God Himself manifestly desired." },
+          { "canon": "secondCanon", "text": "Illumined by the Spirit, Isaiah beheld the offspring of Joachim and Anna as a new scroll, whereon the incarnate Word was written." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Mystery followeth mystery! For she who before was barren hath given birth to grace: the mediatress of salvation who hath been revealed to us by the birth of virginity." }
+        ]
+      },
+      "ode7": {
+        "irmos2": "The godless order of the lawless tyrant * fanned the roaring flame; * but Christ bedewed the God-fearing children with the Spirit, * therefore He is blessed and supremely exalted.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O holy couple who put forth from the root of the divinely wise David a most sacred staff, unto the world ye have given birth to the pure Virgin, the flower most sacred to us, who shone forth Christ without seed." },
+          { "canon": "secondCanon", "text": "The godly Anna, bearing the most radiant lamp of the Theotokos like a lustrous lampstand, hath illumined the whole world with divine light and the radiant effulgence of virginity." },
+          { "canon": "secondCanon", "text": "O glorious grandparents of Almighty God, Who in His ineffable mercy became incarnate of your divinely wise daughter, O ye who art most noetically rich, ask remission of offenses for me who now flee unto you." },
+          { "canon": "secondCanon", "theotokion": true, "text": "In that ye are greater than all parents, ye gave birth to her who hath dominion over all creatures, the most pure Mary who gave birth to God, Who in His great compassion robed Himself in flesh and became like unto us." }
+        ]
+      },
+      "ode8": {
+        "irmos2": "God Who descended into the fiery furnace * with the Hebrew children, * and transformed the flame into dew, * do ye works hymn, * and supremely exalt as Lord throughout all ages.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "The honored Joachim and the chaste Anna, overflowing with riches, gave birth to the Virgin Queen, who is adorned with divine glory, and whom all creation doth hymn as the Theotokos." },
+          { "canon": "secondCanon", "text": "By you, the friends of God, hath a staff of power been sent to us: the all-immaculate Bride, through whom we prevail over the godless foe, trampling upon their devices." },
+          { "canon": "secondCanon", "text": "Through you, O most sacred twain, a weapon hath been given to us by the will of God, whereby we, the faithful, are now ever splendidly adorned: the pure Virgin Mother Who gave birth to God." },
+          { "canon": "secondCanon", "text": "The power of God opened a barren womb with fertility, and the portal of virginity came forth in splendor, through whom the Word cometh to mortals, Him Who became incarnate at the ineffable words of the archangel." },
+          { "canon": "secondCanon", "theotokion": true, "text": "O most immaculate Lady, may thine excellent and enlightened parents be for us the mediation of heavenly blessings through the splendors of Him Who for our sake became incarnate from thee." }
+        ]
+      },
+      "ode9": {
+        "irmos2": "The Son of the Beginningless Father, God and Lord, * hath appeared to us incarnate of a Virgin, * to enlighten those in darkness, * and to gather the dispersed; * therefore the all-hymned Theotokos do we magnify.",
+        "troparia": [
+          { "canon": "secondCanon", "text": "O honored parents of the most pure Virgin, most sacred ones who through virtue have been united in wisdom and in soul, pray ye that those who ardently celebrate your all-praised and glorious memory may be saved." },
+          { "canon": "secondCanon", "text": "Ye have destroyed the field of death, O glorious ones, radiantly giving birth to the Mother of Life who hath broken death's assault and mediated the hope of immortal life for the sake of faith." },
+          { "canon": "secondCanon", "text": "Joachim, entering into conjunction with Anna, like the sun with the luminous moon, gave rise to a ray of virginity, through whom the Ray of the divine Essence hath shone forth upon us united hypostatically to the flesh." },
+          { "canon": "secondCanon", "theotokion": true, "text": "Having lived in chastity and piety, O blessed ones, ye have now been deemed worthy of ineffable sweetness, having received the divine revelation of Him Who through you appeared to the world. Entreat Him, that our souls be saved." }
+        ]
+      }
+    }
+  }
+}

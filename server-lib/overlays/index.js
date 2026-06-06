@@ -1,0 +1,15 @@
+'use strict';
+
+// Public surface of the translation-overlay subsystem. server.js should
+// import from here rather than reaching into individual modules.
+
+module.exports = {
+  ...require('./registry'),
+  ...require('./manifest'),
+  ...require('./extends-chain'),
+  ...require('./drift'),
+  ...require('./cascade'),
+  ...require('./rubrics'),
+  ...require('./diff'),
+  ...require('./provenance'),
+};

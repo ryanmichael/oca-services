@@ -2,13 +2,13 @@
 
 Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md §6`](./ASSESSMENT.md); this doc is the "where are we right now" glance — kept short on purpose.
 
-**Last updated:** 2026-06-06 (Phase 3D shipped)
+**Last updated:** 2026-06-06 (Phase 3 COMPLETE)
 
 ---
 
 ## Current focus
 
-**Phase 2 — Modularize COMPLETE.** All 6 phases (A–F) shipped. `assembler.js` is a **12-line facade** (down from 5,665 — **−99.8%**) re-exporting from `assemblers/index.js`. 12 top-level assemblers + 65+ section helpers across 36 files. The codebase is structurally ready to add per-jurisdiction variants (Greek / Antiochian) as sibling files — the Phase 2 trigger condition from `ASSESSMENT.md §3`.
+**Phase 2 + Phase 3 — Modularize COMPLETE.** All 12 phases (Phase 2 A–F + Phase 3 A–F) shipped. `assembler.js` is a 12-line facade (5,665 → 12 lines, −99.8%); `server.js` is a 22-line facade (5,375 → 22 lines, −99.6%). Repo is structurally ready for per-jurisdiction variants AND for routing/cache/translation changes that previously had to land inside a 5K-line `handleRequest`.
 
 **Audit triage shipped 2026-06-05** (`821d3ec`). 25 high-sev findings → 9 real Sunday-Matins coverage gaps. Fixed at source: getEothinon Triodion/Pentecostarion suspension, 2 YY→TT data fixes, M2 audit rule false-positive. Suppressed 8 as documented knownFailures (Pascha, feast-overrides, plural-object false positive). See [[reference-audit-triage-2026-06-05]] for the remaining gap list + recommended fix path.
 
@@ -42,13 +42,13 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] PR1: `assemblers/presanctified.js` — assemblePresanctified + 7 `_ps*` helpers; snapshot 42/42 first try
   - [x] PR2: `assemblers/vesperal-liturgy.js` — no own helpers, just composition; snapshot 42/42 first try
   - [x] PR3: `assemblers/index.js` (28 lines) re-exports the 12 + `resolveSource`; `assembler.js` → 12-line facade; all 4 external callers (server.js, render.js, test-matins.js, test-assembly.js) keep working unchanged
-- [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/` — **Phase 3 IN PROGRESS** ([sketch](./docs/refactor-server.md), 6 phases A–F)
+- [x] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`, `assemble/`, `render/`, `boot/` — **Phase 3 COMPLETE** ([sketch](./docs/refactor-server.md), 6 phases A–F)
   - [x] Phase A — `server-lib/_shared/` (loadJSON, html, parse-query, serve-static); 9954ad9; snapshot 42/42 first try; server.js 5,375 → 5,342
   - [x] Phase B — `server-lib/overlays/` (8 files: registry/manifest/extends-chain/drift/cascade/rubrics/diff/provenance); 598a812; snapshot 42/42; server.js 5,342 → 4,962 (−380)
   - [x] Phase C — `server-lib/sources/` (9 files) + `server-lib/cache/` (2 files); matins-spec kept whole; sources param threaded through buildMatinsSpec; 22a5c61; snapshot 42/42; server.js 4,962 → 3,125 (−1,837)
   - [x] Phase D — `server-lib/assemble/` (pronouns + day-label + for-date) + `server-lib/render/` (home + error + service + dashboard); 2bcbb01; snapshot 42/42; server.js 3,125 → 2,114 (−1,011)
-  - [ ] Phase E — `server-lib/routes/` + `router.js` (2–3 batched PRs)
-  - [ ] Phase F — collapse `server.js` to 7-line facade
+  - [x] Phase E — `server-lib/routes/` (27 endpoint files + dispatcher); ctx-pass model; 2453754; snapshot 42/42 + 12/12 non-snapshot endpoints byte-match; server.js 2,114 → 268 (−1,846)
+  - [x] Phase F — `server-lib/boot/load-fixed.js` bundles the 134-line boot block into `boot()`; `server-lib/index.js` public surface; 75c5bc3; snapshot 42/42 + 12/12 endpoints; server.js 268 → 22 (−246, **5,375 → 22 total, −99.6%**)
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
 
 ## Weeks 4–7 (parallel) — Old-Style calendar variant

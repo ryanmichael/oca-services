@@ -42,7 +42,13 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] PR1: `assemblers/presanctified.js` — assemblePresanctified + 7 `_ps*` helpers; snapshot 42/42 first try
   - [x] PR2: `assemblers/vesperal-liturgy.js` — no own helpers, just composition; snapshot 42/42 first try
   - [x] PR3: `assemblers/index.js` (28 lines) re-exports the 12 + `resolveSource`; `assembler.js` → 12-line facade; all 4 external callers (server.js, render.js, test-matins.js, test-assembly.js) keep working unchanged
-- [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/`
+- [ ] Split `server.js` into `routes/`, `overlays/`, `sources/`, `cache/` — **Phase 3 IN PROGRESS** ([sketch](./docs/refactor-server.md), 6 phases A–F)
+  - [x] Phase A — `server-lib/_shared/` (loadJSON, html, parse-query, serve-static); 9954ad9; snapshot 42/42 first try; server.js 5,375 → 5,342
+  - [ ] Phase B — `server-lib/overlays/` (~395 lines, translation cascade + manifest validation + drift detection)
+  - [ ] Phase C — `server-lib/sources/` + `server-lib/cache/` (matins-spec moves whole; orthocal + sqlite)
+  - [ ] Phase D — `server-lib/assemble/` + `server-lib/render/`
+  - [ ] Phase E — `server-lib/routes/` + `router.js` (2–3 batched PRs)
+  - [ ] Phase F — collapse `server.js` to 7-line facade
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)
 
 ## Weeks 4–7 (parallel) — Old-Style calendar variant

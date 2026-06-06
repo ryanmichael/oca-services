@@ -24,5 +24,6 @@ module.exports = {
   assembleBridegroomMatins: require('./bridegroom-matins'),
   assemblePassionGospels:   require('./passion-gospels'),
   assembleLamentations:     require('./lamentations'),
+  assembleTypika:           require('./typika'),
   resolveSource,
 };

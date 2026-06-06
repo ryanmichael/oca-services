@@ -277,6 +277,23 @@ header,
 .panel-translation[hidden] { display: none; }
 .panel-translation .pt-label { color: var(--muted); }
 .panel-translation .pt-name  { color: var(--rubric); margin-left: 6px; font-style: normal; }
+.panel-service-mode {
+  margin-top: 6px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.panel-service-mode[hidden] { display: none; }
+.panel-service-mode .sm-label { color: var(--muted); margin-right: 8px; }
+.panel-service-mode .sm-link {
+  color: var(--muted); text-decoration: none; cursor: pointer;
+  border-bottom: 1px dotted var(--muted);
+  margin-right: 10px;
+}
+.panel-service-mode .sm-link:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
+.panel-service-mode .sm-link.active {
+  color: var(--rubric); border-bottom-color: var(--rubric); cursor: default;
+}
 /* Panel detail toggle */
 .panel-detail-toggle {
   display: flex; align-items: center; gap: 8px;

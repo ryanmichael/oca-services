@@ -86,6 +86,39 @@ function styleParam() {
   return activeStyle ? `&style=${encodeURIComponent(activeStyle)}` : '';
 }
 
+/** Renders the Liturgy ⇄ Reader's Typika ⇄ Typika+CRG mode switcher, shown
+ *  in the panel header next to the translation indicator. Visible only when
+ *  the active service is one of those three; clicking a link re-opens the
+ *  panel as the other mode. */
+function updateServiceModeSwitcher(date, svcType) {
+  const el = document.getElementById('p-service-mode');
+  if (!el) return;
+  const modes = ['liturgy', 'typika', 'typikaCrg'];
+  if (!modes.includes(svcType)) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+  const link = (key, label) => {
+    const active = key === svcType ? ' active' : '';
+    return `<a class="sm-link${active}" data-svc="${key}" data-date="${date}">${label}</a>`;
+  };
+  el.innerHTML =
+    `<span class="sm-label">Serve as:</span>` +
+    link('liturgy',   'Divine Liturgy') +
+    link('typika',    "Reader's Typika") +
+    link('typikaCrg', 'Typika + Communion of Reserved Gifts');
+  el.hidden = false;
+  el.querySelectorAll('.sm-link:not(.active)').forEach(a => {
+    a.addEventListener('click', () => {
+      const newSvc = a.dataset.svc;
+      const d = a.dataset.date;
+      setUrlState(d, newSvc);
+      _showPanel(activeRow, d, newSvc);
+    });
+  });
+}
+
 /** Shows or hides the translation indicator beneath the service date.
  *  Called after each service load with the response's `translation` field.
  *  Fetches /api/translations on first call to resolve the friendly name. */
@@ -127,9 +160,12 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'paschaCollection'  ? '/api/pascha-collection'
                  : svcType === 'kneelingVespers'   ? '/api/kneeling-vespers'
                  : svcType === 'matins'            ? '/api/matins'
+                 : svcType === 'typika'            ? '/api/typika'
+                 : svcType === 'typikaCrg'         ? '/api/typika?as=typika-crg'
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
-  const res = await fetch(`${endpoint}?date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`);
+  const joiner = endpoint.includes('?') ? '&' : '?';
+  const res = await fetch(`${endpoint}${joiner}date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`);
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`${endpoint} failed: ${res.status}`);
@@ -316,6 +352,8 @@ async function _showPanel(rowEl, date, svcType) {
                  : svcType === 'paschaCollection' ? 'HOLY PASCHA COLLECTION'
                  : svcType === 'kneelingVespers'  ? 'KNEELING VESPERS OF PENTECOST'
                  : svcType === 'matins'          ? 'MATINS'
+                 : svcType === 'typika'          ? "READER'S TYPIKA"
+                 : svcType === 'typikaCrg'       ? "READER'S TYPIKA WITH COMMUNION OF THE RESERVED GIFTS"
                  : 'GREAT VESPERS';
   document.getElementById('p-svc').textContent = svcLabel;
   document.getElementById('print-header-svc').textContent = svcLabel;
@@ -372,6 +410,7 @@ async function loadPanelContent(date, svcType) {
     // Resolves the friendly name from the cached /api/translations list (fetched
     // lazily so it doesn't block the first paint).
     updateTranslationIndicator(data.translation);
+    updateServiceModeSwitcher(date, svcType);
 
     // Populate saints list; auto-expand detail section when there are commemorations
     const comms    = data.commemorations || [];

@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "service": "typika",
+    "description": "Reader's Typika (изобразительная) and Reader's Typika with Communion of Reserved Gifts. Served on Sundays and feasts when Divine Liturgy cannot be celebrated — by a reader alone (variant: 'reader') or with a deacon administering Communion from the previously consecrated reserved Gifts (variant: 'crg'). This document is a human-readable contract for the runtime assembler at assemblers/typika.js; the assembler is the source of truth at request time.",
+    "source": "Holy Trinity Monastery (Jordanville) booklet — Reader's Service with Communion of the Reserved Holy Gifts",
+    "version": "0.1.0"
+  },
+
+  "variants": {
+    "reader": "Reader's Typika without Communion. Reader leads throughout; no clergy required.",
+    "crg":    "Typika with Communion of Reserved Gifts. Deacon present; deacon reads the Gospel, administers Communion from the reserved Eucharist, and says deacon's parts. Reader leads non-clergy parts."
+  },
+
+  "calendar_resolution": "Variable blocks (troparia, kontakia, prokeimenon, Apostle, alleluia, Gospel, communion verse) come from calendarDay.liturgy, the same spec consumed by assembleLiturgy. Typika reuses the existing buildLiturgyFromOrthocal path; the only divergence from Liturgy is the order/inclusion of fixed blocks and the deacon→reader speaker swaps in the 'reader' variant.",
+
+  "sections": [
+    {
+      "id": "opening",
+      "label": "Opening",
+      "blocks": [
+        { "id": "opening-prayers",      "type": "fixed", "speaker": "reader", "textKey": "typika:opening.prayersOfHolyFathers" },
+        { "id": "heavenly-king",        "type": "fixed", "speaker": "reader", "textKey": "liturgy:prayers.heavenlyKing",
+          "note": "Replaced by 'Christ is risen' ×3 in Paschal season (Pascha to Ascension). Out of scope for v0." },
+        { "id": "trisagion-sequence",   "type": "fixed", "speaker": "reader", "textKey": "liturgy:prayers.trisagion" },
+        { "id": "come-let-us-worship",  "type": "fixed", "speaker": "reader", "textKey": "typika:opening.comeLetUsWorship" }
+      ]
+    },
+
+    {
+      "id": "first-antiphon",
+      "label": "First Antiphon (Psalm 102)",
+      "blocks": [
+        { "id": "antiphon-1", "type": "fixed", "speaker": "choir", "textKey": "liturgy:antiphons.typical.first" }
+      ]
+    },
+    {
+      "id": "second-antiphon",
+      "label": "Second Antiphon (Psalm 145)",
+      "blocks": [
+        { "id": "antiphon-2",       "type": "fixed", "speaker": "choir", "textKey": "liturgy:antiphons.typical.second" },
+        { "id": "only-begotten",    "type": "fixed", "speaker": "choir", "textKey": "liturgy:only-begotten-son" }
+      ]
+    },
+
+    {
+      "id": "beatitudes",
+      "label": "The Beatitudes",
+      "note": "Each Beatitude verse is followed by the refrain 'In Thy Kingdom remember us, O Lord...'. At the end, Glory + Both now, each with the same refrain. THIS IS THE TYPIKA REFRAIN, distinct from the canon-derived Beatitudes troparia used in Liturgy.",
+      "blocks": [
+        { "id": "beatitudes-verses", "type": "fixed", "speaker": "choir", "textKey": "liturgy:beatitudes.verses",
+          "render": "Interleave each verse with the 'In Thy Kingdom' refrain." },
+        { "id": "beatitudes-glory",  "type": "fixed", "speaker": "reader", "textKey": "typika:beatitudeRefrains.glory" },
+        { "id": "beatitudes-bothnow","type": "fixed", "speaker": "reader", "textKey": "typika:beatitudeRefrains.bothNow" },
+        { "id": "beatitudes-refrain-final", "type": "fixed", "speaker": "reader", "textKey": "typika:beatitudeRefrains.inThyKingdom" }
+      ]
+    },
+
+    {
+      "id": "troparia-kontakia",
+      "label": "Troparia and Kontakia",
+      "blocks": [
+        { "id": "troparia", "type": "variable", "resolvedBy": "spec.troparia",
+          "note": "Sunday Resurrection troparion + temple troparion + saint troparion(s) as appointed by calendar." },
+        { "id": "kontakia", "type": "variable", "resolvedBy": "spec.kontakia" }
+      ]
+    },
+
+    {
+      "id": "trisagion-pre-readings",
+      "label": "The Trisagion (before the readings)",
+      "blocks": [
+        { "id": "trisagion-hymn", "type": "variable", "resolvedBy": "spec.trisagion",
+          "note": "Normally 'Holy God, Holy Mighty, Holy Immortal, have mercy on us' thrice. Substituted on certain feasts: Paschal season + Theophany/Nativity vigils → 'As many as have been baptized'; Cross feasts → 'Before Thy Cross'. Substitutions handled by spec.trisagion from calendar." }
+      ]
+    },
+
+    {
+      "id": "prokeimenon",
+      "label": "Prokeimenon",
+      "blocks": [
+        { "id": "prokeimenon", "type": "variable", "resolvedBy": "spec.prokeimenon" }
+      ]
+    },
+    {
+      "id": "apostle",
+      "label": "The Apostle",
+      "blocks": [
+        { "id": "epistle", "type": "variable", "resolvedBy": "spec.epistle",
+          "note": "Read by the reader. Deacon's framing ('Wisdom! / Let us attend!') is preserved in CRG variant (deacon present); in plain Reader variant, the framing rubric is read by the reader."
+        }
+      ]
+    },
+    {
+      "id": "alleluia",
+      "label": "Alleluia",
+      "blocks": [
+        { "id": "alleluia", "type": "variable", "resolvedBy": "spec.alleluia" }
+      ]
+    },
+    {
+      "id": "gospel",
+      "label": "The Holy Gospel",
+      "blocks": [
+        { "id": "gospel", "type": "variable", "resolvedBy": "spec.gospel",
+          "note": "In CRG variant, read by the deacon. In Reader variant, read by the reader." }
+      ]
+    },
+
+    {
+      "id": "after-gospel",
+      "label": "After the Gospel",
+      "blocks": [
+        { "id": "lhm40",              "type": "fixed", "speaker": "all",    "textKey": "typika:afterGospel.lordHaveMercy40" },
+        { "id": "after-gospel-glory", "type": "fixed", "speaker": "reader", "textKey": "typika:afterGospel.glory" },
+        { "id": "more-honorable",     "type": "fixed", "speaker": "reader", "textKey": "typika:afterGospel.moreHonorable" },
+        { "id": "most-holy-trinity",  "type": "fixed", "speaker": "reader", "textKey": "typika:afterGospel.mostHolyTrinity" }
+      ]
+    },
+
+    {
+      "id": "creed",
+      "label": "The Creed",
+      "note": "The Symbol of Faith. Said by all.",
+      "blocks": [
+        { "id": "creed", "type": "fixed", "speaker": "all", "textKey": "liturgy:creed" }
+      ]
+    },
+
+    {
+      "id": "lords-prayer",
+      "label": "The Lord's Prayer",
+      "blocks": [
+        { "id": "our-father", "type": "fixed", "speaker": "all", "textKey": "liturgy:prayers.ourFather" }
+      ]
+    },
+
+    {
+      "id": "communion-of-reserved-gifts",
+      "label": "Communion of the Reserved Gifts",
+      "appliesIf": "variant === 'crg'",
+      "note": "ONLY emitted when the variant is 'crg'. Spliced between Lord's Prayer and the closing 'Blessed be the Name'. Deacon administers from the tabernacle.",
+      "blocks": [
+        { "id": "crg-deacon-bidding",     "type": "fixed", "speaker": "deacon", "textKey": "typika:communionReserved.deaconOpening" },
+        { "id": "crg-choir-response",     "type": "fixed", "speaker": "choir",  "textKey": "typika:communionReserved.choirResponse" },
+        { "id": "crg-pre-communion",      "type": "fixed", "speaker": "reader", "textKey": "liturgy:pre-communion-prayer",
+          "note": "I believe O Lord and I confess... — reused from liturgy-fixed." },
+        { "id": "crg-deacon-communion",   "type": "fixed", "speaker": "deacon", "textKey": "typika:communionReserved.deaconCommunionBidding" },
+        { "id": "crg-communion-hymn",     "type": "variable", "resolvedBy": "spec.communionHymn",
+          "note": "Koinonikon of the day. Sung during distribution." },
+        { "id": "crg-thanksgiving",       "type": "fixed", "speaker": "choir",  "textKey": "typika:communionReserved.postCommunionThanksgiving",
+          "note": "We have seen the True Light... — reused from liturgy-fixed if available there." }
+      ]
+    },
+
+    {
+      "id": "closing",
+      "label": "Closing",
+      "blocks": [
+        { "id": "blessed-name",      "type": "fixed", "speaker": "reader", "textKey": "typika:closing.blessedBeTheName" },
+        { "id": "psalm-33",          "type": "fixed", "speaker": "reader", "textKey": "liturgy:psalm-33" },
+        { "id": "reader-dismissal",  "type": "fixed", "speaker": "reader", "textKey": "typika:closing.readerDismissal" }
+      ]
+    }
+  ]
+}

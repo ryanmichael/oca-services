@@ -1,0 +1,110 @@
+{
+  "_meta": {
+    "service": "typika",
+    "description": "Typika and Communion of Reserved Gifts — fixed (invariable) prayer texts. Sibling to liturgy-fixed.json; only holds Typika-specific content not already present there.",
+    "tradition": "OCA / ROCOR (Reader's Service)",
+    "_source": "Holy Trinity Monastery (Jordanville) booklet for Reader's Service / Typika with Communion of the Reserved Holy Gifts",
+    "_convention": "tt-pronouns",
+    "_note": "Speakers are assigned by the structure file (service-structure/typika.json), not stored here, matching the convention in vespers-fixed.json / liturgy-fixed.json / presanctified-fixed.json. References to overlapping content already in liturgy-fixed.json are noted as _crossRef.",
+    "version": "0.1.0"
+  },
+
+  "opening": {
+    "_note": "Reader's opening sequence for Typika (no priestly exclamation 'Blessed is our God…' when no priest serves).",
+    "prayersOfHolyFathers": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us. Amen.",
+    "glory": "Glory to Thee, our God, glory to Thee.",
+    "_crossRef-heavenlyKing": "prayers.heavenlyKing in liturgy-fixed (or vespers-fixed.prayers.heavenlyKing)",
+    "_crossRef-trisagionSequence": "trisagion + prayers.mostHolyTrinity + lords-prayer in liturgy-fixed",
+    "comeLetUsWorship": "O come, let us worship God our King.\nO come, let us worship and fall down before Christ, our King and our God.\nO come, let us worship and fall down before Christ Himself, our King and our God."
+  },
+
+  "beatitudeRefrains": {
+    "_note": "Short reader's refrains interspersed with the Beatitudes themselves (beatitudes.verses in liturgy-fixed). The structure file controls the interleaving: each Beatitude verse is followed by 'In Thy Kingdom remember us…'; at the end, Glory then Both now are each followed by the same refrain. Distinct from the longer canon-derived 'beatitudes-troparia' sung at Divine Liturgy.",
+    "_source": "HTM / Jordanville Reader's Service booklet pattern",
+    "_crossRef-beatitudeVerses": "beatitudes.verses in liturgy-fixed",
+    "inThyKingdom": "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.",
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+    "bothNow": "Both now and ever, and unto the ages of ages. Amen."
+  },
+
+  "creedIntroduction": {
+    "_note": "In the Reader's Service the Creed is read in full (without the priest's Kiss-of-Peace dialogue). The Creed text itself is creed in liturgy-fixed.",
+    "_crossRef-creed": "creed in liturgy-fixed"
+  },
+
+  "afterCreed": {
+    "_note": "After the Creed the reader continues with 'Remit, pardon…' (a penitential prayer used at Compline / Typika) before the Lord's Prayer.",
+    "remitPardon": "Remit, pardon, forgive, O God, our offenses, both voluntary and involuntary, in deed and word, in knowledge and ignorance, by day and by night, in mind and thought; forgive us all, for Thou art good and the Lover of mankind.",
+    "_crossRef-ourFather": "lords-prayer.text in liturgy-fixed (Reader says it; no priestly doxology 'For Thine is the Kingdom…' is added in the reader form — instead 'Through the prayers of our holy fathers…')",
+    "doxologyByReader": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us. Amen."
+  },
+
+  "afterGospel": {
+    "_note": "Block following the Apostle and Gospel readings in Reader's Typika. The Gospel is read by the reader (without the censings or 'Wisdom, attend!' dialogue of the priestly form).",
+    "lordHaveMercy40": "Lord, have mercy. (×40)",
+    "gloryBothNow": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "moreHonorable": "More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, who without corruption gavest birth to God the Word, the very Theotokos, thee do we magnify.",
+    "prayersOfHolyFathers": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us. Amen.",
+    "mostHolyTrinity": {
+      "_note": "Typika-specific 'Prayer of the Most Holy Trinity' — distinct from the short Trisagion-sequence 'O Most Holy Trinity, have mercy on us' in vespers-fixed.prayers.mostHolyTrinity. This is the longer reader's prayer that closes the after-Gospel section in HTM / Jordanville booklet. PROVISIONAL — wording verified against ROCOR-EAD typesetting of the Holy Trinity Monastery booklet; minor punctuation may vary from a parish-specific reprint.",
+      "_source": "Holy Trinity Monastery, Jordanville — Reader's Service booklet (PROVISIONAL)",
+      "_status": "PROVISIONAL",
+      "text": "O Most Holy Trinity, the consubstantial Might, the indivisible Kingdom, the Cause of all good things: be Thou well-pleased even toward me, a sinner. Establish and instruct my heart, and take away from me every defilement. Enlighten my mind, that I may glorify, hymn, worship, and say at all times: One is Holy, One is Lord, Jesus Christ, to the glory of God the Father. Amen."
+    }
+  },
+
+  "closing": {
+    "_note": "Closing sequence: Blessed be the Name, Psalm 33, reader's dismissal. Psalm 33 itself is in liturgy-fixed (psalm-33).",
+    "blessedBeTheName": {
+      "text": "Blessed be the Name of the Lord, henceforth and for evermore.",
+      "repetitions": 3
+    },
+    "_crossRef-psalm33": "psalm-33 in liturgy-fixed",
+    "gloryToTheeOChrist": "Glory to Thee, O Christ God our Hope, glory to Thee.",
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto the ages of ages. Amen.",
+    "lordHaveMercyThrice": "Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.",
+    "readerDismissal": {
+      "_note": "Closing dismissal said by the reader in the absence of a priest. The variable saint-commemorations of a priestly dismissal are omitted in the reader form; only the closing 'Through the prayers…' is used.",
+      "text": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen."
+    }
+  },
+
+  "communionReserved": {
+    "_note": "Communion of the Reserved Holy Gifts spliced into the Reader's Service BEFORE the closing block, when the parish has reserved Gifts and a deacon (or a layman acting as reader, with no consecration). All consecration prayers are omitted; only the approach, communion, and thanksgiving are kept. PROVISIONAL on the exact deacon-bidding wording — HTM booklet not directly inspected; conformed to common ROCOR/Antiochian Reserved-Gifts booklet pattern.",
+    "_source": "Holy Trinity Monastery, Jordanville — Reader's Service with Communion of the Reserved Holy Gifts (PROVISIONAL)",
+    "_status": "PROVISIONAL",
+
+    "_crossRef-preCommunionPrayer": "pre-communion.prayer-chrysostom in liturgy-fixed (the reader reads the 'I believe, O Lord, and I confess…' prayer aloud for all communicants)",
+
+    "elevationOmitted": {
+      "_note": "The priestly 'The holy Things are for the holy!' elevation is OMITTED when there is no priest — the Gifts are already consecrated and are not lifted. Structure file should not reference pre-communion.elevation here."
+    },
+
+    "drawNear": {
+      "_note": "Said by the deacon (or by the reader if no deacon serves) immediately before approaching the chalice.",
+      "text": "With the fear of God, with faith and with love, draw near."
+    },
+
+    "choirResponse": "Blessed is He that cometh in the Name of the Lord; God is the Lord, and hath appeared unto us.",
+
+    "approachFormula": {
+      "_note": "Said by each communicant approaching the chalice. Identical to the pre-communion prayer in liturgy-fixed.pre-communion.prayer-chrysostom (first paragraph). The structure file may simply reference that key.",
+      "_crossRef": "pre-communion.prayer-chrysostom in liturgy-fixed (first paragraph)"
+    },
+
+    "deaconCommunionBidding": {
+      "_note": "Spoken by the deacon (or, lacking a deacon, the communion is given by a reader/layman following the strict ROCOR rubric, with NO bidding formula spoken — only silent reception). PROVISIONAL wording when a deacon serves.",
+      "_status": "PROVISIONAL",
+      "text": "The servant of God (N.) partaketh of the precious and most holy Body and Blood of our Lord and God and Savior Jesus Christ, for the remission of sins and unto life everlasting."
+    },
+
+    "_crossRef-postCommunionHymn": "we-have-seen in liturgy-fixed ('We have seen the true Light…')",
+    "_crossRef-letOurMouths": "let-our-mouths in liturgy-fixed ('Let our mouths be filled with Thy praise…')",
+    "_crossRef-postCommunionThanksgiving": "litany-thanksgiving.prayer-chrysostom in liturgy-fixed (reader form: said aloud by reader, no litany petitions)",
+
+    "readerPostCommunion": {
+      "_note": "Short reader's thanksgiving spliced in after communion, before joining back to the closing block (Blessed be the Name → Psalm 33 → dismissal).",
+      "text": "I thank Thee, O Lord my God, that Thou hast not rejected me a sinner, but hast vouchsafed me to be a communicant of Thy Holy Things. I thank Thee that Thou hast vouchsafed me, the unworthy, to partake of Thy most pure and heavenly Gifts. But, O Master, Lover of mankind, Who for our sake didst die and didst rise again, and didst bestow upon us these Thy fearful and life-creating Mysteries for the well-being and sanctification of our souls and bodies: grant that these may be even unto me for the healing of soul and body, for the averting of every adversary, for the enlightenment of the eyes of my heart, for the peace of the powers of my soul, for a faith unashamed, for love unfeigned, for the fulfilling of wisdom, for the keeping of Thy commandments, for an increase of Thy divine grace and for the attainment of Thy Kingdom; that being preserved by them in Thy holiness, I may always remember Thy grace, and no longer live unto myself but unto Thee, our Master and Benefactor. And so, when I shall have departed this life in the hope of eternal life, may I attain unto the everlasting rest, where the sound is unceasing of those that keep festival and the delight is boundless of those that behold the ineffable beauty of Thy countenance. For Thou art the true desire and the unutterable gladness of those that love Thee, O Christ our God, and all creation hymneth Thee unto the ages. Amen."
+    }
+  }
+}

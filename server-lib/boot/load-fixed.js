@@ -130,6 +130,12 @@ function boot() {
     return t;
   });
 
+  const typikaFixed = loadOrExit('Typika fixed texts', () => {
+    const t = loadJSON('fixed-texts/typika-fixed.json');
+    console.log('Typika fixed texts loaded.');
+    return t;
+  });
+
   ensureOrthocalCacheTable();
 
   return {
@@ -139,7 +145,7 @@ function boot() {
     paschalHoursFixed, midnightOfficeFixed, paschalMatinsFixed,
     passionGospelsFixed, bridegroomMatinsFixed, lamentationsFixed,
     vesperalLiturgyFixed, kneelingVespersFixed, royalHoursFixed,
-    matinsFixed,
+    matinsFixed, typikaFixed,
     // Shared helpers
     parseQuery, escHtml, formatDate, serveStatic, loadJSON,
     renderService, renderVespers,

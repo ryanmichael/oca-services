@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -43,10 +43,12 @@ function handle(req, res, ctx) {
 
       const q    = parseQuery(url);
       const year = parseInt(q.year, 10) || 2026;
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
-      const result = buildDashboardData(year, sources);
+      const result = buildDashboardData(year, sources, style);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(result));
 

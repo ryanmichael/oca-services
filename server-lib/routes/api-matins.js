@@ -159,6 +159,8 @@ function handle(req, res, ctx) {
         serviceName:    'Matins (Orthros)',
         tone,
         season,
+        translation:    translation || null,
+        style,
         blocks,
       }));
       })();

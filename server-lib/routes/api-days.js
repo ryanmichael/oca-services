@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -44,6 +44,8 @@ function handle(req, res, ctx) {
       const q    = parseQuery(url);
       const from = (q.from || '').trim();
       const to   = (q.to   || '').trim();
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -79,7 +81,7 @@ function handle(req, res, ctx) {
         const dowStr  = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
 
         // Get calendar entry (cheap — no assembly)
-        const entry  = getCalendarEntry(dateStr);
+        const entry  = getCalendarEntry(dateStr, style);
         const season = entry ? (entry.liturgicalContext?.season || null) : null;
         const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
         const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season, entry.date) : null;
@@ -87,7 +89,7 @@ function handle(req, res, ctx) {
         // Vespers date-shift: vespers served on this evening belongs to
         // the *next* liturgical day, so look up tomorrow's calendar entry.
         const vespersDateStr = getNextDateStr(dateStr);
-        const vespersEntry   = getCalendarEntry(vespersDateStr);
+        const vespersEntry   = getCalendarEntry(vespersDateStr, style);
 
         // Feast + commemorations list from Menaion DB
         let feast = null;
@@ -110,9 +112,9 @@ function handle(req, res, ctx) {
           vesperalLiturgy: isVesperalLiturgyDay(cur),
           royalHours: isRoyalHoursDay(cur),
           passionGospels: isPassionGospelsDay(cur),
-          matins:  !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur), sources),
-          liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
-          presanctified: isPresanctifiedDay(cur),
+          matins:  !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur), sources, style),
+          liturgy: !!(entry?.liturgy) || isLiturgyServed(cur, style),
+          presanctified: isPresanctifiedDay(cur, style),
           paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
           paschaCollection: (() => {
             const p = calculatePascha(cur.getUTCFullYear());

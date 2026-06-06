@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -44,6 +44,8 @@ function handle(req, res, ctx) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -58,7 +60,7 @@ function handle(req, res, ctx) {
       const [, mm, dd] = date.split('-').map(Number);
       const dowIdx = d.getUTCDay();
       const dowStr = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
-      const entry  = getCalendarEntry(date);
+      const entry  = getCalendarEntry(date, style);
       const season = entry ? (entry.liturgicalContext?.season || null) : null;
       const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
       const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season, entry.date) : null;
@@ -88,7 +90,7 @@ function handle(req, res, ctx) {
 
       // Build available services list
       // Vespers date-shift: vespers served this evening belongs to tomorrow
-      const vespersEntry = getCalendarEntry(getNextDateStr(date));
+      const vespersEntry = getCalendarEntry(getNextDateStr(date), style);
       const available = {
         greatVespers:    vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
         dailyVespers:    vespersEntry?.vespers?.serviceType === 'dailyVespers',
@@ -97,9 +99,9 @@ function handle(req, res, ctx) {
         vesperalLiturgy: isVesperalLiturgyDay(d),
         royalHours:      isRoyalHoursDay(d),
         passionGospels:  isPassionGospelsDay(d),
-        matins:          !!buildMatinsSpec(date, d, dowStr, season, getTone(d), sources),
-        liturgy:         !!(entry?.liturgy) || isLiturgyServed(d),
-        presanctified:   isPresanctifiedDay(d),
+        matins:          !!buildMatinsSpec(date, d, dowStr, season, getTone(d), sources, style),
+        liturgy:         !!(entry?.liturgy) || isLiturgyServed(d, style),
+        presanctified:   isPresanctifiedDay(d, style),
         paschalHours:    getLiturgicalSeason(d) === 'brightWeek',
         paschaCollection: (() => {
           const p = calculatePascha(d.getUTCFullYear());
@@ -119,11 +121,11 @@ function handle(req, res, ctx) {
         .filter(Boolean);
 
       // Fetch each service via internal HTTP requests. Thread the translation
-      // overlay through so all inner Liturgy/Vespers/etc. requests see it.
-      const translation = resolveTranslation(q);
+      // overlay + style through so all inner Liturgy/Vespers/etc. requests see them.
       const translationSuffix = translation ? `&translation=${encodeURIComponent(translation)}` : '';
+      const styleSuffix       = style && style !== 'new' ? `&style=${style}` : '';
       const fetchInternal = (endpoint, dateStr, pron) => new Promise((resolve, reject) => {
-        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}`;
+        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}${styleSuffix}`;
         http.get(url, (resp) => {
           let body = '';
           resp.on('data', chunk => body += chunk);

@@ -196,6 +196,7 @@ function handle(req, res, ctx) {
         liturgicalLabel,
         commemorations,
         translation:      translation || null,
+        style,
         blocks,
       }));
       })().catch(err => {

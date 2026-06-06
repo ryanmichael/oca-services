@@ -33,7 +33,7 @@ const { buildMatinsSpec }         = require('../sources/matins-spec');
  * layers: { calendarEntry, octoechos, prokeimena, troparia, stichera, aposticha, triodion }
  *         each: { present: bool, source: string|null }
  */
-function buildDashboardData(year, sources) {
+function buildDashboardData(year, sources, style = 'new') {
   const DAY_MS_LOCAL = 24 * 60 * 60 * 1000;
   const jan1  = new Date(Date.UTC(year, 0, 1));
   const dec31 = new Date(Date.UTC(year, 11, 31));
@@ -113,7 +113,7 @@ function buildDashboardData(year, sources) {
     const dowStr = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
 
     // Get calendar entry (cheap)
-    const entry = getCalendarEntry(dateStr);
+    const entry = getCalendarEntry(dateStr, style);
     const season = entry ? (entry.liturgicalContext?.season || null) : getLiturgicalSeason(cur);
     const tone = entry ? (entry.liturgicalContext?.tone ?? null) : null;
 
@@ -127,10 +127,10 @@ function buildDashboardData(year, sources) {
       lamentations: isLamentationsDay(cur),
       vesperalLiturgy: isVesperalLiturgyDay(cur),
       royalHours: isRoyalHoursDay(cur),
-      matins: !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur), sources),
-      liturgy: !!(entry?.liturgy) || isLiturgyServed(cur),
+      matins: !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur), sources, style),
+      liturgy: !!(entry?.liturgy) || isLiturgyServed(cur, style),
       passionGospels: isPassionGospelsDay(cur),
-      presanctified: isPresanctifiedDay(cur),
+      presanctified: isPresanctifiedDay(cur, style),
       paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
       paschaCollection: (() => {
         const p = calculatePascha(cur.getUTCFullYear());

@@ -1,0 +1,9 @@
+{
+  "name": "Julian Calendar (Old Style)",
+  "kind": "tradition",
+  "jurisdiction": null,
+  "style": "old",
+  "extends": [],
+  "description": "Calendar-only overlay: shifts fixed feasts to the Julian (M, D) tuple — Nativity = January 7, Theophany = January 19, Annunciation = April 7, etc. Used by Russian Patriarchate, Serbian, Georgian, Jerusalem Patriarchate, and many Constantinople-diaspora parishes. Carries no text overrides; layer on top of any translation tradition to get Old Calendar dating.",
+  "sources": "calendar-rules.fixedFeastDate (13-day offset, valid through 2099)"
+}

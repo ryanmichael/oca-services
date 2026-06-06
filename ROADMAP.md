@@ -2,7 +2,7 @@
 
 Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md §6`](./ASSESSMENT.md); this doc is the "where are we right now" glance — kept short on purpose.
 
-**Last updated:** 2026-06-06 (Phase 3C shipped)
+**Last updated:** 2026-06-06 (Phase 3D shipped)
 
 ---
 
@@ -46,7 +46,7 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
   - [x] Phase A — `server-lib/_shared/` (loadJSON, html, parse-query, serve-static); 9954ad9; snapshot 42/42 first try; server.js 5,375 → 5,342
   - [x] Phase B — `server-lib/overlays/` (8 files: registry/manifest/extends-chain/drift/cascade/rubrics/diff/provenance); 598a812; snapshot 42/42; server.js 5,342 → 4,962 (−380)
   - [x] Phase C — `server-lib/sources/` (9 files) + `server-lib/cache/` (2 files); matins-spec kept whole; sources param threaded through buildMatinsSpec; 22a5c61; snapshot 42/42; server.js 4,962 → 3,125 (−1,837)
-  - [ ] Phase D — `server-lib/assemble/` + `server-lib/render/`
+  - [x] Phase D — `server-lib/assemble/` (pronouns + day-label + for-date) + `server-lib/render/` (home + error + service + dashboard); 2bcbb01; snapshot 42/42; server.js 3,125 → 2,114 (−1,011)
   - [ ] Phase E — `server-lib/routes/` + `router.js` (2–3 batched PRs)
   - [ ] Phase F — collapse `server.js` to 7-line facade
 - [ ] Playwright smoke tests for 5 canonical user flows (home loads, date pick, service detail panel, search, translation switch)

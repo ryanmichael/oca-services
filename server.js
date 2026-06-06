@@ -30,6 +30,11 @@ const { renderService, renderVespers }             = require('./renderer');
 const { getMatinsKathismata }                    = require('./kathisma');
 const { deduplicateBySource }                    = require('./oca-psalter');
 
+const { loadJSON }       = require('./server-lib/_shared/load-json');
+const { escHtml, formatDate } = require('./server-lib/_shared/html');
+const { parseQuery }     = require('./server-lib/_shared/parse-query');
+const { serveStatic }    = require('./server-lib/_shared/serve-static');
+
 // ─── Config ───────────────────────────────────────────────────────────────────
 
 const args    = process.argv.slice(2);
@@ -37,12 +42,6 @@ const portIdx = args.indexOf('--port');
 const PORT    = portIdx !== -1 ? parseInt(args[portIdx + 1], 10)
               : process.env.PORT ? parseInt(process.env.PORT, 10)
               : 3000;
-
-// ─── Data loading ─────────────────────────────────────────────────────────────
-
-function loadJSON(relPath) {
-  return JSON.parse(fs.readFileSync(path.join(__dirname, relPath), 'utf8'));
-}
 
 // ─── Translation overlay system ─────────────────────────────────────────────
 // Each overlay lives at fixed-texts/translations/<id>/ and may contain any
@@ -522,22 +521,6 @@ function getNextDateStr(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   const next = new Date(Date.UTC(y, m - 1, d + 1));
   return next.toISOString().slice(0, 10);
-}
-
-// ─── HTML helpers ─────────────────────────────────────────────────────────────
-
-function escHtml(str) {
-  return String(str || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-function formatDate(isoDate) {
-  const [year, month, day] = isoDate.split('-').map(Number);
-  return new Date(year, month - 1, day).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric',
-  });
 }
 
 // ─── Home page ────────────────────────────────────────────────────────────────
@@ -3332,23 +3315,7 @@ function formatSticheraSource(sourcesStr) {
   return [...new Set(labels)].join(' + ');
 }
 
-// ─── Static file serving ──────────────────────────────────────────────────────
-
-function serveStatic(res, filePath, contentType) {
-  if (!fs.existsSync(filePath)) {
-    res.writeHead(404); res.end('Not found'); return;
-  }
-  res.writeHead(200, { 'Content-Type': contentType + '; charset=utf-8' });
-  res.end(fs.readFileSync(filePath));
-}
-
 // ─── Request handler ──────────────────────────────────────────────────────────
-
-function parseQuery(url) {
-  const idx = url.indexOf('?');
-  if (idx === -1) return {};
-  return Object.fromEntries(new URLSearchParams(url.slice(idx + 1)));
-}
 
 // Pre-load sources once at startup
 // (DAY_PATRONS now lives in daily-propers.json, loaded at module top.)

@@ -2,7 +2,7 @@
 
 Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md §6`](./ASSESSMENT.md); this doc is the "where are we right now" glance — kept short on purpose.
 
-**Last updated:** 2026-06-05
+**Last updated:** 2026-06-05 (Phase 3B shipped)
 
 ---
 

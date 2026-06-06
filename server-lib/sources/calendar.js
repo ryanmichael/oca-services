@@ -17,11 +17,11 @@ const ROOT = path.resolve(__dirname, '..', '..');
  * When both exist, the auto-generated entry is used as the base (vespers),
  * and any `liturgy` field from the hand-authored file is merged in.
  */
-function getCalendarEntry(dateStr) {
+function getCalendarEntry(dateStr, style = 'new') {
   const calPath     = path.join(ROOT, 'variable-sources', 'calendar', `${dateStr}.json`);
   const handAuthored = fs.existsSync(calPath) ? loadJSON(`variable-sources/calendar/${dateStr}.json`) : null;
 
-  const generated = generateCalendarEntry(dateStr);
+  const generated = generateCalendarEntry(dateStr, style);
 
   if (generated && handAuthored) {
     // Merge: auto-generated base + hand-authored liturgy (and commemorations if present)

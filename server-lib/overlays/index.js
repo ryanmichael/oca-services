@@ -10,6 +10,7 @@ module.exports = {
   ...require('./drift'),
   ...require('./cascade'),
   ...require('./rubrics'),
+  ...require('./style'),
   ...require('./diff'),
   ...require('./provenance'),
 };

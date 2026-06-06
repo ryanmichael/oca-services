@@ -48,6 +48,34 @@ const VESPERS_SUNG_EVE = {
   sunday:    'saturday',   // Sun liturgical ← Sat evening Vespers (Sunday Great Vespers)
 };
 
+// ─── Calendar style (New / Old) ───────────────────────────────────────────────
+// Orthodox jurisdictions split between the Julian ("Old") and Revised Julian
+// ("New") calendars. Both use the same Julian Pascha computus, so all
+// Pascha-anchored math (Lent, Pentecostarion, Octoechos tones, Holy Week)
+// is identical for both. The axis is only the FIXED-feast lookup:
+// Nativity = Dec 25 New = Jan 7 Old (Gregorian civil dates).
+//
+// Helpers that look up fixed feasts accept an optional `style = 'new' | 'old'`
+// argument (default 'new'). When 'old', the lookup uses the input date shifted
+// 13 days earlier. The offset becomes 14 days from 2100-03-01 onward — same
+// century-leap-year cliff that already constrains `calculatePascha` to
+// 1900–2099. Revisit at the next code-review before 2100.
+//
+// See docs/old-style-calendar.md for the full design.
+const JULIAN_OFFSET_DAYS = 13;
+
+/**
+ * For Old-Style ('old') consumers, returns `civilDate` shifted 13 days earlier
+ * so that re-reading getUTCMonth/getUTCDate yields the Julian (M, D) tuple
+ * that the menaion / Vigil-saints / Great-Feast lookups expect. For 'new',
+ * returns `civilDate` unchanged. Year wraps (Jan 7 → Dec 25 of prior year)
+ * fall out naturally from millisecond arithmetic.
+ */
+function fixedFeastDate(civilDate, style = 'new') {
+  if (style !== 'old') return civilDate;
+  return new Date(civilDate.getTime() - JULIAN_OFFSET_DAYS * DAY_MS);
+}
+
 // ─── Pascha calculation ───────────────────────────────────────────────────────
 
 /**
@@ -1771,7 +1799,7 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
  * @param {string} dateStr  "YYYY-MM-DD"
  * @returns {Object|null}
  */
-function generateCalendarEntry(dateStr) {
+function generateCalendarEntry(dateStr, style = 'new') {
   const [year, month, day] = dateStr.split('-').map(Number);
   const date   = new Date(Date.UTC(year, month - 1, day));
   const dow    = getDayOfWeek(date);
@@ -1783,14 +1811,14 @@ function generateCalendarEntry(dateStr) {
   // These feasts always get an All-Night Vigil regardless of what day they fall on.
   // Moveable feasts (Palm Sunday, Ascension, Pentecost) are handled by their
   // own season generators below.
-  const feastKey = getGreatFeastKey(date);
+  const feastKey = getGreatFeastKey(date, style);
   if (feastKey && !['palmSunday', 'ascension', 'pentecost', 'pascha'].includes(feastKey)) {
     return generateGreatFeastVespers(dateStr, dow, tone, feastKey, season);
   }
 
   // ── Vigil-rank saints override ordinary day logic ──────────────────────────
   // These feasts get an All-Night Vigil with Litya and Blessing of Bread.
-  const feastRank = getFeastRank(date);
+  const feastRank = getFeastRank(date, style);
   if (feastRank === 'vigil') {
     return generateVigilFeastVespers(dateStr, dow, tone);
   }
@@ -1873,9 +1901,10 @@ function generateCalendarEntry(dateStr) {
  * the Liturgy of Basil transfers to the feast day itself. That edge case
  * is not yet handled here.
  */
-function getLiturgyVariant(date) {
-  const month  = date.getUTCMonth() + 1;
-  const day    = date.getUTCDate();
+function getLiturgyVariant(date, style = 'new') {
+  const adj    = fixedFeastDate(date, style);
+  const month  = adj.getUTCMonth() + 1;
+  const day    = adj.getUTCDate();
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
 
@@ -1906,9 +1935,10 @@ function getLiturgyVariant(date) {
  *                   (Nativity Dec 25; Theophany Jan 6; Lazarus Saturday; Great Saturday)
  *   'typical'    → "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
  */
-function getTrisagionSubstitution(date) {
-  const month  = date.getUTCMonth() + 1;
-  const day    = date.getUTCDate();
+function getTrisagionSubstitution(date, style = 'new') {
+  const adj    = fixedFeastDate(date, style);
+  const month  = adj.getUTCMonth() + 1;
+  const day    = adj.getUTCDate();
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
 
@@ -1955,11 +1985,12 @@ function getTrisagionSubstitution(date) {
  *   - Ascension Thursday (Pascha + 39 days)
  *   - The 12 Great Feasts on fixed calendar dates
  */
-function isLiturgyServed(date) {
+function isLiturgyServed(date, style = 'new') {
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
-  const month  = date.getUTCMonth() + 1;
-  const day    = date.getUTCDate();
+  const adj    = fixedFeastDate(date, style);
+  const month  = adj.getUTCMonth() + 1;
+  const day    = adj.getUTCDate();
 
   // Great Feasts always have liturgy, even during Lent (e.g. Annunciation Mar 25)
   const GREAT_FEASTS = new Set([
@@ -1996,9 +2027,10 @@ function isLiturgyServed(date) {
  *   6/24 (Nativity of Forerunner), 6/29 (Sts. Peter & Paul) — these are
  *   "great feasts" in the broad sense but use typical antiphons.
  */
-function getGreatFeastKey(date) {
-  const month = date.getUTCMonth() + 1;
-  const day   = date.getUTCDate();
+function getGreatFeastKey(date, style = 'new') {
+  const adj   = fixedFeastDate(date, style);
+  const month = adj.getUTCMonth() + 1;
+  const day   = adj.getUTCDate();
 
   // Fixed-calendar feasts
   const FIXED = {
@@ -2067,11 +2099,12 @@ const VIGIL_SAINTS = new Map([
  * @param {Date} date — UTC date
  * @returns {string}
  */
-function getFeastRank(date) {
-  if (getGreatFeastKey(date) !== null) return 'greatFeast';
+function getFeastRank(date, style = 'new') {
+  if (getGreatFeastKey(date, style) !== null) return 'greatFeast';
 
-  const month = date.getUTCMonth() + 1;
-  const day   = date.getUTCDate();
+  const adj   = fixedFeastDate(date, style);
+  const month = adj.getUTCMonth() + 1;
+  const day   = adj.getUTCDate();
   if (VIGIL_SAINTS.has(`${month}-${day}`)) return 'vigil';
 
   // Future: query DB commemorations.rank column for polyeleos/doxology
@@ -2103,13 +2136,13 @@ function isVigilServed(date) {
  * @param {Date} date — UTC date
  * @returns {boolean}
  */
-function isPresanctifiedDay(date) {
+function isPresanctifiedDay(date, style = 'new') {
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
 
   // Great Feasts on Lenten weekdays serve the full Chrysostom Liturgy *instead
   // of* Presanctified (e.g. Annunciation Mar 25 falling Wed/Fri of Lent).
-  if (getGreatFeastKey(date)) return false;
+  if (getGreatFeastKey(date, style)) return false;
 
   if (season === 'greatLent' && (dow === 'wednesday' || dow === 'friday')) return true;
   if (season === 'holyWeek' && ['monday', 'tuesday', 'wednesday'].includes(dow)) return true;
@@ -2232,6 +2265,8 @@ function getEothinon(date) {
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 module.exports = {
+  JULIAN_OFFSET_DAYS,
+  fixedFeastDate,
   calculatePascha,
   getAllSaints,
   getLiturgicalSeason,

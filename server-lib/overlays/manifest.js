@@ -47,6 +47,7 @@ const ALLOWED_KINDS = new Set(['tradition', 'parish', 'jurisdiction']);
 const ALLOWED_JURISDICTIONS = new Set([
   'oca', 'rocor', 'antiochian', 'goa', 'serbian', 'romanian', 'bulgarian', 'georgian',
 ]);
+const ALLOWED_STYLES = new Set(['new', 'old']);
 
 /** Validates a manifest. Returns an array of human-readable warnings (empty = OK).
  *  All checks are non-fatal; loader handles defaults so the overlay still loads.
@@ -91,6 +92,11 @@ function validateManifest(id, manifest, allIds) {
       });
     }
   }
+  if (manifest.style !== undefined) {
+    if (typeof manifest.style !== 'string' || !ALLOWED_STYLES.has(manifest.style)) {
+      warnings.push(`'style' must be one of: ${[...ALLOWED_STYLES].join(', ')}`);
+    }
+  }
   if (manifest.rubrics !== undefined) {
     if (typeof manifest.rubrics !== 'object' || manifest.rubrics === null || Array.isArray(manifest.rubrics)) {
       warnings.push("'rubrics' must be a plain object");
@@ -121,6 +127,7 @@ function getTranslationManifests() {
       name: m.name || id,
       kind: m.kind || 'tradition',
       jurisdiction: m.jurisdiction ?? null,
+      style: ALLOWED_STYLES.has(m.style) ? m.style : null,
       extends: Array.isArray(m.extends) ? m.extends : [],
       description: m.description || null,
       sources: m.sources || null,

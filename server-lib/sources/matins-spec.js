@@ -12,6 +12,7 @@ const {
   getEothinon,
   getGreatFeastKey,
   getWeekOfLent,
+  fixedFeastDate,
 } = require('../../calendar-rules');
 const { getMatinsKathismata } = require('../../kathisma');
 
@@ -532,13 +533,18 @@ function _mergeAfterFeastCanon(saintCanon) {
   return merged;
 }
 
-function buildMatinsSpec(dateStr, date, dow, season, tone, sources) {
-  const [yr, mo, dy] = dateStr.split('-').map(Number);
+function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new') {
+  // For Old Style, the menaion / Great Feast / Vigil-saint lookups consult the
+  // Julian (M, D), not the Gregorian civil date. Day-of-week, Pascha-relative
+  // math, and the URL field continue to use the unadjusted civil date.
+  const adjDate = fixedFeastDate(date, style);
+  const mo = adjDate.getUTCMonth() + 1;
+  const dy = adjDate.getUTCDate();
   const mm = String(mo).padStart(2, '0');
   const dd = String(dy).padStart(2, '0');
 
   // ── Check for great feast menaion data ──────────────────────────────────
-  const feastKey = getGreatFeastKey(date);
+  const feastKey = getGreatFeastKey(date, style);
   const monthNames = ['', 'january', 'february', 'march', 'april', 'may', 'june',
     'july', 'august', 'september', 'october', 'november', 'december'];
   const menaionKey = `${monthNames[mo]}-${dd}`;

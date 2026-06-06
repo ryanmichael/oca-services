@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -45,6 +45,8 @@ function handle(req, res, ctx) {
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
       const format  = (q.format  || '').trim().toLowerCase();
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -93,7 +95,7 @@ function handle(req, res, ctx) {
       }
 
       // Build the matins spec from available data
-      const matinsSpec = buildMatinsSpec(date, d, dow, season, tone, sources);
+      const matinsSpec = buildMatinsSpec(date, d, dow, season, tone, sources, style);
 
       // Enrich Matins Gospel with full scripture text from orthocal API
       if (matinsSpec?.gospel && !matinsSpec.gospel.text) {

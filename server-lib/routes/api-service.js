@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -45,6 +45,8 @@ function handle(req, res, ctx) {
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
       const format  = (q.format  || '').trim().toLowerCase();
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -62,7 +64,7 @@ function handle(req, res, ctx) {
       //
       // Exception: Burial Vespers (Holy Friday afternoon) uses the day's own
       // texts — it is NOT the evening vespers that begins the next day.
-      const dayEntry = getCalendarEntry(date);
+      const dayEntry = getCalendarEntry(date, style);
       const isBurialVespers = dayEntry?.vespers?.serviceKey === 'burialVespers';
       const vespersDate = isBurialVespers ? date : getNextDateStr(date);
 
@@ -71,7 +73,7 @@ function handle(req, res, ctx) {
       // otReadings with full scripture text from orthocal.
       let entryOverride = null;
       try {
-        const baseEntry = getCalendarEntry(vespersDate);
+        const baseEntry = getCalendarEntry(vespersDate, style);
         if (baseEntry?.vespers?.otReadings?.length > 0) {
           const orthocalData = await fetchOrthocalDay(vespersDate);
           const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
@@ -123,14 +125,13 @@ function handle(req, res, ctx) {
         console.warn('Orthocal pericope fetch failed (non-fatal):', err.message);
       }
 
-      const translation = resolveTranslation(q);
       const vespersFixedResolved = translation
         ? (getOverlayFixed('vespers', translation) || fixedTexts)
         : fixedTexts;
 
       let result;
       try {
-        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, sources);
+        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, sources, style);
       } catch (err) {
         console.error('assembleForDate error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -152,7 +153,11 @@ function handle(req, res, ctx) {
       // Use calendar entry commemorations if present; otherwise fall back to Menaion DB
       let commemorations = calendarEntry.commemorations || [];
       if (commemorations.length === 0) {
-        const [, mm, dd] = vespersDate.split('-').map(Number);
+        const [vy, vm, vd] = vespersDate.split('-').map(Number);
+        const civilDate    = new Date(Date.UTC(vy, vm - 1, vd));
+        const adj          = ctx.fixedFeastDate(civilDate, style);
+        const mm = adj.getUTCMonth() + 1;
+        const dd = adj.getUTCDate();
         const dayList = getMenaionDayList(mm, dd);
         if (dayList) {
           commemorations = dayList.commemorations.map((title, i) => ({

@@ -36,12 +36,12 @@ const {
   LENTEN_SUNDAY_ALLELUIA,
 } = require('./propers');
 
-function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
+function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
   const dow     = getDayOfWeek(date);
   const tone    = getTone(date);
-  const variant = getLiturgyVariant(date);
+  const variant = getLiturgyVariant(date, style);
   const isBasil  = variant === 'basil';
   const isSunday = dow === 'sunday';
   const tk       = `tone${tone}`;
@@ -124,7 +124,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
 
   // ── Great Feast + season detection (needed by troparia, prokeimenon, etc.) ──
   const season = getLiturgicalSeason(date);
-  const feastKey = getGreatFeastKey(date);
+  const feastKey = getGreatFeastKey(date, style);
   const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
 
   // ── Troparia & Kontakia ──────────────────────────────────────────────────────
@@ -333,7 +333,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs) {
     entranceHymn,
     troparia,
     kontakia,
-    trisagion: { substitution: getTrisagionSubstitution(date) },
+    trisagion: { substitution: getTrisagionSubstitution(date, style) },
     prokeimenon,
     epistle:  epistleR ? {
       book: announceEpistleBook(epistleR.display),

@@ -5,7 +5,7 @@
 // calendar entry's slots are generic, and hands off to assembleVespers.
 
 const { assembleVespers } = require('../../assembler');
-const { calculatePascha } = require('../../calendar-rules');
+const { calculatePascha, fixedFeastDate } = require('../../calendar-rules');
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
@@ -20,12 +20,21 @@ const { applyYouYour } = require('./pronouns');
  * or null if no calendar entry exists for the date.
  * Throws on assembly error.
  */
-function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources) {
-  const calendarEntry = entryOverride || getCalendarEntry(date);
+function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources, style = 'new') {
+  const calendarEntry = entryOverride || getCalendarEntry(date, style);
   if (!calendarEntry) return null;
   const vespersFixed = vespersFixedBase;
 
   const dbSource = buildDbSource(date, pronoun);
+
+  // For Old Style, the Menaion injection consults the Julian (M, D) — the
+  // saint's commemoration date on the Julian calendar, not the civil date.
+  function adjustedMD() {
+    const [y, m, d] = date.split('-').map(Number);
+    const civil = new Date(Date.UTC(y, m - 1, d));
+    const adj   = fixedFeastDate(civil, style);
+    return [adj.getUTCMonth() + 1, adj.getUTCDate()];
+  }
 
   let menaionOverride = sources.menaion;
 
@@ -84,7 +93,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
   const hasTriodionContent = calendarEntry.vespers?.lordICall?.slots?.some(s => s.source === 'db');
   const isPentSundayVespers = calendarEntry.vespers?.isPentecostarionSunday;
   if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && !hasTriodionContent && !isPentSundayVespers) {
-    const [, mm, dd] = date.split('-').map(Number);
+    const [mm, dd] = adjustedMD();
     const ranked = getMenaionRanked(mm, dd);
     const primary = ranked?.principal ?? null;
     let sticheraData = ranked?.sticheraComm

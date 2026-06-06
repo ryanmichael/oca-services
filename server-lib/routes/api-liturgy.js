@@ -24,7 +24,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -45,6 +45,8 @@ function handle(req, res, ctx) {
       const date    = (q.date    || '').trim();
       const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
       const format  = (q.format  || '').trim().toLowerCase();
+      const translation = resolveTranslation(q);
+      const style       = resolveStyle(q, translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -56,7 +58,7 @@ function handle(req, res, ctx) {
 
       {
         const d = new Date(date + 'T12:00:00Z');
-        if (!isLiturgyServed(d)) {
+        if (!isLiturgyServed(d, style)) {
           res.writeHead(404, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: 'No Divine Liturgy is served on this date.', date }));
           return;
@@ -64,7 +66,7 @@ function handle(req, res, ctx) {
       }
 
       (async () => {
-        let calendarEntry = getCalendarEntry(date);
+        let calendarEntry = getCalendarEntry(date, style);
         if (!calendarEntry) {
           res.writeHead(404, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: 'No liturgy available for this date.', date }));
@@ -75,7 +77,7 @@ function handle(req, res, ctx) {
           try {
             const orthocalData = await fetchOrthocalDay(date);
             calendarEntry = { ...calendarEntry,
-              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources) };
+              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });
@@ -84,7 +86,6 @@ function handle(req, res, ctx) {
           }
         }
 
-        const translation = resolveTranslation(q);
         const liturgyFixedResolved = getLiturgyFixed(translation);
 
         let blocks;

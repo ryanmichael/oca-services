@@ -55,10 +55,10 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 ## Weeks 4–7 (parallel) — Old-Style calendar variant
 
-- [ ] Design doc: `style: 'new' | 'old'` axis through `calendar-rules.js`
-- [ ] Paschalion algorithm decision (Julian vs. Gregorian for Pascha-dependent cycles)
-- [ ] Implementation + audit-rule extension (A-family)
-- [ ] Cross-jurisdictional contract tests (ROCOR + Serbian sample dates)
+- [x] Design doc: `docs/old-style-calendar.md` — narrows the axis to fixed-feast lookup; Pascha cycle is identical Julian/Revised-Julian
+- [x] ~~Paschalion algorithm decision~~ — moot. Orthodox Pascha is one date worldwide; `calculatePascha` already produces it correctly via Julian computus + Gregorian conversion
+- [x] Implementation: `JULIAN_OFFSET_DAYS` + `fixedFeastDate(date, style)` in `calendar-rules.js`; threaded through `getGreatFeastKey`, `getLiturgyVariant`, `getTrisagionSubstitution`, `isLiturgyServed`, `getFeastRank`, `isPresanctifiedDay`, `generateCalendarEntry`, `buildMatinsSpec`, `buildLiturgyFromOrthocal`, `assembleForDate`, `getCalendarEntry`. Manifest schema accepts `style: 'new' | 'old'`; new `getOverlayStyle`/`resolveStyle` resolvers. `?style=old` query-param escape hatch. Audit rule A1 added.
+- [x] Cross-jurisdictional contract tests: `test/old-style.test.js` (33 cases — Nativity Jan 7 OS, Theophany Jan 19 OS, Annunciation Apr 7 OS, Dormition Aug 28 OS, Elevation Sep 27 OS, etc.); A1 audit rule covers the same dates from the audit side.
 
 ## Weeks 6–8 — First AI pipeline (LLM-assisted menaion authoring)
 

@@ -2,7 +2,7 @@
 
 Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md §6`](./ASSESSMENT.md); this doc is the "where are we right now" glance — kept short on purpose.
 
-**Last updated:** 2026-06-06 (Phase 3 COMPLETE + Playwright e2e shipped)
+**Last updated:** 2026-06-06 (Phase 3 + Playwright + Sunday-Matins gap fix shipped)
 
 ---
 
@@ -10,9 +10,11 @@ Live status tracker for the 90-day plan. The strategy lives in [`ASSESSMENT.md �
 
 **Phase 2 + Phase 3 — Modularize COMPLETE.** All 12 phases (Phase 2 A–F + Phase 3 A–F) shipped. `assembler.js` is a 12-line facade (5,665 → 12 lines, −99.8%); `server.js` is a 22-line facade (5,375 → 22 lines, −99.6%). Repo is structurally ready for per-jurisdiction variants AND for routing/cache/translation changes that previously had to land inside a 5K-line `handleRequest`.
 
-**Audit triage shipped 2026-06-05** (`821d3ec`). 25 high-sev findings → 9 real Sunday-Matins coverage gaps. Fixed at source: getEothinon Triodion/Pentecostarion suspension, 2 YY→TT data fixes, M2 audit rule false-positive. Suppressed 8 as documented knownFailures (Pascha, feast-overrides, plural-object false positive). See [[reference-audit-triage-2026-06-05]] for the remaining gap list + recommended fix path.
+**Audit triage shipped 2026-06-05** (`821d3ec`). 25 high-sev findings → 9 real Sunday-Matins coverage gaps. Fixed at source: getEothinon Triodion/Pentecostarion suspension, 2 YY→TT data fixes, M2 audit rule false-positive. Suppressed 8 as documented knownFailures (Pascha, feast-overrides, plural-object false positive).
 
-**Next:** the 9 Sunday-Matins gaps are the most tractable next pass — each one needs `matins.gospel` + Great Doxology wired into a specific Sunday calendar entry. After that: Old-Style calendar variant (Weeks 4–7), `server.js` split, or jurisdiction work.
+**Sunday-Matins gap fix shipped 2026-06-06.** All 9 remaining gaps resolved via a single root-cause fix in `server-lib/sources/matins-spec.js` — `_overlaySundayDefaults()` layers Sunday-required pieces (eothinon Gospel, Octoechos Lauds, Great Doxology) on top of menaion-driven specs when a saint coincides with Sunday. Full audit now reports `high=0` (was 9).
+
+**Next:** Old-Style calendar variant (Weeks 4–7), per-jurisdiction route prefixes, or content backlog (afterfeast modeling layer, doxology-rank alternate sources, Pentecostarion Beatitudes).
 
 ---
 

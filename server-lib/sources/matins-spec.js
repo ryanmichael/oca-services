@@ -278,6 +278,64 @@ function _buildSundayMatinsFromOctoechos(tone, season, menaionData, date, source
   return spec;
 }
 
+// When a simple- or doxology-rank menaion saint coincides with Sunday, the
+// menaion-driven branch above produces a weekday-shaped spec (Small Doxology,
+// no Gospel, no Lauds). Sunday Matins always uses Great Doxology, always has
+// the eothinon Gospel, and always sings Lauds. Layer those defaults on top of
+// whatever the menaion file supplied — keeping the saint's troparion / canon /
+// sessional hymns intact while restoring the resurrectional skeleton.
+function _overlaySundayDefaults(spec, tone, season, date, sources) {
+  spec.useSmallDoxology = false;
+
+  if (!spec.gospel) {
+    const eothinonNum  = date ? getEothinon(date) : null;
+    const eothinonData = eothinonNum ? sources.eothinon?.[String(eothinonNum)] : null;
+    if (eothinonData) {
+      spec.gospel = {
+        reading: eothinonData.gospel.reading,
+        text:    null,
+        source:  'eothinon',
+        _eothinon: eothinonNum,
+        _source: eothinonData._source,
+      };
+    } else {
+      spec.gospel = {
+        reading: eothinonNum
+          ? `[Eothinon ${eothinonNum} — data not loaded]`
+          : '[Sunday Matins Gospel — Eothinon suspended during Triodion]',
+        text:   null,
+        source: 'eothinon',
+      };
+    }
+  }
+
+  if (!spec.lauds) {
+    const oct        = sources.octoechos?.[`tone${tone}`];
+    const octMatins  = oct?.sunday?.matins;
+    const stichera   = octMatins?.laudsStichera;
+    if (stichera?.length) {
+      const matinsSource = octMatins._source || 'oca-parma-stsergius';
+      const lauds = {
+        read: false,
+        tone,
+        stichera: stichera.map(s => ({ text: s.text, verse: s.verse, tone })),
+      };
+      const eothinonNum  = date ? getEothinon(date) : null;
+      const eothinonData = eothinonNum ? sources.eothinon?.[String(eothinonNum)] : null;
+      if (eothinonData?.doxastikon) {
+        lauds.doxastikon = {
+          text:    eothinonData.doxastikon,
+          tone:    eothinonData.tone,
+          author:  `Eothinon ${eothinonNum}`,
+          _source: eothinonData._source,
+        };
+      }
+      lauds._source = matinsSource;
+      spec.lauds = lauds;
+    }
+  }
+}
+
 let _crossSundayOverlay = null;
 function _applyCrossSundayOverlay(spec) {
   if (!_crossSundayOverlay) {
@@ -735,6 +793,14 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources) {
   // Final troparion (for aposticha path)
   if (useSmallDoxology && menaionData.troparion) {
     spec.finalTroparion = menaionData.troparion;
+  }
+
+  // Sunday-coincident menaion saint: restore the resurrectional Sunday skeleton
+  // (Gospel, Lauds, Great Doxology) that the weekday-shaped menaion branch above
+  // strips out. The saint's troparion / canon / hymns stay; we only fill the
+  // Sunday-required pieces the menaion file doesn't supply.
+  if (isSunday) {
+    _overlaySundayDefaults(spec, tone, season, date, sources);
   }
 
   return spec;

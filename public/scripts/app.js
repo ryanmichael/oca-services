@@ -291,10 +291,22 @@ function renderServiceList(daysList) {
 
     const rowsHtml = getServiceRows(day).map(row => {
       if (row.available) {
-        return `<button class="svc-row" data-date="${day.date}" data-svc="${row.key}">
+        const btn = `<button class="svc-row" data-date="${day.date}" data-svc="${row.key}">
           <span class="name">${row.name}</span>
           <span class="arrow">VIEW \u2192</span>
         </button>`;
+        // Discoverability hint: when Liturgy is served, expose Reader's
+        // Typika + Communion-of-Reserved-Gifts as alternatives one tap away
+        // (for Sundays/feasts where the priest can't celebrate).
+        if (row.key === 'liturgy') {
+          return btn + `<button class="svc-alt" data-date="${day.date}" data-svc="typika"
+              title="Reader's Service \u2014 when Divine Liturgy cannot be served">
+              Priest unavailable? \u2192 <span class="alt-link">Reader's Typika</span>
+              <span class="alt-sep">\u00b7</span>
+              <span class="alt-link" data-svc-alt="typikaCrg">Typika + Communion of Reserved Gifts</span>
+            </button>`;
+        }
+        return btn;
       }
       return `<button class="svc-row dimmed" disabled>
         <span class="name">${row.name}</span>
@@ -312,6 +324,14 @@ function renderServiceList(daysList) {
 
   listEl.querySelectorAll('.svc-row:not(.dimmed)').forEach(btn => {
     btn.addEventListener('click', () => openPanel(btn, btn.dataset.date, btn.dataset.svc));
+  });
+  listEl.querySelectorAll('.svc-alt').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Click on an inner ".alt-link" with data-svc-alt overrides the default.
+      const target = e.target.closest('[data-svc-alt]');
+      const svc = target ? target.dataset.svcAlt : btn.dataset.svc;
+      openPanel(btn, btn.dataset.date, svc);
+    });
   });
 
   initScrollTracker();

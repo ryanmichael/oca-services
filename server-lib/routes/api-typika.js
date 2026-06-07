@@ -16,6 +16,7 @@ function handle(req, res, ctx) {
     applyYouYour, tagBlocksWithOverlay,
     assembleTypika, renderServiceHTML, getDayLabel,
     getMenaionDayList, getOverlayRubrics,
+    calculatePascha,
   } = ctx;
 
   const url = req.url || '/';
@@ -63,10 +64,19 @@ function handle(req, res, ctx) {
     const typikaFixedResolved  = getOverlayFixed('typika',  translation) || typikaFixed;
     const vespersFixedResolved = getOverlayFixed('vespers', translation) || fixedTexts;
 
+    // "O Heavenly King" is omitted from Ascension (Pascha + 39) through the
+    // eve of Pentecost (Pascha + 48). spec.paschalOpening already covers
+    // Pascha + 0..38; this catches the awkward 10-day window after.
+    const DAY_MS = 86400000;
+    const dObj = new Date(date + 'T12:00:00Z');
+    const pascha = calculatePascha(dObj.getUTCFullYear());
+    const days = Math.round((dObj - pascha) / DAY_MS);
+    const omitHeavenlyKing = days >= 39 && days <= 48;
+
     let blocks;
     try {
       blocks = assembleTypika(calendarEntry, liturgyFixedResolved, typikaFixedResolved,
-        vespersFixedResolved, sources, { variant });
+        vespersFixedResolved, sources, { variant, omitHeavenlyKing });
     } catch (err) {
       console.error('assembleTypika error:', err);
       res.writeHead(500, { 'Content-Type': 'application/json' });

@@ -158,6 +158,20 @@ header,
 .svc-row.dimmed { opacity: .35; cursor: default; pointer-events: none; }
 .svc-row .soon  { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em; color: var(--muted); }
 
+/* "Priest unavailable?" hint under the Liturgy row, linking to Typika variants. */
+.svc-alt {
+  display: block; width: 100%; text-align: left;
+  background: none; border: none; border-left: 2px solid transparent;
+  padding: 2px 12px 8px 26px;
+  font-family: 'EB Garamond', serif; font-size: 12px; font-style: italic;
+  color: var(--muted); cursor: pointer;
+}
+.svc-alt .alt-link {
+  color: var(--rubric); border-bottom: 1px dotted var(--rubric); font-style: normal;
+}
+.svc-alt .alt-sep { margin: 0 6px; opacity: .5; }
+.svc-alt:hover .alt-link { border-bottom-style: solid; }
+
 /* ── RIGHT PANEL ── */
 .panel {
   width: 0; flex-shrink: 0;

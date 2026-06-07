@@ -40,12 +40,28 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   // ── 1. Opening ─────────────────────────────────────────────────────────────
   S('typ-opening', 'Opening', 'prayer', 'reader',
     typikaFixed.opening.prayersOfHolyFathers);
-  S('typ-glory-thee', 'Opening', 'prayer', 'reader',
-    typikaFixed.opening.glory);
 
-  // Heavenly King — from vespers-fixed (where it actually lives)
-  S('typ-hk', 'Opening', 'prayer', 'reader',
-    vespersFixed.prayers.heavenlyKing);
+  // Paschal-season opening substitution.
+  //   - Pascha through Leavetaking of Pascha (spec.paschalOpening = true):
+  //     "Christ is risen…" ×3 replaces "Glory to Thee + O Heavenly King".
+  //   - Ascension to Pentecost (opts.omitHeavenlyKing): the Heavenly King
+  //     prayer is omitted entirely; "Glory to Thee" is still said and a
+  //     rubric marks the omission.
+  //   - Otherwise: regular sequence. vespers-fixed.prayers.heavenlyKing
+  //     bundles "Glory to Thee, our God, glory to Thee." as its prefix, so
+  //     no separate Glory-to-Thee block is needed here.
+  if (spec.paschalOpening) {
+    S('typ-paschal', 'Opening', 'hymn', 'reader',
+      'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (Thrice)',
+      { label: 'Paschal Troparion' });
+  } else if (opts.omitHeavenlyKing) {
+    S('typ-glory-thee', 'Opening', 'prayer', 'reader',
+      typikaFixed.opening.glory);
+    S('typ-hk-omitted', 'Opening', 'rubric', null,
+      'During the period between Ascension and Pentecost, the prayer "O Heavenly King" is omitted.');
+  } else {
+    S('typ-hk', 'Opening', 'prayer', 'reader', vespersFixed.prayers.heavenlyKing);
+  }
 
   // Trisagion sequence (Holy God ×3 / Glory Both now / All-Holy Trinity /
   // Lord have mercy ×3 / Glory Both now / Our Father). Sourced from

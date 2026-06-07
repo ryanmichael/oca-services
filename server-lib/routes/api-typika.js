@@ -1,10 +1,13 @@
 'use strict';
 
-// GET /api/typika?date=YYYY-MM-DD[&as=typika|typika-crg][&format=html][&translation=...]
+// GET /api/typika?date=YYYY-MM-DD[&as=typika|typika-deacon|typika-crg][&format=html][&translation=...]
 //
-// Reader's Typika (?as=typika, default) or Reader's Typika with Communion of
-// the Reserved Gifts (?as=typika-crg). Reuses the same calendar / Apostle /
-// Gospel resolution as /api/liturgy — Orthocal-backed via buildLiturgyFromOrthocal.
+// Reader's Typika in three forms:
+//   - ?as=typika (default) — no clergy
+//   - ?as=typika-deacon    — deacon present (deacon-led litanies, Gospel framing) but no Reserved Gifts
+//   - ?as=typika-crg       — deacon present + Communion of the Reserved Gifts
+// Reuses the same calendar / Apostle / Gospel resolution as /api/liturgy —
+// Orthocal-backed via buildLiturgyFromOrthocal.
 
 function handle(req, res, ctx) {
   const {
@@ -24,7 +27,10 @@ function handle(req, res, ctx) {
   const date = (q.date || '').trim();
   const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
   const format  = (q.format  || '').trim().toLowerCase();
-  const variant = (q.as === 'typika-crg' || q.as === 'crg') ? 'crg' : 'reader';
+  const variant =
+      (q.as === 'typika-crg'    || q.as === 'crg')    ? 'crg'
+    : (q.as === 'typika-deacon' || q.as === 'deacon') ? 'deacon'
+    :                                                   'reader';
   const translation = resolveTranslation(q);
   const style       = resolveStyle(q, translation);
 
@@ -114,9 +120,10 @@ function handle(req, res, ctx) {
       }
     }
 
-    const serviceName = variant === 'crg'
-      ? "Reader's Typika with Communion of the Reserved Gifts"
-      : "Reader's Typika";
+    const serviceName =
+        variant === 'crg'    ? "Reader's Typika with Communion of the Reserved Gifts"
+      : variant === 'deacon' ? "Reader's Typika (with Deacon)"
+      :                        "Reader's Typika";
 
     if (format === 'html') {
       const toneLabel = tone ? ` · Tone ${tone}` : '';

@@ -7,6 +7,29 @@ const { _litTroparia, _litKontakia }                                  = require(
 const { _litTrisagion }                                                = require('./liturgy-parts/trisagion');
 const { _litProkeimenon, _litEpistle, _litAlleluia, _litGospel }       = require('./liturgy-parts/readings');
 const { _litCommunionHymn }                                            = require('./liturgy-parts/communion');
+const { _litAugmentedLitany }                                          = require('./liturgy-parts/litanies');
+const { _litLordsPrayer }                                              = require('./liturgy-parts/anaphora');
+const { _litThanksgiving }                                             = require('./liturgy-parts/thanksgiving');
+const { _litGreatLitany }                                              = require('./liturgy-parts/opening');
+const { _litLittleLitany }                                             = require('./liturgy-parts/antiphons');
+
+// Strip priest-only blocks from a litany so a deacon-led-only variant doesn't
+// emit prayers (silent or aloud) that only a presbyter can pronounce. The
+// orphan choir "Amen" following such an exclamation is also dropped.
+function _stripPriestBlocks(blocks) {
+  const out = [];
+  for (let i = 0; i < blocks.length; i++) {
+    if (blocks[i].speaker === 'priest') {
+      // Skip the priest block; if the next block is a choir "Amen" answering it,
+      // skip that too.
+      const next = blocks[i + 1];
+      if (next && next.speaker === 'choir' && /amen/i.test(next.text || '')) i++;
+      continue;
+    }
+    out.push(blocks[i]);
+  }
+  return out;
+}
 
 // Pull a text value whether the spec stores it as a string or as { text }.
 function _pullText(v)  { return (v && typeof v === 'object') ? v.text : v; }
@@ -24,14 +47,23 @@ function _pullText(v)  { return (v && typeof v === 'object') ? v.text : v; }
  * @param {Object} vespersFixed  - Parsed fixed-texts/vespers-fixed.json (for trisagion+heavenlyKing+ourFather)
  * @param {Object} sources       - { octoechos, triodion, menaion, ... }
  * @param {Object} [opts]
- * @param {('reader'|'crg')} [opts.variant='reader'] - 'reader' for Reader's
- *     Typika; 'crg' splices in the Communion of the Reserved Gifts section.
+ * @param {('reader'|'deacon'|'crg')} [opts.variant='reader'] - Convenience
+ *     shorthand: 'reader' = no clergy, 'deacon' = deacon present (no CRG),
+ *     'crg' = deacon present + Communion of the Reserved Gifts. May also be
+ *     set explicitly via opts.hasDeacon / opts.includeCRG.
+ * @param {boolean} [opts.hasDeacon]   - Deacon present (overrides variant).
+ * @param {boolean} [opts.includeCRG]  - Splice in the CRG block (overrides variant).
  * @returns {ServiceBlock[]}
  */
 function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, sources, opts = {}) {
   warnings.reset();
-  const variant = opts.variant === 'crg' ? 'crg' : 'reader';
-  const isCRG   = variant === 'crg';
+  // Two independent axes — derive from explicit opts.hasDeacon / opts.includeCRG
+  // when set, otherwise from opts.variant. 'crg' implies both; 'deacon' just
+  // hasDeacon; 'reader' (or anything else) leaves both off.
+  const hasDeacon  = (opts.hasDeacon  != null) ? !!opts.hasDeacon
+                   : (opts.variant === 'crg' || opts.variant === 'deacon');
+  const includeCRG = (opts.includeCRG != null) ? !!opts.includeCRG
+                   : (opts.variant === 'crg');
   const spec    = calendarDay.liturgy || {};
   const blocks  = [];
   const S = (id, section, type, speaker, text, extras) =>
@@ -86,6 +118,14 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   S('typ-come', 'Opening', 'prayer', 'reader',
     typikaFixed.opening.comeLetUsWorship);
 
+  // ── 1b. Great Litany (deacon present only) ────────────────────────────────
+  // Canonical opening litany of the Divine Liturgy — "In peace let us pray
+  // to the Lord..." When a deacon serves at Reader's Typika, the parish
+  // ordinarily prays the full Great Litany here.
+  if (hasDeacon) {
+    blocks.push(..._stripPriestBlocks(_litGreatLitany(liturgyFixed)));
+  }
+
   // ── 2. First Antiphon (Psalm 102) ──────────────────────────────────────────
   const a1 = liturgyFixed['typical-antiphon-1'];
   {
@@ -94,6 +134,11 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
       S(`a1-v${i}`, section, 'verse', 'choir', v));
     S('a1-glory', section, 'doxology', 'choir',
       `${a1.glory} ${a1.gloryRefrain || ''}`.trim());
+  }
+
+  // Little Litany between First and Second Antiphons (deacon present only).
+  if (hasDeacon) {
+    blocks.push(..._stripPriestBlocks(_litLittleLitany(liturgyFixed, 'exclamation1', 'ant1')));
   }
 
   // ── 3. Second Antiphon (Psalm 145) ─────────────────────────────────────────
@@ -107,33 +152,37 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
       liturgyFixed['only-begotten-son']);
   }
 
+  // Little Litany between Second Antiphon and Beatitudes (deacon present only).
+  if (hasDeacon) {
+    blocks.push(..._stripPriestBlocks(_litLittleLitany(liturgyFixed, 'exclamation2', 'ant2')));
+  }
+
   // ── 4. Beatitudes (Reader's Typika form: verses + "In Thy Kingdom" refrain) ─
   // The Liturgy version interleaves canon-derived troparia between verses;
   // Reader's Typika uses only the fixed "In Thy Kingdom remember us" refrain.
   {
     const section = 'The Beatitudes';
-    const verses  = liturgyFixed.beatitudes.verses; // [refrain, 9 beatitudes, Glory, Both now]
+    // verses[0] = "In Thy Kingdom" refrain itself
+    // verses[1..10] = 10 Gospel verses (Matt 5:3–12, ending with "Rejoice...")
+    // verses[11] = Glory, verses[12] = Both now (unused — we use the dedicated
+    // typikaFixed Glory/Both-now strings, which are scoped to the refrain block).
+    const verses  = liturgyFixed.beatitudes.verses;
     const refrain = typikaFixed.beatitudeRefrains.inThyKingdom;
-    // Standard Reader's form: refrain ×3 at start, then each beatitude verse
-    // followed by the refrain, then Glory + refrain, then Both now + refrain.
-    S('beat-refrain-0', section, 'hymn', 'choir', `${refrain} (Thrice)`);
-    // verses[0] is the "In Thy Kingdom" refrain itself in the data; the 9
-    // beatitudes are verses[1..9]; commentary verses 10-11; Glory + Both-now
-    // are verses[11]+[12].
+    // Rubric so it's unambiguous to the choir that the refrain follows every verse.
+    S('beat-rubric', section, 'rubric', null,
+      'The choir sings the refrain "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom" after each verse.');
+    S('beat-refrain-0', section, 'response', 'choir',
+      `${refrain} (Thrice)`, { label: 'Refrain' });
     for (let i = 1; i <= 10; i++) {
-      S(`beat-v${i}`, section, 'verse', 'choir', verses[i]);
-      S(`beat-r${i}`, section, 'hymn',  'choir', refrain);
+      S(`beat-v${i}`, section, 'verse',    'choir', verses[i]);
+      S(`beat-r${i}`, section, 'response', 'choir', refrain, { label: 'Refrain' });
     }
-    // Verse 10: Rejoice and be exceeding glad
-    S('beat-v11', section, 'verse', 'choir', verses[11]);
-    S('beat-r11', section, 'hymn',  'choir', refrain);
-    // Glory + Both now
-    S('beat-glory', section, 'doxology', 'choir',
+    S('beat-glory',    section, 'doxology', 'choir',
       typikaFixed.beatitudeRefrains.glory);
-    S('beat-r-glory', section, 'hymn', 'choir', refrain);
-    S('beat-bothnow', section, 'doxology', 'choir',
+    S('beat-r-glory',  section, 'response', 'choir', refrain, { label: 'Refrain' });
+    S('beat-bothnow',  section, 'doxology', 'choir',
       typikaFixed.beatitudeRefrains.bothNow);
-    S('beat-r-bothnow', section, 'hymn', 'choir', refrain);
+    S('beat-r-bothnow',section, 'response', 'choir', refrain, { label: 'Refrain' });
   }
 
   // ── 5. Troparia + Kontakia (from the Liturgy spec) ─────────────────────────
@@ -151,22 +200,18 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   blocks.push(...trisBlocks);
 
   // ── 7. Prokeimenon, Apostle, Alleluia, Gospel ──────────────────────────────
-  // Reuse Liturgy reading helpers. They already render the deacon's "Wisdom! /
-  // Let us attend!" framing — in CRG variant we have a deacon, so that's right.
-  // In plain reader variant we override the speakers after rendering.
+  // Reuse Liturgy reading helpers. They render the deacon's "Wisdom! / Let us
+  // attend!" framing. When no deacon serves, swap deacon/priest → reader.
   const readingBlocks = [
     ..._litProkeimenon(spec.prokeimenon),
     ..._litEpistle(spec.epistle),
     ..._litAlleluia(spec.alleluia),
     ..._litGospel(spec.gospel),
   ]
-  // Drop the priest's "Peace be unto thee" blessing after the Epistle in
-  // both variants — it's addressed by a priest TO the reader, not said by
-  // the reader or deacon themselves. Same for any other priest-blessing.
+  // Drop the priest's "Peace be unto thee" blessing after the Epistle —
+  // addressed by a priest TO the reader, not said by the reader or deacon.
   .filter(b => b.id !== 'ep-peace' && b.id !== 'ep-peace-r');
-  if (!isCRG) {
-    // Reader-variant: also swap deacon→reader so the reader picks up the
-    // "Wisdom! / Let us attend!" framings the deacon would normally say.
+  if (!hasDeacon) {
     for (const b of readingBlocks) {
       if (b.speaker === 'deacon') b.speaker = 'reader';
       if (b.speaker === 'priest') b.speaker = 'reader';
@@ -175,6 +220,13 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   blocks.push(...readingBlocks);
 
   // Skip Homily (no clergy preaching at Reader's Typika).
+
+  // ── 7b. Augmented Litany (deacon present only) ─────────────────────────────
+  // Canonically this is the Litany of Fervent Supplication after the Gospel
+  // sequence. Priest exclamations are stripped since no priest serves.
+  if (hasDeacon) {
+    blocks.push(..._stripPriestBlocks(_litAugmentedLitany(liturgyFixed)));
+  }
 
   // ── 8. After the Gospel ────────────────────────────────────────────────────
   {
@@ -197,13 +249,20 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   // ── 10. After-Creed prayer (Remit, pardon...) + Our Father ────────────────
   S('typ-remit', 'After the Creed', 'prayer', 'reader',
     typikaFixed.afterCreed.remitPardon);
+  // Deacon-led Litany before the Lord's Prayer when a deacon serves. Strip
+  // priest exclamations and the helper's own emission of the Lord's Prayer
+  // text (typ-of below covers it).
+  if (hasDeacon) {
+    blocks.push(..._stripPriestBlocks(_litLordsPrayer(false, liturgyFixed))
+      .filter(b => b.id !== 'lords-prayer'));
+  }
   S('typ-of', "The Lord's Prayer", 'prayer', 'all',
     liturgyFixed['lords-prayer'].text);
   S('typ-of-doxology', "The Lord's Prayer", 'prayer', 'reader',
     typikaFixed.afterCreed.doxologyByReader);
 
   // ── 11. [CRG only] Communion of the Reserved Gifts ─────────────────────────
-  if (isCRG) {
+  if (includeCRG) {
     const section = 'Communion of the Reserved Gifts';
     const cr = typikaFixed.communionReserved;
     const pc = liturgyFixed['pre-communion'];
@@ -230,6 +289,10 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
     // Reader's short thanksgiving.
     S('crg-thanks', section, 'prayer', 'reader',
       _pullText(cr.readerPostCommunion));
+
+    // Deacon-led Litany of Thanksgiving — Communion has actually been
+    // distributed, so the deacon may say the petitions. Strip priest exclamation.
+    blocks.push(..._stripPriestBlocks(_litThanksgiving(false, liturgyFixed)));
   }
 
   // ── 12. Closing ────────────────────────────────────────────────────────────

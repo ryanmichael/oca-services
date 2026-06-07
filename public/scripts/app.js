@@ -86,14 +86,14 @@ function styleParam() {
   return activeStyle ? `&style=${encodeURIComponent(activeStyle)}` : '';
 }
 
-/** Renders the Liturgy ⇄ Reader's Typika ⇄ Typika+CRG mode switcher, shown
- *  in the panel header next to the translation indicator. Visible only when
- *  the active service is one of those three; clicking a link re-opens the
- *  panel as the other mode. */
+/** Renders the Liturgy ⇄ Reader's Typika ⇄ Typika+Deacon ⇄ Typika+CRG mode
+ *  switcher, shown in the panel header next to the translation indicator.
+ *  Visible only when the active service is one of those four; clicking a link
+ *  re-opens the panel as the other mode. */
 function updateServiceModeSwitcher(date, svcType) {
   const el = document.getElementById('p-service-mode');
   if (!el) return;
-  const modes = ['liturgy', 'typika', 'typikaCrg'];
+  const modes = ['liturgy', 'typika', 'typikaDeacon', 'typikaCrg'];
   if (!modes.includes(svcType)) {
     el.hidden = true;
     el.innerHTML = '';
@@ -105,9 +105,10 @@ function updateServiceModeSwitcher(date, svcType) {
   };
   el.innerHTML =
     `<span class="sm-label">Serve as:</span>` +
-    link('liturgy',   'Divine Liturgy') +
-    link('typika',    "Reader's Typika") +
-    link('typikaCrg', 'Typika + Communion of Reserved Gifts');
+    link('liturgy',      'Divine Liturgy') +
+    link('typika',       "Reader's Typika") +
+    link('typikaDeacon', "Reader's Typika + Deacon") +
+    link('typikaCrg',    'Typika + Communion of Reserved Gifts');
   el.hidden = false;
   el.querySelectorAll('.sm-link:not(.active)').forEach(a => {
     a.addEventListener('click', () => {
@@ -161,6 +162,7 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'kneelingVespers'   ? '/api/kneeling-vespers'
                  : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'typika'            ? '/api/typika'
+                 : svcType === 'typikaDeacon'      ? '/api/typika?as=typika-deacon'
                  : svcType === 'typikaCrg'         ? '/api/typika?as=typika-crg'
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
@@ -291,22 +293,10 @@ function renderServiceList(daysList) {
 
     const rowsHtml = getServiceRows(day).map(row => {
       if (row.available) {
-        const btn = `<button class="svc-row" data-date="${day.date}" data-svc="${row.key}">
+        return `<button class="svc-row" data-date="${day.date}" data-svc="${row.key}">
           <span class="name">${row.name}</span>
           <span class="arrow">VIEW \u2192</span>
         </button>`;
-        // Discoverability hint: when Liturgy is served, expose Reader's
-        // Typika + Communion-of-Reserved-Gifts as alternatives one tap away
-        // (for Sundays/feasts where the priest can't celebrate).
-        if (row.key === 'liturgy') {
-          return btn + `<button class="svc-alt" data-date="${day.date}" data-svc="typika"
-              title="Reader's Service \u2014 when Divine Liturgy cannot be served">
-              Priest unavailable? \u2192 <span class="alt-link">Reader's Typika</span>
-              <span class="alt-sep">\u00b7</span>
-              <span class="alt-link" data-svc-alt="typikaCrg">Typika + Communion of Reserved Gifts</span>
-            </button>`;
-        }
-        return btn;
       }
       return `<button class="svc-row dimmed" disabled>
         <span class="name">${row.name}</span>
@@ -325,15 +315,6 @@ function renderServiceList(daysList) {
   listEl.querySelectorAll('.svc-row:not(.dimmed)').forEach(btn => {
     btn.addEventListener('click', () => openPanel(btn, btn.dataset.date, btn.dataset.svc));
   });
-  listEl.querySelectorAll('.svc-alt').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Click on an inner ".alt-link" with data-svc-alt overrides the default.
-      const target = e.target.closest('[data-svc-alt]');
-      const svc = target ? target.dataset.svcAlt : btn.dataset.svc;
-      openPanel(btn, btn.dataset.date, svc);
-    });
-  });
-
   initScrollTracker();
 }
 
@@ -373,6 +354,7 @@ async function _showPanel(rowEl, date, svcType) {
                  : svcType === 'kneelingVespers'  ? 'KNEELING VESPERS OF PENTECOST'
                  : svcType === 'matins'          ? 'MATINS'
                  : svcType === 'typika'          ? "READER'S TYPIKA"
+                 : svcType === 'typikaDeacon'    ? "READER'S TYPIKA WITH DEACON"
                  : svcType === 'typikaCrg'       ? "READER'S TYPIKA WITH COMMUNION OF THE RESERVED GIFTS"
                  : 'GREAT VESPERS';
   document.getElementById('p-svc').textContent = svcLabel;

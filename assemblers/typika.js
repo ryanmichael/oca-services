@@ -143,8 +143,12 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   // ── 6. Trisagion (before the readings) ─────────────────────────────────────
   // Skip the Slavonic pre-Trisagion dialogue (Let us pray to the Lord / Save
   // the pious / hear us / unto ages) — that belongs to clergy. Just sing
-  // Trisagion (or substitution per spec.trisagion).
-  blocks.push(..._litTrisagion(spec.trisagion, liturgyFixed));
+  // Trisagion (or substitution per spec.trisagion). Then drop the closing
+  // "Peace be unto all" / "And to thy spirit" blessing — that's a priestly
+  // prerogative not exercised by reader or deacon-alone.
+  const trisBlocks = _litTrisagion(spec.trisagion, liturgyFixed)
+    .filter(b => b.id !== 'tris-peace' && b.id !== 'tris-peace-resp');
+  blocks.push(...trisBlocks);
 
   // ── 7. Prokeimenon, Apostle, Alleluia, Gospel ──────────────────────────────
   // Reuse Liturgy reading helpers. They already render the deacon's "Wisdom! /
@@ -155,10 +159,14 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
     ..._litEpistle(spec.epistle),
     ..._litAlleluia(spec.alleluia),
     ..._litGospel(spec.gospel),
-  ];
+  ]
+  // Drop the priest's "Peace be unto thee" blessing after the Epistle in
+  // both variants — it's addressed by a priest TO the reader, not said by
+  // the reader or deacon themselves. Same for any other priest-blessing.
+  .filter(b => b.id !== 'ep-peace' && b.id !== 'ep-peace-r');
   if (!isCRG) {
-    // Reader leads everything — swap deacon→reader, drop the priest's
-    // "Peace be unto thee" after the Epistle (not said with no priest).
+    // Reader-variant: also swap deacon→reader so the reader picks up the
+    // "Wisdom! / Let us attend!" framings the deacon would normally say.
     for (const b of readingBlocks) {
       if (b.speaker === 'deacon') b.speaker = 'reader';
       if (b.speaker === 'priest') b.speaker = 'reader';

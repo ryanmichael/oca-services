@@ -565,7 +565,13 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
   // Mon–Sat of Holy Week have special services (Bridegroom, Passion Gospels,
   // Lamentations). Bright Week has Paschal Matins/Hours.
   // Palm Sunday keeps regular Sunday Matins (with festal content).
-  if ((season === 'holyWeek' && !isSunday) || season === 'brightWeek') return null;
+  // EXCEPTION: a Great Feast falling in this window keeps its festal propers
+  // (Typikon rubric for "Annunciation on Holy ___"). The canonical case is
+  // Old-Style Annunciation — Julian Mar 25 maps to early-to-mid-April civil,
+  // which can land inside Holy Week (e.g. 2026-04-07 = Holy Tuesday).
+  const isHolyWeekday = season === 'holyWeek' && !isSunday;
+  const isBright      = season === 'brightWeek';
+  if ((isHolyWeekday || isBright) && !feastKey) return null;
 
   // ── Moveable-feast / weekday festal matins (Pentecost, Ascension, …) ────
   // Tried first so that a feast falling on a weekday gets full festal
@@ -578,6 +584,10 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
   if (feastKey) {
     const festalSpec = _loadFestalMatins(feastKey, season, dow, tone);
     if (festalSpec) return festalSpec;
+    // No festal file AND the menaion has no matins data either — nothing
+    // meaningful to render in Holy/Bright Week; bail rather than emit a
+    // weekday stub through the fallback below.
+    if ((isHolyWeekday || isBright) && !menaionData?.matins) return null;
   }
 
   // ── Sunday Matins from Octoechos ──────────────────────────────────────────

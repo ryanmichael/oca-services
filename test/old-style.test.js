@@ -21,7 +21,8 @@ const {
   JULIAN_OFFSET_DAYS,
 } = require('../calendar-rules');
 
-const { resolveStyle } = require('../server-lib/overlays/style');
+const { resolveStyle }    = require('../server-lib/overlays/style');
+const { buildMatinsSpec } = require('../server-lib/sources/matins-spec');
 
 function utc(dateStr) {
   return new Date(dateStr + 'T12:00:00Z');
@@ -124,6 +125,26 @@ describe('Old-Style calendar — feast-rank consequences', () => {
   it('Old-Style Annunciation (Apr 7) is a Great Feast → Liturgy served', () => {
     const d = utc('2026-04-07');
     assert.equal(isLiturgyServed(d, 'old'), true);
+  });
+});
+
+describe('Old-Style calendar — fixed feast inside Holy/Bright Week', () => {
+  // In 2026, civil Apr 7 = Julian Mar 25 (Annunciation) lands on Holy Tuesday.
+  // The Typikon rubric for "Annunciation on Holy ___" keeps the festal propers;
+  // the matins route must not return null just because the season is holyWeek.
+  it('Old-Style Annunciation in Holy Week returns festal matins (not null)', () => {
+    const d    = utc('2026-04-07');
+    const spec = buildMatinsSpec('2026-04-07', d, 'tuesday', 'holyWeek', 8, {}, 'old');
+    assert.notEqual(spec, null, 'buildMatinsSpec returned null — Holy Week guard ate the great feast');
+    assert.equal(spec.feastRank, 'greatFeast');
+    assert.ok(spec.canon,  'festal canon missing');
+    assert.ok(spec.gospel, 'festal gospel missing');
+  });
+
+  it('New-Style Apr 7 (no feast) still returns null in Holy Week', () => {
+    const d    = utc('2026-04-07');
+    const spec = buildMatinsSpec('2026-04-07', d, 'tuesday', 'holyWeek', 8, {}, 'new');
+    assert.equal(spec, null, 'plain Holy Tuesday should still 404 for regular matins');
   });
 });
 

@@ -489,7 +489,17 @@
     "final": "Holy Immortal, have mercy on us."
   },
 
-  "trisagion-cross": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify.",
+  "trisagion-cross": {
+    "text": "Before Thy Cross, we bow down in worship, O Master, and Thy holy Resurrection we glorify.",
+    "repetitions": 3,
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "final": "And Thy holy Resurrection we glorify."
+  },
 
-  "trisagion-baptismal": "As many as have been baptized into Christ, have put on Christ. Alleluia."
+  "trisagion-baptismal": {
+    "text": "As many as have been baptized into Christ, have put on Christ. Alleluia.",
+    "repetitions": 3,
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "final": "Have put on Christ. Alleluia."
+  }
 }

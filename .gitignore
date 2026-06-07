@@ -26,6 +26,8 @@ fix-booklet-blanks.md
 2026-10-03
 node_modules
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/worktrees/
 
 # Per-user MCP config (contains absolute paths)
 .mcp.json

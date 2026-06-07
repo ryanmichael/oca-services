@@ -21,6 +21,32 @@ const {
 
 const { getMenaionRanked }      = require('./menaion');
 const { buildBeatitudesTroparia } = require('./beatitudes');
+
+// Per-commemoration overrides applied when the Menaion DB injects a known
+// troparion or kontakion. Lookup is by exact menaion title. Lets us swap the
+// translation/wording for hymns where the DB's translation differs from the
+// parish wording. Keyed on title; each entry may override the troparion text,
+// kontakion text, tone, or the rubric prefix. Source attribution lives in the
+// value so the choice is auditable.
+//
+// HTM = Holy Transfiguration Monastery, Boston — the classic "crimson and
+// fine linen" rendering of the Synaxis of All Saints troparion (Greek
+// πορφύρα → crimson rather than purple). Default chosen because the OCA
+// wording from Orthocal reads "purple and linen", but several parishes (and
+// most published booklets) sing the HTM wording.
+const MENAION_HYMN_OVERRIDES = {
+  'Synaxis of All Saints': {
+    _source: 'HTM-Boston',
+    troparion: {
+      tone: 4,
+      text: 'As with crimson and fine linen is Thy Church adorned throughout the world with the blood of Thy Martyrs; through them she crieth out to Thee, O Christ God: Send down upon Thy people Thy compassions, grant peace to Thy commonwealth, and to our souls great mercy.',
+    },
+    kontakion: {
+      tone: 8,
+      text: 'As first-fruits of nature unto the Planter of created things, the world doth offer to Thee, O Lord, the God-bearing Martyrs. By their entreaties, through the Theotokos, preserve Thy Church and the fullness thereof in profound peace, O most merciful One.',
+    },
+  },
+};
 const {
   GREAT_FEAST_VARIANTS,
   PENTECOSTARION_SUNDAY_OVERRIDES,
@@ -152,7 +178,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
       for (const comm of ranked.notable) {
         const trop = comm.troparia.find(t => t.type === 'troparion');
         if (trop) {
-          troparia.push({ tone: trop.tone, rubric: `Troparion of ${comm.title}, Tone ${trop.tone}:`, text: trop.text });
+          const ovr = MENAION_HYMN_OVERRIDES[comm.title]?.troparion;
+          const tone = ovr?.tone ?? trop.tone;
+          const text = ovr?.text ?? trop.text;
+          troparia.push({ tone, rubric: `Troparion of ${comm.title}, Tone ${tone}:`, text });
         }
       }
     }
@@ -177,7 +206,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
       for (const comm of ranked.notable) {
         const kont = comm.troparia.find(t => t.type === 'kontakion');
         if (kont) {
-          kontakia.push({ tone: kont.tone, rubric: `Kontakion of ${comm.title}, Tone ${kont.tone}:`, text: kont.text });
+          const ovr = MENAION_HYMN_OVERRIDES[comm.title]?.kontakion;
+          const tone = ovr?.tone ?? kont.tone;
+          const text = ovr?.text ?? kont.text;
+          kontakia.push({ tone, rubric: `Kontakion of ${comm.title}, Tone ${tone}:`, text });
         }
       }
     }

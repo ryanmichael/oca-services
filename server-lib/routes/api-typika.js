@@ -12,7 +12,7 @@ function handle(req, res, ctx) {
     parseQuery, formatDate,
     getCalendarEntry,
     buildLiturgyFromOrthocal, fetchOrthocalDay,
-    getLiturgyFixed, resolveTranslation, resolveStyle,
+    getLiturgyFixed, getOverlayFixed, resolveTranslation, resolveStyle,
     applyYouYour, tagBlocksWithOverlay,
     assembleTypika, renderServiceHTML, getDayLabel,
     getMenaionDayList, getOverlayRubrics,
@@ -60,11 +60,13 @@ function handle(req, res, ctx) {
     }
 
     const liturgyFixedResolved = getLiturgyFixed(translation);
+    const typikaFixedResolved  = getOverlayFixed('typika',  translation) || typikaFixed;
+    const vespersFixedResolved = getOverlayFixed('vespers', translation) || fixedTexts;
 
     let blocks;
     try {
-      blocks = assembleTypika(calendarEntry, liturgyFixedResolved, typikaFixed,
-        fixedTexts, sources, { variant });
+      blocks = assembleTypika(calendarEntry, liturgyFixedResolved, typikaFixedResolved,
+        vespersFixedResolved, sources, { variant });
     } catch (err) {
       console.error('assembleTypika error:', err);
       res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -72,7 +74,13 @@ function handle(req, res, ctx) {
       return;
     }
 
+    // Tag blocks against each of the three fixed-text sources Typika draws from
+    // (liturgy: antiphons, Creed, Lord's Prayer, Psalm 33; typika: opening,
+    // beatitude refrains, after-Gospel, CRG; vespers: Heavenly King, Trisagion
+    // sequence, mostHolyTrinity). Whichever cascade introduced the string wins.
     tagBlocksWithOverlay(blocks, 'liturgy', translation);
+    tagBlocksWithOverlay(blocks, 'typika',  translation);
+    tagBlocksWithOverlay(blocks, 'vespers', translation);
 
     if (pronoun === 'yy') {
       for (const b of blocks) {

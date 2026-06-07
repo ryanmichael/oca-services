@@ -132,6 +132,7 @@ function boot() {
 
   const typikaFixed = loadOrExit('Typika fixed texts', () => {
     const t = loadJSON('fixed-texts/typika-fixed.json');
+    registerBaseFixed('typika', t);
     console.log('Typika fixed texts loaded.');
     return t;
   });

@@ -21,10 +21,17 @@ const http = require('http');
 
 const cal = require('../calendar-rules.js');
 
-const YEAR = Number(process.argv.find(a => a.startsWith('--year='))?.slice(7) || 2026);
-const FROM = process.argv.find(a => a.startsWith('--from='))?.slice(7) || `${YEAR}-01-01`;
-const TO   = process.argv.find(a => a.startsWith('--to='))?.slice(5)   || `${YEAR}-12-31`;
-const BASE = process.env.OCA_BASE || 'http://localhost:3000';
+const YEAR  = Number(process.argv.find(a => a.startsWith('--year='))?.slice(7) || 2026);
+const FROM  = process.argv.find(a => a.startsWith('--from='))?.slice(7) || `${YEAR}-01-01`;
+const TO    = process.argv.find(a => a.startsWith('--to='))?.slice(5)   || `${YEAR}-12-31`;
+const STYLE = process.argv.find(a => a.startsWith('--style='))?.slice(8) || 'new';
+const BASE  = process.env.OCA_BASE || 'http://localhost:3000';
+
+if (STYLE !== 'new' && STYLE !== 'old') {
+  console.error(`--style must be 'new' or 'old' (got '${STYLE}')`);
+  process.exit(1);
+}
+const STYLE_QS = STYLE === 'old' ? '&style=old' : '';
 
 const MONTH_NAMES = ['january','february','march','april','may','june',
                      'july','august','september','october','november','december'];
@@ -64,9 +71,21 @@ function* eachDate(from, to) {
   }
 }
 
-function menaionFileFor(iso) {
-  const [, m, d] = iso.split('-');
-  return `${MONTH_NAMES[Number(m) - 1]}-${d}.json`;
+function menaionFileFor(iso, style = 'new') {
+  // Under Old Style, civil YYYY-MM-DD maps to the Julian (M,D) 13 days earlier
+  // — and the menaion file is indexed by Julian (M,D), not civil.
+  let m, d;
+  if (style === 'old') {
+    const civil  = new Date(iso + 'T12:00:00Z');
+    const julian = cal.fixedFeastDate(civil, 'old');
+    m = julian.getUTCMonth() + 1;
+    d = String(julian.getUTCDate()).padStart(2, '0');
+  } else {
+    const parts = iso.split('-');
+    m = Number(parts[1]);
+    d = parts[2];
+  }
+  return `${MONTH_NAMES[m - 1]}-${d}.json`;
 }
 
 function classify(status, body, stubMax) {
@@ -80,12 +99,12 @@ function classify(status, body, stubMax) {
 
 async function probe(iso) {
   const dateObj = new Date(iso + 'T12:00:00Z');
-  const litServed = cal.isLiturgyServed(dateObj);
+  const litServed = cal.isLiturgyServed(dateObj, STYLE);
 
   const [m, v, l] = await Promise.all([
-    fetchJson(`${BASE}/api/matins?date=${iso}`),
-    fetchJson(`${BASE}/api/service?date=${iso}`),
-    litServed ? fetchJson(`${BASE}/api/liturgy?date=${iso}`) : Promise.resolve(null),
+    fetchJson(`${BASE}/api/matins?date=${iso}${STYLE_QS}`),
+    fetchJson(`${BASE}/api/service?date=${iso}${STYLE_QS}`),
+    litServed ? fetchJson(`${BASE}/api/liturgy?date=${iso}${STYLE_QS}`) : Promise.resolve(null),
   ]);
 
   const matins  = classify(m.status, m.body,  MATINS_STUB_MAX);
@@ -93,10 +112,10 @@ async function probe(iso) {
   const liturgy = l ? classify(l.status, l.body, LITURGY_STUB_MAX) : { tag: 'n/a', blocks: 0 };
 
   let feastRank = null, feastKey = null;
-  try { feastRank = cal.getFeastRank(dateObj) || null; } catch (_) {}
-  try { feastKey  = cal.getGreatFeastKey(dateObj) || null; } catch (_) {}
+  try { feastRank = cal.getFeastRank(dateObj, STYLE) || null; } catch (_) {}
+  try { feastKey  = cal.getGreatFeastKey(dateObj, STYLE) || null; } catch (_) {}
 
-  const menaionFile = menaionFileFor(iso);
+  const menaionFile = menaionFileFor(iso, STYLE);
   return {
     iso,
     dow: dateObj.getUTCDay(),
@@ -129,7 +148,7 @@ function hasMenaionMatinsBlock(file) {
 }
 
 (async () => {
-  console.log(`Coverage report: ${FROM} → ${TO} via ${BASE}`);
+  console.log(`Coverage report: ${FROM} → ${TO} via ${BASE} (style=${STYLE})`);
   const results = [];
   let i = 0;
   for (const iso of eachDate(FROM, TO)) {
@@ -154,13 +173,24 @@ function hasMenaionMatinsBlock(file) {
   const menaionNoMatins = results.filter(r => r.hasMenaion
                                             && !hasMenaionMatinsBlock(r.menaionFile));
 
+  // Style divergence: dates where the Julian calendar requires a Great Feast
+  // (under STYLE) but the rendered content falls below the stub threshold —
+  // i.e., the feast didn't materialize on the wire. Empty for style=new
+  // unless a great feast is genuinely broken; populated for style=old when
+  // the 13-day shift isn't being honored end-to-end.
+  const styleDivergence = results.filter(r => r.feastKey && (
+       r.matins.tag  === 'stub' || r.matins.tag  === 'no-service' || r.matins.tag  === 'error'
+    || r.vespers.tag === 'stub' || r.vespers.tag === 'no-service' || r.vespers.tag === 'error'
+    || (r.litServed && (r.liturgy.tag === 'stub' || r.liturgy.tag === 'no-service' || r.liturgy.tag === 'error'))
+  ));
+
   // --- emit markdown ---
   const out = [];
-  out.push(`# 2026 Service Coverage Report`);
+  out.push(`# ${YEAR} Service Coverage Report (style=${STYLE})`);
   out.push('');
   out.push(`Generated ${new Date().toISOString().slice(0, 19)} from ${BASE}`);
   out.push('');
-  out.push(`Range: ${FROM} → ${TO} (${results.length} dates)`);
+  out.push(`Range: ${FROM} → ${TO} (${results.length} dates) — calendar style: **${STYLE}**`);
   out.push('');
   out.push(`## Summary`);
   out.push('');
@@ -170,6 +200,7 @@ function hasMenaionMatinsBlock(file) {
   out.push(`- Dates with 4xx/5xx on any endpoint: **${error404.length}**`);
   out.push(`- Dates without menaion file but with elevated feast rank: **${noMenaionRank.length}**`);
   out.push(`- Dates with menaion file but no \`matins\` block: **${menaionNoMatins.length}**`);
+  out.push(`- Great-feast dates whose rendered content is missing/stub (style divergence): **${styleDivergence.length}**`);
   out.push('');
   out.push(`Stub thresholds: matins ≤${MATINS_STUB_MAX}, vespers ≤${VESPERS_STUB_MAX}, liturgy ≤${LITURGY_STUB_MAX} blocks.`);
   out.push('');
@@ -204,6 +235,25 @@ function hasMenaionMatinsBlock(file) {
   }
   out.push('');
 
+  out.push(`### Style divergence — Great-feast dates without full content`);
+  out.push('');
+  out.push(`Dates where \`getGreatFeastKey(date, '${STYLE}')\` returns a feast key but at least one`);
+  out.push(`endpoint falls below stub threshold or 404s. Under \`--style=old\`, populated rows mean the`);
+  out.push(`13-day Julian shift isn't reaching the service content. Sentinel cases: Old-Style Theophany`);
+  out.push(`(civil Jan 19 = Julian Jan 6) and Old-Style Nativity (civil Jan 7 = Julian Dec 25).`);
+  out.push('');
+  if (styleDivergence.length === 0) {
+    out.push('_None — every great-feast date renders full content under this style._');
+  } else {
+    out.push('| Date | Feast | Matins | Vespers | Liturgy | Menaion file |');
+    out.push('|------|-------|--------|---------|---------|--------------|');
+    for (const r of styleDivergence) {
+      const cell = (c) => `${c.tag}(${c.blocks})`;
+      out.push(`| ${r.iso} | ${r.feastKey} | ${cell(r.matins)} | ${cell(r.vespers)} | ${cell(r.liturgy)} | ${r.hasMenaion ? r.menaionFile : '_missing: ' + r.menaionFile + '_'} |`);
+    }
+  }
+  out.push('');
+
   out.push(`### Dates that 404 / error on any endpoint`);
   out.push('');
   if (error404.length === 0) {
@@ -227,12 +277,13 @@ function hasMenaionMatinsBlock(file) {
   for (const r of results) out.push(rowMd(r));
   out.push('');
 
-  const outPath = path.join(__dirname, 'reports', `coverage-${YEAR}.md`);
+  const suffix  = STYLE === 'old' ? '-old' : '';
+  const outPath = path.join(__dirname, 'reports', `coverage-${YEAR}${suffix}.md`);
   fs.writeFileSync(outPath, out.join('\n'));
   console.log(`\nWrote ${outPath}`);
 
   // Also dump raw JSON for downstream tooling.
-  const jsonPath = path.join(__dirname, 'reports', `coverage-${YEAR}.json`);
+  const jsonPath = path.join(__dirname, 'reports', `coverage-${YEAR}${suffix}.json`);
   fs.writeFileSync(jsonPath, JSON.stringify(results, null, 2));
   console.log(`Wrote ${jsonPath}`);
 })();

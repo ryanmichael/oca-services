@@ -1,0 +1,9 @@
+{
+  "name": "Antiochian (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "antiochian",
+  "style": "new",
+  "extends": ["antiochian-aocana"],
+  "description": "Antiochian Orthodox Christian Archdiocese of North America — curated default stack. Layers the AOCANA translation tradition over the base.",
+  "sources": "Curated by oca-services. Underlying texts: Antiochian Archdiocese Liturgikon and service text downloads."
+}

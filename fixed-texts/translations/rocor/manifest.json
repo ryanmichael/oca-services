@@ -1,0 +1,9 @@
+{
+  "name": "ROCOR (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "rocor",
+  "style": "old",
+  "extends": ["jordanville"],
+  "description": "Russian Orthodox Church Outside Russia — curated default stack. Layers the Jordanville translation tradition over the base and selects Old Calendar (Julian fixed feasts) per ROCOR practice.",
+  "sources": "Curated by oca-services. Underlying texts: Holy Trinity Monastery (Jordanville, NY) service books."
+}

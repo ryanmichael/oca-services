@@ -1,0 +1,9 @@
+{
+  "name": "OCA (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "oca",
+  "style": "new",
+  "extends": ["sts-sluzhebnik"],
+  "description": "Orthodox Church in America — curated default stack. Layers St. Tikhon's Sluzhebnik (clergy-facing fixed texts) over the OCA base; variable propers continue to come from OCA Music Downloads.",
+  "sources": "Curated by oca-services. Underlying texts: St. Tikhon's Seminary Press Sluzhebnik (2010); OCA Department of Liturgical Music & Translations DOCX downloads."
+}

@@ -17,7 +17,7 @@
     "kind": {
       "type": "string",
       "enum": ["tradition", "parish", "jurisdiction"],
-      "description": "`tradition` = cross-jurisdictional translation lineage (HTM-Boston, Hapgood, Jordanville). `parish` = local customization layered on a tradition. `jurisdiction` = reserved for jurisdiction-wide defaults; not yet in active use."
+      "description": "`tradition` = cross-jurisdictional translation lineage (HTM-Boston, Hapgood, Jordanville). `parish` = local customization layered on a tradition. `jurisdiction` = jurisdiction-wide curated default stack (OCA, ROCOR, Antiochian); typically empty `liturgy-fixed.json` plus an `extends` chain pointing at the canonical tradition for that jurisdiction. Selected via the jurisdiction pill in the settings picker."
     },
     "jurisdiction": {
       "oneOf": [
@@ -28,6 +28,11 @@
         { "type": "null" }
       ],
       "description": "Canonical jurisdiction tag used for picker filtering. `null` for cross-jurisdictional overlays (e.g. HTM-Boston). Mirrors `ALLOWED_JURISDICTIONS` in `server.js`."
+    },
+    "style": {
+      "type": "string",
+      "enum": ["new", "old"],
+      "description": "Calendar style this overlay implies. `new` = Revised Julian (most OCA/GOA/Antiochian); `old` = Julian fixed feasts (ROCOR, traditionalist parishes). Omit to inherit from the extends chain / base."
     },
     "extends": {
       "type": "array",

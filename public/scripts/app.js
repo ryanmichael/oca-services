@@ -1083,7 +1083,9 @@ async function loadTranslations() {
   }
 }
 
-/** Rebuilds the translation <select> based on the active jurisdiction filter. */
+/** Rebuilds the translation <select> based on the active jurisdiction filter.
+ *  Jurisdiction-kind overlays are not listed in the dropdown — they are
+ *  represented by the active jurisdiction pill itself. */
 function populateTranslationSelect() {
   const sel = document.getElementById('translation-select');
   if (!sel || !translationsCache) return;
@@ -1097,7 +1099,7 @@ function populateTranslationSelect() {
       ? all.filter(t => t.jurisdiction == null)
       : all.filter(t => t.jurisdiction === activeJurisdiction);
 
-  // Group by kind ('parish' first since they're most relevant, then 'tradition')
+  // Group by kind. Jurisdiction-kind overlays are excluded from the dropdown.
   const parishes = filtered.filter(t => t.kind === 'parish');
   const traditions = filtered.filter(t => t.kind === 'tradition');
 
@@ -1147,6 +1149,17 @@ function populateTranslationSelect() {
 function setJurisdiction(jur) {
   activeJurisdiction = jur;
   localStorage.setItem('jurisdiction', jur);
+  // If a jurisdiction-kind overlay exists for this jurisdiction, auto-apply
+  // it as the active translation. This is the "I'm OCA / ROCOR / Antiochian"
+  // one-click default. Picking 'all' or 'cross' doesn't change selection.
+  if (translationsCache && jur !== 'all' && jur !== 'cross') {
+    const all = translationsCache.translations || [];
+    const jOverlay = all.find(t => t.kind === 'jurisdiction' && t.jurisdiction === jur);
+    if (jOverlay && activeTranslation !== jOverlay.id) {
+      setTranslation(jOverlay.id);
+      return;
+    }
+  }
   syncSettingsUI();
 }
 

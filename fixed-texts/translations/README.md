@@ -31,7 +31,7 @@ Anything inside `fixed-texts/translations/<id>/` whose name starts with `_` is t
 | Field | Required | Notes |
 |---|---|---|
 | `name` | yes | Human-readable label shown in the settings picker. |
-| `kind` | yes | `tradition` for cross-jurisdictional translations (HTM-Boston, Hapgood), `parish` for local customizations, `jurisdiction` reserved for jurisdiction-wide defaults. |
+| `kind` | yes | `tradition` for cross-jurisdictional translation lineages (HTM-Boston, Hapgood). `parish` for local customizations. `jurisdiction` for jurisdiction-wide curated default stacks (OCA, ROCOR, Antiochian) — selectable via the picker pill, typically empty `liturgy-fixed.json` plus an `extends` chain pointing at the canonical tradition. |
 | `jurisdiction` | no | Filters the picker. Use `null` for cross-jurisdictional overlays. |
 | `extends` | no | Parent overlay ids (applied parent-first, then this overlay). Use `[]` (or omit) to layer only over the base file. |
 | `description` | no | Plain prose. Shown in the picker meta line. |
@@ -93,7 +93,23 @@ Include **only the keys that differ** from the layer above. Everything else is i
 }
 ```
 
-### Parish overlay extending a tradition
+### Jurisdiction overlay (curated default stack)
+
+```jsonc
+// fixed-texts/translations/oca/manifest.json
+{
+  "name": "OCA (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "oca",
+  "style": "new",
+  "extends": ["sts-sluzhebnik"],
+  "description": "OCA — curated default stack."
+}
+```
+
+### Parish overlay extending a jurisdiction
+
+Prefer extending the jurisdiction-kind overlay (not the tradition directly) so the parish inherits jurisdiction-wide defaults like `style` and any future jurisdiction-level rubrics. Cascade order resolves to `base → sts-sluzhebnik → oca → parish`.
 
 ```jsonc
 // fixed-texts/translations/st-john-damascus-tyler/manifest.json
@@ -101,8 +117,8 @@ Include **only the keys that differ** from the layer above. Everything else is i
   "name": "St. John of Damascus, Tyler, TX",
   "kind": "parish",
   "jurisdiction": "oca",
-  "extends": ["sts-sluzhebnik"],
-  "description": "Local customizations layered over the OCA's St. Tikhon's Sluzhebnik.",
+  "extends": ["oca"],
+  "description": "Local customizations layered through the OCA jurisdiction default.",
   "sources": "Parish service book"
 }
 ```

@@ -1,0 +1,9 @@
+{
+  "name": "Georgian (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "georgian",
+  "style": "old",
+  "extends": ["julian"],
+  "description": "Georgian Orthodox Church — curated default stack. Old Calendar (Julian fixed feasts) per Georgian Patriarchate practice. Text falls through to the base; layer a tradition or parish overlay on top for distinctive wording.",
+  "sources": "Curated by oca-services. Underlying calendar: julian/ overlay (13-day offset)."
+}

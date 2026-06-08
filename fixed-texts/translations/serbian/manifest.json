@@ -1,0 +1,9 @@
+{
+  "name": "Serbian (default)",
+  "kind": "jurisdiction",
+  "jurisdiction": "serbian",
+  "style": "old",
+  "extends": ["julian"],
+  "description": "Serbian Orthodox Church — curated default stack. Old Calendar (Julian fixed feasts) per Serbian Patriarchate practice. Text falls through to the base; layer a tradition or parish overlay on top for distinctive wording.",
+  "sources": "Curated by oca-services. Underlying calendar: julian/ overlay (13-day offset)."
+}

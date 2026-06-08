@@ -1167,6 +1167,16 @@ function setTranslation(translationId) {
   activeTranslation = translationId || '';
   if (activeTranslation) localStorage.setItem('translation', activeTranslation);
   else localStorage.removeItem('translation');
+  // Keep the jurisdiction pill in sync: if the chosen overlay declares a
+  // jurisdiction, switch the pill to it so the picker reads coherently
+  // (a parish under the OCA pill rather than 'All', etc.).
+  if (translationsCache && activeTranslation) {
+    const meta = (translationsCache.translations || []).find(t => t.id === activeTranslation);
+    if (meta && meta.jurisdiction && activeJurisdiction !== meta.jurisdiction) {
+      activeJurisdiction = meta.jurisdiction;
+      localStorage.setItem('jurisdiction', activeJurisdiction);
+    }
+  }
   syncSettingsUI();
   if (activeDate && activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);

@@ -63,8 +63,17 @@
           </div>
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
           <div class="panel-date-str" id="p-date"></div>
-          <div class="panel-translation" id="p-translation" hidden></div>
-          <div class="panel-service-mode" id="p-service-mode" hidden></div>
+          <div class="panel-meta-row" id="p-meta-row" hidden>
+            <span class="pmr-overlay" id="p-meta-overlay" hidden>
+              <span class="pmr-label">SERVICE TEXT:</span>
+              <span class="pmr-name" id="p-meta-overlay-name"></span>
+            </span>
+            <span class="pmr-sep" id="p-meta-sep" hidden>•</span>
+            <button class="pmr-type" id="p-meta-type-btn" hidden>
+              <span class="pmr-label">TYPE:</span>
+              <span class="pmr-name" id="p-meta-type-name"></span>
+            </button>
+          </div>
 
           <button class="panel-detail-toggle" id="p-detail-toggle">
             <span class="pdt-label" id="p-detail-label">DETAILS</span>
@@ -250,6 +259,44 @@
   </div>
 
 </div><!-- end .view-print -->
+
+<!-- ════════════════════════════════ VIEW: LITURGY VARIANT ═══════════════════ -->
+<div class="view view-print view-liturgy-variant" id="view-liturgy-variant">
+
+  <div class="print-hdr">
+    <button class="print-back" id="lv-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="print-view-body">
+    <div class="print-view-inner">
+      <div class="pd-title">SERVICE TYPE</div>
+      <div class="pd-options pd-options-stack">
+        <button class="pd-option" data-svc="liturgy">
+          <span class="pd-option-name">Standard</span>
+          <span class="pd-option-desc">The Divine Liturgy as celebrated by clergy</span>
+        </button>
+        <button class="pd-option" data-svc="typika">
+          <span class="pd-option-name">Reader's Typika</span>
+          <span class="pd-option-desc">Lay-led service of typika and obediential prayers when no priest is present</span>
+        </button>
+        <button class="pd-option" data-svc="typikaDeacon">
+          <span class="pd-option-name">Reader's Typika + Deacon</span>
+          <span class="pd-option-desc">Reader's Typika with deacon-led litanies</span>
+        </button>
+        <button class="pd-option" data-svc="typikaCrg">
+          <span class="pd-option-name">Typika + Communion of Reserved Gifts</span>
+          <span class="pd-option-desc">Typika followed by the rite of Communion from the Reserved Gifts</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .view-liturgy-variant -->
 
 <!-- ═══════════════════════════════════════ VIEW: SETTINGS ═════════════════════ -->
 <div class="view view-settings" id="view-settings">

@@ -282,32 +282,34 @@ header,
 .panel-date-str {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: var(--muted);
 }
-.panel-translation {
-  margin-top: 4px;
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-.panel-translation[hidden] { display: none; }
-.panel-translation .pt-label { color: var(--muted); }
-.panel-translation .pt-name  { color: var(--rubric); margin-left: 6px; font-style: normal; }
-.panel-service-mode {
+/* Single-line metadata row: SERVICE TEXT: <overlay> • TYPE: <variant>. */
+.panel-meta-row {
   margin-top: 6px;
   font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em;
   color: var(--muted);
   text-transform: uppercase;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
 }
-.panel-service-mode[hidden] { display: none; }
-.panel-service-mode .sm-label { color: var(--muted); margin-right: 8px; }
-.panel-service-mode .sm-link {
-  color: var(--muted); text-decoration: none; cursor: pointer;
+.panel-meta-row[hidden] { display: none; }
+.panel-meta-row .pmr-label { color: var(--muted); margin-right: 6px; }
+.panel-meta-row .pmr-name  { color: var(--rubric); font-style: normal; }
+.panel-meta-row .pmr-sep   { color: var(--muted); opacity: .6; }
+.panel-meta-row .pmr-sep[hidden],
+.panel-meta-row .pmr-overlay[hidden],
+.panel-meta-row .pmr-type[hidden] { display: none; }
+.panel-meta-row .pmr-type {
+  background: none; border: none; padding: 0; cursor: pointer;
+  font: inherit; letter-spacing: inherit; color: inherit;
+  text-transform: inherit;
   border-bottom: 1px dotted var(--muted);
-  margin-right: 10px;
+  transition: color .12s, border-bottom-color .12s;
 }
-.panel-service-mode .sm-link:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
-.panel-service-mode .sm-link.active {
-  color: var(--rubric); border-bottom-color: var(--rubric); cursor: default;
-}
+.panel-meta-row .pmr-type:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
+.panel-meta-row .pmr-type:hover .pmr-name { color: var(--rubric); }
+
+/* Stacked option list — used by the Liturgy variant picker, where 4 options
+   want to stack vertically instead of the print picker's 2-up row. */
+.pd-options-stack { flex-direction: column; gap: 12px; }
 /* Panel detail toggle */
 .panel-detail-toggle {
   display: flex; align-items: center; gap: 8px;

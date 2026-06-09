@@ -86,67 +86,55 @@ function styleParam() {
   return activeStyle ? `&style=${encodeURIComponent(activeStyle)}` : '';
 }
 
-/** Renders the Liturgy ⇄ Reader's Typika ⇄ Typika+Deacon ⇄ Typika+CRG mode
- *  switcher, shown in the panel header next to the translation indicator.
- *  Visible only when the active service is one of those four; clicking a link
- *  re-opens the panel as the other mode. */
-function updateServiceModeSwitcher(date, svcType) {
-  const el = document.getElementById('p-service-mode');
-  if (!el) return;
-  const modes = ['liturgy', 'typika', 'typikaDeacon', 'typikaCrg'];
-  if (!modes.includes(svcType)) {
-    el.hidden = true;
-    el.innerHTML = '';
-    return;
-  }
-  const link = (key, label) => {
-    const active = key === svcType ? ' active' : '';
-    return `<a class="sm-link${active}" data-svc="${key}" data-date="${date}">${label}</a>`;
-  };
-  el.innerHTML =
-    `<span class="sm-label">Serve as:</span>` +
-    link('liturgy',      'Divine Liturgy') +
-    link('typika',       "Reader's Typika") +
-    link('typikaDeacon', "Reader's Typika + Deacon") +
-    link('typikaCrg',    'Typika + Communion of Reserved Gifts');
-  el.hidden = false;
-  el.querySelectorAll('.sm-link:not(.active)').forEach(a => {
-    a.addEventListener('click', () => {
-      const newSvc = a.dataset.svc;
-      const d = a.dataset.date;
-      setUrlState(d, newSvc);
-      _showPanel(activeRow, d, newSvc);
-    });
-  });
-}
+const LITURGY_VARIANT_LABELS = {
+  liturgy:      'STANDARD',
+  typika:       "READER'S TYPIKA",
+  typikaDeacon: "READER'S TYPIKA + DEACON",
+  typikaCrg:    'TYPIKA + COMMUNION OF RESERVED GIFTS',
+};
 
-/** Shows or hides the translation indicator beneath the service date.
- *  Called after each service load with the response's `translation` field.
- *  Fetches /api/translations on first call to resolve the friendly name. */
-function updateTranslationIndicator(translationId) {
-  const el = document.getElementById('p-translation');
-  if (!el) return;
-  if (!translationId) {
-    el.hidden = true;
-    el.innerHTML = '';
-    return;
-  }
-  // Resolve friendly name from the cached list. Falls back to the raw id
-  // while the list loads; refreshes once the fetch resolves.
-  const render = (name) => {
-    el.innerHTML = `<span class="pt-label">Service text:</span><span class="pt-name">${name}</span>`;
-    el.hidden = false;
-  };
-  const fromCache = translationsCache?.translations?.find(t => t.id === translationId);
-  if (fromCache) {
-    render(fromCache.name);
+/** Renders the single-row metadata under the panel title:
+ *  `SERVICE TEXT: <overlay> • TYPE: <variant>`. Either half can be hidden
+ *  independently; the dot only shows when both are visible. The TYPE button
+ *  opens the liturgy-variant screenfill. */
+function updateMetaRow(translationId, svcType, date) {
+  const row     = document.getElementById('p-meta-row');
+  const ovWrap  = document.getElementById('p-meta-overlay');
+  const ovName  = document.getElementById('p-meta-overlay-name');
+  const sep     = document.getElementById('p-meta-sep');
+  const typeBtn = document.getElementById('p-meta-type-btn');
+  const typeNm  = document.getElementById('p-meta-type-name');
+  if (!row) return;
+
+  // Overlay half — visible when an overlay is active. Resolves friendly name
+  // from the cached list; falls back to the raw id while the list loads.
+  const hasOverlay = !!translationId;
+  if (hasOverlay) {
+    const fromCache = translationsCache?.translations?.find(t => t.id === translationId);
+    ovName.textContent = (fromCache?.name || translationId).toUpperCase();
+    ovWrap.hidden = false;
+    if (!fromCache) {
+      loadTranslations().then(() => {
+        const t = translationsCache?.translations?.find(t => t.id === translationId);
+        if (t) ovName.textContent = t.name.toUpperCase();
+      });
+    }
   } else {
-    render(translationId);
-    loadTranslations().then(() => {
-      const t = translationsCache?.translations?.find(t => t.id === translationId);
-      if (t) render(t.name);
-    });
+    ovWrap.hidden = true;
   }
+
+  // Type half — visible when active service is one of the Liturgy variants.
+  const hasType = svcType in LITURGY_VARIANT_LABELS;
+  if (hasType) {
+    typeNm.textContent = LITURGY_VARIANT_LABELS[svcType];
+    typeBtn.dataset.date = date;
+    typeBtn.hidden = false;
+  } else {
+    typeBtn.hidden = true;
+  }
+
+  sep.hidden = !(hasOverlay && hasType);
+  row.hidden = !(hasOverlay || hasType);
 }
 
 async function fetchService(date, svcType, pronoun = 'tt') {
@@ -408,11 +396,9 @@ async function loadPanelContent(date, svcType) {
     document.getElementById('p-date').textContent = dateStr;
     document.getElementById('print-header-date').textContent = dateStr;
 
-    // Translation indicator \u2014 shows when an overlay is active for this response.
-    // Resolves the friendly name from the cached /api/translations list (fetched
-    // lazily so it doesn't block the first paint).
-    updateTranslationIndicator(data.translation);
-    updateServiceModeSwitcher(date, svcType);
+    // Meta row: SERVICE TEXT: <overlay> \u2022 TYPE: <variant>. Either half can be
+    // hidden independently. Overlay name is resolved lazily from /api/translations.
+    updateMetaRow(data.translation, svcType, date);
 
     // Populate saints list; auto-expand detail section when there are commemorations
     const comms    = data.commemorations || [];
@@ -918,6 +904,21 @@ async function init() {
   document.getElementById('print-back').addEventListener('click', closePrintView);
   document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
   document.getElementById('pd-booklet').addEventListener('click', () => { closePrintView(); printBooklet(); });
+
+  // Liturgy variant picker
+  document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
+  document.getElementById('lv-back').addEventListener('click', closeLiturgyVariantView);
+  document.querySelectorAll('#view-liturgy-variant .pd-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const newSvc = opt.dataset.svc;
+      const d = document.getElementById('p-meta-type-btn').dataset.date;
+      closeLiturgyVariantView();
+      if (!d || !newSvc) return;
+      setUrlState(d, newSvc);
+      _showPanel(activeRow, d, newSvc);
+    });
+  });
+
   document.getElementById('p-detail-toggle').addEventListener('click', togglePanelDetail);
   initPronounRadio();
   initDevMode();
@@ -954,6 +955,7 @@ async function init() {
     if (document.getElementById('view-search').classList.contains('visible'))  closeSearch();
     if (document.getElementById('view-cal').classList.contains('visible'))     closeCal();
     if (document.getElementById('view-print').classList.contains('visible'))   closePrintView();
+    if (document.getElementById('view-liturgy-variant').classList.contains('visible')) closeLiturgyVariantView();
   });
 
   // URL params
@@ -1021,6 +1023,20 @@ function openPrintView() {
 
 function closePrintView() {
   document.getElementById('view-print').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+}
+
+// ─── Liturgy variant picker ──────────────────────────────────────────────────
+
+function openLiturgyVariantView() {
+  closeSearch(/*silent=*/true);
+  closeCal();
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-liturgy-variant').classList.add('visible');
+}
+
+function closeLiturgyVariantView() {
+  document.getElementById('view-liturgy-variant').classList.remove('visible');
   document.getElementById('view-main').classList.remove('hidden');
 }
 

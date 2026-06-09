@@ -45,6 +45,6 @@ test('switching translation overlay re-renders the open service panel', async ({
   // (api-service now echoes back `translation: <id>` in the response JSON).
   await page.locator('#settings-done').click();
   await expect(page.locator('#view-settings')).not.toHaveClass(/visible/);
-  await expect(page.locator('#p-translation')).toBeVisible({ timeout: 15_000 });
-  await expect(page.locator('#p-translation .pt-name')).not.toHaveText('');
+  await expect(page.locator('#p-meta-overlay')).toBeVisible({ timeout: 15_000 });
+  await expect(page.locator('#p-meta-overlay-name')).not.toHaveText('');
 });

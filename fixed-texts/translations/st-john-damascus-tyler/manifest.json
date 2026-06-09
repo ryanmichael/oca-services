@@ -4,8 +4,5 @@
   "jurisdiction": "oca",
   "extends": ["oca"],
   "description": "Local customizations for St. John of Damascus Orthodox Church, Tyler, TX (OCA). Layered through the OCA jurisdiction default (oca → sts-sluzhebnik → base) — only parish-specific deltas live in liturgy-fixed.json here.",
-  "sources": "Parish service book",
-  "rubrics": {
-    "omitCatechumensSeasons": ["brightWeek", "pentecostarion"]
-  }
+  "sources": "Parish service book"
 }

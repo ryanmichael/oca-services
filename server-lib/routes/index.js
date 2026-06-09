@@ -39,7 +39,28 @@ const dashboardPage       = require('./dashboard-page');
 const STICHERA_RE = /^\/api\/stichera\/(\d{1,2})\/(\d{1,2})$/;
 const MENAION_RE  = /^\/api\/menaion\/(\d{1,2})\/(\d{1,2})$/;
 
+// Per-jurisdiction route prefixes (e.g. /oca/api/service, /rocor/api/matins).
+// Strips the prefix and injects `?translation=<jurisdiction>` as the default,
+// so every existing route resolves unchanged. An explicit ?translation= in the
+// query wins over the prefix.
+const JURISDICTION_PREFIX_RE = /^\/(oca|rocor|antiochian|serbian|georgian)(\/[^?]*)?(\?.*)?$/;
+
+function rewriteJurisdictionPrefix(req) {
+  const m = JURISDICTION_PREFIX_RE.exec(req.url || '');
+  if (!m) return;
+  const jurisdiction = m[1];
+  const rest         = m[2] || '/';
+  const qs           = m[3] || '';
+  if (qs && /[?&]translation=/.test(qs)) {
+    req.url = `${rest}${qs}`;
+  } else {
+    const sep = qs ? '&' : '?';
+    req.url = `${rest}${qs}${sep}translation=${jurisdiction}`;
+  }
+}
+
 function dispatch(req, res, ctx) {
+  rewriteJurisdictionPrefix(req);
   const url      = req.url || '/';
   const pathname = url.split('?')[0];
 

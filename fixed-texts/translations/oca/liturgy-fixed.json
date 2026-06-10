@@ -1,3 +1,55 @@
 {
-  "_note": "Jurisdiction-kind overlay — intentionally empty. All text comes from the extends chain (sts-sluzhebnik → base)."
+  "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\n\nAnd in one Lord Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by Whom all things were made; Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and was made man; and was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again, according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and shall come again with glory to judge the living and the dead, Whose Kingdom shall have no end.\n\nAnd in the Holy Spirit, the Lord, the Giver of Life, Who proceedeth from the Father; Who with the Father and the Son together is worshipped and glorified; Who spake by the Prophets.\n\nAnd in one Holy, Catholic, and Apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead, and the life of the age to come. Amen.",
+
+  "beatitudes": {
+    "verses": [
+      "In Thy Kingdom, remember us, O Lord, when Thou comest in Thy Kingdom.",
+      "Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.",
+      "Blessed are they that mourn, for they shall be comforted.",
+      "Blessed are the meek, for they shall inherit the earth.",
+      "Blessed are they that hunger and thirst after righteousness, for they shall be filled.",
+      "Blessed are the merciful, for they shall obtain mercy.",
+      "Blessed are the pure in heart, for they shall see God.",
+      "Blessed are the peacemakers, for they shall be called the sons of God.",
+      "Blessed are they that are persecuted for righteousness' sake, for theirs is the Kingdom of Heaven.",
+      "Blessed are ye when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for My sake.",
+      "Rejoice, and be exceeding glad, for great is your reward in the heavens.",
+      "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "Now and ever, and unto ages of ages. Amen."
+    ]
+  },
+
+  "typical-antiphon-1": {
+    "refrain": "Through the intercessions of the Theotokos, O Savior, save us.",
+    "verses": [
+      "Bless the Lord, O my soul; blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all that He hath done for thee,",
+      "Who is gracious unto all thine iniquities, Who healeth all thine infirmities,\nWho redeemeth thy life from corruption, Who crowneth thee with mercy and compassion,\nWho fulfilleth thy desire with good things; thy youth shall be renewed as the eagle's.",
+      "The Lord performeth deeds of mercy, and executeth judgment for all them that are wronged.\nHe hath made His ways known unto Moses, unto the sons of Israel the things that He hath willed.",
+      "Compassionate and merciful is the Lord, long-suffering and plenteous in mercy.\nNot unto the end will He be angered, neither unto eternity will He be wroth.",
+      "The Lord hath prepared His throne in heaven, and His kingdom ruleth over all.",
+      "Bless the Lord, all ye His angels, mighty in strength, that perform His word,\nto hear the voice of His words.",
+      "Bless the Lord, all ye His hosts, His ministers that do His will.",
+      "Bless the Lord, all ye His works, in every place of His dominion.",
+      "Bless the Lord, O my soul, and all that is within me,\nbless His holy name.",
+      "Blessed art Thou, O Lord!"
+    ],
+    "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "gloryRefrain": "Through the intercessions of the Theotokos, O Savior, save us."
+  },
+
+  "typical-antiphon-2": {
+    "refrain": "Save us, O Son of God, Who art risen from the dead, who sing to Thee: Alleluia.",
+    "refrainWeekday": "Save us, O Son of God, Who art wondrous in Thy saints, who sing to Thee: Alleluia.",
+    "verses": [
+      "Praise the Lord, O my soul.\nI will praise the Lord in my life, I will chant unto my God for as long as I have my being.",
+      "Trust ye not in princes, in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return unto his earth. In that day all his thoughts shall perish.",
+      "Blessed is he of whom the God of Jacob is his help, whose hope is in the Lord his God,\nWho hath made heaven and the earth, the sea, and all that is therein;",
+      "Who keepeth truth unto eternity,\nWho executeth judgment for the wronged,\nWho giveth food unto the hungry.",
+      "The Lord looseth the fettered; the Lord maketh wise the blind.\nThe Lord setteth aright the fallen; the Lord loveth the righteous.",
+      "The Lord preserveth the proselytes; He shall adopt for His own the orphan and widow,\nand the way of sinners shall He destroy.",
+      "The Lord shall be king unto eternity;",
+      "thy God, O Zion, unto generation and generation."
+    ],
+    "glory": "Now and ever, and unto ages of ages. Amen."
+  }
 }

@@ -41,11 +41,28 @@
     "augmentedLitany": "Again we pray for the most blessed Metropolitan Tikhon, and for the most reverend Archbishop Alexander."
   },
 
-  "_section_cherubic_hymn": "Parish uses a Slavonic-word-order calque ('We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting...') consistent with Jordanville / older Russian-tradition Liturgika and the widely-distributed Bortniansky English settings. PROVISIONAL: the parish reportedly rotates between settings — update this override (or add named alternates) as the rotation is confirmed.",
+  "_section_cherubic_hymn": "Parish rotates Cherubic Hymn settings. The live `cherubic-hymn` block is whatever is currently sung. Archived variants live in `_cherubic-hymn-variants` (the cascade strips underscore-prefixed keys, so the archive is data-only). To rotate: copy a variant's part1/amen/part2/alleluia into `cherubic-hymn` and update `_active_variant`.",
   "cherubic-hymn": {
-    "_setting": "slavonic-calque",
-    "_setting_label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style English)",
-    "part1":    "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
-    "part2":    "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts."
+    "_active_variant": "tyler-1",
+    "_setting_label": "St. John's Tyler — Setting #1 (choral, with the doubled-phrase melodic repetitions characteristic of Russian-tradition arrangements)",
+    "_note": "User-supplied transcription 2026-06-11. Minor normalization: the second 'And who sing' phrase reads 'sing the thrice-holy hymn to the life-creating Trinity' (the user-typed 'to' for the second 'the' has been corrected as a transcription typo — please flag if intentional).",
+    "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
+    "amen": "Amen.",
+    "part2": "That we may receive the King of all, Who comes invisibly, invisibly upborne by the angelic hosts.\nBy the angelic hosts.",
+    "alleluia": "Alleluia, alleluia, alleluia."
+  },
+  "_cherubic-hymn-variants": {
+    "tyler-1": {
+      "_setting_label": "St. John's Tyler — Setting #1",
+      "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
+      "amen": "Amen.",
+      "part2": "That we may receive the King of all, Who comes invisibly, invisibly upborne by the angelic hosts.\nBy the angelic hosts.",
+      "alleluia": "Alleluia, alleluia, alleluia."
+    },
+    "slavonic-calque": {
+      "_setting_label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style English) — previously active before 2026-06-11",
+      "part1": "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
+      "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts."
+    }
   }
 }

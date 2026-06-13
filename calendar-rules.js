@@ -459,31 +459,42 @@ function generateVigilFeastVespers(dateStr, dow, tone) {
 }
 
 /**
- * Generates a Saturday Great Vespers entry for ordinary time.
+ * Generates a Great Vespers entry (resurrectional Octoechos) for ordinary time.
+ * Used for both Saturday and Sunday calendar entries — each owns the Vespers
+ * served on its corresponding civil evening:
+ *   - Saturday entry → Vespers served Fri eve (opens Sat liturgical day)
+ *   - Sunday entry   → Vespers served Sat eve (opens Sun liturgical day; Great Vespers)
  * Uses 6 resurrectional stichera from the Octoechos + dogmatikon.
  */
-function generateOrdinaryTimeSaturday(dateStr, tone) {
+function generateOrdinaryTimeSaturday(dateStr, tone, dow = 'saturday') {
   const tk = `tone${tone}`;
+  // Sunday Great Vespers (Sat-eve service entering Sun) follows the OCA
+  // 10-stichera pattern (7 Octoechos resurrectional + 3 Menaion/feast).
+  // Saturday's vespers (Fri-eve service entering Sat liturgical day) uses 6.
+  const totalStichera = dow === 'sunday' ? 10 : 6;
+  const verses        = dow === 'sunday' ? [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] : [6, 5, 4, 3, 2, 1];
   return {
     _meta: {
       generated:   true,
       generatedAt: new Date().toISOString(),
-      note:        `Auto-generated Saturday Great Vespers. Tone ${tone}. ` +
+      note:        `Auto-generated ${dow === 'sunday' ? 'Sunday' : 'Saturday'} Great Vespers. Tone ${tone}. ` +
                    `Menaion commemorations not included.`,
     },
     date:      dateStr,
-    dayOfWeek: 'saturday',
+    dayOfWeek: dow,
     liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle' },
     commemorations: [],
     vespers: {
       serviceType: 'greatVespers',
-      rubricNote:  'Great Vespers with Entrance (sung on Friday evening)',
+      rubricNote:  dow === 'sunday'
+        ? 'Great Vespers with Entrance (sung on Saturday evening)'
+        : 'Great Vespers with Entrance (sung on Friday evening)',
       lordICall: {
         tone,
-        totalStichera: 6,
+        totalStichera,
         slots: [{
-          verses: [6, 5, 4, 3, 2, 1],
-          count:  6,
+          verses,
+          count:  totalStichera,
           source: 'octoechos',
           key:    `${tk}.saturday.vespers.lordICall.resurrectional`,
           tone,
@@ -1825,7 +1836,8 @@ function generateCalendarEntry(dateStr, style = 'new') {
 
   // ── Ordinary time ──────────────────────────────────────────────────────────
   if (season === 'ordinaryTime') {
-    if (dow === 'saturday') return generateOrdinaryTimeSaturday(dateStr, tone);
+    if (dow === 'saturday') return generateOrdinaryTimeSaturday(dateStr, tone, 'saturday');
+    if (dow === 'sunday')   return generateOrdinaryTimeSaturday(dateStr, tone, 'sunday');
     return generateOrdinaryTimeWeekday(dateStr, dow, tone);
   }
 

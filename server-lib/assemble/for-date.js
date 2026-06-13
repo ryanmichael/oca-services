@@ -83,9 +83,17 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
   // still get their menaion stichera injected; regular Lenten weekdays are protected
   // by hasTriodionContent (their slots already carry source:'db' Triodion content).
   const injectSeasons = ['ordinaryTime', 'pentecostarion', 'preLenten', 'greatLent'];
-  const isSaturdayInjection = calendarEntry.dayOfWeek === 'saturday';
   const isGreatVespers      = calendarEntry.vespers?.serviceType === 'greatVespers' ||
                               calendarEntry.vespers?.serviceType === 'all-night-vigil';
+  // "Resurrectional injection" means the Vespers spec already carries
+  // Octoechos resurrectional slots that the Menaion stichera should be
+  // split alongside (not replaced wholesale). This applies to:
+  //   - Sat liturgical day (vespers spec is built on resurrectional Octoechos)
+  //   - Sun liturgical day when Great Vespers (Sat-eve service entering Sunday)
+  // Lenten Sundays and Pentecostarion Sundays use db/triodion sources rather
+  // than resurrectional Octoechos, so they fall out via the source-key check.
+  const isSaturdayInjection = (calendarEntry.dayOfWeek === 'saturday' || calendarEntry.dayOfWeek === 'sunday')
+                              && calendarEntry.vespers?.lordICall?.slots?.[0]?.source === 'octoechos';
   const isWeekdayInjection  = !isSaturdayInjection;
   // Skip Menaion injection when the service already has complete Triodion content
   // (lordICall slots are DB-sourced, meaning a special observance like Meatfare Saturday)
@@ -122,9 +130,17 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         : 'OCA';
 
       // Great Feast all-night-vigil: up to 8 stichera (unique hymns repeat to fill slots)
-      // Great Vespers: up to 6; Daily Vespers: up to 3
-      const isVigilFeast  = calendarEntry.vespers?.serviceType === 'all-night-vigil';
-      const maxLicStichera = isVigilFeast ? 8 : (isGreatVespers ? 6 : (isSaturdayInjection ? 6 : 3));
+      // Sunday Great Vespers: cap Menaion at 4 — Octoechos source has only 6 resurrectional
+      //   per tone (OCA Obikhod: 3 stichera anastasima + 3 anatolika), so 6 res + 4 menaion = 10
+      //   matches the OCA Sunday pattern without repeating the first sticheron.
+      // Saturday Great Vespers: up to 6; Daily Vespers: up to 3
+      const isVigilFeast    = calendarEntry.vespers?.serviceType === 'all-night-vigil';
+      const isSundayGreatVespers = calendarEntry.dayOfWeek === 'sunday' && isGreatVespers && isSaturdayInjection;
+      const maxLicStichera  = isVigilFeast       ? 8
+                            : isSundayGreatVespers ? 4
+                            : isGreatVespers     ? 6
+                            : isSaturdayInjection ? 6
+                            : 3;
       const licStichera = sticheraData?.[0]?.stichera.filter(
         s => s.section === 'lordICall' && s.order >= 1
       ).slice(0, maxLicStichera) ?? [];
@@ -136,10 +152,12 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         const lic = calendarEntry.vespers.lordICall;
 
         if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast && !isVigilFeast) {
-          // Saturday: split verses between resurrectional (Octoechos) and Menaion
+          // Sat/Sun Great Vespers: split verses between resurrectional Octoechos and Menaion.
+          // Total = the spec's totalStichera (6 for Saturday, 10 for Sunday).
+          const totalStichera       = calendarEntry.vespers.lordICall.totalStichera || 6;
           const menaionCount        = licStichera.length;
-          const resurrectionalCount = 6 - menaionCount;
-          const allVerses           = [6, 5, 4, 3, 2, 1];
+          const resurrectionalCount = totalStichera - menaionCount;
+          const allVerses           = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);
           if (resurrectionalCount === 0) {
             lic.slots = [];
           } else {

@@ -1,8 +1,16 @@
 {
   "_meta": {
-    "description": "Co-celebrated saints Liturgy overlay: secondary troparion/kontakion + 2nd prokeimenon/alleluia/gospel/communion hymn for dates where a major fixed-calendar commemoration falls on a Great Feast.",
+    "description": "Co-celebrated saints Liturgy overlay: secondary troparion/kontakion + 2nd prokeimenon/alleluia/gospel/communion hymn for dates where a major fixed-calendar commemoration falls on a Great Feast — also used for OCA-specific principal-feast Sundays (e.g. Synaxis of N.A. Saints on 6-14) that need a secondary saints' prokeimenon on top of the Sunday one.",
     "_note": "Keys are \"M-D\" date strings. Second epistle/gospel are pulled from orthocal readings[] automatically.",
     "source": "OCA Department of Liturgical Music and Translations service texts (Thee/Thy register)."
+  },
+  "6-14": {
+    "_note": "Synaxis of All Saints of North America (2nd Sunday after Pentecost in the OCA). Adds the saints' prokeimenon as secondary alongside the regular Sunday Tone 1 prokeimenon. Troparion/kontakion already come from the menaion DB (id 1196); not duplicated here.",
+    "prokeimenon": {
+      "tone": 7,
+      "label": "Synaxis of All Saints of North America",
+      "refrain": "Precious in the sight of the Lord is the death of His saints."
+    }
   },
   "5-21": {
     "troparion": {

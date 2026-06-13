@@ -407,7 +407,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
     variant,
     feastAntiphons,
     paschalAntiphons12,
-    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs) },
+    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) },
     includeDepartedLitany,
     entranceHymn,
     troparia,

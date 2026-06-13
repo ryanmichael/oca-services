@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "feast": "Synaxis of All Saints of North America",
+    "date": "6-14",
+    "tone": null,
+    "_note": "SCAFFOLD — text fields intentionally empty. The Liturgy Beatitudes assembler (server-lib/sources/beatitudes.js) consults this file when the date matches; if the irmos/troparia/theotokion strings are empty, it falls back to the Octoechos resurrection canon (current behavior). To activate: source the OCA / St. Tikhon's Monastery published Matins canon for the Synaxis of N.A. Saints (Odes 3 and 6 only are needed for the Beatitudes — populate the empty strings with verified text, set `tone`, then no code change is needed). Same shape as other variable-sources/feast-canons/*.json files; only Odes 3 and 6 are required for the Beatitudes."
+  },
+  "tone": null,
+  "ode3": {
+    "irmos": "",
+    "troparia": [
+      { "text": "" },
+      { "text": "" }
+    ],
+    "theotokion": ""
+  },
+  "ode6": {
+    "irmos": "",
+    "troparia": [
+      { "text": "" },
+      { "text": "" }
+    ],
+    "theotokion": ""
+  }
+}

@@ -1,6 +1,7 @@
 'use strict';
 
-const makeBlock = require('../_shared/make-block');
+const makeBlock          = require('../_shared/make-block');
+const { resolveFixedRef } = require('../_shared/resolve');
 
 function assembleGreatLitany(fixedTexts) {
   const section = 'The Peace Litany';
@@ -10,7 +11,8 @@ function assembleGreatLitany(fixedTexts) {
     makeBlock('gl-response', section, 'response', 'choir', lit.response),
   ];
   lit.petitions.forEach((petition, i) => {
-    blocks.push(makeBlock(`gl-petition-${i + 1}`, section, 'prayer', 'deacon', petition));
+    blocks.push(makeBlock(`gl-petition-${i + 1}`, section, 'prayer', 'deacon',
+      resolveFixedRef(petition, fixedTexts)));
     blocks.push(makeBlock(`gl-petition-${i + 1}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
@@ -48,7 +50,8 @@ function assembleAugmentedLitany(fixedTexts) {
     blocks.push(makeBlock(`al-petition-${i}-resp`, section, 'response', 'choir', lit.response));
   });
   lit.triplePetitions.forEach((p, i) => {
-    blocks.push(makeBlock(`al-triple-${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`al-triple-${i}`, section, 'prayer', 'deacon',
+      resolveFixedRef(p, fixedTexts)));
     blocks.push(makeBlock(`al-triple-response-${i}`, section, 'response', 'choir', lit.tripleResponse));
   });
   blocks.push(

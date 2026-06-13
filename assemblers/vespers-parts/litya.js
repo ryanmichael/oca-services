@@ -1,7 +1,7 @@
 'use strict';
 
 const makeBlock                  = require('../_shared/make-block');
-const { resolveSource, deepGet } = require('../_shared/resolve');
+const { resolveSource, resolveFixedRef, deepGet } = require('../_shared/resolve');
 
 function assembleLitya(lityaSpec, fixedTexts, sources) {
   const section = 'The Litya';
@@ -70,7 +70,8 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
   if (lit) {
     blocks.push(makeBlock('litya-lit-opening', section, 'prayer', 'deacon', lit.opening));
     lit.petitions.forEach((p, i) => {
-      blocks.push(makeBlock(`litya-lit-petition-${i}`, section, 'prayer', 'deacon', p));
+      blocks.push(makeBlock(`litya-lit-petition-${i}`, section, 'prayer', 'deacon',
+        resolveFixedRef(p, fixedTexts)));
       blocks.push(makeBlock(`litya-lit-response-${i}`, section, 'response', 'choir', lit.tripleResponse));
     });
     blocks.push(makeBlock('litya-lit-forty', section, 'response', 'choir', lit.fortyResponse));

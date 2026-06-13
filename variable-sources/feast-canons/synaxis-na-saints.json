@@ -3,23 +3,24 @@
     "feast": "Synaxis of All Saints of North America",
     "date": "6-14",
     "tone": null,
-    "_note": "SCAFFOLD — text fields intentionally empty. The Liturgy Beatitudes assembler (server-lib/sources/beatitudes.js) consults this file when the date matches; if the irmos/troparia/theotokion strings are empty, it falls back to the Octoechos resurrection canon (current behavior). To activate: source the OCA / St. Tikhon's Monastery published Matins canon for the Synaxis of N.A. Saints (Odes 3 and 6 only are needed for the Beatitudes — populate the empty strings with verified text, set `tone`, then no code change is needed). Same shape as other variable-sources/feast-canons/*.json files; only Odes 3 and 6 are required for the Beatitudes."
+    "_source": "OCA — https://www.oca.org/fs/commemoration-all-saints-north-america (Matins canon, Odes 3 and 6, verbatim). Register: 'yy' (modern English 'you'/'your'), matching the OCA published commemoration text. Tone for the canon is not stated on the source page.",
+    "_note": "Used by the Liturgy Beatitudes (Third Antiphon) on Sun 6/14 via FEAST_BEATITUDES_OVERRIDES in server-lib/sources/beatitudes.js. Only Odes 3 and 6 are needed for the Beatitudes; the OCA page lists 4 troparia per ode but the Beatitudes layout uses 2 per ode (matching the existing Octoechos format), so the first two from each ode are populated here."
   },
   "tone": null,
   "ode3": {
-    "irmos": "",
+    "irmos": "The Church of the Gentiles was like a desert, barren in its pagan ways, but now it has blossomed by Your coming, O Lord; in that same coming my heart is confirmed.",
     "troparia": [
-      { "text": "" },
-      { "text": "" }
+      { "text": "Rejoice, land of Alaska, for the Orthodox Faith has been planted in you and now bears the fruit of salvation throughout North America." },
+      { "text": "Let us praise in sacred hymns our Father Herman of Alaska, who has bestowed his blessing upon the New World and has left us his holy relics as a source of healing for many who honor his memory." }
     ],
-    "theotokion": ""
+    "theotokion": "Grant us the help of your prayers, Most holy Lady, for our enemies have overwhelmed us. But through you, All pure One, can we be delivered. Intercede with Your Son that we may be saved."
   },
   "ode6": {
-    "irmos": "",
+    "irmos": "Encompassed in the depths of sin, I entreat the unfathomable depths of Your compassion: bring me out of corruption, O Lord.",
     "troparia": [
-      { "text": "" },
-      { "text": "" }
+      { "text": "We praise you, O Holy Hierarch Innocent, for like the Apostles to the Slavs, Cyril and Methodius, you left your homeland to journey to a foreign land. Following their example, you enlightened your new people by translating the Holy Scriptures into their own language." },
+      { "text": "O Holy Hierarch Tikhon, you provided for the spiritual well-being of the Church in the New World by establishing the monastic tradition. Through your prayers, may the monastery you founded in the mountains of Pennsylvania, named after your heavenly patron, St. Tikhon of Zadonsk, be a haven for many who give all in their love of Christ." }
     ],
-    "theotokion": ""
+    "theotokion": "As you have continually interceded for our land, at the prayers of the North American Saints, look upon us now, O Most pure Theotokos, and, as the hope of the hopeless and helper of those in distress, grant us a sign of your compassion, O Lady."
   }
 }

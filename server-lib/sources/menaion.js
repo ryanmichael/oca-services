@@ -202,10 +202,41 @@ function getMenaionDay(month, day) {
   }
 }
 
+/**
+ * Returns the patron-of-temple troparion + kontakion by commemoration_id.
+ * Used by api-liturgy.js to inject the parish patron's hymns at the end of
+ * the troparia list (and before the principal-feast kontakion).
+ *
+ * Returns: { troparion: {tone, text} | null, kontakion: {tone, text} | null } | null
+ */
+function getMenaionPatron(commemorationId) {
+  let db;
+  try {
+    db = openDb();
+    if (!db) return null;
+    const rows = db.prepare(`
+      SELECT type, tone, text FROM troparia
+      WHERE commemoration_id = ? AND type IN ('troparion', 'kontakion')
+    `).all(commemorationId);
+    if (rows.length === 0) return null;
+    const out = { troparion: null, kontakion: null };
+    for (const r of rows) {
+      out[r.type] = { tone: r.tone, text: r.text };
+    }
+    return out;
+  } catch (err) {
+    console.error('getMenaionPatron error:', err.message);
+    return null;
+  } finally {
+    db?.close();
+  }
+}
+
 module.exports = {
   getMenaionPrimary,
   getSticheraDay,
   getMenaionRanked,
   getMenaionDayList,
   getMenaionDay,
+  getMenaionPatron,
 };

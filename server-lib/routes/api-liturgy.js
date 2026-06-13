@@ -4,6 +4,8 @@ const fs   = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 
+const { getMenaionPatron } = require('../sources/menaion');
+
 function handle(req, res, ctx) {
   const url = req.url || '/';
   const pathname = url.split('?')[0];
@@ -87,11 +89,49 @@ function handle(req, res, ctx) {
         }
 
         const liturgyFixedResolved = getLiturgyFixed(translation);
+        const overlayRubrics       = getOverlayRubrics(translation);
+
+        // Patron-of-temple injection: append parish patron troparion + kontakion
+        // from the menaion DB to the assembled troparia/kontakia. Skipped when
+        // the day is feast-only (Great Feast / Pentecostarion-feast Sunday) —
+        // the principal feast claims all hymn slots on those days.
+        if (overlayRubrics?.temple?.commemorationId && calendarEntry.liturgy) {
+          const lit = calendarEntry.liturgy;
+          const feastOnly = lit.feastOnly;
+          if (!feastOnly && Array.isArray(lit.troparia)) {
+            const patron = getMenaionPatron(overlayRubrics.temple.commemorationId);
+            if (patron?.troparion) {
+              lit.troparia = [...lit.troparia, {
+                tone: patron.troparion.tone,
+                rubric: `Troparion of the Patron of the Temple, ${overlayRubrics.temple.title}, Tone ${patron.troparion.tone}:`,
+                text: patron.troparion.text,
+              }];
+            }
+            if (patron?.kontakion && Array.isArray(lit.kontakia)) {
+              // Insert patron kontakion at the front with a Glory connector;
+              // ensure the next kontakion has the Now-and-ever connector.
+              const patronK = {
+                tone: patron.kontakion.tone,
+                rubric: `Kontakion of the Patron of the Temple, ${overlayRubrics.temple.title}, Tone ${patron.kontakion.tone}:`,
+                text: patron.kontakion.text,
+                connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+              };
+              if (lit.kontakia.length > 0) {
+                const rest = lit.kontakia.map((k, i) => i === 0
+                  ? { ...k, connector: 'Now and ever, and unto ages of ages. Amen.' }
+                  : k);
+                lit.kontakia = [patronK, ...rest];
+              } else {
+                lit.kontakia = [patronK];
+              }
+            }
+          }
+        }
 
         let blocks;
         try {
           blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, sources,
-            { rubrics: getOverlayRubrics(translation) });
+            { rubrics: overlayRubrics });
         } catch (err) {
           console.error('assembleLiturgy error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });

@@ -130,14 +130,16 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         : 'OCA';
 
       // Great Feast all-night-vigil: up to 8 stichera (unique hymns repeat to fill slots)
-      // Sunday Great Vespers: cap Menaion at 4 — Octoechos source has only 6 resurrectional
-      //   per tone (OCA Obikhod: 3 stichera anastasima + 3 anatolika), so 6 res + 4 menaion = 10
-      //   matches the OCA Sunday pattern without repeating the first sticheron.
+      // Sunday Great Vespers: cap Menaion at 6 — a principal-feast Sunday (e.g. Synaxis
+      //   of NA Saints) claims up to 6 of 10 slots (OCA pattern: 4 res + 6 feast).
+      //   Ordinary Sundays whose principal has only 3-4 stichera leave the rest to
+      //   Octoechos resurrectional (data ships 6 per tone, so a 7th slot may repeat
+      //   sticheron #1 — see project-sunday-great-vespers-ordinary-time).
       // Saturday Great Vespers: up to 6; Daily Vespers: up to 3
       const isVigilFeast    = calendarEntry.vespers?.serviceType === 'all-night-vigil';
       const isSundayGreatVespers = calendarEntry.dayOfWeek === 'sunday' && isGreatVespers && isSaturdayInjection;
       const maxLicStichera  = isVigilFeast       ? 8
-                            : isSundayGreatVespers ? 4
+                            : isSundayGreatVespers ? 6
                             : isGreatVespers     ? 6
                             : isSaturdayInjection ? 6
                             : 3;

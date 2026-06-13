@@ -62,6 +62,31 @@ const {
   LENTEN_SUNDAY_ALLELUIA,
 } = require('./propers');
 
+/** Joins saint titles with commas and a trailing "and" for the troparion/kontakion
+ *  rubric when multiple commemorations share a hymn (e.g. "X, Y, and Z"). */
+function joinTitles(titles) {
+  if (titles.length === 1) return titles[0];
+  if (titles.length === 2) return `${titles[0]} and ${titles[1]}`;
+  return `${titles.slice(0, -1).join(', ')}, and ${titles[titles.length - 1]}`;
+}
+
+/** Dedup key for grouping commemorations that share a troparion/kontakion.
+ *
+ * For commemorations without a saint_type (feasts, synaxes): byte-exact text
+ * is the only safe key — two distinct feasts may share part of a hymn.
+ *
+ * For typed saints (prophet/hierarch/monastic/martyr/etc): the General Menaion
+ * uses the same template across saints of a type, with only a vocative name
+ * substituted ("O our holy father Methodius/Elisha/Niphon, pray to Christ…").
+ * Bucket by (saint_type, tone, first sentence) — distinct troparia of the
+ * same saint_type don't share opening phrases like "By a flood of tears", so
+ * this collapses generic templates without over-merging. */
+function dedupKey(commType, tone, text) {
+  if (!commType) return `exact\t${tone}\t${text}`;
+  const firstSentence = (text.split(/[.!?\n]/)[0] || '').trim();
+  return `template\t${commType}\t${tone}\t${firstSentence}`;
+}
+
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
@@ -172,17 +197,30 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
       troparia.push({ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText });
     }
 
-    // Inject Menaion troparia from DB
+    // Inject Menaion troparia from DB.
+    // Group by troparion text so commemorations sharing a generic troparion
+    // (e.g. the "By a flood of tears..." monastic troparion used by every
+    // venerable) collapse into a single combined rubric like
+    // "Troparion of Methodius of Peshnosha, Elisha of Suma, and Niphon of Athos, Tone 8:"
+    // — matching OCA OOS practice when multiple saints share a hymn.
     const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
+      const groups = new Map();  // key -> { tone, text, titles: [] }
       for (const comm of ranked.notable) {
         const trop = comm.troparia.find(t => t.type === 'troparion');
-        if (trop) {
-          const ovr = MENAION_HYMN_OVERRIDES[comm.title]?.troparion;
-          const tone = ovr?.tone ?? trop.tone;
-          const text = ovr?.text ?? trop.text;
-          troparia.push({ tone, rubric: `Troparion of ${comm.title}, Tone ${tone}:`, text });
+        if (!trop) continue;
+        const ovr  = MENAION_HYMN_OVERRIDES[comm.title]?.troparion;
+        const tone = ovr?.tone ?? trop.tone;
+        const text = ovr?.text ?? trop.text;
+        const key  = dedupKey(comm.saint_type, tone, text);
+        if (groups.has(key)) {
+          groups.get(key).titles.push(comm.title);
+        } else {
+          groups.set(key, { tone, text, titles: [comm.title] });
         }
+      }
+      for (const { tone, text, titles } of groups.values()) {
+        troparia.push({ tone, rubric: `Troparion of ${joinTitles(titles)}, Tone ${tone}:`, text });
       }
     }
   }
@@ -200,17 +238,26 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
       if (kText) kontakia.push({ tone: kTone, rubric: `Kontakion of the Resurrection, Tone ${kTone}:`, text: kText });
     }
 
-    // Inject Menaion kontakia from DB
+    // Inject Menaion kontakia from DB. Group by text like troparia above so
+    // shared kontakia (less common but possible for paired saints) collapse.
     const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
+      const groups = new Map();
       for (const comm of ranked.notable) {
         const kont = comm.troparia.find(t => t.type === 'kontakion');
-        if (kont) {
-          const ovr = MENAION_HYMN_OVERRIDES[comm.title]?.kontakion;
-          const tone = ovr?.tone ?? kont.tone;
-          const text = ovr?.text ?? kont.text;
-          kontakia.push({ tone, rubric: `Kontakion of ${comm.title}, Tone ${tone}:`, text });
+        if (!kont) continue;
+        const ovr  = MENAION_HYMN_OVERRIDES[comm.title]?.kontakion;
+        const tone = ovr?.tone ?? kont.tone;
+        const text = ovr?.text ?? kont.text;
+        const key  = dedupKey(comm.saint_type, tone, text);
+        if (groups.has(key)) {
+          groups.get(key).titles.push(comm.title);
+        } else {
+          groups.set(key, { tone, text, titles: [comm.title] });
         }
+      }
+      for (const { tone, text, titles } of groups.values()) {
+        kontakia.push({ tone, rubric: `Kontakion of ${joinTitles(titles)}, Tone ${tone}:`, text });
       }
     }
   }

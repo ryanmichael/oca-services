@@ -5,12 +5,21 @@ const fs   = require('fs');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 
-/** Date keys (M-D) for principal feasts that override the Octoechos resurrection
- *  canon at the Liturgy Beatitudes. Files live in variable-sources/feast-canons/
- *  and use the standard feast-canon shape; only ode3 + ode6 are read here.
- *  When a file's strings are empty (scaffold-only), the override is skipped
- *  and the assembler falls back to Octoechos — so adding scaffold entries is
- *  safe even before texts are sourced. */
+/** Date keys (M-D) for principal feasts whose canon troparia are appended
+ *  to the Octoechos resurrection canon at the Liturgy Beatitudes. The
+ *  Octoechos remains the spine (Irmos + 2 resurrection troparia + Theotokion
+ *  per ode); the feast canon's *troparia only* are inserted between the
+ *  resurrection troparia and the Theotokion. This matches the standard
+ *  Typikon blend for a polyeleos/vigil saint or major feast on a Sunday.
+ *
+ *  Files live in variable-sources/feast-canons/ and use the standard
+ *  feast-canon shape; only ode3.troparia + ode6.troparia are read in
+ *  append mode. When a file's troparia are empty (scaffold-only), the
+ *  blend collapses to pure Octoechos.
+ *
+ *  Future: a feast-canon JSON can opt into full replacement (e.g. for a
+ *  Great Feast superseding the Sunday office) by setting top-level
+ *  `beatitudesMode: 'replace'`. */
 const FEAST_BEATITUDES_OVERRIDES = {
   '6-14': 'synaxis-na-saints',
 };
@@ -48,38 +57,59 @@ function hasPopulatedOde(ode) {
  * Build Beatitudes troparia array for the Liturgy Third Antiphon.
  * On Sundays: 8 troparia from Octoechos Canon of the Resurrection (Odes 3+6).
  * When a per-date feast-canon override exists (FEAST_BEATITUDES_OVERRIDES)
- * and its Odes are populated, the feast canon replaces the Octoechos source.
+ * and its troparia are populated, the feast troparia are *appended* to each
+ * Octoechos ode (between the resurrection troparia and the Theotokion).
+ * A feast-canon JSON may opt into full replacement with `beatitudesMode: 'replace'`.
  * Each item has { tone, label, source, text }.
  */
 function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) {
   if (!isSunday) return []; // weekday beatitudes not yet implemented
 
-  const override = loadFeastBeatitudesOverride(dateStr);
-  if (override) {
-    const ot = override.tone ?? tone;
-    return collectOdeTroparia(override.ode3, override.ode6, ot, 'feast');
-  }
-
   const tk = `tone${tone}`;
   const oct = srcs?.octoechos;
   const beatData = oct?.[tk]?.sunday?.liturgy?.beatitudes;
-  if (!beatData) return [];
-  return collectOdeTroparia(beatData.ode3, beatData.ode6, tone, 'octoechos');
+
+  const override = loadFeastBeatitudesOverride(dateStr);
+
+  if (override && override.beatitudesMode === 'replace') {
+    const ot = override.tone ?? tone;
+    return buildOdes(override.ode3, override.ode6, ot, 'feast', null, null);
+  }
+
+  if (!beatData) {
+    if (override) {
+      const ot = override.tone ?? tone;
+      return buildOdes(override.ode3, override.ode6, ot, 'feast', null, null);
+    }
+    return [];
+  }
+
+  const feastOde3 = override?.ode3 || null;
+  const feastOde6 = override?.ode6 || null;
+  return buildOdes(beatData.ode3, beatData.ode6, tone, 'octoechos', feastOde3, feastOde6);
 }
 
-function collectOdeTroparia(ode3, ode6, tone, src) {
-  const troparia = [];
-  if (ode3) {
-    if (ode3.irmos)      troparia.push({ tone, label: 'Irmos of Ode 3', source: src, text: ode3.irmos });
-    pushTroparia(troparia, ode3.troparia, tone, src, 'Troparion of Ode 3');
-    if (ode3.theotokion) troparia.push({ tone, label: 'Theotokion of Ode 3', source: src, text: ode3.theotokion });
+/** Builds an interleaved troparia list for both odes.
+ *  Each ode: spine Irmos + spine troparia + (feast troparia appended) + spine Theotokion. */
+function buildOdes(spineOde3, spineOde6, tone, spineSrc, feastOde3, feastOde6) {
+  const out = [];
+  appendOde(out, spineOde3, tone, spineSrc, feastOde3, 'Ode 3');
+  appendOde(out, spineOde6, tone, spineSrc, feastOde6, 'Ode 6');
+  return out;
+}
+
+function appendOde(out, spine, tone, spineSrc, feast, odeLabel) {
+  if (!spine) return;
+  if (spine.irmos) {
+    out.push({ tone, label: `Irmos of ${odeLabel}`, source: spineSrc, text: spine.irmos });
   }
-  if (ode6) {
-    if (ode6.irmos)      troparia.push({ tone, label: 'Irmos of Ode 6', source: src, text: ode6.irmos });
-    pushTroparia(troparia, ode6.troparia, tone, src, 'Troparion of Ode 6');
-    if (ode6.theotokion) troparia.push({ tone, label: 'Theotokion of Ode 6', source: src, text: ode6.theotokion });
+  pushTroparia(out, spine.troparia, tone, spineSrc, `Troparion of ${odeLabel}`);
+  if (feast) {
+    pushTroparia(out, feast.troparia, tone, 'feast', `Troparion of ${odeLabel} (feast)`);
   }
-  return troparia;
+  if (spine.theotokion) {
+    out.push({ tone, label: `Theotokion of ${odeLabel}`, source: spineSrc, text: spine.theotokion });
+  }
 }
 
 function pushTroparia(out, troparia, tone, source, label) {

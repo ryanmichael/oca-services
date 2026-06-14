@@ -2,6 +2,16 @@
   "_note": "Parish overlay for St. John of Damascus Orthodox Church, Tyler, TX (OCA). Extends sts-sluzhebnik — only the parish-specific deltas live here.",
   "_source": "Parish service practice",
 
+  "_section_first_antiphon": "Parish sings a short form of the typical First Antiphon (Psalm 102): only the opening verse (v1), the two closing 'Bless the Lord' verses (v8, v9), and the final 'Blessed art Thou, O Lord!' refrain. The middle of the psalm (iniquities/healings, vindication, compassionate-and-merciful, throne, angels, hosts) is omitted. Cascade replaces the OCA 10-verse array wholesale.",
+  "typical-antiphon-1": {
+    "verses": [
+      "Bless the Lord, O my soul; blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all that He hath done for thee,",
+      "Bless the Lord, all ye His works, in every place of His dominion.",
+      "Bless the Lord, O my soul, and all that is within me,\nbless His holy name.",
+      "Blessed art Thou, O Lord!"
+    ]
+  },
+
   "_section_hierarchs": "Hierarchy commemoration at the Anaphora. Names His Beatitude Metropolitan Tikhon (Mollard), Primate of the OCA, and His Eminence Archbishop Alexander (Golitzin) of the Diocese of the South, the local ruling hierarch. Note: also overrides anaphora-basil so the same text renders on the 10 days Basil's Liturgy is served — even though the base anaphora-basil doesn't currently include a hierarchs key (drift warning is expected and informational).",
   "anaphora-chrysostom": {
     "commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Eminence, the Most Reverend Alexander, Archbishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth."

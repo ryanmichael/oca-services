@@ -10,6 +10,10 @@
       "_note": "Patron saint of the temple. The assembler appends the patron troparion at the end of the troparia list, and the kontakion before the principal-feast kontakion with a 'Glory…' connector. Sourced from menaion DB by commemorationId.",
       "commemorationId": 2471,
       "title": "Venerable John of Damascus"
+    },
+    "preCommunion": {
+      "_note": "Parish sings the Communion Prayer ('I believe, O Lord, and I confess...') BEFORE the priest's 'In the fear of God, with faith, and with love, draw near!' and the choir's 'Blessed is He that comes...'. HTM/Jordanville-influenced order; diverges from the strict OCA Service Book which has them inverted.",
+      "confessFirst": true
     }
   }
 }

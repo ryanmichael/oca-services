@@ -25,18 +25,27 @@ function _litPreCommunion(isBasil, f, opts = {}) {
     if (opts.paschalAntiphon) {
       blocks.push(makeBlock('pc-paschal-antiphon', section, 'hymn', 'choir', opts.paschalAntiphon));
     }
-  } else {
+  } else if (!opts.omitDrawNear) {
     blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
     blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
   }
   return blocks;
 }
 
-function _litCommunionPrayer(f) {
+function _litCommunionPrayer(f, opts = {}) {
+  const section = 'Communion Prayer';
   const pc = f['pre-communion'];
-  return [
-    makeBlock('pc-prayer', 'Communion Prayer', 'prayer', 'all', pc['prayer-chrysostom']),
+  const blocks = [
+    makeBlock('pc-prayer', section, 'prayer', 'all', pc['prayer-chrysostom']),
   ];
+  // When the parish rubric `confessFirst` is set, "In the fear of God..." +
+  // "Blessed is He that comes..." follow the Communion Prayer here instead of
+  // closing the Pre-Communion section.
+  if (opts.appendDrawNear) {
+    blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
+    blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
+  }
+  return blocks;
 }
 
 function _litCommunionHymn(communionHymn) {

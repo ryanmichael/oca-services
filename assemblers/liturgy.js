@@ -209,12 +209,22 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
     calendarDay.liturgicalContext?.season === 'brightWeek' ||
     calendarDay.liturgicalContext?.season === 'pentecostarion'
   );
+  // Parish-discretion rubric: when `rubrics.preCommunion.confessFirst` is true,
+  // the Communion Prayer ("I believe, O Lord, and I confess...") is sung first,
+  // and the priest's "In the fear of God..." + choir's "Blessed is He that
+  // comes..." follow. Matches HTM/Jordanville-style parish practice. Default
+  // (false) follows the OCA Service Book: "In the fear of God..." first, then
+  // "I believe and confess..." said by the approaching communicants.
+  const confessFirst = opts.rubrics?.preCommunion?.confessFirst === true && !paschalCommunionOrder;
+
   blocks.push(..._litPreCommunion(isBasil, liturgyFixed,
-    { paschal: paschalCommunionOrder, paschalAntiphon: liturgyFixed['paschal-communion-antiphon'] }));
+    { paschal: paschalCommunionOrder, paschalAntiphon: liturgyFixed['paschal-communion-antiphon'],
+      omitDrawNear: confessFirst }));
 
   // 27. Communion Prayer ("I believe, O Lord...") — said by the people before
-  //     approaching the chalice.
-  blocks.push(..._litCommunionPrayer(liturgyFixed));
+  //     approaching the chalice. When confessFirst is set, the draw-near +
+  //     blessed-is-He blocks are appended here (under the same section).
+  blocks.push(..._litCommunionPrayer(liturgyFixed, { appendDrawNear: confessFirst }));
 
   // 28. Communion Hymn — the appointed Koinonikon, sung as the clergy commune.
   blocks.push(..._litCommunionHymn(spec.communionHymn));

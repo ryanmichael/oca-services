@@ -87,7 +87,16 @@ function dedupKey(commType, tone, text) {
   return `template\t${commType}\t${tone}\t${firstSentence}`;
 }
 
-function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
+function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', opts = {}) {
+  // opts.includeLesserSaints — when true, include every Menaion commemoration
+  //   with a troparion/kontakion at Liturgy. Default (false) renders only the
+  //   principal commemoration (the rank-dictating one — i.e., the saint whose
+  //   stichera and rank drove the day's order). Lesser-rank co-commemorations
+  //   are dropped from Liturgy troparia/kontakia, matching standard OCA parish
+  //   practice (they are still kept at Matins). Patron-of-temple and the
+  //   Resurrection troparion/kontakion are layered separately and unaffected.
+  const includeLesserSaints = !!opts.includeLesserSaints;
+
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
   const dow     = getDayOfWeek(date);
@@ -205,8 +214,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
     // — matching OCA OOS practice when multiple saints share a hymn.
     const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
+      const sourceComms = includeLesserSaints
+        ? ranked.notable
+        : (ranked.principal ? [ranked.principal] : []);
       const groups = new Map();  // key -> { tone, text, titles: [] }
-      for (const comm of ranked.notable) {
+      for (const comm of sourceComms) {
         const trop = comm.troparia.find(t => t.type === 'troparion');
         if (!trop) continue;
         const ovr  = MENAION_HYMN_OVERRIDES[comm.title]?.troparion;
@@ -242,8 +254,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new') {
     // shared kontakia (less common but possible for paired saints) collapse.
     const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
+      const sourceComms = includeLesserSaints
+        ? ranked.notable
+        : (ranked.principal ? [ranked.principal] : []);
       const groups = new Map();
-      for (const comm of ranked.notable) {
+      for (const comm of sourceComms) {
         const kont = comm.troparia.find(t => t.type === 'kontakion');
         if (!kont) continue;
         const ovr  = MENAION_HYMN_OVERRIDES[comm.title]?.kontakion;

@@ -75,11 +75,25 @@ function handle(req, res, ctx) {
           return;
         }
 
+        const liturgyFixedResolved = getLiturgyFixed(translation);
+        const overlayRubrics       = getOverlayRubrics(translation);
+
+        // Lesser-saints toggle: query param wins; otherwise fall back to the
+        // overlay's rubric setting; otherwise default to false (hidden).
+        // Parishes that always commemorate every saint at Liturgy can set
+        // rubrics.troparia.includeLesserSaints = true in their manifest.
+        const includeLesserSaints = (() => {
+          if (q.lesserSaints === 'show' || q.lesserSaints === 'true' || q.lesserSaints === '1') return true;
+          if (q.lesserSaints === 'hide' || q.lesserSaints === 'false' || q.lesserSaints === '0') return false;
+          return !!overlayRubrics?.troparia?.includeLesserSaints;
+        })();
+
         if (!calendarEntry.liturgy) {
           try {
             const orthocalData = await fetchOrthocalDay(date);
             calendarEntry = { ...calendarEntry,
-              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style) };
+              liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style,
+                { includeLesserSaints }) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });
@@ -87,9 +101,6 @@ function handle(req, res, ctx) {
             return;
           }
         }
-
-        const liturgyFixedResolved = getLiturgyFixed(translation);
-        const overlayRubrics       = getOverlayRubrics(translation);
 
         // Patron-of-temple injection: append parish patron troparion + kontakion
         // from the menaion DB to the assembled troparia/kontakia. Skipped when

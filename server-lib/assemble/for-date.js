@@ -229,7 +229,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         }
 
         if (licGlory) {
-          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: true };
+          // Combine Glory+Now into a single doxology ONLY when the spec has
+          // no separate `now` slot (e.g. Tone 5 Saturday, where the dogmatikon
+          // already absorbs the Glory). When the spec carries a distinct `now`
+          // — the Theotokion-Dogmatikon of the week — the saint's doxastichon
+          // goes under Glory and the Theotokion follows under Now and ever.
+          // Otherwise we silently drop the Theotokion-Dogmatikon (OCA Sun
+          // Great Vespers gap surfaced 2026-06-13 NA Saints audit).
+          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
       }

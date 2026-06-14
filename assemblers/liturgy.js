@@ -217,21 +217,23 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // "I believe and confess..." said by the approaching communicants.
   const confessFirst = opts.rubrics?.preCommunion?.confessFirst === true && !paschalCommunionOrder;
 
+  // 26. Pre-Communion — peace + bow-prayer + 'One is holy'. (Paschal: also
+  //     the Paschal antiphon in place of 'In the fear of God...').
   blocks.push(..._litPreCommunion(isBasil, liturgyFixed,
-    { paschal: paschalCommunionOrder, paschalAntiphon: liturgyFixed['paschal-communion-antiphon'],
-      omitDrawNear: confessFirst }));
+    { paschal: paschalCommunionOrder, paschalAntiphon: liturgyFixed['paschal-communion-antiphon'] }));
 
-  // 27. Communion Prayer ("I believe, O Lord...") — said by the people before
-  //     approaching the chalice. When confessFirst is set, the draw-near +
-  //     blessed-is-He blocks are appended here (under the same section).
-  blocks.push(..._litCommunionPrayer(liturgyFixed, { appendDrawNear: confessFirst }));
+  // 27. Communion Hymn — the appointed Koinonikon + cycling Troparia/Kontakia
+  //     labels (reference-only, full text already above). Sung as the clergy
+  //     commune behind the curtain.
+  blocks.push(..._litCommunionHymn(spec.communionHymn, spec));
 
-  // 28. Communion Hymn — the appointed Koinonikon, sung as the clergy commune.
-  blocks.push(..._litCommunionHymn(spec.communionHymn));
+  // 28. Communion Prayer — 'In the fear of God...' + 'Blessed is He...' +
+  //     'I believe, O Lord, and I confess...'. Order depends on the parish
+  //     `confessFirst` rubric; Paschal-period renders only the prayer.
+  blocks.push(..._litCommunionPrayer(liturgyFixed,
+    { confessFirst, paschal: paschalCommunionOrder }));
 
-  // 28b. Communion of the Faithful — additional hymns sung while the people
-  //      approach the chalice (Body of Christ, repeated troparia/kontakia,
-  //      and other choir-discretion pieces).
+  // 28b. Communion of the Faithful — Body of Christ + procession rubric.
   blocks.push(..._litCommunionOfFaithful(spec, liturgyFixed, paschalCommunionOrder));
 
   // 29. Post-Communion Blessing

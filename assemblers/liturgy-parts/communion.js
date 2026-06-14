@@ -21,46 +21,72 @@ function _litPreCommunion(isBasil, f, opts = {}) {
   // choir's "Blessed is He that comes...". In the Paschal period these are
   // replaced by a Paschal antiphonal hymn sung in their place; the text is
   // supplied via opts.paschalAntiphon.
-  if (opts.paschal) {
-    if (opts.paschalAntiphon) {
-      blocks.push(makeBlock('pc-paschal-antiphon', section, 'hymn', 'choir', opts.paschalAntiphon));
-    }
-  } else if (!opts.omitDrawNear) {
-    blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
-    blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
+  if (opts.paschal && opts.paschalAntiphon) {
+    blocks.push(makeBlock('pc-paschal-antiphon', section, 'hymn', 'choir', opts.paschalAntiphon));
   }
+  // Note: 'In the fear of God...' and 'Blessed is He that comes...' now live
+  // in the Communion Prayer section (always — order within depends on the
+  // `confessFirst` parish rubric). This puts the cycling Communion Hymn
+  // section between Pre-Communion (clergy preparation) and Communion Prayer
+  // (call to approach the chalice), matching the actual rubrical order.
   return blocks;
 }
 
 function _litCommunionPrayer(f, opts = {}) {
   const section = 'Communion Prayer';
   const pc = f['pre-communion'];
-  const blocks = [
-    makeBlock('pc-prayer', section, 'prayer', 'all', pc['prayer-chrysostom']),
-  ];
-  // When the parish rubric `confessFirst` is set, "In the fear of God..." +
-  // "Blessed is He that comes..." follow the Communion Prayer here instead of
-  // closing the Pre-Communion section.
-  if (opts.appendDrawNear) {
+  const blocks = [];
+  // Paschal period: the priest's exclamation is replaced by a Paschal antiphon
+  // (already rendered earlier), and the Communion Prayer stands alone.
+  if (opts.paschal) {
+    blocks.push(makeBlock('pc-prayer', section, 'prayer', 'all', pc['prayer-chrysostom']));
+    return blocks;
+  }
+  // Parish 'confessFirst' rubric (HTM/Jordanville-style):
+  //   "I believe and confess" → "In the fear of God..." → "Blessed is He..."
+  // Default (OCA Service Book):
+  //   "In the fear of God..." → "Blessed is He..." → "I believe and confess"
+  if (opts.confessFirst) {
+    blocks.push(makeBlock('pc-prayer',    section, 'prayer',   'all',    pc['prayer-chrysostom']));
     blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
     blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
+  } else {
+    blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
+    blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
+    blocks.push(makeBlock('pc-prayer',    section, 'prayer',   'all',    pc['prayer-chrysostom']));
   }
   return blocks;
 }
 
-function _litCommunionHymn(communionHymn) {
+function _litCommunionHymn(communionHymn, spec) {
   const section = 'Communion Hymn';
-  if (!communionHymn) return [];
   const blocks = [];
-  if (communionHymn.label)
-    blocks.push(makeBlock('ch-label', section, 'rubric', null, communionHymn.label));
-  blocks.push(makeBlock('ch-text', section, 'hymn', 'choir', communionHymn.text));
-  // Co-celebrated saint's communion hymn follows.
-  if (communionHymn.secondary) {
-    const sec = communionHymn.secondary;
-    if (sec.label)
-      blocks.push(makeBlock('ch-2-label', section, 'rubric', null, sec.label));
-    blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
+  if (communionHymn) {
+    if (communionHymn.label)
+      blocks.push(makeBlock('ch-label', section, 'rubric', null, communionHymn.label));
+    blocks.push(makeBlock('ch-text', section, 'hymn', 'choir', communionHymn.text));
+    if (communionHymn.secondary) {
+      const sec = communionHymn.secondary;
+      if (sec.label)
+        blocks.push(makeBlock('ch-2-label', section, 'rubric', null, sec.label));
+      blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
+    }
+  }
+  // While the clergy commune, the choir cycles through the Troparia and
+  // Kontakia of the day. We render label rubrics only (no text bodies) — the
+  // full text was printed earlier in the service at the Little Entrance.
+  // Choir/reader sings from memory or flips back when needed.
+  const hasTrop = spec && Array.isArray(spec.troparia) && spec.troparia.length > 0;
+  const hasKont = spec && Array.isArray(spec.kontakia) && spec.kontakia.length > 0;
+  if (hasTrop || hasKont) {
+    blocks.push(makeBlock('ch-cycle-intro', section, 'rubric', null,
+      'The choir continues with the Troparia and Kontakia of the day (see above) as the clergy commune:'));
+    if (hasTrop) spec.troparia.forEach((t, i) => {
+      if (t.rubric) blocks.push(makeBlock(`ch-cycle-trop-${i}`, section, 'rubric', null, t.rubric));
+    });
+    if (hasKont) spec.kontakia.forEach((k, i) => {
+      if (k.rubric) blocks.push(makeBlock(`ch-cycle-kont-${i}`, section, 'rubric', null, k.rubric));
+    });
   }
   return blocks;
 }
@@ -78,27 +104,6 @@ function _litCommunionOfFaithful(spec, f, isPaschalPeriod) {
     : cof['body-of-christ'];
   if (bocText) {
     blocks.push(makeBlock('cof-body-of-christ', section, 'hymn', 'choir', bocText));
-  }
-
-  // Repeat troparia and kontakia of the day, framed as choir-discretion. The
-  // texts are duplicated here (rather than referenced) so a choir using this
-  // page during communion has the words in front of them.
-  const hasTroparia  = Array.isArray(spec.troparia)  && spec.troparia.length > 0;
-  const hasKontakia  = Array.isArray(spec.kontakia)  && spec.kontakia.length > 0;
-  if (hasTroparia || hasKontakia) {
-    blocks.push(makeBlock('cof-tk-rubric', section, 'rubric', null, cof['troparia-rubric']));
-    if (hasTroparia) {
-      spec.troparia.forEach((t, i) => {
-        if (t.rubric) blocks.push(makeBlock(`cof-trop-rubric-${i}`, section, 'rubric', null, t.rubric));
-        blocks.push(makeBlock(`cof-trop-${i}`, section, 'hymn', 'choir', t.text, { tone: t.tone }));
-      });
-    }
-    if (hasKontakia) {
-      spec.kontakia.forEach((k, i) => {
-        if (k.rubric) blocks.push(makeBlock(`cof-kont-rubric-${i}`, section, 'rubric', null, k.rubric));
-        blocks.push(makeBlock(`cof-kont-${i}`, section, 'hymn', 'choir', k.text, { tone: k.tone }));
-      });
-    }
   }
 
   return blocks;

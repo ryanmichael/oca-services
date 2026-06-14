@@ -36,11 +36,7 @@ function _litKontakia(kontakiaSpec) {
   const blocks  = [];
   if (!kontakiaSpec || !kontakiaSpec.length) return blocks;
   kontakiaSpec.forEach((k, i) => {
-    // "Now and ever..." before the first kontakion (follows the troparia "Glory...")
-    if (i === 0 && !k.connector) {
-      blocks.push(makeBlock('kont-now-and-ever', section, 'doxology', null,
-        'Now and ever, and unto ages of ages. Amen.'));
-    } else if (k.connector) {
+    if (k.connector) {
       blocks.push(makeBlock(`kont-conn-${i}`, section, 'doxology', null, k.connector));
     }
     if (k.rubric)    blocks.push(makeBlock(`kont-rubric-${i}`, section, 'rubric', null, k.rubric));

@@ -102,10 +102,11 @@ function handle(req, res, ctx) {
           }
         }
 
-        // Patron-of-temple injection: append parish patron troparion + kontakion
-        // from the menaion DB to the assembled troparia/kontakia. Skipped when
-        // the day is feast-only (Great Feast / Pentecostarion-feast Sunday) —
-        // the principal feast claims all hymn slots on those days.
+        // Patron-of-temple troparion injection. Always appended to the troparia
+        // list when not feast-only; the choir/reader skips if not commemorating.
+        // Patron's KONTAKION is handled by the Sunday-kontakia restructure below
+        // (it gets dropped when a principal-feast kontakion claims the Glory slot).
+        let patronKontakion = null;
         if (overlayRubrics?.temple?.commemorationId && calendarEntry.liturgy) {
           const lit = calendarEntry.liturgy;
           const feastOnly = lit.feastOnly;
@@ -118,23 +119,46 @@ function handle(req, res, ctx) {
                 text: patron.troparion.text,
               }];
             }
-            if (patron?.kontakion && Array.isArray(lit.kontakia)) {
-              // Insert patron kontakion at the front with a Glory connector;
-              // ensure the next kontakion has the Now-and-ever connector.
-              const patronK = {
+            if (patron?.kontakion) {
+              patronKontakion = {
                 tone: patron.kontakion.tone,
                 rubric: `Kontakion of the Patron of the Temple, ${overlayRubrics.temple.title}, Tone ${patron.kontakion.tone}:`,
                 text: patron.kontakion.text,
-                connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.',
               };
-              if (lit.kontakia.length > 0) {
-                const rest = lit.kontakia.map((k, i) => i === 0
-                  ? { ...k, connector: 'Now and ever, and unto ages of ages. Amen.' }
-                  : k);
-                lit.kontakia = [patronK, ...rest];
-              } else {
-                lit.kontakia = [patronK];
-              }
+            }
+          }
+        }
+
+        // Sunday Liturgy kontakia restructure. Standard OCA shape:
+        //   Glory: → Kontakion of the principal saint (or patron, if no menaion saint)
+        //   Now:   → Theotokion-Kontakion ("Protection of Christians...")
+        // The Resurrection kontakion is dropped — the Sunday is carried by the
+        // Resurrection troparion. On Sundays with neither a menaion kontakion
+        // nor a patron, falls back to the Resurrection kontakion alone.
+        // Weekdays, Great Feasts, and feast-only days are left unchanged.
+        if (calendarEntry.liturgy && Array.isArray(calendarEntry.liturgy.kontakia)
+            && !calendarEntry.liturgy.feastOnly) {
+          const d = new Date(date + 'T12:00:00Z');
+          const isSundayLocal = d.getUTCDay() === 0;
+          if (isSundayLocal) {
+            const lit = calendarEntry.liturgy;
+            const resK    = lit.kontakia.find(k => /Resurrection/i.test(k.rubric || ''));
+            const saintKs = lit.kontakia.filter(k => k !== resK);
+            const gloryK  = saintKs[0] || patronKontakion;
+            if (gloryK) {
+              const theo = liturgyFixedResolved['kontakion-theotokion'];
+              const theoK = theo ? {
+                tone:   theo.tone,
+                rubric: theo.rubric,
+                text:   theo.text,
+                connector: 'Now and ever, and unto ages of ages. Amen.',
+              } : null;
+              lit.kontakia = [
+                { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.' },
+                ...(theoK ? [theoK] : []),
+              ];
+            } else if (resK) {
+              lit.kontakia = [{ ...resK, connector: null }];
             }
           }
         }

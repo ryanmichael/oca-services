@@ -35,25 +35,36 @@ function _litPreCommunion(isBasil, f, opts = {}) {
 function _litCommunionPrayer(f, opts = {}) {
   const section = 'Communion Prayer';
   const pc = f['pre-communion'];
+  // The pre-Communion prayer text is traditionally three distinct prayers:
+  //   1. "I believe, O Lord, and I confess..."           (Symeon Metaphrastes)
+  //   2. "Of Thy Mystical Supper, O Son of God..."       (kiss-prayer)
+  //   3. "May the communion of Thy holy Mysteries..."    (closing)
+  // Split on blank lines so each prayer is its own block. Overlays that keep
+  // the prayer monolithic (no \n\n separators) render as a single block.
+  const prayerParts = String(pc['prayer-chrysostom'] || '')
+    .split(/\n\s*\n+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+  const prayerBlocks = prayerParts.length > 0
+    ? prayerParts.map((text, i) => makeBlock(`pc-prayer-${i + 1}`, section, 'prayer', 'all', text))
+    : [makeBlock('pc-prayer', section, 'prayer', 'all', pc['prayer-chrysostom'])];
+
   const blocks = [];
   // Paschal period: the priest's exclamation is replaced by a Paschal antiphon
   // (already rendered earlier), and the Communion Prayer stands alone.
-  if (opts.paschal) {
-    blocks.push(makeBlock('pc-prayer', section, 'prayer', 'all', pc['prayer-chrysostom']));
-    return blocks;
-  }
+  if (opts.paschal) return blocks.concat(prayerBlocks);
   // Parish 'confessFirst' rubric (HTM/Jordanville-style):
   //   "I believe and confess" → "In the fear of God..." → "Blessed is He..."
   // Default (OCA Service Book):
   //   "In the fear of God..." → "Blessed is He..." → "I believe and confess"
   if (opts.confessFirst) {
-    blocks.push(makeBlock('pc-prayer',    section, 'prayer',   'all',    pc['prayer-chrysostom']));
+    blocks.push(...prayerBlocks);
     blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
     blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
   } else {
     blocks.push(makeBlock('pc-draw-near', section, 'prayer',   'priest', pc.drawNear));
     blocks.push(makeBlock('pc-blessed',   section, 'response', 'choir',  pc.blessedIsHe));
-    blocks.push(makeBlock('pc-prayer',    section, 'prayer',   'all',    pc['prayer-chrysostom']));
+    blocks.push(...prayerBlocks);
   }
   return blocks;
 }
@@ -85,7 +96,13 @@ function _litCommunionHymn(communionHymn, spec) {
       if (t.rubric) blocks.push(makeBlock(`ch-cycle-trop-${i}`, section, 'rubric', null, t.rubric));
     });
     if (hasKont) spec.kontakia.forEach((k, i) => {
-      if (k.rubric) blocks.push(makeBlock(`ch-cycle-kont-${i}`, section, 'rubric', null, k.rubric));
+      // The Theotokion-Kontakion ("Protection of Christians...") closes the
+      // Kontakia section at the Little Entrance ("Now and ever..."). It is
+      // not typically repeated while the clergy commune — exclude from the
+      // cycling labels.
+      if (k.rubric && !/Theotokion/i.test(k.rubric)) {
+        blocks.push(makeBlock(`ch-cycle-kont-${i}`, section, 'rubric', null, k.rubric));
+      }
     });
   }
   return blocks;

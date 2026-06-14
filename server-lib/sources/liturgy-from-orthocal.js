@@ -100,8 +100,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   //   (false) renders only the primary, matching standard OCA practice of
   //   reading one Gospel even when a polyeleos+ feast appoints its own. Both
   //   Epistles always render unaffected (Epistle doubling is the norm).
-  const includeLesserSaints  = !!opts.includeLesserSaints;
-  const includeSecondGospel  = !!opts.includeSecondGospel;
+  // opts.includeSecondKoinonikon — when true, render the secondary (saints')
+  //   koinonikon attached by a cocelebrated-overlay alongside the principal
+  //   one. Default (false) renders only the principal koinonikon, matching
+  //   typical OCA parish practice of singing one Communion Verse.
+  const includeLesserSaints       = !!opts.includeLesserSaints;
+  const includeSecondGospel       = !!opts.includeSecondGospel;
+  const includeSecondKoinonikon   = !!opts.includeSecondKoinonikon;
 
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
@@ -404,7 +409,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     : pentOverride?.communionHymn
       ? { text: pentOverride.communionHymn }
       : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
-  if (overlay?.communionHymn) {
+  if (overlay?.communionHymn && includeSecondKoinonikon) {
     communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
   }
 

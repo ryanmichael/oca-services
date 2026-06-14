@@ -98,12 +98,21 @@ function handle(req, res, ctx) {
           return !!overlayRubrics?.readings?.includeSecondGospel;
         })();
 
+        // Second-Koinonikon (Communion Verse) toggle: same shape. Default
+        // false — most parishes sing one Communion Verse even when a saint
+        // koinonikon is appointed.
+        const includeSecondKoinonikon = (() => {
+          if (q.secondKoinonikon === 'show' || q.secondKoinonikon === 'true' || q.secondKoinonikon === '1') return true;
+          if (q.secondKoinonikon === 'hide' || q.secondKoinonikon === 'false' || q.secondKoinonikon === '0') return false;
+          return !!overlayRubrics?.readings?.includeSecondKoinonikon;
+        })();
+
         if (!calendarEntry.liturgy) {
           try {
             const orthocalData = await fetchOrthocalDay(date);
             calendarEntry = { ...calendarEntry,
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style,
-                { includeLesserSaints, includeSecondGospel }) };
+                { includeLesserSaints, includeSecondGospel, includeSecondKoinonikon }) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });

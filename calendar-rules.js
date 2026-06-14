@@ -515,6 +515,7 @@ function generateOrdinaryTimeSaturday(dateStr, tone, dow = 'saturday') {
           { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional Sticheron 1' },
           { position: 2, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.1`, tone, label: 'Resurrectional Sticheron 2' },
           { position: 3, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.2`, tone, label: 'Resurrectional Sticheron 3' },
+          { position: 4, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.3`, tone, label: 'Resurrectional Sticheron 4' },
         ],
         // No resurrectional glory doxastichon in plain Saturday Octoechos;
         // go straight to "Glory...now and ever..." + Theotokion.

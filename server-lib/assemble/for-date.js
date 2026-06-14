@@ -293,9 +293,21 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         if (apostGlory) {
           apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
           // Weekday: Octoechos theotokion already set as `now` in calendar entry
-          // Saturday: set Octoechos theotokion explicitly
+          // Saturday: set the saint's own Theotokion (menaion order=-1) if present
+          //   — that's the "Now and ever" of the feast, distinct from the
+          //   Octoechos resurrectional Theotokion of the week. NA Saints
+          //   Sunday (6-14) is the worked example. Otherwise fall back to
+          //   the Octoechos Theotokion of the week's tone.
           if (isSaturdayInjection && !isGreatFeast) {
-            apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+            const apostNow = sticheraData?.[0]?.stichera.find(
+              s => s.section === 'aposticha' && s.order === -1
+            );
+            if (apostNow) {
+              apost.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };
+              autoSlot.aposticha.now = { text: apostNow.text, tone: apostNow.tone, label: apostNow.label };
+            } else {
+              apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+            }
           }
           autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
         }

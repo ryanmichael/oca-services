@@ -88,12 +88,22 @@ function handle(req, res, ctx) {
           return !!overlayRubrics?.troparia?.includeLesserSaints;
         })();
 
+        // Second-Gospel toggle: same shape. Standard OCA practice reads only
+        // one Gospel at Liturgy even when a feast Gospel is appointed. Parishes
+        // that read both can set rubrics.readings.includeSecondGospel = true.
+        // (Both Epistles always render — Epistle doubling is the norm.)
+        const includeSecondGospel = (() => {
+          if (q.secondGospel === 'show' || q.secondGospel === 'true' || q.secondGospel === '1') return true;
+          if (q.secondGospel === 'hide' || q.secondGospel === 'false' || q.secondGospel === '0') return false;
+          return !!overlayRubrics?.readings?.includeSecondGospel;
+        })();
+
         if (!calendarEntry.liturgy) {
           try {
             const orthocalData = await fetchOrthocalDay(date);
             calendarEntry = { ...calendarEntry,
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style,
-                { includeLesserSaints }) };
+                { includeLesserSaints, includeSecondGospel }) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });

@@ -95,7 +95,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   //   are dropped from Liturgy troparia/kontakia, matching standard OCA parish
   //   practice (they are still kept at Matins). Patron-of-temple and the
   //   Resurrection troparion/kontakion are layered separately and unaffected.
-  const includeLesserSaints = !!opts.includeLesserSaints;
+  // opts.includeSecondGospel — when true, render the secondary (feast or
+  //   saint) Gospel alongside the primary (Sunday-cycle) Gospel. Default
+  //   (false) renders only the primary, matching standard OCA practice of
+  //   reading one Gospel even when a polyeleos+ feast appoints its own. Both
+  //   Epistles always render unaffected (Epistle doubling is the norm).
+  const includeLesserSaints  = !!opts.includeLesserSaints;
+  const includeSecondGospel  = !!opts.includeSecondGospel;
 
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
@@ -445,7 +451,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       book: gospelR.book,
       display: gospelR.display,
       text: extractPassageText(gospelR),
-      secondary: gospelR2 ? {
+      secondary: (gospelR2 && includeSecondGospel) ? {
         book: gospelR2.book,
         display: gospelR2.display,
         text: extractPassageText(gospelR2),

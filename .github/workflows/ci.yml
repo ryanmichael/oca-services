@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.5'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Smoke tests
+        run: npm test
+
+      - name: Contract regression tests
+        run: npm run test:contracts
+
+      - name: Structural audit (calendar geometry, no server)
+        run: npm run audit:quick
+
+      - name: Contract-check (strict — flag any code surface change missing spec/test updates)
+        run: node scripts/contract-check.js --strict --base origin/${{ github.base_ref || github.ref_name }}
+        continue-on-error: true

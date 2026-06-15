@@ -103,11 +103,15 @@ The **assembler** (`assembler.js`) takes `(calendarDay, fixedTexts, sources)` an
 ## Quickstart
 
 ```bash
+# First-time setup (one command, points git at the versioned hooks dir)
+npm run setup-hooks
+
 node server.js                          # HTTP server on :3000
 node server.js --port 8080              # alternate port
 
-# Audit suite
+# Test + audit suite
 npm test                                # backend smoke tests
+npm run test:contracts                  # per-feature contract tests (see FEATURES.md)
 npm run audit:quick                     # structural rules (no server), pre-push gate
 npm run audit                           # ~208 representative dates against running server
 npm run audit:full                      # full 365-day sweep

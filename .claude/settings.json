@@ -9,6 +9,9 @@
       "mcp__sqlite-oca__read_query",
       "mcp__sqlite-oca__list_tables",
       "mcp__sqlite-oca__describe_table"
+    ],
+    "deny": [
+      "mcp__sqlite-oca__write_query"
     ]
   }
 }

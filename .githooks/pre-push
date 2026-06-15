@@ -1,0 +1,67 @@
+#!/bin/sh
+# Run smoke tests + structural audit + endpoint audit before pushing to remote.
+# Bypass with: git push --no-verify
+set -e
+
+# Git passes "<local_ref> <local_sha> <remote_ref> <remote_sha>" lines on stdin
+# (one per ref being pushed). Capture them so contract-check can diff against
+# the actual remote target — origin/staging when pushing staging, origin/main
+# when pushing main, etc. Falls back to a sensible default if stdin is empty.
+PUSH_REFS_INPUT=$(cat || true)
+PUSH_REMOTE_NAME="$1"  # typically "origin"
+PUSH_REMOTE_REF=$(echo "$PUSH_REFS_INPUT" | awk 'NR==1 {print $3}')
+PUSH_REMOTE_BRANCH=$(echo "$PUSH_REMOTE_REF" | sed 's|refs/heads/||')
+if [ -n "$PUSH_REMOTE_NAME" ] && [ -n "$PUSH_REMOTE_BRANCH" ]; then
+  CONTRACT_CHECK_BASE="${PUSH_REMOTE_NAME}/${PUSH_REMOTE_BRANCH}"
+else
+  CONTRACT_CHECK_BASE=""  # contract-check will fall back to origin/main
+fi
+
+echo "Running smoke tests before push..."
+npm test
+
+echo "Running contract regression tests..."
+npm run test:contracts
+
+echo "Running contract-check (code surfaces vs. feature specs)..."
+# Reminder only — does not block. Pass --strict in the script to gate.
+if [ -n "$CONTRACT_CHECK_BASE" ]; then
+  echo "  (diffing against ${CONTRACT_CHECK_BASE})"
+  node scripts/contract-check.js --base "$CONTRACT_CHECK_BASE" || true
+else
+  node scripts/contract-check.js || true
+fi
+
+echo "Running structural audit (audit:quick)..."
+npm run audit:quick
+
+echo "Running endpoint audit (audit:endpoints)..."
+# Endpoint audit needs a running server. Start one in the background unless
+# port 3000 is already in use, then run the audit, then clean up.
+if lsof -ti :3000 > /dev/null 2>&1; then
+  echo "  (existing server on :3000 detected — reusing)"
+  STARTED_SERVER=0
+else
+  node server.js > /tmp/oca-prepush-server.log 2>&1 &
+  SERVER_PID=$!
+  STARTED_SERVER=1
+  # Wait for server to be ready (up to 10s)
+  for i in 1 2 3 4 5 6 7 8 9 10; do
+    if curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/liturgy?date=2026-03-22 | grep -q "200\|404"; then
+      break
+    fi
+    sleep 1
+  done
+fi
+
+# Run audit; capture exit code so we can still clean up the server
+set +e
+npm run audit:endpoints
+AUDIT_EXIT=$?
+set -e
+
+if [ "$STARTED_SERVER" = "1" ]; then
+  kill $SERVER_PID 2>/dev/null || true
+fi
+
+exit $AUDIT_EXIT

@@ -121,10 +121,14 @@ function handle(req, res, ctx) {
           }
         }
 
-        // Patron-of-temple troparion injection. Always appended to the troparia
-        // list when not feast-only; the choir/reader skips if not commemorating.
-        // Patron's KONTAKION is handled by the Sunday-kontakia restructure below
-        // (it gets dropped when a principal-feast kontakion claims the Glory slot).
+        // Patron-of-temple troparion + kontakion injection.
+        //
+        // Troparion: on Sundays inserted between Resurrection troparion and the
+        //   day's saint(s); otherwise appended. Reader/choir skips if patron
+        //   isn't being commemorated.
+        // Kontakion: held in `patronKontakion` for the Sunday-kontakia restructure
+        //   below. The restructure decides whether the patron or the day's saint
+        //   claims the Glory slot, based on the principal-feast signal.
         let patronKontakion = null;
         if (overlayRubrics?.temple?.commemorationId && calendarEntry.liturgy) {
           const lit = calendarEntry.liturgy;
@@ -132,11 +136,25 @@ function handle(req, res, ctx) {
           if (!feastOnly && Array.isArray(lit.troparia)) {
             const patron = getMenaionPatron(overlayRubrics.temple.commemorationId);
             if (patron?.troparion) {
-              lit.troparia = [...lit.troparia, {
+              const patronTrop = {
                 tone: patron.troparion.tone,
                 rubric: `Troparion of the Patron of the Temple, ${overlayRubrics.temple.title}, Tone ${patron.troparion.tone}:`,
                 text: patron.troparion.text,
-              }];
+              };
+              const d = new Date(date + 'T12:00:00Z');
+              const isSundayLocal = d.getUTCDay() === 0;
+              const resIdx = isSundayLocal
+                ? lit.troparia.findIndex(t => /Resurrection/i.test(t.rubric || ''))
+                : -1;
+              if (resIdx >= 0) {
+                lit.troparia = [
+                  ...lit.troparia.slice(0, resIdx + 1),
+                  patronTrop,
+                  ...lit.troparia.slice(resIdx + 1),
+                ];
+              } else {
+                lit.troparia = [...lit.troparia, patronTrop];
+              }
             }
             if (patron?.kontakion) {
               patronKontakion = {
@@ -149,11 +167,16 @@ function handle(req, res, ctx) {
         }
 
         // Sunday Liturgy kontakia restructure. Standard OCA shape:
-        //   Glory: → Kontakion of the principal saint (or patron, if no menaion saint)
+        //   Glory: → Kontakion of the principal commemoration / patron of temple
         //   Now:   → Theotokion-Kontakion ("Protection of Christians...")
         // The Resurrection kontakion is dropped — the Sunday is carried by the
-        // Resurrection troparion. On Sundays with neither a menaion kontakion
-        // nor a patron, falls back to the Resurrection kontakion alone.
+        // Resurrection troparion above. Glory-slot selection by rank:
+        //   - Principal feast / polyeleos+ saint (signaled by
+        //     `hasCocelebratedOverlay`): day's saint takes Glory; patron drops.
+        //   - Simple-rank Sunday (no overlay): patron takes Glory when set;
+        //     menaion saint kontakion is read but not Glory-tagged.
+        //   - No principal kontakion and no patron: falls back to the
+        //     Resurrection kontakion alone.
         // Weekdays, Great Feasts, and feast-only days are left unchanged.
         if (calendarEntry.liturgy && Array.isArray(calendarEntry.liturgy.kontakia)
             && !calendarEntry.liturgy.feastOnly) {
@@ -163,7 +186,19 @@ function handle(req, res, ctx) {
             const lit = calendarEntry.liturgy;
             const resK    = lit.kontakia.find(k => /Resurrection/i.test(k.rubric || ''));
             const saintKs = lit.kontakia.filter(k => k !== resK);
-            const gloryK  = saintKs[0] || patronKontakion;
+            const principalSundayFeast = !!lit.hasCocelebratedOverlay;
+
+            let gloryK = null;
+            let extraK = null;  // saint kontakion read but not Glory-tagged
+            if (principalSundayFeast && saintKs[0]) {
+              gloryK = saintKs[0];
+            } else if (patronKontakion) {
+              gloryK = patronKontakion;
+              if (saintKs[0]) extraK = saintKs[0];
+            } else if (saintKs[0]) {
+              gloryK = saintKs[0];
+            }
+
             if (gloryK) {
               const theo = liturgyFixedResolved['kontakion-theotokion'];
               const theoK = theo ? {
@@ -173,6 +208,7 @@ function handle(req, res, ctx) {
                 connector: 'Now and ever, and unto ages of ages. Amen.',
               } : null;
               lit.kontakia = [
+                ...(extraK ? [{ ...extraK, connector: null }] : []),
                 { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.' },
                 ...(theoK ? [theoK] : []),
               ];

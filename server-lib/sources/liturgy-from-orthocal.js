@@ -432,6 +432,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   return {
     variant,
     feastOnly,
+    // Curated signal for "principal-feast/polyeleos+ commemoration on this date."
+    // Used by the patron-of-temple rubric: when true on a Sunday, the patron's
+    // kontakion is dropped (single Glory slot is claimed by the principal saint);
+    // when false, the patron holds Glory on simple-rank Sundays.
+    hasCocelebratedOverlay: !!overlay,
     feastAntiphons,
     paschalAntiphons12,
     beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) },

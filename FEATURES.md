@@ -4,6 +4,8 @@ Capabilities of the service-text generator, each with a contract spec and a regr
 
 Run the regression gate: `npm run test:contracts`
 
+`scripts/contract-check.js` is wired into the pre-push hook. It parses each `features/*.md` for the file paths in its `## Code surface` section, compares them to the diff being pushed, and reminds you when a touched code path's spec or contract tests weren't updated in the same change. Reminder-only by default — pass `--strict` to make it a gate.
+
 ## Liturgy
 
 | Feature | Spec | Tests | Status |

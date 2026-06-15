@@ -1,5 +1,7 @@
 # Orthodox Daily Services
 
+[![CI](https://github.com/ryanmichael/oca-services/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanmichael/oca-services/actions/workflows/ci.yml)
+
 **The daily service-text platform for every Orthodox parish in America — in your jurisdiction's voice, your parish's translation, your choir's view.**
 
 Production: [oca-services-production.up.railway.app](https://oca-services-production.up.railway.app/)

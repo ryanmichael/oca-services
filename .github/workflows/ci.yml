@@ -18,7 +18,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.5'
+          # Need 24+ so `node:sqlite` is available unflagged. (Added in 22.5
+          # behind --experimental-sqlite; flag lifted in 24.)
+          node-version: '24'
 
       - name: Install dependencies
         run: npm ci || npm install

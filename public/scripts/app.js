@@ -99,20 +99,19 @@ const LITURGY_VARIANT_LABELS = {
  *  opens the liturgy-variant screenfill. */
 function updateMetaRow(translationId, svcType, date) {
   const row     = document.getElementById('p-meta-row');
-  const ovWrap  = document.getElementById('p-meta-overlay');
+  const ovWrap  = document.getElementById('p-meta-overlay-btn');
   const ovName  = document.getElementById('p-meta-overlay-name');
   const sep     = document.getElementById('p-meta-sep');
   const typeBtn = document.getElementById('p-meta-type-btn');
   const typeNm  = document.getElementById('p-meta-type-name');
   if (!row) return;
 
-  // Overlay half — visible when an overlay is active. Resolves friendly name
-  // from the cached list; falls back to the raw id while the list loads.
+  // Overlay half — always visible as the quick-edit ingress. When no overlay
+  // is active it reads "DEFAULT"; otherwise it shows the friendly overlay name.
   const hasOverlay = !!translationId;
   if (hasOverlay) {
     const fromCache = translationsCache?.translations?.find(t => t.id === translationId);
     ovName.textContent = (fromCache?.name || translationId).toUpperCase();
-    ovWrap.hidden = false;
     if (!fromCache) {
       loadTranslations().then(() => {
         const t = translationsCache?.translations?.find(t => t.id === translationId);
@@ -120,8 +119,9 @@ function updateMetaRow(translationId, svcType, date) {
       });
     }
   } else {
-    ovWrap.hidden = true;
+    ovName.textContent = 'DEFAULT';
   }
+  ovWrap.hidden = false;
 
   // Type half — visible when active service is one of the Liturgy variants.
   const hasType = svcType in LITURGY_VARIANT_LABELS;
@@ -133,8 +133,8 @@ function updateMetaRow(translationId, svcType, date) {
     typeBtn.hidden = true;
   }
 
-  sep.hidden = !(hasOverlay && hasType);
-  row.hidden = !(hasOverlay || hasType);
+  sep.hidden = !hasType;
+  row.hidden = false;
 }
 
 async function fetchService(date, svcType, pronoun = 'tt') {
@@ -919,6 +919,21 @@ async function init() {
     });
   });
 
+  // Service Text quick picker
+  document.getElementById('p-meta-overlay-btn').addEventListener('click', openServiceTextView);
+  document.getElementById('st-back').addEventListener('click', closeServiceTextView);
+  document.querySelectorAll('#st-jurisdiction-row .seg-btn-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeJurisdiction = btn.dataset.jur;
+      localStorage.setItem('jurisdiction', activeJurisdiction);
+      renderServiceTextView();
+    });
+  });
+  document.getElementById('st-more-link').addEventListener('click', () => {
+    closeServiceTextView();
+    openSettings();
+  });
+
   document.getElementById('p-detail-toggle').addEventListener('click', togglePanelDetail);
   initPronounRadio();
   initDevMode();
@@ -956,6 +971,7 @@ async function init() {
     if (document.getElementById('view-cal').classList.contains('visible'))     closeCal();
     if (document.getElementById('view-print').classList.contains('visible'))   closePrintView();
     if (document.getElementById('view-liturgy-variant').classList.contains('visible')) closeLiturgyVariantView();
+    if (document.getElementById('view-service-text').classList.contains('visible')) closeServiceTextView();
   });
 
   // URL params
@@ -1040,6 +1056,92 @@ function closeLiturgyVariantView() {
   document.getElementById('view-main').classList.remove('hidden');
 }
 
+// ─── Service Text quick picker ───────────────────────────────────────────────
+
+/** Filters the cached translation list by jurisdiction. Shared by the Settings
+ *  <select> and the Service Text quick picker. */
+function filteredTranslations(jur) {
+  // Hide entries with `listed: false` in their manifest — they remain valid
+  // overlay ids (so saved selections still resolve) but are kept out of the
+  // pickers. Used for building-block overlays and pronoun-form duplicates.
+  const all = (translationsCache?.translations || []).filter(t => t.listed !== false);
+  if (jur === 'all')   return all;
+  if (jur === 'cross') return all.filter(t => t.jurisdiction == null);
+  return all.filter(t => t.jurisdiction === jur);
+}
+
+function openServiceTextView() {
+  closeSearch(/*silent=*/true);
+  closeCal();
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-service-text').classList.add('visible');
+  loadTranslations().then(renderServiceTextView);
+  renderServiceTextView();
+}
+
+function closeServiceTextView() {
+  document.getElementById('view-service-text').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+}
+
+function renderServiceTextView() {
+  // Sync jurisdiction pills
+  document.querySelectorAll('#st-jurisdiction-row .seg-btn-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.jur === activeJurisdiction);
+  });
+
+  const list = document.getElementById('st-options');
+  if (!list) return;
+  list.innerHTML = '';
+
+  // Default (no overlay) always first
+  const mkOption = (id, name, desc) => {
+    const b = document.createElement('button');
+    b.className = 'pd-option';
+    b.dataset.translationId = id;
+    if (id === (activeTranslation || '')) b.classList.add('active');
+    const n = document.createElement('span');
+    n.className = 'pd-option-name';
+    n.textContent = name;
+    b.appendChild(n);
+    if (desc) {
+      const d = document.createElement('span');
+      d.className = 'pd-option-desc';
+      d.textContent = desc;
+      b.appendChild(d);
+    }
+    b.addEventListener('click', () => {
+      setTranslation(id);
+      closeServiceTextView();
+    });
+    return b;
+  };
+
+  list.appendChild(mkOption('', 'Default', 'OCA service text without any overlay'));
+
+  if (!translationsCache) {
+    const loading = document.createElement('div');
+    loading.className = 'pd-option-desc';
+    loading.style.padding = '12px 0';
+    loading.textContent = 'Loading…';
+    list.appendChild(loading);
+    return;
+  }
+
+  const filtered = filteredTranslations(activeJurisdiction);
+  // Order: jurisdiction-kind defaults, then parishes, then translation traditions
+  const jurisdictions = filtered.filter(t => t.kind === 'jurisdiction');
+  const parishes      = filtered.filter(t => t.kind === 'parish');
+  const traditions    = filtered.filter(t => t.kind === 'tradition');
+
+  [...jurisdictions, ...parishes, ...traditions].forEach(t => {
+    const tag = t.kind === 'parish' ? 'Parish' :
+                t.kind === 'jurisdiction' ? 'Jurisdiction default' : 'Translation';
+    const desc = t.description ? `${tag} — ${t.description}` : tag;
+    list.appendChild(mkOption(t.id, t.name, desc));
+  });
+}
+
 // ─── Settings view ───────────────────────────────────────────────────────────
 
 function openSettings() {
@@ -1105,7 +1207,7 @@ async function loadTranslations() {
 function populateTranslationSelect() {
   const sel = document.getElementById('translation-select');
   if (!sel || !translationsCache) return;
-  const all = translationsCache.translations || [];
+  const all = (translationsCache.translations || []).filter(t => t.listed !== false);
 
   // Filter: 'all' shows everything; 'cross' shows entries with no jurisdiction
   // ('null'); otherwise match the jurisdiction id.

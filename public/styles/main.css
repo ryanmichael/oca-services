@@ -297,19 +297,31 @@ header,
 .panel-meta-row .pmr-sep[hidden],
 .panel-meta-row .pmr-overlay[hidden],
 .panel-meta-row .pmr-type[hidden] { display: none; }
-.panel-meta-row .pmr-type {
+.panel-meta-row .pmr-type,
+.panel-meta-row .pmr-overlay {
   background: none; border: none; padding: 0; cursor: pointer;
   font: inherit; letter-spacing: inherit; color: inherit;
   text-transform: inherit;
   border-bottom: 1px dotted var(--muted);
   transition: color .12s, border-bottom-color .12s;
 }
-.panel-meta-row .pmr-type:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
-.panel-meta-row .pmr-type:hover .pmr-name { color: var(--rubric); }
+.panel-meta-row .pmr-type:hover,
+.panel-meta-row .pmr-overlay:hover { color: var(--rubric); border-bottom-color: var(--rubric); }
+.panel-meta-row .pmr-type:hover .pmr-name,
+.panel-meta-row .pmr-overlay:hover .pmr-name { color: var(--rubric); }
 
 /* Stacked option list — used by the Liturgy variant picker, where 4 options
    want to stack vertically instead of the print picker's 2-up row. */
 .pd-options-stack { flex-direction: column; gap: 12px; }
+
+/* "More options in Settings →" link inside the Service Text quick picker. */
+.st-more-link {
+  display: block; margin-top: 18px;
+  background: none; border: none; padding: 6px 0; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.st-more-link:hover { color: var(--rubric); }
 /* Panel detail toggle */
 .panel-detail-toggle {
   display: flex; align-items: center; gap: 8px;

@@ -64,10 +64,10 @@
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
           <div class="panel-date-str" id="p-date"></div>
           <div class="panel-meta-row" id="p-meta-row" hidden>
-            <span class="pmr-overlay" id="p-meta-overlay" hidden>
-              <span class="pmr-label">SERVICE TEXT:</span>
+            <button class="pmr-overlay" id="p-meta-overlay-btn" hidden>
+              <span class="pmr-label">VERSION:</span>
               <span class="pmr-name" id="p-meta-overlay-name"></span>
-            </span>
+            </button>
             <span class="pmr-sep" id="p-meta-sep" hidden>•</span>
             <button class="pmr-type" id="p-meta-type-btn" hidden>
               <span class="pmr-label">TYPE:</span>
@@ -298,6 +298,38 @@
 
 </div><!-- end .view-liturgy-variant -->
 
+<!-- ════════════════════════════════ VIEW: SERVICE TEXT ══════════════════════ -->
+<div class="view view-print view-service-text" id="view-service-text">
+
+  <div class="print-hdr">
+    <button class="print-back" id="st-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="print-view-body">
+    <div class="print-view-inner">
+      <div class="pd-title">VERSION</div>
+      <div class="settings-row" id="st-jurisdiction-row">
+        <button class="seg-btn-pill" data-jur="all">All</button>
+        <button class="seg-btn-pill" data-jur="oca">OCA</button>
+        <button class="seg-btn-pill" data-jur="rocor">ROCOR</button>
+        <button class="seg-btn-pill" data-jur="antiochian">Antiochian</button>
+        <button class="seg-btn-pill" data-jur="goa">GOA</button>
+        <button class="seg-btn-pill" data-jur="serbian">Serbian</button>
+        <button class="seg-btn-pill" data-jur="georgian">Georgian</button>
+        <button class="seg-btn-pill" data-jur="cross">Cross-jurisdictional</button>
+      </div>
+      <div class="pd-options pd-options-stack" id="st-options"></div>
+      <button class="st-more-link" id="st-more-link">More options in Settings →</button>
+    </div>
+  </div>
+
+</div><!-- end .view-service-text -->
+
 <!-- ═══════════════════════════════════════ VIEW: SETTINGS ═════════════════════ -->
 <div class="view view-settings" id="view-settings">
 
@@ -351,7 +383,7 @@
       </div>
 
       <div class="settings-group" id="translation-group">
-        <div class="settings-label">SERVICE TEXT VERSION</div>
+        <div class="settings-label">VERSION</div>
         <div class="settings-desc">Pick a jurisdiction for a one-click default stack, or choose a specific translation tradition or parish overlay below. Parish texts inherit from a translation and layer local wording on top.</div>
         <div class="settings-row" id="jurisdiction-row">
           <button class="seg-btn-pill active" data-jur="all">All</button>

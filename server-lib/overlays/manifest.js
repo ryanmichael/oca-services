@@ -131,6 +131,7 @@ function getTranslationManifests() {
       extends: Array.isArray(m.extends) ? m.extends : [],
       description: m.description || null,
       sources: m.sources || null,
+      listed: m.listed !== false,
       ...(warnings.length ? { warnings } : {}),
     };
   });

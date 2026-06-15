@@ -115,7 +115,7 @@ npm run audit:date -- 2026-06-07        # single date, pre-print checklist
 npm run audit:judge -- 2026-05-24       # LLM-as-judge vs OCA reference DOCX
 ```
 
-Requirements: Node ≥ 22.5 (uses `node:sqlite` and `node:http`). The only npm dependency is `@anthropic-ai/sdk`, required by `audit:judge`.
+Requirements: Node ≥ 24 (uses `node:sqlite` unflagged — added in 22.5 behind `--experimental-sqlite`, flag lifted in 24). The only npm dependency is `@anthropic-ai/sdk`, required by `audit:judge`.
 
 ---
 

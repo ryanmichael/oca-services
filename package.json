@@ -19,7 +19,7 @@
     "db:clear-cache": "sqlite3 storage/oca.db 'DELETE FROM orthocal_cache;' && echo 'orthocal_cache cleared'"
   },
   "engines": {
-    "node": ">=22.5.0"
+    "node": ">=24.0.0"
   },
   "license": "MIT",
   "dependencies": {

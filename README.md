@@ -14,7 +14,9 @@ This project models that process as code, and exposes it as a free, modern, pari
 
 It is rooted in the Orthodox Church in America (OCA) and is being expanded jurisdiction by jurisdiction toward serving every canonical Orthodox parish in the United States.
 
-For the strategic frame and roadmap: see [`ASSESSMENT.md`](./ASSESSMENT.md). For the design philosophy: see [`STYLE.md`](./STYLE.md). For implementation conventions and the liturgical glossary: see [`CLAUDE.md`](./CLAUDE.md).
+New here? Start at [`HANDOFF.md`](./HANDOFF.md) — the cold-reader onboarding doc that frames what's load-bearing.
+
+For the strategic frame and roadmap: see [`ASSESSMENT.md`](./ASSESSMENT.md). For the design philosophy: see [`STYLE.md`](./STYLE.md). For implementation conventions and the liturgical glossary: see [`CLAUDE.md`](./CLAUDE.md). For the feature catalog with contract specs and regression tests: see [`FEATURES.md`](./FEATURES.md).
 
 ---
 

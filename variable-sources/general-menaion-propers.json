@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "description": "General Menaion propers (prokeimenon, alleluia, koinonikon) by saint category. Sung at Liturgy on polyeleos+/vigil+ Sundays for the saint of the day, attached as the .secondary on the day's prokeimenon, alleluia, and communionHymn. Wired from server-lib/sources/liturgy-from-orthocal.js — see pickGeneralMenaionPropers(). Source: OCA General Menaion via parish service texts; thee/thy register.",
+    "_aliasNote": "String values map a saint_type to another category (the General Menaion treats venerable-confessors as venerables, etc.). String aliases resolve transitively in propers.js.",
+    "_coverageNote": "Initial coverage: monastic (incl. confessors), hierarch, hieromartyr, apostle(s), martyr(s) including monastic-martyr and virgin-martyr, prophet. Forerunner, unmercenaries, theotokos, fool, cross, nun deliberately omitted pending source verification; they will fall through to the day's Sunday-cycle propers until added."
+  },
+  "monastic": {
+    "_source": "OCA General Menaion — Common Service for Venerables; cross-referenced against 2026-0705-tt.docx (Uncovering of Relics of Venerable Sergius of Radonezh).",
+    "prokeimenon": {
+      "tone": 7,
+      "refrain": "Precious in the sight of the Lord is the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath given me?"
+    },
+    "alleluia": {
+      "tone": 6,
+      "verses": [
+        "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight.",
+        "His seed shall be mighty upon the earth; the generation of the upright shall be blessed."
+      ]
+    },
+    "communionHymn": {
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "monasticConfessor": "monastic",
+  "hierarch": {
+    "_source": "OCA General Menaion — Common Service for Hierarchs.",
+    "prokeimenon": {
+      "tone": 1,
+      "refrain": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding.",
+      "verse": "Hear ye this, all ye nations; give ear, all ye that dwell in the world."
+    },
+    "alleluia": {
+      "tone": 2,
+      "verses": [
+        "The mouth of the righteous shall meditate wisdom, and his tongue shall speak of judgment."
+      ]
+    },
+    "communionHymn": {
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "hieromartyr": {
+    "_source": "OCA General Menaion — Common Service for Hieromartyrs (prokeimenon shared with venerables/martyrs; alleluia + koinonikon as for hierarchs).",
+    "prokeimenon": {
+      "tone": 7,
+      "refrain": "Precious in the sight of the Lord is the death of His saints.",
+      "verse": "What shall I render unto the Lord for all that He hath given me?"
+    },
+    "alleluia": {
+      "tone": 2,
+      "verses": [
+        "The mouth of the righteous shall meditate wisdom, and his tongue shall speak of judgment."
+      ]
+    },
+    "communionHymn": {
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "martyr": {
+    "_source": "OCA General Menaion — Common Service for Martyrs.",
+    "prokeimenon": {
+      "tone": 7,
+      "refrain": "The righteous shall rejoice in the Lord, and shall hope in Him.",
+      "verse": "Hear my voice, O God, when I make supplication unto Thee."
+    },
+    "alleluia": {
+      "tone": 4,
+      "verses": [
+        "The righteous cried, and the Lord heard them, and delivered them out of all their tribulations."
+      ]
+    },
+    "communionHymn": {
+      "text": "Rejoice in the Lord, O ye righteous; praise is meet for the upright. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "martyrs": "martyr",
+  "monasticMartyr": "martyr",
+  "monasticMartyrs": "martyr",
+  "maidenMartyr": "martyr",
+  "apostle": {
+    "_source": "OCA General Menaion — Common Service for Apostles. Prokeimenon Tone 8 Ps. 18:4; koinonikon shares text with the prokeimenon refrain (standard pattern for apostles).",
+    "prokeimenon": {
+      "tone": 8,
+      "refrain": "Their proclamation has gone out into all the earth, and their words to the ends of the universe.",
+      "verse": "The heavens declare the glory of God, the firmament showeth forth the work of His hands."
+    },
+    "alleluia": {
+      "tone": 1,
+      "verses": [
+        "The heavens shall confess Thy wonders, O Lord, and Thy truth in the church of the saints."
+      ]
+    },
+    "communionHymn": {
+      "text": "Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "apostles": "apostle",
+  "prophet": {
+    "_source": "OCA General Menaion — Common Service for Prophets.",
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "Thou, O Lord, shalt keep us and preserve us, from this generation and forever.",
+      "verse": "Save me, O Lord, for the holy man hath ceased; for truths are diminished from among the sons of men."
+    },
+    "alleluia": {
+      "tone": 4,
+      "verses": [
+        "Moses and Aaron among His priests, and Samuel among them that call upon His name."
+      ]
+    },
+    "communionHymn": {
+      "text": "In everlasting remembrance shall the righteous be; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    }
+  }
+}

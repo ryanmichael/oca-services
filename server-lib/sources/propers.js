@@ -34,6 +34,31 @@ delete LITURGICAL_DAY_LABELS._meta;
 const LITURGY_DEFAULTS = loadJSON('variable-sources/liturgy-defaults.json');
 delete LITURGY_DEFAULTS._meta;
 
+// ─── General Menaion Propers ──────────────────────────────────────────────────
+// Prokeimenon, alleluia, koinonikon by saint category. Attached as
+// .secondary on the prokeimenon/alleluia/communionHymn when a polyeleos+ saint
+// of that category is the principal commemoration. String values are aliases:
+// resolved transitively below so consumers always get the resolved block.
+const _GMP_RAW = loadJSON('variable-sources/general-menaion-propers.json');
+const GENERAL_MENAION_PROPERS = (() => {
+  const out = {};
+  for (const key of Object.keys(_GMP_RAW)) {
+    if (key.startsWith('_')) continue;
+    let resolved = _GMP_RAW[key];
+    const seen = new Set([key]);
+    while (typeof resolved === 'string') {
+      if (seen.has(resolved)) {
+        throw new Error(`general-menaion-propers.json: alias cycle at ${key}`);
+      }
+      seen.add(resolved);
+      resolved = _GMP_RAW[resolved];
+    }
+    if (!resolved) throw new Error(`general-menaion-propers.json: ${key} resolves to nothing`);
+    out[key] = resolved;
+  }
+  return out;
+})();
+
 const DAY_PATRONS              = DAILY_PROPERS.dayPatrons;
 const COMMUNION_HYMNS          = DAILY_PROPERS.communionHymns;
 const SUNDAY_PROKEIMENA        = DAILY_PROPERS.sundayProkeimena;
@@ -72,4 +97,5 @@ module.exports = {
   WEEKDAY_ALLELUIA,
   LENTEN_SUNDAY_PROKEIMENA,
   LENTEN_SUNDAY_ALLELUIA,
+  GENERAL_MENAION_PROPERS,
 };

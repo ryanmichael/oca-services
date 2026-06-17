@@ -2133,6 +2133,29 @@ const VIGIL_SAINTS = new Map([
 ]);
 
 /**
+ * Fixed-calendar saints/feasts of Polyeleos rank — Polyeleos + Magnification +
+ * Gospel at Matins, secondary prokeimenon/alleluia/koinonikon at Liturgy.
+ * Key: "M-D", Value: descriptive label.
+ *
+ * Initial coverage targets the audit cases (Jul 5 Uncovering of Sergius relics)
+ * plus widely-celebrated polyeleos commemorations. Grows over time — there is
+ * no rank column in our menaion DB to drive this from, so additions live here.
+ */
+const POLYELEOS_SAINTS = new Map([
+  ['5-8',   'Apostle and Evangelist John the Theologian'],
+  ['5-11',  'Sts. Cyril and Methodius, Equals-to-the-Apostles'],
+  ['7-5',   'Uncovering of the Relics of St. Sergius of Radonezh'],
+  ['7-11',  'St. Olga, Equal-to-the-Apostles'],
+  ['7-20',  'Holy Glorious Prophet Elijah'],
+  ['7-22',  'St. Mary Magdalene, Equal-to-the-Apostles'],
+  ['11-13', 'St. John Chrysostom'],
+  ['11-14', 'Apostle Philip'],
+  ['11-16', 'Apostle and Evangelist Matthew'],
+  ['11-30', 'Apostle Andrew the First-Called'],
+  ['12-12', 'St. Spyridon the Wonderworker'],
+]);
+
+/**
  * Returns the feast rank for a given date.
  *
  * Ranks (highest to lowest):
@@ -2151,9 +2174,11 @@ function getFeastRank(date, style = 'new') {
   const adj   = fixedFeastDate(date, style);
   const month = adj.getUTCMonth() + 1;
   const day   = adj.getUTCDate();
-  if (VIGIL_SAINTS.has(`${month}-${day}`)) return 'vigil';
+  const md    = `${month}-${day}`;
+  if (VIGIL_SAINTS.has(md))     return 'vigil';
+  if (POLYELEOS_SAINTS.has(md)) return 'polyeleos';
 
-  // Future: query DB commemorations.rank column for polyeleos/doxology
+  // Doxology rank not yet detected — would need a curated map or DB column
   return 'sixStichera';
 }
 

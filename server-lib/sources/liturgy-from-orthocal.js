@@ -10,6 +10,7 @@
 const {
   calculatePascha,
   getDayOfWeek,
+  getFeastRank,
   getGreatFeastKey,
   getLiturgicalSeason,
   getLiturgyVariant,
@@ -60,6 +61,7 @@ const {
   WEEKDAY_ALLELUIA,
   LENTEN_SUNDAY_PROKEIMENA,
   LENTEN_SUNDAY_ALLELUIA,
+  GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
 // Rank-and-role and stop words stripped when fuzzy-matching an orthocal
@@ -174,6 +176,23 @@ function pickPrincipalByOrthocalOrder(notable, orthocalData, fallback) {
     if (best && bestScore >= 1 && bestScore * 2 >= hintSet.size) return best;
   }
   return fallback ?? notable[0];
+}
+
+// Falls back from the menaion DB's `saint_type` column when it's missing —
+// most commonly on "Uncovering of the relics of …", "Translation of the relics
+// of …", "Repose of …", "Glorification of …" rows where the scraper left
+// saint_type blank but the saint's category is clear from the title text.
+// Order matters: check more-specific terms (Hieromartyr) before less-specific
+// (Bishop, Hierarch, Martyr).
+function inferSaintTypeFromTitle(title) {
+  if (!title) return null;
+  if (/Hieromartyr/i.test(title))                            return 'hieromartyr';
+  if (/\bVenerable\b/i.test(title))                          return 'monastic';
+  if (/\bApostle/i.test(title))                              return 'apostle';
+  if (/\bProphet\b/i.test(title))                            return 'prophet';
+  if (/\b(Bishop|Archbishop|Patriarch|Metropolitan|Pope|Hierarch)\b/i.test(title)) return 'hierarch';
+  if (/\bMartyr/i.test(title))                               return 'martyr';
+  return null;
 }
 
 /** Joins saint titles with commas and a trailing "and" for the troparion/kontakion
@@ -312,6 +331,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const feastKey = getGreatFeastKey(date, style);
   const feast    = feastKey ? GREAT_FEAST_VARIANTS[feastKey] : null;
 
+  // Menaion principal commemoration — computed once, used by both the
+  // troparia/kontakia injection blocks below AND the General Menaion propers
+  // attachment further down (polyeleos+ Sundays get a secondary prokeimenon /
+  // alleluia / koinonikon keyed off the principal saint's category).
+  const ranked       = getMenaionRanked(mo, dy);
+  const menaionPrincipal = ranked?.notable
+    ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
+    : null;
+
   // ── Troparia & Kontakia ──────────────────────────────────────────────────────
   // Great Feasts & Pentecostarion feast Sundays: use only the feast's own
   // troparia/kontakia (no resurrectional, no Menaion).
@@ -337,12 +365,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // venerable) collapse into a single combined rubric like
     // "Troparion of Methodius of Peshnosha, Elisha of Suma, and Niphon of Athos, Tone 8:"
     // — matching OCA OOS practice when multiple saints share a hymn.
-    const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
-      const principal = pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal);
       const sourceComms = includeLesserSaints
         ? ranked.notable
-        : (principal ? [principal] : []);
+        : (menaionPrincipal ? [menaionPrincipal] : []);
       const groups = new Map();  // key -> { tone, text, titles: [] }
       for (const comm of sourceComms) {
         const trop = comm.troparia.find(t => t.type === 'troparion');
@@ -378,12 +404,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
 
     // Inject Menaion kontakia from DB. Group by text like troparia above so
     // shared kontakia (less common but possible for paired saints) collapse.
-    const ranked = getMenaionRanked(mo, dy);
     if (ranked?.notable) {
-      const principal = pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal);
       const sourceComms = includeLesserSaints
         ? ranked.notable
-        : (principal ? [principal] : []);
+        : (menaionPrincipal ? [menaionPrincipal] : []);
       const groups = new Map();
       for (const comm of sourceComms) {
         const kont = comm.troparia.find(t => t.type === 'kontakion');
@@ -471,6 +495,28 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     prokeimenon = { ...prokeimenon, secondary: overlay.prokeimenon };
   }
 
+  // ── Polyeleos+ saint secondary propers ──────────────────────────────────────
+  // On polyeleos/vigil Sundays (and weekdays), the General Menaion provides a
+  // prokeimenon / alleluia / koinonikon keyed by saint category. Attach as
+  // .secondary on top of the Sunday- or weekday-cycle propers. Overlay path
+  // wins when both exist on the same date (cocelebration with a Great Feast
+  // is already a complete secondary set; layering would double up).
+  const feastRank   = getFeastRank(date, style);
+  const isPolyeleos = (feastRank === 'polyeleos' || feastRank === 'vigil')
+                      && !feast && !pentOverride;
+  // Saint category: prefer the DB's saint_type column, but our scraper leaves
+  // it blank on "Uncovering / Translation / Repose / Glorification" rows where
+  // the type is embedded in the title text (e.g. "Uncovering of the relics of
+  // Venerable Sergius of Radonezh" — clearly monastic, but saint_type is null).
+  // Infer from the title in that case.
+  const gmpKey      = menaionPrincipal?.saint_type
+                      || inferSaintTypeFromTitle(menaionPrincipal?.title);
+  const gmp         = isPolyeleos && gmpKey ? GENERAL_MENAION_PROPERS[gmpKey] : null;
+  const gmpLabel    = gmp && menaionPrincipal ? menaionPrincipal.title : null;
+  if (gmp && prokeimenon && !prokeimenon.secondary) {
+    prokeimenon = { ...prokeimenon, secondary: { ...gmp.prokeimenon, label: gmpLabel } };
+  }
+
   if (feast?.alleluia) {
     const fa = feast.alleluia;
     alleluia = { tone: fa.tone, verses: fa.verses };
@@ -518,6 +564,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (alleluia && overlay?.alleluia) {
     alleluia = { ...alleluia, secondary: overlay.alleluia };
   }
+  if (gmp && alleluia && !alleluia.secondary) {
+    alleluia = { ...alleluia, secondary: { ...gmp.alleluia, label: gmpLabel } };
+  }
 
   // ── Communion hymn: feast → Pentecostarion Sunday → day-of-week ───────────
   let communionHymn = feast?.communionHymn
@@ -527,6 +576,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
   if (overlay?.communionHymn && includeSecondKoinonikon) {
     communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
+  }
+  // Polyeleos+ saint koinonikon — render by default (no opt-in gate). On a
+  // polyeleos Sunday the second Communion Verse IS sung at OCA parishes; the
+  // cocelebrated-overlay gate is appropriate for principal-feast cases where
+  // the feast koinonikon claims the only slot, but not here.
+  if (gmp && !communionHymn.secondary) {
+    communionHymn = { ...communionHymn, secondary: { ...gmp.communionHymn, label: gmpLabel } };
   }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────

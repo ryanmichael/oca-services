@@ -220,6 +220,24 @@ function dedupKey(commType, tone, text) {
   return `template\t${commType}\t${tone}\t${firstSentence}`;
 }
 
+// Given orthocal's list of readings for a service-source, return the primary
+// reading and the secondary reading per OCA practice. Special-cycle overrides
+// (Sunday-before/after-X, Forefathers, Forefeast, Great Feast on Sunday) come
+// from orthocal with description != "" and sit at slot [0]; their presence
+// suppresses the regular Sunday-cycle reading in slot [1] (description == "").
+// A co-celebrated saint reading further down (description != "") survives as
+// the secondary. When the primary itself is empty-desc (regular cycle), the
+// next reading is the secondary regardless of its description.
+function pickPrimaryAndSecondary(all) {
+  const first = all[0] || null;
+  if (!first) return [null, null];
+  if (first.description) {
+    const sec = all.slice(1).find(r => r.description) || null;
+    return [first, sec];
+  }
+  return [first, all[1] || null];
+}
+
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', opts = {}) {
   // opts.includeLesserSaints — when true, include every Menaion commemoration
   //   with a troparion/kontakion at Liturgy. Default (false) renders only the
@@ -279,10 +297,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const readings   = orthocalData.readings || [];
   const epistleAll = readings.filter(r => r.source === 'Epistle');
   const gospelAll  = readings.filter(r => r.source === 'Gospel');
-  const epistleR   = epistleAll[0];
-  const gospelR    = gospelAll[0];
-  const epistleR2  = epistleAll[1] || null;
-  const gospelR2   = gospelAll[1] || null;
+  // When orthocal returns a special-cycle override (Sunday-before/after-X,
+  // Forefeast, Leavetaking, Great-Feast-on-Sunday) as the primary reading, the
+  // regular Sunday-cycle reading sits in slot [1] with description="" and gets
+  // suppressed in OCA practice. A co-celebrated saint reading further down
+  // (description != "") survives as the secondary.
+  const [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll);
+  const [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll);
 
   // orthocal returns the generic book name "Apostol" for all epistles; the
   // actual book lives in the display field (e.g. "Acts 16.16-34",

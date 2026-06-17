@@ -5,7 +5,7 @@
 // calendar entry's slots are generic, and hands off to assembleVespers.
 
 const { assembleVespers } = require('../../assembler');
-const { calculatePascha, fixedFeastDate } = require('../../calendar-rules');
+const { calculatePascha, fixedFeastDate, VESPERS_SUNG_EVE } = require('../../calendar-rules');
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
@@ -236,6 +236,24 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // goes under Glory and the Theotokion follows under Now and ever.
           // Otherwise we silently drop the Theotokion-Dogmatikon (OCA Sun
           // Great Vespers gap surfaced 2026-06-13 NA Saints audit).
+          //
+          // Weekday Daily Vespers ships `lic.now: null` from calendar-rules;
+          // when a Menaion doxastichon is injected here, point `lic.now` at
+          // the Octoechos LIC weekday Theotokion (sung-eve-keyed, week tone)
+          // so the Glory/Now split renders correctly. Without this, every
+          // weekday-saint Vespers collapses Glory+Now and drops the Theotokion.
+          if (!lic.now && isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
+            const weekTone = calendarEntry.liturgicalContext?.tone;
+            const eve      = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
+            if (weekTone && eve) {
+              lic.now = {
+                source: 'octoechos',
+                key:    `tone${weekTone}.${eve}.vespers.lordICall.theotokion`,
+                tone:   weekTone,
+                label:  'Theotokion',
+              };
+            }
+          }
           lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }

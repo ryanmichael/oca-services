@@ -89,13 +89,13 @@ function findNowIndex(blocks, section) {
 describe('Feature contract: Patron of Temple', () => {
 
   it('INV-1: Sunday troparia order is Resurrection → Patron → Saint', async () => {
-    // 2026-06-21 — Ven. Ananias the Iconographer (simple-rank).
+    // 2026-06-21 — Martyr Julian of Tarsus (OCA principal; simple-rank).
     const { json } = await get(`/api/liturgy?date=2026-06-21&translation=${TYLER}`);
     const labels = rubricLabelsIn(json.blocks, 'Troparia');
 
     const resIdx    = labels.findIndex(l => /Troparion of the Resurrection/.test(l));
     const patronIdx = labels.findIndex(l => l.includes(`Patron of the Temple, ${PATRON_TITLE}`));
-    const saintIdx  = labels.findIndex(l => /Ananias the Iconographer/.test(l));
+    const saintIdx  = labels.findIndex(l => /Martyr Julian of Tarsus/.test(l));
 
     assert.ok(resIdx >= 0,    'expected Resurrection troparion rubric');
     assert.ok(patronIdx >= 0, 'expected Patron-of-Temple troparion rubric');
@@ -105,7 +105,7 @@ describe('Feature contract: Patron of Temple', () => {
   });
 
   it('INV-2: simple-rank Sunday — patron kontakion takes Glory; saint kontakion above without connector; Now is Theotokion-Kontakion', async () => {
-    // 2026-06-21 — Ananias, no cocelebrated overlay.
+    // 2026-06-21 — Martyr Julian of Tarsus, no cocelebrated overlay.
     const { json } = await get(`/api/liturgy?date=2026-06-21&translation=${TYLER}`);
     const ks = json.blocks.filter(b => b.section === 'Kontakia');
 
@@ -124,10 +124,10 @@ describe('Feature contract: Patron of Temple', () => {
     assert.match(afterNowLabel, /Kontakion-Theotokion/,
       `expected Kontakion-Theotokion at Now slot; got: ${afterNowLabel}`);
 
-    // The saint (Ananias) kontakion appears BEFORE the Glory connector — read but not Glory-tagged.
+    // The saint (Julian) kontakion appears BEFORE the Glory connector — read but not Glory-tagged.
     const beforeGloryLabels = ks.slice(0, gloryIdx).map(b => b.text);
-    const saintLabel = beforeGloryLabels.find(t => /Kontakion of Venerable Ananias the Iconographer/.test(t));
-    assert.ok(saintLabel, `expected Ananias kontakion above Glory; got blocks: ${beforeGloryLabels.join(' | ')}`);
+    const saintLabel = beforeGloryLabels.find(t => /Kontakion of Martyr Julian of Tarsus/.test(t));
+    assert.ok(saintLabel, `expected Julian kontakion above Glory; got blocks: ${beforeGloryLabels.join(' | ')}`);
   });
 
   it('INV-3: principal-feast Sunday (cocelebrated overlay) — saint kontakion takes Glory; patron kontakion dropped', async () => {

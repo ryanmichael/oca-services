@@ -84,12 +84,14 @@ describe('Feature contract: Sunday Kontakia Restructure', () => {
   });
 
   it('INV-2: Sunday with saint kontakion and no patron — shape is Glory: <saint> / Now: Kontakion-Theotokion', async () => {
-    // 2026-06-21 — Ananias, no overlay, so no patron.
+    // 2026-06-21 — Julian of Tarsus (OCA principal on this Sunday, picked by
+    // orthocal-ordering alignment in liturgy-from-orthocal.js), no overlay so
+    // no patron.
     const { json } = await get('/api/liturgy?date=2026-06-21');
     const ks = kontakiaBlocks(json);
 
     const gloryIdx     = findIdx(ks, /^Glory to the Father/);
-    const saintLabIdx  = findIdx(ks, /Kontakion of Venerable Ananias the Iconographer/);
+    const saintLabIdx  = findIdx(ks, /Kontakion of Martyr Julian of Tarsus/);
     const nowIdx       = findIdx(ks, /^Now and ever/);
     const theoLabelIdx = findIdx(ks, /^Kontakion-Theotokion/);
 

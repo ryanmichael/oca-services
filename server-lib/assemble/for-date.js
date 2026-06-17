@@ -310,12 +310,16 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
         if (apostGlory) {
           apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
-          // Weekday: Octoechos theotokion already set as `now` in calendar entry
           // Saturday: set the saint's own Theotokion (menaion order=-1) if present
           //   — that's the "Now and ever" of the feast, distinct from the
           //   Octoechos resurrectional Theotokion of the week. NA Saints
           //   Sunday (6-14) is the worked example. Otherwise fall back to
           //   the Octoechos Theotokion of the week's tone.
+          // Weekday: the calendar entry ships the Octoechos aposticha
+          //   theotokion in the WEEK tone, but Slavic rubric is that the
+          //   aposticha theotokion follows the tone of the saint's
+          //   doxastichon. Re-key into tone-of-glory + sung-eve so Wed/Fri
+          //   eves still get a stavrotheotokion when applicable.
           if (isSaturdayInjection && !isGreatFeast) {
             const apostNow = sticheraData?.[0]?.stichera.find(
               s => s.section === 'aposticha' && s.order === -1
@@ -326,6 +330,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             } else {
               apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
             }
+          } else if (isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
+            const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
+            apost.now = {
+              source: 'octoechos',
+              key:    `tone${apostGlory.tone}.${eve}.vespers.aposticha.theotokion`,
+              tone:   apostGlory.tone,
+              label:  'Theotokion',
+            };
           }
           autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
         }

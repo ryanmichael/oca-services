@@ -168,6 +168,8 @@ const PHRASE_RULES_WITH_ADV = [
   [new RegExp(`\\bYou(\\s+${ADV_BETWEEN})?\\s+could\\b`, 'g'), (m, adv = '') => `Thou${adv} couldst`],
   [new RegExp(`\\byou(\\s+${ADV_BETWEEN})?\\s+had\\b`, 'g'), (m, adv = '') => `thou${adv} hadst`],
   [new RegExp(`\\bYou(\\s+${ADV_BETWEEN})?\\s+had\\b`, 'g'), (m, adv = '') => `Thou${adv} hadst`],
+  [new RegExp(`\\byou(\\s+${ADV_BETWEEN})?\\s+might\\b`, 'g'), (m, adv = '') => `thou${adv} mightest`],
+  [new RegExp(`\\bYou(\\s+${ADV_BETWEEN})?\\s+might\\b`, 'g'), (m, adv = '') => `Thou${adv} mightest`],
 ];
 
 // ─── Past-tense lemma table ─────────────────────────────────────────────────
@@ -193,6 +195,9 @@ const PAST_TO_BASE = {
   crept: 'creep', swept: 'sweep', leapt: 'leap', dealt: 'deal',
   felt: 'feel', meant: 'mean', burnt: 'burn', spilt: 'spill',
   rose: 'rise', arose: 'arise', spoke: 'speak', broke: 'break',
+  bore: 'bear', strove: 'strive', clung: 'cling', flung: 'fling',
+  hung: 'hang', stung: 'sting', swung: 'swing', wrung: 'wring',
+  sung: 'sing', sprung: 'spring',
   chose: 'choose', wore: 'wear', tore: 'tear', swore: 'swear',
   woke: 'wake', awoke: 'awake', drove: 'drive', wrote: 'write',
   smote: 'smite', stole: 'steal', sang: 'sing', drank: 'drink',
@@ -233,10 +238,12 @@ function stemRegularPast(past) {
     // Heuristic: if dropping just 'd' yields a known e-stem, prefer that.
     const dropD = past.slice(0, -1);
     if (E_STEM_BASES.has(dropD)) return dropD;
-    // -ated/-ited/-uted/-eted/-oted: -ate/-ite/-ute/-ete/-ote class
-    // (emulated→emulate, illuminated→illuminate, contributed→contribute,
-    // completed→complete, devoted→devote). Drop just 'd'.
-    if (/[aeiou]ted$/.test(past)) return past.slice(0, -1);
+    // -Cated/-Cited/-Cuted/-Ceted/-Coted (C = consonant): -ate/-ite/-ute/
+    // -ete/-ote class (emulated→emulate, illuminated→illuminate,
+    // contributed→contribute, completed→complete, devoted→devote). Drop 'd'.
+    // The leading-consonant guard avoids false positives like
+    // defeated/repeated/treated/heated (root ends in -eat, not -eate).
+    if (/[bcdfghjklmnpqrstvwxz][aeiou]ted$/.test(past)) return past.slice(0, -1);
     // -ized/-ised: -ize/-ise class (baptized→baptize, glorified→glorify
     // [handled above by -ied rule], realized→realize). Drop just 'd'.
     if (/[is]zed$/.test(past) || /[is]sed$/.test(past)) return past.slice(0, -1);
@@ -260,16 +267,59 @@ function pastToBase(past) {
 }
 
 function transformPastTense(text) {
-  // "you V-past" → "thou didst V-base"
-  // "You V-past" → "Thou didst V-base"
-  // Verb-past pattern: word ending in -ed, -ied, -ght, or known irregular
-  const PAST_VERB_RE = /\b(You|you)\s+([a-zA-Z]+)\b/g;
-  return text.replace(PAST_VERB_RE, (full, pron, verb) => {
+  // "you (adv|adv-pair)? V-past" → "thou didst (adv)? V-base"
+  // Allows: single adverb (alone/also/indeed/ever/truly/now/then/surely/verily/
+  // first), or "not only" / "in truth" compound. Adverb is preserved in output.
+  const ADV_OPTIONAL = '(?:\\s+(?:not\\s+only|in\\s+truth|alone|also|indeed|ever|truly|now|then|surely|verily|first|once|never))?';
+  // The (?!You|you|Thou|thou) lookahead prevents the verb-capture from
+  // consuming the next pronoun when the current "you/Thou" is followed by
+  // a non-past word — that bug would skip the next pronoun's transform.
+  const PAST_VERB_RE = new RegExp(`\\b(You|you)(${ADV_OPTIONAL})\\s+(?!You|you|Thou|thou)([a-zA-Z]+)\\b`, 'g');
+  text = text.replace(PAST_VERB_RE, (full, pron, adv, verb) => {
     const base = pastToBase(verb);
-    if (!base) return full; // not a recognized past-tense form; leave for next pass
+    if (!base) return full;
     const upper = pron[0] === pron[0].toUpperCase();
-    return `${upper ? 'Thou' : 'thou'} ${upper ? 'didst' : 'didst'} ${base}`;
+    const advText = adv || '';
+    return `${upper ? 'Thou' : 'thou'}${advText} didst ${base}`;
   });
+  // Also catch already-archaized "Thou V-past" (some yy source rows had partial
+  // tt forms). Only fires when pastToBase recognizes a real past form, so
+  // "thou didst V-base" / "Thou camest" etc. (irregular present-tense -est
+  // verbs) aren't affected.
+  const THOU_PAST_RE = new RegExp(`\\b(Thou|thou)(${ADV_OPTIONAL})\\s+(?!You|you|Thou|thou)([a-zA-Z]+)\\b`, 'g');
+  text = text.replace(THOU_PAST_RE, (full, pron, adv, verb) => {
+    // Skip auxiliaries we already produce
+    if (/^(didst|hast|hadst|art|wert|wast|wilt|shalt|dost|canst|mayest|mightest|must|wouldst|shouldst|couldst)$/i.test(verb)) return full;
+    const base = pastToBase(verb);
+    if (!base) return full;
+    const upper = pron[0] === pron[0].toUpperCase();
+    const advText = adv || '';
+    return `${upper ? 'Thou' : 'thou'}${advText} didst ${base}`;
+  });
+  return text;
+}
+
+// Sometimes the yy source already has "Thou" where "Thee" is correct (object
+// form after a preposition or a present-tense verb of perception/devotion).
+// This pass rewrites those.
+function transformThouAsObject(text) {
+  // After prepositions
+  const prepRe = new RegExp(
+    `\\b(${OBJECT_PRECEDERS.join('|')})\\s+(Thou|thou)\\b`,
+    'g'
+  );
+  text = text.replace(prepRe, (m, prep, p) => `${prep} ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}`);
+  // "for Thou" is ambiguous — most often the conjunction "because"
+  // ("for Thou art good"), but rarely the preposition ("I die for Thee that
+  // I might live"). Narrow rule: "for Thou" followed by comma or " that"
+  // is preposition → Thee. Other "for Thou X" forms are left alone.
+  text = text.replace(/\bfor\s+(Thou|thou)(\s*,|\s+that)/g, (m, p, tail) => `for ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}${tail}`);
+  // After a small set of devotional verbs/gerunds where the saint speaks to
+  // Christ (typical "Joseph was amazed" podoben: "I love Thou", "seeking Thou")
+  const DEVOTION_VERBS = '(?:love|loving|seek|seeking|follow|following|serve|serving|praise|praising|magnify|magnifying|glorify|glorifying|honor|honoring|behold|beholding|embrace|embracing|adore|adoring|bore|bear|bearing|brought|bring|bringing)';
+  const verbRe = new RegExp(`\\b(${DEVOTION_VERBS})\\s+(Thou|thou)\\b`, 'g');
+  text = text.replace(verbRe, (m, verb, p) => `${verb} ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}`);
+  return text;
 }
 
 function transformBareYou(text) {
@@ -289,7 +339,7 @@ function transformBareYou(text) {
   // ends in -de which we cover], gave [no], brought [-ght]).
   // Common irregulars not caught by suffix: gave, took, made, told, sold,
   // bade, hid, led, fed, said, did, won, drew, knew, grew, threw.
-  const VERB_SUFFIX_RE = /\b([A-Za-z]+(?:ed|ied|ght|t)|gave|took|made|told|sold|bade|hid|led|fed|said|won|drew|knew|grew|threw|saw|given|taken|written|spoken|broken|chosen|frozen|stolen|shown|known|drawn|thrown|blown|grown|fallen|beaten|eaten|ridden|bidden|hidden|forgotten|forsaken|awoken|woven|smitten|stricken|sworn|worn|torn|borne)\s+(You|you)\b/g;
+  const VERB_SUFFIX_RE = /\b([A-Za-z]+(?:ed|ied|ght|t)|gave|took|made|told|sold|bade|hid|led|fed|said|won|drew|knew|grew|threw|saw|chose|rose|arose|came|drove|wrote|spoke|broke|sang|drank|ate|ran|began|smote|stole|wore|tore|swore|froze|woke|forsook|forgot|became|bore|strove|given|taken|written|spoken|broken|chosen|frozen|stolen|shown|known|drawn|thrown|blown|grown|fallen|beaten|eaten|ridden|bidden|hidden|forgotten|forsaken|awoken|woven|smitten|stricken|sworn|worn|torn|borne)\s+(You|you)\b/g;
   text = text.replace(VERB_SUFFIX_RE, (m, verb, you) => {
     // Avoid false positives like "at" (preposition was already removed; "at"
     // ends in "t" but is on the prep list — already handled). Reject very
@@ -321,12 +371,21 @@ function needsPastTenseReview(text) {
   // wilt, shalt, mayest, wouldst, couldst, etc.)
   const GOOD_FORMS = new Set([
     'hast', 'hadst', 'art', 'wert', 'wast', 'wilt', 'shalt', 'dost', 'didst',
-    'canst', 'mayest', 'must', 'wouldst', 'shouldst', 'couldst', 'mightst',
+    'canst', 'mayest', 'mightest', 'must', 'wouldst', 'shouldst', 'couldst',
+    'mightst',
+    // Adverbs that happen to end in -t (avoid false positives like "thou not
+    // only didst …", "thou first didst become").
+    'not', 'first', 'ever', 'never', 'most', 'next', 'almost', 'against',
   ]);
+  // Match "thou V-past" excluding -est-suffixed forms (which are already
+  // correct archaic present-tense: abidest/restest/lovedst/etc.).
   const re = /\b[Tt]hou\s+([A-Za-z]+(?:ed|ied|ght|t))\b/g;
   let m;
   while ((m = re.exec(text)) !== null) {
-    if (!GOOD_FORMS.has(m[1].toLowerCase())) return true;
+    const w = m[1].toLowerCase();
+    if (GOOD_FORMS.has(w)) continue;
+    if (/est$/.test(w)) continue; // archaic present 2sg: abidest, restest
+    return true;
   }
   return false;
 }
@@ -344,6 +403,39 @@ function transformYoursSelf(text) {
 // We don't need a second pass for those; the phrase rules above already cover
 // the common auxiliaries.
 
+// Common present-tense verbs that appear in menaion troparia after "thou" and
+// need a 2sg `-est` suffix. Whitelist (not heuristic) to avoid false positives
+// on nouns ("thou God" → "thou Godest"). Extend as more cases surface.
+const PRESENT_VERB_EST = {
+  // ending → just append 'est'
+  grant: 'grantest', avert: 'avertest', show: 'showest', entreat: 'entreatest',
+  deliver: 'deliverest', defend: 'defendest', protect: 'protectest',
+  guard: 'guardest', heal: 'healest', save: 'savest', hear: 'hearest',
+  see: 'seest', know: 'knowest', love: 'lovest', work: 'workest',
+  give: 'givest', take: 'takest', dwell: 'dwellest', stand: 'standest',
+  reign: 'reignest', rule: 'rulest', hold: 'holdest', keep: 'keepest',
+  bring: 'bringest', send: 'sendest', come: 'comest', go: 'goest',
+  rest: 'restest', sleep: 'sleepest', suffer: 'sufferest',
+  fight: 'fightest', strive: 'strivest', serve: 'servest',
+  delight: 'delightest', think: 'thinkest', speak: 'speakest',
+  walk: 'walkest', call: 'callest', look: 'lookest', listen: 'listenest',
+  // ending in -e, append 'st'
+  rejoice: 'rejoicest', intercede: 'intercedest', confess: 'confessest',
+  abide: 'abidest', preserve: 'preservest', praise: 'praisest',
+  bless: 'blessest', confirm: 'confirmest', enlighten: 'enlightenest',
+  illumine: 'illuminest', sanctify: 'sanctifiest', glorify: 'glorifiest',
+  magnify: 'magnifiest',
+};
+
+function transformPresentTenseEst(text) {
+  const re = /\b([Tt]hou)\s+([a-z]+)\b/g;
+  return text.replace(re, (full, pron, verb) => {
+    const archaic = PRESENT_VERB_EST[verb];
+    if (!archaic) return full;
+    return `${pron} ${archaic}`;
+  });
+}
+
 function transform(text) {
   if (isPluralAddress(text)) return text; // plural address — leave you/your/are
 
@@ -357,6 +449,8 @@ function transform(text) {
   out = transformYoursSelf(out);
   out = transformYour(out);
   out = transformBareYou(out);
+  out = transformThouAsObject(out);
+  out = transformPresentTenseEst(out);
   return out;
 }
 

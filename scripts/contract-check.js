@@ -65,6 +65,26 @@ function parseCodeSurface(specPath) {
   return [...paths];
 }
 
+/**
+ * Parse `**Last verified:** <commit-ish>` from the spec body. When present,
+ * the contract-check skips warnings for code-surface files that haven't
+ * actually changed between that ref and HEAD — so cosmetic/unrelated touches
+ * to liturgy.js stop nagging once the spec is re-verified.
+ *
+ * Returns the ref string (e.g. a SHA) or null. The ref must resolve via
+ * `git rev-parse` for the suppression to take effect.
+ */
+function parseLastVerified(specPath) {
+  const md = fs.readFileSync(specPath, 'utf8');
+  // Match `**Last verified:** SHA` (bold) or plain `Last verified: SHA`.
+  // Allow optional `**` either side of the colon and backticks around the
+  // SHA. Anchor to start-of-line to avoid matching the same phrase inside
+  // a sentence.
+  const re = /^\s*\*{0,2}Last verified\*{0,2}:\*{0,2}\s*`?([0-9a-f]{7,40}|HEAD(?:~\d+)?)`?\s*$/mi;
+  const m = md.match(re);
+  return m ? m[1] : null;
+}
+
 // ── Diff resolution ────────────────────────────────────────────────────────
 
 function resolveBase() {
@@ -123,8 +143,23 @@ function main() {
   for (const f of features) {
     const surfaces = parseCodeSurface(f.specPath);
     if (surfaces.length === 0) continue;
-    const hits = intersect(surfaces, changed);
+    let hits = intersect(surfaces, changed);
     if (hits.length === 0) continue;
+
+    // Honor `**Last verified:** <ref>` in the spec: if the code-surface hits
+    // haven't actually changed since that ref, suppress the warning. The ref
+    // must resolve. Failures (bad SHA, etc.) fall through to the original
+    // base..HEAD behavior so a typo doesn't silently disable the check.
+    const verifiedRef = parseLastVerified(f.specPath);
+    if (verifiedRef) {
+      try {
+        execSync(`git rev-parse --verify --quiet ${verifiedRef}`, { cwd: REPO, stdio: 'ignore' });
+        const sinceVerified = changedFilesSince(verifiedRef);
+        const stillTouched = intersect(surfaces, sinceVerified);
+        if (stillTouched.length === 0) continue; // verified — no warning
+        hits = stillTouched;
+      } catch (_) { /* unresolvable ref: ignore, keep original hits */ }
+    }
 
     const specRel = path.join('features', `${f.name}.md`);
     const testRel = path.join('test', 'contracts', `${f.name}.test.js`);

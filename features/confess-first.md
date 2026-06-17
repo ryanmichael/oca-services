@@ -2,7 +2,15 @@
 
 **Status:** shipped 2026-06-14 (commit `c7c34f6`)
 **Contract test:** `test/contracts/confess-first.test.js`
+**Last verified:** 1040eae
 **Session context:** memory `project_session_handoff_2026_06_14.md` § "confessFirst parish rubric"
+
+> The Liturgy-audit work between 2026-06-17 commits `ff92d7b` … `1040eae`
+> touched `assemblers/liturgy.js` and `assemblers/liturgy-parts/communion.js`
+> but did not change the behavior contracted here (paschal-state refactor,
+> readings-strings extraction, defensive warnings, season-string allowlist).
+> All three INV-* tests still pass. Bump `Last verified` after the next
+> intentional change to this feature's surface.
 
 ## Purpose
 

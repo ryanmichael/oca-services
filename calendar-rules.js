@@ -48,6 +48,25 @@ const VESPERS_SUNG_EVE = {
   sunday:    'saturday',   // Sun liturgical ← Sat evening Vespers (Sunday Great Vespers)
 };
 
+// ─── Vespers prokeimenon spec builders ────────────────────────────────────────
+// Three distinct shapes appear across the per-season generators:
+//   1. SATURDAY_GREAT_VESPERS_PROKEIMENON — static reference for any Sat/Sun
+//      Great Vespers (sung Sat eve, "The Lord is King" Tone 6).
+//   2. vespersDailyProkeimenon(dow) — civil-eve weekday lookup, used by
+//      ordinary-time / Pentecostarion / Holy-Week-fallback weekday paths.
+//   3. vespersDailyProkeimenon(dow, { feastDowSpecial: true }) — same, except
+//      a feast falling on Sunday gets the Sat-eve Great Vespers prokeimenon
+//      instead. Used by the great-feast and vigil-feast generators.
+// Centralizing here means the off-by-one bug fixed in commit aef1f6f (5
+// sites) can't recur and the Holy Week DAY_CONFIG TODO has one clear place
+// to converge once verified.
+const SATURDAY_GREAT_VESPERS_PROKEIMENON = Object.freeze({ pattern: 'weekday', weekday: 'saturdayGreatVespers' });
+
+function vespersDailyProkeimenon(dow, { feastDowSpecial = false } = {}) {
+  if (feastDowSpecial && dow === 'sunday') return { ...SATURDAY_GREAT_VESPERS_PROKEIMENON };
+  return { pattern: 'weekday', weekday: VESPERS_SUNG_EVE[dow] || dow };
+}
+
 // ─── Calendar style (New / Old) ───────────────────────────────────────────────
 // Orthodox jurisdictions split between the Julian ("Old") and Revised Julian
 // ("New") calendars. Both use the same Julian Pascha computus, so all
@@ -356,7 +375,7 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
         glory: null, // server injects Menaion glory doxastichon
         now:   null, // server injects theotokion
       },
-      prokeimenon: { pattern: 'weekday', weekday: eve },
+      prokeimenon: vespersDailyProkeimenon(dow),
       aposticha: {
         slots: [
           { position: 1, source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
@@ -399,7 +418,7 @@ function generateGreatFeastVespers(dateStr, dow, tone, feastKey, season) {
         glory: null, // server injects feast glory doxastichon
         now:   null,
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow === 'sunday' ? 'saturdayGreatVespers' : (VESPERS_SUNG_EVE[dow] || dow) },
+      prokeimenon: vespersDailyProkeimenon(dow, { feastDowSpecial: true }),
       litya: {
         slots: [],   // server injects litya stichera when available
         glory: null,
@@ -441,7 +460,7 @@ function generateVigilFeastVespers(dateStr, dow, tone) {
         glory: null,
         now:   null,
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow === 'sunday' ? 'saturdayGreatVespers' : (VESPERS_SUNG_EVE[dow] || dow) },
+      prokeimenon: vespersDailyProkeimenon(dow, { feastDowSpecial: true }),
       litya: {
         slots: [],   // server injects litya stichera when available
         glory: null,
@@ -509,7 +528,7 @@ function generateOrdinaryTimeSaturday(dateStr, tone, dow = 'saturday') {
           now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`,      tone, label: 'Theotokion — Dogmatikon' },
         }),
       },
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       aposticha: {
         slots: [
           { position: 1, source: 'octoechos', key: `${tk}.saturday.vespers.aposticha.hymns.0`, tone, label: 'Resurrectional Sticheron 1' },
@@ -879,7 +898,7 @@ function generateLentenSunday(dateStr, weekOfLent, tone, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
         now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Theotokion — Dogmatikon' },
       },
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha.hymns.0`, tone, label: 'Sticheron' },
@@ -1008,15 +1027,17 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       name:        'Palm Sunday — The Entry of our Lord into Jerusalem',
       serviceType: 'greatVespers',
       rubricNote:  'Great Vespers of Palm Sunday (celebrated Saturday evening)',
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       customPalmSunday: true,
     },
     // TODO(holyweek-prokeimenon): Holy Mon–Thu prokeimena are hardcoded to the
-    // liturgical-day key but Vespers is sung the civil evening before; the
-    // ordinary-weekday paths (lines 359/402/444/1121/1550) all key off
-    // VESPERS_SUNG_EVE[dow]. Verify against an OCA Holy Week order source
-    // before flipping these — Holy Week may anticipate differently than
-    // ordinary practice.
+    // liturgical-day key but Vespers is sung the civil evening before; every
+    // other generator uses `vespersDailyProkeimenon(dow)` (defined near
+    // VESPERS_SUNG_EVE at top of file). Verify against an OCA Holy Week order
+    // source before flipping these four entries — Holy Week may anticipate
+    // differently than ordinary practice. When ready, replace each entry's
+    // `prokeimenon: { pattern: 'weekday', weekday: '<dow>' }` with
+    // `prokeimenon: vespersDailyProkeimenon(dow)`.
     monday: {
       name:        'Holy Monday',
       serviceType: 'dailyVespers',
@@ -1107,7 +1128,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       name:        'Great and Holy Saturday',
       serviceType: 'greatVespers',
       rubricNote:  'Great and Holy Saturday — Great Vespers with the Liturgy of St. Basil',
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       apostichaGloryOnly: true,  // no aposticha (service flows directly into Liturgy of St. Basil)
       troparia: {
         source: 'triodion',
@@ -1124,7 +1145,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     name:        `Holy Week ${dow}`,
     serviceType: 'dailyVespers',
     rubricNote:  `Holy Week ${dow}`,
-    prokeimenon: { pattern: 'weekday', weekday: VESPERS_SUNG_EVE[dow] || dow },
+    prokeimenon: vespersDailyProkeimenon(dow),
   };
 
   // ── Holy Friday: fully wired from triodion JSON ─────────────────────────
@@ -1355,7 +1376,7 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
         glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory`, tone },
         now:   { source: 'octoechos', key: `${tk}.saturday.vespers.dogmatikon`, tone, label: 'Dogmatikon' },
       },
-      prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
+      prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       aposticha: {
         slots: [
           { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, tone, label: 'Sticheron' },
@@ -1551,9 +1572,9 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   } else if (litKey === 'pentecostarion.ascension') {
     prokeimenon = { pattern: 'great', key: 'ourGodIsInHeaven' };
   } else if (isGreat) {
-    prokeimenon = { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
+    prokeimenon = { ...SATURDAY_GREAT_VESPERS_PROKEIMENON };
   } else {
-    prokeimenon = { pattern: 'weekday', weekday: VESPERS_SUNG_EVE[dow] || dow };
+    prokeimenon = vespersDailyProkeimenon(dow);
   }
 
   // ── Lord I Call stichera slots ────────────────────────────────────────────

@@ -406,6 +406,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           tone:     troparion.tone,
           label:    'Dismissal Theotokion',
         });
+      } else if (slots.some(s => s.position === 'glory')) {
+        // Spec already supplies a Glory troparion (e.g. Lenten Saturday
+        // Triodion: St Theodore + Soul Saturdays 2–4). Don't splice the
+        // Menaion saint on top — would emit two consecutive `Glory` blocks
+        // with id `troparion-glory` duplicated. Triodion wins.
       } else {
         // Saturday / Sunday Great Vespers shape: spec already carries the
         // resurrectional troparion (order:1) and dismissal theotokion

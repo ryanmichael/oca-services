@@ -1,10 +1,12 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litSmallEntrance(f) {
   const section = 'Little Entrance';
-  const e = f['small-entrance'];
+  const e = mustGet(f, 'small-entrance', { scope: section });
+  if (!e) return [];
   return [
     makeBlock('se-rubric', section, 'rubric', null,
       'The clergy make the Little Entrance with the Gospel Book.'),

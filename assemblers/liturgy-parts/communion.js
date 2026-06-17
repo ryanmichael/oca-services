@@ -1,10 +1,12 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litPreCommunion(isBasil, f, opts = {}) {
   const section = 'Pre-Communion';
-  const pc = f['pre-communion'];
+  const pc = mustGet(f, 'pre-communion', { scope: section });
+  if (!pc || !pc.bowHeads || !pc.elevation) return [];
   const blocks = [
     makeBlock('pc-peace',      section, 'prayer',   'priest', pc.bowHeads.text),
     makeBlock('pc-peace-r',    section, 'response', 'choir',  pc.bowHeads.response),
@@ -34,7 +36,8 @@ function _litPreCommunion(isBasil, f, opts = {}) {
 
 function _litCommunionPrayer(f, opts = {}) {
   const section = 'Communion Prayer';
-  const pc = f['pre-communion'];
+  const pc = mustGet(f, 'pre-communion', { scope: section });
+  if (!pc) return [];
   // The pre-Communion prayer text is traditionally three distinct prayers:
   //   1. "I believe, O Lord, and I confess..."           (Symeon Metaphrastes)
   //   2. "Of Thy Mystical Supper, O Son of God..."       (kiss-prayer)
@@ -99,8 +102,9 @@ function _litCommunionHymn(communionHymn, spec) {
       // The Theotokion-Kontakion ("Protection of Christians...") closes the
       // Kontakia section at the Little Entrance ("Now and ever..."). It is
       // not typically repeated while the clergy commune — exclude from the
-      // cycling labels.
-      if (k.rubric && !/Theotokion/i.test(k.rubric)) {
+      // cycling labels. Identified by an explicit `theotokion: true` flag set
+      // when the kontakia list is built (see routes/api-liturgy.js).
+      if (k.rubric && !k.theotokion) {
         blocks.push(makeBlock(`ch-cycle-kont-${i}`, section, 'rubric', null, k.rubric));
       }
     });
@@ -128,7 +132,8 @@ function _litCommunionOfFaithful(spec, f, isPaschalPeriod) {
 
 function _litPostCommunion(spec, f) {
   const section = 'Post-Communion Blessing';
-  const pc = f['post-communion-blessing'];
+  const pc = mustGet(f, 'post-communion-blessing', { scope: section });
+  if (!pc) return [];
   const isPaschal = spec.weHaveSeen === 'paschal';
   if (isPaschal) {
     // During the Paschal period, "Christ is risen" (sung once) replaces

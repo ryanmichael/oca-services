@@ -1,6 +1,7 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litMegalynarion(megalynarionSpec, isBasil, f) {
   const section = 'Hymn to the Theotokos';
@@ -19,7 +20,8 @@ function _litMegalynarion(megalynarionSpec, isBasil, f) {
 function _litAnaphora(isBasil, f, megalynarionSpec) {
   const section  = 'Anaphora';
   const key      = isBasil ? 'anaphora-basil' : 'anaphora-chrysostom';
-  const anaphora = f[key];
+  const anaphora = mustGet(f, key, { scope: section });
+  if (!anaphora) return [];
   const blocks   = [];
 
   // Deacon's call before Sursum Corda
@@ -30,7 +32,7 @@ function _litAnaphora(isBasil, f, megalynarionSpec) {
   }
 
   // Sursum Corda
-  anaphora['sursum-corda'].forEach((line, i) => {
+  (anaphora['sursum-corda'] || []).forEach((line, i) => {
     const speaker = line.speaker === 'people' ? 'choir' : 'priest';
     const type    = line.speaker === 'people' ? 'response' : 'prayer';
     blocks.push(makeBlock(`sc-${i}`, section, type, speaker, line.text));
@@ -117,13 +119,14 @@ function _litAnaphora(isBasil, f, megalynarionSpec) {
 
 function _litLordsPrayer(isBasil, f) {
   const section = 'The Lord\'s Prayer';
-  const lit = f['litany-lords-prayer'];
-  const lp  = f['lords-prayer'];
+  const lit = mustGet(f, 'litany-lords-prayer', { scope: section });
+  const lp  = mustGet(f, 'lords-prayer', { scope: section });
+  if (!lit || !lp) return [];
   const blocks = [
     makeBlock('lp-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('lp-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     const type = p.includes('ask of the Lord') || p.includes('let us ask') ? 'prayer' : 'prayer';
     const resp = p.includes('ask of the Lord') || p.includes('let us ask')
       ? (lit.petitionResponse || 'Grant this, O Lord.')

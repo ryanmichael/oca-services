@@ -1,10 +1,12 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litGreatEntrance(f) {
   const section = 'Great Entrance';
-  const e = f['great-entrance'];
+  const e = mustGet(f, 'great-entrance', { scope: section });
+  if (!e) return [];
   return [
     makeBlock('ge-rubric',   section, 'rubric',   null,     e.rubric),
     makeBlock('ge-comm',     section, 'prayer',   'priest', e.commonCommemoration),
@@ -14,16 +16,17 @@ function _litGreatEntrance(f) {
 
 function _litSupplication(f) {
   const section = 'Litany of Supplication';
-  const lit = f['litany-supplication'];
+  const lit = mustGet(f, 'litany-supplication', { scope: section });
+  if (!lit) return [];
   const blocks = [
     makeBlock('sup-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('sup-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`sup-p${i}`, section, 'prayer', 'deacon', p));
     blocks.push(makeBlock(`sup-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
-  lit.petitions2.forEach((p, i) => {
+  (lit.petitions2 || []).forEach((p, i) => {
     blocks.push(makeBlock(`sup-p2-${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`sup-gr-${i}`, section, 'response', 'choir',  lit.petitions2Response));
   });

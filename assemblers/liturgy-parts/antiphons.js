@@ -1,6 +1,7 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litFeastAntiphon(antiphon, sectionName, prefix) {
   const blocks = [];
@@ -21,7 +22,8 @@ function _litFeastAntiphon(antiphon, sectionName, prefix) {
 
 function _litTypicalAntiphon1(f) {
   const section = 'First Antiphon';
-  const a = f['typical-antiphon-1'];
+  const a = mustGet(f, 'typical-antiphon-1', { scope: section });
+  if (!a || !a.verses) return [];
   const blocks = [];
   a.verses.forEach((v, i) => {
     blocks.push(makeBlock(`a1-v${i}`, section, 'verse', 'choir', v));
@@ -31,10 +33,11 @@ function _litTypicalAntiphon1(f) {
 
 function _litTypicalAntiphon2(f) {
   const section = 'Second Antiphon';
-  const a1 = f['typical-antiphon-1'];
-  const a = f['typical-antiphon-2'];
+  const a1 = mustGet(f, 'typical-antiphon-1', { scope: section });
+  const a  = mustGet(f, 'typical-antiphon-2', { scope: section });
+  if (!a || !a.verses) return [];
   const blocks = [];
-  blocks.push(makeBlock('a2-glory-open', section, 'doxology', 'choir', a1.glory));
+  if (a1?.glory) blocks.push(makeBlock('a2-glory-open', section, 'doxology', 'choir', a1.glory));
   a.verses.forEach((v, i) => {
     blocks.push(makeBlock(`a2-v${i}`, section, 'verse', 'choir', v));
   });
@@ -44,7 +47,8 @@ function _litTypicalAntiphon2(f) {
 
 function _litLittleLitany(f, exclamationKey, prefix) {
   const section = 'Little Litany';
-  const lit = f['little-litany'];
+  const lit = mustGet(f, 'little-litany', { scope: section });
+  if (!lit) return [];
   return [
     makeBlock(`${prefix}-ll-opening`,    section, 'prayer',   'deacon', lit.opening),
     makeBlock(`${prefix}-ll-response`,   section, 'response', 'choir',  lit.response),
@@ -58,7 +62,9 @@ function _litLittleLitany(f, exclamationKey, prefix) {
 
 function _litBeatitudes(beatitudesSpec, f) {
   const section = 'Third Antiphon';
-  const verses  = f['beatitudes'].verses;
+  const beat = mustGet(f, 'beatitudes', { scope: section });
+  if (!beat || !beat.verses) return [];
+  const verses  = beat.verses;
   const blocks  = [];
 
   // Opening verse sung three times (choir)

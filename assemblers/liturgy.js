@@ -3,6 +3,8 @@
 const makeBlock = require('./_shared/make-block');
 const warnings  = require('./_shared/warnings');
 
+const VALID_CHERUBIC_OVERRIDES = new Set(['great-thursday', 'great-saturday']);
+
 const { _litOpeningDoxology, _litGreatLitany }                              = require('./liturgy-parts/opening');
 const { _litFeastAntiphon, _litTypicalAntiphon1, _litTypicalAntiphon2,
         _litLittleLitany, _litBeatitudes }                                  = require('./liturgy-parts/antiphons');
@@ -94,21 +96,23 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // 9. Kontakia
   blocks.push(..._litKontakia(spec.kontakia));
 
-  // 9b. Short litany before the Trisagion — Slavonic parish form.
-  //   Deacon: "Let us pray to the Lord."   Choir: "Lord, have mercy."
-  //   Deacon: "O Lord, save the pious."    Choir: "O Lord, save the pious."
-  //   Deacon: "And hear us."               Choir: "And hear us."
-  //   Priest: "...And unto ages of ages."  Choir: "Amen."
-  // The priest's "For Holy art Thou, O our God..." prayer is said silently
-  // here; only its closing clause is audible.
-  blocks.push(makeBlock('pre-tris-pray-d',  'Kontakia', 'prayer',   'deacon', 'Let us pray to the Lord.'));
-  blocks.push(makeBlock('pre-tris-pray-c',  'Kontakia', 'response', 'choir',  'Lord, have mercy.'));
-  blocks.push(makeBlock('pre-tris-pious-d', 'Kontakia', 'prayer',   'deacon', 'O Lord, save the pious.'));
-  blocks.push(makeBlock('pre-tris-pious-c', 'Kontakia', 'response', 'choir',  'O Lord, save the pious.'));
-  blocks.push(makeBlock('pre-tris-hear-d',  'Kontakia', 'prayer',   'deacon', 'And hear us.'));
-  blocks.push(makeBlock('pre-tris-hear-c',  'Kontakia', 'response', 'choir',  'And hear us.'));
-  blocks.push(makeBlock('pre-tris-ages-d',  'Kontakia', 'prayer',   'priest', 'And unto ages of ages. Amen.'));
-  blocks.push(makeBlock('pre-tris-amen',    'Kontakia', 'response', 'choir',  'Amen.'));
+  // 9b. Short litany before the Trisagion — Slavonic parish form. The priest's
+  // "For Holy art Thou, O our God..." prayer is said silently here; only its
+  // closing clause is audible. Jurisdictions that omit it (e.g. Greek practice)
+  // set `manifest.rubrics.omitPreTrisagionLitany = true`.
+  if (!opts.rubrics?.omitPreTrisagionLitany) {
+    const ptl = liturgyFixed['pre-trisagion-litany'];
+    if (ptl) {
+      blocks.push(makeBlock('pre-tris-pray-d',  'Kontakia', 'prayer',   'deacon', ptl.deaconPray));
+      blocks.push(makeBlock('pre-tris-pray-c',  'Kontakia', 'response', 'choir',  ptl.choirMercy));
+      blocks.push(makeBlock('pre-tris-pious-d', 'Kontakia', 'prayer',   'deacon', ptl.deaconPious));
+      blocks.push(makeBlock('pre-tris-pious-c', 'Kontakia', 'response', 'choir',  ptl.choirPious));
+      blocks.push(makeBlock('pre-tris-hear-d',  'Kontakia', 'prayer',   'deacon', ptl.deaconHear));
+      blocks.push(makeBlock('pre-tris-hear-c',  'Kontakia', 'response', 'choir',  ptl.choirHear));
+      blocks.push(makeBlock('pre-tris-ages-d',  'Kontakia', 'prayer',   'priest', ptl.priestAges));
+      blocks.push(makeBlock('pre-tris-amen',    'Kontakia', 'response', 'choir',  ptl.choirAmen));
+    }
+  }
 
   // 10. Trisagion
   blocks.push(..._litTrisagion(spec.trisagion, liturgyFixed));
@@ -152,9 +156,15 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // ── LITURGY OF THE FAITHFUL ────────────────────────────────────────────────
 
   // 19. Cherubic Hymn (Great Thursday / Great Saturday have substitutions)
-  if (spec.cherubicOverride) {
-    const cherubicKey = `cherubic-${spec.cherubicOverride}`;
-    const cherubicLabel = spec.cherubicOverride === 'great-thursday' ? 'Mystical Supper Hymn'
+  let cherubicOverride = spec.cherubicOverride;
+  if (cherubicOverride && !VALID_CHERUBIC_OVERRIDES.has(cherubicOverride)) {
+    warnings.push({ source: 'spec', key: 'liturgy.cherubicOverride',
+      scope: 'Cherubic Hymn', detail: `unknown override "${cherubicOverride}" — falling back to standard Cherubic Hymn` });
+    cherubicOverride = null;
+  }
+  if (cherubicOverride) {
+    const cherubicKey = `cherubic-${cherubicOverride}`;
+    const cherubicLabel = cherubicOverride === 'great-thursday' ? 'Mystical Supper Hymn'
       : 'Let All Mortal Flesh Keep Silence';
     blocks.push(makeBlock('cherubic-hymn', cherubicLabel, 'hymn', 'choir',
       liturgyFixed[cherubicKey]));
@@ -162,8 +172,9 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
     // Standard Cherubic Hymn — Part 1 before the Great Entrance, Part 2 after
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
-    blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null,
-      'Sung slowly and very softly:'));
+    if (ch.rubric1) {
+      blocks.push(makeBlock('cherubic-rubric', section, 'rubric', null, ch.rubric1));
+    }
     blocks.push(makeBlock('cherubic-part1', section, 'hymn', 'choir', ch.part1));
     blocks.push(makeBlock('cherubic-amen', section, 'response', 'choir', ch.amen));
   }
@@ -172,11 +183,12 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   blocks.push(..._litGreatEntrance(liturgyFixed));
 
   // 19b. Cherubic Hymn — Part 2 (after the Great Entrance)
-  if (!spec.cherubicOverride) {
+  if (!cherubicOverride) {
     const ch = liturgyFixed['cherubic-hymn'];
     const section = 'Cherubic Hymn';
-    blocks.push(makeBlock('cherubic-rubric2', section, 'rubric', null,
-      'Then more quickly, with strength:'));
+    if (ch.rubric2) {
+      blocks.push(makeBlock('cherubic-rubric2', section, 'rubric', null, ch.rubric2));
+    }
     blocks.push(makeBlock('cherubic-part2', section, 'hymn', 'choir', ch.part2));
     blocks.push(makeBlock('cherubic-alleluia', section, 'hymn', 'choir', ch.alleluia));
   }

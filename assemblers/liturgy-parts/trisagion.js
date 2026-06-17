@@ -1,6 +1,7 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 // Accepts either the legacy string form ("Before Thy Cross…") or the object
 // form ({text, repetitions, glory, final}). Spec overrides win when present.
@@ -31,7 +32,8 @@ function _litTrisagion(trisagionSpec, f) {
   const blocks  = [];
 
   if (!trisagionSpec || trisagionSpec.substitution === 'typical') {
-    const tr = f['trisagion'];
+    const tr = mustGet(f, 'trisagion', { scope: section });
+    if (!tr) return blocks;
     blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
       `Sung three times:`));
     if (Array.isArray(tr.variants) && tr.variants.length > 0) {
@@ -48,15 +50,21 @@ function _litTrisagion(trisagionSpec, f) {
     blocks.push(makeBlock('tris-glory', section, 'doxology', null, tr.glory));
     blocks.push(makeBlock('tris-final', section, 'hymn', 'choir', tr.final));
   } else if (trisagionSpec.substitution === 'cross') {
-    const data = _normalizeTrisagionData(f['trisagion-cross'], trisagionSpec);
-    blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
-      'The substitution "Before Thy Cross…" is sung in place of "Holy God…":'));
-    _emitTrisagionPattern(blocks, section, 'tris-cross', data);
+    const base = mustGet(f, 'trisagion-cross', { scope: section });
+    if (base) {
+      const data = _normalizeTrisagionData(base, trisagionSpec);
+      blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
+        'The substitution "Before Thy Cross…" is sung in place of "Holy God…":'));
+      _emitTrisagionPattern(blocks, section, 'tris-cross', data);
+    }
   } else if (trisagionSpec.substitution === 'baptismal') {
-    const data = _normalizeTrisagionData(f['trisagion-baptismal'], trisagionSpec);
-    blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
-      'The substitution "As many as have been baptized…" is sung in place of "Holy God…":'));
-    _emitTrisagionPattern(blocks, section, 'tris-bapt', data);
+    const base = mustGet(f, 'trisagion-baptismal', { scope: section });
+    if (base) {
+      const data = _normalizeTrisagionData(base, trisagionSpec);
+      blocks.push(makeBlock('tris-rubric', section, 'rubric', null,
+        'The substitution "As many as have been baptized…" is sung in place of "Holy God…":'));
+      _emitTrisagionPattern(blocks, section, 'tris-bapt', data);
+    }
   }
 
   // Priestly blessing after the Trisagion, before the Prokeimenon

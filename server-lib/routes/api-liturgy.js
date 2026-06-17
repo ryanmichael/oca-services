@@ -206,6 +206,7 @@ function handle(req, res, ctx) {
                 rubric: theo.rubric,
                 text:   theo.text,
                 connector: 'Now and ever, and unto ages of ages. Amen.',
+                theotokion: true,
               } : null;
               lit.kontakia = [
                 ...(extraK ? [{ ...extraK, connector: null }] : []),

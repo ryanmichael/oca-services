@@ -2,19 +2,21 @@
 
 const makeBlock          = require('../_shared/make-block');
 const { resolveFixedRef } = require('../_shared/resolve');
+const mustGet             = require('../_shared/must-get');
 
 function _litAugmentedLitany(f) {
   const section = 'Litany of Fervent Supplication';
-  const lit = f['augmented-litany'];
+  const lit = mustGet(f, 'augmented-litany', { scope: section });
+  if (!lit) return [];
   const blocks = [
     makeBlock('al-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('al-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', resolveFixedRef(p, f)));
     blocks.push(makeBlock(`al-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
-  lit.triplePetitions.forEach((p, i) => {
+  (lit.triplePetitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', resolveFixedRef(p, f)));
     blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
@@ -27,13 +29,13 @@ function _litAugmentedLitany(f) {
 
 function _litDeparted(f) {
   const section = 'Litany for the Departed';
-  const lit = f['litany-departed'];
+  const lit = mustGet(f, 'litany-departed', { scope: section });
   if (!lit) return [];
   const blocks = [
     makeBlock('dep-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('dep-response', section, 'response', 'choir',  lit.tripleResponse),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`dep-p${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`dep-r${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
@@ -50,12 +52,13 @@ function _litDeparted(f) {
 
 function _litCatechumens(f) {
   const section = 'Litany for the Catechumens';
-  const lit = f['litany-catechumens'];
+  const lit = mustGet(f, 'litany-catechumens', { scope: section });
+  if (!lit) return [];
   const blocks = [
     makeBlock('cat-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('cat-response', section, 'response', 'choir',  lit.response),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`cat-p${i}`, section, 'prayer', 'deacon', p));
     blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
@@ -72,8 +75,9 @@ function _litCatechumens(f) {
 
 function _litLitaniesFaithful(f) {
   const section = 'Litanies of the Faithful';
-  const l1 = f['litany-faithful-1'];
-  const l2 = f['litany-faithful-2'];
+  const l1 = mustGet(f, 'litany-faithful-1', { scope: section });
+  const l2 = mustGet(f, 'litany-faithful-2', { scope: section });
+  if (!l1 || !l2) return [];
   const blocks = [
     makeBlock('lf1-opening',    section, 'prayer',   'deacon', l1.opening),
     makeBlock('lf1-response',   section, 'response', 'choir',  l1.response),

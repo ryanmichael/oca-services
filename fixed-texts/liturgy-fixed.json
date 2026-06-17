@@ -11,6 +11,20 @@
     "response": "Amen."
   },
 
+  "glory-now-doxology": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+
+  "pre-trisagion-litany": {
+    "_note": "Slavonic-tradition short litany between the Kontakia and the Trisagion. Default-on; jurisdictions that omit it (e.g. Greek practice) set manifest.rubrics.omitPreTrisagionLitany = true on their overlay.",
+    "deaconPray": "Let us pray to the Lord.",
+    "choirMercy": "Lord, have mercy.",
+    "deaconPious": "O Lord, save the pious.",
+    "choirPious": "O Lord, save the pious.",
+    "deaconHear": "And hear us.",
+    "choirHear": "And hear us.",
+    "priestAges": "And unto ages of ages. Amen.",
+    "choirAmen": "Amen."
+  },
+
   "hierarch-commemoration": {
     "_note": "Petition text for the hierarchs, referenced from the Great and Augmented litanies via '@@hierarch-commemoration.<litany>' sentinels. Parish overlays should override THESE keys (not the petition arrays themselves) to name their primate/diocesan/auxiliary bishops without copying the full petition list. The sentinel resolver lives in assembler.js (resolveFixedRef).",
     "greatLitany":     "For our Archbishop N., for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
@@ -207,6 +221,8 @@
     "_setting": "plain",
     "_setting_label": "Plain prose text (no musical repetitions or held-note markers)",
     "_source": "OCA / Antiochian Liturgikon — 'We, who mystically represent the Cherubim' translation",
+    "rubric1": "Sung slowly and very softly:",
+    "rubric2": "Then more quickly, with strength:",
     "part1": "We, who mystically represent the Cherubim, and who sing to the Life-creating Trinity the thrice-holy hymn, let us now lay aside all earthly cares.",
     "amen": "Amen.",
     "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts.",

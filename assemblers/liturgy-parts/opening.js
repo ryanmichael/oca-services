@@ -2,10 +2,12 @@
 
 const makeBlock          = require('../_shared/make-block');
 const { resolveFixedRef } = require('../_shared/resolve');
+const mustGet             = require('../_shared/must-get');
 
 function _litOpeningDoxology(f) {
   const section = 'Opening Doxology';
-  const d = f['opening-doxology'];
+  const d = mustGet(f, 'opening-doxology', { scope: section });
+  if (!d) return [];
   return [
     makeBlock('od-exclamation', section, 'prayer', 'priest', d.exclamation),
     makeBlock('od-response',    section, 'response', 'choir', d.response),
@@ -14,7 +16,8 @@ function _litOpeningDoxology(f) {
 
 function _litGreatLitany(f) {
   const section = 'Great Litany';
-  const lit = f['great-litany'];
+  const lit = mustGet(f, 'great-litany', { scope: section });
+  if (!lit) return [];
   const blocks = [
     makeBlock('gl-opening',  section, 'prayer',   'deacon', lit.opening),
     makeBlock('gl-response', section, 'response', 'choir',  lit.response),

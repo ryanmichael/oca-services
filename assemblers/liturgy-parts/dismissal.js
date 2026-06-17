@@ -1,9 +1,12 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litDismissalTroparia(isBasil, f, feastTroparia) {
   const section  = 'Dismissal Troparia';
+  const gloryNow = f['glory-now-doxology'] ||
+    'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.';
 
   // Pentecostarion Sundays: repeat the full Liturgy troparia + kontakia
   // (Resurrection + feast troparia + saint kontakia, etc.).
@@ -18,7 +21,7 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
         blocks.push(makeBlock(`dt-kont-conn-${i}`, section, 'doxology', null, k.connector));
       } else if (i === 0) {
         blocks.push(makeBlock('dt-kont-glory-now', section, 'doxology', null,
-          'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'));
+          gloryNow));
       }
       if (k.rubric) blocks.push(makeBlock(`dt-kont-rubric-${i}`, section, 'rubric', null, k.rubric));
       blocks.push(makeBlock(`dt-kont-${i}`, section, 'hymn', 'choir', k.text, { tone: k.tone }));
@@ -36,7 +39,7 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
     if (feastTroparia.kontakion) {
       const fk = feastTroparia.kontakion;
       blocks.push(
-        makeBlock('dt-glory',  section, 'doxology', null, 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'),
+        makeBlock('dt-glory',  section, 'doxology', null, gloryNow),
         makeBlock('dt-kont',   section, 'hymn',     'choir', fk.text, { tone: fk.tone }),
       );
     }
@@ -44,12 +47,13 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
   }
 
   const tropKey  = isBasil ? 'troparion-basil' : 'troparion-chrysostom';
-  const trop     = f[tropKey];
-  const theos    = f['dismissal-theotokion'];
+  const trop     = mustGet(f, tropKey, { scope: section });
+  const theos    = mustGet(f, 'dismissal-theotokion', { scope: section });
+  if (!trop || !theos) return [];
   return [
     makeBlock('dt-rubric',  section, 'rubric',   null,    isBasil ? 'Troparion of St. Basil the Great, Tone 1:' : 'Troparion of St. John Chrysostom, Tone 8:'),
     makeBlock('dt-trop',    section, 'hymn',     'choir', trop.troparion, { tone: trop.tone }),
-    makeBlock('dt-glory',   section, 'doxology', null,    'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.'),
+    makeBlock('dt-glory',   section, 'doxology', null,    gloryNow),
     makeBlock('dt-theos',   section, 'hymn',     'choir', theos),
   ];
 }

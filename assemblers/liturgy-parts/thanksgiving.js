@@ -1,16 +1,18 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
 
 function _litThanksgiving(isBasil, f) {
   const section = 'Litany of Thanksgiving';
-  const lit = f['litany-thanksgiving'];
+  const lit = mustGet(f, 'litany-thanksgiving', { scope: section });
+  if (!lit) return [];
   const blocks = [
     makeBlock('lt-deacon',   section, 'prayer',   'deacon', lit.deacon),
     makeBlock('lt-response', section, 'response', 'choir',  lit.response),
     makeBlock('lt-petition', section, 'prayer',   'deacon', lit.petition),
   ];
-  lit.petitions.forEach((p, i) => {
+  (lit.petitions || []).forEach((p, i) => {
     blocks.push(makeBlock(`lt-p${i}`, section, 'prayer',   'deacon', p));
     blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
   });
@@ -28,7 +30,8 @@ function _litThanksgiving(isBasil, f) {
 
 function _litBlessedBeTheName(f) {
   const section = 'Blessed be the Name';
-  const b = f['blessed-be-the-name'];
+  const b = mustGet(f, 'blessed-be-the-name', { scope: section });
+  if (!b) return [];
   return [
     makeBlock('bbn-text',     section, 'hymn',     'choir',  `${b.text} (×3)`),
     makeBlock('bbn-response', section, 'response', 'choir',  b.response),
@@ -57,7 +60,8 @@ function _litClosingDoxology(isPaschalPeriod) {
 
 function _litPsalm33(f) {
   const section = 'Psalm 33';
-  const p = f['psalm-33'];
+  const p = mustGet(f, 'psalm-33', { scope: section });
+  if (!p) return [];
   return [
     makeBlock('ps33-rubric', section, 'rubric', null, p.rubric),
     makeBlock('ps33-text',   section, 'prayer', 'reader', p.text, { density: 'compact' }),

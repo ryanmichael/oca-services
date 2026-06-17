@@ -2,7 +2,14 @@
 
 **Status:** shipped 2026-06-14 (commit `8e51af4`); low-rank Glory-slot fix 2026-06-14 (commit `f10e1e2`)
 **Contract test:** `test/contracts/sunday-kontakia-restructure.test.js`
+**Last verified:** 5841b91
 **Session context:** memory `project_session_handoff_2026_06_14.md` § "Sunday kontakia structural restructure"
+
+> The principal-saint picker change in `d5f5ea2` shifted the 2026-06-21
+> day-saint witness from Ananias to Julian of Tarsus; INV-2's saint-name
+> regex was updated to match. Section shape (Glory: <saint> / Now:
+> Kontakion-Theotokion) unchanged. Bump `Last verified` after the next
+> intentional change to this feature's surface.
 
 ## Purpose
 

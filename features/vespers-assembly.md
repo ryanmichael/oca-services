@@ -3,6 +3,7 @@
 **Status:** spec extracted 2026-06-16 from the Vespers-hardening session (commits `aef1f6f`, `a3b0e8c`, `3156bb0`, `8139b3f`, `4a68d1f`).
 **Contract test:** `test/contracts/vespers-assembly.test.js`
 **Audit rules:** `audit/rules/D-structure/D1`–`D7`
+**Last verified:** 5841b91
 **Session context:** memory `project_sat_eve_vespers_glory_now`, `project_lenten_saturday_troparion_dup`
 
 ## Purpose

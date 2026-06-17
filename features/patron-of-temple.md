@@ -2,7 +2,14 @@
 
 **Status:** shipped 2026-06-13 (commit `821d3ec`); low-rank Sunday Glory-slot fix 2026-06-14 (commit `f10e1e2`)
 **Contract test:** `test/contracts/patron-of-temple.test.js`
+**Last verified:** 5841b91
 **Session context:** memory `project_patron_of_temple.md` (Claude collab notes, not in-repo)
+
+> The principal-saint picker change in `d5f5ea2` (orthocal-aligned) shifted
+> the 2026-06-21 day-saint witness from Ananias to Julian of Tarsus. Patron
+> ordering behavior unchanged; INV-1..5 contract tests updated to the new
+> witness name only. Bump `Last verified` after the next intentional change
+> to this feature's surface.
 
 ## Purpose
 

@@ -804,7 +804,9 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
       blocks.push(S('canon-kontakion-ode3', 'Kontakion', 'hymn', 'choir',
         k.text, { tone: k.tone, label: k.label }));
       if (k.ikos) {
-        blocks.push(S('canon-ikos-ode3', 'Kontakion', 'hymn', 'reader', k.ikos.text));
+        // Accept both authored shapes: bare string or { text: ... } object.
+        const ikosText = typeof k.ikos === 'string' ? k.ikos : k.ikos.text;
+        blocks.push(S('canon-ikos-ode3', 'Kontakion', 'hymn', 'reader', ikosText));
       }
     }
 
@@ -813,7 +815,8 @@ function _assembleCanon(blocks, canonSpec, matinsFixed, vespersFixed, sources) {
       blocks.push(S('canon-kontakion', 'Kontakion', 'hymn', 'choir',
         canonSpec.kontakion.text, { tone: canonSpec.kontakion.tone, label: canonSpec.kontakion.label }));
       if (canonSpec.ikos) {
-        blocks.push(S('canon-ikos', 'Kontakion', 'hymn', 'reader', canonSpec.ikos.text));
+        const ikosText = typeof canonSpec.ikos === 'string' ? canonSpec.ikos : canonSpec.ikos.text;
+        blocks.push(S('canon-ikos', 'Kontakion', 'hymn', 'reader', ikosText));
       }
     }
 

@@ -46,11 +46,19 @@ module.exports = {
     const sungEve = VESPERS_SUNG_EVE[ctx.dow];
     if (!sungEve) return [];
     const tk = `tone${ctx.tone}`;
-    const sourceHymns =
-      octoechos?.[tk]?.[sungEve]?.vespers?.lordICall?.hymns || [];
+    const licNode = octoechos?.[tk]?.[sungEve]?.vespers?.lordICall;
+    const sourceHymns = licNode?.hymns || [];
     if (!sourceHymns.length) return [];
 
-    const expected = new Set(sourceHymns.map(h => norm(h.text)));
+    // Include `.glory` and `.theotokion` siblings as valid source text — the
+    // a3b0e8c LIC Theotokion injection (and the Sat-eve Sunday Great Vespers
+    // dogmatikon path) emit blocks tagged `source: 'octoechos'` whose text
+    // comes from those keys, not from `.hymns`.
+    const expected = new Set([
+      ...sourceHymns.map(h => norm(h.text)),
+      licNode.glory?.text      && norm(licNode.glory.text),
+      licNode.theotokion?.text && norm(licNode.theotokion.text),
+    ].filter(Boolean));
     const assembledOcto = (ctx.assembled?.blocks || []).filter(b =>
       /^Lord, I/.test(b.section || '') && b.type === 'hymn' && b.source === 'octoechos'
     );

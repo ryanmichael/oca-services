@@ -3,6 +3,8 @@
 const fs   = require('fs');
 const path = require('path');
 
+const { isSeason, SEASON_VALUES } = require('../../constants/seasons');
+
 const ROOT = path.resolve(__dirname, '..', '..');
 const TRANSLATIONS_DIR = path.join(ROOT, 'fixed-texts', 'translations');
 
@@ -107,7 +109,14 @@ function validateManifest(id, manifest, allIds) {
           warnings.push("rubrics.omitCatechumensSeasons must be an array of season ids");
         } else {
           r.omitCatechumensSeasons.forEach((s, i) => {
-            if (typeof s !== 'string') warnings.push(`rubrics.omitCatechumensSeasons[${i}] must be a string`);
+            if (typeof s !== 'string') {
+              warnings.push(`rubrics.omitCatechumensSeasons[${i}] must be a string`);
+            } else if (!isSeason(s)) {
+              // Typo guard: a non-allowlisted value silently never matches
+              // `liturgicalContext.season`, so the catechumens litany would
+              // never be omitted with no other signal.
+              warnings.push(`rubrics.omitCatechumensSeasons[${i}] "${s}" is not a known season — expected one of ${SEASON_VALUES.join(', ')}`);
+            }
           });
         }
       }

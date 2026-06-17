@@ -1303,6 +1303,27 @@ describe('Translation overlay cascade', () => {
     fs.rmSync(path.join(TRANSLATIONS_DIR, 'xtest-bad'), { recursive: true, force: true });
   });
 
+  it('manifest validation flags a typo in omitCatechumensSeasons', async () => {
+    // Real failure mode: a typo in a season slug silently never matches
+    // `liturgicalContext.season`, so the catechumens litany never gets
+    // omitted with no other signal anywhere.
+    writeOverlay('xtest-bad-season', {
+      name: 'bad season test', kind: 'tradition', extends: [],
+      rubrics: { omitCatechumensSeasons: ['brightWeek', 'pentacostarion'] }, // typo
+    }, {});
+
+    const r = await get('/api/translations');
+    assert.equal(r.status, 200);
+    const bad = r.json.translations.find(t => t.id === 'xtest-bad-season');
+    assert.ok(bad, 'xtest-bad-season overlay should appear in /api/translations');
+    assert.ok(bad.warnings.some(w => /pentacostarion.*not a known season/i.test(w)),
+      `Should flag the typo'd season. Got: ${JSON.stringify(bad.warnings)}`);
+    assert.ok(!bad.warnings.some(w => /brightWeek.*not a known season/i.test(w)),
+      'Should NOT flag the valid season alongside the typo');
+
+    fs.rmSync(path.join(TRANSLATIONS_DIR, 'xtest-bad-season'), { recursive: true, force: true });
+  });
+
   it('drift detector flags overlay keys not present in base', async () => {
     // We can't easily intercept console.warn from a child process, but we can
     // confirm the request still succeeds — drift warnings are non-fatal.

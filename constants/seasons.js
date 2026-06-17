@@ -13,8 +13,13 @@
  *   - the walker test sweeps the calendar for the next 366 days and
  *     asserts every emitted `season` is in `SEASON_VALUES`, so a typo at
  *     any writer site in `calendar-rules.js` fails the test suite;
- *   - `schema/calendar-entry.schema.json` carries the same enum, so any
- *     hand-authored calendar entry with a bad season fails validation.
+ *   - `server-lib/overlays/manifest.js` calls `isSeason()` on each entry
+ *     in `rubrics.omitCatechumensSeasons`, so an overlay typo surfaces
+ *     in `/api/translations` warnings instead of silently never matching;
+ *   - `schema/calendar-entry.schema.json` mirrors the enum for
+ *     documentation — note that no AJV runner is wired today, so the
+ *     schema is reference-only. The walker test + manifest validator are
+ *     the real guards.
  *
  * Note: the magic string `spec.weHaveSeen === 'paschal'` is a separate
  * concept (a content sentinel for the "Christ is risen" substitution at

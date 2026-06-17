@@ -360,23 +360,61 @@ describe('API routes', () => {
 
   // ── No empty text blocks in any service ────────────────────────────────
 
+  // Match the audit harness's empty-text criterion: catches both
+  // `text === ''` AND `text == null|undefined` (the latter is what the
+  // canon-ikos-ode3 bug emitted before commit d69eb65).
+  const isEmptyBlock = b => b.type !== 'doxology'
+    && (b.text == null || (typeof b.text === 'string' && b.text.trim() === ''));
+
   it('No blocks with empty text in Vespers assembly', async () => {
     // Date=2026-10-02 (Friday evening) → vespers for Saturday Oct 3
     const res = await get('/api/service?date=2026-10-02');
-    const empties = res.json.blocks.filter(
-      b => typeof b.text === 'string' && b.text.trim() === '' && b.type !== 'doxology'
-    );
+    const empties = res.json.blocks.filter(isEmptyBlock);
     assert.equal(empties.length, 0,
       `Found ${empties.length} empty block(s): ${empties.map(b => b.id).join(', ')}`);
   });
 
   it('No blocks with empty text in Liturgy assembly', async () => {
     const res = await get('/api/liturgy?date=2026-10-04');
-    const empties = res.json.blocks.filter(
-      b => typeof b.text === 'string' && b.text.trim() === '' && b.type !== 'doxology'
-    );
+    const empties = res.json.blocks.filter(isEmptyBlock);
     assert.equal(empties.length, 0,
       `Found ${empties.length} empty block(s): ${empties.map(b => b.id).join(', ')}`);
+  });
+
+  it('No blocks with empty text across representative Matins dates', async () => {
+    // Mix of:
+    //  - regression sentinels for the canon-ikos-ode3 bug (fixed in d69eb65)
+    //  - season-spanning anchors (Theophany, Lent, Pascha, Pentecost, Nativity)
+    // The existing endpoint audit catches all 365 dates; this sweep is the
+    // tractable in-process backstop so local `npm test` fails fast on the
+    // same class of bug instead of waiting for the pre-push hook.
+    const dates = [
+      '2026-01-06',  // Theophany
+      '2026-01-11',  // regression: ikos-ode3 (Sun after Theophany)
+      '2026-03-15',  // Sunday of the Cross (Lent)
+      '2026-04-12',  // Pascha
+      '2026-05-31',  // Pentecost
+      '2026-08-09',  // regression: ikos-ode3 (Transfiguration afterfeast)
+      '2026-08-16',  // regression: ikos-ode3 (Dormition afterfeast Sunday)
+      '2026-09-21',  // regression: ikos-ode3 (Cross afterfeast Monday)
+      '2026-09-28',  // regression: ikos-ode3 (Monday)
+      '2026-11-03',  // regression: ikos-ode3 (Tuesday)
+      '2026-12-21',  // regression: ikos-ode3 (Nativity forefeast Monday)
+      '2026-12-25',  // Nativity
+    ];
+    const failures = [];
+    for (const date of dates) {
+      const res = await get(`/api/matins?date=${date}`);
+      if (res.status !== 200) {
+        failures.push(`${date}: HTTP ${res.status}`);
+        continue;
+      }
+      const empties = res.json.blocks.filter(isEmptyBlock);
+      if (empties.length) {
+        failures.push(`${date}: ${empties.length} empty (${empties.map(b => b.id).join(', ')})`);
+      }
+    }
+    assert.equal(failures.length, 0, `Matins empty-text failures:\n  ${failures.join('\n  ')}`);
   });
 
   // ── Static assets ─────────────────────────────────────────────────────

@@ -228,14 +228,36 @@ function dedupKey(commType, tone, text) {
 // A co-celebrated saint reading further down (description != "") survives as
 // the secondary. When the primary itself is empty-desc (regular cycle), the
 // next reading is the secondary regardless of its description.
-function pickPrimaryAndSecondary(all) {
+//
+// When multiple saint-co-celebration readings exist and a principal-title hint
+// is provided, prefer the saint reading whose description-keyword overlaps the
+// principal commemoration title (e.g., "Angels" wins over "Unmercenaries" when
+// the principal is "Synaxis of the Archangel Michael"). Falls back to first
+// non-empty-desc reading when no match.
+function pickPrimaryAndSecondary(all, principalTitle) {
   const first = all[0] || null;
   if (!first) return [null, null];
-  if (first.description) {
-    const sec = all.slice(1).find(r => r.description) || null;
-    return [first, sec];
-  }
-  return [first, all[1] || null];
+  const saintReadings = all.slice(1).filter(r => r.description);
+  const pickSaint = () => {
+    if (saintReadings.length === 0) return null;
+    if (saintReadings.length === 1 || !principalTitle) return saintReadings[0];
+    const titleLower = principalTitle.toLowerCase();
+    const score = r => {
+      const descWords = r.description.toLowerCase().split(/[^a-z]+/).filter(w => w.length > 2);
+      let s = 0;
+      for (const w of descWords) {
+        if (titleLower.includes(w)) { s += 2; continue; }
+        // Stem fallback: "Angels" → "angel" matches "archangel"
+        if (w.endsWith('s') && titleLower.includes(w.slice(0, -1))) { s += 1; continue; }
+        if (w.endsWith('ies') && titleLower.includes(w.slice(0, -3) + 'y')) { s += 1; continue; }
+      }
+      return s;
+    };
+    const ranked = saintReadings.slice().sort((a, b) => score(b) - score(a));
+    return score(ranked[0]) > 0 ? ranked[0] : saintReadings[0];
+  };
+  if (first.description) return [first, pickSaint()];
+  return [first, pickSaint() || all[1] || null];
 }
 
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', opts = {}) {
@@ -297,13 +319,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const readings   = orthocalData.readings || [];
   const epistleAll = readings.filter(r => r.source === 'Epistle');
   const gospelAll  = readings.filter(r => r.source === 'Gospel');
-  // When orthocal returns a special-cycle override (Sunday-before/after-X,
-  // Forefeast, Leavetaking, Great-Feast-on-Sunday) as the primary reading, the
-  // regular Sunday-cycle reading sits in slot [1] with description="" and gets
-  // suppressed in OCA practice. A co-celebrated saint reading further down
-  // (description != "") survives as the secondary.
-  const [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll);
-  const [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll);
+  // Primary/secondary reading selection happens further down — it needs the
+  // principal commemoration title so the saint-co-celebration secondary can
+  // be matched against it (resolves cases like Nov 8 where orthocal returns
+  // both an "Unmercenaries" and an "Angels" reading and we want "Angels" to
+  // win because the principal is Synaxis of the Archangel Michael).
+  let epistleR, epistleR2, gospelR, gospelR2;
 
   // orthocal returns the generic book name "Apostol" for all epistles; the
   // actual book lives in the display field (e.g. "Acts 16.16-34",
@@ -360,6 +381,14 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const menaionPrincipal = ranked?.notable
     ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
     : null;
+
+  // Now resolve primary/secondary readings. When orthocal returns a special-
+  // cycle override as the primary, the regular Sunday-cycle reading is
+  // suppressed; a co-celebrated saint reading further down survives. The
+  // principal title disambiguates when multiple saint readings exist.
+  const principalTitle = menaionPrincipal?.title || feast?.title || null;
+  [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
+  [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
 
   // ── Troparia & Kontakia ──────────────────────────────────────────────────────
   // Great Feasts & Pentecostarion feast Sundays: use only the feast's own

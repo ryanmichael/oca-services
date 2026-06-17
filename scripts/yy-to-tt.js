@@ -316,7 +316,7 @@ function transformThouAsObject(text) {
   text = text.replace(/\bfor\s+(Thou|thou)(\s*,|\s+that)/g, (m, p, tail) => `for ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}${tail}`);
   // After a small set of devotional verbs/gerunds where the saint speaks to
   // Christ (typical "Joseph was amazed" podoben: "I love Thou", "seeking Thou")
-  const DEVOTION_VERBS = '(?:love|loving|seek|seeking|follow|following|serve|serving|praise|praising|magnify|magnifying|glorify|glorifying|honor|honoring|behold|beholding|embrace|embracing|adore|adoring|bore|bear|bearing|brought|bring|bringing)';
+  const DEVOTION_VERBS = '(?:love|loving|seek|seeking|follow|following|serve|serving|praise|praising|magnify|magnifying|glorify|glorifying|honor|honoring|behold|beholding|embrace|embracing|adore|adoring|bore|bear|bearing|brought|bring|bringing|beseech|beseeching|entreat|entreating|implore|imploring|supplicate|supplicating|invoke|invoking)';
   const verbRe = new RegExp(`\\b(${DEVOTION_VERBS})\\s+(Thou|thou)\\b`, 'g');
   text = text.replace(verbRe, (m, verb, p) => `${verb} ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}`);
   return text;

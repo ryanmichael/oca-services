@@ -2,6 +2,7 @@
 
 const makeBlock = require('../_shared/make-block');
 const mustGet   = require('../_shared/must-get');
+const warnings  = require('../_shared/warnings');
 
 function _litDismissalTroparia(isBasil, f, feastTroparia) {
   const section  = 'Dismissal Troparia';
@@ -97,6 +98,13 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   //   2. Paschal period (Pascha → Pascha leavetaking): "The Angel cried..."
   //   3. Default: "Most holy Theotokos, save us." + "More honorable than the Cherubim..."
   const dt = dismissalSpec.dismissalTheotokos;
+  const dtMalformed = dt != null
+    && !(typeof dt === 'object' && dt.hymn)
+    && !(typeof dt === 'string' && dt.length > 0);
+  if (dtMalformed) {
+    warnings.push({ source: 'spec', key: 'liturgy.dismissal.dismissalTheotokos', scope: section,
+      detail: `dismissalTheotokos has unrecognized shape (expected {hymn,priestCue?} or non-empty string); falling back to default` });
+  }
   if (dt && typeof dt === 'object' && dt.hymn) {
     if (dt.priestCue) blocks.push(makeBlock('dis-theos', section, 'prayer', 'priest', dt.priestCue));
     blocks.push(makeBlock('dis-mag', section, 'response', 'choir', dt.hymn));

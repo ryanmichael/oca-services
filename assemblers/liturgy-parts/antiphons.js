@@ -2,10 +2,18 @@
 
 const makeBlock = require('../_shared/make-block');
 const mustGet   = require('../_shared/must-get');
+const warnings  = require('../_shared/warnings');
+
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 function _litFeastAntiphon(antiphon, sectionName, prefix) {
   const blocks = [];
   if (!antiphon) return blocks;
+  if (!antiphon.verses && !antiphon.glory) {
+    warnings.push({ source: 'spec', key: `liturgy.${prefix}`, scope: sectionName,
+      detail: 'antiphon present but has neither `verses` nor `glory` — nothing to render' });
+    return blocks;
+  }
   if (antiphon.verses) {
     antiphon.verses.forEach((v, i) => {
       blocks.push(makeBlock(`${prefix}-v${i}`, sectionName, 'verse', 'choir', v));
@@ -88,12 +96,20 @@ function _litBeatitudes(beatitudesSpec, f) {
         text:   group.text,
       });
     } else {
+      // Group declares a count but no text — flag once for surfacing in
+      // `blocks._warnings`. In production the placeholder text is suppressed
+      // (entry kept with text=null so the slot is skipped silently when
+      // rendered); in dev the indexed placeholder is emitted to make the gap
+      // obvious to the author.
+      warnings.push({ source: 'spec', key: 'liturgy.beatitudes', scope: section,
+        detail: `troparion group "${group.label || ''}" has count=${group.count} but no text` });
       for (let n = 0; n < (group.count || 1); n++) {
         tropList.push({
           tone:   group.tone,
           label:  group.label || '',
           source: group.source || '',
-          text:   `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
+          text:   IS_PRODUCTION ? null
+                  : `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
         });
       }
     }
@@ -110,8 +126,10 @@ function _litBeatitudes(beatitudesSpec, f) {
     const tropIdx = i - startSlot;
     if (tropIdx >= 0 && tropIdx < tropList.length) {
       const t = tropList[tropIdx];
-      blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', 'choir', t.text,
-        { tone: t.tone, label: t.label }));
+      if (t.text) {
+        blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', 'choir', t.text,
+          { tone: t.tone, label: t.label }));
+      }
     }
   });
 
@@ -119,16 +137,20 @@ function _litBeatitudes(beatitudesSpec, f) {
   const gloryIdx = 10 - startSlot;
   if (gloryIdx >= 0 && gloryIdx < tropList.length) {
     const g = tropList[gloryIdx];
-    blocks.push(makeBlock('beat-glory-t', section, 'hymn', 'choir', g.text,
-      { tone: g.tone, label: g.label }));
+    if (g.text) {
+      blocks.push(makeBlock('beat-glory-t', section, 'hymn', 'choir', g.text,
+        { tone: g.tone, label: g.label }));
+    }
   }
 
   blocks.push(makeBlock('beat-now', section, 'doxology', null, verses[12]));
   const nowIdx = 11 - startSlot;
   if (nowIdx >= 0 && nowIdx < tropList.length) {
     const t = tropList[nowIdx];
-    blocks.push(makeBlock('beat-theos', section, 'hymn', 'choir', t.text,
-      { tone: t.tone, label: t.label }));
+    if (t.text) {
+      blocks.push(makeBlock('beat-theos', section, 'hymn', 'choir', t.text,
+        { tone: t.tone, label: t.label }));
+    }
   }
 
   return blocks;

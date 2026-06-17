@@ -87,7 +87,8 @@ function getMenaionRanked(month, day) {
 
     const tropRows = db.prepare(
       `SELECT commemoration_id, type, tone, text, pronoun
-       FROM troparia WHERE commemoration_id IN (${placeholders})`
+       FROM troparia WHERE commemoration_id IN (${placeholders})
+         AND pronoun = 'tt'`
     ).all(...ids);
 
     const stRows = db.prepare(
@@ -160,6 +161,7 @@ function getMenaionDayList(month, day) {
       FROM commemorations c
       JOIN troparia t ON t.commemoration_id = c.id
       WHERE c.month = ? AND c.day = ? AND t.type = 'troparion'
+        AND t.pronoun = 'tt'
       GROUP BY c.id
       ORDER BY c.id
     `).all(month, day);
@@ -185,7 +187,7 @@ function getMenaionDay(month, day) {
     if (comms.length === 0) return null;
     const getTroparia = db.prepare(`
       SELECT type, tone, text, pronoun FROM troparia
-      WHERE commemoration_id = ? ORDER BY type
+      WHERE commemoration_id = ? AND pronoun = 'tt' ORDER BY type
     `);
     return comms.map(c => ({
       id:       c.id,
@@ -217,6 +219,7 @@ function getMenaionPatron(commemorationId) {
     const rows = db.prepare(`
       SELECT type, tone, text FROM troparia
       WHERE commemoration_id = ? AND type IN ('troparion', 'kontakion')
+        AND pronoun = 'tt'
     `).all(commemorationId);
     if (rows.length === 0) return null;
     const out = { troparion: null, kontakion: null };

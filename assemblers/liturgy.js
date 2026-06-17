@@ -2,6 +2,7 @@
 
 const makeBlock = require('./_shared/make-block');
 const warnings  = require('./_shared/warnings');
+const { derivePaschalState } = require('./_shared/paschal-state');
 
 const VALID_CHERUBIC_OVERRIDES = new Set(['great-thursday', 'great-saturday']);
 
@@ -37,13 +38,18 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   const isBasil = variant === 'basil';
   const blocks  = [];
 
+  // Single derivation of the paschal-period flags + cross-signal warnings.
+  // All paschal branches below read from `paschal`; raw spec.* / season checks
+  // should not appear past this point.
+  const paschal = derivePaschalState(calendarDay, spec);
+
   // ── LITURGY OF THE CATECHUMENS ─────────────────────────────────────────────
 
   // 1. Opening Doxology
   blocks.push(..._litOpeningDoxology(liturgyFixed));
 
   // 1b. Paschal Troparion (Pascha through Leavetaking)
-  if (spec.paschalOpening) {
+  if (paschal.hasPaschalOpening) {
     const section = 'Paschal Troparion';
     blocks.push(makeBlock('pt-priest', section, 'prayer', 'priest',
       'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (2½ times)'));
@@ -65,7 +71,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
       liturgyFixed['only-begotten-son']));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
     blocks.push(..._litFeastAntiphon(spec.feastAntiphons.third, 'Third Antiphon', 'a3'));
-  } else if (spec.paschalAntiphons12) {
+  } else if (paschal.hasPaschalAntiphons) {
     // Paschal period: Paschal psalm antiphons for 1st/2nd, Beatitudes for 3rd
     blocks.push(..._litFeastAntiphon(spec.paschalAntiphons12.first, 'First Antiphon', 'a1'));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
@@ -217,10 +223,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // near!" and the choir's "Blessed is He that comes in the Name of the
   // Lord..." are replaced by a Paschal antiphonal hymn sung in their place.
   // The Communion Hymn (Koinonikon) itself stays in its usual position later.
-  const paschalCommunionOrder = (
-    calendarDay.liturgicalContext?.season === 'brightWeek' ||
-    calendarDay.liturgicalContext?.season === 'pentecostarion'
-  );
+  const paschalCommunionOrder = paschal.isPaschalSeason;
   // Parish-discretion rubric: when `rubrics.preCommunion.confessFirst` is true,
   // the Communion Prayer ("I believe, O Lord, and I confess...") is sung first,
   // and the priest's "In the fear of God..." + choir's "Blessed is He that
@@ -271,7 +274,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
 
   // 33a. Closing Doxology — "Glory to Thee, O Christ our God and our hope..."
-  blocks.push(..._litClosingDoxology(spec.paschalOpening));
+  blocks.push(..._litClosingDoxology(paschal.hasPaschalOpening));
 
   // 34. Psalm 33
   blocks.push(..._litPsalm33(liturgyFixed));
@@ -280,7 +283,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed, spec.dismissalTroparia));
 
   // 36. Dismissal
-  blocks.push(..._litDismissal(spec.dismissal, isBasil, spec.paschalOpening, liturgyFixed));
+  blocks.push(..._litDismissal(spec.dismissal, isBasil, paschal.hasPaschalOpening, liturgyFixed));
 
   blocks._warnings = warnings.get();
   return blocks;

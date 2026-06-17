@@ -371,16 +371,43 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
       menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
 
-      const slots    = calendarEntry.vespers.troparia.slots;
-      const nowIdx   = slots.findIndex(s => s.position === 'now');
-      const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
-      slots.splice(insertAt, 0, {
-        position: 'glory',
-        source:   'menaion', provenance: menaionProvenance,
-        key:      `auto.${date}.troparion`,
-        tone:     troparion.tone,
-        label:    primary.title,
-      });
+      const slots = calendarEntry.vespers.troparia.slots;
+      if (slots.length === 0) {
+        // Daily-Vespers / vigil-rank shape: spec ships no troparia. Emit the
+        // saint's troparion as the leading (un-positioned) slot, and append a
+        // Now-and-ever dismissal Theotokion in the tone of the troparion so
+        // the section renders as `[troparion] → [Glory now and ever] →
+        // [Theotokion]` per OCA Daily Vespers rubric. (For vigil rank,
+        // repeatThrice in the troparia renderer filters out the position:'now'
+        // slot and sings the order:1 troparion three times — correct shape.)
+        slots.push({
+          order:    1,
+          source:   'menaion', provenance: menaionProvenance,
+          key:      `auto.${date}.troparion`,
+          tone:     troparion.tone,
+          label:    primary.title,
+        });
+        slots.push({
+          position: 'now',
+          source:   'octoechos',
+          key:      `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
+          tone:     troparion.tone,
+          label:    'Dismissal Theotokion',
+        });
+      } else {
+        // Saturday / Sunday Great Vespers shape: spec already carries the
+        // resurrectional troparion (order:1) and dismissal theotokion
+        // (position:'now'); splice the saint between them as the Glory.
+        const nowIdx   = slots.findIndex(s => s.position === 'now');
+        const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
+        slots.splice(insertAt, 0, {
+          position: 'glory',
+          source:   'menaion', provenance: menaionProvenance,
+          key:      `auto.${date}.troparion`,
+          tone:     troparion.tone,
+          label:    primary.title,
+        });
+      }
 
       // Populate all notable saints (those with troparia, in OCA priority order)
       calendarEntry.commemorations = (ranked?.notable ?? [{ ...primary }]).map(c => ({

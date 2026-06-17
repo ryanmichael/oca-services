@@ -14,6 +14,12 @@ Run the regression gate: `npm run test:contracts`
 | confessFirst — Communion Prayer order parish rubric | [features/confess-first.md](features/confess-first.md) | [test/contracts/confess-first.test.js](test/contracts/confess-first.test.js) — INV-1..3 | shipped 2026-06-14 |
 | Sunday Kontakia Restructure — Glory/Now bracket + Theotokion-Kontakion | [features/sunday-kontakia-restructure.md](features/sunday-kontakia-restructure.md) | [test/contracts/sunday-kontakia-restructure.test.js](test/contracts/sunday-kontakia-restructure.test.js) — INV-1..5 | shipped 2026-06-14 |
 
+## Vespers
+
+| Feature | Spec | Tests | Status |
+|---|---|---|---|
+| Vespers Assembly Contract — date-shift, civil-eve key mapping, Glory/Now splits, Theotokion tones, Triodion-vs-Menaion ownership | [features/vespers-assembly.md](features/vespers-assembly.md) | [test/contracts/vespers-assembly.test.js](test/contracts/vespers-assembly.test.js) — INV-1..7 | extracted 2026-06-16 |
+
 ## How to add a feature here
 
 1. Write `features/<name>.md` using the shape established by `features/patron-of-temple.md`:

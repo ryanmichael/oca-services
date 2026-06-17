@@ -10,10 +10,11 @@ function _litMegalynarion(megalynarionSpec, isBasil, f) {
     // Feast-specific megalynarion (irmos of the 9th ode)
     text = megalynarionSpec.text;
   } else if (megalynarionSpec === 'basil-liturgy' || isBasil) {
-    text = f['megalynarion-basil'];
+    text = mustGet(f, 'megalynarion-basil', { scope: section });
   } else {
-    text = f['it-is-truly-meet'];
+    text = mustGet(f, 'it-is-truly-meet', { scope: section });
   }
+  if (!text) return [];
   return [makeBlock('megalynarion', section, 'hymn', 'choir', text)];
 }
 
@@ -127,8 +128,8 @@ function _litLordsPrayer(isBasil, f) {
     makeBlock('lp-response', section, 'response', 'choir',  lit.response),
   ];
   (lit.petitions || []).forEach((p, i) => {
-    const type = p.includes('ask of the Lord') || p.includes('let us ask') ? 'prayer' : 'prayer';
-    const resp = p.includes('ask of the Lord') || p.includes('let us ask')
+    const isAskPetition = p.includes('ask of the Lord') || p.includes('let us ask');
+    const resp = isAskPetition
       ? (lit.petitionResponse || 'Grant this, O Lord.')
       : 'Lord, have mercy.';
     blocks.push(makeBlock(`lp-p${i}`, section, 'prayer', 'deacon', p));

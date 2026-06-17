@@ -38,6 +38,19 @@ fixed-texts/translations/_*/
 # Source PDFs (large; kept locally)
 reference/*.pdf
 
+# Photographed service books — local-only reference material
+reference/**/*.HEIC
+reference/**/*.heic
+reference/**/*.jpg
+reference/**/*.jpeg
+reference/**/*.JPG
+reference/**/Photos-*.zip
+
+# Stray SQLite artifacts from misdirected DB opens (real DB lives at storage/oca.db)
+audit/*.db
+audit/*.db-shm
+audit/*.db-wal
+
 # Playwright e2e artifacts
 test-results/
 playwright-report/

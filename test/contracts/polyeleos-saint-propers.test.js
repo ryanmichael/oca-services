@@ -15,7 +15,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const PORT = 3096;
+const PORT = 3095; // distinct from vespers (3094), sunday-kontakia (3096), confess (3097), patron (3098), smoke (3099), dev (3000)
 let serverProcess;
 
 function get(urlPath) {

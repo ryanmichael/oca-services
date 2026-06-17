@@ -356,7 +356,7 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
         glory: null, // server injects Menaion glory doxastichon
         now:   null, // server injects theotokion
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow },
+      prokeimenon: { pattern: 'weekday', weekday: eve },
       aposticha: {
         slots: [
           { position: 1, source: 'octoechos', key: `${tk}.${eve}.vespers.aposticha.hymns.0`, tone, label: 'Aposticha' },
@@ -399,7 +399,7 @@ function generateGreatFeastVespers(dateStr, dow, tone, feastKey, season) {
         glory: null, // server injects feast glory doxastichon
         now:   null,
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : dow },
+      prokeimenon: { pattern: 'weekday', weekday: dow === 'sunday' ? 'saturdayGreatVespers' : (VESPERS_SUNG_EVE[dow] || dow) },
       litya: {
         slots: [],   // server injects litya stichera when available
         glory: null,
@@ -441,7 +441,7 @@ function generateVigilFeastVespers(dateStr, dow, tone) {
         glory: null,
         now:   null,
       },
-      prokeimenon: { pattern: 'weekday', weekday: dow === 'saturday' ? 'saturdayGreatVespers' : dow },
+      prokeimenon: { pattern: 'weekday', weekday: dow === 'sunday' ? 'saturdayGreatVespers' : (VESPERS_SUNG_EVE[dow] || dow) },
       litya: {
         slots: [],   // server injects litya stichera when available
         glory: null,
@@ -1011,6 +1011,12 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       prokeimenon: { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
       customPalmSunday: true,
     },
+    // TODO(holyweek-prokeimenon): Holy Mon–Thu prokeimena are hardcoded to the
+    // liturgical-day key but Vespers is sung the civil evening before; the
+    // ordinary-weekday paths (lines 359/402/444/1121/1550) all key off
+    // VESPERS_SUNG_EVE[dow]. Verify against an OCA Holy Week order source
+    // before flipping these — Holy Week may anticipate differently than
+    // ordinary practice.
     monday: {
       name:        'Holy Monday',
       serviceType: 'dailyVespers',
@@ -1118,7 +1124,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     name:        `Holy Week ${dow}`,
     serviceType: 'dailyVespers',
     rubricNote:  `Holy Week ${dow}`,
-    prokeimenon: { pattern: 'weekday', weekday: dow },
+    prokeimenon: { pattern: 'weekday', weekday: VESPERS_SUNG_EVE[dow] || dow },
   };
 
   // ── Holy Friday: fully wired from triodion JSON ─────────────────────────
@@ -1547,7 +1553,7 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   } else if (isGreat) {
     prokeimenon = { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
   } else {
-    prokeimenon = { pattern: 'weekday', weekday: dow };
+    prokeimenon = { pattern: 'weekday', weekday: VESPERS_SUNG_EVE[dow] || dow };
   }
 
   // ── Lord I Call stichera slots ────────────────────────────────────────────

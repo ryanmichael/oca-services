@@ -1030,40 +1030,46 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
       prokeimenon: { ...SATURDAY_GREAT_VESPERS_PROKEIMENON },
       customPalmSunday: true,
     },
-    // TODO(holyweek-prokeimenon): Holy Mon–Thu prokeimena are hardcoded to the
-    // liturgical-day key but Vespers is sung the civil evening before; every
-    // other generator uses `vespersDailyProkeimenon(dow)` (defined near
-    // VESPERS_SUNG_EVE at top of file). Verify against an OCA Holy Week order
-    // source before flipping these four entries — Holy Week may anticipate
-    // differently than ordinary practice. When ready, replace each entry's
-    // `prokeimenon: { pattern: 'weekday', weekday: '<dow>' }` with
-    // `prokeimenon: vespersDailyProkeimenon(dow)`.
+    // Holy Mon–Thu use the standard civil-eve weekday prokeimenon, same as
+    // every other Daily Vespers generator (vespersDailyProkeimenon). Previous
+    // hardcoded liturgical-day values (monday/tuesday/wednesday/thursday)
+    // appeared to be the same copy-paste bug shape as the other 5 sites fixed
+    // under aef1f6f, not a deliberate Holy Week divergence. Conclusion drawn
+    // 2026-06-16 without an OCA Holy Week order source on hand (the
+    // reference/orders/ DOCXs jump Palm Sunday → Antipascha; the parsed
+    // Presanctified DOCXs don't include a Daily-Vespers prokeimenon since
+    // Presanctified replaces it). Mitigating factor: Holy Mon/Tue/Wed actual
+    // parish service is Presanctified (with its own pre-reading prokeimena);
+    // Holy Thu is Vesperal Liturgy of St Basil — so the Daily Vespers form
+    // rendered here is reference content, not what's sung. Verify at Holy
+    // Week 2027 against a parish-bulletin source and revisit if these need
+    // to flip back.
     monday: {
       name:        'Holy Monday',
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Monday — Daily Vespers',
-      prokeimenon: { pattern: 'weekday', weekday: 'monday' },
+      prokeimenon: vespersDailyProkeimenon('monday'),
       apostichaGloryOnly: true,
     },
     tuesday: {
       name:        'Holy Tuesday',
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Tuesday — Daily Vespers',
-      prokeimenon: { pattern: 'weekday', weekday: 'tuesday' },
+      prokeimenon: vespersDailyProkeimenon('tuesday'),
       apostichaGloryOnly: true,
     },
     wednesday: {
       name:        'Holy Wednesday',
       serviceType: 'dailyVespers',
       rubricNote:  'Holy Wednesday — Daily Vespers',
-      prokeimenon: { pattern: 'weekday', weekday: 'wednesday' },
+      prokeimenon: vespersDailyProkeimenon('wednesday'),
       apostichaGloryOnly: true,
     },
     thursday: {
       name:        'Great and Holy Thursday',
       serviceType: 'dailyVespers',
       rubricNote:  'Great and Holy Thursday — Vespers (primary morning service: Liturgy of St. Basil)',
-      prokeimenon: { pattern: 'weekday', weekday: 'thursday' },
+      prokeimenon: vespersDailyProkeimenon('thursday'),
       apostichaGloryOnly: true,
     },
     friday: {

@@ -61,11 +61,6 @@
       "rule": "L3-translation-consistency",
       "dates": ["2026-05-10"],
       "reason": "False positive: the Sunday of the Myrrhbearers Resurrection Beatitude reads 'beareth witness to you, O violators of the Law' — plural 'you' as object is grammatical in TT when the subject is plural ('violators'). Cf. 'I say unto you' in the Gospels. The rule's heuristic can't distinguish plural-you-object from YY drift. addedAt 2026-06-05."
-    },
-    {
-      "rule": "D1-vespers-prokeimenon-weekday",
-      "dates": ["2026-04-05", "2026-04-06", "2026-04-07", "2026-04-08"],
-      "reason": "Holy Week DAY_CONFIG (calendar-rules.js:1014–1041) hardcodes Mon–Thu prokeimena to the liturgical-day key but Vespers is sung the civil eve before — same off-by-one shape as commit aef1f6f, deliberately left unfixed pending verification against an OCA Holy Week order source. TODO inline above the DAY_CONFIG. addedAt 2026-06-16."
     }
   ]
 }

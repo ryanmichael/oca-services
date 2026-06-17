@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test test/smoke.test.js test/old-style.test.js",
+    "test": "node --test test/smoke.test.js test/old-style.test.js test/calendar-seasons.test.js",
     "test:contracts": "node --test test/contracts/*.test.js",
     "setup-hooks": "node scripts/setup-hooks.js",
     "test:e2e": "playwright test",

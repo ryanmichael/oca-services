@@ -39,7 +39,8 @@
       "properties": {
         "season": {
           "type": "string",
-          "description": "Liturgical season. Common values: `preLent`, `greatLent`, `holyWeek`, `paschal`, `brightWeek`, `pentecostarion`, `afterPentecost`. Used by `getLiturgicalSeason` and audit family A."
+          "enum": ["ordinaryTime", "preLenten", "greatLent", "holyWeek", "brightWeek", "pentecostarion"],
+          "description": "Liturgical season — one of the six values emitted by `getLiturgicalSeason`. Single source of truth: `constants/seasons.js`. Used by audit family A and many readers."
         },
         "weekOfLent": {
           "oneOf": [{ "type": "integer", "minimum": 1, "maximum": 6 }, { "type": "null" }],

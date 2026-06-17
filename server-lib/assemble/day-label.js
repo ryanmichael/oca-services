@@ -2,6 +2,7 @@
 
 const { getGreatFeastKey } = require('../../calendar-rules');
 const { GREAT_FEAST_VARIANTS, LITURGICAL_DAY_LABELS } = require('../sources/propers');
+const { SEASONS } = require('../../constants/seasons');
 
 const ORDINALS = ['', '1st', '2nd', '3rd', '4th', '5th', '6th'];
 
@@ -14,7 +15,7 @@ function getDayLabel(entry, dow, season, date) {
       return GREAT_FEAST_VARIANTS[feastKey].label;
     }
   }
-  if (season === 'greatLent') {
+  if (season === SEASONS.GREAT_LENT) {
     if (dow === 'saturday') {
       const note = entry._meta?.note || '';
       // Soul Saturdays
@@ -38,21 +39,21 @@ function getDayLabel(entry, dow, season, date) {
     return null;
   }
 
-  if (season === 'preLenten') {
+  if (season === SEASONS.PRE_LENTEN) {
     const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
     const key = noteMatch ? noteMatch[1] : null;
     return LITURGICAL_DAY_LABELS.preLentenSundays[key] || null;
   }
 
-  if (season === 'holyWeek') {
+  if (season === SEASONS.HOLY_WEEK) {
     return LITURGICAL_DAY_LABELS.holyWeek[dow] || null;
   }
 
-  if (season === 'brightWeek') {
+  if (season === SEASONS.BRIGHT_WEEK) {
     return LITURGICAL_DAY_LABELS.brightWeek[dow] || null;
   }
 
-  if (season === 'pentecostarion') {
+  if (season === SEASONS.PENTECOSTARION) {
     const noteMatch = entry._meta?.note?.match(/keyed by '([^']+)'/);
     const key = noteMatch ? noteMatch[1] : null;
     return LITURGICAL_DAY_LABELS.pentecostarionFeasts[key] || null;

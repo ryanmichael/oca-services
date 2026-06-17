@@ -23,11 +23,12 @@
  */
 
 const warnings = require('./warnings');
+const { SEASONS } = require('../../constants/seasons');
 
 function derivePaschalState(calendarDay, spec) {
   const season           = calendarDay?.liturgicalContext?.season || null;
-  const isBrightWeek     = season === 'brightWeek';
-  const isPentecostarion = season === 'pentecostarion';
+  const isBrightWeek     = season === SEASONS.BRIGHT_WEEK;
+  const isPentecostarion = season === SEASONS.PENTECOSTARION;
   const isPaschalSeason  = isBrightWeek || isPentecostarion;
 
   const hasPaschalOpening      = !!spec.paschalOpening;

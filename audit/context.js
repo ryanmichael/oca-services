@@ -1,6 +1,7 @@
 'use strict';
 
 const cal = require('../calendar-rules.js');
+const { SEASONS } = require('../constants/seasons');
 
 const DAY_MS = 86400000;
 
@@ -48,8 +49,8 @@ function buildContext(civilDate, service) {
     date: civilDate, dateForEntry: entryDate, d,
     season, dow, tone, daysSincePascha,
     calendarEntry,
-    isBrightWeek:           season === 'brightWeek',
-    isPentecostarion:       season === 'pentecostarion',
+    isBrightWeek:           season === SEASONS.BRIGHT_WEEK,
+    isPentecostarion:       season === SEASONS.PENTECOSTARION,
     isPaschalGreetingWindow: daysSincePascha >= 0 && daysSincePascha <= 38,
   };
 }

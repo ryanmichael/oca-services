@@ -42,6 +42,8 @@ If you're going to make one diagram in your head, make it this one: calendar ent
 | Find regression tests for a feature | `test/contracts/<name>.test.js` (named after the feature) |
 | Find broad smoke tests | `test/smoke.test.js`, `test/old-style.test.js` |
 | Find data-validation rules | `data-validators.js`, `audit/rules/A`–`F` |
+| Find Vespers structural-shape rules | `audit/rules/D-structure/D1`–`D7` (sweep) + `features/vespers-assembly.md` (contract) |
+| Find shared per-section spec builders | `calendar-rules.js` near `VESPERS_SUNG_EVE` (currently `vespersDailyProkeimenon` + `SATURDAY_GREAT_VESPERS_PROKEIMENON`; more to follow as the per-section pattern back-fills on touch) |
 | Find the formal JSON schemas | `schema/` (`ServiceBlock`, `CalendarEntry`, `OverlayManifest`) |
 | See what's tracked as backlog | `ROADMAP.md` (active), GitHub issues if any |
 
@@ -58,6 +60,7 @@ These aren't preferences; they're invariants the rest of the system relies on. D
 - **DB writes go through `sqlite3` CLI, never MCP.** The `mcp__sqlite-oca__write_query` tool doesn't persist. It's hard-denied in project settings. Use `sqlite3 storage/oca.db` for writes; reads through MCP are fine.
 - **Pre-push hooks are versioned in `.githooks/`.** New clones run `npm run setup-hooks` once to wire them up.
 - **OCA reference DOCXs are the source of truth for rubric questions.** `https://files.oca.org/service-texts/YYYY-MMDD-texts-tt.docx`; see memory `feedback_oca_audit_workflow`. Use TT (Thee/Thou) form unless an overlay explicitly cascades to YY.
+- **Per-section spec builders over inline spec literals in `calendar-rules.js`.** When a Vespers (or Matins / Liturgy) section spec is constructed in more than two generators, extract a shared builder near the top of `calendar-rules.js` (next to `VESPERS_SUNG_EVE`) instead of hand-writing it per generator. The 2026-06-16 prokeimenon off-by-one bug repeated across five generators precisely because each hand-rolled the same spec. The audit `D-structure/` rules catch the *output* drift; spec builders prevent the drift at source. Currently shipped: `vespersDailyProkeimenon`, `SATURDAY_GREAT_VESPERS_PROKEIMENON`. LIC glory/now + Troparia and Aposticha builders are the next candidates and will be added when a feature next touches those generators (back-fill on touch).
 
 ---
 

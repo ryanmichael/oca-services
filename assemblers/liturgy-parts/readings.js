@@ -1,6 +1,41 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
+const mustGet   = require('../_shared/must-get');
+
+// Hard-coded English fallbacks for the readings flow. Used only if the
+// `readings` slice is missing from liturgy-fixed.json (or stripped by an
+// overlay). The normal path reads from `f.readings`, which is overlay-
+// translatable.
+const FALLBACK = {
+  wisdom:                       'Wisdom!',
+  letUsAttend:                  'Let us attend.',
+  peaceBeUntoThee:              'Peace be unto thee.',
+  peaceBeUntoAll:               'Peace be unto all.',
+  andToThySpirit:               'And to thy spirit.',
+  alleluiaThrice:               'Alleluia! Alleluia! Alleluia!',
+  alleluia:                     'Alleluia!',
+  wisdomAriseGospel:            'Wisdom! Arise! Let us hear the Holy Gospel.',
+  gloryToTheeOLord:             'Glory to Thee, O Lord, glory to Thee.',
+  epistleReadingFromTemplate:   'The reading from the (book).',
+  gospelReadingFromTemplate:    'The reading of the Holy Gospel according to (book).',
+};
+
+function readingsStrings(f) {
+  const r = mustGet(f, 'readings', { scope: 'Readings strings' }) || {};
+  return new Proxy(FALLBACK, {
+    get(fb, key) {
+      return Object.prototype.hasOwnProperty.call(r, key) ? r[key] : fb[key];
+    },
+  });
+}
+
+function fmt(template, vars) {
+  return Object.keys(vars).reduce(
+    (acc, k) => acc.split(`(${k})`).join(vars[k]),
+    template
+  );
+}
 
 function _litProkeimenon(prok) {
   const section = 'Prokeimenon';
@@ -22,14 +57,15 @@ function _litProkeimenon(prok) {
   return blocks;
 }
 
-function _litEpistle(epistle) {
+function _litEpistle(epistle, f) {
   const section = 'Epistle Reading';
   if (!epistle) return [];
+  const r = readingsStrings(f);
   const blocks = [
-    makeBlock('ep-wisdom',  section, 'prayer',  'deacon', 'Wisdom!'),
+    makeBlock('ep-wisdom',  section, 'prayer',  'deacon', r.wisdom),
     makeBlock('ep-reader',  section, 'prayer',  'reader',
-      `The reading from the ${epistle.book || 'Epistle'}.`),
-    makeBlock('ep-attend',  section, 'prayer',  'deacon', 'Let us attend.'),
+      fmt(r.epistleReadingFromTemplate, { book: epistle.book || 'Epistle' })),
+    makeBlock('ep-attend',  section, 'prayer',  'deacon', r.letUsAttend),
   ];
   if (epistle.text) {
     blocks.push(makeBlock('ep-ref', section, 'rubric', null, epistle.display || `${epistle.book} ${epistle.pericope}`));
@@ -42,7 +78,7 @@ function _litEpistle(epistle) {
   if (epistle.secondary) {
     const sec = epistle.secondary;
     blocks.push(makeBlock('ep-2-reader', section, 'prayer', 'reader',
-      `The reading from the ${sec.book || 'Epistle'}.`));
+      fmt(r.epistleReadingFromTemplate, { book: sec.book || 'Epistle' })));
     if (sec.text) {
       blocks.push(makeBlock('ep-2-ref', section, 'rubric', null, sec.display));
       blocks.push(makeBlock('ep-2-text', section, 'prayer', 'reader', sec.text, { density: 'compact' }));
@@ -51,24 +87,25 @@ function _litEpistle(epistle) {
     }
   }
   blocks.push(
-    makeBlock('ep-peace',   section, 'prayer',  'priest', 'Peace be unto thee.'),
-    makeBlock('ep-peace-r', section, 'response', 'choir',  'And to thy spirit.'),
+    makeBlock('ep-peace',   section, 'prayer',  'priest', r.peaceBeUntoThee),
+    makeBlock('ep-peace-r', section, 'response', 'choir',  r.andToThySpirit),
   );
   return blocks;
 }
 
-function _litAlleluia(alleluia) {
+function _litAlleluia(alleluia, f) {
   const section = 'Alleluia';
   if (!alleluia) return [];
+  const r = readingsStrings(f);
   const blocks = [
     makeBlock('all-rubric', section, 'rubric', null,
       `Alleluia in Tone ${alleluia.tone}: ${alleluia.label || ''}`),
-    makeBlock('all-text',   section, 'hymn',  'choir', `Alleluia! Alleluia! Alleluia!`,
+    makeBlock('all-text',   section, 'hymn',  'choir', r.alleluiaThrice,
       { tone: alleluia.tone }),
   ];
   (alleluia.verses || []).forEach((v, i) => {
     blocks.push(makeBlock(`all-v${i}`, section, 'verse', 'reader', `V. ${v}`));
-    blocks.push(makeBlock(`all-r${i}`, section, 'hymn',  'choir', 'Alleluia!'));
+    blocks.push(makeBlock(`all-r${i}`, section, 'hymn',  'choir', r.alleluia));
   });
   // Co-celebrated saint's alleluia verse(s) follow in the saint's tone.
   if (alleluia.secondary) {
@@ -77,22 +114,23 @@ function _litAlleluia(alleluia) {
       `Tone ${sec.tone}${sec.label ? ` (${sec.label})` : ''}:`));
     (sec.verses || []).forEach((v, i) => {
       blocks.push(makeBlock(`all-2-v${i}`, section, 'verse', 'reader', `V. ${v}`));
-      blocks.push(makeBlock(`all-2-r${i}`, section, 'hymn', 'choir', 'Alleluia!'));
+      blocks.push(makeBlock(`all-2-r${i}`, section, 'hymn', 'choir', r.alleluia));
     });
   }
   return blocks;
 }
 
-function _litGospel(gospel) {
+function _litGospel(gospel, f) {
   const section = 'Gospel Reading';
   if (!gospel) return [];
+  const r = readingsStrings(f);
   const blocks = [
-    makeBlock('gos-deacon',  section, 'prayer',  'deacon', 'Wisdom! Arise! Let us hear the Holy Gospel.'),
-    makeBlock('gos-peace',   section, 'prayer',  'priest', 'Peace be unto all.'),
-    makeBlock('gos-peace-r', section, 'response', 'choir', 'And to thy spirit.'),
+    makeBlock('gos-deacon',  section, 'prayer',  'deacon', r.wisdomAriseGospel),
+    makeBlock('gos-peace',   section, 'prayer',  'priest', r.peaceBeUntoAll),
+    makeBlock('gos-peace-r', section, 'response', 'choir', r.andToThySpirit),
     makeBlock('gos-rubric',  section, 'prayer',  'priest',
-      `The reading of the Holy Gospel according to ${gospel.book}.`),
-    makeBlock('gos-attend',  section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'),
+      fmt(r.gospelReadingFromTemplate, { book: gospel.book })),
+    makeBlock('gos-attend',  section, 'response', 'choir', r.gloryToTheeOLord),
   ];
   if (gospel.text) {
     blocks.push(makeBlock('gos-ref', section, 'rubric', null, gospel.display || `${gospel.book} ${gospel.pericope}`));
@@ -105,7 +143,7 @@ function _litGospel(gospel) {
   if (gospel.secondary) {
     const sec = gospel.secondary;
     blocks.push(makeBlock('gos-2-rubric', section, 'prayer', 'priest',
-      `The reading of the Holy Gospel according to ${sec.book}.`));
+      fmt(r.gospelReadingFromTemplate, { book: sec.book })));
     if (sec.text) {
       blocks.push(makeBlock('gos-2-ref', section, 'rubric', null, sec.display));
       blocks.push(makeBlock('gos-2-text', section, 'prayer', 'reader', sec.text, { density: 'compact' }));
@@ -113,7 +151,7 @@ function _litGospel(gospel) {
       blocks.push(makeBlock('gos-2-text', section, 'prayer', 'reader', `[${sec.display}]`));
     }
   }
-  blocks.push(makeBlock('gos-end', section, 'response', 'choir', 'Glory to Thee, O Lord, glory to Thee.'));
+  blocks.push(makeBlock('gos-end', section, 'response', 'choir', r.gloryToTheeOLord));
   return blocks;
 }
 

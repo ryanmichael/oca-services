@@ -127,13 +127,13 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   blocks.push(..._litProkeimenon(spec.prokeimenon));
 
   // 12. Epistle
-  blocks.push(..._litEpistle(spec.epistle));
+  blocks.push(..._litEpistle(spec.epistle, liturgyFixed));
 
   // 13. Alleluia
-  blocks.push(..._litAlleluia(spec.alleluia));
+  blocks.push(..._litAlleluia(spec.alleluia, liturgyFixed));
 
   // 14. Gospel
-  blocks.push(..._litGospel(spec.gospel));
+  blocks.push(..._litGospel(spec.gospel, liturgyFixed));
 
   // 15. Homily (rubric only — no fixed text)
   blocks.push(makeBlock('homily', 'Homily', 'rubric', null,

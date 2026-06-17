@@ -254,6 +254,21 @@
   "cherubic-great-saturday": "Let all mortal flesh keep silent, and in fear and trembling stand, pondering nothing earthly-minded. For the King of kings, the Lord of lords, comes to be slain, to give Himself as food to the faithful. Before Him go the ranks of angels, all the Principalities and Powers, the many-eyed Cherubim and the six-winged Seraphim, covering their faces, singing the hymn: Alleluia! Alleluia! Alleluia!",
   "_cherubic-great-saturday-source": "svs-holyWeek-vol3-2005",
 
+  "readings": {
+    "_note": "Short overlay-translatable strings used by the readings flow (Prokeimenon, Epistle, Alleluia, Gospel). Templated strings use `(book)` as a substitution token, matching the `(name)` convention used by general-menaion fallbacks.",
+    "wisdom": "Wisdom!",
+    "letUsAttend": "Let us attend.",
+    "peaceBeUntoThee": "Peace be unto thee.",
+    "peaceBeUntoAll": "Peace be unto all.",
+    "andToThySpirit": "And to thy spirit.",
+    "alleluiaThrice": "Alleluia! Alleluia! Alleluia!",
+    "alleluia": "Alleluia!",
+    "wisdomAriseGospel": "Wisdom! Arise! Let us hear the Holy Gospel.",
+    "gloryToTheeOLord": "Glory to Thee, O Lord, glory to Thee.",
+    "epistleReadingFromTemplate": "The reading from the (book).",
+    "gospelReadingFromTemplate": "The reading of the Holy Gospel according to (book)."
+  },
+
   "great-entrance": {
     "_note": "The deacon and priest carry the Holy Gifts through the nave. The commemorations are variable.",
     "rubric": "Procession of the Holy Gifts.",

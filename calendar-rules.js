@@ -2048,6 +2048,16 @@ function isLiturgyServed(date, style = 'new') {
   // Great Lent weekdays: no full liturgy (Mon/Tue/Thu = nothing; Wed/Fri = Presanctified)
   if (season === 'greatLent' && dow !== 'saturday' && dow !== 'sunday') return false;
 
+  // Cheesefare Week Wed/Fri (the week before Lent begins): aliturgical per
+  // OCA Typikon — Liturgy is not served and Presanctified hasn't begun yet
+  // (Presanctified starts Clean Wednesday). Cheesefare week is Pascha-55
+  // (Mon) through Pascha-50 (Sat); Wed = P-53, Fri = P-51.
+  if (season === 'preLenten' && (dow === 'wednesday' || dow === 'friday')) {
+    const pascha = calculatePascha(date.getUTCFullYear());
+    const dsp    = Math.floor((date - pascha) / 86400000);
+    if (dsp === -53 || dsp === -51) return false;
+  }
+
   // Holy Week: Mon-Wed = no full liturgy; Friday = no liturgy
   if (season === 'holyWeek') {
     if (['monday', 'tuesday', 'wednesday', 'friday'].includes(dow)) return false;

@@ -111,11 +111,6 @@
       "reason": "Sat-eve festal Aposticha 'slots 2↔3 duplicate' on these dates. Festal Aposticha legitimately repeats the same hymn across multiple psalm-verse slots (refrain pattern); rule's slot-key heuristic can't distinguish intentional refrain from accidental duplicate. Real false-positive class on festal Saturdays. Fix path: rule should examine the slot key, not the rendered hymn text. addedAt 2026-06-18."
     },
     {
-      "rule": "L5-liturgy-required-sections",
-      "dates": ["2026-02-18", "2026-02-20"],
-      "reason": "Pre-existing: /api/liturgy renders a partial service on Lenten weekdays (Wed/Fri) when no Liturgy is appointed — Presanctified is served at /api/presanctified instead. Missing Epistle/Gospel is a downstream symptom; the underlying gap is that the Liturgy endpoint should return blocks=[] (or 404) on no-Liturgy days. Tracking here so L5 stays clean across the year. addedAt 2026-06-17."
-    },
-    {
       "rule": "M27-matins-post-gospel-stichera",
       "dates": ["2026-01-18", "2026-02-08", "2026-05-03", "2026-05-24", "2026-06-07", "2026-06-14", "2026-06-28", "2026-09-13", "2026-11-22"],
       "reason": "Real builder gap surfaced by rule: on these polyeleos+ / Pentecostarion / festal Sundays the Post-Gospel Stichera section renders the framing verses (Through the prayers of the Apostles / Theotokos, Ps 50:1, Save O God Thy people) but no actual sticheron hymn. Sunday Matins post-Gospel sticheron builder isn't selecting the saint/feast doxastichon for these dates. Tracked here so M27 stays clean. addedAt 2026-06-18."
@@ -134,11 +129,6 @@
       "rule": "M14-matins-prokeimenon-tone",
       "dates": ["2026-01-11", "2026-01-25", "2026-08-16", "2026-11-08", "2026-12-06"],
       "reason": "Same root cause as M3 known-failures: festal-Sunday Matins Gospel + Prokeimenon override the Octoechos cycle when a major feast or vigil-rank saint with their own Gospel falls on Sunday. Sun after Theophany (01-11), Sun of Zacchaeus (01-25), Translation of Image (08-16), Synaxis of Archangels (11-08), St Nicholas (12-06). addedAt 2026-06-18."
-    },
-    {
-      "rule": "L16-post-communion-true-light",
-      "dates": ["2026-03-15"],
-      "reason": "Real bug surfaced by rule: on Sunday of the Cross (3rd Sunday of Lent) the Post-Communion Blessing hymn block renders the literal text 'typical' (placeholder name) instead of the resolved hymn. Either the Lenten variant path returns the substitution key as text, or the Cross Sunday cherub/post-comm overlay has an unresolved reference. Suppressed here so L16 reports clean across the year; underlying fix tracked as a content bug. addedAt 2026-06-17."
     },
     {
       "rule": "L12-paschal-entrance-hymn",

@@ -125,20 +125,6 @@
       "rule": "M14-matins-prokeimenon-tone",
       "dates": ["2026-01-11", "2026-01-25", "2026-08-16", "2026-11-08", "2026-12-06"],
       "reason": "Same root cause as M3 known-failures: festal-Sunday Matins Gospel + Prokeimenon override the Octoechos cycle when a major feast or vigil-rank saint with their own Gospel falls on Sunday. Sun after Theophany (01-11), Sun of Zacchaeus (01-25), Translation of Image (08-16), Synaxis of Archangels (11-08), St Nicholas (12-06). addedAt 2026-06-18."
-    },
-    {
-      "rule": "L12-paschal-entrance-hymn",
-      "dates": [
-        "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18",
-        "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24",
-        "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30",
-        "2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06",
-        "2026-05-07", "2026-05-08", "2026-05-09", "2026-05-10", "2026-05-11", "2026-05-12",
-        "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16", "2026-05-17", "2026-05-18",
-        "2026-05-19", "2026-05-20", "2026-05-22", "2026-05-23", "2026-05-24", "2026-05-25",
-        "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30"
-      ],
-      "reason": "Feature gap (not regression): OCA Liturgikon prints paschal Entrance Hymn 'In the gathering places bless ye God the Lord, from the wellsprings of Israel…' from Pascha through Apodosis. The system currently renders this on Pascha day proper but reverts to standard 'Come, let us worship' for the rest of the cycle. L12 stays active so a future implementation flips these from suppressed to clean automatically, and so Pascha-day regressions still surface. addedAt 2026-06-17."
     }
   ]
 }

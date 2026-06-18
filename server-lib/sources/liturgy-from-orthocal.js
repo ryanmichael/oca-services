@@ -584,12 +584,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   }
 
   // ── Entrance hymn: feast override → Paschal period → Sunday → weekday ────
-  // From Pascha through the Leavetaking, the entrance hymn takes the
-  // Pentecostarion form ("In the gatherings bless God the Lord, from the
-  // wellsprings of Israel"), regardless of day of week.
+  // From Pascha through the Apodosis of Pascha (daysSincePascha 0..38), OCA
+  // Liturgikon prescribes the paschal entrance verse ("In the gathering
+  // places bless ye God the Lord, from the wellsprings of Israel…")
+  // regardless of day of week. On Pascha day proper this also lands via
+  // feast.entranceHymn, but the rest of the cycle previously reverted to
+  // "Come, let us worship" — this is the fix.
   let entranceHymn;
   if (feast?.entranceHymn) {
     entranceHymn = { text: feast.entranceHymn };
+  } else if (isPaschalPeriod) {
+    entranceHymn = { text: GREAT_FEAST_VARIANTS.pascha.entranceHymn };
   } else if (isSunday) {
     entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.resurrection };
   } else {

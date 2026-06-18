@@ -6,6 +6,11 @@
 // leading troparion. The saint's troparion should lead the section
 // un-positioned; "Glory" only appears later, before a doxastichon or
 // concluding Now-and-ever block. Fixed in commit 3156bb0.
+//
+// Lenten Saturday Triodion is excluded: the Triodion intentionally ships the
+// saint's troparion at position:'glory' (Theodore Sat, Soul Sats 2–4), so the
+// section legitimately leads with a Glory doxology then the saint's hymn.
+// INV-7 documents this convention; D5's failure mode doesn't apply there.
 
 module.exports = {
   id:             'D5-vespers-troparia-leading-hymn',
@@ -13,7 +18,11 @@ module.exports = {
   severity:       'high',
   description:    'Vespers Troparia must lead with a hymn (or vigil-rank "sung thrice" rubric), not a "Glory" doxology.',
   needsAssembled: true,
-  appliesTo: (ctx) => ctx.service === 'vespers',
+  appliesTo: (ctx) => {
+    if (ctx.service !== 'vespers') return false;
+    if (ctx.season === 'greatLent' && ctx.dow === 'saturday') return false;
+    return true;
+  },
   check: (ctx) => {
     const blocks = ctx.assembled?.blocks || [];
     if (!blocks.length) return [];

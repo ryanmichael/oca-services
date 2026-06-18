@@ -68,6 +68,16 @@
       "reason": "Pre-existing: /api/liturgy renders a partial service on Lenten weekdays (Wed/Fri) when no Liturgy is appointed — Presanctified is served at /api/presanctified instead. Missing Epistle/Gospel is a downstream symptom; the underlying gap is that the Liturgy endpoint should return blocks=[] (or 404) on no-Liturgy days. Tracking here so L5 stays clean across the year. addedAt 2026-06-17."
     },
     {
+      "rule": "M27-matins-post-gospel-stichera",
+      "dates": ["2026-01-18", "2026-02-08", "2026-05-03", "2026-05-24", "2026-06-07", "2026-06-14", "2026-06-28", "2026-09-13", "2026-11-22"],
+      "reason": "Real builder gap surfaced by rule: on these polyeleos+ / Pentecostarion / festal Sundays the Post-Gospel Stichera section renders the framing verses (Through the prayers of the Apostles / Theotokos, Ps 50:1, Save O God Thy people) but no actual sticheron hymn. Sunday Matins post-Gospel sticheron builder isn't selecting the saint/feast doxastichon for these dates. Tracked here so M27 stays clean. addedAt 2026-06-18."
+    },
+    {
+      "rule": "M28-matins-aposticha-shape",
+      "dates": ["2026-03-25"],
+      "reason": "Annunciation Matins Aposticha is a Great Feast (Lord's feast) whose Aposticha structure renders a combined Glory+Now + single feast sticheron (no weekday-shape stichera blend). Real edge case, not a regression. addedAt 2026-06-18."
+    },
+    {
       "rule": "M19-matins-lauds-shape",
       "dates": ["2026-01-18", "2026-01-31", "2026-05-24", "2026-06-28"],
       "reason": "Real data/builder gap surfaced by rule: Sunday/festal Matins Lauds on these dates renders only the Glory-doxastichon + Theotokion (1 hymn) — the 8 resurrection stichera blend is missing. Likely a vigil/polyeleos saint where the Lauds builder fails to combine Octoechos resurrection stichera with Menaion. Worth fixing; tracked here so M19 stays clean. addedAt 2026-06-18."

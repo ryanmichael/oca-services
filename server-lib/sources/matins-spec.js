@@ -310,29 +310,60 @@ function _overlaySundayDefaults(spec, tone, season, date, sources) {
     }
   }
 
-  if (!spec.lauds) {
-    const oct        = sources.octoechos?.[`tone${tone}`];
-    const octMatins  = oct?.sunday?.matins;
-    const stichera   = octMatins?.laudsStichera;
+  const oct       = sources.octoechos?.[`tone${tone}`];
+  const octMatins = oct?.sunday?.matins;
+
+  // Fill missing Lauds stichera. The menaion-driven branch sets spec.lauds
+  // when the menaion file has only a doxastikon (Glory hymn) — leaving
+  // spec.lauds present but spec.lauds.stichera undefined. The Sunday-default
+  // path used to early-exit because spec.lauds was truthy; now we restore
+  // the Octoechos resurrection stichera so they aren't silently dropped.
+  if (!spec.lauds || !spec.lauds.stichera || spec.lauds.stichera.length === 0) {
+    const stichera = octMatins?.laudsStichera;
     if (stichera?.length) {
       const matinsSource = octMatins._source || 'oca-parma-stsergius';
-      const lauds = {
-        read: false,
-        tone,
-        stichera: stichera.map(s => ({ text: s.text, verse: s.verse, tone })),
-      };
       const eothinonNum  = date ? getEothinon(date) : null;
       const eothinonData = eothinonNum ? sources.eothinon?.[String(eothinonNum)] : null;
-      if (eothinonData?.doxastikon) {
-        lauds.doxastikon = {
-          text:    eothinonData.doxastikon,
-          tone:    eothinonData.tone,
-          author:  `Eothinon ${eothinonNum}`,
-          _source: eothinonData._source,
+      const eothinonDoxastikon = eothinonData?.doxastikon ? {
+        text:    eothinonData.doxastikon,
+        tone:    eothinonData.tone,
+        author:  `Eothinon ${eothinonNum}`,
+        _source: eothinonData._source,
+      } : null;
+
+      if (!spec.lauds) {
+        // No Lauds at all from the menaion path — synthesize the whole section
+        // from Octoechos + eothinon doxastikon (existing behavior preserved).
+        spec.lauds = {
+          read: false,
+          tone,
+          stichera: stichera.map(s => ({ text: s.text, verse: s.verse, tone })),
+          _source: matinsSource,
         };
+        if (eothinonDoxastikon) spec.lauds.doxastikon = eothinonDoxastikon;
+      } else {
+        // Lauds exists but stichera are missing (menaion supplied only a
+        // doxastikon). Restore the resurrection-stichera blend without
+        // disturbing the saint's doxastikon / theotokion.
+        spec.lauds.stichera = stichera.map(s => ({ text: s.text, verse: s.verse, tone }));
+        if (!spec.lauds.tone) spec.lauds.tone = tone;
+        if (!spec.lauds._source) spec.lauds._source = matinsSource;
       }
-      lauds._source = matinsSource;
-      spec.lauds = lauds;
+    }
+  }
+
+  // Fill missing Post-Gospel sticheron. Same class of bug — the menaion-driven
+  // branch only sets postGospelSticheron when the menaion file has one; on
+  // Sunday the Octoechos tone-6 default should always render.
+  if (!spec.postGospelSticheron) {
+    const text = octMatins?.postGospelSticheron;
+    if (text) {
+      spec.postGospelSticheron = {
+        text,
+        tone:    6,
+        source:  'octoechos',
+        _source: octMatins._source || 'oca-parma-stsergius',
+      };
     }
   }
 }

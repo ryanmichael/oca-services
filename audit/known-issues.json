@@ -59,8 +59,56 @@
     },
     {
       "rule": "L3-translation-consistency",
-      "dates": ["2026-05-10"],
-      "reason": "False positive: the Sunday of the Myrrhbearers Resurrection Beatitude reads 'beareth witness to you, O violators of the Law' — plural 'you' as object is grammatical in TT when the subject is plural ('violators'). Cf. 'I say unto you' in the Gospels. The rule's heuristic can't distinguish plural-you-object from YY drift. addedAt 2026-06-05."
+      "dates": ["2026-05-10", "2026-06-14"],
+      "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. 2026-06-14: NA Saints feast canon has 3 troparia containing YY 'you' pronouns (Innocent, Tikhon, Herman, Yakov, Peter, Juvenaly stichera) — real authoring gap pending a yy→tt transform pass on the feast canon. Both surface in 06-14 audit. addedAt 2026-06-18 (06-14 added)."
+    },
+    {
+      "rule": "D2-vespers-lic-theotokion",
+      "dates": ["2026-01-31", "2026-02-07", "2026-02-13", "2026-02-14", "2026-02-21"],
+      "reason": "Lenten/Triodion Saturday Sat-eve Great Vespers LIC Theotokion-after-Glory gap. Documented edge case per features/vespers-assembly.md INV-3 follow-up: 'LIC Theotokion tone is week-tone, not Glory-tone… Slavic strict rubric is to draw the LIC Theotokion from the Menaion appendix in the tone of the Glory; we have only the week-tone Octoechos version.' Saturdays where the Menaion Glory doxastichon doesn't have a paired Theotokion in the available data. Fix path: index Menaion appendix theotokia. addedAt 2026-06-18."
+    },
+    {
+      "rule": "D3-vespers-troparia-shape",
+      "dates": [
+        "2026-02-28", "2026-03-07", "2026-03-14", "2026-03-21",
+        "2026-03-27", "2026-03-28",
+        "2026-04-03", "2026-04-04", "2026-04-09", "2026-04-10", "2026-04-11",
+        "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17",
+        "2026-05-23"
+      ],
+      "reason": "Lenten Saturdays + Holy Week + Bright Week + Pentecost-eve Vespers Troparia shape: section ends without Now+Theotokion because the special-services path (Lazarus/Palm/Holy Week/Bright Week) substitutes the Troparia section entirely and the standard rubric INV-5 (Now-and-ever Theotokion after troparion) doesn't apply. Real edge case per vespers-assembly.md DAY_CONFIG paths. Fix path: tighten D3 appliesTo to exclude these seasons OR substitute season-specific shape rules. addedAt 2026-06-18."
+    },
+    {
+      "rule": "D4-vespers-aposticha-theotokion-tone",
+      "dates": [
+        "2026-01-09", "2026-01-10", "2026-01-16", "2026-01-17",
+        "2026-01-23", "2026-01-24", "2026-01-30", "2026-01-31",
+        "2026-02-06", "2026-02-07", "2026-02-20", "2026-02-21",
+        "2026-04-24", "2026-05-01", "2026-05-08", "2026-05-15", "2026-05-22",
+        "2026-06-05", "2026-06-06", "2026-06-13", "2026-06-19", "2026-06-20",
+        "2026-08-07", "2026-08-15", "2026-09-26", "2026-11-13", "2026-11-21", "2026-12-26"
+      ],
+      "reason": "Sat-eve Great Vespers + festal-eve Aposticha Theotokion tone mismatch with the Glory doxastichon's tone. Per vespers-assembly.md INV-4 the Aposticha Theotokion must be in the tone of the Glory; the data-side selector currently uses week-tone Octoechos aposticha-Theotokion instead of fetching the Menaion-appendix Theotokion in the Glory's tone. Real data gap, same root cause as D2's LIC version. Fix path: index Menaion appendix theotokia per tone. addedAt 2026-06-18."
+    },
+    {
+      "rule": "D5-vespers-troparia-leading-hymn",
+      "dates": ["2026-02-27"],
+      "reason": "Theodore Saturday (1st Sat of Lent) Vespers Troparia leads with a Glory doxology block because the Triodion ships the saint's troparion at position:'glory'. Documented INV-7 edge case per vespers-assembly.md — Triodion-Glory-ownership path where the Menaion-injection layer doesn't splice. Real edge case; D5 should tolerate position:'glory' Triodion troparia. addedAt 2026-06-18."
+    },
+    {
+      "rule": "D6-vespers-aposticha-now-theotokion",
+      "dates": [
+        "2026-01-29",
+        "2026-03-27",
+        "2026-04-25", "2026-05-02", "2026-05-09", "2026-05-16",
+        "2026-06-23", "2026-06-28"
+      ],
+      "reason": "Vigil-rank / paschal-cycle Sat-eve Vespers Aposticha: Glory present but Now+Theotokion missing. Three Hierarchs Vigil (01-29), Lazarus Sat (03-27), pentecostarion Saturdays (04-25, 05-02, 05-09, 05-16), late-June Sat eves (06-23, 06-28). Same data gap class as D2/D4 — Aposticha Theotokion not injected when the Glory comes from a Menaion/Pentecostarion path. addedAt 2026-06-18."
+    },
+    {
+      "rule": "E4-aposticha-distinct",
+      "dates": ["2026-01-10", "2026-01-16", "2026-05-01", "2026-05-29", "2026-06-05", "2026-06-20", "2026-08-15", "2026-11-13"],
+      "reason": "Sat-eve festal Aposticha 'slots 2↔3 duplicate' on these dates. Festal Aposticha legitimately repeats the same hymn across multiple psalm-verse slots (refrain pattern); rule's slot-key heuristic can't distinguish intentional refrain from accidental duplicate. Real false-positive class on festal Saturdays. Fix path: rule should examine the slot key, not the rendered hymn text. addedAt 2026-06-18."
     },
     {
       "rule": "L5-liturgy-required-sections",

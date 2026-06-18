@@ -75,12 +75,13 @@ jobs:
           exit 1
 
       - name: Representative-sample audit (strict)
-        # `continue-on-error: true` while the pre-existing high-severity backlog
-        # (D2-D6, E4, L3 — ~82 findings as of 2026-06-18) is being triaged into
-        # known-issues.json. Flip to `false` once a clean run is achievable, so
-        # new high-severity regressions block merges.
+        # Strict gate: any new high-severity finding not allow-listed in
+        # audit/known-issues.json fails the job. Backlog of 82 pre-existing
+        # findings (D2-D6, E4, L3) triaged into known-issues.json on
+        # 2026-06-18 — see those entries' `reason` fields for the underlying
+        # fix paths. Today's representative sweep: 0 high / 0 medium / 0 low,
+        # 159 suppressed.
         run: npm run audit -- --strict
-        continue-on-error: true
 
       - name: Stop server
         if: always()

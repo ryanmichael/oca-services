@@ -75,13 +75,15 @@ jobs:
           exit 1
 
       - name: Representative-sample audit (strict)
+        id: audit
         # Strict gate: any new high-severity finding not allow-listed in
         # audit/known-issues.json fails the job. Backlog of 82 pre-existing
         # findings (D2-D6, E4, L3) triaged into known-issues.json on
         # 2026-06-18 — see those entries' `reason` fields for the underlying
         # fix paths. Today's representative sweep: 0 high / 0 medium / 0 low,
-        # 159 suppressed.
+        # 71 suppressed (after B-line fixes + D-rule scope cleanups).
         run: npm run audit -- --strict
+        continue-on-error: true
 
       - name: Stop server
         if: always()
@@ -94,3 +96,63 @@ jobs:
           name: audit-report
           path: audit/reports/latest.*
           retention-days: 30
+
+      - name: Post audit summary to PR
+        # On pull-requests, post (or update) a sticky comment summarizing the
+        # audit run. Surfaces totals + first 10 high-severity findings inline
+        # without requiring reviewers to click through to the artifact. The
+        # comment is updated in place on subsequent runs of the same PR.
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let report;
+            try { report = JSON.parse(fs.readFileSync('audit/reports/latest.json', 'utf8')); }
+            catch (_) { console.log('No audit report to post.'); return; }
+
+            const { stats = {}, scope = {}, findings = [] } = report;
+            const high = stats.high || 0;
+            const med  = stats.medium || 0;
+            const low  = stats.low || 0;
+            const sup  = stats.suppressed || 0;
+            const status = high > 0 ? '❌ FAIL' : '✅ PASS';
+
+            const topFindings = findings.slice(0, 10).map(f =>
+              `- **[${f.severity}]** ${f.date} \`${f.service}\` ${f.rule} — ${f.message}`
+            ).join('\n');
+
+            const body = [
+              `<!-- audit-sweep-comment -->`,
+              `## Audit sweep ${status}`,
+              ``,
+              `**Scope:** ${scope.dates || '?'} dates × ${scope.services || '?'} services × ${scope.rules || '?'} rules`,
+              `**Findings:** ${high} high · ${med} medium · ${low} low · ${sup} suppressed`,
+              ``,
+              high > 0 ? `### Top findings\n${topFindings || '(none)'}` : '',
+              `\n[Full report attached as artifact](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
+            ].filter(Boolean).join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+            });
+            const existing = comments.find(c => c.body && c.body.startsWith('<!-- audit-sweep-comment -->'));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                comment_id: existing.id, body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number, body,
+              });
+            }
+
+      - name: Fail job on audit findings
+        # Post-comment gate so the PR comment lands even when the audit fails.
+        if: steps.audit.outcome == 'failure'
+        run: |
+          echo "Audit reported high-severity findings; failing the job."
+          exit 1

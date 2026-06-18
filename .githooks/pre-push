@@ -54,14 +54,28 @@ else
   done
 fi
 
-# Run audit; capture exit code so we can still clean up the server
+# Run audit; capture exit code so we can still clean up the server.
+# Two passes share the booted server:
+#   1. endpoint-audit (per-endpoint content checks)
+#   2. rule-based representative-sample audit with --strict (mirrors CI gate)
+# Strict gate parity ensures any new high-severity finding that would fail
+# CI also fails the push locally — surfacing the report before round-trip.
 set +e
 npm run audit:endpoints
-AUDIT_EXIT=$?
+ENDPOINT_EXIT=$?
+
+echo "Running strict rule-based audit (parity with CI audit-sweep job)..."
+npm run audit -- --strict
+STRICT_EXIT=$?
 set -e
 
 if [ "$STARTED_SERVER" = "1" ]; then
   kill $SERVER_PID 2>/dev/null || true
 fi
 
-exit $AUDIT_EXIT
+# Fail the push if either audit failed; report both exit codes for clarity.
+if [ "$ENDPOINT_EXIT" -ne 0 ] || [ "$STRICT_EXIT" -ne 0 ]; then
+  echo "pre-push: endpoint-audit=$ENDPOINT_EXIT strict-audit=$STRICT_EXIT"
+  exit 1
+fi
+exit 0

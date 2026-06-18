@@ -68,6 +68,11 @@
       "reason": "Pre-existing: /api/liturgy renders a partial service on Lenten weekdays (Wed/Fri) when no Liturgy is appointed — Presanctified is served at /api/presanctified instead. Missing Epistle/Gospel is a downstream symptom; the underlying gap is that the Liturgy endpoint should return blocks=[] (or 404) on no-Liturgy days. Tracking here so L5 stays clean across the year. addedAt 2026-06-17."
     },
     {
+      "rule": "M19-matins-lauds-shape",
+      "dates": ["2026-01-18", "2026-01-31", "2026-05-24", "2026-06-28"],
+      "reason": "Real data/builder gap surfaced by rule: Sunday/festal Matins Lauds on these dates renders only the Glory-doxastichon + Theotokion (1 hymn) — the 8 resurrection stichera blend is missing. Likely a vigil/polyeleos saint where the Lauds builder fails to combine Octoechos resurrection stichera with Menaion. Worth fixing; tracked here so M19 stays clean. addedAt 2026-06-18."
+    },
+    {
       "rule": "M14-matins-prokeimenon-tone",
       "dates": ["2026-01-11", "2026-01-25", "2026-08-16", "2026-11-08", "2026-12-06"],
       "reason": "Same root cause as M3 known-failures: festal-Sunday Matins Gospel + Prokeimenon override the Octoechos cycle when a major feast or vigil-rank saint with their own Gospel falls on Sunday. Sun after Theophany (01-11), Sun of Zacchaeus (01-25), Translation of Image (08-16), Synaxis of Archangels (11-08), St Nicholas (12-06). addedAt 2026-06-18."

@@ -37,3 +37,59 @@ jobs:
       - name: Contract-check (strict — flag any code surface change missing spec/test updates)
         run: node scripts/contract-check.js --strict --base origin/${{ github.base_ref || github.ref_name }}
         continue-on-error: true
+
+  audit-sweep:
+    # Full representative-sample audit across Vespers + Liturgy + Matins +
+    # Presanctified + Holy Week services. Boots the server so rules that
+    # need assembled output can fetch it. Fails on any new high-severity
+    # finding not allow-listed in audit/known-issues.json (--strict).
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Boot dev server
+        run: |
+          node server.js > server.log 2>&1 &
+          echo $! > server.pid
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:3000/api/liturgy?date=2026-06-21 > /dev/null; then
+              echo "server ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "server failed to start; log:"
+          cat server.log
+          exit 1
+
+      - name: Representative-sample audit (strict)
+        # `continue-on-error: true` while the pre-existing high-severity backlog
+        # (D2-D6, E4, L3 — ~82 findings as of 2026-06-18) is being triaged into
+        # known-issues.json. Flip to `false` once a clean run is achievable, so
+        # new high-severity regressions block merges.
+        run: npm run audit -- --strict
+        continue-on-error: true
+
+      - name: Stop server
+        if: always()
+        run: kill $(cat server.pid) || true
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: audit/reports/latest.*
+          retention-days: 30

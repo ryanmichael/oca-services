@@ -282,6 +282,8 @@ function parseAposticha(raw) {
       inHymn  = true;
     } else if (STOP.test(line)) {
       if (inHymn && current.length > 0) hymns.push(joinFragments(current));
+      current = [];
+      inHymn  = false;
       break;
     } else if (inHymn) {
       if (/^(Tone\s+\d|arr\.)/.test(line)) continue;

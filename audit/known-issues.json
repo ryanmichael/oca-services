@@ -90,11 +90,6 @@
       "reason": "Vigil-rank / paschal-cycle Sat-eve Vespers Aposticha: Glory present but Now+Theotokion missing. Three Hierarchs Vigil (01-29), Lazarus Sat (03-27), pentecostarion Saturdays (04-25, 05-02, 05-09, 05-16), late-June Sat eves (06-23, 06-28). Same data gap class as D2/D4 — Aposticha Theotokion not injected when the Glory comes from a Menaion/Pentecostarion path. addedAt 2026-06-18."
     },
     {
-      "rule": "E4-aposticha-distinct",
-      "dates": ["2026-01-10", "2026-01-16", "2026-05-01", "2026-05-29", "2026-06-05", "2026-06-20", "2026-08-15", "2026-11-13"],
-      "reason": "Real DB data bug surfaced by rule (revised 2026-06-18): octoechos.json Sat Vespers Aposticha has duplicated content at hymns[2]↔hymns[3] (or [3]↔[4]) for multiple tones — slots resolve to distinct keys but the data behind them is identical. Verified 2026-01-10 (Tone 5: 'Desiring to return us to Paradise' x2) and 2026-08-15 (Tone 7: 'For our sake' x2). Originally suppressed under the assumption these were intentional refrains; that diagnosis was wrong. Fix path: audit octoechos.json Sat aposticha hymns arrays for all 8 tones, source missing verses from OCA Octoechos. addedAt 2026-06-18."
-    },
-    {
       "rule": "M19-matins-lauds-shape",
       "dates": ["2026-01-31"],
       "reason": "Saturday doxology-rank Cyrus & John: menaion file january-31.json ships only lauds.doxastikon (the Glory hymn) without lauds.stichera. Doxology-rank Saturday Lauds expects the saint's full stichera set in the menaion file — none of the system's Octoechos paths apply on Saturday. Distinct from the Sunday Lauds-blend bug fixed in B1+B2; this is a menaion authoring gap. Fix path: source + author the Cyrus & John Lauds stichera into january-31.json. addedAt 2026-06-18.",

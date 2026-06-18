@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Octoechos — variable hymns organized by tone and day. The 8-tone cycle governs which tone's content is used on a given week.",
     "note": "Populated incrementally from real OCA service examples. Missing hymns are silently skipped by the assembler.",
-    "version": "0.3.0 — all 8 tones populated from OCA Obikhod (TT) PDFs via scrape-octoechos.js",
+    "version": "0.3.1 — sat-aposticha trailing-duplicate fix (scrape parser bug, 2026-06-19)",
     "sources": {
       "all.saturday.vespers.*": "OCA Obikhod (TT) PDFs scraped from oca.org/liturgics/music-downloads (2026-03)",
       "tone4.saturday.vespers.*": "OCA service texts 2026-02-22 (Forgiveness Sunday — note: Sunday Vigil format, some Saturday-specific stichera still TODO) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated) (stichera 1–4 now replaced with Obikhod source; aposticha theotokion populated)"
@@ -76,12 +76,6 @@
             {
               "order": 4,
               "label": "Sticheron 4",
-              "tone": 1,
-              "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrhh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles\n\"The Lord is risen, granting the world great mercy."
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
               "tone": 1,
               "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrhh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles\n\"The Lord is risen, granting the world great mercy."
             }
@@ -1395,12 +1389,6 @@
               "label": "Sticheron 3",
               "tone": 2,
               "text": "O Christ, the Giver of life, for the sake of the dead Thou didst voluntarily endure death, descending into hell as the Mighty One to save those who awaited Thy coming, granting them the life of paradise instead of hell. Grant also to us who glorify Thy Resurrection on the third day\ncleansing of our sins and great mer - - - - cy!"
-            },
-            {
-              "order": 4,
-              "label": "Sticheron 4",
-              "tone": 2,
-              "text": "O Christ, the Giver of life, for the sake of the dead Thou didst voluntarily endure death, descending into hell as the Mighty One to save those who awaited Thy coming, granting them the life of paradise instead of hell. Grant also to us who glorify Thy Resurrection on the third day\ncleansing of our sins and great mer - - - - cy!"
             }
           ],
           "theotokion": {
@@ -2645,12 +2633,6 @@
             {
               "order": 4,
               "label": "Sticheron 4",
-              "tone": 3,
-              "text": "Thou didst endure death, O Christ, to deliver the race of men from death. Thou didst rise from the dead on the third day, raising with Thyself those who knew Thee as God\nand enlightening the world. Glory to Thee!"
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
               "tone": 3,
               "text": "Thou didst endure death, O Christ, to deliver the race of men from death. Thou didst rise from the dead on the third day, raising with Thyself those who knew Thee as God\nand enlightening the world. Glory to Thee!"
             }
@@ -3904,12 +3886,6 @@
             {
               "order": 4,
               "label": "Sticheron 4",
-              "tone": 4,
-              "text": "With tears the women reached Thy tomb, searching for Thee, but not finding Thee. They wept with wailing and lamented: \"Woe to us! Our Savior, King of all, how wast Thou stolenWhat place can hold Thy lifebearing body?\" An Angel replied to them: \"Do not weep, but go and proclaim that the Lord is Risen,\ngranting us joy as the only compassionate One!"
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
               "tone": 4,
               "text": "With tears the women reached Thy tomb, searching for Thee, but not finding Thee. They wept with wailing and lamented: \"Woe to us! Our Savior, King of all, how wast Thou stolenWhat place can hold Thy lifebearing body?\" An Angel replied to them: \"Do not weep, but go and proclaim that the Lord is Risen,\ngranting us joy as the only compassionate One!"
             }
@@ -5219,12 +5195,6 @@
             {
               "order": 4,
               "label": "Sticheron 4",
-              "tone": 5,
-              "text": "For our sake, Thou didst accept death in the flesh, to rise from the dead on the third day. Heal us from our earthly passions, and restore us from our evil transgressions;\nand save us,"
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
               "tone": 5,
               "text": "For our sake, Thou didst accept death in the flesh, to rise from the dead on the third day. Heal us from our earthly passions, and restore us from our evil transgressions;\nand save us,"
             }
@@ -6578,12 +6548,6 @@
             {
               "order": 3,
               "label": "Sticheron 3",
-              "tone": 6,
-              "text": "Desiring to return us to Paradise, Christ was nailed to the Cross and placed in a tomb. The Myrrhbearing Women sought Him with tears crying, \"Woe to us, O Savior! How didst Thou deign to descend to deathWhat place can hold Thy lifebearing bodyCome to us as Thou didst promise! Take away our wailing and tears!"
-            },
-            {
-              "order": 4,
-              "label": "Sticheron 4",
               "tone": 6,
               "text": "Desiring to return us to Paradise, Christ was nailed to the Cross and placed in a tomb. The Myrrhbearing Women sought Him with tears crying, \"Woe to us, O Savior! How didst Thou deign to descend to deathWhat place can hold Thy lifebearing bodyCome to us as Thou didst promise! Take away our wailing and tears!"
             }
@@ -7947,12 +7911,6 @@
               "label": "Sticheron 4",
               "tone": 7,
               "text": "When Thou wast placed in the tomb as one asleep, the sight was great and awesome. But when Thou didst rise on the third day as almighty God, Thou didst resurrect Adam with Thyself.\nGlory to Thy Resurrection, only Lover of man!"
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
-              "tone": 7,
-              "text": "When Thou wast placed in the tomb as one asleep, the sight was great and awesome. But when Thou didst rise on the third day as almighty God, Thou didst resurrect Adam with Thyself.\nGlory to Thy Resurrection, only Lover of man!"
             }
           ],
           "theotokion": {
@@ -9270,12 +9228,6 @@
             {
               "order": 4,
               "label": "Sticheron 4",
-              "tone": 8,
-              "text": "O Master of all, incomprehensible Creator of heaven and earth, by Thy suffering on the Cross Thou hast gained passionlessness for me. Accepting burial and arising in glory, Thou didst resurrect Adam with Thyself by Thine almighty hand. Glory to Thy rising on the third day! By it Thou hast granted us eternal life and cleansing of sins\nas the only compassionate One."
-            },
-            {
-              "order": 5,
-              "label": "Sticheron 5",
               "tone": 8,
               "text": "O Master of all, incomprehensible Creator of heaven and earth, by Thy suffering on the Cross Thou hast gained passionlessness for me. Accepting burial and arising in glory, Thou didst resurrect Adam with Thyself by Thine almighty hand. Glory to Thy rising on the third day! By it Thou hast granted us eternal life and cleansing of sins\nas the only compassionate One."
             }

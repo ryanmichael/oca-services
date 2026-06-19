@@ -1184,3 +1184,50 @@ body.mode-choir .choir-toggles { display: flex; }
 .toast--success { border-left-color: var(--gold); }
 .toast--error   { border-left-color: var(--rubric); color: var(--rubric); }
 .toast a { color: inherit; text-decoration: underline; }
+
+/* Parish admin: typeahead, selected box, multi-checkbox list. */
+.pa-typeahead {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: var(--surface); border: 1px solid var(--border);
+  border-top: none;
+  max-height: 280px; overflow-y: auto;
+  z-index: 50;
+}
+.pa-typeahead-row {
+  padding: 8px 12px; cursor: pointer;
+  font-family: 'EB Garamond', serif; font-size: 14px;
+  display: flex; justify-content: space-between; gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.pa-typeahead-row:last-child { border-bottom: none; }
+.pa-typeahead-row:hover, .pa-typeahead-row.is-active {
+  background: rgba(201,168,76,.10); color: var(--text);
+}
+.pa-typeahead-row .pa-feast { color: var(--muted); font-style: italic; font-size: 12px; flex-shrink: 0; }
+.pa-typeahead-empty {
+  padding: 8px 12px;
+  font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+  color: var(--muted);
+}
+
+.pa-selected-box {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; background: var(--surface);
+  border: 1px solid var(--border); border-left: 3px solid var(--gold);
+  font-family: 'EB Garamond', serif; font-size: 15px;
+}
+.pa-selected-box .pa-feast { color: var(--muted); font-style: italic; font-size: 13px; }
+.pa-selected-box .pa-link-btn { margin-left: auto; }
+.pa-link-btn {
+  background: none; border: none; padding: 0;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+  color: var(--muted); cursor: pointer; text-transform: uppercase;
+}
+.pa-link-btn:hover { color: var(--rubric); }
+
+.pa-checkboxes { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 6px; }
+.pa-check {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'EB Garamond', serif; font-size: 14px; color: var(--text); cursor: pointer;
+}
+.pa-check input { accent-color: var(--rubric); }

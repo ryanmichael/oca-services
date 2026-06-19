@@ -15,6 +15,7 @@ const path = require('path');
 const { openDb, openDbWrite }   = require('../cache/sqlite');
 const { authenticate, checkAndRecordWrite } = require('../parishes/auth');
 const { refreshParishOverlay } = require('../parishes');
+const { slugify } = require('../parishes/patron-resolver');
 
 const ROOT       = path.resolve(__dirname, '..', '..');
 const PAGE_HTML  = path.join(ROOT, 'public', 'parish-admin.html');
@@ -199,6 +200,49 @@ async function handlePostSettings(parishId, req, res) {
   }
 }
 
+const MONTH_NAMES = [
+  '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+function handlePatronSearch(url, res) {
+  const q = (url.searchParams.get('q') || '').trim();
+  if (q.length < 2) return send(res, 200, { results: [] });
+
+  const db = openDb();
+  if (!db) return send(res, 500, { error: 'db_unavailable' });
+  try {
+    const rows = db.prepare(`
+      SELECT id, month, day, title FROM commemorations
+      WHERE title LIKE ? COLLATE NOCASE
+      ORDER BY month, day, length(title)
+      LIMIT 10
+    `).all(`%${q}%`);
+
+    const results = rows.map(r => {
+      // Decode common HTML entities the title field can contain (e.g. &ldquo;)
+      const clean = String(r.title)
+        .replace(/&ldquo;/g, '“').replace(/&rdquo;/g, '”')
+        .replace(/&lsquo;/g, '‘').replace(/&rsquo;/g, '’')
+        .replace(/&aelig;/g, 'æ').replace(/&AElig;/g, 'Æ')
+        .replace(/&eacute;/g, 'é').replace(/&Eacute;/g, 'É')
+        .replace(/&ouml;/g, 'ö').replace(/&uuml;/g, 'ü')
+        .replace(/&mdash;/g, '—').replace(/&ndash;/g, '–')
+        .replace(/&amp;/g, '&');
+      const mm = String(r.month).padStart(2, '0');
+      const dd = String(r.day).padStart(2, '0');
+      return {
+        naturalKey: `${mm}-${dd}/${slugify(clean)}`,
+        title:      clean,
+        feastLabel: `${MONTH_NAMES[r.month]} ${r.day}`,
+      };
+    });
+    return send(res, 200, { results });
+  } finally {
+    db.close();
+  }
+}
+
 function handle(req, res, _ctx) {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const parsed = parseSlug(url.pathname);
@@ -225,6 +269,10 @@ function handle(req, res, _ctx) {
   }
 
   // Routing.
+  if (parsed.subpath === '/patron-search') {
+    if (req.method !== 'GET') return send(res, 405, { error: 'method_not_allowed' });
+    return handlePatronSearch(url, res);
+  }
   if (parsed.subpath === '/settings') {
     if (req.method === 'GET')  return handleGetSettings(parishId, res);
     if (req.method === 'POST') return handlePostSettings(parishId, req, res);

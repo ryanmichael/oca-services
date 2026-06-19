@@ -1,32 +1,44 @@
 // Parish admin settings — load + edit + save flow.
-// The page lives at /parish-admin/<slug>. Auth is handled server-side by
-// cookie; if we get 401, surface the unauthorized message and stop.
 
 const slug = location.pathname.split('/').filter(Boolean)[1];
 const SETTINGS_URL = `/parish-admin/${slug}/settings`;
+const PATRON_URL   = (q) => `/parish-admin/${slug}/patron-search?q=${encodeURIComponent(q)}`;
 const SERVICE_PREVIEW_URL = (date) =>
   `/api/liturgy?date=${date}&translation=${slug}`;
 
+const $ = (id) => document.getElementById(id);
 const els = {
-  loading:        document.getElementById('pa-loading'),
-  unauthorized:   document.getElementById('pa-unauthorized'),
-  form:           document.getElementById('pa-form'),
-  nameDisplay:    document.getElementById('pa-name-display'),
-  name:           document.getElementById('f-name'),
-  city:           document.getElementById('f-city'),
-  jurisdiction:   document.getElementById('f-jurisdiction'),
-  primate:        document.getElementById('f-primate'),
-  ruling:         document.getElementById('f-ruling'),
-  primateDerived: document.getElementById('d-primate'),
-  rulingDerived:  document.getElementById('d-ruling'),
-  confessFirst:   document.getElementById('f-confess-first'),
-  save:           document.getElementById('pa-save'),
-  dirty:          document.getElementById('pa-dirty'),
+  loading:        $('pa-loading'),
+  unauthorized:   $('pa-unauthorized'),
+  form:           $('pa-form'),
+  nameDisplay:    $('pa-name-display'),
+  name:           $('f-name'),
+  city:           $('f-city'),
+  jurisdiction:   $('f-jurisdiction'),
+  primate:        $('f-primate'),
+  ruling:         $('f-ruling'),
+  primateDerived: $('d-primate'),
+  rulingDerived:  $('d-ruling'),
+  confessFirst:   $('f-confess-first'),
+  omitPreTrisagion: $('f-omit-pre-trisagion'),
+  lesserSaints:   $('f-lesser-saints'),
+  secondGospel:   $('f-second-gospel'),
+  secondKoinonikon: $('f-second-koinonikon'),
+  paschalComm:    $('f-paschal-comm'),
+  catechSeasons:  document.querySelectorAll('.catech-season'),
+  patronSearch:   $('f-patron-search'),
+  patronTypeahead:$('patron-typeahead'),
+  patronSelected: $('patron-selected'),
+  patronTitle:    $('patron-title-display'),
+  patronFeast:    $('patron-feast-display'),
+  patronClear:    $('patron-clear'),
+  save:           $('pa-save'),
+  dirty:          $('pa-dirty'),
 };
 
 let initialState = null;
+let currentPatron = { naturalKey: null, title: null };
 
-/** Render the live-derived Anaphora preview from the form field values. */
 function renderDerived() {
   const p = els.primate.value.trim() || '(your primate’s full title)';
   const r = els.ruling.value.trim()  || '(your ruling hierarch’s full title)';
@@ -42,7 +54,16 @@ function snapshot() {
     city:                  els.city.value,
     primate_name:          els.primate.value,
     ruling_hierarch_name:  els.ruling.value,
-    rubric_confess_first:  els.confessFirst.checked,
+    patron_natural_key:    currentPatron.naturalKey,
+    patron_title:          currentPatron.title,
+    rubric_confess_first:               els.confessFirst.checked,
+    rubric_omit_pre_trisagion_litany:   els.omitPreTrisagion.checked,
+    rubric_include_lesser_saints:       els.lesserSaints.checked,
+    rubric_include_second_gospel:       els.secondGospel.checked,
+    rubric_include_second_koinonikon:   els.secondKoinonikon.checked,
+    rubric_paschal_communion_year_round: els.paschalComm.checked,
+    rubric_omit_catechumens_seasons:    [...els.catechSeasons]
+        .filter(c => c.checked).map(c => c.value).join(','),
   };
 }
 
@@ -71,6 +92,20 @@ function loadSettings() {
   });
 }
 
+function setPatron(naturalKey, title, feastLabel) {
+  currentPatron = { naturalKey: naturalKey || null, title: title || null };
+  if (naturalKey) {
+    els.patronTitle.textContent = title;
+    els.patronFeast.textContent = feastLabel || '';
+    els.patronSelected.hidden = false;
+    els.patronSearch.value = '';
+  } else {
+    els.patronSelected.hidden = true;
+  }
+  hidePatronTypeahead();
+  refreshDirtyUI();
+}
+
 function populate(data) {
   els.nameDisplay.textContent = data.name + (data.city ? `  ·  ${data.city}` : '');
   document.title = `${data.name} — Settings`;
@@ -79,7 +114,20 @@ function populate(data) {
   els.jurisdiction.value = (data.jurisdiction || '').toUpperCase();
   els.primate.value = data.primate_name || '';
   els.ruling.value = data.ruling_hierarch_name || '';
-  els.confessFirst.checked = !!data.rubric_confess_first;
+  els.confessFirst.checked     = !!data.rubric_confess_first;
+  els.omitPreTrisagion.checked = !!data.rubric_omit_pre_trisagion_litany;
+  els.lesserSaints.checked     = !!data.rubric_include_lesser_saints;
+  els.secondGospel.checked     = !!data.rubric_include_second_gospel;
+  els.secondKoinonikon.checked = !!data.rubric_include_second_koinonikon;
+  els.paschalComm.checked      = !!data.rubric_paschal_communion_year_round;
+
+  const seasons = String(data.rubric_omit_catechumens_seasons || '').split(',').filter(Boolean);
+  els.catechSeasons.forEach(c => { c.checked = seasons.includes(c.value); });
+
+  if (data.patron_natural_key) {
+    setPatron(data.patron_natural_key, data.patron_title, '');
+  }
+
   initialState = snapshot();
   renderDerived();
   refreshDirtyUI();
@@ -125,7 +173,11 @@ async function handleSubmit(e) {
   els.save.textContent = 'Saving…';
   try {
     const payload = snapshot();
-    payload.rubric_confess_first = payload.rubric_confess_first ? 1 : 0;
+    for (const k of [
+      'rubric_confess_first','rubric_omit_pre_trisagion_litany',
+      'rubric_include_lesser_saints','rubric_include_second_gospel',
+      'rubric_include_second_koinonikon','rubric_paschal_communion_year_round',
+    ]) payload[k] = payload[k] ? 1 : 0;
     await postSettings(payload);
     initialState = snapshot();
     refreshDirtyUI();
@@ -144,16 +196,85 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 }
 
-// Wire change listeners
-['input', 'change'].forEach(evt => {
-  els.form.addEventListener(evt, () => {
-    renderDerived();
-    refreshDirtyUI();
+// ── Typeahead ───────────────────────────────────────────────────────────
+let typeaheadTimer = null;
+let activeRowIdx = -1;
+let lastResults = [];
+
+function hidePatronTypeahead() {
+  els.patronTypeahead.hidden = true;
+  els.patronTypeahead.innerHTML = '';
+  activeRowIdx = -1;
+  lastResults = [];
+}
+
+function renderTypeahead(results) {
+  if (!results.length) {
+    els.patronTypeahead.innerHTML = '<div class="pa-typeahead-empty">No matches.</div>';
+    els.patronTypeahead.hidden = false;
+    return;
+  }
+  const html = results.map((r, i) =>
+    `<div class="pa-typeahead-row" data-idx="${i}">
+       <span>${escapeHtml(r.title)}</span>
+       <span class="pa-feast">${escapeHtml(r.feastLabel)}</span>
+     </div>`).join('');
+  els.patronTypeahead.innerHTML = html;
+  els.patronTypeahead.hidden = false;
+  els.patronTypeahead.querySelectorAll('.pa-typeahead-row').forEach(row => {
+    row.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      const r = results[parseInt(row.dataset.idx, 10)];
+      setPatron(r.naturalKey, r.title, r.feastLabel);
+    });
   });
+}
+
+function runPatronSearch(q) {
+  clearTimeout(typeaheadTimer);
+  if (q.length < 2) { hidePatronTypeahead(); return; }
+  typeaheadTimer = setTimeout(() => {
+    fetch(PATRON_URL(q), { credentials: 'same-origin' })
+      .then(r => r.ok ? r.json() : { results: [] })
+      .then(({ results }) => { lastResults = results; renderTypeahead(results); });
+  }, 200);
+}
+
+els.patronSearch.addEventListener('input', (e) => runPatronSearch(e.target.value.trim()));
+els.patronSearch.addEventListener('blur', () => setTimeout(hidePatronTypeahead, 150));
+els.patronSearch.addEventListener('keydown', (e) => {
+  if (els.patronTypeahead.hidden) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    activeRowIdx = Math.min(activeRowIdx + 1, lastResults.length - 1);
+    updateActiveRow();
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    activeRowIdx = Math.max(activeRowIdx - 1, 0);
+    updateActiveRow();
+  } else if (e.key === 'Enter' && activeRowIdx >= 0) {
+    e.preventDefault();
+    const r = lastResults[activeRowIdx];
+    if (r) setPatron(r.naturalKey, r.title, r.feastLabel);
+  } else if (e.key === 'Escape') {
+    hidePatronTypeahead();
+  }
+});
+
+function updateActiveRow() {
+  els.patronTypeahead.querySelectorAll('.pa-typeahead-row').forEach((row, i) => {
+    row.classList.toggle('is-active', i === activeRowIdx);
+  });
+}
+
+els.patronClear.addEventListener('click', () => setPatron(null, null, null));
+
+// ── Wire change listeners ──────────────────────────────────────────────
+['input', 'change'].forEach(evt => {
+  els.form.addEventListener(evt, () => { renderDerived(); refreshDirtyUI(); });
 });
 els.form.addEventListener('submit', handleSubmit);
 
-// Warn on unsaved-changes navigation
 window.addEventListener('beforeunload', (e) => {
   if (isDirty()) { e.preventDefault(); e.returnValue = ''; }
 });

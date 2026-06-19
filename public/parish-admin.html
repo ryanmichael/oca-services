@@ -115,6 +115,27 @@
     </section>
 
     <section class="pa-section">
+      <div class="pa-section-label">Patron of the temple</div>
+      <div class="pa-card">
+        <div class="pa-field" style="position: relative;">
+          <label class="pa-field-label" for="f-patron-search">Search</label>
+          <input class="pa-field-input" id="f-patron-search" type="text" autocomplete="off"
+                 placeholder="Type a saint or feast name (3+ letters)">
+          <div class="pa-typeahead" id="patron-typeahead" hidden></div>
+          <div class="pa-field-help">The patron's troparion + kontakion will be injected on Sundays.</div>
+        </div>
+        <div class="pa-field pa-patron-selected" id="patron-selected" hidden>
+          <div class="pa-field-label">Selected</div>
+          <div class="pa-selected-box">
+            <span id="patron-title-display"></span>
+            <span class="pa-feast" id="patron-feast-display"></span>
+            <button type="button" class="pa-link-btn" id="patron-clear">Clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pa-section">
       <div class="pa-section-label">Service rubrics</div>
       <div class="pa-card">
         <label class="pa-toggle">
@@ -124,6 +145,51 @@
             <span class="pa-toggle-detail">Order: "I believe, O Lord, and I confess…" → "In the fear of God…" → "Blessed is He that cometh…"</span>
           </span>
         </label>
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-omit-pre-trisagion" name="rubric_omit_pre_trisagion_litany">
+          <span>
+            <span class="pa-toggle-label">Skip the pre-Trisagion litany</span>
+            <span class="pa-toggle-detail">Goes directly from the third antiphon's exclamation to the Trisagion.</span>
+          </span>
+        </label>
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-lesser-saints" name="rubric_include_lesser_saints">
+          <span>
+            <span class="pa-toggle-label">Include lesser-rank saint troparia</span>
+            <span class="pa-toggle-detail">By default we suppress saints ranked below "simple" on Sundays; turn this on to keep them.</span>
+          </span>
+        </label>
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-second-gospel" name="rubric_include_second_gospel">
+          <span>
+            <span class="pa-toggle-label">Include the second Gospel reading</span>
+            <span class="pa-toggle-detail">When the day has two readings (e.g. polyeleos saint), include both rather than only the principal.</span>
+          </span>
+        </label>
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-second-koinonikon" name="rubric_include_second_koinonikon">
+          <span>
+            <span class="pa-toggle-label">Include the secondary communion verse</span>
+            <span class="pa-toggle-detail">For days with two koinonika; otherwise only the principal is sung.</span>
+          </span>
+        </label>
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-paschal-comm" name="rubric_paschal_communion_year_round">
+          <span>
+            <span class="pa-toggle-label">Sing "Receive ye the Body of Christ" year-round</span>
+            <span class="pa-toggle-detail">Use the Paschal communion verse outside the Paschal period as well.</span>
+          </span>
+        </label>
+
+        <div class="pa-field" style="margin-top: 16px;">
+          <div class="pa-field-label">Omit Catechumens litanies during these seasons</div>
+          <div class="pa-checkboxes">
+            <label class="pa-check"><input type="checkbox" value="paschal"     class="catech-season"> Paschal period</label>
+            <label class="pa-check"><input type="checkbox" value="lenten"      class="catech-season"> Lenten weekdays</label>
+            <label class="pa-check"><input type="checkbox" value="bright-week" class="catech-season"> Bright Week</label>
+          </div>
+          <div class="pa-field-help">OCA default is paschal only.</div>
+        </div>
       </div>
     </section>
 

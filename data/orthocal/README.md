@@ -14,11 +14,14 @@ date in the window.
 ## Lookup order (in `server-lib/cache/orthocal.js`)
 
 1. **Vendored file** at `data/orthocal/YYYY-MM-DD.json` (this directory)
-2. **DB cache** (`orthocal_cache` table — runtime cache of any live fetches)
+2. **In-process Map** — caches live-API responses for the lifetime of the
+   Node process; discarded on restart
 3. **Live API** at `https://orthocal.info/api/gregorian/Y/M/D/`
 
 In practice, in-window dates always hit (1); out-of-window dates fall through
-to (2)/(3) and are cached but not vendored.
+to (3) and the response is cached in (2) so a repeated request within the same
+process doesn't re-fetch. The DB-backed cache was retired in Track E
+(2026-06-19) so `storage/oca.db` stays byte-stable across boots.
 
 ## Window
 

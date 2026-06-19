@@ -18,7 +18,7 @@
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",
     "snapshot:capture": "node audit/snapshot.js --capture",
     "snapshot:verify": "node audit/snapshot.js --verify",
-    "db:clear-cache": "sqlite3 storage/oca.db 'DELETE FROM orthocal_cache;' && echo 'orthocal_cache cleared'"
+    "snapshot:determinism": "node audit/determinism.js"
   },
   "engines": {
     "node": ">=24.0.0"

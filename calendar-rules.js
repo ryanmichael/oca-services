@@ -1723,81 +1723,16 @@ const {
   isPresanctifiedDay,
 } = require('./calendar/liturgy-day');
 
-
-/**
- * Returns true if Bridegroom Matins is served on this date.
- * Served on the evenings of Holy Monday, Tuesday, and Wednesday.
- *
- * @param {Date} date — UTC date
- * @returns {boolean}
- */
-function isBridegroomMatins(date) {
-  // Bridegroom Matins is served on the EVENING of Sun/Mon/Tue/Wed of Holy Week.
-  // API date = civil evening (the date the person attends).
-  // Content is from the NEXT liturgical day (Mon/Tue/Wed/Thu).
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && ['sunday', 'monday', 'tuesday', 'wednesday'].includes(dow);
-}
-
-/**
- * Returns true if the Service of the Twelve Passion Gospels is served on this date.
- * Served on the evening of Great Thursday (Matins of Great Friday).
- *
- * @param {Date} date — UTC date
- * @returns {boolean}
- */
-function isPassionGospelsDay(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && dow === 'thursday';
-}
-
-/**
- * Returns true if the Lamentations service is served on this date.
- * Served on the evening of Great Friday (Matins of Great Saturday).
- *
- * @param {Date} date — UTC date
- * @returns {boolean}
- */
-function isLamentationsDay(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && dow === 'friday';
-}
-
-/**
- * Returns true if the Vesperal Liturgy of St. Basil is served on this date.
- * Served on Great Saturday morning.
- *
- * @param {Date} date — UTC date
- * @returns {boolean}
- */
-function isVesperalLiturgyDay(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && dow === 'saturday';
-}
-
-/**
- * Returns true if the Royal Hours are served on this date.
- * Served on the morning of Great Friday.
- */
-function isRoyalHoursDay(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && dow === 'friday';
-}
-
-/**
- * Returns true if Burial Vespers is served on this date.
- * Served on Great Friday afternoon (not Thursday evening).
- */
-function isBurialVespersDay(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  return season === 'holyWeek' && dow === 'friday';
-}
+// Holy Week special-service predicates extracted to
+// calendar/holy-week-services.js (Track D step 6).
+const {
+  isBridegroomMatins,
+  isPassionGospelsDay,
+  isLamentationsDay,
+  isVesperalLiturgyDay,
+  isRoyalHoursDay,
+  isBurialVespersDay,
+} = require('./calendar/holy-week-services');
 
 // ─── Exports ──────────────────────────────────────────────────────────────────
 

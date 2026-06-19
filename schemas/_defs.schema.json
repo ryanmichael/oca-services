@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/_defs.schema.json",
+  "title": "Shared atoms (vocabulary) for Orthodox service data",
+  "description": "Single source of truth for shared concepts: Tone, Speaker, Hymn, Troparion, Kontakion, Prokeimenon, Alleluia, CanonOde, ServiceBlock, StructureBlock, SaintCategory, FeastRank. Referenced by all per-file schemas under schemas/.",
+
+  "$defs": {
+
+    "Meta": {
+      "title": "Authoring metadata (free-form escape hatch)",
+      "description": "Free-form _meta object. Conventionally holds description, source, sourceUrl, note, author, tone, feast, feastRank, feastType. Not enforced — authors may add any keys.",
+      "type": "object"
+    },
+
+    "Tone": {
+      "title": "Liturgical tone",
+      "description": "Octoechos tone, integer 0-8. 0 = no tone / read silently. null = not applicable (e.g., responses, rubrics).",
+      "oneOf": [
+        { "type": "integer", "minimum": 0, "maximum": 8 },
+        { "type": "null" }
+      ]
+    },
+
+    "Speaker": {
+      "title": "Who utters the block",
+      "description": "Liturgical role. null = unspecified.",
+      "oneOf": [
+        { "enum": ["priest", "deacon", "reader", "choir", "all", "people"] },
+        { "type": "null" }
+      ]
+    },
+
+    "DateKey": {
+      "title": "ISO date (YYYY-MM-DD)",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+
+    "MonthDayKey": {
+      "title": "Fixed-cycle date key (MM-DD)",
+      "type": "string",
+      "pattern": "^[0-9]{2}-[0-9]{2}$"
+    },
+
+    "MonthNameKey": {
+      "title": "Menaion file slug (e.g., january-31)",
+      "type": "string",
+      "pattern": "^(january|february|march|april|may|june|july|august|september|october|november|december)-[0-9]{2}$"
+    },
+
+    "DotPath": {
+      "title": "Dot-notation key into fixed-texts (e.g., prayers.ourFather)",
+      "description": "Optional 'prefix:' namespace for cross-document refs (typika:opening.foo). Hyphens allowed in segments.",
+      "type": "string",
+      "pattern": "^([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z0-9_-]*(\\.[a-zA-Z0-9_-]+)*$"
+    },
+
+    "SaintCategory": {
+      "title": "Saint commemoration category (open enum)",
+      "description": "Category used for general-menaion fallback, propers selection, and rank inference. NOT enforced as a closed enum — new categories surface over years. v1.1 will lock based on observed values after 30 days.",
+      "type": "string",
+      "examples": [
+        "martyr", "martyrs", "hieromartyr", "hieromartyrs",
+        "monastic", "monasticConfessor", "monasticMartyr", "nun",
+        "hierarch", "prophet", "apostle", "apostles",
+        "theotokos", "unmercenaries", "forerunner", "fool", "cross",
+        "soulSaturday", "council", "saint"
+      ]
+    },
+
+    "FeastRank": {
+      "title": "Liturgical rank of the commemoration (open enum)",
+      "description": "Rank governs assembler decisions (entrance, kathisma, lauds, polyeleos secondary propers, etc.). NOT enforced as closed enum — boundary cases (vigil vs polyeleos) are occasionally fluid. v1.1 will lock based on observed values after 30 days.",
+      "type": "string",
+      "examples": [
+        "minor", "simple", "sixStichera", "doxology",
+        "polyeleos", "vigil", "greatFeast"
+      ]
+    },
+
+    "Hymn": {
+      "title": "A generic hymn (sticheron, troparion-like)",
+      "description": "Minimal shape: an object. Text is normally present but may be omitted on a 'repeat' sticheron (sing the previous one with a different verse).",
+      "type": "object",
+      "properties": {
+        "text":    { "type": "string", "minLength": 1 },
+        "repeat":  { "type": "boolean" },
+        "tone":    { "$ref": "#/$defs/Tone" },
+        "verse":   {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string" }
+          ]
+        },
+        "source":  { "type": "string" },
+        "key":     { "type": "string" },
+        "label":   { "type": "string" },
+        "melody":  { "type": "string" },
+        "note":    { "type": "string" },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "Troparion": {
+      "title": "Troparion — short summary hymn for a feast or saint",
+      "type": "object",
+      "required": ["text", "tone"],
+      "properties": {
+        "text":    { "type": "string", "minLength": 1 },
+        "tone":    { "$ref": "#/$defs/Tone" },
+        "label":   { "type": "string" },
+        "melody":  { "type": "string" },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "Kontakion": {
+      "title": "Kontakion — paired with troparion, often with ikos",
+      "type": "object",
+      "required": ["text", "tone"],
+      "properties": {
+        "text":    { "type": "string", "minLength": 1 },
+        "tone":    { "$ref": "#/$defs/Tone" },
+        "label":   { "type": "string" },
+        "melody":  { "type": "string" },
+        "ikos":    {
+          "description": "Either a plain text string or an {text, label} object.",
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "required": ["text"],
+              "properties": {
+                "text":  { "type": "string", "minLength": 1 },
+                "label": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "BothNow": {
+      "title": "Theotokion at the 'Now and ever' slot",
+      "description": "Appears after a saint's Glory in many sections. Shape mirrors Hymn but kept as a distinct atom for clarity.",
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text":   { "type": "string", "minLength": 1 },
+        "tone":   { "$ref": "#/$defs/Tone" },
+        "label":  { "type": "string" },
+        "melody": { "type": "string" }
+      }
+    },
+
+    "Prokeimenon": {
+      "title": "Versicle + verse sung before a reading",
+      "type": "object",
+      "required": ["refrain", "verse", "tone"],
+      "properties": {
+        "refrain": { "type": "string", "minLength": 1 },
+        "verse":   { "type": "string", "minLength": 1 },
+        "tone":    { "$ref": "#/$defs/Tone" },
+        "label":   { "type": "string" },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "Alleluia": {
+      "title": "Alleluia: tone + verses before Gospel",
+      "type": "object",
+      "required": ["tone", "verses"],
+      "properties": {
+        "tone":   { "$ref": "#/$defs/Tone" },
+        "verses": {
+          "type": "array",
+          "minItems": 1,
+          "items":   { "type": "string", "minLength": 1 }
+        },
+        "label":   { "type": "string" },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "CanonOde": {
+      "title": "One ode of a canon (irmos + troparia, optional katavasia)",
+      "description": "irmos2/irmos3 present when joining a second/third canon at this ode. troparia may include theotokia inline. Both irmos and troparia are optional in v1 — afterfeast canons can defer irmos to a parent feast canon, and feast-Matins overlays can have irmos-only odes (troparia from the feast canon).",
+      "type": "object",
+      "properties": {
+        "irmos":     { "type": "string", "minLength": 1 },
+        "irmos2":    { "type": "string" },
+        "irmos3":    { "type": "string" },
+        "troparia":  {
+          "type": "array",
+          "items":   { "$ref": "#/$defs/Hymn" }
+        },
+        "katavasia": { "type": "string" },
+        "label":     { "type": "string" }
+      }
+    },
+
+    "StructureBlockType": {
+      "title": "Service-structure block type",
+      "enum": ["fixed", "variable"]
+    },
+
+    "StructureBlock": {
+      "title": "A block in a service-structure skeleton (the input)",
+      "description": "Lives in service-structure/*.json. type='fixed' points into fixed-texts via textKey. type='variable' resolves at runtime via resolvedBy + sources.",
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id":         { "type": "string", "minLength": 1 },
+        "type":       { "$ref": "#/$defs/StructureBlockType" },
+        "speaker":    { "$ref": "#/$defs/Speaker" },
+        "textKey":    { "$ref": "#/$defs/DotPath" },
+        "resolvedBy": { "type": "string" },
+        "sources":    { "type": "array", "items": { "type": "string" } },
+        "note":       { "type": "string" },
+        "label":      { "type": "string" },
+        "section":    { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if":   { "properties": { "type": { "const": "fixed" } } },
+          "then": { "required": ["textKey"] }
+        }
+      ]
+    },
+
+    "ServiceBlock": {
+      "title": "A rendered output block (assembler emits these)",
+      "description": "Documented in CLAUDE.md. Used by renderers + e2e tests. Not authored directly — emitted by assemblers.",
+      "type": "object",
+      "required": ["id", "section", "type", "text"],
+      "properties": {
+        "id":      { "type": "string", "minLength": 1 },
+        "section": { "type": "string" },
+        "type":    {
+          "enum": ["rubric", "prayer", "hymn", "verse", "response", "doxology", "reading", "litany", "exclamation"]
+        },
+        "speaker": { "$ref": "#/$defs/Speaker" },
+        "text":    { "type": "string" },
+        "tone":    { "$ref": "#/$defs/Tone" },
+        "source":  { "type": "string" },
+        "label":   { "type": "string" }
+      }
+    }
+
+  }
+}

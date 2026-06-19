@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/festal-matins.schema.json",
+  "title": "Festal Matins file (variable-sources/festal-matins/*.json)",
+  "description": "Per-feast festal Matins overlay (Pentecost, Ascension, etc.). Permissive v1.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

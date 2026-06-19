@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/fixed-texts/translation-overlay.schema.json",
+  "title": "Translation overlay sparse document",
+  "description": "fixed-texts/translations/<id>/vespers-fixed.json (etc). Sparse — only overrides; no required keys. Key drift is checked by server-lib/overlays/drift.js separately.",
+  "type": "object",
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/education-modules.schema.json",
+  "title": "Education modules (variable-sources/education-modules*.json)",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta":   { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "modules": {}
+  },
+  "additionalProperties": true
+}

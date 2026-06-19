@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/general-menaion-propers.schema.json",
+  "title": "General menaion propers (variable-sources/general-menaion-propers.json)",
+  "description": "Polyeleos secondary propers by saint category. Spec at features/polyeleos-saint-propers.md.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": {
+    "description": "Either an alias string pointing to another category, or a propers object.",
+    "oneOf": [
+      { "type": "string" },
+      {
+        "type": "object",
+        "properties": {
+          "_source":       { "type": "string" },
+          "prokeimenon":   { "type": "object", "additionalProperties": true },
+          "alleluia":      { "type": "object", "additionalProperties": true },
+          "communionHymn": { "type": "object", "additionalProperties": true },
+          "koinonikon":    { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": true
+      }
+    ]
+  }
+}

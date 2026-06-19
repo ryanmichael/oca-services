@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
+      - name: Schema validation (all JSON data layers)
+        run: npm run validate
+
       - name: Smoke tests
         run: npm test
 

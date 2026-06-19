@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/calendar-entry.schema.json",
+  "title": "Calendar entry (variable-sources/calendar/YYYY-MM-DD.json)",
+  "description": "The 'conductor' — names commemorations and points the assembler at sources/keys per section. Runtime calendar is computed; the files in variable-sources/calendar/ are reference seeds.",
+  "type": "object",
+  "required": ["date"],
+  "properties": {
+    "_meta":     { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "date":      { "$ref": "../_defs.schema.json#/$defs/DateKey" },
+    "dayOfWeek": {
+      "enum": ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+    },
+    "julianDate": {
+      "oneOf": [
+        { "$ref": "../_defs.schema.json#/$defs/DateKey" },
+        { "type": "null" }
+      ]
+    },
+    "liturgicalContext": {
+      "type": "object",
+      "properties": {
+        "season":     { "type": "string" },
+        "tone":       { "$ref": "../_defs.schema.json#/$defs/Tone" },
+        "toneSource": { "type": "string" },
+        "specialDay": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "commemorations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "rank":     { "type": "integer", "minimum": 1 },
+          "type":     { "enum": ["fixed", "moveable"] },
+          "source":   { "type": "string" },
+          "key":      { "type": "string" },
+          "title":    { "type": "string" },
+          "category": { "$ref": "../_defs.schema.json#/$defs/SaintCategory" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "vespers":  { "type": "object", "additionalProperties": true },
+    "matins":   { "type": "object", "additionalProperties": true },
+    "liturgy":  { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": true
+}

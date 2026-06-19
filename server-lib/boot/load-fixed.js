@@ -33,6 +33,32 @@ function loadOrExit(label, loader) {
   }
 }
 
+function runSchemaSweep() {
+  let result;
+  try {
+    const { spawnSync } = require('node:child_process');
+    const path = require('node:path');
+    const root = path.resolve(__dirname, '..', '..');
+    result = spawnSync(process.execPath, [path.join(root, 'scripts', 'validate-schemas.js'), '--quiet'], {
+      cwd: root, encoding: 'utf8'
+    });
+  } catch (err) {
+    console.error('Schema sweep failed to run:', err.message);
+    if (process.env.NODE_ENV !== 'production') process.exit(1);
+    return;
+  }
+  const line = (result.stdout || '').trim().split('\n').pop() || '';
+  if (result.status === 0) { console.log('Schema sweep:', line); return; }
+  if (process.env.NODE_ENV === 'production') {
+    console.warn('Schema sweep WARN:', line || '(no output)');
+    console.warn(result.stderr || '');
+  } else {
+    console.error('Schema sweep FAIL:', line || '(no output)');
+    console.error(result.stderr || '');
+    process.exit(1);
+  }
+}
+
 function boot() {
   const { registerBaseFixed, validateAllTranslations } = overlays;
   const { loadSources } = sourcesLib;
@@ -68,6 +94,12 @@ function boot() {
   // Defer translation validation until AFTER all base fixed-text files have
   // registered, so drift warnings have a base to check against.
   validateAllTranslations();
+
+  // Schema sweep across all data layers. Dev = fail loud; prod = warn-only +
+  // Sentry once Track C lands, so a single bad deploy can't take down the
+  // running app (pre-push + CI already gate this). NODE_ENV=production gives
+  // the warn-only path.
+  runSchemaSweep();
 
   const paschalHoursFixed = loadOrExit('Paschal Hours fixed texts', () => {
     const t = loadJSON('fixed-texts/paschal-hours-fixed.json');

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/liturgical-day-labels.schema.json",
+  "title": "Liturgical day labels (variable-sources/liturgical-day-labels.json)",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

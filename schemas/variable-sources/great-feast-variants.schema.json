@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/great-feast-variants.schema.json",
+  "title": "Great-feast variants (variable-sources/great-feast-variants.json)",
+  "description": "Variants per great feast. Mirrors data-validators.js validateGreatFeastVariants (required: troparion + tone per feast key).",
+  "type": "object",
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "troparion": { "$ref": "../_defs.schema.json#/$defs/Troparion" },
+      "kontakion": { "$ref": "../_defs.schema.json#/$defs/Kontakion" }
+    },
+    "additionalProperties": true
+  }
+}

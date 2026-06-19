@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/feast-canon.schema.json",
+  "title": "Feast canon (variable-sources/feast-canons/*.json)",
+  "description": "Standalone canon for a feast (Nativity, Theophany, etc.). Required: tone + at least odes 1, 3, 4, 5, 6, 7, 8, 9.",
+  "type": "object",
+  "required": ["tone"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "tone":  { "$ref": "../_defs.schema.json#/$defs/Tone" },
+    "ode1":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode3":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode4":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode5":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode6":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode7":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode8":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+    "ode9":  { "$ref": "../_defs.schema.json#/$defs/CanonOde" }
+  },
+  "additionalProperties": true
+}

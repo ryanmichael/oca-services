@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/daily-propers.schema.json",
+  "title": "Daily propers (variable-sources/daily-propers.json)",
+  "description": "Day-of-week propers (prokeimena, alleluia, communion). Mirrors data-validators.js validateDailyPropers posture.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta":               { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "dayPatrons":          { "type": "object", "additionalProperties": true },
+    "communionHymns":      { "type": "object", "additionalProperties": true },
+    "sundayProkeimena":    { "type": "object", "additionalProperties": true },
+    "sundayAlleluia":      { "type": "object", "additionalProperties": true },
+    "weekdayProkeimena":   { "type": "object", "additionalProperties": true },
+    "weekdayAlleluia":     { "type": "object", "additionalProperties": true },
+    "lentenSundayProkeimena": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": true
+}

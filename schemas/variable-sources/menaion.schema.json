@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/menaion.schema.json",
+  "title": "Menaion feast file (variable-sources/menaion/MONTH-DD.json)",
+  "description": "Per-saint or per-feast file for a fixed-cycle date. Permissive v1 — mirrors data-validators.js validateMenaionFeast posture. _meta required; vespers/matins/troparion/kontakion optional but well-shaped if present.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta":     { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "key":       { "type": "string" },
+    "date":      { "$ref": "../_defs.schema.json#/$defs/MonthDayKey" },
+    "title":     { "type": "string" },
+    "fullTitle": { "type": "string" },
+    "category":  { "$ref": "../_defs.schema.json#/$defs/SaintCategory" },
+    "feastRank": { "$ref": "../_defs.schema.json#/$defs/FeastRank" },
+    "saints":    { "type": "array", "items": { "type": "string" } },
+    "troparion": { "$ref": "../_defs.schema.json#/$defs/Troparion" },
+    "kontakion": { "$ref": "../_defs.schema.json#/$defs/Kontakion" },
+    "vespers": {
+      "type": "object",
+      "properties": {
+        "_meta":     { "$ref": "../_defs.schema.json#/$defs/Meta" },
+        "lordICall": {
+          "type": "object",
+          "properties": {
+            "tone":       { "$ref": "../_defs.schema.json#/$defs/Tone" },
+            "melodyNote": { "type": "string" },
+            "hymns":      {
+              "type": "array",
+              "items":    { "$ref": "../_defs.schema.json#/$defs/Hymn" }
+            },
+            "glory":   { "$ref": "../_defs.schema.json#/$defs/Hymn" },
+            "bothNow": { "$ref": "../_defs.schema.json#/$defs/BothNow" },
+            "stavrotheotokion": { "$ref": "../_defs.schema.json#/$defs/Hymn" }
+          },
+          "additionalProperties": true
+        },
+        "aposticha": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": true },
+            { "type": "array",  "items": {} }
+          ]
+        },
+        "troparion": { "$ref": "../_defs.schema.json#/$defs/Troparion" }
+      },
+      "additionalProperties": true
+    },
+    "matins": {
+      "type": "object",
+      "properties": {
+        "_meta":     { "$ref": "../_defs.schema.json#/$defs/Meta" },
+        "troparion": { "$ref": "../_defs.schema.json#/$defs/Troparion" },
+        "sessionalHymns": {
+          "description": "Either a single sessional-hymn object (with bothNow/stavrotheotokion) or an array of sessional hymns.",
+          "oneOf": [
+            { "type": "object", "additionalProperties": true },
+            { "type": "array",  "items": {} }
+          ]
+        },
+        "canon": {
+          "type": "object",
+          "properties": {
+            "tone":       { "$ref": "../_defs.schema.json#/$defs/Tone" },
+            "kontakion":  { "$ref": "../_defs.schema.json#/$defs/Kontakion" },
+            "ikos":       {
+              "type": "object",
+              "properties": { "text": { "type": "string" } },
+              "additionalProperties": true
+            },
+            "ode1":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode3":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode4":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode5":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode6":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode7":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode8":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" },
+            "ode9":       { "$ref": "../_defs.schema.json#/$defs/CanonOde" }
+          },
+          "additionalProperties": true
+        },
+        "exapostilarion": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "lauds": {
+          "type": "object",
+          "properties": {
+            "doxastikon": { "$ref": "../_defs.schema.json#/$defs/Hymn" },
+            "stichera":   {
+              "type": "array",
+              "items":    { "$ref": "../_defs.schema.json#/$defs/Hymn" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "aposticha": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": true },
+            { "type": "array",  "items": {} }
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/octoechos.schema.json",
+  "title": "Octoechos (variable-sources/octoechos.json)",
+  "description": "The eight-tone book. Top-level keys tone1..tone8 each carry that tone's resurrectional hymns. Permissive v1; sub-shapes left additionalProperties until v1.1.",
+  "type": "object",
+  "required": ["tone1", "tone2", "tone3", "tone4", "tone5", "tone6", "tone7", "tone8"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" },
+    "tone1": { "type": "object", "additionalProperties": true },
+    "tone2": { "type": "object", "additionalProperties": true },
+    "tone3": { "type": "object", "additionalProperties": true },
+    "tone4": { "type": "object", "additionalProperties": true },
+    "tone5": { "type": "object", "additionalProperties": true },
+    "tone6": { "type": "object", "additionalProperties": true },
+    "tone7": { "type": "object", "additionalProperties": true },
+    "tone8": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": true
+}

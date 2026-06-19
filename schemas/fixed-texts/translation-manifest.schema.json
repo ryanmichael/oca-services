@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/fixed-texts/translation-manifest.schema.json",
+  "title": "Translation overlay manifest",
+  "description": "fixed-texts/translations/<id>/manifest.json. Declares the overlay's name, kind, extends-chain, and optional rubrics.",
+  "type": "object",
+  "required": ["name", "kind", "extends"],
+  "properties": {
+    "name":        { "type": "string", "minLength": 1 },
+    "kind":        {
+      "type": "string",
+      "description": "Open enum: jurisdiction, translation, parish, style, test. v1.1 may lock.",
+      "examples": ["jurisdiction", "translation", "parish", "style", "test"]
+    },
+    "jurisdiction": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "null" }
+      ]
+    },
+    "style":       {
+      "oneOf": [
+        { "enum": ["new", "old"] },
+        { "type": "null" }
+      ]
+    },
+    "extends": {
+      "type": "array",
+      "description": "Overlay slugs this overlay layers on top of (parent-first cascade).",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "description": { "type": "string" },
+    "sources":     { "type": "string" },
+    "listed":      { "type": "boolean" },
+    "rubrics":     {
+      "type": "object",
+      "description": "Non-text parish/jurisdiction preferences (free-form).",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

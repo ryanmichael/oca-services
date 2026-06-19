@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/eothinon.schema.json",
+  "title": "Eothinon Gospel cycle (variable-sources/eothinon.json)",
+  "description": "Eleven Sunday-Matins resurrection Gospels keyed 1..11.",
+  "type": "object",
+  "patternProperties": {
+    "^([1-9]|1[01])$": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

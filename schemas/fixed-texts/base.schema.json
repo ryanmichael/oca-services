@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/fixed-texts/base.schema.json",
+  "title": "Fixed-texts base document (L2)",
+  "description": "Top-level vespers-fixed.json / matins-fixed.json / liturgy-fixed.json etc. A bag of dot-pathed sections. v1 is permissive — must be an object with _meta. Tighten in v1.1 once section vocabulary is enumerated.",
+  "type": "object",
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

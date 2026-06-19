@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/great-feasts-liturgy.schema.json",
+  "title": "Great feasts Liturgy data (variable-sources/great-feasts-liturgy.json)",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

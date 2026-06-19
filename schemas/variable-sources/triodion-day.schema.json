@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/triodion-day.schema.json",
+  "title": "Triodion day file (variable-sources/triodion/*.json)",
+  "description": "One moveable-cycle day from the Lenten/pre-Lenten Triodion. Permissive v1.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

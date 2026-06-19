@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/cocelebrated-overlays.schema.json",
+  "title": "Cocelebrated overlays (variable-sources/cocelebrated-overlays.json)",
+  "description": "Date-keyed (MM-DD or M-DD) overlay substitutions.",
+  "type": "object",
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "patternProperties": {
+    "^[0-9]{1,2}-[0-9]{1,2}$": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": false
+}

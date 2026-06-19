@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/prokeimena.schema.json",
+  "title": "Prokeimena collection (variable-sources/prokeimena.json)",
+  "description": "Top-level groupings: weekday, great, soulSaturday, lenten. Each group is free-form internally; v1 permissive.",
+  "type": "object",
+  "required": ["_meta"],
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "additionalProperties": true
+}

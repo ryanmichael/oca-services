@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oca-services.local/schemas/variable-sources/pentecostarion-overrides.schema.json",
+  "title": "Pentecostarion Sunday overrides (variable-sources/pentecostarion-sunday-overrides.json)",
+  "description": "Overrides keyed by number of days past Pascha (7, 14, 21, ..., 49). Numeric string keys, free-form bodies.",
+  "type": "object",
+  "properties": {
+    "_meta": { "$ref": "../_defs.schema.json#/$defs/Meta" }
+  },
+  "patternProperties": {
+    "^[0-9]+$": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": false
+}

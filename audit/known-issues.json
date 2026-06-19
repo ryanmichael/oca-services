@@ -46,11 +46,5 @@
       "researchPointer": "OCA Pentecostarion volume contains the eothinon set. No predictable OCA URL identified at oca.org. Investigate: OCA-published Pentecostarion (St. Tikhon's Seminary Press), oca.org service-music for eothinon-specific PDFs."
     }
   ],
-  "knownFailures": [
-    {
-      "rule": "L3-translation-consistency",
-      "dates": ["2026-05-10"],
-      "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. addedAt 2026-06-18 (06-14 cleared 2026-06-19 by yy→tt pass on synaxis-na-saints.json)."
-    }
-  ]
+  "knownFailures": []
 }

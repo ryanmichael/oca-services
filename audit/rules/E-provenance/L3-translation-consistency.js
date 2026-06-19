@@ -5,13 +5,24 @@
 // an otherwise TT service — see project_pronoun_consistency feedback memo.
 //
 // Exceptions: Christ speaking plural-"you" to the disciples (e.g. "I am with
-// you" in the Ascension Kontakion) is intentional and OCA-canonical.
+// you" in the Ascension Kontakion) is intentional and OCA-canonical. Also
+// any block whose text contains a plural-vocative addressee — "to you, O
+// violators of the Law" in the Resurrection Beatitude is grammatical
+// plural-you-object, not YY drift.
+
+const { isPluralAddress } = require('../../../scripts/yy-to-tt.js');
 
 const TT_MARKER     = /\b(thou|thee|thy|thine|hast|hadst|didst|dost|wast|art)\b/i;
 const YY_PRONOUN    = /\b(you|your)\b/i;
 const YY_EXCEPTIONS = [
   /I am with you/i,
   /there is no one against you/i,
+  // "to you, O <plural-noun>" — plural-you-object addressing a vocative
+  // group (violators, transgressors, peoples, nations, etc.). Adjacent
+  // to the vocative-noun set in the yy→tt transformer's plural-address
+  // heuristic, plus a few specific to Resurrection / Old-Testament-quoting
+  // hymns.
+  /\bto you,\s*O\s+(violators|transgressors|nations|peoples|tribes|kingdoms|gentiles|kings|princes|rulers|elders|priests|levites|wicked|ungodly|adversaries|enemies)\b/i,
 ];
 
 // Sections that only ever contain feast variant content (no Menaion-injected
@@ -58,6 +69,9 @@ module.exports = {
     for (const b of blocks) {
       if (!hasUnexpectedYY(b.text)) continue;
       if (isLikelyTTBlock(b.text)) continue; // block itself has both markers — mixed inside, but probably the dialogue case
+      // Block-level plural-vocative ("O saints/martyrs/violators/…") means
+      // any "you/your" is plural-you-object, not YY drift.
+      if (isPluralAddress(b.text)) continue;
       issues.push({
         message: `${b.section}${b.label ? ` (${b.label})` : ''} contains YY pronoun(s) in an otherwise-TT service: "${b.text.slice(0, 80).replace(/\s+/g, ' ')}…"`,
         hint:    'Convert You/Your/yours → Thou/Thee/Thy/Thine; see GREAT_FEAST_VARIANTS in server.js for examples.',

@@ -11,7 +11,13 @@ const $ = (id) => document.getElementById(id);
 const els = {
   loading:        $('pa-loading'),
   unauthorized:   $('pa-unauthorized'),
+  grid:           $('pa-grid'),
   form:           $('pa-form'),
+  previewService: $('preview-service'),
+  previewDate:    $('preview-date'),
+  previewFrame:   $('preview-frame'),
+  previewReload:  $('preview-reload'),
+  quickLinks:     document.querySelectorAll('.pa-quick[data-quick]'),
   nameDisplay:    $('pa-name-display'),
   name:           $('f-name'),
   city:           $('f-city'),
@@ -219,9 +225,8 @@ async function handleSubmit(e) {
     await postSettings(payload);
     initialState = snapshot();
     refreshDirtyUI();
-    const previewUrl = SERVICE_PREVIEW_URL(nextSundayISO());
-    showToast('success',
-      `Saved. <a href="${previewUrl}" target="_blank" rel="noopener">View next Sunday's Liturgy →</a>`);
+    refreshPreview(true);
+    showToast('success', 'Saved. Preview updated.');
   } catch (err) {
     showToast('error', `Couldn't save: ${escapeHtml(err.message)}. Your changes are still on this page; try again.`);
     els.save.disabled = false;
@@ -317,12 +322,49 @@ window.addEventListener('beforeunload', (e) => {
   if (isDirty()) { e.preventDefault(); e.returnValue = ''; }
 });
 
+// ── Preview panel ───────────────────────────────────────────────────────
+function previewUrl(bustToken) {
+  const d = els.previewDate.value || nextSundayISO();
+  const svc = els.previewService.value || 'liturgy';
+  const bust = bustToken ? `&_=${bustToken}` : '';
+  return `/service?date=${d}&service=${svc}&translation=${slug}${bust}`;
+}
+
+function refreshPreview(forceBust) {
+  els.previewFrame.src = previewUrl(forceBust ? Date.now() : 0);
+}
+
+function pickQuickDate(kind) {
+  const today = new Date();
+  if (kind === 'today') return today.toISOString().slice(0, 10);
+  if (kind === 'next-sunday') return nextSundayISO();
+  // Pascha + Cheesefare-Sat depend on the year. Hard-coded for 2026.
+  // These can lift to /api/calendar/year endpoints later.
+  const PASCHA_2026         = '2026-04-12';
+  const CHEESEFARE_SAT_2026 = '2026-02-21';
+  if (kind === 'pascha') return PASCHA_2026;
+  if (kind === 'cheesefare-sat') return CHEESEFARE_SAT_2026;
+  return nextSundayISO();
+}
+
+els.previewService.addEventListener('change', () => refreshPreview(false));
+els.previewDate.addEventListener('change', () => refreshPreview(false));
+els.previewReload.addEventListener('click', () => refreshPreview(true));
+els.quickLinks.forEach(btn => btn.addEventListener('click', () => {
+  const d = pickQuickDate(btn.dataset.quick);
+  els.previewDate.value = d;
+  // Pascha + Cheesefare-Sat are vespers/matins-relevant; honor current service pick.
+  refreshPreview(false);
+}));
+
 // Boot
 loadSettings().then(data => {
   if (!data) return;
   els.loading.hidden = true;
-  els.form.hidden = false;
+  els.grid.hidden = false;
   populate(data);
+  els.previewDate.value = nextSundayISO();
+  refreshPreview(false);
 }).catch(err => {
   els.loading.textContent = `Failed to load settings: ${err.message}`;
 });

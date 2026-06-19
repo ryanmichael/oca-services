@@ -26,7 +26,53 @@
     }
     .header-back:hover { color: var(--rubric); }
 
-    .pa-page { max-width: 720px; margin: 0 auto; padding: 28px 32px 80px; }
+    .pa-page { max-width: 1400px; margin: 0 auto; padding: 28px 32px 80px; }
+
+    /* Two-column on wide screens; stacked on narrow. */
+    .pa-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px;
+    }
+    @media (min-width: 1100px) {
+      .pa-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+    }
+    .pa-col-form { min-width: 0; }
+    .pa-col-preview { min-width: 0; }
+    @media (min-width: 1100px) {
+      .pa-col-preview { position: sticky; top: 70px; max-height: calc(100vh - 90px); display: flex; flex-direction: column; }
+    }
+
+    .pa-preview {
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; flex-direction: column; min-height: 480px;
+    }
+    @media (min-width: 1100px) { .pa-preview { flex: 1; min-height: 0; } }
+
+    .pa-preview-head {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      padding: 12px 14px; border-bottom: 1px solid var(--border);
+    }
+    .pa-preview-head label { display: flex; align-items: center; gap: 4px; }
+    .pa-preview-head select, .pa-preview-head input[type=date] {
+      font-family: 'EB Garamond', serif; font-size: 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 4px 6px; color: var(--text);
+    }
+    .pa-quicklinks {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 8px 14px; border-bottom: 1px solid var(--border);
+    }
+    .pa-quicklinks .pa-quick {
+      background: none; border: 1px solid var(--border);
+      font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .12em;
+      color: var(--muted); text-transform: uppercase;
+      padding: 4px 8px; cursor: pointer; transition: border-color .15s, color .15s;
+    }
+    .pa-quicklinks .pa-quick:hover { border-color: var(--rubric); color: var(--rubric); }
+
+    .pa-preview-frame {
+      flex: 1; border: 0; width: 100%; min-height: 360px;
+      background: var(--bg);
+    }
 
     .pa-title {
       font-family: 'Cinzel', serif; font-size: 22px; color: var(--text);
@@ -75,7 +121,9 @@
 <div class="pa-page">
   <div id="pa-loading" class="pa-empty">Loading…</div>
 
-  <form id="pa-form" hidden>
+  <div class="pa-grid" id="pa-grid" hidden>
+   <div class="pa-col-form">
+    <form id="pa-form">
     <h1 class="pa-title" id="pa-name-display">Loading…</h1>
     <p class="pa-subtitle">Service customization</p>
 
@@ -223,7 +271,38 @@
       <span class="pa-spacer"></span>
       <button type="submit" class="bar-btn bar-btn--primary" id="pa-save" disabled>Save changes</button>
     </div>
-  </form>
+    </form>
+   </div>
+
+   <aside class="pa-col-preview">
+     <div class="pa-section-label" style="margin-bottom: 10px;">Live preview</div>
+     <div class="pa-preview">
+       <div class="pa-preview-head">
+         <label>
+           <span class="pa-field-label" style="margin: 0;">Service</span>
+           <select id="preview-service">
+             <option value="liturgy">Liturgy</option>
+             <option value="vespers">Vespers</option>
+             <option value="matins">Matins</option>
+           </select>
+         </label>
+         <label>
+           <span class="pa-field-label" style="margin: 0;">Date</span>
+           <input type="date" id="preview-date">
+         </label>
+         <span class="pa-spacer" style="flex: 1;"></span>
+         <button type="button" class="pa-quick" id="preview-reload" title="Reload">↻</button>
+       </div>
+       <div class="pa-quicklinks">
+         <button type="button" class="pa-quick" data-quick="today">Today</button>
+         <button type="button" class="pa-quick" data-quick="next-sunday">Next Sunday</button>
+         <button type="button" class="pa-quick" data-quick="pascha">Pascha</button>
+         <button type="button" class="pa-quick" data-quick="cheesefare-sat">Cheesefare Sat</button>
+       </div>
+       <iframe class="pa-preview-frame" id="preview-frame" src="about:blank" title="Service preview"></iframe>
+     </div>
+   </aside>
+  </div>
 
   <div id="pa-unauthorized" class="pa-empty" hidden>
     <p>This page is for parish administrators.</p>

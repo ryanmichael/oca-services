@@ -81,7 +81,7 @@ jobs:
         # findings (D2-D6, E4, L3) triaged into known-issues.json on
         # 2026-06-18 — see those entries' `reason` fields for the underlying
         # fix paths. Today's representative sweep: 0 high / 0 medium / 0 low,
-        # 33 suppressed (after D4 Triodion-glory guard + rule tighten on 2026-06-19).
+        # 29 suppressed (after D6 Paschal-Theotokion-substitute rule tighten on 2026-06-19).
         run: npm run audit -- --strict
         continue-on-error: true
 

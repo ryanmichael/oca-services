@@ -79,10 +79,9 @@
       "dates": [
         "2026-01-29",
         "2026-03-27",
-        "2026-04-25", "2026-05-02", "2026-05-09", "2026-05-16",
         "2026-06-23", "2026-06-28"
       ],
-      "reason": "Vigil-rank / paschal-cycle Sat-eve Vespers Aposticha: Glory present but Now+Theotokion missing. Three Hierarchs Vigil (01-29), Lazarus Sat (03-27), pentecostarion Saturdays (04-25, 05-02, 05-09, 05-16), late-June Sat eves (06-23, 06-28). Same data gap class as D2/D4 — Aposticha Theotokion not injected when the Glory comes from a Menaion/Pentecostarion path. addedAt 2026-06-18."
+      "reason": "Vigil-rank / Lazarus Sat-eve Vespers Aposticha: Glory present but Now+Theotokion entirely missing in the assembly. Three Hierarchs Vigil (01-29), Lazarus Sat (03-27), Nativity of Forerunner vigil (06-23), Sts Peter & Paul vigil (06-28). For vigil rank the OCA office has: 3 stichera with verses + Glory + saint doxastichon + Now+Theotokion — the assembler currently drops the trailing Now+Theotokion when the Glory comes from a vigil-rank Menaion path. Real bug; fix path is a new injection branch in for-date.js for vigil-rank that mirrors the Sat-eve injection but adds the missing Now-doxology + Theotokion (Octoechos appendix or saint's own). Paschal-cycle 04-25/05-02/05-09/05-16 cleared on 2026-06-19 by rule update accepting Paschal sticheron as Theotokion-equivalent. addedAt 2026-06-18, scoped 2026-06-19."
     },
     {
       "rule": "M28-matins-aposticha-shape",

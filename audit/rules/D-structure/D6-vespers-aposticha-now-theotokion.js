@@ -30,7 +30,13 @@ module.exports = {
 
     const tail = apost.slice(gloryIdx + 1);
     const hasNow        = tail.some(b => b.type === 'doxology' && /^Now and ever/i.test(b.text || ''));
-    const hasTheotokion = tail.some(b => b.type === 'hymn' && /theotokion/i.test(b.label || ''));
+    // Paschal period: the trailing "Now-and-ever" hymn is the Paschal
+    // sticheron ("This is the day of Resurrection…"), which functionally
+    // replaces the Theotokion through Pascha → Ascension. Accept a label of
+    // "Paschal" (or label starting with "Paschal") as Theotokion-equivalent.
+    const hasTheotokion = tail.some(b =>
+      b.type === 'hymn' && (/theotokion/i.test(b.label || '') || /^Paschal/i.test(b.label || ''))
+    );
 
     const issues = [];
     if (!hasNow)        issues.push({ message: 'Aposticha Glory present but no "Now and ever" doxology follows.' });

@@ -328,7 +328,12 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               apost.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };
               autoSlot.aposticha.now = { text: apostNow.text, tone: apostNow.tone, label: apostNow.label };
             } else {
-              apost.now = { source: 'octoechos', key: `tone${calendarEntry.liturgicalContext.tone}.saturday.vespers.aposticha.theotokion`, tone: calendarEntry.liturgicalContext.tone, label: 'Theotokion' };
+              // Slavic rubric: aposticha Theotokion follows the tone of the
+              // saint's doxastichon (Glory tone), not the week tone. All 8
+              // `tone${T}.saturday.vespers.aposticha.theotokion` slots exist in
+              // octoechos.json, so this is a simple re-key (parallel to the
+              // weekday-injection branch below).
+              apost.now = { source: 'octoechos', key: `tone${apostGlory.tone}.saturday.vespers.aposticha.theotokion`, tone: apostGlory.tone, label: 'Theotokion' };
             }
           } else if (isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
             const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;

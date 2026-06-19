@@ -225,6 +225,21 @@ const E_STEM_BASES = new Set([
   'rejoice', 'baptize', 'recognize', 'realize', 'emphasize', 'reside',
   'decide', 'divide', 'subside', 'abide', 'reside', 'guide',
   'subdue', 'continue', 'ensue', 'pursue', 'rescue',
+  // -ide: extend the divide/decide family. Audit Finding 2026-06-19 PM
+  // surfaced 'provide' → 'didst provid' in the NA Saints feast canon.
+  'provide',
+  // -ive: parallel to receive/believe. Common in martyr canons.
+  'survive', 'arrive', 'derive', 'strive', 'thrive', 'revive',
+  // -are/-ore/-ure (CVre verbs): liturgical staples. Without these, e.g.
+  // 'declared' → 'declar', 'restored' → 'restor'.
+  'declare', 'prepare', 'compare', 'spare', 'share',
+  'adore', 'restore', 'ignore', 'implore', 'explore',
+  'endure', 'secure', 'measure', 'assure',
+  // -age: 'engaged' → 'engag' without this.
+  'engage', 'enrage', 'encourage', 'manage',
+  // -ate already handled by the /Cated/ regex below, but a few -ote/-ute
+  // outliers are safer here.
+  'atone', 'approve', 'improve', 'remove',
 ]);
 
 // Past-tense suffixes we recognize for stemming

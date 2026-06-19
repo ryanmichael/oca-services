@@ -59,8 +59,8 @@
     },
     {
       "rule": "L3-translation-consistency",
-      "dates": ["2026-05-10", "2026-06-14"],
-      "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. 2026-06-14: NA Saints feast canon has 3 troparia containing YY 'you' pronouns (Innocent, Tikhon, Herman, Yakov, Peter, Juvenaly stichera) — real authoring gap pending a yy→tt transform pass on the feast canon. Both surface in 06-14 audit. addedAt 2026-06-18 (06-14 added)."
+      "dates": ["2026-05-10"],
+      "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. addedAt 2026-06-18 (06-14 cleared 2026-06-19 by yy→tt pass on synaxis-na-saints.json)."
     },
     {
       "rule": "D2-vespers-lic-theotokion",

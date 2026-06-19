@@ -81,7 +81,7 @@ jobs:
         # findings (D2-D6, E4, L3) triaged into known-issues.json on
         # 2026-06-18 — see those entries' `reason` fields for the underlying
         # fix paths. Today's representative sweep: 0 high / 0 medium / 0 low,
-        # 63 suppressed (after E4 octoechos sat-aposticha scrape fix on 2026-06-19).
+        # 60 suppressed (after NA Saints yy→tt pass on 2026-06-19).
         run: npm run audit -- --strict
         continue-on-error: true
 

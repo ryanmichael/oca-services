@@ -83,6 +83,31 @@
     #view-setup .pa-actions { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 16px; align-items: center; }
     #view-setup .pa-actions .pa-spacer { flex: 1; }
 
+    /* ── Service tabs (Liturgy / Vespers / Matins) ────────────────────────── */
+    .pa-tabs {
+      display: flex; gap: 4px; margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pa-tab {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .16em;
+      color: var(--muted); text-transform: uppercase;
+      padding: 10px 16px; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .pa-tab:hover { color: var(--rubric); }
+    .pa-tab.is-active { color: var(--rubric); border-bottom-color: var(--rubric); }
+    .pa-tab .pa-tab-count {
+      display: inline-block; margin-left: 6px;
+      font-family: 'EB Garamond', serif; font-size: 11px; font-style: italic;
+      letter-spacing: 0; text-transform: none; color: var(--muted);
+    }
+
+    .pa-empty-service {
+      padding: 40px 24px; text-align: center; font-style: italic; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+    }
+
     .pa-preview-head {
       display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
       padding: 12px 14px; border-bottom: 1px solid var(--border);
@@ -169,88 +194,115 @@
     </div>
 
     <form id="pa-form">
-    <section class="pa-section">
-      <div class="pa-section-label">Variant choices</div>
-      <div class="pa-card">
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-cherubic">Cherubic Hymn setting</label>
-          <select class="pa-field-input" id="f-cherubic" data-variant-key="cherubic-hymn">
-            <option value="">(inherit from jurisdiction default)</option>
-          </select>
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-precomm">Pre-Communion Prayer wording</label>
-          <select class="pa-field-input" id="f-precomm" data-variant-key="pre-communion-prayer">
-            <option value="">(inherit from jurisdiction default)</option>
-          </select>
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-blessed">"Blessed is the Man" (Vespers Kathisma I)</label>
-          <select class="pa-field-input" id="f-blessed" data-variant-key="blessed-is-the-man">
-            <option value="">(inherit from jurisdiction default)</option>
-          </select>
-        </div>
-        <div class="pa-field-help">Three variant families seeded so far. More arrive as parishes request them.</div>
-      </div>
-    </section>
 
-    <section class="pa-section">
-      <div class="pa-section-label">Service rubrics</div>
-      <div class="pa-card">
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-confess-first" name="rubric_confess_first">
-          <span>
-            <span class="pa-toggle-label">Sing the Communion Prayer before the priest's call</span>
-            <span class="pa-toggle-detail">Order: "I believe, O Lord, and I confess…" → "In the fear of God…" → "Blessed is He that cometh…"</span>
-          </span>
-        </label>
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-omit-pre-trisagion" name="rubric_omit_pre_trisagion_litany">
-          <span>
-            <span class="pa-toggle-label">Skip the pre-Trisagion litany</span>
-            <span class="pa-toggle-detail">Goes directly from the third antiphon's exclamation to the Trisagion.</span>
-          </span>
-        </label>
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-lesser-saints" name="rubric_include_lesser_saints">
-          <span>
-            <span class="pa-toggle-label">Include lesser-rank saint troparia</span>
-            <span class="pa-toggle-detail">By default we suppress saints ranked below "simple" on Sundays; turn this on to keep them.</span>
-          </span>
-        </label>
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-second-gospel" name="rubric_include_second_gospel">
-          <span>
-            <span class="pa-toggle-label">Include the second Gospel reading</span>
-            <span class="pa-toggle-detail">When the day has two readings (e.g. polyeleos saint), include both rather than only the principal.</span>
-          </span>
-        </label>
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-second-koinonikon" name="rubric_include_second_koinonikon">
-          <span>
-            <span class="pa-toggle-label">Include the secondary communion verse</span>
-            <span class="pa-toggle-detail">For days with two koinonika; otherwise only the principal is sung.</span>
-          </span>
-        </label>
-        <label class="pa-toggle">
-          <input type="checkbox" id="f-paschal-comm" name="rubric_paschal_communion_year_round">
-          <span>
-            <span class="pa-toggle-label">Sing "Receive ye the Body of Christ" year-round</span>
-            <span class="pa-toggle-detail">Use the Paschal communion verse outside the Paschal period as well.</span>
-          </span>
-        </label>
+    <!-- Service tabs — active tab also drives the preview iframe. -->
+    <div class="pa-tabs" role="tablist">
+      <button type="button" class="pa-tab is-active" data-service-tab="liturgy" role="tab">Liturgy</button>
+      <button type="button" class="pa-tab"           data-service-tab="vespers" role="tab">Vespers</button>
+      <button type="button" class="pa-tab"           data-service-tab="matins"  role="tab">Matins</button>
+    </div>
 
-        <div class="pa-field" style="margin-top: 16px;">
-          <div class="pa-field-label">Omit Catechumens litanies during these seasons</div>
-          <div class="pa-checkboxes">
-            <label class="pa-check"><input type="checkbox" value="paschal"     class="catech-season"> Paschal period</label>
-            <label class="pa-check"><input type="checkbox" value="lenten"      class="catech-season"> Lenten weekdays</label>
-            <label class="pa-check"><input type="checkbox" value="bright-week" class="catech-season"> Bright Week</label>
+    <!-- LITURGY -->
+    <div class="pa-service-panel" data-service="liturgy">
+      <section class="pa-section">
+        <div class="pa-section-label">Variant choices</div>
+        <div class="pa-card">
+          <div class="pa-field">
+            <label class="pa-field-label" for="f-cherubic">Cherubic Hymn setting</label>
+            <select class="pa-field-input" id="f-cherubic" data-variant-key="cherubic-hymn">
+              <option value="">(inherit from jurisdiction default)</option>
+            </select>
           </div>
-          <div class="pa-field-help">OCA default is paschal only.</div>
+          <div class="pa-field">
+            <label class="pa-field-label" for="f-precomm">Pre-Communion Prayer wording</label>
+            <select class="pa-field-input" id="f-precomm" data-variant-key="pre-communion-prayer">
+              <option value="">(inherit from jurisdiction default)</option>
+            </select>
+          </div>
         </div>
+      </section>
+
+      <section class="pa-section">
+        <div class="pa-section-label">Service rubrics</div>
+        <div class="pa-card">
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-confess-first" name="rubric_confess_first">
+            <span>
+              <span class="pa-toggle-label">Sing the Communion Prayer before the priest's call</span>
+              <span class="pa-toggle-detail">Order: "I believe, O Lord, and I confess…" → "In the fear of God…" → "Blessed is He that cometh…"</span>
+            </span>
+          </label>
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-omit-pre-trisagion" name="rubric_omit_pre_trisagion_litany">
+            <span>
+              <span class="pa-toggle-label">Skip the pre-Trisagion litany</span>
+              <span class="pa-toggle-detail">Goes directly from the third antiphon's exclamation to the Trisagion.</span>
+            </span>
+          </label>
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-lesser-saints" name="rubric_include_lesser_saints">
+            <span>
+              <span class="pa-toggle-label">Include lesser-rank saint troparia</span>
+              <span class="pa-toggle-detail">By default we suppress saints ranked below "simple" on Sundays; turn this on to keep them.</span>
+            </span>
+          </label>
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-second-gospel" name="rubric_include_second_gospel">
+            <span>
+              <span class="pa-toggle-label">Include the second Gospel reading</span>
+              <span class="pa-toggle-detail">When the day has two readings (e.g. polyeleos saint), include both rather than only the principal.</span>
+            </span>
+          </label>
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-second-koinonikon" name="rubric_include_second_koinonikon">
+            <span>
+              <span class="pa-toggle-label">Include the secondary communion verse</span>
+              <span class="pa-toggle-detail">For days with two koinonika; otherwise only the principal is sung.</span>
+            </span>
+          </label>
+          <label class="pa-toggle">
+            <input type="checkbox" id="f-paschal-comm" name="rubric_paschal_communion_year_round">
+            <span>
+              <span class="pa-toggle-label">Sing "Receive ye the Body of Christ" year-round</span>
+              <span class="pa-toggle-detail">Use the Paschal communion verse outside the Paschal period as well.</span>
+            </span>
+          </label>
+
+          <div class="pa-field" style="margin-top: 16px;">
+            <div class="pa-field-label">Omit Catechumens litanies during these seasons</div>
+            <div class="pa-checkboxes">
+              <label class="pa-check"><input type="checkbox" value="paschal"     class="catech-season"> Paschal period</label>
+              <label class="pa-check"><input type="checkbox" value="lenten"      class="catech-season"> Lenten weekdays</label>
+              <label class="pa-check"><input type="checkbox" value="bright-week" class="catech-season"> Bright Week</label>
+            </div>
+            <div class="pa-field-help">OCA default is paschal only.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- VESPERS -->
+    <div class="pa-service-panel" data-service="vespers" hidden>
+      <section class="pa-section">
+        <div class="pa-section-label">Variant choices</div>
+        <div class="pa-card">
+          <div class="pa-field">
+            <label class="pa-field-label" for="f-blessed">"Blessed is the Man" (Kathisma I)</label>
+            <select class="pa-field-input" id="f-blessed" data-variant-key="blessed-is-the-man">
+              <option value="">(inherit from jurisdiction default)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- MATINS -->
+    <div class="pa-service-panel" data-service="matins" hidden>
+      <div class="pa-empty-service">
+        No parish-tunable Matins options yet.<br>
+        More variant families arrive as parishes request them.
       </div>
-    </section>
+    </div>
 
     <div class="pa-actions">
       <span class="pa-dirty-indicator" id="pa-dirty">No unsaved changes</span>
@@ -264,14 +316,9 @@
      <div class="pa-section-label" style="margin-bottom: 10px;">Live preview</div>
      <div class="pa-preview">
        <div class="pa-preview-head">
-         <label>
-           <span class="pa-field-label" style="margin: 0;">Service</span>
-           <select id="preview-service">
-             <option value="liturgy">Liturgy</option>
-             <option value="vespers">Vespers</option>
-             <option value="matins">Matins</option>
-           </select>
-         </label>
+         <span class="pa-field-label" style="margin: 0;">
+           Previewing <span id="preview-service-label" style="font-family: 'Cinzel', serif; color: var(--rubric); margin-left: 4px;">LITURGY</span>
+         </span>
          <label>
            <span class="pa-field-label" style="margin: 0;">Date</span>
            <input type="date" id="preview-date">

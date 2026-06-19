@@ -60,13 +60,19 @@ const els = {
   catechSeasons:   document.querySelectorAll('.catech-season'),
   variantPickers:  document.querySelectorAll('select[data-variant-key]'),
 
+  // Service tabs (drive both form section visibility AND preview service)
+  serviceTabs:     document.querySelectorAll('.pa-tab[data-service-tab]'),
+  servicePanels:   document.querySelectorAll('.pa-service-panel[data-service]'),
+  previewSvcLabel: $('preview-service-label'),
+
   // Preview
-  previewService: $('preview-service'),
   previewDate:    $('preview-date'),
   previewFrame:   $('preview-frame'),
   previewReload:  $('preview-reload'),
   quickLinks:     document.querySelectorAll('.pa-quick[data-quick]'),
 };
+
+let activeService = 'liturgy';
 
 let initialState = { main: null, setup: null };
 let currentPatron = { naturalKey: null, title: null };
@@ -403,12 +409,20 @@ function updateActiveRow() {
   });
 }
 
+// ── Service tabs (also locks preview to active service) ──────────────────
+function setActiveService(svc) {
+  activeService = svc;
+  els.serviceTabs.forEach(t => t.classList.toggle('is-active', t.dataset.serviceTab === svc));
+  els.servicePanels.forEach(p => { p.hidden = p.dataset.service !== svc; });
+  els.previewSvcLabel.textContent = svc.toUpperCase();
+  refreshPreview(false);
+}
+
 // ── Preview ──────────────────────────────────────────────────────────────
 function previewUrl(bustToken) {
   const d = els.previewDate.value || nextSundayISO();
-  const svc = els.previewService.value || 'liturgy';
   const bust = bustToken ? `&_=${bustToken}` : '';
-  return `/service?date=${d}&service=${svc}&translation=${slug}${bust}`;
+  return `/service?date=${d}&service=${activeService}&translation=${slug}${bust}`;
 }
 function refreshPreview(forceBust) {
   els.previewFrame.src = previewUrl(forceBust ? Date.now() : 0);
@@ -463,7 +477,7 @@ els.patronSearch.addEventListener('keydown', (e) => {
 });
 els.patronClear.addEventListener('click', () => setPatron(null, null, null));
 
-els.previewService.addEventListener('change', () => refreshPreview(false));
+els.serviceTabs.forEach(t => t.addEventListener('click', () => setActiveService(t.dataset.serviceTab)));
 els.previewDate.addEventListener('change', () => refreshPreview(false));
 els.previewReload.addEventListener('click', () => refreshPreview(true));
 els.quickLinks.forEach(btn => btn.addEventListener('click', () => {

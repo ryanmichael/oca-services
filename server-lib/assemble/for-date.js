@@ -312,8 +312,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         // a glory + now in matching tones (e.g. Publican-Pharisee, Prodigal,
         // Forgiveness). The Triodion's doxastichon wins over the Menaion
         // saint's. Skip the Menaion glory override on those days.
-        const triodionOwnsGlory = apost.glory && typeof apost.glory.key === 'string'
-          && (apost.glory.key.startsWith('triodion.') || apost.glory.key.startsWith('pentecostarion.'));
+        const triodionOwnsGlory = apost.glory && (
+          apost.glory.source === 'triodion' || apost.glory.source === 'pentecostarion'
+          || (typeof apost.glory.key === 'string'
+              && (apost.glory.key.startsWith('triodion.') || apost.glory.key.startsWith('pentecostarion.')))
+        );
 
         if (apostGlory && !triodionOwnsGlory) {
           apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
@@ -342,7 +345,15 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               // weekday-injection branch below).
               apost.now = { source: 'octoechos', key: `tone${apostGlory.tone}.saturday.vespers.aposticha.theotokion`, tone: apostGlory.tone, label: 'Theotokion' };
             }
-          } else if (isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
+          } else if (isWeekdayInjection && (!isGreatVespers || calendarEntry.vespers?.serviceType === 'all-night-vigil')) {
+            // Weekday Daily Vespers AND weekday-eve vigil-rank Vespers (Three
+            // Hierarchs Fri-eve, Forerunner Nativity Wed-eve, Sts Peter & Paul
+            // Mon-eve). For vigil-rank the calendar entry ships an empty
+            // aposticha (slots: 0, now: undefined); for non-vigil weekday the
+            // calendar entry ships an Octoechos Theotokion at the WEEK tone.
+            // Either way, re-key/add the Now slot at the Glory tone + sung-eve
+            // weekday — Slavic rubric for both shapes (the saint's-own order=-1
+            // Theotokion would have been used above if present).
             const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
             apost.now = {
               source: 'octoechos',

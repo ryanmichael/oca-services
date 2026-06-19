@@ -102,151 +102,19 @@ const { calculatePascha, getAllSaints } = require('./calendar/computus');
 // getTone + getEothinon extracted to calendar/cycle.js (Track D step 3)
 const { getTone, getEothinon } = require('./calendar/cycle');
 
-// getLiturgicalSeason extracted to calendar/seasons.js (Track D step 2)
-const { getLiturgicalSeason } = require('./calendar/seasons');
+// Season/day helpers + stable liturgical key extracted to calendar/seasons.js
+// (Track D step 2 + 5a).
+const {
+  DAYS,
+  getDayOfWeek,
+  getLiturgicalSeason,
+  getCleanMonday,
+  getWeekOfLent,
+  getLentenSaturdayNumber,
+  isSoulSaturday,
+  getLiturgicalKey,
+} = require('./calendar/seasons');
 
-// ─── Day helpers ──────────────────────────────────────────────────────────────
-
-const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-
-function getDayOfWeek(date) {
-  return DAYS[date.getUTCDay()];
-}
-
-// ─── Lenten calculations ──────────────────────────────────────────────────────
-
-/**
- * Returns Clean Monday (first day of Great Lent) for a given year.
- * = Pascha − 48 days.
- */
-function getCleanMonday(year) {
-  return new Date(calculatePascha(year).getTime() - 48 * DAY_MS);
-}
-
-/**
- * Returns which week of Great Lent a date falls in (1–6),
- * or null if the date is not during Great Lent.
- *
- * Week 1 begins on Clean Monday (Monday–Sunday).
- * Week 6 ends on Palm Sunday (the last day before Holy Week).
- *
- * Examples (Pascha 2026 = Apr 12, Clean Monday = Feb 23):
- *   Feb 23 (Mon) → week 1
- *   Mar  7 (Sat) → week 2
- *   Apr  4 (Sat, Lazarus) → week 6
- *   Apr  5 (Sun, Palm Sunday) → week 6
- */
-function getWeekOfLent(date) {
-  if (getLiturgicalSeason(date) !== 'greatLent') return null;
-  const year        = date.getUTCFullYear();
-  const cleanMonday = getCleanMonday(year);
-  const daysSince   = Math.floor((date - cleanMonday) / DAY_MS);
-  return Math.floor(daysSince / 7) + 1;
-}
-
-/**
- * Returns which Lenten Saturday number (1–6) a given date is, or 0.
- *
- *   1 = Saturday of the Great Canon / St. Theodore the Tyrant
- *   2 = Soul Saturday 2 (Memorial Saturday)
- *   3 = Soul Saturday 3 (Memorial Saturday)
- *   4 = Soul Saturday 4 (Memorial Saturday)
- *   5 = 5th Saturday of Lent
- *   6 = Lazarus Saturday (Saturday before Palm Sunday)
- *
- * Examples (Pascha 2026 = Apr 12, Clean Monday = Feb 23):
- *   Feb 28 → 1  (St. Theodore)
- *   Mar  7 → 2  (Soul Saturday 2)
- *   Mar 14 → 3  (Soul Saturday 3)
- *   Mar 21 → 4  (Soul Saturday 4)
- *   Mar 28 → 5
- *   Apr  4 → 6  (Lazarus Saturday)
- */
-function getLentenSaturdayNumber(date) {
-  if (getDayOfWeek(date) !== 'saturday') return 0;
-  if (getLiturgicalSeason(date) !== 'greatLent') return 0;
-
-  const year        = date.getUTCFullYear();
-  const cleanMonday = getCleanMonday(year);
-  const daysSince   = Math.floor((date - cleanMonday) / DAY_MS);
-
-  // First Lenten Saturday is always 5 days after Clean Monday (Mon+5 = Sat)
-  const satNum = Math.floor((daysSince - 5) / 7) + 1;
-  return (satNum >= 1 && satNum <= 6) ? satNum : 0;
-}
-
-/**
- * Returns true if the date is one of the three Memorial Saturdays of
- * Great Lent (Soul Saturdays 2, 3, and 4).
- */
-function isSoulSaturday(date) {
-  const n = getLentenSaturdayNumber(date);
-  return n === 2 || n === 3 || n === 4;
-}
-
-/**
- * Returns a stable liturgical key for a date, independent of calendar year.
- * Used to key DB lookups so collected texts can be reused across years.
- *
- *   greatLent saturday 1     → 'lent.saturday.1'   (St. Theodore)
- *   greatLent saturday 2–4   → 'lent.soulSaturday.2' … 'lent.soulSaturday.4'
- *   greatLent saturday 5     → 'lent.saturday.5'
- *   greatLent saturday 6     → 'lent.lazarusSaturday'
- *   greatLent sunday 1–5     → 'lent.sunday.1' … 'lent.sunday.5'
- *   greatLent weekday        → 'lent.week.N.{dow}'
- *   holyWeek                 → 'holyWeek.{dow}'
- *
- * Returns null for dates without a stable liturgical key
- * (ordinary time, Pentecostarion, Bright Week, etc.).
- */
-function getLiturgicalKey(date) {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-
-  if (season === 'greatLent') {
-    const weekOfLent = getWeekOfLent(date);
-    if (dow === 'saturday') {
-      const satNum = getLentenSaturdayNumber(date);
-      if (satNum === 6)               return 'lent.lazarusSaturday';
-      if (satNum >= 2 && satNum <= 4) return `lent.soulSaturday.${satNum}`;
-      return `lent.saturday.${satNum}`;
-    }
-    if (dow === 'sunday') return `lent.sunday.${weekOfLent}`;
-    return `lent.week.${weekOfLent}.${dow}`;
-  }
-
-  if (season === 'preLenten') {
-    const pascha = calculatePascha(date.getUTCFullYear());
-    const diff   = Math.floor((date - pascha) / DAY_MS);
-    if (diff === -70) return 'triodion.publicanPharisee';
-    if (diff === -63) return 'triodion.prodigalSon';
-    if (diff === -57) return 'triodion.meatfareSaturday';
-    if (diff === -56) return 'triodion.meatfareSunday';
-    if (diff === -49) return 'triodion.forgivenessSunday';
-    // Other pre-Lenten days (ordinary Saturdays, weekdays) → no stable key
-    return null;
-  }
-
-  if (season === 'holyWeek') {
-    return `holyWeek.${dow}`;
-  }
-
-  if (season === 'brightWeek') {
-    return `brightWeek.${dow}`;
-  }
-
-  if (season === 'pentecostarion') {
-    const pascha = calculatePascha(date.getUTCFullYear());
-    const diff   = Math.floor((date - pascha) / DAY_MS);
-    if (diff === 39) return 'pentecostarion.ascension';
-    if (diff === 49) return 'pentecostarion.pentecost';
-    // week 2 = Thomas week, week 3 = Myrrhbearers, …, week 7 = Holy Fathers
-    const week = Math.floor(diff / 7) + 1;
-    return `pentecostarion.week.${week}.${dow}`;
-  }
-
-  return null;
-}
 
 // ─── Calendar entry generators ────────────────────────────────────────────────
 
@@ -1847,166 +1715,14 @@ function generateCalendarEntry(dateStr, style = 'new') {
   return null;
 }
 
-// ─── Liturgy variant ──────────────────────────────────────────────────────────
+// Liturgy-day predicates extracted to calendar/liturgy-day.js (Track D step 5)
+const {
+  getLiturgyVariant,
+  getTrisagionSubstitution,
+  isLiturgyServed,
+  isPresanctifiedDay,
+} = require('./calendar/liturgy-day');
 
-/**
- * Returns the liturgy variant ('basil' or 'chrysostom') for a given date.
- *
- * Basil occasions (OCA Typikon):
- *   - January 1 (Feast of St. Basil the Great)
- *   - Five Sundays of Great Lent (weeks 1–5; Palm Sunday = week 6 → Chrysostom)
- *   - Great Thursday and Great Saturday (Holy Week)
- *   - Eve of Nativity (Dec 24) and Eve of Theophany (Jan 5)
- *
- * Note: when the eves of Nativity or Theophany fall on Sunday or Monday,
- * the Liturgy of Basil transfers to the feast day itself. That edge case
- * is not yet handled here.
- */
-function getLiturgyVariant(date, style = 'new') {
-  const adj    = fixedFeastDate(date, style);
-  const month  = adj.getUTCMonth() + 1;
-  const day    = adj.getUTCDate();
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-
-  if (month === 1  && day === 1)  return 'basil';   // St. Basil's Day
-  if (month === 12 && day === 24) return 'basil';   // Eve of Nativity
-  if (month === 1  && day === 5)  return 'basil';   // Eve of Theophany
-
-  if (season === 'greatLent' && dow === 'sunday') {
-    const week = getWeekOfLent(date);
-    if (week >= 1 && week <= 5) return 'basil';
-  }
-
-  if (season === 'holyWeek' && (dow === 'thursday' || dow === 'saturday')) {
-    return 'basil';
-  }
-
-  return 'chrysostom';
-}
-
-// ─── Trisagion substitution ───────────────────────────────────────────────────
-
-/**
- * Returns the Trisagion substitution type for a given date at the Divine Liturgy.
- *
- *   'cross'      → "Before Thy Cross, we bow down in worship…"
- *                   (Sunday of the Holy Cross; Elevation of the Cross, Sep 14)
- *   'baptismal'  → "As many as have been baptized into Christ, have put on Christ."
- *                   (Nativity Dec 25; Theophany Jan 6; Lazarus Saturday; Great Saturday)
- *   'typical'    → "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
- */
-function getTrisagionSubstitution(date, style = 'new') {
-  const adj    = fixedFeastDate(date, style);
-  const month  = adj.getUTCMonth() + 1;
-  const day    = adj.getUTCDate();
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-
-  // Sunday of the Holy Cross — 3rd Sunday of Great Lent
-  if (season === 'greatLent' && dow === 'sunday' && getWeekOfLent(date) === 3) return 'cross';
-
-  // Elevation of the Holy Cross — Sep 14
-  if (month === 9 && day === 14) return 'cross';
-
-  // Nativity of Christ — Dec 25
-  if (month === 12 && day === 25) return 'baptismal';
-
-  // Theophany — Jan 6
-  if (month === 1 && day === 6) return 'baptismal';
-
-  // Lazarus Saturday — 6th Lenten Saturday
-  if (season === 'greatLent' && dow === 'saturday' && getLentenSaturdayNumber(date) === 6) {
-    return 'baptismal';
-  }
-
-  // Great Saturday
-  if (season === 'holyWeek' && dow === 'saturday') return 'baptismal';
-
-  // Pascha + Bright Week — the entire Paschal Octave (Pascha through Bright Sat)
-  if (season === 'brightWeek') return 'baptismal';
-
-  // Pentecost — Pascha+49
-  const pascha = calculatePascha(date.getUTCFullYear());
-  if (Math.floor((date - pascha) / DAY_MS) === 49) return 'baptismal';
-
-  return 'typical';
-}
-
-// ─── Liturgy availability ─────────────────────────────────────────────────────
-
-/**
- * Returns true for dates where the Divine Liturgy is typically served.
- *
- * Covers:
- *   - All Sundays
- *   - Bright Week (all days)
- *   - Great Lent: all Saturdays (Soul Saturdays, St. Theodore, Akathist, Lazarus)
- *   - Holy Week: Great Thursday and Great Saturday
- *   - Ascension Thursday (Pascha + 39 days)
- *   - The 12 Great Feasts on fixed calendar dates
- */
-function isLiturgyServed(date, style = 'new') {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-  const adj    = fixedFeastDate(date, style);
-  const month  = adj.getUTCMonth() + 1;
-  const day    = adj.getUTCDate();
-
-  // Great Feasts always have liturgy, even during Lent (e.g. Annunciation Mar 25)
-  const GREAT_FEASTS = new Set([
-    '1-6',   '2-2',   '3-25',  '6-24',  '6-29',
-    '8-6',   '8-15',  '9-8',   '9-14',  '11-21',  '12-25',
-  ]);
-  if (GREAT_FEASTS.has(`${month}-${day}`)) return true;
-
-  // Great Lent weekdays: no full liturgy (Mon/Tue/Thu = nothing; Wed/Fri = Presanctified)
-  if (season === 'greatLent' && dow !== 'saturday' && dow !== 'sunday') return false;
-
-  // Cheesefare Week Wed/Fri (the week before Lent begins): aliturgical per
-  // OCA Typikon — Liturgy is not served and Presanctified hasn't begun yet
-  // (Presanctified starts Clean Wednesday). Cheesefare week is Pascha-55
-  // (Mon) through Pascha-50 (Sat); Wed = P-53, Fri = P-51.
-  if (season === 'preLenten' && (dow === 'wednesday' || dow === 'friday')) {
-    const pascha = calculatePascha(date.getUTCFullYear());
-    const dsp    = Math.floor((date - pascha) / 86400000);
-    if (dsp === -53 || dsp === -51) return false;
-  }
-
-  // Holy Week: Mon-Wed = no full liturgy; Friday = no liturgy
-  if (season === 'holyWeek') {
-    if (['monday', 'tuesday', 'wednesday', 'friday'].includes(dow)) return false;
-  }
-
-  // Everything else: liturgy is served
-  return true;
-}
-
-// ─── Presanctified Liturgy ─────────────────────────────────────────────────────
-
-/**
- * Returns true if the Liturgy of the Presanctified Gifts is served on this date.
- *
- * Served on:
- *   - Wednesdays and Fridays of Great Lent (weeks 1–6)
- *   - Monday, Tuesday, Wednesday of Holy Week
- *
- * @param {Date} date — UTC date
- * @returns {boolean}
- */
-function isPresanctifiedDay(date, style = 'new') {
-  const season = getLiturgicalSeason(date);
-  const dow    = getDayOfWeek(date);
-
-  // Great Feasts on Lenten weekdays serve the full Chrysostom Liturgy *instead
-  // of* Presanctified (e.g. Annunciation Mar 25 falling Wed/Fri of Lent).
-  if (getGreatFeastKey(date, style)) return false;
-
-  if (season === 'greatLent' && (dow === 'wednesday' || dow === 'friday')) return true;
-  if (season === 'holyWeek' && ['monday', 'tuesday', 'wednesday'].includes(dow)) return true;
-
-  return false;
-}
 
 /**
  * Returns true if Bridegroom Matins is served on this date.

@@ -596,9 +596,18 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
         });
       }
       if (ap.glory) {
-        blocks.push(S('apost-glory', section, 'doxology', null, vespersFixed.doxology.gloryNow));
+        // Split Glory + Now when a separate `now` slot is present (saint's
+        // doxastikon at Glory + Octoechos Theotokion at Now). Otherwise the
+        // single glory slot carries the combined "Glory ... now and ever".
+        const gloryText = ap.now ? vespersFixed.doxology.gloryOnly : vespersFixed.doxology.gloryNow;
+        blocks.push(S('apost-glory', section, 'doxology', null, gloryText));
         blocks.push(S('apost-glory-hymn', section, 'hymn', 'choir', ap.glory.text,
           { tone: ap.glory.tone, source: ap.glory.source, label: ap.glory.author }));
+      }
+      if (ap.now) {
+        blocks.push(S('apost-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+        blocks.push(S('apost-now-hymn', section, 'hymn', 'choir', ap.now.text,
+          { tone: ap.now.tone, source: ap.now.source, label: ap.now.author || ap.now.label || 'Theotokion' }));
       }
     }
 

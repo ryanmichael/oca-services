@@ -836,6 +836,21 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
     const weekdayAposticha = sources?.octoechos?.[`tone${tone}`]?.[dow]?.matins?.aposticha;
     if (weekdayAposticha) {
       spec.aposticha = weekdayAposticha;
+      // Menaion saint's Aposticha doxastikon — split the Octoechos `glory`
+      // (which is semantically the Now+Theotokion in the OCA Octoechos data
+      // shape) into a separate `now` slot and put the saint's doxastikon at
+      // `glory`. OCA simple-rank weekday Matins ends Aposticha: 3 Octoechos
+      // stichera + Glory + saint's doxastikon (in saint's tone) + Now and
+      // ever + Octoechos Theotokion (kept). Cyrus & John 01-31 is the
+      // worked example; the doxastikon was previously mis-located under
+      // lauds.
+      if (mat.aposticha?.doxastikon) {
+        spec.aposticha = {
+          ...spec.aposticha,
+          glory: mat.aposticha.doxastikon,
+          now:   spec.aposticha.glory,
+        };
+      }
     }
   }
 

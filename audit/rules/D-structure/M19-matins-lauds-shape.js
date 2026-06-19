@@ -6,10 +6,10 @@
 // that collapses the Lauds to a single block is invisible without a count
 // check.
 //
-// Scope: sung-Lauds shape only — signalled by interleaved psalm-verse blocks.
-// Simple-rank weekday and Saturday Matins use read-Lauds (no stichera blend,
-// just a doxastikon at most); firing on those is a false positive (the
-// Lauds-blend assumption doesn't apply).
+// Self-scopes via section presence: simple-rank weekday/Saturday Matins use
+// read-Lauds (rendered as an empty section, since today's commit 4c36ee3
+// re-routed the menaion doxastikon to Aposticha where it actually belongs).
+// The empty-Lauds short-circuit below covers that case.
 
 const MIN_LAUDS_HYMNS = 4;
 
@@ -17,17 +17,12 @@ module.exports = {
   id:             'M19-matins-lauds-shape',
   family:         'structure',
   severity:       'high',
-  description:    `Matins Lauds section has at least ${MIN_LAUDS_HYMNS} hymn blocks when rendered in sung-Lauds shape (psalm-verse blocks present).`,
+  description:    `Matins Lauds section has at least ${MIN_LAUDS_HYMNS} hymn blocks (sung stichera blend).`,
   needsAssembled: true,
   appliesTo: (ctx) => ctx.service === 'matins',
   check: (ctx) => {
     const lauds = (ctx.assembled?.blocks || []).filter(b => b.section === 'Lauds');
     if (!lauds.length) return [];
-    // Self-scope to sung-Lauds shape: require an interleaved verse block
-    // before asserting hymn count. Read-Lauds (weekday/Saturday simple-rank)
-    // has no verse blocks and is intentionally a single doxastikon at most.
-    const hasVerses = lauds.some(b => b.type === 'verse');
-    if (!hasVerses) return [];
     const hymns = lauds.filter(b => b.type === 'hymn');
     if (hymns.length >= MIN_LAUDS_HYMNS) return [];
     return [{

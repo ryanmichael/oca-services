@@ -26,7 +26,7 @@
     }
     .header-back:hover { color: var(--rubric); }
 
-    .pa-page { max-width: 1400px; margin: 0 auto; padding: 28px 32px 80px; }
+    .pa-page { max-width: 1400px; margin: 0 auto; padding: 28px 32px 32px; }
 
     /* Two-column on wide screens; stacked on narrow. */
     .pa-grid {
@@ -37,8 +37,13 @@
     }
     .pa-col-form { min-width: 0; }
     .pa-col-preview { min-width: 0; }
+    /* Preview fills the viewport regardless of form column height. */
     @media (min-width: 1100px) {
-      .pa-col-preview { position: sticky; top: 70px; max-height: calc(100vh - 90px); display: flex; flex-direction: column; }
+      .pa-col-preview {
+        position: sticky; top: 70px;
+        height: calc(100vh - 84px);   /* header 52 + page top 28 + bottom margin 4 */
+        display: flex; flex-direction: column;
+      }
     }
 
     .pa-preview {
@@ -46,6 +51,37 @@
       display: flex; flex-direction: column; min-height: 480px;
     }
     @media (min-width: 1100px) { .pa-preview { flex: 1; min-height: 0; } }
+
+    /* ── Summary card (replaces in-page setup sections) ───────────────────── */
+    .pa-summary {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 16px 18px; margin-bottom: 28px;
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    }
+    .pa-summary-body { flex: 1; min-width: 0; }
+    .pa-summary-name {
+      font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: .04em;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .pa-summary-meta {
+      font-family: 'EB Garamond', serif; font-size: 13px;
+      color: var(--muted); font-style: italic;
+    }
+    .pa-summary-meta .sep { color: var(--border); margin: 0 6px; font-style: normal; }
+    .pa-summary-edit {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em;
+      color: var(--muted); text-transform: uppercase; text-decoration: none;
+      background: none; border: 1px solid var(--border); padding: 8px 14px;
+      cursor: pointer; transition: border-color .15s, color .15s;
+    }
+    .pa-summary-edit:hover { border-color: var(--rubric); color: var(--rubric); }
+
+    /* Setup view body — narrower than the print pickers but reuses .view-print chrome. */
+    #view-setup .print-view-inner { max-width: 720px; }
+    #view-setup .pa-title { margin-bottom: 6px; }
+    #view-setup .pa-subtitle { margin-bottom: 24px; }
+    #view-setup .pa-actions { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 16px; align-items: center; }
+    #view-setup .pa-actions .pa-spacer { flex: 1; }
 
     .pa-preview-head {
       display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
@@ -123,75 +159,16 @@
 
   <div class="pa-grid" id="pa-grid" hidden>
    <div class="pa-col-form">
+    <!-- Summary card: parish identity at a glance + Edit details button -->
+    <div class="pa-summary">
+      <div class="pa-summary-body">
+        <div class="pa-summary-name" id="pa-summary-name">Loading…</div>
+        <div class="pa-summary-meta" id="pa-summary-meta"></div>
+      </div>
+      <button type="button" class="pa-summary-edit" id="pa-edit-details">Edit details →</button>
+    </div>
+
     <form id="pa-form">
-    <h1 class="pa-title" id="pa-name-display">Loading…</h1>
-    <p class="pa-subtitle">Service customization</p>
-
-    <section class="pa-section">
-      <div class="pa-section-label">Parish info</div>
-      <div class="pa-card">
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-name">Name</label>
-          <input class="pa-field-input" id="f-name" name="name" required maxlength="200" autocomplete="off">
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-city">City</label>
-          <input class="pa-field-input" id="f-city" name="city" maxlength="200" autocomplete="off">
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-jurisdiction">Jurisdiction</label>
-          <input class="pa-field-input" id="f-jurisdiction" name="jurisdiction" disabled>
-          <div class="pa-field-help">Locked during onboarding — contact your administrator to change.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pa-section">
-      <div class="pa-section-label">Hierarchs commemorated at the Anaphora</div>
-      <div class="pa-card">
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-primate">Primate (full title)</label>
-          <textarea class="pa-field-textarea" id="f-primate" name="primate_name" rows="2" maxlength="500"></textarea>
-          <div class="pa-field-derived" id="d-primate">Will render as: …</div>
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-primate-short">Primate (short form for litanies)</label>
-          <input class="pa-field-input" id="f-primate-short" name="primate_short" maxlength="200" placeholder="e.g. Metropolitan Tikhon">
-          <div class="pa-field-help">Used in the Great Litany, Augmented Litany, and Vespers Litya.</div>
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-ruling">Ruling hierarch (full title)</label>
-          <textarea class="pa-field-textarea" id="f-ruling" name="ruling_hierarch_name" rows="2" maxlength="500"></textarea>
-          <div class="pa-field-derived" id="d-ruling">Will render as: …</div>
-        </div>
-        <div class="pa-field">
-          <label class="pa-field-label" for="f-ruling-short">Ruling hierarch (short form for litanies)</label>
-          <input class="pa-field-input" id="f-ruling-short" name="ruling_hierarch_short" maxlength="200" placeholder="e.g. Archbishop Alexander">
-        </div>
-      </div>
-    </section>
-
-    <section class="pa-section">
-      <div class="pa-section-label">Patron of the temple</div>
-      <div class="pa-card">
-        <div class="pa-field" style="position: relative;">
-          <label class="pa-field-label" for="f-patron-search">Search</label>
-          <input class="pa-field-input" id="f-patron-search" type="text" autocomplete="off"
-                 placeholder="Type a saint or feast name (3+ letters)">
-          <div class="pa-typeahead" id="patron-typeahead" hidden></div>
-          <div class="pa-field-help">The patron's troparion + kontakion will be injected on Sundays.</div>
-        </div>
-        <div class="pa-field pa-patron-selected" id="patron-selected" hidden>
-          <div class="pa-field-label">Selected</div>
-          <div class="pa-selected-box">
-            <span id="patron-title-display"></span>
-            <span class="pa-feast" id="patron-feast-display"></span>
-            <button type="button" class="pa-link-btn" id="patron-clear">Clear</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="pa-section">
       <div class="pa-section-label">Variant choices</div>
       <div class="pa-card">
@@ -316,6 +293,97 @@
   <div id="pa-unauthorized" class="pa-empty" hidden>
     <p>This page is for parish administrators.</p>
     <p style="margin-top: 12px; font-size: 14px;">Use the link your administrator provided. If you've lost it, contact them for a new one.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ VIEW: PARISH SETUP (screenfill) ═════════ -->
+<div class="view view-print" id="view-setup">
+  <div class="print-hdr">
+    <button class="print-back" id="setup-back" type="button">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+  <div class="print-view-body">
+    <div class="print-view-inner">
+      <h1 class="pa-title">Parish setup</h1>
+      <p class="pa-subtitle">Identity, clergy, and patron — typically set once at onboarding.</p>
+
+      <form id="setup-form">
+        <section class="pa-section">
+          <div class="pa-section-label">Parish info</div>
+          <div class="pa-card">
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-name">Name</label>
+              <input class="pa-field-input" id="f-name" name="name" required maxlength="200" autocomplete="off">
+            </div>
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-city">City</label>
+              <input class="pa-field-input" id="f-city" name="city" maxlength="200" autocomplete="off">
+            </div>
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-jurisdiction">Jurisdiction</label>
+              <input class="pa-field-input" id="f-jurisdiction" name="jurisdiction" disabled>
+              <div class="pa-field-help">Locked during onboarding — contact your administrator to change.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pa-section">
+          <div class="pa-section-label">Hierarchs commemorated at the Anaphora</div>
+          <div class="pa-card">
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-primate">Primate (full title)</label>
+              <textarea class="pa-field-textarea" id="f-primate" name="primate_name" rows="2" maxlength="500"></textarea>
+              <div class="pa-field-derived" id="d-primate">Will render as: …</div>
+            </div>
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-primate-short">Primate (short form for litanies)</label>
+              <input class="pa-field-input" id="f-primate-short" name="primate_short" maxlength="200" placeholder="e.g. Metropolitan Tikhon">
+              <div class="pa-field-help">Used in the Great Litany, Augmented Litany, and Vespers Litya.</div>
+            </div>
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-ruling">Ruling hierarch (full title)</label>
+              <textarea class="pa-field-textarea" id="f-ruling" name="ruling_hierarch_name" rows="2" maxlength="500"></textarea>
+              <div class="pa-field-derived" id="d-ruling">Will render as: …</div>
+            </div>
+            <div class="pa-field">
+              <label class="pa-field-label" for="f-ruling-short">Ruling hierarch (short form for litanies)</label>
+              <input class="pa-field-input" id="f-ruling-short" name="ruling_hierarch_short" maxlength="200" placeholder="e.g. Archbishop Alexander">
+            </div>
+          </div>
+        </section>
+
+        <section class="pa-section">
+          <div class="pa-section-label">Patron of the temple</div>
+          <div class="pa-card">
+            <div class="pa-field" style="position: relative;">
+              <label class="pa-field-label" for="f-patron-search">Search</label>
+              <input class="pa-field-input" id="f-patron-search" type="text" autocomplete="off"
+                     placeholder="Type a saint or feast name (3+ letters)">
+              <div class="pa-typeahead" id="patron-typeahead" hidden></div>
+              <div class="pa-field-help">The patron's troparion + kontakion will be injected on Sundays.</div>
+            </div>
+            <div class="pa-field pa-patron-selected" id="patron-selected" hidden>
+              <div class="pa-field-label">Selected</div>
+              <div class="pa-selected-box">
+                <span id="patron-title-display"></span>
+                <span class="pa-feast" id="patron-feast-display"></span>
+                <button type="button" class="pa-link-btn" id="patron-clear">Clear</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="pa-actions">
+          <span class="pa-dirty-indicator" id="setup-dirty">No unsaved changes</span>
+          <span class="pa-spacer"></span>
+          <button type="submit" class="bar-btn bar-btn--primary" id="setup-save" disabled>Save & close</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

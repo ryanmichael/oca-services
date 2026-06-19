@@ -108,65 +108,11 @@ function fixedFeastDate(civilDate, style = 'new') {
 // calculatePascha + getAllSaints extracted to calendar/computus.js (Track D step 1)
 const { calculatePascha, getAllSaints } = require('./calendar/computus');
 
-// ─── Tone cycle ───────────────────────────────────────────────────────────────
+// getTone + getEothinon extracted to calendar/cycle.js (Track D step 3)
+const { getTone, getEothinon } = require('./calendar/cycle');
 
-/**
- * Returns the Octoechos tone (1–8) active for a given date.
- *
- * The cycle anchors to All Saints Sunday each year (Tone 1).
- * The tone for a Saturday belongs to the week that is ending —
- * i.e., the Sunday that started that week sets the tone.
- */
-function getTone(date) {
-  // Pentecostarion override: weekdays follow the tone of the immediately
-  // preceding Pentecostarion Sunday (Thomas=1, Myrrhbearers=2, Paralytic=3,
-  // Samaritan=4, Blind Man=5, Holy Fathers=6). Bright Week and Pentecost
-  // week have no Octoechos tone proper; return 0 so callers can branch.
-  const year   = date.getUTCFullYear();
-  const pascha = calculatePascha(year);
-  const diff   = Math.floor((date - pascha) / DAY_MS);
-  if (diff >= 0 && diff <= 49) {
-    if (diff <= 6) return 0;                 // Bright Week — no tone
-    const weekIdx = Math.floor((diff - 7) / 7); // 0..5 for weeks 2..7
-    if (weekIdx <= 5) return weekIdx + 1;    // weeks 2..7 → tones 1..6
-    return 0;                                // Pentecost itself — no tone
-  }
-
-  // Tone 1 begins the Sunday AFTER All Saints, not All Saints itself
-  let anchor = new Date(getAllSaints(year).getTime() + 7 * DAY_MS);
-  if (date < anchor) anchor = new Date(getAllSaints(year - 1).getTime() + 7 * DAY_MS);
-
-  const weeksSince = Math.floor((date - anchor) / (7 * DAY_MS));
-  return (weeksSince % 8) + 1;
-}
-
-// ─── Liturgical season ────────────────────────────────────────────────────────
-
-/**
- * Returns the broad liturgical season for a given date.
- *
- * @returns {'ordinaryTime'|'preLenten'|'greatLent'|'holyWeek'|'brightWeek'|'pentecostarion'}
- */
-function getLiturgicalSeason(date) {
-  const year   = date.getUTCFullYear();
-  const pascha = calculatePascha(year);
-
-  const cleanMonday    = new Date(pascha.getTime() - 48 * DAY_MS);
-  const palmSunday     = new Date(pascha.getTime() -  7 * DAY_MS);
-  const triodiOnStart  = new Date(pascha.getTime() - 70 * DAY_MS); // Sunday of Publican & Pharisee
-  const diff           = Math.floor((date - pascha) / DAY_MS);
-
-  if (date >= pascha) {
-    if (diff <= 6)  return 'brightWeek';
-    if (diff <= 49) return 'pentecostarion';
-    return 'ordinaryTime';
-  }
-
-  if (date >= palmSunday)   return 'holyWeek';
-  if (date >= cleanMonday)  return 'greatLent';
-  if (date >= triodiOnStart) return 'preLenten';
-  return 'ordinaryTime';
-}
+// getLiturgicalSeason extracted to calendar/seasons.js (Track D step 2)
+const { getLiturgicalSeason } = require('./calendar/seasons');
 
 // ─── Day helpers ──────────────────────────────────────────────────────────────
 
@@ -2282,43 +2228,6 @@ function isBurialVespersDay(date) {
   const season = getLiturgicalSeason(date);
   const dow    = getDayOfWeek(date);
   return season === 'holyWeek' && dow === 'friday';
-}
-
-// ─── Eothinon Cycle ──────────────────────────────────────────────────────────
-
-/**
- * Get the Eothinon number (1-11) for a given Sunday.
- * The 11-week Eothinon cycle starts at Eothinon 1 on All Saints Sunday
- * (first Sunday after Pentecost = Pascha + 56 days).
- *
- * Returns null during Triodion/Pentecostarion when the eothinon cycle
- * is suspended or follows special rules.
- */
-function getEothinon(date) {
-  // Suspended throughout the Triodion (Pre-Lent → Holy Week) and the
-  // Pentecostarion (Pascha → Pentecost). The cycle restarts at All Saints
-  // Sunday (Pascha + 56) with eothinon 1.
-  const season = getLiturgicalSeason(date);
-  if (season !== 'ordinaryTime') return null;
-
-  const yr = date.getUTCFullYear();
-  const allSaints = getAllSaints(yr);
-
-  const diffMs = date.getTime() - allSaints.getTime();
-  const diffWeeks = Math.floor(diffMs / (7 * 86400000));
-
-  if (diffWeeks >= 0) {
-    return (diffWeeks % 11) + 1;
-  }
-
-  // Before this year's All Saints — use previous year's cycle
-  const prevAllSaints = getAllSaints(yr - 1);
-  const prevDiff = Math.floor((date.getTime() - prevAllSaints.getTime()) / (7 * 86400000));
-  if (prevDiff >= 0) {
-    return (prevDiff % 11) + 1;
-  }
-
-  return null;
 }
 
 // ─── Exports ──────────────────────────────────────────────────────────────────

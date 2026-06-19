@@ -18,7 +18,8 @@
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",
     "snapshot:capture": "node audit/snapshot.js --capture",
     "snapshot:verify": "node audit/snapshot.js --verify",
-    "snapshot:determinism": "node audit/determinism.js"
+    "snapshot:determinism": "node audit/determinism.js",
+    "translation-matrix": "node audit/translation-matrix.js"
   },
   "engines": {
     "node": ">=24.0.0"

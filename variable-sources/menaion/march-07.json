@@ -36,5 +36,135 @@
         }
       ]
     }
+  },
+
+  "troparion": {
+    "text": "O Christ God, Who hast given us the miracles of Thy holy hieromartyrs of Cherson\nas an invincible rampart,\nthrough their supplications set at naught the counsels of the heathen\nand strengthen right believing rulers,//\nin that Thou alone art good and the Lover of mankind.",
+    "tone": 5,
+    "label": "Troparion of the holy hieromartyrs"
+  },
+
+  "matins": {
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "hieromartyr",
+      "_source": "Matins: St-Sergius Emenaion 03-07.pdf",
+      "_sourceUrl": "https://st-sergius.org/services/Emenaion/03-07.pdf",
+      "_note": "Simple-rank. Single canon of the holy hieromartyrs in Tone IV, the composition of Joseph (acrostic: 'I honor, the seven-man choir of pastors'). Sessional hymn after Ode 3 in Tone III with Theotokion + Stavrotheotokion. Kontakion Tone II with no ikos printed in PDF. PDF does not include Exapostilarion / Lauds / Aposticha — simple-rank weekday uses Octoechos for these. Troparion sourced from OCA (Tone V, TT-transformed)."
+    },
+
+    "troparion": {
+      "text": "O Christ God, Who hast given us the miracles of Thy holy hieromartyrs of Cherson\nas an invincible rampart,\nthrough their supplications set at naught the counsels of the heathen\nand strengthen right believing rulers,//\nin that Thou alone art good and the Lover of mankind.",
+      "tone": 5,
+      "label": "Troparion of the holy hieromartyrs"
+    },
+
+    "sessionalHymns": {
+      "text": "Sanctified by the myrrh of anointing,\nye were shown to be pastors to the divinely wise people;\nand sacrificed like pure lambs,\nye offered yourselves to the Word, the Chief Shepherd,\nWho was slaughtered like a lamb,\nO all-praised martyrs and luminaries of the whole world.\nWherefore, with love we all celebrate your divine memory.",
+      "tone": 3,
+      "label": "Sessional Hymn of the holy hieromartyrs (after Ode 3)",
+      "melody": "Awed by the beauty of thy virginity",
+      "bothNow": {
+        "text": "As an uncultivated vine, O Virgin,\nthou didst sprout forth the most comely Cluster of grapes\nWhich poureth forth upon us the wine of salvation\nmaking glad the souls and bodies of all.\nWherefore, ever blessing thee as the cause of good things,\nwith the angel we cry out to thee://\nRejoice, O thou who art full of grace!",
+        "tone": 3,
+        "label": "Theotokion"
+      }
+    },
+
+    "canon": {
+      "tone": 4,
+      "_author": "Canon of the holy hieromartyrs in Tone IV, the composition of Joseph; acrostic: 'I honor, the seven-man choir of pastors.'",
+
+      "kontakion": {
+        "text": "The radiant day of the pastors\nwho were bishops in Cherson hath dawned with splendor.\nWe hymn the feast of those who suffered for the sheep of Christ.\nO hieromartyrs, entreat Christ, the Chief Shepherd,\nthat He honor us with a place with the sheep on His right hand,\nthat we may cry aloud to you://\nRejoice, O sacred fathers who shed your blood for Christ!",
+        "tone": 2,
+        "label": "Kontakion of the holy hieromartyrs",
+        "melody": "He Who dwelleth in the highest"
+      },
+
+      "ode1": {
+        "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,//\nthe power of Amalek was routed in the wilderness.",
+        "troparia": [
+          { "text": "O martyrs infused with outpourings of divine light,\ndeliver from the gloom of the passions those who ever piously praise this,\nyour brilliant and radiant feast." },
+          { "text": "The incarnate Word of God showed you, the all-gloriously blessed pastors,\nhow to proclaim His divinity to the erring\nand to those who languish in ignorance, O venerable ones." },
+          { "text": "Full of the life-creating waters of the Spirit,\nye gave drink unto those who wasted away in the heat of the cruel one,\nand guided them to the water of salvation, O glorious ones." },
+          { "text": "Theotokion: In a manner past understanding the ban on our ancestors hath been lifted by thine Offspring, O most pure one,\nand they have gained again their original access to paradise, loudly praising thee." }
+        ]
+      },
+
+      "ode3": {
+        "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud://\nThou, O Lord, art my strength, my refuge and foundation.",
+        "troparia": [
+          { "text": "Thy mind, enkindled with divine fire, O Basil all-wise,\nutterly consumed the brushwood of ungodliness,\nin that thou art a most excellent pastor." },
+          { "text": "With the light of the Spirit, O glorious one,\nthou didst draw those who are in the darkness of cruel passions\ntoward the enlightenment of holy baptism." },
+          { "text": "Thy steps were directed toward God, O Basil,\nand by grace thou didst turn all from the path of error\nto the knowledge of God." },
+          { "text": "Theotokion: Thou hast given birth unto the mighty God\nWho hath delivered mankind from the constraint of the enemy,\nO most pure and all-hymned Virgin." }
+        ]
+      },
+
+      "ode4": {
+        "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud://\nGlory be to Thy power, O Lord.",
+        "troparia": [
+          { "text": "Let the choir of most sacred martyrs be hymned;\nfor, illumined with the grace of the priesthood and martyrdom,\nit chanteth in gladness: Glory to Thy power, O Lord!" },
+          { "text": "By the Holy Spirit are Ephraim and Agathadorus,\nBasil and Capito, Aetherius, Eugene and the godly Elpidius,\nshown to be God-bearing helmsmen of the Church." },
+          { "text": "Having learned divine things, O godly fathers,\nye tended the people in holiness and righteousness,\nand received your end by martyrdom, O blessed ones." },
+          { "text": "Taught by thee to believe in Christ our God,\nO most sacred martyr Basil,\nthey that were dead through unbelief received eternal life through the resurrection of a dead man." },
+          { "text": "Theotokion: Having given birth to the hypostatic Life,\nChrist our God Who in His tender compassion became a man in a manner past understanding, O Virgin,\nthou hast given life to mortal mankind." }
+        ]
+      },
+
+      "ode5": {
+        "irmos": "Thou, O Lord, who camest into the world,\nart my light, a holy light\nturning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
+        "troparia": [
+          { "text": "Calling faithfully upon the name of the Lord,\nO God-bearing fathers,\nye drained the cup of honorable suffering." },
+          { "text": "He Who alone breatheth resurrection upon the dead,\nby thy supplication, O Basil, raised up a dead man,\nrendering thy preaching radiant." },
+          { "text": "Proclaiming the Son equal in honor to the Father, O fathers,\nye expelled the tyranny of polytheistic idolatry." },
+          { "text": "Theotokion: Blessed are the people who know thee to be the Mother of the Master of all\nand who with love call thee blessed, O all-immaculate one." }
+        ]
+      },
+
+      "ode6": {
+        "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise',\nhaving been cleansed of the blood of the demons'//\nby the blood that for mercy's sake flowed from Thy side.",
+        "troparia": [
+          { "text": "With praises let us crown Agathadorus and Eugene,\nthe great Basil and the wise Elpidius,\nwho are valiant martyrs and hierarchs." },
+          { "text": "Setting the laws of salvation before the iniquitous by nurturing in the law, O all-wise ones,\nye drew them toward the enlightenment of piety." },
+          { "text": "Ye were sheep of divers cities,\nyet were shown to be shepherds of one people\nand heirs of the city of God,\nwherein ye reside, O martyrs who have pleased God." },
+          { "text": "Theotokion: The shadows of the law and the indistinct images of the prophets\nprefigured thee, O all-immaculate Virgin, as the one who,\nat the ineffable word, conceived the Offspring Who saveth the world." }
+        ]
+      },
+
+      "ode7": {
+        "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety\nrather than by a flame of fire,\ncried aloud saying://\nBlessed art Thou in the temple of Thy glory, O Lord.",
+        "troparia": [
+          { "text": "Rejoicing, thou didst enter the furnace, O Capito,\nyet remained unconsumed, like the three youths,\nplucking those who came to believe through thy divine miracles\nfrom the future fire of unbelief." },
+          { "text": "Neither fearing nor afraid of the tyrant's command,\nO most sacred Capito,\nthou didst array thyself in a sacred robe,\nbearing therein a fiery ember, O blessed one." },
+          { "text": "With thy divine words thou didst close off the path of foolishness,\nimparting an understanding of piety to all that were sunk in the abyss of the madness of idolatry,\nO Capito performer of the divine mysteries, and acceptable to God." },
+          { "text": "Theotokion: The Word of God Who with His hand fashioned Eve, O Maiden,\ndesiring to edify all, fashioned Himself within thy womb,\nHe Who is co-enthroned with the Father and the Spirit,\nin His humanity received a beginning in time." }
+        ]
+      },
+
+      "ode8": {
+        "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud://\nBless ye the Lord, all ye works of the Lord.",
+        "troparia": [
+          { "text": "Having mortified the flesh with pangs, O venerable fathers,\nye won immortal life for all who worshipped dead gods,\nwho, saved, ever cry out with you://\nBless the Lord, all ye works of the Lord!" },
+          { "text": "Together let us hymn Eugene and Agathadorus, Ephraim and Elpidius,\nwith Aetherius, Basil and Capito, O ye faithful,\nas vanquishers of the enemy and hierarchs of Christ.\nTo Him let us cry aloud://\nBless the Lord, O ye works of the Lord!" },
+          { "text": "With thy teachings thou didst gladden the people, O father Ephraim,\nand now having passed on to the never-waning effulgence and everlasting gladness,\nthou hast received the reward for thy labors, crying aloud://\nBless the Lord, O ye works of the Lord!" },
+          { "text": "Dwelling on earth like an angel, O all-blessed Basil,\nthou didst come to reign over the passions of the flesh through grace;\nand having passed on to the heavenly kingdom, standing before Christ the King,\nthou dost cry aloud://\nBless the Lord, O ye works of the Lord!" },
+          { "text": "Theotokion: The Transcendent One, born of thee, O most pure one,\nwas seen as a man, manifesting Himself as dual in nature, activity and will,\nas was His pleasure, wherein He revealed Himself to us.\nTo Him let us cry aloud://\nBless the Lord, O ye works of the Lord!" }
+        ]
+      },
+
+      "ode9": {
+        "irmos": "A cornerstone not cut by hand O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,//\nO Theotokos.",
+        "troparia": [
+          { "text": "Celebrating the sacred memory of the holy hieromartyrs,\ncome ye, let us all honor with sacred hymns\nthose who pray to our most compassionate God on our behalf." },
+          { "text": "Dragged across the ground by the ungodly, O divine martyrs,\nye were shown to be like precious stones,\nshattering the hardness of deception by the power of God.\nWherefore, ye are called blessed, as is meet." },
+          { "text": "Today, the city of Cherson celebrates your memory,\nfor ye were shown to be its pillars, divine ramparts and foundations,\nteachers and intercessors, O blessed pastors of God." },
+          { "text": "The choir of the fathers, with Eugene, Ephraim and Capito,\nElpidius and Aetherius, the glorious Basil and the divinely wise Agathadorus,\nhath already been joined with the choir of the angels." },
+          { "text": "Theotokion: The Maiden full of the grace of God,\nbearing in her arms Christ Who holdeth all things in His hand,\ncried out in wonder, saying://\n'How can I recognize Thee as my Son, Who art mine unapproachable Creator?'" }
+        ]
+      }
+    }
   }
 }

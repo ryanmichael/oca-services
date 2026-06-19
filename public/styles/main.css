@@ -1098,3 +1098,89 @@ body.mode-choir .choir-toggles { display: flex; }
   .stich-label { break-after: avoid; }
   .svc-rule { background: none; border-top: 1px solid #8B1A1A; }
 }
+
+/* ── PARISH ADMIN FORM PATTERNS ──
+   Used by /parish-admin/<slug>. Reuses the parchment-document tokens; adds
+   three small primitives that other forms can adopt. */
+
+.pa-field-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: .14em; color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pa-field-input,
+.pa-field-textarea {
+  width: 100%;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; line-height: 1.45; color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.pa-field-textarea { resize: vertical; min-height: 64px; }
+.pa-field-input:focus,
+.pa-field-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(201,168,76,.18);
+}
+.pa-field-input:disabled {
+  color: var(--muted); background: rgba(221,213,196,.25); cursor: not-allowed;
+}
+.pa-field-help {
+  font-family: 'EB Garamond', serif;
+  font-size: 12px; font-style: italic; color: var(--muted);
+  margin-top: 6px;
+}
+.pa-field-error {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px; color: var(--rubric);
+  margin-top: 6px;
+}
+.pa-field-derived {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px; font-style: italic; color: var(--muted);
+  margin-top: 8px; padding-left: 12px; border-left: 2px solid var(--gold);
+}
+
+/* Primary button — extends bar-btn pattern with filled rubric. */
+.bar-btn--primary {
+  background: var(--rubric); color: var(--surface);
+  border-color: var(--rubric);
+}
+.bar-btn--primary:hover,
+.bar-btn--primary:focus {
+  background: #6b1414; color: var(--surface); border-color: #6b1414;
+}
+.bar-btn--primary:disabled { opacity: .5; cursor: not-allowed; }
+
+/* Toggle (used for confessFirst). Native checkbox styled minimally. */
+.pa-toggle {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0;
+  font-family: 'EB Garamond', serif; color: var(--text); cursor: pointer;
+}
+.pa-toggle input { margin-top: 4px; accent-color: var(--rubric); }
+.pa-toggle .pa-toggle-label { font-size: 15px; line-height: 1.35; }
+.pa-toggle .pa-toggle-detail { font-size: 13px; color: var(--muted); margin-top: 3px; font-style: italic; }
+
+/* Toast — bottom-right, gold left-border on success / rubric on error. */
+.toast {
+  position: fixed; right: 24px; bottom: 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-left-width: 4px;
+  padding: 12px 16px;
+  font-family: 'EB Garamond', serif; font-size: 14px; color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  max-width: 360px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .2s, transform .2s;
+  z-index: 100;
+}
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+.toast--success { border-left-color: var(--gold); }
+.toast--error   { border-left-color: var(--rubric); color: var(--rubric); }
+.toast a { color: inherit; text-decoration: underline; }

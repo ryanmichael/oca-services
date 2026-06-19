@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parish Settings</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; }
+
+    header {
+      height: 52px; background: var(--surface); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; padding: 0 32px;
+    }
+    .header-logo  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+    .header-cross { color: var(--rubric); font-size: 18px; }
+    .header-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .14em; }
+    .header-back  {
+      margin-left: auto; font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: .1em; color: var(--muted); text-decoration: none;
+    }
+    .header-back:hover { color: var(--rubric); }
+
+    .pa-page { max-width: 720px; margin: 0 auto; padding: 28px 32px 80px; }
+
+    .pa-title {
+      font-family: 'Cinzel', serif; font-size: 22px; color: var(--text);
+      border-bottom: 1px solid var(--gold); padding-bottom: 12px; margin-bottom: 4px;
+    }
+    .pa-subtitle {
+      font-family: 'EB Garamond', serif; font-style: italic;
+      color: var(--muted); font-size: 14px; margin-bottom: 28px;
+    }
+
+    .pa-section { margin-bottom: 28px; }
+    .pa-section-label {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .16em;
+      color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .pa-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 18px 20px;
+    }
+    .pa-field + .pa-field { margin-top: 16px; }
+
+    .pa-actions {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);
+    }
+    .pa-actions .pa-spacer { flex: 1; }
+    .pa-dirty-indicator {
+      font-family: 'EB Garamond', serif; font-size: 13px; font-style: italic;
+      color: var(--muted);
+    }
+    .pa-dirty-indicator.is-dirty { color: var(--rubric); font-style: normal; }
+
+    .pa-empty { padding: 60px 0; text-align: center; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="header-logo" href="/">
+    <span class="header-cross">✛</span>
+    <span class="header-title">PARISH SETTINGS</span>
+  </a>
+  <a class="header-back" href="/">← BACK TO SERVICES</a>
+</header>
+
+<div class="pa-page">
+  <div id="pa-loading" class="pa-empty">Loading…</div>
+
+  <form id="pa-form" hidden>
+    <h1 class="pa-title" id="pa-name-display">Loading…</h1>
+    <p class="pa-subtitle">Service customization</p>
+
+    <section class="pa-section">
+      <div class="pa-section-label">Parish info</div>
+      <div class="pa-card">
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-name">Name</label>
+          <input class="pa-field-input" id="f-name" name="name" required maxlength="200" autocomplete="off">
+        </div>
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-city">City</label>
+          <input class="pa-field-input" id="f-city" name="city" maxlength="200" autocomplete="off">
+        </div>
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-jurisdiction">Jurisdiction</label>
+          <input class="pa-field-input" id="f-jurisdiction" name="jurisdiction" disabled>
+          <div class="pa-field-help">Locked during onboarding — contact your administrator to change.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pa-section">
+      <div class="pa-section-label">Hierarchs commemorated at the Anaphora</div>
+      <div class="pa-card">
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-primate">Primate (full title)</label>
+          <textarea class="pa-field-textarea" id="f-primate" name="primate_name" rows="2" maxlength="500"></textarea>
+          <div class="pa-field-derived" id="d-primate">Will render as: …</div>
+        </div>
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-ruling">Ruling hierarch (full title)</label>
+          <textarea class="pa-field-textarea" id="f-ruling" name="ruling_hierarch_name" rows="2" maxlength="500"></textarea>
+          <div class="pa-field-derived" id="d-ruling">Will render as: …</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pa-section">
+      <div class="pa-section-label">Service rubrics</div>
+      <div class="pa-card">
+        <label class="pa-toggle">
+          <input type="checkbox" id="f-confess-first" name="rubric_confess_first">
+          <span>
+            <span class="pa-toggle-label">Sing the Communion Prayer before the priest's call</span>
+            <span class="pa-toggle-detail">Order: "I believe, O Lord, and I confess…" → "In the fear of God…" → "Blessed is He that cometh…"</span>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <div class="pa-actions">
+      <span class="pa-dirty-indicator" id="pa-dirty">No unsaved changes</span>
+      <span class="pa-spacer"></span>
+      <button type="submit" class="bar-btn bar-btn--primary" id="pa-save" disabled>Save changes</button>
+    </div>
+  </form>
+
+  <div id="pa-unauthorized" class="pa-empty" hidden>
+    <p>This page is for parish administrators.</p>
+    <p style="margin-top: 12px; font-size: 14px;">Use the link your administrator provided. If you've lost it, contact them for a new one.</p>
+  </div>
+</div>
+
+<script src="/scripts/parish-admin.js" type="module"></script>
+</body>
+</html>

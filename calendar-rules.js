@@ -31,6 +31,14 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+// ─── Clock seam ───────────────────────────────────────────────────────────────
+// `_meta.generatedAt` is stamped on every calendar entry. When `CAL_FREEZE_TIME`
+// is set (e.g. for snapshot/contract tests), use that fixed value instead of the
+// real wall-clock so output is bit-stable across runs.
+function nowIso() {
+  return process.env.CAL_FREEZE_TIME || new Date().toISOString();
+}
+
 // ─── Vespers sung-evening lookup ──────────────────────────────────────────────
 // octoechos.json keys weekday Vespers by the civil evening it is sung — not by
 // the liturgical day it opens. `monday.vespers` = Monday-evening Vespers, which
@@ -354,7 +362,7 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ordinary-time ${dow} Daily Vespers. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -401,7 +409,7 @@ function generateGreatFeastVespers(dateStr, dow, tone, feastKey, season) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated All-Night Vigil — Great Vespers (${feastKey}). Tone ${tone}.`,
     },
     date:      dateStr,
@@ -443,7 +451,7 @@ function generateVigilFeastVespers(dateStr, dow, tone) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated All-Night Vigil — Vigil-rank feast. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -495,7 +503,7 @@ function generateOrdinaryTimeSaturday(dateStr, tone, dow = 'saturday') {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${dow === 'sunday' ? 'Sunday' : 'Saturday'} Great Vespers. Tone ${tone}. ` +
                    `Menaion commemorations not included.`,
     },
@@ -565,7 +573,7 @@ function generateSoulSaturday(dateStr, satNum, tone, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated Soul Saturday ${satNum}. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -664,7 +672,7 @@ function generateLentenSaturday(dateStr, satNum, weekOfLent, tone, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${label}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,
@@ -706,7 +714,7 @@ function generateTheodoreSaturday(dateStr, weekOfLent, tone, label) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${label}. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -757,7 +765,7 @@ function generateAkathist_Saturday(dateStr, weekOfLent, tone, label) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${label}. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -805,7 +813,7 @@ function generateLazarusSaturday(dateStr, weekOfLent, tone, label) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${label}. Tone ${tone}.`,
     },
     date:      dateStr,
@@ -874,7 +882,7 @@ function generateLentenSunday(dateStr, weekOfLent, tone, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,
@@ -958,7 +966,7 @@ function generateLentenWeekday(dateStr, dayOfWeek, weekOfLent, tone, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated Lenten weekday Daily Vespers (${dayOfWeek}, week ${weekOfLent}). ` +
                    `Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'. ` +
                    `OT reading entries require Step 3.`,
@@ -1160,7 +1168,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     return {
       _meta: {
         generated:   true,
-        generatedAt: new Date().toISOString(),
+        generatedAt: nowIso(),
         note:        `Auto-generated ${cfg.name}. All texts from triodion/${triKey}.`,
       },
       date:      dateStr,
@@ -1218,7 +1226,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
     return {
       _meta: {
         generated:   true,
-        generatedAt: new Date().toISOString(),
+        generatedAt: nowIso(),
         note:        `Auto-generated ${cfg.name}. All texts from triodion/${triKey}.`,
       },
       date:      dateStr,
@@ -1263,7 +1271,7 @@ function generateHolyWeekDay(dateStr, dow, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${cfg.name}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,
@@ -1326,7 +1334,7 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
   // ── Meatfare Saturday — Soul Saturday structure ─────────────────────────
   if (litKey === 'triodion.meatfareSaturday') {
     return {
-      _meta: { generated: true, generatedAt: new Date().toISOString(),
+      _meta: { generated: true, generatedAt: nowIso(),
                note: `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.` },
       date: dateStr, dayOfWeek: 'saturday',
       liturgicalContext: { season: 'preLenten', tone, toneSource: 'octoechosCycle' },
@@ -1365,7 +1373,7 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
 
   // ── Triodion Sundays — Great Vespers ────────────────────────────────────
   return {
-    _meta: { generated: true, generatedAt: new Date().toISOString(),
+    _meta: { generated: true, generatedAt: nowIso(),
              note: `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.` },
     date: dateStr, dayOfWeek: 'sunday',
     liturgicalContext: { season: 'preLenten', tone, toneSource: 'octoechosCycle' },
@@ -1423,7 +1431,7 @@ function generateBrightWeekDay(dateStr, dow, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,
@@ -1721,7 +1729,7 @@ function generatePentecostarionDay(dateStr, dow, tone, litKey) {
   return {
     _meta: {
       generated:   true,
-      generatedAt: new Date().toISOString(),
+      generatedAt: nowIso(),
       note:        `Auto-generated ${name}. Tone ${tone}. Variable texts (source:'db') keyed by '${litKey}'.`,
     },
     date:      dateStr,

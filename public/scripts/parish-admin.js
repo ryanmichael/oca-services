@@ -33,7 +33,7 @@ const els = {
   patronTitle:    $('patron-title-display'),
   patronFeast:    $('patron-feast-display'),
   patronClear:    $('patron-clear'),
-  cherubic:       $('f-cherubic'),
+  variantPickers: document.querySelectorAll('select[data-variant-key]'),
   save:           $('pa-save'),
   dirty:          $('pa-dirty'),
 };
@@ -66,7 +66,8 @@ function snapshot() {
     rubric_paschal_communion_year_round: els.paschalComm.checked,
     rubric_omit_catechumens_seasons:    [...els.catechSeasons]
         .filter(c => c.checked).map(c => c.value).join(','),
-    variant_pick_cherubic_hymn:         els.cherubic.value,
+    variant_picks_serialized:           [...els.variantPickers]
+        .map(s => `${s.dataset.variantKey}=${s.value}`).join(';'),
   };
 }
 
@@ -131,10 +132,15 @@ function populate(data) {
     setPatron(data.patron_natural_key, data.patron_title, '');
   }
 
-  // Populate the cherubic dropdown's currently-selected value (if any).
-  // Options are loaded asynchronously below; we set value after populating.
-  const cherubicPick = (data.variant_picks || []).find(p => p.variant_key === 'cherubic-hymn');
-  populateVariantDropdown('cherubic-hymn', els.cherubic, cherubicPick ? cherubicPick.variant_id : '');
+  // Populate every variant picker async; each picker carries its
+  // variant_key in data-variant-key. Re-baseline initialState after the
+  // last fetch resolves so the dirty-tracker reflects DB state.
+  const picksByKey = Object.fromEntries(
+    (data.variant_picks || []).map(p => [p.variant_key, p.variant_id])
+  );
+  const pickerPromises = [...els.variantPickers].map(sel =>
+    populateVariantDropdown(sel.dataset.variantKey, sel, picksByKey[sel.dataset.variantKey] || '')
+  );
 
   initialState = snapshot();
   renderDerived();
@@ -175,7 +181,7 @@ function nextSundayISO() {
 }
 
 function populateVariantDropdown(key, selectEl, currentPickId) {
-  fetch(VARIANTS_URL(key), { credentials: 'same-origin' })
+  return fetch(VARIANTS_URL(key), { credentials: 'same-origin' })
     .then(r => r.ok ? r.json() : { variants: [] })
     .then(({ variants }) => {
       for (const v of variants) {
@@ -185,17 +191,15 @@ function populateVariantDropdown(key, selectEl, currentPickId) {
         selectEl.appendChild(opt);
       }
       if (currentPickId) selectEl.value = currentPickId;
-      // Re-baseline initialState now that the dropdown reflects DB state.
       initialState = snapshot();
       refreshDirtyUI();
     });
 }
 
 function picksFromForm() {
-  const picks = [];
-  const cherubic = els.cherubic.value;
-  if (cherubic) picks.push({ variant_key: 'cherubic-hymn', variant_id: cherubic });
-  return picks;
+  return [...els.variantPickers]
+    .filter(s => s.value)
+    .map(s => ({ variant_key: s.dataset.variantKey, variant_id: s.value }));
 }
 
 async function handleSubmit(e) {
@@ -205,7 +209,7 @@ async function handleSubmit(e) {
   els.save.textContent = 'Saving…';
   try {
     const payload = snapshot();
-    delete payload.variant_pick_cherubic_hymn;
+    delete payload.variant_picks_serialized;
     payload.variant_picks = picksFromForm();
     for (const k of [
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',

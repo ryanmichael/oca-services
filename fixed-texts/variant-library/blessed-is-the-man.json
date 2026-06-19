@@ -1,7 +1,64 @@
 {
   "key": "blessed-is-the-man",
   "_version": 1,
+  "_target": {
+    "service": "vespers",
+    "path": "kathisma.blessedIsTheMan"
+  },
   "_contract": "see fixed-texts/variant-library/CONTRACT.md",
-  "_note": "Placeholder — extraction of OCA / HTM-Boston / Jordanville variants is Phase 3 work.",
-  "variants": []
+  "_note": "Phase 3.3 seed. \"oca\" is the OCA Service Book selection (refrain + verses only). HTM-family variants include the split gloryOnly/nowOnly closing doxology per parish practice.",
+  "variants": [
+    {
+      "id": "oca",
+      "label": "OCA Service Book",
+      "value": {
+        "refrain": "Alleluia, alleluia, alleluia.",
+        "verses": [
+          "Blessed is the man who has not walked in the counsel of the ungodly.",
+          "For the Lord knoweth the way of the righteous, but the way of the ungodly shall perish.",
+          "Serve the Lord with fear, and rejoice in Him with trembling.",
+          "Blessed are all they that put their trust in Him.",
+          "Arise, O Lord! Save me, O my God!",
+          "Salvation belongeth unto the Lord, and Thy blessing is upon Thy people."
+        ]
+      }
+    },
+    {
+      "id": "htm-boston",
+      "label": "Holy Transfiguration Monastery (Boston Psalter)",
+      "aliases": [
+        "htm"
+      ],
+      "value": {
+        "refrain": "Alleluia, alleluia, alleluia.",
+        "verses": [
+          "Blessed is the man who hath not walked in the counsel of the impious.",
+          "For the Lord knoweth the way of the righteous and the way of the impious shall perish.",
+          "Serve ye the Lord in fear and rejoice unto him with trembling.",
+          "Blessed are all they that trust in Him.",
+          "Arise O Lord, save me O my God.",
+          "Salvation is of the Lord, and thy blessing is upon thy people."
+        ],
+        "gloryOnly": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "nowOnly": "Both now and ever and unto ages of ages. Amen."
+      }
+    },
+    {
+      "id": "jordanville",
+      "label": "Holy Trinity Monastery (Jordanville)",
+      "value": {
+        "refrain": "Alleluia, alleluia, alleluia.",
+        "verses": [
+          "Blessed is the man who hath not walked in the counsel of the impious.",
+          "For the Lord knoweth the way of the righteous and the way of the impious shall perish.",
+          "Serve ye the Lord in fear and rejoice unto him with trembling.",
+          "Blessed are all they that trust in Him.",
+          "Arise O Lord, save me O my God.",
+          "Salvation is of the Lord, and thy blessing is upon thy people."
+        ],
+        "gloryOnly": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+        "nowOnly": "Both now and ever and unto ages of ages. Amen."
+      }
+    }
+  ]
 }

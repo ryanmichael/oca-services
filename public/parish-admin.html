@@ -140,11 +140,23 @@
       <div class="pa-card">
         <div class="pa-field">
           <label class="pa-field-label" for="f-cherubic">Cherubic Hymn setting</label>
-          <select class="pa-field-input" id="f-cherubic" name="variant_pick_cherubic-hymn">
+          <select class="pa-field-input" id="f-cherubic" data-variant-key="cherubic-hymn">
             <option value="">(inherit from jurisdiction default)</option>
           </select>
-          <div class="pa-field-help">More variant families (Pre-Communion Prayer, "Blessed is the Man") arrive as the library catalog grows.</div>
         </div>
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-precomm">Pre-Communion Prayer wording</label>
+          <select class="pa-field-input" id="f-precomm" data-variant-key="pre-communion-prayer">
+            <option value="">(inherit from jurisdiction default)</option>
+          </select>
+        </div>
+        <div class="pa-field">
+          <label class="pa-field-label" for="f-blessed">"Blessed is the Man" (Vespers Kathisma I)</label>
+          <select class="pa-field-input" id="f-blessed" data-variant-key="blessed-is-the-man">
+            <option value="">(inherit from jurisdiction default)</option>
+          </select>
+        </div>
+        <div class="pa-field-help">Three variant families seeded so far. More arrive as parishes request them.</div>
       </div>
     </section>
 

@@ -89,7 +89,9 @@ function upsertVariantPicks(db) {
   // (pre-communion-prayer, blessed-is-the-man) follow as those library
   // catalogs get populated.
   const picks = [
-    { variant_key: 'cherubic-hymn', variant_id: 'tyler-1' },
+    { variant_key: 'cherubic-hymn',        variant_id: 'tyler-1' },
+    { variant_key: 'pre-communion-prayer', variant_id: 'htm' },
+    { variant_key: 'blessed-is-the-man',   variant_id: 'htm-boston' },
   ];
   const stmt = db.prepare(`
     INSERT INTO parish_variant_picks (parish_id, variant_key, variant_id)

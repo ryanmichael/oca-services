@@ -1,7 +1,27 @@
 {
   "key": "pre-communion-prayer",
   "_version": 1,
-  "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
-  "_note": "Placeholder — extraction of OCA / HTM / Jordanville / Sluzhebnik variants is Phase 3 work.",
-  "variants": []
+  "_target": {
+    "service": "liturgy",
+    "path": "pre-communion.prayer-chrysostom"
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Phase 3.2 seed. \"oca\" is the base Service Book wording; \"htm\" is the Holy Transfiguration Monastery (Boston) wording; \"jordanville\" is the Holy Trinity Monastery (Jordanville) wording. Sts-Sluzhebnik tradition uses the OCA wording, so no separate variant.",
+  "variants": [
+    {
+      "id": "oca",
+      "label": "OCA Service Book",
+      "value": "I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the Living God, Who camest into the world to save sinners, of whom I am first. I believe also that this is truly Thine own pure Body, and that this is truly Thine own precious Blood. Therefore I pray Thee: have mercy upon me and forgive my transgressions both voluntary and involuntary, of word and of deed, of knowledge and of ignorance. And make me worthy to partake without condemnation of Thy most pure Mysteries, for the remission of my sins, and unto life everlasting. Amen.\n\nOf Thy Mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of Thy Mystery to Thine enemies, neither like Judas will I give Thee a kiss; but like the thief will I confess Thee: Remember me, O Lord, in Thy Kingdom.\n\nMay the communion of Thy Holy Mysteries be neither to my judgment, nor to my condemnation, O Lord, but to the healing of soul and body. Amen."
+    },
+    {
+      "id": "htm",
+      "label": "Holy Transfiguration Monastery (Boston)",
+      "value": "I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the living God, Who camest into the world to save sinners, of whom I am chief. Moreover, I believe that this is truly Thine own most pure Body, and that this is truly Thine own precious Blood. Wherefore, I pray Thee: have mercy upon me and forgive me my transgressions, voluntary and involuntary, whether in word or deed, in knowledge or in ignorance. And vouchsafe me without condemnation to partake of Thy most pure Mysteries, unto the remission of sins and unto life everlasting. Amen.\n\nOf Thy Mystical Supper, O Son of God, receive me today as a communicant; for I will not speak of Thy Mystery to Thine enemies, neither like Judas will I give Thee a kiss; but like the thief will I confess Thee: Remember me, O Lord, in Thy kingdom.\n\nMay the communion of Thy holy Mysteries be neither unto judgement nor unto condemnation for me, O Lord, but unto the healing of soul and body. Amen."
+    },
+    {
+      "id": "jordanville",
+      "label": "Holy Trinity Monastery (Jordanville)",
+      "value": "I believe O Lord and I confess that Thou art truly the Christ, the Son of the Living God, who camest into the world to save sinners, of whom I am the first (see 1 Tim 1.15).\n\nI believe also that this is truly Thine own most pure Body, and that this is truly Thine own most precious Blood. Therefore I pray Thee: Have mercy upon me and forgive me my transgressions.\n\nAnd make me worthy to partake without condemnation of Thy most pure Mysteries, for the remission of sins and unto life everlasting.\n\nOf Thy Mystical Supper, O Son of God, accept me today as a communicant. For I will not speak of Thy Mystery to Thine enemies, neither like Judas will I give Thee a kiss; but like the thief will I confess Thee: “Remember me, O Lord, in Thy Kingdom.”\n\nMay the communion of Thy Holy Mysteries be neither to my judgment, nor to my condemnation, O Lord, but to the healing of soul and body."
+    }
+  ]
 }

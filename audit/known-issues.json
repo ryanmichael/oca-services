@@ -90,12 +90,6 @@
       "reason": "Vigil-rank / paschal-cycle Sat-eve Vespers Aposticha: Glory present but Now+Theotokion missing. Three Hierarchs Vigil (01-29), Lazarus Sat (03-27), pentecostarion Saturdays (04-25, 05-02, 05-09, 05-16), late-June Sat eves (06-23, 06-28). Same data gap class as D2/D4 — Aposticha Theotokion not injected when the Glory comes from a Menaion/Pentecostarion path. addedAt 2026-06-18."
     },
     {
-      "rule": "M19-matins-lauds-shape",
-      "dates": ["2026-01-31"],
-      "reason": "Saturday doxology-rank Cyrus & John: menaion file january-31.json ships only lauds.doxastikon (the Glory hymn) without lauds.stichera. Doxology-rank Saturday Lauds expects the saint's full stichera set in the menaion file — none of the system's Octoechos paths apply on Saturday. Distinct from the Sunday Lauds-blend bug fixed in B1+B2; this is a menaion authoring gap. Fix path: source + author the Cyrus & John Lauds stichera into january-31.json. addedAt 2026-06-18.",
-      "_addedAt": "2026-06-18"
-    },
-    {
       "rule": "M28-matins-aposticha-shape",
       "dates": ["2026-03-25"],
       "reason": "Annunciation Matins Aposticha is a Great Feast (Lord's feast) whose Aposticha structure renders a combined Glory+Now + single feast sticheron (no weekday-shape stichera blend). Real edge case, not a regression. addedAt 2026-06-18."

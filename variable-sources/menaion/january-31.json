@@ -8,7 +8,7 @@
     "tone": 4,
     "_source": "Matins: St-Sergius Emenaion 01-31.pdf",
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-31.pdf",
-    "_note": "Simple-rank. Single canon of the saints in Tone IV with 6 troparia (3 saints + theotokion per ode, no acrostic noted). Sessional hymn after Ode 3 in Tone IV. Kontakion Tone III with ikos after Ode 6. Exapostilarion Tone III. Lauds doxastikon Tone IV. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos Matins scrape."
+    "_note": "Simple-rank. Single canon of the saints in Tone IV with 6 troparia (3 saints + theotokion per ode, no acrostic noted). Sessional hymn after Ode 3 in Tone IV. Kontakion Tone III with ikos after Ode 6. Exapostilarion Tone III. The Tone-IV doxastikon currently in lauds.doxastikon is actually the Aposticha doxastikon per the OCA Emenaion source (\"On the Aposticha, ... Glory ..., in Tone IV\"); leaving it here for now since the assembler has no `aposticha.doxastikon` injection path for non-Lenten weekday Matins — moving it would render nowhere. Future fix: add an aposticha-doxastikon injection branch around server-lib/sources/matins-spec.js:832, then move the field."
   },
 
   "troparion": {

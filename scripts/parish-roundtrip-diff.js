@@ -45,7 +45,10 @@ function fetchJson(url) {
 function normalize(jsonText) {
   return jsonText
     .replace(/"translation":"[^"]*"/g, '"translation":"<normalized>"')
-    .replace(/"_overlay":"[^"]*"/g, '"_overlay":"<normalized>"');
+    // _overlay is a provenance tag. Strip both the key+value and the
+    // preceding comma so blocks that have it match blocks that don't.
+    .replace(/,"_overlay":"[^"]*"/g, '')
+    .replace(/"_overlay":"[^"]*",/g, '');
 }
 
 function diffStrings(rawA, rawB) {

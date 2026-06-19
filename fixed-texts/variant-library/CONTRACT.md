@@ -16,12 +16,13 @@ this document defines.
 {
   "key": "pre-communion-prayer",
   "_version": 1,
+  "_target": { "service": "liturgy", "path": "pre-communion.prayer-chrysostom" },
   "_contract": "see fixed-texts/variant-library/CONTRACT.md",
   "variants": [
     {
       "id": "oca",
       "label": "OCA Service Book",
-      "text": "...",
+      "value": "...",
       "aliases": [],
       "deprecated": false
     }
@@ -29,8 +30,18 @@ this document defines.
 }
 ```
 
-Required per variant: `id`, `label`, `text`.
+Required per variant: `id`, `label`, `value`.
 Optional per variant: `aliases` (string array), `deprecated` (bool).
+
+`value` may be either a string (most variants) or a structured object (for
+multi-part hymns like the Cherubic Hymn or Blessed-is-the-Man). The parish
+overlay materializer slots the value as-is at `_target.path`.
+
+`_target.service` is the service name (`liturgy`, `vespers`, etc.) the variant
+applies to. `_target.path` is a dotted overlay key — e.g.
+`cherubic-hymn` (top-level) or `kathisma.blessedIsTheMan` (nested). `_target`
+is required as soon as a file has variants; placeholder files with
+`variants: []` may omit it.
 
 ## The four rules
 

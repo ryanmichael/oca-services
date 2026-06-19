@@ -38,12 +38,29 @@ function loadOne(file) {
   const data = JSON.parse(raw);
   if (!data.key) throw new Error(`${file}: missing "key"`);
   if (!Array.isArray(data.variants)) throw new Error(`${file}: "variants" must be an array`);
+  // _target tells the parish-overlay materializer where to slot the variant's
+  // value in the cascade. Optional only on placeholder files (variants:[]);
+  // mandatory once the file ships real content.
+  const target = data._target || null;
+  if (target) {
+    if (!target.service || !target.path) {
+      throw new Error(`${file}: _target must include both "service" and "path"`);
+    }
+  } else if (data.variants.length > 0) {
+    throw new Error(`${file}: _target { service, path } is required when variants are present`);
+  }
 
   const byId = new Map();
   for (const v of data.variants) {
     if (!v.id)    throw new Error(`${file}: variant missing "id"`);
     if (!v.label) throw new Error(`${file}: variant ${v.id} missing "label"`);
-    if (typeof v.text !== 'string') throw new Error(`${file}: variant ${v.id} missing "text"`);
+    // "value" is either a string (most variants) or a structured object (for
+    // multi-part hymns like the Cherubic Hymn or Blessed-is-the-Man). We
+    // accept either; the materializer slots it as-is at _target.path.
+    if (v.value === undefined && v.text === undefined) {
+      throw new Error(`${file}: variant ${v.id} missing "value"`);
+    }
+    if (v.value === undefined) v.value = v.text;  // backward-compat alias
 
     const names = [v.id, ...(v.aliases || [])];
     for (const name of names) {
@@ -55,7 +72,7 @@ function loadOne(file) {
       byId.set(name, v);
     }
   }
-  return { key: data.key, version: data._version || 1, byId, all: data.variants };
+  return { key: data.key, version: data._version || 1, target, byId, all: data.variants };
 }
 
 function loadVariantLibrary() {

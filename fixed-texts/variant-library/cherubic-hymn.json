@@ -1,7 +1,29 @@
 {
   "key": "cherubic-hymn",
   "_version": 1,
-  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
-  "_note": "Placeholder — extraction of Tchaikovsky / L'vovsky / Tyler-1 / Slavonic-calque settings is Phase 3 work.",
-  "variants": []
+  "_target": { "service": "liturgy", "path": "cherubic-hymn" },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
+  "_note": "Seed catalog for Phase 3. Lift more variants (Tchaikovsky, L'vovsky, Bortniansky) as parishes request them. The `value` object replaces the entire `cherubic-hymn` key in the liturgy overlay.",
+  "variants": [
+    {
+      "id": "tyler-1",
+      "label": "St. John's Tyler — Setting #1 (Russian-tradition doubled phrases)",
+      "value": {
+        "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
+        "amen": "Amen.",
+        "part2": "That we may receive the King of all, Who comes invisibly, invisibly upborne by the angelic hosts.\nBy the angelic hosts.",
+        "alleluia": "Alleluia, alleluia, alleluia."
+      }
+    },
+    {
+      "id": "slavonic-calque",
+      "label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style)",
+      "value": {
+        "part1": "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
+        "amen": "Amen.",
+        "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts.",
+        "alleluia": "Alleluia, alleluia, alleluia."
+      }
+    }
+  ]
 }

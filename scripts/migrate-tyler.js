@@ -83,16 +83,21 @@ function upsertTyler(db) {
 }
 
 function upsertVariantPicks(db) {
-  // Tyler's settings today are wired through the legacy overlay file. The
-  // variant library is empty in Phase 0 placeholders; Phase 3 will extract
-  // and pin pre-communion → 'htm', blessed-is-the-man → 'htm', cherubic
-  // → 'tyler-1'. For Phase 1 we leave the picks empty so the contract test
-  // INV-E remains trivially green and Tyler continues to receive its texts
-  // via the legacy file cascade.
-  const existing = db.prepare(
-    'SELECT COUNT(*) AS n FROM parish_variant_picks WHERE parish_id = ?'
-  ).get(TYLER_ID);
-  console.log(`[migrate-tyler] variant picks for ${TYLER_ID}: ${existing.n} (Phase 3 will populate)`);
+  // Phase 3 picks. The Cherubic Hymn is the first variant family populated
+  // in the library; tyler-1 is byte-identical to Tyler's current legacy
+  // overlay value (verified by parish-roundtrip-diff). Other picks
+  // (pre-communion-prayer, blessed-is-the-man) follow as those library
+  // catalogs get populated.
+  const picks = [
+    { variant_key: 'cherubic-hymn', variant_id: 'tyler-1' },
+  ];
+  const stmt = db.prepare(`
+    INSERT INTO parish_variant_picks (parish_id, variant_key, variant_id)
+    VALUES (?, ?, ?)
+    ON CONFLICT(parish_id, variant_key) DO UPDATE SET variant_id = excluded.variant_id
+  `);
+  for (const p of picks) stmt.run(TYLER_ID, p.variant_key, p.variant_id);
+  console.log(`[migrate-tyler] upserted ${picks.length} variant pick(s) for ${TYLER_ID}`);
 }
 
 function appendHistory(db) {

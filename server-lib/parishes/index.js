@@ -24,7 +24,17 @@ const {
 } = require('../overlays/in-memory');
 const { invalidateOverlayCascade } = require('../overlays/cascade');
 
-const SERVICES_WITH_DERIVATIONS = ['liturgy'];
+const SERVICES_WITH_DERIVATIONS = ['liturgy', 'vespers'];
+
+function setDottedKey(obj, dotted, value) {
+  const parts = dotted.split('.');
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (typeof cur[parts[i]] !== 'object' || cur[parts[i]] === null) cur[parts[i]] = {};
+    cur = cur[parts[i]];
+  }
+  cur[parts[parts.length - 1]] = value;
+}
 
 function readParishRow(db, parishId) {
   return db.prepare('SELECT * FROM parish_settings WHERE parish_id = ?').get(parishId);
@@ -74,12 +84,21 @@ function buildParishOverlay(row, picks, library) {
         ruling_hierarch_name: row.ruling_hierarch_name || '',
       },
     });
-    // Variant picks contribute too. Each pick selects a text from the library;
-    // we slot it into the overlay under the pick's variant_key as a top-level
-    // override. Phase 3 will codify the mapping from variant_key → target path
-    // (e.g. "cherubic-hymn" → "cherubic-hymn") — for now, top-level by key.
-    const variantOverrides = resolveVariantPicks(picks, library);
-    data[service] = { ...derived, ...variantOverrides };
+    data[service] = derived;
+  }
+
+  // Variant picks slot into per-service overlay data at the library's
+  // declared _target.path. Library schema enforces _target is present when
+  // a file has variants; see fixed-texts/variant-library/CONTRACT.md.
+  for (const pick of picks) {
+    const lib = library[pick.variant_key];
+    if (!lib) continue;
+    const v = resolveVariant(library, pick.variant_key, pick.variant_id);
+    if (!v) continue;
+    const t = lib.target;
+    if (!t) continue;
+    if (!data[t.service]) data[t.service] = {};
+    setDottedKey(data[t.service], t.path, v.value);
   }
 
   return { manifest, data };
@@ -126,15 +145,6 @@ function buildRubrics(row) {
     }
   }
   return r;
-}
-
-function resolveVariantPicks(picks, library) {
-  const out = {};
-  for (const pick of picks) {
-    const v = resolveVariant(library, pick.variant_key, pick.variant_id);
-    if (v) out[pick.variant_key] = v.text;
-  }
-  return out;
 }
 
 /** Register a single parish's in-memory overlay from current DB state.

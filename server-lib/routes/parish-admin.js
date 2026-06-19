@@ -205,6 +205,21 @@ const MONTH_NAMES = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
+function handleVariantsList(url, res) {
+  const key = (url.searchParams.get('key') || '').trim();
+  if (!key) return send(res, 400, { error: 'missing_key' });
+  const { loadVariantLibrary } = require('../variants');
+  const reg = loadVariantLibrary();
+  const entry = reg[key];
+  if (!entry) return send(res, 404, { error: 'unknown_key' });
+  // Return only id/label/deprecated — the value payload can be large and
+  // is irrelevant to the picker.
+  const variants = entry.all
+    .filter(v => !v.deprecated)
+    .map(v => ({ id: v.id, label: v.label }));
+  return send(res, 200, { key, target: entry.target, variants });
+}
+
 function handlePatronSearch(url, res) {
   const q = (url.searchParams.get('q') || '').trim();
   if (q.length < 2) return send(res, 200, { results: [] });
@@ -272,6 +287,10 @@ function handle(req, res, _ctx) {
   if (parsed.subpath === '/patron-search') {
     if (req.method !== 'GET') return send(res, 405, { error: 'method_not_allowed' });
     return handlePatronSearch(url, res);
+  }
+  if (parsed.subpath === '/variants') {
+    if (req.method !== 'GET') return send(res, 405, { error: 'method_not_allowed' });
+    return handleVariantsList(url, res);
   }
   if (parsed.subpath === '/settings') {
     if (req.method === 'GET')  return handleGetSettings(parishId, res);

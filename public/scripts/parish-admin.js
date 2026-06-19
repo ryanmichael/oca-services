@@ -3,6 +3,7 @@
 const slug = location.pathname.split('/').filter(Boolean)[1];
 const SETTINGS_URL = `/parish-admin/${slug}/settings`;
 const PATRON_URL   = (q) => `/parish-admin/${slug}/patron-search?q=${encodeURIComponent(q)}`;
+const VARIANTS_URL = (key) => `/parish-admin/${slug}/variants?key=${encodeURIComponent(key)}`;
 const SERVICE_PREVIEW_URL = (date) =>
   `/api/liturgy?date=${date}&translation=${slug}`;
 
@@ -32,6 +33,7 @@ const els = {
   patronTitle:    $('patron-title-display'),
   patronFeast:    $('patron-feast-display'),
   patronClear:    $('patron-clear'),
+  cherubic:       $('f-cherubic'),
   save:           $('pa-save'),
   dirty:          $('pa-dirty'),
 };
@@ -64,6 +66,7 @@ function snapshot() {
     rubric_paschal_communion_year_round: els.paschalComm.checked,
     rubric_omit_catechumens_seasons:    [...els.catechSeasons]
         .filter(c => c.checked).map(c => c.value).join(','),
+    variant_pick_cherubic_hymn:         els.cherubic.value,
   };
 }
 
@@ -128,6 +131,11 @@ function populate(data) {
     setPatron(data.patron_natural_key, data.patron_title, '');
   }
 
+  // Populate the cherubic dropdown's currently-selected value (if any).
+  // Options are loaded asynchronously below; we set value after populating.
+  const cherubicPick = (data.variant_picks || []).find(p => p.variant_key === 'cherubic-hymn');
+  populateVariantDropdown('cherubic-hymn', els.cherubic, cherubicPick ? cherubicPick.variant_id : '');
+
   initialState = snapshot();
   renderDerived();
   refreshDirtyUI();
@@ -166,6 +174,30 @@ function nextSundayISO() {
   return d.toISOString().slice(0, 10);
 }
 
+function populateVariantDropdown(key, selectEl, currentPickId) {
+  fetch(VARIANTS_URL(key), { credentials: 'same-origin' })
+    .then(r => r.ok ? r.json() : { variants: [] })
+    .then(({ variants }) => {
+      for (const v of variants) {
+        const opt = document.createElement('option');
+        opt.value = v.id;
+        opt.textContent = v.label;
+        selectEl.appendChild(opt);
+      }
+      if (currentPickId) selectEl.value = currentPickId;
+      // Re-baseline initialState now that the dropdown reflects DB state.
+      initialState = snapshot();
+      refreshDirtyUI();
+    });
+}
+
+function picksFromForm() {
+  const picks = [];
+  const cherubic = els.cherubic.value;
+  if (cherubic) picks.push({ variant_key: 'cherubic-hymn', variant_id: cherubic });
+  return picks;
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   if (!isDirty()) return;
@@ -173,6 +205,8 @@ async function handleSubmit(e) {
   els.save.textContent = 'Saving…';
   try {
     const payload = snapshot();
+    delete payload.variant_pick_cherubic_hymn;
+    payload.variant_picks = picksFromForm();
     for (const k of [
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',
       'rubric_include_lesser_saints','rubric_include_second_gospel',

@@ -45,13 +45,22 @@ describe('Variant library contract', () => {
     assert.doesNotThrow(() => loadVariantLibrary());
   });
 
-  it('INV-D: every variant has id, label, and string text', () => {
+  it('INV-D: every variant has id, label, and a value (string or object)', () => {
     const registry = loadVariantLibrary();
     for (const [key, entry] of Object.entries(registry)) {
       for (const v of entry.all) {
         assert.ok(v.id,    `${key}: variant missing id`);
         assert.ok(v.label, `${key}: variant ${v.id} missing label`);
-        assert.equal(typeof v.text, 'string', `${key}: variant ${v.id} text must be string`);
+        assert.ok(v.value !== undefined, `${key}: variant ${v.id} missing value`);
+        const t = typeof v.value;
+        assert.ok(t === 'string' || (t === 'object' && v.value !== null),
+          `${key}: variant ${v.id} value must be string or object, got ${t}`);
+      }
+      // If the file has variants, _target must be set.
+      if (entry.all.length > 0) {
+        assert.ok(entry.target,            `${key}: _target required when variants exist`);
+        assert.ok(entry.target.service,    `${key}: _target.service required`);
+        assert.ok(entry.target.path,       `${key}: _target.path required`);
       }
     }
   });

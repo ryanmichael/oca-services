@@ -142,90 +142,12 @@ function generateOrdinaryTimeWeekday(dateStr, dow, tone) {
   };
 }
 
-/**
- * Generates a Great Vespers entry for a fixed-calendar Great Feast falling on a weekday.
- * All stichera come from the feast (injected from DB by server.js at runtime).
- * The feast key is used to identify the feast for the Liturgy assembler.
- */
-function generateGreatFeastVespers(dateStr, dow, tone, feastKey, season) {
-  return {
-    _meta: {
-      generated:   true,
-      generatedAt: nowIso(),
-      note:        `Auto-generated All-Night Vigil — Great Vespers (${feastKey}). Tone ${tone}.`,
-    },
-    date:      dateStr,
-    dayOfWeek: dow,
-    liturgicalContext: { season, tone, toneSource: 'octoechosCycle', greatFeast: feastKey },
-    commemorations: [],
-    vespers: {
-      serviceType: 'all-night-vigil',
-      rubricNote:  `All-Night Vigil — Great Vespers with Entrance — ${feastKey}`,
-      lordICall: {
-        tone,
-        totalStichera: 8,
-        slots: [],   // server injects feast stichera at runtime
-        glory: null, // server injects feast glory doxastichon
-        now:   null,
-      },
-      prokeimenon: vespersDailyProkeimenon(dow, { feastDowSpecial: true }),
-      litya: {
-        slots: [],   // server injects litya stichera when available
-        glory: null,
-        now:   null,
-      },
-      aposticha: {
-        slots: [],   // server injects feast aposticha
-        glory: null,
-      },
-      troparia: {
-        slots: [],   // server injects feast troparion
-      },
-    },
-  };
-}
-
-/**
- * Generates an All-Night Vigil entry for a vigil-rank saint (non-great-feast).
- * Uses 8 stichera at Lord I Call (vs 6 for ordinary days).
- */
-function generateVigilFeastVespers(dateStr, dow, tone) {
-  return {
-    _meta: {
-      generated:   true,
-      generatedAt: nowIso(),
-      note:        `Auto-generated All-Night Vigil — Vigil-rank feast. Tone ${tone}.`,
-    },
-    date:      dateStr,
-    dayOfWeek: dow,
-    liturgicalContext: { season: 'ordinaryTime', tone, toneSource: 'octoechosCycle' },
-    commemorations: [],
-    vespers: {
-      serviceType: 'all-night-vigil',
-      rubricNote:  `All-Night Vigil — Great Vespers with Entrance`,
-      lordICall: {
-        tone,
-        totalStichera: 8,
-        slots: [],   // server injects stichera at runtime
-        glory: null,
-        now:   null,
-      },
-      prokeimenon: vespersDailyProkeimenon(dow, { feastDowSpecial: true }),
-      litya: {
-        slots: [],   // server injects litya stichera when available
-        glory: null,
-        now:   null,
-      },
-      aposticha: {
-        slots: [],
-        glory: null,
-      },
-      troparia: {
-        slots: [],
-      },
-    },
-  };
-}
+// Great-Feast + Vigil-Feast Vespers generators extracted to
+// calendar/generators/great-feast.js (Track D step 8a).
+const {
+  generateGreatFeastVespers,
+  generateVigilFeastVespers,
+} = require('./calendar/generators/great-feast');
 
 /**
  * Generates a Great Vespers entry (resurrectional Octoechos) for ordinary time.
@@ -1124,86 +1046,9 @@ function generatePreLentenDay(dateStr, dow, tone, litKey) {
   };
 }
 
-/**
- * Generates a Bright Week day entry.
- * All services during Bright Week use Paschal texts sourced from the DB.
- */
-function generateBrightWeekDay(dateStr, dow, litKey) {
-  const names = {
-    sunday:    'Holy Pascha',
-    monday:    'Bright Monday',
-    tuesday:   'Bright Tuesday',
-    wednesday: 'Bright Wednesday',
-    thursday:  'Bright Thursday',
-    friday:    'Bright Friday',
-    saturday:  'Bright Saturday',
-  };
-  const name = names[dow] || `Bright Week ${dow}`;
-
-  return {
-    _meta: {
-      generated:   true,
-      generatedAt: nowIso(),
-      note:        `Auto-generated ${name}. Variable texts (source:'db') keyed by '${litKey}'.`,
-    },
-    date:      dateStr,
-    dayOfWeek: dow,
-    liturgicalContext: { season: 'brightWeek' },
-    commemorations: [],
-    vespers: {
-      serviceType: 'greatVespers',
-      paschalOpening: true,
-      rubricNote:  `${name} — Paschal Vespers`,
-      lordICall: {
-        totalStichera: 6,
-        slots: [
-          { verses: [6, 5, 4, 3, 2, 1], count: 6, source: 'db', tone: 2,
-            key: `${litKey}.vespers.lordICall`, label: 'Stichera' },
-        ],
-        glory: { source: 'db', key: `${litKey}.vespers.lordICall.glory` },
-        now:   { source: 'db', key: `${litKey}.vespers.lordICall.now`, label: 'Theotokion' },
-      },
-      prokeimenon: (() => {
-        const BRIGHT_PROK = {
-          sunday:    { pattern: 'great',   key: 'whoIsSoGreat' },
-          monday:    { pattern: 'great',   key: 'whoIsSoGreat' },
-          tuesday:   { pattern: 'great',   key: 'ourGodIsInHeaven' },
-          wednesday: { pattern: 'great',   key: 'iCriedAloud' },
-          thursday:  { pattern: 'great',   key: 'hearkenUntoMyPrayer' },
-          friday:    { pattern: 'great',   key: 'iLoveThee' },
-          saturday:  { pattern: 'weekday', weekday: 'saturdayGreatVespers' },
-        };
-        return BRIGHT_PROK[dow] ?? { pattern: 'weekday', weekday: 'saturdayGreatVespers' };
-      })(),
-      // Bright Sunday aposticha: 5 unique Paschal stichera with Ps. 67/117 verses, then Glory+Now
-      aposticha: dow === 'sunday' ? {
-        slots: [
-          { position: 1, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.0', tone: 2, label: 'for the Resurrection' },
-          { position: 2, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.1', tone: 5, label: 'Paschal Sticheron' },
-          { position: 3, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.2', tone: 5, label: 'Paschal Sticheron' },
-          { position: 4, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.3', tone: 5, label: 'Paschal Sticheron' },
-          { position: 5, source: 'db', key: 'brightWeek.sunday.vespers.aposticha.hymns.4', tone: 5, label: 'Paschal Sticheron' },
-        ],
-        glory: { source: 'db', key: 'brightWeek.sunday.vespers.aposticha.now', combinesGloryNow: true },
-      } : {
-        slots: [
-          { position: 1, source: 'db', key: `${litKey}.vespers.aposticha`, label: 'Sticheron' },
-          { position: 2, repeatPrevious: true },
-          { position: 3, repeatPrevious: true },
-        ],
-        glory: { source: 'db', key: `${litKey}.vespers.aposticha.now`, combinesGloryNow: true, label: 'Theotokion' },
-      },
-      troparia: {
-        source: 'db',
-        slots: [
-          { order: 1,          source: 'db', key: `${litKey}.vespers.troparia` },
-          { position: 'glory', source: 'db', key: `${litKey}.vespers.troparia` },
-          { position: 'now',   source: 'db', key: `${litKey}.vespers.troparia.now` },
-        ],
-      },
-    },
-  };
-}
+// Bright Week day generator extracted to calendar/generators/bright-week.js
+// (Track D step 8b).
+const { generateBrightWeekDay } = require('./calendar/generators/bright-week');
 
 /**
  * Generates a Pentecostarion day entry.

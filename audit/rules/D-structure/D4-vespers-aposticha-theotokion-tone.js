@@ -32,6 +32,14 @@ module.exports = {
     const gloryHymn = apost.slice(gloryIdx + 1).find(b => b.type === 'hymn');
     if (!gloryHymn || gloryHymn.tone == null) return [];
 
+    // Skip when Glory is sourced from the Triodion or Pentecostarion — those
+    // books legitimately pair their doxastichon with a forefeast/feast
+    // Theotokion in a different tone (e.g. Publican-Pharisee Sat-eve Vespers
+    // pairs the penitential Glory in Tone 5 with the Meeting-of-the-Lord
+    // forefeast Theotokion in Tone 2). The tone-match rubric applies to
+    // Menaion-injected Glory, not Triodion/Pentecostarion-supplied Glory.
+    if (/^from the (Lenten Triodion|Pentecostarion|Triodion)/i.test(gloryHymn.label || '')) return [];
+
     // Find the following Theotokion hymn.
     const theoHymn = apost.slice(gloryIdx + 1).find(b =>
       b.type === 'hymn' && /theotokion/i.test(b.label || '')

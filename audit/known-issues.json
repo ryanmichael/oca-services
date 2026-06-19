@@ -70,9 +70,9 @@
     {
       "rule": "D4-vespers-aposticha-theotokion-tone",
       "dates": [
-        "2026-01-31", "2026-02-07", "2026-02-21", "2026-06-13"
+        "2026-02-21", "2026-06-13"
       ],
-      "reason": "Remaining Sat-eve Great Vespers Aposticha Theotokion tone mismatches after the for-date.js Saturday-branch re-key (2026-06-19). These four have a different root cause than the original 28-entry data gap: (1) 01-31/02-07/02-21 are Triodion Sundays (Publican/Pharisee, Prodigal Son, Forgiveness) where calendar-rules ships a Triodion-source apost.glory + apost.now in matching tones, but for-date.js menaion-injection still overrides apost.glory with the menaion saint's order=0 — the Triodion should win on Triodion Sundays; (2) 06-13 is NA Saints Sunday whose menaion order=-1 Theotokion is authored in tone 5 even though the saint's Glory is in tone 4 (saint's own Theotokion, not an Octoechos-appendix lookup; rule may be too strict for this pairing). Fix paths: (a) don't override apost.glory when calendar entry already has source:'triodion'/'pentecostarion'; (b) revisit D4's rule when Theotokion source is menaion order=-1. addedAt 2026-06-19."
+      "reason": "Legitimate rubric mismatches where Glory and Theotokion come from different sources at different tones — not bugs. (a) 02-21 (Cheesefare Sat → Forgiveness Sun): Menaion Glory 'for the Forerunner' (Tone 2) paired with Triodion 'Adam ate the forbidden fruit' Theotokion (Tone 6) — the pre-Lenten Triodion provides its own Now-Theotokion at its authored tone, distinct from the menaion saint's Glory. (b) 06-13 (NA Saints Sun): Menaion Glory tone 4 paired with the saint's own order=-1 Theotokion tone 5 — saint's-own Theotokion legitimately at a different tone than the saint's doxastichon. Both cases the rule is too strict; the tone-match rubric applies to Octoechos-appendix Theotokion lookups, not to Triodion/Pentecostarion or saint's-own Theotokia. Fix path (future): tighten D4 to recognize saint's-own (menaion order=-1) Theotokion source and skip; for Triodion-Theotokion-after-Menaion-Glory pattern, similar source-aware skip needed. addedAt 2026-06-19."
     },
     {
       "rule": "D6-vespers-aposticha-now-theotokion",

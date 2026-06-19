@@ -308,7 +308,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           }
         }
 
-        if (apostGlory) {
+        // Triodion / Pentecostarion Sundays: the calendar entry already ships
+        // a glory + now in matching tones (e.g. Publican-Pharisee, Prodigal,
+        // Forgiveness). The Triodion's doxastichon wins over the Menaion
+        // saint's. Skip the Menaion glory override on those days.
+        const triodionOwnsGlory = apost.glory && typeof apost.glory.key === 'string'
+          && (apost.glory.key.startsWith('triodion.') || apost.glory.key.startsWith('pentecostarion.'));
+
+        if (apostGlory && !triodionOwnsGlory) {
           apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
           // Saturday: set the saint's own Theotokion (menaion order=-1) if present
           //   — that's the "Now and ever" of the feast, distinct from the

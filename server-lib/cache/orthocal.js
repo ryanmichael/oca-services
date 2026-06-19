@@ -3,13 +3,18 @@
 const fs   = require('node:fs');
 const path = require('node:path');
 
-const { openDb, openDbWrite } = require('./sqlite');
-
 // Vendored orthocal responses live in data/orthocal/YYYY-MM-DD.json.
-// fetchOrthocalDay prefers vendored data, then the DB cache, then the live
-// API for dates outside the vendored window. Track B vendored a multi-year
-// window so the app keeps working with no live API dependency.
+// Track B (2026-06-19) vendored 2025–2029, so every in-window date hits a
+// committed file — no external dependency at runtime for the canonical
+// window. For dates outside the window, fall through to the live API; cache
+// the response in-process only (no DB write) so the canonical DB stays
+// byte-stable across boots and requests.
 const VENDOR_DIR = path.resolve(__dirname, '..', '..', 'data', 'orthocal');
+
+// In-process cache — survives within a single Node process, discarded on
+// restart. Out-of-window orthocal hits are rare in normal operation; this
+// covers audit sweeps and prevents repeat fetches of the same date.
+const inProcessCache = new Map();
 
 function getVendored(dateStr) {
   try {
@@ -19,46 +24,17 @@ function getVendored(dateStr) {
   } catch { return null; }
 }
 
-function ensureOrthocalCacheTable() {
-  try {
-    const db = openDbWrite();
-    if (!db) return;
-    db.exec(`CREATE TABLE IF NOT EXISTS orthocal_cache (
-      date       TEXT PRIMARY KEY,
-      data       TEXT NOT NULL,
-      fetched_at TEXT NOT NULL
-    )`);
-  } catch (err) {
-    console.error('Failed to create orthocal_cache table:', err.message);
-  }
-}
-
-function getOrthocalCache(dateStr) {
-  try {
-    const db = openDb();
-    if (!db) return null;
-    const row = db.prepare('SELECT data FROM orthocal_cache WHERE date = ?').get(dateStr);
-    return row ? JSON.parse(row.data) : null;
-  } catch { return null; }
-}
-
-function setOrthocalCache(dateStr, data) {
-  try {
-    const db = openDbWrite();
-    if (!db) return;
-    db.prepare(
-      'INSERT OR REPLACE INTO orthocal_cache (date, data, fetched_at) VALUES (?, ?, ?)'
-    ).run(dateStr, JSON.stringify(data), new Date().toISOString());
-  } catch (err) {
-    console.error('Orthocal cache write error:', err.message);
-  }
-}
+// Kept as a no-op for backwards compatibility with the boot-time call site
+// (server-lib/boot/load-fixed.js) and the routes that destructure it from
+// the context bag. Track E (2026-06-19) retired the orthocal_cache DB
+// table; this stub stays so the call sites don't have to change in lockstep.
+function ensureOrthocalCacheTable() { /* no-op */ }
 
 async function fetchOrthocalDay(dateStr) {
   const vendored = getVendored(dateStr);
   if (vendored) return vendored;
 
-  const cached = getOrthocalCache(dateStr);
+  const cached = inProcessCache.get(dateStr);
   if (cached) return cached;
 
   const [year, month, day] = dateStr.split('-').map(Number);
@@ -67,7 +43,7 @@ async function fetchOrthocalDay(dateStr) {
   if (!res.ok) throw new Error(`Orthocal API ${res.status} for ${dateStr}`);
   const data = await res.json();
 
-  setOrthocalCache(dateStr, data);
+  inProcessCache.set(dateStr, data);
   return data;
 }
 

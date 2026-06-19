@@ -9,6 +9,8 @@
     "validate": "node scripts/validate-schemas.js",
     "test:contracts": "node --test test/contracts/*.test.js",
     "setup-hooks": "node scripts/setup-hooks.js",
+    "migrate": "node scripts/migrate.js",
+    "drift:check": "node scripts/drift-check.js",
     "test:e2e": "playwright test",
     "audit": "node audit/index.js --sample representative --year 2026 --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --http http://localhost:3000",
     "audit:full": "node audit/index.js --year 2026 --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --http http://localhost:3000",

@@ -55,4 +55,64 @@ function validateAllTranslations() {
   else console.log(`Translation overlay validation: ${ids.length} overlay(s) OK.`);
 }
 
-module.exports = { collectKeyPaths, warnUnknownKeys, validateAllTranslations };
+/** Validates the variant library at startup. Errors here are loud — a malformed
+ *  library file is a contract violation (see fixed-texts/variant-library/CONTRACT.md)
+ *  and means parish picks may silently fall back to default. Boot continues so the
+ *  server can still answer /healthz with a useful failure mode. */
+function validateVariantLibrary() {
+  const { loadVariantLibrary } = require('../variants');
+  try {
+    const registry = loadVariantLibrary();
+    const count = Object.keys(registry).length;
+    const total = Object.values(registry).reduce((n, e) => n + e.all.length, 0);
+    console.log(`Variant library: ${count} key(s), ${total} variant(s) loaded.`);
+    return { ok: true, warnings: 0 };
+  } catch (err) {
+    console.error(`Variant library: load FAILED — ${err.message}`);
+    return { ok: false, warnings: 1 };
+  }
+}
+
+/** Validates parish_variant_picks references resolve in the library. No-op when
+ *  the table doesn't exist (Phase 0; Phase 1+ has it). Each unresolved row is a
+ *  silently-broken parish — warn loudly. */
+function validateParishVariantPicks() {
+  const { openDb } = require('../cache/sqlite');
+  const { loadVariantLibrary, resolveVariant } = require('../variants');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='parish_variant_picks'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const registry = loadVariantLibrary();
+    const rows = db.prepare(
+      'SELECT parish_id, variant_key, variant_id FROM parish_variant_picks'
+    ).all();
+    let warnings = 0;
+    for (const row of rows) {
+      if (!resolveVariant(registry, row.variant_key, row.variant_id)) {
+        console.warn(
+          `Parish '${row.parish_id}': variant pick '${row.variant_key}'='${row.variant_id}' does not resolve in library`
+        );
+        warnings += 1;
+      }
+    }
+    if (warnings === 0 && rows.length > 0) {
+      console.log(`Parish variant picks: ${rows.length} reference(s) all resolve.`);
+    }
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
+module.exports = {
+  collectKeyPaths,
+  warnUnknownKeys,
+  validateAllTranslations,
+  validateVariantLibrary,
+  validateParishVariantPicks,
+};

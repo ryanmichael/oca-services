@@ -66,7 +66,7 @@ function runSchemaSweep() {
 }
 
 function boot() {
-  const { registerBaseFixed, validateAllTranslations } = overlays;
+  const { registerBaseFixed, validateAllTranslations, validateVariantLibrary, validateParishVariantPicks } = overlays;
   const { loadSources } = sourcesLib;
   const { ensureOrthocalCacheTable } = cache;
 
@@ -100,6 +100,8 @@ function boot() {
   // Defer translation validation until AFTER all base fixed-text files have
   // registered, so drift warnings have a base to check against.
   validateAllTranslations();
+  validateVariantLibrary();
+  validateParishVariantPicks();
 
   // Schema sweep across all data layers. Dev = fail loud; prod = warn-only +
   // Sentry once Track C lands, so a single bad deploy can't take down the
@@ -176,6 +178,19 @@ function boot() {
   });
 
   ensureOrthocalCacheTable();
+
+  // Apply any pending schema migrations. Brownfield-safe: on first run,
+  // existing historical files are recorded as already-applied (see
+  // server-lib/storage/migrations.js).
+  try {
+    const { runMigrations } = require('../storage/migrations');
+    const { applied, bootstrapped } = runMigrations({ verbose: false });
+    if (bootstrapped > 0) console.log(`Schema migrations bootstrapped: ${bootstrapped} historical file(s) marked applied.`);
+    if (applied.length > 0) console.log(`Schema migrations applied: ${applied.join(', ')}`);
+  } catch (err) {
+    console.error('Schema migrations failed at boot:', err.message);
+    // Non-fatal: server still boots so /healthz can report the problem.
+  }
 
   return {
     // Boot-time state

@@ -1,6 +1,23 @@
 'use strict';
 
+const fs   = require('node:fs');
+const path = require('node:path');
+
 const { openDb, openDbWrite } = require('./sqlite');
+
+// Vendored orthocal responses live in data/orthocal/YYYY-MM-DD.json.
+// fetchOrthocalDay prefers vendored data, then the DB cache, then the live
+// API for dates outside the vendored window. Track B vendored a multi-year
+// window so the app keeps working with no live API dependency.
+const VENDOR_DIR = path.resolve(__dirname, '..', '..', 'data', 'orthocal');
+
+function getVendored(dateStr) {
+  try {
+    const p = path.join(VENDOR_DIR, `${dateStr}.json`);
+    if (!fs.existsSync(p)) return null;
+    return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch { return null; }
+}
 
 function ensureOrthocalCacheTable() {
   try {
@@ -38,6 +55,9 @@ function setOrthocalCache(dateStr, data) {
 }
 
 async function fetchOrthocalDay(dateStr) {
+  const vendored = getVendored(dateStr);
+  if (vendored) return vendored;
+
   const cached = getOrthocalCache(dateStr);
   if (cached) return cached;
 

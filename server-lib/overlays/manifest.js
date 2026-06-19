@@ -11,6 +11,12 @@ const TRANSLATIONS_DIR = path.join(ROOT, 'fixed-texts', 'translations');
 const translationManifestCache = new Map();
 
 function loadOverlayManifest(overlayId) {
+  // In-memory overlays (Phase 1: parish overlays from DB) short-circuit the
+  // filesystem lookup. Manifest cache is also bypassed so settings edits are
+  // immediately visible after registerInMemoryOverlay().
+  const { getInMemoryManifest, hasInMemoryOverlay } = require('./in-memory');
+  if (hasInMemoryOverlay(overlayId)) return getInMemoryManifest(overlayId);
+
   if (translationManifestCache.has(overlayId)) return translationManifestCache.get(overlayId);
   const manifestPath = path.join(TRANSLATIONS_DIR, overlayId, 'manifest.json');
   let manifest = null;
@@ -25,6 +31,12 @@ function loadOverlayManifest(overlayId) {
 }
 
 function loadOverlayData(overlayId, serviceName = 'liturgy') {
+  // In-memory overlays short-circuit. Returning null here means the cascade
+  // sees no data for this overlay+service — which is correct for parishes that
+  // only override Liturgy (their Vespers data lookup falls through to nothing).
+  const { getInMemoryData, hasInMemoryOverlay } = require('./in-memory');
+  if (hasInMemoryOverlay(overlayId)) return getInMemoryData(overlayId, serviceName);
+
   const dataPath = path.join(TRANSLATIONS_DIR, overlayId, `${serviceName}-fixed.json`);
   try {
     return JSON.parse(fs.readFileSync(dataPath, 'utf8'));

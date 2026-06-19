@@ -1,0 +1,22 @@
+{
+  "name": "St. John of Damascus, Tyler, TX (legacy cascade layer)",
+  "kind": "parish",
+  "jurisdiction": "oca",
+  "extends": [
+    "oca"
+  ],
+  "description": "Local customizations for St. John of Damascus Orthodox Church, Tyler, TX (OCA). Layered through the OCA jurisdiction default (oca → sts-sluzhebnik → base) — only parish-specific deltas live in liturgy-fixed.json here.",
+  "sources": "Parish service book",
+  "rubrics": {
+    "temple": {
+      "_note": "Patron saint of the temple. The assembler appends the patron troparion at the end of the troparia list, and the kontakion before the principal-feast kontakion with a 'Glory…' connector. Sourced from menaion DB by commemorationId.",
+      "commemorationId": 2471,
+      "title": "Venerable John of Damascus"
+    },
+    "preCommunion": {
+      "_note": "Parish sings the Communion Prayer ('I believe, O Lord, and I confess...') BEFORE the priest's 'In the fear of God, with faith, and with love, draw near!' and the choir's 'Blessed is He that comes...'. HTM/Jordanville-influenced order; diverges from the strict OCA Service Book which has them inverted.",
+      "confessFirst": true
+    }
+  },
+  "_note": "Bucket-D carryover layer. Provides Tyler's overrides that are not yet derived from parish_settings (litany hierarchs, antiphons, Trisagion variants, pre-Communion, Cherubic Hymn). Phase 1+ adds derivation/library coverage; this dir shrinks over time."
+}

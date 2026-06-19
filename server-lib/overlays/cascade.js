@@ -49,4 +49,14 @@ function getLiturgyFixed(overlayName) {
   return getOverlayFixed('liturgy', overlayName);
 }
 
-module.exports = { deepMergeOverlay, getOverlayFixed, getLiturgyFixed };
+/** Invalidate the merged-result cache for one overlay across all services.
+ *  Called after registerInMemoryOverlay() so a settings save is immediately
+ *  visible. Also clears the same overlay's entry in extends-chain–derived
+ *  caches downstream (none today, but the helper documents the contract). */
+function invalidateOverlayCascade(overlayId) {
+  for (const key of [...translationCache.keys()]) {
+    if (key.endsWith(`:${overlayId}`)) translationCache.delete(key);
+  }
+}
+
+module.exports = { deepMergeOverlay, getOverlayFixed, getLiturgyFixed, invalidateOverlayCascade };

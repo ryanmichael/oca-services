@@ -1,0 +1,13 @@
+{
+  "_note": "OCA Anaphora hierarch-commemoration derivation. Produces 3 overlay keys from { primate_name, ruling_hierarch_name } form fields. Other litany keys (greatLitany / augmentedLitany / litya — Vespers and Liturgy) need a separate 'short form' field per hierarch and are derived in Phase 2; until then they cascade through legacy_overlay_path.",
+  "jurisdiction": "oca",
+  "service": "liturgy",
+  "inputs": ["primate_name", "ruling_hierarch_name"],
+  "keys": {
+    "anaphora-chrysostom.commemoration-hierarchs":
+      "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and His Eminence, the Most Reverend {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "anaphora-basil.commemoration-hierarchs":
+      "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and His Eminence, the Most Reverend {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "anaphora-basil.commemoration-hierarchs-response": "And all mankind."
+  }
+}

@@ -9,6 +9,7 @@ module.exports = {
   ...require('./extends-chain'),
   ...require('./drift'),
   ...require('./cascade'),
+  ...require('./in-memory'),
   ...require('./rubrics'),
   ...require('./style'),
   ...require('./diff'),

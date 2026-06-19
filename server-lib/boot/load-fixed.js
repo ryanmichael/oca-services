@@ -103,6 +103,15 @@ function boot() {
   validateVariantLibrary();
   validateParishVariantPicks();
 
+  // Load any parish overlays from DB into the in-memory overlay registry.
+  // Safe no-op when parish_settings doesn't exist (Phase 0 boots).
+  try {
+    const { loadAllParishOverlays } = require('../parishes');
+    loadAllParishOverlays();
+  } catch (err) {
+    console.warn('Parish overlay load failed:', err.message);
+  }
+
   // Schema sweep across all data layers. Dev = fail loud; prod = warn-only +
   // Sentry once Track C lands, so a single bad deploy can't take down the
   // running app (pre-push + CI already gate this). NODE_ENV=production gives

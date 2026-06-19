@@ -52,6 +52,12 @@ function runSchemaSweep() {
   if (process.env.NODE_ENV === 'production') {
     console.warn('Schema sweep WARN:', line || '(no output)');
     console.warn(result.stderr || '');
+    try {
+      const { captureMessage } = require('../observability');
+      captureMessage(`schema sweep failed in production: ${line}`, 'error', {
+        stderr: (result.stderr || '').slice(0, 4000)
+      });
+    } catch { /* observability must never crash boot */ }
   } else {
     console.error('Schema sweep FAIL:', line || '(no output)');
     console.error(result.stderr || '');

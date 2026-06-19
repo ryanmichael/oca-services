@@ -7,6 +7,8 @@
 // The 5xx fallback at the bottom mirrors the original handleRequest:
 // any uncaught error inside a route gets converted to an HTML error page.
 
+const { captureException, requestLogger } = require('../observability');
+
 const home                = require('./home');
 const favicon             = require('./favicon');
 const publicAssets        = require('./public-assets');
@@ -61,8 +63,17 @@ function rewriteJurisdictionPrefix(req) {
 
 function dispatch(req, res, ctx) {
   rewriteJurisdictionPrefix(req);
+  requestLogger(req, res);
   const url      = req.url || '/';
   const pathname = url.split('?')[0];
+
+  // Liveness probe — answer fast, no boot-state dependency. Railway uptime
+  // and external monitors hit this.
+  if (pathname === '/healthz' || pathname === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end('{"ok":true}');
+    return;
+  }
 
   try {
     if (pathname === '/')                                         return home(req, res, ctx);
@@ -100,6 +111,7 @@ function dispatch(req, res, ctx) {
     res.end('Not found');
   } catch (err) {
     console.error(err);
+    captureException(err, { route: pathname, query: (req.url || '').split('?')[1] || '' });
     const { renderErrorPage } = ctx;
     res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(renderErrorPage(`Internal error: ${err.message}`));

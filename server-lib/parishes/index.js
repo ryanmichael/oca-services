@@ -80,8 +80,10 @@ function buildParishOverlay(row, picks, library) {
       jurisdiction: row.jurisdiction,
       service,
       inputs: {
-        primate_name:         row.primate_name || '',
-        ruling_hierarch_name: row.ruling_hierarch_name || '',
+        primate_name:          row.primate_name          || '',
+        ruling_hierarch_name:  row.ruling_hierarch_name  || '',
+        primate_short:         row.primate_short         || '',
+        ruling_hierarch_short: row.ruling_hierarch_short || '',
       },
     });
     data[service] = derived;

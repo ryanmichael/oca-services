@@ -27,10 +27,21 @@ function loadTemplate(file) {
 
 /** Renders a template object against a set of inputs. Returns a partial
  *  overlay object suitable for deep-merging into the cascade — keys with
- *  dots are exploded into nested objects. */
-function applyTemplate(template, inputs) {
+ *  dots are exploded into nested objects.
+ *  Keys may be prefixed with `service:` (e.g. `vespers:hierarch-commemoration.litya`)
+ *  to scope the output to a specific service when the template covers
+ *  multiple services. Unprefixed keys use the requested service. */
+function applyTemplate(template, inputs, service) {
   const out = {};
-  for (const [dottedKey, tmpl] of Object.entries(template.keys || {})) {
+  for (const [rawKey, tmpl] of Object.entries(template.keys || {})) {
+    let dottedKey = rawKey;
+    let keyService = template.service || service;
+    const colon = rawKey.indexOf(':');
+    if (colon !== -1) {
+      keyService = rawKey.substring(0, colon);
+      dottedKey = rawKey.substring(colon + 1);
+    }
+    if (keyService !== service) continue;
     const text = renderString(tmpl, inputs);
     setDottedKey(out, dottedKey, text);
   }
@@ -63,8 +74,10 @@ function deriveOverlayForService({ jurisdiction, service, inputs }) {
   for (const file of listTemplates()) {
     const t = loadTemplate(file);
     if (t.jurisdiction !== jurisdiction) continue;
+    // If the template declares a single `service`, skip when it doesn't match.
+    // Templates with multi-service `service:path` keys leave `service` unset.
     if (t.service && t.service !== service) continue;
-    merged = deepMergePlain(merged, applyTemplate(t, inputs || {}));
+    merged = deepMergePlain(merged, applyTemplate(t, inputs || {}, service));
   }
   return merged;
 }

@@ -1,25 +1,23 @@
 #!/usr/bin/env node
 'use strict';
 
-// Byte-identity round-trip test for the parish self-service architecture.
+// Forward-looking smoke check for the parish self-service architecture.
 //
-// Compares two rendered services side-by-side:
-//   (a) /api/<service>?translation=st-john-damascus-tyler-legacy
-//       — Tyler's content sourced ONLY from the file-based overlay (the
-//         architecture's "before" state, preserved as the -legacy cascade
-//         layer by scripts/migrate-tyler.js).
-//   (b) /api/<service>?translation=st-john-damascus-tyler
-//       — Tyler's content sourced from the new in-memory overlay (Anaphora
-//         keys derived from parish_settings) cascaded ON TOP OF the same
-//         legacy layer.
+// PHASE 1: this script proved byte-identity between Tyler's legacy file
+// overlay and the new DB+in-memory path. It was the load-bearing
+// architecture proof that in-memory overlay injection produces the same
+// content as direct file overlays.
 //
-// For Phase 1 these MUST be byte-identical, because the in-memory overlay's
-// derived Anaphora keys produce byte-identical text to what the legacy file
-// already had (verified inline at template authoring; see
-// fixed-texts/derivation-templates/hierarch-commemoration-oca.json).
+// PHASE 2 (leftover): Tyler's legacy file no longer carries the 5
+// hierarch-commemoration keys — derivation fully covers them. The two
+// paths intentionally diverge now (legacy falls back to the base
+// "Metropolitan N." placeholder; in-memory produces Tyler's specific
+// hierarchs).
 //
-// If this script ever reports a diff, either the derivation template drifted
-// or the cascade injection broke. Both are architectural regressions.
+// New role: this is now a "Tyler's in-memory content includes her
+// specific hierarchs" smoke check. Any future Phase X migration that
+// shrinks the legacy overlay further keeps these assertions valid as
+// long as derivation/library coverage tracks the deletions.
 
 const http = require('http');
 
@@ -67,43 +65,56 @@ function diffStrings(rawA, rawB) {
   };
 }
 
+const REQUIRED_PRESENCE = {
+  // service → array of substrings that must appear in Tyler's rendered output.
+  // Any failure means the DB→in-memory pipeline is dropping a Tyler-specific
+  // override that legacy + library + derivation are supposed to provide.
+  liturgy: [
+    'Metropolitan Tikhon',     // litany short form (derivation)
+    'Archbishop Alexander',    // litany short form (derivation)
+    'Most Blessed Tikhon, Archbishop of Washington', // anaphora full title (derivation)
+    'of whom I am chief',      // pre-Communion HTM (variant pick)
+    'mystically, mystically represent the Cherubim', // cherubic tyler-1 (variant pick)
+  ],
+  vespers: [
+    'Metropolitan Tikhon',
+    'Archbishop Alexander',
+    'Blessed is the man who hath not walked in the counsel of the impious', // HTM "Blessed is the Man"
+  ],
+};
+
 (async () => {
   let failures = 0;
   for (const service of SERVICES) {
-    // Vespers is served via /api/service?service=vespers (not /api/vespers).
-    // The date shift is handled server-side.
     const dateForService = service === 'vespers'
       ? new Date(new Date(DATE).getTime() - 86400000).toISOString().slice(0, 10)
       : DATE;
-    const pathBase = service === 'vespers'
-      ? `${HOST}/api/service?service=vespers&date=${dateForService}`
-      : `${HOST}/api/${service}?date=${dateForService}`;
-    const urlA = `${pathBase}&translation=st-john-damascus-tyler-legacy`;
-    const urlB = `${pathBase}&translation=st-john-damascus-tyler`;
+    const url = service === 'vespers'
+      ? `${HOST}/api/service?service=vespers&date=${dateForService}&translation=st-john-damascus-tyler`
+      : `${HOST}/api/${service}?date=${dateForService}&translation=st-john-damascus-tyler`;
 
-    let a, b;
-    try {
-      [a, b] = await Promise.all([fetchJson(urlA), fetchJson(urlB)]);
-    } catch (err) {
+    let body;
+    try { body = await fetchJson(url); }
+    catch (err) {
       console.error(`  ERROR fetching ${service}: ${err.message}`);
       failures += 1;
       continue;
     }
 
-    const d = diffStrings(a, b);
-    if (d === null) {
-      console.log(`  ✓ ${service}: byte-identical (${a.length} bytes)`);
+    const required = REQUIRED_PRESENCE[service] || [];
+    const missing = required.filter(s => body.indexOf(s) === -1);
+    if (missing.length === 0) {
+      console.log(`  ✓ ${service}: all ${required.length} Tyler-specific overrides present (${body.length} bytes)`);
     } else {
       failures += 1;
-      console.log(`  ✗ ${service}: diverges at byte ${d.firstDiverge}`);
-      console.log(`    legacy:    ...${JSON.stringify(d.aSnippet)}...`);
-      console.log(`    in-memory: ...${JSON.stringify(d.bSnippet)}...`);
+      console.log(`  ✗ ${service}: missing ${missing.length} expected substring(s):`);
+      for (const m of missing) console.log(`      • ${JSON.stringify(m)}`);
     }
   }
   if (failures > 0) {
-    console.error(`\n${failures} divergence(s) — architecture regression`);
+    console.error(`\n${failures} service(s) missing Tyler-specific content — architecture regression`);
     process.exit(1);
   }
-  console.log(`\nALL GREEN — Tyler round-trip is byte-identical between file-only and DB+in-memory paths.`);
+  console.log(`\nALL GREEN — Tyler's DB+in-memory path renders every required parish override.`);
   process.exit(0);
 })();

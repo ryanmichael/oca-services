@@ -23,7 +23,9 @@ const els = {
   city:           $('f-city'),
   jurisdiction:   $('f-jurisdiction'),
   primate:        $('f-primate'),
+  primateShort:   $('f-primate-short'),
   ruling:         $('f-ruling'),
+  rulingShort:    $('f-ruling-short'),
   primateDerived: $('d-primate'),
   rulingDerived:  $('d-ruling'),
   confessFirst:   $('f-confess-first'),
@@ -61,7 +63,9 @@ function snapshot() {
     name:                  els.name.value,
     city:                  els.city.value,
     primate_name:          els.primate.value,
+    primate_short:         els.primateShort.value,
     ruling_hierarch_name:  els.ruling.value,
+    ruling_hierarch_short: els.rulingShort.value,
     patron_natural_key:    currentPatron.naturalKey,
     patron_title:          currentPatron.title,
     rubric_confess_first:               els.confessFirst.checked,
@@ -122,8 +126,10 @@ function populate(data) {
   els.name.value = data.name || '';
   els.city.value = data.city || '';
   els.jurisdiction.value = (data.jurisdiction || '').toUpperCase();
-  els.primate.value = data.primate_name || '';
-  els.ruling.value = data.ruling_hierarch_name || '';
+  els.primate.value      = data.primate_name          || '';
+  els.primateShort.value = data.primate_short         || '';
+  els.ruling.value       = data.ruling_hierarch_name  || '';
+  els.rulingShort.value  = data.ruling_hierarch_short || '';
   els.confessFirst.checked     = !!data.rubric_confess_first;
   els.omitPreTrisagion.checked = !!data.rubric_omit_pre_trisagion_litany;
   els.lesserSaints.checked     = !!data.rubric_include_lesser_saints;

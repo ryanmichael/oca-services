@@ -63,11 +63,6 @@
       "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. addedAt 2026-06-18 (06-14 cleared 2026-06-19 by yy→tt pass on synaxis-na-saints.json)."
     },
     {
-      "rule": "D2-vespers-lic-theotokion",
-      "dates": ["2026-01-31", "2026-02-07", "2026-02-13", "2026-02-14", "2026-02-21"],
-      "reason": "Lenten/Triodion Saturday Sat-eve Great Vespers LIC Theotokion-after-Glory gap. Documented edge case per features/vespers-assembly.md INV-3 follow-up: 'LIC Theotokion tone is week-tone, not Glory-tone… Slavic strict rubric is to draw the LIC Theotokion from the Menaion appendix in the tone of the Glory; we have only the week-tone Octoechos version.' Saturdays where the Menaion Glory doxastichon doesn't have a paired Theotokion in the available data. Fix path: index Menaion appendix theotokia. addedAt 2026-06-18."
-    },
-    {
       "rule": "D4-vespers-aposticha-theotokion-tone",
       "dates": [
         "2026-02-21", "2026-06-13"

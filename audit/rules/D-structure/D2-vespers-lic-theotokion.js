@@ -32,8 +32,12 @@ module.exports = {
     const hasNow = tail.some(b =>
       b.type === 'doxology' && /^Now and ever/i.test(b.text || '')
     );
+    // Sat-eve Great Vespers fills the LIC Now slot with the week's Dogmatikon
+    // (the Theotokion-Dogmatikon of the tone) rather than a plain Theotokion.
+    // Accept "Dogmatikon" as Theotokion-equivalent — it IS the resurrectional
+    // Theotokion for Saturday Vespers.
     const hasTheotokion = tail.some(b =>
-      b.type === 'hymn' && /theotokion/i.test(b.label || '')
+      b.type === 'hymn' && /theotokion|dogmatikon/i.test(b.label || '')
     );
     const issues = [];
     if (!hasNow)         issues.push({ message: 'LIC Glory present but no separate "Now and ever" doxology follows (Glory+Now collapsed).' });

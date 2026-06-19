@@ -81,7 +81,7 @@ jobs:
         # findings (D2-D6, E4, L3) triaged into known-issues.json on
         # 2026-06-18 — see those entries' `reason` fields for the underlying
         # fix paths. Today's representative sweep: 0 high / 0 medium / 0 low,
-        # 14 suppressed (after D4 source-aware skip for Triodion/saint's-own Theotokia on 2026-06-19).
+        # 1 suppressed (after M1/M3/M14/M28 source-aware tightenings on 2026-06-19; only L3 Myrrhbearers plural-you-object false positive remains).
         run: npm run audit -- --strict
         continue-on-error: true
 

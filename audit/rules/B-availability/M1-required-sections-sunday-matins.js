@@ -23,6 +23,10 @@ module.exports = {
   check: (ctx) => {
     const blocks = ctx.assembled?.blocks || [];
     if (!blocks.length) return [];
+    // Pascha: /api/matins serves Paschal Matins (procession, paschal canon,
+    // catechetical homily, no Six Psalms / Gospel / Lauds / Great Doxology).
+    // The Sunday Matins skeleton doesn't apply.
+    if (ctx.assembled?.serviceName === 'Paschal Matins') return [];
     const present = new Set(blocks.map(b => b.section).filter(Boolean));
     const missing = REQUIRED.filter(s => !present.has(s));
     if (!missing.length) return [];

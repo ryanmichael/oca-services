@@ -37,6 +37,14 @@ module.exports = {
     const gospel = (ctx.assembled?.blocks || []).find(b => b.section === 'Matins Gospel' && b.label);
     if (!gospel) return [];
     if (pattern.test(gospel.label)) return [];
+    // Festal-Sunday override: when a major feast (Sun after Theophany,
+    // Sun of Zacchaeus, vigil-rank saint with their own Gospel that falls
+    // on Sun) displaces the eothinon, the rendered Gospel matches none of
+    // the 11 eothinon passages. That's a deliberate replacement, not a
+    // cycle-drift bug. Only flag when the Gospel matches a DIFFERENT
+    // eothinon (off-by-one in the cycle is the rule's real target).
+    const matchesAnyEothinon = Object.values(EOTHINON_GOSPELS).some(p => p.test(gospel.label));
+    if (!matchesAnyEothinon) return [];
     return [{
       message: `Matins Gospel label "${gospel.label}" doesn't match eothinon ${eoth} pattern (expected ${pattern})`,
       hint:    'Check variable-sources/eothinon.json and the Sunday Matins gospel wiring.',

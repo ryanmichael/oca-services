@@ -48,29 +48,9 @@
   ],
   "knownFailures": [
     {
-      "rule": "M1-sunday-matins-sections",
-      "dates": ["2026-04-12"],
-      "reason": "Pascha is served via /api/paschal-matins (a fully distinct service); the regular /api/matins endpoint is intentionally unused. Audit rule shouldn't flag Sunday Matins skeleton against a date that doesn't use Sunday Matins. addedAt 2026-06-05."
-    },
-    {
-      "rule": "M3-eothinon-gospel-match",
-      "dates": ["2026-01-11", "2026-01-25", "2026-07-05", "2026-08-16", "2026-11-08", "2026-12-06"],
-      "reason": "Feast/saint Matins Gospel overrides the eothinon when a major feast or vigil-rank saint with their own gospel falls on Sunday — OCA rubrical practice. 01-11 Sunday after Theophany, 01-25 Sunday of Zacchaeus, 07-05 St Sergius/Athanasius, 08-16 Translation of Image Not Made by Hands, 11-08 Synaxis of the Archangels, 12-06 St Nicholas. addedAt 2026-06-05."
-    },
-    {
       "rule": "L3-translation-consistency",
       "dates": ["2026-05-10"],
       "reason": "2026-05-10: false positive — Myrrhbearers Beatitude 'beareth witness to you, O violators' is grammatical plural-you-object, not YY drift. addedAt 2026-06-18 (06-14 cleared 2026-06-19 by yy→tt pass on synaxis-na-saints.json)."
-    },
-    {
-      "rule": "M28-matins-aposticha-shape",
-      "dates": ["2026-03-25"],
-      "reason": "Annunciation Matins Aposticha is a Great Feast (Lord's feast) whose Aposticha structure renders a combined Glory+Now + single feast sticheron (no weekday-shape stichera blend). Real edge case, not a regression. addedAt 2026-06-18."
-    },
-    {
-      "rule": "M14-matins-prokeimenon-tone",
-      "dates": ["2026-01-11", "2026-01-25", "2026-08-16", "2026-11-08", "2026-12-06"],
-      "reason": "Same root cause as M3 known-failures: festal-Sunday Matins Gospel + Prokeimenon override the Octoechos cycle when a major feast or vigil-rank saint with their own Gospel falls on Sunday. Sun after Theophany (01-11), Sun of Zacchaeus (01-25), Translation of Image (08-16), Synaxis of Archangels (11-08), St Nicholas (12-06). addedAt 2026-06-18."
     }
   ]
 }

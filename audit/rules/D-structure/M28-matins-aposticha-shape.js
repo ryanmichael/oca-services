@@ -19,6 +19,13 @@ module.exports = {
   check: (ctx) => {
     const blocks = (ctx.assembled?.blocks || []).filter(b => b.section === 'Aposticha');
     if (!blocks.length) return [];
+    // Great-Feast Lord's-feast Matins (Annunciation 03-25) renders Aposticha
+    // as a combined "Glory ... now and ever" doxology + single feast
+    // sticheron. No psalm-verse blends. Sung-shape weekday Aposticha has
+    // alternating hymn/verse blocks — the verse-presence check
+    // distinguishes the two.
+    const hasVerses = blocks.some(b => b.type === 'verse');
+    if (!hasVerses) return [];
     const hymns = blocks.filter(b => b.type === 'hymn');
     if (hymns.length >= MIN_APOSTICHA_HYMNS) return [];
     return [{

@@ -10,7 +10,6 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-04.pdf",
     "_note": "Joint two-canon simple-rank. Canon I of St. Andrew Archbishop of Crete (acrostic: 'Let us weave manly hymns for Andrew') in Tone V; Canon II of Venerable Martha in Tone VIII. Kontakion after Ode 3: Martha's (Tone II) via kontakionAfterOde3. Kontakion at standard slot: Andrew's (Tone II) with ikos. Exapostilarion present (of the venerable one, Canon II/Martha). Lauds aposticha doxastikon present (Tone VI, of Andrew). Two sessional hymns after Ode 3: Andrew (Tone IV) + Martha (Tone IV) + Both now theotokion (Tone IV). KNOWN GAP: Matins Aposticha (verse stichera) empty pending weekday Octoechos Matins scrape."
   },
-
   "troparion": {
     "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Andrew our father,//\nentreat Christ God, that our souls be saved.",
     "tone": 4,
@@ -22,10 +21,14 @@
     "label": "Kontakion of St. Andrew Archbishop of Crete",
     "melody": "Seeking the highest"
   },
-
   "matins": {
-    "_meta": { "tone": 5, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
-
+    "_meta": {
+      "tone": 5,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
     "sessionalHymns": [
       {
         "text": "Adorning the crown of the Church with thy discourses as with precious stones, O most wise Andrew, thou wast a sacred minister.\nWherefore, after manifold labors in this life, thou hast received glory and the kingdom which ageth not.\nTherein, O father,//\nbe thou mindful of those who commemorate thee.",
@@ -45,25 +48,21 @@
         "label": "Both now — Theotokion"
       }
     ],
-
     "troparion": {
       "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Andrew our father,//\nentreat Christ God, that our souls be saved.",
       "tone": 4,
       "label": "Troparion of St. Andrew Archbishop of Crete"
     },
-
     "canon": {
       "tone": 5,
       "_secondCanonTone": 8,
       "_authors": "Canon I of St. Andrew Archbishop of Crete (acrostic 'Let us weave manly hymns for Andrew') in Tone V + Canon II of Venerable Martha in Tone VIII. Octoechos canons omitted per menaion-matins-track pattern.",
-
       "kontakionAfterOde3": {
         "text": "Standing before the Lord and the most pure Virgin Theotokos in prayer,\nand offering up hymnody and praises, O honored Martha,\nthou hast given birth to a sacred child,\nthe all-wondrous Symeon, the beacon of the whole world.//\nWith him do thou ever pray for us all.",
         "tone": 2,
         "label": "Kontakion of Venerable Martha",
         "melody": "In prayers"
       },
-
       "kontakion": {
         "text": "Manifestly trumpeting forth hymns of divine sweetness,\nthou wast shown to be a most radiant beacon for the world,\nshining with the light of the Trinity, O venerable Andrew.\nWherefore, we all cry out to thee://\nCease thou never to pray for us all.",
         "tone": 2,
@@ -73,129 +72,304 @@
       "ikos": {
         "text": "Wretch though I am, I desire to praise thy life, O father; and now made aware because of thy corrections, I seek to receive the praises of thine adornments as gifts, O Andrew, and to weave a wreath of praise for thee, whom even the angels hold in honor; and I cry aloud: Cease thou never to pray on behalf of us all!"
       },
-
       "ode1": {
         "irmos": "Christ, who with an upraised arm bringeth wars to naught,\nhath shaken horse and rider in the Red Sea;\nbut Israel hath He saved//\nas they chanted a song of victory.",
         "irmos2": "Unto Him Who overthrew the tyranny of Pharaoh in the sea\nand led Israel over dry land,\nlet us chant unto Christ our God,//\nfor He hath been glorified throughout the ages.",
         "troparia": [
-          { "text": "Casting off sleep from thine eyelids, by virtue thou didst splendidly prepare thyself as a habitation and place of divine rest for the Master, O venerable one who hast been revealed by God." },
-          { "text": "Moving thy harp to play melodiously, thou didst adorn the Church of Christ with thy hymnody, O wondrous Andrew, instructed by the divine grace of the Holy Spirit." },
-          { "text": "Wisely submitting to the law written by God, with fasting thou didst mortify the bodily passions; and elevate thy mind with mighty desire, chanting hymns to God, O most wise one." },
-          { "type": "theotokion", "text": "Theotokion: Thy Son and God is all desire, most pure delight, the fulfillment of good things, O all-immaculate one. Him do thou beseech, that He deliver those who now have recourse unto thee with faith." },
-          { "canon": "secondCanon", "text": "Wounded with divine desire for eternal good things, thou didst despise corruptible food and glory. Wherefore, in a godly manner thou didst live an angelic life, O venerable one." },
-          { "canon": "secondCanon", "text": "Aflame with divine zeal, and having lived a godly and manly life, thou hast given birth to a beacon and rampart for the faithful, a second Samuel, O beauteous offspring of the desert." },
-          { "canon": "secondCanon", "text": "Thou hast been shown to be a scion of abstinence shining forth upon us a sun of great splendor, the great and most wise healer Symeon, the intercessor and bulwark of the lands of the East." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We, the children of the earth, having become children of God through divine grace and thine ineffable birthgiving, hymn thee earnestly, the sole cause of our salvation." }
+          {
+            "text": "Casting off sleep from thine eyelids, by virtue thou didst splendidly prepare thyself as a habitation and place of divine rest for the Master, O venerable one who hast been revealed by God."
+          },
+          {
+            "text": "Moving thy harp to play melodiously, thou didst adorn the Church of Christ with thy hymnody, O wondrous Andrew, instructed by the divine grace of the Holy Spirit."
+          },
+          {
+            "text": "Wisely submitting to the law written by God, with fasting thou didst mortify the bodily passions; and elevate thy mind with mighty desire, chanting hymns to God, O most wise one."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Thy Son and God is all desire, most pure delight, the fulfillment of good things, O all-immaculate one. Him do thou beseech, that He deliver those who now have recourse unto thee with faith."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Wounded with divine desire for eternal good things, thou didst despise corruptible food and glory. Wherefore, in a godly manner thou didst live an angelic life, O venerable one."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Aflame with divine zeal, and having lived a godly and manly life, thou hast given birth to a beacon and rampart for the faithful, a second Samuel, O beauteous offspring of the desert."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou hast been shown to be a scion of abstinence shining forth upon us a sun of great splendor, the great and most wise healer Symeon, the intercessor and bulwark of the lands of the East."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: We, the children of the earth, having become children of God through divine grace and thine ineffable birthgiving, hymn thee earnestly, the sole cause of our salvation."
+          }
         ]
       },
       "ode3": {
         "irmos": "By Thy command Thou didst establish the earth upon nothing\nand suspended it unsupported;\ndo Thou establish Thy Church on the unshakeable rock of Thy commandments, O Christ,\nwho alone art good//\nand the Lover of mankind.",
         "irmos2": "There is none as holy as the Lord,\nand none as righteous as our God,\nWhom the whole of creation doth hymn://\nThere is none more righteous than Thee, O Lord.",
         "troparia": [
-          { "text": "Thou didst direct thy life with virtue, O venerable one, uniting thyself unto God with divine desire; and wast shown to be a reason-endowed instrument, illumining the whole world with hymns and drawing forth divine treasures." },
-          { "text": "Thou wast full of heavenly wisdom; for, opening the mouth of thy spirit, O venerable one, thou didst manifestly receive all the brilliant radiance of the effulgence of the threefold Sun, in that thou art a sacred minister." },
-          { "text": "Making firm the powers of thy soul and restraining thy flesh by abstinence, O venerable one, thou didst wholly become a most radiant star, adorning the Church with thine Orthodox teachings and melodious hymnody." },
-          { "type": "theotokion", "text": "Theotokion: Now do I beseech thee, O most immaculate Mother of God, to deliver me from the captivity of the passions and to cleanse all the wounds of my sins, for thou didst most gloriously give birth to Him Who taketh away the sin of the world." },
-          { "canon": "secondCanon", "text": "Offering the all-honored fruit of thy womb to the Master, O Martha, thou didst offer thyself as a perfect sacrifice on the fire of abstinence, chanting hymns unto Him." },
-          { "canon": "secondCanon", "text": "To thine immortal Christ thou didst offer a right acceptable sacrifice, him who sprung forth from thy womb, O venerable God-bearer, thou confirmation, bulwark and rampart of the faithful." },
-          { "canon": "secondCanon", "text": "Thou didst give wings to both soul and body to fly to the heights of heaven, and made thine abode there with the wise virgins, and art a divine model for those who with faith have recourse unto God." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O most pure one, establish the ascents of my soul upon the rock of my hope which remaineth ever immovable, that I may praise and glorify thee, mine only helper." }
+          {
+            "text": "Thou didst direct thy life with virtue, O venerable one, uniting thyself unto God with divine desire; and wast shown to be a reason-endowed instrument, illumining the whole world with hymns and drawing forth divine treasures."
+          },
+          {
+            "text": "Thou wast full of heavenly wisdom; for, opening the mouth of thy spirit, O venerable one, thou didst manifestly receive all the brilliant radiance of the effulgence of the threefold Sun, in that thou art a sacred minister."
+          },
+          {
+            "text": "Making firm the powers of thy soul and restraining thy flesh by abstinence, O venerable one, thou didst wholly become a most radiant star, adorning the Church with thine Orthodox teachings and melodious hymnody."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Now do I beseech thee, O most immaculate Mother of God, to deliver me from the captivity of the passions and to cleanse all the wounds of my sins, for thou didst most gloriously give birth to Him Who taketh away the sin of the world."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Offering the all-honored fruit of thy womb to the Master, O Martha, thou didst offer thyself as a perfect sacrifice on the fire of abstinence, chanting hymns unto Him."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "To thine immortal Christ thou didst offer a right acceptable sacrifice, him who sprung forth from thy womb, O venerable God-bearer, thou confirmation, bulwark and rampart of the faithful."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst give wings to both soul and body to fly to the heights of heaven, and made thine abode there with the wise virgins, and art a divine model for those who with faith have recourse unto God."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: O most pure one, establish the ascents of my soul upon the rock of my hope which remaineth ever immovable, that I may praise and glorify thee, mine only helper."
+          }
         ]
       },
       "ode4": {
         "irmos": "Habbakuk, prophetically apprehending Thy divine self-emptying, O Christ,\ncried out to Thee with trembling:\nThou hast come for the salvation of Thy people;//\nto save Thine anointed Ones.",
         "irmos2": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,//\nand with fear he glorified Thy power.",
         "troparia": [
-          { "text": "Openly proclaiming the glory of the supremely hymned Trinity, thy discourse adorned by thy manner of life, O wondrous one, wast shown to be an excellent standard of theology." },
-          { "text": "O wise and divinely eloquent Andrew, showing forth an ascent of vision through activity, by thy manner of life thou wast like unto one clothed in divine vision." },
-          { "text": "Fighting like a shepherd, as a most noetically rich hierarch of God, thou didst repel the attacks of lions from the Church, O Andrew, namesake of manliness." },
-          { "text": "Finding the Theotokos to be a great subject of laudation, thou didst show forth redoubled zeal, O wise one, honoring her who is above praise with many and varied praises." },
-          { "type": "theotokion", "text": "Theotokion: Without a physical union thou didst conceive within thy womb without corruption, and hast given birth without pain; and, giving birth to God in the flesh, thou wast preserved a virgin even after child-birth." },
-          { "canon": "secondCanon", "text": "Having Christ ever in thy mind, thou didst spurn the love and desire of things corruptible; wherefore, glorifying Him, O Martha, thou hast been deemed worthy of spiritual gifts." },
-          { "canon": "secondCanon", "text": "Utterly quelling the threefold waves of the passions, O Martha, thou didst put down the assaults of wild beasts; thereby eluding the complex snares of the noetic Amalek." },
-          { "canon": "secondCanon", "text": "Thou hast been a rampart and bulwark for the faithful who honor thee with pure love and keep thy holy memory, O godly blessed one, thou helper of the faithful." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou hast been shown to be a noetic cloud, O Theotokos, bearing the very Sun of glory in the flesh, Who illumineth all creation with the light of divine grace." }
+          {
+            "text": "Openly proclaiming the glory of the supremely hymned Trinity, thy discourse adorned by thy manner of life, O wondrous one, wast shown to be an excellent standard of theology."
+          },
+          {
+            "text": "O wise and divinely eloquent Andrew, showing forth an ascent of vision through activity, by thy manner of life thou wast like unto one clothed in divine vision."
+          },
+          {
+            "text": "Fighting like a shepherd, as a most noetically rich hierarch of God, thou didst repel the attacks of lions from the Church, O Andrew, namesake of manliness."
+          },
+          {
+            "text": "Finding the Theotokos to be a great subject of laudation, thou didst show forth redoubled zeal, O wise one, honoring her who is above praise with many and varied praises."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Without a physical union thou didst conceive within thy womb without corruption, and hast given birth without pain; and, giving birth to God in the flesh, thou wast preserved a virgin even after child-birth."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having Christ ever in thy mind, thou didst spurn the love and desire of things corruptible; wherefore, glorifying Him, O Martha, thou hast been deemed worthy of spiritual gifts."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Utterly quelling the threefold waves of the passions, O Martha, thou didst put down the assaults of wild beasts; thereby eluding the complex snares of the noetic Amalek."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou hast been a rampart and bulwark for the faithful who honor thee with pure love and keep thy holy memory, O godly blessed one, thou helper of the faithful."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Thou hast been shown to be a noetic cloud, O Theotokos, bearing the very Sun of glory in the flesh, Who illumineth all creation with the light of divine grace."
+          }
         ]
       },
       "ode5": {
         "irmos": "O Thou Who hast clothed Thyself in light as with a garment,\nI rise early unto Thee and cry out to Thee:\nEnlighten my darkened soul, O Christ,//\nin that Thou alone art compassionate!",
         "irmos2": "Thou hast enlightened\nwith the knowledge of God\nthe ends of the universe that lay in the night of ignorance,\ndo Thou also, O Lord, illumine me//\nwith the dawning of Thy love for mankind.",
         "troparia": [
-          { "text": "We who are now adorned with thy teachings and in a sacred manner delight in thy divinely inspired hymns, honor thy memory, O all-blessed Andrew." },
-          { "text": "Manifestly illumined by the splendor of the Spirit, in a most holy manner thou didst praise the choirs of the saints; and with them dost now rejoice, O all-blessed Andrew." },
-          { "text": "Thou now beholdest things divine, not with the senses or a corruptible body, nor in illusions, but noetically O most wise one, uniting thyself to higher things by the actions of thy soul." },
-          { "type": "theotokion", "text": "Theotokion: With tears I fall down before thee, praying intensely, that I may now be delivered from mine offenses, O all-immaculate one, and be deemed worthy of everlasting joy." },
-          { "canon": "secondCanon", "text": "Beholding thine offspring uplifted toward heaven on a pillar by his divine activities, O Martha, thou didst hymn Christ Most High." },
-          { "canon": "secondCanon", "text": "Thou didst manifestly receive an answer from heaven, O Martha, and according to the revelation of God, didst conceive His great servant." },
-          { "canon": "secondCanon", "text": "O venerable one, the city of Antioch setteth thine offspring forth as a fervent intercessor, a rampart and refuge for those who are in tribulation." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: We who place our trust in thee, O Bride of God, having thee as a staff of power, vanquish the hordes of the adversary." }
+          {
+            "text": "We who are now adorned with thy teachings and in a sacred manner delight in thy divinely inspired hymns, honor thy memory, O all-blessed Andrew."
+          },
+          {
+            "text": "Manifestly illumined by the splendor of the Spirit, in a most holy manner thou didst praise the choirs of the saints; and with them dost now rejoice, O all-blessed Andrew."
+          },
+          {
+            "text": "Thou now beholdest things divine, not with the senses or a corruptible body, nor in illusions, but noetically O most wise one, uniting thyself to higher things by the actions of thy soul."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: With tears I fall down before thee, praying intensely, that I may now be delivered from mine offenses, O all-immaculate one, and be deemed worthy of everlasting joy."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Beholding thine offspring uplifted toward heaven on a pillar by his divine activities, O Martha, thou didst hymn Christ Most High."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst manifestly receive an answer from heaven, O Martha, and according to the revelation of God, didst conceive His great servant."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O venerable one, the city of Antioch setteth thine offspring forth as a fervent intercessor, a rampart and refuge for those who are in tribulation."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: We who place our trust in thee, O Bride of God, having thee as a staff of power, vanquish the hordes of the adversary."
+          }
         ]
       },
       "ode6": {
         "irmos": "Calm the raging sea of the passions,\nO Master Christ, with its soul-destroying tempest,\nand lead me up from corruption//\nin that Thou art compassionate.",
         "irmos2": "O Thou that puttest on light as a garment\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
         "troparia": [
-          { "text": "With thy splendid mouth thou didst denounce the ungodly rhetors; for thou didst truly explain the veneration of the precious icons, O initiate of sacred mysteries." },
-          { "text": "In a sacred manner thou didst adorn thy life, O glorious father; for thou didst quell the tumult of the passions and hasten to the life of dispassion." },
-          { "text": "All the faithful rejoice, piously delighting in the beauties of thy discourses and teachings, vanquishing the blasphemies of the heretics." },
-          { "type": "theotokion", "text": "Theotokion: By His incarnation from thee, O most immaculate Bride of God, He Who shone forth without beginning from the Father hath entered into full fellowship with me." },
-          { "canon": "secondCanon", "text": "Desiring the Queen of all with all thy soul, thou didst adorn thyself with purity, O Martha, and for her sake hast received spiritual gifts." },
-          { "canon": "secondCanon", "text": "The angels marveled at thy mature wisdom, O honored one, and mankind doth hymn the Creator of all Who hath glorified thee." },
-          { "canon": "secondCanon", "text": "Thou didst adorn thyself like a beautiful and well-planted tree, and thou wast a clear mirror reflecting the manifestation of the Holy Spirit." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Ever looking to thee as the calm in the midst of the tempest of passions and misfortunes, O Sovereign Lady, I hasten to the haven of salvation." }
+          {
+            "text": "With thy splendid mouth thou didst denounce the ungodly rhetors; for thou didst truly explain the veneration of the precious icons, O initiate of sacred mysteries."
+          },
+          {
+            "text": "In a sacred manner thou didst adorn thy life, O glorious father; for thou didst quell the tumult of the passions and hasten to the life of dispassion."
+          },
+          {
+            "text": "All the faithful rejoice, piously delighting in the beauties of thy discourses and teachings, vanquishing the blasphemies of the heretics."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: By His incarnation from thee, O most immaculate Bride of God, He Who shone forth without beginning from the Father hath entered into full fellowship with me."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Desiring the Queen of all with all thy soul, thou didst adorn thyself with purity, O Martha, and for her sake hast received spiritual gifts."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The angels marveled at thy mature wisdom, O honored one, and mankind doth hymn the Creator of all Who hath glorified thee."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst adorn thyself like a beautiful and well-planted tree, and thou wast a clear mirror reflecting the manifestation of the Holy Spirit."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Ever looking to thee as the calm in the midst of the tempest of passions and misfortunes, O Sovereign Lady, I hasten to the haven of salvation."
+          }
         ]
       },
       "ode7": {
         "irmos": "The supremely exalted Lord of our fathers\nquenched the flame, and bedewed the Youths\nas they chanted in harmony://\nO God, blessed art Thou!",
         "irmos2": "O Thou who in the beginning founded the earth\nand by Thy word made the heavens firm,\nblessed art Thou throughout the ages,//\nO Lord God of our Fathers.",
         "troparia": [
-          { "text": "That thou mightest behold the splendor of the saints, O venerable one, with the splendor of thy works thou didst illumine thy life, crying aloud: O God, blessed art Thou!" },
-          { "text": "Clad in a body, thou didst emulate the ranks of the incorporeal ones, O venerable one, and, rejoicing together with them, thou criest aloud: O God, blessed art Thou!" },
-          { "text": "Jerusalem now rejoiceth in splendor, having shone thee forth upon the world as a beacon of great radiance, O blessed one, crying aloud: O God, blessed art Thou!" },
-          { "type": "theotokion", "text": "Theotokion: He Who before was incorporeal becameth incarnate of thy holy womb in His boundless tender compassion, O most pure one. To Him do we all chant: O God, blessed art Thou!" },
-          { "canon": "secondCanon", "text": "Shedding the robe of the passions, thou didst array thyself in the garment of dispassion, O venerable one; and in purity didst betroth thyself to Christ, and wast pleasing unto Him." },
-          { "canon": "secondCanon", "text": "O honored Martha, thine offspring was shown to be a pillar of fire illumining the world and cleansing those in the world of dark ignorance and all wrath." },
-          { "canon": "secondCanon", "text": "Thou didst extinguish the uprisings of the flesh, despising the machinations of the noetic foe, O venerable Martha, and didst cast their snares down to the ground." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O thou who art full of the grace of God, pray thou earnestly, that we who hymn and desire thee may behold the glory of thy Son and enjoy it in purity." }
+          {
+            "text": "That thou mightest behold the splendor of the saints, O venerable one, with the splendor of thy works thou didst illumine thy life, crying aloud: O God, blessed art Thou!"
+          },
+          {
+            "text": "Clad in a body, thou didst emulate the ranks of the incorporeal ones, O venerable one, and, rejoicing together with them, thou criest aloud: O God, blessed art Thou!"
+          },
+          {
+            "text": "Jerusalem now rejoiceth in splendor, having shone thee forth upon the world as a beacon of great radiance, O blessed one, crying aloud: O God, blessed art Thou!"
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: He Who before was incorporeal becameth incarnate of thy holy womb in His boundless tender compassion, O most pure one. To Him do we all chant: O God, blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Shedding the robe of the passions, thou didst array thyself in the garment of dispassion, O venerable one; and in purity didst betroth thyself to Christ, and wast pleasing unto Him."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "O honored Martha, thine offspring was shown to be a pillar of fire illumining the world and cleansing those in the world of dark ignorance and all wrath."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst extinguish the uprisings of the flesh, despising the machinations of the noetic foe, O venerable Martha, and didst cast their snares down to the ground."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: O thou who art full of the grace of God, pray thou earnestly, that we who hymn and desire thee may behold the glory of thy Son and enjoy it in purity."
+          }
         ]
       },
       "ode8": {
         "irmos": "Unto Thee the Fashioner of all,\nthe children in the furnace chanted a hymn:\nAll ye works of the Lord,//\nsupremely exalt Him throughout all ages.",
         "irmos2": "Glorified in the holy mountain,\nthe Lord revealed the mystery of the Ever-Virgin unto Moses\nin the flames of the burning bush:\npraise ye and supremely exalt Him throughout all ages.",
         "troparia": [
-          { "text": "O father, thou didst manifestly gladden the Church of the new ark, and didst form choirs, crying: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
-          { "text": "In holiness thou didst utter new hymnody to the Creator in the Church: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!" },
-          { "text": "Laboring in godly manner with virtue, thou didst hymn the sufferings of all the saints who of old were made wondrous and perfect by Christ throughout all ages, O most wise Andrew." },
-          { "type": "theotokion", "text": "Theotokion: Come ye, let us hymn the divine Maiden with divine hymns, saying: Rejoice, O most blessed Virgin, for whose sake joy hath been given to human nature!" },
-          { "canon": "secondCanon", "text": "Through poverty in transitory things thou didst acquire eternal riches and glory, O Martha; wherefore, thou didst cry out with love: Hymn the Lord and supremely exalt Him throughout all ages!" },
-          { "canon": "secondCanon", "text": "Knowing thy heart and desire, O venerable Martha, with heartfelt faith God divinely crowned him to whom thou hast given birth, and who crieth out to Him with faith throughout all ages." },
-          { "canon": "secondCanon", "text": "The radiant day of thy festival illumineth the minds of the faithful, enlightening all the world like the morning star, shining even unto the ends of the earth." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: He Who fashioned our nature, O Theotokos, having clad Himself therein through thee, doth transform and restore those who truly hymn and glorify thee as the Theotokos, in that He is the Lover of mankind." }
+          {
+            "text": "O father, thou didst manifestly gladden the Church of the new ark, and didst form choirs, crying: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "In holiness thou didst utter new hymnody to the Creator in the Church: Hymn the Lord, all ye works of the Lord, and supremely exalt Him throughout all ages!"
+          },
+          {
+            "text": "Laboring in godly manner with virtue, thou didst hymn the sufferings of all the saints who of old were made wondrous and perfect by Christ throughout all ages, O most wise Andrew."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Come ye, let us hymn the divine Maiden with divine hymns, saying: Rejoice, O most blessed Virgin, for whose sake joy hath been given to human nature!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Through poverty in transitory things thou didst acquire eternal riches and glory, O Martha; wherefore, thou didst cry out with love: Hymn the Lord and supremely exalt Him throughout all ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Knowing thy heart and desire, O venerable Martha, with heartfelt faith God divinely crowned him to whom thou hast given birth, and who crieth out to Him with faith throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "The radiant day of thy festival illumineth the minds of the faithful, enlightening all the world like the morning star, shining even unto the ends of the earth."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: He Who fashioned our nature, O Theotokos, having clad Himself therein through thee, doth transform and restore those who truly hymn and glorify thee as the Theotokos, in that He is the Lover of mankind."
+          }
         ]
       },
       "ode9": {
         "irmos": "O Isaiah, rejoice and be glad!\nThe Virgin hath conceived in her womb,\nand hath borne a Son, Emmanuel,\nwho is both God and man;\nand Orient is His name;\nHim we magnify,//\nand the Virgin we call blessed.",
         "irmos2": "We magnify thee O Mother of God,\nand We glorify thee, O Virgin Theotokos,\nfor thou hast given birth to Christ the Savior of our souls.",
         "troparia": [
-          { "text": "The proclamation of thy words, and the beauty and splendor of thy doctrines have passed throughout all the world, O blessed Andrew. Wherefore, Christ, the King of all, hath crowned thee with a crown of magnificence." },
-          { "text": "Enjoying the thrice-radiant light through a higher union, O Andrew, initiate of supra-natural mysteries, by thy supplications preserve now from tribulations those who in a sacred manner lovingly keep thy holy memory." },
-          { "text": "With the incorporeal ranks thou dost now rejoice in the heavens; for, living thy life on earth, O divinely eloquent and right wondrous one, thou wast shown to be an excellent preacher of the Orthodox Faith." },
-          { "type": "theotokion", "text": "Theotokion: Having truly given birth in a manner past understanding to everlasting Life in the flesh, thou hast halted the unremitting onslaught of death; and, smiting its mouth, thou didst abolish bitter hell, O most holy Virgin Mother." },
-          { "canon": "secondCanon", "text": "Joining chorus with thy Son, O Martha, entreat Christ our God on behalf of those who honor thee." },
-          { "canon": "secondCanon", "text": "Having lived piously amid toil, thou didst struggle manfully: hence thou hast uncovered heavenly riches." },
-          { "canon": "secondCanon", "text": "We venerate the shrine of thy relics, O most honored Martha, from whence we draw forth waters of healing." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thy prayer, emitting rays which surpass those of the sun, illumine those who magnify thee, O most pure one." }
+          {
+            "text": "The proclamation of thy words, and the beauty and splendor of thy doctrines have passed throughout all the world, O blessed Andrew. Wherefore, Christ, the King of all, hath crowned thee with a crown of magnificence."
+          },
+          {
+            "text": "Enjoying the thrice-radiant light through a higher union, O Andrew, initiate of supra-natural mysteries, by thy supplications preserve now from tribulations those who in a sacred manner lovingly keep thy holy memory."
+          },
+          {
+            "text": "With the incorporeal ranks thou dost now rejoice in the heavens; for, living thy life on earth, O divinely eloquent and right wondrous one, thou wast shown to be an excellent preacher of the Orthodox Faith."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Having truly given birth in a manner past understanding to everlasting Life in the flesh, thou hast halted the unremitting onslaught of death; and, smiting its mouth, thou didst abolish bitter hell, O most holy Virgin Mother."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Joining chorus with thy Son, O Martha, entreat Christ our God on behalf of those who honor thee."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having lived piously amid toil, thou didst struggle manfully: hence thou hast uncovered heavenly riches."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "We venerate the shrine of thy relics, O most honored Martha, from whence we draw forth waters of healing."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Thy prayer, emitting rays which surpass those of the sun, illumine those who magnify thee, O most pure one."
+          }
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Desiring the life of the angels, O venerable one, thou didst therefore manfully subdue the carnal passions, becoming angelic, O God-bearing father.",
       "label": "Exapostilarion (of the venerable one)",
       "melody": "The heaven with stars"
     },
-
-    "lauds": {
+    "aposticha": {
       "doxastikon": {
         "text": "O venerable father Andrew, word of thy corrections hath gone forth into all the earth; wherefore, thou hast found the reward of thy labors in the heavens, hast destroyed hordes of the demons and attained unto the ranks of the angels, whose life thou didst blamelessly emulate.\nAs thou hast boldness before Christ God,//\nbeg peace for our souls.",
         "tone": 6,

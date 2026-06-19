@@ -227,55 +227,80 @@
         <div class="pa-card">
           <label class="pa-toggle">
             <input type="checkbox" id="f-confess-first" name="rubric_confess_first">
-            <span>
-              <span class="pa-toggle-label">Sing the Communion Prayer before the priest's call</span>
-              <span class="pa-toggle-detail">Order: "I believe, O Lord, and I confess…" → "In the fear of God…" → "Blessed is He that cometh…"</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Communion Prayer before the priest's call</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">"I believe, O Lord…" precedes "In the fear of God…" rather than following it.</span>
             </span>
           </label>
+
           <label class="pa-toggle">
             <input type="checkbox" id="f-omit-pre-trisagion" name="rubric_omit_pre_trisagion_litany">
-            <span>
-              <span class="pa-toggle-label">Skip the pre-Trisagion litany</span>
-              <span class="pa-toggle-detail">Goes directly from the third antiphon's exclamation to the Trisagion.</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Skip pre-Trisagion litany</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">Goes from the third antiphon's exclamation directly to the Trisagion.</span>
             </span>
           </label>
+
           <label class="pa-toggle">
             <input type="checkbox" id="f-lesser-saints" name="rubric_include_lesser_saints">
-            <span>
-              <span class="pa-toggle-label">Include lesser-rank saint troparia</span>
-              <span class="pa-toggle-detail">By default we suppress saints ranked below "simple" on Sundays; turn this on to keep them.</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Lesser-rank saint troparia on Sundays</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">Saints ranked below "simple" are normally suppressed on Sundays.</span>
             </span>
           </label>
+
           <label class="pa-toggle">
             <input type="checkbox" id="f-second-gospel" name="rubric_include_second_gospel">
-            <span>
-              <span class="pa-toggle-label">Include the second Gospel reading</span>
-              <span class="pa-toggle-detail">When the day has two readings (e.g. polyeleos saint), include both rather than only the principal.</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Second Gospel reading</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">When the day has two readings (e.g. polyeleos saint), both are read.</span>
             </span>
           </label>
+
           <label class="pa-toggle">
             <input type="checkbox" id="f-second-koinonikon" name="rubric_include_second_koinonikon">
-            <span>
-              <span class="pa-toggle-label">Include the secondary communion verse</span>
-              <span class="pa-toggle-detail">For days with two koinonika; otherwise only the principal is sung.</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Second communion verse</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">When the day has two koinonika, both are sung.</span>
             </span>
           </label>
+
           <label class="pa-toggle">
             <input type="checkbox" id="f-paschal-comm" name="rubric_paschal_communion_year_round">
-            <span>
-              <span class="pa-toggle-label">Sing "Receive ye the Body of Christ" year-round</span>
-              <span class="pa-toggle-detail">Use the Paschal communion verse outside the Paschal period as well.</span>
+            <span class="pa-toggle-body">
+              <span class="pa-toggle-head">
+                <span class="pa-toggle-label">Paschal communion hymn year-round</span>
+                <span class="pa-toggle-default">default: off</span>
+              </span>
+              <span class="pa-toggle-detail">"Receive ye the Body of Christ" is sung outside the Paschal period as well.</span>
             </span>
           </label>
 
           <div class="pa-field" style="margin-top: 16px;">
-            <div class="pa-field-label">Omit Catechumens litanies during these seasons</div>
+            <div class="pa-toggle-head" style="margin-bottom: 8px;">
+              <span class="pa-field-label" style="margin: 0;">Catechumens litanies — omit during</span>
+              <span class="pa-toggle-default">default: Paschal period only</span>
+            </div>
             <div class="pa-checkboxes">
               <label class="pa-check"><input type="checkbox" value="paschal"     class="catech-season"> Paschal period</label>
               <label class="pa-check"><input type="checkbox" value="lenten"      class="catech-season"> Lenten weekdays</label>
               <label class="pa-check"><input type="checkbox" value="bright-week" class="catech-season"> Bright Week</label>
             </div>
-            <div class="pa-field-help">OCA default is paschal only.</div>
           </div>
         </div>
       </section>

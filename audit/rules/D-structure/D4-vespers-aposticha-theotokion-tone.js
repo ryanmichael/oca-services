@@ -46,6 +46,19 @@ module.exports = {
     );
     if (!theoHymn || theoHymn.tone == null) return [];
 
+    // Skip when the Theotokion comes from the Triodion/Pentecostarion —
+    // those books supply a forefeast/feast Theotokion at the section's
+    // authored tone, distinct from the Glory doxastichon's tone.
+    // Example: 02-21 Cheesefare-prep, Menaion Glory "for the Forerunner"
+    // (Tone 2) paired with Triodion "Adam ate the forbidden fruit" (Tone 6).
+    if (theoHymn.source === 'triodion' || theoHymn.source === 'pentecostarion') return [];
+    // Skip when the Theotokion is the saint's own (menaion order=-1) —
+    // authored as a pair with the saint's doxastichon and may legitimately
+    // sit at a different tone. Example: 06-13 NA Saints Sun (Glory Tone 4,
+    // saint's-own Theotokion Tone 5). The tone-match rubric applies to
+    // Octoechos-appendix Theotokion lookups, not saint's-own pairings.
+    if (theoHymn.source === 'menaion') return [];
+
     if (theoHymn.tone === gloryHymn.tone) return [];
     return [{
       message: `Aposticha Theotokion tone ${theoHymn.tone} does not match Glory tone ${gloryHymn.tone}.`,

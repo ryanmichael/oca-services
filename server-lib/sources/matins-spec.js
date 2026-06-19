@@ -791,7 +791,22 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
   if (mat.exapostilaria) {
     spec.exapostilaria = mat.exapostilaria;
   } else if (mat.exapostilarion) {
-    spec.exapostilarion = mat.exapostilarion;
+    // When the menaion file ships a secondary Exapostilarion at `glory`
+    // (co-commemoration days, e.g. Nov 7 33-Martyrs + St Lazarus), expand
+    // into the exapostilaria array so the renderer emits both. The single
+    // primary form falls through to spec.exapostilarion unchanged.
+    if (mat.exapostilarion.glory) {
+      const { glory, ...primary } = mat.exapostilarion;
+      spec.exapostilaria = [primary, {
+        text: glory.text,
+        tone: glory.tone,
+        label: glory.label || ('Glory — ' + (glory._label || 'Exapostilarion')),
+        melody: glory.melody,
+        _source: glory._source,
+      }];
+    } else {
+      spec.exapostilarion = mat.exapostilarion;
+    }
   }
 
   // Festal troparion after the Great Doxology (overrides Sunday default)

@@ -10,7 +10,6 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/11-09.pdf",
     "_note": "Joint commemoration simple-rank file. Two interleaved festal canons: Canon I of Onesiphorus & Porphyrius by Joseph in Tone IV + Canon II of Matrona of Constantinople by Joseph in Tone VIII. Sessional hymns after Ode 3: martyrs (Tone I) + Matrona (Tone VIII) + theotokion. Kontakion of Matrona (Tone II) at after-Ode-3 slot via kontakionAfterOde3 with ikos; kontakion of the martyrs (Tone II) at standard after-Ode-6 slot with ikos. Exapostilarion for martyrs (primary) and Matrona (Glory). Theoctistia of Lesbos served at Compline; not included here. KNOWN GAP: Matins Aposticha empty pending weekday Octoechos scrape."
   },
-
   "troparion": {
     "text": "In thee, O mother, the image of God was preserved,\nfor taking up thy cross, thou didst follow after Christ;\nby activity thou didst learn to disdain the flesh, as something transient,\nbut to care for thy soul as something immortal.//\nWherefore, with the angels thy spirit doth rejoice, O venerable Matrona.",
     "tone": 8,
@@ -22,10 +21,14 @@
     "label": "Kontakion of the holy martyrs Onesiphorus and Porphyrius",
     "melody": "Seeking the Highest"
   },
-
   "matins": {
-    "_meta": { "tone": 4, "feastRank": "simple", "feastType": "saint", "_source": "stSergius-menaion", "joint": true },
-
+    "_meta": {
+      "tone": 4,
+      "feastRank": "simple",
+      "feastType": "saint",
+      "_source": "stSergius-menaion",
+      "joint": true
+    },
     "sessionalHymns": [
       {
         "text": "Consumed with the fire of divine desire, ye were in no wise scorched by the touch of material fire, O blessed ones, burning up deception, and mercilessly stretched out, O passion-bearers, ye received an ever-memorable end, obtaining glory.",
@@ -45,18 +48,15 @@
         "label": "Both now — Theotokion"
       }
     ],
-
     "troparion": {
       "text": "In thee, O mother, the image of God was preserved,\nfor taking up thy cross, thou didst follow after Christ;\nby activity thou didst learn to disdain the flesh, as something transient,\nbut to care for thy soul as something immortal.//\nWherefore, with the angels thy spirit doth rejoice, O venerable Matrona.",
       "tone": 8,
       "label": "Troparion of St. Matrona"
     },
-
     "canon": {
       "tone": 4,
       "_secondCanonTone": 8,
       "_authors": "Canon I of Onesiphorus and Porphyrius by Joseph in Tone IV + Canon II of Matrona by Joseph in Tone VIII. Octoechos canons omitted.",
-
       "kontakionAfterOde3": {
         "text": "For love of the Lord, O venerable Matrona,\nthou didst ignore thy desire for rest,\nillumining thy spirit with fasting;\nby thy supplications cast down the arrogance of the adversaries,//\nfor mightily didst thou vanquish the wild beasts.",
         "tone": 2,
@@ -66,7 +66,6 @@
           "text": "O my God, grant me a stream of discourse, making my mind a wellspring of reverent order, and blessing my tongue, that I may hymn the ewe-lamb whom Thou hast crowned with Thy goodness; for if Thou dost not grant me fitting words, how would I be able to offer even a meager gift unto her who is rich in both words and deeds? Wherefore, grant me the power to confess her contest, for mightily did she vanquish the wild beasts."
         }
       },
-
       "kontakion": {
         "text": "Having suffered mightily, the two martyrs\ncast the arrogance of the enemy down to the ground,\nbeing illumined by the grace of the uncreated Trinity,\nO glorious Onesiphorus and Porphyrius.//\nPray ye unceasingly on behalf of us all.",
         "tone": 2,
@@ -76,132 +75,308 @@
       "ikos": {
         "text": "Made steadfast by divine might, the warriors of Christ were able to set at naught the counsels and devices of the enemy; bound together to wild horses and suffering in accordance with the law, they beseech God for us, that we receive the remission of debts, freedom from the trials to come, and deliverance from evils. Wherefore, we ever praise them, as great favorites of God who pray unceasingly on behalf of us all."
       },
-
       "ode1": {
         "irmos": "I hymn Thee, O Lord my God,\nfor Thou hast led Thy people out of the bondage of Egypt,\nand hast drowned in the waters//\nthe chariots and the might of Pharaoh.",
         "irmos2": "Let us sing unto the Lord all ye people\nWho engulfed Pharaoh in the Red Sea,\nSinging a hymn of victory,//\nfor He hath been glorified.",
         "troparia": [
-          { "text": "The day of thine honored memorial hath dawned, rendering divine profit unto those who praise thee well, and thereon we entreat thee, O blessed one: Remember us all!" },
-          { "text": "Having thy valorous mind full of boldness, O divinely inspired one, thou didst scorn the mindless command, and, rejoicing, thou didst suffer, O blessed one." },
-          { "text": "Empowered with heavenly might, O Onesiphorus, thou didst hasten forth to cruel torments, overcoming all the strength of the adversary." },
-          { "type": "theotokion", "text": "Theotokion: Having given birth unto Life immortal, Christ our Creator and Redeemer, O Virgin who knewest not wedlock, thou didst abolish the tyranny of death." },
-          { "canon": "secondCanon", "text": "As thou art ever with the ranks of angels and art deified by communion with God, by thy supplications save those who honor thee." },
-          { "canon": "secondCanon", "text": "Wholly consumed with divine desire, with showers of abstinence thou didst extinguish the burnings of soul-destroying pleasures." },
-          { "canon": "secondCanon", "text": "Thou wast shown to be an honored vessel of the Master, having cleansed thy heart of carnal passions through fasting, O Matrona." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O divinely joyous one, entreat Him Who was well pleased to be born from thee in a manner surpassing nature, that He save and bring peace unto all." }
+          {
+            "text": "The day of thine honored memorial hath dawned, rendering divine profit unto those who praise thee well, and thereon we entreat thee, O blessed one: Remember us all!"
+          },
+          {
+            "text": "Having thy valorous mind full of boldness, O divinely inspired one, thou didst scorn the mindless command, and, rejoicing, thou didst suffer, O blessed one."
+          },
+          {
+            "text": "Empowered with heavenly might, O Onesiphorus, thou didst hasten forth to cruel torments, overcoming all the strength of the adversary."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Having given birth unto Life immortal, Christ our Creator and Redeemer, O Virgin who knewest not wedlock, thou didst abolish the tyranny of death."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "As thou art ever with the ranks of angels and art deified by communion with God, by thy supplications save those who honor thee."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Wholly consumed with divine desire, with showers of abstinence thou didst extinguish the burnings of soul-destroying pleasures."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou wast shown to be an honored vessel of the Master, having cleansed thy heart of carnal passions through fasting, O Matrona."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: O divinely joyous one, entreat Him Who was well pleased to be born from thee in a manner surpassing nature, that He save and bring peace unto all."
+          }
         ]
       },
       "ode3": {
         "irmos": "The bow of the mighty hath waxed feeble\nand the weak have girded themselves with strength://\ntherefore is my heart established in the Lord.",
         "irmos2": "O Lord, thou art the confirmation of those who flee to Thee,\nThou art the Light of those in darkness,//\nand my spirit doth hymn Thee.",
         "troparia": [
-          { "text": "Confessing the Word to be equal with the Father and the Spirit, the martyrs manfully repelled the threefold waves of torments in the arena." },
-          { "text": "Having set thy feet firmly upon the rock of confession and faith, O martyr Onesiphorus, thou wast not moved by the winds of wounds." },
-          { "text": "Striving with all thy mind towards Christ, the Desired One, O blessed martyr, thou didst not feel the pangs of thy wounds, O all-blessed one." },
-          { "type": "theotokion", "text": "Theotokion: Look down and save me, O most pure one, for, in a manner beyond all telling and inconceivable, thou hast given flesh to God the Word, Who ordereth all things by divine command." },
-          { "canon": "secondCanon", "text": "With the staff of divine faith didst thou cleave apart the sea of the passions, creating in a godly manner, a straight passage for souls." },
-          { "canon": "secondCanon", "text": "Having attained the pure and blameless life of monastics, O all-honored one, thou wast revealed to be the adornment of solitaries." },
-          { "canon": "secondCanon", "text": "Thou didst strip thyself of the mortality of destructive passions, and by thy pious life stripped the enemy naked." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: The Creator united Himself to flesh in thy womb, O most pure one; and, abiding there, He became a man, that He might give mankind that which is good." }
+          {
+            "text": "Confessing the Word to be equal with the Father and the Spirit, the martyrs manfully repelled the threefold waves of torments in the arena."
+          },
+          {
+            "text": "Having set thy feet firmly upon the rock of confession and faith, O martyr Onesiphorus, thou wast not moved by the winds of wounds."
+          },
+          {
+            "text": "Striving with all thy mind towards Christ, the Desired One, O blessed martyr, thou didst not feel the pangs of thy wounds, O all-blessed one."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Look down and save me, O most pure one, for, in a manner beyond all telling and inconceivable, thou hast given flesh to God the Word, Who ordereth all things by divine command."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "With the staff of divine faith didst thou cleave apart the sea of the passions, creating in a godly manner, a straight passage for souls."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having attained the pure and blameless life of monastics, O all-honored one, thou wast revealed to be the adornment of solitaries."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst strip thyself of the mortality of destructive passions, and by thy pious life stripped the enemy naked."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: The Creator united Himself to flesh in thy womb, O most pure one; and, abiding there, He became a man, that He might give mankind that which is good."
+          }
         ]
       },
       "ode4": {
         "irmos": "For the sake of love for Thine image,\nO compassionate One,\nThou didst ascend the cross\nand the nations melted away.\nFor Thou, O Lover of mankind,//\nart my strength and my praise.",
         "irmos2": "O Lord, I have heard the mystery of Thy dispensation;\nI have considered Thy works,//\nand I have glorified Thy Divinity.",
         "troparia": [
-          { "text": "Radiant with the effulgence of thy pangs, O blessed martyr Onesiphorus, with love thou didst draw the blessed Porphyrius to suffer with thee." },
-          { "text": "Laying them on a fiery gridiron, the tormentors bound together the warriors of Christ, who rejoiced and burned in spirit." },
-          { "text": "Rejoicing, O passion-bearers, ye offered yourselves to the Master of all as a perfect immolation and a pure sacrifice; wherefore, ye are blessed." },
-          { "text": "Deceitful discourses were in no wise able to deceive thee who wast knowingly inclined toward the Master, O most divinely wise and noetically rich martyr Porphyrius." },
-          { "type": "theotokion", "text": "Theotokion: O Maiden, thou hast given birth to God the Word incarnate, Whose good pleasure it was to become like us all in the loving-kindness of His mercy, O all-immaculate Lady." },
-          { "canon": "secondCanon", "text": "Having watered thy heart with the drops of thy tears, O Matrona, with the grace of God thou didst cultivate the grain which beareth the fruit of the virtues an hundredfold." },
-          { "canon": "secondCanon", "text": "Setting the contemplative steps of thy thought towards Christ, O right glorious one, thou didst remain unblemished by the temptations of the wicked demons." },
-          { "canon": "secondCanon", "text": "Having left behind thy husband and the tumults of life in thy valorous wisdom, thou didst love the yoke of Christ, following in His steps." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Without departing from the heavens, O most pure one, God poured Himself forth into thy womb, and the Infinite One became finite, loosing the boundless transgressions of the world." }
+          {
+            "text": "Radiant with the effulgence of thy pangs, O blessed martyr Onesiphorus, with love thou didst draw the blessed Porphyrius to suffer with thee."
+          },
+          {
+            "text": "Laying them on a fiery gridiron, the tormentors bound together the warriors of Christ, who rejoiced and burned in spirit."
+          },
+          {
+            "text": "Rejoicing, O passion-bearers, ye offered yourselves to the Master of all as a perfect immolation and a pure sacrifice; wherefore, ye are blessed."
+          },
+          {
+            "text": "Deceitful discourses were in no wise able to deceive thee who wast knowingly inclined toward the Master, O most divinely wise and noetically rich martyr Porphyrius."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: O Maiden, thou hast given birth to God the Word incarnate, Whose good pleasure it was to become like us all in the loving-kindness of His mercy, O all-immaculate Lady."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having watered thy heart with the drops of thy tears, O Matrona, with the grace of God thou didst cultivate the grain which beareth the fruit of the virtues an hundredfold."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Setting the contemplative steps of thy thought towards Christ, O right glorious one, thou didst remain unblemished by the temptations of the wicked demons."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having left behind thy husband and the tumults of life in thy valorous wisdom, thou didst love the yoke of Christ, following in His steps."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Without departing from the heavens, O most pure one, God poured Himself forth into thy womb, and the Infinite One became finite, loosing the boundless transgressions of the world."
+          }
         ]
       },
       "ode5": {
         "irmos": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance//\nthose who sing Thy praises in faith.",
         "irmos2": "Rising early we cry to Thee, O Lord;\nsave us, for Thou art our God,//\nand we know none other besides Thee.",
         "troparia": [
-          { "text": "O immoveable pillars of the Church of Christ, through the might of the Spirit ye were shown to be unaltered by the leverage of tortures." },
-          { "text": "Ye shattered the idols of abominable gods and were shown to be models of piety and manliness, O honorable great martyrs." },
-          { "text": "Having through faith forsaken transient might, ye were girt about by God with the skill of a true warrior, and rejoicing, ye suffered." },
-          { "type": "theotokion", "text": "Theotokion: The Infinite One, limiting Himself, made His abode within thee, O Virgin, and showed thee to be more spacious than the heavens. Wherefore, we call thee blessed." },
-          { "canon": "secondCanon", "text": "Having been vested in the holy habit, O Matrona, thou didst clothe the malevolent enemy in a vesture of shame." },
-          { "canon": "secondCanon", "text": "Thou didst trade transitory things for those of the future, and a husband for the immortal Bridegroom, Who leadeth our souls to God." },
-          { "canon": "secondCanon", "text": "Offering up night-long praise to the Master, O Matrona, thou didst lull to sleep the pleasures of the flesh." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Thou hast given birth unto the Master of the quick and the dead, O all-immaculate one. Slay thou the passions of my heart." }
+          {
+            "text": "O immoveable pillars of the Church of Christ, through the might of the Spirit ye were shown to be unaltered by the leverage of tortures."
+          },
+          {
+            "text": "Ye shattered the idols of abominable gods and were shown to be models of piety and manliness, O honorable great martyrs."
+          },
+          {
+            "text": "Having through faith forsaken transient might, ye were girt about by God with the skill of a true warrior, and rejoicing, ye suffered."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: The Infinite One, limiting Himself, made His abode within thee, O Virgin, and showed thee to be more spacious than the heavens. Wherefore, we call thee blessed."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having been vested in the holy habit, O Matrona, thou didst clothe the malevolent enemy in a vesture of shame."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst trade transitory things for those of the future, and a husband for the immortal Bridegroom, Who leadeth our souls to God."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Offering up night-long praise to the Master, O Matrona, thou didst lull to sleep the pleasures of the flesh."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Thou hast given birth unto the Master of the quick and the dead, O all-immaculate one. Slay thou the passions of my heart."
+          }
         ]
       },
       "ode6": {
         "irmos": "I have reached the depths of the sea\nand the tempest of my many sins hath engulfed me;\nbut do Thou raise up my life from the abyss//\nO Greatly-merciful One.",
         "irmos2": "I will pour out my prayer unto the Lord,\nand to Him will I proclaim my grief;\nfor my soul is filled with evils,\nand my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee://\nRaise me up from corruption, O God.",
         "troparia": [
-          { "text": "The pangs of wounds didst thou endure, O martyr Onesiphorus; and having finished the contest and emerged a victor, thou hast received heavenly honors." },
-          { "text": "Bound to one another by love, and bound and led forth together, united to the Lord, as mighty spiritual athletes ye achieved separation from your bodies." },
-          { "text": "Bound to horses and forcibly dragged thereby to the most cruel of torments at the command of the judge, ye were deemed worthy of a blessed end, O right glorious martyrs of the Lord." },
-          { "type": "theotokion", "text": "Theotokion: In a manner transcending the laws of nature, O Virgin, thou hast given birth to the Bestower of the Law, Who renewed our damaged nature. Him do thou entreat, that He save me who am crushed by sins." },
-          { "canon": "secondCanon", "text": "Like a melodious bird sweetly lifting up its voice in the meadows of fasting, thou didst attract an assemblage of most sacred women, as though noetic sparrows, escaping the net of the enemy with the aid of the Spirit, O Matrona." },
-          { "canon": "secondCanon", "text": "Restraining the flesh through love of wisdom, reining in the passions, splendidly adorning thy soul as a most comely adornment for Christ, thou art known to be beauteous and magnificent in the Spirit, O Matrona." },
-          { "canon": "secondCanon", "text": "Thou didst love the angelic life while on earth, unceasingly hymning Him Who for our sake became incarnate from the holy Virgin in the magnitude of His goodness and Who strengthened thy feminine nature against the wicked foe." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Human nature was enslaved to sin; but thou hast delivered it from evil bondage, O Theotokos, giving birth to the Master of all, Who hath shown us the ways of entering into life, O all-immaculate one." }
+          {
+            "text": "The pangs of wounds didst thou endure, O martyr Onesiphorus; and having finished the contest and emerged a victor, thou hast received heavenly honors."
+          },
+          {
+            "text": "Bound to one another by love, and bound and led forth together, united to the Lord, as mighty spiritual athletes ye achieved separation from your bodies."
+          },
+          {
+            "text": "Bound to horses and forcibly dragged thereby to the most cruel of torments at the command of the judge, ye were deemed worthy of a blessed end, O right glorious martyrs of the Lord."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: In a manner transcending the laws of nature, O Virgin, thou hast given birth to the Bestower of the Law, Who renewed our damaged nature. Him do thou entreat, that He save me who am crushed by sins."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Like a melodious bird sweetly lifting up its voice in the meadows of fasting, thou didst attract an assemblage of most sacred women, as though noetic sparrows, escaping the net of the enemy with the aid of the Spirit, O Matrona."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Restraining the flesh through love of wisdom, reining in the passions, splendidly adorning thy soul as a most comely adornment for Christ, thou art known to be beauteous and magnificent in the Spirit, O Matrona."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thou didst love the angelic life while on earth, unceasingly hymning Him Who for our sake became incarnate from the holy Virgin in the magnitude of His goodness and Who strengthened thy feminine nature against the wicked foe."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Human nature was enslaved to sin; but thou hast delivered it from evil bondage, O Theotokos, giving birth to the Master of all, Who hath shown us the ways of entering into life, O all-immaculate one."
+          }
         ]
       },
       "ode7": {
         "irmos": "Of old the Children of Abraham in Babylon\ntrampled down the flame of the furnace,\ncrying aloud with hymns://\nO God of our Fathers, blessed art Thou.",
         "irmos2": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud://\nBlessed art Thou, O Lord our God, throughout the ages.",
         "troparia": [
-          { "text": "Manifesting the noble traits of thy most noble soul, thou didst confess the incarnate God before thy tyrant, O Onesiphorus." },
-          { "text": "Enamored of the everlasting freedom of God, as a right obedient slave thou didst share in thy master's suffering, and dost now join chorus with Him, O all-blessed Porphyrius." },
-          { "text": "Having extinguished the burning flame of godlessness by the drops of your divine blood, O all-praised ones, ye cried aloud: O God of our fathers, blessed art Thou!" },
-          { "text": "That ye might receive blessed and immortal glory, ye suffered a blessed death, O divinely radiant stars of the noetic Sun." },
-          { "type": "theotokion", "text": "Theotokion: Thou hast given birth unto the Word Who became incarnate from thy blood, and Whose good pleasure it hath been to deify those who chant on earth: O God of our fathers, blessed art Thou!" },
-          { "canon": "secondCanon", "text": "Like a most comely turtledove, thou didst protect the fruitfulness of chastity from the barrenness of the passions for God's sake, O blessed one, having truly deified those saved by thee." },
-          { "canon": "secondCanon", "text": "Having left behind the world and all things in it, through hope in God thou hast now inherited a heavenly inheritance, O honored Matrona, who art truly the adornment of solitaries." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: He Who lifted the curse of Eve made His abode in the all-immaculate Virgin, pouring forth a fountain of blessings upon those who cry aloud: Blessed is the Fruit of thy womb, O most pure one!" }
+          {
+            "text": "Manifesting the noble traits of thy most noble soul, thou didst confess the incarnate God before thy tyrant, O Onesiphorus."
+          },
+          {
+            "text": "Enamored of the everlasting freedom of God, as a right obedient slave thou didst share in thy master's suffering, and dost now join chorus with Him, O all-blessed Porphyrius."
+          },
+          {
+            "text": "Having extinguished the burning flame of godlessness by the drops of your divine blood, O all-praised ones, ye cried aloud: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "That ye might receive blessed and immortal glory, ye suffered a blessed death, O divinely radiant stars of the noetic Sun."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Thou hast given birth unto the Word Who became incarnate from thy blood, and Whose good pleasure it hath been to deify those who chant on earth: O God of our fathers, blessed art Thou!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Like a most comely turtledove, thou didst protect the fruitfulness of chastity from the barrenness of the passions for God's sake, O blessed one, having truly deified those saved by thee."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having left behind the world and all things in it, through hope in God thou hast now inherited a heavenly inheritance, O honored Matrona, who art truly the adornment of solitaries."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: He Who lifted the curse of Eve made His abode in the all-immaculate Virgin, pouring forth a fountain of blessings upon those who cry aloud: Blessed is the Fruit of thy womb, O most pure one!"
+          }
         ]
       },
       "ode8": {
         "irmos": "He Who was nailed to the Cross in the flesh,\nhath shown it to be a weapon for our salvation,\nO ye children, supremely exalt Christ our God//\nthroughout the ages.",
         "irmos2": "By Thy grace the children became vanquishers\nof both the tyrant and the flames,\ncarefully observing Thy commandments,\nwherefore they cried aloud://\nBless the Lord, all ye works of the Lord!",
         "troparia": [
-          { "text": "Giving your members over to rending, ye rent asunder the insensitive heart of the enemy, remaining unshaken in mind, O greatly renowned and crowned ones." },
-          { "text": "The fire of ignorance was extinguished by your blood, O sufferers, and ye have watered the hearts and souls of all the faithful with the restoration of the knowledge of God." },
-          { "text": "By the guidance of Christ ye passed through the waves of cruel torments, and in incorruption ye found shelter in the harbor of God's heavenly kingdom." },
-          { "text": "The martyrs were clearly revealed to be embers burning with the fire of the Paraclete, whereby they burned up the deceit of the enemy and illumined the whole world." },
-          { "type": "theotokion", "text": "Theotokion: The Word of God found thee to be a choice flower in the vales of life, and He desired thy beauty and, becoming incarnate, perfumed the whole world." },
-          { "canon": "secondCanon", "text": "Having adorned thy soul with qualities of piety, O pure Matrona, by the divine Spirit thou didst lead to God a choir of virgins, who chant aloud: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!" },
-          { "canon": "secondCanon", "text": "Through divine grace the torrents of thy sweat dried up the turbid torrents of the passions, ever watering the hearts of those who approach thee with faith. Wherefore, we honor thee throughout all ages." },
-          { "canon": "secondCanon", "text": "Having arrayed thyself in the armor of faith and abstinence, thou wast not wounded by the arrows of pleasure, abiding, though thou didst, among men; and him who of old wounded Eve didst thou wound with the spear of chastity, O blessed Matrona." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: Behold, as Isaiah saith in the Spirit, a Virgin shall conceive in her womb Him Who delivereth from the belly of Hades those who piously cry aloud: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!" }
+          {
+            "text": "Giving your members over to rending, ye rent asunder the insensitive heart of the enemy, remaining unshaken in mind, O greatly renowned and crowned ones."
+          },
+          {
+            "text": "The fire of ignorance was extinguished by your blood, O sufferers, and ye have watered the hearts and souls of all the faithful with the restoration of the knowledge of God."
+          },
+          {
+            "text": "By the guidance of Christ ye passed through the waves of cruel torments, and in incorruption ye found shelter in the harbor of God's heavenly kingdom."
+          },
+          {
+            "text": "The martyrs were clearly revealed to be embers burning with the fire of the Paraclete, whereby they burned up the deceit of the enemy and illumined the whole world."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: The Word of God found thee to be a choice flower in the vales of life, and He desired thy beauty and, becoming incarnate, perfumed the whole world."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having adorned thy soul with qualities of piety, O pure Matrona, by the divine Spirit thou didst lead to God a choir of virgins, who chant aloud: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!"
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Through divine grace the torrents of thy sweat dried up the turbid torrents of the passions, ever watering the hearts of those who approach thee with faith. Wherefore, we honor thee throughout all ages."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Having arrayed thyself in the armor of faith and abstinence, thou wast not wounded by the arrows of pleasure, abiding, though thou didst, among men; and him who of old wounded Eve didst thou wound with the spear of chastity, O blessed Matrona."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: Behold, as Isaiah saith in the Spirit, a Virgin shall conceive in her womb Him Who delivereth from the belly of Hades those who piously cry aloud: Bless the Lord, all ye works, and supremely exalt Him throughout the ages!"
+          }
         ]
       },
       "ode9": {
         "irmos": "Eve dwelt under the curse of sin\nbecause of the infirmity of disobedience;\nbut thou, O Virgin Theotokos,\nhast through the Offspring of thy pregnancy\nblossomed forth blessing upon the world.//\nWherefore, we all magnify thee.",
         "irmos2": "Every ear is awestruck at hearing of God's ineffable condescension,\nfor the Most High voluntarily descended and assumed flesh,\nbecoming man in the Virgin's womb;\nwherefore we the faithful magnify//\nthe most pure Theotokos.",
         "troparia": [
-          { "text": "The adamantine diamonds and pillars of the Faith, strengthened by the might of Christ, were able to battle with the bodiless foe while yet in the flesh, and now they rejoice in the heavens with those who suffered from of old." },
-          { "text": "Like a noetic sacred chariot of the Word, ye were bound to irrational beasts, O divine martyrs, and, rejoicing, ye attained unto the refuge of heaven and received crowns of honor. Wherefore, ye are fittingly blessed." },
-          { "text": "The glorious city of Pankeanon now holdeth your bodies, O divine martyrs, and is enriched by you, its helpers and physicians, who ever heal the infirmities of the souls and bodies of those who approach with faith." },
-          { "text": "O ye divine and splendid pair, ever-glorious passion-bearer Porphyrius and right wise Onesiphorus: Entreat the most holy Trinity, that peace and deliverance from evils be granted to our souls." },
-          { "type": "theotokion", "text": "Theotokion: Having clothed Himself wholly in me, O all-immaculate one, the Master issued forth from thy divine womb like a Bridegroom; and He, Who sustaineth all creation by His command, is fed with milk, O blessed ever-Virgin." },
-          { "canon": "secondCanon", "text": "As a divine dove, O glorious Matrona, thou hast flown aloft on golden wings of virtue, and dost now abide with the choirs of the venerable, and the ranks of the righteous, amid eternal gladness and ineffable joy." },
-          { "canon": "secondCanon", "text": "Loving the Sun of righteousness, Who, in the loving-kindness of His compassion, shone forth from a woman, O pure one, thou didst easily traverse the hot and difficult path of fasting, burning the demons and withering the passions of the flesh." },
-          { "canon": "secondCanon", "text": "Thy divine memorial hath shone forth upon us more brightly than the sun, illumining our hearts and minds; thereon be thou mindful of us who celebrate it faithfully, O glorious Matrona, as one who truly hast boldness before God." },
-          { "canon": "secondCanon", "type": "theotokion", "text": "Theotokion: O Maiden, who didst hold in thine arms Him Who beareth all things by divine command; by thy mediation deliver me from the hands of the alien, illumine my mind with thy light, and dispel the passions which persistently war against me." }
+          {
+            "text": "The adamantine diamonds and pillars of the Faith, strengthened by the might of Christ, were able to battle with the bodiless foe while yet in the flesh, and now they rejoice in the heavens with those who suffered from of old."
+          },
+          {
+            "text": "Like a noetic sacred chariot of the Word, ye were bound to irrational beasts, O divine martyrs, and, rejoicing, ye attained unto the refuge of heaven and received crowns of honor. Wherefore, ye are fittingly blessed."
+          },
+          {
+            "text": "The glorious city of Pankeanon now holdeth your bodies, O divine martyrs, and is enriched by you, its helpers and physicians, who ever heal the infirmities of the souls and bodies of those who approach with faith."
+          },
+          {
+            "text": "O ye divine and splendid pair, ever-glorious passion-bearer Porphyrius and right wise Onesiphorus: Entreat the most holy Trinity, that peace and deliverance from evils be granted to our souls."
+          },
+          {
+            "type": "theotokion",
+            "text": "Theotokion: Having clothed Himself wholly in me, O all-immaculate one, the Master issued forth from thy divine womb like a Bridegroom; and He, Who sustaineth all creation by His command, is fed with milk, O blessed ever-Virgin."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "As a divine dove, O glorious Matrona, thou hast flown aloft on golden wings of virtue, and dost now abide with the choirs of the venerable, and the ranks of the righteous, amid eternal gladness and ineffable joy."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Loving the Sun of righteousness, Who, in the loving-kindness of His compassion, shone forth from a woman, O pure one, thou didst easily traverse the hot and difficult path of fasting, burning the demons and withering the passions of the flesh."
+          },
+          {
+            "canon": "secondCanon",
+            "text": "Thy divine memorial hath shone forth upon us more brightly than the sun, illumining our hearts and minds; thereon be thou mindful of us who celebrate it faithfully, O glorious Matrona, as one who truly hast boldness before God."
+          },
+          {
+            "canon": "secondCanon",
+            "type": "theotokion",
+            "text": "Theotokion: O Maiden, who didst hold in thine arms Him Who beareth all things by divine command; by thy mediation deliver me from the hands of the alien, illumine my mind with thy light, and dispel the passions which persistently war against me."
+          }
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Let us honor the glorious martyrs Onesiphorus and Porphyrius, who shone forth in their sufferings, enlightening the ends of the world with the splendors of martyrdom, for they pray for us who celebrate their memory with love.",
       "label": "Exapostilarion of the holy martyrs",
-      "melody": "Hearken, ye women"
-    },
-
-    "lauds": {
-      "doxastikon": {
+      "melody": "Hearken, ye women",
+      "glory": {
         "text": "Dwelling amongst men, O ever-glorious Matrona, thou didst receive the monastic habit. O strange wonder! How, O venerable one, didst thou hide from the tyrant, who doth ever persistently spread bitterness? By fasting, prayer and unceasing vigils thou didst crush his head.",
         "tone": null,
         "label": "Glory — Exapostilarion of St. Matrona"

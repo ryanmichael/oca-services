@@ -1,0 +1,125 @@
+name: Weekly LLM judge
+
+# Runs the LLM judge against this weekend's services on Friday morning UTC,
+# so any wording / commemoration / structural drift surfaces before parish
+# Saturday prep. Failure surface: opens / updates a "llm-judge-findings"
+# GitHub Issue.
+#
+# Requires repo secret ANTHROPIC_API_KEY. Without it the workflow no-ops
+# (the judge exits with a setup error message instead of a real failure).
+
+on:
+  schedule:
+    # 12:00 UTC Friday — early in US Central morning, so findings land before
+    # the Friday workday and well before Saturday-eve Vespers prep.
+    - cron: '0 12 * * 5'
+  workflow_dispatch:
+    inputs:
+      from:
+        description: 'Compute weekend relative to this date (YYYY-MM-DD)'
+        required: false
+
+jobs:
+  judge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Boot dev server
+        run: |
+          node server.js > server.log 2>&1 &
+          echo $! > server.pid
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:3000/api/liturgy?date=2026-06-21 > /dev/null; then
+              echo "server ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "server failed to start; log:"
+          cat server.log
+          exit 1
+
+      - name: Run upcoming-weekend judge
+        id: judge
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY not configured as a repo secret; skipping."
+            exit 0
+          fi
+          if [ -n "${{ inputs.from }}" ]; then
+            npm run audit:upcoming -- --from ${{ inputs.from }}
+          else
+            npm run audit:upcoming
+          fi
+
+      - name: Stop server
+        if: always()
+        run: kill $(cat server.pid) || true
+
+      - name: Upload judge reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: llm-judge-reports
+          path: audit/reports/llm-judge-*
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Open / update llm-judge-findings issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            const body = [
+              `Weekly LLM judge surfaced findings on ${today}.`,
+              ``,
+              `Workflow run: ${run}`,
+              `Reports artifact: \`llm-judge-reports\` (attached to the run).`,
+              ``,
+              `The judge compares this weekend's assembled Vespers + Liturgy`,
+              `against the canonical OCA published DOCX. Findings cluster into`,
+              `commemoration drift (wrong principal saint), structural issues`,
+              `(wrong sticheron count, wrong Theotokion lookup), and translation`,
+              `differences worth a glance before parish printout.`,
+              ``,
+              `Address before Saturday Vespers if findings are high-severity;`,
+              `medium / low can wait through the cycle.`,
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              labels: 'llm-judge-findings', state: 'open',
+            });
+            if (issues.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issues[0].number, body,
+              });
+              console.log(`Commented on existing issue #${issues[0].number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: `LLM judge findings (${today})`,
+                body,
+                labels: ['llm-judge-findings'],
+              });
+              console.log(`Opened issue #${created.number}`);
+            }

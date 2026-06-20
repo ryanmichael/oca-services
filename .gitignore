@@ -3,12 +3,17 @@ storage/manifest.json
 storage/parsed/
 storage/oca.db-shm
 storage/oca.db-wal
+storage/oca.db.bak.*
 vespers-*.html
 snapshots/
 !audit/snapshots/
 !audit/snapshots/baseline.json
 !test/snapshots/
 audit/reports/
+
+# Secrets — never commit
+.env
+.env.local
 
 # macOS
 .DS_Store

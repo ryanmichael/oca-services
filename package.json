@@ -17,6 +17,7 @@
     "audit:quick": "node audit/index.js --year 2026 --services vespers --strict",
     "audit:date": "node audit/index.js --print --services vespers,matins,liturgy,presanctified,bridegroom-matins,lamentations,royal-hours,vesperal-liturgy --date",
     "audit:judge": "node audit/llm-judge.js --date",
+    "audit:upcoming": "node scripts/audit-upcoming.js",
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",
     "snapshot:capture": "node audit/snapshot.js --capture",
     "snapshot:verify": "node audit/snapshot.js --verify",

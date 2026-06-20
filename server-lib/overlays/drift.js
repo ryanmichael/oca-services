@@ -109,10 +109,99 @@ function validateParishVariantPicks() {
   }
 }
 
+// Titles that are legitimately duplicated across multiple (month, day)
+// tuples with identical troparia — e.g. a saint commemorated on both
+// their repose date and a relic-translation date, using the same hymns.
+// Empty for now; add titles here when the dupe check surfaces legit cases.
+const DUPE_ALLOWLIST = new Set([
+  // 'Some Saint Title',
+]);
+
+// Max days between two duplicate-titled rows for the pair to be flagged as
+// drift. Legit dual-commemorations (Marian icons, relic translations,
+// prophets with multiple feasts) are typically months apart; drift bugs
+// (saint accidentally typed onto an adjacent day) sit inside this window.
+const DUPE_PROXIMITY_DAYS = 30;
+
+/** Detects commemorations duplicated onto multiple dates with byte-identical
+ *  troparia — the smoking-gun signature of a DB-row drift (saint accidentally
+ *  authored onto the wrong day). A real dual-feast would either have distinct
+ *  hymns or sit far apart in the year. Allowlisted titles bypass. */
+function validateCommemorationDupes() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='commemorations'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const dupes = db.prepare(`
+      SELECT title,
+             GROUP_CONCAT(id)                       AS ids,
+             GROUP_CONCAT(month || ',' || day, '|') AS dates
+      FROM commemorations
+      GROUP BY title
+      HAVING COUNT(*) > 1
+    `).all();
+
+    let warnings = 0;
+    for (const d of dupes) {
+      if (DUPE_ALLOWLIST.has(d.title)) continue;
+      // Afterfeast cycle rows are one-per-day of the afterfeast period and
+      // legitimately share the feast's troparion. Not a drift signal.
+      if (/^Afterfeast of /.test(d.title)) continue;
+      const ids   = d.ids.split(',').map(Number);
+      const pairs = d.dates.split('|').map(s => s.split(',').map(Number));
+
+      // Skip if no pair is within the proximity window — likely legit
+      // dual-comm (Marian icons, relic translations far apart in the year).
+      const dayOfYear = ([m, day]) =>
+        // Cheap approximation: 30 days/month is fine for proximity check.
+        (m - 1) * 30 + day;
+      let closeEnough = false;
+      for (let i = 0; i < pairs.length && !closeEnough; i++) {
+        for (let j = i + 1; j < pairs.length; j++) {
+          if (Math.abs(dayOfYear(pairs[i]) - dayOfYear(pairs[j])) <= DUPE_PROXIMITY_DAYS) {
+            closeEnough = true; break;
+          }
+        }
+      }
+      if (!closeEnough) continue;
+
+      const ph  = ids.map(() => '?').join(',');
+      const rows = db.prepare(
+        `SELECT commemoration_id, type, text FROM troparia
+         WHERE commemoration_id IN (${ph}) AND pronoun = 'tt'
+         ORDER BY commemoration_id, type`
+      ).all(...ids);
+      const byId = {};
+      for (const r of rows) (byId[r.commemoration_id] ??= []).push(`${r.type}:${r.text}`);
+      const sets = ids.map(id => (byId[id] || []).sort().join('\n'));
+      const allIdentical = sets.length > 1 && sets[0] !== '' && sets.every(s => s === sets[0]);
+      if (allIdentical) {
+        const human = pairs.map(([m, day]) => `${m}-${day}`).join(', ');
+        console.warn(
+          `Commemoration "${d.title}" duplicated across (${human}) ` +
+          `with byte-identical troparia (ids: ${d.ids}). Likely a DB-row drift bug. ` +
+          `Add to DUPE_ALLOWLIST in server-lib/overlays/drift.js if intentional.`
+        );
+        warnings += 1;
+      }
+    }
+    if (warnings === 0) console.log('Commemoration dupes: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
   validateAllTranslations,
   validateVariantLibrary,
   validateParishVariantPicks,
+  validateCommemorationDupes,
 };

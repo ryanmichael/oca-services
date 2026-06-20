@@ -15,6 +15,19 @@ const path = require('path');
 const { execSync } = require('child_process');
 const Anthropic = require('@anthropic-ai/sdk');
 
+// Load .env at repo root if present (no dependency on dotenv).
+(() => {
+  const envPath = path.resolve(__dirname, '..', '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
+    const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (!m || line.trim().startsWith('#')) continue;
+    const [, k, vRaw] = m;
+    if (process.env[k]) continue;
+    process.env[k] = vRaw.replace(/^['"]|['"]$/g, '');
+  }
+})();
+
 // Sonnet 4.6 — Haiku 4.5 wasn't reliable enough on liturgical reasoning
 // (1 false positive per clean date even after prompt tightening). Sonnet
 // brings noticeably better domain knowledge at ~3x the cost (~$0.015/run).
@@ -155,7 +168,7 @@ async function judge(client, date, service, assembled, refText) {
 
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 4096,
+    max_tokens: 16000,
     thinking: { type: 'adaptive' },
     output_config: { effort: 'medium' },
     system: [
@@ -197,7 +210,36 @@ function tryParseFindings(text) {
   const fenced = text.match(/```(?:json)?\s*(\[[\s\S]*?\])\s*```/);
   const raw    = fenced ? fenced[1] : (text.match(/\[[\s\S]*\]/) || [])[0];
   if (!raw) return null;
-  try { return JSON.parse(raw); } catch (_) { return null; }
+  try { return JSON.parse(raw); } catch (_) {}
+
+  // Fall back: max_tokens cut the output mid-array. Salvage findings up to
+  // the last complete object before the cutoff so we don't lose what the
+  // model already wrote. Look for a JSON-array opening, walk object-by-object
+  // matching braces, stop at the first incomplete one.
+  const open = text.indexOf('[');
+  if (open < 0) return null;
+  const out = [];
+  let depth = 0, start = -1, inString = false, escaped = false;
+  for (let i = open + 1; i < text.length; i++) {
+    const c = text[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (c === '\\') escaped = true;
+      else if (c === '"') inString = false;
+      continue;
+    }
+    if (c === '"') { inString = true; continue; }
+    if (c === '{') { if (depth === 0) start = i; depth++; continue; }
+    if (c === '}') {
+      depth--;
+      if (depth === 0 && start >= 0) {
+        try { out.push(JSON.parse(text.slice(start, i + 1))); } catch (_) {}
+        start = -1;
+      }
+    }
+    if (c === ']' && depth === 0) break;
+  }
+  return out.length > 0 ? out : null;
 }
 
 async function main() {
@@ -225,10 +267,15 @@ async function main() {
   }
   console.log(`  assembled: ${assembled.blocks.length} blocks`);
 
-  let refPath = findLocalReference(date);
+  // Vespers DOCX is bundled with the next-day Sunday/feast service-texts file
+  // (OCA keys vigil publications to the morning, not the eve).
+  const referenceDate = service === 'vespers'
+    ? new Date(new Date(date + 'T00:00:00Z').getTime() + 86400000).toISOString().slice(0, 10)
+    : date;
+  let refPath = findLocalReference(referenceDate);
   if (!refPath) {
-    console.log('  no local reference; fetching from oca.org…');
-    refPath = await fetchOcaReference(date);
+    console.log(`  no local reference; fetching from oca.org (ref date ${referenceDate})…`);
+    refPath = await fetchOcaReference(referenceDate);
   }
   if (!refPath) {
     console.error(`  no OCA reference DOCX available for ${date}`);
@@ -307,6 +354,12 @@ async function main() {
   console.log(`Report: ${path.relative(process.cwd(), reportPath)}`);
   console.log('');
   console.log(summary);
+
+  // Exit non-zero so CI / audit:upcoming surface a real failure when the
+  // model flagged any discrepancies (or couldn't be parsed at all).
+  if (!findings) process.exit(3);
+  if (findings.some(f => f.severity === 'high')) process.exit(2);
+  if (findings.length > 0) process.exit(1);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

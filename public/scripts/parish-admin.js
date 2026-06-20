@@ -419,12 +419,20 @@ function setActiveService(svc) {
 }
 
 // ── Preview ──────────────────────────────────────────────────────────────
+// Tab values are the conceptual service category. The home app keys its
+// service rows by specific variant (e.g. 'dailyVespers'); map here so the
+// deep-link auto-opens the right row.
+const TAB_TO_SVC_KEY = {
+  liturgy: 'liturgy',
+  vespers: 'dailyVespers',
+  matins:  'matins',
+};
+
 function previewUrl(bustToken) {
   const d = els.previewDate.value || nextSundayISO();
   const bust = bustToken ? `&_=${bustToken}` : '';
-  // The home page accepts ?date=&svc=&translation= deep-links. /service is
-  // a Vespers-only legacy route — do not use it for cross-service preview.
-  return `/?date=${d}&svc=${activeService}&translation=${slug}${bust}`;
+  const svcKey = TAB_TO_SVC_KEY[activeService] || activeService;
+  return `/?date=${d}&svc=${svcKey}&translation=${slug}${bust}`;
 }
 function refreshPreview(forceBust) {
   els.previewFrame.src = previewUrl(forceBust ? Date.now() : 0);

@@ -22,6 +22,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const { getMenaionRanked } = require('../../../server-lib/sources/menaion.js');
+const { pickPrincipalByOrthocalOrder } = require('../../../server-lib/sources/menaion-principal.js');
 
 // Titles starting with these prefixes are feast/season contexts, not saints —
 // orthocal handles them differently and would always false-positive.
@@ -63,33 +64,22 @@ const STOP_TOKENS = new Set([
 // the principal for that date. Verify against the OCA Service Book before
 // adding; this list is reviewed at calendar-year rollover.
 const ALLOWLIST = {
-  // 2026-06-20 verification surfaced that 6 of 8 entries are not legit
-  // OCA disagreements but picker-logic gaps (stichera-rich lesser saint
-  // wins over canonical principal with only a troparion). An attempted
-  // orthocal-aware picker fix (commit reverted) broke 50+ afterfeast/
-  // forefeast days and the canonical Mary of Egypt on Apr 1 — orthocal's
-  // summary_title during an afterfeast surfaces the day's saint, not the
-  // continuing feast, so naive orthocal-preference inverts the correct
-  // rendering. The picker needs liturgical-season awareness before it
-  // can override the existing stichera-rich heuristic; queued as a
-  // 2-3 hour design task. Until then, entries remain allowlisted with
-  // explicit "SUSPECTED PICKER BUG" notes.
-  '04-25': [{ ourTitle: 'Saint Basil of Poiana Marului',
-              reason: 'SUSPECTED PICKER BUG. Apostle and Evangelist Mark is the canonical Apr 25 principal; we elevate Basil because he has stichera and Mark has only a troparion. See server-lib/sources/menaion.js getMenaionRanked + memory project_principal_saint_picker_2026_06_20.md.' }],
-  '07-04': [{ ourTitle: 'Finding of the relics of Venerable Maximus the Greek  (July 4, 1996)',
-              reason: 'SUSPECTED PICKER BUG. St Andrew of Crete is the canonical Jul 4 principal; we elevate the Maximus the Greek relic-finding because it has stichera.' }],
+  // 2026-06-20 PM2: the 5 "SUSPECTED PICKER BUG" entries (04-25 / 07-04 /
+  // 11-04 / 11-30 / 12-12) are now resolved by the orthocal-aware principal
+  // picker shipped in server-lib/sources/menaion-principal.js — Vespers and
+  // Matins both consult it via for-date.js + matins-spec.js, with a
+  // conservative guard that preserves deliberate OCA disagreements
+  // (Mary of Egypt Apr 1). Remaining entries:
+  //   - 10-27 / 10-28: AMBIGUOUS — picker leaves these in place because our
+  //     default already appears somewhere in orthocal's saints[] (conservative
+  //     guard keeps it). Verify against OCA Service Book on year rollover.
+  //   - 11-15: GENUINE OCA-vs-orthocal disagreement on Sunday name vs saint.
   '10-27': [{ ourTitle: 'Righteous Mother Olga of Kwethluk–Tanqilria Arrsamquq–Wonderworker, Matushka of All Alaska',
-              reason: 'POSSIBLY DELIBERATE: OCA-glorified saint (2023). May be intentional OCA-Alaska design choice. Verify against OCA Service Book.' }],
+              reason: 'POSSIBLY DELIBERATE: OCA-glorified saint (2023). Conservative picker keeps her because she appears in orthocal saints[] alongside Nestor.' }],
   '10-28': [{ ourTitle: 'Venerable Stephen the Hymnographer of Saint Savva Monastery',
-              reason: 'AMBIGUOUS: OCA Oct 28 has multiple traditions (Greek: Paraskevi; Russian: Demetrius of Rostov; we picked Stephen the Hymnographer). Possibly deliberate.' }],
-  '11-04': [{ ourTitle: 'Hieromartyr Seraphim (Samoilovich), Archbishop of Uglich',
-              reason: 'SUSPECTED PICKER BUG. Venerable Joannicius the Great is the canonical Nov 4 principal; we elevate Seraphim Samoilovich because he has stichera.' }],
+              reason: 'AMBIGUOUS: OCA Oct 28 has multiple traditions. Picker leaves intact when default appears in orthocal pool.' }],
   '11-15': [{ ourTitle: 'Holy Martyrs and Confessors Gurias, Samonas, and Habibus, of Edessa',
               reason: 'GENUINE OCA-vs-orthocal disagreement. Orthocal summary_title is "24th Sunday after Pentecost" (no saint signal); saints[] foregrounds Paisios Velichkovsky + Nativity Fast start. OCA Service Book foregrounds Gurias-Samonas-Habibus.' }],
-  '11-30': [{ ourTitle: 'Venerable Sebastian Dabovich',
-              reason: 'SUSPECTED PICKER BUG. Apostle Andrew the First-Called is the canonical Nov 30 principal; we elevate Sebastian Dabovich (Serbian-American, 1940) because he has stichera.' }],
-  '12-12': [{ ourTitle: 'Saint Mardarije (Uskokovic) of Libertyville',
-              reason: 'SUSPECTED PICKER BUG. St Spyridon the Wonderworker is the canonical Dec 12 principal; we elevate Mardarije (Serbian-American) because he has stichera.' }],
 };
 
 // Normalize transliteration drift for Greek/Slavonic saint names:
@@ -167,7 +157,11 @@ module.exports = {
     const ranked = getMenaionRanked(m, d);
     if (!ranked || !ranked.principal) return [];        // skip — no menaion principal
 
-    const principal = ranked.principal;
+    // Apply the same orthocal-aware picker that Vespers/Matins/Liturgy use
+    // at render time, so the audit checks the saint we actually surface.
+    const principal = ranked.notable?.length
+      ? pickPrincipalByOrthocalOrder(ranked.notable, orthocal, ranked.principal)
+      : ranked.principal;
     const allowKey = `${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     if ((ALLOWLIST[allowKey] || []).some(a => a.ourTitle === principal.title)) return [];
 

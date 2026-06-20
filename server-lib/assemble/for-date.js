@@ -9,6 +9,8 @@ const { calculatePascha, fixedFeastDate, VESPERS_SUNG_EVE } = require('../../cal
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
+const { pickPrincipalByOrthocalOrder,
+        loadOrthocalForDate }                     = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS } = require('../sources/propers');
@@ -103,11 +105,31 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
   if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && !hasTriodionContent && !isPentSundayVespers) {
     const [mm, dd] = adjustedMD();
     const ranked = getMenaionRanked(mm, dd);
-    const primary = ranked?.principal ?? null;
-    let sticheraData = ranked?.sticheraComm
-      ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
-           rank: ranked.sticheraComm.rank, stichera: ranked.sticheraComm.stichera }]
-      : null;
+    // Orthocal-aware principal override: when our stichera-rich default
+    // disagrees with OCA's canonical principal (e.g. Apostle Mark Apr 25,
+    // Spyridon Dec 12), rebind to the orthocal-listed saint. Conservative
+    // guard inside the picker keeps deliberate OCA-cycle picks intact
+    // (Mary of Egypt Apr 1). See server-lib/sources/menaion-principal.js.
+    const orthocalData = loadOrthocalForDate(date);
+    const primary = ranked?.notable?.length
+      ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
+      : (ranked?.principal ?? null);
+
+    // When the picker rebound principal away from sticheraComm, prefer the
+    // new principal's own stichera (if any). Otherwise the general-menaion
+    // fallback below kicks in by saint_type.
+    const pickerSwappedAway = primary && ranked?.sticheraComm && primary.id !== ranked.sticheraComm.id;
+    let sticheraData;
+    if (pickerSwappedAway) {
+      sticheraData = primary.hasStichera
+        ? [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: primary.stichera }]
+        : null;
+    } else {
+      sticheraData = ranked?.sticheraComm
+        ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
+             rank: ranked.sticheraComm.rank, stichera: ranked.sticheraComm.stichera }]
+        : null;
+    }
 
     // General Menaion fallback: when no day-specific stichera exist,
     // use generic texts for this saint's category

@@ -422,7 +422,9 @@ function setActiveService(svc) {
 function previewUrl(bustToken) {
   const d = els.previewDate.value || nextSundayISO();
   const bust = bustToken ? `&_=${bustToken}` : '';
-  return `/service?date=${d}&service=${activeService}&translation=${slug}${bust}`;
+  // The home page accepts ?date=&svc=&translation= deep-links. /service is
+  // a Vespers-only legacy route — do not use it for cross-service preview.
+  return `/?date=${d}&svc=${activeService}&translation=${slug}${bust}`;
 }
 function refreshPreview(forceBust) {
   els.previewFrame.src = previewUrl(forceBust ? Date.now() : 0);

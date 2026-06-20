@@ -15,7 +15,10 @@ let activeSvcType = null;
 let activePronoun = localStorage.getItem('pronoun') || 'tt';  // 'tt' or 'yy'
 let activeMode    = localStorage.getItem('mode') || 'laity';  // 'laity' or 'choir'
 let activeEducation = localStorage.getItem('education') || 'off'; // 'on' or 'off'
-let activeTranslation = localStorage.getItem('translation') || '';  // '' = default, else overlay id
+// Translation source order: URL `?translation=` param wins (used by the
+// parish-admin preview iframe so it can pin a specific parish without
+// touching this tab's localStorage), then localStorage, then default.
+let activeTranslation = (new URLSearchParams(location.search).get('translation')) || localStorage.getItem('translation') || '';
 let activeJurisdiction = localStorage.getItem('jurisdiction') || 'all';  // filter for the translation picker
 let activeStyle = localStorage.getItem('style') || '';  // '' = follow overlay default; 'new' or 'old' = explicit override
 let translationsCache = null; // { default, translations: [...] } from /api/translations

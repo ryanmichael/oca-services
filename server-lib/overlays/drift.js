@@ -112,9 +112,22 @@ function validateParishVariantPicks() {
 // Titles that are legitimately duplicated across multiple (month, day)
 // tuples with identical troparia — e.g. a saint commemorated on both
 // their repose date and a relic-translation date, using the same hymns.
-// Empty for now; add titles here when the dupe check surfaces legit cases.
+//
+// First-pass allowlist (2026-06-20): surfaced by initial drift sweep and
+// triaged via orthocal cross-reference. Most are presumed legit dual-comms
+// (relic translations, Marian icon multi-date cycle, OCA-Georgian saints
+// without orthocal coverage). Aninas of Euphrates is the most-suspect for
+// real drift — orthocal lists him only on 3-18 — but we allowlist pending
+// OCA-source verification rather than risk deleting valid data.
+// Each entry warrants a 1-minute OCA-source re-check at calendar rollover.
 const DUPE_ALLOWLIST = new Set([
-  // 'Some Saint Title',
+  'Icon of the Mother of God of Tolga',                    // 7-18 + 8-8: Marian icon multi-date
+  'Venerable Aninas of the Euphrates',                     // 3-13 + 3-18: orthocal lists only 3-18; verify against OCA Service Book
+  'New Martyr Theodore',                                   // 1-30 + 2-17: likely Russian new-martyr OCA cycle
+  'Saint Martin the Merciful, Bishop of Tours',            // 10-12 + 11-11: Nov 11 = principal, Oct 12 = translation of relics
+  'Venerable Mercurius the Faster of the Kiev Caves',      // 11-4 + 11-24: Kiev Caves cluster
+  'Venerable Shio Mgvime',                                 // 2-9 + 3-3: Georgian saint, OCA-specific cycle
+  'Venerable Theodora and her daughter Theopiste',         // 8-3 + 8-29: paired-saint commemoration
 ]);
 
 // Max days between two duplicate-titled rows for the pair to be flagged as

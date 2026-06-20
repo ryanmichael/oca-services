@@ -63,22 +63,33 @@ const STOP_TOKENS = new Set([
 // the principal for that date. Verify against the OCA Service Book before
 // adding; this list is reviewed at calendar-year rollover.
 const ALLOWLIST = {
+  // 2026-06-20 verification surfaced that 6 of 8 entries are not legit
+  // OCA disagreements but picker-logic gaps (stichera-rich lesser saint
+  // wins over canonical principal with only a troparion). An attempted
+  // orthocal-aware picker fix (commit reverted) broke 50+ afterfeast/
+  // forefeast days and the canonical Mary of Egypt on Apr 1 — orthocal's
+  // summary_title during an afterfeast surfaces the day's saint, not the
+  // continuing feast, so naive orthocal-preference inverts the correct
+  // rendering. The picker needs liturgical-season awareness before it
+  // can override the existing stichera-rich heuristic; queued as a
+  // 2-3 hour design task. Until then, entries remain allowlisted with
+  // explicit "SUSPECTED PICKER BUG" notes.
   '04-25': [{ ourTitle: 'Saint Basil of Poiana Marului',
-              reason: 'Romanian saint commemorated by OCA; orthocal lists only Ananias of Alexandria.' }],
+              reason: 'SUSPECTED PICKER BUG. Apostle and Evangelist Mark is the canonical Apr 25 principal; we elevate Basil because he has stichera and Mark has only a troparion. See server-lib/sources/menaion.js getMenaionRanked + memory project_principal_saint_picker_2026_06_20.md.' }],
   '07-04': [{ ourTitle: 'Finding of the relics of Venerable Maximus the Greek  (July 4, 1996)',
-              reason: 'OCA-specific commemoration of relic finding.' }],
+              reason: 'SUSPECTED PICKER BUG. St Andrew of Crete is the canonical Jul 4 principal; we elevate the Maximus the Greek relic-finding because it has stichera.' }],
   '10-27': [{ ourTitle: 'Righteous Mother Olga of Kwethluk–Tanqilria Arrsamquq–Wonderworker, Matushka of All Alaska',
-              reason: 'OCA-glorified saint (2023); orthocal has not yet adopted.' }],
+              reason: 'POSSIBLY DELIBERATE: OCA-glorified saint (2023). May be intentional OCA-Alaska design choice. Verify against OCA Service Book.' }],
   '10-28': [{ ourTitle: 'Venerable Stephen the Hymnographer of Saint Savva Monastery',
-              reason: 'OCA commemorates per Greek tradition; orthocal foregrounds Dimitri of Rostov + Arsenius of Serbia.' }],
+              reason: 'AMBIGUOUS: OCA Oct 28 has multiple traditions (Greek: Paraskevi; Russian: Demetrius of Rostov; we picked Stephen the Hymnographer). Possibly deliberate.' }],
   '11-04': [{ ourTitle: 'Hieromartyr Seraphim (Samoilovich), Archbishop of Uglich',
-              reason: 'Russian new-martyr in OCA cycle; orthocal foregrounds Joannicus the Great.' }],
+              reason: 'SUSPECTED PICKER BUG. Venerable Joannicius the Great is the canonical Nov 4 principal; we elevate Seraphim Samoilovich because he has stichera.' }],
   '11-15': [{ ourTitle: 'Holy Martyrs and Confessors Gurias, Samonas, and Habibus, of Edessa',
-              reason: 'OCA principal; orthocal foregrounds start of Nativity Fast + Paisius Velichkovsky.' }],
+              reason: 'GENUINE OCA-vs-orthocal disagreement. Orthocal summary_title is "24th Sunday after Pentecost" (no saint signal); saints[] foregrounds Paisios Velichkovsky + Nativity Fast start. OCA Service Book foregrounds Gurias-Samonas-Habibus.' }],
   '11-30': [{ ourTitle: 'Venerable Sebastian Dabovich',
-              reason: 'Serbian-American saint glorified by OCA; orthocal has not adopted.' }],
+              reason: 'SUSPECTED PICKER BUG. Apostle Andrew the First-Called is the canonical Nov 30 principal; we elevate Sebastian Dabovich (Serbian-American, 1940) because he has stichera.' }],
   '12-12': [{ ourTitle: 'Saint Mardarije (Uskokovic) of Libertyville',
-              reason: 'Serbian-American OCA saint; orthocal foregrounds Spyridon the Wonderworker.' }],
+              reason: 'SUSPECTED PICKER BUG. St Spyridon the Wonderworker is the canonical Dec 12 principal; we elevate Mardarije (Serbian-American) because he has stichera.' }],
 };
 
 // Normalize transliteration drift for Greek/Slavonic saint names:

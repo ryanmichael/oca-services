@@ -47,13 +47,17 @@ function loadOverlayData(overlayId, serviceName = 'liturgy') {
 }
 
 function listAvailableTranslations() {
+  let fileIds = [];
   try {
-    return fs.readdirSync(TRANSLATIONS_DIR, { withFileTypes: true })
+    fileIds = fs.readdirSync(TRANSLATIONS_DIR, { withFileTypes: true })
       .filter(e => e.isDirectory() && !e.name.startsWith('_'))
       .map(e => e.name);
-  } catch {
-    return [];
-  }
+  } catch (_) {}
+  // In-memory overlays (DB-backed parishes) are also valid translations even
+  // when no on-disk directory exists. Union both lists, dedupe.
+  const { listInMemoryOverlays } = require('./in-memory');
+  const memIds = listInMemoryOverlays();
+  return [...new Set([...fileIds, ...memIds])].sort();
 }
 
 // Allowed enum values for manifest schema validation.

@@ -27,22 +27,16 @@ const LEGACY_ID     = 'st-john-damascus-tyler-legacy';
 const TYLER_DIR     = path.join(ROOT, 'fixed-texts', 'translations', TYLER_ID);
 const LEGACY_DIR    = path.join(ROOT, 'fixed-texts', 'translations', LEGACY_ID);
 
+// Legacy dir retired 2026-06-19: Tyler's last 2 Bucket-D items (typical-antiphon-1
+// 4-verse short form + trilingual Trisagion) were promoted to the variant library
+// and Tyler now picks them like any other library variant. The legacy overlay dir
+// is intentionally absent — this function exists only to skip the historical copy
+// step if it's never been run on this machine.
 function copyLegacyDir() {
   if (fs.existsSync(LEGACY_DIR)) {
-    console.log(`[migrate-tyler] legacy dir already exists at ${LEGACY_DIR}`);
-    return;
+    console.log(`[migrate-tyler] legacy dir still present at ${LEGACY_DIR} — keeping it as historical record`);
   }
-  if (!fs.existsSync(TYLER_DIR)) {
-    throw new Error(`Tyler overlay dir not found at ${TYLER_DIR}`);
-  }
-  fs.cpSync(TYLER_DIR, LEGACY_DIR, { recursive: true });
-  // Patch the copied manifest so its id makes sense + extends chain remains the same.
-  const manifestPath = path.join(LEGACY_DIR, 'manifest.json');
-  const m = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  m.name = (m.name || 'St. John of Damascus, Tyler, TX') + ' (legacy cascade layer)';
-  m._note = 'Bucket-D carryover layer. Provides Tyler\'s overrides that are not yet derived from parish_settings (litany hierarchs, antiphons, Trisagion variants, pre-Communion, Cherubic Hymn). Phase 1+ adds derivation/library coverage; this dir shrinks over time.';
-  fs.writeFileSync(manifestPath, JSON.stringify(m, null, 2) + '\n');
-  console.log(`[migrate-tyler] copied ${TYLER_ID}/ → ${LEGACY_ID}/`);
+  // No-op for fresh installs.
 }
 
 function upsertTyler(db) {
@@ -52,7 +46,7 @@ function upsertTyler(db) {
     name:                 'St. John of Damascus, Tyler, TX',
     city:                 'Tyler, TX',
     jurisdiction:         'oca',
-    extends_chain:        JSON.stringify(['oca', LEGACY_ID]),
+    extends_chain:        JSON.stringify(['oca']),
     primate_name:          'Tikhon, Archbishop of Washington, Metropolitan of All America and Canada',
     primate_short:         'Metropolitan Tikhon',
     ruling_hierarch_name:  'Alexander, Archbishop of Dallas and the South',
@@ -67,7 +61,7 @@ function upsertTyler(db) {
     rubric_omit_catechumens_seasons:     '',
     rubric_paschal_communion_year_round: 1,    // Tyler year-round "Receive ye the Body"
     rubrics_extra_json:   null,
-    legacy_overlay_path:  LEGACY_ID,
+    legacy_overlay_path:  null,
     created_at:           now,
     updated_at:           now,
   };
@@ -94,6 +88,8 @@ function upsertVariantPicks(db) {
     { variant_key: 'cherubic-hymn',        variant_id: 'tyler-1' },
     { variant_key: 'pre-communion-prayer', variant_id: 'htm' },
     { variant_key: 'blessed-is-the-man',   variant_id: 'htm-boston' },
+    { variant_key: 'typical-antiphon-1',   variant_id: 'tyler-short-4-verse' },
+    { variant_key: 'trisagion',            variant_id: 'english-slavonic-greek' },
   ];
   const stmt = db.prepare(`
     INSERT INTO parish_variant_picks (parish_id, variant_key, variant_id)

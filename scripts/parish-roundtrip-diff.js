@@ -75,6 +75,8 @@ const REQUIRED_PRESENCE = {
     'Most Blessed Tikhon, Archbishop of Washington', // anaphora full title (derivation)
     'of whom I am chief',      // pre-Communion HTM (variant pick)
     'mystically, mystically represent the Cherubim', // cherubic tyler-1 (variant pick)
+    'Svyatyi Bozhe',           // trilingual Trisagion — Slavonic (variant pick)
+    'Ágios o Theós',           // trilingual Trisagion — Greek (variant pick)
   ],
   vespers: [
     'Metropolitan Tikhon',

@@ -19,6 +19,10 @@ on:
         description: 'Compute weekend relative to this date (YYYY-MM-DD)'
         required: false
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   judge:
     runs-on: ubuntu-latest

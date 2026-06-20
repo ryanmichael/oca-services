@@ -6,8 +6,16 @@
   "_note": "Seed catalog for Phase 3. Lift more variants (Tchaikovsky, L'vovsky, Bortniansky) as parishes request them. The `value` object replaces the entire `cherubic-hymn` key in the liturgy overlay.",
   "variants": [
     {
-      "id": "tyler-1",
-      "label": "St. John's Tyler — Setting #1 (Russian-tradition doubled phrases)",
+      "id": "russian-doubled-1",
+      "label": "Russian-tradition doubled phrases — Setting #1",
+      "aliases": ["tyler-1"],
+      "_provenance": {
+        "origin": "extracted-from-overlay",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "admin",
+        "date": "2026-06-19",
+        "source_citation": "St. John of Damascus (Tyler) parish service folder"
+      },
       "value": {
         "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
         "amen": "Amen.",
@@ -18,6 +26,12 @@
     {
       "id": "slavonic-calque",
       "label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-06-19",
+        "source_citation": "Jordanville Liturgikon"
+      },
       "value": {
         "part1": "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
         "amen": "Amen.",

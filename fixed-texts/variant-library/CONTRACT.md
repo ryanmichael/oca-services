@@ -31,11 +31,47 @@ this document defines.
 ```
 
 Required per variant: `id`, `label`, `value`.
-Optional per variant: `aliases` (string array), `deprecated` (bool).
+Optional per variant: `aliases` (string array), `deprecated` (bool), `_provenance` (object — see below).
 
 `value` may be either a string (most variants) or a structured object (for
 multi-part hymns like the Cherubic Hymn or Blessed-is-the-Man). The parish
 overlay materializer slots the value as-is at `_target.path`.
+
+## ID naming convention
+
+Variant IDs are **source-semantic**, not parish-attributed. The library is
+a shared catalog of *renderings of a text*, not a catalog of *who-asked-for-
+what*. The pick table already records which parish chose which variant —
+the ID should not double-encode that.
+
+Good: `oca`, `htm`, `htm-boston`, `jordanville`, `sluzhebnik`, `russian-doubled-1`.
+Bad: `tyler-1`, `st-johns-custom`, `parish-x`.
+
+If a correction comes in from one parish and we don't yet know the upstream
+source, name the variant by its distinctive textual character (e.g.
+`russian-doubled-1` for a Cherubic Hymn with repeated phrases) and record
+the parish origin in `_provenance`.
+
+## Provenance
+
+Every variant should carry a `_provenance` block recording how it entered
+the library. The loader ignores this field; it exists for audit + library
+hygiene. Schema:
+
+```json
+"_provenance": {
+  "origin":          "choir-correction" | "extracted-from-overlay" | "seed" | "transcribed",
+  "parish_id":       "st-john-damascus-tyler",
+  "contributor":     "choir director name or 'admin'",
+  "date":            "2026-06-20",
+  "source_citation": "OCA Service Book p.NN | HTM Liturgikon | parish service folder",
+  "supersedes":      "id-of-prior-variant-this-replaces"
+}
+```
+
+All fields except `origin` and `date` are optional. `supersedes` is for the
+"fork-and-evolve" path — leaves a trail when one variant is a refined
+version of another.
 
 `_target.service` is the service name (`liturgy`, `vespers`, etc.) the variant
 applies to. `_target.path` is a dotted overlay key — e.g.

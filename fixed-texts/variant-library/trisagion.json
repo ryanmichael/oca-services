@@ -9,6 +9,13 @@
       "id": "english-slavonic-greek",
       "label": "English / Slavonic / Greek (trilingual)",
       "aliases": ["trilingual-en-sl-gr"],
+      "_provenance": {
+        "origin": "extracted-from-overlay",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "admin",
+        "date": "2026-06-19",
+        "source_citation": "St. John of Damascus (Tyler) trilingual practice"
+      },
       "value": [
         { "lang": "English",  "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us." },
         { "lang": "Slavonic", "text": "Svyatyi Bozhe, Svyatyi Krépkii, Svyatyi Bezsmértnyi, pomíluy nas." },

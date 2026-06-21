@@ -56,7 +56,14 @@ function assembleBlessedIsTheMan(fixedTexts) {
   } else {
     blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
       k.gloryNow || 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
-    blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir', k.refrain));
+    // Closing refrain is the full "Alleluia… glory to Thee, O God" form sung
+    // thrice (matches the read-kathisma path in assembleKathismaReading and
+    // OCA Saturday Great Vespers parish practice). The per-verse `k.refrain`
+    // ("Alleluia, alleluia, alleluia.") is the antiphon between verses; the
+    // post-doxology refrain is the fuller form.
+    blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir',
+      fixedTexts.responses?.alleluiaThrice
+        || 'Alleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.'));
   }
 
   return blocks;

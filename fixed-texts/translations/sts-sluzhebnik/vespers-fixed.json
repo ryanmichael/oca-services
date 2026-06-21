@@ -1,0 +1,9 @@
+{
+  "_note": "St. Tikhon's Sluzhebnik (2010, 2nd ed.) overrides for vespers-fixed.json. Sparse — only keys whose wording differs from the base. Populating as parish observations surface, each citing the Sluzhebnik page where verified.",
+  "_source": "STS Service Books of the Orthodox Church, 2nd ed. 2010 — pages cited inline in _section comments",
+
+  "_section_entrance": "Vespers Entrance — deacon's exclamation. OCA Sluzhebnik prints 'Wisdom. Let us attend.' rather than the literal Greek 'Stand upright' (orthoi). Confirmed by parishioner observation at St. John of Damascus, Tyler, Sat Great Vespers 2026-06-20.",
+  "entrance": {
+    "wisdom": "Wisdom. Let us attend."
+  }
+}

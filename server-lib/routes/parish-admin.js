@@ -34,12 +34,14 @@ const WRITABLE_FIELDS = [
   'rubric_include_second_koinonikon',
   'rubric_omit_catechumens_seasons',
   'rubric_paschal_communion_year_round',
+  'rubric_beatitudes_reader_led',
 ];
 
 const BOOL_FIELDS = new Set([
   'rubric_confess_first', 'rubric_omit_pre_trisagion_litany',
   'rubric_include_lesser_saints', 'rubric_include_second_gospel',
   'rubric_include_second_koinonikon', 'rubric_paschal_communion_year_round',
+  'rubric_beatitudes_reader_led',
 ]);
 
 const SLUG_REGEX = /^[a-z0-9][a-z0-9-]{2,49}$/;
@@ -118,6 +120,7 @@ function handleGetSettings(parishId, res) {
     rubric_include_second_koinonikon:    !!data.row.rubric_include_second_koinonikon,
     rubric_omit_catechumens_seasons:     data.row.rubric_omit_catechumens_seasons || '',
     rubric_paschal_communion_year_round: !!data.row.rubric_paschal_communion_year_round,
+    rubric_beatitudes_reader_led:        !!data.row.rubric_beatitudes_reader_led,
     variant_picks: data.picks,
     updated_at: data.row.updated_at,
   });

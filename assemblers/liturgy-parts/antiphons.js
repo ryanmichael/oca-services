@@ -75,12 +75,18 @@ function _litLittleLitany(f, exclamationKey, prefix) {
   ];
 }
 
-function _litBeatitudes(beatitudesSpec, f) {
+function _litBeatitudes(beatitudesSpec, f, opts = {}) {
   const section = 'Third Antiphon';
   const beat = mustGet(f, 'beatitudes', { scope: section });
   if (!beat || !beat.verses) return [];
   const verses  = beat.verses;
   const blocks  = [];
+
+  // Parish rubric: in some Slavic/Sluzhebnik parishes the canon troparia
+  // interpolated between Beatitude verses are recited by the Reader rather
+  // than sung by the choir. Beatitude verses themselves are always choir.
+  const tropSpeaker = opts.rubrics?.antiphons?.beatitudesTropariaReaderLed
+    ? 'reader' : 'choir';
 
   // Opening verse sung three times (choir)
   blocks.push(makeBlock('beat-open', section, 'prayer', 'choir', verses[0]));
@@ -134,7 +140,7 @@ function _litBeatitudes(beatitudesSpec, f) {
     if (tropIdx >= 0 && tropIdx < tropList.length) {
       const t = tropList[tropIdx];
       if (t.text) {
-        blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', 'choir', t.text,
+        blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', tropSpeaker, t.text,
           { tone: t.tone, label: t.label }));
       }
     }
@@ -145,7 +151,7 @@ function _litBeatitudes(beatitudesSpec, f) {
   if (gloryIdx >= 0 && gloryIdx < tropList.length) {
     const g = tropList[gloryIdx];
     if (g.text) {
-      blocks.push(makeBlock('beat-glory-t', section, 'hymn', 'choir', g.text,
+      blocks.push(makeBlock('beat-glory-t', section, 'hymn', tropSpeaker, g.text,
         { tone: g.tone, label: g.label }));
     }
   }
@@ -155,7 +161,7 @@ function _litBeatitudes(beatitudesSpec, f) {
   if (nowIdx >= 0 && nowIdx < tropList.length) {
     const t = tropList[nowIdx];
     if (t.text) {
-      blocks.push(makeBlock('beat-theos', section, 'hymn', 'choir', t.text,
+      blocks.push(makeBlock('beat-theos', section, 'hymn', tropSpeaker, t.text,
         { tone: t.tone, label: t.label }));
     }
   }

@@ -57,6 +57,7 @@ const els = {
   secondGospel:    $('f-second-gospel'),
   secondKoinonikon:$('f-second-koinonikon'),
   paschalComm:     $('f-paschal-comm'),
+  beatitudesReaderLed: $('f-beatitudes-reader-led'),
   catechSeasons:   document.querySelectorAll('.catech-season'),
   variantPickers:  document.querySelectorAll('select[data-variant-key]'),
 
@@ -87,6 +88,7 @@ function snapshotMain() {
     rubric_include_second_gospel:        els.secondGospel.checked,
     rubric_include_second_koinonikon:    els.secondKoinonikon.checked,
     rubric_paschal_communion_year_round: els.paschalComm.checked,
+    rubric_beatitudes_reader_led:        els.beatitudesReaderLed.checked,
     rubric_omit_catechumens_seasons:     [...els.catechSeasons]
         .filter(c => c.checked).map(c => c.value).join(','),
     variant_picks_serialized:            [...els.variantPickers]
@@ -203,6 +205,7 @@ function populate(data) {
   els.secondGospel.checked     = !!data.rubric_include_second_gospel;
   els.secondKoinonikon.checked = !!data.rubric_include_second_koinonikon;
   els.paschalComm.checked      = !!data.rubric_paschal_communion_year_round;
+  els.beatitudesReaderLed.checked = !!data.rubric_beatitudes_reader_led;
   const seasons = String(data.rubric_omit_catechumens_seasons || '').split(',').filter(Boolean);
   els.catechSeasons.forEach(c => { c.checked = seasons.includes(c.value); });
 
@@ -275,6 +278,7 @@ async function submitMain(e) {
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',
       'rubric_include_lesser_saints','rubric_include_second_gospel',
       'rubric_include_second_koinonikon','rubric_paschal_communion_year_round',
+      'rubric_beatitudes_reader_led',
     ]) payload[k] = payload[k] ? 1 : 0;
     await postSettings(payload);
     initialState.main = snapshotMain();

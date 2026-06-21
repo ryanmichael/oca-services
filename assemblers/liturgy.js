@@ -79,7 +79,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
     blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
       liturgyFixed['only-begotten-son']));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
-    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed));
+    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed, opts));
   } else {
     blocks.push(..._litTypicalAntiphon1(liturgyFixed));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation1', 'ant1'));
@@ -87,7 +87,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
     blocks.push(makeBlock('only-begotten-son', 'Second Antiphon', 'hymn', 'choir',
       liturgyFixed['only-begotten-son']));
     blocks.push(..._litLittleLitany(liturgyFixed, 'exclamation2', 'ant2'));
-    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed));
+    blocks.push(..._litBeatitudes(spec.beatitudes, liturgyFixed, opts));
   }
 
   // 6. Small Entrance

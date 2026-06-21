@@ -35,6 +35,7 @@ const WRITABLE_FIELDS = [
   'rubric_omit_catechumens_seasons',
   'rubric_paschal_communion_year_round',
   'rubric_beatitudes_reader_led',
+  'rubric_faithful_litany_2_long',
 ];
 
 const BOOL_FIELDS = new Set([
@@ -42,6 +43,7 @@ const BOOL_FIELDS = new Set([
   'rubric_include_lesser_saints', 'rubric_include_second_gospel',
   'rubric_include_second_koinonikon', 'rubric_paschal_communion_year_round',
   'rubric_beatitudes_reader_led',
+  'rubric_faithful_litany_2_long',
 ]);
 
 const SLUG_REGEX = /^[a-z0-9][a-z0-9-]{2,49}$/;
@@ -121,6 +123,7 @@ function handleGetSettings(parishId, res) {
     rubric_omit_catechumens_seasons:     data.row.rubric_omit_catechumens_seasons || '',
     rubric_paschal_communion_year_round: !!data.row.rubric_paschal_communion_year_round,
     rubric_beatitudes_reader_led:        !!data.row.rubric_beatitudes_reader_led,
+    rubric_faithful_litany_2_long:       !!data.row.rubric_faithful_litany_2_long,
     variant_picks: data.picks,
     updated_at: data.row.updated_at,
   });

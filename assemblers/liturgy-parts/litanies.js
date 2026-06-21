@@ -73,11 +73,18 @@ function _litCatechumens(f) {
   return blocks;
 }
 
-function _litLitaniesFaithful(f) {
+function _litLitaniesFaithful(f, opts = {}) {
   const section = 'Litanies of the Faithful';
   const l1 = mustGet(f, 'litany-faithful-1', { scope: section });
   const l2 = mustGet(f, 'litany-faithful-2', { scope: section });
   if (!l1 || !l2) return [];
+
+  // Parish rubric: the OCA Sluzhebnik 2nd Litany of the Faithful is the
+  // short form (opening + Help-us + Wisdom + exclamation). The long form
+  // (with 4 great-litany-style petitions before Help-us) appears in some
+  // older Russian-tradition Liturgika; parishes that use it opt in.
+  const longForm = opts.rubrics?.litanies?.faithful2Long === true;
+
   const blocks = [
     makeBlock('lf1-opening',    section, 'prayer',   'deacon', l1.opening),
     makeBlock('lf1-response',   section, 'response', 'choir',  l1.response),
@@ -89,10 +96,12 @@ function _litLitaniesFaithful(f) {
     makeBlock('lf2-opening',    section, 'prayer',   'deacon', l2.opening),
     makeBlock('lf2-response',   section, 'response', 'choir',  l2.response),
   ];
-  (l2.petitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`lf2-p${i}`,       section, 'prayer',   'deacon', p));
-    blocks.push(makeBlock(`lf2-p${i}-resp`,  section, 'response', 'choir',  l2.response));
-  });
+  if (longForm) {
+    (l2.petitions || []).forEach((p, i) => {
+      blocks.push(makeBlock(`lf2-p${i}`,       section, 'prayer',   'deacon', p));
+      blocks.push(makeBlock(`lf2-p${i}-resp`,  section, 'response', 'choir',  l2.response));
+    });
+  }
   blocks.push(
     makeBlock('lf2-petition',   section, 'prayer',   'deacon', l2.petition),
     makeBlock('lf2-pet-resp',   section, 'response', 'choir',  l2.response),

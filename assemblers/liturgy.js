@@ -157,7 +157,7 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   }
 
   // 18–19. Litanies of the Faithful
-  blocks.push(..._litLitaniesFaithful(liturgyFixed));
+  blocks.push(..._litLitaniesFaithful(liturgyFixed, opts));
 
   // ── LITURGY OF THE FAITHFUL ────────────────────────────────────────────────
 

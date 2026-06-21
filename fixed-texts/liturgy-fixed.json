@@ -202,7 +202,7 @@
   },
 
   "litany-faithful-2": {
-    "_note": "Second Litany of the Faithful per OCA Liturgikon (long form): the deacon prefaces with 'Wisdom!' and recites the great-litany-style petitions before 'Help us, save us...' Then a second 'Wisdom!' introduces the priest's exclamation. No Theotokos commemoration.",
+    "_note": "Second Litany of the Faithful. Default (OCA Sluzhebnik short form): opening + Help-us + Wisdom + exclamation, no great-litany-style petitions. The optional `petitions[]` array carries the long form (Russian-tradition Liturgika); rendered only when parish rubric `litanies.faithful2Long` is true. No Theotokos commemoration.",
     "opening": "Again and again in peace, let us pray to the Lord.",
     "response": "Lord, have mercy.",
     "petitions": [

@@ -126,6 +126,8 @@ function buildRubrics(row) {
     r.readings = { ...(r.readings || {}), includeSecondKoinonikon: true };
   if (row.rubric_beatitudes_reader_led)
     r.antiphons = { ...(r.antiphons || {}), beatitudesTropariaReaderLed: true };
+  if (row.rubric_faithful_litany_2_long)
+    r.litanies = { ...(r.litanies || {}), faithful2Long: true };
   if (row.rubric_omit_catechumens_seasons) {
     const list = row.rubric_omit_catechumens_seasons.split(',').map(s => s.trim()).filter(Boolean);
     if (list.length) r.omitCatechumensSeasons = list;

@@ -15,7 +15,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn, execFileSync } = require('node:child_process');
 
-const PORT = 3095; // distinct from beatitudes (3096), confess-first (3097), patron (3098), smoke (3099), dev (3000)
+const PORT = 3090; // distinct from vespers (3094), polyeleos (3095), beatitudes/sunday-kontakia (3096), confess-first (3097), patron (3098), smoke (3099), dev (3000)
 let serverProcess;
 
 function get(urlPath) {
@@ -45,24 +45,7 @@ async function waitForServer(maxMs = 15000) {
 const TYLER = 'st-john-damascus-tyler';
 const DB = path.join(__dirname, '..', '..', 'storage', 'oca.db');
 
-function setTylerLongFormFlag(value) {
-  execFileSync('sqlite3', [DB, `UPDATE parish_settings SET rubric_faithful_litany_2_long=${value ? 1 : 0} WHERE parish_id='${TYLER}';`]);
-}
-
-async function reloadParishOverlays() {
-  // Server reloads from DB at boot. For mid-test mutation, restart it.
-  if (serverProcess) serverProcess.kill();
-  serverProcess = spawn('node', ['server.js'], {
-    cwd: path.join(__dirname, '..', '..'),
-    env: { ...process.env, PORT: String(PORT) },
-    stdio: 'pipe',
-  });
-  await waitForServer();
-}
-
-before(async () => {
-  // Ensure Tyler starts at short-form default.
-  setTylerLongFormFlag(false);
+function startServer() {
   serverProcess = spawn('node', ['server.js'], {
     cwd: path.join(__dirname, '..', '..'),
     env: { ...process.env, PORT: String(PORT) },
@@ -74,12 +57,56 @@ before(async () => {
       console.error('[server stderr]', msg);
     }
   });
+}
+
+async function stopServer() {
+  if (!serverProcess) return;
+  const p = serverProcess;
+  serverProcess = null;
+  p.kill();
+  // Wait for the child to fully exit so it releases the SQLite write lock
+  // before we attempt a CLI UPDATE.
+  await new Promise((resolve) => {
+    if (p.exitCode !== null) return resolve();
+    p.once('exit', resolve);
+    setTimeout(resolve, 1000); // hard cap; sqlite busy_timeout below covers any residual lock
+  });
+}
+
+/** Toggle the long-form rubric on the Tyler parish row.
+ *  Server is fully stopped before the write to avoid SQLite write-lock
+ *  contention; `busy_timeout` is set as defense-in-depth. */
+async function setTylerLongFormFlag(value) {
+  await stopServer();
+  execFileSync('sqlite3', [
+    '-cmd', 'PRAGMA busy_timeout=5000;',
+    DB,
+    `UPDATE parish_settings SET rubric_faithful_litany_2_long=${value ? 1 : 0} WHERE parish_id='${TYLER}';`,
+  ]);
+}
+
+async function startServerAndWait() {
+  startServer();
   await waitForServer();
+}
+
+before(async () => {
+  // Ensure Tyler starts at short-form default. No server yet, so no lock risk.
+  execFileSync('sqlite3', [
+    '-cmd', 'PRAGMA busy_timeout=5000;',
+    DB,
+    `UPDATE parish_settings SET rubric_faithful_litany_2_long=0 WHERE parish_id='${TYLER}';`,
+  ]);
+  await startServerAndWait();
 });
 
-after(() => {
-  if (serverProcess) serverProcess.kill();
-  setTylerLongFormFlag(false); // restore default
+after(async () => {
+  await stopServer();
+  execFileSync('sqlite3', [
+    '-cmd', 'PRAGMA busy_timeout=5000;',
+    DB,
+    `UPDATE parish_settings SET rubric_faithful_litany_2_long=0 WHERE parish_id='${TYLER}';`,
+  ]);
 });
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -115,8 +142,8 @@ describe('Feature contract: faithful2Long', () => {
   });
 
   it('INV-2: long-form rubric (Tyler flag flipped) — 2nd Litany contains exactly 4 lf2-p0..p3 petitions', async () => {
-    setTylerLongFormFlag(true);
-    await reloadParishOverlays();
+    await setTylerLongFormFlag(true);
+    await startServerAndWait();
     try {
       const { json } = await get(`/api/liturgy?date=${DATE}&translation=${TYLER}`);
       const ids = faithful2Ids(json);
@@ -125,39 +152,37 @@ describe('Feature contract: faithful2Long', () => {
         `long form must render exactly 4 petition blocks; got: ${petitions.join(', ')}`);
       assert.deepEqual(petitions, ['lf2-p0', 'lf2-p1', 'lf2-p2', 'lf2-p3'],
         `long form petitions must be lf2-p0..p3 in order; got: ${petitions.join(', ')}`);
-      // Each petition gets its 'Lord, have mercy' response.
       for (let i = 0; i < 4; i++) {
         assert.ok(ids.includes(`lf2-p${i}-resp`),
           `petition lf2-p${i} must have lf2-p${i}-resp; got: ${ids.join(', ')}`);
       }
-      // Help-us still follows the petitions.
       const helpIdx = ids.indexOf('lf2-petition');
       const lastPetIdx = ids.indexOf('lf2-p3-resp');
       assert.ok(helpIdx > lastPetIdx, `lf2-petition (${helpIdx}) must follow lf2-p3-resp (${lastPetIdx})`);
     } finally {
-      setTylerLongFormFlag(false);
-      await reloadParishOverlays();
+      await setTylerLongFormFlag(false);
+      await startServerAndWait();
     }
   });
 
   it('INV-3: 1st Litany of the Faithful is unaffected by the flag', async () => {
     const expected = ['lf1-opening', 'lf1-response', 'lf1-petition', 'lf1-pet-resp', 'lf1-wisdom', 'lf1-excl', 'lf1-amen'];
 
-    // Default (short form).
+    // Default (short form) — server already up from before().
     const { json: short } = await get(`/api/liturgy?date=${DATE}`);
     assert.deepEqual(faithful1Ids(short), expected,
       `1st Litany default mismatch; got: ${faithful1Ids(short).join(', ')}`);
 
     // Long form on Tyler.
-    setTylerLongFormFlag(true);
-    await reloadParishOverlays();
+    await setTylerLongFormFlag(true);
+    await startServerAndWait();
     try {
       const { json: long } = await get(`/api/liturgy?date=${DATE}&translation=${TYLER}`);
       assert.deepEqual(faithful1Ids(long), expected,
         `1st Litany long-form mismatch; got: ${faithful1Ids(long).join(', ')}`);
     } finally {
-      setTylerLongFormFlag(false);
-      await reloadParishOverlays();
+      await setTylerLongFormFlag(false);
+      await startServerAndWait();
     }
   });
 });

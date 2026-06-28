@@ -128,10 +128,12 @@ function handle(req, res, ctx) {
       const vespersFixedResolved = translation
         ? (getOverlayFixed('vespers', translation) || fixedTexts)
         : fixedTexts;
+      const overlayRubrics = getOverlayRubrics(translation);
 
       let result;
       try {
-        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, sources, style);
+        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, sources, style,
+          { rubrics: overlayRubrics });
       } catch (err) {
         console.error('assembleForDate error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });

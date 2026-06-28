@@ -22,7 +22,7 @@ const { applyYouYour } = require('./pronouns');
  * or null if no calendar entry exists for the date.
  * Throws on assembly error.
  */
-function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources, style = 'new') {
+function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources, style = 'new', opts = {}) {
   const calendarEntry = entryOverride || getCalendarEntry(date, style);
   if (!calendarEntry) return null;
   const vespersFixed = vespersFixedBase;
@@ -497,7 +497,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
   }
 
   const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });
-  const blocks = assembleVespers(calendarEntry, vespersFixed, reqSources);
+  const blocks = assembleVespers(calendarEntry, vespersFixed, reqSources, { rubrics: opts.rubrics });
 
   if (pronoun === 'yy') {
     for (const block of blocks) {

@@ -87,6 +87,14 @@
       "default": false,
       "appliesTo": ["liturgy"],
       "dbColumn": "rubric_faithful_litany_2_long"
+    },
+    "hoursPrecedeService": {
+      "label": "Hours read before service (skip reader's opening prayers)",
+      "description": "When Ninth Hour / Midnight Office is read immediately before Vespers or Matins, the reader's opening prayers (O Heavenly King → Trisagion → 12× Lord have mercy) were already said and are skipped. Service goes from the priest's exclamation directly to Psalm 103 (Vespers) or the royal opening (Matins).",
+      "namespace": "opening.hoursPrecede",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["greatVespers", "dailyVespers", "matins"]
     }
   }
 }

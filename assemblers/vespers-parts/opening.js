@@ -2,11 +2,21 @@
 
 const makeBlock = require('../_shared/make-block');
 
-function assembleOpening(fixedTexts, isGreatVespers) {
+function assembleOpening(fixedTexts, isGreatVespers, rubrics) {
   const section = 'Opening';
+  const exclamation = makeBlock('opening-exclamation', section, 'prayer', 'priest', fixedTexts.opening.exclamation);
+  const amen = makeBlock('opening-amen', section, 'response', 'reader', fixedTexts.opening.amen);
+
+  // When the preceding Hour (Ninth for Vespers, Midnight Office for Matins)
+  // was read immediately before, the reader's opening prayers were already
+  // said there; service goes from Amen directly to Psalm 103 / royal opening.
+  if (rubrics?.opening?.hoursPrecede) {
+    return [exclamation, amen];
+  }
+
   return [
-    makeBlock('opening-exclamation', section, 'prayer', 'priest', fixedTexts.opening.exclamation),
-    makeBlock('opening-amen', section, 'response', 'reader', fixedTexts.opening.amen),
+    exclamation,
+    amen,
     makeBlock('heavenly-king', section, 'prayer', 'reader', fixedTexts.prayers.heavenlyKing),
     makeBlock('trisagion', section, 'prayer', 'reader', fixedTexts.prayers.trisagion),
     makeBlock('glory-now-1', section, 'doxology', 'reader', fixedTexts.doxology.gloryNow),

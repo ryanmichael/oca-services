@@ -129,9 +129,11 @@ function handle(req, res, ctx) {
         matins: matinsSpec,
       };
 
+      const overlayRubrics = getOverlayRubrics(translation);
+
       let blocks;
       try {
-        blocks = assembleMatins(calendarDay, matinsFixed, fixedTexts, sources);
+        blocks = assembleMatins(calendarDay, matinsFixed, fixedTexts, sources, { rubrics: overlayRubrics });
       } catch (err) {
         console.error('assembleMatins error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });

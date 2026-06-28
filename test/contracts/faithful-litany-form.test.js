@@ -107,6 +107,15 @@ after(async () => {
     DB,
     `UPDATE parish_settings SET rubric_faithful_litany_2_long=0 WHERE parish_id='${TYLER}';`,
   ]);
+  // Migration 007 backfills parish_rubrics from typed columns on boot, so the
+  // INV-2 cycle (typed col → 1, server reboot) plants a parish_rubrics row that
+  // the typed-col reset doesn't clear. Remove it here so downstream tests
+  // (e.g. rubric-registry INV-D snapshot diff) see a clean state.
+  execFileSync('sqlite3', [
+    '-cmd', 'PRAGMA busy_timeout=5000;',
+    DB,
+    `DELETE FROM parish_rubrics WHERE parish_id='${TYLER}' AND rubric_id='faithful2Long';`,
+  ]);
 });
 
 // ── Helpers ───────────────────────────────────────────────────────────────

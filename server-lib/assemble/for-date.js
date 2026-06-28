@@ -178,7 +178,13 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast && !isVigilFeast) {
           // Sat/Sun Great Vespers: split verses between resurrectional Octoechos and Menaion.
           // Total = the spec's totalStichera (6 for Saturday, 10 for Sunday).
-          const totalStichera       = calendarEntry.vespers.lordICall.totalStichera || 6;
+          // licNoLeadingRepeat trims the 10-count to 9 so the octoechos slot fits
+          // exactly the 6 stichera OCA Obikhod publishes (no doubled leading sticheron).
+          let totalStichera         = calendarEntry.vespers.lordICall.totalStichera || 6;
+          if (opts.rubrics?.lordICall?.noLeadingRepeat && totalStichera === 10) {
+            totalStichera = 9;
+            calendarEntry.vespers.lordICall.totalStichera = 9;
+          }
           const menaionCount        = licStichera.length;
           const resurrectionalCount = totalStichera - menaionCount;
           const allVerses           = Array.from({ length: totalStichera }, (_, i) => totalStichera - i);

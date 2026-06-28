@@ -95,6 +95,14 @@
       "type": "boolean",
       "default": false,
       "appliesTo": ["greatVespers", "dailyVespers", "matins"]
+    },
+    "licNoLeadingRepeat": {
+      "label": "Lord I Call — no leading sticheron repeat (9-count)",
+      "description": "Saturday Great Vespers renders 9 stichera at Lord I Have Cried (6 octoechos verse-stichera + 3 menaion), not 10. Default behavior fills slot 7 by doubling sticheron 1, which OCA Obikhod publishes but parishes may read as a duplicate. The OCA Obikhod chant arrangement only supplies 6 verse-stichera per tone; this flag honors that count strictly. Glory/Now slots are unaffected.",
+      "namespace": "lordICall.noLeadingRepeat",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["greatVespers"]
     }
   }
 }

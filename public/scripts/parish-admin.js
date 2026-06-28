@@ -10,6 +10,13 @@ const slug = location.pathname.split('/').filter(Boolean)[1];
 const SETTINGS_URL = `/parish-admin/${slug}/settings`;
 const PATRON_URL   = (q) => `/parish-admin/${slug}/patron-search?q=${encodeURIComponent(q)}`;
 const VARIANTS_URL = (key) => `/parish-admin/${slug}/variants?key=${encodeURIComponent(key)}`;
+const REGISTRY_URL = '/api/rubric-registry';
+
+let rubricRegistry = null;
+
+function deriveDomId(dbColumn) {
+  return 'f-' + dbColumn.replace(/^rubric_/, '').replace(/_/g, '-');
+}
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -507,7 +514,25 @@ window.addEventListener('beforeunload', (e) => {
   if (isDirty('main') || isDirty('setup')) { e.preventDefault(); e.returnValue = ''; }
 });
 
-// Boot
+// Boot: fetch the rubric registry first so we can validate the static DOM
+// matches it (warns in console if a registry rubric has no checkbox, which
+// means a developer added a registry entry without adding the HTML).
+// Commit-2 will swap this for fully dynamic registry-driven rendering.
+fetch(REGISTRY_URL, { credentials: 'same-origin' })
+  .then(r => r.ok ? r.json() : null)
+  .then(reg => {
+    if (!reg) return;
+    rubricRegistry = reg;
+    for (const [id, def] of Object.entries(reg.rubrics)) {
+      if (!def.appliesTo || def.appliesTo.length === 0) continue;
+      const domId = def.domId || deriveDomId(def.dbColumn);
+      if (!document.getElementById(domId)) {
+        console.warn(`[parish-admin] registry rubric "${id}" has no DOM element #${domId}`);
+      }
+    }
+  })
+  .catch(() => {});
+
 loadSettings().then(data => {
   if (!data) return;
   els.loading.hidden = true;

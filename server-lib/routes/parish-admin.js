@@ -16,35 +16,49 @@ const { openDb, openDbWrite }   = require('../cache/sqlite');
 const { authenticate, checkAndRecordWrite } = require('../parishes/auth');
 const { refreshParishOverlay } = require('../parishes');
 const { slugify } = require('../parishes/patron-resolver');
+const {
+  loadRegistry,
+  getRubricPicks,
+  setRubricPick,
+  coerce,
+} = require('../parishes/rubric-registry');
 
 const ROOT       = path.resolve(__dirname, '..', '..');
 const PAGE_HTML  = path.join(ROOT, 'public', 'parish-admin.html');
 
-// Subset of parish_settings columns clients may write. Everything else
-// (parish_id, created_at, jurisdiction, extends_chain) is admin-managed.
-const WRITABLE_FIELDS = [
+// Identity/clergy/patron fields — typed columns, not registry-driven.
+const NON_RUBRIC_WRITABLE = [
   'name', 'city',
   'primate_name', 'ruling_hierarch_name',
   'primate_short', 'ruling_hierarch_short',
   'patron_natural_key', 'patron_title',
-  'rubric_confess_first',
-  'rubric_omit_pre_trisagion_litany',
-  'rubric_include_lesser_saints',
-  'rubric_include_second_gospel',
-  'rubric_include_second_koinonikon',
-  'rubric_omit_catechumens_seasons',
-  'rubric_paschal_communion_year_round',
-  'rubric_beatitudes_reader_led',
-  'rubric_faithful_litany_2_long',
 ];
 
-const BOOL_FIELDS = new Set([
-  'rubric_confess_first', 'rubric_omit_pre_trisagion_litany',
-  'rubric_include_lesser_saints', 'rubric_include_second_gospel',
-  'rubric_include_second_koinonikon', 'rubric_paschal_communion_year_round',
-  'rubric_beatitudes_reader_led',
-  'rubric_faithful_litany_2_long',
-]);
+// Subset of parish_settings columns clients may write. Derived from the
+// rubric registry's dbColumn entries plus the identity/clergy fields above.
+function writableFields() {
+  const reg = loadRegistry();
+  const rubricCols = Object.values(reg.rubrics).map(d => d.dbColumn);
+  return [...NON_RUBRIC_WRITABLE, ...rubricCols];
+}
+
+function boolFields() {
+  const reg = loadRegistry();
+  const out = new Set();
+  for (const def of Object.values(reg.rubrics)) {
+    if (def.type === 'boolean') out.add(def.dbColumn);
+  }
+  return out;
+}
+
+// Map dbColumn → rubric id, for the dual-write path during the registry
+// bake-in period. Once the typed columns are dropped, dual-write goes away.
+function dbColumnToRubricId() {
+  const reg = loadRegistry();
+  const out = {};
+  for (const [id, def] of Object.entries(reg.rubrics)) out[def.dbColumn] = id;
+  return out;
+}
 
 const SLUG_REGEX = /^[a-z0-9][a-z0-9-]{2,49}$/;
 
@@ -95,7 +109,8 @@ function fetchSettingsRow(parishId) {
     const picks = db.prepare(
       'SELECT variant_key, variant_id FROM parish_variant_picks WHERE parish_id = ?'
     ).all(parishId);
-    return { row, picks };
+    const rubricPicks = getRubricPicks(db, parishId);
+    return { row, picks, rubricPicks };
   } finally {
     db.close();
   }
@@ -125,8 +140,13 @@ function handleGetSettings(parishId, res) {
     rubric_beatitudes_reader_led:        !!data.row.rubric_beatitudes_reader_led,
     rubric_faithful_litany_2_long:       !!data.row.rubric_faithful_litany_2_long,
     variant_picks: data.picks,
+    rubric_picks:  data.rubricPicks,
     updated_at: data.row.updated_at,
   });
+}
+
+function handleGetRegistry(res) {
+  return send(res, 200, loadRegistry());
 }
 
 async function handlePostSettings(parishId, req, res) {
@@ -147,6 +167,10 @@ async function handlePostSettings(parishId, req, res) {
   try {
     const existing = db.prepare('SELECT * FROM parish_settings WHERE parish_id = ?').get(parishId);
     if (!existing) return send(res, 404, { error: 'parish_not_found' });
+
+    const WRITABLE_FIELDS = writableFields();
+    const BOOL_FIELDS     = boolFields();
+    const COL_TO_RUBRIC   = dbColumnToRubricId();
 
     const updates = {};
     for (const field of WRITABLE_FIELDS) {
@@ -181,6 +205,15 @@ async function handlePostSettings(parishId, req, res) {
       `);
       for (const [field, v] of Object.entries(updates)) {
         if (existing[field] !== v) histStmt.run(parishId, now, field, String(existing[field] ?? ''), String(v ?? ''));
+      }
+
+      // Dual-write to parish_rubrics for every typed rubric column we just
+      // updated. Temporary safety net while the registry path bakes in;
+      // remove once the typed columns are dropped (separate PR).
+      for (const [field, v] of Object.entries(updates)) {
+        const rubricId = COL_TO_RUBRIC[field];
+        if (!rubricId) continue;
+        setRubricPick(db, parishId, rubricId, v);
       }
 
       if (Array.isArray(payload.variant_picks)) {
@@ -316,4 +349,10 @@ function handle(req, res, _ctx) {
   return sendText(res, 404, 'Not found.');
 }
 
+function serveRegistry(req, res) {
+  if (req.method !== 'GET') return send(res, 405, { error: 'method_not_allowed' });
+  return handleGetRegistry(res);
+}
+
 module.exports = handle;
+module.exports.serveRegistry = serveRegistry;

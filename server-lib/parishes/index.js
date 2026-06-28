@@ -19,6 +19,12 @@ const { deriveOverlayForService } = require('../derivations');
 const { loadVariantLibrary, resolveVariant } = require('../variants');
 const { resolvePatronByNaturalKey } = require('./patron-resolver');
 const {
+  loadRegistry,
+  getRubricPicks,
+  coerce,
+  isDefault,
+} = require('./rubric-registry');
+const {
   registerInMemoryOverlay,
   clearInMemoryOverlay,
 } = require('../overlays/in-memory');
@@ -64,14 +70,14 @@ function listAllParishIds() {
 /** Build the synthetic manifest + per-service data for one parish. Pure
  *  function-shaped: takes inputs (row, picks, library), returns the overlay
  *  object the in-memory registry expects. Trivially testable. */
-function buildParishOverlay(row, picks, library) {
+function buildParishOverlay(row, picks, library, rubricPicks = {}) {
   const extendsChain = parseExtendsChain(row);
   const manifest = {
     name:         row.name,
     kind:         'parish',
     jurisdiction: row.jurisdiction,
     extends:      extendsChain,
-    rubrics:      buildRubrics(row),
+    rubrics:      buildRubrics(row, rubricPicks),
   };
 
   const data = {};
@@ -115,22 +121,26 @@ function parseExtendsChain(row) {
   return [row.jurisdiction];
 }
 
-function buildRubrics(row) {
+function buildRubrics(row, rubricPicks = {}) {
   const r = {};
-  if (row.rubric_confess_first) r.preCommunion = { confessFirst: true };
-  if (row.rubric_omit_pre_trisagion_litany) r.omitPreTrisagionLitany = true;
-  if (row.rubric_include_lesser_saints) r.troparia = { ...(r.troparia || {}), includeLesserSaints: true };
-  if (row.rubric_include_second_gospel)
-    r.readings = { ...(r.readings || {}), includeSecondGospel: true };
-  if (row.rubric_include_second_koinonikon)
-    r.readings = { ...(r.readings || {}), includeSecondKoinonikon: true };
-  if (row.rubric_beatitudes_reader_led)
-    r.antiphons = { ...(r.antiphons || {}), beatitudesTropariaReaderLed: true };
-  if (row.rubric_faithful_litany_2_long)
-    r.litanies = { ...(r.litanies || {}), faithful2Long: true };
-  if (row.rubric_omit_catechumens_seasons) {
-    const list = row.rubric_omit_catechumens_seasons.split(',').map(s => s.trim()).filter(Boolean);
-    if (list.length) r.omitCatechumensSeasons = list;
+  const registry = loadRegistry();
+  for (const [id, def] of Object.entries(registry.rubrics)) {
+    if (def.consumer === 'orphan-unused') continue;
+    // Dual-read during the bake-in period: prefer the parish_rubrics pick
+    // when present; otherwise fall back to the typed column on parish_settings.
+    // Either path can independently flip a rubric; this preserves byte
+    // stability against scripts that update typed columns directly.
+    let raw;
+    if (Object.prototype.hasOwnProperty.call(rubricPicks, id)) {
+      raw = rubricPicks[id];
+    } else if (row && def.dbColumn in row) {
+      raw = row[def.dbColumn];
+    } else {
+      continue;
+    }
+    const value = coerce(raw, def.type);
+    if (isDefault(value, def.default)) continue;
+    setDottedKey(r, def.namespace, value);
   }
   if (row.patron_natural_key && row.patron_title) {
     const resolved = resolvePatronByNaturalKey(row.patron_natural_key);
@@ -166,9 +176,10 @@ function refreshParishOverlay(parishId) {
       invalidateOverlayCascade(parishId);
       return null;
     }
-    const picks   = readVariantPicks(db, parishId);
-    const library = loadVariantLibrary();
-    const overlay = buildParishOverlay(row, picks, library);
+    const picks       = readVariantPicks(db, parishId);
+    const library     = loadVariantLibrary();
+    const rubricPicks = getRubricPicks(db, parishId);
+    const overlay     = buildParishOverlay(row, picks, library, rubricPicks);
     registerInMemoryOverlay(parishId, overlay);
     invalidateOverlayCascade(parishId);
     return overlay;
@@ -195,7 +206,9 @@ function loadAllParishOverlays() {
 
 module.exports = {
   buildParishOverlay,
+  buildRubrics,
   refreshParishOverlay,
   loadAllParishOverlays,
   listAllParishIds,
+  setDottedKey,
 };

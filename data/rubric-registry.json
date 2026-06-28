@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "rubrics": {
+    "confessFirst": {
+      "label": "Communion Prayer before the priest's call",
+      "description": "\"I believe, O Lord…\" precedes \"In the fear of God…\" rather than following it.",
+      "namespace": "preCommunion.confessFirst",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_confess_first"
+    },
+    "omitPreTrisagionLitany": {
+      "label": "Skip pre-Trisagion litany",
+      "description": "Goes from the third antiphon's exclamation directly to the Trisagion.",
+      "namespace": "omitPreTrisagionLitany",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_omit_pre_trisagion_litany",
+      "domId": "f-omit-pre-trisagion"
+    },
+    "includeLesserSaints": {
+      "label": "Lesser-rank saint troparia on Sundays",
+      "description": "Saints ranked below \"simple\" are normally suppressed on Sundays; opt in to include them.",
+      "namespace": "troparia.includeLesserSaints",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_include_lesser_saints",
+      "domId": "f-lesser-saints"
+    },
+    "includeSecondGospel": {
+      "label": "Second Gospel reading",
+      "description": "When the day has two readings (e.g. polyeleos saint), both are read.",
+      "namespace": "readings.includeSecondGospel",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_include_second_gospel",
+      "domId": "f-second-gospel"
+    },
+    "includeSecondKoinonikon": {
+      "label": "Second communion verse",
+      "description": "When the day has two koinonika, both are sung.",
+      "namespace": "readings.includeSecondKoinonikon",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_include_second_koinonikon",
+      "domId": "f-second-koinonikon"
+    },
+    "omitCatechumensSeasons": {
+      "label": "Catechumens litanies — omit during",
+      "description": "Seasons during which the Catechumens litanies are omitted. Comma-joined ids: paschal, lenten, bright-week.",
+      "namespace": "omitCatechumensSeasons",
+      "type": "csv-strings",
+      "default": [],
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_omit_catechumens_seasons"
+    },
+    "paschalCommunionYearRound": {
+      "label": "Paschal communion hymn year-round",
+      "description": "\"Receive ye the Body of Christ\" is sung outside the Paschal period as well.",
+      "namespace": "paschalCommunionYearRound",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [],
+      "dbColumn": "rubric_paschal_communion_year_round",
+      "domId": "f-paschal-comm",
+      "consumer": "orphan-unused"
+    },
+    "beatitudesTropariaReaderLed": {
+      "label": "Reader-led Beatitudes troparia",
+      "description": "At the Third Antiphon, the Reader recites the canon troparia between Beatitude verses while the choir sings only the Beatitudes themselves. Common Slavic/Sluzhebnik practice.",
+      "namespace": "antiphons.beatitudesTropariaReaderLed",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_beatitudes_reader_led"
+    },
+    "faithful2Long": {
+      "label": "2nd Litany of the Faithful — long form",
+      "description": "Deacon adds four great-litany-style petitions before \"Help us, save us…\". Older Russian-tradition Liturgika form; default is OCA Sluzhebnik short form.",
+      "namespace": "litanies.faithful2Long",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["liturgy"],
+      "dbColumn": "rubric_faithful_litany_2_long"
+    },
+    "hoursPrecedeService": {
+      "label": "Hours read before service (skip reader's opening prayers)",
+      "description": "When Ninth Hour / Midnight Office is read immediately before Vespers or Matins, the reader's opening prayers (O Heavenly King → Trisagion → 12× Lord have mercy) were already said and are skipped. Service goes from the priest's exclamation directly to Psalm 103 (Vespers) or the royal opening (Matins).",
+      "namespace": "opening.hoursPrecede",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["greatVespers", "dailyVespers", "matins"]
+    },
+    "licNoLeadingRepeat": {
+      "label": "Lord I Call — no leading sticheron repeat (9-count)",
+      "description": "Saturday Great Vespers renders 9 stichera at Lord I Have Cried (6 octoechos verse-stichera + 3 menaion), not 10. Default behavior fills slot 7 by doubling sticheron 1, which OCA Obikhod publishes but parishes may read as a duplicate. The OCA Obikhod chant arrangement only supplies 6 verse-stichera per tone; this flag honors that count strictly. Glory/Now slots are unaffected.",
+      "namespace": "lordICall.noLeadingRepeat",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": ["greatVespers"]
+    }
+  }
+}

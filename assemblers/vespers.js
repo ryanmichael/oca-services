@@ -26,8 +26,9 @@ const assembleDismissal                                  = require('./common-par
  * @param {Object} sources      - { triodion, menaion, octoechos, prokeimena }
  * @returns {ServiceBlock[]}
  */
-function assembleVespers(calendarDay, fixedTexts, sources) {
+function assembleVespers(calendarDay, fixedTexts, sources, opts = {}) {
   warnings.reset();
+  const { rubrics } = opts;
   const blocks = [];
   const vespers = calendarDay.vespers;
   const isVigil = vespers.serviceType === 'all-night-vigil';
@@ -42,7 +43,7 @@ function assembleVespers(calendarDay, fixedTexts, sources) {
     blocks.push(makeBlock('pt-choir', section, 'response', 'choir',
       'and upon those in the tombs bestowing life!'));
   }
-  blocks.push(...assembleOpening(fixedTexts, isGreatVespers));
+  blocks.push(...assembleOpening(fixedTexts, isGreatVespers, rubrics));
 
   // ── 2. Psalm 103 ────────────────────────────────────────────────────────────
   blocks.push(...assemblePsalm103(fixedTexts));

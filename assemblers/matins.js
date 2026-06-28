@@ -37,8 +37,9 @@ const assembleDismissal                      = require('./common-parts/dismissal
  * @param {Object} sources       - { octoechos, menaion, triodion, ... }
  * @returns {ServiceBlock[]}
  */
-function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
+function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = {}) {
   warnings.reset();
+  const { rubrics } = opts;
   const blocks = [];
   const spec = calendarDay.matins;
   if (!spec) {
@@ -62,7 +63,7 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources) {
 
   // ── 1. Opening ──────────────────────────────────────────────────────────────
   if (!isVigil) {
-    blocks.push(...assembleOpening(vespersFixed));
+    blocks.push(...assembleOpening(vespersFixed, false, rubrics));
   }
 
   // ── 1b. Royal Office (Psalms 19 & 20) — often omitted in parish practice ──

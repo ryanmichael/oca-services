@@ -210,6 +210,48 @@ function validateCommemorationDupes() {
   }
 }
 
+// VIGIL_SAINTS + POLYELEOS_SAINTS rank-bearing principal commemorations must
+// have saint_type populated in the DB so the Liturgy builder routes them to
+// the correct General Menaion propers (prokeimenon/alleluia/koinonikon) on
+// weekday feasts. A null saint_type would force fall-through to title-text
+// inference which is a band-aid, not a contract — and a missed inference
+// silently drops the saint's propers in favor of the weekday daily cycle.
+//
+// Surfaced 2026-06-28 auditing 2026-06-29 SS Peter and Paul: row 1306 had
+// saint_type=null despite being the canonical Apostles' feast.
+function validateRankSaintTypePopulated() {
+  const { VIGIL_SAINTS, POLYELEOS_SAINTS } = require('../../calendar/fixed-feasts');
+  const { getMenaionRanked } = require('../sources/menaion');
+
+  const ranked = new Map([...VIGIL_SAINTS, ...POLYELEOS_SAINTS]);
+  let warnings = 0;
+  for (const [md, label] of ranked) {
+    const [m, d] = md.split('-').map(Number);
+    const r = getMenaionRanked(m, d);
+    const principal = r?.principal;
+    if (!principal) continue;  // no menaion data for this date — separate concern
+    if (principal.saint_type) continue;
+    // Principals that are not "saints" in the General-Menaion-category sense:
+    // Lord's feasts, Archangel synaxes, founding-of-city commemorations.
+    // These intentionally have no saint_type because no GENERAL_MENAION_PROPERS
+    // category fits — the builder falls back to the weekday cycle, which is
+    // the correct behavior for them. (If the principal-picker is wrong to
+    // land on these instead of the rank-bearing saint, that's a separate
+    // bug tracked under project_principal_saint_picker_2026_06_20.md, not a
+    // saint_type-backfill bug.)
+    const t = principal.title;
+    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of/i.test(t)) continue;
+    console.warn(
+      `Rank-bearing date ${md} (${label}): principal commemoration "${principal.title}" ` +
+      `(id ${principal.id}) has null saint_type. Backfill: ` +
+      `UPDATE commemorations SET saint_type = '<category>' WHERE id = ${principal.id};`
+    );
+    warnings += 1;
+  }
+  if (warnings === 0) console.log('Rank-bearing saint_type populated: clean.');
+  return { ok: warnings === 0, warnings };
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -217,4 +259,5 @@ module.exports = {
   validateVariantLibrary,
   validateParishVariantPicks,
   validateCommemorationDupes,
+  validateRankSaintTypePopulated,
 };

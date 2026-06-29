@@ -130,19 +130,32 @@ const MOVEABLE_CYCLE_TITLE = new RegExp(
   + ')'
 );
 
-// Returns true if `titleTokens` has a sufficient overlap with `hint` to
-// consider them the same saint. Threshold: ≥1 shared proper-name token AND
-// ≥ half of the hint's tokens land. Matches the heuristic used by the
-// orthocal-order picker so the conservative guard and the override-search
-// agree on what counts as a hit.
+// Co-celebration hints from orthocal use "/" or ";" as separators between
+// the day's commemorations, with the FIRST segment being the primary by
+// OCA typikon precedence. Example: "St Tikhon, Patriarch of Moscow / Holy
+// Apostle James, Son of Alphaeus" — Tikhon is the rank-bearer; the slash
+// is co-celebration, not equality. Splitting lets us score each segment
+// independently so token-count from the secondary doesn't drown out the
+// primary's match (which previously caused 10-09 to land on James).
+function splitHintSegments(hint) {
+  return hint.split(/\s*[;/]\s*/).map(s => s.trim()).filter(s => s.length);
+}
+
+// Returns true if `titleTokens` has a sufficient overlap with `hint` (any
+// segment thereof) to consider them the same saint. Threshold: ≥1 shared
+// proper-name token AND ≥ half of the segment's tokens land. The conservative
+// guard and the override-search use the same heuristic so they agree on what
+// counts as a hit.
 function hintMatches(titleTokens, hint) {
-  const firstSegment = hint.split(';')[0];
-  const hintTokens = tokenizeTitle(firstSegment);
-  if (!hintTokens.length) return false;
-  const hintSet = new Set(hintTokens);
-  let score = 0;
-  for (const t of hintSet) if (fuzzyMatch(titleTokens, t)) score++;
-  return score >= 1 && score * 2 >= hintSet.size;
+  for (const segment of splitHintSegments(hint)) {
+    const hintTokens = tokenizeTitle(segment);
+    if (!hintTokens.length) continue;
+    const hintSet = new Set(hintTokens);
+    let score = 0;
+    for (const t of hintSet) if (fuzzyMatch(titleTokens, t)) score++;
+    if (score >= 1 && score * 2 >= hintSet.size) return true;
+  }
+  return false;
 }
 
 /**
@@ -180,19 +193,22 @@ function pickPrincipalByOrthocalOrder(notable, orthocalData, fallback) {
   }
 
   // Default not in pool — search for a better candidate, orthocal order first.
+  // Iterate segments within each hint so co-celebration entries surface their
+  // primary (e.g. "St Tikhon / Holy Apostle James" yields Tikhon first).
   for (const hint of hints) {
-    const firstSegment = hint.split(';')[0];
-    const hintTokens = tokenizeTitle(firstSegment);
-    if (!hintTokens.length) continue;
-    const hintSet = new Set(hintTokens);
-    let best = null, bestScore = 0;
-    for (const comm of notable) {
-      const titleSet = new Set(tokenizeTitle(comm.title));
-      let score = 0;
-      for (const t of hintSet) if (fuzzyMatch(titleSet, t)) score++;
-      if (score > bestScore) { best = comm; bestScore = score; }
+    for (const segment of splitHintSegments(hint)) {
+      const hintTokens = tokenizeTitle(segment);
+      if (!hintTokens.length) continue;
+      const hintSet = new Set(hintTokens);
+      let best = null, bestScore = 0;
+      for (const comm of notable) {
+        const titleSet = new Set(tokenizeTitle(comm.title));
+        let score = 0;
+        for (const t of hintSet) if (fuzzyMatch(titleSet, t)) score++;
+        if (score > bestScore) { best = comm; bestScore = score; }
+      }
+      if (best && bestScore >= 1 && bestScore * 2 >= hintSet.size) return best;
     }
-    if (best && bestScore >= 1 && bestScore * 2 >= hintSet.size) return best;
   }
   return fallback ?? notable[0];
 }

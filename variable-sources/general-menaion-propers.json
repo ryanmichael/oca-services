@@ -2,8 +2,11 @@
   "_meta": {
     "description": "General Menaion propers (prokeimenon, alleluia, koinonikon) by saint category. Sung at Liturgy on polyeleos+/vigil+ Sundays for the saint of the day, attached as the .secondary on the day's prokeimenon, alleluia, and communionHymn. Wired from server-lib/sources/liturgy-from-orthocal.js — see pickGeneralMenaionPropers(). Source: OCA General Menaion via parish service texts; thee/thy register.",
     "_aliasNote": "String values map a saint_type to another category (the General Menaion treats venerable-confessors as venerables, etc.). String aliases resolve transitively in propers.js.",
-    "_coverageNote": "Initial coverage: monastic (incl. confessors), hierarch, hieromartyr, apostle(s), martyr(s) including monastic-martyr and virgin-martyr, prophet. Forerunner, unmercenaries, theotokos, fool, cross, nun deliberately omitted pending source verification; they will fall through to the day's Sunday-cycle propers until added."
+    "_coverageNote": "Initial coverage: monastic (incl. confessors), hierarch, hieromartyr, apostle(s), martyr(s) including monastic-martyr and virgin-martyr, prophet (Forerunner aliased to prophet — OCA classes John the Baptist liturgically as a prophet). Unmercenaries, theotokos, fool, cross, nun deliberately omitted pending source verification; they will fall through to the day's Sunday-cycle propers until added."
   },
+
+  "forerunner": "prophet",
+
   "monastic": {
     "_source": "OCA General Menaion — Common Service for Venerables; cross-referenced against 2026-0705-tt.docx (Uncovering of Relics of Venerable Sergius of Radonezh).",
     "prokeimenon": {

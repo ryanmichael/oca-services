@@ -78,7 +78,7 @@ function inferSaintTypeFromTitle(title) {
   if (/\bVenerable\b/i.test(title))                          return 'monastic';
   if (/\bApostle/i.test(title))                              return 'apostle';
   if (/\bProphet\b/i.test(title))                            return 'prophet';
-  if (/\b(Bishop|Archbishop|Patriarch|Metropolitan|Pope|Hierarch)\b/i.test(title)) return 'hierarch';
+  if (/\b(Bishops?|Archbishops?|Patriarchs?|Metropolitans?|Popes?|Hierarchs?)\b/i.test(title)) return 'hierarch';
   if (/\bMartyr/i.test(title))                               return 'martyr';
   return null;
 }
@@ -278,6 +278,40 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
   [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
 
+  // Weekday great-saint feast suppression flag.
+  // When a Vigil- or Polyeleos-rank saint falls on a weekday (i.e. not Sunday,
+  // and not one of the 12 Great Feasts of the Lord/Theotokos which take the
+  // `feast` branch), OCA practice is that the saint's propers REPLACE the
+  // daily/weekday cycle rather than layering as a secondary:
+  //   - prokeimenon / alleluia / koinonikon: saint becomes primary; daily dropped
+  //   - epistle / gospel: feast reading becomes primary; daily dropped
+  //   - dismissal: dayPatron commemoration ("bodiless Powers of Heaven" on Mon,
+  //     "the Forerunner John" on Tue, etc.) is suppressed
+  //
+  // The principal-feast troparion/kontakion already replace the day's cycle.
+  // This flag closes the symmetric gap for prokeimenon/alleluia/koinonikon/
+  // readings/dismissal.
+  //
+  // Surfaced 2026-06-28 by auditing 2026-06-29 SS Peter and Paul (Monday):
+  // weekday-Angels prokeimenon/alleluia/epistle/koinonikon all bleeding through,
+  // and the feast Gospel was missing entirely (only the daily Matt 12.9-13).
+  const feastRank   = getFeastRank(date, style);
+  const isWeekdayGreatSaintFeast = !isSunday
+                                   && (feastRank === 'vigil' || feastRank === 'polyeleos')
+                                   && !feast && !pentOverride;
+
+  if (isWeekdayGreatSaintFeast) {
+    // Promote saint-co-celebration reading to primary; drop the daily.
+    // pickPrimaryAndSecondary returns [daily, saint] when first.description is
+    // empty and a later entry has a non-empty description. Flip.
+    if (epistleR && epistleR2 && !epistleR.description && epistleR2.description) {
+      [epistleR, epistleR2] = [epistleR2, null];
+    }
+    if (gospelR && gospelR2 && !gospelR.description && gospelR2.description) {
+      [gospelR, gospelR2] = [gospelR2, null];
+    }
+  }
+
   // ── Troparia & Kontakia ──────────────────────────────────────────────────────
   // Great Feasts & Pentecostarion feast Sundays: use only the feast's own
   // troparia/kontakia (no resurrectional, no Menaion).
@@ -423,7 +457,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
     const sp = SUNDAY_PROKEIMENA[tone];
     prokeimenon = { tone, refrain: sp.refrain, verse: sp.verse };
-  } else if (!isSunday && WEEKDAY_PROKEIMENA[dow]) {
+  } else if (!isSunday && !isWeekdayGreatSaintFeast && WEEKDAY_PROKEIMENA[dow]) {
     const wp = WEEKDAY_PROKEIMENA[dow];
     prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
   }
@@ -439,7 +473,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // .secondary on top of the Sunday- or weekday-cycle propers. Overlay path
   // wins when both exist on the same date (cocelebration with a Great Feast
   // is already a complete secondary set; layering would double up).
-  const feastRank   = getFeastRank(date, style);
+  // On weekday vigil/polyeleos feasts the daily cycle is suppressed above, so
+  // we promote the saint propers to PRIMARY rather than attaching as secondary.
   const isPolyeleos = (feastRank === 'polyeleos' || feastRank === 'vigil')
                       && !feast && !pentOverride;
   // Saint category: prefer the DB's saint_type column, but our scraper leaves
@@ -451,8 +486,20 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
                       || inferSaintTypeFromTitle(menaionPrincipal?.title);
   const gmp         = isPolyeleos && gmpKey ? GENERAL_MENAION_PROPERS[gmpKey] : null;
   const gmpLabel    = gmp && menaionPrincipal ? menaionPrincipal.title : null;
-  if (gmp && prokeimenon && !prokeimenon.secondary) {
+  if (gmp && !prokeimenon && isWeekdayGreatSaintFeast) {
+    // Weekday great-saint feast: daily cycle suppressed; gmp becomes primary.
+    prokeimenon = { ...gmp.prokeimenon, label: gmpLabel };
+  } else if (gmp && prokeimenon && !prokeimenon.secondary) {
     prokeimenon = { ...prokeimenon, secondary: { ...gmp.prokeimenon, label: gmpLabel } };
+  }
+  // Safety: if we suppressed the weekday cascade but no General Menaion entry
+  // exists for this saint's category (Forerunner, Theotokos icons, generic
+  // synaxes whose saint_type is null), fall back to the daily prokeimenon
+  // rather than emit nothing. Better to render a weekday-cycle prokeimenon
+  // than to drop the section.
+  if (!prokeimenon && isWeekdayGreatSaintFeast && WEEKDAY_PROKEIMENA[dow]) {
+    const wp = WEEKDAY_PROKEIMENA[dow];
+    prokeimenon = { tone: wp.tone, refrain: wp.refrain, verse: wp.verse };
   }
 
   if (feast?.alleluia) {
@@ -466,7 +513,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     alleluia = { tone: la.tone, verses: la.verses };
   } else if (isSunday && SUNDAY_ALLELUIA[tone]) {
     alleluia = { tone, verses: SUNDAY_ALLELUIA[tone] };
-  } else if (!isSunday && WEEKDAY_ALLELUIA[dow]) {
+  } else if (!isSunday && !isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
     const wa = WEEKDAY_ALLELUIA[dow];
     alleluia = { tone: wa.tone, verses: wa.verses };
   }
@@ -507,24 +554,42 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (alleluia && overlay?.alleluia) {
     alleluia = { ...alleluia, secondary: overlay.alleluia };
   }
-  if (gmp && alleluia && !alleluia.secondary) {
+  if (gmp && !alleluia && isWeekdayGreatSaintFeast) {
+    alleluia = { ...gmp.alleluia, label: gmpLabel };
+  } else if (gmp && alleluia && !alleluia.secondary) {
     alleluia = { ...alleluia, secondary: { ...gmp.alleluia, label: gmpLabel } };
+  }
+  // Safety fallback (parallel to prokeimenon): weekday daily alleluia when no
+  // saint-category propers exist for this rank.
+  if (!alleluia && isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
+    const wa = WEEKDAY_ALLELUIA[dow];
+    alleluia = { tone: wa.tone, verses: wa.verses };
   }
 
   // ── Communion hymn: feast → Pentecostarion Sunday → day-of-week ───────────
-  let communionHymn = feast?.communionHymn
-    ? { text: feast.communionHymn }
-    : pentOverride?.communionHymn
-      ? { text: pentOverride.communionHymn }
-      : { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+  let communionHymn;
+  if (feast?.communionHymn) {
+    communionHymn = { text: feast.communionHymn };
+  } else if (pentOverride?.communionHymn) {
+    communionHymn = { text: pentOverride.communionHymn };
+  } else if (isWeekdayGreatSaintFeast && gmp) {
+    // Weekday great-saint feast: saint koinonikon replaces the day-of-week one.
+    communionHymn = { ...gmp.communionHymn, label: gmpLabel };
+  } else {
+    // Includes the safety fallback for weekday great-saint feasts where gmp
+    // is null: just use the day-of-week koinonikon.
+    communionHymn = { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
+  }
   if (overlay?.communionHymn && includeSecondKoinonikon) {
     communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
   }
   // Polyeleos+ saint koinonikon — render by default (no opt-in gate). On a
   // polyeleos Sunday the second Communion Verse IS sung at OCA parishes; the
   // cocelebrated-overlay gate is appropriate for principal-feast cases where
-  // the feast koinonikon claims the only slot, but not here.
-  if (gmp && !communionHymn.secondary) {
+  // the feast koinonikon claims the only slot, but not here. On a weekday
+  // great-saint feast the saint koinonikon is already primary (above) so
+  // there's nothing to attach as secondary.
+  if (gmp && !communionHymn.secondary && !isWeekdayGreatSaintFeast) {
     communionHymn = { ...communionHymn, secondary: { ...gmp.communionHymn, label: gmpLabel } };
   }
 
@@ -592,9 +657,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       || (isAscensionAfterfeast ? LITURGY_DEFAULTS.weHaveSeenSubstitutions.ascensionAfterfeast : null)
       || (isPentecostAfterfeast ? LITURGY_DEFAULTS.weHaveSeenSubstitutions.pentecostAfterfeast : null),
     dismissal: {
-      opening: feast ? 'feast' : (isSunday ? 'sunday' : 'weekday'),
-      feastLabel: feast?.label || null,
-      dayPatron: DAY_PATRONS[dow] || null,
+      // Vigil-rank weekday feasts (Peter & Paul, Forerunner Nativity, Pokrov on
+      // a weekday, etc.) read as 'feast' opening — the daily commemoration's
+      // dayPatron is suppressed so the saint's own commemoration headlines.
+      opening: (feast || isWeekdayGreatSaintFeast) ? 'feast'
+             : (isSunday ? 'sunday' : 'weekday'),
+      feastLabel: feast?.label || (isWeekdayGreatSaintFeast ? menaionPrincipal?.title : null) || null,
+      dayPatron: isWeekdayGreatSaintFeast ? null : (DAY_PATRONS[dow] || null),
       // Dismissal saints: prefer orthocal's "feasts" (major commemorations) over
       // "saints" (minor entries). On a great feast, skip feasts[0] — it's named
       // in the introit. Co-celebrated commemorations (Constantine & Helen on

@@ -9,6 +9,7 @@ const {
   validateVariantLibrary,
   validateParishVariantPicks,
   validateCommemorationDupes,
+  validateRankSaintTypePopulated,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -17,6 +18,7 @@ const checks = [
   ['variant library', validateVariantLibrary],
   ['parish variant picks', validateParishVariantPicks],
   ['commemoration dupes', validateCommemorationDupes],
+  ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
 ];
 
 for (const [label, fn] of checks) {

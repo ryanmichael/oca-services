@@ -56,6 +56,7 @@ function getGreatFeastKey(date, style = 'new') {
 
   // Fixed-calendar feasts
   const FIXED = {
+    '1-1':   'circumcision',
     '12-25': 'nativity',
     '1-6':   'theophany',
     '2-2':   'meeting',

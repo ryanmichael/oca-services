@@ -373,7 +373,7 @@ async function runSweep(args) {
   let totalCost = 0;
   let idx = 0;
 
-  for (const date of dates) {
+  outer: for (const date of dates) {
     for (const service of services) {
       idx++;
       const prefix = `[${idx}/${total}]`;
@@ -389,8 +389,20 @@ async function runSweep(args) {
       if (r.error) {
         console.log(`SKIP (${r.error})`);
         errors.push({ date, service, error: r.error });
-        // Persist the skip so --resume doesn't retry unfetchable references.
-        fs.writeFileSync(p, JSON.stringify({ date, service, error: r.error }, null, 2));
+        // Persist ONLY permanent errors (missing OCA DOCX). Retriable errors
+        // (credit balance, timeouts, network) are left un-persisted so a
+        // future --resume re-attempts them. The 2026-07-02 sweep learned this
+        // the hard way when 48 mid-run credit-balance errors got persisted
+        // as "done" and had to be manually cleared.
+        const retriable = /credit balance|Request timed out|Connection error|API undefined|502|503|504|529/i.test(r.error);
+        if (!retriable) {
+          fs.writeFileSync(p, JSON.stringify({ date, service, error: r.error }, null, 2));
+        }
+        // Give up the whole sweep on billing errors — no point continuing.
+        if (/credit balance/i.test(r.error)) {
+          console.error('\nBilling error — aborting sweep. Top up credits and re-run with --resume.');
+          break outer;
+        }
         continue;
       }
       const cost = costFor(r.usage);

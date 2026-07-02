@@ -252,6 +252,66 @@ function validateRankSaintTypePopulated() {
   return { ok: warnings === 0, warnings };
 }
 
+// Sticheron text fields that leak scrape metadata are a persistent OCA-DOCX
+// pattern: the doxastikon tone marker ("Tone 8 ...") gets left in the text
+// column instead of being parsed into the tone column, and OT-readings text
+// bleeds into a sticheron slot when the DOCX layout puts readings and
+// stichera adjacent. Both classes hide silently until a parish audit surfaces
+// the mislabeled/nonsense hymn — the 2026-07-02 Sergius audit found 43 tone-
+// prefix rows and 1 readings-bled row via a single date's inspection.
+function validateSticheraTextIntegrity() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    let warnings = 0;
+
+    // (A) Tone-prefix drift: "Tone N " leading a sticheron text.
+    const toneDrift = db.prepare(
+      `SELECT id, commemoration_id, section, "order", substr(text, 1, 60) AS preview
+         FROM stichera
+        WHERE text GLOB 'Tone [1-8] *' OR text GLOB 'Tone [1-8]	*'`
+    ).all();
+    for (const r of toneDrift) {
+      console.warn(
+        `Sticheron ${r.id} (comm=${r.commemoration_id} ${r.section}[${r.order}]) ` +
+        `has embedded "Tone N " marker in text: "${r.preview}…". ` +
+        `Fix: strip prefix, set tone column to N.`
+      );
+      warnings += 1;
+    }
+
+    // (B) Readings-bled drift: sticheron text containing a Bible chapter-verse
+    //     citation with no non-citation prose. Signature of the Vespers OT-
+    //     readings block bleeding into a hymn slot.
+    const readingsDrift = db.prepare(
+      `SELECT id, commemoration_id, section, "order", substr(text, 1, 80) AS preview
+         FROM stichera
+        WHERE (text LIKE '%Proverbs %:%' OR text LIKE '%Wisdom of Solomon %:%'
+            OR text LIKE '%Isaiah %:%' OR text LIKE '%Genesis %:%')
+          AND length(text) < 200`
+    ).all();
+    for (const r of readingsDrift) {
+      console.warn(
+        `Sticheron ${r.id} (comm=${r.commemoration_id} ${r.section}[${r.order}]) ` +
+        `looks like OT-readings text, not a hymn: "${r.preview}…". ` +
+        `Fix: delete row or replace with the correct hymn from OCA source.`
+      );
+      warnings += 1;
+    }
+
+    if (warnings === 0) console.log('Sticheron text integrity: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -260,4 +320,5 @@ module.exports = {
   validateParishVariantPicks,
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
+  validateSticheraTextIntegrity,
 };

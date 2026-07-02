@@ -10,6 +10,7 @@ const {
   validateParishVariantPicks,
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
+  validateSticheraTextIntegrity,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -19,6 +20,7 @@ const checks = [
   ['parish variant picks', validateParishVariantPicks],
   ['commemoration dupes', validateCommemorationDupes],
   ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
+  ['sticheron text integrity', validateSticheraTextIntegrity],
 ];
 
 for (const [label, fn] of checks) {

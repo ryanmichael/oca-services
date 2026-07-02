@@ -340,6 +340,7 @@ async function runSweep(args) {
   const year     = args.year ? parseInt(args.year, 10) : new Date().getUTCFullYear();
   const services = (args.services ? String(args.services) : 'vespers,liturgy').split(',');
   const limit    = args.limit ? parseInt(args.limit, 10) : null;
+  const resume   = !!args.resume;
 
   let dates;
   if (typeof args.dates === 'string') {
@@ -350,14 +351,25 @@ async function runSweep(args) {
   if (limit) dates = dates.slice(0, limit);
 
   const total = dates.length * services.length;
+
+  // Incremental persistence: one JSON file per (date, service) run. Written
+  // AFTER each successful judge call so a mid-sweep kill (SIGTERM, network,
+  // OS reap) doesn't destroy prior work. --resume checks these files and
+  // skips runs whose JSON already exists. Aggregate report is (re-)built at
+  // sweep end from all JSON on disk, not just this run's in-memory results.
+  const runsDir = path.join(__dirname, 'reports', `sweep-${year}-runs`);
+  fs.mkdirSync(runsDir, { recursive: true });
+  const runPath = (d, s) => path.join(runsDir, `${d}-${s}.json`);
+
   console.log(`Sweep: ${dates.length} dates × ${services.length} services = ${total} runs`);
   console.log(`Services: ${services.join(', ')}`);
+  console.log(`Runs dir: ${path.relative(process.cwd(), runsDir)}`);
   console.log(`Estimated cost @ $0.03-0.10/run: $${(total * 0.03).toFixed(2)}-$${(total * 0.10).toFixed(2)}`);
+  if (resume) console.log(`Resume: skipping runs with existing JSON`);
   console.log('');
 
   const client = new Anthropic();
-  const results = [];
-  const errors  = [];
+  const errors = [];
   let totalCost = 0;
   let idx = 0;
 
@@ -365,6 +377,11 @@ async function runSweep(args) {
     for (const service of services) {
       idx++;
       const prefix = `[${idx}/${total}]`;
+      const p = runPath(date, service);
+      if (resume && fs.existsSync(p)) {
+        process.stdout.write(`${prefix} ${date} ${service}… CACHED\n`);
+        continue;
+      }
       process.stdout.write(`${prefix} ${date} ${service}… `);
       const t0 = Date.now();
       const r = await judgeOne(client, httpBase, date, service, { verbose: false });
@@ -372,6 +389,8 @@ async function runSweep(args) {
       if (r.error) {
         console.log(`SKIP (${r.error})`);
         errors.push({ date, service, error: r.error });
+        // Persist the skip so --resume doesn't retry unfetchable references.
+        fs.writeFileSync(p, JSON.stringify({ date, service, error: r.error }, null, 2));
         continue;
       }
       const cost = costFor(r.usage);
@@ -381,9 +400,34 @@ async function runSweep(args) {
         `${count} findings` +
         (count > 0 ? ` (${r.findings.filter(f=>f.severity==='high').length}h/${r.findings.filter(f=>f.severity==='medium').length}m/${r.findings.filter(f=>f.severity==='low').length}l)` : '');
       console.log(`${summary} · ${elapsed}s · $${cost.toFixed(3)} · total $${totalCost.toFixed(2)}`);
-      results.push({ date, service, ...r });
+      // Persist immediately — kill-safe from this point forward.
+      fs.writeFileSync(p, JSON.stringify({
+        date, service, findings: r.findings, usage: r.usage,
+        refPath: r.refPath, elapsed: r.elapsed, cost,
+      }, null, 2));
     }
   }
+
+  // Rebuild results + errors from ALL JSON on disk (including prior kills' work).
+  const results = [];
+  const allErrors = [];
+  for (const f of fs.readdirSync(runsDir).sort()) {
+    if (!f.endsWith('.json')) continue;
+    try {
+      const j = JSON.parse(fs.readFileSync(path.join(runsDir, f), 'utf8'));
+      if (j.error) allErrors.push(j);
+      else results.push(j);
+    } catch (_) {}
+  }
+  totalCost = results.reduce((s, r) => s + (r.cost || 0), 0);
+  // Merge current-invocation errors with any from disk (dedupe by date+service).
+  for (const e of errors) {
+    if (!allErrors.some(x => x.date === e.date && x.service === e.service)) {
+      allErrors.push(e);
+    }
+  }
+  errors.length = 0;
+  errors.push(...allErrors);
 
   // Aggregate report.
   const reportPath = path.join(__dirname, 'reports', `judge-sweep-${year}.md`);

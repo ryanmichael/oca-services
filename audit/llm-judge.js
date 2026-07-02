@@ -248,6 +248,264 @@ function tryParseFindings(text) {
   return out.length > 0 ? out : null;
 }
 
+// Single-date/service judge invocation. Returns { findings, usage, refPath,
+// elapsed, error? }; NEVER throws. Called by both the single-date CLI path
+// and the --sweep loop. Reuses `client` so cache_read hits accumulate.
+async function judgeOne(client, httpBase, date, service, { verbose = true } = {}) {
+  if (verbose) console.log(`LLM judge: ${date} ${service} (model: ${MODEL})`);
+
+  const assembled = await fetchAssembled(httpBase, service, date);
+  if (!assembled || !assembled.blocks) {
+    return { error: `fetch failed: ${service} @ ${date}` };
+  }
+  if (verbose) console.log(`  assembled: ${assembled.blocks.length} blocks`);
+
+  const referenceDate = service === 'vespers'
+    ? new Date(new Date(date + 'T00:00:00Z').getTime() + 86400000).toISOString().slice(0, 10)
+    : date;
+  let refPath = findLocalReference(referenceDate);
+  if (!refPath) {
+    if (verbose) console.log(`  no local reference; fetching from oca.org (ref date ${referenceDate})…`);
+    refPath = await fetchOcaReference(referenceDate);
+  }
+  if (!refPath) {
+    return { error: `no OCA reference DOCX for ${referenceDate}` };
+  }
+  if (verbose) console.log(`  reference: ${refPath}`);
+
+  const refTextFull = extractText(refPath);
+  const refText = scopeReferenceToService(refTextFull, service);
+  if (verbose && refText.length < refTextFull.length) {
+    console.log(`  reference: ${refText.length} chars (trimmed from ${refTextFull.length})`);
+  }
+
+  const start = Date.now();
+  let result;
+  try {
+    result = await judge(client, date, service, assembled, refText);
+  } catch (e) {
+    const msg = e instanceof Anthropic.APIError ? `API ${e.status}: ${e.message}` : String(e);
+    return { error: msg };
+  }
+  const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+  const u = result.usage;
+  if (verbose) console.log(`  done in ${elapsed}s — in=${u.input_tokens} cache_r=${u.cache_read_input_tokens || 0} out=${u.output_tokens}`);
+
+  const findings = tryParseFindings(result.text);
+  return { findings, usage: u, refPath, elapsed, rawText: result.text };
+}
+
+// Sonnet 4.6 pricing (as of 2026-07): $3/M input, $15/M output, cache read $0.30/M.
+// Rough per-run estimate used only for CLI progress display.
+function costFor(u) {
+  if (!u) return 0;
+  const inCost = ((u.input_tokens - (u.cache_read_input_tokens || 0)) / 1e6) * 3.0;
+  const cacheCost = ((u.cache_read_input_tokens || 0) / 1e6) * 0.30;
+  const outCost = (u.output_tokens / 1e6) * 15.0;
+  return inCost + cacheCost + outCost;
+}
+
+// Build the sweep date list: Sundays + rank-bearing weekdays + Great Feasts
+// across a year. Deduped, sorted. Skips dates where no OCA-published service
+// texts exist (out of scope for the judge — those dates use stSergius etc.).
+function generateSweepDates(year, opts = {}) {
+  const cal = require('../calendar-rules.js');
+  const { VIGIL_SAINTS, POLYELEOS_SAINTS } = require('../calendar/fixed-feasts.js');
+
+  const dates = new Set();
+  const DAY = 86400000;
+
+  // Sundays: all 52.
+  const jan1 = new Date(Date.UTC(year, 0, 1));
+  const firstSunOffset = (7 - jan1.getUTCDay()) % 7;
+  for (let d = firstSunOffset; d < 365; d += 7) {
+    const day = new Date(jan1.getTime() + d * DAY);
+    if (day.getUTCFullYear() === year) dates.add(day.toISOString().slice(0, 10));
+  }
+  // Rank-bearing fixed dates.
+  for (const md of [...VIGIL_SAINTS.keys(), ...POLYELEOS_SAINTS.keys()]) {
+    const [m, d] = md.split('-').map(Number);
+    dates.add(`${year}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+  }
+  // Great Feasts: iterate the year and pick any date with getGreatFeastKey != null.
+  for (let d = 0; d < 365; d++) {
+    const day = new Date(Date.UTC(year, 0, 1) + d * DAY);
+    if (cal.getGreatFeastKey(day)) dates.add(day.toISOString().slice(0, 10));
+  }
+  return Array.from(dates).sort();
+}
+
+async function runSweep(args) {
+  const httpBase = args.http || 'http://localhost:3000';
+  const year     = args.year ? parseInt(args.year, 10) : new Date().getUTCFullYear();
+  const services = (args.services ? String(args.services) : 'vespers,liturgy').split(',');
+  const limit    = args.limit ? parseInt(args.limit, 10) : null;
+  const resume   = !!args.resume;
+
+  let dates;
+  if (typeof args.dates === 'string') {
+    dates = args.dates.split(',').map(s => s.trim()).filter(Boolean);
+  } else {
+    dates = generateSweepDates(year);
+  }
+  if (limit) dates = dates.slice(0, limit);
+
+  const total = dates.length * services.length;
+
+  // Incremental persistence: one JSON file per (date, service) run. Written
+  // AFTER each successful judge call so a mid-sweep kill (SIGTERM, network,
+  // OS reap) doesn't destroy prior work. --resume checks these files and
+  // skips runs whose JSON already exists. Aggregate report is (re-)built at
+  // sweep end from all JSON on disk, not just this run's in-memory results.
+  const runsDir = path.join(__dirname, 'reports', `sweep-${year}-runs`);
+  fs.mkdirSync(runsDir, { recursive: true });
+  const runPath = (d, s) => path.join(runsDir, `${d}-${s}.json`);
+
+  console.log(`Sweep: ${dates.length} dates × ${services.length} services = ${total} runs`);
+  console.log(`Services: ${services.join(', ')}`);
+  console.log(`Runs dir: ${path.relative(process.cwd(), runsDir)}`);
+  console.log(`Estimated cost @ $0.03-0.10/run: $${(total * 0.03).toFixed(2)}-$${(total * 0.10).toFixed(2)}`);
+  if (resume) console.log(`Resume: skipping runs with existing JSON`);
+  console.log('');
+
+  const client = new Anthropic();
+  const errors = [];
+  let totalCost = 0;
+  let idx = 0;
+
+  outer: for (const date of dates) {
+    for (const service of services) {
+      idx++;
+      const prefix = `[${idx}/${total}]`;
+      const p = runPath(date, service);
+      if (resume && fs.existsSync(p)) {
+        process.stdout.write(`${prefix} ${date} ${service}… CACHED\n`);
+        continue;
+      }
+      process.stdout.write(`${prefix} ${date} ${service}… `);
+      const t0 = Date.now();
+      const r = await judgeOne(client, httpBase, date, service, { verbose: false });
+      const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+      if (r.error) {
+        console.log(`SKIP (${r.error})`);
+        errors.push({ date, service, error: r.error });
+        // Persist ONLY permanent errors (missing OCA DOCX). Retriable errors
+        // (credit balance, timeouts, network) are left un-persisted so a
+        // future --resume re-attempts them. The 2026-07-02 sweep learned this
+        // the hard way when 48 mid-run credit-balance errors got persisted
+        // as "done" and had to be manually cleared.
+        const retriable = /credit balance|Request timed out|Connection error|API undefined|502|503|504|529/i.test(r.error);
+        if (!retriable) {
+          fs.writeFileSync(p, JSON.stringify({ date, service, error: r.error }, null, 2));
+        }
+        // Give up the whole sweep on billing errors — no point continuing.
+        if (/credit balance/i.test(r.error)) {
+          console.error('\nBilling error — aborting sweep. Top up credits and re-run with --resume.');
+          break outer;
+        }
+        continue;
+      }
+      const cost = costFor(r.usage);
+      totalCost += cost;
+      const count = r.findings?.length ?? -1;
+      const summary = count < 0 ? 'PARSE FAIL' :
+        `${count} findings` +
+        (count > 0 ? ` (${r.findings.filter(f=>f.severity==='high').length}h/${r.findings.filter(f=>f.severity==='medium').length}m/${r.findings.filter(f=>f.severity==='low').length}l)` : '');
+      console.log(`${summary} · ${elapsed}s · $${cost.toFixed(3)} · total $${totalCost.toFixed(2)}`);
+      // Persist immediately — kill-safe from this point forward.
+      fs.writeFileSync(p, JSON.stringify({
+        date, service, findings: r.findings, usage: r.usage,
+        refPath: r.refPath, elapsed: r.elapsed, cost,
+      }, null, 2));
+    }
+  }
+
+  // Rebuild results + errors from ALL JSON on disk (including prior kills' work).
+  const results = [];
+  const allErrors = [];
+  for (const f of fs.readdirSync(runsDir).sort()) {
+    if (!f.endsWith('.json')) continue;
+    try {
+      const j = JSON.parse(fs.readFileSync(path.join(runsDir, f), 'utf8'));
+      if (j.error) allErrors.push(j);
+      else results.push(j);
+    } catch (_) {}
+  }
+  totalCost = results.reduce((s, r) => s + (r.cost || 0), 0);
+  // Merge current-invocation errors with any from disk (dedupe by date+service).
+  for (const e of errors) {
+    if (!allErrors.some(x => x.date === e.date && x.service === e.service)) {
+      allErrors.push(e);
+    }
+  }
+  errors.length = 0;
+  errors.push(...allErrors);
+
+  // Aggregate report.
+  const reportPath = path.join(__dirname, 'reports', `judge-sweep-${year}.md`);
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  const md = [];
+  md.push(`# LLM Judge Sweep Report — ${year}`);
+  md.push('');
+  md.push(`**Model:** ${MODEL}`);
+  md.push(`**Scope:** ${dates.length} date(s) × ${services.length} service(s) = ${total} runs`);
+  md.push(`**Completed:** ${results.length} · **Skipped:** ${errors.length}`);
+  md.push(`**Cost:** ~$${totalCost.toFixed(2)}`);
+  md.push('');
+
+  // Findings by class — group by section + issue-prefix so recurring drift shows up.
+  const allFindings = [];
+  for (const r of results) {
+    for (const f of (r.findings || [])) {
+      allFindings.push({ ...f, date: r.date, service: r.service });
+    }
+  }
+  const bySeverity = { high: [], medium: [], low: [] };
+  for (const f of allFindings) (bySeverity[f.severity] || bySeverity.low).push(f);
+
+  md.push(`## Summary`);
+  md.push('');
+  md.push(`- High: ${bySeverity.high.length}`);
+  md.push(`- Medium: ${bySeverity.medium.length}`);
+  md.push(`- Low: ${bySeverity.low.length}`);
+  md.push(`- Dates with 0 findings: ${results.filter(r => r.findings?.length === 0).length}`);
+  md.push(`- Dates with parse failure: ${results.filter(r => !r.findings).length}`);
+  md.push('');
+
+  if (errors.length) {
+    md.push(`## Skipped (${errors.length})`);
+    md.push('');
+    for (const e of errors) md.push(`- ${e.date} ${e.service} — ${e.error}`);
+    md.push('');
+  }
+
+  for (const sev of ['high', 'medium', 'low']) {
+    const items = bySeverity[sev];
+    if (!items.length) continue;
+    md.push(`## ${sev[0].toUpperCase() + sev.slice(1)} severity (${items.length})`);
+    md.push('');
+    // Group by section then by issue keyword-cluster
+    const bySection = {};
+    for (const f of items) (bySection[f.section || '(unspecified)'] ??= []).push(f);
+    const sortedSections = Object.keys(bySection).sort((a, b) => bySection[b].length - bySection[a].length);
+    for (const section of sortedSections) {
+      md.push(`### ${section} (${bySection[section].length})`);
+      md.push('');
+      for (const f of bySection[section]) {
+        md.push(`- \`${f.date} ${f.service}\` — ${f.issue}`);
+        if (f.hint) md.push(`  - hint: ${f.hint}`);
+      }
+      md.push('');
+    }
+  }
+
+  fs.writeFileSync(reportPath, md.join('\n'));
+  console.log('');
+  console.log(`Sweep complete: ${results.length}/${total} runs, ${allFindings.length} findings, ~$${totalCost.toFixed(2)}`);
+  console.log(`Report: ${path.relative(process.cwd(), reportPath)}`);
+  return { results, errors, totalCost };
+}
+
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error('ANTHROPIC_API_KEY not set. Set it before running:');
@@ -256,65 +514,29 @@ async function main() {
   }
 
   const args = parseArgs(process.argv.slice(2));
+
+  // Sweep mode
+  if (args.sweep) {
+    await runSweep(args);
+    return;
+  }
+
   if (!args.date) {
-    console.error('Usage: node audit/llm-judge.js --date YYYY-MM-DD [--service liturgy] [--http http://localhost:3000]');
+    console.error('Usage:');
+    console.error('  node audit/llm-judge.js --date YYYY-MM-DD [--service liturgy] [--http http://localhost:3000]');
+    console.error('  node audit/llm-judge.js --sweep [--year 2026] [--services vespers,liturgy] [--limit 10] [--dates a,b,c]');
     process.exit(1);
   }
   const date     = args.date;
   const service  = args.service || 'liturgy';
   const httpBase = args.http    || 'http://localhost:3000';
 
-  console.log(`LLM judge: ${date} ${service} (model: ${MODEL})`);
-
-  const assembled = await fetchAssembled(httpBase, service, date);
-  if (!assembled || !assembled.blocks) {
-    console.error(`Failed to fetch ${service} for ${date} from ${httpBase}`);
-    process.exit(1);
-  }
-  console.log(`  assembled: ${assembled.blocks.length} blocks`);
-
-  // Vespers DOCX is bundled with the next-day Sunday/feast service-texts file
-  // (OCA keys vigil publications to the morning, not the eve).
-  const referenceDate = service === 'vespers'
-    ? new Date(new Date(date + 'T00:00:00Z').getTime() + 86400000).toISOString().slice(0, 10)
-    : date;
-  let refPath = findLocalReference(referenceDate);
-  if (!refPath) {
-    console.log(`  no local reference; fetching from oca.org (ref date ${referenceDate})…`);
-    refPath = await fetchOcaReference(referenceDate);
-  }
-  if (!refPath) {
-    console.error(`  no OCA reference DOCX available for ${date}`);
-    console.error('  this date may fall outside OCA\'s published weekly service-texts');
-    process.exit(2);
-  }
-  console.log(`  reference: ${refPath}`);
-
-  const refTextFull = extractText(refPath);
-  const refText = scopeReferenceToService(refTextFull, service);
-  const trimmed = refText.length < refTextFull.length;
-  console.log(`  reference text: ${refText.length} chars${trimmed ? ` (trimmed from ${refTextFull.length} — Vespers prelude dropped)` : ''}`);
-
   const client = new Anthropic();
-  console.log(`  calling ${MODEL}…`);
-  const start = Date.now();
-  let result;
-  try {
-    result = await judge(client, date, service, assembled, refText);
-  } catch (e) {
-    if (e instanceof Anthropic.APIError) {
-      console.error(`API error ${e.status}: ${e.message}`);
-    } else {
-      console.error('judge error:', e);
-    }
-    process.exit(1);
-  }
-  const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+  const r = await judgeOne(client, httpBase, date, service);
+  if (r.error) { console.error(r.error); process.exit(1); }
+  const u = r.usage;
+  const findings = r.findings;
 
-  const u = result.usage;
-  console.log(`  done in ${elapsed}s — input=${u.input_tokens} cache_write=${u.cache_creation_input_tokens || 0} cache_read=${u.cache_read_input_tokens || 0} output=${u.output_tokens}`);
-
-  const findings = tryParseFindings(result.text);
   const summary = findings
     ? `${findings.length} finding(s) — ` +
       ['high','medium','low'].map(s => `${findings.filter(f => f.severity === s).length} ${s}`).join(', ')
@@ -327,9 +549,9 @@ async function main() {
   md.push(`# LLM Judge Report — ${date} / ${service}`);
   md.push('');
   md.push(`**Model:** ${MODEL}`);
-  md.push(`**Reference:** ${refPath}`);
+  md.push(`**Reference:** ${r.refPath}`);
   md.push(`**Tokens:** input ${u.input_tokens} · cache_write ${u.cache_creation_input_tokens || 0} · cache_read ${u.cache_read_input_tokens || 0} · output ${u.output_tokens}`);
-  md.push(`**Wall time:** ${elapsed}s`);
+  md.push(`**Wall time:** ${r.elapsed}s`);
   md.push(`**Summary:** ${summary}`);
   md.push('');
 
@@ -352,7 +574,7 @@ async function main() {
     md.push('## Raw model output (parse failed)');
     md.push('');
     md.push('```');
-    md.push(result.text);
+    md.push(r.rawText);
     md.push('```');
   }
 
@@ -361,8 +583,6 @@ async function main() {
   console.log('');
   console.log(summary);
 
-  // Exit non-zero so CI / audit:upcoming surface a real failure when the
-  // model flagged any discrepancies (or couldn't be parsed at all).
   if (!findings) process.exit(3);
   if (findings.some(f => f.severity === 'high')) process.exit(2);
   if (findings.length > 0) process.exit(1);

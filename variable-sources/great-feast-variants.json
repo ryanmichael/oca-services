@@ -20,6 +20,39 @@
       "pascha"
     ]
   },
+  "circumcision": {
+    "_note": "Circumcision of our Lord (Jan 1), cocelebrated with St. Basil the Great (whose Liturgy is served). Antiphons intentionally omitted so typical antiphons (Bless the Lord / Praise the Lord) render — Circumcision does not have its own festal antiphons in OCA typikon. Basil's cocelebrated troparion/kontakion/prokeimenon/alleluia/koinonikon come from cocelebrated-overlays.json '1-1' as .secondary. Discovered 2026-07-02 via judge sweep — the Circumcision feast propers were absent because 1-1 wasn't in the Great Feast key map.",
+    "type": "lord",
+    "label": "The Circumcision of our Lord and Savior Jesus Christ",
+    "troparia": [
+      {
+        "tone": 1,
+        "rubric": "Troparion of the Circumcision, Tone 1:",
+        "text": "Enthroned on high with the Eternal Father and Thy divine Spirit,\nO Jesus, Thou didst will to be born on earth of the unwedded handmaid, thy Mother.\nTherefore, Thou wast circumcised as an eight-day-old Child.\nGlory to Thy most gracious counsel;\nglory to Thy dispensation;\nglory to Thy condescension, O only Lover of mankind."
+      }
+    ],
+    "kontakia": [
+      {
+        "tone": 3,
+        "rubric": "Kontakion of the Circumcision, Tone 3:",
+        "text": "The Lord of all accepts to be circumcised,\nthus, as He is good, excises the sins of mortal men.\nToday He grants the world salvation,\nwhile light-bearing Basil, hierarch of the Creator, rejoices in heaven,\nas an initiate of Christ, the divine Light."
+      }
+    ],
+    "prokeimenon": {
+      "tone": 6,
+      "refrain": "O Lord, save Thy people, and bless Thine inheritance!",
+      "verse": "Unto Thee, O Lord, will I call, O my God, be not silent unto me."
+    },
+    "alleluia": {
+      "tone": 8,
+      "verses": [
+        "Give ear, O shepherd of Israel, Thou Who leadest Joseph like a flock!"
+      ]
+    },
+    "communionHymn": "Praise the Lord from the heavens; praise Him in the highest! Alleluia, Alleluia, Alleluia!",
+    "entranceHymn": "Come, let us worship and fall down before Christ. O Son of God, Who wast circumcised in the flesh for our sakes, save us who sing to Thee: Alleluia.",
+    "megalynarion": "In thee rejoiceth, O full of grace, all creation, the ranks of Angels and the human race. O sanctified Temple and rational Paradise, boast of virgins, from whom God was incarnate and became a little Child — our God from before the ages! For He made thy womb a throne, and thy body more spacious than the heavens. In thee rejoiceth, O full of grace, all creation. Glory to thee."
+  },
   "nativity": {
     "type": "lord",
     "label": "The Nativity of Christ",

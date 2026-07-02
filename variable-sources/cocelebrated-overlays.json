@@ -17,7 +17,7 @@
     }
   },
   "1-1": {
-    "_note": "Circumcision of our Lord falls on St. Basil the Great's feast day. OCA practice: Liturgy of St. Basil; troparion + kontakion of Basil sung alongside the Circumcision feast hymns (Glory: Basil's kontakion, Now: Circumcision's). Without this overlay only the Circumcision troparion/kontakion render and Basil's drop out of the Little Entrance section (he survives in Dismissal Troparia via a separate path).",
+    "_note": "Circumcision of our Lord falls on St. Basil the Great's feast day. OCA practice: Liturgy of St. Basil; troparion + kontakion of Basil sung alongside the Circumcision feast hymns (Glory: Basil's kontakion, Now: Circumcision's). Without this overlay only the Circumcision troparion/kontakion render and Basil's drop out of the Little Entrance section. Prokeimenon/alleluia/koinonikon added 2026-07-02 after judge sweep flagged them missing — Basil's secondary attaches on top of the Circumcision primary (which lives in great-feast-variants.json).",
     "troparion": {
       "tone": 1,
       "rubric": "Troparion of St. Basil the Great, Tone 1:",
@@ -28,6 +28,22 @@
       "rubric": "Kontakion of St. Basil the Great, Tone 4:",
       "connector": "Glory to the Father, and to the Son, and to the Holy Spirit.",
       "text": "Thou wast revealed as the sure foundation of the Church,\ngranting all mankind a lordship which cannot be taken away,\nsealing it with thy precepts,\nO venerable and heavenly Father Basil."
+    },
+    "prokeimenon": {
+      "tone": 1,
+      "label": "St. Basil the Great",
+      "refrain": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding."
+    },
+    "alleluia": {
+      "tone": 2,
+      "label": "St. Basil the Great",
+      "verses": [
+        "The mouth of the righteous shall meditate wisdom, and his tongue shall speak of judgment."
+      ]
+    },
+    "communionHymn": {
+      "label": "St. Basil the Great",
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
     }
   },
   "5-21": {

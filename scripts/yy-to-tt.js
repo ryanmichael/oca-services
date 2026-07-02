@@ -275,10 +275,29 @@ function stemRegularPast(past) {
   return null; // unknown shape
 }
 
+// -ed words that are ADJECTIVES, not past-tense verbs. Distinguishing is hard
+// without a POS tagger, so we blacklist the common ones that produced silent
+// corruption. Signature bug (surfaced 2026-07-02 via judge sweep):
+// "having seen you naked" → "having seen thou didst nak" (naked stemmed to
+// nak, and "you" as object of "seen" mis-transformed as subject of "naked").
+const NEVER_STEM = new Set([
+  // Pure adjectives — never a verb in liturgical usage. Words like
+  // blessed/learned/honored/venerated are ambiguous (adj or past verb) and
+  // deliberately omitted; the transformer picks the verb reading and
+  // occasional glitches are triaged case-by-case.
+  'naked', 'aged', 'wicked', 'crooked', 'sacred', 'wretched',
+  'beloved', 'accursed',
+]);
+
 function pastToBase(past) {
   const lower = past.toLowerCase();
   if (PAST_TO_BASE[lower]) return PAST_TO_BASE[lower];
-  return stemRegularPast(lower);
+  if (NEVER_STEM.has(lower))     return null;
+  const stem = stemRegularPast(lower);
+  // Safety: reject stems that are too short to be a real English verb.
+  // "naked" → "nak" (2 letters after -ed strip) — no verb has this shape.
+  if (stem && stem.length < 3) return null;
+  return stem;
 }
 
 function transformPastTense(text) {
@@ -354,7 +373,20 @@ function transformBareYou(text) {
   // ends in -de which we cover], gave [no], brought [-ght]).
   // Common irregulars not caught by suffix: gave, took, made, told, sold,
   // bade, hid, led, fed, said, did, won, drew, knew, grew, threw.
-  const VERB_SUFFIX_RE = /\b([A-Za-z]+(?:ed|ied|ght|t)|gave|took|made|told|sold|bade|hid|led|fed|said|won|drew|knew|grew|threw|saw|chose|rose|arose|came|drove|wrote|spoke|broke|sang|drank|ate|ran|began|smote|stole|wore|tore|swore|froze|woke|forsook|forgot|became|bore|strove|given|taken|written|spoken|broken|chosen|frozen|stolen|shown|known|drawn|thrown|blown|grown|fallen|beaten|eaten|ridden|bidden|hidden|forgotten|forsaken|awoken|woven|smitten|stricken|sworn|worn|torn|borne)\s+(You|you)\b/g;
+  const VERB_SUFFIX_RE = /\b([A-Za-z]+(?:ed|ied|ght|t)|gave|took|made|told|sold|bade|hid|led|fed|said|won|drew|knew|grew|threw|saw|seen|chose|rose|arose|came|drove|wrote|spoke|broke|sang|drank|ate|ran|began|smote|stole|wore|tore|swore|froze|woke|forsook|forgot|became|bore|strove|given|taken|written|spoken|broken|chosen|frozen|stolen|shown|known|drawn|thrown|blown|grown|fallen|beaten|eaten|ridden|bidden|hidden|forgotten|forsaken|awoken|woven|smitten|stricken|sworn|worn|torn|borne|born|held)\s+(You|you)\b/g;
+
+  // Fourth-pass (imperative/infinitive): "IMPERATIVE-VERB you" → "IMPERATIVE-VERB thee".
+  // The transformer previously left "clothe you" / "save you" / "adorn you"
+  // unchanged, which pass 3 then converted "you" → "thou" (subject) — wrong.
+  // "you" as object of an imperative addressed to Adam/Christ/martyr/etc
+  // should be "thee". Narrow to common liturgical imperatives to avoid
+  // false positives.
+  const IMPERATIVE_VERBS = '(?:clothe|save|receive|behold|adore|honor|glorify|praise|magnify|bless|beseech|entreat|invoke|hail|salute|greet|embrace|comfort|deliver|redeem|sanctify|purify|guide|protect|preserve|strengthen|enlighten|nourish|reward|crown|anoint|ordain|call)';
+  const IMP_RE = new RegExp(`\\b(${IMPERATIVE_VERBS})\\s+(You|you)\\b`, 'g');
+  text = text.replace(IMP_RE, (m, verb, you) => {
+    const lower = you[0] === you[0].toLowerCase();
+    return `${verb} ${lower ? 'thee' : 'Thee'}`;
+  });
   text = text.replace(VERB_SUFFIX_RE, (m, verb, you) => {
     // Avoid false positives like "at" (preposition was already removed; "at"
     // ends in "t" but is on the prep list — already handled). Reject very

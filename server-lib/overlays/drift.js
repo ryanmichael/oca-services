@@ -312,6 +312,77 @@ function validateSticheraTextIntegrity() {
   }
 }
 
+// Detects yy→tt transformer breakage in troparia text. The 2026-07-02 sweep
+// found 3 rows where the stemmer stripped -ed from the adjective "naked" and
+// produced "thou didst nak". Signature: "didst" followed by a truncated non-
+// word (< 3 chars) or common non-verbs (be/or/us/it). Would have caught the
+// bug on transformer run, before any parish saw the corrupt text.
+function validateTropariaTransformIntegrity() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='troparia'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    let warnings = 0;
+
+    // "didst X" where X looks like a truncated adjective stem (< 4 chars +
+    // followed by punctuation). "didst nak," is the signature bug from the
+    // yy→tt stemmer over-stripping "naked". Legitimate 2-3-char verb stems
+    // exist (didst be / didst do — auxiliaries) but they're preceded by
+    // whitespace + verb, not punctuation. Narrow: 1-3 char stem, followed
+    // by comma/period/semicolon (mid-clause markers indicating verb-object
+    // truncation).
+    const candidates = db.prepare(
+      `SELECT id, commemoration_id, type, text, substr(text, 1, 60) AS preview
+         FROM troparia
+        WHERE text LIKE '%didst %'`
+    ).all();
+    // Known-legit short auxiliaries/particles after "didst" (didst not do X,
+    // didst do it) — exclude these from suspicion.
+    const LEGIT_SHORT_AFTER_DIDST = new Set(['not', 'do', 'go', 'ye', 'we', 'i']);
+    const shortStem = candidates.filter(r => {
+      const m = r.text.match(/\bdidst\s+([a-z]{1,3})[,.;]/i);
+      if (!m) return false;
+      return !LEGIT_SHORT_AFTER_DIDST.has(m[1].toLowerCase());
+    });
+    for (const r of shortStem) {
+      console.warn(
+        `Troparion ${r.id} (comm=${r.commemoration_id} ${r.type}) has a suspicious "didst X" transform (short stem): "${r.preview}…". ` +
+        `Likely yy→tt stemmer breakage — check scripts/yy-to-tt.js NEVER_STEM list.`
+      );
+      warnings += 1;
+    }
+
+    // Object-pronoun collision: "clothe thou" / "save thou" — IMPERATIVE verb
+    // + subject pronoun ("thou") where the object "thee" is grammatically
+    // required. Signature of the transformer's missing imperative pass.
+    const objBroken = db.prepare(
+      `SELECT id, commemoration_id, type, substr(text, 1, 80) AS preview
+         FROM troparia
+        WHERE text LIKE '%clothe thou %' OR text LIKE '%save thou %'
+           OR text LIKE '%behold thou %' OR text LIKE '%receive thou %'
+           OR text LIKE '%glorify thou %' OR text LIKE '%praise thou %'
+           OR text LIKE '%bless thou %' OR text LIKE '%adore thou %'`
+    ).all();
+    for (const r of objBroken) {
+      console.warn(
+        `Troparion ${r.id} (comm=${r.commemoration_id} ${r.type}) has "IMPERATIVE thou" — likely should be "thee" (object pronoun): "${r.preview}…". ` +
+        `Fix: replace with the correct object form.`
+      );
+      warnings += 1;
+    }
+
+    if (warnings === 0) console.log('Troparia transformer integrity: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -321,4 +392,5 @@ module.exports = {
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
+  validateTropariaTransformIntegrity,
 };

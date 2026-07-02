@@ -11,6 +11,7 @@ const {
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
+  validateTropariaTransformIntegrity,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -21,6 +22,7 @@ const checks = [
   ['commemoration dupes', validateCommemorationDupes],
   ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
   ['sticheron text integrity', validateSticheraTextIntegrity],
+  ['troparia transformer integrity', validateTropariaTransformIntegrity],
 ];
 
 for (const [label, fn] of checks) {

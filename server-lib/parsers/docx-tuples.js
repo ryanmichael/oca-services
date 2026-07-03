@@ -119,8 +119,11 @@ const DAYHEADER_RE = [
 // Verse markers ("V. (10)"), standalone tone markers, Glory / Now doxastika.
 const VERSE_RE   = /^V\.\s/i;                                // psalm-verse stichon slot ("V. (10) …" or "V. Create in me…")
 const TONE_RE    = /^Tone\s+([1-8])\b\s*(.*)$/i;            // "Tone 6 (for the Resurrection)"
-const GLORY_RE   = /^Glory\b/i;
-const NOW_RE     = /^(Now\s*(?:and\s*ever)?|Both now)\b/i;
+// Only the FIXED lesser-doxology intro is a section marker. A bare "Glory to
+// Thee!" / "Glory to Thee, O Lord!" is a sticheron's final REFRAIN, not a
+// doxastikon boundary — matching it here split ~60 stichera off their last line.
+const GLORY_RE   = /^Glory to the Father\b/i;
+const NOW_RE     = /^(Now and ever|Both now)\b/i;
 
 // A standalone label line like "(for the Resurrection)" or "(for the Fathers)".
 const PAREN_LABEL_RE = /^\(([^)]{2,60})\)\s*$/;

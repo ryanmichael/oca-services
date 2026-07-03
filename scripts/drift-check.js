@@ -12,6 +12,7 @@ const {
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
   validateTropariaTransformIntegrity,
+  validateTextCosmetics,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -23,6 +24,7 @@ const checks = [
   ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
   ['sticheron text integrity', validateSticheraTextIntegrity],
   ['troparia transformer integrity', validateTropariaTransformIntegrity],
+  ['text cosmetics (entities + glued punctuation)', validateTextCosmetics],
 ];
 
 for (const [label, fn] of checks) {

@@ -1,6 +1,6 @@
 # Rescrape Harness — Phase 2 & 3 Design
 
-**Status:** design (not yet implemented)
+**Status:** Phase 2 BUILT + first full sweep run (2026-07-03). Data fixes pending triage. See "Phase 2 build status" at the bottom.
 **Session context:** `MEMORY.md` § "One-shot audit plan (2026-07-02)"
 **Related:** [reference_oca_docx_extraction](../.claude/memory/reference_oca_docx_extraction.md), audit skill (`audit-driven-fix`)
 
@@ -200,3 +200,55 @@ Once the harness is stable:
 Recommendation: **after Phase 1 (judge sweep) completes and its findings are triaged.** The judge findings will surface semantic bug classes the deterministic harness can't see (wrong saint attribution, translation register mismatches). Fixing those first reduces noise in the Phase 2 diff — many of the "text differs" findings would just be `yy`/`tt` register drift already handled by the pronoun pass, and the harness would produce a cleaner report on a cleaner DB.
 
 If Phase 1 uncovers zero new bug classes (unlikely but possible), Phase 2 becomes higher-priority immediately. If Phase 1 uncovers many overlapping-with-deterministic bugs, deprioritize Phase 2 as the cost-benefit shifts.
+
+---
+
+# Phase 2 build status (2026-07-03)
+
+The harness is built and ran its first full sweep. Design held up; a few empirical adjustments below.
+
+## What shipped
+
+| Stage | File | Notes |
+|---|---|---|
+| Fetcher | `scripts/rescrape-fetch.js` (`npm run rescrape:fetch`) | 214/217 DOCXs cached to `reference/scrape/` (gitignored). Cache-skip, 0.5s rate limit, 3× retry+backoff, Wayback fallback, incremental manifest. |
+| Normalizer | `server-lib/parsers/normalize.js` | XML-residue strip, leading-`Tone N` strip, punctuation/quote/dash normalize, `//` chant-mark strip, **missing-space-after-punctuation insertion** (new), optional `yy→tt` pronoun pass (reuses `scripts/yy-to-tt.js`). |
+| Parser | `server-lib/parsers/docx-tuples.js` | `unzip -p` (zero new deps). Two layers: `docxToLines` (paragraph split + **run-concat to rejoin chant syllable-splits** + bold/center detect + blank-boundary markers) and `parseDocx` (section grammar + **buffer-and-flush** sticheron grouping). 214/214 parse clean, ~25 tuples/date. |
+| Differ | `scripts/rescrape-diff.js` (`npm run rescrape:diff`) | Text-anchored matching (token-Jaccard candidate → Levenshtein score) rather than strict order-key equality — robust to the DOCX being a superset (octoechos + fixed + menaion). Classes A/B/C/E/G. Per-date + aggregate reports in `audit/reports/` (gitignored). |
+| Test | `test/rescrape-parse.test.js` | 13 assertions against the in-repo `reference/2026-0524-texts-tt.docx`; caught a real `?"`→`? "` normalizer bug. |
+
+## Design deltas from the original plan
+
+- **Bold/centered ARE available.** The doc assumed "no styles to key off"; in fact `<w:b/>` and `<w:jc w:val="center"/>` cleanly separate day-header / commemoration-title / section-anchor lines from hymn body. Used for attribution + anchor detection.
+- **Matching is text-anchored, not order-keyed.** The `(source_date, commemoration_title, section, order)` diff key is unreliable because (a) multi-commemoration days defeat header-title attribution and (b) the DOCX contains octoechos + fixed content the DB `stichera` table doesn't. Matching each DB row to the closest DOCX sticheron by normalized text is far more robust. `order`/`tone` are diffed as secondary low-severity signals.
+- **New class G (cosmetic).** Missing-space-after-punctuation ("denial.Therefore") is pervasive scrape drift; normalized away for the content match, reported separately.
+- **Sticheron grouping needs blank-line + bare-`V.` boundaries.** Aposticha verses are `"V. <psalm text>"` (no `(N)`), and stichera are separated by blank paragraphs. Both are now flush points.
+
+## First-sweep results (2070 `oca%` rows, 214 dates)
+
+- **75.0% clean** exact normalized-text match on the first pass — validates fetch→parse→normalize→diff end to end.
+- **B (found, text differs): 154 · C (absent from fresh DOCX): 363 · A (section): 1 · E (tone): 6 · G (glued-punctuation): 247.**
+
+## Concrete DB drift classes surfaced (SQL-confirmed, `source LIKE 'oca%'`)
+
+Union ≈ 130 rows of **Liturgy-propers-bled-into-stichera** — the clearest bulk class, likely one scraper bug that pulled the epistle/prokeimenon/alleluia block into hymn rows across many dates:
+
+| Signature (SQL) | Rows | Example |
+|---|--:|---|
+| `text LIKE '%<w:t%'` (Word-XML residue) | 46 | `#5417` `<w:t>James 1:1-12 <w:t>James 1:13-27…` |
+| `text LIKE '%Epistle%'` | 44 | `Epistle (135) 1 Corinthians 6:12-20 Tone 2…` |
+| `text LIKE '%Alleluia, Alleluia%'` | 42 | `…Tone 8 Alleluia, Alleluia, Alleluia!` |
+| short reading-citation only | 23 | `1 Peter 1:3-9 1 Peter 1:13-19 1 Peter 2:11-24` |
+| glued-punctuation (class G) | 247 | `denial.Therefore Simon cried out…` |
+
+The remaining C rows are a mix of genuine cross-source hymns (octoechos/festal content the date's DOCX doesn't carry) and parser section-coverage gaps — needs per-row triage, not a blanket fix.
+
+## Next session — triage worklist (audit-driven-fix skill)
+
+Ordered by leverage / safety:
+
+1. **Liturgy-propers-bled class (~130 rows).** Verify none render as real stichera (check assembler pulls by `(commemoration_id, section, order)`), then bulk-clean + author a closing `validateSticheraNotLiturgyPropers` drift rule. **Author fix + rule in the same commit** (do NOT add a failing drift rule before the data is clean — `drift:check` is a CI gate).
+2. **Class G glued-punctuation (247 rows).** Bulk `insertPunctuationSpaces` migration + closing rule. Purely cosmetic, low-risk, high-count.
+3. **Class B (154).** Mostly trailing `"(at Vigil)"` / `"(at Great Vespers)"` editorial annotations baked into hymn text + a few real word-level diffs. Strip annotations to `label`, review the rest.
+4. **3 fetch 404s** (`2025-12-24`, `2026-01-05`, `2026-03-25` — Nativity/Theophany Eve, Annunciation): special-cycle DOCXs under a different filename; fetch by hand or Wayback and re-diff.
+5. **Parser section-coverage gaps.** Sample the genuine-hymn C rows; extend the section grammar where a date's layout isn't covered.

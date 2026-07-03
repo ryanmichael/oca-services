@@ -409,6 +409,44 @@ function validateTropariaTransformIntegrity() {
   }
 }
 
+// Cosmetic text drift in the hymn tables (troparia + stichera), surfaced by the
+// 2026-07-03 rescrape sweep and cleaned in the same session:
+//   - literal HTML entities ("&quot;I", "Eust&aacute;thius") that render raw.
+//   - glued sentence/clause punctuation ("denial.Therefore", "therefore,we").
+// Both are deterministic scrape artifacts; these guards keep them from silently
+// returning. Entity-shaped tokens (&word; / &#123;) are flagged, not bare "&".
+const ENTITY_RE = /&[a-zA-Z][a-zA-Z0-9]*;|&#\d+;/;
+const GLUED_RE  = /[.,;:!?][A-Za-z]/;
+function validateTextCosmetics() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    let warnings = 0;
+    for (const tbl of ['troparia', 'stichera']) {
+      const exists = db.prepare(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
+      ).get(tbl);
+      if (!exists) continue;
+      const rows = db.prepare(`SELECT id, text FROM ${tbl}`).all();
+      for (const r of rows) {
+        if (ENTITY_RE.test(r.text)) {
+          console.warn(`${tbl} ${r.id} has a literal HTML entity in text: "${r.text.slice(0, 60)}…". Fix: decode it.`);
+          warnings += 1;
+        }
+        if (GLUED_RE.test(r.text)) {
+          console.warn(`${tbl} ${r.id} has glued punctuation (missing space after . , ; : ! ?): "${r.text.slice(0, 60)}…". Fix: scripts/rescrape-diff — insertPunctuationSpaces.`);
+          warnings += 1;
+        }
+      }
+    }
+    if (warnings === 0) console.log('Text cosmetics (entities + glued punctuation): clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -419,4 +457,5 @@ module.exports = {
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
   validateTropariaTransformIntegrity,
+  validateTextCosmetics,
 };

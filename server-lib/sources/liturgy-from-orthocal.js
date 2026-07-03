@@ -61,6 +61,7 @@ const {
   WEEKDAY_ALLELUIA,
   LENTEN_SUNDAY_PROKEIMENA,
   LENTEN_SUNDAY_ALLELUIA,
+  LENTEN_SUNDAY_COMMUNION,
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
@@ -454,6 +455,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (lentenKey !== null && LENTEN_SUNDAY_PROKEIMENA[lentenKey]) {
     const lp = LENTEN_SUNDAY_PROKEIMENA[lentenKey];
     prokeimenon = { tone: lp.tone, refrain: lp.refrain, verse: lp.verse };
+    // Lenten commemoration Sundays (Palamas week 2, Climacus 4, Mary of Egypt 5)
+    // sing the saint's proper prokeimenon in addition to the Sunday cycle.
+    // Secondary is authored in daily-propers.json against the general-menaion
+    // hierarch/monastic common. Cross Sunday (week 3) and Orthodoxy (week 1)
+    // are self-contained — no secondary.
+    if (lp.secondary) prokeimenon.secondary = { ...lp.secondary };
   } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
     const sp = SUNDAY_PROKEIMENA[tone];
     prokeimenon = { tone, refrain: sp.refrain, verse: sp.verse };
@@ -511,6 +518,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (lentenKey !== null && LENTEN_SUNDAY_ALLELUIA[lentenKey]) {
     const la = LENTEN_SUNDAY_ALLELUIA[lentenKey];
     alleluia = { tone: la.tone, verses: la.verses };
+    if (la.secondary) alleluia.secondary = { ...la.secondary };
   } else if (isSunday && SUNDAY_ALLELUIA[tone]) {
     alleluia = { tone, verses: SUNDAY_ALLELUIA[tone] };
   } else if (!isSunday && !isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
@@ -592,6 +600,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (gmp && !communionHymn.secondary && !isWeekdayGreatSaintFeast) {
     communionHymn = { ...communionHymn, secondary: { ...gmp.communionHymn, label: gmpLabel } };
   }
+  // Lenten commemoration Sundays (Palamas week 2, Climacus 4, Mary of Egypt 5)
+  // sing the saint's koinonikon in addition to the standard Sunday one.
+  if (lentenKey !== null && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
+    communionHymn = { ...communionHymn, secondary: LENTEN_SUNDAY_COMMUNION[lentenKey] };
+  }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
@@ -641,7 +654,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       book: gospelR.book,
       display: gospelR.display,
       text: extractPassageText(gospelR),
-      secondary: (gospelR2 && includeSecondGospel) ? {
+      // Lenten commemoration Sundays (Palamas week 2, Cross 3, Climacus 4,
+      // Mary of Egypt 5) always sing both Gospels per OCA rubric — force the
+      // secondary regardless of the parish-level includeSecondGospel opt-in.
+      secondary: (gospelR2 && (includeSecondGospel || (lentenKey !== null && ['1','2','3','4','5'].includes(String(lentenKey))))) ? {
         book: gospelR2.book,
         display: gospelR2.display,
         text: extractPassageText(gospelR2),

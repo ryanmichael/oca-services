@@ -44,6 +44,9 @@ fixed-texts/translations/_*/
 # Source PDFs (large; kept locally)
 reference/*.pdf
 
+# Rescrape harness DOCX cache (~11MB of fetched OCA source texts; regenerable)
+reference/scrape/
+
 # Photographed service books — local-only reference material
 reference/**/*.HEIC
 reference/**/*.heic

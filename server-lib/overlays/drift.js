@@ -323,7 +323,10 @@ function validateSticheraTextIntegrity() {
          FROM stichera
         WHERE text LIKE '%<w:t%'
            OR text LIKE '%Epistle (%' OR text LIKE '%Epistle Tone%'
-           OR text LIKE '%Alleluia, Alleluia%'`
+           OR text LIKE '%Alleluia, Alleluia%'
+           OR text LIKE '%Prepared by the Department%'
+           OR text LIKE '%Old Testament Readings%'
+           OR text LIKE '%Composite %(%'`
     ).all();
     for (const r of bledDrift) {
       console.warn(

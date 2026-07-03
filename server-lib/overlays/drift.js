@@ -331,6 +331,26 @@ function validateSticheraTextIntegrity() {
       warnings += 1;
     }
 
+    // (F) Editorial-rubric annotation bled into hymn text: "(at Vigil)",
+    //   "(at Great Vespers)", "(at the Divine Liturgy)", etc. — a which-service
+    //   marker from the DOCX layout, never part of the sung sticheron. 108 rows
+    //   truncated 2026-07-03 (sibling of the C-E class without the <w:t> markers).
+    const annotDrift = db.prepare(
+      `SELECT id, commemoration_id, section, "order", substr(text, 1, 80) AS preview
+         FROM stichera
+        WHERE text LIKE '%(at Vigil)%' OR text LIKE '%(at Great Vespers)%'
+           OR text LIKE '%(at Vespers)%' OR text LIKE '%(at Matins)%'
+           OR text LIKE '%(at the Divine Liturgy)%'`
+    ).all();
+    for (const r of annotDrift) {
+      console.warn(
+        `Sticheron ${r.id} (comm=${r.commemoration_id} ${r.section}[${r.order}]) ` +
+        `has an editorial "(at …)" rubric bled into hymn text: "${r.preview}…". ` +
+        `Fix: truncate at the annotation (keep the real hymn).`
+      );
+      warnings += 1;
+    }
+
     if (warnings === 0) console.log('Sticheron text integrity: clean.');
     return { ok: warnings === 0, warnings };
   } finally {

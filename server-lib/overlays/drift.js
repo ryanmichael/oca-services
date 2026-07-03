@@ -292,8 +292,12 @@ function validateSticheraTextIntegrity() {
     const readingsDrift = db.prepare(
       `SELECT id, commemoration_id, section, "order", substr(text, 1, 80) AS preview
          FROM stichera
-        WHERE (text LIKE '%Proverbs %:%' OR text LIKE '%Wisdom of Solomon %:%'
-            OR text LIKE '%Isaiah %:%' OR text LIKE '%Genesis %:%')
+        WHERE (text LIKE '%Proverbs %:%' OR text LIKE '%Wisdom%:%'
+            OR text LIKE '%Isaiah %:%' OR text LIKE '%Genesis %:%'
+            OR text LIKE '%Jeremiah %:%' OR text LIKE '%Ezekiel %:%'
+            OR text LIKE '%Numbers %:%' OR text LIKE '%Deuteronomy %:%'
+            OR text LIKE '%Exodus %:%' OR text LIKE '%Malachi %:%'
+            OR text LIKE '%Joel %:%' OR text LIKE '%Baruch %:%')
           AND length(text) < 200`
     ).all();
     for (const r of readingsDrift) {

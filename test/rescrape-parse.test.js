@@ -27,14 +27,21 @@ describe('normalizer', () => {
     assert.equal(stripLeadingTone('we sing in Tone 6 today'), 'we sing in Tone 6 today');
   });
 
-  it('inserts a space after punctuation glued to the next word', () => {
+  it('inserts a space after sentence/clause punctuation glued to the next word', () => {
     assert.equal(insertPunctuationSpaces('denial.Therefore'), 'denial. Therefore');
-    assert.equal(insertPunctuationSpaces('Me?"In this'), 'Me?" In this');
+    assert.equal(insertPunctuationSpaces('Jordan,in the'), 'Jordan, in the');
   });
 
   it('leaves scripture refs untouched (digit after colon/period)', () => {
     assert.equal(insertPunctuationSpaces('1 Peter 1:3-9'), '1 Peter 1:3-9');
     assert.equal(insertPunctuationSpaces('Psalm 3.14'), 'Psalm 3.14');
+  });
+
+  it('does NOT split possessive apostrophes or opening quotes', () => {
+    assert.equal(insertPunctuationSpaces("the Publican's tears"), "the Publican's tears");
+    assert.equal(insertPunctuationSpaces('cried: "You are'), 'cried: "You are');
+    assert.equal(hasGluedPunctuation("the heart's desire"), false);
+    assert.equal(hasGluedPunctuation('he said "Seeking'), false);
   });
 
   it('hasGluedPunctuation flags glued text and not clean text', () => {

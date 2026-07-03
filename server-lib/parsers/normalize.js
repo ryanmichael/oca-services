@@ -39,12 +39,14 @@ function collapseWhitespace(s) {
 }
 
 // Insert a missing space after sentence/clause punctuation glued to the next
-// word ("denial.Therefore" → "denial. Therefore"). The 2024 scrape dropped
-// these on line-joins; normalizing both sides keeps the cosmetic defect from
-// masquerading as content drift. The lookahead fires on a letter or an OPENING
-// quote/paren only (never a digit — so "1:3"/"3.14" are untouched — and never a
-// closing quote — so a sentence-ender keeps its own closing quote: ?" not ? ").
-const GLUED_PUNCT_RE = /([.!?,;:”"’')])(?=[A-Za-z“‘(])/g;
+// word ("denial.Therefore" → "denial. Therefore", "Jordan,in" → "Jordan, in").
+// The 2024 scrape dropped these on line-joins. The trigger set is ONLY the
+// sentence/clause enders [.,;:!?] — deliberately NOT quotes/apostrophes/parens,
+// because those produce ruinous false positives (possessive "heart's" →
+// "heart' s", opening quote "\"You" → "\" You"). The lookahead requires a LETTER
+// (never a digit) so scripture refs ("1:3") and decimals ("3.14") are untouched.
+// This is safe to apply as a data migration, not just as a comparison normalizer.
+const GLUED_PUNCT_RE = /([.,;:!?])(?=[A-Za-z])/g;
 function insertPunctuationSpaces(s) {
   return s.replace(GLUED_PUNCT_RE, '$1 ');
 }

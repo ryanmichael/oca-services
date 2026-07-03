@@ -9,7 +9,13 @@
 //
 // Excluded: Pascha + Bright Week (paschal kontakion-only shape) and the few
 // Lord's-feast Sundays that displace the Sunday template entirely (Palm
-// Sunday, Pentecost — same list as L8).
+// Sunday, Pentecost — same list as L8). Also excluded: Lenten commemoration
+// Sundays (weeks 1-5 of Great Lent), where OCA typikon combines the "Glory /
+// Now and ever" connectors onto a single kontakion (Cross, Palamas, Climacus,
+// Mary of Egypt, Orthodoxy) and does NOT append a separate Theotokion-
+// Kontakion. See features/sunday-kontakia-restructure.md.
+
+const { getWeekOfLent } = require('../../../calendar-rules');
 
 module.exports = {
   id:             'L10-sunday-kontakion-theotokion',
@@ -25,6 +31,8 @@ module.exports = {
     if (ctx.daysSincePascha === 0)  return false;   // Pascha
     if (ctx.daysSincePascha === -7) return false;   // Palm
     if (ctx.daysSincePascha === 49) return false;   // Pentecost
+    const week = getWeekOfLent(ctx.d);
+    if (week === 1 || week === 2 || week === 3 || week === 4 || week === 5) return false;
     return true;
   },
   check: (ctx) => {

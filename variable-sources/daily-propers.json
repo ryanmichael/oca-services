@@ -176,7 +176,14 @@
     "2": {
       "tone": 5,
       "refrain": "Thou, O Lord, shalt protect us and preserve us from this generation forever.",
-      "verse": "Save me, O Lord, for there is no longer any that is godly!"
+      "verse": "Save me, O Lord, for there is no longer any that is godly!",
+      "secondary": {
+        "tone": 1,
+        "refrain": "My mouth shall speak wisdom, and the meditation of my heart shall be of understanding.",
+        "verse": "Hear ye this, all ye nations; give ear, all ye that dwell in the world.",
+        "label": "St. Gregory Palamas",
+        "_source": "OCA General Menaion hierarch common (Palamas Sun uses saint hierarch propers)"
+      }
     },
     "3": {
       "tone": 6,
@@ -186,12 +193,26 @@
     "4": {
       "tone": 8,
       "refrain": "Pray and make your vows before the Lord, our God!",
-      "verse": "In Judah God is known; His Name is great in Israel."
+      "verse": "In Judah God is known; His Name is great in Israel.",
+      "secondary": {
+        "tone": 7,
+        "refrain": "Precious in the sight of the Lord is the death of His saints.",
+        "verse": "What shall I render unto the Lord for all that He hath given me?",
+        "label": "St. John Climacus",
+        "_source": "OCA General Menaion monastic common (Climacus Sun uses saint monastic propers)"
+      }
     },
     "5": {
       "tone": 1,
       "refrain": "Let Thy mercy, O Lord, be upon us, as we have set our hope on Thee!",
-      "verse": "Rejoice in the Lord, O you righteous! Praise befits the just!"
+      "verse": "Rejoice in the Lord, O you righteous! Praise befits the just!",
+      "secondary": {
+        "tone": 7,
+        "refrain": "Precious in the sight of the Lord is the death of His saints.",
+        "verse": "What shall I render unto the Lord for all that He hath given me?",
+        "label": "St. Mary of Egypt",
+        "_source": "OCA General Menaion monastic common (Mary of Egypt Sun uses saint monastic propers)"
+      }
     },
     "meatfare": {
       "tone": 3,
@@ -217,7 +238,14 @@
       "verses": [
         "He who dwelleth in the shelter of the Most High will abide in the shadow of the heavenly God.",
         "He will say to the Lord: \"My Protector and my Refuge; my God, in Whom I trust.\""
-      ]
+      ],
+      "secondary": {
+        "tone": 2,
+        "verses": [
+          "The mouth of the righteous shall meditate wisdom, and his tongue shall speak of judgment."
+        ],
+        "label": "St. Gregory Palamas"
+      }
     },
     "3": {
       "tone": 8,
@@ -231,14 +259,30 @@
       "verses": [
         "Come, let us rejoice in the Lord! Let us make a joyful noise to God our Savior!",
         "Let us come before His face with thanksgiving; let us make a joyful noise to Him with songs of praise!"
-      ]
+      ],
+      "secondary": {
+        "tone": 6,
+        "verses": [
+          "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight.",
+          "His seed shall be mighty upon the earth; the generation of the upright shall be blessed."
+        ],
+        "label": "St. John Climacus"
+      }
     },
     "5": {
       "tone": 1,
       "verses": [
         "God gives vengeance unto me, and subdues people under me.",
         "He magnifies the salvation of the King and deals mercifully with David, His anointed, and his seed forever."
-      ]
+      ],
+      "secondary": {
+        "tone": 6,
+        "verses": [
+          "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight.",
+          "His seed shall be mighty upon the earth; the generation of the upright shall be blessed."
+        ],
+        "label": "St. Mary of Egypt"
+      }
     },
     "meatfare": {
       "tone": 8,
@@ -253,6 +297,21 @@
         "It is good to give thanks to the Lord, to sing praises to Thy Name, O Most High.",
         "To declare Thy mercy in the morning, and Thy truth by night."
       ]
+    }
+  },
+  "lentenSundayCommunion": {
+    "_meta": "Secondary koinonikon for Lenten commemoration Sundays. Attaches on top of the standard Sunday koinonikon (\"Praise the Lord from the heavens\"). Weeks 2/4/5 add the saint's koinonikon.",
+    "2": {
+      "label": "St. Gregory Palamas",
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    },
+    "4": {
+      "label": "St. John Climacus",
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    },
+    "5": {
+      "label": "St. Mary of Egypt",
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
     }
   }
 }

@@ -199,7 +199,24 @@ function handle(req, res, ctx) {
               gloryK = saintKs[0];
             }
 
-            if (gloryK) {
+            // Lenten commemoration Sundays (Cross week 3, Palamas 2, Climacus
+            // 4, Mary of Egypt 5, and Sunday of Orthodoxy week 1) sing the
+            // Sunday's own kontakion under a COMBINED "Glory... now and
+            // ever..." connector — no separate Theotokion-Kontakion at Now.
+            // OCA typikon treats the day's own kontakion as claiming both
+            // slots. Detect by getWeekOfLent (returns "1".."5") — falls
+            // through to the standard Sunday-restructure otherwise.
+            const lentenWeek = getWeekOfLent(d);
+            const isLentenCommemorationSunday =
+              lentenWeek === 1 || lentenWeek === 2 || lentenWeek === 3
+              || lentenWeek === 4 || lentenWeek === 5;
+
+            if (gloryK && isLentenCommemorationSunday) {
+              lit.kontakia = [
+                ...(extraK ? [{ ...extraK, connector: null }] : []),
+                { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit. Now and ever, and unto ages of ages. Amen.' },
+              ];
+            } else if (gloryK) {
               const theo = liturgyFixedResolved['kontakion-theotokion'];
               const theoK = theo ? {
                 tone:   theo.tone,

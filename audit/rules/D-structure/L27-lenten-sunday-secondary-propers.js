@@ -27,7 +27,7 @@ module.exports = {
     if (ctx.dow !== 'sunday') return false;
     if (getLiturgicalSeason(ctx.d) !== SEASONS.GREAT_LENT) return false;
     const week = getWeekOfLent(ctx.d);
-    return week === '2' || week === '4' || week === '5';
+    return week === 2 || week === 4 || week === 5;
   },
   check: (ctx) => {
     const blocks = ctx.assembled?.blocks || [];

@@ -305,6 +305,32 @@ function validateSticheraTextIntegrity() {
       warnings += 1;
     }
 
+    // (C-E) Liturgy-propers-bled drift: the 2026-07-03 rescrape harness found 83
+    //   rows where the OCA DOCX scrape glued Liturgy propers (epistle citation,
+    //   Alleluia refrain) or Word-XML residue onto — or in place of — a
+    //   sticheron. Cleaned in the same commit; these guards keep the class from
+    //   silently returning on the next scrape. Signatures:
+    //     C: leftover `<w:t>` Word-XML tag.
+    //     D: an epistle CITATION ("Epistle (55) …" / "Epistle Tone 4 …") — the
+    //        paren-number/tone form, so a hymn word like "epistles" is safe.
+    //     E: the Divine-Liturgy Alleluia refrain "Alleluia, Alleluia".
+    const bledDrift = db.prepare(
+      `SELECT id, commemoration_id, section, "order", substr(text, 1, 80) AS preview
+         FROM stichera
+        WHERE text LIKE '%<w:t%'
+           OR text LIKE '%Epistle (%' OR text LIKE '%Epistle Tone%'
+           OR text LIKE '%Alleluia, Alleluia%'`
+    ).all();
+    for (const r of bledDrift) {
+      console.warn(
+        `Sticheron ${r.id} (comm=${r.commemoration_id} ${r.section}[${r.order}]) ` +
+        `has Liturgy-propers/XML-residue bled into hymn text: "${r.preview}…". ` +
+        `Fix: truncate the residue tail (keep the real hymn) or delete if it is ` +
+        `pure epistle/alleluia metadata. See scripts/rescrape-diff.js.`
+      );
+      warnings += 1;
+    }
+
     if (warnings === 0) console.log('Sticheron text integrity: clean.');
     return { ok: warnings === 0, warnings };
   } finally {

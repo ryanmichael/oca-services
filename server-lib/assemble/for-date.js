@@ -468,6 +468,19 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         // (position:'now'); splice the saint between them as the Glory.
         const nowIdx   = slots.findIndex(s => s.position === 'now');
         const insertAt = nowIdx !== -1 ? nowIdx : slots.length;
+        // Once a Menaion Glory troparion intervenes, the dismissal Theotokion
+        // follows the tone of the Glory (saint's troparion), per Slavic rubric
+        // "Богородичен по гласу Славы" — the same principle D4 enforces for the
+        // Aposticha. The generator authored it at the week tone (no saint yet);
+        // re-key to the saint's tone (all 8 dismissal Theotokia exist in the
+        // Octoechos). Guarded by D16-vespers-troparia-theotokion-tone.
+        if (nowIdx !== -1 && slots[nowIdx].source === 'octoechos') {
+          slots[nowIdx] = {
+            ...slots[nowIdx],
+            key:  `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
+            tone: troparion.tone,
+          };
+        }
         slots.splice(insertAt, 0, {
           position: 'glory',
           source:   'menaion', provenance: menaionProvenance,

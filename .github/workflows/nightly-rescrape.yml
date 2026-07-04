@@ -1,0 +1,125 @@
+name: Nightly rescrape drift
+
+# Deterministic cross-check of every oca-menaion/oca-feast stichera row against a
+# fresh re-parse of the OCA DOCX that fed it (scripts/rescrape-diff.js). Unlike
+# the LLM judge, this needs no reps and no server — one pass is the exact answer.
+# It alerts ONLY on findings that are NEW relative to audit/rescrape-baseline.json,
+# so the ~218 known cross-source/per-row tail findings stay quiet.
+#
+# Two drift directions it catches:
+#   - our storage/oca.db gaining garbage (a bad scrape/edit), and
+#   - OCA revising a published DOCX (caught because the cache re-fetches weekly).
+#
+# Failure surface: opens / updates a GitHub Issue tagged "rescrape-drift".
+
+on:
+  schedule:
+    # 08:30 UTC daily — after determinism (08:00) and translation-matrix (08:15)
+    # so the three nightly crons don't contend for the runner queue.
+    - cron: '30 8 * * *'
+  workflow_dispatch:  # allow manual runs from the Actions tab
+
+jobs:
+  rescrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      # Rotate the DOCX cache weekly: daily runs reuse it (polite to files.oca.org
+      # and fast); the weekly cache-miss forces a full fresh fetch so OCA-side
+      # revisions are picked up.
+      - name: Compute weekly cache key
+        id: wk
+        run: echo "week=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore/seed OCA DOCX cache
+        uses: actions/cache@v4
+        with:
+          path: reference/scrape
+          key: rescrape-docx-${{ steps.wk.outputs.week }}
+
+      - name: Fetch OCA DOCXs (fills only missing; full fetch on weekly cache-miss)
+        # The 3 special-cycle dates (Nativity/Theophany Eve, Annunciation) always
+        # 404 and the fetcher exits non-zero — tolerate it; the differ skips any
+        # missing DOCX and only ever alerts on NEW findings, never on absence.
+        run: npm run rescrape:fetch || true
+
+      - name: Rescrape drift check vs baseline
+        run: |
+          set -o pipefail
+          node scripts/rescrape-diff.js --all --check audit/rescrape-baseline.json | tee rescrape-check.log
+
+      - name: Upload drift log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rescrape-drift
+          path: rescrape-check.log
+          retention-days: 30
+
+      - name: Open / update rescrape-drift issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            let detail = '';
+            try {
+              const log = fs.readFileSync('rescrape-check.log', 'utf8');
+              const idx = log.indexOf('NEW findings');
+              detail = idx >= 0 ? log.slice(idx) : log;
+            } catch { detail = '(drift log unavailable — see the uploaded artifact)'; }
+            const body = [
+              `Nightly rescrape harness found drift NEW relative to`,
+              `\`audit/rescrape-baseline.json\` on ${today}.`,
+              ``,
+              `Workflow run: ${run}`,
+              ``,
+              `Each key is \`<date>#<stichera.id>:<class>\` (B = text differs, C = DB`,
+              `text absent from the fresh DOCX). A NEW key means either our`,
+              `storage/oca.db gained a row that no longer matches OCA's published`,
+              `text, or OCA revised the DOCX for that date.`,
+              ``,
+              '```',
+              detail.trim().slice(0, 8000),
+              '```',
+              ``,
+              `Triage with the \`audit-driven-fix\` skill. If a NEW finding is a`,
+              `legitimate cross-source row (not drift), refresh the baseline:`,
+              `\`node scripts/rescrape-diff.js --all --capture-baseline audit/rescrape-baseline.json\``,
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              labels: 'rescrape-drift', state: 'open',
+            });
+            if (issues.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issues[0].number, body,
+              });
+              console.log(`Commented on existing issue #${issues[0].number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: `Rescrape drift detected (${today})`,
+                body,
+                labels: ['rescrape-drift'],
+              });
+              console.log(`Opened issue #${created.number}`);
+            }

@@ -13,6 +13,8 @@
 //   node scripts/rescrape-diff.js --all
 //   node scripts/rescrape-diff.js --all --limit 20
 //   node scripts/rescrape-diff.js --all --pronoun   # normalize yy/tt on both sides
+//   node scripts/rescrape-diff.js --all --capture-baseline audit/rescrape-baseline.json
+//   node scripts/rescrape-diff.js --all --check audit/rescrape-baseline.json  # exit 2 on NEW drift
 //
 // Reports: audit/reports/rescrape-diff-<date>.md + rescrape-diff-summary.md
 // Read-only against storage/oca.db. See docs/rescrape-harness-design.md.
@@ -32,16 +34,25 @@ const CLOSE_MIN  = 0.70;   // ≥ this but < EXACT → class B (found, text diff
 // < CLOSE_MIN → class C (DB text effectively absent from the fresh DOCX)
 
 function parseArgs(argv) {
-  const args = { date: null, all: false, limit: null, pronoun: false };
+  const args = { date: null, all: false, limit: null, pronoun: false,
+                 captureBaseline: null, check: null };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--all') args.all = true;
     else if (a === '--date') args.date = argv[++i];
     else if (a === '--limit') args.limit = parseInt(argv[++i], 10);
     else if (a === '--pronoun') args.pronoun = true;
+    else if (a === '--capture-baseline') args.captureBaseline = argv[++i];
+    else if (a === '--check') args.check = argv[++i];
     else throw new Error(`Unknown arg: ${a}`);
   }
   return args;
+}
+
+// A stable per-finding key: (date, dbRowId, class). Content classes only
+// (B/C) — A/E/G are low-severity or already zero and would add baseline churn.
+function findingKey(date, f) {
+  return `${date}#${f.row.id}:${f.cls}`;
 }
 
 // Bounded Levenshtein → similarity ratio in [0,1].
@@ -244,19 +255,50 @@ function main() {
 
     const agg = { dates: 0, docxMissing: 0, db: 0, clean: 0, B: 0, C: 0, A: 0, E: 0, G: 0 };
     const perDate = [];
+    const findingKeys = [];   // content-drift keys (B/C) for baseline / --check
 
     for (const date of dates) {
       const result = diffDate(db, date, args);
       if (result.docxMissing) { agg.docxMissing++; continue; }
-      writeDateReport(result);
+      if (!args.captureBaseline && !args.check) writeDateReport(result);
       agg.dates++;
       for (const k of ['db', 'clean', 'B', 'C', 'A', 'E', 'G']) agg[k] += result.counts[k];
+      for (const f of result.findings) if (f.cls === 'B' || f.cls === 'C') findingKeys.push(findingKey(date, f));
       const nFind = result.findings.length;
       perDate.push({ date, nFind, counts: result.counts });
-      if (args.date || nFind > 0) {
+      if (!args.captureBaseline && !args.check && (args.date || nFind > 0)) {
         console.log(`${date}: db=${result.counts.db} clean=${result.counts.clean} ` +
           `B=${result.counts.B} C=${result.counts.C} A=${result.counts.A} E=${result.counts.E} G=${result.counts.G}`);
       }
+    }
+
+    // Baseline capture: write the current content-drift finding-key set.
+    if (args.captureBaseline) {
+      const baseline = { capturedRows: agg.db, keys: findingKeys.sort() };
+      fs.writeFileSync(args.captureBaseline, JSON.stringify(baseline, null, 0) + '\n');
+      console.log(`Baseline captured: ${findingKeys.length} B/C keys → ${path.relative(ROOT, args.captureBaseline)}`);
+      return;
+    }
+
+    // Check mode: alert only on NEW findings vs the committed baseline.
+    if (args.check) {
+      const baseline = JSON.parse(fs.readFileSync(args.check, 'utf8'));
+      const known = new Set(baseline.keys);
+      const now = new Set(findingKeys);
+      const added = findingKeys.filter(k => !known.has(k));
+      const removed = baseline.keys.filter(k => !now.has(k));
+      console.log(`Rescrape drift check vs ${path.relative(ROOT, args.check)}:`);
+      console.log(`  baseline B/C findings: ${baseline.keys.length} · current: ${findingKeys.length}`);
+      console.log(`  NEW (drift): ${added.length} · resolved-since-baseline: ${removed.length}`);
+      if (removed.length) console.log(`  (${removed.length} baseline findings gone — a fix landed; refresh the baseline when convenient.)`);
+      if (added.length) {
+        console.log('\nNEW findings (investigate — DB or OCA-source drift since baseline):');
+        added.forEach(k => console.log(`  + ${k}`));
+        process.exitCode = 2;
+      } else {
+        console.log('\nNo new drift. ✓');
+      }
+      return;
     }
 
     // Aggregate summary (only for --all).

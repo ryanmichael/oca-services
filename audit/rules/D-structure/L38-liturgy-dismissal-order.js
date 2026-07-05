@@ -61,13 +61,24 @@ module.exports = {
 
     // Psalm 33 at the Liturgy ending flows straight into the priestly blessing —
     // no concluding "Glory… now and ever…" doxology.
-    const psalm33Gloria = blocks.some(b =>
-      b.section === 'Psalm 33' && b.type === 'doxology' && /now and ever/i.test(b.text || ''));
-    if (psalm33Gloria) {
+    const psalm33 = blocks.filter(b => b.section === 'Psalm 33');
+    if (psalm33.some(b => b.type === 'doxology' && /now and ever/i.test(b.text || ''))) {
       issues.push({
         message: 'Psalm 33 (Liturgy ending) has a trailing "Glory… now and ever…" doxology — it should flow straight into "The blessing of the Lord be upon you…".',
         hint:    'Drop the ps33-glory block in _litPsalm33 (assemblers/liturgy-parts/thanksgiving.js).',
       });
+    }
+
+    // Psalm 33 renders the full psalm, one verse per line (≥15 verse blocks) so
+    // it doesn't silently revert to the abbreviated single-paragraph form.
+    if (psalm33.length) {
+      const verseLines = psalm33.filter(b => b.type !== 'rubric' && (b.text || '').trim()).length;
+      if (verseLines < 15) {
+        issues.push({
+          message: `Psalm 33 renders ${verseLines} verse line(s); expected the full psalm one-per-line (≥15).`,
+          hint:    'psalm-33 in liturgy-fixed.json should carry the full `verses` array; see _litPsalm33.',
+        });
+      }
     }
     return issues;
   },

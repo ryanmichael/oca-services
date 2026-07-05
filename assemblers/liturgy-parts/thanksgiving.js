@@ -73,13 +73,23 @@ function _litPsalm33(f) {
   const section = 'Psalm 33';
   const p = mustGet(f, 'psalm-33', { scope: section });
   if (!p) return [];
-  // No concluding "Glory… now and ever…" here: at the Liturgy ending Psalm 33
-  // is sung during the antidoron and flows straight into the priestly blessing
+  // Full Psalm 33, one verse per line (each its own block, no per-verse speaker
+  // label) so any parish can use as many verses as its antidoron distribution
+  // needs — one static version, no per-parish logic. `shortFormAfter` marks the
+  // traditional short-form endpoint with a rubric divider. No concluding
+  // "Glory… now and ever…": Psalm 33 flows straight into the priestly blessing
   // ("The blessing of the Lord be upon you…"). Guarded by L38.
-  return [
-    makeBlock('ps33-rubric', section, 'rubric', null, p.rubric),
-    makeBlock('ps33-text',   section, 'prayer', 'reader', p.text, { density: 'compact' }),
-  ];
+  const verses = Array.isArray(p.verses) ? p.verses : (p.text ? [p.text] : []);
+  const cutoff = p.shortFormAfter || 0;
+  const blocks = [makeBlock('ps33-rubric', section, 'rubric', null, p.rubric)];
+  verses.forEach((v, i) => {
+    blocks.push(makeBlock(`ps33-v${i + 1}`, section, 'prayer', null, v, { density: 'compact' }));
+    if (cutoff && i + 1 === cutoff) {
+      blocks.push(makeBlock('ps33-shortform', section, 'rubric', null,
+        'The psalm may conclude here; the verses that follow are used at a longer distribution of the antidoron.'));
+    }
+  });
+  return blocks;
 }
 
 module.exports = {

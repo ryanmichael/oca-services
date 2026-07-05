@@ -53,9 +53,11 @@ function _litTypicalAntiphon2(f) {
     blocks.push(makeBlock(`a2-v${i}`, section, 'verse', 'choir', v));
   });
   if (a.glory) {
+    // The Second Antiphon's concluding doxology is followed directly by the
+    // "Only-begotten Son" hymn (pushed in liturgy.js), which takes the place
+    // of the refrain at "Now and ever" — so, unlike Antiphon 1, no concluding
+    // "Save us, O Son of God" refrain is sung here. Guarded by L35.
     blocks.push(makeBlock('a2-glory', section, 'doxology', 'choir', a.glory));
-    blocks.push(makeBlock('a2-grefrain', section, 'response', 'choir',
-      a.gloryRefrain || a.refrain));
   }
   return blocks;
 }

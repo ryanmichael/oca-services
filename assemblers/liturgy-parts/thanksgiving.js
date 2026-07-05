@@ -7,15 +7,17 @@ function _litThanksgiving(isBasil, f) {
   const section = 'Litany of Thanksgiving';
   const lit = mustGet(f, 'litany-thanksgiving', { scope: section });
   if (!lit) return [];
+  // The post-Communion Litany of Thanksgiving is the SHORT litany (3 deacon
+  // petitions): thanksgiving-for-partaking → "Help us, save us" → the "whole
+  // day perfect…" commit. It does NOT carry the supplicatory "Grant this, O
+  // Lord" petitions (angel of peace, pardon, Christian ending, etc.) — those
+  // belong to the Litany of Completion at Vespers/Matins. Guarded by L37.
   const blocks = [
-    makeBlock('lt-deacon',   section, 'prayer',   'deacon', lit.deacon),
-    makeBlock('lt-response', section, 'response', 'choir',  lit.response),
-    makeBlock('lt-petition', section, 'prayer',   'deacon', lit.petition),
+    makeBlock('lt-deacon',     section, 'prayer',   'deacon', lit.deacon),
+    makeBlock('lt-response',   section, 'response', 'choir',  lit.response),
+    makeBlock('lt-petition',   section, 'prayer',   'deacon', lit.petition),
+    makeBlock('lt-petition-r', section, 'response', 'choir',  lit.response),
   ];
-  (lit.petitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`lt-p${i}`, section, 'prayer',   'deacon', p));
-    blocks.push(makeBlock(`lt-r${i}`, section, 'response', 'choir',  lit.petitionResponse));
-  });
   blocks.push(makeBlock('lt-prayer', section, 'prayer', 'priest',
     isBasil ? lit['prayer-basil'] : lit['prayer-chrysostom'],
     { density: 'compact' }));

@@ -20,13 +20,14 @@ module.exports = {
   severity:       'high',
   description:    'The Divine Liturgy Third Antiphon (Beatitudes) must not contain an irmos-labeled hymn — Beatitudes are troparia, never canon irmoi. [discovered 2026-07-05]',
   needsAssembled: true,
-  // Ordinary-Sunday resurrectional Beatitudes only. Lenten/Holy-Week Sundays
-  // (e.g. the Sunday of the Cross) and Great Feasts draw their Beatitudes from
-  // a Triodion/feast canon — a separate hand-authored design that may include
-  // an irmos — and are out of scope for this resurrectional-set guard.
+  // Applies to ordinary AND Lenten Sundays: the resurrectional Beatitudes spine
+  // (whether standalone or blended with a Triodion Cross/feast canon, as on the
+  // Sunday of the Cross) is the dedicated "Blesseds" set and never carries an
+  // irmos. Holy-Week/Bright-Week and Great Feasts are skipped — their Third
+  // Antiphon is a festal antiphon (verses + refrain), not the Beatitudes.
   appliesTo: (ctx) => {
     if (ctx.service !== 'liturgy') return false;
-    if (ctx.season === 'greatLent' || ctx.season === 'holyWeek') return false;
+    if (ctx.season === 'holyWeek') return false;
     if (ctx.isBrightWeek) return false;
     if (cal.getGreatFeastKey(ctx.d) !== null) return false;
     return true;

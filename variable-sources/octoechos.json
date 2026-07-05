@@ -227,25 +227,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "Thou alone knowest the weakness of human nature and in compassion hast assumed its form; do Thou gird me with power from on high, that I may cry unto Thee: Holy is the animate temple of Thine ineffable glory, O Lover of mankind!",
-            "troparia": [
-              "As Thou art my God, O Good one, Thou hast taken compassion upon me, fallen as I was, deigning to come down to me, and exalting me through Thy crucifixion that I may cry unto Thee: “Holy art Thou the Lord of glory, in goodness beyond compare!”",
-              "O Christ, as the hypostatic Life and as compassionate God, Thou hast clothed Thyself with me, the corrupted one, descending, O Master, unto the dust of death, destroying the power of death, and arising on the third day, whereby Thou hast clothed me with incorruption."
-            ],
-            "theotokion": "Having conceived God in thy womb, O Virgin, by the Most holy Spirit, thou hast remained unburned, like the bush that burnt before Moses the lawgiver yet remained unburned, clearly foretelling of thee who received the unendurable fire."
-          },
-          "ode6": {
-            "irmos": "The deepest abyss hath surrounded us, and there is none to deliver us, yea we have been counted as sheep for the slaughter; save Thy people O our God, for Thou art the strength and restoration of the weak.",
-            "troparia": [
-              "Through the transgression of the first-formed man, O Lord, we were grievously wounded; but by Thy wounds, by which Thou wast afflicted for our sakes, O Christ, we have been healed; for Thou art the strength and restoration of the feeble.",
-              "Thou hast led us up from Hades, O Lord, by destroying the all-devouring whale of the deep, O All-powerful one, and destroying his power by Thy might; for Thou art the life and the light and the resurrection."
-            ],
-            "theotokion": "The Forefathers of mankind rejoice in thee, immaculate Virgin, for through thee they regain Eden, which they had lost through transgression; for thou art pure both before child-bearing and after giving birth."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 1 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"Through food did the enemy lead Adam forth from paradise; but by the Cross hath Christ led back to it the thief who cried: Remember me when Thou comest in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"With Adam and the thief I worship Thy sufferings and glorify Thy resurrection; and I cry out with a splendid voice: Remember me, O Lord, when Thou comest in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O Sinless One, of Thine own will Thou wast crucified and placed in the Tomb, yet Thou didst arise as God, raising up with Thyself Adam who crieth out: Remember me when Thou comest in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"Raising up the temple of Thy body by Thy resurrection on the third day, O Christ God, Thou didst raise up Adam and his descendants who cry: Remember me when Thou comest in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"Very early, the myrrh-bearing women arrived, weeping, at Thy tomb, O Christ God; and they found an angel sitting there, clad in white garments, who said: What seek ye? Christ is risen! Lament no longer!"},
+                    {"label":"Resurrection","text":"When Thine apostles went to the mountain whither Thou hadst commanded them to go, and saw Thee, O Savior, they worshipped Thee; and Thou didst send them unto the nations, to teach and baptize them."},
+                    {"label":"Glory","text":"Let us worship the Father, let us glorify the Son, and together let us hymn the all-holy Spirit, crying out and saying: O most Holy Trinity, save us all!"},
+                    {"label":"Theotokion","text":"Thy people bring Thy Mother before Thee to make supplication, O Christ. Through her entreaties grant us Thy compassions, O Good One, that we may glorify Thee Who hast shone forth upon us from the tomb."}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -1544,25 +1538,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "The desert of the barren Church of the nations blossomed like a lily at Thy coming, O Lord, therein hath my heart been established",
-            "troparia": [
-              "At Thy passion creation was changed when it saw Thee, who doest all things by Thy divine bidding, humbled in form and derided by lawless men.",
-              "Thou didst fashion me from dust by Thine own hand in accordance with Thine image, and when I through sin, was crushed back to the dust of death from whence I came Thou didst descend with me into Hades, O Christ, and raise me up again with Thyself."
-            ],
-            "theotokion": "The Angelic Orders were astonished, and the hearts of mortals trembled at thy birth-giving, O Most pure one; wherefore in faith we honor thee as the Mother of God."
-          },
-          "ode6": {
-            "irmos": "Whirled about in the abyss of sin, I appeal to the unfathomable abyss of Thy compassion: Raise me up from corruption, O God.",
-            "troparia": [
-              "The Just One is judged as a malefactor and nailed with the lawless ones to the Tree, by His own blood granting remission of sins to the guilty.",
-              "Of old, through one man, the first Adam, death entered the world; and through one man, the Son of God, Resurrection hath been revealed."
-            ],
-            "theotokion": "Without knowing a man thou didst bring forth a child, O Virgin, yet thou remainest ever-virgin, revealing thereby, proof the Divinity of thy Son and God."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 2 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"We offer Thee the cry of the thief, and we pray: Remember us in Thy Kingdom, O Savior."},
+                    {"label":"Resurrection","text":"For the forgiveness of transgressions we offer unto Thee the Cross which Thou didst accept for our sake, O Thou who lovest mankind."},
+                    {"label":"Resurrection","text":"We bow down in worship, O Master, before Thy burial and rising, whereby Thou hast delivered the world from corruption, O Thou Who lovest mankind."},
+                    {"label":"Resurrection","text":"By Thy death hath death been slain, O Lord, and by Thy resurrection hast Thou saved the world, O Savior."},
+                    {"label":"Resurrection","text":"Risen from the tomb, Thou didst meet the myrrh-bearing women; and Thou didst tell Thy disciples to announce Thine arising."},
+                    {"label":"Resurrection","text":"Those who slept in darkness, beholding Thee, the Light, in the nethermost parts of hades, O Christ, were raised from the dead."},
+                    {"label":"Glory","text":"Let us glorify the Father; let us all worship the Son, and let us hymn the Holy Spirit with faith."},
+                    {"label":"Theotokion","text":"Rejoice, fiery throne! Rejoice, bride unwedded! Rejoice, O Virgin who for men gavest birth unto God!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -2785,25 +2773,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "O Most High, Ruler of all, who out of nothing hath established all things, fashioned by Thy Word, perfected by the Spirit, confirm me in Thy love.",
-            "troparia": [
-              "Through Thy Cross the wicked one hath been shamed, for he hath fallen into the pit which he himself hath dug; while the horn of the humble, O Christ, hath been exalted in Thy Resurrection.",
-              "The preaching of true religion hath covered like flowing waters the seas of the nations, O Lover of mankind; for by arising from the tomb Thou hast revealed the light of the Trinity."
-            ],
-            "theotokion": "Glorious things are spoken of thee, O living city of Him who is king forever; for through thee, O Sovereign Lady, God dwelt among those on earth."
-          },
-          "ode6": {
-            "irmos": "The uttermost depths of sin have surrounded me, and my spirit perisheth. but do Thou, O Master, stretch forth Thy lofty arm and like Peter save me, O my Helmsman.",
-            "troparia": [
-              "By Thy gracious descent, an abyss of mercy and compassion hath surrounded me; for becoming incarnate and taking the form of a servant, O Master, Thou hast made me divine and glorified me together with Thyself.",
-              "The man-slayer became as one dead when he saw the one who had been put to death restored to life. These are the tokens of Thy Resurrection, O Christ, and the rewards of Thine immaculate Passion."
-            ],
-            "theotokion": "O Most pure one, who beyond understanding art alone the mediatrix between the Creator and mankind, beseech thy Son to be merciful to thy sinful servants and make thyself their protectress."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 3 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"From paradise didst Thou drive our forefather Adam, who had broken Thy commandment, O Christ; but, O Compassionate One, Thou didst cause to dwell therein the thief who confessed Thee on the cross, crying out: Remember me, O Savior, in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"With the curse of death didst Thou condemn us who had sinned, O Lord, Bestower of life; yet having suffered in Thy flesh, O sinless Master, Thou hast granted life unto mortals who cry out: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"In rising from the dead, Thou hast raised us up from the passions with Thyself through Thy resurrection, O Lord; and all the power of death hast Thou destroyed, O Savior. Wherefore, with faith we cry out to Thee: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O Thou who as God grantest life, by Thy three days in the tomb Thou didst raise up with Thyself the dead in hell, and as One Who is good Thou hast poured forth incorruption upon all of us who with faith ever cry out: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"Risen from the dead, O Savior, Thou didst first appear to the myrrh-bearing women, crying out: Rejoice! and through them Thou didst announce Thy resurrection to Thy friends, O Christ. Wherefore, with faith we cry out to Thee, Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"Moses, stretching out his arms on the mountain, prefigured the Cross and thus conquered Amelek. And, receiving it with faith as a mighty weapon against the demons, we all cry out: Remember us also in Thy Kingdom!"},
+                    {"label":"Glory","text":"O ye faithful, let us hymn the Father, Son, and Holy Spirit, the one God, the one Lord, as from a single Sun; for the Trinity is thrice-luminous and enlighteneth all who cry out: Remember us also in Thy Kingdom!"},
+                    {"label":"Theotokion","text":"Rejoice, O portal of God, through which the incarnate Creator passed without breaking thy seal! Rejoice , thou light cloud which bore Christ, the divine Rain! Rejoice, ladder and throne of heaven! Rejoice, honored mountain of God , fruitful and unquarried !"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -4038,25 +4020,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud: Thou, O Lord, art my strength, my refuge and foundation.",
-            "troparia": [
-              "The Tree of life, the true noetic Vine, is seen hanging upon the Cross, pouring forth unto all incorruption.",
-              "As One great, as One to be feared, as One who hath subdued the rage of Hades, and as God incorruptible, Thou hast arisen in the flesh."
-            ],
-            "theotokion": "O Theotokos, thou hast become the sole intermediary of supra- natural blessings for those on earth, wherefore we bring unto thee our salutation."
-          },
-          "ode6": {
-            "irmos": "The church crieth out unto Thee O Lord, “I will sacrifice unto Thee with a voice of praise” having been cleansed of the blood of the demons” by the blood that for mercy’s sake flowed from Thy side.",
-            "troparia": [
-              "Thou hast ascended the Cross and, girded with power, wrestled with the tyrant, and as God hurled him down from on high; raising up Adam by Thine invincible might.",
-              "Thou didst arise from the tomb, O Christ, in radiant comeliness, scattering all the enemies by Thy divine might, and as God filling all things with joy."
-            ],
-            "theotokion": "O new wonder, more wondrous than all wonders; for a Virgin, without knowing a man, hath conceived in her womb the One who upholdeth all things, in nowise constraining Him."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 4 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"By the tree was Adam forced to depart from paradise; but by the Tree of the Cross was the thief made to dwell in paradise. For the one by tasting broke the commandment of the Creator, while the other, crucified with Him, confessed the hidden God, crying out: Remember me in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O Lord Who wast lifted up upon the Cross, Who hast destroyed the power of death and as God hast blotted out the record of our sins, grant also the repentance of the thief unto us who faithfully serve Thee and cry out to Thee, O Christ God Who alone lovest mankind: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"On the Cross Thou didst tear asunder with the spear the record of our sins; and, numbered among the dead, Thou didst bind the tyrant of hades, O Lord Who lovest mankind, Who by Thy Resurrection hast delivered all from the bonds of hades. Thereby have we been illumined, and we cry to Thee: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O Thou Who alone art immortal, Who wast crucified and as almighty didst arise from the tomb on the third day, and hast raised up Adam, the first-created: Vouchsafe that I also may turn to repentance with my whole heart, and may ever cry out to Thee with fervent faith: Remember me, O Savior, in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"For our sake He Who is without passion became a man subject to the passions; and, nailed of His own will to the Cross, He hath raised us up with Himself. Wherefore we glorify His Cross, passion, and Resurrection, whereby we have been refashioned and whereby we also are saved, who cry out: Remember us also in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O ye faithful, let us entreat Him Who hath risen from the dead, hath made captive the dominion of hades, and was seen by the myrrh-bearing women and said to them: Rejoice!, that He deliver from corruption the souls of us who ever cry out to Him with the voice of the noble thief: Remember us also in Thy Kingdom!"},
+                    {"label":"Glory","text":"O ye faithful, let us all pray, that with one mind we may worthily glorify the Father, the Son, and the Holy Spirit, the unity of the Trinity in three Hypostases, unmingled, abiding, simple, indivisible and unapproachable; for thereby have we been delivered from the fiery torment."},
+                    {"label":"Theotokion","text":"O Christ, most merciful Master, Thy Mother, who gave birth unto Thee in the flesh without seed, the true Virgin, who remained incorrupt even after giving birth, do we set before Thee to make supplication: Grant forgiveness of transgressions unto those who ever cry out to Thee: Remember us also in Thy Kingdom!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -5347,25 +5323,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "By Thy command Thou didst establish the earth upon nothing and suspended it unsupported; do Thou establish Thy Church on the unshakeable rock of Thy commandments, O Christ, who alone art good and the Lover of mankind.",
-            "troparia": [
-              "Unto Thee O Christ, Who didst work the wondrous miracle in the wilderness, did the ungrateful children of Israel, who had suckled honey from the rocks, offer gall, and in exchange for Thy deeds of goodness they offered Thee vinegar instead of manna.",
-              "They who of old were protected by a cloud of light, laid Christ, who is life, in a tomb; but by Thine own power Thou didst arise and grant unto all the faithful the effulgence of the Spirit, which doth mystically overshadow them from above."
-            ],
-            "theotokion": "Without wedlock and without the pain of childbirth thou hast become the Mother of Him Who shone forth from the incorrupt Father through thee; Since thou didst bear the Word made flesh, with Orthodox belief we proclaim thee to be the Theotokos."
-          },
-          "ode6": {
-            "irmos": "Calm the raging sea of the passions, O Master Christ, with its soul-destroying tempest, and lead me up from corruption in that Thou art compassionate.",
-            "troparia": [
-              "The Ancestor of mankind, O Master Christ, descended into corruption through tasting of the forbidden fruit, but was restored to life through Thy Passion.",
-              "Thou, who art Life, didst descend into Hades, O Master Christ, and by becoming corruption to the corrupter, through death Thou hast become the source of the Resurrection."
-            ],
-            "theotokion": "The Virgin hath given birth to a child and after child-birth remained pure, and as a truly Virgin Mother, cradled Him who holdeth all things in His hands."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 5 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"Believing Thee to be God, O Christ, the thief on the cross confessed Thee in a pure manner, crying out from the depths of his heart: Remember me in Thy Kingdom, O Lord!"},
+                    {"label":"Resurrection","text":"Together let us hymn as Savior and Creator, Him Who on the Cross budded forth life for our race and caused the curse which originated from the tree to wither up."},
+                    {"label":"Resurrection","text":"By Thy death hast Thou destroyed the power of death, O Christ, and Thou didst raise up with Thyself the dead of ages past, who now hymn Thee as our true God and Savior."},
+                    {"label":"Resurrection","text":"Arriving at Thy tomb, O Christ, the honorable women sought to anoint Thee with myrrh, O Bestower of life; but an angel appeared to them, crying out: The Lord is risen!"},
+                    {"label":"Resurrection","text":"When Thou wast crucified between two condemned thieves, O Christ, one of them blasphemed Thee and was justly damned, while the other confessed Thee and dwelleth now in paradise."},
+                    {"label":"Resurrection","text":"When they had come to the choir of the apostles, the honorable women cried out: Christ is risen! Let us worship Him as Master and Creator."},
+                    {"label":"Glory","text":"O indivisible Trinity, all-effecting and all-powerful Unity: Father, Son, and Holy Spirit: Thee do we hymn as our true God and Savior!"},
+                    {"label":"Theotokion","text":"Rejoice, O animate temple of God and impassible gate! Rejoice, O fiery throne which burneth yet is not consumed! Rejoice, O Mother of Emmanuel, Christ our God!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -6700,25 +6670,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "There is none as holy as Thou, O Lord my God, who hast exalted the horn of Thy faithful O good One, and strengthened us upon the rock of Thy confession.",
-            "troparia": [
-              "Seeing God crucified in the flesh, all creation quaked from fear, but was held fast by the sustaining hand of Him Who was crucified for our sake.",
-              "Death, having been despoiled by death, doth lie miserably breathless, for unable to endure the revelation of Divine Life, the mighty-one hath been slain and resurrection hath been bestowed upon all."
-            ],
-            "theotokion": "The wonder of thy divine child-birth, O pure one, surpasseth all that is natural, for above nature hast thou conceived God in thy womb, and in giving birth remained Ever-virgin."
-          },
-          "ode6": {
-            "irmos": "Beholding the sea of life surging with the tempest of temptations, I run to Thy calm haven, and cry to Thee: Raise up my life from corruption, O greatly Merciful One.",
-            "troparia": [
-              "Crucified O Master, by the nails Thou hast annulled the curse that weighed upon us, and pierced with the lance in Thy side, Thou hast torn up the charges laid against Adam, thereby freeing the world.",
-              "Smitten deceitfully, Adam was led down to the bowels of Hades, but Thou Who by nature art both God and Compassionate, in Thy desire to recall him, didst carry him upon Thy shoulders, raising him up together with Thyself."
-            ],
-            "theotokion": "O most holy Sovereign-Lady, who hath brought forth the Lord Pilot for the sake of all mankind, do thou calm the ever-changing and frightful surging of my passions and grant peace to my heart."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 6 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"Remember me when Thou comest in Thy Kingdom, O God my Savior, and save me, for Thou alone lovest mankind."},
+                    {"label":"Resurrection","text":"By a tree was Adam deceived; yet again by the Tree of the Cross was the thief saved, who cried out: Remember me in Thy Kingdom, O Lord!"},
+                    {"label":"Resurrection","text":"O Bestower of life, Who hadst broken down the gates and portals of hades, Thou hast saved all who cry out to Thee, O Savior: Glory to Thine arising!"},
+                    {"label":"Resurrection","text":"O Thou Who by Thy burial hast made death captive, and by Thy resurrection hast filled all with joy: remember me, in that Thou art compassionate."},
+                    {"label":"Resurrection","text":"The myrrh-bearing women who came to the tomb heard an angel cry out: Christ, Who hath enlightened all things is risen!"},
+                    {"label":"Resurrection","text":"Together let us all hymn Christ, Who was nailed to the Cross and hath delivered the world from beguilement."},
+                    {"label":"Glory","text":"The Father, the Son, and the Holy Spirit let us glorify, saying: O Holy Trinity, save Thou our souls!"},
+                    {"label":"Theotokion","text":"O Virgin, who ineffably conceived in the latter days and gavest birth unto thy Creator: Save those who magnify thee!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -8061,25 +8025,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "O Lord and Savior, Who in the beginning established the heavens by Thine all-powerful Word , and by the divine and all-accomplishing Spirit hath granted them all their strength, do Thou establish me on the unshakeable rock of Thy confession.",
-            "troparia": [
-              "Ascending the Tree, O compassionate Savior, and willingly suffering pangs for our sake, Thou didst endure Thy wounds, O cause of peace and through them bring the faithful to salvation, O Merciful One, whereby we all have been reconciled to Thy Begetter.",
-              "My soul having been wounded by the bite of the serpent, hath been cleansed of its wounds by Thee O Christ, Who hath revealed Thy light to me, who of old lay in darkness and corruption; for through the Cross Thou didst descend into Hades and hast raised me up together with Thyself."
-            ],
-            "theotokion": "By the supplications of Thy Mother who knew not a man, bestow peace upon the world, O Savior; and grant victory over their adversaries to all Orthodox Christians, deeming them who glorify Thee, worthy of Thine ineffable glory."
-          },
-          "ode6": {
-            "irmos": "Sailing in the tempest of the cares of life, together with the ship I have been submerged by sins, and cast to the soul-corrupting beast, wherefore like Jonah I cry to Thee, O Christ: Lead me up from the deadly abyss.",
-            "troparia": [
-              "The souls of the righteous, who were held in bondage and forsaken in Hades, remembered Thee and prayed for salvation from Thee, which Thou didst grant unto them through Thy Cross, O Christ, when in Thy compassion Thou didst descend into the nether regions of the earth.",
-              "The choir of Apostles despaired of ever gazing again upon Thy living temple not made with hands, which had been destroyed by the passion, but praying beyond hope they were granted to proclaim everywhere that Thou art Risen."
-            ],
-            "theotokion": "Who can explain the manner of thine ineffable child-bearing for our sake, O most immaculate Virgin, Bride of God? For God the Word, who is uncircumscribable, uniting with thee, became flesh from thee."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 7 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"The fruit which slew me was beautiful and good to eat; but Christ is the Tree of life, and eating of Him I do not die, but cry out with the thief: Remember me, O Lord, in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"O Compassionate One, Who wast lifted up upon the Cross, Thou hast erased the record of Adams ancient sin, and hast saved the whole human race from deception. Wherefore, we hymn Thee, O Lord and Benefactor."},
+                    {"label":"Resurrection","text":"Thou didst nail our sins to the Cross, O compassionate Christ, and by Thy death Thou didst slay death, O Thou who didst raise up the dead from among the dead. Wherefore, we worship Thy holy resurrection."},
+                    {"label":"Resurrection","text":"The serpent once poured its venom into the ears of Eve; but on the tree of the Cross, Christ poured forth the sweetness of life upon the world. Wherefore, we cry out: Remember us, O Lord, in Thy Kingdom!"},
+                    {"label":"Resurrection","text":"Thou wast laid in the tomb as one dead, O Christ, Thou Life of all; and Thou didst break down the gates of hades; and having risen again in glory on the third day as One mighty, Thou hast illumined all. Glory to Thine arising!"},
+                    {"label":"Resurrection","text":"Having risen from the dead on the third day, the Lord bestowed His peace upon His disciples; and having blessed them, He sent them forth saying: Lead all into My kingdom!"},
+                    {"label":"Glory","text":"The Father is light; the Son and Word is light; and the Holy Spirit is light. Yet the Three are one Light, for they are one God in three Persons, One in nature and origin, indivisible, unconfused and preeternal."},
+                    {"label":"Theotokion","text":"For our sake thou gavest birth in the flesh to the Son and Word of the Father, as thou thyself hast declared, O Theotokos. Wherefore, O Virgin Mother, we who are deified through thee cry out to thee: Rejoice, O hope of Christians!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",
@@ -9385,25 +9343,19 @@
       },
       "liturgy": {
         "beatitudes": {
-          "source": "oca-parma-stsergius",
-          "note": "Canon of the Resurrection, Odes 3 and 6. Standard Sunday \"On 8\" assignment.",
-          "ode3": {
-            "irmos": "O Christ fortify me on the rock of Thy commandments, Thou who in the beginning didst establish the heavens with understanding and didst establish the earth upon the waters, for there is none holy save Thee, O only Lover of mankind.",
-            "troparia": [
-              "The salvific Passion of Thy flesh, O Christ, hath justified Adam, who had been condemned by the taste of sin; for Thou, who alone art without sin, hast revealed that Thou didst remain uncondemned by the trial of death.",
-              "O Jesus my God, Thou hast made the light of the Resurrection to shine forth upon those that sit in the darkness and shadow of death, and by Thy divinity Thou hast bound the strong one and scattered his spoils."
-            ],
-            "theotokion": "Thou wast revealed to be higher than the Cherubim and Seraphim, O Theotokos, for thou alone hast received within thy womb, O undefiled one, God who is uncircumscribable; and so with hymns we believers ever call thee blessed."
-          },
-          "ode6": {
-            "irmos": "Cleanse me, O Savior, for many are mine iniquities; lead me up from the abyss of evils I pray Thee, for unto Thee have I cried, and Thou hast hearkened unto me, O God of my salvation.",
-            "troparia": [
-              "Through a tree the author of evil hath mightily overthrown me, but raised upon a Cross, O Christ, Thou didst more mightily cast him down, confounding him, whilst raising me the one who had fallen.",
-              "When Thou didst shine forth from the grave, then didst Thou take pity on Zion, and in Thy compassion didst renew it by Thy divine blood, and now O Christ, Thou dost reign over it as King forever."
-            ],
-            "theotokion": "May we be delivered from grievous faults by thine intercessions, O pure Birthgiver of God, and may we receive the divine radiance of the Son of God, who ineffably became incarnate from thee."
-          }
-        }
+                  "source": "htm-octoechos-sunday-beatitudes",
+                  "note": "Sunday resurrectional Beatitudes (\"Blesseds\") of Tone 8 — the dedicated Octoechos set, NOT the canon. 6 resurrectional troparia + Glory (Trinitarian) + Both-now (Theotokion). Flat list; the last two entries map to the Glory / Now slots. Sourced from saintjonah.org Octoechos Beatitude Verses.",
+                  "troparia": [
+                    {"label":"Resurrection","text":"Remember us, O Christ, Thou Savior of the world, as Thou didst remember the thief upon the Cross; and account us all worthy of Thy heavenly kingdom, O Thou Who alone art compassionate."},
+                    {"label":"Resurrection","text":"Hearken, O Adam, and rejoice with Eve; for he who of old stripped thee and her naked, and by deception hath taken all of us captive, hath been set at nought by the Cross of Christ."},
+                    {"label":"Resurrection","text":"Nailed of Thine own will to the Tree, O our Savior, Thou didst deliver Adam from the curse which came through the tree, and hast rewarded that which is in Thine image with a dwelling in paradise, in that Thou art compassionate."},
+                    {"label":"Resurrection","text":"Today is Christ risen from the tomb, granting incorruption unto all the faithful; and He reneweth the joy of the myrrh-bearing women after His suffering and resurrection."},
+                    {"label":"Resurrection","text":"Rejoice, O wise myrrh-bearing women, who were first to behold the resurrection of Christ, and who proclaimed to the apostles the glad tidings of the restoration of the whole world!"},
+                    {"label":"Resurrection","text":"O ye apostles, who are manifestly the friends of Christ and are to be enthroned with Him in glory: entreat Him with boldness, that He intercede for us, for ye are His disciples."},
+                    {"label":"Glory","text":"O unoriginate Trinity, indivisible Essence, Unity equally enthroned, equal in honor and glory, transcendent Nature and Kingship: Save us who praise Thee with faith!"},
+                    {"label":"Theotokion","text":"Rejoice, spacious habitation of God! Rejoice, ark of the new covenant! Rejoice, jar whence the heavenly Manna is given to all!"}
+                  ]
+                }
       },
       "matins": {
         "_source": "oca-parma-stsergius",

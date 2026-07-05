@@ -55,12 +55,20 @@ function hasPopulatedOde(ode) {
 
 /**
  * Build Beatitudes troparia array for the Liturgy Third Antiphon.
- * On Sundays: 8 troparia from Octoechos Canon of the Resurrection (Odes 3+6).
+ *
+ * On an ordinary Sunday the Beatitudes ("Blesseds") are the *dedicated
+ * resurrectional set* of the tone from the Octoechos — a flat list of ~8
+ * troparia (resurrectional + Glory + Theotokion), NOT the Resurrection canon.
+ * Tones carrying a flat `troparia` array use this correct shape; tones still
+ * on the legacy `ode3`/`ode6` (canon) shape fall through to buildOdes until
+ * they are converted (see server-lib/sources/beatitudes.js history / the
+ * per-tone rollout). The dedicated set never includes an irmos.
+ *
  * When a per-date feast-canon override exists (FEAST_BEATITUDES_OVERRIDES)
- * and its troparia are populated, the feast troparia are *appended* to each
- * Octoechos ode (between the resurrection troparia and the Theotokion).
- * A feast-canon JSON may opt into full replacement with `beatitudesMode: 'replace'`.
- * Each item has { tone, label, source, text }.
+ * and its troparia are populated, the feast (saint) canon troparia are
+ * inserted just before the Glory/Theotokion (flat shape) or appended per-ode
+ * (legacy shape). A feast-canon JSON may opt into full replacement with
+ * `beatitudesMode: 'replace'`. Each item has { tone, label, source, text }.
  */
 function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) {
   if (!isSunday) return []; // weekday beatitudes not yet implemented
@@ -74,6 +82,21 @@ function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) {
   if (override && override.beatitudesMode === 'replace') {
     const ot = override.tone ?? tone;
     return buildOdes(override.ode3, override.ode6, ot, 'feast', null, null);
+  }
+
+  // Correct shape: dedicated resurrectional Beatitudes as a flat troparia list.
+  // The last two entries are the Glory (Trinitarian) and the Both-now
+  // Theotokion; the renderer maps them to the Glory / Now slots.
+  if (beatData && Array.isArray(beatData.troparia)) {
+    const out = [];
+    pushTroparia(out, beatData.troparia, tone, 'octoechos', 'Beatitude');
+    if (override) {
+      const feast = [];
+      pushTroparia(feast, override.ode3?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)');
+      pushTroparia(feast, override.ode6?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)');
+      if (feast.length) out.splice(Math.max(0, out.length - 2), 0, ...feast);
+    }
+    return out;
   }
 
   if (!beatData) {
@@ -116,7 +139,10 @@ function pushTroparia(out, troparia, tone, source, label) {
   if (!Array.isArray(troparia)) return;
   for (const t of troparia) {
     const text = typeof t === 'string' ? t : t?.text;
-    if (text && text.trim()) out.push({ tone, label, source, text });
+    // Honor a per-item label (e.g. "Glory"/"Theotokion" in the flat Beatitudes
+    // shape); fall back to the caller's group label for legacy string troparia.
+    const itemLabel = (t && typeof t === 'object' && t.label) ? t.label : label;
+    if (text && text.trim()) out.push({ tone, label: itemLabel, source, text });
   }
 }
 

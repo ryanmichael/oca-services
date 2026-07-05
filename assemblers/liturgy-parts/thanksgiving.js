@@ -73,10 +73,12 @@ function _litPsalm33(f) {
   const section = 'Psalm 33';
   const p = mustGet(f, 'psalm-33', { scope: section });
   if (!p) return [];
+  // No concluding "Glory… now and ever…" here: at the Liturgy ending Psalm 33
+  // is sung during the antidoron and flows straight into the priestly blessing
+  // ("The blessing of the Lord be upon you…"). Guarded by L38.
   return [
     makeBlock('ps33-rubric', section, 'rubric', null, p.rubric),
     makeBlock('ps33-text',   section, 'prayer', 'reader', p.text, { density: 'compact' }),
-    makeBlock('ps33-glory',  section, 'doxology', null, p.glory),
   ];
 }
 

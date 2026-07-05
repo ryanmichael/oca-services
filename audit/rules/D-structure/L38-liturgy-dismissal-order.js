@@ -47,6 +47,17 @@ module.exports = {
         hint:    'In assemblers/liturgy.js, emit _litPsalm33 before _litClosingDoxology.',
       });
     }
+
+    // Psalm 33 at the Liturgy ending flows straight into the priestly blessing —
+    // no concluding "Glory… now and ever…" doxology.
+    const psalm33Gloria = blocks.some(b =>
+      b.section === 'Psalm 33' && b.type === 'doxology' && /now and ever/i.test(b.text || ''));
+    if (psalm33Gloria) {
+      issues.push({
+        message: 'Psalm 33 (Liturgy ending) has a trailing "Glory… now and ever…" doxology — it should flow straight into "The blessing of the Lord be upon you…".',
+        hint:    'Drop the ps33-glory block in _litPsalm33 (assemblers/liturgy-parts/thanksgiving.js).',
+      });
+    }
     return issues;
   },
 };

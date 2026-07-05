@@ -270,19 +270,20 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
     liturgyFixed[ambonKey], { density: 'compact' }));
 
-  // 33. Blessed be the Name
+  // 33. Blessed be the Name (×3) — OCA order: Psalm 33 follows before the blessing.
   blocks.push(..._litBlessedBeTheName(liturgyFixed));
-
-  // 33a. Closing Doxology — "Glory to Thee, O Christ our God and our hope..."
-  blocks.push(..._litClosingDoxology(paschal.hasPaschalOpening));
 
   // 34. Psalm 33
   blocks.push(..._litPsalm33(liturgyFixed));
 
-  // 35. Dismissal Troparia
+  // 35. Priestly blessing ("The blessing of the Lord be upon you…") + Closing
+  //     Doxology ("Glory to Thee, O Christ our God and our hope…").
+  blocks.push(..._litClosingDoxology(paschal.hasPaschalOpening, liturgyFixed));
+
+  // 36. Dismissal Troparia (feast / Pentecostarion repeat only; empty otherwise)
   blocks.push(..._litDismissalTroparia(isBasil, liturgyFixed, spec.dismissalTroparia));
 
-  // 36. Dismissal
+  // 37. Dismissal
   blocks.push(..._litDismissal(spec.dismissal, isBasil, paschal.hasPaschalOpening, liturgyFixed));
 
   blocks._warnings = warnings.get();

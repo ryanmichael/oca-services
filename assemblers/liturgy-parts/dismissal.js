@@ -1,7 +1,6 @@
 'use strict';
 
 const makeBlock = require('../_shared/make-block');
-const mustGet   = require('../_shared/must-get');
 const warnings  = require('../_shared/warnings');
 
 function _litDismissalTroparia(isBasil, f, feastTroparia) {
@@ -47,16 +46,11 @@ function _litDismissalTroparia(isBasil, f, feastTroparia) {
     return blocks;
   }
 
-  const tropKey  = isBasil ? 'troparion-basil' : 'troparion-chrysostom';
-  const trop     = mustGet(f, tropKey, { scope: section });
-  const theos    = mustGet(f, 'dismissal-theotokion', { scope: section });
-  if (!trop || !theos) return [];
-  return [
-    makeBlock('dt-rubric',  section, 'rubric',   null,    isBasil ? 'Troparion of St. Basil the Great, Tone 1:' : 'Troparion of St. John Chrysostom, Tone 8:'),
-    makeBlock('dt-trop',    section, 'hymn',     'choir', trop.troparion, { tone: trop.tone }),
-    makeBlock('dt-glory',   section, 'doxology', null,    gloryNow),
-    makeBlock('dt-theos',   section, 'hymn',     'choir', theos),
-  ];
+  // Ordinary Liturgy: no dismissal troparia — the OCA ending goes straight from
+  // the Closing Doxology to the priest's dismissal. (The Liturgy-author's
+  // troparion + Theotokion previously emitted here is not part of the standard
+  // ending.) Feast / Pentecostarion troparia repeats are handled above.
+  return [];
 }
 
 function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
@@ -88,22 +82,21 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
   saintsList.forEach(s => parts.push(`of ${s}`));
   const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
-  const blocks = [
-    makeBlock('dis-confirm', section, 'response','choir',  'Amen. Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages.'),
-  ];
+  const blocks = [];
 
-  // Seasonal Theotokos magnification at the dismissal.
-  // Selection order:
+  // Seasonal Theotokos magnification at the dismissal — feast/paschal overrides
+  // ONLY. The ordinary Liturgy dismissal has NO "Most holy Theotokos, save us" /
+  // "More honorable" (those belong to the Vespers/Matins/Hours dismissals): the
+  // OCA ending goes straight from the Closing Doxology to the priest's dismissal.
   //   1. Explicit override (`spec.dismissalTheotokos`) — Ascension/Pentecost period, great-feast irmos.
   //   2. Paschal period (Pascha → Pascha leavetaking): "The Angel cried..."
-  //   3. Default: "Most holy Theotokos, save us." + "More honorable than the Cherubim..."
   const dt = dismissalSpec.dismissalTheotokos;
   const dtMalformed = dt != null
     && !(typeof dt === 'object' && dt.hymn)
     && !(typeof dt === 'string' && dt.length > 0);
   if (dtMalformed) {
     warnings.push({ source: 'spec', key: 'liturgy.dismissal.dismissalTheotokos', scope: section,
-      detail: `dismissalTheotokos has unrecognized shape (expected {hymn,priestCue?} or non-empty string); falling back to default` });
+      detail: `dismissalTheotokos has unrecognized shape (expected {hymn,priestCue?} or non-empty string); omitting` });
   }
   if (dt && typeof dt === 'object' && dt.hymn) {
     if (dt.priestCue) blocks.push(makeBlock('dis-theos', section, 'prayer', 'priest', dt.priestCue));
@@ -112,15 +105,13 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
     blocks.push(makeBlock('dis-mag', section, 'response', 'choir', dt));
   } else if (isPaschalPeriod && liturgyFixed && liturgyFixed['megalynarion-paschal']) {
     blocks.push(makeBlock('dis-mag-paschal', section, 'response', 'choir', liturgyFixed['megalynarion-paschal']));
-  } else {
-    blocks.push(makeBlock('dis-theos', section, 'prayer',   'priest', 'Most holy Theotokos, save us.'));
-    blocks.push(makeBlock('dis-mag',   section, 'response', 'choir',  'More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement thou gavest birth to God the Word: true Theotokos, we magnify thee.'));
   }
 
-  // The Closing Doxology ("Glory to Thee, O Christ our God and our hope...")
-  // is emitted earlier, immediately after "Blessed be the Name".
-  blocks.push(makeBlock('dis-proper',  section, 'prayer',  'priest', `${opening} ${closing}`));
-  blocks.push(makeBlock('dis-amen',    section, 'response','choir',  'Amen.'));
+  // Priest's dismissal, choir "Amen", then the Slavonic acclamation (the
+  // "Preserve, O God…" / Many-Years) — after the dismissal, not before it.
+  blocks.push(makeBlock('dis-proper',   section, 'prayer',  'priest', `${opening} ${closing}`));
+  blocks.push(makeBlock('dis-amen',     section, 'response','choir',  'Amen.'));
+  blocks.push(makeBlock('dis-preserve', section, 'response','choir',  'Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages.'));
 
   return blocks;
 }

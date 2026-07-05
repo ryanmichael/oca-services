@@ -34,20 +34,29 @@ function _litBlessedBeTheName(f) {
   const section = 'Blessed be the Name';
   const b = mustGet(f, 'blessed-be-the-name', { scope: section });
   if (!b) return [];
+  // OCA order: only "Blessed be the name of the Lord" (×3) here; Psalm 33
+  // follows, and the priestly blessing ("The blessing of the Lord be upon
+  // you…") is emitted afterward by _litClosingDoxology.
   return [
     makeBlock('bbn-text',     section, 'hymn',     'choir',  `${b.text} (×3)`),
     makeBlock('bbn-response', section, 'response', 'choir',  b.response),
-    makeBlock('bbn-blessing', section, 'prayer',   'priest', b.finalBlessing),
-    makeBlock('bbn-final',    section, 'response', 'choir',  b.finalResponse),
   ];
 }
 
-function _litClosingDoxology(isPaschalPeriod) {
+function _litClosingDoxology(isPaschalPeriod, f) {
   const section = 'Closing Doxology';
-  const blocks = [
+  const blocks = [];
+  // Priestly blessing "The blessing of the Lord be upon you…" comes here —
+  // after Psalm 33, before "Glory to Thee, O Christ…" (OCA order).
+  const b = f && mustGet(f, 'blessed-be-the-name', { scope: section });
+  if (b) {
+    blocks.push(makeBlock('cd-blessing', section, 'prayer',   'priest', b.finalBlessing));
+    blocks.push(makeBlock('cd-blessing-r', section, 'response', 'choir',  b.finalResponse));
+  }
+  blocks.push(
     makeBlock('cd-glory', section, 'prayer', 'priest',
       'Glory to Thee, O Christ our God and our hope, glory to Thee.'),
-  ];
+  );
   if (isPaschalPeriod) {
     blocks.push(makeBlock('cd-paschal', section, 'hymn', 'choir',
       'Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life! (thrice)'));

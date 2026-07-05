@@ -86,7 +86,7 @@ function _litPsalm33(f) {
     blocks.push(makeBlock(`ps33-v${i + 1}`, section, 'prayer', null, v, { density: 'compact' }));
     if (cutoff && i + 1 === cutoff) {
       blocks.push(makeBlock('ps33-shortform', section, 'rubric', null,
-        'The psalm may conclude here; the verses that follow are used at a longer distribution of the antidoron.'));
+        'The psalm may conclude here.'));
     }
   });
   return blocks;

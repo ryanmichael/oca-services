@@ -75,11 +75,15 @@ function _litDismissal(dismissalSpec, isBasil, isPaschalPeriod, liturgyFixed) {
     opening = 'May Christ our true God,';
   }
 
-  // Order: Theotokos → day-of-week patron → liturgy saint → day's saints → all saints
+  // Order: Theotokos → day-of-week patron → liturgy saint → day's saints →
+  // ancestors of God Joachim and Anna → all saints. The holy and righteous
+  // ancestors of God are a fixed commemoration near the end of every dismissal,
+  // immediately before "and of all the saints".
   const parts = ['through the prayers of His most pure Mother'];
   if (dayPatron) parts.push(`of ${dayPatron}`);
   parts.push(`of ${liturgySaintName}`);
   saintsList.forEach(s => parts.push(`of ${s}`));
+  parts.push('of the holy and righteous ancestors of God, Joachim and Anna');
   const closing = `${parts.join('; ')}; and of all the saints, have mercy on us and save us, forasmuch as He is good and loveth mankind.`;
 
   const blocks = [];

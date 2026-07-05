@@ -28,6 +28,17 @@ module.exports = {
     const issues = [];
 
     const dismissal = blocks.filter(b => b.section === 'Dismissal');
+
+    // The priest's dismissal names the holy and righteous ancestors of God,
+    // Joachim and Anna (fixed commemoration before "and of all the saints").
+    const dismissalPrayer = dismissal.find(b => b.speaker === 'priest' && /have mercy on us and save us/i.test(b.text || ''));
+    if (dismissalPrayer && !/Joachim and Anna/i.test(dismissalPrayer.text || '')) {
+      issues.push({
+        message: 'Liturgy dismissal prayer omits the holy and righteous ancestors of God, Joachim and Anna (commemorated before "and of all the saints").',
+        hint:    'Add "of the holy and righteous ancestors of God, Joachim and Anna" to the parts in _litDismissal.',
+      });
+    }
+
     const leaked = dismissal.find(b =>
       /More honorable than the Cherubim/i.test(b.text || '') ||
       /^Most holy Theotokos, save us\.?$/i.test((b.text || '').trim()));

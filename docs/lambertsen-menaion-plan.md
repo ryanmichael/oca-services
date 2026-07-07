@@ -93,8 +93,11 @@ flags are dominated by (5) and (6), which are out of scope by design.
   audit rule, and a render check vs source. Prove the path + rollback.
 - **4 — Full stichera rollout.** Remaining 11 months, batched, each backed up +
   audited. Dashboard shows the fallback→proper delta.
-- **5 — Matins canon axis.** Ingest the ~4,000 canon odes into the Matins track.
-  Structurally distinct → its own rollout mirroring 3–4.
+- **5 — Matins canon axis. NOT NEEDED (scoped out 2026-07-07).** The Matins canon
+  track is already 100% complete: all 215 `variable-sources/menaion/*.json` carry a
+  populated `matins.canon` (180 full 8-ode + 35 afterfeast, 0 partial/stub), from
+  St-Sergius Emenaion. No canon gap → bulk Lambertsen canon ingestion is redundant.
+  (Residual value = a QA cross-check of the St-Sergius canons; future option only.)
 - **6 — QA cross-check.** DONE (`menaion-qa.js`). Uses the already-covered
   Lambertsen chapters as an independent witness over our EXISTING stichera.
   **Finding: ~26 covered saint commemorations store moveable-cycle text (Triodion/
@@ -104,11 +107,15 @@ flags are dominated by (5) and (6), which are out of scope by design.
   (4/27) holds Thomas-Sunday. Caveat: a saint whose fixed date lands in Bright
   Week / Great Lent may legitimately blend such stichera (e.g. George 4/23) —
   confirm per case. Run: `node menaion-qa.js`.
-- **6b — Repair (proposed).** For each *confirmed* mis-attribution, replace the
-  wrong rows with the Lambertsen proper (already in the corpus; not imported
-  earlier because the slot was "occupied"). Delete-then-insert under
-  `source='lambertsen'`, per-case, backed up + verified — never wholesale
-  (seasonal blends are legitimate).
+- **6b — Repair. DONE (2026-07-07, `repair-menaion.js`).** High-precision filter:
+  a covered commemoration is a repair candidate iff (a) ≥1 stored row is
+  moveable-cycle text AND (b) NO stored row names the saint — which cleanly
+  excludes legitimate seasonal blends (George 4/23 names George, so skipped).
+  Found 19 displaced-saint commemorations (167 wrong rows). Deleted the wrong
+  rows and re-imported the Lambertsen proper: **18 repaired** (e.g. Onesimus now
+  serves his own stichera, not the Last-Judgment canon); 1 (Niketas of Chalcedon,
+  a held no-LIC chapter) fell to generic category fallback — still better than
+  wrong. Backed up, drift green, 149 tests pass, parish baseline unchanged.
 - **7 — Maintenance guardrail.** Nightly re-parse-drift vs upstream; attribution
   rendering; optional `?translation=lambertsen` overlay.
 

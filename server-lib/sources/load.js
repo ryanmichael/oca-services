@@ -12,6 +12,14 @@ function loadSources() {
   const octoechos  = loadJSON('variable-sources/octoechos.json');
   const prokeimena = loadJSON('variable-sources/prokeimena.json');
 
+  // Variable-source Octoechos overlays, keyed by stack id. Cascaded per-request
+  // onto the base by resolveOctoechos() when a parish selects that stack.
+  const octoechosOverlays = {};
+  for (const id of ['myrrhbearers']) {
+    const rel = `variable-sources/octoechos-${id}.json`;
+    if (fs.existsSync(path.join(ROOT, rel))) octoechosOverlays[id] = loadJSON(rel);
+  }
+
   // Load all available menaion files
   const menaion = {};
   const menaionDir = path.join(ROOT, 'variable-sources', 'menaion');
@@ -53,7 +61,7 @@ function loadSources() {
   const eothinonPath = path.join(ROOT, 'variable-sources', 'eothinon.json');
   const eothinon = fs.existsSync(eothinonPath) ? loadJSON('variable-sources/eothinon.json') : {};
 
-  return { octoechos, prokeimena, menaion, triodion, eothinon, db: {} };
+  return { octoechos, octoechosOverlays, prokeimena, menaion, triodion, eothinon, db: {} };
 }
 
 module.exports = { loadSources };

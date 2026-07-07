@@ -25,6 +25,7 @@ function handle(req, res, ctx) {
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
     getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
+    resolveOctoechos,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -47,6 +48,8 @@ function handle(req, res, ctx) {
       const format  = (q.format  || '').trim().toLowerCase();
       const translation = resolveTranslation(q);
       const style       = resolveStyle(q, translation);
+      // Cascade any Octoechos overlay for the active stack (e.g. Myrrh-bearers).
+      const reqSources  = { ...sources, octoechos: resolveOctoechos(sources, translation) };
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -95,7 +98,7 @@ function handle(req, res, ctx) {
       }
 
       // Build the matins spec from available data
-      const matinsSpec = buildMatinsSpec(date, d, dow, season, tone, sources, style);
+      const matinsSpec = buildMatinsSpec(date, d, dow, season, tone, reqSources, style);
 
       // Enrich Matins Gospel with full scripture text from orthocal API
       if (matinsSpec?.gospel && !matinsSpec.gospel.text) {
@@ -133,7 +136,7 @@ function handle(req, res, ctx) {
 
       let blocks;
       try {
-        blocks = assembleMatins(calendarDay, matinsFixed, fixedTexts, sources, { rubrics: overlayRubrics });
+        blocks = assembleMatins(calendarDay, matinsFixed, fixedTexts, reqSources, { rubrics: overlayRubrics });
       } catch (err) {
         console.error('assembleMatins error:', err);
         res.writeHead(500, { 'Content-Type': 'application/json' });

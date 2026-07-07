@@ -88,15 +88,24 @@ email in `docs/myrrhbearers-permission-email.md`.
 - **4 — Parish default (the actual ask).** Two sides:
   - *Fixed texts:* set the parish's default translation stack to include the
     `myrrhbearers` overlay — existing `parish_settings` + stack mechanism.
-  - *Variable texts (Octoechos/Menaion):* **new capability.** Source preference is
-    today a GLOBAL hardcoded ranking — `SOURCE_PRIORITY` in `oca-psalter.js`
-    (`oca-menaion:1 > stSergius:2 > stSergius-general:3 > unknown:99`), consumed by
-    `deduplicateBySource` (used in `server-lib/sources/menaion.js`,
-    `server-lib/sources/db-source.js`, octoechos selection). Make this ranking
-    **parish-configurable** (a per-parish source-priority override) so this parish
-    prefers `myrrhbearers` without changing global behavior. This also closes the
-    documented "overlays don't cover variable-sources" gap
-    (`project_overlay_variable_sources_gap`).
+  - *Variable texts (Octoechos):* DONE via a **per-request overlay cascade** (not
+    a SOURCE_PRIORITY change — that global ranking is for DB stichera/menaion; the
+    overlay is a whole-object cascade). New `server-lib/sources/octoechos-overlay.js`
+    `resolveOctoechos(sources, stack)` reuses `deepMergeOverlay` + `resolveExtendsChain`:
+    it walks the active stack's extends chain and cascades any registered octoechos
+    overlay (`sources.octoechosOverlays[id]`, loaded at boot in `load.js`) onto the
+    base, memoized per stack. Routes (`api-service.js`, `api-matins.js`) build a
+    per-request `reqSources` and pass it to the Vespers/Matins assemblers. Returns
+    the identical base object for null/other stacks (zero impact). **This closes the
+    "overlays don't cover variable-sources" gap** (`project_overlay_variable_sources_gap`)
+    for the Octoechos. Manifest `fixed-texts/translations/myrrhbearers/` (kind
+    `tradition`, extends `oca`) registers the reusable stack; a parish adopts it by
+    putting `myrrhbearers` in its `extends_chain` (resolveOctoechos picks it up via
+    the chain). Verified: `?translation=myrrhbearers` renders Myrrh-bearers stichera/
+    lauds for Vespers + Matins; base unchanged; 149 tests + drift green.
+    **TODO:** extend `reqSources` to the remaining octoechos-consuming routes
+    (liturgy, choir-prep, days, typika, pascha-collection) — currently Vespers +
+    Matins only.
 - **5 — QA + guardrail.** Cross-check rendered services vs the Myrrh-bearers
   booklets (parish-baseline oracle style, cf. `scripts/ocanwa-baseline.js`); add a
   scrape-drift check on their pages.

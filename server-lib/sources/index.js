@@ -5,6 +5,7 @@
 
 module.exports = {
   ...require('./load'),
+  ...require('./octoechos-overlay'),
   ...require('./calendar'),
   ...require('./menaion'),
   ...require('./general-menaion'),

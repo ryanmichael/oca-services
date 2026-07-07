@@ -25,6 +25,7 @@ function handle(req, res, ctx) {
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
     getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
+    resolveOctoechos,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -47,6 +48,9 @@ function handle(req, res, ctx) {
       const format  = (q.format  || '').trim().toLowerCase();
       const translation = resolveTranslation(q);
       const style       = resolveStyle(q, translation);
+      // Cascade any Octoechos overlay for the active stack (e.g. Myrrh-bearers)
+      // so every octoechos read below picks up the parish's chosen translation.
+      const reqSources  = { ...sources, octoechos: resolveOctoechos(sources, translation) };
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -132,7 +136,7 @@ function handle(req, res, ctx) {
 
       let result;
       try {
-        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, sources, style,
+        result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, reqSources, style,
           { rubrics: overlayRubrics });
       } catch (err) {
         console.error('assembleForDate error:', err);

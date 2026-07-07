@@ -9,6 +9,11 @@
 const fs = require('fs');
 const { execFileSync } = require('child_process');
 const { parseChapter } = require('./parse-menaion.js');
+const { insertPunctuationSpaces } = require('../../server-lib/parsers/normalize.js');
+// Normalize source cosmetics before insert: the Lambertsen markdown occasionally
+// glues punctuation to the next word ("Spirit—,we"). Reuse the same normalizer
+// the differ/drift rules expect. Only affects [.,;:!?] glued to a letter.
+const clean = (s) => insertPunctuationSpaces(String(s)).replace(/\s+/g, ' ').trim();
 
 const DB = '/Users/ryanmurphy/claude-code/oca-services/storage/oca.db';
 const MONTHS = ['January','February','March','April','May','June','July',
@@ -219,13 +224,13 @@ for (const ch of manifest) {
     let order = 1;
     for (const a of assigns) {
       for (const text of a.texts) {
-        sqlLines.push(`INSERT INTO stichera (commemoration_id,section,"order",tone,label,text,source) VALUES (${cid},'lordICall',${order},${a.tone || 'NULL'},${a.label ? `'${esc(a.label)}'` : 'NULL'},'${esc(text)}','lambertsen');`);
+        sqlLines.push(`INSERT INTO stichera (commemoration_id,section,"order",tone,label,text,source,group_role) VALUES (${cid},'lordICall',${order},${a.tone || 'NULL'},${a.label ? `'${esc(clean(a.label))}'` : 'NULL'},'${esc(clean(text))}','lambertsen','saint');`);
         order++; rowCount++;
       }
     }
     // Glory doxastikon -> principal only
     if (res.glory && cidNum === res.principalCid) {
-      sqlLines.push(`INSERT INTO stichera (commemoration_id,section,"order",tone,label,text,source) VALUES (${cid},'lordICall',0,${res.glory.tone || 'NULL'},'Glory','${esc(res.glory.text)}','lambertsen');`);
+      sqlLines.push(`INSERT INTO stichera (commemoration_id,section,"order",tone,label,text,source,group_role) VALUES (${cid},'lordICall',0,${res.glory.tone || 'NULL'},'Glory','${esc(clean(res.glory.text))}','lambertsen','saint');`);
       rowCount++;
     }
     touched.push(`${cid}(+${order - 1}${res.glory && cidNum === res.principalCid ? '+Glory' : ''})`);

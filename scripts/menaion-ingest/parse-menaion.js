@@ -48,7 +48,8 @@ function decodeEntities(s) {
 // (section labels ending in "—" or ":" or matching known markers); the rest
 // are TEXT (the actual hymn body). We group texts under the preceding header.
 
-const SERVICE_RE = /^AT\s+[A-Z][A-Z ']+:?\s*$/;                 // AT VESPERS: / AT MATINS:
+// AT VESPERS: / AT MATINS: (all-caps) plus title-case "At Great/Little Vespers"
+const SERVICE_RE = /^(AT\s+[A-Z][A-Z ']+:?|At\s+(?:Great|Little|Daily)?\s*Vespers)\s*$/;
 const LIC_RE = /Lord,?\s+I have cried/i;                        // Lord-I-Call stichera intro
 const APOSTICHA_RE = /Aposticha/i;
 const PRAISES_RE = /(Praises|Lauds)/i;

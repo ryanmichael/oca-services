@@ -47,23 +47,36 @@ const TYPE_WORD = { hierarch: 'hierarch', hieromartyr: 'hieromartyr', martyr: 'm
 
 // ---- LIC sub-group + Glory extraction --------------------------------
 function extractVespersLIC(parse) {
-  // Collect lic-intro groups within the Vespers service (before AT MATINS).
-  const groups = [];
-  let glory = null, sawMatins = false, sawPaschalLic = false;
+  // A chapter may print more than one Vespers service (daily/Little + Great).
+  // Bucket the LIC groups by service so we never merge two services into one
+  // over-collected import; then pick the fullest Vespers form (Great Vespers).
+  const buckets = new Map();   // service label -> {groups, glory}
+  const bucket = (svc) => {
+    if (!buckets.has(svc)) buckets.set(svc, { groups: [], glory: null });
+    return buckets.get(svc);
+  };
   for (const s of parse.sections) {
-    if (s.service && /MATINS/i.test(s.service)) sawMatins = true;
-    if (sawMatins) break;
+    const svc = s.service || '';
+    if (/MATINS|LITURGY/i.test(svc)) break;   // Vespers only
     if (s.kind === 'lic-intro') {
-      if (/Pentecostarion/i.test(s.label)) sawPaschalLic = true;
-      const disc = discriminator(s.label);
-      groups.push({ tone: s.tone, label: s.label, disc, texts: s.texts, continuation: !!s.continuation });
-    } else if (s.kind === 'glory' && !glory) {
-      // saint doxastikon only if it is NOT a combined "Glory…, Now & ever…"
+      const b = bucket(svc);
+      b.groups.push({ tone: s.tone, label: s.label, disc: discriminator(s.label),
+        texts: s.texts, continuation: !!s.continuation });
+    } else if (s.kind === 'glory') {
+      const b = bucket(svc);
       const combined = /Now\s*&?\s*ever|Now and ever/i.test(s.label);
-      if (!combined && s.texts.length) glory = { tone: s.tone, text: s.texts[0] };
+      if (!b.glory && !combined && s.texts.length) b.glory = { tone: s.tone, text: s.texts[0] };
     }
   }
-  // Declared LIC total comes from the opening (non-continuation) group's rubric.
+  // choose: prefer Great Vespers, else the bucket with the most stichera.
+  const entries = [...buckets.entries()].filter(([, b]) => b.groups.length);
+  if (!entries.length) return { groups: [], glory: null, sawPaschalLic: false, declared: null, menaionOwn: null };
+  const total = (b) => b.groups.reduce((n, g) => n + g.texts.length, 0);
+  const great = entries.find(([k]) => /great\s+vespers/i.test(k));
+  const [, chosen] = great || entries.sort((a, b) => total(b[1]) - total(a[1]))[0];
+
+  const groups = chosen.groups;
+  const sawPaschalLic = groups.some((g) => /Pentecostarion/i.test(g.label));
   const opener = groups.find((g) => !g.continuation);
   let declared = null, menaionOwn = null;
   if (opener) {
@@ -72,7 +85,7 @@ function extractVespersLIC(parse) {
     const split = opener.label.match(/(\d+)\s+from the Pentecostarion.*?(\d+)/i);
     menaionOwn = split ? parseInt(split[2], 10) : null;
   }
-  return { groups, glory, sawPaschalLic, declared, menaionOwn };
+  return { groups, glory: chosen.glory, sawPaschalLic, declared, menaionOwn };
 }
 // A saint-splitting discriminator ("3 for Saint Joseph", "3 of the hieromartyr")
 // only ever appears BEFORE the ", in Tone …: Spec. Mel." melody clause. Truncate
@@ -85,6 +98,21 @@ function discriminator(label) {
   m = head.match(TYPE_RE);
   if (m) return 'the ' + m[1].toLowerCase();
   return null;
+}
+
+// Map a type word to the phrase that marks a saint of that type in a title,
+// then return the "&"/"and"-separated title part naming that saint.
+const TYPE_TITLE_RE = {
+  martyr: /(?<!hiero)martyr/i, hieromartyr: /hieromartyr/i,
+  hierarch: /bishop|archbishop|metropolitan|patriarch|pope|hierarch/i,
+  venerable: /venerable|abbot|abbess|\bmonk\b|\bnun\b|ascetic|hermit|father/i,
+  apostle: /apostle|evangelist/i, prophet: /prophet/i, unmercenaries: /unmercenar/i,
+};
+function titlePartForType(fullTitle, typeWord) {
+  const re = TYPE_TITLE_RE[typeWord];
+  if (!re) return null;
+  const parts = fullTitle.split(/\s*&\s*|\s+and\s+/i);
+  return parts.find((p) => re.test(p)) || null;
 }
 
 // ---- attribution ------------------------------------------------------
@@ -124,8 +152,17 @@ function attributeChapter(ch, parse, commems) {
           const tw = g.disc.replace(/^the\s+/i, '');
           const st = TYPE_WORD[tw];
           const cand = commems.filter((c) => c.saint_type === st && c.n === 0);
-          if (cand.length === 1) cid = cand[0].id;
-          else return { skip: `ambiguous type "${g.disc}" (${cand.length} candidates)` };
+          if (cand.length === 1) { cid = cand[0].id; }
+          else {
+            // Ambiguous type: use the chapter title's named saint of this type
+            // (e.g. "Prophet Malachi & Martyr Gordius" + "of the martyr" -> Gordius).
+            const part = titlePartForType(ch.saint, tw);
+            const pool = cand.length ? cand : commems;
+            let best = null, bs = 0;
+            if (part) for (const c of pool) { const sc = score(part, c.title); if (sc > bs) { bs = sc; best = c; } }
+            if (bs >= 0.5 && best) cid = best.id;
+            else return { skip: `ambiguous type "${g.disc}" (${cand.length} candidates)` };
+          }
         }
       }
       assignments.push({ cid, tone: g.tone, label, texts: g.texts });

@@ -65,15 +65,22 @@ email in `docs/myrrhbearers-permission-email.md`.
   against what we render today; quantify the wording delta per tone/service. Right-
   sizes 2–3. Reuse the QA-diff technique from the Lambertsen work
   (`scripts/menaion-ingest/menaion-qa.js` pattern).
-- **2 — Octoechos intake.** IN PROGRESS. `parse-octoechos.js` + `build-overlay.js`
-  emit `variable-sources/octoechos-myrrhbearers.json` — a source-tagged overlay
-  mirroring `octoechos.json`, base file untouched. **Pilot done: Saturday Great
-  Vespers, all 8 tones** (6 resurrectional + glory + dogmatikon + 4 aposticha +
-  aposticha-theotokion + troparion + dismissal-theotokion — exact structural
-  parity with base; verified vs source HTML; chant marks preserved; schema/tests/
-  drift green since nothing loads it yet). **TODO:** Sunday Matins (sessional
-  hymns, antiphons of degrees, lauds, canons, hypakoï, exapostilarion) + Liturgy
-  (beatitudes) sections, same overlay.
+- **2 — Octoechos intake.** Mostly done. `parse-octoechos.js` + `build-overlay.js`
+  emit `variable-sources/octoechos-myrrhbearers.json` (source-tagged overlay;
+  base untouched). **Done, all 8 tones, structural parity + text-verified:**
+  Saturday Great Vespers (resurrectional stichera + glory + dogmatikon + aposticha
+  + aposticha-theotokion + troparion + dismissal-theotokion) · Sunday Matins
+  (sessional hymns ×2, hypakoï, antiphons of degrees [3; Tone 8 = 4], matins
+  prokeimenon, post-Gospel sticheron, lauds ×8) · Sunday Liturgy (beatitudes ×8).
+  Schema/tests/drift green (nothing loads it yet). Known source gap: Tone 4 is
+  missing Antiphon II on their page.
+- **2b — Resurrection canon (deferred).** Their canon (irmoi + resurrection/cross/
+  theotokos troparia) has per-tone-variable structure (ode-section counts 11–24;
+  irregular `<p>` splits), so it needs a label-based ode parser ("Ode N" / "Canon
+  of…" headers + irmos/troparion detection) rather than count-based grouping —
+  building it carelessly would mis-assign troparia. Targets base
+  `sunday.matins.canonIrmoi.N` + `canonTroparia.N` (3 res + 3 cross + 3 theotokos,
+  refrains are fixed formulas already known).
 - **3 — Fixed-text overlay.** Their Liturgy/Vespers/Matins ordinary wording →
   `fixed-texts/translations/myrrhbearers/` (manifest + sparse `liturgy-fixed.json`).
   Fully supported by the existing overlay cascade today.

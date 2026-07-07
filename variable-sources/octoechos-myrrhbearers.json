@@ -3,7 +3,7 @@
     "description": "Myrrh-bearers Octoechos overlay — source-tagged alternates that cascade onto octoechos.json when a parish selects the Myrrh-bearers stack. Base file is never modified.",
     "_source": "https://www.myrrh-bearers.org/octoechos/",
     "_permission": "Used and redistributed with permission of Holy Myrrh-bearers, Etna CA (2026-07-07). Please retain this attribution.",
-    "scope": "Saturday Great Vespers (all 8 tones). Sunday Matins/Liturgy: TODO."
+    "scope": "Saturday Great Vespers + Sunday Matins (sessional/hypakoe/antiphons/prokeimenon/post-Gospel/lauds) + Sunday Liturgy (beatitudes), all 8 tones. Resurrection CANON deferred to Phase 2b."
   },
   "tone1": {
     "saturday": {
@@ -40,7 +40,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Let us hymn the Word Who with the Father/ is equally without beginning and equally everlasting,/ Who issued forth ineffably from the Virgin’s womb,/ Who of His own will accepted the Cross and death for our sake,/ and rose from the dead in glory;/ and let us say: O Lord, Bestower of life,// Thou Savior of our souls, glory be to Thee!"
           }
@@ -87,6 +86,138 @@
           "text": "When Gabriel announced to thee, “Rejoice!”/ O Virgin,/ the Master of all became incarnate within thee, the holy ark, at his cry,/ as the righteous David said./ Thou wast shown to be more spacious than the heavens,/ having borne thy Creator./ Glory to Him Who made His abode within thee!/ Glory to Him Who came forth from thee!// Glory to Him Who hath set us free by thy birthgiving!"
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "The soldiers guarding Thy tomb, O Savior, became as dead men because of the radiance of the angel who appeared before them, proclaiming the resurrection to the women. We glorify Thee, the Destroyer of corruption, and we bow down before Thee, our one God Who hast risen from the grave."
+            },
+            {
+              "label": null,
+              "text": "Nailed to the Cross of Thine own will, and laid in the tomb as one dead, O compassionate Bestower of life, by Thy death Thou didst break the dominion [of death], O Mighty One; for the gate-keepers of hades trembled before Thee, and Thou didst raise up with Thyself the dead of ages past, in that Thou alone lovest mankind."
+            },
+            {
+              "label": "Theotokion",
+              "text": "We who with love flee to thy goodness all know thee to be the Mother of God, who even after giving birth wast truly shown to be a virgin; for thee do we sinners have as our intercession, and we have acquired thee, who alone art most immaculate, as our salvation amid perils."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Very early the women arrived at the tomb and, beholding the appearance of the angel, they trembled. The tomb shone forth life, and the miracle filled them with awe. Wherefore, going to the disciples, they proclaimed the resurrection: Christ hath made hell captive, in that He alone is mighty and powerful; and destroying the fear of damnation by the Cross, He hath raised up with Himself all who had fallen prey to corruption!"
+            },
+            {
+              "label": null,
+              "text": "Thou wast nailed to the Cross, O Life of all, and wast reckoned among the dead, O immortal Lord. Thou didst rise on the third day, O Savior, with Thee raising Adam up from corruption. Wherefore, the hosts of heaven cried out to Thee, O Christ, Bestower of life: Glory to Thy resurrection! Glory to Thy condescension, O Thou Who alone lovest mankind!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "O Mary, precious receptacle of the Master, raise us up who have fallen into the chasm of grievous despondency, transgressions and sorrows; for thou art salvation, help and mighty intercession for sinners, and thou savest thy servants."
+            }
+          ]
+        },
+        "hypakoe": "The repentance of the thief stole paradise, and the lamentation of the myrrh-bearers announced joy: for Thou didst arise, O Christ God, granting great mercy to the world.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "When I am sorrowful,/ hearken unto my pain, O Lord.// Unto Thee do I cry.",
+              "Unceasing divine desire befitteth those in the wilderness,// who are beyond this vainglorious world.",
+              "Worship and glory are due the Holy Spirit,/ as also to the Father and the Son./ Wherefore, let us hymn the single dominion// of the Trinity."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "Thou hast brought me up to the mountains of Thy laws, O God.// Illumine me with the virtues, that I may hymn Thee.",
+              "Taking me in Thy right hand, O Word,/ preserve and protect me,// that the fire of sin may not consume me.",
+              "By the Holy Spirit is every creature restored,/ returning to its primal state;// for He is equal in power with the Father and the Son."
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "My spirit was glad and my heart rejoiceth/ for those who said to me:// Let us enter into the courts of the Lord.",
+              "There is great fear in the house of David,/ for there, when the thrones are set up,// all the tribes and nations of the earth will be judged.",
+              "It is meet and fitting to offer honor and worship, glory and power unto the Holy Spirit,/ as to the Father and the Son,/ for the Trinity is a unity in nature,// but not in Persons."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Now will I arise, saith the Lord; I will establish them in salvation, I will be manifest therein."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "We hymn Thy saving Passion, O Christ,// and glorify Thy resurrection."
+          },
+          {
+            "text": "O Lord Who endured the Cross, abolished death and rose from the dead:/ Bring peace to our life,// as Thou alone art almighty."
+          },
+          {
+            "text": "O Christ Who by the resurrection madest hades captive/ and raised men from the dead,// count us worthy to hymn and glorify Thee with a pure heart."
+          },
+          {
+            "text": "Glorifying Thy divine condescension, we hymn Thee, O Christ./ Thou wast born of the Virgin and yet wast not separated from the Father;/ Thou didst willingly suffer as a man and didst endure the Cross/ and rise from the tomb, issuing forth therefrom/ as from a bridal chamber,/ that Thou mightest save the world.// O Lord, glory to be Thee!"
+          },
+          {
+            "text": "When Thou wast nailed to the Tree of the Cross,/ the might of the enemy was slain,/ creation trembled with the fear of Thee,/ and hades was made captive by Thy might./ Thou didst raise the dead from the graves, and didst open paradise to the thief.// O Christ our God, glory be to Thee!"
+          },
+          {
+            "text": "When the honorable women, lamenting, arrived with haste at Thy grave/ and found the tomb open;/ and, learning of the new and all-glorious wonder from the angel,/ they announced to the apostles that the Lord had risen,// granting the world great mercy."
+          },
+          {
+            "text": "We bow down before the divine wounds of Thy sufferings, O Christ God,/ and to the sacrifice of the Master,/ which was revealed by God in Sion/ in the fullness of time;/ for the Sun of righteousness hath illumined those who sleep in darkness,/ guiding them to never-waning splendor.// Glory be to Thee, O Lord!"
+          },
+          {
+            "text": "Give ear, O tumultuous Jewish race!/ Where are they who went to Pilate?/ Let the soldiers who kept watch say where the seals of the tomb are!/ Where hath the Buried One been laid?/ Where was He sold Who hath not been sold?/ How was the treasure stolen?/ Why slander ye the resurrection of the Savior,/ O most iniquitous Jews?/ He hath arisen Who is free among the dead,// and granteth the world great mercy!"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "Through food did the enemy lead Adam forth from paradise; but by the Cross hath Christ led back to it the thief who cried: Remember me when Thou comest in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "With Adam and the thief I worship Thy sufferings and glorify Thy resurrection; and I cry out with a splendid voice: Remember me, O Lord, when Thou comest in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "O Sinless One, of Thine own will Thou wast crucified. and placed in the tomb; yet Thou didst arise as God, raising up with Thyself Adam who crieth out: Remember me when Thou comest in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "Raising up the temple of Thy body by Thy resurrection on the third day, O Christ God, Thou didst raise up Adam and his descendants, who cry: Remember us when Thou comest in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "Very early, the myrrh-bearing women arrived, weeping, at Thy tomb, O Christ God; and they found an angel sitting there, clad in white garments, who said: What seek ye? Christ is risen! Lament no longer!"
+            },
+            {
+              "label": null,
+              "text": "When Thine apostles went to the mountain whither Thou hadst commanded them to go, and saw Thee, O Savior, they worshipped Thee; and Thou didst send them unto the nations, to teach and baptize them."
+            },
+            {
+              "label": null,
+              "text": "Triadicon: Let us worship the Father, let us glorify the Son, and together let us hymn the all-holy Spirit, crying out and saying: O most holy Trinity, save us all!"
+            },
+            {
+              "label": null,
+              "text": "Theotokion: Thy people bring Thy Mother before Thee to make supplication, O Christ. Through her entreaties grant us Thy compassions, O Good One, that we may glorify Thee Who hast shone forth upon us from the tomb."
+            }
+          ]
+        }
+      }
     }
   },
   "tone2": {
@@ -124,7 +255,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Come ye, let us all fall down before the house of the Lord;/ and chanting, let us send forth from our mouth a hymn of salvation, saying:/ O Thou Who wast crucified on the Tree,/ Who rose from the dead and art in the bosom of the Father,// cleanse us of our sins."
           }
@@ -171,6 +301,138 @@
           "text": "All of thy most glorious mysteries are beyond comprehension,/ O Theotokos;/ for, thy purity sealed and thy virginity intact,/ thou art known to be a true Mother,/ having given birth unto God.// Him do thou entreat, that our souls be saved."
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "The noble Joseph, taking Thine all-pure body down from the Tree and wrapping it in a clean winding-sheet, enclosed it in a new tomb with sweet spices; yet Thou didst arise on the third day, O Lord, granting great mercy to the world."
+            },
+            {
+              "label": null,
+              "text": "Standing before the myrrh-bearing women at the tomb, the angel cried: “Myrrh is meet for the dead, yet Christ hath shown Himself to be a stranger to corruption! But cry aloud: The Lord hath risen, granting the world great mercy!”"
+            },
+            {
+              "label": "Theotokion",
+              "text": "All-glorious art thou, O Virgin Theotokos! We hymn thee, for thy Son hath cast down hades through the Cross; death hath been slain; we, the dead, have arisen, and have been vouchsafed life. We have received paradise, our ancient delight. Wherefore, giving thanks, we glorify Christ our God as mighty, the only most Merciful One."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Without hindering [the Jews] from sealing the stone of the tomb, in arising Thou didst bestow the rock of faith upon all. O Lord, glory be to Thee!"
+            },
+            {
+              "label": null,
+              "text": "With one accord the choir of Thy disciples rejoiceth with the myrrh-bearing women; and with them we celebrate a common feast to the glory and honor of Thy resurrection. And through them we cry out to Thee, O Lord Who lovest mankind: Grant Thy people great mercy!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "All-blessed art thou, O Virgin Theotokos,/ for by Him Who became incarnate through thee hath hades been made captive,/ Adam restored, the curse annulled, Eve set free,/ death slain, and we have been given life./ Wherefore, chanting, we cry aloud:// Blessed is Christ God Who hath been thus well pleased! Glory be to Thee!"
+            }
+          ]
+        },
+        "hypakoe": "The women who after Thy Passion went to Thy tomb to anoint Thy body, O Christ God, beheld angels in the sepulchre and were afraid; for they heard them say that the Lord is risen, granting the world great mercy.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "I cast the eyes of my heart toward Thee in heaven, O Savior.// Save me by Thine overshadowing.",
+              "Have mercy on us who offend Thee greatly every hour,/ O my Christ,// and grant that we may offer Thee repentance before the end.",
+              "It is fitting that the Holy Spirit reign,/ sanctify and move creation,// for He is God, consubstantial with the Father and the Word."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "If the Lord were not with us,/ who would be preserved whole from the enemy,// the slayer of men?",
+              "Give not Thy servant over to the teeth of mine enemies,/ O Savior,// for they move against me like lions.",
+              "The Holy Spirit is the Source of life and worship,/ for by His power as God He preserveth all created things// in the Father by the Son."
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "They who hope in the Lord/ are like a holy mountain:// they are in nowise moved by the assaults of the enemy.",
+              "Let those who live godly lives/ stretch not their hands forth to iniquities,/ for Christ will not withhold His staff// from such in His portion.",
+              "Through the Holy Spirit doth all wisdom flow:/ through Him have the prophets received vision,/ hath grace come upon the apostles,/ and have the martyrs been crowned// with the endurance of suffering."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Arouse Thyself, O Lord my God, in the commandment which Thou hast enjoined, and a congregation of people shall surround Thee."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "Every breath, all creation, glorifieth Thee, O Lord,/ in that Thou hast abolished death by the Cross,/ that Thou mightest show men Thy resurrection from the dead,// in that Thou alone lovest mankind."
+          },
+          {
+            "text": "Let the Jews say how the soldiers who kept watch lost the King!/ Why did the stone not keep in the Rock of life?/ Either give up the buried corpse or worship the Risen One, saying with us:/ Glory to the magnitude of Thy compassions, O our Savior!// Glory be to Thee!"
+          },
+          {
+            "text": "“Rejoice and be glad, O ye people!”/ the angel, seated upon the stone of the tomb, announced to us, saying:/ “Christ is risen from the dead,/ the Savior of the world;/ and He hath filled all things with sweet savor.// Rejoice, ye people, and be glad!”"
+          },
+          {
+            "text": "Before Thou wast conceived, O Lord,/ the angel brought the salutation “Rejoice!”/ to her who is full of grace;/ and an angel rolled away the stone of Thy glorious tomb at Thy resurrection:/ the one, instead of grief, announcing tidings of gladness;/ and the other, instead of death,/ proclaiming to us the Master and Bestower of life./ Wherefore, we cry out to Thee:// O Lord, Thou Benefactor of all, glory be to Thee!"
+          },
+          {
+            "text": "With tears the women poured forth myrrh upon Thy tomb;/ but their mouths were filled with joy when they could say:// The Lord is risen!"
+          },
+          {
+            "text": "Let the nations and peoples praise Christ our God,/ Who of His own will endured the Cross for our sake/ and spent three days in hades;/ and let them worship His resurrection from the dead,// whereby the ends of the whole world have been enlightened."
+          },
+          {
+            "text": "Crucified and buried wast Thou, O Christ,/ as Thou didst will./ Thou didst overthrow death and didst rise in glory as God and Master,// granting the world life everlasting and great mercy."
+          },
+          {
+            "text": "O ye truly iniquitous ones who sealed the stone,/ ye have granted us to see greater wonders!/ The watch understood that Christ had issued forth from the tomb, and they said:/ “Say that while we were sleeping His disciples came and stole Him.”/ But who would steal a dead man, and moreover one who is naked?/ He arose Himself, of His own accord, as God,/ leaving His grave clothes behind in the tomb./ Come, ye Jews, and see!/ How broke He not the seals, Who had trampled down death,// bestowing everlasting life and great mercy upon the human race?"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "We offer Thee the cry of the thief, and we pray: Remember us in Thy kingdom, O Savior!"
+            },
+            {
+              "label": null,
+              "text": "For the forgiveness of transgressions we offer unto Thee the Cross which Thou didst accept for our sake, O Thou Who lovest mankind."
+            },
+            {
+              "label": null,
+              "text": "We bow down in worship, O Master, before Thy burial and rising, whereby Thou hast delivered the world from corruption, O Thou Who lovest mankind."
+            },
+            {
+              "label": null,
+              "text": "By Thy death hath death been slain, O Lord, and by Thy resurrection hast Thou saved the world, O Savior."
+            },
+            {
+              "label": null,
+              "text": "Risen from the tomb, Thou didst meet the myrrh-bearing women; and Thou didst tell Thy disciples to announce Thine arising."
+            },
+            {
+              "label": null,
+              "text": "Those who slept in darkness, beholding Thee, the Light, in the nethermost parts of hades, O Christ, were raised from the dead."
+            },
+            {
+              "label": null,
+              "text": "Triadicon: Let us glorify the Father; let us all worship the Son, and let us hymn the Holy Spirit with faith."
+            },
+            {
+              "label": null,
+              "text": "Theotokion: Rejoice, fiery throne! Rejoice, bride unwedded! Rejoice, O Virgin who for men gavest birth unto God!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone3": {
@@ -208,7 +470,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Standing unworthily in Thine all-pure house, O Christ God,/ we send up our evening hymnody,/ crying out from the depths of our souls:/ O Thou Who lovest mankind,/ Who illumined the world with Thy resurrection on the third day,// rescue Thy people from the hands of Thine enemies."
           }
@@ -255,6 +516,139 @@
           "text": "We hymn thee who hast mediated the salvation of our race,/ O Virgin Theotokos;/ for thy Son and our God,/ accepting suffering on the Cross/ in the flesh He had received of thee,/ hath delivered us from corruption,// in that He is the Lover of mankind."
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "Christ hath arisen from the dead, the first-fruits of those who have fallen asleep, the firstborn of creation, the Creator of all that existeth; and in Himself He hath restored the nature of our race which had become corrupt. No longer dost thou have dominion, O death, for the Master of all hath destroyed thy realm!"
+            },
+            {
+              "label": null,
+              "text": "Having tasted the fruit of death, O Lord, Thou didst cut off the bitterness of death by Thine arising, and hast strengthened man against it, revoking the defeat of the primal curse. O Lord, Defender of our life, glory be to Thee!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "Awed by the beauty of thy virginity and thine all-radiant purity, Gabriel, marvelling, cried out to thee, O Theotokos: “What praise can I bring which is worthy of thee? What shall I call thee?” I am at a loss and filled with awe! Wherefore, as I have been commanded, I cry unto thee: “Rejoice, O thou who art full of grace!”"
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Terrified of Thine immutable divinity and voluntary suffering, O Lord, hell lamented to itself; saying: “I tremble before a Being of incorrupt flesh; I behold One invisible, Who mystically contendeth against me. Wherefore, I hold fast to those who cry: Glory to Thy resurrection, O Christ!”"
+            },
+            {
+              "label": null,
+              "text": "O ye faithful, let us theologize concerning the incomprehensibility of the crucifixion, the ineffability of the resurrection, the unspeakable mystery; for today death and hell have been made captive, and the human race hath been clothed in incorruption. Wherefore, giving thanks, we cry unto Thee: Glory to Thine arising, O Christ!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "O Theotokos, thou didst mystically contain in thy womb the Unapproachable and Uncircumscribable One, Who is consubstantial with the Father and the Spirit, and through thy birthgiving we have learned to glorify in the world the one and unconfused power of the Trinity. Wherefore, with thanksgiving we cry out to thee: Rejoice, O thou who art full of grace!"
+            }
+          ]
+        },
+        "hypakoe": "Amazing the myrrh-bearing women by the sight of Him, and refreshing them by his words, the radiant angel said to them: “Why seek ye the Living in the tomb? He Who hath emptied the graves hath arisen! Understand the Changer of corruption to be immutable! Say ye unto God: How awesome are Thy works, for Thou hast saved the human race!”",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "Thou didst move the captivity of Sion away from Babylon, O Word.// Draw me also forth from the passions unto life.",
+              "They who sow in the south with tears divine// shall joyfully reap the grain of life everlasting.",
+              "Unto the Holy Spirit, as to the Father and the Son,/ shineth all thanksgiving,// wherein all things live and move."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "If the Lord buildeth not the house of the virtues,/ in vain do we labor;/ and when the Spirit protecteth it,// no one will destroy our city.",
+              "Through the Spirit are the saints ever adopted by Thee, O Christ,// as the fruit of Thee and the Father.",
+              "Through the Holy Spirit are all holiness and wisdom perceived;/ for He bringeth every created thing into existence./ Him do we worship, for He is God,// like the Father and the Word"
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "Blessed are they who fear the Lord,/ who walk the path of the commandments;// for they shall eat of all the fruits of life.",
+              "Be Thou glad, O Chief Shepherd,/ beholding Thine offspring round about Thy table,// bearing the branches of goodly works.",
+              "Glory…, Now and ever…",
+              "From the Holy Spirit are all the riches of glory;/ from Him are grace and life for every creation:// for He is hymned with the Father and the Word."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Say among the nations that the Lord is king; for He hath established the world, which shall not be shaken."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "Come, all ye nations, and understand the power of the dread mystery;/ for Christ the Savior, Who in the beginning was the Word,/ was crucified for our sake and buried,/ and rose from the dead, that He might save all.// Let us worship Him."
+          },
+          {
+            "text": "Those who guarded Thee declared all the wonders, O Lord;/ but the council of vainglory filled their hands with a reward,/ intending thus to conceal Thy resurrection,/ which the world doth glorify.// Have mercy upon us!"
+          },
+          {
+            "text": "All were filled with joy, experiencing the resurrection;/ for Mary Magdalene went to the tomb and found an angel seated upon the stone,/ clad in shining raiment, who said:/ “Why seek ye the Living among the dead?/ He is not here, but is risen as He said,// going before you to Galilee!”"
+          },
+          {
+            "text": "In Thy light do we behold light,/ O Master Who lovest mankind;/ for Thou didst rise from the dead,/ granting salvation to the human race./ Let all creation glorify Thee Who alone art sinless./ Have mercy upon us!"
+          },
+          {
+            "text": "With tears the myrrh-bearing women offered Thee a morning hymn, O Lord;/ for, taking sweet-smelling spices,/ they went to Thy tomb, intending to embalm Thine all-pure body./ But an angel, seated upon the stone,/ announced to them: “Why seek ye the Living among the dead?/ For He is risen as God,// trampling down death and granting great mercy unto all!”"
+          },
+          {
+            "text": "The radiant angel, seated on Thy life-creating tomb,/ said to the myrrh-bearing women:/ “The Deliverer Who hath emptied the graves hath made hades captive and risen on the third day,// in that He alone is God Almighty!”"
+          },
+          {
+            "text": "Arriving on the first day of the week,/ Mary Magdalene sought Thee in the tomb;/ and not finding Thee, she lamented, weeping and crying aloud:/ “Woe is me, O my Savior!/ Thou hast been stolen, O King of all!”/ But the two life-bearing angels within the tomb cried out:/ “Why weepest thou, O woman?”/ “I weep,” said she, “because they have taken the Lord from the tomb,/ and I know not where they have laid Him!”/ But turning around, she straightway cried out as she saw Thee:// “O my Lord and my God, glory be to Thee!”"
+          },
+          {
+            "text": "The Jews closed Life within the tomb,/ but the thief opened up delight with his tongue, crying aloud and saying:/ “He Who was crucified with me for my sake joined me on the Tree,/ and hath revealed Himself to me,/ seated on the throne with the Father;// for He is Christ our God, Who hath great mercy!”"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "From paradise didst Thou drive [our] forefather Adam, who had broken Thy commandment, O Christ; but, O Compassionate One, Thou didst cause to dwell therein the thief who confessed Thee on the cross, crying out: “Remember me, O Savior, in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "With the curse of death didst Thou condemn us who had sinned, O Lord, Bestower of life; yet having suffered in Thy flesh, O sinless Master, Thou hast granted life unto mortals who cry out: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "In rising from the dead, Thou hast raised us up from the passions with Thyself through Thy resurrection, O Lord; and all the power of death hast Thou destroyed, O Savior. Wherefore, with faith we cry out to Thee: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "O Thou Who as God grantest life, by Thy three days in the tomb Thou didst raise up with Thyself the dead in hell, and as One Who is good Thou hast poured forth incorruption upon all of us who with faith ever cry out: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "Risen from the dead, O Savior, Thou didst first appear to the myrrh-bearing women, crying out: “Rejoice!” and through them Thou didst announce Thy resurrection to Thy friends, O Christ. Wherefore, with faith we cry out to Thee: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "Moses, stretching out his arms on the mountain, prefigured the Cross and [thus] conquered Amalek. And, receiving it with faith as a mighty weapon against the demons, we all cry out: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "Triadicon: O ye faithful, let us hymn the Father, Son and Holy Spirit, the one God, the one Lord, as from a single Sun; for the Trinity is thrice-luminous and enlighteneth all who cry out: “Remember us also in Thy kingdom!”"
+            },
+            {
+              "label": null,
+              "text": "Theotokion: Rejoice, O portal of God, through which the incarnate Creator passed without breaking thy seal! Rejoice, thou light cloud which bore Christ, the divine Rain! Rejoice, ladder and throne of heaven! Rejoice, honored mountain of God, fruitful and unquarried!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone4": {
@@ -292,7 +686,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Thy begetting by the Father is everlasting and outside of time, O Lord;/ Thine incarnation from the Virgin is ineffable and indescribable for men;/ and Thy descent into hades is fearsome for the devil and his angels./ For, having trampled down death,/ Thou didst arise on the third day,// granting to men incorruption and great mercy."
           }
@@ -339,6 +732,130 @@
           "text": "The mystery hidden from before the ages/ and unknown even to the angels,/ through thee, O Theotokos, hath been revealed to those on earth:/ God incarnate in unconfused union,/ Who willingly accepted the Cross for our sake/ and, thereby raising up the first-formed man,// hath saved our souls from death."
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "Gazing upon the entrance to the tomb, and unable to endure the angel of flame, the myrrh-bearing women marvelled, trembling, and said: “Hath He been stolen away Who hath opened paradise to the thief? Or hath He risen Who even before His suffering proclaimed His resurrection? Truly, Christ hath risen, granting life and resurrection unto those in hades!”"
+            },
+            {
+              "label": null,
+              "text": "In Thy voluntary counsel Thou didst endure the Cross, O Savior, and in a new tomb mortal men laid Thee Who by Thy word didst create the ends of the earth. Wherefore, the alien one was bound, death taken grievously captive; and all those in hades cried out to Thy life-bearing resurrection: Christ hath arisen, remaining the Bestower of life forever!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "Joseph marvelled, beholding that which transcendeth nature, and pondering thy seedless conception he dwelt in thought upon the dew which fell upon the fleece, the bush unconsumed by the fire, and the rod of Aaron which put forth branches. And thy guardian and betrothed cried out to the priests: “The Virgin giveth birth, and even after birthgiving remaineth virgin!”"
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Thou didst arise from the tomb as One Immortal, O Savior, and by Thy power didst raise Thy world up with Thyself, O Christ our God; in might Thou didst crush the dominion of death, O Merciful One, and hast shown forth the resurrection unto all. Wherefore, we glorify Thee, O Thou Who alone lovest mankind!"
+            },
+            {
+              "label": null,
+              "text": "Having descended from the heights of heaven and approached the stone where the Stone of life had lain, Gabriel, arrayed in white, cried out to those who wept: “Cease your cries of lamentation, O ye who have mercy now with you! Be of good cheer, for He Whom ye seek, weeping, hath truly arisen! Wherefore, cry out to the apostles that the Lord hath risen! And receiving this joy, worship the Risen One! Be ye of good cheer, that Eve also may rejoice!”"
+            },
+            {
+              "label": "Theotokion",
+              "text": "All the choirs of the apostles marvelled at the dread mystery of thy birthgiving, O pure one: how He Who holdeth all things in one hand is held in thine arms as a man, how the Preëternal One receiveth the beginning, how He Who in His ineffable goodness nurtureth every creature is fed with milk. And praising thee, they glorify thee as the true Mother of God."
+            }
+          ]
+        },
+        "hypakoe": "Running on before, the myrrh-bearing women proclaimed Thine all-glorious arising to the apostles, O Christ: how, as God, Thou didst arise, granting great mercy to the world.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "From my youth have the many passions warred against me.// But do Thou help and save me, O my Savior.",
+              "O ye who hate Sion,/ ye shall be put to shame by the Lord;// for ye shall be withered up like grass by the fire.",
+              "By the Holy Spirit/ is every soul given life,/ exalted by purity, and made radiant by the unity of the Trinity// in a sacred and mystical manner."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "Let my heart be lifted up unto Thee, O Word,/ and let none of the delights of the world beguile me,// unto my weakening.",
+              "We who have love for our mothers// must needs be yet more ardent in our love for the Lord.",
+              "From the Holy Spirit is the richness of divine vision,/ sight and wisdom;// for in Him doth the Word reveal all the precepts of the Father.."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Arise, O Lord, help us, and redeem us for Thy name’s sake,"
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "O Almighty Lord, Who endured the Cross and death,/ and rose from the dead,// we glorify Thy resurrection!"
+          },
+          {
+            "text": "By Thy Cross, O Christ,/ hast Thou freed us from the ancient curse;/ by Thy death hast Thou set at naught the devil who tormenteth our nature;/ and by Thine arising hast Thou filled all with joy./ Wherefore, we cry aloud to Thee:// O Lord Who hast risen from the dead, glory be to Thee!"
+          },
+          {
+            "text": "By Thy Cross, O Christ our Savior,/ guide us to Thy truth, and deliver us from the snares of the enemy./ O Thou Who hast risen from the dead,/ through the supplications of Thy saints/ do Thou raise us up who have fallen through sin,/ stretching forth Thy hand to us,// O Lord Who lovest mankind."
+          },
+          {
+            "text": "Without separating Thyself from the bosom of the Father,/ O only-begotten Son of God,/ Thou didst come to earth in Thy love for mankind,/ becoming a man immutable;/ and Thou didst endure death in the flesh,/ O Thou Who in Thy divinity art foreign to suffering./ And having risen from the dead,/ Thou hast given immortality to the human race,// in that Thou alone art Almighty."
+          },
+          {
+            "text": "Thou didst accept death in the flesh,/ mediating immortality for us, O Savior,/ and didst make Thine abode in the tomb,/ that Thou mightest free us from hades, raising us up with Thyself./ Therefore, Thou didst suffer as a man, but didst rise as God,/ for which cause we cry out:/ Glory to Thee, O Lord,// Bestower of life, Who alone lovest mankind!"
+          },
+          {
+            "text": "The stones fell, O Savior,/ when Thy Cross was planted on Golgotha;/ and the gatekeepers of hades were struck with fear/ when Thou wast laid in the tomb as one dead./ For Thou, O Savior Who hast set at naught the might of death,/ hast by Thy resurrection granted incorruption unto all the dead.// O Lord, Bestower of life, glory be to Thee!"
+          },
+          {
+            "text": "The women desired to see Thy resurrection, O Christ God,/ but Mary Magdalene came, arriving before them,/ and found the stone rolled away from the tomb/ and an angel seated thereon, who said:/ “Why seek ye the Living among the dead?// He is risen, as God, that He might save all!”"
+          },
+          {
+            "text": "Tell us, O Jews, where is Jesus Whom ye thought to guard?/ Where is He Whom ye placed in the tomb, sealing the stone?/ Give up the dead one, O ye who rejected Life,/ or believe on the Risen One!/ For if ye try to silence the word of the Lord’s rising,/ the stones will cry out,/ especially the one which rolled away from the tomb!/ Great is Thy mercy! Great is the mystery of Thy dispensation!// O our Savior, glory be to Thee!"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "By the tree [of knowledge] was Adam forced to depart from paradise; and by the tree of the Cross was the thief made to dwell in paradise. For the one by tasting broke the commandment of the Creator; while the other, crucified with Him, confessed the hidden God, crying out: Remember me in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "O Lord Who wast lifted up upon the Cross, Who hast destroyed the power of death and as God hast destroyed the record of our sins, grant also the repentance of the thief unto us who faithfully serve Thee and cry out to thee, O Christ God Who alone lovest mankind: Remember us also in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "On the Cross Thou didst tear asunder with the spear the record of our sins; and, numbered among the dead, Thou didst bind the tyrant of hades, O Lord Who lovest mankind, Who by Thy resurrection hast delivered all from the bonds of hades. Thereby have we been illumined, and we cry to Thee: Remember us also in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "O Thou Who alone art immortal, Who wast crucified and as almighty didst arise from the tomb on the third day, and hast raised up Adam, the first created: Vouchsafe that I also may turn to repentance with my whole heart, and may ever cry out to Thee with fervent faith: Remember me, O Savior, in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "For our sake He Who is without passion became a man subject to the passions; and, nailed of His own will to the Cross, He hath raised us up with Himself: Wherefore, we glorify His Cross, passion and resurrection, whereby we have been refashioned and whereby we also are saved, who cry out: Remember us also in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "O ye faithful, let us entreat Him Who hath risen from the dead, hath made captive the dominion of hades, and wast seen by the myrrh-bearing women and said to them: “Rejoice!” that He deliver from corruption the souls of us who ever cry out to Him with the voice of the noble thief: Remember us also in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "Triadicon: O ye faithful, let us all pray, that with one mind we may worthily glorify the Father, the Son and the Holy Spirit, the unity of the Trinity in three Hypostases, unmingled, abiding, simple, indivisible and unapproachable; for thereby have we been delivered from fiery torment."
+            },
+            {
+              "label": null,
+              "text": "Theotokion: O Christ, most merciful Master, Thy Mother, who gave birth unto Thee in the flesh without seed, the true Virgin, who remained incorrupt even after giving birth, do we set before Thee to make the supplication: Grant forgiveness of transgressions unto those who ever cry out to Thee: Remember us also in Thy kingdom!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone5": {
@@ -376,7 +893,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "O Lord our Savior, Who madest hades captive,/ trampled down death, and hast enlightened the world by Thy Cross:// Have mercy upon us!"
           }
@@ -423,6 +939,140 @@
           "text": "Rejoice, impassable gate of the Lord!/ Rejoice, rampart and protection of those who have recourse unto thee!/ Rejoice, haven untouched by storms,/ thou that knowest not wedlock,/ who gavest birth in the flesh to thy Creator and God!/ Fail not in thy supplications for those who hymn// and worship thy birthgiving!"
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "We praise the Cross of the Lord, we honor His holy burial with hymns, and we greatly glorify His resurrection, for as God with Himself He raised the dead up from the graves, having captured the dominion of death and the might of the devil; and He shone light upon those in hades."
+            },
+            {
+              "label": null,
+              "text": "Declared to be dead, O Lord Who didst slay death, Thou wast laid in a tomb, O Thou Who emptied the graves. Above, soldiers kept guard over Thy sepulchre, while below Thou didst raise up the dead from ages past. O almighty and unapproachable Lord, glory be to Thee!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "Rejoice, O holy mountain trodden by God! Rejoice, animate bush which was not consumed! Rejoice, bridge to God for the world, who alone bearest mortals to everlasting life! Rejoice, incorrupt Maiden who without knowing man gavest birth unto the Salvation of our souls."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "O Lord, after Thy resurrection on the third day and the worship of the apostles, Peter cried out to Thee: “The women showed courage, but I was afraid. The thief uttered theology, but I denied Thee. And dost Thou now call upon me to be Thine apostle still? Or wilt Thou show me again to be a fisher of the deep? Yet do Thou accept me, who repent, O God, and save me!”"
+            },
+            {
+              "label": null,
+              "text": "O Lord, the iniquitous nailed Thee in the midst of condemned criminals, and pierced Thy side with a spear, O Merciful One! Thou didst accept burial, Who broke down the gates of hades, and didst rise again on the third day. The women hastened to behold Thee, and announced Thine arising to the apostles. O supremely exalted Savior, Whom the angels hymn, O blessed Lord, glory be to Thee!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "O Theotokos, unwedded Bride, who hast transformed the grief of Eve into joy, we, the faithful, hymn and bow down before thee, for thou hast led us out of the ancient curse. And now, pray thou unceasingly, O most hymned and all-holy one, that we be saved."
+            }
+          ]
+        },
+        "hypakoe": "Troubled in mind by the appearance of the angel, yet enlightened in soul by the divine resurrection, the myrrh-bearing women announced to the apostles: “Tell among the nations the resurrection of the Lord Who worketh miracles and granteth us great mercy!”",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "When I Am filled with sorrow,/ I sing unto Thee like David, O my Savior:// Deliver my soul from a lying tongue.",
+              "Blessed is the life of those in the wilderness,// who soar aloft on wings of love divine.",
+              "Glory…, Now and ever…",
+              "By the Holy Spirit are sustained all things,/ visible and invisible;/ for, Himself possessed of dominion,// He is truly One of the Trinity.",
+              "Theologizing concerning the Holy Spirit, let us say:/ Thou art God, life, love, light and understanding!// Thou art goodness, and Thou reignest forever!"
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "Let us ascend to the mountains, O my soul,// and go thither, from whence cometh our help.",
+              "Let Thy right hand, which toucheth me, O Christ,// preserve me from all deception.",
+              "Theologizing concerning the Holy Spirit, let us say:/ Thou art God, life, love, light and understanding!// Thou art goodness, and Thou reignest forever!"
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "Full of great joy, I send up supplications for those who have said to me:// Let us enter into the courts of the Lord.",
+              "Awesome things are wrought in the house of David;// for there is found the fire which burneth up every shameful thought.",
+              "To the Holy Spirit, by Whom every living thing is made animate,/ is due the dignity of the Bestower of life,// as to the Father and the Word."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Arise, O Lord my God, let Thy hand be lifted high; for Thou shalt be King forever."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "O Lord, when the tomb had been sealed by the iniquitous,/ Thou didst issue forth from the grave,/ as Thou hadst been born of the Theotokos./ Thine incorporeal angels did not understand how Thou hadst become incarnate,/ and the soldiers who guarded Thee did not sense when Thou didst arise./ For both things were sealed for those who would examine them;/ but the wonders were revealed to those who worshipped the mystery with faith.// Grant Thou joy and great mercy unto us who hymn it!"
+          },
+          {
+            "text": "O Lord, Who broke asunder the everlasting chains/ and rent apart the bonds of hades,/ Thou didst rise from the tomb,/ leaving Thy grave-clothes behind as a witness to Thy true burial on the third day;/ and Thou didst go before Thy disciples into Galilee,/ O Thou Who wast guarded in the cave./ Great is Thy mercy, O unapproachable Savior!// Have mercy and save us!"
+          },
+          {
+            "text": "The women, O Lord, hastened to the tomb/ to see Thee Who suffered for our sake, O Christ;/ and when they were come, they found an angel seated upon the stone,/ which had rolled away in fear;/ and he cried out to them, saying: “The Lord is risen!// Tell ye the disciples that He hath risen from the dead, saving our souls!”"
+          },
+          {
+            "text": "O Lord, as Thou didst come forth from the sealed tomb,/ so didst Thou enter in unto Thy disciples while the doors were fast shut,/ showing them the bodily sufferings/ which Thou didst endure, O long-suffering Savior./ Thou didst undergo wounding as One from the seed of David,/ and didst free the world as the Son of God./ Great is Thy mercy, O unapproachable Savior!// Have mercy and save us!"
+          },
+          {
+            "text": "O Lord, King of the ages and Creator of all,/ Who for our sake didst accept crucifixion and burial in the flesh,/ that Thou mightest free us all from hades:// Thou art our God, and we know none other than Thee."
+          },
+          {
+            "text": "O Lord, who can describe Thine all-radiant wonders?/ Or who can declare Thy dread mysteries?/ For, having become man for our sake, as Thou Thyself desired,/ Thou didst reveal the might of Thy power;/ for by Thy Cross Thou didst open paradise to the thief,/ and by Thy burial Thou didst break the chains of hades,/ and by Thy resurrection Thou hast enriched all things.// O compassionate Lord, glory be to Thee!"
+          },
+          {
+            "text": "Arriving at Thy tomb very early in the morning,/ the myrrh-bearing women sought to anoint God the immortal Word with myrrh;/ but, informed by the words of the angel,/ they returned with joy and declared openly to the apostles/ that Thou hadst arisen, O Life of all,// and granted the world cleansing and great mercy."
+          },
+          {
+            "text": "The guards of the God-receiving tomb said to the Jews:/ “O your vain-minded counsel!/ In attempting to confine Him Who is uncontainable,/ ye labored in vain; desiring to conceal the resurrection of the Crucified,/ ye showed it forth clearly!/ O your vain-minded assembly!/ Do ye again advise us to hide what cannot be hid?/ Hearken, rather, to us, and believe in those things which have truly happened:/ A lightning-bearing angel, descending from heaven,/ rolled away the stone,/ and in fear of him we became as dead;/ and as herald to the myrrh-bearing women of steadfast mind he said:/ ‘See ye not the guards lying as dead,/ and the seals broken, and the emptying of hades?/ Why seek ye Him Who hath set at naught the victory of hades/ and broken the sting of death, as though He were dead?/ Going forth quickly,/ proclaim the resurrection without fear to the apostles, crying out:// Truly the Lord is risen, Who hath great mercy!’”"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "Believing Thee to be God, O Christ, the thief on the cross confessed Thee in a pure manner, crying out from the depths of his heart: Remember me in Thy kingdom, O Lord!"
+            },
+            {
+              "label": null,
+              "text": "Together let us hymn as Savior and Creator Him Who on the tree of the Cross budded forth life for our race and caused the curse which originated from the tree to wither up."
+            },
+            {
+              "label": null,
+              "text": "By Thy death hast Thou destroyed the power of death, O Christ, and Thou didst raise up with Thyself the dead of ages past, who now hymn Thee as our true God and Savior."
+            },
+            {
+              "label": null,
+              "text": "Arriving at Thy tomb, O Christ, the honorable women sought to anoint Thee with myrrh, O Bestower of life; but an angel appeared to them, crying out: The Lord is risen!"
+            },
+            {
+              "label": null,
+              "text": "When Thou wast crucified between two condemned thieves, O Christ, one of them blasphemed Thee and was justly damned, while the other confessed Thee and hath now come to dwell in paradise."
+            },
+            {
+              "label": null,
+              "text": "When they had come to the choir of the apostles, the honorable women cried out: Christ is risen! Let us worship Him as Master and Creator!"
+            },
+            {
+              "label": null,
+              "text": "Triadicon: O indivisible Trinity, all-effecting and all-powerful Unity: Father, Son and Holy Spirit: thee do we hymn as our true God and Savior!"
+            },
+            {
+              "label": null,
+              "text": "Theotokion: Rejoice, O animate temple of God and impassable gate! Rejoice, O fiery throne which burneth yet is not consumed! Rejoice, O Mother of Emmanuel, Christ our God!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone6": {
@@ -460,7 +1110,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Thy burial, O Lord,/ breaking the bonds of hades,/ hath rent them asunder./ By Thy rising from the dead Thou hast enlightened the world.// O Lord, glory be to Thee!"
           }
@@ -507,6 +1156,138 @@
           "text": "Calling Thy Mother blessed,/ Thou didst come to Thy Passion of Thine own will,/ shining forth upon the Cross,/ and desiring to seek out Adam./ Thou didst say unto the angels:/ Rejoice with Me, for the lost coin hath been found!/ O our God Who has wisely arranged all things,// glory be to Thee!"
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "When the tomb was opened and hades wept, Mary cried out to the apostles who had hidden themselves: “Come forth, ye laborers of the vineyard! Proclaim the tidings of the resurrection! The Lord hath risen, granting the world great mercy!”"
+            },
+            {
+              "label": null,
+              "text": "O Lord, Mary Magdalene stood before Thy tomb and wept aloud; and supposing Thee to be the gardener, she said: “Where hast Thou hidden our eternal Life? Where hast Thou laid Him Who sitteth upon the throne of the cherubim? For those who guarded Him have become as dead through fear. Either give me my Lord, or cry out with me: O Thou Who wast among the dead and hast raised up the dead, glory to Thee!”"
+            },
+            {
+              "label": "Theotokion",
+              "text": "Gideon prefigured thy conception, and David recounted thy birthgiving, O Theotokos; for the Word descended into thy womb like the rain upon the fleece, and without seed thou didst put forth Christ our God, the salvation of the world, O holy ground, who art full of grace."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Life lay in the tomb, and a seal was affixed to the stone. Soldiers guarded Christ as they would a sleeping king, and the Lord arose, invisibly smiting His enemies."
+            },
+            {
+              "label": null,
+              "text": "Jonah prefigured Thy tomb, and Symeon told of Thy divine resurrection, O immortal Lord; for Thou didst descend into the tomb as one dead, demolishing the gates of hades, and didst arise as Master, without corruption, for the salvation of the world, O Christ our God, Who hast enlightened those in darkness."
+            },
+            {
+              "label": "Theotokion",
+              "text": "O Virgin Theotokos, entreat thy Son, Christ our God, Who of His own will was nailed to the Cross and arose from the dead, that our souls be saved."
+            }
+          ]
+        },
+        "hypakoe": "Having, as God, broken down the gates of hades by Thy voluntary and life-creating death, O Christ, Thou didst open ancient paradise unto us; and rising from the dead, Thou hast delivered our life from corruption.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "I lift up mine eyes to heaven,/ to Thee, O Word.// Have pity, that I may live in Thee.",
+              "Have mercy upon us who are downcast, O Word,// making us vessels useful to Thee.",
+              "The Holy Spirit is the Cause of all salvation./ And if He blow upon anyone as is meet,/ He quickly taketh him away from among the things of earth:/ He giveth him wings,// maketh him grow and setteth him on high."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "If the Lord were not among us, none of us/ would be able to combat the warfare of the enemy;// for they who conquer are lifted up from hence.",
+              "Let not my soul be seized like a bird by the teeth of the enemy, O Word./ Woe is me!// How shall I, who love sin, escape them?",
+              "From the Holy Spirit come deification,/ goodwill, understanding, peace and blessing for all;// for He worketh equally with the Father and the Word."
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "They that hope in the Lord/ are fearsome to the enemy and wondrous to all;// for they direct their gaze on high.",
+              "He who hath Thee, O Savior,/ as his Helper,/ the Portion of the righteous,// doth not stretch out his hands toward iniquities.",
+              "The dominion of the Holy Spirit is over all./ Him do the armies on high worship,// as doth every creature here below."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "O Lord, stir up Thy might and come to save us."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "Thy Cross, O Lord,/ is the life and resurrection of Thy people;/ and we who set our hope thereon/ hymn Thee, our risen God.// Have mercy upon us!"
+          },
+          {
+            "text": "Thy burial hath opened paradise to the human race, O Master;/ and, delivered from corruption, we hymn Thee,/ our risen God.// Have mercy upon us!"
+          },
+          {
+            "text": "Let us hymn Christ Who is risen from the dead,/ with the Father and the Spirit;/ and let us cry out to Him:/ Thou art our life and resurrection!// Have mercy upon us!"
+          },
+          {
+            "text": "Thou didst rise from the tomb on the third day,/ as it is written, O Christ,/ raising up our forefather with Thyself./ Wherefore, the human race glorifieth Thee// and hymneth Thy resurrection."
+          },
+          {
+            "text": "Great and awesome is the mystery of Thy resurrection, O Lord;/ for thus Thou didst issue forth from the tomb,/ like a bridegroom from a wedding chamber,/ having destroyed death by death,/ that Thou mightest free Adam./ Wherefore, the angels join chorus in the heavens,/ and on earth men glorify Thy loving-kindness toward us,// O Thou Who lovest mankind."
+          },
+          {
+            "text": "O ye most iniquitous Jews,/ where are the seals, and the silver coins which ye gave to the soldiers?/ The Treasure hath not been stolen, but is risen, as One mighty./ Ye are filled with shame, who rejected Christ, the Lord of glory,/ Who suffered, was buried, and rose from the dead.// Let us worship Him!"
+          },
+          {
+            "text": "While the tomb was sealed,/ how were the remains stolen,/ O ye Jews who set the watch and affixed the seals?/ The King issued forth through doors which were closed./ Either show Him as one dead, or worship Him as God,/ chanting with us.// Glory, O Lord, to Thy Cross and resurrection!"
+          },
+          {
+            "text": "The myrrh-bearing women, lamenting, reached Thy Life-receiving tomb, O Lord;/ and, bearing myrrh, they sought to embalm Thine all-pure body./ But they found a luminous angel seated upon the stone,/ who declared to them, saying:/ “Wherefore weep ye for Him from Whose side life poured forth upon the world?/ Why seek ye the Immortal One as though He were one dead in the grave?/ Rather, make haste, announce to His disciples the universal joy of His glorious resurrection!”/ O Savior Who hast enlightened us thereby,// grant us cleansing and great mercy!"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "Remember me when Thou comest in Thy kingdom, O God my Savior, and save me, for Thou alone lovest mankind."
+            },
+            {
+              "label": null,
+              "text": "By a tree was Adam deceived; yet again by the Tree of the Cross was the thief saved, who cried out: Remember me in Thy kingdom, O Lord!"
+            },
+            {
+              "label": null,
+              "text": "O Bestower of life, Who hast broken down the gates and portals of hades, Thou hast saved all who cry out to Thee, O Savior: Glory to Thine arising!"
+            },
+            {
+              "label": null,
+              "text": "O Thou Who by Thy burial hast made death captive, and by Thy resurrection hast filled all with joy: remember me, in that Thou art compassionate."
+            },
+            {
+              "label": null,
+              "text": "The myrrh-bearing women who came to the tomb heard an angel cry out: Christ, who hath enlightened all things, is risen!"
+            },
+            {
+              "label": null,
+              "text": "Together let us all hymn Christ, Who was nailed to the Cross and hath delivered the world from beguilement."
+            },
+            {
+              "label": null,
+              "text": "Triadicon: The Father, the Son, and the Holy Spirit let us glorify, saying: O Holy Trinity, save Thou our souls!"
+            },
+            {
+              "label": null,
+              "text": "Theotokion: O Virgin, who ineffably conceived in the latter days and gavest birth unto Thy Creator: Save those who magnify thee!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone7": {
@@ -544,7 +1325,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "Thou wast laid in the tomb as one asleep, O Lord,/ and didst rise on the third day as one powerful in might,/ raising up Adam with Thyself from the corruption of death,// in that Thou art almighty."
           }
@@ -591,6 +1371,138 @@
           "text": "As thou art the treasury of our resurrection, O all-hymned one,/ lead up from the pit and abyss of transgression those who trust in thee,/ for thou who gavest birth to our Salvation/ hast saved those who are subject to sin./ O thou who before giving birth wast Virgin,/ and during thy birthgiving wast virgin,// thou remainest a Virgin even after giving birth."
         }
       }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "Life lay in the tomb, and the seal lay upon the stone. The soldiers guarded Christ as they would a sleeping king, and the angels glorified Him as immortal God. And the women cried aloud: The Lord hath risen, granting great mercy to the world!"
+            },
+            {
+              "label": null,
+              "text": "O Christ God, Who by Thy burial madest death captive, and Who by Thine arising raised up man who had become corrupt: Glory to Thee, in that Thou lovest mankind!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "O Virgin Theotokos, unceasingly entreat Christ our God, Who for our sake was crucified, rose again, and cast down the dominion of death, that He save our souls."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "While the tomb was sealed, Thou didst shine forth life from the grave, O Christ God; and while the doors were shut, Thou, the Resurrection of all, didst stand before the disciples, through them renewing an upright spirit for us, according to Thy great mercy."
+            },
+            {
+              "label": null,
+              "text": "The women ran to Thy tomb, bearing myrrh and tears; and while the soldiers were keeping watch over Thee, the King of all, they said to themselves: “Who will roll away the stone for us?” But the Angel of great Counsel had arisen, trampling down death. O Lord almighty, glory be to Thee!"
+            },
+            {
+              "label": "Theotokion",
+              "text": "Rejoice, O Virgin Theotokos full of grace, haven and intercession for the human race, for of thee did the Deliverer of the world become incarnate, for thou alone art both Mother and Virgin, ever-blessed and all-glorious. Entreat Christ God, that He grant peace to all the world."
+            }
+          ]
+        },
+        "hypakoe": "O Christ God, Who assumed our form and endured the Cross in the flesh, save me by Thy resurrection, in that Thou lovest mankind.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "O Savior Who turned the captivity of Sion away from falsehood,/ grant life unto me, rescuing me// from enslaving passions.",
+              "He who with tears soweth the afflictions of fasting in the south// shall reap sheaves of joy and everlasting life.",
+              "Through the Holy Spirit cometh the well-spring of divine treasures:/ from Him are wisdom, understanding and fear,/ and to Him are due praise and glory,// honor and dominion."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "If the Lord buildeth not the house of the soul, in vain do we labor;// for without Him is no work or word made perfect.",
+              "Moved by the Spirit,/ the saints, made true children through adoption by the Son,// have transmitted the teachings of the Father.",
+              "Through the Holy Spirit doth everything come into being;/ for, from before the beginning of time, He hath been the God of all,// the Lord of all, the unapproachable Light, and the Life of all."
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "Having found the paths of life,/ they who fear the Lord are blessed, now and forever,// with incorruptible glory.",
+              "Seeing thine offspring like the trunks of trees round about thy table,/ rejoice and be glad,// leading them to Christ, the Chief Shepherd.",
+              "From the Holy Spirit come an abyss of gifts,/ a wealth of glory and great depths of judgment;/ for, equal in glory with the Father and the Son,// He is worshipped with Them."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "Arise, O Lord my God, let Thy hand be lifted high; forget not Thy paupers to the end."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "Christ hath risen from the dead,/ bursting the bonds of death!/ O earth, proclaim great joy!// Ye heavens, sing the glory of God!"
+          },
+          {
+            "text": "Having beheld the resurrection of Christ,/ let us worship the holy Lord Jesus,// Who alone is sinless."
+          },
+          {
+            "text": "Let us not cease worshipping the resurrection of Christ;/ for the holy Lord Jesus,/ revealing His resurrection,// hath saved us from our iniquities."
+          },
+          {
+            "text": "What shall we render unto the Lord for all that He hath rendered unto us?/ God the Word, for the sake of us and our corrupted nature,/ took flesh, and dwelt among us men./ To the thankless He came as Benefactor;/ to the captive as Liberator;/ to those sitting in darkness as the Sun of righteousness./ On the Cross, He was dispassionate;/ in hades, He was light;/ in death He was life and resurrection for the fallen./ Let us cry aloud to Him:// O our God, glory be to Thee!"
+          },
+          {
+            "text": "Thou didst break down the gates of hades, O Lord;/ with Thy mighty power Thou didst abolish the dominion of death;/ and by Thy glorious resurrection Thou didst raise up with Thyself/ the dead who slept in darkness from ages past,// as King of all and almighty God."
+          },
+          {
+            "text": "Come, let us rejoice in the Lord/ and be glad in His resurrection; for with Himself He hath raised the dead up from the indissoluble bonds of hades,/ and as God He hath granted the world life everlasting// and great mercy."
+          },
+          {
+            "text": "The radiant angel sat upon the stone of the Life-receiving tomb/ and announced to the myrrh-bearing women, saying:/ “The Lord is risen, as He told you before!/ Proclaim ye to His disciples that He goeth before you into Galilee,// and granteth the world life everlasting and great mercy!”"
+          },
+          {
+            "text": "Why did ye cause the Cornerstone to be rejected, O most iniquitous Jews?/ Behold, He is the One Whom God set in Sion,/ Who poured water forth from the stone in the wilderness,/ and poureth forth immortality upon us from His own side./ He is the Stone which was quarried from the mountain of the Virgin/ without desire of man,/ the Son of man Who goeth on the clouds of heaven/ to the Ancient of Days, as Daniel said,// and His kingdom is eternal."
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "The fruit which slew me was beautiful and good to eat; but Christ is the Tree of life, and eating of Him I do not die, but cry out with the thief: Remember me, O Lord, in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "O Compassionate One, Who wast lifted up upon the Cross, Thou hast erased the record of Adam’s ancient sin, and hast saved the whole human race from deception. Wherefore, we hymn Thee, O Lord and Benefactor."
+            },
+            {
+              "label": null,
+              "text": "Thou didst nail our sins to the Cross, O compassionate Christ, and by Thy death Thou didst slay death, O Thou Who didst raise up the dead from among the dead. Wherefore, we worship Thy holy resurrection."
+            },
+            {
+              "label": null,
+              "text": "The serpent once poured its venom into the ears of Eve; but on the tree of the Cross Christ poured forth the sweetness of life upon the world. Wherefore, we cry out: Remember us, O Lord, in Thy kingdom!"
+            },
+            {
+              "label": null,
+              "text": "Thou wast laid in the tomb as one dead, O Christ, Thou Life of all; and Thou didst break down the gates of hades; and having risen again in glory on the third day as One mighty, Thou hast illumined all. Glory to Thine arising!"
+            },
+            {
+              "label": null,
+              "text": "Having risen from the dead on the third day, the Lord bestowed His peace upon His disciples; and having blessed them, He sent them forth, saying: Lead all into My kingdom!"
+            },
+            {
+              "label": null,
+              "text": "Triadicon: The Father is light; the Son and Word is light; and the Holy Spirit is light. Yet the Three are one Light, for they are one God in three Persons, One in nature and origin, indivisible, unconfused and preëternal."
+            },
+            {
+              "label": null,
+              "text": "Theotokion: For our sake thou gavest birth in the flesh to the Son and Word of the Father, in a way that He Himself knoweth, O Theotokos. Wherefore, O Virgin Mother, we who are deified through thee cry out to thee: Rejoice, O hope of Christians!"
+            }
+          ]
+        }
+      }
     }
   },
   "tone8": {
@@ -628,7 +1540,6 @@
           },
           "glory": {
             "_source": "myrrhbearers",
-            "tone": null,
             "label": "Resurrectional Doxastichon",
             "text": "We glorify Thee, O Lord, Who of Thine own will didst endure the Cross for our sake,/ and we worship Thee, O almighty Savior./ Turn us not away from Thy face,/ but hearken and save us by Thy resurrection,// O Thou Who lovest mankind."
           }
@@ -673,6 +1584,146 @@
           "_source": "myrrhbearers",
           "label": "Resurrectional Dismissal Theotokion",
           "text": "O Good One, Who for our sake wast born of the Virgin/ and, having endured crucifixion, cast down death by death,/ and as God revealed the resurrection:/ Disdain not that which Thou hast fashioned with Thine own hand./ Show forth Thy love for mankind, O Merciful One;/ accept the Theotokos who gave Thee birth and prayeth for us;// and save Thy despairing people, O our Savior!"
+        }
+      }
+    },
+    "sunday": {
+      "matins": {
+        "_source": "myrrhbearers",
+        "sessionalHymns": {
+          "afterKathisma2": [
+            {
+              "label": null,
+              "text": "Thou didst arise from the dead, O Life of all, and the radiant angel cried to the women: “Cease your weeping! Declare unto the apostles, and cry aloud, singing: Christ the Lord hath risen, Whose good pleasure, as God, it hath been to save the human race!”"
+            },
+            {
+              "label": null,
+              "text": "O Thou Who didst truly rise from the dead, Thou didst command the venerable women to proclaim Thine arising to the apostles, as it is written; and speedy Peter ran quickly to Thy tomb and, beholding a light within the sepulchre, was filled with awe. Wherefore, seeing the grave-clothes lying without the divine body in them, he cried out with faith: “Glory to Thee, O Christ God our Savior, for Thou savest all, in that Thou art the Effulgence of the Father!”"
+            },
+            {
+              "label": "Theotokion",
+              "text": "We hymn the portal of heaven, the ark, the most holy mountain, the luminous cloud, the heavenly ladder, the reason-endowed paradise, the deliverance of Eve, the great treasure of the whole world, for within her salvation was wrought for the world, and remission of the ancient offenses. Wherefore, we cry out to thee: Entreat thy Son and God, that He grant remission of transgressions unto those who piously worship thine all-holy birthgiving."
+            }
+          ],
+          "afterKathisma3": [
+            {
+              "label": null,
+              "text": "Men sealed Thy tomb, O Savior, but an angel rolled the stone away from its entry. The women beheld Thee risen from the dead, and in Sion they proclaimed to Thy disciples the glad tidings that Thou hadst arisen, O Life of all, and that the bonds of death are broken. O Lord, glory be to Thee!"
+            },
+            {
+              "label": null,
+              "text": "The women who bore the burial spices heard from the tomb the voice of the angel, saying: “Cease your weeping, and receive joy instead of grief! Cry aloud, singing that Christ the Lord hath risen, Whose good pleasure it hath been, as God, to save the human race!”"
+            },
+            {
+              "label": "Theotokion",
+              "text": "All creation the assembly of angels and the human race rejoiceth in thee, O thou who art full of grace, O sacred temple and reason-endowed paradise, thou boast of virgins, from whom God, Who existeth from before time, was incarnate and became a child; for He made thy loins a throne, and thy womb He made more spacious than the heavens. All creation rejoiceth in thee, O thou who art full of grace. Glory to thee!"
+            }
+          ]
+        },
+        "hypakoe": "Standing before the tomb of the Bestower of life, the myrrh-bearing women sought the immortal Master among the dead; and receiving the joyous announcement from the angel, they exclaimed to the apostles that Christ God is risen, granting the world great mercy.",
+        "antiphonsOfDegrees": [
+          {
+            "number": 1,
+            "troparia": [
+              "From my youth hath the enemy tempted me,/ causing me to burn with pleasures;// but, trusting in Thee, O Lord, I vanquish him.",
+              "Let those who hate Sion be as grass before it is mowed down;/ for Christ will cut through their necks// with the scythe of torments.",
+              "By the Holy Spirit are all things given life./ Him do we praise with the Father and the Word,// as Light from light, the great God."
+            ]
+          },
+          {
+            "number": 2,
+            "troparia": [
+              "Let my heart, humble of mind, be covered with the fear of Thee,/ O most Compassionate One/, and let it not, exalting itself,// fall away from Thee.",
+              "May he who setteth his hope on the Lord/ not be terrified// when all things will be tried by fire and torment.",
+              "Through the Holy Spirit doth every godly man see and prophesy,/ working exalted miracles,/ and hymning the one God in Three Persons;// for though Three shine together, the Godhead ruleth as One."
+            ]
+          },
+          {
+            "number": 3,
+            "troparia": [
+              "I have cried unto Thee: Hearken, O Lord,/ and incline Thine ear to me who cry out;// and before Thou takest me away from hence make me pure.",
+              "Everyone who returneth to his mother, the earth,/ is released to receive torments or honors// for those things he did during life.",
+              "Through the Holy Spirit proceedeth the theology of the thrice-holy Unity:/ for the Father is unoriginate,/ and from Him hath the Son been begotten timelessly,/ and the Spirit is equally enthroned and hath the same image,// shining forth from the Father."
+            ]
+          },
+          {
+            "number": 4,
+            "troparia": [
+              "Behold now, what is so good or so beautiful/ as for brethren to dwell together?// For therein hath the Lord promised life eternal.",
+              "He Who adorneth the lilies of the field// doth warn that it is not fitting for man to give thought to his raiment.",
+              "By the Holy Spirit,/ the single Cause, are all things sustained through the bestowal of peace;/ for He is God, Who in dominion is consubstantial// with the Father and the Son."
+            ]
+          }
+        ],
+        "prokeimenon": {
+          "_source": "myrrhbearers",
+          "refrain": "The Lord shall be king unto eternity; thy God, O Sion, unto generation and generation."
+        },
+        "postGospelSticheron": "Jesus having risen from the grave, as He foretold, hath given us life eternal, and great mercy.",
+        "laudsStichera": [
+          {
+            "text": "O Lord, though Thou didst stand forth before the tribunal,/ to be judged of Pilate,/ yet didst Thou not cease to sit on the throne with the Father./ And having risen from the dead, Thou didst free the world from slavery to the alien,// in that Thou art compassionate and lovest mankind."
+          },
+          {
+            "text": "O Lord, Thou hast given us Thy Cross as a weapon against the devil;/ for he trembleth and quaketh,/ unable to bear the sight of its power;/ for it raiseth the dead and hath abolished death.// Wherefore, we bow down before Thy burial and arising."
+          },
+          {
+            "text": "O Lord, though the Jews placed Thee in a tomb as one dead,/ yet did the soldiers watch over Thee as a sleeping king,/ and like a treasure of life they sealed it with a seal./ But Thou didst arise// and gavest incorruption to our souls."
+          },
+          {
+            "text": "Thine angel who proclaimed the resurrection, O Lord,/ frightened the guards and declared to the women, saying:/ “Why seek ye the Living among the dead?// He who is God hath risen and granted life to the whole world!”"
+          },
+          {
+            "text": "O Thou Who art dispassionate in Thy divinity,/ Thou didst suffer on the Cross and accept burial on the third day,/ that Thou mightest free us from slavery to the enemy,/ and, having made us immortal,/ Thou givest us life by Thy resurrection,// O Christ God Who lovest mankind."
+          },
+          {
+            "text": "I worship, glorify and hymn Thy resurrection from the grave,/ O Christ, whereby Thou didst free us from the indissoluble bonds of hades,/ and, as God, didst grant the world life everlasting// and great mercy."
+          },
+          {
+            "text": "The violators of the law,/ guarding Thy Life-receiving tomb,/ then sealed it and set a watch./ But as immortal and almighty God,// Thou didst rise on the third day."
+          },
+          {
+            "text": "When Thou, O Lord, didst arrive at the gates of hades/ and break them down, the captive cried out thus:/ “Who is this Who is not condemned to the uttermost depths of the earth,/ but hath dissolved the prison of death as it were a shadow?/ I have seized Him as one dead,/ and tremble because He is God!”// O Almighty, have mercy upon us!"
+          }
+        ]
+      },
+      "liturgy": {
+        "beatitudes": {
+          "_source": "myrrhbearers",
+          "troparia": [
+            {
+              "label": null,
+              "text": "Remember us, O Christ, Thou Savior of the world, as Thou didst remember the thief upon the Cross; and account us all worthy of Thy heavenly kingdom, O Thou who alone art compassionate."
+            },
+            {
+              "label": null,
+              "text": "Hearken, O Adam, and rejoice with Eve; for he who of old stripped you both naked, and by deception hath taken all of us captive, hath been set at nought by the Cross of Christ."
+            },
+            {
+              "label": null,
+              "text": "Nailed of Thine own will to the Tree, O our Savior, Thou didst deliver Adam from the curse which came through the tree, and hast restored that which is according to Thine image to a habitation in paradise, in that Thou art compassionate."
+            },
+            {
+              "label": null,
+              "text": "Today is Christ risen from the tomb, granting incorruption unto all the faithful; and He reneweth the joy of the myrrh-bearing women after His suffering and resurrection."
+            },
+            {
+              "label": null,
+              "text": "Rejoice, O wise myrrh-bearing women, who were first to behold the resurrection of Christ, and who proclaimed to the apostles the glad tidings of the restoration of the whole world!"
+            },
+            {
+              "label": null,
+              "text": "O ye apostles, who are manifestly the friends of Christ and are to be enthroned with Him in glory: Entreat Him with boldness, that He intercede for us, for ye are His disciples."
+            },
+            {
+              "label": null,
+              "text": "Triadicon: O unoriginate Trinity, indivisible Essence, Unity equally enthroned, equal in honor and glory, transcendent Nature and Kingship: Save us who praise Thee with faith!"
+            },
+            {
+              "label": null,
+              "text": "Theotokion: Rejoice, spacious habitation of God! Rejoice, ark of the new covenant! Rejoice, jar whence the heavenly Manna is given unto all!"
+            }
+          ]
         }
       }
     }

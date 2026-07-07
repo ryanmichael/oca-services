@@ -358,6 +358,46 @@ function validateSticheraTextIntegrity() {
       warnings += 1;
     }
 
+    // (G) Foreign-Marian-block drift: a *saint* commemoration (martyr, monastic,
+    //   hierarch, …) whose entire sticheron block is Marian — the signature of a
+    //   Theotokos-icon feast's stichera being scraped onto the wrong (adjacent)
+    //   commemoration row. Found 2026-07-07: the Icon "of the Three Hands" stichera
+    //   were filed under Martyrs Proclus & Hilary (Jul 12, comm 1404 → 1411), and
+    //   the Pochaev Icon stichera under Martyr Trophimus (Jul 23, comm 1473 →
+    //   1477). Both rendered Marian hymns under a martyr's label with no Now-
+    //   Dogmatikon. A single Marian sticheron among a saint's own is normal
+    //   (incidental address / a Theotokion Glory), so we require a *majority*
+    //   (≥60%, min 3 rows) to isolate the "whole foreign block" case with ~0 FP.
+    const SAINT_TYPES = new Set([
+      'monastic', 'hierarch', 'martyr', 'martyrs', 'hieromartyr', 'apostle',
+      'apostles', 'monasticMartyr', 'monasticMartyrs', 'monasticConfessor',
+      'maidenMartyr', 'prophet', 'fool', 'unmercenaries', 'forerunner', 'nun',
+    ]);
+    const MARIAN = /Theotokos|Ever-?virgin|most pure Virgin|O Virgin|holy Virgin|Lady Theotokos|Mother of God|thy holy icon|thine icon|Unwedded|O Bride|Birthgiver|O Lady,/i;
+    const marianRows = db.prepare(
+      `SELECT s.commemoration_id AS cid, c.title, c.saint_type AS st, s.text
+         FROM stichera s JOIN commemorations c ON c.id = s.commemoration_id`
+    ).all();
+    const byComm = {};
+    for (const r of marianRows) {
+      if (!SAINT_TYPES.has(r.st)) continue;
+      (byComm[r.cid] ||= { title: r.title, st: r.st, total: 0, marian: 0 });
+      byComm[r.cid].total += 1;
+      if (MARIAN.test(r.text || '')) byComm[r.cid].marian += 1;
+    }
+    for (const cid of Object.keys(byComm)) {
+      const g = byComm[cid];
+      if (g.total >= 3 && g.marian / g.total >= 0.6) {
+        console.warn(
+          `Commemoration ${cid} [${g.st}] "${(g.title || '').slice(0, 50)}" has a ` +
+          `majority-Marian sticheron block (${g.marian}/${g.total}). Likely a ` +
+          `Theotokos-icon feast's stichera scraped onto the wrong row. ` +
+          `Fix: reattach the rows to the correct icon commemoration_id.`
+        );
+        warnings += 1;
+      }
+    }
+
     if (warnings === 0) console.log('Sticheron text integrity: clean.');
     return { ok: warnings === 0, warnings };
   } finally {

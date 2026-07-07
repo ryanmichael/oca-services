@@ -95,9 +95,20 @@ flags are dominated by (5) and (6), which are out of scope by design.
   audited. Dashboard shows the fallback→proper delta.
 - **5 — Matins canon axis.** Ingest the ~4,000 canon odes into the Matins track.
   Structurally distinct → its own rollout mirroring 3–4.
-- **6 — QA cross-check.** Feed the 211 already-covered chapters into the LLM-judge
-  sweep to catch drift in our existing OCA texts. (Value survives even a "no" on
-  provenance — no redistribution.)
+- **6 — QA cross-check.** DONE (`menaion-qa.js`). Uses the already-covered
+  Lambertsen chapters as an independent witness over our EXISTING stichera.
+  **Finding: ~26 covered saint commemorations store moveable-cycle text (Triodion/
+  Pentecostarion) instead of the saint's proper** — e.g. Apostle Onesimus (2/15)
+  holds the Sunday-of-Last-Judgment stichera ("When the thrones are set up…"),
+  Tarasius holds Publican-and-Pharisee, Pelagia holds the Myrrhbearers, Simeon
+  (4/27) holds Thomas-Sunday. Caveat: a saint whose fixed date lands in Bright
+  Week / Great Lent may legitimately blend such stichera (e.g. George 4/23) —
+  confirm per case. Run: `node menaion-qa.js`.
+- **6b — Repair (proposed).** For each *confirmed* mis-attribution, replace the
+  wrong rows with the Lambertsen proper (already in the corpus; not imported
+  earlier because the slot was "occupied"). Delete-then-insert under
+  `source='lambertsen'`, per-case, backed up + verified — never wholesale
+  (seasonal blends are legitimate).
 - **7 — Maintenance guardrail.** Nightly re-parse-drift vs upstream; attribution
   rendering; optional `?translation=lambertsen` overlay.
 

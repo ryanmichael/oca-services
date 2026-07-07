@@ -82,9 +82,20 @@ email in `docs/myrrhbearers-permission-email.md`.
   (resurrection irmos) + `canonTroparia.N` (troparia tagged resurrection/
   crossResurrection/theotokos with the fixed refrains). Verified sub-canon
   assignment incl. the Tone 5 merge boundary. **Octoechos intake COMPLETE.**
-- **3 — Fixed-text overlay.** Their Liturgy/Vespers/Matins ordinary wording →
-  `fixed-texts/translations/myrrhbearers/` (manifest + sparse `liturgy-fixed.json`).
-  Fully supported by the existing overlay cascade today.
+- **3 — Fixed-text overlay. MEASURED (2026-07-07) → small/targeted, not a full
+  overlay.** Diffed their `publications/Divine-Liturgy.pdf` (dual-language, 50pp)
+  vs our `fixed-texts/liturgy-fixed.json`: Creed ~95%, Trisagion ~91%, Lord's
+  Prayer ~95% ("in heaven" vs "in the heavens"), "It is truly meet" ~95%, Anaphora
+  dialogue = standard formula (matches). The invariable ordinary is standardized —
+  differences are trivial (heaven/heavens, capitalization). **The one materially
+  different, choir-sung text is the Cherubic Hymn (~65%):** ours "We, who
+  mystically represent the Cherubim, and who sing to the Life-creating Trinity the
+  thrice-holy hymn…" vs MB "Let us who mystically represent the Cherubim, and chant
+  the thrice-holy hymn unto the life-creating Trinity…". **So Phase 3 = override
+  ~1–5 specific texts (led by the Cherubic Hymn) in
+  `fixed-texts/translations/myrrhbearers/liturgy-fixed.json`, NOT a wholesale
+  overlay.** The manifest + cascade are already wired (Phase 4), so authoring the
+  sparse override is all that remains.
 - **4 — Parish default (the actual ask).** Two sides:
   - *Fixed texts:* set the parish's default translation stack to include the
     `myrrhbearers` overlay — existing `parish_settings` + stack mechanism.

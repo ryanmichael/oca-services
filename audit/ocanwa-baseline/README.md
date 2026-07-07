@@ -25,20 +25,48 @@ Glory, mis-filed Theotokia — e.g. the Jul 12 / Jul 23 icon-bleed fixed in
 
 ```bash
 node server.js &                       # /api/service must be up
-npm run audit:parish-baseline          # all months
+npm run audit:parish-baseline          # all months, human table
 npm run audit:parish-baseline -- --month 09
 ```
 
-Rows marked `⚑` are non-Sunday dates where our principal saint doesn't share a
-name-token with the parish's LIC-Glory saint, or the LIC Glory disagrees —
-review these. Sundays are not principal-flagged (resurrection dominates); check
-their slot counts / Glory by eye. The `slots p/o` column is parish max LIC slot
-vs. our menaion sticheron count — a systematic `6/3` gap flags days the parish
-sings a fuller (6-sticheron) saint service than our daily-Vespers 3+3 split.
+For each date, the parish's principal is whoever gets the **LIC Glory**
+(doxastikon). A **deterministic resolver** matches that saint against *that
+date's own commemoration set* from `/api/service` (≈10 candidates — so an
+incidental shared token can't cross-match an unrelated saint on another day),
+and classifies:
 
-Name matching is a light hagiographic stemmer (Kyriacus≈Kyriakos), so expect a
-few false positives around afterfeast-vs-named-saint framing — it's a
-review oracle, not an auto-fixer.
+- **ok** — parish principal is our principal (`commemorations[0]`).
+- **RANK→#N** — the parish's saint *is* one of our commemorations, but ranked
+  #N, not principal. The crisp picker/rank-bug signal (e.g. Jul 4 Andrew=#1,
+  Sep 24 Silouan=#9).
+- **UNRES** — parish principal maps to none of our day commemorations: a
+  coverage gap, or we labeled the day as an afterfeast/forefeast period.
+
+`⚑` marks **gated** findings (non-Sunday `RANK`/`UNRES`). Sundays are shown but
+not gated — resurrection dominates, so a lower-ranked saint is expected. The
+`slots p/o` column (parish max LIC slot vs. our menaion sticheron count) is
+info-only; a systematic `6/3` gap flags days the parish sings a fuller
+6-sticheron service than our 3+3 split.
+
+## Baseline / check (the standing gate)
+
+Same shape as `scripts/rescrape-diff.js`: capture the current known findings,
+then alert only on what's **new** (mirrors the `rescrape-drift` cron).
+
+```bash
+# accept the current state as the baseline (after triaging or adding a month)
+node scripts/ocanwa-baseline.js --capture-baseline audit/parish-baseline.json
+
+# alert only on NEW divergences — exit 2 if our pick changed since baseline
+node scripts/ocanwa-baseline.js --check audit/parish-baseline.json
+```
+
+`.github/workflows/nightly-parish-baseline.yml` runs `--check` nightly (08:45
+UTC), booting the server first, and opens/updates a `parish-baseline-drift`
+issue only on a NEW divergence. Because the parish files are effectively static,
+this watches **our** side: it fires when the assembler's principal pick changes
+(intended or regression) or a month is added without refreshing the baseline.
+When a NEW finding is intended, refresh the baseline with `--capture-baseline`.
 
 ## Adding a month
 

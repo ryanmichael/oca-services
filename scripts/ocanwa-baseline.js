@@ -39,6 +39,8 @@ const getArg = (flag, def) => {
 const onlyMonth = getArg('--month', null);
 const HOST      = getArg('--host', 'http://localhost:3000');
 const YEAR      = parseInt(getArg('--year', '2026'), 10);
+const captureBaseline = getArg('--capture-baseline', null);
+const checkBaseline   = getArg('--check', null);
 
 // ── filename parse ──────────────────────────────────────────────────────────
 const SECTION = /^(Lord I Call|Aposticha|Litya)$/i;
@@ -118,6 +120,19 @@ function overlap(a, b) {
   return shared;
 }
 
+// Deterministic resolver: match a parish saint string against THIS date's own
+// commemoration set (≈10 candidates from the API), not the whole calendar — so
+// an incidental shared token can't cross-match an unrelated saint on another
+// day. Returns the best-matching commemoration (most shared stem-tokens) or null.
+function resolve(parishSaint, ourCommems) {
+  let best = null, bestN = 0;
+  for (let i = 0; i < ourCommems.length; i++) {
+    const n = overlap(parishSaint, ourCommems[i].title).length;
+    if (n > bestN) { bestN = n; best = { ...ourCommems[i], idx: i, shared: n }; }
+  }
+  return best;   // null ⇒ parish saint maps to none of our commemorations for the day
+}
+
 // ── our system ──────────────────────────────────────────────────────────────
 function getJSON(url) {
   return new Promise((resolve, reject) => {
@@ -150,10 +165,10 @@ async function ourVespers(mm, dd) {
   }
   return {
     serviceType: j.serviceType,
+    commems: (j.commemorations || []).map(c => ({ title: c.title, isPrincipal: !!c.isPrincipal })),
     principal: (j.commemorations || [])[0]?.title || null,
     gloryLabel,
     menCount,
-    dow: j.blocks ? null : null,
     civil,
   };
 }
@@ -183,18 +198,34 @@ function loadManifests() {
   return perDate;
 }
 
+// Classify one date. Classes (only mismatch/unresolved are gated findings):
+//   match       — parish principal resolves to OUR principal commemoration. OK.
+//   rank        — parish principal resolves to one of our commemorations, but NOT
+//                 our principal (we commemorate it, ranked lower). e.g. Jul 12.
+//   unresolved  — parish principal maps to none of our date commemorations:
+//                 either a coverage gap, or we label the day as a feast-period
+//                 (afterfeast/forefeast) while the parish names the co-saint.
+function classify(parishPrincipal, ours) {
+  const m = resolve(parishPrincipal, ours.commems);
+  if (!m)          return { cls: 'unresolved', match: null };
+  if (m.idx === 0) return { cls: 'match', match: m };
+  return { cls: 'rank', match: m };
+}
+// Stable finding key for baseline/check: date + normalized parish principal.
+const findingKey = (key, parishPrincipal, cls) =>
+  `${key}:${[...tokens(parishPrincipal)].sort().join('.')}:${cls}`;
+
 // ── run ─────────────────────────────────────────────────────────────────────
 (async () => {
   const perDate = loadManifests();
   const dates = Object.keys(perDate).sort();
   const rows = [];
-  let flags = 0;
+  const findingKeys = [];   // gated: rank + unresolved (non-Sunday)
 
   for (const key of dates) {
     const rec = perDate[key];
     const mm = parseInt(key.slice(0, 2), 10);
     const dd = parseInt(key.slice(2), 10);
-    // The parish "principal" is whoever gets the LIC Glory (doxastikon).
     const parishPrincipal = rec.licGlory || rec.booklets[0] || rec.licSaints[0] || null;
     if (!parishPrincipal) continue;
 
@@ -202,41 +233,65 @@ function loadManifests() {
     try { ours = await ourVespers(mm, dd); }
     catch (e) { rows.push({ key, parishPrincipal, err: e.message }); continue; }
 
-    // Sunday resurrection dominates → principal comparison is not meaningful; note only.
     const isSunday = new Date(Date.UTC(YEAR, mm - 1, dd)).getUTCDay() === 0;
-
-    const shareP = overlap(parishPrincipal, ours.principal);
-    const shareG = rec.licGlory && ours.gloryLabel ? overlap(rec.licGlory, ours.gloryLabel) : null;
-    const principalMatch = shareP.length > 0;
-    const gloryMatch = shareG ? shareG.length > 0 : null;
-
-    // Flag: non-Sunday where our principal doesn't share a token with the parish
-    // Glory-saint, OR where the LIC-Glory saint disagrees.
-    const flagged = !isSunday && (!principalMatch || gloryMatch === false);
-    if (flagged) flags++;
+    const { cls, match } = classify(parishPrincipal, ours);
+    // Sundays are resurrection-dominant, so a lower-ranked saint is expected —
+    // don't gate them (mirrors rescrape-diff excluding low-severity classes).
+    const gated = !isSunday && (cls === 'rank' || cls === 'unresolved');
+    if (gated) findingKeys.push(findingKey(key, parishPrincipal, cls));
 
     rows.push({
-      key, isSunday, parishPrincipal, parishSlots: rec.licMaxSlot,
-      ourPrincipal: ours.principal, ourGlory: ours.gloryLabel, ourMen: ours.menCount,
-      serviceType: ours.serviceType, principalMatch, gloryMatch, flagged,
+      key, isSunday, cls, gated, parishPrincipal, parishSlots: rec.licMaxSlot,
+      ourPrincipal: ours.principal, ourMatch: match ? match.title : null,
+      ourMatchIdx: match ? match.idx : null, ourMen: ours.menCount,
     });
   }
+  findingKeys.sort();
 
-  // ── report ──
-  const M = (b) => b === true ? 'ok' : b === false ? 'MISS' : '—';
+  // ── baseline capture ──
+  if (captureBaseline) {
+    fs.writeFileSync(captureBaseline, JSON.stringify({ keys: findingKeys }, null, 0) + '\n');
+    console.log(`Baseline captured: ${findingKeys.length} keys → ${path.relative(ROOT, captureBaseline)}`);
+    return;
+  }
+
+  // ── check mode: alert only on NEW divergences vs committed baseline ──
+  if (checkBaseline) {
+    const baseline = JSON.parse(fs.readFileSync(checkBaseline, 'utf8'));
+    const known = new Set(baseline.keys);
+    const now = new Set(findingKeys);
+    const added = findingKeys.filter(k => !known.has(k));
+    const removed = baseline.keys.filter(k => !now.has(k));
+    console.log(`Parish-selection baseline check vs ${path.relative(ROOT, checkBaseline)}:`);
+    console.log(`  baseline findings: ${baseline.keys.length} · current: ${findingKeys.length}`);
+    console.log(`  NEW (divergence): ${added.length} · resolved-since-baseline: ${removed.length}`);
+    if (removed.length) console.log(`  (${removed.length} baseline findings gone — a fix landed; refresh the baseline when convenient.)`);
+    if (added.length) {
+      console.log('\nNEW divergences (our pick changed, or a month was added):');
+      added.forEach(k => console.log(`  + ${k}`));
+      process.exitCode = 2;
+    } else {
+      console.log('\nNo new divergence. ✓');
+    }
+    return;
+  }
+
+  // ── default: human-readable table ──
+  const TAG = { match: ' ok ', rank: 'RANK', unresolved: 'UNRES' };
   console.log(`\nocanwa parish-selection baseline — ${onlyMonth ? 'month ' + onlyMonth : 'all months'} (year ${YEAR})\n`);
-  console.log('date  Sun  parish principal (LIC Glory)            → our principal                          prn glo  slots p/o');
+  console.log('date  Sun  parish principal (LIC Glory)            → our principal                          class  slots p/o');
   console.log('─'.repeat(128));
   for (const r of rows) {
     if (r.err) { console.log(`${r.key}   ERROR ${r.err}`); continue; }
+    const detail = r.cls === 'rank' ? `RANK→#${r.ourMatchIdx} (${(r.ourMatch || '').slice(0, 24)})` : TAG[r.cls];
     const line =
       `${r.key}  ${r.isSunday ? ' S ' : '   '}  ` +
       `${(r.parishPrincipal || '').slice(0, 38).padEnd(38)} → ${(r.ourPrincipal || '').slice(0, 38).padEnd(38)} ` +
-      `${M(r.principalMatch).padEnd(4)}${M(r.gloryMatch).padEnd(4)} ${String(r.parishSlots || '-')}/${r.ourMen}`;
-    console.log((r.flagged ? '⚑ ' : '  ') + line);
+      `${String(detail).padEnd(6)} ${String(r.parishSlots || '-')}/${r.ourMen}`;
+    console.log((r.gated ? '⚑ ' : '  ') + line);
   }
   console.log('─'.repeat(128));
-  console.log(`\n${rows.length} dates compared · ⚑ ${flags} flagged (non-Sunday principal/Glory mismatch) — review these.\n`);
-  console.log('Legend: prn=principal saint token-match · glo=LIC Glory saint match · slots p/o=parish max LIC slot vs our menaion sticheron count.');
-  console.log('Sundays (S) are not flagged on principal (resurrection dominates); check their slots/Glory manually.');
+  console.log(`\n${rows.length} dates compared · ⚑ ${findingKeys.length} gated findings (non-Sunday rank/unresolved).\n`);
+  console.log('Classes: ok=parish principal is our principal · RANK=we rank it lower (our #idx) · UNRES=maps to none of our day commemorations.');
+  console.log('Sundays (S) not gated (resurrection dominates). slots p/o = parish max LIC slot vs our menaion count.');
 })();

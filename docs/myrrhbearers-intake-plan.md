@@ -112,9 +112,13 @@ email in `docs/myrrhbearers-permission-email.md`.
     `api-choir-prep` / `api-days` (use `buildMatinsSpec` only as a boolean
     availability probe — overlay irrelevant), `api-pascha-collection` (paschal
     content; octoechos resurrectional cycle is superseded during Pascha).
-- **5 — QA + guardrail.** Cross-check rendered services vs the Myrrh-bearers
-  booklets (parish-baseline oracle style, cf. `scripts/ocanwa-baseline.js`); add a
-  scrape-drift check on their pages.
+- **5 — QA.** DONE for the Octoechos overlay: `scripts/myrrhbearers-ingest/qa-overlay.js`
+  validates all 8 tones for slot completeness, empty text, and content-sanity
+  (theotokia read as Marian; canon sub-canons correctly assigned res/cross/theotokos
+  — catching swaps). It surfaced that Tone 4's "Antiphon II" was mis-parsed
+  (their page marks it `<p><i>Antiphon II</i></p>` not `<h4>`), now fixed in
+  `parse-octoechos.js`. **All 8 tones pass clean.** (Remaining: cross-check rendered
+  *services* vs their per-Sunday booklets + a scrape-drift check — future.)
 
 ## Interaction with the Lambertsen rollout (just completed)
 

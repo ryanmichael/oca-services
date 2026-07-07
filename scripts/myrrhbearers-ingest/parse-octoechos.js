@@ -20,9 +20,17 @@ function tokenize(html) {
   const re = /<(h[1-4]|p)[^>]*>([\s\S]*?)<\/\1>/gi;
   let m;
   while ((m = re.exec(body))) {
-    const tag = m[1].toLowerCase();
-    const isStichos = /^<i>\s*(stichos|verse|refrain)\b/i.test(m[2].trim());
-    toks.push({ tag, stichos: isStichos, text: stripTags(m[2]) });
+    let tag = m[1].toLowerCase();
+    const inner = m[2].trim();
+    const isStichos = /^<i>\s*(stichos|verse|refrain)\b/i.test(inner);
+    // Some section labels are marked as a wholly-italic paragraph
+    // (<p><i>Antiphon II</i></p>) rather than an <h4>. Narrowly retag those as
+    // headers so they open a new section. Kept specific (Antiphon labels) to
+    // avoid catching wholly-italic hymn/canon content.
+    const wholeItalic = /^<i>[\s\S]*<\/i>$/.test(inner);
+    const text = stripTags(m[2]);
+    if (tag === 'p' && wholeItalic && /^Antiphon\s+[IVX]+\b/i.test(text)) tag = 'h4';
+    toks.push({ tag, stichos: isStichos, text });
   }
   return toks;
 }

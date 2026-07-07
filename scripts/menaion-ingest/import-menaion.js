@@ -117,16 +117,20 @@ function titlePartForType(fullTitle, typeWord) {
 
 // A LIC sub-group is either the saint's own stichera (import) or belongs to a
 // co-celebrated feast/cycle that our other tracks supply (exclude). On blend
-// days (esp. the Theophany cycle) the two are printed in one LIC block:
-// "3 of the forefeast ... And 5 of the righteous one".
-const FEAST_GROUP_RE = /fore-?feast|after-?feast|\bfeast\b|resurrection|the temple|Pentecostarion|Triodion|Octoechos|of the day\b|the Cross\b|departed|the dead\b/i;
-function groupRole(label) { return FEAST_GROUP_RE.test(label) ? 'feast' : 'saint'; }
+// days the two are printed in one LIC block: "3 of the forefeast ... And 5 of
+// the righteous one".
+//
+// The group is FEAST only when its PRINTED stichera are *of* the feast. A rubric
+// like "8 stichera: 3 from the Pentecostarion, and 5 for the apostle" prints the
+// SAINT's stichera — the Pentecostarion ones are fetched from that book, not
+// printed here — so "from the ..." must NOT trigger exclusion.
+const FEAST_OF_RE = /(?:^|\b)(?:of|for)\s+the\s+(fore-?feast|after-?feast|feast|resurrection|cross|temple|day|dead|departed|Pentecostarion|Triodion|Octoechos)\b/i;
+function groupRole(label) { return FEAST_OF_RE.test(label) ? 'feast' : 'saint'; }
 
 // ---- attribution ------------------------------------------------------
 function attributeChapter(ch, parse, commems) {
-  const { groups, glory, sawPaschalLic, declared, menaionOwn } = extractVespersLIC(parse);
+  const { groups, glory } = extractVespersLIC(parse);
   if (!groups.length) return { skip: 'no LIC groups' };
-  if (sawPaschalLic) return { skip: 'Paschal interleave (Pentecostarion stichera) — needs paschal handling' };
 
   // Keep only the saint's own stichera; feast/cycle stichera come from other
   // tracks and must never be imported onto the saint.

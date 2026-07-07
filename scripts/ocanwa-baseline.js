@@ -163,10 +163,17 @@ async function ourVespers(mm, dd) {
       else if (!gloryLabel) gloryLabel = b.label || null;
     }
   }
+  const commems = (j.commemorations || []).map(c => ({ title: c.title, isPrincipal: !!c.isPrincipal }));
+  // The LIC render follows the isPrincipal FLAG, not array order — the two can
+  // disagree (e.g. Jul 4: [0]=Maximus but isPrincipal=Andrew, and Andrew is what
+  // actually renders). Compare against the flag, falling back to [0].
+  let principalIdx = commems.findIndex(c => c.isPrincipal);
+  if (principalIdx < 0) principalIdx = 0;
   return {
     serviceType: j.serviceType,
-    commems: (j.commemorations || []).map(c => ({ title: c.title, isPrincipal: !!c.isPrincipal })),
-    principal: (j.commemorations || [])[0]?.title || null,
+    commems,
+    principalIdx,
+    principal: commems[principalIdx]?.title || null,
     gloryLabel,
     menCount,
     civil,
@@ -206,10 +213,16 @@ function loadManifests() {
 //                 either a coverage gap, or we label the day as a feast-period
 //                 (afterfeast/forefeast) while the parish names the co-saint.
 function classify(parishPrincipal, ours) {
-  const m = resolve(parishPrincipal, ours.commems);
-  if (!m)          return { cls: 'unresolved', match: null };
-  if (m.idx === 0) return { cls: 'match', match: m };
-  return { cls: 'rank', match: m };
+  // Compare against the saint whose doxastikon we actually SING: the rendered
+  // LIC Glory label. That's render-truth and sidesteps the array-order-vs-
+  // isPrincipal split (which disagrees in both directions — Jul 4 [0] wrong /
+  // flag right; Jul 23 [0] right / render wrong). Fall back to the isPrincipal
+  // commemoration on days with no Menaion Glory (afterfeast/octoechos Glory).
+  const ourDoxastikon = ours.gloryLabel || ours.principal;
+  const m = resolve(parishPrincipal, ours.commems);   // where the parish saint sits in our list
+  if (overlap(parishPrincipal, ourDoxastikon).length > 0) return { cls: 'match', match: m, ourDoxastikon };
+  if (m) return { cls: 'rank', match: m, ourDoxastikon };
+  return { cls: 'unresolved', match: null, ourDoxastikon };
 }
 // Stable finding key for baseline/check: date + normalized parish principal.
 const findingKey = (key, parishPrincipal, cls) =>
@@ -234,7 +247,7 @@ const findingKey = (key, parishPrincipal, cls) =>
     catch (e) { rows.push({ key, parishPrincipal, err: e.message }); continue; }
 
     const isSunday = new Date(Date.UTC(YEAR, mm - 1, dd)).getUTCDay() === 0;
-    const { cls, match } = classify(parishPrincipal, ours);
+    const { cls, match, ourDoxastikon } = classify(parishPrincipal, ours);
     // Sundays are resurrection-dominant, so a lower-ranked saint is expected —
     // don't gate them (mirrors rescrape-diff excluding low-severity classes).
     const gated = !isSunday && (cls === 'rank' || cls === 'unresolved');
@@ -242,7 +255,7 @@ const findingKey = (key, parishPrincipal, cls) =>
 
     rows.push({
       key, isSunday, cls, gated, parishPrincipal, parishSlots: rec.licMaxSlot,
-      ourPrincipal: ours.principal, ourMatch: match ? match.title : null,
+      ourPrincipal: ourDoxastikon, ourMatch: match ? match.title : null,
       ourMatchIdx: match ? match.idx : null, ourMen: ours.menCount,
     });
   }
@@ -279,7 +292,7 @@ const findingKey = (key, parishPrincipal, cls) =>
   // ── default: human-readable table ──
   const TAG = { match: ' ok ', rank: 'RANK', unresolved: 'UNRES' };
   console.log(`\nocanwa parish-selection baseline — ${onlyMonth ? 'month ' + onlyMonth : 'all months'} (year ${YEAR})\n`);
-  console.log('date  Sun  parish principal (LIC Glory)            → our principal                          class  slots p/o');
+  console.log('date  Sun  parish LIC Glory (doxastikon)           → our sung LIC Glory                      class  slots p/o');
   console.log('─'.repeat(128));
   for (const r of rows) {
     if (r.err) { console.log(`${r.key}   ERROR ${r.err}`); continue; }

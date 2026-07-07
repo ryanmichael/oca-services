@@ -97,11 +97,36 @@ function mapSundayMatins(mat, canon) {
   const postG = secs.find((s) => /this sticheron/i.test(s.label));
   if (postG?.hymns[0]) out.postGospelSticheron = clean(postG.hymns[0]);
 
-  // NOTE: the resurrection canon (irmoi + res/cross/theotokos troparia) is
-  // DEFERRED to Phase 2b — its per-tone structure varies (troparia counts differ,
-  // <p> splits are irregular; ode-section counts range 11–24 across tones), so a
-  // count-based grouping would mis-assign troparia. It needs a label-based ode
-  // parser ("Ode N" / "Canon of…" headers + irmos/troparion detection).
+  // Resurrection canon: split the canon service on EVERY "Irmos:" marker (not on
+  // section boundaries) so a sub-canon is [irmos, ...troparia]. This is robust to
+  // per-tone irregularities — variable troparia counts, and even a missing ode
+  // heading that merges two sub-canons into one block (Tone 5's "Ode VI"). Yields
+  // exactly 24 sub-canons (8 odes × res/cross/theotokos) on all 8 tones. Odes come
+  // in triples in that order.
+  const subs = [];
+  for (const sec of canon?.sections || []) {
+    if (!sec.hymns.length || !/^Irmos:/i.test(sec.hymns[0])) continue;
+    let cur = null;
+    for (const h of sec.hymns) {
+      if (/^Irmos:/i.test(h)) { cur = { irmos: clean(h), troparia: [] }; subs.push(cur); }
+      else if (cur) cur.troparia.push(clean(h));
+    }
+  }
+  if (subs.length === 24) {
+    const odeNums = [1, 3, 4, 5, 6, 7, 8, 9];
+    const names = ['resurrection', 'crossResurrection', 'theotokos'];
+    out.canonIrmoi = {};
+    out.canonTroparia = {};
+    for (let o = 0; o < 8; o++) {
+      const N = odeNums[o];
+      const triple = subs.slice(o * 3, o * 3 + 3);
+      out.canonIrmoi[N] = triple[0].irmos;          // resurrection canon's irmos
+      out.canonTroparia[N] = triple.flatMap((sc, idx) =>
+        sc.troparia.map((text) => ({ canon: names[idx], refrain: CANON_REFRAIN[names[idx]], text })));
+    }
+  } else {
+    out._canonIncomplete = subs.length;              // flag for review; omit canon
+  }
   // lauds (also in the canon service) — uniform [8], safe to map now
 
   const lauds = (canon?.sections || []).find((s) => /On the Praises/i.test(s.label));
@@ -122,7 +147,7 @@ const overlay = {
     description: "Myrrh-bearers Octoechos overlay — source-tagged alternates that cascade onto octoechos.json when a parish selects the Myrrh-bearers stack. Base file is never modified.",
     _source: 'https://www.myrrh-bearers.org/octoechos/',
     _permission: 'Used and redistributed with permission of Holy Myrrh-bearers, Etna CA (2026-07-07). Please retain this attribution.',
-    scope: 'Saturday Great Vespers + Sunday Matins (sessional/hypakoe/antiphons/prokeimenon/post-Gospel/lauds) + Sunday Liturgy (beatitudes), all 8 tones. Resurrection CANON deferred to Phase 2b.',
+    scope: 'Saturday Great Vespers + Sunday Matins (sessional/hypakoe/antiphons/prokeimenon/post-Gospel/CANON/lauds) + Sunday Liturgy (beatitudes), all 8 tones.',
   },
 };
 
@@ -140,7 +165,8 @@ for (let t = 1; t <= 8; t++) {
   if (lit) { const l = mapLiturgy(lit); if (l) tone.sunday.liturgy = l; }
   overlay[`tone${t}`] = tone;
   const m = tone.sunday.matins || {};
-  report.push(`tone${t}: satVes✓  matins[${Object.keys(m.sessionalHymns || {}).length}sess ${m.antiphonsOfDegrees ? m.antiphonsOfDegrees.length + 'anti' : 'NO-anti'} ${m.hypakoe ? 'hyp' : ''} ${m.prokeimenon ? 'prok' : ''} ${m.postGospelSticheron ? 'postG' : ''} ${m.laudsStichera ? m.laudsStichera.length + 'lauds' : ''}] liturgy[${tone.sunday.liturgy?.beatitudes?.troparia.length || 0}beat]`);
+  const canonN = m.canonTroparia ? Object.keys(m.canonTroparia).length + 'odes' : (m._canonIncomplete ? 'CANON!' + m._canonIncomplete : 'NO-canon');
+  report.push(`tone${t}: satVes✓  matins[${Object.keys(m.sessionalHymns || {}).length}sess ${m.antiphonsOfDegrees ? m.antiphonsOfDegrees.length + 'anti' : 'NO-anti'} ${m.hypakoe ? 'hyp' : ''} ${m.prokeimenon ? 'prok' : ''} ${m.postGospelSticheron ? 'postG' : ''} ${canonN} ${m.laudsStichera ? m.laudsStichera.length + 'lauds' : ''}] liturgy[${tone.sunday.liturgy?.beatitudes?.troparia.length || 0}beat]`);
 }
 
 fs.writeFileSync(OUT, JSON.stringify(overlay, null, 2));

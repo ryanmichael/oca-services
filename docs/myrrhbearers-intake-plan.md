@@ -74,13 +74,14 @@ email in `docs/myrrhbearers-permission-email.md`.
   prokeimenon, post-Gospel sticheron, lauds ×8) · Sunday Liturgy (beatitudes ×8).
   Schema/tests/drift green (nothing loads it yet). Known source gap: Tone 4 is
   missing Antiphon II on their page.
-- **2b — Resurrection canon (deferred).** Their canon (irmoi + resurrection/cross/
-  theotokos troparia) has per-tone-variable structure (ode-section counts 11–24;
-  irregular `<p>` splits), so it needs a label-based ode parser ("Ode N" / "Canon
-  of…" headers + irmos/troparion detection) rather than count-based grouping —
-  building it carelessly would mis-assign troparia. Targets base
-  `sunday.matins.canonIrmoi.N` + `canonTroparia.N` (3 res + 3 cross + 3 theotokos,
-  refrains are fixed formulas already known).
+- **2b — Resurrection canon. DONE.** Robust parser splits the canon service on
+  every `Irmos:` marker (not section boundaries) → exactly 24 sub-canons (8 odes ×
+  resurrection/cross/theotokos) on all 8 tones. This auto-handles per-tone
+  irregularities: variable troparia counts, and even Tone 5's *missing "Ode VI"
+  heading* that merges two sub-canons into one block. Emits `canonIrmoi.N`
+  (resurrection irmos) + `canonTroparia.N` (troparia tagged resurrection/
+  crossResurrection/theotokos with the fixed refrains). Verified sub-canon
+  assignment incl. the Tone 5 merge boundary. **Octoechos intake COMPLETE.**
 - **3 — Fixed-text overlay.** Their Liturgy/Vespers/Matins ordinary wording →
   `fixed-texts/translations/myrrhbearers/` (manifest + sparse `liturgy-fixed.json`).
   Fully supported by the existing overlay cascade today.

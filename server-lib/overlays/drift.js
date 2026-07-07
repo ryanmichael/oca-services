@@ -409,9 +409,14 @@ function validateSticheraTextIntegrity() {
     //   commemorations that absorbed the day's saint stichera) shares the seam
     //   and is queued for the same split treatment; those are tolerated here so
     //   the gate stays green, and any NEW occurrence (a fresh bad scrape) trips.
+    // Backlog of afterfeast/headline rows that absorbed a day's saint stichera
+    // (the Sep 2 class). Cleared so far: 1786 (Sep 2), 1908 (Sep 16 Euphemia).
+    // NOTE: splitting the data is necessary but NOT sufficient to fix the render
+    // — the picker still ranks the afterfeast above the saint (see the Sep 16
+    // finding), which is a separate, known-fragile rank-aware picker change.
     const KNOWN_MISATTRIBUTION = new Set([
       43, 165, 923, 1055, 1118, 1197, 1591, 1707,
-      1863, 1908, 1926, 1939, 2372, 2436, 2541, 2623,
+      1863, 1926, 1939, 2372, 2436, 2541, 2623,
     ]);
     const seam = db.prepare(
       `SELECT DISTINCT commemoration_id AS cid FROM stichera

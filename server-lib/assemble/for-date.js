@@ -10,6 +10,7 @@ const { calculatePascha, fixedFeastDate, VESPERS_SUNG_EVE } = require('../../cal
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
 const { pickPrincipalByOrthocalOrder,
+        applyPrincipalOverride,
         loadOrthocalForDate }                     = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
@@ -111,9 +112,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     // guard inside the picker keeps deliberate OCA-cycle picks intact
     // (Mary of Egypt Apr 1). See server-lib/sources/menaion-principal.js.
     const orthocalData = loadOrthocalForDate(date);
-    const primary = ranked?.notable?.length
+    let primary = ranked?.notable?.length
       ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
       : (ranked?.principal ?? null);
+    // Path-A: hand-curated per-date override for afterfeast/forefeast days where
+    // the moveable-cycle pick buries a co-commemorated great saint the parish
+    // elevates (search the full enriched pool so a saint with no troparion in
+    // `notable` is still reachable). See menaion-principal.js PRINCIPAL_OVERRIDES.
+    primary = applyPrincipalOverride(mm, dd, ranked?.all, primary);
 
     // When the picker rebound principal away from sticheraComm, prefer the
     // new principal's own stichera (if any). Otherwise the general-menaion

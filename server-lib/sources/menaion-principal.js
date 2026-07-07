@@ -213,6 +213,29 @@ function pickPrincipalByOrthocalOrder(notable, orthocalData, fallback) {
   return fallback ?? notable[0];
 }
 
+// Path-A targeted principal overrides. On afterfeast/forefeast days the picker
+// keeps the moveable-cycle entry as principal (menaion-principal.js:179), which
+// buries a co-commemorated polyeleos/great saint whose doxastikon the parish
+// actually sings. A full rank-aware picker is high-blast-radius (56 collision
+// days) and needs the rank data curated first; until then this is a small,
+// hand-verified per-date map ('M-D' → saint-title substring) that forces the
+// principal to the named saint when present. Each entry is checked against the
+// ocanwa parish baseline and rendered output. Keep it minimal and cited.
+const PRINCIPAL_OVERRIDES = new Map([
+  // Sep 16: Afterfeast of the Elevation + Great Martyr Euphemia the All-praised.
+  // Parish sings Euphemia's Glory ("O all-glorious Euphemia") as the doxastikon.
+  ['9-16', 'Euphemia'],
+]);
+
+// If the date has a curated override and a matching commemoration exists in the
+// candidate pool, return it; otherwise return the unchanged pick.
+function applyPrincipalOverride(mm, dd, candidates, primary) {
+  const want = PRINCIPAL_OVERRIDES.get(`${mm}-${dd}`);
+  if (!want || !Array.isArray(candidates)) return primary;
+  const match = candidates.find(c => (c.title || '').includes(want));
+  return match || primary;
+}
+
 /**
  * Loads orthocal JSON for a civil date (YYYY-MM-DD) from the vendored cache.
  * Returns null when out-of-window or unreadable — callers should treat as
@@ -228,6 +251,7 @@ function loadOrthocalForDate(date) {
 
 module.exports = {
   pickPrincipalByOrthocalOrder,
+  applyPrincipalOverride,
   loadOrthocalForDate,
   tokenizeTitle,
   MOVEABLE_CYCLE_TITLE,

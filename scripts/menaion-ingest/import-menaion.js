@@ -56,14 +56,23 @@ function extractVespersLIC(parse) {
     if (s.kind === 'lic-intro') {
       if (/Pentecostarion/i.test(s.label)) sawPaschalLic = true;
       const disc = discriminator(s.label);
-      groups.push({ tone: s.tone, label: s.label, disc, texts: s.texts });
+      groups.push({ tone: s.tone, label: s.label, disc, texts: s.texts, continuation: !!s.continuation });
     } else if (s.kind === 'glory' && !glory) {
       // saint doxastikon only if it is NOT a combined "Glory…, Now & ever…"
       const combined = /Now\s*&?\s*ever|Now and ever/i.test(s.label);
       if (!combined && s.texts.length) glory = { tone: s.tone, text: s.texts[0] };
     }
   }
-  return { groups, glory, sawPaschalLic };
+  // Declared LIC total comes from the opening (non-continuation) group's rubric.
+  const opener = groups.find((g) => !g.continuation);
+  let declared = null, menaionOwn = null;
+  if (opener) {
+    const m = opener.label.match(/(\d+)\s+sticher/i);
+    declared = m ? parseInt(m[1], 10) : null;
+    const split = opener.label.match(/(\d+)\s+from the Pentecostarion.*?(\d+)/i);
+    menaionOwn = split ? parseInt(split[2], 10) : null;
+  }
+  return { groups, glory, sawPaschalLic, declared, menaionOwn };
 }
 // A saint-splitting discriminator ("3 for Saint Joseph", "3 of the hieromartyr")
 // only ever appears BEFORE the ", in Tone …: Spec. Mel." melody clause. Truncate
@@ -80,9 +89,18 @@ function discriminator(label) {
 
 // ---- attribution ------------------------------------------------------
 function attributeChapter(ch, parse, commems) {
-  const { groups, glory, sawPaschalLic } = extractVespersLIC(parse);
+  const { groups, glory, sawPaschalLic, declared, menaionOwn } = extractVespersLIC(parse);
   if (!groups.length) return { skip: 'no LIC groups' };
   if (sawPaschalLic) return { skip: 'Paschal interleave (Pentecostarion stichera) — needs paschal handling' };
+
+  // Under/over-fill gate: never silently import a count that disagrees with the
+  // declared rubric. Allowed: exact, the "sung twice" case (declared == 2×), or
+  // the Menaion's own share in an interleave. Anything else -> hold for review.
+  const extracted = groups.reduce((n, g) => n + g.texts.length, 0);
+  if (declared != null) {
+    const ok = extracted === declared || extracted * 2 === declared || extracted === menaionOwn;
+    if (!ok) return { skip: `count mismatch: declared ${declared}, extracted ${extracted} — needs review` };
+  }
 
   const withDisc = groups.filter((g) => g.disc);
   const assignments = [];   // {cid, tone, label, texts}

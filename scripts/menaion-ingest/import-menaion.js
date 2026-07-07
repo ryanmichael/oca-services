@@ -115,31 +115,46 @@ function titlePartForType(fullTitle, typeWord) {
   return parts.find((p) => re.test(p)) || null;
 }
 
+// A LIC sub-group is either the saint's own stichera (import) or belongs to a
+// co-celebrated feast/cycle that our other tracks supply (exclude). On blend
+// days (esp. the Theophany cycle) the two are printed in one LIC block:
+// "3 of the forefeast ... And 5 of the righteous one".
+const FEAST_GROUP_RE = /fore-?feast|after-?feast|\bfeast\b|resurrection|the temple|Pentecostarion|Triodion|Octoechos|of the day\b|the Cross\b|departed|the dead\b/i;
+function groupRole(label) { return FEAST_GROUP_RE.test(label) ? 'feast' : 'saint'; }
+
 // ---- attribution ------------------------------------------------------
 function attributeChapter(ch, parse, commems) {
   const { groups, glory, sawPaschalLic, declared, menaionOwn } = extractVespersLIC(parse);
   if (!groups.length) return { skip: 'no LIC groups' };
   if (sawPaschalLic) return { skip: 'Paschal interleave (Pentecostarion stichera) — needs paschal handling' };
 
-  // Under/over-fill gate: never silently import a count that disagrees with the
-  // declared rubric. Allowed: exact, the "sung twice" case (declared == 2×), or
-  // the Menaion's own share in an interleave. Anything else -> hold for review.
-  const extracted = groups.reduce((n, g) => n + g.texts.length, 0);
-  if (declared != null) {
-    const ok = extracted === declared || extracted * 2 === declared || extracted === menaionOwn;
-    if (!ok) return { skip: `count mismatch: declared ${declared}, extracted ${extracted} — needs review` };
-  }
+  // Keep only the saint's own stichera; feast/cycle stichera come from other
+  // tracks and must never be imported onto the saint.
+  const saintGroups = groups.filter((g) => groupRole(g.label) === 'saint');
+  const isBlend = saintGroups.length < groups.length;
+  if (!saintGroups.length) return { skip: 'no saint stichera in LIC (all feast/forefeast)' };
 
-  const withDisc = groups.filter((g) => g.disc);
+  // Gate on the saint's share. Lambertsen prints UNIQUE stichera, which may be
+  // fewer than the rubric's slot count (repeats fill the rest), so accept
+  // 0 < extracted <= declared; reject over-collection (extracted > declared),
+  // which is the real error signal (e.g. two services merged).
+  const saintDeclared = saintGroups.reduce((n, g) => {
+    const m = g.label.match(/(\d+)\s+sticher/i); return n + (m ? parseInt(m[1], 10) : g.texts.length);
+  }, 0);
+  const saintExtracted = saintGroups.reduce((n, g) => n + g.texts.length, 0);
+  if (!saintExtracted) return { skip: 'no saint stichera extracted' };
+  if (saintExtracted > saintDeclared) return { skip: `over-collection: extracted ${saintExtracted} > declared ${saintDeclared} — needs review` };
+
+  const withDisc = saintGroups.filter((g) => g.disc);
   const assignments = [];   // {cid, tone, label, texts}
   const principalCid = ch.commemoration_id;
 
   if (!withDisc.length) {
-    // single saint: all groups -> principal
-    for (const g of groups) assignments.push({ cid: principalCid, tone: g.tone, label: null, texts: g.texts });
+    // single saint: all saint groups -> principal
+    for (const g of saintGroups) assignments.push({ cid: principalCid, tone: g.tone, label: isBlend ? 'the saint' : null, texts: g.texts });
   } else {
-    // multi-saint: attribute each group by its discriminator
-    for (const g of groups) {
+    // multi-saint: attribute each saint group by its discriminator
+    for (const g of saintGroups) {
       let cid = principalCid, label = null;
       if (g.disc) {
         label = g.disc;

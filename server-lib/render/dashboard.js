@@ -252,6 +252,7 @@ function formatSticheraSource(sourcesStr) {
   const labels = parts.map(s => {
     if (s === 'oca-menaion') return 'OCA';
     if (s.startsWith('stSergius')) return 'St. Sergius';
+    if (s === 'lambertsen') return 'Lambertsen Menaion';
     return s;
   });
   return [...new Set(labels)].join(' + ');

@@ -3,9 +3,19 @@
 **Goal:** Adopt Holy Myrrh-bearers (myrrh-bearers.org, Etna CA) service texts and
 default them for a specific parish.
 
-**Status:** Planning (2026-07-07). Phase 0 (permission) is a hard gate — no text
-ingested until it clears. Recommended scope defaults noted below (user was away
-when scope was asked; revisit).
+**Status:** In progress (2026-07-07). **Decisions CONFIRMED:** scope = Octoechos +
+fixed-text wording (keep St-Sergius Menaion); **Phase 0 permission CLEARED** (parish
+is able to use it); default = a **reusable** "Myrrh-bearers" stack (not parish-only).
+**Phase 1 done** — result below.
+
+## Phase 1 result (baseline diff)
+
+Their Sunday Octoechos vs our `variable-sources/octoechos.json`: **~70% mean
+word-overlap** on the Saturday Great Vespers resurrectional stichera across all 8
+tones (65–75% per tone; 48 stichera compared). Same hymns / same tradition, but a
+genuinely distinct translation — ~30% of words differ (Zion/Sion, "make merry"/"be
+glad", "life-receiving tomb"/"lifebearing tomb"). **Conclusion: full-Octoechos
+intake is warranted.** Parser + harness in `scripts/myrrhbearers-ingest/`.
 
 ## Key reframe — this is bounded
 

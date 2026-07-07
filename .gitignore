@@ -64,8 +64,3 @@ audit/*.db-wal
 test-results/
 playwright-report/
 
-# Holy Myrrh-bearers derived text — permission is parish-USE only, repo is public.
-# Regenerate locally via scripts/myrrhbearers-ingest/build-overlay.js.
-variable-sources/octoechos-myrrhbearers.json
-variable-sources/*-myrrhbearers.json
-fixed-texts/translations/myrrhbearers/

@@ -40,24 +40,14 @@ and OCA (`oca-2026-…`, `oca-parma-stsergius`). So the delta to Myrrh-bearers m
 small for some tones. Phase 1 measures it. The existing per-hymn source tagging
 also means a parish source-preference override is a clean fit.
 
-## Redistribution vs use — the public-repo constraint (IMPORTANT)
+## Redistribution — GRANTED (2026-07-07)
 
-Permission obtained is **parish USE**, not public **redistribution**. This repo
-(`ryanmichael/oca-services`) is **public**, so Myrrh-bearers text must NOT be
-committed here — that would republish it to anyone. Therefore:
-
-- Their derived text (`variable-sources/octoechos-myrrhbearers.json`, future
-  `fixed-texts/translations/myrrhbearers/`) is **gitignored**; it's a build
-  artifact, regenerated locally by `build-overlay.js` from the source pages.
-- Only the *tools* (parser, overlay generator) and this plan are tracked publicly.
-- **Deployment needs a private delivery path** for the text — pick one:
-  1. Confirm with Holy Myrrh-bearers whether public redistribution is OK (then it
-     could live in-repo). Simplest if granted.
-  2. Private storage the app reads at boot (private bucket / env-mounted file /
-     private data repo or submodule) — keeps the public repo clean.
-  3. Make the whole repo private (largest blast radius; affects everything).
-- Contrast: the Lambertsen menaion data is MIT-licensed (redistribution granted),
-  so it is committed. Myrrh-bearers is different.
+Holy Myrrh-bearers granted **both use and public redistribution** (repo is public
+at `ryanmichael/oca-services`). So their derived text is committed in-repo (like
+the MIT Lambertsen data), with attribution retained in each file's `_meta._source`
+/ `_meta._permission`. No private-delivery path needed. **Always keep the
+attribution.** Files: `variable-sources/octoechos-myrrhbearers.json` (+ future
+`fixed-texts/translations/myrrhbearers/`), regenerable via `build-overlay.js`.
 
 ## License / provenance (Phase 0 — HARD GATE)
 

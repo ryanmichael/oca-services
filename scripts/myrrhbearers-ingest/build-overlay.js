@@ -60,7 +60,7 @@ const overlay = {
   _meta: {
     description: "Myrrh-bearers Octoechos overlay — source-tagged alternates that cascade onto octoechos.json when a parish selects the Myrrh-bearers stack. Base file is never modified.",
     _source: 'https://www.myrrh-bearers.org/octoechos/',
-    _permission: 'Used with permission of Holy Myrrh-bearers, Etna CA (attributed, parish use).',
+    _permission: 'Used and redistributed with permission of Holy Myrrh-bearers, Etna CA (2026-07-07). Please retain this attribution.',
     scope: 'Saturday Great Vespers (all 8 tones). Sunday Matins/Liturgy: TODO.',
   },
 };

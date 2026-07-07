@@ -398,6 +398,37 @@ function validateSticheraTextIntegrity() {
       }
     }
 
+    // (H) Multi-saint mis-attribution marker: a sticheron whose text embeds the
+    //   rubric "And N Stichera of the <saint>, in the same tone/melody:" — the
+    //   literal seam where a SECOND saint's stichera block begins. Its presence
+    //   means the day's propers for two (or more) saints were scraped onto ONE
+    //   commemoration row, so the picker renders whichever row carries them and
+    //   buries the real principal. Found 2026-07-07: Sep 2 dumped Mamas + John
+    //   the Faster's stichera onto the orthocal-headline "Anthony of Kiev Caves"
+    //   row (split to comm 1788/1790). A backlog of 16 rows (mostly afterfeast
+    //   commemorations that absorbed the day's saint stichera) shares the seam
+    //   and is queued for the same split treatment; those are tolerated here so
+    //   the gate stays green, and any NEW occurrence (a fresh bad scrape) trips.
+    const KNOWN_MISATTRIBUTION = new Set([
+      43, 165, 923, 1055, 1118, 1197, 1591, 1707,
+      1863, 1908, 1926, 1939, 2372, 2436, 2541, 2623,
+    ]);
+    const seam = db.prepare(
+      `SELECT DISTINCT commemoration_id AS cid FROM stichera
+        WHERE text LIKE '%Stichera of the hol%' OR text LIKE '%And % Stichera of the%'
+           OR text LIKE '%Stichera of the ven%' OR text LIKE '%Stichera of the Prophet%'`
+    ).all();
+    for (const r of seam) {
+      if (KNOWN_MISATTRIBUTION.has(r.cid)) continue;
+      console.warn(
+        `Commemoration ${r.cid} has a "…Stichera of the <saint>…" seam in its ` +
+        `sticheron text — a second saint's block was scraped onto this row ` +
+        `(multi-saint mis-attribution, cf. Sep 2 comm 1786). Fix: split the ` +
+        `block to the correct commemoration_ids and strip the rubric seam.`
+      );
+      warnings += 1;
+    }
+
     if (warnings === 0) console.log('Sticheron text integrity: clean.');
     return { ok: warnings === 0, warnings };
   } finally {

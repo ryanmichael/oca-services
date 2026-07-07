@@ -40,6 +40,25 @@ and OCA (`oca-2026-…`, `oca-parma-stsergius`). So the delta to Myrrh-bearers m
 small for some tones. Phase 1 measures it. The existing per-hymn source tagging
 also means a parish source-preference override is a clean fit.
 
+## Redistribution vs use — the public-repo constraint (IMPORTANT)
+
+Permission obtained is **parish USE**, not public **redistribution**. This repo
+(`ryanmichael/oca-services`) is **public**, so Myrrh-bearers text must NOT be
+committed here — that would republish it to anyone. Therefore:
+
+- Their derived text (`variable-sources/octoechos-myrrhbearers.json`, future
+  `fixed-texts/translations/myrrhbearers/`) is **gitignored**; it's a build
+  artifact, regenerated locally by `build-overlay.js` from the source pages.
+- Only the *tools* (parser, overlay generator) and this plan are tracked publicly.
+- **Deployment needs a private delivery path** for the text — pick one:
+  1. Confirm with Holy Myrrh-bearers whether public redistribution is OK (then it
+     could live in-repo). Simplest if granted.
+  2. Private storage the app reads at boot (private bucket / env-mounted file /
+     private data repo or submodule) — keeps the public repo clean.
+  3. Make the whole repo private (largest blast radius; affects everything).
+- Contrast: the Lambertsen menaion data is MIT-licensed (redistribution granted),
+  so it is committed. Myrrh-bearers is different.
+
 ## License / provenance (Phase 0 — HARD GATE)
 
 Myrrh-bearers posts **no reuse license** — only "© 2026 Holy Myrrh-bearers" +
@@ -56,11 +75,15 @@ email in `docs/myrrhbearers-permission-email.md`.
   against what we render today; quantify the wording delta per tone/service. Right-
   sizes 2–3. Reuse the QA-diff technique from the Lambertsen work
   (`scripts/menaion-ingest/menaion-qa.js` pattern).
-- **2 — Octoechos intake.** Parse the 8 HTML tone pages (consistent labels:
-  `Stichos:` / `Glory…` / `Theotokion:`; PDFs authoritative for gaps). Import
-  resurrectional stichera/aposticha/canons under `source='myrrhbearers'`. Adapt
-  `scripts/menaion-ingest/parse-menaion.js` into an HTML parser. Store into
-  `octoechos.json` as source-tagged alternates (not overwrite).
+- **2 — Octoechos intake.** IN PROGRESS. `parse-octoechos.js` + `build-overlay.js`
+  emit `variable-sources/octoechos-myrrhbearers.json` — a source-tagged overlay
+  mirroring `octoechos.json`, base file untouched. **Pilot done: Saturday Great
+  Vespers, all 8 tones** (6 resurrectional + glory + dogmatikon + 4 aposticha +
+  aposticha-theotokion + troparion + dismissal-theotokion — exact structural
+  parity with base; verified vs source HTML; chant marks preserved; schema/tests/
+  drift green since nothing loads it yet). **TODO:** Sunday Matins (sessional
+  hymns, antiphons of degrees, lauds, canons, hypakoï, exapostilarion) + Liturgy
+  (beatitudes) sections, same overlay.
 - **3 — Fixed-text overlay.** Their Liturgy/Vespers/Matins ordinary wording →
   `fixed-texts/translations/myrrhbearers/` (manifest + sparse `liturgy-fixed.json`).
   Fully supported by the existing overlay cascade today.

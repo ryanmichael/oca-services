@@ -103,9 +103,15 @@ email in `docs/myrrhbearers-permission-email.md`.
     putting `myrrhbearers` in its `extends_chain` (resolveOctoechos picks it up via
     the chain). Verified: `?translation=myrrhbearers` renders Myrrh-bearers stichera/
     lauds for Vespers + Matins; base unchanged; 149 tests + drift green.
-    **TODO:** extend `reqSources` to the remaining octoechos-consuming routes
-    (liturgy, choir-prep, days, typika, pascha-collection) — currently Vespers +
-    Matins only.
+    **Route coverage:** wired on all four translation-aware content routes —
+    `api-service` (Vespers), `api-matins` (Matins), `api-liturgy` (Liturgy
+    beatitudes + resurrectional troparion/kontakion), `api-typika` (Typika).
+    Verified all render Myrrh-bearers octoechos content with `?translation=
+    myrrhbearers` and leave fixed texts intact. **Not wired (by design):**
+    `service-page` (legacy HTML route — resolves no translation at all),
+    `api-choir-prep` / `api-days` (use `buildMatinsSpec` only as a boolean
+    availability probe — overlay irrelevant), `api-pascha-collection` (paschal
+    content; octoechos resurrectional cycle is superseded during Pascha).
 - **5 — QA + guardrail.** Cross-check rendered services vs the Myrrh-bearers
   booklets (parish-baseline oracle style, cf. `scripts/ocanwa-baseline.js`); add a
   scrape-drift check on their pages.

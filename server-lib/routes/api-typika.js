@@ -15,7 +15,7 @@ function handle(req, res, ctx) {
     parseQuery, formatDate,
     getCalendarEntry,
     buildLiturgyFromOrthocal, fetchOrthocalDay,
-    getLiturgyFixed, getOverlayFixed, resolveTranslation, resolveStyle,
+    getLiturgyFixed, getOverlayFixed, resolveTranslation, resolveStyle, resolveOctoechos,
     applyYouYour, tagBlocksWithOverlay,
     assembleTypika, renderServiceHTML, getDayLabel,
     getMenaionDayList, getOverlayRubrics,
@@ -33,6 +33,8 @@ function handle(req, res, ctx) {
     :                                                   'reader';
   const translation = resolveTranslation(q);
   const style       = resolveStyle(q, translation);
+  // Cascade any Octoechos overlay for the active stack (e.g. Myrrh-bearers).
+  const reqSources  = { ...sources, octoechos: resolveOctoechos(sources, translation) };
 
   res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -57,7 +59,7 @@ function handle(req, res, ctx) {
       try {
         const orthocalData = await fetchOrthocalDay(date);
         calendarEntry = { ...calendarEntry,
-          liturgy: buildLiturgyFromOrthocal(orthocalData, date, sources, style) };
+          liturgy: buildLiturgyFromOrthocal(orthocalData, date, reqSources, style) };
       } catch (err) {
         console.error(`Orthocal API error for ${date}:`, err.message);
         res.writeHead(503, { 'Content-Type': 'application/json' });
@@ -82,7 +84,7 @@ function handle(req, res, ctx) {
     let blocks;
     try {
       blocks = assembleTypika(calendarEntry, liturgyFixedResolved, typikaFixedResolved,
-        vespersFixedResolved, sources, { variant, omitHeavenlyKing });
+        vespersFixedResolved, reqSources, { variant, omitHeavenlyKing });
     } catch (err) {
       console.error('assembleTypika error:', err);
       res.writeHead(500, { 'Content-Type': 'application/json' });

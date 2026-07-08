@@ -65,7 +65,7 @@ const {
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
-const { pickPrincipalByOrthocalOrder } = require('./menaion-principal');
+const { pickPrincipalByOrthocalOrder, applyPrincipalOverride } = require('./menaion-principal');
 
 // Falls back from the menaion DB's `saint_type` column when it's missing —
 // most commonly on "Uncovering of the relics of …", "Translation of the relics
@@ -267,9 +267,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // attachment further down (polyeleos+ Sundays get a secondary prokeimenon /
   // alleluia / koinonikon keyed off the principal saint's category).
   const ranked       = getMenaionRanked(mo, dy);
-  const menaionPrincipal = ranked?.notable
+  let menaionPrincipal = ranked?.notable
     ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
     : null;
+  // Per-date principal override (applied post-picker, same as Vespers/Matins).
+  // Searches ranked.all so an override saint with no troparion is still reachable.
+  menaionPrincipal = applyPrincipalOverride(mo, dy, ranked?.all, menaionPrincipal);
 
   // Now resolve primary/secondary readings. When orthocal returns a special-
   // cycle override as the primary, the regular Sunday-cycle reading is

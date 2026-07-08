@@ -18,6 +18,7 @@ const { getMatinsKathismata } = require('../../kathisma');
 
 const { getMenaionRanked }     = require('./menaion');
 const { pickPrincipalByOrthocalOrder,
+        applyPrincipalOverride,
         loadOrthocalForDate }  = require('./menaion-principal');
 const { GREAT_FEAST_VARIANTS } = require('./propers');
 
@@ -652,9 +653,11 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
     // agreement with OCA's canonical principal saint when our default elevates
     // a stichera-rich lesser saint. Same picker used by Vespers + Liturgy.
     const orthocalData = loadOrthocalForDate(dateStr);
-    const principal = menaionRanked?.notable?.length
+    let principal = menaionRanked?.notable?.length
       ? pickPrincipalByOrthocalOrder(menaionRanked.notable, orthocalData, menaionRanked.principal)
       : menaionRanked?.principal;
+    // Per-date principal override (post-picker), same as Vespers/Liturgy.
+    principal = applyPrincipalOverride(mo, dy, menaionRanked?.all, principal);
 
     const spec = {
       isSunday: false,

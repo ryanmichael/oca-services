@@ -229,8 +229,13 @@ const PRINCIPAL_OVERRIDES = new Map([
 
 // If the date has a curated override and a matching commemoration exists in the
 // candidate pool, return it; otherwise return the unchanged pick.
-function applyPrincipalOverride(mm, dd, candidates, primary) {
-  const want = PRINCIPAL_OVERRIDES.get(`${mm}-${dd}`);
+// `extraOverrides` (optional) is a per-request 'M-D' → title-substring map,
+// e.g. a parish's own overrides; it layers ON TOP of the global map and wins.
+// Phase 1 callers pass none (global map only); Phase 2 threads parish overrides.
+function applyPrincipalOverride(mm, dd, candidates, primary, extraOverrides) {
+  const key  = `${mm}-${dd}`;
+  const want = (extraOverrides && (extraOverrides.get ? extraOverrides.get(key) : extraOverrides[key]))
+            || PRINCIPAL_OVERRIDES.get(key);
   if (!want || !Array.isArray(candidates)) return primary;
   const match = candidates.find(c => (c.title || '').includes(want));
   return match || primary;

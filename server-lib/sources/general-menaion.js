@@ -61,15 +61,26 @@ function getGeneralMenaionTexts(saintType, title) {
       if (rows.length > 0) {
         const shortName = extractShortName(title);
         const sub = t => t.replace(/\(name(?:\s+of\s+the\s+event\/Icon)?\)/gi, shortName);
-        return rows.map(r => ({
-          order:    r.order,
-          section:  r.section,
-          tone:     r.tone,
-          label:    r.label,
-          text:     sub(r.text),
-          verse:    r.verse ? sub(r.verse) : null,
-          dbSource: 'stSergius-general',
-        }));
+        // Order-convention reconcile: general_menaion uses order 0–2 = numbered
+        // stichera, 90 = Glory doxastikon, 91 = Now/Theotokion. But the assembler
+        // (for-date.js) expects the proper-stichera convention — order 0 = Glory,
+        // order ≥1 = numbered stichera. Without remapping, the Glory/Theotokion
+        // (90/91) render as extra numbered stichera and, since 90==91 for most
+        // saint types, surface as a duplicate theotokion (July 12 audit). So:
+        // stichera 0/1/2 → 1/2/3; Glory 90 → 0; drop the redundant Now (91) — the
+        // Now is supplied by the Octoechos week-Theotokion, and combinesGloryNow
+        // renders "Glory…, Now…: Theotokion" when no distinct week Theotokion.
+        return rows
+          .filter(r => r.order !== 91)
+          .map(r => ({
+            order:    r.order === 90 ? 0 : r.order + 1,
+            section:  r.section,
+            tone:     r.tone,
+            label:    r.label,
+            text:     sub(r.text),
+            verse:    r.verse ? sub(r.verse) : null,
+            dbSource: 'stSergius-general',
+          }));
       }
     }
     return null;

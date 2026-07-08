@@ -79,11 +79,34 @@ wired into **all three** render paths (`for-date.js:115`, `matins-spec.js:656`,
 
 ## Phasing
 
-- **Phase 1 — override plumbing (contained, ~1 session).** DRY `applyPrincipalOverride`
-  into `menaion-principal.js`; wire all 3 services; land the global default map;
-  guard A2. Ship the parked Euphemia case correctly across all services. No parish
-  config yet. Validate: Euphemia 9-16 principal across Vespers/Matins/Liturgy; A2
-  green; existing dates unchanged.
+- **Phase 1 — override plumbing — ✅ DONE (2026-07-08, `8044ae3`).** Cherry-picked
+  the parked Vespers override (`465c844`), extended `applyPrincipalOverride` with an
+  optional per-request `extraOverrides` map (parish-scoped, layered over globals),
+  and wired it into **all 3 services** (Vespers/Matins/Liturgy). Euphemia (9-16) now
+  renders principal across all three (was Vespers-only). A2 validates the base pick
+  (override is a separate post-step), so no audit change needed. 149 tests + drift +
+  pre-push audit (high=0) green; only 9-16 changes.
+
+### ⚠️ Design realization (blocks a naive Phase 2 for July 12)
+
+Phase 1's override sets a **single** `primary`. That's exactly right for the
+**Euphemia/afterfeast case** — there IS one true principal the picker was burying.
+But July 12 is a **different shape**: two co-equal simple saints where the parish
+sings **both** LIC stichera (Proclus 3 + Michael 2) and Michael merely **owns the
+Glory doxastikon + troparion**. A single-`primary` override to Michael would:
+- **Liturgy: improve** → Michael's proper troparion + kontakion (matches booklet), but
+  drops Proclus's proper kontakion unless `includeLesserSaints` is on.
+- **Vespers: lateral, not fixed** → renders *generic* venerable stichera for Michael
+  (he has 0 propers) instead of *generic* martyr stichera for Proclus; still no proper
+  doxastikon, and Proclus's stichera vanish. Booklet wants **both**, proper.
+
+So July 12 needs **more than the single-primary override**: (a) render **both** saints'
+LIC stichera (multi-saint Vespers, like `includeLesserSaints` but for Vespers), (b) a
+**doxastikon/troparion-owner** setting distinct from "sole principal", and (c) **coverage**
+(both saints' proper stichera — Michael has 0). Without (c), any principal choice renders
+generic. **Conclusion: Phase 2-for-July-12 is gated on Phase 3 coverage + the multi-saint
+model; do NOT ship a bare `7-12 → Michael` override (it under-models + partly regresses).**
+The single-primary override remains correct + shippable for true-one-principal cases.
 - **Phase 2 — parish config (~1 session).** Add per-parish override storage (rubric
   registry + parish_settings) + resolver; add `{ "7-12": "Michael Maleinos" }` for
   St. John of Damascus (Tyler). Validate the Tyler render picks Michael's

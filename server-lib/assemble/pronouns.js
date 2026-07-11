@@ -2,7 +2,63 @@
 
 // Thee/Thy → You/Your substitution. Applied to assembled blocks when ?pronoun=yy.
 
+// Simple-past forms for the "didst <verb>" construction. Without this, "Thou
+// didst descend" modernizes to the stilted "You did descend" instead of the
+// natural "You descended". Irregular verbs need an explicit map; regular verbs
+// fall through to the -ed rule in verbToPast(). Keep base forms lowercase.
+const IRREGULAR_PAST = {
+  come:'came', become:'became', overcome:'overcame', arise:'arose', rise:'rose',
+  give:'gave', forgive:'forgave', make:'made', take:'took', mistake:'mistook',
+  forsake:'forsook', partake:'partook', bring:'brought', buy:'bought',
+  think:'thought', seek:'sought', teach:'taught', catch:'caught', fight:'fought',
+  send:'sent', spend:'spent', bend:'bent', lend:'lent', set:'set', put:'put',
+  shed:'shed', cast:'cast', cost:'cost', cut:'cut', let:'let', shut:'shut',
+  hurt:'hurt', burst:'burst', spread:'spread', bear:'bore', tear:'tore',
+  wear:'wore', swear:'swore', fall:'fell', befall:'befell', hold:'held',
+  behold:'beheld', uphold:'upheld', withhold:'withheld', lead:'led', feed:'fed',
+  flee:'fled', find:'found', bind:'bound', grind:'ground', wind:'wound',
+  see:'saw', foresee:'foresaw', speak:'spoke', break:'broke', wake:'woke',
+  awake:'awoke', choose:'chose', freeze:'froze', hide:'hid', ride:'rode',
+  write:'wrote', drive:'drove', smite:'smote', shine:'shone', sing:'sang',
+  ring:'rang', spring:'sprang', drink:'drank', sink:'sank', begin:'began',
+  swim:'swam', run:'ran', win:'won', spin:'spun', sit:'sat', spit:'spat',
+  stand:'stood', understand:'understood', withstand:'withstood', meet:'met',
+  keep:'kept', sleep:'slept', sweep:'swept', weep:'wept', creep:'crept',
+  leave:'left', feel:'felt', deal:'dealt', kneel:'knelt', mean:'meant',
+  hear:'heard', say:'said', pay:'paid', lay:'laid', slay:'slew', do:'did',
+  undo:'undid', go:'went', undergo:'underwent', have:'had', eat:'ate',
+  draw:'drew', withdraw:'withdrew', blow:'blew', grow:'grew', know:'knew',
+  throw:'threw', overthrow:'overthrew', fly:'flew', lie:'lay', shake:'shook',
+  strike:'struck', sting:'stung', cling:'clung', fling:'flung', swing:'swung',
+  wring:'wrung', hang:'hung', dig:'dug', light:'lit', sell:'sold', tell:'told',
+  foretell:'foretold', dwell:'dwelt', tread:'trod', build:'built', shoot:'shot',
+  weave:'wove', gird:'girded',
+};
+
+// Words that can follow "didst" without being its main verb — leave these for
+// the generic didst→did rule rather than trying to conjugate them.
+const NON_VERB_AFTER_DIDST = new Set(['thou','thee','you','ye','not','the','a','an']);
+
+function verbToPast(verb) {
+  const v = verb.toLowerCase();
+  if (IRREGULAR_PAST[v] !== undefined) return IRREGULAR_PAST[v];
+  if (/e$/.test(v))            return v + 'd';               // create→created
+  if (/[^aeiou]y$/.test(v))    return v.slice(0, -1) + 'ied'; // glorify→glorified
+  return v + 'ed';                                            // descend→descended
+}
+
 const YOU_YOUR_RULES = [
+  // "didst <verb>" → simple past (before the generic Didst→Did below).
+  // "didst not <verb>" stays "did not <verb>" (English negatives keep the base
+  // verb). A non-verb after "didst" (inversion "didst thou…") is left alone.
+  [/\b([Dd])idst\s+(not\s+)?([A-Za-z]+)/g, (m, d, neg, word) => {
+    const did = d === 'D' ? 'Did' : 'did';
+    if (neg) return `${did} not ${word}`;
+    if (NON_VERB_AFTER_DIDST.has(word.toLowerCase())) return m;
+    let past = verbToPast(word);
+    if (d === 'D') past = past.charAt(0).toUpperCase() + past.slice(1);
+    return past;
+  }],
   // Predicate-nominative Thine first (before general Thine → Your)
   [/\bThine(?=\s+is\b)/g,       'Yours'],
   [/\bthine(?=\s+is\b)/g,       'yours'],

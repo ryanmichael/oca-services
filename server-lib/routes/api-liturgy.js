@@ -169,11 +169,13 @@ function handle(req, res, ctx) {
           }
         }
 
-        // Sunday Liturgy kontakia restructure. Standard OCA shape:
+        // Sunday Liturgy kontakia restructure. Standard OCA shape (per the OCA
+        // Order of Services, ordinary Sunday):
+        //   Kontakion of the Resurrection, Tone N   (first — NOT dropped)
         //   Glory: → Kontakion of the principal commemoration / patron of temple
         //   Now:   → Theotokion-Kontakion ("Protection of Christians...")
-        // The Resurrection kontakion is dropped — the Sunday is carried by the
-        // Resurrection troparion above. Glory-slot selection by rank:
+        // Verified 2026-07-11 against oca.org OOS 2021-0829 (10th Sun after
+        // Pentecost): the Resurrection kontakion leads. Glory-slot selection by rank:
         //   - Principal feast / polyeleos+ saint (signaled by
         //     `hasCocelebratedOverlay`): day's saint takes Glory; patron drops.
         //   - Simple-rank Sunday (no overlay): patron takes Glory when set;
@@ -229,6 +231,7 @@ function handle(req, res, ctx) {
                 theotokion: true,
               } : null;
               lit.kontakia = [
+                ...(resK ? [{ ...resK, connector: null }] : []),
                 ...(extraK ? [{ ...extraK, connector: null }] : []),
                 { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.' },
                 ...(theoK ? [theoK] : []),

@@ -73,14 +73,21 @@ function findIdx(blocks, re) {
 
 describe('Feature contract: Sunday Kontakia Restructure', () => {
 
-  it('INV-1: Sunday — Resurrection kontakion is NOT in the Kontakia section (carried by Res troparion above)', async () => {
-    // 2026-06-21 — ordinary-time Sunday, Ananias (simple-rank), no overlay.
+  it('INV-1: Sunday — Resurrection kontakion LEADS the Kontakia section (per OCA OOS)', async () => {
+    // 2026-06-21 — ordinary-time Sunday, Julian of Tarsus (simple-rank), no overlay.
+    // Verified against OCA Order of Services for ordinary Sundays 2021-1003
+    // (St Dionysius) and 2021-0926 (St John): at the Divine Liturgy the
+    // Kontakion of the Resurrection is the FIRST kontakion, before Glory: <saint>
+    // and Now: Theotokion-Kontakion. (Superseded the pre-2026-07-11 belief that
+    // it was dropped — that had no rubric citation and contradicted the OOS.)
     const { json } = await get('/api/liturgy?date=2026-06-21');
     const ks = kontakiaBlocks(json);
 
-    const resKontakion = ks.find(b => /Kontakion of the Resurrection/i.test(b.text || ''));
-    assert.equal(resKontakion, undefined,
-      `Resurrection kontakion must not appear in Sunday Kontakia section; found: ${resKontakion?.text || ''}`);
+    const resIdx   = ks.findIndex(b => /Kontakion of the Resurrection/i.test(b.text || ''));
+    assert.ok(resIdx >= 0, 'Resurrection kontakion must appear in the Sunday Kontakia section');
+    const gloryIdx = findIdx(ks, /^Glory to the Father/);
+    assert.ok(gloryIdx < 0 || resIdx < gloryIdx,
+      `Resurrection kontakion (${resIdx}) must lead, before Glory: <saint> (${gloryIdx})`);
   });
 
   it('INV-2: Sunday with saint kontakion and no patron — shape is Glory: <saint> / Now: Kontakion-Theotokion', async () => {

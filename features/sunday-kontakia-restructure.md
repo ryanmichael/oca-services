@@ -1,8 +1,8 @@
 # Feature: Sunday Liturgy Kontakia Restructure
 
-**Status:** shipped 2026-06-14 (commit `8e51af4`); low-rank Glory-slot fix 2026-06-14 (commit `f10e1e2`)
+**Status:** shipped 2026-06-14 (commit `8e51af4`); low-rank Glory-slot fix 2026-06-14 (commit `f10e1e2`); **Resurrection-kontakion-leads correction 2026-07-11** (INV-1 inverted, verified vs OCA OOS)
 **Contract test:** `test/contracts/sunday-kontakia-restructure.test.js`
-**Last verified:** 5841b91
+**Last verified:** 2026-07-11 (OCA OOS 2021-1003, 2021-0926)
 **Session context:** memory `project_session_handoff_2026_06_14.md` § "Sunday kontakia structural restructure"
 
 > The principal-saint picker change in `d5f5ea2` shifted the 2026-06-21
@@ -15,11 +15,16 @@
 
 At the Divine Liturgy on a Sunday, the rendered Kontakia section follows a specific OCA shape:
 
-- The Resurrection kontakion is **not** printed in this section — it's carried by the Resurrection troparion immediately above.
+- The **Kontakion of the Resurrection leads** the section (first kontakion).
 - **Glory:** → the principal commemoration's kontakion (or the patron-of-temple's, on simple-rank Sundays — see `features/patron-of-temple.md`).
 - **Now:** → the Kontakion-Theotokion *"Protection of Christians that cannot be put to shame…"* (Romanos, OCA translation), keyed at `liturgy-fixed.json#kontakion-theotokion`.
 
-Before this restructure, the Kontakia section printed the Resurrection kontakion in full, then patron blocks with broken Glory/Now bracketing, and never closed with a Theotokion. The restructure makes the rendered output match what's actually sung at OCA parishes.
+> **Correction (2026-07-11):** the original restructure *dropped* the Resurrection
+> kontakion, claiming it was "carried by the troparion above." That was wrong and
+> uncited. The OCA Order of Services for ordinary Sundays keeps it as the first
+> kontakion — verified against oca.org OOS **2021-1003** (15th Sun, St Dionysius)
+> and **2021-0926** (14th Sun, St John): `Kontakion of the Resurrection` →
+> [Church] → `Glory: <saint>` → `Now: "Steadfast Protectress"`. INV-1 inverted.
 
 ## Interface
 
@@ -35,13 +40,13 @@ Inputs come from upstream sources (`buildLiturgyFromOrthocal`, menaion DB, the p
 | Day signal | Kontakia section shape |
 |---|---|
 | Sunday, `feastOnly` true (Great Feast / Pentecostarion-feast) | Restructure skipped — feast's own kontakia render as authored |
-| Sunday, saint kontakion present, no patron | `Glory: <saint>` → `Now: Kontakion-Theotokion` |
-| Sunday, saint kontakion present, patron set, `hasCocelebratedOverlay` true | `Glory: <saint>` → `Now: Kontakion-Theotokion` (patron dropped — see patron-of-temple INV-3) |
-| Sunday, saint kontakion present, patron set, `hasCocelebratedOverlay` false (simple-rank) | `<saint>` (no connector) → `Glory: <patron>` → `Now: Kontakion-Theotokion` (see patron-of-temple INV-2) |
-| Sunday, no saint kontakion, no patron | Resurrection kontakion alone (only path where Res kontakion survives) |
+| Sunday, saint kontakion present, no patron | `Resurrection` → `Glory: <saint>` → `Now: Kontakion-Theotokion` |
+| Sunday, saint kontakion present, patron set, `hasCocelebratedOverlay` true | `Resurrection` → `Glory: <saint>` → `Now: Kontakion-Theotokion` (patron dropped — see patron-of-temple INV-3) |
+| Sunday, saint kontakion present, patron set, `hasCocelebratedOverlay` false (simple-rank) | `Resurrection` → `<saint>` (no connector) → `Glory: <patron>` → `Now: Kontakion-Theotokion` (see patron-of-temple INV-2) |
+| Sunday, no saint kontakion, no patron | Resurrection kontakion alone |
 | Weekday Liturgy | Restructure does not apply — kontakia render as upstream authored |
 
-The Resurrection kontakion is dropped on every Sunday path except the final fallback (no saint, no patron) where there is nothing else to render.
+The Resurrection kontakion leads every Sunday path (prepended in the standard-Sunday branch); only the Lenten-commemoration-Sunday branch (day's own kontakion claims both Glory+Now slots) omits it by design.
 
 ## Code surface
 
@@ -51,7 +56,7 @@ The Resurrection kontakion is dropped on every Sunday path except the final fall
 
 ## Invariants (tested)
 
-- **INV-1** — On an ordinary Sunday, the rendered Kontakia section contains **no** Resurrection kontakion (a block whose rubric matches `/Kontakion of the Resurrection/`).
+- **INV-1** — On an ordinary Sunday, the rendered Kontakia section **leads** with the Resurrection kontakion (a block matching `/Kontakion of the Resurrection/`), before `Glory: <saint>` and `Now: Kontakion-Theotokion`. (Per OCA OOS — see Purpose correction.)
 - **INV-2** — On a Sunday with a menaion saint kontakion and no parish patron, the Kontakia section ends with: `Glory: …` → `<saint kontakion>` → `Now and ever: …` → `Kontakion-Theotokion`.
 - **INV-3** — On a weekday Liturgy, the Sunday restructure does not apply: no `Kontakion-Theotokion` block appears in the rendered Kontakia section.
 - **INV-4** — On a Great Feast / `feastOnly` Sunday, the Sunday restructure is skipped: no `Kontakion-Theotokion` block appears (the feast's own kontakia render as authored).

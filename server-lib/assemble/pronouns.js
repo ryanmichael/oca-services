@@ -118,4 +118,14 @@ function applyYouYour(text) {
   return text;
 }
 
-module.exports = { YOU_YOUR_RULES, applyYouYour };
+// Resolve the language register for a request: an explicit ?pronoun=tt|yy query
+// param always wins; otherwise fall back to the active parish/overlay's
+// `defaultPronoun` rubric; otherwise 'tt' (traditional). Lets a parish default
+// to modern "You/Your" across services without appending ?pronoun=yy each time.
+function resolvePronoun(q, overlayRubrics) {
+  if (q && (q.pronoun === 'tt' || q.pronoun === 'yy')) return q.pronoun;
+  const d = overlayRubrics && overlayRubrics.defaultPronoun;
+  return (d === 'tt' || d === 'yy') ? d : 'tt';
+}
+
+module.exports = { YOU_YOUR_RULES, applyYouYour, resolvePronoun };

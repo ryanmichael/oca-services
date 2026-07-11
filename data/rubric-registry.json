@@ -103,6 +103,16 @@
       "type": "boolean",
       "default": false,
       "appliesTo": ["greatVespers"]
+    },
+    "defaultPronoun": {
+      "label": "Default language register (modern / traditional)",
+      "description": "Register for variable hymn texts when a request does not specify ?pronoun. \"yy\" renders modern \"You/Your\" (thee/thou/thy and archaic verb forms are converted automatically); \"tt\" renders traditional \"Thee/Thou\". Applies to Vespers, Matins, and the Divine Liturgy. An explicit ?pronoun query param always overrides this default.",
+      "namespace": "defaultPronoun",
+      "type": "enum",
+      "options": ["tt", "yy"],
+      "default": "tt",
+      "appliesTo": ["vespers", "matins", "liturgy"],
+      "dbColumn": "rubric_default_pronoun"
     }
   }
 }

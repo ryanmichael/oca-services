@@ -28,7 +28,7 @@ function handle(req, res, ctx) {
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
     getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     resolveOctoechos,
-    assembleForDate, applyYouYour, getDayLabel,
+    assembleForDate, applyYouYour, resolvePronoun, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
     buildDashboardData, formatSticheraSource,
@@ -46,9 +46,10 @@ function handle(req, res, ctx) {
 
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
-      const pronoun = (['tt','yy'].includes(q.pronoun) ? q.pronoun : 'tt');
       const format  = (q.format  || '').trim().toLowerCase();
       const translation = resolveTranslation(q);
+      // Register: explicit ?pronoun wins; else the parish/overlay defaultPronoun; else 'tt'.
+      const pronoun = resolvePronoun(q, getOverlayRubrics(translation));
       const style       = resolveStyle(q, translation);
       // Cascade any Octoechos overlay for the active stack (e.g. Myrrh-bearers).
       const reqSources  = { ...sources, octoechos: resolveOctoechos(sources, translation) };

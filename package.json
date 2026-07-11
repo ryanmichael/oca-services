@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node scripts/validate-schemas.js --quiet && node --test test/smoke.test.js test/old-style.test.js test/calendar-seasons.test.js",
+    "test": "node scripts/validate-schemas.js --quiet && node --test test/smoke.test.js test/old-style.test.js test/calendar-seasons.test.js test/pronouns.test.js",
     "validate": "node scripts/validate-schemas.js",
     "test:contracts": "node --test --test-concurrency=1 test/contracts/*.test.js",
     "setup-hooks": "node scripts/setup-hooks.js",

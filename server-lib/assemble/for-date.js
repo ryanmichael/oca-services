@@ -184,12 +184,21 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         if (isSaturdayInjection && !calendarEntry.liturgicalContext?.greatFeast && !isVigilFeast) {
           // Sat/Sun Great Vespers: split verses between resurrectional Octoechos and Menaion.
           // Total = the spec's totalStichera (6 for Saturday, 10 for Sunday).
-          // licNoLeadingRepeat trims the 10-count to 9 so the octoechos slot fits
-          // exactly the 6 stichera OCA Obikhod publishes (no doubled leading sticheron).
+          // licNoLeadingRepeat caps the resurrectional slot at however many DISTINCT
+          // stichera the week's tone actually publishes, rather than doubling the
+          // first to pad the count. A tone with the full 7 (e.g. Tone 5) then yields
+          // the standard 10 with no repeat; a 6-count tone yields 9.
           let totalStichera         = calendarEntry.vespers.lordICall.totalStichera || 6;
           if (opts.rubrics?.lordICall?.noLeadingRepeat && totalStichera === 10) {
-            totalStichera = 9;
-            calendarEntry.vespers.lordICall.totalStichera = 9;
+            const resKey   = calendarEntry.vespers.lordICall.slots?.[0]?.key;
+            const resNode  = resKey
+              ? resKey.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)
+              : null;
+            const distinct = Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6;
+            const desiredRes = totalStichera - licStichera.length;   // 10 − menaion
+            const actualRes  = Math.min(desiredRes, distinct);       // cap: no doubling
+            totalStichera    = actualRes + licStichera.length;       // 10 (Tone 5) or 9
+            calendarEntry.vespers.lordICall.totalStichera = totalStichera;
           }
           const menaionCount        = licStichera.length;
           const resurrectionalCount = totalStichera - menaionCount;

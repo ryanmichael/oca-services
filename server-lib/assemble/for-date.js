@@ -126,7 +126,34 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     // fallback below kicks in by saint_type.
     const pickerSwappedAway = primary && ranked?.sticheraComm && primary.id !== ranked.sticheraComm.id;
     let sticheraData;
-    if (pickerSwappedAway) {
+
+    // Multi-saint Sunday Great Vespers: when more than one commemoration has its
+    // own proper LIC stichera (e.g. Proclus & Hilary + Michael of Maleinus on
+    // July 12), render each saint's stichera in calendar order and take the Glory
+    // doxastikon from whichever saint supplies one (the elevated saint). The
+    // resurrectional count auto-shrinks to fill the remaining verse slots.
+    const multiSaintSunday = calendarEntry.dayOfWeek === 'sunday' && isGreatVespers && isSaturdayInjection;
+    const licSticheraComms = multiSaintSunday
+      ? (ranked?.all || []).filter(c =>
+          c.saint_type !== 'theotokos' && c.saint_type !== 'icon' &&
+          (c.stichera || []).some(s => s.section === 'lordICall' && s.order >= 1))
+      : [];
+
+    if (licSticheraComms.length > 1) {
+      const combined = [];
+      let n = 1, glory = null;
+      for (const c of licSticheraComms) {
+        const own = (c.stichera || [])
+          .filter(s => s.section === 'lordICall')
+          .sort((a, b) => a.order - b.order);
+        for (const s of own) {
+          if (s.order === 0) { if (!glory) glory = { ...s, label: s.label || c.title }; }
+          else combined.push({ ...s, order: n++, label: s.label || c.title });
+        }
+      }
+      if (glory) combined.unshift({ ...glory, order: 0 });
+      sticheraData = [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: combined }];
+    } else if (pickerSwappedAway) {
       sticheraData = primary.hasStichera
         ? [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: primary.stichera }]
         : null;

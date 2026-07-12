@@ -119,7 +119,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     // the moveable-cycle pick buries a co-commemorated great saint the parish
     // elevates (search the full enriched pool so a saint with no troparion in
     // `notable` is still reachable). See menaion-principal.js PRINCIPAL_OVERRIDES.
-    primary = applyPrincipalOverride(mm, dd, ranked?.all, primary);
+    primary = applyPrincipalOverride(mm, dd, ranked?.all, primary, opts.rubrics?.principalOverrides);
 
     // When the picker rebound principal away from sticheraComm, prefer the
     // new principal's own stichera (if any). Otherwise the general-menaion

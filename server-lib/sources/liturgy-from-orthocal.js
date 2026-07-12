@@ -272,7 +272,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     : null;
   // Per-date principal override (applied post-picker, same as Vespers/Matins).
   // Searches ranked.all so an override saint with no troparion is still reachable.
-  menaionPrincipal = applyPrincipalOverride(mo, dy, ranked?.all, menaionPrincipal);
+  menaionPrincipal = applyPrincipalOverride(mo, dy, ranked?.all, menaionPrincipal, opts.principalOverrides);
 
   // Now resolve primary/secondary readings. When orthocal returns a special-
   // cycle override as the primary, the regular Sunday-cycle reading is

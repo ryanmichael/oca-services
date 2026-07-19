@@ -275,14 +275,6 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // Searches ranked.all so an override saint with no troparion is still reachable.
   menaionPrincipal = applyPrincipalOverride(mo, dy, ranked?.all, menaionPrincipal, opts.principalOverrides);
 
-  // Now resolve primary/secondary readings. When orthocal returns a special-
-  // cycle override as the primary, the regular Sunday-cycle reading is
-  // suppressed; a co-celebrated saint reading further down survives. The
-  // principal title disambiguates when multiple saint readings exist.
-  const principalTitle = menaionPrincipal?.title || feast?.title || null;
-  [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
-  [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
-
   // ── Sunday of the Holy Fathers (Ecumenical Councils) detection ──────────────
   // The movable Sunday commemorating the Fathers of the First Six Councils
   // (July 13-19) or the Seventh Council (Oct 11-17). Both carry a complete
@@ -291,12 +283,31 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // Beatitude troparia — layered on top of the Sunday-cycle propers. Orthocal's
   // second Epistle (Hebrews 13:7-16) already comes through; the rest were
   // silently dropped until this hook (surfaced 2026-07-19 auditing Pent-7).
+  // Detect from orthocal's feasts (independent of the menaion principal pick).
   // Guarded to Sundays with no Great Feast / Pentecostarion override so the
   // Paschal "Fathers of the 1st Council" Sunday (handled via pentOverride) and
   // the Sunday-before-Nativity Forefathers are left untouched.
   const holyFathersSunday = isSunday && !feast && !pentOverride
-    && [...(orthocalData.feasts || []), principalTitle]
-         .some(t => /fathers\b.*\bcouncil/i.test(t || ''));
+    && (orthocalData.feasts || []).some(t => /fathers\b.*\bcouncil/i.test(t || ''));
+
+  // The Fathers head the Liturgy troparia/kontakia AND readings (per OCA order)
+  // even though their commemoration is stichera-poor. The stichera-ranked picker
+  // would otherwise elevate a stichera-rich co-celebration (e.g. Seraphim of
+  // Sarov on 7-19), flipping the troparion/kontakion and the secondary
+  // epistle/Gospel to the wrong saint. Force the Fathers as principal BEFORE the
+  // readings pick so Hebrews 13:7-16 / John 17:1-13 resolve as the secondaries.
+  if (holyFathersSunday) {
+    const fathersComm = (ranked?.all || []).find(c => /fathers\b.*\bcouncil/i.test(c.title || ''));
+    if (fathersComm) menaionPrincipal = fathersComm;
+  }
+
+  // Now resolve primary/secondary readings. When orthocal returns a special-
+  // cycle override as the primary, the regular Sunday-cycle reading is
+  // suppressed; a co-celebrated saint reading further down survives. The
+  // principal title disambiguates when multiple saint readings exist.
+  const principalTitle = menaionPrincipal?.title || feast?.title || null;
+  [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
+  [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
 
   // Weekday great-saint feast suppression flag.
   // When a Vigil- or Polyeleos-rank saint falls on a weekday (i.e. not Sunday,

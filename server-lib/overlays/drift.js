@@ -557,6 +557,155 @@ function validateTextCosmetics() {
   }
 }
 
+// Common capitalized liturgical words that are NOT distinctive saint/place
+// names — excluded from the mis-key subject-noun heuristic below.
+const STICHERA_NAME_STOPWORDS = new Set([
+  'Christ', 'Jesus', 'Lord', 'God', 'Father', 'Fathers', 'Spirit', 'Holy',
+  'Saint', 'Saints', 'Venerable', 'Virgin', 'Mother', 'Theotokos', 'Angel',
+  'Angels', 'Apostle', 'Apostles', 'Martyr', 'Martyrs', 'Prophet', 'Cross',
+  'Church', 'Heaven', 'Heavens', 'Trinity', 'Word', 'Savior', 'Saviour',
+  'King', 'Master', 'Creator', 'Blessed', 'Rejoice', 'Glory', 'Today',
+  'Come', 'Great', 'Council', 'Councils', 'Wonder', 'Faith', 'Grace',
+]);
+
+// Strip diacritics so "Saróv" matches "Sarov", "Sergéi" matches "Sergei".
+function stripDiacritics(s) {
+  return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
+// 6-char stem, diacritic-folded — tolerates transliteration endings so a
+// commemoration's OWN saint isn't mistaken for a sibling: "Demetrius" (hymns)
+// and "Demetrios" (title) both stem to "demetr". Words shorter than 6 chars
+// stem to themselves.
+function nameStem(w) {
+  const s = stripDiacritics(w || '').toLowerCase();
+  return s.length >= 6 ? s.slice(0, 6) : s;
+}
+function titleStems(title) {
+  const out = new Set();
+  for (const m of stripDiacritics(title || '').matchAll(/[A-Za-z]{4,}/g)) out.add(nameStem(m[0]));
+  return out;
+}
+
+// Known pre-existing stichera mis-keys (source commemoration id) surfaced by
+// the sweep on 2026-07-19. These are PARTIAL bleeds on shared-date pairs — the
+// festal/movable first-row commemoration hoards a portion of a fixed saint's
+// hymns — so remediation is per-row (move only the sibling-named stichera,
+// re-order, verify against OCA source), NOT a blanket reassignment. Queued as a
+// dedicated pass (see memory project_stichera_miskey_sweep_2026_07_19). Listed
+// here so the guard gates only NEW mis-keys, not this known backlog. Comm 1450
+// (Fathers←Seraphim, July 19) is absent — it was a clean full move, fixed live.
+const KNOWN_STICHERA_MISKEYS = new Set([
+  5,    // Forefeast of Theophany ← Seraphim of Sarov (→6)
+  190,  // New Martyrs of Russia ← Gregory the Theologian (→191)
+  348,  // Sunday of Meatfare ← Apostle Onesimus (→349)
+  639,  // Repose of St Innocent ← Hypatius of Gangra (→640)
+  795,  // Theodore Trichinas ← Anastasius of Sinai (→799)
+  911,  // Sign of the Cross over Jerusalem ← Alexis Toth (→912)
+  928,  // Sunday of the Samaritan Woman ← Apostle Simon the Zealot (→929)
+  937,  // Founding of Constantinople ← Cyril & Methodius (→939)
+  1319, // St John Maximovitch ← Juvenal of Jerusalem (→1322)
+  2205, // Great Earthquake at Constantinople ← Demetrios of Thessaloniki (→2204)
+  2211, // Mother Olga of Alaska ← Martyr Nestor of Thessalonica (→2212)
+  2227, // John the Chozebite ← Stephen the Hymnographer (→2219)
+  2324, // Martyrius of Zelenets ← Theodore the Studite (→2323)
+  2521, // Sunday of the Forefathers ← Herman of Alaska (→2522)
+]);
+
+// Data-drift guard: a commemoration whose stichera repeatedly name a proper
+// noun that instead matches a SIBLING commemoration (same month/day) — and is
+// absent from the commemoration's own title — has almost certainly had that
+// sibling's stichera mis-keyed onto it by the scraper (it attaches a day's
+// hymns to the first commemoration row rather than the saint they address).
+//
+// Surfaced 2026-07-19 auditing the Sunday of the Holy Fathers: 9 stichera all
+// addressing "venerable Seraphim"/"Saróv" were keyed to comm 1450 "Fathers of
+// the First Six Councils" while sibling 1451 "…Seraphim of Sarov" had none.
+//
+// The sibling-title match keeps false positives near-zero: a generic saint-day
+// whose stichera simply name the saint (already in the title) never fires.
+function validateSticheraCommemorationMismatch() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    // Commemorations that share a (month, day) with at least one sibling.
+    const siblings = db.prepare(`
+      SELECT id, month, day, title FROM commemorations
+      WHERE (month, day) IN (
+        SELECT month, day FROM commemorations GROUP BY month, day HAVING COUNT(*) > 1
+      )
+    `).all();
+
+    // Index sibling titles by (month, day).
+    const byDate = new Map();
+    for (const c of siblings) {
+      const k = `${c.month}-${c.day}`;
+      if (!byDate.has(k)) byDate.set(k, []);
+      byDate.get(k).push(c);
+    }
+
+    let warnings = 0;
+    for (const c of siblings) {
+      if (KNOWN_STICHERA_MISKEYS.has(c.id)) continue; // documented backlog — queued
+      const stichera = db.prepare(
+        'SELECT text FROM stichera WHERE commemoration_id = ?'
+      ).all(c.id);
+      if (stichera.length < 2) continue; // need a set to establish a subject
+
+      const ownStems = titleStems(c.title);
+
+      // Candidate subject-nouns: distinctive capitalized words (len ≥5) that
+      // appear in a majority of this commemoration's stichera. Keyed by 6-char
+      // stem so transliteration endings collapse together.
+      const counts = new Map(); // stem -> { n, display }
+      for (const s of stichera) {
+        const seen = new Set();
+        for (const m of (s.text || '').matchAll(/\b([A-Z][a-zá-ú]{4,})\b/g)) {
+          const w = m[1];
+          if (STICHERA_NAME_STOPWORDS.has(w)) continue;
+          const stem = nameStem(w);
+          if (!seen.has(stem)) {
+            seen.add(stem);
+            const e = counts.get(stem) || { n: 0, display: w };
+            e.n += 1;
+            counts.set(stem, e);
+          }
+        }
+      }
+      const threshold = Math.ceil(stichera.length * 0.6);
+
+      for (const [stem, { n, display }] of counts) {
+        if (n < threshold) continue;
+        if (ownStems.has(stem)) continue; // subject is this saint — fine
+        // Does a sibling's title name this subject?
+        const match = (byDate.get(`${c.month}-${c.day}`) || [])
+          .find(o => o.id !== c.id && titleStems(o.title).has(stem));
+        const noun = display;
+        if (match) {
+          console.warn(
+            `Stichera under commemoration ${c.id} "${c.title}" (${c.month}-${c.day}) ` +
+            `name "${noun}" in ${n}/${stichera.length} hymns but that subject matches ` +
+            `sibling commemoration ${match.id} "${match.title}". Likely scraper mis-key — ` +
+            `reassign these stichera to ${match.id}.`
+          );
+          warnings += 1;
+          break; // one warning per commemoration is enough
+        }
+      }
+    }
+    if (warnings === 0) console.log('Stichera↔commemoration subject match: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -566,6 +715,7 @@ module.exports = {
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
+  validateSticheraCommemorationMismatch,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
 };

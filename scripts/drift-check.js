@@ -11,6 +11,7 @@ const {
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
+  validateSticheraCommemorationMismatch,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
 } = require('../server-lib/overlays/drift');
@@ -23,6 +24,7 @@ const checks = [
   ['commemoration dupes', validateCommemorationDupes],
   ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
   ['sticheron text integrity', validateSticheraTextIntegrity],
+  ['stichera↔commemoration subject match', validateSticheraCommemorationMismatch],
   ['troparia transformer integrity', validateTropariaTransformIntegrity],
   ['text cosmetics (entities + glued punctuation)', validateTextCosmetics],
 ];

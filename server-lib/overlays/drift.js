@@ -593,22 +593,21 @@ function titleStems(title) {
 // hymns — so remediation is per-row (move only the sibling-named stichera,
 // re-order, verify against OCA source), NOT a blanket reassignment. Queued as a
 // dedicated pass (see memory project_stichera_miskey_sweep_2026_07_19). Listed
-// here so the guard gates only NEW mis-keys, not this known backlog. Comm 1450
-// (Fathers←Seraphim, July 19) is absent — it was a clean full move, fixed live.
+// here so the guard gates only NEW mis-keys, not this known backlog.
+// Already fixed (clean full moves, removed from this list): 1450 Fathers←Seraphim,
+// 911 Cross←Alexis Toth, 2324 Martyrius←Theodore the Studite.
 const KNOWN_STICHERA_MISKEYS = new Set([
   5,    // Forefeast of Theophany ← Seraphim of Sarov (→6)
   190,  // New Martyrs of Russia ← Gregory the Theologian (→191)
   348,  // Sunday of Meatfare ← Apostle Onesimus (→349)
   639,  // Repose of St Innocent ← Hypatius of Gangra (→640)
   795,  // Theodore Trichinas ← Anastasius of Sinai (→799)
-  911,  // Sign of the Cross over Jerusalem ← Alexis Toth (→912)
   928,  // Sunday of the Samaritan Woman ← Apostle Simon the Zealot (→929)
   937,  // Founding of Constantinople ← Cyril & Methodius (→939)
   1319, // St John Maximovitch ← Juvenal of Jerusalem (→1322)
   2205, // Great Earthquake at Constantinople ← Demetrios of Thessaloniki (→2204)
   2211, // Mother Olga of Alaska ← Martyr Nestor of Thessalonica (→2212)
   2227, // John the Chozebite ← Stephen the Hymnographer (→2219)
-  2324, // Martyrius of Zelenets ← Theodore the Studite (→2323)
   2521, // Sunday of the Forefathers ← Herman of Alaska (→2522)
 ]);
 

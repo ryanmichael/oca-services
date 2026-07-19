@@ -143,7 +143,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
       const t = tropList[tropIdx];
       if (t.text) {
         blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', tropSpeaker, t.text,
-          { tone: t.tone, label: t.label }));
+          { tone: t.tone, label: t.label, source: t.source }));
       }
     }
   });
@@ -154,7 +154,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
     const g = tropList[gloryIdx];
     if (g.text) {
       blocks.push(makeBlock('beat-glory-t', section, 'hymn', tropSpeaker, g.text,
-        { tone: g.tone, label: g.label }));
+        { tone: g.tone, label: g.label, source: g.source }));
     }
   }
 
@@ -164,7 +164,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
     const t = tropList[nowIdx];
     if (t.text) {
       blocks.push(makeBlock('beat-theos', section, 'hymn', tropSpeaker, t.text,
-        { tone: t.tone, label: t.label }));
+        { tone: t.tone, label: t.label, source: t.source }));
     }
   }
 

@@ -313,5 +313,24 @@
       "label": "St. Mary of Egypt",
       "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
     }
+  },
+  "holyFathersProper": {
+    "_meta": "Secondary Liturgy propers for the movable Sunday of the Holy Fathers (First Six Ecumenical Councils in July; Seventh Ecumenical Council in October — both share these). Attach on top of the standard Sunday-cycle prokeimenon/alleluia/koinonikon. Source: OCA/Lambertsen order, saintjonah.org lit_hf6councils_pent7 / lit_hf7council_pent19. Prokeimenon verse omitted — the secondary prokeimenon renders rubric + refrain only (no verse), per OCA co-celebrated layout.",
+    "prokeimenon": {
+      "tone": 4,
+      "label": "For the Fathers",
+      "refrain": "Blessed art Thou, O Lord, the God of our fathers, and praised and glorified is Thy name unto the ages."
+    },
+    "alleluia": {
+      "tone": 1,
+      "label": "For the Fathers",
+      "verses": [
+        "The God of gods, the Lord, hath spoken, and He hath called the earth from the rising of the sun unto the setting thereof."
+      ]
+    },
+    "communionHymn": {
+      "label": "For the Fathers",
+      "text": "Rejoice in the Lord, O ye righteous; praise is meet for the upright. Alleluia, Alleluia, Alleluia!"
+    }
   }
 }

@@ -24,14 +24,18 @@ const FEAST_BEATITUDES_OVERRIDES = {
   '6-14': 'synaxis-na-saints',
 };
 
-/** Returns the feast-canon override for a given date (M-D), or null when none
- *  is configured or when the file's odes are scaffold-empty. */
-function loadFeastBeatitudesOverride(dateStr) {
-  if (!dateStr) return null;
-  const [, mm, dd] = dateStr.split('-').map(Number);
-  if (!mm || !dd) return null;
-  const key = `${mm}-${dd}`;
-  const fname = FEAST_BEATITUDES_OVERRIDES[key];
+/** Returns the feast-canon override for a given date (M-D), or an explicitly
+ *  named canon file, or null when none is configured / the file's odes are
+ *  scaffold-empty. An explicit `fnameOverride` (used for movable feasts such
+ *  as the Holy Fathers Sunday, which has no fixed M-D key) takes precedence. */
+function loadFeastBeatitudesOverride(dateStr, fnameOverride) {
+  let fname = fnameOverride || null;
+  if (!fname) {
+    if (!dateStr) return null;
+    const [, mm, dd] = dateStr.split('-').map(Number);
+    if (!mm || !dd) return null;
+    fname = FEAST_BEATITUDES_OVERRIDES[`${mm}-${dd}`];
+  }
   if (!fname) return null;
   const filePath = path.join(ROOT, 'variable-sources', 'feast-canons', `${fname}.json`);
   if (!fs.existsSync(filePath)) return null;
@@ -70,14 +74,14 @@ function hasPopulatedOde(ode) {
  * (legacy shape). A feast-canon JSON may opt into full replacement with
  * `beatitudesMode: 'replace'`. Each item has { tone, label, source, text }.
  */
-function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) {
+function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, feastCanonName) {
   if (!isSunday) return []; // weekday beatitudes not yet implemented
 
   const tk = `tone${tone}`;
   const oct = srcs?.octoechos;
   const beatData = oct?.[tk]?.sunday?.liturgy?.beatitudes;
 
-  const override = loadFeastBeatitudesOverride(dateStr);
+  const override = loadFeastBeatitudesOverride(dateStr, feastCanonName);
 
   if (override && override.beatitudesMode === 'replace') {
     const ot = override.tone ?? tone;
@@ -89,6 +93,17 @@ function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) {
   // Theotokion; the renderer maps them to the Glory / Now slots.
   if (beatData && Array.isArray(beatData.troparia)) {
     const out = [];
+    if (override && override.beatitudesReplaceGloryNow) {
+      // The feast canon supplies its own Glory/Theotokion tail (e.g. Holy
+      // Fathers Sunday: 6 Resurrection troparia + 4 from the Fathers' Ode 3,
+      // the last being the Theotokion → exactly "on 10"). Drop the Octoechos
+      // Glory+Theotokion (always the trailing two of the flat shape) and append
+      // the feast troparia so the render's Glory/Now slots land on the feast set.
+      pushTroparia(out, beatData.troparia.slice(0, -2), tone, 'octoechos', 'Beatitude');
+      pushTroparia(out, override.ode3?.troparia, override.tone ?? tone, 'feast', 'For the Fathers');
+      pushTroparia(out, override.ode6?.troparia, override.tone ?? tone, 'feast', 'For the Fathers');
+      return out;
+    }
     pushTroparia(out, beatData.troparia, tone, 'octoechos', 'Beatitude');
     if (override) {
       const feast = [];

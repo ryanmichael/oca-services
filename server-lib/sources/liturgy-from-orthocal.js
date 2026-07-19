@@ -62,6 +62,7 @@ const {
   LENTEN_SUNDAY_PROKEIMENA,
   LENTEN_SUNDAY_ALLELUIA,
   LENTEN_SUNDAY_COMMUNION,
+  HOLY_FATHERS_PROPER,
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
@@ -282,6 +283,21 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
   [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
 
+  // ── Sunday of the Holy Fathers (Ecumenical Councils) detection ──────────────
+  // The movable Sunday commemorating the Fathers of the First Six Councils
+  // (July 13-19) or the Seventh Council (Oct 11-17). Both carry a complete
+  // second set of Liturgy propers — prokeimenon (Tone 4), alleluia (Tone 1),
+  // Gospel (John 17:1-13), koinonikon ("Rejoice in the Lord…"), and 4 Ode-3
+  // Beatitude troparia — layered on top of the Sunday-cycle propers. Orthocal's
+  // second Epistle (Hebrews 13:7-16) already comes through; the rest were
+  // silently dropped until this hook (surfaced 2026-07-19 auditing Pent-7).
+  // Guarded to Sundays with no Great Feast / Pentecostarion override so the
+  // Paschal "Fathers of the 1st Council" Sunday (handled via pentOverride) and
+  // the Sunday-before-Nativity Forefathers are left untouched.
+  const holyFathersSunday = isSunday && !feast && !pentOverride
+    && [...(orthocalData.feasts || []), principalTitle]
+         .some(t => /fathers\b.*\bcouncil/i.test(t || ''));
+
   // Weekday great-saint feast suppression flag.
   // When a Vigil- or Polyeleos-rank saint falls on a weekday (i.e. not Sunday,
   // and not one of the 12 Great Feasts of the Lord/Theotokos which take the
@@ -476,6 +492,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (prokeimenon && overlay?.prokeimenon) {
     prokeimenon = { ...prokeimenon, secondary: overlay.prokeimenon };
   }
+  // Holy Fathers Sunday: the Fathers' Tone-4 prokeimenon alongside the Sunday one.
+  if (holyFathersSunday && prokeimenon && !prokeimenon.secondary && HOLY_FATHERS_PROPER?.prokeimenon) {
+    prokeimenon = { ...prokeimenon, secondary: HOLY_FATHERS_PROPER.prokeimenon };
+  }
 
   // ── Polyeleos+ saint secondary propers ──────────────────────────────────────
   // On polyeleos/vigil Sundays (and weekdays), the General Menaion provides a
@@ -570,6 +590,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (gmp && alleluia && !alleluia.secondary) {
     alleluia = { ...alleluia, secondary: { ...gmp.alleluia, label: gmpLabel } };
   }
+  // Holy Fathers Sunday: the Fathers' Tone-1 alleluia alongside the Sunday one.
+  if (holyFathersSunday && alleluia && !alleluia.secondary && HOLY_FATHERS_PROPER?.alleluia) {
+    alleluia = { ...alleluia, secondary: HOLY_FATHERS_PROPER.alleluia };
+  }
   // Safety fallback (parallel to prokeimenon): weekday daily alleluia when no
   // saint-category propers exist for this rank.
   if (!alleluia && isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
@@ -608,6 +632,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (lentenKey !== null && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
     communionHymn = { ...communionHymn, secondary: LENTEN_SUNDAY_COMMUNION[lentenKey] };
   }
+  // Holy Fathers Sunday: the Fathers' koinonikon ("Rejoice in the Lord, O ye
+  // righteous…") alongside the standard Sunday one.
+  if (holyFathersSunday && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
+    communionHymn = { ...communionHymn, secondary: HOLY_FATHERS_PROPER.communionHymn };
+  }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
@@ -635,7 +664,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     hasCocelebratedOverlay: !!overlay,
     feastAntiphons,
     paschalAntiphons12,
-    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr) },
+    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, holyFathersSunday ? 'holy-fathers-councils' : null) },
     includeDepartedLitany,
     entranceHymn,
     troparia,
@@ -658,9 +687,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       display: gospelR.display,
       text: extractPassageText(gospelR),
       // Lenten commemoration Sundays (Palamas week 2, Cross 3, Climacus 4,
-      // Mary of Egypt 5) always sing both Gospels per OCA rubric — force the
-      // secondary regardless of the parish-level includeSecondGospel opt-in.
-      secondary: (gospelR2 && (includeSecondGospel || (lentenKey !== null && ['1','2','3','4','5'].includes(String(lentenKey))))) ? {
+      // Mary of Egypt 5) and the Holy Fathers Sunday (John 17:1-13) always sing
+      // both Gospels per OCA rubric — force the secondary regardless of the
+      // parish-level includeSecondGospel opt-in.
+      secondary: (gospelR2 && (includeSecondGospel || holyFathersSunday || (lentenKey !== null && ['1','2','3','4','5'].includes(String(lentenKey))))) ? {
         book: gospelR2.book,
         display: gospelR2.display,
         text: extractPassageText(gospelR2),

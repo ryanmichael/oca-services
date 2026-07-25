@@ -609,6 +609,13 @@ const KNOWN_STICHERA_MISKEYS = new Set([
   2211, // Mother Olga of Alaska ← Martyr Nestor of Thessalonica (→2212)
   2227, // John the Chozebite ← Stephen the Hymnographer (→2219)
   2521, // Sunday of the Forefathers ← Herman of Alaska (→2522)
+  // Surfaced 2026-07-25 by the new per-section (minority-bleed) pass — genuine
+  // Aposticha mis-keys onto a neighbour whose own Lord-I-Call dominated the
+  // pooled count. Sibling is empty in the bled section. Queued for per-row
+  // reassignment (verify texts against OCA source before moving):
+  1550, // Venerable Isaac the Ascetic ← Faustus the Ascetic aposticha (→1552)
+  1728, // Return of Relics of Ap. Bartholomew ← Ap. Titus aposticha (→1729)
+  2186, // Macarius the Roman ← Ap. James Brother-of-the-Lord aposticha (→2187)
 ]);
 
 // Data-drift guard: a commemoration whose stichera repeatedly name a proper
@@ -649,21 +656,29 @@ function validateSticheraCommemorationMismatch() {
       byDate.get(k).push(c);
     }
 
-    let warnings = 0;
-    for (const c of siblings) {
-      if (KNOWN_STICHERA_MISKEYS.has(c.id)) continue; // documented backlog — queued
-      const stichera = db.prepare(
-        'SELECT text FROM stichera WHERE commemoration_id = ?'
-      ).all(c.id);
-      if (stichera.length < 2) continue; // need a set to establish a subject
+    // Stichera counts per (commemoration, section) and per commemoration. The
+    // mis-key signature is that the sibling naming the subject is MISSING its
+    // own stichera there (its hymns bled onto the neighbor). Requiring an empty
+    // sibling suppresses feast/afterfeast co-celebration false positives, where
+    // a feast comm legitimately carries a great co-celebrated saint's hymns and
+    // the first name merely collides with an unrelated same-name sibling that
+    // still has its own stichera (e.g. Jan 1 Circumcision's St. Basil-the-Great
+    // aposticha vs sibling "Martyr Basil of Ancyra").
+    const sectionCount = new Map(); // `${commId}::${section}` -> n
+    const totalCount   = new Map(); // commId -> n
+    for (const r of db.prepare('SELECT commemoration_id AS id, section, COUNT(*) n FROM stichera GROUP BY commemoration_id, section').all()) {
+      sectionCount.set(`${r.id}::${r.section || 'lordICall'}`, r.n);
+      totalCount.set(r.id, (totalCount.get(r.id) || 0) + r.n);
+    }
 
-      const ownStems = titleStems(c.title);
-
-      // Candidate subject-nouns: distinctive capitalized words (len ≥5) that
-      // appear in a majority of this commemoration's stichera. Keyed by 6-char
-      // stem so transliteration endings collapse together.
+    // Detect the majority subject-noun of a set of stichera whose stem matches a
+    // sibling's title but not the commemoration's own. Returns {match, noun, n}
+    // or null. Candidate subject-nouns are distinctive capitalized words (len ≥5)
+    // appearing in ≥60% of the set, keyed by 6-char stem so transliteration
+    // endings collapse together.
+    const findSiblingSubject = (rows, ownStems, siblingsOfDate) => {
       const counts = new Map(); // stem -> { n, display }
-      for (const s of stichera) {
+      for (const s of rows) {
         const seen = new Set();
         for (const m of (s.text || '').matchAll(/\b([A-Z][a-zá-ú]{4,})\b/g)) {
           const w = m[1];
@@ -677,21 +692,67 @@ function validateSticheraCommemorationMismatch() {
           }
         }
       }
-      const threshold = Math.ceil(stichera.length * 0.6);
-
+      const threshold = Math.ceil(rows.length * 0.6);
       for (const [stem, { n, display }] of counts) {
         if (n < threshold) continue;
         if (ownStems.has(stem)) continue; // subject is this saint — fine
-        // Does a sibling's title name this subject?
-        const match = (byDate.get(`${c.month}-${c.day}`) || [])
-          .find(o => o.id !== c.id && titleStems(o.title).has(stem));
-        const noun = display;
-        if (match) {
+        const match = siblingsOfDate.find(o => titleStems(o.title).has(stem));
+        if (match) return { match, noun: display, n };
+      }
+      return null;
+    };
+
+    let warnings = 0;
+    for (const c of siblings) {
+      if (KNOWN_STICHERA_MISKEYS.has(c.id)) continue; // documented backlog — queued
+      const stichera = db.prepare(
+        'SELECT section, text FROM stichera WHERE commemoration_id = ?'
+      ).all(c.id);
+      if (stichera.length < 2) continue; // need a set to establish a subject
+
+      const ownStems       = titleStems(c.title);
+      const siblingsOfDate = (byDate.get(`${c.month}-${c.day}`) || []).filter(o => o.id !== c.id);
+
+      // Evaluate PER SECTION, not across the whole commemoration: a minority
+      // bleed (e.g. a sibling saint's entire Aposticha mis-keyed onto a saint
+      // whose own Lord-I-Call dominates the combined count) stays below the 60%
+      // threshold when pooled but is a clear majority within its own section.
+      // Surfaced 2026-07-25 auditing 7-26: 6 Parasceva Aposticha + 2 Parasceva
+      // Lord-I-Call were keyed onto St. Jacob Netsvetov (7 own Lord-I-Call);
+      // pooled Parasceva was 8/15 vs a per-Aposticha 6/6.
+      const bySection = new Map();
+      for (const s of stichera) {
+        const sec = s.section || 'lordICall';
+        if (!bySection.has(sec)) bySection.set(sec, []);
+        bySection.get(sec).push(s);
+      }
+      // Also run the whole-commemoration pass so a subject spread thinly across
+      // sections (but dominant overall) is still caught. Skip the per-section
+      // (minority-bleed) passes when the HOST is a feast/afterfeast: those comms
+      // legitimately carry a great co-celebrated saint's stichera, and a single
+      // section naming that saint is normal, not a mis-key (e.g. Jan 1
+      // Circumcision's St. Basil-the-Great aposticha). The whole-comm pass still
+      // runs for feasts, catching a fully-bled commemoration.
+      const hostIsFeast = /\b(Feast|Forefeast|Afterfeast|Circumcision|Nativity|Theophany|Meeting|Presentation|Annunciation|Transfiguration|Dormition|Exaltation|Ascension|Pentecost|Entry|Entrance|Protection|Synaxis)\b/i.test(c.title);
+      const passes = hostIsFeast ? [['(all)', stichera]] : [['(all)', stichera], ...bySection];
+
+      for (const [sec, rows] of passes) {
+        if (rows.length < 2) continue;
+        const hit = findSiblingSubject(rows, ownStems, siblingsOfDate);
+        if (!hit) continue;
+        // Require the named sibling to be MISSING its stichera in the bled
+        // location — its hymns landed on this neighbor. Whole-comm pass: the
+        // sibling has none at all; per-section pass: the sibling has none in
+        // that section.
+        const siblingMissing = sec === '(all)'
+          ? !(totalCount.get(hit.match.id) > 0)
+          : !(sectionCount.get(`${hit.match.id}::${sec}`) > 0);
+        if (siblingMissing) {
           console.warn(
             `Stichera under commemoration ${c.id} "${c.title}" (${c.month}-${c.day}) ` +
-            `name "${noun}" in ${n}/${stichera.length} hymns but that subject matches ` +
-            `sibling commemoration ${match.id} "${match.title}". Likely scraper mis-key — ` +
-            `reassign these stichera to ${match.id}.`
+            `name "${hit.noun}" in ${hit.n}/${rows.length} ${sec === '(all)' ? 'hymns' : sec + ' hymns'} ` +
+            `but that subject matches sibling commemoration ${hit.match.id} "${hit.match.title}". ` +
+            `Likely scraper mis-key — reassign these stichera to ${hit.match.id}.`
           );
           warnings += 1;
           break; // one warning per commemoration is enough
@@ -699,6 +760,69 @@ function validateSticheraCommemorationMismatch() {
       }
     }
     if (warnings === 0) console.log('Stichera↔commemoration subject match: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
+// Commemorations verified to legitimately compose stichera from BOTH a
+// day-specific source and a General-Menaion (St. Sergius) source for the SAME
+// saint — e.g. day-specific Lord-I-Call numbered stichera plus a St-Sergius
+// Glory/Aposticha. These are intentional, not bleeds. Verified 2026-07-25.
+const KNOWN_MIXED_SOURCE_COMMS = new Set([
+  487,  // 42 Martyrs of Ammoria — day LIC + St-Sergius Glory/Aposticha (all 42 Martyrs)
+  599,  // Annunciation — oca-feast LIC + St-Sergius Aposticha (all Annunciation)
+  2256, // Cosmas & Damian of Mesopotamia — day LIC + St-Sergius Glory/Theotokion/Aposticha
+]);
+
+// Data-drift tripwire: a commemoration whose stichera mix a General-Menaion
+// source ("stSergius*") with a day-specific source ("oca-*") is almost always a
+// scraper bleed — the day's General-Menaion generic set for a co-commemorated
+// saint got appended onto the first commemoration row, which already carries
+// its own day-specific hymns. This is the exact fingerprint of the 7-26 bug
+// (surfaced 2026-07-25): St-Sergius Parasceva doxastika + aposticha keyed onto
+// the oca-menaion St. Jacob Netsvetov commemoration. The category-generic bled
+// hymns evade the subject-match rule (they name no saint, and the one that does
+// — the doxastikon — uses a transliteration that defeats stem-matching), so the
+// source seam is the reliable signal. Legitimate same-saint multi-source
+// compositions are allowlisted above; a NEW mix must be human-verified.
+function validateSticheraSourceMixing() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const rows = db.prepare(`
+      SELECT s.commemoration_id AS id, c.title, c.month, c.day,
+             group_concat(DISTINCT s.source) AS sources
+      FROM stichera s JOIN commemorations c ON c.id = s.commemoration_id
+      GROUP BY s.commemoration_id
+      HAVING COUNT(DISTINCT s.source) > 1
+    `).all();
+
+    let warnings = 0;
+    for (const r of rows) {
+      if (KNOWN_MIXED_SOURCE_COMMS.has(r.id)) continue; // verified legitimate
+      const sources = (r.sources || '').split(',');
+      const hasGeneral     = sources.some(s => /^stSergius/i.test(s));
+      const hasDaySpecific = sources.some(s => /^oca[-_]/i.test(s));
+      if (hasGeneral && hasDaySpecific) {
+        console.warn(
+          `Commemoration ${r.id} "${r.title}" (${r.month}-${r.day}) mixes a General-Menaion ` +
+          `source with a day-specific source in its stichera (${r.sources}). Likely a scraper ` +
+          `bleed of a co-commemorated saint's General-Menaion set — verify the General-Menaion ` +
+          `rows belong to this saint; if not, reassign them. If legitimate, add ${r.id} to ` +
+          `KNOWN_MIXED_SOURCE_COMMS.`
+        );
+        warnings += 1;
+      }
+    }
+    if (warnings === 0) console.log('Stichera source-mixing: clean.');
     return { ok: warnings === 0, warnings };
   } finally {
     db.close();
@@ -715,6 +839,7 @@ module.exports = {
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
   validateSticheraCommemorationMismatch,
+  validateSticheraSourceMixing,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
 };

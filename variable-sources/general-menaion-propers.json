@@ -115,5 +115,22 @@
     "communionHymn": {
       "text": "In everlasting remembrance shall the righteous be; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
     }
+  },
+  "righteous": {
+    "_source": "OCA General Menaion — Common Service for a Righteous Man (праведный): prokeimenon Ps. 63:11a, alleluia Ps. 111:1, koinonikon Ps. 111:6. Verified 2026-07-25 against 2026-0726-texts-tt.docx (Repose of St. Jacob Netsvetov, Enlightener of Alaska).",
+    "prokeimenon": {
+      "tone": 7,
+      "refrain": "The righteous shall rejoice in the Lord, and shall hope in Him.",
+      "verse": "Hear my voice, O God, when I make supplication unto Thee."
+    },
+    "alleluia": {
+      "tone": 6,
+      "verses": [
+        "Blessed is the man that feareth the Lord; in His commandments shall he greatly delight."
+      ]
+    },
+    "communionHymn": {
+      "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
+    }
   }
 }

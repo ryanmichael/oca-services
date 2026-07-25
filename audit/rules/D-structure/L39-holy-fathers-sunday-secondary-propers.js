@@ -19,15 +19,28 @@ module.exports = {
   severity:       'high',
   description:    'Sunday of the Holy Fathers (Ecumenical Councils) renders the Fathers’ second set of propers (prokeimenon / alleluia / Gospel / koinonikon / Beatitude troparia) alongside the Sunday cycle. Regression class discovered 2026-07-19.',
   needsAssembled: true,
-  appliesTo: (ctx) => ctx.service === 'liturgy' && ctx.dow === 'sunday',
+  appliesTo: (ctx) => {
+    if (ctx.service !== 'liturgy' || ctx.dow !== 'sunday') return false;
+    // Scope to the two FIXED Councils Fathers Sundays this rule guards:
+    // First Six Councils (Sunday in July 13-19) and Seventh Council (Sunday in
+    // Oct 11-17). The movable Paschal-cycle Fathers Sunday (7th Sunday of
+    // Pascha) is deliberately EXCLUDED — the assembler gates the dual-propers
+    // hook on `!pentOverride`, because that day is a Pentecostarion Sunday whose
+    // proper Gospel already IS John 17:1-13 (single set, no Octoechos Sunday
+    // cycle to layer onto). Its commemoration label still pairs "Fathers" with
+    // "Council", so a label-only guard leaks — the date window is the reliable
+    // discriminator. (False positive surfaced 2026-07-25.)
+    const md = (ctx.date || '').slice(5); // 'MM-DD'
+    return (md >= '07-13' && md <= '07-19') || (md >= '10-11' && md <= '10-17');
+  },
   check: (ctx) => {
     const blocks = ctx.assembled?.blocks || [];
 
     // Is this a Fathers-of-the-Council Sunday? Detect from the rendered
     // troparion/kontakion label (menaion-DB sourced, independent of the
-    // secondary-propers code path this rule guards). Excludes the Sunday
-    // before Nativity (Forefathers) and the Paschal-cycle Fathers Sunday,
-    // whose labels do not pair "Fathers" with "Council".
+    // secondary-propers code path this rule guards). The date-window guard in
+    // appliesTo already excludes the Sunday before Nativity (Forefathers) and
+    // the Paschal-cycle Fathers Sunday.
     const isFathersSunday = blocks.some(b =>
       /fathers\b.*\bcouncil/i.test(`${b.label || ''} ${b.text || ''}`));
     if (!isFathersSunday) return [];

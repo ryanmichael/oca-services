@@ -2,37 +2,55 @@ name: Weekly LLM judge
 
 # Runs the LLM judge against this weekend's services on Friday morning UTC,
 # so any wording / commemoration / structural drift surfaces before parish
-# Saturday prep. Failure surface: opens / updates a "llm-judge-findings"
-# GitHub Issue.
+# Saturday prep.
+#
+#   findings  → (1) opens / updates the "llm-judge-findings" GitHub Issue
+#               (2) launches Claude Code to prepare fixes AS A PULL REQUEST
+#                   for human review (never merges, never pushes main/staging).
 #
 # Requires repo secret ANTHROPIC_API_KEY. Without it the workflow no-ops
-# (the judge exits with a setup error message instead of a real failure).
+# (the judge exits with a setup message instead of a real failure), and the
+# auto-fix step is skipped.
 
 on:
   schedule:
     # 12:00 UTC Friday — early in US Central morning, so findings land before
-    # the Friday workday and well before Saturday-eve Vespers prep.
+    # the Friday workday and well before Saturday-eve Vespers prep. That window
+    # also leaves the auto-fix PR time to be reviewed before Saturday.
     - cron: '0 12 * * 5'
   workflow_dispatch:
     inputs:
       from:
         description: 'Compute weekend relative to this date (YYYY-MM-DD)'
         required: false
+      autofix:
+        description: 'Prepare an auto-fix PR when findings are present (true/false)'
+        required: false
+        default: 'true'
 
+# contents:write + pull-requests:write let the auto-fix agent branch off main
+# and open a PR. issues:write keeps the findings-issue heads-up. actions:read
+# lets Claude read CI job logs if it needs them. NOTE: the agent is prompt-bound
+# to PR-only — it must never push main/staging or self-merge. See the
+# `Prepare auto-fix PR` step and .github/autofix/weekend-prompt.md.
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
   issues: write
+  actions: read
 
 jobs:
   judge:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          # Full history so the auto-fix agent can branch + push cleanly.
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -59,6 +77,9 @@ jobs:
 
       - name: Run upcoming-weekend judge
         id: judge
+        # Do not fail the job on findings — downstream steps branch on the step
+        # outcome so both the issue heads-up AND the auto-fix PR can run.
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -72,9 +93,41 @@ jobs:
             npm run audit:upcoming
           fi
 
+      - name: Prepare auto-fix PR
+        # Only when the judge surfaced findings AND auto-fix is enabled
+        # (workflow_dispatch can turn it off; scheduled runs default on).
+        if: >
+          steps.judge.outcome == 'failure' &&
+          (github.event_name == 'schedule' || inputs.autofix != 'false')
+        # A failed auto-fix (e.g. Claude GitHub App not installed) must not fail
+        # the workflow or block the findings-issue heads-up below.
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        env:
+          # Explicit token for `gh` so Claude can open the PR.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are running headless in CI because the weekly LLM judge flagged
+            findings for this weekend's services (Saturday Great Vespers + Sunday
+            Divine Liturgy). Read the file `.github/autofix/weekend-prompt.md` in
+            this repository and follow it EXACTLY — it is your complete task
+            specification. The judge's findings are already written to
+            `audit/reports/llm-judge-<date>-<service>.md` (dates are in the
+            filenames). Prepare fixes as a PULL REQUEST for human review. Never
+            merge, never push to main or staging. A dev server is already running
+            on http://localhost:3000; restart it yourself after any DB or
+            variable-sources/*.json edit.
+          claude_args: |
+            --model claude-opus-4-8
+            --max-turns 60
+            --allowedTools "Read,Edit,Write,Glob,Grep,Bash"
+            --disallowedTools "Bash(gh pr merge:*),Bash(git push origin main:*),Bash(git push --force:*)"
+
       - name: Stop server
         if: always()
-        run: kill $(cat server.pid) || true
+        run: kill $(cat server.pid) 2>/dev/null || true
 
       - name: Upload judge reports
         if: always()
@@ -86,7 +139,8 @@ jobs:
           if-no-files-found: ignore
 
       - name: Open / update llm-judge-findings issue
-        if: failure()
+        # always() so the heads-up posts even if the auto-fix step above errored.
+        if: always() && steps.judge.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
@@ -103,6 +157,13 @@ jobs:
               `commemoration drift (wrong principal saint), structural issues`,
               `(wrong sticheron count, wrong Theotokion lookup), and translation`,
               `differences worth a glance before parish printout.`,
+              ``,
+              `🤖 An auto-fix PR (label \`auto-fix\`) may have been opened for this`,
+              `weekend — check the open pull requests. It prepares data + structural`,
+              `fixes with paired audit rules and pastes its own verification output.`,
+              `**Promotion is a human decision — review before merging.** If no PR`,
+              `appears, the agent judged every finding source-incomplete or a`,
+              `false-positive (documented in the run) and left the texts unchanged.`,
               ``,
               `Address before Saturday Vespers if findings are high-severity;`,
               `medium / low can wait through the cycle.`,

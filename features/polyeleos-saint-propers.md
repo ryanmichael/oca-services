@@ -55,12 +55,15 @@ Deliberately omitted pending source verification: `forerunner`, `unmercenaries`,
 - **INV-3** — Same date: `ch-2-text` matches the venerable category communion verse.
 - **INV-4** — Simple-rank Sunday with no polyeleos+ rank (2026-06-21 Julian of Tarsus): no `prok-2-*` / `all-2-*` / `ch-2-*` blocks render. (Baseline regression check — confirms secondary propers don't leak to non-polyeleos days.)
 - **INV-5** — Great Feast Sunday (2026-04-12 Pascha): no `prok-2-*` blocks attached via the polyeleos path even though `getFeastRank` returns `'greatFeast'`. (Confirms the guard `!feast && !pentOverride`.)
+- **INV-6** — Righteous polyeleos Sunday (2026-07-26 Repose of St. Jacob Netsvetov): the full secondary set renders — `prok-2-refrain`, `all-2-v0`, `ch-2-text` — via the `righteous` category.
+- **INV-7** — `includeSecondKoinonikon` is **tri-state**, not boolean. On 2026-07-26: unset renders `ch-2-text`; `?secondKoinonikon=hide` suppresses it; `?secondKoinonikon=show` renders it. Guards the original defect where the polyeleos-path koinonikon was attached with no gate, making an explicit `false` a silent no-op on every General-Menaion day. `undefined` must stay distinct from `false` — coercing unset to false would drop the saint's Communion Verse for every parish that never set the rubric.
 
 ## Verified dates
 
 - 2026-07-05 — Sunday + polyeleos (Sergius uncovering); monastic. INV-1, INV-2, INV-3.
 - 2026-06-21 — Sunday + simple-rank (Julian). INV-4.
 - 2026-04-12 — Pascha. INV-5.
+- 2026-07-26 — Sunday + polyeleos (Repose of St. Jacob Netsvetov); righteous. INV-6, INV-7.
 
 ## Keep in sync
 
@@ -69,4 +72,5 @@ Code changes that require updating the behavior table or contract tests:
 - `general-menaion-propers.json` — adding/removing categories.
 - `inferSaintTypeFromTitle` in `server-lib/sources/liturgy-from-orthocal.js`.
 - The `isPolyeleos` gate condition (currently `!feast && !pentOverride`).
+- The `includeSecondKoinonikon` tri-state in `liturgy-from-orthocal.js` / `api-liturgy.js` — the `overlayKoinonikonOptIn` (explicit-`true`) and `secondKoinonikonAllowed` (not-explicit-`false`) split. Do not collapse either back to `!!`.
 - Either `_litReadings*` or `_litCommunionHymn` shape changes that affect how `.secondary` renders.

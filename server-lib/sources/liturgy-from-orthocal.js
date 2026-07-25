@@ -163,13 +163,23 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   //   (false) renders only the primary, matching standard OCA practice of
   //   reading one Gospel even when a polyeleos+ feast appoints its own. Both
   //   Epistles always render unaffected (Epistle doubling is the norm).
-  // opts.includeSecondKoinonikon — when true, render the secondary (saints')
-  //   koinonikon attached by a cocelebrated-overlay alongside the principal
-  //   one. Default (false) renders only the principal koinonikon, matching
-  //   typical OCA parish practice of singing one Communion Verse.
+  // opts.includeSecondKoinonikon — tri-state, because the two secondary-
+  //   koinonikon sources have opposite defaults:
+  //     unset (undefined) — cocelebrated-overlay koinonikon off, General-
+  //       Menaion (polyeleos+ saint) koinonikon on. Matches OCA practice: on a
+  //       polyeleos Sunday the saint's Communion Verse IS sung, whereas a
+  //       cocelebrated overlay's is an opt-in extra.
+  //     true  — render both sources.
+  //     false — render neither; the parish sings one Communion Verse only.
+  //   Kept tri-state so an unset parish keeps today's output and an explicit
+  //   `false` is actually honored (it used to be a no-op on any day with
+  //   General-Menaion propers).
   const includeLesserSaints       = !!opts.includeLesserSaints;
   const includeSecondGospel       = !!opts.includeSecondGospel;
-  const includeSecondKoinonikon   = !!opts.includeSecondKoinonikon;
+  // Opt-in: only an explicit `true` attaches a cocelebrated-overlay koinonikon.
+  const overlayKoinonikonOptIn    = opts.includeSecondKoinonikon === true;
+  // Opt-out: only an explicit `false` suppresses the polyeleos+ saint's.
+  const secondKoinonikonAllowed      = opts.includeSecondKoinonikon !== false;
 
   const [yr, mo, dy] = dateStr.split('-').map(Number);
   const date    = new Date(Date.UTC(yr, mo - 1, dy));
@@ -626,26 +636,26 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // is null: just use the day-of-week koinonikon.
     communionHymn = { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
   }
-  if (overlay?.communionHymn && includeSecondKoinonikon) {
+  if (overlay?.communionHymn && overlayKoinonikonOptIn) {
     communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
   }
-  // Polyeleos+ saint koinonikon — render by default (no opt-in gate). On a
-  // polyeleos Sunday the second Communion Verse IS sung at OCA parishes; the
-  // cocelebrated-overlay gate is appropriate for principal-feast cases where
-  // the feast koinonikon claims the only slot, but not here. On a weekday
-  // great-saint feast the saint koinonikon is already primary (above) so
-  // there's nothing to attach as secondary.
-  if (gmp && !communionHymn.secondary && !isWeekdayGreatSaintFeast) {
+  // Polyeleos+ saint koinonikon — rendered unless the parish opted out. On a
+  // polyeleos Sunday the second Communion Verse IS sung at OCA parishes, so
+  // this defaults on where the cocelebrated-overlay path above defaults off;
+  // that path covers principal-feast cases where the feast koinonikon claims
+  // the only slot. On a weekday great-saint feast the saint koinonikon is
+  // already primary (above) so there's nothing to attach as secondary.
+  if (gmp && secondKoinonikonAllowed && !communionHymn.secondary && !isWeekdayGreatSaintFeast) {
     communionHymn = { ...communionHymn, secondary: { ...gmp.communionHymn, label: gmpLabel } };
   }
   // Lenten commemoration Sundays (Palamas week 2, Climacus 4, Mary of Egypt 5)
   // sing the saint's koinonikon in addition to the standard Sunday one.
-  if (lentenKey !== null && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
+  if (lentenKey !== null && secondKoinonikonAllowed && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
     communionHymn = { ...communionHymn, secondary: LENTEN_SUNDAY_COMMUNION[lentenKey] };
   }
   // Holy Fathers Sunday: the Fathers' koinonikon ("Rejoice in the Lord, O ye
   // righteous…") alongside the standard Sunday one.
-  if (holyFathersSunday && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
+  if (holyFathersSunday && secondKoinonikonAllowed && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: HOLY_FATHERS_PROPER.communionHymn };
   }
 

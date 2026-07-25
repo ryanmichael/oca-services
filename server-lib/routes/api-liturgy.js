@@ -102,13 +102,18 @@ function handle(req, res, ctx) {
           return !!overlayRubrics?.readings?.includeSecondGospel;
         })();
 
-        // Second-Koinonikon (Communion Verse) toggle: same shape. Default
-        // false — most parishes sing one Communion Verse even when a saint
-        // koinonikon is appointed.
+        // Second-Koinonikon (Communion Verse) toggle: tri-state, not boolean.
+        // `undefined` (unset) is a distinct state from `false` — see the
+        // opts.includeSecondKoinonikon contract in liturgy-from-orthocal.js.
+        // Unset leaves the polyeleos+ saint's Communion Verse on and the
+        // cocelebrated-overlay one off; an explicit false suppresses both.
+        // Deliberately no `!!` here: coercing unset to false would silently
+        // drop the saint's Communion Verse for every parish.
         const includeSecondKoinonikon = (() => {
           if (q.secondKoinonikon === 'show' || q.secondKoinonikon === 'true' || q.secondKoinonikon === '1') return true;
           if (q.secondKoinonikon === 'hide' || q.secondKoinonikon === 'false' || q.secondKoinonikon === '0') return false;
-          return !!overlayRubrics?.readings?.includeSecondKoinonikon;
+          const r = overlayRubrics?.readings?.includeSecondKoinonikon;
+          return typeof r === 'boolean' ? r : undefined;
         })();
 
         if (!calendarEntry.liturgy) {

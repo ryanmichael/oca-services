@@ -142,4 +142,32 @@ describe('Feature contract: Polyeleos+ saint secondary propers', () => {
     // Pascha has no cocelebrated overlay, so prok-2 must be entirely absent.
     assert.equal(prok2, undefined, 'prok-2 must not render on Pascha (polyeleos path gated by !feast)');
   });
+
+  it('INV-7: includeSecondKoinonikon is tri-state — unset keeps the saint koinonikon, explicit false suppresses it', async () => {
+    // Regression guard. The polyeleos-path koinonikon at
+    // liturgy-from-orthocal.js was originally attached with no gate at all,
+    // so `includeSecondKoinonikon: false` was a silent no-op on every day with
+    // General-Menaion propers — i.e. on exactly the days the parish rubric was
+    // meant to control. The fix is tri-state, NOT a plain boolean: `undefined`
+    // (unset) must stay distinct from `false`, because coercing unset to false
+    // would drop the saint's Communion Verse for every parish that never
+    // touched the setting. All three states are asserted so a future `!!`
+    // anywhere in the chain fails here instead of in a parish printout.
+    const CH2 = /The righteous shall be in everlasting remembrance/;
+
+    const unset = await get('/api/liturgy?date=2026-07-26');
+    const hide  = await get('/api/liturgy?date=2026-07-26&secondKoinonikon=hide');
+    const show  = await get('/api/liturgy?date=2026-07-26&secondKoinonikon=show');
+
+    const ch2Unset = blockById(unset.json.blocks, 'ch-2-text');
+    assert.ok(ch2Unset && CH2.test(ch2Unset.text),
+      'unset must render the polyeleos saint koinonikon (default on)');
+
+    assert.equal(blockById(hide.json.blocks, 'ch-2-text'), undefined,
+      'secondKoinonikon=hide must suppress the saint koinonikon — the gate is not a no-op');
+
+    const ch2Show = blockById(show.json.blocks, 'ch-2-text');
+    assert.ok(ch2Show && CH2.test(ch2Show.text),
+      'secondKoinonikon=show must render the saint koinonikon');
+  });
 });

@@ -195,6 +195,37 @@ describe('Feature contract: Vespers Assembly', () => {
   });
 
   // INV-7 — Lenten Saturday: Triodion wins, no duplicate Glory.
+  it('INV-8: multi-saint Sunday — principal aposticha doxastikon is sung at the Glory (not a bare resurrectional Theotokion)', async () => {
+    // 2026-07-25 civil eve → 7-26 St. Jacob Netsvetov (Sunday, Tone 7). July 26
+    // carries several commemorations with their own LIC stichera, so the
+    // multi-saint combiner runs. Regression guard (surfaced 2026-07-25): that
+    // combiner dropped the Aposticha entirely, collapsing the Glory to a bare
+    // resurrectional Theotokion. St. Jacob's doxastikon ("O Father Jacob…",
+    // Tone 2) must be sung at the Aposticha Glory, followed by its Theotokion.
+    const { json } = await get('/api/service?date=2026-07-25');
+    const apost = blocksIn(json.blocks, 'Aposticha');
+
+    const gloryIdx = apost.findIndex(b =>
+      b.type === 'doxology' &&
+      /^Glory to the Father/i.test(b.text || '') &&
+      !/now and ever/i.test(b.text || '')
+    );
+    assert.ok(gloryIdx >= 0, 'Aposticha must have a separate Glory doxology');
+    const gloryHymn = apost.slice(gloryIdx + 1).find(b => b.type === 'hymn');
+    assert.ok(gloryHymn, 'Aposticha must have a Glory hymn after the Glory doxology');
+    assert.match(gloryHymn.text || '', /O Father Jacob/,
+      `Aposticha Glory must be St. Jacob's doxastikon, got: ${(gloryHymn.text || '').slice(0, 50)}`);
+    assert.equal(gloryHymn.source, 'menaion',
+      `Aposticha Glory must be menaion-sourced, got source=${gloryHymn.source}`);
+
+    const theotokion = apost.slice(gloryIdx + 1).find(b =>
+      b.type === 'hymn' && /theotokion/i.test(b.label || '')
+    );
+    assert.ok(theotokion, 'Aposticha must retain a Theotokion at Now-and-ever');
+    assert.equal(theotokion.tone, gloryHymn.tone,
+      `Aposticha Theotokion tone (${theotokion.tone}) must match the doxastikon tone (${gloryHymn.tone})`);
+  });
+
   it('INV-7: Lenten Saturday with Triodion Glory renders exactly one Glory block (Menaion injection skips)', async () => {
     // Feb 27 = St Theodore Saturday Vespers (sung Fri eve). Triodion ships
     // Theodore troparion at position:'glory' in the spec. Bug shape was the

@@ -152,6 +152,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         }
       }
       if (glory) combined.unshift({ ...glory, order: 0 });
+      // Carry the principal saint's aposticha (Glory doxastikon + its own
+      // Theotokion) into the combined set so the aposticha injection below can
+      // sing the saint's "Glory…" on multi-saint Sundays. Without this the
+      // aposticha collapses to a bare resurrectional Theotokion — surfaced
+      // 2026-07-25 auditing 7-26 (St. Jacob Netsvetov). The LIC selection above
+      // filters by section==='lordICall', so these rows never affect the blend.
+      const principalAposticha = (primary.stichera || []).filter(s => s.section === 'aposticha');
+      combined.push(...principalAposticha);
       sticheraData = [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: combined }];
     } else if (pickerSwappedAway) {
       sticheraData = primary.hasStichera

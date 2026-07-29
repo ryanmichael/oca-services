@@ -3,12 +3,14 @@
   "_version": 1,
   "_target": { "service": "liturgy", "path": "typical-antiphon-1.verses" },
   "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
-  "_note": "Selection of verses from Psalm 102 sung as the First Typical Antiphon at the Liturgy. The base liturgy-fixed.json carries the full 10-verse selection; parishes that sing a short form override the verses array.",
+  "_note": "Selection of verses from Psalm 102 sung as the First Typical Antiphon at the Liturgy. The base liturgy-fixed.json carries the full 10-verse selection, and the `oca` overlay carries it in traditional register; parishes that sing a genuine short form override the verses array. NOTE: `_target.path` is a whole-array replacement — a variant here REPLACES the canonical verses, it cannot select a subset of them. A short form authored from a parish folder must therefore be checked against what is actually sung, not against what the folder prints; see the deprecation note on `short-4-verse`.",
   "variants": [
     {
       "id": "short-4-verse",
       "label": "Short form (4 verses)",
       "aliases": ["tyler-short-4-verse"],
+      "deprecated": true,
+      "_deprecation_note": "Do not pick. Lossy extraction, retired 2026-07-29. This was transcribed from the Tyler service folder on 2026-06-19 as if it were the whole antiphon, but it jumps from the opening (Ps 102:1-2) straight to Ps 102:22, dropping vv. 3-9 and 19-21. Because _target is a whole-array replacement, pinning it deleted the canonical verses rather than selecting from them — the parish reported the antiphon rendering short at Liturgy on 2026-07-26. Kept resolvable per CONTRACT.md rule 2; Tyler's pick row was removed so the parish inherits the full `oca` overlay text.",
       "_provenance": {
         "origin": "extracted-from-overlay",
         "parish_id": "st-john-damascus-tyler",

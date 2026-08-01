@@ -206,8 +206,12 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
                             : isGreatVespers     ? 6
                             : isSaturdayInjection ? 6
                             : 3;
+      // `alternative-set` rows are a SECOND set the Menaion offers in place of the
+      // first ("And 3 Stichera, the composition of Anatolius, in Tone II"), not
+      // extra slots. Counting them squeezes the resurrectional slot — 8-02 Stephen
+      // rendered 6 Octoechos + 4 Menaion instead of the rubric's 7 + 3.
       const licStichera = sticheraData?.[0]?.stichera.filter(
-        s => s.section === 'lordICall' && s.order >= 1
+        s => s.section === 'lordICall' && s.order >= 1 && s.groupRole !== 'alternative-set'
       ).slice(0, maxLicStichera) ?? [];
       const licGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'lordICall' && s.order === 0
@@ -224,12 +228,30 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // first to pad the count. A tone with the full 7 (e.g. Tone 5) then yields
           // the standard 10 with no repeat; a 6-count tone yields 9.
           let totalStichera         = calendarEntry.vespers.lordICall.totalStichera || 6;
+
+          // The OCA Obikhod ships only 6 numbered resurrectional stichera per tone,
+          // one short of the canonical 7. In SOME tones the resurrectional
+          // doxastichon is itself a plain sticheron, and when the Menaion claims
+          // the Glory it is sung as the 7th numbered one rather than dropped —
+          // Tone 8 verified against the Tyler choir booklet for 8-02. Most tones'
+          // doxastika are framed for the Glory slot instead (Tone 3: "we offer our
+          // evening song") and must NOT be promoted, so this is opt-in per tone via
+          // `_alsoNumberedSticheron` rather than inferred. See
+          // features/lic-no-leading-repeat.md.
+          const resKey   = calendarEntry.vespers.lordICall.slots?.[0]?.key;
+          const resNode  = resKey
+            ? resKey.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)
+            : null;
+          const octoGlory = resKey
+            ? resKey.split('.').slice(0, -1)
+                .reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)?.glory
+            : null;
+          const displacedGlory =
+            (licGlory && octoGlory?.text && octoGlory._alsoNumberedSticheron) ? octoGlory : null;
+
           if (opts.rubrics?.lordICall?.noLeadingRepeat && totalStichera === 10) {
-            const resKey   = calendarEntry.vespers.lordICall.slots?.[0]?.key;
-            const resNode  = resKey
-              ? resKey.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)
-              : null;
-            const distinct = Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6;
+            const distinct = (Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6)
+                           + (displacedGlory ? 1 : 0);
             const desiredRes = totalStichera - licStichera.length;   // 10 − menaion
             const actualRes  = Math.min(desiredRes, distinct);       // cap: no doubling
             totalStichera    = actualRes + licStichera.length;       // 10 (Tone 5) or 9
@@ -243,6 +265,12 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           } else {
             lic.slots[0].verses = allVerses.slice(0, resurrectionalCount);
             lic.slots[0].count  = resurrectionalCount;
+            // Only hand the displaced doxastichon to the slot when the numbered
+            // stichera alone can't fill it — otherwise the tone's own 6 suffice.
+            const resHymns = Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6;
+            if (displacedGlory && resurrectionalCount > resHymns) {
+              lic.slots[0].appendHymns = [displacedGlory];
+            }
           }
           lic.slots.push({
             verses: allVerses.slice(resurrectionalCount),
@@ -409,8 +437,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           //   doxastichon. Re-key into tone-of-glory + sung-eve so Wed/Fri
           //   eves still get a stavrotheotokion when applicable.
           if (isSaturdayInjection && !isGreatFeast) {
+            // A Stavrotheotokion (Theotokion at the Cross) belongs to Wed/Fri, the
+            // days that commemorate the Crucifixion — never to a Sunday, whose
+            // Theotokion is resurrectional. Many Menaion order=-1 rows carry the
+            // Stavrotheotokion as the saint's alternative; skip those and fall
+            // through to the Octoechos Theotokion of the Glory tone.
             const apostNow = sticheraData?.[0]?.stichera.find(
               s => s.section === 'aposticha' && s.order === -1
+                && s.groupRole !== 'stavrotheotokion'
             );
             if (apostNow) {
               apost.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };

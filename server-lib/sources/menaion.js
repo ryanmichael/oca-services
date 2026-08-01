@@ -25,7 +25,7 @@ function getSticheraDay(month, day) {
     if (!db) return null;
     const rows = db.prepare(`
       SELECT c.id, c.title, c.rank,
-             s."order", s.section, s.tone, s.label, s.text
+             s."order", s.section, s.tone, s.label, s.text, s.group_role
       FROM stichera s
       JOIN commemorations c ON c.id = s.commemoration_id
       WHERE c.month = ? AND c.day = ?
@@ -38,11 +38,12 @@ function getSticheraDay(month, day) {
         byComm[row.id] = { id: row.id, title: row.title, rank: row.rank, stichera: [] };
       }
       byComm[row.id].stichera.push({
-        section: row.section,
-        order:   row.order,
-        tone:    row.tone,
-        label:   row.label,
-        text:    row.text,
+        section:   row.section,
+        order:     row.order,
+        tone:      row.tone,
+        label:     row.label,
+        text:      row.text,
+        groupRole: row.group_role,
       });
     }
     return Object.values(byComm);
@@ -92,7 +93,7 @@ function getMenaionRanked(month, day) {
     ).all(...ids);
 
     const stRows = db.prepare(
-      `SELECT commemoration_id, "order", section, tone, label, text, source AS dbSource
+      `SELECT commemoration_id, "order", section, tone, label, text, group_role, source AS dbSource
        FROM stichera WHERE commemoration_id IN (${placeholders})
        ORDER BY commemoration_id, section, "order"`
     ).all(...ids);
@@ -105,7 +106,7 @@ function getMenaionRanked(month, day) {
     for (const s of stRows) {
       (sticheraMap[s.commemoration_id] ??= []).push({
         order: s.order, section: s.section, tone: s.tone, label: s.label, text: s.text,
-        dbSource: s.dbSource,
+        groupRole: s.group_role, dbSource: s.dbSource,
       });
     }
     // Prefer OCA source when multiple translations exist for the same slot

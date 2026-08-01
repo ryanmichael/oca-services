@@ -15,6 +15,7 @@ const {
   validateSticheraSourceMixing,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
+  validateRubricBleed,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -29,6 +30,7 @@ const checks = [
   ['stichera source-mixing', validateSticheraSourceMixing],
   ['troparia transformer integrity', validateTropariaTransformIntegrity],
   ['text cosmetics (entities + glued punctuation)', validateTextCosmetics],
+  ['rubric bleed in sung text', validateRubricBleed],
 ];
 
 for (const [label, fn] of checks) {

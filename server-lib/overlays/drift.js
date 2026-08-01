@@ -557,6 +557,72 @@ function validateTextCosmetics() {
   }
 }
 
+// Typikon/editorial prose that belongs in a rubric, never inside a sung text.
+// The Lambertsen-style scrape glued these onto the hymn they introduce or follow:
+//   - "And 3 Stichera, the composition of Anatolius, in Tone II: <hymn>"  (header)
+//   - "<hymn> , or this Stavrotheotokion <other hymn>"                    (alternative)
+//   - "<hymn> After the dismissal of vespers, the priest vesteth…"        (trailing rubric)
+// Each one printed verbatim in the choir's sheet for 2026-08-02 before it was caught.
+const RUBRIC_BLEED_PATTERNS = [
+  [/\bor this Stavro[Tt]heotokion\b/,        'alternative-Theotokion marker'],
+  [/\bthe composition of [A-Z][a-z]+/,       'composer attribution rubric'],
+  [/^And \d+ Stichera\b/,                    'sticheron-count header'],
+  [/\bAfter the dismissal of (vespers|matins)\b/, 'trailing typikon rubric'],
+  [/\bin Tone [IVX]+:/,                      'tone header in Roman numerals'],
+];
+
+// Rows carrying rubric bleed as of 2026-08-01, when this check was added while
+// fixing the 8-02 Stephen stichera. They are a real backlog — each one prints
+// typikon prose into a choir's sheet — but burning down 94 rows was out of scope
+// for a same-day service fix. Baselined so the gate fails on NEW bleed only.
+// Burn-down: strip the rubric, and where it introduces a second set, split into
+// rows tagged group_role='alternative-set' (worked example: 8898/10795/10796).
+const KNOWN_RUBRIC_BLEED = new Set([
+  8242, 8257, 8263, 8270, 8291, 8309, 8313, 8322, 8323, 8327, 8335, 8340,
+  8360, 8361, 8365, 8373, 8375, 8380, 8389, 8395, 8408, 8415, 8421, 8425,
+  8518, 8524, 8551, 8561, 8620, 8662, 8674, 8745, 8786, 8798, 8804, 8835,
+  8859, 8873, 8884, 8925, 8929, 8963, 8975, 8987, 8994, 8999, 9003, 9006,
+  9012, 9060, 9079, 9084, 9089, 9106, 9109, 9114, 9127, 9134, 9139, 9143,
+  9161, 9165, 9168, 9169, 9174, 9188, 9193, 9212, 9229, 9235, 9240, 9279,
+  9293, 9310, 9340, 9364, 9368, 9420, 9423, 9428, 9435, 9440, 9472, 9473,
+  9517, 9528, 9529, 9553, 9557, 9558, 9559, 9566, 9570, 9705
+]);
+
+// Rubric prose glued into sung stichera/troparia text. Fires on the scrape
+// artifacts that survived ingestion; each hit is a row a choir would read aloud.
+function validateRubricBleed() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    let warnings = 0;
+    for (const tbl of ['troparia', 'stichera']) {
+      const exists = db.prepare(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
+      ).get(tbl);
+      if (!exists) continue;
+      for (const r of db.prepare(`SELECT id, text FROM ${tbl}`).all()) {
+        if (tbl === 'stichera' && KNOWN_RUBRIC_BLEED.has(r.id)) continue;
+        for (const [re, what] of RUBRIC_BLEED_PATTERNS) {
+          if (!re.test(r.text)) continue;
+          console.warn(
+            `${tbl} ${r.id} has rubric bleed (${what}) inside sung text: ` +
+            `"${r.text.slice(0, 70)}…". Fix: strip the rubric; if it introduces a ` +
+            `second set, split those into their own rows tagged ` +
+            `group_role='alternative-set' so they don't consume sung slots.`
+          );
+          warnings += 1;
+          break;
+        }
+      }
+    }
+    if (warnings === 0) console.log('Rubric bleed in sung text: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 // Common capitalized liturgical words that are NOT distinctive saint/place
 // names — excluded from the mis-key subject-noun heuristic below.
 const STICHERA_NAME_STOPWORDS = new Set([
@@ -842,4 +908,5 @@ module.exports = {
   validateSticheraSourceMixing,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
+  validateRubricBleed,
 };

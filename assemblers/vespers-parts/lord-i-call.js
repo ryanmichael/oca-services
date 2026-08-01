@@ -27,7 +27,9 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     slot.verses.forEach((verseNum, i) => {
       // When the slot specifies a category, filter the source's hymns to just
       // the matching ones (robust against data ordering / index drift).
-      const allHymns = sourceTexts.hymns || [];
+      // `appendHymns` carries the resurrectional doxastichon displaced by a
+      // Menaion Glory, which the typikon sings as the last numbered sticheron.
+      const allHymns = [...(sourceTexts.hymns || []), ...(slot.appendHymns || [])];
       const hymns = slot.category
         ? allHymns.filter(h => h && h.category === slot.category)
         : allHymns;

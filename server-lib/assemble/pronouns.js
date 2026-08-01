@@ -51,13 +51,30 @@ const YOU_YOUR_RULES = [
   // "didst <verb>" → simple past (before the generic Didst→Did below).
   // "didst not <verb>" stays "did not <verb>" (English negatives keep the base
   // verb). A non-verb after "didst" (inversion "didst thou…") is left alone.
-  [/\b([Dd])idst\s+(not\s+)?([A-Za-z]+)/g, (m, d, neg, word) => {
+  // An intervening -ly adverb ("didst voluntarily endure") is carried through
+  // untouched and the verb AFTER it is conjugated — otherwise the adverb itself
+  // gets run through verbToPast and yields "voluntarilied".
+  [/\b([Dd])idst\s+(not\s+)?([A-Za-z]+ly\s+)?([A-Za-z]+)/g, (m, d, neg, adv, word) => {
     const did = d === 'D' ? 'Did' : 'did';
-    if (neg) return `${did} not ${word}`;
+    // A verb ending in -ly ("didst multiply the loaves") gets mis-captured as the
+    // adverb; the giveaway is a non-verb landing in `word`. Re-read the -ly token
+    // as the verb and hand `word` back to the output untouched.
+    let tail = '';
+    if (adv && NON_VERB_AFTER_DIDST.has(word.toLowerCase())) {
+      tail = adv.slice(adv.replace(/\s+$/, '').length) + word; // the original spacing + "the"
+      word = adv.replace(/\s+$/, '');
+      adv  = null;
+    }
+    if (neg) return `${did} not ${adv || ''}${word}${tail}`;
     if (NON_VERB_AFTER_DIDST.has(word.toLowerCase())) return m;
     let past = verbToPast(word);
-    if (d === 'D') past = past.charAt(0).toUpperCase() + past.slice(1);
-    return past;
+    // Adverb keeps its position: "didst voluntarily endure" → "voluntarily endured",
+    // so a leading capital belongs on the adverb, not on the verb.
+    if (d === 'D') {
+      if (adv) adv = adv.charAt(0).toUpperCase() + adv.slice(1);
+      else     past = past.charAt(0).toUpperCase() + past.slice(1);
+    }
+    return (adv ? adv : '') + past + tail;
   }],
   // Predicate-nominative Thine first (before general Thine → Your)
   [/\bThine(?=\s+is\b)/g,       'Yours'],
@@ -97,6 +114,9 @@ const YOU_YOUR_RULES = [
   [/\bHoldest\b/g,   'Hold'],    [/\bholdest\b/g,   'hold'],
   [/\bKeepest\b/g,   'Keep'],    [/\bkeepest\b/g,   'keep'],
   [/\bKnowest\b/g,   'Know'],    [/\bknowest\b/g,   'know'],
+  // Past-tense -est forms (Ps 141 "Thou knewest my paths", "she who gaveth birth")
+  [/\bKnewest\b/g,   'Knew'],    [/\bknewest\b/g,   'knew'],
+  [/\bGaveth\b/g,    'Gave'],    [/\bgaveth\b/g,    'gave'],
   [/\bLeadest\b/g,   'Lead'],    [/\bleadest\b/g,   'lead'],
   [/\bLettest\b/g,   'Let'],     [/\blettest\b/g,   'let'],
   [/\bOpenest\b/g,   'Open'],    [/\bopenest\b/g,   'open'],

@@ -385,7 +385,7 @@
             {
               "canon": "crossResurrection",
               "refrain": "Glory to Thy precious Cross and Resurrection, O Lord.",
-              "text": "Most pure Virgin, thou hast conceived God, and in virginity, thou hast given birth to Christ incarnate from thee, in person the one and onlybegotten Son, known in two natures, for He is glorified.",
+              "text": "Most pure Virgin, thou hast conceived God, and in virginity, thou hast given birth to Christ incarnate from thee, in person the one and only-begotten Son, known in two natures, for He is glorified.",
               "type": "theotokion"
             },
             {
@@ -3900,7 +3900,7 @@
         "dismissalTheotokion": {
           "tone": 4,
           "label": "Resurrectional Dismissal Theotokion",
-          "text": "The mystery of all eternity, unknown even by angels, through thee, O Theotokos, is revealed to those on earth: God incarnate by union without confusion. He voluntarily accepted the Cross for us, by which He resurrected the firstcreated man,\nsaving our souls from death."
+          "text": "The mystery of all eternity, unknown even by angels, through thee, O Theotokos, is revealed to those on earth: God incarnate by union without confusion. He voluntarily accepted the Cross for us, by which He resurrected the first-created man,\nsaving our souls from death."
         }
       },
       "matins": {
@@ -5108,7 +5108,7 @@
             "hymns": [
               {
                 "order": 1,
-                "text": "By Thy precious Cross, O Christ, Thou hast put the devil to shame. By Thy Resurrection, Thou hast blunted the sting of sin and saved us from the gates of death.\nWe glorify Thee, O onlybegotten One."
+                "text": "By Thy precious Cross, O Christ, Thou hast put the devil to shame. By Thy Resurrection, Thou hast blunted the sting of sin and saved us from the gates of death.\nWe glorify Thee, O only-begotten One."
               },
               {
                 "order": 2,
@@ -6578,7 +6578,7 @@
             }
           ],
           "glory": {
-            "text": "Thou wast shown to be a receptacle of divine majesty, О most pure one, for thou didst contain God and gave birth unto Christ in two natures but a single Hypostasis, О Mother who knewest not wedlock. О pure one, entreat thine onlybegotten and firstborn Child, Who preserved thee an unblemished virgin even though thou hast given birth, that He grant rest amid light and incorrupt blessedness unto those who have fallen asleep in the Faith.",
+            "text": "Thou wast shown to be a receptacle of divine majesty, О most pure one, for thou didst contain God and gave birth unto Christ in two natures but a single Hypostasis, О Mother who knewest not wedlock. О pure one, entreat thine only-begotten and firstborn Child, Who preserved thee an unblemished virgin even though thou hast given birth, that He grant rest amid light and incorrupt blessedness unto those who have fallen asleep in the Faith.",
             "_source": "stSergius"
           }
         }
@@ -9166,14 +9166,16 @@
               },
               {
                 "order": 6,
-                "text": "Glory to Thee, O Savior Christ, Onlybegotten Son of God, who wast nailed to the Cross\nand resurrected from the tomb on the third day!"
+                "text": "Glory to Thee, O Savior Christ, Only-begotten Son of God, who wast nailed to the Cross\nand resurrected from the tomb on the third day!"
               }
             ]
           },
           "glory": {
             "tone": 8,
             "label": "Resurrectional Doxastichon",
-            "text": "We glorify Thy Resurrection from the dead, O Christ, by which Thou hast freed Adam's race from the tortures of hell,\nand as God hast granted to the world eternal life and great mercy."
+            "text": "We glorify Thy Resurrection from the dead, O Christ, by which Thou hast freed Adam's race from the tortures of hell,\nand as God hast granted to the world eternal life and great mercy.",
+            "_alsoNumberedSticheron": true,
+            "_alsoNumberedNote": "Unlike most tones' doxastika (which are framed for the Glory slot, e.g. Tone 3 'we offer our evening song'), this text reads as a plain resurrectional sticheron. When the Menaion claims the Glory it is sung as the 7th numbered sticheron, filling the slot the OCA Obikhod otherwise leaves short. Verified against the St. John of Damascus (Tyler) choir booklet for 2026-08-02, which numbers the Octoechos block 10-4 and ends on this text. Do NOT set this on a tone without the same verification."
           }
         },
         "aposticha": {
@@ -9212,7 +9214,7 @@
         "troparion": {
           "tone": 8,
           "label": "Resurrectional Troparion",
-          "text": "Thou didst descend from on high, O Merciful One! Thou didst accept the threeday burial to free us from our sufferings!\nO Lord, our Life and Resurrection, glory to Thee!"
+          "text": "Thou didst descend from on high, O Merciful One! Thou didst accept the three-day burial to free us from our sufferings!\nO Lord, our Life and Resurrection, glory to Thee!"
         },
         "kontakion": {
           "tone": 8,

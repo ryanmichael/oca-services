@@ -123,6 +123,40 @@ describe('Feature contract: licNoLeadingRepeat', () => {
     assert.equal(now.source,   'octoechos', `Tyler: LIC Now (Dogmatikon) should come from octoechos; got ${now.source}`);
   });
 
+  it('INV-5: Tone 8 — displaced doxastichon fills the 7th slot, so both parishes get a clean 10', async () => {
+    // 2026-08-01 eve → Sun 8-02, Tone 8, Translation of the Relics of Protomartyr
+    // Stephen. Tone 8's resurrectional doxastichon is flagged _alsoNumberedSticheron:
+    // the Menaion takes the Glory, so it is sung as the 7th numbered sticheron.
+    // Both parishes therefore reach the canonical 10 with no doubling — the Tyler
+    // choir booklet for this date numbers the Octoechos block 10-4 + 3 Menaion.
+    for (const q of ['', `&translation=${TYLER}`]) {
+      const who = q ? 'Tyler' : 'default';
+      const { json } = await get(`/api/service?date=2026-08-01${q}`);
+      assert.equal(json.tone, 8, `${who}: expected Tone 8`);
+      const hymns = licHymnBlocks(json);
+      assert.equal(hymns.length, 10, `${who}: Tone 8 LIC should emit 10 hymns (7 octoechos + 3 menaion); got ${hymns.length}`);
+      assert.equal(hymns.filter(b => b.source === 'octoechos').length, 7, `${who}: expected 7 octoechos hymns`);
+      assert.equal(hymns.filter(b => b.source === 'menaion').length, 3, `${who}: expected 3 menaion hymns`);
+      for (let i = 1; i < hymns.length; i++) {
+        assert.notEqual(hymns[i].text, hymns[i - 1].text,
+          `${who}: consecutive LIC hymns ${i - 1} and ${i} should not be identical`);
+      }
+      assert.ok(licVerseIds(json).includes('lic-verse-10'), `${who}: verse 10 should be present`);
+    }
+  });
+
+  it('INV-6: a Glory-framed doxastichon is never promoted into a numbered slot', async () => {
+    // Guards the opt-in. Tone 3's doxastichon is written for the Glory slot
+    // ("we offer our evening song") and must stay out of the numbered stichera,
+    // so Tone 3 keeps its old shape: default doubles, Tyler renders 9.
+    const { json } = await get(`/api/service?date=${DATE}`);
+    assert.equal(json.tone, 3, 'expected the Tone 3 fixture date');
+    const oct = licHymnBlocks(json).filter(b => b.source === 'octoechos');
+    assert.equal(oct.length, 7, 'Tone 3 default should still reach 7 octoechos slots');
+    assert.ok(oct.every(b => !/we offer our evening song/i.test(b.text)),
+      'Tone 3 Glory-framed doxastichon must not appear as a numbered sticheron');
+  });
+
   it('INV-4: Tyler — Daily Vespers on a weekday is unaffected by the flag (still 6-count)', async () => {
     // 2026-07-01 = Wed weekday → Daily Vespers eve of Thu Jul 2
     const { json } = await get(`/api/service?date=2026-07-01&translation=${TYLER}`);

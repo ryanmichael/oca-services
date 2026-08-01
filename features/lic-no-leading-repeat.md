@@ -37,10 +37,15 @@ Default false. No query-param override; per-parish.
 
 ## Behavior table
 
-| Flag | LIC stichera total | Octoechos slots | Menaion slots | Doxastikon | Verses iterated |
+| Flag | Tone ships a promotable doxastichon | LIC total | Octoechos slots | Menaion slots | Verses |
 |---|---|---|---|---|---|
-| absent / 0 | 10 | 7 (sticheron 1 doubled) | 3 | Menaion glory | 10 → 1 |
-| 1 | 9 | 6 (no doubling) | 3 | Menaion glory | 9 → 1 |
+| absent / 0 | no | 10 | 7 (sticheron 1 doubled) | 3 | 10 → 1 |
+| 1 | no | 9 | 6 (no doubling) | 3 | 9 → 1 |
+| absent / 0 | yes (Tone 8) | 10 | 7 (7th = displaced doxastichon) | 3 | 10 → 1 |
+| 1 | yes (Tone 8) | 10 | 7 (7th = displaced doxastichon) | 3 | 10 → 1 |
+
+When the tone's doxastichon is promotable the flag has no effect: there is nothing to
+double and nothing to truncate, so both parishes land on the canonical 10.
 
 Glory/Now slots and Theotokion-Dogmatikon selection are unchanged.
 
@@ -55,7 +60,28 @@ Glory/Now slots and Theotokion-Dogmatikon selection are unchanged.
 - **INV-2** — Tyler overlay (`licNoLeadingRepeat=1`): same date emits 9 octoechos+menaion hymn blocks (6 + 3); no two consecutive blocks have identical text; verse `lic-verse-10` is absent.
 - **INV-3** — Tyler overlay: Doxastikon (`lic-glory-hymn`) and Theotokion-Dogmatikon (`lic-now-hymn`) still render with their expected source/tone.
 - **INV-4** — Tyler overlay: weekday Daily Vespers and feast-vigil Vespers are unaffected (rubric is Saturday-Great-Vespers-scoped).
+- **INV-5** — Tone 8 (2026-08-01 eve → Sun 8-02, Stephen): both default and Tyler emit 10 LIC hymns (7 octoechos + 3 menaion) with no consecutive duplicates and verse 10 present — the displaced doxastichon fills the 7th slot.
+- **INV-6** — Tone 3 (2026-06-27): the Glory-framed doxastichon never appears as a numbered sticheron; Tone 3 keeps default-doubles / Tyler-9.
+
+## Displaced-doxastichon promotion (added 2026-08-01)
+
+Partial close of the data gap below, for tones where it is verifiable.
+
+Each tone's `lordICall.glory` node holds a resurrectional doxastichon. When the Menaion
+claims the Glory slot that text is otherwise unused for the day. In **some** tones it is
+written as a plain resurrectional sticheron and the typikon sings it as the 7th numbered
+one; in most tones it is framed for the Glory position and must not be promoted (Tone 3:
+"Standing unworthily in Thy most pure house … we offer our evening song").
+
+Because the two cases are indistinguishable programmatically, promotion is **opt-in per
+tone** via `_alsoNumberedSticheron: true` on the glory node, and fires only when the
+Menaion supplies the Glory (so the text can never render twice in one service).
+
+**Verified tones: 8 only.** Set against the St. John of Damascus (Tyler) choir booklet for
+2026-08-02, which numbers the Octoechos block 10–4 and ends on this text. Do not set the
+flag on another tone without the same kind of parish-booklet or service-book confirmation
+— guessing here silently moves a Glory text into a numbered slot.
 
 ## Forward note
 
-This rubric papers over a data gap. The long-term solution is to source the missing 4th Anatolikon per tone (×8) from the HTM text Octoechos and ship 10 distinct stichera. When that data lands, this rubric can either be deprecated (universal 10-count) or repurposed as a parish-preference toggle for parishes that explicitly prefer the OCA chant arrangement's count.
+This rubric papers over a data gap. The long-term solution is to source the missing 4th Anatolikon per tone (×8) from the HTM text Octoechos and ship 10 distinct stichera. When that data lands, this rubric can either be deprecated (universal 10-count) or repurposed as a parish-preference toggle for parishes that explicitly prefer the OCA chant arrangement's count. The promotion above closes Tone 8 without new source text; the remaining 7 tones still need the Anatolikon.

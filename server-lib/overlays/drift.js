@@ -571,22 +571,13 @@ const RUBRIC_BLEED_PATTERNS = [
   [/\bin Tone [IVX]+:/,                      'tone header in Roman numerals'],
 ];
 
-// Rows carrying rubric bleed as of 2026-08-01, when this check was added while
-// fixing the 8-02 Stephen stichera. They are a real backlog — each one prints
-// typikon prose into a choir's sheet — but burning down 94 rows was out of scope
-// for a same-day service fix. Baselined so the gate fails on NEW bleed only.
-// Burn-down: strip the rubric, and where it introduces a second set, split into
-// rows tagged group_role='alternative-set' (worked example: 8898/10795/10796).
-const KNOWN_RUBRIC_BLEED = new Set([
-  8242, 8257, 8263, 8270, 8291, 8309, 8313, 8322, 8323, 8327, 8335, 8340,
-  8360, 8361, 8365, 8373, 8375, 8380, 8389, 8395, 8408, 8415, 8421, 8425,
-  8518, 8524, 8551, 8561, 8620, 8662, 8674, 8745, 8786, 8798, 8804, 8835,
-  8859, 8873, 8884, 8925, 8929, 8963, 8975, 8987, 8994, 8999, 9003, 9006,
-  9012, 9060, 9079, 9084, 9089, 9106, 9109, 9114, 9127, 9134, 9139, 9143,
-  9161, 9165, 9168, 9169, 9174, 9188, 9193, 9212, 9229, 9235, 9240, 9279,
-  9293, 9310, 9340, 9364, 9368, 9420, 9423, 9428, 9435, 9440, 9472, 9473,
-  9517, 9528, 9529, 9553, 9557, 9558, 9559, 9566, 9570, 9705
-]);
+// Empty by policy. The 94 rows baselined when this check was added (2026-08-01)
+// were burned down the same day by scripts/strip-rubric-bleed.js; the removed
+// tails are preserved in audit/rubric-bleed-tails.json. Keep this set EMPTY —
+// a new entry means someone is deferring a fix rather than making one. If a row
+// legitimately contains rubric-looking prose, narrow RUBRIC_BLEED_PATTERNS
+// instead of adding an exception here.
+const KNOWN_RUBRIC_BLEED = new Set([]);
 
 // Rubric prose glued into sung stichera/troparia text. Fires on the scrape
 // artifacts that survived ingestion; each hit is a row a choir would read aloud.
@@ -603,6 +594,20 @@ function validateRubricBleed() {
       if (!exists) continue;
       for (const r of db.prepare(`SELECT id, text FROM ${tbl}`).all()) {
         if (tbl === 'stichera' && KNOWN_RUBRIC_BLEED.has(r.id)) continue;
+        // A row too short to be a hymn is a bare rubric fragment the scrape left
+        // behind ("Doxasticon from the Pentecostarion.", ", or Stavrotheotokion.").
+        // These render AS the hymn when they land in a Glory or Theotokion slot —
+        // 5-5 Great Martyr Irene printed one as its Doxastikon. Delete the row;
+        // the assembler then correctly falls through to the Octoechos.
+        if (r.text.trim().length < 40) {
+          console.warn(
+            `${tbl} ${r.id} is content-free (${JSON.stringify(r.text.trim()).slice(0, 50)}) — ` +
+            `a rubric fragment with no hymn. Fix: delete the row (see ` +
+            `scripts/strip-rubric-bleed.js; tails preserved in audit/rubric-bleed-tails.json).`
+          );
+          warnings += 1;
+          continue;
+        }
         for (const [re, what] of RUBRIC_BLEED_PATTERNS) {
           if (!re.test(r.text)) continue;
           console.warn(
@@ -682,6 +687,15 @@ const KNOWN_STICHERA_MISKEYS = new Set([
   1550, // Venerable Isaac the Ascetic ← Faustus the Ascetic aposticha (→1552)
   1728, // Return of Relics of Ap. Bartholomew ← Ap. Titus aposticha (→1729)
   2186, // Macarius the Roman ← Ap. James Brother-of-the-Lord aposticha (→2187)
+  // Surfaced 2026-08-02 by the rubric-bleed burn-down. Not new drift: the
+  // rubric-only rows were diluting each commemoration's hymn count and holding
+  // the bleed ratio under threshold. Removing them let the real mis-key show.
+  // Queued for per-row reassignment on the same terms as the block above —
+  // verify texts against the OCA source before moving.
+  879,  // Matrona of Moscow ← Athanasius of Lubensk lordICall (→882)
+  1339, // Finding of relics of Maximus the Greek ← Burial of Prince Andrew aposticha (→1343)
+  1802, // Gorazd of Prague ← Hieromartyr Babylas of Antioch aposticha (→1803)
+  2273, // Seraphim (Samoilovich) of Uglich ← Joannicius the Great aposticha (→2274)
 ]);
 
 // Data-drift guard: a commemoration whose stichera repeatedly name a proper

@@ -579,7 +579,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // "Come, let us worship" — this is the fix.
   let entranceHymn;
   if (feast?.entranceHymn) {
-    entranceHymn = { text: feast.entranceHymn };
+    // On a Great Feast of the Lord the proper eisodikon (entrance verse) is
+    // intoned before the entrance hymn — Transfiguration: "Send out Thy light
+    // and Thy truth…" (Ps. 42:3). Only feasts that carry `entranceVerse` get
+    // one; the rest render the entrance hymn alone as before.
+    entranceHymn = { text: feast.entranceHymn, verse: feast.entranceVerse || null };
   } else if (isPaschalPeriod) {
     entranceHymn = { text: GREAT_FEAST_VARIANTS.pascha.entranceHymn };
   } else if (isSunday) {
@@ -660,7 +664,19 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
+  // A parish may sing a different psalm selection than the OCA DLMT default.
+  // Named alternatives live in `feast.antiphonSets`; a parish opts in via
+  // rubrics_extra_json.antiphonSet = { "<feastKey>": "<setName>" }. Antiphon
+  // text lives in variable-sources/, which the fixed-texts overlay cascade
+  // cannot reach (memory: overlay-variable-sources-gap), so this named-set +
+  // rubric pick is the parish-scoped path. Unknown set name → default set.
   let feastAntiphons = (feast?.type === 'lord' && feast.antiphons) ? feast.antiphons : null;
+  const antiphonSetName = opts.antiphonSet && feastKey ? opts.antiphonSet[feastKey] : null;
+  if (feastAntiphons && antiphonSetName) {
+    const alt = feast.antiphonSets?.[antiphonSetName];
+    if (alt) feastAntiphons = alt;
+    else console.warn(`antiphonSet '${antiphonSetName}' not found for feast '${feastKey}' — using default`);
+  }
 
   // ── Paschal antiphons for 1st/2nd during Bright Week only ────────────────
   // Most OCA parishes sing Paschal Antiphons (Ps. 65/66) only during Bright
@@ -769,6 +785,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       : pentOverride?.troparia
         ? { troparia: troparia, kontakia: kontakia }
         : null,
+
+    // A rite appended immediately after the Prayer behind the Ambon. Only
+    // Transfiguration carries one today (Blessing of Grapes and Fruit); the
+    // shape is generic so e.g. a Theophany water blessing can be added later.
+    postAmbonRite: feast?.postAmbonRite
+      ? { ...feast.postAmbonRite,
+          troparion: feast.troparia?.[0] || null,
+          kontakion: feast.kontakia?.[0] || null }
+      : null,
   };
 }
 

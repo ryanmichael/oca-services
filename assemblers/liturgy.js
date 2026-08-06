@@ -9,7 +9,7 @@ const VALID_CHERUBIC_OVERRIDES = new Set(['great-thursday', 'great-saturday']);
 const { _litOpeningDoxology, _litGreatLitany }                              = require('./liturgy-parts/opening');
 const { _litFeastAntiphon, _litTypicalAntiphon1, _litTypicalAntiphon2,
         _litLittleLitany, _litBeatitudes }                                  = require('./liturgy-parts/antiphons');
-const { _litSmallEntrance, _litEntranceHymn,
+const { _litSmallEntrance, _litEntranceHymn, _litPostAmbonRite,
         _litTroparia, _litKontakia }                                        = require('./liturgy-parts/entrance');
 const { _litTrisagion }                                                     = require('./liturgy-parts/trisagion');
 const { _litProkeimenon, _litEpistle, _litAlleluia, _litGospel }            = require('./liturgy-parts/readings');
@@ -269,6 +269,10 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   const ambonKey = isBasil ? 'prayer-ambon-basil' : 'prayer-ambon-chrysostom';
   blocks.push(makeBlock('prayer-ambon', 'Prayer behind the Ambon', 'prayer', 'priest',
     liturgyFixed[ambonKey], { density: 'compact' }));
+
+  // 32b. Feast rite appended after the Prayer behind the Ambon (Transfiguration:
+  //      Blessing of Grapes and Fruit). Flows into "Blessed be the Name" below.
+  blocks.push(..._litPostAmbonRite(spec.postAmbonRite, liturgyFixed));
 
   // 33. Blessed be the Name (×3) — OCA order: Psalm 33 follows before the blessing.
   blocks.push(..._litBlessedBeTheName(liturgyFixed));

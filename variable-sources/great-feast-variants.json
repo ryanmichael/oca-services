@@ -280,7 +280,58 @@
     },
     "entranceHymn": "Come, let us worship and fall down before Christ. O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!",
     "megalynarion": "Magnify, O my soul, the Lord Who was transfigured on Mount Tabor! Thy childbearing was without corruption; God came forth from thy body clothed in flesh, and appeared on earth and dwelt among men. Therefore we all magnify thee, O Theotokos!",
-    "communionHymn": "O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia, Alleluia, Alleluia!"
+    "communionHymn": "O Lord, we will walk in the light of Thy countenance, and will exult in Thy name forever. Alleluia, Alleluia, Alleluia!",
+    "antiphonSets": {
+      "sjd-mission-mountain": {
+        "_provenance": "Transcribed from the 'St. John of Damascus Mission' antiphon sheets in the parish Transfiguration Liturgy booklet, 2026-08-06 (Common Chant). A mountain-themed psalm selection differing from the OCA DLMT set in `antiphons`. Stored in the file's Thee/Thy register; parishes on the modern register get You/Your via the pronoun transform, which is how the booklet prints Antiphon 3. Selected per-parish via rubrics_extra_json.antiphonSet — NOT the default.",
+        "first": {
+          "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
+          "verses": [
+            "Make a joyful noise to God, all the earth; sing of His name, give glory to His praise.",
+            "The voice of Thy thunder was in the whirlwind, Thy lightning lighted up the world, and the earth trembled.",
+            "Thou art clothed with honor and majesty, Who coverest Thyself with light as with a garment."
+          ],
+          "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+        },
+        "second": {
+          "refrain": "O Son of God, transfigured on the mountain, save us who sing to Thee: Alleluia!",
+          "verses": [
+            "Mount Zion in the far north is the city of the great King.",
+            "And He brought them to the mountain of His sanctuary, this mountain which His right hand had won.",
+            "The Mount Zion which He loved, He built as His sanctuary with mighty strength."
+          ],
+          "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+        },
+        "third": {
+          "refrain": "Thou wast transfigured on the mountain, O Christ God, revealing Thy glory to Thy disciples as far as they could bear it. Let Thine everlasting light also shine upon us sinners, through the prayers of the Theotokos! O Giver of Light, glory to Thee!",
+          "verses": [
+            "Those who trust in the Lord are like Mount Zion, which cannot be moved, but abideth forever.",
+            "As the mountains are round about Him, so the Lord is round about His people, from this time forth and forevermore.",
+            "Lord, who shall sojourn in Thy tent? Who shall dwell on Thy holy hill?",
+            "Who shall ascend the hill of the Lord? And who shall stand in His holy place?"
+          ]
+        }
+      }
+    },
+    "entranceVerse": "Send out Thy light and Thy truth; let them lead me, let them bring me to Thy holy mountain!",
+    "_entranceVerseSource": "Ps. 42:3, the proper eisodikon printed as 'Introit of the Little Entrance' in the parish Transfiguration Liturgy booklet, 2026-08-06. On a Great Feast of the Lord this replaces the ordinary 'Come, let us worship'.",
+    "postAmbonRite": {
+      "label": "Blessing of Grapes and Fruit",
+      "rubric": "Immediately after the Prayer behind the Ambon, according to ancient custom, we observe the blessing of grapes as well as apples and other fruit. The fruit is censed as we sing:",
+      "prayers": [
+        {
+          "incipit": "Bless, O Lord, this new fruit of the vine…",
+          "citation": "Prayer at the Partaking of Grapes — Festal Menaion p. 502; Great Book of Needs vol. 2 p. 352"
+        },
+        {
+          "incipit": "O Master, Lord our God…",
+          "citation": "Prayer for Them That Offer First Fruits — Great Book of Needs vol. 2 p. 353"
+        }
+      ],
+      "sprinklingRubric": "The priest sprinkles the grapes and fruit with holy water, saying (thrice):",
+      "sprinkling": "These grapes and fruit are blessed and sanctified by the sprinkling of this holy water, in the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+      "_source": "Transcribed from the St. John of Damascus (Tyler) Transfiguration Liturgy booklet, 2026-08-06. The two priestly prayers are given there by incipit + book citation only, so they are rendered as cited rubrics rather than reconstructed. The rite ends by flowing into the usual 'Blessed be the name of the Lord' (thrice), which the Liturgy already emits."
+    }
   },
   "elevation": {
     "type": "lord",

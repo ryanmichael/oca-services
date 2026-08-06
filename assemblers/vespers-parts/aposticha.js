@@ -103,7 +103,11 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
   }
 
-  if (apostichaSpec.now) {
+  // A combined "Glory… now and ever" label folds the Now into the doxastichon,
+  // so a separate Now would print a second label and a second hymn. Great Feasts
+  // hit this: Transfiguration rendered its Tone 6 doxastichon and then an
+  // Octoechos Theotokion underneath. Mirrors the guard in lord-i-call.js.
+  if (apostichaSpec.now && !apostichaSpec.glory?.combinesGloryNow) {
     let nowSource, nowSrc;
     if (apostichaSpec.now.source === 'fixed') {
       const text = deepGet(fixedTexts, apostichaSpec.now.key);

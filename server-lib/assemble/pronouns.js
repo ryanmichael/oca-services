@@ -76,9 +76,15 @@ const YOU_YOUR_RULES = [
     }
     return (adv ? adv : '') + past + tail;
   }],
-  // Predicate-nominative Thine first (before general Thine → Your)
-  [/\bThine(?=\s+is\b)/g,       'Yours'],
-  [/\bthine(?=\s+is\b)/g,       'yours'],
+  // Predicate-nominative Thine first (before general Thine → Your). "Thine" is
+  // possessive ("Your") only when it modifies a noun; standing alone as the
+  // predicate it is "Yours". Both orders occur — "Thine is the kingdom" and
+  // "The heavens are Thine" (Ps 88:12, the Transfiguration Third Antiphon).
+  [/\bThine(?=\s+(?:is|are)\b)/g,       'Yours'],
+  [/\bthine(?=\s+(?:is|are)\b)/g,       'yours'],
+  // Trailing predicate: "…are Thine.", "…also is Thine;" — no following noun.
+  [/\b(are|is|art|was|were)\s+Thine\b(?!\s+[a-z])/g, '$1 Yours'],
+  [/\b(are|is|art|was|were)\s+thine\b(?!\s+[a-z])/g, '$1 yours'],
   // Pronouns
   [/\bThou\b/g,    'You'],     [/\bthou\b/g,    'you'],
   [/\bThee\b/g,    'You'],     [/\bthee\b/g,    'you'],

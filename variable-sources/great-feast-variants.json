@@ -215,6 +215,13 @@
   "transfiguration": {
     "type": "lord",
     "label": "The Transfiguration of Christ",
+    "dismissalIntroit": "May Christ our true God, Who was transfigured in glory on Mount Tabor,",
+    "apostichaVerses": [
+      "The heavens are Thine, the earth also is Thine; the world and all that is in it, Thou hast founded them!",
+      "Tabor and Hermon shall rejoice in Thy Name!"
+    ],
+    "_apostichaVersesSource": "Ps. 88:12,13 as printed in the St. John of Damascus (Tyler) Transfiguration Vigil booklet, 2026-08-05. Vespers aposticha on a Great Feast takes proper verses; without these the assembler falls back to the ordinary Ps. 122 table. Indexed from the SECOND sticheron — the first carries no verse.",
+    "_dismissalIntroitSource": "Clause taken verbatim from the feast's own Litya idiomelon in Tone 2 ('Thou wast transfigured in glory on Mount Tabor, O Christ God'), following the sentence pattern already used for ascension. The other 11 Great Feasts still have no dismissalIntroit and fall back to the generic 'May Christ our true God,' — do not fill them in without a comparable source.",
     "antiphons": {
       "first": {
         "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
@@ -237,7 +244,7 @@
         "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
       },
       "third": {
-        "refrain": "Thou wast transfigured on the mount, O Christ God, revealing Thy glory to Thy disciples as far as they could bear it. Let Thine everlasting light also shine upon us sinners, through the prayers of the Theotokos! O Giver of Light, glory to Thee!",
+        "refrain": "Thou wast transfigured on the mountain, O Christ God, revealing Thy glory to Thy disciples as far as they could bear it. Let Thine everlasting light also shine upon us sinners, through the prayers of the Theotokos! O Giver of Light, glory to Thee!",
         "verses": [
           "The heavens are Thine, the earth also is Thine; the world and the fulness thereof, Thou hast founded them.",
           "Tabor and Hermon shall rejoice in Thy name.",

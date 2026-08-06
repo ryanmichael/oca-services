@@ -19,7 +19,13 @@ function assembleDismissal(fixedTexts, dismissalSpec) {
       properText = 'May He Who for us men and for our salvation endured in the flesh the dread passion, the life-giving Cross and voluntary burial, Christ our true God, through the prayers of His most pure Mother, and of all the saints, have mercy on us and save us, for He is good and loves mankind.';
     } else {
       let opening;
-      if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
+      if (dismissalSpec.dismissalIntroit) {
+        // Festal introit names the feast ("…Who was transfigured in glory on
+        // Mount Tabor…"). Same field the Liturgy dismissal uses; only feasts
+        // that have one in great-feast-variants.json get it, the rest fall
+        // through to the generic opening below.
+        opening = dismissalSpec.dismissalIntroit;
+      } else if (dismissalSpec.opening === 'feast' && dismissalSpec.feastLabel) {
         opening = 'May Christ our true God,';
       } else if (dismissalSpec.opening === 'sunday') {
         opening = 'May He Who rose from the dead, Christ our true God,';

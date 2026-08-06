@@ -14,7 +14,7 @@ const { pickPrincipalByOrthocalOrder,
         loadOrthocalForDate }                     = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
-const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS } = require('../sources/propers');
+const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
 
 const { applyYouYour } = require('./pronouns');
 
@@ -400,13 +400,22 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // Weekday/Saturday: keep Octoechos aposticha, only overlay Menaion glory
           // (Octoechos provides the 3 base hymns; Menaion provides the Glory sticheron)
         } else {
-          // Great feast or no Octoechos base: replace slots with Menaion stichera
+          // Great feast or no Octoechos base: replace slots with Menaion stichera.
+          // A Great Feast's aposticha takes PROPER verses; the assembler otherwise
+          // falls back to the ordinary Ps. 122 table (Transfiguration printed
+          // "To Thee I lift up mine eyes" instead of "Tabor and Hermon shall
+          // rejoice"). Verses are indexed from the second sticheron — the first
+          // carries none — so slot i takes verse i-1.
+          const feastVerses = isGreatFeast
+            ? GREAT_FEAST_VARIANTS[calendarEntry.liturgicalContext.greatFeast]?.apostichaVerses
+            : null;
           apost.slots = apostStichera.map((s, i) => ({
             position: i + 1,
             source:   'menaion', provenance: menaionProvenance,
             key:      `auto.${date}.aposticha.hymns.${i}`,
             tone:     s.tone,
             label:    primary.title,
+            ...(i >= 1 && feastVerses?.[i - 1] ? { verse: feastVerses[i - 1] } : {}),
           }));
           // Add repeatPrevious placeholders only when fewer than 3 stichera are available
           while (apost.slots.length < 3) {
@@ -594,8 +603,18 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     calendarEntry.vespers.dismissal = {
       opening: feastKey ? 'feast' : (isSundayVespers ? 'sunday' : 'weekday'),
       feastLabel: feastKey || null,
-      dayPatron: DAY_PATRONS[dow] || null,
-      saints: (calendarEntry.commemorations || []).slice(0, 3).map(c => c.title),
+      // A Great Feast suppresses the daily cycle — the weekday patron does not
+      // belong in its dismissal (same defect fixed on the Liturgy path in
+      // liturgy-from-orthocal.js).
+      dayPatron: feastKey ? null : (DAY_PATRONS[dow] || null),
+      dismissalIntroit: (feastKey && GREAT_FEAST_VARIANTS[feastKey]?.dismissalIntroit) || null,
+      // When a festal introit names the feast, drop the feast from the saints
+      // list — otherwise it is announced twice. Mirrors the Liturgy dismissal,
+      // which skips feasts[0] for the same reason.
+      saints: (calendarEntry.commemorations || [])
+        .slice(feastKey && GREAT_FEAST_VARIANTS[feastKey]?.dismissalIntroit ? 1 : 0)
+        .slice(0, 3)
+        .map(c => c.title),
     };
   }
 

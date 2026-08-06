@@ -54,6 +54,9 @@ See `server-lib/sources/liturgy-from-orthocal.js` (after the `pickPrimaryAndSeco
 | INV-6 | On an ordinary weekday (e.g. 2026-06-22 Monday, no vigil/polyeleos rank), the daily Monday-Angels prokeimenon DOES render normally (gate must not over-fire). |
 | INV-7 | On a polyeleos Sunday (e.g. 2026-07-05 Sergius), Sunday cycle stays primary and the saint propers attach as secondary (existing `polyeleos-saint-propers` behavior is preserved — this gate doesn't override Sundays). |
 
+- **INV-8** — A Great Feast of the Lord on a weekday suppresses the day patron too. `isWeekdayGreatSaintFeast` requires `!feast` by construction, so it can never fire on a Great Feast; `dayPatron` is gated on `(feast || isWeekdayGreatSaintFeast)` on the Liturgy path and on `feastKey` on the Vespers path. Worked example: Transfiguration on a Thursday named "Nicholas the Wonderworker" until 2026-08-05.
+- **INV-9** — When `great-feast-variants.json` supplies a `dismissalIntroit`, the feast is named in the introit and dropped from the dismissal's saints list, so it is announced exactly once. Only `ascension` and `transfiguration` have an introit; the other 11 Great Feasts fall back to the generic "May Christ our true God," and still need one sourced.
+
 ## Implementation pointers
 
 - `server-lib/sources/liturgy-from-orthocal.js`:

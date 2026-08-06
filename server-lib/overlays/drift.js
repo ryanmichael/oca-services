@@ -533,17 +533,24 @@ function validateTextCosmetics() {
   if (!db) return { ok: true, warnings: 0 };
   try {
     let warnings = 0;
-    for (const tbl of ['troparia', 'stichera']) {
+    // commemorations.title is checked for entities too: titles are interpolated
+    // into the dismissal and section labels, so an undecoded &ldquo; is read
+    // aloud/printed. Transfiguration's Vespers dismissal named the feast as
+    // 'the Second &ldquo;Feast of the Savior&rdquo; in August'. Glued-punctuation
+    // does not apply to titles (they legitimately contain "Abp.", "St.").
+    for (const [tbl, col] of [['troparia', 'text'], ['stichera', 'text'], ['commemorations', 'title']]) {
       const exists = db.prepare(
         "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
       ).get(tbl);
       if (!exists) continue;
-      const rows = db.prepare(`SELECT id, text FROM ${tbl}`).all();
+      const rows = db.prepare(`SELECT id, ${col} AS text FROM ${tbl}`).all();
       for (const r of rows) {
+        if (!r.text) continue;
         if (ENTITY_RE.test(r.text)) {
-          console.warn(`${tbl} ${r.id} has a literal HTML entity in text: "${r.text.slice(0, 60)}…". Fix: decode it.`);
+          console.warn(`${tbl} ${r.id} has a literal HTML entity in ${col}: "${r.text.slice(0, 60)}…". Fix: decode it.`);
           warnings += 1;
         }
+        if (tbl === 'commemorations') continue;
         if (GLUED_RE.test(r.text)) {
           console.warn(`${tbl} ${r.id} has glued punctuation (missing space after . , ; : ! ?): "${r.text.slice(0, 60)}…". Fix: scripts/rescrape-diff — insertPunctuationSpaces.`);
           warnings += 1;

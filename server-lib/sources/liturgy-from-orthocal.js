@@ -733,7 +733,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       opening: (feast || isWeekdayGreatSaintFeast) ? 'feast'
              : (isSunday ? 'sunday' : 'weekday'),
       feastLabel: feast?.label || (isWeekdayGreatSaintFeast ? menaionPrincipal?.title : null) || null,
-      dayPatron: isWeekdayGreatSaintFeast ? null : (DAY_PATRONS[dow] || null),
+      // A Great Feast of the Lord suppresses the daily cycle too, but never set
+      // isWeekdayGreatSaintFeast — that flag requires `!feast` by construction.
+      // Without `feast` here, Transfiguration on a Thursday named the Thursday
+      // patron ("our father among the saints Nicholas the Wonderworker") in its
+      // dismissal. Applies to every Great Feast landing on a weekday.
+      dayPatron: (feast || isWeekdayGreatSaintFeast) ? null : (DAY_PATRONS[dow] || null),
       // Dismissal saints: prefer orthocal's "feasts" (major commemorations) over
       // "saints" (minor entries). On a great feast, skip feasts[0] — it's named
       // in the introit. Co-celebrated commemorations (Constantine & Helen on

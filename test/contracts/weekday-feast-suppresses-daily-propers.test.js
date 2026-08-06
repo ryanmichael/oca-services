@@ -118,6 +118,32 @@ describe('Feature contract: Vigil/Polyeleos weekday feast suppresses daily-cycle
       'dismissal must still name the feast saints');
   });
 
+  // ── 2026-08-06 Transfiguration (Thu) — Great Feast of the Lord, NOT a saint feast ──
+
+  it('INV-8: a Great Feast of the Lord on a weekday also suppresses the day patron', async () => {
+    // isWeekdayGreatSaintFeast requires `!feast` by construction, so it can never
+    // be true on a Great Feast. Before the fix, Transfiguration on a Thursday
+    // named the Thursday patron ("Nicholas the Wonderworker") in its dismissal.
+    for (const url of ['/api/liturgy?date=2026-08-06',
+                       '/api/service?date=2026-08-05&service=vespers']) {
+      const { json } = await get(url);
+      const full = blocksIn(json, 'Dismissal')
+        .filter(b => b.speaker === 'priest').map(b => b.text || '').join(' ');
+      assert.doesNotMatch(full, /Nicholas the Wonderworker/i,
+        `Thursday dayPatron must be suppressed on a Great Feast (${url}); dismissal was: ${full}`);
+      assert.match(full, /transfigured in glory on Mount Tabor/i,
+        `Great Feast dismissal must open with the festal introit (${url})`);
+    }
+  });
+
+  it('INV-9: the festal introit does not also name the feast in the saints list', async () => {
+    const { json } = await get('/api/service?date=2026-08-05&service=vespers');
+    const full = blocksIn(json, 'Dismissal')
+      .filter(b => b.speaker === 'priest').map(b => b.text || '').join(' ');
+    const hits = (full.match(/[Tt]ransfigur/g) || []).length;
+    assert.equal(hits, 1, `feast should be named exactly once, not repeated in the saints list: ${full}`);
+  });
+
   // ── 2026-06-24 Forerunner Nativity (Wed, vigil) — Forerunner aliased to Prophet ────
 
   it('INV-5: 2026-06-24 Liturgy primary prokeimenon is the prophet refrain (Forerunner→Prophet alias), not Wed-Theotokos daily', async () => {

@@ -1,43 +1,67 @@
 {
-  "key": "cherubic-hymn",
-  "_version": 1,
-  "_target": { "service": "liturgy", "path": "cherubic-hymn" },
-  "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
-  "_note": "Seed catalog for Phase 3. Lift more variants (Tchaikovsky, L'vovsky, Bortniansky) as parishes request them. The `value` object replaces the entire `cherubic-hymn` key in the liturgy overlay.",
-  "variants": [
-    {
-      "id": "russian-doubled-1",
-      "label": "Russian-tradition doubled phrases — Setting #1",
-      "aliases": ["tyler-1"],
-      "_provenance": {
-        "origin": "extracted-from-overlay",
-        "parish_id": "st-john-damascus-tyler",
-        "contributor": "admin",
-        "date": "2026-06-19",
-        "source_citation": "St. John of Damascus (Tyler) parish service folder"
-      },
-      "value": {
-        "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
-        "amen": "Amen.",
-        "part2": "That we may receive the King of all, Who comes invisibly, invisibly upborne by the angelic hosts.\nBy the angelic hosts.",
-        "alleluia": "Alleluia, alleluia, alleluia."
-      }
-    },
-    {
-      "id": "slavonic-calque",
-      "label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style)",
-      "_provenance": {
-        "origin": "seed",
-        "contributor": "admin",
-        "date": "2026-06-19",
-        "source_citation": "Jordanville Liturgikon"
-      },
-      "value": {
-        "part1": "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
-        "amen": "Amen.",
-        "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts.",
-        "alleluia": "Alleluia, alleluia, alleluia."
-      }
-    }
-  ]
+ "key": "cherubic-hymn",
+ "_version": 1,
+ "_target": {
+  "service": "liturgy",
+  "path": "cherubic-hymn"
+ },
+ "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
+ "_note": "Seed catalog for Phase 3. Lift more variants (Tchaikovsky, L'vovsky, Bortniansky) as parishes request them. The `value` object replaces the entire `cherubic-hymn` key in the liturgy overlay.",
+ "variants": [
+  {
+   "id": "russian-doubled-1",
+   "label": "Russian-tradition doubled phrases — Setting #1",
+   "aliases": [
+    "tyler-1"
+   ],
+   "_provenance": {
+    "origin": "extracted-from-overlay",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "admin",
+    "date": "2026-06-19",
+    "source_citation": "St. John of Damascus (Tyler) parish service folder"
+   },
+   "value": {
+    "part1": "Let us who mystically, mystically represent the Cherubim, the Cherubim.\n\nAnd who sing the Thrice-holy Hymn.\n\nAnd who sing the thrice-Holy hymn to the life-creating, life-creating Trinity.\n\nNow lay aside all cares, now lay aside all cares.\nLay aside all earthly cares.\nAll earthly cares.\n\n(Repeat until Great Entrance procession.)",
+    "amen": "Amen.",
+    "part2": "That we may receive the King of all, Who comes invisibly, invisibly upborne by the angelic hosts.\nBy the angelic hosts.",
+    "alleluia": "Alleluia, alleluia, alleluia."
+   }
+  },
+  {
+   "id": "slavonic-calque",
+   "label": "Greek/Slavonic word-order calque (Jordanville Liturgikon / Bortniansky-style)",
+   "_provenance": {
+    "origin": "seed",
+    "contributor": "admin",
+    "date": "2026-06-19",
+    "source_citation": "Jordanville Liturgikon"
+   },
+   "value": {
+    "part1": "We, the Cherubim mystically representing, and to the Life-giving Trinity the thrice-holy hymn chanting, let us now lay aside all earthly cares.",
+    "amen": "Amen.",
+    "part2": "That we may receive the King of all, Who cometh invisibly upborne by the angelic hosts.",
+    "alleluia": "Alleluia, alleluia, alleluia."
+   }
+  },
+  {
+   "id": "royster-bortniansky",
+   "label": "Archbishop Dmitri (Royster), Bortniansky setting — inverted word order",
+   "_provenance": {
+    "origin": "transcribed",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "choir director",
+    "date": "2026-08-07",
+    "source_citation": "St. John of Damascus (Tyler) parish choir book, 'Fixed sections Liturgy' pp.9-10 — 'Cherubim Hymn - 1', Bortniansky, 'Translation: +Dmitri (Royster); NAP'",
+    "supersedes": "russian-doubled-1"
+   },
+   "_note": "Header reads 'Cherubim Hymn - 1', so the parish book very likely carries further numbered settings. Repetitions below are exactly as engraved.",
+   "value": {
+    "part1": "We, the Cherubim mystically representing, mystically representing, and to the life-creating Trinity the thrice holy hymn singing, the thrice holy hymn with them singing, all life's cares now lay aside, all life's cares now lay aside, all life's cares now lay aside.",
+    "amen": "Amen.",
+    "part2": "That the King of all we may receive by angelic hosts invisibly escorted.",
+    "alleluia": "Alleluia, alleluia, alleluia, alleluia, alleluia."
+   }
+  }
+ ]
 }

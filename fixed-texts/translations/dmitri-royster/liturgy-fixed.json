@@ -1,0 +1,28 @@
+{
+  "_note": "Sparse overlay — only keys where the Royster text differs from the `oca` layer this extends. See manifest.json for transcription rules and for why the two typical antiphons are absent.",
+
+  "only-begotten-son": "Only-begotten Son and Immortal Word of God, who for our salvation didst will to be incarnate of the Holy Theotokos and Ever-virgin Mary, who without change didst become man, and wast crucified, O Christ our God, trampling down death by death, who art one of the Holy Trinity, glorified with the Father and the Holy Spirit, save us!",
+
+  "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth and of all things visible and invisible.\n\nAnd in one Lord, Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, True God of True God; begotten, not made; of one essence with the Father; by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified also for us under Pontius Pilate, and suffered, and was buried; and the third day He rose again according to the Scriptures; and ascended into heaven and sitteth at the right hand of the Father. And He shall come again with glory to judge the living and the dead; of His Kingdom there shall be no end.\n\nAnd in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father; who with the Father and the Son together is worshipped and glorified; who spake by the prophets.\n\nIn one holy catholic and apostolic Church. I confess one baptism for the forgiveness of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
+
+  "beatitudes": {
+    "_note": "Matthew 5:3-12, Royster. Differs from the `oca` layer at: 'Kingdom of heaven' (not 'of Heaven'), 'clean of heart' (not 'pure in heart'), 'children of God' (not 'sons of God'), 'they which are persecuted' (not 'they that are'), 'shall say every evil against you falsely' (not 'all manner of evil'), 'Rejoice, and be glad' (not 'be exceeding glad'), 'your reward in heaven' (not 'in the heavens'), and colons rather than commas at the caesura. Retains 'sated' from the HTM-style base. This is the text the parish described in May 2026 as 'just a little off from HTM-Boston'.",
+    "_source": "Tyler choir book p.8 — 'Third Antiphon: Beatitudes - 2', Zboinka; verses printed as plain numbered text beneath the sung refrain.",
+    "_rubricNote": "The source annotates verse 5 '(on 8)', verse 7 '(on 6)' and verse 9 '(on 4)' — the verse at which troparia begin for an 8-, 6- or 4-troparia count. Recorded here only; NOT wired into troparia placement.",
+    "verses": [
+      "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.",
+      "Blessed are the poor in spirit: for theirs is the Kingdom of heaven.",
+      "Blessed are they that mourn: for they shall be comforted.",
+      "Blessed are the meek: for they shall inherit the earth.",
+      "Blessed are they that hunger and thirst after righteousness: for they shall be sated.",
+      "Blessed are the merciful: for they shall obtain mercy.",
+      "Blessed are the clean of heart: for they shall see God.",
+      "Blessed are the peacemakers: for they shall be called the children of God.",
+      "Blessed are they which are persecuted for righteousness sake: for theirs is the Kingdom of heaven.",
+      "Blessed are ye, when men shall revile you and persecute you, and shall say every evil against you falsely for my sake.",
+      "Rejoice, and be glad: for great is your reward in heaven.",
+      "Glory to the Father, and to the Son, and to the Holy Spirit,",
+      "Both now and ever, and unto ages of ages. Amen."
+    ]
+  }
+}

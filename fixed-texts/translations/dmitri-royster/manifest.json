@@ -1,0 +1,15 @@
+{
+  "name": "Archbishop Dmitri (Royster)",
+  "kind": "tradition",
+  "jurisdiction": "oca",
+  "extends": ["oca"],
+  "listed": false,
+  "description": "The English translation of Archbishop Dmitri (Royster), late Archbishop of Dallas and the South (OCA), as used in the choir books of the Diocese of the South. Traditional register (Thee/Thou, -eth) with lowercase divine relative pronouns ('who for our salvation', 'thine own immaculate Body') — a house style consistent across both the engraved music and the typed pages of the source.",
+  "sources": "St. John of Damascus Orthodox Church, Tyler, TX — parish choir book, 'Fixed sections Liturgy' (15pp, scanned 2026-08-07; docs/Fixed Divine Liturgy - St John/). Each engraved page is signed 'Translation: +Dmitri (Royster); NAP'. Settings by Krasnostovsky (antiphons), D. Soloviev (Only-Begotten Son), Zboinka (Beatitudes), Bortniansky (Cherubic Hymn), and an unattributed 'Akathist melody' (Creed).",
+  "_transcription": {
+    "musicalElisions": "Expanded to full spelling. The engraving prints singers' elisions ('cath'lic', 'mystic'ly', 'long-suff'ring') to fit the note values; this is a text layer, so they are stored as 'catholic', 'mystically', 'long-suffering'. No other normalization was applied — capitalization and punctuation are as printed, including the source's inconsistent casing of divine pronouns.",
+    "paragraphing": "The Creed is engraved as continuous underlay with no paragraph marks. Paragraph breaks here follow the four-part division the `oca` layer already uses, so the two diff cleanly. Wording is unaltered.",
+    "notTranscribed": "typical-antiphon-1 and typical-antiphon-2 are deliberately ABSENT. The source scan is incomplete for both (First Antiphon skips mm. 35-80; Second Antiphon has a paste-up seam skipping mm. 36-71). Authoring them from the visible text would replace the 10- and 8-verse `oca` arrays with ~4 verses each and silently delete canon — the exact regression fixed in c95da45. Do not add them without the missing pages."
+  },
+  "_unknown": "The 'NAP' half of the attribution line is unidentified. Do not expand it in user-facing text until confirmed with the parish."
+}

@@ -222,13 +222,18 @@ function validateCommemorationDupes() {
 function validateRankSaintTypePopulated() {
   const { VIGIL_SAINTS, POLYELEOS_SAINTS } = require('../../calendar/fixed-feasts');
   const { getMenaionRanked } = require('../sources/menaion');
+  const { applyPrincipalOverride } = require('../sources/menaion-principal');
 
   const ranked = new Map([...VIGIL_SAINTS, ...POLYELEOS_SAINTS]);
   let warnings = 0;
   for (const [md, label] of ranked) {
     const [m, d] = md.split('-').map(Number);
     const r = getMenaionRanked(m, d);
-    const principal = r?.principal;
+    // Honor the curated principal overrides, exactly as the three service
+    // builders do. Without this the check reports on a principal no service
+    // actually renders — 8-9 flagged the Afterfeast of the Transfiguration
+    // when the override had already rebound the day to St. Herman of Alaska.
+    const principal = applyPrincipalOverride(m, d, r?.all, r?.principal);
     if (!principal) continue;  // no menaion data for this date — separate concern
     if (principal.saint_type) continue;
     // Principals that are not "saints" in the General-Menaion-category sense:
@@ -853,6 +858,142 @@ function validateSticheraCommemorationMismatch() {
   }
 }
 
+// Data-drift tripwire on the LABEL column, which no other rule reads.
+//
+// The OCA scrape carries each hymn's own section header into `stichera.label`
+// verbatim — "(for St. Herman)", "(for the Feast)". When the parser loses a
+// section boundary it keys a neighbor's hymns onto the wrong commemoration but
+// the label still names the true subject, so a label naming a saint who is NOT
+// this commemoration's subject — while a sibling commemoration on the same date
+// IS that saint — is a near-certain mis-key. Unlike the body-text subject rule
+// this needs no majority threshold and no per-section heuristics, so it is
+// immune to the feast-host exemption that let the 8-9 bleed through.
+//
+// Surfaced 2026-08-07: commemoration 1603 "Afterfeast of the Transfiguration"
+// carried seven hymns labeled "(for St. Herman)" / "(St. Herman)" while sibling
+// 1604 "Glorification of Venerable Herman of Alaska" had zero stichera. The
+// body-text rule missed it — hostIsFeast suppressed the per-section passes and
+// Herman was named in only 7/15 pooled hymns, under the 60% threshold.
+// Podoben (melody) markers ride along in the same parenthetical as the subject
+// — "(for the Feast)(Joseph of Arimathea)". They name the tune a sticheron is
+// sung to, not its subject, and several are saints' names that collide with
+// unrelated sibling commemorations. Stripped before subject extraction.
+const PODOBEN_MARKERS = [
+  'Joseph of Arimathea',
+  'O all-praised martyrs',
+  'When from the Tree',
+  'Thou didst seek the heights',
+  'You sought the heights',
+  'Come, let us worship the Word',
+  'Seeking the things on high',
+];
+
+// Same-class label mis-keys found by the 2026-08-07 year sweep that introduced
+// this rule, triaged as real but deferred: each needs its own per-row
+// reassignment against the OCA source docx, and the session that found them was
+// scoped to the 8-08/8-09 weekend. Queued, not silenced — remove an entry as it
+// is fixed. Tracked in project_session_handoff_2026_08_07.md.
+const KNOWN_LABEL_MISKEYS = new Set([
+  1,    // 1-1   Circumcision of the Lord     ← "(St. Basil)" x2 -> 3
+  17,   // 1-4   Synaxis of the Seventy       ← "(for Ven. Theoctistus)" x3 -> 19
+  63,   // 1-10  (9-13 sibling)               ← "(Sts. Gregory and Dometian)" -> 65
+  71,   // 1-11  Ven. Theodosius              ← "(Ven. Theodosius)" -> 74
+  124,  // 1-18  Athanasius & Cyril           ← "(Sts. Athanasius and Cyril)" x2 -> 125
+  154,  // 1-21  St. Neophytus                ← "(St. Neophytus)" -> 155
+  190,  // 1-25  St. Gregory                  ← "(St. Gregory)" x2 -> 191
+  613,  // 3-28  Ven. Hilarion                ← "(for Ven. Hilarion)" x3 -> 617
+  702,  // 4-7   St. Tikhon                   ← "(St. Tikhon)" -> 703
+  919,  // 5-8   John the Theologian          ← "(for St. Arsenius)" x2 -> 920
+  1127, // 6-6   Ven. Bessarion               ← "St. Hilarion" x5 -> 1128
+  1465, // 7-21  Prophet Ezekiel              ← "(Sts. Simeon and John)" x2 -> 1466
+  1533, // 7-31  Forefeast of the Procession  ← "(St. Eudocimus)" x2 -> 1534
+  1626, // 8-13  Leavetaking of Transfiguration ← "(St. Tikhon)" -> 1627
+  1707, // 8-22  Afterfeast of the Dormition  ← "the holy martyr Agathonicus" x8 -> 1708
+  1728, // 8-25  Relics of Apostle Bartholomew ← "(St. Titus)" -> 1729 (already in the 7-25 backlog)
+  1778, // 9-1   Church New Year              ← "(St. Simeon)" x2 -> 1779
+  1831, // 9-7   Forefeast of the Nativity of the Theotokos ← "(St. Sozon)" x2 -> 1832
+  1880, // 9-13  Forefeast of the Elevation   ← "(Founding)" -> 1881
+  2301, // 11-9  Onesiphorus & Porphyrius     ← "(Ven. Matrona)" -> 2302
+  2372, // 11-20 Forefeast of the Entry       ← "Saint Proclus" x5 -> 2374
+  2391, // 11-23 Afterfeast of the Entry      ← "(Sts. Amphilochius and Gregory)" -> 2399
+  2408, // 11-25 Leavetaking of the Entry     ← "(Sts. Clement and Peter)" -> 2410
+  2469, // 12-4  Alexander Hotovitzky         ← "(St. Barbara)" x2 -> 2470
+  2574, // 12-21 Forefeast of the Nativity    ← "(St. Juliana)" x2 -> 2577
+  2593, // 12-26 Second Day of the Nativity   ← "(Synaxis of the Theotokos)" -> 2594
+  2601, // 12-27 Righteous David/Joseph/James ← "(St. Stephen)" x2 -> 2606
+]);
+
+function validateSticheraLabelSubject() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const comms = db.prepare(
+      'SELECT id, month, day, title FROM commemorations'
+    ).all();
+    const byDate = new Map();
+    for (const c of comms) {
+      const k = `${c.month}-${c.day}`;
+      if (!byDate.has(k)) byDate.set(k, []);
+      byDate.get(k).push(c);
+    }
+    const hasStichera = new Set(
+      db.prepare('SELECT DISTINCT commemoration_id AS id FROM stichera').all().map(r => r.id)
+    );
+
+    const labelled = db.prepare(`
+      SELECT s.commemoration_id AS id, s.label, COUNT(*) AS n
+      FROM stichera s
+      WHERE s.label IS NOT NULL AND s.label != ''
+      GROUP BY s.commemoration_id, s.label
+    `).all();
+
+    let warnings = 0;
+    const reported = new Set();
+    for (const row of labelled) {
+      if (reported.has(row.id)) continue;
+      if (KNOWN_LABEL_MISKEYS.has(row.id)) continue;
+      const c = comms.find(x => x.id === row.id);
+      if (!c) continue;
+      const ownStems = titleStems(c.title);
+      const siblings = (byDate.get(`${c.month}-${c.day}`) || []).filter(o => o.id !== c.id);
+
+      // Strip melody markers and composer attributions ("by Theodore" = Theodore
+      // the Studite, the author, not the hymn's subject) before extraction.
+      let label = String(row.label).replace(/\bby\s+[A-Z][a-zá-ú]+/g, ' ');
+      for (const p of PODOBEN_MARKERS) label = label.split(p).join(' ');
+
+      for (const m of label.matchAll(/\b([A-Z][a-zá-ú]{4,})\b/g)) {
+        const w = m[1];
+        if (STICHERA_NAME_STOPWORDS.has(w)) continue;
+        const stem = nameStem(w);
+        if (ownStems.has(stem)) continue;                // label names this comm's own subject
+        const match = siblings.find(o => titleStems(o.title).has(stem));
+        if (!match) continue;                            // no sibling owns the name — not a mis-key
+        if (hasStichera.has(match.id)) continue;         // sibling has its own hymns — co-celebration, not a bleed
+        console.warn(
+          `Stichera under commemoration ${c.id} "${c.title}" (${c.month}-${c.day}) carry ` +
+          `label "${row.label}" (${row.n} row(s)) naming "${w}", but that subject is sibling ` +
+          `commemoration ${match.id} "${match.title}", which has no stichera of its own. ` +
+          `Likely scraper mis-key — reassign these stichera to ${match.id}.`
+        );
+        warnings += 1;
+        reported.add(row.id);
+        break;
+      }
+    }
+    if (warnings === 0) console.log('Stichera label↔commemoration subject match: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 // Commemorations verified to legitimately compose stichera from BOTH a
 // day-specific source and a General-Menaion (St. Sergius) source for the SAME
 // saint — e.g. day-specific Lord-I-Call numbered stichera plus a St-Sergius
@@ -926,6 +1067,7 @@ module.exports = {
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
   validateSticheraCommemorationMismatch,
+  validateSticheraLabelSubject,
   validateSticheraSourceMixing,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,

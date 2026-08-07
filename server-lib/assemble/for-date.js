@@ -148,7 +148,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           .sort((a, b) => a.order - b.order);
         for (const s of own) {
           if (s.order === 0) { if (!glory) glory = { ...s, label: s.label || c.title }; }
-          else combined.push({ ...s, order: n++, label: s.label || c.title });
+          // order<0 is the Now-and-ever slot, not a numbered sticheron. Renumbering
+          // it into the run cost the saint a slot — 8-09 sang the Afterfeast's
+          // "In Thy goodness" as a numbered sticheron and dropped St. Herman's
+          // third Tone-8 sticheron off the end.
+          else if (s.order >= 1) combined.push({ ...s, order: n++, label: s.label || c.title });
         }
       }
       if (glory) combined.unshift({ ...glory, order: 0 });

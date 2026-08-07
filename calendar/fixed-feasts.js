@@ -126,6 +126,7 @@ const POLYELEOS_SAINTS = new Map([
   ['7-20',  'Holy Glorious Prophet Elijah'],
   ['7-22',  'St. Mary Magdalene, Equal-to-the-Apostles'],
   ['7-26',  'Repose of St. Jacob Netsvetov, Enlightener of the Peoples of Alaska'],
+  ['8-9',   'Glorification of St. Herman of Alaska, Wonderworker of All America'],
   ['11-13', 'St. John Chrysostom'],
   ['11-14', 'Apostle Philip'],
   ['11-16', 'Apostle and Evangelist Matthew'],

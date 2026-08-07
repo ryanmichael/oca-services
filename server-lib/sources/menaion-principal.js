@@ -225,6 +225,13 @@ const PRINCIPAL_OVERRIDES = new Map([
   // Sep 16: Afterfeast of the Elevation + Great Martyr Euphemia the All-praised.
   // Parish sings Euphemia's Glory ("O all-glorious Euphemia") as the doxastikon.
   ['9-16', 'Euphemia'],
+  // Aug 9: Afterfeast of the Transfiguration + Glorification of St. Herman of
+  // Alaska. Orthocal lists Herman under feasts[], and the OCA order for the day
+  // gives him polyeleos rank (Wisdom paremias at Vespers, Magnification at
+  // Matins, second Liturgy propers) — but "Afterfeast " matches
+  // MOVEABLE_CYCLE_TITLE, so the picker pinned the Afterfeast and buried him.
+  // Surfaced 2026-08-07 by the weekly judge against the OCA order file.
+  ['8-9', 'Herman'],
 ]);
 
 // If the date has a curated override and a matching commemoration exists in the

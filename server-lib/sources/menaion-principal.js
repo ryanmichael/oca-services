@@ -130,6 +130,16 @@ const MOVEABLE_CYCLE_TITLE = new RegExp(
   + ')'
 );
 
+// The strict subset of MOVEABLE_CYCLE_TITLE that denotes a *fixed-feast window*
+// commemoration — the days surrounding a Great Feast, which carry that feast's
+// own troparion and kontakion. Used when a saint outranks the window and the
+// Feast's hymns must still be sung at the "Now and ever…" slot (Vespers
+// troparia, Liturgy kontakia). Deliberately narrower than MOVEABLE_CYCLE_TITLE:
+// Pascha, Holy Week and the Lenten Sundays are feast-only services whose hymns
+// are supplied by the Triodion/Pentecostarion, not by a Menaion row.
+const FEAST_CYCLE_TITLE =
+  /^(?:Afterfeast|Forefeast|Leavetaking|Midfeast|Postfeast) /;
+
 // Co-celebration hints from orthocal use "/" or ";" as separators between
 // the day's commemorations, with the FIRST segment being the primary by
 // OCA typikon precedence. Example: "St Tikhon, Patriarch of Moscow / Holy
@@ -267,4 +277,5 @@ module.exports = {
   loadOrthocalForDate,
   tokenizeTitle,
   MOVEABLE_CYCLE_TITLE,
+  FEAST_CYCLE_TITLE,
 };

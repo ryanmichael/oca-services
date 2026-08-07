@@ -11,7 +11,8 @@ const { getCalendarEntry }                        = require('../sources/calendar
 const { getMenaionRanked }                        = require('../sources/menaion');
 const { pickPrincipalByOrthocalOrder,
         applyPrincipalOverride,
-        loadOrthocalForDate }                     = require('../sources/menaion-principal');
+        loadOrthocalForDate,
+        FEAST_CYCLE_TITLE }                       = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
@@ -189,6 +190,27 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     if (primary) {
       const troparion = primary.troparia.find(t => t.type === 'troparion');
       const autoSlot  = { troparion: { text: troparion.text, tone: troparion.tone, label: primary.title } };
+
+      // Afterfeast/forefeast troparion for the Now-and-ever slot. When a saint
+      // outranks the feast-cycle commemoration (so the feast is NOT the
+      // principal), the Feast's troparion — not the resurrectional dismissal
+      // Theotokion — takes "Now and ever…". Per the OCA order for 8-09:
+      //   Resurrectional Troparion, Tone 1
+      //   Glory… Troparion of St. Herman, Tone 7
+      //   Now and ever… Troparion of the Feast, Tone 7
+      // The row already carries the right text and tone; it was simply being
+      // dropped because it is not the principal. Only fires when the two differ,
+      // so ordinary afterfeast days (feast IS principal) are untouched.
+      const feastCycleComm = (ranked?.notable || []).find(
+        c => c.id !== primary.id && FEAST_CYCLE_TITLE.test(c.title || ''));
+      const feastCycleTrop = feastCycleComm?.troparia?.find(t => t.type === 'troparion');
+      if (feastCycleTrop) {
+        autoSlot.feastTroparion = {
+          text:  feastCycleTrop.text,
+          tone:  feastCycleTrop.tone,
+          label: feastCycleComm.title,
+        };
+      }
 
       // Determine provenance label for dev-mode display
       const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
@@ -547,7 +569,13 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           tone:     troparion.tone,
           label:    primary.title,
         });
-        slots.push({
+        slots.push(autoSlot.feastTroparion ? {
+          position: 'now',
+          source:   'menaion', provenance: menaionProvenance,
+          key:      `auto.${date}.feastTroparion`,
+          tone:     autoSlot.feastTroparion.tone,
+          label:    autoSlot.feastTroparion.label,
+        } : {
           position: 'now',
           source:   'octoechos',
           key:      `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
@@ -572,7 +600,13 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         // re-key to the saint's tone (all 8 dismissal Theotokia exist in the
         // Octoechos). Guarded by D16-vespers-troparia-theotokion-tone.
         if (nowIdx !== -1 && slots[nowIdx].source === 'octoechos') {
-          slots[nowIdx] = {
+          slots[nowIdx] = autoSlot.feastTroparion ? {
+            ...slots[nowIdx],
+            source:      'menaion', provenance: menaionProvenance,
+            key:         `auto.${date}.feastTroparion`,
+            tone:        autoSlot.feastTroparion.tone,
+            label:       autoSlot.feastTroparion.label,
+          } : {
             ...slots[nowIdx],
             key:  `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
             tone: troparion.tone,

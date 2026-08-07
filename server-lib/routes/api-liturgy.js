@@ -198,7 +198,11 @@ function handle(req, res, ctx) {
           if (isSundayLocal) {
             const lit = calendarEntry.liturgy;
             const resK    = lit.kontakia.find(k => /Resurrection/i.test(k.rubric || ''));
-            const saintKs = lit.kontakia.filter(k => k !== resK);
+            // Afterfeast/forefeast kontakion (tagged upstream in
+            // liturgy-from-orthocal). It claims the "Now and ever…" slot, so it
+            // is neither the Glory kontakion nor an extra saint kontakion.
+            const feastK  = lit.kontakia.find(k => k.feastCycle);
+            const saintKs = lit.kontakia.filter(k => k !== resK && k !== feastK);
             const principalSundayFeast = !!lit.hasCocelebratedOverlay;
 
             let gloryK = null;
@@ -224,14 +228,22 @@ function handle(req, res, ctx) {
               lentenWeek === 1 || lentenWeek === 2 || lentenWeek === 3
               || lentenWeek === 4 || lentenWeek === 5;
 
-            if (gloryK && isLentenCommemorationSunday) {
+            // A feast window (Forefeast of the Annunciation can fall on a
+            // Lenten Sunday) needs the standard shape, since its kontakion owns
+            // the "Now and ever…" the combined connector would swallow.
+            if (gloryK && isLentenCommemorationSunday && !feastK) {
               lit.kontakia = [
                 ...(extraK ? [{ ...extraK, connector: null }] : []),
                 { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit. Now and ever, and unto ages of ages. Amen.' },
               ];
             } else if (gloryK) {
               const theo = liturgyFixedResolved['kontakion-theotokion'];
-              const theoK = theo ? {
+              // Inside a feast window the Feast's own kontakion takes "Now and
+              // ever…"; the generic Theotokion-Kontakion yields to it.
+              const theoK = feastK ? {
+                ...feastK,
+                connector: 'Now and ever, and unto ages of ages. Amen.',
+              } : theo ? {
                 tone:   theo.tone,
                 rubric: theo.rubric,
                 text:   theo.text,
@@ -245,7 +257,10 @@ function handle(req, res, ctx) {
                 ...(theoK ? [theoK] : []),
               ];
             } else if (resK) {
-              lit.kontakia = [{ ...resK, connector: null }];
+              lit.kontakia = [
+                { ...resK, connector: null },
+                ...(feastK ? [{ ...feastK, connector: 'Now and ever, and unto ages of ages. Amen.' }] : []),
+              ];
             }
           }
         }

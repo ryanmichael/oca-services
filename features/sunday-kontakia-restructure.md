@@ -60,6 +60,7 @@ The Resurrection kontakion leads every Sunday path (prepended in the standard-Su
 - **INV-2** — On a Sunday with a menaion saint kontakion and no parish patron, the Kontakia section ends with: `Glory: …` → `<saint kontakion>` → `Now and ever: …` → `Kontakion-Theotokion`.
 - **INV-3** — On a weekday Liturgy, the Sunday restructure does not apply: no `Kontakion-Theotokion` block appears in the rendered Kontakia section.
 - **INV-4** — On a Great Feast / `feastOnly` Sunday, the Sunday restructure is skipped: no `Kontakion-Theotokion` block appears (the feast's own kontakia render as authored).
+- **INV-6** — Inside an afterfeast/forefeast window where a **saint outranks the feast**, the Feast's own kontakion takes the Now slot and the generic Kontakion-Theotokion is not rendered at all. The feast kontakion arrives tagged `feastCycle: true` from `buildLiturgyFromOrthocal`; the restructure excludes it from `saintKs` so it can never be mistaken for the Glory kontakion, and the Lenten combined-connector branch is bypassed when it is present (a Forefeast of the Annunciation can land on a Lenten Sunday, and the combined `Glory… now and ever…` would swallow the slot the Feast owns). Guarded by `test/contracts/afterfeast-buries-polyeleos-saint.test.js` INV-11/INV-12.
 - **INV-5** — When the Now-slot Kontakion-Theotokion renders, its text matches the `kontakion-theotokion` fixed-text key (regression guard against silent text drift on the "Protection of Christians" wording).
 
 ## Edge cases & follow-ups
@@ -73,6 +74,7 @@ The Resurrection kontakion leads every Sunday path (prepended in the standard-Su
 - 2026-06-21 — Ven. Ananias the Iconographer (simple-rank), default no-overlay — INV-1, INV-2, INV-5.
 - 2026-06-22 — Monday Liturgy (Hieromartyr Eusebius) — INV-3.
 - 2026-04-12 — Pascha (feastOnly) — INV-4.
+- 2026-08-09 — St. Herman of Alaska inside the Transfiguration afterfeast — INV-6 (`Now: Kontakion of the Afterfeast, Tone 7`, verified against `reference/orders/2026-0809-order-services.txt`). Same branch: 2026-12-20 (Sunday before the Nativity + Forefeast), 2026-09-16 and 2026-05-06 on the weekday path.
 
 ## Keep in sync
 
@@ -82,3 +84,4 @@ Code changes that require updating the behavior table and contract tests:
 - The `kontakion-theotokion` entry in `fixed-texts/liturgy-fixed.json` (text, tone, or rubric — INV-5 will catch drift but the table should be updated too)
 - `_litKontakia` connector rendering (label-only `Glory:`/`Now:` rubric lines)
 - Any new rule (e.g. Pentecostarion-Sunday-specific) that bypasses or modifies the restructure
+- `FEAST_CYCLE_TITLE` in `server-lib/sources/menaion-principal.js`, and the `feastCycle` tag emitted alongside it in `buildLiturgyFromOrthocal` (INV-6)

@@ -171,4 +171,68 @@ describe('Regression contract: Afterfeast must not bury a polyeleos saint (8-09 
         `old-style ${date}: expected megalynarion=${want}`);
     }
   });
+
+  // ── The feast window is not a lesser saint ────────────────────────────────
+  // When a saint outranks the afterfeast/forefeast, the feast's own hymns are
+  // still sung — the troparion after the Resurrection troparion, the kontakion
+  // at "Now and ever…". Before the fix the Vespers Now slot fell back to the
+  // Octoechos dismissal Theotokion and the Liturgy Now slot to the generic
+  // Kontakion-Theotokion ("Protection of Christians"), and the Feast troparion
+  // was dropped from the Liturgy entirely by the includeLesserSaints default.
+
+  const FEAST_TROPARION = /Thou wast [Tt]ransfigured on the Mount/;
+  const FEAST_KONTAKION = /On the Mountain Thou wast Transfigured/;
+
+  it('INV-9: Vespers sings the Feast troparion at "Now and ever", not the dismissal Theotokion', async () => {
+    // Vespers is date-shifted: 8-08 civil evening carries 8-09 content.
+    const { json } = await get('/api/service?date=2026-08-08');
+    const troparia = json.blocks.filter(b => /Troparia/i.test(b.section || ''));
+    const now = troparia[troparia.length - 1];
+    assert.ok(FEAST_TROPARION.test(now.text || ''),
+      'the last Troparia block must be the Feast troparion');
+    assert.ok(!/Since thou art the treasure of our Resurrection/.test(
+      troparia.map(b => b.text || '').join('\n')),
+      'the Tone-7 resurrectional dismissal Theotokion must not be sung');
+  });
+
+  it('INV-10: Liturgy sings Resurrection → Feast → Saint troparia in that order', async () => {
+    const { json } = await get('/api/liturgy?date=2026-08-09');
+    const hymns = json.blocks
+      .filter(b => /Troparia/i.test(b.section || '') && b.type === 'hymn')
+      .map(b => b.text || '');
+    assert.equal(hymns.length, 3, 'expected exactly three Liturgy troparia');
+    assert.ok(/When the stone had been sealed/.test(hymns[0]), 'first: Resurrection');
+    assert.ok(FEAST_TROPARION.test(hymns[1]),                  'second: the Feast');
+    assert.ok(/O joyful North Star/.test(hymns[2]),            'third: St. Herman');
+  });
+
+  it('INV-11: the Feast kontakion holds the Liturgy "Now and ever", displacing "Protection of Christians"', async () => {
+    const { json } = await get('/api/liturgy?date=2026-08-09');
+    const kont = json.blocks.filter(b => /Kontakia/i.test(b.section || ''));
+    const text = kont.map(b => b.text || '').join('\n');
+    assert.ok(!/Protection of Christians that cannot be put to shame/.test(text),
+      'the generic Kontakion-Theotokion must yield to the Feast kontakion');
+    // …and it must come after the "Now and ever" connector, not before it.
+    const nowIdx   = kont.findIndex(b => /^Now and ever/.test(b.text || ''));
+    const feastIdx = kont.findIndex(b => FEAST_KONTAKION.test(b.text || ''));
+    assert.ok(nowIdx !== -1 && feastIdx > nowIdx,
+      'the Feast kontakion must follow the "Now and ever" connector');
+    // St. Herman keeps the Glory slot — the Feast must not steal it.
+    const gloryIdx  = kont.findIndex(b => /^Glory to the Father/.test(b.text || ''));
+    const hermanIdx = kont.findIndex(b => /The eternal light of Christ our Savior/.test(b.text || ''));
+    assert.ok(gloryIdx !== -1 && hermanIdx > gloryIdx && hermanIdx < nowIdx,
+      'St. Herman must hold the Glory kontakion');
+  });
+
+  it('INV-12: an ordinary afterfeast day (feast IS the principal) is untouched', async () => {
+    // 8-10 has no saint outranking the window, so the rule must not double-print
+    // the Feast troparion/kontakion that the principal loop already emits.
+    const { json } = await get('/api/liturgy?date=2026-08-10');
+    const trop = json.blocks.filter(b => /Troparia/i.test(b.section || '') && b.type === 'hymn');
+    const kont = json.blocks.filter(b => /Kontakia/i.test(b.section || '') && b.type === 'hymn');
+    assert.equal(trop.filter(b => FEAST_TROPARION.test(b.text || '')).length, 1,
+      'the Feast troparion must be sung exactly once');
+    assert.equal(kont.filter(b => FEAST_KONTAKION.test(b.text || '')).length, 1,
+      'the Feast kontakion must be sung exactly once');
+  });
 });

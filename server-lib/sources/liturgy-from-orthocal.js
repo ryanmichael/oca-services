@@ -67,7 +67,8 @@ const {
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
-const { pickPrincipalByOrthocalOrder, applyPrincipalOverride } = require('./menaion-principal');
+const { pickPrincipalByOrthocalOrder, applyPrincipalOverride,
+        FEAST_CYCLE_TITLE } = require('./menaion-principal');
 
 // Falls back from the menaion DB's `saint_type` column when it's missing —
 // most commonly on "Uncovering of the relics of …", "Translation of the relics
@@ -325,6 +326,20 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     if (fathersComm) menaionPrincipal = fathersComm;
   }
 
+  // Afterfeast/forefeast commemoration when it is NOT the principal — i.e. a
+  // saint outranks the feast window. Its troparion and kontakion are still sung:
+  // the troparion directly after the Resurrection troparion, the kontakion at
+  // "Now and ever…" in place of the Kontakion-Theotokion. Per the OCA order for
+  // 8-09 (St. Herman of Alaska inside the Transfiguration afterfeast):
+  //   Troparion of the Resurrection / of the Feast / of St. Herman
+  //   Kontakion of the Resurrection / Glory… St. Herman / Now… the Feast
+  // `includeLesserSaints` is false by default, which dropped the feast row
+  // entirely — but a feast window is not a lesser saint.
+  const feastCycleComm = (ranked?.notable || []).find(
+    c => c.id !== menaionPrincipal?.id && FEAST_CYCLE_TITLE.test(c.title || ''));
+  const feastCycleTrop = feastCycleComm?.troparia?.find(t => t.type === 'troparion');
+  const feastCycleKont = feastCycleComm?.troparia?.find(t => t.type === 'kontakion');
+
   // Now resolve primary/secondary readings. When orthocal returns a special-
   // cycle override as the primary, the regular Sunday-cycle reading is
   // suppressed; a co-celebrated saint reading further down survives. The
@@ -386,6 +401,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       troparia.push({ tone, rubric: `Troparion of the Resurrection, Tone ${tone}:`, text: troparionText });
     }
 
+    // Feast-window troparion (see feastCycleComm above) — sits between the
+    // Resurrection troparion and the day's saint. Skipped when the feast window
+    // IS the principal, since the loop below already emits it.
+    if (feastCycleTrop && !includeLesserSaints) {
+      troparia.push({
+        tone:   feastCycleTrop.tone,
+        rubric: `Troparion of ${feastCycleComm.title}, Tone ${feastCycleTrop.tone}:`,
+        text:   feastCycleTrop.text,
+      });
+    }
+
     // Inject Menaion troparia from DB.
     // Group by troparion text so commemorations sharing a generic troparion
     // (e.g. the "By a flood of tears..." monastic troparion used by every
@@ -432,9 +458,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // Inject Menaion kontakia from DB. Group by text like troparia above so
     // shared kontakia (less common but possible for paired saints) collapse.
     if (ranked?.notable) {
-      const sourceComms = includeLesserSaints
+      // The feast window is pulled out of the saint pool here and re-appended
+      // below, because its kontakion claims the "Now and ever…" slot at the END
+      // rather than a saint slot — it must not become the Glory kontakion.
+      const sourceComms = (includeLesserSaints
         ? ranked.notable
-        : (menaionPrincipal ? [menaionPrincipal] : []);
+        : (menaionPrincipal ? [menaionPrincipal] : [])
+      ).filter(c => c.id !== feastCycleComm?.id);
       const groups = new Map();
       for (const comm of sourceComms) {
         const kont = comm.troparia.find(t => t.type === 'kontakion');
@@ -452,6 +482,19 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       for (const { tone, text, titles } of groups.values()) {
         kontakia.push({ tone, rubric: `Kontakion of ${joinTitles(titles)}, Tone ${tone}:`, text });
       }
+    }
+
+    // Feast-window kontakion, last — it holds "Now and ever…". `feastCycle`
+    // tags it so the Sunday-kontakia restructure puts it where the
+    // Kontakion-Theotokion ("Protection of Christians…") would otherwise go
+    // instead of mistaking it for a second saint kontakion.
+    if (feastCycleKont) {
+      kontakia.push({
+        tone:   feastCycleKont.tone,
+        rubric: `Kontakion of ${feastCycleComm.title}, Tone ${feastCycleKont.tone}:`,
+        text:   feastCycleKont.text,
+        feastCycle: true,
+      });
     }
   }
 

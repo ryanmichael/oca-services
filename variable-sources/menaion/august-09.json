@@ -79,9 +79,18 @@
       "_note": "Feast theotokion for afterfeast"
     },
     "otReadings": [
-      { "book": "Acts of the Apostles", "reference": "Acts 1:15-26" },
-      { "book": "First Epistle of St. John", "reference": "1 John 3:21–4:6" },
-      { "book": "First Epistle of St. John", "reference": "1 John 4:11-16" }
+      {
+        "book": "Wisdom of Solomon",
+        "reference": "Wisdom of Solomon 3:1-9"
+      },
+      {
+        "book": "Wisdom of Solomon",
+        "reference": "Wisdom of Solomon 5:15-6:3"
+      },
+      {
+        "book": "Wisdom of Solomon",
+        "reference": "Wisdom of Solomon 4:7-15"
+      }
     ],
     "aposticha": {
       "stichera": [
@@ -116,7 +125,8 @@
         "tone": 2,
         "label": "Both now — Feast (Transfiguration)"
       }
-    }
+    },
+    "_otReadingsNote": "The three paremias are St. Herman's, per reference/orders/2026-0809-order-services.txt and orthocal's own Vespers readings for the date. This file is St-Sergius-sourced and previously carried Apostle Matthias's NT readings (Acts 1:15-26; 1 John 3:21-4:6; 4:11-16), which the OCA order does not appoint at Vespers on this day. Replaced 2026-08-07."
   },
   "matins": {
     "_meta": {
@@ -190,25 +200,61 @@
         "irmos": "The people of Israel passed dry-shod across the watery deep of the Red Sea, and beholding the riders and captains of the enemy swallowed by the waters, they cried out for joy: 'Let us chant unto our God, for He hath been glorified.'",
         "irmos2": "Let us sing unto the Lord, who led His people through the Red Sea: for He alone hath gloriously been glorified.",
         "troparia": [
-          { "text": "Speaking words of life and giving instruction concerning that which is divine, Christ said to his friends: 'Recognize the Father in Me, for I emit unapproachable light, unto the joy of those who chant: Let us sing unto our God, for He hath been glorified!'" },
-          { "text": "'Ye will be invested with the power of tongues, O My friends and disciples, and will be marvelous in the richness thereof, for ye will be filled with glory. For I shall reveal Myself to be brighter than the sun, illumining those who chant in joy: Let us sing unto our God, for He hath been glorified!'" },
-          { "text": "Shining forth today with divine radiance on Mount Tabor, as He promised, Christ hath laid bare His countenance to His disciples. And, full of light-bearing and divine splendor, they chanted in joy: Let us sing unto our God, for He hath been glorified!" },
-          { "text": "O Matthias, bestow thou a beam of salvation from heaven upon me who now hymn thy radiant festival with hymns, I pray.", "canon": "secondCanon" },
-          { "text": "Thou hast been revealed to be a great sun of the great Light, O right wondrous one; for thou hast conversed directly with God Who is with us, O apostle.", "canon": "secondCanon" },
-          { "text": "Submitting to the laws of the Master, O blessed one, with the net of thy tongue thou didst draw forth the ends of the earth from the abyss of ignorance.", "canon": "secondCanon" },
-          { "text": "In His goodness, the supremely divine Word saveth all of me, for He desired to become incarnate of thy womb, O pure Mother of God.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Speaking words of life and giving instruction concerning that which is divine, Christ said to his friends: 'Recognize the Father in Me, for I emit unapproachable light, unto the joy of those who chant: Let us sing unto our God, for He hath been glorified!'"
+          },
+          {
+            "text": "'Ye will be invested with the power of tongues, O My friends and disciples, and will be marvelous in the richness thereof, for ye will be filled with glory. For I shall reveal Myself to be brighter than the sun, illumining those who chant in joy: Let us sing unto our God, for He hath been glorified!'"
+          },
+          {
+            "text": "Shining forth today with divine radiance on Mount Tabor, as He promised, Christ hath laid bare His countenance to His disciples. And, full of light-bearing and divine splendor, they chanted in joy: Let us sing unto our God, for He hath been glorified!"
+          },
+          {
+            "text": "O Matthias, bestow thou a beam of salvation from heaven upon me who now hymn thy radiant festival with hymns, I pray.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou hast been revealed to be a great sun of the great Light, O right wondrous one; for thou hast conversed directly with God Who is with us, O apostle.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Submitting to the laws of the Master, O blessed one, with the net of thy tongue thou didst draw forth the ends of the earth from the abyss of ignorance.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "In His goodness, the supremely divine Word saveth all of me, for He desired to become incarnate of thy womb, O pure Mother of God.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "ode3": {
         "irmos": "The bow of the mighty hath waxed feeble, and the weak have girded themselves with strength: therefore is my heart established in the Lord.",
         "irmos2": "O Lord, thou art the confirmation of those who flee to Thee, Thou art the Light of those in darkness, and my spirit doth hymn Thee.",
         "troparia": [
-          { "text": "Having put on all of Adam and transformed the nature which of old had become dark, Thou didst illumine it with the transfiguration of Thine appearance, rendering it divine, O Christ." },
-          { "text": "Christ, Who of old guided Israel in the wilderness by the pillar of fire and the cloud, hath ineffably shone forth in light today upon Mount Tabor." },
-          { "text": "Strengthened by the hand of the Author of life, O wise one, thou wast able to snatch away the spoils of the mighty one and enslave him by grace.", "canon": "secondCanon" },
-          { "text": "Loving the Teacher and serving Him industriously, O right wondrous one, thou dost save us from deception.", "canon": "secondCanon" },
-          { "text": "The all-accomplishing Spirit chose thee, O divinely eloquent one, to fill the twelfth place in the holy choir of the disciples.", "canon": "secondCanon" },
-          { "text": "Possessing thine aid, O pure one, I fear not the assaults of wicked enemies; for having thee as an intercessor, I vanquish the hordes thereof.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Having put on all of Adam and transformed the nature which of old had become dark, Thou didst illumine it with the transfiguration of Thine appearance, rendering it divine, O Christ."
+          },
+          {
+            "text": "Christ, Who of old guided Israel in the wilderness by the pillar of fire and the cloud, hath ineffably shone forth in light today upon Mount Tabor."
+          },
+          {
+            "text": "Strengthened by the hand of the Author of life, O wise one, thou wast able to snatch away the spoils of the mighty one and enslave him by grace.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Loving the Teacher and serving Him industriously, O right wondrous one, thou dost save us from deception.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "The all-accomplishing Spirit chose thee, O divinely eloquent one, to fill the twelfth place in the holy choir of the disciples.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Possessing thine aid, O pure one, I fear not the assaults of wicked enemies; for having thee as an intercessor, I vanquish the hordes thereof.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "kontakionAfterOde3": {
@@ -233,41 +279,103 @@
         "irmos": "I have heard of Thy glorious Dispensation, O Christ our God: how Thou wast born of the Virgin, that Thou mightest deliver from error those who cry aloud to Thee: Glory to Thy power, O Lord.",
         "irmos2": "O Lord, I have heard the mystery of Thy dispensation; I have considered Thy works, and I have glorified Thy Divinity.",
         "troparia": [
-          { "text": "Forming the law in writing on Sinai, O Christ God, Thou wast manifest, borne in the cloud, the fire, the darkness and the whirlwind. Glory to Thy power, O Lord!" },
-          { "text": "That Thou mayest confirm Thy glorious dispensation, O Christ God, in that Thou hast existed from before the beginning of time, Thou didst shine forth ineffably on Tabor, likewise setting Thine ascent in a cloud." },
-          { "text": "Those who conversed with Thee as servants stood before Thee, O Master Christ; and Thou didst converse with them in the fire and darkness, and the moist whistling wind. Glory to Thy power, O Lord!" },
-          { "text": "Moses, Who of old foresaw Thee in the fire and the bush, and Elijah, who was taken up in the chariot of fire, arriving on Tabor proclaimed Thy glory, for the sake of Thy Cross, O Christ." },
-          { "text": "Proclaiming the one Essence of the Godhead, the one Monarchy and Dominion, O most blessed one, thou didst pursue the flock of the nations.", "canon": "secondCanon" },
-          { "text": "The Lord brought thee to the sea of life, O most wise one, like a horse roiling the bitter waters of polytheism.", "canon": "secondCanon" },
-          { "text": "With divine discourse thou didst renew stony hearts, O glorious one, sowing piety and the knowledge of the Truth.", "canon": "secondCanon" },
-          { "text": "O vessel of virginity and habitation of the infinite Being, illumine my soul, which hath been darkened by many passions.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Forming the law in writing on Sinai, O Christ God, Thou wast manifest, borne in the cloud, the fire, the darkness and the whirlwind. Glory to Thy power, O Lord!"
+          },
+          {
+            "text": "That Thou mayest confirm Thy glorious dispensation, O Christ God, in that Thou hast existed from before the beginning of time, Thou didst shine forth ineffably on Tabor, likewise setting Thine ascent in a cloud."
+          },
+          {
+            "text": "Those who conversed with Thee as servants stood before Thee, O Master Christ; and Thou didst converse with them in the fire and darkness, and the moist whistling wind. Glory to Thy power, O Lord!"
+          },
+          {
+            "text": "Moses, Who of old foresaw Thee in the fire and the bush, and Elijah, who was taken up in the chariot of fire, arriving on Tabor proclaimed Thy glory, for the sake of Thy Cross, O Christ."
+          },
+          {
+            "text": "Proclaiming the one Essence of the Godhead, the one Monarchy and Dominion, O most blessed one, thou didst pursue the flock of the nations.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "The Lord brought thee to the sea of life, O most wise one, like a horse roiling the bitter waters of polytheism.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "With divine discourse thou didst renew stony hearts, O glorious one, sowing piety and the knowledge of the Truth.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "O vessel of virginity and habitation of the infinite Being, illumine my soul, which hath been darkened by many passions.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "ode5": {
         "irmos": "Thou hast parted light from the primal chaos, that Thy works might hymn Thee in light, O Christ, as their Creator: do Thou direct our paths in Thy light.",
         "irmos2": "O Light never-waning, why hast Thou turned Thy face from me and why hath the alien darkness surrounded me, wretched though I be? But do Thou guide my steps I implore Thee and turn me back towards the light of Thy commandments.",
         "troparia": [
-          { "text": "The mountains bowed themselves before Thy face; for Thou wast well pleased to accept, in Thine earthly form, the light and heavenly rays which the sun came and laid at Thy feet." },
-          { "text": "Moses and Elijah cried to the disciples who were being instructed on holy Mount Tabor: 'Behold, Christ the Savior is the God Whom we proclaimed of old!'" },
-          { "text": "The immutable nature, having mingled itself with human nature, shone forth ineffably, abundantly disclosing to the apostles the light of the immaterial Godhead." },
-          { "text": "When the disciples beheld Thee, the ever-existent Effulgence, shining in the glory of the Father, O Christ, they cried out to Thee: 'Direct Thou our paths in Thy light!'" },
-          { "text": "The true Vine put thee forth as a most fertile branch producing the grapes which exude the wine of salvation; and drinking thereof, O blessed one, we who are held fast by ignorance have cast off the drunkenness of deception.", "canon": "secondCanon" },
-          { "text": "Thou wast shown to fulfill the choir of the twelve disciples from which the betrayer had cast himself, finding bitter strangulation, having lifted his heel against Christ, O wondrous Matthias, proclaimer of the mysteries.", "canon": "secondCanon" },
-          { "text": "Thou wast cast into the world as divine salt, O blessed and most praised Apostle Matthias, cleansing away the corruption of falsehood with sweet doctrines, driving away sickness and healing wounds of body and soul.", "canon": "secondCanon" },
-          { "text": "By thy most pure birthgiving, O Virgin Bride of God, Adam shed the ugly garments of ancient mortality and clothed himself in a holy robe of truth which was in nowise polluted by the passions.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "The mountains bowed themselves before Thy face; for Thou wast well pleased to accept, in Thine earthly form, the light and heavenly rays which the sun came and laid at Thy feet."
+          },
+          {
+            "text": "Moses and Elijah cried to the disciples who were being instructed on holy Mount Tabor: 'Behold, Christ the Savior is the God Whom we proclaimed of old!'"
+          },
+          {
+            "text": "The immutable nature, having mingled itself with human nature, shone forth ineffably, abundantly disclosing to the apostles the light of the immaterial Godhead."
+          },
+          {
+            "text": "When the disciples beheld Thee, the ever-existent Effulgence, shining in the glory of the Father, O Christ, they cried out to Thee: 'Direct Thou our paths in Thy light!'"
+          },
+          {
+            "text": "The true Vine put thee forth as a most fertile branch producing the grapes which exude the wine of salvation; and drinking thereof, O blessed one, we who are held fast by ignorance have cast off the drunkenness of deception.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou wast shown to fulfill the choir of the twelve disciples from which the betrayer had cast himself, finding bitter strangulation, having lifted his heel against Christ, O wondrous Matthias, proclaimer of the mysteries.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou wast cast into the world as divine salt, O blessed and most praised Apostle Matthias, cleansing away the corruption of falsehood with sweet doctrines, driving away sickness and healing wounds of body and soul.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "By thy most pure birthgiving, O Virgin Bride of God, Adam shed the ugly garments of ancient mortality and clothed himself in a holy robe of truth which was in nowise polluted by the passions.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "ode6": {
         "irmos": "In mine affliction I cried unto the Lord, the God of my salvation, and He hearkened unto me.",
         "irmos2": "Cleanse me, O Savior, for many are mine iniquities; lead me up from the abyss of evils I pray Thee, for unto Thee have I cried, and Thou hast hearkened unto me, O God of my salvation.",
         "troparia": [
-          { "text": "Shining forth the light which is far brighter than the sun, the Savior illumined us on Tabor." },
-          { "text": "Having ascended Mount Tabor, O Christ, Thou wast transfigured; and having cast falsehood utterly into darkness, Thou hast illumined us." },
-          { "text": "Recognizing Thee as God on Tabor, O Christ, the glorious apostles, marveling, bowed down their knees." },
-          { "text": "Thou didst become a god by adoption, deified by divine union, receiving pristine rays of light from God, and thou hast illumined the faith and cleansed the earth of the darkness of idolatry.", "canon": "secondCanon" },
-          { "text": "Thou didst become a god by adoption, deified by divine union, receiving pristine rays of light from God, and thou hast illumined the faith and cleansed the earth of the darkness of idolatry.", "canon": "secondCanon", "_note": "Sung twice per rubric" },
-          { "text": "Lo! every prophecy of the sacred prophets is contained in thee, the disciple; for thou wast an eye-witness, emulator and apostle of Him Whom thou didst proclaim of old, O Matthias, servant of God.", "canon": "secondCanon" },
-          { "text": "O Virgin, we, the faithful, call thee the noetic sanctuary, the untouchable mercy-seat, the golden lamp-stand, the spiritual table bearing the Bread of life.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Shining forth the light which is far brighter than the sun, the Savior illumined us on Tabor."
+          },
+          {
+            "text": "Having ascended Mount Tabor, O Christ, Thou wast transfigured; and having cast falsehood utterly into darkness, Thou hast illumined us."
+          },
+          {
+            "text": "Recognizing Thee as God on Tabor, O Christ, the glorious apostles, marveling, bowed down their knees."
+          },
+          {
+            "text": "Thou didst become a god by adoption, deified by divine union, receiving pristine rays of light from God, and thou hast illumined the faith and cleansed the earth of the darkness of idolatry.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou didst become a god by adoption, deified by divine union, receiving pristine rays of light from God, and thou hast illumined the faith and cleansed the earth of the darkness of idolatry.",
+            "canon": "secondCanon",
+            "_note": "Sung twice per rubric"
+          },
+          {
+            "text": "Lo! every prophecy of the sacred prophets is contained in thee, the disciple; for thou wast an eye-witness, emulator and apostle of Him Whom thou didst proclaim of old, O Matthias, servant of God.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "O Virgin, we, the faithful, call thee the noetic sanctuary, the untouchable mercy-seat, the golden lamp-stand, the spiritual table bearing the Bread of life.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "kontakion": {
@@ -280,42 +388,104 @@
         "irmos": "Of old the Children of Abraham in Babylon trampled down the flame of the furnace, crying aloud with hymns: O God of our Fathers, blessed art Thou.",
         "irmos2": "The Hebrew children in the furnace boldly trampled upon the flames, changing the fire into dew, they cried aloud: 'Blessed art Thou, O Lord our God, throughout the ages.'",
         "troparia": [
-          { "text": "Illumined by the light of unapproachable glory on Mount Tabor, the apostles cried out to Christ: 'O God of our fathers, blessed art Thou!'" },
-          { "text": "Enraptured by the effulgence of the divine voice, the dew-bearing cloud and the radiance, O Christ, the apostles chanted: 'O God of our fathers, blessed art Thou!'" },
-          { "text": "When he beheld Thee in unapproachable light on Mount Tabor, O Christ, Peter cried aloud: 'O God of our fathers, blessed art Thou!'" },
-          { "text": "Present with thee, the Author of life, when Thou didst cause the light of Thy countenance to shine forth, the sons of Zebedee cried aloud: 'O God of our fathers, blessed art Thou!'" },
-          { "text": "With the flood of thy divine wisdom thou didst dry up the torrent of falsehood, O glorious one, and with a torrent of sustenance thou hast given drink to those who cry with faith: Blessed art Thou, O God!", "canon": "secondCanon" },
-          { "text": "By the power of God Almighty thou didst set at naught the wiles of the enemy before the face of thine advance, O apostle, and the mountains and hills of ungodliness were torn down.", "canon": "secondCanon" },
-          { "text": "Behold the Virgin of whom the great Isaiah said in the Spirit, that she would conceive in her womb and give birth unto the God to Whom we chant: O Lord God, blessed art Thou!", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Illumined by the light of unapproachable glory on Mount Tabor, the apostles cried out to Christ: 'O God of our fathers, blessed art Thou!'"
+          },
+          {
+            "text": "Enraptured by the effulgence of the divine voice, the dew-bearing cloud and the radiance, O Christ, the apostles chanted: 'O God of our fathers, blessed art Thou!'"
+          },
+          {
+            "text": "When he beheld Thee in unapproachable light on Mount Tabor, O Christ, Peter cried aloud: 'O God of our fathers, blessed art Thou!'"
+          },
+          {
+            "text": "Present with thee, the Author of life, when Thou didst cause the light of Thy countenance to shine forth, the sons of Zebedee cried aloud: 'O God of our fathers, blessed art Thou!'"
+          },
+          {
+            "text": "With the flood of thy divine wisdom thou didst dry up the torrent of falsehood, O glorious one, and with a torrent of sustenance thou hast given drink to those who cry with faith: Blessed art Thou, O God!",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "By the power of God Almighty thou didst set at naught the wiles of the enemy before the face of thine advance, O apostle, and the mountains and hills of ungodliness were torn down.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Behold the Virgin of whom the great Isaiah said in the Spirit, that she would conceive in her womb and give birth unto the God to Whom we chant: O Lord God, blessed art Thou!",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "ode8": {
         "irmos": "In Babylon the godly Children, burning with a fiery zeal for God bravely trampled upon the threat of the tyrant and the fire; and thrown into the midst of the flames they were refreshed with dew and sang: Bless the Lord, all ye works of the Lord!",
         "irmos2": "In his wrath the Chaldean Tyrant made the furnace blaze, with heat fanned sevenfold for the servants of God; but when he perceived that they had been saved by a greater power he cried aloud to the Creator and Redeemer; 'ye children bless, ye priests praise, ye people, supremely exalt Him throughout all ages.'",
         "troparia": [
-          { "text": "Christ Who upholdeth all things by His hand, hath with His most pure feet ascended Mount Tabor, whereon His face shone with radiance brighter than the beams of the sun, and showed forth those highest among the law and grace, who chanted: O all ye works of the Lord, bless ye the Lord!" },
-          { "text": "He Who ineffably manifested Himself on Mount Tabor with unapproachable glory, the intangible and never-waning Light, the Effulgence of the Father, illumining creation hath deified mortals who sing: O all ye works of the Lord, bless ye the Lord!" },
-          { "text": "Moses and Elijah, standing on Mount Tabor as befitteth priests, manifestly beholding the Hypostasis of the Divinity, Christ Who shone forth in the Father's glory, chanted: O all ye works of the Lord, bless ye the Lord!" },
-          { "text": "The face of Moses once was filled with glory in its appearance because of the manifestation of God; and Christ is arrayed in light and glory as in a robe, for, being light itself, He illumineth those who chant: O all ye works of the Lord, bless ye the Lord!" },
-          { "text": "The disciples, beholding Christ surrounded by the luminous cloud on Tabor, fell to the ground, their minds enlightened, and hymned Him with the Father and the Spirit, chanting: O all ye works of the Lord, bless ye the Lord!" },
-          { "text": "As the mouth of God thou didst snatch from the throat of the slayer of mankind those whom he had cruelly slaughtered and made food for his malice, O wise one, and with the laver of regeneration thou didst bring them to the Lord, chanting unceasingly: Ye people, supremely exalt Him throughout all ages!", "canon": "secondCanon" },
-          { "text": "As the weapon of the word of God, O glorious one, thou didst utterly grind down the sword of falsehood and the weapon of evil, and by the power of God thou didst cast down the sacrifices, pillars and temples of the idolaters, but hast made into temples of the Trinity those who cry: Ye people, supremely exalt Him throughout all ages!", "canon": "secondCanon" },
-          { "text": "Thou didst show thyself to be the heaven of the Word, declaring the ineffably divine glory of the Only-begotten, O all-wise Matthias, thou lightning-flash of grace, seeker of the lost, lamp-stand of the divine Light, initiate of ineffable mysteries, whom we hymn together with gladness.", "canon": "secondCanon" },
-          { "text": "In a manner transcending nature didst thou conceive; in a manner past all telling thou hast given birth to the Creator of human nature, Who, though inseparable from the Father, became a man, O pure Lady. Him doth all creation hymn, chanting: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Christ Who upholdeth all things by His hand, hath with His most pure feet ascended Mount Tabor, whereon His face shone with radiance brighter than the beams of the sun, and showed forth those highest among the law and grace, who chanted: O all ye works of the Lord, bless ye the Lord!"
+          },
+          {
+            "text": "He Who ineffably manifested Himself on Mount Tabor with unapproachable glory, the intangible and never-waning Light, the Effulgence of the Father, illumining creation hath deified mortals who sing: O all ye works of the Lord, bless ye the Lord!"
+          },
+          {
+            "text": "Moses and Elijah, standing on Mount Tabor as befitteth priests, manifestly beholding the Hypostasis of the Divinity, Christ Who shone forth in the Father's glory, chanted: O all ye works of the Lord, bless ye the Lord!"
+          },
+          {
+            "text": "The face of Moses once was filled with glory in its appearance because of the manifestation of God; and Christ is arrayed in light and glory as in a robe, for, being light itself, He illumineth those who chant: O all ye works of the Lord, bless ye the Lord!"
+          },
+          {
+            "text": "The disciples, beholding Christ surrounded by the luminous cloud on Tabor, fell to the ground, their minds enlightened, and hymned Him with the Father and the Spirit, chanting: O all ye works of the Lord, bless ye the Lord!"
+          },
+          {
+            "text": "As the mouth of God thou didst snatch from the throat of the slayer of mankind those whom he had cruelly slaughtered and made food for his malice, O wise one, and with the laver of regeneration thou didst bring them to the Lord, chanting unceasingly: Ye people, supremely exalt Him throughout all ages!",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "As the weapon of the word of God, O glorious one, thou didst utterly grind down the sword of falsehood and the weapon of evil, and by the power of God thou didst cast down the sacrifices, pillars and temples of the idolaters, but hast made into temples of the Trinity those who cry: Ye people, supremely exalt Him throughout all ages!",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou didst show thyself to be the heaven of the Word, declaring the ineffably divine glory of the Only-begotten, O all-wise Matthias, thou lightning-flash of grace, seeker of the lost, lamp-stand of the divine Light, initiate of ineffable mysteries, whom we hymn together with gladness.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "In a manner transcending nature didst thou conceive; in a manner past all telling thou hast given birth to the Creator of human nature, Who, though inseparable from the Father, became a man, O pure Lady. Him doth all creation hymn, chanting: Ye children bless; ye priests hymn; ye people supremely exalt Him throughout all ages!",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       },
       "ode9": {
         "irmos": "Thy birthgiving was revealed to be incorrupt, God came forth from thy womb, and He appeared upon earth in mortal flesh and dwelt among mankind; Wherefore we all magnify thee, O Theotokos.",
         "irmos2": "Every ear is awestruck at hearing of God's ineffable condescension, for the Most High voluntarily descended and assumed flesh, becoming man in the Virgin's womb; wherefore we the faithful magnify the most pure Theotokos.",
         "troparia": [
-          { "text": "Suddenly illumined with a new outpouring of light, the disciples, stricken with awe, looked one at another; and, astonished, bowed down to the earth and worshipped Thee, the Master of all." },
-          { "text": "A divinely sounding voice issued forth from the midst of the cloud, announcing the wonder; for the Father of lights cried to the apostles: 'This is My beloved Son! Heed ye Him!'" },
-          { "text": "Having seen new and most glorious things and heard the voice of the Father on Tabor, the servants of the Word cried out: 'This is our Savior, the image of the Prototype!'" },
-          { "text": "O immutable Image of Him Who Is, O Immovable One, unalterable Seal, Son, Word, Wisdom, Arm, Right Hand of the Most High, Power: Thee do we hymn with the Father and the Spirit." },
-          { "text": "The Savior called thee His friend who obeyed His commandments, O blessed apostle, the heir to His kingdom, who will be enthroned with Him on that awesome day which is to come, O most wise Matthias, thou fulfillment of the twelve disciples.", "canon": "secondCanon" },
-          { "text": "Having traversed the sea of life with the sail of the Cross, O blessed one, thou didst reach the harbor of peace and thine ultimate desire; and, rejoicing now, thou standest with the choir of the apostles, entreating Him Who is the Lover of mankind on our behalf.", "canon": "secondCanon" },
-          { "text": "Thy tongue hath been shown to be a truly radiant lamp, a shining beacon of the Spirit, which consumeth foreign doctrines, burneth up alien fire, O wise one, and shineth forth light upon those who sleep in the darkness of Ignorance.", "canon": "secondCanon" },
-          { "text": "Thou, alone among women, hast brought an end to the curse of the first-formed man, O Bride of God, having given birth in the flesh to the Infinite One Who became finite; and thou hast restored the bounds of nature, O undefiled one, and by thy most glorious mediation hast united those things which of old were set apart.", "canon": "secondCanon", "label": "Theotokion" }
+          {
+            "text": "Suddenly illumined with a new outpouring of light, the disciples, stricken with awe, looked one at another; and, astonished, bowed down to the earth and worshipped Thee, the Master of all."
+          },
+          {
+            "text": "A divinely sounding voice issued forth from the midst of the cloud, announcing the wonder; for the Father of lights cried to the apostles: 'This is My beloved Son! Heed ye Him!'"
+          },
+          {
+            "text": "Having seen new and most glorious things and heard the voice of the Father on Tabor, the servants of the Word cried out: 'This is our Savior, the image of the Prototype!'"
+          },
+          {
+            "text": "O immutable Image of Him Who Is, O Immovable One, unalterable Seal, Son, Word, Wisdom, Arm, Right Hand of the Most High, Power: Thee do we hymn with the Father and the Spirit."
+          },
+          {
+            "text": "The Savior called thee His friend who obeyed His commandments, O blessed apostle, the heir to His kingdom, who will be enthroned with Him on that awesome day which is to come, O most wise Matthias, thou fulfillment of the twelve disciples.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Having traversed the sea of life with the sail of the Cross, O blessed one, thou didst reach the harbor of peace and thine ultimate desire; and, rejoicing now, thou standest with the choir of the apostles, entreating Him Who is the Lover of mankind on our behalf.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thy tongue hath been shown to be a truly radiant lamp, a shining beacon of the Spirit, which consumeth foreign doctrines, burneth up alien fire, O wise one, and shineth forth light upon those who sleep in the darkness of Ignorance.",
+            "canon": "secondCanon"
+          },
+          {
+            "text": "Thou, alone among women, hast brought an end to the curse of the first-formed man, O Bride of God, having given birth in the flesh to the Infinite One Who became finite; and thou hast restored the bounds of nature, O undefiled one, and by thy most glorious mediation hast united those things which of old were set apart.",
+            "canon": "secondCanon",
+            "label": "Theotokion"
+          }
         ]
       }
     },

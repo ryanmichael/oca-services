@@ -138,4 +138,37 @@ describe('Regression contract: Afterfeast must not bury a polyeleos saint (8-09 
     assert.ok(/The righteous shall be in everlasting remembrance/.test(text),
       'second communion hymn missing');
   });
+
+  it('INV-7: the festal megalynarion replaces "It is truly meet" for the whole afterfeast', async () => {
+    const MEGALYNARION = /Magnify, O my soul, the Lord Who was transfigured/;
+    const TRULY_MEET   = /It is truly meet to bless thee/;
+
+    // Aug 6 (the feast) through Aug 13 (the leavetaking) inclusive; the days on
+    // either side must be untouched, so a broadened window fails here.
+    for (const date of ['2026-08-06', '2026-08-09', '2026-08-13']) {
+      const { json } = await get(`/api/liturgy?date=${date}`);
+      const text = json.blocks.map(b => b.text || '').join('\n');
+      assert.ok(MEGALYNARION.test(text), `${date} must sing the festal megalynarion`);
+      assert.ok(!TRULY_MEET.test(text),  `${date} must not also sing "It is truly meet"`);
+    }
+    for (const date of ['2026-08-05', '2026-08-14']) {
+      const { json } = await get(`/api/liturgy?date=${date}`);
+      const text = json.blocks.map(b => b.text || '').join('\n');
+      assert.ok(!MEGALYNARION.test(text),
+        `${date} is outside the afterfeast and must not sing the megalynarion`);
+    }
+  });
+
+  it('INV-8: the megalynarion window follows the old calendar too', async () => {
+    // Old-style Aug 6-13 is civil Aug 19-26 (13-day Julian offset). A window
+    // computed off the raw civil date instead of fixedFeastDate fails here.
+    const MEGALYNARION = /Magnify, O my soul, the Lord Who was transfigured/;
+    for (const [date, want] of [['2026-08-18', false], ['2026-08-19', true],
+                                ['2026-08-26', true],  ['2026-08-27', false]]) {
+      const { json } = await get(`/api/liturgy?date=${date}&style=old`);
+      const text = json.blocks.map(b => b.text || '').join('\n');
+      assert.equal(MEGALYNARION.test(text), want,
+        `old-style ${date}: expected megalynarion=${want}`);
+    }
+  });
 });

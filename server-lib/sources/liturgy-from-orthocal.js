@@ -9,6 +9,7 @@
 
 const {
   calculatePascha,
+  fixedFeastDate,
   getDayOfWeek,
   getFeastRank,
   getGreatFeastKey,
@@ -207,6 +208,19 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // by the Troparion of Pentecost. Pascha+48 is the Saturday of Souls before Pentecost — a
   // memorial day, not part of the feast window. Pascha+56 is All Saints Sunday.
   const isPentecostAfterfeast = daysSincePascha >= 49 && daysSincePascha <= 55;
+
+  // Transfiguration afterfeast (Aug 6 feast through the Aug 13 leavetaking).
+  // The festal megalynarion "Magnify, O my soul, the Lord Who was transfigured
+  // on Mount Tabor" replaces "It is truly meet" for the whole period, not just
+  // on the feast — same rule the Ascension afterfeast already follows for its
+  // dismissal introit. Fixed-date, so it goes through fixedFeastDate to stay
+  // correct on the old calendar (civil Aug 19-26).
+  //
+  // Surfaced 2026-08-07 auditing 8-09 (St. Herman of Alaska): the Liturgy sang
+  // "It is truly meet" where the OCA order prints the festal megalynarion.
+  const tfAdj = fixedFeastDate(date, style);
+  const isTransfigurationAfterfeast =
+    tfAdj.getUTCMonth() === 7 && tfAdj.getUTCDate() >= 6 && tfAdj.getUTCDate() <= 13;
 
   // Pentecostarion Sunday overrides (defined at module scope, see top).
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
@@ -598,6 +612,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     megalynarion = { text: feast.megalynarion };
   } else if (pentOverride?.megalynarion) {
     megalynarion = { text: pentOverride.megalynarion };
+  } else if (isTransfigurationAfterfeast && GREAT_FEAST_VARIANTS.transfiguration?.megalynarion) {
+    megalynarion = { text: GREAT_FEAST_VARIANTS.transfiguration.megalynarion };
   } else if (isPaschalPeriod) {
     megalynarion = { text: LITURGY_DEFAULTS.paschalMegalynarion };
   } else if (isBasil) {

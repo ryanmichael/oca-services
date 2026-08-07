@@ -85,3 +85,11 @@ flag on another tone without the same kind of parish-booklet or service-book con
 ## Forward note
 
 This rubric papers over a data gap. The long-term solution is to source the missing 4th Anatolikon per tone (×8) from the HTM text Octoechos and ship 10 distinct stichera. When that data lands, this rubric can either be deprecated (universal 10-count) or repurposed as a parish-preference toggle for parishes that explicitly prefer the OCA chant arrangement's count. The promotion above closes Tone 8 without new source text; the remaining 7 tones still need the Anatolikon.
+
+## Now-and-ever rows are not numbered slots (added 2026-08-07)
+
+The Menaion side's count is `licStichera.length`, so anything that leaks into that array displaces an Octoechos slot one-for-one. Stichera at `order < 0` are the Now-and-ever hymn and must be excluded — both by the single-commemoration filter (`order >= 1`) and by the multi-saint Sunday combine, which previously renumbered them into the run.
+
+Surfaced 2026-08-09 (St. Herman of Alaska inside the Afterfeast of the Transfiguration): the Afterfeast's Now-and-ever sticheron took a numbered slot, yielding 4 Feast + 3 saint against the rubric's 3 + 4.
+
+Note the related open gap: the Menaion path has **no repeat-expansion**. Where the OCA source fills N slots from fewer unique texts via explicit `(Repeat: …)` rubrics, we render only the unique texts and the Octoechos side absorbs the difference. 8-09 renders 4+3+3 where the order file asks for 3+3+4.

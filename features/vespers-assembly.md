@@ -58,6 +58,7 @@ Each `INV-*` below corresponds to a named test in `test/contracts/vespers-assemb
 - **INV-5** — Weekday Daily Vespers Troparia with a Menaion troparion renders: saint's troparion (un-positioned; no preceding `Glory`) → `Now and ever` doxology → Resurrectional Dismissal Theotokion (Octoechos `tone${tropTone}.saturday.vespers.dismissalTheotokion`, in tone of the troparion). Guarded by `D3` (trailing Theotokion) and `D5` (no leading Glory).
 - **INV-6** — Vigil-rank feast Troparia (`serviceType: 'all-night-vigil'`): troparion preceded by a "sung thrice" rubric, sung 3×, with NO trailing `Now and ever` / Theotokion (the `repeatThrice` filter in the troparia renderer drops `position:'now'` and `position:'glory'` slots).
 - **INV-7** — Lenten Saturday with a Triodion-supplied Glory troparion: the section renders exactly one `Glory` block. The Menaion-injection layer detects the pre-existing `position:'glory'` slot from the Triodion and skips its own splice.
+- **INV-8** — Multi-saint Sunday Great Vespers: a commemoration's `order < 0` stichera are the Now-and-ever slot, never a numbered sticheron. The combine in `for-date.js` renumbers only `order >= 1`; `order === 0` is the Glory. Renumbering a negative row into the run costs the saint a slot — 2026-08-09 sang the Afterfeast's "In Thy goodness" as a numbered sticheron and dropped St. Herman's third Tone-8 sticheron off the end. Guarded by `test/contracts/afterfeast-buries-polyeleos-saint.test.js` INV-4.
 
 ## Code surface
 

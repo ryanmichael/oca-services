@@ -45,6 +45,10 @@ test('switching translation overlay re-renders the open service panel', async ({
   // (api-service now echoes back `translation: <id>` in the response JSON).
   await page.locator('#settings-done').click();
   await expect(page.locator('#view-settings')).not.toHaveClass(/visible/);
-  await expect(page.locator('#p-meta-overlay')).toBeVisible({ timeout: 15_000 });
+  // The indicator is the button wrapper `#p-meta-overlay-btn` — there is no bare
+  // `#p-meta-overlay`. This assertion referenced one until 2026-08-08, so the
+  // spec had been failing on a selector that never existed while the behaviour
+  // it guards worked fine. e2e was not in the pre-push gate, so nothing surfaced it.
+  await expect(page.locator('#p-meta-overlay-btn')).toBeVisible({ timeout: 15_000 });
   await expect(page.locator('#p-meta-overlay-name')).not.toHaveText('');
 });

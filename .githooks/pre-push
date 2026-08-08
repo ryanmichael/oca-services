@@ -23,6 +23,20 @@ npm test
 echo "Running contract regression tests..."
 npm run test:contracts
 
+echo "Running browser end-to-end tests..."
+# Playwright manages its own server on :3098 (see playwright.config.js), so this
+# does not collide with the :3000 server the audit section boots below.
+#
+# Added 2026-08-08. e2e was NOT gated, and 05-translation-switch had been failing
+# on a selector that never existed (`#p-meta-overlay` — the element is
+# `#p-meta-overlay-btn`). A one-word drift sat red indefinitely because nothing
+# ran it.
+#
+# --retries=1 because a cold first run occasionally times out waiting on server
+# boot. A genuine break still fails both attempts; a cold-start flake does not
+# block a push.
+npm run test:e2e -- --retries=1
+
 echo "Running contract-check (code surfaces vs. feature specs)..."
 # Reminder only — does not block. Pass --strict in the script to gate.
 if [ -n "$CONTRACT_CHECK_BASE" ]; then

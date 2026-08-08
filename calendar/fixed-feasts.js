@@ -119,6 +119,24 @@ const VIGIL_SAINTS = new Map([
  * no rank column in our menaion DB to drive this from, so additions live here.
  */
 const POLYELEOS_SAINTS = new Map([
+  // ── Batch 1 of the rank-coverage burn-down (2026-08-08) ──────────────────
+  // Added from audit/rank-coverage.json `missing-rank -> polyeleos`: the OCA
+  // calendar marks these polyeleos (orthocal feast_level 4) while we ranked them
+  // six-stichera, so they rendered with no polyeleos, no magnification and no
+  // festal propers. All eight are Type A — the saint is already the principal
+  // and has its own stichera, so only the rank entry was missing.
+  //
+  // Deliberately polyeleos-only: `vigil` swaps the whole Vespers generator
+  // (calendar/entry.js:135), so those dates are a separate, riskier batch.
+  ['3-9',   '40 Holy Martyrs of Sebaste'],
+  ['4-25',  'Apostle and Evangelist Mark'],
+  ['4-30',  'Apostle James, Brother of St. John the Theologian'],
+  ['5-10',  'Apostle Simon the Zealot'],
+  ['6-11',  'Apostles Bartholomew and Barnabas'],
+  ['6-19',  'Apostle Jude, Brother of the Lord'],
+  ['6-30',  'Synaxis of the Twelve Apostles'],
+  ['10-18', 'Apostle and Evangelist Luke'],
+
   ['5-8',   'Apostle and Evangelist John the Theologian'],
   ['5-11',  'Sts. Cyril and Methodius, Equals-to-the-Apostles'],
   ['7-5',   'Uncovering of the Relics of St. Sergius of Radonezh'],

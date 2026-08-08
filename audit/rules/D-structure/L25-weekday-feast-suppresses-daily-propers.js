@@ -72,7 +72,19 @@ module.exports = {
     // Collision allowlist: if the principal saint's category legitimately
     // shares text with the daily refrain, the daily-bleed is actually the
     // saint's own proper, not a bug.
-    const principalTitle = ctx.calendarEntry?.commemoration || '';
+    //
+    // `calendarEntry.commemoration` does not exist — the principal lives in
+    // `commemorations[]`, flagged `isPrincipal` (or first). This read had always
+    // resolved to '' , so the allowlist never once fired: every collision it was
+    // written to excuse would have been reported as a bug. It went unnoticed
+    // because no Apostle-on-Thursday date carried polyeleos rank until the
+    // 2026-08-08 rank-coverage batch added 4-30 and 6-11. Same shape as the
+    // M3/M14 escape hatches: a guard that cannot fire protects nothing.
+    // Read from `assembled`, NOT `calendarEntry`. `generateCalendarEntry()`
+    // returns commemorations: [] — the titles are attached later by the
+    // assembler — so the raw entry has no principal at all.
+    const comms = ctx.assembled?.commemorations || [];
+    const principalTitle = (comms.find(c => c && c.isPrincipal) || comms[0] || {}).title || '';
     const collision = CATEGORY_REFRAIN_COLLISIONS.find(c =>
       c.day === ctx.dow && c.frag === fragment && c.titleRe.test(principalTitle));
     if (collision) return [];

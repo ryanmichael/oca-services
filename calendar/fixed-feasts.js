@@ -131,6 +131,7 @@ const POLYELEOS_SAINTS = new Map([
   // daily-cycle propers correctly remain, which L25 then reports as a bleed. They
   // need feast-window rank handling, not a saint entry; left in the
   // rank-coverage findings.
+  ['1-11',  'Venerable Theodosius the Great, the Cenobiarch'],
   ['8-28',  'Recovery of the Relics of Venerable Job of Pochaev'],
   ['8-30',  'St. Alexander, Patriarch of Constantinople'],
   ['10-26', 'Greatmartyr Demetrios the Myrrh-gusher of Thessaloniki'],

@@ -242,6 +242,21 @@ const PRINCIPAL_OVERRIDES = new Map([
   // MOVEABLE_CYCLE_TITLE, so the picker pinned the Afterfeast and buried him.
   // Surfaced 2026-08-07 by the weekly judge against the OCA order file.
   ['8-9', 'Herman'],
+  // Jan 11: Afterfeast of the Theophany + Ven. Theodosius the Great, the
+  // Cenobiarch, whom the OCA calendar ranks polyeleos. Same shape as 8-9 and
+  // 9-16 — "Afterfeast " matches MOVEABLE_CYCLE_TITLE so the picker pins the
+  // feast window and buries the saint. Substring is "Theodosius the Great",
+  // not "Theodosius": three commemorations on this date match the bare name and
+  // only the Cenobiarch (id 72) has his own stichera.
+  //
+  // Surfaced 2026-08-08 by the rank-coverage sweep. Two sibling cases found the
+  // same way are NOT fixed here — 8-13 (Leavetaking of the Transfiguration
+  // burying St Tikhon of Zadonsk) and 9-21 (Leavetaking of the Elevation burying
+  // Apostle Quadratus) — because neither saint has proper stichera, so an
+  // override would swap the feast's own texts for General-Menaion generics.
+  // Those need the feast-plus-saint blend that 8-9 required, not a one-line map
+  // entry.
+  ['1-11', 'Theodosius the Great'],
 ]);
 
 // If the date has a curated override and a matching commemoration exists in the

@@ -119,6 +119,22 @@ const VIGIL_SAINTS = new Map([
  * no rank column in our menaion DB to drive this from, so additions live here.
  */
 const POLYELEOS_SAINTS = new Map([
+  // ── Batch 4 (2026-08-08) — the remainder needed unblocking first ─────────
+  // The clean Type A dates ran out at batch 3. 8-28 and 10-26 needed a saint_type
+  // backfill first (Ven. Job of Pochaev -> monastic, following 92 siblings;
+  // Greatmartyr Demetrios -> martyr, following 28).
+  //
+  // 1-2, 1-14 (Forefeast and Leavetaking of Theophany) and 9-1 (Church New Year)
+  // were tried here and REMOVED. orthocal ranks those DAYS polyeleos, but this
+  // map is for polyeleos SAINTS — the propers hang off the principal's
+  // General-Menaion category, and a feast window or the Indiction has none. The
+  // daily-cycle propers correctly remain, which L25 then reports as a bleed. They
+  // need feast-window rank handling, not a saint entry; left in the
+  // rank-coverage findings.
+  ['8-28',  'Recovery of the Relics of Venerable Job of Pochaev'],
+  ['8-30',  'St. Alexander, Patriarch of Constantinople'],
+  ['10-26', 'Greatmartyr Demetrios the Myrrh-gusher of Thessaloniki'],
+
   // ── Batch 3 (2026-08-08) ─────────────────────────────────────────────────
   // 8-28 (Job of Pochaev), 10-26 (Demetrius) and 9-1 (Church New Year) were
   // candidates but have a null saint_type and no sibling row to follow, so they

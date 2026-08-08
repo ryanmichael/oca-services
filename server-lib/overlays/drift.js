@@ -393,7 +393,9 @@ function validateRankSaintTypePopulated() {
     // "Synaxis of All Saints of X" — a company of mixed rank (martyrs, monastics
     // and hierarchs together), so no single category fits and forcing one would
     // pick the wrong propers. Added 2026-08-08 when rank batch 2 gave 9-24
-    // (Synaxis of All Saints of Alaska) polyeleos rank.
+    // (Synaxis of All Saints of Alaska) polyeleos rank. "Church New Year" (the
+    // Indiction, 9-1) joined in batch 4 for the same reason — it is a day, not a
+    // saint.
     // These intentionally have no saint_type because no GENERAL_MENAION_PROPERS
     // category fits — the builder falls back to the weekday cycle, which is
     // the correct behavior for them. (If the principal-picker is wrong to
@@ -401,7 +403,7 @@ function validateRankSaintTypePopulated() {
     // bug tracked under project_principal_saint_picker_2026_06_20.md, not a
     // saint_type-backfill bug.)
     const t = principal.title;
-    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of|^Synaxis of All Saints/i.test(t)) continue;
+    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of|^Synaxis of All Saints|^Church New Year/i.test(t)) continue;
     console.warn(
       `Rank-bearing date ${md} (${label}): principal commemoration "${principal.title}" ` +
       `(id ${principal.id}) has null saint_type. Backfill: ` +

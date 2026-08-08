@@ -84,3 +84,29 @@ The category-alias mechanism cannot express feast-specific propers when the same
 | 8-15 | Dormition | Theotokos-feast propers (currently handled via `GREAT_FEAST_VARIANTS`) |
 
 Source for authoring: OCA Festal Menaion + Festal Menaion of Bishop Kallistos translation. Until done, interim alias + safety fallback are the documented behavior.
+
+## Correction 2026-08-08 — the Epistle is reordered, never dropped
+
+The original implementation promoted the saint's reading to primary and set the
+secondary to `null` for BOTH Epistle and Gospel. For the Gospel that is correct
+and deliberate (`opts.includeSecondGospel` defaults false — "standard OCA
+practice of reading one Gospel even when a polyeleos+ feast appoints its own").
+
+For the Epistle it was wrong, and it contradicted this file's own contract in
+`liturgy-from-orthocal.js`:
+
+> Both Epistles always render unaffected (Epistle doubling is the norm).
+
+Only one ever rendered, so that sentence had been quietly false since
+2026-06-28. The OCA calendar appoints both — 2026-05-08 lists Acts 10.44-11.10
+*and* 1 John 1.1-7; 2026-06-19 lists Romans 9.6-19 *and* Jude 1-10 — and during
+the Pentecostarion the dropped reading is the daily Acts, which is appointed
+every day of that season.
+
+The fix reorders instead of deleting: `[epistleR2, epistleR]` rather than
+`[epistleR2, null]`. The saint's Epistle still leads; the cycle Epistle follows.
+
+**Blast radius:** 24 weekday polyeleos/vigil dates in 2026, each gaining back its
+cycle Epistle. Found while shipping rank-coverage batch 1 — the batch made
+2026-04-25 the first date where the loss was visible as a missing Paschal Acts
+reading, but 5-8 and 5-11 already carried the rank and had the same defect.

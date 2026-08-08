@@ -371,12 +371,28 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
                                    && !feast && !pentOverride;
 
   if (isWeekdayGreatSaintFeast) {
-    // Promote saint-co-celebration reading to primary; drop the daily.
-    // pickPrimaryAndSecondary returns [daily, saint] when first.description is
-    // empty and a later entry has a non-empty description. Flip.
+    // Promote the saint's reading to primary. pickPrimaryAndSecondary returns
+    // [daily, saint] when first.description is empty and a later entry has a
+    // non-empty description, so flip them.
+    //
+    // EPISTLE: reorder, do NOT drop. The OCA calendar appoints BOTH on these
+    // days — 2026-05-08 lists Acts 10.44-11.10 and 1 John 1.1-7; 2026-06-19
+    // lists Romans 9.6-19 and Jude 1-10 — and this file's own opts contract
+    // already says "Both Epistles always render unaffected (Epistle doubling is
+    // the norm)". Until now the daily was set to null, so only one ever
+    // rendered and the contract was quietly false.
+    //
+    // This over-corrected when it was written (2026-06-28, for SS Peter and Paul
+    // on a Monday): the bug there was the daily bleeding through INSTEAD of the
+    // feast's, and the fix deleted the daily rather than reordering it. Every
+    // polyeleos/vigil weekday since has lost its cycle Epistle — during the
+    // Pentecostarion that means losing the daily Acts reading.
     if (epistleR && epistleR2 && !epistleR.description && epistleR2.description) {
-      [epistleR, epistleR2] = [epistleR2, null];
+      [epistleR, epistleR2] = [epistleR2, epistleR];
     }
+    // GOSPEL: still drop. One Gospel on these days is deliberate — see
+    // opts.includeSecondGospel, "standard OCA practice of reading one Gospel
+    // even when a polyeleos+ feast appoints its own", with a parish opt-in.
     if (gospelR && gospelR2 && !gospelR.description && gospelR2.description) {
       [gospelR, gospelR2] = [gospelR2, null];
     }

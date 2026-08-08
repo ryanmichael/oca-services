@@ -8,6 +8,7 @@
 const {
   validateVariantLibrary,
   validateParishVariantPicks,
+  validateParishPractice,
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,
@@ -24,6 +25,7 @@ let totalWarnings = 0;
 const checks = [
   ['variant library', validateVariantLibrary],
   ['parish variant picks', validateParishVariantPicks],
+  ['parish practice', validateParishPractice],
   ['commemoration dupes', validateCommemorationDupes],
   ['rank-bearing saint_type populated', validateRankSaintTypePopulated],
   ['sticheron text integrity', validateSticheraTextIntegrity],

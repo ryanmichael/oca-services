@@ -109,6 +109,129 @@ function validateParishVariantPicks() {
   }
 }
 
+/** Validates parish practice entries (server-lib/practice) still resolve.
+ *
+ *  This is the guardrail the practice layer depends on. Its addresses are
+ *  positional ("2.1" = verse 2, stichos 1), so re-splitting or re-translating a
+ *  canonical text can silently change which words a parish sings. The stored
+ *  `fingerprint` pins the source the selection was derived from; a mismatch
+ *  means a human must re-read the parish source before trusting the selection.
+ *
+ *  Also catches malformed `rubrics_extra_json` outright — `buildRubrics` parses
+ *  it inside a bare try/catch and silently drops ALL extra rubrics on failure
+ *  (principalOverrides and antiphonSet included), which is invisible at runtime.
+ *  Found the hard way: a sqlite `readfile()` write stored the column as a BLOB
+ *  and disabled three parish settings at once with no error anywhere. */
+function validateParishPractice() {
+  const { openDb } = require('../cache/sqlite');
+  const { fingerprint, explode, parseAddress } = require('../practice');
+  const { getLiturgyFixed } = require('./cascade');
+  const { fixedTextRegistry, registerBaseFixed } = require('./registry');
+  const { loadAllParishOverlays } = require('../parishes');
+
+  // The CLI runs this outside server boot, where neither the base fixed texts
+  // nor the in-memory parish overlays have been registered. Register what this
+  // check needs so `drift:check` validates the same cascade the server serves;
+  // in-process (boot) both are already present and these are no-ops.
+  if (!fixedTextRegistry.liturgy) {
+    const path = require('path');
+    const ROOT = path.resolve(__dirname, '..', '..');
+    registerBaseFixed('liturgy', require(path.join(ROOT, 'fixed-texts', 'liturgy-fixed.json')));
+    loadAllParishOverlays();
+  }
+
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='parish_settings'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const rows = db.prepare(
+      'SELECT parish_id, rubrics_extra_json FROM parish_settings'
+    ).all();
+
+    let warnings = 0;
+    let entryCount = 0;
+
+    for (const row of rows) {
+      if (!row.rubrics_extra_json) continue;
+
+      let extra;
+      try {
+        extra = JSON.parse(row.rubrics_extra_json);
+      } catch (err) {
+        console.warn(
+          `Parish '${row.parish_id}': rubrics_extra_json is not valid JSON ` +
+          `(${err.message}) — ALL extra rubrics are being silently dropped`);
+        warnings += 1;
+        continue;
+      }
+      if (!Array.isArray(extra.practice)) continue;
+
+      let texts;
+      try {
+        texts = getLiturgyFixed(row.parish_id);
+      } catch (err) {
+        console.warn(`Parish '${row.parish_id}': cannot resolve liturgy texts — ${err.message}`);
+        warnings += 1;
+        continue;
+      }
+
+      for (const entry of extra.practice) {
+        entryCount += 1;
+        const target = entry && entry.target;
+        if (!target) {
+          console.warn(`Parish '${row.parish_id}': practice entry missing 'target'`);
+          warnings += 1;
+          continue;
+        }
+        // Resolve against the PRE-practice canonical text. getLiturgyFixed does
+        // not apply practice (that happens per-request in the route), so this is
+        // the untransformed array the addresses are meant to index.
+        const arr = target.split('.').reduce((o, k) => (o == null ? o : o[k]), texts);
+        if (!Array.isArray(arr)) {
+          console.warn(`Parish '${row.parish_id}': practice target '${target}' is not an array`);
+          warnings += 1;
+          continue;
+        }
+
+        const { byAddress } = explode(arr);
+        for (const addr of [].concat(entry.keep || [], entry.reprise || [])) {
+          if (!parseAddress(addr)) {
+            console.warn(`Parish '${row.parish_id}': practice '${target}' has malformed address '${addr}'`);
+            warnings += 1;
+          } else if (!byAddress.has(addr)) {
+            console.warn(
+              `Parish '${row.parish_id}': practice '${target}' address '${addr}' no longer resolves ` +
+              `— the canonical text has changed shape; re-derive the selection`);
+            warnings += 1;
+          }
+        }
+
+        if (entry.fingerprint) {
+          const actual = fingerprint(arr);
+          if (actual !== entry.fingerprint) {
+            console.warn(
+              `Parish '${row.parish_id}': practice '${target}' source fingerprint changed ` +
+              `(recorded ${entry.fingerprint}, now ${actual}) — re-verify against the parish ` +
+              `source, then update the fingerprint`);
+            warnings += 1;
+          }
+        }
+      }
+    }
+
+    if (warnings === 0 && entryCount > 0) {
+      console.log(`Parish practice: ${entryCount} entr${entryCount === 1 ? 'y' : 'ies'} all resolve.`);
+    }
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 // Titles that are legitimately duplicated across multiple (month, day)
 // tuples with identical troparia — e.g. a saint commemorated on both
 // their repose date and a relic-translation date, using the same hymns.
@@ -1063,6 +1186,7 @@ module.exports = {
   validateAllTranslations,
   validateVariantLibrary,
   validateParishVariantPicks,
+  validateParishPractice,
   validateCommemorationDupes,
   validateRankSaintTypePopulated,
   validateSticheraTextIntegrity,

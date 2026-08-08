@@ -5,6 +5,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const { getMenaionPatron } = require('../sources/menaion');
+const { applyPractice }    = require('../practice');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -79,8 +80,21 @@ function handle(req, res, ctx) {
           return;
         }
 
-        const liturgyFixedResolved = getLiturgyFixed(translation);
         const overlayRubrics       = getOverlayRubrics(translation);
+
+        // Parish practice layer — non-destructive shape operations over the
+        // canonical text (which stichoi are actually sung). Runs after the
+        // translation cascade has resolved the words and before assembly, so a
+        // selection always applies to whatever text the parish's overlay chain
+        // produced. See server-lib/practice/index.js.
+        let liturgyFixedResolved = getLiturgyFixed(translation);
+        if (Array.isArray(overlayRubrics?.practice)) {
+          const applied = applyPractice(liturgyFixedResolved, overlayRubrics.practice, 'liturgy');
+          liturgyFixedResolved = applied.texts;
+          for (const w of applied.warnings) {
+            console.warn(`[practice] ${translation}: ${w}`);
+          }
+        }
 
         // Lesser-saints toggle: query param wins; otherwise fall back to the
         // overlay's rubric setting; otherwise default to false (hidden).

@@ -124,17 +124,20 @@ describe('Feature contract: Archbishop Dmitri (Royster) translation layer', () =
         `replaces the full oca array and deletes canon, as in c95da45.`);
     }
 
-    // (b) Behavioural guard — Tyler's rendered antiphons must still be the full
-    //     oca text, verse for verse. A short form would drop the mid-psalm verses.
-    const tyler = await liturgyText(ORDINARY_SUNDAY, TYLER);
-    const oca   = await liturgyText(ORDINARY_SUNDAY, 'oca');
+    // (b) Behavioural guard — the canonical text must still exist in the
+    //     cascade. Tyler DOES sing an abridged antiphon (confirmed with the
+    //     parish 2026-08-08), but that abridgement is a parish practice entry,
+    //     not a translation-layer edit: the words are untouched and every verse
+    //     is still there for anyone who selects `oca`. See
+    //     features/practice-layer.md and its INV-3.
+    const oca = await liturgyText(ORDINARY_SUNDAY, 'oca');
     for (const [label, re] of [
       ['Ps 102:2 (forget not)',        /forget not all/],
       ['Ps 102 mid-psalm (Moses)',     /He hath made His ways known unto Moses/],
       ['Ps 145 mid-psalm (prisoners)', /prisoners|fettered|bowed down|looseth/],
     ]) {
-      assert.match(tyler, re, `Tyler lost ${label} — the antiphon has been shortened`);
-      assert.match(oca,   re, `oca baseline lost ${label} — fixture drift, not a Tyler bug`);
+      assert.match(oca, re,
+        `canonical ${label} is gone — an abridgement deleted text instead of selecting it`);
     }
   });
 

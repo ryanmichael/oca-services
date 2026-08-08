@@ -119,6 +119,19 @@ const VIGIL_SAINTS = new Map([
  * no rank column in our menaion DB to drive this from, so additions live here.
  */
 const POLYELEOS_SAINTS = new Map([
+  // ── Batch 2 (2026-08-08) — same source, same Type A criteria ─────────────
+  // Includes two saints of particular weight for an OCA parish: the Repose of
+  // St. Innocent, Apostle to the Americas (3-31) and the Synaxis of All Saints
+  // of Alaska (9-24).
+  ['1-27',  'Translation of the Relics of St. John Chrysostom'],
+  ['2-12',  'St. Meletius, Archbishop of Antioch'],
+  ['2-24',  'First and Second Finding of the Head of St. John the Forerunner'],
+  ['3-31',  'Repose of St. Innocent, Metropolitan of Moscow, Apostle to the Americas'],
+  ['7-10',  'Venerable Anthony of the Kiev Caves'],
+  ['7-24',  'Martyrs and Passion-Bearers Boris and Gleb'],
+  ['9-24',  'Synaxis of All Saints of Alaska'],
+  ['12-5',  'Venerable Savva the Sanctified'],
+
   // ── Batch 1 of the rank-coverage burn-down (2026-08-08) ──────────────────
   // Added from audit/rank-coverage.json `missing-rank -> polyeleos`: the OCA
   // calendar marks these polyeleos (orthocal feast_level 4) while we ranked them

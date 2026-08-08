@@ -152,6 +152,13 @@ function pickPrimaryAndSecondary(all, principalTitle) {
   return [first, pickSaint() || all[1] || null];
 }
 
+/** Identity of a reading for duplicate detection — the pericope citation, which
+ *  is what a reader would announce. Falls back to the display string. */
+function readingKey(r) {
+  if (!r) return null;
+  return String(r.display || r.pericope?.display || r.desc || '').trim().toLowerCase();
+}
+
 function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', opts = {}) {
   // opts.includeLesserSaints — when true, include every Menaion commemoration
   //   with a troparion/kontakion at Liturgy. Default (false) renders only the
@@ -389,6 +396,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // Pentecostarion that means losing the daily Acts reading.
     if (epistleR && epistleR2 && !epistleR.description && epistleR2.description) {
       [epistleR, epistleR2] = [epistleR2, epistleR];
+    }
+    // Read once when the cycle and the saint land on the SAME pericope. On
+    // 2026-12-05 (St Savva) orthocal itself lists Galatians 5.22-6.2 twice —
+    // the Saturday daily and the venerable-saint reading are the same monastic
+    // passage. Faithful to the source, but it is read once, not twice. Only one
+    // date in 2026, and invisible until the line above stopped deleting the
+    // cycle Epistle.
+    if (epistleR && epistleR2 && readingKey(epistleR) === readingKey(epistleR2)) {
+      epistleR2 = null;
     }
     // GOSPEL: still drop. One Gospel on these days is deliberate — see
     // opts.includeSecondGospel, "standard OCA practice of reading one Gospel

@@ -9,6 +9,14 @@
   ],
   "findings": [
     {
+      "md": "1-1",
+      "expected": "vigil",
+      "actual": "greatFeast",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Circumcision of Our Lord; St Basil the Great"
+    },
+    {
       "md": "1-2",
       "expected": "polyeleos",
       "actual": "sixStichera",
@@ -113,14 +121,6 @@
       "title": "Repose St Innocent, Metr. Moscow and Apostle to Americas"
     },
     {
-      "md": "4-5",
-      "expected": "(below polyeleos)",
-      "actual": "greatFeast",
-      "level": 0,
-      "kind": "we-over-rank",
-      "title": "Martyrs Agathopedes, Theodulus and Their Companions"
-    },
-    {
       "md": "4-6",
       "expected": "polyeleos",
       "actual": "sixStichera",
@@ -135,14 +135,6 @@
       "level": 4,
       "kind": "missing-rank",
       "title": "Repose St. Tikhon, Patriarch of Moscow, Enlightener N. America"
-    },
-    {
-      "md": "4-12",
-      "expected": "(below polyeleos)",
-      "actual": "greatFeast",
-      "level": 0,
-      "kind": "we-over-rank",
-      "title": "Lazarus Saturday"
     },
     {
       "md": "4-23",
@@ -227,7 +219,7 @@
     {
       "md": "5-21",
       "expected": "polyeleos",
-      "actual": "greatFeast",
+      "actual": "vigil",
       "level": 4,
       "kind": "rank-mismatch",
       "title": "SS Constantine and Helen, Equals-to-the-Apostles"
@@ -239,14 +231,6 @@
       "level": 4,
       "kind": "missing-rank",
       "title": "3rd Finding of the Head of St John the Baptist"
-    },
-    {
-      "md": "5-31",
-      "expected": "(below polyeleos)",
-      "actual": "greatFeast",
-      "level": 0,
-      "kind": "we-over-rank",
-      "title": "Apostle Hermes of the Seventy"
     },
     {
       "md": "6-11",
@@ -273,28 +257,12 @@
       "title": "Holy Apostle Jude, Brother of the Lord"
     },
     {
-      "md": "6-24",
-      "expected": "greatFeast",
-      "actual": "vigil",
-      "level": 6,
-      "kind": "rank-mismatch",
-      "title": "Nativity of St John the Baptist"
-    },
-    {
       "md": "6-26",
       "expected": "polyeleos",
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
       "title": "Ven. David of Thessalonica; Tikhvin Icon"
-    },
-    {
-      "md": "6-29",
-      "expected": "greatFeast",
-      "actual": "vigil",
-      "level": 6,
-      "kind": "rank-mismatch",
-      "title": "Holy Apostles Peter and Paul"
     },
     {
       "md": "6-30",
@@ -409,14 +377,6 @@
       "title": "Ven. Job of Pochaev"
     },
     {
-      "md": "8-29",
-      "expected": "greatFeast",
-      "actual": "vigil",
-      "level": 6,
-      "kind": "rank-mismatch",
-      "title": "Beheading of St John the Baptist"
-    },
-    {
       "md": "8-30",
       "expected": "polyeleos",
       "actual": "sixStichera",
@@ -473,14 +433,6 @@
       "title": "Ven. Chariton the Confessor"
     },
     {
-      "md": "10-1",
-      "expected": "greatFeast",
-      "actual": "vigil",
-      "level": 6,
-      "kind": "rank-mismatch",
-      "title": "Protection (Pokrov) of the Most-Holy Theotokos"
-    },
-    {
       "md": "10-6",
       "expected": "vigil",
       "actual": "sixStichera",
@@ -514,7 +466,7 @@
     },
     {
       "md": "11-16",
-      "expected": "greatFeast",
+      "expected": "vigil",
       "actual": "polyeleos",
       "level": 6,
       "kind": "rank-mismatch",

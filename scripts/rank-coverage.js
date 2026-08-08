@@ -51,12 +51,26 @@ const verbose         = process.argv.includes('--verbose');
 
 // orthocal feast_level → our rank vocabulary. Levels 0-3 are below polyeleos and
 // map to no curated rank (getFeastRank returns 'sixStichera' or null there).
+//
+// LEVEL 6 IS NOT ONE OF THE TWELVE. Checked against the cache: level 8 is the
+// Lord's feasts (Theophany, Nativity, Meeting, Palm, Pascha, Ascension,
+// Pentecost, Transfiguration, Elevation) and level 7 the Theotokos ones (Entry,
+// Annunciation, Dormition, her Nativity) — together the Twelve plus Pascha.
+// Level 6 is Circumcision, Pokrov, Peter and Paul, the Forerunner's Nativity and
+// Beheading, Apostle Matthew: the "red cross circle" typikon symbol, which is
+// vigil rank, not a Great Feast. Mapping 6 to greatFeast produced five false
+// mismatches where our `vigil` was right all along.
 function levelToRank(level) {
-  if (level >= 6) return 'greatFeast';
+  if (level >= 7) return 'greatFeast';
+  if (level === 6) return 'vigil';
   if (level === 5) return 'vigil';
   if (level === 4) return 'polyeleos';
   return null;
 }
+
+// Rank ordering, used to take a minimum on OUR side the same way the orthocal
+// side takes a minimum feast_level.
+const RANK_ORDER = { sixStichera: 0, polyeleos: 1, vigil: 2, greatFeast: 3 };
 
 /** Fixed-date floor per month-day, aggregated over every cached orthocal year. */
 function collectFixedLevels() {
@@ -90,13 +104,28 @@ function collectFixedLevels() {
   return { byMD, years: [...years].sort() };
 }
 
-/** Our rank for a month-day. Uses a reference year; getFeastRank is fixed-date,
- *  so the year only matters for Feb 29 (leap). */
-function ourRank(md) {
+/** Our fixed-date rank for a month-day.
+ *
+ *  MUST take the minimum across the same years, for the same reason the orthocal
+ *  side does: `getFeastRank` consults `getGreatFeastKey`, which knows the
+ *  MOVEABLE great feasts too. Evaluated on a single year it reports 5-21 as
+ *  greatFeast because Ascension falls there in 2026, and 4-12 likewise for
+ *  Pascha — contaminating our half of the comparison exactly the way an
+ *  unaggregated feast_level contaminates orthocal's. Four findings were pure
+ *  artifacts of that before this was symmetric. */
+function ourRank(md, years) {
   const [m, d] = md.split('-').map(Number);
-  const year = (m === 2 && d === 29) ? 2028 : 2026;
-  try { return getFeastRank(new Date(Date.UTC(year, m - 1, d)), 'new') || null; }
-  catch (_) { return null; }
+  let best = null;
+  for (const y of years) {
+    // Skip Feb 29 in non-leap years.
+    const dt = new Date(Date.UTC(y, m - 1, d));
+    if (dt.getUTCMonth() !== m - 1 || dt.getUTCDate() !== d) continue;
+    let r = null;
+    try { r = getFeastRank(dt, 'new') || null; } catch (_) { r = null; }
+    const score = RANK_ORDER[r] ?? 0;
+    if (best === null || score < best.score) best = { rank: r, score };
+  }
+  return best ? best.rank : null;
 }
 
 function computeFindings() {
@@ -109,7 +138,7 @@ function computeFindings() {
     return am - bm || ad - bd;
   })) {
     const expected = levelToRank(entry.level);
-    const actual   = ourRank(entry.md);
+    const actual   = ourRank(entry.md, years);
 
     // Only rank-driving disagreements matter. A date orthocal puts below
     // polyeleos is not this oracle's business — `expected` is null there, and we

@@ -119,6 +119,19 @@ const VIGIL_SAINTS = new Map([
  * no rank column in our menaion DB to drive this from, so additions live here.
  */
 const POLYELEOS_SAINTS = new Map([
+  // ── Batch 3 (2026-08-08) ─────────────────────────────────────────────────
+  // 8-28 (Job of Pochaev), 10-26 (Demetrius) and 9-1 (Church New Year) were
+  // candidates but have a null saint_type and no sibling row to follow, so they
+  // wait for a saint_type pass rather than a guess inside a rank batch.
+  ['5-9',   'Prophet Isaiah'],
+  ['5-25',  'Third Finding of the Head of St. John the Forerunner'],
+  ['6-15',  'Prophet Amos'],
+  ['6-26',  'Venerable David of Thessaloniki'],
+  ['7-3',   'Martyr Hyacinth of Caesarea'],
+  ['7-19',  'Uncovering of the Relics of St. Seraphim of Sarov'],
+  ['8-26',  'Martyrs Adrian and Natalia'],
+  ['9-28',  'Venerable Chariton the Confessor'],
+
   // ── Batch 2 (2026-08-08) — same source, same Type A criteria ─────────────
   // Includes two saints of particular weight for an OCA parish: the Repose of
   // St. Innocent, Apostle to the Americas (3-31) and the Synaxis of All Saints

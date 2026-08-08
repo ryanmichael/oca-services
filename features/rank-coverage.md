@@ -92,6 +92,48 @@ different service shape. Everywhere else (`liturgy-from-orthocal.js:370`,
 assumed the "we already have a rank, just wrong" set would be the gentlest, and
 it is in fact the sharpest.
 
+### The report triages for you
+
+Each finding carries a `triage` field, computed against a year in which the
+month-day was **not** masked by the moveable cycle:
+
+| Tag | Meaning | Count |
+|---|---|---|
+| `A` | the OCA-named saint is already our principal — only the rank entry is missing | 23 |
+| `B!` | something else is pinned as principal — a picker or override problem | 5 |
+| `?` | no moveable-free year in the cache; inconclusive, do not treat as B | 6 |
+
+Plus a `blockers` field naming what stops a rank entry landing: `no saint_type`
+(the General-Menaion propers cannot resolve) or `no stichera` (the day would fall
+back to generic category texts). 12 findings carry one.
+
+**Why the reference year matters.** Evaluating the principal in a colliding year
+invents wrong answers: on 2026-05-07 the picker lands on the Apparition of the
+Sign of the Cross and St Alexis Toth looks buried, when in a clean year he is
+already the principal. That mistake was made three separate times before it was
+encoded here — once in the oracle's own arithmetic, once across the whole Type B
+list, once on 5-7 specifically. Where no clean year exists (4-6 and 4-7 are Great
+and Holy Monday and Tuesday in every cached year at the floor level) the finding
+is reported `?`, never `B`.
+
+### The four feast-window burials
+
+The `B!` set is dominated by one shape — the 2026-08-09 St. Herman pattern, where
+`"Afterfeast "` / `"Leavetaking "` matches `MOVEABLE_CYCLE_TITLE` and the picker
+pins the window over a ranked saint:
+
+| Date | Window | Buried saint |
+|---|---|---|
+| 8-13 | Leavetaking of the Transfiguration | St Tikhon of Zadonsk |
+| 8-16 | Afterfeast of the Dormition | Image of Christ Not Made by Hands |
+| 9-21 | Leavetaking of the Elevation | Apostle Quadratus |
+| 1-11 | Afterfeast of Theophany | Ven. Theodosius the Great — **FIXED** `d54a4f3` |
+
+Only 1-11 was fixable with a one-line `PRINCIPAL_OVERRIDES` entry, because
+Theodosius has his own stichera. The other three saints do not, so an override
+would swap the feast's proper stichera for General-Menaion generics — a downgrade.
+They need the feast-plus-saint blend that 8-9 required across four commits.
+
 ### Then triage each date by cause
 
 - **Type A — rank-only.** The saint is already the principal with stichera; only

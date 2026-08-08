@@ -91,9 +91,10 @@ function collectFixedLevels() {
     const md = `${Number(m[2])}-${Number(m[3])}`;
     const title = o.summary_title || '';
     let cur = byMD.get(md);
-    if (!cur) { cur = { md, level: o.feast_level, samples: 0, titles: new Map() }; byMD.set(md, cur); }
+    if (!cur) { cur = { md, level: o.feast_level, samples: 0, titles: new Map(), years: [] }; byMD.set(md, cur); }
     cur.level = Math.min(cur.level, o.feast_level);
     cur.samples += 1;
+    cur.years.push({ year: Number(m[1]), iso: f.replace(/\.json$/, ''), level: o.feast_level, title });
     // Title is chosen later by FREQUENCY, not by first-seen. A fixed-date
     // commemoration recurs every year; a moveable collision appears once. Taking
     // the most common title stops the report labelling 3-9 "First Sunday of
@@ -155,9 +156,70 @@ function computeFindings() {
               : !actual || actual === 'sixStichera' ? 'missing-rank'
               : 'rank-mismatch',
       title:    modalTitle(entry).slice(0, 70),
+      ...(() => {
+        const t = triage(entry.md, modalTitle(entry), referenceIso(entry));
+        return { triage: t.type, principal: t.principal,
+                 blockers: t.blockers || undefined, note: t.note || undefined };
+      })(),
     });
   }
   return { findings, years };
+}
+
+/** A year in which this month-day was NOT masked by the moveable cycle — i.e.
+ *  one whose feast_level equals the fixed-date floor. Evaluating the principal in
+ *  a colliding year is how phantom findings appear: on 2026-05-07 the picker
+ *  lands on the Apparition of the Sign of the Cross and St Alexis Toth looks
+ *  buried, when in a clean year he is already the principal. That mistake was
+ *  made three times before this was encoded. */
+function referenceIso(entry) {
+  const clean = entry.years.filter(y => y.level === entry.level);
+  const modal = modalTitle(entry);
+  return (clean.find(y => y.title === modal) || clean[0] || entry.years[0]).iso;
+}
+
+/** Triage a finding against the menaion: is the OCA-named saint already our
+ *  principal (Type A — the rank entry is all that is missing), or is something
+ *  else pinned (Type B — a picker/override problem)? Also reports the two things
+ *  that block a rank entry: a null saint_type and absent stichera. */
+function triage(md, ocaTitle, iso) {
+  try {
+    const { getMenaionRanked } = require(path.join(ROOT, 'server-lib', 'sources', 'menaion'));
+    const { pickPrincipalByOrthocalOrder, applyPrincipalOverride, loadOrthocalForDate } =
+      require(path.join(ROOT, 'server-lib', 'sources', 'menaion-principal'));
+    const [m, d] = md.split('-').map(Number);
+    const r = getMenaionRanked(m, d);
+    if (!r || !r.notable || !r.notable.length) return { type: '?', note: 'no commemorations' };
+    let p = pickPrincipalByOrthocalOrder(r.notable, loadOrthocalForDate(iso), r.principal);
+    p = applyPrincipalOverride(m, d, r.all, p);
+    if (!p) return { type: '?', note: 'no principal' };
+
+    const norm = (x) => String(x).toLowerCase().replace(/[^a-z ]/g, ' ');
+    const toks = (x) => new Set(norm(x).split(' ').filter(w => w.length > 4));
+    const A = toks(ocaTitle), B = toks(p.title);
+    let shared = 0; for (const t of A) if (B.has(t)) shared++;
+
+    const blockers = [];
+    if (!p.saint_type)  blockers.push('no saint_type');
+    if (!p.hasStichera) blockers.push('no stichera');
+
+    // If the resolved principal is itself a moveable-cycle title, no clean year
+    // was available and the comparison is inconclusive — report '?' rather than
+    // a confident Type B. Calling these "wrong principal" is precisely the
+    // phantom finding this triage exists to prevent; 4-6 and 4-7 land on Great
+    // and Holy Monday and Tuesday in every cached year at the floor level.
+    const MOVEABLE = /^(Sunday|Saturday of|Great and Holy|Memorial Saturday|Bright |HOLY PASCHA|Holy Pentecost|Antipascha)/i;
+    if (shared === 0 && MOVEABLE.test(p.title)) {
+      return { type: '?', principal: p.title,
+               note: 'no moveable-free year in the cache — inconclusive',
+               blockers: blockers.length ? blockers.join(', ') : null };
+    }
+    return {
+      type: shared > 0 ? 'A' : 'B',
+      principal: p.title,
+      blockers: blockers.length ? blockers.join(', ') : null,
+    };
+  } catch (_) { return { type: '?', note: 'triage failed' }; }
 }
 
 /** Most frequent summary_title for a month-day across the cached years. */
@@ -178,7 +240,11 @@ function report(findings, years) {
     if (!list.length) continue;
     console.log(`\n  ${kind} (${list.length}):`);
     for (const f of list) {
-      console.log(`    ${f.md.padEnd(6)} want ${f.expected.padEnd(11)} have ${f.actual.padEnd(13)} ${f.title}`);
+      const tag = f.triage === 'A' ? 'A ' : f.triage === 'B' ? 'B!' : '? ';
+      const blk = f.blockers ? `  [${f.blockers}]` : '';
+      console.log(`    ${tag} ${f.md.padEnd(6)} want ${f.expected.padEnd(11)} have ${f.actual.padEnd(13)} ${f.title}${blk}`);
+      if (f.triage === 'B') console.log(`         principal is "${f.principal}"`);
+      if (f.triage === '?' && f.note) console.log(`         ${f.note} (principal reads "${f.principal}")`);
     }
   }
   if (!findings.length) console.log('  clean — every rank-driving date agrees.');

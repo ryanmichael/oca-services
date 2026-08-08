@@ -14,7 +14,10 @@
       "actual": "greatFeast",
       "level": 6,
       "kind": "rank-mismatch",
-      "title": "Circumcision of Our Lord; St Basil the Great"
+      "title": "Circumcision of Our Lord; St Basil the Great",
+      "triage": "A",
+      "principal": "The Circumcision of our Lord and Savior Jesus Christ",
+      "blockers": "no saint_type"
     },
     {
       "md": "1-2",
@@ -22,7 +25,10 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Forefeast of Theophany"
+      "title": "Forefeast of Theophany",
+      "triage": "A",
+      "principal": "Forefeast of the Theophany of our Lord and Savior Jesus Christ",
+      "blockers": "no saint_type"
     },
     {
       "md": "1-14",
@@ -30,7 +36,10 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Leavetaking of Theophany"
+      "title": "Leavetaking of Theophany",
+      "triage": "A",
+      "principal": "Leavetaking of the Theophany of our Lord and Savior Jesus Christ",
+      "blockers": "no saint_type"
     },
     {
       "md": "1-17",
@@ -38,7 +47,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Ven. Godbearing Anthony the Great"
+      "title": "Ven. Godbearing Anthony the Great",
+      "triage": "A",
+      "principal": "Venerable and God-bearing Father Anthony the Great"
     },
     {
       "md": "1-20",
@@ -46,7 +57,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Ven. Euthymius the Great"
+      "title": "Ven. Euthymius the Great",
+      "triage": "A",
+      "principal": "Venerable Euthymius the Great"
     },
     {
       "md": "1-25",
@@ -54,7 +67,10 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "St Gregory the Theologian"
+      "title": "St Gregory the Theologian",
+      "triage": "A",
+      "principal": "Saint Gregory the Theologian, Archbishop of Constantinople",
+      "blockers": "no stichera"
     },
     {
       "md": "2-14",
@@ -62,7 +78,11 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "St Cyril, Teacher of the Slavs"
+      "title": "St Cyril, Teacher of the Slavs",
+      "triage": "?",
+      "principal": "Memorial Saturday of Meatfare",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     },
     {
       "md": "2-27",
@@ -70,7 +90,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "St Raphael Bishop of Brooklyn"
+      "title": "St Raphael Bishop of Brooklyn",
+      "triage": "A",
+      "principal": "Repose of Saint Raphael, Bishop of Brooklyn"
     },
     {
       "md": "4-6",
@@ -78,7 +100,11 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "St Methodius, Enilightener of the Slavs"
+      "title": "St Methodius, Enilightener of the Slavs",
+      "triage": "?",
+      "principal": "Great and Holy Monday",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     },
     {
       "md": "4-7",
@@ -86,7 +112,11 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Repose St. Tikhon, Patriarch of Moscow, Enlightener N. America"
+      "title": "Repose St. Tikhon, Patriarch of Moscow, Enlightener N. America",
+      "triage": "?",
+      "principal": "Great and Holy Tuesday",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     },
     {
       "md": "4-23",
@@ -94,7 +124,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Holy Greatmartyr, Victorybearer and Wonderworker George"
+      "title": "Holy Greatmartyr, Victorybearer and Wonderworker George",
+      "triage": "A",
+      "principal": "Greatmartyr, Victory-bearer, and Wonderworker George"
     },
     {
       "md": "5-2",
@@ -102,7 +134,9 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Trans. Rel. Boris and Gleb"
+      "title": "Trans. Rel. Boris and Gleb",
+      "triage": "B",
+      "principal": "Saint Matrona of Moscow"
     },
     {
       "md": "5-3",
@@ -110,7 +144,11 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Ven. Theodosius, Abbot of the Kiev Caves"
+      "title": "Ven. Theodosius, Abbot of the Kiev Caves",
+      "triage": "?",
+      "principal": "Sunday of the Paralytic",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     },
     {
       "md": "5-7",
@@ -118,7 +156,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "St Alexis Toth, Confessor and Defender of Orthodoxy in America"
+      "title": "St Alexis Toth, Confessor and Defender of Orthodoxy in America",
+      "triage": "A",
+      "principal": "Repose of Saint Alexis Toth, Confessor and Defender of Orthodoxy in America"
     },
     {
       "md": "5-8",
@@ -126,7 +166,9 @@
       "actual": "polyeleos",
       "level": 5,
       "kind": "rank-mismatch",
-      "title": "Holy Apostle John the Theologian"
+      "title": "Holy Apostle John the Theologian",
+      "triage": "A",
+      "principal": "Apostle and Evangelist John the Theologian"
     },
     {
       "md": "5-11",
@@ -134,7 +176,9 @@
       "actual": "polyeleos",
       "level": 5,
       "kind": "rank-mismatch",
-      "title": "SS Cyril and Methodius, Apostles to the Slavs"
+      "title": "SS Cyril and Methodius, Apostles to the Slavs",
+      "triage": "A",
+      "principal": "Equals of the Apostles and Teachers of the Slavs, Cyril and Methodius"
     },
     {
       "md": "5-21",
@@ -142,7 +186,9 @@
       "actual": "vigil",
       "level": 4,
       "kind": "rank-mismatch",
-      "title": "SS Constantine and Helen, Equals-to-the-Apostles"
+      "title": "SS Constantine and Helen, Equals-to-the-Apostles",
+      "triage": "A",
+      "principal": "Equal of the Apostles and Emperor Constantine with his Mother Helen"
     },
     {
       "md": "7-11",
@@ -150,7 +196,9 @@
       "actual": "polyeleos",
       "level": 2,
       "kind": "we-over-rank",
-      "title": "Greatmartyr Euphemia; Blessed Princess Olga"
+      "title": "Greatmartyr Euphemia; Blessed Princess Olga",
+      "triage": "A",
+      "principal": "Greatmartyr Euphemia the All-praised"
     },
     {
       "md": "7-17",
@@ -158,7 +206,9 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Royal Passionbearers"
+      "title": "Royal Passionbearers",
+      "triage": "B",
+      "principal": "Great Martyr Marina (Margaret) of Antioch"
     },
     {
       "md": "7-20",
@@ -166,7 +216,9 @@
       "actual": "polyeleos",
       "level": 5,
       "kind": "rank-mismatch",
-      "title": "Holy Prophet Elijah"
+      "title": "Holy Prophet Elijah",
+      "triage": "A",
+      "principal": "Holy, Glorious Prophet Elijah"
     },
     {
       "md": "7-22",
@@ -174,7 +226,9 @@
       "actual": "polyeleos",
       "level": 2,
       "kind": "we-over-rank",
-      "title": "Holy Myrrhbearer Mary Magdalene, Equal-to-the-Apostles"
+      "title": "Holy Myrrhbearer Mary Magdalene, Equal-to-the-Apostles",
+      "triage": "A",
+      "principal": "Myrrhbearer and Equal of the Apostles Mary Magdalene"
     },
     {
       "md": "8-9",
@@ -182,7 +236,9 @@
       "actual": "polyeleos",
       "level": 5,
       "kind": "rank-mismatch",
-      "title": "Ven. Herman of Alaska, Wonderworker of All America"
+      "title": "Ven. Herman of Alaska, Wonderworker of All America",
+      "triage": "A",
+      "principal": "Glorification of Venerable Herman of Alaska, Wonderworker of All America"
     },
     {
       "md": "8-13",
@@ -190,7 +246,10 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "St Tikhon of Zadonsk"
+      "title": "St Tikhon of Zadonsk",
+      "triage": "B",
+      "principal": "Leavetaking of the Transfiguration of our Lord",
+      "blockers": "no saint_type"
     },
     {
       "md": "8-16",
@@ -198,7 +257,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Image of Christ Not Made by Hands"
+      "title": "Image of Christ Not Made by Hands",
+      "triage": "B",
+      "principal": "Afterfeast of the Dormition of the Mother of God"
     },
     {
       "md": "9-1",
@@ -206,7 +267,10 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Church New Year; Ven. Simeon the Stylite (The Elder)"
+      "title": "Church New Year; Ven. Simeon the Stylite (The Elder)",
+      "triage": "A",
+      "principal": "Church New Year",
+      "blockers": "no saint_type"
     },
     {
       "md": "9-21",
@@ -214,7 +278,9 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Apostle Quadratus of the Seventy; Unc. Rel. St Dimitry, Metr. Rostov"
+      "title": "Apostle Quadratus of the Seventy; Unc. Rel. St Dimitry, Metr. Rostov",
+      "triage": "B",
+      "principal": "Leavetaking of the Elevation of the Cross"
     },
     {
       "md": "9-25",
@@ -222,7 +288,9 @@
       "actual": "vigil",
       "level": 4,
       "kind": "rank-mismatch",
-      "title": "Repose of Ven. Sergius of Radonezh"
+      "title": "Repose of Ven. Sergius of Radonezh",
+      "triage": "A",
+      "principal": "Repose of Venerable Sergius the Wonderworker, Abbot of Radonezh"
     },
     {
       "md": "9-26",
@@ -230,7 +298,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Repose of St John the Theologian"
+      "title": "Repose of St John the Theologian",
+      "triage": "A",
+      "principal": "Repose of the Holy Apostle and Evangelist John the Theologian"
     },
     {
       "md": "10-6",
@@ -238,7 +308,9 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "St Innocent, Metr. of Moscow / Holy Apostle Thomas"
+      "title": "St Innocent, Metr. of Moscow / Holy Apostle Thomas",
+      "triage": "A",
+      "principal": "Glorification of Saint Innocent, Metropolitan of Moscow, Enlightener of the Aleuts, Apostle to the Americas"
     },
     {
       "md": "11-13",
@@ -246,7 +318,9 @@
       "actual": "polyeleos",
       "level": 5,
       "kind": "rank-mismatch",
-      "title": "St John Chrysostom, Archbishop of Constantinople"
+      "title": "St John Chrysostom, Archbishop of Constantinople",
+      "triage": "A",
+      "principal": "Saint John Chrysostom, Archbishop of Constantinople"
     },
     {
       "md": "11-16",
@@ -254,7 +328,9 @@
       "actual": "polyeleos",
       "level": 6,
       "kind": "rank-mismatch",
-      "title": "Holy Apostle and Evangelist Mathew"
+      "title": "Holy Apostle and Evangelist Mathew",
+      "triage": "A",
+      "principal": "Apostle and Evangelist Matthew"
     },
     {
       "md": "12-12",
@@ -262,7 +338,9 @@
       "actual": "polyeleos",
       "level": 2,
       "kind": "we-over-rank",
-      "title": "St Spyridon the Wonderworker"
+      "title": "St Spyridon the Wonderworker",
+      "triage": "A",
+      "principal": "Saint Spyridon the Wonderworker, Bishop of Tremithus"
     },
     {
       "md": "12-13",
@@ -270,7 +348,11 @@
       "actual": "sixStichera",
       "level": 5,
       "kind": "missing-rank",
-      "title": "Repose Ven. Herman of Alaska, Wonderworker of All America"
+      "title": "Repose Ven. Herman of Alaska, Wonderworker of All America",
+      "triage": "?",
+      "principal": "Sunday of the Forefathers",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     },
     {
       "md": "12-20",
@@ -278,7 +360,11 @@
       "actual": "sixStichera",
       "level": 4,
       "kind": "missing-rank",
-      "title": "Repose of St. John of Kronstadt"
+      "title": "Repose of St. John of Kronstadt",
+      "triage": "?",
+      "principal": "Sunday before the Nativity",
+      "blockers": "no saint_type",
+      "note": "no moveable-free year in the cache — inconclusive"
     }
   ]
 }

@@ -206,20 +206,9 @@
     <div class="pa-service-panel" data-service="liturgy">
       <section class="pa-section">
         <div class="pa-section-label">Variant choices</div>
-        <div class="pa-card">
-          <div class="pa-field">
-            <label class="pa-field-label" for="f-cherubic">Cherubic Hymn setting</label>
-            <select class="pa-field-input" id="f-cherubic" data-variant-key="cherubic-hymn">
-              <option value="">(inherit from jurisdiction default)</option>
-            </select>
-          </div>
-          <div class="pa-field">
-            <label class="pa-field-label" for="f-precomm">Pre-Communion Prayer wording</label>
-            <select class="pa-field-input" id="f-precomm" data-variant-key="pre-communion-prayer">
-              <option value="">(inherit from jurisdiction default)</option>
-            </select>
-          </div>
-        </div>
+        <!-- Rendered from /api/pick-library. Do not hand-add controls here:
+             adding a library file is what adds a control. -->
+        <div class="pa-card" data-pick-slots="liturgy"></div>
       </section>
 
       <section class="pa-section">
@@ -332,14 +321,7 @@
     <div class="pa-service-panel" data-service="vespers" hidden>
       <section class="pa-section">
         <div class="pa-section-label">Variant choices</div>
-        <div class="pa-card">
-          <div class="pa-field">
-            <label class="pa-field-label" for="f-blessed">"Blessed is the Man" (Kathisma I)</label>
-            <select class="pa-field-input" id="f-blessed" data-variant-key="blessed-is-the-man">
-              <option value="">(inherit from jurisdiction default)</option>
-            </select>
-          </div>
-        </div>
+        <div class="pa-card" data-pick-slots="vespers"></div>
       </section>
     </div>
 

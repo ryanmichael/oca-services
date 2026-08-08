@@ -125,6 +125,8 @@ function validateParishVariantPicks() {
 function validateParishPractice() {
   const { openDb } = require('../cache/sqlite');
   const { fingerprint, explode, parseAddress } = require('../practice');
+  const { loadPracticeLibrary, resolveParishPractice, resolvePreset } = require('../practice/library');
+  const { readPracticePicks } = require('../parishes');
   const { getLiturgyFixed } = require('./cascade');
   const { fixedTextRegistry, registerBaseFixed } = require('./registry');
   const { loadAllParishOverlays } = require('../parishes');
@@ -152,6 +154,14 @@ function validateParishPractice() {
       'SELECT parish_id, rubrics_extra_json FROM parish_settings'
     ).all();
 
+    let registry;
+    try {
+      registry = loadPracticeLibrary();
+    } catch (err) {
+      console.error(`Practice library: load FAILED — ${err.message}`);
+      return { ok: false, warnings: 1 };
+    }
+
     let warnings = 0;
     let entryCount = 0;
 
@@ -168,7 +178,26 @@ function validateParishPractice() {
         warnings += 1;
         continue;
       }
-      if (!Array.isArray(extra.practice)) continue;
+      // Effective set = library presets (Bucket C) + bespoke inline entries
+      // (Bucket D), resolved by exactly the code the materializer uses, so this
+      // validates what actually renders rather than one of the two sources.
+      const picks = readPracticePicks(db, row.parish_id);
+      for (const pick of picks) {
+        if (!registry[pick.practice_key]) {
+          console.warn(
+            `Parish '${row.parish_id}': practice pick '${pick.practice_key}' has no library file`);
+          warnings += 1;
+        } else if (!resolvePreset(registry, pick.practice_key, pick.preset_id)) {
+          console.warn(
+            `Parish '${row.parish_id}': practice pick '${pick.practice_key}'='${pick.preset_id}' ` +
+            `does not resolve — the parish has silently reverted to the full canonical text`);
+          warnings += 1;
+        }
+      }
+
+      const effective = resolveParishPractice(
+        picks, Array.isArray(extra.practice) ? extra.practice : [], registry);
+      if (effective.length === 0) continue;
 
       let texts;
       try {
@@ -179,7 +208,7 @@ function validateParishPractice() {
         continue;
       }
 
-      for (const entry of extra.practice) {
+      for (const entry of effective) {
         entryCount += 1;
         const target = entry && entry.target;
         if (!target) {

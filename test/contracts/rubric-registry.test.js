@@ -83,6 +83,11 @@ describe('Feature contract: rubric registry', () => {
     assert.equal(after, before, 'migration 007 is not idempotent');
   });
 
+  // Note on `practice`: it is deliberately absent from the snapshot. Library
+  // presets reach buildRubrics as its third argument, which this test does not
+  // pass; bespoke inline entries (from rubrics_extra_json) still come through on
+  // the two-argument path. So "no practice here" is the correct expectation for a
+  // parish whose practice comes entirely from picks. See features/practice-layer.md.
   it('INV-D: registry path produces same buildRubrics result as legacy path (roundtrip)', () => {
     const snapshotPath = path.join(ROOT, 'test', 'contracts', '__snapshots__', 'rubrics-pre-refactor.json');
     const expected = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));

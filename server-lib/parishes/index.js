@@ -17,6 +17,7 @@
 const { openDb }                 = require('../cache/sqlite');
 const { deriveOverlayForService } = require('../derivations');
 const { loadVariantLibrary, resolveVariant } = require('../variants');
+const { loadPracticeLibrary }               = require('../practice/library');
 const { resolvePatronByNaturalKey } = require('./patron-resolver');
 const {
   loadRegistry,
@@ -52,6 +53,17 @@ function readVariantPicks(db, parishId) {
   ).all(parishId);
 }
 
+/** Practice picks. Table is absent on DBs predating migration 008. */
+function readPracticePicks(db, parishId) {
+  const exists = db.prepare(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name='parish_practice_picks'"
+  ).get();
+  if (!exists) return [];
+  return db.prepare(
+    'SELECT practice_key, preset_id FROM parish_practice_picks WHERE parish_id = ?'
+  ).all(parishId);
+}
+
 function listAllParishIds() {
   const db = openDb();
   if (!db) return [];
@@ -70,14 +82,14 @@ function listAllParishIds() {
 /** Build the synthetic manifest + per-service data for one parish. Pure
  *  function-shaped: takes inputs (row, picks, library), returns the overlay
  *  object the in-memory registry expects. Trivially testable. */
-function buildParishOverlay(row, picks, library, rubricPicks = {}) {
+function buildParishOverlay(row, picks, library, rubricPicks = {}, practice = {}) {
   const extendsChain = parseExtendsChain(row);
   const manifest = {
     name:         row.name,
     kind:         'parish',
     jurisdiction: row.jurisdiction,
     extends:      extendsChain,
-    rubrics:      buildRubrics(row, rubricPicks),
+    rubrics:      buildRubrics(row, rubricPicks, practice),
   };
 
   const data = {};
@@ -121,7 +133,7 @@ function parseExtendsChain(row) {
   return [row.jurisdiction];
 }
 
-function buildRubrics(row, rubricPicks = {}) {
+function buildRubrics(row, rubricPicks = {}, practiceEntries = []) {
   const r = {};
   const registry = loadRegistry();
   for (const [id, def] of Object.entries(registry.rubrics)) {
@@ -152,14 +164,30 @@ function buildRubrics(row, rubricPicks = {}) {
       commemorationId: resolved ? resolved.id : null,
     };
   }
+  let inlinePractice = [];
   if (row.rubrics_extra_json) {
     try {
       const extra = JSON.parse(row.rubrics_extra_json);
+      // `practice` is merged rather than assigned: library presets (Bucket C)
+      // and bespoke inline entries (Bucket D) both feed it, and an inline entry
+      // must override a preset targeting the same path rather than stacking
+      // with it. resolveParishPractice owns that precedence.
+      if (Array.isArray(extra.practice)) inlinePractice = extra.practice;
       Object.assign(r, extra);
     } catch (_) {
-      // Malformed — drift detector will flag separately.
+      // Malformed — validateParishPractice flags this loudly; it is otherwise
+      // invisible and silently drops EVERY key in this column.
     }
   }
+
+  const { resolveParishPractice } = require('../practice/library');
+  const effective = resolveParishPractice(
+    practiceEntries.picks || [],
+    inlinePractice,
+    practiceEntries.registry || {});
+  if (effective.length) r.practice = effective;
+  else delete r.practice;
+
   return r;
 }
 
@@ -176,10 +204,14 @@ function refreshParishOverlay(parishId) {
       invalidateOverlayCascade(parishId);
       return null;
     }
-    const picks       = readVariantPicks(db, parishId);
-    const library     = loadVariantLibrary();
-    const rubricPicks = getRubricPicks(db, parishId);
-    const overlay     = buildParishOverlay(row, picks, library, rubricPicks);
+    const picks         = readVariantPicks(db, parishId);
+    const library       = loadVariantLibrary();
+    const rubricPicks   = getRubricPicks(db, parishId);
+    const practice      = {
+      picks:    readPracticePicks(db, parishId),
+      registry: loadPracticeLibrary(),
+    };
+    const overlay = buildParishOverlay(row, picks, library, rubricPicks, practice);
     registerInMemoryOverlay(parishId, overlay);
     invalidateOverlayCascade(parishId);
     return overlay;
@@ -210,5 +242,6 @@ module.exports = {
   refreshParishOverlay,
   loadAllParishOverlays,
   listAllParishIds,
+  readPracticePicks,
   setDottedKey,
 };

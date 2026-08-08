@@ -1,0 +1,44 @@
+{
+ "key": "typical-antiphon-1",
+ "_version": 1,
+ "_label": "First Antiphon (Ps 102) — verses sung",
+ "_target": {
+  "service": "liturgy",
+  "path": "typical-antiphon-1.verses"
+ },
+ "_contract": "see fixed-texts/practice-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
+ "presets": [
+  {
+   "id": "full",
+   "label": "Full — every verse (default)",
+   "_note": "No operation. Present so a parish can state the choice explicitly rather than leaving the field blank."
+  },
+  {
+   "id": "krasnostovsky-abridged",
+   "label": "Abridged — Krasnostovsky choir books (Diocese of the South)",
+   "op": "select",
+   "units": "stichoi",
+   "keep": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "2.1",
+    "2.2",
+    "4.1"
+   ],
+   "reprise": [
+    "1.1"
+   ],
+   "fingerprint": "1b43a6ce",
+   "_note": "Closes with a reprise of stichos 1.1 — the choir book's final system is the opening line sung again, not a truncated verse 9.",
+   "_provenance": {
+    "origin": "transcribed",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "choir director",
+    "date": "2026-08-08",
+    "source_citation": "St. John of Damascus (Tyler) parish choir book, 'Fixed sections Liturgy' — Krasnostovsky settings, tr. +Dmitri (Royster)",
+    "note": "Confirmed directly with the parish that this is what is sung; NOT inferred from the scan. The First Antiphon page jumps mm.34->81; the Second Antiphon has a physical cut-and-paste seam on page 2 joining m.35 to m.72."
+   }
+  }
+ ]
+}

@@ -10,6 +10,7 @@ const slug = location.pathname.split('/').filter(Boolean)[1];
 const SETTINGS_URL = `/parish-admin/${slug}/settings`;
 const PATRON_URL   = (q) => `/parish-admin/${slug}/patron-search?q=${encodeURIComponent(q)}`;
 const VARIANTS_URL = (key) => `/parish-admin/${slug}/variants?key=${encodeURIComponent(key)}`;
+const PICK_LIBRARY_URL = '/api/pick-library';
 const REGISTRY_URL = '/api/rubric-registry';
 
 let rubricRegistry = null;
@@ -67,7 +68,6 @@ const els = {
   beatitudesReaderLed: $('f-beatitudes-reader-led'),
   faithfulLitany2Long: $('f-faithful-litany-2-long'),
   catechSeasons:   document.querySelectorAll('.catech-season'),
-  variantPickers:  document.querySelectorAll('select[data-variant-key]'),
 
   // Service tabs (drive both form section visibility AND preview service)
   serviceTabs:     document.querySelectorAll('.pa-tab[data-service-tab]'),
@@ -100,8 +100,10 @@ function snapshotMain() {
     rubric_faithful_litany_2_long:       els.faithfulLitany2Long.checked,
     rubric_omit_catechumens_seasons:     [...els.catechSeasons]
         .filter(c => c.checked).map(c => c.value).join(','),
-    variant_picks_serialized:            [...els.variantPickers]
-        .map(s => `${s.dataset.variantKey}=${s.value}`).join(';'),
+    variant_picks_serialized:            pickSelects('variant')
+        .map(s => `${s.dataset.pickKey}=${s.value}`).join(';'),
+    practice_picks_serialized:           pickSelects('practice')
+        .map(s => `${s.dataset.pickKey}=${s.value}`).join(';'),
   };
 }
 
@@ -222,12 +224,11 @@ function populate(data) {
   // Patron
   if (data.patron_natural_key) setPatron(data.patron_natural_key, data.patron_title, '');
 
-  // Variant pickers (async)
-  const picksByKey = Object.fromEntries(
-    (data.variant_picks || []).map(p => [p.variant_key, p.variant_id])
-  );
-  [...els.variantPickers].forEach(sel =>
-    populateVariantDropdown(sel.dataset.variantKey, sel, picksByKey[sel.dataset.variantKey] || '')
+  // Pick controls are rendered from the library, not hand-written, so a new
+  // library file gets a control with no page edit. Both sets are applied here.
+  renderPickControls(
+    Object.fromEntries((data.variant_picks  || []).map(p => [p.variant_key,  p.variant_id])),
+    Object.fromEntries((data.practice_picks || []).map(p => [p.practice_key, p.preset_id]))
   );
 
   initialState.main  = snapshotMain();
@@ -238,26 +239,103 @@ function populate(data) {
   refreshSetupDirtyUI();
 }
 
-function populateVariantDropdown(key, selectEl, currentPickId) {
-  return fetch(VARIANTS_URL(key), { credentials: 'same-origin' })
-    .then(r => r.ok ? r.json() : { variants: [] })
-    .then(({ variants }) => {
-      for (const v of variants) {
-        const opt = document.createElement('option');
-        opt.value = v.id;
-        opt.textContent = v.label;
-        selectEl.appendChild(opt);
+/** Every pick <select> currently on the page, optionally filtered by kind. */
+function pickSelects(kind) {
+  const sel = kind
+    ? `select[data-pick-kind="${kind}"]`
+    : 'select[data-pick-key]';
+  return [...document.querySelectorAll(sel)];
+}
+
+/** Build one labelled <select> for a library entry. */
+function buildPickField(entry, kind, currentId) {
+  const field = document.createElement('div');
+  field.className = 'pa-field';
+
+  const id = `f-pick-${kind}-${entry.key}`;
+  const label = document.createElement('label');
+  label.className = 'pa-field-label';
+  label.setAttribute('for', id);
+  label.textContent = entry.label;
+
+  const select = document.createElement('select');
+  select.className = 'pa-field-input';
+  select.id = id;
+  select.dataset.pickKey  = entry.key;
+  select.dataset.pickKind = kind;
+
+  const blank = document.createElement('option');
+  blank.value = '';
+  blank.textContent = '(inherit from jurisdiction default)';
+  select.appendChild(blank);
+
+  for (const o of entry.options) {
+    // A deprecated option is offered only to a parish already pinned to it, so
+    // their current choice stays visible instead of showing as blank.
+    if (o.deprecated && o.id !== currentId) continue;
+    const opt = document.createElement('option');
+    opt.value = o.id;
+    opt.textContent = o.deprecated ? `${o.label} (retired)` : o.label;
+    select.appendChild(opt);
+  }
+  if (currentId) select.value = currentId;
+
+  field.appendChild(label);
+  field.appendChild(select);
+  return field;
+}
+
+/** Render all pick controls from /api/pick-library into the per-service slots. */
+function renderPickControls(variantPicks, practicePicks) {
+  return fetch(PICK_LIBRARY_URL, { credentials: 'same-origin' })
+    .then(r => (r.ok ? r.json() : { variants: [], practice: [] }))
+    .then(({ variants, practice }) => {
+      const slots = {};
+      document.querySelectorAll('[data-pick-slots]').forEach(el => {
+        slots[el.dataset.pickSlots] = el;
+        el.innerHTML = '';
+      });
+
+      const add = (entries, kind, picks) => {
+        for (const entry of entries) {
+          const slot = slots[entry.service];
+          // A library entry for a service with no panel (e.g. matins) is not an
+          // error — it just has nowhere to render yet.
+          if (!slot) continue;
+          slot.appendChild(buildPickField(entry, kind, picks[entry.key] || ''));
+        }
+      };
+      add(variants, 'variant',  variantPicks  || {});
+      add(practice, 'practice', practicePicks || {});
+
+      for (const el of Object.values(slots)) {
+        if (!el.children.length) {
+          const empty = document.createElement('p');
+          empty.className = 'pa-field-label';
+          empty.textContent = 'No choices available for this service yet.';
+          el.appendChild(empty);
+        }
       }
-      if (currentPickId) selectEl.value = currentPickId;
+
+      // Selects did not exist when the form was first wired, so re-bind and
+      // re-baseline the dirty check against what is now on screen.
+      pickSelects().forEach(sel => sel.addEventListener('change', refreshMainDirtyUI));
       initialState.main = snapshotMain();
       refreshMainDirtyUI();
-    });
+    })
+    .catch(() => {});
 }
 
 function picksFromForm() {
-  return [...els.variantPickers]
+  return pickSelects('variant')
     .filter(s => s.value)
-    .map(s => ({ variant_key: s.dataset.variantKey, variant_id: s.value }));
+    .map(s => ({ variant_key: s.dataset.pickKey, variant_id: s.value }));
+}
+
+function practicePicksFromForm() {
+  return pickSelects('practice')
+    .filter(s => s.value)
+    .map(s => ({ practice_key: s.dataset.pickKey, preset_id: s.value }));
 }
 
 // ── Save ─────────────────────────────────────────────────────────────────
@@ -283,7 +361,9 @@ async function submitMain(e) {
     const s = snapshotMain();
     const payload = { ...s };
     delete payload.variant_picks_serialized;
-    payload.variant_picks = picksFromForm();
+    delete payload.practice_picks_serialized;
+    payload.variant_picks  = picksFromForm();
+    payload.practice_picks = practicePicksFromForm();
     for (const k of [
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',
       'rubric_include_lesser_saints','rubric_include_second_gospel',

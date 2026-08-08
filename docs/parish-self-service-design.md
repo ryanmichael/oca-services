@@ -338,3 +338,46 @@ These three primitives carry through Phase 2 (jurisdiction picker, patron typeah
 4. **Phase 0 prerequisite** (migration runner + library stability) before Phase 1 MVP — confirm OK?
 5. **MVP-first** (hierarchs + `confessFirst` for Tyler, ~1 week) vs. ship-the-whole-design-at-once. Lean: MVP.
 6. **Tyler migration** with `legacy_overlay_path` for Bucket D carryover (clean-cutover Bucket A/B/C; Bucket D stays on file) — confirm OK?
+
+---
+
+## Addendum — 2026-08-08: the antiphon moves from Bucket D to Bucket C
+
+§1 classified the abridged typical antiphon as **Bucket D** (custom text upload,
+deferred to v2). That was right at the time: the only way to express an
+abridgement was replacing the text, which genuinely needs upload, review and an
+approval queue.
+
+The practice layer (`658d4f9`, `features/practice-layer.md`) changed the
+primitive. An abridgement is now a **selection over canonical text** —
+non-destructive, and expressible as a named preset. So it graduates to
+**Bucket C (pick-from-list)**, which already had UI, a stability contract, and
+costs no code per addition. This is the doc's own "library-first strategy keeps
+custom uploads rare" playing out.
+
+Consequences for the phasing table:
+
+- `fixed-texts/practice-library/` is the Bucket C catalog for **shape**, the
+  sibling of `variant-library/` for **wording**. Same four stability rules.
+- `parish_practice_picks` (migration 008) is the sibling of
+  `parish_variant_picks`. Kept separate because a variant supplies a *value* and
+  a preset supplies an *operation*; sharing a table would also make
+  `validateParishVariantPicks` report practice rows as unresolvable.
+- Phase 6's "promotion-to-library workflow" now has a concrete first case: a
+  bespoke inline entry gets promoted to a preset the moment a **second** parish
+  wants it. That is the anti-entropy mechanism, and it is worth more than a
+  richer custom editor.
+- Tyler's two Bucket D carryovers are now one: the trilingual Trisagion remains
+  a variant-library pick (Bucket C already), and the antiphon is a practice
+  preset. Neither needs `legacy_overlay_path`.
+
+**Still deferred:** a per-verse custom editor. Parish variability here is
+clustered rather than continuous — parishes inherit a printed performing edition
+rather than inventing an arbitrary subset — so presets match the real shape of
+the problem. Build the editor only when a parish matches no preset.
+
+**Also fixed in this pass:** the settings page rendered its dropdowns from
+hand-written HTML, and only three of five variant keys had one. Tyler's
+trilingual Trisagion was live in production and invisible in their own settings
+page. Controls now render from `/api/pick-library`; adding a library file adds a
+control. `test/contracts/pick-library.test.js` INV-3 pins it.

@@ -51,13 +51,48 @@ verse 9.
 
 ## Where it lives and when it runs
 
-- **Spec:** `parish_settings.rubrics_extra_json` → `practice[]`, alongside
-  `principalOverrides` and `antiphonSet`. Merged into overlay rubrics by
-  `buildRubrics`.
+Two sources feed a parish's effective practice, in precedence order:
+
+1. **Library presets (Bucket C)** — `fixed-texts/practice-library/<key>.json`,
+   picked per parish in `parish_practice_picks`. The normal path.
+2. **Bespoke inline entries (Bucket D)** — `parish_settings.rubrics_extra_json`
+   → `practice[]`. The escape hatch, authored by us with provenance.
+
+**An inline entry replaces a preset targeting the same path**, so a parish can
+deviate from a preset it otherwise matches without forking it. They must never
+stack: two `select`s on one target would run the second against an
+already-selected array and silently drop text.
+
+`resolveParishPractice` in `server-lib/practice/library.js` owns that precedence
+and is shared by the materializer and the drift validator, so both see the same
+effective set.
+
 - **Engine:** `server-lib/practice/index.js`.
 - **Applied:** in `server-lib/routes/api-liturgy.js`, after the translation
   cascade resolves the words and before assembly — so a selection always applies
   to whatever text the parish's overlay chain produced.
+
+## Presets and the settings page
+
+A preset with **no `op`** is a deliberate no-op — it exists so a parish can state
+"we sing it all" explicitly rather than leaving the field blank.
+
+Controls on the settings page are rendered from **`/api/pick-library`**, which
+serves both the variant library (wording) and the practice library (shape), each
+entry tagged with the service it belongs to. Adding a library file adds a
+control; there is no page edit.
+
+That endpoint exists because the page had drifted from the data: dropdowns were
+hand-written HTML and only three of five variant keys had one. **Tyler's
+trilingual Trisagion was live in production and invisible in their own settings
+page.** `test/contracts/pick-library.test.js` INV-3 fails if anyone hand-adds
+markup back.
+
+Keys whose every option is deprecated are not offered — that keeps the retired
+`typical-antiphon-1` *text* variant (`short-4-verse`, killed by c95da45) out of
+the page now that the abridgement is a practice preset of the same key name. A
+deprecated option a parish is already pinned to is still shown, flagged
+"(retired)", so their current choice never renders as blank.
 
 ## Entry shape
 
@@ -137,7 +172,11 @@ also print during `drift:check`. They are informational and do not fail it.
 ## Keep in sync
 
 - `server-lib/practice/index.js` — ops, addressing, failure behaviour
+- `server-lib/practice/library.js` — preset loading and inline/preset precedence
+- `fixed-texts/practice-library/` + its CONTRACT.md
 - `server-lib/routes/api-liturgy.js` — the call site
+- `/api/pick-library` in `server-lib/routes/parish-admin.js` and the
+  `renderPickControls` path in `public/scripts/parish-admin.js`
 - `validateParishPractice` in `server-lib/overlays/drift.js`
 - `parish_settings.rubrics_extra_json` for any parish with `practice[]`
 - The `fingerprint` on every entry, whenever a targeted canonical array changes
@@ -145,10 +184,14 @@ also print during `drift:check`. They are informational and do not fail it.
 ## Open
 
 - **Liturgy only.** Vespers and Matins have no call site yet; add one the same
-  way when a parish needs it.
-- **Not exposed in parish self-service.** Entries are authored directly in the
-  DB. A UI needs an address picker, since raw `"2.1"` addresses are not something
-  to hand to a choir director.
-- **Whether other Diocese of the South parishes share Tyler's cut** is unknown.
-  If they do, the entries want promoting to a shared preset rather than being
-  copied per parish.
+  way when a parish needs it. A practice-library entry for a service with no
+  panel renders no control — not an error, just nowhere to put it.
+- **No custom (per-verse) editor.** Deliberate. Parish variability here is
+  clustered, not continuous — parishes inherit a printed performing edition
+  rather than inventing a subset — so presets fit the real shape of the problem
+  and raw `"2.1"` addresses are not something to hand a choir director. Build the
+  editor only when a parish matches no preset, and then show real verse text with
+  a diff against the full form, never addresses.
+- **Whether other Diocese of the South parishes share Tyler's cut** is still
+  unknown. If they do they simply pick `krasnostovsky-abridged`; the preset was
+  named for the printed edition, not the parish, for exactly that reason.

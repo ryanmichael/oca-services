@@ -22,6 +22,9 @@ const {
   setRubricPick,
   coerce,
 } = require('../parishes/rubric-registry');
+const { loadPracticeLibrary } = require('../practice/library');
+const { loadVariantLibrary }  = require('../variants');
+const { readPracticePicks }   = require('../parishes');
 
 const ROOT       = path.resolve(__dirname, '..', '..');
 const PAGE_HTML  = path.join(ROOT, 'public', 'parish-admin.html');
@@ -110,7 +113,8 @@ function fetchSettingsRow(parishId) {
       'SELECT variant_key, variant_id FROM parish_variant_picks WHERE parish_id = ?'
     ).all(parishId);
     const rubricPicks = getRubricPicks(db, parishId);
-    return { row, picks, rubricPicks };
+    const practicePicks = readPracticePicks(db, parishId);
+    return { row, picks, rubricPicks, practicePicks };
   } finally {
     db.close();
   }
@@ -139,8 +143,9 @@ function handleGetSettings(parishId, res) {
     rubric_paschal_communion_year_round: !!data.row.rubric_paschal_communion_year_round,
     rubric_beatitudes_reader_led:        !!data.row.rubric_beatitudes_reader_led,
     rubric_faithful_litany_2_long:       !!data.row.rubric_faithful_litany_2_long,
-    variant_picks: data.picks,
-    rubric_picks:  data.rubricPicks,
+    variant_picks:  data.picks,
+    practice_picks: data.practicePicks,
+    rubric_picks:   data.rubricPicks,
     updated_at: data.row.updated_at,
   });
 }
@@ -182,7 +187,8 @@ async function handlePostSettings(parishId, req, res) {
       }
       updates[field] = v;
     }
-    if (Object.keys(updates).length === 0 && !('variant_picks' in payload)) {
+    if (Object.keys(updates).length === 0
+        && !('variant_picks' in payload) && !('practice_picks' in payload)) {
       return send(res, 200, { ok: true, changed: 0 });
     }
 
@@ -224,6 +230,17 @@ async function handlePostSettings(parishId, req, res) {
         for (const p of payload.variant_picks) {
           if (p && typeof p.variant_key === 'string' && typeof p.variant_id === 'string') {
             pickStmt.run(parishId, p.variant_key, p.variant_id);
+          }
+        }
+      }
+      if (Array.isArray(payload.practice_picks)) {
+        db.prepare('DELETE FROM parish_practice_picks WHERE parish_id = ?').run(parishId);
+        const ppStmt = db.prepare(
+          'INSERT INTO parish_practice_picks (parish_id, practice_key, preset_id) VALUES (?, ?, ?)'
+        );
+        for (const p of payload.practice_picks) {
+          if (p && typeof p.practice_key === 'string' && typeof p.preset_id === 'string') {
+            ppStmt.run(parishId, p.practice_key, p.preset_id);
           }
         }
       }
@@ -354,5 +371,48 @@ function serveRegistry(req, res) {
   return handleGetRegistry(res);
 }
 
+/** The pick catalog the settings page renders its dropdowns from.
+ *
+ *  Both libraries in one payload, each entry carrying the service it belongs to
+ *  so the page can slot it under the right tab. This exists so the UI stops
+ *  drifting from the data: before it, dropdowns were hand-written HTML and only
+ *  three of five variant keys had one — Tyler's trilingual Trisagion was live in
+ *  production and invisible in their own settings page. Adding a library file
+ *  now adds its control automatically.
+ *
+ *  Deprecated options are included but flagged, so a parish already pinned to
+ *  one keeps seeing its current choice rather than a blank select. */
+function servePickLibrary(req, res) {
+  if (req.method !== 'GET') return send(res, 405, { error: 'method_not_allowed' });
+
+  const shape = (registry) =>
+    Object.values(registry)
+      // Drop keys with nothing selectable — every option deprecated. Keeps the
+      // superseded `typical-antiphon-1` text variant (short-4-verse, retired by
+      // c95da45) out of the page now that the abridgement is a practice preset.
+      .filter(e => e.target && e.all.some(o => !o.deprecated))
+      .map(e => ({
+        key:     e.key,
+        label:   e.label || e.key,
+        service: e.target.service,
+        options: e.all.map(o => ({
+          id:         o.id,
+          label:      o.label,
+          deprecated: !!o.deprecated,
+        })),
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+  try {
+    return send(res, 200, {
+      variants: shape(loadVariantLibrary()),
+      practice: shape(loadPracticeLibrary()),
+    });
+  } catch (err) {
+    return send(res, 500, { error: 'library_load_failed', detail: err.message });
+  }
+}
+
 module.exports = handle;
-module.exports.serveRegistry = serveRegistry;
+module.exports.serveRegistry    = serveRegistry;
+module.exports.servePickLibrary = servePickLibrary;

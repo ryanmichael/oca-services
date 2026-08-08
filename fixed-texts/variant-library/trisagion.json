@@ -1,26 +1,41 @@
 {
-  "key": "trisagion",
-  "_version": 1,
-  "_target": { "service": "liturgy", "path": "trisagion.variants" },
-  "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
-  "_note": "Parishes that sing the Trisagion in multiple languages add a `variants` array to the base trisagion object. Each entry is { lang, text } and the assembler renders them in order. The base text + repetitions + glory + final pass through unchanged.",
-  "variants": [
+ "key": "trisagion",
+ "_version": 1,
+ "_label": "Trisagion setting",
+ "_target": {
+  "service": "liturgy",
+  "path": "trisagion.variants"
+ },
+ "_contract": "see fixed-texts/variant-library/CONTRACT.md — IDs immutable, no removals, mark deprecated:true to retire",
+ "_note": "Parishes that sing the Trisagion in multiple languages add a `variants` array to the base trisagion object. Each entry is { lang, text } and the assembler renders them in order. The base text + repetitions + glory + final pass through unchanged.",
+ "variants": [
+  {
+   "id": "english-slavonic-greek",
+   "label": "English / Slavonic / Greek (trilingual)",
+   "aliases": [
+    "trilingual-en-sl-gr"
+   ],
+   "_provenance": {
+    "origin": "extracted-from-overlay",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "admin",
+    "date": "2026-06-19",
+    "source_citation": "St. John of Damascus (Tyler) trilingual practice"
+   },
+   "value": [
     {
-      "id": "english-slavonic-greek",
-      "label": "English / Slavonic / Greek (trilingual)",
-      "aliases": ["trilingual-en-sl-gr"],
-      "_provenance": {
-        "origin": "extracted-from-overlay",
-        "parish_id": "st-john-damascus-tyler",
-        "contributor": "admin",
-        "date": "2026-06-19",
-        "source_citation": "St. John of Damascus (Tyler) trilingual practice"
-      },
-      "value": [
-        { "lang": "English",  "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us." },
-        { "lang": "Slavonic", "text": "Svyatyi Bozhe, Svyatyi Krépkii, Svyatyi Bezsmértnyi, pomíluy nas." },
-        { "lang": "Greek",    "text": "Ágios o Theós, Ágios Ischyrós, Ágios Athánatos, eleíson imás." }
-      ]
+     "lang": "English",
+     "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
+    },
+    {
+     "lang": "Slavonic",
+     "text": "Svyatyi Bozhe, Svyatyi Krépkii, Svyatyi Bezsmértnyi, pomíluy nas."
+    },
+    {
+     "lang": "Greek",
+     "text": "Ágios o Theós, Ágios Ischyrós, Ágios Athánatos, eleíson imás."
     }
-  ]
+   ]
+  }
+ ]
 }

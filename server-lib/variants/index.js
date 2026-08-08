@@ -72,7 +72,8 @@ function loadOne(file) {
       byId.set(name, v);
     }
   }
-  return { key: data.key, version: data._version || 1, target, byId, all: data.variants };
+  return { key: data.key, version: data._version || 1, label: data._label || data.key,
+           target, byId, all: data.variants };
 }
 
 function loadVariantLibrary() {

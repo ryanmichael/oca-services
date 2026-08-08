@@ -11,6 +11,7 @@ const SETTINGS_URL = `/parish-admin/${slug}/settings`;
 const PATRON_URL   = (q) => `/parish-admin/${slug}/patron-search?q=${encodeURIComponent(q)}`;
 const VARIANTS_URL = (key) => `/parish-admin/${slug}/variants?key=${encodeURIComponent(key)}`;
 const PICK_LIBRARY_URL = '/api/pick-library';
+const RUBRIC_REGISTRY_URL = '/api/rubric-registry';
 const REGISTRY_URL = '/api/rubric-registry';
 
 let rubricRegistry = null;
@@ -104,6 +105,8 @@ function snapshotMain() {
         .map(s => `${s.dataset.pickKey}=${s.value}`).join(';'),
     practice_picks_serialized:           pickSelects('practice')
         .map(s => `${s.dataset.pickKey}=${s.value}`).join(';'),
+    rubric_picks_serialized:             registryToggles()
+        .map(c => `${c.dataset.rubricId}=${c.checked ? 1 : 0}`).join(';'),
   };
 }
 
@@ -230,6 +233,7 @@ function populate(data) {
     Object.fromEntries((data.variant_picks  || []).map(p => [p.variant_key,  p.variant_id])),
     Object.fromEntries((data.practice_picks || []).map(p => [p.practice_key, p.preset_id]))
   );
+  renderRegistryRubrics(data.rubric_picks || {});
 
   initialState.main  = snapshotMain();
   initialState.setup = snapshotSetup();
@@ -338,6 +342,89 @@ function practicePicksFromForm() {
     .map(s => ({ practice_key: s.dataset.pickKey, preset_id: s.value }));
 }
 
+/** Checkboxes for registry rubrics that have no typed column. */
+function registryToggles() {
+  return [...document.querySelectorAll('input[type="checkbox"][data-rubric-id]')];
+}
+
+// A rubric declares the services it applies to; the page has three panels.
+const RUBRIC_PANEL = {
+  liturgy: 'liturgy',
+  greatVespers: 'vespers', dailyVespers: 'vespers', vespers: 'vespers',
+  matins: 'matins',
+};
+
+/** Render toggles for every registry rubric with no `dbColumn`. Column-backed
+ *  rubrics keep their hand-written markup and their `rubric_*` payload fields;
+ *  these have no other home, and before this they could only be set by editing
+ *  the database by hand. */
+function renderRegistryRubrics(current) {
+  return fetch(RUBRIC_REGISTRY_URL, { credentials: 'same-origin' })
+    .then(r => (r.ok ? r.json() : { rubrics: {} }))
+    .then(({ rubrics }) => {
+      const slots = {};
+      document.querySelectorAll('[data-rubric-slots]').forEach(el => {
+        slots[el.dataset.rubricSlots] = el;
+        el.innerHTML = '';
+      });
+
+      for (const [id, def] of Object.entries(rubrics || {})) {
+        if (def.dbColumn) continue;              // handled by the static markup
+        if (def.type !== 'boolean') continue;    // only booleans render here
+        const panel = (def.appliesTo || []).map(a => RUBRIC_PANEL[a]).find(Boolean);
+        const slot = slots[panel];
+        if (!slot) continue;
+
+        const label = document.createElement('label');
+        label.className = 'pa-toggle';
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.id = def.domId || `f-rubric-${id}`;
+        input.dataset.rubricId = id;
+        input.checked = String(current[id] ?? '') === '1'
+                     || current[id] === 1 || current[id] === true;
+
+        const body = document.createElement('span');
+        body.className = 'pa-toggle-body';
+        const head = document.createElement('span');
+        head.className = 'pa-toggle-head';
+        const name = document.createElement('span');
+        name.className = 'pa-toggle-label';
+        name.textContent = def.label || id;
+        const dflt = document.createElement('span');
+        dflt.className = 'pa-toggle-default';
+        dflt.textContent = `default: ${def.default ? 'on' : 'off'}`;
+        head.appendChild(name); head.appendChild(dflt);
+        const detail = document.createElement('span');
+        detail.className = 'pa-toggle-detail';
+        detail.textContent = def.description || '';
+        body.appendChild(head); body.appendChild(detail);
+
+        label.appendChild(input); label.appendChild(body);
+        slot.appendChild(label);
+      }
+
+      for (const el of Object.values(slots)) {
+        if (!el.children.length) {
+          const p = document.createElement('p');
+          p.className = 'pa-field-label';
+          p.textContent = 'No additional rubrics for this service.';
+          el.appendChild(p);
+        }
+      }
+
+      registryToggles().forEach(c => c.addEventListener('change', refreshMainDirtyUI));
+      initialState.main = snapshotMain();
+      refreshMainDirtyUI();
+    })
+    .catch(() => {});
+}
+
+function rubricPicksFromForm() {
+  return registryToggles().map(c => ({ rubric_id: c.dataset.rubricId, value: c.checked ? 1 : 0 }));
+}
+
 // ── Save ─────────────────────────────────────────────────────────────────
 function postSettings(payload) {
   return fetch(SETTINGS_URL, {
@@ -362,8 +449,10 @@ async function submitMain(e) {
     const payload = { ...s };
     delete payload.variant_picks_serialized;
     delete payload.practice_picks_serialized;
+    delete payload.rubric_picks_serialized;
     payload.variant_picks  = picksFromForm();
     payload.practice_picks = practicePicksFromForm();
+    payload.rubric_picks   = rubricPicksFromForm();
     for (const k of [
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',
       'rubric_include_lesser_saints','rubric_include_second_gospel',

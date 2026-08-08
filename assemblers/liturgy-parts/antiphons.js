@@ -28,7 +28,7 @@ function _litFeastAntiphon(antiphon, sectionName, prefix) {
   return blocks;
 }
 
-function _litTypicalAntiphon1(f) {
+function _litTypicalAntiphon1(f, opts = {}) {
   const section = 'First Antiphon';
   const a = mustGet(f, 'typical-antiphon-1', { scope: section });
   if (!a || !a.verses) return [];
@@ -36,9 +36,24 @@ function _litTypicalAntiphon1(f) {
   a.verses.forEach((v, i) => {
     blocks.push(makeBlock(`a1-v${i}`, section, 'verse', 'choir', v));
   });
-  if (a.glory) {
+
+  // Parish rubric `antiphons.gloryAfterLittleLitany`: some parishes do not sing
+  // the concluding "Glory… now and ever…" here. Instead a bare "Glory to the
+  // Father…" comes at the end of the Little Litany that follows, immediately
+  // before Psalm 145, and "Now and ever…" stays at the close of the Second
+  // Antiphon. St. John of Damascus (Tyler) sings it this way — their choir book
+  // carries a separate piece headed `"Glory . . ." before Psalm 145` and none at
+  // the end of Psalm 102; confirmed with the choir director 2026-08-08.
+  //
+  // The antiphon's refrain still closes the section — only the doxology moves.
+  const gloryMoves = opts.rubrics?.antiphons?.gloryAfterLittleLitany === true;
+
+  if (a.glory && !gloryMoves) {
     blocks.push(makeBlock('a1-glory', section, 'doxology', 'choir', a.glory));
     blocks.push(makeBlock('a1-grefrain', section, 'response', 'choir',
+      a.gloryRefrain || a.refrain));
+  } else if (gloryMoves && (a.gloryRefrain || a.refrain)) {
+    blocks.push(makeBlock('a1-refrain', section, 'response', 'choir',
       a.gloryRefrain || a.refrain));
   }
   return blocks;

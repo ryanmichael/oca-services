@@ -7,7 +7,9 @@
       "namespace": "preCommunion.confessFirst",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_confess_first"
     },
     "omitPreTrisagionLitany": {
@@ -16,7 +18,9 @@
       "namespace": "omitPreTrisagionLitany",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_omit_pre_trisagion_litany",
       "domId": "f-omit-pre-trisagion"
     },
@@ -26,7 +30,9 @@
       "namespace": "troparia.includeLesserSaints",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_include_lesser_saints",
       "domId": "f-lesser-saints"
     },
@@ -36,7 +42,9 @@
       "namespace": "readings.includeSecondGospel",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_include_second_gospel",
       "domId": "f-second-gospel"
     },
@@ -46,7 +54,9 @@
       "namespace": "readings.includeSecondKoinonikon",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_include_second_koinonikon",
       "domId": "f-second-koinonikon"
     },
@@ -56,7 +66,9 @@
       "namespace": "omitCatechumensSeasons",
       "type": "csv-strings",
       "default": [],
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_omit_catechumens_seasons"
     },
     "paschalCommunionYearRound": {
@@ -76,7 +88,9 @@
       "namespace": "antiphons.beatitudesTropariaReaderLed",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_beatitudes_reader_led"
     },
     "faithful2Long": {
@@ -85,7 +99,9 @@
       "namespace": "litanies.faithful2Long",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["liturgy"],
+      "appliesTo": [
+        "liturgy"
+      ],
       "dbColumn": "rubric_faithful_litany_2_long"
     },
     "hoursPrecedeService": {
@@ -94,7 +110,11 @@
       "namespace": "opening.hoursPrecede",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["greatVespers", "dailyVespers", "matins"]
+      "appliesTo": [
+        "greatVespers",
+        "dailyVespers",
+        "matins"
+      ]
     },
     "licNoLeadingRepeat": {
       "label": "Lord I Call — no leading sticheron repeat (9-count)",
@@ -102,17 +122,37 @@
       "namespace": "lordICall.noLeadingRepeat",
       "type": "boolean",
       "default": false,
-      "appliesTo": ["greatVespers"]
+      "appliesTo": [
+        "greatVespers"
+      ]
     },
     "defaultPronoun": {
       "label": "Default language register (modern / traditional)",
       "description": "Register for variable hymn texts when a request does not specify ?pronoun. \"yy\" renders modern \"You/Your\" (thee/thou/thy and archaic verb forms are converted automatically); \"tt\" renders traditional \"Thee/Thou\". Applies to Vespers, Matins, and the Divine Liturgy. An explicit ?pronoun query param always overrides this default.",
       "namespace": "defaultPronoun",
       "type": "enum",
-      "options": ["tt", "yy"],
+      "options": [
+        "tt",
+        "yy"
+      ],
       "default": "tt",
-      "appliesTo": ["vespers", "matins", "liturgy"],
+      "appliesTo": [
+        "vespers",
+        "matins",
+        "liturgy"
+      ],
       "dbColumn": "rubric_default_pronoun"
+    },
+    "gloryAfterLittleLitany": {
+      "label": "“Glory to the Father” after the Little Litany",
+      "description": "The First Antiphon ends with its refrain, and “Glory to the Father…” is sung at the end of the Little Litany that follows, before Psalm 145. “Now and ever…” stays at the end of the Second Antiphon.",
+      "namespace": "antiphons.gloryAfterLittleLitany",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ],
+      "domId": "f-glory-after-little-litany"
     }
   }
 }

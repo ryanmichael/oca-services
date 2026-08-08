@@ -188,7 +188,8 @@ async function handlePostSettings(parishId, req, res) {
       updates[field] = v;
     }
     if (Object.keys(updates).length === 0
-        && !('variant_picks' in payload) && !('practice_picks' in payload)) {
+        && !('variant_picks' in payload) && !('practice_picks' in payload)
+        && !('rubric_picks' in payload)) {
       return send(res, 200, { ok: true, changed: 0 });
     }
 
@@ -233,6 +234,21 @@ async function handlePostSettings(parishId, req, res) {
           }
         }
       }
+      // Registry-only rubrics — those with no typed column on parish_settings.
+      // The column-backed ones still travel as `rubric_*` fields above and are
+      // dual-written; these have nowhere else to live, so without this path they
+      // are settable only by hand in the DB. Three already existed unsettable
+      // (hoursPrecedeService, licNoLeadingRepeat, gloryAfterLittleLitany).
+      if (Array.isArray(payload.rubric_picks)) {
+        const reg = loadRegistry().rubrics || {};
+        for (const rp of payload.rubric_picks) {
+          if (!rp || typeof rp.rubric_id !== 'string') continue;
+          const def = reg[rp.rubric_id];
+          if (!def || def.dbColumn) continue;   // unknown, or column-backed
+          setRubricPick(db, parishId, rp.rubric_id, rp.value);
+        }
+      }
+
       if (Array.isArray(payload.practice_picks)) {
         db.prepare('DELETE FROM parish_practice_picks WHERE parish_id = ?').run(parishId);
         const ppStmt = db.prepare(

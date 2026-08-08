@@ -1,6 +1,24 @@
 'use strict';
 
-const cal = require('../calendar-rules.js');
+const fs   = require('fs');
+const path = require('path');
+const cal  = require('../calendar-rules.js');
+
+const MENAION_DIR = path.resolve(__dirname, '..', 'variable-sources', 'menaion');
+const MONTH_NAMES = ['', 'january', 'february', 'march', 'april', 'may', 'june',
+  'july', 'august', 'september', 'october', 'november', 'december'];
+
+/** True when the menaion file for (m, d) supplies its own Matins prokeimenon or
+ *  Gospel — the saint's, which on a Sunday must NOT displace the resurrectional
+ *  prokeimenon and eothinon Gospel. */
+function menaionHasMatinsProper(m, d) {
+  const f = path.join(MENAION_DIR, `${MONTH_NAMES[m]}-${String(d).padStart(2, '0')}.json`);
+  if (!fs.existsSync(f)) return false;
+  try {
+    const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+    return !!(j.matins && (j.matins.prokeimenon || j.matins.gospel));
+  } catch (_) { return false; }
+}
 
 const DAY_MS = 86400000;
 
@@ -105,6 +123,30 @@ function representativeDates(year) {
   // ── Tier 3: vigil-rank fixed feasts ──
   for (const [m, d] of VIGIL_FIXED) {
     dates.add(toISO(utcDate(year, m, d)));
+  }
+
+  // ── Tier 4: Sundays where a menaion file supplies its own Matins propers ──
+  //
+  // Derived from the data condition rather than a hardcoded list, so it
+  // self-populates for any year. These are the dates where the saint's Matins
+  // prokeimenon and Gospel can bleed into the Sunday slots the resurrectional
+  // cycle owns.
+  //
+  // Added 2026-08-08: 2026-08-09 was NOT in the sample, so a live regression sat
+  // on the very date being audited all week while every push reported high=0.
+  // Worse, M3/M14 only fire when the saint's Gospel happens to coincide with
+  // some eothinon passage, so 12 of the 13 affected Sundays were silent even
+  // where they were sampled. Sampling the whole class closes both holes.
+  {
+    let c = utcDate(year, 1, 1);
+    const end = utcDate(year, 12, 31);
+    while (c <= end) {
+      if (c.getUTCDay() === 0
+          && menaionHasMatinsProper(c.getUTCMonth() + 1, c.getUTCDate())) {
+        dates.add(toISO(c));
+      }
+      c = addDays(c, 1);
+    }
   }
 
   return Array.from(dates).sort();

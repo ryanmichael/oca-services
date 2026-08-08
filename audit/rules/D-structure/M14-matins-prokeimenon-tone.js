@@ -41,7 +41,25 @@ module.exports = {
 
     const prokHymns = (ctx.assembled?.blocks || [])
       .filter(b => b.section === 'Matins Prokeimenon' && b.type === 'hymn' && b.tone != null);
-    if (!prokHymns.length) return [];
+
+    // Absence is a louder bug than a wrong tone, and this rule used to return
+    // clean on it. Sunday Matins in ordinary time always has a prokeimenon;
+    // rendering none meant a whole section silently vanished. Found 2026-08-08:
+    // simple-rank saint Sundays with a menaion file but no `matins.prokeimenon`
+    // consulted no source at all and emitted an empty section, and nothing
+    // flagged it because this early-return treated missing as not-applicable.
+    if (!prokHymns.length) {
+      const anyBlocks = (ctx.assembled?.blocks || [])
+        .some(b => b.section === 'Matins Prokeimenon');
+      return [{
+        message: anyBlocks
+          ? 'Sunday Matins Prokeimenon section has no toned hymn block.'
+          : 'Sunday Matins Prokeimenon section is missing entirely.',
+        hint: 'Sunday Matins always has a prokeimenon in the week tone. Check the '
+            + 'Octoechos fallback in buildMatinsSpec — a menaion file without its own '
+            + '`matins.prokeimenon` must still fall through to tone{N}.sunday.matins.',
+      }];
+    }
 
     if (prokHymns.some(b => b.tone === expectedTone)) return [];
     const tones = prokHymns.map(b => b.tone).join(', ');

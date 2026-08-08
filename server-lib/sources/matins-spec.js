@@ -740,13 +740,47 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
     spec.magnification = mat.magnification;
   }
 
-  // Prokeimenon
-  if (mat.prokeimenon) {
+  // Prokeimenon + Gospel.
+  //
+  // A menaion file's Matins prokeimenon and Gospel belong to the SAINT. On a
+  // weekday they are what is sung. On a Sunday they are not: the resurrectional
+  // Matins prokeimenon (Octoechos, in the week's tone) and the eothinon Gospel
+  // govern, and a polyeleos or vigil saint does not displace them. Only a Great
+  // Feast of the Lord displaces the Sunday cycle outright.
+  //
+  // Verified against reference/orders/2026-0809-order-services.txt, which prints
+  // `Prokeimenon, Tone 1: "'I will now arise,' says the Lord…"` and
+  // `10th Matins Gospel: (66) John 21:1-14` for a polyeleos saint on a Sunday —
+  // where the menaion file supplies Apostle Matthias's Tone-4 prokeimenon and
+  // John 21:15-25 (#67).
+  //
+  // Before this guard both were assigned unconditionally, so on all 13 Sundays
+  // in 2026 that carry a menaion Matins prokeimenon the saint's propers bled
+  // into the Sunday slots. Audit rules M3/M14 caught it on exactly one of them,
+  // and only by coincidence — see their festal-override note.
+  // Gate on getGreatFeastKey, NOT on resolvedFeastRank. 43 menaion files declare
+  // `_meta.feastRank: 'greatFeast'` but only 14 dates are actually among the
+  // Twelve Great Feasts + Pascha — the field is used loosely in the data to mean
+  // "vigil rank". Keying the guard off it left St. Nicholas, St. Luke, the
+  // Synaxis of Michael, St. Gregory the Theologian and the Uncovering of St.
+  // Sergius's relics still overriding the Sunday cycle.
+  const sundayCycleGoverns = isSunday && !feastKey;
+
+  if (mat.prokeimenon && !sundayCycleGoverns) {
     spec.prokeimenon = mat.prokeimenon;
+  } else if (sundayCycleGoverns) {
+    // Suppressing the saint's prokeimenon is only half the job — this code path
+    // (a date WITH a menaion matins file) never consulted the Octoechos, so
+    // without this the section renders empty. Draw the resurrectional
+    // prokeimenon from the week's tone, not spec.tone: a menaion _meta.tone is
+    // the saint's, and the Sunday prokeimenon follows the Octoechos cycle.
+    const oct = sources?.octoechos?.[`tone${tone}`]?.sunday?.matins?.prokeimenon;
+    if (oct) {
+      spec.prokeimenon = { refrain: oct.refrain, verse: oct.verse, tone };
+    }
   }
 
-  // Gospel
-  if (mat.gospel) {
+  if (mat.gospel && !sundayCycleGoverns) {
     spec.gospel = mat.gospel;
   }
 

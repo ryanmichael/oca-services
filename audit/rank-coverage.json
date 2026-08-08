@@ -1,0 +1,556 @@
+{
+  "_note": "Rank coverage baseline. Keyed by month-day; year-independent. Regenerate with: node scripts/rank-coverage.js --capture-baseline <file>",
+  "orthocalYears": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029
+  ],
+  "findings": [
+    {
+      "md": "1-2",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Forefeast of Theophany"
+    },
+    {
+      "md": "1-11",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Theodosius the Great"
+    },
+    {
+      "md": "1-14",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Leavetaking of Theophany"
+    },
+    {
+      "md": "1-17",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Ven. Godbearing Anthony the Great"
+    },
+    {
+      "md": "1-20",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Ven. Euthymius the Great"
+    },
+    {
+      "md": "1-25",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "St Gregory the Theologian"
+    },
+    {
+      "md": "1-27",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Transl. Relics of St John Chrysostom"
+    },
+    {
+      "md": "2-12",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "St Meletius, Archbishop of Antioch; St Aleksy, Metr. of All Russia"
+    },
+    {
+      "md": "2-14",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "St Cyril, Teacher of the Slavs"
+    },
+    {
+      "md": "2-24",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "1st and 2nd Finding Honorable Head of St John the Baptist"
+    },
+    {
+      "md": "2-27",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "St Raphael Bishop of Brooklyn"
+    },
+    {
+      "md": "3-9",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Forty Martyrs of Sebaste"
+    },
+    {
+      "md": "3-31",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Repose St Innocent, Metr. Moscow and Apostle to Americas"
+    },
+    {
+      "md": "4-5",
+      "expected": "(below polyeleos)",
+      "actual": "greatFeast",
+      "level": 0,
+      "kind": "we-over-rank",
+      "title": "Martyrs Agathopedes, Theodulus and Their Companions"
+    },
+    {
+      "md": "4-6",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "St Methodius, Enilightener of the Slavs"
+    },
+    {
+      "md": "4-7",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Repose St. Tikhon, Patriarch of Moscow, Enlightener N. America"
+    },
+    {
+      "md": "4-12",
+      "expected": "(below polyeleos)",
+      "actual": "greatFeast",
+      "level": 0,
+      "kind": "we-over-rank",
+      "title": "Lazarus Saturday"
+    },
+    {
+      "md": "4-23",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Holy Greatmartyr, Victorybearer and Wonderworker George"
+    },
+    {
+      "md": "4-25",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Apostle and Evangelist Mark"
+    },
+    {
+      "md": "4-30",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Apostle James, Brother of St John"
+    },
+    {
+      "md": "5-2",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Trans. Rel. Boris and Gleb"
+    },
+    {
+      "md": "5-3",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Theodosius, Abbot of the Kiev Caves"
+    },
+    {
+      "md": "5-7",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "St Alexis Toth, Confessor and Defender of Orthodoxy in America"
+    },
+    {
+      "md": "5-8",
+      "expected": "vigil",
+      "actual": "polyeleos",
+      "level": 5,
+      "kind": "rank-mismatch",
+      "title": "Holy Apostle John the Theologian"
+    },
+    {
+      "md": "5-9",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Prophet Isaiah; Trans. Rel. St Nicholas the Wonderworker"
+    },
+    {
+      "md": "5-10",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Apostle Simon the Zealot"
+    },
+    {
+      "md": "5-11",
+      "expected": "vigil",
+      "actual": "polyeleos",
+      "level": 5,
+      "kind": "rank-mismatch",
+      "title": "SS Cyril and Methodius, Apostles to the Slavs"
+    },
+    {
+      "md": "5-21",
+      "expected": "polyeleos",
+      "actual": "greatFeast",
+      "level": 4,
+      "kind": "rank-mismatch",
+      "title": "SS Constantine and Helen, Equals-to-the-Apostles"
+    },
+    {
+      "md": "5-25",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "3rd Finding of the Head of St John the Baptist"
+    },
+    {
+      "md": "5-31",
+      "expected": "(below polyeleos)",
+      "actual": "greatFeast",
+      "level": 0,
+      "kind": "we-over-rank",
+      "title": "Apostle Hermes of the Seventy"
+    },
+    {
+      "md": "6-11",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Apostles Bartholomew and Barnabas"
+    },
+    {
+      "md": "6-15",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Prophet Amos; St Jonah, Metr. of Moscow"
+    },
+    {
+      "md": "6-19",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Apostle Jude, Brother of the Lord"
+    },
+    {
+      "md": "6-24",
+      "expected": "greatFeast",
+      "actual": "vigil",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Nativity of St John the Baptist"
+    },
+    {
+      "md": "6-26",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. David of Thessalonica; Tikhvin Icon"
+    },
+    {
+      "md": "6-29",
+      "expected": "greatFeast",
+      "actual": "vigil",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Holy Apostles Peter and Paul"
+    },
+    {
+      "md": "6-30",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Synaxis of the Twelve Apostles"
+    },
+    {
+      "md": "7-3",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Martyr Hyacinth; Trans. Rel. Philip, Metr. Moscow"
+    },
+    {
+      "md": "7-10",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Anthony of the Kiev Caves"
+    },
+    {
+      "md": "7-11",
+      "expected": "(below polyeleos)",
+      "actual": "polyeleos",
+      "level": 2,
+      "kind": "we-over-rank",
+      "title": "Greatmartyr Euphemia; Blessed Princess Olga"
+    },
+    {
+      "md": "7-17",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Royal Passionbearers"
+    },
+    {
+      "md": "7-19",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Unc. Rel. Ven. Seraphim of Sarov"
+    },
+    {
+      "md": "7-20",
+      "expected": "vigil",
+      "actual": "polyeleos",
+      "level": 5,
+      "kind": "rank-mismatch",
+      "title": "Holy Prophet Elijah"
+    },
+    {
+      "md": "7-22",
+      "expected": "(below polyeleos)",
+      "actual": "polyeleos",
+      "level": 2,
+      "kind": "we-over-rank",
+      "title": "Holy Myrrhbearer Mary Magdalene, Equal-to-the-Apostles"
+    },
+    {
+      "md": "7-24",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Martyrs Boris and Gleb, Passionbearers"
+    },
+    {
+      "md": "8-9",
+      "expected": "vigil",
+      "actual": "polyeleos",
+      "level": 5,
+      "kind": "rank-mismatch",
+      "title": "Ven. Herman of Alaska, Wonderworker of All America"
+    },
+    {
+      "md": "8-13",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "St Tikhon of Zadonsk"
+    },
+    {
+      "md": "8-16",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Image of Christ Not Made by Hands"
+    },
+    {
+      "md": "8-26",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Martyrs Adrian and Natalia; Vladimir Icon"
+    },
+    {
+      "md": "8-28",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Job of Pochaev"
+    },
+    {
+      "md": "8-29",
+      "expected": "greatFeast",
+      "actual": "vigil",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Beheading of St John the Baptist"
+    },
+    {
+      "md": "8-30",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ss Alexander, John, Paul, Pats. Constantinople; Trans. Rel. St Alexand"
+    },
+    {
+      "md": "9-1",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Church New Year; Ven. Simeon the Stylite (The Elder)"
+    },
+    {
+      "md": "9-21",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Apostle Quadratus of the Seventy; Unc. Rel. St Dimitry, Metr. Rostov"
+    },
+    {
+      "md": "9-24",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy New Martyrs of Alaska"
+    },
+    {
+      "md": "9-25",
+      "expected": "polyeleos",
+      "actual": "vigil",
+      "level": 4,
+      "kind": "rank-mismatch",
+      "title": "Repose of Ven. Sergius of Radonezh"
+    },
+    {
+      "md": "9-26",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Repose of St John the Theologian"
+    },
+    {
+      "md": "9-28",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Chariton the Confessor"
+    },
+    {
+      "md": "10-1",
+      "expected": "greatFeast",
+      "actual": "vigil",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Protection (Pokrov) of the Most-Holy Theotokos"
+    },
+    {
+      "md": "10-6",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "St Innocent, Metr. of Moscow / Holy Apostle Thomas"
+    },
+    {
+      "md": "10-18",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Holy Apostle and Evangelist Luke"
+    },
+    {
+      "md": "10-26",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Greatmartyr Demetrius"
+    },
+    {
+      "md": "11-13",
+      "expected": "vigil",
+      "actual": "polyeleos",
+      "level": 5,
+      "kind": "rank-mismatch",
+      "title": "St John Chrysostom, Archbishop of Constantinople"
+    },
+    {
+      "md": "11-16",
+      "expected": "greatFeast",
+      "actual": "polyeleos",
+      "level": 6,
+      "kind": "rank-mismatch",
+      "title": "Holy Apostle and Evangelist Mathew"
+    },
+    {
+      "md": "12-5",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Ven. Sabbas the Sanctified"
+    },
+    {
+      "md": "12-12",
+      "expected": "(below polyeleos)",
+      "actual": "polyeleos",
+      "level": 2,
+      "kind": "we-over-rank",
+      "title": "St Spyridon the Wonderworker"
+    },
+    {
+      "md": "12-13",
+      "expected": "vigil",
+      "actual": "sixStichera",
+      "level": 5,
+      "kind": "missing-rank",
+      "title": "Repose Ven. Herman of Alaska, Wonderworker of All America"
+    },
+    {
+      "md": "12-20",
+      "expected": "polyeleos",
+      "actual": "sixStichera",
+      "level": 4,
+      "kind": "missing-rank",
+      "title": "Repose of St. John of Kronstadt"
+    }
+  ]
+}

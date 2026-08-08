@@ -22,6 +22,7 @@
     "audit:judge": "node audit/llm-judge.js --date",
     "audit:upcoming": "node scripts/audit-upcoming.js",
     "audit:parish-baseline": "node scripts/ocanwa-baseline.js",
+    "audit:rank-coverage": "node scripts/rank-coverage.js --check audit/rank-coverage.json",
     "menaion:inspect": "node scripts/menaion-inspect.js",
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",
     "snapshot:capture": "node audit/snapshot.js --capture",

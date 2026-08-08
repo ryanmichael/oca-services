@@ -138,19 +138,43 @@ describe('Feature contract: pick catalog + practice library', () => {
 
     const registry = loadPracticeLibrary();
     for (const [key, entry] of Object.entries(registry)) {
-      const texts = getLiturgyFixed('oca');
-      const arr = entry.target.path.split('.').reduce((o, k) => (o == null ? o : o[k]), texts);
-      assert.ok(Array.isArray(arr), `${key}: target ${entry.target.path} is not an array`);
-
-      const { byAddress } = explode(arr);
       for (const preset of entry.all) {
         if (!preset.op) continue;
+
         assert.ok(preset.fingerprint, `${key}/${preset.id}: preset with addresses has no fingerprint`);
+        // A preset is shared across parishes, but a fingerprint is only meaningful
+        // against ONE resolution of the target. `_derivedFrom` names which overlay
+        // the selection was derived against; without it the fingerprint is an
+        // unfalsifiable number.
+        assert.ok(preset._derivedFrom,
+          `${key}/${preset.id}: has a fingerprint but no _derivedFrom — nothing records ` +
+          `which resolution of ${entry.target.path} it was computed against`);
+
+        const texts = getLiturgyFixed(preset._derivedFrom);
+        const arr = entry.target.path.split('.').reduce((o, k) => (o == null ? o : o[k]), texts);
+        assert.ok(Array.isArray(arr),
+          `${key}/${preset.id}: target ${entry.target.path} is not an array under ` +
+          `'${preset._derivedFrom}'`);
+
         assert.equal(preset.fingerprint, fingerprint(arr),
-          `${key}/${preset.id}: fingerprint is stale — re-derive the selection from the ` +
-          `parish source before updating it`);
+          `${key}/${preset.id}: fingerprint is stale against '${preset._derivedFrom}' — ` +
+          `re-derive the selection from the parish source before updating it`);
+
+        const { byAddress } = explode(arr);
         for (const addr of [].concat(preset.keep || [], preset.reprise || [])) {
           assert.ok(byAddress.has(addr), `${key}/${preset.id}: address ${addr} does not resolve`);
+        }
+
+        // Structural parity (dmitri-royster INV-3) means the addresses must also
+        // resolve against the base `oca` text — so a preset stays usable by a
+        // parish that does not extend the layer it was derived from.
+        const ocaArr = entry.target.path.split('.')
+          .reduce((o, k) => (o == null ? o : o[k]), getLiturgyFixed('oca'));
+        const ocaAddrs = explode(ocaArr).byAddress;
+        for (const addr of [].concat(preset.keep || [], preset.reprise || [])) {
+          assert.ok(ocaAddrs.has(addr),
+            `${key}/${preset.id}: address ${addr} resolves under '${preset._derivedFrom}' ` +
+            `but not under 'oca' — the two have diverged structurally`);
         }
       }
     }

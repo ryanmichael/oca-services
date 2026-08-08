@@ -1,10 +1,37 @@
 {
   "_note": "Sparse overlay — only keys where the Royster text differs from the `oca` layer this extends. See manifest.json for transcription rules and for why the two typical antiphons are absent.",
-
+  "typical-antiphon-1": {
+    "_note": "Royster wording for the stichoi the parish choir book actually prints. Slots the book does not contain carry an explicit marker rather than OCA text: filling them from the layer beneath would present a half-Royster antiphon as Royster, which the project's don't-mix-translations rule forbids. The array deliberately keeps the SAME verse and stichos structure as the `oca` layer (10 verses / 18 stichoi here) so practice-layer addresses keep resolving — see features/practice-layer.md. A parish singing the abridged form never renders a marker; the markers exist so the gap is visible rather than silently papered over. The full psalm is always available by selecting the `oca` translation.",
+    "_source": "Tyler choir book pp.1-3 — 'First Antiphon', Psalm 102, Krasnostovsky, 'Translation: +Dmitri (Royster); NAP'. Transcribed from the vocal underlay; singers' elisions expanded (long-suff'ring -> long-suffering).",
+    "verses": [
+      "Bless the Lord, O my soul, blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all His benefits;",
+      "who cleanseth all thy transgressions; who healeth all thine infirmities;\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion.\n[Not in the Royster choir book — stichos 2.3]",
+      "[Not in the Royster choir book — stichos 3.1]\n[Not in the Royster choir book — stichos 3.2]",
+      "Compassionate and merciful is the Lord; long-suffering and of great mercy.\n[Not in the Royster choir book — stichos 4.2]",
+      "[Not in the Royster choir book — stichos 5.1]",
+      "[Not in the Royster choir book — stichos 6.1]\n[Not in the Royster choir book — stichos 6.2]",
+      "[Not in the Royster choir book — stichos 7.1]",
+      "[Not in the Royster choir book — stichos 8.1]",
+      "[Not in the Royster choir book — stichos 9.1]\n[Not in the Royster choir book — stichos 9.2]",
+      "[Not in the Royster choir book — stichos 10.1]"
+    ]
+  },
+  "typical-antiphon-2": {
+    "_note": "Royster wording for the stichoi the parish choir book actually prints. Slots the book does not contain carry an explicit marker rather than OCA text: filling them from the layer beneath would present a half-Royster antiphon as Royster, which the project's don't-mix-translations rule forbids. The array deliberately keeps the SAME verse and stichos structure as the `oca` layer (10 verses / 18 stichoi here) so practice-layer addresses keep resolving — see features/practice-layer.md. A parish singing the abridged form never renders a marker; the markers exist so the gap is visible rather than silently papered over. The full psalm is always available by selecting the `oca` translation.",
+    "_source": "Tyler choir book pp.4-5 — 'Second Antiphon', Psalm 145, Krasnostovsky, 'Translation: Archbishop Dmitri (Royster); NAP'. Page 2 of that piece is a physical paste-up joining m.35 to m.72, so stichoi 4.1-6.2 are absent from the source.",
+    "verses": [
+      "Praise the Lord, O my soul.\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.",
+      "Trust not in princes in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.",
+      "Blessed is he who hath the God of Jacob for his helper, whose hope is in the Lord his God,\nwho made heaven and earth, the sea and all that is in them.",
+      "[Not in the Royster choir book — stichos 4.1]\n[Not in the Royster choir book — stichos 4.2]\n[Not in the Royster choir book — stichos 4.3]",
+      "[Not in the Royster choir book — stichos 5.1]\n[Not in the Royster choir book — stichos 5.2]",
+      "[Not in the Royster choir book — stichos 6.1]\n[Not in the Royster choir book — stichos 6.2]",
+      "The Lord shall be King for ever;",
+      "thy God, O Zion, from generation to generation."
+    ]
+  },
   "only-begotten-son": "Only-begotten Son and Immortal Word of God, who for our salvation didst will to be incarnate of the Holy Theotokos and Ever-virgin Mary, who without change didst become man, and wast crucified, O Christ our God, trampling down death by death, who art one of the Holy Trinity, glorified with the Father and the Holy Spirit, save us!",
-
   "creed": "I believe in one God, the Father Almighty, Maker of heaven and earth and of all things visible and invisible.\n\nAnd in one Lord, Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, True God of True God; begotten, not made; of one essence with the Father; by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified also for us under Pontius Pilate, and suffered, and was buried; and the third day He rose again according to the Scriptures; and ascended into heaven and sitteth at the right hand of the Father. And He shall come again with glory to judge the living and the dead; of His Kingdom there shall be no end.\n\nAnd in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father; who with the Father and the Son together is worshipped and glorified; who spake by the prophets.\n\nIn one holy catholic and apostolic Church. I confess one baptism for the forgiveness of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
-
   "beatitudes": {
     "_note": "Matthew 5:3-12, Royster. Differs from the `oca` layer at: 'Kingdom of heaven' (not 'of Heaven'), 'clean of heart' (not 'pure in heart'), 'children of God' (not 'sons of God'), 'they which are persecuted' (not 'they that are'), 'shall say every evil against you falsely' (not 'all manner of evil'), 'Rejoice, and be glad' (not 'be exceeding glad'), 'your reward in heaven' (not 'in the heavens'), and colons rather than commas at the caesura. Retains 'sated' from the HTM-style base. This is the text the parish described in May 2026 as 'just a little off from HTM-Boston'.",
     "_source": "Tyler choir book p.8 — 'Third Antiphon: Beatitudes - 2', Zboinka; verses printed as plain numbered text beneath the sung refrain.",

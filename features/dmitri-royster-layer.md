@@ -66,36 +66,52 @@ underlying app-wide gap for other modern-register parishes is untouched.
 
 - **INV-1** — The layer supplies its own Only-Begotten Son, Creed and Beatitudes.
 - **INV-2** — The `oca` readings it replaces do not also render.
-- **INV-3** — **The layer ships NO `typical-antiphon-*` keys**, and Tyler still
-  renders the full `oca` arrays including the mid-psalm verses. See below.
+- **INV-3** — The layer **may re-word** an antiphon but **may never shorten it**:
+  verse count and per-verse stichos count must match `oca` exactly. Replaced the
+  original "declares no antiphon keys" form, which forbade the honest full-length
+  re-wording while guarding the same hazard. A short array, or a re-split verse,
+  still fails at authoring time.
+- **INV-3b** — A gap marker must never appear in a rendered service.
 - **INV-4** — Tyler renders traditional register (litany responses "by Thy
   grace", "To Thee, O Lord").
 - **INV-5** — The pinned Royster variants win over the parish-leaf masking rule,
   and the superseded folder transcriptions do not render.
 - **INV-6** — Selecting `oca` is unaffected; no Royster text leaks downward.
 
-## The antiphon gap — do not "finish" this without the missing pages
+## The antiphons — authored with explicit gap markers
 
-The scan is **incomplete for both typical antiphons**:
+The layer carries both typical antiphons, but **only the stichoi the choir book
+actually prints**. Every slot the book lacks holds a marker:
 
-- First Antiphon (Ps 102, Krasnostovsky): mm. 1–34, then jumps to ~m. 81.
-  Missing mm. 35–80.
-- Second Antiphon (Ps 145, Krasnostovsky): mm. 1–35, a visible physical
-  cut-and-paste seam on the page, then mm. 72–79. Missing mm. 36–71.
+```
+[Not in the Royster choir book — stichos 2.3]
+```
 
-The `oca` layer Tyler inherits has **10** verses for Antiphon 1 and **8** for
-Antiphon 2. Because a variant/overlay value **replaces a whole array and cannot
-select a subset** (`memory/project_variant_replace_not_select.md`), authoring
-these from the visible text would delete the mid-psalm verses outright.
+**Why markers and not OCA text.** Filling the gaps from the layer beneath would
+present a half-Royster antiphon as Royster, which the project's
+don't-mix-translations rule forbids, and would be inherited by any future Diocese
+of the South parish. A marker is honest: the gap stays visible instead of being
+silently papered over.
 
-That is not hypothetical: it is exactly `c95da45`, where a 2026-06-19 pass
-transcribed a condensed Tyler service folder into a `short-4-verse` variant and
-deleted Ps 102:3–21. It was caught only when the user noticed at Liturgy on
-7-26.
+**Why not simply a shorter array.** Because that is `c95da45` — a short array
+deletes canon, and an overlay replaces a whole array with no way to express a
+subset. The arrays here keep the **same verse and stichos structure as `oca`**
+(10 verses / 18 stichoi for Ps 102, 8 / 15 for Ps 145) so practice-layer
+addresses keep resolving. Which verses a parish *sings* is a separate concern,
+handled by a practice preset — see `features/practice-layer.md`.
 
-INV-3 is a structural tripwire — it reads the layer file directly and fails at
-authoring time, before anything renders. **To close this gap, get the missing
-pages from the choir director**, not a reconstruction.
+**The markers never reach a service.** Tyler's `krasnostovsky-abridged` preset
+selects only the transcribed stichoi. INV-3b pins that, and it was verified
+across 46 Sundays spanning the year with zero leaks. If a future edit shifts the
+selection, the test fails long before a marker turns up mid-Liturgy.
+
+Transcribed from the vocal underlay with singers' elisions expanded
+(`long-suff'ring` → `long-suffering`), the same rule the Creed and Cherubic
+already follow.
+
+Completing the wording needs the **published** Krasnostovsky/Royster edition —
+not the parish's copy, which is cut by intent (confirmed with the parish
+2026-08-08).
 
 ## Open / unresolved
 

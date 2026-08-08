@@ -96,13 +96,22 @@ const CANON = [
 describe('Feature contract: parish practice layer', () => {
 
   it('INV-1: Tyler renders the abridged antiphons, First closing with its reprise', async () => {
+    // Wording is Royster (the `dmitri-royster` layer), not the `oca` text beneath:
+    // "who cleanseth all thy transgressions" where oca reads "Who is gracious unto
+    // all thine iniquities". Selection and wording are separate concerns and both
+    // have to land for the parish to see what the choir is singing.
     const first = await antiphonUnits(TYLER, 'First Antiphon');
     assert.equal(first.length, 4, 'First Antiphon should render 4 sung units');
-    assert.match(first[0], /^Bless the Lord, O my soul; blessed art Thou, O Lord\./);
-    assert.match(first[1], /Who is gracious unto all thine iniquities/);
-    assert.match(first[2], /^Compassionate and merciful is the Lord/);
+    assert.match(first[0], /^Bless the Lord, O my soul, blessed art Thou, O Lord\./);
+    assert.match(first[0], /forget not all His benefits/,          'Royster 1.3');
+    assert.match(first[1], /who cleanseth all thy transgressions/, 'Royster 2.1');
+    assert.match(first[1], /thy life from destruction/,            'Royster 2.2');
+    assert.match(first[2], /^Compassionate and merciful is the Lord; long-suffering and of great mercy/);
     // The closing unit is stichos 1.1 sung again — not a truncated verse 9.
-    assert.equal(first[3], 'Bless the Lord, O my soul; blessed art Thou, O Lord.');
+    assert.equal(first[3], 'Bless the Lord, O my soul, blessed art Thou, O Lord.');
+    // The oca wording must NOT survive underneath.
+    assert.doesNotMatch(first.join('\n'), /Who is gracious unto all thine iniquities/,
+      'oca wording leaked through the Royster layer');
 
     // Omitted stichoi must be absent.
     const firstAll = first.join('\n');
@@ -112,7 +121,9 @@ describe('Feature contract: parish practice layer', () => {
 
     const second = await antiphonUnits(TYLER, 'Second Antiphon');
     assert.equal(second.length, 5, 'Second Antiphon should render 5 sung units');
-    assert.match(second[3], /^The Lord shall be king unto eternity/);
+    assert.match(second[2], /who hath the God of Jacob for his helper/, 'Royster 3.1');
+    assert.match(second[3], /^The Lord shall be King for ever/,          'Royster 7.1');
+    assert.match(second[4], /from generation to generation/,             'Royster 8.1');
     const secondAll = second.join('\n');
     assert.doesNotMatch(secondAll, /Who keepeth truth unto eternity/, 'verse 4 should be omitted');
     assert.doesNotMatch(secondAll, /looseth the fettered/,            'verse 5 should be omitted');

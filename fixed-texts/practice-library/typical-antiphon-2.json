@@ -28,7 +28,8 @@
     "7.1",
     "8.1"
    ],
-   "fingerprint": "2503791a",
+   "fingerprint": "63b508a6",
+   "_derivedFrom": "dmitri-royster",
    "_note": "Omits verses 4-6 entirely. The cut maps exactly onto whole verses.",
    "_provenance": {
     "origin": "transcribed",
@@ -37,7 +38,8 @@
     "date": "2026-08-08",
     "source_citation": "St. John of Damascus (Tyler) parish choir book, 'Fixed sections Liturgy' — Krasnostovsky settings, tr. +Dmitri (Royster)",
     "note": "Confirmed directly with the parish that this is what is sung; NOT inferred from the scan. The First Antiphon page jumps mm.34->81; the Second Antiphon has a physical cut-and-paste seam on page 2 joining m.35 to m.72."
-   }
+   },
+   "_fingerprintNote": "`fingerprint` is of the canonical array as resolved through the overlay named in `_derivedFrom` — the text this selection was actually derived against. A parish whose cascade resolves different wording for this key will trip validateParishPractice. That is intended, not a bug: the selection must be re-verified against whatever text it is selecting from before it can be trusted."
   }
  ]
 }

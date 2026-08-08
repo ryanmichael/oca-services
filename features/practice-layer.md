@@ -143,6 +143,20 @@ selection is never emitted.
 - **INV-5** — **An unresolvable address fails toward more text**, never a partial cut.
 - **INV-6** — `applyPractice` never mutates its input.
 - **INV-7** — A stale fingerprint warns but still applies; addresses are the real gate.
+
+### `_derivedFrom` — which resolution a fingerprint pins
+
+A preset is shared across parishes, but a `fingerprint` is only meaningful
+against ONE resolution of the target: the Royster and `oca` antiphons are
+different text at the same addresses. Each preset therefore names the overlay its
+selection was derived against (`"_derivedFrom": "dmitri-royster"`).
+
+`pick-library` INV-4 checks the fingerprint against *that* resolution, and
+separately asserts every address still resolves under plain `oca` — so a preset
+stays usable by a parish that does not extend the layer it came from. A parish
+whose cascade resolves different wording for the key trips
+`validateParishPractice`. That is intended: the selection must be re-verified
+against whatever text it is actually selecting from.
 - **INV-8** — Entries are scoped by service; unknown ops are ignored with a warning.
 
 ## Drift guard
@@ -179,7 +193,7 @@ also print during `drift:check`. They are informational and do not fail it.
   `renderPickControls` path in `public/scripts/parish-admin.js`
 - `validateParishPractice` in `server-lib/overlays/drift.js`
 - `parish_settings.rubrics_extra_json` for any parish with `practice[]`
-- The `fingerprint` on every entry, whenever a targeted canonical array changes
+- The `fingerprint` (and `_derivedFrom`) on every preset, whenever the resolution it was derived against changes
 
 ## Open
 

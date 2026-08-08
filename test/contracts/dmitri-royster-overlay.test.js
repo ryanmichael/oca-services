@@ -112,33 +112,62 @@ describe('Feature contract: Archbishop Dmitri (Royster) translation layer', () =
     assert.doesNotMatch(text, /called the sons of God/,             'oca Beatitudes still present');
   });
 
-  it('INV-3: the layer ships NO typical-antiphon keys, and Tyler keeps the full oca arrays', async () => {
-    // (a) Structural guard — the file itself must not declare them. This is the
-    //     tripwire: it fires at authoring time, before anything renders.
+  it('INV-3: the layer may RE-WORD an antiphon but may never SHORTEN it', async () => {
+    // This invariant used to forbid `dmitri-royster` from declaring any antiphon
+    // key at all, because the only thing we could have authored from an
+    // incomplete scan was a short array — which is how c95da45 deleted
+    // Ps 102:3-21. The layer now DOES carry both antiphons: Royster wording for
+    // the stichoi the choir book prints, and an explicit marker in every slot it
+    // does not, so nothing is silently filled from the layer beneath.
+    //
+    // The protection that actually mattered survives as structural parity: the
+    // layer may change words, never the number of verses or stichoi. A short
+    // array still fails here, at authoring time, before anything renders.
     const layer = JSON.parse(fs.readFileSync(
       path.join(ROOT, 'fixed-texts', 'translations', 'dmitri-royster', 'liturgy-fixed.json'), 'utf8'));
+    const oca = JSON.parse(fs.readFileSync(
+      path.join(ROOT, 'fixed-texts', 'translations', 'oca', 'liturgy-fixed.json'), 'utf8'));
+
     for (const key of ['typical-antiphon-1', 'typical-antiphon-2']) {
-      assert.ok(!(key in layer),
-        `dmitri-royster must not declare ${key} — the source scan is incomplete for it ` +
-        `(see manifest._transcription.notTranscribed). Adding it from the visible text ` +
-        `replaces the full oca array and deletes canon, as in c95da45.`);
+      if (!(key in layer)) continue;              // absent is still allowed
+      const mine = layer[key].verses;
+      const base = oca[key].verses;
+      assert.ok(Array.isArray(mine), `${key}: verses must be an array`);
+      assert.equal(mine.length, base.length,
+        `${key}: dmitri-royster has ${mine.length} verses vs oca's ${base.length}. ` +
+        `A translation layer may re-word an antiphon but must never shorten it — ` +
+        `shortening is how c95da45 deleted Ps 102:3-21. Use a practice-layer ` +
+        `selection for a parish that sings fewer verses.`);
+      mine.forEach((v, i) => {
+        assert.equal(String(v).split('\n').length, String(base[i]).split('\n').length,
+          `${key} verse ${i + 1}: stichos count differs from oca. Practice-layer ` +
+          `addresses are positional, so changing the split silently re-points every ` +
+          `parish selection that targets this key.`);
+      });
     }
 
-    // (b) Behavioural guard — the canonical text must still exist in the
-    //     cascade. Tyler DOES sing an abridged antiphon (confirmed with the
-    //     parish 2026-08-08), but that abridgement is a parish practice entry,
-    //     not a translation-layer edit: the words are untouched and every verse
-    //     is still there for anyone who selects `oca`. See
-    //     features/practice-layer.md and its INV-3.
-    const oca = await liturgyText(ORDINARY_SUNDAY, 'oca');
+    // The canonical text must still be reachable, unshortened, via `oca`.
+    const ocaRendered = await liturgyText(ORDINARY_SUNDAY, 'oca');
     for (const [label, re] of [
       ['Ps 102:2 (forget not)',        /forget not all/],
       ['Ps 102 mid-psalm (Moses)',     /He hath made His ways known unto Moses/],
       ['Ps 145 mid-psalm (prisoners)', /prisoners|fettered|bowed down|looseth/],
     ]) {
-      assert.match(oca, re,
+      assert.match(ocaRendered, re,
         `canonical ${label} is gone — an abridgement deleted text instead of selecting it`);
     }
+  });
+
+  it('INV-3b: a gap marker must never reach a rendered service', async () => {
+    // The markers are honest placeholders for stichoi the choir book lacks. They
+    // are only ever safe because Tyler's practice selection removes them. If a
+    // future edit shifts the selection, this fails long before a
+    // "[Not in the Royster choir book...]" line turns up mid-Liturgy.
+    const MARKER = /Not in the Royster choir book/;
+    const tyler = await liturgyText(ORDINARY_SUNDAY, TYLER);
+    assert.doesNotMatch(tyler, MARKER,
+      'a gap marker rendered in Tyler\'s service — the practice selection no longer ' +
+      'covers the stichoi the Royster layer leaves unfilled');
   });
 
   it('INV-4: Tyler renders traditional register, matching the choir books', async () => {

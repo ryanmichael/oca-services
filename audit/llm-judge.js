@@ -114,35 +114,100 @@ async function fetchAssembled(httpBase, service, date) {
 
 function findLocalReference(date) {
   const ymd = compactDate(date);
+  // Order-of-services FIRST. The two OCA publications answer different
+  // questions: the order gives the SHAPE (how many stichera and in what split,
+  // whether a Litya is served, which prokeimenon), the service texts give the
+  // WORDS. Nearly every structural finding this project has fixed came from the
+  // order — so when both are on disk, prefer it. Until 2026-08-09 the texts
+  // DOCX outranked it, which silently downgraded the judge on any date where a
+  // texts file happened to be cached.
   const candidates = [
-    `reference/${ymd}-texts-tt.docx`,
     `reference/orders/${ymd}-order-services.txt`,
     `reference/orders/${ymd}-order-services.docx`,
+    `reference/${ymd}-texts-tt.docx`,
   ];
   for (const c of candidates) if (fs.existsSync(c)) return c;
   return null;
 }
 
-async function fetchOcaReference(date) {
-  const ymd = compactDate(date);
-  const url = `https://files.oca.org/service-texts/${ymd}-texts-tt.docx`;
-  const tmp = path.join('/tmp', `oca-${date}.docx`);
-  try {
-    const r = await fetch(url);
-    if (!r.ok) return null;
-    const buf = Buffer.from(await r.arrayBuffer());
-    fs.writeFileSync(tmp, buf);
-    return tmp;
-  } catch (_) { return null; }
+// A DOCX is a zip, so real ones start with the "PK" local-file-header magic.
+// oca.org answers a missing document with 200-shaped HTML in some paths and a
+// real 404 in others; checking both the content type and the magic bytes means
+// an error page can never land on disk named .docx and get parsed as liturgical
+// text.
+function looksLikeDocx(buf, contentType) {
+  if (!buf || buf.length < 4) return false;
+  if (buf[0] !== 0x50 || buf[1] !== 0x4b) return false;            // 'PK'
+  if (contentType && /html/i.test(contentType)) return false;
+  return true;
 }
 
+/** Fetch the OCA reference for a date, preferring the order of services.
+ *
+ *  Two sources, tried in order:
+ *    1. oca.org/PDF/Music/Rubrics/YYYY-MMDD-order-services.docx — the rubrics.
+ *       SUNDAYS ONLY: every weekday feast checked (Transfiguration, Nativity,
+ *       Dormition, Peter and Paul, the Elevation) returns 404, so this is
+ *       expected to miss on weekdays and fall through.
+ *    2. files.oca.org/service-texts/YYYYMMDD-texts-tt.docx — the texts.
+ *
+ *  Filenames are not perfectly regular upstream — 2026-08-23 exists as both
+ *  `-order-services.docx` and `-order-services-.docx` — so the trailing-hyphen
+ *  variant is tried too. For the current six weeks the authoritative list is the
+ *  rubrics index page; constructing URLs is the fallback, which is why the
+ *  variant matters here. */
+async function fetchOcaReference(date, verbose) {
+  const ymd = compactDate(date);                 // 20260809
+  const dashed = `${ymd.slice(0, 4)}-${ymd.slice(4)}`;  // 2026-0809
+
+  const urls = [
+    `https://www.oca.org/PDF/Music/Rubrics/${dashed}-order-services.docx`,
+    `https://www.oca.org/PDF/Music/Rubrics/${dashed}-order-services-.docx`,
+    `https://files.oca.org/service-texts/${ymd}-texts-tt.docx`,
+  ];
+
+  for (const url of urls) {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) continue;
+      const buf = Buffer.from(await r.arrayBuffer());
+      if (!looksLikeDocx(buf, r.headers.get('content-type'))) {
+        if (verbose) console.log(`  skipped non-DOCX response from ${url}`);
+        continue;
+      }
+      const tmp = path.join('/tmp', `oca-${date}-${path.basename(url)}`);
+      fs.writeFileSync(tmp, buf);
+      if (verbose) console.log(`  fetched ${url}`);
+      return tmp;
+    } catch (_) { /* try the next source */ }
+  }
+  return null;
+}
+
+// DOCX is a zip; word/document.xml holds the body.
+//
+// Paragraph-aware on purpose. The previous one-liner replaced every tag with a
+// SPACE, which collapsed the whole document to a single line and split words
+// wherever Word had broken a paragraph into runs — "2026" came out "202 6" and
+// "10th" as "10 th". Both the judge's line-oriented comparison and the committed
+// .txt references depend on real line structure.
+//
+// Breaking on </w:p> and stripping the remaining tags with NO separator
+// reproduces the hand-made reference files: checked against
+// reference/orders/2026-0809-order-services.txt, 180 extracted lines vs 178
+// committed, the difference being that file's hand-written title header.
 function extractText(filepath) {
   if (filepath.endsWith('.txt')) return fs.readFileSync(filepath, 'utf8');
-  // DOCX is a zip; word/document.xml has the body text.
-  return execSync(
-    `unzip -p "${filepath}" word/document.xml | sed 's|<[^>]*>| |g' | tr -s ' '`,
-    { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
-  );
+  const xml = execSync(`unzip -p "${filepath}" word/document.xml`, {
+    encoding: 'utf8', maxBuffer: 32 * 1024 * 1024,
+  });
+  return xml
+    .replace(/<\/w:p>/g, '\n')      // paragraph boundary → newline
+    .replace(/<w:tab[^>]*\/?>/g, ' ')  // tabs are real separators
+    .replace(/<[^>]*>/g, '')         // everything else: no separator, so runs rejoin
+    .replace(/[ \t]+/g, ' ')
+    .split('\n').map(l => l.trim()).join('\n')
+    .replace(/\n{3,}/g, '\n\n');
 }
 
 // OCA weekly DOCXes typically lay out as: Vespers stichera / aposticha / litya /
@@ -266,7 +331,7 @@ async function judgeOne(client, httpBase, date, service, { verbose = true } = {}
   let refPath = findLocalReference(referenceDate);
   if (!refPath) {
     if (verbose) console.log(`  no local reference; fetching from oca.org (ref date ${referenceDate})…`);
-    refPath = await fetchOcaReference(referenceDate);
+    refPath = await fetchOcaReference(referenceDate, verbose);
   }
   if (!refPath) {
     return { error: `no OCA reference DOCX for ${referenceDate}` };
@@ -588,4 +653,11 @@ async function main() {
   if (findings.length > 0) process.exit(1);
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+// Exported for test/contracts/judge-reference.test.js. `main()` only runs when
+// this file is the entry point, so requiring it for a unit test is side-effect
+// free.
+module.exports = { extractText, looksLikeDocx, findLocalReference, fetchOcaReference };
+
+if (require.main === module) {
+  main().catch(e => { console.error(e); process.exit(1); });
+}

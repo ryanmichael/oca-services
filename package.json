@@ -12,6 +12,7 @@
     "migrate": "node scripts/migrate.js",
     "drift:check": "node scripts/drift-check.js",
     "rescrape:fetch": "node scripts/rescrape-fetch.js",
+    "rubrics:fetch": "node scripts/fetch-order-rubrics.js --page-only",
     "rescrape:diff": "node scripts/rescrape-diff.js",
     "rescrape:check": "node scripts/rescrape-diff.js --all --check audit/rescrape-baseline.json",
     "test:e2e": "playwright test",

@@ -1,0 +1,155 @@
+name: Weekly OCA order-of-services fetch
+
+# Downloads the order-of-services rubrics OCA publishes for the coming weeks and
+# commits any new ones to reference/orders/.
+#
+# WHY IT EXISTS. There are two OCA publications: the service texts give the
+# WORDS, the order of services gives the SHAPE — how many stichera and in what
+# split, whether a Litya is served, which prokeimenon. Nearly every structural
+# defect this project has fixed came from the order, and until 2026-08-09 all of
+# them were downloaded by hand, so the weekly judge silently degraded to
+# texts-only on any week nobody had prepared.
+#
+# 11:00 UTC Friday, one hour before the weekly LLM judge (12:00 Friday), so the
+# judge always has the freshest rubric. The coupling is safe in both directions:
+# the judge fetches live on its own if this has not run, and this failing does
+# not block the judge.
+#
+# COMMITS DIRECTLY TO MAIN, deliberately, unlike the auto-fix cron which is
+# PR-only. This adds nothing but reference data — `reference/` is never read by
+# the running server, only by CI and by humans — so a pull request per file per
+# week would be friction with no safety benefit. The path guard below makes the
+# blast radius exactly reference/orders/ and fails the run otherwise.
+#
+# Failure surface: opens / updates a GitHub Issue tagged "order-rubrics".
+
+on:
+  schedule:
+    - cron: '0 11 * * 5'
+  workflow_dispatch:
+    inputs:
+      backfill:
+        description: 'Also probe historical Sundays (slow, ~18 min). Normally off.'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # commit new rubrics to main
+  issues: write     # report failures
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      # --page-only scrapes the rubrics index for the weeks OCA is currently
+      # publishing. It exits non-zero if the page yields no links at all, which
+      # is the failure most likely to pass unnoticed: "page restructured" and
+      # "no new weeks" look identical downstream.
+      - name: Fetch order-of-services rubrics
+        id: fetch
+        run: |
+          set -o pipefail
+          if [ "${{ github.event.inputs.backfill }}" = "true" ]; then
+            node scripts/fetch-order-rubrics.js | tee fetch.log
+          else
+            node scripts/fetch-order-rubrics.js --page-only | tee fetch.log
+          fi
+
+      # Blast-radius guard. This job has contents:write on main, so it must be
+      # provably incapable of touching anything else. Any path outside
+      # reference/orders/ fails the run rather than being committed.
+      - name: Guard — only reference/orders/ may change
+        run: |
+          stray=$(git status --porcelain | awk '{print $2}' | grep -v '^reference/orders/' || true)
+          if [ -n "$stray" ]; then
+            echo "Refusing to commit — changes outside reference/orders/:"
+            echo "$stray"
+            exit 1
+          fi
+
+      - name: Commit new rubrics
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No new rubrics this week."
+            exit 0
+          fi
+          added=$(git status --porcelain | grep -c '^??' || true)
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reference/orders/
+          git commit -m "chore(reference): weekly OCA order-of-services fetch
+
+          ${added} file(s) added by .github/workflows/weekly-order-rubrics.yml.
+          Source: https://www.oca.org/liturgics/rubrics/order-of-upcoming-services"
+          git push origin main
+
+      - name: Upload fetch log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: order-rubrics-fetch
+          path: fetch.log
+          retention-days: 30
+
+      - name: Open / update order-rubrics issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            let detail = '';
+            try { detail = fs.readFileSync('fetch.log', 'utf8').slice(-4000); }
+            catch { detail = '(fetch log unavailable — see the uploaded artifact)'; }
+            const body = [
+              `The weekly OCA order-of-services fetch failed on ${today}.`,
+              ``,
+              `Workflow run: ${run}`,
+              ``,
+              `Likely causes, in rough order of probability:`,
+              `- the rubrics index page was restructured, so the scraper found no`,
+              `  links (the script throws rather than reporting a quiet success);`,
+              `- oca.org served a non-DOCX response, which the fetcher refuses;`,
+              `- a document we already hold was revised upstream — reported, never`,
+              `  overwritten, so the evidence behind past decisions survives.`,
+              ``,
+              `The judge is unaffected: it fetches the rubric live when one is not`,
+              `on disk. This only means the archive stopped growing.`,
+              ``,
+              '```',
+              detail.trim(),
+              '```',
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              labels: 'order-rubrics', state: 'open',
+            });
+            if (issues.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issues[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: 'Weekly OCA order-of-services fetch failing',
+                labels: ['order-rubrics'], body,
+              });
+            }

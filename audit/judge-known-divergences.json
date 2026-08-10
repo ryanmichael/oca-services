@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "purpose": "Places where our output deliberately differs from the OCA published reference, so the weekly LLM judge stops reporting them and the auto-fix agent never 'corrects' them back.",
+    "why_this_file_exists": "Since 2026-08-09 the auto-fix agent actually runs and opens pull requests. A recurring false positive is no longer just noise in a report — it is a PR that reverts a decision the parish made. A deliberate divergence has to be written down somewhere the judge reads.",
+    "bar_for_adding_an_entry": "The divergence must be a decision someone made on purpose, with the reason recorded. A gap we have not got around to fixing is NOT a divergence — it belongs in the findings, where it will keep being reported until it is fixed.",
+    "consumed_by": "audit/llm-judge.js (rendered into SYSTEM_PROMPT)",
+    "keep_in_sync": "test/contracts/judge-known-divergences.test.js"
+  },
+
+  "divergences": [
+    {
+      "id": "koinonikon-shall-not-will",
+      "scope": "Communion Hymn",
+      "ours": "O Lord, we shall walk in the light of Thy countenance, and shall exult in Thy name forever.",
+      "reference": "O Lord, we will walk in the light of Thy countenance, and will rejoice in Thy name forever.",
+      "why": "The parish sings 'shall'. Confirmed by the choir director 2026-08-08. The OCA published text uses 'will'; this is a register choice, not an error, and it applies wherever this koinonikon is sung (Transfiguration and its afterfeast, and the Translation of the Image on 8-16).",
+      "decided": "2026-08-08",
+      "commit": "08f9283"
+    },
+    {
+      "id": "one-gospel-parish-practice",
+      "scope": "Gospel Reading",
+      "ours": "One Gospel — the Sunday-cycle reading only.",
+      "reference": "Two Gospels on a polyeleos+ feast, e.g. 2026-08-16 lists Matthew 18:23-35 AND Luke 9:51-56; 10:22-24.",
+      "why": "`opts.includeSecondGospel` defaults false, matching standard OCA parish practice of reading one Gospel even when the order appoints a second. It is a per-parish switch, not a bug. Both EPISTLES always render — epistle doubling is the norm — so a missing second Epistle IS a real finding.",
+      "decided": "2026-06-17"
+    },
+    {
+      "id": "dismissal-theotokion-keyed-by-troparion-tone",
+      "scope": "Vespers Dismissal",
+      "ours": "The Dismissal Theotokion of the resurrectional troparion's tone.",
+      "reference": "Sometimes prints a different tone's Theotokion.",
+      "why": "The Dismissal Theotokion is keyed by the tone of the resurrectional troparion actually sung, not by the reference's published tone column. Long-standing; previously carried as prose in the system prompt."
+    }
+  ]
+}

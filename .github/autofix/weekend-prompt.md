@@ -63,6 +63,14 @@ The summary below does not replace it.
    - **source-incomplete** where you do NOT have the authoritative OCA text on
      hand → do NOT fabricate. Document the gap in the relevant rule's
      `KNOWN_SOURCE_GAPS` and call it out in the PR body.
+   - **BEFORE any wording change**, read `audit/judge-known-divergences.json`.
+     It lists places where our text deliberately differs from the OCA published
+     reference — the parish sings "we **shall** walk in the light of Thy
+     countenance" where OCA prints "will", and reads one Gospel where the order
+     appoints two. A finding that matches an entry there is a
+     `judge-false-positive`, full stop. **Never revert one.** These are the
+     changes most likely to look like easy wins and most costly to get wrong:
+     they alter what the choir sings this Sunday.
    - **judge-false-positive** → change no code. Document why in the PR, citing the
      assembler comment or OCA convention that proves the current output is
      correct. (The `includeSecondGospel`-off one-Gospel practice is a known FP

@@ -35,6 +35,29 @@ const Anthropic = require('@anthropic-ai/sdk');
 // effort balances quality vs. token usage for a per-date audit.
 const MODEL = 'claude-sonnet-4-6';
 
+// Deliberate divergences from the OCA published text, loaded from data so a
+// decision is recorded once and every consumer sees the same list. This matters
+// more since 2026-08-09, when the auto-fix leg started actually running: a
+// recurring false positive is no longer noise in a report, it is a pull request
+// that reverts a decision the parish made.
+const KNOWN_DIVERGENCES = (() => {
+  try {
+    const raw = JSON.parse(fs.readFileSync(
+      path.join(__dirname, 'judge-known-divergences.json'), 'utf8'));
+    return Array.isArray(raw.divergences) ? raw.divergences : [];
+  } catch (_) {
+    return [];
+  }
+})();
+
+function renderDivergences(list) {
+  if (!list.length) return '';
+  const body = list.map(d =>
+    `- [${d.scope}] OURS: ${d.ours}\n  REFERENCE: ${d.reference}\n  WHY THIS IS DELIBERATE: ${d.why}`
+  ).join('\n');
+  return `\n\nDELIBERATE DIVERGENCES — the assembled output is CORRECT in each of these and a finding must NOT be raised:\n${body}\n\nThese are decisions, not defects. Do not report them, and do not report near-misses of them either — a wording difference confined to the words named above is the same decision.`;
+}
+
 const SYSTEM_PROMPT = `You are an expert in Orthodox Christian liturgical practice and OCA English-language service translations.
 
 You will receive:
@@ -66,7 +89,7 @@ DO NOT flag:
 Known assembler conventions — DO NOT flag any of these as bugs:
 - VESPERS LIC RESURRECTIONAL SET: when the Octoechos data for a tone ships only 6 resurrectional stichera but the slot count is 7 (Sunday Great Vespers with 3 saint stichera), the first sticheron is intentionally sung twice (at the V.10 and V.9 verses). This is OCA convention for tones whose source has 6 hymns. If the assembled output repeats the first sticheron at the first two verse positions, this is correct.
 - VESPERS DISMISSAL THEOTOKION: the Dismissal Theotokion is keyed by the RESURRECTIONAL TROPARION TONE, not by an OCA reference table's published tone. If our resurrectional troparion is Tone 2, the Dismissal Theotokion is the Tone 2 ("All beyond thought, all most glorious…") even if the reference DOCX shows a different tone's Theotokion. Do not flag a tone disagreement here.
-- SUNDAY LITURGY KONTAKIA RESTRUCTURE: on ordinary Sundays (no great feast / polyeleos+ saint cocelebration), the Sunday Liturgy Kontakia intentionally render as: [optional patron Kontakion] + Glory: principal saint or patron Kontakion + Now-and-ever: "Protection of Christians..." Theotokion-Kontakion. The Resurrection Kontakion ("Hell became afraid…" / "On this day Thou didst rise…" / etc.) is INTENTIONALLY DROPPED because the Sunday is carried by the Resurrection Troparion in the Troparia section. Do not flag the absence of the Resurrection Kontakion on ordinary Sundays. (See server-lib/routes/api-liturgy.js:169 for the rubric rationale.)
+- SUNDAY LITURGY KONTAKIA: the Resurrection Kontakion LEADS, and is then followed by "Glory: <principal saint or patron>" and "Now-and-ever: <the feast window's kontakion, or else the 'Protection of Christians...' Theotokion-Kontakion>". Inside an afterfeast / forefeast / leavetaking the feast's own kontakion takes "Now and ever..." and NO Theotokion-Kontakion is printed — this matches the OCA order (see 2026-0823 and 2026-0208). Do not flag the Theotokion-Kontakion's absence on a feast-window Sunday, and do not flag the Resurrection Kontakion's presence on any Sunday.
 - SAINT-SPECIFIC vs GENERAL-TEMPLATE TROPARION: many saints have a PROPER troparion (Tone-N, podoben-tagged, addressing the specific saint by name and biography) that the OCA Service Book sometimes substitutes with the general martyr/hierarch/monastic template ("Thy holy martyr [N], O Lord, through his sufferings…"). When the assembled output uses a Tone-X proper saint troparion and the reference uses the Tone-4 general martyr template, do NOT flag this — both are valid OCA Service Book entries and our DB prefers the proper text when available.
 
 Common afterfeast / festal substitutions (do NOT flag these):
@@ -86,7 +109,7 @@ If clean, return [].
 
 Be conservative. False positives erode trust faster than missed catches build it. When in doubt about whether something is intentional, do NOT flag.
 
-CRITICAL self-check before emitting each finding: re-read your own "issue" text. If the issue contains phrases like "matches the reference", "is correct", "correctly uses", "this is correct for", "appears to be labeling confusion in the reference itself" — DELETE the finding. If after reasoning you conclude the assembled output is correct or the discrepancy is in the reference document's labeling rather than in the assembled output, the finding should not be in the array. Only include findings where you are confident the assembled output is wrong.`;
+CRITICAL self-check before emitting each finding: re-read your own "issue" text. If the issue contains phrases like "matches the reference", "is correct", "correctly uses", "this is correct for", "appears to be labeling confusion in the reference itself" — DELETE the finding. If after reasoning you conclude the assembled output is correct or the discrepancy is in the reference document's labeling rather than in the assembled output, the finding should not be in the array. Only include findings where you are confident the assembled output is wrong.` + renderDivergences(KNOWN_DIVERGENCES);
 
 function parseArgs(argv) {
   const args = {};
@@ -656,7 +679,8 @@ async function main() {
 // Exported for test/contracts/judge-reference.test.js. `main()` only runs when
 // this file is the entry point, so requiring it for a unit test is side-effect
 // free.
-module.exports = { extractText, looksLikeDocx, findLocalReference, fetchOcaReference };
+module.exports = { extractText, looksLikeDocx, findLocalReference, fetchOcaReference,
+                   SYSTEM_PROMPT, KNOWN_DIVERGENCES };
 
 if (require.main === module) {
   main().catch(e => { console.error(e); process.exit(1); });

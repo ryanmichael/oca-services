@@ -33,11 +33,21 @@ on:
 # lets Claude read CI job logs if it needs them. NOTE: the agent is prompt-bound
 # to PR-only — it must never push main/staging or self-merge. See the
 # `Prepare auto-fix PR` step and .github/autofix/weekend-prompt.md.
+#
+# id-token:write is REQUIRED by anthropics/claude-code-action@v1 — it exchanges a
+# GitHub OIDC token before it will run at all. It was missing from 2026-07-25
+# (when the auto-fix step landed) until 2026-08-09, so EVERY scheduled auto-fix
+# died with "Could not fetch an OIDC token" after three retries. The step carries
+# continue-on-error, so the workflow still reported success and the auto-fix leg
+# never once produced a pull request. Both sample workflows shipped by the Claude
+# GitHub App (claude.yml, claude-code-review.yml) declare it; this hand-written
+# one did not.
 permissions:
   contents: write
   pull-requests: write
   issues: write
   actions: read
+  id-token: write
 
 jobs:
   judge:
@@ -94,6 +104,7 @@ jobs:
           fi
 
       - name: Prepare auto-fix PR
+        id: autofix
         # Only when the judge surfaced findings AND auto-fix is enabled
         # (workflow_dispatch can turn it off; scheduled runs default on).
         if: >
@@ -124,6 +135,19 @@ jobs:
             --max-turns 60
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash"
             --disallowedTools "Bash(gh pr merge:*),Bash(git push origin main:*),Bash(git push --force:*)"
+
+      # A broken auto-fix leg must be LOUD. `continue-on-error` above is
+      # deliberate — a failed agent must not swallow the findings-issue heads-up
+      # below — but for two weeks it also meant a completely dead auto-fix
+      # reported as a green workflow. If the step was attempted and did not
+      # succeed, say so in the log and mark the run unstable via the annotation.
+      - name: Report auto-fix outcome
+        if: always() && steps.autofix.outcome != '' && steps.autofix.outcome != 'skipped'
+        run: |
+          echo "auto-fix outcome: ${{ steps.autofix.outcome }}"
+          if [ "${{ steps.autofix.outcome }}" != "success" ]; then
+            echo "::warning title=Auto-fix PR step failed::The judge found things but the fix agent did not run to completion. Check for an OIDC/permissions error, a missing ANTHROPIC_API_KEY, or the Claude GitHub App being uninstalled. No pull request was prepared this week."
+          fi
 
       - name: Stop server
         if: always()
@@ -162,8 +186,12 @@ jobs:
               `weekend — check the open pull requests. It prepares data + structural`,
               `fixes with paired audit rules and pastes its own verification output.`,
               `**Promotion is a human decision — review before merging.** If no PR`,
-              `appears, the agent judged every finding source-incomplete or a`,
-              `false-positive (documented in the run) and left the texts unchanged.`,
+              `appears, EITHER the agent judged every finding source-incomplete or a`,
+              `false-positive (documented in the run), OR the auto-fix step itself`,
+              `failed — the run carries a "Auto-fix PR step failed" warning when it`,
+              `did. Do not read a missing PR as "nothing to fix" without checking`,
+              `which of the two happened; between 2026-07-25 and 2026-08-09 it was`,
+              `always the second.`,
               ``,
               `Address before Saturday Vespers if findings are high-severity;`,
               `medium / low can wait through the cycle.`,

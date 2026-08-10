@@ -65,14 +65,23 @@ jobs:
         run: |
           set -o pipefail
           if [ "${{ github.event.inputs.backfill }}" = "true" ]; then
-            node scripts/fetch-order-rubrics.js | tee fetch.log
+            node scripts/fetch-order-rubrics.js | tee "$RUNNER_TEMP/fetch.log"
           else
-            node scripts/fetch-order-rubrics.js --page-only | tee fetch.log
+            node scripts/fetch-order-rubrics.js --page-only | tee "$RUNNER_TEMP/fetch.log"
           fi
 
       # Blast-radius guard. This job has contents:write on main, so it must be
       # provably incapable of touching anything else. Any path outside
       # reference/orders/ fails the run rather than being committed.
+      #
+      # It is intentionally absolute — NO allowlist of "harmless" strays, because
+      # the whole point is that this job cannot argue its way into a commit. That
+      # means every step before it must keep its scratch files OUT of the working
+      # tree; the fetch log goes to $RUNNER_TEMP for exactly that reason. The
+      # first dispatched run (31343514095) failed here on `fetch.log`, which the
+      # fetch step had written with `tee` into the repo root — so this workflow
+      # would have failed every Friday whether or not new rubrics existed. Found
+      # only by dispatching it; nothing in a local run reproduces it.
       - name: Guard — only reference/orders/ may change
         run: |
           stray=$(git status --porcelain | awk '{print $2}' | grep -v '^reference/orders/' || true)
@@ -103,7 +112,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: order-rubrics-fetch
-          path: fetch.log
+          path: ${{ runner.temp }}/fetch.log
           retention-days: 30
 
       - name: Open / update order-rubrics issue
@@ -115,7 +124,7 @@ jobs:
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const today = new Date().toISOString().slice(0, 10);
             let detail = '';
-            try { detail = fs.readFileSync('fetch.log', 'utf8').slice(-4000); }
+            try { detail = fs.readFileSync(`${process.env.RUNNER_TEMP}/fetch.log`, 'utf8').slice(-4000); }
             catch { detail = '(fetch log unavailable — see the uploaded artifact)'; }
             const body = [
               `The weekly OCA order-of-services fetch failed on ${today}.`,

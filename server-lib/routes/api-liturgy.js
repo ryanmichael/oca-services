@@ -271,8 +271,13 @@ function handle(req, res, ctx) {
                 ...(theoK ? [theoK] : []),
               ];
             } else if (resK) {
+              // Inside a feast window with no other kontakion, the Resurrection
+              // kontakion itself takes "Glory…" — the OCA order for 2026-08-23
+              // (Leavetaking of the Dormition) prints "Glory… Kontakion of the
+              // Resurrection, Tone 3 / Now and ever… Kontakion of the Feast,
+              // Tone 2". Off a feast window it leads unconnected as before.
               lit.kontakia = [
-                { ...resK, connector: null },
+                { ...resK, connector: feastK ? 'Glory to the Father, and to the Son, and to the Holy Spirit.' : null },
                 ...(feastK ? [{ ...feastK, connector: 'Now and ever, and unto ages of ages. Amen.' }] : []),
               ];
             }

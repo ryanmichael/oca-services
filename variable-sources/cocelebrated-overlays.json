@@ -4,18 +4,6 @@
     "_note": "Keys are \"M-D\" date strings. Second epistle/gospel are pulled from orthocal readings[] automatically.",
     "source": "OCA Department of Liturgical Music and Translations service texts (Thee/Thy register)."
   },
-  "6-14": {
-    "_note": "Synaxis of All Saints of North America (2nd Sunday after Pentecost in the OCA). Adds the saints' prokeimenon and the saints' communion verse alongside the regular Sunday Tone 1 propers. Troparion/kontakion already come from the menaion DB (id 1196); not duplicated here.",
-    "prokeimenon": {
-      "tone": 7,
-      "label": "Synaxis of All Saints of North America",
-      "refrain": "Precious in the sight of the Lord is the death of His saints."
-    },
-    "communionHymn": {
-      "label": "Synaxis of All Saints of North America",
-      "text": "Rejoice in the Lord, O you righteous; praise befits the just! Alleluia, Alleluia, Alleluia!"
-    }
-  },
   "1-1": {
     "_note": "Circumcision of our Lord falls on St. Basil the Great's feast day. OCA practice: Liturgy of St. Basil; troparion + kontakion of Basil sung alongside the Circumcision feast hymns (Glory: Basil's kontakion, Now: Circumcision's). Without this overlay only the Circumcision troparion/kontakion render and Basil's drop out of the Little Entrance section. Prokeimenon/alleluia/koinonikon added 2026-07-02 after judge sweep flagged them missing — Basil's secondary attaches on top of the Circumcision primary (which lives in great-feast-variants.json).",
     "troparion": {
@@ -73,6 +61,37 @@
     "communionHymn": {
       "label": "Sts. Constantine and Helen",
       "text": "Their proclamation has gone out into all the earth, and their words to the ends of the universe. Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "6-14": {
+    "_note": "Synaxis of All Saints of North America (2nd Sunday after Pentecost in the OCA). Adds the saints' prokeimenon and the saints' communion verse alongside the regular Sunday Tone 1 propers. Troparion/kontakion already come from the menaion DB (id 1196); not duplicated here.",
+    "prokeimenon": {
+      "tone": 7,
+      "label": "Synaxis of All Saints of North America",
+      "refrain": "Precious in the sight of the Lord is the death of His saints."
+    },
+    "communionHymn": {
+      "label": "Synaxis of All Saints of North America",
+      "text": "Rejoice in the Lord, O you righteous; praise befits the just! Alleluia, Alleluia, Alleluia!"
+    }
+  },
+  "8-16": {
+    "_note": "Translation of the Image Not-Made-by-Hands from Edessa to Constantinople, the third \"Feast of the Savior in August\" (8-16), which falls inside the Afterfeast of the Dormition. The OCA order for 2026-08-16 gives it its own troparion, kontakion, prokeimenon, alleluia and communion hymn alongside the Sunday and Dormition propers; before this entry none of them rendered. Troparion and kontakion are the menaion's own (variable-sources/menaion/august-16.json). The kontakion lands at \"Glory...\" immediately before the Dormition window's, which holds \"Now and ever...\" -- see the feastCycle branch in liturgy-from-orthocal.js. GAPS: the OCA order names the Image's prokeimenon (Tone 4, \"Sing to the Lord a new song...\") and alleluia (Tone 4) by incipit only, and no authoritative verse text is on hand, so neither is authored here rather than invented. The Sunday Tone-2 prokeimenon and alleluia render alone until those arrive.",
+    "troparion": {
+      "tone": 2,
+      "rubric": "Troparion of the Image Not-Made-by-Hands, Tone 2:",
+      "text": "We bow down before Thy most pure image, O Good One, asking forgiveness of our transgressions, O Christ God; for of Thine own will Thou wast well pleased to ascend the Cross in the flesh, that Thou mightest deliver from slavery to the enemy those whom Thou hadst fashioned. Wherefore, we cry to Thee in thanksgiving: Thou hast filled all things with joy, O our Savior, when Thou camest to save the world."
+    },
+    "kontakion": {
+      "tone": 2,
+      "rubric": "Kontakion of the Image Not-Made-by-Hands, Tone 2:",
+      "connector": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+      "text": "O uncircumscribable Word of the Father, knowing the victorious image, un-inscribed and divinely wrought, of Thine ineffable and divine dispensation towards mankind, of Thy true incarnation, we honor it with veneration."
+    },
+    "communionHymn": {
+      "label": "Translation of the Image Not-Made-by-Hands",
+      "text": "O Lord, we shall walk in the light of Thy countenance, and shall exult in Thy name forever. Alleluia, Alleluia, Alleluia!",
+      "prescribed": true
     }
   }
 }

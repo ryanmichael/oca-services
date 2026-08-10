@@ -230,6 +230,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const isTransfigurationAfterfeast =
     tfAdj.getUTCMonth() === 7 && tfAdj.getUTCDate() >= 6 && tfAdj.getUTCDate() <= 13;
 
+  // Dormition afterfeast (Aug 15 feast through the Aug 23 leavetaking) — the
+  // same rule, for the same reason. The OCA order for 2026-08-16 prints, under
+  // "Instead of 'It is truly meet…'", both "The Angels, as they looked…" and
+  // "The limits of nature are overcome…"; great-feast-variants.dormition
+  // already carries them as one text, and it was rendering only on Aug 15.
+  //
+  // Surfaced 2026-08-09 by the weekly judge on the 8-16 Liturgy, one of nine
+  // findings for a Sunday inside this window.
+  const isDormitionAfterfeast =
+    tfAdj.getUTCMonth() === 7 && tfAdj.getUTCDate() >= 15 && tfAdj.getUTCDate() <= 23;
+
   // Pentecostarion Sunday overrides (defined at module scope, see top).
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
@@ -346,6 +357,18 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     c => c.id !== menaionPrincipal?.id && FEAST_CYCLE_TITLE.test(c.title || ''));
   const feastCycleTrop = feastCycleComm?.troparia?.find(t => t.type === 'troparion');
   const feastCycleKont = feastCycleComm?.troparia?.find(t => t.type === 'kontakion');
+
+  // The window can also BE the principal — 2026-08-16 is the Afterfeast of the
+  // Dormition with the Image Not-Made-by-Hands beside it. `feastCycleComm`
+  // deliberately excludes the principal (its hymns come through the ordinary
+  // principal path), but the "Now and ever…" claim belongs to the window
+  // whichever slot it occupies, so it still has to be marked as one.
+  //
+  // Without this the Sunday-kontakia restructure in api-liturgy.js sees no
+  // feastCycle kontakion, hands "Now and ever…" to the generic
+  // Kontakion-Theotokion, and drops the window's kontakion off the end.
+  const principalIsFeastWindow =
+    !!menaionPrincipal && FEAST_CYCLE_TITLE.test(menaionPrincipal.title || '');
 
   // Now resolve primary/secondary readings. When orthocal returns a special-
   // cycle override as the primary, the regular Sunday-cycle reading is
@@ -512,7 +535,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
         }
       }
       for (const { tone, text, titles } of groups.values()) {
-        kontakia.push({ tone, rubric: `Kontakion of ${joinTitles(titles)}, Tone ${tone}:`, text });
+        const isWindow = principalIsFeastWindow
+                      && titles.includes(menaionPrincipal.title);
+        kontakia.push({
+          tone, rubric: `Kontakion of ${joinTitles(titles)}, Tone ${tone}:`, text,
+          ...(isWindow ? { feastCycle: true } : {}),
+        });
       }
     }
 
@@ -539,9 +567,37 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // the feast kontakion (per OCA combined-service layout — "Glory…" then saint
   // kontakion, then "Now and ever…" then feast kontakion).
   if (overlay?.troparion) {
-    troparia.push(overlay.troparion);
+    // The feast window's troparion is sung last, at "Now and ever…", so an
+    // overlay saint goes IN FRONT of it — the OCA order for 2026-08-16 reads
+    // Resurrection Tone 2, Image Tone 2, Feast Tone 1. Off a feast window the
+    // append is unchanged.
+    const windowTropIdx = principalIsFeastWindow
+      ? troparia.findIndex(t => (t.rubric || '').includes(menaionPrincipal.title))
+      : -1;
+    if (windowTropIdx >= 0) troparia.splice(windowTropIdx, 0, overlay.troparion);
+    else troparia.push(overlay.troparion);
   }
-  if (overlay?.kontakion && kontakia.length > 0) {
+  const feastCycleKontIdx = kontakia.findIndex(k => k && k.feastCycle);
+  if (overlay?.kontakion && feastCycleKontIdx >= 0) {
+    // Feast-WINDOW date (afterfeast / forefeast / leavetaking). The window's
+    // kontakion already sits last holding "Now and ever…", and anything the
+    // overlay adds belongs immediately before it, at "Glory…" — so the order
+    // reads Resurrection, Glory… saint, Now and ever… Feast, which is what the
+    // OCA order prints for 2026-08-16 (Resurrection Tone 2, Image Tone 2,
+    // Dormition Tone 2).
+    //
+    // The unshift branch below cannot serve this case: it assumes kontakia[0]
+    // IS the feast kontakion, which holds on a Great Feast (5-21 Ascension +
+    // Constantine and Helen) but not on a Sunday inside a feast window, where
+    // kontakia[0] is the Resurrection. Applied there it would have moved the
+    // "Now and ever…" onto the Resurrection kontakion and pushed the Image
+    // ahead of it.
+    kontakia.splice(feastCycleKontIdx, 0, {
+      ...overlay.kontakion,
+      connector: overlay.kontakion.connector
+              || 'Glory to the Father, and to the Son, and to the Holy Spirit.',
+    });
+  } else if (overlay?.kontakion && kontakia.length > 0) {
     // Force "Now and ever..." connector onto the feast kontakion (was implicit default)
     kontakia[0] = { ...kontakia[0], connector: 'Now and ever, and unto ages of ages. Amen.' };
     kontakia.unshift(overlay.kontakion);
@@ -689,6 +745,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     megalynarion = { text: pentOverride.megalynarion };
   } else if (isTransfigurationAfterfeast && GREAT_FEAST_VARIANTS.transfiguration?.megalynarion) {
     megalynarion = { text: GREAT_FEAST_VARIANTS.transfiguration.megalynarion };
+  } else if (isDormitionAfterfeast && GREAT_FEAST_VARIANTS.dormition?.megalynarion) {
+    megalynarion = { text: GREAT_FEAST_VARIANTS.dormition.megalynarion };
   } else if (isPaschalPeriod) {
     megalynarion = { text: LITURGY_DEFAULTS.paschalMegalynarion };
   } else if (isBasil) {
@@ -731,7 +789,16 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // is null: just use the day-of-week koinonikon.
     communionHymn = { text: COMMUNION_HYMNS[dow] || COMMUNION_HYMNS.sunday };
   }
-  if (overlay?.communionHymn && overlayKoinonikonOptIn) {
+  // `prescribed: true` marks an overlay koinonikon the OCA order actually
+  // prints for the day, as opposed to the opt-in extra the default assumes.
+  // 8-16 is the case: the order lists both "Praise the Lord from the heavens…"
+  // and the Image's "O Lord, we shall walk in the light of Thy countenance…",
+  // so leaving it behind an opt-in would mean an OCA-prescribed verse never
+  // rendering. An explicit parish `includeSecondKoinonikon: false` still wins —
+  // a parish that sings one verse sings one verse.
+  const overlayKoinonikonPrescribed =
+    overlay?.communionHymn?.prescribed === true && secondKoinonikonAllowed;
+  if (overlay?.communionHymn && (overlayKoinonikonOptIn || overlayKoinonikonPrescribed)) {
     communionHymn = { ...communionHymn, secondary: overlay.communionHymn };
   }
   // Polyeleos+ saint koinonikon — rendered unless the parish opted out. On a

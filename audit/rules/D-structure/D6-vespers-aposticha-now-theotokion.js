@@ -29,18 +29,28 @@ module.exports = {
     if (gloryIdx === -1) return [];
 
     const tail = apost.slice(gloryIdx + 1);
-    const hasNow        = tail.some(b => b.type === 'doxology' && /^Now and ever/i.test(b.text || ''));
-    // Paschal period: the trailing "Now-and-ever" hymn is the Paschal
-    // sticheron ("This is the day of Resurrection…"), which functionally
-    // replaces the Theotokion through Pascha → Ascension. Accept a label of
-    // "Paschal" (or label starting with "Paschal") as Theotokion-equivalent.
-    const hasTheotokion = tail.some(b =>
-      b.type === 'hymn' && (/theotokion/i.test(b.label || '') || /^Paschal/i.test(b.label || ''))
-    );
+    const nowIdx = tail.findIndex(b => b.type === 'doxology' && /^Now and ever/i.test(b.text || ''));
+    const hasNow = nowIdx !== -1;
+
+    // The check is STRUCTURAL: a hymn must follow the "Now and ever…". It used
+    // to require the hymn's LABEL to contain "Theotokion" (or start with
+    // "Paschal", added for the paschal sticheron), which is a string test
+    // standing in for a structural one — it says nothing about whether a hymn
+    // is there, and it goes off when a perfectly correct hymn is labelled
+    // something else.
+    //
+    // Which is the normal case inside a feast window: on 2026-08-15 the OCA
+    // order prints "Now and ever… Feast, Tone 8", and the hymn is the
+    // Dormition's, labelled "(for the Dormition, by the Emperor Leo the Wise)".
+    // The label rule fired on nine 2026 dates where the hymn was present and
+    // right. Meanwhile a genuinely EMPTY Now-and-ever labelled "Theotokion"
+    // would have passed — the failure this rule exists to catch.
+    const hasNowHymn = hasNow && tail.slice(nowIdx + 1).some(
+      b => b.type === 'hymn' && (b.text || '').trim().length > 0);
 
     const issues = [];
     if (!hasNow)        issues.push({ message: 'Aposticha Glory present but no "Now and ever" doxology follows.' });
-    if (!hasTheotokion) issues.push({ message: 'Aposticha Glory present but no Theotokion hymn at Now-and-ever.' });
+    if (hasNow && !hasNowHymn) issues.push({ message: 'Aposticha "Now and ever" doxology present but no hymn follows it.' });
     return issues;
   },
 };

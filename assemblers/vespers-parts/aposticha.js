@@ -4,6 +4,17 @@ const makeBlock                    = require('../_shared/make-block');
 const { resolveSource, deepGet }   = require('../_shared/resolve');
 
 function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
+  // A sticheron whose own label names its commemoration in the "(for X)" /
+  // "from X" form beats the slot's label, which carries the principal's title.
+  // Inside a feast window that title is wrong for whichever hymns belong to the
+  // co-celebrated saint: on 2026-08-16 the aposticha Glory is the Image's
+  // ("(for the Image)") and the Now-and-ever is the Dormition's ("(for the
+  // Dormition, by the Emperor Leo the Wise)"), and both printed under a single
+  // wrong heading. Labels without that form — the generic category incipits
+  // that most menaion rows carry — never win. Same rule as lord-i-call.js.
+  const namesCommemoration = (label) => !!label && /(?:^|\()\s*(?:for|from)\s+/i.test(label);
+  const preferOwn = (own, slot) => (namesCommemoration(own) ? own : (slot || own));
+
   const section = 'Aposticha';
   const blocks = [];
 
@@ -99,7 +110,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
     }
     if (glorySource) {
       blocks.push(makeBlock('apost-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: glorySource.tone || apostichaSpec.glory.tone, source: glorySrc, label: apostichaSpec.glory.label || glorySource.label, provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
+        glorySource.text, { tone: glorySource.tone || apostichaSpec.glory.tone, source: glorySrc, label: preferOwn(glorySource.label, apostichaSpec.glory.label), provenance: apostichaSpec.glory.provenance || glorySource.provenance }));
     }
   }
 
@@ -121,7 +132,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       fixedTexts.doxology.nowOnly));
     if (nowSource) {
       blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: nowSource.tone || apostichaSpec.now.tone, source: nowSrc, label: apostichaSpec.now.label || nowSource.label, provenance: apostichaSpec.now.provenance || nowSource.provenance }));
+        nowSource.text, { tone: nowSource.tone || apostichaSpec.now.tone, source: nowSrc, label: preferOwn(nowSource.label, apostichaSpec.now.label), provenance: apostichaSpec.now.provenance || nowSource.provenance }));
     }
   }
 

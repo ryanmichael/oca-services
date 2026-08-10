@@ -143,6 +143,18 @@
       ],
       "dbColumn": "rubric_default_pronoun"
     },
+    "servesLitya": {
+      "label": "Litya and Blessing of the Loaves",
+      "description": "Which days the parish serves a Litya at Great Vespers. The OCA order prints it as \u201c[Litya]\u201d \u2014 bracketed, meaning commonly omitted in parish practice \u2014 on an ordinary vigil-rank saint's day, and unbracketed on the Great Feasts. This is a question of practice, not of the saint's rank: many parishes never serve one whatever the day.",
+      "namespace": "vespers.servesLitya",
+      "type": "enum",
+      "options": ["always", "greatFeastsOnly", "never"],
+      "default": "always",
+      "appliesTo": [
+        "vespers"
+      ],
+      "domId": "f-serves-litya"
+    },
     "gloryAfterLittleLitany": {
       "label": "“Glory to the Father” after the Little Litany",
       "description": "The First Antiphon ends with its refrain, and “Glory to the Father…” is sung at the end of the Little Litany that follows, before Psalm 145. “Now and ever…” stays at the end of the Second Antiphon.",

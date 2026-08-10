@@ -25,7 +25,9 @@ const { applyYouYour } = require('./pronouns');
  * Throws on assembly error.
  */
 function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources, style = 'new', opts = {}) {
-  const calendarEntry = entryOverride || getCalendarEntry(date, style);
+  // opts.rubrics reaches getCalendarEntry so the parish's Litya policy can be
+  // applied to the entry itself (see applyLityaPolicy in sources/calendar.js).
+  const calendarEntry = entryOverride || getCalendarEntry(date, style, { rubrics: opts.rubrics });
   if (!calendarEntry) return null;
   const vespersFixed = vespersFixedBase;
 

@@ -69,7 +69,10 @@ function handle(req, res, ctx) {
       //
       // Exception: Burial Vespers (Holy Friday afternoon) uses the day's own
       // texts — it is NOT the evening vespers that begins the next day.
-      const dayEntry = getCalendarEntry(date, style);
+      // Resolved here rather than below, because the Vespers entry itself is
+      // shaped by the parish's Litya policy before assembly sees it.
+      const overlayRubrics = getOverlayRubrics(translation);
+      const dayEntry = getCalendarEntry(date, style, { rubrics: overlayRubrics });
       const isBurialVespers = dayEntry?.vespers?.serviceKey === 'burialVespers';
       const vespersDate = isBurialVespers ? date : getNextDateStr(date);
 
@@ -78,7 +81,7 @@ function handle(req, res, ctx) {
       // otReadings with full scripture text from orthocal.
       let entryOverride = null;
       try {
-        const baseEntry = getCalendarEntry(vespersDate, style);
+        const baseEntry = getCalendarEntry(vespersDate, style, { rubrics: overlayRubrics });
         if (baseEntry?.vespers?.otReadings?.length > 0) {
           const orthocalData = await fetchOrthocalDay(vespersDate);
           const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
@@ -133,8 +136,6 @@ function handle(req, res, ctx) {
       const vespersFixedResolved = translation
         ? (getOverlayFixed('vespers', translation) || fixedTexts)
         : fixedTexts;
-      const overlayRubrics = getOverlayRubrics(translation);
-
       let result;
       try {
         result = assembleForDate(vespersDate, pronoun, entryOverride, vespersFixedResolved, reqSources, style,

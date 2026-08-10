@@ -51344,7 +51344,7 @@
     "_meta": {
       "generated": true,
       "generatedAt": "2026-01-01T00:00:00.000Z",
-      "note": "Auto-generated All-Night Vigil — Vigil-rank feast. Tone 2."
+      "note": "Auto-generated Sunday Great Vespers. Tone 2. Menaion commemorations not included."
     },
     "commemorations": [],
     "date": "2025-06-29",
@@ -51356,29 +51356,105 @@
     },
     "vespers": {
       "aposticha": {
-        "glory": null,
-        "slots": []
-      },
-      "litya": {
-        "glory": null,
-        "now": null,
-        "slots": []
+        "glory": {
+          "combinesGloryNow": true,
+          "key": "tone2.saturday.vespers.aposticha.theotokion",
+          "label": "Theotokion",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "slots": [
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.0",
+            "label": "Resurrectional Sticheron 1",
+            "position": 1,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.1",
+            "label": "Resurrectional Sticheron 2",
+            "position": 2,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.2",
+            "label": "Resurrectional Sticheron 3",
+            "position": 3,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.3",
+            "label": "Resurrectional Sticheron 4",
+            "position": 4,
+            "source": "octoechos",
+            "tone": 2
+          }
+        ]
       },
       "lordICall": {
-        "glory": null,
-        "now": null,
-        "slots": [],
+        "glory": {
+          "key": "tone2.saturday.vespers.lordICall.glory",
+          "label": "Resurrectional Doxastichon",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "now": {
+          "key": "tone2.saturday.vespers.dogmatikon",
+          "label": "Theotokion — Dogmatikon",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "slots": [
+          {
+            "count": 10,
+            "key": "tone2.saturday.vespers.lordICall.resurrectional",
+            "label": "Resurrectional",
+            "source": "octoechos",
+            "tone": 2,
+            "verses": [
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
         "tone": 2,
-        "totalStichera": 8
+        "totalStichera": 10
       },
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
       },
-      "rubricNote": "All-Night Vigil — Great Vespers with Entrance",
-      "serviceType": "all-night-vigil",
+      "rubricNote": "Great Vespers with Entrance (sung on Saturday evening)",
+      "serviceType": "greatVespers",
       "troparia": {
-        "slots": []
+        "slots": [
+          {
+            "key": "tone2.saturday.vespers.troparion",
+            "label": "Resurrectional Troparion",
+            "order": 1,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.dismissalTheotokion",
+            "label": "Dismissal Theotokion",
+            "position": "now",
+            "source": "octoechos",
+            "tone": 2
+          }
+        ],
+        "source": "octoechos"
       }
     }
   },
@@ -96286,7 +96362,7 @@
     "_meta": {
       "generated": true,
       "generatedAt": "2026-01-01T00:00:00.000Z",
-      "note": "Auto-generated All-Night Vigil — Vigil-rank feast. Tone 6."
+      "note": "Auto-generated Sunday Great Vespers. Tone 6. Menaion commemorations not included."
     },
     "commemorations": [],
     "date": "2026-11-08",
@@ -96298,29 +96374,105 @@
     },
     "vespers": {
       "aposticha": {
-        "glory": null,
-        "slots": []
-      },
-      "litya": {
-        "glory": null,
-        "now": null,
-        "slots": []
+        "glory": {
+          "combinesGloryNow": true,
+          "key": "tone6.saturday.vespers.aposticha.theotokion",
+          "label": "Theotokion",
+          "source": "octoechos",
+          "tone": 6
+        },
+        "slots": [
+          {
+            "key": "tone6.saturday.vespers.aposticha.hymns.0",
+            "label": "Resurrectional Sticheron 1",
+            "position": 1,
+            "source": "octoechos",
+            "tone": 6
+          },
+          {
+            "key": "tone6.saturday.vespers.aposticha.hymns.1",
+            "label": "Resurrectional Sticheron 2",
+            "position": 2,
+            "source": "octoechos",
+            "tone": 6
+          },
+          {
+            "key": "tone6.saturday.vespers.aposticha.hymns.2",
+            "label": "Resurrectional Sticheron 3",
+            "position": 3,
+            "source": "octoechos",
+            "tone": 6
+          },
+          {
+            "key": "tone6.saturday.vespers.aposticha.hymns.3",
+            "label": "Resurrectional Sticheron 4",
+            "position": 4,
+            "source": "octoechos",
+            "tone": 6
+          }
+        ]
       },
       "lordICall": {
-        "glory": null,
-        "now": null,
-        "slots": [],
+        "glory": {
+          "key": "tone6.saturday.vespers.lordICall.glory",
+          "label": "Resurrectional Doxastichon",
+          "source": "octoechos",
+          "tone": 6
+        },
+        "now": {
+          "key": "tone6.saturday.vespers.dogmatikon",
+          "label": "Theotokion — Dogmatikon",
+          "source": "octoechos",
+          "tone": 6
+        },
+        "slots": [
+          {
+            "count": 10,
+            "key": "tone6.saturday.vespers.lordICall.resurrectional",
+            "label": "Resurrectional",
+            "source": "octoechos",
+            "tone": 6,
+            "verses": [
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
         "tone": 6,
-        "totalStichera": 8
+        "totalStichera": 10
       },
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
       },
-      "rubricNote": "All-Night Vigil — Great Vespers with Entrance",
-      "serviceType": "all-night-vigil",
+      "rubricNote": "Great Vespers with Entrance (sung on Saturday evening)",
+      "serviceType": "greatVespers",
       "troparia": {
-        "slots": []
+        "slots": [
+          {
+            "key": "tone6.saturday.vespers.troparion",
+            "label": "Resurrectional Troparion",
+            "order": 1,
+            "source": "octoechos",
+            "tone": 6
+          },
+          {
+            "key": "tone6.saturday.vespers.dismissalTheotokion",
+            "label": "Dismissal Theotokion",
+            "position": "now",
+            "source": "octoechos",
+            "tone": 6
+          }
+        ],
+        "source": "octoechos"
       }
     }
   },
@@ -98627,7 +98779,7 @@
     "_meta": {
       "generated": true,
       "generatedAt": "2026-01-01T00:00:00.000Z",
-      "note": "Auto-generated All-Night Vigil — Vigil-rank feast. Tone 2."
+      "note": "Auto-generated Sunday Great Vespers. Tone 2. Menaion commemorations not included."
     },
     "commemorations": [],
     "date": "2026-12-06",
@@ -98639,29 +98791,105 @@
     },
     "vespers": {
       "aposticha": {
-        "glory": null,
-        "slots": []
-      },
-      "litya": {
-        "glory": null,
-        "now": null,
-        "slots": []
+        "glory": {
+          "combinesGloryNow": true,
+          "key": "tone2.saturday.vespers.aposticha.theotokion",
+          "label": "Theotokion",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "slots": [
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.0",
+            "label": "Resurrectional Sticheron 1",
+            "position": 1,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.1",
+            "label": "Resurrectional Sticheron 2",
+            "position": 2,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.2",
+            "label": "Resurrectional Sticheron 3",
+            "position": 3,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.aposticha.hymns.3",
+            "label": "Resurrectional Sticheron 4",
+            "position": 4,
+            "source": "octoechos",
+            "tone": 2
+          }
+        ]
       },
       "lordICall": {
-        "glory": null,
-        "now": null,
-        "slots": [],
+        "glory": {
+          "key": "tone2.saturday.vespers.lordICall.glory",
+          "label": "Resurrectional Doxastichon",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "now": {
+          "key": "tone2.saturday.vespers.dogmatikon",
+          "label": "Theotokion — Dogmatikon",
+          "source": "octoechos",
+          "tone": 2
+        },
+        "slots": [
+          {
+            "count": 10,
+            "key": "tone2.saturday.vespers.lordICall.resurrectional",
+            "label": "Resurrectional",
+            "source": "octoechos",
+            "tone": 2,
+            "verses": [
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
         "tone": 2,
-        "totalStichera": 8
+        "totalStichera": 10
       },
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
       },
-      "rubricNote": "All-Night Vigil — Great Vespers with Entrance",
-      "serviceType": "all-night-vigil",
+      "rubricNote": "Great Vespers with Entrance (sung on Saturday evening)",
+      "serviceType": "greatVespers",
       "troparia": {
-        "slots": []
+        "slots": [
+          {
+            "key": "tone2.saturday.vespers.troparion",
+            "label": "Resurrectional Troparion",
+            "order": 1,
+            "source": "octoechos",
+            "tone": 2
+          },
+          {
+            "key": "tone2.saturday.vespers.dismissalTheotokion",
+            "label": "Dismissal Theotokion",
+            "position": "now",
+            "source": "octoechos",
+            "tone": 2
+          }
+        ],
+        "source": "octoechos"
       }
     }
   },
@@ -123755,7 +123983,7 @@
     "_meta": {
       "generated": true,
       "generatedAt": "2026-01-01T00:00:00.000Z",
-      "note": "Auto-generated All-Night Vigil — Vigil-rank feast. Tone 1."
+      "note": "Auto-generated Sunday Great Vespers. Tone 1. Menaion commemorations not included."
     },
     "commemorations": [],
     "date": "2027-08-29",
@@ -123767,29 +123995,105 @@
     },
     "vespers": {
       "aposticha": {
-        "glory": null,
-        "slots": []
-      },
-      "litya": {
-        "glory": null,
-        "now": null,
-        "slots": []
+        "glory": {
+          "combinesGloryNow": true,
+          "key": "tone1.saturday.vespers.aposticha.theotokion",
+          "label": "Theotokion",
+          "source": "octoechos",
+          "tone": 1
+        },
+        "slots": [
+          {
+            "key": "tone1.saturday.vespers.aposticha.hymns.0",
+            "label": "Resurrectional Sticheron 1",
+            "position": 1,
+            "source": "octoechos",
+            "tone": 1
+          },
+          {
+            "key": "tone1.saturday.vespers.aposticha.hymns.1",
+            "label": "Resurrectional Sticheron 2",
+            "position": 2,
+            "source": "octoechos",
+            "tone": 1
+          },
+          {
+            "key": "tone1.saturday.vespers.aposticha.hymns.2",
+            "label": "Resurrectional Sticheron 3",
+            "position": 3,
+            "source": "octoechos",
+            "tone": 1
+          },
+          {
+            "key": "tone1.saturday.vespers.aposticha.hymns.3",
+            "label": "Resurrectional Sticheron 4",
+            "position": 4,
+            "source": "octoechos",
+            "tone": 1
+          }
+        ]
       },
       "lordICall": {
-        "glory": null,
-        "now": null,
-        "slots": [],
+        "glory": {
+          "key": "tone1.saturday.vespers.lordICall.glory",
+          "label": "Resurrectional Doxastichon",
+          "source": "octoechos",
+          "tone": 1
+        },
+        "now": {
+          "key": "tone1.saturday.vespers.dogmatikon",
+          "label": "Theotokion — Dogmatikon",
+          "source": "octoechos",
+          "tone": 1
+        },
+        "slots": [
+          {
+            "count": 10,
+            "key": "tone1.saturday.vespers.lordICall.resurrectional",
+            "label": "Resurrectional",
+            "source": "octoechos",
+            "tone": 1,
+            "verses": [
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
         "tone": 1,
-        "totalStichera": 8
+        "totalStichera": 10
       },
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
       },
-      "rubricNote": "All-Night Vigil — Great Vespers with Entrance",
-      "serviceType": "all-night-vigil",
+      "rubricNote": "Great Vespers with Entrance (sung on Saturday evening)",
+      "serviceType": "greatVespers",
       "troparia": {
-        "slots": []
+        "slots": [
+          {
+            "key": "tone1.saturday.vespers.troparion",
+            "label": "Resurrectional Troparion",
+            "order": 1,
+            "source": "octoechos",
+            "tone": 1
+          },
+          {
+            "key": "tone1.saturday.vespers.dismissalTheotokion",
+            "label": "Dismissal Theotokion",
+            "position": "now",
+            "source": "octoechos",
+            "tone": 1
+          }
+        ],
+        "source": "octoechos"
       }
     }
   },

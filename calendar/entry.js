@@ -131,8 +131,31 @@ function dispatchCalendarEntry(dateStr, style = 'new') {
 
   // ── Vigil-rank saints override ordinary day logic ──────────────────────────
   // These feasts get an All-Night Vigil with Litya and Blessing of Bread.
+  //
+  // NOT ON A SUNDAY. The vigil generator ships `slots: []` with no Octoechos
+  // slot at all, so on a Sunday it erased the Resurrection outright: 2026-11-08
+  // (Synaxis of the Archangels) and 2026-12-06 (St Nicholas) both rendered NINE
+  // Lord-I-Call hymns, every one of them the saint's, and no resurrectional
+  // stichera whatever. A vigil-rank saint never displaces the Resurrection on a
+  // Sunday; he shares the day with it.
+  //
+  // Three OCA order documents, three different saints, all agree on the shape:
+  //   2025-0629 Peter and Paul   4 stichera of the Resurrection + 6 of the Apostles
+  //   2022-1009 St Tikhon        4 of the Resurrection + 6 of St Tikhon
+  //   2023-1001 the Protection   4 of the Resurrection + 6 of the Protection
+  // with "Glory… <saint>" and "Now and ever… Dogmatic Theotokion" of the tone.
+  //
+  // Falling through to the Sunday generator produces exactly that with no
+  // further arithmetic: it sets totalStichera 10, and `isSundayGreatVespers`
+  // already caps the Menaion at 6, which leaves 4 for the Resurrection.
+  //
+  // What is lost is the Litya, which the Sunday generator has no block for. Both
+  // saint's-day orders print it as "[Litya]" — bracketed, meaning "commonly
+  // omitted in parish practice" — so omitting it is defensible; a parish that
+  // serves one needs the Litya-policy work that this rank/practice coupling is
+  // still waiting on.
   const feastRank = getFeastRank(date, style);
-  if (feastRank === 'vigil') {
+  if (feastRank === 'vigil' && dow !== 'sunday') {
     return generateVigilFeastVespers(dateStr, dow, tone);
   }
 

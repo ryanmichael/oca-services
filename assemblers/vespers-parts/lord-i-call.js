@@ -44,6 +44,48 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     });
   }
 
+  // Which slots hold stichera from MORE THAN ONE commemoration. Only those may
+  // let a per-sticheron label override the slot's.
+  //
+  // Most labelled rows in the menaion DB carry a generic category incipit —
+  // "the holy martyrs", "the venerable one", "the feast" — which is strictly
+  // less informative on a choir sheet than the commemoration title the slot
+  // already supplies. 2390 of 3246 lordICall rows are labelled that way, so a
+  // blanket "row label wins" is a downgrade almost everywhere.
+  //
+  // It is an UPGRADE in exactly the mixed case, where one slot carries two
+  // commemorations' stichera and a single title is wrong for some of them. On
+  // 2026-08-16 the Afterfeast of the Dormition's six stichera are labelled
+  // "(for the Dormition)" ×3 and "(for the Image)" ×3, because three belong to
+  // the Translation of the Image Not-Made-by-Hands; all six printed as
+  // "Afterfeast of the Dormition".
+  //
+  // The test is two distinct SUBJECTS in one slot, not two distinct label
+  // strings. Comparing raw strings gets Nativity wrong: 12-25's stichera are
+  // labelled "(for the Feast, by Germanus)" and "(for the Feast)", which differ
+  // only in the composer attribution — all of them are the Feast's, and
+  // "The Nativity of Christ" is the better thing to print. So the subject is
+  // read out of the "(for X)" / "from X" form and everything after a comma —
+  // the attribution — is dropped, along with any trailing melody incipit in a
+  // second parenthetical ("(With what crowns)", "(Joseph of Arimathea)").
+  const labelSubject = (label) => {
+    if (!label) return null;
+    const m = /(?:^|\()\s*(?:for|from)\s+(.+?)\s*(?:,|\)|$)/i.exec(label);
+    if (!m) return null;
+    return m[1].toLowerCase().replace(/[^a-z ]/g, '').trim() || null;
+  };
+
+  const mixedSlots = new Set();
+  for (const slot of new Set(Object.values(verseMap).map(v => v.slot))) {
+    const subjects = new Set(
+      Object.values(verseMap)
+        .filter(v => v.slot === slot)
+        .map(v => labelSubject(v.hymn.label))
+        .filter(Boolean)
+    );
+    if (subjects.size > 1) mixedSlots.add(slot);
+  }
+
   // Add psalm verses with stichera interleaved
   // "On 10": include Psalm 141 verses 10–9 before Psalm 129 (8–3) and Psalm 116 (2–1)
   const totalStichera = lordICallSpec.totalStichera || 8;
@@ -62,7 +104,11 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
       const { hymn, slot } = verseMap[verse.number];
       blocks.push(makeBlock(
         `lic-hymn-v${verse.number}`, section, 'hymn', 'choir', hymn.text,
-        { tone: hymn.tone ?? slot.tone, source: slot.source, label: slot.label, provenance: slot.provenance || hymn.provenance }
+        // Mixed slot (see mixedSlots above) → the sticheron's own label; every
+        // other slot renders exactly as before.
+        { tone: hymn.tone ?? slot.tone, source: slot.source,
+          label: mixedSlots.has(slot) ? (hymn.label || slot.label) : slot.label,
+          provenance: slot.provenance || hymn.provenance }
       ));
     }
   }
@@ -82,7 +128,16 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
         fixedTexts.doxology.gloryOnly));
     }
     blocks.push(makeBlock('lic-glory-hymn', section, 'hymn', 'choir', glorySource.text,
-      { tone: glorySpec.tone, source: glorySpec.source, label: glorySpec.label, provenance: glorySpec.provenance || glorySource.provenance }
+      // Same mixed-slot rule as the numbered stichera. On a day whose stichera
+      // come from two commemorations the doxastikon belongs to one of them and
+      // saying which is the whole point — 2026-08-16's Tone-8 Glory is labelled
+      // "(for the Image)" in the DB and is exactly what the OCA order calls for
+      // ("Glory… Image, Tone 8"), but printed as "Afterfeast of the Dormition".
+      // A bare "Glory" label (129 rows carry it) names nothing, so it never wins.
+      { tone: glorySpec.tone, source: glorySpec.source,
+        label: (mixedSlots.size > 0 && glorySource.label && !/^glory$/i.test(glorySource.label))
+          ? glorySource.label : glorySpec.label,
+        provenance: glorySpec.provenance || glorySource.provenance }
     ));
   }
 

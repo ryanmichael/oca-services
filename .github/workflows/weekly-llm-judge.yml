@@ -130,9 +130,20 @@ jobs:
             merge, never push to main or staging. A dev server is already running
             on http://localhost:3000; restart it yourself after any DB or
             variable-sources/*.json edit.
+          # NOTE: claude_args is a literal argument string handed to the CLI, not
+          # YAML — a `#` line inside it is passed through as an argument, not
+          # dropped as a comment. Keep all commentary out here.
+          #
+          # --max-turns was 60, and that was not enough for a nine-finding
+          # weekend: the 2026-08-09 run burned all 60 turns and $5.02 on triage
+          # plus the first fixes, then was killed with nothing pushed. The
+          # durable half of that fix lives in weekend-prompt.md — the agent now
+          # opens a draft PR BEFORE fixing anything, so a cutoff costs the
+          # remaining fixes rather than the entire run. 120 buys room to finish a
+          # normal week; budget roughly $0.08/turn.
           claude_args: |
             --model claude-opus-4-8
-            --max-turns 60
+            --max-turns 120
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash"
             --disallowedTools "Bash(gh pr merge:*),Bash(git push origin main:*),Bash(git push --force:*)"
 

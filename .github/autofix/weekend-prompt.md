@@ -29,7 +29,25 @@ The summary below does not replace it.
    root cause (the skill explains why this matters). Do not chase finding #1's
    symptom when it is a side-effect of finding #3.
 
-3. **Branch off main:** `git checkout -b autofix/weekend-<SAT>`.
+3. **Branch off main, and open the DRAFT PR immediately — before any fix.**
+
+   ```
+   git checkout -b autofix/weekend-<SAT>
+   git commit --allow-empty -m "autofix: weekend <SAT>–<SUN> — triage"
+   git push -u origin autofix/weekend-<SAT>
+   gh label create auto-fix --color 1D76DB \
+     --description "Automated weekend audit-fix PR" 2>/dev/null || true
+   gh pr create --draft --base main --head autofix/weekend-<SAT> --label auto-fix \
+     --title "autofix: weekend <SAT>–<SUN> judge findings" \
+     --body "Triage in progress — see step 6 for the final body."
+   ```
+
+   **Do this even though nothing is fixed yet.** You are running under a hard
+   turn cap and you get no warning before it fires: on 2026-08-09 a run spent 61
+   turns and $5 on nine findings, was cut off mid-work, and left **nothing** —
+   no branch, no PR, no record of what it had already concluded. Work that only
+   exists in your context is work that did not happen. Push a commit after each
+   fix so the PR always reflects your progress.
 
 4. **Apply only the safe buckets:**
    - **data-drift** → backup `storage/oca.db` to `storage/oca.db.bak.<DATE>`
@@ -57,23 +75,33 @@ The summary below does not replace it.
    If you cannot reach green, still open the PR but mark it **draft** and state
    plainly what is unresolved and why.
 
-6. **Open the PR against `main`.** First push the branch and ensure the label
-   exists (the label must exist or `gh pr create --label` errors):
+6. **Finalize the PR** (it already exists — you opened it in step 3). Push the
+   remaining work, write the real body, and take it out of draft only if step 5
+   is green:
    ```
-   git push -u origin autofix/weekend-<SAT>
-   gh label create auto-fix --color 1D76DB \
-     --description "Automated weekend audit-fix PR" 2>/dev/null || true
-   ```
-   Then:
-   ```
-   gh pr create --base main --head autofix/weekend-<SAT> --label auto-fix \
-     --title "autofix: weekend <SAT>–<SUN> judge findings" --body "..."
+   git push
+   gh pr edit <N> --body-file /tmp/pr-body.md
+   gh pr ready <N>          # ONLY if step 5 came back green
    ```
    - body must contain, in this order:
      1. A triage table: `finding → bucket → fix (or why not fixed)`.
      2. The closing audit rule(s) added.
      3. The full verification output from step 5.
      4. A literal line: **`PROMOTION IS A HUMAN DECISION — review before merging.`**
+
+## Turn budget
+
+You have a hard cap and no warning when it is reached — the process is killed
+mid-sentence. Spend it accordingly:
+
+- **Fix in severity order, highest first.** A weekend can carry nine findings;
+  you are not expected to close all of them. Three high-severity findings fixed
+  and verified, with the rest triaged in the PR body, is a good week.
+- **Push after every fix.** See step 3.
+- **When you judge yourself past the halfway mark**, stop starting new fixes.
+  Write the body, record the untouched findings with their triage, and finish.
+  An honest partial PR is the deliverable; a perfect one that never gets opened
+  is not.
 
 ## Hard rules
 

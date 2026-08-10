@@ -68,6 +68,27 @@ Findings are keyed by **month-day**, so the baseline is year-independent.
 | `rank-mismatch` | 9 | Both have a rank and they disagree |
 | `we-over-rank` | 3 | We claim a rank OCA puts below polyeleos |
 
+### Before the next batch: separate `vigil` the RANK from the Litya the SERVICE
+
+`calendar/entry.js:135` makes `vigil` swap the entire Vespers generator, so a
+rank correction also starts printing a Litya and Blessing of the Loaves. That
+single coupling is what has blocked every vigil finding here — 9 `missing-rank`
+plus 9 `rank-mismatch`, more than half the open list — because for a parish that
+does not serve a Vigil, the honest rank produces the wrong service.
+
+They are separate facts. The saint's rank drives paremias, the Magnification and
+festal propers; whether an All-Night Vigil is served is parish practice, and many
+OCA parishes never serve one whatever the saint's rank.
+
+**Make the Litya a parish policy** (never / vigil-rank days / Great Feasts only)
+read independently of `getFeastRank`. Then ranks can follow the OCA calendar and
+the service shape follows the parish. Doing this first turns 18 blocked findings
+into ordinary data entries and retires the 8-9 St Herman judgement call
+entirely. Doing it later means deciding those 18 one at a time, forever.
+
+Raised with the parish 2026-08-10 (`docs/choir-director-questions-2026-08-10.md`,
+question 6) — the one input needed is which days, if any, St John's serves a Litya.
+
 ### Order the batches by BLAST RADIUS, not by count
 
 The ranks are not equally risky, and the obvious ordering is wrong.
@@ -153,10 +174,14 @@ polyeleos during the 2026-08-07 audit. The OCA order document cannot settle it:
 Vigil is served whatever the saint's rank. Flipping the one date with the most
 human validation behind it on orthocal alone is inference over evidence.
 
-**1-1, Circumcision — we call it a Great Feast; it is not one of the Twelve.**
-It does have its own festal propers in `great-feast-variants.json`, so this looks
-like a deliberate project decision rather than an accident. Worth a ruling before
-anyone "fixes" it.
+**1-1, Circumcision — we call it a Great Feast; it is not one of the Twelve.
+RULED 2026-08-10: keep it.** It has its own antiphons, entrance hymn and
+megalynarion already authored and it co-celebrates with St Basil the Great;
+treating it as a Great Feast is defensible practice even though it sits outside
+the Twelve. orthocal puts it at level 6, which is vigil rank, and matching that
+would change the Vespers generator for no liturgical gain. **Do not "fix" this
+to match the oracle** — the divergence is intentional and this paragraph is the
+record of it.
 
 **`we-over-rank`** (7-11 Euphemia/Olga, 7-22 Mary Magdalene, 12-12 Spyridon) is
 the same shape: we rank them polyeleos, OCA puts them at six-stichera. Several

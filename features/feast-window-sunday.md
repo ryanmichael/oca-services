@@ -78,6 +78,24 @@ window, not only on the feast. `great-feast-variants.dormition.megalynarion`
 already held both halves the order prints — "The Angels, as they looked…" and
 "The limits of nature are overcome…".
 
+## The saint who cannot be promoted
+
+8-13 (Leavetaking of the Transfiguration + St Tikhon of Zadonsk) and 9-21
+(Leavetaking of the Elevation + Apostle Quadratus) were reported by the
+rank-coverage sweep as the same shape as 8-16, and both were explicitly left
+unfixed at the time: neither saint has stichera, so a `PRINCIPAL_OVERRIDES`
+entry would swap the feast's proper stichera for General-Menaion generics — a
+downgrade dressed up as a fix.
+
+They are **co-commemorated instead of promoted**. `FEAST_WINDOW_COCOMMEMORATIONS`
+names them by title substring; their troparion and kontakion — already in the DB,
+rendering nowhere, because `includeLesserSaints` is false and the window took the
+only slot — are sung ahead of the window's, which keeps "Now and ever…" and keeps
+its stichera. No rank change, no principal change, no new text.
+
+Quadratus has a troparion and no kontakion, and the output has one kontakion.
+Rendering only what exists is the contract.
+
 ## Known gaps on 8-16 — deliberate, not oversights
 
 - **The Image's prokeimenon (Tone 4) and alleluia (Tone 4).** The OCA order

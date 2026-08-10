@@ -370,6 +370,32 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const principalIsFeastWindow =
     !!menaionPrincipal && FEAST_CYCLE_TITLE.test(menaionPrincipal.title || '');
 
+  // Saints the OCA calendar ranks polyeleos who fall on a day whose principal
+  // is a feast window, and who have NO stichera of their own. A
+  // PRINCIPAL_OVERRIDES entry is the wrong tool for them: rebinding the
+  // principal would swap the feast's proper stichera for General-Menaion
+  // generics, which is a downgrade. But their troparion and kontakion are in
+  // the DB and were being dropped entirely, because `includeLesserSaints` is
+  // false by default and the window took the only slot.
+  //
+  // So they are co-commemorated rather than promoted — the saint's hymns are
+  // sung, the feast keeps its stichera and its "Now and ever…". Named by title
+  // substring, like PRINCIPAL_OVERRIDES; both were reported by the
+  // rank-coverage sweep as B! findings on 2026-08-08.
+  const FEAST_WINDOW_COCOMMEMORATIONS = new Map([
+    // Leavetaking of the Transfiguration + St Tikhon of Zadonsk
+    ['8-13', 'Tikhon, Bishop of Voronezh'],
+    // Leavetaking of the Elevation + Apostle Quadratus of the Seventy
+    ['9-21', 'Quadratus'],
+  ]);
+  const coCommemorations = (() => {
+    if (!principalIsFeastWindow || includeLesserSaints) return [];
+    const want = FEAST_WINDOW_COCOMMEMORATIONS.get(`${mo}-${dy}`);
+    if (!want) return [];
+    return (ranked?.all || []).filter(
+      c => c.id !== menaionPrincipal?.id && (c.title || '').includes(want));
+  })();
+
   // Now resolve primary/secondary readings. When orthocal returns a special-
   // cycle override as the primary, the regular Sunday-cycle reading is
   // suppressed; a co-celebrated saint reading further down survives. The
@@ -474,9 +500,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // "Troparion of Methodius of Peshnosha, Elisha of Suma, and Niphon of Athos, Tone 8:"
     // — matching OCA OOS practice when multiple saints share a hymn.
     if (ranked?.notable) {
+      // Co-commemorations lead: the window is sung last, at "Now and ever…".
       const sourceComms = includeLesserSaints
         ? ranked.notable
-        : (menaionPrincipal ? [menaionPrincipal] : []);
+        : [...coCommemorations, ...(menaionPrincipal ? [menaionPrincipal] : [])];
       const groups = new Map();  // key -> { tone, text, titles: [] }
       for (const comm of sourceComms) {
         const trop = comm.troparia.find(t => t.type === 'troparion');
@@ -518,7 +545,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       // rather than a saint slot — it must not become the Glory kontakion.
       const sourceComms = (includeLesserSaints
         ? ranked.notable
-        : (menaionPrincipal ? [menaionPrincipal] : [])
+        : [...coCommemorations, ...(menaionPrincipal ? [menaionPrincipal] : [])]
       ).filter(c => c.id !== feastCycleComm?.id);
       const groups = new Map();
       for (const comm of sourceComms) {

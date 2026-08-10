@@ -166,3 +166,45 @@ describe('Feature contract: feast-window Sunday troparia and kontakia', () => {
     assert.match(lines[nowIdx + 1] || '', /Kontakion-Theotokion/);
   });
 });
+
+describe('Feature contract: a ranked saint co-commemorated with a feast window', () => {
+
+  // 8-13 (Leavetaking of the Transfiguration + St Tikhon of Zadonsk) and 9-21
+  // (Leavetaking of the Elevation + Apostle Quadratus) are the two B! findings
+  // from the 2026-08-08 rank sweep that a PRINCIPAL_OVERRIDES entry could not
+  // fix: neither saint has stichera, so rebinding the principal would swap the
+  // feast's proper stichera for General-Menaion generics. Their troparia and
+  // kontakia were in the DB the whole time and rendered nowhere.
+
+  it('INV-8: 8-13 sings St Tikhon before the Leavetaking', async () => {
+    const { json } = await get('/api/liturgy?date=2026-08-13&format=json');
+    const trop = linesOf(json.blocks, 'Troparia').filter(l => /^Troparion/.test(l));
+    assert.match(trop[0], /Tikhon/, 'the saint is sung first');
+    assert.match(trop[1], /Leavetaking of the Transfiguration/,
+      'the feast window is sung last — it holds "Now and ever…"');
+    const kont = linesOf(json.blocks, 'Kontakia').filter(l => /^Kontakion/.test(l));
+    assert.match(kont[0], /Tikhon/);
+    assert.match(kont[1], /Leavetaking of the Transfiguration/);
+  });
+
+  it('INV-9: 9-21 sings Apostle Quadratus, and invents no kontakion he lacks', async () => {
+    const { json } = await get('/api/liturgy?date=2026-09-21&format=json');
+    const trop = linesOf(json.blocks, 'Troparia').filter(l => /^Troparion/.test(l));
+    assert.match(trop[0], /Quadratus/);
+    assert.match(trop[1], /Leavetaking of the Elevation/);
+    // Quadratus has a troparion in the DB but no kontakion. Rendering only what
+    // exists is the contract; a fabricated kontakion would be worse than none.
+    const kont = linesOf(json.blocks, 'Kontakia').filter(l => /^Kontakion/.test(l));
+    assert.equal(kont.length, 1);
+    assert.match(kont[0], /Leavetaking of the Elevation/);
+  });
+
+  it('INV-10: the co-commemoration list does not leak to other window dates', async () => {
+    // 8-12 is inside the same Transfiguration window with no listed saint; it
+    // must still render the feast alone.
+    const { json } = await get('/api/liturgy?date=2026-08-12&format=json');
+    const trop = linesOf(json.blocks, 'Troparia').filter(l => /^Troparion/.test(l));
+    assert.ok(trop.every(l => !/Tikhon/.test(l)),
+      'a co-commemoration bled onto a neighbouring date in the same window');
+  });
+});

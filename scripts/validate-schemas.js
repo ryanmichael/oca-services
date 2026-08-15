@@ -9,6 +9,10 @@
 //   node scripts/validate-schemas.js --quiet      # only summary
 //
 // Exit codes: 0 = all valid · 1 = schema violations · 2 = unexpected error.
+//
+// Beyond the per-file schemas this also runs a text-hygiene pass (see
+// checkQuoteBalance): a hymn whose quoted speech never closes is a scraper
+// artifact that no schema can see, because the shape is still a valid string.
 
 const fs   = require('fs');
 const path = require('path');
@@ -34,6 +38,48 @@ function listJsonFiles(dir) {
   return out;
 }
 
+/**
+ * Text hygiene: quoted speech in a hymn must close.
+ *
+ * On 2026-08-15 the Tone-2 resurrectional troparion — sung at every Tone-2
+ * Sunday Liturgy and Saturday Vespers — rendered as
+ *   …all the powers of heaven cried out:
+ *   "O Giver of life, Christ our God, glory to Thee!
+ * with no closing quote. Eight more Octoechos hymns carried the same dropped
+ * character. Every one of them passed schema validation, because a truncated
+ * string is still a string; only reading the rendered text caught it.
+ *
+ * Straight double quotes are a hard failure — the corpus is clean of them and
+ * a new one means a scraper dropped a character. Curly quotes are reported as
+ * warnings only: twelve strings imported from a non-OCA source carry tangled
+ * “…” runs that need per-string editorial judgment, not a mechanical repair,
+ * and gating on them would block unrelated work. Fix them and they stop
+ * warning; the count is meant to shrink.
+ */
+function checkQuoteBalance(rel, node, at, errors, warnings) {
+  if (typeof node === 'string') {
+    if ((node.match(/"/g) || []).length % 2 === 1) {
+      errors.push({ rel, at, text: node });
+    } else if ((node.match(/“/g) || []).length !== (node.match(/”/g) || []).length) {
+      warnings.push({ rel, at, text: node });
+    }
+    return;
+  }
+  if (!node || typeof node !== 'object') return;
+  for (const [k, v] of Object.entries(node)) checkQuoteBalance(rel, v, `${at}.${k}`, errors, warnings);
+}
+
+function reportQuote(list, heading, quiet) {
+  if (!list.length || quiet) return;
+  console.log('');
+  console.log(heading);
+  for (const q of list.slice(0, 15)) {
+    console.log(`    ${q.rel} ${q.at}`);
+    console.log(`      …${q.text.replace(/\n/g, ' ').slice(-90)}`);
+  }
+  if (list.length > 15) console.log(`    … +${list.length - 15} more`);
+}
+
 function main() {
   const args  = process.argv.slice(2);
   const quiet = args.includes('--quiet');
@@ -44,6 +90,7 @@ function main() {
 
   let total = 0, valid = 0, skipped = 0, errs = 0;
   const fails = [];
+  const quoteErrors = [], quoteWarnings = [];
 
   for (const root of ROOTS) {
     const abs = path.join(REPO_ROOT, root);
@@ -57,6 +104,7 @@ function main() {
         continue;
       }
       total++;
+      checkQuoteBalance(rel, content, '', quoteErrors, quoteWarnings);
       const schemaPath = resolveSchema(rel);
       if (!schemaPath) { skipped++; continue; }
 
@@ -88,7 +136,16 @@ function main() {
     console.log(`schema validate: ${valid}/${total} pass, ${errs} fail, ${skipped} unmapped`);
   }
 
-  process.exit(errs ? 1 : 0);
+  reportQuote(quoteErrors,
+    `✗ ${quoteErrors.length} string(s) with unclosed quoted speech (straight quotes):`, quiet);
+  reportQuote(quoteWarnings,
+    `⚠ ${quoteWarnings.length} string(s) with unbalanced curly quotes (pre-existing import noise, not gated):`,
+    quiet);
+  if (quiet) {
+    console.log(`quote balance: ${quoteErrors.length} unclosed, ${quoteWarnings.length} curly warning(s)`);
+  }
+
+  process.exit(errs || quoteErrors.length ? 1 : 0);
 }
 
 try { main(); }

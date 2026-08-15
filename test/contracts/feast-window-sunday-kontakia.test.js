@@ -199,6 +199,31 @@ describe('Feature contract: a ranked saint co-commemorated with a feast window',
     assert.match(kont[0], /Leavetaking of the Elevation/);
   });
 
+  it('INV-11: 8-16 sings the Image\'s second prokeimenon and alleluia', async () => {
+    // The order appoints two of each: Resurrection Tone 2, then the Image
+    // Tone 4. Until 2026-08-15 only the Sunday pair rendered, because the OCA
+    // order names the Image's by incipit alone ("Sing to the Lord a new
+    // song…") and no fuller text was on hand. The text now comes from the AT
+    // LITURGY section of the St Sergius menaion, the same book as the Image's
+    // troparion and kontakion.
+    const { json } = await get('/api/liturgy?date=2026-08-16&format=json');
+
+    const prok = json.blocks.filter(b => b.section === 'Prokeimenon');
+    const prokSung = prok.filter(b => b.type === 'hymn');
+    assert.ok(prokSung.some(b => b.tone === 2), 'the Sunday Tone 2 prokeimenon still leads');
+    const image = prokSung.find(b => b.tone === 4);
+    assert.ok(image, 'the Image\'s Tone 4 prokeimenon is sung');
+    assert.match(image.text, /new song/,
+      'and it is the "new song" text the order names — NOT the Matins ' +
+      'prokeimenon, which is a different verse in the same tone');
+
+    const all = json.blocks.filter(b => b.section === 'Alleluia');
+    assert.ok(all.some(b => /^Tone 4/.test(b.text || '') && b.type === 'rubric'),
+      'the Image\'s Tone 4 alleluia is announced');
+    assert.ok(all.some(b => b.type === 'verse' && /light of Thy face/.test(b.text || '')),
+      'and its verse is sung');
+  });
+
   it('INV-10: the co-commemoration list does not leak to other window dates', async () => {
     // 8-12 is inside the same Transfiguration window with no listed saint; it
     // must still render the feast alone.

@@ -3,34 +3,13 @@
 11th Sunday after Pentecost · **Tone 2** · Afterfeast of the Dormition ·
 Translation of the Image "Not-Made-by-Hands"
 
-Three things the printed sheet leaves out, one thing that changed since last
+One thing the printed sheet still leaves out, two things that changed since last
 week, and one question. The rest of the service is complete and matches the OCA
 order for the day.
 
 ---
 
-## 1. Three gaps — you'll need your own books
-
-### The second prokeimenon and the second alleluia are not printed
-
-The sheet gives the Sunday pair only:
-
-> Prokeimenon, Tone 2 — "The Lord is my strength and my song…"
-> Alleluia, Tone 2
-
-The OCA order appoints a **second set for the Image, both Tone 4** — the
-prokeimenon beginning **"Sing to the Lord a new song…"**
-
-We don't print them because the OCA order names them by their opening words
-only, and I haven't been able to find the full verses in any source we have. I'd
-rather leave a visible hole than print something invented. **If you have them in
-a book, I'd be glad to have them** — send me the text and the psalm reference and
-they'll be on the sheet permanently.
-
-> ⚠️ One warning, in case you go looking in our system: the Image *does* have a
-> Tone 4 prokeimenon printed at **Matins** ("O Lord, in the light of Thy face
-> shall we walk…"). That is a different text. The matching tone number makes it
-> look like the answer and it isn't.
+## 1. One gap — you'll need your own book
 
 ### Two Beatitude troparia are missing
 
@@ -46,6 +25,26 @@ verse earlier, at *"Blessed are the poor in spirit."*
 ---
 
 ## 2. What changed this week
+
+**Both second propers now print.** The OCA order appoints a second prokeimenon
+and a second alleluia for the Image, both **Tone 4**, alongside the Sunday Tone 2
+pair. Until today neither printed — the order names them by their opening words
+only. They're now on the sheet, from the St Sergius menaion:
+
+> **Prokeimenon, Tone 4:** O sing unto the Lord a new song, for the Lord hath
+> wrought wondrous things.
+>
+> **Alleluia, Tone 4:** O Lord, in the light of Thy face shall we walk, and in
+> Thy name shall we rejoice unto the ages.
+
+Two notes on these. The wording is that book's rather than the OCA's ("hath
+wrought" where OCA would likely say "has done") — the same book our Image
+troparion and kontakion already come from, so the sheet is at least consistent
+with itself. **If you'd rather sing an OCA rendering, say so and I'll swap them.**
+
+And if the alleluia verse looks familiar, it should: it's word-for-word the
+prokeimenon we print at **Matins**. That's not an error on either end — the book
+prints the same verse in both places.
 
 **The Beatitudes are blended now.** Until this morning we printed the plain
 Octoechos set — six resurrection troparia, then Glory and the Theotokion. The

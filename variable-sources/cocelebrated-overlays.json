@@ -76,11 +76,24 @@
     }
   },
   "8-16": {
-    "_note": "Translation of the Image Not-Made-by-Hands from Edessa to Constantinople, the third \"Feast of the Savior in August\" (8-16), which falls inside the Afterfeast of the Dormition. The OCA order for 2026-08-16 gives it its own troparion, kontakion, prokeimenon, alleluia and communion hymn alongside the Sunday and Dormition propers; before this entry none of them rendered. Troparion and kontakion are the menaion's own (variable-sources/menaion/august-16.json). The kontakion lands at \"Glory...\" immediately before the Dormition window's, which holds \"Now and ever...\" -- see the feastCycle branch in liturgy-from-orthocal.js. GAPS: the OCA order names the Image's prokeimenon (Tone 4, \"Sing to the Lord a new song...\") and alleluia (Tone 4) by incipit only, and no authoritative verse text is on hand, so neither is authored here rather than invented. The Sunday Tone-2 prokeimenon and alleluia render alone until those arrive.",
+    "_note": "Translation of the Image Not-Made-by-Hands from Edessa to Constantinople, the third \"Feast of the Savior in August\" (8-16), which falls inside the Afterfeast of the Dormition. The OCA order for 2026-08-16 gives it its own troparion, kontakion, prokeimenon, alleluia and communion hymn alongside the Sunday and Dormition propers; before this entry none of them rendered. Troparion and kontakion are the menaion's own (variable-sources/menaion/august-16.json). The kontakion lands at \"Glory...\" immediately before the Dormition window's, which holds \"Now and ever...\" -- see the feastCycle branch in liturgy-from-orthocal.js. Prokeimenon and alleluia added 2026-08-15 from the AT LITURGY section of the St Sergius menaion (https://st-sergius.org/services/Emenaion/08-16.pdf), the same book the troparion and kontakion above come from -- the OCA order names them by incipit only (\"Sing to the Lord a new song...\") and the 233-doc order archive has no fuller text, this feast having fallen on a Sunday only once in its range. NOTE for anyone cross-checking: the alleluia verse below is word-for-word the Matins prokeimenon in august-16.json. That is not a mis-key -- the Sergius book prints the same verse in both places. It is, however, exactly the near-miss that makes the MATINS prokeimenon look like a candidate for the LITURGY prokeimenon, which it is not: the Liturgy prokeimenon is the \"new song\" text.",
     "troparion": {
       "tone": 2,
       "rubric": "Troparion of the Image Not-Made-by-Hands, Tone 2:",
       "text": "We bow down before Thy most pure image, O Good One, asking forgiveness of our transgressions, O Christ God; for of Thine own will Thou wast well pleased to ascend the Cross in the flesh, that Thou mightest deliver from slavery to the enemy those whom Thou hadst fashioned. Wherefore, we cry to Thee in thanksgiving: Thou hast filled all things with joy, O our Savior, when Thou camest to save the world."
+    },
+    "prokeimenon": {
+      "tone": 4,
+      "label": "Translation of the Image Not-Made-by-Hands",
+      "refrain": "O sing unto the Lord a new song, for the Lord hath wrought wondrous things.",
+      "verse": "All the ends of the earth have seen the salvation of our God."
+    },
+    "alleluia": {
+      "tone": 4,
+      "label": "Translation of the Image Not-Made-by-Hands",
+      "verses": [
+        "O Lord, in the light of Thy face shall we walk, and in Thy name shall we rejoice unto the ages."
+      ]
     },
     "kontakion": {
       "tone": 2,

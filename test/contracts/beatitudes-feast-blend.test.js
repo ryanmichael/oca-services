@@ -131,6 +131,50 @@ describe('Feature contract: blended Beatitudes on a feast-window Sunday', () => 
       'the Octoechos Trinitarian Glory troparion is not sung when the feast supplies the tail');
   });
 
+  it('INV-7: each troparion falls on the stichos the order appoints', async () => {
+    // The invariant the first version of this contract was missing. It asserted
+    // the COUNT and the SEQUENCE of the troparia, both of which were right, and
+    // passed while all four Resurrection troparia sat two stichoi late —
+    // reported from the kliros on 2026-08-16.
+    //
+    // The renderer right-aligns troparia into the twelve slots, so a list short
+    // of its appointed length slides everything before the gap. Ten troparia
+    // where twelve are appointed must therefore hold the two missing slots open
+    // (see `missing` in FEAST_BEATITUDES_BLENDS), not shift.
+    const { json } = await get('/api/liturgy?date=2026-08-16&format=json');
+    const blocks = json.blocks.filter(b => b.section === 'Third Antiphon');
+
+    // Map each sung troparion to the verse or doxology it follows.
+    const onStichos = new Map();
+    let current = null;
+    for (const b of blocks) {
+      if (b.type === 'verse' || b.type === 'doxology') current = b.text || '';
+      else if (b.type === 'hymn' && current !== null) onStichos.set(current, b.label || '');
+    }
+    const at = (fragment) => {
+      const key = [...onStichos.keys()].find(k => k.includes(fragment));
+      return key === undefined ? null : onStichos.get(key);
+    };
+    const sung = (fragment) =>
+      [...onStichos.keys()].some(k => k.includes(fragment));
+
+    assert.match(at('poor in spirit') || '', /Resurrection/,
+      'the first Beatitude verse carries the first Resurrection troparion');
+    assert.match(at('mourn') || '', /Resurrection/);
+    assert.match(at('meek') || '', /Resurrection/);
+    assert.match(at('hunger') || '', /Resurrection/);
+
+    // The two the corpus lacks: appointed here, and deliberately silent.
+    assert.equal(sung('merciful'), false,
+      'the Dormition 1st-canon slot is held open, not filled by a shifted troparion');
+
+    assert.match(at('peacemakers') || '', /Dormition/,
+      'the Dormition 2nd-canon pair begins on the seventh stichos');
+    assert.match(at('persecuted') || '', /Dormition/);
+    assert.match(at('revile') || '', /Image/);
+    assert.match(at('Rejoice') || '', /Image/);
+  });
+
   it('INV-5: the blend does not leak to a neighbouring Sunday in the same window', async () => {
     // 8-23 is the Leavetaking of the Dormition — same window, no Image, and its
     // order appoints no blended Beatitudes.

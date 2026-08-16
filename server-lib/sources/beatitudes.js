@@ -36,7 +36,18 @@ const FEAST_BEATITUDES_OVERRIDES = {
  *  `beatitudesReplaceGloryNow` above, which does this for a single file.
  *
  *  `parts` are appended in order, each naming a file and a dot-path to a canon
- *  ode. `take` caps how many of that ode's troparia are used. */
+ *  ode. `take` caps how many of that ode's troparia are used.
+ *
+ *  A part with `missing: N` instead of a file reserves N slots for troparia the
+ *  corpus does not have. This matters because the renderer RIGHT-ALIGNS the
+ *  troparia into the twelve Beatitude slots: a list short by two doesn't leave
+ *  its hole where the missing texts belong, it slides everything before the hole
+ *  two stichoi later. On 2026-08-16 that put all four Resurrection troparia on
+ *  the wrong verses while the Dormition and Image ones happened to land right —
+ *  reported from the kliros the same morning. Reserving the slots keeps the list
+ *  at its appointed length so every troparion falls where the order puts it, and
+ *  the reserved entries render as nothing (the renderer skips a group with a
+ *  count and no text, and files a warning so the gap stays visible). */
 const FEAST_BEATITUDES_BLENDS = {
   // Sunday 8-16: Afterfeast of the Dormition + Translation of the Image
   // Not-Made-by-Hands. reference/orders/2026-0816-order-services.txt appoints
@@ -45,13 +56,15 @@ const FEAST_BEATITUDES_BLENDS = {
   //
   // GAP: the 1st canon's Ode 1 troparia are NOT in the corpus — the Dormition
   // canon in variable-sources/menaion/august-15.json carries irmos + irmos2 for
-  // every ode and no troparia at all. So this blend renders 10 of the appointed
-  // 12. Do not paper over the hole by padding from the 2nd canon: the two canons
-  // are different compositions (Cosmas T1, John of Damascus T4) and the order
-  // names them separately.
+  // every ode and no troparia at all. So this blend sings 10 of the appointed
+  // 12, with the two it lacks held open in their proper place. Do not paper over
+  // the hole by padding from the 2nd canon: the two canons are different
+  // compositions (Cosmas T1, John of Damascus T4) and the order names them
+  // separately.
   '8-16': {
     octoechosTroparia: 4,
     parts: [
+      { missing: 2, tone: 1, label: 'For the Dormition (1st canon)' },
       { file: 'variable-sources/feast-canons/dormition.json',
         at: 'ode1', tone: 4, label: 'For the Dormition' },
       // Ode 6 troparia 1-4 are Canon I (Tone 4), which is what the order names;
@@ -69,6 +82,13 @@ const FEAST_BEATITUDES_BLENDS = {
 function loadBlendParts(parts) {
   const out = [];
   for (const part of parts || []) {
+    if (part.missing) {
+      // No text, only a reservation. `count` with no `text` is the renderer's
+      // existing shape for "this slot is appointed but unsourced".
+      out.push({ tone: part.tone, label: part.label, source: 'feast',
+        count: part.missing, reserved: true });
+      continue;
+    }
     const filePath = path.join(ROOT, part.file);
     let ode;
     try {

@@ -131,6 +131,14 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
       // (entry kept with text=null so the slot is skipped silently when
       // rendered); in dev the indexed placeholder is emitted to make the gap
       // obvious to the author.
+      //
+      // `reserved` opts out of that dev placeholder. An unsourced slot is one of
+      // two different things: work in progress, where a loud [Text to be
+      // sourced.] is exactly right; or a text known not to exist in any book we
+      // hold, which must simply be silent while still OCCUPYING its slot, since
+      // the right-alignment below would otherwise slide every earlier troparion
+      // onto the wrong stichos. Only the first should depend on NODE_ENV — what
+      // a parish sings must not.
       warnings.push({ source: 'spec', key: 'liturgy.beatitudes', scope: section,
         detail: `troparion group "${group.label || ''}" has count=${group.count} but no text` });
       for (let n = 0; n < (group.count || 1); n++) {
@@ -138,7 +146,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
           tone:   group.tone,
           label:  group.label || '',
           source: group.source || '',
-          text:   IS_PRODUCTION ? null
+          text:   (IS_PRODUCTION || group.reserved) ? null
                   : `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
         });
       }

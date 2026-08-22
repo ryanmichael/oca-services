@@ -33,6 +33,16 @@ Downstream of the same cause, all on 8-22:
 - Glory is a generic Tone 6; the order wants the Feast, Tone 1
 - Aposticha splits "Glory… now and ever… Feast, Tone 4", which the order joins
   on one hymn, and gives Now-and-ever a generic Octoechos Theotokion
+- Closing troparia do the same: the order reads "Glory… now and ever… Troparion
+  of the Feast, Tone 1", one hymn for both, and we print the feast troparion at
+  Glory then ADD a Resurrectional Dismissal Theotokion at Now-and-ever
+
+  That is **three** places on one sheet where we split a "Glory… now and ever…"
+  the order joins. On a leavetaking the feast claims both halves and displaces
+  the Theotokion entirely — worth fixing as its own sub-rule, since it is a
+  shape, not three separate bugs. NB this is NOT the recorded
+  `dismissal-theotokion-keyed-by-troparion-tone` divergence, which is about
+  which TONE the Theotokion takes, not whether one appears at all.
 
 **8-30 Liturgy (leavetaking of the Beheading).** The Forerunner's troparion
 (Tone 2) and kontakion (Tone 5) are missing; the order appoints both. We render

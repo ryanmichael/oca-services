@@ -4,7 +4,11 @@ _Updated by Orchestrator at the end of each session. Edit priorities directly to
 ---
 
 ## 🔴 In Progress
-_Nothing in progress yet._
+
+**This board is stale (last real update 2026-03-11).** The live work list is
+[`docs/backlog-august-2026-service-review.md`](docs/backlog-august-2026-service-review.md)
+— 10 items from the 2026-08-22 review of the 8-23 and 8-30 weekends, grouped by
+root cause. Start there.
 
 ---
 

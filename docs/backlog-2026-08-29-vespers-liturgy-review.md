@@ -176,27 +176,53 @@ Do not add a fourth rule next to three that do not work.
 
 ---
 
-## P1 — N5. CONFIRMS 8-22 item 5 — propers we add that the order does not appoint
+## P0 — N5. A parish's explicit rubric opt-out is silently inverted
 
-**⇢ likely many ordinary Sundays with a ranked saint**
+**NEW root cause (was filed as a policy question) · ⇢ every parish that sets it**
 
-Re-verified live at the 8-30 Liturgy. The order gives the Resurrection set alone;
-we add all three:
+Originally filed as "propers we add that the order does not appoint", a decision
+rather than a bug. It is a bug, and a sharp one.
 
-| We add | Order |
-|---|---|
-| Prokeimenon Tone 1 (St Alexander) | Resurrection T4 only |
-| Alleluia Tone 2 (St Alexander) | Resurrection T4 only |
-| Koinonikon "The righteous shall be in everlasting remembrance" | "Praise the Lord from the heavens" only |
+Tyler has **explicitly opted out**: `parish_settings.rubric_include_second_koinonikon = 0`.
+They still get the second koinonikon.
 
-Note the shape this makes with N2: on the same service we **over-serve a
-simple-rank saint** with full second propers while **dropping the afterfeast
-entirely**. Worth deciding together — they are the same resolver making opposite
-errors about who ranks.
+`scripts/capture-rubrics-snapshot.js:21` writes the key only when the value is
+truthy:
 
-Still a decision, not yet a bug. 8-22's framing holds: scope the `gmp` fallback,
-or record it in `audit/judge-known-divergences.json` with a reason. **A gap we
-have not got around to is not a divergence.**
+```js
+if (row.rubric_include_second_koinonikon)
+  r.readings = { ...(r.readings || {}), includeSecondKoinonikon: true };
+```
+
+So a stored `0` — an explicit *no* — is indistinguishable in the snapshot from
+"never configured". The consumer's contract is deliberately **tri-state**
+(`liturgy-from-orthocal.js:189-191`):
+
+```js
+const overlayKoinonikonOptIn  = opts.includeSecondKoinonikon === true;   // opt-in
+const secondKoinonikonAllowed = opts.includeSecondKoinonikon !== false;  // opt-out
+```
+
+`undefined !== false` is `true`, so **the parish's "no" is read as "yes".**
+
+**Proof the mechanism is otherwise sound:** `?secondKoinonikon=hide` on the same
+request removes the hymn. Only the stored setting fails to arrive.
+
+Specific to this field — the other rubrics (`includeLesserSaints`,
+`includeSecondGospel`) are consumed with `!!`, where `0 → absent → false` is
+harmless. **Tri-state semantics on one side, truthy-flattening on the other.**
+
+**Fix:** emit the key whenever the column is non-null, carrying its real boolean,
+rather than only when truthy.
+
+**Rule that closes it:** round-trip every `parish_settings.rubric_*` column
+through the snapshot and assert the value survives. A rubric a parish has set to
+0 must arrive as `false`, not as absent.
+
+**Still a separate question:** whether the second *prokeimenon* and *alleluia*
+should render at all on this date (the order gives the Resurrection set alone).
+Those are not gated by this rubric, and remain the policy question originally
+filed here.
 
 ---
 
@@ -242,7 +268,7 @@ not just digits.
 
 ---
 
-## P0 — N8. We render the wrong Saints' troparion, and omit the parish patron
+## P0 — N8. We render the wrong Saints' troparion
 
 **NEW · found by reading the choir director's books, not the audit · ⇢ 8-30 + the
 patron case is every parish, every Sunday**
@@ -268,21 +294,28 @@ both Vespers and the Liturgy.
 the joint commemoration. **Decide which is canonical before writing** — do not
 repeat this morning's mistake of reasoning from convention instead of the source.
 
-**(b) The parish patron is omitted entirely.** The order appoints "Troparion of
-the Church (if of Theotokos or Patron Saint)" and "Kontakion of the Church (if of
-Patron Saint)". Tyler's patron is St John of Damascus
-(`parish_settings.patron_natural_key = 12-04/john-of-damascus`), and their book
-carries his Kontakion, Tone 4 ("Let us praise the illustrious hymnographer
-John…"). We emit no patron troparion or kontakion at all. See
-`[[project_patron_of_temple]]` — the `features/` spec exists; it is not wired into
-the Liturgy troparia/kontakia chain.
+**(b) RETRACTED — the patron IS wired, and correctly.** This entry originally
+claimed the patron was omitted from every Sunday Liturgy for every parish. That
+was false, and caused entirely by my own probe: I rendered
+`/api/liturgy?date=2026-08-30` **without `translation=`**, so
+`overlayRubrics.temple` was empty and the patron branch never ran. Rendering the
+parish stack gives exactly what the director's book has:
 
-This is not 8-30-specific. **Every parish named for a saint is missing its own
-patron from every Sunday Liturgy.**
+```
+Troparion of the Patron of the Temple, Venerable John of Damascus, Tone 3
+Kontakion of the Patron of the Temple, Venerable John of Damascus, Tone 4
+```
 
-**Rule that closes it:** for a parish with a `patron_natural_key`, the Liturgy
-troparia and kontakia must contain the patron's hymns, or explicitly record why
-not (the order brackets them only for a church named for the Theotokos).
+`api-liturgy.js:149-230` inserts the troparion after the Resurrection troparion on
+Sundays, and the kontakia restructure selects the Glory slot **by what is
+celebrated that day** — principal feast → the day's saint takes Glory and the
+patron drops; simple-rank Sunday → the patron takes Glory. Working as designed.
+
+**The lesson is the finding.** An OCA-base render cannot evaluate anything
+parish-conditioned, and I reported an absence produced by my own missing query
+parameter as a systemic gap. `[[feedback_verification_false_greens]]` covers the
+inverse case; this is the same error pointed the other way — **prove the probe can
+SEE the thing before reporting that it is missing.**
 
 ---
 
@@ -298,7 +331,8 @@ Read against the four PDFs in `docs/8-29/`:
 | Liturgy Troparia | Res T4 → **Forerunner T2** → Saints T4 | Res T4 → Saints T4 | **N2** |
 | Liturgy Kontakia | Res T4 → **Forerunner T5** → … | Res T4 → Saints T8 → Protectress | **N2** |
 | Saints' troparion | "O God of our Fathers… Alexander, John, and Paul" | "Christ, the God over all… Alexander" | **N8a** |
-| Patron kontakion | St John of Damascus, T4 | absent | **N8b** |
+| Patron troparion + kontakion | St John of Damascus | ✓ (with `translation=`) | correct — N8b retracted |
+| Liturgy 2nd koinonikon | parish opted out | rendered anyway | **N5** |
 
 **The Aposticha Glory fix landed on the right hymn** — independently confirmed by
 the director's book, which was not consulted when the fix was made.

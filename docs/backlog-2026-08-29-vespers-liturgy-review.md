@@ -1023,3 +1023,33 @@ guards green.
 
 **N15 defects 2 and 3 remain open** (the drift rule whose advice deletes the
 hymn; the source-faithful label that renders as the feast's title).
+
+
+---
+
+## N1 sweep progress — 7 of 15 dates (8-12, 1-13, 1-22, 4-26, 4-28, 5-09, 6-25)
+
+Burn-down list **17 → 8**. Preserved rows in `audit/misparsed-troparia-rows.json`: 13.
+
+**A third sub-shape appeared on 5-09.** Where the source reads "Glory ..., Both
+now ..., from the Pentecostarion", the Menaion supplies **no** Glory at all, so
+the repair is delete-only and leaving `order=0` empty is the correct outcome —
+the Pentecostarion owns that slot. Getting this wrong in the other direction
+(inventing a Glory) would have been the more natural mistake.
+
+### N15 defect 4 — a combined "Glory ..., Both now ..." off a Great Feast
+
+6-25 sings ONE hymn at both connectors: "Glory ..., Both now ..., in Tone VI:
+Elizabeth conceived the forerunner of grace". The assembler only sets
+`combinesGloryNow` for a Great Feast, so the hymn renders at the Glory and the
+Now still falls to the Octoechos Theotokion — one hymn too many. The row is
+correct; the connector logic has no way to express the combination outside a
+Great Feast. Sibling of N15 defect 1.
+
+### Tone scrambling is systematic, not incidental
+
+Three dates now show it: 1-13 row 8275 stored at Tone 8, 6-25 row 8737 at Tone 6
+— in both cases the tone of the *real Glory the row displaced*, not the tone in
+the row's own rubric. So the parser carried the slot's tone onto whatever text
+landed there. Any future repair must take the tone from the source rubric, never
+from the existing row.

@@ -1,0 +1,32 @@
+{
+ "key": "psalm-33",
+ "_version": 1,
+ "_label": "Psalm 33 at the antidoron",
+ "_target": {
+  "service": "liturgy",
+  "path": "psalm-33.verses"
+ },
+ "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+ "_note": "Base `liturgy-fixed.json` ships all 22 verses one per line, with `shortFormAfter: 10` marking the traditional short-form endpoint, so a parish reads as many as its antidoron distribution needs without per-parish logic. A variant here is for a parish whose BOOK prints a different set or different wording. Note the target is a whole-array replacement: a variant does not select from the base verses, it replaces them. With fewer than 10 verses the `shortFormAfter` divider never fires, which is correct — the variant's verses are the whole reading.",
+ "variants": [
+  {
+   "id": "short-6-verse",
+   "label": "Short form (6 verses)",
+   "_provenance": {
+    "origin": "parish-submission",
+    "contributor": "admin",
+    "date": "2026-08-29",
+    "source_citation": "St. John of Damascus, Tyler — Divine Liturgy book, Psalm 33 at the antidoron"
+   },
+   "_note": "Six verses corresponding to base verses 1, 2, 3, 8, 9 and 10. Base verses 4-7 ('I sought the Lord', 'Come unto Him', 'This poor man cried', 'The angel of the Lord') and 11-22 are NOT rendered by a parish on this variant — confirmed deliberate with the user on 2026-08-29, after diffing against the base per the standing rule that a variant REPLACES rather than selects. See memory project_variant_replace_not_select.",
+   "value": [
+    "I will bless the Lord at all times. His praise shall be continuously in my mouth.",
+    "In the Lord my soul shall make her boast. Let the meek hear and be glad.",
+    "Oh magnify the Lord with me and let us exalt His name together.",
+    "Taste and see that the Lord is good. Blessed is the man who hopeth in Him.",
+    "Fear the Lord all ye His saints. For there is no lack for them that fear Him.",
+    "The rich have become poor and hungry, but they that seek the Lord shall not want any good thing."
+   ]
+  }
+ ]
+}

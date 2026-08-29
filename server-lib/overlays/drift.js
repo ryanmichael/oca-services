@@ -758,38 +758,12 @@ const RUBRIC_BLEED_PATTERNS = [
 // prose, narrow RUBRIC_BLEED_PATTERNS instead of adding an exception here.
 const KNOWN_RUBRIC_BLEED = new Set([]);
 
-// The burn-down list is a DIFFERENT thing and must not be confused with the
-// suppression set above. These rows are known-bad, itemized and dated; the
-// check prints every one of them on every run and only declines to fail the
-// gate on them. A row here is a debt with a name, not a silenced finding.
-//
-// Opened 2026-08-29 with the N4 pattern repair. Each needs a per-row check
-// against the St Sergius source before it can be fixed — the fix is NOT
-// mechanical: of the 14 that are whole troparia mis-parsed into `stichera`,
-// only 2 duplicate a troparion that already exists elsewhere in the corpus, so
-// 12 cannot be resolved by deletion alone. Tracked as N1 in
-// docs/backlog-2026-08-29-vespers-liturgy-review.md. Do not bulk-delete on the
-// pattern; several sit on feast dates where the eviction changes what is sung.
-//
-// To close one: fix the row, then delete its id from this list. When the list
-// is empty, delete the list and the `deferred` branch with it.
-const RUBRIC_BLEED_BURNDOWN = new Map([
-  [6971, 'N1 — 1-30 Ecumenical Teachers, aposticha order=0 (Glory slot)'],
-  // 8275, 8276 (1-13) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0113-aposticha.sql
-  // 8320 (1-22) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0122-aposticha.sql
-  // 8530 (4-26) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0426-0428-lordicall.sql
-  // 8537 (4-28) FIXED 2026-08-29 — same migration
-  // 8564 (5-09) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0509-0625.sql
-  // 8738 (6-25) FIXED 2026-08-29 — same migration
-  // 8852 (7-18) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0718-0903-1011.sql
-  // 8950, 8951 (8-12) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0812-aposticha.sql
-  // 9067 (9-03) FIXED 2026-08-29 — same migration
-  // 9253 (10-11) FIXED 2026-08-29 — same migration
-  // 9274 (10-15) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-final-four.sql
-  // 9305 (10-22) FIXED 2026-08-29 — same migration
-  // 9352 (11-04) FIXED 2026-08-29 — same migration
-  // 9377 (11-07) FIXED 2026-08-29 — same migration
-]);
+// The N1 burn-down list lived here from 2026-08-29 until it was paid off the
+// same day — all 17 rows repaired across 15 dates, plus 13 more the patterns
+// could not see. It was an itemized, dated, PRINTED list that failed the gate
+// only for new rows, deliberately unlike the silent suppression set above; a
+// stale-entry check kept it from outliving the debt. Recover it from git if a
+// future sweep needs the shape: `git show <this-commit>^:server-lib/overlays/drift.js`.
 
 // Rubric prose glued into sung stichera/troparia text. Fires on the scrape
 // artifacts that survived ingestion; each hit is a row a choir would read aloud.
@@ -799,8 +773,6 @@ function validateRubricBleed() {
   if (!db) return { ok: true, warnings: 0 };
   try {
     let warnings = 0;
-    let deferredCount = 0;
-    const seenDeferred = new Set();
     for (const tbl of ['troparia', 'stichera']) {
       const exists = db.prepare(
         "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
@@ -808,7 +780,6 @@ function validateRubricBleed() {
       if (!exists) continue;
       for (const r of db.prepare(`SELECT id, text FROM ${tbl}`).all()) {
         if (tbl === 'stichera' && KNOWN_RUBRIC_BLEED.has(r.id)) continue;
-        if (tbl === 'stichera' && RUBRIC_BLEED_BURNDOWN.has(r.id)) seenDeferred.add(r.id);
         // A row too short to be a hymn is a bare rubric fragment the scrape left
         // behind ("Doxasticon from the Pentecostarion.", ", or Stavrotheotokion.").
         // These render AS the hymn when they land in a Glory or Theotokion slot —
@@ -825,16 +796,6 @@ function validateRubricBleed() {
         }
         for (const [re, what] of RUBRIC_BLEED_PATTERNS) {
           if (!re.test(r.text)) continue;
-          const deferred = tbl === 'stichera' && RUBRIC_BLEED_BURNDOWN.get(r.id);
-          if (deferred) {
-            // Printed, never silent — but does not fail the gate.
-            console.warn(
-              `${tbl} ${r.id} has rubric bleed (${what}) — DEFERRED: ${deferred}. ` +
-              `"${r.text.replace(/\s+/g, ' ').slice(0, 60)}…"`
-            );
-            deferredCount += 1;
-            break;
-          }
           console.warn(
             `${tbl} ${r.id} has rubric bleed (${what}) inside sung text: ` +
             `"${r.text.slice(0, 70)}…". Fix: strip the rubric; if it introduces a ` +
@@ -846,24 +807,7 @@ function validateRubricBleed() {
         }
       }
     }
-    // A burn-down entry whose row no longer trips any pattern is stale — it was
-    // fixed (or deleted) and the list was not updated. Say so, so the list
-    // cannot quietly outlive the debt it records.
-    const stale = [...RUBRIC_BLEED_BURNDOWN.keys()].filter(id => !seenDeferred.has(id));
-    if (stale.length) {
-      console.warn(
-        `RUBRIC_BLEED_BURNDOWN lists ${stale.length} row(s) that no longer trip any ` +
-        `pattern (${stale.join(', ')}) — fixed already? Remove them from the list.`
-      );
-      warnings += stale.length;
-    }
-    if (warnings === 0) {
-      console.log(
-        deferredCount === 0
-          ? 'Rubric bleed in sung text: clean.'
-          : `Rubric bleed in sung text: no new findings (${deferredCount} deferred, tracked as N1).`
-      );
-    }
+    if (warnings === 0) console.log('Rubric bleed in sung text: clean.');
     return { ok: warnings === 0, warnings };
   } finally {
     db.close();
@@ -1232,6 +1176,12 @@ const KNOWN_MIXED_SOURCE_COMMS = new Set([
   487,  // 42 Martyrs of Ammoria — day LIC + St-Sergius Glory/Aposticha (all 42 Martyrs)
   599,  // Annunciation — oca-feast LIC + St-Sergius Aposticha (all Annunciation)
   2256, // Cosmas & Damian of Mesopotamia — day LIC + St-Sergius Glory/Theotokion/Aposticha
+  231,  // Three Hierarchs (1-30) — oca-menaion LIC + St-Sergius Aposticha stichera
+        // 2/3 and Glory, all of the SAME hierarchs, added 2026-08-29 (N1). The
+        // oca-menaion scrape captured only one of the three Great Vespers
+        // aposticha stichera; without the other two the section repeated its
+        // first hymn three times and dropped the Both-now. Replace with OCA
+        // text when available and remove this entry — tracked as N16.
 ]);
 
 // Data-drift tripwire: a commemoration whose stichera mix a General-Menaion

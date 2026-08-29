@@ -1,4 +1,17 @@
 {
+  "6971": {
+    "stichera_id": 6971,
+    "commemoration_id": 231,
+    "date": "1-30",
+    "commemoration": "Synaxis of the Ecumenical Teachers and Hierarchs: Basil the Great, Gregory the Theologian, and John Chrysostom",
+    "section": "aposticha",
+    "order": 0,
+    "tone": 4,
+    "label": "(Forefeast of the Meeting of the Lord)",
+    "source": "oca-menaion",
+    "removed_because": "mis-parsed: the concluding TROPARION, not a sticheron. UNIQUE(commemoration_id,type,pronoun) blocks adding it beside comm 231 troparion 37216, and the text appears NOWHERE else in the corpus — this JSON is currently its only home. See backlog N1/N16.",
+    "text": "Troparion As sharers of the Apostles’ life and character and teachers of the universe, intercede with the Master of all to grant peace to the world,\nand great mercy to our souls!"
+  },
   "8274": {
     "stichera_id": 8274,
     "commemoration_id": 85,

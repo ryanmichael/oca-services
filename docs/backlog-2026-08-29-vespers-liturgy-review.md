@@ -1053,3 +1053,61 @@ Three dates now show it: 1-13 row 8275 stored at Tone 8, 6-25 row 8737 at Tone 6
 the row's own rubric. So the parser carried the slot's tone onto whatever text
 landed there. Any future repair must take the tone from the source rubric, never
 from the existing row.
+
+
+---
+
+## ✅ N1 — SWEEP COMPLETE. All 15 dates repaired; `drift:check` reports clean.
+
+`Rubric bleed in sung text: clean.` The burn-down list is empty and has been
+removed, along with the deferred branch, exactly as its own comment instructed.
+
+**Final tally.** 17 rows were listed; **30 were wrong.** 27 rows deleted or
+re-slotted and preserved verbatim in `audit/misparsed-troparia-rows.json`, plus
+~15 hymns inserted that had been evicted and were absent from the DB entirely,
+plus one missing commemoration (St Maximus the Confessor, 8-12).
+
+**Four sub-shapes, not one:**
+1. *Aposticha overrun* (8-12, 1-13, 1-22, 9-03, 10-15, 11-04) — three concluding
+   troparia land in the last numbered, Glory and Theotokion slots.
+2. *Paschal alternative-Theotokion* (4-26, 4-28) — the Menaion's alternative
+   Theotokion lands in the Glory slot with its rubric glued on and the
+   Stavrotheotokion is left as a numbered sticheron.
+3. *Pentecostarion-owned Glory* (5-09) — delete-only; leaving `order=0` empty is
+   the correct outcome, and inventing a Glory would have been the natural error.
+4. *Whole block shifted by one* (7-18) — the three proper stichera at orders
+   0, 1, 2, so the first was being sung as the Glory.
+
+### The lesson that repeated most
+
+**A substring text search is not a deletion check.** It reported "not found
+anywhere in troparia" for **eight** rows and was wrong on every one, because the
+corpus holds the same hymn in different translations — "Learning goodness" vs
+"Having learned goodness"; "In thee, O father, the image of God was preserved" vs
+"The image of God was truly preserved in thee, O Father". Had it been trusted, it
+would have argued *against* eight correct deletions. **Check each
+commemoration's own troparia directly.**
+
+### N16 — three follow-ups this left open
+
+1. **1-30 mixes translations.** The `oca-menaion` scrape captured only one of the
+   three Great Vespers aposticha stichera. The minimal repair made the render
+   *worse* — the menaion aposticha branch is wholly gated on a Glory existing, so
+   removing the troparion at `order=0` skipped the block, repeated one hymn three
+   times and stranded the Both-now. The two stichera and the Glory were therefore
+   supplied from St Sergius, and commemoration 231 added to
+   `KNOWN_MIXED_SOURCE_COMMS` with a dated reason. Replace with OCA text and
+   remove the entry.
+2. **One text now has no home in the schema.** 6971's "As sharers of the
+   Apostles' life and character and teachers of the universe" appears nowhere
+   else in the corpus — checked against comm 231's own troparion 37216 and
+   corpus-wide; the nearest match, 38846, is Peter and Paul's. `UNIQUE
+   (commemoration_id, type, pronoun)` blocks adding it beside 37216, so
+   `audit/misparsed-troparia-rows.json` is currently its only home.
+3. **Tone scrambling** was systematic — 1-13's 8275 at Tone 8 and 6-25's 8737 at
+   Tone 6, each carrying the tone of the Glory it displaced. Any future parser
+   work must take the tone from the source rubric, never from the existing row.
+
+**Still open from N15:** defect 2 (the drift rule whose advice deletes a hymn),
+defect 3 (a source-faithful label rendering as the feast's title), defect 4 (a
+combined "Glory ..., Both now ..." off a Great Feast).

@@ -267,7 +267,15 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       // extra slots. Counting them squeezes the resurrectional slot — 8-02 Stephen
       // rendered 6 Octoechos + 4 Menaion instead of the rubric's 7 + 3.
       const licStichera = sticheraData?.[0]?.stichera.filter(
-        s => s.section === 'lordICall' && s.order >= 1 && s.groupRole !== 'alternative-set'
+        // A Stavrotheotokion is an ALTERNATIVE for the Now-and-ever slot on
+        // Wed/Fri, never a numbered sticheron. The corpus keeps 75 of 79 at
+        // order=-1, but four commemorations hold one at a numbered order, where
+        // it was being sung as an ordinary sticheron — 4-26 rendered "Upon
+        // beholding Thee, the Lamb and Shepherd, upon the Cross" as its fourth
+        // hymn. Excluded here rather than re-keyed, so the row stays available
+        // to the Now-and-ever branches that look for it. Found 2026-08-29 (N1).
+        s => s.section === 'lordICall' && s.order >= 1
+          && s.groupRole !== 'alternative-set' && s.groupRole !== 'stavrotheotokion'
       ).slice(0, maxLicStichera) ?? [];
       const licGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'lordICall' && s.order === 0
@@ -423,7 +431,10 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
       // Inject Menaion aposticha stichera when available
       let apostStichera = sticheraData?.[0]?.stichera.filter(
+        // Same exclusion as Lord-I-Call above: a Stavrotheotokion is an
+        // alternative for the Now-and-ever, never a numbered sticheron.
         s => s.section === 'aposticha' && s.order >= 1
+          && s.groupRole !== 'stavrotheotokion'
       ).slice(0, 3) ?? [];
       let apostGlory = sticheraData?.[0]?.stichera.find(
         s => s.section === 'aposticha' && s.order === 0

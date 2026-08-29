@@ -777,8 +777,8 @@ const RUBRIC_BLEED_BURNDOWN = new Map([
   [6971, 'N1 — 1-30 Ecumenical Teachers, aposticha order=0 (Glory slot)'],
   // 8275, 8276 (1-13) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0113-aposticha.sql
   // 8320 (1-22) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0122-aposticha.sql
-  [8530, 'N1 — 4-26 Myrrhbearing Women, lordICall order=0 (Glory slot)'],
-  [8537, 'N1 — 4-28 Apostles Jason and Sosipater, lordICall order=0 (Glory slot)'],
+  // 8530 (4-26) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0426-0428-lordicall.sql
+  // 8537 (4-28) FIXED 2026-08-29 — same migration
   [8564, 'N1 — 5-09 Prophet Isaiah, lordICall order=0 (Glory slot)'],
   [8738, 'N1 — 6-25 Virgin Martyr Febronia, aposticha order=0 (Glory slot)'],
   [8852, 'N1 — 7-18 Martyr Emilian, lordICall order=3 (numbered slot)'],

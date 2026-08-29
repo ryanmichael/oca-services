@@ -746,3 +746,56 @@ legitimate hymn that merely begins with the word "Glory". The repaired patterns
 correctly do not fire on it. Two rows not in N1's list — **8530** and **8537**,
 both `Doxasticon from the Pentecostarion…` at `order=0` — are genuine and have
 been added. The corrected list is the 17 ids in `RUBRIC_BLEED_BURNDOWN`.
+
+
+---
+
+## ✅ N3 — DONE (`de4e6e1`), but not the way it was specced
+
+**The prescribed fix was wrong.** N3 said `s.label || primary.title` at seven
+sites in `server-lib/assemble/for-date.js`. **None of those seven lines changed.**
+A blanket "row label wins" is a downgrade almost everywhere: most labelled rows
+carry a generic category incipit — "the holy martyrs", "the venerable one" —
+strictly less informative than the title the slot supplies. `lord-i-call.js` had
+already measured this and said so in a comment: 1,451 of 2,390 labelled lordICall
+rows are that bare-descriptor family.
+
+The choice is a **rendering** decision and it already had a home — the
+`mixedSlots` mechanism added for the 2026-08-16 Dormition/Image case. It did not
+fire on 8-30 only because its `labelSubject` understood the `(for X)` form and
+returned null for every bare descriptor.
+
+Now `assemblers/_shared/hymn-label.js`, shared by `lord-i-call.js` and
+`aposticha.js` so the two partial copies cannot drift apart again. Contract
+`hymn-label-choice` (7 INVs) + `features/hymn-label-choice.md`. 45 of 365 days
+change, **labels only**.
+
+**Three of the four rules in it came from regressions this change itself caused**,
+each caught by diffing every day of 2026 rather than by a test:
+1. "Prophet Hosea" → "the holy prophet" (10-16) — a bare descriptor must not
+   displace the principal's own title.
+2. "24 stichera by Simeon the Translator" → "Stichera" (3-25) — genre words are
+   not subjects, and the collapse hit only some rows, so two identical hymns
+   printed under different headings.
+3. The Aposticha Now-and-ever losing "(for the Dormition…)" (8-15) — a first
+   attempt at guarding the Theotokion regressed the documented 8-16 case.
+
+**Method note:** a year-wide before/after diff of every rendered label found all
+three; the contract found none of them, because a contract only asks what you
+already thought to ask. Pair any label or ordering change with a full-corpus diff.
+
+### New: N14 — bad label data is now visible
+
+Where a row's descriptor wins, whatever is in the DB prints. All pre-existing,
+none created by `de4e6e1`, all now on a choir sheet:
+
+- `the holy unmecinaries` (6-27) and `the holy unmercinaries` (10-31) — typos.
+- `the holy martyr: 4` (7-29) — glued footnote digit; this is the **N6** class,
+  and N6 just acquired a user-visible symptom.
+- Row **9466** (11-28) — a Theotokion labelled `the venerable martyr`. INV-4
+  guards the rendering; the row is still wrong and belongs in N1's family.
+
+**Rule that closes it:** a `stichera.label` must not contain a trailing footnote
+digit, and a row at `order=-1` (the Theotokion slot) must not carry a saint
+descriptor. Both are cheap `validate-schemas` gates — but per N4, falsify each
+against the rows above before trusting a green.

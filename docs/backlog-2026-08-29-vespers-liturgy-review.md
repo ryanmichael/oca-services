@@ -176,53 +176,78 @@ Do not add a fourth rule next to three that do not work.
 
 ---
 
-## P0 — N5. A parish's explicit rubric opt-out is silently inverted
+## ✅ P0 — N5. A parish's explicit rubric opt-out was silently inverted — FIXED
 
-**NEW root cause (was filed as a policy question) · ⇢ every parish that sets it**
+**FIXED 2026-08-29. ⇢ every parish that sets a tristate rubric**
 
-Originally filed as "propers we add that the order does not appoint", a decision
-rather than a bug. It is a bug, and a sharp one.
+Tyler had **explicitly opted out** — `parish_rubrics` row
+`includeSecondKoinonikon = 0` — and got a second koinonikon anyway.
 
-Tyler has **explicitly opted out**: `parish_settings.rubric_include_second_koinonikon = 0`.
-They still get the second koinonikon.
-
-`scripts/capture-rubrics-snapshot.js:21` writes the key only when the value is
-truthy:
-
-```js
-if (row.rubric_include_second_koinonikon)
-  r.readings = { ...(r.readings || {}), includeSecondKoinonikon: true };
-```
-
-So a stored `0` — an explicit *no* — is indistinguishable in the snapshot from
-"never configured". The consumer's contract is deliberately **tri-state**
-(`liturgy-from-orthocal.js:189-191`):
+**Correct root cause** (the first write-up of this item named
+`capture-rubrics-snapshot.js`; that script is only the reference snapshot for
+contract INV-D, not the production path). Production is
+`buildRubrics` in `server-lib/parishes/index.js`:
 
 ```js
-const overlayKoinonikonOptIn  = opts.includeSecondKoinonikon === true;   // opt-in
-const secondKoinonikonAllowed = opts.includeSecondKoinonikon !== false;  // opt-out
+const value = coerce(raw, def.type);
+if (isDefault(value, def.default)) continue;   // ← drops the explicit pick
 ```
 
-`undefined !== false` is `true`, so **the parish's "no" is read as "yes".**
+Values equal to the registry default are omitted to keep overlays sparse. Safe
+for a boolean read with `!!`. **Not** safe when the consumer is tri-state —
+`liturgy-from-orthocal.js:189-191`:
 
-**Proof the mechanism is otherwise sound:** `?secondKoinonikon=hide` on the same
-request removes the hymn. Only the stored setting fails to arrive.
+```js
+const overlayKoinonikonOptIn  = opts.includeSecondKoinonikon === true;   // opt in
+const secondKoinonikonAllowed = opts.includeSecondKoinonikon !== false;  // opt out
+```
 
-Specific to this field — the other rubrics (`includeLesserSaints`,
-`includeSecondGospel`) are consumed with `!!`, where `0 → absent → false` is
-harmless. **Tri-state semantics on one side, truthy-flattening on the other.**
+`undefined !== false` is `true`, so absent means **allowed**. Compacting an
+explicit `false` therefore *inverts* it.
 
-**Fix:** emit the key whenever the column is non-null, carrying its real boolean,
-rather than only when truthy.
+**Fix:** rubrics whose consumer is tri-state carry `"tristate": true` in
+`data/rubric-registry.json` (with a `tristateReason` naming the consumer), and
+`buildRubrics` skips compaction for them **when the value came from an explicit
+`parish_rubrics` pick**. Scoped that way because a row in `parish_rubrics` exists
+only if the parish set it, whereas the typed-column fallback is
+`NOT NULL DEFAULT 0` and cannot distinguish a deliberate 0 from "never touched".
 
-**Rule that closes it:** round-trip every `parish_settings.rubric_*` column
-through the snapshot and assert the value survives. A rubric a parish has set to
-0 must arrive as `false`, not as absent.
+**Closing rule: INV-E** in `test/contracts/rubric-registry.test.js` — for every
+tristate rubric, an explicit pick of `false` *and* of `true` must reach the
+consumer with the value the parish chose. **Asserts the value, not the presence
+of a key** (`[[feedback_assert_structure_not_labels]]`), and **falsified**: with
+the fix reverted it fails with *"parish picked false, consumer would see
+undefined"*; restored, it passes.
 
-**Still a separate question:** whether the second *prokeimenon* and *alleluia*
-should render at all on this date (the order gives the Resurrection set alone).
-Those are not gated by this rubric, and remain the policy question originally
-filed here.
+Verified: 153 unit + 183 contract tests, `drift:check` OK, `validate` exit 0, and
+the behavioural matrix — parish opted out → absent; OCA base → present;
+`?secondKoinonikon=show` → present.
+
+**Still open, unchanged:** whether the second *prokeimenon* and *alleluia* should
+render at all on 8-30 (the order gives the Resurrection set alone). Not gated by
+this rubric; still the policy question originally filed here.
+
+---
+
+## P1 — N9. The rubrics snapshot generator is stale and silently weakens INV-D
+
+**NEW, found while fixing N5 · pre-existing · guard landed, root cause OPEN**
+
+`scripts/capture-rubrics-snapshot.js` reproduces **typed-column** logic only, but
+three rubrics are now **registry-only**, with no `dbColumn`:
+`gloryAfterLittleLitany`, `hoursPrecedeService`, `licNoLeadingRepeat`.
+
+They can only come from `parish_rubrics`, so a plain re-run **drops them from the
+snapshot** — and INV-D then passes against the weakened expectation. Nothing
+fails. The committed snapshot has evidently been hand-maintained for those keys.
+
+**Landed now:** a guard that diffs against the existing snapshot and refuses to
+write when any parish would lose a key, listing them, unless `--force`. Verified
+firing on all three.
+
+**Still open:** teach `legacyBuildRubrics` the registry-only rubrics so the
+snapshot is reproducible again. Until then the guard is the only thing standing
+between a routine regeneration and a quietly weaker contract.
 
 ---
 

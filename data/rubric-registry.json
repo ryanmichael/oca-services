@@ -54,6 +54,8 @@
       "namespace": "readings.includeSecondKoinonikon",
       "type": "boolean",
       "default": false,
+      "tristate": true,
+      "tristateReason": "liturgy-from-orthocal.js reads this three ways: `=== true` opts IN to a cocelebrated-overlay koinonikon, `!== false` opts OUT of a polyeleos+ saint's, so `undefined` means ALLOWED, not false. An explicit false must therefore survive default-compaction or the parish's setting is inverted (found 2026-08-29).",
       "appliesTo": [
         "liturgy"
       ],

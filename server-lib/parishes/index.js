@@ -143,15 +143,34 @@ function buildRubrics(row, rubricPicks = {}, practiceEntries = []) {
     // Either path can independently flip a rubric; this preserves byte
     // stability against scripts that update typed columns directly.
     let raw;
+    let explicitPick = false;
     if (Object.prototype.hasOwnProperty.call(rubricPicks, id)) {
       raw = rubricPicks[id];
+      explicitPick = true;
     } else if (row && def.dbColumn in row) {
       raw = row[def.dbColumn];
     } else {
       continue;
     }
     const value = coerce(raw, def.type);
-    if (isDefault(value, def.default)) continue;
+    // Default-valued rubrics are normally omitted to keep overlays sparse, and
+    // for a boolean consumed with `!!` that is harmless — absent and false mean
+    // the same thing.
+    //
+    // It is NOT harmless when the consumer is tri-state, i.e. reads `undefined`
+    // differently from `false`. `includeSecondKoinonikon` is the live case
+    // (liturgy-from-orthocal.js:189-191): `=== true` opts in, `!== false` opts
+    // out, so `undefined` means ALLOWED. Compacting an explicit `false` away
+    // therefore INVERTS it — Tyler set the rubric to 0 and still got a second
+    // koinonikon. Such rubrics carry `"tristate": true` in the registry and are
+    // emitted whenever the parish picked them explicitly.
+    //
+    // Scoped to explicit picks: a row in `parish_rubrics` exists only because
+    // the parish set it, whereas the typed-column fallback is NOT NULL DEFAULT 0
+    // and cannot tell a deliberate 0 from "never configured".
+    // Found 2026-08-29; see docs/backlog-2026-08-29-vespers-liturgy-review.md N5.
+    const keepExplicitDefault = explicitPick && def.tristate === true;
+    if (!keepExplicitDefault && isDefault(value, def.default)) continue;
     setDottedKey(r, def.namespace, value);
   }
   if (row.patron_natural_key && row.patron_title) {

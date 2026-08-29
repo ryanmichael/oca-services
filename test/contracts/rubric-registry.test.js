@@ -88,6 +88,50 @@ describe('Feature contract: rubric registry', () => {
   // pass; bespoke inline entries (from rubrics_extra_json) still come through on
   // the two-argument path. So "no practice here" is the correct expectation for a
   // parish whose practice comes entirely from picks. See features/practice-layer.md.
+  // INV-E closes the 2026-08-29 second-koinonikon inversion. See
+  // docs/backlog-2026-08-29-vespers-liturgy-review.md N5.
+  //
+  // buildRubrics omits any value equal to its registry default, to keep overlays
+  // sparse. That is safe for a boolean consumed with `!!`, but NOT for a rubric
+  // whose consumer is tri-state — one that reads `undefined` differently from
+  // `false`. `includeSecondKoinonikon` is such a rubric: liturgy-from-orthocal.js
+  // treats absent as ALLOWED, so compacting an explicit `false` INVERTS it.
+  // Tyler set the rubric to 0 and still got a second koinonikon.
+  //
+  // Asserts the round trip on the VALUE, not on the presence of a key: a parish's
+  // explicit pick must arrive at the consumer with the value the parish chose.
+  it('INV-E: an explicit pick of a tristate rubric survives default-compaction', () => {
+    const reg = loadRegistry();
+    const tristate = Object.entries(reg.rubrics).filter(([, d]) => d.tristate === true);
+    assert.ok(tristate.length > 0,
+      'no tristate rubrics declared — if that is now correct, delete INV-E rather than letting it vacuously pass');
+
+    clearCache();
+    const db = openDb();
+    try {
+      const row = db.prepare('SELECT * FROM parish_settings LIMIT 1').get();
+      assert.ok(row, 'no parish rows to exercise');
+
+      for (const [id, def] of tristate) {
+        for (const picked of [false, true]) {
+          const picks  = { [id]: picked ? '1' : '0' };
+          const actual = buildRubrics(row, picks);
+
+          // Walk the dotted namespace to the leaf.
+          const leaf = def.namespace.split('.').reduce(
+            (o, k) => (o == null ? undefined : o[k]), actual);
+
+          assert.equal(leaf, picked,
+            `${id}: parish picked ${picked}, consumer would see ${JSON.stringify(leaf)}. ` +
+            `A tristate rubric must never be compacted away — absent means ` +
+            `"allowed" to its consumer, which inverts an explicit false.`);
+        }
+      }
+    } finally {
+      db.close();
+    }
+  });
+
   it('INV-D: registry path produces same buildRubrics result as legacy path (roundtrip)', () => {
     const snapshotPath = path.join(ROOT, 'test', 'contracts', '__snapshots__', 'rubrics-pre-refactor.json');
     const expected = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));

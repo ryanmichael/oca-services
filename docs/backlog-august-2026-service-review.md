@@ -1,5 +1,12 @@
 # Service-review backlog — opened 2026-08-22
 
+> **Superseded in part, 2026-08-29.** A follow-up audit of 8-29 Vespers and 8-30
+> Liturgy re-verified items **1, 4 and 5** with row-level evidence and widened
+> item 1 to cover Vespers as well as the Liturgy. It also found four new defects
+> and carries the sequenced plan for all of them. Read
+> [`backlog-2026-08-29-vespers-liturgy-review.md`](backlog-2026-08-29-vespers-liturgy-review.md)
+> first. Items 2, 3, 6, 7, 8 are open here only.
+
 From a review of Vespers and Divine Liturgy for 8-22/8-23 and 8-28/8-29/8-30,
 against the OCA orders in `reference/orders/` and the St Sergius menaion.
 

@@ -6,9 +6,16 @@ _Updated by Orchestrator at the end of each session. Edit priorities directly to
 ## 🔴 In Progress
 
 **This board is stale (last real update 2026-03-11).** The live work list is
-[`docs/backlog-august-2026-service-review.md`](docs/backlog-august-2026-service-review.md)
-— 10 items from the 2026-08-22 review of the 8-23 and 8-30 weekends, grouped by
-root cause. Start there.
+two documents, read in this order:
+
+1. [`docs/backlog-2026-08-29-vespers-liturgy-review.md`](docs/backlog-2026-08-29-vespers-liturgy-review.md)
+   — 6 items from the 2026-08-29 audit of 8-29 Vespers and 8-30 Liturgy, plus a
+   4-step plan. **Start here**; it carries the sequenced plan and supersedes the
+   8-22 doc on 8-30.
+2. [`docs/backlog-august-2026-service-review.md`](docs/backlog-august-2026-service-review.md)
+   — 10 items from the 2026-08-22 review of the 8-23 and 8-30 weekends. Items
+   1, 4 and 5 are re-verified and widened by the 8-29 doc; the rest are only
+   there.
 
 ---
 

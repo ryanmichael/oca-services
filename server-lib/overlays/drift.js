@@ -781,10 +781,10 @@ const RUBRIC_BLEED_BURNDOWN = new Map([
   // 8537 (4-28) FIXED 2026-08-29 — same migration
   // 8564 (5-09) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0509-0625.sql
   // 8738 (6-25) FIXED 2026-08-29 — same migration
-  [8852, 'N1 — 7-18 Martyr Emilian, lordICall order=3 (numbered slot)'],
+  // 8852 (7-18) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0718-0903-1011.sql
   // 8950, 8951 (8-12) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0812-aposticha.sql
-  [9067, 'N1 — 9-03 Hieromartyr Anthimus, aposticha order=0 (Glory slot)'],
-  [9253, 'N1 — 10-11 Fathers of the 7th Council, lordICall order=0 (Glory slot)'],
+  // 9067 (9-03) FIXED 2026-08-29 — same migration
+  // 9253 (10-11) FIXED 2026-08-29 — same migration
   [9274, 'N1 — 10-15 Ven. Euthymius the New, aposticha order=0 (Glory slot)'],
   [9305, 'N1 — 10-22 St. Averkios, lordICall order=0 (Glory slot)'],
   [9352, 'N1 — 11-04 Hieromartyr Seraphim, aposticha order=0 (Glory slot)'],

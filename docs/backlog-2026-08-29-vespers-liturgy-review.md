@@ -500,3 +500,92 @@ wrong one that displaced it.
 
 The new corollary from N4: **"the rule passed" is not evidence the rule works.**
 Falsify it on the failing row first.
+
+---
+
+# Added 2026-08-29 (later session) — N2 step 1 landed, two new items
+
+## ✅ N2 step 1 — DONE (`d0be409`)
+
+The Sunday-kontakia restructure now carries **N** extras in rank order instead
+of a fixed one-slot template, and the day's own kontakion takes the Glory with
+the patron read above it. The blocker on N2 is cleared; steps 2-4
+(`windowClaimsNowAndEver()`, the `Afterfeast of the Beheading…` INSERT, and the
+Vespers troparia path) are unchanged and still open.
+
+Measured blast radius: **0** dates change with no parish overlay; **34** Sundays
+change for Tyler, all the patron moving off the Glory onto the line above it.
+
+**Method note worth keeping.** Every policy call in that commit was settled by
+counting `reference/orders/` (473 orders, 131 of them printing a Church
+troparion), not by reasoning from convention. Two of the three calls came out
+against what the code already did — including one that a green contract had
+codified. The archive is a usable oracle for Sunday kontakia shape; use it.
+
+---
+
+## P1 — N11. The patron-drop predicate is a curated allowlist, and rank cannot replace it
+
+**NEW · ⇢ ~10 Sundays/yr per parish · found while landing N2 step 1**
+
+On a high-rank-saint Sunday the patron-saints church yields **both** its
+troparion and its kontakion — the archive is unambiguous (12 orders, all reading
+"Troparion of the Church (if of Theotokos)", Theotokos only). We gate that drop
+on `lit.hasCocelebratedOverlay`, a hand-curated signal in
+`liturgy-from-orthocal.js`, and it does not fire on plainly polyeleos Sundays:
+**2026-07-05 (Sergius), 2026-07-26 (Jacob Netsvetov), 2026-08-09 (Herman)** all
+keep the patron kontakion where their orders drop it. Related to
+[the principal-saint picker gap](../memory/…) — same under-ranking.
+
+**`getFeastRank` is not the fix.** Measured over all 131 archive orders that
+print a Church troparion: rank ∈ {polyeleos, vigil} agrees with the order's
+drop/keep decision **116 / 131 (88.5%)**, and errs in *both* directions — 10
+dates where we say polyeleos and the order keeps the Church kontakion (incl.
+**2026-08-30** itself), 5 where we say sixStichera and the order drops it.
+Swapping the predicate would trade one wrong set for another.
+
+The 15 disagreements are the actual work list:
+```
+2022-0123 2022-0703 2022-0710 2022-0724 2022-0828 2022-0925 2023-0108
+2023-0212 2023-0625 2023-0924 2024-1006 2025-0928 2025-1019 2025-1026 2026-0830
+```
+
+**Also unfixed, and asymmetric:** the patron *troparion* is inserted with no
+rank check at all, so on a drop date it survives even when the kontakion goes.
+Making it symmetric needs a Theotokos-vs-saint distinction the temple rubric
+does not currently carry — a Theotokos temple keeps both.
+
+**Rule that closes it:** for every date in `reference/orders/` that prints a
+Church troparion, our drop decision must match the order's. That check is ~30
+lines and runs offline against the archive; it is the oracle, not a new
+heuristic.
+
+---
+
+## P1 — N12. Lenten Sundays use a combined Glory/Now connector the orders do not
+
+**NEW · ⇢ 5-7 Sundays/yr · found while landing N2 step 1**
+
+`isLentenCommemorationSunday` (weeks 1-5) forces the day's kontakion under a
+single "Glory… now and ever…" connector with no Theotokion. The 2026 orders
+disagree for three of the five:
+
+| Date | Order says | We emit |
+|---|---|---|
+| 03-01 Orthodoxy | `Glory… now and ever… Kontakion of the Triodion` — **no Church kontakion at all** | Patron, then Triodion combined |
+| 03-15 Cross | `Glory… now and ever… Kontakion of the Cross` — no Church kontakion | Patron, then Cross combined |
+| 03-08 Palamas | patron-saints church: `Kontakion of the Church / Glory… St Gregory / Now… Triodion` — **split, not combined** | Patron, then Palamas combined |
+| 03-22 Climacus | `Kontakion of the Church / Glory… St John / Now… "Steadfast Protectress"` — **standard shape** | Patron, then Climacus combined |
+| 03-29 Mary of Egypt | `Kontakion of the Church / Glory… St Mary / Now… "Steadfast Protectress"` — **standard shape** | Patron, then Mary combined |
+
+So the combined connector is right only for weeks 1 and 3 (and only when no
+patron is set), and weeks 2/4/5 want the ordinary Sunday shape. Note also
+2026-02-15: `Glory… Kontakion of the Church (only if of Patron Saint), or else
+Kontakion from the Triodion` — the pre-Lenten Sundays are a third shape again.
+
+N2 step 1 left every one of these strictly closer to the order than before
+(the connector now lands on the day's kontakion rather than the patron's), so
+this is a correctness gap, not a regression.
+
+**Rule that closes it:** same oracle as N11 — diff our connector placement
+against the archive order for every date that has one.

@@ -293,54 +293,65 @@ not just digits.
 
 ---
 
-## P0 — N8. We render the wrong Saints' troparion
+## ✅ P0 — N8a. We rendered a single-saint troparion on a joint feast — FIXED
 
-**NEW · found by reading the choir director's books, not the audit · ⇢ 8-30 + the
-patron case is every parish, every Sunday**
+**FIXED 2026-08-29 · ⇢ 1 date · ↻ annual**
 
-The director's 8-30 Divine Liturgy book settles two things the order file left
-open, and corrects one of my own conclusions.
+8-30 jointly commemorates **three** patriarchs, and the troparion OCA appoints
+names all three. We rendered a troparion for Alexander alone.
 
-**(a) The Saints' troparion.** The parish sings, from OCA-published music
-(© 2008 OCA, Russian Imperial Court Chant):
+Three sources agree on the joint text — including our own database:
 
-> "O God of our Fathers, always act with kindness towards us; take not Your mercy
-> from us, but guide our lives in peace **through the prayers of the Patriarchs
-> Alexander, John, and Paul.**"
+- the director's book, `08.30.26 Divine Liturgy` p.5, OCA-published music
+  (© 2008 OCA), headed *"Saints Alexander (340), John (595), and Paul the New
+  (784), Patriarchs of Constantinople — Troparion, Tone 4"*
+- `reference/orders/2026-0830-order-services.txt`: "Troparion of the **Saints**"
+- `oca.db`: comms **1761** (John) and **1762** (Paul) already carried it in both
+  registers — byte-identical to the book.
 
-That is the text of deleted row **9043** — the row I characterised this morning as
-a St-Sergius variant safely discarded in favour of `troparia` 39538. It is not.
-39538 ("Christ, the God over all… O Godly-wise **Alexander**") is a **single-saint**
-troparion naming Alexander alone; 8-30 is a **joint** commemoration of three
-patriarchs, and the OCA text names all three. We render the single-saint text at
-both Vespers and the Liturgy.
+**So this was never a missing-text problem.** It is a *selection* problem: the
+picker takes the principal commemoration (1760, Alexander) and uses its
+troparion, and 1760 alone carried the single-saint text.
 
-**Fix:** add "O God of our Fathers…" to `troparia` for comm 1760 and prefer it on
-the joint commemoration. **Decide which is canonical before writing** — do not
-repeat this morning's mistake of reasoning from convention instead of the source.
+**Fix:** point 1760's troparion at the joint text in both registers
+(`/tmp/fix-8-30-saints-troparion.sql`). All three patriarchs now agree —
+1 distinct text per register. The replaced text is preserved in the SQL header,
+in `storage/oca.db.bak.2026-08-29-step2`, and in git history. It also carried a
+glued footnote digit (`lampstand,2`, the N6 class), which the replacement removes.
 
-**(b) RETRACTED — the patron IS wired, and correctly.** This entry originally
-claimed the patron was omitted from every Sunday Liturgy for every parish. That
-was false, and caused entirely by my own probe: I rendered
-`/api/liturgy?date=2026-08-30` **without `translation=`**, so
-`overlayRubrics.temple` was empty and the patron branch never ran. Rendering the
-parish stack gives exactly what the director's book has:
+**A general rule was considered and REJECTED.** The tempting structural fix — "when
+several commemorations on a date share identical troparion text, that is the
+day's joint troparion and it wins" — is wrong, and measuring first is what caught
+it. 70 date/text groups match that shape, and **most are generic category
+fallbacks**, not joint troparia: *"By a flood of tears thou didst make the desert
+fertile"* (monastic) and *"Thy holy martyrs, O Lord"* recur across unrelated
+saints on the same day. That rule would let a generic fallback beat a specific
+troparion across the calendar. **Share-count is not a signal for jointness.**
 
-```
-Troparion of the Patron of the Temple, Venerable John of Damascus, Tone 3
-Kontakion of the Patron of the Temple, Venerable John of Damascus, Tone 4
-```
+The real signal here is that the text *names the commemorated saints*, which is
+far narrower — and not worth generalising from one date under time pressure.
+Filed as N10.
 
-`api-liturgy.js:149-230` inserts the troparion after the Resurrection troparion on
-Sundays, and the kontakia restructure selects the Glory slot **by what is
-celebrated that day** — principal feast → the day's saint takes Glory and the
-patron drops; simple-rank Sunday → the patron takes Glory. Working as designed.
+**Note:** this makes **N3** more visible, not less. The block is still labelled
+"Troparion of **Saint Alexander**, Patriarch of Constantinople" while its text now
+names all three — label and text openly disagree. N3 remains the fix.
 
-**The lesson is the finding.** An OCA-base render cannot evaluate anything
-parish-conditioned, and I reported an absence produced by my own missing query
-parameter as a systemic gap. `[[feedback_verification_false_greens]]` covers the
-inverse case; this is the same error pointed the other way — **prove the probe can
-SEE the thing before reporting that it is missing.**
+---
+
+## P2 — N10. No way to express a joint troparion
+
+**NEW, deferred deliberately**
+
+8-30 needed the troparion of a *group* of saints, and our model attaches
+troparia to individual commemorations. The workaround (copy the joint text onto
+each member) works and is what the data already did for 1761/1762 — but nothing
+records that the three are one commemoration, so a picker choosing any single
+member can land on a single-saint text, which is exactly how N8a happened.
+
+`stichera` has `group_role`; `troparia` has no equivalent. Related: the 08-06
+landmine that `group_role` is selected by no query.
+
+**Do not** infer jointness from shared text — see the measurement under N8a.
 
 ---
 

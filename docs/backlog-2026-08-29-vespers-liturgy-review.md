@@ -225,17 +225,99 @@ not just digits.
   Thee, * the Lamb and Shepherd…" and we have no row for it. Harmless on a Sunday
   (the Resurrectional Theotokion wins) but wrong on a weekday occurrence. Same
   parser truncation as N1 — likely a class, not one row.
-- **A second Saints' troparion exists that we now discard.** Deleted row 9043's
-  text, "O God of our fathers", is St Sergius' Glory troparion for the hierarchs,
-  Tone IV. We render the OCA text (`troparia` 39538, "Christ, the God over all…")
-  instead, which is correct per project convention — OCA wins for variable texts.
-  Recorded here so the variant is not silently forgotten.
+- **CORRECTION (same day).** This entry originally read: *"a second Saints'
+  troparion exists that we now discard… we render the OCA text (39538) instead,
+  which is correct per project convention."* **That was wrong**, and the choir
+  director's own book disproves it — see N8. Row 9043's text is not a St-Sergius
+  variant to be discarded; it is the OCA text for these saints. The deletion from
+  `stichera` was still correct (a troparion at `order=0` was being sung as the
+  Aposticha Glory), but the text needs to be **added to `troparia` for comm 1760**,
+  not dropped.
 - **The podoben was stripped, not relocated.** `(Podoben: "Go quickly before
   us...")` is real and useful to a choir; it belongs in a rubric field, not in the
   sung line. `troparia` has no `label` column, so there was nowhere to put it.
   Worth a column before the N6 corpus sweep strips ~174 more.
 - **Row 9040** (8-30 LIC Stavrotheotokion) is still labelled `the holy hierarchs`;
   it belongs to neither saint. Does not render on a Sunday.
+
+---
+
+## P0 — N8. We render the wrong Saints' troparion, and omit the parish patron
+
+**NEW · found by reading the choir director's books, not the audit · ⇢ 8-30 + the
+patron case is every parish, every Sunday**
+
+The director's 8-30 Divine Liturgy book settles two things the order file left
+open, and corrects one of my own conclusions.
+
+**(a) The Saints' troparion.** The parish sings, from OCA-published music
+(© 2008 OCA, Russian Imperial Court Chant):
+
+> "O God of our Fathers, always act with kindness towards us; take not Your mercy
+> from us, but guide our lives in peace **through the prayers of the Patriarchs
+> Alexander, John, and Paul.**"
+
+That is the text of deleted row **9043** — the row I characterised this morning as
+a St-Sergius variant safely discarded in favour of `troparia` 39538. It is not.
+39538 ("Christ, the God over all… O Godly-wise **Alexander**") is a **single-saint**
+troparion naming Alexander alone; 8-30 is a **joint** commemoration of three
+patriarchs, and the OCA text names all three. We render the single-saint text at
+both Vespers and the Liturgy.
+
+**Fix:** add "O God of our Fathers…" to `troparia` for comm 1760 and prefer it on
+the joint commemoration. **Decide which is canonical before writing** — do not
+repeat this morning's mistake of reasoning from convention instead of the source.
+
+**(b) The parish patron is omitted entirely.** The order appoints "Troparion of
+the Church (if of Theotokos or Patron Saint)" and "Kontakion of the Church (if of
+Patron Saint)". Tyler's patron is St John of Damascus
+(`parish_settings.patron_natural_key = 12-04/john-of-damascus`), and their book
+carries his Kontakion, Tone 4 ("Let us praise the illustrious hymnographer
+John…"). We emit no patron troparion or kontakion at all. See
+`[[project_patron_of_temple]]` — the `features/` spec exists; it is not wired into
+the Liturgy troparia/kontakia chain.
+
+This is not 8-30-specific. **Every parish named for a saint is missing its own
+patron from every Sunday Liturgy.**
+
+**Rule that closes it:** for a parish with a `patron_natural_key`, the Liturgy
+troparia and kontakia must contain the patron's hymns, or explicitly record why
+not (the order brackets them only for a church named for the Theotokos).
+
+---
+
+## What the director's books confirm, and what they cost us
+
+Read against the four PDFs in `docs/8-29/`:
+
+| Slot | Parish book | Ours | |
+|---|---|---|---|
+| LIC Baptist ×3, Fathers ×3, Glory T6, Dogmatikon | ✓ | ✓ | match |
+| Vespers Aposticha Glory | "Herod celebrated an unfitting birthday…" T4 | **now ✓** | fixed by 8f9785e |
+| Vespers Troparia | Resurrection T4 → **Forerunner T2** | Res T4 → St Alexander T4 | **N2** |
+| Liturgy Troparia | Res T4 → **Forerunner T2** → Saints T4 | Res T4 → Saints T4 | **N2** |
+| Liturgy Kontakia | Res T4 → **Forerunner T5** → … | Res T4 → Saints T8 → Protectress | **N2** |
+| Saints' troparion | "O God of our Fathers… Alexander, John, and Paul" | "Christ, the God over all… Alexander" | **N8a** |
+| Patron kontakion | St John of Damascus, T4 | absent | **N8b** |
+
+**The Aposticha Glory fix landed on the right hymn** — independently confirmed by
+the director's book, which was not consulted when the fix was made.
+
+**Open question for the director, not inferable from the books.** The Resurrection
+stichera sheet is a reusable Tone-4 packet printing all 7 (stichoi 10-4); the
+8-30 insert supplies 6 menaion hymns. 7 + 6 = 13 into 10 stichoi. Almost certainly
+the intended set is the order's **4 + 3 + 3** (which is what we render), with the
+packet's numbering vestigial — but that is inference. **Ask.** This is exactly the
+practice-layer question in `[[project_practice_layer]]`: which stichoi are sung.
+
+**Register.** The books are modern ("you/your"); we render the DB-sourced hymns
+thee/thy even with `?translation=st-john-damascus-tyler`. Known architecture gap,
+not a new finding — `[[project_overlay_variable_sources_gap]]`: overlays are scoped
+to `fixed-texts/` and cannot reach `variable-sources/` or `oca.db`.
+
+**Also noticed:** `/api/service?service=liturgy` and `?parish=…` are both silently
+ignored — unknown params return Vespers/base rather than a 400. Cheap fix, and it
+cost time in this session.
 
 ---
 

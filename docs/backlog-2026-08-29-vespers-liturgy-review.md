@@ -835,3 +835,90 @@ green** — which is exactly the hole, demonstrated rather than described.
 
 The `--force` guard stays as a backstop for what a future registry addition
 looks like; verified it still refuses when a key would be lost.
+
+
+---
+
+## N1 — SIZED, not yet fixed. The 17 rows are roughly half the problem.
+
+Re-fetched all 15 source PDFs from `st-sergius.org/services/Emenaion/MM-DD.pdf`
+(no local cache exists — the scraper downloads to tmp and discards) and diffed
+every `stichera` row on those dates against the source.
+
+### The mechanism, confirmed on the source rather than inferred
+
+The St Sergius Vespers page prints, in order: the numbered aposticha stichera,
+`Glory ...` , `Both now ...`, and then the **concluding troparia** — typically
+three of them (`Troparion of the …`, `Glory ..., Troparion of …`,
+`Both now ..., Troparion of the feast`). The parser runs past the end of the
+aposticha block and swallows all three. Because `insertStichera` writes Glory to
+`order=0` and the last `Glory ...` line wins, the result on a typical date is:
+
+| swallowed troparion | lands at | visible to the rubric-bleed rule? |
+|---|---|---|
+| 1st (plain heading) | the last numbered slot | **NO** — heading not glued |
+| 2nd (`Glory ...`) | `order=0`, the Glory slot | yes |
+| 3rd (`Both now ...`) | `order=-1`, the Theotokion slot | yes |
+
+**And the two real hymns it displaced — the aposticha `Glory` and `Both now` —
+are simply absent from the DB.**
+
+### Measured
+
+161 `stichera` rows across the 15 dates. **14 sit inside a troparion block in
+the source**, and only **one** (8275) is in the N4 burn-down list. So there are
+**13 additional bad rows the rubric-bleed pattern cannot see**, because their
+heading was not glued to the text:
+
+```
+8274 (1-13)  8319 (1-22)  8536 (4-28)  8563 (5-09)  8737 (6-25)  8854 (7-18)
+8949 (8-12)  9066 (9-03)  9252 (10-11) 9273 (10-15) 9304 (10-22) 9351 (11-04)
+9376 (11-07)
+```
+
+Spot-verified two against source context: 8319 is printed under `Troparion of
+the apostle, in Tone IV` and 8737 under `Troparion of the holy forerunner, in
+Tone IV`. Both are troparia.
+
+**Do not add these to `RUBRIC_BLEED_BURNDOWN`** — they trip no pattern, so the
+stale-entry detector would flag them immediately. They need their own signal.
+
+### Worked example — 8-12, the full shape
+
+Source (`08-12.pdf`, Vespers): 3 stichera of the feast T2, then
+`Glory ..., of the venerable one, in Tone VI` ("O venerable father, word of thy
+corrections hath gone forth…"), then `Both now ..., of the feast, in Tone V`
+("Disclosing a little of the radiance…"). Then the three concluding troparia.
+
+What we hold for comm 1621:
+
+| id | order | is | should be |
+|---|---|---|---|
+| 8946/8947/8948 | 1,2,3 | the 3 feast stichera | correct |
+| **8949** | 4 | Troparion of the holy martyrs | **delete** |
+| **8950** | 0 (Glory) | Troparion of the venerable one | **delete** |
+| **8951** | -1 (Now) | Troparion of the feast | **delete** |
+| — | 0 | *missing* | **insert** the T6 Glory |
+| — | -1 | *missing* | **insert** the T5 Both now |
+
+So each date is roughly 3 deletes + 2 inserts, not the 1-2 deletes the burn-down
+implies. Estimated **~30 deletes and ~30 inserts across the 15 dates.**
+
+### Plan
+
+1. Cache the 15 source PDFs under `reference/` so the evidence is reviewable and
+   the work is reproducible without re-fetching.
+2. Per date, extract the true aposticha `Glory` / `Both now` with tone and label,
+   and the troparia to delete. One reversible SQL migration per date, not a bulk
+   pattern delete.
+3. Re-render each date and diff before/after — a full-corpus label/text diff, not
+   only the audit, per the N3 lesson.
+4. **Then** write the closing rule. The catchable signal is structural: a
+   `stichera` row whose text also appears in the source's troparia block. Since
+   the source is not in the repo, the durable in-repo proxy is a `troparia`-table
+   text match plus the known generic-troparion incipits ("In their sufferings,
+   Thy martyrs O Lord", "With the streams of thy tears", "In thee, O father, the
+   image of God was preserved"). Per N4, falsify it against these 13 rows before
+   trusting a green.
+
+**Not started on the repair.** This entry is the sizing and the evidence.

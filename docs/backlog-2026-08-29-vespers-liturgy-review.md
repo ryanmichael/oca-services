@@ -534,8 +534,8 @@ troparion and its kontakion — the archive is unambiguous (12 orders, all readi
 on `lit.hasCocelebratedOverlay`, a hand-curated signal in
 `liturgy-from-orthocal.js`, and it does not fire on plainly polyeleos Sundays:
 **2026-07-05 (Sergius), 2026-07-26 (Jacob Netsvetov), 2026-08-09 (Herman)** all
-keep the patron kontakion where their orders drop it. Related to
-[the principal-saint picker gap](../memory/…) — same under-ranking.
+keep the patron kontakion where their orders drop it. Same under-ranking as the
+principal-saint picker gap (memory: `project_principal_saint_picker_2026_06_20`).
 
 **`getFeastRank` is not the fix.** Measured over all 131 archive orders that
 print a Church troparion: rank ∈ {polyeleos, vigil} agrees with the order's

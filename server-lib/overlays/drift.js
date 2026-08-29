@@ -785,10 +785,10 @@ const RUBRIC_BLEED_BURNDOWN = new Map([
   // 8950, 8951 (8-12) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0812-aposticha.sql
   // 9067 (9-03) FIXED 2026-08-29 — same migration
   // 9253 (10-11) FIXED 2026-08-29 — same migration
-  [9274, 'N1 — 10-15 Ven. Euthymius the New, aposticha order=0 (Glory slot)'],
-  [9305, 'N1 — 10-22 St. Averkios, lordICall order=0 (Glory slot)'],
-  [9352, 'N1 — 11-04 Hieromartyr Seraphim, aposticha order=0 (Glory slot)'],
-  [9377, 'N1 — 11-07 33 Martyrs of Melitene, lordICall order=0 (Glory slot)'],
+  // 9274 (10-15) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-final-four.sql
+  // 9305 (10-22) FIXED 2026-08-29 — same migration
+  // 9352 (11-04) FIXED 2026-08-29 — same migration
+  // 9377 (11-07) FIXED 2026-08-29 — same migration
 ]);
 
 // Rubric prose glued into sung stichera/troparia text. Fires on the scrape

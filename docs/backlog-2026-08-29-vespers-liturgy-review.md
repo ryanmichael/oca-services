@@ -81,37 +81,79 @@ fire, before or after the fix.
 
 ---
 
-## P0 — N2. Vespers Troparia drop the Forerunner too
+## P0 — N2. A leavetaking inherits nothing — ATTEMPTED, REVERTED, now specced
 
-**NEW · ⇢ same ~20 afterfeast dates · ↻ annual**
+**⇢ ~20 dates · ↻ annual · attempt reverted 2026-08-29, findings below**
 
-The [8-22 item 1](backlog-august-2026-service-review.md) recorded that 8-30's
-**Liturgy** loses the Forerunner. It also loses him at **Vespers**, which that
-review did not reach:
+The parish sings the Forerunner's Troparion T2 at Vespers **and** the Liturgy, and
+his Kontakion T5 at the Liturgy (director's books, 8-29 pp.11-12 and 8-30 pp.3-4,
+p.8). We emit none of the three. Confirmed against
+`reference/orders/2026-0830-order-services.txt`.
 
-| Slot | Order appoints | We render |
+### What the attempt established
+
+**The machinery already exists and was simply inert.** `liturgy-from-orthocal.js`
+resolves a `feastCycleComm` by matching `FEAST_CYCLE_TITLE` —
+`/^(?:Afterfeast|Forefeast|Leavetaking|Midfeast|Postfeast) /` — against the day's
+commemorations, and sings its troparion and kontakion. There are **65 such rows**
+in `commemorations`, but only for Great Feasts. **8-30 has none**, so nothing
+fired. This was never a missing-hymn problem: the Forerunner's troparion and
+kontakion sit on comm 1756 in both registers (39535/2849, 39534/2850).
+
+**Adding the row is necessary and not sufficient.** With an
+`Afterfeast of the Beheading…` commemoration inserted and the hymns copied onto
+it, both hymns appeared — and two things broke:
+
+| | Order appoints | We produced |
 |---|---|---|
-| Glory | Troparion of the Forerunner, **Tone 2** | Troparion of St Alexander, Tone 4 |
-| Now and ever | Resurrectional Dismissal Theotokion, **Tone 2** | same hymn, Tone 4 |
+| Vespers Troparia | Res T4 · **Glory Forerunner T2** · Now Theotokion T2 | Res T4 · Glory Saints T4 · **Now Forerunner T2**, Theotokion GONE |
+| Liturgy Kontakia | … Forerunner T5 · Glory Saints T8 · **Now "Steadfast Protectress"** | … Glory Patron · **Now Forerunner T5**, Protectress GONE |
 
-The Theotokion is downstream — it keys off the preceding Glory's tone (the
-recorded `dismissal-theotokion-keyed-by-troparion-tone` divergence). Fix the
-Glory and the tone follows. **One root cause, not two.**
+**Root cause of the mismatch — the real finding.** The window mechanism assumes
+the **Great Feast** pattern, where the feast's kontakion claims "Now and ever…"
+and displaces the Kontakion-Theotokion (correct for 8-16 Dormition, 8-09 Herman
+inside the Transfiguration afterfeast). The Beheading is **not** one of the Twelve
+Great Feasts, and its order keeps the Theotokion at "Now and ever…" with the
+Forerunner sitting *ahead of* the Glory.
 
-Same root cause as the Liturgy gap: **no afterfeast layer**. Every missing text
-already exists in `oca.db` under 8-29, commemoration id 1756:
+A `windowClaimsNowAndEver()` predicate — a Great-Feast allowlist gating the
+`feastCycle: true` flag — was written and unit-checked against all 14 window
+titles in the DB. It is correct, and it is **not enough**.
 
-| Needed | Row |
-|---|---|
-| Vespers Troparia Glory · Liturgy Troparion, T2 | `troparia` id 39535 |
-| Liturgy Kontakion, T5 | `troparia` id 39534 |
+### Why it was reverted, and what N2 actually needs
 
-**This is the same `afterfeastOf` work as 8-22 item 1** — do not open a second
-track. This entry only widens its acceptance criteria.
+`api-liturgy.js` emits the Sunday kontakia as exactly:
 
-**Verify:** 8-30 Vespers Troparia read Resurrection T4 / Glory Forerunner T2 /
-Now-and-ever Theotokion T2; Liturgy troparia include the Forerunner T2 and
-kontakia the Forerunner T5.
+```js
+lit.kontakia = [ resK?, extraK?, gloryK, theoK? ];   // ONE extra
+```
+
+8-30 needs **four** kontakia — Resurrection, Patron of the Temple, Forerunner,
+Saints — plus the Theotokion. One would be silently dropped. Making N2 correct
+therefore means **reworking the Sunday-kontakia restructure to carry N extras in
+rank order**, which touches every Sunday in the calendar.
+
+That is the real shape of this item, and it is larger than the backlog's original
+"resolve proper hymns from the feast day before any generic fallback".
+
+**Scoped work, in order:**
+1. Rework the restructure to emit an ordered list of N kontakia, not a fixed
+   4-slot template. Snapshot-diff the year — this is the risky step.
+2. Land `windowClaimsNowAndEver()` (written, verified, reverted with the rest —
+   recover it from this session's diff) and gate `feastCycle` on it.
+3. Add the `Afterfeast of the Beheading…` commemoration + hymns (one INSERT,
+   template: comm 1573, Afterfeast of the Transfiguration).
+4. The Vespers troparia path needs the same Glory-vs-Now distinction; it is a
+   separate code path from the Liturgy restructure.
+
+**Verify:** 8-30 Vespers = Res T4 / Glory Forerunner T2 / Now Theotokion T2.
+8-30 Liturgy kontakia = Res / Patron / Forerunner T5 / Glory Saints T8 /
+Now "Steadfast Protectress" T6. And 8-16, 8-09, 8-23 must not move.
+
+**Rule that closes it:** unchanged — the General Menaion generic fallback must
+never fire on a date whose principal is an afterfeast, leavetaking or feast
+window. Add: a feast window must never displace the Kontakion-Theotokion unless
+its feast is a Great Feast.
 
 ---
 

@@ -922,3 +922,60 @@ implies. Estimated **~30 deletes and ~30 inserts across the 15 dates.**
    trusting a green.
 
 **Not started on the repair.** This entry is the sizing and the evidence.
+
+
+---
+
+## ✅ N1 — 8-12 REPAIRED (first of 15). Three findings the repair itself produced.
+
+`storage/migrations/2026-08-29-n1-0812-aposticha.sql`. Deleted rows 8949, 8950,
+8951 (concluding troparia, not stichera); inserted the two real aposticha hymns
+the parser had evicted — `Glory ..., of the venerable one, Tone VI` and
+`Both now ..., of the feast, Tone V`. Removed rows preserved verbatim in
+`audit/misparsed-troparia-rows.json`, following the `rubric-bleed-tails.json`
+precedent. DB backup: `storage/oca.db.bak.2026-08-29-n1-0812`.
+
+**Checked before deleting, and it mattered.** 8951's text (the feast troparion)
+already exists as troparia 39247/39249. **8949 and 8950 exist nowhere else in
+`troparia`.** 8950 is St Maximus's troparion Tone VIII — and the source header
+says Maximus *is* commemorated on 8-12, "transferred to this date because of the
+leave-taking", yet we had **no commemoration row for him**. A bulk delete would
+have destroyed a saint's only troparion. Inserted the commemoration and re-homed
+the troparion. 8949 is the generic martyrs troparion; comm 1622 already carries
+the martyrs' own proper (39326/2627), so nothing functional was lost.
+
+### N15 — three defects this exposed, all open
+
+1. **A menaion aposticha `order=-1` is unreachable on a weekday.**
+   `server-lib/assemble/for-date.js` consults it only under
+   `isSaturdayInjection && !isGreatFeast`; the weekday branch always re-keys to
+   the Octoechos Theotokion at the Glory tone. Its comment claims "the saint's-own
+   order=-1 Theotokion would have been used above if present" — which is false off
+   a Saturday. So the correct Tone V feast Both-now now sits in the DB and does
+   not render on 8-12 (a Tuesday), where the source plainly appoints it. Sibling
+   of N13; affects every weekday afterfeast.
+
+2. **The `Stichera label↔commemoration subject match` rule advises a fix that
+   would delete the hymn.** With the Glory labelled "the venerable Maximus" the
+   rule fired: *"reassign these stichera to 2641"*. Tested it — the assembler
+   reads only the PRINCIPAL commemoration's stichera, so moving the row makes the
+   hymn **vanish from the service**. The rule needs a guard: never advise
+   reassignment to a commemoration that is not the day's principal. Third entry
+   in the N4 family, and the sharpest: not a rule that fails to fire, a rule whose
+   advice is actively wrong.
+
+3. **A source-faithful label renders as the feast's title.** "of the venerable
+   one" has no distinguishing content word, so `preferRowLabel` correctly keeps
+   the slot title — St Maximus's Glory prints under "Afterfeast of the
+   Transfiguration". Left as-is rather than inventing a label with his name,
+   which would have tripped defect 2. The real fix is defect 2's guard, after
+   which the row can carry his name.
+
+### Cost, measured on the first date
+
+One date took: fetch + read the source block, cross-check three deletions against
+`troparia` corpus-wide, discover and insert a missing commemoration, author 2
+inserts + 1 commemoration + 1 troparion, preserve the removed rows, retire two
+burn-down entries, and chase two render regressions. **14 dates remain.** The
+per-date shape is now known, but it is not mechanical — 8-12 alone turned up a
+missing saint and two renderer defects.

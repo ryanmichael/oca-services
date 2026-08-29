@@ -783,8 +783,7 @@ const RUBRIC_BLEED_BURNDOWN = new Map([
   [8564, 'N1 — 5-09 Prophet Isaiah, lordICall order=0 (Glory slot)'],
   [8738, 'N1 — 6-25 Virgin Martyr Febronia, aposticha order=0 (Glory slot)'],
   [8852, 'N1 — 7-18 Martyr Emilian, lordICall order=3 (numbered slot)'],
-  [8950, 'N1 — 8-12 Afterfeast of Transfiguration, aposticha order=0 (Glory slot)'],
-  [8951, 'N1 — 8-12 Afterfeast of Transfiguration, aposticha order=-1 (Theotokion slot)'],
+  // 8950, 8951 (8-12) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0812-aposticha.sql
   [9067, 'N1 — 9-03 Hieromartyr Anthimus, aposticha order=0 (Glory slot)'],
   [9253, 'N1 — 10-11 Fathers of the 7th Council, lordICall order=0 (Glory slot)'],
   [9274, 'N1 — 10-15 Ven. Euthymius the New, aposticha order=0 (Glory slot)'],

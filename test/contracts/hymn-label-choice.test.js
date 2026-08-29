@@ -18,7 +18,7 @@ const { spawn } = require('node:child_process');
 
 const { labelSubject, preferRowLabel } = require('../../assemblers/_shared/hymn-label');
 
-const PORT = 3096;
+const PORT = 3102; // distinct: sunday-kontakia 3096, vigil-rank 3100, beatitudes-feast-blend 3101
 let serverProcess;
 const TYLER = 'st-john-damascus-tyler';
 

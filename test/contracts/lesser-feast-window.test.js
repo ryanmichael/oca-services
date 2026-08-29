@@ -23,7 +23,7 @@ const { spawn } = require('node:child_process');
 const { windowClaimsNowAndEver } = require('../../server-lib/sources/menaion-principal');
 const { openDb } = require('../../server-lib/cache/sqlite');
 
-const PORT = 3097; // distinct from patron-of-temple (3098), smoke (3099), dev (3000)
+const PORT = 3103; // distinct: confess-first 3097, vigil-rank 3100, beatitudes-feast-blend 3101, hymn-label 3102
 let serverProcess;
 
 const TYLER = 'st-john-damascus-tyler';

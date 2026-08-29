@@ -775,9 +775,8 @@ const KNOWN_RUBRIC_BLEED = new Set([]);
 // is empty, delete the list and the `deferred` branch with it.
 const RUBRIC_BLEED_BURNDOWN = new Map([
   [6971, 'N1 — 1-30 Ecumenical Teachers, aposticha order=0 (Glory slot)'],
-  [8275, 'N1 — 1-13 Afterfeast of Theophany, aposticha order=0 (Glory slot)'],
-  [8276, 'N1 — 1-13 Afterfeast of Theophany, aposticha order=-1 (Theotokion slot)'],
-  [8320, 'N1 — 1-22 Apostle Timothy, aposticha order=0 (Glory slot)'],
+  // 8275, 8276 (1-13) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0113-aposticha.sql
+  // 8320 (1-22) FIXED 2026-08-29 — storage/migrations/2026-08-29-n1-0122-aposticha.sql
   [8530, 'N1 — 4-26 Myrrhbearing Women, lordICall order=0 (Glory slot)'],
   [8537, 'N1 — 4-28 Apostles Jason and Sosipater, lordICall order=0 (Glory slot)'],
   [8564, 'N1 — 5-09 Prophet Isaiah, lordICall order=0 (Glory slot)'],

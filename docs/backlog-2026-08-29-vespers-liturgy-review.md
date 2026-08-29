@@ -799,3 +799,39 @@ none created by `de4e6e1`, all now on a choir sheet:
 digit, and a row at `order=-1` (the Theotokion slot) must not carry a saint
 descriptor. Both are cheap `validate-schemas` gates — but per N4, falsify each
 against the rows above before trusting a green.
+
+
+---
+
+## ✅ N9 — DONE: the snapshot generator is no longer stale
+
+`scripts/capture-rubrics-snapshot.js` reproduced typed-column logic only, so
+re-running it dropped every **registry-only** rubric — and INV-D then passed
+against its own weakened expectation. A green INV-D proved nothing about those
+keys.
+
+**Scope was wider than the item said.** N9 named three
+(`gloryAfterLittleLitany`, `hoursPrecedeService`, `licNoLeadingRepeat`). Auditing
+all 14 registry entries against the script found a fourth registry-only rubric,
+**`servesLitya`**, which no parish has set to a non-default value yet — so it
+would have been the *next* silent drop rather than a current one. Also checked
+and cleared: `paschalCommunionYearRound` is correctly absent, because production
+skips every rubric marked `consumer: 'orphan-unused'`, and `defaultPronoun`
+equals its default for the only parish in the snapshot.
+
+**Proof the fix works:** re-running the generator now produces a file
+**byte-identical** to the committed snapshot. That is the whole claim, and it is
+checkable in one command.
+
+**Kept hand-written on purpose.** The obvious fix — loop over the registry —
+would make the script a second copy of production `buildRubrics()`, and INV-D
+would compare the registry path against itself. A tautology that asserts nothing
+is worse than the staleness it replaces. The header now says so.
+
+**Rule that closes it: INV-F**, asserting the generator reproduces the committed
+snapshot for every parish. Staleness is now a test failure rather than a
+footgun. Falsified by removing one clause: **INV-F fails while INV-D stays
+green** — which is exactly the hole, demonstrated rather than described.
+
+The `--force` guard stays as a backstop for what a future registry addition
+looks like; verified it still refuses when a key would be lost.

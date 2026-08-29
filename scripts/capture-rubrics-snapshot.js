@@ -6,17 +6,21 @@
 // registry-driven path must produce deep-equal results — enforced by
 // test/contracts/rubric-registry.test.js (INV-D).
 //
-// ⚠ THIS SCRIPT IS STALE — DO NOT RUN IT BLIND. It reproduces typed-column
-// logic only, but several rubrics are now REGISTRY-ONLY with no dbColumn
-// (gloryAfterLittleLitany, hoursPrecedeService, licNoLeadingRepeat as of
-// 2026-08-29). Those can only come from `parish_rubrics`, so a plain re-run
-// DROPS them from the snapshot — silently weakening INV-D, which then passes
-// against the weakened expectation. The committed snapshot is hand-maintained
-// for those keys.
+// This script WAS stale: it reproduced typed-column logic only, so the
+// REGISTRY-ONLY rubrics (no dbColumn — hoursPrecedeService, licNoLeadingRepeat,
+// gloryAfterLittleLitany, servesLitya) vanished on a plain re-run, silently
+// weakening INV-D so it then passed against its own weakened expectation.
+// Found 2026-08-29 while fixing N5; fixed the same day (backlog N9).
 //
-// The --force guard below refuses to write when any parish would lose keys.
-// If you need to regenerate, teach legacyBuildRubrics the registry-only
-// rubrics first. Found 2026-08-29 while fixing N5.
+// legacyBuildRubrics now covers every rubric the production path emits. The
+// --force guard below stays as a backstop: it refuses to write when any parish
+// would lose a key the committed snapshot asserts, which is what a future
+// registry addition would look like.
+//
+// ⚠ Keep the clauses below HAND-WRITTEN, one per rubric. Looping over the
+// registry would turn this file into a second copy of production
+// buildRubrics(), and INV-D would then compare the registry path against
+// itself — a tautology that asserts nothing. The independence IS the point.
 
 const fs   = require('fs');
 const path = require('path');
@@ -43,6 +47,30 @@ function legacyBuildRubrics(row, picks = {}) {
     const list = row.rubric_omit_catechumens_seasons.split(',').map(s => s.trim()).filter(Boolean);
     if (list.length) r.omitCatechumensSeasons = list;
   }
+  // Registry-only rubrics. No typed column exists for these, so `parish_rubrics`
+  // is the only source. Each mirrors production's rule — emit only when the
+  // value differs from the registry default — but is written out by hand; see
+  // the header on why this must not become a registry loop.
+  const picked = (id) => Object.prototype.hasOwnProperty.call(picks, id);
+  if (picked('hoursPrecedeService') && coerce(picks.hoursPrecedeService, 'boolean') === true)
+    r.opening = { ...(r.opening || {}), hoursPrecede: true };
+  if (picked('licNoLeadingRepeat') && coerce(picks.licNoLeadingRepeat, 'boolean') === true)
+    r.lordICall = { ...(r.lordICall || {}), noLeadingRepeat: true };
+  if (picked('gloryAfterLittleLitany') && coerce(picks.gloryAfterLittleLitany, 'boolean') === true)
+    r.antiphons = { ...(r.antiphons || {}), gloryAfterLittleLitany: true };
+  // enum, default 'always' — a parish that never serves a Litya, or serves one
+  // only on the Great Feasts, is the non-default case worth recording.
+  if (picked('servesLitya') && picks.servesLitya && picks.servesLitya !== 'always')
+    r.vespers = { ...(r.vespers || {}), servesLitya: picks.servesLitya };
+
+  // Typed column, enum, default 'tt'. Emitted only when the parish differs.
+  // (paschalCommunionYearRound is deliberately NOT here: production skips every
+  // rubric marked `consumer: 'orphan-unused'`, and that is the only one.)
+  {
+    const pronoun = picked('defaultPronoun') ? picks.defaultPronoun : row.rubric_default_pronoun;
+    if (pronoun && pronoun !== 'tt') r.defaultPronoun = pronoun;
+  }
+
   if (row.patron_natural_key && row.patron_title) {
     const resolved = resolvePatronByNaturalKey(row.patron_natural_key);
     r.temple = {

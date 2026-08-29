@@ -132,6 +132,37 @@ describe('Feature contract: rubric registry', () => {
     }
   });
 
+  it('INV-F: the snapshot generator reproduces the committed snapshot exactly', () => {
+    // INV-D is only as good as the snapshot it reads. Before 2026-08-29 the
+    // generator reproduced typed-column logic only, so re-running it DROPPED
+    // every registry-only rubric (hoursPrecedeService, licNoLeadingRepeat,
+    // gloryAfterLittleLitany, servesLitya) — and INV-D then passed against its
+    // own weakened expectation. A green INV-D proved nothing about those keys.
+    //
+    // This asserts the generator is not stale: its output for every parish must
+    // equal the committed snapshot. If someone adds a registry rubric and does
+    // not teach legacyBuildRubrics about it, this fails here rather than
+    // silently eroding INV-D. Backlog N9.
+    const snapshotPath = path.join(ROOT, 'test', 'contracts', '__snapshots__', 'rubrics-pre-refactor.json');
+    const expected = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+    const { legacyBuildRubrics } = require(path.join(ROOT, 'scripts', 'capture-rubrics-snapshot.js'));
+    const { getRubricPicks } = require(path.join(ROOT, 'server-lib', 'parishes', 'rubric-registry.js'));
+
+    const db = openDb();
+    try {
+      for (const parishId of Object.keys(expected)) {
+        const row = db.prepare('SELECT * FROM parish_settings WHERE parish_id = ?').get(parishId);
+        assert.ok(row, `parish ${parishId} missing from DB`);
+        const regenerated = legacyBuildRubrics(row, getRubricPicks(db, parishId));
+        assert.deepEqual(regenerated, expected[parishId],
+          `capture-rubrics-snapshot.js is STALE for ${parishId} — regenerating would change the snapshot ` +
+          `INV-D asserts against.\nregenerated: ${JSON.stringify(regenerated)}\ncommitted:   ${JSON.stringify(expected[parishId])}`);
+      }
+    } finally {
+      db.close();
+    }
+  });
+
   it('INV-D: registry path produces same buildRubrics result as legacy path (roundtrip)', () => {
     const snapshotPath = path.join(ROOT, 'test', 'contracts', '__snapshots__', 'rubrics-pre-refactor.json');
     const expected = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));

@@ -529,15 +529,49 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             // aposticha (slots: 0, now: undefined); for non-vigil weekday the
             // calendar entry ships an Octoechos Theotokion at the WEEK tone.
             // Either way, re-key/add the Now slot at the Glory tone + sung-eve
-            // weekday — Slavic rubric for both shapes (the saint's-own order=-1
-            // Theotokion would have been used above if present).
-            const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
-            apost.now = {
-              source: 'octoechos',
-              key:    `tone${apostGlory.tone}.${eve}.vespers.aposticha.theotokion`,
-              tone:   apostGlory.tone,
-              label:  'Theotokion',
-            };
+            // weekday — Slavic rubric for both shapes.
+            //
+            // The comment here used to claim "the saint's-own order=-1
+            // Theotokion would have been used above if present". That was false:
+            // the branch above is guarded by `isSaturdayInjection`, so on a
+            // weekday the Menaion's own order=-1 was never consulted and the
+            // Octoechos Theotokion always won. Inside an afterfeast the source
+            // plainly appoints the feast's sticheron there — 1-13 and 8-12 both
+            // print "Both now ..., of the feast" at Vespers on a weekday.
+            // Fixed 2026-08-29 (backlog N15).
+            //
+            // A Stavrotheotokion (Theotokion at the Cross) belongs to the days
+            // that commemorate the Crucifixion — liturgical Wednesday and
+            // Friday. Many Menaion order=-1 rows carry one as the saint's
+            // alternative; on any other weekday skip it and fall through to the
+            // Octoechos, mirroring the Saturday branch above.
+            const dow = calendarEntry.dayOfWeek;
+            const crossDay = dow === 'wednesday' || dow === 'friday';
+            const apostNowWeekday = sticheraData?.[0]?.stichera.find(
+              s => s.section === 'aposticha' && s.order === -1
+                && (crossDay || s.groupRole !== 'stavrotheotokion')
+            );
+            if (apostNowWeekday) {
+              apost.now = {
+                source: 'menaion', provenance: menaionProvenance,
+                key:    `auto.${date}.aposticha.now`,
+                tone:   apostNowWeekday.tone,
+                label:  'Theotokion',
+              };
+              autoSlot.aposticha.now = {
+                text:  apostNowWeekday.text,
+                tone:  apostNowWeekday.tone,
+                label: apostNowWeekday.label,
+              };
+            } else {
+              const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
+              apost.now = {
+                source: 'octoechos',
+                key:    `tone${apostGlory.tone}.${eve}.vespers.aposticha.theotokion`,
+                tone:   apostGlory.tone,
+                label:  'Theotokion',
+              };
+            }
           }
           autoSlot.aposticha.glory = { text: apostGlory.text, tone: apostGlory.tone, label: apostGlory.label };
         }

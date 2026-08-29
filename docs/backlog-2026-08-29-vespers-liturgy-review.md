@@ -979,3 +979,47 @@ inserts + 1 commemoration + 1 troparion, preserve the removed rows, retire two
 burn-down entries, and chase two render regressions. **14 dates remain.** The
 per-date shape is now known, but it is not mechanical — 8-12 alone turned up a
 missing saint and two renderer defects.
+
+
+---
+
+## ✅ N15 defect 1 — FIXED. The weekday Aposticha "Now and ever" now reads the Menaion.
+
+`server-lib/assemble/for-date.js` consulted the Menaion's own aposticha
+`order=-1` row only under `isSaturdayInjection`. On a weekday the Octoechos
+Theotokion always won — so inside an afterfeast the feast's own Both-now, which
+the source plainly appoints, never rendered. The branch's own comment claimed
+the opposite: *"the saint's-own order=-1 Theotokion would have been used above if
+present"*. It could not have been.
+
+A Stavrotheotokion is admitted only on liturgical Wednesday and Friday, mirroring
+the guard the Saturday branch already had.
+
+**21 days change**, all weekdays where the Menaion supplies its own Theotokion —
+including the two N1 dates repaired earlier, whose correct Both-now had been
+sitting in the DB unread.
+
+### Two data defects it surfaced, fixed in the same commit
+
+The moment the branch started reading these rows, two printed their rubric aloud:
+
+- **8457** (2-17) — `"; or this The unblemished heifer..."`. Also plainly a
+  Stavrotheotokion ("beholding her Bullock willingly nailed to the Tree") and
+  untagged, so it was rendering on a Tuesday. Text stripped and tagged
+  `group_role='stavrotheotokion'`; 2-16 correctly reverts to the Octoechos.
+- **9572** (12-30) — `"in the same tone: The Virgin who gave birth..."`.
+
+**Neither is caught by `RUBRIC_BLEED_PATTERNS`**: `"; or this"` carries no genre
+word, and `"in the same tone:"` is lower-case where the existing pattern matches
+only the Roman-numeral form `in Tone VIII:`. Two more rows invisible to the rule,
+consistent with N1's finding that the burn-down list is a lower bound.
+
+**Rule that closes it:** contract `weekday-aposticha-theotokion` (5 INVs),
+including INV-4, which asserts on the *rendered* output that no Now-and-ever
+begins with a rubric fragment — deliberately not another pattern in
+`RUBRIC_BLEED_PATTERNS`, since that is precisely what both rows evaded.
+Falsified: disabling the branch fails INV-1 and INV-2 and leaves the three
+guards green.
+
+**N15 defects 2 and 3 remain open** (the drift rule whose advice deletes the
+hymn; the source-faithful label that renders as the feast's title).

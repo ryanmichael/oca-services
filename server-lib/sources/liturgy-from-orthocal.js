@@ -68,7 +68,8 @@ const {
 } = require('./propers');
 
 const { pickPrincipalByOrthocalOrder, applyPrincipalOverride,
-        FEAST_CYCLE_TITLE } = require('./menaion-principal');
+        FEAST_CYCLE_TITLE,
+        windowClaimsNowAndEver } = require('./menaion-principal');
 
 // Falls back from the menaion DB's `saint_type` column when it's missing —
 // most commonly on "Uncovering of the relics of …", "Translation of the relics
@@ -370,6 +371,14 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const principalIsFeastWindow =
     !!menaionPrincipal && FEAST_CYCLE_TITLE.test(menaionPrincipal.title || '');
 
+  // Being a window and CLAIMING "Now and ever…" are two different things: only
+  // a Great Feast's window displaces the Kontakion-Theotokion. See
+  // `windowClaimsNowAndEver`. `principalIsFeastWindow` still governs
+  // co-commemoration selection and overlay placement, which are about the
+  // window existing, not about which slot it takes.
+  const principalWindowClaimsNow =
+    !!menaionPrincipal && windowClaimsNowAndEver(menaionPrincipal.title);
+
   // Saints the OCA calendar ranks polyeleos who fall on a day whose principal
   // is a feast window, and who have NO stichera of their own. A
   // PRINCIPAL_OVERRIDES entry is the wrong tool for them: rebinding the
@@ -562,7 +571,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
         }
       }
       for (const { tone, text, titles } of groups.values()) {
-        const isWindow = principalIsFeastWindow
+        const isWindow = principalWindowClaimsNow
                       && titles.includes(menaionPrincipal.title);
         kontakia.push({
           tone, rubric: `Kontakion of ${joinTitles(titles)}, Tone ${tone}:`, text,
@@ -580,7 +589,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
         tone:   feastCycleKont.tone,
         rubric: `Kontakion of ${feastCycleComm.title}, Tone ${feastCycleKont.tone}:`,
         text:   feastCycleKont.text,
-        feastCycle: true,
+        // Untagged for a lesser feast's window: it is pushed last, so the
+        // Sunday restructure reads it as an ordinary kontakion, sings it ahead
+        // of the Glory, and leaves "Now and ever…" to the Theotokion — which
+        // is what the 2026-08-30 order prints for the Beheading.
+        ...(windowClaimsNowAndEver(feastCycleComm.title) ? { feastCycle: true } : {}),
       });
     }
   }

@@ -12,7 +12,8 @@ const { getMenaionRanked }                        = require('../sources/menaion'
 const { pickPrincipalByOrthocalOrder,
         applyPrincipalOverride,
         loadOrthocalForDate,
-        FEAST_CYCLE_TITLE }                       = require('../sources/menaion-principal');
+        FEAST_CYCLE_TITLE,
+        windowClaimsNowAndEver }                  = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
@@ -206,13 +207,40 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       const feastCycleComm = (ranked?.notable || []).find(
         c => c.id !== primary.id && FEAST_CYCLE_TITLE.test(c.title || ''));
       const feastCycleTrop = feastCycleComm?.troparia?.find(t => t.type === 'troparion');
-      if (feastCycleTrop) {
+
+      // ...but only a GREAT Feast's window claims "Now and ever…". A lesser
+      // feast's window takes the GLORY instead, ahead of the day's saint, and
+      // the resurrectional dismissal Theotokion still closes. The OCA order for
+      // 2026-08-30 — inside the Afterfeast of the Beheading of the Forerunner,
+      // which is not one of the Twelve — prints Great Vespers as:
+      //   Resurrectional Troparion, Tone 4
+      //   Glory… Troparion of the Forerunner, Tone 2
+      //   Now and ever… Resurrectional Dismissal Theotokion, Tone 2
+      // The Saints' troparion is not sung here at all; it appears at Matins and
+      // the Liturgy, where more than one saint hymn is printed.
+      const windowTakesNow = feastCycleTrop
+        && windowClaimsNowAndEver(feastCycleComm.title);
+      const windowTakesGlory = feastCycleTrop && !windowTakesNow;
+
+      if (windowTakesNow) {
         autoSlot.feastTroparion = {
           text:  feastCycleTrop.text,
           tone:  feastCycleTrop.tone,
           label: feastCycleComm.title,
         };
       }
+      if (windowTakesGlory) {
+        autoSlot.troparion = {
+          text:  feastCycleTrop.text,
+          tone:  feastCycleTrop.tone,
+          label: feastCycleComm.title,
+        };
+      }
+
+      // Whatever ends up at the Glory drives the label, and the tone the
+      // dismissal Theotokion is re-keyed to ("Богородичен по гласу Славы").
+      const gloryTone  = autoSlot.troparion.tone;
+      const gloryLabel = autoSlot.troparion.label;
 
       // Determine provenance label for dev-mode display
       const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
@@ -568,8 +596,8 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           order:    1,
           source:   'menaion', provenance: menaionProvenance,
           key:      `auto.${date}.troparion`,
-          tone:     troparion.tone,
-          label:    primary.title,
+          tone:     gloryTone,
+          label:    gloryLabel,
         });
         slots.push(autoSlot.feastTroparion ? {
           position: 'now',
@@ -580,8 +608,8 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         } : {
           position: 'now',
           source:   'octoechos',
-          key:      `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
-          tone:     troparion.tone,
+          key:      `tone${gloryTone}.saturday.vespers.dismissalTheotokion`,
+          tone:     gloryTone,
           label:    'Dismissal Theotokion',
         });
       } else if (slots.some(s => s.position === 'glory')) {
@@ -610,16 +638,16 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             label:       autoSlot.feastTroparion.label,
           } : {
             ...slots[nowIdx],
-            key:  `tone${troparion.tone}.saturday.vespers.dismissalTheotokion`,
-            tone: troparion.tone,
+            key:  `tone${gloryTone}.saturday.vespers.dismissalTheotokion`,
+            tone: gloryTone,
           };
         }
         slots.splice(insertAt, 0, {
           position: 'glory',
           source:   'menaion', provenance: menaionProvenance,
           key:      `auto.${date}.troparion`,
-          tone:     troparion.tone,
-          label:    primary.title,
+          tone:     gloryTone,
+          label:    gloryLabel,
         });
       }
 

@@ -140,6 +140,46 @@ const MOVEABLE_CYCLE_TITLE = new RegExp(
 const FEAST_CYCLE_TITLE =
   /^(?:Afterfeast|Forefeast|Leavetaking|Midfeast|Postfeast) /;
 
+// ...but only a GREAT Feast's window claims "Now and ever…" outright,
+// displacing the Kontakion-Theotokion ("Protection of Christians…") and the
+// Vespers dismissal Theotokion. A lesser feast's window is sung in an ordinary
+// slot ahead of the Glory, and the Theotokion still closes.
+//
+// Evidence, `reference/orders/`: all 16 orders that print a window kontakion
+// give it "Now and ever…", and every one of them is a Great Feast (Theophany,
+// Nativity, Dormition, Entry, Meeting, Annunciation, Nativity of the
+// Theotokos, Midfeast). Against that, 2026-0830 — inside the Afterfeast of the
+// Beheading of the Forerunner, which is NOT one of the Twelve — reads
+// "Kontakion of the Forerunner, Tone 5" as a plain line and closes with
+// "Now and ever… 'Steadfast Protectress…', Tone 6".
+//
+// Of the 27 window titles in `commemorations` today, exactly one is not a
+// Great Feast: "Forefeast of the Procession of the Honorable and Lifegiving
+// Cross of the Lord" (August 1). The Beheading window is the second, once it
+// is inserted.
+const GREAT_FEAST_WINDOW = new RegExp(
+  '^(?:Afterfeast|Forefeast|Leavetaking|Midfeast|Postfeast)\\b.*\\b(?:'
+  + 'Dormition'
+  + '|Elevation of the Cross'
+  + '|Entry (?:of|into) the'
+  + '|Meeting of our Lord'
+  + '|Nativity of our Lord'
+  + '|Nativity of the (?:Mother of God|Theotokos)'
+  + '|Theophany'
+  + '|Transfiguration'
+  + '|Annunciation'
+  + '|Pentecost'
+  + ')\\b', 'i');
+
+/**
+ * True when this feast-window commemoration's kontakion/troparion takes the
+ * "Now and ever…" slot rather than an ordinary slot ahead of the Glory.
+ * Non-window titles are always false.
+ */
+function windowClaimsNowAndEver(title) {
+  return GREAT_FEAST_WINDOW.test(title || '');
+}
+
 // Co-celebration hints from orthocal use "/" or ";" as separators between
 // the day's commemorations, with the FIRST segment being the primary by
 // OCA typikon precedence. Example: "St Tikhon, Patriarch of Moscow / Holy
@@ -293,4 +333,5 @@ module.exports = {
   tokenizeTitle,
   MOVEABLE_CYCLE_TITLE,
   FEAST_CYCLE_TITLE,
+  windowClaimsNowAndEver,
 };

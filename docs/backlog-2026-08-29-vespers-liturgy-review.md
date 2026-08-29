@@ -505,13 +505,11 @@ Falsify it on the failing row first.
 
 # Added 2026-08-29 (later session) — N2 step 1 landed, two new items
 
-## ✅ N2 step 1 — DONE (`d0be409`)
+## ✅ N2 — DONE end to end (`d0be409`, `c784acf`)
 
 The Sunday-kontakia restructure now carries **N** extras in rank order instead
 of a fixed one-slot template, and the day's own kontakion takes the Glory with
-the patron read above it. The blocker on N2 is cleared; steps 2-4
-(`windowClaimsNowAndEver()`, the `Afterfeast of the Beheading…` INSERT, and the
-Vespers troparia path) are unchanged and still open.
+the patron read above it. The blocker on N2 was cleared by step 1; steps 2-4 landed in `c784acf`.
 
 Measured blast radius: **0** dates change with no parish overlay; **34** Sundays
 change for Tyler, all the patron moving off the Glory onto the line above it.
@@ -589,3 +587,62 @@ this is a correctness gap, not a regression.
 
 **Rule that closes it:** same oracle as N11 — diff our connector placement
 against the archive order for every date that has one.
+
+---
+
+## ✅ N2 steps 2-4 — DONE (`c784acf`)
+
+`windowClaimsNowAndEver()` gates the "Now and ever…" claim on the feast being
+one of the Twelve; the Afterfeast of the Beheading commemoration and its two
+hymns are in `oca.db` (migration
+`storage/migrations/2026-08-29-afterfeast-beheading.sql`); and the Vespers
+troparia path — a separate code path from the Liturgy restructure, as the spec
+predicted — now distinguishes Glory from Now.
+
+**8-30 matches the order end to end**: Vespers Res T4 / Glory Forerunner T2 /
+Now Theotokion T2; Liturgy troparia Res / Church / Forerunner / Saints; Liturgy
+kontakia Res / Church / Forerunner T5 / Glory Saints T8 / Now "Steadfast
+Protectress" T6.
+
+**Blast radius:** exactly one day moves in Vespers and one in the Liturgy, with
+and without a parish overlay. 8-16, 8-09 and 8-23 do not move.
+
+Closing rule shipped as the `lesser-feast-window` contract (7 INVs, spec in
+`features/lesser-feast-window.md`), asserted by position and **falsified**
+before being trusted: reverting the predicate fails INV-1/2/4/7 and leaves the
+two over-fire guards green.
+
+One correction to the original spec, worth recording: the lesser window does not
+simply "not claim Now and ever". It takes a **different slot in each service** —
+the Glory at Great Vespers (one saint hymn printed), an unconnected line ahead
+of the Glory at the Liturgy (several printed). Reading only the Liturgy half of
+the order would have produced a wrong Vespers.
+
+---
+
+## P1 — N13. Sunday Matins "God is the Lord" troparia carry no saint at all
+
+**NEW · ⇢ every Sunday · found while verifying N2**
+
+8-30 Matins renders the Resurrectional troparion three times — Glory and Now
+included — and neither the Forerunner nor the Saints. The order appoints:
+
+```
+Resurrectional Troparion, Tone 4
+Troparion of the Forerunner, Tone 2
+Glory… Troparion of the Saints, Tone 4
+Now and ever… Resurrectional Dismissal Theotokion, Tone 4
+```
+
+**Not a regression** — verified by rendering against the pre-N2 code with the
+new commemoration row removed; the output is byte-identical. The Sunday Matins
+troparia path simply never consulted the day's commemorations. `matins-spec.js`
+reads `menaionData.feastTroparion` for the afterfeast case only.
+
+Sibling of the Vespers path fixed in `c784acf`, and the third service in the same
+family, so the same Glory-vs-Now distinction applies: at Matins the order prints
+several saint hymns, so a lesser window sits ahead of the Glory and the day's
+saints keep it — the Liturgy shape, not the Vespers shape.
+
+**Rule that closes it:** the `lesser-feast-window` contract should grow a Matins
+INV once the path carries saints at all.

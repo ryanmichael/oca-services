@@ -1,5 +1,6 @@
 'use strict';
 
+const { labelSubject, preferRowLabel } = require('../_shared/hymn-label');
 const makeBlock          = require('../_shared/make-block');
 const { resolveSource }  = require('../_shared/resolve');
 
@@ -68,13 +69,10 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
   // read out of the "(for X)" / "from X" form and everything after a comma —
   // the attribution — is dropped, along with any trailing melody incipit in a
   // second parenthetical ("(With what crowns)", "(Joseph of Arimathea)").
-  const labelSubject = (label) => {
-    if (!label) return null;
-    const m = /(?:^|\()\s*(?:for|from)\s+(.+?)\s*(?:,|\)|$)/i.exec(label);
-    if (!m) return null;
-    return m[1].toLowerCase().replace(/[^a-z ]/g, '').trim() || null;
-  };
-
+  // Label choice — which of the row's own label and the slot's to print — is
+  // shared with aposticha.js. See assemblers/_shared/hymn-label.js for why a
+  // bare descriptor only wins when it describes someone other than the slot's
+  // own commemoration.
   const mixedSlots = new Set();
   for (const slot of new Set(Object.values(verseMap).map(v => v.slot))) {
     const subjects = new Set(
@@ -107,7 +105,7 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
         // Mixed slot (see mixedSlots above) → the sticheron's own label; every
         // other slot renders exactly as before.
         { tone: hymn.tone ?? slot.tone, source: slot.source,
-          label: mixedSlots.has(slot) ? (hymn.label || slot.label) : slot.label,
+          label: mixedSlots.has(slot) ? preferRowLabel(hymn.label, slot.label) : slot.label,
           provenance: slot.provenance || hymn.provenance }
       ));
     }

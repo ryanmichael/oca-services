@@ -1,19 +1,35 @@
 'use strict';
 
+const { labelSubject, preferRowLabel } = require('../_shared/hymn-label');
 const makeBlock                    = require('../_shared/make-block');
 const { resolveSource, deepGet }   = require('../_shared/resolve');
 
 function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
-  // A sticheron whose own label names its commemoration in the "(for X)" /
-  // "from X" form beats the slot's label, which carries the principal's title.
-  // Inside a feast window that title is wrong for whichever hymns belong to the
-  // co-celebrated saint: on 2026-08-16 the aposticha Glory is the Image's
-  // ("(for the Image)") and the Now-and-ever is the Dormition's ("(for the
-  // Dormition, by the Emperor Leo the Wise)"), and both printed under a single
-  // wrong heading. Labels without that form — the generic category incipits
-  // that most menaion rows carry — never win. Same rule as lord-i-call.js.
+  // A sticheron whose own label names a DIFFERENT commemoration than the slot's
+  // beats the slot's label, which carries the principal's title. Inside a feast
+  // window that title is wrong for whichever hymns belong to the co-celebrated
+  // saint: on 2026-08-16 the aposticha Glory is the Image's and the
+  // Now-and-ever is the Dormition's, and both printed under a single wrong
+  // heading.
+  //
+  // Until 2026-08-29 this only recognised the "(for X)" / "from X" form, so the
+  // bare-descriptor family never won and 2026-08-30's aposticha Glory — row
+  // 9041, "the holy forerunner" — printed as "Saint Alexander, Patriarch of
+  // Constantinople". Same rule as lord-i-call.js, now literally the same code.
+  const preferOwn = (own, slot) =>
+    (labelSubject(own) ? preferRowLabel(own, slot) : (slot || own));
+
+  // The "Now and ever" slot keeps the NARROW rule: only an explicit "(for X)" /
+  // "from X" label may override it. Its heading is structural — what is sung
+  // there is defined by the position — so a bare descriptor must never win.
+  // 2026-11-27 row 9466 is plainly a Theotokion ("Thou art mine aid and
+  // protection, O all-immaculate one") but carries the mis-keyed label "the
+  // venerable martyr", which would have printed over the Theotokion. The
+  // explicit form still wins, because 2026-08-16 legitimately sings the
+  // Dormition's sticheron there: "(for the Dormition, by the Emperor Leo the
+  // Wise)".
   const namesCommemoration = (label) => !!label && /(?:^|\()\s*(?:for|from)\s+/i.test(label);
-  const preferOwn = (own, slot) => (namesCommemoration(own) ? own : (slot || own));
+  const preferOwnAtNow = (own, slot) => (namesCommemoration(own) ? own : (slot || own));
 
   const section = 'Aposticha';
   const blocks = [];
@@ -132,7 +148,7 @@ function assembleAposticha(apostichaSpec, calendarDay, fixedTexts, sources) {
       fixedTexts.doxology.nowOnly));
     if (nowSource) {
       blocks.push(makeBlock('apost-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: nowSource.tone || apostichaSpec.now.tone, source: nowSrc, label: preferOwn(nowSource.label, apostichaSpec.now.label), provenance: apostichaSpec.now.provenance || nowSource.provenance }));
+        nowSource.text, { tone: nowSource.tone || apostichaSpec.now.tone, source: nowSrc, label: preferOwnAtNow(nowSource.label, apostichaSpec.now.label), provenance: apostichaSpec.now.provenance || nowSource.provenance }));
     }
   }
 

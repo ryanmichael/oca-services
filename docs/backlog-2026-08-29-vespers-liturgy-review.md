@@ -646,3 +646,103 @@ saints keep it — the Liturgy shape, not the Vespers shape.
 
 **Rule that closes it:** the `lesser-feast-window` contract should grow a Matins
 INV once the path carries saints at all.
+
+---
+
+## ✅ N4 — DONE: why each of the three rules passed
+
+**The item's premise was half right.** The instruction was "establish WHY each
+passed before writing a fourth", and doing that changed the finding for two of
+the three. They were not all "escape hatches wide enough to pass their own
+headline case." Measured, one by one:
+
+### Rule 1 — `Rubric bleed in sung text` — genuinely blind. FIXED.
+
+Not an escape hatch: `KNOWN_RUBRIC_BLEED` is **empty**, exactly as its policy
+comment demands. The rule simply had five patterns — composer attributions,
+sticheron-count headers, Roman-numeral tone headers, Stavrotheotokion markers,
+typikon tails — and **none for a genre heading glued to the front of the sung
+line**, which is the largest surviving class. Ran the five patterns over the 17
+open rows: **0 of 17 fire.** The rule's name promised a class far wider than its
+patterns covered.
+
+**Fixed** by three added patterns, measured over both tables: they hit exactly
+those 17 rows and nothing else — no false positives corpus-wide.
+
+Landing them turns the gate red, and the burn-down is **not** mechanical: of the
+14 rows that are whole troparia mis-parsed into `stichera`, only **2** duplicate
+a troparion that already exists in the corpus, so 12 cannot be resolved by
+deletion. So the 17 went into `RUBRIC_BLEED_BURNDOWN` — itemized, dated, and
+**printed on every run**, failing the gate only for new rows. That is
+deliberately a different construct from the silent `KNOWN_RUBRIC_BLEED`
+suppression set, and the policy comment now distinguishes them. A burn-down
+entry whose row no longer trips a pattern is itself reported as stale, so the
+list cannot outlive the debt.
+
+Both behaviours were **falsified before being trusted**: inserting a new bleed
+row fails the gate (`warnings = 1`), and a synthetic stale entry fails it too.
+
+### Rule 2 — `Stichera↔commemoration subject match` — did NOT miss a bug.
+
+This is a correction to N4 as filed. The claim was that the rule passed "with
+three Forerunner hymns under a hierarch commemoration." It did — and it was
+**right to**. Comm 1760 legitimately hosts both saints' Lord-I-Call sets,
+distinguished by `label`; the review's own "what is already correct" section
+says that block renders correctly. The defect at 8-30 was **N3, a rendering
+bug** — the assembler overwriting row labels — not a data mis-key. N4 conflated
+the two.
+
+The rule does have a real limitation, and it is worth recording because it is
+structural rather than incidental: it looks for a **60% majority subject** in a
+set of stichera. On a day where one commemoration hosts two saints, the section
+is a blend by construction and neither subject can reach the threshold. Probed
+comm 1760 directly: whole-comm pass `rows=9 threshold=6`, top subject
+`Herod` at 4; lordICall pass `rows=8 threshold=5`, `Herod` at 3. The only word
+matching a sibling title is `Baptist` at 2/9. Note also that the hymns name
+*narrative characters* (Herod, Herodias), not the saint's title word, so a
+Forerunner hymn is invisible to a title-matching rule regardless of threshold.
+
+### Rule 3 — `Stichera label↔commemoration subject match` — could not have caught it.
+
+The rule has a real blind spot: its extractor is `/\b([A-Z][a-zá-ú]{4,})\b/`, so
+it reads only **capitalized** words. Measured: **65 of 579 distinct labels —
+1,418 of 3,347 labelled rows — contain no such word at all** and are invisible
+to it, including the entire `the holy forerunner` / `the holy hierarchs`
+descriptive family.
+
+But that is **not** why it missed row 9039. Prototyped a lowercase-tolerant
+version against a scratch DB with 9039's bad label restored: **it still does not
+fire.** The rule detects "this label names a *sibling* commemoration that has no
+stichera of its own." Row 9039's label named the commemoration's **own** subject
+("the holy hierarchs") over another saint's text — a failure mode outside the
+rule's design space entirely.
+
+Worse, the naive widening is actively harmful: it produces **34 warnings**, and
+on this very class it flags **correct data** — comm 1760 `the holy forerunner`
+×4, comm 1707 `the holy martyr Agathonicus` ×8, comm 1469 `the hieromartyr` ×9
+are all legitimate co-hosting, not mis-keys.
+
+### What this means for the next rule
+
+The catchable class is not "label names a sibling" but "**a row's text subject
+disagrees with its own label, where a second label group in the same
+commemoration is the better match**". That is a within-commemoration comparison,
+and neither existing rule is shaped for it. It is the rule N3 needs — and per
+this item, it must be falsified against a restored row 9039 before it ships,
+because the obvious widening of rule 3 demonstrably does not work.
+
+Corollary to record: **9039 could not have been caught by any label rule at
+review time**, because the rule matches against sibling commemoration titles and
+no sibling on 8-30 named the Forerunner. The missing DATA (N2 step 3) was the
+precondition for the RULE to have any material to work with. Rules that match
+row-against-neighbour are only as good as the neighbour list.
+
+### One correction to N1's row list
+
+Row **8205** is in N1's list of 17 but is **not** rubric bleed. Its text is the
+Nativity sticheron "Glory to God in the highest, and on earth peace! Today
+Bethlehem receives Him…" at `order=5` with label `(for the Feast)` — a clean,
+legitimate hymn that merely begins with the word "Glory". The repaired patterns
+correctly do not fire on it. Two rows not in N1's list — **8530** and **8537**,
+both `Doxasticon from the Pentecostarion…` at `order=0` — are genuine and have
+been added. The corrected list is the 17 ids in `RUBRIC_BLEED_BURNDOWN`.

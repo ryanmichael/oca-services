@@ -104,8 +104,22 @@ describe('Feature contract: Patron of Temple', () => {
     assert.ok(patronIdx < saintIdx, `Patron (${patronIdx}) must precede Saint (${saintIdx})`);
   });
 
-  it('INV-2: simple-rank Sunday — patron kontakion takes Glory; saint kontakion above without connector; Now is Theotokion-Kontakion', async () => {
+  it('INV-2: simple-rank Sunday — the day-saint kontakion takes Glory; patron kontakion above without connector; Now is Theotokion-Kontakion', async () => {
     // 2026-06-21 — Martyr Julian of Tarsus, no cocelebrated overlay.
+    //
+    // This assertion was inverted until 2026-08-29 (patron at Glory, saint
+    // above). `reference/orders/2026-0621-order-services.txt` — the order for
+    // this very fixture date — reads:
+    //
+    //   Kontakion of the Resurrection, Tone 2
+    //   Kontakion of the Church (if of Patron Saint)
+    //   Glory… Kontakion of St. Julian, Tone 2
+    //   Now and ever… Kontakion of the Church (if of Theotokos), or
+    //     "Steadfast Protectress…", Tone 6
+    //
+    // Archive-wide: 101 orders print the Church kontakion before the Glory,
+    // 17 print it AT the Glory, and all 17 of those have no other day
+    // kontakion competing for the slot.
     const { json } = await get(`/api/liturgy?date=2026-06-21&translation=${TYLER}`);
     const ks = json.blocks.filter(b => b.section === 'Kontakia');
 
@@ -114,20 +128,25 @@ describe('Feature contract: Patron of Temple', () => {
     assert.ok(gloryIdx >= 0, 'expected Glory connector in Kontakia');
     assert.ok(nowIdx > gloryIdx, 'expected Now connector after Glory in Kontakia');
 
-    // Block immediately AFTER the Glory connector is the patron kontakion rubric label.
+    // Block immediately AFTER the Glory connector is the day-saint kontakion.
     const afterGloryLabel = ks[gloryIdx + 1]?.text || '';
-    assert.match(afterGloryLabel, new RegExp(`Kontakion of the Patron of the Temple, ${PATRON_TITLE}`),
-      `expected Patron kontakion at Glory slot; got: ${afterGloryLabel}`);
+    assert.match(afterGloryLabel, /Kontakion of Martyr Julian of Tarsus/,
+      `expected Julian kontakion at Glory slot; got: ${afterGloryLabel}`);
 
     // Block immediately AFTER the Now connector is the Theotokion-Kontakion rubric label.
     const afterNowLabel = ks[nowIdx + 1]?.text || '';
     assert.match(afterNowLabel, /Kontakion-Theotokion/,
       `expected Kontakion-Theotokion at Now slot; got: ${afterNowLabel}`);
 
-    // The saint (Julian) kontakion appears BEFORE the Glory connector — read but not Glory-tagged.
-    const beforeGloryLabels = ks.slice(0, gloryIdx).map(b => b.text);
-    const saintLabel = beforeGloryLabels.find(t => /Kontakion of Martyr Julian of Tarsus/.test(t));
-    assert.ok(saintLabel, `expected Julian kontakion above Glory; got blocks: ${beforeGloryLabels.join(' | ')}`);
+    // The patron kontakion appears BEFORE the Glory connector — read but not
+    // Glory-tagged — and AFTER the Resurrection kontakion.
+    const beforeGlory = ks.slice(0, gloryIdx).map(b => b.text || '');
+    const patronIdx = beforeGlory.findIndex(t =>
+      t.includes(`Kontakion of the Patron of the Temple, ${PATRON_TITLE}`));
+    const resIdx    = beforeGlory.findIndex(t => /Kontakion of the Resurrection/.test(t));
+    assert.ok(patronIdx >= 0, `expected patron kontakion above Glory; got: ${beforeGlory.join(' | ')}`);
+    assert.ok(resIdx >= 0 && resIdx < patronIdx,
+      `Resurrection kontakion (${resIdx}) must precede the patron (${patronIdx})`);
   });
 
   it('INV-3: principal-feast Sunday (cocelebrated overlay) — saint kontakion takes Glory; patron kontakion dropped', async () => {

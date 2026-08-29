@@ -198,10 +198,16 @@ function handle(req, res, ctx) {
         //   Now:   → Theotokion-Kontakion ("Protection of Christians...")
         // Verified 2026-07-11 against oca.org OOS 2021-0829 (10th Sun after
         // Pentecost): the Resurrection kontakion leads. Glory-slot selection by rank:
-        //   - Principal feast / polyeleos+ saint (signaled by
-        //     `hasCocelebratedOverlay`): day's saint takes Glory; patron drops.
-        //   - Simple-rank Sunday (no overlay): patron takes Glory when set;
-        //     menaion saint kontakion is read but not Glory-tagged.
+        //   - The day's own kontakion takes Glory whenever there is one; the
+        //     patron-of-temple kontakion is then read unconnected, between the
+        //     Resurrection kontakion and the Glory.
+        //   - The patron takes Glory only when the day has no kontakion of its
+        //     own. Measured 2026-08-29 across all 473 orders in
+        //     `reference/orders/`: 101 print the Church kontakion before the
+        //     Glory, 17 print it AT the Glory, and all 17 of those have no
+        //     other day kontakion competing for the slot.
+        //   - Every remaining day kontakion is carried as an extra in rank
+        //     order rather than dropped (8-30 needs four plus the Theotokion).
         //   - No principal kontakion and no patron: falls back to the
         //     Resurrection kontakion alone.
         // Weekdays, Great Feasts, and feast-only days are left unchanged.
@@ -217,17 +223,25 @@ function handle(req, res, ctx) {
             // is neither the Glory kontakion nor an extra saint kontakion.
             const feastK  = lit.kontakia.find(k => k.feastCycle);
             const saintKs = lit.kontakia.filter(k => k !== resK && k !== feastK);
+
+            // On a principal-feast / high-rank-saint Sunday the patron-saints
+            // church yields entirely. Measured across `reference/orders/`: the
+            // 12 orders that give a patron-saints church no kontakion all read
+            // "Troparion of the Church (if of Theotokos)" — Theotokos only —
+            // against "(if of Theotokos or Patron Saint)" in the other 118.
             const principalSundayFeast = !!lit.hasCocelebratedOverlay;
+            const patronSings = patronKontakion && !principalSundayFeast;
 
             let gloryK = null;
-            let extraK = null;  // saint kontakion read but not Glory-tagged
-            if (principalSundayFeast && saintKs[0]) {
+            // Kontakia read unconnected between the Resurrection kontakion and
+            // the Glory, in rank order: patron of the temple first, then any
+            // remaining day kontakia.
+            let extraKs = [];
+            if (saintKs[0]) {
               gloryK = saintKs[0];
-            } else if (patronKontakion) {
+              extraKs = [...(patronSings ? [patronKontakion] : []), ...saintKs.slice(1)];
+            } else if (patronSings) {
               gloryK = patronKontakion;
-              if (saintKs[0]) extraK = saintKs[0];
-            } else if (saintKs[0]) {
-              gloryK = saintKs[0];
             }
 
             // Lenten commemoration Sundays (Cross week 3, Palamas 2, Climacus
@@ -247,7 +261,7 @@ function handle(req, res, ctx) {
             // the "Now and ever…" the combined connector would swallow.
             if (gloryK && isLentenCommemorationSunday && !feastK) {
               lit.kontakia = [
-                ...(extraK ? [{ ...extraK, connector: null }] : []),
+                ...extraKs.map(k => ({ ...k, connector: null })),
                 { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit. Now and ever, and unto ages of ages. Amen.' },
               ];
             } else if (gloryK) {
@@ -266,7 +280,7 @@ function handle(req, res, ctx) {
               } : null;
               lit.kontakia = [
                 ...(resK ? [{ ...resK, connector: null }] : []),
-                ...(extraK ? [{ ...extraK, connector: null }] : []),
+                ...extraKs.map(k => ({ ...k, connector: null })),
                 { ...gloryK, connector: 'Glory to the Father, and to the Son, and to the Holy Spirit.' },
                 ...(theoK ? [theoK] : []),
               ];

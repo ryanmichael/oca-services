@@ -424,6 +424,18 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               };
             }
           }
+          // Saturday/Sunday Great Vespers ships the Theotokion-Dogmatikon in
+          // `lic.glory` itself with combinesGloryNow, because with no saint's
+          // doxastichon it absorbs both halves. When the Menaion DOES supply a
+          // Glory, the dogmatikon has to step DOWN into the Now-and-ever — it
+          // must not simply be overwritten. 9-06 (Archangel Michael at Colossae)
+          // lost the Tone 5 "In the Red Sea of old" entirely, and the Michael
+          // doxastichon was sung under a collapsed "Glory… now and ever".
+          // Sibling of the weekday branch above; found 2026-09-05 against the
+          // Tyler 09.05.26 Great Vespers booklet.
+          if (!lic.now && lic.glory?.combinesGloryNow && lic.glory.source === 'octoechos') {
+            lic.now = { ...lic.glory, combinesGloryNow: false };
+          }
           lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }

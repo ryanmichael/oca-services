@@ -1,0 +1,37 @@
+{
+ "key": "kontakion-theotokion",
+ "_version": 1,
+ "_label": "Sunday Theotokion-Kontakion wording (\"Now and ever…\" at the Liturgy)",
+ "_target": {
+  "service": "liturgy",
+  "path": "kontakion-theotokion.text"
+ },
+ "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+ "_note": "Romanos the Melodist's 'Protection of Christians' (Greek: 'Προστασία τῶν Χριστιανῶν'), sung at 'Now and ever…' to close the Kontakia. Both variants are Tone 6, so only `.text` is targeted — `tone` and `rubric` stay on the base key. \"oca\" is the OCA Liturgikon wording carried by the base layer; \"steadfast-protectress\" is the OCA choral edition's incipit, a different English rendering of the same kontakion.",
+ "variants": [
+  {
+   "id": "oca",
+   "label": "OCA Liturgikon (\"Protection of Christians…\")",
+   "_provenance": {
+    "origin": "extracted-from-overlay",
+    "contributor": "admin",
+    "date": "2026-09-05",
+    "source_citation": "fixed-texts/liturgy-fixed.json → kontakion-theotokion.text (OCA Liturgikon)"
+   },
+   "value": "Protection of Christians that cannot be put to shame, mediation unto the Creator immovable: O despise not the suppliant voices of those who have sinned; but be thou quick, O good one, to come unto our aid, who in faith cry unto thee: Hasten to intercession, and speed thou to make supplication, O Theotokos, who dost ever protect those who honor thee."
+  },
+  {
+   "id": "steadfast-protectress",
+   "label": "OCA choral edition (\"Steadfast Protectress…\")",
+   "_provenance": {
+    "origin": "choir-correction",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "choir director",
+    "date": "2026-09-05",
+    "source_citation": "Parish Divine Liturgy packet 09.06.26, 'Steadfast Protectress — Kontakion Tone 6', Russian Imperial Court Chant arr. L'vov/Bakhmetev, © 2002 Orthodox Church in America (docs/8-29/9-5/)"
+   },
+   "_note": "The engraved sheet is set in the modern register; the choir director hand-corrects it to thee/thy on the copy in use (\"your\"→\"thy\", \"you\"→\"thee\"). Stored here in that traditional register to match the rest of the parish stack. One departure from the marked-up sheet: the engraving's \"for thou always protect\" is stored as \"protectest\", the grammatical tt form — the sheet keeps \"protect\" only because the underlay is fixed to the existing note values, which does not constrain a text layer.",
+   "value": "Steadfast Protectress of Christians, Constant Advocate before the Creator; despise not the cries of us sinners, but in thy goodness come speedily to help us who call on thee in faith. Hasten to hear our petition and to intercede for us, O Theotokos, for thou always protectest those who honor thee!"
+  }
+ ]
+}

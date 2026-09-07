@@ -17,6 +17,7 @@ const { pickPrincipalByOrthocalOrder,
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
+const LIC_REPEAT_PATTERNS = require('../../variable-sources/lic-repeat-patterns.json');
 
 const { applyYouYour } = require('./pronouns');
 
@@ -356,12 +357,36 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             tone:   licStichera[0].tone,
             label:  primary.title,
           }];
-          // Build hymns array with repeats to fill totalSlots
+          // Build hymns array with repeats to fill totalSlots.
+          //
+          // WHICH stichera repeat is printed in the book, not derivable: 9-08
+          // publishes 6 idiomela for 8 stichoi and doubles the 3rd and 4th, so
+          // the pattern is data (variable-sources/lic-repeat-patterns.json).
+          // The previous `i % licStichera.length` fill appended repeats of
+          // stichera 1 and 2 at the END, which pushed every hymn from stichos 5
+          // down onto the wrong psalm verse. Found 2026-09-07 reviewing the
+          // 9-08 vigil against OCA 2025-0908-texts-tt.docx.
+          //
+          // Fallback (no pattern authored) doubles the LEADING stichera in
+          // place, so a repeat always sits adjacent to its original and the
+          // sequence never goes backwards. See audit rule V-lic-repeat-monotonic.
+          const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label });
+          const [pmm, pdd] = adjustedMD();
+          const patternKey = `${String(pmm).padStart(2, '0')}-${String(pdd).padStart(2, '0')}`;
+          const patternEntry = LIC_REPEAT_PATTERNS[patternKey];
+          const pattern = patternEntry?.pattern;
           const hymns = [];
-          for (let i = 0; i < totalSlots; i++) {
-            hymns.push({ text: licStichera[i % licStichera.length].text,
-                         tone: licStichera[i % licStichera.length].tone,
-                         label: licStichera[i % licStichera.length].label });
+          const patternUsable = Array.isArray(pattern)
+            && pattern.length === totalSlots
+            && pattern.every(n => Number.isInteger(n) && n >= 1 && n <= licStichera.length);
+          if (patternUsable) {
+            for (const n of pattern) push(licStichera[n - 1]);
+          } else {
+            const extra = totalSlots - licStichera.length;
+            for (let i = 0; i < licStichera.length; i++) {
+              push(licStichera[i]);
+              if (i < extra) push(licStichera[i]);   // double in place, not at the tail
+            }
           }
           autoSlot.lordICall = { hymns };
         } else if (isWeekdayInjection && !isGreatVespers && lic.slots?.length > 0 && lic.slots[0].source === 'octoechos') {

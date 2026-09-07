@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "description": "Per-feast 'Lord, I Call' repeat patterns for all-night-vigil services whose Menaion publishes fewer unique idiomela than the service has stichoi.",
+    "why": "When a feast prints 6 idiomela but the vigil appoints 8 stichoi, WHICH two are doubled is printed in the book — it is not derivable from a rule. The assembler previously filled the extra slots with `licStichera[i % length]`, which appended repeats of stichera 1 and 2 at the END, scrambling every hymn from stichos 5 down against its psalm verse. Found 2026-09-07 reviewing the 9-08 vigil against OCA 2025-0908-texts-tt.docx.",
+    "format": "Key is MM-DD of the CONTENT day (the day the vespers enters, not the civil evening). `pattern` is 1-based indices into the day's numbered lordICall stichera (DB `order` >= 1), listed from the highest stichos down to stichos 1. Its length must equal `totalSlots`.",
+    "fallback": "A date with no entry doubles its leading stichera in place, so repeats always sit adjacent to their original and the sequence stays non-decreasing. See audit rule V-lic-repeat-monotonic.",
+    "version": "1.0.0"
+  },
+
+  "09-08": {
+    "feast": "The Nativity of our Most Holy Lady the Theotokos and Ever-Virgin Mary",
+    "totalSlots": 8,
+    "pattern": [1, 2, 3, 3, 4, 4, 5, 6],
+    "_note": "3 idiomela by Patriarch Sergius (1-3) then 3 by Stephen of Jerusalem (4-6). The book doubles the last of the first group and the first of the second — stichoi 5 and 3 repeat 'Although by God's will…' and 'Today the gates of barrenness…' respectively.",
+    "_source": "OCA service texts 2025-0908-texts-tt.docx (reference/scrape/2025-09-08.docx)"
+  }
+}

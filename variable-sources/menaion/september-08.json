@@ -5,9 +5,10 @@
     "rank": "greatFeast",
     "_source": "OCA service texts 2025-0908-texts-tt.docx",
     "_sourceUrl": "https://files.oca.org/service-texts/2025-0908-texts-tt.docx",
+    "feastType": "theotokos",
+    "_feastTypeNote": "feastType drives the post-Gospel Glory intercession (Theotokos, not Apostles). Added 2026-09-07 after the 9-08 vigil review. Deliberately NO `tone` key: the tone announced at 'God is the Lord' is derived from the troparion actually emitted (assemblers/matins.js §4), so a redundant _meta.tone here would only mask regressions from audit rule M29.",
     "_note": "Single-canon (1st Canon Tone 2 by John of Damascus) with Tone 8 Katavasiae from the Canon of the Elevation of the Cross (Aug 6 → Sep 14 katavasiae cycle). Only the 2nd Exapostilarion (festal) is given; the 1st would be resurrectional and is omitted on weekday Theotokos feasts. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`)."
   },
-
   "troparion": {
     "text": "Thy nativity, O Virgin,\nhas proclaimed joy to the whole universe!\nThe Sun of righteousness, Christ our God,\nhas shone from thee, O Theotokos.\nBy annulling the curse,\nHe bestowed a blessing.\nBy destroying death, He has granted us eternal life.",
     "tone": 4,
@@ -18,14 +19,32 @@
     "tone": 4,
     "label": "Kontakion of the Nativity of the Theotokos"
   },
-
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "28:10-17"
+      },
+      {
+        "order": 2,
+        "book": "Ezekiel",
+        "pericope": "43:27-44:4"
+      },
+      {
+        "order": 3,
+        "book": "Proverbs",
+        "pericope": "9:1-11"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2025-0908-texts-tt.docx — 'Old Testament Readings' block between the Lord-I-Call Glory and the Litya. Added 2026-09-07. NOTE: the OCA docx prints 'Ezekiel 43:2-44:4', but the pericope actually appointed (and the text orthocal serves) is the standard Theotokos 'shut gate' paremia beginning at 43:27 — the docx appears to drop a digit. The citation here matches the text that is read."
+  },
   "matins": {
     "_meta": {
       "tone": 4,
       "feastRank": "greatFeast",
       "feastType": "theotokos"
     },
-
     "magnification": {
       "refrain": "We magnify thee,\nO Most-Holy Virgin,\nand we honor thy holy parents\nand praise thine all-glorious nativity.",
       "verses": [
@@ -34,34 +53,29 @@
       ],
       "tone": 4
     },
-
     "prokeimenon": {
       "refrain": "I will remember thy name from generation to generation.",
       "verse": "My heart overflowed with a good word.",
       "tone": 4,
       "_psalmRef": "Ps. 44:16 / 44:1a"
     },
-
     "gospel": {
       "reading": "Luke 1:39-49, 56",
       "number": 4,
       "_note": "The Visitation — Mary visits Elizabeth. \"My soul magnifies the Lord…\""
     },
-
     "postGospelSticheron": {
       "text": "This is the day of the Lord!\nRejoice, O peoples,\nfor, behold, the bridal chamber of the Light, the book of the Word of Life,\nhas come forth from the womb!\nThe gate that faces the East is born\nand awaits the entry of the Great Priest.\nShe alone admits Christ into the world\nfor the salvation of our souls.",
       "tone": 6,
       "label": "Idiomelon of the Nativity of the Theotokos",
       "_source": "oca-2025-0908-tt"
     },
-
     "canon": {
       "tone": 2,
       "_katavasiaTone": 8,
       "_author": "John of Damascus",
       "_katavasiaeNote": "Katavasiae Tone 8 from the Canon of the Elevation of the Cross (by Cosmas the Monk), per the Aug 6 → Sep 14 cycle.",
       "skipMagnificat": true,
-
       "ode1": {
         "irmos": "Come, O peoples, let us sing a song to Christ our God\nWho parted the sea and through it led His people,\nwhom He had brought out of bondage in Egypt;\nfor He has been glorified!",
         "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
@@ -94,14 +108,12 @@
         "irmos": "Refrain: Magnify, O my soul, the most glorious birth of the Mother of God!\n\nHeirmos: From thy virgin womb thou ineffably gavest a body\nto the Light that was before the sun,\neven God Who has shone forth upon us,\nand in the body came to dwell among us.\nBlessed and all-pure Theotokos, we magnify thee!",
         "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
       },
-
       "kontakion": {
         "text": "By thy nativity, O most pure Virgin,\nJoachim and Anna are freed from barrenness,\nAdam and Eve — from the corruption of death.\nAnd we, thy people, freed from the guilt of sin, celebrate and sing to thee:\n\"The barren woman gives birth to the Theotokos, the nourisher of our Life.\"",
         "tone": 4,
         "label": "Kontakion of the Nativity of the Theotokos"
       }
     },
-
     "exapostilarion": {
       "text": "Be renewed, O Adam, and be magnified, O Eve,\nyou prophets dance with the apostles and the righteous;\nlet there be common joy in the world among angels and mankind.\nFor the Theotokos is born today of righteous Joachim and Anna.",
       "tone": 2,
@@ -109,7 +121,6 @@
       "repeat": 3,
       "_source": "oca-2025-0908-tt"
     },
-
     "lauds": {
       "tone": 1,
       "stichera": [
@@ -141,7 +152,6 @@
         "_source": "oca-2025-0908-tt"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "Thy nativity, O Virgin,\nhas proclaimed joy to the whole universe!\nThe Sun of righteousness, Christ our God,\nhas shone from thee, O Theotokos.\nBy annulling the curse,\nHe bestowed a blessing.\nBy destroying death, He has granted us eternal life.",
       "tone": 4

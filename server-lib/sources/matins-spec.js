@@ -716,6 +716,10 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
     isSunday,
     feastRank: resolvedFeastRank,
     feastType: menaionData._meta?.feastType || null,
+    // NOTE: spec.tone is the tone of the WEEK (or the menaion file's declared
+    // tone) and feeds several sections. It is deliberately NOT used to pick the
+    // tone announced at "God is the Lord" — that follows the troparion actually
+    // emitted, derived in assemblers/matins.js §4. See M29-matins-god-is-the-lord-tone.
     tone: menaionData._meta?.tone || tone,
     alleluia: false, // great feasts override Lenten Alleluia
     useSmallDoxology,

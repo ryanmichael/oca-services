@@ -151,7 +151,50 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
   // ── 3. Great Litany ─────────────────────────────────────────────────────────
   blocks.push(...assembleGreatLitany(vespersFixed));
 
-  // ── 4. God is the Lord / Alleluia ───────────────────────────────────────────
+  // ── 4/5. God is the Lord + the Troparia that follow it ──────────────────────
+  //
+  // "God is the Lord" is sung in the tone of the troparion that immediately
+  // follows it — announcing a tone is how the choir is told what to sing next.
+  // So the troparia are BUILT first (into a local array, not pushed), their
+  // tone read off, and only then is §4 emitted; §5 pushes the array unchanged.
+  //
+  // Building them first is what makes this correct on every path. `spec.tone`
+  // is set by several different spec builders, and on any date without a
+  // menaion file (there is no september-07.json, for one) it is simply the tone
+  // of the week — so 9-07's Forefeast Matins announced Tone 5 over a Tone 4
+  // Forefeast troparion. Deriving the tone from the blocks that actually get
+  // emitted cannot drift from them. Found 2026-09-07; see audit rule
+  // M29-matins-god-is-the-lord-tone.
+  const tropBlocks = [];
+  if (spec.troparia) {
+    tropBlocks.push(...assembleTroparia(spec.troparia, sources));
+  } else if (spec.feastTroparion && spec.troparion) {
+    // Afterfeast pattern: feast×2 → Glory: saint → Both-now: feast×1
+    const section = 'Troparia';
+    const ft = spec.feastTroparion;
+    const st = spec.troparion;
+    tropBlocks.push(S('trop-1', section, 'hymn', 'choir', ft.text, { tone: ft.tone, label: ft.label }));
+    tropBlocks.push(S('trop-2', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
+    tropBlocks.push(S('trop-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
+    tropBlocks.push(S('trop-saint', section, 'hymn', 'choir', st.text, { tone: st.tone, label: st.label }));
+    tropBlocks.push(S('trop-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+    tropBlocks.push(S('trop-3', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
+  } else if (spec.troparion) {
+    // Simple case: single troparion repeated ×3 (e.g. great feast)
+    const section = 'Troparia';
+    const t = spec.troparion;
+    tropBlocks.push(S('trop-1', section, 'hymn', 'choir', t.text, { tone: t.tone, label: t.label }));
+    tropBlocks.push(S('trop-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
+    tropBlocks.push(S('trop-2', section, 'hymn', 'choir', t.text, { tone: t.tone }));
+    tropBlocks.push(S('trop-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
+    tropBlocks.push(S('trop-3', section, 'hymn', 'choir', t.text, { tone: t.tone }));
+  }
+  // On a Sunday with no Great Feast the resurrectional troparion governs and
+  // spec.tone (the tone of the week) is already right; elsewhere the troparion
+  // that follows wins.
+  const followingTroparionTone =
+    tropBlocks.find(b => b.type === 'hymn' && b.tone != null)?.tone ?? null;
+
   if (isAlleluiaDay) {
     const section = 'Alleluia';
     const a = matinsFixed.alleluia;
@@ -165,7 +208,7 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
   } else {
     const section = 'God is the Lord';
     const g = matinsFixed.godIsTheLord;
-    const tone = spec.tone || 4;
+    const tone = followingTroparionTone ?? spec.tone ?? 4;
     blocks.push(S('gitl-refrain', section, 'hymn', 'choir', g.refrain, { tone }));
     for (let i = 0; i < g.verses.length; i++) {
       blocks.push(S(`gitl-v${i}`, section, 'verse', 'reader', g.verses[i]));
@@ -174,29 +217,8 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
   }
 
   // ── 5. Troparia after God is the Lord ───────────────────────────────────────
-  if (spec.troparia) {
-    blocks.push(...assembleTroparia(spec.troparia, sources));
-  } else if (spec.feastTroparion && spec.troparion) {
-    // Afterfeast pattern: feast×2 → Glory: saint → Both-now: feast×1
-    const section = 'Troparia';
-    const ft = spec.feastTroparion;
-    const st = spec.troparion;
-    blocks.push(S('trop-1', section, 'hymn', 'choir', ft.text, { tone: ft.tone, label: ft.label }));
-    blocks.push(S('trop-2', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
-    blocks.push(S('trop-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
-    blocks.push(S('trop-saint', section, 'hymn', 'choir', st.text, { tone: st.tone, label: st.label }));
-    blocks.push(S('trop-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
-    blocks.push(S('trop-3', section, 'hymn', 'choir', ft.text, { tone: ft.tone }));
-  } else if (spec.troparion) {
-    // Simple case: single troparion repeated ×3 (e.g. great feast)
-    const section = 'Troparia';
-    const t = spec.troparion;
-    blocks.push(S('trop-1', section, 'hymn', 'choir', t.text, { tone: t.tone, label: t.label }));
-    blocks.push(S('trop-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
-    blocks.push(S('trop-2', section, 'hymn', 'choir', t.text, { tone: t.tone }));
-    blocks.push(S('trop-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
-    blocks.push(S('trop-3', section, 'hymn', 'choir', t.text, { tone: t.tone }));
-  }
+  // Built in §4 above so the tone announced there matches what is sung here.
+  blocks.push(...tropBlocks);
 
   // ── 6. Kathisma Readings ────────────────────────────────────────────────────
   {
@@ -399,15 +421,17 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
   if (hasGospel) {
     const section = 'Post-Gospel Stichera';
     blocks.push(S('pg-glory', section, 'doxology', null, vespersFixed.doxology.gloryOnly));
+    // The Glory intercession names the day's celebrant. "Through the prayers of
+    // the Apostles" is the Sunday form; on a feast of the Theotokos BOTH the
+    // Glory and the Now-and-ever take the Theotokos form — verified against
+    // OCA 2025-0908-texts-tt.docx, which prints the Theotokion twice. Before
+    // this, 9-08 asked the Apostles to intercede on the Theotokos's own feast.
+    // Found 2026-09-07. A saint's-feast form ("of Thy saint N.") is a further
+    // gap — see audit rule M-post-gospel-order KNOWN_SOURCE_GAPS.
     blocks.push(S('pg-glory-verse', section, 'verse', 'reader',
-      matinsFixed.postGospel.gloryVerse));
-
-    if (spec.postGospelSticheron) {
-      blocks.push(S('pg-sticheron', section, 'hymn', 'choir',
-        spec.postGospelSticheron.text,
-        { tone: spec.postGospelSticheron.tone, source: spec.postGospelSticheron.source,
-          label: spec.postGospelSticheron.author, _source: spec.postGospelSticheron._source }));
-    }
+      spec.feastType === 'theotokos'
+        ? matinsFixed.postGospel.theotokion
+        : matinsFixed.postGospel.gloryVerse));
 
     blocks.push(S('pg-now', section, 'doxology', null, vespersFixed.doxology.nowOnly));
     blocks.push(S('pg-theotokion', section, 'verse', 'reader',
@@ -416,6 +440,18 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
     // Have mercy on me + sticheron on Psalm 50
     blocks.push(S('pg-ps50-verse', section, 'verse', 'reader',
       matinsFixed.postGospel.verse10));
+
+    // The post-Gospel sticheron is sung LAST, after "Have mercy on me, O God" —
+    // it is the sticheron ON Psalm 50, not an interjection between the Glory and
+    // the Now-and-ever. It sat two slots early, so on 9-08 "This is the day of
+    // the Lord!" split the Glory from its Now-and-ever pair. Order verified
+    // against OCA 2025-0908-texts-tt.docx. Found 2026-09-07.
+    if (spec.postGospelSticheron) {
+      blocks.push(S('pg-sticheron', section, 'hymn', 'choir',
+        spec.postGospelSticheron.text,
+        { tone: spec.postGospelSticheron.tone, source: spec.postGospelSticheron.source,
+          label: spec.postGospelSticheron.author, _source: spec.postGospelSticheron._source }));
+    }
 
     // Petition: "Save, O God, Thy people…" + Exclamation
     blocks.push(S('pg-petition', section, 'prayer', 'deacon',

@@ -249,6 +249,24 @@ function getServiceRows(day) {
   if (day.services.kneelingVespers) {
     rows.push({ key: 'kneelingVespers', name: 'Kneeling Vespers of Pentecost', available: true });
   }
+  // A weekday Great Feast eve serves Great Vespers or an All-Night Vigil. The
+  // weekday morning branch above emits only Matins/Liturgy, and the Saturday
+  // and Sunday branches were the ONLY places that ever consulted
+  // `allNightVigil` — so on a weekday vigil the day appeared in the list
+  // (shouldShowDay does check it) with no vigil row to open. A direct
+  // ?date=…&svc=greatVespers link did not help either: the boot handler looks
+  // up `.svc-row[data-svc=…]` and silently no-ops when the row was never
+  // rendered, so the service was unreachable from the UI entirely.
+  // Found 2026-09-07, the eve of the Nativity of the Theotokos — the vigil the
+  // whole day's texts had just been corrected for could not be printed.
+  if (dow !== 'saturday' && dow !== 'sunday'
+      && (day.services.greatVespers || day.services.allNightVigil)) {
+    rows.push({
+      key: 'greatVespers',
+      name: day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers',
+      available: true,
+    });
+  }
   if (dow !== 'saturday' && day.services.dailyVespers) {
     rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
   }

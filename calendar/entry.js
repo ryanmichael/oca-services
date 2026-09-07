@@ -46,8 +46,15 @@ const MONTH_NAMES = [
 // readings the OCA order appoints were missing from the Vespers render entirely.
 function attachPolyeleosParemias(entry, date, style) {
   if (!entry?.vespers || entry.vespers.otReadings) return entry;
+  // 'greatFeast' was missing from this gate until 2026-09-07, so the Twelve
+  // Great Feasts — the dates most certain to have paremias — were the one rank
+  // that could never render them. The 8-09 Herman fix below covered polyeleos
+  // and vigil saints only, and no Great Feast menaion file had been given
+  // `vespers.otReadings` either, so the gap stayed invisible from both ends.
+  // Found reviewing the 9-08 Nativity of the Theotokos vigil, whose three
+  // lessons (Gen. 28:10-17, Ez. 43:2-44:4, Prov. 9:1-11) rendered nowhere.
   const rank = getFeastRank(date, style);
-  if (rank !== 'polyeleos' && rank !== 'vigil') return entry;
+  if (rank !== 'polyeleos' && rank !== 'vigil' && rank !== 'greatFeast') return entry;
 
   const adj  = fixedFeastDate(date, style);
   const file = `${MONTH_NAMES[adj.getUTCMonth()]}-${String(adj.getUTCDate()).padStart(2, '0')}.json`;

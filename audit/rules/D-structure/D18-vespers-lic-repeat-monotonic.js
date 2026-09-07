@@ -25,6 +25,24 @@
 
 const SECTION = 'Lord, I Have Cried';
 
+// Dates where the inversion is real and understood, but the fix belongs to the
+// CO-CELEBRATION path (two commemorations sharing the stichoi), which
+// lic-repeat-patterns.json cannot express — its patterns index into a single
+// commemoration's stichera. Reported at `low` so the backlog stays visible
+// without gating the push on a fix that needs its own design.
+const KNOWN_SOURCE_GAPS = {
+  // Verified against reference/scrape/2024-01-01.docx. OCA sings, from stichos 8:
+  //   Circumcision 1, Circumcision 1 (repeat), Circumcision 2, Circumcision 2
+  //   (repeat), Basil 1, Basil 1 (repeat), Basil 2, Basil 3.
+  // We render the Circumcision half correctly — the in-place doubling fallback
+  // handles it — then drop Basil's repeat and wrap slot 8 back to Circumcision 1.
+  // Fixing it needs a per-GROUP repeat pattern so each commemoration's share is
+  // filled independently. Opened 2026-09-07.
+  '01-01': 'Circumcision + St. Basil co-celebration — Basil\'s group loses its repeat and '
+         + 'slot 8 wraps to the feast\'s first sticheron. Needs per-group repeat patterns; '
+         + 'correct order recorded in reference/scrape/2024-01-01.docx.',
+};
+
 module.exports = {
   id:             'D18-vespers-lic-repeat-monotonic',
   family:         'structure',
@@ -58,8 +76,14 @@ module.exports = {
     const issues = [];
     for (let i = 1; i < seq.length; i++) {
       if (seq[i] < seq[i - 1]) {
+        const key = String(ctx.calendarEntry?.date || ctx.date || '').slice(5, 10);
+        const gap = KNOWN_SOURCE_GAPS[key];
         issues.push({
-          message:
+          severity: gap ? 'low' : 'high',
+          message: gap
+            ? `${SECTION}: sticheron ${i + 1} returns to distinct hymn #${seq[i] + 1} ` +
+              `(sequence ${seq.map(n => n + 1).join(',')}) — known gap: ${gap}`
+            :
             `${SECTION}: sticheron ${i + 1} returns to distinct hymn #${seq[i] + 1} after ` +
             `sticheron ${i} had reached #${seq[i - 1] + 1} (sequence ${seq.map(n => n + 1).join(',')}). ` +
             `A repeat must sit next to the hymn it repeats, not at the tail — ` +

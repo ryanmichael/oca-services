@@ -47,6 +47,23 @@ function resolveFeastType(ctx) {
   return GREAT_FEAST_VARIANTS[key]?.type ?? null;
 }
 
+// Feasts whose Theotokos classification is genuinely contested, where this rule
+// must NOT assert. great-feast-variants.json types `meeting` as "theotokos"
+// (it takes the Typical antiphons and the Theotokos communion hymn), but the
+// Meeting is titled "of our LORD" and is counted among the Lord's feasts in
+// other reckonings. The OCA daily text for 2026-02-02 does not print the
+// post-Gospel block at all — and fixed-texts/matins-fixed.json already marks
+// postGospel._source as unverified — so there is no authority on hand either
+// way. Reported at `low` with the question stated, rather than asserted as a
+// defect or silently dropped. Resolve by checking an OCA Matins order for
+// 02-02, then either declare `_meta.feastType` in the menaion file or move the
+// feast out of this map. Opened 2026-09-07.
+const NEEDS_DECISION = {
+  '02-02': 'Meeting of the Lord — our data types it "theotokos", but it is a feast of '
+         + 'the Lord by title and the OCA daily text omits the post-Gospel block, so the '
+         + 'correct intercession is unverified. Needs an OCA Matins order to settle.',
+};
+
 module.exports = {
   id:             'M30-matins-post-gospel-order',
   family:         'structure',
@@ -84,12 +101,21 @@ module.exports = {
         ? sec.slice(gloryIdx + 1).find(b => b.type === 'verse')
         : null;
       if (gloryVerse && /prayers of the Apostles/i.test(txt(gloryVerse))) {
+        const key      = String(ctx.calendarEntry?.date || ctx.date || '').slice(5, 10);
+        const undecided = NEEDS_DECISION[key];
         issues.push({
-          message:
-            `${SECTION}: the Glory intercession reads "Through the prayers of the ` +
-            `Apostles" on a feast of the Theotokos; both the Glory and the ` +
-            `Now-and-ever take the Theotokos form.`,
-          hint: 'assemblers/matins.js §14 selects on spec.feastType; check the menaion file declares `_meta.feastType: "theotokos"`.',
+          severity: undecided ? 'low' : 'high',
+          message: undecided
+            ? `${SECTION}: the Glory intercession reads "Through the prayers of the ` +
+              `Apostles" — open question, not yet a defect: ${undecided}`
+            : `${SECTION}: the Glory intercession reads "Through the prayers of the ` +
+              `Apostles" on a feast of the Theotokos; both the Glory and the ` +
+              `Now-and-ever take the Theotokos form.`,
+          hint: undecided
+            ? 'Settle the classification against an OCA Matins order for this date, then '
+              + 'either declare `_meta.feastType` in the menaion file or drop the date from '
+              + 'NEEDS_DECISION in this rule.'
+            : 'assemblers/matins.js §14 selects on spec.feastType; check the menaion file declares `_meta.feastType: "theotokos"`.',
         });
       }
     }

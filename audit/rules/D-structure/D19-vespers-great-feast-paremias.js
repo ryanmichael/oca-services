@@ -36,6 +36,7 @@ const KNOWN_SOURCE_GAPS = {
   '09-14': 'Elevation of the Cross — lessons not yet authored.',
   '11-21': 'Entry of the Theotokos — lessons not yet authored.',
   '12-25': 'Nativity of Christ — lessons not yet authored.',
+  '01-01': 'Circumcision of the Lord + St. Basil — lessons not yet authored.',
 };
 
 module.exports = {

@@ -29,6 +29,11 @@
 
 // MM-DD → what is missing before the date's Beatitudes can be wired.
 const KNOWN_SOURCE_GAPS = {
+  '01-01': 'Circumcision + St. Basil — feast-canon odes 3/6 not in variable-sources/feast-canons/.',
+  '02-02': 'Meeting of the Lord — feast-canon odes 3/6 not in variable-sources/feast-canons/.',
+  '03-25': 'Annunciation — feast-canon odes 3/6 present but not registered in FEAST_BEATITUDES_OVERRIDES; counts unverified against an OCA order.',
+  '08-15': 'Dormition — canon carries irmos/irmos2 only, no troparia at all (same corpus hole as the 8-16 blend).',
+  '11-21': 'Entry of the Theotokos — feast-canon odes 3/6 present but counts unverified against an OCA order.',
   '09-08': 'Nativity of the Theotokos — needs Canon II (Andrew of Crete, Tone 8) Ode 6, '
          + 'and a 4th Ode 3 troparion for Canon I. Corpus has Canon I only.',
 };

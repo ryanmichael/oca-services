@@ -30,6 +30,7 @@ const apiVesperalLiturgy  = require('./api-vesperal-liturgy');
 const apiKneelingVespers  = require('./api-kneeling-vespers');
 const apiPaschalHours     = require('./api-paschal-hours');
 const apiPaschaCollection = require('./api-pascha-collection');
+const apiVigil            = require('./api-vigil');
 const apiChoirPrep        = require('./api-choir-prep');
 const apiDays             = require('./api-days');
 const apiSearch           = require('./api-search');
@@ -102,6 +103,7 @@ function dispatch(req, res, ctx) {
     if (pathname === '/api/kneeling-vespers')                     return apiKneelingVespers(req, res, ctx);
     if (pathname === '/api/paschal-hours')                        return apiPaschalHours(req, res, ctx);
     if (pathname === '/api/pascha-collection')                    return apiPaschaCollection(req, res, ctx);
+    if (pathname === '/api/vigil')                                return apiVigil(req, res, ctx);
     if (pathname === '/api/choir-prep')                           return apiChoirPrep(req, res, ctx);
     if (pathname === '/api/days')                                 return apiDays(req, res, ctx);
     if (pathname === '/api/search')                               return apiSearch(req, res, ctx);

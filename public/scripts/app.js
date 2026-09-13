@@ -151,6 +151,7 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'paschalHours'      ? '/api/paschal-hours'
                  : svcType === 'paschaCollection'  ? '/api/pascha-collection'
                  : svcType === 'kneelingVespers'   ? '/api/kneeling-vespers'
+                 : svcType === 'vigil'             ? '/api/vigil'
                  : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'typika'            ? '/api/typika'
                  : svcType === 'typikaDeacon'      ? '/api/typika?as=typika-deacon'
@@ -200,14 +201,14 @@ function getServiceRows(day) {
     }
     if (!day.services.vesperalLiturgy) {
       const vigilName = day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers';
-      rows.push({ key: 'greatVespers', name: vigilName, available: day.services.greatVespers || day.services.allNightVigil });
+      rows.push({ key: day.services.allNightVigil ? 'vigil' : 'greatVespers', name: vigilName, available: day.services.greatVespers || day.services.allNightVigil });
       if (day.services.dailyVespers) rows.push({ key: 'dailyVespers', name: 'Daily Vespers', available: true });
       rows.push({ key: 'matins',  name: 'Matins',        available: day.services.matins });
       rows.push({ key: 'liturgy', name: 'Divine Liturgy', available: day.services.liturgy });
     }
   } else if (dow === 'sunday') {
     if (day.services.greatVespers || day.services.allNightVigil) {
-      rows.push({ key: 'greatVespers', name: day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers', available: true });
+      rows.push({ key: day.services.allNightVigil ? 'vigil' : 'greatVespers', name: day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers', available: true });
     }
     rows.push({ key: 'matins',       name: 'Matins',        available: day.services.matins });
     rows.push({ key: 'liturgy',      name: 'Divine Liturgy', available: day.services.liturgy });
@@ -262,7 +263,7 @@ function getServiceRows(day) {
   if (dow !== 'saturday' && dow !== 'sunday'
       && (day.services.greatVespers || day.services.allNightVigil)) {
     rows.push({
-      key: 'greatVespers',
+      key: day.services.allNightVigil ? 'vigil' : 'greatVespers',
       name: day.services.allNightVigil ? 'All-Night Vigil' : 'Great Vespers',
       available: true,
     });
@@ -411,7 +412,9 @@ async function loadPanelContent(date, svcType) {
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
-    const isVespers = svcType === 'greatVespers' || svcType === 'dailyVespers';
+    // The Vigil is an evening service too: it carries a vespersDate and takes
+    // the "(eve)" suffix like Great Vespers.
+    const isVespers = svcType === 'greatVespers' || svcType === 'dailyVespers' || svcType === 'vigil';
     const eveSuffix = isVespers && data.vespersDate && data.vespersDate !== date ? ' (eve)' : '';
     const dateStr = `${formatLong(date)}${eveSuffix}${toneStr}${labelStr}`;
     document.getElementById('p-date').textContent = dateStr;
@@ -713,7 +716,9 @@ function renderWeek(sunday) {
     cell.addEventListener('click', () => {
       const date = cell.dataset.date;
       const dayObj = calDayCache[date];
-      const svc = dayObj?.services?.greatVespers ? 'greatVespers' : 'dailyVespers';
+      const svc = dayObj?.services?.allNightVigil ? 'vigil'
+                : dayObj?.services?.greatVespers  ? 'greatVespers'
+                : 'dailyVespers';
       closeCal();
       setTimeout(() => pickResult(date, svc), 280);
     });

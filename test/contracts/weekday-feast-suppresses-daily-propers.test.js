@@ -124,8 +124,14 @@ describe('Feature contract: Vigil/Polyeleos weekday feast suppresses daily-cycle
     // isWeekdayGreatSaintFeast requires `!feast` by construction, so it can never
     // be true on a Great Feast. Before the fix, Transfiguration on a Thursday
     // named the Thursday patron ("Nicholas the Wonderworker") in its dismissal.
+    // 2026-08-05 is Transfiguration EVE, served as an All-Night Vigil. A vigil
+    // has ONE dismissal, at the very end of Matins — Great Vespers takes none
+    // of its own (reference/orders/2024-0908-order-services.txt prints the two
+    // endings as alternatives). So the evening dismissal now lives at the end
+    // of /api/vigil, not on the Vespers half. Endpoint moved 2026-09-08; the
+    // assertions below are unchanged.
     for (const url of ['/api/liturgy?date=2026-08-06',
-                       '/api/service?date=2026-08-05&service=vespers']) {
+                       '/api/vigil?date=2026-08-05']) {
       const { json } = await get(url);
       const full = blocksIn(json, 'Dismissal')
         .filter(b => b.speaker === 'priest').map(b => b.text || '').join(' ');
@@ -137,7 +143,8 @@ describe('Feature contract: Vigil/Polyeleos weekday feast suppresses daily-cycle
   });
 
   it('INV-9: the festal introit does not also name the feast in the saints list', async () => {
-    const { json } = await get('/api/service?date=2026-08-05&service=vespers');
+    // Same endpoint move as INV-8: the vigil's single dismissal closes Matins.
+    const { json } = await get('/api/vigil?date=2026-08-05');
     const full = blocksIn(json, 'Dismissal')
       .filter(b => b.speaker === 'priest').map(b => b.text || '').join(' ');
     const hits = (full.match(/[Tt]ransfigur/g) || []).length;

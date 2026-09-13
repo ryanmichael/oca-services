@@ -57,8 +57,23 @@ module.exports = {
     const name = ctx.assembled?.serviceName || '';
     if (/Vesperal Liturgy|Kneeling/i.test(name)) return [];
 
+    // At an All-Night Vigil, Great Vespers takes NO dismissal of its own: after
+    // the Blessing of Loaves the priest gives "The blessing of the Lord be upon
+    // you…" and Matins follows immediately, with one dismissal closing the whole
+    // service. reference/orders/2024-0908-order-services.txt prints the two
+    // endings as explicit alternatives ("If a Vigil is Served" / "Or, if Great
+    // Vespers alone is served").
+    //
+    // The REQUIRED list above was derived as the intersection across 2026 at a
+    // time when every Vespers still emitted a dismissal, vigils included — which
+    // was itself the bug. Narrowing the list here rather than dropping
+    // 'Dismissal' outright keeps the check at full strength everywhere else.
+    // Amended 2026-09-08 alongside /api/vigil.
+    const isVigil = ctx.calendarEntry?.vespers?.serviceType === 'all-night-vigil';
+    const required = isVigil ? REQUIRED.filter(s => s !== 'Dismissal') : REQUIRED;
+
     const present = new Set(blocks.map(b => b.section).filter(Boolean));
-    const missing = REQUIRED.filter(s => !present.has(s));
+    const missing = required.filter(s => !present.has(s));
     if (!missing.length) return [];
     return [{
       message: `Vespers missing required section(s): ${missing.join(', ')}.`,

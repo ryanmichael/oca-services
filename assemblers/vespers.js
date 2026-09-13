@@ -117,7 +117,28 @@ function assembleVespers(calendarDay, fixedTexts, sources, opts = {}) {
   }
 
   // ── 16. Dismissal ───────────────────────────────────────────────────────────
-  blocks.push(...assembleDismissal(fixedTexts, vespers.dismissal));
+  // At a Vigil, Great Vespers takes NO dismissal of its own. After the Blessing
+  // of Loaves and Psalm 33 the priest gives "The blessing of the Lord be upon
+  // you…" and Matins follows immediately with the Six Psalms — the two halves
+  // are one continuous service. The full Vespers dismissal ("Wisdom" / "Father,
+  // bless" / "Blessed be He Who Is" / …) belongs only to Great Vespers served
+  // ALONE; reference/orders/2024-0908-order-services.txt prints the two endings
+  // as explicit alternatives under "If a Vigil is Served" and "Or, if Great
+  // Vespers alone is served".
+  //
+  // Reported 2026-09-08 by the user after attending the vigil: our text both
+  // dismissed the congregation mid-service and then stopped, omitting Matins
+  // entirely. See /api/vigil, which joins the halves.
+  if (isVigil) {
+    const section = 'Blessing of Bread';
+    blocks.push(makeBlock('vigil-blessing', section, 'prayer', 'priest',
+      fixedTexts.prayers.vigilBlessing));
+    blocks.push(makeBlock('vigil-blessing-amen', section, 'response', 'choir', 'Amen.'));
+    blocks.push(makeBlock('vigil-to-matins', section, 'rubric', null,
+      'Matins follows immediately, beginning with the Six Psalms.'));
+  } else {
+    blocks.push(...assembleDismissal(fixedTexts, vespers.dismissal));
+  }
 
   // ── 17. Epitaphion Procession (Burial Vespers only) ─────────────────────────
   if (vespers.epitaphion) {

@@ -673,7 +673,19 @@ function assembleMatins(calendarDay, matinsFixed, vespersFixed, sources, opts = 
   }
 
   // ── 23. Dismissal ─────────────────────────────────────────────────────────
-  blocks.push(...assembleDismissal(vespersFixed));
+  // `spec.dismissal` is the day's dismissal spec (festal introit, day patron,
+  // saints). Without it assembleDismissal falls back to the literal
+  // "[Proper Dismissal for the day]" placeholder.
+  //
+  // At a Vigil this is the ONE dismissal of the whole service — Great Vespers
+  // has none of its own — so /api/vigil hands down the spec the Vespers half
+  // computed, keeping the festal introit ("…Who was transfigured in glory on
+  // Mount Tabor…") that would otherwise disappear from the entire vigil.
+  //
+  // Matins served ALONE still renders the placeholder: the spec is composed in
+  // assembleForDate on the Vespers path and nothing computes it for a bare
+  // Matins. Pre-existing gap, unchanged here — see M31-matins-dismissal-proper.
+  blocks.push(...assembleDismissal(vespersFixed, spec.dismissal));
 
   blocks._warnings = warnings.get();
   return blocks;

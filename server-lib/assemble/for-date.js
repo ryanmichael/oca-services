@@ -18,6 +18,7 @@ const { getGeneralMenaionTexts }                  = require('../sources/general-
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
 const LIC_REPEAT_PATTERNS = require('../../variable-sources/lic-repeat-patterns.json');
+const { buildDismissalSpec }                      = require('../sources/dismissal-spec');
 
 const { applyYouYour } = require('./pronouns');
 
@@ -369,7 +370,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           //
           // Fallback (no pattern authored) doubles the LEADING stichera in
           // place, so a repeat always sits adjacent to its original and the
-          // sequence never goes backwards. See audit rule V-lic-repeat-monotonic.
+          // sequence never goes backwards. See audit rule D20-vespers-lic-repeat-monotonic.
           const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label });
           const [pmm, pdd] = adjustedMD();
           const patternKey = `${String(pmm).padStart(2, '0')}-${String(pdd).padStart(2, '0')}`;
@@ -745,27 +746,10 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
   // Build Vespers dismissal spec if not already present
   if (!calendarEntry.vespers.dismissal) {
-    const dow = calendarEntry.dayOfWeek;
-    const feastKey = calendarEntry.liturgicalContext?.greatFeast;
-    // Saturday Great Vespers begins the Sunday celebration → resurrectional dismissal
-    const isSundayVespers = dow === 'sunday' ||
-      (dow === 'saturday' && isGreatVespers && !feastKey);
-    calendarEntry.vespers.dismissal = {
-      opening: feastKey ? 'feast' : (isSundayVespers ? 'sunday' : 'weekday'),
-      feastLabel: feastKey || null,
-      // A Great Feast suppresses the daily cycle — the weekday patron does not
-      // belong in its dismissal (same defect fixed on the Liturgy path in
-      // liturgy-from-orthocal.js).
-      dayPatron: feastKey ? null : (DAY_PATRONS[dow] || null),
-      dismissalIntroit: (feastKey && GREAT_FEAST_VARIANTS[feastKey]?.dismissalIntroit) || null,
-      // When a festal introit names the feast, drop the feast from the saints
-      // list — otherwise it is announced twice. Mirrors the Liturgy dismissal,
-      // which skips feasts[0] for the same reason.
-      saints: (calendarEntry.commemorations || [])
-        .slice(feastKey && GREAT_FEAST_VARIANTS[feastKey]?.dismissalIntroit ? 1 : 0)
-        .slice(0, 3)
-        .map(c => c.title),
-    };
+    // Composed by the shared helper so Vespers and Matins cannot drift —
+    // see server-lib/sources/dismissal-spec.js for why it was extracted.
+    calendarEntry.vespers.dismissal =
+      buildDismissalSpec(calendarEntry, { isGreatVespers });
   }
 
   const reqSources = Object.assign({}, sources, { db: dbSource, menaion: menaionOverride });

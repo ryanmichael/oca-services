@@ -3,6 +3,7 @@
 const fs   = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
+const { buildDismissalSpec } = require('../sources/dismissal-spec');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -100,6 +101,20 @@ function handle(req, res, ctx) {
 
       // Build the matins spec from available data
       const matinsSpec = buildMatinsSpec(date, d, dow, season, tone, reqSources, style);
+
+      // Give Matins its own dismissal spec. Without one, assembleDismissal
+      // falls back to the literal "[Proper Dismissal for the day]" placeholder,
+      // which is what every Matins printed until 2026-09-13 (352 dates in 2026).
+      // The spec used to be composed only on the Vespers path inside
+      // assembleForDate; it now lives in server-lib/sources/dismissal-spec.js so
+      // both services build it from the same rules. isGreatVespers is false
+      // here: the Saturday-evening shift to the resurrectional dismissal belongs
+      // to the evening service, not to Saturday Matins.
+      // See audit rule M31-matins-dismissal-proper.
+      if (matinsSpec && !matinsSpec.dismissal) {
+        const dayEntry = getCalendarEntry(date, style, { rubrics: getOverlayRubrics(translation) });
+        matinsSpec.dismissal = buildDismissalSpec(dayEntry, { isGreatVespers: false });
+      }
 
       // Enrich Matins Gospel with full scripture text from orthocal API
       if (matinsSpec?.gospel && !matinsSpec.gospel.text) {

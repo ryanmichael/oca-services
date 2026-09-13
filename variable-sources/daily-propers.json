@@ -332,5 +332,42 @@
       "label": "For the Fathers",
       "text": "Rejoice in the Lord, O ye righteous; praise is meet for the upright. Alleluia, Alleluia, Alleluia!"
     }
+  },
+  "sundayBeforeElevationProper": {
+    "_meta": "Liturgy propers for the movable Sunday Before the Exaltation of the Cross (orthocal feast \"Sunday before Elevation\"). REPLACE the Sunday-cycle prokeimenon and alleluia (they are the Sunday set, not a secondary). The Sunday-cycle Epistle/Gospel are still read, joined to the Sunday-Before reading as one (OCA order 2026-0913: \"Galatians 6:11-18 and 2 Corinthians 4:6-15 read as one\"). Source: OCA DLMT text 2025-09-07 (reference/scrape/2025-09-07.docx); order reference/orders/2026-0913-order-services.txt.",
+    "prokeimenon": {
+      "tone": 6,
+      "label": "Sunday Before the Exaltation",
+      "refrain": "O Lord, save Thy people, and bless Thine inheritance!",
+      "verse": "To Thee, O Lord, will I call. O my God, be not silent to me!"
+    },
+    "alleluia": {
+      "tone": 1,
+      "label": "Sunday Before the Exaltation",
+      "verses": [
+        "I have exalted one chosen out of My people.",
+        "For My hand shall defend him and My arm shall strengthen him."
+      ]
+    }
+  },
+  "foundingChurchResurrectionProper": {
+    "_meta": "Secondary Liturgy propers for 9-13, Commemoration of the Founding of the Church of the Resurrection (Holy Sepulchre) at Jerusalem. Attach as .secondary on the day cycle. Prokeimenon verse omitted per OCA co-celebrated layout (rubric + refrain only). Source: OCA DLMT text 2024-09-13 (reference/scrape/2024-09-13.docx); order reference/orders/2026-0913-order-services.txt.",
+    "prokeimenon": {
+      "tone": 4,
+      "label": "For the Founding",
+      "refrain": "Holiness befits Thy house, O Lord, forevermore."
+    },
+    "alleluia": {
+      "tone": 2,
+      "label": "For the Founding",
+      "verses": [
+        "Thy foundations are in the holy mountains; the Lord loveth thy gates, O Zion, more than all the dwellings of Jacob.",
+        "Glorious things are spoken of thee, O city of God!"
+      ]
+    },
+    "communionHymn": {
+      "label": "For the Founding",
+      "text": "I have loved the beauty of Thy house, O Lord, and the place where Thy glory dwelleth. Alleluia, Alleluia, Alleluia!"
+    }
   }
 }

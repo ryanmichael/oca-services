@@ -64,6 +64,8 @@ const {
   LENTEN_SUNDAY_ALLELUIA,
   LENTEN_SUNDAY_COMMUNION,
   HOLY_FATHERS_PROPER,
+  SUNDAY_BEFORE_ELEVATION_PROPER,
+  FOUNDING_CHURCH_PROPER,
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
 
@@ -334,6 +336,30 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const holyFathersSunday = isSunday && !feast && !pentOverride
     && (orthocalData.feasts || []).some(t => /fathers\b.*\bcouncil/i.test(t || ''));
 
+  // Sunday Before the Exaltation of the Cross (movable, orthocal feast "Sunday
+  // before Elevation"). Unlike the Fathers, its prokeimenon (Tone 6) and
+  // alleluia (Tone 1) are THE Sunday set — they replace the Octoechos-tone
+  // pair rather than attach as a secondary. And unlike the Forefathers /
+  // Sunday-before-Nativity overrides that pickPrimaryAndSecondary was written
+  // for, the Sunday-cycle Epistle and Gospel are NOT suppressed: the OCA order
+  // reads "Galatians 6:11-18 and 2 Corinthians 4:6-15 read as one" (2026-0913;
+  // same shape in the 2025-09-07 text). Surfaced 2026-09-13 against the choir
+  // packet: we sang the ordinary Tone-6 alleluia and dropped both cycle
+  // readings. Narrow regex: "Sunday after Elevation" is a different set.
+  const sundayBeforeElevation = isSunday && !feast && !pentOverride
+    && (orthocalData.feasts || []).some(t => /sunday before (the )?(elevation|exaltation)/i.test(t || ''));
+
+  // 9-13, Commemoration of the Founding of the Church of the Resurrection
+  // (Holy Sepulchre) at Jerusalem — a doxology-rank commemoration with its own
+  // full Liturgy set (prokeimenon Tone 4, alleluia Tone 2, Hebrews 3:1-4,
+  // Matthew 16:13-18, koinonikon "I have loved the beauty of Thy house").
+  // Orthocal supplies the readings (description "Church"); the rest were
+  // silently dropped. Attached as .secondary on the day cycle. Verified on a
+  // Sunday (2026-09-13 order); the weekday shape (whether it displaces the
+  // daily cycle as primary) is unverified — the 2024-09-13 text is a Friday
+  // with transferred readings and does not settle it.
+  const foundingChurchDay = mo === 9 && dy === 13 && !feast && !pentOverride;
+
   // The Fathers head the Liturgy troparia/kontakia AND readings (per OCA order)
   // even though their commemoration is stichera-poor. The stichera-ranked picker
   // would otherwise elevate a stichera-rich co-celebration (e.g. Seraphim of
@@ -396,6 +422,14 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     ['8-13', 'Tikhon, Bishop of Voronezh'],
     // Leavetaking of the Elevation + Apostle Quadratus of the Seventy
     ['9-21', 'Quadratus'],
+    // Forefeast of the Elevation + Founding of the Church of the Resurrection.
+    // Not a saint, but the same drop: the Forefeast holds the principal slot
+    // and the Founding's troparion/kontakion (DB comm 1881, OCA text) never
+    // rendered. The OCA order sings both (2026-0913). Only the missing hymns
+    // are restored here; the kontakia SHAPE (which takes Glory / Now) is left
+    // to the standard restructure — see memory
+    // feedback_kontakia_shape_needs_measured_evidence.
+    ['9-13', 'Founding of the Church'],
   ]);
   const coCommemorations = (() => {
     if (!principalIsFeastWindow || includeLesserSaints) return [];
@@ -412,6 +446,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const principalTitle = menaionPrincipal?.title || feast?.title || null;
   [epistleR, epistleR2] = pickPrimaryAndSecondary(epistleAll, principalTitle);
   [gospelR,  gospelR2 ] = pickPrimaryAndSecondary(gospelAll,  principalTitle);
+
+  // Sunday Before the Exaltation: the Sunday-cycle reading pickPrimaryAndSecondary
+  // just suppressed is read straight after the Sunday-Before pericope, under
+  // the one announcement ("read as one"). It is a continuation of the primary,
+  // not a second reading — the Founding / saint reading keeps `.secondary`.
+  let epistleCont = null, gospelCont = null;
+  if (sundayBeforeElevation) {
+    const cycle = all => all.find(r => r !== all[0] && !r.description) || null;
+    if (epistleR?.description) epistleCont = cycle(epistleAll);
+    if (gospelR?.description)  gospelCont  = cycle(gospelAll);
+  }
 
   // Weekday great-saint feast suppression flag.
   // When a Vigil- or Polyeleos-rank saint falls on a weekday (i.e. not Sunday,
@@ -686,6 +731,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     // hierarch/monastic common. Cross Sunday (week 3) and Orthodoxy (week 1)
     // are self-contained — no secondary.
     if (lp.secondary) prokeimenon.secondary = { ...lp.secondary };
+  } else if (sundayBeforeElevation && SUNDAY_BEFORE_ELEVATION_PROPER?.prokeimenon) {
+    // Replaces the Octoechos-tone pair: this IS the Sunday's set.
+    const bp = SUNDAY_BEFORE_ELEVATION_PROPER.prokeimenon;
+    prokeimenon = { tone: bp.tone, label: bp.label, refrain: bp.refrain, verse: bp.verse };
   } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
     const sp = SUNDAY_PROKEIMENA[tone];
     prokeimenon = { tone, refrain: sp.refrain, verse: sp.verse };
@@ -701,6 +750,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // Holy Fathers Sunday: the Fathers' Tone-4 prokeimenon alongside the Sunday one.
   if (holyFathersSunday && prokeimenon && !prokeimenon.secondary && HOLY_FATHERS_PROPER?.prokeimenon) {
     prokeimenon = { ...prokeimenon, secondary: HOLY_FATHERS_PROPER.prokeimenon };
+  }
+  // 9-13 Founding of the Church: its Tone-4 prokeimenon alongside the day's.
+  if (foundingChurchDay && prokeimenon && !prokeimenon.secondary && FOUNDING_CHURCH_PROPER?.prokeimenon) {
+    prokeimenon = { ...prokeimenon, secondary: FOUNDING_CHURCH_PROPER.prokeimenon };
   }
 
   // ── Polyeleos+ saint secondary propers ──────────────────────────────────────
@@ -748,6 +801,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     const la = LENTEN_SUNDAY_ALLELUIA[lentenKey];
     alleluia = { tone: la.tone, verses: la.verses };
     if (la.secondary) alleluia.secondary = { ...la.secondary };
+  } else if (sundayBeforeElevation && SUNDAY_BEFORE_ELEVATION_PROPER?.alleluia) {
+    const ba = SUNDAY_BEFORE_ELEVATION_PROPER.alleluia;
+    alleluia = { tone: ba.tone, label: ba.label, verses: ba.verses };
   } else if (isSunday && SUNDAY_ALLELUIA[tone]) {
     alleluia = { tone, verses: SUNDAY_ALLELUIA[tone] };
   } else if (!isSunday && !isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
@@ -808,6 +864,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (holyFathersSunday && alleluia && !alleluia.secondary && HOLY_FATHERS_PROPER?.alleluia) {
     alleluia = { ...alleluia, secondary: HOLY_FATHERS_PROPER.alleluia };
   }
+  // 9-13 Founding of the Church: its Tone-2 alleluia alongside the day's.
+  if (foundingChurchDay && alleluia && !alleluia.secondary && FOUNDING_CHURCH_PROPER?.alleluia) {
+    alleluia = { ...alleluia, secondary: FOUNDING_CHURCH_PROPER.alleluia };
+  }
   // Safety fallback (parallel to prokeimenon): weekday daily alleluia when no
   // saint-category propers exist for this rank.
   if (!alleluia && isWeekdayGreatSaintFeast && WEEKDAY_ALLELUIA[dow]) {
@@ -860,6 +920,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (holyFathersSunday && secondKoinonikonAllowed && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: HOLY_FATHERS_PROPER.communionHymn };
   }
+  // 9-13 Founding of the Church: "I have loved the beauty of Thy house…"
+  // alongside the day's koinonikon.
+  if (foundingChurchDay && secondKoinonikonAllowed && !communionHymn.secondary && FOUNDING_CHURCH_PROPER?.communionHymn) {
+    communionHymn = { ...communionHymn, secondary: FOUNDING_CHURCH_PROPER.communionHymn };
+  }
 
   // ── Feast antiphons (Lord's feasts only) ──────────────────────────────────
   // A parish may sing a different psalm selection than the OCA DLMT default.
@@ -910,6 +975,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       book: announceEpistleBook(epistleR.display),
       display: epistleR.display,
       text: extractPassageText(epistleR),
+      // Sunday-cycle pericope read as one with the primary (no second
+      // announcement) — Sunday Before the Exaltation.
+      continuation: epistleCont ? {
+        display: epistleCont.display,
+        text: extractPassageText(epistleCont),
+      } : null,
       secondary: epistleR2 ? {
         book: announceEpistleBook(epistleR2.display),
         display: epistleR2.display,
@@ -921,6 +992,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       book: gospelR.book,
       display: gospelR.display,
       text: extractPassageText(gospelR),
+      continuation: gospelCont ? {
+        display: gospelCont.display,
+        text: extractPassageText(gospelCont),
+      } : null,
       // Lenten commemoration Sundays (Palamas week 2, Cross 3, Climacus 4,
       // Mary of Egypt 5) and the Holy Fathers Sunday (John 17:1-13) always sing
       // both Gospels per OCA rubric — force the secondary regardless of the

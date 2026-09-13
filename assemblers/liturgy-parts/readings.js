@@ -74,6 +74,14 @@ function _litEpistle(epistle, f) {
     blocks.push(makeBlock('ep-text', section, 'prayer', 'reader',
       `[${epistle.display || `${epistle.book} ${epistle.pericope}`}]`));
   }
+  // Sunday-cycle pericope read as one with the primary — no second
+  // announcement, the reader continues (Sunday Before the Exaltation).
+  if (epistle.continuation) {
+    const c = epistle.continuation;
+    blocks.push(makeBlock('ep-cont-ref', section, 'rubric', null, c.display));
+    blocks.push(makeBlock('ep-cont-text', section, 'prayer', 'reader',
+      c.text || `[${c.display}]`, c.text ? { density: 'compact' } : undefined));
+  }
   // Co-celebrated saint's epistle, read immediately after the first.
   if (epistle.secondary) {
     const sec = epistle.secondary;
@@ -138,6 +146,13 @@ function _litGospel(gospel, f) {
   } else {
     blocks.push(makeBlock('gos-text', section, 'prayer', 'reader',
       `[${gospel.display || `${gospel.book} ${gospel.pericope}`}]`));
+  }
+  // Sunday-cycle pericope read as one with the primary (see epistle).
+  if (gospel.continuation) {
+    const c = gospel.continuation;
+    blocks.push(makeBlock('gos-cont-ref', section, 'rubric', null, c.display));
+    blocks.push(makeBlock('gos-cont-text', section, 'prayer', 'reader',
+      c.text || `[${c.display}]`, c.text ? { density: 'compact' } : undefined));
   }
   // Co-celebrated saint's gospel, read immediately after the first.
   if (gospel.secondary) {

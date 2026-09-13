@@ -15,6 +15,13 @@ module.exports = {
     if (ctx.service !== 'liturgy') return false;
     if (ctx.dow !== 'sunday') return false;
     if (ctx.season !== 'ordinaryTime') return false;
+    // The Sunday Before the Exaltation (the Sunday in Sept 7-13) sings its own
+    // Tone-1 alleluia IN PLACE of the Octoechos pair — the assumption this
+    // rule encodes is exactly what was wrong there (2026-09-13). L41 owns that
+    // day's alleluia identity; a date window, not a label, keeps the two from
+    // overlapping.
+    const md = (ctx.date || '').slice(5);
+    if (md >= '09-07' && md <= '09-13') return false;
     return true;
   },
   check: (ctx) => {

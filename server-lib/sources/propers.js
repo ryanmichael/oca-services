@@ -69,6 +69,8 @@ const LENTEN_SUNDAY_PROKEIMENA = DAILY_PROPERS.lentenSundayProkeimena;
 const LENTEN_SUNDAY_ALLELUIA   = DAILY_PROPERS.lentenSundayAlleluia;
 const LENTEN_SUNDAY_COMMUNION  = DAILY_PROPERS.lentenSundayCommunion;
 const HOLY_FATHERS_PROPER      = DAILY_PROPERS.holyFathersProper;
+const SUNDAY_BEFORE_ELEVATION_PROPER = DAILY_PROPERS.sundayBeforeElevationProper;
+const FOUNDING_CHURCH_PROPER   = DAILY_PROPERS.foundingChurchResurrectionProper;
 
 // ─── Data file validation ─────────────────────────────────────────────────────
 // Light schema checks on the JSON data files. Throws on missing/mistyped fields
@@ -101,5 +103,7 @@ module.exports = {
   LENTEN_SUNDAY_ALLELUIA,
   LENTEN_SUNDAY_COMMUNION,
   HOLY_FATHERS_PROPER,
+  SUNDAY_BEFORE_ELEVATION_PROPER,
+  FOUNDING_CHURCH_PROPER,
   GENERAL_MENAION_PROPERS,
 };

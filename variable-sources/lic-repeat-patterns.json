@@ -3,7 +3,7 @@
     "description": "Per-feast 'Lord, I Call' repeat patterns for all-night-vigil services whose Menaion publishes fewer unique idiomela than the service has stichoi.",
     "why": "When a feast prints 6 idiomela but the vigil appoints 8 stichoi, WHICH two are doubled is printed in the book — it is not derivable from a rule. The assembler previously filled the extra slots with `licStichera[i % length]`, which appended repeats of stichera 1 and 2 at the END, scrambling every hymn from stichos 5 down against its psalm verse. Found 2026-09-07 reviewing the 9-08 vigil against OCA 2025-0908-texts-tt.docx.",
     "format": "Key is MM-DD of the CONTENT day (the day the vespers enters, not the civil evening). `pattern` is 1-based indices into the day's numbered lordICall stichera (DB `order` >= 1), listed from the highest stichos down to stichos 1. Its length must equal `totalSlots`.",
-    "fallback": "A date with no entry doubles its leading stichera in place, so repeats always sit adjacent to their original and the sequence stays non-decreasing. See audit rule V-lic-repeat-monotonic.",
+    "fallback": "A date with no entry doubles its leading stichera in place, so repeats always sit adjacent to their original and the sequence stays non-decreasing. See audit rule D20-vespers-lic-repeat-monotonic.",
     "version": "1.0.0"
   },
 

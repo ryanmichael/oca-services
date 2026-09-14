@@ -51,9 +51,11 @@ module.exports = {
     // during festal afterfeasts (Ascension, etc.) the closing hymn is the
     // feast troparion in place of the Theotokion. The original bug class
     // (Glory-doxology with NO Now+closure) still gets caught.
+    // The combined "Glory to the Father… now and ever…" (a Great-Feast window
+    // taking both halves on a Saturday eve — see D21) IS a Now-and-ever.
     let nowIdx = -1;
     trop.forEach((b, i) => {
-      if (b.type === 'doxology' && /^Now and ever/i.test(b.text || '')) nowIdx = i;
+      if (b.type === 'doxology' && /(^Now and ever|^Glory to the Father.*now and ever)/i.test(b.text || '')) nowIdx = i;
     });
 
     const issues = [];

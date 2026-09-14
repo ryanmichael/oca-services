@@ -337,32 +337,34 @@
     "type": "lord",
     "label": "The Elevation of the Cross",
     "antiphons": {
+      "_provenance": "OCA DLMT text 2025-09-14 (reference/scrape/2025-09-14.docx), 'at the Divine Liturgy'. Corrected 2026-09-13: the Third Antiphon had been Psalm 99 ('O make a joyful noise'); the feast's is Psalm 98. First Antiphon verses re-cut to the DLMT's 21:1a / 1b / 2 / 3.",
       "first": {
         "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
         "verses": [
-          "My God, my God, why hast Thou forsaken me? Why art Thou so far from helping me?",
-          "O my God, I cry in the daytime, but Thou hearest not; and in the night season.",
-          "But Thou art holy, O Thou that inhabitest the praises of Israel.",
-          "Our fathers trusted in Thee; they trusted, and Thou didst deliver them."
+          "God, my God, attend to me! Why hast Thou forsaken me?",
+          "Why art Thou so far from helping me, from the words of my groaning?",
+          "O my God, I cry by day, but Thou dost not answer; and by night, but find no rest.",
+          "Thou dwellest in the sanctuary, the praise of Israel."
         ],
         "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
       },
       "second": {
         "refrain": "O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!",
         "verses": [
-          "O God, why hast Thou cast us off forever? Why doth Thine anger smoke against the sheep of Thy pasture?",
-          "Remember Thy congregation, which Thou hast purchased of old.",
-          "Remember Mount Zion, wherein Thou hast dwelt.",
-          "God is our King of old, working salvation in the midst of the earth."
+          "O God, why dost Thou cast us off forever?",
+          "Remember Thy congregation, which Thou hast gotten of old!",
+          "Remember Mount Zion, where Thou hast dwelt!",
+          "God is our King before the ages; He has worked salvation in the midst of the earth."
         ],
         "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
       },
       "third": {
         "refrain": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries, and by virtue of Thy Cross, preserve Thy habitation!",
         "verses": [
-          "O make a joyful noise unto the Lord, all ye lands; serve the Lord with gladness.",
-          "Come before His presence with singing; know ye that the Lord, He is God.",
-          "It is He that hath made us, and not we ourselves; we are His people and the sheep of His pasture."
+          "The Lord reigns, let the people tremble!",
+          "The Lord reigns, let the people tremble! He sits enthroned upon the cherubim; let the earth quake!",
+          "The Lord is great in Zion; He is exalted over all the people.",
+          "Bow down in worship to the Lord in His holy court!"
         ]
       }
     },
@@ -394,7 +396,41 @@
     },
     "entranceHymn": "Come, let us worship and fall down before Christ. O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!",
     "megalynarion": "Magnify, O my soul, the most precious Cross of the Lord! Thou art a mystical Paradise, O Theotokos, who, though untilled, hast brought forth Christ; through Him the life-bearing wood of the Cross was planted on earth. Now at its Exaltation, as we bow in worship before it, we magnify thee!",
-    "communionHymn": "The light of Thy countenance, O Lord, has been signed upon us. Alleluia, Alleluia, Alleluia!"
+    "communionHymn": "The light of Thy countenance, O Lord, has been signed upon us. Alleluia, Alleluia, Alleluia!",
+    "antiphonSets": {
+      "sjd-mission-cross": {
+        "_provenance": "Transcribed from the 'St. John of Damascus Mission' Znamenny antiphon sheets in the parish 09.14 Exaltation Liturgy packet (docs/9-12 and 9-13 and 9-14/), 2026-09-13. A different verse cut from the OCA DLMT default (Ps. 21:1a/1c/2/3; 73:1a/2/3b/13; 98:1/2/3) in the parish's own wording. Stored in the Thee/Thy register. Selected per-parish via rubrics_extra_json.antiphonSet — NOT the default.",
+        "first": {
+          "refrain": "Through the prayers of the Theotokos, O Savior, save us.",
+          "verses": [
+            "My God, my God, look upon me; why hast Thou forsaken me?",
+            "The words of my transgressions are far from my salvation.",
+            "O my God, I cry in the daytime, but Thou hearest not.",
+            "But Thou, the praise of Israel, dwellest in the sanctuary."
+          ],
+          "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+        },
+        "second": {
+          "refrain": "O Son of God, crucified in the flesh, save us who sing to Thee: Alleluia!",
+          "verses": [
+            "O Lord, why hast Thou cast us off forever?",
+            "Remember Thy congregation, which Thou hast purchased of old.",
+            "This is Mount Zion, wherein Thou hast dwelt.",
+            "God is our King of old, working salvation in the midst of the earth."
+          ],
+          "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+        },
+        "third": {
+          "refrain": "O Lord, save Thy people, and bless Thine inheritance! Grant victories to the Orthodox Christians over their adversaries, and by virtue of Thy Cross, preserve Thy habitation!",
+          "verses": [
+            "The Lord reigneth, let the people rage: He sitteth upon the cherubim, let the earth be moved.",
+            "The Lord is great in Zion: and He is high above all the people.",
+            "Let them give thanks to Thy great name: for it is holy."
+          ]
+        }
+      }
+    },
+    "entranceVerse": "Extol the Lord our God: worship at His footstool for He is holy!"
   },
   "palmSunday": {
     "type": "lord",

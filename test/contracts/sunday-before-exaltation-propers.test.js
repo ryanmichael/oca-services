@@ -286,3 +286,41 @@ describe('Feature contract: 9-12 eve Great Vespers (Forefeast + Founding)', () =
     }
   });
 });
+
+describe('Feature contract: 9-14 Exaltation festal Liturgy', () => {
+
+  it('INV-15: Third Antiphon is Psalm 98 with the troparion; First Antiphon is the DLMT cut', async () => {
+    const blocks = await liturgy('2026-09-14');
+    const third = blocks.filter(b => b.section === 'Third Antiphon' && b.type === 'verse').map(b => b.text);
+    assert.match(third[0], /^The Lord reigns, let the people tremble!/);
+    assert.ok(third.every(v => /Lord reigns|great in Zion|holy court/.test(v)), 'every Third-Antiphon verse is from Psalm 98');
+    assert.ok(!third.some(v => /joyful noise/.test(v)), 'Psalm 99 ("O make a joyful noise") is not the feast antiphon');
+    const resp = blocks.filter(b => b.section === 'Third Antiphon' && b.type === 'response');
+    assert.match(resp[0].text, /^O Lord, save Thy people/);
+    const first = blocks.filter(b => b.section === 'First Antiphon' && b.type === 'verse').map(b => b.text);
+    assert.match(first[0], /^God, my God, attend to me!/);
+    assert.equal(first.length, 4);
+  });
+
+  it('INV-16: the eisodikon "Extol the Lord our God…" is intoned at the entrance; the kontakion carries "Glory… now and ever…"', async () => {
+    const blocks = await liturgy('2026-09-14');
+    const ent = blocks.filter(b => b.section === 'Entrance Hymn');
+    assert.match(ent[0].text, /^Extol the Lord our God: worship at His footstool/);
+    assert.equal(ent[0].type, 'verse');
+    const k = blocks.filter(b => b.section === 'Kontakia' && (b.type === 'doxology' || b.type === 'hymn'));
+    assert.equal(k[0].type, 'doxology');
+    assert.match(k[0].text, /^Glory to the Father.*Now and ever/);
+    assert.match(k[1].text, /^As Thou wast voluntarily raised upon the Cross/);
+  });
+
+  it('INV-17: the parish picks its own antiphon cut (sjd-mission-cross) without changing the default', async () => {
+    const t = await liturgy('2026-09-14', '&translation=st-john-damascus-tyler');
+    const first = t.filter(b => b.section === 'First Antiphon' && b.type === 'verse').map(b => b.text);
+    assert.match(first[0], /^My God, my God, look upon me/);
+    assert.match(first[1], /^The words of my transgressions/);
+    const third = t.filter(b => b.section === 'Third Antiphon' && b.type === 'verse').map(b => b.text);
+    assert.deepEqual(third.map(v => v.slice(0, 20)), ['The Lord reigneth, l', 'The Lord is great in', 'Let them give thanks']);
+    // Parish keeps the feast's structure: entrance verse, troparion, Glory-now kontakion.
+    assert.ok(t.some(b => b.section === 'Entrance Hymn' && /^Extol the Lord/.test(b.text)));
+  });
+});

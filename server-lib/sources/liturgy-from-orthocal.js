@@ -554,7 +554,15 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   }
 
   if (feast?.kontakia) {
-    kontakia.push(...feast.kontakia);
+    // A feast-only day sings its one kontakion under the combined doxology —
+    // every feast-only order in reference/orders/ (2023-0806 Transfiguration,
+    // 2025-0914 Exaltation) prints "Glory… now and ever… Kontakion of the
+    // Feast". The Sunday restructure in api-liturgy.js never touches feastOnly
+    // days, so the connector has to be set here. A feast with two kontakia is
+    // left alone (no order in hand says how the pair is connected).
+    kontakia.push(...(feast.kontakia.length === 1
+      ? [{ ...feast.kontakia[0], connector: 'Glory to the Father, and to the Son, and to the Holy Spirit. Now and ever, and unto ages of ages. Amen.' }]
+      : feast.kontakia));
   } else if (pentOverride?.kontakia) {
     kontakia.push(...pentOverride.kontakia);
   } else if (!feastOnly) {

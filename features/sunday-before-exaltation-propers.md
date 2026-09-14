@@ -111,6 +111,22 @@ on a Now slot). Five 2026 eves changed: 1-03, 8-15, 8-22, 9-19, 11-21.
 - **INV-14** Every tone's Saturday aposticha has four stichera and none ends
   mid-sentence (gated by `validate-schemas`).
 
+## 9-14 Exaltation festal Liturgy (added 2026-09-13, packet review)
+
+- **INV-15** The Third Antiphon is Psalm 98 ("The Lord reigns, let the people
+  tremble!") with the feast troparion as refrain — it had been Psalm 99. First
+  Antiphon verses are the DLMT cut (21:1a / 1b / 2 / 3). Source: OCA DLMT
+  text 2025-09-14.
+- **INV-16** The eisodikon "Extol the Lord our God: worship at His footstool…"
+  is intoned at the Little Entrance (`entranceVerse`, the Transfiguration
+  precedent); the single feast kontakion carries "Glory… now and ever…"
+  (every feast-only order: 2023-0806, 2025-0914). The entrance hymn itself
+  still follows — whether the verse should REPLACE "Come, let us worship" is
+  the open question in memory `project_great_feast_eisodikon_gap`.
+- **INV-17** Tyler picks `antiphonSets["sjd-mission-cross"]` (its Znamenny
+  sheets: 21:1a/1c/2/3, 73:1a/2/3b/13, 98:1/2/3) via
+  `rubrics_extra_json.antiphonSet.elevation`; the default is unchanged.
+
 ## Known gaps
 
 - Beatitudes on 9-13: OCA appoints 4 troparia from Ode 3 of the Canon of the

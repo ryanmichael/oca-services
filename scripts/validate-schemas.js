@@ -69,6 +69,34 @@ function checkQuoteBalance(rel, node, at, errors, warnings) {
   for (const [k, v] of Object.entries(node)) checkQuoteBalance(rel, v, `${at}.${k}`, errors, warnings);
 }
 
+/**
+ * Octoechos completeness. Found 2026-09-13 against the Tyler 09.12.26 Great
+ * Vespers packet: Tone 6 Saturday Vespers shipped THREE aposticha stichera
+ * where every tone has four (the 4th, "Having been crucified as Thou didst
+ * will…", was absent), and three tones' stichera stopped mid-sentence at the
+ * "//" mark ("O Lord," / "and save us," / "He has granted"). Schema validation
+ * passed — a short array is still an array. The count is a hard error; a text
+ * with no terminal punctuation is a warning like the curly quotes: fourteen
+ * pre-existing strings need per-string sourcing, and the count is meant to
+ * shrink.
+ */
+function checkOctoechos(rel, o, errors, warnings) {
+  for (let t = 1; t <= 8; t++) {
+    const hymns = o[`tone${t}`]?.saturday?.vespers?.aposticha?.hymns;
+    if (!Array.isArray(hymns) || hymns.length !== 4) {
+      errors.push({ rel, at: `.tone${t}.saturday.vespers.aposticha.hymns`,
+        text: `${Array.isArray(hymns) ? hymns.length : 'no'} stichera; every tone sings 4 at Saturday Vespers` });
+    }
+  }
+  (function walk(x, at) {
+    if (typeof x === 'string') {
+      if (at.endsWith('.text') && !/[.!?”"’')\]]$/.test(x.trim())) warnings.push({ rel, at, text: x });
+      return;
+    }
+    if (x && typeof x === 'object') for (const [k, v] of Object.entries(x)) walk(v, `${at}.${k}`);
+  })(o, '');
+}
+
 function reportQuote(list, heading, quiet) {
   if (!list.length || quiet) return;
   console.log('');
@@ -91,6 +119,7 @@ function main() {
   let total = 0, valid = 0, skipped = 0, errs = 0;
   const fails = [];
   const quoteErrors = [], quoteWarnings = [];
+  const octoErrors = [], octoWarnings = [];
 
   for (const root of ROOTS) {
     const abs = path.join(REPO_ROOT, root);
@@ -105,6 +134,9 @@ function main() {
       }
       total++;
       checkQuoteBalance(rel, content, '', quoteErrors, quoteWarnings);
+      if (rel === path.join('variable-sources', 'octoechos.json')) {
+        checkOctoechos(rel, content, octoErrors, octoWarnings);
+      }
       const schemaPath = resolveSchema(rel);
       if (!schemaPath) { skipped++; continue; }
 
@@ -141,11 +173,16 @@ function main() {
   reportQuote(quoteWarnings,
     `⚠ ${quoteWarnings.length} string(s) with unbalanced curly quotes (pre-existing import noise, not gated):`,
     quiet);
+  reportQuote(octoErrors, `✗ ${octoErrors.length} Octoechos completeness error(s):`, quiet);
+  reportQuote(octoWarnings,
+    `⚠ ${octoWarnings.length} Octoechos text(s) with no terminal punctuation (possible scraper truncation, not gated):`,
+    quiet);
   if (quiet) {
     console.log(`quote balance: ${quoteErrors.length} unclosed, ${quoteWarnings.length} curly warning(s)`);
+    console.log(`octoechos: ${octoErrors.length} completeness error(s), ${octoWarnings.length} truncation warning(s)`);
   }
 
-  process.exit(errs || quoteErrors.length ? 1 : 0);
+  process.exit(errs || quoteErrors.length || octoErrors.length ? 1 : 0);
 }
 
 try { main(); }

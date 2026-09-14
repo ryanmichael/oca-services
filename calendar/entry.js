@@ -53,8 +53,17 @@ function attachPolyeleosParemias(entry, date, style) {
   // `vespers.otReadings` either, so the gap stayed invisible from both ends.
   // Found reviewing the 9-08 Nativity of the Theotokos vigil, whose three
   // lessons (Gen. 28:10-17, Ez. 43:2-44:4, Prov. 9:1-11) rendered nowhere.
+  // The rank gate used to be the only signal, and it excluded every
+  // doxology-rank day — 9-13 (Founding of the Church of the Resurrection)
+  // appoints three lessons (3 Kings 8, Prov. 3, Prov. 9) that never rendered.
+  // A WELL-FORMED `vespers.otReadings` declaration in the menaion file (book
+  // and pericope both present) is now accepted alongside the rank. Dropping
+  // the rank outright unmasked seven files/year whose `_meta.rank` says
+  // polyeleos but whose calendar rank does not, four of them malformed (bare
+  // strings, empty pericopes: 7-08, 7-23, 8-16, 12-21) — those stay silent
+  // until authored properly. Found 2026-09-13.
   const rank = getFeastRank(date, style);
-  if (rank !== 'polyeleos' && rank !== 'vigil' && rank !== 'greatFeast') return entry;
+  const rankAllows = rank === 'polyeleos' || rank === 'vigil' || rank === 'greatFeast';
 
   const adj  = fixedFeastDate(date, style);
   const file = `${MONTH_NAMES[adj.getUTCMonth()]}-${String(adj.getUTCDate()).padStart(2, '0')}.json`;
@@ -63,7 +72,10 @@ function attachPolyeleosParemias(entry, date, style) {
 
   try {
     const readings = JSON.parse(fs.readFileSync(p, 'utf8'))?.vespers?.otReadings;
-    if (Array.isArray(readings) && readings.length) {
+    const wellFormed = Array.isArray(readings) && readings.length > 0
+      && readings.every(r => r && typeof r.book === 'string' && r.book
+        && typeof (r.pericope ?? r.reference) === 'string' && (r.pericope ?? r.reference));
+    if (wellFormed || (rankAllows && Array.isArray(readings) && readings.length)) {
       // Menaion files carry { book, reference: "Wisdom of Solomon 3:1-9" }; the
       // renderer and the pentecostarion generator use { order, book, pericope }.
       // Normalize here so neither the renderer nor the five menaion files that

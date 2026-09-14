@@ -180,6 +180,48 @@ function windowClaimsNowAndEver(title) {
   return GREAT_FEAST_WINDOW.test(title || '');
 }
 
+// Commemorations that fall on a day whose principal is a feast window and are
+// NOT saints the picker would elevate (no stichera of their own, or not a
+// saint at all), but whose troparion and kontakion the OCA order still sings.
+// A PRINCIPAL_OVERRIDES entry is the wrong tool: rebinding the principal
+// would swap the feast's proper stichera for General-Menaion generics. So they
+// are co-commemorated — the feast keeps its stichera and "Now and ever…", the
+// co-commemoration's hymns are sung beside it. Named by title substring.
+//
+// `vespersTroparion` says whether the co-commemoration ALSO takes the Glory of
+// the Vespers troparia (weekday: leads; Saturday eve: after the Resurrection).
+// It is carried per entry, not derived from rank, because the three orders in
+// hand disagree by rank and three dates are not a rule:
+//   8-13 (2024 text, weekday)  Troparion St Tikhon / Glory now: Feast   → true
+//   9-13 (2026 order, Sat eve) Resurrection / Glory Founding / Now Forefeast → true
+//   9-21 (2025 text, Sunday)   Resurrection / Glory now: Feast — no Quadratus → false
+// Shared by the Liturgy (liturgy-from-orthocal.js) and Vespers (for-date.js).
+const FEAST_WINDOW_COCOMMEMORATIONS = new Map([
+  // Leavetaking of the Transfiguration + St Tikhon of Zadonsk
+  ['8-13', { match: 'Tikhon, Bishop of Voronezh', vespersTroparion: true }],
+  // Forefeast of the Elevation + Founding of the Church of the Resurrection.
+  // Only the missing hymns are restored; the kontakia SHAPE (which takes
+  // Glory / Now) is left to the standard restructure — see memory
+  // feedback_kontakia_shape_needs_measured_evidence.
+  ['9-13', { match: 'Founding of the Church', vespersTroparion: true }],
+  // Leavetaking of the Elevation + Apostle Quadratus of the Seventy
+  ['9-21', { match: 'Quadratus', vespersTroparion: false }],
+]);
+
+/**
+ * The co-commemorations for a feast-window principal on month `mo`, day `dy`
+ * (fixed-calendar, already Old-Style-adjusted by the caller if needed).
+ * Empty unless the principal is a window and the date has an entry.
+ */
+function feastWindowCoCommemorations(rankedAll, principal, mo, dy) {
+  if (!principal || !FEAST_CYCLE_TITLE.test(principal.title || '')) return [];
+  const entry = FEAST_WINDOW_COCOMMEMORATIONS.get(`${mo}-${dy}`);
+  if (!entry) return [];
+  return (rankedAll || [])
+    .filter(c => c.id !== principal.id && (c.title || '').includes(entry.match))
+    .map(c => ({ ...c, vespersTroparion: !!entry.vespersTroparion }));
+}
+
 // Co-celebration hints from orthocal use "/" or ";" as separators between
 // the day's commemorations, with the FIRST segment being the primary by
 // OCA typikon precedence. Example: "St Tikhon, Patriarch of Moscow / Holy
@@ -334,4 +376,6 @@ module.exports = {
   MOVEABLE_CYCLE_TITLE,
   FEAST_CYCLE_TITLE,
   windowClaimsNowAndEver,
+  FEAST_WINDOW_COCOMMEMORATIONS,
+  feastWindowCoCommemorations,
 };

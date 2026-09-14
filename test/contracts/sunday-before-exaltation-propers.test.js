@@ -54,6 +54,14 @@ before(async () => {
 
 after(() => { if (serverProcess) serverProcess.kill(); });
 
+async function vespers(date, extra = '') {
+  const r = await get(`/api/service?date=${date}${extra}`);
+  assert.equal(r.status, 200, `${date} status`);
+  assert.equal(r.json.date, date);
+  assert.equal(r.json.serviceType, 'greatVespers', `${date} serviceType`);
+  return r.json.blocks;
+}
+
 async function liturgy(date, extra = '') {
   const r = await get(`/api/liturgy?date=${date}${extra}`);
   assert.equal(r.status, 200, `${date} status`);
@@ -191,5 +199,90 @@ describe('Feature contract: 9-13 Founding of the Church of the Resurrection', ()
     assert.ok(blocks.some(b => b.section === 'Troparia' && /Founding of the Church/.test(b.text || '')), 'troparion');
     assert.ok(blocks.some(b => b.section === 'Prokeimenon' && /^Holiness befits/.test(b.text || '')), 'prokeimenon');
     assert.ok(blocks.some(b => b.section === 'Alleluia' && /Thy foundations are in the holy mountains/.test(b.text || '')), 'alleluia');
+  });
+});
+
+// Ordered hymn+doxology stream of a section, so position can be asserted.
+const stream = (blocks, sec) => blocks.filter(b => b.section === sec && (b.type === 'hymn' || b.type === 'doxology'));
+const isGloryOnly = b => b.type === 'doxology' && /^Glory to the Father/.test(b.text) && !/now and ever/i.test(b.text);
+const isNow       = b => b.type === 'doxology' && /now and ever/i.test(b.text);
+
+describe('Feature contract: 9-12 eve Great Vespers (Forefeast + Founding)', () => {
+
+  it('INV-9: Lord I Call — 3 Founding (T6) then 3 Forefeast "Rejoice" (T5), Glory Founding, Now Dogmatikon', async () => {
+    const lic = stream(await vespers('2026-09-12'), 'Lord, I Have Cried');
+    const hymns = lic.filter(b => b.type === 'hymn');
+    const texts = hymns.map(b => b.text);
+    const fnd  = texts.map((t, i) => /^(Dedication is to be honored|Be dedicated anew|O Christ, the pre-eternal Word)/.test(t) ? i : -1).filter(i => i >= 0);
+    const fore = texts.map((t, i) => /^Rejoice, O (life-bearing Cross|Cross of the Lord|guide of the blind)/.test(t) ? i : -1).filter(i => i >= 0);
+    assert.deepEqual(fnd, [4, 5, 6], 'Founding at slots 5-7 (after 4 Resurrection)');
+    assert.deepEqual(fore, [7, 8, 9], 'Forefeast at slots 8-10');
+    assert.ok(fore.every(i => hymns[i].tone === 5), 'Forefeast in Tone 5');
+    const g = lic.findIndex(isGloryOnly);
+    assert.match(lic[g + 1].text, /^Celebrating the memory of the dedication/);
+    const n = lic.findIndex(isNow);
+    assert.match(lic[n + 1].text, /^Who will not bless thee/, 'Now is the Tone 6 Dogmatikon');
+  });
+
+  it('INV-10: three OT lessons render', async () => {
+    const blocks = await vespers('2026-09-12');
+    const refs = blocks.filter(b => b.section === 'Old Testament Readings' && b.type === 'rubric' && /^\S+.* \d+:\d+/.test(b.text)).map(b => b.text);
+    assert.deepEqual(refs, ['3 Kings 8:22-23, 27-30', 'Proverbs 3:19-34', 'Proverbs 9:1-11']);
+  });
+
+  it('INV-11: Aposticha — 4 Resurrection stichera, Glory Founding T2, Now Forefeast T2, no troparion as sticheron', async () => {
+    const ap = stream(await vespers('2026-09-12'), 'Aposticha');
+    const res = ap.filter(b => b.type === 'hymn' && b.source === 'octoechos');
+    assert.equal(res.length, 4, 'four Tone-6 Resurrection aposticha');
+    assert.match(res[3].text, /^Having been crucified as Thou didst will/);
+    const g = ap.findIndex(isGloryOnly), n = ap.findIndex(isNow);
+    assert.ok(g > 0 && n > g, 'Glory then Now, after the stichera');
+    assert.match(ap[g + 1].text, /^We glorify Thee, O Lord, as we celebrate the dedication/);
+    assert.equal(ap[g + 1].tone, 2);
+    assert.match(ap[n + 1].text, /^The Cross of the Giver of life/);
+    assert.equal(ap[n + 1].tone, 2);
+    assert.ok(!ap.some(b => /^By sharing in the ways of the Apostles/.test(b.text)), 'Cornelius troparion not sung as a sticheron');
+  });
+
+  it('INV-12: troparia — Resurrection / Glory Founding / Now Forefeast', async () => {
+    const tr = stream(await vespers('2026-09-12'), 'Troparia');
+    assert.match(tr[0].text, /^The Angelic Powers were at Thy tomb/);
+    assert.ok(isGloryOnly(tr[1]));
+    assert.match(tr[2].text, /^Thou hast revealed the beauty of the holy dwelling place/);
+    assert.ok(isNow(tr[3]));
+    assert.match(tr[4].text, /^We offer in supplication/);
+    assert.equal(tr.length, 5);
+  });
+
+  it('INV-13: a Great-Feast window principal takes Now on a Saturday eve; lesser window and weekday shapes unchanged', async () => {
+    // 8-22 eve: Leavetaking of the Dormition, no saint → combined Glory-now, no Theotokion.
+    const lv = stream(await vespers('2026-08-22'), 'Troparia');
+    assert.equal(lv.length, 3);
+    assert.match(lv[1].text, /^Glory to the Father.*now and ever/);
+    assert.match(lv[2].label, /^Leavetaking of the Dormition/);
+    // 9-19 eve: Afterfeast of the Elevation → same shape (saint at Glory tracked by D21).
+    const af = stream(await vespers('2026-09-19'), 'Troparia');
+    assert.match(af[af.length - 1].label, /^Afterfeast of the Elevation/);
+    assert.ok(!af.some(b => /Dismissal Theotokion/.test(b.label || '')), 'no Theotokion after the Feast');
+    // 8-29 eve: Afterfeast of the Beheading is NOT a Great Feast → Theotokion still closes.
+    const bh = stream(await vespers('2026-08-29'), 'Troparia');
+    assert.match(bh[bh.length - 1].label, /Dismissal Theotokion/);
+    assert.match(bh[2].label, /^Afterfeast of the Beheading/);
+    // 8-12 eve (weekday): Tikhon leads, Now: Leavetaking of the Transfiguration.
+    const r = await get('/api/service?date=2026-08-12');
+    const wk = stream(r.json.blocks, 'Troparia');
+    assert.match(wk[0].label, /Tikhon/);
+    assert.ok(isNow(wk[1]));
+    assert.match(wk[2].label, /^Leavetaking of the Transfiguration/);
+    assert.equal(wk.length, 3);
+  });
+
+  it('INV-14: every tone ships four Saturday aposticha stichera ending in a full sentence', async () => {
+    const o = require('../../variable-sources/octoechos.json');
+    for (let t = 1; t <= 8; t++) {
+      const hymns = o[`tone${t}`].saturday.vespers.aposticha.hymns;
+      assert.equal(hymns.length, 4, `tone ${t}`);
+      for (const h of hymns) assert.match(h.text.trim(), /[.!?”"’']$/, `tone ${t} "${h.text.slice(-30)}"`);
+    }
   });
 });

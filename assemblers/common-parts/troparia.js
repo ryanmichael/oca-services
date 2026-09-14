@@ -43,7 +43,12 @@ function assembleTroparia(tropariaSpec, sources, opts = {}) {
     if (slot.position === 'glory') {
       blocks.push(makeBlock('trop-glory-label', section, 'doxology', null, 'Glory to the Father, and to the Son, and to the Holy Spirit.'));
     } else if (slot.position === 'now') {
-      blocks.push(makeBlock('trop-now-label', section, 'doxology', null, 'Now and ever and unto ages of ages. Amen.'));
+      // A feast that claims both halves ("Glory… now and ever… Troparion of
+      // the Feast" — a Great-Feast window on a Saturday eve with no saint
+      // singing at the Glory) carries combinesGloryNow on the Now slot.
+      blocks.push(makeBlock('trop-now-label', section, 'doxology', null, slot.combinesGloryNow
+        ? 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'
+        : 'Now and ever and unto ages of ages. Amen.'));
     }
 
     const repeats = opts.repeatThrice ? 3 : 1;

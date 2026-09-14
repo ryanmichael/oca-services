@@ -9,6 +9,14 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/09-13.pdf",
     "_note": "Three commemorations: Dedication of the Church of the Holy Resurrection, Forefeast of the Elevation of the Cross (primary day character), and Hieromartyr Cornelius the Centurion. Doxology-rank with Great Doxology. Three canons: Dedication (John the Monk, Tone IV), Forefeast (Joseph, Tone IV), Cornelius (Joseph, Tone V). Modeled as joint two-canon: Canon I = Forefeast of the Cross; Canon II = Cornelius. Dedication canon troparia interspersed but omitted from this menaion-matins-track file per convention. Kontakion of the Forefeast at kontakionAfterOde3 slot; Kontakion of the Dedication at standard after-Ode-6 slot. Exapostilarion: Dedication (primary); Glory/Both now: Forefeast. Lauds: 6 stichera (3 Dedication + 3 mixed) + Glory Tone III + Both now Forefeast Tone III. Troparia at God is the Lord: Dedication (twice), Glory Cornelius, Both now Forefeast."
   },
+  "vespers": {
+    "_note": "OT lessons for the Founding (OCA order 2026-0913; DLMT text 2024-09-13 \"Old Testament Readings (Founding)\"). Citations only — orthocal supplies the text.",
+    "otReadings": [
+      { "order": 1, "book": "3 Kings", "pericope": "8:22-23, 27-30" },
+      { "order": 2, "book": "Proverbs", "pericope": "3:19-34" },
+      { "order": 3, "book": "Proverbs", "pericope": "9:1-11" }
+    ]
+  },
   "troparion": {
     "text": "Thou didst show forth the beauty\nof the holy dwelling-place of Thy glory here below, O Lord,\nlike the splendor of the firmament on high.\nEstablish it throughout all ages,\nand through the Theotokos\naccept the supplications we unceasingly offer unto Thee therein,//\nO Thou life and resurrection of all.",
     "tone": 4,

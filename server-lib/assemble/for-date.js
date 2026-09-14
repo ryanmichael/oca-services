@@ -13,7 +13,8 @@ const { pickPrincipalByOrthocalOrder,
         applyPrincipalOverride,
         loadOrthocalForDate,
         FEAST_CYCLE_TITLE,
-        windowClaimsNowAndEver }                  = require('../sources/menaion-principal');
+        windowClaimsNowAndEver,
+        feastWindowCoCommemorations }             = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
@@ -237,6 +238,40 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           tone:  feastCycleTrop.tone,
           label: feastCycleComm.title,
         };
+      }
+
+      // The mirror case: the window IS the principal, and a co-commemoration
+      // the picker would never elevate still owns the Glory — the Founding of
+      // the Church inside the Forefeast of the Cross (OCA order 2026-0913:
+      // "Resurrectional Troparion / Glory… Founding / Now and ever…
+      // Forefeast"), St Tikhon inside the Transfiguration leavetaking. Same
+      // shared map the Liturgy uses; `vespersTroparion` is decided per entry
+      // (a simple saint yields on 9-21). Only a Great Feast's window steps to
+      // "Now and ever…"; a lesser window would keep its Glory.
+      //
+      // With no co-commemoration the window still steps to "Now and ever…"
+      // and takes the Glory with it. Measured across the 30 feast-window
+      // Sunday orders in reference/orders/ (2022-2026): every Great-Feast
+      // window sings at "Now and ever…"; the four with no saint at the Glory
+      // (2022-0814, 2023-0108, 2023-0205, 2024-0114, and 2026-0823) print
+      // "Glory… now and ever… Troparion of the Feast". We were singing the
+      // window at the Glory and the dismissal Theotokion at Now on all five
+      // 2026 dates (1-03, 8-15, 8-22, 9-19, 11-21 eves). Which SAINT takes the
+      // Glory on the other dates is not derivable from the orders (Micah is
+      // dropped on 2022-0814, Dometius sings on 2022-0807), so that half is
+      // tracked by D21, not guessed.
+      let windowCombinesGloryNow = false;
+      if (windowClaimsNowAndEver(primary.title)) {
+        const [mo, dy] = adjustedMD();
+        const co = feastWindowCoCommemorations(ranked?.all, primary, mo, dy)
+          .find(c => c.vespersTroparion && c.troparia?.some(t => t.type === 'troparion'));
+        const coTrop = co?.troparia.find(t => t.type === 'troparion');
+        autoSlot.feastTroparion = { ...autoSlot.troparion };
+        if (coTrop) {
+          autoSlot.troparion = { text: coTrop.text, tone: coTrop.tone, label: co.title };
+        } else {
+          windowCombinesGloryNow = true;
+        }
       }
 
       // Whatever ends up at the Glory drives the label, and the tone the
@@ -682,7 +717,10 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           tone:     gloryTone,
           label:    gloryLabel,
         });
-        slots.push(autoSlot.feastTroparion ? {
+        // A window principal with no co-commemoration already leads at
+        // order 1; it must not also fill the Now (weekday shape unchanged —
+        // the Saturday-eve combined "Glory… now and ever…" is handled below).
+        slots.push((autoSlot.feastTroparion && !windowCombinesGloryNow) ? {
           position: 'now',
           source:   'menaion', provenance: menaionProvenance,
           key:      `auto.${date}.feastTroparion`,
@@ -719,13 +757,14 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             key:         `auto.${date}.feastTroparion`,
             tone:        autoSlot.feastTroparion.tone,
             label:       autoSlot.feastTroparion.label,
+            ...(windowCombinesGloryNow ? { combinesGloryNow: true } : {}),
           } : {
             ...slots[nowIdx],
             key:  `tone${gloryTone}.saturday.vespers.dismissalTheotokion`,
             tone: gloryTone,
           };
         }
-        slots.splice(insertAt, 0, {
+        if (!windowCombinesGloryNow) slots.splice(insertAt, 0, {
           position: 'glory',
           source:   'menaion', provenance: menaionProvenance,
           key:      `auto.${date}.troparion`,

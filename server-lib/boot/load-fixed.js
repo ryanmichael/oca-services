@@ -186,6 +186,13 @@ function boot() {
     return t;
   });
 
+  const panikhidaFixed = loadOrExit('Panikhida fixed texts', () => {
+    const t = loadJSON('fixed-texts/panikhida-fixed.json');
+    registerBaseFixed('panikhida', t);
+    console.log('Panikhida fixed texts loaded.');
+    return t;
+  });
+
   ensureOrthocalCacheTable();
 
   // Apply any pending schema migrations. Brownfield-safe: on first run,
@@ -208,7 +215,7 @@ function boot() {
     paschalHoursFixed, midnightOfficeFixed, paschalMatinsFixed,
     passionGospelsFixed, bridegroomMatinsFixed, lamentationsFixed,
     vesperalLiturgyFixed, kneelingVespersFixed, royalHoursFixed,
-    matinsFixed, typikaFixed,
+    matinsFixed, typikaFixed, panikhidaFixed,
     // Shared helpers
     parseQuery, escHtml, formatDate, serveStatic, loadJSON,
     renderService, renderVespers,

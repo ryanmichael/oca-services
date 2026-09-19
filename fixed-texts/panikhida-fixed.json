@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "description": "Fixed liturgical texts for the Panikhida (Memorial Service for the Departed) — parish form",
+    "tradition": "OCA (Orthodox Church in America)",
+    "version": "0.1.0",
+    "_source": "Hymn and prayer wording from the OCA 'Burial of a Layperson' (oca.org/files/PDF/Music/Burial/burial-of-layperson.pdf, 2018), which shares the Panikhida's Alleluia, troparia, evlogitaria, litanies, kathisma hymn, canon heirmoi (Tone 6), kontakion/ikos, Tone 4 troparia and dismissal. Order of the parish Panikhida cross-checked against an OCA parish sheet (Ss. Cyril & Methodius, Terryville CT). Psalms 90 and 50 are drawn from fixed-texts/psalter.json at assembly time so the Psalter translation stays uniform across services.",
+    "_inflection": "Texts carry tokens — {servant} {Servant} {soul} {N} {they} {They} {their} {Their} {them} {has} {is} {was} — that the assembler resolves against `forms.plural`, `forms.masculine` or `forms.feminine`. Author texts in the token form only; never bake a number or gender into a string.",
+    "note": "The Bright Week (Paschal) Panikhida follows a different order and is NOT modeled here."
+  },
+
+  "forms": {
+    "plural":    { "servant": "servants", "Servant": "Servants", "soul": "souls", "N": "(NN.)", "they": "they", "They": "They", "their": "their", "Their": "Their", "them": "them", "has": "have", "is": "are", "was": "were" },
+    "masculine": { "servant": "servant",  "Servant": "Servant",  "soul": "soul",  "N": "(N.)",  "they": "he",   "They": "He",   "their": "his",   "Their": "His",   "them": "him",  "has": "has",  "is": "is",  "was": "was" },
+    "feminine":  { "servant": "servant",  "Servant": "Servant",  "soul": "soul",  "N": "(N.)",  "they": "she",  "They": "She",  "their": "her",   "Their": "Her",   "them": "her",  "has": "has",  "is": "is",  "was": "was" }
+  },
+
+  "opening": {
+    "deaconBless": "Bless, Master!",
+    "exclamation": "Blessed is our God, always, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "trisagion": {
+    "holyGod": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "holyTrinity": "O most-holy Trinity: have mercy on us. O Lord: cleanse us from our sins. O Master: pardon our transgressions. O Holy One: visit and heal our infirmities, for Thy Name’s sake.",
+    "lordHaveMercy": "Lord, have mercy."
+  },
+
+  "ourFather": {
+    "text": "Our Father, Who art in heaven, hallowed be Thy name. Thy Kingdom come, Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+    "exclamation": "For Thine is the Kingdom, and the Power, and the Glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "lordHaveMercy12": "Lord, have mercy. (x12)",
+
+  "gloryNow": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+  "glory": "Glory to the Father, and to the Son, and to the Holy Spirit.",
+  "now": "Now and ever, and unto ages of ages. Amen.",
+
+  "comeLetUsWorship": [
+    "Come, let us worship God our King.",
+    "Come, let us worship and fall down before Christ, our King and our God.",
+    "Come, let us worship and fall down before the very Christ, our King and our God."
+  ],
+
+  "alleluiaGlory": "Alleluia, alleluia, alleluia, glory to Thee, O God.",
+
+  "alleluia": {
+    "tone": 8,
+    "response": "Alleluia, alleluia, alleluia.",
+    "verses": [
+      "Blessed are they whom Thou hast chosen and taken, O Lord.",
+      "Their memory is from generation to generation.",
+      "Their souls shall dwell with the blessed."
+    ]
+  },
+
+  "troparion": {
+    "tone": 8,
+    "text": "Thou only Creator, Who with wisdom profound mercifully orderest all things, and givest unto all that which is useful: give rest, O Lord, to the {soul} of Thy {servant} who {has} fallen asleep; for {they} {has} placed {their} trust in Thee, our Maker and Fashioner, and our God.",
+    "theotokion": "We have thee as a wall and a haven, and an intercessor well-pleasing unto God, Whom thou didst bear, O Virgin Theotokos, the salvation of the faithful."
+  },
+
+  "evlogitaria": {
+    "tone": 5,
+    "refrain": "Blessed art Thou, O Lord; teach me Thy statutes!",
+    "troparia": [
+      "The choirs of saints have found the fountain of life, and the door of Paradise. May I, also, find the way through repentance. I am a lost sheep; call me, O Savior, and save me!",
+      "For preaching the Lamb of God, you holy martyrs were led as lambs to slaughter. You have been received into unfading and everlasting life. Now, entreat the Lord to grant us forgiveness of sins!",
+      "You who have walked the narrow path of life; you who have borne the Cross as your yoke in life; you who have followed Me in faith: draw near and receive the heavenly crowns that I have prepared for you!",
+      "I am the image of Thine ineffable glory, though I bear the brands of transgressions. Pity Thy creature, O Master, and purify me by Thy loving-kindness! Grant me the homeland of my heart’s desire, making me again a citizen of Paradise!",
+      "O Thou, Who of old didst call me into being from nothingness and didst honor me with Thine image divine, but because I had transgressed Thy commandments, hast returned me again unto the earth from which I was taken: restore Thou me to that image, and to my pristine beauty.",
+      "Give rest to the {soul} of Thy {servant}, O God, and establish {them} in Paradise, where the choirs of the saints and of the just, O Lord, shine like the stars of heaven! Give rest to Thy {servant} who {has} fallen asleep, overlooking all {their} transgressions!"
+    ],
+    "triadikon": "Let us praise the three-fold splendor of the one Godhead, crying: “Holy art Thou, O Father without beginning, Co-eternal Son, and Divine Spirit. Enlighten us who serve Thee in faith, and deliver us from eternal fire!”",
+    "theotokion": "Rejoice, O exalted Lady! You gave birth to God in the flesh for the salvation of all. Through you may we find Paradise, O pure, most blessed Theotokos!"
+  },
+
+  "litanyLittle": {
+    "_note": "The Little Litany for the Departed, said after the Evlogitaria, after Ode 3 and after Ode 6.",
+    "opening": "Again and again in peace let us pray to the Lord.",
+    "response": "Lord, have mercy.",
+    "petitions": [
+      "Again we pray for the repose of the {servant} of God, {N}, departed this life; and that {they} may be pardoned all {their} sins, both voluntary and involuntary.",
+      "That the Lord will establish {their} {soul} where the just repose."
+    ],
+    "askPetition": "The mercies of God, the Kingdom of Heaven, and the remission of {their} sins, let us ask of Christ, the Immortal King and God.",
+    "askResponse": "Grant it, O Lord.",
+    "deaconCall": "Let us pray to the Lord."
+  },
+
+  "litanyAugmented": {
+    "_note": "The Augmented Litany for the Departed, said after the Tone 4 troparia. Each ‘Lord, have mercy’ is sung thrice.",
+    "opening": "Have mercy upon us, O God, according to Thy great mercy, we beseech Thee: hearken and have mercy.",
+    "tripleResponse": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "petitions": [
+      "Again we pray for the repose of the {servant} of God, {N}, departed this life; and that {they} may be pardoned all {their} sins, both voluntary and involuntary.",
+      "That the Lord will establish {their} {soul} where the just repose."
+    ],
+    "askPetition": "The mercies of God, the Kingdom of Heaven, and the remission of {their} sins, let us ask of Christ, the Immortal King and God.",
+    "askResponse": "Grant it, O Lord.",
+    "deaconCall": "Let us pray to the Lord.",
+    "response": "Lord, have mercy."
+  },
+
+  "prayerForTheDeparted": {
+    "text": "O God of spirits, and of all flesh, Who hast trampled down death by death and overthrown the Devil, and given life to Thy world: do Thou, the same Lord, give rest to the {soul} of Thy departed {servant}, {N}, in a place of brightness, a place of refreshment, a place of repose, where all sickness, sighing, and sorrow have fled away. Pardon every transgression which {they} {has} committed, whether by word or deed or thought. For Thou art a good God and lovest mankind; because there is no man who lives yet does not sin; for Thou only art without sin; Thy righteousness is to all eternity; and Thy word is truth.",
+    "exclamation": "For Thou art the resurrection, the life, and the repose of Thy {servant}, {N}, who {is} fallen asleep, O Christ our God, and unto Thee we ascribe glory, together with Thy Father, Who is from everlasting, and Thine all-holy, good, and life-creating Spirit, now and ever, and unto ages of ages.",
+    "amen": "Amen."
+  },
+
+  "kathismaHymn": {
+    "tone": 5,
+    "text": "Give rest with the just, O Savior, unto Thy {servant}. Establish {them} in Thy courts, as it is written. Disregard {their} transgressions, both voluntary and involuntary, committed in knowledge or in ignorance, for Thou art good and lovest mankind.",
+    "theotokion": "From a Virgin Thou didst shine forth to the world, through her making us children of light. O Christ our God, have mercy on us."
+  },
+
+  "canon": {
+    "_note": "Tone 6, the canon of the departed (Saturday, Octoechos). In the parish Panikhida only the heirmoi are sung, each followed by the refrain; troparia are omitted.",
+    "tone": 6,
+    "refrain": "Give rest, O Lord, to the {soul} of Thy {servant} who {has} fallen asleep.",
+    "odes": {
+      "ode1": "When Israel passed on foot over the sea, as if it were dry land, and beheld their pursuer Pharaoh drowning in the sea, they cried aloud unto God: “Let us sing a song of victory!”",
+      "ode3": "There is none so holy as Thou, O Lord my God, Who hast exalted the power of Thy faithful, O Blessed One, and hast established us upon the rock of Thy confession.",
+      "ode4": "“Christ is my strength, my God and my Lord,” the sacred Church sings in a manner befitting God, with a pure mind keeping festival unto the Lord.",
+      "ode5": "With Thy light divine, O Good One, illumine, I ask Thee, the souls of those who in love keep vigil, that they may know Thee, O Word of God, as the true God, Who recalls us from the darkness of sin.",
+      "ode6": "Beholding the sea of life surging with the storm of temptations, and taking refuge in Thy calm haven, I cry unto Thee: “Raise up my life from corruption, O greatly Merciful One!”",
+      "ode7": "An angel made the furnace moist with dew for the godly children, and the command of God consuming the Chaldeans made the tyrant cry out: “Blessed art Thou, O God of our fathers!”",
+      "ode8": "Out of the flames Thou didst drop dew on the godly ones, and with water didst burn the sacrifice of the righteous one, for Thou doest all things as Thou willest, O Christ. We exalt Thee throughout all ages.",
+      "ode9": "It is not possible for men to see God, upon Whom the ranks of angels dare not gaze. But through thee, O All-pure One, was the Word incarnate revealed unto men; Whom magnifying together with the heavenly hosts, we call thee blessed."
+    },
+    "ode8Glory": "Let us bless the Father, and the Son, and the Holy Spirit, the Lord."
+  },
+
+  "kontakion": {
+    "tone": 8,
+    "text": "With the saints give rest, O Christ, to the {soul} of Thy {servant}, where there is neither sickness nor sorrow, and no more sighing, but life everlasting.",
+    "ikos": "Thou alone art immortal, Who hast created and fashioned man. For out of the earth were we mortals made, and unto the earth shall we return again, as Thou didst command when Thou madest me, saying to me: “You are dust, and unto dust shall you return!” There we mortals all shall go, making our lamentation the song: Alleluia, alleluia, alleluia!"
+  },
+
+  "troparia": {
+    "tone": 4,
+    "hymns": [
+      "With the souls of the righteous departed, give rest to the {soul} of Thy {servant}, O Savior, preserving {them} in the blessed life which is with Thee, Who lovest mankind.",
+      "In the place of Thy rest, O Lord, where all Thy saints repose, give rest also to the {soul} of Thy {servant}, for Thou only lovest mankind."
+    ],
+    "glory": "Thou art the God Who descended into hell and loosed the bonds of the captives. Give rest also to the {soul} of Thy {servant}.",
+    "now": "O Virgin, alone pure and blameless, who didst bear God without seed: intercede that the {soul} of thy {servant} may be saved."
+  },
+
+  "dismissal": {
+    "wisdom": "Wisdom!",
+    "theotokosSaveUs": "Most Holy Theotokos, save us.",
+    "moreHonorable": "More honorable than the Cherubim, and more glorious beyond compare than the Seraphim: without corruption you gave birth to God the Word. True Theotokos, we magnify you.",
+    "gloryToThee": "Glory to Thee, O Christ our God and our hope, glory to Thee.",
+    "gloryNowLhmBless": "Glory to the Father, and to the Son, and to the Holy Spirit: now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless!",
+    "text": "May He Who has power over the living and the dead, Christ our true God, Who arose from the dead, through the prayers of His all-pure Mother; of the holy, glorious and all-laudable apostles; of our holy and God-bearing fathers; and of all the saints: establish the {soul} of His {servant}, {N}, who {has} been taken from us, in the mansions of the righteous; give {them} rest in Abraham’s bosom, and number {them} among the just, and have mercy on us, forasmuch as He is good and loves mankind.",
+    "amen": "Amen.",
+    "memoryEternalCall": "Grant rest eternal in blessed repose, O Lord, to Thy {servant}, {N}, who {has} fallen asleep, and make {their} memory to be eternal.",
+    "memoryEternal": "Memory eternal! Memory eternal! Memory eternal!",
+    "dwellWithTheBlessed": "{Their} {soul} shall dwell with the blessed."
+  }
+}

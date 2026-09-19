@@ -20,6 +20,7 @@ const apiTranslationsDiff = require('./api-translations-diff');
 const parishAdmin         = require('./parish-admin');
 const apiLiturgy          = require('./api-liturgy');
 const apiTypika           = require('./api-typika');
+const apiPanikhida        = require('./api-panikhida');
 const apiPresanctified    = require('./api-presanctified');
 const apiBridegroomMatins = require('./api-bridegroom-matins');
 const apiMatins           = require('./api-matins');
@@ -93,6 +94,7 @@ function dispatch(req, res, ctx) {
                                                                   return apiTranslationsDiff(req, res, ctx);
     if (pathname === '/api/liturgy')                              return apiLiturgy(req, res, ctx);
     if (pathname === '/api/typika')                               return apiTypika(req, res, ctx);
+    if (pathname === '/api/panikhida')                            return apiPanikhida(req, res, ctx);
     if (pathname === '/api/presanctified')                        return apiPresanctified(req, res, ctx);
     if (pathname === '/api/bridegroom-matins')                    return apiBridegroomMatins(req, res, ctx);
     if (pathname === '/api/matins')                               return apiMatins(req, res, ctx);

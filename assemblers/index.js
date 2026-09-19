@@ -25,5 +25,6 @@ module.exports = {
   assemblePassionGospels:   require('./passion-gospels'),
   assembleLamentations:     require('./lamentations'),
   assembleTypika:           require('./typika'),
+  assemblePanikhida:        require('./panikhida'),
   resolveSource,
 };

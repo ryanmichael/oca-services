@@ -398,6 +398,40 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const principalIsFeastWindow =
     !!menaionPrincipal && FEAST_CYCLE_TITLE.test(menaionPrincipal.title || '');
 
+  // Does the feast troparion sing SECOND, immediately after the Resurrection?
+  //
+  // Measured across every OCA order in reference/orders/ (2022-2026) that
+  // prints a feast troparion in the Liturgy "Troparia and Kontakia" block —
+  // 35 of 36 read:
+  //     Resurrection > Feast > Church (if of Patron Saint) > Saint(s)
+  // The code previously generalised from the single order that does NOT
+  // (2026-08-16), treating "the window is sung last" as the rule, which put
+  // the feast last on every window Sunday. On 2026-09-20 that gave
+  // Resurrection > Patron > Eustathius > Cross against the order's
+  // Resurrection > Cross > Church > Eustathius. Found 2026-09-19 reviewing the
+  // choir packet, whose sheets are stacked in the order's own sequence.
+  //
+  // Two conditions narrow it, both from orders that contradicted a broader
+  // first attempt (each caught by an existing contract, not by reasoning):
+  //
+  //  1. GREAT feasts only. 2026-08-30's Beheading afterfeast is a LESSER
+  //     window: its order prints no "Troparion of the Feast" at all and puts
+  //     the Church second — moving the afterfeast up broke
+  //     lesser-feast-window INV-3.
+  //  2. Named exceptions, where a co-commemoration leads the window:
+  //     2026-08-16 (the Image Not-Made-by-Hands) and 2026-09-13 (the Founding
+  //     of the Church of the Resurrection, which broke 9-13 INV-5). Two
+  //     instances are not a rule and nothing in the data separates "a
+  //     co-commemoration that outranks the window" from one that does not, so
+  //     they are named rather than derived.
+  const GREAT_WINDOW = /(Dormition|Elevation of the Cross|Exaltation of the Cross|Entry (?:of|into) the|Meeting of our Lord|Nativity of our Lord|Nativity of the (?:Mother of God|Theotokos)|Theophany|Transfiguration|Annunciation|Pentecost)/i;
+  const WINDOW_TROPARION_SINGS_LAST = new Set(['08-16', '09-13']);
+  const windowSingsSecond =
+    principalIsFeastWindow
+    && GREAT_WINDOW.test(menaionPrincipal.title || '')
+    && !WINDOW_TROPARION_SINGS_LAST.has(
+         `${String(mo).padStart(2, '0')}-${String(dy).padStart(2, '0')}`);
+
   // Being a window and CLAIMING "Now and ever…" are two different things: only
   // a Great Feast's window displaces the Kontakion-Theotokion. See
   // `windowClaimsNowAndEver`. `principalIsFeastWindow` still governs
@@ -519,6 +553,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
         tone:   feastCycleTrop.tone,
         rubric: `Troparion of ${feastCycleComm.title}, Tone ${feastCycleTrop.tone}:`,
         text:   feastCycleTrop.text,
+        // Same tag the window path sets: the patron-of-temple insertion in
+        // routes/api-liturgy.js must land AFTER the feast. This branch already
+        // emits the feast second; without the tag the patron was still spliced
+        // in front of it (2026-08-09, 2026-01-11). Gated on GREAT-feast-ness so
+        // a lesser window (2026-08-30's Beheading) keeps the Church second.
+        feastWindow: GREAT_WINDOW.test(feastCycleComm.title || ''),
       });
     }
 
@@ -645,6 +685,21 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     if (windowTropIdx >= 0) troparia.splice(windowTropIdx, 0, overlay.troparion);
     else troparia.push(overlay.troparion);
   }
+
+  // Move the window troparion into second place (see `windowSingsSecond`).
+  if (windowSingsSecond) {
+    const winIdx = troparia.findIndex(t => (t.rubric || '').includes(menaionPrincipal.title));
+    const resIdx = troparia.findIndex(t => /Troparion of the Resurrection/.test(t.rubric || ''));
+    if (resIdx >= 0 && winIdx > resIdx + 1) {
+      const [win] = troparia.splice(winIdx, 1);
+      troparia.splice(resIdx + 1, 0, win);
+    }
+    // Tag it so the patron-of-temple insertion in routes/api-liturgy.js lands
+    // AFTER the feast — the orders read "Church (if of Patron Saint)" third.
+    const taggedIdx = troparia.findIndex(t => (t.rubric || '').includes(menaionPrincipal.title));
+    if (taggedIdx >= 0) troparia[taggedIdx].feastWindow = true;
+  }
+
   const feastCycleKontIdx = kontakia.findIndex(k => k && k.feastCycle);
   if (overlay?.kontakion && feastCycleKontIdx >= 0) {
     // Feast-WINDOW date (afterfeast / forefeast / leavetaking). The window's

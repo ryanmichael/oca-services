@@ -168,9 +168,16 @@ function handle(req, res, ctx) {
               };
               const d = new Date(date + 'T12:00:00Z');
               const isSundayLocal = d.getUTCDay() === 0;
-              const resIdx = isSundayLocal
+              let resIdx = isSundayLocal
                 ? lit.troparia.findIndex(t => /Resurrection/i.test(t.rubric || ''))
                 : -1;
+              // On a feast-window Sunday the Church's troparion follows the
+              // FEAST, not the Resurrection: every OCA order that prints both
+              // reads "Resurrection > Feast > Church (if of Patron Saint) >
+              // Saint(s)". Inserting at resIdx+1 unconditionally put the patron
+              // between the Resurrection and the feast. The window troparion is
+              // tagged in liturgy-from-orthocal.js. Found 2026-09-19.
+              if (resIdx >= 0 && lit.troparia[resIdx + 1]?.feastWindow) resIdx += 1;
               if (resIdx >= 0) {
                 lit.troparia = [
                   ...lit.troparia.slice(0, resIdx + 1),

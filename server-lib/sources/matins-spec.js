@@ -908,12 +908,32 @@ function buildMatinsSpec(dateStr, date, dow, season, tone, sources, style = 'new
       // ever + Octoechos Theotokion (kept). Cyrus & John 01-31 is the
       // worked example; the doxastikon was previously mis-located under
       // lauds.
-      if (mat.aposticha?.doxastikon) {
+      // The saint's doxastikon is authored under `aposticha` in some menaion
+      // files (01-31, the worked example) and under `lauds` in others (01-18,
+      // 05-24, 06-28, 09-05). Neither key is wrong: a fixed date falls on a
+      // different weekday each year, and the SAME hymn belongs at the Aposticha
+      // Glory when the day is simple-rank but at the Lauds Glory when the day
+      // carries sung Lauds. So the location is a property of the service, not
+      // of the date — read it from either key and let this branch, which only
+      // runs for simple rank off a Sunday, decide.
+      //
+      // Before this, the four `lauds`-keyed files rendered the doxastikon as a
+      // lone hymn in a Lauds section that a simple-rank service does not have
+      // (M19-matins-lauds-shape, the only `high` in the year sweep, on 09-05).
+      // Moving it in the DATA instead was tried and reverted: it dropped the
+      // hymn entirely on 01-18, 05-24 and 06-28, all of which are Sundays in
+      // 2026 and legitimately sing it at Lauds. Fixed 2026-09-19.
+      const saintDoxastikon = mat.aposticha?.doxastikon || mat.lauds?.doxastikon;
+      if (saintDoxastikon) {
         spec.aposticha = {
           ...spec.aposticha,
-          glory: mat.aposticha.doxastikon,
+          glory: saintDoxastikon,
           now:   spec.aposticha.glory,
         };
+        // A Lauds block holding nothing but the doxastikon exists only to carry
+        // the hymn just relocated; drop it so it is not also sung at Lauds.
+        // A file with real Lauds stichera is left alone.
+        if (spec.lauds && !spec.lauds.stichera?.length) delete spec.lauds;
       }
     }
   }

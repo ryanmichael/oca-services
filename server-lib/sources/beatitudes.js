@@ -74,6 +74,48 @@ const FEAST_BEATITUDES_BLENDS = {
         at: 'matins.canon.ode6', take: 4, tone: 4, label: 'For the Image' },
     ],
   },
+
+  // Sunday 9-20: Afterfeast of the Elevation + Greatmartyr Eustathius.
+  // reference/orders/2026-0920-order-services.txt appoints 4 Resurrection (T7)
+  // + 4 from Ode 8 of the Canon of the Feast (T8) + 4 from Ode 6 of the Canon
+  // of St. Eustathius (T4) — twelve, filling every Beatitude slot.
+  //
+  // We rendered the plain Octoechos set: 6 Resurrection + Glory + Theotokion,
+  // eight troparia. That is the right shape for an ORDINARY Sunday and the
+  // wrong one here, and because the renderer RIGHT-ALIGNS into twelve slots
+  // (antiphons.js: `startSlot = totalSlots - tropList.length`) a count of eight
+  // put every troparion four stichoi late — not merely four of them missing.
+  // Found 2026-09-19 reviewing the 9-20 choir packet.
+  //
+  // GAP: each feast group is one short. Both are held open rather than padded.
+  //  - Ode 8 of the Cross canon holds 3 troparia. Canon I (Cosmas) is an
+  //    ACROSTIC composition, so 3 is likely its true length and the order's
+  //    fourth item is something we cannot identify from anything in the
+  //    corpus — no OCA text for 9-20 prints the Beatitudes, and neither
+  //    2024-09-15 nor 2025-09-21 prints them either.
+  //  - Ode 6 of september-20 holds 2 troparia + its Theotokion (stored as the
+  //    third entry, with the label inside the text).
+  //
+  // Each `missing` sits FIRST in its group, as 8-16's does. That is deliberate:
+  // the last two of the twelve land on "Glory…" and "Now and ever…", so a
+  // reservation placed at the end of the final group would silence the
+  // Now-and-ever. Leading placement keeps both terminal slots on real text and
+  // puts the two silent slots on ordinary Beatitude verses mid-list.
+  //
+  // Do NOT pad from another canon to reach four — see the 8-16 note; the count
+  // is what fixes the alignment, and a wrong text is worse than a silent slot.
+  '9-20': {
+    octoechosTroparia: 4,
+    parts: [
+      { missing: 1, tone: 8, label: 'For the Feast' },
+      { file: 'variable-sources/feast-canons/cross.json',
+        at: 'ode8', take: 3, tone: 8, label: 'For the Feast' },
+      { missing: 1, tone: 4, label: 'For St. Eustathius' },
+      // take:3 is troparia 1-2 plus the Theotokion, which must stay last.
+      { file: 'variable-sources/menaion/september-20.json',
+        at: 'matins.canon.ode6', take: 3, tone: 4, label: 'For St. Eustathius' },
+    ],
+  },
 };
 
 /** Reads `parts` into a flat troparia list. A part that cannot be resolved is

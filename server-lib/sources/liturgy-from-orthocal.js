@@ -65,6 +65,7 @@ const {
   LENTEN_SUNDAY_COMMUNION,
   HOLY_FATHERS_PROPER,
   SUNDAY_BEFORE_ELEVATION_PROPER,
+  SUNDAY_AFTER_ELEVATION_PROPER,
   FOUNDING_CHURCH_PROPER,
   GENERAL_MENAION_PROPERS,
 } = require('./propers');
@@ -245,6 +246,16 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const isDormitionAfterfeast =
     tfAdj.getUTCMonth() === 7 && tfAdj.getUTCDate() >= 15 && tfAdj.getUTCDate() <= 23;
 
+  // Elevation of the Cross afterfeast (Sep 14 feast through the Sep 21
+  // leavetaking) — the same rule as the Transfiguration and Dormition windows
+  // above. Every OCA order in the window prints, under "Instead of 'It is truly
+  // meet…'", "Magnify, O my soul, the most precious Cross of the Lord!" and
+  // "Thou art a mystical Paradise…" (2023-0917, 2024-0915, 2025-0921,
+  // 2026-0920). We sang "It is truly meet" for the whole period.
+  // Found 2026-09-19 reviewing the 9-20 choir packet.
+  const isElevationAfterfeast =
+    tfAdj.getUTCMonth() === 8 && tfAdj.getUTCDate() >= 14 && tfAdj.getUTCDate() <= 21;
+
   // Pentecostarion Sunday overrides (defined at module scope, see top).
   const pentOverride = isSunday ? PENTECOSTARION_SUNDAY_OVERRIDES[daysSincePascha] : null;
 
@@ -349,6 +360,24 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // readings. Narrow regex: "Sunday after Elevation" is a different set.
   const sundayBeforeElevation = isSunday && !feast && !pentOverride
     && (orthocalData.feasts || []).some(t => /sunday before (the )?(elevation|exaltation)/i.test(t || ''));
+
+  // Sunday AFTER the Exaltation (orthocal feast "Sunday after Elevation") — a
+  // different set from the Sunday Before in two ways that matter:
+  //
+  //  - Its prokeimenon and alleluia ATTACH AS .secondary rather than replacing
+  //    the Octoechos pair. The 2025-0921 order spells it out — "Prokeimenon:
+  //    Resurrection, Tone 6 … and Feast, Tone 7" / "Alleluia: Resurrection,
+  //    Tone 6 and Feast, Tone 1"; 2023-0917, 2024-0915 and 2026-0920 abbreviate
+  //    to the feast half only, which is what made this look like a replacement.
+  //  - Its Epistle and Gospel are TWO separate pericopes, not "read as one":
+  //    the Sunday-Before order says "read as one" explicitly and these do not,
+  //    and reference/scrape/2025-09-21.docx prints them as two numbered
+  //    readings. So they take `.secondary`, not `continuation`.
+  //
+  // Found 2026-09-19 reviewing the 9-20 choir packet against the order: we sang
+  // the ordinary Sunday set alone and dropped the entire feast half.
+  const sundayAfterElevation = isSunday && !feast && !pentOverride
+    && (orthocalData.feasts || []).some(t => /sunday after (the )?(elevation|exaltation)/i.test(t || ''));
 
   // 9-13, Commemoration of the Founding of the Church of the Resurrection
   // (Holy Sepulchre) at Jerusalem — a doxology-rank commemoration with its own
@@ -465,6 +494,20 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     const cycle = all => all.find(r => r !== all[0] && !r.description) || null;
     if (epistleR?.description) epistleCont = cycle(epistleAll);
     if (gospelR?.description)  gospelCont  = cycle(gospelAll);
+  }
+
+  // Sunday AFTER the Exaltation: same suppression, different remedy. Orthocal
+  // tags the FIRST reading "Sunday after Elevation" and leaves the Sunday-cycle
+  // reading undescribed, so pickPrimaryAndSecondary — which treats a described
+  // first reading as a special-cycle override that suppresses the rest —
+  // returned [Gal 2:16-20, null] and dropped 2 Cor 6:1-10 and Matt 25:14-30
+  // entirely. The orders read "Galatians 2:16-20 AND 2 Corinthians 6:1-10", with
+  // no "read as one", so the cycle reading is a genuine SECOND reading here,
+  // not a continuation of the first.
+  if (sundayAfterElevation) {
+    const cycle = all => all.find(r => r !== all[0] && !r.description) || null;
+    if (epistleR?.description && !epistleR2) epistleR2 = cycle(epistleAll);
+    if (gospelR?.description  && !gospelR2)  gospelR2  = cycle(gospelAll);
   }
 
   // Weekday great-saint feast suppression flag.
@@ -793,6 +836,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (foundingChurchDay && prokeimenon && !prokeimenon.secondary && FOUNDING_CHURCH_PROPER?.prokeimenon) {
     prokeimenon = { ...prokeimenon, secondary: FOUNDING_CHURCH_PROPER.prokeimenon };
   }
+  // Sunday After the Exaltation: the feast's Tone-7 prokeimenon beside the
+  // Sunday one. Refrain only, no verse — the OCA co-celebrated convention, and
+  // reference/scrape/2025-09-21.docx prints no stichos for the feast half.
+  if (sundayAfterElevation && prokeimenon && !prokeimenon.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.prokeimenon) {
+    prokeimenon = { ...prokeimenon, secondary: SUNDAY_AFTER_ELEVATION_PROPER.prokeimenon };
+  }
 
   // ── Polyeleos+ saint secondary propers ──────────────────────────────────────
   // On polyeleos/vigil Sundays (and weekdays), the General Menaion provides a
@@ -881,6 +930,8 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     megalynarion = { text: GREAT_FEAST_VARIANTS.transfiguration.megalynarion };
   } else if (isDormitionAfterfeast && GREAT_FEAST_VARIANTS.dormition?.megalynarion) {
     megalynarion = { text: GREAT_FEAST_VARIANTS.dormition.megalynarion };
+  } else if (isElevationAfterfeast && GREAT_FEAST_VARIANTS.elevation?.megalynarion) {
+    megalynarion = { text: GREAT_FEAST_VARIANTS.elevation.megalynarion };
   } else if (isPaschalPeriod) {
     megalynarion = { text: LITURGY_DEFAULTS.paschalMegalynarion };
   } else if (isBasil) {
@@ -905,6 +956,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // 9-13 Founding of the Church: its Tone-2 alleluia alongside the day's.
   if (foundingChurchDay && alleluia && !alleluia.secondary && FOUNDING_CHURCH_PROPER?.alleluia) {
     alleluia = { ...alleluia, secondary: FOUNDING_CHURCH_PROPER.alleluia };
+  }
+  // Sunday After the Exaltation: the feast's Tone-1 alleluia beside the Sunday
+  // one — a single verse (Ps. 73:2), where the feast day itself sings two.
+  if (sundayAfterElevation && alleluia && !alleluia.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.alleluia) {
+    alleluia = { ...alleluia, secondary: SUNDAY_AFTER_ELEVATION_PROPER.alleluia };
   }
   // Safety fallback (parallel to prokeimenon): weekday daily alleluia when no
   // saint-category propers exist for this rank.
@@ -957,6 +1013,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // righteous…") alongside the standard Sunday one.
   if (holyFathersSunday && secondKoinonikonAllowed && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: HOLY_FATHERS_PROPER.communionHymn };
+  }
+  // Sunday After the Exaltation: "The light of Thy countenance…" beside
+  // "Praise the Lord from the heavens…". Subject to the parish
+  // secondKoinonikon toggle at render time, like every other second koinonikon.
+  if (sundayAfterElevation && secondKoinonikonAllowed && !communionHymn.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.communionHymn) {
+    communionHymn = { ...communionHymn, secondary: SUNDAY_AFTER_ELEVATION_PROPER.communionHymn };
   }
   // 9-13 Founding of the Church: "I have loved the beauty of Thy house…"
   // alongside the day's koinonikon.
@@ -1038,7 +1100,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       // Mary of Egypt 5) and the Holy Fathers Sunday (John 17:1-13) always sing
       // both Gospels per OCA rubric — force the secondary regardless of the
       // parish-level includeSecondGospel opt-in.
-      secondary: (gospelR2 && (includeSecondGospel || holyFathersSunday || (lentenKey !== null && ['1','2','3','4','5'].includes(String(lentenKey))))) ? {
+      secondary: (gospelR2 && (includeSecondGospel || holyFathersSunday || sundayAfterElevation || (lentenKey !== null && ['1','2','3','4','5'].includes(String(lentenKey))))) ? {
         book: gospelR2.book,
         display: gospelR2.display,
         text: extractPassageText(gospelR2),

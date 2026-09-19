@@ -70,6 +70,7 @@ const LENTEN_SUNDAY_ALLELUIA   = DAILY_PROPERS.lentenSundayAlleluia;
 const LENTEN_SUNDAY_COMMUNION  = DAILY_PROPERS.lentenSundayCommunion;
 const HOLY_FATHERS_PROPER      = DAILY_PROPERS.holyFathersProper;
 const SUNDAY_BEFORE_ELEVATION_PROPER = DAILY_PROPERS.sundayBeforeElevationProper;
+const SUNDAY_AFTER_ELEVATION_PROPER  = DAILY_PROPERS.sundayAfterElevationProper;
 const FOUNDING_CHURCH_PROPER   = DAILY_PROPERS.foundingChurchResurrectionProper;
 
 // ─── Data file validation ─────────────────────────────────────────────────────
@@ -104,6 +105,7 @@ module.exports = {
   LENTEN_SUNDAY_COMMUNION,
   HOLY_FATHERS_PROPER,
   SUNDAY_BEFORE_ELEVATION_PROPER,
+  SUNDAY_AFTER_ELEVATION_PROPER,
   FOUNDING_CHURCH_PROPER,
   GENERAL_MENAION_PROPERS,
 };

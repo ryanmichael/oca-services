@@ -369,5 +369,25 @@
       "label": "For the Founding",
       "text": "I have loved the beauty of Thy house, O Lord, and the place where Thy glory dwelleth. Alleluia, Alleluia, Alleluia!"
     }
+  },
+  "sundayAfterElevationProper": {
+    "_meta": "Liturgy propers for the movable Sunday After the Exaltation of the Cross (orthocal feast \"Sunday after Elevation\"). Unlike sundayBeforeElevationProper these ATTACH AS .secondary — they are sung beside the Sunday-cycle set, not in place of it. The 2025-0921 order spells it out: \"Prokeimenon: Resurrection, Tone 6 ... and Feast, Tone 7\" / \"Alleluia: Resurrection, Tone 6 and Feast, Tone 1\"; the 2023/2024/2026 orders abbreviate to the feast half only. The Epistle and Gospel are two separate pericopes, NOT \"read as one\" — the Sunday-Before order says \"read as one\" explicitly and these do not, and the 2025-09-21 text prints them as two numbered readings. Source: OCA DLMT text reference/scrape/2025-09-21.docx; orders 2023-0917, 2024-0915, 2025-0921, 2026-0920.",
+    "_whyNotGreatFeastVariants": "Deliberately NOT reusing GREAT_FEAST_VARIANTS.elevation: the feast-day set differs from this secondary one. The feast prints a prokeimenon VERSE and TWO alleluia verses; on the Sunday After the text prints the prokeimenon refrain alone (OCA co-celebrated convention) and a single alleluia verse (Ps. 73:2). The variants file also reads \"Exalt the Lord our God\" where the text and all four orders read \"Extol\".",
+    "prokeimenon": {
+      "tone": 7,
+      "label": "Sunday After the Exaltation",
+      "refrain": "Extol the Lord our God: worship at His footstool for He is holy! (Ps. 98:5)"
+    },
+    "alleluia": {
+      "tone": 1,
+      "label": "Sunday After the Exaltation",
+      "verses": [
+        "Remember Thy congregation, which Thou hast gotten of old! (Ps. 73:2)"
+      ]
+    },
+    "communionHymn": {
+      "label": "Sunday After the Exaltation",
+      "text": "The light of Thy countenance has been signed upon us, O Lord. (Ps. 4:7) Alleluia, Alleluia, Alleluia!"
+    }
   }
 }

@@ -36,6 +36,7 @@
         <span class="week-label" id="week-label">LOADING…</span>
         <div class="bar-btns">
           <button class="bar-btn" id="search-btn">SEARCH</button>
+          <button class="bar-btn" id="panikhida-btn" title="Panikhida — memorial service for the departed">MEMORIAL</button>
           <button class="bar-btn" id="date-btn">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;display:block">
               <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
@@ -329,6 +330,59 @@
   </div>
 
 </div><!-- end .view-service-text -->
+
+<!-- ═══════════════════════════════════════ VIEW: PANIKHIDA ═══════════════════ -->
+<div class="view view-settings view-panikhida" id="view-panikhida">
+
+  <div class="settings-hdr">
+    <button class="settings-back" id="pk-back">
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
+        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK
+    </button>
+  </div>
+
+  <div class="settings-body">
+    <form class="settings-inner" id="pk-form" autocomplete="off">
+      <div class="settings-title">PANIKHIDA</div>
+      <div class="settings-desc">Memorial service for the departed. The names you enter are read in every petition, the prayer “O God of spirits,” the dismissal and Memory Eternal.</div>
+
+      <div class="settings-group">
+        <label class="settings-label" for="pk-names">NAMES OF THE DEPARTED</label>
+        <input type="text" id="pk-names" class="settings-input" placeholder="John, Mary, Peter" spellcheck="false" />
+        <div class="settings-meta" id="pk-names-hint">Separate several names with commas. Leave blank for the general form.</div>
+      </div>
+
+      <div class="settings-group" id="pk-gender-group">
+        <div class="settings-label">FOR</div>
+        <div class="settings-segmented" id="pk-gender">
+          <button type="button" class="seg-btn active" data-gender="m">He · him</button>
+          <button type="button" class="seg-btn" data-gender="f">She · her</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-label">CANON</div>
+        <div class="settings-segmented" id="pk-canon">
+          <button type="button" class="seg-btn active" data-canon="full">Full — 8 heirmoi</button>
+          <button type="button" class="seg-btn" data-canon="brief">Brief — Odes III, VI, IX</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-label">PSALM 90</div>
+        <div class="settings-segmented" id="pk-ps90">
+          <button type="button" class="seg-btn active" data-ps90="1">Read</button>
+          <button type="button" class="seg-btn" data-ps90="0">Omit</button>
+        </div>
+      </div>
+
+      <button type="submit" class="settings-done" id="pk-submit">View Service</button>
+    </form>
+  </div>
+
+</div><!-- end .view-panikhida -->
 
 <!-- ═══════════════════════════════════════ VIEW: SETTINGS ═════════════════════ -->
 <div class="view view-settings" id="view-settings">

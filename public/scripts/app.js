@@ -332,7 +332,11 @@ function renderServiceList(daysList) {
 
 function getUrlParams() {
   const p = new URLSearchParams(location.search);
-  return { date: p.get('date') || null, svc: p.get('svc') || null };
+  return {
+    date: p.get('date') || null, svc: p.get('svc') || null,
+    names: p.get('names') || '', gender: p.get('gender') || 'm',
+    canon: p.get('canon') || 'full', psalm90: p.get('psalm90') !== '0',
+  };
 }
 
 function setUrlState(date, svcType, replace = false) {
@@ -386,6 +390,9 @@ async function openPanel(rowEl, date, svcType) {
 }
 
 async function loadPanelContent(date, svcType) {
+  // The Panikhida has no date; re-render it from its own remembered options
+  // (pronoun / translation changes land here like every other service).
+  if (svcType === 'panikhida') return showPanikhidaPanel(pkLast, false, /*skipHistory=*/true);
   try {
     // Choir mode: fetch all services for the date
     if (activeMode === 'choir') {
@@ -546,7 +553,7 @@ function initPronounRadio() {
     radio.addEventListener('change', () => {
       activePronoun = radio.value;
       updateDetailLabel();
-      if (activeDate && activeSvcType) loadPanelContent(activeDate, activeSvcType);
+      if (activeSvcType) loadPanelContent(activeDate, activeSvcType);
     });
   });
 }
@@ -989,9 +996,13 @@ async function init() {
     tag.addEventListener('click', () => fillSearch(tag.dataset.query));
   });
 
+  // Panikhida (memorial service — not date-bound)
+  initPanikhidaView();
+
   // Keyboard
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
+    if (document.getElementById('view-panikhida').classList.contains('visible')) closePanikhidaView();
     if (document.getElementById('view-settings').classList.contains('visible')) closeSettings();
     if (document.getElementById('view-search').classList.contains('visible'))  closeSearch();
     if (document.getElementById('view-cal').classList.contains('visible'))     closeCal();
@@ -1001,7 +1012,8 @@ async function init() {
   });
 
   // URL params
-  const { date: urlDate, svc: urlSvc } = getUrlParams();
+  const urlParams = getUrlParams();
+  const { date: urlDate, svc: urlSvc } = urlParams;
   const today  = new Date();
   const anchor = (urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate))
     ? new Date(urlDate + 'T12:00:00') : today;
@@ -1019,7 +1031,11 @@ async function init() {
       calDayCache[day.date] = day;
     }
 
-    if (urlDate) {
+    if (urlSvc === 'panikhida') {
+      jumpToDate(urlDate || todayStr());
+      setPanikhidaForm(urlParams);
+      await showPanikhidaPanel(urlParams, /*replace=*/true);
+    } else if (urlDate) {
       jumpToDate(urlDate);
       if (urlSvc) {
         const btn = document.querySelector(`.svc-row[data-date="${urlDate}"][data-svc="${urlSvc}"]`);
@@ -1043,6 +1059,10 @@ async function init() {
 
   window.addEventListener('popstate', async e => {
     const state = e.state || {};
+    if (state.svcType === 'panikhida') {
+      await showPanikhidaPanel(state.panikhida || {}, /*replace=*/true, /*skipHistory=*/true);
+      return;
+    }
     if (state.date && state.svcType) {
       const btn = document.querySelector(`.svc-row[data-date="${state.date}"][data-svc="${state.svcType}"]`);
       if (btn) await _showPanel(btn, state.date, state.svcType);
@@ -1052,6 +1072,134 @@ async function init() {
       if (state.date) jumpToDate(state.date);
     }
   });
+}
+
+// ─── Panikhida (memorial service) ────────────────────────────────────────────
+//
+// Not date-bound: the form collects names / gender / canon length / Psalm 90
+// and the service renders into the ordinary right panel so PRINT and the
+// booklet imposer work unchanged. URL: ?svc=panikhida&names=…&gender=…
+
+const pkState = { gender: 'm', canon: 'full', psalm90: true };
+let pkLast = { names: '', ...pkState };
+
+function initPanikhidaView() {
+  document.getElementById('panikhida-btn').addEventListener('click', openPanikhidaView);
+  document.getElementById('pk-back').addEventListener('click', closePanikhidaView);
+
+  const seg = (id, key, attr) => {
+    document.querySelectorAll(`#${id} .seg-btn`).forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll(`#${id} .seg-btn`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        pkState[key] = attr === 'ps90' ? btn.dataset.ps90 === '1' : btn.dataset[attr];
+      });
+    });
+  };
+  seg('pk-gender', 'gender', 'gender');
+  seg('pk-canon',  'canon',  'canon');
+  seg('pk-ps90',   'psalm90', 'ps90');
+
+  // Gender only matters for exactly one name; grey the group out otherwise.
+  const namesEl = document.getElementById('pk-names');
+  const syncGender = () => {
+    const n = parsePanikhidaNames(namesEl.value).length;
+    document.getElementById('pk-gender-group').classList.toggle('disabled', n !== 1);
+    document.getElementById('pk-names-hint').textContent =
+      n === 0 ? 'Separate several names with commas. Leave blank for the general form.'
+    : n === 1 ? 'One name — the service is read in the singular.'
+    : `${n} names — the service is read in the plural.`;
+  };
+  namesEl.addEventListener('input', syncGender);
+  syncGender();
+
+  document.getElementById('pk-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const opts = { names: namesEl.value, ...pkState };
+    closePanikhidaView();
+    await showPanikhidaPanel(opts);
+  });
+}
+
+function parsePanikhidaNames(str) {
+  return String(str || '').split(',').map(s => s.trim()).filter(Boolean).slice(0, 50);
+}
+
+function setPanikhidaForm({ names, gender, canon, psalm90 }) {
+  document.getElementById('pk-names').value = names || '';
+  pkState.gender  = gender === 'f' ? 'f' : 'm';
+  pkState.canon   = canon === 'brief' ? 'brief' : 'full';
+  pkState.psalm90 = psalm90 !== false;
+  const setSeg = (id, attr, val) => document.querySelectorAll(`#${id} .seg-btn`)
+    .forEach(b => b.classList.toggle('active', b.dataset[attr] === val));
+  setSeg('pk-gender', 'gender', pkState.gender);
+  setSeg('pk-canon',  'canon',  pkState.canon);
+  setSeg('pk-ps90',   'ps90',   pkState.psalm90 ? '1' : '0');
+  document.getElementById('pk-names').dispatchEvent(new Event('input'));
+}
+
+function openPanikhidaView() {
+  closeSearch(/*silent=*/true);
+  closeCal();
+  document.getElementById('view-main').classList.add('hidden');
+  document.getElementById('view-panikhida').classList.add('visible');
+  document.getElementById('pk-names').focus();
+}
+
+function closePanikhidaView() {
+  document.getElementById('view-panikhida').classList.remove('visible');
+  document.getElementById('view-main').classList.remove('hidden');
+}
+
+function panikhidaQuery(opts) {
+  const names = parsePanikhidaNames(opts.names);
+  const q = new URLSearchParams();
+  if (names.length) q.set('names', names.join(','));
+  if (names.length === 1 && opts.gender === 'f') q.set('gender', 'f');
+  if (opts.canon === 'brief') q.set('canon', 'brief');
+  if (opts.psalm90 === false) q.set('psalm90', '0');
+  return q;
+}
+
+async function showPanikhidaPanel(opts, replace = false, skipHistory = false) {
+  pkLast = { ...opts };
+  const q = panikhidaQuery(opts);
+  if (!skipHistory) {
+    const url = `?svc=panikhida${q.toString() ? '&' + q.toString() : ''}`;
+    const state = { date: null, svcType: 'panikhida', panikhida: { names: opts.names || '', gender: opts.gender, canon: opts.canon, psalm90: opts.psalm90 !== false } };
+    if (replace) history.replaceState(state, '', url); else history.pushState(state, '', url);
+  }
+
+  if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+  activeDate    = null;
+  activeSvcType = 'panikhida';
+  document.getElementById('p-svc').textContent = 'PANIKHIDA';
+  document.getElementById('print-header-svc').textContent = 'PANIKHIDA';
+  document.getElementById('p-detail-body').classList.remove('open');
+  document.getElementById('p-detail-toggle').classList.remove('open');
+  document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';
+  document.getElementById('panel').classList.add('open');
+  document.body.classList.add('panel-open');
+
+  try {
+    const res = await fetch(`/api/panikhida?${q.toString()}&pronoun=${activePronoun}${translationParam()}`);
+    if (!res.ok) throw new Error(`/api/panikhida failed: ${res.status}`);
+    const data = await res.json();
+    const label = data.liturgicalLabel ? data.liturgicalLabel[0].toUpperCase() + data.liturgicalLabel.slice(1) : '';
+    document.getElementById('p-date').textContent = label;
+    document.getElementById('print-header-date').textContent = label;
+    updateMetaRow(data.translation, 'panikhida', null);
+    const saintsEl = document.getElementById('p-saints');
+    saintsEl.innerHTML = ''; saintsEl.style.display = 'none';
+    updateDetailLabel();
+    const bodyEl = document.getElementById('p-body');
+    bodyEl.innerHTML = window.renderBlocks(data.blocks, {});
+    bodyEl.scrollTop = 0;
+  } catch (err) {
+    console.error('Panikhida load error:', err);
+    document.getElementById('p-body').innerHTML =
+      `<div class="panel-loading">Error loading service: ${err.message}</div>`;
+  }
 }
 
 // ─── Print dialog ─────────────────────────────────────────────────────────────
@@ -1322,7 +1470,7 @@ function setTranslation(translationId) {
     }
   }
   syncSettingsUI();
-  if (activeDate && activeSvcType) {
+  if (activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
   }
 }
@@ -1337,7 +1485,7 @@ function setMode(mode) {
     localStorage.setItem('education', 'off');
   }
   syncSettingsUI();
-  if (activeDate && activeSvcType) {
+  if (activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
   }
 }
@@ -1346,7 +1494,7 @@ function setEducation(val) {
   activeEducation = val;
   localStorage.setItem('education', val);
   syncSettingsUI();
-  if (activeDate && activeSvcType) {
+  if (activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
   }
 }
@@ -1373,7 +1521,7 @@ async function setStyle(val) {
   } catch (err) {
     console.error('Failed to reload days after style change:', err);
   }
-  if (activeDate && activeSvcType) {
+  if (activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
   }
 }
@@ -1411,7 +1559,7 @@ function setPronoun(pron) {
   localStorage.setItem('pronoun', pron);
   syncSettingsUI();
   updateDetailLabel();
-  if (activeDate && activeSvcType) {
+  if (activeSvcType) {
     loadPanelContent(activeDate, activeSvcType);
   }
 }

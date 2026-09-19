@@ -717,6 +717,14 @@ body.dev-mode .src-tag { display: inline; }
   .bar-btns { width: 100%; }
   .bar-btn { flex: 1; justify-content: center; }
 }
+/* Same stacking when the panel narrows the center column (three bar
+   buttons no longer fit beside the week label at any desktop width). */
+@media (min-width: 1091px) and (max-width: 1500px) {
+  body.panel-open .center-bar { padding: 10px 32px; height: auto; flex-wrap: wrap; }
+  body.panel-open .week-label { width: 100%; margin-bottom: 8px; }
+  body.panel-open .bar-btns { width: 100%; }
+  body.panel-open .bar-btn { flex: 1; justify-content: center; }
+}
 
 /* Mobile: tighter spacing + scaled reading text */
 @media (max-width: 767px) {
@@ -937,6 +945,17 @@ body.dev-mode .src-tag { display: inline; }
   background-repeat: no-repeat;
 }
 .settings-select:focus { outline: none; border-color: var(--rubric); }
+.settings-input {
+  display: block; width: 100%; max-width: 480px; box-sizing: border-box;
+  font-family: 'EB Garamond', serif; font-size: 17px;
+  color: var(--text); background: var(--surface);
+  border: 1.5px solid var(--border);
+  padding: 9px 12px;
+}
+.settings-input:focus { outline: none; border-color: var(--rubric); }
+.view-panikhida .settings-group { margin-bottom: 26px; }
+.view-panikhida .settings-group.disabled { opacity: .35; pointer-events: none; }
+.view-panikhida .settings-group.disabled .settings-desc::after { content: none; }
 .settings-meta {
   margin-top: 10px;
   font-family: 'EB Garamond', serif; font-size: 13.5px; font-style: italic;

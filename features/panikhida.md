@@ -84,9 +84,16 @@ names, or the table placeholder `(N.)` / `(NN.)` when no names are given.
 - **INV-9** Names appear in every prayer/exclamation/petition that carries `{N}` — 4 prayers, 4 exclamations, 4 first-petitions, dismissal, Memory-Eternal call — and nowhere in a hymn.
 - **INV-10** Route: Bright Week `date` → 404; no date → 200 with `date: null`.
 
+## Entry point
+
+Reached through SEARCH: the service catalog (`server-lib/search/service-catalog.js`)
+lists the Panikhida as a `form` service under *memorial, panikhida, requiem,
+departed, repose, parastas, memory eternal…*; the SERVICES result row opens the
+form view (names, he/she, canon length, Psalm 90), which renders into the panel.
+Deep link: `/?svc=panikhida&names=…&gender=f&canon=brief&psalm90=0`.
+
 ## Not modeled / follow-ups
 
 - Bright Week Paschal Panikhida.
 - Great Panikhida / Parastas (full 17th Kathisma, full canon troparia).
-- Home-page UI entry (the date-driven service list has no name form yet) — reach it by URL.
 - Parish overlays: none authored; the cascade is wired.

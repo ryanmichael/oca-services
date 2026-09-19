@@ -354,8 +354,10 @@ describe('API routes', () => {
   it('GET /api/search — returns results', async () => {
     const res = await get('/api/search?q=nicholas');
     assert.equal(res.status, 200);
-    assert.ok(Array.isArray(res.json));
-    assert.ok(res.json.length > 0, 'Should find St. Nicholas');
+    assert.ok(Array.isArray(res.json.saints));
+    assert.ok(res.json.saints.length > 0, 'Should find St. Nicholas');
+    assert.ok(Array.isArray(res.json.services));
+    assert.equal(res.json.services.length, 0, 'no service is called nicholas');
   });
 
   // ── No empty text blocks in any service ────────────────────────────────

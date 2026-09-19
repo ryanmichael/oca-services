@@ -2,16 +2,25 @@
 
 const { test, expect } = require('@playwright/test');
 
-// The Panikhida is the one service reached by a form, not a date row.
-// Covers: MEMORIAL button → form → panel; singular/feminine inflection;
-// brief canon; deep link restores the form and the panel.
+// The Panikhida is the one service reached by a form, not a date row. It is
+// found through SEARCH ("memorial"). Covers: search → SERVICES row → form →
+// panel; singular/feminine inflection; brief canon; deep link restores both.
 
-test('MEMORIAL form renders a Panikhida into the panel', async ({ page }) => {
+/** Open the Panikhida form the way a user does: search, click the service row. */
+async function openPanikhidaViaSearch(page) {
   await page.goto('/');
   await expect(page.locator('.svc-row:not(.dimmed)').first()).toBeVisible({ timeout: 15_000 });
+  await page.click('#search-btn');
+  await page.fill('#search-input', 'memorial');
+  const row = page.locator('.result-row--service', { hasText: 'Panikhida' });
+  await expect(row).toBeVisible({ timeout: 10_000 });
+  await expect(row.locator('.result-tag')).toHaveText(/SET UP/);
+  await row.click();
+  await expect(page.locator('#view-panikhida')).toHaveClass(/visible/, { timeout: 5_000 });
+}
 
-  await page.click('#panikhida-btn');
-  await expect(page.locator('#view-panikhida')).toHaveClass(/visible/);
+test('search → Panikhida form renders into the panel', async ({ page }) => {
+  await openPanikhidaViaSearch(page);
 
   await page.fill('#pk-names', 'Anna');
   await expect(page.locator('#pk-gender-group')).not.toHaveClass(/disabled/);
@@ -33,9 +42,7 @@ test('MEMORIAL form renders a Panikhida into the panel', async ({ page }) => {
 });
 
 test('two names disable the gender picker and read in the plural', async ({ page }) => {
-  await page.goto('/');
-  await expect(page.locator('.svc-row:not(.dimmed)').first()).toBeVisible({ timeout: 15_000 });
-  await page.click('#panikhida-btn');
+  await openPanikhidaViaSearch(page);
   await page.fill('#pk-names', 'John, Mary');
   await expect(page.locator('#pk-gender-group')).toHaveClass(/disabled/);
   await expect(page.locator('#pk-names-hint')).toHaveText(/2 names/);

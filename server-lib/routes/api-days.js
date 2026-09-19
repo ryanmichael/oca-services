@@ -3,6 +3,7 @@
 const fs   = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
+const { servicesForDay } = require('../search/service-catalog');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -102,29 +103,8 @@ function handle(req, res, ctx) {
           }
         } catch (_) {}
 
-        const services = {
-          greatVespers: vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
-          dailyVespers: vespersEntry?.vespers?.serviceType === 'dailyVespers',
-          allNightVigil: vespersEntry?.vespers?.serviceType === 'all-night-vigil',
-          burialVespers: isBurialVespersDay(cur),
-      bridegroomMatins: isBridegroomMatins(cur),
-          lamentations: isLamentationsDay(cur),
-          vesperalLiturgy: isVesperalLiturgyDay(cur),
-          royalHours: isRoyalHoursDay(cur),
-          passionGospels: isPassionGospelsDay(cur),
-          matins:  !!buildMatinsSpec(dateStr, cur, dowStr, season, getTone(cur), sources, style),
-          liturgy: !!(entry?.liturgy) || isLiturgyServed(cur, style),
-          presanctified: isPresanctifiedDay(cur, style),
-          paschalHours: getLiturgicalSeason(cur) === 'brightWeek',
-          paschaCollection: (() => {
-            const p = calculatePascha(cur.getUTCFullYear());
-            return cur.getUTCMonth() === p.getUTCMonth() && cur.getUTCDate() === p.getUTCDate();
-          })(),
-          kneelingVespers: (() => {
-            const p = calculatePascha(cur.getUTCFullYear());
-            return Math.round((cur - p) / DAY_MS_LOCAL) === 49;
-          })(),
-        };
+        // One source of truth with /api/search — see server-lib/search/service-catalog.js
+        const services = servicesForDay({ cur, dateStr, dow: dowStr, season, entry, vespersEntry, style, sources, ctx });
 
         result.push({
           date:           dateStr,

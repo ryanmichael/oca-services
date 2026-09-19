@@ -3,6 +3,7 @@
 const fs   = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
+const { searchServices } = require('../search/service-catalog');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -24,7 +25,7 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
     assembleForDate, applyYouYour, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
@@ -47,8 +48,19 @@ function handle(req, res, ctx) {
 
       if (query.length < 2) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify([]));
+        res.end(JSON.stringify({ services: [], saints: [] }));
         return;
+      }
+
+      // Services first: the catalog answers "is there a Presanctified / a
+      // Panikhida / a Vigil?" with the next date it is served (or a form).
+      let services = [];
+      try {
+        const translation = resolveTranslation(q);
+        const style       = resolveStyle(q, translation);
+        services = searchServices(query, ctx, { style, sources });
+      } catch (err) {
+        console.error('/api/search services error:', err);
       }
 
       let results = [];
@@ -108,7 +120,7 @@ function handle(req, res, ctx) {
       }
 
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(results));
+      res.end(JSON.stringify({ services, saints: results }));
 
 }
 

@@ -562,10 +562,14 @@ body.dev-mode .src-tag { display: inline; }
 
 .result-date {
   font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic;
-  color: var(--muted); min-width: 96px; flex-shrink: 0;
+  color: var(--muted); min-width: 150px; flex-shrink: 0;
 }
 .result-name { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text); flex: 1; line-height: 1.4; }
 .result-name em { color: var(--rubric); font-style: normal; }
+.result-desc {
+  display: block; font-size: 14px; font-style: italic; color: var(--muted);
+  line-height: 1.35; margin-top: 2px;
+}
 .result-tag {
   font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: .1em;
   color: var(--rubric); flex-shrink: 0;
@@ -717,13 +721,6 @@ body.dev-mode .src-tag { display: inline; }
   .bar-btns { width: 100%; }
   .bar-btn { flex: 1; justify-content: center; }
 }
-/* Same stacking when the panel narrows the center column (three bar
-   buttons no longer fit beside the week label at any desktop width). */
-@media (min-width: 1091px) and (max-width: 1500px) {
-  body.panel-open .center-bar { padding: 10px 32px; height: auto; flex-wrap: wrap; }
-  body.panel-open .week-label { width: 100%; margin-bottom: 8px; }
-  body.panel-open .bar-btns { width: 100%; }
-  body.panel-open .bar-btn { flex: 1; justify-content: center; }
 }
 
 /* Mobile: tighter spacing + scaled reading text */

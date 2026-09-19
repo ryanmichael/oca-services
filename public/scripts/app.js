@@ -856,35 +856,82 @@ function highlightMatch(text, query) {
   return text.replace(new RegExp(`(${escaped})`, 'gi'), '<em>$1</em>');
 }
 
-function renderResults(results, query) {
+/** "March 17" this year, "March 17, 2027" otherwise — matches the saints rows. */
+function resultDate(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  const opts = { month: 'long', day: 'numeric' };
+  if (d.getFullYear() !== new Date().getFullYear()) opts.year = 'numeric';
+  return d.toLocaleDateString('en-US', opts);
+}
+
+function renderResults(data, query) {
   const area = document.getElementById('search-results');
   area.innerHTML = '';
+  // /api/search returns { services, saints }; tolerate the old bare array.
+  const services = Array.isArray(data) ? [] : (data.services || []);
+  const saints   = Array.isArray(data) ? data : (data.saints || []);
 
-  if (!results.length) {
-    area.innerHTML = `<div class="results-empty">No saints or feasts matching \u201C${query}\u201D.</div>`;
+  if (!services.length && !saints.length) {
+    area.innerHTML = `<div class="results-empty">No services, saints or feasts matching \u201C${query}\u201D.</div>`;
     area.classList.add('in');
     return;
   }
 
-  const eyebrow = document.createElement('div');
-  eyebrow.className = 'results-eyebrow';
-  eyebrow.textContent = `SAINTS & FEASTS MATCHING \u201C${query.toUpperCase()}\u201D`;
-  area.appendChild(eyebrow);
+  let i = 0;
+  const reveal = (el) => { area.appendChild(el); setTimeout(() => el.classList.add('in'), i++ * 30); };
 
-  results.forEach((r, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'result-row' + (r.available ? '' : ' unavailable');
-    btn.innerHTML = `
-      <span class="result-date">${r.displayDate}</span>
-      <span class="result-name">${highlightMatch(r.title, query)}</span>
-      <span class="result-tag">${r.available ? 'VIEW \u2192' : 'NO SERVICE'}</span>
-    `;
-    if (r.available) btn.addEventListener('click', () => pickResult(r.dateStr, r.svcType));
-    area.appendChild(btn);
-    setTimeout(() => btn.classList.add('in'), i * 30);
-  });
+  // ── Services: one-off and seasonal orders reachable by name ──
+  if (services.length) {
+    const eyebrow = document.createElement('div');
+    eyebrow.className = 'results-eyebrow';
+    eyebrow.textContent = 'SERVICES';
+    area.appendChild(eyebrow);
+
+    for (const svc of services) {
+      const btn = document.createElement('button');
+      const isForm = svc.kind === 'form';
+      const available = isForm || !!svc.nextDate;
+      btn.className = 'result-row result-row--service' + (available ? '' : ' unavailable');
+      const tag  = isForm ? 'SET UP \u2192' : svc.nextDate ? 'VIEW \u2192' : 'NOT IN THE NEXT YEAR';
+      const when = isForm ? 'Any day' : svc.nextDate ? `Next: ${resultDate(svc.nextDate)}` : '\u2014';
+      btn.innerHTML = `
+        <span class="result-date">${when}</span>
+        <span class="result-name">${highlightMatch(svc.name, query)}<span class="result-desc">${svc.description}</span></span>
+        <span class="result-tag">${tag}</span>
+      `;
+      if (isForm) btn.addEventListener('click', () => { closeSearch(); openFormService(svc.form); });
+      else if (svc.nextDate) btn.addEventListener('click', () => pickResult(svc.nextDate, svc.svcType));
+      reveal(btn);
+    }
+  }
+
+  // ── Saints & feasts ──
+  if (saints.length) {
+    const eyebrow = document.createElement('div');
+    eyebrow.className = 'results-eyebrow';
+    eyebrow.textContent = `SAINTS & FEASTS MATCHING \u201C${query.toUpperCase()}\u201D`;
+    area.appendChild(eyebrow);
+
+    for (const r of saints) {
+      const btn = document.createElement('button');
+      btn.className = 'result-row' + (r.available ? '' : ' unavailable');
+      btn.innerHTML = `
+        <span class="result-date">${r.displayDate}</span>
+        <span class="result-name">${highlightMatch(r.title, query)}</span>
+        <span class="result-tag">${r.available ? 'VIEW \u2192' : 'NO SERVICE'}</span>
+      `;
+      if (r.available) btn.addEventListener('click', () => pickResult(r.dateStr, r.svcType));
+      reveal(btn);
+    }
+  }
 
   area.classList.add('in');
+}
+
+/** Services that open a form instead of a date (from the service catalog). */
+function openFormService(form) {
+  if (form === 'panikhida') { setTimeout(openPanikhidaView, 320); return; }
+  console.warn('Unknown form service:', form);
 }
 
 function fillSearch(query) {
@@ -1076,7 +1123,8 @@ async function init() {
 
 // ─── Panikhida (memorial service) ────────────────────────────────────────────
 //
-// Not date-bound: the form collects names / gender / canon length / Psalm 90
+// Not date-bound: reached from SEARCH ("memorial", "panikhida", …) rather
+// than a date row. The form collects names / gender / canon length / Psalm 90
 // and the service renders into the ordinary right panel so PRINT and the
 // booklet imposer work unchanged. URL: ?svc=panikhida&names=…&gender=…
 
@@ -1084,7 +1132,6 @@ const pkState = { gender: 'm', canon: 'full', psalm90: true };
 let pkLast = { names: '', ...pkState };
 
 function initPanikhidaView() {
-  document.getElementById('panikhida-btn').addEventListener('click', openPanikhidaView);
   document.getElementById('pk-back').addEventListener('click', closePanikhidaView);
 
   const seg = (id, key, attr) => {

@@ -3,6 +3,11 @@
 Paste the block below into a fresh Claude session to have it review open items
 and propose the next round of updates.
 
+**Regenerate with the `next-round-prompt` skill** rather than hand-editing — it
+re-derives state from a full 365-date sweep, not from this file or a handoff, and
+carries forward the framing that keeps the "do not fix" items from being read as
+tasks.
+
 **Keep it current.** The state snapshot and the open-items list below were true
 at `03ca393` (2026-09-19). When items are closed or the SHA moves, update this
 file in the same commit — a stale planning prompt is worse than none, because it

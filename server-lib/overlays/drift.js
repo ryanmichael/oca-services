@@ -1173,6 +1173,15 @@ function validateSticheraLabelSubject() {
 // saint — e.g. day-specific Lord-I-Call numbered stichera plus a St-Sergius
 // Glory/Aposticha. These are intentional, not bleeds. Verified 2026-07-25.
 const KNOWN_MIXED_SOURCE_COMMS = new Set([
+  1939, // Afterfeast of the Elevation (9-20) — St-Sergius rows plus ONE row
+        // transcribed from the parish packet on 2026-09-19: the Aposticha
+        // "Now and ever… Feast, Tone 6" ("Cross of Christ, hope of Christians…"),
+        // which reference/orders/2026-0920-order-services.txt appoints and the
+        // corpus lacked. It is the FEAST's own sticheron, so it belongs here.
+        // (The Glory of the same Aposticha is St. Eustathius's and was filed on
+        // HIS commemoration, 1940 — storing it here is what the sibling
+        // subject-match check correctly rejected.) No OCA docx exists for 9-20
+        // in reference/scrape/; replace the transcription if one is fetched.
   487,  // 42 Martyrs of Ammoria — day LIC + St-Sergius Glory/Aposticha (all 42 Martyrs)
   599,  // Annunciation — oca-feast LIC + St-Sergius Aposticha (all Annunciation)
   2256, // Cosmas & Damian of Mesopotamia — day LIC + St-Sergius Glory/Theotokion/Aposticha

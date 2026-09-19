@@ -204,6 +204,17 @@ const FEAST_WINDOW_COCOMMEMORATIONS = new Map([
   // Glory / Now) is left to the standard restructure — see memory
   // feedback_kontakia_shape_needs_measured_evidence.
   ['9-13', { match: 'Founding of the Church', vespersTroparion: true }],
+  // Afterfeast of the Elevation + Greatmartyr Eustathius Placidas.
+  // reference/orders/2026-0920-order-services.txt, "Or, if Great Vespers alone
+  // is served": Resurrectional Troparion, Tone 7 / Glory… Troparion of St.
+  // Eustathius, Tone 4 / Now and ever… Troparion of the Feast, Tone 1 — and the
+  // parish packet for 2026-09-19 prints exactly those three sheets. Without this
+  // entry no co-commemoration was found, so windowCombinesGloryNow fired and the
+  // Cross troparion sang under a combined "Glory… now and ever…" with Eustathius
+  // absent from the service entirely. This is the 09-19 row that D21 was holding
+  // in KNOWN_GLORY_GAPS as "not derivable"; the order and the packet both name
+  // him, so it is now derived. Added 2026-09-19.
+  ['9-20', { match: 'Eustáthios', vespersTroparion: true }],
   // Leavetaking of the Elevation + Apostle Quadratus of the Seventy
   ['9-21', { match: 'Quadratus', vespersTroparion: false }],
 ]);

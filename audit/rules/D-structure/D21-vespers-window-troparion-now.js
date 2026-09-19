@@ -22,6 +22,10 @@
 // orders (Micah is dropped on 2022-0814; Dometius, Eudocimus and Thaddaeus
 // sing) — so the three 2026 eves whose order names a saint at the Glory are
 // tracked at `low` in KNOWN_GLORY_GAPS rather than guessed.
+//
+// 09-19 was resolved 2026-09-19: the choir packet and the OCA order both
+// name St. Eustathius at the Glory, so he is now wired through
+// FEAST_WINDOW_COCOMMEMORATIONS and no longer a gap.
 
 const WINDOW = /^(?:Afterfeast|Forefeast|Leavetaking|Midfeast|Postfeast)\b/i;
 const GREAT = /(Dormition|Elevation of the Cross|Entry (?:of|into) the|Meeting of our Lord|Nativity of our Lord|Nativity of the (?:Mother of God|Theotokos)|Theophany|Transfiguration|Annunciation|Pentecost)/i;
@@ -30,7 +34,6 @@ const GREAT = /(Dormition|Elevation of the Cross|Entry (?:of|into) the|Meeting o
 const KNOWN_GLORY_GAPS = {
   '01-03': 'Troparion of the Apostles (Synaxis of the Seventy), Tone 3 — order 2026-0104.',
   '08-15': 'Troparion of the Image Not-Made-by-Hands, Tone 2 — order 2026-0816.',
-  '09-19': 'Troparion of St. Eustathius, Tone 4 — order 2026-0920.',
 };
 
 module.exports = {

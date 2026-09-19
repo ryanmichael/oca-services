@@ -513,6 +513,25 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         s => s.section === 'aposticha' && s.order === 0
       ) ?? null;
 
+      // Inside a Great Feast's window the Aposticha Glory can belong to the
+      // CO-COMMEMORATED SAINT rather than to the feast that is the principal:
+      // 9-20 sings "Glory… St. Eustathius, Tone 6" over the Afterfeast of the
+      // Elevation (reference/orders/2026-0920-order-services.txt). Reading only
+      // the principal's stichera left the saint out of the Aposticha entirely.
+      //
+      // The saint's hymn is stored on the SAINT's commemoration, not shoved onto
+      // the feast's — storing it on the feast is what drift:check flags as a
+      // scraper mis-key, and it is right to. Same co-commemoration map the
+      // troparia Glory uses. Found 2026-09-19 reviewing the choir packet.
+      if (!apostGlory) {
+        const [amo, ady] = adjustedMD();
+        for (const co of feastWindowCoCommemorations(ranked?.all, primary, amo, ady)) {
+          const coGlory = (co.stichera || []).find(
+            s => s.section === 'aposticha' && s.order === 0);
+          if (coGlory) { apostGlory = coGlory; break; }
+        }
+      }
+
       // General Menaion aposticha fallback when day-specific aposticha is missing
       if (apostStichera.length === 0 && !apostGlory && primary?.saint_type) {
         const gmTexts = getGeneralMenaionTexts(primary.saint_type, primary.title);
@@ -596,6 +615,13 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
                 && s.groupRole !== 'stavrotheotokion'
             );
             if (apostNow) {
+              // Slot label stays structural ("Theotokion"); whether the ROW's
+              // own label wins is decided by assemblers/_shared/hymn-label.js,
+              // which already encodes that choice and is guarded by
+              // test/contracts/hymn-label-choice.js INV-4/INV-5. Hardcoding the
+              // row label here bypassed it and broke INV-4 (a mis-keyed
+              // "the venerable martyr" descriptor printing over a Theotokion on
+              // 2026-11-27).
               apost.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };
               autoSlot.aposticha.now = { text: apostNow.text, tone: apostNow.tone, label: apostNow.label };
             } else {

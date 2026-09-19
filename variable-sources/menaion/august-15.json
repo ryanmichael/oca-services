@@ -7,7 +7,6 @@
     "_sourceUrl": "https://files.oca.org/service-texts/2025-0815-texts-tt.docx",
     "_note": "Variable Matins propers for Dormition. Two-canon structure (1st by Cosmas Tone 1 + 2nd by John of Damascus Tone 4). Magnificat replaced by feast-specific refrains in Ode 9 (`skipMagnificat: true`)."
   },
-
   "troparion": {
     "text": "In giving birth thou didst preserve thy virginity.\nIn falling asleep thou didst not forsake the world, O Theotokos.\nThou wast translated to life, O Mother of Life,\nand by thy prayers thou dost deliver our souls from death.",
     "tone": 1,
@@ -18,14 +17,32 @@
     "tone": 2,
     "label": "Kontakion of the Dormition"
   },
-
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "28:10-17"
+      },
+      {
+        "order": 2,
+        "book": "Ezekiel",
+        "pericope": "43:27-44:4"
+      },
+      {
+        "order": 3,
+        "book": "Proverbs",
+        "pericope": "9:1-11"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2025-08-15.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+  },
   "matins": {
     "_meta": {
       "tone": 1,
       "feastRank": "greatFeast",
       "feastType": "theotokos"
     },
-
     "magnification": {
       "refrain": "We magnify thee,\nO most pure Mother of Christ our God,\nand we praise thine all-glorious Dormition.",
       "verses": [
@@ -34,33 +51,31 @@
       ],
       "tone": 1
     },
-
     "prokeimenon": {
       "refrain": "I will remember thy name from generation to generation.",
       "verse": "Hearken, O daughter, and see, and incline thine ear!",
       "tone": 4,
       "_psalmRef": "Ps. 44:16 / 44:9a"
     },
-
     "gospel": {
       "reading": "Luke 1:39-49, 56",
       "number": 4,
       "_note": "The Visitation — Mary visits Elizabeth. \"My soul magnifies the Lord…\""
     },
-
     "postGospelSticheron": {
       "text": "When the Translation of thine immaculate body was being prepared,\nthe Apostles surrounded thy deathbed and looked on thee with trembling.\nThey gazed at thy body and were seized with awe,\nwhile Peter cried out to thee with tears:\n\"O Virgin, I see thee, who art the life of all, lying here outstretched,\nand I am struck with wonder;\nfor the Delight of the life to come made His dwelling in thee.\nBut fervently implore thy Son and God, O immaculate Lady,\nthat thy people may be kept safe from harm!\"",
       "tone": 6,
       "label": "Idiomelon of the Dormition",
       "_source": "oca-2025-0815-tt"
     },
-
     "canon": {
       "tone": 1,
       "_secondCanonTone": 4,
-      "_authors": { "first": "Cosmas the Monk", "second": "John of Damascus" },
+      "_authors": {
+        "first": "Cosmas the Monk",
+        "second": "John of Damascus"
+      },
       "skipMagnificat": true,
-
       "ode1": {
         "irmos": "Clothed in the embroidered raiment of divine glory,\nthy sacred and renowned memorial, O Virgin,\nhas brought all the faithful together for joy;\nand led by Miriam, with dances and timbrels,\nthey sing to thine Only-begotten Son,\nfor He has been glorified.",
         "irmos2": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her falling asleep."
@@ -93,14 +108,12 @@
         "irmos": "Refrain: The Angels, as they looked upon the Dormition of the Virgin,\nwere struck with wonder,\nseeing how the Virgin went up from earth to heaven.\n\nHeirmos: The limits of nature are overcome in thee, O Pure Virgin:\nfor birthgiving remains virginal, and life is united to death;\na virgin after childbearing and alive after death,\nthou dost ever save thine inheritance, O Theotokos.",
         "irmos2": "Refrain: Magnify, O my soul,\nthe translation of the Mother of God from earth to heaven!\n\nHeirmos: Let all mortals born on earth,\ncarrying torches, in spirit leap for joy;\nand let the nature of the immaterial Minds keep festival\nand honor the holy Translation of the Mother of God,\nand let them cry:\n\"Rejoice, all-blessed one, pure Theotokos ever-Virgin!\""
       },
-
       "kontakion": {
         "text": "Neither the tomb, nor death, could hold the Theotokos,\nwho is constant in prayer and our firm hope in her intercessions.\nFor being the Mother of Life,\nshe was translated to life by the One Who dwelt in her virginal womb.",
         "tone": 2,
         "label": "Kontakion of the Dormition"
       }
     },
-
     "exapostilarion": {
       "text": "Apostles, who have assembled here\nfrom the ends of the earth,\nbury my body in Gethsemane,\nand Thou, my Son and God,\nreceive my spirit!",
       "tone": 3,
@@ -108,7 +121,6 @@
       "repeat": 3,
       "_source": "oca-2025-0815-tt"
     },
-
     "lauds": {
       "tone": 4,
       "stichera": [
@@ -140,7 +152,6 @@
         "_source": "oca-2025-0815-tt"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "In giving birth thou didst preserve thy virginity.\nIn falling asleep thou didst not forsake the world, O Theotokos.\nThou wast translated to life, O Mother of Life,\nand by thy prayers thou dost deliver our souls from death.",
       "tone": 1

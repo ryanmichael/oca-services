@@ -28,15 +28,16 @@
 
 // MM-DD → why the lessons are not yet in the corpus.
 const KNOWN_SOURCE_GAPS = {
-  '01-06': 'Theophany — lessons not yet authored (OCA text not on hand).',
-  '02-02': 'Meeting of the Lord — lessons not yet authored.',
-  '03-25': 'Annunciation — lessons not yet authored.',
-  '08-06': 'Transfiguration — lessons not yet authored.',
-  '08-15': 'Dormition — lessons not yet authored.',
-  '09-14': 'Elevation of the Cross — lessons not yet authored.',
-  '11-21': 'Entry of the Theotokos — lessons not yet authored.',
-  '12-25': 'Nativity of Christ — lessons not yet authored.',
-  '01-01': 'Circumcision of the Lord + St. Basil — lessons not yet authored.',
+  // Authored 2026-09-19 from the OCA texts in reference/scrape/: 01-01, 02-02,
+  // 08-06, 08-15, 09-14, 11-21. What remains are the three feasts whose Vespers
+  // is not an ordinary Great Vespers — Theophany and Nativity are served with
+  // the Vesperal Liturgy (and Royal Hours) and appoint far more than three
+  // paremias, and the Annunciation's depend on where it falls in Lent. Each
+  // needs its own service path checked before its readings are wired, so they
+  // are deliberately NOT a copy of the pattern used for the other six.
+  '01-06': 'Theophany — Vesperal Liturgy path, many more than 3 paremias; needs its own wiring.',
+  '03-25': 'Annunciation — readings vary with the Lenten day it falls on; needs the Lenten path checked.',
+  '12-25': 'Nativity of Christ — Vesperal Liturgy path, many more than 3 paremias; needs its own wiring.',
 };
 
 module.exports = {

@@ -7,7 +7,6 @@
     "_sourceUrl": "https://files.oca.org/service-texts/2025-0806-texts-tt.docx",
     "_note": "Single-canon (1st Canon Tone 4 by Cosmas the Monk) with Tone 8 Katavasiae borrowed from the Canon of the Elevation of the Cross. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`). Great feast of the Lord — Having Beheld the Resurrection is suppressed."
   },
-
   "troparion": {
     "text": "Thou wast transfigured on the mountain, O Christ God,\nrevealing Thy glory to Thy Disciples as far as they could bear it.\nLet Thine everlasting Light also shine upon us sinners,\nthrough the prayers of the Theotokos!\nO Giver of Light, glory to Thee!",
     "tone": 7,
@@ -18,7 +17,28 @@
     "tone": 7,
     "label": "Kontakion of the Transfiguration"
   },
-
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Exodus",
+        "pericope": "24:12-18"
+      },
+      {
+        "order": 2,
+        "book": "Exodus",
+        "pericope": "33:11-23; 34:4-6, 8",
+        "_composite": "Composite 15"
+      },
+      {
+        "order": 3,
+        "book": "I Kings",
+        "pericope": "19:3-9, 11-13, 15-16",
+        "_composite": "Composite 23"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2025-08-06.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+  },
   "matins": {
     "_meta": {
       "tone": 7,
@@ -26,7 +46,6 @@
       "feastType": "lord"
     },
     "isGreatFeastOfLord": true,
-
     "sedalion": [
       {
         "text": "Thou wast transfigured upon Mount Tabor, O Savior,\nshowing the exchange mortal men will make with Thy glory at Thy second and fearful coming.\nElijah and Moses talked with Thee,\nand Thou didst call the three disciples to be with Thee.\nAs they gazed upon Thy glory, O Master,\nthey were struck with wonder at Thy blinding brightness.\nThou Who hast shone upon them with Thy light, give light to our souls.",
@@ -41,7 +60,6 @@
         "melody": "Troparion melody"
       }
     ],
-
     "magnification": {
       "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we venerate the all-glorious Transfiguration\nof Thy most pure Body.",
       "verses": [
@@ -50,34 +68,29 @@
       ],
       "tone": 7
     },
-
     "prokeimenon": {
       "refrain": "Tabor and Hermon shall rejoice in Thy Name!",
       "verse": "The heavens are Thine; the earth also is Thine.",
       "tone": 4,
       "_psalmRef": "Ps. 88:12a / 88:11a"
     },
-
     "gospel": {
       "reading": "Luke 9:28-36",
       "number": 45,
       "_note": "The Transfiguration on Mount Tabor."
     },
-
     "postGospelSticheron": {
       "text": "Having revealed a little of the light of Thy divinity\nto those who went up with Thee on the mountain,\nThou hast made them lovers of Thy heavenly glory.\nTherefore, they cried out in awe:\n\"It is good for us to be here.\"\nWith them we also sing to Thee, O transfigured Savior, Christ.",
       "tone": 5,
       "label": "Idiomelon of the Transfiguration",
       "_source": "oca-2025-0806-tt"
     },
-
     "canon": {
       "tone": 4,
       "_katavasiaTone": 8,
       "_author": "Cosmas the Monk",
       "_katavasiaeNote": "Katavasiae Tone 8 from the Canon of the Elevation of the Cross (by Cosmas the Monk), per the Transfiguration → Elevation preparatory cycle.",
       "skipMagnificat": true,
-
       "ode1": {
         "irmos": "When the choirs of Israel\ncrossed the Red Sea and the watery deep with dry feet,\nand saw the riders and captains of the enemy submerged in the sea,\nthey cried out for joy:\n\"Let us sing to our God, for He has been glorified!\"",
         "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
@@ -110,21 +123,18 @@
         "irmos": "Refrain: Magnify, O my soul, the Lord Who was transfigured on Mount Tabor!\n\nHeirmos: Thy childbearing was without corruption;\nGod came forth from thy body clothed in flesh,\nand appeared on earth and dwelt among men.\nTherefore we all magnify thee, O Theotokos.",
         "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
       },
-
       "sedalenAfterOde3": {
         "text": "Thou wast transfigured upon Mount Tabor, O Christ God,\nbetween Moses and Elijah the wise,\nin the presence of James, Peter, and John;\nand Peter, as he stood there, spoke to Thee:\n\"It would be good to make three tabernacles here:\nOne for Moses, one for Elijah, and one for Thee, Christ our Master.\"\nThou Who hast shone upon them with Thy light, give light to our souls.",
         "tone": 4,
         "label": "Sessional Hymn (after Ode 3)",
         "melody": "Troparion melody"
       },
-
       "kontakion": {
         "text": "On the mountain Thou wast transfigured, O Christ God,\nand Thy Disciples beheld Thy glory as far as they could see it;\nso that when they would behold Thee crucified,\nthey would understand that Thy suffering was voluntary,\nand would proclaim to the world\nthat Thou art truly the Radiance of the Father.",
         "tone": 7,
         "label": "Kontakion of the Transfiguration"
       }
     },
-
     "exapostilarion": {
       "text": "O Word, Light unaltered from the Light of the unbegotten Father,\nin Thy Light made manifest today on Mount Tabor\nwe have seen the Father as Light and the Spirit as Light,\nguiding all creation as Light.",
       "tone": 3,
@@ -132,7 +142,6 @@
       "repeat": 3,
       "_source": "oca-2025-0806-tt"
     },
-
     "lauds": {
       "tone": 4,
       "stichera": [
@@ -164,7 +173,6 @@
         "_source": "oca-2025-0806-tt"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "Thou wast transfigured on the mountain, O Christ God,\nrevealing Thy glory to Thy Disciples as far as they could bear it.\nLet Thine everlasting Light also shine upon us sinners,\nthrough the prayers of the Theotokos!\nO Giver of Light, glory to Thee!",
       "tone": 7

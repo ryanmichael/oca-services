@@ -20,6 +20,27 @@
     "label": "Kontakion of St. Basil",
     "melody": "Thou hast appeared today"
   },
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "17:1-2, 4, 5-7, 8, 9-10, 11-12, 14",
+        "_composite": "Composite 1"
+      },
+      {
+        "order": 2,
+        "book": "Proverbs",
+        "pericope": "8:22-30"
+      },
+      {
+        "order": 3,
+        "book": "Proverbs",
+        "pericope": "10:31-11:12"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2024-01-01.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+  },
   "matins": {
     "_meta": {
       "tone": 2,

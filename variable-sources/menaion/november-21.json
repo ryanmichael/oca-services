@@ -7,7 +7,6 @@
     "_sourceUrl": "https://files.oca.org/service-texts/2025-1121-texts-tt.docx",
     "_note": "Single-canon (1st Canon Tone 4 by George of Nicomedia) with Tone 1 Katavasiae from the 1st Canon of the Nativity of Christ (by Cosmas of Maiuma) — Nov 21 → Dec 25 katavasiae cycle. The OCA DOCX does not include the exapostilarion text; it is omitted here and may be added later from a Menaion source. Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`)."
   },
-
   "troparion": {
     "text": "Today is the prelude of the good will of God,\nof the preaching of the salvation of mankind.\nThe Virgin appears in the Temple of God,\nin anticipation proclaiming Christ to all.\nLet us rejoice and sing to her:\n\"Rejoice, O Fulfillment\nof the Creator's dispensation!\"",
     "tone": 4,
@@ -18,14 +17,34 @@
     "tone": 4,
     "label": "Kontakion of the Entry"
   },
-
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Exodus",
+        "pericope": "40:1-5, 9, 10, 16, 34-35",
+        "_composite": "Composite 17"
+      },
+      {
+        "order": 2,
+        "book": "I Kings",
+        "pericope": "7:51; 8:1, 3-7, 9-11",
+        "_composite": "Composite 18"
+      },
+      {
+        "order": 3,
+        "book": "Ezekiel",
+        "pericope": "43:27-44:4"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2025-11-21.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+  },
   "matins": {
     "_meta": {
       "tone": 4,
       "feastRank": "greatFeast",
       "feastType": "theotokos"
     },
-
     "magnification": {
       "refrain": "We magnify thee,\nO most holy Virgin, Maiden chosen by God;\nand we honor thine Entrance\ninto the Temple of the Lord.",
       "verses": [
@@ -34,20 +53,17 @@
       ],
       "tone": 4
     },
-
     "prokeimenon": {
       "refrain": "Hearken, O daughter, and see, and incline thine ear!",
       "verse": "My heart overflowed with a good word.",
       "tone": 4,
       "_psalmRef": "Ps. 44:9a / 44:1a"
     },
-
     "gospel": {
       "reading": "Luke 1:39-49, 56",
       "number": 4,
       "_note": "The Visitation — shared with Annunciation, Dormition, Nativity of Theotokos."
     },
-
     "postGospelSticheron": {
       "text": "Today the Theotokos, the Temple that is to hold God,\nis brought into the Temple of the Lord,\nand Zachariah receives her.\nToday the Holy of Holies is glad,\nand the choir of angels mystically keeps the feast.\nWith them let us celebrate the feast today,\nand with Gabriel let us cry aloud:\n\"Rejoice, O Full of Grace, the Lord is with thee,\nHe Who has great mercy!\"",
       "tone": 4,
@@ -55,14 +71,12 @@
       "author": "George of Nicomedia",
       "_source": "oca-2025-1121-tt"
     },
-
     "canon": {
       "tone": 4,
       "_katavasiaTone": 1,
       "_author": "George of Nicomedia",
       "_katavasiaeNote": "Katavasiae Tone 1 from the 1st Canon of the Nativity of Christ (by Cosmas of Maiuma), per the Nov 21 → Dec 25 cycle.",
       "skipMagnificat": true,
-
       "ode1": {
         "irmos": "I will open my mouth, and it will be filled with the Spirit,\nand I will pour forth my words to the Queen and Mother.\nI will be seen radiantly keeping feast\nand will joyfully praise her Entrance.",
         "katavasia": "Christ is born, glorify Him!\nChrist comes from heaven, go to meet Him!\nChrist is on earth, be exalted!\nSing to the Lord, all the earth,\nand praise Him in gladness, O people,\nfor He has been glorified!"
@@ -95,14 +109,12 @@
         "irmos": "The angels beheld the entrance of the Pure One and were amazed.\nHow has the Virgin entered into the Holy of Holies?\nSince she is a living Ark of God, let no profane hand touch the Theotokos.\nBut let the lips of believers unceasingly sing to her,\npraising her in joy with the angel's song:\n\"Truly, thou art more exalted than all, O pure Virgin!\"",
         "katavasia": "I behold a strange, most glorious mystery:\nheaven—the cave;\nthe cherubic throne—the Virgin;\nthe manger—the place where Christ lay:\nthe uncontainable God, Whom we magnify in song."
       },
-
       "kontakion": {
         "text": "The most pure Temple of the Savior;\nthe precious Chamber and Virgin;\nthe sacred Treasure of the glory of God,\nis presented today to the house of the Lord.\nShe brings with her the grace of the Spirit,\ntherefore, the angels of God praise her:\n\"Truly this woman is the abode of Heaven!\"",
         "tone": 4,
         "label": "Kontakion of the Entry"
       }
     },
-
     "lauds": {
       "tone": 1,
       "stichera": [
@@ -135,7 +147,6 @@
         "_source": "oca-2025-1121-tt"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "Today is the prelude of the good will of God,\nof the preaching of the salvation of mankind.\nThe Virgin appears in the Temple of God,\nin anticipation proclaiming Christ to all.\nLet us rejoice and sing to her:\n\"Rejoice, O Fulfillment\nof the Creator's dispensation!\"",
       "tone": 4

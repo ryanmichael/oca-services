@@ -7,7 +7,6 @@
     "_sourceUrl": "https://files.oca.org/service-texts/2025-0914-texts-tt.docx",
     "_note": "Single-canon (Tone 8 by Cosmas the Monk); each katavasia repeats its own ode's irmos (no separate katavasiae text). Lord's feast — but Having Beheld IS sung per OCA rubric (`includeHavingBeheld: true`). Magnificat replaced by feast-specific Ode 9 refrain (`skipMagnificat: true`). Veneration stichera sung after the Great Doxology are not yet captured."
   },
-
   "troparion": {
     "text": "O Lord, save Thy people,\nand bless Thine inheritance!\nGrant victories to the Orthodox Christians\nover their adversaries;\nand by virtue of Thy Cross,\npreserve Thy habitation!",
     "tone": 1,
@@ -18,7 +17,26 @@
     "tone": 4,
     "label": "Kontakion of the Elevation"
   },
-
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Exodus",
+        "pericope": "15:22-16:1"
+      },
+      {
+        "order": 2,
+        "book": "Proverbs",
+        "pericope": "3:11-18"
+      },
+      {
+        "order": 3,
+        "book": "Isaiah",
+        "pericope": "60:11-16"
+      }
+    ],
+    "_otReadingsSource": "OCA service texts 2025-09-14.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+  },
   "matins": {
     "_meta": {
       "tone": 1,
@@ -27,7 +45,6 @@
     },
     "isGreatFeastOfLord": true,
     "includeHavingBeheld": true,
-
     "sedalion": [
       {
         "text": "We venerate the wood of Thy Cross, O Lover of mankind,\nfor upon it Thou wast nailed, O Life of all.\nO Savior, Thou hast opened Paradise\nto the thief who turned to Thee in faith,\ncounting him worthy of blessedness\nwhen he confessed Thee crying: \"O Lord, remember me.\"\nAccept us like him, as we cry: \"We all have sinned,\nin Thy merciful kindness despise us not.\"",
@@ -42,7 +59,6 @@
         "melody": "Troparion melody"
       }
     ],
-
     "magnification": {
       "refrain": "We magnify Thee,\nO Christ, the Giver of life,\nand we honor Thy precious Cross\nby which Thou hast saved us\nfrom the bondage of the enemy.",
       "verses": [
@@ -51,33 +67,28 @@
       ],
       "tone": 8
     },
-
     "prokeimenon": {
       "refrain": "All the ends of the earth have seen the salvation of our God.",
       "verse": "Sing to the Lord a new song, for the Lord has done marvelous things.",
       "tone": 4,
       "_psalmRef": "Ps. 97:5 / 97:1"
     },
-
     "gospel": {
       "reading": "John 12:28-36",
       "number": "42-ctr",
       "_note": "The hour has come for the Son of Man to be glorified."
     },
-
     "postGospelSticheron": {
       "text": "O Cross of Christ,\nthe hope of Christians,\nguide of those who have gone astray,\nhaven of the storm-tossed,\nvictory in warfare,\nthe safeguard of the inhabited earth,\nphysician of the sick,\nresurrection of the dead:\nhave mercy on us.",
       "tone": 6,
       "label": "Idiomelon of the Elevation",
       "_source": "oca-2025-0914-tt"
     },
-
     "canon": {
       "tone": 8,
       "_author": "Cosmas the Monk",
       "_katavasiaeNote": "Each ode's katavasia repeats that ode's own irmos.",
       "skipMagnificat": true,
-
       "ode1": {
         "irmos": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified.",
         "katavasia": "Moses traced out a cross,\nas with his staff he divided the Red Sea in two,\nso that Israel could go across on foot;\nand then striking it again crosswise,\nand uniting it over Pharaoh and his chariots,\nhe inscribed the Invincible Weapon.\nTherefore let us sing to Christ our God, for He has been glorified."
@@ -110,14 +121,12 @@
         "irmos": "Refrain: Magnify, O my soul, the most precious Cross of the Lord!\n\nHeirmos: Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee.",
         "katavasia": "Thou art a mystical Paradise, O Theotokos,\nwho, though untilled, hast brought forth Christ;\nthrough Him the life-bearing wood of the Cross was planted on earth.\nNow at its Exaltation,\nas we bow in worship before it, we magnify thee."
       },
-
       "kontakion": {
         "text": "As Thou wast voluntarily raised upon the Cross for our sake,\ngrant mercy to those who are called by Thy Name, O Christ God;\nmake all Orthodox Christians glad by Thy power,\ngranting them victories over their adversaries\nby bestowing on them the invincible trophy, Thy weapon of peace!",
         "tone": 4,
         "label": "Kontakion of the Elevation"
       }
     },
-
     "exapostilarion": {
       "text": "The Cross is the guardian of the whole earth.\nThe Cross is the beauty of the Church.\nThe Cross is the strength of Orthodox Christians.\nThe Cross is the support of the faithful.\nThe Cross is the glory of the angels,\nand the wounder of the demons.",
       "tone": 2,
@@ -126,7 +135,6 @@
       "repeat": 3,
       "_source": "oca-2025-0914-tt"
     },
-
     "lauds": {
       "tone": 8,
       "stichera": [
@@ -158,12 +166,10 @@
         "_source": "oca-2025-0914-tt"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "O Lord, save Thy people,\nand bless Thine inheritance!\nGrant victories to the Orthodox Christians\nover their adversaries;\nand by virtue of Thy Cross,\npreserve Thy habitation!",
       "tone": 1
     },
-
     "venerationStichera": {
       "section": "Veneration of the Cross",
       "rubric": "As the Great Doxology ends, the solemn procession of the Cross takes place. As the clergy and faithful venerate the Cross, the following hymns are sung:",

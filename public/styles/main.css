@@ -354,6 +354,11 @@ header,
 .panel-detail-toggle.open .pdt-minus { display: block; }
 .panel-detail-toggle.open .pdt-plus  { display: none; }
 
+/* Phone-only pieces of the head (short title, tap-line label, chevron,
+   drawer rows). Desktop keeps the full title, the meta row and the +/− icon;
+   the ≤640px block swaps these in. */
+.panel-svc-short, .pdt-label-m, .pdt-chev, .pd-rows, .pd-comms-head { display: none; }
+
 /* Collapsible detail body */
 .panel-detail-body {
   overflow: hidden; max-height: 0; opacity: 0;
@@ -852,13 +857,48 @@ body.dev-mode .src-tag { display: inline; }
     -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
     box-shadow: 0 0 0 1px var(--border);
   }
-  .panel-svc { font-size: 13px; padding-right: 48px; line-height: 1.5; }
+  /* Progressive disclosure: three rows — short title, date, one tap line
+     ("Settings • N Commemorations") — and everything else in the drawer. */
+  .panel-svc { display: none; }
+  .panel-svc-short { display: block; font-size: 13px; padding-right: 48px; line-height: 1.5; }
   .panel-date-str { font-size: 14px; line-height: 1.4; padding-right: 48px; }
-  .panel-meta-row { margin-top: 4px; }
-  .panel-meta-row .pmr-type,
-  .panel-meta-row .pmr-overlay { padding: 8px 0 2px; }
-  .panel-detail-toggle { margin-top: 4px; padding: 10px 0 10px; }
-  .pdt-icon { width: 22px; height: 22px; }
+  .panel-meta-row { display: none; }
+
+  .panel-detail-toggle {
+    margin-top: 4px; min-height: 44px; padding: 6px 0;
+    border-top: none; gap: 10px;
+  }
+  .pdt-label, .pdt-icon { display: none; }
+  .pdt-label-m {
+    display: block; flex: 1;
+    font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic;
+    line-height: 1.4; color: #5A5247;
+  }
+  .pdt-chev { display: block; flex-shrink: 0; color: var(--muted); transition: transform .2s ease, color .15s; }
+  .panel-detail-toggle.open .pdt-chev { transform: rotate(180deg); color: var(--rubric); }
+  .panel-detail-toggle.open .pdt-label-m { color: var(--rubric); }
+
+  .panel-detail-body.open { max-height: 1600px; }
+  .panel-detail-body-inner { border-top: 1px solid var(--border); padding: 6px 0 12px; }
+
+  .pd-rows { display: flex; flex-direction: column; }
+  .pd-row {
+    display: flex; align-items: center; gap: 12px; min-height: 44px;
+    background: none; border: none; padding: 0; width: 100%; text-align: left;
+    border-bottom: 1px solid #EEE8DB; cursor: default; color: var(--text);
+  }
+  .pd-row[hidden] { display: none; }
+  button.pd-row { cursor: pointer; }
+  .pd-rows .pd-row:last-child { border-bottom: none; }
+  .pd-key {
+    width: 96px; flex-shrink: 0;
+    font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .14em; color: var(--muted);
+  }
+  .pd-val { flex: 1; font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.3; color: var(--text); }
+  .pd-go { flex-shrink: 0; color: var(--muted); }
+  .pd-comms-head { display: block; margin-top: 10px; padding: 6px 0; letter-spacing: .16em; }
+  .pd-comms-head[hidden] { display: none; }
+  .p-saints { margin-bottom: 4px; }
 }
 
 /* ── PRINT STYLES ──────────────────────────────────────────────────────────── */

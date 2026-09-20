@@ -44,7 +44,7 @@ test('phone: nothing is pinned — the head scrolls away, only the close button 
   await firstRow.click();
   await expect(page.locator('#p-body .prayer').first()).toBeVisible({ timeout: 15_000 });
 
-  const title = page.locator('#p-svc');
+  const title = page.locator('#p-svc-short');
   await expect(title).toBeInViewport();
 
   await page.evaluate(() => { document.querySelector('.panel-scroll').scrollTop = 1200; });
@@ -77,4 +77,36 @@ test('phone: calendar close bar stays on screen below a full week list', async (
     const r = document.getElementById('cal-close-mobile').getBoundingClientRect();
     return r.bottom <= window.innerHeight && r.top >= 0;
   }), { timeout: 5_000 }).toBe(true);
+});
+
+test('phone: head is three rows; Settings tap line opens a drawer with the pickers', async ({ page }) => {
+  await page.goto('/?date=2026-09-22&svc=liturgy');
+  await expect(page.locator('#p-body .prayer').first()).toBeVisible({ timeout: 15_000 });
+
+  // Short title on the phone; the em-dash tail moves into the drawer.
+  await expect(page.locator('#p-svc-short')).toHaveText('DIVINE LITURGY');
+  await expect(page.locator('#p-svc')).toBeHidden();
+  await expect(page.locator('#p-meta-row')).toBeHidden();
+
+  const tap = page.locator('#p-detail-toggle');
+  await expect(tap.locator('#p-detail-label-m')).toHaveText(/^Settings \u2022 \d+ Commemorations?$/);
+  const box = await tap.boundingBox();
+  expect(box.height).toBeGreaterThanOrEqual(44);
+
+  // Closed: the drawer rows are not visible. Open: LITURGY / VERSION / TYPE
+  // rows and the commemorations heading are, and the pickers are reachable.
+  // (The drawer collapses via max-height, so Playwright still sees a box on
+  // its rows — measure the drawer itself.)
+  const drawerH = () => page.locator('#p-detail-body').evaluate(el => el.getBoundingClientRect().height);
+  expect(await drawerH()).toBe(0);
+  await tap.click();
+  await expect.poll(drawerH).toBeGreaterThan(200);
+  await expect(page.locator('#pd-liturgy-val')).toHaveText('Liturgy of St. John Chrysostom');
+  await expect(page.locator('#pd-version-btn')).toBeVisible();
+  await expect(page.locator('#pd-type-val')).toHaveText('Standard');
+  await expect(page.locator('#pd-comms-head')).toBeVisible();
+  await expect(page.locator('#p-saints .p-saint').first()).toBeVisible();
+
+  await page.locator('#pd-type-btn').click();
+  await expect(page.locator('#view-liturgy-variant')).toHaveClass(/visible/);
 });

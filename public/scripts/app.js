@@ -96,6 +96,28 @@ const LITURGY_VARIANT_LABELS = {
   typikaCrg:    'TYPIKA + COMMUNION OF RESERVED GIFTS',
 };
 
+/** Sets the panel title everywhere it appears. Desktop shows the full label;
+ *  phones show only the part before the em-dash and carry the remainder
+ *  ("Liturgy of St. John Chrysostom") into the details drawer as LITURGY.
+ *  Pass `print` when the print header should read differently. */
+function setPanelTitle(label, print = label) {
+  const [short, ...rest] = label.split(' \u2014 ');
+  const tail = rest.join(' \u2014 ').trim();
+  document.getElementById('p-svc').textContent = label;
+  document.getElementById('p-svc-short').textContent = short.trim();
+  document.getElementById('print-header-svc').textContent = print;
+  const row = document.getElementById('pd-liturgy-row');
+  document.getElementById('pd-liturgy-val').textContent = tail ? toTitleCase(tail) : '';
+  row.hidden = !tail;
+}
+
+/** "READER'S TYPIKA + DEACON" → "Reader's Typika + Deacon" (drawer rows are
+ *  sentence-case; the meta row and desktop stay upper-case Cinzel). */
+function toTitleCase(str) {
+  return str.toLowerCase().replace(/(^|[\s(\-])([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase())
+            .replace(/\bOf\b/g, 'of').replace(/\bThe\b/g, 'the').replace(/\bAnd\b/g, 'and');
+}
+
 /** Renders the single-row metadata under the panel title:
  *  `SERVICE TEXT: <overlay> • TYPE: <variant>`. Either half can be hidden
  *  independently; the dot only shows when both are visible. The TYPE button
@@ -112,28 +134,35 @@ function updateMetaRow(translationId, svcType, date) {
   // Overlay half — always visible as the quick-edit ingress. When no overlay
   // is active it reads "DEFAULT"; otherwise it shows the friendly overlay name.
   const hasOverlay = !!translationId;
+  const pdVersion = document.getElementById('pd-version-val');
   if (hasOverlay) {
     const fromCache = translationsCache?.translations?.find(t => t.id === translationId);
     ovName.textContent = (fromCache?.name || translationId).toUpperCase();
+    pdVersion.textContent = fromCache?.name || translationId;
     if (!fromCache) {
       loadTranslations().then(() => {
         const t = translationsCache?.translations?.find(t => t.id === translationId);
-        if (t) ovName.textContent = t.name.toUpperCase();
+        if (t) { ovName.textContent = t.name.toUpperCase(); pdVersion.textContent = t.name; }
       });
     }
   } else {
     ovName.textContent = 'DEFAULT';
+    pdVersion.textContent = 'Default';
   }
   ovWrap.hidden = false;
 
   // Type half — visible when active service is one of the Liturgy variants.
   const hasType = svcType in LITURGY_VARIANT_LABELS;
+  const pdType = document.getElementById('pd-type-btn');
   if (hasType) {
     typeNm.textContent = LITURGY_VARIANT_LABELS[svcType];
+    document.getElementById('pd-type-val').textContent = toTitleCase(LITURGY_VARIANT_LABELS[svcType]);
     typeBtn.dataset.date = date;
     typeBtn.hidden = false;
+    pdType.hidden = false;
   } else {
     typeBtn.hidden = true;
+    pdType.hidden = true;
   }
 
   sep.hidden = !hasType;
@@ -371,8 +400,7 @@ async function _showPanel(rowEl, date, svcType) {
                  : svcType === 'typikaDeacon'    ? "READER'S TYPIKA WITH DEACON"
                  : svcType === 'typikaCrg'       ? "READER'S TYPIKA WITH COMMUNION OF THE RESERVED GIFTS"
                  : 'GREAT VESPERS';
-  document.getElementById('p-svc').textContent = svcLabel;
-  document.getElementById('print-header-svc').textContent = svcLabel;
+  setPanelTitle(svcLabel);
 
   // Collapse detail section on each new panel open
   document.getElementById('p-detail-body').classList.remove('open');
@@ -410,12 +438,7 @@ async function loadPanelContent(date, svcType) {
     }
 
     // Update panel service label from API response (shows variant name for liturgy)
-    if (data.serviceName) {
-      const labelEl = document.getElementById('p-svc');
-      const printLabelEl = document.getElementById('print-header-svc');
-      if (labelEl) labelEl.textContent = data.serviceName.toUpperCase();
-      if (printLabelEl) printLabelEl.textContent = data.serviceName.toUpperCase();
-    }
+    if (data.serviceName) setPanelTitle(data.serviceName.toUpperCase());
 
     const toneStr  = data.tone ? ` \u00B7 Tone ${data.tone}` : '';
     const labelStr = data.liturgicalLabel ? ` \u00B7 ${data.liturgicalLabel}` : '';
@@ -475,8 +498,7 @@ async function loadChoirContent(date) {
     }
 
     // Panel header
-    document.getElementById('p-svc').textContent = 'CHOIR PREP';
-    document.getElementById('print-header-svc').textContent = 'CHOIR REHEARSAL SHEET';
+    setPanelTitle('CHOIR PREP', 'CHOIR REHEARSAL SHEET');
 
     const toneStr  = choirData.tone ? ` \u00B7 Tone ${choirData.tone}` : '';
     const labelStr = choirData.liturgicalLabel ? ` \u00B7 ${choirData.liturgicalLabel}` : '';
@@ -555,6 +577,17 @@ function updateDetailLabel() {
     parts.push(`${svcCount} SERVICE${svcCount > 1 ? 'S' : ''}`);
   }
   document.getElementById('p-detail-label').textContent = parts.length ? parts.join(' \u00B7 ') : 'DETAILS';
+
+  // Phone tap line reads "Settings • 10 Commemorations" — the same words on
+  // every service so the drawer is always in the same place under the same name.
+  const mobile = ['Settings'];
+  if (count) mobile.push(`${count} Commemoration${count > 1 ? 's' : ''}`);
+  if (activeMode === 'choir' && choirData && choirData.services) {
+    const n = choirData.services.length;
+    mobile.push(`${n} Service${n > 1 ? 's' : ''}`);
+  }
+  document.getElementById('p-detail-label-m').textContent = mobile.join(' \u2022 ');
+  document.getElementById('pd-comms-head').hidden = !count;
 }
 
 // ─── Pronoun toggle ───────────────────────────────────────────────────────────
@@ -998,6 +1031,7 @@ async function init() {
 
   // Liturgy variant picker
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
+  document.getElementById('pd-type-btn').addEventListener('click', openLiturgyVariantView);
   document.getElementById('lv-back').addEventListener('click', closeLiturgyVariantView);
   document.querySelectorAll('#view-liturgy-variant .pd-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -1012,6 +1046,7 @@ async function init() {
 
   // Service Text quick picker
   document.getElementById('p-meta-overlay-btn').addEventListener('click', openServiceTextView);
+  document.getElementById('pd-version-btn').addEventListener('click', openServiceTextView);
   document.getElementById('st-back').addEventListener('click', closeServiceTextView);
   document.querySelectorAll('#st-jurisdiction-row .seg-btn-pill').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1231,8 +1266,7 @@ async function showPanikhidaPanel(opts, replace = false, skipHistory = false) {
   if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
   activeDate    = null;
   activeSvcType = 'panikhida';
-  document.getElementById('p-svc').textContent = 'PANIKHIDA';
-  document.getElementById('print-header-svc').textContent = 'PANIKHIDA';
+  setPanelTitle('PANIKHIDA');
   document.getElementById('p-detail-body').classList.remove('open');
   document.getElementById('p-detail-toggle').classList.remove('open');
   document.getElementById('p-body').innerHTML = '<div class="panel-loading">Loading\u2026</div>';

@@ -66,6 +66,9 @@
             <button class="btn-print" id="btn-print">PRINT</button>
           </div>
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
+          <!-- Phones show the part of the title before the em-dash; the rest
+               moves into the details drawer as the LITURGY row. -->
+          <div class="panel-svc panel-svc-short" id="p-svc-short">GREAT VESPERS</div>
           <div class="panel-date-str" id="p-date"></div>
           <div class="panel-meta-row" id="p-meta-row" hidden>
             <button class="pmr-overlay" id="p-meta-overlay-btn" hidden>
@@ -81,6 +84,10 @@
 
           <button class="panel-detail-toggle" id="p-detail-toggle">
             <span class="pdt-label" id="p-detail-label">DETAILS</span>
+            <span class="pdt-label-m" id="p-detail-label-m">Settings</span>
+            <svg class="pdt-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span class="pdt-icon">
               <svg class="pdt-plus" width="8" height="8" viewBox="0 0 8 8" fill="none">
                 <line x1="4" y1="0" x2="4" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -94,6 +101,29 @@
 
           <div class="panel-detail-body" id="p-detail-body">
             <div class="panel-detail-body-inner">
+              <!-- Phone-only rows: the VERSION/TYPE pickers live here instead of
+                   the meta row, one tap deeper. Desktop hides this block. -->
+              <div class="pd-rows" id="pd-rows">
+                <div class="pd-row" id="pd-liturgy-row" hidden>
+                  <span class="pd-key">LITURGY</span>
+                  <span class="pd-val" id="pd-liturgy-val"></span>
+                </div>
+                <button class="pd-row" id="pd-version-btn">
+                  <span class="pd-key">VERSION</span>
+                  <span class="pd-val" id="pd-version-val">Default</span>
+                  <svg class="pd-go" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true">
+                    <path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="pd-row" id="pd-type-btn" hidden>
+                  <span class="pd-key">TYPE</span>
+                  <span class="pd-val" id="pd-type-val"></span>
+                  <svg class="pd-go" width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true">
+                    <path d="M1 1l5 4.5L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="pd-key pd-comms-head" id="pd-comms-head" hidden>COMMEMORATIONS</div>
               <div class="p-saints" id="p-saints"></div>
               <div class="choir-toggles" id="choir-toggles">
                 <!-- Rendered by JS when in choir mode: service toggle chips -->

@@ -23,9 +23,12 @@ test('settings calendar-style toggle drives the response style', async ({ page }
 
   // Pick Old. setStyle() fires a /api/days reload plus a panel reload —
   // both should carry &style=old. Wait on the panel-reload request as the
-  // proof that the toggle reached the server.
+  // proof that the toggle reached the server. Which endpoint that is depends
+  // on whichever row happened to be first today (a Vigil hits /api/vigil), so
+  // accept any service endpoint rather than a fixed list — the spec went red
+  // on 2026-09-20 purely because the first row had become a Vigil.
   const reqPromise = page.waitForRequest(
-    req => /\/api\/(service|matins|liturgy)\?/.test(req.url()) && req.url().includes('style=old'),
+    req => /\/api\/(?!days\b|translations\b)[a-z-]+\?/.test(req.url()) && req.url().includes('style=old'),
     { timeout: 10_000 },
   );
   await styleToggle.locator('.seg-btn[data-style="old"]').click();

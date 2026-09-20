@@ -240,6 +240,8 @@ const E_STEM_BASES = new Set([
   // -ate already handled by the /Cated/ regex below, but a few -ote/-ute
   // outliers are safer here.
   'atone', 'approve', 'improve', 'remove',
+  // surfaced by the Raphaela round-trip check (2026-09-20)
+  'choke', 'wipe', 'dare', 'tame', 'shame', 'ally', 'shine', 'name', 'blame',
 ]);
 
 // Past-tense suffixes we recognize for stemming
@@ -268,6 +270,11 @@ function stemRegularPast(past) {
     if (/[bcdfgkmnprstvz]led$/.test(past)) return past.slice(0, -1);
     // Doubled-consonant past form: dropped→drop, planned→plan
     // (last 3 chars are CCed with a vowel before)
+    // ...but a monosyllable whose root already ends in -ll keeps both l's:
+    // filled→fill, killed→kill, stilled→still, fulfilled→fulfill (not fil/kil).
+    // Polysyllables with final stress genuinely un-double: expelled→expel,
+    // compelled→compel, dispelled→dispel.
+    if (/^(?:ful)?[bcdfghjklmnpqrstvwxz]*[aeiou]lled$/.test(past)) return past.slice(0, -2);
     if (/([bdfgklmnprst])\1ed$/.test(past)) return past.slice(0, -3);
     // Default: strip -ed
     return past.slice(0, -2);

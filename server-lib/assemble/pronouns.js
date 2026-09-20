@@ -32,7 +32,7 @@ const IRREGULAR_PAST = {
   strike:'struck', sting:'stung', cling:'clung', fling:'flung', swing:'swung',
   wring:'wrung', hang:'hung', dig:'dug', light:'lit', sell:'sold', tell:'told',
   foretell:'foretold', dwell:'dwelt', tread:'trod', build:'built', shoot:'shot',
-  weave:'wove', gird:'girded',
+  weave:'wove', gird:'girded', rid:'rid', undertake:'undertook', wreak:'wrought',
 };
 
 // Words that can follow "didst" without being its main verb — leave these for
@@ -44,6 +44,12 @@ function verbToPast(verb) {
   if (IRREGULAR_PAST[v] !== undefined) return IRREGULAR_PAST[v];
   if (/e$/.test(v))            return v + 'd';               // create→created
   if (/[^aeiou]y$/.test(v))    return v.slice(0, -1) + 'ied'; // glorify→glorified
+  // Final consonant doubles when the last syllable is stressed and ends
+  // vowel+consonant: monosyllables (bud→budded, stop→stopped) and the
+  // -fer/-mit/-pel/-cur/-bel/-cel classes (prefer→preferred, submit→submitted,
+  // expel→expelled). Without this "didst prefer" rendered "prefered".
+  if (/^[bcdfghjklmnpqrstvwxz]*[aeiou][bdgklmnprt]$/.test(v) && !/^(?:then|in|on|up|an|rid)$/.test(v)) return v + v.slice(-1) + 'ed';
+  if (/(?:fer|mit|pel|cur|bel|cel|trol|rol)$/.test(v) && !/^(?:offer|suffer|differ|enter|visit|limit|edit|inherit|exhibit|prohibit|merit|profit|benefit|vomit|cancel|travel|level|model|label|chapel|gospel|counsel|marvel)$/.test(v)) return v + v.slice(-1) + 'ed';
   return v + 'ed';                                            // descend→descended
 }
 
@@ -91,6 +97,15 @@ const YOU_YOUR_RULES = [
   // store wrote "thee and thine" and the render came back "you and your".
   [/\bThine\b(?=\s*(?:[,.;:!?)\/]|$))/g, 'Yours'],
   [/\bthine\b(?=\s*(?:[,.;:!?)\/]|$))/g, 'yours'],
+  // Generic "thou <verb>est" → "you <verb>": the subject pronoun pins the
+  // -est as a verb ending, not a superlative ("thou standest" vs "the greatest").
+  // Stems that need their silent e back are listed; the rest just drop -est.
+  [/\b([Tt]hou)\s+([A-Za-z]+?)est\b/g, (m, thou, stem) => {
+    const lower = stem.toLowerCase();
+    const E_STEMS = /^(?:interced|rejoic|com|becom|overcom|illumin|preserv|believ|receiv|lov|giv|forgiv|mak|tak|hid|rid|liv|serv|sav|prais|rais|deserv|observ|creat|abid|guid|provid|rul|mov|prov|desir|inspir|requir|acquir|admir|restor|adorn|assur|ensur|endur|cur|pur|declar|prepar|compar|shar|spar|car|dar|bar|nam|blam|sham|tam|fram|shin|din|refin|defin|combin|confin|entwin|unit|invit|writ|smit|delight)$/;
+    const base = /^delight$/.test(lower) ? lower : E_STEMS.test(lower) ? lower + 'e' : lower;
+    return `${thou === 'Thou' ? 'You' : 'you'} ${stem.charAt(0) === stem.charAt(0).toUpperCase() && stem !== lower ? base.charAt(0).toUpperCase() + base.slice(1) : base}`;
+  }],
   // Pronouns
   [/\bThou\b/g,    'You'],     [/\bthou\b/g,    'you'],
   [/\bThee\b/g,    'You'],     [/\bthee\b/g,    'you'],

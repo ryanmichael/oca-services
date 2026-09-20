@@ -20,6 +20,7 @@ const SOURCE_PRIORITY = {
   'oca-menaion':        1,   // OCA Menaion — primary
   'oca-feast':          1,   // OCA Great Feast — same tier
   'stSergius':          2,   // St. Sergius of Radonezh Cathedral
+  'raphaela':           2,   // Mother Raphaela Menaion (choir-site corpus, modern register stored as tt)
   'stSergius-general':  3,   // St. Sergius general menaion (fallback)
 };
 

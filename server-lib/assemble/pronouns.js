@@ -85,6 +85,12 @@ const YOU_YOUR_RULES = [
   // Trailing predicate: "…are Thine.", "…also is Thine;" — no following noun.
   [/\b(are|is|art|was|were)\s+Thine\b(?!\s+[a-z])/g, '$1 Yours'],
   [/\b(are|is|art|was|were)\s+thine\b(?!\s+[a-z])/g, '$1 yours'],
+  // Standalone before punctuation or end of text: "thee and thine,", "…is
+  // thine." — nothing follows for it to modify, so it is "yours". Seen on
+  // 9-20 Eustathius LIC 6 ("have now received you and yours") — the yy→tt
+  // store wrote "thee and thine" and the render came back "you and your".
+  [/\bThine\b(?=\s*(?:[,.;:!?)\/]|$))/g, 'Yours'],
+  [/\bthine\b(?=\s*(?:[,.;:!?)\/]|$))/g, 'yours'],
   // Pronouns
   [/\bThou\b/g,    'You'],     [/\bthou\b/g,    'you'],
   [/\bThee\b/g,    'You'],     [/\bthee\b/g,    'you'],

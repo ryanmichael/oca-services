@@ -457,7 +457,7 @@ async function loadPanelContent(date, svcType) {
     const html   = window.renderBlocks(data.blocks, { educationModules: eduModules });
     const bodyEl = document.getElementById('p-body');
     bodyEl.innerHTML = html;
-    bodyEl.scrollTop = 0;
+    resetPanelScroll();
   } catch (err) {
     console.error('Panel load error:', err);
     document.getElementById('p-body').innerHTML =
@@ -516,7 +516,7 @@ async function loadChoirContent(date) {
 }
 
 function closePanel(skipHistory = false) {
-  document.getElementById('panel').classList.remove('open', 'reading');
+  document.getElementById('panel').classList.remove('open');
   document.body.classList.remove('panel-open');
   if (!skipHistory) setUrlState(activeDate, null);
   if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
@@ -524,24 +524,15 @@ function closePanel(skipHistory = false) {
   activeSvcType = null;
 }
 
-// ─── Panel reading mode (phones) ─────────────────────────────────────────────
-// Once the reader scrolls down into the service text, fold the panel head to
-// its title line so the text gets the screen; scrolling up (or reaching the
-// top) restores it. Only main.css's ≤640px rules act on `.reading`, so on
-// desktop the class is inert.
+// ─── Panel scroll reset ───────────────────────────────────────────────────────
+// Desktop scrolls #p-body (head pinned above it); phones scroll .panel-scroll
+// (head flows away with the text). Zero both so a newly opened service always
+// starts at the top whichever one is live.
 
-function initPanelReadingMode() {
-  const panel = document.getElementById('panel');
-  const body  = document.getElementById('p-body');
-  let lastTop = 0;
-  body.addEventListener('scroll', () => {
-    const top = body.scrollTop;
-    const delta = top - lastTop;
-    lastTop = top;
-    if (top < 40) panel.classList.remove('reading');
-    else if (delta > 4) panel.classList.add('reading');
-    else if (delta < -12) panel.classList.remove('reading');
-  }, { passive: true });
+function resetPanelScroll() {
+  document.getElementById('p-body').scrollTop = 0;
+  const wrap = document.querySelector('.panel-scroll');
+  if (wrap) wrap.scrollTop = 0;
 }
 
 // ─── Panel detail toggle ──────────────────────────────────────────────────────
@@ -1000,7 +991,6 @@ async function pickResult(dateStr, svcType) {
 async function init() {
   // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
-  initPanelReadingMode();
   document.getElementById('btn-print').addEventListener('click', openPrintView);
   document.getElementById('print-back').addEventListener('click', closePrintView);
   document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
@@ -1262,7 +1252,7 @@ async function showPanikhidaPanel(opts, replace = false, skipHistory = false) {
     updateDetailLabel();
     const bodyEl = document.getElementById('p-body');
     bodyEl.innerHTML = window.renderBlocks(data.blocks, {});
-    bodyEl.scrollTop = 0;
+    resetPanelScroll();
   } catch (err) {
     console.error('Panikhida load error:', err);
     document.getElementById('p-body').innerHTML =
@@ -1700,7 +1690,7 @@ function renderChoirPanel() {
   const html = window.renderBlocks(allBlocks, { choirMode: true });
   const bodyEl = document.getElementById('p-body');
   bodyEl.innerHTML = html;
-  bodyEl.scrollTop = 0;
+  resetPanelScroll();
 }
 
 function printBooklet() {

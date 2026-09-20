@@ -57,6 +57,9 @@
     <!-- RIGHT PANEL -->
     <aside class="panel" id="panel">
       <div class="panel-inner">
+        <!-- .panel-scroll is display:contents on desktop (head pinned, body
+             scrolls) and the scroll container on phones (head flows away). -->
+        <div class="panel-scroll">
         <div class="panel-head">
           <div class="panel-top-row">
             <button class="btn-close" id="btn-close">✕</button>
@@ -105,6 +108,7 @@
         <div class="panel-body" id="p-body">
           <div class="panel-loading">Loading…</div>
         </div>
+        </div><!-- end .panel-scroll -->
       </div>
     </aside>
 

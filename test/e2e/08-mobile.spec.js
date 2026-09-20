@@ -27,43 +27,43 @@ test('phone: mobile rules apply, close is a 44px target, print is hidden', async
   expect(close.height).toBeGreaterThanOrEqual(44);
 
   // Reading text is scaled up for the phone, with a tighter leading than desktop.
-  await expect(page.locator('#p-body .prayer').first()).toHaveCSS('font-size', '19px');
+  await expect(page.locator('#p-body .prayer').first()).toHaveCSS('font-size', '22px');
 
   // No horizontal overflow anywhere in the open panel.
   const overflow = await page.evaluate(() => {
-    const b = document.getElementById('p-body');
+    const b = document.querySelector('.panel-scroll');
     return b.scrollWidth - b.clientWidth;
   });
   expect(overflow).toBe(0);
 });
 
-test('phone: scrolling into the text folds the panel head; scrolling up restores it', async ({ page }) => {
+test('phone: nothing is pinned — the head scrolls away, only the close button stays', async ({ page }) => {
   await page.goto('/');
   const firstRow = page.locator('.svc-row:not(.dimmed)').first();
   await expect(firstRow).toBeVisible({ timeout: 15_000 });
   await firstRow.click();
   await expect(page.locator('#p-body .prayer').first()).toBeVisible({ timeout: 15_000 });
 
-  const panel = page.locator('#panel');
-  const head  = page.locator('.panel-head');
-  const tall  = (await head.boundingBox()).height;
+  const title = page.locator('#p-svc');
+  await expect(title).toBeInViewport();
 
-  // Scroll down in steps so each scroll event carries a positive delta.
-  await page.evaluate(async () => {
-    const b = document.getElementById('p-body');
-    for (let i = 0; i < 10; i++) { b.scrollTop += 120; await new Promise(r => setTimeout(r, 30)); }
-  });
-  await expect(panel).toHaveClass(/reading/);
-  await expect(page.locator('#p-date')).toBeHidden();
-  const folded = (await head.boundingBox()).height;
-  expect(folded).toBeLessThan(tall / 2);
+  await page.evaluate(() => { document.querySelector('.panel-scroll').scrollTop = 1200; });
 
-  await page.evaluate(async () => {
-    const b = document.getElementById('p-body');
-    for (let i = 0; i < 3; i++) { b.scrollTop -= 40; await new Promise(r => setTimeout(r, 30)); }
-  });
-  await expect(panel).not.toHaveClass(/reading/);
-  await expect(page.locator('#p-date')).toBeVisible();
+  // The title (and with it the whole head) has left the screen…
+  await expect(title).not.toBeInViewport();
+  // …but the close button is still there, full size, and still closes.
+  const close = page.locator('#btn-close');
+  await expect(close).toBeInViewport();
+  const box = await close.boundingBox();
+  expect(box.width).toBeGreaterThanOrEqual(44);
+  expect(box.height).toBeGreaterThanOrEqual(44);
+  await close.click();
+  await expect(page.locator('#panel')).not.toHaveClass(/open/);
+
+  // Reopening a service starts back at the top, not at the old scroll offset.
+  await firstRow.click();
+  await expect(page.locator('#p-body .prayer').first()).toBeVisible({ timeout: 15_000 });
+  await expect(title).toBeInViewport();
 });
 
 test('phone: calendar close bar stays on screen below a full week list', async ({ page }) => {

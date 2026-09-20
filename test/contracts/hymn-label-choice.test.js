@@ -71,8 +71,8 @@ describe('Feature contract: hymn label choice (row label vs slot label)', () => 
     const hs = hymnsIn(json.blocks, /Lord, I/);
 
     // Anchor on the TEXT so the assertion cannot pass on a relabelled wrong hymn.
-    const forerunner = hs.find(b => /Incited by her iniquitous mother/.test(b.text || ''));
-    const hierarch   = hs.find(b => /O all-blessed Alexander/.test(b.text || ''));
+    const forerunner = hs.find(b => /Incited by her (?:iniquitous|evil) mother/.test(b.text || ''));
+    const hierarch   = hs.find(b => /(?:O all-blessed|Most blessed) Alexander/.test(b.text || ''));
     assert.ok(forerunner, 'expected the Forerunner sticheron "Incited by her iniquitous mother"');
     assert.ok(hierarch,   'expected the hierarch sticheron "O all-blessed Alexander"');
 
@@ -88,7 +88,7 @@ describe('Feature contract: hymn label choice (row label vs slot label)', () => 
     // The order appoints "Glory... Forerunner, Tone 4" on the Aposticha.
     const { json } = await get(`/api/service?date=2026-08-29&translation=${TYLER}`);
     const glory = hymnsIn(json.blocks, /Aposticha/)
-      .find(b => /Herod celebrated an unseemly birthday/.test(b.text || ''));
+      .find(b => /Herod celebrated an (?:unseemly|unfitting) birthday/.test(b.text || ''));
     assert.ok(glory, 'expected the Aposticha Glory "Herod celebrated an unseemly birthday"');
     assert.match(glory.label || '', /forerunner/i,
       `expected a Forerunner label on the Aposticha Glory; got: ${glory.label}`);

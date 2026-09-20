@@ -78,7 +78,10 @@ describe('Feature contract: weekday Aposticha "Now and ever"', () => {
     // the radiance of Thy divinity..."
     const now = await apostichaNow('2026-08-11');
     assert.ok(now, 'expected an Aposticha Now-and-ever hymn');
-    assert.match(now.text || '', /Disclosing a little of the radiance/,
+    // Same hymn in two translations: St Sergius "Disclosing a little of the
+    // radiance of Thy divinity", Raphaela "Christ, robed in the radiance of
+    // Divinity" (row 10800, replaced 2026-09-20).
+    assert.match(now.text || '', /Disclosing a little of the radiance|robed in the radiance of Divinity/,
       `expected the feast Both-now; got: ${(now.text || '').slice(0, 70)}`);
     assert.equal(now.tone, 5, `expected Tone 5; got ${now.tone}`);
   });

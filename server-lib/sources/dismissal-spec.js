@@ -51,11 +51,31 @@ function buildDismissalSpec(calendarEntry, opts = {}) {
     // When a festal introit names the feast, drop the feast from the saints
     // list — otherwise it is announced twice. Mirrors the Liturgy dismissal,
     // which skips feasts[0] for the same reason.
-    saints: (calendarEntry.commemorations || [])
-      .slice(introit ? 1 : 0)
-      .slice(0, 3)
-      .map(c => c.title),
+    //
+    saints: dismissalSaints(calendarEntry.commemorations || [], introit)
+      .map(c => dismissalName(c.title)),
   };
+}
+
+// The first three commemorations, in calendar order — but never without the
+// principal. DB order is not rank: 9-24 lists the Synaxis of Alaska and two of
+// its saints before Protomartyr Thecla, whose Vespers it is, and the cap of 3
+// cut her from her own dismissal. She leads only when the cap would have cut
+// her; a principal already inside the cap keeps its place, so a moveable feast
+// listed first (5-6 Midfeast before Righteous Job) still leads. Found
+// 2026-09-23.
+function dismissalSaints(comms, introit) {
+  const list = comms.slice(introit ? 1 : 0);
+  const top  = list.slice(0, 3);
+  const principal = list.find(c => c.isPrincipal);
+  if (!principal || top.includes(principal)) return top;
+  return [principal, ...top.slice(0, 2)];
+}
+
+// "…of Synaxis of All Saints of Alaska" is not English; the formula already
+// supplies the "of". Drop the "Synaxis of" head: "of All Saints of Alaska".
+function dismissalName(title) {
+  return String(title || '').replace(/^Synaxis of\s+/i, '');
 }
 
 module.exports = { buildDismissalSpec };

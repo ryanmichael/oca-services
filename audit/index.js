@@ -96,7 +96,15 @@ async function fetchAssembled(httpBase, service, date) {
     const r = await fetch(`${httpBase}/api/${endpoint}?date=${date}`);
     if (!r.ok) return null;
     return await r.json();
-  } catch (_) { return null; }
+  } catch (err) {
+    // An unreachable server is not "not served on this date". Swallowing it
+    // printed a clean 0/0/0 report for 9-23 Vespers with nothing checked
+    // (no server on :3000). Found 2026-09-23.
+    if (err?.cause?.code === 'ECONNREFUSED' || /fetch failed/i.test(err?.message || '')) {
+      throw new Error(`audit: cannot reach ${httpBase} — start the server (node server.js) before a --print/--http audit`);
+    }
+    return null;
+  }
 }
 
 function loadAllowlist() {

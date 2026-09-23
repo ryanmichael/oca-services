@@ -64,7 +64,14 @@ module.exports = {
     );
     if (!assembledOcto.length) return [];
 
-    const stray = assembledOcto.filter(b => !expected.has(norm(b.text)));
+    // The Now-and-ever Theotokion follows the tone of the Menaion Glory, not
+    // the week (for-date.js, 2026-09-23), so a block at another tone is checked
+    // against THAT tone's Theotokion — on the same sung-evening day, which is
+    // the axis this rule exists to guard.
+    const theotokionAt = (tone) => norm(octoechos?.[`tone${tone}`]?.[sungEve]?.vespers?.lordICall?.theotokion?.text);
+    const stray = assembledOcto.filter(b =>
+      !expected.has(norm(b.text)) &&
+      !(b.tone && b.tone !== ctx.tone && norm(b.text) === theotokionAt(b.tone)));
     if (!stray.length) return [];
     return [{
       message: `${stray.length}/${assembledOcto.length} Octoechos LIC hymn(s) not found in source ${tk}.${sungEve}.vespers.lordICall — lookup axis may be wrong`,

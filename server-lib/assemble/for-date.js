@@ -473,14 +473,32 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // the Octoechos LIC weekday Theotokion (sung-eve-keyed, week tone)
           // so the Glory/Now split renders correctly. Without this, every
           // weekday-saint Vespers collapses Glory+Now and drops the Theotokion.
+          //
+          // The Theotokion follows the tone of the Glory, not the week — the
+          // same Slavic rubric the Aposticha branch below already applies.
+          // 9-24 (Thecla, Tone 6 Glory, week Tone 7) sang a Tone 7 Now here and
+          // a Tone 6 Now at the Aposticha of the same service. Mirrors that
+          // branch: the Menaion's own order=-1 Theotokion first (a
+          // Stavrotheotokion only on liturgical Wed/Fri), else the Octoechos
+          // weekday Theotokion at the Glory tone (all 8×7 keys exist). Found
+          // 2026-09-23.
           if (!lic.now && isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
-            const weekTone = calendarEntry.liturgicalContext?.tone;
-            const eve      = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
-            if (weekTone && eve) {
+            const nowTone = licGlory.tone || calendarEntry.liturgicalContext?.tone;
+            const eve     = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
+            const dow      = calendarEntry.dayOfWeek;
+            const crossDay = dow === 'wednesday' || dow === 'friday';
+            const licNowOwn = sticheraData?.[0]?.stichera.find(
+              s => s.section === 'lordICall' && s.order === -1
+                && (crossDay || s.groupRole !== 'stavrotheotokion')
+            );
+            if (licNowOwn) {
+              lic.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.now`, tone: licNowOwn.tone, label: 'Theotokion' };
+              autoSlot.lordICall.now = { text: licNowOwn.text, tone: licNowOwn.tone, label: licNowOwn.label };
+            } else if (nowTone && eve) {
               lic.now = {
                 source: 'octoechos',
-                key:    `tone${weekTone}.${eve}.vespers.lordICall.theotokion`,
-                tone:   weekTone,
+                key:    `tone${nowTone}.${eve}.vespers.lordICall.theotokion`,
+                tone:   nowTone,
                 label:  'Theotokion',
               };
             }

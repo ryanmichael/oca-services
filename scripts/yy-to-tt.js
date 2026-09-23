@@ -345,8 +345,9 @@ function transformPastTense(text) {
 // This pass rewrites those.
 function transformThouAsObject(text) {
   // After prepositions
+  // Not before a 2nd-person verb: "before thou wast formed" is a conjunction.
   const prepRe = new RegExp(
-    `\\b(${OBJECT_PRECEDERS.join('|')})\\s+(Thou|thou)\\b`,
+    `\\b(${OBJECT_PRECEDERS.join('|')})\\s+(Thou|thou)\\b(?!\\s+(?:art|wast|wert|must|\\w+e?st)\\b)`,
     'g'
   );
   text = text.replace(prepRe, (m, prep, p) => `${prep} ${p[0] === p[0].toLowerCase() ? 'thee' : 'Thee'}`);
@@ -490,10 +491,41 @@ function transformPresentTenseEst(text) {
   });
 }
 
+// Runs BEFORE the subject rules. "in you do we hope" is an object after a
+// preposition, but "you do" alone reads as a subject, so the phrase rules
+// turned it into "in thee dost we hope" (≈20 rows). Same for a sentence-initial
+// preposition ("In you the image was preserved" → "In thou") and "of", which
+// the list lacked ("born of thou"). "all you" / "all of you" are plural
+// addresses inside an otherwise singular hymn ("Come, all you people") and
+// take ye / you, never thou. Found 2026-09-23.
+const PLURAL_YOU = '\uE000';
+function transformPrepositionObject(text) {
+  // "all of you" stays plural whatever follows ("all of you were found
+  // worthy"): park it behind a sentinel the later passes can't see.
+  text = text.replace(/\b(all\s+of)\s+you\b/gi, (m, allOf) => `${allOf} ${PLURAL_YOU}`);
+  // "it glorifies you" — these present-tense verbs always govern an object.
+  // A closed list: a bare -ies/-es suffix also matches nouns ("within its
+  // boundaries you shone", "the trophies you have won").
+  text = text.replace(/\b(glorifies|magnifies|sanctifies|praises|blesses|honors|hails|calls|call|summons)\s+(You|you)\b/g,
+    (m, verb, you) => `${verb} ${you[0] === 'y' ? 'thee' : 'Thee'}`);
+  text = text.replace(/\b(all)\s+you\b(?!\s+(?:have|are|were|will|shall|do|did|can|may|must|would|should|could|had|might)\b)/gi,
+    (m, all) => `${all} ye`);
+  const preps = [...OBJECT_PRECEDERS, 'of'];
+  // Not when a finite verb follows: then "before/after" is a conjunction and
+  // "you" the subject ("before you were formed"). "do/did we" stays an object
+  // ("in you do we hope").
+  const prepRe = new RegExp(`\\b(${preps.join('|')})\\s+(You|you)\\b` +
+    `(?!\\s+(?:were|are|have|had|will|shall|can|may|must|would|should|could|might)\\b)` +
+    `(?!\\s+(?:do|did)\\b(?!\\s+(?:we|I|they)\\b))`, 'gi');
+  return text.replace(prepRe, (m, prep, you) => {
+    return `${prep} ${you[0] === you[0].toLowerCase() ? 'thee' : 'Thee'}`;
+  });
+}
+
 function transform(text) {
   if (isPluralAddress(text)) return text; // plural address — leave you/your/are
 
-  let out = text;
+  let out = transformPrepositionObject(text);
   // Phrase rules with optional adverb first — they catch "you alone are"
   for (const [re, rep] of PHRASE_RULES_WITH_ADV) out = out.replace(re, rep);
   // Then the legacy bare phrase rules (kept for unintervening cases)
@@ -505,7 +537,7 @@ function transform(text) {
   out = transformBareYou(out);
   out = transformThouAsObject(out);
   out = transformPresentTenseEst(out);
-  return out;
+  return out.split(PLURAL_YOU).join('you');
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────────────

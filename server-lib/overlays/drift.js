@@ -675,6 +675,29 @@ function validateTropariaTransformIntegrity() {
       warnings += 1;
     }
 
+    // Subject "thou" where the object is required: after a preposition
+    // (sentence-initial "In thou", "born of thou"), after an object-taking verb
+    // ("glorifies thou", "call thou"), "dost we", and singular "all thou" for
+    // plural "all ye". ~160 rows sat in prod while this rule said clean: the
+    // imperative list above was its only object check. Fixed in yy-to-tt.js
+    // 2026-09-23. Covers the stichera too — the Raphaela batch runs the same
+    // transform ("love of Thou" sang at 9-24 Vespers).
+    const THOU_AS_OBJECT = /\b(?:in|of|to|unto|with|through|from|upon|before|glorifies|honors|praises|magnifies|call|calls)\s+thou\b|\bdost\s+we\b|\ball\s+(?:of\s+)?thou\b/i;
+    for (const table of ['troparia', 'stichera']) {
+      for (const r of db.prepare(`SELECT id, commemoration_id, text FROM ${table} WHERE text LIKE '%thou%' OR text LIKE '%dost we%'`).all()) {
+        const m = (r.text || '').replace(/\s+/g, ' ').match(THOU_AS_OBJECT);
+        // "before thou wast", "before thou knewest" — a finite 2nd-person verb
+        // after makes "before" a conjunction and "thou" the subject.
+        if (!m || /^\s*(?:art|wast|wert|must|\w+e?st)\b/i
+          .test(r.text.replace(/\s+/g, ' ').slice(m.index + m[0].length))) continue;
+        console.warn(
+          `${table === 'troparia' ? 'Troparion' : 'Sticheron'} ${r.id} (comm=${r.commemoration_id}) has "${m[0]}" — subject "thou" where the object "thee" (or plural "ye") is required. ` +
+          `Likely yy→tt transformer breakage — see transformPrepositionObject in scripts/yy-to-tt.js.`
+        );
+        warnings += 1;
+      }
+    }
+
     if (warnings === 0) console.log('Troparia transformer integrity: clean.');
     return { ok: warnings === 0, warnings };
   } finally {
@@ -834,8 +857,12 @@ function stripDiacritics(s) {
 // commemoration's OWN saint isn't mistaken for a sibling: "Demetrius" (hymns)
 // and "Demetrios" (title) both stem to "demetr". Words shorter than 6 chars
 // stem to themselves.
+// k→c folds transliteration variants onto one stem: the 9-24 title spells
+// "Thekla" while every sticheron says "Thecla", so 9 Thecla stichera keyed onto
+// the Synaxis of Alaska Saints (1969) never matched their sibling and sang in
+// prod under the wrong heading. Found 2026-09-23.
 function nameStem(w) {
-  const s = stripDiacritics(w || '').toLowerCase();
+  const s = stripDiacritics(w || '').toLowerCase().replace(/k/g, 'c');
   return s.length >= 6 ? s.slice(0, 6) : s;
 }
 function titleStems(title) {
@@ -882,6 +909,10 @@ const KNOWN_STICHERA_MISKEYS = new Set([
   1339, // Finding of relics of Maximus the Greek ← Burial of Prince Andrew aposticha (→1343)
   1802, // Gorazd of Prague ← Hieromartyr Babylas of Antioch aposticha (→1803)
   2273, // Seraphim (Samoilovich) of Uglich ← Joannicius the Great aposticha (→2274)
+  // Surfaced 2026-09-23 once name stems fold k→c and the sibling check went
+  // per-source (9-24 Thecla fix). Queued on the same terms — verify first.
+  2219, // Stephen the Hymnographer ← Greatmartyr Paraskevi of Iconium (→2221)
+  2443, // Sebastian Dabovich ← Apostle Andrew lordICall (→2444)
 ]);
 
 // Data-drift guard: a commemoration whose stichera repeatedly name a proper
@@ -930,11 +961,18 @@ function validateSticheraCommemorationMismatch() {
     // the first name merely collides with an unrelated same-name sibling that
     // still has its own stichera (e.g. Jan 1 Circumcision's St. Basil-the-Great
     // aposticha vs sibling "Martyr Basil of Ancyra").
-    const sectionCount = new Map(); // `${commId}::${section}` -> n
-    const totalCount   = new Map(); // commId -> n
-    for (const r of db.prepare('SELECT commemoration_id AS id, section, COUNT(*) n FROM stichera GROUP BY commemoration_id, section').all()) {
-      sectionCount.set(`${r.id}::${r.section || 'lordICall'}`, r.n);
-      totalCount.set(r.id, (totalCount.get(r.id) || 0) + r.n);
+    //
+    // Counted PER SOURCE: a scraper mis-key happens inside one source's scrape,
+    // so the sibling is "missing" when it has none of the bled rows' sources,
+    // even if another translation filled it. 9-24 Thecla: her stSergius set was
+    // keyed onto the Synaxis of Alaska (1969) while a Lambertsen set sat on her
+    // own row (1972), and the un-sourced count read that as "sibling not
+    // missing". Found 2026-09-23.
+    const sectionCount = new Map(); // `${commId}::${section}::${source}` -> n
+    const totalCount   = new Map(); // `${commId}::${source}` -> n
+    for (const r of db.prepare('SELECT commemoration_id AS id, section, source, COUNT(*) n FROM stichera GROUP BY commemoration_id, section, source').all()) {
+      sectionCount.set(`${r.id}::${r.section || 'lordICall'}::${r.source}`, r.n);
+      totalCount.set(`${r.id}::${r.source}`, (totalCount.get(`${r.id}::${r.source}`) || 0) + r.n);
     }
 
     // Detect the majority subject-noun of a set of stichera whose stem matches a
@@ -972,7 +1010,9 @@ function validateSticheraCommemorationMismatch() {
     for (const c of siblings) {
       if (KNOWN_STICHERA_MISKEYS.has(c.id)) continue; // documented backlog — queued
       const stichera = db.prepare(
-        'SELECT section, text FROM stichera WHERE commemoration_id = ?'
+        // Stavrotheotokia address the Theotokos, never the saint, so they only
+        // dilute the subject majority (9-24: 5/9 → 5/7 once the two are out).
+        "SELECT section, source, text FROM stichera WHERE commemoration_id = ? AND COALESCE(group_role, '') <> 'stavrotheotokion'"
       ).all(c.id);
       if (stichera.length < 2) continue; // need a set to establish a subject
 
@@ -1010,9 +1050,10 @@ function validateSticheraCommemorationMismatch() {
         // location — its hymns landed on this neighbor. Whole-comm pass: the
         // sibling has none at all; per-section pass: the sibling has none in
         // that section.
+        const srcs = [...new Set(rows.map(r => r.source))];
         const siblingMissing = sec === '(all)'
-          ? !(totalCount.get(hit.match.id) > 0)
-          : !(sectionCount.get(`${hit.match.id}::${sec}`) > 0);
+          ? !srcs.some(src => totalCount.get(`${hit.match.id}::${src}`) > 0)
+          : !srcs.some(src => sectionCount.get(`${hit.match.id}::${sec}::${src}`) > 0);
         if (siblingMissing) {
           console.warn(
             `Stichera under commemoration ${c.id} "${c.title}" (${c.month}-${c.day}) ` +
@@ -1068,6 +1109,7 @@ const PODOBEN_MARKERS = [
 // scoped to the 8-08/8-09 weekend. Queued, not silenced — remove an entry as it
 // is fixed. Tracked in project_session_handoff_2026_08_07.md.
 const KNOWN_LABEL_MISKEYS = new Set([
+  2400, // 11-24 Afterfeast of the Entry   ← "(for St. Catherine)" x6 -> Catherine has no row of her own (2405 is her companions); surfaced by the k→c stem fold 2026-09-23
   1,    // 1-1   Circumcision of the Lord     ← "(St. Basil)" x2 -> 3
   17,   // 1-4   Synaxis of the Seventy       ← "(for Ven. Theoctistus)" x3 -> 19
   63,   // 1-10  (9-13 sibling)               ← "(Sts. Gregory and Dometian)" -> 65

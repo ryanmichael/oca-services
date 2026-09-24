@@ -5,7 +5,7 @@
 // calendar entry's slots are generic, and hands off to assembleVespers.
 
 const { assembleVespers } = require('../../assembler');
-const { calculatePascha, fixedFeastDate, VESPERS_SUNG_EVE } = require('../../calendar-rules');
+const { calculatePascha, fixedFeastDate, getFeastRank, VESPERS_SUNG_EVE } = require('../../calendar-rules');
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
@@ -563,8 +563,25 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         }
       }
 
-      // General Menaion aposticha fallback when day-specific aposticha is missing
-      if (apostStichera.length === 0 && !apostGlory && primary?.saint_type) {
+      // General Menaion aposticha fallback when day-specific aposticha is missing.
+      // Not when the day has a proper service of its own: a Menaion service that
+      // prints no Aposticha simply has none — the OCA order for 9-27 reads
+      // "Glory… now and ever… Resurrectional Aposticha Theotokion", and we sang a
+      // generic "O come all ye lovers of the Martyrs… Callistratus" there. A saint
+      // with no service at all already gets the whole General Menaion above.
+      // Found 2026-09-24 against the Tyler 09.26.26 Great Vespers packet.
+      //
+      // Only a SIX-STICHERA service goes without: a polyeleos or vigil saint's
+      // service does carry its own Aposticha Glory (1-11 "Glory… Ven. Theodosius,
+      // Tone 8"), and until that text is in the DB the category stand-in is
+      // closer than nothing.
+      const dayHasOwnService = (sticheraData?.[0]?.stichera || [])
+        .some(s => s.dbSource && s.dbSource !== 'stSergius-general');
+      const [ry, rm, rd] = date.split('-').map(Number);
+      const dayRank = getFeastRank(new Date(Date.UTC(ry, rm - 1, rd)), style);
+      const serviceHasOwnAposticha = dayRank === 'polyeleos' || dayRank === 'vigil';
+      if (apostStichera.length === 0 && !apostGlory && primary?.saint_type
+          && (!dayHasOwnService || serviceHasOwnAposticha)) {
         const gmTexts = getGeneralMenaionTexts(primary.saint_type, primary.title);
         if (gmTexts) {
           const gmApost = gmTexts.filter(r => r.section === 'aposticha' && r.order >= 1).slice(0, 3);

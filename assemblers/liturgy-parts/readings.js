@@ -42,7 +42,7 @@ function _litProkeimenon(prok) {
   if (!prok) return [];
   const blocks = [
     makeBlock('prok-rubric', section, 'prayer', 'deacon',
-      `The prokeimenon in Tone ${prok.tone}: ${prok.label || ''}`),
+      (prok.label ? `The prokeimenon in Tone ${prok.tone}: ${prok.label}` : `The prokeimenon in Tone ${prok.tone}.`)),
     makeBlock('prok-refrain',  section, 'hymn',  'choir',  prok.refrain, { tone: prok.tone }),
     makeBlock('prok-verse',    section, 'verse',  'reader', `V. ${prok.verse}`),
     makeBlock('prok-refrain2', section, 'hymn',  'choir',  prok.refrain, { tone: prok.tone }),
@@ -107,7 +107,7 @@ function _litAlleluia(alleluia, f) {
   const r = readingsStrings(f);
   const blocks = [
     makeBlock('all-rubric', section, 'rubric', null,
-      `Alleluia in Tone ${alleluia.tone}: ${alleluia.label || ''}`),
+      (alleluia.label ? `Alleluia in Tone ${alleluia.tone}: ${alleluia.label}` : `Alleluia in Tone ${alleluia.tone}.`)),
     makeBlock('all-text',   section, 'hymn',  'choir', r.alleluiaThrice,
       { tone: alleluia.tone }),
   ];

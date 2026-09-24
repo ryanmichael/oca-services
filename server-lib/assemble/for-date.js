@@ -173,9 +173,19 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       combined.push(...principalAposticha);
       sticheraData = [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: combined }];
     } else if (pickerSwappedAway) {
+      // A principal with no stichera of its own AND no General-Menaion category
+      // used to leave Lord-I-Call verses 3-1 bare with no Glory or Now. Keep the
+      // day's stichera commemoration as the donor instead — its own hymns,
+      // under its own name (sticheraLabel below). 9-24: the Synaxis of Alaska
+      // leads (PRINCIPAL_OVERRIDES) but has no stichera yet; Thecla's are sung,
+      // which the OCA order permits ("sung whenever the Superior wishes").
+      // Found 2026-09-23.
       sticheraData = primary.hasStichera
         ? [{ id: primary.id, title: primary.title, rank: primary.rank, stichera: primary.stichera }]
-        : null;
+        : (!primary.saint_type && ranked?.sticheraComm)
+          ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
+               rank: ranked.sticheraComm.rank, stichera: ranked.sticheraComm.stichera }]
+          : null;
     } else {
       sticheraData = ranked?.sticheraComm
         ? [{ id: ranked.sticheraComm.id, title: ranked.sticheraComm.title,
@@ -192,6 +202,9 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           rank: primary.rank, stichera: gmTexts }];
       }
     }
+
+    // Whose stichera these are — the principal's, except for the donor case above.
+    const sticheraLabel = sticheraData?.[0]?.title ?? primary?.title;
 
     if (primary) {
       const troparion = primary.troparia.find(t => t.type === 'troparion');
@@ -379,7 +392,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
-            label:  primary.title,
+            label:  sticheraLabel,
           });
         } else if (isVigilFeast && licStichera.length < 8) {
           // All-Night Vigil: unique hymns repeat to fill 8 slots (e.g. 4 unique × 2)
@@ -391,7 +404,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
-            label:  primary.title,
+            label:  sticheraLabel,
           }];
           // Build hymns array with repeats to fill totalSlots.
           //
@@ -438,7 +451,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
-            label:  primary.title,
+            label:  sticheraLabel,
           });
         } else {
           // Great Vespers or Vigil with ≥8 unique stichera — all Menaion
@@ -451,7 +464,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source: 'menaion', provenance: menaionProvenance,
             key:    `auto.${date}.lordICall`,
             tone:   licStichera[0].tone,
-            label:  primary.title,
+            label:  sticheraLabel,
           }];
         }
 
@@ -515,7 +528,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           if (!lic.now && lic.glory?.combinesGloryNow && lic.glory.source === 'octoechos') {
             lic.now = { ...lic.glory, combinesGloryNow: false };
           }
-          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: primary.title, combinesGloryNow: !lic.now };
+          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: sticheraLabel, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
       }
@@ -591,7 +604,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source:   'menaion', provenance: menaionProvenance,
             key:      `auto.${date}.aposticha.hymns.${i}`,
             tone:     s.tone,
-            label:    primary.title,
+            label:    sticheraLabel,
             ...(i >= 1 && feastVerses?.[i - 1] ? { verse: feastVerses[i - 1] } : {}),
           }));
           // Add repeatPrevious placeholders only when fewer than 3 stichera are available
@@ -611,7 +624,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         );
 
         if (apostGlory && !triodionOwnsGlory) {
-          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: primary.title, combinesGloryNow: isGreatFeast };
+          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: sticheraLabel, combinesGloryNow: isGreatFeast };
           // Saturday: set the saint's own Theotokion (menaion order=-1) if present
           //   — that's the "Now and ever" of the feast, distinct from the
           //   Octoechos resurrectional Theotokion of the week. NA Saints
@@ -725,7 +738,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             source:   'menaion', provenance: menaionProvenance,
             key:      `auto.${date}.litya.hymns.${i}`,
             tone:     s.tone,
-            label:    primary.title,
+            label:    sticheraLabel,
           }));
 
           autoSlot.litya = {
@@ -733,11 +746,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           };
 
           if (lityaGlory) {
-            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: primary.title };
+            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: sticheraLabel };
             autoSlot.litya.glory = { text: lityaGlory.text, tone: lityaGlory.tone, label: lityaGlory.label };
           }
           if (lityaNow) {
-            litya.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.now`, tone: lityaNow.tone, label: primary.title };
+            litya.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.now`, tone: lityaNow.tone, label: sticheraLabel };
             autoSlot.litya.now = { text: lityaNow.text, tone: lityaNow.tone, label: lityaNow.label };
           }
         }

@@ -350,6 +350,14 @@ const PRINCIPAL_OVERRIDES = new Map([
   // Those need the feast-plus-saint blend that 8-9 required, not a one-line map
   // entry.
   ['1-11', 'Theodosius the Great'],
+  // Sep 24: Synaxis of All Saints of Alaska over Protomartyr Thecla. The OCA
+  // order (reference/orders/2023-0924-order-services.txt) makes the New Martyrs
+  // of Alaska principal and brackets Thecla "sung whenever the Superior
+  // wishes"; Tyler sings Alaska first (confirmed by Ryan, 2026-09-23). The
+  // picker had only chosen the Synaxis because Thecla's stichera were mis-keyed
+  // onto it; re-keying them (435d4cb) handed Thecla the day. The Synaxis still
+  // has no stichera of its own — those await the parish booklet.
+  ['9-24', 'Synaxis of All Saints of Alaska'],
 ]);
 
 // If the date has a curated override and a matching commemoration exists in the

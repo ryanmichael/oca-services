@@ -469,6 +469,7 @@ function transformYoursSelf(text) {
 const PRESENT_VERB_EST = {
   // ending → just append 'est'
   grant: 'grantest', avert: 'avertest', show: 'showest', entreat: 'entreatest',
+  pray: 'prayest', intercede: 'intercedest',
   deliver: 'deliverest', defend: 'defendest', protect: 'protectest',
   guard: 'guardest', heal: 'healest', save: 'savest', hear: 'hearest',
   see: 'seest', know: 'knowest', love: 'lovest', work: 'workest',

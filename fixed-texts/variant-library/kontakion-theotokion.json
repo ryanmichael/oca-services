@@ -32,6 +32,20 @@
    },
    "_note": "The engraved sheet is set in the modern register; the choir director hand-corrects it to thee/thy on the copy in use (\"your\"→\"thy\", \"you\"→\"thee\"). Stored here in that traditional register to match the rest of the parish stack. One departure from the marked-up sheet: the engraving's \"for thou always protect\" is stored as \"protectest\", the grammatical tt form — the sheet keeps \"protect\" only because the underlay is fixed to the existing note values, which does not constrain a text layer.",
    "value": "Steadfast Protectress of Christians, Constant Advocate before the Creator; despise not the cries of us sinners, but in thy goodness come speedily to help us who call on thee in faith. Hasten to hear our petition and to intercede for us, O Theotokos, for thou always protectest those who honor thee!"
+  },
+  {
+   "id": "steadfast-protectress-as-sung",
+   "label": "OCA choral edition, as sung (\"…for thou always protect\")",
+   "_provenance": {
+    "origin": "choir-correction",
+    "parish_id": "st-john-damascus-tyler",
+    "contributor": "choir director",
+    "date": "2026-09-24",
+    "source_citation": "Parish Divine Liturgy packet 09.27.26, 'Steadfast Protectress — Kontakion Tone 6', Russian Imperial Court Chant arr. L'vov/Bakhmetev, © 2002 OCA, hand-corrected to thee/thy (docs/9-26 and 9-27 and 10.1/)",
+    "supersedes": "steadfast-protectress"
+   },
+   "_note": "Identical to steadfast-protectress except the last clause keeps the sheet's \"for thou always protect\" as the choir sings it (the underlay is fixed to the note values). The parish chose the sung form on 2026-09-24, reversing the 2026-09-05 choice of the grammatical \"protectest\".",
+   "value": "Steadfast Protectress of Christians, Constant Advocate before the Creator; despise not the cries of us sinners, but in thy goodness come speedily to help us who call on thee in faith. Hasten to hear our petition and to intercede for us, O Theotokos, for thou always protect those who honor thee!"
   }
  ]
 }

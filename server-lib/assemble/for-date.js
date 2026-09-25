@@ -20,6 +20,8 @@ const { buildDbSource }                           = require('../sources/db-sourc
 const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS, MENAION_APOSTICHA_VERSES } = require('../sources/propers');
 const LIC_REPEAT_PATTERNS = require('../../variable-sources/lic-repeat-patterns.json');
 const { buildDismissalSpec }                      = require('../sources/dismissal-spec');
+const { serviceSetFor }                           = require('../sources/calendar');
+const { applyServiceSet }                         = require('./service-set');
 
 const { applyYouYour } = require('./pronouns');
 
@@ -864,6 +866,15 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           tone:     gloryTone,
           label:    gloryLabel,
         });
+      }
+
+      // A parish's named service set replaces the day's LIC / Aposticha /
+      // Troparia wholesale (Tyler's Daily Vespers of the Protection). See
+      // server-lib/assemble/service-set.js.
+      const serviceSet = serviceSetFor(date, style, opts.rubrics);
+      if (serviceSet) {
+        applyServiceSet(serviceSet, calendarEntry.vespers, autoSlot, ranked?.all, date,
+          MENAION_APOSTICHA_VERSES[`${mm}-${dd}`]?.apostichaVerses ?? null);
       }
 
       // Populate all notable saints (those with troparia, in OCA priority order)

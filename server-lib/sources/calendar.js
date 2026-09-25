@@ -21,7 +21,8 @@ function getCalendarEntry(dateStr, style = 'new', opts = {}) {
   const calPath     = path.join(ROOT, 'variable-sources', 'calendar', `${dateStr}.json`);
   const handAuthored = fs.existsSync(calPath) ? loadJSON(`variable-sources/calendar/${dateStr}.json`) : null;
 
-  const generated = generateCalendarEntry(dateStr, style);
+  const generated = generateCalendarEntry(dateStr, style,
+    { skipVigil: serviceSetFor(dateStr, style, opts.rubrics)?.serviceType === 'dailyVespers' });
 
   if (generated && handAuthored) {
     // Merge: auto-generated base + hand-authored liturgy (and commemorations if present)
@@ -31,6 +32,32 @@ function getCalendarEntry(dateStr, style = 'new', opts = {}) {
   }
 
   return applyLityaPolicy(generated ?? handAuthored, dateStr, style, opts.rubrics);
+}
+
+/**
+ * The parish's named service set for this date, if it picked one:
+ * rubrics.menaionServiceSet {"M-D": "<set>"} resolved against
+ * variable-sources/menaion-service-sets.json. A set with serviceType
+ * 'dailyVespers' makes a vigil-rank feast render as Daily Vespers for that
+ * parish only (Tyler serves the Protection so — 10.01.26 packet); for-date.js
+ * then fills the set's hymns. Unknown names warn and fall back to the default.
+ */
+let _serviceSets = null;
+function serviceSetFor(dateStr, style, rubrics) {
+  const picks = rubrics?.menaionServiceSet;
+  if (!picks) return null;
+  const { fixedFeastDate } = require('../../calendar-rules');
+  const adj = fixedFeastDate(new Date(`${dateStr}T00:00:00Z`), style);
+  const md  = `${adj.getUTCMonth() + 1}-${adj.getUTCDate()}`;
+  const name = picks[md];
+  if (!name) return null;
+  _serviceSets ??= loadJSON('variable-sources/menaion-service-sets.json');
+  const set = _serviceSets[md]?.sets?.[name];
+  if (!set) {
+    console.warn(`menaionServiceSet: unknown set '${name}' for ${md}; using the default service`);
+    return null;
+  }
+  return { name, md, ...set };
 }
 
 /**
@@ -85,4 +112,4 @@ function getNextDateStr(dateStr) {
 }
 
 module.exports = {
-  applyLityaPolicy, getCalendarEntry, getNextDateStr };
+  applyLityaPolicy, getCalendarEntry, getNextDateStr, serviceSetFor };

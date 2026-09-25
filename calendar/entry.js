@@ -122,16 +122,22 @@ const { generatePentecostarionDay } = require('./generators/pentecostarion');
  * @param {string} dateStr  "YYYY-MM-DD"
  * @returns {Object|null}
  */
-function generateCalendarEntry(dateStr, style = 'new') {
+// opts.skipVigil: build the ordinary day's entry even on a vigil-rank saint's
+// day — a parish that serves that feast as Daily Vespers (see
+// server-lib/sources/calendar.js applyServiceSet). The saint's rank itself is
+// untouched; this only chooses which service is generated.
+function generateCalendarEntry(dateStr, style = 'new', opts = {}) {
   const [y0, m0, d0] = dateStr.split('-').map(Number);
+  // A Daily Vespers has no Old Testament lessons, whatever the saint's rank.
+  if (opts.skipVigil) return dispatchCalendarEntry(dateStr, style, opts);
   return attachPolyeleosParemias(
-    dispatchCalendarEntry(dateStr, style),
+    dispatchCalendarEntry(dateStr, style, opts),
     new Date(Date.UTC(y0, m0 - 1, d0)),
     style,
   );
 }
 
-function dispatchCalendarEntry(dateStr, style = 'new') {
+function dispatchCalendarEntry(dateStr, style = 'new', opts = {}) {
   const [year, month, day] = dateStr.split('-').map(Number);
   const date   = new Date(Date.UTC(year, month - 1, day));
   const dow    = getDayOfWeek(date);
@@ -174,7 +180,7 @@ function dispatchCalendarEntry(dateStr, style = 'new') {
   // serves one needs the Litya-policy work that this rank/practice coupling is
   // still waiting on.
   const feastRank = getFeastRank(date, style);
-  if (feastRank === 'vigil' && dow !== 'sunday') {
+  if (feastRank === 'vigil' && dow !== 'sunday' && !opts.skipVigil) {
     return generateVigilFeastVespers(dateStr, dow, tone);
   }
 

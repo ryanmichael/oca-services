@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "note": "Named alternative SERVICE SHAPES for a Menaion feast, keyed M-D, opted into per parish via parish_settings.rubrics_extra_json {\"menaionServiceSet\": {\"M-D\": \"<set>\"}}. The same pattern as great-feast-variants.json antiphonSets: variable-sources/ text cannot use the overlay cascade, so a parish picks a named set instead of anyone editing the shared default. Name sets for their SOURCE and shape, never for a parish. Hymns are either a `ref` into the day's DB rows (by commemoration title fragment + section + order, or + type for troparia) or inline text stored in the Thee/Thy register.",
+    "added": "2026-09-24"
+  },
+  "10-1": {
+    "sets": {
+      "raphaela-protection-daily": {
+        "_provenance": "Daily Vespers of the Protection as sung from the Mother Raphaela Menaion (October 1 day-file, choir-site corpus) — Tyler 10.01.26 packet, docs/9-26 and 9-27 and 10.1/. Shared OCA rows are referenced; only the third Tone 4 sticheron, absent from the OCA text, is stored here.",
+        "serviceType": "dailyVespers",
+        "lordICall": {
+          "menaion": [
+            { "ref": { "comm": "Protection", "section": "lordICall", "order": 4 } },
+            { "ref": { "comm": "Protection", "section": "lordICall", "order": 5 } },
+            {
+              "tone": 4,
+              "label": "(for the Protection)",
+              "source": "raphaela",
+              "text": "Thou art the beauty of Jacob\nand the heavenly ladder upon which the Lord came down to earth.\nThese images were manifestations of thy honor and glory, Theotokos!\nAngels in heaven and men on earth call thee blessed\nfor thou didst give birth to the God of all!\nThou prayest for all the world,//\nby thy mercy, protecting those who keep thy holy feast!"
+            }
+          ],
+          "gloryNow": { "ref": { "comm": "Protection", "section": "lordICall", "order": -1 } }
+        },
+        "aposticha": {
+          "hymns": [
+            { "ref": { "comm": "Protection", "section": "aposticha", "order": 1 } },
+            { "ref": { "comm": "Protection", "section": "aposticha", "order": 2 } },
+            { "ref": { "comm": "Protection", "section": "aposticha", "order": 3 } }
+          ],
+          "glory": { "ref": { "comm": "Protection", "section": "aposticha", "order": 0 } },
+          "now":   { "ref": { "comm": "Protection", "section": "aposticha", "order": -1 } }
+        },
+        "troparia": {
+          "first":    { "ref": { "comm": "Romanus", "type": "troparion" } },
+          "gloryNow": { "ref": { "comm": "Protection", "type": "troparion" } }
+        }
+      }
+    }
+  }
+}

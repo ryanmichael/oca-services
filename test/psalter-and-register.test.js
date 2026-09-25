@@ -79,3 +79,7 @@ test('yy→tt: saved / pleased / visited / inherited stem correctly', () => {
   assert.equal(transform('You visited Christ'), 'Thou didst visit Christ');
   assert.equal(transform('you inherited a heavenly abode'), 'thou didst inherit a heavenly abode');
 });
+
+test('yy→tt: present-tense pray/intercede take -est after thou', () => {
+  assert.equal(transform('You pray for all the world'), 'Thou prayest for all the world');
+});

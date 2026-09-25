@@ -8,6 +8,20 @@ const { deduplicateBySource } = require('../../oca-psalter');
  * troparion, which corresponds to the highest-ranking saint on the OCA page
  * (they are listed in descending rank order).
  */
+
+// Some troparia/kontakia open with their melody — `(Podoben: "Today Thou hast
+// shown forth...") Like stars thou hast shone…` (770 rows). It is a rubric for
+// the choir, not a sung line, but every service printed it as the first words
+// of the hymn (9-27 Liturgy, Callistratus kontakion; Tyler packet 09.27.26
+// sings "Like stars…"). Split it off here, the one place troparia are read, and
+// carry it as `podoben` so a renderer can show it as a heading. Found 2026-09-24.
+const PODOBEN_LEAD = /^\s*\(Podoben:\s*"?(.*?)"?\s*\)\s*/s;
+function splitPodoben(row) {
+  const m = typeof row.text === 'string' && row.text.match(PODOBEN_LEAD);
+  if (!m) return row;
+  return { ...row, text: row.text.slice(m[0].length), podoben: m[1].trim() };
+}
+
 function getMenaionPrimary(month, day) {
   const comms = getMenaionDay(month, day);
   if (!comms) return null;
@@ -101,7 +115,7 @@ function getMenaionRanked(month, day) {
     const tropariaMap  = {};
     const sticheraMap  = {};
     for (const t of tropRows) {
-      (tropariaMap[t.commemoration_id] ??= []).push(t);
+      (tropariaMap[t.commemoration_id] ??= []).push(splitPodoben(t));
     }
     for (const s of stRows) {
       (sticheraMap[s.commemoration_id] ??= []).push({
@@ -195,7 +209,7 @@ function getMenaionDay(month, day) {
       title:    c.title,
       rank:     c.rank,
       tone:     c.tone,
-      troparia: getTroparia.all(c.id),
+      troparia: getTroparia.all(c.id).map(splitPodoben),
     }));
   } catch (err) {
     console.error('getMenaionDay error:', err.message);
@@ -224,8 +238,8 @@ function getMenaionPatron(commemorationId) {
     `).all(commemorationId);
     if (rows.length === 0) return null;
     const out = { troparion: null, kontakion: null };
-    for (const r of rows) {
-      out[r.type] = { tone: r.tone, text: r.text };
+    for (const r of rows.map(splitPodoben)) {
+      out[r.type] = { tone: r.tone, text: r.text, ...(r.podoben ? { podoben: r.podoben } : {}) };
     }
     return out;
   } catch (err) {
@@ -243,4 +257,5 @@ module.exports = {
   getMenaionDayList,
   getMenaionDay,
   getMenaionPatron,
+  splitPodoben,
 };

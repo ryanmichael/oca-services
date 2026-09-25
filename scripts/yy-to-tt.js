@@ -179,6 +179,9 @@ const PHRASE_RULES_WITH_ADV = [
 // 2026-06-17). Order: most frequent first for readability.
 const PAST_TO_BASE = {
   // Top irregulars (1000+ occurrences combined)
+  // -Cited roots that do NOT end in -e (the -ate/-ite rule would give 'visite').
+  visited: 'visit', inherited: 'inherit', merited: 'merit', inhabited: 'inhabit',
+  limited: 'limit', profited: 'profit', exhibited: 'exhibit',
   sought: 'seek', made: 'make', taught: 'teach', took: 'take',
   brought: 'bring', kept: 'keep', went: 'go', saw: 'see',
   gave: 'give', left: 'leave', built: 'build', came: 'come',
@@ -242,6 +245,8 @@ const E_STEM_BASES = new Set([
   'atone', 'approve', 'improve', 'remove',
   // surfaced by the Raphaela round-trip check (2026-09-20)
   'choke', 'wipe', 'dare', 'tame', 'shame', 'ally', 'shine', 'name', 'blame',
+  // 2026-09-24: 'saved' -> 'didst sav', 'pleased' -> 'didst pleas' were in prod.
+  'save', 'please',
 ]);
 
 // Past-tense suffixes we recognize for stemming
@@ -522,6 +527,20 @@ function transformPrepositionObject(text) {
   });
 }
 
+// "you were strengthened by the Spirit, and were glorious": the second verb of a
+// compound predicate shares the subject but has no pronoun of its own, so no
+// pass above sees it — "thou wast strengthened… and were glorious" (9-27
+// Callistratus; ~56 rows). Agree it with the thou that governs it, unless a new
+// or plural subject intervenes ("…venerable fathers and were" stays).
+const COORD_VERB = { were: 'wast', are: 'art', have: 'hast' };
+const NEW_SUBJECT = /\b(ye|you|we|they|he|she|it|who|which|that|fathers|mothers|martyrs|saints|apostles|brethren|all|both|people|faithful)\b/i;
+function transformCoordinatedVerb(text) {
+  return text.replace(
+    // "…and have mercy on me" is a new imperative, not the second verb.
+    /\b([Tt]hou\s+(?:wast|wert|hast|art|didst)\b)([^.;:!?]{0,100}?)(,?\s+and\s+)(were|are|have)\b(?!\s+mercy\b)/g,
+    (m, head, gap, and, verb) => NEW_SUBJECT.test(gap) ? m : `${head}${gap}${and}${COORD_VERB[verb]}`);
+}
+
 function transform(text) {
   if (isPluralAddress(text)) return text; // plural address — leave you/your/are
 
@@ -537,6 +556,7 @@ function transform(text) {
   out = transformBareYou(out);
   out = transformThouAsObject(out);
   out = transformPresentTenseEst(out);
+  out = transformCoordinatedVerb(out);
   return out.split(PLURAL_YOU).join('you');
 }
 
@@ -651,4 +671,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { transform, isPluralAddress };
+module.exports = { transform, isPluralAddress, transformCoordinatedVerb };

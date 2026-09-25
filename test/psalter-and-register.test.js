@@ -50,3 +50,32 @@ test('yy→tt: object-taking verbs, and plural "all you" / "all of you"', () => 
   // -ies nouns are not verbs
   assert.equal(transform('within its boundaries you shone'), 'within its boundaries thou didst shine');
 });
+
+// ── 2026-09-24, Tyler 09.27.26 Liturgy packet ──────────────────────────────
+
+const { splitPodoben } = require('../server-lib/sources/menaion');
+
+test('a leading (Podoben: "…") is a melody rubric, never sung text', () => {
+  const r = splitPodoben({ text: '(Podoben: "Today Thou hast shown forth...") Like stars thou hast shone' });
+  assert.equal(r.text, 'Like stars thou hast shone');
+  assert.equal(r.podoben, 'Today Thou hast shown forth...');
+  assert.deepEqual(splitPodoben({ text: 'Like stars' }), { text: 'Like stars' });
+});
+
+test('yy→tt: the second verb of a compound predicate agrees with thou', () => {
+  assert.equal(transform('In contest you were strengthened by the Holy Spirit, Martyr Callistratus, and were glorious'),
+    'In contest thou wast strengthened by the Holy Spirit, Martyr Callistratus, and wast glorious');
+  assert.equal(transform('You have revealed Yourself and have enlightened'), 'Thou hast revealed Thyself and hast enlightened');
+  // a plural subject in between keeps the plural
+  assert.equal(transform('you studied the law day and night, venerable fathers and were'),
+    'thou didst study the law day and night, venerable fathers and were');
+  // "and have mercy" is a new imperative, not the second verb
+  assert.match(transform('as You saved Peter, O God, and have mercy on me'), /and have mercy on me$/);
+});
+
+test('yy→tt: saved / pleased / visited / inherited stem correctly', () => {
+  assert.equal(transform('You saved Peter'), 'Thou didst save Peter');
+  assert.equal(transform('you pleased God'), 'thou didst please God');
+  assert.equal(transform('You visited Christ'), 'Thou didst visit Christ');
+  assert.equal(transform('you inherited a heavenly abode'), 'thou didst inherit a heavenly abode');
+});

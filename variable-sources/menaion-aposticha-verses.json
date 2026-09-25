@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "note": "Proper Vespers Aposticha verses for Menaion (non-Great) feasts, keyed M-D. Same shape as great-feast-variants.json apostichaVerses: indexed from the SECOND sticheron — the first carries no verse. Without an entry the assembler falls back to the ordinary Ps. 122 table.",
+    "added": "2026-09-24"
+  },
+  "10-1": {
+    "apostichaVerses": [
+      "Hearken, O daughter, and see, and incline thine ear!",
+      "Even the rich among the people shall pray before thy face."
+    ],
+    "_source": "OCA service text for October 1, reference/scrape/2024-10-01.docx (Ps. 44:9a, 44:11b); Tyler 10.01.26 packet sings the same verses."
+  }
+}

@@ -11,6 +11,7 @@ const ROOT = path.resolve(__dirname, '..', '..');
 // Data lives in variable-sources/great-feast-variants.json; keys match
 // calendar-rules.getGreatFeastKey().
 const GREAT_FEAST_VARIANTS = loadJSON('variable-sources/great-feast-variants.json');
+const MENAION_APOSTICHA_VERSES = loadJSON('variable-sources/menaion-aposticha-verses.json');
 
 // ─── Pentecostarion Sunday Overrides ──────────────────────────────────────────
 // Per-week overrides for the Pentecost-to-All-Saints window (Sundays only).
@@ -89,6 +90,7 @@ require(path.join(ROOT, 'data-validators')).validateAll({
 
 module.exports = {
   GREAT_FEAST_VARIANTS,
+  MENAION_APOSTICHA_VERSES,
   PENTECOSTARION_SUNDAY_OVERRIDES,
   COCELEBRATED_OVERLAYS,
   DAILY_PROPERS,

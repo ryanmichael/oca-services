@@ -17,7 +17,7 @@ const { pickPrincipalByOrthocalOrder,
         feastWindowCoCommemorations }             = require('../sources/menaion-principal');
 const { getGeneralMenaionTexts }                  = require('../sources/general-menaion');
 const { buildDbSource }                           = require('../sources/db-source');
-const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS } = require('../sources/propers');
+const { PENTECOSTARION_SUNDAY_OVERRIDES, DAY_PATRONS, GREAT_FEAST_VARIANTS, MENAION_APOSTICHA_VERSES } = require('../sources/propers');
 const LIC_REPEAT_PATTERNS = require('../../variable-sources/lic-repeat-patterns.json');
 const { buildDismissalSpec }                      = require('../sources/dismissal-spec');
 
@@ -528,6 +528,23 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           if (!lic.now && lic.glory?.combinesGloryNow && lic.glory.source === 'octoechos') {
             lic.now = { ...lic.glory, combinesGloryNow: false };
           }
+          // A weekday Vigil / Great Vespers takes the Menaion's own Now too:
+          // 10-1 is "Glory… St. Romanus, Tone 6 / Now and ever… Protection,
+          // Tone 8" (OCA text, reference/scrape/2024-10-01.docx), but only the
+          // Daily-Vespers branch above consulted order=-1, so the Vigil sang
+          // Romanus under a collapsed "Glory… now and ever". Same
+          // Stavrotheotokion rule. Found 2026-09-24 (Tyler 10.01.26 packet).
+          if (!lic.now && isWeekdayInjection && (isGreatVespers || isVigilFeast)) {
+            const dow = calendarEntry.dayOfWeek;
+            const crossDay = dow === 'wednesday' || dow === 'friday';
+            const own = sticheraData?.[0]?.stichera.find(
+              s => s.section === 'lordICall' && s.order === -1
+                && (crossDay || s.groupRole !== 'stavrotheotokion'));
+            if (own) {
+              lic.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.now`, tone: own.tone, label: 'Theotokion' };
+              autoSlot.lordICall.now = { text: own.text, tone: own.tone, label: own.label };
+            }
+          }
           lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: sticheraLabel, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
@@ -613,9 +630,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // "To Thee I lift up mine eyes" instead of "Tabor and Hermon shall
           // rejoice"). Verses are indexed from the second sticheron — the first
           // carries none — so slot i takes verse i-1.
+          // A Menaion feast can carry proper verses too (10-1 Protection:
+          // "Hearken, O daughter…", Ps. 44) — variable-sources/menaion-aposticha-verses.json.
           const feastVerses = isGreatFeast
             ? GREAT_FEAST_VARIANTS[calendarEntry.liturgicalContext.greatFeast]?.apostichaVerses
-            : null;
+            : MENAION_APOSTICHA_VERSES[adjustedMD().join('-')]?.apostichaVerses ?? null;
           apost.slots = apostStichera.map((s, i) => ({
             position: i + 1,
             source:   'menaion', provenance: menaionProvenance,

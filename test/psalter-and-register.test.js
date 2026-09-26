@@ -83,3 +83,8 @@ test('yy→tt: saved / pleased / visited / inherited stem correctly', () => {
 test('yy→tt: present-tense pray/intercede take -est after thou', () => {
   assert.equal(transform('You pray for all the world'), 'Thou prayest for all the world');
 });
+
+test('yy→tt: trod / pour (9-27 Callistratus stichera)', () => {
+  assert.equal(transform('You trod the path'), 'Thou didst tread the path');
+  assert.equal(transform('Now you pour forth healings'), 'Now thou pourest forth healings');
+});

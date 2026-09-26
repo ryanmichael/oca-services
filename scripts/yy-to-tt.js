@@ -182,6 +182,7 @@ const PAST_TO_BASE = {
   // -Cited roots that do NOT end in -e (the -ate/-ite rule would give 'visite').
   visited: 'visit', inherited: 'inherit', merited: 'merit', inhabited: 'inhabit',
   limited: 'limit', profited: 'profit', exhibited: 'exhibit',
+  trod: 'tread',
   sought: 'seek', made: 'make', taught: 'teach', took: 'take',
   brought: 'bring', kept: 'keep', went: 'go', saw: 'see',
   gave: 'give', left: 'leave', built: 'build', came: 'come',
@@ -469,7 +470,7 @@ function transformYoursSelf(text) {
 const PRESENT_VERB_EST = {
   // ending → just append 'est'
   grant: 'grantest', avert: 'avertest', show: 'showest', entreat: 'entreatest',
-  pray: 'prayest', intercede: 'intercedest',
+  pray: 'prayest', intercede: 'intercedest', pour: 'pourest',
   deliver: 'deliverest', defend: 'defendest', protect: 'protectest',
   guard: 'guardest', heal: 'healest', save: 'savest', hear: 'hearest',
   see: 'seest', know: 'knowest', love: 'lovest', work: 'workest',

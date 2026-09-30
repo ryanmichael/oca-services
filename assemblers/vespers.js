@@ -52,7 +52,7 @@ function assembleVespers(calendarDay, fixedTexts, sources, opts = {}) {
   blocks.push(...assembleGreatLitany(fixedTexts));
 
   // ── 4. Kathisma ─────────────────────────────────────────────────────────────
-  const kathismaBlocks = assembleKathisma(calendarDay, fixedTexts);
+  const kathismaBlocks = assembleKathisma(calendarDay, fixedTexts, rubrics);
   blocks.push(...kathismaBlocks);
   // Little Litany follows kathisma (omitted only when kathisma itself is omitted)
   if (kathismaBlocks.length > 0) {

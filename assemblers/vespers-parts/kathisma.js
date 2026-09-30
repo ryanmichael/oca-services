@@ -10,7 +10,7 @@ const { getKathismata }           = require('../_shared/fixed-text-loader');
 const { getPsalter, psalmBody }   = require('../../oca-psalter');
 const { getVespersKathisma }      = require('../../kathisma');
 
-function assembleKathisma(calendarDay, fixedTexts) {
+function assembleKathisma(calendarDay, fixedTexts, rubrics) {
   const { dayOfWeek, liturgicalContext, vespers } = calendarDay;
   const season      = liturgicalContext?.season ?? 'ordinaryTime';
   const kathNum     = getVespersKathisma(dayOfWeek, season);
@@ -27,6 +27,10 @@ function assembleKathisma(calendarDay, fixedTexts) {
       (dayOfWeek === 'sunday' || dayOfWeek === 'saturday')) {
     return assembleBlessedIsTheMan(fixedTexts);
   }
+
+  // Parish practice: many parishes omit the read kathisma. The sung "Blessed
+  // is the Man" above is kept; an empty result also drops the Little Litany.
+  if (rubrics?.vespers?.omitReadKathisma) return [];
 
   // All other cases: kathisma is read (not sung).
   return assembleKathismaReading(kathNum, section);

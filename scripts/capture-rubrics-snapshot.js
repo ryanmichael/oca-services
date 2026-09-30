@@ -62,6 +62,8 @@ function legacyBuildRubrics(row, picks = {}) {
   // only on the Great Feasts, is the non-default case worth recording.
   if (picked('servesLitya') && picks.servesLitya && picks.servesLitya !== 'always')
     r.vespers = { ...(r.vespers || {}), servesLitya: picks.servesLitya };
+  if (picked('omitReadKathisma') && coerce(picks.omitReadKathisma, 'boolean') === true)
+    r.vespers = { ...(r.vespers || {}), omitReadKathisma: true };
 
   // Typed column, enum, default 'tt'. Emitted only when the parish differs.
   // (paschalCommunionYearRound is deliberately NOT here: production skips every

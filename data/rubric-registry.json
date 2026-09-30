@@ -167,6 +167,16 @@
         "liturgy"
       ],
       "domId": "f-glory-after-little-litany"
+    },
+    "omitReadKathisma": {
+      "label": "Omit the read Kathisma at Vespers",
+      "description": "The appointed Kathisma is read in full at weekday Vespers (Daily Vespers, and weekday Great Vespers or Vigil). Many parishes omit it. When on, the read Kathisma and the Little Litany after it are left out; the sung \u201cBlessed is the Man\u201d on Saturday evening is kept.",
+      "namespace": "vespers.omitReadKathisma",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "vespers"
+      ]
     }
   }
 }

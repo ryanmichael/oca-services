@@ -141,11 +141,11 @@ const SERVICE_CATALOG = [
 ];
 
 /** Shape the per-date context every `isServed` predicate reads. */
-function dayContext(ctx, cur, style, sources) {
+function dayContext(ctx, cur, style, sources, rubrics = null) {
   const dateStr = cur.toISOString().slice(0, 10);
   const dow = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][cur.getUTCDay()];
-  const entry = ctx.getCalendarEntry(dateStr, style);
-  const vespersEntry = ctx.getCalendarEntry(ctx.getNextDateStr(dateStr), style);
+  const entry = ctx.getCalendarEntry(dateStr, style, { rubrics });
+  const vespersEntry = ctx.getCalendarEntry(ctx.getNextDateStr(dateStr), style, { rubrics });
   const season = entry ? (entry.liturgicalContext?.season || null) : null;
   return { cur, dateStr, dow, season, entry, vespersEntry, style, sources, ctx };
 }
@@ -179,17 +179,17 @@ function matches(entry, query) {
  * First date on/after `from` (UTC noon) on which the service is served,
  * scanning up to `horizonDays` ahead. Null if none in range.
  */
-function nextServed(entry, ctx, from, style, sources, horizonDays = 400) {
+function nextServed(entry, ctx, from, style, sources, horizonDays = 400, rubrics = null) {
   let cur = new Date(from);
   for (let i = 0; i < horizonDays; i++) {
-    if (entry.isServed(dayContext(ctx, cur, style, sources))) return cur.toISOString().slice(0, 10);
+    if (entry.isServed(dayContext(ctx, cur, style, sources, rubrics))) return cur.toISOString().slice(0, 10);
     cur = new Date(cur.getTime() + DAY_MS);
   }
   return null;
 }
 
 /** Search hits for a query, ready to serialize. */
-function searchServices(query, ctx, { style = 'new', sources = null, from = null } = {}) {
+function searchServices(query, ctx, { style = 'new', sources = null, from = null, rubrics = null } = {}) {
   const start = from || new Date(new Date().toISOString().slice(0, 10) + 'T12:00:00Z');
   const hits = [];
   for (const s of SERVICE_CATALOG) {
@@ -198,7 +198,7 @@ function searchServices(query, ctx, { style = 'new', sources = null, from = null
     if (s.kind === 'form') {
       hit.form = s.form;
     } else {
-      hit.nextDate = nextServed(s, ctx, start, style, sources);
+      hit.nextDate = nextServed(s, ctx, start, style, sources, 400, rubrics);
       hit.svcType  = s.key;
     }
     hits.push(hit);

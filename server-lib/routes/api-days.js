@@ -47,6 +47,11 @@ function handle(req, res, ctx) {
       const to   = (q.to   || '').trim();
       const translation = resolveTranslation(q);
       const style       = resolveStyle(q, translation);
+      // The parish's rubrics shape which service a date gets (a
+      // menaionServiceSet can turn a Vigil into Daily Vespers, the Litya
+      // policy too) — the same rubrics /api/service assembles with, or the
+      // list offers a service the parish does not serve.
+      const rubrics     = getOverlayRubrics(translation);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -82,7 +87,7 @@ function handle(req, res, ctx) {
         const dowStr  = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dowIdx];
 
         // Get calendar entry (cheap — no assembly)
-        const entry  = getCalendarEntry(dateStr, style);
+        const entry  = getCalendarEntry(dateStr, style, { rubrics });
         const season = entry ? (entry.liturgicalContext?.season || null) : null;
         const tone   = entry ? (entry.liturgicalContext?.tone ?? entry.vespers?.lordICall?.tone ?? null) : null;
         const liturgicalLabel = entry ? getDayLabel(entry, dowStr, season, entry.date) : null;
@@ -90,7 +95,7 @@ function handle(req, res, ctx) {
         // Vespers date-shift: vespers served on this evening belongs to
         // the *next* liturgical day, so look up tomorrow's calendar entry.
         const vespersDateStr = getNextDateStr(dateStr);
-        const vespersEntry   = getCalendarEntry(vespersDateStr, style);
+        const vespersEntry   = getCalendarEntry(vespersDateStr, style, { rubrics });
 
         // Feast + commemorations list from Menaion DB
         let feast = null;

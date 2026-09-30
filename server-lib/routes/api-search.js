@@ -58,7 +58,7 @@ function handle(req, res, ctx) {
       try {
         const translation = resolveTranslation(q);
         const style       = resolveStyle(q, translation);
-        services = searchServices(query, ctx, { style, sources });
+        services = searchServices(query, ctx, { style, sources, rubrics: getOverlayRubrics(translation) });
       } catch (err) {
         console.error('/api/search services error:', err);
       }

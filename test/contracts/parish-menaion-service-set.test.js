@@ -117,4 +117,17 @@ describe('Feature contract: parish Menaion service set (Tyler, 10-1 Protection)'
     assert.ok(k, 'Steadfast Protectress rendered');
     assert.match(k.text, /for thou always protect those who honor thee!$/);
   });
+
+  // The service list is built from its own calendar lookup; until 2026-09-30
+  // that lookup skipped the parish rubrics, so Tyler's day list offered
+  // "All-Night Vigil" on the evening the service itself rendered Daily Vespers.
+  it('INV-7: the day list offers Tyler Daily Vespers on 9-30, and the default the Vigil', async () => {
+    const svc = async (q) => (await get(`/api/days?from=2026-09-30&to=2026-09-30${q}`)).json[0].services;
+    const tyler = await svc(TYLER);
+    assert.equal(tyler.dailyVespers, true, 'Tyler: Daily Vespers row');
+    assert.equal(tyler.allNightVigil, false, 'Tyler: no Vigil row');
+    const oca = await svc('');
+    assert.equal(oca.allNightVigil, true, 'default: Vigil row');
+    assert.equal(oca.dailyVespers, false, 'default: no Daily Vespers row');
+  });
 });

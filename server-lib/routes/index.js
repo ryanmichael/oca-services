@@ -33,6 +33,7 @@ const apiPaschalHours     = require('./api-paschal-hours');
 const apiPaschaCollection = require('./api-pascha-collection');
 const apiVigil            = require('./api-vigil');
 const apiChoirPrep        = require('./api-choir-prep');
+const apiChoirAsset       = require('./api-choir-asset');
 const apiDays             = require('./api-days');
 const apiSearch           = require('./api-search');
 const servicePage         = require('./service-page');
@@ -107,6 +108,7 @@ function dispatch(req, res, ctx) {
     if (pathname === '/api/pascha-collection')                    return apiPaschaCollection(req, res, ctx);
     if (pathname === '/api/vigil')                                return apiVigil(req, res, ctx);
     if (pathname === '/api/choir-prep')                           return apiChoirPrep(req, res, ctx);
+    if (pathname === '/api/choir-asset')                          return apiChoirAsset(req, res, ctx);
     if (pathname === '/api/days')                                 return apiDays(req, res, ctx);
     if (pathname === '/api/search')                               return apiSearch(req, res, ctx);
     if (pathname === '/service')                                  return servicePage(req, res, ctx);

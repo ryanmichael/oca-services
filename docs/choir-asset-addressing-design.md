@@ -167,21 +167,22 @@ services exist.
 
 ---
 
-## 5. Sharing has a permission gate, not just a technical one
+## 5. Permission — GRANTED 2026-10-01
 
-These packets are the director's compiled booklets, containing third-party
-musical settings (OBIKHOD and other arrangements). **No permission grant is on
-record for them.** The confirmed grant (2026-09-20) covers the *choir-site Menaion
-corpus* — Mother Raphaela's texts — which is a different body of material.
+**The choir director (Connie Russell) approved reuse of all these documents**,
+relayed by the user on 2026-10-01. This is a distinct grant from the 2026-09-20
+one, which covers the *choir-site Menaion corpus* (Mother Raphaela's texts).
 
-Recommended posture:
+What it unblocks: `GET /api/choir-asset?id=<asset>` now serves the files, and
+`url` is populated on every asset present on disk.
 
-1. **Index metadata is safe to expose** — titles, tones, sections, dates. It is
-   our description of what exists, not their content.
-2. **The files themselves stay parish-scoped**, behind the existing parish-admin
-   token, until the director is asked.
-3. **Ask before anything leaves the parish.** The precedent is the Myrrh-bearers
-   Phase 0 permission gate, and the director has been generous when asked.
+**One limit worth recording.** The grant covers the parish's own compiled
+material. Several sheets carry third-party musical settings — OBIKHOD, Znamenny,
+Byzantine arrangements — whose rights sit with their publishers, and a director
+cannot grant what she does not hold. So this is the parish using its own books,
+not a public redistribution point. If these are ever exposed beyond the parish,
+that is a separate question for the rights holders, not a re-reading of this
+grant.
 
 Also practical: `docs/choir-packets/*/pdf/` is gitignored, so **production has no
 copies**. Serving files in prod needs a separate decision — object store, or
@@ -311,6 +312,17 @@ surface.
 Working queries: `Cosmas` → 6 hymn sheets · `OBIKHOD` → every sheet in that
 melody · `tone 8` → the intro packet, the LIC setting, and every Tone 8 hymn ·
 `With rays of miracles` → the one sheet · `Byzantine` → the unbound standing item.
+
+**Step 6 (serving) DONE 2026-10-01**, once permission was granted:
+`routes/api-choir-asset.js` serves one document by its content-derived asset id.
+Addressed by **id only, never a client path**, so a caller cannot traverse out
+of the asset directories; a sha256-prefix id always names the same bytes, so the
+response is `immutable`. Verified end-to-end: the served bytes hash back to the
+id they were requested by. Unknown-but-well-formed id → 404; anything that is
+not 12 hex characters → 400, including both raw and URL-encoded traversal.
+
+A 404 is also the honest answer in production, where the scans are gitignored
+and nothing is on disk — that is storage, not permission, and is unresolved.
 
 ### Remaining
 

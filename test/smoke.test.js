@@ -1535,3 +1535,68 @@ describe('Data file validation', () => {
     assert.ok(errs.some(e => /M-D/.test(e)), `Expected date-format error, got: ${errs.join(' | ')}`);
   });
 });
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Choir endpoints
+//
+// /api/choir-prep threw on EVERY request from the server split until
+// 2026-10-01 — PORT and http were pre-split server.js globals that never
+// reached the extracted route. It answered 500, and app.js throws on that, so
+// Choir Mode was dead in the browser too. Nothing caught it because no test
+// touched the endpoint. These are that test.
+// ═══════════════════════════════════════════════════════════════════════════
+
+describe('Choir endpoints', () => {
+  it('/api/choir-prep answers 200 with services for an ordinary Sunday', async () => {
+    const r = await get('/api/choir-prep?date=2026-09-27&translation=st-john-damascus-tyler');
+    assert.equal(r.status, 200, `expected 200, body: ${r.body.slice(0, 200)}`);
+    assert.ok(r.json, 'response should be JSON');
+    assert.ok(!r.json.error, `should not error: ${r.json.error}`);
+    assert.ok(Array.isArray(r.json.services) && r.json.services.length > 0,
+      'a Sunday must offer at least one service');
+    const liturgy = r.json.services.find((s) => s.type === 'liturgy');
+    assert.ok(liturgy, 'Sunday must offer the Liturgy');
+    assert.ok(Array.isArray(liturgy.blocks) && liturgy.blocks.length > 0,
+      'the Liturgy must carry blocks — an empty service is the failure mode');
+  });
+
+  it('/api/choir-prep carries the choir music payload and the vespers shift', async () => {
+    const r = await get('/api/choir-prep?date=2026-09-26&translation=st-john-damascus-tyler');
+    assert.equal(r.status, 200);
+    const gv = r.json.services.find((s) => s.type === 'greatVespers');
+    assert.ok(gv, 'Saturday must offer Great Vespers');
+    assert.equal(gv.contentDate, '2026-09-27', 'Saturday Vespers draws on Sunday');
+    assert.ok(gv.music, 'every service carries a music payload');
+    assert.ok(Array.isArray(gv.music.booklet));
+  });
+
+  it('/api/choir-prep rejects a malformed date', async () => {
+    const r = await get('/api/choir-prep?date=not-a-date');
+    assert.equal(r.status, 400);
+  });
+
+  it('/api/search returns the music facet', async () => {
+    const r = await get('/api/search?q=Cosmas');
+    assert.equal(r.status, 200);
+    assert.ok(Array.isArray(r.json.music), 'search must carry a music facet');
+  });
+
+  it('/api/choir-asset serves a known asset, and refuses a path traversal', async () => {
+    const search = await get('/api/search?q=Byzantine');
+    const hit = (search.json.music || [])[0];
+    assert.ok(hit && hit.asset, 'precondition: the Byzantine sheet is indexed');
+
+    if (hit.available) {
+      const ok = await get(`/api/choir-asset?id=${hit.asset}`);
+      assert.equal(ok.status, 200, 'an on-disk asset must be servable');
+    }
+
+    // Addressed by asset id only; a path can never reach the filesystem.
+    for (const bad of ['../../../../etc/passwd', '%2e%2e%2fetc%2fpasswd', 'zzzzzzzzzzzz', '']) {
+      const r = await get(`/api/choir-asset?id=${bad}`);
+      assert.equal(r.status, 400, `id "${bad}" must be rejected, got ${r.status}`);
+    }
+    const unknown = await get('/api/choir-asset?id=000000000000');
+    assert.equal(unknown.status, 404, 'a well-formed unknown id is a 404');
+  });
+});

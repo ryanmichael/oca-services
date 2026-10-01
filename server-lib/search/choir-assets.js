@@ -8,11 +8,18 @@
  * liturgically; the packet folders it derives from are addressed by provenance.
  * See docs/choir-asset-addressing-design.md.
  *
- * Metadata only. This module never serves file bytes: the packets are the
- * director's compiled booklets containing third-party settings, and no
- * permission to redistribute them is on record (§5 of the design). `available`
- * reports whether the file is on this machine — in production it is false,
- * because the per-packet `pdf` directories are gitignored and never deploy.
+ * Metadata and locations; the bytes are served by routes/api-choir-asset.js.
+ *
+ * The choir director (Connie Russell) granted reuse of these documents on
+ * 2026-10-01, so `url` is populated for anything present on disk. That grant
+ * covers the parish's own compiled material; several sheets carry third-party
+ * settings (OBIKHOD, Znamenny, Byzantine arrangements) whose rights sit with
+ * their publishers, so this is the parish using its own books rather than a
+ * public redistribution point. See docs/choir-asset-addressing-design.md §5.
+ *
+ * `available` reports whether the file is on this machine — in production it is
+ * false, because the per-packet `pdf` directories are gitignored and never
+ * deploy. Permission did not change that; it is a storage question (§6).
  */
 
 const fs   = require('fs');
@@ -159,6 +166,10 @@ function describe(index, binding) {
     pages: a?.pages ?? null,
     path: rel,
     available,
+    // Fetchable only where the file is actually on disk. Reuse was granted by
+    // the director 2026-10-01 (design §5); the scans are gitignored, so in
+    // production `available` is false and this is null.
+    url: available ? `/api/choir-asset?id=${binding.asset}` : null,
     packet: binding.packet,
   };
 }

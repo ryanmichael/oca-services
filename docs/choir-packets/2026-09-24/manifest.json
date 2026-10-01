@@ -29,7 +29,14 @@
         "contentDate": "2026-10-02"
       },
       "remapReason": "Email body says 'DV (Wed 10.01)'; 2026-10-01 is a Thursday and the Protection of the Theotokos, so 10.01 names the liturgical day. Sung Wed evening 09-30.",
-      "remappedAt": "2026-10-01T13:48:59.595Z"
+      "remappedAt": "2026-10-01T13:48:59.595Z",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-10-01.txt",
+        "pages": 10,
+        "textPages": 6,
+        "musicPages": 4,
+        "chars": 4015
+      }
     },
     {
       "original": "Divine Liturgy 09.27.26.pdf",
@@ -47,7 +54,14 @@
       "bytes": 6516064,
       "pages": 12,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-09-27"
+      "apiUrl": "/api/liturgy?date=2026-09-27",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-27.txt",
+        "pages": 12,
+        "textPages": 3,
+        "musicPages": 9,
+        "chars": 1741
+      }
     },
     {
       "original": "Great Vespers 09.26.26.pdf",
@@ -65,7 +79,14 @@
       "bytes": 6081464,
       "pages": 12,
       "hasTextLayer": false,
-      "apiUrl": "/api/service?date=2026-09-26"
+      "apiUrl": "/api/service?date=2026-09-26",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-09-26.txt",
+        "pages": 12,
+        "textPages": 6,
+        "musicPages": 6,
+        "chars": 4080
+      }
     },
     {
       "original": "INTRO to TONE 8 packet.pdf",
@@ -82,7 +103,14 @@
       "sha256": "bfb45608512c1c0074f7c0663de4b52544e4b552352688e0a567f2079585ad7f",
       "bytes": 3708439,
       "pages": 8,
-      "hasTextLayer": false
+      "hasTextLayer": false,
+      "ocr": {
+        "file": "ocr/tone-08-intro.txt",
+        "pages": 8,
+        "textPages": 0,
+        "musicPages": 8,
+        "chars": 0
+      }
     },
     {
       "original": "Lord Have Mercy (Byzantine).pdf",
@@ -101,7 +129,14 @@
       "sha256": "ee33d34221f95b79d866f9404adf4e35ef071327c47e8ce9cd7621a160274fa2",
       "bytes": 383812,
       "pages": 1,
-      "hasTextLayer": false
+      "hasTextLayer": false,
+      "ocr": {
+        "file": "ocr/Lord Have Mercy (Byzantine).txt",
+        "pages": 1,
+        "textPages": 0,
+        "musicPages": 1,
+        "chars": 0
+      }
     },
     {
       "original": "Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
@@ -120,7 +155,14 @@
       "sha256": "0a4b6a242245e685d4f3bb7c87af74ccb590fbbc2835abce6637f3259c9d9cc3",
       "bytes": 1693714,
       "pages": 2,
-      "hasTextLayer": false
+      "hasTextLayer": false,
+      "ocr": {
+        "file": "ocr/Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).txt",
+        "pages": 2,
+        "textPages": 0,
+        "musicPages": 2,
+        "chars": 0
+      }
     }
   ],
   "directives": [],

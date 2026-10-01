@@ -25,6 +25,7 @@ const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 
 const { parseAttachment } = require('./choir-mail-parse.js');
+const choirOcr            = require('./choir-ocr.js');
 
 const REPO     = path.resolve(__dirname, '..');
 const DEFAULT_OUT = path.join(REPO, 'docs', 'choir-packets');
@@ -44,6 +45,7 @@ function parseArgs(argv) {
     else if (a === '--exclude')  (out.exclude ||= []).push(argv[++i]);
     else if (a === '--out')        out.out       = path.resolve(argv[++i]);
     else if (a === '--dry-run')    out.dryRun    = true;
+    else if (a === '--no-ocr')     out.noOcr     = true;
     else if (a === '--json')       out.json      = true;
     else if (a === '-h' || a === '--help') out.help = true;
     else { console.error(`unknown argument: ${a}`); process.exit(1); }
@@ -66,6 +68,7 @@ Usage: node scripts/choir-mail-fetch.js --source manual --from <dir> --email-dat
                       the parser would otherwise file as a Great Vespers packet.
   --out <dir>         default docs/choir-packets
   --dry-run           classify and report, write nothing
+  --no-ocr            skip the OCR sidecar (macOS only; ~1.5s a page)
   --json              machine-readable manifest to stdout
 `.trimStart();
 
@@ -334,6 +337,47 @@ function main() {
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.copyFileSync(path.join(args.from, a.original), dest);
     }
+    // ── OCR sidecar ────────────────────────────────────────────────────
+    //
+    // The scans carry no text layer, so without this the only way to read a
+    // packet is by eye, page by page. Vision OCR is near-perfect on the typed
+    // pages — which is where the day's variable propers live — and partial on
+    // the music scores, which carry settings of hymns we already hold.
+    //
+    // An INDEX over the scan, never a source: nothing here may be authored
+    // into fixed-texts or the DB.
+    // Every attachment still missing a sidecar, not only the ones copied in
+    // this run — so a re-run backfills packets ingested before OCR existed,
+    // and a byte-identical re-send does not silently skip it.
+    const needOcr = manifest.attachments.filter(
+      (a) => !a.ocr && !a.supersededBy && /\.pdf$/i.test(a.stored || ''));
+    if (!args.noOcr && needOcr.length) {
+      if (!choirOcr.available()) {
+        if (!args.json) console.log('  (OCR skipped — needs macOS with swiftc and pdftoppm)');
+      } else {
+        const ocrDir = path.join(packetDir, 'ocr');
+        fs.mkdirSync(ocrDir, { recursive: true });
+        if (!args.json) console.log('\n  OCR:');
+        for (const a of needOcr) {
+          const pdf = path.join(packetDir, a.stored);
+          if (!/\.pdf$/i.test(pdf) || !fs.existsSync(pdf)) continue;
+          let r;
+          try { r = choirOcr.ocrPdf(pdf); }
+          catch (err) {
+            if (!args.json) console.log(`    ! ${a.original}: ${err.message}`);
+            continue;
+          }
+          const base = path.basename(a.stored).replace(/\.pdf$/i, '.txt');
+          fs.writeFileSync(path.join(ocrDir, base), r.text);
+          a.ocr = { file: `ocr/${base}`, pages: r.pages, textPages: r.textPages,
+                    musicPages: r.musicPages, chars: r.chars };
+          if (!args.json) {
+            console.log(`    ${base.padEnd(34)} ${r.textPages} text / ${r.musicPages} music pages, ${r.chars} chars`);
+          }
+        }
+      }
+    }
+
     fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
     const bodyPath = path.join(packetDir, 'body.md');

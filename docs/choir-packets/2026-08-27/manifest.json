@@ -31,7 +31,14 @@
       "pages": 12,
       "hasTextLayer": false,
       "apiUrl": "/api/service?date=2026-08-29",
-      "messageSubject": "St John Choir Weekly Email Blast 08.27.26"
+      "messageSubject": "St John Choir Weekly Email Blast 08.27.26",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-08-29.txt",
+        "pages": 12,
+        "textPages": 8,
+        "musicPages": 4,
+        "chars": 7404
+      }
     },
     {
       "original": "08.30.26 Divine Liturgy.pdf",
@@ -50,7 +57,14 @@
       "pages": 17,
       "hasTextLayer": false,
       "apiUrl": "/api/liturgy?date=2026-08-30",
-      "messageSubject": "St John Choir Weekly Email Blast 08.27.26"
+      "messageSubject": "St John Choir Weekly Email Blast 08.27.26",
+      "ocr": {
+        "file": "ocr/liturgy-2026-08-30.txt",
+        "pages": 17,
+        "textPages": 5,
+        "musicPages": 12,
+        "chars": 2291
+      }
     },
     {
       "original": "09.02.26 Daily Vespers.pdf",
@@ -69,7 +83,14 @@
       "pages": 10,
       "hasTextLayer": false,
       "apiUrl": "/api/service?date=2026-09-02",
-      "messageSubject": "St John Choir Weekly Email Blast 08.27.26"
+      "messageSubject": "St John Choir Weekly Email Blast 08.27.26",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-09-02.txt",
+        "pages": 10,
+        "textPages": 5,
+        "musicPages": 5,
+        "chars": 3473
+      }
     },
     {
       "original": "INTRO to TONE 4 packet.pdf",
@@ -87,7 +108,14 @@
       "bytes": 4014427,
       "pages": 8,
       "hasTextLayer": false,
-      "messageSubject": "St John Choir Weekly Email Blast 08.27.26"
+      "messageSubject": "St John Choir Weekly Email Blast 08.27.26",
+      "ocr": {
+        "file": "ocr/tone-04-intro.txt",
+        "pages": 8,
+        "textPages": 0,
+        "musicPages": 8,
+        "chars": 0
+      }
     }
   ],
   "directives": [],

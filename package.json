@@ -26,6 +26,7 @@
     "choir:verify": "node scripts/choir-week-verify.js",
     "choir:remap": "node scripts/choir-packet-remap.js",
     "choir:index": "node scripts/choir-index-build.js",
+    "choir:ocr": "node scripts/choir-ocr.js --backfill",
     "choir:index:check": "node scripts/choir-index-build.js --check",
     "audit:parish-baseline": "node scripts/ocanwa-baseline.js",
     "audit:rank-coverage": "node scripts/rank-coverage.js --check audit/rank-coverage.json",

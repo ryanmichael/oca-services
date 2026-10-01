@@ -23,7 +23,14 @@
       "bytes": 1024647,
       "pages": 14,
       "hasTextLayer": false,
-      "apiUrl": "/api/service?date=2026-07-11"
+      "apiUrl": "/api/service?date=2026-07-11",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-07-11.txt",
+        "pages": 14,
+        "textPages": 7,
+        "musicPages": 7,
+        "chars": 5380
+      }
     },
     {
       "original": "07.12.26 Liturgy.pdf",
@@ -41,7 +48,14 @@
       "bytes": 671480,
       "pages": 9,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-07-12"
+      "apiUrl": "/api/liturgy?date=2026-07-12",
+      "ocr": {
+        "file": "ocr/liturgy-2026-07-12.txt",
+        "pages": 9,
+        "textPages": 2,
+        "musicPages": 7,
+        "chars": 1582
+      }
     }
   ],
   "directives": [],

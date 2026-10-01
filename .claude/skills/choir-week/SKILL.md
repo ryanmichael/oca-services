@@ -81,6 +81,32 @@ Read the output rather than skimming it:
   it replaced.** Exit code 2 means this happened.
 - **`Already held`** — byte-identical re-download, skipped. Normal.
 
+## Step 3b — Read the OCR sidecar before opening any scan
+
+`choir:fetch` now OCRs every page into `docs/choir-packets/<date>/ocr/<sheet>.txt`
+(macOS Vision; `--no-ocr` skips it, `npm run choir:ocr` backfills older packets).
+Each page is marked `[text]`, `[music]` or `[blank]`.
+
+**Grep the sidecar first.** On the typed pages the OCR is near-perfect — it
+reproduces the director's own "VESPRERS" typo and the `//` phrase marks — and
+those are the pages carrying the day's variable propers. A packet that used to
+need 41 visual page-reads can often be checked with a few greps:
+
+```bash
+grep -n "TONE\|Tone" docs/choir-packets/<date>/ocr/*.txt    # the tones claimed
+sed -n '/\[text\]/,/^--- page/p' docs/choir-packets/<date>/ocr/<sheet>.txt
+```
+
+On `[music]` pages it is only partial: lyrics come back syllable-hyphenated and
+mixed with noise read off the staves ("551 ald 88 a les"). Those pages carry
+settings of fixed hymns we already hold, so that is usually fine — but when a
+music page is the only source for a text, **read it with the Read tool**, not
+from the sidecar.
+
+**The sidecar is an INDEX, never a source.** Nothing in it may be authored into
+`fixed-texts/` or the DB. A mis-read word in a sticheron is worse than no word.
+Use it to find and compare; quote the scan itself when it matters.
+
 ## Step 4 — Cross-check the mapping, before reading a single page
 
 ```bash

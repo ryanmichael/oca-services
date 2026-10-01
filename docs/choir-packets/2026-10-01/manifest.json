@@ -11,7 +11,7 @@
     }
   ],
   "source": "manual",
-  "fetchedAt": "2026-10-01T20:51:00.481Z",
+  "fetchedAt": "2026-10-01T21:58:32.719Z",
   "weekTone": null,
   "attachments": [
     {
@@ -31,7 +31,14 @@
       "pages": 16,
       "hasTextLayer": false,
       "apiUrl": "/api/service?date=2026-10-03",
-      "messageSubject": "St John Choir Weekly Email Blast 10/01"
+      "messageSubject": "St John Choir Weekly Email Blast 10/01",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-10-03.txt",
+        "pages": 16,
+        "textPages": 6,
+        "musicPages": 10,
+        "chars": 4724
+      }
     },
     {
       "original": "10.04.26 Divine Liturgy.pdf",
@@ -50,7 +57,14 @@
       "pages": 15,
       "hasTextLayer": false,
       "apiUrl": "/api/liturgy?date=2026-10-04",
-      "messageSubject": "St John Choir Weekly Email Blast 10/01"
+      "messageSubject": "St John Choir Weekly Email Blast 10/01",
+      "ocr": {
+        "file": "ocr/liturgy-2026-10-04.txt",
+        "pages": 15,
+        "textPages": 3,
+        "musicPages": 12,
+        "chars": 2071
+      }
     },
     {
       "original": "10.08.26 Daily Vespers.pdf",
@@ -75,11 +89,34 @@
         "contentDate": "2026-10-09"
       },
       "remapReason": "10-08 is a Thursday and the parish serves an all-night vigil that evening, not Daily Vespers; Wednesday 10-07 is the standing DV day and renders Ven. Pelagia (Oct 8). Same liturgical-day naming as 'Daily Vespers 10.01.26' in the 09-24 blast.",
-      "remappedAt": "2026-10-01T20:51:00.699Z"
+      "remappedAt": "2026-10-01T20:51:00.699Z",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-10-08.txt",
+        "pages": 10,
+        "textPages": 4,
+        "musicPages": 6,
+        "chars": 2970
+      }
     }
   ],
   "directives": [],
   "unresolved": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "filename": "10.03.26 Great Vespers.pdf",
+      "reason": "identical to 2026-10-01/pdf/great-vespers-2026-10-03.pdf",
+      "sha256": "26e19507c8376b42d4c7f7e99bc77a6251e7ff6a421360bf972a1a9bdace6d43"
+    },
+    {
+      "filename": "10.04.26 Divine Liturgy.pdf",
+      "reason": "identical to 2026-10-01/pdf/liturgy-2026-10-04.pdf",
+      "sha256": "8a6cbf7e6a0a5c1c8ea1729aff45a8218ba5041f65221a03022a41d6bc623730"
+    },
+    {
+      "filename": "10.08.26 Daily Vespers.pdf",
+      "reason": "identical to 2026-10-01/pdf/daily-vespers-2026-10-08.pdf",
+      "sha256": "e75ef11d77531251e9bba93f05fa19fb61a54de9aff24a4fd86167799ec61db8"
+    }
+  ],
   "excluded": []
 }

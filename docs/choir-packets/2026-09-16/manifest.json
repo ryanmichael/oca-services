@@ -23,7 +23,14 @@
       "bytes": 7604710,
       "pages": 13,
       "hasTextLayer": false,
-      "apiUrl": "/api/service?date=2026-09-19"
+      "apiUrl": "/api/service?date=2026-09-19",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-09-19.txt",
+        "pages": 13,
+        "textPages": 6,
+        "musicPages": 7,
+        "chars": 5975
+      }
     },
     {
       "original": "09.20.26 Divine Liturgy.pdf",
@@ -41,7 +48,14 @@
       "bytes": 5297837,
       "pages": 8,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-09-20"
+      "apiUrl": "/api/liturgy?date=2026-09-20",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-20.txt",
+        "pages": 8,
+        "textPages": 2,
+        "musicPages": 6,
+        "chars": 1290
+      }
     },
     {
       "original": "INTRO to TONE 7 packet.pdf",
@@ -58,7 +72,14 @@
       "sha256": "3c15f588d56abfb0817d3837b53f5416be8b5528bf0023dc3be4e076f9a61455",
       "bytes": 3838083,
       "pages": 7,
-      "hasTextLayer": false
+      "hasTextLayer": false,
+      "ocr": {
+        "file": "ocr/tone-07-intro.txt",
+        "pages": 7,
+        "textPages": 0,
+        "musicPages": 7,
+        "chars": 0
+      }
     }
   ],
   "directives": [],

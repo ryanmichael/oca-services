@@ -33,7 +33,14 @@
       "pages": 35,
       "hasTextLayer": false,
       "apiUrl": "/api/vigil?date=2026-08-05",
-      "messageSubject": "Upcoming: Feast of Transfiguration"
+      "messageSubject": "Upcoming: Feast of Transfiguration",
+      "ocr": {
+        "file": "ocr/all-night-vigil-2026-08-05.txt",
+        "pages": 35,
+        "textPages": 13,
+        "musicPages": 22,
+        "chars": 11548
+      }
     },
     {
       "original": "08.06 Transfiguration Liturgy.pdf",
@@ -54,7 +61,14 @@
       "pages": 19,
       "hasTextLayer": false,
       "apiUrl": "/api/liturgy?date=2026-08-06",
-      "messageSubject": "Upcoming: Feast of Transfiguration"
+      "messageSubject": "Upcoming: Feast of Transfiguration",
+      "ocr": {
+        "file": "ocr/liturgy-2026-08-06.txt",
+        "pages": 19,
+        "textPages": 5,
+        "musicPages": 14,
+        "chars": 4053
+      }
     }
   ],
   "directives": [],

@@ -23,7 +23,14 @@
       "bytes": 6146380,
       "pages": 12,
       "hasTextLayer": false,
-      "apiUrl": "/api/service?date=2026-08-01"
+      "apiUrl": "/api/service?date=2026-08-01",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-08-01.txt",
+        "pages": 12,
+        "textPages": 7,
+        "musicPages": 5,
+        "chars": 5323
+      }
     },
     {
       "original": "08.02.26 Divine Liturgy.pdf",
@@ -41,7 +48,14 @@
       "bytes": 4329455,
       "pages": 9,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-08-02"
+      "apiUrl": "/api/liturgy?date=2026-08-02",
+      "ocr": {
+        "file": "ocr/liturgy-2026-08-02.txt",
+        "pages": 9,
+        "textPages": 3,
+        "musicPages": 6,
+        "chars": 876
+      }
     }
   ],
   "directives": [],

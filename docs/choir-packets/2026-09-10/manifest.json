@@ -23,7 +23,14 @@
       "bytes": 7988832,
       "pages": 16,
       "hasTextLayer": false,
-      "apiUrl": "/api/service?date=2026-09-12"
+      "apiUrl": "/api/service?date=2026-09-12",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-09-12.txt",
+        "pages": 16,
+        "textPages": 9,
+        "musicPages": 7,
+        "chars": 6787
+      }
     },
     {
       "original": "09.13.26 Divine Liturgy.pdf",
@@ -41,7 +48,14 @@
       "bytes": 6237734,
       "pages": 13,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-09-13"
+      "apiUrl": "/api/liturgy?date=2026-09-13",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-13.txt",
+        "pages": 13,
+        "textPages": 3,
+        "musicPages": 10,
+        "chars": 2476
+      }
     },
     {
       "original": "09.14 Feastal Liturgy for the Exaltation of the Cross.pdf",
@@ -61,7 +75,14 @@
       "bytes": 12268107,
       "pages": 20,
       "hasTextLayer": false,
-      "apiUrl": "/api/liturgy?date=2026-09-14"
+      "apiUrl": "/api/liturgy?date=2026-09-14",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-14.txt",
+        "pages": 20,
+        "textPages": 4,
+        "musicPages": 15,
+        "chars": 2713
+      }
     },
     {
       "original": "INTRO to TONE 6 packet.pdf",
@@ -78,7 +99,14 @@
       "sha256": "23fc9157c57f858722b4bb9302d3bbe58d861775af50588d6bc45855c429e487",
       "bytes": 2992375,
       "pages": 6,
-      "hasTextLayer": false
+      "hasTextLayer": false,
+      "ocr": {
+        "file": "ocr/tone-06-intro.txt",
+        "pages": 6,
+        "textPages": 0,
+        "musicPages": 6,
+        "chars": 0
+      }
     }
   ],
   "directives": [],

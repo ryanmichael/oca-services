@@ -37,7 +37,14 @@
       "pages": 12,
       "hasTextLayer": false,
       "apiUrl": "/api/service?date=2026-09-05",
-      "messageSubject": "St John Choir Email Blast 09.04"
+      "messageSubject": "St John Choir Email Blast 09.04",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-09-05.txt",
+        "pages": 12,
+        "textPages": 6,
+        "musicPages": 6,
+        "chars": 4943
+      }
     },
     {
       "original": "09.06.26 Divine Liturgy.pdf",
@@ -56,7 +63,14 @@
       "pages": 13,
       "hasTextLayer": false,
       "apiUrl": "/api/liturgy?date=2026-09-06",
-      "messageSubject": "St John Choir Email Blast 09.04"
+      "messageSubject": "St John Choir Email Blast 09.04",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-06.txt",
+        "pages": 13,
+        "textPages": 3,
+        "musicPages": 10,
+        "chars": 2158
+      }
     },
     {
       "original": "INTRO to TONE 5 packet.pdf",
@@ -74,7 +88,14 @@
       "bytes": 3725339,
       "pages": 7,
       "hasTextLayer": false,
-      "messageSubject": "St John Choir Email Blast 09.04"
+      "messageSubject": "St John Choir Email Blast 09.04",
+      "ocr": {
+        "file": "ocr/tone-05-intro.txt",
+        "pages": 7,
+        "textPages": 0,
+        "musicPages": 7,
+        "chars": 0
+      }
     },
     {
       "original": "09.08 Liturgy Nativity of the Theotokos .pdf",
@@ -95,7 +116,14 @@
       "pages": 8,
       "hasTextLayer": false,
       "apiUrl": "/api/liturgy?date=2026-09-08",
-      "messageSubject": "Feast of the Most Holy Theotokos Music"
+      "messageSubject": "Feast of the Most Holy Theotokos Music",
+      "ocr": {
+        "file": "ocr/liturgy-2026-09-08.txt",
+        "pages": 8,
+        "textPages": 1,
+        "musicPages": 7,
+        "chars": 613
+      }
     }
   ],
   "directives": [],

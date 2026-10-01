@@ -1,8 +1,12 @@
 'use strict';
 
 const fs   = require('fs');
+const http = require('http');          // also a pre-split server.js global
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
+
+const { servicesForDay } = require('../search/service-catalog');
+const choirAssets        = require('../search/choir-assets');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -86,34 +90,22 @@ function handle(req, res, ctx) {
         paschalHours:    { key: 'paschalHours',      name: 'Paschal Hours',                  endpoint: '/api/paschal-hours' },
         paschaCollection:{ key: 'paschaCollection',  name: 'Holy Pascha Collection',         endpoint: '/api/pascha-collection' },
         kneelingVespers: { key: 'kneelingVespers',   name: 'Kneeling Vespers of Pentecost',  endpoint: '/api/kneeling-vespers' },
+        // A vigil is ONE service (Vespers + Matins). Omitting it meant an
+        // all-night-vigil date silently offered neither half here.
+        allNightVigil:   { key: 'allNightVigil',     name: 'All-Night Vigil',                endpoint: '/api/vigil' },
+        burialVespers:   { key: 'burialVespers',     name: 'Vespers of Great Friday',        endpoint: '/api/service' },
       };
 
-      // Build available services list
-      // Vespers date-shift: vespers served this evening belongs to tomorrow
+      // Which services are served — from service-catalog.js, the single source
+      // shared with /api/days and /api/search. This route used to rebuild the
+      // whole map inline, which is exactly the drift the catalog exists to
+      // prevent: the inline copy had no allNightVigil, so a vigil date offered
+      // neither Vespers nor Matins here.
+      // Vespers date-shift: vespers served this evening belongs to tomorrow.
       const vespersEntry = getCalendarEntry(getNextDateStr(date), style);
-      const available = {
-        greatVespers:    vespersEntry?.vespers?.serviceType === 'greatVespers' && !vespersEntry?.vespers?.serviceKey,
-        dailyVespers:    vespersEntry?.vespers?.serviceType === 'dailyVespers',
-        bridegroomMatins: isBridegroomMatins(d),
-        lamentations:    isLamentationsDay(d),
-        vesperalLiturgy: isVesperalLiturgyDay(d),
-        royalHours:      isRoyalHoursDay(d),
-        passionGospels:  isPassionGospelsDay(d),
-        matins:          !!buildMatinsSpec(date, d, dowStr, season, getTone(d), sources, style),
-        liturgy:         !!(entry?.liturgy) || isLiturgyServed(d, style),
-        presanctified:   isPresanctifiedDay(d, style),
-        paschalHours:    getLiturgicalSeason(d) === 'brightWeek',
-        paschaCollection: (() => {
-          const p = calculatePascha(d.getUTCFullYear());
-          return d.getUTCMonth() === p.getUTCMonth() && d.getUTCDate() === p.getUTCDate();
-        })(),
-        kneelingVespers: (() => {
-          const p = calculatePascha(d.getUTCFullYear());
-          const DAY = 86400000;
-          const midnight = new Date(date + 'T00:00:00Z');
-          return Math.round((midnight - p) / DAY) === 49;
-        })(),
-      };
+      const available = servicesForDay({
+        cur: d, dateStr: date, dow: dowStr, season, entry, vespersEntry, style, sources, ctx,
+      });
 
       const toFetch = Object.entries(available)
         .filter(([, avail]) => avail)
@@ -125,7 +117,12 @@ function handle(req, res, ctx) {
       const translationSuffix = translation ? `&translation=${encodeURIComponent(translation)}` : '';
       const styleSuffix       = style && style !== 'new' ? `&style=${style}` : '';
       const fetchInternal = (endpoint, dateStr, pron) => new Promise((resolve, reject) => {
-        const url = `http://localhost:${PORT}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}${styleSuffix}`;
+        // PORT was a module global in the pre-split server.js and never made it
+        // into this route, so every request here threw "PORT is not defined".
+        // The listening socket knows the real port, and unlike req.headers.host
+        // it stays correct behind a proxy.
+        const port = req.socket?.localPort || process.env.PORT || 3000;
+        const url = `http://127.0.0.1:${port}${endpoint}?date=${dateStr}&pronoun=${pron}${translationSuffix}${styleSuffix}`;
         http.get(url, (resp) => {
           let body = '';
           resp.on('data', chunk => body += chunk);
@@ -148,10 +145,25 @@ function handle(req, res, ctx) {
           for (let i = 0; i < toFetch.length; i++) {
             const data = results[i];
             if (!data || !data.blocks) continue;
+            // The choir's own sheets for this service, from the asset index.
+            // Metadata only — `available` says whether the PDF is on this
+            // machine; in production it is false, since the packet scans are
+            // gitignored. Redistribution is gated on asking the director.
+            const svcKey      = toFetch[i].key;
+            const contentDate = choirAssets.contentDateFor(date, svcKey);
+            const music = choirAssets.musicForService(date, svcKey, {
+              contentDate, tone: data.tone ?? tone,
+            });
+            // Per-hymn sheets that confidently match a rendered block are
+            // attached to it; the rest stay listed here rather than vanishing.
+            const { attached, unattached } = choirAssets.attachToBlocks(data.blocks, music.blocks);
+
             services.push({
-              type: toFetch[i].key,
+              type: svcKey,
               name: data.serviceName || toFetch[i].name,
               blocks: data.blocks,
+              contentDate,
+              music: { ...music, blocks: unattached, attachedToBlocks: attached },
             });
           }
 

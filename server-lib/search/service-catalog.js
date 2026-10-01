@@ -24,9 +24,15 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+// Both sides are floored to UTC midnight before subtracting. Without that this
+// is sensitive to the time of day on `cur`: /api/days passes midnight and gets
+// 49.0, while /api/choir-prep passes noon and got 49.5, which Math.round takes
+// to 50 — so Kneeling Vespers vanished on Pentecost for that caller alone.
+const utcMidnight = (x) => Date.UTC(x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate());
+
 const daysFromPascha = (d) => {
   const p = d.ctx.calculatePascha(d.cur.getUTCFullYear());
-  return Math.round((d.cur - p) / DAY_MS);
+  return Math.round((utcMidnight(d.cur) - utcMidnight(p)) / DAY_MS);
 };
 
 const SERVICE_CATALOG = [

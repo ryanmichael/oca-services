@@ -4,6 +4,7 @@ const fs   = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 const { searchServices } = require('../search/service-catalog');
+const choirAssets        = require('../search/choir-assets');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -48,7 +49,7 @@ function handle(req, res, ctx) {
 
       if (query.length < 2) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ services: [], saints: [] }));
+        res.end(JSON.stringify({ services: [], saints: [], music: [] }));
         return;
       }
 
@@ -119,8 +120,18 @@ function handle(req, res, ctx) {
         console.error('/api/search error:', err);
       }
 
+      // The choir's own sheets, from the asset index: a chorister searching
+      // "Cosmas" or "tone 8" wants the music, not only the rendered texts.
+      // Metadata only — see server-lib/search/choir-assets.js on redistribution.
+      let music = [];
+      try {
+        music = choirAssets.searchMusic(query, { limit: 25 });
+      } catch (err) {
+        console.error('/api/search music error:', err);
+      }
+
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ services, saints: results }));
+      res.end(JSON.stringify({ services, saints: results, music }));
 
 }
 

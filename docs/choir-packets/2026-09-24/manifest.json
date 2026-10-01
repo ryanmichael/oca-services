@@ -1,0 +1,170 @@
+{
+  "emailDate": "2026-09-24",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Blast 09.24 LONG EMAIL - PLEASE READ CAREFULLY",
+  "source": "manual",
+  "sourceDir": "docs/9-26 and 9-27 and 10.1",
+  "fetchedAt": "2026-10-01T13:40:32.131Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Daily Vespers 10.01.26.pdf",
+      "kind": "service",
+      "service": "dailyVespers",
+      "serviceLabel": "Daily Vespers",
+      "apiDate": "2026-09-30",
+      "contentDate": "2026-10-01",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "confirmed",
+      "reasons": [],
+      "stored": "pdf/daily-vespers-2026-10-01.pdf",
+      "sha256": "119076ebca6fbeb798a184e819ed7b1cd034a8754ed5bce8200b9a351bad30d7",
+      "bytes": 5517602,
+      "pages": 10,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-09-30",
+      "remappedFrom": {
+        "apiDate": "2026-10-01",
+        "contentDate": "2026-10-02"
+      },
+      "remapReason": "Email body says 'DV (Wed 10.01)'; 2026-10-01 is a Thursday and the Protection of the Theotokos, so 10.01 names the liturgical day. Sung Wed evening 09-30.",
+      "remappedAt": "2026-10-01T13:48:59.595Z"
+    },
+    {
+      "original": "Divine Liturgy 09.27.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-09-27",
+      "contentDate": "2026-09-27",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-09-27.pdf",
+      "sha256": "250bf122e355f17fff10809ae92853736f4197b2a586e0ade778f3f84b6b267b",
+      "bytes": 6516064,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-09-27"
+    },
+    {
+      "original": "Great Vespers 09.26.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-09-26",
+      "contentDate": "2026-09-27",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-09-26.pdf",
+      "sha256": "0213a6869261bd5dcfcc250611f89f47f4ab2c7e6e9f9e7acafa037936ea3c70",
+      "bytes": 6081464,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-09-26"
+    },
+    {
+      "original": "INTRO to TONE 8 packet.pdf",
+      "kind": "tone",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": 8,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/tone-08-intro.pdf",
+      "sha256": "bfb45608512c1c0074f7c0663de4b52544e4b552352688e0a567f2079585ad7f",
+      "bytes": 3708439,
+      "pages": 8,
+      "hasTextLayer": false
+    },
+    {
+      "original": "Lord Have Mercy (Byzantine).pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/Lord Have Mercy (Byzantine).pdf",
+      "sha256": "ee33d34221f95b79d866f9404adf4e35ef071327c47e8ce9cd7621a160274fa2",
+      "bytes": 383812,
+      "pages": 1,
+      "hasTextLayer": false
+    },
+    {
+      "original": "Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
+      "sha256": "0a4b6a242245e685d4f3bb7c87af74ccb590fbbc2835abce6637f3259c9d9cc3",
+      "bytes": 1693714,
+      "pages": 2,
+      "hasTextLayer": false
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [
+    {
+      "filename": "Daily Vespers 10.01.26.pdf",
+      "reason": "identical to 2026-09-24/pdf/daily-vespers-2026-10-01.pdf",
+      "sha256": "119076ebca6fbeb798a184e819ed7b1cd034a8754ed5bce8200b9a351bad30d7"
+    },
+    {
+      "filename": "Divine Liturgy 09.27.26.pdf",
+      "reason": "identical to 2026-09-24/pdf/liturgy-2026-09-27.pdf",
+      "sha256": "250bf122e355f17fff10809ae92853736f4197b2a586e0ade778f3f84b6b267b"
+    },
+    {
+      "filename": "Great Vespers 09.26.26.pdf",
+      "reason": "identical to 2026-09-24/pdf/great-vespers-2026-09-26.pdf",
+      "sha256": "0213a6869261bd5dcfcc250611f89f47f4ab2c7e6e9f9e7acafa037936ea3c70"
+    },
+    {
+      "filename": "INTRO to TONE 8 packet.pdf",
+      "reason": "identical to 2026-09-24/pdf/tone-08-intro.pdf",
+      "sha256": "bfb45608512c1c0074f7c0663de4b52544e4b552352688e0a567f2079585ad7f"
+    },
+    {
+      "filename": "Lord Have Mercy (Byzantine).pdf",
+      "reason": "identical to 2026-09-24/pdf/_unclassified/Lord Have Mercy (Byzantine).pdf",
+      "sha256": "ee33d34221f95b79d866f9404adf4e35ef071327c47e8ce9cd7621a160274fa2"
+    },
+    {
+      "filename": "Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
+      "reason": "identical to 2026-09-24/pdf/_unclassified/Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
+      "sha256": "0a4b6a242245e685d4f3bb7c87af74ccb590fbbc2835abce6637f3259c9d9cc3"
+    },
+    {
+      "filename": "Daily Vespers 10.01.26 (1).pdf",
+      "reason": "identical to 2026-09-24/pdf/daily-vespers-2026-10-01.pdf",
+      "sha256": "119076ebca6fbeb798a184e819ed7b1cd034a8754ed5bce8200b9a351bad30d7"
+    },
+    {
+      "filename": "Divine Liturgy 09.27.26 (1).pdf",
+      "reason": "identical to 2026-09-24/pdf/liturgy-2026-09-27.pdf",
+      "sha256": "250bf122e355f17fff10809ae92853736f4197b2a586e0ade778f3f84b6b267b"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "emailDate": "2026-08-02",
+  "sender": "cjruss63@gmail.com",
+  "subject": "Upcoming: Feast of Transfiguration",
+  "messages": [
+    {
+      "subject": "Upcoming: Feast of Transfiguration",
+      "sourceDir": "docs/7-6",
+      "fetchedAt": "2026-10-01T14:58:27.275Z",
+      "attachments": 2
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-01T14:58:27.275Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "08.05 Transfiguration Vigil.pdf",
+      "kind": "service",
+      "service": "allNightVigil",
+      "serviceLabel": "All-Night Vigil",
+      "apiDate": "2026-08-05",
+      "contentDate": "2026-08-06",
+      "apiPath": "/api/vigil",
+      "tone": null,
+      "confidence": "medium",
+      "reasons": [
+        "year not in filename; inferred 2026-08-05 from email date 2026-08-02"
+      ],
+      "stored": "pdf/all-night-vigil-2026-08-05.pdf",
+      "sha256": "b7e28abb3db9440da0498a2a00ac58483cebafb238f0ffc1f05a20bf346f3e1d",
+      "bytes": 18215291,
+      "pages": 35,
+      "hasTextLayer": false,
+      "apiUrl": "/api/vigil?date=2026-08-05",
+      "messageSubject": "Upcoming: Feast of Transfiguration"
+    },
+    {
+      "original": "08.06 Transfiguration Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Liturgy",
+      "apiDate": "2026-08-06",
+      "contentDate": "2026-08-06",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "medium",
+      "reasons": [
+        "year not in filename; inferred 2026-08-06 from email date 2026-08-02"
+      ],
+      "stored": "pdf/liturgy-2026-08-06.pdf",
+      "sha256": "088c3478f6a27e96a3370fb60f7aefd5f4e5b467240dab2c8c5af2a0a9d762bd",
+      "bytes": 11548571,
+      "pages": 19,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-08-06",
+      "messageSubject": "Upcoming: Feast of Transfiguration"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": []
+}

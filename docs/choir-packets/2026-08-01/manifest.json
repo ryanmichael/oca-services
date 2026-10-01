@@ -1,0 +1,50 @@
+{
+  "emailDate": "2026-08-01",
+  "sender": "cjruss63@gmail.com",
+  "subject": "ST John Choir Weekly Blast",
+  "source": "manual",
+  "sourceDir": "docs/8-1 and 8-2",
+  "fetchedAt": "2026-10-01T13:38:25.590Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "08.01.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-08-01",
+      "contentDate": "2026-08-02",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-08-01.pdf",
+      "sha256": "52f8583b9d4c033f18b4fa959022576e37f73eb47b104776bc8f9c6ef25e4f3e",
+      "bytes": 6146380,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-08-01"
+    },
+    {
+      "original": "08.02.26 Divine Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-08-02",
+      "contentDate": "2026-08-02",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-08-02.pdf",
+      "sha256": "d862315699608e3b6eaccb8df80e06c3a5a6eba41ab053d467600b0be47a9c49",
+      "bytes": 4329455,
+      "pages": 9,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-08-02"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": []
+}

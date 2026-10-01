@@ -1,0 +1,50 @@
+{
+  "emailDate": "2026-07-07",
+  "sender": "cjruss63@gmail.com",
+  "subject": "Orthodox Church Choir Resources",
+  "source": "manual",
+  "sourceDir": "docs/7-11 and 7-12/extracted",
+  "fetchedAt": "2026-10-01T13:38:48.294Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "07.11.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-07-11",
+      "contentDate": "2026-07-12",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-07-11.pdf",
+      "sha256": "92817f66af309d572060d9200270d373af33329b8095cd60c3f7fc2ea7bd05f8",
+      "bytes": 1024647,
+      "pages": 14,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-07-11"
+    },
+    {
+      "original": "07.12.26 Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Liturgy",
+      "apiDate": "2026-07-12",
+      "contentDate": "2026-07-12",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-07-12.pdf",
+      "sha256": "3a1e268623b3b3a9de96289935ced125398d518dbb44d6f46676ded74c4bc9ed",
+      "bytes": 671480,
+      "pages": 9,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-07-12"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": []
+}

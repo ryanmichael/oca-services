@@ -44,6 +44,10 @@ fixed-texts/translations/_*/
 # Source PDFs (large; kept locally)
 reference/*.pdf
 
+# Choir-director packet scans (~32MB/week). The manifest, extracted body and
+# review notes beside them ARE tracked — only the scans stay local.
+docs/choir-packets/*/pdf/
+
 # Rescrape harness DOCX cache (~11MB of fetched OCA source texts; regenerable)
 reference/scrape/
 

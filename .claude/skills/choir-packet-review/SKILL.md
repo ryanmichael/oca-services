@@ -144,7 +144,15 @@ Finish by asking which to act on. Do not start fixes from inside this skill.
 
 ## Pointers
 
-- `docs/<dates>/` — the packets, one folder per weekend, usually untracked.
+- `docs/choir-packets/<email-date>/` — the current layout, written by
+  `npm run choir:fetch`. Read `manifest.json` FIRST: it already resolves each
+  attachment to a service, an `apiDate`, a `contentDate` (the Vespers shift,
+  precomputed) and an `apiUrl`, and lists anything it could not classify under
+  `unresolved`. The scans are in `pdf/` and are gitignored.
+  **An attachment with `supersededBy` set is a corrected re-send — review the
+  revision, not the original.**
+- `docs/<dates>/` — the older hand-named folders (`9-19 and 9-20`, …), still
+  present for packets predating the manifest.
 - `.claude/skills/choir-correction` — applying a confirmed parish divergence.
 - `.claude/skills/audit-driven-fix` — fixing a confirmed defect of ours.
 - `corrections_log` table — `source_artifact` should name the packet PDF.

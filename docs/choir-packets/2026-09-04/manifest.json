@@ -1,0 +1,110 @@
+{
+  "emailDate": "2026-09-04",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast 09.04",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast 09.04",
+      "sourceDir": "docs/9-5",
+      "fetchedAt": "2026-10-01T14:58:35.168Z",
+      "attachments": 3
+    },
+    {
+      "subject": "Feast of the Most Holy Theotokos Music",
+      "sourceDir": "docs/9-7",
+      "fetchedAt": "2026-10-01T14:58:35.285Z",
+      "attachments": 1
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-01T14:58:35.285Z",
+  "weekTone": 5,
+  "attachments": [
+    {
+      "original": "09.05.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-09-05",
+      "contentDate": "2026-09-06",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-09-05.pdf",
+      "sha256": "fd054d7177f13a1cf2e26c212e542ed52b96009e68d046efbde34419dc8b9f39",
+      "bytes": 6851516,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-09-05",
+      "messageSubject": "St John Choir Email Blast 09.04"
+    },
+    {
+      "original": "09.06.26 Divine Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-09-06",
+      "contentDate": "2026-09-06",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-09-06.pdf",
+      "sha256": "2aa7345dada383def66097cb94bd0f713c0e86f262fc2b263d91e088b39c8c73",
+      "bytes": 7558264,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-09-06",
+      "messageSubject": "St John Choir Email Blast 09.04"
+    },
+    {
+      "original": "INTRO to TONE 5 packet.pdf",
+      "kind": "tone",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": 5,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/tone-05-intro.pdf",
+      "sha256": "42bf37f33f1042e3316a341efd2722e94b2dec37805baa3bd7832549e0246ac3",
+      "bytes": 3725339,
+      "pages": 7,
+      "hasTextLayer": false,
+      "messageSubject": "St John Choir Email Blast 09.04"
+    },
+    {
+      "original": "09.08 Liturgy Nativity of the Theotokos .pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Liturgy",
+      "apiDate": "2026-09-08",
+      "contentDate": "2026-09-08",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "medium",
+      "reasons": [
+        "year not in filename; inferred 2026-09-08 from email date 2026-09-04"
+      ],
+      "stored": "pdf/liturgy-2026-09-08.pdf",
+      "sha256": "399fd683479666b0648b88c0be8f231dc3b231d035b50162f9de287be7e054b4",
+      "bytes": 3982589,
+      "pages": 8,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-09-08",
+      "messageSubject": "Feast of the Most Holy Theotokos Music"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": [
+    {
+      "filename": "backlog-2026-08-29-vespers-liturgy-review.pdf",
+      "matched": "backlog-"
+    }
+  ]
+}

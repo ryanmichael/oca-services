@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 8,
+  "packets": 9,
   "counts": {
-    "service": 20,
+    "service": 23,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
     "unbound": 4,
-    "assets": 155
+    "assets": 158
   },
   "assets": {
     "92817f66af30": {
@@ -226,6 +226,30 @@
       "filename": "Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf",
       "bytes": 1693714,
       "pages": 2
+    },
+    "26e19507c837": {
+      "id": "26e19507c837",
+      "sha256": "26e19507c8376b42d4c7f7e99bc77a6251e7ff6a421360bf972a1a9bdace6d43",
+      "path": "2026-10-01/pdf/great-vespers-2026-10-03.pdf",
+      "filename": "10.03.26 Great Vespers.pdf",
+      "bytes": 7858738,
+      "pages": 16
+    },
+    "8a6cbf7e6a0a": {
+      "id": "8a6cbf7e6a0a",
+      "sha256": "8a6cbf7e6a0a5c1c8ea1729aff45a8218ba5041f65221a03022a41d6bc623730",
+      "path": "2026-10-01/pdf/liturgy-2026-10-04.pdf",
+      "filename": "10.04.26 Divine Liturgy.pdf",
+      "bytes": 7840966,
+      "pages": 15
+    },
+    "e75ef11d7753": {
+      "id": "e75ef11d7753",
+      "sha256": "e75ef11d77531251e9bba93f05fa19fb61a54de9aff24a4fd86167799ec61db8",
+      "path": "2026-10-01/pdf/daily-vespers-2026-10-08.pdf",
+      "filename": "10.08.26 Daily Vespers.pdf",
+      "bytes": 4711236,
+      "pages": 10
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1488,6 +1512,37 @@
       "role": "intro-packet",
       "asset": "bfb45608512c",
       "packet": "2026-09-24"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-03",
+      "contentDate": "2026-10-04",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "26e19507c837",
+      "packet": "2026-10-01"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-04",
+      "contentDate": "2026-10-04",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "8a6cbf7e6a0a",
+      "packet": "2026-10-01"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-07",
+      "contentDate": "2026-10-08",
+      "service": "dailyVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "e75ef11d7753",
+      "packet": "2026-10-01",
+      "remapped": true
     },
     {
       "kind": "block",

@@ -1,0 +1,85 @@
+{
+  "emailDate": "2026-10-01",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Weekly Email Blast 10/01",
+  "messages": [
+    {
+      "subject": "St John Choir Weekly Email Blast 10/01",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/3627c107-a59e-4f6c-8111-dd504fefe99e/scratchpad/drop-2026-10-01",
+      "fetchedAt": "2026-10-01T20:51:00.481Z",
+      "attachments": 3
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-01T20:51:00.481Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "10.03.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-10-03",
+      "contentDate": "2026-10-04",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-10-03.pdf",
+      "sha256": "26e19507c8376b42d4c7f7e99bc77a6251e7ff6a421360bf972a1a9bdace6d43",
+      "bytes": 7858738,
+      "pages": 16,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-03",
+      "messageSubject": "St John Choir Weekly Email Blast 10/01"
+    },
+    {
+      "original": "10.04.26 Divine Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-10-04",
+      "contentDate": "2026-10-04",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-10-04.pdf",
+      "sha256": "8a6cbf7e6a0a5c1c8ea1729aff45a8218ba5041f65221a03022a41d6bc623730",
+      "bytes": 7840966,
+      "pages": 15,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-10-04",
+      "messageSubject": "St John Choir Weekly Email Blast 10/01"
+    },
+    {
+      "original": "10.08.26 Daily Vespers.pdf",
+      "kind": "service",
+      "service": "dailyVespers",
+      "serviceLabel": "Daily Vespers",
+      "apiDate": "2026-10-07",
+      "contentDate": "2026-10-08",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "confirmed",
+      "reasons": [],
+      "stored": "pdf/daily-vespers-2026-10-08.pdf",
+      "sha256": "e75ef11d77531251e9bba93f05fa19fb61a54de9aff24a4fd86167799ec61db8",
+      "bytes": 4711236,
+      "pages": 10,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-07",
+      "messageSubject": "St John Choir Weekly Email Blast 10/01",
+      "remappedFrom": {
+        "apiDate": "2026-10-08",
+        "contentDate": "2026-10-09"
+      },
+      "remapReason": "10-08 is a Thursday and the parish serves an all-night vigil that evening, not Daily Vespers; Wednesday 10-07 is the standing DV day and renders Ven. Pelagia (Oct 8). Same liturgical-day naming as 'Daily Vespers 10.01.26' in the 09-24 blast.",
+      "remappedAt": "2026-10-01T20:51:00.699Z"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": []
+}

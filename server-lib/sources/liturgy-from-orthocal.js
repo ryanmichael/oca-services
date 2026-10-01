@@ -1054,9 +1054,71 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // ── Litany for the Departed (Soul Saturdays) ─────────────────────────────
   const includeDepartedLitany = isSoulSaturday(date);
 
+  // ── Feast-window signal ──────────────────────────────────────────────────
+  //
+  // "Is today inside a feast's window?" — surfaced so a consumer does not have
+  // to re-derive it. Before this, the only window knowledge reaching a route
+  // was `feastOnly`, which is true only ON a Great Feast; five hardcoded date
+  // ranges in this file (Ascension, Pentecost, Transfiguration, Dormition,
+  // Elevation) covered the rest, and those exist to pick megalynaria and
+  // dismissals, not to answer this question.
+  //
+  // Derived from the same evidence-backed predicates the hymn logic already
+  // uses, not from new date arithmetic: FEAST_CYCLE_TITLE recognises a window
+  // commemoration, and windowClaimsNowAndEver() narrows it to a GREAT feast's
+  // window. The window may be the principal (2026-08-16, Afterfeast of the
+  // Dormition) or sit beside a saint who outranks it (2026-08-09, St Herman
+  // inside the Transfiguration afterfeast), so both sources are consulted.
+  //
+  // `kind` and `isGreatFeast` are reported separately on purpose. "Afterfeast"
+  // is not the same question as "Great Feast window": 2026-08-30 is inside the
+  // Afterfeast of the Beheading, which is not one of the Twelve. A consumer
+  // that means "the feast displaces everything" wants isGreatFeast; one that
+  // means "any day the feast's hymns are sung" wants the kind. Deciding that
+  // here would bake one caller's policy into a shared signal.
+  const windowComm = feastCycleComm
+    || (principalIsFeastWindow ? menaionPrincipal : null);
+  let feastWindow = windowComm
+    ? {
+        kind: (String(windowComm.title).match(FEAST_CYCLE_TITLE) || [''])[0].trim() || null,
+        title: windowComm.title,
+        isGreatFeast: windowClaimsNowAndEver(windowComm.title),
+        isPrincipal: !feastCycleComm && principalIsFeastWindow,
+        source: 'commemoration-title',
+      }
+    : null;
+
+  // The MOVEABLE afterfeasts cannot be title-based: Ascension and Pentecost
+  // land on a different calendar date each year, so no fixed-date
+  // commemoration row carries "Afterfeast of…" for them. Both windows are
+  // already computed above (for megalynaria and the "We have seen the true
+  // Light" substitution), so reuse them rather than leaving a hole in a signal
+  // whose entire purpose is "is this feast still being sung today".
+  //
+  // Note the ranges are one day tighter than `isAscensionAfterfeast` /
+  // `isPentecostAfterfeast`. Those deliberately INCLUDE the feast itself,
+  // because a megalynarion and a dismissal introit apply on the feast and
+  // through its window alike. A window signal must not: on the fixed-date side
+  // the feast itself reports `feastOnly` with `feastWindow` null (2026-08-15,
+  // the Dormition), and reusing the wider range made Ascension report both.
+  const ascensionWindow = daysSincePascha >= 40 && daysSincePascha <= 47;
+  const pentecostWindow = daysSincePascha >= 50 && daysSincePascha <= 55;
+  if (!feastWindow && (ascensionWindow || pentecostWindow)) {
+    feastWindow = {
+      kind: 'Afterfeast',
+      title: ascensionWindow ? 'Afterfeast of the Ascension' : 'Afterfeast of Pentecost',
+      isGreatFeast: true,
+      isPrincipal: false,
+      source: 'paschal-offset',
+    };
+  }
+
   return {
     variant,
     feastOnly,
+    // Null when today is not inside any feast window. See the derivation above
+    // for why `kind` and `isGreatFeast` are reported separately.
+    feastWindow,
     // Curated signal for "principal-feast/polyeleos+ commemoration on this date."
     // Used by the patron-of-temple rubric: when true on a Sunday, the patron's
     // kontakion is dropped (single Glory slot is claimed by the principal saint);

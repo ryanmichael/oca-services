@@ -366,6 +366,16 @@ function handle(req, res, ctx) {
           season,
           liturgicalLabel,
           commemorations,
+          // Is today inside a feast's window, and is that a GREAT feast?
+          // Surfaced so a consumer need not re-derive it — the parish rubric
+          // "the patron is trumped by a feast or afterfeast" needs exactly this,
+          // and `feastOnly` alone is true only ON a Great Feast.
+          // NOTE the pair. `feastOnly` is true ON a Great Feast; `feastWindow`
+          // is non-null on the days AROUND one and null on the feast itself.
+          // A rule meaning "feast or afterfeast" is `feastOnly || feastWindow`
+          // — neither alone covers it.
+          feastOnly:      !!calendarEntry.liturgy?.feastOnly,
+          feastWindow:    calendarEntry.liturgy?.feastWindow || null,
           translation: translation || null,
           style,
           blocks,

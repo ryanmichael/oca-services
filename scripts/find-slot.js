@@ -239,12 +239,23 @@ function findAssemblerEmitter(dottedPath) {
 function scanDb() {
   const dbPath = path.join(ROOT, 'storage', 'oca.db');
   if (!fs.existsSync(dbPath)) return [];
+  // NOT -readonly: oca.db is in WAL mode, and a read-only connection to a WAL
+  // database needs to touch the -shm file, so sqlite3 fails with "unable to open
+  // database file (14)". The catch below then turned that into "no matches" — so
+  // this scan silently reported zero across 8,137 troparia and every sticheron,
+  // on a tool whose whole job is to find where a text already lives. The SQL
+  // here is SELECT-only.
   function q(sql) {
     try {
-      const raw = cp.execFileSync('sqlite3', ['-readonly', '-json', dbPath, sql], { encoding: 'utf8' });
+      const raw = cp.execFileSync('sqlite3', ['-json', dbPath, sql],
+        { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
       if (!raw.trim()) return [];
       return JSON.parse(raw);
-    } catch { return []; }
+    } catch (err) {
+      // Never swallow this into a silent zero again.
+      console.error(`  [find-slot] DB scan failed: ${(err.stderr || err.message || '').toString().trim()}`);
+      return [];
+    }
   }
   const sqlNeedle = needle.replace(/'/g, "''");
   const tropRows = q(`SELECT id, commemoration_id, type, source, substr(text, 1, 200) AS preview, text FROM troparia WHERE text LIKE '%${sqlNeedle}%' LIMIT 20;`);

@@ -86,7 +86,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       lic.now = null;
       // Suppress generic Menaion injection (which would pull May-31 Hermias).
       calendarEntry.vespers.isPentecostarionSunday = true;
-      const autoSlot = { lordICall: { hymns: stichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) } };
+      const autoSlot = { lordICall: { hymns: stichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })) } };
       if (dox) autoSlot.lordICall.glory = { text: dox.text, tone: dox.tone, label: dox.label };
       menaionOverride = { ...sources.menaion, auto: { ...(sources.menaion.auto || {}), [date]: autoSlot } };
     }
@@ -161,7 +161,10 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // it into the run cost the saint a slot — 8-09 sang the Afterfeast's
           // "In Thy goodness" as a numbered sticheron and dropped St. Herman's
           // third Tone-8 sticheron off the end.
-          else if (s.order >= 1) combined.push({ ...s, order: n++, label: s.label || c.title });
+          // `commemorationId` travels with the row so the assembler can tell a
+          // merged multi-saint slot by STRUCTURE rather than by parsing the
+          // label string — see the mixedSlots note in vespers-parts/lord-i-call.js.
+          else if (s.order >= 1) combined.push({ ...s, order: n++, label: s.label || c.title, commemorationId: c.id });
         }
       }
       if (glory) combined.unshift({ ...glory, order: 0 });
@@ -421,7 +424,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // Fallback (no pattern authored) doubles the LEADING stichera in
           // place, so a repeat always sits adjacent to its original and the
           // sequence never goes backwards. See audit rule D20-vespers-lic-repeat-monotonic.
-          const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label });
+          const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId });
           const [pmm, pdd] = adjustedMD();
           const patternKey = `${String(pmm).padStart(2, '0')}-${String(pdd).padStart(2, '0')}`;
           const patternEntry = LIC_REPEAT_PATTERNS[patternKey];
@@ -471,7 +474,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         }
 
         if (!autoSlot.lordICall) {
-          autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })) };
+          autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })) };
         }
 
         if (licGlory) {
@@ -615,7 +618,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
       if (apostStichera.length > 0 || apostGlory) {
         autoSlot.aposticha = {
-          hymns: apostStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })),
+          hymns: apostStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })),
         };
 
         const apost = calendarEntry.vespers.aposticha;
@@ -780,7 +783,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           }));
 
           autoSlot.litya = {
-            hymns: lityaStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label })),
+            hymns: lityaStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })),
           };
 
           if (lityaGlory) {

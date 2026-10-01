@@ -164,4 +164,31 @@ describe('Feature contract: hymn label choice (row label vs slot label)', () => 
     assert.equal(preferRowLabel('24 stichera by Simeon the Translator', 'Stichera'),
       '24 stichera by Simeon the Translator');
   });
+
+  it('INV-8: a merged multi-saint slot attributes each sticheron to its own saint', async () => {
+    // 2026-10-04: four stichera of Hieromartyr Hierotheus (labelled in the DB
+    // "the holy hieromartyr") and two of Ven. Paul the Simple share one slot.
+    // Neither label is in the "(for X)" form labelSubject parses, so both
+    // reduced to null, the slot read as un-mixed, and Paul's two hymns printed
+    // under Hierotheus's name. Mixed slots are now decided on commemorationId —
+    // the structure — with label parsing only as a fallback.
+    const r = await get('/api/service?date=2026-10-03');
+    const menaion = (r.json.blocks || []).filter(
+      b => b.section === 'Lord, I Have Cried' && b.type === 'hymn' && b.source === 'menaion');
+    assert.ok(menaion.length >= 6, 'precondition: the merged slot is present');
+
+    const paul = menaion.filter(b => /O wondrous Paul|Wondrous was thine obedience/.test(b.text || ''));
+    assert.equal(paul.length, 2, 'precondition: both of Paul\'s stichera render');
+    for (const b of paul) {
+      assert.match(b.label || '', /Paul the Simple/,
+        `Paul's sticheron must carry his own name, got "${b.label}"`);
+    }
+
+    // And the Glory stays under the principal's full title rather than
+    // collapsing to the bare descriptor once the slot counts as mixed.
+    const glory = menaion.find(b => /When thou wast present at the divine dormition/.test(b.text || ''));
+    assert.ok(glory, 'precondition: the Glory renders');
+    assert.match(glory.label || '', /Hierotheus/,
+      `the Glory must keep the principal's title, got "${glory.label}"`);
+  });
 });

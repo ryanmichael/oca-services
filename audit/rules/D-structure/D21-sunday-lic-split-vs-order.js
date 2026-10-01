@@ -81,9 +81,19 @@ function renderedResurrectionCount(blocks) {
 // overlay. Capping the Menaion at 3 for that signature would break the twelve
 // to fix the three.
 //
-// Closing them means authoring rank onto these commemorations (see
-// `npm run audit:rank-coverage` and memory project_sergius_rank_survey), not
-// changing the split logic.
+// TWO CANDIDATE DISCRIMINATORS WERE TESTED AND BOTH FAIL. Do not re-try them:
+//
+//   1. `commemorations.rank` — NULL for all 2,638 rows. The column is entirely
+//      unpopulated and nothing consumes it.
+//   2. orthocal's `feast_level` (the oracle scripts/rank-coverage.js uses) —
+//      does not separate the two groups. 2026-07-12 (Proclus) is level 0 and
+//      correctly renders 4+6; 2026-10-25 (Marcian and Martyrius) is also level
+//      0 and should render 7+3. Same level, opposite splits.
+//
+// Closing these means authoring the appointed sticheron count per commemoration
+// from the Typikon/Menaion — liturgical data authoring against a published
+// source, not a rule change. See `npm run audit:rank-coverage` and memory
+// project_sergius_rank_survey.
 const KNOWN_RANK_GAPS = {
   '2026-06-07': 'Synaxis of All Saints — order appoints 6 res + 4; rank NULL, renders 4 + 6.',
   '2026-10-04': 'Hieromartyr Hierotheus — order appoints 7 res + 3; rank NULL, renders 4 + 6. Confirmed against the choir packet 2026-10-01.',

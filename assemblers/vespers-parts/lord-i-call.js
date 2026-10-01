@@ -73,13 +73,25 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
   // shared with aposticha.js. See assemblers/_shared/hymn-label.js for why a
   // bare descriptor only wins when it describes someone other than the slot's
   // own commemoration.
+  //
+  // Two distinct commemorations in one slot is decided on `commemorationId`
+  // first, which the multi-saint merge in server-lib/assemble/for-date.js
+  // carries on every row. The subject-parsing below is a fallback for slots
+  // whose rows do not have it.
+  //
+  // Parsing alone was not enough: on 2026-10-04 the slot held four stichera of
+  // Hieromartyr Hierotheus labelled "the holy hieromartyr" and two of Ven. Paul
+  // the Simple labelled with his own title. Neither is in the "(for X)" form
+  // labelSubject reads, so BOTH parsed to null, `subjects` was empty, and all
+  // six printed under the principal's name — Paul's two hymns were attributed
+  // to Hierotheus. The id is the structure; the label is a description of it.
   const mixedSlots = new Set();
   for (const slot of new Set(Object.values(verseMap).map(v => v.slot))) {
+    const inSlot = Object.values(verseMap).filter(v => v.slot === slot);
+    const commIds = new Set(inSlot.map(v => v.hymn.commemorationId).filter(Boolean));
+    if (commIds.size > 1) { mixedSlots.add(slot); continue; }
     const subjects = new Set(
-      Object.values(verseMap)
-        .filter(v => v.slot === slot)
-        .map(v => labelSubject(v.hymn.label))
-        .filter(Boolean)
+      inSlot.map(v => labelSubject(v.hymn.label)).filter(Boolean)
     );
     if (subjects.size > 1) mixedSlots.add(slot);
   }
@@ -133,8 +145,15 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
       // ("Glory… Image, Tone 8"), but printed as "Afterfeast of the Dormition".
       // A bare "Glory" label (129 rows carry it) names nothing, so it never wins.
       { tone: glorySpec.tone, source: glorySpec.source,
-        label: (mixedSlots.size > 0 && glorySource.label && !/^glory$/i.test(glorySource.label))
-          ? glorySource.label : glorySpec.label,
+        // Route through the shared rule rather than taking the row label raw:
+        // a bare descriptor must not beat the slot's own title. On 2026-10-04
+        // the Glory is labelled "the holy hieromartyr" against a slot titled
+        // "Hieromartyr Hierotheus, Bishop of Athens" — same subject, and the
+        // raw override printed the descriptor. preferRowLabel also handles the
+        // 129 rows labelled bare "Glory", which name nothing.
+        label: mixedSlots.size > 0
+          ? preferRowLabel(glorySource.label, glorySpec.label)
+          : glorySpec.label,
         provenance: glorySpec.provenance || glorySource.provenance }
     ));
   }

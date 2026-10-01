@@ -176,13 +176,12 @@ one, which covers the *choir-site Menaion corpus* (Mother Raphaela's texts).
 What it unblocks: `GET /api/choir-asset?id=<asset>` now serves the files, and
 `url` is populated on every asset present on disk.
 
-**One limit worth recording.** The grant covers the parish's own compiled
-material. Several sheets carry third-party musical settings — OBIKHOD, Znamenny,
-Byzantine arrangements — whose rights sit with their publishers, and a director
-cannot grant what she does not hold. So this is the parish using its own books,
-not a public redistribution point. If these are ever exposed beyond the parish,
-that is a separate question for the rights holders, not a re-reading of this
-grant.
+**Scope.** Asked specifically about the third-party musical settings the
+booklets carry (OBIKHOD, Znamenny, Byzantine arrangements), the user confirmed
+on 2026-10-01 that permission covers **all of it**. Recorded as the user's
+representation of the grant; this document does not independently verify the
+chain of rights for each setting, and anyone taking this material outside the
+parish should confirm that for themselves.
 
 Also practical: `docs/choir-packets/*/pdf/` is gitignored, so **production has no
 copies**. Serving files in prod needs a separate decision — object store, or

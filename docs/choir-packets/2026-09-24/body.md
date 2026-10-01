@@ -57,8 +57,19 @@ PROPOSED only — nothing here has been applied. Route via `/choir-correction`.
 - **"Lord Have Mercy (Byzantine)"** is likewise `_unclassified/` — correctly, as
   it is a standing hymn setting rather than a dated service sheet.
 
-## Open question for the director
+## Open question for the director — ASKED
 
-Does the St John of Damascus troparion + Byzantine *Lord Have Mercy* come before
-or after the dismissal, and does "trumped by the feast" mean the feast's
-troparion replaces St John's entirely or is merely sung first?
+Drafted 2026-10-01 in `docs/choir-director-questions-2026-10-01.md` (ready to
+send, not yet sent):
+
+1. **The anchor.** "Following the Thanksgiving prayers" maps to at least three
+   positions in our order. The 09-27 booklet does not settle it — it carries
+   only the variable propers, and the practice began the following week.
+2. **"Trumped by the feast."** Does the feast's troparion replace St John's
+   entirely, or is the feast sung first and St John after?
+
+Until both are answered the correction stays blocked: the branch is settled
+(`structure`, gated by a new additive rubric) but the insertion point and the
+suppression rule would both have to be invented. Note also that "feast **or
+afterfeast**" is broader than the `feastOnly` gate the patron feature uses
+today, and no afterfeast signal is surfaced to the Liturgy route.

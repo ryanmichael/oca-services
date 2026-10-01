@@ -1088,6 +1088,23 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       }
     : null;
 
+  // The window's own troparion, surfaced as an object so a consumer never has
+  // to re-find it by matching rubric text. The existing `feastWindow` tag on a
+  // troparion entry is NOT this: it is set only when the window sings second
+  // (`windowSingsSecond`), so on 2026-08-16 — where the window sings last, at
+  // "Now and ever…" — nothing is tagged at all.
+  const windowTrop = feastCycleTrop
+    || (principalIsFeastWindow
+          ? (menaionPrincipal?.troparia || []).find(t => t.type === 'troparion')
+          : null);
+  if (feastWindow && windowTrop) {
+    feastWindow.troparion = {
+      text: windowTrop.text,
+      tone: windowTrop.tone ?? null,
+      rubric: `Troparion of ${windowComm.title}, Tone ${windowTrop.tone}:`,
+    };
+  }
+
   // The MOVEABLE afterfeasts cannot be title-based: Ascension and Pentecost
   // land on a different calendar date each year, so no fixed-date
   // commemoration row carries "Afterfeast of…" for them. Both windows are
@@ -1111,6 +1128,16 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
       isPrincipal: false,
       source: 'paschal-offset',
     };
+    // No commemoration row carries a moveable window, so its troparion comes
+    // from the feast's own variant entry. Without this the window is detected
+    // but has nothing to sing, and a consumer silently falls back.
+    const mv = GREAT_FEAST_VARIANTS[ascensionWindow ? 'ascension' : 'pentecost'];
+    const mvTrop = (mv?.troparia || [])[0];
+    if (mvTrop) {
+      feastWindow.troparion = {
+        text: mvTrop.text, tone: mvTrop.tone ?? null, rubric: mvTrop.rubric,
+      };
+    }
   }
 
   return {

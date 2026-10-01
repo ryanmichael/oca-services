@@ -147,10 +147,14 @@
     },
     "servesLitya": {
       "label": "Litya and Blessing of the Loaves",
-      "description": "Which days the parish serves a Litya at Great Vespers. The OCA order prints it as \u201c[Litya]\u201d \u2014 bracketed, meaning commonly omitted in parish practice \u2014 on an ordinary vigil-rank saint's day, and unbracketed on the Great Feasts. This is a question of practice, not of the saint's rank: many parishes never serve one whatever the day.",
+      "description": "Which days the parish serves a Litya at Great Vespers. The OCA order prints it as “[Litya]” — bracketed, meaning commonly omitted in parish practice — on an ordinary vigil-rank saint's day, and unbracketed on the Great Feasts. This is a question of practice, not of the saint's rank: many parishes never serve one whatever the day.",
       "namespace": "vespers.servesLitya",
       "type": "enum",
-      "options": ["always", "greatFeastsOnly", "never"],
+      "options": [
+        "always",
+        "greatFeastsOnly",
+        "never"
+      ],
       "default": "always",
       "appliesTo": [
         "vespers"
@@ -170,12 +174,35 @@
     },
     "omitReadKathisma": {
       "label": "Omit the read Kathisma at Vespers",
-      "description": "The appointed Kathisma is read in full at weekday Vespers (Daily Vespers, and weekday Great Vespers or Vigil). Many parishes omit it. When on, the read Kathisma and the Little Litany after it are left out; the sung \u201cBlessed is the Man\u201d on Saturday evening is kept.",
+      "description": "The appointed Kathisma is read in full at weekday Vespers (Daily Vespers, and weekday Great Vespers or Vigil). Many parishes omit it. When on, the read Kathisma and the Little Litany after it are left out; the sung “Blessed is the Man” on Saturday evening is kept.",
       "namespace": "vespers.omitReadKathisma",
       "type": "boolean",
       "default": false,
       "appliesTo": [
         "vespers"
+      ]
+    },
+    "prayersOfThanksgiving": {
+      "label": "Prayers of Thanksgiving after the dismissal",
+      "description": "After the dismissal, while the faithful venerate the cross and receive the priest's blessing, the reader says the Prayers of Thanksgiving after Holy Communion (Appendix II). Off by default; the service ends at the dismissal.",
+      "namespace": "liturgy.prayersOfThanksgiving",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ]
+    },
+    "sungVenerationEnding": {
+      "label": "Choir sings the close of the Prayers of Thanksgiving",
+      "description": "Requires prayersOfThanksgiving. The book appoints twelve “Lord, have mercy” said by the reader and the troparion of the Liturgy's author. When on, the choir instead sings three “Lord, have mercy” and the troparion of the temple's patron — displaced by the feast's troparion on a feast, or in the week following one.",
+      "namespace": "liturgy.sungVenerationEnding",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ],
+      "requires": [
+        "prayersOfThanksgiving"
       ]
     }
   }

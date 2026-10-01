@@ -64,6 +64,15 @@ function legacyBuildRubrics(row, picks = {}) {
     r.vespers = { ...(r.vespers || {}), servesLitya: picks.servesLitya };
   if (picked('omitReadKathisma') && coerce(picks.omitReadKathisma, 'boolean') === true)
     r.vespers = { ...(r.vespers || {}), omitReadKathisma: true };
+  // Registry-only booleans for the Prayers of Thanksgiving after the dismissal
+  // (features/prayers-of-thanksgiving.md). Listed here for the same reason
+  // omitReadKathisma is: a registry rubric the legacy builder does not know
+  // vanishes from the snapshot, and INV-D then passes against its own weakened
+  // expectation — the failure this file's header records.
+  if (picked('prayersOfThanksgiving') && coerce(picks.prayersOfThanksgiving, 'boolean') === true)
+    r.liturgy = { ...(r.liturgy || {}), prayersOfThanksgiving: true };
+  if (picked('sungVenerationEnding') && coerce(picks.sungVenerationEnding, 'boolean') === true)
+    r.liturgy = { ...(r.liturgy || {}), sungVenerationEnding: true };
 
   // Typed column, enum, default 'tt'. Emitted only when the parish differs.
   // (paschalCommunionYearRound is deliberately NOT here: production skips every

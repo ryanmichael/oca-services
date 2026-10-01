@@ -22,6 +22,7 @@ const { _litPreCommunion, _litCommunionPrayer, _litCommunionHymn,
 const { _litThanksgiving, _litBlessedBeTheName,
         _litClosingDoxology, _litPsalm33 }                                  = require('./liturgy-parts/thanksgiving');
 const { _litDismissalTroparia, _litDismissal }                              = require('./liturgy-parts/dismissal');
+const { _litPrayersOfThanksgiving }                                        = require('./liturgy-parts/prayers-of-thanksgiving');
 
 /**
  * Assembles the complete Divine Liturgy for a given calendar day.
@@ -297,6 +298,53 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
 
   // 37. Dismissal
   blocks.push(..._litDismissal(spec.dismissal, isBasil, paschal.hasPaschalOpening, liturgyFixed));
+
+  // 38. Prayers of Thanksgiving (Appendix II) — read AFTER the dismissal, while
+  //     the faithful venerate the cross. Off unless the parish opts in.
+  //
+  //     The closing troparion is selected from the troparia this service already
+  //     resolved, so it comes through the overlay cascade like everything else
+  //     rather than being fetched a second way. The feast displaces the temple's
+  //     patron: "we would not sing to St John but do the troparion of the feast."
+  {
+    const troparia = Array.isArray(spec.troparia) ? spec.troparia : [];
+    const patronTroparion =
+      troparia.find(t => /Patron of the Temple/i.test(String(t?.rubric || ''))) || null;
+
+    // The feast's troparion is found by the STRUCTURAL tag the source already
+    // sets (`feastWindow`), not by matching its rubric text. An earlier draft
+    // matched the title and silently failed on "Troparion of Afterfeast of the
+    // Dormition" — the label is not the structure, which is the recurring
+    // lesson in feedback_assert_structure_not_labels.
+    //
+    // That tag is set only for a GREAT feast's window, which is the same line
+    // the patron-insertion already draws: a lesser window (2026-08-30's
+    // Beheading) keeps the Church second and does not displace the patron.
+    // The source hands us the window's troparion directly (feastWindow.troparion).
+    // Falling back to the `feastWindow` tag on a troparia entry covers the
+    // window-sings-second shape, which is tagged but may predate the object.
+    // Two conditions, both from what the director actually said:
+    //   "a feast day or THE WEEK FOLLOWING a feast" — an afterfeast or its
+    //   leavetaking. A FOREfeast comes before; she did not speak to it, so it
+    //   is left alone and the temple's patron is still sung.
+    //   A lesser feast's window does not displace the Church either — the same
+    //   line menaion-principal.js draws for "Now and ever…" (2026-08-30's
+    //   Beheading is not one of the Twelve).
+    const win = spec.feastWindow;
+    const windowDisplaces = !!win && win.isGreatFeast === true && win.kind !== 'Forefeast';
+    let feastTroparion = (windowDisplaces && win.troparion)
+      || troparia.find(t => t && t.feastWindow === true)
+      || null;
+    if (!feastTroparion && spec.feastOnly) {
+      // On a Great Feast the patron logic is skipped upstream, so there is no
+      // patron entry to fall back on; the day's troparia are the feast's.
+      feastTroparion = troparia.find(t => t && t.text) || null;
+    }
+
+    blocks.push(..._litPrayersOfThanksgiving(liturgyFixed, opts.rubrics || {}, {
+      patronTroparion, feastTroparion, isBasil,
+    }));
+  }
 
   blocks._warnings = warnings.get();
   return blocks;

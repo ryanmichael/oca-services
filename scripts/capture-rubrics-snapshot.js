@@ -69,6 +69,8 @@ function legacyBuildRubrics(row, picks = {}) {
   // omitReadKathisma is: a registry rubric the legacy builder does not know
   // vanishes from the snapshot, and INV-D then passes against its own weakened
   // expectation — the failure this file's header records.
+  if (picked('licTheotokionWeekTone') && coerce(picks.licTheotokionWeekTone, 'boolean') === true)
+    r.lordICall = { ...(r.lordICall || {}), theotokionWeekTone: true };
   if (picked('prayersOfThanksgiving') && coerce(picks.prayersOfThanksgiving, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), prayersOfThanksgiving: true };
   if (picked('sungVenerationEnding') && coerce(picks.sungVenerationEnding, 'boolean') === true)

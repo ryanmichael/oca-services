@@ -204,6 +204,16 @@
       "requires": [
         "prayersOfThanksgiving"
       ]
+    },
+    "licTheotokionWeekTone": {
+      "label": "Lord I Call — Theotokion in the week's tone",
+      "description": "At weekday Vespers the “Now and ever…” Theotokion of Lord I Have Cried is sung in the TONE OF THE WEEK, not the tone of the saint's Glory. Both usages are real: the calendar entry ships the Octoechos Theotokion in the week's tone, and the Slavic rubric re-keys it to the tone of the doxastichon, which is the default here. St John of Damascus, Tyler uses the week's tone — “not the tone of the glory verse on LIC, even Wednesday” (choir director, 2026-10-02). Affects Lord I Have Cried only; the Aposticha Theotokion is unchanged.",
+      "namespace": "lordICall.theotokionWeekTone",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "vespers"
+      ]
     }
   }
 }

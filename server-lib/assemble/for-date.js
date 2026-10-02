@@ -501,7 +501,18 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // weekday Theotokion at the Glory tone (all 8×7 keys exist). Found
           // 2026-09-23.
           if (!lic.now && isWeekdayInjection && !isGreatVespers && !isVigilFeast) {
-            const nowTone = licGlory.tone || calendarEntry.liturgicalContext?.tone;
+            // Which tone the "Now and ever…" Theotokion takes. Both usages are
+            // real and the comment on the aposticha branch below names them:
+            // the calendar entry ships the Octoechos Theotokion in the WEEK's
+            // tone, and the Slavic rubric re-keys it to the tone of the saint's
+            // doxastichon. The Slavic reading is the default; a parish that
+            // sings the week's tone sets lordICall.theotokionWeekTone.
+            // St John of Damascus, Tyler: "not the tone of the glory verse on
+            // LIC, even Wednesday" (choir director, 2026-10-02).
+            const weekTone = calendarEntry.liturgicalContext?.tone;
+            const nowTone  = opts.rubrics?.lordICall?.theotokionWeekTone
+              ? (weekTone || licGlory.tone)
+              : (licGlory.tone || weekTone);
             const eve     = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
             const dow      = calendarEntry.dayOfWeek;
             const crossDay = dow === 'wednesday' || dow === 'friday';

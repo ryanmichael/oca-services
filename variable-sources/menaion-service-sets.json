@@ -10,8 +10,20 @@
         "serviceType": "dailyVespers",
         "lordICall": {
           "menaion": [
-            { "ref": { "comm": "Protection", "section": "lordICall", "order": 4 } },
-            { "ref": { "comm": "Protection", "section": "lordICall", "order": 5 } },
+            {
+              "ref": {
+                "comm": "Protection",
+                "section": "lordICall",
+                "order": 4
+              }
+            },
+            {
+              "ref": {
+                "comm": "Protection",
+                "section": "lordICall",
+                "order": 5
+              }
+            },
             {
               "tone": 4,
               "label": "(for the Protection)",
@@ -19,20 +31,81 @@
               "text": "Thou art the beauty of Jacob\nand the heavenly ladder upon which the Lord came down to earth.\nThese images were manifestations of thy honor and glory, Theotokos!\nAngels in heaven and men on earth call thee blessed\nfor thou didst give birth to the God of all!\nThou prayest for all the world,//\nby thy mercy, protecting those who keep thy holy feast!"
             }
           ],
-          "gloryNow": { "ref": { "comm": "Protection", "section": "lordICall", "order": -1 } }
+          "gloryNow": {
+            "ref": {
+              "comm": "Protection",
+              "section": "lordICall",
+              "order": -1
+            }
+          }
         },
         "aposticha": {
           "hymns": [
-            { "ref": { "comm": "Protection", "section": "aposticha", "order": 1 } },
-            { "ref": { "comm": "Protection", "section": "aposticha", "order": 2 } },
-            { "ref": { "comm": "Protection", "section": "aposticha", "order": 3 } }
+            {
+              "ref": {
+                "comm": "Protection",
+                "section": "aposticha",
+                "order": 1
+              }
+            },
+            {
+              "ref": {
+                "comm": "Protection",
+                "section": "aposticha",
+                "order": 2
+              }
+            },
+            {
+              "ref": {
+                "comm": "Protection",
+                "section": "aposticha",
+                "order": 3
+              }
+            }
           ],
-          "glory": { "ref": { "comm": "Protection", "section": "aposticha", "order": 0 } },
-          "now":   { "ref": { "comm": "Protection", "section": "aposticha", "order": -1 } }
+          "glory": {
+            "ref": {
+              "comm": "Protection",
+              "section": "aposticha",
+              "order": 0
+            }
+          },
+          "now": {
+            "ref": {
+              "comm": "Protection",
+              "section": "aposticha",
+              "order": -1
+            }
+          }
         },
         "troparia": {
-          "first":    { "ref": { "comm": "Romanus", "type": "troparion" } },
-          "gloryNow": { "ref": { "comm": "Protection", "type": "troparion" } }
+          "first": {
+            "ref": {
+              "comm": "Romanus",
+              "type": "troparion"
+            }
+          },
+          "gloryNow": {
+            "ref": {
+              "comm": "Protection",
+              "type": "troparion"
+            }
+          }
+        }
+      }
+    }
+  },
+  "10-8": {
+    "sets": {
+      "oca-music-general-venerable-woman": {
+        "_provenance": "Troparion only. The OCA publishes TWO troparia for Venerable Pelagia the Penitent and this set picks the second: oca.org/saints/troparia/<year>/10/08/ gives her PROPER troparion, Tone 4, \"Like a fragrant rose growing among thorns\" (our default, troparia.id=3355, source oca-menaion); the OCA Music Department's 2006 sheet instead sets the GENERAL troparion for a woman monastic, Tone 8. Both are OCA. St John of Damascus, Tyler sings the Music Department's — choir director, 2026-10-02 (\"Use the general one…the image of God…\"), and her sheet is docs/choir-packets/2026-10-01, daily-vespers-2026-10-08.pdf pp. 8-9. Text is our own algorithmic-yy2tt rendering of that troparion as it already renders for seven other venerable women (Apollinaria, Synkletika, …) with the name clause taken from her sheet. The dismissal Theotokion follows to Tone 8 on its own.",
+        "troparia": {
+          "first": {
+            "tone": 8,
+            "label": "Venerable Pelagia the Penitent",
+            "source": "oca-music-2006",
+            "text": "The image of God was truly preserved in thee, O Mother,\nfor thou didst take up thy cross and followed Christ.\nBy so doing, thou didst teach us to disregard the flesh, for it passes away;\nbut to care instead for the soul, since it is immortal.\nTherefore, O venerable Pelagia, thy spirit rejoices with the Angels."
+          }
         }
       }
     }

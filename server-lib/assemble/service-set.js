@@ -41,6 +41,12 @@ function applyServiceSet(set, vespers, autoSlot, comms, date, apostVerses) {
   const prov = 'OCA';
 
   // ── Lord, I Call: the day's Octoechos, then the set's Menaion stichera ────
+  //
+  // Optional, like `set.aposticha` below. A set may carry only the part of the
+  // service that differs: 10-8 changes one troparion and nothing else, and
+  // re-specifying Lord I Call wholesale to reach it would risk the parts that
+  // already match the parish's own books.
+  if (set.lordICall) {
   const licHymns = (set.lordICall?.menaion || []).map(r);
   const licGloryNow = r(set.lordICall?.gloryNow);
   if (licHymns.some(h => !h) || !licGloryNow) {
@@ -60,6 +66,7 @@ function applyServiceSet(set, vespers, autoSlot, comms, date, apostVerses) {
     tone: licGloryNow.tone, label: licGloryNow.label, combinesGloryNow: true };
   lic.now = null;
   autoSlot.lordICall = { hymns: licHymns, glory: licGloryNow };
+  }
 
   // ── Aposticha: the feast's own stichera with proper verses ───────────────
   if (set.aposticha) {
@@ -92,6 +99,24 @@ function applyServiceSet(set, vespers, autoSlot, comms, date, apostVerses) {
       ];
       autoSlot.troparion      = first;
       autoSlot.feastTroparion = gn;
+    } else if (first) {
+      // Troparion only: swap it in place and carry the dismissal Theotokion to
+      // its tone. for-date.js does that re-keying itself ("Богородичен по гласу
+      // Славы", guarded by D16) but has already run by the time a set applies,
+      // so it is repeated here rather than relied upon.
+      const slots  = vespers.troparia.slots || [];
+      const tropIx = slots.findIndex(sl => sl.position !== 'now');
+      if (tropIx !== -1) {
+        slots[tropIx] = { ...slots[tropIx], source: 'menaion', provenance: prov,
+          key: `auto.${date}.troparion`, tone: first.tone, label: first.label };
+      }
+      const nowIx = slots.findIndex(sl => sl.position === 'now');
+      if (nowIx !== -1 && slots[nowIx].source === 'octoechos'
+          && typeof slots[nowIx].key === 'string') {
+        slots[nowIx] = { ...slots[nowIx], tone: first.tone,
+          key: slots[nowIx].key.replace(/^tone\d+\./, `tone${first.tone}.`) };
+      }
+      autoSlot.troparion = first;
     }
   }
   return true;

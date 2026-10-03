@@ -594,11 +594,29 @@ async function runSweep(args) {
   return { results, errors, totalCost };
 }
 
+// Exit codes. 0/1/2/3 encode the VERDICT; 4 means there was no verdict at all.
+//
+// Until 2026-10-02 every failure path here exited 1 — the same code as "low or
+// medium findings" — so a judge that never reached the model was indistinguishable
+// from a judge that read the service and found something. On 2026-10-02 the
+// Anthropic credit balance ran out, both weekend services returned
+// `API 400 ... "Your credit balance is too low"`, and the weekly cron reported
+// "medium/low findings" for Vespers and Liturgy, opened the findings issue, and
+// fired the auto-fix agent at report files that were never written. The run was
+// green. A dead judge must never again look like a judge with findings.
+const EXIT = {
+  CLEAN:       0,
+  FINDINGS:    1,   // low / medium
+  HIGH:        2,   // at least one high-severity finding
+  UNPARSEABLE: 3,   // the model answered, the answer could not be parsed
+  DID_NOT_RUN: 4,   // setup, API or unexpected error — NO verdict was produced
+};
+
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error('ANTHROPIC_API_KEY not set. Set it before running:');
     console.error('  export ANTHROPIC_API_KEY=sk-ant-...');
-    process.exit(1);
+    process.exit(EXIT.DID_NOT_RUN);
   }
 
   const args = parseArgs(process.argv.slice(2));
@@ -613,7 +631,7 @@ async function main() {
     console.error('Usage:');
     console.error('  node audit/llm-judge.js --date YYYY-MM-DD [--service liturgy] [--http http://localhost:3000]');
     console.error('  node audit/llm-judge.js --sweep [--year 2026] [--services vespers,liturgy] [--limit 10] [--dates a,b,c]');
-    process.exit(1);
+    process.exit(EXIT.DID_NOT_RUN);
   }
   const date     = args.date;
   const service  = args.service || 'liturgy';
@@ -621,7 +639,9 @@ async function main() {
 
   const client = new Anthropic();
   const r = await judgeOne(client, httpBase, date, service);
-  if (r.error) { console.error(r.error); process.exit(1); }
+  // An API or transport failure means no verdict exists. Exiting 1 here is what
+  // made a credit-balance 400 read as 'medium/low findings' on 2026-10-02.
+  if (r.error) { console.error(r.error); process.exit(EXIT.DID_NOT_RUN); }
   const u = r.usage;
   const findings = r.findings;
 
@@ -671,17 +691,17 @@ async function main() {
   console.log('');
   console.log(summary);
 
-  if (!findings) process.exit(3);
-  if (findings.some(f => f.severity === 'high')) process.exit(2);
-  if (findings.length > 0) process.exit(1);
+  if (!findings) process.exit(EXIT.UNPARSEABLE);
+  if (findings.some(f => f.severity === 'high')) process.exit(EXIT.HIGH);
+  if (findings.length > 0) process.exit(EXIT.FINDINGS);
 }
 
 // Exported for test/contracts/judge-reference.test.js. `main()` only runs when
 // this file is the entry point, so requiring it for a unit test is side-effect
 // free.
 module.exports = { extractText, looksLikeDocx, findLocalReference, fetchOcaReference,
-                   SYSTEM_PROMPT, KNOWN_DIVERGENCES };
+                   SYSTEM_PROMPT, KNOWN_DIVERGENCES, EXIT };
 
 if (require.main === module) {
-  main().catch(e => { console.error(e); process.exit(1); });
+  main().catch(e => { console.error(e); process.exit(EXIT.DID_NOT_RUN); });
 }

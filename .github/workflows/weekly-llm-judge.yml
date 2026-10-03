@@ -87,28 +87,44 @@ jobs:
 
       - name: Run upcoming-weekend judge
         id: judge
-        # Do not fail the job on findings — downstream steps branch on the step
-        # outcome so both the issue heads-up AND the auto-fix PR can run.
-        continue-on-error: true
+        # Never fails the job: downstream steps branch on the `status` output.
+        #
+        # `steps.judge.outcome` is deliberately NOT used any more. It collapses
+        # every non-zero exit to 'failure', so on 2026-10-02 — when the Anthropic
+        # credit balance ran out and both services returned API 400 — this step
+        # read as 'failure', the findings issue announced findings that did not
+        # exist, and the auto-fix agent was pointed at reports that were never
+        # written. The run was green. See the EXIT table in audit/llm-judge.js.
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "ANTHROPIC_API_KEY not configured as a repo secret; skipping."
+            echo "status=skipped" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          set +e
           if [ -n "${{ inputs.from }}" ]; then
-            npm run audit:upcoming -- --from ${{ inputs.from }}
+            node scripts/audit-upcoming.js --from ${{ inputs.from }}
           else
-            npm run audit:upcoming
+            node scripts/audit-upcoming.js
           fi
+          code=$?
+          set -e
+          echo "judge exit code: $code"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          case "$code" in
+            0)   echo "status=clean"    >> "$GITHUB_OUTPUT" ;;
+            1|2) echo "status=findings" >> "$GITHUB_OUTPUT" ;;
+            *)   echo "status=broken"   >> "$GITHUB_OUTPUT" ;;
+          esac
 
       - name: Prepare auto-fix PR
         id: autofix
         # Only when the judge surfaced findings AND auto-fix is enabled
         # (workflow_dispatch can turn it off; scheduled runs default on).
         if: >
-          steps.judge.outcome == 'failure' &&
+          steps.judge.outputs.status == 'findings' &&
           (github.event_name == 'schedule' || inputs.autofix != 'false')
         # A failed auto-fix (e.g. Claude GitHub App not installed) must not fail
         # the workflow or block the findings-issue heads-up below.
@@ -175,7 +191,7 @@ jobs:
 
       - name: Open / update llm-judge-findings issue
         # always() so the heads-up posts even if the auto-fix step above errored.
-        if: always() && steps.judge.outcome == 'failure'
+        if: always() && steps.judge.outputs.status == 'findings'
         uses: actions/github-script@v7
         with:
           script: |
@@ -227,3 +243,61 @@ jobs:
               });
               console.log(`Opened issue #${created.number}`);
             }
+
+      # A judge that did not run must be LOUDER than a judge with findings, and
+      # must never be mistaken for a clean weekend. On 2026-10-02 this condition
+      # existed in neither form: the run reported success while nothing had been
+      # judged at all.
+      - name: Report a judge that produced no verdict
+        if: always() && steps.judge.outputs.status == 'broken'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            const code  = '${{ steps.judge.outputs.code }}';
+            const body = [
+              `⚠️ The weekly LLM judge **did not run** on ${today} (exit ${code}).`,
+              ``,
+              `Workflow run: ${run}`,
+              ``,
+              `**This weekend was not judged.** It is neither clean nor flagged —`,
+              `no verdict exists for either service, so treat the weekend as`,
+              `unreviewed and fall back to \`npm run audit:date\` plus the choir`,
+              `packet review before parish printout.`,
+              ``,
+              `Usual causes, most common first:`,
+              `- the Anthropic credit balance is empty (the 2026-10-02 case — the`,
+              `  judge logged \`API 400 ... "Your credit balance is too low"\`)`,
+              `- \`ANTHROPIC_API_KEY\` missing, expired or rotated`,
+              `- the dev server never came up, so the judge could not fetch the`,
+              `  assembled service (connection refused)`,
+              ``,
+              `No auto-fix PR was prepared, and no findings issue was opened —`,
+              `both are correct here, because there is nothing to fix *or* clear.`,
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              labels: 'llm-judge-findings', state: 'open',
+            });
+            if (issues.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issues[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: `LLM judge did not run (${today})`,
+                body,
+                labels: ['llm-judge-findings'],
+              });
+            }
+
+      # Last step, so the steps above still post. Red run = nothing was judged.
+      - name: Fail the run when nothing was judged
+        if: always() && steps.judge.outputs.status == 'broken'
+        run: |
+          echo "::error title=LLM judge produced no verdict::The judge exited ${{ steps.judge.outputs.code }} — this weekend was NOT judged. Not clean, not flagged. Check the Anthropic credit balance and ANTHROPIC_API_KEY."
+          exit 1

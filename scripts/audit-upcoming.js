@@ -8,10 +8,16 @@
 // findings, so a CI cron can surface them via issue-open before parish
 // Saturday-morning prep.
 //
+// Exit 4 is distinct and means NO VERDICT WAS PRODUCED — the judge could not
+// run. Callers must branch on it separately: "the judge is broken" is not
+// "the judge found things". See the EXIT table in audit/llm-judge.js.
+//
 // Requires ANTHROPIC_API_KEY (loaded from .env or env). Assumes the dev
 // server is running on http://localhost:3000.
 
 const { execFileSync } = require('child_process');
+const path = require('path');
+const { EXIT } = require(path.join(__dirname, '..', 'audit', 'llm-judge.js'));
 
 function parseArgs(argv) {
   const out = {};
@@ -56,13 +62,19 @@ function runJudge(date, service) {
 
 function describe(exitCode) {
   switch (exitCode) {
-    case 0: return 'clean';
-    case 1: return 'medium/low findings';
-    case 2: return 'high-severity findings';
-    case 3: return 'parse failed';
-    default: return `error (exit=${exitCode})`;
+    case EXIT.CLEAN:       return 'clean';
+    case EXIT.FINDINGS:    return 'medium/low findings';
+    case EXIT.HIGH:        return 'high-severity findings';
+    case EXIT.UNPARSEABLE: return 'NO VERDICT — model answer could not be parsed';
+    case EXIT.DID_NOT_RUN: return 'NO VERDICT — the judge could not run (API/setup error)';
+    default:               return `NO VERDICT — unexpected exit=${exitCode}`;
   }
 }
+
+// A run that produced no verdict tells us nothing about the service. It must
+// never be aggregated as a finding, and must never be aggregated as clean.
+const producedNoVerdict = (code) => code === EXIT.UNPARSEABLE || code === EXIT.DID_NOT_RUN
+  || !Object.values(EXIT).includes(code);
 
 (function main() {
   const args      = parseArgs(process.argv.slice(2));
@@ -81,6 +93,18 @@ function describe(exitCode) {
   for (const r of results) {
     console.log(`  ${r.service.padEnd(8)} ${r.date}: ${describe(r.exitCode)}`);
   }
-  const failures = results.filter(r => !r.ok);
-  process.exit(failures.length > 0 ? 1 : 0);
+  // Order matters: a broken judge outranks everything, because the other
+  // services' verdicts cannot be trusted to mean anything either. Until
+  // 2026-10-02 this collapsed every non-zero code to 1, so an empty Anthropic
+  // credit balance was reported to the parish cron as weekend findings.
+  const broken = results.filter(r => producedNoVerdict(r.exitCode));
+  if (broken.length > 0) {
+    console.error(`\n${broken.length} of ${results.length} service(s) produced NO VERDICT — ` +
+                  'the judge did not run. This is NOT a clean weekend and NOT a findings weekend.');
+    for (const r of broken) console.error(`  ${r.service} ${r.date}: ${describe(r.exitCode)}`);
+    process.exit(EXIT.DID_NOT_RUN);
+  }
+  if (results.some(r => r.exitCode === EXIT.HIGH)) process.exit(EXIT.HIGH);
+  if (results.some(r => r.exitCode === EXIT.FINDINGS)) process.exit(EXIT.FINDINGS);
+  process.exit(EXIT.CLEAN);
 })();

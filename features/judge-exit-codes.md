@@ -57,6 +57,28 @@ The workflow branches on a `status` output (`clean` / `findings` / `broken` /
 comment saying the weekend was not judged, and then **fails the job** — the
 2026-10-02 run reported success while nothing had been judged.
 
+## The cron judges; it does not fix (2026-10-03)
+
+The auto-fix leg was removed. It launched Claude Code to prepare a PR whenever
+the judge found something, and it was **~96% of the running cost**: a findings
+weekend ran ~$5.36 (63 turns) against ~$0.23 for the judge itself — roughly
+$23/month versus about $1.
+
+It also barely ran. Missing `id-token: write` killed every scheduled attempt from
+2026-07-25 to 2026-08-09; an empty credit balance killed every run from
+2026-08-21 on. Across its life it produced **one** pull request, #4 on
+2026-08-14, left as a draft.
+
+Judging is what earns its keep — it says a weekend needs a look. Drafting the fix
+is a decision worth making with a human in the loop, through `audit-driven-fix`
+or `choir-correction`.
+
+Removed with it: `contents: write`, `pull-requests: write`, `id-token: write` and
+the `autofix` dispatch input. The workflow now needs only `contents: read` and
+`issues: write`, and INV-6 pins that — reviving the agent should fail the test
+first, deliberately. The task spec survives, unwired, at
+`.github/autofix/weekend-prompt.md`.
+
 ## Invariants (tested)
 
 - **INV-1** — the five codes are distinct; `DID_NOT_RUN !== FINDINGS`.
@@ -65,7 +87,8 @@ comment saying the weekend was not judged, and then **fails the job** — the
 - **INV-4** — the summary a human reads at 6am never says "findings" for a
   service that was not judged.
 - **INV-5** — the workflow gates on `outputs.status`, never `outcome`.
-- **INV-6** — a broken judge fails the run.
+- **INV-6** — the cron runs no fix agent, and holds no write scopes.
+- **INV-7** — a broken judge fails the run.
 
 INV-2/3/4 were falsified by reverting all four no-verdict paths to `exit 1`; all
 three fail, and INV-5 fails independently when the workflow is reverted.
@@ -87,6 +110,7 @@ rather than the route.
 
 - `audit/llm-judge.js` — the `EXIT` table and all four no-verdict exits
 - `scripts/audit-upcoming.js` — `describe()`, `producedNoVerdict()`, aggregation
-- `.github/workflows/weekly-llm-judge.yml` — the `status` output and both
-  `broken` steps
+- `.github/workflows/weekly-llm-judge.yml` — the `status` output, both
+  `broken` steps, and the judge-only scope
+- `.github/autofix/weekend-prompt.md` — unwired; read before reviving it
 - Memory: `project_autofix_cron_2026_07_25.md`

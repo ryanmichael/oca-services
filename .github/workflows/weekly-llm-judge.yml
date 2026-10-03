@@ -4,50 +4,43 @@ name: Weekly LLM judge
 # so any wording / commemoration / structural drift surfaces before parish
 # Saturday prep.
 #
-#   findings  → (1) opens / updates the "llm-judge-findings" GitHub Issue
-#               (2) launches Claude Code to prepare fixes AS A PULL REQUEST
-#                   for human review (never merges, never pushes main/staging).
+#   findings  → opens / updates the "llm-judge-findings" GitHub Issue
+#   no verdict → says so loudly and fails the run (see audit/llm-judge.js EXIT)
+#
+# This cron REPORTS. It does not fix.
+#
+# It used to also launch Claude Code to prepare an auto-fix pull request. That
+# leg was removed on 2026-10-03: it was ~96% of the running cost (a weekend with
+# findings cost ~$5.36 against ~$0.23 for the judge itself) and it had produced
+# exactly one pull request in its lifetime — #4 on 2026-08-14, left as a draft.
+# Judging is the part that earns its keep; drafting the fix is a human decision
+# made with a human in the loop. The agent's task spec is kept, unwired, at
+# .github/autofix/weekend-prompt.md if it is ever worth reviving.
 #
 # Requires repo secret ANTHROPIC_API_KEY. Without it the workflow no-ops
-# (the judge exits with a setup message instead of a real failure), and the
-# auto-fix step is skipped.
+# (the judge exits with a setup message instead of a real failure).
 
 on:
   schedule:
     # 12:00 UTC Friday — early in US Central morning, so findings land before
-    # the Friday workday and well before Saturday-eve Vespers prep. That window
-    # also leaves the auto-fix PR time to be reviewed before Saturday.
+    # the Friday workday and well before Saturday-eve Vespers prep, leaving the
+    # working day to triage anything it flags.
     - cron: '0 12 * * 5'
   workflow_dispatch:
     inputs:
       from:
         description: 'Compute weekend relative to this date (YYYY-MM-DD)'
         required: false
-      autofix:
-        description: 'Prepare an auto-fix PR when findings are present (true/false)'
-        required: false
-        default: 'true'
 
-# contents:write + pull-requests:write let the auto-fix agent branch off main
-# and open a PR. issues:write keeps the findings-issue heads-up. actions:read
-# lets Claude read CI job logs if it needs them. NOTE: the agent is prompt-bound
-# to PR-only — it must never push main/staging or self-merge. See the
-# `Prepare auto-fix PR` step and .github/autofix/weekend-prompt.md.
-#
-# id-token:write is REQUIRED by anthropics/claude-code-action@v1 — it exchanges a
-# GitHub OIDC token before it will run at all. It was missing from 2026-07-25
-# (when the auto-fix step landed) until 2026-08-09, so EVERY scheduled auto-fix
-# died with "Could not fetch an OIDC token" after three retries. The step carries
-# continue-on-error, so the workflow still reported success and the auto-fix leg
-# never once produced a pull request. Both sample workflows shipped by the Claude
-# GitHub App (claude.yml, claude-code-review.yml) declare it; this hand-written
-# one did not.
+# The judge only reads the repo and writes the findings issue. Until
+# 2026-10-03 this also carried contents:write, pull-requests:write and
+# id-token:write for the auto-fix agent; with that leg removed, none of them are
+# needed. (id-token:write was REQUIRED by anthropics/claude-code-action@v1 and
+# its absence from 2026-07-25 to 2026-08-09 is why every scheduled auto-fix died
+# with "Could not fetch an OIDC token" while still reporting success.)
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
   issues: write
-  actions: read
-  id-token: write
 
 jobs:
   judge:
@@ -59,7 +52,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          # Full history so the auto-fix agent can branch + push cleanly.
+          # Full history is no longer required (it existed so the auto-fix
+          # agent could branch and push); kept because nothing depends on it
+          # being shallow and the clone is small.
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -119,63 +114,6 @@ jobs:
             *)   echo "status=broken"   >> "$GITHUB_OUTPUT" ;;
           esac
 
-      - name: Prepare auto-fix PR
-        id: autofix
-        # Only when the judge surfaced findings AND auto-fix is enabled
-        # (workflow_dispatch can turn it off; scheduled runs default on).
-        if: >
-          steps.judge.outputs.status == 'findings' &&
-          (github.event_name == 'schedule' || inputs.autofix != 'false')
-        # A failed auto-fix (e.g. Claude GitHub App not installed) must not fail
-        # the workflow or block the findings-issue heads-up below.
-        continue-on-error: true
-        uses: anthropics/claude-code-action@v1
-        env:
-          # Explicit token for `gh` so Claude can open the PR.
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: |
-            You are running headless in CI because the weekly LLM judge flagged
-            findings for this weekend's services (Saturday Great Vespers + Sunday
-            Divine Liturgy). Read the file `.github/autofix/weekend-prompt.md` in
-            this repository and follow it EXACTLY — it is your complete task
-            specification. The judge's findings are already written to
-            `audit/reports/llm-judge-<date>-<service>.md` (dates are in the
-            filenames). Prepare fixes as a PULL REQUEST for human review. Never
-            merge, never push to main or staging. A dev server is already running
-            on http://localhost:3000; restart it yourself after any DB or
-            variable-sources/*.json edit.
-          # NOTE: claude_args is a literal argument string handed to the CLI, not
-          # YAML — a `#` line inside it is passed through as an argument, not
-          # dropped as a comment. Keep all commentary out here.
-          #
-          # --max-turns was 60, and that was not enough for a nine-finding
-          # weekend: the 2026-08-09 run burned all 60 turns and $5.02 on triage
-          # plus the first fixes, then was killed with nothing pushed. The
-          # durable half of that fix lives in weekend-prompt.md — the agent now
-          # opens a draft PR BEFORE fixing anything, so a cutoff costs the
-          # remaining fixes rather than the entire run. 120 buys room to finish a
-          # normal week; budget roughly $0.08/turn.
-          claude_args: |
-            --model claude-opus-4-8
-            --max-turns 120
-            --allowedTools "Read,Edit,Write,Glob,Grep,Bash"
-            --disallowedTools "Bash(gh pr merge:*),Bash(git push origin main:*),Bash(git push --force:*)"
-
-      # A broken auto-fix leg must be LOUD. `continue-on-error` above is
-      # deliberate — a failed agent must not swallow the findings-issue heads-up
-      # below — but for two weeks it also meant a completely dead auto-fix
-      # reported as a green workflow. If the step was attempted and did not
-      # succeed, say so in the log and mark the run unstable via the annotation.
-      - name: Report auto-fix outcome
-        if: always() && steps.autofix.outcome != '' && steps.autofix.outcome != 'skipped'
-        run: |
-          echo "auto-fix outcome: ${{ steps.autofix.outcome }}"
-          if [ "${{ steps.autofix.outcome }}" != "success" ]; then
-            echo "::warning title=Auto-fix PR step failed::The judge found things but the fix agent did not run to completion. Check for an OIDC/permissions error, a missing ANTHROPIC_API_KEY, or the Claude GitHub App being uninstalled. No pull request was prepared this week."
-          fi
-
       - name: Stop server
         if: always()
         run: kill $(cat server.pid) 2>/dev/null || true
@@ -190,7 +128,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Open / update llm-judge-findings issue
-        # always() so the heads-up posts even if the auto-fix step above errored.
+        # always() so the heads-up still posts if an earlier step errored.
         if: always() && steps.judge.outputs.status == 'findings'
         uses: actions/github-script@v7
         with:
@@ -209,16 +147,9 @@ jobs:
               `(wrong sticheron count, wrong Theotokion lookup), and translation`,
               `differences worth a glance before parish printout.`,
               ``,
-              `🤖 An auto-fix PR (label \`auto-fix\`) may have been opened for this`,
-              `weekend — check the open pull requests. It prepares data + structural`,
-              `fixes with paired audit rules and pastes its own verification output.`,
-              `**Promotion is a human decision — review before merging.** If no PR`,
-              `appears, EITHER the agent judged every finding source-incomplete or a`,
-              `false-positive (documented in the run), OR the auto-fix step itself`,
-              `failed — the run carries a "Auto-fix PR step failed" warning when it`,
-              `did. Do not read a missing PR as "nothing to fix" without checking`,
-              `which of the two happened; between 2026-07-25 and 2026-08-09 it was`,
-              `always the second.`,
+              `This cron reports; it does not fix. Triage with the`,
+              `\`audit-driven-fix\` skill, or \`choir-correction\` when the`,
+              `difference turns out to be deliberate parish practice.`,
               ``,
               `Address before Saturday Vespers if findings are high-severity;`,
               `medium / low can wait through the cycle.`,
@@ -273,8 +204,8 @@ jobs:
               `- the dev server never came up, so the judge could not fetch the`,
               `  assembled service (connection refused)`,
               ``,
-              `No auto-fix PR was prepared, and no findings issue was opened —`,
-              `both are correct here, because there is nothing to fix *or* clear.`,
+              `No findings issue was opened, which is correct: there is no`,
+              `verdict to report either way.`,
             ].join('\n');
 
             const { data: issues } = await github.rest.issues.listForRepo({

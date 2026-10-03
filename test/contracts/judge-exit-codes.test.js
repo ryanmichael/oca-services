@@ -89,7 +89,27 @@ describe('Feature contract: judge exit codes', () => {
       'a broken judge must drive its own reporting');
   });
 
-  it('INV-6: a broken judge fails the run', () => {
+  it('INV-6: the cron judges and reports — it does not run a fix agent', () => {
+    // Converted to judge-only on 2026-10-03. The auto-fix leg was ~96% of the
+    // cost (~$5.36 a findings-weekend vs ~$0.23 for the judge) and had produced
+    // one draft PR in its lifetime. Pinned so it cannot drift back in unnoticed:
+    // re-enabling it is a deliberate act that should fail this test first.
+    const fs = require('node:fs');
+    const wf = fs.readFileSync(
+      path.join(ROOT, '.github', 'workflows', 'weekly-llm-judge.yml'), 'utf8');
+    const live = wf.split('\n').filter(l => !/^\s*#/.test(l)).join('\n');
+
+    assert.ok(!/claude-code-action/.test(live), 'the workflow must not launch an agent');
+    assert.ok(!/steps\.autofix/.test(live), 'no auto-fix step may be referenced');
+
+    // An agent would need write scopes back; their absence is the real guard.
+    const perms = live.slice(live.indexOf('permissions:'), live.indexOf('jobs:'));
+    assert.match(perms, /contents:\s*read/, 'contents must stay read-only');
+    assert.ok(!/pull-requests:\s*write/.test(perms), 'no PR write scope');
+    assert.ok(!/id-token:\s*write/.test(perms), 'no OIDC scope');
+  });
+
+  it('INV-7: a broken judge fails the run', () => {
     // The 2026-10-02 run reported SUCCESS while nothing had been judged.
     const fs = require('node:fs');
     const wf = fs.readFileSync(

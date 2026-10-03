@@ -1,3 +1,23 @@
+> **⚠️ NOT WIRED — retained for reference only (2026-10-03).**
+>
+> The auto-fix leg of `.github/workflows/weekly-llm-judge.yml` was removed and
+> that cron now only judges and reports. Nothing executes this file.
+>
+> Why it went: it was ~96% of the cron's cost (a weekend with findings ran ~$5.36
+> against ~$0.23 for the judge itself) and produced exactly one pull request in
+> its lifetime — #4 on 2026-08-14, left as a draft. For most of its life it was
+> not running at all: missing `id-token: write` killed every scheduled run from
+> 2026-07-25 to 2026-08-09, and an empty Anthropic credit balance killed every
+> run from 2026-08-21 onward.
+>
+> It is kept because the task spec itself is sound and hard-won — in particular
+> the draft-PR-before-fixing rule, which exists because the 2026-08-09 run burned
+> 60 turns and $5.02 and was killed with nothing pushed. If this is ever revived,
+> restore `contents: write`, `pull-requests: write` and `id-token: write` to the
+> workflow's permissions, and read `features/judge-exit-codes.md` first: the
+> agent must be gated on `steps.judge.outputs.status == 'findings'`, never on
+> `steps.judge.outcome`.
+
 # Autonomous weekend audit-fix — CI prompt
 
 You are running **headless in GitHub Actions**, triggered because the weekly LLM

@@ -61,7 +61,7 @@ module.exports = {
     if (theoHymn.tone === gloryHymn.tone) return [];
     return [{
       message: `Troparia dismissal Theotokion tone ${theoHymn.tone} does not match Glory tone ${gloryHymn.tone}.`,
-      hint:    'Re-key the Troparia `now` slot to `tone${gloryTone}.saturday.vespers.dismissalTheotokion` when splicing the Menaion Glory (see for-date.js Saturday Great Vespers branch).',
+      hint:    'Re-key the Troparia `now` slot via dailyTheotokionKey(gloryTone) when splicing the Menaion Glory (see for-date.js Saturday Great Vespers branch). That helper resolves to the `saturday` dismissal Theotokion on a Sunday and to the evening\'s own daily Theotokion on a weekday — D22 guards the day, this rule guards the tone.',
     }];
   },
 };

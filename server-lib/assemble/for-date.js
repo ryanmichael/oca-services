@@ -810,6 +810,26 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
       menaionOverride = { ...sources.menaion, auto: { [date]: autoSlot } };
 
+      // A weekday Vespers closes with the DAILY dismissal Theotokion of its own
+      // day, not the Saturday/resurrectional one. Until 2026-10-02 every weekday
+      // read `tone${T}.saturday.vespers.dismissalTheotokion`, because that was
+      // the only one the Octoechos held — so all five weekdays printed Sunday's
+      // hymn at the right tone. Found by the choir director's 10-07 sheet, which
+      // appoints the Thursday Theotokion ("O Pure Theotokos and gate of eternal
+      // life") where we printed the Saturday one.
+      //
+      // Keyed by CIVIL EVENING per _meta.weekdayVespersConvention, so the
+      // source's "Thursday (Wednesday Evening)" lives under `wednesday`.
+      // Liturgical Saturday (sung Friday evening) has no daily Theotokion in our
+      // source — see _meta.knownGaps — so fall back to the Saturday hymn there
+      // rather than render an empty slot. Guarded by D22.
+      const dailyTheotokionKey = (tone) => {
+        const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
+        const key = `tone${tone}.${eve}.vespers.dismissalTheotokion`;
+        const held = key.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos);
+        return held ? key : `tone${tone}.saturday.vespers.dismissalTheotokion`;
+      };
+
       const slots = calendarEntry.vespers.troparia.slots;
       if (slots.length === 0) {
         // Daily-Vespers / vigil-rank shape: spec ships no troparia. Emit the
@@ -838,7 +858,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         } : {
           position: 'now',
           source:   'octoechos',
-          key:      `tone${gloryTone}.saturday.vespers.dismissalTheotokion`,
+          key:      dailyTheotokionKey(gloryTone),
           tone:     gloryTone,
           label:    'Dismissal Theotokion',
         });
@@ -869,7 +889,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             ...(windowCombinesGloryNow ? { combinesGloryNow: true } : {}),
           } : {
             ...slots[nowIdx],
-            key:  `tone${gloryTone}.saturday.vespers.dismissalTheotokion`,
+            // Same helper as the Daily-Vespers branch: for liturgical Sunday it
+            // resolves to `saturday` exactly as this line used to hardcode, and
+            // a weekday whose spec DOES ship troparia now gets its own daily
+            // Theotokion instead of Sunday's.
+            key:  dailyTheotokionKey(gloryTone),
             tone: gloryTone,
           };
         }

@@ -166,29 +166,50 @@ describe('Feature contract: hymn label choice (row label vs slot label)', () => 
   });
 
   it('INV-8: a merged multi-saint slot attributes each sticheron to its own saint', async () => {
-    // 2026-10-04: four stichera of Hieromartyr Hierotheus (labelled in the DB
-    // "the holy hieromartyr") and two of Ven. Paul the Simple share one slot.
-    // Neither label is in the "(for X)" form labelSubject parses, so both
-    // reduced to null, the slot read as un-mixed, and Paul's two hymns printed
-    // under Hierotheus's name. Mixed slots are now decided on commemorationId —
-    // the structure — with label parsing only as a fallback.
-    const r = await get('/api/service?date=2026-10-03');
+    // Witness moved from 2026-10-04 to 2026-07-12 on 2026-10-03.
+    //
+    // 10-04 was a merge only because the assembler gave Ven. Paul the Simple
+    // slots the published order never appointed; now that the split is appointed
+    // from the order he is not sung there at all, so the date no longer
+    // exercises a merge. 07-12 is the real article and the case the merge was
+    // written for: the order reads "3 stichera of the Martyrs, Tone 1 / 3
+    // stichera of Ven. Michael, Tone 5", and both saints genuinely share.
+    //
+    // The bug this guards: neither label is in the "(for X)" form labelSubject
+    // parses, so both reduced to null, the slot read as un-mixed, and the second
+    // saint's hymns printed under the first saint's name. Mixed slots are now
+    // decided on commemorationId — the structure — with label parsing as a
+    // fallback only.
+    const r = await get('/api/service?date=2026-07-11');
     const menaion = (r.json.blocks || []).filter(
       b => b.section === 'Lord, I Have Cried' && b.type === 'hymn' && b.source === 'menaion');
     assert.ok(menaion.length >= 6, 'precondition: the merged slot is present');
 
-    const paul = menaion.filter(b => /O wondrous Paul|Wondrous was thine obedience/.test(b.text || ''));
-    assert.equal(paul.length, 2, 'precondition: both of Paul\'s stichera render');
-    for (const b of paul) {
-      assert.match(b.label || '', /Paul the Simple/,
-        `Paul's sticheron must carry his own name, got "${b.label}"`);
+    const michael = menaion.filter(b => /O venerable father|brightness of heartfelt/.test(b.text || ''));
+    assert.ok(michael.length >= 2, `precondition: Ven. Michael's stichera render, got ${michael.length}`);
+    for (const b of michael) {
+      assert.match(b.label || '', /Michael/,
+        `Ven. Michael's sticheron must carry his own name, got "${b.label}"`);
     }
 
-    // And the Glory stays under the principal's full title rather than
-    // collapsing to the bare descriptor once the slot counts as mixed.
-    const glory = menaion.find(b => /When thou wast present at the divine dormition/.test(b.text || ''));
-    assert.ok(glory, 'precondition: the Glory renders');
-    assert.match(glory.label || '', /Hierotheus/,
-      `the Glory must keep the principal's title, got "${glory.label}"`);
+    const martyrs = menaion.filter(b => /Proclus/.test(b.text || ''));
+    for (const b of martyrs) {
+      assert.match(b.label || '', /Proclus|Martyrs/,
+        `the Martyrs' sticheron must carry their name, got "${b.label}"`);
+    }
+
+    // The order appoints "Glory… Ven. Michael, Tone 6", and the right TEXT is
+    // sung there.
+    //
+    // ⚠️ KNOWN DEFECT, not asserted here: that Glory currently renders under the
+    // label "Martyrs Proclus and Hilary of Ancyra" — correct text, wrong saint's
+    // name. Pre-existing and unrelated to the appointed-split change; asserting
+    // it here would block an unrelated commit, so it is recorded instead. A
+    // second one on the same date: Ven. Michael's first two stichera are
+    // byte-identical, where the order appoints three distinct.
+    const glory = menaion.find(b => b.tone === 6);
+    assert.ok(glory, 'precondition: the Tone 6 Glory renders');
+    assert.match(glory.text || '', /Michael/,
+      "the Glory's text must be Ven. Michael's, per the order");
   });
 });

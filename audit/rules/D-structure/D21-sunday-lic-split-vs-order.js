@@ -30,20 +30,9 @@
 // files carry it. Sundays with no order file are skipped — silently, because a
 // missing oracle is not a finding.
 
-const fs   = require('fs');
-const path = require('path');
-
-const ORDERS_DIR = path.resolve(__dirname, '..', '..', '..', 'reference', 'orders');
-
-/** `2026-10-04` → the order file's stated Resurrection count, or null. */
-function orderResurrectionCount(sundayIso) {
-  const [y, m, d] = sundayIso.split('-');
-  const file = path.join(ORDERS_DIR, `${y}-${m}${d}-order-services.txt`);
-  let txt;
-  try { txt = fs.readFileSync(file, 'utf8'); } catch { return null; }
-  const m2 = txt.match(/(\d+)\s+stichera of the Resurrection/i);
-  return m2 ? Number(m2[1]) : null;
-}
+// The parser lives with the assembler that now CONSULTS it, so this rule and
+// the code it audits can never disagree about what the order says.
+const { orderResurrectionCount } = require('../../../server-lib/sources/order-of-services');
 
 /**
  * Count the numbered RESURRECTIONAL stichera actually rendered at Lord I Call.
@@ -68,37 +57,27 @@ function renderedResurrectionCount(blocks) {
   return n;
 }
 
-// Sundays whose split cannot be resolved until the principal's Typikon RANK is
-// in the data. Same discipline as D13/D15's KNOWN_SOURCE_GAPS: each entry says
-// what source would close it.
+// 2026-10-02/03 UPDATE — these gaps are CLOSED and the map is deliberately empty.
 //
-// WHY THESE CANNOT BE FIXED IN THE ASSEMBLER TODAY. The split is a function of
-// the saint's rank — a simple-rank saint takes 3 of the 10 slots, a polyeleos+
-// saint takes 6. Measured across the 2026 Sundays that have an OCA order, the
-// three below and the ~12 that correctly render 4+6 (01-18 Athanasius, 07-12
-// Proclus, 07-26 Jacob Netsvetov, 09-20, 10-18 Luke …) are INDISTINGUISHABLE at
-// runtime: every one has `commemorations.rank = NULL` and no cocelebrated
-// overlay. Capping the Menaion at 3 for that signature would break the twelve
-// to fix the three.
+// This rule previously suppressed 2026-06-07, 2026-10-04 and 2026-10-25 on the
+// grounds that the split needed the principal's Typikon rank, which we do not
+// have. That reasoning was wrong, and 2026-10-04 was sung from a wrong sheet at
+// Great Vespers on 2026-10-03 before anyone noticed: six of the ten stichera.
 //
-// TWO CANDIDATE DISCRIMINATORS WERE TESTED AND BOTH FAIL. Do not re-try them:
+// Rank is indeed useless here — `commemorations.rank` is NULL for all 2,638
+// rows, and orthocal's `feast_level` gives 07-12 Proclus (correctly 4+6) and
+// 10-25 Marcian (should be 7+3) the same level 0. Do not re-try either.
 //
-//   1. `commemorations.rank` — NULL for all 2,638 rows. The column is entirely
-//      unpopulated and nothing consumes it.
-//   2. orthocal's `feast_level` (the oracle scripts/rank-coverage.js uses) —
-//      does not separate the two groups. 2026-07-12 (Proclus) is level 0 and
-//      correctly renders 4+6; 2026-10-25 (Marcian and Martyrius) is also level
-//      0 and should render 7+3. Same level, opposite splits.
+// But the ORDER FILE states the count per date, and it separates the cases
+// cleanly: the Sundays that correctly render 4+6 (01-18, 07-12, 07-26, 09-20,
+// 10-18 …) all read "4 stichera of the Resurrection", while 10-04 and 10-25
+// read 7 and 06-07/11-01 read 6. The oracle this rule already parsed to DETECT
+// the bug was sufficient to FIX it; for-date.js now appoints the Menaion count
+// from it directly.
 //
-// Closing these means authoring the appointed sticheron count per commemoration
-// from the Typikon/Menaion — liturgical data authoring against a published
-// source, not a rule change. See `npm run audit:rank-coverage` and memory
-// project_sergius_rank_survey.
-const KNOWN_RANK_GAPS = {
-  '2026-06-07': 'Synaxis of All Saints — order appoints 6 res + 4; rank NULL, renders 4 + 6.',
-  '2026-10-04': 'Hieromartyr Hierotheus — order appoints 7 res + 3; rank NULL, renders 4 + 6. Confirmed against the choir packet 2026-10-01.',
-  '2026-10-25': 'Martyrs Marcian and Martyrius — order appoints 7 res + 3; rank NULL, renders 4 + 6.',
-};
+// Keep this empty. A new entry here means a Sunday is being suppressed rather
+// than fixed — the mistake this comment exists to prevent.
+const KNOWN_RANK_GAPS = {};
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 

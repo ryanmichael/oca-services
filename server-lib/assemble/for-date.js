@@ -6,6 +6,7 @@
 
 const { assembleVespers } = require('../../assembler');
 const { calculatePascha, fixedFeastDate, getFeastRank, VESPERS_SUNG_EVE } = require('../../calendar-rules');
+const { orderResurrectionCount } = require('../sources/order-of-services');
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
@@ -321,7 +322,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       // first ("And 3 Stichera, the composition of Anatolius, in Tone II"), not
       // extra slots. Counting them squeezes the resurrectional slot — 8-02 Stephen
       // rendered 6 Octoechos + 4 Menaion instead of the rubric's 7 + 3.
-      const licStichera = sticheraData?.[0]?.stichera.filter(
+      let licStichera = sticheraData?.[0]?.stichera.filter(
         // A Stavrotheotokion is an ALTERNATIVE for the Now-and-ever slot on
         // Wed/Fri, never a numbered sticheron. The corpus keeps 75 of 79 at
         // order=-1, but four commemorations hold one at a numbered order, where
@@ -357,6 +358,44 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // evening song") and must NOT be promoted, so this is opt-in per tone via
           // `_alsoNumberedSticheron` rather than inferred. See
           // features/lic-no-leading-repeat.md.
+          // ── The Menaion count comes from the published OCA order ──────────
+          // It used to be "the Menaion takes however many sticheron rows the
+          // database happens to hold, and the Resurrection gets the remainder"
+          // (see menaionCount below). On a Sunday carrying a second
+          // stichera-bearing commemoration that silently demoted the
+          // Resurrection: 2026-10-04 rendered 4 + 6 — four of Hierotheus and
+          // two of Ven. Paul the Simple, whom the order does not sing at all —
+          // where the order appoints 7 + 3. Heard in church on 2026-10-03 with
+          // six of the ten stichera wrong; `audit:date` was 0/0/0 on it.
+          //
+          // Saint RANK cannot decide this and both candidates were tested and
+          // rejected (D21): `commemorations.rank` is NULL for all 2,638 rows,
+          // and orthocal's feast_level gives 07-12 Proclus (correctly 4+6) and
+          // 10-25 Marcian (should be 7+3) the same level 0. The order states
+          // the count per date and DOES separate them.
+          //
+          // Only the MENAION count is appointed here. How many resurrectional
+          // stichera fill the rest stays with the logic below, so a parish
+          // running licNoLeadingRepeat still gets its 9 rather than a doubled
+          // first sticheron — Tone 1 publishes only 6 distinct.
+          const appointedRes = (calendarEntry.dayOfWeek === 'sunday' && totalStichera === 10)
+            ? orderResurrectionCount(date)
+            : null;
+          if (appointedRes != null) {
+            const appointedMenaion = Math.max(0, totalStichera - appointedRes);
+            if (licStichera.length > appointedMenaion) {
+              // Keep the PRINCIPAL's own stichera. The multi-saint merge above
+              // concatenates in calendar order, so a plain slice would be at
+              // the mercy of which commemoration happens to sort first.
+              const principalId = primary?.id ?? null;
+              licStichera = [...licStichera]
+                .sort((a, b) => (a.commemorationId === principalId ? 0 : 1)
+                              - (b.commemorationId === principalId ? 0 : 1))
+                .slice(0, appointedMenaion)
+                .sort((a, b) => a.order - b.order);
+            }
+          }
+
           const resKey   = calendarEntry.vespers.lordICall.slots?.[0]?.key;
           const resNode  = resKey
             ? resKey.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)

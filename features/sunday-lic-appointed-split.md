@@ -99,6 +99,28 @@ D21 across all 365 dates with `KNOWN_RANK_GAPS` **empty**: 0 findings. All 42
 Sundays that have a published order now match it, including the 12 that were
 already correct.
 
+## Follow-ups from the same date (2026-10-03)
+
+Two things were reported alongside the split, both at 2026-07-12. **One was real
+and one was my error.**
+
+**REAL — the Glory followed the principal, not its own saint.** The Glory slot
+took `sticheraLabel` (the principal's title) unconditionally, so on a Sunday where
+the doxastikon belongs to the *other* saint it printed the right text under the
+wrong name: 07-12 appoints "Glory… Ven. Michael, Tone 6" while the principal is
+the Martyrs Proclus and Hilary. Fixed by carrying `commemorationId` on the merged
+Glory and labelling from its owner — structure, not label parsing, the same
+discipline the numbered stichera already use. Pinned by INV-9, with INV-10
+guarding the ordinary case where the principal does own the Glory.
+
+**NOT REAL — the "duplicate" sticheron.** I reported Ven. Michael's first two
+stichera as byte-identical where the order appoints three distinct, and called it
+data drift. OCR of the parish booklet (`docs/7-11 and 7-12`, source `tyler-booklet`)
+shows the first sticheron marked **(X2)**: two distinct stichera, the first sung
+twice to fill the order's three slots. The data is correct and matches the
+booklet exactly. I declared a data gap without opening the source — the same
+trap recorded in `project_d4_sat_aposticha_tone_fix`.
+
 ## Keep in sync
 
 - `server-lib/sources/order-of-services.js` — the parser

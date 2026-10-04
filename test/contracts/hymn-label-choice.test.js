@@ -212,4 +212,35 @@ describe('Feature contract: hymn label choice (row label vs slot label)', () => 
     assert.match(glory.text || '', /Michael/,
       "the Glory's text must be Ven. Michael's, per the order");
   });
+
+  it('INV-9: on a multi-saint Sunday the Glory follows its OWN saint', async () => {
+    // 2026-07-12 appoints "Glory… Ven. Michael, Tone 6" while the principal is
+    // the Martyrs Proclus and Hilary. The Glory slot took the PRINCIPAL's title
+    // unconditionally, so Michael's doxastikon printed under the Martyrs' name —
+    // right text, wrong saint. Confirmed against the parish booklet
+    // (docs/7-11 and 7-12) and reference/orders/2026-0712-order-services.txt.
+    const r = await get('/api/service?date=2026-07-11');
+    const lic = (r.json.blocks || []).filter(b => b.section === 'Lord, I Have Cried');
+    const gi = lic.findIndex(b => b.type === 'doxology' && /^Glory to the Father/.test(b.text || ''));
+    assert.ok(gi !== -1, 'precondition: a Glory doxology renders');
+    const glory = lic.slice(gi + 1).find(b => b.type === 'hymn');
+    assert.ok(glory, 'precondition: a Glory hymn renders');
+
+    assert.match(glory.text || '', /Michael/, 'precondition: the text is Ven. Michael\'s');
+    assert.match(glory.label || '', /Michael/,
+      `the Glory must carry Ven. Michael's name, got "${glory.label}"`);
+    assert.ok(!/Proclus|Hilary/i.test(glory.label || ''),
+      `the Glory must not be attributed to the Martyrs, got "${glory.label}"`);
+  });
+
+  it('INV-10: a Glory owned by the principal is unchanged', async () => {
+    // The regression INV-9 would most plausibly cause. On 2026-10-04 the Glory
+    // IS the principal's (Hierotheus), and must keep his full title.
+    const r = await get('/api/service?date=2026-10-03');
+    const lic = (r.json.blocks || []).filter(b => b.section === 'Lord, I Have Cried');
+    const gi = lic.findIndex(b => b.type === 'doxology' && /^Glory to the Father/.test(b.text || ''));
+    const glory = lic.slice(gi + 1).find(b => b.type === 'hymn');
+    assert.ok(glory, 'precondition: a Glory hymn renders');
+    assert.match(glory.label || '', /Hierotheus/, `expected the principal's title, got "${glory.label}"`);
+  });
 });

@@ -157,7 +157,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           .filter(s => s.section === 'lordICall')
           .sort((a, b) => a.order - b.order);
         for (const s of own) {
-          if (s.order === 0) { if (!glory) glory = { ...s, label: s.label || c.title }; }
+          // `commemorationId` travels with the Glory for the same reason it
+          // travels with the numbered stichera: on a multi-saint Sunday the
+          // doxastikon can belong to a different saint than the principal, and
+          // the slot label has to follow the TEXT rather than the ranking.
+          if (s.order === 0) { if (!glory) glory = { ...s, label: s.label || c.title, commemorationId: c.id }; }
           // order<0 is the Now-and-ever slot, not a numbered sticheron. Renumbering
           // it into the run cost the saint a slot — 8-09 sang the Afterfeast's
           // "In Thy goodness" as a numbered sticheron and dropped St. Herman's
@@ -600,7 +604,19 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               autoSlot.lordICall.now = { text: own.text, tone: own.tone, label: own.label };
             }
           }
-          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: sticheraLabel, combinesGloryNow: !lic.now };
+          // The Glory slot used to take `sticheraLabel` unconditionally — the
+          // PRINCIPAL's title. On a multi-saint Sunday where the doxastikon
+          // belongs to the other saint that printed the right text under the
+          // wrong name: 2026-07-12 appoints "Glory… Ven. Michael, Tone 6" while
+          // the principal is the Martyrs Proclus and Hilary, and Michael's Glory
+          // rendered as theirs. Found 2026-10-03 while re-pointing INV-8 of
+          // hymn-label-choice. Decided on commemorationId — the structure — not
+          // by parsing the label, which is the same discipline the numbered
+          // stichera already use.
+          const gloryOwner = (licGlory.commemorationId != null && licGlory.commemorationId !== primary?.id)
+            ? (ranked?.all || []).find(c => c.id === licGlory.commemorationId)
+            : null;
+          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: gloryOwner?.title || sticheraLabel, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         }
       }

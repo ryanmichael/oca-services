@@ -144,4 +144,28 @@ describe('Feature contract: Sunday Lord-I-Call appointed split', () => {
     assert.ok(!/stichera of the Resurrection/i.test(rule.replace(/^\s*\/\/.*$/gm, '')),
       'D21 must not carry its own copy of the regex outside comments');
   });
+
+  it('INV-8: the Hierotheus stichera carry the OCA text the parish sings', async () => {
+    // Corrected 2026-10-04 (corrections_log #12). These three were the right
+    // hymns at the right tone in the WRONG TRANSLATION — st-sergius.org wording
+    // ("Receiving the grace of the all-holy Spirit, * O all-glorious
+    // Hierotheus") against the OCA text the choir sings. The Resurrection
+    // stichera beside them come from the OCA Obikhod, so one service carried two
+    // translations and the register shifted audibly at v3.
+    //
+    // Transcribed from the scanned packet pages, not OCR. Pinned because the
+    // rescrape harness could silently restore the st-sergius.org rows.
+    const r = await get('/api/service?date=2026-10-03');
+    const { men } = licSplit(r.json.blocks);
+    assert.equal(men.length, 3, 'precondition: the appointed three');
+
+    const joined = men.map(b => b.text || '').join('\n');
+    assert.match(joined, /Having received the grace of the Holy Spirit/);
+    assert.match(joined, /well-pleasing and divinely-sanctified gift/);
+    assert.match(joined, /the twelve Apostles at the most glorious dormition/);
+
+    // The st-sergius.org wording and its podoben phrase marks must be gone.
+    assert.ok(!/all-holy Spirit/.test(joined), 'st-sergius.org wording still present');
+    assert.ok(!/\*/.test(joined), `podoben asterisks leaked into OCA text: ${joined.slice(0, 80)}`);
+  });
 });

@@ -51,6 +51,11 @@ docs/choir-packets/*/pdf/
 # Rescrape harness DOCX cache (~11MB of fetched OCA source texts; regenerable)
 reference/scrape/
 
+# Third-party service books fetched for parsing (regenerable, not ours to ship).
+# server-lib/sources/daily-octoechos-parse.js reads
+# reference/books/daily-octoechos-mtmary.pdf — ponomar.net/data/octoechos_week_days_MtMary.pdf
+reference/books/
+
 # Photographed service books — local-only reference material
 reference/**/*.HEIC
 reference/**/*.heic

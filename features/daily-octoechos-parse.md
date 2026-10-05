@@ -1,7 +1,7 @@
 # Feature: Daily Octoechos parser
 
-**Status:** parser shipped and validated 2026-10-05 — **the write into
-`octoechos.json` is NOT done**, pending one decision (below)
+**Status:** parser and write both shipped 2026-10-05
+**Apply script:** `node scripts/daily-octoechos-apply.js [--apply]` (dry-run by default)
 **Contract test:** `test/contracts/daily-octoechos-parse.test.js`
 **Chunk:** 4 of the OCA-standardisation plan
 
@@ -71,7 +71,48 @@ stichera printed in the 2026-10-07 packet. INV-5.
 and parsed 15 hymns including "(After the 1st reading of the Psalter): Sessional
 Hymn". It is **reported, never emitted** — INV-3.
 
-## ⛔ THE OPEN DECISION — why nothing was written
+## What was written
+
+141 Lord-I-Call stichera across 47 nodes, 34 Lord-I-Call Theotokia, and the
+Aposticha of 39 nodes — **370 hymns**, purely text + `_source`, nothing added or
+removed.
+
+**Only the PRIMARY set of three is replaced.** Every weekday node holds six
+Lord-I-Call hymns, which are two sets of three: a primary theme and a secondary
+one (sunday repentance + angels; monday repentance + Forerunner; tuesday Cross +
+Theotokos; **wednesday apostles + St Nicholas**; thursday Cross + Theotokos;
+friday martyrs + all saints). Six are held so the assembler can draw three when a
+Menaion saint supplies the other three, and more when the Menaion is short. The
+book prints only the primary set — the three the parish sings — so hymns 3–5 are
+left alone. **That is not over-supply on our side; the two books serve different
+purposes.**
+
+Theotokia and Aposticha are converted only where the parsed node has **exactly**
+the expected count (4). A node with 5 carries an entry the parser could not
+classify, and guessing which is the Theotokion would put the wrong hymn at "Now
+and ever". 13 LIC Theotokia and 8 Aposticha nodes are left for that reason.
+
+Measured afterwards: of 239 weekday Daily Vespers, the five whose Menaion is
+short (02-15, 04-19, 05-12, 07-01, 12-15) still fill every slot — three from the
+Daily Octoechos plus one or two from the secondary set. **No service lost a
+hymn.** Both parish packet dates (2026-09-02 tone 4, 2026-10-07 tone 1) now
+render the director's own text.
+
+## ⚠️ D23 WENT UP, 223 → 250, AND THAT IS NOT A REGRESSION
+
+Before this change a weekday looked single-translation because the Octoechos
+*and* the Menaion saint were **both** st-sergius.org — an accident of sourcing,
+not correctness. Now the Octoechos is the parish's book and the saints are
+whatever their own source is, so D23 sees two families and reports a mix.
+
+**The services are more correct and the metric reads worse.** D23's premise —
+one service, one translation — does not hold for a weekday, where the parish
+legitimately sings the Daily Octoechos for the cycle and a Menaion source for the
+saint. The rule needs to learn *expected pairings* before its count means
+anything again. Until then, read it as "how many services draw on more than one
+book", not "how many are wrong".
+
+## Superseded: the decision that blocked the write
 
 **The hymn counts do not correspond one-to-one.**
 

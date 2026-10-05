@@ -35,6 +35,11 @@ const FAMILY = {
   'lambertsen':    'lambertsen',
   'stSergius':     'stsergius',
   'raphaela':      'raphaela',
+  // The parish's weekday book. A distinct translation, NOT an OCA artifact:
+  // giving it the 'oca' family would make a weekday service mixing it with an
+  // OCA Menaion saint look single-translation when it is two books. That
+  // pairing IS what the parish sings, but D23 should still say so plainly.
+  'mtMaryDailyOctoechos': 'mtmary',
 };
 
 const LABEL = {
@@ -42,6 +47,7 @@ const LABEL = {
   lambertsen: 'Lambertsen',
   stsergius:  'St. Sergius',
   raphaela:   'Myrrh-bearers (Raphaela)',
+  mtmary:     'Daily Octoechos',
   unknown:    'unknown',
 };
 

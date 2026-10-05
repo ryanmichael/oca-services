@@ -60,16 +60,20 @@ before(async () => {
 after(() => { if (serverProcess) serverProcess.kill(); });
 
 describe('Feature contract: block provenance', () => {
-  it('INV-1: the weekday Octoechos reports St. Sergius, not OCA', async () => {
-    // Every weekday day-node in octoechos.json carries `_source: 'stSergius'`.
-    // This is the single largest mislabel: it covered every weekday service.
+  it('INV-1: the weekday Octoechos reports its real book, never a blanket OCA', async () => {
+    // The point of this invariant is that the weekday cycle reports the source
+    // it actually came from. It read 'St. Sergius' until 2026-10-05, when the
+    // primary stichera moved to the parish's Daily Octoechos (chunk 4); the
+    // assertion follows the data rather than pinning a label that changed for
+    // a deliberate reason.
     const r = await get('/api/service?date=2026-10-07');
     const octo = hymns(r.json).filter(b => b.source === 'octoechos');
     assert.ok(octo.length >= 4, `expected weekday Octoechos hymns, got ${octo.length}`);
-    const sergius = octo.filter(b => b.provenance === 'St. Sergius');
-    assert.ok(sergius.length >= 4,
-      `expected the weekday cycle to report St. Sergius, got ${JSON.stringify(
-        octo.map(b => b.provenance))}`);
+    const named = octo.filter(b => b.provenance === 'Daily Octoechos' || b.provenance === 'St. Sergius');
+    assert.ok(named.length >= 4,
+      `the weekday cycle must name its book, got ${JSON.stringify(octo.map(b => b.provenance))}`);
+    assert.ok(octo.some(b => b.provenance === 'Daily Octoechos'),
+      'the primary stichera now come from the parish Daily Octoechos');
   });
 
   it('INV-2: a Sunday reports OCA throughout', async () => {
@@ -95,7 +99,8 @@ describe('Feature contract: block provenance', () => {
     // 1,052 + 353 rows displayed as OCA before this fix. Sample the year rather
     // than one date, because a single date proves little about a blanket default.
     const { familyOfText } = require(path.join(ROOT, 'server-lib', 'sources', 'translation-provenance'));
-    const LABELS = { lambertsen: 'Lambertsen', raphaela: 'Myrrh-bearers (Raphaela)', stsergius: 'St. Sergius' };
+    const LABELS = { lambertsen: 'Lambertsen', raphaela: 'Myrrh-bearers (Raphaela)',
+                     stsergius: 'St. Sergius', mtmary: 'Daily Octoechos' };
     let checked = 0;
     for (const date of ['2026-01-01', '2026-03-13', '2026-06-10', '2026-10-07', '2026-11-20']) {
       const r = await get(`/api/service?date=${date}`);

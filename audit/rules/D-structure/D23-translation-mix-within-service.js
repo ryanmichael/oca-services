@@ -121,13 +121,22 @@ module.exports = {
       const offenders = [];
       for (const [role, fams] of byRole) {
         for (const [fam, v] of fams) {
-          if (fam !== 'oca') offenders.push({ role, fam, v });
+          if (fam === 'oca') continue;
+          // A festal service falling on a WEEKDAY evening still draws its
+          // Octoechos Theotokion from that evening's weekday node — which for
+          // this parish is the Daily Octoechos. Six vigils were flagged for a
+          // single Stavrotheotokion on exactly that path ("When she beheld Thee
+          // nailed upon the Cross"), which is the right hymn from the right
+          // book. Expecting OCA there asks the service to draw a weekday hymn
+          // from a book that does not print one.
+          if (fam === WEEKDAY_CYCLE && role === 'octoechos' && !opensSunday) continue;
+          offenders.push({ role, fam, v });
         }
       }
       if (offenders.length) {
         const worst = offenders.sort((a, b) => b.v.count - a.v.count)[0];
         findings.push({
-          message: `${opensSunday ? 'Sunday' : 'Great Feast'} service draws on ` +
+          message: `${opensSunday ? 'Sunday' : (isGreatFeast ? 'Great Feast' : 'Festal')} service draws on ` +
                    `${offenders.map(o => `${name(o.fam)} (${o.role} x${o.v.count})`).join(', ')} ` +
                    'where OCA is expected throughout.',
           hint: `e.g. "${(worst.v.sample.text || '').replace(/\s+/g, ' ').slice(0, 52)}…" ` +

@@ -216,4 +216,31 @@ describe('Feature contract: translation-mix detection', () => {
     assert.equal(checked, 144, `expected 8 tones x 6 evenings x 3, got ${checked}`);
     assert.equal(converted, 144, `${checked - converted} primary stichera are not the parish book`);
   });
+
+  it('INV-10: a weekday-eve festal service keeps its Octoechos Theotokion', async () => {
+    // A vigil or Great Vespers falling on a WEEKDAY evening still draws its
+    // Octoechos Theotokion from that evening's weekday node — which for this
+    // parish is the Daily Octoechos. Six vigils were flagged for exactly one
+    // Stavrotheotokion on that path ("When she beheld Thee nailed upon the
+    // Cross"): the right hymn, from the right book. Expecting OCA there asks
+    // the service to draw a weekday hymn from a book that prints none.
+    const r = await get('/api/service?date=2026-06-23');   // a weekday All-Night Vigil
+    assert.match(r.json.serviceName || '', /Vigil|Great Vespers/, 'precondition: festal');
+    const found = RULE.check({ service: 'vespers', date: '2026-06-23', assembled: r.json });
+    for (const f of found) {
+      assert.ok(!/Daily Octoechos \(octoechos/.test(f.message),
+        `the weekday Octoechos Theotokion must not be flagged on a weekday-eve festal service: ${f.message}`);
+    }
+  });
+
+  it('INV-11: a weekday Great Vespers is not called a Great Feast', () => {
+    // The message said "Great Feast service draws on…" for any festal service,
+    // including an ordinary Friday-evening Great Vespers. A reader triaging the
+    // report would look for a feast that is not there.
+    const fs = require('node:fs');
+    const src = fs.readFileSync(path.join(ROOT, 'audit', 'rules', 'D-structure',
+      'D23-translation-mix-within-service.js'), 'utf8');
+    assert.match(src, /isGreatFeast \? 'Great Feast' : 'Festal'/,
+      'the label must distinguish a Great Feast from an ordinary festal service');
+  });
 });

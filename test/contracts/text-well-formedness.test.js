@@ -151,17 +151,68 @@ describe('Feature contract: stored text is well-formed in both registers', () =>
   //
   // Repairing them needs the source each row came from, not a regex, so they are
   // listed instead of asserted away. The list may SHRINK, never grow.
+  // 7 of the original 10 were a rubric glued to the FRONT of an otherwise whole
+  // hymn and were stripped on 2026-10-05 (8388, 8416, 8454, 8543, 8893, 9122,
+  // 9486). The 3 that remain are genuine fragments: the head of the hymn is gone,
+  // and it is gone because the scraper merged several hymns into the ADJACENT row
+  // (see RUBRIC_IN_TEXT_BASELINE below — 8630's head is inside the 1,770-character
+  // blob at 8629). Repairing them means re-deriving those commemorations from
+  // source, not patching text, so they stay listed.
   const MID_SENTENCE_BASELINE = new Set([
-    'stichera 8388', 'stichera 8393', 'stichera 8416', 'stichera 8454',
-    'stichera 8543', 'stichera 8630', 'stichera 8893', 'stichera 9030',
-    'stichera 9122', 'stichera 9486',
+    'stichera 8393', 'stichera 8630', 'stichera 9030',
   ]);
+
+  // Rubric language INSIDE a sung text — the instruction a choir is handed as if
+  // it were a verse. drift:check reports "Rubric bleed in sung text: clean" on
+  // every one of these 30, so its detector is keyed on something narrower.
+  //
+  // This is live: on 2026-06-04 a Lord-I-Call sticheron reads "...ask God to grant
+  // great mercy unto all. But if Alleluia is to be chanted at Matins instead of
+  // 'God is the Lord ...,' we sing first the following Stichera of the Theotokos,
+  // in the same melody: O Mistress, wrest me from the hands of the serpent..." —
+  // a rubric plus three further hymns, printed as one piece.
+  //
+  // These are the ROOT of the fragment class: a row that swallowed its neighbours
+  // is why the neighbour has no head. Ratcheted, not asserted away, because the
+  // repair is a re-scrape of the affected commemorations.
+  const RUBRIC_IN_TEXT_BASELINE = new Set([
+    'stichera 8430', 'stichera 8600', 'stichera 8608', 'stichera 8616',
+    'stichera 8629', 'stichera 8636', 'stichera 8643', 'stichera 8652',
+    'stichera 8663', 'stichera 8678', 'stichera 8685', 'stichera 8719',
+    'stichera 8722', 'stichera 8750', 'stichera 8888', 'stichera 8894',
+    'stichera 8910', 'stichera 9141', 'stichera 9390', 'stichera 9452',
+    'stichera 9469', 'stichera 9481', 'stichera 9484', 'stichera 9490',
+    'stichera 9505', 'stichera 9509', 'stichera 9520', 'stichera 9535',
+    'stichera 9544', 'stichera 10590',
+  ]);
+
+  const RUBRIC_RE = new RegExp([
+    'But if Alleluia is to be chanted', 'we sing first the following',
+    'in the same melody:', 'in the same tone[:,]', 'from the Triodion',
+    'from the Pentecostarion', 'from the Oktoechos', 'Or this Theotokion',
+    'another Troparion', 'If (?:it be|Alleluia)', 'we chant', 'is to be sung',
+    '\\(After the (?:first|second|third) reading',
+  ].join('|'), 'i');
 
   it('INV-5: no NEW hymn begins mid-sentence', () => {
     const found = ROWS.filter((r) => /^[a-z]/.test(r.text.trim())).map(where);
     const added = found.filter((k) => !MID_SENTENCE_BASELINE.has(k));
     assert.deepEqual(added, [],
       `new mid-sentence hymns — a rubric bleed or a page-break fragment:\n  ${added.join('\n  ')}`);
+  });
+
+  it('INV-7: no NEW rubric language inside a sung text', () => {
+    const found = ROWS.filter((r) => RUBRIC_RE.test(r.text)).map(where);
+    const added = found.filter((k) => !RUBRIC_IN_TEXT_BASELINE.has(k));
+    assert.deepEqual(added, [],
+      `a rubric is being printed as part of a verse:\n  ${added.join('\n  ')}`);
+  });
+
+  it('INV-8: the rubric baseline carries no stale entry', () => {
+    const found = new Set(ROWS.filter((r) => RUBRIC_RE.test(r.text)).map(where));
+    const stale = [...RUBRIC_IN_TEXT_BASELINE].filter((k) => !found.has(k));
+    assert.deepEqual(stale, [],
+      `repaired — delete these from RUBRIC_IN_TEXT_BASELINE:\n  ${stale.join('\n  ')}`);
   });
 
   it('INV-6: the mid-sentence baseline carries no stale entry', () => {

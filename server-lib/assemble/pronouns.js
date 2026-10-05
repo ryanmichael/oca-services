@@ -37,7 +37,22 @@ const IRREGULAR_PAST = {
 
 // Words that can follow "didst" without being its main verb — leave these for
 // the generic didst→did rule rather than trying to conjugate them.
-const NON_VERB_AFTER_DIDST = new Set(['thou','thee','you','ye','not','the','a','an']);
+// The prepositions matter when an adverb intervenes and no verb follows it at
+// all: "the deeds thou didst alone in the Lord" must fall through to "did alone
+// in", not conjugate the preposition into "alone ined".
+// The reflexives belong here for the same reason as "the": they mark that an
+// -ly token before them is the VERB, not an adverb. "Thou didst ally thyself"
+// otherwise conjugated the pronoun and rendered "You ally thyselfed".
+const NON_VERB_AFTER_DIDST = new Set(['thou','thee','you','ye','not','the','a','an',
+  'in','on','of','to','for','with','by','at','from','unto','upon','as','and','or','but',
+  'thyself','thyselves','myself','himself','herself','itself','ourselves','yourself']);
+
+// Adverbs that sit between "didst" and its verb without carrying the -ly that
+// the pattern below keys on. Without them "Thou didst ever instruct" ran the
+// adverb through verbToPast and rendered "You evered instruct" — 13 stored rows
+// served exactly that to any parish on the modern register.
+const BARE_ADVERBS = ['ever','also','alone','never','indeed','now','then','thus',
+  'so','still','again','likewise','already','only','first'];
 
 function verbToPast(verb) {
   const v = verb.toLowerCase();
@@ -60,13 +75,16 @@ const YOU_YOUR_RULES = [
   // An intervening -ly adverb ("didst voluntarily endure") is carried through
   // untouched and the verb AFTER it is conjugated — otherwise the adverb itself
   // gets run through verbToPast and yields "voluntarilied".
-  [/\b([Dd])idst\s+(not\s+)?([A-Za-z]+ly\s+)?([A-Za-z]+)/g, (m, d, neg, adv, word) => {
+  [new RegExp(`\\b([Dd])idst\\s+(not\\s+)?([A-Za-z]+ly\\s+|(?:${BARE_ADVERBS.join('|')})\\s+)?([A-Za-z]+)`, 'g'),
+   (m, d, neg, adv, word) => {
     const did = d === 'D' ? 'Did' : 'did';
     // A verb ending in -ly ("didst multiply the loaves") gets mis-captured as the
     // adverb; the giveaway is a non-verb landing in `word`. Re-read the -ly token
-    // as the verb and hand `word` back to the output untouched.
+    // as the verb and hand `word` back to the output untouched. Only an -ly token
+    // can be a verb in disguise — a bare adverb never is, and re-reading one
+    // turned "didst alone in" into "aloned in".
     let tail = '';
-    if (adv && NON_VERB_AFTER_DIDST.has(word.toLowerCase())) {
+    if (adv && /ly$/.test(adv.trim()) && NON_VERB_AFTER_DIDST.has(word.toLowerCase())) {
       tail = adv.slice(adv.replace(/\s+$/, '').length) + word; // the original spacing + "the"
       word = adv.replace(/\s+$/, '');
       adv  = null;

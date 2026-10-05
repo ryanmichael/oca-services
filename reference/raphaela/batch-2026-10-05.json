@@ -1,0 +1,81 @@
+{
+ "source": "Mother Raphaela Menaion corpus, re-fetched 2026-10-05 (scripts/menaion-ingest/raphaela-fetch.js, 393 files)",
+ "method": "re-alignment of the 114 raphaela/stSergius mixed commemorations; thresholds and round-trip gate as batch-2026-09-20",
+ "rows": [
+  {
+   "id": 8335,
+   "cid": 214,
+   "date": "1-28",
+   "title": "Venerable Ephraim the Syrian",
+   "section": "aposticha",
+   "order": 0,
+   "tone": 4,
+   "label": null,
+   "podoben": null,
+   "modern": "You watered your bed with tears, as the prophet said,\nand sought repentance through the lessons of life.\nYou showed us through your words the fear of judgment by deeds!\nAs we gather together in honor of your memory, all-blessed one,\nwe celebrate the most glorious deeds you did alone in the Lord,\never-memorable Ephraim!//\nTherefore we pray that you will intercede with Christ for our souls!",
+   "stored_tt": "Thou didst water thy bed with tears, as the prophet said,\nand sought repentance through the lessons of life.\nThou didst show us through thy words the fear of judgment by deeds!\nAs we gather together in honor of thy memory, all-blessed one,\nwe celebrate the most glorious deeds thou didst alone in the Lord,\never-memorable Ephraim!//\nTherefore we pray that thou wilt intercede with Christ for our souls!",
+   "score": "0.38"
+  },
+  {
+   "id": 8455,
+   "cid": 360,
+   "date": "2-17",
+   "title": "Great Martyr Theodore the Tyro (Recruit)",
+   "section": "aposticha",
+   "order": 0,
+   "tone": 8,
+   "label": null,
+   "podoben": null,
+   "modern": "By prayer you armed yourself with the courage of a martyr,\nathlete of Christ!\nYou allied yourself mystically with His power,\nstruggling to offer rational sacrifice to God.\nYou laid low the godlessness of idolatry and the threats of torturers,\ndespising tortures and the passing fire.\nHow great the gifts of God in both reality and name!//\nBy your prayers, save those who celebrate your memory from all misfortune!",
+   "stored_tt": "By prayer thou didst arm thyself with the courage of a martyr,\nathlete of Christ!\nThou didst ally thyself mystically with His power,\nstruggling to offer rational sacrifice to God.\nThou laid low the godlessness of idolatry and the threats of torturers,\ndespising tortures and the passing fire.\nHow great the gifts of God in both reality and name!//\nBy thy prayers, save those who celebrate thy memory from all misfortune!",
+   "score": "0.55"
+  }
+ ],
+ "rejected_roundtrip": [
+  {
+   "id": 8298,
+   "cid": 145,
+   "date": "1-20",
+   "title": "Venerable Euthymius the Great",
+   "section": "lordICall",
+   "order": 3,
+   "tone": 1,
+   "label": null,
+   "podoben": "All Praised Martyrs",
+   "modern": "You excelled in your life, Father Euthymius,\nand your faith was truly Orthodox.\nThrough activity you reached the highest vision\nand became a dwelling of wisdom.\nYou worshipped Christ in two natures as one of the Trinity.//\nPray to Him on our behalf!",
+   "stored_tt": "Thou didst excel in thy life, Father Euthymius,\nand thy faith was truly Orthodox.\nThrough activity thou didst reach the highest vision\nand became a dwelling of wisdom.\nThou didst worship Christ in two natures as one of the Trinity.//\nPray to Him on our behalf!",
+   "score": "0.46",
+   "divergence": "corpus \"worshipped\" vs back \"worshiped\""
+  },
+  {
+   "id": 9290,
+   "cid": 2166,
+   "date": "10-21",
+   "title": "Venerable Hilarion the Great",
+   "section": "lordICall",
+   "order": 1,
+   "tone": 4,
+   "label": null,
+   "podoben": "Called From On High",
+   "modern": "You were meek of soul and heart,\nwounded by divine love!\nYou withdrew from the turmoils of life by a holy ascent.\nArmed with the weapon of the Cross\nyou advanced on the demons and waged war, most blessed one!\nYou wrought a crown of victory for yourself\nand now you dwell in the splendor of the saints!\nTogether with them, ask for deliverance of sins for us,//\npeace and enlightenment!",
+   "stored_tt": "Thou wast meek of soul and heart,\nwounded by divine love!\nThou withdrew from the turmoils of life by a holy ascent.\nArmed with the weapon of the Cross\nthou didst advanc on the demons and waged war, most blessed one!\nThou didst work a crown of victory for thyself\nand now thou dwellest in the splendor of the saints!\nTogether with them, ask for deliverance of sins for us,//\npeace and enlightenment!",
+   "score": "0.51",
+   "divergence": "corpus \"wrought\" vs back \"worked\""
+  },
+  {
+   "id": 9299,
+   "cid": 2180,
+   "date": "10-22",
+   "title": "Saint Averkios the Wonderworker, Bishop ",
+   "section": "lordICall",
+   "order": 2,
+   "tone": 2,
+   "label": "To Abercius",
+   "podoben": "When From the Tree",
+   "modern": "You wrought a miracle, Father,\nmingling wine and oil in a single vessel, preserving them in that way,\nbut when needed you caused them to separate by divine grace!\nBy your supplication you caused a gift of warm water to gush forth\nhealing the infirmities of those who approach you with faith//\nand call you blessed, Father Abercius!",
+   "stored_tt": "Thou didst work a miracle, Father,\nmingling wine and oil in a single vessel, preserving them in that way,\nbut when needed thou didst caus them to separate by divine grace!\nBy thy supplication thou didst caus a gift of warm water to gush forth\nhealing the infirmities of those who approach thou with faith//\nand call thee blessed, Father Abercius!",
+   "score": "0.64",
+   "divergence": "corpus \"wrought\" vs back \"worked\""
+  }
+ ]
+}

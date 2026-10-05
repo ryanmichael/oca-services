@@ -100,16 +100,27 @@ function toneValue(s) {
 function hymnsFrom(lines) {
   const out = [];
   let buf = [];
+  // The Theotokion is the hymn that follows "Glory… Now and ever…". Marking it
+  // from that heading is what the structure actually says; an earlier version
+  // inferred it as "entry 3 of exactly 4", which left every node with a
+  // different count unconverted — 7 Lord-I-Call Theotokia and 1 Aposticha,
+  // each then showing up as a lone St. Sergius hymn among 7-8 from the
+  // parish's book.
+  let pendingTheotokion = false;
   const flush = () => {
     const t = buf.join(' ').replace(/\s+/g, ' ').trim();
     buf = [];
     // `//` is the book's final-phrase mark; the house convention is a newline.
-    if (t.length >= 40) out.push(t.replace(/\s*\/\/\s*/g, '\n').trim());
+    if (t.length >= 40) {
+      out.push({ text: t.replace(/\s*\/\/\s*/g, '\n').trim(), afterGlory: pendingTheotokion });
+      pendingTheotokion = false;
+    }
   };
   for (const l of lines) {
     if (!l) { flush(); continue; }
     if (RE_PAGE.test(l) || RE_NOISE.test(l) || RE_VERSE.test(l)) { flush(); continue; }
-    if (RE_MARKER.test(l) || RE_GLORY.test(l) || RE_TONE.test(l)) { flush(); continue; }
+    if (RE_GLORY.test(l)) { flush(); pendingTheotokion = true; continue; }
+    if (RE_MARKER.test(l) || RE_TONE.test(l)) { flush(); continue; }
     buf.push(l);
   }
   flush();
@@ -123,11 +134,12 @@ function hymnsFrom(lines) {
   // from the conversion. They must be REJOINED, not dropped: dropping would
   // silently lose half a hymn, which is worse than leaving the node alone.
   const joined = [];
-  for (const t of out) {
-    if (joined.length && /^[a-z]/.test(t)) {
-      joined[joined.length - 1] = `${joined[joined.length - 1]} ${t}`.replace(/\s+/g, ' ');
+  for (const h of out) {
+    if (joined.length && /^[a-z]/.test(h.text)) {
+      const prev = joined[joined.length - 1];
+      prev.text = `${prev.text} ${h.text}`.replace(/\s+/g, ' ');
     } else {
-      joined.push(t);
+      joined.push({ ...h });
     }
   }
   return joined;
@@ -212,8 +224,8 @@ function parseDailyOctoechos(pdfPath) {
       const apoLines = apo1 ? lines.slice(apo1 + 1, apoEnd) : [];
 
       const node = {
-        lordICall: hymnsFrom(licLines).map(text => ({ text })),
-        aposticha: hymnsFrom(apoLines).map(text => ({ text })),
+        lordICall: hymnsFrom(licLines),
+        aposticha: hymnsFrom(apoLines),
       };
 
       // A weekday Vespers prints 3 stichera plus a Theotokion. A node that

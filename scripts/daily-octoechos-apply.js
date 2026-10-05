@@ -71,15 +71,20 @@ function main() {
         skipped.push({ tone: t, eve, reason: `book printed ${book.length} stichera` });
         continue;
       }
-      // The Theotokion that closes Lord I Call is the book's 4th entry — but
-      // only when the node parsed exactly 4 (3 stichera + Theotokion). A node
-      // with 5 has an extra the parser could not classify, and guessing which
-      // is the Theotokion would put the wrong hymn at "Now and ever".
-      const licTheotokion = node.lordICall.length === 4 ? node.lordICall[3] : null;
+      // The Theotokion is the hymn the book prints after "Glory... Now and
+      // ever...", and the parser now tags it from that heading. This replaced
+      // an exact-count rule ("entry 3 of exactly 4") that left every
+      // differently-sized node unconverted — 7 Lord-I-Call Theotokia and 1
+      // Aposticha, each then surfacing as a lone St. Sergius hymn among 7-8
+      // from the parish's book.
+      const licTheotokion = node.lordICall.find(h => h.afterGlory) || null;
 
-      // Aposticha: 3 stichera plus the Theotokion that follows "Glory... Now
-      // and ever". Same rule — convert only an exact 4.
-      const apo = node.aposticha.length === 4 ? node.aposticha : null;
+      // Aposticha: the stichera before that heading, then the Theotokion.
+      const apoTheotokion = node.aposticha.find(h => h.afterGlory) || null;
+      const apoStichera   = node.aposticha.filter(h => !h.afterGlory);
+      const apo = apoTheotokion && apoStichera.length >= 3
+        ? [...apoStichera.slice(0, 3), apoTheotokion]
+        : null;
 
       ops.push({ tone: t, eve, book, licTheotokion, apo });
     }

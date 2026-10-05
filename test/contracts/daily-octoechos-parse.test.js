@@ -175,4 +175,32 @@ describe('Feature contract: Daily Octoechos parser', () => {
     }
     assert.ok(checked > 300, `only ${checked} hymns examined — the check went vacuous`);
   });
+
+  it('INV-9: the Theotokion is tagged from the Glory heading, in all 48 nodes', { skip: !have }, () => {
+    // It is the hymn the book prints after "Glory... Now and ever...". An
+    // earlier version inferred it as "entry 3 of exactly 4", which left every
+    // differently-sized node unconverted: 7 Lord-I-Call Theotokia and 1
+    // Aposticha stayed st-sergius.org and each surfaced as a lone foreign hymn
+    // among 7-8 from the parish's book.
+    //
+    // Structure beats counting. Tagging from the heading converted all 48.
+    const r = book();
+    let lic = 0, apo = 0, nodes = 0;
+    for (const days of Object.values(r.tones)) {
+      for (const node of Object.values(days)) {
+        nodes++;
+        if (node.lordICall.some(h => h.afterGlory)) lic++;
+        if (node.aposticha.some(h => h.afterGlory)) apo++;
+        // Exactly one Theotokion per section, and it is never first.
+        const licT = node.lordICall.filter(h => h.afterGlory);
+        assert.ok(licT.length <= 2, `${nodes}: ${licT.length} Lord-I-Call Theotokia tagged`);
+        if (node.lordICall.length) {
+          assert.ok(!node.lordICall[0].afterGlory, 'the first hymn is never the Theotokion');
+        }
+      }
+    }
+    assert.equal(nodes, 48);
+    assert.equal(lic, 48, `${48 - lic} nodes have no tagged Lord-I-Call Theotokion`);
+    assert.equal(apo, 48, `${48 - apo} nodes have no tagged Aposticha Theotokion`);
+  });
 });

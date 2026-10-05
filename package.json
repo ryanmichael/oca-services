@@ -35,7 +35,8 @@
     "snapshot:capture": "node audit/snapshot.js --capture",
     "snapshot:verify": "node audit/snapshot.js --verify",
     "snapshot:determinism": "node audit/determinism.js",
-    "translation-matrix": "node audit/translation-matrix.js"
+    "translation-matrix": "node audit/translation-matrix.js",
+    "oca:coverage": "node scripts/oca-coverage.js"
   },
   "engines": {
     "node": ">=24.0.0"

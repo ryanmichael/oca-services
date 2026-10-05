@@ -21,13 +21,14 @@
 const fs   = require('fs');
 const path = require('path');
 
-const ROOT       = path.resolve(__dirname, '..');
-const CACHE_DIR  = path.join(ROOT, 'reference', 'scrape');
-const MANIFEST   = path.join(CACHE_DIR, '_fetch-manifest.json');
+// The fetcher itself lives in server-lib/sources/oca-service-texts.js so this
+// harness and scripts/oca-coverage.js share one implementation (extracted
+// 2026-10-04; behaviour unchanged).
+const {
+  ROOT, CACHE_DIR, RATE_LIMIT_MS, sleep, fetchWithRetry,
+} = require('../server-lib/sources/oca-service-texts');
 
-const RATE_LIMIT_MS = 500;   // politeness gap between network fetches
-const MAX_RETRIES   = 3;
-const BACKOFF_MS    = 1000;  // base; doubles each retry
+const MANIFEST = path.join(CACHE_DIR, '_fetch-manifest.json');
 
 function parseArgs(argv) {
   const args = { register: 'tt', force: false, limit: null, date: null };
@@ -43,20 +44,6 @@ function parseArgs(argv) {
 }
 
 // "2024-07-05" -> "2024-0705" (OCA filename convention).
-function fileDate(isoDate) {
-  const [y, m, d] = isoDate.split('-');
-  return `${y}-${m}${d}`;
-}
-
-function ocaUrl(isoDate, register) {
-  return `https://files.oca.org/service-texts/${fileDate(isoDate)}-texts-${register}.docx`;
-}
-
-function waybackUrl(url) {
-  // Latest snapshot; id_ suffix returns the raw original bytes, not the toolbar-wrapped page.
-  return `https://web.archive.org/web/2id_/${url}`;
-}
-
 function inventory() {
   const { openDb } = require('../server-lib/cache/sqlite');
   const db = openDb();
@@ -72,52 +59,6 @@ function inventory() {
   } finally {
     db.close();
   }
-}
-
-async function fetchOnce(url) {
-  const res = await fetch(url, {
-    redirect: 'follow',
-    headers: { 'User-Agent': 'oca-services-rescrape/1.0 (liturgical text QA; contact via repo)' },
-  });
-  if (!res.ok) {
-    const err = new Error(`HTTP ${res.status}`);
-    err.status = res.status;
-    throw err;
-  }
-  const buf = Buffer.from(await res.arrayBuffer());
-  // A DOCX is a ZIP; first two bytes are "PK". Guard against HTML error pages
-  // served with a 200 (OCA occasionally does this for missing files).
-  if (buf.length < 4 || buf[0] !== 0x50 || buf[1] !== 0x4b) {
-    const err = new Error('Response is not a DOCX (missing PK zip signature)');
-    err.status = 'not-docx';
-    throw err;
-  }
-  return buf;
-}
-
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-
-async function fetchWithRetry(isoDate, register) {
-  const primary = ocaUrl(isoDate, register);
-  let lastErr;
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    try {
-      return { buf: await fetchOnce(primary), source: 'oca', url: primary };
-    } catch (e) {
-      lastErr = e;
-      // 404 is terminal for the primary URL — go straight to Wayback.
-      if (e.status === 404) break;
-      if (attempt < MAX_RETRIES) await sleep(BACKOFF_MS * 2 ** (attempt - 1));
-    }
-  }
-  // Wayback fallback (moved/removed source files).
-  try {
-    const wb = waybackUrl(primary);
-    return { buf: await fetchOnce(wb), source: 'wayback', url: wb };
-  } catch (e) {
-    lastErr.wayback = e.message;
-  }
-  throw lastErr;
 }
 
 function loadManifest() {
@@ -166,4 +107,9 @@ async function main() {
   if (failed > 0) process.exitCode = 1;
 }
 
-main().catch(e => { console.error(e); process.exit(2); });
+// Guarded: requiring this file used to RUN a full fetch pass as a side effect.
+if (require.main === module) {
+  main().catch(e => { console.error(e); process.exit(2); });
+}
+
+module.exports = { inventory };

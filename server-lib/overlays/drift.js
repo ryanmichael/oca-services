@@ -1215,6 +1215,14 @@ function validateSticheraLabelSubject() {
 // saint — e.g. day-specific Lord-I-Call numbered stichera plus a St-Sergius
 // Glory/Aposticha. These are intentional, not bleeds. Verified 2026-07-25.
 const KNOWN_MIXED_SOURCE_COMMS = new Set([
+  1248, // Martyr Julian of Tarsus (6-21) — converted to OCA on 2026-10-05
+        // (corrections_log #13/#14): his four Lord-I-Call rows and the Aposticha
+        // Glory all come from files.oca.org 2026-0621. ONE row stays
+        // st-sergius.org — aposticha order 1, the generic martyr sticheron "In
+        // his sufferings, Thy martyr Julian O Lord" — because the OCA text
+        // prints no counterpart for it: on that Sunday the order appoints the
+        // Resurrection aposticha plus the saint's Glory, and nothing else. The
+        // mix is real but deliberate; the alternative is inventing a hymn.
   1939, // Afterfeast of the Elevation (9-20) — St-Sergius rows plus ONE row
         // transcribed from the parish packet on 2026-09-19: the Aposticha
         // "Now and ever… Feast, Tone 6" ("Cross of Christ, hope of Christians…"),

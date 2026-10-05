@@ -116,4 +116,33 @@ describe('Feature contract: partial Menaion service set', () => {
     assert.ok(lic.some((b) => /Protection|Theotokos/i.test(b.text || '')),
       'the Protection stichera still render');
   });
+
+  it('INV-6: Pelagia\'s Lord-I-Call stichera carry the text the parish sings', async () => {
+    // Converted 2026-10-05 from the scanned pages of the 10-01 packet
+    // (daily-vespers-2026-10-08.pdf), read visually, not from OCR.
+    // files.oca.org publishes nothing for 10-08 — an ordinary weekday — so the
+    // parish booklet is the authority, as it was for St Hierotheus.
+    //
+    // Pinned because the rescrape harness could silently restore the
+    // st-sergius.org rows.
+    const r = await get(`/api/service?date=${EVE}&translation=st-john-damascus-tyler`);
+    const lic = hymns(r, 'Lord, I Have Cried');
+    const joined = lic.map(b => b.text || '').join('\n');
+
+    assert.match(joined, /O most glorious wonder; the woman of great courage/);
+    assert.match(joined, /Truly thou art like a new Thekla/);
+    assert.match(joined, /Rejoice, O all-honored Pelagia/);
+    assert.match(joined, /Where sin increased, as the Apostle teaches/);
+
+    // The st-sergius.org wording and its podoben asterisks must be gone from
+    // the saint's own stichera. The weekday Octoechos hymns beside them are
+    // still st-sergius.org and still carry asterisks — that is chunk 4, and
+    // asserting on the whole section would wrongly fail until it lands.
+    const pelagia = lic.filter(b => /Pelagia|Thekla|glorious wonder|sin increased/.test(b.text || ''));
+    assert.equal(pelagia.length, 4, `expected her 3 stichera + Glory, got ${pelagia.length}`);
+    for (const b of pelagia) {
+      assert.ok(!/\*/.test(b.text), `podoben asterisks survived: ${b.text.slice(0, 50)}`);
+      assert.ok(!/hath trampled the enemy underfoot/.test(b.text), 'st-sergius.org wording survived');
+    }
+  });
 });

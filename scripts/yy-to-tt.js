@@ -232,6 +232,18 @@ const E_STEM_BASES = new Set([
   // -ide: extend the divide/decide family. Audit Finding 2026-06-19 PM
   // surfaced 'provide' → 'didst provid' in the NA Saints feast canon.
   'provide',
+  // ── Measured addition, 2026-10-05 ────────────────────────────────────────
+  // This list had been grown one verb at a time (see 'provide' above). A sweep
+  // of every stored hymn for a stem that appears ONLY after an auxiliary — and
+  // whose stem+e is a real corpus word — found 61 live sites across 23 stems,
+  // 44 of them in troparia: "didst denounc" x9, "didst acquir" x8, "didst prov"
+  // x6, "didst increas" x6, "didst conceiv", "didst judg", "didst sacrific".
+  // Adding the whole measured set at once so the transform stops regenerating
+  // them; 'persuade' was caught doing exactly that on a fresh conversion.
+  'denounce', 'acquire', 'increase', 'prove', 'cause', 'cleanse', 'rebuke',
+  'consume', 'escape', 'converse', 'conceive', 'advance', 'place', 'judge',
+  'sacrifice', 'revere', 'repose', 'pledge', 'exchange', 'nurture', 'announce',
+  'move', 'persuade',
   // -ive: parallel to receive/believe. Common in martyr canons.
   'survive', 'arrive', 'derive', 'strive', 'thrive', 'revive',
   // -are/-ore/-ure (CVre verbs): liturgical staples. Without these, e.g.

@@ -3,6 +3,17 @@
 const fs=require('fs');
 const MONTHS='January February March April May June July August September October November December'.split(' ');
 function parseDay(txt){
+  // The corpus writes "Glory..." BOTH ways: 1099 with three dots and 130 with a
+  // single U+2026 ellipsis, sometimes in the same file ("Glory… Now and ever…"
+  // at August 5 line 50, "Glory... Now and ever..." at line 127). The header
+  // patterns below only ever matched the three-dot form, so 130 Glory and 61
+  // Now-and-ever headings were INVISIBLE: the hymn after one inherited the
+  // previous section's tone and lost its Glory/Now slot entirely.
+  //
+  // That is how August 5's "Come, let us ascend the mountain of the Lord" came
+  // back as Tone 4 when the book — and the parish's own 2026-08-05 vigil packet
+  // — print it at Tone 5. Normalising first makes all 191 headings visible.
+  txt=String(txt).replace(/…/g,'...');
   const lines=txt.split('\n');
   // Title block = every non-empty line before the first section heading; these
   // recur as page headers throughout the file, so drop them wherever they appear.

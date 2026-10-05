@@ -4,41 +4,58 @@ const path = require('path');
 const { familyOfText, LABEL } =
   require(path.join(__dirname, '..', '..', '..', 'server-lib', 'sources', 'translation-provenance'));
 
-// One service should be sung in ONE English translation.
+// A service should be sung from the books the parish actually uses — and only
+// those.
 //
-// `CLAUDE.md` has always said so ("Don't mix translations within a service").
-// Nothing enforced it, and on 2026-10-03 a parishioner at St John of Damascus
-// heard the result: the seven Resurrection stichera in the OCA Obikhod's English
-// beside St Hierotheus's three in st-sergius.org's. The register shifts audibly
-// where they meet.
+// ── WHY THIS RULE WAS REWRITTEN (2026-10-05) ───────────────────────────────
 //
-// WHY NOTHING ELSE CATCHES IT:
-//   * `block.source` is the BOOK (octoechos / menaion), not the translation.
-//   * `block.provenance` is unreliable — it reads only the first DB row of a
-//     slot and maps everything that is not stSergius to 'OCA', so lambertsen and
-//     raphaela rows report as OCA. This rule deliberately does not trust it and
-//     resolves the translation from the stored text instead.
-//   * drift:check's source-mixing tripwire compares General-Menaion against
-//     day-specific sources, not translations.
-//   * D21 counts stichera; D22 checks which day's hymn. Neither can see wording.
+// Its first form counted TRANSLATIONS PER SERVICE and flagged any service with
+// more than one. That found the real defect it was written for: on 2026-10-04
+// the seven Resurrection stichera were the OCA Obikhod's English beside St
+// Hierotheus's three in st-sergius.org's, and a parishioner heard the seam.
 //
-// SEVERITY IS 'low' ON PURPOSE, FOR NOW. The mix is corpus-wide: roughly 55% of
-// stichera rows are not OCA, because OCA publishes propers only for the ~32% of
-// days that are liturgically significant and the rest of the calendar is filled
-// from Lambertsen / st-sergius.org / Myrrh-bearers. Raising this to high today
-// would turn the CI gate red on a known, unfixable-in-one-step condition. It is
-// here to MEASURE and to stop new mixes appearing unseen; the severity should
-// rise as the convertible subset is converted.
+// But the premise was wrong, and chunk 4 proved it. Moving the weekday cycle to
+// the parish's own Daily Octoechos — demonstrably what they sing — made the
+// count go UP, 223 to 250, because a weekday now draws the cycle from one book
+// and the saint from another. That is CORRECT PRACTICE, not a defect. Before
+// the move, weekdays looked clean only because the Octoechos and the saints
+// happened to be the same third-party source — an accident of sourcing.
+//
+// So "one service, one translation" is false. What matters is whether a mix is
+// the parish's DECLARED PAIRING or an accident, and that question is asked per
+// ROLE and per DAY TYPE:
+//
+//   * Within a role — the Octoechos hymns, or the Menaion hymns — there should
+//     be ONE translation. Two means one saint's hymns sit in a different
+//     English from another's, which is always an accident.
+//   * A Sunday or Great Feast should be OCA throughout: that is what OCA
+//     publishes for those days and what the parish sings. The Hierotheus defect
+//     lives here, and is still caught.
+//   * A weekday draws its cycle from the Daily Octoechos and its saint from
+//     whatever book publishes that saint. Two books, by design — not a finding.
 
 const SUNG_SECTIONS = new Set([
   'Lord, I Have Cried', 'Aposticha', 'Litya', 'Lauds', 'Praises',
 ]);
 
+// The parish's weekday cycle book. Chunk 4 established this from their own
+// sheets: a verbatim match at two tones, bar `thou`->`ye` for plural address.
+const WEEKDAY_CYCLE = 'mtmary';
+
+/** Which book a block is drawn from, as opposed to whose English it is. */
+function roleOf(block) {
+  const s = String(block.source || '');
+  if (s === 'octoechos') return 'octoechos';
+  if (s === 'menaion') return 'menaion';
+  if (s === 'triodion' || s === 'pentecostarion') return 'moveable';
+  return null;                      // db/auto/fixed — not a book we track here
+}
+
 module.exports = {
   id:             'D23-translation-mix-within-service',
   family:         'structure',
   severity:       'low',
-  description:    'A service should be sung in one English translation. Flags stichera drawn from two or more. [discovered 2026-10-03, heard in church at Great Vespers for 10-04]',
+  description:    'A service should draw on the books the parish uses: one translation within each role, and OCA throughout on a Sunday or Great Feast. [discovered 2026-10-03; rewritten 2026-10-05 for expected pairings]',
   needsAssembled: true,
 
   appliesTo: (ctx) => ctx.service === 'vespers' || ctx.service === 'matins' || ctx.service === 'vigil',
@@ -47,35 +64,85 @@ module.exports = {
     const blocks = ctx.assembled?.blocks || [];
     if (!blocks.length) return [];
 
-    const seen = new Map();   // family -> { count, sample }
+    // The API date IS the civil evening, so a Saturday evening opens Sunday.
+    const d = new Date(`${ctx.date}T12:00:00Z`);
+    if (Number.isNaN(d.getTime())) return [];
+    const opensSunday = d.getUTCDay() === 6;
+    const isGreatFeast = !!ctx.assembled?.liturgicalContext?.greatFeast
+                      || !!ctx.calendarEntry?.liturgicalContext?.greatFeast;
+
+    // role -> family -> { count, sample }
+    const byRole = new Map();
     for (const b of blocks) {
       if (b.type !== 'hymn') continue;
       if (!SUNG_SECTIONS.has(b.section || '')) continue;
+      const role = roleOf(b);
+      if (!role) continue;
       const fam = familyOfText(b.text);
-      // 'unknown' means the text is not in either ground-truth home — a
-      // generated or transformed hymn, not evidence of a second translation.
+      // 'unknown' is a generated or transformed hymn, not a second translation.
       if (fam === 'unknown') continue;
-      if (!seen.has(fam)) seen.set(fam, { count: 0, sample: b });
-      seen.get(fam).count++;
+      if (!byRole.has(role)) byRole.set(role, new Map());
+      const fams = byRole.get(role);
+      if (!fams.has(fam)) fams.set(fam, { count: 0, sample: b });
+      fams.get(fam).count++;
+    }
+    if (!byRole.size) return [];
+
+    const findings = [];
+    const name = (f) => LABEL[f] || f;
+
+    // 1. One translation within a role. Two means one saint's hymns are in a
+    //    different English from another's — always an accident.
+    for (const [role, fams] of byRole) {
+      if (fams.size < 2) continue;
+      const parts = [...fams.entries()].sort((a, b) => b[1].count - a[1].count)
+        .map(([f, v]) => `${name(f)} x${v.count}`);
+      const minority = [...fams.entries()].sort((a, b) => a[1].count - b[1].count)[0];
+      findings.push({
+        message: `The ${role} hymns draw on ${fams.size} translations: ${parts.join(', ')}.`,
+        hint: `Within one book the English should be consistent. The minority is ` +
+              `${name(minority[0])} — e.g. "${(minority[1].sample.text || '').replace(/\s+/g, ' ').slice(0, 52)}…". ` +
+              'See features/translation-mix.md.',
+      });
     }
 
-    if (seen.size < 2) return [];
+    // 2. A Sunday or Great Feast is OCA throughout — what OCA publishes for
+    //    those days, and what the parish sings. This is the Hierotheus case.
+    if (opensSunday || isGreatFeast) {
+      const offenders = [];
+      for (const [role, fams] of byRole) {
+        for (const [fam, v] of fams) {
+          if (fam !== 'oca') offenders.push({ role, fam, v });
+        }
+      }
+      if (offenders.length) {
+        const worst = offenders.sort((a, b) => b.v.count - a.v.count)[0];
+        findings.push({
+          message: `${opensSunday ? 'Sunday' : 'Great Feast'} service draws on ` +
+                   `${offenders.map(o => `${name(o.fam)} (${o.role} x${o.v.count})`).join(', ')} ` +
+                   'where OCA is expected throughout.',
+          hint: `e.g. "${(worst.v.sample.text || '').replace(/\s+/g, ' ').slice(0, 52)}…" ` +
+                `(${worst.v.sample.section}). Convert it if files.oca.org publishes that day — ` +
+                'see scripts/oca-convert-plan.js.',
+        });
+      }
+      return findings;
+    }
 
-    const parts = [...seen.entries()]
-      .sort((a, b) => b[1].count - a[1].count)
-      .map(([fam, v]) => `${LABEL[fam] || fam} ×${v.count}`);
-
-    // Name the minority translation and one of its hymns: that is the thing a
-    // human can act on, and the thing a singer actually hears.
-    const minority = [...seen.entries()].sort((a, b) => a[1].count - b[1].count)[0];
-    const sample = (minority[1].sample.text || '').replace(/\s+/g, ' ').slice(0, 56);
-
-    return [{
-      message: `Lord-I-Call/Aposticha stichera mix ${seen.size} translations: ${parts.join(', ')}.`,
-      hint:    `The minority is ${LABEL[minority[0]] || minority[0]} — e.g. "${sample}…" ` +
-               `(${minority[1].sample.section}, tone ${minority[1].sample.tone}). ` +
-               'Convert it to OCA if files.oca.org publishes that day, else record the day as ' +
-               'weekday-cycle (see features/translation-mix.md).',
-    }];
+    // 3. A weekday: the cycle should come from the parish's Daily Octoechos.
+    //    Which book supplies the SAINT is not a finding — that is the expected
+    //    pairing, and flagging it is what made this rule's count meaningless.
+    const octo = byRole.get('octoechos');
+    if (octo && octo.size === 1) {
+      const [fam, v] = [...octo.entries()][0];
+      if (fam !== WEEKDAY_CYCLE) {
+        findings.push({
+          message: `Weekday cycle is ${name(fam)} (x${v.count}); the parish sings the Daily Octoechos.`,
+          hint: `e.g. "${(v.sample.text || '').replace(/\s+/g, ' ').slice(0, 52)}…". ` +
+                'Not every node could be converted — see features/daily-octoechos-parse.md.',
+        });
+      }
+    }
+    return findings;
   },
 };

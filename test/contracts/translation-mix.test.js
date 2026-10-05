@@ -99,20 +99,56 @@ describe('Feature contract: translation-mix detection', () => {
       'the rule must resolve translation from the text, never read block.provenance');
   });
 
-  it('INV-4: a genuinely mixed service is flagged, naming both translations', async () => {
-    // 2026-10-07: the weekday Octoechos (st-sergius.org) beside a Raphaela hymn.
+  it('INV-4: an avoidable mix is flagged; an expected pairing is not', async () => {
+    // REWRITTEN 2026-10-05 with the rule. It used to assert "mix 2
+    // translations" on 2026-10-07 — but a weekday legitimately draws its cycle
+    // from the parish's Daily Octoechos and its saint from whatever book
+    // publishes that saint. Flagging that pairing is what made the old count
+    // meaningless (it ROSE from 223 to 250 when the texts got more correct).
+    //
+    // What must still be caught: two translations inside ONE role, meaning one
+    // saint's hymns sit in a different English from another's.
     const r = await get('/api/service?date=2026-10-07');
     const found = RULE.check({ service: 'vespers', date: '2026-10-07', assembled: r.json });
-    assert.equal(found.length, 1, 'expected exactly one finding');
-    // The count is not the invariant — the naming is. 2026-10-07 carried two
-    // translations until chunk 4 and three after it (Daily Octoechos for the
-    // weekday cycle, OCA for St Pelagia, St. Sergius for what the book does
-    // not print); pinning "2" tested the backlog, not the detector.
-    assert.match(found[0].message, /mix \d+ translations/);
-    // Was 'St. Sergius' on both sides until chunk 4 moved the Octoechos to the
-    // parish's Daily Octoechos; the invariant is that BOTH books are named.
-    assert.match(found[0].message, /Daily Octoechos|St\. Sergius/);
-    assert.ok(found[0].hint.length > 40, 'the finding must name something actionable');
+
+    // Whatever it reports, it must not be "this weekday uses two books".
+    for (const f of found) {
+      assert.ok(!/mix \d+ translations: Daily Octoechos x\d+, OCA/.test(f.message),
+        `the expected weekday pairing must not be flagged: ${f.message}`);
+    }
+    // And a role that genuinely mixes must be named as such.
+    if (found.length) {
+      assert.ok(found.some(f => /hymns draw on \d+ translations|Weekday cycle is/.test(f.message)),
+        `a finding must name the role or the cycle: ${JSON.stringify(found.map(f => f.message))}`);
+    }
+  });
+
+  it('INV-4b: a Sunday singing a non-OCA source is still caught', async () => {
+    // The defect this rule was born for: 2026-10-04 had the Resurrection
+    // stichera in the OCA Obikhod beside St Hierotheus in st-sergius.org, and a
+    // parishioner heard it. That date is now fixed, so the invariant is tested
+    // on the rule's logic with live corpus text.
+    //
+    // The samples are TAKEN FROM THE INDEX rather than hardcoded: an earlier
+    // draft pasted the old Hierotheus wording, which corrections_log #12
+    // replaced, so it resolved to 'unknown' and the rule correctly said nothing.
+    // A fixture quoting text the corpus no longer holds tests nothing.
+    const idx = tp.index();
+    const pick = (want) => {
+      for (const [text, fam] of idx) if (fam === want && text.length > 80) return text;
+      return null;
+    };
+    const ocaText = pick('oca'), sergiusText = pick('stsergius');
+    assert.ok(ocaText && sergiusText, 'precondition: the index holds both families');
+
+    const blocks = [
+      { type: 'hymn', section: 'Lord, I Have Cried', source: 'octoechos', text: ocaText },
+      { type: 'hymn', section: 'Lord, I Have Cried', source: 'menaion',   text: sergiusText },
+    ];
+    // 2026-10-03 is a Saturday evening, which opens Sunday.
+    const found = RULE.check({ service: 'vespers', date: '2026-10-03', assembled: { blocks } });
+    assert.ok(found.some(f => /where OCA is expected/.test(f.message)),
+      `a Sunday drawing on st-sergius.org must be flagged: ${JSON.stringify(found)}`);
   });
 
   it('INV-5: a single-translation service is NOT flagged', async () => {

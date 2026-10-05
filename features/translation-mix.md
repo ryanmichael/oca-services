@@ -63,7 +63,42 @@ Lambertsen, zero Raphaela. A detector blind to two of four translations reports
 the corpus far cleaner than it is. The index now records `_dbRows` / `_dbError`,
 and INV-1 asserts both.
 
-## What it measured
+## REWRITTEN 2026-10-05 — expected pairings
+
+The first form counted **translations per service** and flagged any service with
+more than one. It found the defect it was written for. Then chunk 4 proved the
+premise wrong: moving the weekday cycle to the parish's own Daily Octoechos —
+demonstrably what they sing — made the count go **UP, 223 → 250**, because a
+weekday now draws its cycle from one book and its saint from another.
+
+That is correct practice. Before the move, weekdays looked clean only because the
+Octoechos and the saints happened to be the same third-party source — an accident
+of sourcing, not correctness. **A metric that gets worse when the texts get more
+correct is measuring the wrong thing.**
+
+So the rule now asks whether a mix is the parish's declared pairing or an
+accident, per ROLE and per DAY TYPE:
+
+| Check | Why |
+|---|---|
+| One translation **within a role** (the Octoechos hymns, or the Menaion hymns) | Two means one saint's hymns sit in a different English from another's — always an accident |
+| A **Sunday or Great Feast** is OCA throughout | What OCA publishes for those days and what the parish sings. The Hierotheus defect lives here and is still caught |
+| A **weekday** cycle comes from the Daily Octoechos | Which book supplies the *saint* is not a finding — that is the expected pairing |
+
+**242 findings, now categorised** instead of one undifferentiated count:
+
+| | |
+|---|---|
+| 182 | a role mixes two translations |
+| 47 | weekday cycle is not yet the parish book |
+| **13** | **Sunday/Feast not OCA — the genuinely fixable class** |
+
+The largest bucket is the unfinished half of chunk 4: 68 of the role-mixes are
+`Daily Octoechos + St. Sergius` in the Octoechos role, which are the 13 Theotokia
+and 8 Aposticha nodes that conversion deliberately withheld, plus the secondary
+set. The rule now points straight at its own remaining work.
+
+## What the first version measured
 
 Across all 365 Vespers of 2026:
 

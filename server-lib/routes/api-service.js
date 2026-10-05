@@ -2,6 +2,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { familyOfText, LABEL: TRANSLATION_LABEL } = require('../sources/translation-provenance');
 const ROOT = path.resolve(__dirname, '..', '..');
 
 function handle(req, res, ctx) {
@@ -184,7 +185,16 @@ function handle(req, res, ctx) {
         : 'db';
       for (const b of blocks) {
         if (b.source === 'db') b.source = dbSourceLabel;
-        if (!b.provenance) b.provenance = 'OCA';
+        // An unlabelled block used to default to 'OCA' outright, which is how
+        // 1,052 lambertsen rows, 353 raphaela rows and the whole weekday
+        // Octoechos came to display as OCA. Resolve the real translation from
+        // the text instead; 'OCA' remains the fallback only for text the
+        // corpus index does not hold — the fixed prayers and litanies, which
+        // genuinely are the OCA base.
+        if (!b.provenance) {
+          const fam = b.text ? familyOfText(b.text) : 'unknown';
+          b.provenance = fam === 'unknown' ? 'OCA' : (TRANSLATION_LABEL[fam] || 'OCA');
+        }
       }
 
       if (format === 'html') {

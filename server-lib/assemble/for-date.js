@@ -7,6 +7,7 @@
 const { assembleVespers } = require('../../assembler');
 const { calculatePascha, fixedFeastDate, getFeastRank, VESPERS_SUNG_EVE } = require('../../calendar-rules');
 const { orderResurrectionCount } = require('../sources/order-of-services');
+const { familyOf: translationFamily, LABEL: TRANSLATION_LABEL } = require('../sources/translation-provenance');
 
 const { getCalendarEntry }                        = require('../sources/calendar');
 const { getMenaionRanked }                        = require('../sources/menaion');
@@ -49,6 +50,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
     return [adj.getUTCMonth() + 1, adj.getUTCDate()];
   }
 
+  // The translation label for a stored row. Hoisted to function scope because
+  // the Pentecostarion-Sunday override projects Menaion hymns well before the
+  // main injection block does.
+  const provOf = (dbSrc) => TRANSLATION_LABEL[translationFamily(dbSrc)] || null;
+
   let menaionOverride = sources.menaion;
 
   // ── Pentecostarion Sunday vespers override: inject LIC stichera from JSON ─
@@ -87,7 +93,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       lic.now = null;
       // Suppress generic Menaion injection (which would pull May-31 Hermias).
       calendarEntry.vespers.isPentecostarionSunday = true;
-      const autoSlot = { lordICall: { hymns: stichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })) } };
+      const autoSlot = { lordICall: { hymns: stichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId, provenance: provOf(s.dbSource) })) } };
       if (dox) autoSlot.lordICall.glory = { text: dox.text, tone: dox.tone, label: dox.label };
       menaionOverride = { ...sources.menaion, auto: { ...(sources.menaion.auto || {}), [date]: autoSlot } };
     }
@@ -302,11 +308,20 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       const gloryTone  = autoSlot.troparion.tone;
       const gloryLabel = autoSlot.troparion.label;
 
-      // Determine provenance label for dev-mode display
-      const firstDbSrc = sticheraData?.[0]?.stichera?.[0]?.dbSource;
-      let menaionProvenance = firstDbSrc && firstDbSrc.startsWith('stSergius')
-        ? 'St. Sergius'
-        : 'OCA';
+      // The translation label shown for this day's Menaion hymns.
+      //
+      // This read only the FIRST row and mapped anything that was not stSergius
+      // to 'OCA', so all 1,052 lambertsen rows and 353 raphaela rows displayed
+      // as OCA. Now every row is consulted: when they agree the slot carries
+      // that label, and when they DISAGREE the slot carries null so the
+      // per-hymn `provenance` set below wins — the renderers resolve
+      // `slot.provenance || hymn.provenance`, so a null slot label is how a
+      // mixed slot reports each hymn honestly.
+      const dayFamilies = new Set(
+        (sticheraData?.[0]?.stichera || []).map(s => translationFamily(s.dbSource)));
+      let menaionProvenance = dayFamilies.size === 1
+        ? (TRANSLATION_LABEL[[...dayFamilies][0]] || null)
+        : null;
 
       // Great Feast all-night-vigil: up to 8 stichera (unique hymns repeat to fill slots)
       // Sunday Great Vespers: cap Menaion at 6 — a principal-feast Sunday (e.g. Synaxis
@@ -467,7 +482,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           // Fallback (no pattern authored) doubles the LEADING stichera in
           // place, so a repeat always sits adjacent to its original and the
           // sequence never goes backwards. See audit rule D20-vespers-lic-repeat-monotonic.
-          const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId });
+          const push = (s) => hymns.push({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId, provenance: provOf(s.dbSource) });
           const [pmm, pdd] = adjustedMD();
           const patternKey = `${String(pmm).padStart(2, '0')}-${String(pdd).padStart(2, '0')}`;
           const patternEntry = LIC_REPEAT_PATTERNS[patternKey];
@@ -517,7 +532,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         }
 
         if (!autoSlot.lordICall) {
-          autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })) };
+          autoSlot.lordICall = { hymns: licStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId, provenance: provOf(s.dbSource) })) };
         }
 
         if (licGlory) {
@@ -684,7 +699,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
 
       if (apostStichera.length > 0 || apostGlory) {
         autoSlot.aposticha = {
-          hymns: apostStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })),
+          hymns: apostStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId, provenance: provOf(s.dbSource) })),
         };
 
         const apost = calendarEntry.vespers.aposticha;
@@ -849,7 +864,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           }));
 
           autoSlot.litya = {
-            hymns: lityaStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId })),
+            hymns: lityaStichera.map(s => ({ text: s.text, tone: s.tone, label: s.label, commemorationId: s.commemorationId, provenance: provOf(s.dbSource) })),
           };
 
           if (lityaGlory) {

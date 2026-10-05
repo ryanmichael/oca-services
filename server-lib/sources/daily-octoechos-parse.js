@@ -184,7 +184,20 @@ function parseDailyOctoechos(pdfPath) {
       // The FIRST Apostikha after a Lord I Call is this Vespers' own; the
       // second belongs to the following Matins (the L-A-A rhythm).
       const apo1 = apoAt.find(x => x > start && x < nextLic);
-      const licLines = lines.slice(start + 1, apo1 ?? nextLic);
+      // When a section has no Apostikha marker (2 of the 48 do not), the
+      // Lord-I-Call span would otherwise run to the next Lord I Call and
+      // swallow the whole of Matins — which is exactly how tone4/sunday parsed
+      // 15 hymns and had to be withheld. Bound it at the Matins boundary.
+      // Stop at whichever comes first: this Vespers' Apostikha, or the start of
+      // Matins. Two of the 48 sections print no Vespers Apostikha at all (the
+      // L-A-A rhythm degenerates to L-A), so `apo1` is then the MATINS
+      // Apostikha and bounding on it alone swallows the whole of Matins —
+      // exactly how tone4/sunday parsed 15 hymns and had to be withheld.
+      let licEnd = apo1 ?? nextLic;
+      for (let j = start + 1; j < licEnd; j++) {
+        if (RE_MATINS.test(lines[j])) { licEnd = j; break; }
+      }
+      const licLines = lines.slice(start + 1, licEnd);
       // The Vespers Aposticha ends where Matins begins. Without this bound the
       // span runs to the next Lord I Call and swallows the whole of Matins —
       // 785 hymns instead of ~190.

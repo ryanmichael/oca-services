@@ -85,7 +85,24 @@ accident, per ROLE and per DAY TYPE:
 | A **Sunday or Great Feast** is OCA throughout | What OCA publishes for those days and what the parish sings. The Hierotheus defect lives here and is still caught |
 | A **weekday** cycle comes from the Daily Octoechos | Which book supplies the *saint* is not a finding — that is the expected pairing |
 
-**242 findings, now categorised** instead of one undifferentiated count:
+**Refined again 2026-10-05.** The first pairing model expected the Daily
+Octoechos at **any** weekday service, which held a festal **Great Vespers** to
+the parish's *daily* book: 46 of the 47 "weekday cycle" findings were false
+positives, 45 of them Friday-evening Great Vespers correctly drawing on OCA. Of
+those 46, twelve were simply clean and **34 were real findings of a different
+kind** — festal services not on OCA — which the miscategorisation had hidden.
+
+The expectation now follows the SERVICE, not just the day:
+
+| Service | Expected |
+|---|---|
+| Daily Vespers | weekday cycle from the Daily Octoechos; the saint's book is free |
+| Great Vespers / Vigil / Sunday / Great Feast | OCA throughout |
+
+**180 findings: 133 role-mixes, 47 festal-or-Sunday not OCA, and ZERO weekday
+cycles unconverted** — all 48 nodes now come from the parish's book.
+
+**Superseded — the first categorisation (242):**
 
 | | |
 |---|---|

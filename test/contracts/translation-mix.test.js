@@ -179,4 +179,41 @@ describe('Feature contract: translation-mix detection', () => {
     assert.equal(RULE.needsAssembled, true,
       'needsAssembled=false would make it silently no-op under audit:quick');
   });
+
+  it('INV-8: a festal Great Vespers is not held to the weekday book', async () => {
+    // The Daily Octoechos is the book for DAILY Vespers. Expecting it at a
+    // Great Vespers or Vigil produced 46 false positives of 47 "weekday cycle"
+    // findings — 45 of them Friday-evening Great Vespers, correctly drawing on
+    // OCA. Of the 46, twelve were simply clean and 34 were real findings of a
+    // DIFFERENT kind (festal services not on OCA), which the miscategorisation
+    // had hidden.
+    const r = await get('/api/service?date=2026-01-02');   // a Friday-evening Great Vespers
+    assert.match(r.json.serviceName || '', /Great Vespers/, 'precondition: a festal service');
+    const found = RULE.check({ service: 'vespers', date: '2026-01-02', assembled: r.json });
+    for (const f of found) {
+      assert.ok(!/Weekday cycle is/.test(f.message),
+        `a festal service must not be held to the weekday book: ${f.message}`);
+    }
+  });
+
+  it('INV-9: every weekday node now comes from the parish book', () => {
+    // Chunk 4 finished: all 48 nodes parse and convert. Any regression that
+    // reverts a node to st-sergius.org shows up here rather than in a service.
+    const octo = require(path.join(ROOT, 'variable-sources', 'octoechos.json'));
+    const EVE = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+    let converted = 0, checked = 0;
+    for (let t = 1; t <= 8; t++) {
+      for (const e of EVE) {
+        const hymns = octo[`tone${t}`]?.[e]?.vespers?.lordICall?.hymns || [];
+        // Only the PRIMARY set of three is the parish book's; 3-5 are the
+        // secondary set, which that book does not print.
+        for (const h of hymns.slice(0, 3)) {
+          checked++;
+          if (h._source === 'mtMaryDailyOctoechos') converted++;
+        }
+      }
+    }
+    assert.equal(checked, 144, `expected 8 tones x 6 evenings x 3, got ${checked}`);
+    assert.equal(converted, 144, `${checked - converted} primary stichera are not the parish book`);
+  });
 });

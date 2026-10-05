@@ -71,6 +71,14 @@ module.exports = {
     const isGreatFeast = !!ctx.assembled?.liturgicalContext?.greatFeast
                       || !!ctx.calendarEntry?.liturgicalContext?.greatFeast;
 
+    // The Daily Octoechos is the book for DAILY Vespers. A Great Vespers or
+    // Vigil is festal and draws on OCA, so expecting the parish's daily book
+    // there is wrong — that mistake produced 46 false positives of the 47
+    // "weekday cycle" findings, 45 of them Friday-evening Great Vespers.
+    const serviceName = String(ctx.assembled?.serviceName || '');
+    const isDaily     = /Daily Vespers/i.test(serviceName);
+    const isFestal    = /Great Vespers|Vigil/i.test(serviceName);
+
     // role -> family -> { count, sample }
     const byRole = new Map();
     for (const b of blocks) {
@@ -108,7 +116,8 @@ module.exports = {
 
     // 2. A Sunday or Great Feast is OCA throughout — what OCA publishes for
     //    those days, and what the parish sings. This is the Hierotheus case.
-    if (opensSunday || isGreatFeast) {
+    // A Sunday, a Great Feast, or any festal Great Vespers / Vigil.
+    if (opensSunday || isGreatFeast || isFestal) {
       const offenders = [];
       for (const [role, fams] of byRole) {
         for (const [fam, v] of fams) {
@@ -132,6 +141,9 @@ module.exports = {
     // 3. A weekday: the cycle should come from the parish's Daily Octoechos.
     //    Which book supplies the SAINT is not a finding — that is the expected
     //    pairing, and flagging it is what made this rule's count meaningless.
+    // Only a DAILY Vespers draws the weekday cycle from the parish's book.
+    if (!isDaily) return findings;
+
     const octo = byRole.get('octoechos');
     if (octo && octo.size === 1) {
       const [fam, v] = [...octo.entries()][0];

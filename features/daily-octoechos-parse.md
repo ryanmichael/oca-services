@@ -98,6 +98,25 @@ Daily Octoechos plus one or two from the secondary set. **No service lost a
 hymn.** Both parish packet dates (2026-09-02 tone 4, 2026-10-07 tone 1) now
 render the director's own text.
 
+## ⚠️ THE FIRST WRITE SHIPPED THREE SENTENCE FRAGMENTS TO PRODUCTION
+
+A hymn broken across a page boundary arrives as **two** entries, because the page
+number between them forces a flush — and the tail begins mid-sentence: *"flesh in
+the fear of Thee…"*, *"healing the sick, O physicians…"*.
+
+The first write treated those tails as whole stichera. `tone4/monday`,
+`tone5/tuesday` and `tone8/monday` each got a fragment at hymn 1, which **also
+truncated the hymn before it and lost the third entirely**. Roughly twenty dates
+a year would have printed a sentence fragment for a choir to sing.
+
+Fixed by **rejoining**, never dropping — dropping silently loses half a hymn,
+which is worse than leaving the node alone. A leading lower-case letter marks a
+continuation. INV-8 now fails if any parsed hymn begins mid-sentence.
+
+Rejoining also recovered the nodes the exact-count rule had withheld: LIC
+Theotokia 34 → **41**, Aposticha 39 → **46**. Those 19 five-entry sections were
+never malformed; they were split hymns.
+
 ## ⚠️ D23 WENT UP, 223 → 250, AND THAT IS NOT A REGRESSION
 
 Before this change a weekday looked single-translation because the Octoechos
@@ -111,6 +130,10 @@ legitimately sings the Daily Octoechos for the cycle and a Menaion source for th
 saint. The rule needs to learn *expected pairings* before its count means
 anything again. Until then, read it as "how many services draw on more than one
 book", not "how many are wrong".
+
+**Rewritten 2026-10-05** for expected pairings, and now at **202** after the
+fragment fix: 142 role-mixes, 47 weekday cycles not yet converted, 13
+Sunday/Feast services not OCA.
 
 ## Superseded: the decision that blocked the write
 

@@ -92,7 +92,13 @@ describe('Feature contract: block provenance', () => {
     const r = await get('/api/service?date=2026-10-07');
     const provs = new Set(hymns(r.json).map(b => b.provenance));
     assert.ok(provs.size >= 2, `expected a mixed day to report >1 translation, got ${[...provs]}`);
-    assert.ok(provs.has('St. Sergius'), `expected St. Sergius among ${[...provs]}`);
+    // Deliberately does NOT pin which families. This date reported
+    // St. Sergius + OCA, then Daily Octoechos + St. Sergius + OCA, and now
+    // Daily Octoechos + OCA as the conversion progressed. Naming a family here
+    // tests the state of the backlog; the invariant is that each hymn is
+    // reported honestly rather than collapsed to one label.
+    assert.ok([...provs].every(p => p && p !== 'unknown'),
+      `every hymn must name a real book, got ${[...provs]}`);
   });
 
   it('INV-4: lambertsen and raphaela are never silently reported as OCA', async () => {

@@ -147,4 +147,32 @@ describe('Feature contract: Daily Octoechos parser', () => {
       }
     }
   });
+
+  it('INV-8: no hymn begins mid-sentence — page-break fragments are rejoined', { skip: !have }, () => {
+    // A hymn broken across a page boundary arrives as two entries, because the
+    // page number between them forces a flush, and the tail begins in
+    // lower-case: "flesh in the fear of Thee…", "healing the sick, O
+    // physicians…".
+    //
+    // This shipped to production. The first write of chunk 4 put three such
+    // fragments into octoechos.json as whole stichera — tone4/monday,
+    // tone5/tuesday and tone8/monday, each at hymn 1 — which truncated the
+    // preceding hymn and lost the third entirely. Roughly twenty dates a year
+    // would have printed a sentence fragment for the choir to sing.
+    //
+    // They must be REJOINED, never dropped: dropping silently loses half a
+    // hymn, which is worse than leaving the node alone.
+    const r = book();
+    let checked = 0;
+    for (const [tk, days] of Object.entries(r.tones)) {
+      for (const [d, node] of Object.entries(days)) {
+        for (const h of [...node.lordICall, ...node.aposticha]) {
+          assert.ok(!/^[a-z]/.test(h.text.trim()),
+            `${tk}/${d} begins mid-sentence: "${h.text.slice(0, 56)}…"`);
+          checked++;
+        }
+      }
+    }
+    assert.ok(checked > 300, `only ${checked} hymns examined — the check went vacuous`);
+  });
 });

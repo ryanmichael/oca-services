@@ -113,7 +113,24 @@ function hymnsFrom(lines) {
     buf.push(l);
   }
   flush();
-  return out;
+
+  // A hymn broken across a page boundary arrives as two entries, because the
+  // page number between them forces a flush. The tail begins mid-sentence —
+  // "flesh in the fear of Thee…", "healing the sick, O physicians…" — so a
+  // leading lower-case letter marks a continuation, not a new hymn.
+  //
+  // This is why 19 sections parsed 5 entries instead of 4 and were withheld
+  // from the conversion. They must be REJOINED, not dropped: dropping would
+  // silently lose half a hymn, which is worse than leaving the node alone.
+  const joined = [];
+  for (const t of out) {
+    if (joined.length && /^[a-z]/.test(t)) {
+      joined[joined.length - 1] = `${joined[joined.length - 1]} ${t}`.replace(/\s+/g, ' ');
+    } else {
+      joined.push(t);
+    }
+  }
+  return joined;
 }
 
 /**

@@ -58,6 +58,23 @@ const MIN_LETTERS = 60;
 const SECTION_FURNITURE =
   /^(?:\d+|[ivx]+|soprano|alto|tenor|bass|common chant|©.*|all other rights.*|.*orthodox church in america.*)$/i;
 
+// Engraver's furniture that survives the [text] page classifier: a chant
+// attribution, a Menaion date heading, a pronunciation gloss. Printed on the
+// page, sung by nobody. Counting them as unmatched hymns made the Liturgy
+// sheets look emptier than they are.
+const LINE_FURNITURE = [
+  /\b(?:Znamenny|Obikhod|Imperial (?:Chapel|Court)|Common|Kievan|Valaam|Byzantine)\s+Chant\b/i,
+  /\barr\.?\s+(?:from|by)\b|\batt\.?\s+(?:from|by)\b/i,
+  /^Menaion:\s/i,
+  /^\*?\s*Pronounced:/i,
+];
+
+// NOTE: there is deliberately NO de-syllabification step. A score prints
+// "Con-stant Advocate before the Cre - a tor", which looks like it needs
+// rejoining — but every comparison below ends in letters(), which strips all
+// non-alpha from BOTH sides, so "Cre - a tor" and "Creator" are already
+// identical. A rejoin step was written, measured as a no-op, and removed.
+
 function parseArgs(argv) {
   const args = { http: 'http://localhost:3000', translation: 'st-john-damascus-tyler',
                  service: null, sheet: null, captureBaseline: null, check: null,
@@ -153,7 +170,10 @@ function hymnPieces(body) {
   }
   flush();
   return pieces
-    .map(p => ({ marker: p.marker, text: p.text.join(' ') }))
+    .map(p => ({
+      marker: p.marker,
+      text: p.text.filter(l => !LINE_FURNITURE.some(re => re.test(l))).join(' '),
+    }))
     .filter(p => letters(p.text).length >= MIN_LETTERS);
 }
 
@@ -219,27 +239,74 @@ function inOrderRun(positions) {
   return tails.length;
 }
 
-/** Score one sheet's pieces against one rendered date. */
-function scoreAgainst(pieces, hymns) {
-  let located = 0, verbatim = 0;
+/** Best match for one piece within one pool of rendered blocks. */
+function bestMatch(piece, hymns) {
+  const pf = fold(piece.text);
+  let score = 0, block = null, idx = -1;
+  for (let i = 0; i < hymns.length; i++) {
+    const s = dice(pf, fold(hymns[i].text));
+    if (s > score) { score = s; block = hymns[i]; idx = i; }
+  }
+  return { score, block, idx };
+}
+
+/**
+ * Score one sheet's pieces against its own service, and — separately — against
+ * the OTHER service.
+ *
+ * ── WHY THE SECOND POOL EXISTS (2026-10-06) ──────────────────────────────────
+ *
+ * The first version attributed a piece to a service by the sheet's FILENAME, and
+ * reported Divine Liturgy at 11 of 67 located, 0 verbatim. That number was
+ * mostly an artifact. The director's `liturgy-*.pdf` files are WEEKEND packets:
+ * they carry Saturday-evening Great Vespers material alongside the Sunday
+ * Liturgy. Of the ~48 unmatched Liturgy pieces, most matched our VESPERS render
+ * at 0.90–1.00 — they were never Liturgy content at all.
+ *
+ * So a piece's service is resolved by EVIDENCE, like its date offset already is.
+ * `crossService` is not a defect count: it is the packet mixing two services,
+ * which is how the director actually prepares a weekend. Reporting it separately
+ * keeps "we do not print this" distinct from "this is not this service's text".
+ *
+ * ── THE LIMIT OF THIS, STATED ────────────────────────────────────────────────
+ *
+ * Some texts legitimately belong to BOTH services — a resurrectional troparion
+ * is sung at Vespers and again at Liturgy. If our Liturgy render omits one and
+ * our Vespers has it, this excuses a real Liturgy gap. So the located rate is an
+ * UPPER bound and the filename-only rate is a LOWER one: Liturgy is somewhere
+ * between 31% (crediting every cross-service match) and 17% (crediting none).
+ * Narrowing it needs per-section attribution from the packet, which the OCR does
+ * not currently carry. Do not quote 31% as precise.
+ */
+function scoreAgainst(pieces, hymns, otherHymns = []) {
+  let located = 0, verbatim = 0, crossService = 0;
   const misses = [];
   const positions = [];          // index in OUR render, in PACKET order
   for (const p of pieces) {
-    const pf = fold(p.text);
-    let best = 0, bestH = null, bestIdx = -1;
-    for (let i = 0; i < hymns.length; i++) {
-      const s = dice(pf, fold(hymns[i].text));
-      if (s > best) { best = s; bestH = hymns[i]; bestIdx = i; }
-    }
-    if (best >= LOCATED_MIN) {
+    const own = bestMatch(p, hymns);
+    if (own.score >= LOCATED_MIN) {
       located++;
-      positions.push(bestIdx);
-      if (dice(letters(p.text), letters(bestH.text)) >= VERBATIM_MIN) verbatim++;
-    } else {
-      misses.push({ marker: p.marker, score: +best.toFixed(2), head: p.text.slice(0, 70) });
+      positions.push(own.idx);
+      if (dice(letters(p.text), letters(own.block.text)) >= VERBATIM_MIN) verbatim++;
+      continue;
     }
+    const other = bestMatch(p, otherHymns);
+    if (other.score >= LOCATED_MIN) { crossService++; continue; }
+    misses.push({
+      marker: p.marker,
+      score: +own.score.toFixed(2),
+      otherScore: +other.score.toFixed(2),
+      head: p.text.slice(0, 70),
+    });
   }
-  return { located, verbatim, misses, inOrder: inOrderRun(positions), positions };
+  return {
+    located, verbatim, crossService, misses,
+    inOrder: inOrderRun(positions), positions,
+    // The denominator that matters: pieces this service is actually responsible
+    // for. A Vespers hymn printed in a weekend Liturgy packet is not a Liturgy
+    // miss, so counting it against Liturgy understates the service.
+    own: pieces.length - crossService,
+  };
 }
 
 // ── main ───────────────────────────────────────────────────────────────────
@@ -258,14 +325,28 @@ function scoreAgainst(pieces, hymns) {
   }
 
   // ── Score every sheet, choosing alignment per sheet ──────────────────────
+  // The service a weekend packet's other half belongs to. A `liturgy-*` sheet
+  // carries Saturday-evening Vespers; a `*-vespers-*` sheet can carry the next
+  // morning's Liturgy. Resolved by evidence, not assumed from the filename.
+  const otherServiceOf = (svc) => (svc === 'liturgy' ? 'vespers' : 'liturgy');
+
   const rows = [];
   for (const s of all) {
     const pieces = textPages(s.file).flatMap(hymnPieces);
-    let best = { located: -1, verbatim: 0, misses: [], shift: 0, inOrder: 0 };
+    const other = otherServiceOf(s.service);
+    let best = { located: -1, verbatim: 0, crossService: 0, misses: [], shift: 0, inOrder: 0,
+                 own: pieces.length };
     for (const n of args.shifts) {
       const hymns = await renderHymns(args, s.service, shiftDate(s.date, n));
       if (!hymns) continue;
-      const r = scoreAgainst(pieces, hymns);
+      // The other service's own window: Vespers for a Sunday Liturgy is sung the
+      // evening before, so look back as well as at the same day.
+      const otherPool = [];
+      for (const k of [n - 1, n, n + 1]) {
+        const h = await renderHymns(args, other, shiftDate(s.date, k));
+        if (h) otherPool.push(...h);
+      }
+      const r = scoreAgainst(pieces, hymns, otherPool);
       if (r.located > best.located) best = { ...r, shift: n };
     }
     rows.push({ ...s, pieces: pieces.length, ...best, pieceTexts: pieces });
@@ -304,7 +385,7 @@ function scoreAgainst(pieces, hymns) {
   if (args.sheet) {
     const r = rows[0];
     console.log(`--- ${r.name} (alignment ${r.shift > 0 ? '+' : ''}${r.shift}) ---`);
-    console.log(`pieces ${r.pieces} · located ${r.located} · in order ${r.inOrder} · verbatim ${r.verbatim}`);
+    console.log(`pieces ${r.pieces} · other service ${r.crossService} · this service ${r.own} · located ${r.located} · in order ${r.inOrder} · verbatim ${r.verbatim}`);
     console.log(`our render positions, in packet order: ${JSON.stringify(r.positions)}`);
     for (const m of r.misses) console.log(`  not located [${m.marker}] best=${m.score}  "${m.head}"`);
     return;
@@ -316,9 +397,11 @@ function scoreAgainst(pieces, hymns) {
   for (const r of rows) delete r.pieceTexts;
   const agg = (rs) => rs.reduce((a, r) => ({
     sheets: a.sheets + 1, pieces: a.pieces + r.pieces,
+    own: a.own + (r.own ?? r.pieces),
+    crossService: a.crossService + (r.crossService || 0),
     located: a.located + Math.max(0, r.located), verbatim: a.verbatim + (r.verbatim || 0),
     inOrder: a.inOrder + (r.inOrder || 0),
-  }), { sheets: 0, pieces: 0, located: 0, verbatim: 0, inOrder: 0 });
+  }), { sheets: 0, pieces: 0, own: 0, crossService: 0, located: 0, verbatim: 0, inOrder: 0 });
 
   const L = [];
   L.push(`# Choir-packet diff — ${new Date().toISOString()}`);
@@ -331,29 +414,32 @@ function scoreAgainst(pieces, hymns) {
   L.push('**LOCATED** = we print that hymn at all. **VERBATIM** = in the parish\'s wording.');
   L.push('Printing the right hymn in other words is a different problem from the wrong hymn.');
   L.push('');
-  L.push('| sheet | align | hymns on it | located | in order | verbatim |');
-  L.push('|---|---|---|---|---|---|');
+  L.push('| sheet | align | hymns on it | other service | this service | located | in order | verbatim |');
+  L.push('|---|---|---|---|---|---|---|---|');
   for (const r of rows)
-    L.push(`| \`${r.name}\` | ${r.shift > 0 ? '+' : ''}${r.shift} | ${r.pieces} | ${r.located} | ${r.inOrder} | ${r.verbatim} |`);
+    L.push(`| \`${r.name}\` | ${r.shift > 0 ? '+' : ''}${r.shift} | ${r.pieces} | ${r.crossService} | ${r.own} | ${r.located} | ${r.inOrder} | ${r.verbatim} |`);
   L.push('');
   L.push('## by service');
   L.push('');
-  L.push('| service | sheets | hymns | located | in order | verbatim |');
-  L.push('|---|---|---|---|---|---|');
+  L.push('| service | sheets | hymns on sheets | belong to the other service | this service must print | located | in order | verbatim |');
+  L.push('|---|---|---|---|---|---|---|---|');
   const summary = {};
   for (const [label, key] of GROUPS) {
     const rs = rows.filter(r => r.service === key);
     if (!rs.length) continue;
     const a = agg(rs);
     summary[key] = a;
-    const p = (n) => a.pieces ? `${n} (${(100 * n / a.pieces).toFixed(0)}%)` : String(n);
-    L.push(`| ${label} | ${a.sheets} | ${a.pieces} | ${p(a.located)} | ${p(a.inOrder)} | ${p(a.verbatim)} |`);
-    console.log(`${label.padEnd(21)} sheets ${String(a.sheets).padStart(2)} · hymns ${String(a.pieces).padStart(3)} · ` +
+    // Rates are over `own` — the pieces this service is actually responsible
+    // for — never over every piece printed in the packet.
+    const p = (n) => a.own ? `${n} (${(100 * n / a.own).toFixed(0)}%)` : String(n);
+    L.push(`| ${label} | ${a.sheets} | ${a.pieces} | ${a.crossService} | ${a.own} | ${p(a.located)} | ${p(a.inOrder)} | ${p(a.verbatim)} |`);
+    console.log(`${label.padEnd(15)} sheets ${String(a.sheets).padStart(2)} · on sheets ${String(a.pieces).padStart(3)} · ` +
+                `other svc ${String(a.crossService).padStart(3)} · this svc ${String(a.own).padStart(3)} · ` +
                 `located ${p(a.located)} · in order ${p(a.inOrder)} · verbatim ${p(a.verbatim)}`);
   }
   const total = agg(rows);
   summary._all = total;
-  L.push(`| **ALL** | ${total.sheets} | ${total.pieces} | ${total.located} | ${total.inOrder} | ${total.verbatim} |`);
+  L.push(`| **ALL** | ${total.sheets} | ${total.pieces} | ${total.crossService} | ${total.own} | ${total.located} | ${total.inOrder} | ${total.verbatim} |`);
   L.push('');
   L.push('## alignment chosen, by service');
   L.push('');
@@ -396,15 +482,16 @@ function scoreAgainst(pieces, hymns) {
       const b = base[key];
       if (!b) { better.push(`${key}: new in this run (${a.located}/${a.pieces} located)`); continue; }
       // Compare RATES, not counts — adding a packet raises the denominator.
-      const rate = (x) => x.pieces ? x.located / x.pieces : 0;
-      const vrate = (x) => x.pieces ? x.verbatim / x.pieces : 0;
+      const denom = (x) => x.own || x.pieces || 0;
+      const rate = (x) => denom(x) ? x.located / denom(x) : 0;
+      const vrate = (x) => denom(x) ? x.verbatim / denom(x) : 0;
       if (rate(a) < rate(b) - 0.001)
         worse.push(`${key}: located ${(100*rate(b)).toFixed(0)}% -> ${(100*rate(a)).toFixed(0)}%`);
       else if (rate(a) > rate(b) + 0.001)
         better.push(`${key}: located ${(100*rate(b)).toFixed(0)}% -> ${(100*rate(a)).toFixed(0)}%`);
       if (vrate(a) < vrate(b) - 0.001)
         worse.push(`${key}: verbatim ${(100*vrate(b)).toFixed(0)}% -> ${(100*vrate(a)).toFixed(0)}%`);
-      const orate = (x) => x.pieces ? (x.inOrder || 0) / x.pieces : 0;
+      const orate = (x) => denom(x) ? (x.inOrder || 0) / denom(x) : 0;
       if (orate(a) < orate(b) - 0.001)
         worse.push(`${key}: in order ${(100*orate(b)).toFixed(0)}% -> ${(100*orate(a)).toFixed(0)}%`);
     }

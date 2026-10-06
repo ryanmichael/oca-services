@@ -14,8 +14,8 @@ is given and the disagreement is named.
 
 The readers are the parish's **laity, who sing by following the choir**, so the
 only thing the page has to get right is the words, in order. Measured against the
-director's own sheets, Great Vespers prints 85% of the hymns sung and 36% of them
-in the choir's exact words; **Divine Liturgy prints 16%, and 0% in the choir's
+director's own sheets, Great Vespers prints 87% of the hymns sung and 37% of them
+in the choir's exact words; **Divine Liturgy prints 31%, and 3% in the choir's
 words.** That is the finding, and it was invisible because nothing compared our
 text to the packets — the full hymn text has been sitting unread in 104 OCR'd
 pages.
@@ -47,8 +47,8 @@ Four numbers.
 ### 1.1 "Are these the words we will actually sing?"
 
 > **"Of the hymns on the service sheets you have sent us, we print 85% at Great
-> Vespers — and 36% in the exact words your choir sings. At Divine Liturgy we
-> print 16%, and none in your words."**
+> Vespers — and 37% in the exact words your choir sings. At Divine Liturgy we
+> print 31%, and 3% in your words."**
 
 - **Computed as:** the choir packets' OCR'd `[text]` pages hold complete hymn
   text. Match each against our render for that date by character-trigram
@@ -56,29 +56,42 @@ Four numbers.
   Then ask separately whether the wording is verbatim. `npm run audit:packet-diff`.
 - **Measured today**, 22 sheets, 9 packets, 173 hymns:
 
-  | | sheets | hymns on them | we print the hymn | in their words |
-  |---|---|---|---|---|
-  | Great Vespers | 8 | 84 | 71 (85%) | 30 (36%) |
-  | Daily Vespers | 3 | 22 | 19 (86%) | 7 (32%) |
-  | **Divine Liturgy** | 11 | 67 | **11 (16%)** | **0 (0%)** |
+  | | sheets | on the sheets | belong to the *other* service | this service must print | we print it | in their words |
+  |---|---|---|---|---|---|---|
+  | Great Vespers | 8 | 82 | 0 | 82 | 71 (87%) | 30 (37%) |
+  | Daily Vespers | 3 | 20 | 0 | 20 | 19 (95%) | 7 (35%) |
+  | **Divine Liturgy** | 11 | 63 | **28** | 35 | **11 (31%)** | **1 (3%)** |
 
 - **Why two columns and not one:** printing the *right hymn in other words* is a
   different problem, with a different owner, from printing the *wrong hymn*. The
   first loses a reader their place; the second is a sourcing gap.
+- **The "other service" column is why these numbers moved.** An earlier draft
+  reported Liturgy at 16%/0%. That was substantially an artifact: the director's
+  `liturgy-*.pdf` files are **weekend packets** carrying Saturday-evening Great
+  Vespers alongside the Sunday Liturgy, and **28 of 63 pieces** on them matched
+  our *Vespers* render at 0.90–1.00. I had attributed a piece's service by its
+  filename — the same error as assuming a date convention, and the third time
+  this session (§5.2). Corrected, Liturgy reads **31% / 3%**.
+- **Quote it as a range, not a point.** Some texts legitimately belong to both
+  services — a resurrectional troparion is sung at Vespers and again at Liturgy —
+  so crediting a cross-service match can excuse a real Liturgy gap. Liturgy's
+  true located rate is between **17%** (crediting none) and **31%** (crediting
+  all). Narrowing it needs per-section attribution the OCR does not carry.
 - **Good looks like:** the first column at 100% — we should always print the
-  right hymn. The second rising deliberately and never falling silently. 36% is
+  right hymn. The second rising deliberately and never falling silently. 37% is
   not a failing grade: OCA publishes propers for roughly a third of days, so the
   parish and we often hold different translations of the same hymn.
 - **Spot-check:** take any packet, pick a sticheron, search for its first line in
   our page for that date. Three outcomes, three different meanings: exact match,
   same hymn in different English, absent.
-- **Honest caveat:** the Liturgy 16% is a **floor**. Some of what the extractor
-  counted as a missed Liturgy hymn is a prokeimenon verse or an antiphon our
-  Liturgy route carries as a non-hymn block, and three of the eleven "Liturgy"
-  sheets carry Saturday-evening Vespers material. **The 0% verbatim is the robust
-  half**, and it is the finding that matters: nothing on our Liturgy page is in
-  the words the choir sings. Tightening the 16% is the highest-value measurement
-  work outstanding.
+- **One hypothesis tested and discarded.** I expected much of the Liturgy floor
+  to be the matcher's `type === 'hymn'` filter, since prokeimena and antiphon
+  verses render as `type: 'verse'`. Measured: widening the pool from 33 blocks to
+  all 207 non-rubric blocks moved Liturgy by **one piece**. It was not the cause,
+  and the fix was the service attribution above.
+- **The finding survives at about half its original size.** Liturgy still prints
+  far less of what the choir sings than Vespers does (31% against 87%), and
+  almost none of it in their words. That is the real gap, and R3 is the work.
 
 ### 1.2 "Will I lose my place?"
 
@@ -209,7 +222,7 @@ Eight, reported separately. No total.
 
 | | measure | question | service | reaches zero? | today |
 |---|---|---|---|---|---|
-| **M3** | Packet fidelity (two numbers) | Of the hymns on the director's sheets, how many do we print, and how many in their words? | both | located yes; verbatim no | GV 85%/36% · DV 86%/32% · **Lit 16%/0%** |
+| **M3** | Packet fidelity (two numbers) | Of the hymns on the director's sheets, how many do we print, and how many in their words? | both | located yes; verbatim no | GV 87%/37% · DV 95%/35% · **Lit 31%/3%** (range 17–31%) |
 | **M8** | Order agreement | Are the hymns we print in the order they are sung? | both | yes — wall at 100% | **101/101** |
 | **M5** | Text well-formedness | Is every stored hymn grammatical English in both registers? | both | yes — wall at 0 | 9 invariants green; see the two live defects below |
 | **M4** | Selection fidelity | Do we make the same saint principal, with the same sticheron count, as a real OCA parish? | Vespers | no — ratchet | 301 dates, **65 gated** |
@@ -354,7 +367,7 @@ following the choir actually experiences.
 
 | axis | Vespers | Liturgy | measure | weight for this audience |
 |---|---|---|---|---|
-| fidelity to the parish | **dominant** — whose English | **0 of 67 verbatim** | M3 | **highest** — it is the page's whole job |
+| fidelity to the parish | **dominant** — whose English | **1 of 35 verbatim** | M3 | **highest** — it is the page's whole job |
 | order | clean | thinly covered | M8 | **high** — wrong place loses a reader |
 | well-formedness | properties of stored text, both equally | M5 | **high** — it is read aloud |
 | coverage | 10 general-text dates, 3 missing lesson sets | 6 placeholder Beatitudes | S14, M4 | medium |
@@ -363,9 +376,9 @@ following the choir actually experiences.
 | tone | — | — | deferred | **none** — they follow the choir |
 
 **Liturgy is under-measured, not correct — established, not inferred.** It
-produced 7 of the brief's 101 findings. Against the parish's own sheets, **0 of 67
-Liturgy hymns are in their wording and only 11 of 67 appear at all**, while Great
-Vespers — which has had all the attention — reaches 85%/36%. Of 131 rules, the
+produced 7 of the brief's 101 findings. Against the parish's own sheets, of the 35 pieces
+that are actually Liturgy's, **11 appear at all and 1 is in their wording**, while
+Great Vespers reaches 87%/37%. Of 131 rules, the
 Liturgy ones (`L1`–`L44`) are overwhelmingly *fixed-text* assertions: Trisagion
 wording, Creed opening, Lord's Prayer text, litany openings. Those are the parts
 that never vary. Almost nothing asserts the **variable propers**, which is where
@@ -467,7 +480,7 @@ whose `test` job ran `audit:quick` as its structural gate. That also showed the
 script's real intent — the label reads "calendar geometry, no server" — which is
 why it was re-scoped rather than retired (S2).
 
-### 5.2 My own three misreadings
+### 5.2 My own four misreadings
 
 **Misreading 1 — conflating two axes.** My first packet probe matched the
 packets' 4–6 word incipits as text prefixes and reported **68% "ABSENT"**. Its own
@@ -491,6 +504,16 @@ sheets by the civil evening (our API date) and the two most recent *Daily Vesper
 sheets by the **content date**. Assuming one convention would have had me report a
 fabricated regression in the Daily Octoechos work that shipped on 2026-10-05.
 
+**Misreading 4 — attributing a piece's SERVICE by its filename.** M3 reported
+Divine Liturgy at 16% located and 0% verbatim, and I put it on the clergy card as
+the headline gap. Of the 63 pieces on the director's `liturgy-*` sheets, **28 are
+Vespers** — they match our Vespers render at 0.90–1.00, because those PDFs are
+weekend packets carrying Saturday-evening Great Vespers alongside the Sunday
+Liturgy. Corrected, Liturgy reads 31% / 3%. Same shape as misreading 3: I let a
+filename stand in for evidence about which service, exactly as I had let it stand
+in for evidence about which date. The fix resolves service the way it already
+resolved the date offset — by scoring against both and taking what matches.
+
 **Misreading 3 — the same date convention again, in the other direction.** Asked
 whether the 10 General-Menaion dates were answerable from evidence, I compared
 `audit/ocanwa-baseline/`'s `0510` sheet against our API date `2026-05-10` and
@@ -501,9 +524,10 @@ nine dates where the baseline names one, and all nine report `ok` in
 `audit:parish-baseline`. The `vespersDate` field was in the response the whole
 time.
 
-**Three strikes on one convention, so it gets a rule, not a reminder.** Every
-cross-source comparison must *resolve* its date convention explicitly and show
-the resolution in its output — never assume and never infer. `choir-packet-diff.js`
+**Four strikes on one idea, so it gets a rule, not a reminder.** Every
+cross-source comparison must *resolve* its own framing — which date, which
+service — explicitly and from evidence, and show the resolution in its output.
+Never assume, never infer from a filename. `choir-packet-diff.js`
 does this by scoring `{-1, 0, +1}` and printing the offset it chose; the
 provenance sweep prints `liturgical <date>` beside each API date. A comparison
 that does not state its convention is not reportable.
@@ -571,7 +595,7 @@ reporting, not the page.
 | | recommendation | why here | cost |
 |---|---|---|---|
 | ~~**R1**~~ | **DONE, this commit.** One shared `fetchAssembled`; fail closed; `audit:quick` re-scoped to `audit:offline` rather than retired | Without it no number was trustworthy, including the ones below. See §5.1 | done |
-| **R2** | Tighten the Liturgy half of M3 — exclude non-hymn blocks, split the Vespers material out of the "Liturgy" sheets | Turns **16%/0%** from a floor into a fair number. It is the worst number on the card and the one that speaks to the readers | small |
+| ~~**R2**~~ | **DONE, this commit.** Service resolved by evidence, not by filename; engraver's furniture filtered | 28 of 63 "Liturgy" pieces were Vespers material in weekend packets. **16%/0% → 31%/3%.** The hypothesis that the `type==='hymn'` filter caused it was tested and false — worth one piece | done |
 | **R3** | Close the Liturgy wording gap the tightened M3 reveals | Nothing on our Liturgy page is in the words the choir sings. This is the actual work | large |
 | **R4** | Fix row 8437; widen the leading-character detector; add a glued-digit check | A rubric fragment and 60 footnote digits are live in sung text, read aloud by someone following along | small |
 | **R5** | Ingest the General Menaion dates' proper texts, using `audit/ocanwa-baseline/` incipits as the source | Moves 10 dates out of 1.3's left column. The texts exist; we just don't hold them | medium |
@@ -665,7 +689,8 @@ npm run audit:provenance
 npm run audit:provenance -- --date 2026-02-12        # one date, verbose
 
 # §1.1, §1.2, §M3, §M8, §5.2 — the packet diff: wording AND order,
-# alignment measured per sheet (GV 85%/36%, DV 86%/32%, Lit 16%/0%, order 101/101)
+# alignment AND service both resolved by evidence (GV 87%/37%, DV 95%/35%,
+# Lit 31%/3%, order 101/101)
 npm run audit:packet-diff
 npm run audit:packet-diff -- --service liturgy
 npm run audit:packet-diff -- --sheet daily-vespers-2026-10-08   # resolves to offset -1

@@ -29,6 +29,8 @@
     "choir:ocr": "node scripts/choir-ocr.js --backfill",
     "choir:index:check": "node scripts/choir-index-build.js --check",
     "audit:parish-baseline": "node scripts/ocanwa-baseline.js",
+    "audit:provenance": "node scripts/provenance-sweep.js --services vespers,liturgy --translation st-john-damascus-tyler",
+    "audit:packet-diff": "node scripts/choir-packet-diff.js",
     "audit:rank-coverage": "node scripts/rank-coverage.js --check audit/rank-coverage.json",
     "menaion:inspect": "node scripts/menaion-inspect.js",
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",

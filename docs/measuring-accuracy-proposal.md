@@ -77,6 +77,42 @@ Four numbers.
   so crediting a cross-service match can excuse a real Liturgy gap. Liturgy's
   true located rate is between **17%** (crediting none) and **31%** (crediting
   all). Narrowing it needs per-section attribution the OCR does not carry.
+
+### 1.1a What the unmatched pieces actually are
+
+The rate alone is not actionable, so all **33** pieces that fail to match anywhere
+were verified individually (2026-10-06). The discriminator is whether the text
+exists in our corpus at all — 14,121 texts across the DB, `octoechos.json`,
+`triodion.json`, `pentecostarion.json` and `divine-liturgy.json`:
+
+| | pieces | what it means |
+|---|---|---|
+| **in our corpus, not rendered** | **18** | all one question — see below |
+| genuinely absent | **7** | the real content gap: prokeimena, Third Antiphon verses, one troparion |
+| extraction furniture | 5 | headings and one rubric; never sung |
+| extraction truncation | 3 | text we DO render, cut mid-hymn by the extractor |
+
+**Eighteen of the 33 are a single unanswered question.** They are the 5th, 6th and
+7th resurrectional stichera at Sunday Lord-I-Call. The parish's packet sings seven;
+the published OCA order appoints four; we follow the order and `D21` is green
+across 39 Sundays. That is Q5 in `docs/connie-questions-2026-10-05.md`, and until
+she answers, changing it would be guessing at a liturgical question.
+
+**So the Liturgy content gap is 7 pieces, not 24.** That is R3's real size, and it
+is specific: prokeimena (08-02, 08-06, 09-13), Third Antiphon verses (08-06,
+09-14), the 29 August troparion.
+
+**Extraction accounts for 8 of 33 (24%)** — real, worth fixing, not dominant. I
+claimed twice that it dominated; a cleaning test (headings, voice labels, chant
+attributions) rescued only 3 of 33, and the other 5 are furniture that should
+never have become pieces. The three truncations are genuine: the 10-04 Theotokion
+kontakion scores 0.71 against our block in full and 0.53 as the extractor cut it.
+
+**One measurement limit worth keeping.** The extractor reads `[text]` pages only,
+and 21 of 104 such pages carry voice-part labels — they are score pages the
+classifier mislabelled. On 2026-07-12 the packet's V.10/9/8 stichera sit on a
+`[music]` page, so the diff saw 4 of 7 missing rather than 3 of 7. **A packet-diff
+gap is part of what a packet prints, never all of it.**
 - **Good looks like:** the first column at 100% — we should always print the
   right hymn. The second rising deliberately and never falling silently. 37% is
   not a failing grade: OCA publishes propers for roughly a third of days, so the
@@ -222,7 +258,7 @@ Eight, reported separately. No total.
 
 | | measure | question | service | reaches zero? | today |
 |---|---|---|---|---|---|
-| **M3** | Packet fidelity (two numbers) | Of the hymns on the director's sheets, how many do we print, and how many in their words? | both | located yes; verbatim no | GV 87%/37% · DV 95%/35% · **Lit 31%/3%** (range 17–31%) |
+| **M3** | Packet fidelity (two numbers) | Of the hymns on the director's sheets, how many do we print, and how many in their words? | both | located yes; verbatim no | GV 87%/37% · DV 95%/35% · **Lit 31%/3%** (range 17–31%). **Never act on the rate alone — §1.1a** |
 | **M8** | Order agreement | Are the hymns we print in the order they are sung? | both | yes — wall at 100% | **101/101** |
 | **M5** | Text well-formedness | Is every stored hymn grammatical English in both registers? | both | yes — wall at 0 | 9 invariants green; see the two live defects below |
 | **M4** | Selection fidelity | Do we make the same saint principal, with the same sticheron count, as a real OCA parish? | Vespers | no — ratchet | 301 dates, **65 gated** |
@@ -301,6 +337,7 @@ this shape.
 | | surface | verdict | why |
 |---|---|---|---|
 | S1 | `npm run audit` / `audit:full` | **keep — fixed, this commit** | Returned `0/0/0` exit 0 against a dead server (§5.1). Now throws on an unreachable server, refuses to run when `needsAssembled` rules would be dropped silently, exits 3 if zero checks ran, raises a `high` finding on a 5xx, and prints a coverage line. |
+| S1a | `D15-octoechos-lic-resurrectional-count` | **retire or rewrite — it cannot fire** | One date a year (`ctx.date === '2026-01-01'`), `needsAssembled: false` so it never reads a page, and `KNOWN_SOURCE_GAPS` lists all 8 tones so its only guard is always false. It returns `[]` by construction. The gap it describes does not exist either: every tone holds 6 `.hymns` + 1 `.glory` = the appointed 7. A rule named for exactly the right defect, suppressed to silence by its own allowlist — the thesis of this document in one file. **My rewrite of it was wrong (§5.2); leave it alone until Q5 is answered.** |
 | S2 | `audit:quick` | ~~retire~~ → **re-scoped, done this commit** | I recommended retiring it. Wrong: CI runs it as *"Structural audit (calendar geometry, no server)"*, so it had a real purpose — the 9 rules needing no server — and was merely lying about its coverage. Renamed **`audit:offline`** with an `--offline` flag that filters to those 9 and prints `9/131 rules eligible · OFFLINE — 122 server-dependent rules not run`. Retiring it would have deleted a cheap gate. |
 | S3 | `audit:date` | **keep** | Single-date `--print` path is the one that got the ECONNREFUSED hardening. Genuinely useful. |
 | S4 | `D23-translation-mix` | **re-scope, remove from headline** | See §3.1. |
@@ -378,7 +415,9 @@ following the choir actually experiences.
 **Liturgy is under-measured, not correct — established, not inferred.** It
 produced 7 of the brief's 101 findings. Against the parish's own sheets, of the 35 pieces
 that are actually Liturgy's, **11 appear at all and 1 is in their wording**, while
-Great Vespers reaches 87%/37%. Of 131 rules, the
+Great Vespers reaches 87%/37%. Verified piece by piece (§1.1a), the genuine
+Liturgy content gap is **7 pieces** — prokeimena and Third Antiphon verses — which
+is small, specific, and still entirely unasserted by any rule. Of 131 rules, the
 Liturgy ones (`L1`–`L44`) are overwhelmingly *fixed-text* assertions: Trisagion
 wording, Creed opening, Lord's Prayer text, litany openings. Those are the parts
 that never vary. Almost nothing asserts the **variable propers**, which is where
@@ -480,7 +519,7 @@ whose `test` job ran `audit:quick` as its structural gate. That also showed the
 script's real intent — the label reads "calendar geometry, no server" — which is
 why it was re-scoped rather than retired (S2).
 
-### 5.2 My own four misreadings
+### 5.2 My own five misreadings
 
 **Misreading 1 — conflating two axes.** My first packet probe matched the
 packets' 4–6 word incipits as text prefixes and reported **68% "ABSENT"**. Its own
@@ -524,10 +563,34 @@ nine dates where the baseline names one, and all nine report `ok` in
 `audit:parish-baseline`. The `vespersDate` field was in the response the whole
 time.
 
-**Four strikes on one idea, so it gets a rule, not a reminder.** Every
+**Misreading 5 — twice over, on the Sunday Lord-I-Call split.** The packet showed
+the choir singing resurrectional stichera we do not print, so I rewrote `D15` to
+assert the rendered count and it reported "22 short Sundays". Checked against the
+order parser `for-date.js` already uses, it was **wrong on all 13 that have an
+order file**: the appointed count is per-date from the published OCA order, not
+the fixed 7 in D15's header — that 7 is how many the Octoechos publishes *per
+tone*. `features/sunday-lic-appointed-split.md` warns about this exact
+over-correction ("~12 Sundays correctly render 4+6") and I had read the sentence.
+Reverted in `8b118e3`.
+
+Then I made the same mistake again on the next slot: `lordICall.glory` is rendered
+on 6 of 44 Saturdays, which I called a wiring bug. It is not. On **28 of 29**
+ordinary-time Saturdays the Glory is correctly taken by the *saint's* doxastikon;
+the Octoechos Glory is the fallback. And the structural reason the packet pieces
+looked missing is that **every tone stores 6 stichera plus 1 `.glory` = the full
+appointed 7** — the seventh resurrectional sticheron lives under `.glory`, which
+is also why D15's "source gap", allowlisted for all 8 tones, never existed.
+
+That second one I caught *before* writing code, by asking whether the behaviour
+was correct rather than assuming the packet proved a defect. That is the only
+difference between the two, and it is the whole technique.
+
+**Five strikes on one idea, so it gets a rule, not a reminder.** Every
 cross-source comparison must *resolve* its own framing — which date, which
-service — explicitly and from evidence, and show the resolution in its output.
-Never assume, never infer from a filename. `choir-packet-diff.js`
+service, which slot — explicitly and from evidence, and show the resolution in its
+output. Never assume, never infer from a filename. And before calling a
+difference a defect, **check whether the current behaviour is already correct**:
+four of the five misreadings above would have died in one query. `choir-packet-diff.js`
 does this by scoring `{-1, 0, +1}` and printing the offset it chose; the
 provenance sweep prints `liturgical <date>` beside each API date. A comparison
 that does not state its convention is not reportable.
@@ -595,8 +658,8 @@ reporting, not the page.
 | | recommendation | why here | cost |
 |---|---|---|---|
 | ~~**R1**~~ | **DONE, this commit.** One shared `fetchAssembled`; fail closed; `audit:quick` re-scoped to `audit:offline` rather than retired | Without it no number was trustworthy, including the ones below. See §5.1 | done |
-| ~~**R2**~~ | **DONE, this commit.** Service resolved by evidence, not by filename; engraver's furniture filtered | 28 of 63 "Liturgy" pieces were Vespers material in weekend packets. **16%/0% → 31%/3%.** The hypothesis that the `type==='hymn'` filter caused it was tested and false — worth one piece | done |
-| **R3** | Close the Liturgy wording gap the tightened M3 reveals | Nothing on our Liturgy page is in the words the choir sings. This is the actual work | large |
+| ~~**R2**~~ | **DONE** `1ef1537`. Service resolved by evidence, not by filename; engraver's furniture filtered | 28 of 63 "Liturgy" pieces were Vespers material in weekend packets. **16%/0% → 31%/3%.** The `type==='hymn'` hypothesis was tested and false — worth one piece. Residual extraction defects are quantified in §1.1a and are worth 8 of 33 | done |
+| **R3** | Close the Liturgy wording gap — **7 pieces**, not 24 | Verified one at a time (§1.1a): prokeimena (08-02, 08-06, 09-13), Third Antiphon verses (08-06, 09-14), the 29 Aug troparion. Smaller and more specific than the rate suggested | medium |
 | **R4** | Fix row 8437; widen the leading-character detector; add a glued-digit check | A rubric fragment and 60 footnote digits are live in sung text, read aloud by someone following along | small |
 | **R5** | Ingest the General Menaion dates' proper texts, using `audit/ocanwa-baseline/` incipits as the source | Moves 10 dates out of 1.3's left column. The texts exist; we just don't hold them | medium |
 | **R6** | Give `/api/liturgy` block provenance | Needed for 1.3's right-hand column; four sibling routes already do it. No longer first — it changes no word on the page | small |
@@ -654,6 +717,7 @@ Per the ground rule, the repo wins. Each was measured twice by different means.
 | inventory of measurement surfaces | **four missing**: `audit:endpoints`, `coverage-report`, `translation-matrix`, `audit:rank-coverage` | S13–S16 |
 | 55 contract files, 376 tests | 376 confirmed, now **384** | +8 from `general-menaion-name.test.js`, added by this work |
 | the 10 General-Menaion dates are bounded by material we may never have | **the texts exist** | `audit/ocanwa-baseline/` names the saint's own hymns with slot and tone. §1.3 |
+| *(my own earlier claim)* Liturgy is 16%/0% | **31%/3%**, and of 33 failures 18 are one pending question | §1.1a. Three of my own numbers in this document needed correcting before anyone else read them |
 
 Also confirmed as stated: the `audit:quick` vacuity; `drift:check` exiting on one
 warning; `KNOWN_RUBRIC_BLEED` empty by policy; the well-formedness baseline's
@@ -711,6 +775,10 @@ node --test test/contracts/general-menaion-name.test.js
 sqlite3 storage/oca.db "SELECT id,source,\"order\",section FROM stichera WHERE id=8437;"
 curl -s "http://localhost:3000/api/service?service=vespers&date=2026-02-12&translation=st-john-damascus-tyler" \
   | grep -o ", or this Upon beholding[^\"]\{0,50\}"
+
+# §1.1a — verify every unmatched packet piece against the corpus
+#   (the discriminator: in our corpus = our defect; absent = content gap)
+npm run audit:packet-diff        # then read the "did not locate" section
 
 # §M4, §M7, S7, S13
 npm run audit:parish-baseline      # 301 dates, 65 gated

@@ -1,6 +1,6 @@
-# Draft email to Connie — 2026-10-05 (Q3–Q4 added 2026-10-06)
+# Draft email to Connie — 2026-10-05 (Q3–Q5 added 2026-10-06)
 
-Four open questions. All are things we have been inferring from her documents and
+Five open questions. All are things we have been inferring from her documents and
 should simply ask. Status: **DRAFT, not sent.**
 
 - Q1 settles 13 hymns already changed on the evidence, and more importantly gives
@@ -11,17 +11,21 @@ should simply ask. Status: **DRAFT, not sent.**
 - Q3 is a one-line confirmation, not a blocker — our tooling already measures the
   offset per sheet. Asking only so the convention is recorded rather than
   re-derived every time.
-- Q4 is the one real decision: on 10 dates a year we substitute a generic hymn,
-  and whether that is wanted at all is a practice question, not ours to settle.
+- Q4 is a real decision: on 10 dates a year we substitute a generic hymn, and
+  whether that is wanted at all is a practice question, not ours to settle.
+- **Q5 is the biggest of the five.** Her packet sings 7+3 at Sunday Lord-I-Call
+  where the OCA published order appoints 4+6, and we follow the order. ~13
+  Sundays in 2026. If she answers "follow our sheet", that is a change to every
+  Sunday of the year, so it must be asked and not inferred.
 
 ---
 
-**Subject:** Four quick questions — tones, Saturday theotokia, and the generic hymns
+**Subject:** A few questions — tones, Saturday theotokia, the generic hymns, and the Sunday stichera count
 
 Hi Connie,
 
-Four things I keep guessing at. The first two are the substantive ones; the last
-two are quick.
+Five things I keep guessing at. Questions 1, 2 and 5 are the substantive ones;
+3 and 4 are quick.
 
 **1. When the Daily Octoechos and St Sergius disagree about the tone, which do you sing?**
 
@@ -95,6 +99,26 @@ December 11.
 plainly that we have nothing proper for the day?** I can do either. I would
 rather match what you would actually do than keep choosing for you.
 
+**5. How many resurrection stichera do you sing on a Sunday?**
+
+This one I would have got wrong without your packets.
+
+For Saturday evening (July 11, Tone 5), your sheet prints **seven** resurrection
+stichera at Lord I Call — verses 10 down to 4 — and then three for the saints at
+verses 3, 2 and 1.
+
+The OCA published order for that Sunday appoints the opposite split: **four**
+resurrection stichera and six for the saints. We follow the OCA order, so our page
+prints four where your choir sings seven, and the three we leave out are exactly
+the ones on your sheet: *"We glorify the Leader of our salvation"*, *"The guards
+were instructed by the lawless ones"* and *"O Lord, Thou hast captured hell"*.
+
+There are about thirteen Sundays in 2026 where the OCA order appoints three or
+four this way. **Is seven-and-three what you sing on all of them, or was July 12
+particular?** If it is your general practice I will follow your sheet rather than
+the published order — but I would rather ask than assume, because changing it
+affects every Sunday in the year.
+
 Thanks — these will save me a lot of guessing.
 
 Ryan
@@ -113,7 +137,7 @@ Ryan
   question — that is our decision, not hers, and she has already answered the
   underlying question by sending the packets.
 
-### Added 2026-10-06 with Q3–Q4
+### Added 2026-10-06 with Q3–Q5
 
 - **A fifth question was drafted and dropped: "which books does the parish sing
   from?"** It is the same question the note above rules out. The measurement work
@@ -142,3 +166,21 @@ Ryan
 - 05-10's generic text is also built from commemoration **#3** (Cyril and
   Methodius), not the principal ("Commemoration of the Founding of
   Constantinople"). Related to `project_principal_saint_picker_2026_06_20`.
+
+### Q5's evidence, and a correction to my own work
+
+- The packet for liturgical 07-12 prints resurrection stichera at V.10–V.4
+  (seven) and the saints at V.3–V.1. Our render is 4+6, matching
+  `orderResurrectionCount('2026-07-12') === 4`. **D21 is green on 39 Sundays**, so
+  our side is doing what the published order says.
+- **I first called this a bug and started writing an audit rule for it.** The
+  rewritten D15 reported "22 short Sundays"; checked against the order parser, it
+  was wrong on all 13 that have an order file. `features/sunday-lic-appointed-split.md`
+  warns about this exact over-correction — "~12 Sundays correctly render 4+6" —
+  and I had read it. Reverted in `8b118e3`.
+- The packet-diff only saw 4 of the 7 as missing because V.10/9/8 sit on a
+  `[music]` page and the extractor reads `[text]` pages only. **It therefore sees
+  part of what a packet prints, not all of it** — worth remembering before
+  treating any packet-diff gap as complete.
+- 6 further Sundays have **no order file** and fall back to 4; those are unverified
+  either way. If she answers Q5 they are covered too.

@@ -206,15 +206,84 @@ Inventory them yourself, restricted to Vespers and Liturgy.
    `project_liturgy_audit_2026_06_17`, `project_great_feast_eisodikon_gap`,
    `project_beatitudes_oca_gap`, `project_sunday_resurrection_kontakion_pending`.
 
+## A second audience: clergy and choir leaders
+
+Everything above is engineering-facing. There is a **second, harder requirement**:
+a handful of measures that can be put in front of a priest or a choir director
+without translation. They will not read "D23 is 88" or "376 contract tests pass".
+They will ask four questions, and the scorecard has to answer them:
+
+1. *Can I trust the sheet for this Sunday?*
+2. *What changed since last week?*
+3. *Where do you already know you are wrong?*
+4. *Is this the translation we actually sing?*
+
+Design for that audience **as a first-class deliverable, not an appendix.** Rules
+for it:
+
+- Count **services and dates**, never rows or rules. "19 Vespers this year use a
+  generic text instead of the saint's own hymns" lands; "254 stichera rows in 114
+  commemorations" does not.
+- Separate **"we are wrong"** from **"no book we can reach has this"**. Conflating
+  them is what makes the current numbers unusable, and clergy are the audience
+  most entitled to that distinction.
+- Prefer measures they can **spot-check themselves** on a date.
+- Keep it to about four numbers. A dashboard nobody reads is worse than one line
+  that is true.
+
+### Measured starting points, 2026, Vespers + Liturgy
+
+These were computed on 2026-10-05 by sweeping all 365 dates for both services as
+the parish (`?translation=st-john-damascus-tyler`). Re-derive them; they are a
+floor for the proposal, not the proposal.
+
+| | Vespers | Liturgy |
+|---|---|---|
+| dates the service is appointed and renders | **365 / 365** | **330 / 330** |
+| dates with any hymn whose book is unidentified | **0** | **330 — every single one** |
+| dates drawing on more than one book | 261 | not computable |
+| dates using a General Menaion (generic) text | 19 | 1 |
+| dates where every hymn comes from a book this parish uses | **224 / 365 (61%)** | not computable |
+
+Books appearing in Vespers, by number of dates: OCA 365, Daily Octoechos 213,
+St. Sergius 106, Myrrh-bearers (Raphaela) 92, Lambertsen 21, unknown 13,
+St. Sergius (General) 10. The 141 dates that fail the last row break down as
+St. Sergius 106, Lambertsen 21, unknown 13, St. Sergius (General) 10 — none of
+which is a book St John of Damascus sings from.
+
+**The finding that most constrains this work: Liturgy has no provenance at all.**
+Every one of its 330 dates returns hymns with no `provenance`, so the single most
+meaningful question for a choir director — *which book is this from?* — is
+answerable for Vespers and unanswerable for Liturgy today. Any clergy-facing
+scorecard either reports Vespers only and says so plainly, or the Liturgy
+provenance gap is fixed first. Treat establishing that as a candidate
+recommendation in its own right, and check `server-lib/routes/api-service.js`
+against the Liturgy route to find why one carries provenance and the other does
+not.
+
+### Do not put these in front of clergy
+
+`D23`'s count, rule ids, contract-test totals, `drift:check` warnings, baseline
+sizes. They are real and they matter internally; none of them answers any of the
+four questions above, and two of them move the wrong way when the work is good.
+
 ## What to deliver
 
 A proposal document containing:
 
-1. **A scorecard** — a small number of named, separately-reported measures, each
-   with: the question it answers, how it is computed, what "good" looks like,
-   whether it can reach zero, and what to do when it moves the wrong way. State
-   for each whether it is Vespers-only, Liturgy-only, or both; do not invent a
-   shared number if the honest answer is two numbers.
+1. **TWO scorecards, and the clergy one first.**
+   - *For clergy and choir leaders*: about four numbers, in their language,
+     answering the four questions in the section above. For each: the one-line
+     wording you would actually put in front of them, how it is computed, what
+     "good" looks like, and how they could spot-check it on a date. Say plainly
+     where Vespers can be reported and Liturgy cannot.
+   - *For us*: a small number of named, separately-reported measures, each with
+     the question it answers, how it is computed, whether it can reach zero, and
+     what to do when it moves the wrong way. State for each whether it is
+     Vespers-only, Liturgy-only, or both; do not invent a shared number if the
+     honest answer is two numbers.
+   The two must be consistent — the clergy number should be derivable from ours,
+   not a separate estimate.
 2. **A per-measure verdict on every existing surface** *as it bears on these two
    services*: keep as is, re-scope, merge, or retire. Say what to do about `D23`
    specifically, since it accounts for 88 of the latest 101 findings and is the

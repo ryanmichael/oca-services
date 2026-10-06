@@ -4,6 +4,7 @@
 const fs   = require('fs');
 const path = require('path');
 const { sweep } = require('./runner.js');
+const { fetchAssembled } = require('./fetch-assembled.js');
 const { buildContext } = require('./context.js');
 
 function parseArgs(argv) {
@@ -89,22 +90,29 @@ function writeReports(args, dates, services, result) {
   return stats;
 }
 
-async function fetchAssembled(httpBase, service, date) {
-  if (!httpBase) return null;
-  try {
-    const endpoint = service === 'vespers' ? 'service' : service;
-    const r = await fetch(`${httpBase}/api/${endpoint}?date=${date}`);
-    if (!r.ok) return null;
-    return await r.json();
-  } catch (err) {
-    // An unreachable server is not "not served on this date". Swallowing it
-    // printed a clean 0/0/0 report for 9-23 Vespers with nothing checked
-    // (no server on :3000). Found 2026-09-23.
-    if (err?.cause?.code === 'ECONNREFUSED' || /fetch failed/i.test(err?.message || '')) {
-      throw new Error(`audit: cannot reach ${httpBase} — start the server (node server.js) before a --print/--http audit`);
-    }
-    return null;
-  }
+/**
+ * Thin adapter over the shared fetcher, kept because the --print report wants
+ * "assembled or null" rather than the three-way outcome. The guard against an
+ * unreachable server now lives in ./fetch-assembled.js and is shared with the
+ * sweep, which is the path that was missing it.
+ */
+async function fetchAssembledOrNull(httpBase, service, date) {
+  const res = await fetchAssembled(httpBase, service, date);   // throws if unreachable
+  return res.ok ? res.assembled : null;
+}
+
+/** One line saying how much of the audit actually ran. */
+function coverageLine(c) {
+  if (!c) return '';
+  const bits = [
+    `${c.evaluations} rule checks ran over ${c.slotsConsidered} date×service slots`,
+    `${c.rulesEligible}/${c.rulesLoaded} rules eligible`,
+  ];
+  if (c.offline)                bits.push(`OFFLINE — ${c.rulesNeedingHttp} server-dependent rules not run`);
+  if (c.notServed)              bits.push(`${c.notServed} slots not served`);
+  if (c.skippedNoAssembled)     bits.push(`${c.skippedNoAssembled} checks skipped for lack of output`);
+  if (c.serverErrors?.length)   bits.push(`${c.serverErrors.length} RENDER FAILURES`);
+  return `Coverage: ${bits.join(' · ')}`;
 }
 
 function loadAllowlist() {
@@ -129,7 +137,7 @@ async function writePrintReport(date, services, result, httpBase) {
     const ctx = buildContext(date, service);
     if (!ctx.calendarEntry || ctx.calendarEntry._error) continue;
 
-    const assembled = await fetchAssembled(httpBase, service, date);
+    const assembled = await fetchAssembledOrNull(httpBase, service, date);
     const heading = service[0].toUpperCase() + service.slice(1);
     lines.push(`## ${heading}`);
 
@@ -232,26 +240,47 @@ async function main() {
     || ((args.http === true || args.print) && 'http://localhost:3000')
     || null;
 
+  const offline = !!args.offline;
+
   if (args.print) {
     if (dates.length !== 1) {
       console.error('--print requires a single --date YYYY-MM-DD');
       process.exit(1);
     }
-    const result = await sweep({ dates, services, ruleFilter, allowlistOn, httpBase });
+    const result = await sweep({ dates, services, ruleFilter, allowlistOn, httpBase, offline });
     const stats  = await writePrintReport(dates[0], services, result, httpBase);
+    console.log(coverageLine(result.coverage));
     if (args.strict && stats.high > 0) process.exit(2);
     return;
   }
 
-  console.log(`Auditing ${dates.length} date(s) × ${services.length} service(s)${httpBase ? ` (assembled via ${httpBase})` : ''}…`);
+  console.log(`Auditing ${dates.length} date(s) × ${services.length} service(s)${httpBase ? ` (assembled via ${httpBase})` : ''}${offline ? ' (OFFLINE: server-free rules only)' : ''}…`);
 
-  const result = await sweep({ dates, services, ruleFilter, allowlistOn, httpBase });
+  const result = await sweep({ dates, services, ruleFilter, allowlistOn, httpBase, offline });
   const stats  = writeReports(args, dates, services, result);
 
   console.log(`Done. high=${stats.high} medium=${stats.medium} low=${stats.low} suppressed=${stats.suppressed}`);
+  console.log(coverageLine(result.coverage));
   console.log(`Report: audit/reports/latest.md`);
+
+  // Fail closed, independent of --strict. A run that evaluated nothing is not a
+  // pass; it is a broken run, and reporting it as 0/0/0 exit 0 is the defect
+  // this whole change exists to remove. Exit 3 so it is distinguishable from
+  // --strict's finding-based exit 2.
+  if (result.coverage.evaluations === 0) {
+    console.error('\naudit: FAILED — zero rule checks ran. Nothing was verified, so this is ' +
+                  'not a clean report. Check --services/--dates, and that the server is up.');
+    process.exit(3);
+  }
 
   if (args.strict && stats.high > 0) process.exit(2);
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(e => {
+  // A deliberate guard (unreachable server, server-free rules dropped) carries
+  // its own actionable message; a stack trace buries it. Anything else is a real
+  // crash and keeps the trace.
+  if (/^audit: /.test(e?.message || '')) console.error(`\n${e.message}`);
+  else console.error(e);
+  process.exit(1);
+});

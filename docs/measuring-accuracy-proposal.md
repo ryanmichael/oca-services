@@ -287,8 +287,8 @@ this shape.
 
 | | surface | verdict | why |
 |---|---|---|---|
-| S1 | `npm run audit` / `audit:full` | **keep, fix fail-open** | Returns `0/0/0` exit 0 against a dead server (§5.1). Must fail closed. |
-| S2 | `audit:quick` | **retire** | 365 dates, `--strict`, **0/0/0, exit 0**, while the same sweep with `--http` finds 159. 122 of 131 rules are `needsAssembled`. It cannot pass meaningfully, so it only manufactures confidence. |
+| S1 | `npm run audit` / `audit:full` | **keep — fixed, this commit** | Returned `0/0/0` exit 0 against a dead server (§5.1). Now throws on an unreachable server, refuses to run when `needsAssembled` rules would be dropped silently, exits 3 if zero checks ran, raises a `high` finding on a 5xx, and prints a coverage line. |
+| S2 | `audit:quick` | ~~retire~~ → **re-scoped, done this commit** | I recommended retiring it. Wrong: CI runs it as *"Structural audit (calendar geometry, no server)"*, so it had a real purpose — the 9 rules needing no server — and was merely lying about its coverage. Renamed **`audit:offline`** with an `--offline` flag that filters to those 9 and prints `9/131 rules eligible · OFFLINE — 122 server-dependent rules not run`. Retiring it would have deleted a cheap gate. |
 | S3 | `audit:date` | **keep** | Single-date `--print` path is the one that got the ECONNREFUSED hardening. Genuinely useful. |
 | S4 | `D23-translation-mix` | **re-scope, remove from headline** | See §3.1. |
 | S5 | contract tests (55 files, 26 in scope) | **keep** | Plus the M5 widening. |
@@ -440,11 +440,32 @@ Three independent reproductions today:
 The first one matters most, and its history is instructive. On 2026-09-23 this
 exact false green was found and fixed — in `fetchAssembled` (`audit/index.js:92`),
 which carries a careful comment about it. But the sweep used by `npm run audit`
-has a **second, duplicated fetch** (`audit/runner.js:65`) with a bare
-`catch (_) { /* leave ctx.assembled undefined */ }`, and `runner.js:74` then does
+had a **second, duplicated fetch** (`audit/runner.js:65`) with a bare
+`catch (_) { /* leave ctx.assembled undefined */ }`, and `runner.js:74` then did
 `if (rule.needsAssembled && !ctx.assembled) continue;`. **The fix was applied to
-the path that was not the problem.** One fetch helper, shared, failing loudly,
-removes the whole class.
+the path that was not the problem.**
+
+**Closed in this commit.** One shared `audit/fetch-assembled.js`, which keeps three
+outcomes distinct that were previously collapsed into silence: *throw* when the
+server is unreachable (the run is invalid, not clean), *not-served* for a 404 or
+empty body (a real answer — Liturgy is not appointed on 35 dates of 2026), and
+*server-error* for a 5xx, which now raises a `high` finding. Verified: a stub
+server returning 500 on every request produces 6 high findings and
+`6 RENDER FAILURES` in the coverage line, where the old code reported 0/0/0 clean.
+
+The sweep now also returns **coverage** — `17392 rule checks ran over 730
+date×service slots · 131/131 rules eligible · 35 slots not served` — and
+`audit/index.js` exits **3** if zero checks ran, independent of `--strict`,
+because a run that verified nothing is not a pass. "No findings" is only
+meaningful beside "and this is how much ran".
+
+**One correction to my own diagnosis.** I reported that the pre-push hook gates on
+`audit:quick`. `core.hooksPath` is `.githooks`, so the *versioned* hook is the
+active one and it already ran a strict sampled audit against a booted server; I
+had read the stale `.git/hooks` copy. The genuinely unguarded consumer was **CI**,
+whose `test` job ran `audit:quick` as its structural gate. That also showed the
+script's real intent — the label reads "calendar geometry, no server" — which is
+why it was re-scoped rather than retired (S2).
 
 ### 5.2 My own three misreadings
 
@@ -549,7 +570,7 @@ reporting, not the page.
 
 | | recommendation | why here | cost |
 |---|---|---|---|
-| **R1** | One shared `fetchAssembled`; fail closed; retire `audit:quick` | Without it no number is trustworthy, including the ones below. `npm run audit` returns 0/0/0 exit 0 against a dead port | small |
+| ~~**R1**~~ | **DONE, this commit.** One shared `fetchAssembled`; fail closed; `audit:quick` re-scoped to `audit:offline` rather than retired | Without it no number was trustworthy, including the ones below. See §5.1 | done |
 | **R2** | Tighten the Liturgy half of M3 — exclude non-hymn blocks, split the Vespers material out of the "Liturgy" sheets | Turns **16%/0%** from a floor into a fair number. It is the worst number on the card and the one that speaks to the readers | small |
 | **R3** | Close the Liturgy wording gap the tightened M3 reveals | Nothing on our Liturgy page is in the words the choir sings. This is the actual work | large |
 | **R4** | Fix row 8437; widen the leading-character detector; add a glued-digit check | A rubric fragment and 60 footnote digits are live in sung text, read aloud by someone following along | small |

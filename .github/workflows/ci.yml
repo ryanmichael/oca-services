@@ -34,8 +34,11 @@ jobs:
       - name: Contract regression tests
         run: npm run test:contracts
 
-      - name: Structural audit (calendar geometry, no server)
-        run: npm run audit:quick
+      - name: Structural audit (calendar geometry, server-free rules only)
+        # 9 of 131 rules; the other 122 need assembled output and run in the
+        # audit-sweep job below, which boots a server. Was `audit:quick`, which
+        # reported 0/0/0 while skipping those 122 without saying so.
+        run: npm run audit:offline
 
       - name: Contract-check (strict — flag any code surface change missing spec/test updates)
         run: node scripts/contract-check.js --strict --base origin/${{ github.base_ref || github.ref_name }}

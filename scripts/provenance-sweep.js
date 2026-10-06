@@ -27,7 +27,8 @@
 // Reports: audit/reports/provenance-sweep.md
 // Read-only. Requires a server (see --http); FAILS LOUDLY if it cannot reach
 // one, because a sweep that silently checks nothing is this project's most
-// repeated defect (audit/runner.js:65).
+// repeated defect. The audit's own version of that hole was closed on
+// 2026-10-06 — see audit/fetch-assembled.js.
 
 const fs   = require('fs');
 const path = require('path');

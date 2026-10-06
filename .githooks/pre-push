@@ -46,8 +46,14 @@ else
   node scripts/contract-check.js || true
 fi
 
-echo "Running structural audit (audit:quick)..."
-npm run audit:quick
+echo "Running server-free structural audit (audit:offline)..."
+# Only the 9 of 131 rules that need no assembled output. Renamed from
+# `audit:quick` 2026-10-06: under its old name it passed 0/0/0 on 365 dates
+# while silently skipping the other 122 rules, so a green line here meant
+# nothing. The real gate is the strict sampled audit below, which boots a
+# server. This step stays because it is fast and catches calendar-geometry
+# regressions before the slower one runs.
+npm run audit:offline
 
 echo "Running endpoint audit (audit:endpoints)..."
 # Endpoint audit needs a running server. Start one in the background unless

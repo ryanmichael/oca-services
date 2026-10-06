@@ -176,21 +176,25 @@ describe('Feature contract: stored text is well-formed in both registers', () =>
   // is why the neighbour has no head. Ratcheted, not asserted away, because the
   // repair is a re-scrape of the affected commemorations.
   const RUBRIC_IN_TEXT_BASELINE = new Set([
-    'stichera 8430', 'stichera 8600', 'stichera 8608', 'stichera 8616',
+    'stichera 7179', 'stichera 8600', 'stichera 8608', 'stichera 8616',
     'stichera 8629', 'stichera 8636', 'stichera 8643', 'stichera 8652',
     'stichera 8663', 'stichera 8678', 'stichera 8685', 'stichera 8719',
-    'stichera 8722', 'stichera 8750', 'stichera 8888', 'stichera 8894',
-    'stichera 8910', 'stichera 9141', 'stichera 9390', 'stichera 9452',
-    'stichera 9469', 'stichera 9481', 'stichera 9484', 'stichera 9490',
-    'stichera 9505', 'stichera 9509', 'stichera 9520', 'stichera 9535',
-    'stichera 9544', 'stichera 10590',
+    'stichera 9390', 'stichera 9393', 'stichera 9452', 'stichera 9469',
+    'stichera 9481', 'stichera 9490', 'stichera 9505', 'stichera 9509',
+    'stichera 9520', 'stichera 9535', 'stichera 9544',
   ]);
 
+  // Keyed on the CONDITIONAL constructions that actually mark a rubric, not on
+  // bare phrases. Three false positives taught the difference: row 9141 reads
+  // "we chant psalms today, Master" and rows 6306/8233 read "Therefore we sing:
+  // 'O Christ our God…'" — all three are verse, and a loose /we chant|we sing:/
+  // flagged every one of them as a defect.
   const RUBRIC_RE = new RegExp([
-    'But if Alleluia is to be chanted', 'we sing first the following',
-    'in the same melody:', 'in the same tone[:,]', 'from the Triodion',
-    'from the Pentecostarion', 'from the Oktoechos', 'Or this Theotokion',
-    'another Troparion', 'If (?:it be|Alleluia)', 'we chant', 'is to be sung',
+    'But if\\b', 'If\\s+[“"]?(?:Alleluia|God is the Lord)',
+    'is to be (?:chanted|sung) at Matins', 'we (?:chant|sing) the following',
+    'we sing first', '\\(Instead of [^)]{0,60}we (?:sing|chant)',
+    'in the same (?:melody|tone)[:,]', 'from the (?:Triodion|Pentecostarion|Oktoechos)',
+    'Or this Theotokion', 'another Troparion',
     '\\(After the (?:first|second|third) reading',
   ].join('|'), 'i');
 

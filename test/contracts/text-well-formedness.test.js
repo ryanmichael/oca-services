@@ -158,8 +158,18 @@ describe('Feature contract: stored text is well-formed in both registers', () =>
   // (see RUBRIC_IN_TEXT_BASELINE below — 8630's head is inside the 1,770-character
   // blob at 8629). Repairing them means re-deriving those commemorations from
   // source, not patching text, so they stay listed.
+  // 8630 was repaired 2026-10-05: 05-27's Theotokion had been split across order 0
+  // and order 2, and the source (st-sergius.org Emenaion) reunited it — the lost
+  // words were "O Virgin Sovereign Lady, * entreat". The blob at order 1 was split
+  // into the three stichera the source appoints, and the Stavrotheotokion moved to
+  // order -1 where for-date.js looks for it.
+  //
+  // 8393 and 9030 remain: both are tails whose head sits in a NEIGHBOUR row, and
+  // repairing them means the same restructuring applied to a commemoration whose
+  // row-to-source mapping I could not establish — 9030's sibling at order 3 holds a
+  // hymn that is not among the three the source appoints.
   const MID_SENTENCE_BASELINE = new Set([
-    'stichera 8393', 'stichera 8630', 'stichera 9030',
+    'stichera 8393', 'stichera 9030',
   ]);
 
   // Rubric language INSIDE a sung text — the instruction a choir is handed as if
@@ -175,14 +185,23 @@ describe('Feature contract: stored text is well-formed in both registers', () =>
   // These are the ROOT of the fragment class: a row that swallowed its neighbours
   // is why the neighbour has no head. Ratcheted, not asserted away, because the
   // repair is a re-scrape of the affected commemorations.
-  const RUBRIC_IN_TEXT_BASELINE = new Set([
-    'stichera 7179', 'stichera 8600', 'stichera 8608', 'stichera 8616',
-    'stichera 8629', 'stichera 8636', 'stichera 8643', 'stichera 8652',
-    'stichera 8663', 'stichera 8678', 'stichera 8685', 'stichera 8719',
-    'stichera 9390', 'stichera 9393', 'stichera 9452', 'stichera 9469',
-    'stichera 9481', 'stichera 9490', 'stichera 9505', 'stichera 9509',
-    'stichera 9520', 'stichera 9535', 'stichera 9544',
-  ]);
+  // PAID OFF 2026-10-05, 23 -> 0. The 23 rows were repaired from the source
+  // (st-sergius.org Emenaion): 15 had the rubric stripped and their conditional
+  // hymn kept, 7 were truncated at the rubric with the tail preserved to
+  // audit/rubric-bleed-tails.json, and 1 (row 9509, 67 characters of rubric with
+  // no hymn in it) was deleted — safe because for-date.js:178 renumbers numbered
+  // stichera through its own counter, so a gap in `order` is inert.
+  //
+  // 62 rows were also tagged by the source's own role (49 alternative-set, 104
+  // stavrotheotokion in total). That is what actually stops them being sung:
+  // for-date.js:353 filters both roles out of numbered stichera. Tagging only the
+  // rubric-BEARING row was not enough — on 12-19 the conditional set is three
+  // rows plus a Stavrotheotokion, and the other three kept rendering as stichera
+  // 4-6 of the Boniface Vespers.
+  //
+  // Asserting ZERO now, so this is a wall and not a watermark. If an entry ever
+  // has to come back, it belongs in this list with its date and its reason.
+  const RUBRIC_IN_TEXT_BASELINE = new Set([]);
 
   // Keyed on the CONDITIONAL constructions that actually mark a rubric, not on
   // bare phrases. Three false positives taught the difference: row 9141 reads

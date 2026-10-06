@@ -773,6 +773,22 @@ const RUBRIC_BLEED_PATTERNS = [
                                              'genre heading glued to the front of the sung line'],
   [/^Glory\s*\.\.+/,                         'leading "Glory …" rubric ellipsis'],
   [/^Both now\s*\.\.+/,                      'leading "Both now …" rubric ellipsis'],
+  // Added 2026-10-05. The eight patterns above do not cover the CONDITIONAL
+  // rubric — "But if Alleluia is to be chanted at Matins instead of 'God is the
+  // Lord ...,' we sing first the following Stichera of the Theotokos" — which is
+  // why this check reported "clean" on 23 rows that a corpus sweep in
+  // test/contracts/text-well-formedness.test.js (INV-7) reported in full. One of
+  // them rendered live on 2026-12-18: an instruction plus three further hymns
+  // printed as a single Lord-I-Call sticheron.
+  //
+  // Keyed on the conditional CONSTRUCTIONS, not on bare phrases. A looser
+  // /we chant|we sing:/ flagged genuine verse — row 9141 reads "we chant psalms
+  // today, Master" and 6306/8233 read "Therefore we sing: 'O Christ our God'".
+  [/\bBut if\b/,                              'conditional rubric ("But if …")'],
+  [/\bIf\s+[“"]?(?:Alleluia|God is the Lord)/, 'conditional rubric (Alleluia at Matins)'],
+  [/\bwe (?:chant|sing) the following\b/,      'rubric introducing a further set'],
+  [/\bwe sing first\b/,                        'rubric introducing a further set'],
+  [/\(Instead of [^)]{0,60}we (?:sing|chant)/, 'parenthesised substitution rubric'],
 ];
 
 // Empty by policy — and it stays empty. This is the SILENT suppression set: a

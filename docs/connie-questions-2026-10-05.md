@@ -4,7 +4,8 @@ Five open questions. All are things we have been inferring from her documents an
 should simply ask. Status: **DRAFT, not sent.**
 
 - Q1 settles 13 hymns already changed on the evidence, and more importantly gives
-  us a general rule for every future case.
+  us a general rule for every future case. **Now also flags June 17 as a probable
+  mistake of ours** — see the note below.
 - Q2 has been pending since the Daily Octoechos work (chunk 4): her book's
   appendix covers Monday–Friday only, so liturgical Saturday has no entry, and
   that is 52 dates a year.
@@ -52,8 +53,22 @@ I have set these to follow your site, on the assumption that it reflects what th
 choir actually sings. **Is that right as a general rule — when the two disagree,
 your Menaion wins?** If so I will apply it everywhere rather than case by case.
 
-One thing worth mentioning: I nearly got this wrong in the other direction. The
-August 5 Forefeast of the Transfiguration looked like the same kind of
+**One of them I think I got wrong, and it may be the exception that tells us the
+rule.** I cross-checked these against another OCA parish's published sheet music,
+and two of the eight could be compared directly:
+
+- **February 6** backs your site. The three Photius stichera are Tone 4 there too,
+  and the opening words match line for line.
+- **June 17 does not.** The hymn in question is the *Glory* — "The glorious
+  martyrs desired Thee, O Word of God" — and both St Sergius and the other parish
+  appoint it **Tone 8**. Only your site reads Tone 6, and I followed your site. So
+  on that one I have probably changed something that was already right.
+
+**Would you check June 17?** If it is Tone 8 I will put it back and treat it as a
+one-off, and still apply "your Menaion wins" everywhere else.
+
+One more thing worth mentioning: I nearly got this wrong in the other direction
+too. The August 5 Forefeast of the Transfiguration looked like the same kind of
 disagreement, and your vigil packet for that day settled it — your sheet reads
 Tone 5, which is what we already had. So I would rather ask than keep inferring.
 
@@ -166,6 +181,33 @@ Ryan
 - 05-10's generic text is also built from commemoration **#3** (Cyril and
   Methodius), not the principal ("Commemoration of the Founding of
   Constantinople"). Related to `project_principal_saint_picker_2026_06_20`.
+
+### Q1's cross-check against the ocanwa baseline (added 2026-10-06)
+
+Of the 8 tone conflicts, only 2 could be compared against
+`audit/ocanwa-baseline/`, because its filenames carry a tone only for the dates
+with per-slot sheets.
+
+- **02-06 CONFIRMS her site.** Our rows are `lordICall` orders 5/6/7 (numbered);
+  ocanwa has `Lord I Call-1/-2/-3-St Photius-…-Tone4` and the incipits line up
+  ("Let us praise the most", "With one voice all Orthodox", "Thou wast driven
+  from thy"). Tone 4 on both sides.
+- **06-17 CONTRADICTS it.** Our row is order **0** — the Glory — text "The
+  glorious martyrs desired You, Word of God". ocanwa has
+  `Lord I Call-Glory-Martyrs Manuel Sabel and Ismael-The glorious martyrs who
+  desired-OBIKHOD-Tone8`. Same hymn, same slot, **Tone 8** — which is what St
+  Sergius said before we changed it to Tone 6. Revert candidate: see
+  `storage/oca.db.bak.2026-10-05-tones`.
+- **08-22 IS NOT EVIDENCE, and I first said it was.** Our row is order **-1**, the
+  "of the Dormition" Theotokion. ocanwa's Tone-1 entry is Agathonicus's *Glory*
+  ("Aptly wast thou named"), a different hymn in a different slot. I had read
+  those as the same row and reported Aug 22 as confirming Tone 1. It confirms
+  nothing — the same slot-mismatch error as the date and service mismatches
+  recorded in the proposal's §5.2.
+
+So the honest tally is **1 confirmed, 1 contradicted, 6 uncheckable** — which is
+why Q1 now asks her to look at June 17 specifically rather than just asking for a
+blanket rule.
 
 ### Q5's evidence, and a correction to my own work
 

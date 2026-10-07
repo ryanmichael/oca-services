@@ -59,6 +59,29 @@ module.exports = {
     if (theoHymn.source !== 'octoechos') return [];
 
     if (theoHymn.tone === gloryHymn.tone) return [];
+
+    // ── LITURGICAL SATURDAY IS THE ONE EXEMPTION (2026-10-06) ───────────────
+    //
+    // The tone-of-the-Glory rubric governs the Octoechos appendix's DAILY
+    // dismissal Theotokia, which exist in all eight tones — so there is always
+    // one to re-key to. Liturgical Saturday has no daily Theotokion in that
+    // appendix (see octoechos.json `_meta.knownGaps`); the choir director, asked
+    // directly what she sings at a Saturday service that is not a vigil, named
+    // the Tone 8 hymn "O Good One, who for our sake wast born of a Virgin", and
+    // said it is sung whatever tone the week is in. There is nothing to re-key,
+    // and the fixed tone is the practice, not a defect.
+    //
+    // Vespers is addressed by its CIVIL EVENING, so liturgical Saturday is the
+    // service served FRIDAY evening. Narrow on purpose: only Tone 8 is exempt,
+    // and only on that one evening. Any other mismatch there still fires, so
+    // the rule keeps its teeth on the 52 dates it covers.
+    //
+    // Before this guard, for-date.js's Saturday branch and this rule asserted
+    // contradictory things and 13 Friday evenings were permanently red.
+    const civil = new Date(`${ctx.date}T12:00:00Z`);
+    const isLiturgicalSaturday = civil.getUTCDay() === 5;   // served Friday eve
+    if (isLiturgicalSaturday && theoHymn.tone === 8) return [];
+
     return [{
       message: `Troparia dismissal Theotokion tone ${theoHymn.tone} does not match Glory tone ${gloryHymn.tone}.`,
       hint:    'Re-key the Troparia `now` slot via dailyTheotokionKey(gloryTone) when splicing the Menaion Glory (see for-date.js Saturday Great Vespers branch). That helper resolves to the `saturday` dismissal Theotokion on a Sunday and to the evening\'s own daily Theotokion on a weekday — D22 guards the day, this rule guards the tone.',

@@ -1,0 +1,38 @@
+{
+  "great-vespers": {
+    "sheets": 8,
+    "pieces": 82,
+    "own": 82,
+    "crossService": 0,
+    "located": 71,
+    "verbatim": 30,
+    "inOrder": 71
+  },
+  "daily-vespers": {
+    "sheets": 3,
+    "pieces": 20,
+    "own": 20,
+    "crossService": 0,
+    "located": 19,
+    "verbatim": 7,
+    "inOrder": 19
+  },
+  "liturgy": {
+    "sheets": 11,
+    "pieces": 63,
+    "own": 35,
+    "crossService": 28,
+    "located": 11,
+    "verbatim": 1,
+    "inOrder": 11
+  },
+  "_all": {
+    "sheets": 22,
+    "pieces": 165,
+    "own": 137,
+    "crossService": 28,
+    "located": 101,
+    "verbatim": 38,
+    "inOrder": 101
+  }
+}

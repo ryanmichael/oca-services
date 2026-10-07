@@ -1,5 +1,6 @@
 #!/bin/sh
-# Run smoke tests + structural audit + endpoint audit before pushing to remote.
+# Run smoke tests + structural audit + endpoint audit + accuracy ratchets
+# before pushing to remote.
 # Bypass with: git push --no-verify
 set -e
 
@@ -87,15 +88,40 @@ ENDPOINT_EXIT=$?
 echo "Running strict rule-based audit (parity with CI audit-sweep job)..."
 npm run audit -- --strict
 STRICT_EXIT=$?
+
+# Accuracy ratchets (added 2026-10-07). These are the two measures on
+# `npm run scorecard`: what the choir's own sheets say we should be singing,
+# and whether every sung hymn's book is still identifiable.
+#
+# They gate on RATES, not counts, and only on what got WORSE — adding a packet
+# raises the denominator without being a regression. An improvement prints a
+# line asking for the baseline to be refreshed deliberately; it never blocks.
+#
+# Both exit 1 when they cannot measure (unreachable server) and 2 on a real
+# regression, so a non-zero code never means "nothing checked". Refresh with:
+#   node scripts/choir-packet-diff.js --translation st-john-damascus-tyler \
+#     --capture-baseline audit/packet-baseline.json
+#   node scripts/provenance-sweep.js --services vespers,liturgy \
+#     --translation st-john-damascus-tyler --year 2026 \
+#     --capture-baseline audit/provenance-baseline.json
+echo "Running packet-fidelity ratchet (what the choir actually sings)..."
+npm run audit:packet-diff:check
+PACKET_EXIT=$?
+
+echo "Running provenance ratchet (every sung hymn's book is identifiable)..."
+npm run audit:provenance:check
+PROVENANCE_EXIT=$?
 set -e
 
 if [ "$STARTED_SERVER" = "1" ]; then
   kill $SERVER_PID 2>/dev/null || true
 fi
 
-# Fail the push if either audit failed; report both exit codes for clarity.
-if [ "$ENDPOINT_EXIT" -ne 0 ] || [ "$STRICT_EXIT" -ne 0 ]; then
-  echo "pre-push: endpoint-audit=$ENDPOINT_EXIT strict-audit=$STRICT_EXIT"
+# Fail the push if any gate failed; report every exit code for clarity.
+if [ "$ENDPOINT_EXIT" -ne 0 ] || [ "$STRICT_EXIT" -ne 0 ] \
+   || [ "$PACKET_EXIT" -ne 0 ] || [ "$PROVENANCE_EXIT" -ne 0 ]; then
+  echo "pre-push: endpoint-audit=$ENDPOINT_EXIT strict-audit=$STRICT_EXIT" \
+       "packet-diff=$PACKET_EXIT provenance=$PROVENANCE_EXIT"
   exit 1
 fi
 exit 0

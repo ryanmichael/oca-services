@@ -226,8 +226,16 @@ function baselineOf(byService) {
   const out = {};
   for (const [svc, t] of Object.entries(byService)) {
     out[svc] = {
+      dates: t.dates, rendered: t.rendered,
       sung: t.sung, resolved: t.resolved, unresolved: t.unresolved,
       defaulted: t.defaulted, pass: t.pass, fail: t.fail, noContent: t.noContent,
+      // Date counts, not block counts. The scorecard's "where are we short"
+      // card is counted in DATES — a reader asks "which evenings", never
+      // "how many blocks". `unresolved` and `datesUnresolved` differ by an
+      // order of magnitude (685 blocks on 88 dates); reporting one as the
+      // other is the §1.3 column-conflation this measure exists to avoid.
+      datesUnresolved: t.datesUnresolved,
+      datesNoProvenance: t.datesNoProvenance,
       datesGeneralMenaion: t.datesGeneralMenaion,
     };
   }
@@ -313,12 +321,18 @@ function baselineOf(byService) {
       const b = base[svc];
       if (!b) { worse.push(`${svc}: not in baseline`); continue; }
       const cmp = (key, dir) => {
+        // A key absent from an older baseline is "not measured then", not
+        // "was zero then" — comparing against undefined yields NaN, which
+        // fails every bad-direction test and would be reported as an
+        // improvement. Skip it; the next --capture-baseline picks it up.
+        if (typeof b[key] !== 'number' || typeof c[key] !== 'number') return;
         const d = c[key] - b[key];
         if (d === 0) return;
         const bad = dir === 'down' ? d > 0 : d < 0;
         (bad ? worse : better).push(`${svc}.${key}: ${b[key]} -> ${c[key]}`);
       };
       cmp('unresolved', 'down');
+      cmp('datesUnresolved', 'down');
       cmp('defaulted', 'down');
       cmp('fail', 'down');
       cmp('noContent', 'down');

@@ -891,13 +891,40 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
       // Keyed by CIVIL EVENING per _meta.weekdayVespersConvention, so the
       // source's "Thursday (Wednesday Evening)" lives under `wednesday`.
       // Liturgical Saturday (sung Friday evening) has no daily Theotokion in our
-      // source — see _meta.knownGaps — so fall back to the Saturday hymn there
-      // rather than render an empty slot. Guarded by D22.
+      // source — see _meta.knownGaps. Guarded by D22.
+      //
+      // ── LITURGICAL SATURDAY IS TONE 8, NOT THE WEEK'S TONE (2026-10-06) ─────
+      //
+      // It used to fall back to `tone${tone}.saturday…`, i.e. the current week's
+      // resurrectional dismissal Theotokion, which meant 52 evenings a year sang
+      // whichever of the eight happened to belong to that week — Tone 2 printed
+      // "All beyond thought, all most glorious", Tone 1 printed "When Gabriel
+      // announced to thee".
+      //
+      // The choir director settled it when asked (Q2 of
+      // docs/connie-questions-2026-10-05.md): Saturday's dismissal Theotokion is
+      // the TONE 8 one, "O Good One, who for our sake wast born of a Virgin",
+      // whatever tone the week is in. Her description matches
+      // `tone8.saturday.vespers.dismissalTheotokion` clause for clause — born of
+      // the Virgin, crucified and risen, accepting the Theotokos's intercession,
+      // saving the despairing people — so the text was already in the corpus and
+      // only the wiring was wrong.
+      //
+      // This is her answer, not an inference from the books: the other seven
+      // tones' Saturday Theotokia are entirely different hymns, and she named
+      // Tone 8 in reply to "what do you sing at a Saturday service that is not a
+      // vigil?".
+      const SATURDAY_DISMISSAL_THEOTOKION_TONE = 8;
       const dailyTheotokionKey = (tone) => {
         const eve = VESPERS_SUNG_EVE[calendarEntry.dayOfWeek] || calendarEntry.dayOfWeek;
         const key = `tone${tone}.${eve}.vespers.dismissalTheotokion`;
         const held = key.split('.').reduce((a, p) => (a ? a[p] : undefined), sources.octoechos);
-        return held ? key : `tone${tone}.saturday.vespers.dismissalTheotokion`;
+        if (held) return key;
+        // Liturgical Saturday: the fixed Tone 8 hymn. Anything else that is
+        // somehow unheld keeps the old week-tone fallback rather than rendering
+        // an empty slot.
+        const fallbackTone = eve === 'friday' ? SATURDAY_DISMISSAL_THEOTOKION_TONE : tone;
+        return `tone${fallbackTone}.saturday.vespers.dismissalTheotokion`;
       };
 
       const slots = calendarEntry.vespers.troparia.slots;

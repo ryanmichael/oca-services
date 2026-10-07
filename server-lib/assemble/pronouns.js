@@ -127,6 +127,13 @@ const YOU_YOUR_RULES = [
   // Pronouns
   [/\bThou\b/g,    'You'],     [/\bthou\b/g,    'you'],
   [/\bThee\b/g,    'You'],     [/\bthee\b/g,    'you'],
+  // "Ye" is the PLURAL subject — "ye destroyed the cults of evil demons",
+  // addressed to the apostles. It modernizes to "you" exactly as "thou" does.
+  // Without this rule a plural-addressed hymn kept its "ye" in modern register
+  // while every singular pronoun beside it became "you", so the one archaism
+  // left standing read as a typo. Liturgical English has no "ye olde" article,
+  // so the bare word is always the pronoun here.
+  [/\bYe\b/g,      'You'],     [/\bye\b/g,      'you'],
   [/\bThy\b/g,     'Your'],    [/\bthy\b/g,     'your'],
   [/\bThine\b/g,   'Your'],    [/\bthine\b/g,   'your'],
   [/\bThyself\b/g, 'Yourself'],[/\bthyself\b/g, 'yourself'],

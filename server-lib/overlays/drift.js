@@ -1312,6 +1312,98 @@ function validateSticheraSourceMixing() {
   }
 }
 
+// Data-drift tripwire for a MOVABLE commemoration scraped onto the FIXED date it
+// happened to occupy in the scrape year.
+//
+// The OCA site publishes each day's texts by calendar date, so a commemoration
+// that moves — the Sunday of the Holy Fathers, a Synaxis, a Saturday of the
+// Dead — lands in whatever fixed-date file that year's occurrence fell in. The
+// signature is unmistakable: two unrelated commemorations holding a
+// BYTE-IDENTICAL set of three or more stichera in the same section.
+//
+// Surfaced 2026-10-08 reviewing the choir packet for 2026-10-11, the Sunday of
+// the Holy Fathers of the 7th Ecumenical Council. The Fathers' Lord-I-Call set
+// sat on comm 2104 (10-12 Probus) and comm 2115 (10-13 Carpus) — both with
+// source_date 2025-10-12, the Sunday the Fathers occupied in 2025 — while the
+// Fathers' own comm 2095 held the stichera of the other Oct 11 saints. Six of
+// ten stichera at Great Vespers were the wrong saints', 10-12 evening sang the
+// Fathers' hymns for two martyrs, and `audit:date` was 0 high / 0 medium.
+//
+// Neither existing subject rule could see it: the body-text rule needs a
+// majority of hymns to name a sibling's subject, and the label rule needs the
+// label ("(for the Fathers)") to match a SIBLING commemoration on the same
+// date — there is no "Fathers" sibling on 10-12.
+//
+// Legitimate sharing exists (an afterfeast and its leavetaking; a feast and its
+// postfeast), so the 24 pairs standing when this rule was written are seeded
+// below rather than fixed blind. They are a visible backlog, not a clean bill
+// of health — several look like this same class. The rule's job is to stop the
+// NEXT one landing silently.
+const KNOWN_SHARED_STICHERA_SETS = new Set([
+  '1090+1216:aposticha', '1090+1216:lordICall',
+  '1135+1255:aposticha', '1135+1255:lordICall',
+  '1145+1262:aposticha', '1145+1262:lordICall',
+  '1182+2456:lordICall', '1202+1310:lordICall',
+  '1415+1421:lordICall', '1890+1944:lordICall',
+  '190+204:aposticha',   '190+204:lordICall',
+  '2211+2212:lordICall',
+  '2529+2532:aposticha', '2529+2532:lordICall',
+  '2609+2615:aposticha', '2609+2615:lordICall',
+  '355+463:lordICall',
+  '390+544:aposticha',   '390+544:lordICall',
+  '406+559:aposticha',   '581+749:lordICall',
+  '621+694+806:lordICall', '628+811:aposticha',
+]);
+
+function validateSticheraDuplicateSets() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const rows = db.prepare(`
+      SELECT section, ids, titles, n FROM (
+        SELECT section,
+               group_concat(cid, '+')   AS ids,
+               group_concat(title, ' | ') AS titles,
+               max(n)                   AS n,
+               count(*)                 AS copies
+        FROM (
+          SELECT s.commemoration_id AS cid, c.title AS title, s.section AS section,
+                 count(*) AS n, group_concat(s.text, '~~') AS t
+          FROM stichera s JOIN commemorations c ON c.id = s.commemoration_id
+          GROUP BY s.commemoration_id, s.section
+          HAVING count(*) >= 3
+        )
+        GROUP BY section, t
+        HAVING count(*) > 1
+      )
+    `).all();
+
+    let warnings = 0;
+    for (const r of rows) {
+      const key = `${(r.ids || '').split('+').sort((a, b) => Number(a) - Number(b)).join('+')}:${r.section}`;
+      if (KNOWN_SHARED_STICHERA_SETS.has(key)) continue;
+      console.warn(
+        `Commemorations ${r.ids} share a byte-identical set of ${r.n} ${r.section} stichera ` +
+        `(${r.titles}). A movable commemoration is most likely keyed onto the fixed date it ` +
+        `occupied in the scrape year — check source_date, give the real commemoration its own ` +
+        `rows, and drop the copies. If the sharing is legitimate (afterfeast/leavetaking), add ` +
+        `'${key}' to KNOWN_SHARED_STICHERA_SETS.`
+      );
+      warnings += 1;
+    }
+    if (warnings === 0) console.log('Stichera duplicate-set across commemorations: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -1325,6 +1417,7 @@ module.exports = {
   validateSticheraCommemorationMismatch,
   validateSticheraLabelSubject,
   validateSticheraSourceMixing,
+  validateSticheraDuplicateSets,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
   validateRubricBleed,

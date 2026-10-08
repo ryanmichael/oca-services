@@ -56,11 +56,29 @@ describe('Variant library contract', () => {
         assert.ok(t === 'string' || (t === 'object' && v.value !== null),
           `${key}: variant ${v.id} value must be string or object, got ${t}`);
       }
-      // If the file has variants, _target must be set.
+      // If the file has variants, _target must be set. Two kinds since
+      // 2026-10-08: a fixed-text target names a dotted cascade key, a menaion
+      // target names a hymn row in oca.db (features/parish-menaion-override.md).
+      // `service` is required for both — /api/pick-library groups by it.
       if (entry.all.length > 0) {
-        assert.ok(entry.target,            `${key}: _target required when variants exist`);
-        assert.ok(entry.target.service,    `${key}: _target.service required`);
-        assert.ok(entry.target.path,       `${key}: _target.path required`);
+        assert.ok(entry.target,         `${key}: _target required when variants exist`);
+        assert.ok(entry.target.service, `${key}: _target.service required`);
+        const kind = entry.target.kind || 'fixed-text';
+        if (kind === 'fixed-text') {
+          assert.ok(entry.target.path,  `${key}: _target.path required`);
+        } else if (kind === 'menaion') {
+          const t = entry.target;
+          assert.ok(t.commemoration && t.commemoration.title,
+            `${key}: menaion _target.commemoration required`);
+          assert.ok(typeof t.commemoration.month === 'number' && typeof t.commemoration.day === 'number',
+            `${key}: menaion _target.commemoration needs numeric month/day`);
+          assert.ok(t.hymn && (t.hymn.table === 'stichera' || t.hymn.table === 'troparia'),
+            `${key}: menaion _target.hymn.table must be stichera|troparia`);
+          assert.ok(Array.isArray(t.expect) && t.expect.length,
+            `${key}: menaion _target.expect must guard at least one base sha`);
+        } else {
+          assert.fail(`${key}: unknown _target.kind "${kind}"`);
+        }
       }
     }
   });

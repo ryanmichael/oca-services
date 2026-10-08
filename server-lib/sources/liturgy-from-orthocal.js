@@ -325,7 +325,9 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // troparia/kontakia injection blocks below AND the General Menaion propers
   // attachment further down (polyeleos+ Sundays get a secondary prokeimenon /
   // alleluia / koinonikon keyed off the principal saint's category).
-  const ranked       = getMenaionRanked(mo, dy);
+  // opts carries the parish rubrics, incl. menaionOverrides (see
+  // server-lib/sources/menaion-overrides.js).
+  const ranked       = getMenaionRanked(mo, dy, opts);
   let menaionPrincipal = ranked?.notable
     ? pickPrincipalByOrthocalOrder(ranked.notable, orthocalData, ranked.principal)
     : null;

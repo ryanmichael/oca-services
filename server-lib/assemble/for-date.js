@@ -121,7 +121,9 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
   const isPentSundayVespers = calendarEntry.vespers?.isPentecostarionSunday;
   if (calendarEntry._meta?.generated && injectSeasons.includes(calendarEntry.liturgicalContext?.season) && !hasTriodionContent && !isPentSundayVespers) {
     const [mm, dd] = adjustedMD();
-    const ranked = getMenaionRanked(mm, dd);
+    // opts carries the parish rubrics, which may include menaionOverrides —
+    // the one seam where a parish's own sticheron replaces a Menaion row.
+    const ranked = getMenaionRanked(mm, dd, opts);
     // Orthocal-aware principal override: when our stichera-rich default
     // disagrees with OCA's canonical principal (e.g. Apostle Mark Apr 25,
     // Spyridon Dec 12), rebind to the orthocal-listed saint. Conservative

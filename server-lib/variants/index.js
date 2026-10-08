@@ -41,13 +41,60 @@ function loadOne(file) {
   // _target tells the parish-overlay materializer where to slot the variant's
   // value in the cascade. Optional only on placeholder files (variants:[]);
   // mandatory once the file ships real content.
+  //
+  // Two target kinds. `fixed-text` (the default, and every file that predates
+  // 2026-10-08) names a dotted key in the fixed-texts cascade. `menaion`
+  // names a hymn row in oca.db, which the cascade cannot reach at all —
+  // overlays are scoped to fixed-texts/ (memory: overlay-variable-sources-gap),
+  // so a parish that sings a different sticheron or kontakion from the Menaion
+  // had nowhere to record it. See features/parish-menaion-override.md.
+  //
+  // A menaion target addresses by POSITION and verifies by CONTENT:
+  //   { kind, commemoration: { month, day, title },
+  //     hymn: { table: 'stichera', section, order } | { table: 'troparia', type },
+  //     expect: [sha256 of the base text(s) this variant may replace] }
+  // Position alone is unsafe — orders get renumbered. Content alone is not
+  // enough either: the OCA text fills a short Lord-I-Call set by REPEATING a
+  // sticheron, so two slots can hold byte-identical text and only one is meant
+  // to be replaced. Addressing by order and guarding with `expect` is the pair
+  // that survives both.
   const target = data._target || null;
   if (target) {
-    if (!target.service || !target.path) {
-      throw new Error(`${file}: _target must include both "service" and "path"`);
+    const kind = target.kind || 'fixed-text';
+    if (kind === 'fixed-text') {
+      if (!target.service || !target.path) {
+        throw new Error(`${file}: _target must include both "service" and "path"`);
+      }
+    } else if (kind === 'menaion') {
+      // `service` is required here as well: /api/pick-library groups the
+      // parish-admin picker by it, and its contract says every library key
+      // must be offerable (pick-library INV-1/INV-2).
+      if (!target.service) {
+        throw new Error(`${file}: menaion _target needs "service" so the picker can offer it`);
+      }
+      const c = target.commemoration;
+      if (!c || typeof c.month !== 'number' || typeof c.day !== 'number' || !c.title) {
+        throw new Error(`${file}: menaion _target.commemoration needs { month, day, title }`);
+      }
+      const h = target.hymn;
+      if (!h || (h.table !== 'stichera' && h.table !== 'troparia')) {
+        throw new Error(`${file}: menaion _target.hymn.table must be "stichera" or "troparia"`);
+      }
+      if (h.table === 'stichera' && (!h.section || typeof h.order !== 'number')) {
+        throw new Error(`${file}: menaion stichera target needs { section, order }`);
+      }
+      if (h.table === 'troparia' && !h.type) {
+        throw new Error(`${file}: menaion troparia target needs { type }`);
+      }
+      if (!Array.isArray(target.expect) || target.expect.length === 0) {
+        throw new Error(`${file}: menaion _target.expect must list at least one base sha256`);
+      }
+    } else {
+      throw new Error(`${file}: unknown _target.kind "${kind}"`);
     }
+    target.kind = kind;
   } else if (data.variants.length > 0) {
-    throw new Error(`${file}: _target { service, path } is required when variants are present`);
+    throw new Error(`${file}: _target is required when variants are present`);
   }
 
   const byId = new Map();

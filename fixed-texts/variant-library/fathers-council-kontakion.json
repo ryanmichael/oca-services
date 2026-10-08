@@ -1,0 +1,49 @@
+{
+  "key": "fathers-council-kontakion",
+  "_version": 1,
+  "_label": "Kontakion of the Holy Fathers of an Ecumenical Council (Liturgy, at \"Glory…\")",
+  "_target": {
+    "kind": "menaion",
+    "service": "liturgy",
+    "commemoration": {
+      "month": 10,
+      "day": 11,
+      "title": "Commemoration of the Holy Fathers of the Seventh Ecumenical Council"
+    },
+    "hymn": { "table": "troparia", "type": "kontakion" },
+    "expect": ["9f5727c75ad295b90360cbf71020cb410231ac5a69fd67c6357f09398d8ec5e1"]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Two legitimate kontakia circulate for this Sunday. The OCA order appoints the Tone 6 'The Son, Who shone forth…'; much of the Greek and Slavonic usage sings the Tone 8 'The apostles' preaching…'. They are different hymns, not renderings of one hymn, so the variant carries its own tone. `expect` guards the Tone 6 base text (identical in both the yy and tt rows, since the yy→tt transform finds no second person in it): if that base is ever re-authored the override detaches rather than silently replacing something else.",
+  "variants": [
+    {
+      "id": "oca",
+      "label": "OCA order — Tone 6 (\"The Son, Who shone forth ineffably…\")",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-10-08",
+        "source_citation": "reference/orders/2026-1011-order-services.txt — 'Glory… Kontakion of the Fathers, Tone 6'"
+      },
+      "value": {
+        "tone": 6,
+        "text": "The Son, Who shone forth ineffably from the Father,\nwas born of a woman, in two natures.\nBeholding Him, we do not deny the image of His form,\nbut depicting it piously, we revere it faithfully.\nThus, keeping the True Faith,//\nthe Church venerates the icon of Christ Incarnate."
+      }
+    },
+    {
+      "id": "apostles-preaching",
+      "label": "Tone 8 (\"The apostles' preaching and the fathers' doctrines…\")",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-10-08",
+        "source_citation": "docs/choir-packets/2026-10-07/pdf/liturgy-2026-10-11.pdf p.4 — 'Holy Fathers / Tone 8, Kontakion', footer 'St John of Damascus Mission'; handwritten 'glory…' at the head. Read visually from the scan, not from the OCR sidecar, which mis-read 'defines' as 'de-fimes' and 'theology' as 'the-to'. The sheet prints the singer's elision \"mys-t'ry\"; the word is set here unelided."
+      },
+      "value": {
+        "tone": 8,
+        "text": "The apostles' preaching and the fathers' doctrines have established one faith for the Church.\nAdorned with the robe of truth, woven from heavenly theology,\nit defines and glorifies the great mystery of Orthodoxy."
+      }
+    }
+  ]
+}

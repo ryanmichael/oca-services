@@ -17,6 +17,7 @@
 const { openDb }                 = require('../cache/sqlite');
 const { deriveOverlayForService } = require('../derivations');
 const { loadVariantLibrary, resolveVariant } = require('../variants');
+const { collectMenaionOverrides }           = require('../sources/menaion-overrides');
 const { loadPracticeLibrary }               = require('../practice/library');
 const { resolvePatronByNaturalKey } = require('./patron-resolver');
 const {
@@ -117,9 +118,17 @@ function buildParishOverlay(row, picks, library, rubricPicks = {}, practice = {}
     if (!v) continue;
     const t = lib.target;
     if (!t) continue;
+    // Menaion-kind picks name a hymn in oca.db, which has no dotted key in
+    // this cascade. They ride the rubrics bag instead — the assemblers already
+    // thread `opts.rubrics` down to the Menaion read. See
+    // server-lib/sources/menaion-overrides.js.
+    if (t.kind === 'menaion') continue;
     if (!data[t.service]) data[t.service] = {};
     setDottedKey(data[t.service], t.path, v.value);
   }
+
+  const menaionOverrides = collectMenaionOverrides(library, picks, resolveVariant);
+  if (menaionOverrides.length) manifest.rubrics.menaionOverrides = menaionOverrides;
 
   return { manifest, data };
 }

@@ -1,0 +1,49 @@
+{
+  "key": "fathers-council-lic-sixth",
+  "_version": 1,
+  "_label": "Sixth Lord-I-Call sticheron of the Holy Fathers (Great Vespers)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 10,
+      "day": 11,
+      "title": "Commemoration of the Holy Fathers of the Seventh Ecumenical Council"
+    },
+    "hymn": { "table": "stichera", "section": "lordICall", "order": 2 },
+    "expect": ["96e54ce94afc4e801a346b5a104f3ec5b5495eb8e7a0b84e3324e50ae8a7db10"]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Six slots, five distinct stichera. The OCA text fills the gap by repeating the first ('(Repeat: \"The seven honorable councils…\")'), so slot 2 is a byte-identical duplicate of slot 1 — which is exactly why this target is addressed by ORDER and only guarded by `expect`. A content-addressed override would have replaced both copies.",
+  "variants": [
+    {
+      "id": "oca-repeat",
+      "label": "OCA order — repeat the first sticheron",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-10-08",
+        "source_citation": "reference/scrape/2026-10-11.docx — '(Repeat: \"The seven honorable councils…\")' at V.(5)"
+      },
+      "value": {
+        "tone": 6,
+        "text": "The seven honorable councils of the Fathers, held at various times,\nwere brought together under one canon in good order\nby Patriarch Germanus the New.\nHe established and recorded their teachings;\nhe also presented these Fathers to the Lord\nas watchful intercessors for our salvation,//\nand as fellow-shepherds of the fold."
+      }
+    },
+    {
+      "id": "expelled-heretics",
+      "label": "A distinct sixth (\"You expelled the vicious heretics…\")",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-10-08",
+        "source_citation": "docs/choir-packets/2026-10-07/pdf/great-vespers-2026-10-10.pdf p.4, 'Lord I Have Cried (continued) / Tone 6 (Same Tone)', footer 'Sunday of the Holy Fathers (October 7-11) 2 / Vespers'. Read visually from the scan. Singer's syllable hyphens removed ('de-vour-ing', 'wick-èd')."
+      },
+      "value": {
+        "tone": 6,
+        "text": "You expelled the vicious heretics from the Savior's fold,\nthose devouring wolves clothed in the skins of lambs:\nTruly, you have done well, faithful shepherds, in exposing the wicked ones://\nTherefore we all glorify you!"
+      }
+    }
+  ]
+}

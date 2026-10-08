@@ -1404,6 +1404,97 @@ function validateSticheraDuplicateSets() {
   }
 }
 
+// A parish's Menaion override addresses a hymn by position and guards it with
+// the sha256 of the base text it was authored against. When the base is
+// re-authored the guard stops matching and the override silently stops
+// applying — deliberately, because the alternative is pointing a parish's
+// wording at whatever hymn has drifted into that slot. "Silently" is the part
+// this rule fixes: a detached override is a parish quietly losing its own text.
+//
+// Also catches an override whose commemoration or slot no longer exists at
+// all, which is what a re-key looks like from this side. See
+// features/parish-menaion-override.md.
+function validateMenaionOverrides() {
+  const { openDb } = require('../cache/sqlite');
+  const { loadVariantLibrary, resolveVariant } = require('../variants');
+  const { sha256 } = require('../sources/menaion-overrides');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='parish_variant_picks'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const library = loadVariantLibrary();
+    const picks = db.prepare(
+      'SELECT parish_id, variant_key, variant_id FROM parish_variant_picks'
+    ).all();
+
+    let warnings = 0;
+    let checked  = 0;
+    for (const pick of picks) {
+      const lib = library[pick.variant_key];
+      if (!lib || !lib.target || lib.target.kind !== 'menaion') continue;
+      checked += 1;
+      const t = lib.target;
+      const where = `${pick.parish_id} → ${pick.variant_key}/${pick.variant_id}`;
+
+      if (!resolveVariant(library, pick.variant_key, pick.variant_id)) {
+        console.warn(`Menaion override ${where}: variant id does not resolve in the library.`);
+        warnings += 1;
+        continue;
+      }
+
+      const comm = db.prepare(
+        'SELECT id FROM commemorations WHERE month = ? AND day = ? AND title = ?'
+      ).get(t.commemoration.month, t.commemoration.day, t.commemoration.title);
+      if (!comm) {
+        console.warn(
+          `Menaion override ${where}: no commemoration "${t.commemoration.title}" on ` +
+          `${t.commemoration.month}-${t.commemoration.day}. It was renamed, re-keyed or removed.`
+        );
+        warnings += 1;
+        continue;
+      }
+
+      const h = t.hymn;
+      const row = h.table === 'stichera'
+        ? db.prepare(
+            'SELECT text FROM stichera WHERE commemoration_id = ? AND section = ? AND "order" = ?'
+          ).get(comm.id, h.section, h.order)
+        : db.prepare(
+            'SELECT text FROM troparia WHERE commemoration_id = ? AND type = ? LIMIT 1'
+          ).get(comm.id, h.type);
+
+      if (!row) {
+        console.warn(
+          `Menaion override ${where}: no ${h.table} row at ` +
+          `${h.table === 'stichera' ? `${h.section}[${h.order}]` : h.type} ` +
+          `for commemoration ${comm.id}. The slot moved or was deleted.`
+        );
+        warnings += 1;
+        continue;
+      }
+
+      if (!t.expect.includes(sha256(row.text))) {
+        console.warn(
+          `Menaion override ${where}: DETACHED — the base text changed, so the parish's ` +
+          `wording is no longer being applied. Base is now sha ${sha256(row.text).slice(0, 12)}…, ` +
+          `"${String(row.text).replace(/\s+/g, ' ').slice(0, 56)}…". Re-read the base, confirm the ` +
+          `parish still wants its variant there, and add the new sha to _target.expect in ` +
+          `fixed-texts/variant-library/${pick.variant_key}.json.`
+        );
+        warnings += 1;
+      }
+    }
+    if (warnings === 0) console.log(`Menaion parish overrides: clean (${checked} checked).`);
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -1418,6 +1509,7 @@ module.exports = {
   validateSticheraLabelSubject,
   validateSticheraSourceMixing,
   validateSticheraDuplicateSets,
+  validateMenaionOverrides,
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
   validateRubricBleed,

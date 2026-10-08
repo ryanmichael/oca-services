@@ -137,7 +137,12 @@ function handle(req, res, ctx) {
               liturgy: buildLiturgyFromOrthocal(orthocalData, date, reqSources, style,
                 { includeLesserSaints, includeSecondGospel, includeSecondKoinonikon,
                   principalOverrides: overlayRubrics?.principalOverrides,
-                  antiphonSet:        overlayRubrics?.antiphonSet }) };
+                  antiphonSet:        overlayRubrics?.antiphonSet,
+                  // A parish's own Menaion hymns (sticheron / troparion /
+                  // kontakion). This route flattens rubrics into named opts
+                  // rather than passing the bag, so it has to be named here
+                  // too — see server-lib/sources/menaion-overrides.js.
+                  menaionOverrides:   overlayRubrics?.menaionOverrides }) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });

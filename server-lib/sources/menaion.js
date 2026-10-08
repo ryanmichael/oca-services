@@ -2,6 +2,9 @@
 
 const { openDb }              = require('../cache/sqlite');
 const { deduplicateBySource } = require('../../oca-psalter');
+const {
+  applyToStichera, applyToTroparia, overridesFrom,
+} = require('./menaion-overrides');
 
 /**
  * Returns the primary commemoration for a day — the first one that has a
@@ -32,7 +35,7 @@ function getMenaionPrimary(month, day) {
  * Returns all Lord I Call stichera for a given month/day from oca.db.
  * Shape: [{ commemoration, stichera: [{ order, tone, label, text }] }]
  */
-function getSticheraDay(month, day) {
+function getSticheraDay(month, day, opts = {}) {
   let db;
   try {
     db = openDb();
@@ -60,7 +63,10 @@ function getSticheraDay(month, day) {
         groupRole: row.group_role,
       });
     }
-    return Object.values(byComm);
+    const ovr = overridesFrom(opts);
+    return Object.values(byComm).map(c => ({
+      ...c, stichera: applyToStichera(ovr, month, day, c, c.stichera),
+    }));
   } catch (err) {
     console.error('getSticheraDay error:', err.message);
     return null;
@@ -85,7 +91,12 @@ function getSticheraDay(month, day) {
  * This ensures the saint OCA published stichera for is treated as the primary, even
  * when a moveable feast (Triodion/Pentecostarion) sits at a lower id.
  */
-function getMenaionRanked(month, day) {
+// `opts.rubrics.menaionOverrides` lets a parish stand its own sticheron or
+// kontakion in place of a Menaion row — the cascade cannot reach oca.db, so
+// this is the one seam where that happens. Optional third argument: every
+// caller that does not pass it (the ~20 read-only routes) keeps base behaviour.
+// See server-lib/sources/menaion-overrides.js.
+function getMenaionRanked(month, day, opts = {}) {
   let db;
   try {
     db = openDb();
@@ -132,14 +143,18 @@ function getMenaionRanked(month, day) {
       );
     }
 
+    // Parish overrides substitute in place — they never add or remove a hymn,
+    // so hasTroparion/hasStichera and every ranking decision below are
+    // unaffected by whether a parish has picked one.
+    const ovr = overridesFrom(opts);
     const enriched = comms.map(c => ({
       id:           c.id,
       title:        c.title,
       rank:         c.rank,
       tone:         c.tone,
       saint_type:   c.saint_type,
-      troparia:     tropariaMap[c.id] ?? [],
-      stichera:     sticheraMap[c.id] ?? [],
+      troparia:     applyToTroparia(ovr, month, day, c, tropariaMap[c.id] ?? []),
+      stichera:     applyToStichera(ovr, month, day, c, sticheraMap[c.id] ?? []),
       hasTroparion: (tropariaMap[c.id] ?? []).some(t => t.type === 'troparion'),
       hasStichera:  !!(sticheraMap[c.id]?.length),
     }));
@@ -190,7 +205,7 @@ function getMenaionDayList(month, day) {
  * Returns all commemorations + troparia for a given month/day from oca.db.
  * Shape: [{ id, title, rank, tone, troparia: [{ type, tone, text }] }, …]
  */
-function getMenaionDay(month, day) {
+function getMenaionDay(month, day, opts = {}) {
   let db;
   try {
     db = openDb();
@@ -204,12 +219,13 @@ function getMenaionDay(month, day) {
       SELECT type, tone, text, pronoun FROM troparia
       WHERE commemoration_id = ? AND pronoun = 'tt' ORDER BY type
     `);
+    const ovr = overridesFrom(opts);
     return comms.map(c => ({
       id:       c.id,
       title:    c.title,
       rank:     c.rank,
       tone:     c.tone,
-      troparia: getTroparia.all(c.id).map(splitPodoben),
+      troparia: applyToTroparia(ovr, month, day, c, getTroparia.all(c.id).map(splitPodoben)),
     }));
   } catch (err) {
     console.error('getMenaionDay error:', err.message);

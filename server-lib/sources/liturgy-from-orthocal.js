@@ -1004,20 +1004,32 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   if (gmp && secondKoinonikonAllowed && !communionHymn.secondary && !isWeekdayGreatSaintFeast) {
     communionHymn = { ...communionHymn, secondary: { ...gmp.communionHymn, label: gmpLabel } };
   }
+  // The OCA order PRESCRIBES both communion verses on these days, exactly as it
+  // prescribes both Gospels (see the `secondary` gospel below, which forces the
+  // same set past `includeSecondGospel`). `includeSecondKoinonikon: false` is a
+  // parish saying "skip the optional saint's verse" — the polyeleos `gmp` path
+  // above — not "drop a verse the order prints". Same intent as the
+  // `prescribed: true` overlay flag. Surfaced 2026-10-08: Tyler has the toggle
+  // off, so the Fathers' "Rejoice in the Lord, O ye righteous…" vanished from
+  // 2026-10-11 while the second Gospel rendered — yet the choir packet for that
+  // Sunday carries the music for it.
+  const prescribedSecondKoinonikon = holyFathersSunday || sundayAfterElevation
+    || (lentenKey !== null && ['1', '2', '3', '4', '5'].includes(String(lentenKey)));
+
   // Lenten commemoration Sundays (Palamas week 2, Climacus 4, Mary of Egypt 5)
   // sing the saint's koinonikon in addition to the standard Sunday one.
-  if (lentenKey !== null && secondKoinonikonAllowed && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
+  if (lentenKey !== null && (secondKoinonikonAllowed || prescribedSecondKoinonikon) && LENTEN_SUNDAY_COMMUNION && LENTEN_SUNDAY_COMMUNION[lentenKey] && !communionHymn.secondary) {
     communionHymn = { ...communionHymn, secondary: LENTEN_SUNDAY_COMMUNION[lentenKey] };
   }
   // Holy Fathers Sunday: the Fathers' koinonikon ("Rejoice in the Lord, O ye
   // righteous…") alongside the standard Sunday one.
-  if (holyFathersSunday && secondKoinonikonAllowed && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
+  if (holyFathersSunday && (secondKoinonikonAllowed || prescribedSecondKoinonikon) && !communionHymn.secondary && HOLY_FATHERS_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: HOLY_FATHERS_PROPER.communionHymn };
   }
   // Sunday After the Exaltation: "The light of Thy countenance…" beside
   // "Praise the Lord from the heavens…". Subject to the parish
   // secondKoinonikon toggle at render time, like every other second koinonikon.
-  if (sundayAfterElevation && secondKoinonikonAllowed && !communionHymn.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.communionHymn) {
+  if (sundayAfterElevation && (secondKoinonikonAllowed || prescribedSecondKoinonikon) && !communionHymn.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: SUNDAY_AFTER_ELEVATION_PROPER.communionHymn };
   }
   // 9-13 Founding of the Church: "I have loved the beauty of Thy house…"

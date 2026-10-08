@@ -1,0 +1,106 @@
+{
+  "emailDate": "2026-10-07",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast 10/7/26",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast 10/7/26",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/959f2c9d-527b-4a2a-94fe-d275c3163784/scratchpad/drop-2026-10-07",
+      "fetchedAt": "2026-10-08T12:55:52.170Z",
+      "attachments": 3
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-08T12:55:52.170Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "10.10.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-10-10",
+      "contentDate": "2026-10-11",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-10-10.pdf",
+      "sha256": "5ace62b0eeb3790547bb106b10cffd0464f187c9205fcc0c3fd3e62adc81515f",
+      "bytes": 7284304,
+      "pages": 14,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-10",
+      "messageSubject": "St John Choir Email Blast 10/7/26",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-10-10.txt",
+        "pages": 14,
+        "textPages": 6,
+        "musicPages": 8,
+        "chars": 4698
+      }
+    },
+    {
+      "original": "10.11.26 Divine Liturgy.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-10-11",
+      "contentDate": "2026-10-11",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-10-11.pdf",
+      "sha256": "036ef664c4e6965233a3a86bf23a901558b501120811711d805a690a6c5d3199",
+      "bytes": 7297738,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-10-11",
+      "messageSubject": "St John Choir Email Blast 10/7/26",
+      "ocr": {
+        "file": "ocr/liturgy-2026-10-11.txt",
+        "pages": 13,
+        "textPages": 5,
+        "musicPages": 8,
+        "chars": 3199
+      }
+    },
+    {
+      "original": "10.14.26 Daily Vespers.pdf",
+      "kind": "service",
+      "service": "dailyVespers",
+      "serviceLabel": "Daily Vespers",
+      "apiDate": "2026-10-14",
+      "contentDate": "2026-10-15",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/daily-vespers-2026-10-14.pdf",
+      "sha256": "0d31e987268d750215ed5114cc3b6f6a782415aa992dca3420c86072dad69aa6",
+      "bytes": 5004490,
+      "pages": 10,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-14",
+      "messageSubject": "St John Choir Email Blast 10/7/26",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-10-14.txt",
+        "pages": 10,
+        "textPages": 5,
+        "musicPages": 5,
+        "chars": 3375
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [
+    {
+      "filename": "10.08.26 Daily Vespers.pdf",
+      "reason": "identical to 2026-10-01/pdf/daily-vespers-2026-10-08.pdf",
+      "sha256": "e75ef11d77531251e9bba93f05fa19fb61a54de9aff24a4fd86167799ec61db8"
+    }
+  ],
+  "excluded": []
+}

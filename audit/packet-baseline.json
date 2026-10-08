@@ -1,38 +1,38 @@
 {
   "great-vespers": {
-    "sheets": 8,
-    "pieces": 82,
-    "own": 82,
+    "sheets": 9,
+    "pieces": 88,
+    "own": 88,
     "crossService": 0,
-    "located": 71,
+    "located": 76,
     "verbatim": 30,
-    "inOrder": 71
+    "inOrder": 76
   },
   "daily-vespers": {
-    "sheets": 3,
-    "pieces": 20,
-    "own": 20,
+    "sheets": 4,
+    "pieces": 25,
+    "own": 25,
     "crossService": 0,
-    "located": 19,
+    "located": 22,
     "verbatim": 7,
-    "inOrder": 19
+    "inOrder": 22
   },
   "liturgy": {
-    "sheets": 11,
-    "pieces": 63,
-    "own": 35,
-    "crossService": 28,
-    "located": 11,
+    "sheets": 12,
+    "pieces": 69,
+    "own": 40,
+    "crossService": 29,
+    "located": 13,
     "verbatim": 1,
-    "inOrder": 11
+    "inOrder": 13
   },
   "_all": {
-    "sheets": 22,
-    "pieces": 165,
-    "own": 137,
-    "crossService": 28,
-    "located": 101,
+    "sheets": 25,
+    "pieces": 182,
+    "own": 153,
+    "crossService": 29,
+    "located": 111,
     "verbatim": 38,
-    "inOrder": 101
+    "inOrder": 111
   }
 }

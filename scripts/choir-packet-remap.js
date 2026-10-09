@@ -88,7 +88,26 @@ function main() {
   };
 
   if (before.apiDate === after.apiDate && before.contentDate === after.contentDate) {
-    console.log(`already mapped to ${after.apiDate} — nothing to do`);
+    // The mapping is already right, but the RECORDED REASON may not be. A
+    // wrong justification on a right date is worse than no note: the next
+    // reader trusts it. 2026-10-09 is the case — the 10-08 sheet's note said
+    // "the parish serves an all-night vigil that evening" when that vigil is
+    // our calendar's appointment and the rector's schedule lists no Thursday
+    // service. So `--reason` alone is an allowed edit; without it, nothing
+    // to do.
+    if (!args.reason || args.reason === entry.remapReason) {
+      console.log(`already mapped to ${after.apiDate} — nothing to do`);
+      return 0;
+    }
+    console.log(`\n${args.packet} · ${entry.original}  (${entry.serviceLabel})`);
+    console.log(`  mapping unchanged (${after.apiDate}) — correcting the recorded reason`);
+    console.log(`  was: ${entry.remapReason || '(none)'}`);
+    console.log(`  now: ${args.reason}`);
+    if (args.dryRun) { console.log('\n  DRY RUN — nothing written\n'); return 0; }
+    entry.remapReason = args.reason;
+    entry.remappedAt  = new Date().toISOString();
+    fs.writeFileSync(mfPath, `${JSON.stringify(mf, null, 2)}\n`);
+    console.log(`\n  wrote ${path.relative(REPO, mfPath)}\n`);
     return 0;
   }
 

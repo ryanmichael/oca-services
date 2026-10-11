@@ -41,7 +41,7 @@ function handle(req, res, ctx) {
     renderService, renderVespers, getMatinsKathismata, deduplicateBySource,
   } = ctx;
 
-      serveStatic(res, path.join(ROOT, 'public', 'favicon.svg'), 'image/svg+xml');
+      serveStatic(res, path.join(ROOT, 'public', 'favicon.svg'), 'image/svg+xml', req);
 
 }
 

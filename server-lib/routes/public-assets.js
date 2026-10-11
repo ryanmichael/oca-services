@@ -44,7 +44,7 @@ function handle(req, res, ctx) {
       const filePath = path.join(ROOT, 'public', pathname);
       const ext = path.extname(filePath);
       const ct = ext === '.css' ? 'text/css' : ext === '.js' ? 'text/javascript' : 'text/plain';
-      serveStatic(res, filePath, ct);
+      serveStatic(res, filePath, ct, req);
 
 }
 

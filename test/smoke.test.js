@@ -18,16 +18,16 @@ function loadJSON(relPath) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, '..', relPath), 'utf8'));
 }
 
-/** Simple HTTP GET that returns { status, body, json } */
-function get(urlPath) {
+/** Simple HTTP GET that returns { status, body, json, headers } */
+function get(urlPath, headers) {
   return new Promise((resolve, reject) => {
-    http.get(`http://localhost:${PORT}${urlPath}`, (res) => {
+    http.get(`http://localhost:${PORT}${urlPath}`, { headers: headers || {} }, (res) => {
       let data = '';
       res.on('data', (chunk) => { data += chunk; });
       res.on('end', () => {
         let json = null;
         try { json = JSON.parse(data); } catch (_) {}
-        resolve({ status: res.statusCode, body: data, json });
+        resolve({ status: res.statusCode, body: data, json, headers: res.headers });
       });
     }).on('error', reject);
   });
@@ -1598,5 +1598,44 @@ describe('Choir endpoints', () => {
     }
     const unknown = await get('/api/choir-asset?id=000000000000');
     assert.equal(unknown.status, 404, 'a well-formed unknown id is a 404');
+  });
+});
+
+// ── Static asset revalidation ───────────────────────────────────────────────
+//
+// These used to be served with Content-Type and nothing else. With no caching
+// directive a browser falls back to heuristic caching, and iOS held stale
+// HTML/CSS/JS indefinitely — three fixes shipped to staging, verified from
+// curl and desktop, and changed nothing on the phone because the device never
+// re-fetched them. The failure is invisible from the server side, which is why
+// it needs a test rather than vigilance. Found 2026-10-11.
+
+describe('Static assets revalidate', () => {
+  const ASSETS = ['/', '/styles/main.css', '/scripts/app.js', '/scripts/booklet.js'];
+
+  it('every static asset sends Cache-Control and an ETag', async () => {
+    for (const a of ASSETS) {
+      const r = await get(a);
+      assert.equal(r.status, 200, `${a} served`);
+      assert.ok(r.headers['cache-control'], `${a} must send Cache-Control — without it the browser guesses`);
+      assert.match(r.headers['cache-control'], /no-cache|max-age=0|must-revalidate/,
+        `${a} must revalidate, got "${r.headers['cache-control']}"`);
+      assert.ok(r.headers['etag'], `${a} must send an ETag so revalidation is a cheap 304`);
+    }
+  });
+
+  it('a matching ETag revalidates to 304 instead of re-sending the body', async () => {
+    for (const a of ASSETS) {
+      const first = await get(a);
+      const again = await get(a, { 'If-None-Match': first.headers.etag });
+      assert.equal(again.status, 304, `${a} should revalidate to 304`);
+      assert.equal(again.body, '', `${a} 304 must not carry a body`);
+    }
+  });
+
+  it('a stale ETag gets the new body, not a 304', async () => {
+    const r = await get('/styles/main.css', { 'If-None-Match': '"obviously-stale"' });
+    assert.equal(r.status, 200);
+    assert.ok(r.body.length > 100, 'a changed asset must actually be re-sent');
   });
 });

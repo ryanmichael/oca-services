@@ -41,7 +41,7 @@ function handle(req, res, ctx) {
     renderService, renderVespers, getMatinsKathismata, deduplicateBySource,
   } = ctx;
 
-      serveStatic(res, path.join(ROOT, 'public', 'dashboard.html'), 'text/html');
+      serveStatic(res, path.join(ROOT, 'public', 'dashboard.html'), 'text/html', req);
 
 }
 

@@ -221,6 +221,40 @@ describe('Booklet printing (in-document)', () => {
     await page.close();
   });
 
+  it('INV-9: printing is not clipped to one page by the app shell', async function () {
+    if (!chromium) return;
+    // The shell is `html, body { height: 100%; overflow: hidden }` so the three
+    // views scroll independently. Left in place while printing, WebKit clips
+    // the output to a single viewport-height page — a 31-sheet booklet printed
+    // from an iPhone came out as ONE EMPTY PAGE. Chromium tolerates it, so
+    // neither page.pdf() nor the e2e suite saw it; this asserts the computed
+    // style directly so it is caught on any engine. Found 2026-10-11.
+    const page = await browser.newPage({ viewport: { width: 390, height: 664 }, isMobile: true, hasTouch: true });
+    await openService(page);
+    await page.evaluate(async () => {
+      await window.OcaBooklet.prepare({ svc: 'T', subtitle: 's' });
+      document.body.classList.add('bk-printing');
+    });
+    await page.emulateMedia({ media: 'print' });
+    const m = await page.evaluate(() => {
+      const h = getComputedStyle(document.documentElement);
+      const b = getComputedStyle(document.body);
+      return {
+        htmlOverflow: h.overflow, bodyOverflow: b.overflow,
+        htmlH: parseFloat(h.height), bodyH: parseFloat(b.height),
+        contentH: document.documentElement.scrollHeight,
+        viewportH: window.innerHeight,
+      };
+    });
+    assert.notEqual(m.htmlOverflow, 'hidden', 'html must not clip the printed output');
+    assert.notEqual(m.bodyOverflow, 'hidden', 'body must not clip the printed output');
+    assert.ok(m.contentH > m.viewportH * 2, 'precondition: this booklet is taller than one page');
+    assert.ok(m.htmlH > m.viewportH * 2,
+      `html height ${m.htmlH} must grow to the content (${m.contentH}), not stay at the viewport (${m.viewportH})`);
+    assert.ok(m.bodyH > m.viewportH * 2, `body height ${m.bodyH} must grow to the content`);
+    await page.close();
+  });
+
   it('INV-8: duplex defaults off on a phone and on at a desk', async function () {
     if (!chromium) return;
     // A phone user is often not at a duplexing copier. Guessing wrong there

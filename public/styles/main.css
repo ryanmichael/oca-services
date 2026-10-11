@@ -1213,6 +1213,14 @@ body.mode-choir .choir-toggles { display: flex; }
 
 @media print {
   @page { size: letter; margin: 1in; }
+  /* The app shell is `html, body { height: 100%; overflow: hidden }` so the
+     three views can scroll independently. Left in place while printing, the
+     output is CLIPPED TO ONE VIEWPORT-HEIGHT PAGE — WebKit does this strictly,
+     which is how a 31-sheet booklet printed from an iPhone came out as a
+     single empty page; Chromium tolerated it, so neither page.pdf() nor the
+     e2e suite caught it. The old rules reset `body`'s overflow but neither
+     element's height, and `html` not at all. Found 2026-10-11 on staging. */
+  html, body { height: auto !important; overflow: visible !important; }
   .view-search, .view-cal, .view-settings, header, .center-bar, .service-list-body, .panel-head { display: none !important; }
   .choir-toggles { display: none !important; }
   .tone-badge { border-color: #333; color: #333; }

@@ -43,6 +43,7 @@ no marker saying which won is worse than either.
 - **INV-7** — Booklet is the first and primary option; Standard is subordinated,
   never hidden.
 - **INV-8** — duplex defaults **off** on a phone and **on** at a desk.
+- **INV-9** — printing is not clipped to one page by the app shell.
 
 ## The three things that bite
 
@@ -64,6 +65,21 @@ switched to static while printing.
 `size: 11in 8.5in; margin: 0`. The booklet rule is injected into `<head>` just
 before printing and removed on `afterprint` (with a timeout fallback, because
 Safari does not always fire it).
+
+## The app shell clips print unless you stop it
+
+`html, body { height: 100%; overflow: hidden }` is what lets the three views
+scroll independently. Left in place while printing, **the output is clipped to a
+single viewport-height page.** A 31-sheet booklet printed from an iPhone came
+out as one empty page.
+
+Chromium tolerates it — `page.pdf()` produced all 18 pages, and the e2e suite
+was green — so this was invisible to every automated check and only showed up on
+a real phone. INV-9 therefore asserts the *computed* `html`/`body` height and
+overflow under print media rather than a rendered page count, so it holds on any
+engine. The reset lives in the shared `@media print` block, not the booklet's:
+Standard print had the same bug, and nobody could have found it while the print
+button was hidden on phones.
 
 ## Mobile
 

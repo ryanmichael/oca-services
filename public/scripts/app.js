@@ -1028,6 +1028,16 @@ async function init() {
   document.getElementById('print-back').addEventListener('click', closePrintView);
   document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
   document.getElementById('pd-booklet').addEventListener('click', () => { closePrintView(); printBooklet(); });
+  document.getElementById('pd-testprint').addEventListener('click', () => {
+    closePrintView(); window.OcaBooklet.printTest();
+  });
+  document.getElementById('bk-cb-duplex').addEventListener('change', function () {
+    window.OcaBooklet.setSetting('duplex', this.checked);
+    reflectDuplex(this.checked);
+  });
+  document.getElementById('bk-cb-rotate').addEventListener('change', function () {
+    window.OcaBooklet.setSetting('rotateBack', this.checked);
+  });
 
   // Liturgy variant picker
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
@@ -1301,6 +1311,43 @@ function openPrintView() {
   closeCal();
   document.getElementById('view-main').classList.add('hidden');
   document.getElementById('view-print').classList.add('visible');
+  syncPrintOptions();
+}
+
+/** Fill the print screen from the loaded service + saved booklet settings. */
+function syncPrintOptions() {
+  const B = window.OcaBooklet;
+  const svc  = document.getElementById('p-svc').textContent;
+  const date = document.getElementById('p-date').textContent;
+  document.getElementById('pd-subtitle').textContent =
+    [svc, date].filter(Boolean).join(' \u00b7 ');
+
+  const duplex     = B.getSetting('duplex', B.defaultDuplex());
+  const rotateBack = B.getSetting('rotateBack', true);
+  const cbDuplex = document.getElementById('bk-cb-duplex');
+  const cbRotate = document.getElementById('bk-cb-rotate');
+  cbDuplex.checked = duplex;
+  cbRotate.checked = rotateBack;
+  reflectDuplex(duplex);
+
+  // iOS ignores @page{size} and starts portrait, which folds wrong. Say so
+  // only where it is true — desktop Chromium picks landscape unaided.
+  document.getElementById('bk-landscape-hint').hidden = !B.isIOS();
+
+  // Sheet count is a real pagination pass, so it can be slow on a phone;
+  // show it when it lands rather than blocking the screen on it.
+  const countEl = document.getElementById('pd-sheet-count');
+  countEl.textContent = 'Counting sheets\u2026';
+  B.prepare({ svc, subtitle: date }).then((c) => {
+    countEl.textContent =
+      c.sheets + ' sheet' + (c.sheets === 1 ? '' : 's') +
+      ' \u00b7 ' + c.halfPages + ' half-pages';
+  }).catch(() => { countEl.textContent = ''; });
+}
+
+function reflectDuplex(duplex) {
+  document.getElementById('bk-row-rotate').hidden  = !duplex;
+  document.getElementById('bk-single-note').hidden = duplex;
 }
 
 function closePrintView() {
@@ -1727,536 +1774,25 @@ function renderChoirPanel() {
   resetPanelScroll();
 }
 
+// Booklet printing moved out of a popup and into this document — see
+// public/scripts/booklet.js for why, and for the imposition and pagination
+// that used to live here as a template literal. This wrapper exists so the
+// print screen has one thing to call.
 function printBooklet() {
-  const body = document.getElementById('p-body');
-  const svc  = document.getElementById('p-svc').textContent;
-  const date = document.getElementById('p-date').textContent;
+  const svc   = document.getElementById('p-svc').textContent;
+  const date  = document.getElementById('p-date').textContent;
   const saintsEl = document.getElementById('p-saints');
-  const principalSaint = saintsEl ? (saintsEl.querySelector('.p-saint.major') || saintsEl.querySelector('.p-saint')) : null;
-  const saintName = principalSaint ? principalSaint.textContent.trim() : '';
+  const principal = saintsEl
+    ? (saintsEl.querySelector('.p-saint.major') || saintsEl.querySelector('.p-saint'))
+    : null;
+  const saintName = principal ? principal.textContent.trim() : '';
 
-  if (!body || !body.innerHTML.trim()) {
-    alert('No service loaded.'); return;
-  }
-
-  const win = window.open('', '_blank');
-  if (!win) { alert('Please allow popups to use booklet printing.'); return; }
-
-  // Dimensions: half-page = 5.5" × 8.5", padding = 0.45in top/bottom, 0.5in left/right
-  // Content height = (8.5 - 0.45 - 0.45) × 96 = 729.6 px
-  const PAGE_CONTENT_H = (8.5 - 0.45 - 0.45) * 96; // 729.6 px
-  const MEASURE_W      = (5.5 - 0.5 * 2) + 'in';    // 4.5in
-
-  // Read saved print settings from parent window's localStorage
-  const savedDuplex     = localStorage.getItem('booklet-duplex');
-  const savedRotateBack = localStorage.getItem('booklet-rotateBack');
-  const initDuplex     = savedDuplex !== null ? savedDuplex === 'true' : true;
-  const initRotateBack = savedRotateBack !== null ? savedRotateBack === 'true' : true;
-
-  // ── Build booklet JS that runs in the new window ──────────────────────────
-  const bookletScript = `
-(function () {
-  var PAGE_H  = ${PAGE_CONTENT_H} - 24;  // buffer to prevent clipping from font-rendering / margin rounding
-  var LINE_H  = Math.round(15 * 1.75 * 96 / 72);  // ~35px — snap splits to line boundaries
-  var TITLE_SVC  = ${JSON.stringify(svc)};
-  var TITLE_SUB  = ${JSON.stringify(date + (saintName ? ' | ' + saintName : ''))};
-
-  // ── Print settings (persisted to opener's localStorage) ──
-  var duplex     = ${initDuplex};
-  var rotateBack = ${initRotateBack};
-
-  function saveSetting(key, val) {
-    try { window.opener.localStorage.setItem('booklet-' + key, val); } catch(e) {}
-  }
-
-  // ── Imposition ──
-  // Duplex: saddle-stitch, manual 2-up. Each spread = landscape page with
-  // left + right half-pages. Back spreads have left/right swapped so they
-  // land correctly after the duplex flip.
-  // Single-sided: spreads in reading order (front then back for each sheet).
-  // User prints one-sided and manually collates.
-  function buildSpreadsDuplex(pages) {
-    var p = pages.slice();
-    while (p.length % 4 !== 0) p.push(null);
-    var n = p.length, spreads = [];
-    for (var k = 0; k < n / 4; k++) {
-      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false });      // sheet k front
-      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: rotateBack }); // sheet k back
-    }
-    return spreads;
-  }
-
-  function buildSpreadsSingle(pages) {
-    var p = pages.slice();
-    while (p.length % 4 !== 0) p.push(null);
-    var n = p.length, spreads = [];
-    for (var k = 0; k < n / 4; k++) {
-      spreads.push({ left: p[n-1-2*k], right: p[2*k],     rotate: false }); // sheet k front
-    }
-    for (var k = 0; k < n / 4; k++) {
-      spreads.push({ left: p[2*k+1],   right: p[n-2-2*k], rotate: false }); // sheet k back
-    }
-    return spreads;
-  }
-
-  // ── Pagination + rendering ──
-  var cachedPages = null;
-
-  function paginate() {
-    var measure  = document.getElementById('measure');
-    var allItems = [];
-
-    // Title is a real measured item so page 1 accounts for its height
-    var titleHtml = '<div class="bk-title">' + TITLE_SVC + '</div><div class="bk-subtitle">' + TITLE_SUB + '</div>';
-    allItems.push({ html: titleHtml, isHead: false, keepWithNext: true });
-
-    Array.from(measure.children).forEach(function (el) {
-      if (el.classList.contains('svc-rule')) {
-        allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
-      } else if (el.classList.contains('edu-module')) {
-        allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
-      } else if (el.classList.contains('svc-sec')) {
-        Array.from(el.children).forEach(function (child) {
-          var isHead = child.classList.contains('svc-head');
-          var isLabel = child.classList.contains('stich-label');
-          // Split blocks with <br> into individual lines for natural pagination
-          if (!isHead && !isLabel && /<br\\s*\\/?>/i.test(child.innerHTML)) {
-            var m = child.outerHTML.match(/^(<[^>]+>)([\\s\\S]*?)(<\\/[^>]+>)$/);
-            if (m) {
-              var open = m[1], inner = m[2], close = m[3];
-              var lines = inner.split(/<br\\s*\\/?>/i);
-              if (lines.length > 1) {
-                var openNoMB = /style="/.test(open)
-                  ? open.replace(/style="([^"]*)"/, 'style="$1;margin-bottom:0"')
-                  : open.replace(/>$/, ' style="margin-bottom:0">');
-                lines.forEach(function (line, j) {
-                  var wrap = j < lines.length - 1 ? openNoMB : open;
-                  allItems.push({ html: wrap + line.trim() + close, isHead: false, keepWithNext: false });
-                });
-                return;
-              }
-            }
-          }
-          allItems.push({ html: child.outerHTML, isHead: isHead, keepWithNext: isHead || isLabel });
-        });
-      }
-    });
-
-    var tmp = document.createElement('div');
-    tmp.className = 'bk-half';
-    tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:${MEASURE_W};height:auto;overflow:visible;padding:0;';
-    document.body.appendChild(tmp);
-    var itemHeights = allItems.map(function (item) {
-      tmp.innerHTML = item.html;
-      var h = tmp.getBoundingClientRect().height;
-      var last = tmp.lastElementChild;
-      if (last) {
-        h += parseFloat(window.getComputedStyle(last).marginBottom) || 0;
-      }
-      return h;
-    });
-    document.body.removeChild(tmp);
-
-    var MIN_SPLIT = 80; // don't leave a sliver shorter than this on a page
-    var pages = [[]], heights = [0];
-    allItems.forEach(function (item, i) {
-      var h = itemHeights[i];
-      var idx = pages.length - 1;
-      var remaining = PAGE_H - heights[idx];
-      // Keep headers, stich-labels, and verses with the following content.
-      // Walk the full keepWithNext chain so verse→label→hymn stay together.
-      var lookahead = 0;
-      if (item.keepWithNext) {
-        for (var k = i + 1; k < allItems.length; k++) {
-          lookahead += itemHeights[k] || 0;
-          if (!allItems[k].keepWithNext) break;
-        }
-      }
-      if (heights[idx] + h + lookahead <= PAGE_H) {
-        // Fits on current page (including any keepWithNext chain)
-        pages[idx].push(item.html);
-        heights[idx] += h;
-      } else if (pages[idx].length === 0 || (remaining >= MIN_SPLIT && !item.keepWithNext)) {
-        // Either first item on page, or there's usable space and this isn't a
-        // keepWithNext header — place and split if needed
-        splitItem(item.html, h, remaining);
-      } else if (item.keepWithNext && remaining >= MIN_SPLIT && h <= remaining) {
-        // keepWithNext header/label fits on current page but its chain overflows.
-        // Place the header here; the chain's tail (the actual content) will be
-        // split on the next iteration.
-        pages[idx].push(item.html);
-        heights[idx] += h;
-      } else {
-        // Start a new page
-        pages.push([]);
-        heights.push(0);
-        var last = pages.length - 1;
-        splitItem(item.html, h, PAGE_H);
-      }
-    });
-
-    function splitItem(html, h, space) {
-      var idx = pages.length - 1;
-      if (h <= space) {
-        // Fits without splitting
-        pages[idx].push(html);
-        heights[idx] += h;
-      } else {
-        // Clip to available space, continue remainder on next page(s).
-        // Snap clip heights DOWN to line-height multiples so we never
-        // cut through the middle of a text line.
-        var offset = 0;
-        while (offset < h) {
-          var avail = offset === 0 ? space : PAGE_H;
-          var sliceH = Math.min(avail, h - offset);
-          // Snap down to line boundary unless this is the last slice
-          if (h - offset > sliceH) {
-            sliceH = Math.floor(sliceH / LINE_H) * LINE_H;
-            if (sliceH < LINE_H) sliceH = LINE_H; // at least one line
-          }
-          var clip;
-          if (offset === 0) {
-            clip = '<div style="height:' + sliceH + 'px;overflow:hidden">' + html + '</div>';
-          } else {
-            clip = '<div style="height:' + sliceH + 'px;overflow:hidden">'
-                 + '<div style="margin-top:-' + offset + 'px">' + html + '</div></div>';
-          }
-          if (offset === 0) {
-            pages[idx].push(clip);
-            heights[idx] += sliceH;
-          } else {
-            pages.push([clip]);
-            heights.push(sliceH);
-          }
-          offset += sliceH;
-        }
-      }
-    }
-
-    measure.style.display = 'none';
-    return pages;
-  }
-
-  function renderBooklet(pages) {
-    var spreads = duplex ? buildSpreadsDuplex(pages) : buildSpreadsSingle(pages);
-    var totalSheets = duplex ? spreads.length / 2 : spreads.length / 2;
-
-    var booklet = document.getElementById('booklet');
-    booklet.innerHTML = '';
-    spreads.forEach(function (spread) {
-      var div = document.createElement('div');
-      div.className = spread.rotate ? 'bk-spread rotated' : 'bk-spread';
-      ['left', 'right'].forEach(function (side) {
-        var half = document.createElement('div');
-        half.className = 'bk-half';
-        if (spread[side] && spread[side].length > 0) {
-          half.innerHTML = spread[side].join('');
-        }
-        div.appendChild(half);
-      });
-      booklet.appendChild(div);
-    });
-
-    var contentPages = pages.filter(function(p){ return p && p.length > 0; }).length;
-    document.getElementById('sheet-count').textContent =
-      Math.ceil(spreads.length / 2) + ' sheet' + (Math.ceil(spreads.length / 2) !== 1 ? 's' : '') +
-      ' (' + contentPages + ' half-pages of content)';
-
-    booklet.style.visibility = 'visible';
-
-    // Update dynamic instruction text
-    var twoSidedEl = document.getElementById('instr-twosided');
-    if (twoSidedEl) {
-      twoSidedEl.textContent = duplex ? 'On \\u2014 Long-edge binding' : 'Off';
-    }
-  }
-
-  // ── Init ──
-  document.fonts.ready.then(function () {
-    cachedPages = paginate();
-    renderBooklet(cachedPages);
-    document.getElementById('instructions').style.display = 'flex';
-
-    // Wire up toggles
-    var duplexCb = document.getElementById('cb-duplex');
-    var rotateCb = document.getElementById('cb-rotate');
-    var rotateRow = document.getElementById('row-rotate');
-
-    if (duplexCb) {
-      duplexCb.checked = duplex;
-      duplexCb.addEventListener('change', function () {
-        duplex = this.checked;
-        saveSetting('duplex', duplex);
-        rotateRow.style.display = duplex ? 'flex' : 'none';
-        renderBooklet(cachedPages);
-      });
-    }
-    if (rotateCb) {
-      rotateCb.checked = rotateBack;
-      rotateRow.style.display = duplex ? 'flex' : 'none';
-      rotateCb.addEventListener('change', function () {
-        rotateBack = this.checked;
-        saveSetting('rotateBack', rotateBack);
-        renderBooklet(cachedPages);
-      });
-    }
+  return window.OcaBooklet.print({
+    svc: svc,
+    subtitle: date + (saintName ? ' | ' + saintName : ''),
+  }).catch((err) => {
+    alert(err && err.message ? err.message : 'Could not build the booklet.');
   });
-
-  window.startPrint = function () {
-    document.getElementById('instructions').style.display = 'none';
-    window.print();
-  };
-
-  window.startTestPrint = function () {
-    // Generate a simple 8-page numbered test booklet
-    var testPages = [];
-    for (var i = 1; i <= 8; i++) {
-      testPages.push(['<div class="test-page"><span>' + i + '</span></div>']);
-    }
-    renderBooklet(testPages);
-    document.getElementById('instructions').style.display = 'none';
-    window.print();
-  };
-})();
-`;
-
-  const CSS = `
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --rubric: #8B1A1A; --gold: #C9A84C; --text: #1A1209; --muted: #6B6358; }
-
-/* ── Measure container (off-screen, matches page content width + font) ── */
-#measure { position: absolute; top: -9999px; left: 0; width: ${MEASURE_W};
-  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt; line-height: 1.75;
-  height: auto; overflow: visible; padding: 0; }
-
-/* ── Booklet spreads (one per print page = landscape letter sheet) ── */
-#booklet { visibility: hidden; }
-
-.bk-spread {
-  width: 11in; height: 8.5in;
-  display: flex;
-  break-after: page;
-}
-.bk-spread:last-child { break-after: auto; }
-.bk-spread.rotated {
-  transform: rotate(180deg);
-  transform-origin: center center;
-}
-
-.bk-half {
-  width: 5.5in; height: 8.5in;
-  padding: 0.45in 0.5in;
-  overflow: hidden; position: relative;
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 15pt; line-height: 1.75; color: var(--text);
-  flex-shrink: 0;
-}
-
-/* ── Hide dev-mode elements ── */
-.src-tag, .tone-badge, .choir-source { display: none !important; }
-${activeEducation !== 'on' ? '.edu-module { display: none !important; }' : ''}
-
-/* ── Booklet title ── */
-.bk-title {
-  font-family: 'Cinzel', serif; font-size: 12pt; letter-spacing: .2em;
-  text-align: center; color: var(--text); text-transform: uppercase;
-  margin-bottom: 4px; padding-top: 0.15in;
-}
-.bk-subtitle {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 9pt;
-  text-align: center; color: var(--muted);
-  margin-bottom: 20px;
-}
-
-/* ── Service content ── */
-.svc-head {
-  font-family: 'Cinzel', serif; font-size: 10pt; letter-spacing: .18em;
-  text-align: center; color: var(--text); margin-bottom: 10px; margin-top: 4px;
-  break-after: avoid;
-}
-.svc-rule { height: 0.5pt; background: var(--gold); margin: 6px 0; }
-.rubric {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
-  font-style: italic; color: var(--rubric);
-  margin-bottom: 5px; line-height: 1.5;
-  break-inside: avoid;
-}
-.instruction {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
-  font-style: italic; color: var(--muted);
-  margin-bottom: 4px; line-height: 1.5;
-}
-.prayer {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 15pt;
-  line-height: 1.75; color: var(--text); margin-bottom: 8px;
-  break-inside: avoid;
-}
-.stich-label {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
-  font-style: italic; color: var(--muted); margin-bottom: 4px;
-  break-after: avoid;
-}
-.verse {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
-  font-style: italic; color: var(--muted); margin-bottom: 6px; line-height: 1.5;
-}
-.spk { display: inline; font-weight: 600; font-style: normal; color: var(--rubric); }
-
-/* ── Education modules (booklet) ── */
-.edu-module {
-  margin: 8px 0; padding: 12px 14px 10px;
-  border: 0.5pt solid var(--gold); border-left: 2pt solid var(--rubric);
-  background: #faf8f4;
-}
-.edu-module-title {
-  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .06em;
-  color: var(--rubric); margin-bottom: 1px;
-}
-.edu-module-subtitle {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 10pt;
-  font-style: italic; color: var(--muted); margin-bottom: 8px;
-}
-.edu-module-body p {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 11pt;
-  line-height: 1.5; color: var(--text); margin: 0 0 6px;
-}
-.edu-module-body p:last-child { margin-bottom: 0; }
-.edu-timeline {
-  margin-top: 8px; padding-top: 8px;
-  border-top: 0.5pt solid var(--gold);
-}
-.edu-timeline-label, .edu-scripture-label {
-  font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: .12em;
-  color: var(--muted); text-transform: uppercase; margin-bottom: 5px;
-}
-.edu-tl-item {
-  display: flex; gap: 8px;
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 10pt; line-height: 1.4;
-  color: var(--text); margin-bottom: 4px;
-}
-.edu-tl-item:last-child { margin-bottom: 0; }
-.edu-tl-date { flex-shrink: 0; width: 70px; font-weight: 600; color: var(--rubric); text-align: right; }
-.edu-tl-detail { flex: 1; }
-.edu-scripture { margin-top: 8px; padding-top: 6px; border-top: 0.5pt solid var(--gold); }
-.edu-ref {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 10pt; line-height: 1.4; color: var(--text); margin-bottom: 2px;
-}
-.edu-ref-verse { font-weight: 600; color: var(--rubric); margin-right: 4px; }
-
-/* ── Instructions overlay ── */
-#instructions {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.72); z-index: 9999;
-  align-items: center; justify-content: center;
-}
-.instr-box {
-  background: #fff; width: min(480px, 92vw);
-  border-top: 3px solid var(--rubric); padding: 40px 36px 32px;
-  font-family: 'EB Garamond', Georgia, serif;
-}
-.instr-title {
-  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .2em;
-  color: var(--rubric); text-align: center; margin-bottom: 8px;
-  text-transform: uppercase;
-}
-.instr-sub {
-  font-size: 11pt; color: var(--muted); text-align: center;
-  margin-bottom: 24px;
-}
-.instr-steps { list-style: none; margin-bottom: 28px; }
-.instr-steps li {
-  font-size: 13pt; padding: 9px 0; border-bottom: 1px solid #e8e2d8;
-  display: flex; justify-content: space-between; align-items: baseline;
-}
-.instr-steps li:last-child { border-bottom: none; }
-.instr-steps .setting { font-weight: 600; color: var(--text); }
-.instr-btn {
-  display: block; width: 100%; padding: 13px;
-  font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: .16em;
-  text-transform: uppercase; background: var(--rubric); color: #fff;
-  border: none; cursor: pointer;
-}
-.instr-btn:hover { background: #6e1414; }
-.instr-btn-secondary {
-  display: block; width: 100%; padding: 10px;
-  font-family: 'EB Garamond', Georgia, serif; font-size: 12pt;
-  background: none; color: var(--muted); border: 1px solid #ccc;
-  cursor: pointer; margin-top: 10px; text-align: center;
-}
-.instr-btn-secondary:hover { border-color: var(--rubric); color: var(--rubric); }
-
-/* ── Toggle rows ── */
-.instr-toggle {
-  font-size: 13pt; padding: 9px 0; border-bottom: 1px solid #e8e2d8;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.instr-toggle label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.instr-toggle input[type="checkbox"] {
-  width: 16px; height: 16px; accent-color: var(--rubric); cursor: pointer;
-}
-
-/* ── Test page ── */
-.test-page {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cinzel', serif; font-size: 48pt; color: var(--muted);
-  border: 2px dashed #ccc;
-}
-.test-page span { display: block; }
-
-/* ── Print ── */
-@page { size: 11in 8.5in; margin: 0; }
-@media screen {
-  body { background: #e8e4dc; padding: 24px; }
-  .bk-spread {
-    margin: 0 auto 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,.18);
-    break-after: auto;
-  }
-  .bk-half { background: #fff; }
-  .bk-half:first-child { border-right: 1px dashed #ccc; }
-}
-@media print { #instructions { display: none !important; } }
-`;
-
-  win.document.write(`<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<title>Booklet \u2014 ${svc} \u2014 ${date}</title>
-<style>${CSS}</style>
-</head><body>
-
-<div id="instructions">
-  <div class="instr-box">
-    <div class="instr-title">Booklet Print Settings</div>
-    <div class="instr-sub" id="sheet-count">Preparing\u2026</div>
-    <div class="instr-toggle">
-      <label><input type="checkbox" id="cb-duplex" checked> Two-sided (duplex) printing</label>
-    </div>
-    <div class="instr-toggle" id="row-rotate">
-      <label><input type="checkbox" id="cb-rotate"> Rotate back side</label>
-    </div>
-    <ol class="instr-steps">
-      <li><span>Paper</span>         <span class="setting">US Letter (8.5\u2033 \u00d7 11\u2033)</span></li>
-      <li><span>Orientation</span>   <span class="setting">Landscape</span></li>
-      <li><span>Pages per sheet</span><span class="setting">1</span></li>
-      <li><span>Two-sided</span>     <span class="setting" id="instr-twosided">On \u2014 Long-edge binding</span></li>
-    </ol>
-    <button class="instr-btn" onclick="startPrint()">Print Booklet</button>
-    <button class="instr-btn-secondary" onclick="startTestPrint()">Test Print (8 numbered pages)</button>
-  </div>
-</div>
-
-<div id="measure">${body.innerHTML}</div>
-<div id="booklet"></div>
-
-<script>${bookletScript}<\/script>
-</body></html>`);
-  win.document.close();
 }
 
 document.addEventListener('DOMContentLoaded', init);

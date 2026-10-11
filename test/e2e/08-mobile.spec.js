@@ -9,7 +9,7 @@ const { test, expect } = require('@playwright/test');
 // demand WebKit, which is not installed here).
 test.use({ viewport: { width: 390, height: 664 }, isMobile: true, hasTouch: true });
 
-test('phone: mobile rules apply, close is a 44px target, print is hidden', async ({ page }) => {
+test('phone: mobile rules apply, close is a 44px target, print is a floating action', async ({ page }) => {
   await page.goto('/');
 
   const firstRow = page.locator('.svc-row:not(.dimmed)').first();
@@ -20,7 +20,24 @@ test('phone: mobile rules apply, close is a 44px target, print is hidden', async
 
   // Header padding is the canary for the whole ≤767px block being parsed.
   await expect(page.locator('header')).toHaveCSS('padding-left', '16px');
-  await expect(page.locator('#btn-print')).toBeHidden();
+
+  // Print used to be `display: none` here, so a phone could not print at all.
+  // It is now a primary floating action in the thumb corner. Wait for the
+  // panel's slide-in transform to settle first — it is the containing block
+  // for these fixed controls, so measuring mid-transition reports them
+  // off-screen. (round 4, 2026-10-10)
+  await page.waitForFunction(() => {
+    const t = getComputedStyle(document.getElementById('panel')).transform;
+    return t === 'none' || /matrix\(1, 0, 0, 1, 0, 0\)/.test(t);
+  }, null, { timeout: 8000 });
+
+  await expect(page.locator('#btn-print')).toBeVisible();
+  const fab = await page.locator('#btn-print').boundingBox();
+  expect(fab.width).toBeGreaterThanOrEqual(44);
+  expect(fab.height).toBeGreaterThanOrEqual(44);
+  const vp = page.viewportSize();
+  expect(vp.width - (fab.x + fab.width)).toBeLessThan(60);   // anchored right
+  expect(vp.height - (fab.y + fab.height)).toBeLessThan(80); // anchored bottom
 
   const close = await page.locator('#btn-close').boundingBox();
   expect(close.width).toBeGreaterThanOrEqual(44);
@@ -37,7 +54,7 @@ test('phone: mobile rules apply, close is a 44px target, print is hidden', async
   expect(overflow).toBe(0);
 });
 
-test('phone: nothing is pinned — the head scrolls away, only the close button stays', async ({ page }) => {
+test('phone: the head scrolls away; only the close button and the print action stay', async ({ page }) => {
   await page.goto('/');
   const firstRow = page.locator('.svc-row:not(.dimmed)').first();
   await expect(firstRow).toBeVisible({ timeout: 15_000 });
@@ -57,6 +74,11 @@ test('phone: nothing is pinned — the head scrolls away, only the close button 
   const box = await close.boundingBox();
   expect(box.width).toBeGreaterThanOrEqual(44);
   expect(box.height).toBeGreaterThanOrEqual(44);
+
+  // …and so is the print action. Surviving the scroll is the whole point of a
+  // floating control: someone deep in the service can still print it.
+  await expect(page.locator('#btn-print')).toBeInViewport();
+
   await close.click();
   await expect(page.locator('#panel')).not.toHaveClass(/open/);
 

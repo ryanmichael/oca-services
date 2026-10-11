@@ -63,7 +63,14 @@
         <div class="panel-head">
           <div class="panel-top-row">
             <button class="btn-close" id="btn-close">✕</button>
-            <button class="btn-print" id="btn-print">PRINT</button>
+            <button class="btn-print" id="btn-print" aria-label="Print this service">
+              <span class="btn-print-label">PRINT</span>
+              <svg class="btn-print-icon" width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 7.5V3h8v4.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M6 13H4.2A1.2 1.2 0 0 1 3 11.8V8.7A1.2 1.2 0 0 1 4.2 7.5h11.6A1.2 1.2 0 0 1 17 8.7v3.1a1.2 1.2 0 0 1-1.2 1.2H14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="6" y="11.5" width="8" height="5.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
           <div class="panel-svc" id="p-svc">GREAT VESPERS</div>
           <!-- Phones show the part of the title before the em-dash; the rest
@@ -282,16 +289,52 @@
   <div class="print-view-body">
     <div class="print-view-inner">
       <div class="pd-title">PRINT OPTIONS</div>
-      <div class="pd-options">
-        <button class="pd-option" id="pd-standard">
-          <span class="pd-option-name">Standard</span>
-          <span class="pd-option-desc">Full-page layout, single column, page numbers at bottom</span>
-        </button>
-        <button class="pd-option" id="pd-booklet">
+      <div class="pd-subtitle" id="pd-subtitle"></div>
+
+      <!-- Booklet is the primary option. Standard stays one tap away. -->
+      <button class="pd-option pd-option-primary" id="pd-booklet">
+        <span class="pd-option-body">
           <span class="pd-option-name">Booklet</span>
-          <span class="pd-option-desc">2 pages per sheet — fold in half to assemble</span>
-        </button>
+          <span class="pd-option-desc">Two pages per sheet, folded in half. Reads in order once folded.</span>
+          <span class="pd-option-meta" id="pd-sheet-count"></span>
+        </span>
+        <span class="pd-fold" aria-hidden="true">
+          <span class="pd-fold-sheet"><span class="pd-fold-half"></span><span class="pd-fold-half"></span></span>
+          <span class="pd-fold-label">Fold</span>
+        </span>
+      </button>
+
+      <div class="pd-settings">
+        <label class="pd-setting">
+          <span class="pd-setting-name">Two-sided printing</span>
+          <input type="checkbox" id="bk-cb-duplex">
+        </label>
+        <label class="pd-setting" id="bk-row-rotate">
+          <span class="pd-setting-name">Rotate back sides
+            <span class="pd-setting-hint">For long-edge binding</span>
+          </span>
+          <input type="checkbox" id="bk-cb-rotate">
+        </label>
+        <div class="pd-setting-note" id="bk-single-note" hidden>
+          Print every sheet, put the stack back in the tray, then print the rest.
+        </div>
       </div>
+
+      <!-- iOS ignores @page{size} and defaults to portrait; the fold only works
+           in landscape, so say so where it will be read. Verified 2026-10-10. -->
+      <div class="pd-hint" id="bk-landscape-hint" hidden>
+        In your printer options choose <strong>Landscape</strong> — this phone
+        starts in portrait, which folds wrong.
+      </div>
+
+      <button class="pd-option" id="pd-standard">
+        <span class="pd-option-body">
+          <span class="pd-option-name">Standard</span>
+          <span class="pd-option-desc">Full page, single column, page numbers at the bottom.</span>
+        </span>
+      </button>
+
+      <button class="pd-testlink" id="pd-testprint">Print a test sheet &mdash; 8 numbered pages</button>
     </div>
   </div>
 
@@ -498,8 +541,18 @@
 
 </div><!-- end .view-settings -->
 
+<!-- ════════════════════════════════ BOOKLET ═════════════════════════════════
+     Off-screen in screen media, but LAID OUT — pagination measures real
+     rendered heights in here, so it must never be display:none. The booklet
+     stylesheet is scoped to #bk-root (main.css) because it redefines global
+     selectors like .svc-head and .rubric. See public/scripts/booklet.js. -->
+<div id="bk-root" aria-hidden="true">
+  <div id="bk-measure"></div>
+  <div id="bk-sheets"></div>
+</div>
+
 <script src="/scripts/renderer.js"></script>
-<script src="/scripts/booklet-impose.js"></script>
+<script src="/scripts/booklet.js"></script>
 <script src="/scripts/app.js"></script>
 </body>
 </html>

@@ -1489,7 +1489,14 @@ body.mode-choir .choir-toggles { display: flex; }
    #bk-root is parked off-screen rather than hidden, because pagination
    measures real rendered heights inside it. display:none would zero them. */
 
-#bk-root { position: fixed; left: -10000px; top: 0; width: 11in; }
+/* Parked with a zero-height clip rather than position:fixed/absolute.
+   WebKit prints a fixed-position element on the FIRST PAGE ONLY and does not
+   paginate it — parked at left:-10000px that is exactly one empty page, which
+   is what an iPhone produced for a 31-sheet booklet. Out of flow is the
+   problem; a zero-height clipping box keeps the subtree in normal flow (so it
+   paginates) while taking no space and showing nothing, and children still
+   have real measurable geometry. */
+#bk-root { height: 0; overflow: hidden; }
 
 #bk-root *, #bk-root *::before, #bk-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1628,7 +1635,11 @@ body.mode-choir .choir-toggles { display: flex; }
   /* Standard print and booklet print are mutually exclusive outputs. */
   body:not(.bk-printing) #bk-root { display: none !important; }
 
-  body.bk-printing #bk-root  { position: static; left: auto; width: auto; }
+  /* The printing state is also forced inline from JS (booklet.js) — these
+     rules are the belt, that is the braces. Relying on a media query to
+     un-hide the only thing being printed is a single point of failure, and
+     the failure mode is a blank page with nothing to debug. */
+  body.bk-printing #bk-root  { height: auto; overflow: visible; }
   body.bk-printing #bk-sheets { visibility: visible; }
   body.bk-printing #bk-measure { display: none !important; }
   body.bk-printing .view,

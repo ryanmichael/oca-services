@@ -221,6 +221,10 @@
       });
       sheets.appendChild(div);
     });
+    // The popup set this inline too. Leaving it to a media-query-gated rule
+    // means the one thing being printed can be invisible with nothing to show
+    // for it.
+    sheets.style.visibility = 'visible';
     return {
       spreads: spreads.length,
       sheets: Math.ceil(spreads.length / 2),
@@ -292,15 +296,28 @@
     if (s && s.parentNode) s.parentNode.removeChild(s);
   }
 
+  /** Force the printing geometry inline, independent of @media print.
+   *  WebKit will not paginate an out-of-flow subtree, and a media query that
+   *  fails to apply leaves a blank page with no symptom to chase. */
+  function enterPrintState() {
+    var root = el('bk-root');
+    if (root) { root.style.height = 'auto'; root.style.overflow = 'visible'; }
+    var sheets = el('bk-sheets');
+    if (sheets) sheets.style.visibility = 'visible';
+    document.body.classList.add('bk-printing');
+  }
+
   function cleanup() {
     document.body.classList.remove('bk-printing');
+    var root = el('bk-root');
+    if (root) { root.style.height = ''; root.style.overflow = ''; }
     removePageRule();
   }
 
   /** Prepare, then hand the document to the print dialog as a booklet. */
   function printBooklet(opts) {
     return prepare(opts).then(function (counts) {
-      document.body.classList.add('bk-printing');
+      enterPrintState();
       addPageRule();
       var done = false;
       function after() { if (done) return; done = true; cleanup(); }
@@ -326,7 +343,7 @@
       pages.push(['<div class="test-page"><span>' + i + '</span></div>']);
     }
     renderSpreads(pages, getSetting('duplex', defaultDuplex()), getSetting('rotateBack', true));
-    document.body.classList.add('bk-printing');
+    enterPrintState();
     addPageRule();
     global.addEventListener('afterprint', cleanup, { once: true });
     setTimeout(cleanup, 60000);

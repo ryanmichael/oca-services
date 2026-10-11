@@ -44,6 +44,7 @@ no marker saying which won is worse than either.
   never hidden.
 - **INV-8** — duplex defaults **off** on a phone and **on** at a desk.
 - **INV-9** — printing is not clipped to one page by the app shell.
+- **INV-10** — the booklet subtree is **in flow** when `print()` is called.
 
 ## The three things that bite
 
@@ -56,9 +57,19 @@ as the popup did, or it measures with the app's fonts and every height — and s
 every page break — is wrong. INV-5 guards the first half of this; the second
 half shows up as a silently wrong page count, so change it carefully.
 
-**`#bk-root` is parked off-screen, not hidden.** `display: none` would zero
-every measured height. It is `position: fixed; left: -10000px` on screen, and
-switched to static while printing.
+**`#bk-root` is parked with a zero-height clip, NOT out of flow.**
+`display: none` would zero every measured height, so it cannot be hidden — but
+it must not be `position: fixed` or `absolute` either: **WebKit prints an
+out-of-flow subtree on the first page only and does not paginate it.** Parked
+at `left: -10000px`, that is exactly one empty page, which is what an iPhone
+produced for a 31-sheet booklet. `height: 0; overflow: hidden` keeps the
+subtree in normal flow — so it paginates — while taking no space and showing
+nothing, and children keep real measurable geometry.
+
+The printing geometry is additionally forced **inline from JS**
+(`enterPrintState()`), not left to `@media print` alone. Relying on a media
+query to un-hide the only thing being printed is a single point of failure
+whose failure mode is a blank page with nothing to debug.
 
 **`@page` is document-global and cannot be scoped.** The document declares
 `size: letter; margin: 1in` for Standard print; the booklet needs
@@ -80,6 +91,22 @@ overflow under print media rather than a rendered page count, so it holds on any
 engine. The reset lives in the shared `@media print` block, not the booklet's:
 Standard print had the same bug, and nobody could have found it while the print
 button was hidden on phones.
+
+## Testing print needs WebKit
+
+Two separate bugs reached a real phone while every local check was green, and
+both were WebKit-only:
+
+1. the app shell clipping output to one page (INV-9);
+2. the out-of-flow subtree never paginating (INV-10).
+
+Chromium tolerated both. `page.pdf()` is Chromium-only, and
+`emulateMedia({ media: 'print' })` swaps media-query evaluation **without
+exercising the print layout path**, so neither reproduced either bug. WebKit is
+now installed for Playwright (`npx playwright install webkit`) and is the only
+local oracle for print behaviour — but note the contract tests assert computed
+geometry at `print()` time rather than a rendered page count, precisely so they
+fail on any engine rather than depending on which browser runs them.
 
 ## Mobile
 

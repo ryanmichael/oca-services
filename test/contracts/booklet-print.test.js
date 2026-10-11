@@ -255,6 +255,51 @@ describe('Booklet printing (in-document)', () => {
     await page.close();
   });
 
+  it('INV-10: the booklet is IN FLOW when print is called, never out of flow', async function () {
+    if (!chromium) return;
+    // WebKit prints an out-of-flow subtree (position: fixed/absolute) on the
+    // FIRST PAGE ONLY and does not paginate it. #bk-root used to be parked
+    // with `position: fixed; left: -10000px`, so an iPhone rendered a
+    // 31-sheet booklet as one empty page. Chromium paginated it happily, and
+    // emulateMedia could not reproduce it either — it swaps media-query
+    // evaluation, not the print layout path. So assert the geometry at the
+    // moment print() is called. Found on staging 2026-10-11.
+    const page = await browser.newPage({ viewport: { width: 390, height: 664 }, isMobile: true, hasTouch: true });
+    await openService(page);
+    await page.evaluate(() => {
+      window.__snap = null;
+      window.print = function () {
+        const root = document.getElementById('bk-root');
+        const sheets = document.getElementById('bk-sheets');
+        const rs = getComputedStyle(root), ss = getComputedStyle(sheets);
+        const rr = root.getBoundingClientRect();
+        window.__snap = {
+          rootPosition: rs.position, rootVisibility: rs.visibility,
+          sheetsVisibility: ss.visibility,
+          x: Math.round(rr.x), height: Math.round(rr.height),
+          spreads: document.querySelectorAll('#bk-sheets .bk-spread').length,
+          bodyClass: document.body.className,
+        };
+      };
+    });
+    await page.click('#btn-print');
+    await page.waitForTimeout(600);
+    await page.click('#pd-booklet');
+    await page.waitForTimeout(2500);
+
+    const s = await page.evaluate(() => window.__snap);
+    assert.ok(s, 'print() must actually be called');
+    assert.ok(['static', 'relative'].includes(s.rootPosition),
+      `#bk-root must be in flow at print time, got position: ${s.rootPosition}`);
+    assert.ok(s.x >= 0, `#bk-root must not be parked off-screen at print time, got x: ${s.x}`);
+    assert.equal(s.rootVisibility, 'visible');
+    assert.equal(s.sheetsVisibility, 'visible', 'the thing being printed must be visible');
+    assert.ok(s.height > 2000, `the subtree must have its full height, got ${s.height}`);
+    assert.ok(s.spreads > 1, 'more than one spread, so pagination is actually exercised');
+    assert.match(s.bodyClass, /bk-printing/);
+    await page.close();
+  });
+
   it('INV-8: duplex defaults off on a phone and on at a desk', async function () {
     if (!chromium) return;
     // A phone user is often not at a duplexing copier. Guessing wrong there

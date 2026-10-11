@@ -1496,12 +1496,12 @@ body.mode-choir .choir-toggles { display: flex; }
    problem; a zero-height clipping box keeps the subtree in normal flow (so it
    paginates) while taking no space and showing nothing, and children still
    have real measurable geometry. */
-#bk-root { height: 0; overflow: hidden; }
+#bk-root { position: relative; height: 0; overflow: hidden; }
 
 #bk-root *, #bk-root *::before, #bk-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ── Measure container (off-screen, matches page content width + font) ── */
-#bk-measure { position: absolute; top: -9999px; left: 0; width: 4.5in;
+#bk-measure { display: none; position: absolute; top: -9999px; left: 0; width: 4.5in;
   font-family: 'EB Garamond', Georgia, serif; font-size: 15pt; line-height: 1.75;
   height: auto; overflow: visible; padding: 0; }
 

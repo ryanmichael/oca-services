@@ -300,6 +300,51 @@ describe('Booklet printing (in-document)', () => {
     await page.close();
   });
 
+  it('INV-11: the booklet occupies no space on screen, before or after visiting print', async function () {
+    if (!chromium) return;
+    // Two ways this broke on a phone, both shipped:
+    //   * #bk-measure is position:absolute. An abspos element is NOT clipped by
+    //     an ancestor's overflow unless that ancestor is its containing block,
+    //     so a 53,000px measure copy spanned the whole page. #bk-root is
+    //     position:relative now so it actually contains what it clips.
+    //   * renderSpreads set visibility:visible inline and nothing reset it, so
+    //     the booklet stayed on screen after backing out. iOS frequently never
+    //     fires afterprint, so anything left inline simply stays.
+    // Found on staging 2026-10-11, reported as service text printed over the
+    // date list.
+    const page = await browser.newPage({ viewport: { width: 390, height: 664 }, isMobile: true, hasTouch: true });
+    const docHeight = () => page.evaluate(() => ({
+      doc: document.documentElement.scrollHeight,
+      viewport: window.innerHeight,
+      rootH: Math.round(document.getElementById('bk-root').getBoundingClientRect().height),
+      sheetsVis: getComputedStyle(document.getElementById('bk-sheets')).visibility,
+      measureH: Math.round(document.getElementById('bk-measure').getBoundingClientRect().height),
+    }));
+
+    await openService(page);
+    let m = await docHeight();
+    assert.ok(m.doc <= m.viewport * 1.5, `before print: document ${m.doc} must not be inflated`);
+
+    await page.click('#btn-print');
+    await page.waitForFunction(
+      () => /sheet/.test(document.getElementById('pd-sheet-count').textContent), { timeout: 25000 });
+    m = await docHeight();
+    assert.ok(m.doc <= m.viewport * 1.5,
+      `after building the booklet: document ${m.doc} must not be inflated (was 43800 when this broke)`);
+    assert.equal(m.rootH, 0, '#bk-root must take no space');
+    assert.equal(m.measureH, 0, '#bk-measure must not be laid out — it only supplies outerHTML');
+    assert.equal(m.sheetsVis, 'hidden', 'the spreads must stay invisible until printing');
+
+    await page.click('#print-back');
+    await page.waitForTimeout(400);
+    await page.click('#btn-close');
+    await page.waitForTimeout(600);
+    m = await docHeight();
+    assert.ok(m.doc <= m.viewport * 1.5, `after closing: document ${m.doc} must not be inflated`);
+    assert.equal(m.sheetsVis, 'hidden', 'nothing may leak onto the page after backing out');
+    await page.close();
+  });
+
   it('INV-8: duplex defaults off on a phone and on at a desk', async function () {
     if (!chromium) return;
     // A phone user is often not at a duplexing copier. Guessing wrong there

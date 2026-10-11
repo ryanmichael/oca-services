@@ -45,6 +45,8 @@ no marker saying which won is worse than either.
 - **INV-8** — duplex defaults **off** on a phone and **on** at a desk.
 - **INV-9** — printing is not clipped to one page by the app shell.
 - **INV-10** — the booklet subtree is **in flow** when `print()` is called.
+- **INV-11** — the booklet occupies no space on screen, before or after
+  visiting the print screen.
 
 ## The three things that bite
 
@@ -65,6 +67,18 @@ at `left: -10000px`, that is exactly one empty page, which is what an iPhone
 produced for a 31-sheet booklet. `height: 0; overflow: hidden` keeps the
 subtree in normal flow — so it paginates — while taking no space and showing
 nothing, and children keep real measurable geometry.
+
+`#bk-root` is also `position: relative`, and that is load-bearing: `#bk-measure`
+is `position: absolute`, and **an absolutely positioned element is not clipped
+by an ancestor's `overflow` unless that ancestor is its containing block.**
+Without it, a 53,000px measure copy escaped the clip and painted across the
+page. `#bk-measure` is additionally `display: none` — it only ever supplies
+`outerHTML`, never geometry, so it does not need laying out at all.
+
+Every inline style `enterPrintState()` sets **must** be reset in `cleanup()`.
+iOS frequently never fires `afterprint`, so anything left behind simply stays
+on the page; a leaked `visibility: visible` put a 29,000px booklet over the
+service list.
 
 The printing geometry is additionally forced **inline from JS**
 (`enterPrintState()`), not left to `@media print` alone. Relying on a media

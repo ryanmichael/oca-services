@@ -221,10 +221,6 @@
       });
       sheets.appendChild(div);
     });
-    // The popup set this inline too. Leaving it to a media-query-gated rule
-    // means the one thing being printed can be invisible with nothing to show
-    // for it.
-    sheets.style.visibility = 'visible';
     return {
       spreads: spreads.length,
       sheets: Math.ceil(spreads.length / 2),
@@ -307,10 +303,16 @@
     document.body.classList.add('bk-printing');
   }
 
+  /** Undo everything enterPrintState() forced. Every inline style it sets MUST
+   *  be reset here: iOS frequently never fires `afterprint`, so anything left
+   *  behind stays on the page — a 29,000px booklet printed over the service
+   *  list, which is what shipped on 2026-10-11. */
   function cleanup() {
     document.body.classList.remove('bk-printing');
     var root = el('bk-root');
     if (root) { root.style.height = ''; root.style.overflow = ''; }
+    var sheets = el('bk-sheets');
+    if (sheets) sheets.style.visibility = '';
     removePageRule();
   }
 

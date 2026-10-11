@@ -8,23 +8,39 @@ imposition is doing
 
 ## What changed
 
-The booklet used to be built in a **popup** (`window.open` + `document.write`).
-Phones block popups by default, and the print button was `display: none` below
-768px anyway — so printing from a phone was not degraded, it was **absent**, and
-the hidden button hid the fact.
+The booklet began life in a **popup** (`window.open` + `document.write`), which
+phones block by default — and the print button was `display: none` below 768px
+anyway, so printing from a phone was absent, not degraded.
 
-It now renders into the live document. Three consequences:
+Building it inside the app document instead fixed the popup problem and
+introduced a worse one: the booklet had to share a page with the app shell, and
+lost a different fight every time.
 
-- it works on a phone;
-- the desktop popup-blocker failure goes away;
-- pagination and imposition become **testable**. `BOOKLET-CONTEXT.md` called the
-  booklet "the one significant output in this project with no rule at all",
-  because nothing could reach inside a popup at print time. The invariants below
-  are the first it has ever had.
+| Symptom on a real iPhone | Cause |
+|---|---|
+| Whole booklet printed as one blank page | `html, body { height: 100%; overflow: hidden }` — the app shell — clipped print to one viewport-height page |
+| Still one blank page | `#bk-root` was `position: fixed`; **WebKit prints an out-of-flow subtree on the first page only and never paginates it** |
+| Service text drawn over the date list | `#bk-measure` is `position: absolute`, and an abspos element is not clipped by an ancestor's `overflow` unless that ancestor is its containing block |
+
+Three fixes, three new collisions. That is the signature of a wrong design, not
+bad luck. **The booklet is now its own page** — `/booklet`, served by
+`server-lib/routes/booklet-page.js`, containing the booklet and nothing else.
+
+What that buys:
+
+- **No shell to collide with.** `@page` can be static, the spreads are simply
+  visible, and what shows on screen is what prints.
+- **It is a navigation, not a popup**, so phones do not block it.
+- **The app carries no booklet DOM and does not load the module**, so the
+  bleed class of bug cannot recur there at all.
+- **`window.print()` fires synchronously inside the tap.** It used to run after
+  a promise chain; iOS is unreliable about a print arriving after the gesture
+  has ended.
+- **You can see the spreads before printing** — the affordance the popup had
+  and the in-document version lost.
 
 `public/scripts/booklet-impose.js` — a complete, tested, never-called rival
-implementation — was deleted in the same change. Two contradictory designs with
-no marker saying which won is worse than either.
+implementation — was deleted along the way, as `docs/BOOKLET-CONTEXT.md` asks.
 
 ## Invariants
 

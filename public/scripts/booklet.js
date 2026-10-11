@@ -349,7 +349,7 @@
     addPageRule();
     global.addEventListener('afterprint', cleanup, { once: true });
     setTimeout(cleanup, 60000);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { global.print(); }); });
+    global.print();
   }
 
   global.OcaBooklet = {

@@ -169,7 +169,9 @@ function updateMetaRow(translationId, svcType, date) {
   row.hidden = false;
 }
 
-async function fetchService(date, svcType, pronoun = 'tt') {
+/** The API path for one service. Shared by fetchService() and the booklet
+ *  link, so the service-type → endpoint map has exactly one home. */
+function serviceUrl(date, svcType, pronoun = 'tt') {
   const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
                  : svcType === 'presanctified'     ? '/api/presanctified'
                  : svcType === 'passionGospels'    ? '/api/passion-gospels'
@@ -188,7 +190,11 @@ async function fetchService(date, svcType, pronoun = 'tt') {
                  : svcType === 'burialVespers'     ? '/api/service'
                  : '/api/service';
   const joiner = endpoint.includes('?') ? '&' : '?';
-  const res = await fetch(`${endpoint}${joiner}date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`);
+  return `${endpoint}${joiner}date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`;
+}
+
+async function fetchService(date, svcType, pronoun = 'tt') {
+  const res = await fetch(serviceUrl(date, svcType, pronoun));
   if (!res.ok) {
     if (res.status === 404) return null;
     throw new Error(`${endpoint} failed: ${res.status}`);
@@ -1028,16 +1034,6 @@ async function init() {
   document.getElementById('print-back').addEventListener('click', closePrintView);
   document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
   document.getElementById('pd-booklet').addEventListener('click', () => { closePrintView(); printBooklet(); });
-  document.getElementById('pd-testprint').addEventListener('click', () => {
-    closePrintView(); window.OcaBooklet.printTest();
-  });
-  document.getElementById('bk-cb-duplex').addEventListener('change', function () {
-    window.OcaBooklet.setSetting('duplex', this.checked);
-    reflectDuplex(this.checked);
-  });
-  document.getElementById('bk-cb-rotate').addEventListener('change', function () {
-    window.OcaBooklet.setSetting('rotateBack', this.checked);
-  });
 
   // Liturgy variant picker
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
@@ -1314,40 +1310,23 @@ function openPrintView() {
   syncPrintOptions();
 }
 
-/** Fill the print screen from the loaded service + saved booklet settings. */
+/** Fill the print screen from the loaded service. The booklet's own settings
+ *  and sheet count live on /booklet, beside the preview, rather than being
+ *  duplicated here. */
 function syncPrintOptions() {
-  const B = window.OcaBooklet;
   const svc  = document.getElementById('p-svc').textContent;
   const date = document.getElementById('p-date').textContent;
   document.getElementById('pd-subtitle').textContent =
     [svc, date].filter(Boolean).join(' \u00b7 ');
-
-  const duplex     = B.getSetting('duplex', B.defaultDuplex());
-  const rotateBack = B.getSetting('rotateBack', true);
-  const cbDuplex = document.getElementById('bk-cb-duplex');
-  const cbRotate = document.getElementById('bk-cb-rotate');
-  cbDuplex.checked = duplex;
-  cbRotate.checked = rotateBack;
-  reflectDuplex(duplex);
-
-  // iOS ignores @page{size} and starts portrait, which folds wrong. Say so
-  // only where it is true — desktop Chromium picks landscape unaided.
-  document.getElementById('bk-landscape-hint').hidden = !B.isIOS();
-
-  // Sheet count is a real pagination pass, so it can be slow on a phone;
-  // show it when it lands rather than blocking the screen on it.
-  const countEl = document.getElementById('pd-sheet-count');
-  countEl.textContent = 'Counting sheets\u2026';
-  B.prepare({ svc, subtitle: date }).then((c) => {
-    countEl.textContent =
-      c.sheets + ' sheet' + (c.sheets === 1 ? '' : 's') +
-      ' \u00b7 ' + c.halfPages + ' half-pages';
-  }).catch(() => { countEl.textContent = ''; });
+  // iOS ignores @page{size} and starts the dialog in portrait, which folds
+  // wrong. Desktop honours it, so the hint would be noise there.
+  document.getElementById('bk-landscape-hint').hidden = !isIOS();
 }
 
-function reflectDuplex(duplex) {
-  document.getElementById('bk-row-rotate').hidden  = !duplex;
-  document.getElementById('bk-single-note').hidden = duplex;
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.platform || '') ||
+         (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1) ||
+         /iPhone|iPad|iPod/.test(navigator.userAgent || '');
 }
 
 function closePrintView() {
@@ -1774,10 +1753,11 @@ function renderChoirPanel() {
   resetPanelScroll();
 }
 
-// Booklet printing moved out of a popup and into this document — see
-// public/scripts/booklet.js for why, and for the imposition and pagination
-// that used to live here as a template literal. This wrapper exists so the
-// print screen has one thing to call.
+// The booklet is its own page (/booklet). It used to be built in a popup,
+// which phones block; building it inside this document instead meant fighting
+// the app shell — clipped print, a transform capturing fixed children, a
+// measure node escaping its clip. A separate page has no shell to collide
+// with, is a normal navigation rather than a popup, and prints what it shows.
 function printBooklet() {
   const svc   = document.getElementById('p-svc').textContent;
   const date  = document.getElementById('p-date').textContent;
@@ -1787,12 +1767,14 @@ function printBooklet() {
     : null;
   const saintName = principal ? principal.textContent.trim() : '';
 
-  return window.OcaBooklet.print({
-    svc: svc,
-    subtitle: date + (saintName ? ' | ' + saintName : ''),
-  }).catch((err) => {
-    alert(err && err.message ? err.message : 'Could not build the booklet.');
+  if (!activeDate || !activeSvcType) { alert('No service loaded.'); return; }
+
+  const params = new URLSearchParams({
+    src: serviceUrl(activeDate, activeSvcType, activePronoun),
+    title: svc,
+    sub: date + (saintName ? ' | ' + saintName : ''),
   });
+  location.href = '/booklet?' + params.toString();
 }
 
 document.addEventListener('DOMContentLoaded', init);

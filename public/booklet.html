@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Booklet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css" />
+<style>
+  /* ── A page that is ONLY the booklet ──────────────────────────────────────
+     The booklet used to be laid out inside the app, and lost a different
+     fight with the app shell every time: `html, body { height:100%;
+     overflow:hidden }` clipped print to one page; a transform on the panel
+     became the containing block for fixed children; an absolutely positioned
+     measure node escaped its clip and painted over the page. Each fix exposed
+     the next. Here there is no shell to collide with — this document contains
+     the booklet and nothing else, so `@page` can be static, the spreads are
+     simply visible, and what you see on screen is what prints. */
+
+  html, body { height: auto; overflow: visible; background: #e8e4dc; margin: 0; }
+
+  @page { size: 11in 8.5in; margin: 0; }
+
+  /* main.css parks #bk-root off-screen for the app. Here it IS the content. */
+  #bk-root   { position: static; height: auto; overflow: visible; }
+  #bk-sheets { visibility: visible; }
+  #bk-source { display: none; }
+
+  @media screen {
+    #bk-root .bk-spread {
+      margin: 0 auto 14px; background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+      break-after: auto;
+    }
+    #bk-root .bk-half { background: #fff; }
+    #bk-root .bk-half:first-child { border-right: 1px dashed #ccc; }
+    body { padding: 0 0 40px; }
+  }
+
+  .bk-bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; margin-bottom: 20px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+  }
+  .bk-bar-title {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--rubric); flex: 1 1 auto; min-width: 0;
+  }
+  .bk-bar-sub {
+    display: block; font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted);
+    margin-top: 3px;
+  }
+  .bk-btn {
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; cursor: pointer;
+    border: 1.5px solid var(--rubric); background: var(--rubric); color: var(--surface);
+    padding: 11px 20px; min-height: 44px;
+  }
+  .bk-btn-ghost { background: none; color: var(--rubric); }
+  .bk-toggles { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .bk-toggle {
+    display: flex; align-items: center; gap: 7px; cursor: pointer;
+    font-family: 'EB Garamond', serif; font-size: 15px; color: var(--text);
+    min-height: 44px;
+  }
+  .bk-toggle input { width: 18px; height: 18px; accent-color: var(--rubric); cursor: pointer; }
+  .bk-note {
+    flex-basis: 100%; font-family: 'EB Garamond', serif; font-size: 14px;
+    line-height: 1.45; color: var(--text);
+    border-left: 2px solid var(--gold); background: rgba(201,168,76,.10);
+    padding: 9px 12px;
+  }
+  .bk-note strong { color: var(--rubric); font-weight: 600; }
+  .bk-status {
+    font-family: 'EB Garamond', serif; font-style: italic; font-size: 14px; color: var(--muted);
+  }
+
+  @media print {
+    .bk-bar { display: none !important; }
+    body { background: #fff; padding: 0; }
+    #bk-root .bk-spread { margin: 0; box-shadow: none; break-after: page; }
+    #bk-root .bk-spread:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bk-bar">
+  <div class="bk-bar-title" id="bk-title">Booklet
+    <span class="bk-bar-sub" id="bk-sub">Preparing&hellip;</span>
+  </div>
+  <div class="bk-toggles">
+    <label class="bk-toggle"><input type="checkbox" id="cb-duplex"> Two-sided</label>
+    <label class="bk-toggle" id="row-rotate"><input type="checkbox" id="cb-rotate"> Rotate backs</label>
+  </div>
+  <button class="bk-btn-ghost bk-btn" id="btn-back">Back</button>
+  <button class="bk-btn" id="btn-print" disabled>Print</button>
+  <button class="bk-btn-ghost bk-btn" id="btn-test" title="Eight numbered pages, to check fold order on a new printer">Test sheet</button>
+  <div class="bk-note" id="note-landscape" hidden>
+    In your printer options choose <strong>Landscape</strong> &mdash; this phone
+    starts in portrait, which folds wrong.
+  </div>
+  <div class="bk-note" id="note-single" hidden>
+    Printing one-sided: print every sheet, put the stack back in the tray, then
+    print the rest.
+  </div>
+</div>
+
+<div id="bk-root">
+  <div id="bk-measure"></div>
+  <div id="bk-sheets"></div>
+</div>
+<div id="bk-source"></div>
+
+<script src="/scripts/renderer.js"></script>
+<script src="/scripts/booklet.js"></script>
+<script>
+(function () {
+  'use strict';
+  var B = window.OcaBooklet;
+  var q = new URLSearchParams(location.search);
+
+  // `src` is the API path the app already resolved — passing it avoids keeping
+  // a second copy of the service-type → endpoint map in sync. Same-origin and
+  // /api/-only, since it is a URL from a query string.
+  var src = q.get('src') || '';
+  if (!/^\/api\/[A-Za-z0-9/_-]+(\?|$)/.test(src)) {
+    document.getElementById('bk-sub').textContent = 'Bad booklet link.';
+    return;
+  }
+
+  var title = q.get('title') || 'Service';
+  var sub   = q.get('sub')   || '';
+  document.getElementById('bk-title').childNodes[0].nodeValue = title + ' ';
+  document.getElementById('bk-sub').textContent = sub || 'Preparing…';
+
+  var duplexCb = document.getElementById('cb-duplex');
+  var rotateCb = document.getElementById('cb-rotate');
+  var rotateRow = document.getElementById('row-rotate');
+  var printBtn = document.getElementById('btn-print');
+  var statusEl = document.getElementById('bk-sub');
+
+  duplexCb.checked = B.getSetting('duplex', B.defaultDuplex());
+  rotateCb.checked = B.getSetting('rotateBack', true);
+  document.getElementById('note-landscape').hidden = !B.isIOS();
+
+  function reflect() {
+    rotateRow.hidden = !duplexCb.checked;
+    document.getElementById('note-single').hidden = duplexCb.checked;
+  }
+
+  var blocks = null;
+
+  function build() {
+    printBtn.disabled = true;
+    return B.prepare({
+      sourceEl: document.getElementById('bk-source'),
+      svc: title, subtitle: sub,
+      duplex: duplexCb.checked, rotateBack: rotateCb.checked,
+    }).then(function (c) {
+      statusEl.textContent =
+        c.sheets + ' sheet' + (c.sheets === 1 ? '' : 's') + ' · ' +
+        c.halfPages + ' half-pages' + (sub ? ' · ' + sub : '');
+      printBtn.disabled = false;
+      return c;
+    }).catch(function (err) {
+      statusEl.textContent = 'Could not build the booklet: ' + (err && err.message ? err.message : err);
+    });
+  }
+
+  fetch(src)
+    .then(function (r) { if (!r.ok) throw new Error('service unavailable (' + r.status + ')'); return r.json(); })
+    .then(function (data) {
+      blocks = data.blocks || [];
+      if (q.get('choir') === '1' && window.filterForChoir) blocks = window.filterForChoir(blocks);
+      document.getElementById('bk-source').innerHTML = window.renderBlocks(blocks, {});
+      reflect();
+      return build();
+    })
+    .catch(function (err) {
+      statusEl.textContent = 'Could not load the service: ' + (err && err.message ? err.message : err);
+    });
+
+  duplexCb.addEventListener('change', function () {
+    B.setSetting('duplex', this.checked); reflect(); build();
+  });
+  rotateCb.addEventListener('change', function () {
+    B.setSetting('rotateBack', this.checked); build();
+  });
+
+  // Print SYNCHRONOUSLY inside the tap. The booklet is already laid out, so
+  // there is nothing to await — and iOS is unreliable about a print() that
+  // arrives after the user gesture has ended.
+  printBtn.addEventListener('click', function () { window.print(); });
+
+  // Eight numbered half-pages — the cheap way to check fold order on a printer
+  // you have not used before, without spending a whole service.
+  document.getElementById('btn-test').addEventListener('click', function () {
+    B.printTest();
+  });
+
+  document.getElementById('btn-back').addEventListener('click', function () {
+    if (history.length > 1) history.back(); else location.href = '/';
+  });
+})();
+</script>
+</body>
+</html>

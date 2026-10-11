@@ -296,29 +296,12 @@
         <span class="pd-option-body">
           <span class="pd-option-name">Booklet</span>
           <span class="pd-option-desc">Two pages per sheet, folded in half. Reads in order once folded.</span>
-          <span class="pd-option-meta" id="pd-sheet-count"></span>
         </span>
         <span class="pd-fold" aria-hidden="true">
           <span class="pd-fold-sheet"><span class="pd-fold-half"></span><span class="pd-fold-half"></span></span>
           <span class="pd-fold-label">Fold</span>
         </span>
       </button>
-
-      <div class="pd-settings">
-        <label class="pd-setting">
-          <span class="pd-setting-name">Two-sided printing</span>
-          <input type="checkbox" id="bk-cb-duplex">
-        </label>
-        <label class="pd-setting" id="bk-row-rotate">
-          <span class="pd-setting-name">Rotate back sides
-            <span class="pd-setting-hint">For long-edge binding</span>
-          </span>
-          <input type="checkbox" id="bk-cb-rotate">
-        </label>
-        <div class="pd-setting-note" id="bk-single-note" hidden>
-          Print every sheet, put the stack back in the tray, then print the rest.
-        </div>
-      </div>
 
       <!-- iOS ignores @page{size} and defaults to portrait; the fold only works
            in landscape, so say so where it will be read. Verified 2026-10-10. -->
@@ -334,7 +317,6 @@
         </span>
       </button>
 
-      <button class="pd-testlink" id="pd-testprint">Print a test sheet &mdash; 8 numbered pages</button>
     </div>
   </div>
 
@@ -541,18 +523,7 @@
 
 </div><!-- end .view-settings -->
 
-<!-- ════════════════════════════════ BOOKLET ═════════════════════════════════
-     Off-screen in screen media, but LAID OUT — pagination measures real
-     rendered heights in here, so it must never be display:none. The booklet
-     stylesheet is scoped to #bk-root (main.css) because it redefines global
-     selectors like .svc-head and .rubric. See public/scripts/booklet.js. -->
-<div id="bk-root" aria-hidden="true">
-  <div id="bk-measure"></div>
-  <div id="bk-sheets"></div>
-</div>
-
 <script src="/scripts/renderer.js"></script>
-<script src="/scripts/booklet.js"></script>
 <script src="/scripts/app.js"></script>
 </body>
 </html>

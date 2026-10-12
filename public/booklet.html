@@ -149,8 +149,9 @@
     starts in portrait, which folds wrong.
   </div>
   <div class="bk-note" id="note-single" hidden>
-    Printing one-sided: print every sheet, put the stack back in the tray, then
-    print the rest.
+    <strong>One-sided, in two passes.</strong>
+    <span id="note-single-detail">Print the first half of the pages, put the
+    stack back in the tray face-down, then print the rest.</span>
   </div>
 
   <div class="bk-links">
@@ -215,6 +216,17 @@
       statusEl.textContent =
         c.sheets + ' sheet' + (c.sheets === 1 ? '' : 's') + ' · ' +
         c.halfPages + ' half-pages' + (sub ? ' · ' + sub : '');
+
+      // Single-sided is two passes over the same sheets, and "print the rest"
+      // is not actionable standing at a printer — the page RANGES are. Fronts
+      // are the first half of the emitted pages, backs the second.
+      if (!duplexCb.checked && c.spreads) {
+        var half = c.spreads / 2;
+        document.getElementById('note-single-detail').textContent =
+          'Print pages 1\u2013' + half + ', put the stack back in the tray ' +
+          'face-down, then print pages ' + (half + 1) + '\u2013' + c.spreads + '.';
+      }
+
       printBtn.disabled = false;
       fitPreview();
       return c;

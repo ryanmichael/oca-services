@@ -1221,6 +1221,15 @@ body.mode-choir .choir-toggles { display: flex; }
      e2e suite caught it. The old rules reset `body`'s overflow but neither
      element's height, and `html` not at all. Found 2026-10-11 on staging. */
   html, body { height: auto !important; overflow: visible !important; }
+  /* The panel's own scroll chain clips print the same way. `.panel-scroll` is
+     the PHONE scroll container (display:contents on desktop), which is why
+     Standard print worked at a desk and produced one clipped page on a phone
+     — for the whole time the print button was hidden there, so nobody could
+     find it. Measured before this: #p-body 30681px of content inside a
+     0-height .panel-scroll. Found 2026-10-11. */
+  .layout, .panel-inner, .panel-scroll {
+    height: auto !important; max-height: none !important; overflow: visible !important;
+  }
   .view-search, .view-cal, .view-settings, header, .center-bar, .service-list-body, .panel-head { display: none !important; }
   .choir-toggles { display: none !important; }
   .tone-badge { border-color: #333; color: #333; }
@@ -1230,7 +1239,14 @@ body.mode-choir .choir-toggles { display: flex; }
   .print-header-date { font-family: var(--font-sans, sans-serif); font-size: 9pt; color: #555; margin-top: 2px; }
   .view-main { position: static; }
   .layout { display: block; }
-  .panel { width: 100% !important; border: none; overflow: visible; }
+  /* On a phone the panel is `position: fixed` with a slide-in transform.
+     Out of flow, WebKit prints it on the first page only and never paginates
+     it — the same fault the booklet had — so the whole service came out as one
+     clipped page. Both must be reset for print. */
+  .panel {
+    width: 100% !important; border: none; overflow: visible;
+    position: static !important; transform: none !important;
+  }
   .panel-inner { width: 100%; }
   .panel-body { overflow: visible; padding: 0; }
   body { background: white; font-size: 12pt; overflow: visible; }

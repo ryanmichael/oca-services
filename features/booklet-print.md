@@ -42,6 +42,29 @@ What that buys:
 `public/scripts/booklet-impose.js` — a complete, tested, never-called rival
 implementation — was deleted along the way, as `docs/BOOKLET-CONTEXT.md` asks.
 
+## Where the booklet is offered
+
+**Desktop: the print control goes straight to `/booklet`.**
+
+**Phone: it prints the service directly (Standard).** The booklet renders and
+prints correctly from a phone — but a printer that silently ignores the
+two-sided request hands a choir director twenty loose sheets in fold order, and
+that is not solved (see "Still open"). `/booklet` still works if you navigate
+to it; it is simply not the phone's default. One line in `app.js` re-enables it.
+
+Fixing that exposed a second thing: **Standard print had never worked on a
+phone either.** The panel is `position: fixed` with a slide-in transform, inside
+a scroll chain whose containers are height-constrained — out of flow, so WebKit
+printed it on the first page only and the service came out as one clipped page.
+Nobody could find it, because the print button was hidden on phones for its
+entire existence. Measured before the fix: `#p-body` held 30,681px of content
+and the document was 664px. `@media print` now resets the panel's position and
+transform along with `.layout` / `.panel-inner` / `.panel-scroll`.
+
+That is the same fault the booklet had — **an out-of-flow subtree does not
+paginate in WebKit** — in a second place. Worth checking anywhere print is
+added.
+
 ## Print is one tap
 
 There was briefly a chooser screen asking "booklet or standard?". Two problems

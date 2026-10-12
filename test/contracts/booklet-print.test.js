@@ -180,7 +180,7 @@ describe('Booklet printing', () => {
     if (!chromium) return;
     // Phones block popups by default, which is what made the booklet
     // unreachable from a phone in the first place.
-    const page = await browser.newPage(PHONE);
+    const page = await browser.newPage(DESK);
     let popups = 0;
     page.on('popup', () => { popups += 1; });
     await openService(page);
@@ -246,7 +246,7 @@ describe('Booklet printing', () => {
     // state rather than a thing to tap — people saw it as already chosen. The
     // booklet page answers the question better by showing the booklet, so the
     // screen is gone and the action is a filled button that says what it does.
-    const page = await browser.newPage(PHONE);
+    const page = await browser.newPage(DESK);
     await openService(page);
     await page.click('#btn-print');
     await page.waitForURL(/\/booklet\?/, { timeout: 15000 });
@@ -297,6 +297,50 @@ describe('Booklet printing', () => {
     if (stacked !== null) {
       assert.ok(stacked, 'the other pickers still stack name above description');
     }
+    await page.close();
+  });
+
+  it('INV-8c: a phone prints the service directly; the booklet is desk-only for now', async function () {
+    if (!chromium) return;
+    // The booklet renders and prints correctly from a phone, but a printer
+    // that silently ignores the two-sided request hands a choir director
+    // twenty loose sheets in fold order. Until that is solved, the phone gets
+    // Standard print — which, with the panel's fixed positioning and scroll
+    // chain reset for print, now works there for the first time.
+    const page = await browser.newPage(PHONE);
+    await openService(page);
+    let printed = false;
+    await page.exposeFunction('__printed', () => { printed = true; });
+    await page.evaluate(() => { window.print = () => window.__printed(); });
+    await page.click('#btn-print');
+    await page.waitForTimeout(800);
+    assert.ok(printed, 'the phone prints directly');
+    assert.ok(!/\/booklet/.test(page.url()), `must not navigate to the booklet, got ${page.url()}`);
+    await page.close();
+  });
+
+  it('INV-8d: Standard print is not clipped to one page on a phone', async function () {
+    if (!chromium) return;
+    // The panel is position:fixed with a slide-in transform on a phone, inside
+    // a scroll chain — out of flow, so WebKit printed it on the first page
+    // only and the service came out as one clipped page. Nobody could find it
+    // while the print button was hidden there. Asserted as computed geometry
+    // so it holds on any engine.
+    const page = await browser.newPage(PHONE);
+    await openService(page);
+    await page.emulateMedia({ media: 'print' });
+    const m = await page.evaluate(() => ({
+      panelPosition: getComputedStyle(document.getElementById('panel')).position,
+      docH: document.documentElement.scrollHeight,
+      viewportH: window.innerHeight,
+      bodyLen: document.getElementById('p-body').textContent.trim().length,
+      headerHidden: getComputedStyle(document.querySelector('header')).display === 'none',
+    }));
+    assert.ok(m.bodyLen > 5000, 'precondition: a long service is loaded');
+    assert.equal(m.panelPosition, 'static', 'the panel must be in flow to paginate');
+    assert.ok(m.docH > m.viewportH * 3,
+      `the printed document must span many pages, got ${m.docH} against ${m.viewportH}`);
+    assert.ok(m.headerHidden, 'app chrome must not print');
     await page.close();
   });
 

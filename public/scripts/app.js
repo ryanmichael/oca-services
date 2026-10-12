@@ -1030,10 +1030,21 @@ async function pickResult(dateStr, svcType) {
 async function init() {
   // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
-  // Print goes straight to the booklet page. It shows the spreads, carries its
-  // own settings, and offers Standard print as a link — so a screen whose only
-  // job was to ask "booklet or standard?" was a stop on the way to the answer.
-  document.getElementById('btn-print').addEventListener('click', printBooklet);
+  // At a desk, print goes straight to the booklet page: it shows the spreads,
+  // carries its own settings, and offers Standard print as a link, so a screen
+  // whose only job was to ask "booklet or standard?" was a stop on the way to
+  // the answer.
+  //
+  // On a PHONE it prints the service directly. The booklet renders and prints
+  // correctly from a phone, but a printer that silently ignores the two-sided
+  // request hands a choir director twenty loose sheets in fold order, and that
+  // is not yet solved (features/booklet-print.md, "Still open"). Standard
+  // print is the honest offer there until it is. /booklet still works if you
+  // navigate to it; it is simply not the phone's default.
+  document.getElementById('btn-print').addEventListener('click', () => {
+    if (isPhoneViewport()) { window.print(); return; }
+    printBooklet();
+  });
 
   // Liturgy variant picker
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
@@ -1725,6 +1736,11 @@ function renderChoirPanel() {
 // the app shell — clipped print, a transform capturing fixed children, a
 // measure node escaping its clip. A separate page has no shell to collide
 // with, is a normal navigation rather than a popup, and prints what it shows.
+/** The ≤767px breakpoint, as a query rather than a guess about the device. */
+function isPhoneViewport() {
+  try { return window.matchMedia('(max-width: 767px)').matches; } catch (e) { return false; }
+}
+
 function printBooklet() {
   const svc   = document.getElementById('p-svc').textContent;
   const date  = document.getElementById('p-date').textContent;

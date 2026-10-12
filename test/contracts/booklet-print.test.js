@@ -48,7 +48,7 @@ const DESK  = { viewport: { width: 1280, height: 900 } };
  *  is the containing block for the fixed controls, so measuring during the
  *  transition reports them off-screen. */
 async function openService(page) {
-  await page.goto(`${BASE}/?date=2026-10-10`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE}/?date=2026-10-10`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('.svc-row:not(.dimmed)', { timeout: 20000 });
   await page.locator('.svc-row:not(.dimmed)').first().click();
   await page.waitForFunction(() => {
@@ -65,7 +65,7 @@ async function openService(page) {
 async function openBooklet(page) {
   const src = encodeURIComponent('/api/service?date=2026-10-10&pronoun=tt');
   await page.goto(`${BASE}/booklet?src=${src}&title=TEST%20BOOKLET&sub=diag`,
-    { waitUntil: 'networkidle' });
+    { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(
     () => /sheet/.test(document.getElementById('bk-sub').textContent), { timeout: 40000 });
 }
@@ -413,7 +413,7 @@ describe('Booklet printing', () => {
     // `src` arrives from a query string.
     const page = await browser.newPage(DESK);
     for (const bad of ['https://evil.example/x', '//evil.example/x', '/etc/passwd']) {
-      await page.goto(`${BASE}/booklet?src=${encodeURIComponent(bad)}`, { waitUntil: 'networkidle' });
+      await page.goto(`${BASE}/booklet?src=${encodeURIComponent(bad)}`, { waitUntil: 'domcontentloaded' });
       const txt = await page.evaluate(() => document.getElementById('bk-sub').textContent);
       assert.match(txt, /Bad booklet link/, `rejected: ${bad}`);
       const spreads = await page.evaluate(() => document.querySelectorAll('.bk-spread').length);

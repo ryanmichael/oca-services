@@ -1473,7 +1473,12 @@ body.mode-choir .choir-toggles { display: flex; }
   text-align: center; color: var(--text); margin-bottom: 10px; margin-top: 4px;
   break-after: avoid;
 }
-#bk-root .svc-rule { height: 0.5pt; background: var(--gold); margin: 6px 0; }
+/* The renderer emits a .svc-rule between sections and the app panel draws it
+   as a gold line. In the booklet it is redundant — the centered small-caps
+   heading already marks the section — and it is not free: 80 rules at 13px
+   cost ~1040px, about a page and a half of a booklet. Hidden rather than
+   removed from the renderer, which the panel still uses. */
+#bk-root .svc-rule { display: none; }
 #bk-root .rubric {
   font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;
   font-style: italic; color: var(--rubric);

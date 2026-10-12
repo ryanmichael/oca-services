@@ -344,6 +344,31 @@ describe('Booklet printing', () => {
     await page.close();
   });
 
+  it('INV-8e: the booklet draws no section rules; the app panel still does', async function () {
+    if (!chromium) return;
+    // The renderer emits a .svc-rule between sections and the panel draws it as
+    // a gold line. In the booklet the centered small-caps heading already marks
+    // the section, and the rules are not free — 80 of them at 13px cost about a
+    // page and a half.
+    const page = await browser.newPage(DESK);
+    await openBooklet(page);
+    const bk = await page.evaluate(() => {
+      const r = document.querySelector('#bk-root .svc-rule');
+      return r ? getComputedStyle(r).display : 'absent';
+    });
+    assert.ok(bk === 'none' || bk === 'absent', `booklet must not draw section rules, got ${bk}`);
+    await page.close();
+
+    const app = await browser.newPage(DESK);
+    await openService(app);
+    const panel = await app.evaluate(() => {
+      const r = document.querySelector('#p-body .svc-rule');
+      return r ? getComputedStyle(r).display : 'absent';
+    });
+    assert.equal(panel, 'block', 'the reading panel keeps its section rule');
+    await app.close();
+  });
+
   it('INV-9: duplex defaults off on a phone and on at a desk', async function () {
     if (!chromium) return;
     // A phone user is often not at a duplexing copier. Guessing wrong there

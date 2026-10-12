@@ -248,8 +248,9 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
 
   // 27. Communion Hymn — the appointed Koinonikon + cycling Troparia/Kontakia
   //     labels (reference-only, full text already above). Sung as the clergy
-  //     commune behind the curtain.
-  blocks.push(..._litCommunionHymn(spec.communionHymn, spec));
+  //     commune behind the curtain. With `liturgy.silentCommunionPrayers` the
+  //     cues give way to the silent pre-Communion prayer instead.
+  blocks.push(..._litCommunionHymn(spec.communionHymn, spec, liturgyFixed, opts.rubrics || {}));
 
   // 28. Communion Prayer — 'In the fear of God...' + 'Blessed is He...' +
   //     'I believe, O Lord, and I confess...'. Order depends on the parish

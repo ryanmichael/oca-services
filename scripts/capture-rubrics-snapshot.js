@@ -73,6 +73,10 @@ function legacyBuildRubrics(row, picks = {}) {
     r.lordICall = { ...(r.lordICall || {}), theotokionWeekTone: true };
   if (picked('prayersOfThanksgiving') && coerce(picks.prayersOfThanksgiving, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), prayersOfThanksgiving: true };
+  // features/silent-communion-prayers.md — the prayer that replaces the
+  // Troparia/Kontakia cue rubrics while the clergy commune.
+  if (picked('silentCommunionPrayers') && coerce(picks.silentCommunionPrayers, 'boolean') === true)
+    r.liturgy = { ...(r.liturgy || {}), silentCommunionPrayers: true };
   if (picked('sungVenerationEnding') && coerce(picks.sungVenerationEnding, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), sungVenerationEnding: true };
 

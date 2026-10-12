@@ -72,7 +72,33 @@ function _litCommunionPrayer(f, opts = {}) {
   return blocks;
 }
 
-function _litCommunionHymn(communionHymn, spec) {
+/**
+ * Communion Hymn — the appointed Koinonikon, then what fills the several
+ * minutes while the clergy commune behind the curtain.
+ *
+ * Two ways to fill them, and a parish picks one:
+ *
+ *   default  cue rubrics naming the Troparia and Kontakia of the day, label
+ *            only — the full texts were printed earlier at the Little
+ *            Entrance, and the choir flips back or sings from memory.
+ *
+ *   rubric   `liturgy.silentCommunionPrayers` — the prayer of St. John
+ *            Chrysostom from the rule before Holy Communion, for the faithful
+ *            to pray SILENTLY. The cue rubrics are dropped, because for anyone
+ *            not in the choir they are seven lines of dead space at exactly
+ *            the moment there is nothing to read. Requested by St John of
+ *            Damascus, Tyler (2026-10-12), whose choir sings from its own
+ *            printouts.
+ *
+ * Off by default: dropping the cues unprompted would strip the choir's cue
+ * sheet in any parish that does read it from this app.
+ *
+ * @param {object} communionHymn  the appointed Koinonikon (+ optional secondary)
+ * @param {object} spec           service spec; supplies troparia/kontakia cues
+ * @param {object} f              liturgy fixed texts (for the prayer)
+ * @param {object} rubrics        overlay rubrics, dotted as `liturgy.*`
+ */
+function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
   const section = 'Communion Hymn';
   const blocks = [];
   if (communionHymn) {
@@ -86,6 +112,31 @@ function _litCommunionHymn(communionHymn, spec) {
       blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
     }
   }
+  // Parish opted into the silent prayer: it takes the place of the cue
+  // rubrics, and we return before emitting them.
+  const silent = (rubrics.liturgy || {}).silentCommunionPrayers
+    ? (f || {})['prayers-before-communion']
+    : null;
+  if (silent && Array.isArray(silent.prayers) && silent.prayers.length > 0) {
+    blocks.push(makeBlock('ch-silent-rubric', section, 'rubric', null, silent.rubric));
+    silent.prayers.forEach((pr) => {
+      if (!pr || !pr.text) return;
+      // The attribution goes in its OWN rubric block: renderer.js renders
+      // `label` for a hymn only, so a label on a prayer block is silently
+      // dropped. Same shape as _litPrayersOfThanksgiving.
+      if (pr.label) {
+        blocks.push(makeBlock(`ch-silent-${pr.id}-label`, section, 'rubric', null, `${pr.label}:`));
+      }
+      // One block per prayer, paragraphs kept inside it on blank lines (esc()
+      // turns them into breaks). Splitting into a block per paragraph the way
+      // _litCommunionPrayer does would stamp a speaker on all ten of them; the
+      // Creed is already one multi-paragraph block, so this is the shape.
+      blocks.push(makeBlock(`ch-silent-${pr.id}`, section, 'prayer', 'all', pr.text,
+        { density: 'compact' }));
+    });
+    return blocks;
+  }
+
   // While the clergy commune, the choir cycles through the Troparia and
   // Kontakia of the day. We render label rubrics only (no text bodies) — the
   // full text was printed earlier in the service at the Little Entrance.

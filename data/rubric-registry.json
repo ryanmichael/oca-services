@@ -192,6 +192,16 @@
         "liturgy"
       ]
     },
+    "silentCommunionPrayers": {
+      "label": "Silent pre-Communion prayer during the Communion Hymn",
+      "description": "While the clergy commune, print the prayer of St. John Chrysostom from the rule before Holy Communion for the faithful to pray silently. Replaces the Troparia/Kontakia cue rubrics that otherwise fill the section. Off by default; the cue rubrics stay for parishes whose choir reads from this app.",
+      "namespace": "liturgy.silentCommunionPrayers",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ]
+    },
     "sungVenerationEnding": {
       "label": "Choir sings the close of the Prayers of Thanksgiving",
       "description": "Requires prayersOfThanksgiving. The book appoints twelve “Lord, have mercy” said by the reader and the troparion of the Liturgy's author. When on, the choir instead sings three “Lord, have mercy” and the troparion of the temple's patron — displaced by the feast's troparion on a feast, or in the week following one.",

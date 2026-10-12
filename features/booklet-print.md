@@ -42,6 +42,28 @@ What that buys:
 `public/scripts/booklet-impose.js` — a complete, tested, never-called rival
 implementation — was deleted along the way, as `docs/BOOKLET-CONTEXT.md` asks.
 
+## Two traps on the booklet page itself
+
+**It must claim `bk-printing`.** `main.css` carries the APP's print rules, and
+one of them — `body:not(.bk-printing) #bk-root { display: none !important }`,
+written so the app never prints a stray booklet — hid the entire booklet on its
+own page. On screen everything looked perfect; under print media the document
+was empty, and an iPhone reported "Page 1 of 1", blank. The page therefore
+carries `<body class="bk-printing">` permanently.
+
+**The preview is zoomed, the print is not.** A spread is 11in (1056px) wide,
+and the FIRST half-page of an imposed booklet is the back cover — frequently
+blank. Unscaled on a phone that is a wall of white with the content off-screen
+to the right, which reads exactly like a broken page. `#bk-sheets` gets an
+inline `zoom` sized to the viewport for screen, and `@media print` resets it
+with `zoom: 1 !important` (a stylesheet `!important` beats a non-important
+inline style). `zoom` rather than `transform` because it reflows, so the page
+keeps a correct height.
+
+Both of these were invisible to every check that looked at the page on screen.
+**Assert print media explicitly** — INV-11 exists because two blank-preview
+bugs shipped without it.
+
 ## Invariants
 
 - **INV-1** — duplex imposition of 8 pages is `[8|1] [2|7*] [6|3] [4|5*]`; the

@@ -80,13 +80,21 @@
 
   @media print {
     .bk-bar { display: none !important; }
+    /* The on-screen preview is zoomed to fit a phone; print at true size.
+       A stylesheet !important beats a non-important inline style. */
+    #bk-sheets { zoom: 1 !important; }
     body { background: #fff; padding: 0; }
     #bk-root .bk-spread { margin: 0; box-shadow: none; break-after: page; }
     #bk-root .bk-spread:last-child { break-after: auto; }
   }
 </style>
 </head>
-<body>
+<!-- `bk-printing` is permanent here. main.css carries the APP's print rules,
+     including `body:not(.bk-printing) #bk-root { display: none !important }` —
+     written so the app never prints a stray booklet. On this page that rule
+     hid the only thing worth printing, and the symptom was an iPhone preview
+     reading "Page 1 of 1", blank. Found 2026-10-11. -->
+<body class="bk-printing">
 
 <div class="bk-bar">
   <div class="bk-bar-title" id="bk-title">Booklet
@@ -165,6 +173,7 @@
         c.sheets + ' sheet' + (c.sheets === 1 ? '' : 's') + ' · ' +
         c.halfPages + ' half-pages' + (sub ? ' · ' + sub : '');
       printBtn.disabled = false;
+      fitPreview();
       return c;
     }).catch(function (err) {
       statusEl.textContent = 'Could not build the booklet: ' + (err && err.message ? err.message : err);
@@ -190,6 +199,20 @@
   rotateCb.addEventListener('change', function () {
     B.setSetting('rotateBack', this.checked); build();
   });
+
+  // A spread is 11in (1056px) wide. On a phone that is nearly three screens,
+  // and the FIRST half-page of an imposed booklet is the back cover — often
+  // blank — so an unscaled preview shows a wall of white with the content
+  // off-screen to the right. Zoom (not transform) because it reflows, so the
+  // page keeps a correct height and nothing is left hanging.
+  function fitPreview() {
+    var sheets = document.getElementById('bk-sheets');
+    if (!sheets) return;
+    var avail = Math.max(240, document.documentElement.clientWidth - 16);
+    sheets.style.zoom = Math.min(1, avail / 1056);
+  }
+  fitPreview();
+  window.addEventListener('resize', fitPreview);
 
   // Print SYNCHRONOUSLY inside the tap. The booklet is already laid out, so
   // there is nothing to await — and iOS is unreliable about a print() that

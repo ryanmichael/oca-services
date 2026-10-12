@@ -153,6 +153,7 @@ describe('Booklet printing', () => {
         spreads: sp.length,
         firstW: first ? Math.round(first.width) : 0,
         firstH: first ? Math.round(first.height) : 0,
+        viewportW: window.innerWidth,
         halvesPerSpread: [...sp].map(s => s.querySelectorAll(':scope > .bk-half').length),
       };
     });
@@ -162,8 +163,16 @@ describe('Booklet printing', () => {
     assert.ok(m.docH > m.viewportH * 2, `the document must be taller than one page, got ${m.docH}`);
     assert.ok(m.spreads > 1, 'more than one spread, so pagination is exercised');
     assert.ok(m.halvesPerSpread.every(n => n === 2), 'each spread is exactly two half-pages');
-    assert.equal(m.firstW, 1056, 'a spread is 11in wide at 96dpi');
-    assert.equal(m.firstH, 816, 'a spread is 8.5in tall at 96dpi');
+    // On screen the spreads are zoomed to fit the viewport: a spread is 11in
+    // (1056px) wide, and the first half-page of an imposed booklet is the back
+    // cover — often blank — so unscaled, a phone shows a wall of white with the
+    // content off-screen to the right. True size is asserted under print media
+    // in INV-11.
+    assert.ok(m.firstW <= m.viewportW + 2,
+      `a spread must fit the viewport on screen, got ${m.firstW} in ${m.viewportW}`);
+    assert.ok(m.firstH > 0 && m.firstW > 0, 'the spread has real geometry');
+    assert.ok(Math.abs(m.firstW / m.firstH - 1056 / 816) < 0.02,
+      'the spread keeps its 11:8.5 proportion when zoomed');
     await page.close();
   });
 
@@ -267,6 +276,52 @@ describe('Booklet printing', () => {
     await openBooklet(desk);
     assert.equal(await desk.evaluate(() => window.OcaBooklet.defaultDuplex()), true);
     await desk.close();
+  });
+
+  it('INV-11: under PRINT media the booklet page renders full-size spreads', async function () {
+    if (!chromium) return;
+    // The gap that let two blank-preview bugs ship: every check looked at the
+    // page on SCREEN. main.css carries the app's print rules, and one of them —
+    // `body:not(.bk-printing) #bk-root { display: none !important }`, written so
+    // the app never prints a stray booklet — hid the entire booklet here. On
+    // screen everything looked perfect; under print media the document was
+    // empty, and an iPhone reported "Page 1 of 1", blank.
+    const page = await browser.newPage(PHONE);
+    await openBooklet(page);
+
+    await page.emulateMedia({ media: 'screen' });
+    const screen = await page.evaluate(() => {
+      const sp = document.querySelectorAll('#bk-root .bk-spread');
+      const r = sp[0].getBoundingClientRect();
+      return { w: Math.round(r.width), viewport: window.innerWidth,
+               barHidden: getComputedStyle(document.querySelector('.bk-bar')).display === 'none' };
+    });
+    assert.ok(screen.w <= screen.viewport + 2,
+      `on screen a spread must fit the viewport, got ${screen.w} in ${screen.viewport}`);
+    assert.ok(!screen.barHidden, 'the controls show on screen');
+
+    await page.emulateMedia({ media: 'print' });
+    const print = await page.evaluate(() => {
+      const root = document.getElementById('bk-root');
+      const sp = document.querySelectorAll('#bk-root .bk-spread');
+      const r = sp[0] ? sp[0].getBoundingClientRect() : null;
+      return {
+        rootDisplay: getComputedStyle(root).display,
+        spreads: sp.length,
+        w: r ? Math.round(r.width) : 0,
+        h: r ? Math.round(r.height) : 0,
+        docH: document.documentElement.scrollHeight,
+        barHidden: getComputedStyle(document.querySelector('.bk-bar')).display === 'none',
+      };
+    });
+    assert.notEqual(print.rootDisplay, 'none', 'the booklet must not be hidden when printing');
+    assert.ok(print.spreads > 1, 'more than one spread to print');
+    assert.equal(print.w, 1056, 'printed at true size, 11in — the screen zoom must not carry over');
+    assert.equal(print.h, 816, 'printed at true size, 8.5in');
+    assert.ok(print.docH > print.h * 2,
+      `the print document must hold every spread, got ${print.docH}`);
+    assert.ok(print.barHidden, 'the controls must not print');
+    await page.close();
   });
 
   it('INV-10: the booklet page refuses a source that is not a same-origin API path', async function () {

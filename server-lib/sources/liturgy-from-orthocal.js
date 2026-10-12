@@ -350,6 +350,24 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   const holyFathersSunday = isSunday && !feast && !pentOverride
     && (orthocalData.feasts || []).some(t => /fathers\b.*\bcouncil/i.test(t || ''));
 
+  // The Fathers Sundays do NOT share a Beatitudes canon, though one detector
+  // used to serve both. Per the OCA orders:
+  //   2026-07-19 (First Six Councils) — Ode 3 of the 1st Canon, Tone 6
+  //   2026-10-11 (Seventh Council)    — Ode 3,                  Tone 8
+  // `holy-fathers-councils.json` is the SIX Councils canon (its own _source
+  // cites lit_hf6councils_pent7). Applying it to the Seventh Council Sunday put
+  // JULY's hymns into an October Liturgy, where a reader caught it aloud on
+  // 2026-10-11. We do not hold the Seventh Council's Tone 8 canon, so that
+  // Sunday falls back to the Octoechos Beatitudes rather than borrowing — a
+  // missing commemoration is a smaller fault than four wrong hymns read out.
+  // See features/beatitudes-fathers-canon.md.
+  const sixCouncilsSunday = holyFathersSunday
+    // orthocal says "Fathers of the 1st Six Ecumenical Councils" vs "Fathers of
+    // the Seventh Ecumenical Council" — the words are not adjacent, so match on
+    // `six` alone. "Seventh" contains no word-boundary `six`.
+    && (orthocalData.feasts || []).some(t => /\bsix\b.*\bcouncils?\b/i.test(t || ''));
+  const fathersBeatitudesCanon = sixCouncilsSunday ? 'holy-fathers-councils' : null;
+
   // Sunday Before the Exaltation of the Cross (movable, orthocal feast "Sunday
   // before Elevation"). Unlike the Fathers, its prokeimenon (Tone 6) and
   // alleluia (Tone 1) are THE Sunday set — they replace the Octoechos-tone
@@ -1167,7 +1185,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     hasCocelebratedOverlay: !!overlay,
     feastAntiphons,
     paschalAntiphons12,
-    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, holyFathersSunday ? 'holy-fathers-councils' : null) },
+    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, fathersBeatitudesCanon) },
     includeDepartedLitany,
     entranceHymn,
     troparia,

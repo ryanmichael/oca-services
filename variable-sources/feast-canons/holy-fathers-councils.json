@@ -1,20 +1,35 @@
 {
   "_meta": {
-    "feast": "Sunday of the Holy Fathers (Ecumenical Councils)",
+    "feast": "Sunday of the Fathers of the First Six Ecumenical Councils (July)",
     "date": "movable",
     "tone": 6,
-    "_source": "OCA/Lambertsen order for the Sunday of the Holy Fathers — saintjonah.org lit_hf6councils_pent7 (First Six Councils) and lit_hf7council_pent19 (Seventh Council), which share the same Liturgy Beatitudes. The four troparia are the whole of Ode 3 of the First Canon of the Fathers, Tone 6 (Beatitudes 7-10 in the 'on 10' layout); the fourth is the Theotokion. Register: archaic (thee/thy), matching our Lambertsen menaion source.",
-    "_note": "Movable feast — attached by name (not by date key) via buildBeatitudesTroparia's feastCanonOverride param when liturgy-from-orthocal.js detects the Holy Fathers Councils Sunday. beatitudesReplaceGloryNow drops the Octoechos Glory+Theotokion tail so the count is exactly 6 Resurrection + 4 Fathers = on 10, ending in the Fathers' own Theotokion."
+    "_source": "OCA/Lambertsen order for the Sunday of the Fathers of the FIRST SIX Councils — saintjonah.org lit_hf6councils_pent7. The four troparia are the whole of Ode 3 of the First Canon of the Fathers, Tone 6, matching the 2026-07-19 OCA order ('4 troparia from Ode 3 of the 1st Canon of the Fathers, Tone 6'); the fourth is the Theotokion. Register: archaic (thee/thy).",
+    "_note": "Movable feast — attached by name (not by date key) via buildBeatitudesTroparia's feastCanonOverride param when liturgy-from-orthocal.js detects the Holy Fathers Councils Sunday. beatitudesReplaceGloryNow drops the Octoechos Glory+Theotokion tail so the count is exactly 6 Resurrection + 4 Fathers = on 10, ending in the Fathers' own Theotokion.",
+    "_warning": "NOT the Seventh Ecumenical Council Sunday (October). That Sunday appoints a DIFFERENT canon — Ode 3, Tone 8 per the 2026-10-11 order — which we do NOT hold. An earlier version of this file claimed the two Sundays 'share the same Liturgy Beatitudes'; they do not, and the claim put July's hymns into the 2026-10-11 Liturgy, where a reader caught it aloud."
   },
   "tone": 6,
   "beatitudesReplaceGloryNow": true,
   "ode3": {
     "troparia": [
-      { "text": "The mindless Arius, showing himself to be a servant of a created being, and Macedonius, likewise revealed as abominable, are tormented together in the fire of Gehenna with the heathen.", "label": "For the Fathers" },
-      { "text": "With the seven sacred councils of the holy fathers didst thou adorn the honored Church, O Christ, driving far away the darkness of deception as with the light of seven beacons.", "label": "For the Fathers" },
-      { "text": "The multifarious murrain of the heretics destroyeth Thy flock, O Word; but the shepherds of Thy noetic sheep have cured this by their doctrine.", "label": "For the Fathers" },
-      { "text": "O all-pure one, thou gavest birth unto One of the uncreated Trinity, who is two in nature, and volition, and Whose image we venerate, filled with grace.", "label": "Theotokion" }
+      {
+        "text": "The mindless Arius, showing himself to be a servant of a created being, and Macedonius, likewise revealed as abominable, are tormented together in the fire of Gehenna with the heathen.",
+        "label": "For the Fathers"
+      },
+      {
+        "text": "With the seven sacred councils of the holy fathers didst thou adorn the honored Church, O Christ, driving far away the darkness of deception as with the light of seven beacons.",
+        "label": "For the Fathers"
+      },
+      {
+        "text": "The multifarious murrain of the heretics destroyeth Thy flock, O Word; but the shepherds of Thy noetic sheep have cured this by their doctrine.",
+        "label": "For the Fathers"
+      },
+      {
+        "text": "O all-pure one, thou gavest birth unto One of the uncreated Trinity, who is two in nature, and volition, and Whose image we venerate, filled with grace.",
+        "label": "Theotokion"
+      }
     ]
   },
-  "ode6": { "troparia": [] }
+  "ode6": {
+    "troparia": []
+  }
 }

@@ -42,6 +42,28 @@ What that buys:
 `public/scripts/booklet-impose.js` — a complete, tested, never-called rival
 implementation — was deleted along the way, as `docs/BOOKLET-CONTEXT.md` asks.
 
+## Print is one tap
+
+There was briefly a chooser screen asking "booklet or standard?". Two problems
+with it: its Booklet card was gold-filled, which reads as a **selected state**
+rather than a thing to tap — people saw it as already chosen — and the booklet
+page answers the question better by simply showing the booklet.
+
+So the print control goes **straight to `/booklet`**, where:
+
+- the action is a **filled button that says `Print booklet →`**. A filled
+  button reads as an action; a filled card reads as a choice already made.
+- **Standard print** is a quiet link in the same bar. It is a *mode* of this
+  page, not another page: the rendered blocks are already here, so it hides the
+  spreads, shows the plain service and swaps `@page` to letter portrait.
+- **Test sheet** prints 8 numbered half-pages, for checking fold order on an
+  unfamiliar printer without spending a service.
+
+`.pd-option` is still used by the liturgy-variant and service-text pickers. The
+booklet's restyle of it was removed along with the chooser, so those are intact
+— INV-8b guards that, since a shared class is an easy thing to break from a
+distance.
+
 ## Two traps on the booklet page itself
 
 **It must claim `bk-printing`.** `main.css` carries the APP's print rules, and

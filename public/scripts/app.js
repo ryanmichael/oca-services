@@ -1030,10 +1030,10 @@ async function pickResult(dateStr, svcType) {
 async function init() {
   // Panel
   document.getElementById('btn-close').addEventListener('click', closePanel);
-  document.getElementById('btn-print').addEventListener('click', openPrintView);
-  document.getElementById('print-back').addEventListener('click', closePrintView);
-  document.getElementById('pd-standard').addEventListener('click', () => { closePrintView(); window.print(); });
-  document.getElementById('pd-booklet').addEventListener('click', () => { closePrintView(); printBooklet(); });
+  // Print goes straight to the booklet page. It shows the spreads, carries its
+  // own settings, and offers Standard print as a link — so a screen whose only
+  // job was to ask "booklet or standard?" was a stop on the way to the answer.
+  document.getElementById('btn-print').addEventListener('click', printBooklet);
 
   // Liturgy variant picker
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
@@ -1105,7 +1105,6 @@ async function init() {
     if (document.getElementById('view-settings').classList.contains('visible')) closeSettings();
     if (document.getElementById('view-search').classList.contains('visible'))  closeSearch();
     if (document.getElementById('view-cal').classList.contains('visible'))     closeCal();
-    if (document.getElementById('view-print').classList.contains('visible'))   closePrintView();
     if (document.getElementById('view-liturgy-variant').classList.contains('visible')) closeLiturgyVariantView();
     if (document.getElementById('view-service-text').classList.contains('visible')) closeServiceTextView();
   });
@@ -1301,38 +1300,6 @@ async function showPanikhidaPanel(opts, replace = false, skipHistory = false) {
 }
 
 // ─── Print dialog ─────────────────────────────────────────────────────────────
-
-function openPrintView() {
-  closeSearch(/*silent=*/true);
-  closeCal();
-  document.getElementById('view-main').classList.add('hidden');
-  document.getElementById('view-print').classList.add('visible');
-  syncPrintOptions();
-}
-
-/** Fill the print screen from the loaded service. The booklet's own settings
- *  and sheet count live on /booklet, beside the preview, rather than being
- *  duplicated here. */
-function syncPrintOptions() {
-  const svc  = document.getElementById('p-svc').textContent;
-  const date = document.getElementById('p-date').textContent;
-  document.getElementById('pd-subtitle').textContent =
-    [svc, date].filter(Boolean).join(' \u00b7 ');
-  // iOS ignores @page{size} and starts the dialog in portrait, which folds
-  // wrong. Desktop honours it, so the hint would be noise there.
-  document.getElementById('bk-landscape-hint').hidden = !isIOS();
-}
-
-function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.platform || '') ||
-         (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1) ||
-         /iPhone|iPad|iPod/.test(navigator.userAgent || '');
-}
-
-function closePrintView() {
-  document.getElementById('view-print').classList.remove('visible');
-  document.getElementById('view-main').classList.remove('hidden');
-}
 
 // ─── Liturgy variant picker ──────────────────────────────────────────────────
 

@@ -185,8 +185,6 @@ describe('Booklet printing', () => {
     page.on('popup', () => { popups += 1; });
     await openService(page);
     await page.click('#btn-print');
-    await page.waitForTimeout(500);
-    await page.click('#pd-booklet');
     await page.waitForURL(/\/booklet\?/, { timeout: 15000 });
     assert.equal(popups, 0, 'nothing may open a popup');
     assert.match(page.url(), /\/booklet\?src=%2Fapi%2F/, 'navigates with an API source');
@@ -241,22 +239,64 @@ describe('Booklet printing', () => {
     await page.close();
   });
 
-  it('INV-8: Booklet is the first and primary option; Standard is still one tap', async function () {
+  it('INV-8: print is one tap, and the action reads as an action', async function () {
+    if (!chromium) return;
+    // There used to be a chooser screen whose only job was to ask "booklet or
+    // standard?". Its Booklet card was gold-filled, which reads as a SELECTED
+    // state rather than a thing to tap — people saw it as already chosen. The
+    // booklet page answers the question better by showing the booklet, so the
+    // screen is gone and the action is a filled button that says what it does.
+    const page = await browser.newPage(PHONE);
+    await openService(page);
+    await page.click('#btn-print');
+    await page.waitForURL(/\/booklet\?/, { timeout: 15000 });
+    await page.waitForFunction(
+      () => /sheet/.test(document.getElementById('bk-sub').textContent), { timeout: 40000 });
+
+    const m = await page.evaluate(() => {
+      const b = document.getElementById('btn-print');
+      const cs = getComputedStyle(b);
+      return {
+        label: b.textContent.replace(/\s+/g, ' ').trim(),
+        bg: cs.backgroundColor,
+        height: Math.round(b.getBoundingClientRect().height),
+        disabled: b.disabled,
+        links: [...document.querySelectorAll('.bk-link')].map(l => l.textContent.trim()),
+        chooserGone: !document.getElementById('view-print') && !document.getElementById('pd-booklet'),
+      };
+    });
+    assert.match(m.label, /print booklet/i, 'the button says what it does');
+    assert.notEqual(m.bg, 'rgba(0, 0, 0, 0)', 'a filled button reads as an action, not a state');
+    assert.ok(m.height >= 44, `touch target ${m.height} must clear 44px`);
+    assert.ok(!m.disabled, 'enabled once the booklet is built');
+    assert.ok(m.links.some(l => /standard print/i.test(l)),
+      'Standard print stays reachable, as a quiet link');
+    await page.close();
+  });
+
+  it('INV-8b: the app no longer carries a print chooser', async function () {
     if (!chromium) return;
     const page = await browser.newPage(DESK);
     await openService(page);
-    await page.click('#btn-print');
-    const opts = await page.evaluate(() => {
-      const cards = [...document.querySelectorAll('#view-print .pd-option')];
-      return {
-        order: cards.map(c => c.id),
-        primaryFirst: cards[0].classList.contains('pd-option-primary'),
-        standardVisible: getComputedStyle(document.getElementById('pd-standard')).display !== 'none',
-      };
+    const gone = await page.evaluate(() => ({
+      view: !!document.getElementById('view-print'),
+      booklet: !!document.getElementById('pd-booklet'),
+      standard: !!document.getElementById('pd-standard'),
+    }));
+    assert.ok(!gone.view && !gone.booklet && !gone.standard, 'the chooser screen is gone');
+    // .pd-option is still used by the liturgy-variant and service-text pickers;
+    // the booklet restyle of it was removed with the screen so theirs is intact.
+    const stacked = await page.evaluate(() => {
+      const o = document.querySelector('#view-liturgy-variant .pd-option');
+      if (!o) return null;
+      const name = o.querySelector('.pd-option-name');
+      const desc = o.querySelector('.pd-option-desc');
+      if (!name || !desc) return null;
+      return desc.getBoundingClientRect().top >= name.getBoundingClientRect().bottom - 1;
     });
-    assert.deepEqual(opts.order, ['pd-booklet', 'pd-standard']);
-    assert.ok(opts.primaryFirst, 'the booklet card carries the primary treatment');
-    assert.ok(opts.standardVisible, 'Standard is subordinated, never hidden');
+    if (stacked !== null) {
+      assert.ok(stacked, 'the other pickers still stack name above description');
+    }
     await page.close();
   });
 

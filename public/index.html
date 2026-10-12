@@ -275,53 +275,6 @@
 </div><!-- end .view-cal -->
 
 <!-- ══════════════════════════════════════════ VIEW: PRINT ════════════════════ -->
-<div class="view view-print" id="view-print">
-
-  <div class="print-hdr">
-    <button class="print-back" id="print-back">
-      <svg width="8" height="13" viewBox="0 0 8 13" fill="none">
-        <path d="M7 1L1 6.5 7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      BACK
-    </button>
-  </div>
-
-  <div class="print-view-body">
-    <div class="print-view-inner">
-      <div class="pd-title">PRINT OPTIONS</div>
-      <div class="pd-subtitle" id="pd-subtitle"></div>
-
-      <!-- Booklet is the primary option. Standard stays one tap away. -->
-      <button class="pd-option pd-option-primary" id="pd-booklet">
-        <span class="pd-option-body">
-          <span class="pd-option-name">Booklet</span>
-          <span class="pd-option-desc">Two pages per sheet, folded in half. Reads in order once folded.</span>
-        </span>
-        <span class="pd-fold" aria-hidden="true">
-          <span class="pd-fold-sheet"><span class="pd-fold-half"></span><span class="pd-fold-half"></span></span>
-          <span class="pd-fold-label">Fold</span>
-        </span>
-      </button>
-
-      <!-- iOS ignores @page{size} and defaults to portrait; the fold only works
-           in landscape, so say so where it will be read. Verified 2026-10-10. -->
-      <div class="pd-hint" id="bk-landscape-hint" hidden>
-        In your printer options choose <strong>Landscape</strong> — this phone
-        starts in portrait, which folds wrong.
-      </div>
-
-      <button class="pd-option" id="pd-standard">
-        <span class="pd-option-body">
-          <span class="pd-option-name">Standard</span>
-          <span class="pd-option-desc">Full page, single column, page numbers at the bottom.</span>
-        </span>
-      </button>
-
-    </div>
-  </div>
-
-</div><!-- end .view-print -->
-
 <!-- ════════════════════════════════ VIEW: LITURGY VARIANT ═══════════════════ -->
 <div class="view view-print view-liturgy-variant" id="view-liturgy-variant">
 

@@ -47,6 +47,13 @@ else
   node scripts/contract-check.js || true
 fi
 
+echo "Running plural-address drift guard..."
+# Hymns that address a plural subject ("O disciples", "O saints") with singular
+# thou/thy. The yy->tt conversion cannot see number, and nothing else catches
+# it: four such hymns printed at Daily Vespers on 2026-10-14 with the audit at
+# 0/0/0. Fails only on keys the baseline does not already list.
+npm run audit:plural-address
+
 echo "Running server-free structural audit (audit:offline)..."
 # Only the 9 of 131 rules that need no assembled output. Renamed from
 # `audit:quick` 2026-10-06: under its old name it passed 0/0/0 on 365 dates

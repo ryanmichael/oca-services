@@ -36,6 +36,7 @@
     "audit:provenance:check": "node scripts/provenance-sweep.js --services vespers,liturgy --translation st-john-damascus-tyler --year 2026 --check audit/provenance-baseline.json",
     "audit:packet-diff": "node scripts/choir-packet-diff.js --translation st-john-damascus-tyler",
     "audit:packet-diff:check": "node scripts/choir-packet-diff.js --translation st-john-damascus-tyler --check audit/packet-baseline.json",
+    "audit:plural-address": "node scripts/plural-address-scan.js --check audit/plural-address-baseline.json",
     "audit:rank-coverage": "node scripts/rank-coverage.js --check audit/rank-coverage.json",
     "menaion:inspect": "node scripts/menaion-inspect.js",
     "audit:endpoints": "node audit/endpoint-audit.js --all --year 2026",

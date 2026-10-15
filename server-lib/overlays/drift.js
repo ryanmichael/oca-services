@@ -1495,6 +1495,86 @@ function validateMenaionOverrides() {
   }
 }
 
+// Commemorations known to carry departed texts that are NOT theirs. A
+// burn-down, not a suppression list: each one still needs the saint's own
+// propers sourced, and the guard exists so no NEW date joins them silently.
+// Captured 2026-10-15 after 10-25 was fixed; see the note on
+// validateDepartedTextMiskey.
+const KNOWN_DEPARTED_MISKEYS = new Set([
+  507,  // 3-9   40 Holy Martyrs of Sebaste
+  1135, // 6-7   Synaxis of All Saints          ← Sat before Pentecost is a Soul Saturday
+  1255, // 6-22  Hieromartyr Eusebius of Samosata
+  1493, // 7-27  Greatmartyr Panteleimon
+  2156, // 10-19 Prophet Joel
+  2485, // 12-7  Saint Ambrose of Milan
+]);
+
+// A commemoration whose OWN service is a memorial for the departed. These are
+// the only ones entitled to departed stichera.
+const MEMORIAL_TITLE = /\b(?:memorial saturday|saturday of the dead|of the departed|soul saturday)\b/i;
+
+/**
+ * Departed texts mis-keyed onto a saint's commemoration.
+ *
+ * The memorial Saturdays are MOVABLE; the menaion is keyed by FIXED month/day.
+ * When a scrape of a memorial Saturday lands on whatever fixed date it fell on
+ * that year, the departed hymns become that saint's propers forever. On
+ * 2026-10-25 (Martyrs Marcian and Martyrius) the Lord-I-Call Glory was
+ * "I weep and I lament when I contemplate death" and the Aposticha Glory was
+ * "With the saints give rest" — Demetrius Saturday, which in 2026 fell on
+ * Sat 10-24. A Sunday Great Vespers would have sung funeral hymns at both
+ * Glorys, and nothing caught it: the rows are labelled with the commemoration,
+ * so the label↔subject and duplicate-set checks both pass clean.
+ *
+ * The signal is the label the scraper itself wrote — "(Departed)",
+ * "(for the Departed, by St. John of Damascus)" — on a commemoration whose
+ * title is not a memorial. Found 2026-10-15 reviewing the choir packet for
+ * 10-24/10-25.
+ */
+function validateDepartedTextMiskey() {
+  const { openDb } = require('../cache/sqlite');
+  const db = openDb();
+  if (!db) return { ok: true, warnings: 0 };
+  try {
+    const exists = db.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='stichera'"
+    ).get();
+    if (!exists) return { ok: true, warnings: 0 };
+
+    const rows = db.prepare(`
+      SELECT s.commemoration_id AS id, c.title, c.month, c.day,
+             s.section, s."order" AS ord, s.label
+      FROM stichera s JOIN commemorations c ON c.id = s.commemoration_id
+      WHERE s.label LIKE '%eparted%'
+      ORDER BY c.month, c.day, s.section, s."order"
+    `).all();
+
+    const byComm = new Map();
+    for (const r of rows) {
+      if (MEMORIAL_TITLE.test(r.title)) continue;      // entitled to them
+      if (KNOWN_DEPARTED_MISKEYS.has(r.id)) continue;  // already on the burn-down
+      if (!byComm.has(r.id)) byComm.set(r.id, { ...r, slots: [] });
+      byComm.get(r.id).slots.push(`${r.section}[${r.ord}]`);
+    }
+
+    let warnings = 0;
+    for (const c of byComm.values()) {
+      warnings++;
+      console.warn(
+        `Commemoration ${c.id} "${c.title}" (${c.month}-${c.day}) carries stichera ` +
+        `labelled for the Departed at ${c.slots.join(', ')}. A movable memorial ` +
+        `Saturday was almost certainly scraped onto this fixed date — the saint's ` +
+        `Glory will be sung as a funeral hymn. Re-source the saint's own propers, ` +
+        `or add ${c.id} to KNOWN_DEPARTED_MISKEYS if this really is a memorial.`
+      );
+    }
+    if (warnings === 0) console.log('Departed-text mis-key: clean.');
+    return { ok: warnings === 0, warnings };
+  } finally {
+    db.close();
+  }
+}
+
 module.exports = {
   collectKeyPaths,
   warnUnknownKeys,
@@ -1513,4 +1593,5 @@ module.exports = {
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
   validateRubricBleed,
+  validateDepartedTextMiskey,
 };

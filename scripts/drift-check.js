@@ -20,6 +20,7 @@ const {
   validateTropariaTransformIntegrity,
   validateTextCosmetics,
   validateRubricBleed,
+  validateDepartedTextMiskey,
 } = require('../server-lib/overlays/drift');
 
 let totalWarnings = 0;
@@ -39,6 +40,7 @@ const checks = [
   ['troparia transformer integrity', validateTropariaTransformIntegrity],
   ['text cosmetics (entities + glued punctuation)', validateTextCosmetics],
   ['rubric bleed in sung text', validateRubricBleed],
+  ['departed-text mis-key', validateDepartedTextMiskey],
 ];
 
 for (const [label, fn] of checks) {

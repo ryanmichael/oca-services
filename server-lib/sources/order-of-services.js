@@ -55,4 +55,34 @@ function orderResurrectionCount(sundayIso) {
   return Number.isInteger(n) && n >= 1 && n <= 10 ? n : null;
 }
 
-module.exports = { ORDERS_DIR, orderPathFor, orderResurrectionCount };
+/**
+ * The tone the order appoints for the Lord-I-Call Glory (doxastikon).
+ *
+ * The order states it outright — "Glory… St. Luke, Tone 6" — which makes it an
+ * oracle for WHOSE hymn fills the slot, not merely how many hymns precede it.
+ * Returns null when the Vespers block or its Glory line is absent; a missing
+ * oracle is not a finding.
+ *
+ * Scoped to the FIRST "Glory…" after the "Lord, I Call" heading, because the
+ * same file later carries the Aposticha and Praises Glorys in the same shape
+ * and in different tones.
+ */
+function orderLicGloryTone(sundayIso) {
+  const file = orderPathFor(sundayIso);
+  if (!file) return null;
+  let txt;
+  try { txt = fs.readFileSync(file, 'utf8'); } catch { return null; }
+  const start = txt.search(/^Lord, I Call/im);
+  if (start === -1) return null;
+  // Stop at "Gladsome Light", which closes the Lord-I-Call block in every
+  // order file; without the bound an order missing its Glory line would
+  // borrow the Aposticha's.
+  const end = txt.search(/^Gladsome Light/im);
+  const block = txt.slice(start, end === -1 ? undefined : end);
+  const m = block.match(/^Glory[^\n]*?,\s*Tone\s+(\d)\b/im);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return Number.isInteger(n) && n >= 1 && n <= 8 ? n : null;
+}
+
+module.exports = { ORDERS_DIR, orderPathFor, orderResurrectionCount, orderLicGloryTone };

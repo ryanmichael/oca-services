@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 10,
+  "packets": 11,
   "counts": {
-    "service": 26,
+    "service": 30,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
     "unbound": 4,
-    "assets": 161
+    "assets": 165
   },
   "assets": {
     "92817f66af30": {
@@ -274,6 +274,38 @@
       "filename": "10.14.26 Daily Vespers.pdf",
       "bytes": 5004490,
       "pages": 10
+    },
+    "2c5d247af13c": {
+      "id": "2c5d247af13c",
+      "sha256": "2c5d247af13c4d4c1d4cbdbd8974af2870bdd41d5fd06f963c286ac9e648b47c",
+      "path": "2026-10-14/pdf/liturgy-2026-10-18.pdf",
+      "filename": "Divine Liturgy 10.18.26.pdf",
+      "bytes": 6040948,
+      "pages": 10
+    },
+    "611e68f74831": {
+      "id": "611e68f74831",
+      "sha256": "611e68f74831a95ea365b0a09b37d4b6422894f4c917e5e29fcf53dfd2376cef",
+      "path": "2026-10-14/pdf/liturgy-2026-10-25.pdf",
+      "filename": "Divine Liturgy 10.25.26.pdf",
+      "bytes": 4416395,
+      "pages": 8
+    },
+    "64818ca012d2": {
+      "id": "64818ca012d2",
+      "sha256": "64818ca012d2a08cc19a56b19ad9b66a77266bed6bc40b729a02653fc2c58fd1",
+      "path": "2026-10-14/pdf/great-vespers-2026-10-17.pdf",
+      "filename": "Great Vespers 10.17.26.pdf",
+      "bytes": 7312352,
+      "pages": 13
+    },
+    "43e61738f446": {
+      "id": "43e61738f446",
+      "sha256": "43e61738f44657cde133eccf11a4d809a9526a1ab37fd0b7c2e6c565bd0f9c29",
+      "path": "2026-10-14/pdf/great-vespers-2026-10-24.pdf",
+      "filename": "Great Vespers 10.24.26.pdf",
+      "bytes": 7104894,
+      "pages": 13
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1597,6 +1629,46 @@
       "tone": null,
       "asset": "0d31e987268d",
       "packet": "2026-10-07"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-18",
+      "contentDate": "2026-10-18",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "2c5d247af13c",
+      "packet": "2026-10-14"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-25",
+      "contentDate": "2026-10-25",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "611e68f74831",
+      "packet": "2026-10-14"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-17",
+      "contentDate": "2026-10-18",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "64818ca012d2",
+      "packet": "2026-10-14"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-24",
+      "contentDate": "2026-10-25",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "43e61738f446",
+      "packet": "2026-10-14"
     },
     {
       "kind": "block",

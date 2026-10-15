@@ -1,0 +1,132 @@
+{
+  "emailDate": "2026-10-14",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast 10/14",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast 10/14",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/13a6d8a2-df26-4fa4-9dc7-31cb2e66d1b7/scratchpad/drop-2026-10-14",
+      "fetchedAt": "2026-10-15T12:43:12.087Z",
+      "attachments": 4
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-15T12:43:12.087Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Divine Liturgy 10.18.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-10-18",
+      "contentDate": "2026-10-18",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-10-18.pdf",
+      "sha256": "2c5d247af13c4d4c1d4cbdbd8974af2870bdd41d5fd06f963c286ac9e648b47c",
+      "bytes": 6040948,
+      "pages": 10,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-10-18",
+      "messageSubject": "St John Choir Email Blast 10/14",
+      "ocr": {
+        "file": "ocr/liturgy-2026-10-18.txt",
+        "pages": 10,
+        "textPages": 0,
+        "musicPages": 10,
+        "chars": 0
+      }
+    },
+    {
+      "original": "Divine Liturgy 10.25.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-10-25",
+      "contentDate": "2026-10-25",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-10-25.pdf",
+      "sha256": "611e68f74831a95ea365b0a09b37d4b6422894f4c917e5e29fcf53dfd2376cef",
+      "bytes": 4416395,
+      "pages": 8,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-10-25",
+      "messageSubject": "St John Choir Email Blast 10/14",
+      "ocr": {
+        "file": "ocr/liturgy-2026-10-25.txt",
+        "pages": 8,
+        "textPages": 3,
+        "musicPages": 5,
+        "chars": 1721
+      }
+    },
+    {
+      "original": "Great Vespers 10.17.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-10-17",
+      "contentDate": "2026-10-18",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-10-17.pdf",
+      "sha256": "64818ca012d2a08cc19a56b19ad9b66a77266bed6bc40b729a02653fc2c58fd1",
+      "bytes": 7312352,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-17",
+      "messageSubject": "St John Choir Email Blast 10/14",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-10-17.txt",
+        "pages": 13,
+        "textPages": 6,
+        "musicPages": 7,
+        "chars": 5712
+      }
+    },
+    {
+      "original": "Great Vespers 10.24.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-10-24",
+      "contentDate": "2026-10-25",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-10-24.pdf",
+      "sha256": "43e61738f44657cde133eccf11a4d809a9526a1ab37fd0b7c2e6c565bd0f9c29",
+      "bytes": 7104894,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-24",
+      "messageSubject": "St John Choir Email Blast 10/14",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-10-24.txt",
+        "pages": 13,
+        "textPages": 6,
+        "musicPages": 7,
+        "chars": 5322
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [
+    {
+      "filename": "Daily Vespers 10.14.26.pdf",
+      "reason": "identical to 2026-10-07/pdf/daily-vespers-2026-10-14.pdf",
+      "sha256": "0d31e987268d750215ed5114cc3b6f6a782415aa992dca3420c86072dad69aa6"
+    }
+  ],
+  "excluded": []
+}

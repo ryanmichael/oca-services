@@ -75,6 +75,13 @@ const FATHERS_EVE     = '2026-10-10';
 const FATHERS_SUNDAY  = '2026-10-11';
 const FATHERS_EVE_27  = '2027-10-09';
 const TYLER = '&parish=st-john-damascus-tyler&translation=st-john-damascus-tyler';
+// "the toggle is off" is stated EXPLICITLY, not borrowed from whatever the
+// parish currently has stored. Tyler held includeSecondKoinonikon=0 when these
+// were written and returned it to unset on 2026-10-17, which silently changed
+// what INV-6/INV-6b were testing — INV-6 would have kept passing for the wrong
+// reason and INV-6b broke. The rubric's semantics are the subject here, so the
+// state belongs in the request.
+const TYLER_NO_2ND = `${TYLER}&secondKoinonikon=hide`;
 
 const lic       = bs => bs.filter(b => b.section === 'Lord, I Have Cried');
 const licHymns  = bs => lic(bs).filter(b => b.type === 'hymn');
@@ -146,7 +153,7 @@ describe('Holy Fathers of an Ecumenical Council — Sunday propers', () => {
   });
 
   it('INV-6: an OCA-prescribed second koinonikon renders even with the parish toggle off', async () => {
-    const hymns = (await liturgy(FATHERS_SUNDAY, TYLER))
+    const hymns = (await liturgy(FATHERS_SUNDAY, TYLER_NO_2ND))
       .filter(b => b.section === 'Communion Hymn' && b.type === 'hymn');
     assert.equal(hymns.length, 2, 'both communion verses the order prints');
     assert.match(hymns[0].text, /^Praise the Lord from the heavens/);
@@ -154,7 +161,7 @@ describe('Holy Fathers of an Ecumenical Council — Sunday propers', () => {
   });
 
   it('INV-6b: the same parish on an ordinary Sunday still sings ONE verse', async () => {
-    const hymns = (await liturgy('2026-10-18', TYLER))
+    const hymns = (await liturgy('2026-10-18', TYLER_NO_2ND))
       .filter(b => b.section === 'Communion Hymn' && b.type === 'hymn');
     assert.equal(hymns.length, 1, 'includeSecondKoinonikon still governs the optional verse');
   });

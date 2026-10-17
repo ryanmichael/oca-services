@@ -185,7 +185,10 @@ describe('Feature contract: 9-13 Founding of the Church of the Resurrection', ()
   });
 
   it('INV-7: a parish with includeSecondKoinonikon=false sees one koinonikon', async () => {
-    const blocks = await liturgy('2026-09-13', '&translation=st-john-damascus-tyler');
+    // The off state is stated in the request, not taken from the parish's
+    // stored value: Tyler returned this rubric to unset on 2026-10-17.
+    const blocks = await liturgy('2026-09-13',
+      '&translation=st-john-damascus-tyler&secondKoinonikon=hide');
     const comm = blocks.filter(b => b.section === 'Communion Hymn' && b.type === 'hymn' && b.speaker === 'choir');
     assert.equal(comm.length, 1);
     // …but still sings the Founding troparion, kontakion, prokeimenon and alleluia.

@@ -52,6 +52,42 @@ Lenten Sundays 2/4/5, Holy Fathers (07-19, 10-11) and the Sunday after the Eleva
 - `GET /parish-admin/<slug>/settings` reports `tristate_rubrics: {id: 'unset'|'1'|'0'}`. The legacy `rubric_include_second_koinonikon` boolean is still sent for API compatibility but is **not** the truth — it cannot represent `unset`.
 - Each option carries both a `label` and a `detail`. The detail spells out the consequence; the original one-line description is what made the suppressing value look harmless.
 
+## Refresh after a save
+
+**Contract test:** `test/contracts/parish-rubric-refresh.test.js`
+
+A rubric change must take effect in the running process, without a restart.
+`refreshParishOverlay(parishId)` rebuilds the overlay and must invalidate **two**
+independent caches:
+
+| Cache | Cleared by | Holds |
+|---|---|---|
+| `translationCache` (`overlays/cascade.js`) | `invalidateOverlayCascade` | the resolved **fixed-text** cascade |
+| `rubricsCache` (`overlays/rubrics.js`) | `invalidateOverlayRubrics` | the merged **rubrics** object |
+
+Only the first existed until 2026-10-17. Tyler cleared `includeSecondKoinonikon`
+through the admin page; the `parish_rubrics` row was gone from the DB, the page
+reported *"Saved. Preview updated."*, and every service still rendered the
+suppressed Communion Verse on all nine affected Sundays until the server was
+restarted. Production masked it, because a deploy restarts the container — so
+the bug bit exactly the case parish self-service exists for: a parish changing
+their own settings against a long-running instance.
+
+`invalidateOverlayRubrics` is **chain-aware**: a child overlay merges its
+parents' rubrics, so invalidating a parent drops the children's memos too. It
+walks the extends chain rather than matching key suffixes, because these keys are
+bare overlay ids and not the composite cascade keys `invalidateOverlayCascade`
+matches on.
+
+### A parish's stored value is not a test fixture
+
+Two contract tests used Tyler's stored `includeSecondKoinonikon = 0` to stand for
+"the toggle is off". When the parish returned the rubric to unset, one broke and
+the other would have kept passing for the wrong reason. A test about a rubric's
+semantics states the state in the request (`&secondKoinonikon=hide`) rather than
+borrowing whatever the parish currently has stored. See `TYLER_NO_2ND` in
+`test/contracts/holy-fathers-council-sunday.test.js`.
+
 ## How to add a new rubric (post-refactor)
 
 1. Add a `rubrics` entry in `data/rubric-registry.json`. Set `appliesTo`, `namespace`, `type`, `default`, `label`, `description`.

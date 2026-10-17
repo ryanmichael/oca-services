@@ -31,6 +31,9 @@ const {
   clearInMemoryOverlay,
 } = require('../overlays/in-memory');
 const { invalidateOverlayCascade } = require('../overlays/cascade');
+// The rubrics memo is separate from the fixed-text cascade and needs its own
+// invalidation; without it an admin save does not take effect until restart.
+const { invalidateOverlayRubrics } = require('../overlays/rubrics');
 
 const SERVICES_WITH_DERIVATIONS = ['liturgy', 'vespers'];
 
@@ -230,6 +233,7 @@ function refreshParishOverlay(parishId) {
     if (!row) {
       clearInMemoryOverlay(parishId);
       invalidateOverlayCascade(parishId);
+      invalidateOverlayRubrics(parishId);
       return null;
     }
     const picks         = readVariantPicks(db, parishId);
@@ -242,6 +246,7 @@ function refreshParishOverlay(parishId) {
     const overlay = buildParishOverlay(row, picks, library, rubricPicks, practice);
     registerInMemoryOverlay(parishId, overlay);
     invalidateOverlayCascade(parishId);
+    invalidateOverlayRubrics(parishId);
     return overlay;
   } finally {
     db.close();

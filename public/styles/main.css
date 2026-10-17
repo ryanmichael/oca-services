@@ -1335,6 +1335,19 @@ body.mode-choir .choir-toggles { display: flex; }
   white-space: nowrap; flex-shrink: 0;
 }
 
+/* Tri-state rubric — a <select>, not a checkbox, because "unset" is a real
+   third choice. Sits among .pa-toggle rows, so it borrows their rhythm. */
+.pa-tristate { padding: 10px 0; font-family: 'EB Garamond', serif; color: var(--text); }
+.pa-tristate .pa-toggle-head { margin-bottom: 6px; }
+.pa-tristate .pa-field-input { margin-top: 2px; }
+.pa-tristate .pa-toggle-detail { display: block; margin-top: 6px; }
+/* The chosen option's own consequence, spelled out under the control. */
+.pa-tristate .pa-tristate-effect {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px; font-style: italic; color: var(--muted);
+  margin-top: 8px; padding-left: 12px; border-left: 2px solid var(--gold);
+}
+
 /* Toast — bottom-right, gold left-border on success / rubric on error. */
 .toast {
   position: fixed; right: 24px; bottom: 24px;

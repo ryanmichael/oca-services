@@ -20,6 +20,9 @@ const {
   loadRegistry,
   getRubricPicks,
   setRubricPick,
+  clearRubricPick,
+  planRubricPickWrites,
+  tristateStates,
   coerce,
 } = require('../parishes/rubric-registry');
 const { loadPracticeLibrary } = require('../practice/library');
@@ -138,6 +141,8 @@ function handleGetSettings(parishId, res) {
     rubric_omit_pre_trisagion_litany:    !!data.row.rubric_omit_pre_trisagion_litany,
     rubric_include_lesser_saints:        !!data.row.rubric_include_lesser_saints,
     rubric_include_second_gospel:        !!data.row.rubric_include_second_gospel,
+    // Kept for API compatibility, but NOT the truth for a tristate rubric: a
+    // boolean cannot express `unset`. The admin UI reads `tristate_rubrics`.
     rubric_include_second_koinonikon:    !!data.row.rubric_include_second_koinonikon,
     rubric_omit_catechumens_seasons:     data.row.rubric_omit_catechumens_seasons || '',
     rubric_paschal_communion_year_round: !!data.row.rubric_paschal_communion_year_round,
@@ -146,6 +151,10 @@ function handleGetSettings(parishId, res) {
     variant_picks:  data.picks,
     practice_picks: data.practicePicks,
     rubric_picks:   data.rubricPicks,
+    // `unset` | `1` | `0` per tristate rubric. Absent-means-unset is a real
+    // choice (for includeSecondKoinonikon it is the OCA-practice one), so the
+    // UI needs it named rather than inferred from a missing key.
+    tristate_rubrics: tristateStates(data.rubricPicks),
     updated_at: data.row.updated_at,
   });
 }
@@ -177,15 +186,31 @@ async function handlePostSettings(parishId, req, res) {
     const BOOL_FIELDS     = boolFields();
     const COL_TO_RUBRIC   = dbColumnToRubricId();
 
+    // Tristate rubrics are decided here, not field-by-field below: their typed
+    // column is pinned to the registry default and excluded from the
+    // dual-write, so `parish_rubrics` is their only source of truth. See
+    // planRubricPickWrites for the two failure modes this prevents.
+    const plan = planRubricPickWrites(payload);
+
     const updates = {};
     for (const field of WRITABLE_FIELDS) {
       if (!(field in payload)) continue;
+      // A stale client may still post the old boolean for a tristate rubric;
+      // honouring it would re-introduce exactly the inversion we just removed.
+      if (plan.skipDualWriteColumns.has(field)) continue;
       let v = payload[field];
       if (BOOL_FIELDS.has(field)) v = v ? 1 : 0;
       if (typeof v === 'string' && v.length > 2000) {
         return send(res, 400, { error: 'field_too_long', field });
       }
       updates[field] = v;
+    }
+    // Pin each tristate column to its registry default. buildRubrics falls back
+    // to the typed column when no pick exists, and a leftover `1` there would
+    // make a cleared pick read as `true` — turning "OCA default" into "always
+    // both" — so the fallback is kept permanently inert.
+    for (const [col, dflt] of Object.entries(plan.columnDefaults)) {
+      if (existing[col] !== dflt) updates[col] = dflt;
     }
     if (Object.keys(updates).length === 0
         && !('variant_picks' in payload) && !('practice_picks' in payload)
@@ -220,6 +245,10 @@ async function handlePostSettings(parishId, req, res) {
       for (const [field, v] of Object.entries(updates)) {
         const rubricId = COL_TO_RUBRIC[field];
         if (!rubricId) continue;
+        // A tristate rubric's pick is the parish's choice, not a mirror of its
+        // column. Dual-writing it here is what undid a hand-cleared row on the
+        // next save of any unrelated setting.
+        if (plan.skipDualWriteColumns.has(field)) continue;
         setRubricPick(db, parishId, rubricId, v);
       }
 
@@ -239,14 +268,12 @@ async function handlePostSettings(parishId, req, res) {
       // dual-written; these have nowhere else to live, so without this path they
       // are settable only by hand in the DB. Three already existed unsettable
       // (hoursPrecedeService, licNoLeadingRepeat, gloryAfterLittleLitany).
-      if (Array.isArray(payload.rubric_picks)) {
-        const reg = loadRegistry().rubrics || {};
-        for (const rp of payload.rubric_picks) {
-          if (!rp || typeof rp.rubric_id !== 'string') continue;
-          const def = reg[rp.rubric_id];
-          if (!def || def.dbColumn) continue;   // unknown, or column-backed
-          setRubricPick(db, parishId, rp.rubric_id, rp.value);
-        }
+      // Registry-only rubrics (no typed column) and tristate rubrics (whose
+      // column is pinned above). `clear` is the state a checkbox could not
+      // express and setRubricPick cannot write.
+      for (const w of plan.writes) {
+        if (w.action === 'clear') clearRubricPick(db, parishId, w.rubricId);
+        else                      setRubricPick(db, parishId, w.rubricId, w.value);
       }
 
       if (Array.isArray(payload.practice_picks)) {

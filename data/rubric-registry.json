@@ -50,11 +50,28 @@
     },
     "includeSecondKoinonikon": {
       "label": "Second communion verse",
-      "description": "When the day has two koinonika, both are sung.",
+      "description": "Three states, not two. The default sings a polyeleos saint's own Communion Verse \u2014 OCA practice \u2014 while leaving a cocelebrated feast's extra verse off. Turning it OFF suppresses the saint's verse too.",
       "namespace": "readings.includeSecondKoinonikon",
       "type": "boolean",
       "default": false,
       "tristate": true,
+      "tristateOptions": [
+        {
+          "value": "unset",
+          "label": "OCA default",
+          "detail": "A polyeleos saint's own Communion Verse is sung; a cocelebrated feast's extra verse is not."
+        },
+        {
+          "value": "1",
+          "label": "Always sing both",
+          "detail": "Adds the cocelebrated-feast verse on top of the default. Three further dates in 2026."
+        },
+        {
+          "value": "0",
+          "label": "Never a second verse",
+          "detail": "One Communion Verse only. Suppresses the saint's own verse on nine Sundays in 2026, including dates the OCA order prescribes it."
+        }
+      ],
       "tristateReason": "liturgy-from-orthocal.js reads this three ways: `=== true` opts IN to a cocelebrated-overlay koinonikon, `!== false` opts OUT of a polyeleos+ saint's, so `undefined` means ALLOWED, not false. An explicit false must therefore survive default-compaction or the parish's setting is inverted (found 2026-08-29).",
       "appliesTo": [
         "liturgy"

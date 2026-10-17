@@ -265,16 +265,11 @@
             </span>
           </label>
 
-          <label class="pa-toggle">
-            <input type="checkbox" id="f-second-koinonikon" name="rubric_include_second_koinonikon">
-            <span class="pa-toggle-body">
-              <span class="pa-toggle-head">
-                <span class="pa-toggle-label">Second communion verse</span>
-                <span class="pa-toggle-default">default: off</span>
-              </span>
-              <span class="pa-toggle-detail">When the day has two koinonika, both are sung.</span>
-            </span>
-          </label>
+          <!-- Tri-state, so deliberately NOT a checkbox: "unset" is a real
+               third choice and the one that matches OCA practice. Filled from
+               /api/rubric-registry (tristateOptions) by renderTristateRubrics;
+               do not hand-write the options here. -->
+          <div class="pa-tristate" data-tristate-rubric="includeSecondKoinonikon"></div>
 
           <label class="pa-toggle">
             <input type="checkbox" id="f-paschal-comm" name="rubric_paschal_communion_year_round">

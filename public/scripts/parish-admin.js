@@ -64,7 +64,6 @@ const els = {
   omitPreTrisagion:$('f-omit-pre-trisagion'),
   lesserSaints:    $('f-lesser-saints'),
   secondGospel:    $('f-second-gospel'),
-  secondKoinonikon:$('f-second-koinonikon'),
   paschalComm:     $('f-paschal-comm'),
   beatitudesReaderLed: $('f-beatitudes-reader-led'),
   faithfulLitany2Long: $('f-faithful-litany-2-long'),
@@ -95,7 +94,6 @@ function snapshotMain() {
     rubric_omit_pre_trisagion_litany:    els.omitPreTrisagion.checked,
     rubric_include_lesser_saints:        els.lesserSaints.checked,
     rubric_include_second_gospel:        els.secondGospel.checked,
-    rubric_include_second_koinonikon:    els.secondKoinonikon.checked,
     rubric_paschal_communion_year_round: els.paschalComm.checked,
     rubric_beatitudes_reader_led:        els.beatitudesReaderLed.checked,
     rubric_faithful_litany_2_long:       els.faithfulLitany2Long.checked,
@@ -107,6 +105,10 @@ function snapshotMain() {
         .map(s => `${s.dataset.pickKey}=${s.value}`).join(';'),
     rubric_picks_serialized:             registryToggles()
         .map(c => `${c.dataset.rubricId}=${c.checked ? 1 : 0}`).join(';'),
+    // Tristate rubrics are three-valued, so a 0/1 serialization would make
+    // "unset" indistinguishable from "off" and the Save button would stay grey.
+    tristate_picks_serialized:           tristateSelects()
+        .map(s => `${s.dataset.rubricId}=${s.value}`).join(';'),
   };
 }
 
@@ -217,7 +219,6 @@ function populate(data) {
   els.omitPreTrisagion.checked = !!data.rubric_omit_pre_trisagion_litany;
   els.lesserSaints.checked     = !!data.rubric_include_lesser_saints;
   els.secondGospel.checked     = !!data.rubric_include_second_gospel;
-  els.secondKoinonikon.checked = !!data.rubric_include_second_koinonikon;
   els.paschalComm.checked      = !!data.rubric_paschal_communion_year_round;
   els.beatitudesReaderLed.checked = !!data.rubric_beatitudes_reader_led;
   els.faithfulLitany2Long.checked = !!data.rubric_faithful_litany_2_long;
@@ -233,7 +234,7 @@ function populate(data) {
     Object.fromEntries((data.variant_picks  || []).map(p => [p.variant_key,  p.variant_id])),
     Object.fromEntries((data.practice_picks || []).map(p => [p.practice_key, p.preset_id]))
   );
-  renderRegistryRubrics(data.rubric_picks || {});
+  renderRegistryRubrics(data.rubric_picks || {}, data.tristate_rubrics || {});
 
   initialState.main  = snapshotMain();
   initialState.setup = snapshotSetup();
@@ -347,6 +348,11 @@ function registryToggles() {
   return [...document.querySelectorAll('input[type="checkbox"][data-rubric-id]')];
 }
 
+/** Selects for tristate rubrics. Values are 'unset' | '1' | '0'. */
+function tristateSelects() {
+  return [...document.querySelectorAll('select[data-rubric-id][data-tristate]')];
+}
+
 // A rubric declares the services it applies to; the page has three panels.
 const RUBRIC_PANEL = {
   liturgy: 'liturgy',
@@ -358,10 +364,11 @@ const RUBRIC_PANEL = {
  *  rubrics keep their hand-written markup and their `rubric_*` payload fields;
  *  these have no other home, and before this they could only be set by editing
  *  the database by hand. */
-function renderRegistryRubrics(current) {
+function renderRegistryRubrics(current, tristateCurrent) {
   return fetch(RUBRIC_REGISTRY_URL, { credentials: 'same-origin' })
     .then(r => (r.ok ? r.json() : { rubrics: {} }))
     .then(({ rubrics }) => {
+      renderTristateRubrics(rubrics || {}, tristateCurrent || {});
       const slots = {};
       document.querySelectorAll('[data-rubric-slots]').forEach(el => {
         slots[el.dataset.rubricSlots] = el;
@@ -421,8 +428,84 @@ function renderRegistryRubrics(current) {
     .catch(() => {});
 }
 
+/**
+ * Render a three-way <select> for every rubric the registry marks `tristate`.
+ *
+ * A checkbox cannot express these, and rendering one anyway is the bug this
+ * replaces: unchecking "Second communion verse" stored an explicit `0`, which
+ * suppresses the polyeleos saint's own Communion Verse on nine Sundays of 2026
+ * rather than merely declining an extra — and there was no way to ask for the
+ * default back. The options and all three pieces of copy come from the registry
+ * (`tristateOptions`), so the wording lives next to the behaviour it describes.
+ */
+function renderTristateRubrics(rubrics, current) {
+  for (const host of document.querySelectorAll('[data-tristate-rubric]')) {
+    const id  = host.dataset.tristateRubric;
+    const def = rubrics[id];
+    host.innerHTML = '';
+    // No registry entry, or it is no longer tristate: say so rather than
+    // rendering an empty control that silently sends nothing.
+    if (!def || def.tristate !== true || !Array.isArray(def.tristateOptions)) {
+      const p = document.createElement('p');
+      p.className = 'pa-field-label';
+      p.textContent = 'This rubric is no longer configurable here.';
+      host.appendChild(p);
+      continue;
+    }
+
+    const head = document.createElement('span');
+    head.className = 'pa-toggle-head';
+    const name = document.createElement('span');
+    name.className = 'pa-toggle-label';
+    name.textContent = def.label || id;
+    const dflt = document.createElement('span');
+    dflt.className = 'pa-toggle-default';
+    dflt.textContent = 'default: OCA';
+    head.appendChild(name); head.appendChild(dflt);
+
+    const detail = document.createElement('span');
+    detail.className = 'pa-toggle-detail';
+    detail.textContent = def.description || '';
+
+    const select = document.createElement('select');
+    select.className = 'pa-field-input';
+    select.id = def.domId || `f-rubric-${id}`;
+    select.dataset.rubricId = id;
+    select.dataset.tristate = '1';
+    for (const o of def.tristateOptions) {
+      const opt = document.createElement('option');
+      opt.value = o.value;
+      opt.textContent = o.label;
+      select.appendChild(opt);
+    }
+    // An unrecognised stored value falls back to the default state rather than
+    // to the first option, so a value we cannot represent never reads as a
+    // deliberate suppression.
+    const stored = String(current[id] ?? 'unset');
+    select.value = def.tristateOptions.some(o => o.value === stored) ? stored : 'unset';
+
+    const effect = document.createElement('p');
+    effect.className = 'pa-tristate-effect';
+    const showEffect = () => {
+      const chosen = def.tristateOptions.find(o => o.value === select.value);
+      effect.textContent = chosen?.detail || '';
+    };
+    showEffect();
+    select.addEventListener('change', () => { showEffect(); refreshMainDirtyUI(); });
+
+    host.appendChild(head);
+    host.appendChild(detail);
+    host.appendChild(select);
+    host.appendChild(effect);
+  }
+}
+
 function rubricPicksFromForm() {
-  return registryToggles().map(c => ({ rubric_id: c.dataset.rubricId, value: c.checked ? 1 : 0 }));
+  return [
+    ...registryToggles().map(c => ({ rubric_id: c.dataset.rubricId, value: c.checked ? 1 : 0 })),
+    // Sent as the raw three-way string; the server maps 'unset' to a DELETE.
+    ...tristateSelects().map(s => ({ rubric_id: s.dataset.rubricId, value: s.value })),
+  ];
 }
 
 // ── Save ─────────────────────────────────────────────────────────────────
@@ -450,13 +533,14 @@ async function submitMain(e) {
     delete payload.variant_picks_serialized;
     delete payload.practice_picks_serialized;
     delete payload.rubric_picks_serialized;
+    delete payload.tristate_picks_serialized;
     payload.variant_picks  = picksFromForm();
     payload.practice_picks = practicePicksFromForm();
     payload.rubric_picks   = rubricPicksFromForm();
     for (const k of [
       'rubric_confess_first','rubric_omit_pre_trisagion_litany',
       'rubric_include_lesser_saints','rubric_include_second_gospel',
-      'rubric_include_second_koinonikon','rubric_paschal_communion_year_round',
+      'rubric_paschal_communion_year_round',
       'rubric_beatitudes_reader_led',
       'rubric_faithful_litany_2_long',
     ]) payload[k] = payload[k] ? 1 : 0;

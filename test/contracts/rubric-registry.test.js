@@ -163,6 +163,113 @@ describe('Feature contract: rubric registry', () => {
     }
   });
 
+  // INV-G/INV-H close the 2026-10-16 UI inversion. A tristate rubric was
+  // rendered as a checkbox and dual-written from its typed column, so:
+  //   * unchecking it stored an explicit `0`, which SUPPRESSES the polyeleos
+  //     saint's own Communion Verse (nine Sundays of 2026, 8-16 among them,
+  //     where the OCA order prescribes it) rather than declining an extra; and
+  //   * the dual-write fired for every typed column in the payload, changed or
+  //     not, so clearing the row by hand was undone by the next save of any
+  //     unrelated setting, with nothing in the history diff.
+  // Asserted against the pure planner so no server, token or DB write is needed.
+
+  it('INV-G: every tristate rubric offers an `unset` option in the registry', () => {
+    const reg = loadRegistry();
+    const tristate = Object.entries(reg.rubrics).filter(([, d]) => d.tristate === true);
+    assert.ok(tristate.length > 0,
+      'no tristate rubrics declared — delete INV-G rather than letting it vacuously pass');
+
+    for (const [id, def] of tristate) {
+      assert.ok(Array.isArray(def.tristateOptions) && def.tristateOptions.length === 3,
+        `${id}: a tristate rubric needs three declared options, or the admin UI falls back ` +
+        `to a checkbox and cannot express the unset state`);
+      const values = def.tristateOptions.map(o => o.value);
+      assert.deepEqual(values.slice().sort(), ['0', '1', 'unset'],
+        `${id}: options must be exactly unset/1/0, got ${JSON.stringify(values)}`);
+      for (const o of def.tristateOptions) {
+        assert.ok(o.label && o.detail,
+          `${id}: option ${o.value} needs a label AND a detail — "both are sung" read as an ` +
+          `optional extra, which is how the suppressing value got chosen`);
+      }
+    }
+  });
+
+  it('INV-H: a tristate rubric is driven only by its pick, never by its typed column', () => {
+    const { planRubricPickWrites } = require(
+      path.join(ROOT, 'server-lib', 'parishes', 'rubric-registry.js'));
+    const reg = loadRegistry();
+    const tristate = Object.entries(reg.rubrics).filter(([, d]) => d.tristate === true);
+    assert.ok(tristate.length > 0, 'no tristate rubrics declared — delete INV-H');
+
+    for (const [id, def] of tristate) {
+      // (a) The column is excluded from the dual-write and pinned to the
+      //     registry default EVEN WHEN the payload carries no pick for it.
+      //     This is the re-assertion trap: a save of an unrelated setting.
+      const bare = planRubricPickWrites({ rubric_confess_first: 1 }, reg);
+      assert.ok(bare.skipDualWriteColumns.has(def.dbColumn),
+        `${id}: ${def.dbColumn} must never be dual-written — that is what resurrected a ` +
+        `cleared pick on the next unrelated save`);
+      assert.equal(bare.columnDefaults[def.dbColumn], def.default ? 1 : 0,
+        `${id}: the typed column must be pinned to the registry default, or a leftover 1 ` +
+        `makes a cleared pick read as \`true\` through the buildRubrics fallback`);
+      assert.deepEqual(bare.writes, [],
+        `${id}: a payload with no rubric_picks must not touch any pick`);
+
+      // (b) `unset` clears the row. setRubricPick is an UPSERT and cannot.
+      const cleared = planRubricPickWrites(
+        { rubric_picks: [{ rubric_id: id, value: 'unset' }] }, reg);
+      assert.deepEqual(cleared.writes, [{ rubricId: id, action: 'clear', value: null }],
+        `${id}: 'unset' must DELETE the pick; anything else leaves an explicit value behind`);
+
+      // (c) The two explicit states still round-trip as themselves.
+      for (const [sent, want] of [['1', '1'], ['0', '0'], [1, '1'], [0, '0']]) {
+        const plan = planRubricPickWrites(
+          { rubric_picks: [{ rubric_id: id, value: sent }] }, reg);
+        assert.deepEqual(plan.writes, [{ rubricId: id, action: 'set', value: want }],
+          `${id}: explicit ${JSON.stringify(sent)} must be stored as ${want}`);
+      }
+
+      // (d) An unparseable value is stored as a definite state, never as a
+      //     clear — a garbled payload must not silently reset the parish.
+      const junk = planRubricPickWrites(
+        { rubric_picks: [{ rubric_id: id, value: 'maybe' }] }, reg);
+      assert.equal(junk.writes[0].action, 'set',
+        `${id}: an unrecognised value must not be treated as 'unset'`);
+    }
+  });
+
+  it('INV-H2: non-tristate rubrics keep their existing write path', () => {
+    const { planRubricPickWrites } = require(
+      path.join(ROOT, 'server-lib', 'parishes', 'rubric-registry.js'));
+    const reg = loadRegistry();
+
+    // A column-backed boolean sent in rubric_picks is still ignored there: it
+    // travels as a `rubric_*` field and is dual-written, unchanged by this work.
+    const columnBacked = Object.entries(reg.rubrics)
+      .find(([, d]) => d.dbColumn && d.tristate !== true);
+    assert.ok(columnBacked, 'expected at least one column-backed boolean rubric');
+    const ignored = planRubricPickWrites(
+      { rubric_picks: [{ rubric_id: columnBacked[0], value: 1 }] }, reg);
+    assert.deepEqual(ignored.writes, [],
+      `${columnBacked[0]} is column-backed and not tristate; rubric_picks must stay a no-op for it`);
+
+    // A registry-only rubric is still written from rubric_picks.
+    const registryOnly = Object.entries(reg.rubrics)
+      .find(([, d]) => !d.dbColumn && d.type === 'boolean');
+    if (registryOnly) {
+      const plan = planRubricPickWrites(
+        { rubric_picks: [{ rubric_id: registryOnly[0], value: 1 }] }, reg);
+      assert.deepEqual(plan.writes,
+        [{ rubricId: registryOnly[0], action: 'set', value: '1' }],
+        `${registryOnly[0]}: registry-only rubrics must still be settable`);
+    }
+
+    // An unknown id is dropped rather than written.
+    assert.deepEqual(
+      planRubricPickWrites({ rubric_picks: [{ rubric_id: 'nope', value: 1 }] }, reg).writes,
+      [], 'an unknown rubric id must be ignored');
+  });
+
   it('INV-D: registry path produces same buildRubrics result as legacy path (roundtrip)', () => {
     const snapshotPath = path.join(ROOT, 'test', 'contracts', '__snapshots__', 'rubrics-pre-refactor.json');
     const expected = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));

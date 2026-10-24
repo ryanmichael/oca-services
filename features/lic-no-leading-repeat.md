@@ -62,6 +62,7 @@ Glory/Now slots and Theotokion-Dogmatikon selection are unchanged.
 - **INV-4** — Tyler overlay: weekday Daily Vespers and feast-vigil Vespers are unaffected (rubric is Saturday-Great-Vespers-scoped).
 - **INV-5** — Tone 8 (2026-08-01 eve → Sun 8-02, Stephen): both default and Tyler emit 10 LIC hymns (7 octoechos + 3 menaion) with no consecutive duplicates and verse 10 present — the displaced doxastichon fills the 7th slot.
 - **INV-6** — Tone 3 (2026-06-27): the Glory-framed doxastichon never appears as a numbered sticheron; Tone 3 keeps default-doubles / Tyler-9.
+- **INV-7** — Tone 4 (2026-10-24 eve → Sun 10-25, Marcian and Martyrius): both default and Tyler emit 10 numbered LIC hymns (7 octoechos + 3 menaion), verse 10 present, no consecutive duplicates, and the promoted doxastichon is the **7th** numbered sticheron — asserted by position, not merely presence. Before the flag landed, Tyler rendered 9 and the text appeared nowhere in the service; `audit:date` was 0/0/0 on the date, so only the choir packet caught it.
 
 ## Displaced-doxastichon promotion (added 2026-08-01)
 
@@ -77,10 +78,29 @@ Because the two cases are indistinguishable programmatically, promotion is **opt
 tone** via `_alsoNumberedSticheron: true` on the glory node, and fires only when the
 Menaion supplies the Glory (so the text can never render twice in one service).
 
-**Verified tones: 8 only.** Set against the St. John of Damascus (Tyler) choir booklet for
-2026-08-02, which numbers the Octoechos block 10–4 and ends on this text. Do not set the
-flag on another tone without the same kind of parish-booklet or service-book confirmation
-— guessing here silently moves a Glory text into a numbered slot.
+**Verified tones: 8 and 4.** Set against the St. John of Damascus (Tyler) choir booklets,
+which number the Octoechos block 10–4 and end on the tone's doxastichon:
+
+| Tone | Evidence | Added |
+|---|---|---|
+| 8 | Tyler booklet 2026-08-02 | 2026-08-01 |
+| 4 | Tyler booklets 2026-10-24 and 2026-08-29 + the Tone 4 intro sheet in the 2026-08-27 packet all print the block numbered 10–4 ending on this text (so it is a *numbered* sticheron, not Glory-framed); `reference/orders/2026-1025-order-services.txt` independently appoints "7 stichera of the Resurrection, Tone 4" | 2026-10-24 |
+
+Note the two halves of that evidence are doing different jobs. A booklet's 10–4 numbering
+proves the text belongs to the numbered series rather than the Glory slot — which is the
+only thing the flag encodes. **It does not prove 7 are sung on that date:** the sheets
+print the Octoechos block in full regardless. 2026-08-30 is the counter-example — its
+order appoints 4 Resurrection + 3 Forerunner + 3 Saints, and we correctly render 4 + 6,
+because promotion is gated on `orderResurrectionCount(date)` exceeding the tone's published
+hymn count. Promotion therefore fires only where the order actually asks for a 7th.
+
+Do not set the flag on another tone without the same kind of parish-booklet or
+service-book confirmation — guessing here silently moves a Glory text into a numbered slot.
+
+**Tones still unverified: 1, 2, 3, 6, 7** (Tone 5 already publishes the full 7 and has no
+`glory` node). Each needs its own booklet confirmation before promotion; where the tone's
+doxastichon turns out to be Glory-framed (as Tone 3's is), promotion is wrong and the tone
+genuinely needs the 4th Anatolikon sourced instead. See the Forward note below.
 
 ## Forward note
 

@@ -145,6 +145,37 @@ describe('Feature contract: licNoLeadingRepeat', () => {
     }
   });
 
+  it('INV-7: Tone 4 — displaced doxastichon fills the 7th slot, so both parishes get a clean 10', async () => {
+    // 2026-10-24 eve → Sun 10-25, Tone 4, Martyrs Marcian and Martyrius. Same shape
+    // as INV-5: Tone 4's doxastichon reads as a plain resurrectional sticheron, the
+    // Menaion takes the Glory, so it is sung as the 7th numbered one. Verified against
+    // the Tyler choir sheets for 2026-10-24 and 2026-08-29 (both number the Octoechos
+    // block 10-4 and end on this text as sticheron 4) and reference/orders/2026-1025,
+    // which appoints "7 stichera of the Resurrection, Tone 4".
+    //
+    // Before the flag landed the parish rendered 9 and the text appeared nowhere:
+    // audit:date was 0/0/0 on the date, so only the packet caught it.
+    for (const q of ['', `&translation=${TYLER}`]) {
+      const who = q ? 'Tyler' : 'default';
+      const { json } = await get(`/api/service?date=2026-10-24${q}`);
+      assert.equal(json.tone, 4, `${who}: expected Tone 4`);
+      const hymns = licHymnBlocks(json);
+      assert.equal(hymns.length, 10,
+        `${who}: Tone 4 LIC should emit 10 numbered hymns (7 octoechos + 3 menaion); got ${hymns.length}`);
+      const numberedOcto = hymns.filter(b => b.source === 'octoechos');
+      assert.equal(numberedOcto.length, 7, `${who}: expected 7 numbered octoechos stichera`);
+      assert.equal(hymns.filter(b => b.source === 'menaion').length, 3, `${who}: expected 3 menaion hymns`);
+      // Position, not just presence: the doxastichon must be the SEVENTH, at verse 4.
+      assert.match(numberedOcto[6].text, /Thy begetting from the Father/,
+        `${who}: the promoted doxastichon must be the 7th numbered sticheron`);
+      for (let i = 1; i < hymns.length; i++) {
+        assert.notEqual(hymns[i].text, hymns[i - 1].text,
+          `${who}: consecutive LIC hymns ${i - 1} and ${i} should not be identical`);
+      }
+      assert.ok(licVerseIds(json).includes('lic-verse-10'), `${who}: verse 10 should be present`);
+    }
+  });
+
   it('INV-6: a Glory-framed doxastichon is never promoted into a numbered slot', async () => {
     // Guards the opt-in. Tone 3's doxastichon is written for the Glory slot
     // ("we offer our evening song") and must stay out of the numbered stichera,

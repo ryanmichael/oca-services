@@ -471,7 +471,7 @@
   "prayers-before-communion": {
     "_note": "Prayers from the rule before Holy Communion, printed in the Communion Hymn section for the faithful to pray SILENTLY while the clergy commune. Off by default; a parish opts in with the `liturgy.silentCommunionPrayers` rubric, and when it is on these replace the Troparia/Kontakia cue rubrics that otherwise fill the section. An array so further prayers of the rule can be added without reshaping anything.",
     "_source": "Supplied by St John of Damascus, Tyler (2026-10-12) as the wording the parish uses. The published edition is NOT identified: the reading 'nor sufficiently pleasing' matches neither the OCA Service Book nor Jordanville, so this is recorded as parish-supplied rather than credited to a book. Verbatim apart from lowercasing 'And As Thou didst not abhor' in paragraph 5. If the edition is later identified, replace this note with the citation — do not re-author the text.",
-    "rubric": "While the clergy commune, the faithful pray silently:",
+    "rubric": "While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:",
     "prayers": [
       {
         "id": "chrysostom-roof",

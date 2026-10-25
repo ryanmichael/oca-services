@@ -440,6 +440,12 @@ body.dev-mode .src-tag { display: inline; }
 .prayer.compact {
   font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.6;
 }
+/* A step smaller than `.compact`, for a long text read privately while
+   something else is happening — the silent pre-Communion prayer. It should
+   read as fine print beside what is being sung, not dominate the page. */
+.prayer.fine {
+  font-size: 12px; font-style: italic; color: var(--muted); line-height: 1.65;
+}
 .spk {
   display: block;
   font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
@@ -767,6 +773,7 @@ body.dev-mode .src-tag { display: inline; }
      at this size it reads as double-spaced, so the leading tightens too. */
   .prayer      { font-size: 22px; line-height: 1.55; }
   .prayer.compact { font-size: 18px; }
+  .prayer.fine    { font-size: 17px; }
   .rubric      { font-size: 18px; }
   .instruction { font-size: 18px; }
   .verse       { font-size: 18px; }
@@ -1507,6 +1514,11 @@ body.mode-choir .choir-toggles { display: flex; }
   font-family: 'EB Garamond', Georgia, serif; font-size: 15pt;
   line-height: 1.75; color: var(--text); margin-bottom: 8px;
   break-inside: avoid;
+}
+/* The id raises specificity above `.prayer.fine`, so the booklet needs its
+   own step or the silent prayer prints at full size. */
+#bk-root .prayer.fine {
+  font-size: 11pt; font-style: italic; color: var(--muted); line-height: 1.5;
 }
 #bk-root .stich-label {
   font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;

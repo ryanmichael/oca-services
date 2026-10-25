@@ -131,8 +131,13 @@ function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
       // turns them into breaks). Splitting into a block per paragraph the way
       // _litCommunionPrayer does would stamp a speaker on all ten of them; the
       // Creed is already one multi-paragraph block, so this is the shape.
+      //
+      // `fine` is a step smaller than `compact`: ten paragraphs nobody says
+      // aloud should read as fine print beside what is being sung, not
+      // dominate the page. Styled in `public/styles/main.css` (`.prayer.fine`)
+      // and in both print stylesheets in `renderer.js`.
       blocks.push(makeBlock(`ch-silent-${pr.id}`, section, 'prayer', 'all', pr.text,
-        { density: 'compact' }));
+        { density: 'fine' }));
     });
     return blocks;
   }

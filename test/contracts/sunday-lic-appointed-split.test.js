@@ -32,6 +32,7 @@ const { spawn } = require('node:child_process');
 
 const ROOT = path.join(__dirname, '..', '..');
 const { orderResurrectionCount } = require(path.join(ROOT, 'server-lib', 'sources', 'order-of-services'));
+const { getLiturgicalSeason } = require(path.join(ROOT, 'calendar-rules'));
 
 const PORT = 3106;
 let serverProcess;
@@ -127,11 +128,40 @@ describe('Feature contract: Sunday Lord-I-Call appointed split', () => {
   });
 
   it('INV-6: a Sunday with no order file still renders', async () => {
-    // 10 of 52 Sundays in 2026 have no published order. A missing oracle must
-    // fall back to the previous behaviour, never crash or empty the section.
-    assert.equal(orderResurrectionCount('2026-11-15'), null, 'precondition: no order file');
-    const { res, men } = licSplit((await get('/api/service?date=2026-11-14')).json.blocks);
-    assert.ok(res.length + men.length >= 6, `expected a populated Lord I Call, got ${res.length}+${men.length}`);
+    // Some Sundays in 2026 have no published order. A missing oracle must fall
+    // back to the previous behaviour, never crash or empty the section.
+    //
+    // The probe DISCOVERS such a Sunday rather than naming one. It used to
+    // assert the precondition on a hard-coded 2026-11-15, and the weekly
+    // `rubrics:fetch` cron then published that very order (main 8313f10) —
+    // orderResurrectionCount went 7, not null, and the precondition failed on a
+    // test whose actual subject was still fine. The uncovered set shrinks from
+    // the front every week, so any fixed date here has a shelf life.
+    const unordered = [];
+    for (const d = new Date(Date.UTC(2026, 0, 1)); d.getUTCFullYear() === 2026; d.setUTCDate(d.getUTCDate() + 1)) {
+      if (d.getUTCDay() !== 0) continue;                      // Sundays only
+      const iso = d.toISOString().slice(0, 10);
+      if (orderResurrectionCount(iso) !== null) continue;      // order published
+      // Pascha and the Pentecostarion sing their own Lord-I-Call; this
+      // invariant is about the ordinary Resurrection/Menaion split.
+      if (getLiturgicalSeason(new Date(d)) !== 'ordinaryTime') continue;
+      unordered.push(iso);
+    }
+    if (!unordered.length) {
+      // Every 2026 Sunday has an order — the fallback path is unreachable for
+      // this year and the invariant has nothing left to probe here. Fail loudly
+      // rather than pass vacuously: re-point it at a year the cron has not
+      // reached.
+      assert.fail('no unordered ordinary-time Sunday left in 2026 — re-point INV-6 at a later year');
+    }
+    for (const sunday of unordered) {
+      const eve = new Date(Date.UTC(...sunday.split('-').map((n, i) => (i === 1 ? +n - 1 : +n))));
+      eve.setUTCDate(eve.getUTCDate() - 1);                    // Vespers is sung the evening before
+      const iso = eve.toISOString().slice(0, 10);
+      const { res, men } = licSplit((await get(`/api/service?date=${iso}`)).json.blocks);
+      assert.ok(res.length + men.length >= 6,
+        `${sunday} (eve ${iso}): expected a populated Lord I Call, got ${res.length}+${men.length}`);
+    }
   });
 
   it('INV-7: D21 and the assembler share one parser', async () => {

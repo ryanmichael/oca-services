@@ -54,6 +54,14 @@ echo "Running plural-address drift guard..."
 # 0/0/0. Fails only on keys the baseline does not already list.
 npm run audit:plural-address
 
+echo "Running Glory-slot Theotokion drift guard..."
+# A Theotokion scraped into the order=0 doxastikon slot: the choir then sings
+# it under "Glory to the Father…" credited to the saint, and a second
+# Theotokion under "Now and ever…". 2026-10-29 sang two Theotokia that way
+# with the audit at 0/0/0. Fails only on commemorations the baseline does not
+# already list.
+npm run audit:glory-theotokion
+
 echo "Running server-free structural audit (audit:offline)..."
 # Only the 9 of 131 rules that need no assembled output. Renamed from
 # `audit:quick` 2026-10-06: under its old name it passed 0/0/0 on 365 dates

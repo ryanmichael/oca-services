@@ -111,6 +111,14 @@ const CSS = `
     line-height: 1.45;
   }
 
+  /* A step smaller than compact: prayed privately, so it reads as fine print. */
+  p.prayer.fine, p.response.fine {
+    font-style: italic;
+    color: #444;
+    font-size: 8.5pt;
+    line-height: 1.4;
+  }
+
   p.response {
     margin: 0 0 6px;
   }
@@ -414,6 +422,7 @@ function renderService(blocks, options = {}) {
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
         'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; white-space: pre-line; }\\n' +
         'p.prayer.compact, p.response.compact { font-style: italic; color: #444; font-size: 9pt; line-height: 1.4; }\\n' +
+        'p.prayer.fine, p.response.fine { font-style: italic; color: #444; font-size: 8pt; line-height: 1.35; }\\n' +
         'div.glory-line { font-weight: bold; margin: 8px 0 3px; }\\n' +
         '.source-tag { display: none; }\\n' +
         '.service-title { text-align: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #8b1a1a; }\\n' +
@@ -472,8 +481,7 @@ function renderBlock(block) {
 
     case 'prayer':
     case 'response': {
-      const compact = block.density === 'compact' ? ' compact' : '';
-      lines.push(`    <p class="${escHtml(block.type)}${compact}">${text}</p>`);
+      lines.push(`    <p class="${escHtml(block.type)}${densityClass(block)}">${text}</p>`);
       break;
     }
 
@@ -499,6 +507,17 @@ function renderBlock(block) {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/**
+ * Presentational density step for a prayer/response body. `compact` is the
+ * small italic used for readings and long spoken prayers; `fine` is a step
+ * smaller still, for text read privately while something else is happening
+ * (the silent pre-Communion prayer). Unknown values style as the default.
+ */
+const DENSITY_CLASS = { compact: ' compact', fine: ' fine' };
+function densityClass(block) {
+  return DENSITY_CLASS[block.density] || '';
+}
 
 function buildSourceTag(block) {
   const parts = [];

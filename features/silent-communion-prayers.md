@@ -1,6 +1,6 @@
 # Silent pre-Communion prayer during the Communion Hymn
 
-**Status:** shipped 2026-10-12
+**Status:** shipped 2026-10-12; set in fine print 2026-10-25
 **Contract test:** `test/contracts/silent-communion-prayers.test.js`
 **Rubric:** `liturgy.silentCommunionPrayers` (registry: `silentCommunionPrayers`) — off by default
 **Text:** `fixed-texts/liturgy-fixed.json` → `prayers-before-communion`
@@ -82,6 +82,44 @@ Chrysostom Liturgy*, not authorship: the first of those three is Symeon
 Metaphrastes'. Nothing new here may take a `-chrysostom` suffix for that reason.
 INV-6 asserts the aloud prayers still render.
 
+## Fine print, and a rubric that says so (2026-10-25)
+
+Ten paragraphs at full reading size dominate the page at a moment when the
+congregation is *not* being asked to read them aloud — and the parish asked for
+the opposite emphasis: small, clearly optional, clearly quiet.
+
+Two changes, no new rubric:
+
+**A third density step, `fine`.** `density: 'compact'` (14px desktop / 18px
+phone) is the small italic already used for readings and long spoken prayers,
+so it does not distinguish this from them. `fine` is one step below it (12px /
+17px desktop / phone, 8.5pt in print, 11pt in the booklet) and is a general
+presentational step, not a one-off class: any block read privately can take it.
+
+It has to be styled in **four** places, because the class alone is inert:
+`.prayer.fine` in `public/styles/main.css`, the `≤767px` phone override beside
+`.prayer.compact`, `p.prayer.fine` in the print stylesheet in `renderer.js`, and
+`#bk-root .prayer.fine` — the booklet's `#bk-root` selector outranks
+`.prayer.fine`, so without its own rule the booklet prints at full size. (The
+same specificity trap means the booklet has never honoured `.compact`; that is
+left alone here rather than changed blind.)
+
+Both renderers map it: `densityClass()` in `renderer.js` (print/static) and the
+`densityCls` ternary in `public/scripts/renderer.js` (the panel). INV-10 renders
+a block through **both** and asserts the class reaches the markup, then compares
+the two CSS font sizes — a `fine` rule that is larger than `compact` fails.
+
+**The rubric now names the wait and the quiet.** It read "While the clergy
+commune, the faithful pray silently:" — true but terse, and it did not say that
+there are several minutes to fill or that saying it quietly to oneself is the
+intent rather than following along. It now reads:
+
+> While the clergy commune there is a wait of several minutes. The faithful may
+> pray silently, saying this quietly to themselves:
+
+`silently` stays in the wording on purpose: INV-4 matches `/\bsilent/i`, and
+"keep silence" would not satisfy it.
+
 ## Invariants
 
 - **INV-1** — off by default: the OCA base keeps the cue rubrics and emits no
@@ -98,6 +136,10 @@ INV-6 asserts the aloud prayers still render.
   prayer renders with no archaic forms left.
 - **INV-8** — `_litCommunionHymn` called without fixed texts or rubrics (Typika
   does this) neither throws nor emits a silent-prayer block.
+- **INV-9** — the rubric before it says there is a **wait** and that it may be
+  prayed **quietly**, not only that it is silent.
+- **INV-10** — the block carries `density: 'fine'`, both renderers stamp the
+  class, and `.prayer.fine` is styled smaller than `.prayer.compact`.
 
 ## Scope
 

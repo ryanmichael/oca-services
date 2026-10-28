@@ -13,8 +13,12 @@
 const { describe, it, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const http = require('node:http');
+const fs = require('node:fs');
+const vm = require('node:vm');
 const path = require('path');
 const { spawn } = require('node:child_process');
+
+const ROOT = path.join(__dirname, '..', '..');
 
 const PORT = 3117; // distinct: 3116 was the last taken
 let serverProcess;
@@ -119,6 +123,49 @@ describe('silent pre-Communion prayer', () => {
       `a rubric just before the prayer must say it is prayed silently, saw: ${JSON.stringify(preceding)}`);
     assert.ok(preceding.some(t => /Chrysostom/i.test(t)),
       `the attribution must render as its own rubric, saw: ${JSON.stringify(preceding)}`);
+  });
+
+  it('INV-9 — the rubric says there is a wait and that it may be prayed quietly', async () => {
+    const bl = await blocks(`/api/liturgy?date=${DATE}&pronoun=tt${TYLER}`);
+    const at = bl.findIndex(b => b.id === SILENT);
+    const instruction = bl.slice(0, at).reverse()
+      .filter(b => b.section === 'Communion Hymn' && b.type === 'rubric')
+      .slice(0, 2).map(b => b.text).join(' ');
+    assert.match(instruction, /\bwait\b/i,
+      `the rubric must say there is a wait, saw: ${JSON.stringify(instruction)}`);
+    assert.match(instruction, /\bquietly\b/i,
+      `the rubric must say it may be prayed quietly, saw: ${JSON.stringify(instruction)}`);
+  });
+
+  it('INV-10 — it renders at the `fine` density, a step smaller than compact', async () => {
+    const bl = await blocks(`/api/liturgy?date=${DATE}&pronoun=tt${TYLER}`);
+    const b = bl.find(x => x.id === SILENT);
+    assert.equal(b.density, 'fine', 'density step on the block');
+
+    // The class must actually reach the markup in BOTH renderers — the panel
+    // (browser) and the print/static page (server) — or the density is inert.
+    const src = fs.readFileSync(path.join(ROOT, 'public/scripts/renderer.js'), 'utf8');
+    const sandbox = { window: {} };
+    vm.createContext(sandbox);
+    vm.runInContext(src, sandbox);
+    assert.match(sandbox.window.renderBlocks([b], {}), /class="prayer fine"/,
+      'panel renderer must stamp the fine class');
+
+    const { renderService } = require(path.join(ROOT, 'renderer.js'));
+    assert.match(renderService([b], { title: 't' }), /class="prayer fine"/,
+      'print renderer must stamp the fine class');
+
+    // ...and `fine` must be smaller than `compact`, not merely present.
+    const css = fs.readFileSync(path.join(ROOT, 'public/styles/main.css'), 'utf8');
+    const px = (sel) => {
+      const rule = new RegExp(`${sel.replace(/\./g, '\\.')}\\s*\\{([^}]*)\\}`).exec(css);
+      assert.ok(rule, `${sel} must be styled`);
+      const size = /font-size:\s*([\d.]+)px/.exec(rule[1]);
+      assert.ok(size, `${sel} must set a font-size`);
+      return parseFloat(size[1]);
+    };
+    assert.ok(px('.prayer.fine') < px('.prayer.compact'),
+      'the fine step must be smaller than the compact step');
   });
 
   it('INV-5 — all ten paragraphs survive, first and last anchored', async () => {

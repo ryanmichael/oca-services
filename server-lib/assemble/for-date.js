@@ -635,6 +635,42 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             : null;
           lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: gloryOwner?.title || sticheraLabel, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
+        } else if (isWeekdayInjection && !isGreatVespers && !isVigilFeast && !lic.glory && !lic.now) {
+          // A simple weekday saint with NO doxastikon of his own. The books
+          // print one combined "Glory… now and ever…" over the Theotokion —
+          // the same shape Saturday Great Vespers already renders over its
+          // Dogmatikon — not a bare Now, and certainly not nothing.
+          //
+          // Without this branch the whole Glory/Now block above is skipped
+          // (it is guarded on `licGlory`), so the section ended on its sixth
+          // sticheron and the Theotokion was never sung. Invisible until
+          // 10-29's Theotokion was un-mis-keyed out of the Glory slot: while a
+          // Theotokion sat at order=0 every such day rendered a Glory and a
+          // Now, both of them Theotokia. Found 2026-10-27.
+          //
+          // Prefers the Menaion's own Now (order=-1), a Stavrotheotokion only
+          // on liturgical Wed/Fri, exactly as the licGlory branch above does;
+          // otherwise the Octoechos weekday Theotokion in the week's tone,
+          // keyed by the evening the service is sung.
+          const dow      = calendarEntry.dayOfWeek;
+          const crossDay = dow === 'wednesday' || dow === 'friday';
+          const eve      = VESPERS_SUNG_EVE[dow] || dow;
+          const weekTone = calendarEntry.liturgicalContext?.tone;
+          const own = sticheraData?.[0]?.stichera.find(
+            s => s.section === 'lordICall' && s.order === -1
+              && (crossDay || s.groupRole !== 'stavrotheotokion'));
+          if (own) {
+            lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: own.tone, label: 'Theotokion', combinesGloryNow: true };
+            autoSlot.lordICall.glory = { text: own.text, tone: own.tone, label: own.label };
+          } else if (weekTone && eve) {
+            lic.glory = {
+              source: 'octoechos',
+              key:    `tone${weekTone}.${eve}.vespers.lordICall.theotokion`,
+              tone:   weekTone,
+              label:  'Theotokion',
+              combinesGloryNow: true,
+            };
+          }
         }
       }
 

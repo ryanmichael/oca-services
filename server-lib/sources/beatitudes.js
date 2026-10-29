@@ -117,6 +117,28 @@ const FEAST_BEATITUDES_BLENDS = {
     ],
   },
 
+  // Sunday 11-1: the Unmercenaries Cosmas and Damian.
+  // reference/orders/2026-1101-order-services.txt appoints 6 Resurrection (T5)
+  // + 4 from Ode 3 of the Canon of the Unmercenaries (T1).
+  //
+  // Found 2026-10-29 by checking the LIVE site two days before the service:
+  // the Vespers fix had shipped and was correct, and the Liturgy Beatitudes
+  // were still the plain Octoechos eight — 6 Resurrection + Glory +
+  // Theotokion. Eight into twelve right-aligned slots puts every troparion
+  // FOUR stichoi late, which is the 9-20 failure again, not merely four
+  // missing hymns.
+  //
+  // No gap: november-01.json carries Ode 3 complete — three troparia and its
+  // Theotokion, which `take: 4` ends on so it lands at Now-and-ever. The
+  // canon is Tone 1, not the day's Tone 5.
+  '11-1': {
+    octoechosTroparia: 6,
+    parts: [
+      { file: 'variable-sources/menaion/november-01.json',
+        at: 'matins.canon.ode3', take: 4, tone: 1, label: 'For the Unmercenaries' },
+    ],
+  },
+
   // Sunday 11-8: Synaxis of the Archangel Michael and the Other Bodiless
   // Powers. reference/orders/2026-1108-order-services.txt appoints 6
   // Resurrection (T6) + 4 from Ode 3 of the Canon of the Angels (T8) — ten, so

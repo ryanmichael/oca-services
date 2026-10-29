@@ -83,6 +83,7 @@ before(async () => {
 after(() => { if (serverProcess) serverProcess.kill(); });
 
 const MICHAEL = '2026-11-08';
+const UNMERCENARIES = '2026-11-01';   // 6 Resurrection T5 + 4 of the Canon T1
 
 const liturgy = async (date) => (await get(`/api/liturgy?date=${date}`)).json;
 const inSection = (blocks, name) => blocks.filter(b => b.section === name);
@@ -152,7 +153,29 @@ describe('Feature contract: the Bodiless Powers have propers and they are sung',
     assert.match(comm, /He makes His angels spirits/, 'the Angels\' koinonikon');
   });
 
-  it('INV-5: both Epistles still render (Epistle doubling is the norm)', async () => {
+  it('INV-5: 11-01 also takes its appointed 6 + 4, in the canon\'s own tone', async () => {
+    // Found on the LIVE site two days before the service, after the Vespers
+    // fix for this same Sunday had already shipped and verified correct: the
+    // Liturgy Beatitudes were still the plain Octoechos eight. Eight into
+    // twelve right-aligned slots sits every troparion FOUR stichoi late.
+    // reference/orders/2026-1101 appoints 4 from Ode 3 of the Canon of the
+    // Unmercenaries, which is Tone 1 — NOT the day's Tone 5.
+    const rows = inSection((await liturgy(UNMERCENARIES)).blocks, 'Third Antiphon');
+    const res  = rows.filter(b => b.source === 'octoechos');
+    const unm  = rows.filter(b => b.source === 'feast');
+    assert.equal(res.length, 6, `expected 6 Resurrection troparia, got ${res.length}`);
+    assert.equal(unm.length, 4, `expected 4 of the Unmercenaries, got ${unm.length}`);
+    for (const b of res) assert.equal(b.tone, 5, 'Resurrection troparia are Tone 5');
+    for (const b of unm) assert.equal(b.tone, 1, "the Canon of the Unmercenaries is Tone 1");
+    assert.match(unm[unm.length - 1].label || '', /Theotokion/,
+      'the Theotokion lands last, at Now-and-ever');
+    for (const b of unm) {
+      assert.doesNotMatch(b.text || '', /^(Theotokion|Stavrotheotokion)\s*[:\u2014-]/i,
+        'no genre heading is sung as text');
+    }
+  });
+
+  it('INV-6: both Epistles still render (Epistle doubling is the norm)', async () => {
     const ep = textOf(inSection((await liturgy(MICHAEL)).blocks, 'Epistle Reading'));
     assert.match(ep, /Ephesians 2\.4-10/, 'the Sunday-cycle Epistle');
     assert.match(ep, /Hebrews 2\.2-10/,   'the Bodiless Powers\' Epistle');

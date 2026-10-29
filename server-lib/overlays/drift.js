@@ -402,8 +402,15 @@ function validateRankSaintTypePopulated() {
     // land on these instead of the rank-bearing saint, that's a separate
     // bug tracked under project_principal_saint_picker_2026_06_20.md, not a
     // saint_type-backfill bug.)
+    //
+    // The Ecumenical-Council Fathers joined 2026-10-29, for the same reason as
+    // "Synaxis of All Saints of X": a council is a company of bishops and
+    // fathers of mixed rank, and the only near category ("hierarch") is
+    // singular, so forcing it would address a council in the singular. Matches
+    // the three council commemorations (1040, 1450, 2095) and not the martyr
+    // or monastic companies that also carry "Fathers" in their titles.
     const t = principal.title;
-    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of|^Synaxis of All Saints|^Church New Year/i.test(t)) continue;
+    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of|^Synaxis of All Saints|^Church New Year|Fathers of the .*Council/i.test(t)) continue;
     console.warn(
       `Rank-bearing date ${md} (${label}): principal commemoration "${principal.title}" ` +
       `(id ${principal.id}) has null saint_type. Backfill: ` +
@@ -1339,12 +1346,18 @@ function validateSticheraSourceMixing() {
 // below rather than fixed blind. They are a visible backlog, not a clean bill
 // of health — several look like this same class. The rule's job is to stop the
 // NEXT one landing silently.
+// 2026-10-29: 1090+1216 and 1415+1421 are RESOLVED and their seeds removed, so
+// a recurrence surfaces instead of staying suppressed. Both were the same class
+// the rule was written for — a movable Fathers Sunday projected onto fixed
+// dates. 1090 (from 2025-06-01) and 1216 (from 2024-06-16) duplicated the
+// 7th-Sunday-of-Pascha set already held in `blocks` under the movable key
+// pentecostarion.week.7.sunday, so they were deleted; 1415's Six-Councils set
+// moved to its own comm 1450 and 1421's identical copy was deleted.
 const KNOWN_SHARED_STICHERA_SETS = new Set([
-  '1090+1216:aposticha', '1090+1216:lordICall',
   '1135+1255:aposticha', '1135+1255:lordICall',
   '1145+1262:aposticha', '1145+1262:lordICall',
   '1182+2456:lordICall', '1202+1310:lordICall',
-  '1415+1421:lordICall', '1890+1944:lordICall',
+  '1890+1944:lordICall',
   '190+204:aposticha',   '190+204:lordICall',
   '2211+2212:lordICall',
   '2529+2532:aposticha', '2529+2532:lordICall',

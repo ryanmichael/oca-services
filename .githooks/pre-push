@@ -62,6 +62,14 @@ echo "Running Glory-slot Theotokion drift guard..."
 # already list.
 npm run audit:glory-theotokion
 
+echo "Running movable-service projection drift guard..."
+# OCA publishes by calendar date, so a scrape of a date a MOVABLE commemoration
+# occupied captures the movable propers — and keyed by month-day those land on
+# whichever fixed saint our calendar holds there, correctly labelled for him.
+# 2026-07-12 eve sang "but Arius taught…" under the Archangel Gabriel with the
+# audit at 0/0/0. Fails only on commemorations the baseline does not list.
+npm run audit:movable-projection
+
 echo "Running server-free structural audit (audit:offline)..."
 # Only the 9 of 131 rules that need no assembled output. Renamed from
 # `audit:quick` 2026-10-06: under its old name it passed 0/0/0 on 365 dates

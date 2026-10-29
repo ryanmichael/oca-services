@@ -48,6 +48,11 @@ function handle(req, res, ctx) {
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
       const format  = (q.format  || '').trim().toLowerCase();
+      // Service TYPE — the celebration mode, the axis Reader's Typika sits on
+      // (/api/typika?as=…). A bishop presiding is a circumstance, not a calendar
+      // variant (chrysostom/basil) and not a parish rubric.
+      const servedAs    = (q.as || '').trim().toLowerCase();
+      const hierarchical = servedAs === 'hierarchical';
       const translation = resolveTranslation(q);
       // Register: explicit ?pronoun wins; else the parish/overlay defaultPronoun; else 'tt'.
       const pronoun = resolvePronoun(q, getOverlayRubrics(translation));
@@ -313,7 +318,7 @@ function handle(req, res, ctx) {
         let blocks;
         try {
           blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, reqSources,
-            { rubrics: overlayRubrics });
+            { rubrics: overlayRubrics, hierarchical });
         } catch (err) {
           console.error('assembleLiturgy error:', err);
           res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -354,7 +359,9 @@ function handle(req, res, ctx) {
         const variantName = calendarEntry.liturgy.variant === 'basil'
           ? 'Liturgy of St. Basil the Great'
           : 'Liturgy of St. John Chrysostom';
-        const serviceName = `Divine Liturgy — ${variantName}`;
+        const serviceName = hierarchical
+          ? `Hierarchical Divine Liturgy — ${variantName}`
+          : `Divine Liturgy — ${variantName}`;
 
         if (format === 'html') {
           const toneLabel = tone ? ` · Tone ${tone}` : '';
@@ -366,6 +373,7 @@ function handle(req, res, ctx) {
         res.end(JSON.stringify({
           date,
           serviceType:    'liturgy',
+          serviceVariant: hierarchical ? 'hierarchical' : 'standard',
           serviceName,
           tone,
           season,

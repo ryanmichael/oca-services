@@ -67,13 +67,19 @@ function _litTrisagion(trisagionSpec, f) {
     }
   }
 
-  // Priestly blessing after the Trisagion, before the Prokeimenon
-  blocks.push(makeBlock('tris-peace', section, 'prayer', 'priest',
-    'Peace be unto all.'));
-  blocks.push(makeBlock('tris-peace-resp', section, 'response', 'choir',
-    'And to thy spirit.'));
-
+  blocks.push(..._trisagionPeace(section));
   return blocks;
 }
 
-module.exports = { _litTrisagion };
+/** The priestly blessing that closes the Trisagion, before the Prokeimenon.
+ *  Shared, because it follows EVERY form of the Trisagion — the ordinary one,
+ *  both festal substitutions, and the hierarchical alternation in
+ *  liturgy-parts/hierarchical.js, which dropped it while this lived inline. */
+function _trisagionPeace(section) {
+  return [
+    makeBlock('tris-peace', section, 'prayer', 'priest', 'Peace be unto all.'),
+    makeBlock('tris-peace-resp', section, 'response', 'choir', 'And to thy spirit.'),
+  ];
+}
+
+module.exports = { _litTrisagion, _trisagionPeace };

@@ -623,5 +623,26 @@
     "_crossRef-lordsPrayer": "lords-prayer in liturgy-fixed — follows the Trinity prayer",
     "_crossRef-authorTroparion": "troparion-chrysostom / troparion-basil in liturgy-fixed",
     "_crossRef-theotokion": "dismissal-theotokion in liturgy-fixed"
+  },
+  "hierarchical": {
+    "_source": "Texts transcribed from the music the St John of Damascus choir sings, published on its site under Special Services -> Hierarchical Liturgy. No OCA order of services carries hierarchical rubrics; reference/orders/2026-1108 is the ordinary Sunday order and defers to the ruling bishop. Only the texts are held here -- the settings (Smolsky, Kovalevsky, Heckman, Obikhod/SVS, Akafist) are third-party arrangements and the choir sings from its own books.",
+    "vesting": {
+      "rubric": "Served when a bishop presides. Before the Liturgy the bishop is met at the doors of the church and vested in the centre of the nave. The choir sings throughout, and the deacon chants the appointed petitions over the singing.",
+      "risingOfTheSun": "From the rising of the sun to its setting, the Name of the Lord is to be praised.\nBlessed be the Name of the Lord, henceforth, henceforth and forevermore.",
+      "vestingRubric": "The bishop is vested. The choir continues as each vestment is put on, and the subdeacons respond.",
+      "soulShallRejoice": "Your soul shall rejoice in the Lord,\nfor He has clothed you with the garment of salvation;\nand with the robe of gladness has He encompassed you;\nas a bridegroom He has set a crown on you;\nand as a bride, He has adorned you with arrayment.",
+      "tonDespotin": "Ton dhespotin kai arkhierea imon, Kirie filate:\nEis polla eti, dhespota, dhespota.",
+      "eisPolla": "Eis polla eti, dhespota."
+    },
+    "trisagion": {
+      "openingRubric": "At a hierarchical Liturgy the Trisagion is sung in the hierarchical form, alternating choir, clergy, choir and trio, with the bishop blessing the people between. It replaces the parish's ordinary Trisagion setting, including any multilingual one.",
+      "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+      "clergyRubric": "The clergy repeat the Trisagion in the altar.",
+      "bishopRubric": "The bishop takes the dikirion and trikirion and blesses the people, saying “Look down from heaven, O God…”. The choir pauses for each blessing. (We hold only the incipit of the bishop's words; the remainder is in the hierarchical service book.)",
+      "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+      "final": "Holy Immortal, have mercy on us.",
+      "tailRubric": "The Trisagion concludes as the bishop ascends to the high place. (The parish's Obikhod setting runs to further numbered sections; we hold only its first page.)"
+    },
+    "theotokosCue": "The bishop commemorates aloud while the choir sustains the hymn, and the deacon chants the proper commemoration over it. The choir stops at the bishop's signal."
   }
 }

@@ -12,6 +12,8 @@ const { _litFeastAntiphon, _litTypicalAntiphon1, _litTypicalAntiphon2,
 const { _litSmallEntrance, _litEntranceHymn, _litPostAmbonRite,
         _litTroparia, _litKontakia }                                        = require('./liturgy-parts/entrance');
 const { _litTrisagion }                                                     = require('./liturgy-parts/trisagion');
+const { _litHierarchicalVesting, _litHierarchicalTrisagion,
+        _litHierarchicalTheotokosCue }                                      = require('./liturgy-parts/hierarchical');
 const { _litProkeimenon, _litEpistle, _litAlleluia, _litGospel }            = require('./liturgy-parts/readings');
 const { _litAugmentedLitany, _litDeparted,
         _litCatechumens, _litLitaniesFaithful }                             = require('./liturgy-parts/litanies');
@@ -43,6 +45,16 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // All paschal branches below read from `paschal`; raw spec.* / season checks
   // should not appear past this point.
   const paschal = derivePaschalState(calendarDay, spec);
+
+  // A bishop presiding is a SERVICE TYPE, not a calendar variant and not a
+  // parish rubric — the same axis Reader's Typika sits on. See
+  // liturgy-parts/hierarchical.js for why none of it comes from the OCA order.
+  const hierarchical = opts.hierarchical === true;
+
+  // ── MEETING AND VESTING OF THE BISHOP ──────────────────────────────────────
+  // Precedes the Liturgy proper: the bishop is met at the doors and vested in
+  // the centre of the nave while the choir sings.
+  if (hierarchical) blocks.push(..._litHierarchicalVesting(liturgyFixed));
 
   // ── LITURGY OF THE CATECHUMENS ─────────────────────────────────────────────
 
@@ -130,7 +142,19 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   }
 
   // 10. Trisagion
-  blocks.push(..._litTrisagion(spec.trisagion, liturgyFixed));
+  // The hierarchical Trisagion alternates choir / clergy / choir / trio with
+  // the bishop blessing the people between — a different STRUCTURE, not a
+  // different wording, so it substitutes the section rather than editing it.
+  // A festal substitution still wins: "As many as have been baptized…" and
+  // "Before Thy Cross…" replace the hymn itself, and the hierarchical form is
+  // an alternation of "Holy God", not a text that could override them.
+  // `substitution: 'typical'` is NOT one of those — it is the ORDINARY
+  // Trisagion, which is exactly the case the hierarchical form replaces.
+  const festalTrisagion = spec.trisagion?.substitution
+    && spec.trisagion.substitution !== 'typical';
+  blocks.push(...((hierarchical && !festalTrisagion)
+    ? _litHierarchicalTrisagion(liturgyFixed)
+    : _litTrisagion(spec.trisagion, liturgyFixed)));
 
   // 11. Prokeimenon
   blocks.push(..._litProkeimenon(spec.prokeimenon));
@@ -223,6 +247,16 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   //     liturgically correct point (between the megalynarion cue and the
   //     intercessions exclamation).
   blocks.push(..._litAnaphora(isBasil, liturgyFixed, spec.megalynarion));
+
+  // The megalynarion itself is unchanged under a bishop; what differs is that
+  // he commemorates aloud while the choir sustains it, and the choir stops at
+  // his signal rather than at the end of the hymn. That is choreography, so it
+  // is emitted as a cue appended to the section rather than as altered text.
+  if (hierarchical) {
+    const cue  = _litHierarchicalTheotokosCue(liturgyFixed);
+    const last = blocks.map(b => b.section).lastIndexOf('Hymn to the Theotokos');
+    if (cue.length && last >= 0) blocks.splice(last + 1, 0, ...cue);
+  }
 
   // 25. Litany before Lord's Prayer + Lord's Prayer
   blocks.push(..._litLordsPrayer(isBasil, liturgyFixed));

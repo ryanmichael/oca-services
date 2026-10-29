@@ -34,16 +34,17 @@ test('the service-type picker renders every registered type', async ({ page }) =
   await expect(page.locator('#view-liturgy-variant')).toHaveClass(/visible/);
 
   const opts = page.locator('#lv-options .pd-option');
-  await expect(opts).toHaveCount(4);
+  await expect(opts).toHaveCount(5);
   await expect(opts.locator('.pd-option-name')).toHaveText([
     'Standard',
+    'Hierarchical',
     "Reader's Typika",
     "Reader's Typika + Deacon",
     'Typika + Communion of Reserved Gifts',
   ]);
   // Every option carries a description; an empty one means a registry entry
   // shipped without its `desc`.
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     await expect(opts.nth(i).locator('.pd-option-desc')).not.toBeEmpty();
   }
 

@@ -84,6 +84,7 @@ after(() => { if (serverProcess) serverProcess.kill(); });
 
 const MICHAEL = '2026-11-08';
 const UNMERCENARIES = '2026-11-01';   // 6 Resurrection T5 + 4 of the Canon T1
+const ENTRY         = '2026-11-22';   // 6 Resurrection T8 + 4 of the Entry T4
 
 const liturgy = async (date) => (await get(`/api/liturgy?date=${date}`)).json;
 const inSection = (blocks, name) => blocks.filter(b => b.section === name);
@@ -175,7 +176,25 @@ describe('Feature contract: the Bodiless Powers have propers and they are sung',
     }
   });
 
-  it('INV-6: both Epistles still render (Epistle doubling is the norm)', async () => {
+  it('INV-6: 11-22 takes the Entry\'s canon, which the MENAION file does not hold', async () => {
+    // The source is feast-canons/entry-theotokos.json. menaion/november-21.json
+    // carries an irmos for every ode and ZERO troparia — the same empty shape
+    // as the Dormition canon noted in the 8-16 blend. Reading only the Menaion
+    // file would conclude the texts are missing and reserve four silent slots,
+    // and here that would have silenced BOTH terminal slots, since the last two
+    // of the ten land on "Glory…" and "Now and ever…".
+    const rows = inSection((await liturgy(ENTRY)).blocks, 'Third Antiphon');
+    const res = rows.filter(b => b.source === 'octoechos');
+    const fst = rows.filter(b => b.source === 'feast');
+    assert.equal(res.length, 6, `expected 6 Resurrection troparia, got ${res.length}`);
+    assert.equal(fst.length, 4, `expected 4 of the Entry, got ${fst.length}`);
+    for (const b of res) assert.equal(b.tone, 8, 'Resurrection troparia are Tone 8');
+    for (const b of fst) assert.equal(b.tone, 4, "Canon I of the Entry is Tone 4");
+    // Every slot carries real text: no reservation, nothing silent.
+    for (const b of fst) assert.ok((b.text || '').trim(), 'no reserved/empty slot');
+  });
+
+  it('INV-7: both Epistles still render (Epistle doubling is the norm)', async () => {
     const ep = textOf(inSection((await liturgy(MICHAEL)).blocks, 'Epistle Reading'));
     assert.match(ep, /Ephesians 2\.4-10/, 'the Sunday-cycle Epistle');
     assert.match(ep, /Hebrews 2\.2-10/,   'the Bodiless Powers\' Epistle');

@@ -117,6 +117,33 @@ const FEAST_BEATITUDES_BLENDS = {
     ],
   },
 
+  // Sunday 11-22: the Sunday within the Entry of the Theotokos.
+  // reference/orders/2026-1122-order-services.txt appoints 6 Resurrection (T8)
+  // + 4 from Ode 1 of the FIRST Canon of the Feast (T4).
+  //
+  // The source is feast-canons/entry-theotokos.json, NOT menaion/november-21,
+  // whose canon carries an irmos for every ode and zero troparia — the same
+  // empty shape as the Dormition canon noted in the 8-16 blend. Looking only
+  // at the Menaion file would have concluded the texts were missing and
+  // reserved four silent slots; the feast-canons file holds all four, and its
+  // `_meta` names it "Canon I … the composition of George (of Nicomedia), in
+  // Tone IV", which is the canon the order asks for by number and tone.
+  //
+  // So NO reservation here. That matters: all four would have been missing,
+  // and unlike 8-16 and 9-20 the hole could not have been placed early — the
+  // last two of the ten land on "Glory…" and "Now and ever…", so reserving the
+  // whole group would have silenced both terminal slots.
+  //
+  // A feast of the Theotokos has no separate Theotokion in its canon; every
+  // troparion addresses her, so `take: 4` ends on real text at Now-and-ever.
+  '11-22': {
+    octoechosTroparia: 6,
+    parts: [
+      { file: 'variable-sources/feast-canons/entry-theotokos.json',
+        at: 'ode1', take: 4, tone: 4, label: 'For the Entry' },
+    ],
+  },
+
   // Sunday 11-1: the Unmercenaries Cosmas and Damian.
   // reference/orders/2026-1101-order-services.txt appoints 6 Resurrection (T5)
   // + 4 from Ode 3 of the Canon of the Unmercenaries (T1).

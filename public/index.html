@@ -290,24 +290,10 @@
   <div class="print-view-body">
     <div class="print-view-inner">
       <div class="pd-title">SERVICE TYPE</div>
-      <div class="pd-options pd-options-stack">
-        <button class="pd-option" data-svc="liturgy">
-          <span class="pd-option-name">Standard</span>
-          <span class="pd-option-desc">The Divine Liturgy as celebrated by clergy</span>
-        </button>
-        <button class="pd-option" data-svc="typika">
-          <span class="pd-option-name">Reader's Typika</span>
-          <span class="pd-option-desc">Lay-led service of typika and obediential prayers when no priest is present</span>
-        </button>
-        <button class="pd-option" data-svc="typikaDeacon">
-          <span class="pd-option-name">Reader's Typika + Deacon</span>
-          <span class="pd-option-desc">Reader's Typika with deacon-led litanies</span>
-        </button>
-        <button class="pd-option" data-svc="typikaCrg">
-          <span class="pd-option-name">Typika + Communion of Reserved Gifts</span>
-          <span class="pd-option-desc">Typika followed by the rite of Communion from the Reserved Gifts</span>
-        </button>
-      </div>
+      <!-- Filled from LITURGY_SERVICE_TYPES in app.js, which is the one home
+           for this axis. These options used to be hardcoded here as well as in
+           two ternary chains and an endpoint map, and had already drifted. -->
+      <div class="pd-options pd-options-stack" id="lv-options"></div>
     </div>
   </div>
 

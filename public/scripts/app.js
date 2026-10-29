@@ -89,12 +89,61 @@ function styleParam() {
   return activeStyle ? `&style=${encodeURIComponent(activeStyle)}` : '';
 }
 
-const LITURGY_VARIANT_LABELS = {
-  liturgy:      'STANDARD',
-  typika:       "READER'S TYPIKA",
-  typikaDeacon: "READER'S TYPIKA + DEACON",
-  typikaCrg:    'TYPIKA + COMMUNION OF RESERVED GIFTS',
-};
+/** The Divine Liturgy's SERVICE-TYPE axis — the celebration MODE.
+ *
+ *  Three different variant axes meet on this service and must not be confused:
+ *    - `spec.variant` (chrysostom / basil) is CALENDAR-driven: which Liturgy
+ *      the day appoints. Lives server-side in assembleLiturgy.
+ *    - parish rubrics (confessFirst, omitPreTrisagionLitany, …) are POLICY:
+ *      what this parish does.
+ *    - this axis is CIRCUMSTANCE: who is available to serve. Typika belongs to
+ *      it because the Liturgy cannot be served at all.
+ *
+ *  Typika deliberately does NOT appear in the home-page service list. It is
+ *  reachable only from here, because presenting it as a peer of the Liturgy
+ *  would misframe why it exists.
+ *
+ *  `chip` is the compact label on the TYPE: control, `panel` the panel heading,
+ *  and they differ on purpose. Before this registry the two lived in separate
+ *  ternary chains — along with the picker's own markup in index.html and the
+ *  endpoint map in serviceUrl(), four hardcoded copies — and had already
+ *  drifted: the chip read "+ DEACON" while the panel read "WITH DEACON", with
+ *  nothing to say which was intended. Adding a fifth type meant four edits and
+ *  a fourth chance to disagree.
+ */
+const LITURGY_SERVICE_TYPES = [
+  { key: 'liturgy',
+    name: 'Standard',
+    chip: 'STANDARD',
+    panel: 'DIVINE LITURGY',
+    endpoint: '/api/liturgy',
+    desc: 'The Divine Liturgy as celebrated by clergy' },
+  { key: 'typika',
+    name: "Reader's Typika",
+    chip: "READER'S TYPIKA",
+    panel: "READER'S TYPIKA",
+    endpoint: '/api/typika',
+    desc: 'Lay-led service of typika and obediential prayers when no priest is present' },
+  { key: 'typikaDeacon',
+    name: "Reader's Typika + Deacon",
+    chip: "READER'S TYPIKA + DEACON",
+    panel: "READER'S TYPIKA WITH DEACON",
+    endpoint: '/api/typika?as=typika-deacon',
+    desc: "Reader's Typika with deacon-led litanies" },
+  { key: 'typikaCrg',
+    name: 'Typika + Communion of Reserved Gifts',
+    chip: 'TYPIKA + COMMUNION OF RESERVED GIFTS',
+    panel: "READER'S TYPIKA WITH COMMUNION OF THE RESERVED GIFTS",
+    endpoint: '/api/typika?as=typika-crg',
+    desc: 'Typika followed by the rite of Communion from the Reserved Gifts' },
+];
+
+const LITURGY_TYPE_BY_KEY = Object.fromEntries(
+  LITURGY_SERVICE_TYPES.map(t => [t.key, t]));
+
+/** key → compact chip label. Derived, so it cannot drift from the registry. */
+const LITURGY_VARIANT_LABELS = Object.fromEntries(
+  LITURGY_SERVICE_TYPES.map(t => [t.key, t.chip]));
 
 /** Sets the panel title everywhere it appears. Desktop shows the full label;
  *  phones show only the part before the em-dash and carry the remainder
@@ -158,6 +207,7 @@ function updateMetaRow(translationId, svcType, date) {
     typeNm.textContent = LITURGY_VARIANT_LABELS[svcType];
     document.getElementById('pd-type-val').textContent = toTitleCase(LITURGY_VARIANT_LABELS[svcType]);
     typeBtn.dataset.date = date;
+    typeBtn.dataset.svc  = svcType;   // read back by the picker to mark .active
     typeBtn.hidden = false;
     pdType.hidden = false;
   } else {
@@ -172,8 +222,9 @@ function updateMetaRow(translationId, svcType, date) {
 /** The API path for one service. Shared by fetchService() and the booklet
  *  link, so the service-type → endpoint map has exactly one home. */
 function serviceUrl(date, svcType, pronoun = 'tt') {
-  const endpoint = svcType === 'liturgy'           ? '/api/liturgy'
-                 : svcType === 'presanctified'     ? '/api/presanctified'
+  // The Liturgy's service types carry their own endpoints in the registry.
+  const endpoint = LITURGY_TYPE_BY_KEY[svcType]?.endpoint
+                 ?? (  svcType === 'presanctified'     ? '/api/presanctified'
                  : svcType === 'passionGospels'    ? '/api/passion-gospels'
                  : svcType === 'bridegroomMatins'  ? '/api/bridegroom-matins'
                  : svcType === 'lamentations'      ? '/api/lamentations'
@@ -184,11 +235,8 @@ function serviceUrl(date, svcType, pronoun = 'tt') {
                  : svcType === 'kneelingVespers'   ? '/api/kneeling-vespers'
                  : svcType === 'vigil'             ? '/api/vigil'
                  : svcType === 'matins'            ? '/api/matins'
-                 : svcType === 'typika'            ? '/api/typika'
-                 : svcType === 'typikaDeacon'      ? '/api/typika?as=typika-deacon'
-                 : svcType === 'typikaCrg'         ? '/api/typika?as=typika-crg'
                  : svcType === 'burialVespers'     ? '/api/service'
-                 : '/api/service';
+                 : '/api/service');
   const joiner = endpoint.includes('?') ? '&' : '?';
   return `${endpoint}${joiner}date=${date}&pronoun=${pronoun}${translationParam()}${styleParam()}`;
 }
@@ -389,23 +437,21 @@ async function _showPanel(rowEl, date, svcType) {
   activeDate    = date;
   activeSvcType = svcType;
   if (rowEl) rowEl.classList.add('active');
-  const svcLabel = svcType === 'dailyVespers'     ? 'DAILY VESPERS'
+  // Liturgy service types take their panel heading from the registry.
+  const svcLabel = LITURGY_TYPE_BY_KEY[svcType]?.panel
+                 ?? (  svcType === 'dailyVespers'     ? 'DAILY VESPERS'
                  : svcType === 'burialVespers'   ? 'BURIAL VESPERS'
                  : svcType === 'bridegroomMatins' ? 'BRIDEGROOM MATINS'
                  : svcType === 'lamentations'    ? 'THE LAMENTATIONS'
                  : svcType === 'royalHours'      ? 'ROYAL HOURS OF GREAT FRIDAY'
                  : svcType === 'vesperalLiturgy' ? 'VESPERAL LITURGY OF ST. BASIL'
                  : svcType === 'passionGospels'  ? 'TWELVE PASSION GOSPELS'
-                 : svcType === 'liturgy'          ? 'DIVINE LITURGY'
                  : svcType === 'presanctified'    ? 'PRESANCTIFIED LITURGY'
                  : svcType === 'paschalHours'     ? 'PASCHAL HOURS'
                  : svcType === 'paschaCollection' ? 'HOLY PASCHA COLLECTION'
                  : svcType === 'kneelingVespers'  ? 'KNEELING VESPERS OF PENTECOST'
                  : svcType === 'matins'          ? 'MATINS'
-                 : svcType === 'typika'          ? "READER'S TYPIKA"
-                 : svcType === 'typikaDeacon'    ? "READER'S TYPIKA WITH DEACON"
-                 : svcType === 'typikaCrg'       ? "READER'S TYPIKA WITH COMMUNION OF THE RESERVED GIFTS"
-                 : 'GREAT VESPERS';
+                 : 'GREAT VESPERS');
   setPanelTitle(svcLabel);
 
   // Collapse detail section on each new panel open
@@ -1050,16 +1096,7 @@ async function init() {
   document.getElementById('p-meta-type-btn').addEventListener('click', openLiturgyVariantView);
   document.getElementById('pd-type-btn').addEventListener('click', openLiturgyVariantView);
   document.getElementById('lv-back').addEventListener('click', closeLiturgyVariantView);
-  document.querySelectorAll('#view-liturgy-variant .pd-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const newSvc = opt.dataset.svc;
-      const d = document.getElementById('p-meta-type-btn').dataset.date;
-      closeLiturgyVariantView();
-      if (!d || !newSvc) return;
-      setUrlState(d, newSvc);
-      _showPanel(activeRow, d, newSvc);
-    });
-  });
+  renderLiturgyTypeOptions();
 
   // Service Text quick picker
   document.getElementById('p-meta-overlay-btn').addEventListener('click', openServiceTextView);
@@ -1314,9 +1351,47 @@ async function showPanikhidaPanel(opts, replace = false, skipHistory = false) {
 
 // ─── Liturgy variant picker ──────────────────────────────────────────────────
 
+/** Builds the service-type picker from LITURGY_SERVICE_TYPES. Called once at
+ *  startup; the options are static for the session, only `.active` moves. */
+function renderLiturgyTypeOptions() {
+  const list = document.getElementById('lv-options');
+  if (!list) return;
+  list.innerHTML = '';
+  for (const t of LITURGY_SERVICE_TYPES) {
+    const b = document.createElement('button');
+    b.className = 'pd-option';
+    b.dataset.svc = t.key;
+
+    const n = document.createElement('span');
+    n.className = 'pd-option-name';
+    n.textContent = t.name;
+    b.appendChild(n);
+
+    const d = document.createElement('span');
+    d.className = 'pd-option-desc';
+    d.textContent = t.desc;
+    b.appendChild(d);
+
+    b.addEventListener('click', () => {
+      const date = document.getElementById('p-meta-type-btn').dataset.date;
+      closeLiturgyVariantView();
+      if (!date) return;
+      setUrlState(date, t.key);
+      _showPanel(activeRow, date, t.key);
+    });
+    list.appendChild(b);
+  }
+}
+
 function openLiturgyVariantView() {
   closeSearch(/*silent=*/true);
   closeCal();
+  // Mark which type is showing — the picker gave no sign of it before, so the
+  // panel said "TYPE: STANDARD" while the list looked like four equal choices.
+  const current = (document.getElementById('p-meta-type-btn') || {}).dataset?.svc;
+  document.querySelectorAll('#lv-options .pd-option').forEach(o => {
+    o.classList.toggle('active', !!current && o.dataset.svc === current);
+  });
   document.getElementById('view-main').classList.add('hidden');
   document.getElementById('view-liturgy-variant').classList.add('visible');
 }

@@ -132,5 +132,23 @@
     "communionHymn": {
       "text": "The righteous shall be in everlasting remembrance; he shall not be afraid of evil tidings. Alleluia, Alleluia, Alleluia!"
     }
+  },
+  "angels": {
+    "_source": "OCA service texts for 11-08, the Synaxis of the Archangel Michael and the Other Bodiless Powers (reference/scrape/2024-11-08.docx) \u2014 the General Menaion's Common of the Bodiless Powers. Added 2026-10-29: the fourteen categories before it covered saints only, so every angelic commemoration (601, 1415, 1823, 2300) resolved to no propers at all and drift.js exempted them from the rank/saint_type rule for want of a category that fit. 2026-11-08 therefore sang the Sunday prokeimenon, alleluia and koinonikon alone where reference/orders/2026-1108 appoints the Angels' own alongside each.",
+    "prokeimenon": {
+      "tone": 4,
+      "refrain": "He makes His angels spirits, and His ministers a flame of fire.",
+      "verse": "Bless the Lord, O my soul! O Lord my God, Thou art very great!"
+    },
+    "alleluia": {
+      "tone": 5,
+      "verses": [
+        "Praise Him, all His angels, praise Him, all His hosts!",
+        "For He spake, and they came into being; He commanded, and they were created."
+      ]
+    },
+    "communionHymn": {
+      "text": "He makes His angels spirits, and His ministers a flame of fire. Alleluia, Alleluia, Alleluia!"
+    }
   }
 }

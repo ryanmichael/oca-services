@@ -409,8 +409,16 @@ function validateRankSaintTypePopulated() {
     // singular, so forcing it would address a council in the singular. Matches
     // the three council commemorations (1040, 1450, 2095) and not the martyr
     // or monastic companies that also carry "Fathers" in their titles.
+    //
+    // "Synaxis of the Archangel" LEFT the exemption 2026-10-29. It was exempt
+    // only because no General-Menaion category fitted an angel — the fourteen
+    // categories were all saints, and `hierarch` would have addressed an
+    // archangel as a bishop. An `angels` category now exists (the Common of the
+    // Bodiless Powers, from the 11-08 OCA text), so the four angelic
+    // commemorations carry `saint_type='angels'` and the rule guards them like
+    // any other. Keeping the exemption would have hidden the next one.
     const t = principal.title;
-    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Synaxis of the Archangel|^Commemoration of the Founding of|^Synaxis of All Saints|^Church New Year|Fathers of the .*Council/i.test(t)) continue;
+    if (/of our Lord and Savior Jesus Christ|^The Ascension of our Lord|^Commemoration of the Founding of|^Synaxis of All Saints|^Church New Year|Fathers of the .*Council/i.test(t)) continue;
     console.warn(
       `Rank-bearing date ${md} (${label}): principal commemoration "${principal.title}" ` +
       `(id ${principal.id}) has null saint_type. Backfill: ` +

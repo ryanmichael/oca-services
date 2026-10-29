@@ -116,6 +116,31 @@ const FEAST_BEATITUDES_BLENDS = {
         at: 'matins.canon.ode6', take: 3, tone: 4, label: 'For St. Eustathius' },
     ],
   },
+
+  // Sunday 11-8: Synaxis of the Archangel Michael and the Other Bodiless
+  // Powers. reference/orders/2026-1108-order-services.txt appoints 6
+  // Resurrection (T6) + 4 from Ode 3 of the Canon of the Angels (T8) — ten, so
+  // the list begins two stichoi in, which is the ordinary shape for a 6+4
+  // Sunday and not a shortfall.
+  //
+  // We rendered the plain Octoechos set — 6 Resurrection + Glory + Theotokion —
+  // which is eight, so every troparion sat two stichoi late and the Angels were
+  // absent entirely. Same L39 failure as the Holy Fathers Sunday on 2026-10-11.
+  //
+  // NO GAP here, unlike 8-16 and 9-20: november-08.json carries two full canons
+  // of the Bodiless Hosts, both by John of Damascus in Tone 8. `take: 4` keeps
+  // Canon I's three troparia and its Theotokion, whose refrain is "Most holy
+  // Theotokos, save us!" — so the Theotokion lands in the Now-and-ever slot
+  // unaided, which is where the order puts it. Do not raise `take` to reach
+  // into the second canon: its entries are marked `canon: secondCanon` and the
+  // order names only one.
+  '11-8': {
+    octoechosTroparia: 6,
+    parts: [
+      { file: 'variable-sources/menaion/november-08.json',
+        at: 'matins.canon.ode3', take: 4, tone: 8, label: 'For the Bodiless Powers' },
+    ],
+  },
 };
 
 /** Reads `parts` into a flat troparia list. A part that cannot be resolved is
@@ -146,14 +171,27 @@ function loadBlendParts(parts) {
     }
     const chosen = part.take ? ode.troparia.slice(0, part.take) : ode.troparia;
     for (const t of chosen) {
-      const text = typeof t === 'string' ? t : t?.text;
+      let text = typeof t === 'string' ? t : t?.text;
       if (!text || !text.trim()) continue;
+      // Some books print the genre heading INSIDE the troparion's text instead
+      // of in a `label` field: november-08's Ode 3 Theotokion reads
+      // "Theotokion: O Bride of God…", and september-20's Ode 6 stores its own
+      // the same way (noted in the 9-20 blend above). At Matins that heading is
+      // harmless furniture, but pulled into the Beatitudes it is sung — 11-08
+      // printed "Theotokion: O Bride of God" at Now-and-ever. Lift it into the
+      // label, which the branch below already renders correctly.
+      let gluedGenre = null;
+      const glued = text.match(/^(Theotokion|Stavrotheotokion|Triadicon|Martyricon)\s*[:—-]\s*/i);
+      if (glued) {
+        gluedGenre = glued[1];
+        text = text.slice(glued[0].length);
+      }
       // Keep a per-troparion tone when the book records one (the Image's odes
       // mix Tone 4 and Tone 6 in a single array), and surface a Theotokion in
       // the label so the Now-and-ever slot reads correctly.
       const itemTone  = (typeof t === 'object' && t.tone) ? t.tone : part.tone;
-      const itemLabel = (typeof t === 'object' && t.label)
-        ? `${part.label} (${t.label})` : part.label;
+      const genre     = (typeof t === 'object' && t.label) ? t.label : gluedGenre;
+      const itemLabel = genre ? `${part.label} (${genre})` : part.label;
       out.push({ tone: itemTone, label: itemLabel, source: 'feast', text });
     }
   }

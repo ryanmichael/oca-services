@@ -796,6 +796,23 @@ const RUBRIC_BLEED_PATTERNS = [
   [/\bwe (?:chant|sing) the following\b/,      'rubric introducing a further set'],
   [/\bwe sing first\b/,                        'rubric introducing a further set'],
   [/\(Instead of [^)]{0,60}we (?:sing|chant)/, 'parenthesised substitution rubric'],
+  // Added 2026-10-29. The patterns above cover composer attributions, count and
+  // genre headings, conditional rubrics and substitutions — but not the REPEAT
+  // marker, the rubric that says a sticheron is sung more than once. The OCA
+  // Menaion prints it to fill a weekday's stichoi ("(Repeat: 'Having placed all
+  // their hope…')"), other books abbreviate it to a trailing "(twice)", and the
+  // scraper captured that into the sung body, so the choir reads it as a lyric.
+  // 2026-11-01 Vespers printed "…pray with boldness on behalf of our souls!
+  // (twice)" as the first Unmercenaries sticheron.
+  //
+  // A repeat belongs in variable-sources/lic-repeat-patterns.json (WHICH
+  // sticheron doubles is printed in the book, not derivable) or in a second
+  // byte-identical row, never in the text.
+  //
+  // Requires the parentheses. Measured over both tables: this hits exactly the
+  // 5 remaining marked rows and none of the 189 that merely read "thrice" as
+  // verse — "O thrice-blessed ones", "the Thrice-Holy Hymn", "thrice-wretched".
+  [/\((?:twice|thrice|\d+\s*x)\)/i,            'repeat-count rubric inside sung text'],
 ];
 
 // Empty by policy — and it stays empty. This is the SILENT suppression set: a

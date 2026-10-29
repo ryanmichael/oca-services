@@ -34,6 +34,19 @@ const FAMILY = {
                             // (2026-10-04, and liturgies 09-13/09-20/09-27)
   'lambertsen':    'lambertsen',
   'stSergius':     'stsergius',
+  // The General Menaion's category stand-ins (250 rows, every one of them
+  // `stSergius-general`). Unmapped until 2026-10-29, so familyOf() returned
+  // 'unknown' for all of them and the book was unattributable anywhere in the
+  // corpus. It stayed invisible because the fallback only fires where a saint
+  // has no service of his own; tagging the angelic commemorations routed four
+  // blocks through it on 7-12, which is how it surfaced.
+  //
+  // Its OWN family, not folded into 'stsergius'. The assembler already names
+  // it separately on the aposticha path (menaionProvenance = 'St. Sergius
+  // (General)') and the sweep already counts the pair as distinct, so merging
+  // them here would contradict both. A category stand-in addressed to "O holy
+  // one" is also not the same artifact as that saint's own translated service.
+  'stSergius-general': 'stsergius-general',
   'raphaela':      'raphaela',
   // The parish's weekday book. A distinct translation, NOT an OCA artifact:
   // giving it the 'oca' family would make a weekday service mixing it with an
@@ -46,6 +59,9 @@ const LABEL = {
   oca:        'OCA',
   lambertsen: 'Lambertsen',
   stsergius:  'St. Sergius',
+  // Matches the string the assembler already uses on the aposticha path, so
+  // the two routes name the same book the same way.
+  'stsergius-general': 'St. Sergius (General)',
   raphaela:   'Myrrh-bearers (Raphaela)',
   mtmary:     'Daily Octoechos',
   unknown:    'unknown',
@@ -106,6 +122,16 @@ function index(opts = {}) {
     const { openDb } = require(path.join(ROOT, 'server-lib', 'cache', 'sqlite'));
     const db = openDb();
     if (!db) throw new Error('openDb() returned null — storage/oca.db missing');
+    // 2a. The General Menaion, indexed FIRST so a saint's own stichera win on
+    // a text collision — the specific service is the better attribution than
+    // the category stand-in. Added 2026-10-29: this table was never indexed,
+    // so every one of its 250 rows was unattributable and the fallback showed
+    // up as "unresolved" wherever it fired. Same shape as the better-sqlite3
+    // failure recorded above — the index was missing a whole book, and a
+    // missing book reads as a cleaner corpus than we have.
+    for (const r of db.prepare('SELECT text, source FROM general_menaion').all()) {
+      if (r && r.text) { map.set(norm(r.text), familyOf(r.source)); dbRows++; }
+    }
     for (const r of db.prepare('SELECT text, source FROM stichera').all()) {
       if (r && r.text) { map.set(norm(r.text), familyOf(r.source)); dbRows++; }
     }

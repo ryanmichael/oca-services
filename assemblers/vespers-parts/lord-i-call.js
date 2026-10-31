@@ -14,10 +14,13 @@ function assembleLordICall(lordICallSpec, fixedTexts, sources) {
     makeBlock('lic-refrain', section, 'prayer', 'choir', fixedTexts.lordICall.refrain),
   ];
 
-  // Read psalm bodies (Ps 140, 141)
+  // Read psalm bodies (Ps 140, 141). Read to the congregation, not with it —
+  // one size step down, so the stichera that are interleaved with the numbered
+  // verses below stay the visually dominant thing in the section.
   const psalmVerses = fixedTexts.lordICall.psalmVerses;
-  blocks.push(makeBlock('ps140', section, 'prayer', 'reader', psalmVerses.psalm140.text));
-  blocks.push(makeBlock('ps141', section, 'prayer', 'reader', psalmVerses.psalm141.text));
+  const SAID = { density: 'compact' };
+  blocks.push(makeBlock('ps140', section, 'prayer', 'reader', psalmVerses.psalm140.text, SAID));
+  blocks.push(makeBlock('ps141', section, 'prayer', 'reader', psalmVerses.psalm141.text, SAID));
 
   // Assemble stichera slots in verse order (verse numbers descend: 10 → 1)
   // Build a flat map of verse → hymn across all slots

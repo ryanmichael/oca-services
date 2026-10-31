@@ -446,6 +446,15 @@ body.dev-mode .src-tag { display: inline; }
 .prayer.fine {
   font-size: 12px; font-style: italic; color: var(--muted); line-height: 1.65;
 }
+/* A short, invariant acclamation inside a litany — "Lord, have mercy.",
+   "Grant this, O Lord.", "Amen." A reader does not need these at body size;
+   they are a cue that the petition has ended, and at body size they are 31%
+   of the blocks in a Great Vespers. Set apart from `.compact`, which is for
+   LONG text that is spoken to you (readings, psalmody, litany petitions). */
+.prayer.cue {
+  font-size: 13px; font-style: italic; color: var(--muted);
+  line-height: 1.5; margin-bottom: 6px;
+}
 .spk {
   display: block;
   font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 600;
@@ -773,6 +782,7 @@ body.dev-mode .src-tag { display: inline; }
      at this size it reads as double-spaced, so the leading tightens too. */
   .prayer      { font-size: 22px; line-height: 1.55; }
   .prayer.compact { font-size: 18px; }
+  .prayer.cue     { font-size: 17px; }
   .prayer.fine    { font-size: 17px; }
   .rubric      { font-size: 18px; }
   .instruction { font-size: 18px; }
@@ -1515,10 +1525,34 @@ body.mode-choir .choir-toggles { display: flex; }
   line-height: 1.75; color: var(--text); margin-bottom: 8px;
   break-inside: avoid;
 }
-/* The id raises specificity above `.prayer.fine`, so the booklet needs its
-   own step or the silent prayer prints at full size. */
+/* The id raises specificity above `.prayer.compact` and `.prayer.fine`, so
+   the booklet needs its OWN step for each or the density tier is inert here.
+   `.fine` had one; `.compact` did not, and the result was that every block
+   tagged `compact` — the whole anaphora, both readings — printed at full body
+   size in italic: the half-applied style was worse than no style at all.
+   Found 2026-10-31 by probing computed styles in the rendered booklet.
+
+   Unlike the panel, the booklet's `.compact` is ROMAN, not italic. In the
+   panel it marks a short reading; here it carries multi-page runs (psalmody,
+   litany petitions), and a page of italic is harder to read in a dim nave
+   than the size step alone. The size step is doing the hierarchy work. */
+/* 11.5pt against the 15pt body, not 12.5. Measured 2026-10-31 across the
+   whole ladder (12.5 / 12 / 11.5 / 11 / 10.5 / 10): 12 buys nothing, 11.5 is
+   where Great Vespers crosses 28 pages into 7 sheets, and 11 and 10.5 buy
+   nothing further. The next real stop is 10pt, which takes the Liturgy from
+   14 sheets to 13 — rejected for now: 10pt EB Garamond is two thirds of the
+   body size, and this is read standing, in a nave, in low light. */
+#bk-root .prayer.compact {
+  font-size: 11.5pt; font-style: normal; line-height: 1.5; margin-bottom: 6px;
+}
+#bk-root .prayer.cue {
+  font-size: 10.5pt; font-style: italic; color: var(--muted);
+  line-height: 1.3; margin-bottom: 3px;
+}
+/* Kept strictly below `cue` so the ladder reads in one direction: the smaller
+   the type, the less the pew is expected to do with it. */
 #bk-root .prayer.fine {
-  font-size: 11pt; font-style: italic; color: var(--muted); line-height: 1.5;
+  font-size: 10pt; font-style: italic; color: var(--muted); line-height: 1.5;
 }
 #bk-root .stich-label {
   font-family: 'EB Garamond', Georgia, serif; font-size: 13pt;

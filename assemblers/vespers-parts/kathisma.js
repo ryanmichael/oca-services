@@ -44,9 +44,16 @@ function assembleBlessedIsTheMan(fixedTexts) {
   blocks.push(makeBlock('kathisma-heading', section, 'rubric', null,
     'KATHISMA I'));
 
+  // `k.refrain` is the antiphon BETWEEN verses — "Alleluia, alleluia,
+  // alleluia.", invariant, eight times in a row. It is the same thing as
+  // "Lord, have mercy." between petitions and gets the same `cue` step, or
+  // the booklet sets two words of filler at the size of a sticheron eight
+  // times. The post-doxology `alleluiaThrice` below is a different, longer
+  // text that closes the section, and stays at body size.
+  const CUE = { density: 'cue' };
   k.verses.forEach((verse, i) => {
     blocks.push(makeBlock(`kathisma-v${i}`, section, 'prayer', 'choir', verse));
-    blocks.push(makeBlock(`kathisma-r${i}`, section, 'response', 'choir', k.refrain));
+    blocks.push(makeBlock(`kathisma-r${i}`, section, 'response', 'choir', k.refrain, CUE));
   });
 
   // HTM/Jordanville-family practice splits the doxology: "Glory…" + Alleluia
@@ -54,9 +61,9 @@ function assembleBlessedIsTheMan(fixedTexts) {
   // to opt in; otherwise the combined Glory+Now form is used (single refrain).
   if (k.gloryOnly && k.nowOnly) {
     blocks.push(makeBlock('kathisma-glory', section, 'doxology', null, k.gloryOnly));
-    blocks.push(makeBlock('kathisma-glory-refrain', section, 'response', 'choir', k.refrain));
+    blocks.push(makeBlock('kathisma-glory-refrain', section, 'response', 'choir', k.refrain, CUE));
     blocks.push(makeBlock('kathisma-now', section, 'doxology', null, k.nowOnly));
-    blocks.push(makeBlock('kathisma-now-refrain', section, 'response', 'choir', k.refrain));
+    blocks.push(makeBlock('kathisma-now-refrain', section, 'response', 'choir', k.refrain, CUE));
   } else {
     blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
       k.gloryNow || 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));

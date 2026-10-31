@@ -33,9 +33,14 @@ function assembleOpening(fixedTexts, isGreatVespers, rubrics) {
 function assemblePsalm103(fixedTexts) {
   const section = 'Psalm 103';
   const p = fixedTexts.psalm103;
+  // The Introductory Psalm is 3.5 booklet pages the congregation LISTENS to
+  // while the priest censes — the longest unbroken read in Vespers, and no
+  // part of it is said by the pew. `compact` keeps it followable at one size
+  // step down rather than letting it outweigh the stichera that follow.
+  const SAID = { density: 'compact' };
   return [
-    makeBlock('ps103-intro', section, 'prayer', 'reader', p.intro),
-    makeBlock('ps103-body', section, 'prayer', 'reader', p.body),
+    makeBlock('ps103-intro', section, 'prayer', 'reader', p.intro, SAID),
+    makeBlock('ps103-body', section, 'prayer', 'reader', p.body, SAID),
     makeBlock('ps103-refrain', section, 'rubric', 'reader', p.refrain),
     makeBlock('ps103-close', section, 'doxology', 'reader', p.close),
     makeBlock('alleluia-3', section, 'response', 'reader', fixedTexts.responses.alleluiaThrice),

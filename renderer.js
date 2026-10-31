@@ -111,6 +111,15 @@ const CSS = `
     line-height: 1.45;
   }
 
+  /* Short invariant litany acclamations: located, not read. */
+  p.prayer.cue, p.response.cue {
+    font-style: italic;
+    color: #444;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
   /* A step smaller than compact: prayed privately, so it reads as fine print. */
   p.prayer.fine, p.response.fine {
     font-style: italic;
@@ -422,6 +431,7 @@ function renderService(blocks, options = {}) {
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
         'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; white-space: pre-line; }\\n' +
         'p.prayer.compact, p.response.compact { font-style: italic; color: #444; font-size: 9pt; line-height: 1.4; }\\n' +
+        'p.prayer.cue, p.response.cue { font-style: italic; color: #444; font-size: 8.5pt; line-height: 1.3; margin-bottom: 3px; }\\n' +
         'p.prayer.fine, p.response.fine { font-style: italic; color: #444; font-size: 8pt; line-height: 1.35; }\\n' +
         'div.glory-line { font-weight: bold; margin: 8px 0 3px; }\\n' +
         '.source-tag { display: none; }\\n' +
@@ -509,12 +519,17 @@ function renderBlock(block) {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 /**
- * Presentational density step for a prayer/response body. `compact` is the
- * small italic used for readings and long spoken prayers; `fine` is a step
- * smaller still, for text read privately while something else is happening
- * (the silent pre-Communion prayer). Unknown values style as the default.
+ * Presentational density step for a prayer/response body. `compact` is for
+ * long text spoken TO the reader (readings, psalmody, litany petitions);
+ * `cue` is for a short invariant acclamation inside a litany ("Lord, have
+ * mercy.", "Amen."), which a reader needs to locate rather than read; `fine`
+ * is a step smaller still, for text read privately while something else is
+ * happening (the silent pre-Communion prayer). Unknown values style as the
+ * default. Every surface that renders blocks needs a rule for each step, or
+ * the tier is silently inert there — see the note on `#bk-root .prayer.compact`
+ * in public/styles/main.css.
  */
-const DENSITY_CLASS = { compact: ' compact', fine: ' fine' };
+const DENSITY_CLASS = { compact: ' compact', cue: ' cue', fine: ' fine' };
 function densityClass(block) {
   return DENSITY_CLASS[block.density] || '';
 }

@@ -124,10 +124,13 @@
   function renderBlock(block, opts) {
     const { type, speaker, text, tone, label, source, density } = block;
     const choirMode = opts && opts.choirMode;
-    // Density steps for prayer/response bodies: `compact` is the small italic
-    // used for readings and long spoken prayers, `fine` a step smaller still
-    // for text read privately (the silent pre-Communion prayer).
+    // Density steps for prayer/response bodies: `compact` for long text spoken
+    // TO the reader (readings, psalmody, litany petitions), `cue` for a short
+    // invariant acclamation inside a litany ("Lord, have mercy."), `fine` a
+    // step smaller still for text read privately (the silent pre-Communion
+    // prayer). Keep in sync with DENSITY_CLASS in the static renderer.js.
     const densityCls = density === 'fine' ? ' fine'
+      : density === 'cue' ? ' cue'
       : density === 'compact' ? ' compact' : '';
 
     // Choir mode: service divider

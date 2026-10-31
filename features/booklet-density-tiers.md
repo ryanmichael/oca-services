@@ -58,8 +58,10 @@ another page*: a booklet you cannot navigate is not shorter, it is worse.
 
 | | before | after |
 |---|---|---|
-| Great Vespers 2026-10-31 | 36 pages / 9 sheets | **28 pages / 7 sheets** |
-| Divine Liturgy 2026-11-01 | 61 pages / 16 sheets | **54 pages / 14 sheets** |
+| Great Vespers 2026-10-31 | 36 pages / 9 sheets | **26 pages / 7 sheets** |
+| Divine Liturgy 2026-11-01 | 61 pages / 16 sheets | **50 pages / 13 sheets** |
+
+(Includes the pagination fix below, which is independent of the tiers.)
 
 The stichera, the psalm refrains and everything the congregation sings are
 untouched at full size.
@@ -132,6 +134,30 @@ tests) were green for its whole life. Any future tier, or any change to a
 tier's line-height, is covered automatically because the test reads geometry
 rather than a size table. It also asserts that a compact block *was* clipped,
 so the check cannot pass vacuously.
+
+## A second pagination bug, found by asking why pages ended early
+
+`paginate()` measures each item in an off-screen probe div to decide how much
+fits on a page. That div is **absolutely positioned**, which makes it a block
+formatting context — so the child's margins do **not** collapse out of it and
+the measured height **already includes them**. The code then added
+`marginBottom` on top, double-counting it on every single item: 8px per
+`prayer`, 6px per `compact`, 3px per `cue`, 10px per section head.
+
+Measured 2026-10-31: the paginator believed its pages held ~680 of 706px
+while they rendered at ~630 — **47px short per page**, 1314px over 28 pages,
+close to two whole pages of blank bottom margin. Present since the booklet's
+first commit; nothing had ever looked, because short pages read as a design
+choice rather than a defect.
+
+Removing the addition is the whole fix. A real `.bk-half` has padding, so it
+is a BFC too and its children's margins likewise do not collapse away —
+measuring and rendering agree only when the margin is *not* added.
+
+| | before | after |
+|---|---|---|
+| Great Vespers | 28 pages, median gap 75px, 12 pages >80px short | **26 pages**, median gap 26px, 1 page (the last) |
+| Divine Liturgy | 54 pages, median gap 88px, 31 pages >80px short | **50 pages**, median gap 37px, 1 page (the last) |
 
 ## Still open
 

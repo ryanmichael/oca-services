@@ -38,7 +38,15 @@
   var PAGE_CONTENT_H = (8.5 - 0.45 - 0.45) * 96;      // 729.6px
   var MEASURE_W      = (5.5 - 0.5 * 2) + 'in';        // 4.5in
   var PAGE_H         = PAGE_CONTENT_H - 24;           // buffer against font-rounding clip
-  var LINE_H         = Math.round(15 * 1.75 * 96 / 72); // ~35px, snap splits to lines
+  // Fallback only. A page cut is snapped DOWN to a whole line so it never
+  // slices a line of text in half, and that needs the line height of the
+  // ELEMENT being cut — not of the body. They stopped being the same thing
+  // when density tiers landed: body is 15pt/1.75 (35px), but `compact` is
+  // 11.5pt/1.5 (23px) and `cue` 10.5pt/1.3 (18px). Snapping a compact block
+  // to 35px steps cuts it at 35/70/105 while its lines end at 23/46/69 — a
+  // guaranteed cut through the middle of a line, which is what Psalm 103
+  // printed on page 2 (found 2026-10-31). Each item now carries its own.
+  var LINE_H_FALLBACK = Math.round(15 * 1.75 * 96 / 72); // ~35px
   var PAGE_RULE_ID   = 'bk-page-rule';
 
   function el(id) { return document.getElementById(id); }
@@ -114,13 +122,31 @@
     tmp.className = 'bk-half';
     tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:' + MEASURE_W + ';height:auto;overflow:visible;padding:0;';
     host.appendChild(tmp);
+    var itemLineHeights = [];
     var itemHeights = allItems.map(function (item) {
       tmp.innerHTML = item.html;
+      // `tmp` is absolutely positioned, which makes it a block formatting
+      // context — so the child's margins do NOT collapse out of it and this
+      // height ALREADY INCLUDES them. Adding marginBottom here (as this did
+      // until 2026-10-31) counted every item's bottom margin twice: 8px per
+      // `prayer`, 6px per `compact`, 3px per `cue`, 10px per section head.
+      // Measured on 2026-10-31 Great Vespers: the paginator believed its
+      // pages held ~680 of 706px while they rendered at ~630 — 47px short
+      // per page, 1314px over 28 pages, close to two whole pages of blank
+      // bottom margin. A real `.bk-half` has padding, so it is a BFC too and
+      // its children's margins likewise do not collapse away; measuring and
+      // rendering therefore agree only when this is NOT added.
       var h = tmp.getBoundingClientRect().height;
       var last = tmp.lastElementChild;
+      var lineH = 0;
       if (last) {
-        h += parseFloat(window.getComputedStyle(last).marginBottom) || 0;
+        var cs = window.getComputedStyle(last);
+        // `line-height: normal` computes to a keyword, not a length. Fall
+        // back rather than snapping to NaN, which would make every slice the
+        // full page and clip mid-line everywhere.
+        lineH = parseFloat(cs.lineHeight) || 0;
       }
+      itemLineHeights.push(lineH > 0 ? lineH : LINE_H_FALLBACK);
       return h;
     });
     host.removeChild(tmp);
@@ -147,7 +173,7 @@
       } else if (pages[idx].length === 0 || (remaining >= MIN_SPLIT && !item.keepWithNext)) {
         // Either first item on page, or there's usable space and this isn't a
         // keepWithNext header — place and split if needed
-        splitItem(item.html, h, remaining);
+        splitItem(item.html, h, remaining, itemLineHeights[i]);
       } else if (item.keepWithNext && remaining >= MIN_SPLIT && h <= remaining) {
         // keepWithNext header/label fits on current page but its chain overflows.
         // Place the header here; the chain's tail (the actual content) will be
@@ -159,11 +185,12 @@
         pages.push([]);
         heights.push(0);
         var last = pages.length - 1;
-        splitItem(item.html, h, PAGE_H);
+        splitItem(item.html, h, PAGE_H, itemLineHeights[i]);
       }
     });
 
-    function splitItem(html, h, space) {
+    function splitItem(html, h, space, lineH) {
+      lineH = lineH > 0 ? lineH : LINE_H_FALLBACK;
       var idx = pages.length - 1;
       if (h <= space) {
         // Fits without splitting
@@ -179,8 +206,8 @@
           var sliceH = Math.min(avail, h - offset);
           // Snap down to line boundary unless this is the last slice
           if (h - offset > sliceH) {
-            sliceH = Math.floor(sliceH / LINE_H) * LINE_H;
-            if (sliceH < LINE_H) sliceH = LINE_H; // at least one line
+            sliceH = Math.floor(sliceH / lineH) * lineH;
+            if (sliceH < lineH) sliceH = lineH; // at least one line
           }
           var clip;
           if (offset === 0) {

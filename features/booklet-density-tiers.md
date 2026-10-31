@@ -168,3 +168,11 @@ measuring and rendering agree only when the margin is *not* added.
 - `ps103-refrain` is typed `rubric` though it is psalm text the reader says
   aloud, so it renders in the red italic that means "do not say this"
   everywhere else. Not a density problem; tracked separately.
+- In Matins the kathisma heading collides with its section head, and the two
+  mean different things: section `Kathisma 1` (which kathisma of THIS service)
+  sits directly above rubric `Kathisma Seven` (which kathisma of the Psalter).
+  Two numbers, both called "Kathisma", adjacent, disagreeing. Fixing it means
+  renaming sections, and section names are load-bearing — audit rules M1/M26
+  match `'Kathisma 1'`/`'Kathisma 2'`, `api-kneeling-vespers.js` matches
+  `section === 'Kathisma'`, `omit-read-kathisma.test.js` asserts it. That is a
+  liturgical-logic change wearing a styling costume, so it is left alone.

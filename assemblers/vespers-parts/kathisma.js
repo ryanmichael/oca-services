@@ -10,6 +10,25 @@ const { getKathismata }           = require('../_shared/fixed-text-loader');
 const { getPsalter, psalmBody }   = require('../../oca-psalter');
 const { getVespersKathisma }      = require('../../kathisma');
 
+/**
+ * The heading that names WHICH kathisma of the Psalter follows.
+ *
+ * There were three spellings of this one label: a hardcoded Roman numeral on
+ * the "Blessed is the Man" path, `label.toUpperCase()` (spelled-out) on the
+ * read path, and an Arabic numeral on the missing-data path — three forms for
+ * the same thing. They were also the ONLY all-caps rubrics in the corpus:
+ * measured 2026-10-31, 10 of 107 distinct rubric texts, against "Ode 1 —
+ * First Canon", "Psalm 134 (135)", "Katavasia" and every other structural
+ * label, all of which are title case.
+ *
+ * The Psalter data already carries the right string ("Kathisma Seven"), so
+ * this stops shouting it and gives all three paths one source.
+ */
+function kathismaHeading(kathNum) {
+  const entry = getKathismata()[String(kathNum)];
+  return (entry && entry.label) || `Kathisma ${kathNum}`;
+}
+
 function assembleKathisma(calendarDay, fixedTexts, rubrics) {
   const { dayOfWeek, liturgicalContext, vespers } = calendarDay;
   const season      = liturgicalContext?.season ?? 'ordinaryTime';
@@ -41,8 +60,9 @@ function assembleBlessedIsTheMan(fixedTexts) {
   const blocks  = [];
   const k       = fixedTexts.kathisma.blessedIsTheMan;
 
+  // "Blessed is the Man" is the first stasis of Kathisma 1.
   blocks.push(makeBlock('kathisma-heading', section, 'rubric', null,
-    'KATHISMA I'));
+    kathismaHeading(1)));
 
   // `k.refrain` is the antiphon BETWEEN verses — "Alleluia, alleluia,
   // alleluia.", invariant, eight times in a row. It is the same thing as
@@ -94,12 +114,12 @@ function assembleKathismaReading(kathNum, section) {
   // (e.g. Matins reading both Kathisma 2 and Kathisma 3) don't collide.
   const pre = `k${kathNum}`;
   if (!kathisma) {
-    return [makeBlock(`${pre}-rubric`, section, 'rubric', null, `KATHISMA ${kathNum}`)];
+    return [makeBlock(`${pre}-rubric`, section, 'rubric', null, kathismaHeading(kathNum))];
   }
 
   const blocks = [];
   blocks.push(makeBlock(`${pre}-rubric`, section, 'rubric', null,
-    kathisma.label.toUpperCase()));
+    kathismaHeading(kathNum)));
 
   const GLORY_ALLELUIA = [
     makeBlock(`${pre}-glory`, section, 'doxology', 'reader',

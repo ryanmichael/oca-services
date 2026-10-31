@@ -113,7 +113,7 @@ Apply, per branch:
 Always:
 - `npm run drift:check` — variant library + parish picks still resolve.
 - `npm run test:contracts` — INV-A through INV-F still green.
-- `node scripts/parish-roundtrip-diff.js` — Tyler's renderings still contain all expected substrings (if Tyler was the affected parish).
+- `node scripts/parish-roundtrip-diff.js` — Tyler's renderings still carry her derived hierarchs, and every `parish_variant_picks` row still renders *the variant it selects* (if Tyler was the affected parish). It reads the picks from the DB rather than asserting hard-coded wording, so re-picking cannot make it stale. Needs a server on `$OCA_HOST` (default `localhost:3000`).
 
 For text branches, also:
 - Render the affected service for the parish + a representative date. Show before/after diff. Capture the `after_sha`.

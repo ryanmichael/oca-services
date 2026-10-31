@@ -784,21 +784,37 @@ each caught by diffing every day of 2026 rather than by a test:
 three; the contract found none of them, because a contract only asks what you
 already thought to ask. Pair any label or ordering change with a full-corpus diff.
 
-### New: N14 — bad label data is now visible
+### N14 — bad label data is now visible — ⚠️ HALF DONE (2026-10-31)
 
 Where a row's descriptor wins, whatever is in the DB prints. All pre-existing,
 none created by `de4e6e1`, all now on a choir sheet:
 
-- `the holy unmecinaries` (6-27) and `the holy unmercinaries` (10-31) — typos.
-- `the holy martyr: 4` (7-29) — glued footnote digit; this is the **N6** class,
-  and N6 just acquired a user-visible symptom.
+- ~~`the holy unmecinaries` (6-27) and `the holy unmercinaries` (10-31) — typos.~~
+  **FIXED**, 13 rows.
+- ~~`the holy martyr: 4` (7-29) — glued footnote digit; this is the **N6** class.~~
+  **FIXED**, 38 rows / six descriptors. The importer uses *both* separators, so a
+  colon-only sweep silently leaves `the great martyr; 3` and `the holy icon; 4`.
 - Row **9466** (11-28) — a Theotokion labelled `the venerable martyr`. INV-4
   guards the rendering; the row is still wrong and belongs in N1's family.
+  **STILL OPEN** — a wrong descriptor needs a judgement about the right one, not
+  a sweep, so the `order=-1` half of the rule below is still unwritten.
+
+**The typo was not cosmetic.** `preferRowLabel` drops stopwords, so `holy` does
+not count: the misspelling left `unmercinaries` as the row's *only* content word,
+it failed to match `unmercenaries` in the slot title, and the bare descriptor
+therefore won and printed. Correcting the spelling makes the dedup rule fire, and
+11-01's Aposticha Glory now prints the full title. A spelling fix in this column
+changes which label renders — it is not display-only.
 
 **Rule that closes it:** a `stichera.label` must not contain a trailing footnote
 digit, and a row at `order=-1` (the Theotokion slot) must not carry a saint
 descriptor. Both are cheap `validate-schemas` gates — but per N4, falsify each
 against the rows above before trusting a green.
+
+First half now lives in `test/contracts/hymn-label-hygiene.test.js` (falsified by
+injecting `the holy martyr: 4` onto row 9708 — it failed and named the row). It
+also pins the four labels that legitimately contain a digit, e.g.
+`(Holy 40 Martyrs)`, so the digit rule cannot pass by having stripped them.
 
 
 ---

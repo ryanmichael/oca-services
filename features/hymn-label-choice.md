@@ -75,7 +75,26 @@ with a *true* but vaguer descriptor, which is the point.
 Where a row's descriptor wins, whatever is in the DB prints. Three artifacts this
 surfaced, all pre-existing and none created by this change:
 
-- `the holy unmecinaries` (6-27) and `the holy unmercinaries` (10-31) — typos.
-- `the holy martyr: 4` (7-29) — a glued footnote digit, the N6 class.
+- ~~`the holy unmecinaries` (6-27) and `the holy unmercinaries` (10-31) — typos.~~
+  **Fixed 2026-10-31**, 13 rows. Caught only when the choir director's packet for
+  11-01 was being checked and the Aposticha Glory printed
+  `the holy unmercinaries` — no structural rule inspects a label's text.
+- ~~`the holy martyr: 4` (7-29) — a glued footnote digit, the N6 class.~~
+  **Fixed 2026-10-31**, 38 rows across six descriptors. The importer glues the
+  digit with either separator (`the holy martyr: 4`, `the great martyr; 3`); a
+  colon-only sweep misses `the great martyr; 3` and `the holy icon; 4`.
+  Every stripped row merged into an already-correct group (`the holy martyr`
+  went 144 → 158), which is what confirmed the bare descriptor was the intended
+  value rather than a guess.
 - Row 9466 (11-28) — a Theotokion labelled `the venerable martyr`. INV-4 guards
-  the rendering; the row itself is still wrong.
+  the rendering; the row itself is still wrong. **Still open** — a wrong
+  descriptor, not a parse artifact, so it needs liturgical judgement rather than
+  a sweep.
+
+Both fixed families are now guarded by `test/contracts/hymn-label-hygiene.test.js`,
+which asserts the stored label's *shape* (no trailing footnote digit, no
+misspelling) and pins the four labels that legitimately contain a digit so the
+first two rules cannot pass vacuously.
+
+One label is still truncated mid-word — `(from the 2nd Canon of Pentecost, by John of`
+— a separate importer defect, untouched here.

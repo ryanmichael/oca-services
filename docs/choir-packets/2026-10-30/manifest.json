@@ -1,0 +1,74 @@
+{
+  "emailDate": "2026-10-30",
+  "sender": "cjruss63@gmail.com",
+  "subject": "ATTN: This week's music posted 10/31, 11/1, 11/5",
+  "messages": [
+    {
+      "subject": "ATTN: This week's music posted 10/31, 11/1, 11/5",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/11788845-4b00-4f44-bd46-84e4e5e6498a/scratchpad/drop",
+      "fetchedAt": "2026-10-31T18:20:17.953Z",
+      "attachments": 2
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-10-31T18:20:17.953Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Divine Liturgy 11.01.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-11-01",
+      "contentDate": "2026-11-01",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-11-01.pdf",
+      "sha256": "2c5d19d00209846269cb31c0c50522dd5b7e467e325524ad6127dc7a248bbc1d",
+      "bytes": 7243014,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-11-01",
+      "messageSubject": "ATTN: This week's music posted 10/31, 11/1, 11/5",
+      "ocr": {
+        "file": "ocr/liturgy-2026-11-01.txt",
+        "pages": 12,
+        "textPages": 2,
+        "musicPages": 10,
+        "chars": 1641
+      }
+    },
+    {
+      "original": "Great Vespers 10.31.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-10-31",
+      "contentDate": "2026-11-01",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-10-31.pdf",
+      "sha256": "bd9f6584d9afd508a6c87026d9a0c1547c2444ecb6fabae84386e1d030d8cf21",
+      "bytes": 7969602,
+      "pages": 14,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-10-31",
+      "messageSubject": "ATTN: This week's music posted 10/31, 11/1, 11/5",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-10-31.txt",
+        "pages": 14,
+        "textPages": 5,
+        "musicPages": 9,
+        "chars": 5394
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": []
+}

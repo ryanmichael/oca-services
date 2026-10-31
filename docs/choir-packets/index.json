@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 11,
+  "packets": 12,
   "counts": {
-    "service": 30,
+    "service": 32,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
     "unbound": 4,
-    "assets": 165
+    "assets": 167
   },
   "assets": {
     "92817f66af30": {
@@ -306,6 +306,22 @@
       "filename": "Great Vespers 10.24.26.pdf",
       "bytes": 7104894,
       "pages": 13
+    },
+    "2c5d19d00209": {
+      "id": "2c5d19d00209",
+      "sha256": "2c5d19d00209846269cb31c0c50522dd5b7e467e325524ad6127dc7a248bbc1d",
+      "path": "2026-10-30/pdf/liturgy-2026-11-01.pdf",
+      "filename": "Divine Liturgy 11.01.26.pdf",
+      "bytes": 7243014,
+      "pages": 12
+    },
+    "bd9f6584d9af": {
+      "id": "bd9f6584d9af",
+      "sha256": "bd9f6584d9afd508a6c87026d9a0c1547c2444ecb6fabae84386e1d030d8cf21",
+      "path": "2026-10-30/pdf/great-vespers-2026-10-31.pdf",
+      "filename": "Great Vespers 10.31.26.pdf",
+      "bytes": 7969602,
+      "pages": 14
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1669,6 +1685,26 @@
       "tone": null,
       "asset": "43e61738f446",
       "packet": "2026-10-14"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-01",
+      "contentDate": "2026-11-01",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "2c5d19d00209",
+      "packet": "2026-10-30"
+    },
+    {
+      "kind": "service",
+      "date": "2026-10-31",
+      "contentDate": "2026-11-01",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "bd9f6584d9af",
+      "packet": "2026-10-30"
     },
     {
       "kind": "block",

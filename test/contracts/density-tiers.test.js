@@ -225,6 +225,51 @@ describe('density tiers', () => {
     }
   });
 
+  // The invariant that would have caught the half-tagged Liturgy. It sweeps
+  // SERVICES, not one date, and keys off POSITION (a block's section, type
+  // and speaker) rather than any id or label — so a thirteenth litany
+  // emitter in a file nobody thought to grep is covered the day it lands.
+  //
+  // What it is guarding against: on 2026-10-31 density was set at each call
+  // site, litanies turned out to be emitted from twelve files, and the two
+  // obvious ones (both named `litanies.js`) were tagged while the Liturgy's
+  // Great Litany, both Little Litanies, the Supplication litany and the
+  // Litany of Thanksgiving were not — 75 of 98 blocks untagged in a single
+  // booklet, with no test anywhere the poorer for it.
+  it('INV-9 — no litany block in ANY service is left at body size', async () => {
+    const CASES = [
+      ['Great Vespers',     '/api/service?date=2026-10-31'],
+      ['Daily Vespers',     '/api/service?date=2026-11-03'],
+      ['Matins',            '/api/matins?date=2026-11-01'],
+      ['Divine Liturgy',    '/api/liturgy?date=2026-11-01'],
+      ['Presanctified',     '/api/presanctified?date=2026-03-04'],
+      ['Lamentations',      '/api/lamentations?date=2026-04-10'],
+      ['Bridegroom Matins', '/api/bridegroom-matins?date=2026-04-07'],
+    ];
+    const LITANY = /litany|litanies/i;
+    const missed = [];
+    let total = 0;
+
+    for (const [name, url] of CASES) {
+      const bl = await blocks(`${url}&pronoun=tt${TYLER}`);
+      const inLitany = bl.filter(b => LITANY.test(b.section || ''));
+      total += inLitany.length;
+      inLitany.forEach((b) => {
+        if (b.density) return;
+        // A doxology inside a Little Litany ("Glory to the Father…") is sung
+        // by everyone and stays at body size on purpose.
+        if (b.type === 'doxology') return;
+        missed.push(`${name}: ${b.id} (${b.type}/${b.speaker}) in "${b.section}"`);
+      });
+    }
+
+    assert.ok(total > 400,
+      `expected a real sweep of litany blocks, saw ${total}`);
+    assert.deepEqual(missed, [],
+      'these litany blocks print at body size while their neighbours are '
+      + 'stepped down, which reads as arbitrary rather than as a system');
+  });
+
   it('INV-7 — what the pew sings or says is NEVER stepped down', async () => {
     const bl = await blocks(`/api/service?date=2026-10-31&pronoun=tt${TYLER}`);
     // Hymns carry no density at all — a sticheron is the reason the booklet

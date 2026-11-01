@@ -60,6 +60,43 @@ Six service types carry these tiers, not just Vespers — Great and Daily
 Vespers, Matins, Divine Liturgy, Presanctified and Lamentations — because the
 litany module is shared. Liturgy 61 -> 50 half-pages, 16 -> 13 sheets.
 
+## Where the rule lives, and why not at the call site
+
+Density for litanies is applied **once**, by `normalizeLitanyDensity` in
+`assemblers/index.js`, wrapping every exported assembler.
+
+It began as an explicit `{ density: … }` at each call site. That shipped the
+Liturgy half-tagged on 2026-10-31: its Fervent Supplication, Catechumens and
+Faithful litanies were stepped down while its Great Litany, both Little
+Litanies, the Supplication litany and the Litany of Thanksgiving were not —
+**75 of 98 blocks untouched in one booklet**. The cause was mundane. Litanies
+are emitted from **twelve files**; two of them are named `litanies.js`, and
+tagging those two looked like the whole job. Matins and Bridegroom Matins were
+missed the same way (Bridegroom had none of its 51 tagged).
+
+A convention that must be repeated in twelve places will be wrong in one of
+them. One pass at the single point every service passes through cannot be
+missed by a thirteenth emitter.
+
+Scoping it to litany sections is what makes it safe to key off role rather
+than text. Measured over 7 services x 9 dates: all **1151** `response`/`choir`
+blocks inside a litany section are one of **six** fixed acclamations, longest
+53 characters, none above 70 — there is no "More honorable than the Cherubim"
+hiding in there to shrink by mistake. An explicit `density` still wins, so a
+deliberate exception survives.
+
+Coverage after: 599 litany blocks across 8 services, **one** left at body size
+— the `doxology`/`choir` "Glory to the Father…" that closes a Little Litany,
+which everyone sings. Guarded by INV-9, which sweeps services and keys off
+section/type/speaker rather than any id.
+
+| | before the central pass | after |
+|---|---|---|
+| Divine Liturgy | 13 sheets / 50 pages | **12 sheets / 45 pages** |
+| Matins | 23 / 89 | **22 / 85** |
+| Presanctified | 11 / 43 | **11 / 41** |
+| Great Vespers | 7 / 26 | 7 / 26 (byte-identical) |
+
 ## What is never stepped down
 
 A hymn never carries a density step. Neither does the Kathisma's "Blessed is

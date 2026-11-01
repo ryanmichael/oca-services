@@ -4,36 +4,34 @@ const makeBlock          = require('../_shared/make-block');
 const { resolveFixedRef } = require('../_shared/resolve');
 const mustGet             = require('../_shared/must-get');
 
-/**
- * Density tiers, matching assemblers/vespers-parts/litanies.js. SAID is the
- * deacon's petitions and the priest's exclamations — followed by the pew, not
- * spoken by it. CUE is the short invariant answer ("Lord, have mercy."), which
- * a reader locates rather than reads. Both files must agree, or a parish that
- * prints a Vespers booklet and a Liturgy booklet gets two different treatments
- * of the same two words.
- */
-const SAID = { density: 'compact' };
-const CUE  = { density: 'cue' };
 
+/**
+ * Density (`compact` for the deacon's petitions and the priest's
+ * exclamations, `cue` for the short invariant answer) is NOT set here. It is
+ * applied once for every service by `normalizeLitanyDensity` in
+ * assemblers/index.js — litanies are emitted from twelve files and a
+ * convention repeated in twelve places will be wrong in one of them, which is
+ * exactly how the Liturgy shipped half-tagged on 2026-10-31.
+ */
 function _litAugmentedLitany(f) {
   const section = 'Litany of Fervent Supplication';
   const lit = mustGet(f, 'augmented-litany', { scope: section });
   if (!lit) return [];
   const blocks = [
-    makeBlock('al-opening',  section, 'prayer',   'deacon', lit.opening, SAID),
-    makeBlock('al-response', section, 'response', 'choir',  lit.response, CUE),
+    makeBlock('al-opening',  section, 'prayer',   'deacon', lit.opening),
+    makeBlock('al-response', section, 'response', 'choir',  lit.response),
   ];
   (lit.petitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', resolveFixedRef(p, f), SAID));
-    blocks.push(makeBlock(`al-p${i}-resp`, section, 'response', 'choir', lit.response, CUE));
+    blocks.push(makeBlock(`al-p${i}`, section, 'prayer', 'deacon', resolveFixedRef(p, f)));
+    blocks.push(makeBlock(`al-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   (lit.triplePetitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', resolveFixedRef(p, f), SAID));
-    blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse, CUE));
+    blocks.push(makeBlock(`al-tp${i}`, section, 'prayer',   'deacon', resolveFixedRef(p, f)));
+    blocks.push(makeBlock(`al-tr${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
   blocks.push(
-    makeBlock('al-excl',      section, 'prayer',   'priest', lit.exclamation, SAID),
-    makeBlock('al-amen',      section, 'response', 'choir',  lit.amen, CUE),
+    makeBlock('al-excl',      section, 'prayer',   'priest', lit.exclamation),
+    makeBlock('al-amen',      section, 'response', 'choir',  lit.amen),
   );
   return blocks;
 }
@@ -43,20 +41,20 @@ function _litDeparted(f) {
   const lit = mustGet(f, 'litany-departed', { scope: section });
   if (!lit) return [];
   const blocks = [
-    makeBlock('dep-opening',  section, 'prayer',   'deacon', lit.opening, SAID),
-    makeBlock('dep-response', section, 'response', 'choir',  lit.tripleResponse, CUE),
+    makeBlock('dep-opening',  section, 'prayer',   'deacon', lit.opening),
+    makeBlock('dep-response', section, 'response', 'choir',  lit.tripleResponse),
   ];
   (lit.petitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`dep-p${i}`, section, 'prayer',   'deacon', p, SAID));
-    blocks.push(makeBlock(`dep-r${i}`, section, 'response', 'choir',  lit.tripleResponse, CUE));
+    blocks.push(makeBlock(`dep-p${i}`, section, 'prayer',   'deacon', p));
+    blocks.push(makeBlock(`dep-r${i}`, section, 'response', 'choir',  lit.tripleResponse));
   });
   blocks.push(
-    makeBlock('dep-ask',      section, 'prayer',   'deacon', lit.askPetition, SAID),
-    makeBlock('dep-ask-resp', section, 'response', 'choir',  lit.askResponse, CUE),
-    makeBlock('dep-call',     section, 'prayer',   'deacon', lit.deaconCall, SAID),
-    makeBlock('dep-secret',   section, 'prayer',   'priest', lit.secretPrayer, SAID),
-    makeBlock('dep-excl',     section, 'prayer',   'priest', lit.exclamation, SAID),
-    makeBlock('dep-amen',     section, 'response', 'choir',  lit.amen, CUE),
+    makeBlock('dep-ask',      section, 'prayer',   'deacon', lit.askPetition),
+    makeBlock('dep-ask-resp', section, 'response', 'choir',  lit.askResponse),
+    makeBlock('dep-call',     section, 'prayer',   'deacon', lit.deaconCall),
+    makeBlock('dep-secret',   section, 'prayer',   'priest', lit.secretPrayer),
+    makeBlock('dep-excl',     section, 'prayer',   'priest', lit.exclamation),
+    makeBlock('dep-amen',     section, 'response', 'choir',  lit.amen),
   );
   return blocks;
 }
@@ -66,20 +64,20 @@ function _litCatechumens(f) {
   const lit = mustGet(f, 'litany-catechumens', { scope: section });
   if (!lit) return [];
   const blocks = [
-    makeBlock('cat-opening',  section, 'prayer',   'deacon', lit.opening, SAID),
-    makeBlock('cat-response', section, 'response', 'choir',  lit.response, CUE),
+    makeBlock('cat-opening',  section, 'prayer',   'deacon', lit.opening),
+    makeBlock('cat-response', section, 'response', 'choir',  lit.response),
   ];
   (lit.petitions || []).forEach((p, i) => {
-    blocks.push(makeBlock(`cat-p${i}`, section, 'prayer', 'deacon', p, SAID));
-    blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response, CUE));
+    blocks.push(makeBlock(`cat-p${i}`, section, 'prayer', 'deacon', p));
+    blocks.push(makeBlock(`cat-p${i}-resp`, section, 'response', 'choir', lit.response));
   });
   blocks.push(
-    makeBlock('cat-petition2', section, 'prayer',   'deacon', lit.petition2, SAID),
-    makeBlock('cat-bow',       section, 'prayer',   'deacon', lit.bowHeads, SAID),
-    makeBlock('cat-bow-resp',  section, 'response', 'choir',  lit.bowHeadsResponse, CUE),
-    makeBlock('cat-excl',      section, 'prayer',   'priest', lit.exclamation, SAID),
-    makeBlock('cat-amen',      section, 'response', 'choir',  lit.amen, CUE),
-    makeBlock('cat-dismissal', section, 'prayer',   'deacon', lit.dismissal, SAID),
+    makeBlock('cat-petition2', section, 'prayer',   'deacon', lit.petition2),
+    makeBlock('cat-bow',       section, 'prayer',   'deacon', lit.bowHeads),
+    makeBlock('cat-bow-resp',  section, 'response', 'choir',  lit.bowHeadsResponse),
+    makeBlock('cat-excl',      section, 'prayer',   'priest', lit.exclamation),
+    makeBlock('cat-amen',      section, 'response', 'choir',  lit.amen),
+    makeBlock('cat-dismissal', section, 'prayer',   'deacon', lit.dismissal),
   );
   return blocks;
 }
@@ -97,28 +95,28 @@ function _litLitaniesFaithful(f, opts = {}) {
   const longForm = opts.rubrics?.litanies?.faithful2Long === true;
 
   const blocks = [
-    makeBlock('lf1-opening',    section, 'prayer',   'deacon', l1.opening, SAID),
-    makeBlock('lf1-response',   section, 'response', 'choir',  l1.response, CUE),
-    makeBlock('lf1-petition',   section, 'prayer',   'deacon', l1.petition, SAID),
-    makeBlock('lf1-pet-resp',   section, 'response', 'choir',  l1.response, CUE),
-    makeBlock('lf1-wisdom',     section, 'prayer',   'deacon', l1.wisdom, SAID),
-    makeBlock('lf1-excl',       section, 'prayer',   'priest', l1.exclamation, SAID),
-    makeBlock('lf1-amen',       section, 'response', 'choir',  l1.amen, CUE),
-    makeBlock('lf2-opening',    section, 'prayer',   'deacon', l2.opening, SAID),
-    makeBlock('lf2-response',   section, 'response', 'choir',  l2.response, CUE),
+    makeBlock('lf1-opening',    section, 'prayer',   'deacon', l1.opening),
+    makeBlock('lf1-response',   section, 'response', 'choir',  l1.response),
+    makeBlock('lf1-petition',   section, 'prayer',   'deacon', l1.petition),
+    makeBlock('lf1-pet-resp',   section, 'response', 'choir',  l1.response),
+    makeBlock('lf1-wisdom',     section, 'prayer',   'deacon', l1.wisdom),
+    makeBlock('lf1-excl',       section, 'prayer',   'priest', l1.exclamation),
+    makeBlock('lf1-amen',       section, 'response', 'choir',  l1.amen),
+    makeBlock('lf2-opening',    section, 'prayer',   'deacon', l2.opening),
+    makeBlock('lf2-response',   section, 'response', 'choir',  l2.response),
   ];
   if (longForm) {
     (l2.petitions || []).forEach((p, i) => {
-      blocks.push(makeBlock(`lf2-p${i}`,       section, 'prayer',   'deacon', p, SAID));
-      blocks.push(makeBlock(`lf2-p${i}-resp`,  section, 'response', 'choir',  l2.response, CUE));
+      blocks.push(makeBlock(`lf2-p${i}`,       section, 'prayer',   'deacon', p));
+      blocks.push(makeBlock(`lf2-p${i}-resp`,  section, 'response', 'choir',  l2.response));
     });
   }
   blocks.push(
-    makeBlock('lf2-petition',   section, 'prayer',   'deacon', l2.petition, SAID),
-    makeBlock('lf2-pet-resp',   section, 'response', 'choir',  l2.response, CUE),
-    makeBlock('lf2-wisdom',     section, 'prayer',   'deacon', l2.wisdom, SAID),
-    makeBlock('lf2-excl',       section, 'prayer',   'priest', l2.exclamation, SAID),
-    makeBlock('lf2-amen',       section, 'response', 'choir',  l2.amen, CUE),
+    makeBlock('lf2-petition',   section, 'prayer',   'deacon', l2.petition),
+    makeBlock('lf2-pet-resp',   section, 'response', 'choir',  l2.response),
+    makeBlock('lf2-wisdom',     section, 'prayer',   'deacon', l2.wisdom),
+    makeBlock('lf2-excl',       section, 'prayer',   'priest', l2.exclamation),
+    makeBlock('lf2-amen',       section, 'response', 'choir',  l2.amen),
   );
   return blocks;
 }

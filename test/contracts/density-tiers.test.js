@@ -270,6 +270,47 @@ describe('density tiers', () => {
       + 'stepped down, which reads as arbitrary rather than as a system');
   });
 
+  // Parish review, 2026-10-31. Each of these was looked at on a printed page
+  // and decided, so each is pinned by what it IS rather than by an id.
+  it('INV-10 — the sung sections stay at body size, the read ones step down', async () => {
+    const lit = await blocks(`/api/liturgy?date=2026-11-01&pronoun=tt${TYLER}`);
+    const ves = await blocks(`/api/service?date=2026-10-31&pronoun=tt${TYLER}`);
+
+    // Psalm 33 is SUNG at the end of the Liturgy. It was tagged `compact` by
+    // earlier work and the parish corrected it on review.
+    const ps33 = lit.filter(b => b.section === 'Psalm 33' && b.type === 'prayer');
+    assert.ok(ps33.length >= 6, `expected Psalm 33 verses, saw ${ps33.length}`);
+    assert.deepEqual(ps33.filter(b => b.density).map(b => b.id), [],
+      'Psalm 33 is sung — it must not be stepped down');
+
+    // The antiphons are sung end to end: psalm verses, refrains,
+    // "Only-begotten Son", the Beatitude troparia. Nothing in them steps down.
+    const ant = lit.filter(b => /^(first|second|third) antiphon$/i.test(b.section || ''));
+    assert.ok(ant.length > 20, `expected antiphon blocks, saw ${ant.length}`);
+    assert.deepEqual(ant.filter(b => b.density).map(b => b.id), [],
+      'the antiphons are sung — nothing in them may be stepped down');
+
+    // The priest's dismissal is spoken; the choir's answers are sung. Both
+    // services, so the contrast reads the same way in each.
+    for (const [name, bl] of [['liturgy', lit], ['vespers', ves]]) {
+      const dis = bl.filter(b => /^dismissal$/i.test(b.section || ''));
+      assert.ok(dis.length >= 3, `${name}: expected a Dismissal`);
+      dis.filter(b => b.type === 'prayer' && b.speaker === 'priest').forEach(b =>
+        assert.equal(b.density, 'compact', `${name}: ${b.id} (priest) must step down`));
+      dis.filter(b => b.speaker === 'choir').forEach(b =>
+        assert.equal(b.density, undefined, `${name}: ${b.id} is sung — body size`));
+    }
+
+    // Read after the dismissal while the faithful venerate — ~4,400 chars.
+    const pot = lit.filter(b => b.section === 'Prayers of Thanksgiving');
+    assert.ok(pot.length > 10, 'expected the thanksgiving prayers');
+    pot.filter(b => b.type === 'prayer' && b.speaker === 'reader').forEach(b =>
+      assert.equal(b.density, 'compact', `${b.id} must step down`));
+    // ...but the choir's parts and the closing troparion are sung.
+    pot.filter(b => b.speaker === 'choir').forEach(b =>
+      assert.equal(b.density, undefined, `${b.id} is sung — body size`));
+  });
+
   it('INV-7 — what the pew sings or says is NEVER stepped down', async () => {
     const bl = await blocks(`/api/service?date=2026-10-31&pronoun=tt${TYLER}`);
     // Hymns carry no density at all — a sticheron is the reason the booklet

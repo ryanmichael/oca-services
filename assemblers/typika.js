@@ -305,7 +305,8 @@ function assembleTypika(calendarDay, liturgyFixed, typikaFixed, vespersFixed, so
   if (ps33.rubric) {
     S('typ-ps33-rubric', 'Psalm 33', 'rubric', null, ps33.rubric);
   }
-  S('typ-ps33-text', 'Psalm 33', 'prayer', 'reader', ps33.text, { density: 'compact' });
+  // Sung, not read to the congregation — body size, as in the Liturgy.
+  S('typ-ps33-text', 'Psalm 33', 'prayer', 'reader', ps33.text);
   if (ps33.glory) {
     S('typ-ps33-glory', 'Psalm 33', 'doxology', 'reader', ps33.glory);
   }

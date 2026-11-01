@@ -97,6 +97,36 @@ section/type/speaker rather than any id.
 | Presanctified | 11 / 43 | **11 / 41** |
 | Great Vespers | 7 / 26 | 7 / 26 (byte-identical) |
 
+## The rule table
+
+`DENSITY_RULES` in assemblers/index.js: sections -> `type/speaker` -> step.
+**A role that is not listed keeps body size**, which is how everything sung
+stays full size without having to be named.
+
+| sections | role | step |
+|---|---|---|
+| any litany | `response`/`choir` | `cue` |
+| any litany | `prayer`/`deacon`, `prayer`/`priest` | `compact` |
+| `Dismissal` | `prayer`/`priest` | `compact` |
+| `Prayers of Thanksgiving` | `prayer`/`reader`, `prayer`/`priest` | `compact` |
+
+Parish review on 2026-10-31 added the last two and **removed one**: Psalm 33
+had been tagged `compact` by earlier work in both the Liturgy and Typika, and
+it is SUNG at the end of the Liturgy — back to body size.
+
+In the Dismissal the priest steps down while the choir's answers stay full
+size, so the page reads **small = he says it, full size = we sing it** — the
+same contrast the litanies use. In Vespers and Matins that is a four-part
+dialogue rather than the Liturgy's single block.
+
+**The three antiphons are deliberately absent from the table.** Every block in
+them is sung — psalm verses, refrains, "Only-begotten Son", the Beatitude
+troparia — so none of it steps down. Only the Little Litanies *between* the
+antiphons do, via the litany rule. Checked on review and confirmed correct.
+
+Guarded by INV-10, which pins each of these by what it IS (section + role)
+rather than by id.
+
 ## What is never stepped down
 
 A hymn never carries a density step. Neither does the Kathisma's "Blessed is

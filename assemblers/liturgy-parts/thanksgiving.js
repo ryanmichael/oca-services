@@ -83,7 +83,8 @@ function _litPsalm33(f) {
   const cutoff = p.shortFormAfter || 0;
   const blocks = [makeBlock('ps33-rubric', section, 'rubric', null, p.rubric)];
   verses.forEach((v, i) => {
-    blocks.push(makeBlock(`ps33-v${i + 1}`, section, 'prayer', null, v, { density: 'compact' }));
+    // Psalm 33 is SUNG at the end of the Liturgy, so it stays at body size.
+    blocks.push(makeBlock(`ps33-v${i + 1}`, section, 'prayer', null, v));
     if (cutoff && i + 1 === cutoff) {
       blocks.push(makeBlock('ps33-shortform', section, 'rubric', null,
         '- The psalm may conclude here -'));

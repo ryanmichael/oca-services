@@ -37,30 +37,62 @@ const { resolveSource } = require('./_shared/resolve');
  * An explicit `density` always wins, so a block that needs `fine` (the silent
  * pre-Communion prayer) or a deliberate exception keeps it.
  */
-const LITANY_SECTION = /litany|litanies/i;
+/**
+ * Each entry: the sections it covers, then `type/speaker` -> density. A role
+ * not listed keeps body size, which is how everything SUNG stays full size
+ * without needing to be named.
+ *
+ * The three antiphons are deliberately absent. Every block in them — psalm
+ * verses, refrains, "Only-begotten Son", the Beatitude troparia — is sung, so
+ * none of it is stepped down. Only the Little Litanies BETWEEN the antiphons
+ * are, via the litany rule.
+ */
+const DENSITY_RULES = [
+  {
+    // Every litany, in every service.
+    sections: /litany|litanies/i,
+    roles: {
+      // The short invariant answer: located, not read.
+      'response/choir': 'cue',
+      // The deacon's petitions and the priest's exclamations: followed, not said.
+      'prayer/deacon': 'compact',
+      'prayer/priest': 'compact',
+    },
+  },
+  {
+    // The priest's dismissal. The choir's answers stay at body size, so the
+    // page reads small = he says it, full size = we sing it — the same
+    // contrast the litanies use. In Vespers and Matins this is a four-part
+    // dialogue (81/29/60/398 chars) rather than the Liturgy's single block.
+    sections: /^dismissal$/i,
+    roles: { 'prayer/priest': 'compact' },
+  },
+  {
+    // Read after the dismissal while the faithful venerate — about 4,400
+    // characters of prayer. Not the "Hymn of Thanksgiving" or the "Litany of
+    // Thanksgiving", which are different sections and sung.
+    sections: /^prayers of thanksgiving$/i,
+    roles: { 'prayer/reader': 'compact', 'prayer/priest': 'compact' },
+  },
+];
 
-function normalizeLitanyDensity(blocks) {
+function normalizeDensity(blocks) {
   if (!Array.isArray(blocks)) return blocks;
   return blocks.map((b) => {
-    if (!b || b.density) return b;
-    if (!LITANY_SECTION.test(b.section || '')) return b;
-    // The short invariant answer: located, not read.
-    if (b.type === 'response' && b.speaker === 'choir') {
-      return { ...b, density: 'cue' };
+    if (!b || b.density) return b;              // an explicit tag always wins
+    const section = b.section || '';
+    for (const rule of DENSITY_RULES) {
+      if (!rule.sections.test(section)) continue;
+      const step = rule.roles[`${b.type}/${b.speaker}`];
+      if (step) return { ...b, density: step };
+      break;
     }
-    // The deacon's petitions and the priest's exclamations: followed, not said.
-    if (b.type === 'prayer' && (b.speaker === 'deacon' || b.speaker === 'priest')) {
-      return { ...b, density: 'compact' };
-    }
-    // Everything else in a litany section keeps body size — notably the
-    // `doxology`/`choir` "Glory to the Father…" that closes a Little Litany,
-    // which the congregation sings.
     return b;
   });
 }
 
 const withLitanyDensity = (fn) => function (...args) {
-  return normalizeLitanyDensity(fn.apply(this, args));
+  return normalizeDensity(fn.apply(this, args));
 };
 
 module.exports = {

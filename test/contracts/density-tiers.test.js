@@ -198,6 +198,33 @@ describe('density tiers', () => {
     }
   });
 
+  // Confirmed by the parish 2026-10-31, and worth pinning precisely BECAUSE
+  // it was never really decided before. Both readings were tagged `compact`
+  // by earlier work, but `#bk-root .prayer.compact` did not exist, so they
+  // printed at full body size in italic for the whole life of that tag. The
+  // CSS fix is what enacted the decision — the first time anyone saw a Gospel
+  // at 11.5pt was the day this shipped. Asked explicitly, and kept: the
+  // readings are read ALOUD to the congregation, not said by it.
+  //
+  // Pinned so a future reader does not see a 2047-character Gospel in small
+  // type, assume it is the same half-applied bug, and "fix" it back.
+  it('INV-8 — the Epistle and Gospel stay at the `compact` step', async () => {
+    const bl = await blocks(`/api/liturgy?date=2026-11-01&pronoun=tt${TYLER}`);
+    for (const id of ['ep-text', 'gos-text']) {
+      const b = bl.find(x => x.id === id);
+      assert.ok(b, `${id} must be in a Sunday Liturgy`);
+      assert.equal(b.density, 'compact',
+        `${id} is a reading the congregation follows but does not say; the `
+        + 'parish confirmed the step down on 2026-10-31');
+    }
+    // The announcements around them stay at body size — they are the cues
+    // that tell a reader where the reading starts and ends.
+    for (const id of ['ep-reader', 'gos-rubric', 'gos-end']) {
+      const b = bl.find(x => x.id === id);
+      if (b) assert.equal(b.density, undefined, `${id} must stay at body size`);
+    }
+  });
+
   it('INV-7 — what the pew sings or says is NEVER stepped down', async () => {
     const bl = await blocks(`/api/service?date=2026-10-31&pronoun=tt${TYLER}`);
     // Hymns carry no density at all — a sticheron is the reason the booklet

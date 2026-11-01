@@ -45,6 +45,21 @@ it marks a short reading; in the booklet it carries multi-page runs, and a page
 of italic is harder to read in a dim nave than the size step alone. The size
 step does the hierarchy work.
 
+## The Liturgy readings — a decision that had never been made
+
+The Epistle and Gospel were tagged `compact` by earlier work, but because
+`#bk-root .prayer.compact` did not exist they printed at full body size in
+italic for the whole life of that tag. **Fixing the CSS is what enacted the
+decision**; the first Gospel anyone ever saw at 11.5pt was the day this
+shipped. Put to the parish explicitly on 2026-10-31 and **kept**: a reading is
+read ALOUD to the congregation, not said by it. Guarded by INV-8, which also
+pins the announcements around them (`ep-reader`, `gos-rubric`, `gos-end`) at
+body size, since those are the cues that mark where a reading starts and ends.
+
+Six service types carry these tiers, not just Vespers — Great and Daily
+Vespers, Matins, Divine Liturgy, Presanctified and Lamentations — because the
+litany module is shared. Liturgy 61 -> 50 half-pages, 16 -> 13 sheets.
+
 ## What is never stepped down
 
 A hymn never carries a density step. Neither does the Kathisma's "Blessed is

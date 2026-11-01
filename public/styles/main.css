@@ -1498,9 +1498,23 @@ body.mode-choir .choir-toggles { display: flex; }
 }
 
 /* ── Service content ── */
+/* A heading belongs to what FOLLOWS it, so the space above must beat the
+   space below or the eye cannot tell which section it introduces. This had
+   `margin-top: 4px; margin-bottom: 10px` — and because the preceding
+   paragraph's 8px bottom margin collapses against that 4px, the real gap was
+   8px above against 10px below: the heading sat marginally closer to the
+   section it had just ENDED. The static renderer always had this right
+   (`.section-head { margin: 18px 0 8px }`); the live booklet did not.
+
+   NOT scoped with `:first-child` to drop the top margin at the head of a
+   page, however obviously that reads. `paginate()` measures each item alone
+   in a probe div, where every heading IS a first child — the probe would
+   measure 0 top margin while the page renders 22px, under-measuring every
+   heading and overflowing the page. Measurement and render have to see the
+   same box. A page that opens on a heading simply carries the margin. */
 #bk-root .svc-head {
   font-family: 'Cinzel', serif; font-size: 10pt; letter-spacing: .18em;
-  text-align: center; color: var(--text); margin-bottom: 10px; margin-top: 4px;
+  text-align: center; color: var(--text); margin-top: 22px; margin-bottom: 6px;
   break-after: avoid;
 }
 /* The renderer emits a .svc-rule between sections and the app panel draws it

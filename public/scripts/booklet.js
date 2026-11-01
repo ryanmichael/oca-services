@@ -174,10 +174,20 @@
         // Either first item on page, or there's usable space and this isn't a
         // keepWithNext header — place and split if needed
         splitItem(item.html, h, remaining, itemLineHeights[i]);
-      } else if (item.keepWithNext && remaining >= MIN_SPLIT && h <= remaining) {
-        // keepWithNext header/label fits on current page but its chain overflows.
-        // Place the header here; the chain's tail (the actual content) will be
-        // split on the next iteration.
+      } else if (item.keepWithNext && h <= remaining
+                 && (remaining - h) >= MIN_SPLIT) {
+        // A keepWithNext header whose chain overflows, but where enough room
+        // is left AFTER the header for a usable piece of what it introduces —
+        // so the next iteration can split content in underneath it.
+        //
+        // The `remaining - h` test is the load-bearing part. Without it the
+        // condition was only `remaining >= MIN_SPLIT`, measured BEFORE the
+        // header was placed: a header could be dropped at the foot of a page
+        // with less than MIN_SPLIT left behind it, the following block would
+        // then start a new page, and the header was stranded alone above a
+        // blank third of a page. Six such widows across Great Vespers and
+        // Matins on 2026-10-31, and a heading alone at the bottom is exactly
+        // what `keepWithNext` exists to prevent.
         pages[idx].push(item.html);
         heights[idx] += h;
       } else {

@@ -241,6 +241,39 @@ measuring and rendering agree only when the margin is *not* added.
 | Great Vespers | 28 pages, median gap 75px, 12 pages >80px short | **26 pages**, median gap 26px, 1 page (the last) |
 | Divine Liturgy | 54 pages, median gap 88px, 31 pages >80px short | **50 pages**, median gap 37px, 1 page (the last) |
 
+## Section headings group with what follows
+
+`#bk-root .svc-head` had `margin-top: 4px; margin-bottom: 10px`. Because the
+preceding paragraph's 8px bottom margin collapses against that 4px, the real
+gap was **8px above against 10px below** — the heading sat marginally closer
+to the section it had just ENDED than to the one it introduced, so the eye
+could not tell which block it belonged to. Now 22px above, 6px below. The
+static renderer always had this right (`.section-head { margin: 18px 0 8px }`);
+only the live booklet did not.
+
+**Not scoped with `:first-child`** to drop the top margin at the head of a
+page, however obviously that reads: `paginate()` measures each item alone in a
+probe div where every heading IS a first child, so the probe would measure 0
+top margin while the page renders 22px — under-measuring every heading and
+overflowing the page. Measurement and render must see the same box.
+
+Cost: no service gained a sheet.
+
+### The widow it exposed
+
+A heading printing with nothing beneath it is what `keepWithNext` exists to
+prevent, and it had a hole. The branch that places a header whose chain
+overflows tested the space left **before** placing the header
+(`remaining >= MIN_SPLIT`), so a header could land at the foot of a page with
+too little room behind it for any content, and the next block would open a new
+page. Six widows across Great Vespers and Matins before the heading change,
+ten after it — pre-existing, and made more likely by the larger top margin.
+
+The test is now `(remaining - h) >= MIN_SPLIT`: place the header only if a
+usable piece of what it introduces can follow it. Zero widows across Great
+Vespers, Divine Liturgy and Matins. Guarded in the e2e spec, falsified by
+restoring the old condition.
+
 ## Still open
 
 - `public/dashboard.html` has its own block renderer with **no density support

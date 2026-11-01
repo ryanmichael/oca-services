@@ -132,6 +132,31 @@ test.describe('booklet pagination', () => {
       + sorted.join(', ')).toBeLessThanOrEqual(60);
   });
 
+  test('no heading is stranded alone at the foot of a page', async ({ page }) => {
+    // `keepWithNext` exists to stop a section heading printing with nothing
+    // under it. It had a hole: the branch that places a header whose chain
+    // overflows tested the room left BEFORE placing the header, so a header
+    // could land at the foot of a page with too little space behind it for
+    // any content, and the next block would open a new page. Six such widows
+    // across Great Vespers and Matins on 2026-10-31 — visible on paper as a
+    // heading floating above a blank third of a page.
+    const widows = await page.evaluate(() => {
+      const out = [];
+      document.querySelectorAll('#bk-root .bk-half').forEach((h) => {
+        const kids = [...h.children];
+        if (!kids.length || !h.textContent.trim()) return;
+        const last = kids[kids.length - 1];
+        if (last.classList.contains('svc-head')
+            || last.classList.contains('stich-label')) {
+          out.push(last.textContent.trim().slice(0, 40));
+        }
+      });
+      return out;
+    });
+    expect(widows, 'these headings print with nothing beneath them')
+      .toEqual([]);
+  });
+
   test('no page cut lands in the middle of a line of text', async ({ page }) => {
     const bad = (await slices(page)).filter(s =>
       !onLine(s.offset, s.lineHeight) ||

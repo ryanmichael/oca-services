@@ -30,6 +30,17 @@ const DB_PATH = path.join(__dirname, '..', 'storage', 'oca.db');
 const PLURAL_ADDRESS_PATTERNS = [
   /\bO\s+(?:holy\s+)?(?:saints|fathers|apostles|martyrs|hierarchs|prophets|brethren|wonderworkers|unmercenaries|venerable\s+ones|holy\s+ones|righteous\s+ones|godly\s+ones|champions|three(?:\s+children|\s+youths)?|forty(?:\s+martyrs)?)\b/i,
   /\bO\s+ye\b/i,
+  // Generalized "O <modifiers> ones" — the enumerated list above covered
+  // venerable/holy/righteous/godly but not "O most honored ones", which is how
+  // the November 1 Unmercenaries canon addresses its two saints. That gap made
+  // L3-translation-consistency report the correct TT plural "ye heal … to you"
+  // as YY drift, on the very Sunday a reader was reading it aloud.
+  /\bO\s+(?:[a-z-]+\s+){0,3}ones\b/i,
+  // `ye` is the second-person PLURAL subject pronoun; its presence settles the
+  // question on its own, whatever the vocative looks like. Measured over all
+  // 12,348 stichera+troparia rows: 134 rows newly classified plural, every
+  // sampled one genuinely plural ("ye gates of heaven", "Come ye, let us all").
+  /\bye\b/i,
 ];
 
 function isPluralAddress(text) {

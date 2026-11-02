@@ -53,6 +53,18 @@ const FAMILY = {
   // OCA Menaion saint look single-translation when it is two books. That
   // pairing IS what the parish sings, but D23 should still say so plainly.
   'mtMaryDailyOctoechos': 'mtmary',
+  // The Sunday Beatitudes of all eight tones, from saintjonah.org's Octoechos
+  // Beatitude Verses. Its OWN family, not folded into 'lambertsen': a
+  // different artifact, and the detector's job is to report the seam, not to
+  // decide the two are close enough.
+  //
+  // Unmapped until 2026-11-02, and the miss was worse than 'unknown' would
+  // have been — the tag lives on a bare `source` key, which the index walker
+  // below did not read, so every one of these texts inherited the file's
+  // no-tag default and reported as 'oca'. The whole resurrectional half of
+  // every Sunday's Third Antiphon was laundered into the OCA family, which is
+  // exactly why nothing flagged the 2026-11-01 mix a reader heard aloud.
+  'htm-octoechos-sunday-beatitudes': 'htm',
 };
 
 const LABEL = {
@@ -64,6 +76,7 @@ const LABEL = {
   'stsergius-general': 'St. Sergius (General)',
   raphaela:   'Myrrh-bearers (Raphaela)',
   mtmary:     'Daily Octoechos',
+  htm:        'Holy Transfiguration Monastery',
   unknown:    'unknown',
 };
 
@@ -72,6 +85,24 @@ function familyOf(dbSource) {
   if (!dbSource) return 'unknown';
   if (FAMILY[dbSource]) return FAMILY[dbSource];
   if (/^oca[-_]/i.test(dbSource)) return 'oca';
+  return 'unknown';
+}
+
+/** The DB's `source` column is a controlled vocabulary, so `familyOf` can match
+ *  it exactly. A variable-source file's `_meta._source` is freeform prose
+ *  written by whoever ingested it — "Matins: St-Sergius Emenaion 11-01.pdf",
+ *  "OCA service texts 2025-0806-texts-tt.docx". Attribute those by pattern.
+ *  Checked most-specific first; an unrecognised string stays 'unknown' rather
+ *  than guessing, because a wrong attribution hides a mix. */
+function familyOfProse(prose) {
+  const t = String(prose || '');
+  if (!t.trim()) return 'unknown';
+  if (FAMILY[t]) return FAMILY[t];                 // some files use a DB-style tag
+  if (/lambertsen/i.test(t))                 return 'lambertsen';
+  if (/raphaela/i.test(t))                   return 'raphaela';
+  if (/st[-_\s]*sergius/i.test(t))           return 'stsergius';
+  if (/\b(htm|holy\s+transfiguration)\b/i.test(t)) return 'htm';
+  if (/\boca\b/i.test(t))                    return 'oca';
   return 'unknown';
 }
 
@@ -91,24 +122,67 @@ function index(opts = {}) {
   const ROOT = path.resolve(__dirname, '..', '..');
   const map = new Map();
 
-  // 1. Octoechos. A day-node's `_source` governs the hymns beneath it.
+  // A node's provenance tag governs the hymns beneath it. BOTH spellings are
+  // read: `_source` is the convention, but the Sunday Beatitudes nodes tag
+  // themselves with a bare `source`, and reading only `_source` meant those
+  // eight nodes silently inherited the file default and reported as OCA.
+  // `resolve` maps a tag to a family; non-clobbering so an earlier, more
+  // specific attribution wins.
+  const walkTagged = (node, inherited, resolve) => {
+    if (!node || typeof node !== 'object') return;
+    const tag = (typeof node._source === 'string' && node._source)
+      || (typeof node.source === 'string' && node.source)
+      || inherited;
+    if (typeof node.text === 'string' && node.text.trim()) {
+      const fam = resolve(tag);
+      if (!map.has(norm(node.text))) map.set(norm(node.text), fam);
+      // Some books print the genre heading INSIDE the text ("Theotokion: O
+      // Bride of God…"). The Beatitudes blend lifts that prefix into the
+      // block's label before rendering, so the rendered text no longer matches
+      // the stored text and the hymn came back 'unknown' — 3 of the 4
+      // Unmercenaries troparia attributed on 2026-11-01, not 4. Index the
+      // stripped form too, mirroring the same strip in
+      // sources/beatitudes.js loadBlendParts().
+      const stripped = node.text.replace(
+        /^(Theotokion|Stavrotheotokion|Triadicon|Martyricon)\s*[:\u2014-]\s*/i, '');
+      if (stripped !== node.text && stripped.trim() && !map.has(norm(stripped))) {
+        map.set(norm(stripped), fam);
+      }
+    }
+    for (const [k, v] of Object.entries(node)) {
+      if (k === '_source' || k === 'source' || k === 'text') continue;
+      if (Array.isArray(v)) v.forEach(x => walkTagged(x, tag, resolve));
+      else if (v && typeof v === 'object') walkTagged(v, tag, resolve);
+    }
+  };
+
+  // 1. Octoechos. No tag on a node means the OCA Obikhod — the file's own
+  //    convention.
   try {
     const octo = require(path.join(ROOT, 'variable-sources', 'octoechos.json'));
-    const walk = (node, inherited) => {
-      if (!node || typeof node !== 'object') return;
-      const src = typeof node._source === 'string' ? node._source : inherited;
-      if (typeof node.text === 'string' && node.text.trim()) {
-        if (!map.has(norm(node.text))) map.set(norm(node.text), familyOf(src));
-      }
-      for (const [k, v] of Object.entries(node)) {
-        if (k === '_source' || k === 'text') continue;
-        if (Array.isArray(v)) v.forEach(x => walk(x, src));
-        else if (v && typeof v === 'object') walk(v, src);
-      }
-    };
-    // No `_source` on a node means the OCA Obikhod — the file's own convention.
-    walk(octo, 'oca-menaion');
+    walkTagged(octo, 'oca-menaion', familyOf);
   } catch (_) { /* a missing source file is not a finding */ }
+
+  // 1b. Menaion day-files and feast-canons. Never indexed before 2026-11-02, so
+  //     every canon-ode troparion in the corpus was 'unknown' — including the
+  //     four the Beatitudes blend pulls into the Third Antiphon on a saint's
+  //     Sunday. Indexed BEFORE the DB below, which uses a plain `set` and so
+  //     still wins on a text collision: the DB's controlled vocabulary is the
+  //     better attribution than a file's freeform prose.
+  //     An untagged file stays 'unknown' here — unlike the Octoechos there is
+  //     no file-wide default that would be honest to assume.
+  for (const sub of ['menaion', 'feast-canons']) {
+    const dir = path.join(ROOT, 'variable-sources', sub);
+    let files = [];
+    try { files = require('fs').readdirSync(dir).filter(f => f.endsWith('.json')); }
+    catch (_) { continue; }
+    for (const f of files) {
+      try {
+        const data = require(path.join(dir, f));
+        walkTagged(data, data?._meta?._source || '', familyOfProse);
+      } catch (_) { /* one unreadable day-file is not a finding */ }
+    }
+  }
 
   // 2. The stichera table. The project opens SQLite through node:sqlite, not
   // better-sqlite3 — an earlier draft of this file required the latter, the
@@ -149,4 +223,4 @@ function familyOfText(text) {
   return index().get(norm(text)) || 'unknown';
 }
 
-module.exports = { FAMILY, LABEL, familyOf, familyOfText, index, norm };
+module.exports = { FAMILY, LABEL, familyOf, familyOfProse, familyOfText, index, norm };

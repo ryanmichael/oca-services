@@ -12,7 +12,11 @@
 
 const { isPluralAddress } = require('../../../scripts/yy-to-tt.js');
 
-const TT_MARKER     = /\b(thou|thee|thy|thine|hast|hadst|didst|dost|wast|art)\b/i;
+// `ye` belongs here: it is the TT plural subject pronoun, so a block built on
+// it is TT prose, not YY drift. Leaving it out meant a plural-addressed hymn
+// with no singular verb form in it — "ye heal those who have recourse to you"
+// — registered as having no TT marker at all and was reported as YY.
+const TT_MARKER     = /\b(thou|thee|thy|thine|ye|hast|hadst|didst|dost|wast|art)\b/i;
 const YY_PRONOUN    = /\b(you|your)\b/i;
 const YY_EXCEPTIONS = [
   /I am with you/i,

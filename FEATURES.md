@@ -14,6 +14,7 @@ Run the regression gate: `npm run test:contracts`
 | confessFirst — Communion Prayer order parish rubric | [features/confess-first.md](features/confess-first.md) | [test/contracts/confess-first.test.js](test/contracts/confess-first.test.js) — INV-1..3 | shipped 2026-06-14 |
 | Sunday Kontakia Restructure — Glory/Now bracket + Theotokion-Kontakion | [features/sunday-kontakia-restructure.md](features/sunday-kontakia-restructure.md) | [test/contracts/sunday-kontakia-restructure.test.js](test/contracts/sunday-kontakia-restructure.test.js) — INV-1..5 | shipped 2026-06-14 |
 | Per-stack cascade for `variable-sources/` — a parish can be pointed at its own translation of Octoechos / Menaion / feast-canon troparia | [features/variable-source-cascade.md](features/variable-source-cascade.md) | [test/contracts/variable-source-cascade.test.js](test/contracts/variable-source-cascade.test.js) — INV-1..6 | shipped 2026-11-02 |
+| L45 — one antiphon, one translation (blended Liturgy antiphons must resolve to a single translation family) | [features/antiphon-translation-family.md](features/antiphon-translation-family.md) | [test/contracts/antiphon-translation-family.test.js](test/contracts/antiphon-translation-family.test.js) — INV-1..6 | shipped 2026-11-02 |
 
 ## Vespers
 

@@ -188,6 +188,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   //   Kept tri-state so an unset parish keeps today's output and an explicit
   //   `false` is actually honored (it used to be a no-op on any day with
   //   General-Menaion propers).
+  // opts.stack — the active translation / parish overlay id. Needed because
+  //   some variable-source reads happen DEEP in the build (the Beatitudes
+  //   blend opens Menaion and feast-canon files itself) rather than through
+  //   the already-cascaded `srcs`. Passing it lets those reads go through the
+  //   per-stack cascade in sources/variable-source-overlay.js. Omitting it is
+  //   safe and yields the shared base text.
   const includeLesserSaints       = !!opts.includeLesserSaints;
   const includeSecondGospel       = !!opts.includeSecondGospel;
   // Opt-in: only an explicit `true` attaches a cocelebrated-overlay koinonikon.
@@ -1185,7 +1191,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     hasCocelebratedOverlay: !!overlay,
     feastAntiphons,
     paschalAntiphons12,
-    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, fathersBeatitudesCanon) },
+    beatitudes: feastAntiphons ? null : { troparia: pentOverride?.beatitudesTroparia || buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, fathersBeatitudesCanon, opts.stack) },
     includeDepartedLitany,
     entranceHymn,
     troparia,

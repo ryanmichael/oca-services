@@ -1,0 +1,15 @@
+{
+  "_note": "Test fixture for the variable-source cascade. Overrides ONE canon-ode troparion so a contract test can prove a stack reaches the Beatitudes blend's Menaion half. Not liturgical text; not a selectable translation.",
+  "matins": {
+    "canon": {
+      "ode3": {
+        "troparia": [
+          { "text": "_TEST-DIFF OVERLAY_ first troparion of Ode 3." },
+          { "text": "_TEST-DIFF OVERLAY_ second troparion of Ode 3." },
+          { "text": "_TEST-DIFF OVERLAY_ third troparion of Ode 3." },
+          { "text": "Theotokion: _TEST-DIFF OVERLAY_ theotokion of Ode 3." }
+        ]
+      }
+    }
+  }
+}

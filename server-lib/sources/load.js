@@ -14,10 +14,21 @@ function loadSources() {
 
   // Variable-source Octoechos overlays, keyed by stack id. Cascaded per-request
   // onto the base by resolveOctoechos() when a parish selects that stack.
+  //
+  // DISCOVERED, not enumerated. This was a hardcoded `['myrrhbearers']` until
+  // 2026-11-02, which meant the cascade existed but only one overlay could ever
+  // reach it: dropping in a new `octoechos-<id>.json` registered nothing and
+  // failed silently, with the parish still getting the shared base text. The
+  // Sunday Beatitudes are the case that exposed it — all eight tones are HTM
+  // (`source: "htm-octoechos-sunday-beatitudes"`) and no stack could select
+  // anything else.
   const octoechosOverlays = {};
-  for (const id of ['myrrhbearers']) {
-    const rel = `variable-sources/octoechos-${id}.json`;
-    if (fs.existsSync(path.join(ROOT, rel))) octoechosOverlays[id] = loadJSON(rel);
+  const vsDir = path.join(ROOT, 'variable-sources');
+  if (fs.existsSync(vsDir)) {
+    for (const file of fs.readdirSync(vsDir)) {
+      const m = /^octoechos-(.+)\.json$/.exec(file);
+      if (m) octoechosOverlays[m[1]] = loadJSON(`variable-sources/${file}`);
+    }
   }
 
   // Load all available menaion files

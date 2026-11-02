@@ -59,7 +59,8 @@ function handle(req, res, ctx) {
       try {
         const orthocalData = await fetchOrthocalDay(date);
         calendarEntry = { ...calendarEntry,
-          liturgy: buildLiturgyFromOrthocal(orthocalData, date, reqSources, style) };
+          liturgy: buildLiturgyFromOrthocal(orthocalData, date, reqSources, style,
+            { stack: translation || null }) };
       } catch (err) {
         console.error(`Orthocal API error for ${date}:`, err.message);
         res.writeHead(503, { 'Content-Type': 'application/json' });

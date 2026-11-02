@@ -147,7 +147,10 @@ function handle(req, res, ctx) {
                   // kontakion). This route flattens rubrics into named opts
                   // rather than passing the bag, so it has to be named here
                   // too — see server-lib/sources/menaion-overrides.js.
-                  menaionOverrides:   overlayRubrics?.menaionOverrides }) };
+                  menaionOverrides:   overlayRubrics?.menaionOverrides,
+                  // Lets the Beatitudes blend's own Menaion / feast-canon
+                  // reads go through the per-stack variable-source cascade.
+                  stack:              translation || null }) };
           } catch (err) {
             console.error(`Orthocal API error for ${date}:`, err.message);
             res.writeHead(503, { 'Content-Type': 'application/json' });

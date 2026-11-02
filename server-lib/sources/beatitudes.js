@@ -3,7 +3,20 @@
 const path = require('path');
 const fs   = require('fs');
 
+const { loadVariableSourceJSON } = require('./variable-source-overlay');
+
 const ROOT = path.resolve(__dirname, '..', '..');
+
+/** A blend/override path is stored relative to the repo root (it names
+ *  `variable-sources/...` explicitly, which reads better in the tables above).
+ *  The cascade addresses files relative to `variable-sources/`, so strip the
+ *  prefix. A path outside `variable-sources/` is returned as null and read
+ *  straight from disk by the caller — no stack can override it. */
+function toVariableSourceRel(repoRelPath) {
+  const m = String(repoRelPath || '').replace(/\\/g, '/')
+    .match(/^variable-sources\/(.+)$/);
+  return m ? m[1] : null;
+}
 
 /** Date keys (M-D) for principal feasts whose canon troparia are appended
  *  to the Octoechos resurrection canon at the Liturgy Beatitudes. The
@@ -195,7 +208,7 @@ const FEAST_BEATITUDES_BLENDS = {
 /** Reads `parts` into a flat troparia list. A part that cannot be resolved is
  *  skipped with a warning rather than throwing — a missing book should cost the
  *  day its feast troparia, not its Liturgy. */
-function loadBlendParts(parts) {
+function loadBlendParts(parts, stack) {
   const out = [];
   for (const part of parts || []) {
     if (part.missing) {
@@ -205,10 +218,17 @@ function loadBlendParts(parts) {
         count: part.missing, reserved: true });
       continue;
     }
-    const filePath = path.join(ROOT, part.file);
+    // Read through the per-stack cascade so a parish can supply its own
+    // translation of these troparia — see variable-source-overlay.js. Half the
+    // reader-led Third Antiphon comes from a Menaion day-file, and before this
+    // seam existed no translation selection could reach it.
     let ode;
+    const rel = toVariableSourceRel(part.file);
     try {
-      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const data = rel
+        ? loadVariableSourceJSON(rel, stack)
+        : JSON.parse(fs.readFileSync(path.join(ROOT, part.file), 'utf8'));
+      if (data == null) throw new Error('file missing or unparseable');
       ode = part.at.split('.').reduce((o, k) => (o == null ? o : o[k]), data);
     } catch (err) {
       console.warn(`loadBlendParts: failed to read ${part.file}:`, err.message);
@@ -249,7 +269,7 @@ function loadBlendParts(parts) {
 
 /** Builds the composite Beatitudes list for a blend date, or null when the date
  *  has no blend configured. */
-function buildBlendedBeatitudes(dateStr, tone, beatData) {
+function buildBlendedBeatitudes(dateStr, tone, beatData, stack) {
   if (!dateStr) return null;
   const [, mm, dd] = dateStr.split('-').map(Number);
   if (!mm || !dd) return null;
@@ -257,7 +277,7 @@ function buildBlendedBeatitudes(dateStr, tone, beatData) {
   if (!blend) return null;
   if (!beatData || !Array.isArray(beatData.troparia)) return null;
 
-  const feast = loadBlendParts(blend.parts);
+  const feast = loadBlendParts(blend.parts, stack);
   if (!feast.length) return null;   // nothing gained; fall through to plain Octoechos
 
   const out = [];
@@ -271,7 +291,7 @@ function buildBlendedBeatitudes(dateStr, tone, beatData) {
  *  named canon file, or null when none is configured / the file's odes are
  *  scaffold-empty. An explicit `fnameOverride` (used for movable feasts such
  *  as the Holy Fathers Sunday, which has no fixed M-D key) takes precedence. */
-function loadFeastBeatitudesOverride(dateStr, fnameOverride) {
+function loadFeastBeatitudesOverride(dateStr, fnameOverride, stack) {
   let fname = fnameOverride || null;
   if (!fname) {
     if (!dateStr) return null;
@@ -280,16 +300,14 @@ function loadFeastBeatitudesOverride(dateStr, fnameOverride) {
     fname = FEAST_BEATITUDES_OVERRIDES[`${mm}-${dd}`];
   }
   if (!fname) return null;
-  const filePath = path.join(ROOT, 'variable-sources', 'feast-canons', `${fname}.json`);
-  if (!fs.existsSync(filePath)) return null;
-  try {
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    if (!hasPopulatedOde(data.ode3) && !hasPopulatedOde(data.ode6)) return null;
-    return data;
-  } catch (err) {
-    console.warn(`loadFeastBeatitudesOverride: failed to read ${filePath}:`, err.message);
-    return null;
-  }
+  const rel = `feast-canons/${fname}.json`;
+  if (!fs.existsSync(path.join(ROOT, 'variable-sources', rel))) return null;
+  // Cascaded like the blend parts above, so a stack can retranslate a feast
+  // canon's Beatitude troparia without forking the file for every parish.
+  const data = loadVariableSourceJSON(rel, stack);
+  if (!data) return null;
+  if (!hasPopulatedOde(data.ode3) && !hasPopulatedOde(data.ode6)) return null;
+  return data;
 }
 
 function hasPopulatedOde(ode) {
@@ -316,8 +334,14 @@ function hasPopulatedOde(ode) {
  * inserted just before the Glory/Theotokion (flat shape) or appended per-ode
  * (legacy shape). A feast-canon JSON may opt into full replacement with
  * `beatitudesMode: 'replace'`. Each item has { tone, label, source, text }.
+ *
+ * `stack` is the active translation / parish id. Every file this function
+ * reads off disk goes through the variable-source cascade, so a stack can
+ * retranslate the blend's Menaion and feast-canon troparia. The Octoechos
+ * half arrives already-cascaded inside `srcs` (resolveOctoechos), so it needs
+ * no stack here.
  */
-function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, feastCanonName) {
+function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, feastCanonName, stack) {
   if (!isSunday) return []; // weekday beatitudes not yet implemented
 
   const tk = `tone${tone}`;
@@ -327,11 +351,11 @@ function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, feastCanonName) 
   // A composite blend is keyed by fixed date only; an explicitly named canon
   // (a movable feast such as the Holy Fathers Sunday) still wins.
   if (!feastCanonName) {
-    const blended = buildBlendedBeatitudes(dateStr, tone, beatData);
+    const blended = buildBlendedBeatitudes(dateStr, tone, beatData, stack);
     if (blended) return blended;
   }
 
-  const override = loadFeastBeatitudesOverride(dateStr, feastCanonName);
+  const override = loadFeastBeatitudesOverride(dateStr, feastCanonName, stack);
 
   if (override && override.beatitudesMode === 'replace') {
     const ot = override.tone ?? tone;

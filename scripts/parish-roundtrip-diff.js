@@ -68,23 +68,42 @@ function diffStrings(rawA, rawB) {
   };
 }
 
-const REQUIRED_PRESENCE = {
-  // service → array of substrings that must appear in Tyler's rendered output.
-  // Any failure means the DB→in-memory pipeline is dropping a Tyler-specific
-  // override that legacy + library + derivation are supposed to provide.
-  //
-  // DERIVATION ONLY. Do not add a variant's wording here — see
-  // checkVariantPicks below for why.
-  liturgy: [
-    'Metropolitan Tikhon',     // litany short form (derivation)
-    'Archbishop Alexander',    // litany short form (derivation)
-    'Most Blessed Tikhon, Archbishop of Washington', // anaphora full title (derivation)
-  ],
-  vespers: [
-    'Metropolitan Tikhon',
-    'Archbishop Alexander',
-  ],
+// Which derived hierarch fields each service must surface. The VALUES are read
+// from parish_settings at run time — see hierarchExpectations below. Naming a
+// hierarch here would go stale the day a diocese elects a new one, which is
+// exactly what happened on 2026-11-05: this script hardcoded 'Archbishop
+// Alexander', the DOS elected Abp. Gerasim, and a correct render reported
+// "architecture regression". Same trap the variant-pick note below describes,
+// one section up and three weeks later.
+const REQUIRED_HIERARCH_FIELDS = {
+  liturgy: ['primate_short', 'ruling_hierarch_short', 'primate_name'],
+  vespers: ['primate_short', 'ruling_hierarch_short'],
 };
+
+/**
+ * Derive the expected hierarch substrings for a service from parish_settings.
+ * The invariant is "the render carries THIS PARISH'S hierarchs", not "the
+ * render contains Alexander".
+ */
+function hierarchExpectations(service, parishId) {
+  const db = openDb();
+  if (!db) return null;
+  const row = db.prepare(
+    `SELECT primate_name, primate_short, ruling_hierarch_name, ruling_hierarch_short
+       FROM parish_settings WHERE parish_id = ?`
+  ).get(parishId);
+  if (!row) return null;
+  const out = [];
+  for (const field of (REQUIRED_HIERARCH_FIELDS[service] || [])) {
+    const v = (row[field] || '').trim();
+    if (!v) continue;
+    // The anaphora prints the full title; the litanies print the short form.
+    // A full title is stored bare ("Gerasim, Archbishop of …") and rendered
+    // after a style ("the Most Reverend "), so assert on the stored value.
+    out.push(field.endsWith('_name') ? v.split(',')[0].trim() + ',' : v);
+  }
+  return out;
+}
 
 // ── Variant picks: derive the expectation, never hardcode it ────────────────
 //
@@ -284,7 +303,7 @@ const PARISH = 'st-john-damascus-tyler';
       continue;
     }
 
-    const required = REQUIRED_PRESENCE[service] || [];
+    const required = hierarchExpectations(service, PARISH) || [];
     const missing = required.filter(s => body.indexOf(s) === -1);
     if (missing.length === 0) {
       console.log(`  ✓ ${service}: all ${required.length} derived override(s) present (${body.length} bytes)`);

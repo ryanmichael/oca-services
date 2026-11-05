@@ -49,8 +49,12 @@ function upsertTyler(db) {
     extends_chain:        JSON.stringify(['oca']),
     primate_name:          'Tikhon, Archbishop of Washington, Metropolitan of All America and Canada',
     primate_short:         'Metropolitan Tikhon',
-    ruling_hierarch_name:  'Alexander, Archbishop of Dallas and the South',
-    ruling_hierarch_short: 'Archbishop Alexander',
+    // Abp. Dmitri's successors in the DOS: Alexander until 2026, then Gerasim
+    // (elected 2026; enthroned 2026-11-14). Changing a hierarch is a parish
+    // setting, not a seed edit — this constant is only the first-run default,
+    // and the live value is storage/oca.db parish_settings.ruling_hierarch_name.
+    ruling_hierarch_name:  'Gerasim, Archbishop of Dallas and the South',
+    ruling_hierarch_short: 'Archbishop Gerasim',
     patron_natural_key:   '12-04/john-of-damascus',
     patron_title:         'Venerable John of Damascus',
     rubric_confess_first: 1,

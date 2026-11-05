@@ -26,15 +26,40 @@
 // and are not ours to reproduce; the choir sings from its own books.
 //
 // WHAT IS A CUE AND NOT A TEXT. Much of a hierarchical Liturgy is choreography
-// timed to the bishop's actions, which this block model has no way to express —
-// the choir director's own annotations on the Theotokos hymn read "After
-// welcome Bishop comes", "Deacon will be chanting proper" and "Stop when
-// Vladyka 1st cover". Those are emitted as `rubric` blocks naming what happens,
-// never as invented text. Where a text exists but we hold only its incipit —
-// the bishop's "Look down from heaven, O God…", which the Obikhod page prints
-// truncated — the rubric says so rather than guessing the remainder.
+// timed to the bishop's actions, which this block model has no way to express.
+// Those are emitted as `rubric` blocks naming what happens, never as invented
+// text. Where a text exists but we hold only its incipit — the bishop's "Look
+// down from heaven, O God…", which the Obikhod page prints truncated — the
+// rubric says so rather than guessing the remainder.
+//
+// WHERE THE THEOTOKOS HYMN BELONGS (corrected 2026-11-05). The director's
+// annotations on that sheet were previously read as a cue for the ANAPHORA
+// megalynarion. They are not. Read at 300dpi, the page says:
+//
+//   top:    "After welcome Bishop comes … Softly … Stop when Bishop puts on Mitre"
+//   bottom: "Deacon will be chanting proper / Stop when Vlad[yka] Head covered"
+//   margin: "Lower to E♭ Major", "moderato → faster"
+//
+// A welcome, a mitre and a head being covered are the VESTING, not the
+// anaphora — the bishop is already vested and standing at the altar by then.
+// So "It is truly meet" is sung softly during the vesting, under the deacon's
+// vesting prayers, and stops when the mitre goes on. It is emitted there.
+// Source: docs/11-8 Hierarchical liturgy/Hymn to Theotokos Hierarchical.pdf.
+//
+// Its position WITHIN the vesting is the one inference here: last, immediately
+// before Ton Despotin, because the mitre is the end of vesting and Ton Despotin
+// and Eis Polla acclaim the fully-vested bishop. If the director says otherwise,
+// that is a parish correction, not a defect.
+//
+// What remains UNSOURCED, and is deliberately not invented: the bishop's own
+// commemoration at the anaphora (we emit only a minimal cue beside the
+// commemoration block that already renders), the hierarchical Great Entrance,
+// and the "Eis polla" repeats the rector describes as happening "several times
+// throughout the Liturgy" (docs/choir-packets/2026-10-14/body.md). We render
+// Eis polla once, at the vesting.
 
 const makeBlock          = require('../_shared/make-block');
+const { resolveFixedRef } = require('../_shared/resolve');
 const { _trisagionPeace } = require('./trisagion');
 
 /** Served before the Liturgy proper: the bishop is met at the doors and vested
@@ -51,7 +76,21 @@ function _litHierarchicalVesting(f) {
     { label: 'From the Rising of the Sun', source: 'hierarchical' }));
   blocks.push(makeBlock('hier-vesting-rubric', section, 'rubric', null, v.vestingRubric));
   blocks.push(makeBlock('hier-soul', section, 'hymn', 'choir', v.soulShallRejoice,
-    { tone: 7, label: 'Your Soul Shall Rejoice', source: 'hierarchical' }));
+    { tone: 7, label: 'Thy Soul Shall Rejoice', source: 'hierarchical' }));
+  // "It is truly meet", sung under the deacon's vesting prayers and cut off at
+  // the mitre. The sheet for it is the one annotated page in the 11-08 packet;
+  // see the header note above for why it sits here and not at the anaphora.
+  // The text is a @@-reference to the canonical `it-is-truly-meet`, NOT a
+  // second copy: it is the same hymn, so it must follow the parish's register
+  // and any parish override of that key rather than drift from them.
+  if (v.theotokosRubric) {
+    blocks.push(makeBlock('hier-theotokos-rubric', section, 'rubric', null, v.theotokosRubric));
+  }
+  const theotokosHymn = resolveFixedRef(v.theotokosHymn, f);
+  if (theotokosHymn && !theotokosHymn.startsWith('@@')) {
+    blocks.push(makeBlock('hier-theotokos', section, 'hymn', 'choir', theotokosHymn,
+      { label: 'Hymn to the Theotokos', source: 'hierarchical' }));
+  }
   blocks.push(makeBlock('hier-ton-despotin', section, 'hymn', 'choir', v.tonDespotin,
     { label: 'Ton Despotin', source: 'hierarchical' }));
   blocks.push(makeBlock('hier-eis-polla', section, 'hymn', 'choir', v.eisPolla,
@@ -100,7 +139,11 @@ function _litHierarchicalTrisagion(f) {
 }
 
 /** A cue at the megalynarion. The hymn itself is unchanged; what differs is
- *  that the bishop commemorates aloud while the choir sustains it. */
+ *  that the bishop commemorates aloud while the choir sustains it — which the
+ *  `comm-hierarchs` block immediately after already shows. Kept minimal on
+ *  purpose: the detail that used to be here ("the deacon chants the proper
+ *  commemoration over it", "the choir stops at the bishop's signal") was read
+ *  off the VESTING sheet and did not belong to this moment. See the header. */
 function _litHierarchicalTheotokosCue(f) {
   const h = (f && f.hierarchical) || {};
   if (!h.theotokosCue) return [];

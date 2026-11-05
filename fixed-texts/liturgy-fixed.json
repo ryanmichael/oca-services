@@ -625,12 +625,14 @@
     "_crossRef-theotokion": "dismissal-theotokion in liturgy-fixed"
   },
   "hierarchical": {
-    "_source": "Texts transcribed from the music the St John of Damascus choir sings, published on its site under Special Services -> Hierarchical Liturgy. No OCA order of services carries hierarchical rubrics; reference/orders/2026-1108 is the ordinary Sunday order and defers to the ruling bishop. Only the texts are held here -- the settings (Smolsky, Kovalevsky, Heckman, Obikhod/SVS, Akafist) are third-party arrangements and the choir sings from its own books.",
+    "_source": "Texts transcribed from the music the St John of Damascus choir sings, published on its site under Special Services -> Hierarchical Liturgy. No OCA order of services carries hierarchical rubrics; reference/orders/2026-1108 is the ordinary Sunday order and defers to the ruling bishop. Only the texts are held here -- the settings (Smolsky, Kovalevsky, Heckman, Obikhod/SVS, Akafist) are third-party arrangements and the choir sings from its own books. 2026-11-05: the vesting Hymn to the Theotokos was added and soulShallRejoice re-registered to thee/thy, from the annotated packet in docs/11-8 Hierarchical liturgy/ -- see assemblers/liturgy-parts/hierarchical.js for what the director's pen actually says and what remains unsourced.",
     "vesting": {
       "rubric": "Served when a bishop presides. Before the Liturgy the bishop is met at the doors of the church and vested in the centre of the nave. The choir sings throughout, and the deacon chants the appointed petitions over the singing.",
       "risingOfTheSun": "From the rising of the sun to its setting, the Name of the Lord is to be praised.\nBlessed be the Name of the Lord, henceforth, henceforth and forevermore.",
       "vestingRubric": "The bishop is vested. The choir continues as each vestment is put on, and the subdeacons respond.",
-      "soulShallRejoice": "Your soul shall rejoice in the Lord,\nfor He has clothed you with the garment of salvation;\nand with the robe of gladness has He encompassed you;\nas a bridegroom He has set a crown on you;\nand as a bride, He has adorned you with arrayment.",
+      "soulShallRejoice": "Thy soul shall rejoice in the Lord,\nfor He hath clothed thee with the garment of salvation;\nand with the robe of gladness hath He encompassed thee;\nas a bridegroom He hath set a crown on thee;\nand as a bride, He hath adorned thee with arrayment.",
+      "theotokosRubric": "The choir sings the Hymn to the Theotokos softly while the deacon chants the vesting prayers over it, and stops when the bishop is covered with the mitre.",
+      "theotokosHymn": "@@it-is-truly-meet",
       "tonDespotin": "Ton dhespotin kai arkhierea imon, Kirie filate:\nEis polla eti, dhespota, dhespota.",
       "eisPolla": "Eis polla eti, dhespota."
     },
@@ -643,6 +645,6 @@
       "final": "Holy Immortal, have mercy on us.",
       "tailRubric": "The Trisagion concludes as the bishop ascends to the high place. (The parish's Obikhod setting runs to further numbered sections; we hold only its first page.)"
     },
-    "theotokosCue": "The bishop commemorates aloud while the choir sustains the hymn, and the deacon chants the proper commemoration over it. The choir stops at the bishop's signal."
+    "theotokosCue": "The bishop commemorates the hierarchs aloud, as the commemoration below shows, while the choir sustains the hymn. (Unsourced beyond that: we have no packet sheet or order for the hierarchical form of this moment.)"
   }
 }

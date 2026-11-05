@@ -93,18 +93,69 @@ describe('Feature contract: the Hierarchical Divine Liturgy is a service type', 
   it('INV-2: the hierarchical form vests the bishop before the Liturgy', async () => {
     const b = (await hier(SUNDAY)).blocks;
     const vest = sec(b, VESTING);
-    assert.ok(vest.length >= 5, `expected the vesting section, got ${vest.length} block(s)`);
+    // Assert the ORDER of the pieces, not a count. `vest.length >= 5` was the
+    // old assertion and it could not see a missing hymn: the 11-08 packet's
+    // annotated Theotokos sheet was absent for months under a green test.
+    const sungIds = vest.filter(x => x.type === 'hymn').map(x => x.id);
+    assert.deepEqual(sungIds, [
+      'hier-rising',      // Ps 112:3, as the bishop is met at the doors
+      'hier-soul',        // the vesting verse
+      'hier-theotokos',   // "It is truly meet", softly, until the mitre
+      'hier-ton-despotin',
+      'hier-eis-polla',
+    ], 'the vesting sings these five, in this order');
+
     const t = txt(vest);
-    // The four pieces the choir actually sings, in order.
     assert.match(t, /From the rising of the sun to its setting/, 'Ps 112:3 at the meeting');
-    assert.match(t, /Your soul shall rejoice in the Lord/,       'the vesting hymn');
+    assert.match(t, /Thy soul shall rejoice in the Lord/,        'the vesting verse');
+    assert.match(t, /It is truly meet to bless thee/,            'the Theotokos hymn');
     assert.match(t, /Ton dhespotin kai arkhierea imon/,          'Ton Despotin');
-    assert.match(t, /Eis polla eti, dhespota/,                    'Eis Polla Eti, Despota');
+    assert.match(t, /Eis polla eti, dhespota/,                   'Eis Polla Eti, Despota');
+
     // It must come BEFORE the Liturgy proper, not somewhere in the middle.
     const firstVest = b.findIndex(x => x.section === VESTING);
     const doxology  = b.findIndex(x => x.section === 'Opening Doxology');
     assert.ok(firstVest >= 0 && firstVest < doxology,
       'the vesting precedes the Opening Doxology');
+  });
+
+  it('INV-2b: the vesting Theotokos hymn is a reference, not a second copy', async () => {
+    // It is the same hymn as the anaphora megalynarion on an ordinary Sunday.
+    // Holding it as "@@it-is-truly-meet" means a parish override of that key,
+    // and the parish's register, reach both — a literal copy would drift.
+    const b = (await hier(SUNDAY)).blocks;
+    const vesting  = b.find(x => x.id === 'hier-theotokos');
+    const anaphora = b.find(x => x.id === 'megalynarion');
+    assert.ok(vesting && anaphora, 'both the vesting hymn and the megalynarion must render');
+    assert.equal(vesting.text, anaphora.text,
+      'the vesting hymn must resolve to the same text as the megalynarion');
+    assert.doesNotMatch(vesting.text, /^@@/,
+      'an unresolved @@ sentinel must never reach a block');
+  });
+
+  it('INV-2c: the vesting texts follow the parish register', async () => {
+    // The corpus is tt-canonical and the pipeline only converts tt -> yy.
+    // A text authored in yy is therefore IDENTICAL under both registers and
+    // can never render thee/thy for a thee/thy parish. That byte-identity is
+    // the detector: `hier-soul` shipped in yy and read "Your soul … clothed
+    // you" for Tyler, a thee/thy parish, beside "bless thee" three blocks on.
+    const tt = (await get(`/api/liturgy?date=${SUNDAY}&as=hierarchical&pronoun=tt`)).json.blocks;
+    const yy = (await get(`/api/liturgy?date=${SUNDAY}&as=hierarchical&pronoun=yy`)).json.blocks;
+    const byId = (bs, id) => bs.find(x => x.id === id)?.text || '';
+
+    // Both of these address ONE person — the bishop, the Theotokos — so the
+    // singular pronoun must change between registers. (Ton Despotin and Eis
+    // Polla are transliterated Greek, and Ps 112:3 has no second person:
+    // those three are register-neutral and are deliberately not asserted.)
+    for (const id of ['hier-soul', 'hier-theotokos']) {
+      assert.notEqual(byId(tt, id), byId(yy, id),
+        `${id} renders identically in both registers — it is authored in yy and ` +
+        `can never render thee/thy`);
+    }
+    const ttVest = txt(sec(tt, VESTING).filter(x => x.type === 'hymn'));
+    assert.match(ttVest, /\bthee\b|\bthy\b/i, 'a tt render must actually use thee/thy here');
+    assert.doesNotMatch(ttVest, /\byour?\b/i,
+      'a tt render must not address the bishop or the Theotokos as "you"');
   });
 
   it('INV-3: the Trisagion alternates, and still ends with the priestly blessing', async () => {
@@ -170,8 +221,20 @@ describe('Feature contract: the Hierarchical Divine Liturgy is a service type', 
 
     // The hymn is unchanged; what differs is the bishop commemorating over it.
     const m = sec(r.blocks, 'Hymn to the Theotokos');
-    assert.ok(m.some(x => x.type === 'rubric' && /commemorates aloud/i.test(x.text || '')),
+    const cue = m.find(x => x.type === 'rubric');
+    assert.ok(cue && /commemorates the hierarchs aloud/i.test(cue.text || ''),
       'the megalynarion carries the bishop-commemoration cue');
     assert.ok(m.some(x => x.type === 'hymn'), 'and the hymn itself is still there');
+
+    // The cue must describe only what the blocks beside it actually show.
+    // It once carried the VESTING sheet's choreography — "the deacon chants
+    // the proper commemoration over it", "the choir stops at the bishop's
+    // signal" — read off the annotated Theotokos page and attached to the
+    // wrong moment. Those cues belong to hier-theotokos-rubric. Keep them out.
+    assert.doesNotMatch(cue.text, /mitre|vest|bishop's signal|stops? when/i,
+      'vesting choreography must not reappear at the anaphora');
+    const r2 = r.blocks.find(x => x.id === 'hier-theotokos-rubric');
+    assert.match(r2?.text || '', /mitre/i,
+      'and the mitre cue must still be where the packet puts it — the vesting');
   });
 });

@@ -28,6 +28,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { applyOrthocalCorrections } = require('../cache/orthocal-corrections');
 
 const PICKER_RANK_WORDS = new Set([
   'martyr','martyrs','hieromartyr','hieromartyrs','venerable','ven','holy','father','fathers','mother','mothers',
@@ -383,7 +384,9 @@ function loadOrthocalForDate(date) {
   if (!date) return null;
   const p = path.resolve(__dirname, '..', '..', 'data', 'orthocal', `${date}.json`);
   if (!fs.existsSync(p)) return null;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); }
+  // Same upstream corrections the cache layer applies — this reader bypasses
+  // fetchOrthocalDay, so it has to ask for them itself or the two disagree.
+  try { return applyOrthocalCorrections(date, JSON.parse(fs.readFileSync(p, 'utf8'))); }
   catch { return null; }
 }
 

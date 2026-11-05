@@ -11,6 +11,10 @@ const path = require('node:path');
 // byte-stable across boots and requests.
 const VENDOR_DIR = path.resolve(__dirname, '..', '..', 'data', 'orthocal');
 
+// Upstream data defects are corrected on read, never in the vendored mirror —
+// see orthocal-corrections.js for why.
+const { applyOrthocalCorrections } = require('./orthocal-corrections');
+
 // In-process cache — survives within a single Node process, discarded on
 // restart. Out-of-window orthocal hits are rare in normal operation; this
 // covers audit sweeps and prevents repeat fetches of the same date.
@@ -20,7 +24,7 @@ function getVendored(dateStr) {
   try {
     const p = path.join(VENDOR_DIR, `${dateStr}.json`);
     if (!fs.existsSync(p)) return null;
-    return JSON.parse(fs.readFileSync(p, 'utf8'));
+    return applyOrthocalCorrections(dateStr, JSON.parse(fs.readFileSync(p, 'utf8')));
   } catch { return null; }
 }
 
@@ -41,7 +45,7 @@ async function fetchOrthocalDay(dateStr) {
   const url = `https://orthocal.info/api/gregorian/${year}/${month}/${day}/`;
   const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
   if (!res.ok) throw new Error(`Orthocal API ${res.status} for ${dateStr}`);
-  const data = await res.json();
+  const data = applyOrthocalCorrections(dateStr, await res.json());
 
   inProcessCache.set(dateStr, data);
   return data;

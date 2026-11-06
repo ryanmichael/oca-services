@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 12,
+  "packets": 13,
   "counts": {
-    "service": 32,
+    "service": 35,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
     "unbound": 4,
-    "assets": 167
+    "assets": 170
   },
   "assets": {
     "92817f66af30": {
@@ -322,6 +322,30 @@
       "filename": "Great Vespers 10.31.26.pdf",
       "bytes": 7969602,
       "pages": 14
+    },
+    "8181ea9dfa7d": {
+      "id": "8181ea9dfa7d",
+      "sha256": "8181ea9dfa7dbc2ef970056845b029cbe994cf0019645fa0b56cdd11041f9ebf",
+      "path": "2026-11-04/pdf/great-vespers-2026-11-07.pdf",
+      "filename": "11.07.26 Great Vespers.pdf",
+      "bytes": 7653504,
+      "pages": 15
+    },
+    "4cb7156b2bc1": {
+      "id": "4cb7156b2bc1",
+      "sha256": "4cb7156b2bc188f38e4cd1ee2e53eb071551964aa2d326d46401f16571c94b86",
+      "path": "2026-11-04/pdf/liturgy-2026-11-08.pdf",
+      "filename": "11.08.26 Hierarchical Divine Liturgy .pdf",
+      "bytes": 10740647,
+      "pages": 19
+    },
+    "273dba076b86": {
+      "id": "273dba076b86",
+      "sha256": "273dba076b86cb5147b14ee555307c30521b0cc124326816b42dafc140215506",
+      "path": "2026-11-04/pdf/daily-vespers-2026-11-12.pdf",
+      "filename": "11.12.26 Daily Vespers.pdf",
+      "bytes": 4798711,
+      "pages": 9
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1705,6 +1729,37 @@
       "tone": null,
       "asset": "bd9f6584d9af",
       "packet": "2026-10-30"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-07",
+      "contentDate": "2026-11-08",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "8181ea9dfa7d",
+      "packet": "2026-11-04"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-08",
+      "contentDate": "2026-11-08",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "4cb7156b2bc1",
+      "packet": "2026-11-04"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-11",
+      "contentDate": "2026-11-12",
+      "service": "dailyVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "273dba076b86",
+      "packet": "2026-11-04",
+      "remapped": true
     },
     {
       "kind": "block",

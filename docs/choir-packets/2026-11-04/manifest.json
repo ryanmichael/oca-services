@@ -1,0 +1,106 @@
+{
+  "emailDate": "2026-11-04",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast 11/04/26 re: Hierarchical Liturgy 11/08",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast 11/04/26 re: Hierarchical Liturgy 11/08",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/97c17067-8ec5-4227-9339-513e32a3b32f/scratchpad/choir-drop-2026-11-04",
+      "fetchedAt": "2026-11-06T13:35:26.242Z",
+      "attachments": 3
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-06T13:35:26.242Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "11.07.26 Great Vespers.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-11-07",
+      "contentDate": "2026-11-08",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-11-07.pdf",
+      "sha256": "8181ea9dfa7dbc2ef970056845b029cbe994cf0019645fa0b56cdd11041f9ebf",
+      "bytes": 7653504,
+      "pages": 15,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-07",
+      "messageSubject": "St John Choir Email Blast 11/04/26 re: Hierarchical Liturgy 11/08",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-11-07.txt",
+        "pages": 15,
+        "textPages": 10,
+        "musicPages": 5,
+        "chars": 6730
+      }
+    },
+    {
+      "original": "11.08.26 Hierarchical Divine Liturgy .pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-11-08",
+      "contentDate": "2026-11-08",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-11-08.pdf",
+      "sha256": "4cb7156b2bc188f38e4cd1ee2e53eb071551964aa2d326d46401f16571c94b86",
+      "bytes": 10740647,
+      "pages": 19,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-11-08",
+      "messageSubject": "St John Choir Email Blast 11/04/26 re: Hierarchical Liturgy 11/08",
+      "ocr": {
+        "file": "ocr/liturgy-2026-11-08.txt",
+        "pages": 19,
+        "textPages": 1,
+        "musicPages": 18,
+        "chars": 587
+      }
+    },
+    {
+      "original": "11.12.26 Daily Vespers.pdf",
+      "kind": "service",
+      "service": "dailyVespers",
+      "serviceLabel": "Daily Vespers",
+      "apiDate": "2026-11-11",
+      "contentDate": "2026-11-12",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "confirmed",
+      "reasons": [],
+      "stored": "pdf/daily-vespers-2026-11-12.pdf",
+      "sha256": "273dba076b86cb5147b14ee555307c30521b0cc124326816b42dafc140215506",
+      "bytes": 4798711,
+      "pages": 9,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-11",
+      "messageSubject": "St John Choir Email Blast 11/04/26 re: Hierarchical Liturgy 11/08",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-11-12.txt",
+        "pages": 9,
+        "textPages": 5,
+        "musicPages": 4,
+        "chars": 3804
+      },
+      "remappedFrom": {
+        "apiDate": "2026-11-12",
+        "contentDate": "2026-11-13"
+      },
+      "remapReason": "Body: 'Attached: Great Vespers, Liturgy and next week's Daily Vespers.' The parish's standing DV is WEDNESDAY (this same blast says 'NO DAILY VESPERS TONIGHT' on Wed 11-04; rector's Nov 1 email lists 'Wednesday - No Daily Vespers'). The sheets themselves say Wednesday three times (p5 'Wednesday Night Vespers', p7 'Wednesday Evening Vespers', p9 'Dismissal Theotokion - Wednesday'), carry Thursday's Apostles Octoechos, and are headed 'Menaion: 12 November'. So 11.12.26 names the LITURGICAL DAY, sung Wednesday evening 11-11.",
+      "remappedAt": "2026-11-06T13:36:42.852Z"
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": []
+}

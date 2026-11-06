@@ -1,22 +1,22 @@
 {
-  "_note": "OCA hierarch-commemoration derivation. Produces every overlay key that names the parish's hierarchs from 4 form fields: primate_name + ruling_hierarch_name (full titles, used in Anaphora) and primate_short + ruling_hierarch_short (short forms like 'Metropolitan Tikhon', used in litanies). Phase 2 leftover landed the short-form fields and extended coverage to greatLitany / augmentedLitany / litya across both Liturgy and Vespers.",
+  "_note": "OCA hierarch-commemoration derivation. Produces every overlay key that names the parish's hierarchs from 4 form fields: primate_name + ruling_hierarch_name (full titles, used in Anaphora) and primate_short + ruling_hierarch_short (short forms like 'Metropolitan Tikhon', used in litanies). Phase 2 leftover landed the short-form fields and extended coverage to greatLitany / augmentedLitany / litya across both Liturgy and Vespers. 2026-11-06: the ruling hierarch's honorific is no longer hard-coded to the ARCHBISHOP form -- it is derived from his rank in server-lib/derivations/hierarch-style.js and injected as {ruling_hierarch_style} / {ruling_hierarch_style_short}, because 'His Eminence, the Most Reverend' belongs to an archbishop and a bishop takes 'His Grace, the Right Reverend'.",
   "jurisdiction": "oca",
-  "inputs": ["primate_name", "ruling_hierarch_name", "primate_short", "ruling_hierarch_short"],
+  "inputs": [
+    "primate_name",
+    "ruling_hierarch_name",
+    "primate_short",
+    "ruling_hierarch_short",
+    "ruling_hierarch_style",
+    "ruling_hierarch_style_short"
+  ],
   "keys": {
-    "liturgy:anaphora-chrysostom.commemoration-hierarchs":
-      "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and His Eminence, the Most Reverend {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
-    "liturgy:anaphora-basil.commemoration-hierarchs":
-      "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and His Eminence, the Most Reverend {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "liturgy:anaphora-chrysostom.commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and {ruling_hierarch_style} {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "liturgy:anaphora-basil.commemoration-hierarchs": "Among the first, remember, O Lord, His Beatitude, the Most Blessed {primate_name}; and {ruling_hierarch_style} {ruling_hierarch_name}. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
     "liturgy:anaphora-basil.commemoration-hierarchs-response": "And all mankind.",
-    "liturgy:hierarch-commemoration.greatLitany":
-      "For the most blessed {primate_short}, most reverend {ruling_hierarch_short}, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
-    "liturgy:hierarch-commemoration.augmentedLitany":
-      "Again we pray for the most blessed {primate_short}, and for the most reverend {ruling_hierarch_short}.",
-    "vespers:hierarch-commemoration.greatLitany":
-      "For the most blessed {primate_short}, most reverend {ruling_hierarch_short}, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
-    "vespers:hierarch-commemoration.augmentedLitany":
-      "Again we pray for the most blessed {primate_short}, and for the most reverend {ruling_hierarch_short}.",
-    "vespers:hierarch-commemoration.litya":
-      "Again we pray for the most blessed {primate_short}, and for the most reverend {ruling_hierarch_short}."
+    "liturgy:hierarch-commemoration.greatLitany": "For the most blessed {primate_short}, {ruling_hierarch_style_short} {ruling_hierarch_short}, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+    "liturgy:hierarch-commemoration.augmentedLitany": "Again we pray for the most blessed {primate_short}, and for the {ruling_hierarch_style_short} {ruling_hierarch_short}.",
+    "vespers:hierarch-commemoration.greatLitany": "For the most blessed {primate_short}, {ruling_hierarch_style_short} {ruling_hierarch_short}, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+    "vespers:hierarch-commemoration.augmentedLitany": "Again we pray for the most blessed {primate_short}, and for the {ruling_hierarch_style_short} {ruling_hierarch_short}.",
+    "vespers:hierarch-commemoration.litya": "Again we pray for the most blessed {primate_short}, and for the {ruling_hierarch_style_short} {ruling_hierarch_short}."
   }
 }

@@ -15,6 +15,7 @@
 //     referenced by parish_settings.legacy_overlay_path.
 
 const { openDb }                 = require('../cache/sqlite');
+const { hierarchStyle }          = require('../derivations/hierarch-style');
 const { deriveOverlayForService } = require('../derivations');
 const { loadVariantLibrary, resolveVariant } = require('../variants');
 const { collectMenaionOverrides }           = require('../sources/menaion-overrides');
@@ -97,6 +98,7 @@ function buildParishOverlay(row, picks, library, rubricPicks = {}, practice = {}
   };
 
   const data = {};
+  const rulingStyle = hierarchStyle(row.ruling_hierarch_name);
   for (const service of SERVICES_WITH_DERIVATIONS) {
     const derived = deriveOverlayForService({
       jurisdiction: row.jurisdiction,
@@ -106,6 +108,11 @@ function buildParishOverlay(row, picks, library, rubricPicks = {}, practice = {}
         ruling_hierarch_name:  row.ruling_hierarch_name  || '',
         primate_short:         row.primate_short         || '',
         ruling_hierarch_short: row.ruling_hierarch_short || '',
+        // The honorific tracks the RANK, not the office: an archbishop is
+        // "His Eminence, the Most Reverend", a bishop "His Grace, the Right
+        // Reverend". Derived from the stored title so the two cannot drift.
+        ruling_hierarch_style:       rulingStyle.full,
+        ruling_hierarch_style_short: rulingStyle.short,
       },
     });
     data[service] = derived;

@@ -16,6 +16,16 @@ const REGISTRY_URL = '/api/rubric-registry';
 
 let rubricRegistry = null;
 
+// Mirrors server-lib/derivations/hierarch-style.js: the honorific tracks the
+// RANK. Archbishop is tested before bishop because it contains it.
+function hierarchStyleFor(title) {
+  const t = String(title || '');
+  if (/\bmetropolitan\b/i.test(t)) return 'His Beatitude, the Most Blessed';
+  if (/\barchbishop\b/i.test(t))   return 'His Eminence, the Most Reverend';
+  if (/\bbishop\b/i.test(t))       return 'His Grace, the Right Reverend';
+  return 'His Eminence, the Most Reverend';
+}
+
 function deriveDomId(dbColumn) {
   return 'f-' + dbColumn.replace(/^rubric_/, '').replace(/_/g, '-');
 }
@@ -153,7 +163,7 @@ function renderDerived() {
   els.primateDerived.textContent =
     `Will render as: "…His Beatitude, the Most Blessed ${p}…"`;
   els.rulingDerived.textContent =
-    `Will render as: "…His Eminence, the Most Reverend ${r}…"`;
+    `Will render as: "…${hierarchStyleFor(r)} ${r}…"`;
 }
 
 function renderSummary() {

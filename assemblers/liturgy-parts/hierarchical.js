@@ -98,11 +98,27 @@ function _litHierarchicalVesting(f) {
   return blocks;
 }
 
-/** The hierarchical Trisagion. The Obikhod setting the parish sings alternates
- *  choir / clergy / choir / trio, with the bishop blessing the people between
- *  the third and fourth. The ordinary form is three choir repetitions with the
- *  Glory and the final — a different structure, not a different wording, which
- *  is why this substitutes the section rather than editing its text. */
+/** The hierarchical Trisagion — EIGHT numbered sections, not four.
+ *
+ *  The parish's Obikhod setting (OrthodoxMusicResource, rev. T. Lewis 2022)
+ *  numbers them on the page, and the 2026-11-08 packet carries both of its
+ *  pages:
+ *
+ *    1 Choir   2 Clergy repeat No. 1   3 Choir   4 Trio (bishop blesses)
+ *    5 Choir   6 Clergy repeat No. 1   7 Choir: Glory… + "Holy Immortal"
+ *    8 Choir repeat No. 1
+ *
+ *  Until 2026-11-05 we emitted 1-4 and then jumped straight to the Glory, so
+ *  the shape was wrong and not merely short: the Glory sat at position 5 and
+ *  5, 6 and 8 did not exist. The old rubric admitted it ("we hold only its
+ *  first page") — page 2 arrived in the packet, so the caveat is retired.
+ *
+ *  The numbers are carried in the labels on purpose: the choir follows a
+ *  numbered sheet, and matching our text to their music is the whole point.
+ *
+ *  The ordinary form is three choir repetitions with the Glory and the final —
+ *  a different structure, not a different wording, which is why this
+ *  substitutes the section rather than editing its text. */
 function _litHierarchicalTrisagion(f) {
   const section = 'Trisagion';
   const h = (f && f.hierarchical) || {};
@@ -118,7 +134,7 @@ function _litHierarchicalTrisagion(f) {
   if (t.openingRubric) {
     blocks.push(makeBlock('tris-h-rubric', section, 'rubric', null, t.openingRubric));
   }
-  blocks.push(makeBlock('tris-h-1', section, 'hymn', 'choir', text));
+  blocks.push(makeBlock('tris-h-1', section, 'hymn', 'choir', text, { label: '1. Choir' }));
   blocks.push(makeBlock('tris-h-clergy-rubric', section, 'rubric', null, t.clergyRubric));
   // The schema's speaker enum is priest/deacon/reader/choir/all — there is no
   // `clergy` or `trio`, and the hierarchical form is not reason enough to widen
@@ -126,16 +142,69 @@ function _litHierarchicalTrisagion(f) {
   // the label and by the rubric above it, which is where the rest of this
   // service's choreography already lives.
   blocks.push(makeBlock('tris-h-2', section, 'hymn', 'priest', text,
-    { label: 'The clergy, in the altar' }));
-  blocks.push(makeBlock('tris-h-3', section, 'hymn', 'choir', text));
+    { label: '2. The clergy, in the altar' }));
+  blocks.push(makeBlock('tris-h-3', section, 'hymn', 'choir', text, { label: '3. Choir' }));
   blocks.push(makeBlock('tris-h-bishop-rubric', section, 'rubric', null, t.bishopRubric));
-  blocks.push(makeBlock('tris-h-trio', section, 'hymn', 'choir', text, { label: 'Trio' }));
-  if (t.glory) blocks.push(makeBlock('tris-h-glory', section, 'doxology', null, t.glory));
-  if (t.final) blocks.push(makeBlock('tris-h-final', section, 'hymn', 'choir', t.final));
+  blocks.push(makeBlock('tris-h-trio', section, 'hymn', 'choir', text, { label: '4. Trio' }));
+  blocks.push(makeBlock('tris-h-5', section, 'hymn', 'choir', text, { label: '5. Choir' }));
+  if (t.clergyRubric2) {
+    blocks.push(makeBlock('tris-h-clergy-rubric-2', section, 'rubric', null, t.clergyRubric2));
+  }
+  blocks.push(makeBlock('tris-h-6', section, 'hymn', 'priest', text,
+    { label: '6. The clergy, in the altar' }));
+  // 7 is ONE sung item on the sheet: the Glory and "Holy Immortal" together.
+  // They stay two blocks because `doxology` is a distinct type every renderer
+  // styles differently; the shared label is what marks them as one section.
+  if (t.glory) {
+    blocks.push(makeBlock('tris-h-glory', section, 'doxology', null, t.glory,
+      { label: '7. Choir' }));
+  }
+  if (t.final) {
+    blocks.push(makeBlock('tris-h-final', section, 'hymn', 'choir', t.final,
+      { label: '7. Choir' }));
+  }
+  blocks.push(makeBlock('tris-h-8', section, 'hymn', 'choir', text, { label: '8. Choir' }));
   blocks.push(makeBlock('tris-h-tail-rubric', section, 'rubric', null, t.tailRubric));
   // Every form of the Trisagion is followed by the priestly blessing.
   blocks.push(..._trisagionPeace(section));
   return blocks;
+}
+
+/** The entrance hymn, sung clergy → choir → clergy.
+ *
+ *  The 2026-11-08 packet's Eisodikon page carries three marks in the
+ *  director's hand: "CLERGY:" at the opening, "Clergy sings full page — Then"
+ *  with an arrow to "Choir:" placed exactly at "O Son of God", and "Clergy
+ *  sing again" at the foot.
+ *
+ *  WHAT IS DELIBERATELY NOT INFERRED. Whether each party sings the whole hymn
+ *  or the page is divided at "O Son of God" is not stated, and getting it
+ *  wrong would have the choir sing half a hymn. So each block carries the FULL
+ *  text and the entry point is named in the rubric, quoting the sheet. If the
+ *  director says they divide it, that is a one-line change here.
+ *
+ *  This takes the ordinary blocks rather than re-deriving the text, so the
+ *  Great-Feast entrance verse and any parish override reach it unchanged. */
+function _litHierarchicalEntranceHymn(ordinaryBlocks, f) {
+  const section = 'Entrance Hymn';
+  const e = ((f && f.hierarchical) || {}).entranceHymn;
+  if (!e) return ordinaryBlocks;
+  const hymn = (ordinaryBlocks || []).find(b => b.id === 'entrance-hymn');
+  if (!hymn) return ordinaryBlocks;
+
+  // Everything that is not the hymn itself (e.g. the priest's entrance verse
+  // on a Great Feast of the Lord) keeps its place ahead of the exchange.
+  const out = (ordinaryBlocks || []).filter(b => b.id !== 'entrance-hymn');
+  out.push(makeBlock('entrance-hymn-rubric', section, 'rubric', null, e.rubric));
+  out.push(makeBlock('entrance-hymn-clergy', section, 'hymn', 'priest', hymn.text,
+    { label: e.clergyLabel, source: 'hierarchical' }));
+  // Keeps the `entrance-hymn` id: it is still the choir's block, and rules and
+  // tests across the repo address it by that name.
+  out.push(makeBlock('entrance-hymn', section, 'hymn', 'choir', hymn.text,
+    { label: e.choirLabel, tone: hymn.tone }));
+  out.push(makeBlock('entrance-hymn-clergy-2', section, 'hymn', 'priest', hymn.text,
+    { label: e.clergyAgainLabel, source: 'hierarchical' }));
+  return out;
 }
 
 /** A cue at the megalynarion. The hymn itself is unchanged; what differs is
@@ -153,6 +222,7 @@ function _litHierarchicalTheotokosCue(f) {
 
 module.exports = {
   _litHierarchicalVesting,
+  _litHierarchicalEntranceHymn,
   _litHierarchicalTrisagion,
   _litHierarchicalTheotokosCue,
 };

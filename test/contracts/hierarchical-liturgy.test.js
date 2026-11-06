@@ -158,22 +158,73 @@ describe('Feature contract: the Hierarchical Divine Liturgy is a service type', 
       'a tt render must not address the bishop or the Theotokos as "you"');
   });
 
-  it('INV-3: the Trisagion alternates, and still ends with the priestly blessing', async () => {
+  it('INV-3: the Trisagion runs all EIGHT numbered sections, in order', async () => {
     const t = sec((await hier(SUNDAY)).blocks, 'Trisagion');
-    const sung = t.filter(x => x.type === 'hymn' && /^Holy God/.test(x.text || ''));
-    assert.equal(sung.length, 4,
-      `the hierarchical form is choir / clergy / choir / trio, got ${sung.length} repetitions`);
-    assert.deepEqual(sung.map(x => x.speaker), ['choir', 'priest', 'choir', 'choir'],
-      'the second repetition is the clergy in the altar');
-    assert.match(sung[1].label || '', /clergy/i, 'who sings is carried by the label');
-    assert.match(sung[3].label || '', /trio/i,   'the fourth repetition is the trio');
+    // The parish's Obikhod sheet numbers its sections 1-8 and the choir follows
+    // that numbering, so assert the ORDER of who sings rather than a count.
+    // Before 2026-11-05 we emitted 1-4 and jumped straight to the Glory: the
+    // count was short AND the shape was wrong, with the Glory at position 5
+    // and 5, 6 and 8 missing entirely. A count-only assertion would have gone
+    // green on any four repetitions.
+    const numbered = t.filter(x => /^[1-8]\./.test(x.label || ''));
+    assert.deepEqual(numbered.map(x => x.label), [
+      '1. Choir',
+      '2. The clergy, in the altar',
+      '3. Choir',
+      '4. Trio',
+      '5. Choir',
+      '6. The clergy, in the altar',
+      '7. Choir',   // the Glory…
+      '7. Choir',   // …and "Holy Immortal", one sung item on the sheet
+      '8. Choir',
+    ], 'the eight numbered sections, in the order the Obikhod sheet prints them');
+    assert.deepEqual(numbered.map(x => x.speaker), [
+      'choir', 'priest', 'choir', 'choir', 'choir', 'priest', null, 'choir', 'choir',
+    ], 'sections 2 and 6 are the clergy in the altar; the rest are sung outside');
+
+    // The defect precisely: the Glory belongs at 7, after the clergy's second
+    // repetition and before the final choir repeat — not at 5.
+    const at = (id) => t.findIndex(x => x.id === id);
+    assert.ok(at('tris-h-6') < at('tris-h-glory'),
+      'the Glory follows the clergy\'s second repetition');
+    assert.ok(at('tris-h-glory') < at('tris-h-8'),
+      'and the choir repeats No. 1 after it, to close');
+    assert.ok(at('tris-h-bishop-rubric') > at('tris-h-3')
+           && at('tris-h-bishop-rubric') < at('tris-h-trio'),
+      'the bishop blesses between the third section and the trio');
     assert.match(txt(t), /dikirion and trikirion/,
       'the bishop blesses the people between the third and fourth');
+    assert.match(txt(t), /each of the two blessings/,
+      'the sheet marks TWO pauses for blessing, not one');
 
     // Regression guard: this tail follows EVERY form of the Trisagion and was
     // dropped by the hierarchical branch until it was extracted and shared.
     assert.match(txt(t), /Peace be unto all/, 'the priestly blessing must still close the Trisagion');
     assert.match(txt(t), /And to thy spirit/, 'and its response');
+  });
+
+  it('INV-3b: the entrance hymn is a clergy / choir / clergy exchange', async () => {
+    const e = sec((await hier(SUNDAY)).blocks, 'Entrance Hymn');
+    const sung = e.filter(x => x.type === 'hymn');
+    assert.deepEqual(sung.map(x => x.id),
+      ['entrance-hymn-clergy', 'entrance-hymn', 'entrance-hymn-clergy-2'],
+      'the clergy sing it, then the choir, then the clergy again');
+    assert.deepEqual(sung.map(x => x.speaker), ['priest', 'choir', 'priest']);
+    // The choir's block keeps the `entrance-hymn` id — rules and tests across
+    // the repo address it by that name, and it is still the choir's.
+    assert.equal(sung[1].speaker, 'choir', 'entrance-hymn stays the CHOIR\'s block');
+    // All three carry the same text: whether the page is divided at "O Son of
+    // God" is not stated on the sheet, so it is named in the rubric instead of
+    // being guessed into a split.
+    assert.equal(sung[0].text, sung[1].text);
+    assert.equal(sung[1].text, sung[2].text);
+    assert.match(txt(e), /O Son of God/, 'the choir\'s entry point is named');
+
+    // The ordinary Liturgy must not grow any of this.
+    const std3 = sec((await std(SUNDAY)).blocks, 'Entrance Hymn')
+      .filter(x => x.type === 'hymn');
+    assert.deepEqual(std3.map(x => x.id), ['entrance-hymn'],
+      'without a bishop the entrance hymn is one choir block, unchanged');
   });
 
   it('INV-4: a festal Trisagion substitution still wins', async () => {
@@ -202,7 +253,11 @@ describe('Feature contract: the Hierarchical Divine Liturgy is a service type', 
     // A service type adds its own matter. The propers, readings, anaphora and
     // communion of a hierarchical Liturgy are the DAY'S — if this list ever
     // grows, the variant is reaching somewhere it should not.
+    // 'Entrance Hymn' joined this list on 2026-11-05, deliberately: the packet
+    // shows the Eisodikon sung clergy / choir / clergy. This list is the whole
+    // point of INV-5 — it must only ever grow by a conscious edit like this one.
     assert.deepEqual(changed, [
+      'Entrance Hymn',
       'Hymn to the Theotokos',
       VESTING,
       'Trisagion',

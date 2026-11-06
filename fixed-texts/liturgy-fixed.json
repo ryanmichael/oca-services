@@ -637,13 +637,20 @@
       "eisPolla": "Eis polla eti, dhespota."
     },
     "trisagion": {
-      "openingRubric": "At a hierarchical Liturgy the Trisagion is sung in the hierarchical form, alternating choir, clergy, choir and trio, with the bishop blessing the people between. It replaces the parish's ordinary Trisagion setting, including any multilingual one.",
+      "openingRubric": "At a hierarchical Liturgy the Trisagion is sung in the hierarchical form: eight numbered sections alternating choir, clergy and trio, with the bishop blessing the people during the fourth. It replaces the parish's ordinary Trisagion setting, including any multilingual one.",
       "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
       "clergyRubric": "The clergy repeat the Trisagion in the altar.",
-      "bishopRubric": "The bishop takes the dikirion and trikirion and blesses the people, saying “Look down from heaven, O God…”. The choir pauses for each blessing. (We hold only the incipit of the bishop's words; the remainder is in the hierarchical service book.)",
+      "clergyRubric2": "The clergy repeat it in the altar a second time.",
+      "bishopRubric": "The bishop takes the dikirion and trikirion and blesses the people, saying “Look down from heaven, O God…”. The choir pauses for each of the two blessings. (We hold only the incipit of the bishop's words; the remainder is in the hierarchical service book.)",
       "glory": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.",
       "final": "Holy Immortal, have mercy on us.",
-      "tailRubric": "The Trisagion concludes as the bishop ascends to the high place. (The parish's Obikhod setting runs to further numbered sections; we hold only its first page.)"
+      "tailRubric": "The Trisagion concludes as the bishop ascends to the high place."
+    },
+    "entranceHymn": {
+      "rubric": "At a hierarchical Liturgy the entrance hymn is sung three times over: the clergy sing it, then the choir, then the clergy again. The choir's entry is marked on the parish's sheet at “O Son of God”; whether the choir and the clergy repeat the whole hymn or divide it at that word is not stated, so each is given here in full.",
+      "clergyLabel": "The clergy",
+      "choirLabel": "Then the choir, entering at “O Son of God”",
+      "clergyAgainLabel": "The clergy, again"
     },
     "theotokosCue": "The bishop commemorates the hierarchs aloud, as the commemoration below shows, while the choir sustains the hymn. (Unsourced beyond that: we have no packet sheet or order for the hierarchical form of this moment.)"
   }

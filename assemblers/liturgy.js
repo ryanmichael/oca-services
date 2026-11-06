@@ -12,7 +12,8 @@ const { _litFeastAntiphon, _litTypicalAntiphon1, _litTypicalAntiphon2,
 const { _litSmallEntrance, _litEntranceHymn, _litPostAmbonRite,
         _litTroparia, _litKontakia }                                        = require('./liturgy-parts/entrance');
 const { _litTrisagion }                                                     = require('./liturgy-parts/trisagion');
-const { _litHierarchicalVesting, _litHierarchicalTrisagion,
+const { _litHierarchicalVesting, _litHierarchicalEntranceHymn,
+        _litHierarchicalTrisagion,
         _litHierarchicalTheotokosCue }                                      = require('./liturgy-parts/hierarchical');
 const { _litProkeimenon, _litEpistle, _litAlleluia, _litGospel }            = require('./liturgy-parts/readings');
 const { _litAugmentedLitany, _litDeparted,
@@ -114,8 +115,13 @@ function assembleLiturgy(calendarDay, liturgyFixed, sources, opts = {}) {
   // 6. Small Entrance
   blocks.push(..._litSmallEntrance(liturgyFixed));
 
-  // 7. Entrance Hymn
-  blocks.push(..._litEntranceHymn(spec.entranceHymn));
+  // 7. Entrance Hymn. A bishop presiding turns it into a clergy/choir/clergy
+  // exchange; the hierarchical form wraps the ordinary blocks rather than
+  // re-deriving the text, so a Great-Feast entrance verse still leads it.
+  {
+    const eh = _litEntranceHymn(spec.entranceHymn);
+    blocks.push(...(hierarchical ? _litHierarchicalEntranceHymn(eh, liturgyFixed) : eh));
+  }
 
   // 8. Troparia
   blocks.push(..._litTroparia(spec.troparia));

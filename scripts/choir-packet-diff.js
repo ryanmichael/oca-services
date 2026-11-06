@@ -67,6 +67,14 @@ const LINE_FURNITURE = [
   /\barr\.?\s+(?:from|by)\b|\batt\.?\s+(?:from|by)\b/i,
   /^Menaion:\s/i,
   /^\*?\s*Pronounced:/i,
+  // A running date heading repeated at the top of every page of a Menaion
+  // section: "November 8: Ss. Michael & Gabriel and all the Bodiless Hosts".
+  // Same class as ^Menaion: above, different shape. The 11-07 Great Vespers
+  // sheet carries it on four pages; each one opened a phantom `?` piece that
+  // could never match a hymn, and the four dragged that sheet's located rate
+  // down far enough to trip the pre-push ratchet with nothing wrong in the
+  // render. Found 2026-11-06.
+  /^[A-Z][a-z]+ \d{1,2}:\s+\S/,
 ];
 
 // NOTE: there is deliberately NO de-syllabification step. A score prints

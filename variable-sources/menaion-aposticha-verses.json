@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "note": "Proper Vespers Aposticha verses for Menaion (non-Great) feasts, keyed M-D. Same shape as great-feast-variants.json apostichaVerses: indexed from the SECOND sticheron — the first carries no verse. Without an entry the assembler falls back to the ordinary Ps. 122 table.",
+    "note": "Proper Vespers Aposticha verses for Menaion (non-Great) feasts, keyed M-D. Same shape as great-feast-variants.json apostichaVerses: indexed from the SECOND sticheron — the first carries no verse. Without an entry the assembler falls back to the ordinary Ps. 122 table. An entry may also set `apostichaGloryClaimsNow: true` when the Menaion doxastikon takes the \"Now and ever\" as well, so no separate Theotokion follows it.",
     "added": "2026-09-24"
   },
   "10-1": {
@@ -9,5 +9,9 @@
       "Even the rich among the people shall pray before thy face."
     ],
     "_source": "OCA service text for October 1, reference/scrape/2024-10-01.docx (Ps. 44:9a, 44:11b); Tyler 10.01.26 packet sings the same verses."
+  },
+  "11-8": {
+    "apostichaGloryClaimsNow": true,
+    "_source": "Synaxis of the Archangels. reference/orders/2026-1108-order-services.txt line 39 reads \"Glory... now and ever... Angels, Tone 8\" -- ONE combined doxology over the single Tone 8 doxastikon, with no resurrectional Theotokion after it. The parish packet agrees: docs/11-7 Great Vespers/11.07.26 Great Vespers.pdf p.11 prints \"Glory... Now and ever... (Tone 8)\" as one label over \"Since you, leader of hosts...\", and strikes the Angels' Tone 1 stichera above it. Two independent oracles, which is why this is keyed per-date rather than inferred from rank: combinesGloryNow is otherwise true only for Great Feasts, and widening that globally would reshape every Menaion-glory day in the year. Found 2026-11-06 reviewing the packet."
   }
 }

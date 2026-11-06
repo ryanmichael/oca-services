@@ -83,10 +83,12 @@ before(async () => {
 after(() => { if (serverProcess) serverProcess.kill(); });
 
 const MICHAEL = '2026-11-08';
+const MICHAEL_EVE = '2026-11-07';     // Vespers is date-shifted: Sat eve -> Sunday
 const UNMERCENARIES = '2026-11-01';   // 6 Resurrection T5 + 4 of the Canon T1
 const ENTRY         = '2026-11-22';   // 6 Resurrection T8 + 4 of the Entry T4
 
 const liturgy = async (date) => (await get(`/api/liturgy?date=${date}`)).json;
+const vespers = async (date) => (await get(`/api/service?date=${date}&service=vespers`)).json;
 const inSection = (blocks, name) => blocks.filter(b => b.section === name);
 const textOf = (blocks) => blocks.map(b => b.text || '').join('\n');
 
@@ -198,5 +200,46 @@ describe('Feature contract: the Bodiless Powers have propers and they are sung',
     const ep = textOf(inSection((await liturgy(MICHAEL)).blocks, 'Epistle Reading'));
     assert.match(ep, /Ephesians 2\.4-10/, 'the Sunday-cycle Epistle');
     assert.match(ep, /Hebrews 2\.2-10/,   'the Bodiless Powers\' Epistle');
+  });
+
+  // ── Vespers ────────────────────────────────────────────────────────────────
+  //
+  // The Angels left their own Aposticha. The doxastikon was in the DB all
+  // along, keyed to the right date with the right tone and label — but at
+  // `order = 2`, while for-date.js selects the Aposticha Glory with
+  // `order === 0`. So the slot fell through to the Octoechos resurrectional
+  // Theotokion in Tone 6 and every check stayed green: the text existed, the
+  // date was right, nothing was missing, nothing was mislabelled.
+  //
+  // The identical hymn sits at `order = 0` under 9-6 (the Miracle at Colossae,
+  // stichera.id 10818), which is what settled the convention rather than a
+  // guess. Found 2026-11-06 against the parish's Great Vespers packet, one day
+  // before the service.
+  it('INV-8: the Angels take the Vespers Aposticha Glory, in Tone 8', async () => {
+    const ap = inSection((await vespers(MICHAEL_EVE)).blocks, 'Aposticha');
+    const glory = ap.find(b => b.id === 'apost-glory-hymn');
+    assert.ok(glory, 'the Aposticha must carry a Glory hymn at all');
+    assert.match(glory.text || '', /leader of hosts/,
+      'the Angels\' doxastikon, not the resurrectional Theotokion');
+    assert.equal(glory.tone, 8, 'the order appoints it in Tone 8, not the week\'s Tone 6');
+    // Position: it closes the Aposticha. A doxastikon that renders ABOVE the
+    // resurrectional stichera is a different bug with the same green checks.
+    const hymns = ap.filter(b => b.type === 'hymn');
+    assert.equal(hymns[hymns.length - 1].id, 'apost-glory-hymn',
+      'the Glory is the last hymn of the Aposticha');
+    assert.equal(hymns.filter(b => b.tone === 6).length, 4,
+      'and the four resurrectional stichera still precede it');
+  });
+
+  it('INV-9: that Glory claims the "Now and ever" — no Theotokion follows it', async () => {
+    // reference/orders/2026-1108 line 39 and the parish sheet both print ONE
+    // combined "Glory... now and ever..." over the single Tone 8 hymn. Fixing
+    // INV-8 alone exposed this: the Glory arrived and then an Octoechos
+    // Theotokion printed underneath it, which nobody sings.
+    const ap = inSection((await vespers(MICHAEL_EVE)).blocks, 'Aposticha');
+    assert.ok(ap.some(b => b.id === 'apost-glory-now-label'),
+      'the doxology is the combined "Glory... now and ever..."');
+    assert.equal(ap.filter(b => b.id === 'apost-now-hymn').length, 0,
+      'and no separate Now-and-ever hymn follows the doxastikon');
   });
 });

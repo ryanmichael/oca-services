@@ -783,8 +783,17 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               && (apost.glory.key.startsWith('triodion.') || apost.glory.key.startsWith('pentecostarion.')))
         );
 
+        // Does the Menaion doxastikon take the "Now and ever" as well? A Great
+        // Feast always does. A Menaion feast sometimes does, and rank does not
+        // predict it — so it is declared per date in menaion-aposticha-verses.json
+        // and each entry cites its oracles. Widening this globally would reshape
+        // the Glory/Now of every Menaion-glory day in the year, which is exactly
+        // what the 11-08 evidence does NOT license.
+        const gloryClaimsNow = isGreatFeast
+          || MENAION_APOSTICHA_VERSES[adjustedMD().join('-')]?.apostichaGloryClaimsNow === true;
+
         if (apostGlory && !triodionOwnsGlory) {
-          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: sticheraLabel, combinesGloryNow: isGreatFeast };
+          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: sticheraLabel, combinesGloryNow: gloryClaimsNow };
           // Saturday: set the saint's own Theotokion (menaion order=-1) if present
           //   — that's the "Now and ever" of the feast, distinct from the
           //   Octoechos resurrectional Theotokion of the week. NA Saints

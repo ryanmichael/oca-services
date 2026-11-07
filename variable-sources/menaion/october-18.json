@@ -9,6 +9,26 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/10-18.pdf",
     "_note": "Single canon of the evangelist in Tone VIII (3 troparia per ode incl. Theotokion). The Theotokos Paraklisis canon (6 troparia) interleaved at the actual service per the Sergius rubric is omitted per the menaion-matins-track pattern. Magnificat retained at Ode 9."
   },
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "1 John",
+        "pericope": "1:1-7"
+      },
+      {
+        "order": 2,
+        "book": "James",
+        "pericope": "1:1-12"
+      },
+      {
+        "order": 3,
+        "book": "Jude",
+        "pericope": "1-7, 17-25"
+      }
+    ],
+    "_otReadingsSource": "OCA order of services 2026-1018-order-services.txt (\"Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-10-18.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
+  },
   "troparion": {
     "text": "O holy Apostle Luke,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
     "tone": 3,
@@ -21,7 +41,12 @@
     "melody": "The steadfast"
   },
   "matins": {
-    "_meta": { "tone": 8, "feastRank": "greatFeast", "feastType": "saint", "_source": "stSergius-menaion" },
+    "_meta": {
+      "tone": 8,
+      "feastRank": "greatFeast",
+      "feastType": "saint",
+      "_source": "stSergius-menaion"
+    },
     "troparion": {
       "text": "O holy Apostle Luke,\nentreat the Merciful God\nthat He grant remission of sins//\nunto our souls.",
       "tone": 3,
@@ -75,7 +100,10 @@
       "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands.",
       "tone": 4
     },
-    "gospel": { "reading": "John 21:15-25", "number": 67 },
+    "gospel": {
+      "reading": "John 21:15-25",
+      "number": 67
+    },
     "postGospelSticheron": {
       "text": "When thou didst journey with Cleopas to the town of Emmaus after the resurrection,\nO all-sacred Luke, the Lord appeared before thee in a veiled manner when thou wast downcast;\nand, receiving the bread He gaveth thee, thou didst straightway recognize the Savior.//\nHim do thou entreat, that He grant us great mercy.",
       "tone": 3,
@@ -87,46 +115,86 @@
       "ode1": {
         "irmos": "Let us, O ye people, send up a hymn unto our wondrous God\nWho hath freed Israel from bondage,\nchanting a hymn of victory and crying aloud://\nWe sing unto Thee, O only Master.",
         "troparia": [
-          { "text": "Thou wast the most splendid chariot of God, bearing an all-holy name before men, O all-honored Luke, mightily drowning the chariots and mounted captains of deceit." },
-          { "text": "Receiving a torrent of life, with showers of divine knowledge which fell from within thee thou didst irrigate a world made arid by the burning heat of ungodliness, O all-blessed Luke." },
-          { "text": "Made bright as lightning by the shining of the Spirit and the purity of thy life, O thrice-blessed one, thou didst shine like a gift from God upon the whole world, illumining the hearts of the faithful." },
-          { "text": "Theotokion: Rejoice, O all-holy temple, fleece bedewed by God, sealed well-spring of the stream of immortality! O Sovereign Lady, preserve thy flock unharmed by all enemies." }
+          {
+            "text": "Thou wast the most splendid chariot of God, bearing an all-holy name before men, O all-honored Luke, mightily drowning the chariots and mounted captains of deceit."
+          },
+          {
+            "text": "Receiving a torrent of life, with showers of divine knowledge which fell from within thee thou didst irrigate a world made arid by the burning heat of ungodliness, O all-blessed Luke."
+          },
+          {
+            "text": "Made bright as lightning by the shining of the Spirit and the purity of thy life, O thrice-blessed one, thou didst shine like a gift from God upon the whole world, illumining the hearts of the faithful."
+          },
+          {
+            "text": "Theotokion: Rejoice, O all-holy temple, fleece bedewed by God, sealed well-spring of the stream of immortality! O Sovereign Lady, preserve thy flock unharmed by all enemies."
+          }
         ]
       },
       "ode3": {
         "irmos": "There is none as holy as the Lord, and none as righteous as our God,\nWhom the whole of creation doth hymn://\nThere is none more righteous than Thee, O Lord.",
         "troparia": [
-          { "text": "Shining forth like the sun in thy preaching, O all-blessed Luke, thou didst adorn the foundation of the Church, causing the gloom of deception to vanish with the fervor of faith." },
-          { "text": "Thou didst cut divinely beauteous tablets from the stone of the incarnation of God, O most noetically rich apostle, possessing a mason's hammer in thy godly tongue and divinely inspired mouth." },
-          { "text": "Entering into the all-luminous cloud, and being covered thereby, O most wise one, thou didst receive the new law inscribed upon thy heart by the finger of the Spirit." },
-          { "text": "Theotokion: There is none as blameless as thee, O Lady, and none more pure than thee, O all-immaculate one; for thou didst hold God the Word, Who alone is greatly merciful, in thy womb." }
+          {
+            "text": "Shining forth like the sun in thy preaching, O all-blessed Luke, thou didst adorn the foundation of the Church, causing the gloom of deception to vanish with the fervor of faith."
+          },
+          {
+            "text": "Thou didst cut divinely beauteous tablets from the stone of the incarnation of God, O most noetically rich apostle, possessing a mason's hammer in thy godly tongue and divinely inspired mouth."
+          },
+          {
+            "text": "Entering into the all-luminous cloud, and being covered thereby, O most wise one, thou didst receive the new law inscribed upon thy heart by the finger of the Spirit."
+          },
+          {
+            "text": "Theotokion: There is none as blameless as thee, O Lady, and none more pure than thee, O all-immaculate one; for thou didst hold God the Word, Who alone is greatly merciful, in thy womb."
+          }
         ]
       },
       "ode4": {
         "irmos": "From the overshadowed mountain, from the only Theotokos,\nthe Prophet in divine vision foresaw Thy coming in the flesh, O Word,//\nand with fear he glorified Thy power.",
         "troparia": [
-          { "text": "As a steed of the King of all, O divinely wise one, thou didst roil the sea of the nations, sweetening brackish unbelief with the salt of God, O ever-glorious one." },
-          { "text": "Drawing His bow, Christ loosed thee splendidly as a well-honed arrow, bright with beams of piety illumining our souls." },
-          { "text": "With mystic skill, O all-blessed one, heal the passions of soul and body of those who hymn thee, excising the filth of sin, O thou who art all-wise." },
-          { "text": "Theotokion: O Mary, Birthgiver and Bride of God, deliver me from cruel transgressions and misfortunes, and guide me to the haven of tranquility and salvation by thy supplications." }
+          {
+            "text": "As a steed of the King of all, O divinely wise one, thou didst roil the sea of the nations, sweetening brackish unbelief with the salt of God, O ever-glorious one."
+          },
+          {
+            "text": "Drawing His bow, Christ loosed thee splendidly as a well-honed arrow, bright with beams of piety illumining our souls."
+          },
+          {
+            "text": "With mystic skill, O all-blessed one, heal the passions of soul and body of those who hymn thee, excising the filth of sin, O thou who art all-wise."
+          },
+          {
+            "text": "Theotokion: O Mary, Birthgiver and Bride of God, deliver me from cruel transgressions and misfortunes, and guide me to the haven of tranquility and salvation by thy supplications."
+          }
         ]
       },
       "ode5": {
         "irmos": "Rising early we cry to Thee, O Lord; save us, for Thou art our God,//\nand we know none other besides Thee.",
         "troparia": [
-          { "text": "Thou wast shown to be like unto dew which falleth from the heavens, destroying the burning heat of deception by thy discourse." },
-          { "text": "Conceiving the fear of God within thee, O apostle, thou hast given birth unto salvation for those astray." },
-          { "text": "Ascending the mountain of the virtues, O all-blessed one, thou didst preach the Gospel of the kingdom unto all." },
-          { "text": "Theotokion: Mary Theotokos, who knewest not wedlock, render the hopes of the enemy in vain, and gladden those who hymn thee." }
+          {
+            "text": "Thou wast shown to be like unto dew which falleth from the heavens, destroying the burning heat of deception by thy discourse."
+          },
+          {
+            "text": "Conceiving the fear of God within thee, O apostle, thou hast given birth unto salvation for those astray."
+          },
+          {
+            "text": "Ascending the mountain of the virtues, O all-blessed one, thou didst preach the Gospel of the kingdom unto all."
+          },
+          {
+            "text": "Theotokion: Mary Theotokos, who knewest not wedlock, render the hopes of the enemy in vain, and gladden those who hymn thee."
+          }
         ]
       },
       "ode6": {
         "irmos": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,//\nO All-merciful Christ, our God.",
         "troparia": [
-          { "text": "Having drained the cup of wisdom of the knowledge of Christ God, thou gavest drink unto all, O Luke all-wise." },
-          { "text": "Chosen as the companion of Paul, O all-blessed and divinely eloquent Luke, thou didst fish for the nations with the net of thy dogmas." },
-          { "text": "Thou wast shown to be a cloud raining down upon us showers of life, O apostle, flowing forth from the well-springs of salvation." },
-          { "text": "Theotokion: Thine Offspring, the Destroyer of idols, O Mary Bride of God, is worshipped with the Father and the Spirit." }
+          {
+            "text": "Having drained the cup of wisdom of the knowledge of Christ God, thou gavest drink unto all, O Luke all-wise."
+          },
+          {
+            "text": "Chosen as the companion of Paul, O all-blessed and divinely eloquent Luke, thou didst fish for the nations with the net of thy dogmas."
+          },
+          {
+            "text": "Thou wast shown to be a cloud raining down upon us showers of life, O apostle, flowing forth from the well-springs of salvation."
+          },
+          {
+            "text": "Theotokion: Thine Offspring, the Destroyer of idols, O Mary Bride of God, is worshipped with the Father and the Spirit."
+          }
         ]
       },
       "kontakion": {
@@ -140,28 +208,52 @@
       "ode7": {
         "irmos": "In Babylon, the pious youths did not worship the golden image,\nbut, bedewed in the midst of the fiery furnace, they chanted a hymn, saying://\nO supremely exalted God of our fathers, blessed art Thou!",
         "troparia": [
-          { "text": "As a faithful disciple of the ineffable mysteries of Christ God, O all-wise one, thou didst preach His divine Gospel to the faithful who said: O supremely exalted God of our fathers, blessed art Thou!" },
-          { "text": "Thou wast shown to be adorned with the embellishment of the virtues, O all-blessed Luke, illumined by the rays of divine majesty and crying out unceasingly to thy Creator: O supremely exalted God of our fathers, blessed art Thou!" },
-          { "text": "Emitting radiant beams, like a torch in the midst of night, thou didst piously drive away the darkness of deception by the radiance of thy words, crying aloud: O supremely exalted God of our fathers, blessed art Thou!" },
-          { "text": "Theotokion: Possessed of a life illumined with wise discourse, O Luke, beholder of God, thou didst manifestly describe the birthgiving of the Virgin and lovingly depict her in icons. To her do we faithfully offer veneration, glorifying Christ." }
+          {
+            "text": "As a faithful disciple of the ineffable mysteries of Christ God, O all-wise one, thou didst preach His divine Gospel to the faithful who said: O supremely exalted God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "Thou wast shown to be adorned with the embellishment of the virtues, O all-blessed Luke, illumined by the rays of divine majesty and crying out unceasingly to thy Creator: O supremely exalted God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "Emitting radiant beams, like a torch in the midst of night, thou didst piously drive away the darkness of deception by the radiance of thy words, crying aloud: O supremely exalted God of our fathers, blessed art Thou!"
+          },
+          {
+            "text": "Theotokion: Possessed of a life illumined with wise discourse, O Luke, beholder of God, thou didst manifestly describe the birthgiving of the Virgin and lovingly depict her in icons. To her do we faithfully offer veneration, glorifying Christ."
+          }
         ]
       },
       "ode8": {
         "irmos": "Glorified in the holy mountain,\nthe Lord revealed the mystery of the Ever-Virgin unto Moses in the flames of the burning bush://\npraise ye and supremely exalt Him throughout all ages.",
         "troparia": [
-          { "text": "With the dew-bearing wisdom of thy words and showers of divine grace thou didst extinguish the furnace of deception, as a preacher and sacred preacher of the Lord, O divinely wise one." },
-          { "text": "Beautiful were thy feet, O all-blessed one, who preached the Gospel of the Peace which most excellently passeth all understanding. Him do we supremely exalt and glorify throughout all ages." },
-          { "text": "Christ, the Light of the world, the Lord of glory, the Effulgence of the essence of the Father, revealed thee as one enlightening those who sit in darkness. Him do we supremely exalt throughout the ages." },
-          { "text": "Theotokion: The Lord, Who made His abode in the Virgin's womb and, through her, renewed ancient Adam in a manner strange and past description, do we hymn and glorify throughout the ages." }
+          {
+            "text": "With the dew-bearing wisdom of thy words and showers of divine grace thou didst extinguish the furnace of deception, as a preacher and sacred preacher of the Lord, O divinely wise one."
+          },
+          {
+            "text": "Beautiful were thy feet, O all-blessed one, who preached the Gospel of the Peace which most excellently passeth all understanding. Him do we supremely exalt and glorify throughout all ages."
+          },
+          {
+            "text": "Christ, the Light of the world, the Lord of glory, the Effulgence of the essence of the Father, revealed thee as one enlightening those who sit in darkness. Him do we supremely exalt throughout the ages."
+          },
+          {
+            "text": "Theotokion: The Lord, Who made His abode in the Virgin's womb and, through her, renewed ancient Adam in a manner strange and past description, do we hymn and glorify throughout the ages."
+          }
         ]
       },
       "ode9": {
         "irmos": "With never ceasing praises we magnify thee, the Mother of God Most High,\nwho art higher than the most pure hosts,\nand who beyond comprehension knew not wedlock,//\nyet hath truly given birth to God.",
         "troparia": [
-          { "text": "In the preaching of the Gospel thou wast a proclaimer of the salvation unto all the world; and, breathing the inspiration of the Spirit, thou didst show thyself to be a sacred and greatly renowned trumpet, O all-honored one of sacred eloquence." },
-          { "text": "Adorned with the acts of the Savior's apostles, moved by God thou didst record them for the faithful, ever setting them forth as a lasting and inspired model, O all-glorious and sacred preacher." },
-          { "text": "Thou dost stand as one who hath attained the ultimate desire, O divine hierarch Luke; for standing before Christ, thou dost delight in the vision of the Divinity bestowed by Him. Wherefore, we all call thee blessed." },
-          { "text": "Theotokion: We magnify thee, O Mother of God, who bore in thine arms the unapproachable God Who is hymned in the heavens by all the hosts, and Who ever granteth salvation to us through thee." }
+          {
+            "text": "In the preaching of the Gospel thou wast a proclaimer of the salvation unto all the world; and, breathing the inspiration of the Spirit, thou didst show thyself to be a sacred and greatly renowned trumpet, O all-honored one of sacred eloquence."
+          },
+          {
+            "text": "Adorned with the acts of the Savior's apostles, moved by God thou didst record them for the faithful, ever setting them forth as a lasting and inspired model, O all-glorious and sacred preacher."
+          },
+          {
+            "text": "Thou dost stand as one who hath attained the ultimate desire, O divine hierarch Luke; for standing before Christ, thou dost delight in the vision of the Divinity bestowed by Him. Wherefore, we all call thee blessed."
+          },
+          {
+            "text": "Theotokion: We magnify thee, O Mother of God, who bore in thine arms the unapproachable God Who is hymned in the heavens by all the hosts, and Who ever granteth salvation to us through thee."
+          }
         ]
       }
     },

@@ -9,13 +9,11 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/07-26.pdf",
     "_note": "Single canon of the venerable martyr in Tone IV with 8 troparia. The Paraclysis (Canon of supplication to the Theotokos) is a fixed text and not stored here. Two kontakia: Tone VIII after Ode 3, Tone IV (with ikos) after Ode 6. Great Vespers with entrance and three OT lessons."
   },
-
   "troparion": {
     "text": "Possessed of a readiness in accord with thy name,\nO namesake thereof,\nthou didst choose as a companion a faith\nequal to thy name, O victorious Parasceva;\nwherefore, thou pourest forth healings,\nand prayest on behalf of our souls.",
     "tone": 1,
     "label": "Troparion of the venerable martyr"
   },
-
   "kontakion": {
     "text": "Finding thy temple to be a source of spiritual healing,\nO most honored one,\ntherein all the faithful\nhonor thee aloud,\nO glorious and venerable martyr Parasceva.",
     "ikos": "The Bridegroom, summoning thee as His bride, adorned thee with the crown of immortality, O divinely wise and all-praised Parasceva, and hath numbered thee among the honorable martyrs who have received their crowns. Rejoicing with them, be thou mindful of those who celebrate thy holy feast and come together in thy temple; for standing forth now therein, with all our soul we offer thee hymns, O glorious and venerable martyr Parasceva.",
@@ -23,7 +21,6 @@
     "label": "Kontakion of the venerable martyr",
     "melody": "Thou hast appeared today"
   },
-
   "vespers": {
     "stichera": [
       {
@@ -94,16 +91,32 @@
         "tone": 6,
         "label": "Glory … Both now …"
       }
-    }
+    },
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Wisdom of Solomon",
+        "pericope": "5:15-6:3"
+      },
+      {
+        "order": 2,
+        "book": "1 John",
+        "pericope": "4:1-6"
+      },
+      {
+        "order": 3,
+        "book": "1 John",
+        "pericope": "4:20-5:5"
+      }
+    ],
+    "_otReadingsSource": "OCA order of services 2026-0726-order-services.txt (\"Old Testament Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-07-26.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
       "feastType": "saint",
       "_source": "stSergius-menaion"
     },
-
     "sessionalHymns": {
       "text": "Having loved Christ the most comely and adorned thy soul with purity,\nas an undefiled martyr thou didst draw nigh unto Him\nby all manner of labors and tribulations,\nand hast been deemed worthy of the heavenly bridal-chamber.\nHim do thou entreat for us who honor thee, O all-praised Parasceva.",
       "tone": 4,
@@ -127,7 +140,6 @@
         }
       }
     },
-
     "magnification": {
       "refrain": "We magnify thee, O holy passion-bearer Parasceva,\nand we reverence thine honored sufferings,\nwhich thou didst endure for Christ.",
       "verses": [
@@ -135,7 +147,6 @@
         "Glory… Both now… Alleluia… Glory to Thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Wedded to the Lord in a godly manner,\nthou didst offer Him thy blood and sacrifice as a gift,\nO passion-bearer and maiden Parasceva;\nand as is meet thou hast reached the divine bridal-chamber,\never filled to overflowing with ineffable radiance.\nWherefore, spiritually celebrating thy holy and honored memory,\nwe glorify the Savior and cry out to thee with faith:\nEntreat Christ God, that He grant remission of sins\nto those who honor thy holy memory with love.",
       "tone": 8,
@@ -148,32 +159,27 @@
         "label": "Theotokion"
       }
     },
-
     "prokeimenon": {
       "refrain": "Wondrous is God in His saints,\nthe God of Israel.",
       "verse": "In congregations bless ye God, the Lord from the wellsprings of Israel.",
       "tone": 4,
       "_psalmRef": "Ps. 67:36 / 67:27"
     },
-
     "gospel": {
       "reading": "Matthew 15:21-28",
       "number": 62,
       "_note": "The Canaanite woman whose daughter was healed; Gospel §62 for female saints."
     },
-
     "postGospelSticheron": {
       "text": "Thou hast been reckoned among the ranks of those on high, O glorious one,\nhaving forsaken the world and loved Christ.\nO most honored Parasceva, ask for us peace and great mercy.",
       "tone": 1,
       "label": "Sticheron after Psalm 50",
       "_source": "stSergius-menaion"
     },
-
     "canon": {
       "tone": 4,
       "_authors": "Canon of the venerable martyr, Tone IV, 8 troparia",
       "_canonNote": "Single canon of the holy venerable martyr Parasceva in Tone IV. The Paraclysis (Canon of supplication to the Theotokos) is a fixed text.",
-
       "ode1": {
         "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
         "troparia": [
@@ -199,7 +205,6 @@
           }
         ]
       },
-
       "ode3": {
         "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,\nmy refuge and foundation.",
         "troparia": [
@@ -225,13 +230,11 @@
           }
         ]
       },
-
       "kontakionAfterOde3": {
         "text": "Come, O ye faithful, and let us melodiously sing a hymn to the passion-bearer Parasceva,\nfor she shineth forth miracles in the world,\ndispelling the darkness of deception and granting abundant grace to the faithful who chant:\nRejoice, O much suffering martyr!",
         "tone": 8,
         "label": "Kontakion of the venerable martyr (after Ode 3)"
       },
-
       "sessionalHymnAfterOde3": {
         "text": "Having consecrated thyself for Christ from earliest childhood,\nthou didst please Him, the Savior of all, as a martyr;\nand steadfastly trampling underfoot the audacity of the tyrants,\nthou didst endure sufferings with manliness.\nWherefore, Christ, crowning thee, led thee into the heavenly bridal-chamber of glory.\nO right wondrous Parasceva, entreat Christ God,\nthat He grant us remission of sins.",
         "tone": 5,
@@ -242,7 +245,6 @@
           "label": "Theotokion"
         }
       },
-
       "ode4": {
         "irmos": "Beholding Thee, the Sun of righteousness,\nlifted up upon the cross,\nthe Church now standeth arrayed and doth worthily cry aloud:\nGlory be to Thy power, O Lord.",
         "troparia": [
@@ -268,7 +270,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "Thou, O Lord, who camest into the world, art my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
         "troparia": [
@@ -294,7 +295,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "The church crieth out unto Thee, O Lord:\nI will sacrifice unto Thee with a voice of praise,\nhaving been cleansed of the blood of the demons\nby the blood that for mercy's sake flowed from Thy side.",
         "troparia": [
@@ -320,7 +320,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "Finding thy temple to be a source of spiritual healing,\nO most honored one,\ntherein all the faithful\nhonor thee aloud,\nO glorious and venerable martyr Parasceva.",
         "tone": 4,
@@ -330,7 +329,6 @@
       "ikos": {
         "text": "The Bridegroom, summoning thee as His bride, adorned thee with the crown of immortality, O divinely wise and all-praised Parasceva, and hath numbered thee among the honorable martyrs who have received their crowns. Rejoicing with them, be thou mindful of those who celebrate thy holy feast and come together in thy temple; for standing forth now therein, with all our soul we offer thee hymns, O glorious and venerable martyr Parasceva."
       },
-
       "ode7": {
         "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety rather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
         "troparia": [
@@ -356,7 +354,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "Having spread his hands, Daniel closed the lions' jaws in their den;\nwhile the zealously pious youths, girded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
         "troparia": [
@@ -382,7 +379,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "A cornerstone not cut by hand, O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee, O Theotokos.",
         "troparia": [
@@ -409,7 +405,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Strengthened by the Cross of thy Lord, O good virgin,\nthou didst vanquish the audacity of the tyrants, suffering valiantly, O martyr;\nand thou hast gone forth to the victory crowns of Christ,\nO most wondrous Parasceva, praying for us who honor thee with love.",
       "label": "Exapostilarion of the venerable martyr",
@@ -421,7 +416,6 @@
         "_source": "stSergius-menaion"
       }
     },
-
     "lauds": {
       "tone": 1,
       "melody": "Joy of the ranks of heaven",
@@ -459,7 +453,6 @@
         "label": "Both now — Theotokion"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "Possessed of a readiness in accord with thy name,\nO namesake thereof,\nthou didst choose as a companion a faith\nequal to thy name, O victorious Parasceva;\nwherefore, thou pourest forth healings,\nand prayest on behalf of our souls.",
       "tone": 1

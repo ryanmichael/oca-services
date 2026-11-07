@@ -8,19 +8,16 @@
     "_source": "St-Sergius Emenaion 09-28.pdf",
     "_note": "Two canons: Canon of the most holy Theotokos (Tone II, 6 troparia, acrostic 'I chant praise unto the Life-bearing Maiden') and Canon of the Venerable One by John the Monk (Tone IV, 8 troparia). Matins gospel §10: Matthew 4:25-5:13. Katavasiae: 'I shall open my mouth' (Nativity series)."
   },
-
   "troparion": {
     "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Chariton our father, entreat Christ God, that our souls be saved.",
     "tone": 8
   },
-
   "kontakion": {
     "text": "Having delighted in abstinence\nand bridled the desires of thy flesh, O divinely wise one,\nthou wast shown to increase in faith,\nand didst flourish like the tree of life in the midst of paradise,\nO all-blessed and sacred Chariton.",
     "ikos": "Standing before God, open thou my mouth by thy right acceptable supplications, O thrice blessed and all-glorious venerable martyr, that I may hymn thy divine life and speak worthily of thy virtues which thou didst perfect on earth through thy fervent love. For thou wast a most mighty confessor, and, loving vigil and purity, didst practice abstinence with faith, O all-blessed and most sacred Chariton.",
     "tone": 2,
     "melody": "In supplications"
   },
-
   "vespers": {
     "stichera": [
       {
@@ -98,9 +95,26 @@
       "text": "O unwedded Virgin!\nthou who ineffably conceived God in the flesh,\nMother of God Most High:\naccept the supplications of thy servants, O all-immaculate one,\ngranting unto all cleansing of transgressions;\nand, accepting now our supplications,\npray thou that we all be saved.",
       "tone": 8,
       "label": "Both now, Theotokion"
-    }
+    },
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Wisdom of Solomon",
+        "pericope": "5:15-6:3"
+      },
+      {
+        "order": 2,
+        "book": "Wisdom of Solomon",
+        "pericope": "3:1-9"
+      },
+      {
+        "order": 3,
+        "book": "Wisdom of Solomon",
+        "pericope": "4:7-15"
+      }
+    ],
+    "_otReadingsSource": "OCA order of services 2025-0928-order-services.txt (\"Old Testament Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-09-28.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
@@ -108,7 +122,6 @@
       "feastType": "saint",
       "_source": "stSergius-menaion"
     },
-
     "sessionalHymns": [
       {
         "text": "Having disdained the enjoyment of things earthly and corruptible,\nthou didst follow after Christ,\nand didst come to love the inhabitants of the desert\nmore than the beauty of the world and passing delight.\nHence, thou wast deemed worthy to bear witness\nand hast joined the choirs of fasters.\nWith them pray that thy servants be saved.",
@@ -135,7 +148,6 @@
         "label": "Theotokion (Glory and Both now after Kathisma 2)"
       }
     ],
-
     "magnification": {
       "refrain": "We bless thee, O venerable father Chariton,\nand we honor thy holy memory,\nthou instructor of monastics and converser with the angels.",
       "verses": [
@@ -143,7 +155,6 @@
         "Glory… Both now… Alleluia… Glory to Thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Having disdained the enjoyment of things earthly and corruptible,\nthou didst follow after Christ,\nand didst come to love the inhabitants of the desert\nmore than the beauty of this world and passing delights.\nHence, thou wast deemed worthy to bear witness\nand hast joined the choirs of fasters.\nWith them pray that thy servants be saved.",
       "tone": 4,
@@ -156,25 +167,21 @@
         "label": "Theotokion"
       }
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
       "verse": "What shall I render unto the Lord for all that He hath rendered unto me?"
     },
-
     "gospel": {
       "reading": "Matthew 4:25-5:13",
       "number": 10,
       "_note": "Great multitudes follow Jesus; the Beatitudes (Sermon on the Mount). Standard matins gospel for venerable fathers."
     },
-
     "postGospelSticheron": {
       "text": "O venerable father, the report of thy corrections hath gone forth into all the earth;\nwherefore, thou hast found the reward of thy labors in the heavens,\nhast destroyed legions of the demons\nand attained unto the ranks of the angels, whose life thou didst blamelessly emulate.\nAs thou dost possess boldness before Christ God,\nbeg peace for our souls.",
       "tone": 6,
       "label": "Sticheron after Psalm 50"
     },
-
     "canon": {
       "tone": 4,
       "_secondCanonTone": 2,
@@ -183,7 +190,6 @@
         "second": "Canon of the most holy Theotokos (Tone II, 6 troparia; acrostic: 'I chant praise unto the Life-bearing Maiden')"
       },
       "_canonNote": "Two canons interleaved. Katavasiae: 'I shall open my mouth' (Nativity series).",
-
       "ode1": {
         "irmos": "Through the deep of the Red Sea,\nmarched dry shod Israel of old,\nand by Moses' outstretched hands,\nraised in the form of a cross,\nthe power of Amalek was routed in the wilderness.",
         "irmos2": "Traversing dryshod the impassible, peculiar path in the sea,\nIsrael the chosen cried aloud:\nLet us chant unto the Lord,\nfor He hath been glorified!",
@@ -222,7 +228,6 @@
         ],
         "katavasia": "I shall open my mouth,\nand be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders."
       },
-
       "ode3": {
         "irmos": "Thy Church, O Christ, rejoiceth in Thee crying aloud:\nThou, O Lord, art my strength,\nmy refuge and foundation.",
         "irmos2": "The bow of the mighty hath been broken\nby Thy might, O Christ,\nand the enfeebled\nhave girded themselves with power.",
@@ -255,7 +260,6 @@
           }
         ]
       },
-
       "kontakionAfterOde3": {
         "text": "Having delighted in abstinence\nand bridled the desires of thy flesh, O divinely wise one,\nthou wast shown to increase in faith,\nand didst flourish like the tree of life in the midst of paradise,\nO all-blessed and sacred Chariton.",
         "tone": 2,
@@ -263,7 +267,6 @@
         "ikos": "Standing before God, open thou my mouth by thy right acceptable supplications, O thrice blessed and all-glorious venerable martyr, that I may hymn thy divine life and speak worthily of thy virtues which thou didst perfect on earth through thy fervent love. For thou wast a most mighty confessor, and, loving vigil and purity, didst practice abstinence with faith, O all-blessed and most sacred Chariton.",
         "label": "Kontakion of the venerable one"
       },
-
       "sessionalHymnAfterOde3": {
         "text": "Tested by the pangs of suffering\nand made firm through feats of asceticism,\nthou didst shine with greater luster than gold in thy piety\nand became a pure receptacle of the Spirit,\ndispelling the darkness of the evil spirits,\nand assembling against them multitudes of monastics,\nthou didst become a shepherd and a most radiant beacon for them,\nO blessed Chariton.\nEntreat Christ God, that He grant remission of sins\nunto those who honor thy holy memory with love.",
         "tone": 8,
@@ -276,7 +279,6 @@
           "label": "Theotokion"
         }
       },
-
       "ode4": {
         "irmos": "For the sake of love for Thine image,\nO compassionate One,\nThou didst ascend the cross\nand the nations melted away.\nFor Thou, O Lover of mankind,\nart my strength and my praise.",
         "irmos2": "I have heard report O Lord,\nof Thy glorious dispensation,\nand I have glorified Thine unapproachable power,\nO Lover of mankind.",
@@ -309,7 +311,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "Thou, O Lord, who camest into the world,\nart my light,\na holy light turning from the darkness of ignorance\nthose who sing Thy praises in faith.",
         "irmos2": "The burning Ember was revealed to Isaiah,\nand the Sun hath shone forth from the Virgin's womb,\ngranting the enlightenment of the knowledge of God\nto those who in darkness have gone astray.",
@@ -342,7 +343,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "The church crieth out unto Thee O Lord,\n'I will sacrifice unto Thee with a voice of praise'\nhaving been cleansed of the blood of the demons'\nby the blood that for mercy's sake flowed from Thy side.",
         "irmos2": "O Master, hearkening unto the sound of entreaties\nfrom a soul in pain,\ndo Thou deliver me from my grievous sins,\nfor Thou alone art the Cause of our salvation.",
@@ -375,7 +375,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "Having delighted in abstinence\nand bridled the desires of thy flesh, O divinely wise one,\nthou wast shown to increase in faith,\nand didst flourish like the tree of life in the midst of paradise,\nO all-blessed and sacred Chariton.",
         "tone": 2,
@@ -385,7 +384,6 @@
       "ikos": {
         "text": "Standing before God, open thou my mouth by thy right acceptable supplications, O thrice blessed and all-glorious venerable martyr, that I may hymn thy divine life and speak worthily of thy virtues which thou didst perfect on earth through thy fervent love. For thou wast a most mighty confessor, and, loving vigil and purity, didst practice abstinence with faith, O all-blessed and most sacred Chariton."
       },
-
       "ode7": {
         "irmos": "In the Persian furnace the youths and descendants of Abraham,\nburning with a love of piety\nrather than by a flame of fire,\ncried aloud saying:\nBlessed art Thou in the temple of Thy glory, O Lord.",
         "irmos2": "Of old the youths revealed themselves to be rhetors\nwith a love for supreme wisdom,\nfor from the depths of their God-pleasing souls,\nthey theologized with their lips as they sang:\nO supremely divine God of our fathers, blessed art Thou!",
@@ -423,7 +421,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "Having spread his hands, Daniel closed the lions' jaws\nin their den;\nwhile the zealously pious youths,\ngirded with virtue,\nquenched the power of the fire and cried aloud:\nBless ye the Lord, all ye works of the Lord.",
         "irmos2": "Disdaining the golden image,\nthe thrice-blessed children,\nbeholding the immutable and living image of God,\nchanted in the midst of the flame:\nLet all existing creation hymn the Lord\nand supremely exalt Him throughout all ages!",
@@ -456,7 +453,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "A cornerstone not cut by hand, O Virgin,\nwas cut from thee the unhewn mountain:\neven Christ, Who hath joined together the disparate natures;\ntherefore rejoicing we magnify thee,\nO Theotokos.",
         "irmos2": "Thou art all desire, Thou art all sweetness,\nO Word of God, Son of the Virgin,\nGod of gods, most holy Lord of the saints.\nWherefore, we magnify Thee\nand her who hath given birth to Thee.",
@@ -490,7 +486,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Having first been well tested by suffering\nand then completed a second divine race by fasting,\nthou didst ascend to the heavens, O venerable father Chariton,\nand standest before Christ,\npraying for us who fervently hymn thee.",
       "label": "Exapostilarion of the venerable one",
@@ -505,7 +500,6 @@
         "label": "Theotokion"
       }
     },
-
     "lauds": {
       "tone": 4,
       "stichera": [
@@ -547,7 +541,6 @@
         "label": "Both now, Theotokion"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Chariton our father, entreat Christ God, that our souls be saved.",
       "tone": 8

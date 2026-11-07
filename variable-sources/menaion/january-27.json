@@ -8,20 +8,17 @@
     "_source": "St-Sergius Emenaion Jan-27 (OCA translation)",
     "_note": "Polyeleos rank. LIC=8 stichera (4 Tone IV + 4 Tone IV). Three canons at Matins: Paraklisis canon of the Theotokos (6 troparia with Irmos), Canon I of the hierarch in Tone VI (acrostic 'I hymn thee, the divine harp all of gold,' by Joseph), Canon II of the hierarch in Tone III (acrostic 'I chant a third hymn to him of the golden tongue'). matAuth=3. Lauds=4 stichera Tone IV. Great Doxology."
   },
-
   "troparion": {
     "text": "The grace shining forth from thy mouth like a beacon hath illumined the universe,\nand disclosed to the world treasures of uncovetousness,\nand shown us the heights of humility,\nbut while instructing us by thy words, O father John Chrysostom,//\nintercede with the Word, Christ God, that our souls be saved.",
     "tone": 8,
     "label": "Troparion of the holy hierarch"
   },
-
   "kontakion": {
     "text": "The honored Church was mystically gladdened by the return of thy precious relics;\nhaving hidden them like most precious gold,\nand now by thy supplication she bountifully imparteth the grace of healings//\nunto those who hymn thee, O John Chrysostom.",
     "tone": 1,
     "ikos": "The lamp of my deeds hath been diminished, O John Chrysostom, and I fear\nto encounter thy sacred relics; but do thou thyself guide me, and direct my steps,\ngranting me time for repentance, O all-holy one, in so far as thou art a divine\npreacher of repentance. Do thou still the tempest of my many passions and, rescuing\nme from the snares of Belial, save me in the end, that I may worthily hymn thy\nglorious return, as before I also boldly glorified thy repose, O John Chrysostom.",
     "label": "Kontakion of the holy hierarch"
   },
-
   "vespers": {
     "stichera": [
       {
@@ -89,9 +86,29 @@
         "tone": 6,
         "text": "O Theotokos, thou art the true vine\nthat hast budded forth for us the Fruit of life.\nThee do we entreat:\nPray thou, O Lady, with the holy apostles,//\nthat He have mercy upon our souls."
       }
-    ]
+    ],
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Proverbs",
+        "pericope": "10, 3, 8",
+        "_composite": "Composite 2"
+      },
+      {
+        "order": 2,
+        "book": "Composite 4",
+        "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)",
+        "_composite": "Composite 4"
+      },
+      {
+        "order": 3,
+        "book": "Wisdom of Solomon",
+        "pericope": "4, 6, 7, 2",
+        "_composite": "Composite 5"
+      }
+    ],
+    "_otReadingsSource": "orthocal mirror data/orthocal/2026-01-27.json — the three readings it carries at source \"Vespers\" for this date; no OCA order of services for 01-27 is held in reference/orders/. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
@@ -99,7 +116,6 @@
       "feastType": "saint",
       "_source": "St-Sergius Emenaion Jan-27 (OCA translation)"
     },
-
     "sessionalHymns": [
       {
         "text": "Like a golden and beautiful instrument of golden tone, divinely playing, O blessed Chrysostom,\nthou wast given by God to the Church as a golden-tongued lark, making golden a mind clad in gold.\nO harp of repentance, by thy supplications from temptations do thou save those who honor thee,\nO right wondrous shepherd.",
@@ -125,7 +141,6 @@
         }
       }
     ],
-
     "magnification": {
       "refrain": "We magnify thee, O holy hierarch, father John Chrysostom,\nand we honor thy holy memory;\nfor thou dost entreat Christ our God on our behalf.",
       "verses": [
@@ -133,7 +148,6 @@
         "Glory… Both now… Alleluia… Glory to thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Having adorned thy life with true episcopal piety,\nthou didst sow the word of the Lord among mankind,\nO Chrysostom, planting thereby venerable customs,\nand bedewing with the gentle rains of doctrine all the earth by the radiance of the Spirit, O most wise one.\nWherefore, having with faith received the fruits of understanding, and tasting thereof,\nwe have come to know the sweetness of divine glory.",
       "tone": 8,
@@ -146,26 +160,22 @@
         "label": "Theotokion"
       }
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "My mouth shall speak wisdom,\nand the meditation of my heart shall be of understanding.",
       "verse": "Hear this, all ye nations; give ear, all ye that inhabit the World.",
       "_psalmRef": "Ps. 48:4 / 48:2"
     },
-
     "gospel": {
       "reading": "John 10:1-9",
       "number": 36,
       "_note": "He that entereth not by the door into the sheepfold, but climbeth up some other way…"
     },
-
     "postGospelSticheron": {
       "text": "Thou wast shown to be a golden-toned trumpet, O Chrysostom of golden discourse,\nrendering the hearts of the faithful golden with thy golden teachings.\nFor the proclamation of thy corrections hath prophetically issued forth, O venerable father,\nenlightening the ends of the universe.",
       "tone": 6,
       "label": "Sticheron after Psalm 50"
     },
-
     "canon": {
       "tone": 6,
       "_secondCanonTone": 3,
@@ -174,7 +184,6 @@
         "second": "Canon II of the holy hierarch in Tone III (acrostic: 'I chant a third hymn to him of the golden tongue')"
       },
       "_canonNote": "Three canons at Matins: Paraklisis canon of the Theotokos with 6 troparia (including Irmos); Canon I of the hierarch (Tone VI) and Canon II of the hierarch (Tone III). Katavasia: Irmoi of the feast of the Meeting of the Lord.",
-
       "ode1": {
         "irmos": "The Red Sea was parted by a blow from the staff of Moses,\nand the deep with its waves became dry,\nbecoming a path to the unarmed people of Israel,\nbut to the fully armed ones it became a grave.\nA hymn of Praise well-pleasing to God was sung:\ngloriously hath Christ our God been glorified.",
         "irmos2": "He who of old gathered the waters into one by His divine decree,\ndivided the sea for the people of Israel.\nFor He is our God and supremely glorious,\nto Him alone let us sing, for He hath been glorified.",
@@ -222,7 +231,6 @@
         ],
         "katavasia": "Irmoi of the feast of the Meeting of the Lord."
       },
-
       "ode3": {
         "irmos": "O Lord Thou art the God and Creator of all,\nbecoming poor, Thou hast united Thyself without passion to a creature,\nand offered Thyself as a Passover for those for whom Thou wast soon to die;\ncrying: 'Eat My Body, and ye shall be firmly established in the faith.'",
         "irmos2": "O Most High, Ruler of all,\nwho out of nothing hath established all things,\nfashioned by Thy Word, perfected by the Spirit,\nconfirm me in Thy love.",
@@ -266,7 +274,6 @@
         ],
         "katavasia": "Irmoi of the feast of the Meeting of the Lord."
       },
-
       "sessionalHymnAfterOde3": {
         "text": "Having come to know the wisdom which is from on high and the grace of words issuing from God,\nthou didst shine forth upon all like gold in the crucible,\nand preaching the Holy Trinity in Unity,\nthou didst shoot down the delusion of avarice with the arrows of thy words.\nWherefore, having denounced the empress with zeal,\nand having put to shame the alien philosophy of Arius, O John Chrysostom,\nentreat Christ God, to grant forgiveness of sins\nto those who celebrate thy holy memory with love.",
         "tone": 8,
@@ -279,7 +286,6 @@
           "label": "Theotokion"
         }
       },
-
       "ode4": {
         "irmos": "The prophet, foreseeing thine ineffable mystery, O Christ,\ndeclared: Thou hast set forth the mighty grace of baptism,\nunto all who receive it with faith,\nfor deliverance from our sins!",
         "irmos2": "Thou hast shown us steadfast in love, O Lord,\nfor Thou gavest Thine only-begotten Son over to death for our sake.\nWherefore with thanksgiving we cry unto Thee,\n'Glory to Thy power, O Lord!'",
@@ -326,7 +332,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "Bound with the bond of love,\nthe apostles, having offered themselves to Christ, the Master of all,\nhad their comely feet cleansed by Him,\nproclaiming peace unto all.",
         "irmos2": "I rise at dawn unto Thee, the Creator of all,\nsurpassing all worldly understanding;\nfor Thy commandments are light,\nwherein do Thou guide me.",
@@ -369,7 +374,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "The uttermost depths of sin have encompassed me;\nand its stormy waves I can endure no more,\nwherefore like Jonah I cry out to Thee, O Master:\nLead me up from corruption.",
         "irmos2": "The uttermost depths of sin have surrounded me,\nand my spirit perisheth.\nbut do Thou, O Master, stretch forth Thy lofty arm\nand like Peter save me, O my Helmsman.",
@@ -412,7 +416,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "The honored Church was mystically gladdened by the return of thy precious relics;\nhaving hidden them like most precious gold,\nand now by thy supplication she bountifully imparteth the grace of healings//\nunto those who hymn thee, O John Chrysostom.",
         "tone": 1,
@@ -421,7 +424,6 @@
       "ikos": {
         "text": "The lamp of my deeds hath been diminished, O John Chrysostom, and I fear\nto encounter thy sacred relics; but do thou thyself guide me, and direct my steps,\ngranting me time for repentance, O all-holy one, in so far as thou art a divine\npreacher of repentance. Do thou still the tempest of my many passions and, rescuing\nme from the snares of Belial, save me in the end, that I may worthily hymn thy\nglorious return, as before I also boldly glorified thy repose, O John Chrysostom."
       },
-
       "ode7": {
         "irmos": "In Babylon the Children feared not the fiery furnace;\nbut cast into the midst of the flames they were bedewed and sang:\n'O God of our fathers, Blessed art Thou.'",
         "irmos2": "As of old Thou didst bedew the three pious children in the Chaldean flames,\nso also with the radiant fire of Thy divinity illumine us who cry to Thee,\n'Blessed art Thou, the God of our fathers!'",
@@ -464,7 +466,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "Suffering affliction for the sake of the laws of their fathers,\nthe blessed Children in Babylon scorned the foolish decree of the King.\nStanding together in the midst of the flames, they remained unharmed,\nand sang a song fitting for almighty God:\n'O ye works of the Lord, praise ye the Lord\nand supremely exalt Him throughout all ages.'",
         "irmos2": "United together in the unbearable fire, yet not harmed by the flame,\nthe children, champions of godliness, sang a divine hymn:\nO all ye works of the Lord, bless ye the Lord\nand supremely exalt Him throughout all ages.",
@@ -511,7 +512,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "Every tongue is at a loss to praise thee as is due:\neven a spirit from the world above is filled with dizziness,\nwhen it seeketh to sing thy praises, O Theotokos.\nBut since thou art good, accept our faith:\nThou knowest well our love inspired by God,\nfor thou art the Protector of Christians and we magnify thee.",
         "irmos2": "New is the wonder and befitting of God:\nfor the Lord clearly passes through the closed gate of the Virgin:\nnaked at His going in and God bearing flesh at His coming out,\nwhile the gate remaineth closed.\nAs ineffably the Theotokos and Mother of our God we magnify her.",
@@ -559,7 +559,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Rejoice, O city reigning over all cities,\nfor today thou receivest the body of thy good shepherd and chief pastor,\nwho governeth and saveth thee and all the world:\nthe mellifluous Chrysostom.\nClap thy hands, therefore, and sing.",
       "tone": 2,
@@ -572,7 +571,6 @@
         "label": "Theotokion (at Both now)"
       }
     },
-
     "lauds": {
       "tone": 4,
       "stichera": [
@@ -612,7 +610,6 @@
         "label": "Both now, Theotokion"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "The grace shining forth from thy mouth like a beacon hath illumined the universe,\nand disclosed to the world treasures of uncovetousness,\nand shown us the heights of humility,\nbut while instructing us by thy words, O father John Chrysostom,//\nintercede with the Word, Christ God, that our souls be saved.",
       "tone": 8,

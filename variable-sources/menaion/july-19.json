@@ -8,19 +8,16 @@
     "_source": "OCA Jul-19 service text (glorification / finding of relics). Jan 2 is the repose; this is the glorification feast.",
     "_note": "Two canons of the venerable Seraphim: Canon I in Tone VI, Canon II in Tone VIII. Polyeleos rank with Magnification, Gospel (Mt 11:27-30), Great Doxology. 8 LIC stichera at Great Vespers. 4 Lauds stichera (Tone VIII) plus doxastikon and theotokion. Kontakion Tone II with Ikos after Ode 6."
   },
-
   "troparion": {
     "text": "From thy youth didst thou love Christ, O blessed one;\nand, aflame with the desire to serve Him alone,\nthou didst struggle in the wilderness in unceasing prayer and labor;\nand with compunction of heart having acquired the love of Christ,\nthou wast shown to be the beloved favorite of the Mother of God.\nWherefore, we cry unto thee://\nSave us by thy prayers, O our venerable father Seraphim.",
     "tone": 4,
     "label": "Troparion of the venerable one"
   },
-
   "kontakion": {
     "text": "Having forsaken the beauty of the world and the corruption therein,\nthou didst take up thine abode in the Monastery of Sarov.\nAnd having lived there as an angel,\nthou didst become a path for many to salvation.\nWherefore, Christ hath glorified thee, O father Seraphim,\nenriching thee with the gift of healings and miracles.//\nTherefore, we cry out to thee: Rejoice, O our venerable father Seraphim!",
     "tone": 2,
     "label": "Kontakion of the venerable one"
   },
-
   "vespers": {
     "licStichera": {
       "count": 8,
@@ -57,7 +54,6 @@
         "label": "Both now, Dogmaticon"
       }
     },
-
     "litiya": {
       "stichera": [
         {
@@ -84,7 +80,6 @@
         }
       ]
     },
-
     "aposticha": {
       "tone": 5,
       "melody": "Rejoice",
@@ -111,9 +106,26 @@
           "text": "Christ the Lord, my Creator and Redeemer, * Who came forth from thy womb, O most pure one, * and clothed Himself in my nature, * hath freed Adam from the primal curse. * Wherefore, like the angel * we unceasingly cry out to thee, * O most pure one, * who art truly the Mother of God and Virgin: * Rejoice!, O Sovereign Lady, ** the intercession, protection and salvation of our souls!"
         }
       ]
-    }
+    },
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "14:14-20"
+      },
+      {
+        "order": 2,
+        "book": "Deuteronomy",
+        "pericope": "1:8-11, 15-17"
+      },
+      {
+        "order": 3,
+        "book": "Deuteronomy",
+        "pericope": "10:14-21"
+      }
+    ],
+    "_otReadingsSource": "OCA order of services 2026-0719-order-services.txt (\"Old Testament Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-07-19.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
@@ -121,7 +133,6 @@
       "feastType": "saint",
       "_source": "OCA Jul-19 service text (glorification feast)"
     },
-
     "sessionalHymns": [
       {
         "text": "Having overcome the temptations of the enemy by the sign of the Cross and by prayer,\nthou didst please the Lord right well with fasting and abstinence.\nWherefore, thou didst receive the gift of miracles,\nbestowing healing upon all that approach the shrine of thy relics with faith, O venerable Seraphim.\nBeseech Christ God, that He grant forgiveness of sins unto those who honor thy holy memory with love.",
@@ -146,7 +157,6 @@
         }
       }
     ],
-
     "magnification": {
       "refrain": "We bless thee, O venerable father Seraphim,\nand we honor thy holy memory,//\nthou instructor of monks and converser with angels.",
       "verses": [
@@ -155,7 +165,6 @@
       ],
       "tone": 4
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Thy virtuous life hath now shone forth in the land of Russia, O venerable one,\nand thou art glorified with hymns of praise by all;\nfor, like Elijah ascending on the chariot of the virtues, in thy soul thou hast soared aloft to heaven,\nand there hast been justly crowned with a most splendid crown.\nWherefore, we cry unto thee in thanksgiving:\nO blessed Seraphim, beseech Christ God,\nthat He grant forgiveness of sins unto us that honor thy holy memory with love.",
       "tone": 7,
@@ -167,25 +176,21 @@
         "label": "Theotokion"
       }
     },
-
     "prokeimenon": {
       "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
       "verse": "What shall I render unto the Lord for all that He hath rendered unto me?",
       "tone": 4,
       "_psalmRef": "Ps. 115:6 / 115:3"
     },
-
     "gospel": {
       "reading": "Matthew 11:27-30",
       "_note": "All things are delivered unto me of My Father…"
     },
-
     "postGospelSticheron": {
       "text": "Celebrating in spirit on the appointed festival of the venerable father and piously rejoicing,\nlet us fervently cry aloud today, O ye faithful: Rejoice, O blessed Seraphim!\nRejoice, heavenly man and earthly angel!\nRejoice, O thou who hast guided many to the path of salvation!\nRejoice, boast of pious Orthodox Christians and confirmation of the Russian land!//\nPray thou on behalf of our souls!",
       "tone": 6,
       "label": "Idiomelon of St Seraphim (after Psalm 50)"
     },
-
     "canon": {
       "tone": 6,
       "_secondCanonTone": 8,
@@ -194,7 +199,6 @@
         "second": "Canon II of the venerable Seraphim in Tone VIII"
       },
       "_canonNote": "Two joint canons of the venerable Seraphim. Note: The service rubric specifies the Paraklisis Canon of the Theotokos with 6 troparia first, followed by both canons of the venerable one; in standard menaion rendering the Paraklisis canon is omitted and only the saint's two canons are included.",
-
       "ode1": {
         "irmos": "When Israel walked on foot in the sea as on dry land,\non seeing their pursuer Pharaoh drowned, they cried:\nLet us sing to God a song of victory.",
         "irmos2": "Having passed through the water as upon dry land,\nand having escaped the malice of the Egyptians, the Israelites cried aloud:\nUnto our God and Redeemer let us now sing.",
@@ -238,7 +242,6 @@
         ],
         "katavasia": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,//\njoyfully praising her wonders."
       },
-
       "ode3": {
         "irmos": "There is none as holy as Thou, O Lord my God,\nwho hast exalted the horn of Thy faithful O good One,//\nand strengthened us upon the rock of Thy confession.",
         "irmos2": "O Lord, Creator of the vault of Heaven and Builder of the Church,\ndo Thou strengthen me in Thy love, O Summit of desire,//\nO Support of the faithful, O only Lover of mankind.",
@@ -282,7 +285,6 @@
         ],
         "katavasia": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,//\nand in thy divine glory grant them crowns of glory."
       },
-
       "sessionalHymnAfterOde3": {
         "text": "Having utterly overcome the passions of the sea of life by abstinence,\nand attained unto the haven of dispassion,\nthou wast revealed as a vessel of abstinence, O venerable Seraphim.\nBeseech Christ God to grant us great mercy!",
         "tone": 4,
@@ -293,7 +295,6 @@
           "label": "Theotokion"
         }
       },
-
       "ode4": {
         "irmos": "Christ is my power, my God and my Lord,\nthe holy Church divinely singeth, crying with a pure mind,//\nkeeping festival in the Lord.",
         "irmos2": "I have heard report of Thy dispensation, O Lord,//\nand have glorified Thee Who alone lovest mankind.",
@@ -336,7 +337,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "Illumine with Thy divine light, I pray, O Good One,\nthe souls of those who with love rise early to pray to Thee,\nthat they may know Thee, O Word of God,//\nas the true God, Who recalleth us from the darkness of sin.",
         "irmos2": "Illumine us O Lord with Thy commandments,\nand with Thine arm raised on high grant us Thy peace,//\nO Lover of mankind!",
@@ -379,7 +379,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "Beholding the sea of life surging with the tempest of temptations,\nI run to Thy calm haven, and cry to Thee://\nRaise up my life from corruption, O greatly Merciful One.",
         "irmos2": "I will pour out my prayer unto the Lord, and to Him will I proclaim my grief;\nfor my soul is filled with evils, and my life unto Hades hath drawn nigh,\nand like Jonah I pray unto Thee://\nRaise me up from corruption, O my God.",
@@ -422,7 +421,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "Having forsaken the beauty of the world and the corruption therein,\nthou didst take up thine abode in the Monastery of Sarov.\nAnd having lived there as an angel,\nthou didst become a path for many to salvation.\nWherefore, Christ hath glorified thee, O father Seraphim,\nenriching thee with the gift of healings and miracles.//\nTherefore, we cry out to thee: Rejoice, O our venerable father Seraphim!",
         "tone": 2,
@@ -431,7 +429,6 @@
       "ikos": {
         "text": "Having forsaken family and friends, and regarding riches as but dust,\nthou didst take up thine abode in the wilderness of Sarov;\nand having struggled against the passions like one of the bodiless hosts,\nthou wast deemed worthy to stand in the angelic choir.\nWherefore, having received spiritual knowledge,\ngrant even us, O venerable one, to chant this unto thee with understanding, saying:\nRejoice, O blessed Seraphim, heavenly man and earthly angel! Rejoice, emulator of Christ in thy love!\nRejoice, abode of the Holy Spirit! Rejoice, great joy of the despondent!\nRejoice, source of healing! Rejoice, sweet consolation for sorrowful souls!\nRejoice, calm haven for monks and most wise instructor! Rejoice, boast of the land of Russia!//\nRejoice, O our venerable father Seraphim!"
       },
-
       "ode7": {
         "irmos": "An Angel made the furnace bedew the holy Children.\nBut the command of God consumed the Chaldeans\nand prevailed upon the tyrant to cry://\nO God of our fathers, blessed art Thou.",
         "irmos2": "The Children of Judaea, who of old came to dwell in Babylon,\ntrampled underfoot the flame of the furnace through their faith in the Trinity, as they sang://\n'O God of our fathers, blessed art Thou.'",
@@ -474,7 +471,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "Thou didst make flame bedew the holy children,\nand didst burn the sacrifice of a righteous man with water.\nFor Thou alone, O Christ, dost do all as Thou willest,//\nThee do we supremely exalt throughout all ages.",
         "irmos2": "The King of heaven, Who is glorified by the hosts of angels,//\nlet us praise and supremely exalt throughout all ages.",
@@ -517,7 +513,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "It is impossible for mankind to see God upon Whom the orders of Angels dare not gaze;\nbut through thee, O all-pure one, did the Word Incarnate become a man\nand with the Heavenly Hosts//\nHim we magnify and thee we call blessed.",
         "irmos2": "Saved by thee, O pure Virgin,\nwe truly confess thee to be the Theotokos,//\nand with the choirs of bodiless hosts we magnify thee.",
@@ -561,7 +556,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Come, all ye faithful, let us praise with sacred hymns the venerable Seraphim,\nwondrous in miracles, the new beacon of the land of Russia,//\nthe converser with angels and fervent intercessor before God for those who honor his holy memory!",
       "tone": 2,
@@ -578,7 +572,6 @@
         "label": "Theotokion"
       }
     },
-
     "lauds": {
       "tone": 8,
       "stichera": [
@@ -610,7 +603,6 @@
         "label": "Both now, Theotokion"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "From thy youth didst thou love Christ, O blessed one;\nand, aflame with the desire to serve Him alone,\nthou didst struggle in the wilderness in unceasing prayer and labor;\nand with compunction of heart having acquired the love of Christ,\nthou wast shown to be the beloved favorite of the Mother of God.\nWherefore, we cry unto thee://\nSave us by thy prayers, O our venerable father Seraphim.",
       "tone": 4,

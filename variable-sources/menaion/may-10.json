@@ -10,19 +10,16 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/05-10.pdf",
     "_note": "Polyeleos feast. Vespers: 8 LIC stichera (3 from Pentecostarion + 5 of the holy apostle in Tone IV); aposticha 3+Glory in Tone I/VI. Matins: Magnification, Prokeimenon Tone IV, Gospel §67 (Jn 21:15-25). Single canon of the holy apostle in Tone VIII (8 troparia, acrostic 'I hymn the glory of the apostle Simon') interleaved with Pentecostarion canon (6 troparia). Kontakion & Ikos of the Pentecostarion read at Ode 3; Kontakion of the holy apostle at canon top level (after Ode 6)."
   },
-
   "troparion": {
     "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
     "tone": 3
   },
-
   "kontakion": {
     "text": "In praises let us all bless the divinely eloquent Simon,\nwho hath diligently set the doctrines of wisdom in the hearts of the pious;\nfor standing now before the throne of glory\nand dwelling with the incorporeal ones,//\nhe doth unceasingly pray on behalf of us all.",
     "tone": 2,
     "ikos": "Let us all now praise and piously bless the commemoration of the apostle as though it were a day of salvation; for shineth forth like the sun upon the whole world, it dispelleth all darkness with the rays of its light, and with love illumineth those who celebrate his memory and who lovingly honor it. Wherefore, let us hasten with zeal, chanting to him, for he standeth before Christ, praying unceasingly on behalf of us all.",
     "melody": "The steadfast"
   },
-
   "vespers": {
     "stichera": [
       {
@@ -51,7 +48,6 @@
         "isGlory": true
       }
     ],
-
     "aposticha": {
       "tone": 1,
       "melody": "O all-praised martyrs",
@@ -73,9 +69,26 @@
         "text": "Like a high-flying eagle thou didst soar over creation, O most sacred Simon, disciple and apostle of Christ, and, burning up the falsehood of idolatry with the fiery words of thy dogmas, thou didst lead the nations out of the depths of ignorance unto the knowledge of God. And now, pray thou to Christ, that He be merciful to us on the day of judgment.",
         "tone": 6
       }
-    }
+    },
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "1 John",
+        "pericope": "3:21-4:6"
+      },
+      {
+        "order": 2,
+        "book": "1 John",
+        "pericope": "4:11-16"
+      },
+      {
+        "order": 3,
+        "book": "1 John",
+        "pericope": "4:20-5:5"
+      }
+    ],
+    "_otReadingsSource": "orthocal mirror data/orthocal/2026-05-10.json — the three readings it carries at source \"Vespers\" for this date; no OCA order of services for 05-10 is held in reference/orders/. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "tone": 3,
@@ -83,12 +96,10 @@
       "feastType": "apostle",
       "_source": "stSergius-menaion"
     },
-
     "troparion": {
       "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
       "tone": 3
     },
-
     "sedalion": [
       {
         "text": "Fishing for the nations, the glorious apostle taught the ends of the earth to worship Thee with the Father and the Spirit, O Christ God. Wherefore, establish Thy Church, and send down Thy blessing upon the faithful, O only Merciful One, and Lover of mankind.",
@@ -103,7 +114,6 @@
         "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion."
       }
     ],
-
     "magnification": {
       "refrain": "We magnify thee, O apostle of Christ Simon,\nand we honor the pangs and labors wherewith thou didst struggle\nin the proclamation of the Gospel of Christ.",
       "verses": [
@@ -111,7 +121,6 @@
         "Glory… Both now… Alleluia… Glory to Thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "label": "Sessional Hymn of the holy apostle (after Polyeleios)",
       "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion.",
@@ -123,29 +132,24 @@
         }
       ]
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "Their sound hath gone forth into all the earth,\nand their words unto the ends of the world.",
       "verse": "The heavens declare the glory of God, and the firmament proclaimeth the work of His hands."
     },
-
     "gospel": {
       "reading": "John 21:15-25",
       "number": 67
     },
-
     "postGospelSticheron": {
       "text": "Manifestly receiving grace from the divine Spirit, thou wast a member of the choir of the apostles, breathing forth with a fiery tongue the fiery breath which once was borne down upon them from heaven, O Simon, utterly consuming the thorns of pagan ungodliness. O preacher of Christ God, entreat Him, that our souls be saved.",
       "tone": 6,
       "label": "Sticheron after Psalm 50",
       "_source": "stSergius-menaion"
     },
-
     "canon": {
       "tone": 8,
       "_author": "Canon of the holy apostle Simon in Tone VIII (8 troparia, acrostic 'I hymn the glory of the apostle Simon'); interleaved with canon from the Pentecostarion (6 troparia). Kontakion & Ikos from Pentecostarion at Ode 3.",
-
       "ode1": {
         "irmos": "Let us, O ye people, send up a hymn\nunto our wondrous God\nWho hath freed Israel from bondage,\nchanting a hymn of victory\nand crying aloud:\nWe sing unto Thee, O only Master.",
         "troparia": [
@@ -167,7 +171,6 @@
           }
         ]
       },
-
       "ode3": {
         "irmos": "There is none as holy as the Lord,\nand none as righteous as our God,\nWhom the whole of creation hymns:\nThere is none more righteous than Thee, O Lord.",
         "troparia": [
@@ -185,7 +188,6 @@
           }
         ]
       },
-
       "sedalenAfterOde3": {
         "text": "With the radiant light of the divine Spirit thou hast destroyed the darkness of polytheism, and illumined the hearts of the faithful, and singing forth the Savior's commandments, thou didst abolish the fables of the pagans. O glorious Simon, entreat Christ God, that He grant us great mercy.",
         "tone": 3,
@@ -193,7 +195,6 @@
         "melody": "Of the divine Faith",
         "_note": "Sung twice. Glory & Both now: Sessional Hymn from the Pentecostarion."
       },
-
       "ode4": {
         "irmos": "From the overshadowed mountain,\nfrom the only Theotokos,\nthe Prophet in divine vision\nforesaw Thy coming in the flesh, O Word,\nand with fear he glorified Thy power.",
         "troparia": [
@@ -215,7 +216,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "Thou hast enlightened\nwith the knowledge of God\nthe ends of the universe\nthat lay in the night of ignorance,\ndo Thou also, O Lord, illumine me\nwith the dawning of Thy love for mankind.",
         "troparia": [
@@ -233,7 +233,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "O Thou that puttest on light as a garment,\ngrant me also a robe of light,\nO All-merciful Christ, our God.",
         "troparia": [
@@ -251,7 +250,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "In praises let us all bless the divinely eloquent Simon,\nwho hath diligently set the doctrines of wisdom in the hearts of the pious;\nfor standing now before the throne of glory\nand dwelling with the incorporeal ones,//\nhe doth unceasingly pray on behalf of us all.",
         "tone": 2,
@@ -261,7 +259,6 @@
       "ikos": {
         "text": "Let us all now praise and piously bless the commemoration of the apostle as though it were a day of salvation; for shineth forth like the sun upon the whole world, it dispelleth all darkness with the rays of its light, and with love illumineth those who celebrate his memory and who lovingly honor it. Wherefore, let us hasten with zeal, chanting to him, for he standeth before Christ, praying unceasingly on behalf of us all."
       },
-
       "ode7": {
         "irmos": "The Hebrew children in the furnace\nboldly trampled upon the flames,\nchanging the fire into dew, they cried aloud:\nBlessed art Thou, O Lord our God, throughout the ages.",
         "troparia": [
@@ -279,7 +276,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "The instruments of music sounded out in harmony,\nand countless multitudes worshipped the image in Dura;\nbut the three Children, refusing to bow in obeisance,\nhymn and glorify the Lord throughout all ages.",
         "troparia": [
@@ -297,7 +293,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "O ye people, with glory let us honor the pure Theotokos,\nwho received the fire of the Divinity in her womb\nyet remained unconsumed,\nlet us magnify her with hymns.",
         "troparia": [
@@ -316,7 +311,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Directing the course of thy beautiful feet to the path of heaven, O apostle Simon, thou didst ascend, rejoicing; and, standing before the Trinity, thou dost behold the Son and the divine Spirit in the Father. Wherefore, we celebrate with faith thy most sacred and divine memory.",
       "tone": null,
@@ -324,7 +318,6 @@
       "_note": "Sung twice. Glory & Both now: Exapostilarion from the Pentecostarion.",
       "_source": "stSergius-menaion"
     },
-
     "lauds": {
       "tone": 8,
       "melody": "What shall we call you",
@@ -353,7 +346,6 @@
       },
       "_bothNowNote": "Both now: Doxastikon from the Pentecostarion (supplied at runtime from Pentecostarion data)."
     },
-
     "troparionAfterDoxology": {
       "text": "O holy Apostle Simon,\nentreat the Merciful God,\nthat He grant remission of sins//\nunto our souls.",
       "tone": 3

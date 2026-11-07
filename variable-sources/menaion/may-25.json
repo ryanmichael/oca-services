@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "_note": "Created 2026-11-07 to carry the Great Vespers lessons for 05-25; all other content for this day comes from storage/oca.db."
+  },
+  "vespers": {
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Isaiah",
+        "pericope": "40, 41, 45, 48, 54",
+        "_composite": "Composite 8"
+      },
+      {
+        "order": 2,
+        "book": "Malachi",
+        "pericope": "3, 4",
+        "_composite": "Composite 9"
+      },
+      {
+        "order": 3,
+        "book": "Wisdom of Solomon",
+        "pericope": "4, 5",
+        "_composite": "Composite 3"
+      }
+    ],
+    "_otReadingsSource": "OCA order of services 2025-0525-order-services.txt (\"Old Testament Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-05-25.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
+  }
+}

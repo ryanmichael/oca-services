@@ -33,6 +33,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 1",
           "book": "Genesis",
           "order": 1,
           "pericope": "17:1-2, 4, 5-7, 8, 9-10, 11-12, 14"
@@ -835,16 +836,19 @@
       },
       "otReadings": [
         {
+          "book": "Wisdom of Solomon",
           "order": 1,
-          "pericope": "Wis. 5:15–6:3"
+          "pericope": "3:1-9"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 2,
-          "pericope": "Wis. 3:1–9"
+          "pericope": "5:15-6:3"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7–15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -2267,6 +2271,26 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -2521,6 +2545,23 @@
         "tone": 1,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Deuteronomy",
+          "order": 1,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "10:14-21"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -2722,6 +2763,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 6",
           "book": "Composite 6",
           "order": 1,
           "pericope": "(Exodus 12:51-13:3; Leviticus 12:2-7; Numbers 8:16-17)"
@@ -2732,6 +2774,7 @@
           "pericope": "6:1-12"
         },
         {
+          "_composite": "Composite 7",
           "book": "Isaiah",
           "order": 3,
           "pericope": "19:1, 3, 4-5, 12, 16, 19-21"
@@ -5912,6 +5955,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "soulSaturday"
       },
@@ -11023,6 +11083,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "James",
+          "order": 1,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:13-27"
+        },
+        {
+          "book": "James",
+          "order": 3,
+          "pericope": "2:1-13"
+        }
+      ],
       "prokeimenon": {
         "entries": [
           {
@@ -11501,16 +11578,19 @@
       },
       "otReadings": [
         {
+          "book": "James",
           "order": 1,
-          "pericope": "Jas. 1:1-12"
+          "pericope": "1:1-12"
         },
         {
+          "book": "James",
           "order": 2,
-          "pericope": "Jas. 1:13-27"
+          "pericope": "1:13-27"
         },
         {
+          "book": "James",
           "order": 3,
-          "pericope": "Jas. 2:1-13"
+          "pericope": "2:1-13"
         }
       ],
       "prokeimenon": {
@@ -12306,6 +12386,23 @@
         ],
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "key": "iCriedAloud",
@@ -12496,6 +12593,23 @@
         ],
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "key": "iLoveThee",
@@ -12591,6 +12705,24 @@
         ],
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "pattern": "weekday",
@@ -14040,6 +14172,26 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "pattern": "weekday",
@@ -15915,16 +16067,19 @@
       },
       "otReadings": [
         {
+          "book": "Genesis",
           "order": 1,
-          "pericope": "Gen. 28:11-17"
+          "pericope": "28:11-17"
         },
         {
+          "book": "Ezekiel",
           "order": 2,
-          "pericope": "Ezek. 43:27–44:4"
+          "pericope": "43:27-44:4"
         },
         {
+          "book": "Proverbs",
           "order": 3,
-          "pericope": "Prov. 9:1-11"
+          "pericope": "9:1-11"
         }
       ],
       "paschalAposticha": false,
@@ -16890,16 +17045,19 @@
       },
       "otReadings": [
         {
+          "book": "Proverbs",
           "order": 1,
-          "pericope": "Prov. 3:13-16; 8:6-11; 8:34-36 (adapted)"
+          "pericope": "3:13-16; 8:6-11; 8:34-36 (adapted)"
         },
         {
+          "book": "Proverbs",
           "order": 2,
-          "pericope": "Prov. 10:31-32; 11:1-12"
+          "pericope": "10:31-32; 11:1-12"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7-15"
+          "pericope": "4:7-15"
         }
       ],
       "paschalAposticha": false,
@@ -17437,6 +17595,26 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 10",
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "17:15-17, 19; 18:11-14; 21:1-8"
+        },
+        {
+          "_composite": "Composite 11",
+          "book": "Judges",
+          "order": 2,
+          "pericope": "13:2-8, 13-14, 17-18, 21"
+        },
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "40, 41, 45, 48, 54"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -17791,6 +17969,23 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:3-9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "1:13-19"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "2:11-24"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -18299,6 +18494,24 @@
         "tone": 7,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -18765,6 +18978,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -19212,6 +19442,23 @@
         "tone": 2,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "8:22-23, 27-30"
+        },
+        {
+          "book": "Isaiah",
+          "order": 2,
+          "pericope": "61:10-62:5"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "60:1-16"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -19524,6 +19771,23 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "14:14-20"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 3,
+          "pericope": "10:14-21"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -19622,6 +19886,26 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 12",
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "17:1-23"
+        },
+        {
+          "_composite": "Composite 13",
+          "book": "3 Kings",
+          "order": 2,
+          "pericope": "18, 19"
+        },
+        {
+          "_composite": "Composite 14",
+          "book": "Composite 14",
+          "order": 3,
+          "pericope": "(3 Kings 19:19, 20, 21; 4 Kings 2:1,6-14)"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -19990,6 +20274,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -20146,6 +20447,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:1-6"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -21123,11 +21441,13 @@
           "pericope": "24:12-18"
         },
         {
+          "_composite": "Composite 15",
           "book": "Exodus",
           "order": 2,
           "pericope": "33:11-23; 34:4-6, 8"
         },
         {
+          "_composite": "Composite 23",
           "book": "I Kings",
           "order": 3,
           "pericope": "19:3-9, 11-13, 15-16"
@@ -23071,6 +23391,23 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -23113,6 +23450,26 @@
         "tone": 8,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -25367,6 +25724,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -25409,6 +25783,24 @@
         "tone": 4,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -25663,6 +26055,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -25912,6 +26321,23 @@
         "tone": 5,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "28:10-17"
+        },
+        {
+          "book": "Ezekiel",
+          "order": 2,
+          "pericope": "43:27-44:4"
+        },
+        {
+          "book": "Proverbs",
+          "order": 3,
+          "pericope": "9:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -26571,6 +26997,23 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -27349,6 +27792,23 @@
         "tone": 7,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "1:1-7"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "Jude",
+          "order": 3,
+          "pericope": "1-7, 17-25"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -28069,6 +28529,24 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 16",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "63:15-64:5, 8-9"
+        },
+        {
+          "book": "Jeremiah",
+          "order": 2,
+          "pericope": "2:2-12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -29179,6 +29657,23 @@
         "tone": 2,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Joshua",
+          "order": 1,
+          "pericope": "5:13-15"
+        },
+        {
+          "book": "Judges",
+          "order": 2,
+          "pericope": "6:2, 7, 11-24"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "14:7-20"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -29645,6 +30140,26 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -29723,6 +30238,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -29899,6 +30431,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -30312,11 +30861,13 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 17",
           "book": "Exodus",
           "order": 1,
           "pericope": "40:1-5, 9, 10, 16, 34-35"
         },
         {
+          "_composite": "Composite 18",
           "book": "I Kings",
           "order": 2,
           "pericope": "7:51; 8:1, 3-7, 9-11"
@@ -31115,6 +31666,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -31561,6 +32129,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -31603,6 +32188,24 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -33867,6 +34470,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 1",
           "book": "Genesis",
           "order": 1,
           "pericope": "17:1-2, 4, 5-7, 8, 9-10, 11-12, 14"
@@ -34725,16 +35329,19 @@
       },
       "otReadings": [
         {
+          "book": "Wisdom of Solomon",
           "order": 1,
-          "pericope": "Wis. 5:15–6:3"
+          "pericope": "3:1-9"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 2,
-          "pericope": "Wis. 3:1–9"
+          "pericope": "5:15-6:3"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7–15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -36183,6 +36790,26 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -36381,6 +37008,23 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Deuteronomy",
+          "order": 1,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "10:14-21"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -36618,6 +37262,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 6",
           "book": "Composite 6",
           "order": 1,
           "pericope": "(Exodus 12:51-13:3; Leviticus 12:2-7; Numbers 8:16-17)"
@@ -36628,6 +37273,7 @@
           "pericope": "6:1-12"
         },
         {
+          "_composite": "Composite 7",
           "book": "Isaiah",
           "order": 3,
           "pericope": "19:1, 3, 4-5, 12, 16, 19-21"
@@ -39868,6 +40514,23 @@
         "tone": 4,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -44907,6 +45570,23 @@
         ],
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "James",
+          "order": 1,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:13-27"
+        },
+        {
+          "book": "James",
+          "order": 3,
+          "pericope": "2:1-13"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "key": "iLoveThee",
@@ -45428,16 +46108,19 @@
       },
       "otReadings": [
         {
+          "book": "James",
           "order": 1,
-          "pericope": "Jas. 1:1-12"
+          "pericope": "1:1-12"
         },
         {
+          "book": "James",
           "order": 2,
-          "pericope": "Jas. 1:13-27"
+          "pericope": "1:13-27"
         },
         {
+          "book": "James",
           "order": 3,
-          "pericope": "Jas. 2:1-13"
+          "pericope": "2:1-13"
         }
       ],
       "paschalAposticha": false,
@@ -46306,7 +46989,23 @@
         "tone": 2,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -46524,6 +47223,23 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "pattern": "weekday",
@@ -46663,7 +47379,24 @@
         "tone": 3,
         "totalStichera": 10
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "paschalAposticha": true,
       "paschalOpening": true,
       "prokeimenon": {
@@ -48133,7 +48866,26 @@
         "tone": 5,
         "totalStichera": 10
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "paschalAposticha": true,
       "paschalOpening": true,
       "prokeimenon": {
@@ -50029,16 +50781,19 @@
       },
       "otReadings": [
         {
+          "book": "Genesis",
           "order": 1,
-          "pericope": "Gen. 28:11-17"
+          "pericope": "28:11-17"
         },
         {
+          "book": "Ezekiel",
           "order": 2,
-          "pericope": "Ezek. 43:27–44:4"
+          "pericope": "43:27-44:4"
         },
         {
+          "book": "Proverbs",
           "order": 3,
-          "pericope": "Prov. 9:1-11"
+          "pericope": "9:1-11"
         }
       ],
       "prokeimenon": {
@@ -50743,16 +51498,19 @@
       },
       "otReadings": [
         {
+          "book": "Proverbs",
           "order": 1,
-          "pericope": "Prov. 3:13-16; 8:6-11; 8:34-36 (adapted)"
+          "pericope": "3:13-16; 8:6-11; 8:34-36 (adapted)"
         },
         {
+          "book": "Proverbs",
           "order": 2,
-          "pericope": "Prov. 10:31-32; 11:1-12"
+          "pericope": "10:31-32; 11:1-12"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7-15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -51185,6 +51943,26 @@
         "tone": 1,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 10",
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "17:15-17, 19; 18:11-14; 21:1-8"
+        },
+        {
+          "_composite": "Composite 11",
+          "book": "Judges",
+          "order": 2,
+          "pericope": "13:2-8, 13-14, 17-18, 21"
+        },
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "40, 41, 45, 48, 54"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -51635,6 +52413,23 @@
         "tone": 2,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:3-9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "1:13-19"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "2:11-24"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -52139,6 +52934,24 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -52585,6 +53398,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -53032,6 +53862,23 @@
         "tone": 4,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "8:22-23, 27-30"
+        },
+        {
+          "book": "Isaiah",
+          "order": 2,
+          "pericope": "61:10-62:5"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "60:1-16"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -53364,6 +54211,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "14:14-20"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 3,
+          "pericope": "10:14-21"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -53477,6 +54341,26 @@
         "tone": 5,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 12",
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "17:1-23"
+        },
+        {
+          "_composite": "Composite 13",
+          "book": "3 Kings",
+          "order": 2,
+          "pericope": "18, 19"
+        },
+        {
+          "_composite": "Composite 14",
+          "book": "Composite 14",
+          "order": 3,
+          "pericope": "(3 Kings 19:19, 20, 21; 4 Kings 2:1,6-14)"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -53805,6 +54689,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -53976,6 +54877,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:1-6"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -54938,11 +55856,13 @@
           "pericope": "24:12-18"
         },
         {
+          "_composite": "Composite 15",
           "book": "Exodus",
           "order": 2,
           "pericope": "33:11-23; 34:4-6, 8"
         },
         {
+          "_composite": "Composite 23",
           "book": "I Kings",
           "order": 3,
           "pericope": "19:3-9, 11-13, 15-16"
@@ -56891,6 +57811,23 @@
         "tone": 2,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -56933,6 +57870,26 @@
         "tone": 2,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -59218,6 +60175,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -59260,6 +60234,24 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -59554,6 +60546,23 @@
         "tone": 7,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -59768,6 +60777,23 @@
         "tone": 7,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "28:10-17"
+        },
+        {
+          "book": "Ezekiel",
+          "order": 2,
+          "pericope": "43:27-44:4"
+        },
+        {
+          "book": "Proverbs",
+          "order": 3,
+          "pericope": "9:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -60432,6 +61458,23 @@
         "tone": 8,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -61230,6 +62273,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "1:1-7"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "Jude",
+          "order": 3,
+          "pericope": "1-7, 17-25"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -61970,6 +63030,24 @@
         "tone": 3,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 16",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "63:15-64:5, 8-9"
+        },
+        {
+          "book": "Jeremiah",
+          "order": 2,
+          "pericope": "2:2-12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -63040,6 +64118,23 @@
         "tone": 4,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Joshua",
+          "order": 1,
+          "pericope": "5:13-15"
+        },
+        {
+          "book": "Judges",
+          "order": 2,
+          "pericope": "6:2, 7, 11-24"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "14:7-20"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -63465,6 +64560,26 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -63543,6 +64658,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -63754,6 +64886,23 @@
         "tone": 6,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -64127,11 +65276,13 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 17",
           "book": "Exodus",
           "order": 1,
           "pericope": "40:1-5, 9, 10, 16, 34-35"
         },
         {
+          "_composite": "Composite 18",
           "book": "I Kings",
           "order": 2,
           "pericope": "7:51; 8:1, 3-7, 9-11"
@@ -64980,6 +66131,23 @@
         "tone": 8,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -65386,6 +66554,23 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -65428,6 +66613,24 @@
         "tone": 8,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -67656,6 +68859,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 1",
           "book": "Genesis",
           "order": 1,
           "pericope": "17:1-2, 4, 5-7, 8, 9-10, 11-12, 14"
@@ -68544,16 +69748,19 @@
       },
       "otReadings": [
         {
+          "book": "Wisdom of Solomon",
           "order": 1,
-          "pericope": "Wis. 5:15–6:3"
+          "pericope": "3:1-9"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 2,
-          "pericope": "Wis. 3:1–9"
+          "pericope": "5:15-6:3"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7–15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -69972,6 +71179,26 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -70170,6 +71397,23 @@
         "tone": 8,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Deuteronomy",
+          "order": 1,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "10:14-21"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -70438,6 +71682,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 6",
           "book": "Composite 6",
           "order": 1,
           "pericope": "(Exodus 12:51-13:3; Leviticus 12:2-7; Numbers 8:16-17)"
@@ -70448,6 +71693,7 @@
           "pericope": "6:1-12"
         },
         {
+          "_composite": "Composite 7",
           "book": "Isaiah",
           "order": 3,
           "pericope": "19:1, 3, 4-5, 12, 16, 19-21"
@@ -73902,6 +75148,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "entries": [
           {
@@ -78875,6 +80138,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "James",
+          "order": 1,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:13-27"
+        },
+        {
+          "book": "James",
+          "order": 3,
+          "pericope": "2:1-13"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "pattern": "weekday",
@@ -79424,16 +80704,19 @@
       },
       "otReadings": [
         {
+          "book": "James",
           "order": 1,
-          "pericope": "Jas. 1:1-12"
+          "pericope": "1:1-12"
         },
         {
+          "book": "James",
           "order": 2,
-          "pericope": "Jas. 1:13-27"
+          "pericope": "1:13-27"
         },
         {
+          "book": "James",
           "order": 3,
-          "pericope": "Jas. 2:1-13"
+          "pericope": "2:1-13"
         }
       ],
       "paschalAposticha": false,
@@ -80302,7 +81585,23 @@
         "tone": 3,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -80557,7 +81856,23 @@
         "tone": 4,
         "totalStichera": 10
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalAposticha": true,
       "paschalOpening": true,
       "prokeimenon": {
@@ -80659,7 +81974,24 @@
         "tone": 4,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -82284,7 +83616,26 @@
         "tone": 6,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": false,
       "prokeimenon": {
@@ -83918,16 +85269,19 @@
       },
       "otReadings": [
         {
+          "book": "Genesis",
           "order": 1,
-          "pericope": "Gen. 28:11-17"
+          "pericope": "28:11-17"
         },
         {
+          "book": "Ezekiel",
           "order": 2,
-          "pericope": "Ezek. 43:27–44:4"
+          "pericope": "43:27-44:4"
         },
         {
+          "book": "Proverbs",
           "order": 3,
-          "pericope": "Prov. 9:1-11"
+          "pericope": "9:1-11"
         }
       ],
       "prokeimenon": {
@@ -84632,16 +85986,19 @@
       },
       "otReadings": [
         {
+          "book": "Proverbs",
           "order": 1,
-          "pericope": "Prov. 3:13-16; 8:6-11; 8:34-36 (adapted)"
+          "pericope": "3:13-16; 8:6-11; 8:34-36 (adapted)"
         },
         {
+          "book": "Proverbs",
           "order": 2,
-          "pericope": "Prov. 10:31-32; 11:1-12"
+          "pericope": "10:31-32; 11:1-12"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7-15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -85074,6 +86431,26 @@
         "tone": 2,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 10",
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "17:15-17, 19; 18:11-14; 21:1-8"
+        },
+        {
+          "_composite": "Composite 11",
+          "book": "Judges",
+          "order": 2,
+          "pericope": "13:2-8, 13-14, 17-18, 21"
+        },
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "40, 41, 45, 48, 54"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -85504,6 +86881,23 @@
         "tone": 3,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:3-9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "1:13-19"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "2:11-24"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -86032,6 +87426,24 @@
         "tone": 4,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -86438,6 +87850,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -86880,6 +88309,23 @@
         "tone": 5,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "8:22-23, 27-30"
+        },
+        {
+          "book": "Isaiah",
+          "order": 2,
+          "pericope": "61:10-62:5"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "60:1-16"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -87247,6 +88693,23 @@
         "tone": 6,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "14:14-20"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 3,
+          "pericope": "10:14-21"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -87341,6 +88804,26 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 12",
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "17:1-23"
+        },
+        {
+          "_composite": "Composite 13",
+          "book": "3 Kings",
+          "order": 2,
+          "pericope": "18, 19"
+        },
+        {
+          "_composite": "Composite 14",
+          "book": "Composite 14",
+          "order": 3,
+          "pericope": "(3 Kings 19:19, 20, 21; 4 Kings 2:1,6-14)"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -87653,6 +89136,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -87869,6 +89369,23 @@
         "tone": 7,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:1-6"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -88791,11 +90308,13 @@
           "pericope": "24:12-18"
         },
         {
+          "_composite": "Composite 15",
           "book": "Exodus",
           "order": 2,
           "pericope": "33:11-23; 34:4-6, 8"
         },
         {
+          "_composite": "Composite 23",
           "book": "I Kings",
           "order": 3,
           "pericope": "19:3-9, 11-13, 15-16"
@@ -90708,6 +92227,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -90750,6 +92286,26 @@
         "tone": 3,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -93034,6 +94590,23 @@
         "tone": 7,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -93076,6 +94649,24 @@
         "tone": 7,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -93386,6 +94977,23 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -93584,6 +95192,23 @@
         "tone": 8,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "28:10-17"
+        },
+        {
+          "book": "Ezekiel",
+          "order": 2,
+          "pericope": "43:27-44:4"
+        },
+        {
+          "book": "Proverbs",
+          "order": 3,
+          "pericope": "9:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -94248,6 +95873,23 @@
         "tone": 1,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -95086,6 +96728,23 @@
         "tone": 3,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "1:1-7"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "Jude",
+          "order": 3,
+          "pericope": "1-7, 17-25"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -95802,6 +97461,24 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 16",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "63:15-64:5, 8-9"
+        },
+        {
+          "book": "Jeremiah",
+          "order": 2,
+          "pericope": "2:2-12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -96942,6 +98619,23 @@
         "tone": 6,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Joshua",
+          "order": 1,
+          "pericope": "5:13-15"
+        },
+        {
+          "book": "Judges",
+          "order": 2,
+          "pericope": "6:2, 7, 11-24"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "14:7-20"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -97348,6 +99042,26 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -97446,6 +99160,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -97658,6 +99389,23 @@
         "tone": 7,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -98015,11 +99763,13 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 17",
           "book": "Exodus",
           "order": 1,
           "pericope": "40:1-5, 9, 10, 16, 34-35"
         },
         {
+          "_composite": "Composite 18",
           "book": "I Kings",
           "order": 2,
           "pericope": "7:51; 8:1, 3-7, 9-11"
@@ -98848,6 +100598,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -99258,6 +101025,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -99376,6 +101160,24 @@
         "tone": 2,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -101575,6 +103377,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 1",
           "book": "Genesis",
           "order": 1,
           "pericope": "17:1-2, 4, 5-7, 8, 9-10, 11-12, 14"
@@ -102484,16 +104287,19 @@
       },
       "otReadings": [
         {
+          "book": "Wisdom of Solomon",
           "order": 1,
-          "pericope": "Wis. 5:15–6:3"
+          "pericope": "3:1-9"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 2,
-          "pericope": "Wis. 3:1–9"
+          "pericope": "5:15-6:3"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7–15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -103896,6 +105702,26 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "tuesday"
@@ -104094,6 +105920,23 @@
         "tone": 1,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Deuteronomy",
+          "order": 1,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "10:14-21"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -104335,6 +106178,7 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 6",
           "book": "Composite 6",
           "order": 1,
           "pericope": "(Exodus 12:51-13:3; Leviticus 12:2-7; Numbers 8:16-17)"
@@ -104345,6 +106189,7 @@
           "pericope": "6:1-12"
         },
         {
+          "_composite": "Composite 7",
           "book": "Isaiah",
           "order": 3,
           "pericope": "19:1, 3, 4-5, 12, 16, 19-21"
@@ -107421,6 +109266,23 @@
         "tone": 7,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -112584,6 +114446,23 @@
         "tone": 6,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "James",
+          "order": 1,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:13-27"
+        },
+        {
+          "book": "James",
+          "order": 3,
+          "pericope": "2:1-13"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -112961,16 +114840,19 @@
       },
       "otReadings": [
         {
+          "book": "James",
           "order": 1,
-          "pericope": "Jas. 1:1-12"
+          "pericope": "1:1-12"
         },
         {
+          "book": "James",
           "order": 2,
-          "pericope": "Jas. 1:13-27"
+          "pericope": "1:13-27"
         },
         {
+          "book": "James",
           "order": 3,
-          "pericope": "Jas. 2:1-13"
+          "pericope": "2:1-13"
         }
       ],
       "prokeimenon": {
@@ -113816,6 +115698,23 @@
         ],
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalOpening": true,
       "prokeimenon": {
         "pattern": "weekday",
@@ -114036,7 +115935,23 @@
         "tone": 1,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "3:21-4:6"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:11-16"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -114138,7 +116053,24 @@
         "tone": 1,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -115608,7 +117540,26 @@
         "tone": 3,
         "totalStichera": 6
       },
-      "otReadings": null,
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "paschalAposticha": false,
       "paschalOpening": true,
       "prokeimenon": {
@@ -117520,16 +119471,19 @@
       },
       "otReadings": [
         {
+          "book": "Genesis",
           "order": 1,
-          "pericope": "Gen. 28:11-17"
+          "pericope": "28:11-17"
         },
         {
+          "book": "Ezekiel",
           "order": 2,
-          "pericope": "Ezek. 43:27–44:4"
+          "pericope": "43:27-44:4"
         },
         {
+          "book": "Proverbs",
           "order": 3,
-          "pericope": "Prov. 9:1-11"
+          "pericope": "9:1-11"
         }
       ],
       "paschalAposticha": false,
@@ -118435,16 +120389,19 @@
       },
       "otReadings": [
         {
+          "book": "Proverbs",
           "order": 1,
-          "pericope": "Prov. 3:13-16; 8:6-11; 8:34-36 (adapted)"
+          "pericope": "3:13-16; 8:6-11; 8:34-36 (adapted)"
         },
         {
+          "book": "Proverbs",
           "order": 2,
-          "pericope": "Prov. 10:31-32; 11:1-12"
+          "pericope": "10:31-32; 11:1-12"
         },
         {
+          "book": "Wisdom of Solomon",
           "order": 3,
-          "pericope": "Wis. 4:7-15"
+          "pericope": "4:7-15"
         }
       ],
       "prokeimenon": {
@@ -118897,6 +120854,26 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 10",
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "17:15-17, 19; 18:11-14; 21:1-8"
+        },
+        {
+          "_composite": "Composite 11",
+          "book": "Judges",
+          "order": 2,
+          "pericope": "13:2-8, 13-14, 17-18, 21"
+        },
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "40, 41, 45, 48, 54"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -119327,6 +121304,23 @@
         "tone": 7,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:3-9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "1:13-19"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "2:11-24"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -119871,6 +121865,24 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -120281,6 +122293,23 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -120708,6 +122737,23 @@
         "tone": 2,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "8:22-23, 27-30"
+        },
+        {
+          "book": "Isaiah",
+          "order": 2,
+          "pericope": "61:10-62:5"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "60:1-16"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "wednesday"
@@ -121096,6 +123142,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "14:14-20"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 2,
+          "pericope": "1:8-11, 15-17"
+        },
+        {
+          "book": "Deuteronomy",
+          "order": 3,
+          "pericope": "10:14-21"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -121174,6 +123237,26 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 12",
+          "book": "3 Kings",
+          "order": 1,
+          "pericope": "17:1-23"
+        },
+        {
+          "_composite": "Composite 13",
+          "book": "3 Kings",
+          "order": 2,
+          "pericope": "18, 19"
+        },
+        {
+          "_composite": "Composite 14",
+          "book": "Composite 14",
+          "order": 3,
+          "pericope": "(3 Kings 19:19, 20, 21; 4 Kings 2:1,6-14)"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -121506,6 +123589,23 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -121718,6 +123818,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "1 John",
+          "order": 2,
+          "pericope": "4:1-6"
+        },
+        {
+          "book": "1 John",
+          "order": 3,
+          "pericope": "4:20-5:5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -122619,11 +124736,13 @@
           "pericope": "24:12-18"
         },
         {
+          "_composite": "Composite 15",
           "book": "Exodus",
           "order": 2,
           "pericope": "33:11-23; 34:4-6, 8"
         },
         {
+          "_composite": "Composite 23",
           "book": "I Kings",
           "order": 3,
           "pericope": "19:3-9, 11-13, 15-16"
@@ -124547,6 +126666,23 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -124665,6 +126801,26 @@
         "tone": 1,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 8",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "40, 41, 45, 48, 54"
+        },
+        {
+          "_composite": "Composite 9",
+          "book": "Malachi",
+          "order": 2,
+          "pericope": "3, 4"
+        },
+        {
+          "_composite": "Composite 3",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 5"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -126935,6 +129091,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "43:9-14"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "5:15-6:3"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -126977,6 +129150,24 @@
         "tone": 4,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "3:1-9"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -127246,6 +129437,23 @@
         "tone": 5,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -127444,6 +129652,23 @@
         "tone": 5,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Genesis",
+          "order": 1,
+          "pericope": "28:10-17"
+        },
+        {
+          "book": "Ezekiel",
+          "order": 2,
+          "pericope": "43:27-44:4"
+        },
+        {
+          "book": "Proverbs",
+          "order": 3,
+          "pericope": "9:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "thursday"
@@ -128103,6 +130328,23 @@
         "tone": 6,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "friday"
@@ -128921,6 +131163,23 @@
         "tone": 8,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 John",
+          "order": 1,
+          "pericope": "1:1-7"
+        },
+        {
+          "book": "James",
+          "order": 2,
+          "pericope": "1:1-12"
+        },
+        {
+          "book": "Jude",
+          "order": 3,
+          "pericope": "1-7, 17-25"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -129621,6 +131880,24 @@
         "tone": 1,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 16",
+          "book": "Isaiah",
+          "order": 1,
+          "pericope": "63:15-64:5, 8-9"
+        },
+        {
+          "book": "Jeremiah",
+          "order": 2,
+          "pericope": "2:2-12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -130751,6 +133028,23 @@
         "tone": 3,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "book": "Joshua",
+          "order": 1,
+          "pericope": "5:13-15"
+        },
+        {
+          "book": "Judges",
+          "order": 2,
+          "pericope": "6:2, 7, 11-24"
+        },
+        {
+          "book": "Isaiah",
+          "order": 3,
+          "pericope": "14:7-20"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"
@@ -131161,6 +133455,26 @@
         "tone": 3,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "_composite": "Composite 4",
+          "book": "Composite 4",
+          "order": 2,
+          "pericope": "(Proverbs 10; Wisdom of Solomon 6, 7, 8, 9)"
+        },
+        {
+          "_composite": "Composite 5",
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4, 6, 7, 2"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -131279,6 +133593,23 @@
         "tone": 4,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -131451,6 +133782,23 @@
         "tone": 4,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -131844,11 +134192,13 @@
       },
       "otReadings": [
         {
+          "_composite": "Composite 17",
           "book": "Exodus",
           "order": 1,
           "pericope": "40:1-5, 9, 10, 16, 34-35"
         },
         {
+          "_composite": "Composite 18",
           "book": "I Kings",
           "order": 2,
           "pericope": "7:51; 8:1, 3-7, 9-11"
@@ -132632,6 +134982,23 @@
         "tone": 6,
         "totalStichera": 6
       },
+      "otReadings": [
+        {
+          "book": "1 Peter",
+          "order": 1,
+          "pericope": "1:1-2:6"
+        },
+        {
+          "book": "1 Peter",
+          "order": 2,
+          "pericope": "2:21-3:9"
+        },
+        {
+          "book": "1 Peter",
+          "order": 3,
+          "pericope": "4:1-11"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "monday"
@@ -133082,6 +135449,23 @@
         "tone": 7,
         "totalStichera": 10
       },
+      "otReadings": [
+        {
+          "book": "Wisdom of Solomon",
+          "order": 1,
+          "pericope": "3:1-9"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 2,
+          "pericope": "5:15-6:3"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "saturdayGreatVespers"
@@ -133140,6 +135524,24 @@
         "tone": 7,
         "totalStichera": 8
       },
+      "otReadings": [
+        {
+          "_composite": "Composite 2",
+          "book": "Proverbs",
+          "order": 1,
+          "pericope": "10, 3, 8"
+        },
+        {
+          "book": "Proverbs",
+          "order": 2,
+          "pericope": "10:31-11:12"
+        },
+        {
+          "book": "Wisdom of Solomon",
+          "order": 3,
+          "pericope": "4:7-15"
+        }
+      ],
       "prokeimenon": {
         "pattern": "weekday",
         "weekday": "sunday"

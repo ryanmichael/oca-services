@@ -10,19 +10,16 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/01-11.pdf",
     "_note": "Polyeleos feast during the Afterfeast of Theophany (Jan 7–14). Great Vespers with Entrance and three OT readings. At Matins two canons are sung: Canon of Theophany (Tone II, 8 troparia) then Canon of Theodosius (Tone II, 6 troparia, by Theophanes). Katavasiae of Theophany throughout. Kontakion at Ode 3 = Theophany feast kontakion; Kontakion at Ode 6 = Theodosius. Sessional hymns after Kathismata 1 and 2 are feast (Theophany) content; sessional hymn after Polyeleos and after Ode 3 sedalion are Theodosius + feast. This file contains Theodosius's own service content; Theophany canon and katavasiae come from the festal-matins system."
   },
-
   "troparion": {
     "text": "With the streams of thy tears thou didst cultivate the barren desert;\nand with sighs from the depths of thy soul\nthou didst bring forth fruit an hundredfold;\nand thou wast a beacon for all the world, shining forth miracles,\nO Theodosius our father, entreat Christ God, that our souls be saved.",
     "tone": 8
   },
-
   "kontakion": {
     "text": "Planted in the courts of thy Lord,\nthou didst flourish most beauteously in thy venerable virtues,\nand didst increase in number thy children in the desert,\nwatering them with the torrents of thy tears,\nO godly chief shepherd of the divine flocks.\nWherefore, we cry out:\nRejoice, O father Theodosius!",
     "ikos": "Thou wast a man by nature, O father, yet wast shown to be a fellow citizen with the angels; for, having lived on earth like one of the incorporeal ones, O wise one, thou didst put aside every carnal thought. Wherefore, thou hearest from us: Rejoice, scion of a pious father; Rejoice, offshoot of a devout mother! Rejoice, most comely citizen of the desert; Rejoice, most radiant beacon for all the world! Rejoice, for from thy youth thou didst follow after Christ; Rejoice; for thou didst cause the pleasures of the flesh to wither away! Rejoice, mediator for the salvation of monastics; Rejoice, model of consolation for the despondent! Rejoice, thou who didst deliver many from deception; Rejoice, thou who bestowest torrents of miracles! Rejoice, thou who showed care for the poor; Rejoice, our intercessor and Redeemer! Rejoice, O father Theodosius!",
     "tone": 8,
     "melody": "To thee, the champion leader"
   },
-
   "vespers": {
     "stichera": [
       {
@@ -69,22 +66,21 @@
     },
     "otReadings": [
       {
-        "label": "A Reading from the Wisdom of Solomon",
-        "reference": "Wis. 5:15–6:3",
-        "summary": "The righteous live for evermore; their reward is with the Lord. He shall take jealousy for complete armor and make the creature his weapon; the right-aiming thunderbolts shall go abroad. Hear, O ye kings, and understand; for power is given you of the Lord."
+        "order": 1,
+        "book": "Wisdom of Solomon",
+        "pericope": "3:1-9"
       },
       {
-        "label": "A Reading from the Wisdom of Solomon",
-        "reference": "Wis. 3:1–9",
-        "summary": "The souls of the righteous are in the hand of God. Though they be punished in the sight of men, their hope is full of immortality. As gold in the furnace hath He tried them and received them as a burnt offering."
+        "order": 2,
+        "book": "Wisdom of Solomon",
+        "pericope": "5:15-6:3"
       },
       {
-        "label": "A Reading from the Wisdom of Solomon",
-        "reference": "Wis. 4:7–15",
-        "summary": "Though the righteous be prevented with death, yet shall he be in rest. Honorable age is not measured by length of time, but wisdom is the gray hair unto men. He pleased God and was loved of Him, so that living among sinners he was translated."
+        "order": 3,
+        "book": "Wisdom of Solomon",
+        "pericope": "4:7-15"
       }
     ],
-
     "aposticha": {
       "_note": "Aposticha stichera are from the Afterfeast of Theophany (Tone IV); Glory is for Theodosius; Both now is the feast theotokion.",
       "stichera": [
@@ -109,9 +105,9 @@
         "tone": 8,
         "label": "Glory — the composition of the Studite"
       }
-    }
+    },
+    "_otReadingsSource": "OCA order of services 2026-0111-order-services.txt (\"Old Testament Readings\") selects these lessons and their sequence; the citations are spelled as the orthocal mirror carries them for this date (data/orthocal/2026-01-11.json), which agrees with the order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
@@ -119,7 +115,6 @@
       "_source": "stSergius-menaion",
       "_note": "Sessional hymns after Kathismata 1 and 2 are from the Afterfeast of Theophany (not Theodosius). Kontakion at Ode 3 is the feast (Theophany) kontakion. Katavasiae throughout are from Theophany, Tone II."
     },
-
     "sedalion": [
       {
         "text": "Joshua son of Nun, leading the people and the ark of God across the Jordan River, was a shadowy image of the benefaction which was to come: for, in the Spirit, the mystic crossing doth represent both an image of our restoration and a true picture of our regeneration. Christ hath appeared in the Jordan to sanctify the waters.",
@@ -136,7 +131,6 @@
         "_note": "Glory … Both now … the foregoing is repeated."
       }
     ],
-
     "magnification": {
       "refrain": "We bless thee, O venerable father Theodosius, and we honor thy holy memory, thou instructor of monastics and converser with the angels.",
       "verses": [
@@ -144,7 +138,6 @@
         "Glory … Both now … Alleluia … Glory to Thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Lifting up thy hands to the divine summit, thou wast shown to be a radiant pillar, shining with beams of prayer, O venerable one. For, furnishing thy mind with wings to fly to the heavens, thou hast illumined all, as a partaker of ineffable things, praying to Christ God, that He grant us great mercy.",
       "tone": 3,
@@ -156,29 +149,24 @@
         "label": "Glory … Both now … (Afterfeast of Theophany)"
       }
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "Wondrous is God in His saints,\nthe God of Israel.",
       "verse": "What shall I render unto God for all that He hath rendered unto me?"
     },
-
     "gospel": {
       "reading": "Luke 6:17–23",
       "number": 24,
       "_note": "The Beatitudes: Jesus came down and stood in the plain with his disciples. He lifted up his eyes and said, Blessed be ye poor; blessed are ye that hunger; blessed are ye that weep; blessed are ye when men hate you."
     },
-
     "postGospelSticheron": {
       "text": "O venerable father, report of thy corrections hath gone throughout all the earth. Wherefore, thou hast found the reward of thy labors in the heavens, hast destroyed legions of the demons, and attained unto the ranks of the angels, whose life thou didst blamelessly emulate. As thou hast boldness before Christ God, ask peace for our souls.",
       "tone": 6,
       "label": "Sticheron after Psalm 50"
     },
-
     "canon": {
       "tone": 2,
       "_authors": "Canon of the venerable one, the composition of Theophanes, Tone II",
-
       "ode1": {
         "irmos": "In the deep of old the infinite Power overwhelmed Pharaoh's whole army.\nBut the Incarnate Word annihilated pernicious sin.\nExceedingly glorious is the Lord,\nfor gloriously hath He been glorified.",
         "troparia": [
@@ -204,7 +192,6 @@
           }
         ]
       },
-
       "ode3": {
         "irmos": "The desert of the barren Church of the nations\nblossomed like a lily at Thy coming, O Lord,\ntherein hath my heart been established.",
         "troparia": [
@@ -230,21 +217,18 @@
           }
         ]
       },
-
       "sedalenAfterOde3": {
         "text": "Having adorned thy soul in a godly manner with abstinence, pangs and prayer, thou didst become a companion of the martyrs, O blessed one, and didst truly receive gifts of miracles, to heal the afflictions of those who honor thee with faith. Wherefore, driving out multitudes of the demons, thou bestowest healings upon all through grace, O God-bearer Theodosius. Entreat Christ God, that He grant forgiveness of sins unto those who with faith celebrate thy memory.",
         "tone": 8,
         "melody": "Of the Wisdom",
         "_note": "Sung twice. Glory … Both now …: Sessional Hymn of the Feast (Tone VIII): 'Jordan ministereth to Thee with its streams, and John stretcheth out his corruptible hand unto Thee Who hast appeared in the flesh for baptism, O Invisible One; but the former turned back in fright, while the latter with trembling straightway touched Thee, the Incorruptible One. Verily, Thou art the Lamb of God, the ever-living Wellspring Who hath sanctified the streams, the sea and men. For the Trinity hath shone forth: from on high the Father calleth Thee His Son, and the Holy Spirit descendeth.'"
       },
-
       "kontakionAfterOde3": {
         "text": "Thou hast appeared today to the whole world,\nand Thy light, O Lord, hath been signed upon us\nwho with understanding hymn Thee.\nThou hast come, Thou hast appeared,\nthe Light unapproachable.",
         "ikos": "As the prophet hath said, Christ, the great Light, hath shone forth upon Galilee of the nations, the country of Zebulon and the land of Naphthali. The Lord hath manifested Himself as a radiant beam, shining forth from Bethlehem, yet more from Mary, upon the darkened; and He, the Sun of righteousness, doth illumine the whole universe with His rays. Wherefore, come, all ye naked children of Adam, let us clothe ourselves in Him, that we may be warm; for He covereth the naked and enlighteneth the darkened. Thou hast come, Thou hast revealed Thyself, O Light unapproachable!",
         "tone": 4,
         "label": "Kontakion of Theophany (sung at Ode 3)"
       },
-
       "ode4": {
         "irmos": "From a Virgin didst Thou come forth, not as an ambassador,\nnor as an Angel,\nbut the very Lord himself incarnate,\nand didst save me, the whole man;\nwherefore I cry unto Thee:\nGlory to Thy power, O Lord!",
         "troparia": [
@@ -274,7 +258,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "O Christ God Thou art a mediator between God and man;\nfor by Thee, O Master,\nwe have been led from the night of ignorance,\nto Thy Father, the Source of light.",
         "troparia": [
@@ -296,7 +279,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "Whirled about in the abyss of sin,\nI appeal to the unfathomable abyss of Thy compassion:\nRaise me up from corruption, O God.",
         "troparia": [
@@ -318,7 +300,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "Planted in the courts of thy Lord,\nthou didst flourish most beauteously in thy venerable virtues,\nand didst increase in number thy children in the desert,\nwatering them with the torrents of thy tears,\nO godly chief shepherd of the divine flocks.\nWherefore, we cry out:\nRejoice, O father Theodosius!",
         "tone": 8,
@@ -327,7 +308,6 @@
       "ikos": {
         "text": "Thou wast a man by nature, O father, yet wast shown to be a fellow citizen with the angels; for, having lived on earth like one of the incorporeal ones, O wise one, thou didst put aside every carnal thought. Wherefore, thou hearest from us: Rejoice, scion of a pious father; Rejoice, offshoot of a devout mother! Rejoice, most comely citizen of the desert; Rejoice, most radiant beacon for all the world! Rejoice, for from thy youth thou didst follow after Christ; Rejoice; for thou didst cause the pleasures of the flesh to wither away! Rejoice, mediator for the salvation of monastics; Rejoice, model of consolation for the despondent! Rejoice, thou who didst deliver many from deception; Rejoice, thou who bestowest torrents of miracles! Rejoice, thou who showed care for the poor; Rejoice, our intercessor and Redeemer! Rejoice, O father Theodosius!"
       },
-
       "ode7": {
         "irmos": "The godless order of the lawless tyrant fanned the roaring flame;\nbut Christ bedewed the God-fearing children with the Spirit,\ntherefore He is blessed and supremely exalted.",
         "troparia": [
@@ -357,7 +337,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "In Babylon, the activity of the fire was once divided,\nfor, by the command of God it consumed the Chaldeans,\nbut bedewed the faithful, who chant:\nBless ye the Lord, all ye works of the Lord!",
         "troparia": [
@@ -391,7 +370,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "The Son of the Beginningless Father, God and Lord,\nhath appeared to us incarnate of a Virgin,\nto enlighten those in darkness,\nand to gather the dispersed;\ntherefore the all-hymned Theotokos do we magnify.",
         "troparia": [
@@ -426,14 +404,12 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "We have been purified splendidly by Thy cleansing, O Christ, and now, with festive joy, we have been enriched by the commemoration of the honored Theodosius. Wherefore, the ranks of monastics are made glad.",
       "melody": "Thou hast visited us",
       "label": "Exapostilarion of the venerable one",
       "_note": "Sung twice. Glory … Both now …: Exapostilarion of Theophany: 'The Savior, Who is grace and truth, hath revealed Himself in the streams of the Jordan, and hath enlightened those who sleep in darkness and shadow; for He is come and hath appeared, the Light unapproachable.'"
     },
-
     "lauds": {
       "tone": 5,
       "stichera": [
@@ -469,7 +445,6 @@
         "label": "Both now (Afterfeast of Theophany)"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "With the streams of thy tears thou didst cultivate the barren desert;\nand with sighs from the depths of thy soul\nthou didst bring forth fruit an hundredfold;\nand thou wast a beacon for all the world, shining forth miracles,\nO Theodosius our father, entreat Christ God, that our souls be saved.",
       "tone": 8,

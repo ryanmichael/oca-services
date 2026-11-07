@@ -46,7 +46,7 @@
         "_composite": "Composite 7"
       }
     ],
-    "_otReadingsSource": "OCA service texts 2026-02-02.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text and its Vespers readings for this date match these citations exactly and in order (checked 2026-09-19 — the enrichment fills positionally, so a mismatch would print right citations over wrong text). `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
+    "_otReadingsSource": "OCA service texts 2026-02-02.docx — 'Old Testament Readings' block at Great Vespers. Citations only; orthocal supplies the scripture text. Its Vespers readings for this date were checked against these citations on 2026-09-19, when the enrichment still paired them POSITIONALLY and a mismatch would have printed right citations over wrong text; since 2026-11-07 the pairing is by citation (server-lib/_shared/match-ot-readings.js), so the order of orthocal's list no longer matters. `_composite` records OCA's composite-paremia number where it prints one; the book and verse span are carried in `book`/`pericope` so the reading announces normally."
   },
   "matins": {
     "_meta": {

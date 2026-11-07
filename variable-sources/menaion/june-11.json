@@ -10,13 +10,11 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/06-11.pdf",
     "_note": "Polyeleos feast. Single canon of the Theotokos in Tone IV. Two kontakia: root kontakion is Tone IV 'icon' kontakion (used at Liturgy and in canon after Ode 6 with ikos); Tone VIII 'Theotokos' kontakion also sung at Liturgy. Great Vespers includes entrance and three Old Testament readings (Genesis 28, Ezekiel 44, Proverbs 9). Polyeleos magnification 'It is truly meet to magnify thee, O Theotokos...' Gospel: Luke §4 (Lk 1:39-49, 56)."
   },
-
   "troparion": {
     "text": "O ye faithful, with boldness let us hasten to the Theotokos, our merciful Queen,\nand with compunction let us cry out to her:\nSend down upon us thy rich mercies;\npreserve our Church; and maintain the people in prosperity;\nand deliver our land from every evil circumstance;\nand grant peace to the world and salvation to our souls.",
     "tone": 4,
     "label": "Troparion of the icon"
   },
-
   "kontakion": {
     "text": "All of Athos doth celebrate today,\nfor it hath miraculously received from the angel the hymn to thee,\nthe pure Mother of God,\nwhom all creation doth honor,//\nrendering thee glory.",
     "tone": 4,
@@ -24,114 +22,38 @@
     "label": "Kontakion of the icon",
     "melody": "Thou hast appeared"
   },
-
   "vespers": {
-    "stichera": [
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O wondrous miracle! God Who became incarnate of thee hath now been well-pleased to magnify thy hymn, O pure one. Wherefore, He sent His archangel in fitting guise to the novice, to teach him thy hymn; for Gabriel before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Sung twice"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O wondrous miracle! God Who became incarnate of thee hath now been well-pleased to magnify thy hymn, O pure one. Wherefore, He sent His archangel in fitting guise to the novice, to teach him thy hymn; for Gabriel before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Repeat (second)"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O thy miracles, O pure one! Thou hast been shown to be the Mother of the Most High, O Lady! And now, by thy forethought, O all-immaculate one, the Archangel Gabriel hath been sent from heaven in the guise of a stranger, to teach thy hymnody in a most perfect manner; for he before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Sung twice"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O thy miracles, O pure one! Thou hast been shown to be the Mother of the Most High, O Lady! And now, by thy forethought, O all-immaculate one, the Archangel Gabriel hath been sent from heaven in the guise of a stranger, to teach thy hymnody in a most perfect manner; for he before cried out to thee: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Repeat (second)"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "We glorify thy forethought, O Virgin Mother of God, for by the strange arrival of the divine Gabriel, O all-immaculate one, thou hast now taught us the truly wondrous beginning to thy hymn. Wherefore, falling down with faith, we call out to thee, crying aloud with him: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Sung twice"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "We glorify thy forethought, O Virgin Mother of God, for by the strange arrival of the divine Gabriel, O all-immaculate one, thou hast now taught us the truly wondrous beginning to thy hymn. Wherefore, falling down with faith, we call out to thee, crying aloud with him: \"Rejoice, O thou who art full of grace! The Lord is with thee, through thee granting the world great mercy!\"",
-        "_note": "Repeat (second)"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O wondrous miracle! The radiant Gabriel, in the guise of a monk, appeared to the monk who remained behind in his cell and miraculously received the amplification of thy hymnody, O all-immaculate one. And straightway with his finger he engraved what he had chanted upon a tablet of stone, and then vanished, leaving the astonished monk to glorify thee, O most hymned one.",
-        "_note": "Sung twice"
-      },
-      {
-        "tone": 1,
-        "melody": "O wondrous miracle",
-        "text": "O wondrous miracle! The radiant Gabriel, in the guise of a monk, appeared to the monk who remained behind in his cell and miraculously received the amplification of thy hymnody, O all-immaculate one. And straightway with his finger he engraved what he had chanted upon a tablet of stone, and then vanished, leaving the astonished monk to glorify thee, O most hymned one.",
-        "_note": "Repeat (second)"
-      }
-    ],
-    "doxastikon": {
-      "text": "Fitting was it that on Mount Athos, which hath thee as its intercessor, O Mother of God, that this, the hymn of the archangel to thee, was first chanted unto thee, O most hymned Virgin, and that from hence it hath passed to all the ends of the world, as the crown of the hymns of the Mother of God. Wherefore, we cry out to thee: O most glorious Theotokos, beseech thy Son, that our souls be saved!",
-      "tone": 4,
-      "label": "Glory"
-    },
     "otReadings": [
       {
-        "label": "A Reading from Genesis",
-        "reference": "Gen. 28:11-17",
-        "summary": "Jacob's ladder: the Lord stood upon it; Jacob awoke saying 'How fearful is this place! This is none other than the house of God, and this is the gate of heaven.'"
+        "order": 1,
+        "book": "Genesis",
+        "pericope": "28:11-17",
+        "_label": "A Reading from Genesis",
+        "_summary": "Jacob's ladder: the Lord stood upon it; Jacob awoke saying 'How fearful is this place! This is none other than the house of God, and this is the gate of heaven.'"
       },
       {
-        "label": "A Reading from the Prophecy of Ezekiel",
-        "reference": "Ezek. 43:27–44:4",
-        "summary": "The shut eastern gate of the sanctuary: 'This gate shall be shut, it shall not be opened, and no one shall pass through it; for the Lord God of Israel shall enter by it.' The house was full of the glory of the Lord."
+        "order": 2,
+        "book": "Ezekiel",
+        "pericope": "43:27-44:4",
+        "_label": "A Reading from the Prophecy of Ezekiel",
+        "_summary": "The shut eastern gate of the sanctuary: 'This gate shall be shut, it shall not be opened, and no one shall pass through it; for the Lord God of Israel shall enter by it.' The house was full of the glory of the Lord."
       },
       {
-        "label": "A Reading from Proverbs",
-        "reference": "Prov. 9:1-11",
-        "summary": "Wisdom hath built a house for herself and set up seven pillars; she calleth all to eat of her bread and drink of her wine. The fear of the Lord is the beginning of wisdom."
+        "order": 3,
+        "book": "Proverbs",
+        "pericope": "9:1-11",
+        "_label": "A Reading from Proverbs",
+        "_summary": "Wisdom hath built a house for herself and set up seven pillars; she calleth all to eat of her bread and drink of her wine. The fear of the Lord is the beginning of wisdom."
       }
     ],
-
-    "aposticha": {
-      "stichera": [
-        {
-          "tone": 1,
-          "melody": "Joy of the ranks of heaven",
-          "text": "Of old, God sent to thee the divine Gabriel, the prince of the ranks of heaven, O Virgin Maiden, to bear thee tidings of thine ineffable conception; and now he is first to teach us thy new hymnody."
-        },
-        {
-          "verse": "I shall commemorate thy name in every generation and generation.",
-          "tone": 1,
-          "text": "O Virgin Maiden, who can worthily recount this strange miracle, which took place to thy glory? For the angel hath now appeared in the guise of a monk, providing a new beginning for thy hymn with wondrous praises unto thee, and telling all to chant thus."
-        },
-        {
-          "verse": "The rich among the people shall entreat thy countenance.",
-          "tone": 1,
-          "text": "Meet it is, O Virgin, as the divine Gabriel truly chanted, to bless thee, the pure Theotokos, blessed and all-immaculate, who art in truth the Mother of God, and whom we magnify in hymns."
-        }
-      ],
-      "doxastikon": {
-        "text": "The monk now heard a hymn which he had never known; for the archangel taught him the beginning of thy hymn, O Virgin. Wherefore, marveling, the monk asked him to set it down in writing. He therefore engraved it with his finger upon a tablet of stone, and then vanished, having ensured that in joy thou wouldst ever be hymned as the Theotokos.",
-        "tone": 4,
-        "label": "Glory … Both now …"
-      }
-    }
+    "_otReadingsSource": "The lessons already in this file, repaired 2026-11-07 to carry `book` (without it the service printed \"The reading from undefined.\"). They belong to THIS file's commemoration — the \"It Is Truly Meet\" icon — and were deliberately NOT replaced with the three 1 Peter readings the orthocal mirror carries for 2026-06-11, which are appointed to the Apostles Bartholomew and Barnabas, the day's other commemoration. Orthocal therefore holds no text for these citations and they render as bracketed references until a source is wired; that is correct — swapping in the apostolic set would change which saint the day keeps."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
       "feastType": "theotokos",
       "_source": "stSergius-menaion"
     },
-
     "sedalion": [
       {
         "text": "All the multitude of the fathers of Athos have now assembled to hymn thy glorious festival with splendor, O Maiden. For today the prince of the angels hath most gloriously proclaimed to us the beginning of thy hymn.",
@@ -148,7 +70,6 @@
         "_note": "Glory … Both now … the foregoing is repeated."
       }
     ],
-
     "magnification": {
       "refrain": "It is truly meet to magnify thee, O Theotokos, who art more honorable than the cherubim and beyond compare more glorious than the seraphim.",
       "verses": [
@@ -156,7 +77,6 @@
         "Glory… Both now… Alleluia… Glory to Thee, O God!"
       ]
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "All the multitudes of Athos are now glad, celebrating a splendid festival, having truly learned how to bless thee, the Theotokos, ever-blessed and pure, the all-immaculate and undefiled one, who art the Mother of our God. Wherefore, with Gabriel we cry aloud to thee: Rejoice, O thou who art full of grace!",
       "tone": 3,
@@ -169,30 +89,25 @@
         "label": "Glory … Both now …"
       }
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "I shall commemorate thy name\nin every generation and generation.",
       "verse": "Hearken, O daughter, and see, and incline thine ear."
     },
-
     "gospel": {
       "reading": "Luke 1:39-49, 56",
       "number": 4,
       "_note": "The Visitation of the Theotokos to Elizabeth; Mary's Magnificat. Gospel §4 for the Theotokos."
     },
-
     "postGospelSticheron": {
       "text": "Of old, Gabriel announced to her who is full of grace: Rejoice, O unwedded Maiden who knewest not wedlock! And now, appearing in a strange guise to a monk, he hath chanted a new hymn. Then, he related his tidings to thee, O pure one, and now he hath wondrously hymned thee, O Virgin, as the all-immaculate one who gave birth to the Lord.",
       "tone": 6,
       "label": "Sticheron after Psalm 50",
       "_source": "stSergius-menaion"
     },
-
     "canon": {
       "tone": 4,
       "_authors": "Canon of the Theotokos, Tone IV",
-
       "ode1": {
         "irmos": "I shall open my mouth, and be filled with the Spirit,\nand utter discourse to the Queen and Mother;\nand be seen radiantly keeping festival,\njoyfully praising her wonders.",
         "troparia": [
@@ -218,7 +133,6 @@
           }
         ]
       },
-
       "ode3": {
         "irmos": "O Theotokos, thou living and plentiful fount,\nestablish in spiritual fellowship those who sing hymns to thee,\nand in thy divine glory\ngrant them crowns of glory.",
         "troparia": [
@@ -244,14 +158,12 @@
           }
         ]
       },
-
       "sedalenAfterOde3": {
         "text": "The monk marveled at the hymnody of the angel, who chanted a strange hymn before thee, O pure one, appearing to him in monastic guise. And when the monk wished him to set it down in writing, he miraculously engraved it on a tablet of stone, and then vanished. Wherefore, this hymn hath proclaimed to all that thou, the Theotokos, be glorified, O all-immaculate one.",
         "tone": 4,
         "melody": "Joseph marveled",
         "_note": "Glory … Both now … the foregoing is repeated."
       },
-
       "ode4": {
         "irmos": "Perceiving the profound counsel of God,\nthat the incarnation of Thee the Most High,\nwill be from a Virgin,\nthe Prophet Habbakuk cried aloud:\nGlory to Thy power, O Lord!",
         "troparia": [
@@ -277,7 +189,6 @@
           }
         ]
       },
-
       "ode5": {
         "irmos": "All creation stands in awe of thy divine glory;\nfor thou, O Virgin who hast not known wedlock,\ndidst contain within thy womb the God of all,\nand gave birth to the timeless Son,\nbestowing peace upon all who hymn thee.",
         "troparia": [
@@ -303,7 +214,6 @@
           }
         ]
       },
-
       "ode6": {
         "irmos": "Celebrating the divine and solemn feast\nof the Mother of God,\nO ye divinely wise,\nlet us come, clapping our hands,\nand glorify God who was born of her.",
         "troparia": [
@@ -329,7 +239,6 @@
           }
         ]
       },
-
       "kontakion": {
         "text": "All of Athos doth celebrate today,\nfor it hath miraculously received from the angel the hymn to thee,\nthe pure Mother of God,\nwhom all creation doth honor,\nrendering thee glory.",
         "tone": 4,
@@ -338,7 +247,6 @@
       "ikos": {
         "text": "Let the multitude of the fathers of Athos now be glad, for, lo! to the former hymn to the Virgin which Cosmas, the divine hymnographer, wondrously sang to her, Gabriel hath now added a beginning: \"It is truly meet,\" he said to the monk, \"to bless thee, the Theotokos, ever-blessed and most blameless, and Mother of Our God.\" And he commanded him to tell all to begin thy hymn thus. And having engraved it on a tablet of stone with his hand, he suddenly vanished. Marveling, the monk hymned, as he had been taught, the pure Mother of God, whom all creation doth honor, rendering her glory."
       },
-
       "ode7": {
         "irmos": "Refusing to worship created things\nin place of the Creator,\nthe divinely wise youths bravely trampled down the threatening fire\nand rejoicing they sang aloud:\nO supremely hymned Lord and God of our Fathers, Blessed art Thou.",
         "troparia": [
@@ -364,7 +272,6 @@
           }
         ]
       },
-
       "ode8": {
         "irmos": "The Offspring of the Theotokos\nsaved the holy children in the furnace.\nHe who was then prefigured hath now been born on earth,\nand He gathereth all creation to hymn thee:\nall ye works praise ye the Lord\nand supremely exalt Him throughout all ages.",
         "troparia": [
@@ -390,7 +297,6 @@
           }
         ]
       },
-
       "ode9": {
         "irmos": "Let every mortal born on earth,\nradiant with light, in spirit leap for joy;\nand let the host of the angelic powers\ncelebrate and honor the holy feast of the Mother of God,\nand let them cry aloud:\nRejoice! O all-blessed Theotokos,\nthou pure Ever-Virgin.",
         "troparia": [
@@ -417,7 +323,6 @@
         ]
       }
     },
-
     "exapostilarion": {
       "text": "Gather together, leap up and celebrate with splendor! For in monastic guise the divine Gabriel hath now appeared to a monk, announcing for the first time the hymn of the Mother of God on Mount Athos, which hath acquired her as its intercessor.",
       "melody": "Hearken, ye women",
@@ -425,7 +330,6 @@
       "_note": "Glory … Both now … the foregoing is repeated.",
       "_source": "stSergius-menaion"
     },
-
     "lauds": {
       "tone": 1,
       "stichera": [
@@ -467,7 +371,6 @@
         "label": "Theotokion at Both now"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "O ye faithful, with boldness let us hasten to the Theotokos, our merciful Queen,\nand with compunction let us cry out to her:\nSend down upon us thy rich mercies;\npreserve our Church; and maintain the people in prosperity;\nand deliver our land from every evil circumstance;\nand grant peace to the world and salvation to our souls.",
       "tone": 4

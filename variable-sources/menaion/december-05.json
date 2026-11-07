@@ -9,18 +9,15 @@
     "_sourceUrl": "https://st-sergius.org/services/Emenaion/12-05.pdf",
     "_note": "Two canons: Canon of the Theotokos (acrostic: 'I chant praise unto the Life-bearing Maiden', Tone I, 6 troparia) and Canon of the Venerable One by Theophanes (acrostic: 'Lovingly I hymn Sabbas, most eminent among fasters', Tone VIII, 8 troparia). Katavasiae are those of the Nativity (Tone I)."
   },
-
   "troparion": {
     "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Sabbas our father, entreat Christ God, that our souls be saved.",
     "tone": 8
   },
-
   "kontakion": {
     "text": "In thy virtue didst thou offer thyself from childhood unto God\nas an unblemished sacrifice, O blessed Sabbas,\nbecoming a gardener in the garden of piety.\nTherefore, thou wast an adornment for the venerable and a right praiseworthy citizen of the desert.\nWherefore, we cry to thee: Rejoice, O most noetically rich Sabbas!",
     "ikos": "O leader of the fathers, beauty of the venerable, boldness of fasters before Christ, citizen and gardener of the desert: how can I hymn thy life, O venerable one? for thou dost shine forth in brilliance unto the ends of the earth, like the sun. Wherefore, I cry unto thee: Rejoice, beauteous glory of the Cappadocians! Rejoice, honored standard of the whole world! Rejoice, most good offspring of the desert! Rejoice, godly delight of the righteous! Rejoice, for thou didst disdain that which is fleeting and corruptible! Rejoice, for thou dost dwell with the angels in the heavens! Rejoice, correction and rule of monastics! Rejoice, rousing of the slothful toward God! Rejoice, divinely flowing fountain of miracles! Rejoice, honored instrument of the Spirit! Rejoice, thou with whom the East is adorned! Rejoice, thou through whom the Western lands shine forth! Rejoice, O most noetically rich Sabbas!",
     "tone": 8
   },
-
   "vespers": {
     "stichera": [
       {
@@ -74,16 +71,32 @@
       "text": "Who doth not call thee blessed, O most holy Virgin? Who will not hymn thy most pure birthgiving? For the only-begotten Son Who hath shone forth timelessly from the Father, came forth, ineffably incarnate, from thee, O pure one; By nature he is God, by nature for our sakes, he hath become a man not divided into two Hypostases, but known in two natures without commingling. Him do thou beseech, O pure and most blessed one, that our souls find mercy!",
       "tone": 6,
       "label": "Dogmatic Theotokion"
-    }
+    },
+    "otReadings": [
+      {
+        "order": 1,
+        "book": "Wisdom of Solomon",
+        "pericope": "3:1-9"
+      },
+      {
+        "order": 2,
+        "book": "Wisdom of Solomon",
+        "pericope": "5:15-6:3"
+      },
+      {
+        "order": 3,
+        "book": "Wisdom of Solomon",
+        "pericope": "4:7-15"
+      }
+    ],
+    "_otReadingsSource": "orthocal mirror data/orthocal/2026-12-05.json — the three readings it carries at source \"Vespers\" for this date; no OCA order of services for 12-05 is held in reference/orders/. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
   },
-
   "matins": {
     "_meta": {
       "feastRank": "polyeleos",
       "feastType": "saint",
       "_source": "stSergius-menaion"
     },
-
     "magnification": {
       "refrain": "We bless thee, O our venerable father Sabbas, and we honor thy holy memory, instructor of monks and converser with angels.",
       "verses": [
@@ -91,19 +104,16 @@
         "Glory… Both now… Alleluia… Glory to Thee, O God!"
       ]
     },
-
     "prokeimenon": {
       "tone": 4,
       "refrain": "Precious in the sight of the Lord\nis the death of His saints.",
       "verse": "What shall I render unto the Lord for all that He hath rendered unto me?"
     },
-
     "gospel": {
       "reading": "Luke 6:17-23",
       "number": 24,
       "_note": "The Beatitudes / Sermon on the Plain; standard matins gospel for venerable fathers."
     },
-
     "sessionalHymns": {
       "text": "Having piously finished thy life on earth, thou wast revealed to be a pure dwelling-place of the Spirit, enlightening those who have recourse unto thee in faith, O blessed one: Wherefore, beseech thy Master, that He enlighten the souls of us who hymn thee, O divinely wise Sabbas, our father.",
       "tone": 1,
@@ -126,7 +136,6 @@
         }
       }
     },
-
     "sessionalHymnAfterPolyeleios": {
       "text": "Truly thou wast sanctified from thy mother's womb, O most sacred Sabbas, and on earth thou didst live like an angel; for thou didst slay the flesh by abstinence, rightly emulating the demeanor of the great Euthymius, and revealed to be a favorite of the Trinity, O blessed one. Wherefore, having brought together a multitude of monastics emulating thy godly life, O our ever-memorable and God-bearing father, entreat Christ God, that He grant remission of sins unto those who honor thy holy memory with love.",
       "tone": 8,
@@ -138,14 +147,12 @@
         "label": "Theotokion"
       }
     },
-
     "postGospelSticheron": {
       "text": "O venerable father, the sound of thy corrections hath gone forth into all the earth. Wherefore, thou hast found thy reward in the heavens, having destroyed legions of demons, thou hast attained unto the ranks of the angels, whose life thou didst blamelessly emulate. Having boldness before Christ God, beg peace for our souls.",
       "tone": 6,
       "label": "Sticheron after Psalm 50",
       "_source": "stSergius-menaion"
     },
-
     "canon": {
       "tone": 8,
       "_secondCanonTone": 1,
@@ -153,7 +160,6 @@
         "first": "Theophanes (Canon of the Venerable One, Tone VIII, 8 troparia; acrostic: 'Lovingly I hymn Sabbas, most eminent among fasters')",
         "second": "Canon of the most holy Theotokos, Tone I, 6 troparia; acrostic: 'I chant praise unto the Life-bearing Maiden'"
       },
-
       "ode1": {
         "irmos": "The wonderworking staff of Moses,\nstriking and dividing the sea in the figure of a cross,\nonce drowned Pharaoh the pursuing charioteer,\nwhile it saved the fleeing people of Israel\nas they fled on foot,\nchanting a hymn unto God.",
         "irmos2": "Traversing dryshod the impassible, peculiar path in the sea,\nIsrael the chosen cried aloud:\nLet us chant unto the Lord,\nfor He hath been glorified!",
@@ -204,7 +210,6 @@
         ],
         "katavasia": "The Master saved His people by working a wonder,\nmaking solid the watery waves of the sea of old;\nand having willingly been born of the Virgin,\nHe hath set before us a path leading to heaven.\nLet us glorify Him Who is by nature equal to both the Father and mankind."
       },
-
       "ode3": {
         "irmos": "O Christ fortify me on the rock of Thy commandments,\nThou who in the beginning didst establish the heavens with understanding\nand didst establish the earth upon the waters,\nfor there is none holy save Thee, O only Lover of mankind.",
         "irmos2": "The bow of the mighty hath been broken\nby Thy might, O Christ,\nand the enfeebled\nhave girded themselves with power.",
@@ -249,7 +254,6 @@
         ],
         "katavasia": "Look upon the hymns of Thy servants, O Benefactor,\nand humble the vaunted pride of the enemy;\nbearing far above sin those who hymn Thee\nmaking them unshakably firm by the foundation of faith,\nO Thou Good One Who seest all."
       },
-
       "sessionalHymnAfterOde3": {
         "text": "Having forsaken all earthly things, while on earth in the body thou wast a companion of the angels in spirit; for, having mortified the passions present in thy body, thou wast shown to be a servant of the Trinity, O blessed one. Wherefore, thou dost cure the sufferings of the afflicted and, at thy word, dost drive away evil spirits through grace, O our God-bearing father. Pray thou to Christ God, that remission of sins be granted unto those who celebrate thy holy memory with love.",
         "tone": 8,
@@ -266,7 +270,6 @@
           "label": "Theotokion"
         }
       },
-
       "ode4": {
         "irmos": "Thou, O Lord, art my strength and Thou art my power,\nThou art my God and Thou art my joy,\nThou Who, while never leaving the bosom of Thy Father,\nhast visited our poverty.\nTherefore with the Prophet Habbakuk I cry unto Thee,\n'Glory to Thy power, O Lover of mankind!'",
         "irmos2": "I have heard report O Lord,\nof Thy glorious dispensation,\nand I have glorified, Thine unapproachable power,\nO Lover of mankind.",
@@ -311,7 +314,6 @@
         ],
         "katavasia": "The renewal of the human race was hymned of old\nand proclaimed beforehand by the Prophet Habbakuk,\nwho having ineffably been deemed worthy to behold in image;\nthe Word coming forth from the mountain,\nthe Virgin, as a little Babe,\nfor the restoration of the people."
       },
-
       "ode5": {
         "irmos": "O Light never-waning,\nwhy hast Thou turned Thy face from me\nand why hath the alien darkness surrounded me,\nwretched though I be?\nBut do Thou guide my steps I implore Thee\nand turn me back towards the light of Thy commandments.",
         "irmos2": "The burning Ember was revealed to Isaiah,\nand the Sun hath shone forth from the Virgin's womb,\ngranting the enlightenment of the knowledge of God\nto those who in darkness have gone astray.",
@@ -356,7 +358,6 @@
         ],
         "katavasia": "O Christ Who art our cleansing, come unto us,\nwho out of the night of the deeds of gloomy delusion,\nvaliantly hymn Thee as a Benefactor,\ngranting us an expeditious path,\nascending upon which we find glory."
       },
-
       "ode6": {
         "irmos": "Cleanse me, O Savior,\nfor many are mine iniquities;\nlead me up from the abyss of evils I pray Thee,\nfor unto Thee have I cried,\nand Thou hast hearkened unto me,\nO God of my salvation.",
         "irmos2": "O Master, hearkening unto the sound of entreaties\nfrom a soul in pain,\ndo Thou deliver me from my grievous sins,\nfor Thou alone art the Cause of our salvation.",
@@ -396,13 +397,11 @@
         ],
         "katavasia": "Dwelling in the uttermost depths of the sea,\nJonah besought Thee to come and still the tempest;\nand I, pierced by the arrow of the tyrant,\nchant unto Thee, O Christ\nThou Destroyer of evil,\ndo Thou come quickly unto my slothfulness!"
       },
-
       "kontakion": {
         "text": "In thy virtue didst thou offer thyself from childhood unto God\nas an unblemished sacrifice, O blessed Sabbas,\nbecoming a gardener in the garden of piety.\nTherefore, thou wast an adornment for the venerable and a right praiseworthy citizen of the desert.\nWherefore, we cry to thee: Rejoice, O most noetically rich Sabbas!",
         "ikos": "O leader of the fathers, beauty of the venerable, boldness of fasters before Christ, citizen and gardener of the desert: how can I hymn thy life, O venerable one? for thou dost shine forth in brilliance unto the ends of the earth, like the sun. Wherefore, I cry unto thee: Rejoice, beauteous glory of the Cappadocians! Rejoice, honored standard of the whole world! Rejoice, most good offspring of the desert! Rejoice, godly delight of the righteous! Rejoice, for thou didst disdain that which is fleeting and corruptible! Rejoice, for thou dost dwell with the angels in the heavens! Rejoice, correction and rule of monastics! Rejoice, rousing of the slothful toward God! Rejoice, divinely flowing fountain of miracles! Rejoice, honored instrument of the Spirit! Rejoice, thou with whom the East is adorned! Rejoice, thou through whom the Western lands shine forth! Rejoice, O most noetically rich Sabbas!",
         "tone": 8
       },
-
       "ode7": {
         "irmos": "Once in Babylon the fire stood in awe\nof God's condescension;\nfor which sake the youths in the furnace,\ndancing with joyous steps as in a meadow, chanted:\nO God of our fathers, Blessed art Thou!",
         "irmos2": "Of old the youths revealed themselves to be rhetors\nwith a supreme love for wisdom,\nfor from the depths of their God-pleasing souls,\nthey theologized with their lips as they sang:\nO supremely divine God of our fathers, blessed art Thou!",
@@ -448,7 +447,6 @@
         ],
         "katavasia": "Captured by the love of the King of all,\nthe children reviled the uncontrollable rage and ungodly blasphemies of the tyrant,\nand the great fire submitted to them as they spake unto the Master saying:\nBlessed art Thou throughout the ages."
       },
-
       "ode8": {
         "irmos": "In his wrath the Chaldean Tyrant made the furnace blaze,\nwith heat fanned sevenfold for the servants of God;\nbut when he perceived that they had been saved by a greater power\nhe cried aloud to the Creator and Redeemer;\n'ye children bless, ye priests praise,\nye people, supremely exalt Him throughout all ages'.",
         "irmos2": "Disdaining the golden image, the thrice-blessed children,\nbeholding the immutable and living image of God,\nchanted in the midst of the flame:\nLet all existing creation hymn the Lord\nand supremely exalt Him throughout all ages!",
@@ -493,7 +491,6 @@
         ],
         "katavasia": "The children who in the time of the Old Covenant\nwere cast into the fire,\nprefigured the unconsumed womb of the Maiden,\nwhich hath supra-naturally given birth yet remaineth sealed;\nand both wondrously working as a single miracle\nmoveth the people to hymn the Grace of each."
       },
-
       "ode9": {
         "irmos": "Heaven was stricken with awe,\nand the ends of the earth were filled with amazement,\nfor God hath appeared in the flesh,\nand thy womb was rendered more spacious than the heavens.\nWherefore, the ranks of men and of angels\nmagnify thee as the Theotokos.",
         "irmos2": "Thou art all desire, Thou art all sweetness,\nO Word of God, Son of the Virgin,\nGod of gods, most holy Lord of the saints.\nWherefore, we magnify Thee\nand her who hath given birth to Thee.",
@@ -539,7 +536,6 @@
         "katavasia": "From fear it may be easier,\nfor us to prefer silence,\nfor though not fraught with danger, O Virgin,\nit is difficult to fashion hymns fittingly wrought for thee.\nYet, O Mother, grant us the power to chant in such a way,\ninsofar as it is our will."
       }
     },
-
     "exapostilarion": {
       "text": "With thy wisdom-loving ways thou didst make the desert a city, O divinely wise father Sabbas, adornment of the fathers, and thou didst make of it a perfect noetic paradise blossoming with the divine flowers of a multitude of those who share thy ways, fittingly celebrating thine honored memory.",
       "_note": "Sung twice.",
@@ -548,7 +544,6 @@
         "label": "Theotokion"
       }
     },
-
     "lauds": {
       "stichera": [
         {
@@ -589,7 +584,6 @@
         "label": "Theotokion at Both now"
       }
     },
-
     "troparionAfterDoxology": {
       "text": "With the streams of thy tears thou didst irrigate the barren desert,\nand with sighs from the depths of thy soul thou didst render thy labors fruitful an hundredfold,\nbecoming a beacon for the whole world, resplendent with miracles.\nO Sabbas our father, entreat Christ God, that our souls be saved.",
       "tone": 8

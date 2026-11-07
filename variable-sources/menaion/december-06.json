@@ -28,7 +28,7 @@
         "pericope": "4:7-15"
       }
     ],
-    "_otReadingsSource": "orthocal mirror data/orthocal/2026-12-06.json — the three readings it carries at source \"Vespers\" for this date; no OCA order of services for 12-06 is held in reference/orders/. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js). Authored 2026-11-07."
+    "_otReadingsSource": "OCA order of services reference/orders/2026-1206-order-services.txt (\"Old Testament Readings\") — Composite 2, Proverbs 10:31-11:12, Wisdom of Solomon 4:7-15, in that sequence. These were first authored 2026-11-07 from the orthocal mirror alone, before OCA published this date's order; the order arrived the same day in 25de60b and confirms all three readings AND their sequence exactly, which is the first independent check of the orthocal-only sourcing used on the dates that have no order. Citations only — orthocal supplies the scripture text, paired by citation (server-lib/_shared/match-ot-readings.js)."
   },
   "troparion": {
     "text": "The truth of things revealed thee to thy flock as a rule of faith,\nicon of meekness, and teacher of temperance;\nwherefore, thou hast attained the heights through humility and riches through poverty;\nO hierarch Nicholas our father,//\nentreat Christ God, that our souls be saved.",

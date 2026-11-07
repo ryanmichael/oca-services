@@ -75,7 +75,15 @@ function attachPolyeleosParemias(entry, date, style) {
     const wellFormed = Array.isArray(readings) && readings.length > 0
       && readings.every(r => r && typeof r.book === 'string' && r.book
         && typeof (r.pericope ?? r.reference) === 'string' && (r.pericope ?? r.reference));
-    if (wellFormed || (rankAllows && Array.isArray(readings) && readings.length)) {
+    // The rank-allows branch exists so a polyeleos saint whose file predates the
+    // well-formed convention still gets its lessons. It must STILL require a
+    // book on every reading: january-11, april-30, june-11 and june-19 declare
+    // `{ label, reference }` with no `book`, and attaching those printed "The
+    // reading from undefined." and a citation line "undefined Wis. 5:15-6:3"
+    // on all four dates, live, at 0 high. Measured 2026-11-07.
+    const everyHasBook = Array.isArray(readings)
+      && readings.every(r => r && typeof r.book === 'string' && r.book.trim());
+    if (wellFormed || (rankAllows && everyHasBook && readings.length)) {
       // Menaion files carry { book, reference: "Wisdom of Solomon 3:1-9" }; the
       // renderer and the pentecostarion generator use { order, book, pericope }.
       // Normalize here so neither the renderer nor the five menaion files that
@@ -89,6 +97,12 @@ function attachPolyeleosParemias(entry, date, style) {
           pericope: r.pericope
             ?? String(r.reference || '').replace(r.book, '').trim()
             ?? '',
+          // `_composite` is the strongest key for pairing a conflated reading
+          // to orthocal's text — both sides name the same composite number.
+          // This normalization dropped it, so the matcher never saw it and
+          // fell back to weaker book/pericope comparison; on 2026-07-20 that
+          // mis-paired a lesson. Keep it.
+          ...(r._composite ? { _composite: r._composite } : {}),
         })),
       };
     }

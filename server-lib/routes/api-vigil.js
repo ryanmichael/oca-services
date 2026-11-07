@@ -22,6 +22,8 @@
 // liturgical text from memory. Tracked as a source gap; see
 // audit rule D20-vigil-includes-matins.
 
+const { matchOTReadings } = require('../_shared/match-ot-readings');
+
 function handle(req, res, ctx) {
   const url = req.url || '/';
 
@@ -93,12 +95,8 @@ function handle(req, res, ctx) {
           ...vespersEntry,
           vespers: {
             ...vespersEntry.vespers,
-            otReadings: vespersEntry.vespers.otReadings.map((r, i) => {
-              const match = vesperReadings[i];
-              return match?.passage?.length
-                ? { ...r, text: match.passage.map(p => p.content).join(' ') }
-                : r;
-            }),
+            // Paired by citation, not position — see match-ot-readings.js.
+            otReadings: matchOTReadings(vespersEntry.vespers.otReadings, vesperReadings),
           },
         };
       }

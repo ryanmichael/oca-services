@@ -3,6 +3,7 @@
 const fs   = require('fs');
 const path = require('path');
 const { familyOfText, LABEL: TRANSLATION_LABEL } = require('../sources/translation-provenance');
+const { matchOTReadings } = require('../_shared/match-ot-readings');
 const ROOT = path.resolve(__dirname, '..', '..');
 
 function handle(req, res, ctx) {
@@ -86,14 +87,10 @@ function handle(req, res, ctx) {
         if (baseEntry?.vespers?.otReadings?.length > 0) {
           const orthocalData = await fetchOrthocalDay(vespersDate);
           const vesperReadings = (orthocalData.readings || []).filter(r => r.source === 'Vespers');
-          const enrichedReadings = baseEntry.vespers.otReadings.map((r, i) => {
-            const match = vesperReadings[i];
-            if (match?.passage?.length) {
-              const text = match.passage.map(p => p.content).join(' ');
-              return { ...r, text };
-            }
-            return r;
-          });
+          // Paired by CITATION, never by position: orthocal's Vespers list is
+          // not always our appointed list in our order (2026-11-08 carries
+          // six, ours are at indices 1/3/5). See match-ot-readings.js.
+          const enrichedReadings = matchOTReadings(baseEntry.vespers.otReadings, vesperReadings);
           entryOverride = {
             ...baseEntry,
             vespers: { ...baseEntry.vespers, otReadings: enrichedReadings },
@@ -121,11 +118,20 @@ function handle(req, res, ctx) {
               }
               return e;
             });
+            // Build on whatever the paremia branch above produced, not on
+            // baseEntry: a Lenten weekday can be BOTH a daily Vespers with an
+            // enriched prokeimenon AND a polyeleos saint with appointed
+            // lessons. 2026-03-09 (the Forty Martyrs of Sebaste, a Monday in
+            // Lent) is exactly that, and rebuilding from baseEntry threw away
+            // all three lessons' scripture text — they rendered as bracketed
+            // placeholders while orthocal held the text all along. Found
+            // 2026-11-07.
+            const prior = entryOverride || baseEntry;
             entryOverride = {
-              ...baseEntry,
+              ...prior,
               vespers: {
-                ...baseEntry.vespers,
-                prokeimenon: { ...baseEntry.vespers.prokeimenon, entries },
+                ...prior.vespers,
+                prokeimenon: { ...prior.vespers.prokeimenon, entries },
               },
             };
           }

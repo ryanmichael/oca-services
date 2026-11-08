@@ -1,0 +1,59 @@
+{
+  "key": "archangels-aposticha-glory",
+  "_version": 1,
+  "_label": "Glory…Now and ever at the Aposticha, Synaxis of the Bodiless Powers (11-08)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 8,
+      "title": "Synaxis of the Archangel Michael and the Other Bodiless Powers"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "aposticha",
+      "order": 0
+    },
+    "expect": [
+      "c87cfda0e071f45a6b735e55f8cd9565fd232156f99fb0070cfe4d704af9b3a0"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "The ONLY Aposticha hymn the Menaion supplies on this Sunday. On packet p.11 the director strikes the Tone 1 sticheron and both \"Michael the archangel\" stichera with one diagonal X and circles \"Tone 8\" — the Octoechos resurrectional aposticha are sung instead, and this is their Glory…Now and ever. Same two-OCA-editions split as the Lord-I-Call stichera (archangels-lic-*): the base is the service-texts DOCX, the parish sings the engraved-music setting. Register differs here as well as wording, which is why a text swap and not a pronoun flip is the fix.",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service-texts DOCX (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-07",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA service-texts DOCX; identical to stichera.id=7990, the row it stands in for.",
+        "source_citation": "reference/scrape/2024-11-08.docx, fetched as -texts-tt.docx; stichera.id=7990"
+      },
+      "value": {
+        "tone": 8,
+        "text": "Since thou, O leader of hosts, art first in rank and champion among the angels, deliver from every oppression, sorrow, sickness, and sin those who praise thee sincerely and openly implore thee! Since thou art immaterial, thou dost clearly behold Him Who is without matter. Thou shinest with the unapproachable light of the glory of the Lord, Who in His love for man took flesh for our sakes from a Virgin,\nwhen He willed to save mankind."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-07",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. A different OCA EDITION from the service-texts DOCX; packet colophon \"© 2019 Orthodox Church in America\". Declared explicitly because the citation names no bare \"OCA\" token for familyOfProse to find.",
+        "source_citation": "docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf pp.11-12, heading \"November 8: Ss. Michael & Gabriel and all the Bodiless Hosts\", \"Apostikha\", the circled \"Glory… Now and ever… Tone 8\" that survives the strike-through, continuing onto p.12. Read VISUALLY from the scan, not from the OCR sidecar."
+      },
+      "value": {
+        "tone": 8,
+        "text": "Since you, leader of hosts, are first in rank and an archangel,\ndeliver from every oppression, sorrow, sickness and sin\nthose who praise you humbly and implore you.\nSince you are immaterial\nyou behold Him who is without matter.\nYou shine with the unapproachable light of the glory of the Lord,\nWho in His love took flesh for our sakes from a Virgin,//\nwhen He willed to save mankind."
+      }
+    }
+  ]
+}

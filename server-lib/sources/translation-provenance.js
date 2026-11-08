@@ -163,6 +163,33 @@ function index(opts = {}) {
     walkTagged(octo, 'oca-menaion', familyOf);
   } catch (_) { /* a missing source file is not a finding */ }
 
+  // 1a. Octoechos OVERLAYS (variable-sources/octoechos-<stack>.json). These
+  //     cascade onto the base for a parish that selects the stack
+  //     (server-lib/sources/octoechos-overlay.js), so the text that reaches the
+  //     page is NOT the base text this index just walked — and an overlay hymn
+  //     was therefore 'unknown', then DEFAULTED to 'OCA' by api-service.js.
+  //     Same shape of hole as the variant library below. Indexed AFTER the base
+  //     and non-clobbering, so the base attribution wins on a text collision.
+  //
+  //     `_meta._translationFamily` is read first and is the preferred form;
+  //     the prose `_meta._source` is only a fallback. octoechos-myrrhbearers
+  //     tags itself with a bare URL, which no prose rule can attribute, so it
+  //     reads 'unknown' — honest, and it surfaces the gap instead of guessing.
+  try {
+    const fs = require('fs');
+    const dir = path.join(ROOT, 'variable-sources');
+    for (const f of fs.readdirSync(dir)) {
+      const m = /^octoechos-(.+)\.json$/.exec(f);
+      if (!m) continue;
+      let data;
+      try { data = require(path.join(dir, f)); } catch (_) { continue; }
+      const declared = data?._meta?._translationFamily;
+      const tag = declared || data?._meta?._source || '';
+      const resolve = declared ? familyOf : familyOfProse;
+      walkTagged(data, tag, resolve);
+    }
+  } catch (_) { /* no overlays is not a finding */ }
+
   // 1b. Menaion day-files and feast-canons. Never indexed before 2026-11-02, so
   //     every canon-ode troparion in the corpus was 'unknown' — including the
   //     four the Beatitudes blend pulls into the Third Antiphon on a saint's

@@ -3,9 +3,11 @@
     "_source": "OCA Music Department engraved choir editions, as photocopied into the St John of Damascus (Tyler) service packets",
     "_note": "PARISH-KEYED BY NECESSITY, NOT BY NATURE. The CONTENT is an OCA edition, not a parish text, and the project convention is to name a source set for its SOURCE. resolveOctoechos() walks the stack extends chain, so an edition-named file (octoechos-oca-music.json) would need a new translation layer inserted into Tyler extends_chain — which also re-orders the FIXED-TEXT cascade that dmitri-royster-overlay.test.js pins. Keyed to the parish id for now because that id is already in the chain and this changes nothing else. Migration to an edition-named layer is a follow-up.",
     "_arrayReplaceWarning": "deepMergeOverlay REPLACES an array wholesale (server-lib/overlays/cascade.js:13). Every hymn of a section must be listed here, not just the changed ones. A one-element probe collapsed this aposticha from four hymns to one, and put it in the idiomelon slot.",
-    "_transcription": "Read VISUALLY from docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf pp.9-10 (\"GREAT VESPERS / APOSTIKHA / RESURRECTION STICHERA / TONE 6\"), not from the OCR sidecar. Nothing on those two pages is struck through, so all four are appointed. Capitalization and punctuation are AS PRINTED, including the source own lowercase divine pronouns; order 1 is transcribed too although its words already match the base, so the section reads from one source rather than two. The sheet \"//\" final-phrase break is stored as the newline this file uses throughout. Singer underlay marks are melodic, not textual, and are not transcribed.",
+    "_transcription": "Read VISUALLY from docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf pp.2-3 (Lord I Call) and pp.9-10 (Aposticha) (\"GREAT VESPERS / APOSTIKHA / RESURRECTION STICHERA / TONE 6\"), not from the OCR sidecar. Nothing on those two pages is struck through, so all four are appointed. Capitalization and punctuation are AS PRINTED, including the source own lowercase divine pronouns; order 1 is transcribed too although its words already match the base, so the section reads from one source rather than two. The sheet \"//\" final-phrase break is stored as the newline this file uses throughout. Singer underlay marks are melodic, not textual, and are not transcribed.",
     "_translationFamily": "oca-menaion",
-    "_familyNote": "OCA. The OCA Music Department engraved choir editions — a different OCA EDITION from the service-texts DOCX that feeds the base, not a different translator. Declared explicitly rather than inferred from the prose _source, because prose inference is what laundered the HTM Beatitudes into the OCA family."
+    "_familyNote": "OCA. The OCA Music Department engraved choir editions — a different OCA EDITION from the service-texts DOCX that feeds the base, not a different translator. Declared explicitly rather than inferred from the prose _source, because prose inference is what laundered the HTM Beatitudes into the OCA family.",
+    "_sourceTypos": "Transcribed AS PRINTED, including two oddities of the director's sheet that a silent correction would hide: p.2 sticheron (9) reads \"for he hast granted joy to the world\" (\"hast\" with \"he\"), and p.3 sticheron (5) capitalises \"Granting\" mid-sentence at a line break. The choir already sings from this sheet; normalising either would re-open the gap between our text and theirs, which is the whole point of this file. Flag them to the director rather than editing here.",
+    "_licSelection": "The packet prints SEVEN Tone 6 resurrectional stichera, pre-numbered 10,9,8,7,6,5,4 for a set where the Octoechos takes 10-4. They are a LIBRARY, not a rubric: on 2026-11-07 the director strikes (6) because the Menaion supplies six stichera, so the Octoechos keeps 10-7. This file carries all seven texts; WHICH are sung stays entirely with the assembler, untouched. Packet 10..5 are base hymns 1..6; packet (4) is the separate \"glory\" node, the Resurrectional Doxastichon."
   },
   "tone6": {
     "saturday": {
@@ -37,6 +39,40 @@
               "text": "Having been crucified as thou didst will, by thy burial thou hast captured death, O Christ, and arose on the third day as God in glory,\ngranting the world unending life and great mercy."
             }
           ]
+        },
+        "lordICall": {
+          "resurrectional": {
+            "note": "Resurrectional stichera as the parish sings them — OCA Music Department engraved choir edition, NOT the OCA Obikhod (TT) wording of the base file.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Possessing victory over Hades, O Christ, since thou art free among the dead, Thou didst ascend the cross raising with thyself those who sat in the shades of death. Drawing life from thine own light, O almighty savior,\nhave mercy on us."
+              },
+              {
+                "order": 2,
+                "text": "Today Christ tramples on death, for he is risen as he said. Let us all sing this song, for he hast granted joy to the world: O light unapproachable, O fountain of life.\nO Savior almighty: have mercy on us."
+              },
+              {
+                "order": 3,
+                "text": "Where shall we sinners flee for thou art in all creation? In heaven thou dwellest; in Hades thou didst trample down death. In the depths of the sea? Even there is thy hand, O Master. To thee we flee, and falling before thee, we pray:\nas thou didst rise from the dead, have mercy on us."
+              },
+              {
+                "order": 4,
+                "text": "In thy cross, we glory, O Christ. We sing and glorify thy resurrection. For thou art our God,\nand we know no other beside thee."
+              },
+              {
+                "order": 5,
+                "text": "We bless the Lord by singing of his resurrection. For he endured the cross,\ntrampling down death by death."
+              },
+              {
+                "order": 6,
+                "text": "Glory to thy might, O Lord, for thou hast overthrown the prince of death. By thy cross renewing us,\nGranting us life and incorruption."
+              }
+            ]
+          },
+          "glory": {
+            "text": "Thy burial destroyed the bonds of Hades, O Lord. Thy resurrection from the dead enlightened the world,\nO Lord: glory to thee."
+          }
         }
       }
     }

@@ -24,8 +24,9 @@ function handle(req, res, ctx) {
     buildDbSource, getDbBlocks, mapDbBlocks,
     openDb, ensureOrthocalCacheTable, fetchOrthocalDay,
     fixedTextRegistry, getOverlayFixed, getLiturgyFixed, getOverlayRubrics,
-    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation,
-    assembleForDate, applyYouYour, getDayLabel,
+    getTranslationManifests, tagBlocksWithOverlay, diffOverlay, resolveTranslation, resolveStyle,
+    resolveOctoechos,
+    assembleForDate, applyYouYour, resolvePronoun, getDayLabel,
     HOME_CSS, renderHomePage, getCollectedDates,
     formatAssemblyWarning, renderErrorPage, renderServiceHTML,
     buildDashboardData, formatSticheraSource,
@@ -43,7 +44,33 @@ function handle(req, res, ctx) {
 
       const q       = parseQuery(url);
       const date    = (q.date    || '').trim();
-      const pronoun = (q.pronoun || 'tt').trim();
+
+      // The HTML page honours ?translation= exactly as /api/service does.
+      //
+      // It did not until 2026-11-07: it read only `date` and `pronoun`, passed
+      // `null` where the resolved fixed texts belong, and destructured
+      // `resolveTranslation` from ctx without ever calling it. So every parish
+      // URL silently rendered base OCA, and anyone comparing this page against
+      // what they heard in church was comparing against the wrong text —
+      // including, for a while, us. Found while chasing a reported defect that
+      // this page could never have shown.
+      //
+      // Each line below exists because something real rides on it:
+      //   translation      — which overlay stack is active at all
+      //   overlayRubrics   — parish rubrics AND menaionOverrides, i.e. the
+      //                      parish's own Menaion hymn picks
+      //   reqSources       — the Octoechos overlay cascade for the stack
+      //   vespersFixed…    — the fixed-text cascade (Royster, Blessed is the Man)
+      //   style            — Old vs New calendar
+      //   pronoun          — explicit ?pronoun wins, else the parish default
+      const translation = resolveTranslation(q);
+      const overlayRubrics = getOverlayRubrics(translation);
+      const pronoun = resolvePronoun(q, overlayRubrics);
+      const style   = resolveStyle(q, translation);
+      const reqSources = { ...sources, octoechos: resolveOctoechos(sources, translation) };
+      const vespersFixedResolved = translation
+        ? (getOverlayFixed('vespers', translation) || fixedTexts)
+        : fixedTexts;
 
       if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
         res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -57,7 +84,8 @@ function handle(req, res, ctx) {
       // Try assembleForDate first
       let assembleResult;
       try {
-        assembleResult = assembleForDate(vespersDate, pronoun, null, fixedTexts, sources);
+        assembleResult = assembleForDate(vespersDate, pronoun, null, vespersFixedResolved,
+          reqSources, style, { rubrics: overlayRubrics });
       } catch (err) {
         console.error('Assembly error:', err);
         res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });

@@ -87,15 +87,27 @@ function assembleBlessedIsTheMan(fixedTexts) {
   } else {
     blocks.push(makeBlock('kathisma-glory-now', section, 'doxology', null,
       k.gloryNow || 'Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.'));
-    // Closing refrain is the full "Alleluia… glory to Thee, O God" form sung
-    // thrice (matches the read-kathisma path in assembleKathismaReading and
-    // OCA Saturday Great Vespers parish practice). The per-verse `k.refrain`
-    // ("Alleluia, alleluia, alleluia.") is the antiphon between verses; the
-    // post-doxology refrain is the fuller form.
-    blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir',
-      fixedTexts.responses?.alleluiaThrice
-        || 'Alleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.'));
   }
+
+  // The closing "Alleluia… glory to Thee, O God" (thrice) ends the Kathisma in
+  // BOTH doxology forms, and is the last thing before the Little Litany.
+  //
+  // It used to live inside the `else` above, so any parish whose overlay
+  // supplies gloryOnly/nowOnly — HTM-Boston and Jordanville, which is St John
+  // of Damascus (Tyler) — lost it silently. The split-doxology overlay was
+  // authored to ADD the split form and took this block away with it: the
+  // fourth-plus instance of a variant REPLACING where it meant to select.
+  // A parishioner reported it missing before the Little Litany on 2026-11-07.
+  //
+  // It is NOT the same text as `k.refrain`. That is the short antiphon
+  // ("Alleluia, alleluia, alleluia.") sung between verses and after each half
+  // of a split doxology; this is the longer closing form, sung three times.
+  // Printing both in succession is correct and is what the books print:
+  // OCA Vigil Appendix p.38 (First Kathisma, abbreviated), the read-kathisma
+  // path in assembleKathismaReading below, and docs/vespers-walkthrough-2026-06-27.md.
+  blocks.push(makeBlock('kathisma-final-alleluia', section, 'response', 'choir',
+    fixedTexts.responses?.alleluiaThrice
+      || 'Alleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.\nAlleluia, alleluia, alleluia, glory to Thee, O God.'));
 
   return blocks;
 }

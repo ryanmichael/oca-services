@@ -1,0 +1,59 @@
+{
+  "key": "archangels-lic-v2",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (2), Synaxis of the Bodiless Powers (11-08)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 8,
+      "title": "Synaxis of the Archangel Michael and the Other Bodiless Powers"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 5
+    },
+    "expect": [
+      "9c61bc5bff122a3d8a8905cfbefe9e3c379069a2e0e0dbb8a6b7e28621834256"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Two OCA editions of one hymn. The base is the OCA service-texts DOCX (reference/scrape/2024-11-08.docx, \"Prepared by the Department of Liturgical Music and Translations\"); the parish sings the OCA engraved-music setting (© 2019 OCA) printed in its choir packet. Register is NOT the whole difference and a ?pronoun=yy render does not reach this wording — see memory project_register_knob_is_service_wide.",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service-texts DOCX (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-07",
+        "source_citation": "reference/scrape/2024-11-08.docx, fetched as -texts-tt.docx; stichera.id=7986",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA service-texts DOCX; identical to the stichera row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Standing before the throne of the three-fold radiance of the Godhead, brilliant with the splendors that unceasingly pour forth from It, from the fog of passions free those of us on earth who praise thee with joy! Illumine us, O Chief Captain Gabriel,\nthou intercessor for our souls!"
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-07",
+        "source_citation": "docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf p.5, heading \"November 8: Ss. Michael & Gabriel and all the Bodiless Hosts\", \"Lord I Call...\" Tone 4, position (2). Colophon on the packet's last page: \"© 2019 Orthodox Church in America\". Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. A different OCA EDITION from the service-texts DOCX, not a different translator: the packet colophon reads \"© 2019 Orthodox Church in America\" and the hymns are the OCA Music Department's engraved settings. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Standing before the throne of the tri-luminary Godhead,\nbrilliant with the rays of its unceasing light:\nsave from the passions of darkness\nthose on earth who praise you joyfully!\nIllumine them, Gabriel the archangel,//\nthe intercessor for our souls!"
+      }
+    }
+  ]
+}

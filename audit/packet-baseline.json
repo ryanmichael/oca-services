@@ -1,12 +1,12 @@
 {
   "great-vespers": {
     "sheets": 13,
-    "pieces": 133,
-    "own": 133,
+    "pieces": 137,
+    "own": 137,
     "crossService": 0,
-    "located": 113,
-    "verbatim": 50,
-    "inOrder": 113
+    "located": 119,
+    "verbatim": 54,
+    "inOrder": 119
   },
   "daily-vespers": {
     "sheets": 5,
@@ -28,11 +28,319 @@
   },
   "_all": {
     "sheets": 34,
-    "pieces": 243,
-    "own": 211,
+    "pieces": 247,
+    "own": 215,
     "crossService": 32,
-    "located": 158,
-    "verbatim": 61,
-    "inOrder": 158
+    "located": 164,
+    "verbatim": 65,
+    "inOrder": 164
+  },
+  "_sheets": {
+    "great-vespers-2026-07-11": {
+      "service": "great-vespers",
+      "pieces": 10,
+      "own": 10,
+      "crossService": 0,
+      "located": 6,
+      "inOrder": 6,
+      "verbatim": 1
+    },
+    "liturgy-2026-07-12": {
+      "service": "liturgy",
+      "pieces": 5,
+      "own": 4,
+      "crossService": 1,
+      "located": 0,
+      "inOrder": 0,
+      "verbatim": 0
+    },
+    "great-vespers-2026-08-01": {
+      "service": "great-vespers",
+      "pieces": 11,
+      "own": 11,
+      "crossService": 0,
+      "located": 11,
+      "inOrder": 11,
+      "verbatim": 5
+    },
+    "liturgy-2026-08-02": {
+      "service": "liturgy",
+      "pieces": 4,
+      "own": 1,
+      "crossService": 3,
+      "located": 0,
+      "inOrder": 0,
+      "verbatim": 0
+    },
+    "liturgy-2026-08-06": {
+      "service": "liturgy",
+      "pieces": 5,
+      "own": 5,
+      "crossService": 0,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 1
+    },
+    "great-vespers-2026-08-29": {
+      "service": "great-vespers",
+      "pieces": 13,
+      "own": 13,
+      "crossService": 0,
+      "located": 9,
+      "inOrder": 9,
+      "verbatim": 5
+    },
+    "liturgy-2026-08-30": {
+      "service": "liturgy",
+      "pieces": 7,
+      "own": 6,
+      "crossService": 1,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 0
+    },
+    "daily-vespers-2026-09-02": {
+      "service": "daily-vespers",
+      "pieces": 7,
+      "own": 7,
+      "crossService": 0,
+      "located": 7,
+      "inOrder": 7,
+      "verbatim": 3
+    },
+    "great-vespers-2026-09-05": {
+      "service": "great-vespers",
+      "pieces": 9,
+      "own": 9,
+      "crossService": 0,
+      "located": 9,
+      "inOrder": 9,
+      "verbatim": 4
+    },
+    "liturgy-2026-09-06": {
+      "service": "liturgy",
+      "pieces": 6,
+      "own": 2,
+      "crossService": 4,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "liturgy-2026-09-08": {
+      "service": "liturgy",
+      "pieces": 1,
+      "own": 1,
+      "crossService": 0,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "great-vespers-2026-09-12": {
+      "service": "great-vespers",
+      "pieces": 10,
+      "own": 10,
+      "crossService": 0,
+      "located": 9,
+      "inOrder": 9,
+      "verbatim": 2
+    },
+    "liturgy-2026-09-13": {
+      "service": "liturgy",
+      "pieces": 8,
+      "own": 4,
+      "crossService": 4,
+      "located": 0,
+      "inOrder": 0,
+      "verbatim": 0
+    },
+    "liturgy-2026-09-14": {
+      "service": "liturgy",
+      "pieces": 6,
+      "own": 4,
+      "crossService": 2,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "great-vespers-2026-09-19": {
+      "service": "great-vespers",
+      "pieces": 8,
+      "own": 8,
+      "crossService": 0,
+      "located": 7,
+      "inOrder": 7,
+      "verbatim": 2
+    },
+    "liturgy-2026-09-20": {
+      "service": "liturgy",
+      "pieces": 3,
+      "own": 3,
+      "crossService": 0,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 0
+    },
+    "great-vespers-2026-09-26": {
+      "service": "great-vespers",
+      "pieces": 10,
+      "own": 10,
+      "crossService": 0,
+      "located": 10,
+      "inOrder": 10,
+      "verbatim": 5
+    },
+    "liturgy-2026-09-27": {
+      "service": "liturgy",
+      "pieces": 8,
+      "own": 1,
+      "crossService": 7,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "daily-vespers-2026-10-01": {
+      "service": "daily-vespers",
+      "pieces": 6,
+      "own": 6,
+      "crossService": 0,
+      "located": 6,
+      "inOrder": 6,
+      "verbatim": 1
+    },
+    "great-vespers-2026-10-03": {
+      "service": "great-vespers",
+      "pieces": 11,
+      "own": 11,
+      "crossService": 0,
+      "located": 10,
+      "inOrder": 10,
+      "verbatim": 6
+    },
+    "liturgy-2026-10-04": {
+      "service": "liturgy",
+      "pieces": 10,
+      "own": 4,
+      "crossService": 6,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "daily-vespers-2026-10-08": {
+      "service": "daily-vespers",
+      "pieces": 6,
+      "own": 6,
+      "crossService": 0,
+      "located": 6,
+      "inOrder": 6,
+      "verbatim": 3
+    },
+    "great-vespers-2026-10-10": {
+      "service": "great-vespers",
+      "pieces": 6,
+      "own": 6,
+      "crossService": 0,
+      "located": 5,
+      "inOrder": 5,
+      "verbatim": 0
+    },
+    "liturgy-2026-10-11": {
+      "service": "liturgy",
+      "pieces": 6,
+      "own": 5,
+      "crossService": 1,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 0
+    },
+    "daily-vespers-2026-10-14": {
+      "service": "daily-vespers",
+      "pieces": 5,
+      "own": 5,
+      "crossService": 0,
+      "located": 3,
+      "inOrder": 3,
+      "verbatim": 0
+    },
+    "great-vespers-2026-10-17": {
+      "service": "great-vespers",
+      "pieces": 9,
+      "own": 9,
+      "crossService": 0,
+      "located": 8,
+      "inOrder": 8,
+      "verbatim": 5
+    },
+    "liturgy-2026-10-18": {
+      "service": "liturgy",
+      "pieces": 0,
+      "own": 0,
+      "crossService": 0,
+      "located": 0,
+      "inOrder": 0,
+      "verbatim": 0
+    },
+    "great-vespers-2026-10-24": {
+      "service": "great-vespers",
+      "pieces": 11,
+      "own": 11,
+      "crossService": 0,
+      "located": 11,
+      "inOrder": 11,
+      "verbatim": 9
+    },
+    "liturgy-2026-10-25": {
+      "service": "liturgy",
+      "pieces": 4,
+      "own": 4,
+      "crossService": 0,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 0
+    },
+    "great-vespers-2026-10-31": {
+      "service": "great-vespers",
+      "pieces": 10,
+      "own": 10,
+      "crossService": 0,
+      "located": 8,
+      "inOrder": 8,
+      "verbatim": 4
+    },
+    "liturgy-2026-11-01": {
+      "service": "liturgy",
+      "pieces": 5,
+      "own": 2,
+      "crossService": 3,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "great-vespers-2026-11-07": {
+      "service": "great-vespers",
+      "pieces": 19,
+      "own": 19,
+      "crossService": 0,
+      "located": 16,
+      "inOrder": 16,
+      "verbatim": 6
+    },
+    "liturgy-2026-11-08": {
+      "service": "liturgy",
+      "pieces": 1,
+      "own": 1,
+      "crossService": 0,
+      "located": 1,
+      "inOrder": 1,
+      "verbatim": 0
+    },
+    "daily-vespers-2026-11-12": {
+      "service": "daily-vespers",
+      "pieces": 7,
+      "own": 7,
+      "crossService": 0,
+      "located": 6,
+      "inOrder": 6,
+      "verbatim": 3
+    }
   }
 }

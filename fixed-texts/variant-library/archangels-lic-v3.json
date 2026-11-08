@@ -1,0 +1,59 @@
+{
+  "key": "archangels-lic-v3",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (3), Synaxis of the Bodiless Powers (11-08)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 8,
+      "title": "Synaxis of the Archangel Michael and the Other Bodiless Powers"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 4
+    },
+    "expect": [
+      "4b199f526c29a924e73387b2486dacb0b375bc62fa7ca4b24983c69d46a63a7e"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Two OCA editions of one hymn. The base is the OCA service-texts DOCX (reference/scrape/2024-11-08.docx, \"Prepared by the Department of Liturgical Music and Translations\"); the parish sings the OCA engraved-music setting (© 2019 OCA) printed in its choir packet. Register is NOT the whole difference and a ?pronoun=yy render does not reach this wording — see memory project_register_knob_is_service_wide.",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service-texts DOCX (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-07",
+        "source_citation": "reference/scrape/2024-11-08.docx, fetched as -texts-tt.docx; stichera.id=7985",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA service-texts DOCX; identical to the stichera row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "The Eternal Wisdom established thee, O Gabriel, as a second light reflecting things divine, illumining the whole creation, and revealing to us the divine mystery hidden from before the ages: the bodiless One made flesh in a virgin womb\nand become Man that He might save mankind."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-07",
+        "source_citation": "docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf p.4-5, heading \"November 8: Ss. Michael & Gabriel and all the Bodiless Hosts\", \"Lord I Call...\" Tone 4, position (3). Colophon on the packet's last page: \"© 2019 Orthodox Church in America\". Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. A different OCA EDITION from the service-texts DOCX, not a different translator: the packet colophon reads \"© 2019 Orthodox Church in America\" and the hymns are the OCA Music Department's engraved settings. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "The eternal wisdom established you, O Gabriel\na light reflecting things divine,\nillumining the whole creation,\nrevealing to us the divine mystery hidden from before the ages:\nGod who is bodiless made flesh in a Virgin womb//\nand become Man that He might save mankind."
+      }
+    }
+  ]
+}

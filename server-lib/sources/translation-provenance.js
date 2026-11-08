@@ -184,6 +184,39 @@ function index(opts = {}) {
     }
   }
 
+  // 1c. The variant library. A parish pick REPLACES a DB row's text at render
+  //     time (server-lib/sources/menaion-overrides.js), so the text that
+  //     reaches the page is one this index had never seen: every parish
+  //     variant came back 'unknown' and was then DEFAULTED to 'OCA' by
+  //     api-service.js. Tyler's 2026-10-08 `expelled-heretics` pick had been
+  //     invisible here since the day it shipped; authoring the 11-08 Archangel
+  //     variants made it seven more and surfaced it.
+  //
+  //     Attribution is EXPLICIT — `_provenance.translation_family` — falling
+  //     back to the citation prose only when the field is absent. Inferring a
+  //     family from freeform prose is what laundered the HTM Beatitudes into
+  //     the OCA family (see 'htm-octoechos-sunday-beatitudes' above), so a
+  //     variant that does not declare one stays 'unknown' rather than guessing.
+  //     Non-clobbering, and placed before the DB so a controlled-vocabulary
+  //     `stichera.source` still wins on any text collision.
+  try {
+    const fs = require('fs');
+    const dir = path.join(ROOT, 'fixed-texts', 'variant-library');
+    for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.json'))) {
+      let doc;
+      try { doc = require(path.join(dir, f)); } catch (_) { continue; }
+      for (const v of (doc.variants || [])) {
+        const text = typeof v.value === 'string' ? v.value
+                   : (v.value && typeof v.value.text === 'string' ? v.value.text : null);
+        if (!text || !text.trim()) continue;
+        const declared = v._provenance && v._provenance.translation_family;
+        const fam = declared ? familyOf(declared)
+                             : familyOfProse(v._provenance && v._provenance.source_citation);
+        if (!map.has(norm(text))) map.set(norm(text), fam);
+      }
+    }
+  } catch (_) { /* no variant library is not a finding */ }
+
   // 2. The stichera table. The project opens SQLite through node:sqlite, not
   // better-sqlite3 — an earlier draft of this file required the latter, the
   // catch swallowed "Cannot find module", and the index silently covered only

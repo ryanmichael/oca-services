@@ -1,0 +1,59 @@
+{
+  "key": "archangels-lic-v4",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (4), Synaxis of the Bodiless Powers (11-08)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 8,
+      "title": "Synaxis of the Archangel Michael and the Other Bodiless Powers"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 3
+    },
+    "expect": [
+      "5f3aecfe53680ec5726e29f0f506049c17f3753324dc996667c7fd087ad545ff"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Two OCA editions of one hymn. The base is the OCA service-texts DOCX (reference/scrape/2024-11-08.docx, \"Prepared by the Department of Liturgical Music and Translations\"); the parish sings the OCA engraved-music setting (© 2019 OCA) printed in its choir packet. Register is NOT the whole difference and a ?pronoun=yy render does not reach this wording — see memory project_register_knob_is_service_wide.",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service-texts DOCX (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-07",
+        "source_citation": "reference/scrape/2024-11-08.docx, fetched as -texts-tt.docx; stichera.id=7984",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA service-texts DOCX; identical to the stichera row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "O Lord, Thou makest Thine angels spirits, as it is written, and Thy ministers a flaming fire. Thou, O Word, hast declared the Chief Captain Michael as first among the ranks of Thine archangels: He submits to Thy commands,\nand proclaims with fear the thrice-holy hymn to Thy glory."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-07",
+        "source_citation": "docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf p.4, heading \"November 8: Ss. Michael & Gabriel and all the Bodiless Hosts\", \"Lord I Call...\" Tone 4, position (4). Colophon on the packet's last page: \"© 2019 Orthodox Church in America\". Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. A different OCA EDITION from the service-texts DOCX, not a different translator: the packet colophon reads \"© 2019 Orthodox Church in America\" and the hymns are the OCA Music Department's engraved settings. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Make Thine angels spirits as it is written,\nand Thy ministers a flaming fire!\nThou, O Word, hast shown Michael to be the first among archangels:\nHe submits to Thy commands,//\nand proclaims with fear the thrice-Holy hymn to thy glory."
+      }
+    }
+  ]
+}

@@ -35,11 +35,20 @@
 //   node scripts/choir-packet-diff.js --capture-baseline audit/packet-baseline.json
 //   node scripts/choir-packet-diff.js --check audit/packet-baseline.json   # exit 2 on NEW
 //
+// THE BASELINE IS PER SHEET AS WELL AS PER SERVICE. An aggregate nets one
+// sheet's collapse against another's gain, and a brand-new sheet could only
+// ever be reported as an improvement — which is how great-vespers-2026-11-07
+// reached the choir at 2/15 verbatim with every check green. A new sheet is
+// now judged against the rate already accepted for its service, read from the
+// baseline rather than hand-picked. See scripts/lib/packet-baseline.js.
+//
 // Reports: audit/reports/choir-packet-diff.md
 // Read-only. Requires a server (see --http) and FAILS LOUDLY without one.
 
 const fs   = require('fs');
 const path = require('path');
+const { buildBaseline, compare } = require('./lib/packet-baseline');
+const { positionMarker } = require('./lib/packet-pieces');
 
 const ROOT        = path.resolve(__dirname, '..');
 const PACKET_DIR  = path.join(ROOT, 'docs', 'choir-packets');
@@ -165,7 +174,17 @@ function hymnPieces(body) {
   const flush = () => { if (cur && cur.text.length) pieces.push(cur); };
   for (const l of lines) {
     if (!l) continue;
-    if (/^\d{1,2}$/.test(l)) { flush(); cur = { marker: l, text: [] }; continue; }
+    // The stichera count-down marker. A bare "6" on the OCA *text* sheets, but
+    // "(6).", "(5).-" or "(4)" on the engraved-music sheets — parenthesised,
+    // with whatever stray punctuation the scanner reads off the staff. Matching
+    // only the bare form collapsed all six Archangel stichera of
+    // great-vespers-2026-11-07 into ONE piece, which can never score verbatim
+    // against a single rendered hymn: the sheet sat at 2/15 verbatim no matter
+    // what we printed. Found 2026-11-07 while fixing that date.
+    // See scripts/lib/packet-pieces.js for the two printed forms and why the
+    // parenthesised one must carry its parentheses.
+    const mark = positionMarker(l);
+    if (mark) { flush(); cur = { marker: mark, text: [] }; continue; }
     if (/^(glory|both now)/i.test(l) && l.length < 24) {
       flush();
       cur = { marker: /both/i.test(l) ? 'Now' : 'Glory', text: [] };
@@ -476,8 +495,9 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
   console.log(`Report: ${path.relative(ROOT, reportPath)}`);
 
   if (args.captureBaseline) {
-    fs.writeFileSync(args.captureBaseline, JSON.stringify(summary, null, 2) + '\n');
-    console.log(`Baseline written: ${args.captureBaseline}`);
+    const baseline = buildBaseline(summary, rows);
+    fs.writeFileSync(args.captureBaseline, JSON.stringify(baseline, null, 2) + '\n');
+    console.log(`Baseline written: ${args.captureBaseline} (${rows.length} sheets)`);
     return;
   }
 
@@ -485,23 +505,17 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     let base;
     try { base = JSON.parse(fs.readFileSync(args.check, 'utf8')); }
     catch (e) { console.error(`cannot read baseline ${args.check}: ${e.message}`); process.exit(1); }
-    const worse = [], better = [];
-    for (const [key, a] of Object.entries(summary)) {
-      const b = base[key];
-      if (!b) { better.push(`${key}: new in this run (${a.located}/${a.pieces} located)`); continue; }
-      // Compare RATES, not counts — adding a packet raises the denominator.
-      const denom = (x) => x.own || x.pieces || 0;
-      const rate = (x) => denom(x) ? x.located / denom(x) : 0;
-      const vrate = (x) => denom(x) ? x.verbatim / denom(x) : 0;
-      if (rate(a) < rate(b) - 0.001)
-        worse.push(`${key}: located ${(100*rate(b)).toFixed(0)}% -> ${(100*rate(a)).toFixed(0)}%`);
-      else if (rate(a) > rate(b) + 0.001)
-        better.push(`${key}: located ${(100*rate(b)).toFixed(0)}% -> ${(100*rate(a)).toFixed(0)}%`);
-      if (vrate(a) < vrate(b) - 0.001)
-        worse.push(`${key}: verbatim ${(100*vrate(b)).toFixed(0)}% -> ${(100*vrate(a)).toFixed(0)}%`);
-      const orate = (x) => denom(x) ? (x.inOrder || 0) / denom(x) : 0;
-      if (orate(a) < orate(b) - 0.001)
-        worse.push(`${key}: in order ${(100*orate(b)).toFixed(0)}% -> ${(100*orate(a)).toFixed(0)}%`);
+
+    // Two scopes, always both: the per-service aggregate AND the sheet. An
+    // aggregate holds still while one sheet collapses and another improves,
+    // and a NEW sheet used to be unfailable by construction — that is how
+    // great-vespers-2026-11-07 shipped at 2/15 verbatim. See
+    // scripts/lib/packet-baseline.js.
+    const { worse, better, notes } = compare(summary, rows, base);
+
+    if (notes.length) {
+      console.log('\nnotes:');
+      notes.forEach(l => console.log(`  . ${l}`));
     }
     if (better.length) {
       console.log('\nimproved since baseline (refresh it when convenient):');

@@ -3,7 +3,8 @@
 **Status:** shipped 2026-11-07
 **Contract test:** `test/contracts/packet-baseline-per-sheet.test.js`
 **Code:** `scripts/lib/packet-baseline.js`, `scripts/lib/packet-pieces.js`
-**Gate:** `npm run audit:packet-diff:check` (manual — see *Not in pre-push*)
+**Gate:** `npm run audit:packet-diff:check` — a **blocking pre-push ratchet**
+(`.githooks/pre-push`, which is the live hook: `core.hooksPath=.githooks`)
 
 ## The gap this closes
 
@@ -77,9 +78,28 @@ Only `great-vespers-2026-11-07` changes, and it changes in both axes:
 
 Every other sheet in the 34-sheet corpus is byte-identical.
 
-## Not in pre-push
+## It blocks a push
 
-`audit:packet-diff:check` needs a running server, and the pre-push hook already
-has a server-vs-SQLite deadlock (`project_session_handoff_2026_11_06`). Adding
-it there would trade a silent gap for a hung push. It stays a manual gate, run
-when a packet lands — which is when it has something to say.
+`audit:packet-diff:check` is already a pre-push ratchet in `.githooks/pre-push`,
+alongside the provenance one; a non-zero exit fails the push. The hook starts
+its own server on :3000 when none is running and kills it afterwards, so the
+server-vs-SQLite deadlock does not apply here.
+
+**So arming the per-sheet rule arms a blocker.** A new packet whose sheet is
+matched worse than the accepted rate for its service now stops the next push
+until someone looks at it. That is the intent — the sheet for 2026-11-07 was
+sitting in the repo, already scored at 2/15 verbatim, while pushes went green —
+but it means a packet drop is now something to triage rather than something to
+file and forget. Refresh deliberately once triaged:
+
+```
+node scripts/choir-packet-diff.js --translation st-john-damascus-tyler \
+  --capture-baseline audit/packet-baseline.json
+```
+
+An improvement never blocks; it prints a line asking for a deliberate refresh.
+
+> Corrects an earlier claim in this document and in commit `a26569b` that the
+> check was manual and deliberately left out of pre-push. That was read off the
+> stale `.git/hooks/pre-push` (last written 2026-10-08); git has used
+> `core.hooksPath=.githooks` since.

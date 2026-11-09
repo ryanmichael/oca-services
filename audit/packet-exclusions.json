@@ -1,0 +1,16 @@
+{
+  "_note": "Pieces a choir packet PRINTS but the service does not SING. See scripts/lib/packet-exclusions.js for the rules this file is held to: closed `reason` vocabulary, content-addressed by sha256, a stale entry is a FINDING, and every report prints the per-sheet count. Curate with: node scripts/choir-packet-diff.js --sheet <name> --pieces, which prints each piece's sha. Read the scan VISUALLY before adding an entry; the OCR sidecar is an index, never evidence.",
+  "_notAnExcuse": "This list is for hymns the rubric does not reach. It is NOT for hymns we print in the wrong words, print in the wrong place, or fail to print. Those are defects and must stay visible. If an entry would hide one of those, the entry is wrong.",
+  "sheets": {
+    "great-vespers-2026-11-07": [
+      {
+        "reason": "struck",
+        "incipit": "Let us who in the world celebrate as the angels, sing out to God sitting on the throne of glory",
+        "sha256": "f2ec3d87e62445af35f6e288011b52470ea2b4a45ae227a6d4e4449526d4383e",
+        "citation": "p.11, 'November 8: Ss. Michael & Gabriel and all the Bodiless Hosts / Apostikha / Tone 1'. ONE large diagonal X runs from the top of this sticheron through both following 'Michael the archangel' stichera; 'Glory... Now and ever...' is left clear with 'Tone 8' circled beside it. The Octoechos resurrectional aposticha on pp.9-10 are sung instead, and we print the surviving Tone 8 Glory as the Menaion's only contribution. Read visually from the scan 2026-11-09.",
+        "verified": { "by": "visual read of docs/choir-packets/2026-11-04/pdf/great-vespers-2026-11-07.pdf p.11", "date": "2026-11-09" },
+        "_scoring": "The OCR merges this sticheron and the two struck with it into one piece, so a single entry covers the whole struck block. Its acclamation ('Holy art Thou, O heavenly Father...') is nearly the Lord-I-Call (6) acclamation, which is why the matcher had begun pairing a struck hymn with an unrelated slot."
+      }
+    ]
+  }
+}

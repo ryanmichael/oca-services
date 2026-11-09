@@ -49,6 +49,7 @@ const fs   = require('fs');
 const path = require('path');
 const { buildBaseline, compare } = require('./lib/packet-baseline');
 const { positionMarker } = require('./lib/packet-pieces');
+const EXCLUSIONS = require('./lib/packet-exclusions');
 
 const ROOT        = path.resolve(__dirname, '..');
 const PACKET_DIR  = path.join(ROOT, 'docs', 'choir-packets');
@@ -94,7 +95,7 @@ const LINE_FURNITURE = [
 
 function parseArgs(argv) {
   const args = { http: 'http://localhost:3000', translation: 'st-john-damascus-tyler',
-                 service: null, sheet: null, captureBaseline: null, check: null,
+                 service: null, sheet: null, pieces: false, captureBaseline: null, check: null,
                  shifts: [-1, 0, 1] };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
@@ -102,6 +103,7 @@ function parseArgs(argv) {
     else if (a === '--translation') args.translation = argv[++i];
     else if (a === '--service') args.service = argv[++i];
     else if (a === '--sheet') args.sheet = argv[++i];
+    else if (a === '--pieces') args.pieces = true;
     else if (a === '--no-shift') args.shifts = [0];
     else if (a === '--capture-baseline') args.captureBaseline = argv[++i];
     else if (a === '--check') args.check = argv[++i];
@@ -308,17 +310,30 @@ function bestMatch(piece, hymns) {
 function scoreAgainst(pieces, hymns, otherHymns = []) {
   let located = 0, verbatim = 0, crossService = 0;
   const misses = [];
+  const detail = [];             // every piece, matched or not — for --pieces
   const positions = [];          // index in OUR render, in PACKET order
   for (const p of pieces) {
     const own = bestMatch(p, hymns);
     if (own.score >= LOCATED_MIN) {
       located++;
       positions.push(own.idx);
-      if (dice(letters(p.text), letters(own.block.text)) >= VERBATIM_MIN) verbatim++;
+      const v = dice(letters(p.text), letters(own.block.text));
+      if (v >= VERBATIM_MIN) verbatim++;
+      detail.push({ marker: p.marker, verdict: v >= VERBATIM_MIN ? 'verbatim' : 'located',
+                    score: +own.score.toFixed(2), vscore: +v.toFixed(2), sha: EXCLUSIONS.shaOf(p.text),
+                    matched: own.block.id, head: p.text.slice(0, 60) });
       continue;
     }
     const other = bestMatch(p, otherHymns);
-    if (other.score >= LOCATED_MIN) { crossService++; continue; }
+    if (other.score >= LOCATED_MIN) {
+      crossService++;
+      detail.push({ marker: p.marker, verdict: 'other-service', score: +own.score.toFixed(2),
+                    vscore: 0, sha: EXCLUSIONS.shaOf(p.text),
+                    matched: other.block.id, head: p.text.slice(0, 60) });
+      continue;
+    }
+    detail.push({ marker: p.marker, verdict: 'MISS', score: +own.score.toFixed(2),
+                  vscore: 0, sha: EXCLUSIONS.shaOf(p.text), matched: null, head: p.text.slice(0, 60) });
     misses.push({
       marker: p.marker,
       score: +own.score.toFixed(2),
@@ -327,7 +342,7 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     });
   }
   return {
-    located, verbatim, crossService, misses,
+    located, verbatim, crossService, misses, detail,
     inOrder: inOrderRun(positions), positions,
     // The denominator that matters: pieces this service is actually responsible
     // for. A Vespers hymn printed in a weekend Liturgy packet is not a Liturgy
@@ -340,6 +355,28 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
 
 (async () => {
   const args = parseArgs(process.argv);
+
+  // Pieces the packet prints but the service does not sing. Loaded once and
+  // VALIDATED before anything is excluded: a malformed list that silently
+  // excludes nothing would read as a clean corpus, and one that silently
+  // excluded everything would read cleaner still. See
+  // scripts/lib/packet-exclusions.js for what this file is held to.
+  let exclusions = { sheets: {} };
+  const EXCL_PATH = path.join(ROOT, 'audit', 'packet-exclusions.json');
+  if (fs.existsSync(EXCL_PATH)) {
+    try { exclusions = JSON.parse(fs.readFileSync(EXCL_PATH, 'utf8')); }
+    catch (e) {
+      console.error(`FATAL: cannot parse ${path.relative(ROOT, EXCL_PATH)}: ${e.message}`);
+      process.exit(1);
+    }
+    const problems = EXCLUSIONS.validate(exclusions);
+    if (problems.length) {
+      console.error(`FATAL: ${path.relative(ROOT, EXCL_PATH)} is malformed:`);
+      problems.forEach(x => console.error(`  - ${x}`));
+      process.exit(1);
+    }
+  }
+
   let all = sheets();
   if (args.service) all = all.filter(s => s.service === args.service ||
     (args.service === 'vespers' && /vespers/.test(s.service)));
@@ -358,8 +395,13 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
   const otherServiceOf = (svc) => (svc === 'liturgy' ? 'vespers' : 'liturgy');
 
   const rows = [];
+  const staleAll = [];
   for (const s of all) {
-    const pieces = textPages(s.file).flatMap(hymnPieces);
+    const allPieces = textPages(s.file).flatMap(hymnPieces);
+    // Excluded BEFORE scoring, so an unsung hymn is not a miss and does not sit
+    // in the denominator either. A stale entry is collected, never shrugged off.
+    const { kept: pieces, excluded, stale } = EXCLUSIONS.applyTo(s.name, allPieces, exclusions);
+    stale.forEach(e => staleAll.push({ sheet: s.name, ...e }));
     const other = otherServiceOf(s.service);
     let best = { located: -1, verbatim: 0, crossService: 0, misses: [], shift: 0, inOrder: 0,
                  own: pieces.length };
@@ -376,7 +418,8 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
       const r = scoreAgainst(pieces, hymns, otherPool);
       if (r.located > best.located) best = { ...r, shift: n };
     }
-    rows.push({ ...s, pieces: pieces.length, ...best, pieceTexts: pieces });
+    rows.push({ ...s, pieces: pieces.length, ...best, pieceTexts: pieces,
+                excluded, printed: allPieces.length });
   }
 
   if (!rows.some(r => r.pieces > 0)) {
@@ -413,7 +456,28 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     const r = rows[0];
     console.log(`--- ${r.name} (alignment ${r.shift > 0 ? '+' : ''}${r.shift}) ---`);
     console.log(`pieces ${r.pieces} · other service ${r.crossService} · this service ${r.own} · located ${r.located} · in order ${r.inOrder} · verbatim ${r.verbatim}`);
+    if (r.excluded?.length)
+      console.log(`excluded ${r.excluded.length} of ${r.printed} printed — not appointed: ` +
+                  r.excluded.map(e => e.reason).join(', '));
     console.log(`our render positions, in packet order: ${JSON.stringify(r.positions)}`);
+    if (args.pieces) {
+      // Every piece the sheet carries, with what it matched. This is what the
+      // exclusions list is curated FROM: an entry must be defensible against a
+      // named piece, not against an impression of the scan.
+      console.log('\nevery piece on this sheet:');
+      for (const d of (r.detail || [])) {
+        const tag = d.verdict === 'MISS' ? 'MISS        '
+                  : d.verdict === 'verbatim' ? 'verbatim    '
+                  : d.verdict === 'other-service' ? 'other-svc   ' : 'located-only';
+        console.log(`  [${String(d.marker).padStart(5)}] ${tag} loc=${d.score} vb=${d.vscore} ` +
+                    `sha=${d.sha} ${(d.matched || '-').padEnd(20)} "${d.head}"`);
+      }
+      if (r.excluded?.length) {
+        console.log('\nexcluded as not appointed:');
+        for (const e of r.excluded) console.log(`  [${e.reason}] "${e.head}"  (${e.citation})`);
+      }
+      return;
+    }
     for (const m of r.misses) console.log(`  not located [${m.marker}] best=${m.score}  "${m.head}"`);
     return;
   }
@@ -441,10 +505,10 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
   L.push('**LOCATED** = we print that hymn at all. **VERBATIM** = in the parish\'s wording.');
   L.push('Printing the right hymn in other words is a different problem from the wrong hymn.');
   L.push('');
-  L.push('| sheet | align | hymns on it | other service | this service | located | in order | verbatim |');
-  L.push('|---|---|---|---|---|---|---|---|');
+  L.push('| sheet | align | printed | excluded | hymns on it | other service | this service | located | in order | verbatim |');
+  L.push('|---|---|---|---|---|---|---|---|---|---|');
   for (const r of rows)
-    L.push(`| \`${r.name}\` | ${r.shift > 0 ? '+' : ''}${r.shift} | ${r.pieces} | ${r.crossService} | ${r.own} | ${r.located} | ${r.inOrder} | ${r.verbatim} |`);
+    L.push(`| \`${r.name}\` | ${r.shift > 0 ? '+' : ''}${r.shift} | ${r.printed} | ${r.excluded.length || ''} | ${r.pieces} | ${r.crossService} | ${r.own} | ${r.located} | ${r.inOrder} | ${r.verbatim} |`);
   L.push('');
   L.push('## by service');
   L.push('');
@@ -460,7 +524,9 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     // for — never over every piece printed in the packet.
     const p = (n) => a.own ? `${n} (${(100 * n / a.own).toFixed(0)}%)` : String(n);
     L.push(`| ${label} | ${a.sheets} | ${a.pieces} | ${a.crossService} | ${a.own} | ${p(a.located)} | ${p(a.inOrder)} | ${p(a.verbatim)} |`);
+    const exc = rs.reduce((n, r) => n + r.excluded.length, 0);
     console.log(`${label.padEnd(15)} sheets ${String(a.sheets).padStart(2)} · on sheets ${String(a.pieces).padStart(3)} · ` +
+                (exc ? `excluded ${String(exc).padStart(2)} · ` : '') +
                 `other svc ${String(a.crossService).padStart(3)} · this svc ${String(a.own).padStart(3)} · ` +
                 `located ${p(a.located)} · in order ${p(a.inOrder)} · verbatim ${p(a.verbatim)}`);
   }
@@ -478,6 +544,21 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     const c = {};
     rs.forEach(r => c[r.shift] = (c[r.shift] || 0) + 1);
     L.push(`- ${label}: \`${JSON.stringify(c)}\``);
+  }
+  L.push('');
+  L.push('## pieces excluded as NOT APPOINTED');
+  L.push('');
+  L.push('From `audit/packet-exclusions.json`. A packet page is a library; the');
+  L.push('director strikes what the rubric does not reach, and OCR cannot see pen.');
+  L.push('Every entry is content-addressed and carries a citation into the scan.');
+  L.push('');
+  const anyExcluded = rows.some(r => r.excluded.length);
+  if (!anyExcluded) L.push('_none_');
+  for (const r of rows) {
+    if (!r.excluded.length) continue;
+    L.push(`### \`${r.name}\``);
+    for (const e of r.excluded) L.push(`- **[${e.reason}]** "${e.head}" — ${e.citation}`);
+    L.push('');
   }
   L.push('');
   L.push('## hymns the packet appoints that we did not locate');
@@ -512,6 +593,14 @@ function scoreAgainst(pieces, hymns, otherHymns = []) {
     // great-vespers-2026-11-07 shipped at 2/15 verbatim. See
     // scripts/lib/packet-baseline.js.
     const { worse, better, notes } = compare(summary, rows, base);
+
+    // A stale exclusion is a FINDING, not a shrug. An entry that matches no
+    // piece has stopped applying — the OCR changed, the sheet was re-filed, or
+    // the sha was wrong — and a list that silently stops applying is worse
+    // than no list at all.
+    for (const e of staleAll)
+      worse.push(`${e.sheet}: exclusion "${e.incipit}" matches no piece — it has gone stale ` +
+                 `(re-read the scan and refresh its sha256, or delete the entry)`);
 
     if (notes.length) {
       console.log('\nnotes:');

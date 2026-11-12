@@ -1,0 +1,91 @@
+{
+  "emailDate": "2026-11-10",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast #1",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast #1",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/0aecc8e2-294c-4abe-9fdf-805068310824/scratchpad/drop2",
+      "fetchedAt": "2026-11-12T14:56:28.367Z",
+      "attachments": 2
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-12T14:56:28.367Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Akathist of Thanksgiving 11.25.26.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "date 2026-11-25 recognised but no service keyword"
+      ],
+      "stored": "pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf",
+      "sha256": "18f3ce825f997a196d4cb6bb2d0217d3d4df93527f613ad60a4271e282161d6c",
+      "bytes": 510599,
+      "pages": 20,
+      "hasTextLayer": false,
+      "messageSubject": "St John Choir Email Blast #1",
+      "ocr": {
+        "file": "ocr/Akathist of Thanksgiving 11.25.26.txt",
+        "pages": 20,
+        "textPages": 8,
+        "musicPages": 11,
+        "chars": 8710
+      }
+    },
+    {
+      "original": "Akathist of Thanksgiving Prep.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/Akathist of Thanksgiving Prep.pdf",
+      "sha256": "79c95cbfbe89b84a781f97a67ba619b21a42ce9bacfd0adb29e68ebf1cccdf71",
+      "bytes": 1366124,
+      "pages": 2,
+      "hasTextLayer": false,
+      "messageSubject": "St John Choir Email Blast #1",
+      "ocr": {
+        "file": "ocr/Akathist of Thanksgiving Prep.txt",
+        "pages": 2,
+        "textPages": 0,
+        "musicPages": 2,
+        "chars": 0
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [
+    {
+      "filename": "Akathist of Thanksgiving 11.25.26.pdf",
+      "stored": "pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf",
+      "reasons": [
+        "date 2026-11-25 recognised but no service keyword"
+      ]
+    },
+    {
+      "filename": "Akathist of Thanksgiving Prep.pdf",
+      "stored": "pdf/_unclassified/Akathist of Thanksgiving Prep.pdf",
+      "reasons": [
+        "no service keyword and no date"
+      ]
+    }
+  ],
+  "skipped": [],
+  "excluded": []
+}

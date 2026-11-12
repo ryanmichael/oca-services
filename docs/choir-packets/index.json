@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 14,
+  "packets": 15,
   "counts": {
     "service": 37,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
-    "unbound": 4,
-    "assets": 172
+    "unbound": 6,
+    "assets": 174
   },
   "assets": {
     "92817f66af30": {
@@ -346,6 +346,22 @@
       "filename": "11.12.26 Daily Vespers.pdf",
       "bytes": 4798711,
       "pages": 9
+    },
+    "18f3ce825f99": {
+      "id": "18f3ce825f99",
+      "sha256": "18f3ce825f997a196d4cb6bb2d0217d3d4df93527f613ad60a4271e282161d6c",
+      "path": "2026-11-10/pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf",
+      "filename": "Akathist of Thanksgiving 11.25.26.pdf",
+      "bytes": 510599,
+      "pages": 20
+    },
+    "79c95cbfbe89": {
+      "id": "79c95cbfbe89",
+      "sha256": "79c95cbfbe89b84a781f97a67ba619b21a42ce9bacfd0adb29e68ebf1cccdf71",
+      "path": "2026-11-10/pdf/_unclassified/Akathist of Thanksgiving Prep.pdf",
+      "filename": "Akathist of Thanksgiving Prep.pdf",
+      "bytes": 1366124,
+      "pages": 2
     },
     "6aa9f7712cf7": {
       "id": "6aa9f7712cf7",
@@ -3622,6 +3638,24 @@
         "no service keyword and no date"
       ],
       "path": "2026-09-24/pdf/_unclassified/Soul Shall Rejoice.Prophets Proclaimed (Hierarchical Lit).pdf"
+    },
+    {
+      "asset": "18f3ce825f99",
+      "filename": "Akathist of Thanksgiving 11.25.26.pdf",
+      "packet": "2026-11-10",
+      "reasons": [
+        "date 2026-11-25 recognised but no service keyword"
+      ],
+      "path": "2026-11-10/pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf"
+    },
+    {
+      "asset": "79c95cbfbe89",
+      "filename": "Akathist of Thanksgiving Prep.pdf",
+      "packet": "2026-11-10",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "path": "2026-11-10/pdf/_unclassified/Akathist of Thanksgiving Prep.pdf"
     },
     {
       "asset": "7eaf94f742c3",

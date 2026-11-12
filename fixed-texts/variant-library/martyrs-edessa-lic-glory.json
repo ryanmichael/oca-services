@@ -1,0 +1,58 @@
+{
+  "key": "martyrs-edessa-lic-glory",
+  "_version": 1,
+  "_label": "Glory at Lord-I-Call, Martyrs of Edessa (11-15)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 15,
+      "title": "Holy Martyrs and Confessors Gurias, Samonas, and Habibus, of Edessa"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 0
+    },
+    "expect": [
+      "a269bfbc6282c14c369f3e1d84e7608dec63817c381dd120aa4d5f51e02132fa"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Same hymn, two translations. The base is our St. Sergius text; the parish sings the OCA wording printed in its packet (“The most wise Abíbus” vs the base’s “The all-wise Abibus”). reference/orders/2026-1115-order-services.txt appoints these slots exactly — “3 stichera of the Martyrs, Tone 4” and “Glory… Martyrs, Tone 2” at both Lord-I-Call and the Aposticha — so only the WORDING is at issue, never the shape.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St. Sergius translation (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-12",
+        "translation_family": "stSergius",
+        "source_citation": "stichera.id=9394, source stSergius"
+      },
+      "value": {
+        "tone": 2,
+        "text": "Edessa rejoiceth, for it hath been enriched by the shrine of the holy Gurias, Samonas and Abibus, and, summoning the Christ-loving flock, it crieth out: Come, ye who love the martyrs, and illumine yourselves on their splendid memorial! Come and rejoice, ye who love the feasts of the Church! Come and behold the heavenly luminaries who lived on earth! Come and hear what a bitter death the valiant and steadfast ones endured for the sake of everlasting life! Wherefore, as guarantors of the Truth, they saved the virgin cast alive into the grave, and committed to damnation, as a pitiless murderer, the vile one who reviled them. And they pray earnestly to the Holy Trinity, that those who with faith celebrate their memory be delivered from corruption and temptations, and from all manner of tribulations."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA wording, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-12",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Declared explicitly rather than inferred from the citation prose.",
+        "source_citation": "docs/choir-packets/2026-11-11/pdf/great-vespers-2026-11-14.pdf p.5, heading “NOVEMBER 15 / Holy Martyrs and Confessors Gurias, Samonas and Abibas”. Read VISUALLY from the scan, not from the OCR sidecar. The sheet’s own “*” after Abíbus is a footnote marker (p.5: Pronounced “Avivus”), not a phrase break, and is not transcribed. Accents are as printed. p.5 prints “comdemnation”; transcribed as printed — raise with the director rather than silently correcting, or our text diverges from the sheet again."
+      },
+      "value": {
+        "tone": 2,
+        "text": "Edessa rejoices,\nfor she is enriched with the shrine of the three martyrs,\nholy Abíbus, Samónas and Gúrias.\nShe cries out, summoning the Christ-loving flock:\n“Come, all who love the martyrs,\nbe illumined on their splendid memorial!\nCome and rejoice, all who love the feasts of the Church!\nCome and behold the heavenly lights who lived on earth!\nCome and hear what a bitter death the valiant and steadfast ones\nendured for the sake of everlasting life!\nAs guarantors of the Truth they saved the virgin who was thrown alive in a grave,\ncommitting the pitiless murderer who reviled them to comdemnation.\nThey pray earnestly to the Holy Trinity\nthat those who celebrate their memory in faith//\nmay be delivered from corruption, temptations and all evil."
+      }
+    }
+  ]
+}

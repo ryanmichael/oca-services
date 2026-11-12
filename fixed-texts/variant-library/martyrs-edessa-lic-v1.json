@@ -1,0 +1,58 @@
+{
+  "key": "martyrs-edessa-lic-v1",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (1), Martyrs of Edessa (11-15)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 15,
+      "title": "Holy Martyrs and Confessors Gurias, Samonas, and Habibus, of Edessa"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 3
+    },
+    "expect": [
+      "78ccd62b2ab9c01b01eb690e63ff9c6ea0cea4fd3fcf45c3aaca991e78489e94"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Same hymn, two translations. The base is our St. Sergius text; the parish sings the OCA wording printed in its packet (“The most wise Abíbus” vs the base’s “The all-wise Abibus”). reference/orders/2026-1115-order-services.txt appoints these slots exactly — “3 stichera of the Martyrs, Tone 4” and “Glory… Martyrs, Tone 2” at both Lord-I-Call and the Aposticha — so only the WORDING is at issue, never the shape.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St. Sergius translation (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-12",
+        "translation_family": "stSergius",
+        "source_citation": "stichera.id=9389, source stSergius"
+      },
+      "value": {
+        "tone": 4,
+        "text": "Having put in at the calm haven, * life untroubled * and right tranquil serenity, * O blessed passion-bearing martyrs, * ye have now exchanged * that which is below * for an abiding sojourn in dispassion, * receiving honors from God, as is meet, ** as reward for your labors and pangs."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA wording, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-12",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Declared explicitly rather than inferred from the citation prose.",
+        "source_citation": "docs/choir-packets/2026-11-11/pdf/great-vespers-2026-11-14.pdf p.4, heading “NOVEMBER 15 / Holy Martyrs and Confessors Gurias, Samonas and Abibas”. Read VISUALLY from the scan, not from the OCR sidecar. The sheet’s own “*” after Abíbus is a footnote marker (p.5: Pronounced “Avivus”), not a phrase break, and is not transcribed. Accents are as printed. p.5 prints “comdemnation”; transcribed as printed — raise with the director rather than silently correcting, or our text diverges from the sheet again."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Having gone over to the serene harbor,\nto the quiet life and to the all-tranquil haven,\nyou have exchanged your pains for abiding dispassion.\nYou have received fitting honors from God\nas a reward from God for your labors,//\nO blessed passion-bearing martyrs."
+      }
+    }
+  ]
+}

@@ -83,7 +83,12 @@ describe('Feature contract: Nov 15, the Martyrs of Edessa', () => {
       assert.doesNotMatch(b.text, GENERIC_MONASTIC,
         'a General Menaion generic is being sung in a proper sticheron slot');
     }
-    assert.match(men.map(b => b.text).join(' '), /Abibus|Samonas|Gurias/,
+    // Accent-insensitive ON PURPOSE: the base St. Sergius text spells them
+    // "Abibus / Samonas / Gurias" and the OCA edition the parish sings spells
+    // them "Ab\u00edbus / Sam\u00f3nas / G\u00farias". This invariant is about WHOSE hymns
+    // are sung, not which edition — pinning one spelling made it fail the
+    // moment the parish's own wording was wired in.
+    assert.match(men.map(b => b.text).join(' '), /Ab[ií]bus|Sam[óo]nas|G[úu]rias/,
       'the Martyrs must be named in their own stichera');
   });
 

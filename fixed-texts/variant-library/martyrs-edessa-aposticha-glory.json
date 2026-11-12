@@ -1,0 +1,58 @@
+{
+  "key": "martyrs-edessa-aposticha-glory",
+  "_version": 1,
+  "_label": "Glory at the Aposticha, Martyrs of Edessa (11-15)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 15,
+      "title": "Holy Martyrs and Confessors Gurias, Samonas, and Habibus, of Edessa"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "aposticha",
+      "order": 0
+    },
+    "expect": [
+      "fd2cb42a361caa9a844e470bc8cd0fe985d63ba8ed196dec38be346bbd1b7369"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Same hymn, two translations. The base is our St. Sergius text; the parish sings the OCA wording printed in its packet (“The most wise Abíbus” vs the base’s “The all-wise Abibus”). reference/orders/2026-1115-order-services.txt appoints these slots exactly — “3 stichera of the Martyrs, Tone 4” and “Glory… Martyrs, Tone 2” at both Lord-I-Call and the Aposticha — so only the WORDING is at issue, never the shape.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St. Sergius translation (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-12",
+        "translation_family": "stSergius",
+        "source_citation": "stichera.id=9396, source stSergius"
+      },
+      "value": {
+        "tone": 2,
+        "text": "Come, all ye who love the martyrs, let us honor with hymns the warriors of Christ, Gurias, Samonas and Abibus, who most gloriously work miracles; for they refused not to respond to the oath of the maiden, but, fulfilling her petition, saved the virgin, wreaking vengeance upon the all-iniquitous Goth. Through their supplications, O Christ God, save us, in that Thou art good and the Lover of mankind."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA wording, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-12",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Declared explicitly rather than inferred from the citation prose.",
+        "source_citation": "docs/choir-packets/2026-11-11/pdf/great-vespers-2026-11-14.pdf p.9, heading “NOVEMBER 15 / Holy Martyrs and Confessors Gurias, Samonas and Abibas”. Read VISUALLY from the scan, not from the OCR sidecar. The sheet’s own “*” after Abíbus is a footnote marker (p.5: Pronounced “Avivus”), not a phrase break, and is not transcribed. Accents are as printed. p.5 prints “comdemnation”; transcribed as printed — raise with the director rather than silently correcting, or our text diverges from the sheet again."
+      },
+      "value": {
+        "tone": 2,
+        "text": "Come, O lovers of the martyrs,\nlet us honor with hymns Christ’s most excellent martyrs,\nGúrias, Abíbus, and Samónas.\nThey most wonderfully worked miracles,\nfor they did not refuse to respond to the oath of the maiden,\nbut, fulfilling her request, they saved the daughter,\nand requited the lawless Goth.\nThrough their supplications, O Christ our God,\nsave our souls, as You are good and the Lover of man!"
+      }
+    }
+  ]
+}

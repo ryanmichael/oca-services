@@ -1,0 +1,58 @@
+{
+  "key": "obadiah-lic-v2",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (2), Prophet Obadiah (11-19)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 19,
+      "title": "Prophet Obadiah (Abdia)"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 2
+    },
+    "expect": [
+      "f7ccb442a06d8e4cd67c890a211bca3bc87c6148424f71368df36890928cc9f3"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Same hymn, two translations. The base is our St. Sergius text in the Thee/Thou register; the parish sings the OCA wording in You/Your, printed in its packet. Verse (2) is not merely a register difference — the base reads “Of the primary traits * and essential proofs * wherewith God is made known” where the packet reads “The glorious and honorable prophets participate through communion by grace in the very attributes and properties by which God is made known”, which scored 0.42 against ours and counted as a MISS. The sheet marks these “To the special melody: All-praised martyrs”.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St. Sergius translation (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-12",
+        "translation_family": "stSergius",
+        "source_citation": "stichera.id=9409, source stSergius"
+      },
+      "value": {
+        "tone": 1,
+        "text": "Of the primary traits * and essential proofs * wherewith God is represented * do the glorious and honorable prophets * partake as a gift secondarily * through communion and grace * when the Lord illumineth His favored ones ** with His effulgence."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA wording, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-12",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Declared explicitly rather than inferred from the citation prose.",
+        "source_citation": "docs/choir-packets/2026-11-11/pdf/daily-vespers-2026-11-19.pdf p.3, heading “November 19: Commemoration of the Holy Prophet Obadiah (9th cent. B.C.)”, positions (3)(2)(1), Tone 1. Read VISUALLY from the scan."
+      },
+      "value": {
+        "tone": 1,
+        "text": "The glorious and honorable prophets\nparticipate through communion by grace\nin the very attributes and properties\nby which God is made known.//\nThe Lord enlightens His chosen ones with His splendor!"
+      }
+    }
+  ]
+}

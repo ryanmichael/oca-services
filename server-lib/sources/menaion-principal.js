@@ -326,6 +326,35 @@ function pickPrincipalByOrthocalOrder(notable, orthocalData, fallback) {
 // principal to the named saint when present. Each entry is checked against the
 // ocanwa parish baseline and rendered output. Keep it minimal and cited.
 const PRINCIPAL_OVERRIDES = new Map([
+  // Nov 15: Martyrs and Confessors Gurias, Samonas and Abibus of Edessa, over
+  // Ven. Paisius Velichkovsky. Orthocal's `saints[]` for this date reads
+  //     ['Begin Nativity Fast', 'Our Venerable Father Paisius Velichkovsky']
+  // and omits the Martyrs ENTIRELY — identically in all four vendored years
+  // (2025-2028), so this is settled upstream behaviour, not a one-year glitch.
+  // That is why it belongs here and not in orthocal-corrections.js, whose own
+  // rule says a disagreement with our menaion data "is NOT a correction; that
+  // is what the principal picker is for".
+  //
+  // The picker's conservative guard keeps our default when it appears anywhere
+  // in orthocal's pool; the Martyrs do not appear, so it rebound to Paisius —
+  // who has a troparion but NO stichera and saint_type 'monastic'. The
+  // sticheraData chain then skipped the donor branch (gated on
+  // `!primary.saint_type`) and fell through to the General Menaion MONASTIC
+  // set, so Lord-I-Call sang four generic Tone 8 hymns under Paisius's name.
+  //
+  // Evidence, all outside orthocal:
+  //   - reference/orders/2026-1115-order-services.txt heads the day "Holy
+  //     Martyrs and Confessors Gurias, Samonas, and Abibus, of Edessa" and
+  //     appoints "3 stichera of the Martyrs, Tone 4", "Glory... Martyrs,
+  //     Tone 2" at both Lord-I-Call and the Aposticha.
+  //   - The choir packet for 2026-11-14 (docs/choir-packets/2026-11-11) prints
+  //     exactly those: Tone 4 for the Martyrs, and the Tone 2 Glory "Edessa
+  //     rejoices, for she is enriched with the shrine of the three martyrs".
+  //   - Our own commemoration 2342 already holds all of them; 2345 (Paisius)
+  //     holds none.
+  // Substring "Gurias" matches only 2342 among the six commemorations on
+  // this date. Surfaced 2026-11-12 reviewing the packet.
+  ['11-15', 'Gurias'],
   // Sep 16: Afterfeast of the Elevation + Great Martyr Euphemia the All-praised.
   // Parish sings Euphemia's Glory ("O all-glorious Euphemia") as the doxastikon.
   ['9-16', 'Euphemia'],

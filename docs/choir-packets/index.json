@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 13,
+  "packets": 14,
   "counts": {
-    "service": 35,
+    "service": 37,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
     "unbound": 4,
-    "assets": 170
+    "assets": 172
   },
   "assets": {
     "92817f66af30": {
@@ -346,6 +346,22 @@
       "filename": "11.12.26 Daily Vespers.pdf",
       "bytes": 4798711,
       "pages": 9
+    },
+    "6aa9f7712cf7": {
+      "id": "6aa9f7712cf7",
+      "sha256": "6aa9f7712cf7f3bd3521c47706ea0290f542098f4ffb7a488c49880dff72cc17",
+      "path": "2026-11-11/pdf/daily-vespers-2026-11-19.pdf",
+      "filename": "Daily Vespers 11.19.26.pdf",
+      "bytes": 3843017,
+      "pages": 8
+    },
+    "78705c04f487": {
+      "id": "78705c04f487",
+      "sha256": "78705c04f487740dd38bc57bd5f365ca209dce902f2feb3228e791834ebe1c45",
+      "path": "2026-11-11/pdf/great-vespers-2026-11-14.pdf",
+      "filename": "Great Vespers 11.14.26.pdf",
+      "bytes": 7181954,
+      "pages": 12
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1760,6 +1776,27 @@
       "asset": "273dba076b86",
       "packet": "2026-11-04",
       "remapped": true
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-18",
+      "contentDate": "2026-11-19",
+      "service": "dailyVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "6aa9f7712cf7",
+      "packet": "2026-11-11",
+      "remapped": true
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-14",
+      "contentDate": "2026-11-15",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "78705c04f487",
+      "packet": "2026-11-11"
     },
     {
       "kind": "block",

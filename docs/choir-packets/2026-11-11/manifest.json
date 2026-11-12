@@ -1,0 +1,80 @@
+{
+  "emailDate": "2026-11-11",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast #2 - Upcoming Services/Impt Dates",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast #2 - Upcoming Services/Impt Dates",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy-claude-code-oca-services/0aecc8e2-294c-4abe-9fdf-805068310824/scratchpad/drop",
+      "fetchedAt": "2026-11-12T14:02:16.211Z",
+      "attachments": 2
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-12T14:02:16.211Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Daily Vespers 11.19.26.pdf",
+      "kind": "service",
+      "service": "dailyVespers",
+      "serviceLabel": "Daily Vespers",
+      "apiDate": "2026-11-18",
+      "contentDate": "2026-11-19",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "confirmed",
+      "reasons": [],
+      "stored": "pdf/daily-vespers-2026-11-19.pdf",
+      "sha256": "6aa9f7712cf7f3bd3521c47706ea0290f542098f4ffb7a488c49880dff72cc17",
+      "bytes": 3843017,
+      "pages": 8,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-18",
+      "messageSubject": "St John Choir Email Blast #2 - Upcoming Services/Impt Dates",
+      "ocr": {
+        "file": "ocr/daily-vespers-2026-11-19.txt",
+        "pages": 8,
+        "textPages": 2,
+        "musicPages": 6,
+        "chars": 1892
+      },
+      "remappedFrom": {
+        "apiDate": "2026-11-19",
+        "contentDate": "2026-11-20"
+      },
+      "remapReason": "The sheet's own page 3 heading reads 'November 19: Commemoration of the Holy Prophet Obadiah', so 11-19 is the CONTENT date, not the civil evening. 2026-11-19 is a Thursday; the parish's standing Daily Vespers is Wednesday, and the director's next listed service is 'Nov 20 - GV w/Litya' for the Entrance. Sung Wed evening 11-18.",
+      "remappedAt": "2026-11-12T14:02:52.978Z"
+    },
+    {
+      "original": "Great Vespers 11.14.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-11-14",
+      "contentDate": "2026-11-15",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-11-14.pdf",
+      "sha256": "78705c04f487740dd38bc57bd5f365ca209dce902f2feb3228e791834ebe1c45",
+      "bytes": 7181954,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-14",
+      "messageSubject": "St John Choir Email Blast #2 - Upcoming Services/Impt Dates",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-11-14.txt",
+        "pages": 12,
+        "textPages": 7,
+        "musicPages": 5,
+        "chars": 6058
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [],
+  "excluded": []
+}

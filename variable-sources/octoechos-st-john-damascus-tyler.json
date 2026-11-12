@@ -7,7 +7,8 @@
     "_translationFamily": "oca-menaion",
     "_familyNote": "OCA. The OCA Music Department engraved choir editions — a different OCA EDITION from the service-texts DOCX that feeds the base, not a different translator. Declared explicitly rather than inferred from the prose _source, because prose inference is what laundered the HTM Beatitudes into the OCA family.",
     "_sourceTypos": "Transcribed AS PRINTED, including two oddities of the director's sheet that a silent correction would hide: p.2 sticheron (9) reads \"for he hast granted joy to the world\" (\"hast\" with \"he\"), and p.3 sticheron (5) capitalises \"Granting\" mid-sentence at a line break. The choir already sings from this sheet; normalising either would re-open the gap between our text and theirs, which is the whole point of this file. Flag them to the director rather than editing here.",
-    "_licSelection": "The packet prints SEVEN Tone 6 resurrectional stichera, pre-numbered 10,9,8,7,6,5,4 for a set where the Octoechos takes 10-4. They are a LIBRARY, not a rubric: on 2026-11-07 the director strikes (6) because the Menaion supplies six stichera, so the Octoechos keeps 10-7. This file carries all seven texts; WHICH are sung stays entirely with the assembler, untouched. Packet 10..5 are base hymns 1..6; packet (4) is the separate \"glory\" node, the Resurrectional Doxastichon."
+    "_licSelection": "The packet prints SEVEN Tone 6 resurrectional stichera, pre-numbered 10,9,8,7,6,5,4 for a set where the Octoechos takes 10-4. They are a LIBRARY, not a rubric: on 2026-11-07 the director strikes (6) because the Menaion supplies six stichera, so the Octoechos keeps 10-7. This file carries all seven texts; WHICH are sung stays entirely with the assembler, untouched. Packet 10..5 are base hymns 1..6; packet (4) is the separate \"glory\" node, the Resurrectional Doxastichon.",
+    "_tone7Note": "Tone 7 Lord-I-Call carries a SEVENTH resurrectional sticheron the base file lacks. reference/orders/2026-1115-order-services.txt appoints '7 stichera of the Resurrection, Tone 7'; the base holds 6, so licNoLeadingRepeat capped the ladder at 9 and every verse number sat one slot late (the packet's (10) was our v9). The seventh is transcribed AS PRINTED from docs/choir-packets/2026-11-11 great-vespers-2026-11-14.pdf p.3 position (4), read visually. It is in the MODERN register while the other six are thee/thou - the director sourced it outside OCA chant form, which is why the base never had it (see memory project_lic_seventh_resurrection_sticheron). Not added to the base: we cannot attribute it to OCA."
   },
   "tone6": {
     "saturday": {
@@ -72,6 +73,47 @@
           },
           "glory": {
             "text": "Thy burial destroyed the bonds of Hades, O Lord. Thy resurrection from the dead enlightened the world,\nO Lord: glory to thee."
+          }
+        }
+      }
+    }
+  },
+  "tone7": {
+    "saturday": {
+      "vespers": {
+        "lordICall": {
+          "resurrectional": {
+            "note": "All SEVEN Tone 7 resurrectional stichera, as the parish sings them. Orders 1-6 are the OCA Obikhod text, verbatim from the base file and verified against the packet; order 7 is the one the base does not hold.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Come, let us rejoice in the Lord, Who destroyed the dominion of death! Let us sing to Him with the bodiless hosts, for He enlightened the race of man!\nO our Maker and Savior, glory to Thee!"
+              },
+              {
+                "order": 2,
+                "text": "Thou didst endure the Cross and burial for our sake. By Thy death, Thou didst destroy death as God. We fall down before Thy Resurrection on the third day,\nO Savior, glory to Thee!"
+              },
+              {
+                "order": 3,
+                "text": "When the Apostles beheld the Resurrection of the Maker, they were amazed and sang the angelic praise. This is the glory of the Church. This is the richness of the Kingdom.\nO Lord, crucified for our sake, glory to Thee!"
+              },
+              {
+                "order": 4,
+                "text": "Thou wast held by lawless men, O Christ, but to me, Thou art God, and I am not ashamed. Thou wast smitten on the cheek, but I do not deny Thee. Thou wast nailed to the Cross and I do not conceal it, for I glory in Thy Resurrection: Thy death is my life.\nO almighty Lord and Lover of man, glory to Thee!"
+              },
+              {
+                "order": 5,
+                "text": "Fulfilling the prophecy of David, Christ manifested His greatness in Zion to the disciples. He is praised and always glorified, together with the Father and the Holy Spirit. At first as the Word, He was bodiless, but then He took flesh and was slain for our sake.\nHe rose in power as the Lover of man!"
+              },
+              {
+                "order": 6,
+                "text": "Thou didst descend into hell as Thou didst will, O Christ, overthrowing death as God and rising on the third day as Master! With Thyself Thou didst raise Adam from the bonds of hell and from corruption!\nGlory to Thy Resurrection, O only Lover of man!"
+              },
+              {
+                "order": 7,
+                "text": "You were placed in the tomb, O Lord, as one asleep. On the third day you rose in power, Raising Adam with yourself from the corruption of death\nAs the almighty one."
+              }
+            ]
           }
         }
       }

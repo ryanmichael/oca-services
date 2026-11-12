@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node scripts/validate-schemas.js --quiet && node --test test/smoke.test.js test/old-style.test.js test/calendar-seasons.test.js test/pronouns.test.js test/psalter-and-register.test.js test/choir-mail-parse.test.js test/choir-assets.test.js",
+    "test": "node scripts/validate-schemas.js --quiet && node --require ./test/_shared/server-stderr-tap.js --test test/smoke.test.js test/old-style.test.js test/calendar-seasons.test.js test/pronouns.test.js test/psalter-and-register.test.js test/choir-mail-parse.test.js test/choir-assets.test.js",
     "validate": "node scripts/validate-schemas.js",
-    "test:contracts": "node --test --test-concurrency=1 test/contracts/*.test.js",
+    "test:contracts": "node --require ./test/_shared/server-stderr-tap.js --test --test-concurrency=1 test/contracts/*.test.js",
     "setup-hooks": "node scripts/setup-hooks.js",
     "migrate": "node scripts/migrate.js",
     "drift:check": "node scripts/drift-check.js",

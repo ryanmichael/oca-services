@@ -24,7 +24,7 @@ const tp   = require(path.join(ROOT, 'server-lib', 'sources', 'translation-prove
 const RULE = require(path.join(ROOT, 'audit', 'rules', 'D-structure',
                                'D23-translation-mix-within-service'));
 
-const PORT = 3107;
+const PORT = 3140;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

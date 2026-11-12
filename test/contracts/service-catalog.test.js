@@ -19,7 +19,7 @@ const { spawn } = require('node:child_process');
 const { SERVICE_CATALOG, matches } = require('../../server-lib/search/service-catalog');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const PORT = 3095;
+const PORT = 3130;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 
 const get = (p) => new Promise((resolve, reject) => {
   http.get(`http://localhost:${PORT}${p}`, (res) => {

@@ -16,7 +16,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const PORT = 3106; // distinct: see sibling contract tests for the port ledger (3105 was the last taken)
+const PORT = 3138;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

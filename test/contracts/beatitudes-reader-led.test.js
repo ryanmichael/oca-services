@@ -15,7 +15,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const PORT = 3093; // distinct from vespers (3094), polyeleos (3095), sunday-kontakia (3096), confess-first (3097), patron (3098), smoke (3099), dev (3000), faithful-litany (3090)
+const PORT = 3129;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

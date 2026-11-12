@@ -15,7 +15,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const { spawn } = require('node:child_process');
 
-const PORT = 3096; // distinct from confess (3097), patron (3098), smoke (3099), dev (3000)
+const PORT = 3131;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

@@ -18,7 +18,7 @@ const http = require('node:http');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const PORT = 3102;
+const PORT = 3134;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

@@ -34,7 +34,7 @@ const ROOT = path.join(__dirname, '..', '..');
 const { orderResurrectionCount } = require(path.join(ROOT, 'server-lib', 'sources', 'order-of-services'));
 const { getLiturgicalSeason } = require(path.join(ROOT, 'calendar-rules'));
 
-const PORT = 3106;
+const PORT = 3139;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

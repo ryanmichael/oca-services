@@ -27,7 +27,7 @@ const ROOT = path.join(__dirname, '..', '..');
 const OCTOECHOS = require(path.join(ROOT, 'variable-sources', 'octoechos.json'));
 
 
-const PORT = 3105;
+const PORT = 3137;  // unique across the suite — enforced by test/contracts/port-ledger.test.js
 let serverProcess;
 
 function get(urlPath) {

@@ -22,7 +22,8 @@ function getCalendarEntry(dateStr, style = 'new', opts = {}) {
   const handAuthored = fs.existsSync(calPath) ? loadJSON(`variable-sources/calendar/${dateStr}.json`) : null;
 
   const generated = generateCalendarEntry(dateStr, style,
-    { skipVigil: serviceSetFor(dateStr, style, opts.rubrics)?.serviceType === 'dailyVespers' });
+    { skipVigil: serviceSetFor(dateStr, style, opts.rubrics)?.serviceType === 'dailyVespers',
+      elevateVigil: isTemplePatronDay(dateStr, style, opts.rubrics) });
 
   if (generated && handAuthored) {
     // Merge: auto-generated base + hand-authored liturgy (and commemorations if present)
@@ -32,6 +33,31 @@ function getCalendarEntry(dateStr, style = 'new', opts = {}) {
   }
 
   return applyLityaPolicy(generated ?? handAuthored, dateStr, style, opts.rubrics);
+}
+
+/**
+ * Is `dateStr` the day of the parish's temple patron?
+ *
+ * A temple keeps its patron at vigil rank even where the general calendar
+ * ranks him lower, so this lifts the Vespers of the eve to Great Vespers with
+ * Litya for that parish alone. `rubrics.temple.naturalKey` is "MM-DD/slug"
+ * (e.g. "12-04/john-of-damascus"), written by buildRubrics from
+ * parish_settings.patron_natural_key.
+ *
+ * Compared against the FIXED-feast date, the same adjustment getFeastRank
+ * makes, so an Old-Calendar parish's patron lands on its own reckoning rather
+ * than thirteen days out.
+ */
+function isTemplePatronDay(dateStr, style, rubrics) {
+  const key = rubrics?.temple?.naturalKey;
+  if (typeof key !== 'string') return false;
+  const m = /^(\d{1,2})-(\d{1,2})\b/.exec(key);
+  if (!m) return false;
+  const date = new Date(`${dateStr}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return false;
+  const { fixedFeastDate } = require('../../calendar-rules');
+  const adj = fixedFeastDate(date, style);
+  return (adj.getUTCMonth() + 1) === Number(m[1]) && adj.getUTCDate() === Number(m[2]);
 }
 
 /**

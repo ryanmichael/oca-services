@@ -193,8 +193,19 @@ function dispatchCalendarEntry(dateStr, style = 'new', opts = {}) {
   // omitted in parish practice" — so omitting it is defensible; a parish that
   // serves one needs the Litya-policy work that this rank/practice coupling is
   // still waiting on.
+  // opts.elevateVigil: this date is the PATRON of the parish's temple. A temple
+  // keeps its patron at vigil rank even when the general calendar ranks him
+  // lower — St John of Damascus (12-04) is six-stichera everywhere else, and
+  // St John of Damascus, Tyler serves "GV w/Litya for Patronal Feast" (choir
+  // blast 2026-11-11). Parish-scoped: the flag is only ever set from
+  // rubrics.temple, so no other parish's 12-04 moves.
+  //
+  // The mirror of opts.skipVigil, which already lets a parish render a
+  // vigil-rank feast as Daily Vespers. Before this there was only a downgrade
+  // path, so a patronal feast rendered as an ordinary weekday Daily Vespers
+  // with no Litya, no Kathisma and no Entrance.
   const feastRank = getFeastRank(date, style);
-  if (feastRank === 'vigil' && dow !== 'sunday' && !opts.skipVigil) {
+  if ((feastRank === 'vigil' || opts.elevateVigil) && dow !== 'sunday' && !opts.skipVigil) {
     return generateVigilFeastVespers(dateStr, dow, tone);
   }
 

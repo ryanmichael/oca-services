@@ -29,10 +29,10 @@ function getCalendarEntry(dateStr, style = 'new', opts = {}) {
     // Merge: auto-generated base + hand-authored liturgy (and commemorations if present)
     if (handAuthored.liturgy)         generated.liturgy         = handAuthored.liturgy;
     if (handAuthored.commemorations)  generated.commemorations  = handAuthored.commemorations;
-    return applyLityaPolicy(generated, dateStr, style, opts.rubrics);
+    return applyVigilServedAlone(applyLityaPolicy(generated, dateStr, style, opts.rubrics), dateStr, style, opts.rubrics);
   }
 
-  return applyLityaPolicy(generated ?? handAuthored, dateStr, style, opts.rubrics);
+  return applyVigilServedAlone(applyLityaPolicy(generated ?? handAuthored, dateStr, style, opts.rubrics), dateStr, style, opts.rubrics);
 }
 
 /**
@@ -124,6 +124,35 @@ function applyLityaPolicy(entry, dateStr, style, rubrics) {
   const vespers = { ...entry.vespers };
   delete vespers.litya;
   return { ...entry, vespers };
+}
+
+/**
+ * Whether the parish serves the eve of a vigil-appointed day as Great Vespers
+ * ALONE — no Matins after it. Applied after the entry is built, like the Litya
+ * policy: the day's RANK still says "vigil" (8 stichera, paremias, Litya,
+ * troparion thrice, Blessing of the Loaves); only the ending changes, from
+ * "Matins follows immediately" to the Vespers dismissal. The OCA order prints
+ * both endings as alternatives — "If a Vigil is Served" / "Or, if Great
+ * Vespers alone is served" (reference/orders/2024-0908-order-services.txt).
+ *
+ * Per day, not per rule: Tyler kept a full vigil for the Nativity of the
+ * Theotokos (2026-09-07) and the Transfiguration, but serves the Entry
+ * (2026-11-20) as "Great Vespers w/Litya" with no Matins — choir blast and
+ * rector's schedule of 2026-11-16, docs/choir-packets/2026-11-16/body.md.
+ *
+ * `rubrics.vespers.greatVespersAloneOn` is a list of "M-D" liturgical days
+ * (the day whose Vespers this is, i.e. the content date), compared on the
+ * fixed-feast reckoning like the other per-date picks.
+ */
+function applyVigilServedAlone(entry, dateStr, style, rubrics) {
+  const days = rubrics?.vespers?.greatVespersAloneOn;
+  if (!Array.isArray(days) || days.length === 0) return entry;
+  if (entry?.vespers?.serviceType !== 'all-night-vigil') return entry;
+  const { fixedFeastDate } = require('../../calendar-rules');
+  const adj = fixedFeastDate(new Date(`${dateStr}T00:00:00Z`), style);
+  const md  = `${adj.getUTCMonth() + 1}-${adj.getUTCDate()}`;
+  if (!days.includes(md)) return entry;
+  return { ...entry, vespers: { ...entry.vespers, servedAlone: true } };
 }
 
 /**

@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 15,
+  "packets": 16,
   "counts": {
-    "service": 37,
+    "service": 39,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
-    "unbound": 6,
-    "assets": 174
+    "unbound": 8,
+    "assets": 178
   },
   "assets": {
     "92817f66af30": {
@@ -378,6 +378,38 @@
       "filename": "Great Vespers 11.14.26.pdf",
       "bytes": 7181954,
       "pages": 12
+    },
+    "b5b5376d3710": {
+      "id": "b5b5376d3710",
+      "sha256": "b5b5376d3710d3fc93142d06176f8323be9e000b071b5b41607aa9004c03e1a8",
+      "path": "2026-11-16/pdf/liturgy-2026-11-21.pdf",
+      "filename": "Festal Liturgy 11.21.26.pdf",
+      "bytes": 6203324,
+      "pages": 9
+    },
+    "c5aa667d5227": {
+      "id": "c5aa667d5227",
+      "sha256": "c5aa667d5227dfe8f1632714274823fe49dfe6953ded0ad4174d37e672b2221e",
+      "path": "2026-11-16/pdf/great-vespers-2026-11-20.pdf",
+      "filename": "Great Vespers w Litya 11.20.26.pdf",
+      "bytes": 6806912,
+      "pages": 12
+    },
+    "1368a6b72c4f": {
+      "id": "1368a6b72c4f",
+      "sha256": "1368a6b72c4f50ad104ce77ac9bb470d0935a0088046025324c6b7d64dce8db5",
+      "path": "2026-11-16/pdf/_unclassified/It is Truly Meet -Zakuk.pdf",
+      "filename": "It is Truly Meet -Zakuk.pdf",
+      "bytes": 692086,
+      "pages": 1
+    },
+    "f2e421f3dc52": {
+      "id": "f2e421f3dc52",
+      "sha256": "f2e421f3dc529efde930d8df856725d39cd658a0916408ca765e1af43f08d4d9",
+      "path": "2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf",
+      "filename": "Liturgy 2 Greek Antiphons.pdf",
+      "bytes": 13203013,
+      "pages": 21
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1813,6 +1845,26 @@
       "tone": null,
       "asset": "78705c04f487",
       "packet": "2026-11-11"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-21",
+      "contentDate": "2026-11-21",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "b5b5376d3710",
+      "packet": "2026-11-16"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-20",
+      "contentDate": "2026-11-21",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "c5aa667d5227",
+      "packet": "2026-11-16"
     },
     {
       "kind": "block",
@@ -3656,6 +3708,24 @@
         "no service keyword and no date"
       ],
       "path": "2026-11-10/pdf/_unclassified/Akathist of Thanksgiving Prep.pdf"
+    },
+    {
+      "asset": "1368a6b72c4f",
+      "filename": "It is Truly Meet -Zakuk.pdf",
+      "packet": "2026-11-16",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "path": "2026-11-16/pdf/_unclassified/It is Truly Meet -Zakuk.pdf"
+    },
+    {
+      "asset": "f2e421f3dc52",
+      "filename": "Liturgy 2 Greek Antiphons.pdf",
+      "packet": "2026-11-16",
+      "reasons": [
+        "service \"Liturgy\" recognised but no date in filename"
+      ],
+      "path": "2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf"
     },
     {
       "asset": "7eaf94f742c3",

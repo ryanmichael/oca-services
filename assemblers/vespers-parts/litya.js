@@ -48,7 +48,7 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
     const glorySource = resolveLityaSlot(lityaSpec.glory);
     if (glorySource) {
       blocks.push(makeBlock('litya-glory-label', section, 'doxology', null,
-        fixedTexts.doxology.gloryOnly));
+        lityaSpec.glory.combinesGloryNow ? fixedTexts.doxology.gloryNow : fixedTexts.doxology.gloryOnly));
       blocks.push(makeBlock('litya-glory-hymn', section, 'hymn', 'choir',
         glorySource.text, { tone: lityaSpec.glory.tone || glorySource.tone, source: lityaSpec.glory.source, label: lityaSpec.glory.label || glorySource.label }));
     }

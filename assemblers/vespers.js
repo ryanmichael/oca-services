@@ -129,7 +129,12 @@ function assembleVespers(calendarDay, fixedTexts, sources, opts = {}) {
   // Reported 2026-09-08 by the user after attending the vigil: our text both
   // dismissed the congregation mid-service and then stopped, omitting Matins
   // entirely. See /api/vigil, which joins the halves.
-  if (isVigil) {
+  //
+  // A parish that serves a vigil-rank eve as Great Vespers ALONE
+  // (vespers.servedAlone, from rubrics.vespers.greatVespersAloneOn) keeps the
+  // Litya and Blessing of the Loaves but takes the Vespers dismissal instead of
+  // handing over to Matins.
+  if (isVigil && !vespers.servedAlone) {
     const section = 'Blessing of Bread';
     blocks.push(makeBlock('vigil-blessing', section, 'prayer', 'priest',
       fixedTexts.prayers.vigilBlessing));

@@ -241,6 +241,16 @@
       "appliesTo": [
         "vespers"
       ]
+    },
+    "greatVespersAloneOn": {
+      "label": "Great Vespers alone (no Matins) on these feasts",
+      "description": "Feast days, as M-D (e.g. 11-21), whose eve the parish serves as Great Vespers with Litya ALONE rather than as an All-Night Vigil. The day keeps its vigil shape — eight stichera, readings, Litya, troparion thrice, Blessing of the Loaves — but ends with the Vespers dismissal instead of “Matins follows immediately”. The OCA order prints both endings as alternatives. Per feast, because practice varies by feast: St John of Damascus, Tyler kept full vigils for the Nativity of the Theotokos and the Transfiguration but serves the Entry of the Theotokos as Great Vespers w/Litya (choir blast 2026-11-16).",
+      "namespace": "vespers.greatVespersAloneOn",
+      "type": "csv-strings",
+      "default": [],
+      "appliesTo": [
+        "vespers"
+      ]
     }
   }
 }

@@ -1,0 +1,154 @@
+{
+  "emailDate": "2026-11-16",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast 11/16",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast 11/16",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy--claude-spares-spare-O6Fw3h/89b347df-1237-4cc9-97e8-7b4ba184cf95/scratchpad/drop",
+      "fetchedAt": "2026-11-18T02:56:55.908Z",
+      "attachments": 4
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-18T02:56:55.908Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Festal Liturgy 11.21.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-11-21",
+      "contentDate": "2026-11-21",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-11-21.pdf",
+      "sha256": "b5b5376d3710d3fc93142d06176f8323be9e000b071b5b41607aa9004c03e1a8",
+      "bytes": 6203324,
+      "pages": 9,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-11-21",
+      "messageSubject": "St John Choir Email Blast 11/16",
+      "ocr": {
+        "file": "ocr/liturgy-2026-11-21.txt",
+        "pages": 9,
+        "textPages": 3,
+        "musicPages": 6,
+        "chars": 2093
+      }
+    },
+    {
+      "original": "Great Vespers w Litya 11.20.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-11-20",
+      "contentDate": "2026-11-21",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-11-20.pdf",
+      "sha256": "c5aa667d5227dfe8f1632714274823fe49dfe6953ded0ad4174d37e672b2221e",
+      "bytes": 6806912,
+      "pages": 12,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-20",
+      "messageSubject": "St John Choir Email Blast 11/16",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-11-20.txt",
+        "pages": 12,
+        "textPages": 8,
+        "musicPages": 4,
+        "chars": 6373
+      }
+    },
+    {
+      "original": "It is Truly Meet -Zakuk.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/It is Truly Meet -Zakuk.pdf",
+      "sha256": "1368a6b72c4f50ad104ce77ac9bb470d0935a0088046025324c6b7d64dce8db5",
+      "bytes": 692086,
+      "pages": 1,
+      "hasTextLayer": false,
+      "messageSubject": "St John Choir Email Blast 11/16",
+      "ocr": {
+        "file": "ocr/It is Truly Meet -Zakuk.txt",
+        "pages": 1,
+        "textPages": 0,
+        "musicPages": 1,
+        "chars": 0
+      }
+    },
+    {
+      "original": "Liturgy 2 Greek Antiphons.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "service \"Liturgy\" recognised but no date in filename"
+      ],
+      "stored": "pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf",
+      "sha256": "f2e421f3dc529efde930d8df856725d39cd658a0916408ca765e1af43f08d4d9",
+      "bytes": 13203013,
+      "pages": 21,
+      "hasTextLayer": false,
+      "messageSubject": "St John Choir Email Blast 11/16",
+      "ocr": {
+        "file": "ocr/Liturgy 2 Greek Antiphons.txt",
+        "pages": 21,
+        "textPages": 2,
+        "musicPages": 19,
+        "chars": 1230
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [
+    {
+      "filename": "It is Truly Meet -Zakuk.pdf",
+      "stored": "pdf/_unclassified/It is Truly Meet -Zakuk.pdf",
+      "reasons": [
+        "no service keyword and no date"
+      ]
+    },
+    {
+      "filename": "Liturgy 2 Greek Antiphons.pdf",
+      "stored": "pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf",
+      "reasons": [
+        "service \"Liturgy\" recognised but no date in filename"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "filename": "Akathist of Thanksgiving Prep.pdf",
+      "reason": "identical to 2026-11-10/pdf/_unclassified/Akathist of Thanksgiving Prep.pdf",
+      "sha256": "79c95cbfbe89b84a781f97a67ba619b21a42ce9bacfd0adb29e68ebf1cccdf71"
+    },
+    {
+      "filename": "Daily Vespers 11.18.26.pdf",
+      "reason": "identical to 2026-11-11/pdf/daily-vespers-2026-11-19.pdf",
+      "sha256": "6aa9f7712cf7f3bd3521c47706ea0290f542098f4ffb7a488c49880dff72cc17"
+    }
+  ],
+  "excluded": []
+}

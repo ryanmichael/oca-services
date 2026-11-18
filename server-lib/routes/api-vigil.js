@@ -63,10 +63,14 @@ function handle(req, res, ctx) {
     // Only serve this route where a vigil is actually appointed. Anything else
     // must go to /api/service or /api/matins so the caller cannot silently get
     // a "vigil" that is really an ordinary Vespers glued to an ordinary Matins.
-    if (vespersEntry?.vespers?.serviceType !== 'all-night-vigil') {
+    // A parish that serves this eve as Great Vespers ALONE
+    // (rubrics.vespers.greatVespersAloneOn) has no vigil to join either.
+    if (vespersEntry?.vespers?.serviceType !== 'all-night-vigil' || vespersEntry.vespers.servedAlone) {
       res.writeHead(404, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
-        error: 'No All-Night Vigil is appointed for this evening.',
+        error: vespersEntry?.vespers?.servedAlone
+          ? 'This parish serves Great Vespers alone this evening, without Matins.'
+          : 'No All-Night Vigil is appointed for this evening.',
         date,
         hint:  'Use /api/service?service=vespers for the evening service, and /api/matins for Matins.',
       }));

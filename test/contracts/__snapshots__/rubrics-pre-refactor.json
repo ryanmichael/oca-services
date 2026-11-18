@@ -15,7 +15,10 @@
       "theotokionWeekTone": true
     },
     "vespers": {
-      "omitReadKathisma": true
+      "omitReadKathisma": true,
+      "greatVespersAloneOn": [
+        "11-21"
+      ]
     },
     "liturgy": {
       "prayersOfThanksgiving": true,

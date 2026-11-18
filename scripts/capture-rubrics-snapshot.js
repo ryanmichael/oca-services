@@ -79,6 +79,9 @@ function legacyBuildRubrics(row, picks = {}) {
     r.liturgy = { ...(r.liturgy || {}), silentCommunionPrayers: true };
   if (picked('sungVenerationEnding') && coerce(picks.sungVenerationEnding, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), sungVenerationEnding: true };
+  // Per-feast "Great Vespers alone" — server-lib/sources/calendar.js applyVigilServedAlone.
+  if (picked('greatVespersAloneOn') && coerce(picks.greatVespersAloneOn, 'csv-strings').length > 0)
+    r.vespers = { ...(r.vespers || {}), greatVespersAloneOn: coerce(picks.greatVespersAloneOn, 'csv-strings') };
 
   // Typed column, enum, default 'tt'. Emitted only when the parish differs.
   // (paschalCommunionYearRound is deliberately NOT here: production skips every

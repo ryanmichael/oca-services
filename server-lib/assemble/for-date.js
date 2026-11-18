@@ -915,7 +915,13 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           };
 
           if (lityaGlory) {
-            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: sticheraLabel };
+            // On a Great Feast with no separate Now row, the Glory doxastichon
+            // takes the "Now and ever" too — 11-21's Tone 5 (Leo the Master)
+            // under "Glory... now and ever" per reference/scrape/2025-11-21.docx
+            // and the Tyler 11.20.26 packet. A saint's vigil keeps Glory-only:
+            // a missing Theotokion row there is a data gap, not a combined slot.
+            const lityaGloryClaimsNow = !lityaNow && !!calendarEntry.liturgicalContext?.greatFeast;
+            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: sticheraLabel, combinesGloryNow: lityaGloryClaimsNow };
             autoSlot.litya.glory = { text: lityaGlory.text, tone: lityaGlory.tone, label: lityaGlory.label };
           }
           if (lityaNow) {

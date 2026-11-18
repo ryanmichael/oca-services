@@ -1,12 +1,12 @@
 {
   "great-vespers": {
-    "sheets": 14,
-    "pieces": 147,
-    "own": 147,
+    "sheets": 15,
+    "pieces": 155,
+    "own": 155,
     "crossService": 0,
-    "located": 131,
+    "located": 138,
     "verbatim": 65,
-    "inOrder": 131
+    "inOrder": 138
   },
   "daily-vespers": {
     "sheets": 6,
@@ -18,22 +18,22 @@
     "inOrder": 32
   },
   "liturgy": {
-    "sheets": 16,
-    "pieces": 79,
-    "own": 47,
-    "crossService": 32,
-    "located": 17,
+    "sheets": 17,
+    "pieces": 83,
+    "own": 49,
+    "crossService": 34,
+    "located": 19,
     "verbatim": 1,
-    "inOrder": 17
+    "inOrder": 19
   },
   "_all": {
-    "sheets": 36,
-    "pieces": 261,
-    "own": 229,
-    "crossService": 32,
-    "located": 180,
+    "sheets": 38,
+    "pieces": 273,
+    "own": 239,
+    "crossService": 34,
+    "located": 189,
     "verbatim": 78,
-    "inOrder": 180
+    "inOrder": 189
   },
   "_sheets": {
     "great-vespers-2026-07-11": {
@@ -359,6 +359,24 @@
       "located": 4,
       "inOrder": 4,
       "verbatim": 2
+    },
+    "great-vespers-2026-11-20": {
+      "service": "great-vespers",
+      "pieces": 8,
+      "own": 8,
+      "crossService": 0,
+      "located": 7,
+      "inOrder": 7,
+      "verbatim": 0
+    },
+    "liturgy-2026-11-21": {
+      "service": "liturgy",
+      "pieces": 4,
+      "own": 2,
+      "crossService": 2,
+      "located": 2,
+      "inOrder": 2,
+      "verbatim": 0
     }
   }
 }

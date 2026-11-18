@@ -99,3 +99,14 @@ Guarded by `test/contracts/entry-theotokos-vespers-1120.test.js`.
 Still open: Litya of 2-2, 8-15, 9-8, 9-14 have no order-0 Glory row (same
 mis-key class, unchecked); no Many Years after a Vespers dismissal; Litya
 petition names "Bishop Gerasim" though he is now Archbishop.
+
+### Packet-diff triage (2026-11-18)
+
+`great-vespers-2026-11-20` 7/8 located, 0/8 verbatim; `liturgy-2026-11-21` 2/2
+located, 0/2 verbatim. The one unlocated piece, "The prophets proclaimed you, O
+Virgin Mother of God" (best 0.49), IS printed — LIC (4), "Thou art the
+preaching of the prophets…", read visually against the scan. Every gap is
+the edition: the packet's Menaion texts are a different OCA translation in yy.
+No defect; baseline refreshed with the two sheets added, no existing sheet lowered.
+Matching her wording verbatim would be parish variants — a translation decision,
+not made here.

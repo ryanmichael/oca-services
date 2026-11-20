@@ -1,0 +1,90 @@
+{
+  "emailDate": "2026-11-19",
+  "sender": "cjruss63@gmail.com",
+  "subject": "St John Choir Email Blast #2 11/19",
+  "messages": [
+    {
+      "subject": "St John Choir Email Blast #2 11/19",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy--claude-spares-spare-8S5lJm/b5dfe694-9afa-49ec-9f43-2987fb959c93/scratchpad/drop-2026-11-19",
+      "fetchedAt": "2026-11-19T17:55:38.745Z",
+      "attachments": 2
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-19T17:55:38.745Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Divine Liturgy 11.22.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-11-22",
+      "contentDate": "2026-11-22",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-11-22.pdf",
+      "sha256": "c990ee3a362d243cdc09a50d2fad1e5149420d6bd395debbe161b840a487263a",
+      "bytes": 9742307,
+      "pages": 17,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-11-22",
+      "messageSubject": "St John Choir Email Blast #2 11/19",
+      "ocr": {
+        "file": "ocr/liturgy-2026-11-22.txt",
+        "pages": 17,
+        "textPages": 3,
+        "musicPages": 14,
+        "chars": 1410
+      }
+    },
+    {
+      "original": "Great Vespers 11.21.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-11-21",
+      "contentDate": "2026-11-22",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-11-21.pdf",
+      "sha256": "d1dcac1fc339c2366987cc5edea994b8a1939d41f7a7771ac5a2663a0626968b",
+      "bytes": 7038086,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-21",
+      "messageSubject": "St John Choir Email Blast #2 11/19",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-11-21.txt",
+        "pages": 13,
+        "textPages": 7,
+        "musicPages": 6,
+        "chars": 6063
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [],
+  "skipped": [
+    {
+      "filename": "Akathist of Thanksgiving 11.25.26.pdf",
+      "reason": "identical to 2026-11-10/pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf",
+      "sha256": "18f3ce825f997a196d4cb6bb2d0217d3d4df93527f613ad60a4271e282161d6c"
+    },
+    {
+      "filename": "Festal Liturgy 11.21.26.pdf",
+      "reason": "identical to 2026-11-16/pdf/liturgy-2026-11-21.pdf",
+      "sha256": "b5b5376d3710d3fc93142d06176f8323be9e000b071b5b41607aa9004c03e1a8"
+    },
+    {
+      "filename": "Great Vespers Litya 11.20.26.pdf",
+      "reason": "identical to 2026-11-16/pdf/great-vespers-2026-11-20.pdf",
+      "sha256": "c5aa667d5227dfe8f1632714274823fe49dfe6953ded0ad4174d37e672b2221e"
+    }
+  ],
+  "excluded": []
+}

@@ -105,6 +105,21 @@ describe('Entry of the Theotokos — Vespers 2026-11-20', () => {
     assert.equal((await get(`/api/vigil?date=2026-11-20&${TYLER}`)).status, 404);
     assert.equal((await get('/api/vigil?date=2026-11-20')).status, 200);
   });
+
+  // The service LIST must offer what the parish serves. Before 2026-11-20 the
+  // list still offered "All-Night Vigil" for Tyler, which opens /api/vigil —
+  // the 404 above — so the Great Vespers with Litya had no row to open.
+  it('INV-5 the day list offers Tyler a Great Vespers row, not the vigil it 404s', async () => {
+    const day = async (q) => (await get(`/api/days?from=2026-11-20&to=2026-11-20${q}`)).json[0].services;
+    const tyler = await day(`&${TYLER}`);
+    assert.equal(tyler.greatVespers, true, 'Tyler: Great Vespers row');
+    assert.ok(!tyler.allNightVigil, 'Tyler: no vigil row');
+    const base = await day('');
+    assert.equal(base.allNightVigil, true, 'OCA base keeps the vigil');
+    assert.ok(!base.greatVespers);
+    const nativity = (await get(`/api/days?from=2026-09-07&to=2026-09-07&${TYLER}`)).json[0].services;
+    assert.equal(nativity.allNightVigil, true, 'Tyler keeps its 9-07 vigil');
+  });
 });
 
 describe('Magnificat prokeimenon register', () => {

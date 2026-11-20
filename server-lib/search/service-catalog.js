@@ -40,7 +40,13 @@ const SERVICE_CATALOG = [
     key: 'greatVespers', name: 'Great Vespers', kind: 'date',
     description: 'Saturday evening and the eve of feasts, with the Entrance and Kathisma.',
     keywords: ['vespers', 'evening', 'saturday night', 'lord i call', 'lord i have cried'],
-    isServed: (d) => d.vespersEntry?.vespers?.serviceType === 'greatVespers' && !d.vespersEntry?.vespers?.serviceKey,
+    // A vigil-rank eve the parish serves as Great Vespers ALONE
+    // (rubrics.vespers.greatVespersAloneOn → vespers.servedAlone) is a Great
+    // Vespers here, not a vigil: /api/vigil 404s for it by design, so offering
+    // the vigil row left the service unreachable. Tyler 2026-11-20 — the list
+    // showed "All-Night Vigil" → "Service not available for this date".
+    isServed: (d) => (d.vespersEntry?.vespers?.serviceType === 'greatVespers' && !d.vespersEntry?.vespers?.serviceKey)
+      || (d.vespersEntry?.vespers?.serviceType === 'all-night-vigil' && d.vespersEntry?.vespers?.servedAlone === true),
   },
   {
     key: 'dailyVespers', name: 'Daily Vespers', kind: 'date',
@@ -52,7 +58,7 @@ const SERVICE_CATALOG = [
     key: 'allNightVigil', name: 'All-Night Vigil', kind: 'date',
     description: 'Great Vespers and Matins served as one service on the eve of a great feast or Sunday.',
     keywords: ['vigil', 'all night', 'all-night', 'vsenoshchnaya', 'litya', 'blessing of loaves'],
-    isServed: (d) => d.vespersEntry?.vespers?.serviceType === 'all-night-vigil',
+    isServed: (d) => d.vespersEntry?.vespers?.serviceType === 'all-night-vigil' && !d.vespersEntry?.vespers?.servedAlone,
   },
   {
     key: 'burialVespers', name: 'Vespers of Great Friday', kind: 'date',

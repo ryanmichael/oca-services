@@ -75,6 +75,33 @@ const { pickPrincipalByOrthocalOrder, applyPrincipalOverride,
         windowClaimsNowAndEver,
         feastWindowCoCommemorations } = require('./menaion-principal');
 
+// A Sunday inside a Great Feast's afterfeast (through the leavetaking) sings
+// the feast's Liturgy propers beside the Sunday's: Resurrection + Feast
+// prokeimenon and alleluia, the festal megalynarion instead of "It is truly
+// meet", and the feast koinonikon after "Praise the Lord from the heavens".
+// Every OCA order in reference/orders/ for such a Sunday prints this —
+// 2022-0206/2023-0205 Meeting, 2022-0807 Transfiguration, 2022-0821/2023-0820
+// Dormition, 2022-0911/2023-0910 Nativity of the Theotokos, 2026-1122 Entry,
+// 2023-0326 Annunciation. The texts already live in great-feast-variants.json;
+// before 2026-11-20 nothing attached them on the Sunday, so the Entry,
+// Meeting and Nativity-of-the-Theotokos afterfeast Sundays sang "It is truly
+// meet" and none of these Sundays had the feast prokeimenon or koinonikon.
+//
+// Excluded on purpose: Theophany, the Elevation and the Nativity of Christ
+// have their own "Sunday After" sets (the orders print those, not the feast's);
+// the Beheading is a lesser feast whose order prints no feast propers.
+// Keyed off the window commemoration's TITLE, which is the feast calendar's
+// own statement that the day lies in the window.
+const AFTERFEAST_SUNDAY_FEASTS = [
+  [/\bMeeting of our Lord\b/i,                       'meeting'],
+  [/\bTransfiguration\b/i,                           'transfiguration'],
+  [/\bDormition\b/i,                                 'dormition'],
+  [/\bNativity of the (?:Mother of God|Theotokos)\b/i, 'nativityTheotokos'],
+  [/\bEntry of the Most Holy\b/i,                    'entryTheotokos'],
+  [/\bAnnunciation\b/i,                              'annunciation'],
+];
+const AFTERFEAST_WINDOW_TITLE = /^(?:Afterfeast|Leavetaking) of /i;
+
 // Falls back from the menaion DB's `saint_type` column when it's missing —
 // most commonly on "Uncovering of the relics of …", "Translation of the relics
 // of …", "Repose of …", "Glorification of …" rows where the scraper left
@@ -822,6 +849,18 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     if (date.getTime() === meatfareDate.getTime())   lentenKey = 'meatfare';
   }
 
+  // Sunday inside a Great Feast's afterfeast — see AFTERFEAST_SUNDAY_FEASTS.
+  // The window commemoration is the principal (11-22) or sits beside a saint
+  // who outranks it (feastCycleComm). Lenten Sundays keep their own second set.
+  const afterfeastWindowComm = principalIsFeastWindow ? menaionPrincipal : feastCycleComm;
+  const afterfeastSundayKey =
+    (isSunday && !feast && !pentOverride && lentenKey === null
+      && AFTERFEAST_WINDOW_TITLE.test(afterfeastWindowComm?.title || ''))
+      ? (AFTERFEAST_SUNDAY_FEASTS.find(([re]) => re.test(afterfeastWindowComm.title))?.[1] ?? null)
+      : null;
+  const afterfeastSundayFeast = afterfeastSundayKey ? GREAT_FEAST_VARIANTS[afterfeastSundayKey] : null;
+  const afterfeastLabel = afterfeastSundayFeast?.label || null;
+
   // Great Feast / Pentecostarion Sunday prokeimenon/alleluia override (highest priority)
   if (feast?.prokeimenon) {
     const fp = feast.prokeimenon;
@@ -894,6 +933,17 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (gmp && prokeimenon && !prokeimenon.secondary) {
     prokeimenon = { ...prokeimenon, secondary: { ...gmp.prokeimenon, label: gmpLabel } };
   }
+  // Afterfeast Sunday: the feast's prokeimenon beside the Sunday one. Refrain
+  // only — the OCA co-celebrated convention ("and Feast, Tone 3: My soul doth
+  // magnify the Lord…" names no stichos). Attached AFTER the polyeleos saint
+  // on purpose: a polyeleos saint inside the window takes the second set
+  // (reference/orders/2026-0809: "Resurrection… and St. Herman", the feast
+  // keeping only the megalynarion), the same precedence the alleluia and
+  // koinonikon blocks below already give it.
+  if (afterfeastSundayFeast?.prokeimenon && prokeimenon && !prokeimenon.secondary) {
+    const fp = afterfeastSundayFeast.prokeimenon;
+    prokeimenon = { ...prokeimenon, secondary: { tone: fp.tone, label: afterfeastLabel, refrain: fp.refrain } };
+  }
   // Safety: if we suppressed the weekday cascade but no General Menaion entry
   // exists for this saint's category (Forerunner, Theotokos icons, generic
   // synaxes whose saint_type is null), fall back to the daily prokeimenon
@@ -958,6 +1008,10 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     megalynarion = { text: GREAT_FEAST_VARIANTS.dormition.megalynarion };
   } else if (isElevationAfterfeast && GREAT_FEAST_VARIANTS.elevation?.megalynarion) {
     megalynarion = { text: GREAT_FEAST_VARIANTS.elevation.megalynarion };
+  } else if (afterfeastSundayFeast?.megalynarion) {
+    // Entry / Meeting / Nativity of the Theotokos / Annunciation afterfeast
+    // Sundays (Transfiguration and Dormition are covered window-wide above).
+    megalynarion = { text: afterfeastSundayFeast.megalynarion };
   } else if (isPaschalPeriod) {
     megalynarion = { text: LITURGY_DEFAULTS.paschalMegalynarion };
   } else if (isBasil) {
@@ -987,6 +1041,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // one — a single verse (Ps. 73:2), where the feast day itself sings two.
   if (sundayAfterElevation && alleluia && !alleluia.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.alleluia) {
     alleluia = { ...alleluia, secondary: SUNDAY_AFTER_ELEVATION_PROPER.alleluia };
+  }
+  // Afterfeast Sunday: the feast's alleluia beside the Sunday one — its first
+  // verse only, the same single-verse convention as the Sunday After the
+  // Exaltation (the feast day itself sings both).
+  if (afterfeastSundayFeast?.alleluia && alleluia && !alleluia.secondary) {
+    const fa = afterfeastSundayFeast.alleluia;
+    alleluia = { ...alleluia, secondary: { tone: fa.tone, label: afterfeastLabel, verses: (fa.verses || []).slice(0, 1) } };
   }
   // Safety fallback (parallel to prokeimenon): weekday daily alleluia when no
   // saint-category propers exist for this rank.
@@ -1040,6 +1101,7 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // 2026-10-11 while the second Gospel rendered — yet the choir packet for that
   // Sunday carries the music for it.
   const prescribedSecondKoinonikon = holyFathersSunday || sundayAfterElevation
+    || !!afterfeastSundayFeast
     || (lentenKey !== null && ['1', '2', '3', '4', '5'].includes(String(lentenKey)));
 
   // Lenten commemoration Sundays (Palamas week 2, Climacus 4, Mary of Egypt 5)
@@ -1057,6 +1119,12 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   // secondKoinonikon toggle at render time, like every other second koinonikon.
   if (sundayAfterElevation && (secondKoinonikonAllowed || prescribedSecondKoinonikon) && !communionHymn.secondary && SUNDAY_AFTER_ELEVATION_PROPER?.communionHymn) {
     communionHymn = { ...communionHymn, secondary: SUNDAY_AFTER_ELEVATION_PROPER.communionHymn };
+  }
+  // Afterfeast Sunday: the feast koinonikon ("I will receive the cup of
+  // salvation…" for the Theotokos feasts) after "Praise the Lord…". Prescribed
+  // by the order, so it renders past a parish's optional-verse toggle.
+  if (afterfeastSundayFeast?.communionHymn && !communionHymn.secondary) {
+    communionHymn = { ...communionHymn, secondary: { label: afterfeastLabel, text: afterfeastSundayFeast.communionHymn, prescribed: true } };
   }
   // 9-13 Founding of the Church: "I have loved the beauty of Thy house…"
   // alongside the day's koinonikon.

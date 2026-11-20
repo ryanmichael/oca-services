@@ -218,6 +218,15 @@ const FEAST_WINDOW_COCOMMEMORATIONS = new Map([
   ['9-20', { match: 'Eustáthios', vespersTroparion: true }],
   // Leavetaking of the Elevation + Apostle Quadratus of the Seventy
   ['9-21', { match: 'Quadratus', vespersTroparion: false }],
+  // Afterfeast of the Entry + Apostles Philemon, Archippus, Apphia, Onesimus.
+  // reference/orders/2026-1122-order-services.txt, "Or, if Great Vespers alone
+  // is served": Resurrectional Troparion, Tone 8 / Glory… Troparion of the
+  // Apostles, Tone 3 / Now and ever… Troparion of the Feast, Tone 4; and at the
+  // Liturgy the Apostles' troparion after the Feast/Church, the kontakion at
+  // "Glory…". The Tyler packet (docs/choir-packets/2026-11-19) prints the same
+  // sheets with "Glory" pencilled over the Apostles. Without this entry the
+  // Apostles were absent from both services. Added 2026-11-20; the 9-20 shape.
+  ['11-22', { match: 'Philemon and Archippus', vespersTroparion: true }],
 ]);
 
 /**

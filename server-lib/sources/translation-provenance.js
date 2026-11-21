@@ -22,6 +22,7 @@
 //     the OCA Obikhod.
 
 const path = require('path');
+const fs   = require('fs');
 
 // A translation FAMILY. Rows differing only in which OCA artifact they were
 // transcribed from are one family — the question is whether a service mixes
@@ -271,6 +272,19 @@ function index(opts = {}) {
     }
     db.close();
   } catch (err) { dbError = err.message; }
+
+  // 3. The parish Raphaela layer (variable-sources/parish-texts/), the corpus
+  // text a parish with menaion.textSource = raphaela hears in place of a base
+  // row. Not in the DB, so without this the provenance sweep read ~800 sung
+  // Raphaela hymns as unresolved on 2026-11-20. Indexed only where no DB text
+  // already claims the string.
+  try {
+    const f = path.join(ROOT, 'variable-sources', 'parish-texts', 'raphaela-menaion.json');
+    for (const e of JSON.parse(fs.readFileSync(f, 'utf8')).entries || []) {
+      const t = e?.value?.text;
+      if (t && !map.has(norm(t))) map.set(norm(t), 'raphaela');
+    }
+  } catch (_) { /* no layer is not a finding */ }
 
   map._dbRows  = dbRows;
   map._dbError = dbError;

@@ -581,7 +581,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
                 && (crossDay || s.groupRole !== 'stavrotheotokion')
             );
             if (licNowOwn) {
-              lic.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.now`, tone: licNowOwn.tone, label: 'Theotokion' };
+              lic.now = { source: 'menaion', provenance: provOf(licNowOwn.dbSource) || menaionProvenance, key: `auto.${date}.lordICall.now`, tone: licNowOwn.tone, label: 'Theotokion' };
               autoSlot.lordICall.now = { text: licNowOwn.text, tone: licNowOwn.tone, label: licNowOwn.label };
             } else if (nowTone && eve) {
               lic.now = {
@@ -617,7 +617,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               s => s.section === 'lordICall' && s.order === -1
                 && (crossDay || s.groupRole !== 'stavrotheotokion'));
             if (own) {
-              lic.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.now`, tone: own.tone, label: 'Theotokion' };
+              lic.now = { source: 'menaion', provenance: provOf(own.dbSource) || menaionProvenance, key: `auto.${date}.lordICall.now`, tone: own.tone, label: 'Theotokion' };
               autoSlot.lordICall.now = { text: own.text, tone: own.tone, label: own.label };
             }
           }
@@ -633,7 +633,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           const gloryOwner = (licGlory.commemorationId != null && licGlory.commemorationId !== primary?.id)
             ? (ranked?.all || []).find(c => c.id === licGlory.commemorationId)
             : null;
-          lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: gloryOwner?.title || sticheraLabel, combinesGloryNow: !lic.now };
+          lic.glory = { source: 'menaion', provenance: provOf(licGlory.dbSource) || menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: licGlory.tone, label: gloryOwner?.title || sticheraLabel, combinesGloryNow: !lic.now };
           autoSlot.lordICall.glory = { text: licGlory.text, tone: licGlory.tone, label: licGlory.label };
         } else if (isWeekdayInjection && !isGreatVespers && !isVigilFeast && !lic.glory && !lic.now) {
           // A simple weekday saint with NO doxastikon of his own. The books
@@ -660,7 +660,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             s => s.section === 'lordICall' && s.order === -1
               && (crossDay || s.groupRole !== 'stavrotheotokion'));
           if (own) {
-            lic.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: own.tone, label: 'Theotokion', combinesGloryNow: true };
+            lic.glory = { source: 'menaion', provenance: provOf(own.dbSource) || menaionProvenance, key: `auto.${date}.lordICall.glory`, tone: own.tone, label: 'Theotokion', combinesGloryNow: true };
             autoSlot.lordICall.glory = { text: own.text, tone: own.tone, label: own.label };
           } else if (weekTone && eve) {
             lic.glory = {
@@ -793,7 +793,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           || MENAION_APOSTICHA_VERSES[adjustedMD().join('-')]?.apostichaGloryClaimsNow === true;
 
         if (apostGlory && !triodionOwnsGlory) {
-          apost.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: sticheraLabel, combinesGloryNow: gloryClaimsNow };
+          apost.glory = { source: 'menaion', provenance: provOf(apostGlory.dbSource) || menaionProvenance, key: `auto.${date}.aposticha.glory`, tone: apostGlory.tone, label: sticheraLabel, combinesGloryNow: gloryClaimsNow };
           // Saturday: set the saint's own Theotokion (menaion order=-1) if present
           //   — that's the "Now and ever" of the feast, distinct from the
           //   Octoechos resurrectional Theotokion of the week. NA Saints
@@ -822,7 +822,7 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
               // row label here bypassed it and broke INV-4 (a mis-keyed
               // "the venerable martyr" descriptor printing over a Theotokion on
               // 2026-11-27).
-              apost.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };
+              apost.now = { source: 'menaion', provenance: provOf(apostNow.dbSource) || menaionProvenance, key: `auto.${date}.aposticha.now`, tone: apostNow.tone, label: 'Theotokion' };
               autoSlot.aposticha.now = { text: apostNow.text, tone: apostNow.tone, label: apostNow.label };
             } else {
               // Slavic rubric: aposticha Theotokion follows the tone of the
@@ -904,7 +904,9 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
           const litya = calendarEntry.vespers.litya;
           litya.slots = lityaStichera.map((s, i) => ({
             position: i + 1,
-            source:   'menaion', provenance: menaionProvenance,
+            // Per hymn, not per day: a parish translation layer (Raphaela)
+            // can replace some rows of a day and not others.
+            source:   'menaion', provenance: provOf(s.dbSource) || menaionProvenance,
             key:      `auto.${date}.litya.hymns.${i}`,
             tone:     s.tone,
             label:    sticheraLabel,
@@ -921,11 +923,11 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             // and the Tyler 11.20.26 packet. A saint's vigil keeps Glory-only:
             // a missing Theotokion row there is a data gap, not a combined slot.
             const lityaGloryClaimsNow = !lityaNow && !!calendarEntry.liturgicalContext?.greatFeast;
-            litya.glory = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: sticheraLabel, combinesGloryNow: lityaGloryClaimsNow };
+            litya.glory = { source: 'menaion', provenance: provOf(lityaGlory.dbSource) || menaionProvenance, key: `auto.${date}.litya.glory`, tone: lityaGlory.tone, label: sticheraLabel, combinesGloryNow: lityaGloryClaimsNow };
             autoSlot.litya.glory = { text: lityaGlory.text, tone: lityaGlory.tone, label: lityaGlory.label };
           }
           if (lityaNow) {
-            litya.now = { source: 'menaion', provenance: menaionProvenance, key: `auto.${date}.litya.now`, tone: lityaNow.tone, label: sticheraLabel };
+            litya.now = { source: 'menaion', provenance: provOf(lityaNow.dbSource) || menaionProvenance, key: `auto.${date}.litya.now`, tone: lityaNow.tone, label: sticheraLabel };
             autoSlot.litya.now = { text: lityaNow.text, tone: lityaNow.tone, label: lityaNow.label };
           }
         }

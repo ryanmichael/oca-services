@@ -63,7 +63,7 @@ function getSticheraDay(month, day, opts = {}) {
         groupRole: row.group_role,
       });
     }
-    const ovr = overridesFrom(opts);
+    const ovr = overridesFrom(opts, month, day);
     return Object.values(byComm).map(c => ({
       ...c, stichera: applyToStichera(ovr, month, day, c, c.stichera),
     }));
@@ -146,7 +146,7 @@ function getMenaionRanked(month, day, opts = {}) {
     // Parish overrides substitute in place — they never add or remove a hymn,
     // so hasTroparion/hasStichera and every ranking decision below are
     // unaffected by whether a parish has picked one.
-    const ovr = overridesFrom(opts);
+    const ovr = overridesFrom(opts, month, day);
     const enriched = comms.map(c => ({
       id:           c.id,
       title:        c.title,
@@ -219,7 +219,7 @@ function getMenaionDay(month, day, opts = {}) {
       SELECT type, tone, text, pronoun FROM troparia
       WHERE commemoration_id = ? AND pronoun = 'tt' ORDER BY type
     `);
-    const ovr = overridesFrom(opts);
+    const ovr = overridesFrom(opts, month, day);
     return comms.map(c => ({
       id:       c.id,
       title:    c.title,

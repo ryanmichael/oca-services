@@ -36,7 +36,8 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
       for (const hymn of hymns) {
         blocks.push(makeBlock(
           `litya-hymn-${hymnIdx}`, section, 'hymn', 'choir', hymn.text,
-          { tone: slot.tone || hymn.tone, source: slot.source, label: slot.label || hymn.label }
+          { tone: slot.tone || hymn.tone, source: slot.source, label: slot.label || hymn.label,
+            provenance: slot.provenance || hymn.provenance }
         ));
         hymnIdx++;
       }
@@ -50,7 +51,8 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
       blocks.push(makeBlock('litya-glory-label', section, 'doxology', null,
         lityaSpec.glory.combinesGloryNow ? fixedTexts.doxology.gloryNow : fixedTexts.doxology.gloryOnly));
       blocks.push(makeBlock('litya-glory-hymn', section, 'hymn', 'choir',
-        glorySource.text, { tone: lityaSpec.glory.tone || glorySource.tone, source: lityaSpec.glory.source, label: lityaSpec.glory.label || glorySource.label }));
+        glorySource.text, { tone: lityaSpec.glory.tone || glorySource.tone, source: lityaSpec.glory.source, label: lityaSpec.glory.label || glorySource.label,
+          provenance: lityaSpec.glory.provenance || glorySource.provenance }));
     }
   }
 
@@ -61,7 +63,8 @@ function assembleLitya(lityaSpec, fixedTexts, sources) {
       blocks.push(makeBlock('litya-now-label', section, 'doxology', null,
         lityaSpec.now.combinesGloryNow ? fixedTexts.doxology.gloryNow : fixedTexts.doxology.nowOnly));
       blocks.push(makeBlock('litya-now-hymn', section, 'hymn', 'choir',
-        nowSource.text, { tone: lityaSpec.now.tone || nowSource.tone, source: lityaSpec.now.source, label: lityaSpec.now.label || nowSource.label }));
+        nowSource.text, { tone: lityaSpec.now.tone || nowSource.tone, source: lityaSpec.now.source, label: lityaSpec.now.label || nowSource.label,
+          provenance: lityaSpec.now.provenance || nowSource.provenance }));
     }
   }
 

@@ -82,6 +82,9 @@ function legacyBuildRubrics(row, picks = {}) {
   // Per-feast "Great Vespers alone" — server-lib/sources/calendar.js applyVigilServedAlone.
   if (picked('greatVespersAloneOn') && coerce(picks.greatVespersAloneOn, 'csv-strings').length > 0)
     r.vespers = { ...(r.vespers || {}), greatVespersAloneOn: coerce(picks.greatVespersAloneOn, 'csv-strings') };
+  // Registry-only enum, default 'base'. Emitted only when the parish differs.
+  if (picked('menaionTextSource') && coerce(picks.menaionTextSource, 'enum') !== 'base')
+    r.menaion = { ...(r.menaion || {}), textSource: coerce(picks.menaionTextSource, 'enum') };
 
   // Typed column, enum, default 'tt'. Emitted only when the parish differs.
   // (paschalCommunionYearRound is deliberately NOT here: production skips every

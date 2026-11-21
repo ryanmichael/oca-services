@@ -251,6 +251,21 @@
       "appliesTo": [
         "vespers"
       ]
+    },
+    "menaionTextSource": {
+      "label": "Menaion translation the choir sings",
+      "description": "Which English translation of the Menaion stichera (Lord I Call, Litya, Aposticha) the parish hears. \"base\" renders the default text (OCA first). \"raphaela\" renders Mother Raphaela's Menaion — the corpus on the St John of Damascus choir site, in modern you/your — wherever it carries the hymn, including days where it appoints different hymns (reference/raphaela/parish-pairs.json); any hymn it lacks falls back to the base. Generated layer: variable-sources/parish-texts/raphaela-menaion.json. Set for St John of Damascus, Tyler, whose choir director prints from this corpus (2026-11-20).",
+      "namespace": "menaion.textSource",
+      "type": "enum",
+      "options": [
+        "base",
+        "raphaela"
+      ],
+      "default": "base",
+      "appliesTo": [
+        "vespers",
+        "matins"
+      ]
     }
   }
 }

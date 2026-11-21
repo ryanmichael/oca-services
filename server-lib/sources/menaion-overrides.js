@@ -82,7 +82,8 @@ function applyToStichera(overrides, month, day, comm, rows) {
       if (h.section !== row.section || h.order !== row.order) continue;
       if (!o.target.expect.includes(sha256(row.text))) continue; // detached — leave the base
       const hymn = asHymn(o.value, row.tone);
-      return { ...row, tone: hymn.tone, text: hymn.text, _parishVariant: `${o.key}/${o.variantId}` };
+      return { ...row, tone: hymn.tone, text: hymn.text, _parishVariant: `${o.key}/${o.variantId}`,
+               ...(o.target.dbSource ? { dbSource: o.target.dbSource } : {}) };
     }
     return row;
   });
@@ -101,15 +102,58 @@ function applyToTroparia(overrides, month, day, comm, rows) {
       if (h.type !== row.type) continue;
       if (!o.target.expect.includes(sha256(row.text))) continue; // detached
       const hymn = asHymn(o.value, row.tone);
-      return { ...row, tone: hymn.tone, text: hymn.text, _parishVariant: `${o.key}/${o.variantId}` };
+      return { ...row, tone: hymn.tone, text: hymn.text, _parishVariant: `${o.key}/${o.variantId}`,
+               ...(o.target.dbSource ? { dbSource: o.target.dbSource } : {}) };
     }
     return row;
   });
 }
 
 /** Pull overrides off the rubrics bag the assemblers already thread through. */
-function overridesFrom(opts) {
-  return opts?.rubrics?.menaionOverrides || opts?.menaionOverrides || null;
+// The parish TRANSLATION layer. A parish whose choir sings Mother Raphaela's
+// Menaion (rubric menaion.textSource = "raphaela"; St John of Damascus, Tyler —
+// memory feedback_tyler_match_connie) takes, for every Menaion sticheron the
+// corpus carries, the corpus text in place of the base row. The entries are
+// generated (scripts/menaion-ingest/raphaela-parish-build.js) in exactly the
+// shape of a variant pick, so they ride applyToStichera and its sha256 guard:
+// a re-authored base row DETACHES its entry rather than redirecting it.
+// Explicit parish picks come first and therefore win.
+const path = require('path');
+const fs = require('fs');
+const RAPHAELA_FILE = path.join(__dirname, '..', '..', 'variable-sources', 'parish-texts', 'raphaela-menaion.json');
+let raphaelaByDay = null;
+function raphaelaFor(month, day) {
+  if (!raphaelaByDay) {
+    raphaelaByDay = new Map();
+    try {
+      for (const e of JSON.parse(fs.readFileSync(RAPHAELA_FILE, 'utf8')).entries || []) {
+        const k = `${e.target.commemoration.month}-${e.target.commemoration.day}`;
+        if (!raphaelaByDay.has(k)) raphaelaByDay.set(k, []);
+        raphaelaByDay.get(k).push({ ...e, target: { ...e.target, dbSource: 'raphaela' } });
+      }
+    } catch (err) {
+      console.error('raphaela-menaion.json unreadable:', err.message);
+    }
+  }
+  return raphaelaByDay.get(`${month}-${day}`) || [];
+}
+
+/**
+ * The overrides in force for one Menaion day: the parish's explicit picks,
+ * then (when the parish sings Raphaela) that day's translation layer.
+ * `month`/`day` are optional; without them only the explicit picks apply.
+ */
+function overridesFrom(opts, month, day) {
+  const explicit = opts?.rubrics?.menaionOverrides || opts?.menaionOverrides || null;
+  if (opts?.rubrics?.menaion?.textSource !== 'raphaela' || month == null) return explicit;
+  // A hand-built parish service set for the day (rubrics.menaionServiceSet,
+  // each made from a packet) is the parish's own decision for that day and
+  // outranks the generated layer. Tyler 10-8 sings the OCA Glory "Where sin
+  // increased, as the Apostle teaches" (10.08.26 packet), not Raphaela's.
+  if (opts.rubrics.menaionServiceSet?.[`${month}-${day}`]) return explicit;
+  const layer = raphaelaFor(month, day);
+  if (!layer.length) return explicit;
+  return explicit ? [...explicit, ...layer] : layer;
 }
 
 module.exports = {

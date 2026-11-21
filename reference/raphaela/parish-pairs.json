@@ -1,0 +1,29 @@
+{
+ "_meta": {
+  "description": "Hand-curated base-row -> Raphaela-hymn pairs for days where the corpus appoints DIFFERENT hymns from our base, so content matching cannot pair them. Read by scripts/menaion-ingest/raphaela-parish-build.js. Every pair must cite a packet the St John of Damascus choir sang (memory: feedback_tyler_match_connie). Keys are M-D; `index` is the hymn's position in that file's parsed section. A day whose packet shows the parish singing the BASE text instead carries \"exclude\": \"<evidence>\" and gets no Raphaela entries at all.",
+  "added": "2026-11-20"
+ },
+ "11-22": {
+  "_evidence": "docs/choir-packets/2026-11-19/pdf/great-vespers-2026-11-21.pdf scan p.3: Lord I Call (6)(5)(4) Tone 1, to the special melody 'Joy of the Heavenly Hosts' — 'The virgins bearing lamps', 'The Theotokos, glorious fruit of a sacred promise', 'O Virgin, fed in faith' — the corpus's own November 22 set. Our base (stSergius, cid 2381) appoints the Tone 8 'O most glorious wonder' set there, which OCA/Lambertsen agree with.",
+  "lordICall": [
+   {
+    "baseId": 9429,
+    "file": "November 22",
+    "index": 0
+   },
+   {
+    "baseId": 9430,
+    "file": "November 22",
+    "index": 1
+   },
+   {
+    "baseId": 9431,
+    "file": "November 22",
+    "index": 2
+   }
+  ]
+ },
+ "9-6": {
+  "exclude": "docs/choir-packets/2026-09-04/pdf/great-vespers-2026-09-05.pdf — Lord I Call for the Miracle at Colossae is the OCA text in thee/thou ('O Michael, the Chief Captain, thou hast been revealed as the brightest attendant of the triply-radiant Godhead'), not Raphaela ('Michael, the supreme commander, you have been revealed as the bright messenger…'). Caught by packet-diff 2026-11-20 (9/9 -> 8/9 with the layer on)."
+ }
+}

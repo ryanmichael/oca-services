@@ -1127,3 +1127,115 @@ commemoration's own troparia directly.**
 **Still open from N15:** defect 2 (the drift rule whose advice deletes a hymn),
 defect 3 (a source-faithful label rendering as the feast's title), defect 4 (a
 combined "Glory ..., Both now ..." off a Great Feast).
+
+---
+
+# Added 2026-11-05 — NEXT UP
+
+## P0 — N17. `order`=0 was never reached by the `group_role` tagging sweep
+
+**NEXT UP · NEW · ⇢ 67 commemorations to triage, 1 proven rendering · live in
+prod · 2026-11-28 is 23 days out**
+
+Found while promoting `e3d0bd0`, not by a sweep — I was isolating why the bot's
+weekly order fetch moved the provenance ratchet, and read the date it changed.
+
+**2026-11-28 Great Vespers** (eve of 11-29, Martyr Paramon) renders this in the
+Lord-I-Call **Glory** slot:
+
+> "From thy pure blood thou gavest flesh * to Him Who is of one essence…"
+> — `stichera` id 9477, `commemoration_id` 2436, `order` = 0
+
+That is a **Theotokion**, sung at "Glory to the Father". And
+`reference/orders/2026-1129` appoints **no saint doxastikon at all** —
+"Glory… now and ever… Dogmatic Theotokion, Tone 1" joins Glory and Now on the
+Dogmatikon. So the slot should be empty and is not.
+
+### The mechanism — confirmed in the DB, not inferred
+
+Commemoration 2436 holds **11** `lordICall` rows, and they are not all Paramon's.
+`group_role` already tags the intruders correctly:
+
+| `order` | `group_role` | text |
+|---|---|---|
+| 0 | **NULL** | "From thy pure blood thou gavest flesh…" ← **the Glory slot** |
+| 1, 2 | NULL | Paramon (raphaela, stSergius) |
+| 3, 4, 5 | `alternative-set` | incl. "In thy womb, O blessed of God…" |
+| 6, 10 | `stavrotheotokion` | "Lament not for Me, O Mother…" |
+| 7, 8, 9 | NULL | Paramon |
+
+The assembler honours those tags: the render emits orders 1, 2, 7 and skips
+3, 4, 5, 6, 10 — exactly the tagged rows. **The tagging is working. It just
+never ran on `order` = 0.** So the one row no filter covers is the one that
+lands in the most prominent slot in the block.
+
+This is the same shape as **N1** (`order`=0 is special and gets whatever the
+parser saw last) and is why that item's lesson generalises: a sweep that fixes
+numbered rows is not a sweep.
+
+### Blast radius — 67 to triage, not 67 defects
+
+Commemorations whose `lordICall` block was parsed as a multi-set (they have
+`alternative-set` or `stavrotheotokion` rows) **and** whose `order`=0 is
+untagged: **67**.
+
+That is the population to triage, not a defect count — a saint's genuine
+doxastikon at `order`=0 is correct and must be left alone. Only 11-29 is proven
+to render; the rest need the date checked, because a date whose Glory comes from
+the Octoechos or a feast never reads the row.
+
+**My text heuristic for "is it a Theotokion" was noisy and surfaced something
+else** — worth knowing before trusting it. Ten of the 67 matched Theotokos
+wording, but several are **penitential / compunction** texts, not Theotokia:
+
+| date | id | `order`=0 text |
+|---|---|---|
+| 11-29 | 9477 | "From thy pure blood thou gavest flesh…" — **confirmed rendering** |
+| 12-18 | 9540 | "In thy womb thou didst bear Christ…" — Theotokion |
+| 10-04 | 9221 | "When thou wast present at the Mother of…" |
+| 02-07 | 8403 | "From the sea-monster's belly…" — reads as **canon** material (Jonah) |
+| 05-27 | 8632 | "My thoughts are impure, and my lips are…" — compunction |
+| 05-30 | 8639 | "Having stumbled through my corrupt character…" — compunction |
+| 05-31 | 8648 | "Having fallen headlong because of my corruption…" — compunction |
+| 07-17 | 8844 | "Let us listen to the praise of the holy…" |
+| 12-16 | 9521 | "Woe is him who hath angered his God!…" — compunction |
+| 12-19 | 9548 | "I lie upon the bed of despondency, O all-holy one…" |
+
+Compunction stichera and canon odes sitting in a saint's `lordICall` block is a
+**second mis-key class**, not this one. Size it separately rather than folding
+it in.
+
+### Two traps before touching a row
+
+1. **Do not invent a Glory.** N16 follow-up 1 is the precedent: removing the
+   row at `order`=0 made 1-30 render *worse*, because the Menaion aposticha
+   branch is wholly gated on a Glory existing — the block was skipped, one hymn
+   repeated three times and the Both-now stranded. Check whether the
+   `lordICall` branch has the same gate **before** tagging or deleting, and if
+   it does, fix the gate first.
+2. **Tag, don't delete.** The right end state for 9477 is a `group_role` that
+   the assembler already excludes, leaving `order`=0 empty — not a row removed
+   from the corpus. 9477 is real St Sergius text; it belongs to the alternative
+   set it was parsed with.
+
+### Not part of this item — a claim I made and retracted
+
+I also reported 2026-11-28 as "short one Resurrection sticheron" (the order
+appoints 7, we render 6). **That was wrong and is withdrawn.**
+`octoechos.json`'s `_meta` documents it, re-verified 2026-06-27 against the OCA
+Obikhod Tone 1 and Tone 3 PDFs: OCA publishes 6 verse-stichera + a doxastikon
+and **does not publish the 4th Anatolikon in chant form at all**. Rendering 6 on
+verses 9→1 is `licNoLeadingRepeat` behaving exactly as specced
+(`features/lic-no-leading-repeat.md`, INV-1..7). Tone 5 has 7 only because
+`63de7ba` split a glued scrape artifact. Closing that slot is HTM Octoechos
+**sourcing**, already deferred — not a bug, and not this item.
+
+### Why nothing caught N17
+
+No rule asserts what kind of hymn may occupy a Glory slot. D23 and the
+label-matching rules read labels, and all 11 rows carry the same label ("the
+holy martyr…"), so the intruder is indistinguishable by label — the N3 class
+compounding this one. The structural assertion that would catch it: **a
+`lordICall` Glory whose text is tagged, or textually resolves, to a Theotokion
+or Stavrotheotokion is never correct.** Write it with the fix, and falsify it by
+untagging a row that is currently excluded.

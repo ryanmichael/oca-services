@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parish Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css" />
+<style>
+  /* Parish Book — spec: features/parish-book.md
+     Two modes of one page, sharing the booklet's renderer and paginator
+     (public/scripts/booklet.js) so the book, the insert and the existing
+     booklet measure and break text identically:
+       ?parish=P&edition=E  the bound book, in READING order (one page per
+                            5.5×8.5 leaf — what the print shop imposes)
+       ?parish=P&date=D     this week's insert, imposed for duplex + fold  */
+
+  html, body { height: auto; overflow: visible; background: #e8e4dc; margin: 0; }
+  #bk-root   { position: static; height: auto; overflow: visible; }
+  #bk-sheets { visibility: visible; }
+  #bk-source { display: none; }
+
+  /* ── The ≥12pt ladder ──────────────────────────────────────────────────
+     A bound book is read for years, standing, in a dim nave, by readers of
+     every age; 12pt is the usual floor for readers over 50. The booklet's
+     compact 11.5 / cue 10.5 / fine 10pt tiers sit under it, so the Parish
+     Book raises every tier to 12pt and keeps the HIERARCHY with style and
+     colour instead of size. Scoped to body.parish-book so the existing
+     booklet is untouched. `#bk-root` in each selector is load-bearing: see
+     the specificity note above `#bk-root .prayer.compact` in main.css. */
+  body.parish-book #bk-root .prayer.compact { font-size: 12pt; line-height: 1.5; }
+  body.parish-book #bk-root .prayer.cue     { font-size: 12pt; line-height: 1.35; }
+  body.parish-book #bk-root .prayer.fine    { font-size: 12pt; line-height: 1.45; }
+  body.parish-book #bk-root .svc-head       { font-size: 12pt; letter-spacing: .14em; }
+  body.parish-book #bk-root .bk-subtitle    { font-size: 12pt; }
+  body.parish-book #bk-root .bk-title       { font-size: 14pt; }
+  /* Speaker labels ("Priest", "Choir") inherit a global 13px (9.75pt) — the
+     one text under the floor that the tier overrides above do not reach. */
+  body.parish-book #bk-root .spk            { font-size: 12pt; }
+
+  /* ── Book ↔ insert markers ── */
+  #bk-root .pb-jump {
+    background: #1a1209; color: #fff; padding: 12px 14px; margin: 6px 0 10px;
+    font-family: 'Cinzel', serif; font-size: 12pt; letter-spacing: .08em; line-height: 1.35;
+    break-inside: avoid;
+  }
+  #bk-root .pb-jump small, #bk-root .pb-resume small {
+    display: block; font-family: 'EB Garamond', serif; font-size: 12pt;
+    letter-spacing: 0; font-style: italic; margin-top: 4px; line-height: 1.35;
+  }
+  #bk-root .pb-resume {
+    border: 2.5px solid #1a1209; padding: 10px 14px; margin: 6px 0 10px;
+    font-family: 'Cinzel', serif; font-size: 12pt; letter-spacing: .08em; line-height: 1.35;
+    break-inside: avoid;
+  }
+  #bk-root .pb-note {
+    font-family: 'EB Garamond', serif; font-size: 12pt; font-style: italic;
+    color: var(--muted); border-left: 2px solid var(--gold); padding-left: 8px;
+    margin: 2px 0 6px; line-height: 1.4;
+  }
+  #bk-root .pb-folio {
+    position: absolute; left: 0; right: 0; bottom: 0.17in; text-align: center;
+    font-family: 'EB Garamond', serif; font-size: 12pt; color: var(--muted);
+  }
+  #bk-root .pb-edition {
+    position: absolute; left: 0.5in; right: 0.5in; bottom: 0.17in;
+    font-family: 'EB Garamond', serif; font-size: 9pt; color: var(--muted);
+    display: flex; justify-content: space-between;
+  }
+
+  /* Book pages, reading order */
+  #pb-pages .bk-half { background: #fff; margin: 0 auto 14px; box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+
+  .bk-bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; margin-bottom: 20px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+  }
+  .bk-bar-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--rubric); flex: 1 1 auto; min-width: 0; }
+  .bk-bar-sub { display: block; font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); margin-top: 3px; }
+  .bk-primary { display: flex; align-items: center; gap: 10px; font-family: 'Cinzel', serif;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+    border: none; background: var(--rubric); color: var(--surface); padding: 14px 22px; min-height: 52px; }
+  .bk-primary:disabled { opacity: .5; cursor: default; }
+  .bk-links { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+  .bk-link { background: none; border: none; padding: 10px 0; cursor: pointer; text-decoration: none;
+    font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); min-height: 44px; display: inline-flex; align-items: center; }
+  .bk-link:hover { color: var(--rubric); }
+  .bk-toggle { display: flex; align-items: center; gap: 7px; font-family: 'EB Garamond', serif;
+    font-size: 15px; min-height: 44px; }
+  .bk-toggle input[type=date] { font: inherit; padding: 6px 8px; }
+  .bk-note { flex-basis: 100%; font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.45;
+    border-left: 2px solid var(--gold); background: rgba(201,168,76,.10); padding: 9px 12px; }
+  .bk-note strong { color: var(--rubric); }
+
+  @media screen {
+    #bk-root .bk-spread { margin: 0 auto 14px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+    #bk-root .bk-half { background: #fff; }
+    #bk-root .bk-spread .bk-half:first-child { border-right: 1px dashed #ccc; }
+    body { padding: 0 0 40px; }
+  }
+  @media print {
+    .bk-bar { display: none !important; }
+    #bk-sheets, #pb-pages { zoom: 1 !important; }
+    body { background: #fff; padding: 0; }
+    #bk-root .bk-spread { margin: 0; box-shadow: none; break-after: page; }
+    #bk-root .bk-spread:last-child { break-after: auto; }
+    #pb-pages .bk-half { margin: 0; box-shadow: none; break-after: page; }
+    #pb-pages .bk-half:last-child { break-after: auto; }
+  }
+</style>
+<style id="pb-page-rule"></style>
+</head>
+<body class="bk-printing parish-book">
+
+<div class="bk-bar">
+  <div class="bk-bar-title" id="bk-title">Parish Book
+    <span class="bk-bar-sub" id="bk-sub">Preparing&hellip;</span>
+  </div>
+  <button class="bk-primary" id="btn-print" disabled><span id="btn-print-label">Print</span> <span aria-hidden="true">&rarr;</span></button>
+  <div class="bk-links" id="bk-links"></div>
+  <div class="bk-note" id="pb-note" hidden></div>
+</div>
+
+<div id="bk-root">
+  <div id="bk-measure"></div>
+  <div id="pb-pages"></div>
+  <div id="bk-sheets"></div>
+</div>
+<div id="bk-source"></div>
+
+<script src="/scripts/renderer.js"></script>
+<script src="/scripts/booklet.js"></script>
+<script src="/scripts/parish-book.js"></script>
+</body>
+</html>

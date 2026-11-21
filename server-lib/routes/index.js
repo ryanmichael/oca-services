@@ -12,6 +12,7 @@ const { captureException, requestLogger } = require('../observability');
 const home                = require('./home');
 const favicon             = require('./favicon');
 const bookletPage         = require('./booklet-page');
+const parishBook          = require('./parish-book');
 const publicAssets        = require('./public-assets');
 const apiService          = require('./api-service');
 const apiEducationModules        = require('./api-education-modules');
@@ -84,6 +85,8 @@ function dispatch(req, res, ctx) {
     if (pathname === '/')                                         return home(req, res, ctx);
     if (pathname === '/favicon.svg')                              return favicon(req, res, ctx);
     if (pathname === '/booklet')                                  return bookletPage(req, res, ctx);
+    if (pathname === '/parish-book' || pathname === '/api/parish-book' || pathname.startsWith('/api/parish-book/'))
+                                                                  return parishBook(req, res, ctx);
     if (pathname.startsWith('/styles/') || pathname.startsWith('/scripts/'))
                                                                   return publicAssets(req, res, ctx);
     if (pathname === '/api/service')                              return apiService(req, res, ctx);

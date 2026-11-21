@@ -1,0 +1,3789 @@
+{
+ "edition": {
+  "parish": "st-john-damascus-tyler",
+  "id": "liturgy-chrysostom",
+  "title": "The Divine Liturgy of St. John Chrysostom",
+  "service": "liturgy",
+  "translation": "st-john-damascus-tyler"
+ },
+ "builtFrom": {
+  "commit": "79572fe",
+  "sampleYears": [
+   2026,
+   2027,
+   2028
+  ],
+  "claimed": 114,
+  "fits": 114,
+  "misfits": []
+ },
+ "anchors": [
+  "od-exclamation",
+  "od-response",
+  "gl-opening",
+  "gl-response",
+  "gl-p0",
+  "gl-p0-resp",
+  "gl-p1",
+  "gl-p1-resp",
+  "gl-p2",
+  "gl-p2-resp",
+  "gl-p3",
+  "gl-p3-resp",
+  "gl-p4",
+  "gl-p4-resp",
+  "gl-p5",
+  "gl-p5-resp",
+  "gl-p6",
+  "gl-p6-resp",
+  "gl-p7",
+  "gl-p7-resp",
+  "gl-p8",
+  "gl-p8-resp",
+  "gl-p9",
+  "gl-p9-resp",
+  "gl-commemoration",
+  "gl-comm-resp",
+  "gl-exclamation",
+  "gl-amen",
+  "ant1-ll-opening",
+  "ant1-ll-response",
+  "ant1-ll-petition",
+  "ant1-ll-comm",
+  "ant1-ll-comm-resp",
+  "ant1-ll-excl",
+  "ant1-ll-amen",
+  "only-begotten-son",
+  "ant2-ll-opening",
+  "ant2-ll-response",
+  "ant2-ll-petition",
+  "ant2-ll-comm",
+  "ant2-ll-comm-resp",
+  "ant2-ll-excl",
+  "ant2-ll-amen",
+  "homily",
+  "al-opening",
+  "al-response",
+  "al-p0",
+  "al-p0-resp",
+  "al-p1",
+  "al-p1-resp",
+  "al-tp0",
+  "al-tr0",
+  "al-tp1",
+  "al-tr1",
+  "al-tp2",
+  "al-tr2",
+  "al-tp3",
+  "al-tr3",
+  "al-tp4",
+  "al-tr4",
+  "al-excl",
+  "al-amen",
+  "cat-opening",
+  "cat-response",
+  "cat-p0",
+  "cat-p0-resp",
+  "cat-p1",
+  "cat-p1-resp",
+  "cat-p2",
+  "cat-p2-resp",
+  "cat-p3",
+  "cat-p3-resp",
+  "cat-p4",
+  "cat-p4-resp",
+  "cat-petition2",
+  "cat-bow",
+  "cat-bow-resp",
+  "cat-excl",
+  "cat-amen",
+  "cat-dismissal",
+  "lf1-opening",
+  "lf1-response",
+  "lf1-petition",
+  "lf1-pet-resp",
+  "lf1-wisdom",
+  "lf1-excl",
+  "lf1-amen",
+  "lf2-opening",
+  "lf2-response",
+  "lf2-petition",
+  "lf2-pet-resp",
+  "lf2-wisdom",
+  "lf2-excl",
+  "lf2-amen",
+  "cherubic-rubric",
+  "cherubic-part1",
+  "cherubic-amen",
+  "ge-rubric",
+  "ge-comm",
+  "ge-response",
+  "cherubic-rubric2",
+  "cherubic-part2",
+  "cherubic-alleluia",
+  "sup-opening",
+  "sup-response",
+  "sup-p0",
+  "sup-p0-resp",
+  "sup-p1",
+  "sup-p1-resp",
+  "sup-p2",
+  "sup-p2-resp",
+  "sup-p3",
+  "sup-p3-resp",
+  "sup-p2-0",
+  "sup-gr-0",
+  "sup-p2-1",
+  "sup-gr-1",
+  "sup-p2-2",
+  "sup-gr-2",
+  "sup-p2-3",
+  "sup-gr-3",
+  "sup-p2-4",
+  "sup-gr-4",
+  "sup-p2-5",
+  "sup-gr-5",
+  "sup-comm",
+  "sup-comm-resp",
+  "sup-excl",
+  "sup-amen",
+  "kop-call",
+  "kop-resp",
+  "kop-doors",
+  "creed",
+  "anaphora-call",
+  "anaphora-resp",
+  "sc-0",
+  "sc-1",
+  "sc-2",
+  "sc-3",
+  "sc-4",
+  "sc-5",
+  "preface",
+  "preface-cue",
+  "sanctus",
+  "inst-body",
+  "inst-body-r",
+  "inst-cup",
+  "inst-cup-r",
+  "anamnesis-prayer",
+  "anamnesis",
+  "anamnesis-r",
+  "epi-invocation",
+  "epi-x0",
+  "epi-x1",
+  "epi-x2",
+  "epi-x3",
+  "epi-x4",
+  "epi-x5",
+  "epi-x6",
+  "epi-x7",
+  "epi-amen",
+  "epi-fruits",
+  "comm-saints",
+  "meg-cue",
+  "comm-hierarchs",
+  "comm-hierarchs-r",
+  "interc-excl",
+  "interc-resp",
+  "anaphora-blessing",
+  "anaphora-blessing-r",
+  "lp-opening",
+  "lp-response",
+  "lp-p0",
+  "lp-pr0",
+  "lp-p1",
+  "lp-pr1",
+  "lp-p2",
+  "lp-pr2",
+  "lp-p3",
+  "lp-pr3",
+  "lp-p4",
+  "lp-pr4",
+  "lp-p5",
+  "lp-pr5",
+  "lp-p6",
+  "lp-pr6",
+  "lp-p7",
+  "lp-pr7",
+  "lp-p8",
+  "lp-pr8",
+  "lp-p9",
+  "lp-pr9",
+  "lp-comm",
+  "lp-comm-resp",
+  "lp-excl",
+  "lords-prayer",
+  "lp-doxology",
+  "lp-dox-resp",
+  "pc-peace",
+  "pc-peace-r",
+  "pc-bow",
+  "pc-bow-r",
+  "pc-bow-prayer",
+  "pc-elevation-d",
+  "pc-elevation-p",
+  "pc-elevation-r",
+  "ch-silent-rubric",
+  "ch-silent-chrysostom-roof-label",
+  "ch-silent-chrysostom-roof",
+  "pc-prayer-1",
+  "pc-prayer-2",
+  "pc-prayer-3",
+  "pc-draw-near",
+  "pc-blessed",
+  "cof-rubric",
+  "cof-body-of-christ",
+  "pcb-priest",
+  "we-have-seen",
+  "hot-always",
+  "hot-amen",
+  "let-our-mouths",
+  "lt-deacon",
+  "lt-response",
+  "lt-petition",
+  "lt-petition-r",
+  "lt-prayer",
+  "lt-comm",
+  "lt-comm-resp",
+  "lt-excl",
+  "lt-amen",
+  "prayer-ambon",
+  "bbn-text",
+  "bbn-response",
+  "ps33-rubric",
+  "ps33-v1",
+  "ps33-v2",
+  "ps33-v3",
+  "ps33-v4",
+  "ps33-v5",
+  "ps33-v6",
+  "cd-blessing",
+  "cd-blessing-r",
+  "cd-glory",
+  "cd-glory-r",
+  "dis-amen",
+  "dis-preserve",
+  "pot-rubric",
+  "pot-glory",
+  "pot-thanksgiving-label",
+  "pot-thanksgiving",
+  "pot-basil-label",
+  "pot-basil",
+  "pot-metaphrastes-label",
+  "pot-metaphrastes",
+  "pot-third-label",
+  "pot-third",
+  "pot-theotokos-label",
+  "pot-theotokos",
+  "pot-symeon-label",
+  "pot-symeon",
+  "pot-trisagion",
+  "pot-trisagion-glory",
+  "pot-trinity",
+  "pot-lhm",
+  "pot-glory-2",
+  "pot-lords-prayer",
+  "pot-lp-doxology",
+  "pot-lp-amen",
+  "pot-lhm-sung"
+ ],
+ "anchorKeys": [
+  "{\"id\":\"od-exclamation\",\"section\":\"Opening Doxology\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"od-response\",\"section\":\"Opening Doxology\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"gl-opening\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"In peace, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-response\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p0\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For the peace from above, and for the salvation of our souls, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p0-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p1\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For the peace of the whole world, the welfare of the holy churches of God, and the union of all, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p1-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p2\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p2-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p3\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For the most blessed Metropolitan Tikhon, right reverend Bishop Gerasim, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p3-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p4\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For this country, its President [or: the civil authorities], for all civil authorities, and for the armed forces, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p4-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p5\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For this city [or: village, or: holy monastery], every city and countryside, and the faithful who dwell therein, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p5-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p6\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For seasonable weather, an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p6-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p7\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For travelers by sea, by land, and by air; for the sick and the suffering; for captives and for their salvation, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p7-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p8\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p8-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-p9\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-p9-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-commemoration\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-comm-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"gl-exclamation\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For unto Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"gl-amen\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant1-ll-opening\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant1-ll-response\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant1-ll-petition\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant1-ll-comm\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant1-ll-comm-resp\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant1-ll-excl\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thine is the might, and Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant1-ll-amen\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"only-begotten-son\",\"section\":\"Second Antiphon\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Only-begotten Son and Immortal Word of God, who for our salvation didst will to be incarnate of the Holy Theotokos and Ever-virgin Mary, who without change didst become man, and wast crucified, O Christ our God, trampling down death by death, who art one of the Holy Trinity, glorified with the Father and the Holy Spirit, save us!\"}",
+  "{\"id\":\"ant2-ll-opening\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant2-ll-response\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant2-ll-petition\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant2-ll-comm\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant2-ll-comm-resp\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant2-ll-excl\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"ant2-ll-amen\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"homily\",\"section\":\"Homily\",\"type\":\"rubric\",\"text\":\"The sermon is delivered at this time.\"}",
+  "{\"id\":\"al-opening\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us say with all our soul and with all our mind, let us say:\",\"density\":\"compact\"}",
+  "{\"id\":\"al-response\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-p0\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"O Lord Almighty, the God of our fathers, we pray Thee, hearken and have mercy.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-p0-resp\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-p1\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-p1-resp\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-tp0\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again we pray for the most blessed Metropolitan Tikhon, and for the right reverend Bishop Gerasim.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-tr0\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy. Lord, have mercy. Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-tp1\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again we pray for this country, its President [or: the civil authorities], and for the armed forces.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-tr1\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy. Lord, have mercy. Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-tp2\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-tr2\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy. Lord, have mercy. Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-tp3\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-tr3\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy. Lord, have mercy. Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-tp4\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again we pray for those who bring offerings and do good works in this holy and all-venerable temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-tr4\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy. Lord, have mercy. Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"al-excl\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"al-amen\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-opening\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Pray to the Lord, ye catechumens.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-response\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-p0\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us, the faithful, pray for the catechumens.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-p0-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-p1\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That the Lord will have mercy on them.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-p1-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-p2\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That He will teach them the word of truth.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-p2-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-p3\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That He will reveal to them the Gospel of righteousness.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-p3-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-p4\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That He will unite them to His holy, catholic, and apostolic Church.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-p4-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-petition2\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Save them, have mercy on them, help them, and keep them, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-bow\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Bow your heads before the Lord, ye catechumens.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-bow-resp\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-excl\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"That they also, with us, may glorify Thy most honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"cat-amen\",\"section\":\"Litany for the Catechumens\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"cat-dismissal\",\"section\":\"Litany for the Catechumens\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"As many as are catechumens, depart! Depart, catechumens! As many as are catechumens, depart! Let none of the catechumens remain!\",\"density\":\"compact\"}",
+  "{\"id\":\"lf1-opening\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"We, the faithful, again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf1-response\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lf1-petition\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf1-pet-resp\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lf1-wisdom\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Wisdom!\",\"density\":\"compact\"}",
+  "{\"id\":\"lf1-excl\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf1-amen\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"lf2-opening\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf2-response\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lf2-petition\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf2-pet-resp\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lf2-wisdom\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Wisdom!\",\"density\":\"compact\"}",
+  "{\"id\":\"lf2-excl\",\"section\":\"Litanies of the Faithful\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"lf2-amen\",\"section\":\"Litanies of the Faithful\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"cherubic-rubric\",\"section\":\"Cherubic Hymn\",\"type\":\"rubric\",\"text\":\"Sung slowly and very softly:\"}",
+  "{\"id\":\"cherubic-part1\",\"section\":\"Cherubic Hymn\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"We, the Cherubim mystically representing, mystically representing, and to the life-creating Trinity the thrice holy hymn singing, the thrice holy hymn with them singing, all life's cares now lay aside, all life's cares now lay aside, all life's cares now lay aside.\"}",
+  "{\"id\":\"cherubic-amen\",\"section\":\"Cherubic Hymn\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"ge-rubric\",\"section\":\"Great Entrance\",\"type\":\"rubric\",\"text\":\"Procession of the Holy Gifts.\"}",
+  "{\"id\":\"ge-comm\",\"section\":\"Great Entrance\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"All of you Orthodox Christians, may the Lord God remember in His Kingdom, always, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"ge-response\",\"section\":\"Great Entrance\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"cherubic-rubric2\",\"section\":\"Cherubic Hymn\",\"type\":\"rubric\",\"text\":\"Then more quickly, with strength:\"}",
+  "{\"id\":\"cherubic-part2\",\"section\":\"Cherubic Hymn\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"That the King of all we may receive by angelic hosts invisibly escorted.\"}",
+  "{\"id\":\"cherubic-alleluia\",\"section\":\"Cherubic Hymn\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Alleluia, alleluia, alleluia, alleluia, alleluia.\"}",
+  "{\"id\":\"sup-opening\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us complete our prayer unto the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-response\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p0\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For the precious Gifts here offered, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-p0-resp\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p1\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-p1-resp\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-p2-resp\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p3\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-p3-resp\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-0\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-0\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-1\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-1\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-2\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Pardon and remission of our sins and transgressions, let us ask of the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-2\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-3\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-3\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-4\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-4\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-p2-5\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-gr-5\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-comm\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-comm-resp\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"sup-excl\",\"section\":\"Litany of Supplication\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Through the mercies of Thine Only-begotten Son, with Whom Thou art blessed, together with Thine all-holy, good, and life-creating Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"sup-amen\",\"section\":\"Litany of Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"kop-call\",\"section\":\"The Creed\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us love one another, that with one mind we may confess:\"}",
+  "{\"id\":\"kop-resp\",\"section\":\"The Creed\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Father, Son, and Holy Spirit: the Trinity, one in essence and undivided.\"}",
+  "{\"id\":\"kop-doors\",\"section\":\"The Creed\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"The doors! The doors! In wisdom let us attend!\"}",
+  "{\"id\":\"creed\",\"section\":\"The Creed\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"I believe in one God, the Father Almighty, Maker of heaven and earth and of all things visible and invisible.\\n\\nAnd in one Lord, Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, True God of True God; begotten, not made; of one essence with the Father; by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified also for us under Pontius Pilate, and suffered, and was buried; and the third day He rose again according to the Scriptures; and ascended into heaven and sitteth at the right hand of the Father. And He shall come again with glory to judge the living and the dead; of His Kingdom there shall be no end.\\n\\nAnd in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father; who with the Father and the Son together is worshipped and glorified; who spake by the prophets.\\n\\nIn one holy catholic and apostolic Church. I confess one baptism for the forgiveness of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.\"}",
+  "{\"id\":\"anaphora-call\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us stand aright; let us stand in fear; let us attend, that we may offer the Holy Oblation in peace.\"}",
+  "{\"id\":\"anaphora-resp\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"A mercy of peace, a sacrifice of praise.\"}",
+  "{\"id\":\"sc-0\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you.\"}",
+  "{\"id\":\"sc-1\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"And with thy spirit.\"}",
+  "{\"id\":\"sc-2\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Let us lift up our hearts.\"}",
+  "{\"id\":\"sc-3\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"We lift them up unto the Lord.\"}",
+  "{\"id\":\"sc-4\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Let us give thanks unto the Lord.\"}",
+  "{\"id\":\"sc-5\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"It is meet and right to worship the Father, and the Son, and the Holy Spirit: the Trinity, One in essence, and undivided.\"}",
+  "{\"id\":\"preface\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"It is meet and right to hymn Thee, to bless Thee, to give thanks to Thee, and to worship Thee in every place of Thy dominion: for Thou art God ineffable, inconceivable, invisible, incomprehensible, ever-existing and eternally the same, Thou and Thine Only-begotten Son and Thy Holy Spirit. Thou it was Who brought us from non-existence into being, and when we had fallen away didst raise us up again, and didst not cease to do all things until Thou hadst brought us up to heaven, and hadst endowed us with Thy Kingdom which is to come. For all these things we give thanks to Thee, and to Thine Only-begotten Son, and to Thy Holy Spirit; for all things of which we know and of which we know not, whether manifest or unseen; and we thank Thee for this Liturgy which Thou hast deigned to accept at our hands, though there stand by Thee thousands of archangels and hosts of angels, the Cherubim and the Seraphim, six-winged, many-eyed, who soar aloft, borne on their pinions…\",\"density\":\"compact\"}",
+  "{\"id\":\"preface-cue\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Singing the triumphant hymn, shouting, proclaiming and saying:\"}",
+  "{\"id\":\"sanctus\",\"section\":\"Anaphora\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Holy! Holy! Holy! Lord of Sabbaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that comes in the Name of the Lord! Hosanna in the highest!\"}",
+  "{\"id\":\"inst-body\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"With these blessed powers, O Master Who lovest mankind, we also cry aloud and say: Holy art Thou and All-Holy, Thou and Thine Only-begotten Son and Thy Holy Spirit! Holy art Thou and All-Holy, and magnificent is Thy glory! Who hast so loved Thy world as to give Thine Only-begotten Son, that whoever believeth in Him should not perish but have everlasting life; Who when He had come and had fulfilled all the dispensation for us, in the night in which He was given up — or rather, gave Himself up for the life of the world — took bread in His holy, pure, and blameless hands; and when He had given thanks and blessed it, and hallowed it, and broken it, He gave it to His holy disciples and apostles saying: Take! Eat! This is My Body which is broken for you, for the remission of sins.\",\"density\":\"compact\"}",
+  "{\"id\":\"inst-body-r\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"inst-cup\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Drink of it, all of you! This is My Blood of the New Testament, which is shed for you and for many, for the remission of sins!\"}",
+  "{\"id\":\"inst-cup-r\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"anamnesis-prayer\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Remembering this saving commandment and all those things which have come to pass for us: the Cross, the Tomb, the Resurrection on the third day, the Ascension into heaven, the Sitting at the right hand, and the second and glorious Coming,\",\"density\":\"compact\"}",
+  "{\"id\":\"anamnesis\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Thine own of Thine own, we offer unto Thee, on behalf of all and for all.\"}",
+  "{\"id\":\"anamnesis-r\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"We praise Thee, we bless Thee, we give thanks unto Thee, O Lord; and we pray unto Thee, O our God.\"}",
+  "{\"id\":\"epi-invocation\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Again we offer unto Thee this rational and bloodless worship, and ask Thee, and pray Thee, and supplicate Thee: Send down Thy Holy Spirit upon us and upon these Gifts here offered...\",\"density\":\"compact\"}",
+  "{\"id\":\"epi-x0\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Bless, Master, the Holy Bread.\"}",
+  "{\"id\":\"epi-x1\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"...and make this Bread the Precious Body of Thy Christ.\"}",
+  "{\"id\":\"epi-x2\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"deacon\",\"text\":\"Amen.\"}",
+  "{\"id\":\"epi-x3\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Bless, Master, the Holy Cup.\"}",
+  "{\"id\":\"epi-x4\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"And that which is in this Cup, the Precious Blood of Thy Christ.\"}",
+  "{\"id\":\"epi-x5\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"deacon\",\"text\":\"Amen.\"}",
+  "{\"id\":\"epi-x6\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Bless both, Master.\"}",
+  "{\"id\":\"epi-x7\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Making the change by Thy Holy Spirit.\"}",
+  "{\"id\":\"epi-amen\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen. Amen. Amen.\"}",
+  "{\"id\":\"epi-fruits\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"That they may be to those who partake for the purification of soul, for the remission of sins, for the communion of Thy Holy Spirit, for the fulfillment of the Kingdom of Heaven, for boldness towards Thee, and not for judgment or condemnation.\",\"density\":\"compact\"}",
+  "{\"id\":\"comm-saints\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Again we offer unto Thee this reasonable worship for those who have fallen asleep in the faith: ancestors, fathers, patriarchs, prophets, apostles, preachers, evangelists, martyrs, confessors, ascetics, and every righteous spirit made perfect in faith.\",\"density\":\"compact\"}",
+  "{\"id\":\"meg-cue\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary.\"}",
+  "{\"id\":\"comm-hierarchs\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Grace, the Right Reverend Gerasim, Bishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.\",\"density\":\"compact\"}",
+  "{\"id\":\"comm-hierarchs-r\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"And all mankind.\"}",
+  "{\"id\":\"interc-excl\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"And grant that with one mouth and one heart we may praise Thine all-honorable and majestic Name; of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"interc-resp\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"anaphora-blessing\",\"section\":\"Anaphora\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"And may the mercies of our great God and Savior Jesus Christ be with all of you.\"}",
+  "{\"id\":\"anaphora-blessing-r\",\"section\":\"Anaphora\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"And with thy spirit.\"}",
+  "{\"id\":\"lp-opening\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Having remembered all the saints, again and again in peace, let us pray to the Lord.\"}",
+  "{\"id\":\"lp-response\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\"}",
+  "{\"id\":\"lp-p0\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For the precious Gifts offered and sanctified, let us pray to the Lord.\"}",
+  "{\"id\":\"lp-pr0\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\"}",
+  "{\"id\":\"lp-p1\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That our God, Who loveth mankind, receiving them upon His holy, heavenly, and ideal altar as a sweet spiritual fragrance, will send down upon us in return His divine grace and the gift of the Holy Spirit, let us pray to the Lord.\"}",
+  "{\"id\":\"lp-pr1\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\"}",
+  "{\"id\":\"lp-p2\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"For our deliverance from all affliction, wrath, danger, and necessity, let us pray to the Lord.\"}",
+  "{\"id\":\"lp-pr2\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\"}",
+  "{\"id\":\"lp-p3\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\"}",
+  "{\"id\":\"lp-pr3\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\"}",
+  "{\"id\":\"lp-p4\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.\"}",
+  "{\"id\":\"lp-pr4\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-p5\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.\"}",
+  "{\"id\":\"lp-pr5\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-p6\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Pardon and remission of our sins and transgressions, let us ask of the Lord.\"}",
+  "{\"id\":\"lp-pr6\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-p7\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.\"}",
+  "{\"id\":\"lp-pr7\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-p8\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.\"}",
+  "{\"id\":\"lp-pr8\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-p9\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.\"}",
+  "{\"id\":\"lp-pr9\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Grant this, O Lord.\"}",
+  "{\"id\":\"lp-comm\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God.\"}",
+  "{\"id\":\"lp-comm-resp\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\"}",
+  "{\"id\":\"lp-excl\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"And make us worthy, O Master, that with boldness and without condemnation, we may dare to call on Thee, the heavenly God, as Father, and to say:\"}",
+  "{\"id\":\"lords-prayer\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one.\"}",
+  "{\"id\":\"lp-doxology\",\"section\":\"The Lord's Prayer\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"lp-dox-resp\",\"section\":\"The Lord's Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"pc-peace\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Peace be unto all.\"}",
+  "{\"id\":\"pc-peace-r\",\"section\":\"Pre-Communion\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"And to thy spirit.\"}",
+  "{\"id\":\"pc-bow\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Bow your heads unto the Lord.\"}",
+  "{\"id\":\"pc-bow-r\",\"section\":\"Pre-Communion\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\"}",
+  "{\"id\":\"pc-bow-prayer\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"We give thanks unto Thee, O King invisible, Who by Thy measureless power didst make all things, and in the greatness of Thy mercy didst bring all things from non-existence into being. Do Thou Thyself, O Master, look down from heaven upon those who have bowed their heads before Thee; for they have bowed not before flesh and blood, but before Thee, the awesome God. Do Thou, O Master, distribute these Gifts here offered unto all of us for good, according to the individual need of each; sail with those who sail, travel with those who travel by land and by air; heal the sick, O Thou Who art the Physician of our souls and bodies.\",\"density\":\"compact\"}",
+  "{\"id\":\"pc-elevation-d\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us attend.\"}",
+  "{\"id\":\"pc-elevation-p\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"The holy Things are for the holy!\"}",
+  "{\"id\":\"pc-elevation-r\",\"section\":\"Pre-Communion\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen.\"}",
+  "{\"id\":\"ch-silent-rubric\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:\"}",
+  "{\"id\":\"ch-silent-chrysostom-roof-label\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"Prayer of St. John Chrysostom:\"}",
+  "{\"id\":\"ch-silent-chrysostom-roof\",\"section\":\"Communion Hymn\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"O Lord my God, I know that I am not worthy nor sufficiently pleasing that Thou shouldst come under the roof of the house of my soul for it is entirely desolate and fallen in ruin and Thou wilt not find in me a place worthy to lay Thy head. But as Thou didst humble Thyself from on high for our sake, so now humble Thyself to my lowliness.\\n\\nAs Thou didst deign to lie in a cavern, in a manger of dumb beasts, so now deign to enter in to the manger of my beastly soul, and into my soiled body.\\n\\nAnd as Thou didst not disdain to enter and to eat with sinners in the house of Simon the leper, so now be pleased to enter into the house of my soul, humble and leprous and sinful.\\n\\nAnd as Thou didst not cast out the prostitute, the sinful woman who came to touch Thee, so have compassion on me a sinner who comes to touch Thee.\\n\\nAnd as Thou didst not abhor the kiss of her sin-stained and unclean mouth, do not abhor my mouth, worse stained and more unclean than hers, nor my stained and shamed and unclean lips, nor my still more impure tongue.\\n\\nBut let the fiery coal of Thy most pure Body and Thy most precious Blood bring me sanctification, enlightenment and strengthening of my lowly soul and body, relief from the burden of my many transgressions, protection against every action of the devil, repulsion and victory over my wicked and evil habits, mortification of my passions, accomplishment of Thy commandments, increase of Thy divine grace, and inheritance of Thy kingdom.\\n\\nFor I do not come to Thee in presumption, O Christ my God, but made bold by Thine unspeakable goodness, lest I stray far away from Thy flock, O Master, and become caught by the wolf of souls.\\n\\nTherefore I pray Thee, O Master, for Thou alone art holy, sanctify my soul and body, my mind and heart, my muscles and bones. Renew me entirely. Implant Thy fear in my fleshly members and let Thy sanctification never be removed from me.\\n\\nBe my helper and defender, guide my life in peace and make me worthy to stand at Thy right hand with all Thy saints.\\n\\nBy the prayers and supplications of Thy most pure Mother, of Thy spiritual servants, the most pure angelic powers, and of all the saints who from all ages have been well-pleasing to Thee. Amen.\",\"density\":\"fine\"}",
+  "{\"id\":\"pc-prayer-1\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am first. And I believe that this is thine own immaculate Body, and that this is thine own precious Blood. Wherefore, I pray thee, have mercy on me, and pardon my trespasses, voluntary and involuntary, in word or in deed, in knowledge and in ignorance, and make me worthy without condemnation to partake of thine immaculate Mysteries, unto forgiveness of sins and unto life eternal.\"}",
+  "{\"id\":\"pc-prayer-2\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"Of thy mystical Supper, O Son of God, accept me today as a communicant, for I will not speak of Thy Mystery to thine enemies, neither will I give thee a kiss as did Judas, but like the thief will I confess thee: Remember me, O Lord, in thy kingdom.\"}",
+  "{\"id\":\"pc-prayer-3\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"Not unto judgment nor unto condemnation be my partaking of thy holy Mysteries, O Lord, but unto healing of soul and body. Amen.\"}",
+  "{\"id\":\"pc-draw-near\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"In the fear of God and with faith, draw near!\"}",
+  "{\"id\":\"pc-blessed\",\"section\":\"Communion Prayer\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Blessed is He that comes in the Name of the Lord; God is the Lord and has revealed Himself unto us!\"}",
+  "{\"id\":\"cof-rubric\",\"section\":\"Communion of the Faithful\",\"type\":\"rubric\",\"text\":\"During the Communion of the Faithful:\"}",
+  "{\"id\":\"cof-body-of-christ\",\"section\":\"Communion of the Faithful\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Body of Christ, receive; taste of the fountain of immortality.\"}",
+  "{\"id\":\"pcb-priest\",\"section\":\"Post-Communion Blessing\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"O God, save Thy people, and bless Thine inheritance!\"}",
+  "{\"id\":\"we-have-seen\",\"section\":\"Post-Communion Blessing\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"We have seen the true Light. We have received the heavenly Spirit. We have found the true Faith, worshiping the undivided Trinity, Who has saved us.\"}",
+  "{\"id\":\"hot-always\",\"section\":\"Hymn of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Always, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"hot-amen\",\"section\":\"Hymn of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"let-our-mouths\",\"section\":\"Hymn of Thanksgiving\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Let our mouths be filled with Thy praise, O Lord, that we may sing of Thy glory; for Thou hast made us worthy to partake of Thy holy, divine, immortal, and life-creating Mysteries. Keep us in Thy holiness, that all the day we may meditate upon Thy righteousness. Alleluia! Alleluia! Alleluia!\"}",
+  "{\"id\":\"lt-deacon\",\"section\":\"Litany of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us attend. Having partaken of the divine, holy, most-pure, immortal, heavenly, and life-creating, awesome Mysteries of Christ, let us worthily give thanks unto the Lord.\",\"density\":\"compact\"}",
+  "{\"id\":\"lt-response\",\"section\":\"Litany of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lt-petition\",\"section\":\"Litany of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
+  "{\"id\":\"lt-petition-r\",\"section\":\"Litany of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
+  "{\"id\":\"lt-prayer\",\"section\":\"Litany of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"We thank Thee, O Master Who lovest mankind, Benefactor of our souls, that Thou hast made us worthy this day of Thy heavenly and immortal Mysteries. Make straight our path; strengthen us all in Thy fear; guard our life; make firm our steps; through the prayers and intercessions of the glorious Theotokos and Ever-Virgin Mary, and of all Thy saints.\",\"density\":\"compact\"}",
+  "{\"id\":\"lt-comm\",\"section\":\"Litany of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Having asked that the whole day may be perfect, holy, peaceful, and sinless, let us commit ourselves and one another and all our life unto Christ our God.\",\"density\":\"compact\"}",
+  "{\"id\":\"lt-comm-resp\",\"section\":\"Litany of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
+  "{\"id\":\"lt-excl\",\"section\":\"Litany of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thou art our sanctification, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"lt-amen\",\"section\":\"Litany of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"prayer-ambon\",\"section\":\"Prayer behind the Ambon\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house; glorify them in return by Thy divine power, and forsake us not who set our hope on Thee. Give peace to Thy world, to Thy churches, to the clergy, to those who govern us, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, coming down from Thee, the Father of lights. And to Thee do we send up glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"bbn-text\",\"section\":\"Blessed be the Name\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Blessed be the name of the Lord, henceforth and forevermore. (×3)\"}",
+  "{\"id\":\"bbn-response\",\"section\":\"Blessed be the Name\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"ps33-rubric\",\"section\":\"Psalm 33\",\"type\":\"rubric\",\"text\":\"The Reader:\"}",
+  "{\"id\":\"ps33-v1\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"I will bless the Lord at all times. His praise shall be continuously in my mouth.\"}",
+  "{\"id\":\"ps33-v2\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"In the Lord my soul shall make her boast. Let the meek hear and be glad.\"}",
+  "{\"id\":\"ps33-v3\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"Oh magnify the Lord with me and let us exalt His name together.\"}",
+  "{\"id\":\"ps33-v4\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"Taste and see that the Lord is good. Blessed is the man who hopeth in Him.\"}",
+  "{\"id\":\"ps33-v5\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"Fear the Lord all ye His saints. For there is no lack for them that fear Him.\"}",
+  "{\"id\":\"ps33-v6\",\"section\":\"Psalm 33\",\"type\":\"prayer\",\"text\":\"The rich have become poor and hungry, but they that seek the Lord shall not want any good thing.\"}",
+  "{\"id\":\"cd-blessing\",\"section\":\"Closing Doxology\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"The blessing of the Lord be upon you, through His grace and love for mankind, always, now and ever, and unto ages of ages.\"}",
+  "{\"id\":\"cd-blessing-r\",\"section\":\"Closing Doxology\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"cd-glory\",\"section\":\"Closing Doxology\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"Glory to Thee, O Christ our God and our hope, glory to Thee.\"}",
+  "{\"id\":\"cd-glory-r\",\"section\":\"Closing Doxology\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless.\"}",
+  "{\"id\":\"dis-amen\",\"section\":\"Dismissal\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"dis-preserve\",\"section\":\"Dismissal\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages.\"}",
+  "{\"id\":\"pot-rubric\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"After the dismissal, while the faithful venerate the cross and receive the priest's blessing, the reader says the Prayers of Thanksgiving.\"}",
+  "{\"id\":\"pot-glory\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"response\",\"speaker\":\"priest\",\"text\":\"Glory to Thee, O God!\",\"repetitions\":3}",
+  "{\"id\":\"pot-thanksgiving-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"Prayer of Thanksgiving:\"}",
+  "{\"id\":\"pot-thanksgiving\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"I thank Thee, O Lord my God, for Thou hast not rejected me, a sinner, but hast made me worthy to be a partaker of Thy Holy Things. I thank Thee, for Thou hast permitted me, the unworthy, to commune of Thy most pure and heavenly Gifts. But, O Master, Who lovest mankind, Who for our sakes didst die and rise again, and gavest us these awesome and life-creating Mysteries for the good and sanctification of our souls and bodies, let them be for the healing of soul and body, the repelling of every adversary, the illumining of the eyes of my heart, the peace of my spiritual powers, a faith unashamed, a love unfeigned, the fulfilling of wisdom, the observing of Thy commandments, the receiving of Thy divine grace, and the attaining of Thy Kingdom. Preserved by them in Thy holiness, may I always remember Thy grace and live not for myself alone, but for Thee, our Master and Benefactor. May I pass from this life in the hope of eternal life, and so attain to the everlasting rest, where the voice of those who feast is unceasing, and the gladness of those who behold the goodness of Thy countenance is unending. For Thou art the true desire and the ineffable joy of those who love Thee, O Christ our God, and all creation sings of Thy praise forever. Amen.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-basil-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"First Prayer, by St. Basil the Great:\"}",
+  "{\"id\":\"pot-basil\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"O Master Christ our God, King of the ages, Maker of all things: I thank Thee for all the good things Thou hast given me, especially for the communion with Thy most pure and life-creating Mysteries. I pray Thee, O gracious Lover of mankind: preserve me under Thy protection, beneath the shadow of Thy wings. Enable me, even to my last breath, to partake worthily and with a pure conscience of Thy Holy Things, for the remission of sins and unto life eternal. For Thou art the Bread of Life, the Fountain of Holiness, the Giver of all Good; and unto Thee do we send up glory, with the Father and the Holy Spirit, now and ever, and unto ages of ages. Amen.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-metaphrastes-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"Second Prayer, by St. Symeon Metaphrastes:\"}",
+  "{\"id\":\"pot-metaphrastes\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"Freely Thou hast given me Thy Body for my food, O Thou Who art a fire consuming the unworthy. Consume me not, O my Creator, but instead enter into my members, my veins, my heart. Consume the thorns of my transgressions. Cleanse my soul and sanctify my reasonings. Make firm my knees and body. Illumine my five senses. Nail me to the fear of Thee. Always protect, guard, and keep me from soul-destroying words and deeds. Cleanse me, purify me, and adorn me. Give me understanding and illumination. Show me to be a temple of Thy One Spirit and not the home of many sins. May every evil thing, every carnal passion flee from me as from a fire as I become Thy tabernacle through communion. I offer Thee as intercessors all the saints: the leaders of the bodiless hosts, Thy Forerunner, the wise apostles, and Thy pure and blameless Mother. Accept their prayers in Thy love, O my Christ, and make me, Thy servant, a child of light. For Thou art the only Sanctification and Light of our souls, O Good One, and unto Thee, our Master and God, do we send up glory day by day.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-third-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"Third Prayer:\"}",
+  "{\"id\":\"pot-third\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"O Lord Jesus Christ our God; let Thy Holy Body be my eternal life; Thy Precious Blood, my remission of sins. Let this Eucharist be my joy, health, and gladness. Make me, a sinner, worthy to stand on the right hand of Thy glory at Thine awesome second Coming, through the prayers of Thy most pure Mother and of all the saints.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-theotokos-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"Prayer to the Most Holy Theotokos:\"}",
+  "{\"id\":\"pot-theotokos\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"O most holy Lady Theotokos, the light of my darkened soul, my hope, my protection, my refuge, my rest, and my joy. I thank you, for you have permitted me, the unworthy, to be a partaker of the Most Pure Body and Precious Blood of thy Son. Grant the light of understanding to the eyes of my heart, you who gave birth to the True Light. Enliven me who am deadened by sin, you who gave birth to the Fountain of Immortality. Have mercy on me, O loving Mother of the merciful God. Grant me compunction and contrition of heart, humility of thought, and a release from the slavery of my own reasonings. And enable me, even to my last breath, to receive the sanctification of the most pure Mysteries, for the healing of soul and body. Grant me tears of repentance and confession, that I may glorify thee all the days of my life, for you are blessed and greatly glorified forever. Amen.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-symeon-label\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"rubric\",\"text\":\"Prayer of St. Symeon the God-receiver:\"}",
+  "{\"id\":\"pot-symeon\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"Lord, now lettest Thou Thy servant depart in peace, according to Thy word. For mine eyes have seen Thy salvation, which Thou hast prepared before the face of all people: a light to enlighten the Gentiles, and the glory of Thy people, Israel.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-trisagion\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"Holy God, Holy Mighty, Holy Immortal, have mercy on us.\",\"density\":\"compact\",\"repetitions\":3}",
+  "{\"id\":\"pot-trisagion-glory\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"doxology\",\"text\":\"Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.\"}",
+  "{\"id\":\"pot-trinity\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"O most holy Trinity: have mercy on us. Lord: cleanse our sins. Master: pardon our transgressions. Holy One: visit and heal our infirmities, for Thy Name’s sake.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-lhm\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"response\",\"speaker\":\"reader\",\"text\":\"Lord, have mercy.\",\"repetitions\":3}",
+  "{\"id\":\"pot-glory-2\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"doxology\",\"text\":\"Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen.\"}",
+  "{\"id\":\"pot-lords-prayer\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"reader\",\"text\":\"Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-lp-doxology\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
+  "{\"id\":\"pot-lp-amen\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\"}",
+  "{\"id\":\"pot-lhm-sung\",\"section\":\"Prayers of Thanksgiving\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"repetitions\":3}"
+ ],
+ "stretches": [
+  {
+   "id": "propers",
+   "label": "The Third Antiphon through the Holy Gospel",
+   "fromSection": "Third Antiphon",
+   "toSection": "Gospel Reading",
+   "gap": 43
+  }
+ ],
+ "slots": [
+  {
+   "id": "slot-gl-amen",
+   "gap": 28,
+   "section": "First Antiphon",
+   "usual": [
+    {
+     "id": "a1-v0",
+     "section": "First Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Bless the Lord, O my soul, blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all His benefits;",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a1-v1",
+     "section": "First Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "who cleanseth all thy transgressions; who healeth all thine infirmities;\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion."
+    },
+    {
+     "id": "a1-v2",
+     "section": "First Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Compassionate and merciful is the Lord; long-suffering and of great mercy."
+    },
+    {
+     "id": "a1-v3",
+     "section": "First Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Bless the Lord, O my soul, blessed art Thou, O Lord."
+    },
+    {
+     "id": "a1-refrain",
+     "section": "First Antiphon",
+     "type": "response",
+     "speaker": "choir",
+     "text": "Through the intercessions of the Theotokos, O Savior, save us."
+    }
+   ],
+   "usualShare": 0.991,
+   "varies": true
+  },
+  {
+   "id": "slot-ant1-ll-amen",
+   "gap": 35,
+   "section": "Little Litany",
+   "usual": [
+    {
+     "id": "ant1-ll-glory",
+     "section": "Little Litany",
+     "type": "doxology",
+     "speaker": "choir",
+     "text": "Glory to the Father, and to the Son, and to the Holy Spirit."
+    },
+    {
+     "id": "a2-v0",
+     "section": "Second Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Praise the Lord, O my soul.\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a2-v1",
+     "section": "Second Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Trust not in princes in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a2-v2",
+     "section": "Second Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "Blessed is he who hath the God of Jacob for his helper, whose hope is in the Lord his God,\nwho made heaven and earth, the sea and all that is in them.",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a2-v3",
+     "section": "Second Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "The Lord shall be King for ever;",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a2-v4",
+     "section": "Second Antiphon",
+     "type": "verse",
+     "speaker": "choir",
+     "text": "thy God, O Zion, from generation to generation.",
+     "_overlay": "st-john-damascus-tyler"
+    },
+    {
+     "id": "a2-glory",
+     "section": "Second Antiphon",
+     "type": "doxology",
+     "speaker": "choir",
+     "text": "Now and ever, and unto ages of ages. Amen."
+    }
+   ],
+   "usualShare": 0.991,
+   "varies": true
+  },
+  {
+   "id": "slot-meg-cue",
+   "gap": 164,
+   "section": "Hymn to the Theotokos",
+   "usual": [
+    {
+     "id": "megalynarion",
+     "section": "Hymn to the Theotokos",
+     "type": "hymn",
+     "speaker": "choir",
+     "text": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim: without corruption thou gavest birth to God the Word: true Theotokos, we magnify thee.",
+     "_overlay": "st-john-damascus-tyler"
+    }
+   ],
+   "usualShare": 0.886,
+   "varies": true
+  },
+  {
+   "id": "slot-pc-elevation-r",
+   "gap": 206,
+   "section": "Communion Hymn",
+   "usual": [
+    {
+     "id": "ch-text",
+     "section": "Communion Hymn",
+     "type": "hymn",
+     "speaker": "choir",
+     "text": "Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!"
+    }
+   ],
+   "usualShare": 0.746,
+   "varies": true
+  },
+  {
+   "id": "slot-prayer-ambon",
+   "gap": 231,
+   "section": "Blessing of Grapes and Fruit",
+   "usual": [],
+   "usualShare": 0.991,
+   "varies": true
+  },
+  {
+   "id": "slot-cd-glory-r",
+   "gap": 244,
+   "section": "Dismissal",
+   "usual": null,
+   "usualShare": 0.009,
+   "varies": true
+  },
+  {
+   "id": "slot-pot-lhm-sung",
+   "gap": 269,
+   "section": "Prayers of Thanksgiving",
+   "usual": [
+    {
+     "id": "pot-close-rubric",
+     "section": "Prayers of Thanksgiving",
+     "type": "rubric",
+     "speaker": null,
+     "text": "Troparion of the Patron of the Temple, Venerable John of Damascus, Tone 3:"
+    },
+    {
+     "id": "pot-close-troparion",
+     "section": "Prayers of Thanksgiving",
+     "type": "hymn",
+     "speaker": "choir",
+     "text": "Thou wast a holy instrument and a tuneful harp of godliness. Thy teaching shone forth to the ends of the world, O righteous John of Damascus. We pray thee to entreat Christ our God to grant us His great mercy.",
+     "tone": 3
+    }
+   ],
+   "usualShare": 0.754,
+   "varies": true
+  }
+ ],
+ "items": [
+  {
+   "kind": "block",
+   "block": {
+    "id": "od-exclamation",
+    "section": "Opening Doxology",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Blessed is the Kingdom of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "od-response",
+    "section": "Opening Doxology",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-opening",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "In peace, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-response",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p0",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For the peace from above, and for the salvation of our souls, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p0-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p1",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For the peace of the whole world, the welfare of the holy churches of God, and the union of all, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p1-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p2",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p2-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p3",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For the most blessed Metropolitan Tikhon, right reverend Bishop Gerasim, for the honorable presbytery, the diaconate in Christ, all the clergy and the people, let us pray to the Lord.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p3-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p4",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For this country, its President [or: the civil authorities], for all civil authorities, and for the armed forces, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p4-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p5",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For this city [or: village, or: holy monastery], every city and countryside, and the faithful who dwell therein, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p5-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p6",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For seasonable weather, an abundance of the fruits of the earth, and for peaceful times, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p6-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p7",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For travelers by sea, by land, and by air; for the sick and the suffering; for captives and for their salvation, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p7-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p8",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p8-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p9",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-p9-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-commemoration",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-comm-resp",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-exclamation",
+    "section": "Great Litany",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For unto Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "gl-amen",
+    "section": "Great Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-gl-amen"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-opening",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again and again in peace, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-response",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-petition",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-comm",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-comm-resp",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-excl",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thine is the might, and Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-amen",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-ant1-ll-amen"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "only-begotten-son",
+    "section": "Second Antiphon",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Only-begotten Son and Immortal Word of God, who for our salvation didst will to be incarnate of the Holy Theotokos and Ever-virgin Mary, who without change didst become man, and wast crucified, O Christ our God, trampling down death by death, who art one of the Holy Trinity, glorified with the Father and the Holy Spirit, save us!",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-opening",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again and again in peace, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-response",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-petition",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-comm",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-comm-resp",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-excl",
+    "section": "Little Litany",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ant2-ll-amen",
+    "section": "Little Litany",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "jump",
+   "stretch": "propers",
+   "label": "The Third Antiphon through the Holy Gospel"
+  },
+  {
+   "kind": "resume",
+   "stretch": "propers",
+   "label": "The Third Antiphon through the Holy Gospel"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "homily",
+    "section": "Homily",
+    "type": "rubric",
+    "speaker": null,
+    "text": "The sermon is delivered at this time."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-opening",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us say with all our soul and with all our mind, let us say:",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-response",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-p0",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "O Lord Almighty, the God of our fathers, we pray Thee, hearken and have mercy.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-p0-resp",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-p1",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-p1-resp",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tp0",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again we pray for the most blessed Metropolitan Tikhon, and for the right reverend Bishop Gerasim.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tr0",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tp1",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again we pray for this country, its President [or: the civil authorities], and for the armed forces.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tr1",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tp2",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tr2",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tp3",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again we pray for the blessed and ever-memorable holy Orthodox Patriarchs; and for the founders of this holy temple [or: monastery]; and for all our fathers and brethren who have before us fallen asleep in the hope of resurrection and life eternal.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tr3",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tp4",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again we pray for those who bring offerings and do good works in this holy and all-venerable temple; for those who labor and those who sing; and for all the people here present, who await from Thee great and abundant mercy.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-tr4",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-excl",
+    "section": "Litany of Fervent Supplication",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thou art a merciful God and lovest mankind, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "al-amen",
+    "section": "Litany of Fervent Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-opening",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Pray to the Lord, ye catechumens.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-response",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p0",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us, the faithful, pray for the catechumens.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p0-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p1",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That the Lord will have mercy on them.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p1-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p2",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That He will teach them the word of truth.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p2-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p3",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That He will reveal to them the Gospel of righteousness.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p3-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p4",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That He will unite them to His holy, catholic, and apostolic Church.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-p4-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-petition2",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Save them, have mercy on them, help them, and keep them, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-bow",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Bow your heads before the Lord, ye catechumens.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-bow-resp",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-excl",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "That they also, with us, may glorify Thy most honorable and majestic name: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-amen",
+    "section": "Litany for the Catechumens",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cat-dismissal",
+    "section": "Litany for the Catechumens",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "As many as are catechumens, depart! Depart, catechumens! As many as are catechumens, depart! Let none of the catechumens remain!",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-opening",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "We, the faithful, again and again in peace, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-response",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-petition",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-pet-resp",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-wisdom",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Wisdom!",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-excl",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For all glory, honor, and worship are due unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf1-amen",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-opening",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Again and again in peace, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-response",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-petition",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-pet-resp",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-wisdom",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Wisdom!",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-excl",
+    "section": "Litanies of the Faithful",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "That guarded always by Thy might, we may ascribe glory unto Thee: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lf2-amen",
+    "section": "Litanies of the Faithful",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-rubric",
+    "section": "Cherubic Hymn",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Sung slowly and very softly:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-part1",
+    "section": "Cherubic Hymn",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "We, the Cherubim mystically representing, mystically representing, and to the life-creating Trinity the thrice holy hymn singing, the thrice holy hymn with them singing, all life's cares now lay aside, all life's cares now lay aside, all life's cares now lay aside.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-amen",
+    "section": "Cherubic Hymn",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ge-rubric",
+    "section": "Great Entrance",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Procession of the Holy Gifts."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ge-comm",
+    "section": "Great Entrance",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "All of you Orthodox Christians, may the Lord God remember in His Kingdom, always, now and ever, and unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ge-response",
+    "section": "Great Entrance",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-rubric2",
+    "section": "Cherubic Hymn",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Then more quickly, with strength:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-part2",
+    "section": "Cherubic Hymn",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "That the King of all we may receive by angelic hosts invisibly escorted.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cherubic-alleluia",
+    "section": "Cherubic Hymn",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Alleluia, alleluia, alleluia, alleluia, alleluia.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-opening",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us complete our prayer unto the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-response",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p0",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For the precious Gifts here offered, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p0-resp",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p1",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p1-resp",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For our deliverance from all tribulation, wrath, danger, and necessity, let us pray to the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-resp",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p3",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p3-resp",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-0",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-0",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-1",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-1",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-2",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Pardon and remission of our sins and transgressions, let us ask of the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-2",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-3",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-3",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-4",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-4",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-p2-5",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-gr-5",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-comm",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-comm-resp",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-excl",
+    "section": "Litany of Supplication",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Through the mercies of Thine Only-begotten Son, with Whom Thou art blessed, together with Thine all-holy, good, and life-creating Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sup-amen",
+    "section": "Litany of Supplication",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "kop-call",
+    "section": "The Creed",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us love one another, that with one mind we may confess:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "kop-resp",
+    "section": "The Creed",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Father, Son, and Holy Spirit: the Trinity, one in essence and undivided."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "kop-doors",
+    "section": "The Creed",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "The doors! The doors! In wisdom let us attend!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "creed",
+    "section": "The Creed",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "I believe in one God, the Father Almighty, Maker of heaven and earth and of all things visible and invisible.\n\nAnd in one Lord, Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, True God of True God; begotten, not made; of one essence with the Father; by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified also for us under Pontius Pilate, and suffered, and was buried; and the third day He rose again according to the Scriptures; and ascended into heaven and sitteth at the right hand of the Father. And He shall come again with glory to judge the living and the dead; of His Kingdom there shall be no end.\n\nAnd in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father; who with the Father and the Son together is worshipped and glorified; who spake by the prophets.\n\nIn one holy catholic and apostolic Church. I confess one baptism for the forgiveness of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anaphora-call",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us stand aright; let us stand in fear; let us attend, that we may offer the Holy Oblation in peace."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anaphora-resp",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "A mercy of peace, a sacrifice of praise."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-0",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-1",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "And with thy spirit."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-2",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Let us lift up our hearts."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-3",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "We lift them up unto the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-4",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Let us give thanks unto the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sc-5",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "It is meet and right to worship the Father, and the Son, and the Holy Spirit: the Trinity, One in essence, and undivided.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "preface",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "It is meet and right to hymn Thee, to bless Thee, to give thanks to Thee, and to worship Thee in every place of Thy dominion: for Thou art God ineffable, inconceivable, invisible, incomprehensible, ever-existing and eternally the same, Thou and Thine Only-begotten Son and Thy Holy Spirit. Thou it was Who brought us from non-existence into being, and when we had fallen away didst raise us up again, and didst not cease to do all things until Thou hadst brought us up to heaven, and hadst endowed us with Thy Kingdom which is to come. For all these things we give thanks to Thee, and to Thine Only-begotten Son, and to Thy Holy Spirit; for all things of which we know and of which we know not, whether manifest or unseen; and we thank Thee for this Liturgy which Thou hast deigned to accept at our hands, though there stand by Thee thousands of archangels and hosts of angels, the Cherubim and the Seraphim, six-winged, many-eyed, who soar aloft, borne on their pinions…",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "preface-cue",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Singing the triumphant hymn, shouting, proclaiming and saying:",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "sanctus",
+    "section": "Anaphora",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Holy! Holy! Holy! Lord of Sabbaoth! Heaven and earth are full of Thy glory! Hosanna in the highest! Blessed is He that comes in the Name of the Lord! Hosanna in the highest!",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "inst-body",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "With these blessed powers, O Master Who lovest mankind, we also cry aloud and say: Holy art Thou and All-Holy, Thou and Thine Only-begotten Son and Thy Holy Spirit! Holy art Thou and All-Holy, and magnificent is Thy glory! Who hast so loved Thy world as to give Thine Only-begotten Son, that whoever believeth in Him should not perish but have everlasting life; Who when He had come and had fulfilled all the dispensation for us, in the night in which He was given up — or rather, gave Himself up for the life of the world — took bread in His holy, pure, and blameless hands; and when He had given thanks and blessed it, and hallowed it, and broken it, He gave it to His holy disciples and apostles saying: Take! Eat! This is My Body which is broken for you, for the remission of sins.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "inst-body-r",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "inst-cup",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Drink of it, all of you! This is My Blood of the New Testament, which is shed for you and for many, for the remission of sins!",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "inst-cup-r",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anamnesis-prayer",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Remembering this saving commandment and all those things which have come to pass for us: the Cross, the Tomb, the Resurrection on the third day, the Ascension into heaven, the Sitting at the right hand, and the second and glorious Coming,",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anamnesis",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Thine own of Thine own, we offer unto Thee, on behalf of all and for all."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anamnesis-r",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "We praise Thee, we bless Thee, we give thanks unto Thee, O Lord; and we pray unto Thee, O our God.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-invocation",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Again we offer unto Thee this rational and bloodless worship, and ask Thee, and pray Thee, and supplicate Thee: Send down Thy Holy Spirit upon us and upon these Gifts here offered...",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x0",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Bless, Master, the Holy Bread.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x1",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "...and make this Bread the Precious Body of Thy Christ.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x2",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "deacon",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x3",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Bless, Master, the Holy Cup.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x4",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "And that which is in this Cup, the Precious Blood of Thy Christ.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x5",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "deacon",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x6",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Bless both, Master.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-x7",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Making the change by Thy Holy Spirit.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-amen",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen. Amen. Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "epi-fruits",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "That they may be to those who partake for the purification of soul, for the remission of sins, for the communion of Thy Holy Spirit, for the fulfillment of the Kingdom of Heaven, for boldness towards Thee, and not for judgment or condemnation.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "comm-saints",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Again we offer unto Thee this reasonable worship for those who have fallen asleep in the faith: ancestors, fathers, patriarchs, prophets, apostles, preachers, evangelists, martyrs, confessors, ascetics, and every righteous spirit made perfect in faith.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "meg-cue",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Especially for our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary."
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-meg-cue"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "comm-hierarchs",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Among the first, remember, O Lord, His Beatitude, the Most Blessed Tikhon, Archbishop of Washington, Metropolitan of All America and Canada; and His Grace, the Right Reverend Gerasim, Bishop of Dallas and the South. Grant them for Thy Holy Churches in peace, safety, honor, health, and length of days, rightly to divide the word of Thy truth.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "comm-hierarchs-r",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "And all mankind."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "interc-excl",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "And grant that with one mouth and one heart we may praise Thine all-honorable and majestic Name; of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "interc-resp",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anaphora-blessing",
+    "section": "Anaphora",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "And may the mercies of our great God and Savior Jesus Christ be with all of you.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "anaphora-blessing-r",
+    "section": "Anaphora",
+    "type": "response",
+    "speaker": "choir",
+    "text": "And with thy spirit."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-opening",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Having remembered all the saints, again and again in peace, let us pray to the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-response",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p0",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For the precious Gifts offered and sanctified, let us pray to the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr0",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p1",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That our God, Who loveth mankind, receiving them upon His holy, heavenly, and ideal altar as a sweet spiritual fragrance, will send down upon us in return His divine grace and the gift of the Holy Spirit, let us pray to the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr1",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p2",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "For our deliverance from all affliction, wrath, danger, and necessity, let us pray to the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr2",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p3",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr3",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p4",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That the whole day may be perfect, holy, peaceful, and sinless, let us ask of the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr4",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p5",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "An angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask of the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr5",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p6",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Pardon and remission of our sins and transgressions, let us ask of the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr6",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p7",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "All things that are good and profitable for our souls, and peace for the world, let us ask of the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr7",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p8",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "That we may complete the remaining time of our life in peace and repentance, let us ask of the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr8",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-p9",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "A Christian ending to our life: painless, blameless, and peaceful; and a good defense before the dread judgment seat of Christ, let us ask."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-pr9",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Grant this, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-comm",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Having asked for the unity of the faith and the communion of the Holy Spirit, let us commend ourselves and each other and all our life unto Christ our God."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-comm-resp",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-excl",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "And make us worthy, O Master, that with boldness and without condemnation, we may dare to call on Thee, the heavenly God, as Father, and to say:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lords-prayer",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-doxology",
+    "section": "The Lord's Prayer",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lp-dox-resp",
+    "section": "The Lord's Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-peace",
+    "section": "Pre-Communion",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Peace be unto all."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-peace-r",
+    "section": "Pre-Communion",
+    "type": "response",
+    "speaker": "choir",
+    "text": "And to thy spirit."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-bow",
+    "section": "Pre-Communion",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Bow your heads unto the Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-bow-r",
+    "section": "Pre-Communion",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-bow-prayer",
+    "section": "Pre-Communion",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "We give thanks unto Thee, O King invisible, Who by Thy measureless power didst make all things, and in the greatness of Thy mercy didst bring all things from non-existence into being. Do Thou Thyself, O Master, look down from heaven upon those who have bowed their heads before Thee; for they have bowed not before flesh and blood, but before Thee, the awesome God. Do Thou, O Master, distribute these Gifts here offered unto all of us for good, according to the individual need of each; sail with those who sail, travel with those who travel by land and by air; heal the sick, O Thou Who art the Physician of our souls and bodies.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-elevation-d",
+    "section": "Pre-Communion",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us attend."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-elevation-p",
+    "section": "Pre-Communion",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "The holy Things are for the holy!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-elevation-r",
+    "section": "Pre-Communion",
+    "type": "response",
+    "speaker": "choir",
+    "text": "One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen."
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-pc-elevation-r"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ch-silent-rubric",
+    "section": "Communion Hymn",
+    "type": "rubric",
+    "speaker": null,
+    "text": "While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ch-silent-chrysostom-roof-label",
+    "section": "Communion Hymn",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Prayer of St. John Chrysostom:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ch-silent-chrysostom-roof",
+    "section": "Communion Hymn",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "O Lord my God, I know that I am not worthy nor sufficiently pleasing that Thou shouldst come under the roof of the house of my soul for it is entirely desolate and fallen in ruin and Thou wilt not find in me a place worthy to lay Thy head. But as Thou didst humble Thyself from on high for our sake, so now humble Thyself to my lowliness.\n\nAs Thou didst deign to lie in a cavern, in a manger of dumb beasts, so now deign to enter in to the manger of my beastly soul, and into my soiled body.\n\nAnd as Thou didst not disdain to enter and to eat with sinners in the house of Simon the leper, so now be pleased to enter into the house of my soul, humble and leprous and sinful.\n\nAnd as Thou didst not cast out the prostitute, the sinful woman who came to touch Thee, so have compassion on me a sinner who comes to touch Thee.\n\nAnd as Thou didst not abhor the kiss of her sin-stained and unclean mouth, do not abhor my mouth, worse stained and more unclean than hers, nor my stained and shamed and unclean lips, nor my still more impure tongue.\n\nBut let the fiery coal of Thy most pure Body and Thy most precious Blood bring me sanctification, enlightenment and strengthening of my lowly soul and body, relief from the burden of my many transgressions, protection against every action of the devil, repulsion and victory over my wicked and evil habits, mortification of my passions, accomplishment of Thy commandments, increase of Thy divine grace, and inheritance of Thy kingdom.\n\nFor I do not come to Thee in presumption, O Christ my God, but made bold by Thine unspeakable goodness, lest I stray far away from Thy flock, O Master, and become caught by the wolf of souls.\n\nTherefore I pray Thee, O Master, for Thou alone art holy, sanctify my soul and body, my mind and heart, my muscles and bones. Renew me entirely. Implant Thy fear in my fleshly members and let Thy sanctification never be removed from me.\n\nBe my helper and defender, guide my life in peace and make me worthy to stand at Thy right hand with all Thy saints.\n\nBy the prayers and supplications of Thy most pure Mother, of Thy spiritual servants, the most pure angelic powers, and of all the saints who from all ages have been well-pleasing to Thee. Amen.",
+    "density": "fine"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-prayer-1",
+    "section": "Communion Prayer",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am first. And I believe that this is thine own immaculate Body, and that this is thine own precious Blood. Wherefore, I pray thee, have mercy on me, and pardon my trespasses, voluntary and involuntary, in word or in deed, in knowledge and in ignorance, and make me worthy without condemnation to partake of thine immaculate Mysteries, unto forgiveness of sins and unto life eternal."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-prayer-2",
+    "section": "Communion Prayer",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "Of thy mystical Supper, O Son of God, accept me today as a communicant, for I will not speak of Thy Mystery to thine enemies, neither will I give thee a kiss as did Judas, but like the thief will I confess thee: Remember me, O Lord, in thy kingdom."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-prayer-3",
+    "section": "Communion Prayer",
+    "type": "prayer",
+    "speaker": "all",
+    "text": "Not unto judgment nor unto condemnation be my partaking of thy holy Mysteries, O Lord, but unto healing of soul and body. Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-draw-near",
+    "section": "Communion Prayer",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "In the fear of God and with faith, draw near!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pc-blessed",
+    "section": "Communion Prayer",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Blessed is He that comes in the Name of the Lord; God is the Lord and has revealed Himself unto us!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cof-rubric",
+    "section": "Communion of the Faithful",
+    "type": "rubric",
+    "speaker": null,
+    "text": "During the Communion of the Faithful:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cof-body-of-christ",
+    "section": "Communion of the Faithful",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Body of Christ, receive; taste of the fountain of immortality."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pcb-priest",
+    "section": "Post-Communion Blessing",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "O God, save Thy people, and bless Thine inheritance!",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "we-have-seen",
+    "section": "Post-Communion Blessing",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "We have seen the true Light. We have received the heavenly Spirit. We have found the true Faith, worshiping the undivided Trinity, Who has saved us."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "hot-always",
+    "section": "Hymn of Thanksgiving",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Always, now and ever, and unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "hot-amen",
+    "section": "Hymn of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "let-our-mouths",
+    "section": "Hymn of Thanksgiving",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Let our mouths be filled with Thy praise, O Lord, that we may sing of Thy glory; for Thou hast made us worthy to partake of Thy holy, divine, immortal, and life-creating Mysteries. Keep us in Thy holiness, that all the day we may meditate upon Thy righteousness. Alleluia! Alleluia! Alleluia!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-deacon",
+    "section": "Litany of Thanksgiving",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Let us attend. Having partaken of the divine, holy, most-pure, immortal, heavenly, and life-creating, awesome Mysteries of Christ, let us worthily give thanks unto the Lord.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-response",
+    "section": "Litany of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-petition",
+    "section": "Litany of Thanksgiving",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Help us, save us, have mercy on us, and keep us, O God, by Thy grace.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-petition-r",
+    "section": "Litany of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-prayer",
+    "section": "Litany of Thanksgiving",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "We thank Thee, O Master Who lovest mankind, Benefactor of our souls, that Thou hast made us worthy this day of Thy heavenly and immortal Mysteries. Make straight our path; strengthen us all in Thy fear; guard our life; make firm our steps; through the prayers and intercessions of the glorious Theotokos and Ever-Virgin Mary, and of all Thy saints.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-comm",
+    "section": "Litany of Thanksgiving",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Having asked that the whole day may be perfect, holy, peaceful, and sinless, let us commit ourselves and one another and all our life unto Christ our God.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-comm-resp",
+    "section": "Litany of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "To Thee, O Lord.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-excl",
+    "section": "Litany of Thanksgiving",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thou art our sanctification, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "lt-amen",
+    "section": "Litany of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen.",
+    "density": "cue"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "prayer-ambon",
+    "section": "Prayer behind the Ambon",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "O Lord, Who blessest those who bless Thee, and sanctifiest those who put their trust in Thee: save Thy people and bless Thine inheritance; preserve the fullness of Thy Church; sanctify those who love the beauty of Thy house; glorify them in return by Thy divine power, and forsake us not who set our hope on Thee. Give peace to Thy world, to Thy churches, to the clergy, to those who govern us, to the armed forces, and to all Thy people. For every good gift and every perfect gift is from above, coming down from Thee, the Father of lights. And to Thee do we send up glory, thanksgiving, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-prayer-ambon"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "bbn-text",
+    "section": "Blessed be the Name",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Blessed be the name of the Lord, henceforth and forevermore. (×3)"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "bbn-response",
+    "section": "Blessed be the Name",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-rubric",
+    "section": "Psalm 33",
+    "type": "rubric",
+    "speaker": null,
+    "text": "The Reader:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v1",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "I will bless the Lord at all times. His praise shall be continuously in my mouth.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v2",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "In the Lord my soul shall make her boast. Let the meek hear and be glad.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v3",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "Oh magnify the Lord with me and let us exalt His name together.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v4",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "Taste and see that the Lord is good. Blessed is the man who hopeth in Him.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v5",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "Fear the Lord all ye His saints. For there is no lack for them that fear Him.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "ps33-v6",
+    "section": "Psalm 33",
+    "type": "prayer",
+    "speaker": null,
+    "text": "The rich have become poor and hungry, but they that seek the Lord shall not want any good thing.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cd-blessing",
+    "section": "Closing Doxology",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "The blessing of the Lord be upon you, through His grace and love for mankind, always, now and ever, and unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cd-blessing-r",
+    "section": "Closing Doxology",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cd-glory",
+    "section": "Closing Doxology",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "Glory to Thee, O Christ our God and our hope, glory to Thee."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "cd-glory-r",
+    "section": "Closing Doxology",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy. Father, bless."
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-cd-glory-r"
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "dis-amen",
+    "section": "Dismissal",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "dis-preserve",
+    "section": "Dismissal",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Preserve, O God, the holy Orthodox faith and Orthodox Christians, unto ages of ages."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-rubric",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "After the dismissal, while the faithful venerate the cross and receive the priest's blessing, the reader says the Prayers of Thanksgiving."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-glory",
+    "section": "Prayers of Thanksgiving",
+    "type": "response",
+    "speaker": "priest",
+    "text": "Glory to Thee, O God!",
+    "repetitions": 3
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-thanksgiving-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Prayer of Thanksgiving:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-thanksgiving",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "I thank Thee, O Lord my God, for Thou hast not rejected me, a sinner, but hast made me worthy to be a partaker of Thy Holy Things. I thank Thee, for Thou hast permitted me, the unworthy, to commune of Thy most pure and heavenly Gifts. But, O Master, Who lovest mankind, Who for our sakes didst die and rise again, and gavest us these awesome and life-creating Mysteries for the good and sanctification of our souls and bodies, let them be for the healing of soul and body, the repelling of every adversary, the illumining of the eyes of my heart, the peace of my spiritual powers, a faith unashamed, a love unfeigned, the fulfilling of wisdom, the observing of Thy commandments, the receiving of Thy divine grace, and the attaining of Thy Kingdom. Preserved by them in Thy holiness, may I always remember Thy grace and live not for myself alone, but for Thee, our Master and Benefactor. May I pass from this life in the hope of eternal life, and so attain to the everlasting rest, where the voice of those who feast is unceasing, and the gladness of those who behold the goodness of Thy countenance is unending. For Thou art the true desire and the ineffable joy of those who love Thee, O Christ our God, and all creation sings of Thy praise forever. Amen.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-basil-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "First Prayer, by St. Basil the Great:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-basil",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "O Master Christ our God, King of the ages, Maker of all things: I thank Thee for all the good things Thou hast given me, especially for the communion with Thy most pure and life-creating Mysteries. I pray Thee, O gracious Lover of mankind: preserve me under Thy protection, beneath the shadow of Thy wings. Enable me, even to my last breath, to partake worthily and with a pure conscience of Thy Holy Things, for the remission of sins and unto life eternal. For Thou art the Bread of Life, the Fountain of Holiness, the Giver of all Good; and unto Thee do we send up glory, with the Father and the Holy Spirit, now and ever, and unto ages of ages. Amen.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-metaphrastes-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Second Prayer, by St. Symeon Metaphrastes:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-metaphrastes",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "Freely Thou hast given me Thy Body for my food, O Thou Who art a fire consuming the unworthy. Consume me not, O my Creator, but instead enter into my members, my veins, my heart. Consume the thorns of my transgressions. Cleanse my soul and sanctify my reasonings. Make firm my knees and body. Illumine my five senses. Nail me to the fear of Thee. Always protect, guard, and keep me from soul-destroying words and deeds. Cleanse me, purify me, and adorn me. Give me understanding and illumination. Show me to be a temple of Thy One Spirit and not the home of many sins. May every evil thing, every carnal passion flee from me as from a fire as I become Thy tabernacle through communion. I offer Thee as intercessors all the saints: the leaders of the bodiless hosts, Thy Forerunner, the wise apostles, and Thy pure and blameless Mother. Accept their prayers in Thy love, O my Christ, and make me, Thy servant, a child of light. For Thou art the only Sanctification and Light of our souls, O Good One, and unto Thee, our Master and God, do we send up glory day by day.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-third-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Third Prayer:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-third",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "O Lord Jesus Christ our God; let Thy Holy Body be my eternal life; Thy Precious Blood, my remission of sins. Let this Eucharist be my joy, health, and gladness. Make me, a sinner, worthy to stand on the right hand of Thy glory at Thine awesome second Coming, through the prayers of Thy most pure Mother and of all the saints.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-theotokos-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Prayer to the Most Holy Theotokos:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-theotokos",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "O most holy Lady Theotokos, the light of my darkened soul, my hope, my protection, my refuge, my rest, and my joy. I thank you, for you have permitted me, the unworthy, to be a partaker of the Most Pure Body and Precious Blood of thy Son. Grant the light of understanding to the eyes of my heart, you who gave birth to the True Light. Enliven me who am deadened by sin, you who gave birth to the Fountain of Immortality. Have mercy on me, O loving Mother of the merciful God. Grant me compunction and contrition of heart, humility of thought, and a release from the slavery of my own reasonings. And enable me, even to my last breath, to receive the sanctification of the most pure Mysteries, for the healing of soul and body. Grant me tears of repentance and confession, that I may glorify thee all the days of my life, for you are blessed and greatly glorified forever. Amen.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-symeon-label",
+    "section": "Prayers of Thanksgiving",
+    "type": "rubric",
+    "speaker": null,
+    "text": "Prayer of St. Symeon the God-receiver:"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-symeon",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "Lord, now lettest Thou Thy servant depart in peace, according to Thy word. For mine eyes have seen Thy salvation, which Thou hast prepared before the face of all people: a light to enlighten the Gentiles, and the glory of Thy people, Israel.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-trisagion",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "repetitions": 3,
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-trisagion-glory",
+    "section": "Prayers of Thanksgiving",
+    "type": "doxology",
+    "speaker": null,
+    "text": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-trinity",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "O most holy Trinity: have mercy on us. Lord: cleanse our sins. Master: pardon our transgressions. Holy One: visit and heal our infirmities, for Thy Name’s sake.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-lhm",
+    "section": "Prayers of Thanksgiving",
+    "type": "response",
+    "speaker": "reader",
+    "text": "Lord, have mercy.",
+    "repetitions": 3
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-glory-2",
+    "section": "Prayers of Thanksgiving",
+    "type": "doxology",
+    "speaker": null,
+    "text": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-lords-prayer",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "reader",
+    "text": "Our Father, Who art in heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from the evil one.",
+    "density": "compact",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-lp-doxology",
+    "section": "Prayers of Thanksgiving",
+    "type": "prayer",
+    "speaker": "priest",
+    "text": "For Thine is the Kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.",
+    "density": "compact"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-lp-amen",
+    "section": "Prayers of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Amen."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "pot-lhm-sung",
+    "section": "Prayers of Thanksgiving",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Lord, have mercy.",
+    "repetitions": 3
+   }
+  },
+  {
+   "kind": "slot",
+   "slot": "slot-pot-lhm-sung"
+  }
+ ],
+ "sample": {
+  "dates": [
+   "2026-01-04",
+   "2026-01-11",
+   "2026-01-18",
+   "2026-01-25",
+   "2026-02-01",
+   "2026-02-08",
+   "2026-02-15",
+   "2026-02-22",
+   "2026-06-07",
+   "2026-06-14",
+   "2026-06-21",
+   "2026-06-28",
+   "2026-07-05",
+   "2026-07-12",
+   "2026-07-19",
+   "2026-07-26",
+   "2026-08-02",
+   "2026-08-09",
+   "2026-08-16",
+   "2026-08-23",
+   "2026-08-30",
+   "2026-09-06",
+   "2026-09-13",
+   "2026-09-20",
+   "2026-09-27",
+   "2026-10-04",
+   "2026-10-11",
+   "2026-10-18",
+   "2026-10-25",
+   "2026-11-01",
+   "2026-11-08",
+   "2026-11-15",
+   "2026-11-22",
+   "2026-11-29",
+   "2026-12-06",
+   "2026-12-13",
+   "2026-12-20",
+   "2026-12-27",
+   "2027-01-03",
+   "2027-01-10",
+   "2027-01-17",
+   "2027-01-24",
+   "2027-01-31",
+   "2027-02-07",
+   "2027-02-14",
+   "2027-02-21",
+   "2027-02-28",
+   "2027-03-07",
+   "2027-03-14",
+   "2027-06-27",
+   "2027-07-04",
+   "2027-07-11",
+   "2027-07-18",
+   "2027-07-25",
+   "2027-08-01",
+   "2027-08-08",
+   "2027-08-15",
+   "2027-08-22",
+   "2027-08-29",
+   "2027-09-05",
+   "2027-09-12",
+   "2027-09-19",
+   "2027-09-26",
+   "2027-10-03",
+   "2027-10-10",
+   "2027-10-17",
+   "2027-10-24",
+   "2027-10-31",
+   "2027-11-07",
+   "2027-11-14",
+   "2027-11-21",
+   "2027-11-28",
+   "2027-12-05",
+   "2027-12-12",
+   "2027-12-19",
+   "2027-12-26",
+   "2028-01-02",
+   "2028-01-09",
+   "2028-01-16",
+   "2028-01-23",
+   "2028-01-30",
+   "2028-02-06",
+   "2028-02-13",
+   "2028-02-20",
+   "2028-02-27",
+   "2028-06-11",
+   "2028-06-18",
+   "2028-06-25",
+   "2028-07-02",
+   "2028-07-09",
+   "2028-07-16",
+   "2028-07-23",
+   "2028-07-30",
+   "2028-08-06",
+   "2028-08-13",
+   "2028-08-20",
+   "2028-08-27",
+   "2028-09-03",
+   "2028-09-10",
+   "2028-09-17",
+   "2028-09-24",
+   "2028-10-01",
+   "2028-10-08",
+   "2028-10-15",
+   "2028-10-22",
+   "2028-10-29",
+   "2028-11-05",
+   "2028-11-12",
+   "2028-11-19",
+   "2028-11-26",
+   "2028-12-03",
+   "2028-12-10",
+   "2028-12-17",
+   "2028-12-31"
+  ],
+  "fitting": 114
+ },
+ "fingerprint": "960c4160434f"
+}

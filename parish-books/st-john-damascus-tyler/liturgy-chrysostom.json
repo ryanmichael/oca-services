@@ -1,0 +1,36 @@
+{
+  "parish": "st-john-damascus-tyler",
+  "parishName": "St. John of Damascus Orthodox Church",
+  "id": "liturgy-chrysostom",
+  "order": 1,
+  "title": "The Divine Liturgy of St. John Chrysostom",
+  "subtitle": "For the Sundays of the year outside Great Lent and the Paschal season",
+  "service": "liturgy",
+  "translation": "st-john-damascus-tyler",
+  "membership": {
+    "weekday": "sunday",
+    "seasons": [
+      "ordinaryTime",
+      "preLenten"
+    ],
+    "serviceName": "Chrysostom"
+  },
+  "sampleYears": [
+    2026,
+    2027,
+    2028
+  ],
+  "anchorShare": 1,
+  "stretches": [
+    {
+      "id": "propers",
+      "label": "The Third Antiphon through the Holy Gospel",
+      "fromSection": "Third Antiphon",
+      "toSection": "Gospel Reading"
+    }
+  ],
+  "citationsOnly": {
+    "idPattern": "^(ep|gos)(-2|-cont)?-text$",
+    "why": "The insert prints reading citations only; the reading itself is heard. Presentation only: the insert DATA still carries the full text, so book + insert = the whole service."
+  }
+}

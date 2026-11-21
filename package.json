@@ -29,6 +29,8 @@
     "choir:ocr": "node scripts/choir-ocr.js --backfill",
     "choir:index:check": "node scripts/choir-index-build.js --check",
     "audit:parish-baseline": "node scripts/ocanwa-baseline.js",
+    "parish-book:build": "node scripts/parish-book-build.js st-john-damascus-tyler",
+    "parish-book:check": "node scripts/parish-book-build.js st-john-damascus-tyler --check",
     "scorecard": "node scripts/scorecard.js",
     "scorecard:record": "node scripts/scorecard.js --record",
     "scorecard:history": "node scripts/scorecard.js --history",

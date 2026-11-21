@@ -1,0 +1,325 @@
+<title>Pew Book Weekly Sheet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a light review desk; printed pages sit on it at true 5.5x8.5in scale, with short annotations beside them. */
+:root {
+  --desk: #EEF0F2;
+  --desk-ink: #1F2328;
+  --desk-muted: #5B6470;
+  --desk-line: #D3D8DE;
+  --note: #2F5D8A;
+  --ok: #2E7D4F;
+  --warn: #A3570B;
+  /* paper is printed paper in both themes */
+  --paper: #FFFFFF;
+  --ink: #1A1209;
+  --rubric: #8B1A1A;
+  --muted: #6B6358;
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --caps: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #16191D; --desk-ink: #E6E9ED; --desk-muted: #9AA3AE; --desk-line: #2C3238;
+    --note: #8DB8E3; --ok: #6CC793; --warn: #E7A458; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --desk: #16191D; --desk-ink: #E6E9ED; --desk-muted: #9AA3AE; --desk-line: #2C3238;
+  --note: #8DB8E3; --ok: #6CC793; --warn: #E7A458; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--desk); color: var(--desk-ink); font-family: var(--ui); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+main { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+header.intro { display: flex; flex-direction: column; gap: 10px; max-width: 70ch; }
+header.intro h1 { font-family: var(--caps); font-weight: 600; font-size: 26px; letter-spacing: .06em; margin: 0; text-wrap: balance; }
+header.intro p { margin: 0; color: var(--desk-muted); }
+.status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid currentColor; width: fit-content; }
+.status.ok { color: var(--ok); } .status.warn { color: var(--warn); } .status.wait { color: var(--desk-muted); }
+section.part { display: flex; flex-direction: column; gap: 16px; }
+section.part > h2 { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--desk-muted); margin: 0; border-bottom: 1px solid var(--desk-line); padding-bottom: 8px; }
+section.part > p.lede { margin: 0; max-width: 70ch; }
+.pages { display: flex; flex-wrap: wrap; gap: 28px 24px; align-items: flex-start; }
+figure.pg { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+figure.pg figcaption { font-size: 13px; color: var(--desk-muted); max-width: 46ch; }
+figure.pg figcaption b { color: var(--desk-ink); font-weight: 600; }
+.pg-frame { position: relative; overflow: hidden; }
+.imposition { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.sheet-side { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--desk-muted); }
+.sheet-side .row { display: flex; border: 1px solid var(--desk-line); background: var(--paper); }
+.sheet-side .row span { width: 54px; height: 70px; display: grid; place-items: center; font-family: var(--caps); font-size: 18px; color: var(--ink); }
+.sheet-side .row span + span { border-left: 1px dashed #B9B2A6; }
+ul.notes { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 75ch; }
+ul.notes li::marker { color: var(--note); }
+
+/* ── Printed page (booklet geometry: 5.5in x 8.5in, 0.45in / 0.5in padding) ── */
+.half {
+  width: 5.5in; height: 8.5in; padding: 0.45in 0.5in; background: var(--paper); color: var(--ink);
+  position: relative; overflow: hidden; transform-origin: top left;
+  font-family: var(--serif); font-size: 15pt; line-height: 1.75;
+  box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.10);
+}
+.half * { margin: 0; padding: 0; }
+.content { width: 4.5in; }
+.svc-head { font-family: var(--caps); font-size: 10pt; letter-spacing: .18em; text-align: center; margin-top: 22px; margin-bottom: 6px; text-transform: uppercase; }
+.rubric { font-size: 13pt; font-style: italic; color: var(--rubric); margin-bottom: 5px; line-height: 1.5; }
+.prayer { font-size: 15pt; line-height: 1.75; margin-bottom: 8px; }
+.prayer.compact { font-size: 11.5pt; line-height: 1.5; margin-bottom: 6px; }
+.prayer.cue { font-size: 10.5pt; font-style: italic; color: var(--muted); line-height: 1.3; margin-bottom: 3px; }
+.prayer.dox { font-style: italic; color: var(--muted); }
+.stich-label { font-size: 13pt; font-style: italic; color: var(--muted); margin-bottom: 4px; }
+.verse { font-size: 13pt; font-style: italic; color: var(--muted); margin-bottom: 6px; line-height: 1.5; }
+.spk { font-weight: 600; font-style: normal; color: var(--rubric); }
+.citation { border-top: 0.75pt solid var(--ink); border-bottom: 0.75pt solid var(--ink); padding: 5px 0 !important; margin: 4px 0 8px !important; text-align: center; line-height: 1.3; }
+.citation .ref { font-family: var(--caps); font-size: 12pt; letter-spacing: .08em; display: block; }
+.citation .hint { font-size: 10.5pt; font-style: italic; color: var(--muted); display: block; }
+.pg-foot { position: absolute; left: 0.5in; right: 0.5in; bottom: 0.17in; display: flex; justify-content: space-between; font-family: var(--serif); font-size: 8pt; color: var(--muted); letter-spacing: .02em; }
+.pg-num { position: absolute; bottom: 0.17in; font-family: var(--caps); font-size: 9pt; color: var(--ink); }
+
+/* The two signposts. Solid black so they survive a mono laser. */
+.handoff { background: var(--ink); color: var(--paper); text-align: center; padding: 9px 10px 10px !important; margin: 10px 0 6px !important; }
+.handoff .big { font-family: var(--caps); font-size: 12.5pt; letter-spacing: .12em; display: block; line-height: 1.35; }
+.handoff .small { font-size: 10.5pt; font-style: italic; display: block; line-height: 1.35; margin-top: 3px !important; opacity: .9; }
+.resume { border: 1.5pt solid var(--ink); text-align: center; padding: 5px 8px !important; margin-bottom: 4px !important; line-height: 1.35; }
+.resume .big { font-family: var(--caps); font-size: 11pt; letter-spacing: .12em; display: block; }
+.resume .small { font-size: 10pt; font-style: italic; color: var(--muted); display: block; }
+.sheet-title { text-align: center; padding-top: 0.05in !important; }
+.sheet-title .t { font-family: var(--caps); font-size: 15pt; letter-spacing: .2em; display: block; }
+.sheet-title .d { font-size: 12pt; display: block; line-height: 1.4; }
+.sheet-title .m { font-size: 10.5pt; font-style: italic; color: var(--muted); display: block; line-height: 1.4; }
+.start-here { font-size: 10.5pt; font-style: italic; text-align: center; border-top: 0.5pt solid var(--muted); border-bottom: 0.5pt solid var(--muted); padding: 4px 0 !important; margin: 8px 0 2px !important; line-height: 1.4; }
+.also { border: 0.75pt dashed var(--muted); padding: 6px 8px !important; margin-top: 10px !important; font-size: 11pt; line-height: 1.4; }
+.also b { font-family: var(--caps); font-weight: 400; font-size: 9.5pt; letter-spacing: .12em; display: block; }
+.sheet .prayer:not(.compact):not(.cue) { font-size: var(--hymn-pt, 15pt); line-height: var(--hymn-lh, 1.75); }
+.controls { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+.ctl { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--desk-muted); }
+.seg { display: inline-flex; border: 1px solid var(--desk-line); border-radius: 8px; overflow: hidden; background: var(--desk); }
+.seg button { font: 500 13px var(--ui); color: var(--desk-ink); background: transparent; border: 0; padding: 7px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--desk-line); }
+.seg button[aria-pressed="true"] { background: var(--desk-ink); color: var(--desk); }
+.seg button:focus-visible { outline: 2px solid var(--note); outline-offset: -2px; }
+#measure { position: absolute; left: -9999px; top: 0; visibility: hidden; }
+@media (prefers-reduced-motion: no-preference) { .half { transition: box-shadow .2s; } }
+</style>
+
+<main>
+  <header class="intro">
+    <h1>Pew Book &amp; Weekly Sheet</h1>
+    <p>A mockup for Sunday, January 24, 2027, built from the live Tyler Liturgy text. The pew book hands off once at the Third Antiphon. The weekly sheet carries everything from there through the Gospel, with readings given as citations only. Pages are drawn at true size, 5.5 × 8.5 in, in the booklet's own type.</p>
+    <span class="status wait" id="fit-status">Measuring the sheet…</span>
+    <div class="controls">
+      <div class="ctl">Hymn type on the sheet
+        <div class="seg" id="ctl-size"><button id="sz-15" data-v="15" aria-pressed="true">15 pt (booklet today)</button><button id="sz-13" data-v="13" aria-pressed="false">13 pt</button></div>
+      </div>
+      <div class="ctl">Beatitude troparia
+        <div class="seg" id="ctl-beat"><button id="bt-sheet" data-v="sheet" aria-pressed="true">On the sheet</button><button id="bt-book" data-v="book" aria-pressed="false">In the book's tone section</button></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="part">
+    <h2>In the pew book — printed once</h2>
+    <p class="lede">These two pages never change. The black bar is the only place the book sends anyone to the sheet. The boxed heading is where the sheet sends them back.</p>
+    <div class="pages" id="book-pages"></div>
+  </section>
+
+  <section class="part">
+    <h2>This week's sheet — printed Thursday</h2>
+    <p class="lede" id="sheet-lede">One Letter sheet, printed on both sides and folded once, gives four half-pages.</p>
+    <div class="pages" id="sheet-pages"></div>
+  </section>
+
+  <section class="part">
+    <h2>How it folds</h2>
+    <div class="imposition" id="imposition"></div>
+    <ul class="notes">
+      <li>Print Letter landscape, two-sided, <b>flip on short edge</b>. Fold once. No staple needed for a single sheet.</li>
+      <li>The sheet lies loose inside the book's front cover. There is no page it has to be filed into.</li>
+      <li>Page numbers 8 and 14 are placeholders. The real ones come from the printed book, and the footer's edition tag lets the app warn if the book and the sheet ever disagree.</li>
+      <li>Signposts are solid black and the rest is the booklet's usual ink and rubric red, so it reads on a black-only laser.</li>
+    </ul>
+  </section>
+</main>
+
+<div id="measure"></div>
+
+<script>
+const SHEET = __DATA__;
+const IN = 96, PAGE_H = (8.5 - 0.9) * IN - 24;   // same budget as booklet.js
+const DATE = 'Sunday, January 24, 2027';
+const EDITION = 'Pew Book ed. 2027.1';
+
+function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'); }
+function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : ''; }
+function spk(s) { return s && s !== 'choir' ? `<b class="spk">${cap(s)}</b> ` : ''; }
+
+// One block → [{html, sticky}] in the booklet's own classes.
+function render(b) {
+  const den = b.density ? ' ' + b.density : '';
+  switch (b.type) {
+    case 'rubric': return [{ html: `<div class="rubric">${esc(b.text)}</div>`, sticky: true }];
+    case 'citation': return [{ html: `<div class="citation"><span class="ref">${esc(b.text)}</span><span class="hint">Listen as it is read.</span></div>` }];
+    case 'verse': return [{ html: `<div class="verse">${esc(b.text)}</div>`, sticky: true }];
+    case 'doxology': return [{ html: `<div class="prayer dox">${esc(b.text)}</div>`, sticky: true }];
+    case 'hymn': {
+      const out = [];
+      if (b.label) out.push({ html: `<div class="stich-label">${esc(b.label)}</div>`, sticky: true });
+      out.push({ html: `<div class="prayer">${esc(b.text)}</div>` });
+      return out;
+    }
+    default: return [{ html: `<div class="prayer${den}">${spk(b.speaker)}${esc(b.text)}</div>` }];
+  }
+}
+
+const OPTS = { hymnPt: 15, beat: 'sheet' };
+function sheetItems() {
+  const items = [{ html: `<div class="sheet-title"><span class="t">This Week</span><span class="d">${DATE}</span><span class="m">34th Sunday after Pentecost · Tone 1<br>Venerable Xenia of Rome</span></div>` },
+                 { html: `<div class="start-here">Pick this up when the book says<br><b>▶ Continue on this week's sheet</b> (p. ${OPTS.beat === 'book' ? 9 : 8}).</div>` }];
+  let sec = null;
+  for (const b of SHEET) {
+    if (OPTS.beat === 'book' && b.section === 'Third Antiphon') continue;
+    if (b.section !== sec) { sec = b.section; items.push({ html: `<div class="svc-head">${esc(sec)}</div>`, sticky: true }); }
+    items.push(...render(b));
+  }
+  items.push({ html: `<div class="handoff"><span class="big">◀ Return to the book · p. 14</span><span class="small">Litany of Fervent Supplication</span></div>` });
+  items.push({ html: `<div class="also"><b>Also this week</b>Nothing else changes. Sing “It is truly meet” and the usual Communion hymn from the book.</div>` });
+  return items;
+}
+
+// Fill pages in order; a sticky item (heading, label, verse, rubric) travels with what follows it.
+function paginate(items) {
+  const m = document.getElementById('measure');
+  const probe = document.createElement('div'); probe.className = 'half sheet'; probe.style.height = 'auto'; applyVars(probe);
+  const box = document.createElement('div'); box.className = 'content'; probe.appendChild(box); m.appendChild(probe);
+  const units = []; let cur = [];
+  for (const it of items) { cur.push(it.html); if (!it.sticky) { units.push(cur); cur = []; } }
+  if (cur.length) units.push(cur);
+  const pages = [[]];
+  for (const u of units) {
+    const before = box.innerHTML;
+    box.insertAdjacentHTML('beforeend', u.join(''));
+    if (box.offsetHeight > PAGE_H && pages[pages.length - 1].length) {
+      pages.push([]); box.innerHTML = u.join('');
+    }
+    pages[pages.length - 1].push(...u);
+  }
+  m.removeChild(probe);
+  return pages;
+}
+
+function applyVars(el) { el.style.setProperty('--hymn-pt', OPTS.hymnPt + 'pt'); el.style.setProperty('--hymn-lh', OPTS.hymnPt === 15 ? '1.75' : '1.55'); }
+function pageEl(html, foot, num, side, isSheet) {
+  const el = document.createElement('div'); el.className = isSheet ? 'half sheet' : 'half'; if (isSheet) applyVars(el);
+  el.innerHTML = `<div class="content">${html}</div>` + (foot ? `<div class="pg-foot"><span>${foot[0]}</span><span>${foot[1]}</span></div>` : '') +
+    (num ? `<div class="pg-num" style="${side === 'left' ? 'left' : 'right'}:0.5in">${num}</div>` : '');
+  return el;
+}
+
+function place(container, el, caption) {
+  const fig = document.createElement('figure'); fig.className = 'pg';
+  const frame = document.createElement('div'); frame.className = 'pg-frame';
+  frame.appendChild(el); fig.appendChild(frame);
+  const cap = document.createElement('figcaption'); cap.innerHTML = caption; fig.appendChild(cap);
+  container.appendChild(fig);
+  return frame;
+}
+
+const frames = [];
+function fit() {
+  const avail = Math.min(document.querySelector('main').clientWidth, 5.5 * IN);
+  const s = Math.min(1, avail / (5.5 * IN)) * (document.querySelector('main').clientWidth >= 1100 ? 1 : 1);
+  for (const f of frames) {
+    const el = f.firstChild; el.style.transform = s < 1 ? `scale(${s})` : '';
+    f.style.width = 5.5 * IN * s + 'px'; f.style.height = 8.5 * IN * s + 'px';
+  }
+}
+
+function bookPages() {
+  const p8 = [
+    `<div class="svc-head" style="margin-top:0">Little Litany</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Again and again in peace, let us pray to the Lord.</div>`,
+    `<div class="prayer cue">Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Help us, save us, have mercy on us, and keep us, O God, by Thy grace.</div>`,
+    `<div class="prayer cue">Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Commemorating our most holy, most pure, most blessed and glorious Lady Theotokos and Ever-Virgin Mary, with all the saints, let us commend ourselves and each other and all our life unto Christ our God.</div>`,
+    `<div class="prayer cue">To Thee, O Lord.</div>`,
+    `<div class="prayer compact"><b class="spk">Priest</b> For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.</div>`,
+    `<div class="prayer cue">Amen.</div>`,
+    `<div class="svc-head">Third Antiphon</div>`,
+    `<div class="handoff"><span class="big">▶ Continue on this week's sheet</span><span class="small">Beatitudes · Entrance · Troparia &amp; Kontakia · Trisagion · Readings</span></div>`,
+  ].join('');
+  const p8b = p8.replace(/<div class="handoff">[\s\S]*$/, '') +
+    `<div class="handoff"><span class="big">▶ Turn to Tone 1 · p. 52</span><span class="small">Sing the Beatitudes there, then come back to page 9</span></div>`;
+  const p14 = [
+    `<div class="resume"><span class="big">◀ Resume here</span><span class="small">from the weekly sheet</span></div>`,
+    `<div class="svc-head" style="margin-top:10px">Litany of Fervent Supplication</div>`,
+    `<div class="rubric">After the sermon:</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Let us say with all our soul and with all our mind, let us say:</div>`,
+    `<div class="prayer cue">Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> O Lord Almighty, the God of our fathers, we pray Thee, hearken and have mercy.</div>`,
+    `<div class="prayer cue">Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Have mercy on us, O God, according to Thy great goodness, we pray Thee, hearken and have mercy.</div>`,
+    `<div class="prayer cue">Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Again we pray for the most blessed Metropolitan Tikhon, and for the right reverend Bishop Gerasim.</div>`,
+    `<div class="prayer cue">Lord, have mercy. Lord, have mercy. Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Again we pray for this country, its President, and for the armed forces.</div>`,
+    `<div class="prayer cue">Lord, have mercy. Lord, have mercy. Lord, have mercy.</div>`,
+    `<div class="prayer compact"><b class="spk">Deacon</b> Again we pray for the mercy, life, peace, health, salvation, and visitation of the servants of God, all pious and Orthodox Christians dwelling in this city and in all the world.</div>`,
+    `<div class="prayer cue">Lord, have mercy. Lord, have mercy. Lord, have mercy.</div>`,
+  ].join('');
+  const c = document.getElementById('book-pages'); c.innerHTML = '';
+  frames.push(place(c, pageEl(OPTS.beat === 'book' ? p8b : p8, null, '8', 'left'), (OPTS.beat === 'book' ? '<b>Page 8 — first jump, to the back of the book.</b> With the Beatitude troparia in a tone section, the reader goes to p. 52, back to p. 9, then to the sheet: three places instead of two.' : '<b>Page 8 — the handoff.</b> A full-width black bar under the Third Antiphon heading, listing what the sheet holds, so the reader knows what is coming.')));
+  frames.push(place(c, pageEl(p14, null, '14', 'right'), '<b>Page 14 — the way back.</b> A boxed “Resume here” at the top of the page, so it can be found by flipping.'));
+}
+
+function build() {
+  frames.length = 0;
+  bookPages();
+  const pages = paginate(sheetItems());
+  const n = pages.length, c = document.getElementById('sheet-pages'); c.innerHTML = '';
+  const names = ['Outside front', 'Inside left', 'Inside right', 'Outside back'];
+  pages.forEach((p, i) => {
+    const foot = [`Weekly sheet · ${DATE.replace('Sunday, ', '')}`, `for ${EDITION} · ${i + 1} of ${n}`];
+    frames.push(place(c, pageEl(p.join(''), foot, null, null, true), `<b>${n <= 4 ? names[i] : 'Half-page ' + (i + 1)}</b>`));
+  });
+  const st = document.getElementById('fit-status');
+  const sheets = Math.ceil(n / 4);
+  if (n <= 4) { st.className = 'status ok'; st.textContent = `Fits: ${n} of 4 half-pages — one Letter sheet per person`; }
+  else { st.className = 'status warn'; st.textContent = `${n} half-pages — ${sheets} folded sheets per person (${sheets * 25} sheets for 25 people)`; }
+  document.getElementById('sheet-lede').textContent =
+    `One Letter sheet, printed on both sides and folded once, gives four half-pages. This week's text fills ${n}.`;
+  const imp = document.getElementById('imposition');
+  const P = sheets * 4, sides = [];
+  for (let k = 0; k < sheets; k++) {
+    const o = 2 * k + 1, sh = sheets > 1 ? `Sheet ${k + 1} ` : '';
+    sides.push([sh + 'side A', P - o + 1, o], [sh + 'side B', o + 1, P - o]);
+  }
+  imp.innerHTML = sides.map(s => `<div class="sheet-side"><div class="row"><span>${s[1]}</span><span>${s[2]}</span></div>${s[0]}</div>`).join('');
+  document.body.dataset.halfPages = n;
+  document.body.dataset.variant = OPTS.hymnPt + '-' + OPTS.beat;
+  fit();
+}
+
+const FACES = ['15pt "EB Garamond"', 'italic 15pt "EB Garamond"', '600 15pt "EB Garamond"', '10pt Cinzel', '600 10pt Cinzel'];
+(document.fonts ? Promise.all(FACES.map(f => document.fonts.load(f))).then(() => document.fonts.ready) : Promise.resolve())
+  .catch(() => {}).then(build);
+function wire(id, key, cast) {
+  const g = document.getElementById(id);
+  g.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    for (const x of g.querySelectorAll('button')) x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    OPTS[key] = cast(b.dataset.v); build();
+  });
+}
+wire('ctl-size', 'hymnPt', Number); wire('ctl-beat', 'beat', String);
+let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 80); });
+</script>
